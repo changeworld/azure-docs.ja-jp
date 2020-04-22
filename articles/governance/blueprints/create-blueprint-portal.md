@@ -3,12 +3,12 @@ title: クイック スタート:ポータルでブループリントを作成�
 description: このクイックスタートでは、Azure Blueprints を使用して、Azure portal から成果物を作成、定義、デプロイします。
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282054"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381903"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>クイック スタート:ポータル内でブループリントを定義して割り当てる
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    または、 **[開始]** ページから **[作成]** を選択して、ブループリントの作成に直接移動します。
 
-   ![[ブループリントの定義] ページからブループリントを作成する](./media/create-blueprint-portal/create-blueprint-button.png)
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="[ブループリントの定義] ページからブループリントを作成する" border="false":::
 
 1. 組み込みのブループリント リストの上部にあるカードから **[空白のブループリントで始める]** を選択します。
 
@@ -48,10 +48,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. **[追加]** を選択して、この成果物をブループリントに追加します。
 
-   ![ブループリント アーティファクトのロールの割り当て](./media/create-blueprint-portal/add-role-assignment.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="ブループリント アーティファクトのロールの割り当て" border="false":::
 
    > [!NOTE]
-   > ほとんどの成果物はパラメーターをサポートします。 ブループリントの作成時に値を割り当てられるパラメーターは、"*静的パラメーター*" です。 ブループリントの割り当て時に割り当てられるパラメーターは、"*動的パラメーター*" です。 詳細については、「[ブループリントのパラメーター](./concepts/parameters.md)」に関する記事をご覧ください。
+   > ほとんどの成果物はパラメーターをサポートします。 ブループリントの作成時に値を割り当てられるパラメーターは、"_静的パラメーター_" です。 ブループリントの割り当て時に割り当てられるパラメーターは、"_動的パラメーター_" です。 詳細については、「[ブループリントのパラメーター](./concepts/parameters.md)」に関する記事をご覧ください。
 
 1. サブスクリプション レベルでポリシーの割り当てを追加します。
 
@@ -144,11 +144,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. **[追加]** を選択して、この成果物をブループリントに追加します。
 
-   ![ブループリント アーティファクトの Resource Manager テンプレート](./media/create-blueprint-portal/add-resource-manager-template.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="ブループリント アーティファクトの Resource Manager テンプレート" border="false":::
 
 1. 完成したブループリントは次のようになります。 各成果物の **[パラメーター]** 列に " **_x_ 個中 _y_ 個のパラメーターが入力されました**" と表示されていることを確認します。 動的パラメーターは、ブループリントのそれぞれの割り当て時に設定されます。
 
-   ![完了したブループリント定義](./media/create-blueprint-portal/completed-blueprint.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="完了したブループリント定義" border="false":::
 
 1. 計画したすべての成果物が追加されたら、ページの下部にある **[下書きの保存]** を選択します。
 
@@ -174,13 +174,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. 追加するユーザー、アプリ、またはグループを検索して選択します。 この成果物では、このブルー プリントのすべての割り当てにおいて同じ設定の静的パラメーターが使用されます。
 
-   e. **[追加]** を選択して、この成果物をブループリントに追加します。
+   1. **[追加]** を選択して、この成果物をブループリントに追加します。
 
-   ![ブループリント アーティファクトの 2 つ目のロールの割り当て](./media/create-blueprint-portal/add-role-assignment-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="ブループリント アーティファクトの 2 つ目のロールの割り当て" border="false":::
 
 1. 完成したブループリントは次のようになります。 新しく追加したロールの割り当てに "**1 個中 1 個のパラメーターが入力されました**" と表示されていることを確認します。 これは、静的パラメーターであることを意味します。
 
-   ![完成したブループリントの 2 つ目の定義](./media/create-blueprint-portal/completed-blueprint-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="完成したブループリントの 2 つ目の定義" border="false":::
 
 1. 更新されたので、 **[下書きの保存]** を選択します。
 
@@ -219,10 +219,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. ページの下部にある **[作成]** を選択します。
 
-   ![ブループリント割り当てサブスクリプション用のサブスクリプションを作成する](./media/create-blueprint-portal/assignment-create-subscription.png)
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="ブループリント割り当てサブスクリプション用のサブスクリプションを作成する" border="false":::
 
-   > [!IMPORTANT]
-   > **[作成]** を選択するとすぐに、新しいサブスクリプションが作成されます。
+      > [!IMPORTANT]
+      > **[作成]** を選択するとすぐに、新しいサブスクリプションが作成されます。
 
    > [!NOTE]
    > 選択した各サブスクリプションに対して割り当てが作成されます。 1 つのサブスクリプションの割り当てを後で変更できます。その際に、選択した他のサブスクリプションが強制的に変更されることはありません。
@@ -235,7 +235,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[割り当てのロック]** は、 **[ロックしない]** の既定のままにします。 詳細については、[ブループリント リソースのロック](./concepts/resource-locking.md)に関するページを参照してください。
 
-   ![割り当てのロックおよびマネージド ID](./media/create-blueprint-portal/assignment-locking-mi.png)
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="割り当てのロックおよびマネージド ID" border="false":::
 
 1. **[マネージド ID]** の下で、既定の **[システム割り当て済み]** をそのままにします。
 
@@ -266,7 +266,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ブループリントの一覧で、以前に割り当てたものを右クリックして、 **[割り当ての詳細を表示する]** を選択します。
 
-   ![[割り当てられたブループリント] ページの [割り当ての詳細を表示する]](./media/create-blueprint-portal/view-assignment-details.png)
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="[割り当てられたブループリント] ページの [割り当ての詳細を表示する]" border="false":::
 
 1. **[ブループリント割り当て]** ページで、すべての成果物が正常にデプロイされたことと、デプロイ時にエラーが発生しなかったことを確認します。 エラーが発生した場合は、原因を特定する手順について、[ブループリントのトラブルシューティング](./troubleshoot/general.md)に関するページを参照してください。
 

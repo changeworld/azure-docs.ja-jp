@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 89bdd209315445519c35f3ef2c2f1ad2555106ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531398"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270599"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portal で低速クエリ ログを構成してアクセスする
 
@@ -23,7 +23,7 @@ Azure portal から [Azure Database for MariaDB の低速クエリ ログ](conce
 ## <a name="configure-logging"></a>ログの構成
 低速クエリ ログへのアクセスを構成します。 
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. Azure Database for MariaDB サーバーを選択します。
 
@@ -32,11 +32,15 @@ Azure portal から [Azure Database for MariaDB の低速クエリ ログ](conce
 
 4. サーバー パラメーターを表示するには、 **[ログを有効にし、ログ パラメーターを構成するには、ここをクリックしてください]** を選択します。
 
-5. 調整する必要のあるパラメーターを変更します (**slow_query_log** を **ON** にする、など)。 このセッションで行ったすべての変更が紫色で強調表示されます。 
+5. **slow_query_log** を **[オン]** にします。
 
-   パラメーターを変更した後、 **[保存]** を選択します。 または、変更を破棄することができます。
+6. **log_output** を使用して、ログの出力先を選択します。 ログをローカル ストレージと Azure Monitor 診断ログの両方に送信するには、 **[ファイル]** を選択します。 
 
-   ![サーバー パラメーターのオプションのスクリーンショット](./media/howto-configure-server-logs-portal/3-save-discard.png)
+7. 必要なその他のすべてのパラメーターを変更します。 
+
+8. **[保存]** を選択します。 
+
+   :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="低速クエリ ログのパラメーターと保存のスクリーンショット。":::
 
 **[サーバー パラメーター]** ページを閉じると、ログの一覧に戻ることができます。
 

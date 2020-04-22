@@ -1,27 +1,38 @@
 ---
 title: Azure Cosmos DB でのユーザー定義関数 (UDF)
 description: Azure Cosmos DB でのユーザー定義関数について説明します。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.author: tisande
+ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614335"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011125"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB でのユーザー定義関数 (UDF)
 
 SQL API ではユーザー定義関数 (UDF) のサポートを提供しています。 スカラー UDF を使用して、0 個またはいくつかの引数を渡し、1 つの引数を結果として返すことができます。 API によって、引数のそれぞれが有効な JSON 値であることがチェックされます。  
 
-API によって、UDF を使用して、SQL 構文が拡張され、カスタムのアプリケーション ロジックがサポートされます。 SQL API を使用して、UDF を登録し、それらを SQL クエリで参照できます。 実際 UDF は、クエリから呼び出せるよう精巧に設計されています。 当然の帰結として、UDF は、ストアド プロシージャやトリガーなどのその他の JavaScript の型のようなコンテキスト オブジェクトにアクセスできません。 クエリは読み取り専用で、プライマリ レプリカでもセカンダリ レプリカでも実行することができます。 UDF は、その他の JavaScript の型とは異なり、セカンダリ レプリカで実行されるように設計されています。
+## <a name="udf-use-cases"></a>UDF ユース ケース
 
-次の例では、Cosmos データベースの項目コンテナーで UDF を登録します。 例では `REGEX_MATCH` という名前の UDF を作成しています。 これは 2 つの JSON 文字列値 `input` と `pattern` を受け取り、JavaScript の `string.match()` 関数を使用して、1 つ目の文字列値が、2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
+API によって、UDF を使用して、SQL 構文が拡張され、カスタムのアプリケーション ロジックがサポートされます。 SQL API を使用して、UDF を登録し、それらを SQL クエリで参照できます。 ストアド プロシージャやトリガーとは異なり、UDF は読み取り専用です。
+
+UDF を使用すると、Azure Cosmos DB のクエリ言語を拡張できます。 UDF は、クエリのプロジェクションで複雑なビジネス ロジックを表すための優れた方法です。
+
+ただし、次の場合は UDF の使用を回避することをお勧めします。
+
+- 同等の[システム関数](sql-query-system-functions.md)が既に Azure Cosmos DB に存在する。 システム関数では、常に同等の UDF より少ない RU が使用されます。
+- その UDF がクエリの `WHERE` 句にある唯一のフィルターである。 UDF ではインデックスが利用されないため、UDF を評価するにはドキュメントの読み込みが必要になります。 `WHERE` 句で、インデックスを使用する追加のフィルター述語を UDF と組み合わせて使用すると、UDF によって処理されるドキュメントの数が削減されます。
+
+クエリで同じ UDF を複数回使用する必要がある場合は、その UDF を[サブクエリ](sql-query-subquery.md#evaluate-once-and-reference-many-times)で参照するようにしてください。それにより、JOIN 式を使用して UDF を 1 回評価した後、何回も参照できるようになります。
 
 ## <a name="examples"></a>例
+
+次の例では、Cosmos データベースの項目コンテナーで UDF を登録します。 例では `REGEX_MATCH` という名前の UDF を作成しています。 これは 2 つの JSON 文字列値 `input` と `pattern` を受け取り、JavaScript の `string.match()` 関数を使用して、1 つ目の文字列値が、2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction

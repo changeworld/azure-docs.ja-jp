@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236371"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992047"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -73,7 +73,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway のゲートウェイの名前を指定します。 |いいえ |&nbsp; |
 | port |FTP サーバーがリッスンしているポートを指定します。 |いいえ |21 |
 | enableSsl |SSL/TLS チャネル上の FTP を使用するかどうかを指定します。 |いいえ |true |
-| enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用しているときにサーバーの SSL 証明書の検証を有効にするかどうかを指定します。 |いいえ |true |
+| enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用しているときにサーバーの TLS/SSL 証明書の検証を有効にするかどうかを指定します。 |いいえ |true |
 
 >[!NOTE]
 >FTP コネクタでは、暗号化なしまたは明示的な SSL/TLS 暗号化での FTP サーバーへのアクセスがサポートされています。暗黙的な SSL/TLS 暗号化はサポートされていません。

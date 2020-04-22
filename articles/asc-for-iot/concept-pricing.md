@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center for IoT のコストを理解する | Microsoft Docs
-description: Azure Security Center for IoT に関連するコストとその管理方法について説明します。
+title: 価格と関連コスト
+description: Azure Security Center for IoT に関連付けられたコストとその管理方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71348509"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311563"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 
@@ -34,13 +34,11 @@ Azure Security Center for IoT の価格モデルは 2 つの部分で構成さ�
 
 - メッセージごとのコスト - IoT Edge またはリーフ デバイスからのセキュリティ メッセージに基づく拡張されたセキュリティ機能。
 
-
 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
 
 ## <a name="associated-costs"></a>関連コスト
 
 Azure Security Center for IoT には、直接の価格には含まれない関連コストがあります。
-
 
 - Log Analytics のストレージ コスト
 
@@ -50,9 +48,9 @@ Azure Security Center for IoT には、直接の価格には含まれない関�
 
 1. IoT Hub を開きます。
 
-2. **[セキュリティ]** の **[概要]** をクリックします。
+1. **[セキュリティ]** の **[概要]** をクリックします。
 
-3. **[設定]** をクリックします。
+1. **[設定]** をクリックします。
 
 次の表では、関連コストの概要と各オプションの影響を示します。
 
@@ -64,8 +62,8 @@ Azure Security Center for IoT には、直接の価格には含まれない関�
 |
 
 >[!Important]
-> オプトアウトすると、Azure Security Center for IoT のセキュリティ機能の可用性に重大な影響があります。 
-  
+> オプトアウトすると、Azure Security Center for IoT のセキュリティ機能の可用性に重大な影響があります。
+
 | オプトアウト | 影響 |
 | --- | --- |
 | "_ツイン メタデータ コレクション_" | [カスタム アラート](quickstart-create-custom-alerts.md)が無効になります |
@@ -75,8 +73,7 @@ Azure Security Center for IoT には、直接の価格には含まれない関�
 | | [アラート](concept-security-alerts.md)と[推奨事項](concept-recommendations.md)の調査についての詳細を利用できなくなります |
 |
 
-
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [生セキュリティ データ](how-to-security-data-access.md)にアクセスする
 - [デバイスを調査する](how-to-investigate-device.md)

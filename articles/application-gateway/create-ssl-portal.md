@@ -1,22 +1,22 @@
 ---
-title: チュートリアル:ポータルで SSL 終了を構成する - Azure Application Gateway
-description: このチュートリアルでは、Azure portal を使用して、アプリケーション ゲートウェイを構成し、SSL ターミネーションの証明書を追加する方法について説明します。
+title: チュートリアル:ポータルで TLS 終了を構成する - Azure Application Gateway
+description: このチュートリアルでは、Azure portal を使用して、アプリケーション ゲートウェイを構成し、TLS ターミネーションの証明書を追加する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012319"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312388"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL ターミネーションでアプリケーション ゲートウェイを構成する
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する
 
-Azure Portal を使用して、バックエンド サーバーに仮想マシンを使用する SSL ターミネーションの証明書で、[アプリケーション ゲートウェイ](overview.md) を構成することができます。
+Azure portal を使用して、バックエンド サーバーに仮想マシンを使用する TLS ターミネーションの証明書で、[アプリケーション ゲートウェイ](overview.md)を構成することができます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -265,4 +265,4 @@ Export-PfxCertificate `
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Application Gateway SSL サポートの詳細を学習します](ssl-overview.md)
+> [Application Gateway TLS サポートの詳細を学習します](ssl-overview.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77123189"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007851"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する
 
@@ -74,11 +74,21 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 
 4. **[Certificates, Identifiers & Profiles]\(証明書、識別子、およびプロファイル\)** ページの **[Identifiers]\(識別子\)** で、先ほど作成したアプリ ID の行項目を探し、その行を選択すると **[Edit your App ID Configuration]\(App ID 構成の編集\)** 画面が表示されます。
 
-5. チェック マークが付いた **[Push Notifications]\(プッシュ通知\)** オプションまで下へスクロールします。証明書を作成するために **[Configure]\(構成\)** を選択します。
+## <a name="creating-a-certificate-for-notification-hubs"></a>Notification Hubs の証明書を作成する
+通知ハブを **APNs** と連携させるには、証明書が必要です。 これには、次の 2 とおりの方法があります。
+
+1. Notification Hubs に直接アップロードできる **.p12** を作成します。  
+2. [トークンベースの認証](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) ("*より新しいアプローチ*") に使用できる **.p8** を作成します。
+
+「[APNS のトークンベース (HTTP/2) 認証](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)」にも記載されているように、新しい方のアプローチには (証明書を使用した場合と比べて) 多くの利点があります。 ただし、ここでは両方のアプローチの手順を取り上げています。 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>オプション 1: Notification Hubs に直接アップロードできる .p12 プッシュ証明書を作成する
+
+1. チェック マークが付いた **[Push Notifications]\(プッシュ通知\)** オプションまで下へスクロールします。証明書を作成するために **[Configure]\(構成\)** を選択します。
 
     ![アプリ ID の編集ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. **[Apple Push Notification service SSL Certificates]\(Apple Push Notification Service の SSL 証明書\)** ウィンドウが表示されます。 **[Development SSL Certificate]\(開発 SSL 証明書\)** セクションで **[Create Certificate]\(証明書の作成\)** ボタンを選択します。
+2. **[Apple Push Notification service SSL Certificates]\(Apple Push Notification Service の SSL 証明書\)** ウィンドウが表示されます。 **[Development SSL Certificate]\(開発 SSL 証明書\)** セクションで **[Create Certificate]\(証明書の作成\)** ボタンを選択します。
 
     ![アプリ ID の証明書の作成ボタン](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
     > [!NOTE]
     > このチュートリアルでは開発証明書を使用します。 運用証明書の場合も同じ処理を行います。 通知の送信と同じ証明書の種類を使用するようにします。
 
-1. **[Choose File]\(ファイルの選択\)** を選択して、最初のタスクで CSR ファイルを保存した場所を参照し、証明書名をダブルクリックして読み込みます。 その後 **[続行]** を選択します。
+3. **[Choose File]\(ファイルの選択\)** を選択して、最初のタスクで CSR ファイルを保存した場所を参照し、証明書名をダブルクリックして読み込みます。 その後 **[続行]** を選択します。
 
-1. ポータルで証明書が作成されたら、 **[Download]\(ダウンロード\)** ボタンを選択します。 この証明書を保存し、この保存場所を覚えておいてください。
+4. ポータルで証明書が作成されたら、 **[Download]\(ダウンロード\)** ボタンを選択します。 この証明書を保存し、この保存場所を覚えておいてください。
 
     ![生成された証明書のダウンロード ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
     > [!NOTE]
     > 既定では、ダウンロードした開発証明書の名前は **aps_development.cer** になっています。
 
-1. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。 このアクションで、以下の図のように、新しい証明書がキーチェーンにインストールされます:
+5. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。 このアクションで、以下の図のように、新しい証明書がキーチェーンにインストールされます:
 
     ![新しい証明書が表示されたキーチェーン アクセス証明書リスト](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > 証明書の名前は場合によって異なりますが、名前の前には **Apple Development iOS Push Services** が付けられます。
 
-1. Keychain Access の **[Certificates]** カテゴリで、作成した新しいプッシュ証明書を右クリックします。 **[書き出す]** を選択し、ファイルに名前を付けて、 **.p12** 形式を選択します。次に、 **[保存]** を選択します。
+6. Keychain Access の **[Certificates]** カテゴリで、作成した新しいプッシュ証明書を右クリックします。 **[書き出す]** を選択し、ファイルに名前を付けて、 **.p12** 形式を選択します。次に、 **[保存]** を選択します。
 
     ![p12 形式として証明書をエクスポートする](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 
     > [!NOTE]
     > 実際の .p12 ファイルの名前と場所は、このチュートリアルの図に示されているものと異なる場合があります。
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>オプション 2: トークンベースの認証に使用できる .p8 証明書を作成する
+
+1. 次の情報をメモしておきます。
+
+    - **アプリ ID プレフィックス** (**チーム ID**)
+    - **バンドル ID**
+    
+2. **[Certificates, Identifiers & Profiles]\(証明書、識別子、およびプロファイル\)** に戻って **[Keys]\(キー\)** をクリックします。
+
+   > [!NOTE]
+   > **APNS** 用に構成されたキーが既にある場合は、作成直後にダウンロードした .p8 証明書を再利用できます。 その場合、手順 **3**. から手順 **5**. は無視してかまいません。
+
+3. [ **+** ] ボタン (または **[Create a key]\(キーの作成\)** ボタン) をクリックして新しいキーを作成します。
+4. **[Key Name]\(キー名\)** に適切な値を入力し、 **[Apple Push Notifications service (APNs)]** オプションをオンにして、 **[Continue]\(続行\)** をクリックし、次の画面で **[Register]\(登録\)** をクリックします。
+5. **[Download]\(ダウンロード\)** をクリックして **.p8** ファイル (*AuthKey_* で始まるファイル) を安全なローカル ディレクトリに移動し、 **[Done]\(完了\)** をクリックします。
+
+   > [!NOTE] 
+   > .p8 ファイルは必ず安全な場所に保管してください (さらにバックアップを保存すること)。 キーのダウンロード後は、サーバー コピーが削除されるため、再ダウンロードすることはできません。
+  
+6. **[Keys]\(キー\)** で、先ほど作成したキー (または既存のキーを使用するように選択した場合はそのキー) をクリックします。
+7. **[Key ID]\(キー ID\)** の値をメモしておきます。
+8. 任意の適切なアプリケーション ([**Visual Studio Code**](https://code.visualstudio.com) など) で .p8 証明書を開き、キーの値をメモします。 **-----BEGIN PRIVATE KEY-----** と **-----END PRIVATE KEY-----** で挟まれた値が該当します。
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > これは、後で **Notification Hub** の構成に使用する**トークン値**です。 
+
+以上の手順を終えると、次の情報が確認済みとなります。これらの情報は、後出の「[APNs 情報を使用して通知ハブを構成する](#configure-your-notification-hub-with-apns-information)」で使用します。
+
+- **チーム ID** (手順 1. を参照)
+- **バンドル ID** (手順 1. を参照)
+- **キー ID** (手順 7. を参照)
+- **トークン値** (.p8 キー値) (手順 8. を参照)
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>アプリケーションのプロビジョニング プロファイルを作成する
 
@@ -153,13 +202,18 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 
 ## <a name="create-a-notification-hub"></a>通知ハブを作成する
 
-このセクションでは、前に作成した .p12 プッシュ証明書を使用して、通知ハブを作成し、APNs での認証を構成します。 既に作成した通知ハブを使用する場合は、手順 5. に進んでください。
+このセクションでは、通知ハブを作成し、.p12 プッシュ証明書またはトークンベースの認証を使用して APNs での認証を構成します。 既に作成した通知ハブを使用する場合は、手順 5. に進んでください。
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>APNs 情報を使用して通知ハブを構成する
 
-1. **[Notification Services]** で、 **[Apple (APNS)]** を選択します。
+**[Notification Services]** で **[Apple (APNS)]** を選択し、先ほど「[Notification Hubs の証明書を作成する](#creating-a-certificate-for-notification-hubs)」セクションで選択したアプローチに応じて適切な手順に従います。  
+
+> [!NOTE]
+> **[アプリケーション モード]** の **[Production]\(運用\)** は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。
+
+### <a name="option-1-using-a-p12-push-certificate"></a>オプション 1: .p12 プッシュ証明書を使用する
 
 1. **[Certificate]** を選択します。
 
@@ -169,10 +223,23 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 
 1. 必要に応じて、適切なパスワードを指定します。
 
-1. **[サンドボックス]** モードを選択します。 **[Production] (運用)** モードは、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。
+1. **[サンドボックス]** モードを選択します。
 
     ![Azure portal で APNs 証明書を構成する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. **[保存]** を選択します。
+
+### <a name="option-2-using-token-based-authentication"></a>オプション 2: トークンベースの認証を使用する
+
+1. **[トークン]** を選択します。
+1. 先ほど取得した次の値を入力します。
+
+    - **キー ID**
+    - **バンドル ID**
+    - **チーム ID**
+    - **トークン** 
+
+1. **[サンドボックス]** を選択します。
+1. **[保存]** を選択します。 
 
 これで、APNs での通知ハブの構成が完了しました。 接続文字列を使用してアプリを登録し、プッシュ通知を送信することもできます。

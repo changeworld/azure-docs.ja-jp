@@ -1,20 +1,20 @@
 ---
-title: PowerShell を使用した SSL オフロード - Azure Application Gateway
-description: この記事では、Azure クラシック デプロイ モデルを使用して、SSL オフロード用にアプリケーション ゲートウェイを作成する方法について説明します
+title: PowerShell を使用した TLS オフロード - Azure Application Gateway
+description: この記事では、Azure クラシック デプロイ モデルを使用して TLS オフロードでアプリケーション ゲートウェイを作成する手順について提供します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ead16b61784b8073d50b7e0e6079805a1e48e9b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047915"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312339"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して TLS オフロード用のアプリケーション ゲートウェイを構成する
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-ssl-portal.md)
@@ -22,7 +22,7 @@ ms.locfileid: "74047915"
 > * [Azure クラシック PowerShell](application-gateway-ssl.md)
 > * [Azure CLI](application-gateway-ssl-cli.md)
 
-Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。 また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
+トランスポート層セキュリティ (TLS) (以前の Secure Sockets Layer (SSL)) セッションをゲートウェイで終了するように Azure Application Gateway を構成すると、コストがかかる TLS 暗号化解除タスクが Web ファームで発生することを回避できます。 また、TLS オフロードにより、フロントエンド サーバーのセットアップや Web アプリケーションの管理も簡素化されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -30,10 +30,10 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 2. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。 仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。 Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
 3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。または、それらのエンドポイントが仮想ネットワーク内に作成されているか、パブリック IP または仮想 IP アドレス (VIP) が割り当てられている必要があります。
 
-アプリケーション ゲートウェイで SSL オフロードを構成するには、次の手順をそのままの順序で完了します。
+アプリケーション ゲートウェイで TLS オフロードを構成するには、次の手順を示されている順序で完了します。
 
 1. [アプリケーション ゲートウェイの作成](#create-an-application-gateway)
-2. [SSL 証明書のアップロード](#upload-ssl-certificates)
+2. [TLS/SSL 証明書のアップロード](#upload-tlsssl-certificates)
 3. [ゲートウェイの構成](#configure-the-gateway)
 4. [ゲートウェイ構成の設定](#set-the-gateway-configuration)
 5. [ゲートウェイの起動](#start-the-gateway)
@@ -55,7 +55,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>SSL 証明書のアップロード
+## <a name="upload-tlsssl-certificates"></a>TLS/SSL 証明書のアップロード
 
 `Add-AzureApplicationGatewaySslCertificate` を入力して、サーバー証明書を PFX 形式でアプリケーション ゲートウェイにアップロードします。 証明書の名前はユーザーが指定し、アプリケーション ゲートウェイ内で一意である必要があります。 この証明書はアプリケーション ゲートウェイ上のすべての証明書管理操作でこの名前で呼ばれます。
 
@@ -93,16 +93,16 @@ State..........: Provisioned
 値は次のとおりです。
 
 * **バックエンド サーバー プール**: バックエンド サーバーの IP アドレスの一覧。 一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP または VIP アドレスである必要があります。
-* **バックエンド サーバー プールの設定**: すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-* **フロントエンド ポート**: このポートは、アプリケーション ゲートウェイで開かれるパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-* **リスナー**: リスナーには、フロントエンド ポート、プロトコル (Http または Https。大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
-* **ルール**: ルールはリスナーとバックエンド サーバー プールを結び付け、特定のリスナーにヒットしたときにトラフィックが送られるバックエンド サーバー プールを定義します。 現在、 *basic* ルールのみサポートされます。 *basic* ルールは、ラウンド ロビンの負荷分散です。
+* **バックエンド サーバー プール設定**: すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+* **フロントエンド ポート**: このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+* **リスナー**: リスナーには、フロントエンド ポート、プロトコル (Http または Https、これらの値は大文字と小文字が区別されます)、TLS/SSL 証明書名 (TLS オフロードを構成する場合) があります。
+* **[Rule]\(規則\)** :ルールはリスナーとバックエンド サーバー プールを結び付け、特定のリスナーにヒットしたときにトラフィックが送られるバックエンド サーバー プールを定義します。 現在、 *basic* ルールのみサポートされます。 *basic* ルールは、ラウンド ロビンの負荷分散です。
 
 **構成に関する追加の注意**
 
-SSL 証明書の構成では、 **HttpListener** のプロトコルを **Https** (大文字小文字の区別あり) に変更する必要があります。 **SslCertificate** 要素を、「**SSL 証明書のアップロード**」セクションで使用したのと同じ名前に設定された値を使用して、[HttpListener](#upload-ssl-certificates) に追加します。 フロントエンド ポートは **443** に更新する必要があります。
+TLS/SSL 証明書の構成の場合は、**HttpListener** のプロトコルを **Https** (大文字と小文字が区別されます) に変更する必要があります。 「[TLS/SSL 証明書のアップロード](#upload-tlsssl-certificates)」のセクションで使用したのと同じ名前に設定された値を使用して、**HttpListener** に **SslCert** 要素を追加します。 フロントエンド ポートは **443** に更新する必要があります。
 
-**Cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が常に Web ファーム内の同じ VM に送られるようにアプリケーション ゲートウェイを構成できます。 これを実現するには、ゲートウェイがトラフィックを適切に送ることを可能にするセッション Cookie を挿入します。 Cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を **Enabled** に設定します。
+**Cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が確実に Web ファーム内の同じ VM に送られるようにアプリケーション ゲートウェイを構成できます。 これを実現するには、ゲートウェイがトラフィックを適切に送ることを可能にするセッション Cookie を挿入します。 Cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を **Enabled** に設定します。
 
 構成は、構成オブジェクトを作成するか、構成 XML ファイルを使用して構築できます。
 構成 XML ファイルを使用して構成を構築するには、次のサンプルを入力します。

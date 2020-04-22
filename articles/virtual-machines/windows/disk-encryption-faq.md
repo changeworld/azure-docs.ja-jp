@@ -7,17 +7,23 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74384262"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114979"
 ---
-# <a name="azure-disk-encryption-for-windows-vms-faq"></a>Windows VM 用の Azure Disk Encryption に関する FAQ
+# <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
 
 この記事では、Windows VM 用の Azure Disk Encryption についてよく寄せられる質問 (FAQ) への回答を示します。 このサービスの詳細については、「[Azure Disk Encryption の概要](disk-encryption-overview.md)」をご覧ください。
 
+## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption とは何ですか。
+
+Windows VM 用の Azure Disk Encryption では、Windows の Bitlocker 機能を使用して、OS ディスク とデータ ディスクの完全なディスク暗号化を提供します。 また、[VolumeType パラメーターが ALL](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk) の場合、一時的なリソース ディスクの暗号化を行うことができます。  コンテンツは、暗号化されて VM からストレージ バックエンドにフローします。 これにより、カスタマー マネージド キーを使用してエンド ツー エンドの暗号化を行うことができます。
+ 
+「[サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)」を参照してください。
+ 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>Azure Disk Encryption はどこで一般公開 (GA) されていますか。
 
 Azure Disk Encryption は、すべての Azure パブリック リージョンで一般公開されています。
@@ -36,7 +42,7 @@ Azure Disk Encryption を使用して VM ディスクを暗号化するための
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Azure Disk Encryption がサポートされる VM サイズとオペレーティングシステムを教えてください。
 
-[Azure Disk Encryption の概要](disk-encryption-overview.md)の記事には、Azure Disk Encryption をサポートする [VM のサイズ](disk-encryption-overview.md#supported-vm-sizes)と [VM オペレーティング システム](disk-encryption-overview.md#supported-operating-systems)の一覧が記載されています。
+[Azure Disk Encryption の概要](disk-encryption-overview.md)の記事には、Azure Disk Encryption をサポートする [VM のサイズ](disk-encryption-overview.md#supported-vms)と [VM オペレーティング システム](disk-encryption-overview.md#supported-operating-systems)の一覧が記載されています。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
 
@@ -47,6 +53,19 @@ OS ボリュームを暗号化した後で OS ボリュームの暗号化を無�
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Azure Disk Encryption を使用して、マウント解除されたボリュームを暗号化することはできますか。
 
 いいえ、Azure Disk Encryption で暗号化されるのは、マウントされたボリュームのみになります。
+
+## <a name="what-is-storage-server-side-encryption"></a>Storage のサーバー側の暗号化とはなんですか。
+
+Storage のサーバー側の暗号化では、Azure Storage で Azure Managed Disks が暗号化されます。 マネージド ディスクは既定で、プラットフォーム マネージド キーを使用したサーバー側の暗号化 (2017 年6 月 10 日以降) で暗号化されます。 カスタマー マネージド キーを指定することによって、独自のキーを使用してマネージド ディスクの暗号化を管理できます。 詳細については、「[Azure Managed Disks のサーバー側暗号化](disk-encryption.md)」を参照してください。
+ 
+## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure Disk Encryption と、カスタマー マネージド キーを使用したStorage サーバー側暗号化の違いは何ですか。また、それぞれのソリューションはどのようなときに使用すべきですか。
+
+Azure Disk Encryption は、カスタマー マネージド キーを使用して、OS ディスク、データ ディスク、および一時的なリソース ディスクをエンド ツー エンドで暗号化します。
+
+- 上記とエンド ツー エンドの暗号化をすべて暗号化する必要がある場合は、Azure Disk Encryption を使用します。 
+- カスタマー マネージド キーを使用して保存データのみを暗号化することが要件に含まれている場合は、[カスタマー マネージド キーを使用したサーバー側の暗号化](disk-encryption.md)を使用します。 Azure Disk Encryption と、カスタマー マネージド キーを使用したStorage サーバー側暗号化の両方でディスクを暗号化することはできません。
+- [Windows でサポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に示されているシナリオを使用している場合は、[カスタマー マネージド キーによるサーバー側暗号化](disk-encryption.md)を検討してください。 
+- 組織のポリシーにより、保存されているコンテンツを Azure マネージド キーを使用して暗号化できる場合、操作は必要ありません。コンテンツは既定で暗号化されます。 マネージド ディスクの場合、ストレージ内のコンテンツは、プラットフォーム マネージド キーを使用したサーバー側の暗号化で、既定で暗号化されます。 キーは Azure Storage サービスによって管理されます。 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>シークレットまたは暗号化キーを切り替えるにはどうすればいいですか。
 

@@ -1,197 +1,216 @@
 ---
 title: Azure Site Recovery を使用した VMware VM と物理サーバーのディザスター リカバリーのためのモビリティ サービスについて | Microsoft Docs
-description: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーするためのモビリティ サービス エージェントについて説明します。
+description: Azure Site Recovery サービスを使用した VMware VM と物理サーバーの Azure へのディザスター リカバリーのためのモビリティ サービス エージェントについて説明します。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 03/25/2019
+ms.topic: how-to
+ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228811"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259802"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
-[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM と物理サーバーのためのディザスター リカバリーを設定するとき、オンプレミスの VMware VM と物理サーバーごとに Site Recovery モビリティ サービスをインストールします。  このモビリティ サービスによって、マシン上のデータ書き込みがキャプチャされ、Site Recovery プロセス サーバーに転送されます。 次の方法でモビリティ サービスをデプロイできます。
+[Azure Site Recovery](site-recovery-overview.md) を使用して VMware 仮想マシン (VM) と物理サーバーのディザスター リカバリーを設定する場合は、オンプレミスの各 VMware VM と物理サーバーに Site Recovery モビリティ サービスをインストールします。 このモビリティ サービスによって、マシン上のデータ書き込みがキャプチャされ、Site Recovery プロセス サーバーに転送されます。 モビリティ サービスは、ユーザーがデプロイできるモビリティ サービス エージェント ソフトウェアによって次の方法でインストールされます。
 
-- [プッシュ インストール](#push-installation):Azure portal で保護が有効になっている場合、Site Recovery ではサーバーにモビリティ エージェントがインストールされます。
-- 手動インストール:[UI](#install-mobility-agent-through-ui) または[コマンド プロンプト](#install-mobility-agent-through-command-prompt)を使用して、各マシンにモビリティ サービスを手動でインストールできます。
-- [自動デプロイ](vmware-azure-mobility-install-configuration-mgr.md):Configuration Manager など、ソフトウェア デプロイ ツールでインストールを自動化できます。
+- [プッシュ インストール](#push-installation):Azure portal 経由で保護が有効になっている場合は、Site Recovery がサーバーにモビリティ サービスをインストールします。
+- 手動インストール: [ユーザー インターフェイス (UI)](#install-the-mobility-service-using-ui) または[コマンド プロンプト](#install-the-mobility-service-using-command-prompt)を使用して、各マシンにモビリティ サービスを手動でインストールできます。
+- [自動デプロイ](vmware-azure-mobility-install-configuration-mgr.md):構成マネージャーなどのソフトウェア デプロイ ツールを使用して、モビリティ サービスのインストールを自動化できます。
 
 > [!NOTE]
-> モビリティ エージェントは、VMware VM または物理マシンのソース マシンで約 6% から 10% のメモリを使用します。
+> モビリティ サービスは、VMware VM または物理マシンのソース マシン上のメモリの約 6 ～ 10% を使用します。
 
-## <a name="anti-virus-on-replicated-machines"></a>レプリケートされるマシンでのウイルス対策
+## <a name="antivirus-on-replicated-machines"></a>レプリケートされるマシン上のウイルス対策
 
-レプリケートするマシンでウイルス対策ソフトウェアがアクティブに実行されている場合は、モビリティ サービスのインストール フォルダーをウイルス対策の操作から除外してください (*C:\ProgramData\ASR\agent*)。 これにより、レプリケーションが意図したとおりに動作することが保証されます。
+レプリケートするマシンでウイルス対策ソフトウェアが実行されている場合は、モビリティ サービスのインストール フォルダー _C:\ProgramData\ASR\agent_ をウイルス対策の操作から除外してください。 この除外により、レプリケーションが期待どおりに動作するようになります。
 
 ## <a name="push-installation"></a>プッシュ インストール
 
-プッシュ インストールは、ポータルでトリガーされる "[レプリケーションを有効にする](vmware-azure-enable-replication.md#enable-replication)" ジョブに不可欠な部分です。 保護して "レプリケーションを有効にする" をトリガーする仮想マシンのセットを選択した後、構成サーバーでは、モビリティ エージェントをサーバー上にプッシュし、エージェントをインストールし、構成サーバーにエージェントを完全に登録します。 この操作が正常に完了するために、次を実行します。
+プッシュ インストールは、[レプリケーションを有効にする](vmware-azure-enable-replication.md#enable-replication)ために Azure portal から実行されるジョブの不可欠な部分です。 保護してレプリケーションを有効にする一連の VM を選択すると、構成サーバーはモビリティ サービス エージェントをサーバーにプッシュし、エージェントをインストールして、構成サーバーへのエージェントの登録を完了します。
+
+### <a name="prerequisites"></a>前提条件
 
 - プッシュ インストールのすべての[前提条件](vmware-azure-install-mobility-service.md)を満たしていることを確認します。
-- すべてのサーバーの構成が [VMware から Azure DR シナリオへのサポート マトリックス](vmware-physical-azure-support-matrix.md)に該当することを確認します。
+- すべてのサーバー構成が、[VMware VM と物理サーバーの Azure へのディザスター リカバリーに関するサポート マトリックス](vmware-physical-azure-support-matrix.md)にある条件を満たしていることを確認します。
 
-プッシュ インストールのワークフローの詳細は、以降のセクションで説明します。
+プッシュ インストールのワークフローは、以降のセクションで説明されています。
 
-### <a name="from-923-version-onwards"></a>[9.23 バージョン](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)以降
+### <a name="mobility-service-agent-version-923-and-higher"></a>モビリティ サービス エージェント バージョン 9.23 以上
 
-モビリティ エージェントのプッシュ インストール中に、次の手順が実行されます
+バージョン 9.23 の詳細については、[Azure Site Recovery 用の更新プログラム ロールアップ 35](https://support.microsoft.com/help/4494485/update-rollup-35-for-azure-site-recovery) に関するページを参照してください。
 
-1. エージェントをソース マシンにプッシュします。 エージェントをソース マシンにコピーすると、複数の環境エラーが原因で失敗することがあります。 プッシュ インストールの失敗のトラブルシューティングについては、[ガイダンス](vmware-azure-troubleshoot-push-install.md)を参照してください。
-2. エージェントがサーバーに正常にコピーされた後、前提条件の確認がサーバー上で実行されます。 1 つ以上の[前提条件](vmware-physical-azure-support-matrix.md)が満たされていないと、インストールは失敗します。 すべての前提条件が満たされた場合は、インストールがトリガーされます。
-3. Azure Site Recovery VSS プロバイダーは、モビリティ エージェントのインストールの一部としてサーバーにインストールされます。 このプロバイダーは、アプリケーション整合性ポイントの生成に使用されます。 VSS プロバイダーのインストールが失敗した場合、この手順はスキップされ、エージェントのインストールは続行されます。
-4. エージェントのインストールは成功したが、VSS プロバイダーのインストールが失敗した場合、ジョブの状態は "警告" としてマークされます。 これは、クラッシュ整合性ポイントの生成には影響しません。
+モビリティ サービスのプッシュ インストール中に、次の手順が実行されます。
 
-    a. アプリケーション整合性ポイントを生成するには、[ガイダンス](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine)を参照して、Site Recovery VSS プロバイダーの手動インストールを完了します。 </br>
-    b.  アプリケーション整合性ポイントを生成したくない場合は、[レプリケーション ポリシーを変更](vmware-azure-set-up-replication.md#create-a-policy)して、アプリケーション整合性ポイントをオフにします。
+1. エージェントがソース マシンにプッシュされます。 エージェントのソース マシンへのコピーが、複数の環境エラーのために失敗する場合があります。 プッシュ インストールの失敗のトラブルシューティングについては、[ガイダンス](vmware-azure-troubleshoot-push-install.md)を参照してください。
+1. エージェントがサーバーに正常にコピーされると、サーバー上で前提条件の確認が実行されます。
+   - すべての前提条件が満たされた場合は、インストールが開始されます。
+   - 1 つ以上の[前提条件](vmware-physical-azure-support-matrix.md)が満たされていない場合、インストールは失敗します。
+1. エージェントのインストールの一部として、Azure Site Recovery 用のボリューム シャドウ コピー サービス (VSS) プロバイダーがインストールされます。 この VSS プロバイダーは、アプリケーション整合性復旧ポイントを生成するために使用されます。 VSS プロバイダーのインストールが失敗した場合、この手順はスキップされ、エージェントのインストールが続行されます。
+1. エージェントのインストールは成功したが、VSS プロバイダーのインストールが失敗した場合は、ジョブの状態が **[警告]** としてマークされます。 これは、クラッシュ整合性復旧ポイントの生成に影響を与えません。
 
-### <a name="before-922-versions"></a>9\.22 バージョンより前
+    - アプリケーション整合性復旧ポイントを生成するには、[このガイダンス](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine)を参照して、Site Recovery VSS プロバイダーの手動インストールを完了してください。
+    - アプリケーション整合性復旧ポイントを生成したくない場合は、[レプリケーション ポリシーを変更](vmware-azure-set-up-replication.md#create-a-policy)して、アプリケーション整合性復旧ポイントをオフにしてください。
 
-1. エージェントをソース マシンにプッシュします。 エージェントをソース マシンにコピーすると、複数の環境エラーが原因で失敗することがあります。 プッシュ インストールの失敗のトラブルシューティングについては、[ガイダンス](vmware-azure-troubleshoot-push-install.md)を参照してください。
-2. エージェントがサーバーに正常にコピーされた後、前提条件の確認がサーバー上で実行されます。 1 つ以上の[前提条件](vmware-physical-azure-support-matrix.md)が満たされていないと、インストールは失敗します。 すべての前提条件が満たされた場合は、インストールがトリガーされます。
-3. Azure Site Recovery VSS プロバイダーは、モビリティ エージェントのインストールの一部としてサーバーにインストールされます。 このプロバイダーは、アプリケーション整合性ポイントの生成に使用されます。 VSS プロバイダーのインストールが失敗すると、エージェントのインストールは失敗します。 モビリティ エージェントのインストールの失敗を回避するには、[9.23 バージョン](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)以降を使用して、クラッシュ整合性ポイントを生成し、VSS プロバイダーを手動でインストールします。
+### <a name="mobility-service-agent-version-922-and-below"></a>モビリティ サービス エージェント バージョン 9.22 以下
 
-## <a name="install-mobility-agent-through-ui"></a>UI を使用してモビリティ エージェントをインストールする
+1. エージェントがソース マシンにプッシュされます。 エージェントのソース マシンへのコピーが、複数の環境エラーのために失敗する場合があります。 プッシュ インストールの失敗をトラブルシューティングするには、[このガイダンス](vmware-azure-troubleshoot-push-install.md)を参照してください。
+1. エージェントがサーバーに正常にコピーされると、サーバー上で前提条件の確認が実行されます。
+   - すべての前提条件が満たされた場合は、インストールが開始されます。
+   - 1 つ以上の[前提条件](vmware-physical-azure-support-matrix.md)が満たされていない場合、インストールは失敗します。
 
-### <a name="prerequisite"></a>前提条件
+1. エージェントのインストールの一部として、Azure Site Recovery 用のボリューム シャドウ コピー サービス (VSS) プロバイダーがインストールされます。 この VSS プロバイダーは、アプリケーション整合性復旧ポイントを生成するために使用されます。
+   - VSS プロバイダーのインストールが失敗したした場合、エージェントのインストールは失敗します。 エージェントのインストールの失敗を回避するには、[バージョン 9.23](https://support.microsoft.com/help/4494485/update-rollup-35-for-azure-site-recovery) 以上を使用してクラッシュ整合性復旧ポイントを生成し、VSS プロバイダーの手動インストールを実行します。
 
-- すべてのサーバーの構成が [VMware から Azure DR シナリオへのサポート マトリックス](vmware-physical-azure-support-matrix.md)に該当することを確認します。
-- サーバーのオペレーティング システムに基づいて[インストーラを見つけます](#locate-installer-files)。
+## <a name="install-the-mobility-service-using-ui"></a>UI を使用してモビリティ サービスをインストールする
+
+### <a name="prerequisites"></a>前提条件
+
+- すべてのサーバー構成が、[VMware VM と物理サーバーの Azure へのディザスター リカバリーに関するサポート マトリックス](vmware-physical-azure-support-matrix.md)にある条件を満たしていることを確認します。
+- サーバーのオペレーティング システムの[インストーラーを見つけます](#locate-installer-files)。
 
 >[!IMPORTANT]
-> Azure IaaS VM を Azure リージョン間でレプリケートしている場合は、この方法を使用しないでください。 代わりに、コマンド ライン ベースのインストール方法を使用します。
+> Azure IaaS (サービスとしてのインフラストラクチャ) VM をある Azure リージョンから別のリージョンにレプリケートしている場合は、UI のインストール方法を使用しないでください。 [コマンド プロンプト](#install-the-mobility-service-using-command-prompt)でのインストールを使用してください。
 
 1. インストール ファイルをマシンにコピーして実行します。
-2. **[Installation Option]\(インストール オプション\)** で **[Install mobility service]\(モビリティ サービスのインストール\)** を選択します。
-3. インストール先の場所を選択し、 **[インストール]** を選択します。
+1. **[Installation Option]\(インストール オプション\)** で **[Install mobility service]\(モビリティ サービスのインストール\)** を選択します。
+1. インストールの場所を選択し、 **[インストール]** を選択します。
 
-    ![モビリティ サービスのインストール オプションのページ](./media/vmware-physical-mobility-service-install-manual/mobility1.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="モビリティ サービスのインストール オプションのページ。":::
 
-4. **[インストールの進行状況]** でインストールを監視します。 インストールが完了したら、 **[Proceed to Configuration]\(構成に進む\)** を選択して、構成サーバーにサービスを登録します。
+1. **[インストールの進行状況]** でインストールを監視します。 インストールが完了したら、 **[Proceed to Configuration]\(構成に進む\)** を選択して、構成サーバーにサービスを登録します。
 
-    ![モビリティ サービスの登録ページ](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="モビリティ サービスの登録ページ。":::
 
-5. **[Configuration Server Details]\(構成サーバーの詳細\)** で、構成した IP アドレスとパスフレーズを指定します。
+1. **[構成サーバーの詳細]** で、構成した IP アドレスとパスフレーズを指定します。
 
-    ![モビリティ サービスの登録ページ](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="モビリティ サービスの登録ページ。":::
 
-6. **[登録]** を選択して登録を完了します。
+1. **[登録]** を選択して登録を完了します。
 
-    ![モビリティ サービス登録の最後のページ](./media/vmware-physical-mobility-service-install-manual/mobility5.png)
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="モビリティ サービスの登録の最後のページ。":::
 
-## <a name="install-mobility-agent-through-command-prompt"></a>コマンド プロンプトを使用してモビリティ エージェントをインストールする
+## <a name="install-the-mobility-service-using-command-prompt"></a>コマンド プロンプトを使用してモビリティ サービスをインストールする
 
-### <a name="prerequisite"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 
-- すべてのサーバーの構成が [VMware から Azure DR シナリオへのサポート マトリックス](vmware-physical-azure-support-matrix.md)に該当することを確認します。
-- サーバーのオペレーティング システムに基づいて[インストーラを見つけます](#locate-installer-files)。
+- すべてのサーバー構成が、[VMware VM と物理サーバーの Azure へのディザスター リカバリーに関するサポート マトリックス](vmware-physical-azure-support-matrix.md)にある条件を満たしていることを確認します。
+- サーバーのオペレーティング システムの[インストーラーを見つけます](#locate-installer-files)。
 
-### <a name="on-a-windows-machine"></a>Windows マシンの場合
+### <a name="windows-machine"></a>Windows マシン
 
-- 保護するサーバー上のローカル フォルダー (C:\Temp など) にインストーラーをコピーします。
+- コマンド プロンプトから、次のコマンドを実行して、保護するサーバー上のローカル フォルダー (_C:\Temp_ など) にインストーラーをコピーします。 インストーラーのファイル名を実際のファイル名に置き換えます。
 
-    ```
-    cd C:\Temp
-    ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
-    MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
-    cd C:\Temp\Extracted
-    ```
+  ```cmd
+  cd C:\Temp
+  ren Microsoft-ASR_UA_version_Windows_GA_date_release.exe MobilityServiceInstaller.exe
+  MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
+  cd C:\Temp\Extracted
+  ```
 
-- 次のようにインストールします。
+- 次のコマンドを実行して、エージェントをインストールします。
 
-    ```
-    UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
-    ```
+  ```cmd
+  UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
+  ```
 
-- 構成サーバーにエージェントを登録します。
+- 次のコマンドを実行して、エージェントを構成サーバーに登録します。
 
-    ```
-    cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
-    UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
-    ```
+  ```cmd
+  cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
+  UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+  ```
 
 #### <a name="installation-settings"></a>インストールの設定
-**設定** | **詳細**
+
+設定 | 詳細
 --- | ---
-使用法 | UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform “VmWare” /Silent
-セットアップ ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log の下。
-/Role | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
-/InstallLocation| 省略可能なパラメーター。 モビリティ サービスのインストール場所 (任意のフォルダー) を指定します。
-/Platform | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。<br/><br/> Azure VM を物理マシンとして扱う場合は、**VMware** を指定します。
-/Silent| 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
+構文 | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+セットアップ ログ | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
+`/Role` | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
+`/InstallLocation`| 省略可能なパラメーター。 モビリティ サービスのインストール場所 (任意のフォルダー) を指定します。
+`/Platform` | 必須。 モビリティ サービスがインストールされるプラットフォームを指定します。 <br/> VMware VM/物理サーバーの場合は **VMware**。 <br/> Azure VM の場合は **Azure**。<br/><br/> Azure VM を物理マシンとして扱う場合は、**VMware** を指定します。
+`/Silent`| 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
-**設定** | **詳細**
+
+設定 | 詳細
 --- | ---
-使用法 | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
-エージェント構成ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log の下。
-/CSEndPoint | 必須パラメーターです。 構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。
-/PassphraseFilePath |  必須。 パスフレーズの場所。 任意の有効な UNC またはローカル ファイル パスを使用します。
+構文 | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+エージェント構成ログ | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
+`/CSEndPoint` | 必須パラメーターです。 `<CSIP>` は、構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。
+`/PassphraseFilePath` |  必須。 パスフレーズの場所。 任意の有効な UNC またはローカル ファイル パスを使用します。
 
-### <a name="on-a-linux-machine"></a>Linux マシンの場合
+### <a name="linux-machine"></a>Linux マシン
 
-1. 保護するサーバー上のローカル フォルダー (/tmp など) にインストーラーをコピーします。 ターミナルから次のコマンドを実行します。
+1. ターミナル セッションから、保護するサーバー上のローカル フォルダー ( _/tmp_ など) にインストーラーをコピーします。 インストーラーのファイル名を Linux ディストリビューションの実際のファイル名に置き換えてから、次のコマンドを実行します。
 
-    ```
-    cd /tmp ;
-    tar -xvf Microsoft-ASR_UA*release.tar.gz
-    ```
+   ```shell
+   cd /tmp ;
+   tar -xvf Microsoft-ASR_UA_version_LinuxVersion_GA_date_release.tar.gz
+   ```
 
 2. 次のようにインストールします。
 
-    ```
-    sudo ./install -d <Install Location> -r MS -v VmWare -q
-    ```
+   ```shell
+   sudo ./install -d <Install Location> -r MS -v VmWare -q
+   ```
 
-3. インストールが完了したら、モビリティ サービスを構成サーバーに登録する必要があります。 以下のコマンドを実行して、モビリティ サービスを構成サーバーに登録できます。
+3. インストールが完了したら、モビリティ サービスを構成サーバーに登録する必要があります。 次のコマンドを実行して、モビリティ サービスを構成サーバーに登録します。
 
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
-    ```
+   ```shell
+   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
+   ```
 
 #### <a name="installation-settings"></a>インストールの設定
-**設定** | **詳細**
+
+設定 | 詳細
 --- | ---
-使用法 | ./install -d \<Install Location> -r \<MS/MT> -v VmWare -q
--r | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
--d | 省略可能なパラメーター。 モビリティ サービスのインストール場所 (/usr/local/ASR) を指定します。
--v | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。
--Q | 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
+構文 | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+`-r` | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
+`-d` | 省略可能なパラメーター。 モビリティ サービスのインストールの場所 (`/usr/local/ASR`) を指定します。
+`-v` | 必須。 モビリティ サービスがインストールされるプラットフォームを指定します。 <br/> VMware VM/物理サーバーの場合は **VMware**。 <br/> Azure VM の場合は **Azure**。
+`-q` | 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
-**設定** | **詳細**
+
+設定 | 詳細
 --- | ---
-使用法 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
--i | 必須パラメーターです。 構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。
--P |  必須。 パスフレーズが保存されているファイルの完全なファイル パス。 任意の有効なフォルダーを使用します。
+構文 | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+`-i` | 必須パラメーターです。 `<CSIP>` は、構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。
+`-P` |  必須。 パスフレーズが保存されているファイルの完全なファイル パス。 任意の有効なフォルダーを使用します。
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 仮想マシン エージェント
 
-- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](../virtual-machines/extensions/features-windows.md#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 マシンが Azure にフェールオーバーするとき、VM 拡張を使用するためのエージェント インストール前提条件を Azure VM が満たすようにします。
-- **Linux VM**:フェールオーバー後、[WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) を Azure VM に手動インストールする必要があります。
+- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](/azure/virtual-machines/extensions/features-windows#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 これにより、マシンが Azure にフェールオーバーするとき、Azure VM は確実に、VM 拡張機能を使用するためのエージェント インストールの前提条件を満たすようになります。
+- **Linux VM**:フェールオーバー後、[WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent) を Azure VM に手動インストールする必要があります。
 
 ## <a name="locate-installer-files"></a>インストーラー ファイルを検索する
 
-構成サーバーの %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository フォルダーに移動します。 オペレーティング システムに基づいて、必要なインストーラーを確認します。 VMware VM と物理サーバーのオペレーティング システム別のインストーラー ファイルをまとめたのが次の表です。 開始前に[サポートされているオペレーティング システム](vmware-physical-azure-support-matrix.md#replicated-machines)を確認できます。
+構成サーバーで、フォルダー _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_ に移動します。 オペレーティング システムに基づいて、どのインストーラーが必要かを確認します。 VMware VM と物理サーバーのオペレーティング システム別のインストーラー ファイルをまとめたのが次の表です。 開始する前に、[サポートされているオペレーティング システム](vmware-physical-azure-support-matrix.md#replicated-machines)を確認できます。
 
-**インストーラー ファイル** | **オペレーティング システム (64 ビットのみ)**
+> [!NOTE]
+> ファイル名では、実際の値のプレースホルダーとして _version_ と _date_ が含まれている、次の表に示す構文が使用されます。 実際のファイル名は次の例のようになります。
+> - `Microsoft-ASR_UA_9.30.0.0_Windows_GA_22Oct2019_release.exe`
+> - `Microsoft-ASR_UA_9.30.0.0_UBUNTU-16.04-64_GA_22Oct2019_release.tar.gz`
+
+インストーラー ファイル | オペレーティング システム (64 ビットのみ)
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1
-Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.*
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1、SP2、SP3
-Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
-Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
-Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4、6.5
-icrosoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04
-Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS サーバー
-Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
-Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
+`Microsoft-ASR_UA_version_Windows_GA_date_release.exe` | Windows Server 2016 </br> Windows Server 2012 R2 </br> Windows Server 2012 </br> Windows Server 2008 R2 SP1
+`Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
+`Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
+`Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> SP2 と SP3 が含まれます。
+`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+`Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
+`Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6.4 </br> Oracle Enterprise Linux 6.5
+`Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
+`Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16.04 LTS サーバー
+`Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
+`Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
 
 ## <a name="next-steps"></a>次のステップ
 

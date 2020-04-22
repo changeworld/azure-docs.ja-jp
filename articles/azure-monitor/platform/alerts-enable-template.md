@@ -1,17 +1,17 @@
 ---
-title: Azure での Resource Manager テンプレートを使ったクラシック メトリック アラートの作成
+title: Resource Manager テンプレート - メトリック アラートを作成する
 description: Resource Manager テンプレートを使用してクラシック メトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037222"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114424"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
 > [!WARNING]

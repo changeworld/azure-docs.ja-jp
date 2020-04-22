@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014421"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271065"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューとは
 
@@ -55,8 +55,8 @@ Azure Time Series Insights はこの市場のニーズに対応するために�
 
 * ウォーム分析とコールド分析を使用した多層ストレージ ソリューションにより、ウォームとコールド間でデータをルーティングし、過去数十年の履歴データに対して運用インテリジェンスを行うオプションを顧客に提供できます。 
 
-    *   より短期間のデータに対して頻繁に多数のクエリを実行するための高度に対話的なウォーム分析ソリューション 
-    *   Azure Storage に基づくスケーラブルでパフォーマンスが高く、コストが最適化された時系列のデータ レイクで、顧客は数年分の時系列データを数秒で傾向を分析できます。 
+    *    より短期間のデータに対して頻繁に多数のクエリを実行するための高度に対話的なウォーム分析ソリューション 
+    *    Azure Storage に基づくスケーラブルでパフォーマンスが高く、コストが最適化された時系列のデータ レイクで、顧客は数年分の時系列データを数秒で傾向を分析できます。 
 
 * アセットとデバイスからの派生したシグナルと生のシグナルに関連付けられたドメインおよびメタデータを表すセマンティック モデルのサポート。
 
@@ -64,7 +64,7 @@ Azure Time Series Insights はこの市場のニーズに対応するために�
 
 * 強化されたクエリ API とユーザー エクスペリエンスを備えた豊富な分析。これは、アセットベースの Data Analytics と、詳細な分析のための補間、スカラーおよび集計関数、カテゴリ変数、散布図、およびタイム シフト時系列信号のサポートを備えた豊富なアドホック データ分析を組み合わせたものです。
 
-*   エンタープライズ IoT 顧客のスケール、パフォーマンス、セキュリティ、および信頼性のニーズに対応するエンタープライズ レベルのプラットフォーム。
+*    エンタープライズ IoT 顧客のスケール、パフォーマンス、セキュリティ、および信頼性のニーズに対応するエンタープライズ レベルのプラットフォーム。
 
 * エンドツーエンド分析のための拡張性と統合のサポート。 Time Series Insights には、さまざまなデータ シナリオに対応する拡張可能な分析プラットフォームが用意されています。 Time Series Insights Power BI コネクタ。このコネクタにより、お客様が Time Series Insights で実行したクエリを Power BI に直接取り込むことができ、BI の統合ビューと時系列の分析を 1 つのウィンドウに表示できます。
 

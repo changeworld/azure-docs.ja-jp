@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee1ea7d2623d6315007257218ddfc4e6ce445e65
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5abc1e093dc7d4e8da823227dc3e3caa556e37e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80669028"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406843"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FCM HUB の統合
 
@@ -92,7 +92,16 @@ FCM HUB との Azure AD SSO を構成してテストするには、次の構成�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、自分に割り当てられているアカウント マネージャーに連絡するか、[FCM HUB クライアント サポート チーム](mailto:fcmssoadmin@us.fcm.travel)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
+
+1. **[要求の管理]** ページの **[ユーザー属性とクレーム]** セクションで、次のカスタム属性を追加します。
+   - **Name**:PortalID
+   - **ソース**:属性
+   - **[基になる属性]** : PortalID、FCM によって提供される値
+
+1. **[SAML 署名証明書]** セクションで、編集オプションを使用して次の設定を選択または入力し、 **[保存]** を選択します。
+   - **[署名オプション]** : SAML 応答の署名
+   - **[署名アルゴリズム]** : SHA-256
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460979"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410776"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、[Azure Data Explorer](../data-explorer/data-explorer-overview.md) との間で双方向にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+この記事では、Azure Data Factory のコピー アクティビティを使用して、[Azure Data Explorer](/azure/data-explorer/data-explorer-overview) との間で双方向にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->Azure Data Factory と Azure Data Explorer の統合全般の詳細については、「[Azure Data Explorer と Azure Data Factory の統合](../data-explorer/data-factory-integration.md)」を参照してください。
+>Azure Data Factory と Azure Data Explorer の統合全般の詳細については、「[Azure Data Explorer と Azure Data Factory の統合](/azure/data-explorer/data-factory-integration)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -47,7 +49,7 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 ## <a name="getting-started"></a>作業の開始
 
 >[!TIP]
->Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](../data-explorer/data-factory-load-data.md)」と、[データベースから Azure Data Explorer への一括コピー](../data-explorer/data-factory-template.md)に関するページを参照してください。
+>Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](/azure/data-explorer/data-factory-load-data)」と、[データベースから Azure Data Explorer への一括コピー](/azure/data-explorer/data-factory-template)に関するページを参照してください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,13 +65,13 @@ Azure Data Explorer のコネクタでは、サービス プリンシパル認�
     - アプリケーション キー
     - テナント ID
 
-2. Azure Data Explorer でサービス プリンシパルに適切なアクセス許可を付与します。 ロールおよびアクセス許可の詳細について、またアクセス許可の管理方法の詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](../data-explorer/manage-database-permissions.md)」を参照してください。 一般的に、次のことを行う必要があります。
+2. Azure Data Explorer でサービス プリンシパルに適切なアクセス許可を付与します。 ロールおよびアクセス許可の詳細について、またアクセス許可の管理方法の詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](/azure/data-explorer/manage-database-permissions)」を参照してください。 一般的に、次のことを行う必要があります。
 
     - **ソースとして**、少なくとも**データベース ビューアー** ロールをデータベースに付与します。
     - **シンクとして**、少なくとも**データベースのデータ取り込み**ロールをデータベースに付与します。
 
 >[!NOTE]
->Data Factory UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 これらの操作に対するアクセス許可がない場合は、名前を手動で入力します。
+>Data Factory UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 これらの操作のためのアクセス許可がない場合は、名前を手動で入力します。
 
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 
@@ -194,7 +196,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは、次のように設定する必要があります:**AzureDataExplorerSink** | はい |
 | ingestionMappingName | Kusto テーブルで事前作成済みの[マッピング](/azure/kusto/management/mappings#csv-mapping)の名前。 ソースから Azure Data Explorer に列をマッピングするには (CSV/JSON/Avro 形式など、[サポートされているすべてのソース ストアや形式](copy-activity-overview.md#supported-data-stores-and-formats)に適用されます)、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md) (名前で暗黙的に、または構成で明示的に) や Azure Data Explorer のマッピングを使用できます。 | いいえ |
-| additionalProperties | Azure Data Explorer Sink でまだ設定されていないインジェスト プロパティを指定する目的で使用できるプロパティ バッグ。 具体的には、インジェスト タグの指定に便利です。 詳細については [Azure Data Explore データ インジェスト ドキュメント](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)でご覧ください。 | いいえ |
+| additionalProperties | まだ Azure Data Explorer シンクによって設定されていないインジェストのプロパティを指定するために使用できるプロパティ バッグ。 具体的には、インジェスト タグの指定に便利です。 詳細については [Azure Data Explore データ インジェスト ドキュメント](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)でご覧ください。 | いいえ |
 
 **例:**
 

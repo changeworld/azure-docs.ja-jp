@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233579"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390295"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
-Azure HDInsight には、Apache Hive クエリを実行できるいくつかのクラスター タイプと テクノロジがあります。 HDInsight クラスターを作成する際には、適切なクラスター タイプを選択することで、パフォーマンスをワークロード ニーズに応じて最適化することができます。
+Azure HDInsight には、Apache Hive クエリを実行できるいくつかのクラスター タイプと テクノロジがあります。 ワークロードのニーズに合わせてパフォーマンスを最適化するには、適切なクラスター タイプを選択します。
 
-たとえば、アドホックなインタラクティブ クエリ用に最適化するには、**インタラクティブ クエリ** クラスター タイプを選択します。 バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 また、**Spark** や **HBase** といったクラスター タイプで Hive クエリを実行することもできます。 Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
+たとえば、`ad hoc` 対話型クエリ用に最適化するには **Interactive Query** クラスター タイプを選択します。 バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 また、**Spark** や **HBase** といったクラスター タイプで Hive クエリを実行することもできます。 Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
 
 クラスターの種類が Hadoop である HDInsight クラスターは、既定ではパフォーマンス用に最適化されていません。 この記事では、クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
 
 ## <a name="scale-out-worker-nodes"></a>ワーカー ノードのスケール アウト
 
-HDInsight クラスター内のノードのワーカーの数を増やすことで、より多くの mapper と reducer を同時に実行できるようになります。 HDInsight でのスケール アウトを向上させる方法が 2 つあります。
+HDInsight クラスター内のワーカー ノードの数を増やすと、並列に実行される mapper や reducer を作業でより多く使用できるようになります。 HDInsight でのスケール アウトを向上させる方法が 2 つあります。
 
-* クラスターの作成時に、Azure portal、Azure PowerShell またはコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。  詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 次のスクリーンショットは、Azure Portal 上に表示されたワーカー ノード構成を示しています。
+* クラスターを作成する場合は、Azure portal、Azure PowerShell、またはコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。  詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 次のスクリーンショットは、Azure Portal 上に表示されたワーカー ノード構成を示しています。
   
     ![Azure portal のクラスター サイズ ノード](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
@@ -45,10 +45,10 @@ HDInsight のスケーリングについて詳しくは、[HDInsight クラス�
 
 Tez はより高速です。それは次の理由によります。
 
-* **MapReduce エンジンで、有向非巡回グラフ (DAG) を 1 つのジョブとして実行します**。 DAG では、mapper の各セットの後に 1 セットの reducer が続く必要があります。 これにより、複数の MapReduce ジョブが各 Hive クエリでスピンオフされます。 Tez にはこのような制約はありません。複雑な DAG を 1 つのジョブとして処理することができるため、ジョブのスタートアップのオーバーヘッドが最小限に抑えられます。
+* **MapReduce エンジンで、有向非巡回グラフ (DAG) を 1 つのジョブとして実行します**。 DAG では、mapper の各セットの後に 1 セットの reducer が続く必要があります。 この要件により、Hive クエリごとに複数の MapReduce ジョブがスピンオフされます。 Tez にはこのような制約がなく、複雑な DAG を 1 つのジョブとして処理できるため、ジョブ起動のオーバーヘッドが最小限に抑えられます。
 * **不要な書き込みを回避できます**。 MapReduce エンジンでは、同じ Hive クエリを 処理するために複数のジョブが使用されます。 各 MapReduce ジョブの出力は、中間データとして HDFS に書き込まれます。 Tez によって各 Hive クエリのジョブの数が最小限に抑えられるので、不要な書き込みを回避することができます。
 * **起動時の遅延を最小限に抑えられます**。 Tez は、開始に必要な mapper の数を削減することによって、また全体的な最適化を向上させることによって、起動時の遅延を最小限に抑えることができます。
-* **コンテナーを再利用できます**。 コンテナーの起動による待ち時間を軽減するため、可能なときは常にTez はコンテナーを再利用できます。
+* **コンテナーを再利用できます**。 コンテナーの起動からの待ち時間が確実に削減されるように、Tez では可能なときは常にコンテナーを再利用します。
 * **継続的な最適化手法を使用します**。 これまで、最適化はコンパイル フェーズで行われていました。 しかし最適化を向上させるための入力に関する詳細は、実行時に入手できます。 Tez は、実行時フェーズでプランをさらに最適化する継続的な最適化手法を使用します。
 
 この概念の詳細については、[Apache TEZ](https://tez.apache.org/) のサイトを参照してください。
@@ -69,8 +69,8 @@ Hive パーティション分割は、生データを新しいディレクトリ
 
 パーティション分割に関するいくつかの考慮事項:
 
-* **パーティションの数を少なくしすぎない** - パーティション分割する列の値の種類が少ないと、パーティションの数が少なくなる場合があります。 たとえば、性別に基づいてパーティションを分割する場合、2 つのパーティション (男性と女性) しか作成されません。したがって、待ち時間の短縮は、最大でも半分にしかなりません。
-* **パーティションの数を多くしすぎない**- その反対に、一意の値 (userid など) で列のパーティションを作成すると、複数のパーティションが作成されます。 これでは、多数のディレクトリを処理する必要があるため、クラスター namenode に多大なストレスを与えることになります。
+* **パーティションの数を少なくしすぎない** - 少数の値しかない列をパーティション分割すると、パーティションの数が少なくなる場合があります。 たとえば、性別をパーティション分割すると 2 つのパーティション (男性と女性) しか作成されないため、待ち時間は最大で半分しか短縮されません。
+* **パーティションの数を多くしすぎない** - もう一方の極端な例として、一意の値 (userid など) を含む列でパーティションを作成すると、複数のパーティションが生成されます。 これでは、多数のディレクトリを処理する必要があるため、クラスター namenode に多大なストレスを与えることになります。
 * **データのスキューを回避する** - すべてのパーティションのサイズが均等になるよう、注意深くパーティショニング キーを選択します。 たとえば、*State* 列をパーティション分割すると、データの分布が偏る可能性があります。 カリフォルニア州の人口はバーモント州の約 30 倍なので、パーティションのサイズが偏り、パフォーマンスの差が大きくなる可能性があります。
 
 パーティション テーブルを作成するには、 *Partitioned By* 句を使用します。
@@ -198,5 +198,5 @@ set hive.vectorized.execution.enabled = true;
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、以下の記事をお読みください。
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight の対話型クエリを使用したフライトの遅延データの分析](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [HDInsight の対話型クエリを使用したフライトの遅延データの分析](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [HDInsight での Apache Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data-linux.md)

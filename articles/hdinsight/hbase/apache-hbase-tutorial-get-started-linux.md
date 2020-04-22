@@ -1,20 +1,19 @@
 ---
 title: チュートリアル - Azure HDInsight で Apache HBase を使用する
 description: この Apache HBase のチュートリアルに従って、HDInsight で Hadoop を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。
-keywords: hbasecommand,hbase の例
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
-ms.date: 06/25/2019
-ms.author: hrasheed
-ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/14/2020
+ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71077151"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390259"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -33,17 +32,17 @@ ms.locfileid: "71077151"
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* Bash。 この記事の例では、curl コマンドのために Windows 10 上で Bash シェルを使用します。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  これらの curl の例は、少し変更すれば、Windows コマンド プロンプトで動作できます。  あるいは、Windows PowerShell コマンドレット [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod) を使用できます。
+* Bash。 この記事の例では、curl コマンドのために Windows 10 上で Bash シェルを使用します。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  これらの curl の例は、少し変更すれば、Windows コマンド プロンプトで動作できます。  または、Windows PowerShell コマンドレット [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod) を使用できます。
 
 ## <a name="create-apache-hbase-cluster"></a>Apache HBase クラスターを作成する
 
-次の手順では、Azure Resource Manager テンプレートを使用して、HBase クラスターと依存する既定の Azure Storage アカウントを作成します。 この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+以下の手順では、Azure Resource Manager テンプレートを使用して HBase クラスターを作成します。 また、依存する既定の Azure Storage アカウントもこのテンプレートで作成されます。 この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/)にあります。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. **[カスタム デプロイ]** ブレードで以下の値を入力します。
+2. **[カスタム デプロイ]** ダイアログで以下の値を入力します。
 
     |プロパティ |説明 |
     |---|---|
@@ -203,7 +202,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
-1. 使いやすさのために環境変数を開始します。 下のコマンドを編集して `MYPASSWORD` をクラスター ログイン パスワードに置き換えます。 `MYCLUSTERNAME` を HBase クラスターの名前に置き換えます。 その後、これらのコマンドを入力します。
+1. 使いやすさのために環境変数を設定します。 下のコマンドを編集して `MYPASSWORD` をクラスター ログイン パスワードに置き換えます。 `MYCLUSTERNAME` を HBase クラスターの名前に置き換えます。 その後、これらのコマンドを入力します。
 
     ```bash
     export password='MYPASSWORD'
@@ -240,10 +239,10 @@ REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wik
     -v
     ```
 
-    -d スイッチで指定された値に base64 エンコードを使用する必要があります。 この例では次のとおりです。
+    -d スイッチで指定する値は、Base64 でエンコードする必要があります。 この例では次のとおりです。
 
    * MTAwMA==:1000
-   * UGVyc29uYWw6TmFtZQ==:Personal:Name
+   * UGVyc29uYWw6TmFtZQ==:Personal:名前
    * Sm9obiBEb2xl:John Dole
 
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) を使用すると、複数の (バッチ処理された) 値を挿入できます。
@@ -306,7 +305,7 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Apache HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。 詳細については、次を参照してください。
+このチュートリアルでは、Apache HBase クラスターの作成方法を学習しました。 また、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法についても学習しました。 Hive を使用して HBase テーブルのデータを照会する方法や、 HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。 詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [HDInsight HBase の概要](./apache-hbase-overview.md)

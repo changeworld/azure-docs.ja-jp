@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8f51c65489efeed1fa18e70bd75e7370a9e59903
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239187"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260645"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>チュートリアル:ARM テンプレートでの条件の使用
 
@@ -55,23 +55,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
 1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
-2. **[ファイル名]** に以下の URL を貼り付けます。
+1. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. **[開く]** を選択して、ファイルを開きます。
-4. テンプレートによって定義されたリソースは、5 つあります。
+1. **[開く]** を選択して、ファイルを開きます。
+1. テンプレートによって定義されたリソースは、6 つあります。
 
-   * `Microsoft.Storage/storageAccounts`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
-   * `Microsoft.Network/publicIPAddresses` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
-   * `Microsoft.Network/virtualNetworks` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
-   * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
-   * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts)。
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)。
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)。
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)。
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)。
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)。
 
-     カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
-5. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+    テンプレートをカスタマイズする前に、テンプレートのリファレンスを確認しておくと参考になります。
+
+1. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
 ## <a name="modify-the-template"></a>テンプレートの変更
 
@@ -83,12 +85,12 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 変更を行う手順は次のとおりです。
 
 1. Visual Studio Code で **azuredeploy.json** を開きます。
-2. テンプレート全体で 3 つの **variables('storageAccountName')** を **parameters('storageAccountName')** に置き換えます。
-3. 次の変数定義を削除します。
+1. テンプレート全体で 3 つの **variables('storageAccountName')** を **parameters('storageAccountName')** に置き換えます。
+1. 次の変数定義を削除します。
 
     ![条件を使用する Resource Manager テンプレートの図](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. 次の 2 つのパラメーターをテンプレートに追加します。
+1. parameters セクションの先頭に、次の 2 つのパラメーターを追加します。
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     },
     ```
 
+    Visual Studio Code で **ALT + Shift + F** キーを押してテンプレートの書式を設定します。
+
     更新したパラメーター定義は次のようになります。
 
     ![Resource Manager での条件の使用](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. ストレージ アカウント定義の先頭に次の行を追加します。
+1. ストレージ アカウント定義の先頭に次の行を追加します。
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     更新したストレージ アカウント定義は次のようになります。
 
     ![Resource Manager での条件の使用](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. 仮想マシンのリソース定義の **storageUri** プロパティを次の値に更新します。
+1. 仮想マシンのリソース定義の **storageUri** プロパティを次の値に更新します。
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,20 +130,25 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     この変更は、異なるリソース グループの既存のストレージ アカウントを使用するときに必要になります。
 
-7. 変更を保存します。
+1. 変更を保存します。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-[テンプレートのデプロイ](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)の手順に従って Cloud シェルを開き、変更後のテンプレートをアップロードしてから、次の PowerShell スクリプトを実行してテンプレートをデプロイします。
+[テンプレートのデプロイ](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)の手順に従って Cloud Shell を開き、変更後のテンプレートをアップロードしてから、次の PowerShell スクリプトを実行してテンプレートをデプロイします。
+
+> [!IMPORTANT]
+> ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 ストレージ アカウント名は、プロジェクト名に "store" が追加されたものです。 プロジェクト名と生成されたストレージ アカウント名がストレージ アカウント名の要件を満たしていることを確認してください。
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -150,6 +159,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -159,11 +170,15 @@ New-AzResourceGroupDeployment `
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]/(試してみる/)** を選択し Cloud シェル を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
+Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]/(試してみる/)** を選択し Cloud Shell を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>次のステップ

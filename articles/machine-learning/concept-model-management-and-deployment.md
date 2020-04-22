@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 02/21/2020
+ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096189"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314310"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
 
@@ -71,6 +71,11 @@ Azure Machine Learning の環境を使用して、プロジェクトのソフト
 アクティブなデプロイで使用されている登録済みモデルは削除できません。
 詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#registermodel)に関するページの、モデルの登録のセクションを参照してください。
 
+### <a name="profile-models"></a>モデルのプロファイル
+
+Azure Machine Learning は、モデルのデプロイ時に作成されるサービスの CPU とメモリの要件を把握するのに役立ちます。 モデルを実行して CPU 使用率、メモリ使用率、応答の待機時間などの情報を返す、サービスのプロファイル テストを行います。 また、リソースの使用状況に基づいて CPU とメモリに関する推奨事項が提示されます。
+詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#profilemodel)に関するページの、プロファイルのセクションを参照してください。
+
 ### <a name="package-and-debug-models"></a>モデルをパッケージ化しデバッグする
 
 モデルは、運用環境にデプロイされる前に、Docker イメージにパッケージ化されます。 ほとんどの場合、イメージの作成は、バックグラウンドでデプロイ時に自動的に行われます。 イメージは、手動で指定できます。
@@ -119,6 +124,16 @@ Batch スコアリングは、ML パイプライン経由でサポートされ�
 
 詳細については、「[モデルのデプロイ](how-to-deploy-and-where.md)」を参照してください。
 
+#### <a name="controlled-rollout"></a>制御されたロールアウト
+
+Azure Kubernetes Service にデプロイする場合は、制御されたロールアウトを使用して、次のシナリオを有効にすることができます。
+
+* デプロイのために複数のバージョンのエンドポイントを作成します。
+* トラフィックを異なるバージョンのエンドポイントにルーティングすることにより A/B テストを実行します。
+* エンドポイント構成のトラフィックの割合を更新することによりエンドポイントのバージョンを切り替えます。
+
+詳細については、[ML モデルの制御されたロールアウト](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)に関するページを参照してください。
+
 #### <a name="iot-edge-devices"></a>IoT Edge デバイス
 
 **Azure IoT Edge モジュール**を介してモデルを IoT デバイスで使用することができます。 IoT Edge モジュールはハードウェア デバイスに展開されるため、デバイス上で推論、つまりモデルのスコアリングを使用できます。
@@ -131,12 +146,20 @@ Microsoft Power BI は、データ分析への機械学習モデルの使用を�
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>エンドツーエンドの ML ライフサイクルをキャプチャするために必要な管理データを取得する
 
-Azure ML を使用すると、すべての ML 資産のエンドツーエンドの監査証跡を追跡できます。 具体的な内容は次のとおりです。
+Azure ML では、メタデータを使用して、すべての ML 資産のエンド ツー エンドの監査証跡を追跡できます。
 
 - Azure ML が [Git と統合](how-to-set-up-training-targets.md#gitintegration)され、コードが由来しているリポジトリ、ブランチ、コミットについての情報が追跡されます。
-- [Azure ML データセット](how-to-create-register-datasets.md)を使用すると、データの追跡、プロファイル、およびバージョン管理が可能です。 
+- [Azure ML データセット](how-to-create-register-datasets.md)を使用すると、データの追跡、プロファイル、およびバージョン管理が可能です。
+- [解釈可能性](how-to-machine-learning-interpretability.md)を使用すると、モデルを説明したり、規制コンプライアンスを満たしたり、モデルが指定された入力の結果にどのように到達するかを理解したりできます。
 - Azure ML 実行履歴には、モデルをトレーニングするのに使用されたコード、データ、およびコンピューティングのスナップショットが保存されます。
 - Azure ML モデル レジストリにより、モデルに関連するすべてのメタデータ (それをトレーニングした実験、それがデプロイされている場所、そのデプロイが正常かどうかなど) が取り込まれます。
+- [Azure Event Grid との統合](concept-event-grid-integration.md)を使用すると、ML ライフサイクル内のイベントに対してアクションを実行できます。 たとえば、モデル登録、デプロイ、データ ドリフト、トレーニング (実行) などのイベントです。
+
+> [!TIP]
+> モデルやデータセットに関する一部の情報は自動的にキャプチャされますが、__タグ__を使用して追加情報を付加できます。 ワークスペースで登録済みのモデルやデータセットを検索する場合は、タグをフィルターとして使用できます。
+>
+> データセットの登録済みのモデルとの関連付けは省略可能な手順です。 モデルを登録するときのデータセットの参照については、[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) クラスのリファレンスを参照してください。
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML ライフサイクルでのイベントに関する通知、自動化、アラートを行う
 Azure ML では、Azure EventGrid に重要なイベントが発行され、ML ライフサイクルでのイベントに関する通知と自動化に利用できます。 詳細については、[こちらのドキュメント](how-to-use-event-grid.md)を参照してください。
@@ -152,7 +175,7 @@ Azure ML では、Azure EventGrid に重要なイベントが発行され、ML �
 
 ## <a name="retrain-your-model-on-new-data"></a>新しいデータでモデルを再トレーニングする
 
-新しい情報を受け取るときに、モデルを更新したり、最初から再トレーニングしたりすることが必要になる場合がよくあります。 新しいデータを受信することが、そのドメインで想定される部分であることもあります。 また、「[データセットでデータ ドリフトを検出する (プレビュー)](how-to-monitor-datasets.md)」で説明されているように、モデルのパフォーマンスは、特定のセンサーの変化、季節的影響などのデータの自然な変化、または他の機能との関係で変化する機能などの要因によって低下する可能性があります。 
+多くの場合は、新しい情報を受け取ったとき、モデルを検証または更新したり、場合によっては最初から再トレーニングしたりしたくなります。 新しいデータを受信することが、そのドメインで想定される部分であることもあります。 また、「[データセットでデータ ドリフトを検出する (プレビュー)](how-to-monitor-datasets.md)」で説明されているように、モデルのパフォーマンスは、特定のセンサーの変化、季節的影響などのデータの自然な変化、または他の機能との関係で変化する機能などの要因によって低下する可能性があります。 
 
 再トレーニングの必要性はどう判断するか、常に正しい答えはありません。 しかし、前述した Azure ML イベントや監視ツールは、自動化の出発点として適しています。 再トレーニングすることを決定したら、次のことを行う必要があります。 
 
@@ -172,7 +195,11 @@ GitHub と Azure Pipelines を使用して、モデルをトレーニングす�
 * サービス接続を定義するときに、ワークスペースの選択を有効にする。
 * トレーニング パイプラインに作成されたトレーニング済みモデルによってトリガーされるリリース パイプラインを有効にする。
 
-Azure Machine Learning との Azure Pipelines の使用に関する詳細については、[Azure Pipelines との ML モデルの継続的インテグレーションとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)に関する記事と [Azure Machine Learning MLOps](https://aka.ms/mlops) のリポジトリを参照してください。
+Azure Machine Learning での Azure Pipelines の使用方法の詳細については、次のリンクを参照してください。
+
+* [Azure Pipelines を使用した ML モデルの継続的インテグレーションとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning) 
+* [Azure Machine Learning MLOps](https://aka.ms/mlops) リポジトリ。
+* [Azure Machine Learning MLOpsPython](https://github.com/Microsoft/MLOpspython) リポジトリ。
 
 Azure Data Factory を使用して、トレーニングで使用するためのデータを準備するデータ インジェスト パイプラインを作成することもできます。 詳細については、[データ インジェスト パイプライン](how-to-cicd-data-ingestion.md)に関するページを参照してください
 

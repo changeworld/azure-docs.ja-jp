@@ -1,23 +1,23 @@
 ---
 title: チュートリアル:対話型クエリによる ETL 操作 - Azure HDInsight
-description: チュートリアル - 生の CSV データセットからデータを抽出し、HDInsight で対話型クエリを使用してデータを変換した後、変換済みデータを Apache Sqoop を使用して Azure SQL データベースに読み込む方法について説明します。
+description: チュートリアル - 生の CSV データセットからデータを抽出する方法について説明します。 それを HDInsight の Interactive Query を使用して変換します。 その後 Apache Sqoop を使用して、変換済みデータを Azure SQL データベースに読み込みます。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494153"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313735"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 
-このチュートリアルでは、一般公開されているフライト データの生の CSV データ ファイルを取得して HDInsight クラスター ストレージにインポートした後、Azure HDInsight で対話型クエリを使用してデータを変換します。 データを変換したら、[Apache Sqoop](https://sqoop.apache.org/) を使用して Azure SQL データベースにデータを読み込みます。
+このチュートリアルでは、一般に公開されているフライト データの生の CSV データ ファイルをダウンロードします。 それを HDInsight クラスター ストレージにインポートしてから、Azure HDInsight の Interactive Query を使用してデータを変換します。 データを変換したら、[Apache Sqoop](https://sqoop.apache.org/) を使用して Azure SQL データベースにデータを読み込みます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -42,11 +42,11 @@ ms.locfileid: "73494153"
 
 2. ページで、すべてのフィールドをクリアしてから、次の値を選択します。
 
-   | 名前 | Value |
+   | 名前 | 値 |
    | --- | --- |
    | Filter Year |2019 |
    | Filter Period |January |
-   | フィールド |Year、FlightDate、Reporting_Airline、DOT_ID_Reporting_Airline、Flight_Number_Reporting_Airline、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
+   | フィールド |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay` |
 
 3. **[Download]** を選択します。 選択したデータ フィールドを含む .zip ファイルがダウンロードされます。
 
@@ -60,7 +60,7 @@ HDInsight クラスターに関連付けられたストレージにデータを�
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    「yes」または「no」を入力して続行するよう求められた場合は、コマンド プロンプトから「yes」と入力して Enter キーを押してください。 入力するとき、ウィンドウにテキストは表示されません。
+    確認を求められたら、「yes」または「no」を入力して続行します。 入力するとき、ウィンドウにテキストは表示されません。
 
 2. アップロードが完了したら、SSH を使用してクラスターに接続します。 `CLUSTERNAME` を HDInsight クラスターの名前に置き換えて、以下のコマンドを編集します。 次のコマンドを入力します。
 
@@ -283,7 +283,7 @@ SQL Database に接続してテーブルを作成するには、多くの方法�
     GO
     ```
 
-    テーブル内のデータの一覧が表示されます。 テーブルには、都市の名前と、その都市のフライトの平均遅延時間が含まれます。 
+    テーブル内のデータの一覧が表示されます。 テーブルには、都市の名前と、その都市のフライトの平均遅延時間が含まれます。
 
     「 `exit` 」と入力して、tsql ユーティリティを終了します。
 
@@ -298,4 +298,4 @@ SQL Database に接続してテーブルを作成するには、多くの方法�
 このチュートリアルでは、生の CSV データ ファイルを取得し、それを HDInsight クラスター ストレージにインポートしてから、Azure HDInsight で対話型クエリを使用してデータを変換しました。  次のチュートリアルに進んで、Apache Hive Warehouse Connector について確認してください。
 
 > [!div class="nextstepaction"]
->[Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する](./apache-hive-warehouse-connector.md)
+> [Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する](./apache-hive-warehouse-connector.md)

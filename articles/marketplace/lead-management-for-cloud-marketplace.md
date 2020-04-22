@@ -1,117 +1,106 @@
 ---
-title: クラウド マーケットプレースのリード管理 | Azure Marketplace と AppSource
+title: コマーシャル マーケットプレースのリード管理 | Azure Marketplace と AppSource
 description: Azure Marketplace と AppSource へのオファーや技術的成果物の公開に関連するさまざまなトピックについて概説します
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 94510d02a28e0364f1c715dbcf9ff641fe2b14fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09b02d043e970c68cdff0e3dc4f97328c9d74c84
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286134"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383774"
 ---
-# <a name="lead-management-for-cloud-marketplace"></a>クラウド マーケットプレースのリード管理
+# <a name="lead-management-for-commercial-marketplace"></a>コマーシャル マーケットプレースのリード管理
 
 
-優れたビジネスの中心は顧客です。 今日の製品入手の変革において、マーケティング担当者は顧客と直接つながり、関係を築くことに注力する必要があります。 これが、良質の潜在顧客を創出することが販売サイクルにとって重要なツールである理由です。 [Cloud パートナー ポータル](https://cloudpartner.azure.com/)でオファーをリストしたら、顧客がマーケットプレースの製品に関心を示したり、商品をデプロイした後すぐに、各種のツールを使用して、顧客の連絡先情報をプログラムで受け取ることができます。 
+優れたビジネスの中心は顧客です。 今日の製品入手の変革において、マーケティング担当者は顧客と直接つながり、関係を築くことに注力する必要があります。 これが、良質の潜在顧客を創出することが販売サイクルにとって重要なツールである理由です。 [パートナー センター](https://partner.microsoft.com/)でオファーを一覧表示した後、顧客がマーケットプレース内の製品に関心を示すか、またはその製品をデプロイしたらすぐに、その顧客の連絡先情報をプログラムで受信できるようになるツールがあります。 
 
 
 
 ## <a name="what-are-leads-in-the-marketplace"></a>マーケットプレースのリードとは?
 
-リードとは、Marketplace の製品に関心を示したり、それらの製品をデプロイしようとしている顧客から送られるものです。 CRM から Cloud パートナー ポータル内のリストに対して正しく設定されていれば、製品が Azure Marketplace と AppSource のどちらにリストされているかにかかわらず、顧客からのリードを取得することができます 
+リードとは、Marketplace の製品に関心を示したり、それらの製品をデプロイしようとしている顧客から送られるものです。 製品が Azure Marketplace または AppSource に一覧表示されているかどうかにかかわらず、それが CRM からパートナー センターの一覧に正しく設定されていれば、顧客からリードを受信できるようになります。 
 
 
-## <a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>CRM システムを Cloud パートナー ポータルに接続する方法
+## <a name="how-to-connect-your-crm-system-with-partner-center"></a>CRM システムをパートナー センターに接続する方法
 
-リードの取得を開始するには、Cloud パートナー ポータル上のリード管理コネクタを使用します。このコネクタは、CRM の情報を使用して、利用可能な CRM システムの一覧に簡単に接続できるように設計されています。 これにより、外部システムと統合するために多くのエンジニアリング作業を行わなくても、Marketplace で獲得したリードを簡単に活用できるようになります。
+リードの取得を開始するために、パートナー センターのリード管理コネクタは、使用可能な CRM システムの一覧に CRM 情報と共に容易に組み込むことができるように設計されています。 これにより、外部システムと統合するために多くのエンジニアリング作業を行わなくても、Marketplace で獲得したリードを簡単に活用できるようになります。
 
 ここでは、リードの各送信先を接続する方法について、手順ごとに説明していきます。
 
-**Dynamics CRM Online** - Dynamics CRM Online を構成してリードを取得する手順については、[ここをクリック](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)してください。
+**Dynamics CRM Online** - リードを取得するために Dynamics CRM Online を構成する方法については、「[Dynamics 365 for Customer Engagement のリード管理の構成](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)」を参照してください。
 
-**Marketo** - Marketo Lead Configuration を設定してリードを取得する手順については、[ここをクリック](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)してください。
+**Marketo** - リードを取得するために Marketo Lead Configuration を設定する手順については、「[Marketo でリード管理を構成する](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md)」を参照してください。
 
-**Salesforce** - Salesforce インスタンスを設定してリードを取得する手順については、[ここをクリック](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)してください。
+**Salesforce** - リードを取得するために Salesforce インスタンスを設定する手順については、「[Salesforce 用にリード管理を構成する](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md)」を参照してください。
 
-**Azure Table** - Azure テーブルにリードを取得するための Azure ストレージ アカウントを設定する手順については、[ここをクリック](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)してください。
+**Azure テーブル** - Azure テーブルでリードを取得するために Azure Storage アカウントを設定する手順については、「[Azure テーブルを使用してリード管理を構成する](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)」を参照してください。
 
-**Https エンドポイント** - Https エンドポイントを設定してリードを取得する手順については、[ここをクリック](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)してください。
+**HTTPS エンドポイント** - リードを取得するために HTTPS エンドポイントを設定する手順については、「[HTTPS エンドポイントを使用して潜在顧客管理を構成する](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md)」を参照してください。
 
 リードの送信先を適切に構成し、プランで [発行] をクリックすると、接続が検証され、テスト リードが送信されます。 公開前にプランを確認したときに、プレビュー環境でプランを自分で入手してみることで、リードの接続をテストすることもできます。 リードが失われないように、リード設定を最新の状態に保つことが重要です。そのため、パートナー側で変更を加えるたびに、これらの接続を必ず更新してください。
-
 
 ### <a name="what-are-the-next-steps"></a>次のステップ
 
 技術的な設定が完了したら、これらのリードを現在の販売/マーケティング戦略と運用プロセスに組み込む必要があります。 Microsoft は、パートナーの販売プロセス全体について理解を深めることに関心を持っており、パートナーを成功に導くために、パートナーと緊密に連携して質の高いリードと十分なデータを提供していきたいと考えてます。 顧客を成功に導く上で役立つ追加情報と共に送信されるリードを最適化し、強化する方法についてフィードバックをお待ちしています。 Marketplace Leads によって販売チームがより大きな成果を挙げることができるようにするためのフィードバックや提案に関心がある場合は、ぜひお知らせください。
 
-
-
-## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Cloud パートナー ポータルでの公開時に起こる一般的なリード構成エラー 
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>パートナー センターでの公開中の一般的なリード構成エラー
 
 **Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)Check the Dynamics CRM account settings. \(Dynamics CRM のアカウント設定を確認してください。\)LastCRMError:Unable to sign in to Dynamics CRM, LastCRMException: (LastCRMError: Dynamics CRM LastCRMException にサインインできません:)** 
 
-> O365 認証が選択されている場合は、ユーザー アカウントとパスワードが有効であることを確認してください。 AAD が選択されている場合は、テナント ID、アプリケーション ID およびアプリケーション シークレット キーが、AAD で設定されたものと一致するかどうか確認してください。 [こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の説明に従ってください。アカウントのユーザー名/パスワードが有効である場合は、Dynamics 365 へのアクセス権があることと、ライセンスが割り当てられていることを確認してください (Azure Active Directory を使用している場合は手順 11 ～ 15、Office ユーザーを使用している場合はセキュリティ設定)。 
+> O365 認証が選択されている場合は、ユーザー アカウントとパスワードが有効であることを確認してください。 AAD が選択されている場合は、テナント ID、アプリケーション ID およびアプリケーション シークレット キーが、AAD で設定されたものと一致するかどうか確認してください。 [こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)で説明されている手順に従います。 アカウントのユーザー名/パスワードが有効である場合は、それに Dynamics 365 へのアクセス権があることと、ライセンスが割り当てられていることを確認してください (Azure Active Directory を使用している場合は手順 11. ～ 15.、Office ユーザーを使用している場合は「セキュリティ設定」)。 
 
- 
 **Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)User does not have create permissions for the leadsourcecode attribute in the lead entity (ユーザーにリード エンティティの leadsourcecode 属性の作成アクセス許可がありません)** 
 
-> アプリケーション/ユーザーに、Microsoft Marketplace リード ライターへのセキュリティ ロールが割り当てられていません。 [こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の説明に従ってください (Azure Active Directory を使用している場合は手順 11 ～ 15、Office ユーザーを使用している場合はセキュリティ設定)。
+> アプリケーション/ユーザーに、Microsoft Marketplace リード ライターへのセキュリティ ロールが割り当てられていません。 [こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)の説明に従ってください (Azure Active Directory を使用している場合は手順 11 ～ 15、Office ユーザーを使用している場合はセキュリティ設定)。
 
 **Could not save the lead to Dynamics CRM using AAD. \(AAD を使用してリードを Dynamics CRM に保存できませんでした。\)Exception::Tenant not found. (Exception:: テナントが見つかりません。)This instance may happen if there are no active subscriptions for the tenant. \(このインスタンスは、テナントに対するアクティブなサブスクリプションがない場合に発生する可能性があります。\)**  
 
-> リード管理セクションで指定されたディレクトリ ID が、有効なディレクトリではありません。 手順 2 の説明に従って、ディレクトリ ID を取得してください ([こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の「Azure Active Directory」) 
+> リード管理セクションで指定されたディレクトリ ID が、有効なディレクトリではありません。 手順 2. の説明に従って、ディレクトリ ID を取得してください ([こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)の「Azure Active Directory」)。
 
 **Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)LastCRMError:SecLib::RetrievePrivilegeForUser failed - no roles are assigned to user. (LastCRMError: SecLib::RetrievePrivilegeForUser が失敗しました - ユーザーにロールが割り当てられていません。)**  
 
-> 解決策:Microsoft Marketplace リード ライターにセキュリティ ロールを割り当ててください。 [こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)のセキュリティ設定の説明に従ってください 
+> 解決策:Microsoft Marketplace リード ライターにセキュリティ ロールを割り当ててください。 [こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)の「セキュリティ設定」の説明に従ってください。
 
 **Could not save the lead to Dynamics CRM using AAD. \(AAD を使用してリードを Dynamics CRM に保存できませんでした。\)Exception::Application with identifier was not found in the directory (Exception:: 識別子を持つアプリケーションがディレクトリ内に見つかりませんでした)** 
 
-> リード管理セクションで指定されたアプリケーション ID が、有効なディレクトリではありません。 手順 8 の説明に従って、ディレクトリ ID を取得してください ([こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の「Azure Active Directory」)。 
+> リード管理セクションで指定されたアプリケーション ID が、有効なディレクトリではありません。 手順 8 の説明に従って、ディレクトリ ID を取得してください ([こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)の「Azure Active Directory」)。 
 
 **Could not save the lead to Dynamics CRM using AAD. \(AAD を使用してリードを Dynamics CRM に保存できませんでした。\)Exception::Requested tenant identifier is not valid and not valid external domain format (Exception:: 要求されたテナント識別子は無効であり、有効な外部ドメイン形式ではありません)** 
 
-> リード管理セクションで指定されたディレクトリ ID が、有効なディレクトリではありません。 手順 2 の説明に従って、ディレクトリ ID を取得してください ([こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の「Azure Active Directory」)。 
+> リード管理セクションで指定されたディレクトリ ID が、有効なディレクトリではありません。 手順 2 の説明に従って、ディレクトリ ID を取得してください ([こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)の「Azure Active Directory」)。 
 
 **Could not save the lead to Dynamics CRM using AAD. \(AAD を使用してリードを Dynamics CRM に保存できませんでした。\)Exception::Error validating credentials.:Exception:: Error validating credentials.: Invalid client secret is provided. (Exception:: 資格情報の検証中にエラーが発生しました。: 無効なクライアント シークレットが指定されています。)** 
 
-> 解決策:Azure Portal にサインインし、アプリケーション キーが Cloud パートナー ポータルのものと一致しているかどうかチェックしてください。 手順 10 の説明に従って、パスワードを生成してください ([こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)の「Azure Active Directory」)。 
+> 解決策:Azure portal にサインインし、アプリケーション キーがパートナー センターの内容に一致しているかどうかを確認してください。 手順 10 の説明に従って、パスワードを生成してください ([こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)の「Azure Active Directory」)。 
 
 **Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)LastCRMError:The request channel timed out while waiting for a reply after 00:02:00. (LastCRMError: 応答の待機中、00:02:00 後に要求チャネルがタイムアウトしました。)Increase the timeout value passed to the call to Request or increase the SendTimeout value on the Binding. \(要求への呼び出しに渡されるタイムアウト値を増やすか、バインドの SendTimeout 値を増やしてください。\)The time allotted to this operation may have been a portion of a longer timeout. \(この操作に割り当てられた時間は、より長いタイムアウト時間の一部であった可能性があります。\)**  
 
-> 解決策:Cloud パートナー ポータルにサインインし、電子店舗の詳細 >> リードの送信先 >> URL をチェックして、有効な Dynamic CRM インスタンスであることを確認してください
+> 解決策:パートナー センターにサインインし、[ネットショップの詳細] >> [リードの宛先] >> [URL] に移動し、それが有効な Dynamic CRM インスタンスであるかどうかを確認してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **リードとは何ですか? また、Marketplace のパブリッシャーにとってリードが重要なのはなぜですか?** 
 
-リードとは、Marketplace から製品をデプロイしょうとしている顧客のことです。 オファーに対してリードの送信先を設定すれば、製品が [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) と [AppSource](https://appsource.microsoft.com/) のどちらにリストされていても、製品に関心を持っている顧客のリードを取得することができます。  
-
+リードとは、Marketplace から製品をデプロイしょうとしている顧客のことです。 オファーに対してリードの送信先を設定すれば、製品が [Azure Marketplace](https://azuremarketplace.microsoft.com) と [AppSource](https://appsource.microsoft.com/) のどちらにリストされていても、製品に関心を持っている顧客のリードを取得することができます。  
 
 **リードの送信先の設定方法に関するヘルプはどこで入手できますか?** 
 
-こちらのドキュメントをご覧ください:「[潜在顧客の獲得](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)」。または、aka.ms/marketplacepublishersupport からオファーの種類とリード管理を選択し、サポート チケットを送信してください。 
-
-
+こちらのドキュメントをご覧ください:「[潜在顧客の獲得](./partner-center-portal/commercial-marketplace-get-customer-leads.md)」。または、aka.ms/marketplacepublishersupport からオファーの種類とリード管理を選択し、サポート チケットを送信してください。 
 
 **Marketplace でオファーを公開するには、リードの送信先を構成する必要がありますか?**
 
 はい (Contact Me SaaS アプリまたはコンサルティング サービスを公開する場合)。  
  
-
-
 **リード構成が正しいことを確認するにはどうすればよいですか?**
 
 オファーを設定し、リードの送信先を設定したら、オファーを公開します。 Marketplace では、リードの検証時に、オファーで構成されたリードの送信先へテスト リードが送信されます。 
 
-
 **テスト リードを確認するにはどうすればよいですか?**
-
 
 リードの送信先から "MSFT_TEST" を検索します。次に示すのは、テスト リード データのサンプルです。 
 
@@ -139,8 +128,6 @@ phone = 1234567890
 
 title = MSFT_TEST_636573304831318844 
 
- 
-
 **ライブ オファーがあるのですが、リードが表示されません。**
 
 各リードについては、選択したリード送信先のフィールドにデータが渡されます。リードは次の形式で送信されます:**Source-Action|Offer** 
@@ -159,7 +146,7 @@ title = MSFT_TEST_636573304831318844
 
     "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
 
-    "Create" - This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
+    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
 
     "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
@@ -192,40 +179,31 @@ title = MSFT_TEST_636573304831318844
 
     } 
 
-詳しくは、[リード情報](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)をご覧ください。 
-
+詳しくは、[リード情報](./partner-center-portal/commercial-marketplace-get-customer-leads.md)をご覧ください。 
 
 **リードの送信先として Azure BLOB を構成したのですが、リードが表示されないのはなぜですか?** 
 
-リードは、リードの送信先として Azure BLOB ストレージを選択した場合にのみ書き込まれます。 リードをリアルタイムに取得するには、Azure テーブルに切り替えてください 
-
+リードは、リードの送信先として Azure BLOB ストレージを選択した場合にのみ書き込まれます。 リードをリアルタイムに受信するには、Azure テーブルに切り替えます。
 
 **Marketplace からの電子メールを受信したのですが、CRM でリードを確認できないのはなぜですか?**  
 
-エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由により、.edu ドメインからの PII データを渡すことはできません。 aka.ms/marketplacepublishersupport からサポート チケットを送信してください 
+エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由から、個人を特定できるデータを .edu ドメインから渡すことはしていません。 [サポート チケット](https://aka.ms/marketplacepublishersupport)を送信してください。
 
+**リードの送信先として Azure Table/Azure BLOB を構成したのですが、リードを表示するにはどうすればよいですか?** 
 
- **リードの送信先として Azure Table/Azure BLOB を構成したのですが、リードを表示するにはどうすればよいですか?** 
-
-BLOB やテーブルには Azure Portal からアクセスできます。また、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を無料でダウンロードしてインストールし、Azure Storage アカウントのテーブル/BLOB を表示することもできます。 
-
+Azure portal から BLOB またはテーブルにアクセスするか、あるいは Azure Storage アカウントのテーブル/BLOB を表示するために [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を無料でダウンロードしてインストールすることができます。 
 
 **リードの送信先として Azure Table を構成したのですが、Marketplace から新しいリードが送信された際に通知を受け取ることはできますか?** 
 
-はい。[こちら](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)のドキュメントの説明に従って、Azure Table と Azure Function を設定してください。 
-
-
+はい。[こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)のドキュメントの説明に従って、Azure Table と Azure Function を設定してください。 
 
 **リードの送信先として Salesforce を構成したのですが、リードが見つからないのはなぜですか?** 
 
 Web-to-リード フォームが候補リストに基づく必須フィールドになっているかどうかを確認してください。 なっている場合は、フィールドを任意指定のテキスト フィールドに切り替えてください。  
  
-
 **リードの送信先に関して問題があり、一部のリードを取得できませんでした。リードを電子メールで受信することはできますか?** 
 
-PII (個人を特定できる情報) ポリシーがあるため、セキュリティ保護されていない電子メールでリード情報を共有することはできません。 
-
-
+プライバシー ポリシーのために、セキュリティで保護されていない電子メール経由でリード情報を共有することはできません。 
 
 **リードの送信先として Azure Storage (BLOB/Table) を構成したのですが、コストはどれくらいになりますか?** 
 

@@ -3,18 +3,18 @@ title: Azure App Configuration を使用した VM の自動デプロイのクイ
 description: このクイックスタートでは、Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用して Azure App Configuration ストアをデプロイする方法を示します。 次に、ストア内の値を使用して VM をデプロイします。
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126383"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309107"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>クイック スタート:App Configuration と Resource Manager テンプレートを使用した VM の自動デプロイ
 
@@ -142,7 +142,7 @@ App Configuration ストアは Azure Resource Manager テンプレートを使�
 
 1. [構成**エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
 
-   |Key|Value|
+   |Key|値|
    |-|-|
    |windowsOsVersion|2019-Datacenter|
    |diskSizeGB|1023|
@@ -152,6 +152,9 @@ App Configuration ストアは Azure Resource Manager テンプレートを使�
 ## <a name="deploy-vm-using-stored-key-values"></a>格納されているキー値を使用して VM をデプロイする
 
 キー値がストアに追加されたので、Azure Resource Manager テンプレートを使用して VM をデプロイする準備ができました。 このテンプレートでは、作成した **windowsOsVersion** キーと **diskSizeGB** キーを参照します。
+
+> [!WARNING]
+> ARM テンプレートは、Private Link が有効になっている App Configuration ストア内のキーを参照できません。
 
 1. 次の json コードをコピーし、*azuredeploy.json* という名前の新しいファイルに貼り付けます。または、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)からファイルをダウンロードします。
 
@@ -412,7 +415,7 @@ App Configuration ストアは Azure Resource Manager テンプレートを使�
 
    テンプレートのパラメーター値を次の値に置き換えます。
 
-   |パラメーター|Value|
+   |パラメーター|値|
    |-|-|
    |adminPassword|VM の管理者パスワード。|
    |appConfigStoreName|対象の Azure App Configuration ストアの名前。|
@@ -423,13 +426,13 @@ App Configuration ストアは Azure Resource Manager テンプレートを使�
    |storageAccountName|VM に関連付けられているストレージ アカウントの一意の名前。|
    |domainNameLabel|一意のドメイン名。|
 
-1. PowerShell ウィンドウで次のコマンドを実行して、Azure App Configuration ストアをデプロイします。 リソース グループ名、テンプレート ファイル パス、およびテンプレート パラメーター ファイル パスを必ず置き換えてください。
+1. PowerShell ウィンドウで次のコマンドを実行して、VM をデプロイします。 リソース グループ名、テンプレート ファイル パス、およびテンプレート パラメーター ファイル パスを必ず置き換えてください。
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 お疲れさまでした。 Azure App Configuration に格納されている構成を使用して VM をデプロイできました。

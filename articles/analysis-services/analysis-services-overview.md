@@ -4,25 +4,25 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215550"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271660"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services は、完全に管理されたサービスとしてのプラットフォーム (PaaS) であり、エンタープライズ レベルのデータ モデルをクラウドで提供します。 高度なマッシュアップとモデリング機能を使用して、複数のデータ ソースのデータの結合、メトリックの定義、単一の信頼された表形式のセマンティック データ モデルでのデータのセキュリティ保護を実行できます。 このデータ モデルは、アドホック データ分析用の大量のデータを参照するための簡単かつ迅速な方法をユーザーに提供します。
+Azure Analysis Services は、完全に管理されたサービスとしてのプラットフォーム (PaaS) であり、エンタープライズ レベルのデータ モデルをクラウドで提供します。 高度なマッシュアップとモデリング機能を使用して、複数のデータ ソースのデータの結合、メトリックの定義、単一の信頼された表形式のセマンティック データ モデルでのデータのセキュリティ保護を実行できます。 このデータ モデルは、Power BI や Excel などのツールを使用してアドホック データ分析を実行するための簡単かつ迅速な方法をユーザーに提供します。
 
 ![データ ソース](./media/analysis-services-overview/aas-overview-overall.png)
 
-**ビデオ:** [Azure Analysis Services の概要](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)で、Azure Analysis Services が Microsoft の全体的な BI 機能とどのように調和しているかを確認してください。
+**ビデオ:** 「[Azure Analysis Services Overview (Azure Analysis Services の概要)](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)」で、Azure Analysis Services が Microsoft の全体的な BI 機能とどのように調和しているかを確認してください。
 
 ## <a name="get-up-and-running-quickly"></a>スピーディな起動と実行
 
@@ -64,12 +64,14 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-|S8v2*    |    640     |    200     |
-|S9v2*    |    1280    |    400     |
+|S8 <sup>[1](#depr)</sup>、<sup>[2](#rec)</sup>    |    320    |    200     |
+|S9 <sup>[1](#depr)</sup>、<sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
 
-\* すべてのリージョンで利用できるわけではありません。  
+<a name="depr">1</a> - すべてのリージョンで利用できるわけではありません。   
+<a name="rec">2</a> - このプランは非推奨です。 v2 が推奨されます。
+
 
 ## <a name="availability-by-region"></a>リージョンごとの可用性
 
@@ -83,15 +85,15 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|米国東部 2     |     S8、S9、S8v2、S9v2   |    1    |
+|米国東部 2     |     S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|米国西部     |    S8、S9、S8v2、S9v2   |    2  |
+|米国西部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    2  |
 |米国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|米国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
+|米国西部 2    |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
@@ -101,17 +103,17 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |北ヨーロッパ     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西ヨーロッパ    |   S8、S9、S8v2、S9v2  |  1  |
+|西ヨーロッパ    |   S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア東部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|オーストラリア東部     |    S8、S9、S8v2、S9v2    |    1     |
+|オーストラリア東部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2、D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
@@ -208,6 +210,10 @@ Microsoft Analysis Services プロジェクトは、インストール可能な�
 
 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使って、サーバーとモデル データベースを管理します。 クラウド内のサーバーに接続します。 XMLA クエリ ウィンドウから直接 TMSL スクリプトを実行したり、TMSL スクリプトと PowerShell を使用してタスクを自動化したりできます。 新しい機能が次々と登場するため、SSMS は毎月更新されます。
 
+### <a name="open-source-tools"></a>オープンソース ツール
+
+Analysis Services には、ツールを作成する開発者の活気に満ちたコミュニティがあります。 直感的で軽量なエディターを使用して表形式モデルを作成、保守、管理できるオープンソース ツール、[Tabular Editor](https://tabulareditor.github.io/) をぜひご覧ください。 [DAX Studio](https://daxstudio.org/) は、DAX の作成、診断、パフォーマンス チューニング、分析のための優れたオープンソース ツールです。
+
 ### <a name="powershell"></a>PowerShell
 
 サーバー リソースの作成、サーバー操作の中断/再開、サービス レベルの変更などのサーバー リソース管理タスクでは、Azure PowerShell コマンドレットが使用されます。 ロール メンバーの追加と削除、処理、TMSL スクリプトの実行など、その他のデータベース管理タスクでは、SqlServer モジュールのコマンドレットが使用されます。 詳細については、「[PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)」を参照してください。
@@ -232,19 +238,15 @@ Azure Analysis Services は、[動的管理ビュー (DMV)](https://docs.microso
 
 ここには、Azure Analysis Services 固有のドキュメントが含まれています。 記事を検索するには、ブラウザー画面の左側にある目次を使用します。 
 
-Azure Analysis Services の表形式モデルは、SQL Server Analysis Services の表形式モデルとほぼ同じなので、[SQL Server Analysis Services のドキュメント](https://docs.microsoft.com/analysis-services/analysis-services-overview)のデータ モデリング チュートリアル、概念、手順、開発、およびリファレンスに関する豊富な記事のライブラリを共有できます。 SQL Server Analysis Services ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。
+Azure Analysis Services の表形式モデルは、SQL Server Analysis Services や Power BI Premium データセットの表形式モデルとほぼ同じなので、[Analysis Services のドキュメント](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current)のデータ モデリング チュートリアル、概念、手順、開発、およびリファレンスに関する豊富な記事のライブラリを共有できます。 Analysis Services 共通ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。 目次の上にあるバージョン セレクターを使用して、ご使用のプラットフォームに該当する記事だけを表示することもできます。
 
 ![共有ドキュメント](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>投稿
 
-この記事のような Analysis Services のドキュメントはオープン ソースです。 GitHub アカウントを持っている場合は、ブラウザー画面の右上隅にある [編集] (鉛筆) をクリックして、記事を編集できます。 ブラウザーのエディターを使用した後、[Propose file change]\(指定ファイルの変更\) をクリックします。 
+この記事のような Analysis Services のドキュメントはオープン ソースです。 投稿方法の詳細については、[Docs 共同作成者ガイド](https://docs.microsoft.com/contribute/)を参照してください。 
 
-![共有ドキュメント](./media/analysis-services-overview/aas-overview-edit.png)
-
-投稿はドキュメント チームによってレビューされ、承認された場合は、投稿者の GitHub アカウント名が共同作成者として表示されます。 詳細については、「[Microsoft Docs 共同作成者ガイド](https://docs.microsoft.com/contribute/)」を参照してください。
-
-Azure Analysis Services のドキュメントでは、[GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) も使用されます。 製品またはドキュメントに関するフィードバックを提供できます。 記事の下部にある**フィードバック**をご利用ください。 GitHub Issues は、まだ SQL Server Analysis Services のドキュメントでは有効になっていません。 
+Azure Analysis Services のドキュメントでは、[GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) も使用されます。 製品またはドキュメントに関するフィードバックを提供できます。 記事の下部にある**フィードバック**をご利用ください。 GitHub Issues は、まだ Analysis Services 共通ドキュメントでは有効になっていません。 
 
 ## <a name="blogs"></a>ブログ
 

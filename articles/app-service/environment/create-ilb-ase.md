@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057409"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114628"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 
@@ -60,6 +60,9 @@ ILB ASE を作成する方法は次のとおりです。
 
     ![ASE の作成](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> App Service Environment の名前は、37 文字以下にする必要があります。
+
 6. [ネットワーク] を選択します。
 
 7. Virtual Network を選択または作成します。 ここで新しい VNet を作成する場合は、192.168.250.0/23 のアドレス範囲で定義されます。 ASE とは別のアドレス範囲またはリソース グループ内に VNet を作成するには、Azure Virtual Network の作成ポータルを使用します。 
@@ -69,6 +72,7 @@ ILB ASE を作成する方法は次のとおりです。
     ![ASE の [ネットワーク]][1]
 
 7. **[確認と作成]** を選択し、次に **[作成]** を選択します。
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>ILB ASE 内にアプリを作成する ##
 

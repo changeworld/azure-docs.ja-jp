@@ -3,19 +3,19 @@ title: チュートリアル:Speech SDK を使用してボットを音声対応�
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Microsoft Bot-Framework を使用してエコー ボットを作成し、それを Azure にデプロイし、Bot-Framework Direct Line Speech チャネルに登録します。 その後、Windows 用のサンプル クライアント アプリを構成します。これにより、ボットに話しかけて、応答を聞くことができます。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397890"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399475"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -56,7 +56,7 @@ ms.locfileid: "80397890"
 
 - マイクとスピーカー (またはヘッドホン) が動作している Windows 10 PC
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) またはそれ以降
-- [.NET Core SDK](https://dotnet.microsoft.com/download) バージョン 2.1 以降
+- [.NET Framework ランタイム 4.6.1](https://dotnet.microsoft.com/download) 以降
 - Azure アカウント。 [無料試用版にサインアップ](https://azure.microsoft.com/free/ai/)します。
 - [GitHub](https://github.com/) アカウント
 - [Git for Windows](https://git-scm.com/download/win)
@@ -276,19 +276,23 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 > [!TIP]
 > 詳細については、「[ボットを Direct Line Speech に接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
 
-## <a name="build-the-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントを構築する
+## <a name="run-the-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントを実行する
 
-この手順では、Windows 音声アシスタント クライアントを構築します。 クライアントは、C# で作成された Windows Presentation Foundation (WPF) アプリであり、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) を使用して、Direct Line Speech チャネルを使用したボットとの通信を管理します。 これを使用して、カスタム クライアント アプリを作成する前にボットと対話し、テストします。
+この手順では、Windows 音声アシスタント クライアントを実行します。 クライアントは、C# で作成された Windows Presentation Foundation (WPF) アプリであり、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) を使用して、Direct Line Speech チャネルを使用したボットとの通信を管理します。 これを使用して、カスタム クライアント アプリを作成する前にボットと対話し、テストします。 これはオープン ソースであるため、実行可能ファイルをダウンロードして実行するか、または自分でビルドすることができます。
 
 Windows 音声アシスタント クライアントには、ボットへの接続の構成、テキストでの会話の表示、JSON 形式での Bot-Framework アクティビティの表示、およびアダプティブカードの表示を行える単純な UI が用意されています。 カスタム キーワードの使用もサポートされます。 このクライアントを使用して、ボットとの対話を行い、音声応答を受信します。
 
 先に進む前に、マイクとスピーカーが有効で動作していることを確認してください。
 
 1. [Windows 音声アシスタント クライアント](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md)の GitHub リポジトリに移動します。
-2. 説明されている手順に従って、リポジトリを複製し、プロジェクトをビルドし、クライアントを構成して、クライアントを起動します。
-3. **[再接続]** をクリックし、"**Press the mic button, or type to start talking to your bot**" (マイク ボタンを押すか、入力してボットとの対話を開始します) というメッセージが表示されることを確認します。
-4. これをテストしてみましょう。マイク ボタンをクリックし、英語でいくつかの単語を話します。 話すと、認識されたテキストが表示されます。 話し終わると、ボットは認識した単語を "エコー" に続けて独自の声で読み上げて応答します。
-5. テキストを使用してボットと通信することもできます。 下部のバーにテキストを入力するだけです。 
+1. そこに示されている手順に従って、次のどちらかを実行します。
+   * 実行可能ファイルを含む ZIP パッケージをダウンロードして実行するか、または
+   * リポジトリを複製し、プロジェクトをビルドすることにより実行可能ファイルを自分でビルドします。
+
+1. クライアント アプリケーションを起動して構成します。
+1. **[再接続]** をクリックし、"**Press the mic button, or type to start talking to your bot**" (マイク ボタンを押すか、入力してボットとの対話を開始します) というメッセージが表示されることを確認します。
+1. これをテストしてみましょう。マイク ボタンをクリックし、英語でいくつかの単語を話します。 話すと、認識されたテキストが表示されます。 話し終わると、ボットは認識した単語を "エコー" に続けて独自の声で読み上げて応答します。
+1. テキストを使用してボットと通信することもできます。 下部のバーにテキストを入力するだけです。 
 
 ### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントでのエラーのトラブルシューティング
 
@@ -425,7 +429,7 @@ Windows 音声アシスタント クライアントのソース コード内で�
 2. 以前のデプロイ構成は、既定値として既に読み込まれています。 **[EchoBot20190805125647 - Web 配置]** の横にある **[発行]** をクリックします。
 3. "**正常に発行されました**" というメッセージが Visual Studio の出力ウィンドウに表示され、"Your bot is ready! (ボットの準備ができました)" というメッセージが表示された Web ページが開きます。
 4. Windows 音声アシスタント クライアント アプリを開き、設定ボタン (右上の歯車アイコン) をクリックして、[Language]\(言語\) フィールドにまだ「`de-de`」が入力されていることを確認します。
-5. 「[Windows 音声アシスタント クライアントを構築する](#build-the-windows-voice-assistant-client)」の手順に従って、新しくデプロイされたボットに再接続し、新しい言語で話し、新しい音声を使用してその言語でのボットの応答を聞きます。
+5. 「[Windows 音声アシスタント クライアントを実行する](#run-the-windows-voice-assistant-client)」の手順に従って、新しくデプロイされたボットに再接続し、新しい言語で話し、新しい音声を使用してその言語でのボットの応答を聞きます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

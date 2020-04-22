@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132532"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255517"
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 
@@ -85,6 +85,11 @@ Azure Active Directory の統合、ロール ベースの制御、データと�
 * Azure Active Directory との統合により、Azure Databricks を使って Azure ベースの完全なソリューションを実行することができます。
 * Azure Databricks のロール ベースのアクセスでは、ノートブック、クラスター、ジョブ、およびデータに対してきめ細かいユーザー権限を設定できます。
 * エンタープライズ グレードの SLA です。 
+
+> [!IMPORTANT]
+>
+> Azure Databricks は、グローバル Azure パブリック クラウド インフラストラクチャにデプロイされる Microsoft Azure のファーストパーティ サービスです。 コントロール プレーンのパブリック IP とカスタマー データ プレーンのパブリック IP との間の通信を含め、サービスのコンポーネント間の通信はすべて、Microsoft Azure のネットワーク バックボーン内に維持されます。 「[マイクロソフトのグローバル ネットワーク](https://docs.microsoft.com/azure/networking/microsoft-global-network)」も参照してください。
+
 
 ## <a name="integration-with-azure-services"></a>Azure サービスとの統合
 

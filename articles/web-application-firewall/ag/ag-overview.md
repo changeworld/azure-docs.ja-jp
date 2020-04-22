@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74384109"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314354"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール
 
@@ -28,9 +28,9 @@ Application Gateway 上の WAF は、OWASP (Open Web Application Security Projec
 
 ![Application Gateway の WAF の図](../media/ag-overview/waf1.png)
 
-Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 これにより、Secure Sockets Layer (SSL) 終端、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能が提供されます。
+Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 これにより、トランスポート層セキュリティ (TLS) (以前は Secure Sockets Layer (SSL) と呼ばれていました) 終端、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能が提供されます。
 
-Application Gateway によるセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポートが含まれます。 アプリケーション セキュリティは、WAF を Application Gateway に統合することによって強化されています。 この組み合わせにより、Web アプリケーションが一般的な脆弱性から保護されます。 また、管理するための構成を、1 か所で簡単に設定できます。
+Application Gateway によるセキュリティの強化には、TLS ポリシーの管理、エンド ツー エンド TLS のサポートが含まれます。 アプリケーション セキュリティは、WAF を Application Gateway に統合することによって強化されています。 この組み合わせにより、Web アプリケーションが一般的な脆弱性から保護されます。 また、管理するための構成を、1 か所で簡単に設定できます。
 
 ## <a name="benefits"></a>メリット
 
@@ -60,7 +60,7 @@ Application Gateway によるセキュリティの強化には、SSL ポリシ�
 
 * アプリケーションのニーズに合わせてカスタム ルールを作成することができます。
 
-## <a name="features"></a>機能
+## <a name="features"></a>特徴
 
 - SQL インジェクションからの保護。
 - クロスサイト スクリプティングからの保護。
@@ -123,7 +123,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 
 異常スコアリング モードでは、ファイアウォールが防止モードの場合、いずれかの規則に一致するトラフィックがすぐにブロックされることはありません。 規則には特定の重大度があります。 *[重大]* 、 *[エラー]* 、 *[警告]* 、または *[通知]* です。 その重大度は、異常スコアと呼ばれる要求の数値に影響します。 たとえば、１つの *[警告]* 規則の一致によって、スコアに 3 が与えられます。 １つの *[重大]* 規則の一致では 5 が与えられます。
 
-|重大度  |Value  |
+|重大度  |値  |
 |---------|---------|
 |Critical     |5|
 |エラー        |4|

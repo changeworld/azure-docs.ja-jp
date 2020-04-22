@@ -2,23 +2,21 @@
 title: サービス カタログ マネージド アプリを発行する
 description: 組織のメンバーを対象とする Azure マネージド アプリケーションを作成する方法について説明します。
 author: tfitzmac
-ms.topic: tutorial
-ms.date: 10/04/2018
+ms.topic: quickstart
+ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79473015"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391501"
 ---
-# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>チュートリアル:マネージド アプリケーション定義を作成して発行する
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>クイック スタート:マネージド アプリケーション定義を作成して発行する
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+このクイックスタートでは、[Azure Managed Applications](overview.md) の操作の概要を説明します。 社内のメンバーを対象とするマネージド アプリケーションを作成して発行することができます。
 
-組織のメンバーを対象とする Azure [マネージド アプリケーション](overview.md)を作成し、発行することができます。 たとえば、IT 部門が、組織の基準を満たすマネージ アプリケーションを発行できます。 これらのマネージド アプリケーションは、Azure Marketplace ではなく、サービス カタログを利用して入手できます。
-
-対象の Azure サービス カタログにマネージド アプリケーションを発行するには、次の操作を行う必要があります。
+対象のサービス カタログにマネージド アプリケーションを発行するには、次の操作を行う必要があります。
 
 * マネージド アプリケーションでデプロイするリソースを定義するテンプレートを作成する。
 * マネージド アプリケーションをデプロイするときに、ポータルのユーザー インターフェイス要素を定義する。
@@ -26,13 +24,9 @@ ms.locfileid: "79473015"
 * どのユーザー、グループ、またはアプリケーションがユーザーのサブスクリプションのリソース グループにアクセスする必要があるかを決める。
 * .zip パッケージを指定して ID アクセスを要求するマネージド アプリケーション定義を作成する。
 
-この記事では、マネージ アプリケーションには、ストレージ アカウントのみ存在します。 これは、マネージ アプリケーションを公開する手順を説明するためです。 詳細な例については、[Azure マネージド アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。
+## <a name="create-the-arm-template"></a>ARM テンプレートを作成する
 
-この記事の PowerShell の例では、Azure PowerShell 6.2 以降が必要です。 必要に応じて、[バージョンを更新](/powershell/azure/install-Az-ps)してください。
-
-## <a name="create-the-resource-template"></a>リソース テンプレートの作成
-
-各マネージ アプリケーション定義には、**mainTemplate.json** というファイルが含まれています。 この中で、デプロイする Azure リソースを定義します。 テンプレートは、通常の Resource Manager テンプレートと違いはありません。
+各マネージ アプリケーション定義には、**mainTemplate.json** というファイルが含まれています。 この中で、デプロイする Azure リソースを定義します。 通常の Azure Resource Manager (ARM) テンプレートとの違いは一切ありません。
 
 **mainTemplate.json** というファイルを作成します。 名前の大文字と小文字は区別されます。
 
@@ -60,20 +54,20 @@ ms.locfileid: "79473015"
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2016-01-01",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             },
-            "kind": "Storage",
+            "kind": "StorageV2",
             "properties": {}
         }
     ],
     "outputs": {
         "storageEndpoint": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
         }
     }
 }
@@ -81,9 +75,9 @@ ms.locfileid: "79473015"
 
 mainTemplate.json ファイルを保存します。
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>CreateUiDefinition.json を使用した作成エクスペリエンスの定義
+## <a name="define-your-create-experience"></a>作成エクスペリエンスを定義する
 
-発行元として、**createUiDefinition.json** ファイルを使用して作成エクスペリエンスを定義します。これにより、マネージド アプリケーションを作成するユーザーのインターフェイスが生成されます。 ドロップダウン、テキスト ボックス、パスワード ボックスなどの[コントロール要素](create-uidefinition-elements.md)を使用して、各パラメーターの入力をユーザーがどのように提供するかを定義します。
+マネージド アプリケーションを作成するためのポータル エクスペリエンスは、発行者が定義します。 ポータル インターフェイスは、**createUiDefinition.json** ファイルによって生成されます。 ドロップダウン、テキスト ボックス、パスワード ボックスなどの[コントロール要素](create-uidefinition-elements.md)を使用して、各パラメーターの入力をユーザーがどのように提供するかを定義します。
 
 **createUiDefinition.json** というファイルを作成します (この名前の大文字と小文字は区別されます)
 
@@ -142,59 +136,123 @@ mainTemplate.json ファイルを保存します。
 
 ## <a name="package-the-files"></a>ファイルのパッケージ化
 
-app.zip という .zip ファイルに 2 つのファイルに追加します。 2 つのファイルは .zip ファイルのルートに配置する必要があります。 このファイルをフォルダーに配置すると、マネージ アプリケーション定義を作成するときに、必要なファイルが存在しないことを示すエラーが発生します。 
+app.zip という .zip ファイルに 2 つのファイルに追加します。 2 つのファイルは .zip ファイルのルートに配置する必要があります。 このファイルをフォルダーに配置すると、マネージ アプリケーション定義を作成するときに、必要なファイルが存在しないことを示すエラーが発生します。
 
-パッケージは、想定される実行場所からアクセスできる場所にアップロードしてください。 
+パッケージは、想定される実行場所からアクセスできる場所にアップロードしてください。 ストレージ アカウントに一意の名前を指定する必要があります。
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 New-AzResourceGroup -Name storageGroup -Location eastus
-$storageAccount = New-AzStorageAccount -ResourceGroupName storageGroup `
+
+$storageAccount = New-AzStorageAccount `
+  -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage
+  -Kind StorageV2
 
 $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name appcontainer -Context $ctx -Permission blob
 
-Set-AzStorageBlobContent -File "D:\myapplications\app.zip" `
+Set-AzStorageBlobContent `
+  -File "D:\myapplications\app.zip" `
   -Container appcontainer `
   -Blob "app.zip" `
   -Context $ctx 
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group create --name storageGroup --location eastus
+
+az storage account create \
+    --name mystorageaccount \
+    --resource-group storageGroup \
+    --location eastus \
+    --sku Standard_LRS \
+    --kind StorageV2
+
+az storage container create \
+    --account-name mystorageaccount \
+    --name appcontainer \
+    --public-access blob
+
+az storage blob upload \
+    --account-name mystorageaccount \
+    --container-name appcontainer \
+    --name "app.zip" \
+    --file "D:\myapplications\app.zip"
+
+```
+
+---
+
 ## <a name="create-the-managed-application-definition"></a>マネージド アプリケーション定義の作成
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Azure Active Directory ユーザー グループまたはアプリケーションの作成
 
-次に、顧客に代わってリソースを管理するためのユーザー グループまたはアプリケーションを選択します。 このユーザー グループまたはアプリケーションには、割り当てられているロールに従って、マネージド リソース グループに対するアクセス許可が付与されています。 そのロールには、ロールベースのアクセス制御 (RBAC) の組み込みロール (所有者、共同作成者など) をどれでも使用できます。 リソースを管理するためのアクセス許可は、個々のユーザーに付与することもできますが、ユーザー グループに割り当てるのが一般的です。 新しい Active Directory ユーザー グループの作成する場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+次に、顧客のリソースを管理するためのユーザー グループ、ユーザー、またはアプリケーションを選択します。 この ID には、割り当てられているロールに従って、マネージド リソース グループに対するアクセス許可が付与されています。 そのロールには、ロールベースのアクセス制御 (RBAC) の組み込みロール (所有者、共同作成者など) をどれでも使用できます。 新しい Active Directory ユーザー グループの作成する場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 リソースの管理に使用するユーザー グループのオブジェクト ID が必要です。 
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $groupID=(Get-AzADGroup -DisplayName mygroup).Id
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+groupid=$(az ad group show --group mygroup --query objectId --output tsv)
+```
+
+---
 
 ### <a name="get-the-role-definition-id"></a>ロール定義 ID の取得
 
 次に、ユーザー、ユーザー グループ、アプリケーションへのアクセス権を付与する RBAC の組み込みのロールのロール定義 ID が必要となります。 通常、所有者、共同作成者、閲覧者のいずれかのロールを使います。 次のコマンドは、所有者ロールのロール定義 ID を取得する方法を示しています。
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $ownerID=(Get-AzRoleDefinition -Name Owner).Id
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+ownerid=$(az role definition list --name Owner --query [].name --output tsv)
+```
+
+---
 
 ### <a name="create-the-managed-application-definition"></a>マネージド アプリケーション定義の作成
 
 マネージ アプリケーション定義を保存するリソース グループがまだない場合は、ここで作成します。
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 New-AzResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group create --name appDefinitionGroup --location westcentralus
+```
+
+---
+
 次に、マネージド アプリケーション定義のリソースを作成します。
 
-```powershell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
 $blob = Get-AzStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
 
 New-AzManagedApplicationDefinition `
@@ -208,18 +266,48 @@ New-AzManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+blob=$(az storage blob url --account-name mystorageaccount --container-name appcontainer --name app.zip --output tsv)
+
+az managedapp definition create \
+  --name "ManagedStorage" \
+  --location "westcentralus" \
+  --resource-group appDefinitionGroup \
+  --lock-level ReadOnly \
+  --display-name "Managed Storage Account" \
+  --description "Managed Azure Storage Account" \
+  --authorizations "$groupid:$ownerid" \
+  --package-file-uri "$blob"
+```
+
+---
+
+コマンドが完了すると、リソース グループにマネージド アプリケーション定義が作成されます。
+
+前の例で使用されているパラメーターは次のとおりです。
+
+* **リソース グループ**: マネージド アプリケーション定義が作成されるリソース グループの名前。
+* **ロック レベル**: 管理対象リソース グループに対して設定されるロックの種類。 これによって、このリソース グループに対して問題となるような操作を顧客が実行できないようにします。 現在サポートされているロック レベルは ReadOnly だけです。 ReadOnly が指定されている場合、マネージド リソース グループに存在するリソースの読み取りしか顧客は実行できません。 マネージド リソース グループへのアクセス権が付与されている発行元 ID は、ロックの対象外となります。
+* **authorizations**:管理対象リソース グループへのアクセス許可を付与する際に使うプリンシパル ID とロール定義 ID を記述します。 `<principalId>:<roleDefinitionId>` の形式で指定します。 複数の値が必要な場合は、`<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` という形式で指定します。 このとき値は、スペースで区切って指定します。
+* **パッケージ ファイルの URI**: 必要なファイルが含まれた .zip パッケージの場所。
+
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>マネージド アプリケーション定義用に独自のストレージを使用する
+
 管理アプリケーション定義は、作成時に指定したストレージ アカウント内に保存することを選択できます。これにより、規制のニーズに合わせて場所とアクセスを完全に管理できます。
 
 > [!NOTE]
 > 独自のストレージの使用は、マネージド アプリケーション定義の ARM テンプレートまたは REST API デプロイでのみサポートされます。
 
 ### <a name="select-your-storage-account"></a>使うストレージ アカウントを選ぶ
+
 サービス カタログで使用するマネージド アプリケーション定義を含めるための[ストレージ アカウントを作成](../../storage/common/storage-account-create.md)する必要があります。
 
 ストレージ アカウントのリソース ID をコピーします。 これは、後で定義をデプロイするときに使用します。
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>ストレージ アカウントに "アプライアンス リソースプロバイダー" のロールの割り当てを設定する
+
 マネージド アプリケーション定義をストレージ アカウントにデプロイするには、ストレージ アカウントのコンテナーに定義ファイルを書き込むことができるように、事前に**アプライアンス リソースプロバイダー** ロールに共同作成者のアクセス許可を付与する必要があります。
 
 1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
@@ -310,11 +398,13 @@ applicationDefintion のプロパティに **storageAccountId** という名前�
 > [!NOTE]
 > セキュリティを強化するために、マネージド アプリケーション定義を作成し、[暗号化が有効になっている Azure ストレージ アカウント BLOB に保存できます](../../storage/common/storage-service-encryption.md)。 定義の内容は、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、サービス カタログ内の定義を確認できます。
 
-### <a name="make-sure-users-can-see-your-definition"></a>ユーザーが定義を確認できるようにする
+## <a name="make-sure-users-can-see-your-definition"></a>ユーザーが定義を確認できるようにする
 
 自身がアクセスできるマネージ アプリケーション定義に、組織の他のユーザーもアクセスできることを確認する必要があります。 定義に対して閲覧者以上のロールをユーザーに付与してください。 ユーザーはこのレベルのアクセスをサブスクリプションまたはリソース グループから継承している場合があります。 定義にアクセスできるユーザーを確認し、ユーザーやグループを追加する方法については、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* マネージド アプリケーションを Microsoft Azure Marketplace に発行するには、「[Marketplace の Azure マネージド アプリケーション](publish-marketplace-app.md)」を参照してください。
-* マネージ アプリケーション インスタンスをデプロイするには、[Azure portal を通したサービス カタログ アプリのデプロイ](deploy-service-catalog-quickstart.md)に関するページを参照してください。
+マネージド アプリケーション定義を発行しました。 今度は、その定義のインスタンスをデプロイする方法を確認しましょう。
+
+> [!div class="nextstepaction"]
+> [クイック スタート: サービス カタログ アプリのデプロイ](deploy-service-catalog-quickstart.md)

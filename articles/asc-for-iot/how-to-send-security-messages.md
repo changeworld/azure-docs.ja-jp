@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT にセキュリティ メッセージを送信する | Microsoft Docs
+title: デバイス セキュリティ メッセージを送信する
 description: Azure Security Center for IoT を使用してセキュリティ メッセージを送信する方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76963820"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310987"
 ---
 # <a name="send-security-messages-sdk"></a>セキュリティ メッセージの送信 SDK
 
-この攻略ガイドでは、Azure Security Center (ASC) for IoT エージェントを使用せずにデバイス セキュリティ メッセージを収集して送信する場合の Azure Security Center for IoT サービスの機能と、それを行う方法を説明します。  
+この攻略ガイドでは、Azure Security Center (ASC) for IoT エージェントを使用せずにデバイス セキュリティ メッセージを収集して送信する場合の Azure Security Center for IoT サービスの機能と、それを行う方法を説明します。
 
-このガイドでは、以下の方法について説明します。 
+このガイドでは、以下の方法について説明します。
+
 > [!div class="checklist"]
 > * Azure IoT C SDK を使用してセキュリティ メッセージを送信する
 > * Azure IoT C# SDK を使用してセキュリティ メッセージを送信する
 > * Azure IoT Python SDK を使用してセキュリティ メッセージを送信する
 > * Azure IoT Node.js SDK を使用してセキュリティ メッセージを送信する
 > * Azure IoT Java SDK を使用してセキュリティ メッセージを送信する
-
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center for IoT の機能
 
@@ -42,6 +42,7 @@ Azure Security Center for IoT では、送信されるデータが [Azure Securi
 ## <a name="security-message"></a>セキュリティ メッセージ
 
 Azure Security Center for IoT では、次の条件を使用してセキュリティ メッセージが定義されています。
+
 - メッセージが Azure IoT SDK で送信された場合
 - メッセージが[セキュリティ メッセージ スキーマ](https://aka.ms/iot-security-schemas)に準拠している場合
 - メッセージが送信前にセキュリティ メッセージとして設定されている場合
@@ -49,10 +50,10 @@ Azure Security Center for IoT では、次の条件を使用してセキュリ�
 各セキュリティ メッセージには、`AgentId`、`AgentVersion`、`MessageSchemaVersion`、セキュリティ イベントのリストなど、送信者のメタデータが含まれています。
 スキーマでは、イベントの種類など、セキュリティ メッセージの有効で必要なプロパティが定義されています。
 
->[!Note]
-> スキーマに準拠していない、送信されたメッセージは、無視されます。 現在、無視されたメッセージは保存されないため、データの送信を開始する前にスキーマを確認してください。 
+> [!NOTE]
+> スキーマに準拠していない、送信されたメッセージは、無視されます。 現在、無視されたメッセージは保存されないため、データの送信を開始する前にスキーマを確認してください。
 
->[!Note]
+> [!NOTE]
 > Azure IoT SDK を使用してセキュリティ メッセージとして設定されずに送信されたメッセージは、Azure Security Center for IoT パイプラインにルーティングされません。
 
 ## <a name="valid-message-example"></a>有効なメッセージの例
@@ -89,62 +90,63 @@ Azure Security Center for IoT では、次の条件を使用してセキュリ�
 ]
 ```
 
-## <a name="send-security-messages"></a>セキュリティ メッセージの送信 
+## <a name="send-security-messages"></a>セキュリティ メッセージの送信
 
 Azure Security Center for IoT エージェント*なしで*セキュリティ メッセージを送信するか、[Azure IoT C デバイス SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、[Azure IoT C# デバイス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、[Azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、[Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)、または [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java) を使用して送信します。
 
-Azure Security Center for IoT で処理するためにデバイスからデバイス データを送信するには、以下のいずれかの API を使用して、Azure Security Center for IoT 処理パイプラインへの正しいルーティングが行われるようにメッセージをマークします。 
+Azure Security Center for IoT で処理するためにデバイスからデバイス データを送信するには、以下のいずれかの API を使用して、Azure Security Center for IoT 処理パイプラインへの正しいルーティングが行われるようにメッセージをマークします。
 
-送信されるすべてのデータは、正しいヘッダーでマークされている場合でも、[Azure Security Center for IoT メッセージ スキーマ](https://aka.ms/iot-security-schemas)にも準拠する必要があります。 
+送信されるすべてのデータは、正しいヘッダーでマークされている場合でも、[Azure Security Center for IoT メッセージ スキーマ](https://aka.ms/iot-security-schemas)にも準拠する必要があります。
 
-### <a name="send-security-message-api"></a>セキュリティ メッセージの送信 API 
+### <a name="send-security-message-api"></a>セキュリティ メッセージの送信 API
 
-**セキュリティ メッセージの送信** API は、現在 C、C#、Python、Node.js、Java で使用できます。  
+**セキュリティ メッセージの送信** API は、現在 C、C#、Python、Node.js、Java で使用できます。
 
 #### <a name="c-api"></a>C API
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
- 
+
     bool success = true;
     IOTHUB_MESSAGE_HANDLE messageHandle = NULL;
- 
+
     messageHandle = IoTHubMessage_CreateFromByteArray(data, dataSize);
- 
+
     if (messageHandle == NULL) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubMessage_SetAsSecurityMessage(messageHandle) != IOTHUB_MESSAGE_OK) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubModuleClient_SendEventAsync(iotHubAdapter->moduleHandle, messageHandle, SendConfirmCallback, iotHubAdapter) != IOTHUB_CLIENT_OK) {
         success = false;
         goto cleanup;
     }
- 
+
 cleanup:
     if (messageHandle != NULL) {
         IoTHubMessage_Destroy(messageHandle);
     }
- 
+
     return success;
 }
- 
+
 static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback) {
     if (userContextCallback == NULL) {
         //error handling
         return;
     }
- 
+
     if (result != IOTHUB_CLIENT_CONFIRMATION_OK){
         //error handling
     }
 }
 ```
+
 #### <a name="c-api"></a>C# API
 
 ```cs
@@ -157,6 +159,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
     await client.SendEventAsync(securityMessage);
 }
 ```
+
 #### <a name="nodejs-api"></a>Node.js API
 
 ```typescript
@@ -194,7 +197,7 @@ function SendSecurityMessage(messageContent)
 
 Python API を使用するには、パッケージ [azure-iot-device](https://pypi.org/project/azure-iot-device/) をインストールする必要があります。
 
-Python API を使用する場合、一意のデバイスまたはモジュール接続文字列を使用して、モジュールまたはデバイスを通じてセキュリティ メッセージを送信できます。 次の Python スクリプトの例を使用した場合、デバイスでは **IoTHubDeviceClient** を使用し、モジュールでは **IoTHubModuleClient** を使用します。 
+Python API を使用する場合、一意のデバイスまたはモジュール接続文字列を使用して、モジュールまたはデバイスを通じてセキュリティ メッセージを送信できます。 次の Python スクリプトの例を使用した場合、デバイスでは **IoTHubDeviceClient** を使用し、モジュールでは **IoTHubModuleClient** を使用します。
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -224,8 +227,8 @@ public void SendSecurityMessage(string message)
 }
 ```
 
-
 ## <a name="next-steps"></a>次のステップ
+
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
 - Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします

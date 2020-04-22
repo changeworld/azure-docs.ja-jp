@@ -7,23 +7,24 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d2a9bb0fcaab38f897987a1922e9c95497821d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416214"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのリソース使用状況とクエリ アクティビティの監視
-Azure portal 内にある Azure Synapse Analytics のリッチな監視エクスペリエンスでは、データ ウェアハウスのワークロードに関する分析情報が表示されます。 データ ウェアハウスを監視するときの推奨されるツールである Azure portal では、構成可能なリテンション期間、アラート、推奨事項、およびメトリックとログのカスタマイズ可能なグラフとダッシュボードが提供されます。 ポータルでは、ログ分析を使用して Azure Monitor (ログ) などの他の Azure 監視サービスと統合して、お使いのデータ ウェアハウスだけでなく、統合された監視エクスペリエンスに対する Azure 分析プラットフォーム全体も含む、総合的な監視エクスペリエンスを提供することもできます。 このドキュメントでは、SQL Analytics で分析プラットフォームの最適化と管理に使用できる監視機能について説明します。 
 
-## <a name="resource-utilization"></a>リソース使用率 
-Azure portal では、SQL Analytics に対して以下のメトリックを使用できます。 これらのメトリックは、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) を通じて表示できます。
+Azure portal 内にある Azure Synapse Analytics のリッチな監視エクスペリエンスでは、データ ウェアハウスのワークロードに関する分析情報が表示されます。 データ ウェアハウスを監視するときの推奨されるツールである Azure portal では、構成可能なリテンション期間、アラート、推奨事項、およびメトリックとログのカスタマイズ可能なグラフとダッシュボードが提供されます。 ポータルでは、ログ分析を使用して Azure Monitor (ログ) などの他の Azure 監視サービスと統合して、お使いのデータ ウェアハウスだけでなく、統合された監視エクスペリエンスに対する Azure 分析プラットフォーム全体も含む、総合的な監視エクスペリエンスを提供することもできます。 このドキュメントでは、SQL Analytics で分析プラットフォームの最適化と管理に使用できる監視機能について説明します。
 
+## <a name="resource-utilization"></a>リソース使用率
+
+Azure portal では、SQL Analytics に対して以下のメトリックを使用できます。 これらのメトリックは、[Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics) を通じて表示できます。
 
 | メトリックの名前             | 説明                                                  | 集計の種類 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -32,8 +33,8 @@ Azure portal では、SQL Analytics に対して以下のメトリックを使�
 | メモリの割合       | データ ウェアハウスの全ノードでのメモリ使用率 (SQL Server) | 平均、最小、最大   |
 | アクティブなクエリ          | システムで実行されているアクティブなクエリの数             | SUM              |
 | キューに置かれたクエリ          | 実行の開始を待機している、キューに置かれたクエリの数          | SUM              |
-| 成功した接続  | データへの成功した接続の数                 | 合計、数       |
-| 失敗した接続      | データ ウェアハウスへの失敗した接続の数           | 合計、数       |
+| 成功した接続  | データベースに対する成功した接続 (ログイン) の数 | 合計、数       |
+| 失敗した接続      | データベースに対する失敗した接続 (ログイン) の数 | 合計、数       |
 | ファイアウォールによってブロックされる     | ブロックされたデータ ウェアハウスへのログインの数     | 合計、数       |
 | DWU 上限               | データ ウェアハウスのサービス レベル目標                | 平均、最小、最大    |
 | DWU の割合          | CPU の割合とデータ IO の割合の最大値        | 平均、最小、最大    |
@@ -41,27 +42,28 @@ Azure portal では、SQL Analytics に対して以下のメトリックを使�
 | キャッシュ ヒットの割合    | (キャッシュ ヒット数/キャッシュ ミス数) * 100: キャッシュ ヒット数はローカル SSD キャッシュでのすべての列ストア セグメント ヒット数の合計、キャッシュ ミス数はローカル SSD キャッシュでの列ストア セグメント ミス数を全ノードについて合計した値 | 平均、最小、最大    |
 | 使用されたキャッシュの割合   | (使用されたキャッシュ/キャッシュ容量) * 100: 使用されたキャッシュは全ノードのローカル SSD キャッシュでの全バイト数の合計、キャッシュ容量は全ノードのローカル SSD キャッシュのストレージ容量の合計 | 平均、最小、最大    |
 | ローカル tempdb の割合 | すべてのコンピューティング ノードでの、ローカル tempdb の使用率 - 値は 5 分ごとに出力されます | 平均、最小、最大    |
-| データ ストレージ サイズ | データベースに読み込まれるデータの合計サイズです。 これには、CCI テーブルおよび非 CCI テーブルに存在するデータが含まれます。非 CCI テーブルのサイズは、データベース ファイルの合計サイズによって測定されます。 | SUM |
-| ディザスター リカバリー サイズ | 24 時間ごとに実行される geo バックアップの合計サイズ | SUM |
-| スナップショット ストレージ サイズ | データベースの復元ポイントを提供するために取得されるスナップショットの合計サイズです。 これには、自動およびユーザー定義のスナップショットが含まれます。 | SUM |
+| データ ストレージ サイズ (GB) | データベースの合計サイズ。 これには、使用済み領域、予約領域、未割り当て領域が含まれます。 未割り当て領域は、データベースでクエリ/読み込みのパフォーマンスを最適化するために保持されています。 | SUM |
+| ディザスター リカバリー サイズ (GB) | 24 時間ごとに実行される geo バックアップの合計サイズ | SUM |
+| スナップショット ストレージ サイズ (GB) | データベースの復元ポイントを提供するために取得されるスナップショットの合計サイズです。 これには、自動およびユーザー定義のスナップショットが含まれます。 | SUM |
 
 メトリックを表示してアラートを設定するときに考慮が必要な事項は次のとおりです。
 
-- 使用される DWU は、SQL プール全体の**使用に関する高レベル表現**のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
+- 使用される DWU は、SQL プール全体の**使用に関する高レベル表現**のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
 - 接続の失敗と成功がレポートされるのは、特定のデータ ウェアハウスについてです。論理サーバーについてはレポートされません
 - データ ウェアハウスがアイドル状態であっても、メモリの割合には使用率が反映されます。アクティブなワークロードのメモリ消費は反映されません。 追加のキャッシュ容量のスケーリングによってワークロードのパフォーマンスが要件を満たすように向上するかどうかに関する総合的な意思決定を行うために、このメトリックとその他 (tempdb、gen2 キャッシュ) を使用して追跡します。
 
-
 ## <a name="query-activity"></a>クエリ アクティビティ
+
 T-SQL を使用して SQL Analytics を監視するときのプログラム エクスペリエンスでは、動的管理ビュー (DMV) のセットがサービスによって提供されます。 これらのビューは、アクティブのトラブルシューティングを行うときと、ワークロードでパフォーマンスのボトルネックを特定するときに役に立ちます。
 
-SQL Analytics で提供される DMV の一覧については、この[ドキュメント](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)を参照してください。 
+Synapse SQL に適用される DMV の一覧を表示するには、この[ドキュメント](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)を参照してください。 
 
-## <a name="metrics-and-diagnostics-logging"></a>メトリックと診断のロギング
-メトリックとログはどちらも、Azure Monitor (具体的には [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) コンポーネント) にエクスポートでき、[ログ クエリ](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)を使用してプログラムでアクセスできます。 SQL Analytics のログの待機時間は約 10 から 15 分です。 待ち時間に影響を与える要因については、次のドキュメントをご覧ください。
+## <a name="metrics-and-diagnostics-logging"></a>メトリックと診断のロギング 
 
+メトリックとログはどちらも、Azure Monitor (具体的には [Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コンポーネント) にエクスポートでき、[ログ クエリ](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用してプログラムでアクセスできます。 SQL Analytics のログの待機時間は約 10 から 15 分です。 待ち時間に影響を与える要因については、次のドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-次のハウツー ガイドでは、データ ウェアハウスを監視および管理するときの一般的なシナリオとユース ケースについて説明されています。
 
-- [DMV を利用してデータ ウェアハウスのワークロードを監視する](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)
+次のハウツー ガイドでは、データ ウェアハウスを監視および管理するときの一般的なシナリオとユース ケースについて説明しています。
+
+- [DMV を利用してデータ ウェアハウスのワークロードを監視する](sql-data-warehouse-manage-monitor.md)

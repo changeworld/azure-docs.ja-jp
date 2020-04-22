@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067464"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258747"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する
 
@@ -112,7 +112,7 @@ ms.locfileid: "70067464"
 2.  **[すべての操作]** を選択します。
 3.  画面の上部の **[デザイン]** タブを選択します。
 4.  **[送信処理]** セクションで、 **[</>]** アイコンをクリックします。
-5.  **&lt;outbound&gt;** 要素内にカーソルを配置します。
+5.  **&lt;outbound&gt;** 要素内にカーソルを置き、右上隅にある **[Insert policy]\(ポリシーの挿入\)** ボタンをクリックします。
 6.  右側のウィンドウの **[変換ポリシー]** で、 **[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
 7.  **find-and-replace** コード ( **\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 次に例を示します。
 

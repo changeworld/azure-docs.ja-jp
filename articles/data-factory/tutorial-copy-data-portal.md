@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用してデータ ファクトリ パイプラインを作成する
-description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から SQL データベースにデータをコピーします。
+description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,17 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/21/2018
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 135a18f275137e72b5ff4d79f6a32bd39bd9c00c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 655a98ef1b6b8b2d4086b472ee7ce4d67346e5ca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977404"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418713"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
-このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から SQL データベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から Azure SQL Database にデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
 
 > [!NOTE]
 > - Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
@@ -38,7 +41,7 @@ ms.locfileid: "75977404"
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * **Azure ストレージ アカウント**。 Blob Storage を "*ソース*" データ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
-* **Azure SQL データベース**。 データベースを "*シンク*" データ ストアとして使用します。 SQL データベースがない場合の作成手順については、「[SQL Database の作成](../sql-database/sql-database-get-started-portal.md)」を参照してください。
+* **Azure SQL データベース**。 データベースを "*シンク*" データ ストアとして使用します。 Azure SQL データベースがない場合の作成手順については、[SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関するページを参照してください。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>BLOB と SQL テーブルを作成する
 
@@ -49,6 +52,7 @@ ms.locfileid: "75977404"
 1. メモ帳を起動します。 次のテキストをコピーし、**emp.txt** ファイルとしてディスクに保存します。
 
     ```
+    FirstName,LastName
     John,Doe
     Jane,Doe
     ```
@@ -78,9 +82,6 @@ ms.locfileid: "75977404"
 
 1. **Microsoft Edge** または **Google Chrome** を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
-
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
-
 3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
    Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
@@ -121,33 +122,38 @@ ms.locfileid: "75977404"
 
 ### <a name="configure-source"></a>ソースの構成
 
+>[!TIP]
+>ソース データ ストアの認証の種類として、このチュートリアルでは "*アカウント キー*" を使用しますが、サポートされている他の認証方法 ("*SAS URI*"、"*サービス プリンシパル*"、"*マネージド ID*") を選ぶこともできます。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)の対応するセクションを参照してください。
+>さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
+
 1. **[ソース]** タブに移動します。 **[+ 新規]** を選択して、ソース データセットを作成します。
 
 1. **[新しいデータセット]** ダイアログ ボックスで **[Azure Blob Storage]** を選択し、 **[続行]** をクリックします。 ソース データは Blob Storage にあるので、ソース データセットには **Azure Blob Storage** を選択します。
 
 1. **[形式の選択]** ダイアログ ボックスで、データの形式の種類を選択して、 **[続行]** を選択します。
 
-    ![データの形式の種類](./media/doc-common-process/select-data-format.png)
+1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**SourceBlobDataset**」を入力します。 **[First row as header]\(先頭の行を見出しとして使用\)** のチェック ボックスをオンにします。 **[リンクされたサービス]** ボックスの下にある **[+ 新規]** を選択します。
 
-1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**SourceBlobDataset**」を入力します。 **[リンクされたサービス]** ボックスの横にある **[+ 新規]** をクリックします。
-
-1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログ ボックスで、名前として「**AzureStorageLinkedService**」と入力し、 **[ストレージ アカウント名]** の一覧からご自身のストレージ アカウントを選択します。 接続をテストし、 **[完了]** を選択して、リンクされたサービスをデプロイします。
+1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログ ボックスで、名前として「**AzureStorageLinkedService**」と入力し、 **[ストレージ アカウント名]** の一覧からご自身のストレージ アカウントを選択します。 接続をテストし、 **[作成]** を選択して、リンクされたサービスをデプロイします。
 
 1. リンクされたサービスが作成されると、 **[プロパティの設定]** ページに戻ります。 **[ファイル パス]** の横にある **[参照]** を選択します。
 
-1. **adftutorial/input** フォルダーに移動し、**emp.txt** ファイルを選択して、 **[完了]** を選択します。
+1. **adftutorial/input** フォルダーに移動し、**emp.txt** ファイルを選択して、 **[OK]** を選択します。
 
-1. 自動的にパイプライン ページに移動します。 **[ソース]** タブで、 **[SourceBlobDataset]** が選択されていることを確認します。 このページのデータをプレビューするには、 **[データのプレビュー]** を選択します。
+1. **[OK]** を選択します。 自動的にパイプライン ページに移動します。 **[ソース]** タブで、 **[SourceBlobDataset]** が選択されていることを確認します。 このページのデータをプレビューするには、 **[データのプレビュー]** を選択します。
 
     ![ソース データセット](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
 ### <a name="configure-sink"></a>シンクの構成
+>[!TIP]
+>シンク データ ストアの認証の種類として、このチュートリアルでは "*SQL 認証*" を使用しますが、サポートされている他の認証方法 ("*サービス プリンシパル*"、"*マネージド ID*") を選ぶこともできます。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)の対応するセクションを参照してください。
+>さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
 
 1. **[シンク]** タブに移動し、 **[+ 新規]** を選択してシンク データセットを作成します。
 
 1. **[新しいデータセット]** ダイアログ ボックスで、検索ボックスに「SQL」と入力してコネクタをフィルター処理し、 **[Azure SQL Database]** を選択して、 **[続行]** を選択します。 このチュートリアルでは、SQL データベースにデータをコピーします。
 
-1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**OutputSqlDataset**」を入力します。 **[リンクされたサービス]** ボックスの横にある **[+ 新規]** をクリックします。 データセットをリンクされたサービスに関連付ける必要があります。 リンクされたサービスには、Data Factory が実行時に SQL データベースに接続するために使用する接続文字列が含まれています。 データセットは、コンテナー、フォルダー、データのコピー先のファイル (オプション) を指定します。
+1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**OutputSqlDataset**」を入力します。 **[リンクされたサービス]** ボックスの一覧から **[+ 新規]** を選択します。 データセットをリンクされたサービスに関連付ける必要があります。 リンクされたサービスには、Data Factory が実行時に SQL データベースに接続するために使用する接続文字列が含まれています。 データセットは、コンテナー、フォルダー、データのコピー先のファイル (オプション) を指定します。
 
 1. **[New Linked Service (Azure SQL Database)]\(新しいリンクされたサービス (Azure SQL Database)\)** ダイアログ ボックスで、次の手順を実行します。
 
@@ -163,11 +169,11 @@ ms.locfileid: "75977404"
 
     f. **[テスト接続]** を選択して接続をテストします。
 
-    g. **[完了]** を選択して、リンクされたサービスをデプロイします。
+    g. **[作成]** を選択して、リンクされたサービスをデプロイします。
 
     ![新しいリンクされたサービスの保存](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. **[プロパティの設定]** ダイアログ ボックスに自動的に移動します。 **[テーブル]** で **[dbo].[emp]** を選択します。 **[完了]** を選択します。
+1. **[プロパティの設定]** ダイアログ ボックスに自動的に移動します。 **[テーブル]** で **[dbo].[emp]** を選択します。 **[OK]** をクリックします。
 
 1. パイプラインがあるタブに移動し、 **[Sink Dataset]\(シンク データセット\)** で **OutputSqlDataset** が選択されていることを確認します。
 
@@ -192,15 +198,15 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 ## <a name="trigger-the-pipeline-manually"></a>パイプラインを手動でトリガーする
 この手順では、前の手順で発行したパイプラインを手動でトリガーします。
 
-1. ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[完了]** を選択します。  
+1. ツール バーの **[トリガー]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[OK]** を選択します。  
 
-1. 左側の **[監視]** タブに移動します。 手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[アクション]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
+1. 左側の **[監視]** タブに移動します。 手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-    ![パイプラインの実行を監視する](./media/tutorial-copy-data-portal/monitor-pipeline.png)
+    [![パイプラインの実行を監視する](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
-1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 この例では、アクティビティが 1 つだけなので、一覧に表示されるエントリは 1 つのみです。 コピー操作の詳細を確認するために、 **[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[Pipeline Runs]\(パイプラインの実行\)** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
+1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列の **[CopyPipeline]** リンクを選択します。 この例では、アクティビティが 1 つだけなので、一覧に表示されるエントリは 1 つのみです。 コピー操作の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
 
-    ![アクティビティの実行を監視する](./media/tutorial-copy-data-portal/view-activity-runs.png)
+    [![アクティビティの実行を監視する](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
 1. SQL データベースの **emp** テーブルに 2 つの行が追加されていることを確認します。
 
@@ -209,7 +215,7 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
 1. [監視] タブの上にある左側の **[作成者]** タブに移動します。
 
-1. パイプラインに移動し、ツール バーの **[トリガーの追加]** をクリックして、 **[新規/編集]** を選択します。
+1. パイプラインに移動し、ツール バーの **[トリガー]** をクリックして、 **[新規/編集]** を選択します。
 
 1. **[トリガーの追加]** ダイアログ ボックスで、 **[Choose trigger]\(トリガーの選択\)** 領域の **[+ 新規]** を選択します。
 
@@ -225,25 +231,24 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
     e. **[終了時刻]** の部分を現在の日時の数分後に変更します。 トリガーは、変更を発行した後にのみアクティブ化されます。 これをわずか数分後に設定し、それまでに発行しなかった場合、トリガー実行は表示されません。
 
-    f. **[適用]** を選択します。
+    f. **[OK]** を選択します。
 
     g. **[アクティブ化]** オプションで **[はい]** を選択します。
 
-    h. **[次へ]** を選択します。
-
-    ![[アクティブ化] ボタン](./media/tutorial-copy-data-portal/trigger-activiated-next.png)
+    h. **[OK]** を選択します。
 
     > [!IMPORTANT]
     > パイプラインの実行ごとにコストが関連付けられるため、終了日は適切に設定してください。
-1. **[Trigger Run Parameters]\(トリガー実行のパラメーター\)** ページで、警告を確認し、 **[完了]** を選択します。 この例のパイプラインにはパラメーターはありません。
+
+1. **[トリガーの編集]** ページで警告を確認し、 **[保存]** を選択します。 この例のパイプラインにはパラメーターはありません。
 
 1. **[すべて発行]** をクリックして、変更を発行します。
 
 1. 左側の **[モニター]** タブに移動して、トリガーされたパイプラインの実行を確認します。
 
-    ![トリガーされたパイプラインの実行](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
+    [![トリガーされたパイプラインの実行](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 
-1. **パイプラインの実行**ビューから**トリガーの実行**ビューに切り替えるには、ウィンドウ上部の **[Trigger Runs]\(トリガーの実行\)** を選択します。
+1. **パイプラインの実行**ビューから**トリガーの実行**ビューに切り替えるには、ウィンドウの左側の **[Trigger Runs]\(トリガーの実行\)** を選択します。
 
 1. トリガーの実行が一覧で表示されます。
 

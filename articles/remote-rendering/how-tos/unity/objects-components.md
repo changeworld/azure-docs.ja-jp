@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 872f0e60943a674e5febf269dcb5b09fd08d77c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679189"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409872"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Unity のゲーム オブジェクトとコンポーネントを操作する
 
-Azure Remote Rendering (ARR) は、膨大な数のオブジェクト向けに最適化されています ([制限](../../reference/limits.md)に関するページを参照してください)。 ホスト上で大規模で複雑な階層を管理することは可能ですが、すべてを低電力デバイス上の Unity でレプリケートすることは不可能です。
+Azure Remote Rendering (ARR) は、膨大な数のオブジェクト向けに最適化されています (「[制限事項](../../reference/limits.md)」を参照)。 ホスト上で大規模で複雑な階層を管理することは可能ですが、すべてを低電力デバイス上の Unity でレプリケートすることは不可能です。
 
 そのため、モデルがホストに読み込まれると、Azure Remote Rendering によってモデル構造に関する情報がクライアント デバイス上にミラー化されますが (これによりネットワーク トラフィックが発生します)、Unity のオブジェクトとコンポーネントはレプリケートされません。 代わりに、必要な Unity のゲーム オブジェクトとコンポーネントを手動で要求することを想定しています。これにより、オーバーヘッドを最低限必要な量に制限できます。 このようにすることで、クライアント側のパフォーマンスをより細かく制御できます。
 

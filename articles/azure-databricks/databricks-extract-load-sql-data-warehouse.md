@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure Databricks を使用して ETL 操作を実行する
-description: このチュートリアルでは、Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、変換して、Azure SQL Data Warehouse に読み込む方法を説明します。
+description: このチュートリアルでは、Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、変換して、Azure Synapse Analytics に読み込む方法を説明します。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239411"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382737"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
-このチュートリアルでは、Azure Databricks を使用して ETL (データの抽出、変換、読み込み) 操作を実行します。 Azure Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、Azure Databricks でそのデータに対する変換を実行した後、変換されたデータを Azure SQL Data Warehouse に読み込みます。
+このチュートリアルでは、Azure Databricks を使用して ETL (データの抽出、変換、読み込み) 操作を実行します。 Azure Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、Azure Databricks でそのデータに対する変換を実行した後、変換されたデータを Azure Synapse Analytics に読み込みます。
 
-このチュートリアルの手順では、Azure Databricks 用の SQL Data Warehouse コネクタを使って Azure Databricks にデータを転送します。 その後、このコネクタによって、Azure Databricks クラスターと Azure SQL Data Warehouse の間で転送されるデータの一時記憶域として Azure Blob Storage が使用されます。
+このチュートリアルの手順では、Azure Databricks 用の Azure Synapse コネクタを使って Azure Databricks にデータを転送します。 その後、このコネクタによって、Azure Databricks クラスターと Azure Synapse の間で転送されるデータの一時記憶域として Azure Blob Storage が使用されます。
 
 次の図に、アプリケーション フローを示します。
 
-![Data Lake Store および SQL Data Warehouse と組み合わされた Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Data Lake Store および SQL Data Warehouse と組み合わされた Azure Databricks")
+![Data Lake Store および Azure Synapse と組み合わされた Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Data Lake Store および Azure Synapse と組み合わされた Azure Databricks")
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -35,9 +35,9 @@ ms.locfileid: "80239411"
 > * サービス プリンシパルを作成する。
 > * Azure Data Lake Storage Gen2 アカウントからデータを抽出する。
 > * Azure Databricks でデータを変換する。
-> * Azure SQL Data Warehouse にデータを読み込む。
+> * Azure Synapse にデータを読み込む。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
@@ -47,9 +47,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このチュートリアルを始める前に、以下のタスクを完了します。
 
-* Azure SQL データ ウェアハウスを作成し、サーバーレベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。「[クイック スタート:Azure Portal で Azure SQL データ ウェアハウスを作成し、クエリを実行する](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。
+* Azure Synapse を作成し、サーバーレベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。「[クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。
 
-* Azure SQL データ ウェアハウスに使用するマスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」を参照してください。
+* Azure Synapse に使用するマスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」を参照してください。
 
 * Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 「[クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
 
@@ -63,7 +63,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
       アクセス制御リスト (ACL) を使用して特定のファイルまたはディレクトリにサービス プリンシパルを関連付ける場合は、「[Azure Data Lake Storage Gen2 のアクセス制御](../storage/blobs/data-lake-storage-access-control.md)」を参照してください。
 
-   * 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を行うときは、テナント ID、アプリ ID、およびシークレットの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+   * 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を行うときは、テナント ID、アプリ ID、およびシークレットの値をテキスト ファイルに貼り付けてください。
 
 * [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -73,7 +73,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    開始する前に、以下の情報が必要です。
 
-   :heavy_check_mark:Azure SQL Data Warehouse のデータベース名、データベース サーバー名、ユーザー名、およびパスワード。
+   :heavy_check_mark:Azure Synapse のデータベース名、データベース サーバー名、ユーザー名、パスワード。
 
    :heavy_check_mark:BLOB ストレージ アカウントのアクセス キー。
 
@@ -316,11 +316,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータの読み込み
+## <a name="load-data-into-azure-synapse"></a>Azure Synapse にデータを読み込む
 
-このセクションでは、変換したデータを Azure SQL Data Warehouse にアップロードします。 Azure Databricks 用の Azure SQL Data Warehouse コネクタを使用して、データフレームを SQL データ ウェアハウスのテーブルとして直接アップロードします。
+このセクションでは、変換したデータを Azure Synapse にアップロードします。 Azure Databricks 用の Azure Synapse コネクタを使用して、データフレームを Synapse Spark プールのテーブルとして直接アップロードします。
 
-前述のように、SQL Data Warehouse コネクタによって、Azure Blob Storage が一時ストレージとして使用され、Azure Databricks と Azure SQL Data Warehouse との間でデータがアップロードされます。 それにはまず、そのストレージ アカウントに接続するための構成を指定します。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
+前述のように、Azure Synapse コネクタによって、Azure Blob Storage が一時ストレージとして使用され、Azure Databricks と Azure Synapse との間でデータがアップロードされます。 それにはまず、そのストレージ アカウントに接続するための構成を指定します。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
 
 1. Azure Databricks から Azure Storage アカウントにアクセスするための構成を指定します。
 
@@ -330,7 +330,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Azure Databricks と Azure SQL Data Warehouse の間でデータを移動するときに使用する一時フォルダーを指定します。
+2. Azure Databricks と Azure Synapse の間でデータを移動するときに使用する一時フォルダーを指定します。
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Azure SQL Data Warehouse インスタンスに接続するための値を指定します。 SQL データ ウェアハウスは、前提条件としてあらかじめ作成しておく必要があります。 **dwServer** の完全修飾サーバー名を使用します。 たとえば、「 `<servername>.database.windows.net` 」のように入力します。
+4. Azure Synapse インスタンスに接続するための値を指定します。 Azure Synapse Analytics サービスは、前提条件としてあらかじめ作成しておく必要があります。 **dwServer** の完全修飾サーバー名を使用します。 たとえば、「 `<servername>.database.windows.net` 」のように入力します。
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. 次のスニペットを実行して、変換済みのデータフレーム (**renamedColumnsDf**) をテーブルとして SQL データ ウェアハウスに読み込みます。 このスニペットは、SQL データベースに **SampleTable** というテーブルを作成します。
+5. 次のスニペットを実行して、変換済みのデータフレーム (**renamedColumnsDF**) をテーブルとして Azure Synapse に読み込みます。 このスニペットは、SQL データベースに **SampleTable** というテーブルを作成します。
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    ```
 
    > [!NOTE]
-   > このサンプルでは `forward_spark_azure_storage_credentials` フラグを使用します。これにより、SQL Data Warehouse は、アクセス キーを使用して BLOB ストレージからのデータにアクセスします。 これは、サポートされている唯一の認証方法です。
+   > このサンプルでは `forward_spark_azure_storage_credentials` フラグを使用します。これにより、Azure Synapse は、アクセス キーを使用して BLOB ストレージからのデータにアクセスします。 これは、サポートされている唯一の認証方法です。
    >
-   > Azure Blob Storage が仮想ネットワークを選択するように制限されている場合、SQL Data Warehouse には[アクセス キーではなく、マネージド サービス ID](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) が必要です。 これにより、"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)" というエラーが発生します。
+   > Azure Blob Storage が仮想ネットワークを選択するように制限されている場合、Azure Synapse には[アクセス キーではなく、マネージド サービス ID](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) が必要です。 これにより、"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)" というエラーが発生します。
 
 6. SQL データベースに接続し、**SampleTable** という名前のデータベースが表示されることを確認します。
 
@@ -398,7 +398,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 > * Azure Databricks でノートブックを作成する
 > * Data Lake Storage Gen2 アカウントからデータを抽出する
 > * Azure Databricks でデータを変換する
-> * Azure SQL Data Warehouse へのデータの読み込み
+> * Azure Synapse にデータを読み込む
 
 次のチュートリアルに進み、Azure Event Hubs を使ってリアルタイム データを Azure Databricks にストリーミングする方法について見てみましょう。
 
