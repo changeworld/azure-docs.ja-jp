@@ -49,7 +49,7 @@ Azure HPC Cache のデプロイは定量分析計算やリスク分析ワーク�
 
 Azure HPC Cache は、次の Azure リージョンで使用できます。
 
-* East US
+* 米国東部
 * 米国東部 2
 * 北ヨーロッパ
 * 西ヨーロッパ
