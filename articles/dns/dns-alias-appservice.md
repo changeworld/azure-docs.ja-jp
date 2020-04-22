@@ -45,7 +45,7 @@ Azure DNS にドメインをホストする手順については、「[チュー
 
 |Name  |オペレーティング システム  |Location  |価格レベル  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|East US|Dev/Test D1-Shared|
+|ASP-01     |Windows|米国東部|Dev/Test D1-Shared|
 |ASP-02     |Windows|米国中部|Dev/Test D1-Shared|
 
 ## <a name="create-app-services"></a>App Services を作成する
@@ -60,7 +60,7 @@ App Service プランごとに 1 つずつ、2 つの Web アプリを作成し�
 
    |Name<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |ランタイム スタック|リージョン|App Service プラン/場所
    |---------|---------|-|-|-------|
-   |App-01|既存のものを使用します<br>リソース グループを選択します|.NET Core 2.2|East US|ASP-01(D1)|
+   |App-01|既存のものを使用します<br>リソース グループを選択します|.NET Core 2.2|米国東部|ASP-01(D1)|
    |App-02|既存のものを使用します<br>リソース グループを選択します|.NET Core 2.2|米国中部|ASP-02(D1)|
 
 ### <a name="gather-some-details"></a>詳細情報を収集する
@@ -89,7 +89,7 @@ Traffic Manager プロファイルの作成については、「[クイック �
 
    |種類  |Name  |移行先  |Location  |カスタム ヘッダーの設定|
    |---------|---------|---------|---------|---------|
-   |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|East US|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
+   |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|米国東部|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
    |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS ゾーンの作成
