@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: c12dfd385962d8dd7de8239a0d4ecd46746499c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fcf14bf42fc843a126fea269038087ee7fb0c6c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239762"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382042"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -95,7 +95,7 @@ azure-cli                         2.0.60 *
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>エラー"Unable to reach kube-apiserver (kube-apiserver に到達できません)"
 
-Azure Dev Spaces が AKS クラスターの API サーバーに接続できない場合に、このエラーが表示されることがあります。 
+Azure Dev Spaces が AKS クラスターの API サーバーに接続できない場合に、このエラーが表示されることがあります。
 
 AKS クラスターの API サーバーへのアクセスがロック ダウンされている場合、または AKS クラスターに対して [API サーバーの許可された IP アドレス範囲](../aks/api-server-authorized-ip-ranges.md)が有効になっている場合は、[ご利用のリージョンに基づいて追加の範囲を許可する](https://github.com/Azure/dev-spaces/tree/master/public-ips)ために、クラスターを[作成](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)または[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)する必要もあります。
 
@@ -271,6 +271,113 @@ Service cannot be started.
 * *[停止]* をクリックします。
 * 必要に応じて、 *[スタートアップの種類]* を *[無効]* に設定して無効にすることができます。
 * [*OK*] をクリックします。
+
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>エラー "割り当てられた状態で pod:azds/azds-webhook-deployment-\<id\> の AzureAssignedIdentity が見つかりませんでした"
+
+[マネージド ID](../aks/use-managed-identity.md) および [ポッド マネージ ID](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) がインストールされている AKS クラスターで、Azure Dev Spaces を使用してサービスを実行すると、*グラフのインストール* ステップ後にプロセスがハングすることがあります。 *azds* 名前空間で *azds-injector-webhook* を調べると、このエラーが表示されることがあります。
+
+Azure Dev Spaces がクラスターで実行するサービスは、クラスターのマネージド ID を利用して、クラスター外の Azure Dev Spaces バックエンド サービスと通信します。 ポッド マネージド ID がインストールされている場合、ネットワーク ルールはクラスターのノードで構成され、マネージド ID 資格情報の呼び出しはすべて、[クラスターにインストールされた Node Managed Identity (NMI) デーモンセット](https://github.com/Azure/aad-pod-identity#node-managed-identity)にリダイレクトされます。 この NMI デーモンセットは呼び出し元のポッドを識別し、要求されたマネージド ID にアクセスできるようポッドに適切なラベルが付けられていることを確認します。 Azure Dev Spaces は、クラスターにポッド マネージド ID がインストールされているかどうか検出できず、Azure Dev Spaces サービスがクラスターのマネージド ID にアクセスするために必要な構成を実行できません。 Azure Dev Spaces サービスはクラスターのマネージド ID にアクセスするように構成されていないため、NMI デーモンセットではマネージド ID の AAD トークンを取得できず、Azure Dev Spaces バックエンド サービスと通信できません。
+
+この問題を修正するには、*azds-injector-webhook* で [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) を適用し、Azure Dev Spaces でインストルメント化されたポッドを更新してマネージド ID にアクセスできるようにします。
+
+*webhookException.yaml* という名前のファイルを作成し、以下の YAML 定義をコピーします。
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: azds
+spec:
+  PodLabels:
+    azds.io/uses-cluster-identity: "true"
+```
+
+上記のファイルによって、*azds-injector-webhook* の *AzurePodIdentityException* オブジェクトが作成されます。 このオブジェクトをデプロイするには、`kubectl` を使用します。
+
+```cmd
+kubectl apply -f webhookException.yaml
+```
+
+マネージド ID にアクセスするために Azure Dev Spaces によってインストルメント化されたポッドを更新するには、以下の YAML 定義で*名前空間*を更新し、`kubectl` を使用して各開発領域に適用します。
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: myNamespace
+spec:
+  PodLabels:
+    azds.io/instrumented: "true"
+```
+
+また、*AzureIdentity* および *AzureIdentityBinding* オブジェクトを作成し、Azure Dev Spaces によってインストルメント化されたスペースで実行中のワークロードのポッド ラベルを更新して、AKS クラスターによって作成されたマネージド ID にアクセスできるようにすることもできます。
+
+マネージド ID の詳細を一覧表示するには、AKS クラスターで以下のコマンドを実行してください。
+
+```azurecli
+az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
+```
+
+上記のコマンドはマネージド ID の *clientId* と *resourceId* を出力します。 次に例を示します。
+
+```json
+{
+  "clientId": "<clientId>",
+  "resourceId": "/subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>"
+}
+```
+
+*AzureIdentity* オブジェクトを作成するには、*clusteridentity.yaml* という名前のファイルを作成し、前のコマンドで得たマネージド ID の詳細で更新された以下の YAML 定義を使用します。
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: my-cluster-mi
+spec:
+  type: 0
+  ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>
+  ClientID: <clientId>
+```
+
+*AzureIdentityBinding* オブジェクトを作成するには、*clusteridentitybinding.yaml* という名前のファイルを作成し、以下の YAML 定義を使用します。
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: my-cluster-mi-binding
+spec:
+  AzureIdentity: my-cluster-mi
+  Selector: my-label-value
+```
+
+*AzureIdentity* および *AzureIdentityBinding* オブジェクトをデプロイするには、`kubectl` を使用します。
+
+```cmd
+kubectl apply -f clusteridentity.yaml
+kubectl apply -f clusteridentitybinding.yaml
+```
+
+*AzureIdentity* および *AzureIdentityBinding* オブジェクトのデプロイ後、*aadpodidbinding: my-label-value* ラベルを持つワークロードはクラスターのマネージド ID にアクセスできるようになります。 このラベルを追加し、開発領域で実行中のワークロードをすべて再度デプロイします。 次に例を示します。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+        aadpodidbinding: my-label-value
+    spec:
+      [...]
+```
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio と Visual Studio Code を Azure Dev Spaces で使用するときに発生する一般的な問題
 

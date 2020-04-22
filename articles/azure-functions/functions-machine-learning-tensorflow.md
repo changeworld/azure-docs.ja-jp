@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190774"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255500"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 
@@ -146,15 +146,17 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     
 1. 出力に `classify` エンドポイントが表示されるのを確認したら、URL ```http://localhost:7071/api/classify?name=Azure``` に移動します。 "Hello Azure!" というメッセージが、 出力として表示されます。
 
-1. **Ctrl** + **C** キーを使用してホストを停止します。
+1. **Ctrl** - **C** キーを使用してホストを停止します。
 
 
 ## <a name="import-the-tensorflow-model-and-add-helper-code"></a>TensorFlow モデルをインポートしてヘルパー コードを追加する
 
 内容に基づいて画像を分類するように `classify` 関数を変更するには、Azure Custom Vision Service でトレーニングされ、このサービスからエクスポートされた、既製の TensorFlow モデルを使用します。 先ほどクローンしたサンプルの *resources* フォルダーに格納されているこのモデルは、犬と猫のどちらが含まれているのかに基づいて画像を分類します。 次に、いくつかのヘルパー コードと依存関係を自分のプロジェクトに追加します。
 
+Free レベルの Custom Vision Service を使用して独自のモデルを作成する場合は、[サンプル プロジェクト リポジトリ](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)の手順に従ってください。
+
 > [!TIP]
-> Free レベルの Custom Vision Service を使用して独自のモデルを作成する場合は、[サンプル プロジェクト リポジトリ](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)の手順に従ってください。
+> 関数アプリには一切依存せずに TensorFlow モデルをホストしたい場合は、対象のモデルがあるファイル共有を Linux 関数アプリにマウントすることができます。 詳細については、「[Azure CLI を使用してファイル共有を Python 関数アプリにマウントする](./scripts/functions-cli-mount-files-storage-linux.md)」を参照してください。
 
 1. *start* フォルダーで次のコマンドを実行して、モデル ファイルを *classify* フォルダーにコピーします。 コマンドには、必ず `\*` を含めてください。 
 
@@ -315,3 +317,4 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 - [Visual Studio Code を使用して関数を Azure にデプロイする](https://code.visualstudio.com/docs/python/tutorial-azure-functions)。
 - [Azure Functions の Python 開発者向けガイド](./functions-reference-python.md)
+- [Azure CLI を使用してファイル共有を Python 関数アプリにマウントする](./scripts/functions-cli-mount-files-storage-linux.md)

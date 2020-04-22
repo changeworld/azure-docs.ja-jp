@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240616"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313927"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -27,8 +27,6 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。
-
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](./hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 * 既存の[ストレージ コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md)。  
@@ -41,7 +39,7 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 
 * C# を使用する場合は、Visual Studio のバージョンが 2013 以降である必要があります。
 
-* ストレージ アカウントの [URI スキーム](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
+* ストレージ アカウントの [URI スキーム](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 このスキームは、Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 * Shared Access Signature の追加先となる既存の HDInsight クラスター。 ない場合は、Azure PowerShell を使用してクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
 
@@ -56,11 +54,11 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 
 Shared Access Signature には、次の 2 つのフォームがあります。
 
-* アドホック: 開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。
+* `Ad hoc`:開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。
 
-* 保存されているアクセス ポリシー: 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナーなど) で定義されています。 ポリシーを使用して、1 つ以上の Shared Access Signature の制約を管理できます。 保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
+* `Stored access policy`:保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナーなど) で定義されています。 ポリシーを使用して、1 つ以上の Shared Access Signature の制約を管理できます。 保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
 
-1 つの重要なシナリオ、失効では、この 2 つの形式の相違点が重要です。 SAS は URL であるため、取得したユーザーはだれでも、どのユーザーが最初に要求したかに関係なく、SAS を使用できます。 SAS が一般ユーザーに発行された場合は、世界中のだれでも使用できます。 配布された SAS は、次の 4 つの状況のいずれかになるまで有効です。
+1 つの重要なシナリオ、失効では、この 2 つの形式の相違点が重要です。 SAS は URL であるため、SAS を取得するどのユーザーでも使用できます。 最初にだれが要求したかは関係ありません。 SAS が一般ユーザーに発行された場合は、世界中のだれでも使用できます。 配布された SAS は、次の 4 つの状況のいずれかになるまで有効です。
 
 1. SAS に指定された有効期限に達した。
 
@@ -82,7 +80,7 @@ Shared Access Signature の詳細については、「 [SAS モデルについ�
 
 ## <a name="create-a-stored-policy-and-sas"></a>保存済みのポリシーと SAS を作成する
 
-それぞれの方法の最後に生成される SAS トークンを保存します。 実際のトークンの例を次に示します。
+それぞれの方法の最後に生成される SAS トークンを保存します。 トークンは、次のような出力になります。
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -205,7 +203,7 @@ Set-AzStorageblobcontent `
 
 エラー メッセージ "`ImportError: No module named azure.storage`" が返された場合は、`pip install --upgrade azure-storage` を実行する必要があります。
 
-### <a name="using-c"></a>C# の使用
+### <a name="using-c"></a>C\# の使用
 
 1. Visual Studio でソリューションを開きます。
 
@@ -213,21 +211,20 @@ Set-AzStorageblobcontent `
 
 3. **[設定]** を選択し、次のエントリに値を追加します。
 
-   * StorageConnectionString: 保存済みのポリシーと SAS を作成するストレージ アカウントの接続文字列。 `myaccount` がストレージ アカウントの名前で、`mykey` がストレージ アカウントのキーである場合、形式は `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` になります。
-
-   * ContainerName: アクセスを制限するストレージ アカウントのコンテナー。
-
-   * SASPolicyName: 作成する保存済みのポリシーに使用する名前。
-
-   * FileToUpload: コンテナーにアップロードされるファイルのパス。
+    |Item |説明 |
+    |---|---|
+    |StorageConnectionString|保存済みのポリシーと SAS を作成するストレージ アカウントの接続文字列。 `myaccount` がストレージ アカウントの名前で、`mykey` がストレージ アカウントのキーである場合、形式は `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` になります。|
+    |コンテナー名|アクセスを制限するストレージ アカウントのコンテナー。|
+    |SASPolicyName|作成する保存済みのポリシーに使用する名前。|
+    |FileToUpload|コンテナーにアップロードされるファイルのパス。|
 
 4. プロジェクトを実行します。 SAS ポリシー トークン、ストレージ アカウント名、コンテナー名を保存します。 これらの値は、HDInsight クラスターにストレージ アカウントを関連付けるときに使用されます。
 
 ## <a name="use-the-sas-with-hdinsight"></a>HDInsight での SAS の使用
 
-HDInsight クラスターを作成するときは、プライマリ ストレージ アカウントを指定する必要があり、任意で追加のストレージ アカウントを指定することもできます。 これらのストレージを追加する両方の方法で、使用するストレージ アカウントとコンテナーへのフル アクセスが必要です。
+HDInsight クラスターを作成するときは、プライマリ ストレージ アカウントを指定する必要があります。 追加のストレージ アカウントを指定することもできます。 これらのストレージを追加する両方の方法で、使用するストレージ アカウントとコンテナーへのフル アクセスが必要です。
 
-コンテナーへのアクセスを制限するために Shared Access Signature を使用するには、カスタム エントリをクラスターの **core-site** 構成に追加します。 エントリは、クラスターの作成中に PowerShell を使用して、またはクラスターの作成後に Ambari を使用して追加することができます。
+コンテナーへのアクセスを制限するには、Shared Access Signature を使用します。 クラスターの **core-site** 構成にカスタム エントリを追加します。 エントリは、クラスターの作成中に PowerShell を使用して、またはクラスターの作成後に Ambari を使用して追加することができます。
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>SAS を使用するクラスターの作成
 
