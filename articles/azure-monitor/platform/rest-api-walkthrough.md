@@ -1,5 +1,5 @@
 ---
-title: Azure 監視 REST API のチュートリアル
+title: Azure Monitor REST API のチュートリアル
 description: 要求を認証し、Azure Monitor REST API を使用して使用可能なメトリック定義およびメトリックの値を取得する方法を説明します。
 ms.subservice: metrics
 ms.topic: conceptual
@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80294616"
 ---
-# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
+# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Monitor REST API のチュートリアル
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -718,7 +718,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="next-steps"></a>次のステップ
 
-* [監視の概要](../../azure-monitor/overview.md)に関するページを確認します。
+* [Azure Monitor の概要](../../azure-monitor/overview.md)に関するページを確認します。
 * [Azure Monitor のサポートされるメトリック](metrics-supported.md)を表示します。
 * [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を確認します。
 * [Azure 管理ライブラリ](https://msdn.microsoft.com/library/azure/mt417623.aspx)を確認します。
