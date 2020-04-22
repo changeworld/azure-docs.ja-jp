@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cdc9f9a4503c786065b6d514f61fe17eae4ce5e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264791"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270912"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボとコンピューティング仮想マシンの自動シャットダウンを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "76264791"
 ## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>ラボ VM (DevTest Labs) の自動シャットダウンを構成する
 Azure DevTest Labs では、各ラボのポリシー (設定) を管理することで、ラボのコストを制御し、無駄を最小限に抑えることができます。 この記事では、ラボ アカウントに対して自動シャットダウン ポリシーを構成する方法、およびラボ アカウントのラボに対して自動シャットダウンの設定を構成する方法を示します。 すべてのラボ ポリシーを設定する方法については、[Azure DevTest Labs でのラボ ポリシーの定義](devtest-lab-set-lab-policy.md)に関する記事をご覧ください。  
 
-### <a name="set-auto-shut-down-policy-for-a-lab"></a>ラボに自動シャットダウン ポリシーを設定する
+### <a name="set-auto-shutdown-policy-for-a-lab"></a>ラボに自動シャットダウン ポリシーを設定する
 ラボ所有者は、ラボ内のすべての VM のシャットダウン スケジュールを構成できます。 これを行うことで、使用中ではない (アイドル状態の) マシンを実行するコストを節約できます。 すべてのラボの VM 上にあるシャットダウン ポリシーを一元的に適用できるだけでなく、ラボ ユーザーが個々のマシンのスケジュールを設定する手間もかかりません。 この機能を利用して、制御権なしから完全な制御権の提供まで、ラボ ユーザーにラボ スケジュール上でのポリシーを設定できます。 ラボ所有者は、次の手順を実行してこのポリシーを構成できます。
 
 1. ラボの [ホーム] ページで、 **[構成とポリシー]** を選択します。
@@ -191,13 +191,34 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 ## <a name="configure-autoshutdown-for-compute-vms"></a>コンピューティング VM の自動シャットダウンを構成する
 
-1. **[仮想マシン]** ページの左側メニューにある **[自動シャットダウン]** を選択します。 
+1. **[仮想マシン]** ページで、 **[操作]** セクションの左側のメニューにある **[自動シャットダウン]** を選択します。 
 2. **[自動シャットダウン]** ページでこのポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
 3. このポリシーを有効にする場合、VM をシャットダウンする**時刻**を指定 (と**タイム ゾーン**) します。
 4. 指定した自動シャットダウン時刻の 30 分前に通知を送信するオプションに対して、 **[はい]** または **[いいえ]** を指定します。 **[はい]** を選択した場合は、通知が投稿または送信される Webhook URL のエンドポイントまたは電子メール アドレスを入力します。 ユーザーは通知を受信し、シャットダウンを遅らせるオプションが表示されます。 詳しくは、「[通知](#notifications)」セクションをご覧ください。 
 9. **[保存]** を選択します。
 
     ![コンピューティング VM の自動シャットダウンを構成する](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
+### <a name="view-activity-logs-for-auto-shutdown-updates"></a>自動シャットダウンの更新のアクティビティ ログを表示する
+自動シャットダウン設定を更新すると、その VM のアクティビティ ログに記録されたアクティビティが表示されます。 
+
+1. [Azure portal](https://portal.azure.com) で、VM のホーム ページに移動します。
+2. 左側のメニューから **[アクティビティ ログ]** を選択します。 
+3. **[リソース: mycomputevm]** をフィルターから削除します。
+3. アクティビティ ログに **[Add or modify schedules]\(スケジュールの追加または変更\)** 操作が表示されることを確認します。 表示されない場合は、しばらく待ってからアクティビティ ログを更新します。
+
+    ![アクティビティ ログ エントリ](./media/devtest-lab-auto-shutdown/activity-log-entry.png)
+4. **[概要]** ページで次の情報を表示するには、 **[Add or modify schedules]\(スケジュールの追加または変更\)** 操作を選択します。
+
+    - 操作名 ([Add or modify schedules]\(スケジュールの追加または変更\))
+    - 自動シャットダウン設定が更新された日付と時刻。
+    - 設定を更新したユーザーのメール アドレス。 
+
+        ![アクティビティ ログ エントリの概要](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
+5. **[Add or modify schedules]\(スケジュールの追加または変更\)** ページの **[変更履歴]** タブに切り替えると、設定の変更履歴が表示されます。 次の例では、2020 年 4 月 10 日 15:18:47 EST にシャットダウン時刻が午後 7 時から午後 6 時に変更されました。 また、設定は 15:25:09 EST に無効になりました。 
+
+    ![アクティビティ ログ - 変更履歴](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
+6. 操作の詳細を表示するには、 **[Add or modify schedules]\(スケジュールの追加または変更\)** ページの **[JSON]** タブに切り替えます。
 
 ## <a name="next-steps"></a>次のステップ
 すべてのポリシーの設定方法については、[Azure DevTest Labs でのラボ ポリシーの定義](devtest-lab-set-lab-policy.md)に関する記事をご覧ください。

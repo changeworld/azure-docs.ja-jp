@@ -1,26 +1,26 @@
 ---
-title: Azure Application Gateway でのエンド ツー エンド SSL の構成
-description: この記事では、PowerShell を使用して Azure Application Gateway でエンド ツー エンド SSL を構成する方法を説明します。
+title: Azure Application Gateway でのエンド ツー エンド TLS の構成
+description: この記事では、PowerShell を使用して Azure Application Gateway でエンド ツー エンド TLS を構成する方法を説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286456"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312509"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド SSL の構成
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド TLS の構成
 
 ## <a name="overview"></a>概要
 
-Azure Application Gateway は、トラフィックのエンド ツー エンド暗号化をサポートしています。 Application Gateway は、アプリケーション ゲートウェイで SSL 接続を終了します。 ゲートウェイでは、その後、トラフィックへのルーティング規則の適用、パケットの再暗号化、定義済みのルーティング規則に基づいた適切なバックエンド サーバーへのパケットの転送が実行されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。
+Azure Application Gateway は、トラフィックのエンド ツー エンド暗号化をサポートしています。 Application Gateway では、アプリケーション ゲートウェイで TLS または SSL 接続が終端処理されます。 ゲートウェイでは、その後、トラフィックへのルーティング規則の適用、パケットの再暗号化、定義済みのルーティング規則に基づいた適切なバックエンド サーバーへのパケットの転送が実行されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。
 
-Application Gateway は、カスタム SSL オプションの定義をサポートしています。 また、**TLSv1.0**、**TLSv1.1**、および **TLSv1.2** のバージョンのプロトコルの無効化と、使用する暗号スイートとその優先順位の定義もサポートしています。 構成可能な SSL のオプションの詳細については、[SSL ポリシーの概要](application-gateway-SSL-policy-overview.md)に関するページをご覧ください。
+Application Gateway は、カスタム TLS オプションの定義をサポートしています。 また、**TLSv1.0**、**TLSv1.1**、および **TLSv1.2** のバージョンのプロトコルの無効化と、使用する暗号スイートとその優先順位の定義もサポートしています。 構成できる TLS オプションの詳細については、[TLS ポリシーの概要](application-gateway-SSL-policy-overview.md)に関するページを参照してください。
 
 > [!NOTE]
 > SSL 2.0 と SSL 3.0 は既定で無効になっており、有効にすることはできません。 これらはセキュリティで保護されておらず、Application Gateway では使用できません。
@@ -29,22 +29,22 @@ Application Gateway は、カスタム SSL オプションの定義をサポー�
 
 ## <a name="scenario"></a>シナリオ
 
-このシナリオでは、PowerShell で、エンド ツー エンド SSL を使用してアプリケーション ゲートウェイを作成する方法について説明します。
+このシナリオでは、PowerShell で、エンド ツー エンド TLS を使用してアプリケーション ゲートウェイを作成する方法について説明します。
 
 このシナリオで、以下の作業を行います。
 
 * **appgw-rg** という名前のリソース グループを作成します。
 * アドレス スペースが **10.0.0.0/16** の **appgwvnet** という名前の仮想ネットワークを作成します。
 * **appgwsubnet** と **appsubnet** という名前の 2 つのサブネットを作成します。
-* SSL プロトコル バージョンと暗号化スイートを制限するエンド ツー エンド SSL 暗号化をサポートする、小さなアプリケーション ゲートウェイを作成します。
+* TLS プロトコル バージョンと暗号化スイートを制限するエンド ツー エンド TLS 暗号化をサポートする、小さなアプリケーション ゲートウェイを作成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-アプリケーション ゲートウェイでエンド ツー エンド SSL を構成するには、ゲートウェイ用とバックエンド サーバー用の証明書が必要です。 ゲートウェイ証明書は、SSL プロトコルの仕様に従って対称キーを得る目的で使用されます。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
+アプリケーション ゲートウェイでエンド ツー エンド TLS を構成するには、ゲートウェイ用とバックエンド サーバー用の証明書が必要です。 ゲートウェイ証明書は、TLS プロトコルの仕様に従って対称キーを得る目的で使用されます。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
 
-エンド ツー エンド SSL 暗号化では、アプリケーション ゲートウェイにバックエンドを明示的に許可する必要があります。 バックエンド サーバーの公開証明書をアプリケーション ゲートウェイにアップロードしてください。 証明書を追加することにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
+エンド ツー エンド TLS 暗号化では、アプリケーション ゲートウェイにバックエンドを明示的に許可する必要があります。 バックエンド サーバーの公開証明書をアプリケーション ゲートウェイにアップロードしてください。 証明書を追加することにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
 
 この構成プロセスについては以降のセクションで説明します。
 
@@ -154,20 +154,20 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > このサンプルでは、SSL 接続に使用する証明書を構成します。 証明書は .pfx 形式であり、4 ～ 12 文字のパスワードを使用する必要があります。
+   > このサンプルでは、TLS 接続に使用する証明書を構成します。 証明書は .pfx 形式であり、4 ～ 12 文字のパスワードを使用する必要があります。
 
-6. アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および SSL 証明書を割り当てます。
+6. アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および TLS または SSL 証明書を割り当てます。
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. SSL 対応バックエンド プール リソースで使用する証明書をアップロードします。
+7. TLS 対応バックエンド プール リソースで使用する証明書をアップロードします。
 
    > [!NOTE]
-   > 既定のプローブは、バックエンドの IP アドレスでの*既定の* SSL バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 
+   > 既定のプローブは、バックエンドの IP アドレスでの*既定の* TLS バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 
    > 
-   > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、*既定*の SSL バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の SSL バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドはホワイトリストに登録されません。
+   > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、*既定*の TLS バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の TLS バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドはホワイトリストに登録されません。
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    > [!NOTE]
    > 前の手順で指定される証明書は、バックエンドに存在する .pfx 証明書の公開キーである必要があります。 バックエンド サーバーにインストールされている (ルート証明書ではない) 証明書を Claim, Evidence, and Reasoning (CER) 形式でエクスポートし、この手順で使用します。 この手順によって、アプリケーション ゲートウェイにバックエンドがホワイトリスト登録されます。
 
-   Application Gateway v2 SKU を使用している場合は、認証証明書ではなく、信頼されたルート証明書を作成します。 詳細については、「[Application Gateway でのエンド ツー エンド SSL の概要](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)」を参照してください。
+   Application Gateway v2 SKU を使用している場合は、認証証明書ではなく、信頼されたルート証明書を作成します。 詳細については、[Application Gateway でのエンド ツー エンド TLS の概要](ssl-overview.md#end-to-end-tls-with-the-v2-sku)に関するページを参照してください。
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -209,7 +209,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
     > [!NOTE]
     > テスト目的では、インスタンス数として 1 を選択できます。 重要なのは、2 より小さいインスタンス数は SLA の対象外のため、推奨されていないことを把握しておくことです。 小規模のゲートウェイは開発テスト用であり、運用目的ではありません。
 
-11. アプリケーション ゲートウェイで使用する SSL ポリシーを構成します。 Application Gateway では、SSL プロトコルの最小バージョンを設定する機能がサポートされています。
+11. アプリケーション ゲートウェイで使用する TLS ポリシーを構成します。 Application Gateway では、TLS プロトコルの最小バージョンを設定する機能がサポートされています。
 
     次の値が、定義できるプロトコル バージョンの一覧です。
 
@@ -247,7 +247,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. .cer ファイルから新しい証明書リソースを追加します。このファイルには、証明書の公開キーが含まれています。また、アプリケーション ゲートウェイで SSL 終了のためにリスナーに追加されたものと同じ証明書にすることもできます。
+2. .cer ファイルから新しい証明書リソースを追加します。このファイルには、証明書の公開キーが含まれています。また、アプリケーション ゲートウェイで TLS 終端のためにリスナーに追加されたものと同じ証明書にすることもできます。
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
@@ -300,9 +300,9 @@ HTTP 設定から使用されていない期限切れ証明書を削除するに
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで SSL プロトコル バージョンを制限する
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで TLS プロトコル バージョンを制限する
 
-これまでの手順で、エンド ツー エンド SSL を使用したアプリケーションの作成と、SSL プロトコルの特定バージョンの無効化について説明しました。 次の例では、既存のアプリケーション ゲートウェイの特定の SSL ポリシーを無効にします。
+これまでの手順で、エンド ツー エンド TLS を使用したアプリケーションの作成と、TLS プロトコルの特定バージョンの無効化について説明しました。 次の例では、既存のアプリケーション ゲートウェイの特定の TLS ポリシーを無効にします。
 
 1. 更新するアプリケーション ゲートウェイを取得します。
 
@@ -310,14 +310,14 @@ HTTP 設定から使用されていない期限切れ証明書を削除するに
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. SSL ポリシーを定義します。 次の例では、 **TLSv1.0** および **TLSv1.1** は無効で、暗号スイート **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみが許可されています。
+2. TLS ポリシーを定義します。 次の例では、 **TLSv1.0** および **TLSv1.1** は無効で、暗号スイート **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみが許可されています。
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. 最後に、ゲートウェイを更新します。 この最後の手順は実行時間が長くかかります。 終了すると、エンド ツー エンド SSL がアプリケーション ゲートウェイに構成されます。
+3. 最後に、ゲートウェイを更新します。 この最後の手順は実行時間が長くかかります。 終了すると、エンド ツー エンド TLS がアプリケーション ゲートウェイに構成されます。
 
    ```powershell
    $gw | Set-AzApplicationGateway

@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095984"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312646"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどのアプリケーション配信機能を備えています。
+Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway には、次のアプリケーション配信機能があります: HTTP 負荷分散、Cookie ベースのセッション アフィニティ、トランスポート層セキュリティ (TLS) (旧称 Secure Sockets Layer (SSL))、オフロード、カスタム正常性プローブ、およびマルチサイトのサポート。
 
-## <a name="prerequisite-install-the-azure-cli"></a>前提条件: Azure CLI のインストール
+## <a name="prerequisite-install-the-azure-cli"></a>前提条件:Azure CLI のインストール
 
 この記事の手順を実行するには、[Azure CLI をインストール](../xplat-cli-install.md)して、[Azure にサインイン](/cli/azure/authenticate-azure-cli)する必要があります。 
 
@@ -104,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-仮想ネットワークとサブネットを作成すれば、アプリケーション ゲートウェイの前提条件は満たされたことになります。 以下の手順では、それに加えて、あらかじめエクスポートしておいた .pfx 証明書とそのパスワードが必要となります。バックエンド用の IP アドレスは、ご使用のバックエンド サーバーの IP アドレスです。 バックエンド サーバーに該当する仮想ネットワーク内のプライベート IP、パブリック IP、または完全修飾ドメイン名を指定してください。
+仮想ネットワークとサブネットを作成すれば、アプリケーション ゲートウェイの前提条件は満たされたことになります。 さらに、以下の手順では、前にエクスポートした .pfx 証明書と証明書のパスワードが必要です。バックエンドに使用される IP アドレスは、バックエンド サーバーの IP アドレスです。 バックエンド サーバーに該当する仮想ネットワーク内のプライベート IP、パブリック IP、または完全修飾ドメイン名を指定してください。
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -135,7 +135,7 @@ azure network application-gateway create \
 
 [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
 
-[SSL オフロードの構成](application-gateway-ssl-arm.md)
+TLS オフロードを構成し、コストの高い TLS 解読を Web サーバーから削除する方法については、[TLS オフロードの構成](application-gateway-ssl-arm.md)に関するページを参照してください。
 
 <!--Image references-->
 

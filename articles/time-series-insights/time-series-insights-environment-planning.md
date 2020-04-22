@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314812"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272714"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA 環境の計画
 
@@ -79,9 +79,7 @@ Azure portal 内の環境の構成ページ上で、リテンション期間を�
 
 ### <a name="environment-planning"></a>環境の計画
 
-Time Series Insights 環境を計画する場合に注目すべき 2 つ目の分野は、イングレス容量です。 イングレス容量とは、分単位の割り当てから派生したものです。
-
-調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは、32 KB です。 32 KB を超えるデータ パケットは切り捨てられます。
+Time Series Insights 環境を計画する場合に注目すべき 2 つ目の分野は、イングレス容量です。 1 日あたりのイングレス ストレージとイベント容量は、1 KB ブロック単位で 1 分ごとに測定されます。 最大許容パケット サイズは 32 KB です。 32 KB を超えるデータ パケットは切り捨てられます。
 
 1 つの環境で、S1 SKU または S2 SKU の容量を 10 ユニットまで増やすことができます。 S1 環境から S2 に移行することはできません。 S2 環境から S1 に移行することはできません。
 

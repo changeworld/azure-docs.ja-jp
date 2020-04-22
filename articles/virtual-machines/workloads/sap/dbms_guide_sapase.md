@@ -12,19 +12,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 007e8d87c670376ad334c1c4e58fd93995930b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616262"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273207"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
-このドキュメントでは、Azure IaaS での SAP ASE をデプロイするときに考慮すべきいくつかの異なる領域について説明します。 このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 このドキュメントでは、Linux および Windows オペレーティング システムで実行されている SAP ASE について説明します。 Azure でサポートされている最小リリースは、SAP ASE 16.0 パッチ レベル 2 です。  最新バージョンの SAP と最新のパッチ レベルをデプロイすることをお勧めします。  少なくとも SAP ASE 16.3 パッチ レベル 7 をお勧めします。  最新バージョンの SAP は、「[Targeted ASE 16.0 Release Schedule and CR list Information](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)」 (対象の ASE 16.0 リリース スケジュールと CR リスト情報) にあります。
+このドキュメントでは、Azure IaaS での SAP ASE をデプロイするときに考慮すべきいくつかの異なる領域について説明します。 このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 このドキュメントでは、Linux および Windows オペレーティング システムで実行されている SAP ASE について説明します。 Azure でサポートされている最小リリースは SAP ASE 16.0.02 (リリース 16 サポート パック 2) です。 最新バージョンの SAP と最新のパッチ レベルをデプロイすることをお勧めします。  SAP ASE 16.0.03.07 (リリース 16 サポート パック 3 パッチ レベル 7) 以降をお勧めします。  最新バージョンの SAP は、「[Targeted ASE 16.0 Release Schedule and CR list Information](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)」 (対象の ASE 16.0 リリース スケジュールと CR リスト情報) にあります。
 
 SAP アプリケーションでサポートされるリリースやインストール メディアの場所に関する追加情報は、次の場所にある SAP 製品の可用性マトリックスにあります。
 
@@ -84,7 +84,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | --- | --- | --- | --- |
 | VM の種類 | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
 | 高速ネットワーク | 有効化 | 有効化 | ---|
-| SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
+| SAP ASE のバージョン | 16.0.03.07 以降 | 16.0.03.07 以降 | --- |
 | データ デバイスの数 | 4 | 4 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |
 | 一時デバイスの数 | 1 | 1 | SAP BW ワークロードの場合はこれより多い |
@@ -105,7 +105,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | --- | --- | --- | --- |
 | VM の種類 | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
 | 高速ネットワーク | 有効化 | 有効化 | ---|
-| SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
+| SAP ASE のバージョン | 16.0.03.07 以降 | 16.0.03.07 以降 | --- |
 | データ デバイスの数 | 8 | 8 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |
 | 一時デバイスの数 | 1 | 1 | SAP BW ワークロードの場合はこれより多い |
@@ -125,7 +125,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | --- | --- | --- | --- |
 | VM の種類 | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
 | 高速ネットワーク | 有効化 | 有効化 | ---|
-| SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
+| SAP ASE のバージョン | 16.0.03.07 以降 | 16.0.03.07 以降 | --- |
 | データ デバイスの数 | 16 | 16 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |
 | 一時デバイスの数 | 1 | 1 | SAP BW ワークロードの場合はこれより多い |
@@ -146,7 +146,7 @@ SAP ソリューション マネージャーなど、データベース サイ�
 | --- | --- | --- | --- |
 | VM の種類 | M-Series (1.0 - 4.0 TB の RAM)  | M-Series (1.0 - 4.0 TB の RAM) | --- |
 | 高速ネットワーク | 有効化 | 有効化 | ---|
-| SAP ASE のバージョン | 16.3 PL 7 以降 | 16.3 PL 7 以降 | --- |
+| SAP ASE のバージョン | 16.0.03.07 以降 | 16.0.03.07 以降 | --- |
 | データ デバイスの数 | 32 | 32 | ---|
 | ログ デバイスの数 | 1 | 1 | --- |
 | 一時デバイスの数 | 1 | 1 | SAP BW ワークロードの場合はこれより多い |
@@ -203,7 +203,7 @@ SAP Software Provisioning Manager (SWPM) には、インストール時にデー
 
 ## <a name="sap-ase-on-azure-deployment-checklist"></a>Azure での SAP ASE のデプロイのチェックリスト
  
-- SAP ASE 16.3 PL7 以降をデプロイする
+- SAP ASE 16.0.03.07 以降をデプロイする
 - FaultManager と SAPHostAgent の最新バージョンおよびパッチに更新する
 - Windows 2019、Suse 15.1、Redhat 7.6 以降など、利用可能な最新の認定 OS にデプロイする
 - SAP 認定 VM の使用。Es_v3 などの高メモリ Azure VM SKU、または非常に大規模なシステム用の M シリーズ VM SKU を推奨
@@ -277,7 +277,7 @@ SAP ASE の DBA Cockpit に関する詳細については、次の SAP Note で�
 
 
 ## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>SAP ASE の便利なリンク、ノートとホワイトペーパー
-[Sybase ASE 16.3 PL7 ドキュメント](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US)の開始ページでは、次のドキュメントを含むさまざまなドキュメントへのリンクが提供されています。
+[SAP ASE 16.0.03.07 ドキュメント](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US)の開始ページでは、次のドキュメントを含むさまざまなドキュメントへのリンクが提供されています。
 
 - SAP ASE Learning Journey - Administration & Monitoring (SAP ASE Learning Journey - 管理と監視)
 - SAP ASE Learning Journey - Installation & Upgrade (SAP ASE Learning Journey - インストールとアップグレード)
@@ -303,11 +303,11 @@ SAP ASE の DBA Cockpit に関する詳細については、次の SAP Note で�
 その他の情報は以下に公開されています。 
 
 - [SAP Applications on SAP Adaptive Server Enterprise](https://community.sap.com/topics/applications-on-ase)
-- [Sybase infocenter](http://infocenter.sybase.com/help/index.jsp) 
+- [SAP ASE Infocenter](http://infocenter.sybase.com/help/index.jsp) 
+- [3 番目の DR ノード セットアップを使用した SAP ASE Always-on](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
 毎月のニュースレターは、[SAP サポート ノート #2381575](https://launchpad.support.sap.com/#/notes/2381575) を通じて公開されます。 
 
-[3 番目の DR ノード セットアップを使用した Sybase ASE Always-on](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199) 
 
 ## <a name="next-steps"></a>次のステップ
 「[Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)」の記事を確認します。

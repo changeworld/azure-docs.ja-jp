@@ -5,27 +5,29 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016801"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272476"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Azure App Service での PHP の構成方法
 
 ## <a name="introduction"></a>はじめに
 
-このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリ、モバイル バックエンド、および API アプリで構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。 App Service を使用するには、 [無料試用版]にサインアップしてください。 このガイドを最大限に活用するには、まず App Service で PHP アプリを作成する必要があります。
+このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリと API アプリで構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。 App Service を使用するには、 [無料試用版]にサインアップしてください。 このガイドを最大限に活用するには、まず App Service で PHP アプリを作成する必要があります。
 
 ## <a name="how-to-change-the-built-in-php-version"></a>方法:ビルトインの PHP バージョンを変更する
 
-既定では、App Service アプリを作成すると PHP 5.6 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
+Web アプリを作成するときは、構成する PHP のバージョンを選択できます。 現在サポートされているバージョンの最新情報については、「[App Service 上の PHP](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md)」を参照してください。
 
-PHP 7.0 および PHP 7.2 バージョンも使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
+アプリの既存のランタイム バージョンを確認するには、[phpinfo()] 関数を呼び出すスクリプトをデプロイします。
+
+PHP バージョンを更新するには、次のいずれかの方法に従います。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -49,7 +51,7 @@ Azure コマンド ライン インターフェイスを使用するには、コ
 
 2. アプリの PHP バージョンを設定します。
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. PHP バージョンが設定されました。 これらの設定を確認できます。
 

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30487eebed361e5b010df023a9b1a44f96590b14
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234659"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271082"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -21,16 +21,16 @@ ms.locfileid: "79234659"
 
 最近まで、Application Insights でテレメトリ データ モデルを監視するアプリケーションは、要求、例外、依存関係呼び出し、ページ ビューなど、事前に定義された種類の少数のイベントのみに基づいていました。開発者は SDK を使用して、(SDK を明示的に呼び出すコードを記述することで) これらのイベントを手動で出力することも、自動インストルメンテーションからのイベントの自動収集を利用することもできます。 いずれの場合も、収集されたすべてのイベントが Application Insights バックエンドでログとして格納され、Azure portal の Application Insights ブレードは、ログからのイベントベースのデータを視覚化するための分析および診断ツールとして動作します。
 
-ログを使用してイベントの完全なセットを保持することで、優れた分析および診断の値が得られます。 たとえば、特定の URL に対する要求の正確な数と、これらの呼び出しを行った個別のユーザーの数を取得できます。 また、任意のユーザー セッションの例外や依存関係呼び出しを含む、詳細な診断トレースを取得できます。 この種の情報があれば、アプリケーションの正常性や使用状況をより詳細に把握でき、アプリに関する問題の診断に必要な時間を短縮できます。 
+ログを使用してイベントの完全なセットを保持することで、優れた分析および診断の値が得られます。 たとえば、特定の URL に対する要求の正確な数と、これらの呼び出しを行った個別のユーザーの数を取得できます。 また、任意のユーザー セッションの例外や依存関係呼び出しを含む、詳細な診断トレースを取得できます。 この種の情報があれば、アプリケーションの正常性や使用状況をより詳細に把握でき、アプリに関する問題の診断に必要な時間を短縮できます。
 
-それと同時に、イベントの完全なセットを収集することは、多くのテレメトリを生成するアプリケーションには実用的でない (または不可能である) 場合があります。 イベントの量が多くなりすぎた場合、Application Insights では、収集されて格納されたイベントの数を減らすための[サンプリング](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)や[フィルター処理](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)など、テレメトリ量の削減手法がいくつか適用されます。 残念ながら、格納イベントの数を減らすと、ログに格納されるイベントのクエリ時間集計をバックグラウンドで行う必要があるメトリックの精度も下がります。
+それと同時に、イベントの完全なセットを収集することは、大量のテレメトリを生成するアプリケーションには実用的でない (または不可能である) 場合があります。 イベントの量が多くなりすぎた場合、Application Insights では、収集されて格納されたイベントの数を減らすための[サンプリング](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)や[フィルター処理](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)など、テレメトリ量の削減手法がいくつか適用されます。 残念ながら、格納イベントの数を減らすと、ログに格納されるイベントのクエリ時間集計をバックグラウンドで行う必要があるメトリックの精度も下がります。
 
 > [!NOTE]
 > Application Insights では、ログに格納されているイベントと測定値のクエリ時間集計に基づくメトリックのことを、ログベースのメトリックといいます。 これらのメトリックは通常、イベント プロパティからの多くのディメンションがあり、分析には適していますが、これらのメトリックの精度はサンプリングやフィルター処理によって悪影響を受けます。
 
 ## <a name="pre-aggregated-metrics"></a>事前に集計されたメトリック
 
-ログベースのメトリックに加え、2018 年の秋に、Application Insights チームによってパブリック プレビュー版のメトリックが提供されました。このメトリックは、タイム シリーズ用に最適化された特殊なリポジトリに格納されます。 新しいメトリックは、多くのプロパティを含む個々のイベントとして保持されなくなりました。 代わりに、事前に集計されたタイム シリーズとして格納され、主なディメンションのみが含まれます。 これにより、新しいメトリックはクエリ時に適したものとなります。データはより速く取得され、必要となるコンピューティング能力が減ります。 その結果、[メトリックのディメンションに関するほぼリアルタイムのアラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)や応答性の高い[ダッシュボード](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)など、新しいシナリオが有効になります。
+ログベースのメトリックに加え、2018 年後半に、Application Insights チームによってパブリック プレビュー版のメトリックが提供されました。このメトリックは、タイム シリーズ用に最適化された特殊なリポジトリに格納されます。 新しいメトリックは、多くのプロパティを含む個々のイベントとして保持されなくなりました。 代わりに、事前に集計されたタイム シリーズとして格納され、主なディメンションのみが含まれます。 これにより、新しいメトリックはクエリ時に適したものとなります。データはより速く取得され、必要となるコンピューティング能力が減ります。 その結果、[メトリックのディメンションに関するほぼリアルタイムのアラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)や応答性の高い[ダッシュボード](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)など、新しいシナリオが有効になります。
 
 > [!IMPORTANT]
 > Application Insights では、ログベースのメトリックと事前に集計されたメトリックの両方が共存します。 2 つを区別するため、Application Insights UX では、事前に集計されたメトリックを "標準メトリック (プレビュー)" と呼ぶようになり、イベントからの従来のメトリックは "ログベースのメトリック" という名前に変更されました。
@@ -62,6 +62,12 @@ ms.locfileid: "79234659"
 [Azure Monitor メトリックス エクスプローラー](../platform/metrics-getting-started.md)を使用して、事前に集計されたメトリックとログベースのメトリックに基づいてグラフを描画し、そのグラフを使ってダッシュボードを作成します。 目的の Application Insights リソースを選択した後、名前空間ピッカーを使用して、標準 (プレビュー) メトリックとログベースのメトリックを切り替えるか、カスタム メトリック名前空間を作成します。
 
 ![メトリック名前空間](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+
+## <a name="pricing-models-for-application-insights-metrics"></a>Application Insights メトリックの価格モデル
+
+メトリックを Application Insights に取り込むと、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)で説明されているように、ログベースか事前に集計されているかにかかわらず、取り込まれたデータのサイズに基づいてコストが発生します。 すべてのディメンションを含むカスタム メトリックは常に Application Insights ログストアに格納されます。さらに、カスタム メトリックの事前に集計されたバージョン (ディメンションなし) は既定でメトリック ストアに転送されます。
+
+[[カスタム メトリック ディメンションに関するアラートを有効にします]](#custom-metrics-dimensions-and-pre-aggregation) オプションを選択して、事前に集計されたメトリックのすべてのディメンションをメトリック ストアに格納すると、[カスタム メトリックの価格](https://azure.microsoft.com/pricing/details/monitor/)に基づいて**追加の**コストが生じる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

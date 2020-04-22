@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT エージェントを選択してデプロイする | Microsoft Docs
+title: セキュリティ エージェントを選択してデプロイする
 description: IoT デバイスに Azure Security Center for IoT セキュリティ エージェントを選択してデプロイする方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770018"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311218"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -29,7 +29,8 @@ Azure Security Center for IoT では、IoT デバイスを監視してデータ�
 
 エージェントはオープン ソース プロジェクトとして開発されており、2 つのフレーバーがあります。 <br> それは、[C](https://aka.ms/iot-security-github-c) と [C#](https://aka.ms/iot-security-github-cs) です。
 
-この記事では、次のことについて説明します。 
+この記事では、次のことについて説明します。
+
 > [!div class="checklist"]
 > * セキュリティ エージェントのフレーバーを比較します
 > * サポートされているエージェント プラットフォームを確認します
@@ -37,9 +38,9 @@ Azure Security Center for IoT では、IoT デバイスを監視してデータ�
 
 ## <a name="understand-security-agent-options"></a>セキュリティ エージェントのオプションを理解する
 
-すべての Azure Security Center for IoT セキュリティ エージェントのフレーバーでは、同じ機能のセットが提供され、似た構成オプションがサポートされています。 
+すべての Azure Security Center for IoT セキュリティ エージェントのフレーバーでは、同じ機能のセットが提供され、似た構成オプションがサポートされています。
 
-C ベースのセキュリティ エージェントはメモリ占有領域が小さく、使用できるリソースが少ないデバイスに最適です。 
+C ベースのセキュリティ エージェントはメモリ占有領域が小さく、使用できるリソースが少ないデバイスに最適です。
 
 |     | C ベースのセキュリティ エージェント | C# ベースのセキュリティ エージェント |
 | --- | ----------- | --------- |
@@ -59,20 +60,19 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 
 ## <a name="security-agent-installation-guidelines"></a>セキュリティ エージェントのインストール ガイドライン
 
-**Windows** の場合:InstallSecurityAgent.ps1 スクリプトは、管理者の PowerShell ウィンドウから実行する必要があります。 
+**Windows** の場合:InstallSecurityAgent.ps1 スクリプトは、管理者の PowerShell ウィンドウから実行する必要があります。
 
 **Linux** の場合:InstallSecurityAgent.sh はスーパーユーザーとして実行する必要があります。 インストール コマンドの前に "sudo" を付けることをお勧めします。
 
-
-## <a name="choose-an-agent-flavor"></a>エージェントのフレーバーを選択する 
+## <a name="choose-an-agent-flavor"></a>エージェントのフレーバーを選択する
 
 IoT デバイスに関する次の質問に答えて、適切なエージェントを選択します。
 
-- _Windows Server_ または _Windows IoT Core_ を使用していますか? 
+- _Windows Server_ または _Windows IoT Core_ を使用していますか?
 
     [Windows 用の C# ベースのセキュリティ エージェントをデプロイします](how-to-deploy-windows-cs.md)。
 
-- x86 アーキテクチャの Linux ディストリビューションを使用していますか? 
+- x86 アーキテクチャの Linux ディストリビューションを使用していますか?
 
     [Linux 用の C ベースのセキュリティ エージェントをデプロイします](how-to-deploy-linux-c.md)。
 
@@ -90,10 +90,10 @@ IoT デバイスに関する次の質問に答えて、適切なエージェン�
 
 |Azure Security Center for IoT のエージェント |オペレーティング システム |Architecture |
 |--------------|------------|--------------|
-|C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64、ARMv7|
-|C|Debian 9 |   x64、x86|
-|C#|Ubuntu 16.04    |x64|
+|C|Ubuntu 16.04 |    x64|
+|C|Ubuntu 18.04 |    x64、ARMv7|
+|C|Debian 9 |    x64、x86|
+|C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64、ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
@@ -102,6 +102,6 @@ IoT デバイスに関する次の質問に答えて、適切なエージェン�
 
 ## <a name="next-steps"></a>次のステップ
 
-構成オプションの詳細については、エージェント構成の攻略ガイドに進んでください。 
+構成オプションの詳細については、エージェント構成の攻略ガイドに進んでください。
 > [!div class="nextstepaction"]
 > [エージェント構成の攻略ガイド](./how-to-agent-configuration.md)

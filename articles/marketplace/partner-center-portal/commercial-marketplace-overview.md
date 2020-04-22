@@ -6,57 +6,70 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: 3c98a143dbc23d4d8e105785ab003258ab913a6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281444"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270402"
 ---
-# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでの商業マーケットプレース ポータルの概要
+# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース ポータルの概要
 
-Microsoft パートナー センターの商業マーケットプレース ポータルへようこそ。 [商業マーケットプレース ポータル](https://partner.microsoft.com/dashboard/commercial-marketplace/)は、自分の製品やサービスの収益化、顧客の獲得、ビジネスの成長に役立つようにデザインされています。
+パートナー センターのコマーシャル マーケットプレース ポータルへようこそ。 [コマーシャル マーケットプレース ポータル](https://partner.microsoft.com/dashboard/commercial-marketplace/) は、製品やサービスの収益化、顧客へのリーチ、ビジネスの成長に役立ちます。
 
-このドキュメントでは、パートナー センター アカウントの作成と使用、[Azure Marketplace](https://azuremarketplace.microsoft.com/) または [AppSource](https://appsource.microsoft.com/) で一覧表示できる新しいサービスとしてのソフトウェア (SaaS) オファーの作成、既存の SaaS オファーの管理、質問の支援やフィードバックの収集を行うためのリソースの提供における基本が含まれています。 
+これらの記事では、パートナー センター アカウントの作成と使用の基本について説明します。 たとえば、[Azure Marketplace](https://azuremarketplace.microsoft.com/) または [AppSource](https://appsource.microsoft.com/) に登録できる新しいオファーの作成、Cloud パートナー ポータルから移行された既存のオファーの管理、問題のサポートとフィードバックの収集に関するリソースの提供などです。
 
-## <a name="about-microsofts-commercial-marketplace"></a>Microsoft の商業マーケットプレースについて
+## <a name="about-the-commercial-marketplace"></a>コマーシャル マーケットプレースの概要
 
-あらゆる規模の企業、政府、および組織が、[Azure Marketplace](https://azuremarketplace.microsoft.com/) と [AppSource](https://appsource.microsoft.com/) の Web ストア、[Azure portal の製品内エクスペリエンス](https://portal.azure.com)、[クラウド ソリューション プロバイダー](https://partner.microsoft.com/cloud-solution-provider)、Microsoft のセールス チームを通じて、ビジネス ソリューション、革新的テクノロジ、およびイネーブルメント サービスを見つけます。 
+あらゆる規模の企業、政府、および組織が、[Azure Marketplace](https://azuremarketplace.microsoft.com/) と [AppSource](https://appsource.microsoft.com/) の Web ストア、[Azure portal の製品内エクスペリエンス](https://portal.azure.com)、[クラウド ソリューション プロバイダー](https://partner.microsoft.com/cloud-solution-provider)、Microsoft のセールス チームを通じて、ビジネス ソリューション、革新的テクノロジ、およびイネーブルメント サービスを見つけます。
 
-パートナー センターは、Microsoft パートナーのエクスペリエンスのハブです。 Microsoft を使って市場に参入し、マーケットプレースを活用する組織の場合、パートナー センターは、パブリッシャーがオファーを作成および管理し、体験版のデモを提供し、オファー パフォーマンスの分析を表示するポータルです。 
+パートナー センターは、Microsoft パートナー エクスペリエンスのハブです。 Microsoft を利用して市場に参入し、コマーシャル マーケットプレースを活用する組織は、パートナー センターのポータルを使用することで、パブリッシャーがオファーを作成および管理し、体験版のデモを提供し、オファーのパフォーマンスの分析を見ることができます。
 
 ## <a name="migration-from-cloud-partner-portal"></a>Cloud パートナー ポータルからの移行
 
-パートナー センターは、Microsoft とソフトウェア パブリッシャーとの関係のあらゆる側面をより適切に統合するように進化しています。 この進化の一部として Microsoft は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)の関数をパートナー センターに移行します。
+パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一環として、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)をパートナー センターに移行しています。
+
+既存のマーケットプレース パブリッシャーは、直観的なインターフェイスを使って、すでに馴染みのある、しかしそこからさらに改善されたユーザー エクスペリエンスを得ることができるでしょう。 移行については、ポータルの通知とメール通知でパブリッシャーに通知されます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナー エクスペリエンスのアップグレードによって、カスタマーが影響を受けることはありません。
 
 >[!NOTE]
->現在パートナー センターでは、サービスとしてのソフトウェア (SaaS) オファー、Azure アプリケーション プラン、Dynamics 365 for Customer オファー、Engagement & PowerApps オファー、Dynamics 365 for Operations オファー、および Dynamics 365 for Business Central オファーの作成と管理がサポートされています。 より多くのオファーがまもなくサポートされます。
+>現在、パートナー センターでは、次の表に示すように、一部のオファーの種類の作成と管理がサポートされています。 すべてのオファーの管理をパートナー センターに移行すると、さらに多くのオファーの種類がサポートされるようになります。
 
-既存のマーケットプレース パブリッシャーは、馴染みがありながら改善された直観的なインターフェイスを使ったユーザー エクスペリエンスを目にするでしょう。 ポータル内およびメール経由での通知で、移行についてパブリッシャーに通知されます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナーのエクスペリエンスのアップグレードによって顧客が影響を受けることはありません。
+|プランの種類  |Cloud パートナー ポータルからパートナー センターへのオファー管理の移行  |
+|---------|---------|
+|サービスとしてのソフトウェア (SaaS)     | 現在利用可能       |
+|Dynamics 365 for Customer Engagement および PowerApps     | 現在利用可能         |
+|Dynamics 365 for Operations     | 現在利用可能        |
+|Dynamics 365 for Business Central     | 現在利用可能        |
+|Azure Application     | 現在利用可能        |
+|Azure Virtual Machine     | 一般提供 2020 年 4 月から 5 月        |
+|Azure Container     | 一般提供 2020 年 4 月から 5 月        |
+|コンサルティング サービス     | 一般提供 2020 年 4 月から 5 月        |
+|IoT Edge モジュール     | 一般提供 2020 年 4 月から 5 月        |
+|Power BI アプリ    | 一般提供 2020 年 4 月から 5 月        |
 
-### <a name="improvements-on-user-experience-and-billing"></a>ユーザー エクスペリエンスと課金の改善
+### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>発行とオファー管理のユーザー エクスペリエンスの改善
 
-パートナー センターへの移行に伴い、パブリッシャーは、ユーザー エクスペリエンスの改善のほか、新しい機能を利用できます。 SaaS オファー (毎月または毎年請求される場合があります) では、サイトごとのライセンス (定額) に加えて、ユーザーごとのライセンス (シートに基づく) がサポートされます。 この新しい収益化モデルは、ビジネス ソフトウェアに理想的です。 SaaS ユーザーごとのライセンスの概要は、顧客が AppSource (ビジネスや業界のソリューション用の Microsoft の商業マーケットプレース) で購入を完了できるようにする新しい機能と連携しています。 
+パートナー センターへの移行に伴い、パブリッシャーは、ユーザー エクスペリエンスの改善のほか、新しい機能を利用できます。  詳細については、「[Cloud パートナー ポータルからパートナー センターへの移行に関してよく寄せられる質問](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq)」を参照してください。
 
 ### <a name="account-and-user-management-updates"></a>アカウントとユーザー管理の更新
 
-パートナー センターのアカウントとユーザー管理によって、個人がポータルにアクセスしたり、管理者は適切なアクセス許可を適用したりするのが簡単になります。 前のオファー管理ポータルに比べて、パートナー センターのロールベースのアクセス制御機能は、大規模な組織に対する発行プロセスをよりシンプルにする、セキュリティの拡張機能を提供します。 
+パートナー センターのアカウントとユーザー管理によって、ユーザーがポータルにアクセスしたり、管理者が適切なアクセス許可を適用したりするのが簡単になります。 前のオファー管理ポータルに比べて、パートナー センターのロールベースのアクセス制御機能は、大規模な組織に対する発行プロセスをよりシンプルにする、セキュリティの拡張機能を提供します。
 
 ### <a name="improved-certification-experience"></a>認定エクスペリエンスの向上
 
-パートナー センターでは、改善された認定エクスペリエンスが提供されます。 認定では、改善されたターンアラウンドの時間とより迅速な処理のために、自動化と機械学習を活用します。 精度の維持は引き続き最優先事項とされ、クラウド マーケットプレースが安全で、顧客に対し価値のあるオファーを含むことが確保されます。 要件は変更されませんが、パートナー センターからオファーを送信する場合、[一般向けのポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)を参照する、より詳細かつわかりやすい認定レポートを受け取ります。 
+パートナー センターでは、改善された認定エクスペリエンスが提供されます。 認定においては現在、ターンアラウンドの時間の短縮と処理の高速化のために、オートメーションと機械学習を使用しています。 精度の維持は引き続き最優先事項とされ、マーケットプレースが安全で、顧客に対し価値のあるオファーを含むことが確保されます。 要件は変更されませんが、パートナー センターからオファーを送信する場合、[一般向けのポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)を参照する、より詳細かつわかりやすい認定レポートを受け取ります。
 
 ### <a name="analytics-for-performance-reporting"></a>パフォーマンス レポートの分析
 
-パートナー センターの分析では、ご利用のオファーのパフォーマンスへのビューと改善されたレポート ツールが提供されます。 パブリッシャーは、データの視覚化を使って売上を監視したり、分析情報のグラフを使ってリストを最適化したりすることができます。 改善された分析ツールにより、パフォーマンスの結果に基づいて行動し、顧客とリセラーとの優れた関係を維持することができます。 
+パートナー センターの分析では、ご利用のオファーのパフォーマンスへのビューと改善されたレポート ツールが提供されます。 パブリッシャーは、データの視覚化を使って売上を監視したり、分析情報のグラフを使ってリストを最適化したりすることができます。 改善された分析ツールにより、パフォーマンスの結果に基づいて行動し、顧客とリセラーとの優れた関係を維持することができます。
 
 ## <a name="view-the-roadmap-and-join-the-conversation"></a>ロードマップを表示して会話に参加する
 
-[マーケットプレースのロードマップ](https://aka.ms/publicmarketplaceroadmap)に関するページにアクセスして、最近のリリースと将来のリリースに関する詳細を参照するか、「[Microsoft Partner Community](https://www.microsoftpartnercommunity.com/)」 (Microsoft パートナー コミュニティ) の会話に参加します。 
+最近のリリースと今後のリリースの詳細については、[Microsoft コマーシャル マーケット ロードマップ](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)にアクセスするか、または、[Microsoft Partner Community](https://www.microsoftpartnercommunity.com/) での会話に参加してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- マーケットプレースへの SaaS オファーの公開に関心があるまったく新しい Microsoft パートナーの場合、[パートナー センターで商業マーケットプレース アカウントを作成します](./create-account.md)。
-- Cloud パートナー ポータルで以前にオファーを公開している既存のパートナーの場合、[パートナー センターで商業マーケットプレース アカウントを管理します](./manage-account.md)。 
-- こちらの[パートナー コミュニティのブログ投稿](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293) (デモ ビデオを含む) のパートナー センターに移動するクラウド マーケットプレースの管理の詳細をご確認ください。
+- マーケットプレースへのオファー発行に関心をお持ちの新規 Microsoft パートナーは、「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)」をお読みください。
+- Microsoft Cloud パートナー ポータルで過去にオファーを公開したことのある既存のパートナーは、「[パートナー センターでコマーシャル マーケットプレイス アカウントを管理する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)」 を参照してください。
+- クラウド マーケットプレース管理のパートナー センターへの移行の詳細については、「[パートナー コミュニティのブログ投稿](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)」を参照してください。ここにはデモ ビデオも含まれています。

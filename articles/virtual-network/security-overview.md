@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123334"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269875"
 ---
 # <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 <a name="network-security-groups"></a>
 
-ネットワーク セキュリティ グループを使用して、Azure 仮想ネットワークの Azure リソース間のネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、いくつかの種類の Azure リソースとの受信ネットワーク トラフィックまたは送信ネットワーク トラフィックを許可または拒否するセキュリティ規則が含まれています。 どの種類の Azure リソースを仮想ネットワークへのデプロイ後にネットワーク セキュリティ グループに関連付けできるのかについては、「[Azure サービスの仮想ネットワーク統合](virtual-network-for-azure-services.md)」を参照してください。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
+Azure 仮想ネットワーク内の Azure リソースが送受信するネットワーク トラフィックは、Azure ネットワーク セキュリティ グループを使ってフィルター処理できます。 ネットワーク セキュリティ グループには、何種類かの Azure リソースとの送受信ネットワーク トラフィックを許可または拒否する[セキュリティ規則](#security-rules)が含まれています。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
+この記事では、ネットワーク セキュリティ グループ規則のプロパティ、適用される[既定のセキュリティ規則](#default-security-rules)、および変更して[拡張セキュリティ規則](#augmented-security-rules)を作成できる規則のプロパティについて説明します。
 
-この記事では、ネットワーク セキュリティ グループを効果的に使用できるように、その概念について説明します。 ネットワーク セキュリティ グループを作成したことがない場合は、簡単な[チュートリアル](tutorial-filter-network-traffic.md)で作成作業を体験することができます。 ネットワーク セキュリティ グループに精通していて、それらを管理する必要がある場合は、[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関するページを参照してください。 通信に問題があり、ネットワーク セキュリティ グループのトラブルシューティングが必要な場合は、「[仮想マシン ネットワーク トラフィック フィルターの問題を診断する](diagnose-network-traffic-filter-problem.md)」を参照してください。 [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を有効にして、ネットワーク セキュリティ グループが関連付けられているリソース間のネットワーク トラフィックを分析することができます。
-
-## <a name="security-rules"></a>セキュリティ規則
+## <a name="security-rules"></a><a name="security-rules"></a> セキュリティ規則
 
 ネットワーク セキュリティ グループには、0 個、または Azure サブスクリプションの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)内の任意の数の規則が含まれています。 各規則では次のプロパティを指定します。
 
@@ -46,7 +45,7 @@ ms.locfileid: "80123334"
 
 ネットワーク セキュリティ グループ内に作成できるセキュリティ規則の数には、制限があります。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
-### <a name="default-security-rules"></a>既定セキュリティ規則
+### <a name="default-security-rules"></a><a name="default-security-rules"></a> 既定のセキュリティ規則
 
 作成する各ネットワーク セキュリティ グループに、Azure によって次の既定の規則が作成されます。
 
@@ -94,7 +93,7 @@ ms.locfileid: "80123334"
  
 既定の規則は削除できませんが、優先順位の高い規則を作成することでオーバーライドできます。
 
-### <a name="augmented-security-rules"></a>拡張セキュリティ規則
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a> 拡張セキュリティ規則
 
 拡張セキュリティ規則を使用すると仮想ネットワークのセキュリティ定義が簡略化され、大規模で複雑なネットワーク セキュリティ ポリシーを少ない規則で定義できます。 複数のポート、複数の明示的 IP アドレスおよび範囲を組み合わせて、単一のわかりやすいセキュリティ規則を作成することができます。 拡張規則は、規則のソース、宛先、ポート フィールドで使います。 セキュリティ規則の定義の保守を簡素化するには、拡張セキュリティ規則と[サービス タグ](service-tags-overview.md) または [アプリケーション セキュリティ グループ](#application-security-groups) を組み合わせます。 規則に指定できるアドレス、範囲、およびポートの数には、制限があります。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
@@ -170,4 +169,8 @@ Azure がネットワーク セキュリティ グループの受信規則と送
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ネットワーク セキュリティ グループの作成](tutorial-filter-network-traffic.md)方法を学習します。
+* どの種類の Azure リソースを仮想ネットワークへのデプロイ後にネットワーク セキュリティ グループに関連付けできるのかについては、「[Azure サービスの仮想ネットワーク統合](virtual-network-for-azure-services.md)」を参照してください
+* ネットワーク セキュリティ グループを作成したことがない場合は、簡単な[チュートリアル](tutorial-filter-network-traffic.md)で作成作業を体験することができます。 
+* ネットワーク セキュリティ グループに精通していて、それらを管理する必要がある場合は、[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関するページを参照してください。 
+* 通信に問題があり、ネットワーク セキュリティ グループのトラブルシューティングが必要な場合は、「[仮想マシン ネットワーク トラフィック フィルターの問題を診断する](diagnose-network-traffic-filter-problem.md)」を参照してください。 
+* [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を有効にして、ネットワーク セキュリティ グループが関連付けられているリソース間のネットワーク トラフィックを分析する方法を参照してください。

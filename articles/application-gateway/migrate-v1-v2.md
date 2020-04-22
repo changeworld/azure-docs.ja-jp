@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77046196"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312050"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -36,10 +36,11 @@ ms.locfileid: "77046196"
 
 * 新しい v2 ゲートウェイには、新しいパブリックおよびプライベート IP アドレスがあります。 既存の v1 ゲートウェイに関連付けられている IP アドレスを、v2 にシームレスに移動することはできません。 ただし、既存の (未割り当ての) パブリックまたはプライベート IP アドレスを、新しい v2 ゲートウェイに割り当てることはできます。
 * v1 ゲートウェイが配置されている仮想ネットワーク内の別のサブネットの IP アドレス空間を指定する必要があります。 スクリプトでは、v1 ゲートウェイが既に存在する既存のサブネットに v2 ゲートウェイを作成することはできません。 ただし、既存のサブネットに既に v2 ゲートウェイがあり、十分な IP アドレス空間がある場合は、引き続き動作させることができます。
-* SSL 構成を移行するには、v1 ゲートウェイで使用されているすべての SSL 証明書を指定する必要があります。
-* v1 ゲートウェイに対して FIPS モードを有効にしている場合、それは新しい v2 ゲートウェイには移行されません。 FIPS モードは v2 ではサポートされません。
+* TLS または SSL 構成を移行するには、v1 ゲートウェイで使用されているすべての TLS または SSL 証明書を指定する必要があります。
+* v1 ゲートウェイで FIPS モードを有効にしている場合は、新しい v2 ゲートウェイに移行されません。 FIPS モードは v2 ではサポートされません。
 * v2 では IPv6 がサポートされていないため、IPv6 が有効になっている v1 ゲートウェイは移行されません。 スクリプトを実行しても、完了しない可能性があります。
 * v1 ゲートウェイにプライベート IP アドレスのみがある場合、スクリプトでは、新しい v2 ゲートウェイ用のパブリック IP アドレスとプライベート IP アドレスが作成されます。 v2 ゲートウェイでは、現在、プライベート IP アドレスのみはサポートされていません。
+* 文字、数字、ハイフン、およびアンダースコア以外を含む名前のヘッダーは、アプリケーションに渡されません。 ヘッダーの値ではなくヘッダー名にのみ適用されます。 これは v1 からの重大な変更です。
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
@@ -100,7 +101,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 
    * **subnetAddressRange: [String]:必須** - 新しい v2 ゲートウェイを含む新しいサブネットに割り当てた (または割り当てる) IP アドレス空間です。 これは、CIDR 表記で指定する必要があります。 次に例を示します。10.0.0.0/24。 このサブネットを事前に作成しておく必要はありません。 存在しない場合はスクリプトによって作成されます。
    * **appgwName: [String]:省略可能**。 新しい Standard_v2 または WAF_v2 ゲートウェイの名前として使用するように指定する文字列です。 このパラメーターが指定されていない場合、サフィックス *_v2* が付加された既存の v1 ゲートウェイの名前が使用されます。
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]:省略可能**。  新しい v2 ゲートウェイにアップロードする必要がある、v1 ゲートウェイの SSL 証明書を表すために作成する PSApplicationGatewaySslCertificate オブジェクトのコンマ区切りの一覧です。 Standard v1 または WAF v1 ゲートウェイ用に構成された SSL 証明書のそれぞれに対して、次に示す `New-AzApplicationGatewaySslCertificate` コマンドを使用して新しい PSApplicationGatewaySslCertificate オブジェクトを作成することができます。 SSL 証明書ファイルへのパスとパスワードが必要です。
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]:省略可能**。  新しい v2 ゲートウェイにアップロードする必要がある、v1 ゲートウェイの TLS または SSL 証明書を表すために作成する PSApplicationGatewaySslCertificate オブジェクトのコンマ区切りの一覧です。 Standard v1 または WAF v1 ゲートウェイ用に構成された TLS または SSL 証明書のそれぞれに対して、次に示す `New-AzApplicationGatewaySslCertificate` コマンドを使用して新しい PSApplicationGatewaySslCertificate オブジェクトを作成することができます。 TLS または SSL 証明書ファイルへのパスとパスワードが必要です。
 
      このパラメーターは、v1 ゲートウェイまたは WAF 用に構成された HTTPS リスナーがない場合は省略可能です。 HTTPS リスナーのセットアップが少なくとも 1 つある場合、このパラメーターを指定する必要があります。
 

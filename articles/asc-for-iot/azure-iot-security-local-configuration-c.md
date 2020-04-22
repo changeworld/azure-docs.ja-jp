@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center での C のエージェント ローカル構成について | Microsoft Docs
+title: セキュリティ エージェントのローカル構成 (C)
 description: Azure Security Center での C のエージェント ローカル構成について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,26 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2725a824da26dafcbc215e4c302ec38ad4b5a699
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68600310"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311702"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json ファイルについて - C エージェント
 
 Azure Security Center for IoT セキュリティ エージェントでは、ローカル構成ファイルの構成が使用されます。
 このセキュリティ エージェントは、エージェントの起動時に構成を 1 回読み取ります。
 ローカル構成ファイルにある構成には、認証構成およびその他のエージェント関連の構成が含まれます。
-このファイルには、JSON 表記の "キーと値" ペアの構成が含まれています。この構成はエージェントのインストール時に取り込まれます。 
+このファイルには、JSON 表記の "キーと値" ペアの構成が含まれています。この構成はエージェントのインストール時に取り込まれます。
 
 既定では、このファイルの場所は /var/ASCIoTAgent/LocalConfiguration.json です。
 
-構成ファイルへの変更は、エージェントの再起動時に有効になります。 
+構成ファイルへの変更は、エージェントの再起動時に有効になります。
 
 ## <a name="security-agent-configurations-for-c"></a>C のセキュリティ エージェント構成
-| 構成名 | 指定できる値 | 詳細 | 
+
+| 構成名 | 指定できる値 | 詳細 |
 |:-----------|:---------------|:--------|
 | AgentId | GUID | エージェントの一意識別子 |
 | TriggerdEventsInterval | ISO8601 文字列 | トリガーされたイベント収集のスケジューラ間隔 |
@@ -53,6 +54,7 @@ Azure Security Center for IoT セキュリティ エージェントでは、ロ�
 | DiagnosticEventMinimumSeverity | 0 <= 数値 <= 4 | この重大度以上のログ メッセージは、診断イベントとして送信されます (0 は最も低い重大度です) |
 
 ## <a name="security-agent-configurations-code-example"></a>セキュリティ エージェント構成のコード例
+
 ```JSON
 {
     "Configuration" : {
@@ -79,6 +81,7 @@ Azure Security Center for IoT セキュリティ エージェントでは、ロ�
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
 - Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - Azure Security Center for IoT の[サービス](quickstart-onboard-iot-hub.md)を有効にします

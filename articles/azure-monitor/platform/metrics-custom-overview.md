@@ -7,24 +7,41 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294591"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270708"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
-Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらは標準メトリックまたはプラットフォーム メトリックと呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。
+Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。
 これらの**カスタム** メトリックは、アプリケーション テレメトリ、Azure リソース上で実行されるエージェント、またはアウトサイドイン型の監視システムによって収集し、Azure Monitor に直接送信することができます。 Azure のリソースおよびアプリケーションのカスタム メトリックが Azure Monitor に発行されたら、Azure によって出力された標準メトリックと共に、それらのメトリックを参照、クエリしたり、メトリックに基づいたアラートを設定したりできます。
 
-## <a name="send-custom-metrics"></a>カスタム メトリックを送信する
+## <a name="methods-to-send-custom-metrics"></a>カスタム メトリックを送信する方法
+
 カスタム メトリックは複数の方法で Azure Monitor に送信できます。
 - Azure Application Insights SDK を使用してアプリケーションをインストルメント化し、カスタム テレメトリを Azure Monitor に送信する。 
 - [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[仮想マシン スケール セット](collect-custom-metrics-guestos-resource-manager-vmss.md)、[クラシック VM](collect-custom-metrics-guestos-vm-classic.md)、または[クラシック Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) に Windows Azure 診断 (WAD) 拡張機能をインストールして、パフォーマンス カウンターを Azure Monitor に送信する。 
 - [InfluxData Telegraf エージェント](collect-custom-metrics-linux-telegraf.md)を Azure Linux VM にインストールし、Azure Monitor 出力プラグインを使用してメトリックを送信する。
 - [Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
+
+## <a name="pricing-model"></a>価格モデル
+
+標準メトリック (プラットフォーム メトリック) を Azure Monitor メトリック ストアに取り込むためにコストはかかりません。 Azure Monitor メトリック ストアに取り込まれたカスタム メトリックは、書き込まれた各カスタム メトリック データ ポイントのサイズは 8 バイトと見なされ、MByte ごとに課金されます。 すべての取り込まれたメトリックは 90 日間保持されます。
+
+メトリック クエリは、標準 API の呼び出し数に基づいて課金されます。 標準 API 呼び出しとは、1,440 データ ポイントを分析する呼び出しです (1,440 は、1 日あたりのメトリックごとに保存できるデータ ポイントの合計数でもあります)。 API 呼び出しで 1,440 を超えるデータ ポイントを分析する場合、複数回の標準 API 呼び出しとしてカウントされます。 API 呼び出しで 1,440 未満のデータ ポイントを分析する場合、1 回以下の API 呼び出しとしてカウントされます。 標準 API 呼び出しの数は、1 日に分析されるデータ ポイントの合計数を 1,440 で割った値として毎日計算されます。
+
+カスタム メトリックとメトリック クエリの具体的な価格の詳細については、[「Azure Monitor の価格」ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
+
+> [!NOTE]  
+> Application Insights SDK を介して Azure Monitor に送信されたメトリックは、取り込まれたログ データとして課金されます。また、[カスタム メトリック ディメンションに対してアラートを有効にする](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) Application Insights の機能が選択されている場合にのみ、追加のメトリック料金が発生します。 詳細については、[Application Insights の価格モデル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)と、[お客様のリージョンでの価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。
+
+> [!NOTE]  
+> カスタム メトリックとメトリック クエリに対する課金を有効にする場合の詳細については、[「Azure Monitor の価格」ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 
+
+## <a name="how-to-send-custom-metrics"></a>カスタム メトリックを送信する方法
 
 Azure Monitor にカスタム メトリックを送信するときは、報告する各データ ポイント (または値) に次の情報が含まれている必要があります。
 
@@ -34,7 +51,7 @@ Azure Monitor にカスタム メトリックを送信するには、メトリ�
 2. [Azure AD サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 このシナリオでは、Azure リソースについてのメトリックを出力するためのアクセス許可を Azure AD アプリケーション (またはサービス) に割り当てることができます。
 要求を認証するために、Azure Monitor は Azure AD 公開キーを使用してアプリケーション トークンを検証します。 既存の "**メトリックの発行元の監視**" ロールには、既にこのアクセス許可が付与されています。 これは Azure portal で入手できます。 サービス プリンシパルには、どのようなリソースについてのカスタム メトリックをそれが出力するのかに応じて、必要なスコープで "**メトリックの発行元の監視**" ロールを付与することができます。 (たとえば、サブスクリプション、リソース グループ、または特定のリソース)。
 
-> [!NOTE]  
+> [!TIP]  
 > カスタム メトリックを出力するための Azure AD トークンを要求する場合は、トークンの要求対象であるユーザーやリソースが、`https://monitoring.azure.com/` であることを確認してください。 必ず、末尾のスラッシュ (/) を含めるようにしてください。
 
 ### <a name="subject"></a>サブジェクト
@@ -42,8 +59,7 @@ Azure Monitor にカスタム メトリックを送信するには、メトリ�
 
 > [!NOTE]  
 > リソース グループまたはサブスクリプションのリソース ID に対してカスタム メトリックを出力することはできません。
->
->
+
 
 ### <a name="region"></a>リージョン
 このプロパティは、メトリックを出力する対象のリソースがデプロイされている Azure リージョンを表します。 メトリックは、リソースがデプロイされているリージョンと同じリージョンの Azure Monitor エンドポイントに出力される必要があります。 たとえば、米国西部にデプロイされている VM についてのカスタム メトリックは、WestUS リージョンの Azure Monitor エンドポイントに送信される必要があります。 リージョン情報は API 呼び出しの URL にもエンコードされます。

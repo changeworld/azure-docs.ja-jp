@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT のベースラインを理解する | Microsoft Docs
+title: ベースラインとカスタム チェック
 description: Azure Security Center for IoT のベースラインの概念について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72176619"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311653"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center for IoT のベースラインとカスタム チェック
 
@@ -28,11 +28,11 @@ ms.locfileid: "72176619"
 
 ## <a name="baseline"></a>ベースライン
 
-ベースラインは、デバイスごとの標準的な動作を確立し、異常な動作や想定される基準からの逸脱を容易に明確化できるようにすることです。  
+ベースラインは、デバイスごとの標準的な動作を確立し、異常な動作や想定される基準からの逸脱を容易に明確化できるようにすることです。
 
 ## <a name="baseline-custom-checks"></a>ベースラインのカスタム チェック
 
-ベースラインのカスタム チェックでは、デバイスの**モジュール ID ツイン**を使用して、各デバイスのベースラインに対するカスタム チェック リストが確立されます。 
+ベースラインのカスタム チェックでは、デバイスの**モジュール ID ツイン**を使用して、各デバイスのベースラインに対するカスタム チェック リストが確立されます。
 
 ## <a name="setting-baseline-properties"></a>ベースライン プロパティの設定
 

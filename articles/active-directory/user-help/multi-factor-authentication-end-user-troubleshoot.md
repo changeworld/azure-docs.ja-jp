@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897722"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271694"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの一般的な問題
 
@@ -65,6 +65,7 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 応答不可をオフにします | モバイル デバイスの**応答不可**機能が有効になっていないことを確認します。 この機能が有効になっていると、モバイル デバイスで通知を受け取ることができません。 この機能を無効にする方法については、モバイル デバイスのマニュアルを参照してください。
 電話番号をブロック解除します | 米国の場合、Microsoft からの音声通話は、+1 (866) 539 4191、+1 (855) 330 8653、+1 (877) 668 6536 から発信されます。
 バッテリに関連する設定を確認します | これは少し奇妙に思えますが、バッテリの最適化を設定し、使用頻度の低いアプリがバックグラウンドでアクティブのままにならないようになっている場合、通知システムは影響を受ける可能性が最も高くなります。 この問題を解決するには、認証アプリとメッセージング アプリのバッテリ最適化を無効にしてから、もう一度アカウントにサインインしてみてください。
+サードパーティ製のセキュリティ アプリを無効にします | 不明な発信者を最小限に抑えるためにテキスト メッセージや電話の呼び出しを保護するアプリがある場合、確認コードを受信できなくなる可能性があります。 お使いの電話でサードパーティ製のセキュリティ アプリを無効にしてから、確認コードをもう一度送信するように依頼してください。
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>2 番目の検証情報を求めるメッセージが表示されません
 
@@ -72,7 +73,7 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 
 ## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>新しい電話番号にしたので追加したい
 
-電話番号が新しくなった場合は、検証プロンプトが適切な場所に送られるように、セキュリティ検証方法の詳細を更新する必要があります。 検証方法を更新するには、「**2 要素認証方法の設定を管理する**」記事の「[電話番号を追加または変更する](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number)」の手順に従います。
+電話番号が新しくなった場合は、検証プロンプトが適切な場所に送られるように、セキュリティ検証方法の詳細を更新する必要があります。 検証方法を更新するには、「[2 要素認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number)」記事の「**電話番号を追加または変更する**」の手順に従います。
 
 ## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>新しいモバイル デバイスを入手したので追加したい
 
@@ -86,7 +87,7 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 
 - 「[Microsoft Authenticator アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」の手順に従って、モバイル デバイスに Microsoft Authenticator アプリをダウンロードしてインストールし、セットアップします。
 
-- 信頼されたデバイスの 2 要素認証を有効にするには、「**2 要素認証方法の設定を管理する**」の「[信頼されたデバイスで 2 要素認証のプロンプトを有効にする](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)」に関する手順に従います。
+- 信頼されたデバイスの 2 要素認証を有効にするには、「[2 要素認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)」の「**信頼されたデバイスで 2 要素認証のプロンプトを有効にする**」に関する手順に従います。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>旅行中にモバイル デバイスにサインインするときに問題が発生します
 
@@ -94,11 +95,13 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>アプリ パスワードを動作させることができません
 
-2 要素認証がサポートされていない古いバージョンのデスクトップ アプリケーションでは、アプリ パスワードによって通常のパスワードが置き換えられます。 まず、パスワードを正しく入力したことを確認してください。 それでも問題が解決しない場合は、「**2 段階認証のアプリ パスワードを管理する**」の「[MyApps ポータルを使用してアプリ パスワードを作成および削除する](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」の手順に従って、アプリの新しいアプリ パスワードを作成してみてください。
+2 要素認証がサポートされていない古いバージョンのデスクトップ アプリケーションでは、アプリ パスワードによって通常のパスワードが置き換えられます。 まず、パスワードを正しく入力したことを確認してください。 それでも問題が解決しない場合は、「[2 段階認証のアプリ パスワードを管理する](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」の「**MyApps ポータルを使用してアプリ パスワードを作成および削除する**」の手順に従って、アプリの新しいアプリ パスワードを作成してみてください。
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>2 要素認証を無効にできません
 
 職場または学校のアカウント (alain@contoso.com など) で 2 要素認証を使用している場合、追加したこのセキュリティ機能を使用しなければならないと組織が決定している可能性があります。 この機能を使用しなければならないことは組織の決定であるため、個人でこれを無効にすることはできません。 ただし、alain@outlook.com のような個人アカウントで 2 要素認証を使用している場合は、この機能の有効/無効を切り替えることができます。 個人のアカウントに対する 2 要素認証を制御する方法については、[Microsoft アカウントの 2 段階認証を有効または無効にする](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページをご覧ください。
+
+2 要素認証を無効にできない場合は、組織レベルで適用されているセキュリティの既定値群が原因である可能性もあります。 セキュリティの既定値群の詳細については、「[セキュリティ デフォルトとは](../fundamentals/concept-fundamentals-security-defaults.md)」を参照してください。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>問題に対する回答が見つからなかった場合
 

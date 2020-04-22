@@ -7,19 +7,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278026"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273972"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>出品する仮想マシンの技術資産を作成する
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://aka.ms/AzureVMTechAsset)」の手順に従って、移行されたオファーを管理します。
 
 このセクションでは､Azure Marketplace に出品する仮想マシン (VM) の技術資産を作成､構成する手順を説明します｡  1 つの VM は､ソリューション用の仮想ハード ディスク (VHD) と関連するデータ ディスク オプションの 2 つのコンポーネントで構成されてます｡  
 
 - *仮想ハード ディスク (VHD)* - オペレーティング システムとソリューションで構成されるディスクで､Azure Marketplace に出品する機能を使ってデプロイします｡ VHD の準備プロセスは､その仮想マシンが Linux､Windows､またはカスタム ベースであるかによって異なります｡
-- *データ ディスク* - 仮想マシンに対する専用の永続的なストレージです｡ 永続的な情報の格納にソリューション用 VHD ( *ドライブなど) を*使用してはいけません`C:`｡
+- *データ ディスク* - 仮想マシンに対する専用の永続的なストレージです｡ 永続的な情報の格納にソリューション用 VHD (`C:` ドライブなど) を*使用してはいけません*｡
 
 VM イメージには、1 個のオペレーティング システム ディスクと 0 個以上のデータ ディスクが含まれます。 ディスクごとに 1 つの VHD が必要です。 空のデータ ディスクにも VHD を作成する必要があります。
 接続したデータ ディスク （最大 15 のディスク） を開くには､VM の OS、サイズ､ポートを構成する必要があります｡
@@ -35,26 +38,26 @@ VM イメージには、1 個のオペレーティング システム ディス�
 ## <a name="fundamental-technical-knowledge"></a>技術的な知識の基礎
 
 こうした資産の設計と構築､テストには時間がかかり､Azure プラットフォームとその構築に使用する技術に関する知識が必要です。 エンジニアリング チームには､ソリューションのドメインばかりでなく､Microsoft の次の技術に関する知識も必要です。 
--   [Azure Services](https://azure.microsoft.com/services/) に関する基本知識 
--   [Azure アプリケーションそのものとそのアーキテクチャを](https://azure.microsoft.com/solutions/architecture/)設計する方法
--   [Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/) と [Azure ストレージ](https://azure.microsoft.com/services/?filter=storage)､[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking)に関する実用的な知識
--   [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) に関する実用的な知識
--   [JSON](https://www.json.org/) に関する実用的な知識
+-    [Azure Services](https://azure.microsoft.com/services/) に関する基本知識 
+-    [Azure アプリケーションそのものとそのアーキテクチャを](https://azure.microsoft.com/solutions/architecture/)設計する方法
+-    [Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/) と [Azure ストレージ](https://azure.microsoft.com/services/?filter=storage)､[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking)に関する実用的な知識
+-    [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) に関する実用的な知識
+-    [JSON](https://www.json.org/) に関する実用的な知識
 
 
 ## <a name="suggested-tools"></a>推奨ツール 
 
 VHD と VM の管理に役立つ次のスクリプト環境のいずれか一方､または両方を利用することを推奨します｡
--   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 また､開発環境には次にツールを加えることを推奨します｡ 
 
--   [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio Code](https://code.visualstudio.com/)
-    *   拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 また､[Azure Developer Tools](https://azure.microsoft.com/tools/) ページの記載されている利用可能なツールもご覧になることをお勧めします｡Visual Studio を使用する場合は､[Visual Studio Marketplace](https://marketplace.visualstudio.com/) もご覧ください｡
 

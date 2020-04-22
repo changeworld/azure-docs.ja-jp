@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286423"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273156"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure 仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://aks.ms/CertifyVMimage)」の手順に従ってください。
 
 この記事は、自己テスト API を使用するクライアント サービスを作成する場合のガイドとして使用してください。 自己テスト API を使用して仮想マシン (VM) を事前検証することで、Azure Marketplace の最新の公開要件を確実に満たすことができます。 このクライアント サービスを使用すると、マイクロソフト認定資格を受けるためにオファーを送信する前に VM をテストできます。
 
@@ -219,7 +222,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 次の手順を使用して、アプリケーションを作成する Azure AD テナントを選択します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 上部のメニュー バーにある自分のアカウントを選択し、[ディレクトリ] 一覧から、アプリケーションを登録する Active Directory テナントを選択します。 または、 **[ディレクトリ + サブスクリプション]** アイコンを選択してグローバル サブスクリプション フィルターを表示します。 次のスクリーン キャプチャは、このフィルターの例を示しています。
 
    ![サブスクリプション フィルターを選択する](./media/stclient-subscription-filter.png)
@@ -249,7 +252,7 @@ https://isvapp.azurewebsites.net/selftest-vm
    - **アプリケーションの種類** - **[Web アプリ/API]** を選択します
    - **サインオン URL** - 「https:\//isvapp.azurewebsites.net/selftest-vm」と入力します
 
-4. **作成** を選択します。
+4. **［作成］** を選択します
 5. **[アプリの登録]** または **[登録済みのアプリ]** の下に **[アプリケーション ID]** をコピーします。
 
    ![アプリケーション ID を取得する](./media/stclient-app-id.png)
@@ -269,7 +272,7 @@ https://isvapp.azurewebsites.net/selftest-vm
     ![アプリの API アクセスを有効にする](./media/stclient-enable-api-access.png)
 
 14. **[選択]** をクリックします。
-15. **[完了]** を選択します。
+15. **[Done]** を選択します。
 16. **[設定]** で **[プロパティ]** を選択します。
 17. **[プロパティ]** で **[マルチテナント]** まで下にスクロールします。 **[はい]** を選択します。
 

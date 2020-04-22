@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT デバイス調査ガイド | Microsoft Docs
+title: 疑わしいデバイスを調査する
 description: この攻略ガイドでは、Log Analytics を使用して疑わしい IoT デバイスを調査するために Azure Security Center for IoT を使用する方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,23 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8d2fe8d63c7ece6f3b3426d8fc5a3454a61826f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596239"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311047"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>疑わしい IoT デバイスを調査する
 
-Azure Security Center for IoT サービスのアラートでは、IoT デバイスが不審なアクティビティに関与していると疑われる場合、またはデバイスが侵害されている兆候が存在する場合に、それが明確に通知されます。 
+Azure Security Center for IoT サービスのアラートでは、IoT デバイスが不審なアクティビティに関与していると疑われる場合、またはデバイスが侵害されている兆候が存在する場合に、それが明確に通知されます。
 
-このガイドでは、組織に対する潜在的なリスクの特定、修復方法の決定、および今後の同様の攻撃を防ぐための最善の方法の発見を支援するために提供される、調査の提案を使用します。  
+このガイドでは、組織に対する潜在的なリスクの特定、修復方法の決定、および今後の同様の攻撃を防ぐための最善の方法の発見を支援するために提供される、調査の提案を使用します。
 
 > [!div class="checklist"]
 > * デバイス データを探す
 > * kql クエリを使用して調査する
-
 
 ## <a name="how-can-i-access-my-data"></a>自分のデータにアクセスする方法
 
@@ -39,15 +38,15 @@ Azure Security Center for IoT サービスのアラートでは、IoT デバイ�
 
 データ ストレージ用の Log Analytics ワークスペースを見つけるには:
 
-1. IoT ハブを開きます。 
+1. IoT ハブを開きます。
 1. **[セキュリティ]** で **[概要]** をクリックし、 **[設定]** を選択します。
-1. Log Analytics ワークスペースの構成の詳細を変更します。 
-1. **[保存]** をクリックします。 
+1. Log Analytics ワークスペースの構成の詳細を変更します。
+1. **[保存]** をクリックします。
 
 Log Analytics ワークスペースに保存されているデータにアクセスするには、以下の構成に対して次の操作を行います。
 
-1. IoT Hub の Azure Security Center for IoT アラートを選択してクリックします。 
-1. **[Further investigation]\(さらに調査\)** をクリックします。 
+1. IoT Hub の Azure Security Center for IoT アラートを選択してクリックします。
+1. **[Further investigation]\(さらに調査\)** をクリックします。
 1. **[To see which devices have this alert click here and view the DeviceId column]\(このアラートがどのデバイスのものかを確認するには、ここをクリックして DeviceId 列を見てください\)** を選択します。
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>疑わしい IoT デバイスに対する調査の手順
@@ -70,7 +69,7 @@ IoT デバイスについての分析情報と生データを表示するには�
 
 ### <a name="users-with-access"></a>アクセスできるユーザー
 
-このデバイスにどのユーザーがアクセスできるかを調べるには、次の kql クエリを使用します。 
+このデバイスにどのユーザーがアクセスできるかを調べるには、次の kql クエリを使用します。
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -85,13 +84,14 @@ IoT デバイスについての分析情報と生データを表示するには�
      UserName=extractjson("$.UserName", EventDetails, typeof(string))
   | summarize FirstObserved=min(TimestampLocal) by GroupNames, UserName
  ```
-このデータを使用して、以下の事項を調べます。 
+このデータを使用して、以下の事項を調べます。
+
 - どのユーザーがデバイスにアクセスできるか。
 - アクセスできるユーザーが、望ましいアクセス許可レベルを持っているか。
 
 ### <a name="open-ports"></a>ポートを開く
 
-デバイスで現在使用されているポートまたは過去に使用されたポートを調べるには、次の kql クエリを使用します。 
+デバイスで現在使用されているポートまたは過去に使用されたポートを調べるには、次の kql クエリを使用します。
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -112,14 +112,15 @@ IoT デバイスについての分析情報と生データを表示するには�
  ```
 
 このデータを使用して、以下の事項を調べます。
+
 - 現在、デバイスで、どのリッスンしているソケットがアクティブになっているか。
 - 現在アクティブであるリッスン ソケットは許可する必要があるか。
 - デバイスに接続されている不審なリモート アドレスがあるか。
 
 ### <a name="user-logins"></a>ユーザー ログイン
 
-デバイスにログインしたユーザーを調べるには、次の kql クエリを使用します。 
- 
+デバイスにログインしたユーザーを調べるには、次の kql クエリを使用します。
+
  ```
   let device = "YOUR_DEVICE_ID";
   let hub = "YOUR_HUB_NAME";
@@ -143,13 +144,14 @@ IoT デバイスについての分析情報と生データを表示するには�
  ```
 
 クエリ結果を使用して、以下の事項を調べます。
+
 - どのユーザーがデバイスにログインしたか。
 - ログインしたユーザーはログインすると想定されていたか。
 - ログインしたユーザーは、予期される IP アドレスから接続したか、予期されない IP アドレスから接続したか。
-  
+
 ### <a name="process-list"></a>プロセス一覧
 
-プロセス一覧は予想されているものかどうかを調べるには、次の kql クエリを使用します。 
+プロセス一覧は予想されているものかどうかを調べるには、次の kql クエリを使用します。
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -186,4 +188,4 @@ IoT デバイスについての分析情報と生データを表示するには�
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイスを調査し、リスクをより深く理解した後で、IoT ソリューションのセキュリティ体制を向上させるために、[カスタム アラートの構成](quickstart-create-custom-alerts.md)の検討が必要になることがあります。 まだデバイス エージェントがない場合は、結果を改善するために、[セキュリティ エージェントのデプロイ](how-to-deploy-agent.md)または[既存のデバイス エージェントの構成の変更](how-to-agent-configuration.md)を検討してください。 
+デバイスを調査し、リスクをより深く理解した後で、IoT ソリューションのセキュリティ体制を向上させるために、[カスタム アラートの構成](quickstart-create-custom-alerts.md)の検討が必要になることがあります。 まだデバイス エージェントがない場合は、結果を改善するために、[セキュリティ エージェントのデプロイ](how-to-deploy-agent.md)または[既存のデバイス エージェントの構成の変更](how-to-agent-configuration.md)を検討してください。

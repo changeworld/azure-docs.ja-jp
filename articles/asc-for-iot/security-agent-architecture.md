@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT のセキュリティ エージェントのアーキテクチャについて | Microsoft Docs
+title: セキュリティ エージェントのアーキテクチャ
 description: Azure Security Center for IoT サービスで使用されるエージェントのセキュリティ エージェントのアーキテクチャについて説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 998aeab197931a75579fc39b28e3a248b85fc57b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596912"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310684"
 ---
 # <a name="security-agent-reference-architecture"></a>セキュリティ エージェントの参照アーキテクチャ
 
@@ -38,9 +38,9 @@ Azure Security Center for IoT は、IoT Hub 経由でセキュリティ デー�
 
 - **azureiotsecurity** モジュール ツインを使用してリモートで構成する。 詳細については、[Azure Security Center for IoT エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
-Azure Security Center for IoT セキュリティ エージェントはオープン ソース プロジェクトとして開発されており、GitHub から入手できます。 
+Azure Security Center for IoT セキュリティ エージェントはオープン ソース プロジェクトとして開発されており、GitHub から入手できます。
 
-- [Azure Security Center for IoT の C ベースのエージェント](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
+- [Azure Security Center for IoT の C ベースのエージェント](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Azure Security Center for IoT の C# ベースのエージェント](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>エージェントでサポートされているプラットフォーム

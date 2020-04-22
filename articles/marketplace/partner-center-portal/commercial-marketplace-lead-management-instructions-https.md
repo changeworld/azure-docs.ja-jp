@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281597"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262615"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS エンドポイントを使用して潜在顧客管理を構成する
 
-Azure Marketplace と AppSource のリードを受け取るためにパートナー センターで顧客関係管理 (CRM) システムが明示的にサポートされていない場合は、MS Flow の HTTPS エンドポイントを使用してこれらのリードを処理できます。 HTTPS エンドポイントでは、これらのリードを電子メール通知として送信したり、MS Flow でサポートされる顧客関係管理 (CRM) システムに書き込んだりすることができます。 この記事の手順では、Microsoft Flow を使用して新しいフローを作成するための基本的なプロセスについて説明します。これにより、[リード管理] > **[HTTPS エンドポイントの URL]** フィールドの発行ポータルに入力する HTTP POST URL が生成されます。 また、オンラインで検索できる [Postman](https://www.getpostman.com/downloads/) というツールを使用してフローをテストする方法についても説明します。
+>[!Note]
+>以下の手順で使用される Power Automate コネクタには、Power Automate の有料サブスクリプションが必要です。 このドキュメントに記載されている手順に従う前に、このことを考慮してください。
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Microsoft Flow を使用してフローを作成する
+Azure Marketplace と AppSource のリードを受け取るためにパートナー センターで顧客関係管理 (CRM) システムが明示的にサポートされていない場合は、Power Automate の HTTPS エンドポイントを使用してこれらのリードを処理できます。 HTTPS エンドポイントでは、これらのリードを電子メール通知として送信したり、Power Automate でサポートされる顧客関係管理 (CRM) システムに書き込んだりすることができます。 この記事の手順では、Power Automate を使用して新しいフローを作成するための基本的なプロセスについて説明します。これにより、[リード管理] > **[HTTPS エンドポイントの URL]** フィールドの発行ポータルに入力する HTTP POST URL が生成されます。 また、オンラインで検索できる [Postman](https://www.getpostman.com/downloads/) というツールを使用してフローをテストする方法についても説明します。
+
+## <a name="create-a-flow-using-power-automate"></a>Power Automate を使用してフローを作成する
 
 1. [Flow](https://flow.microsoft.com/) の Web ページを開きます。 **[サインイン]** を選択するか、アカウントがまだない場合は **[無料でサインアップ]** を選択して、無料の Flow アカウントを作成します。
 
@@ -168,7 +171,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
    ![フローのテスト](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. "*要求 URL を入力してください*" と表示された、MS Flow 内で作成したフローから、HTTP POST URL を貼り付けます。
+4. "*要求 URL を入力してください*" と表示された、Power Automate 内で作成したフローから、HTTP POST URL を貼り付けます。
 
    ![HTTP POST URL の貼り付け](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 1. オファーの **[オファーのセットアップ]** ページに移動します。
 2. [リード管理] セクションで **[接続]** を選択します。
 3. [接続の詳細] ポップアップ ウィンドウで、 **[リードのターゲット]** に対して **[HTTPS エンドポイント]** を選択し、作成したフローからの HTTP POST URL を **[HTTPS エンドポイントの URL]** フィールドに貼り付けます。
-4. **[保存]** を選択します。 
+4. **連絡先の電子メール** - 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切ることで、複数の電子メールを指定できます。
+5. **[OK]** を選択します。
+
+リードの宛先に正常に接続したことを確認するには、[検証] ボタンをクリックします。 成功した場合は、リードの宛先にテスト リードが表示されます。
 
 >[!Note] 
 >オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。
@@ -213,5 +219,5 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
 ![接続の詳細](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![接続の詳細](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![接続の詳細](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

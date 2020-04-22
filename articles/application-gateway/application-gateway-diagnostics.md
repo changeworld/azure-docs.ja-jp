@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b458537c7cf8a254cd188c565ab1925afa202369
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411058"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312651"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -172,7 +172,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
 |sentBytes| 送信したパケットのサイズ (バイト単位)。|
 |timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
-|sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
+|sslEnabled| バックエンド プールへの通信に TLS または SSL を使用するかどうか。 有効な値は on と off です。|
 |host| 要求がバックエンド サーバーに送信されたときに使用されたホスト名。 バックエンドのホスト名が上書きされている場合、この名前にそのことが反映されます。|
 |originalHost| Application Gateway がクライアントから要求を受信したときに使用されたホスト名。|
 ```json
@@ -215,9 +215,9 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
 |sentBytes| 送信したパケットのサイズ (バイト単位)。|
 |timeTaken| 要求が処理され、その応答が送信されるためにかかる時間の長さ (**秒**単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
-|sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
-|sslCipher| SSL 通信に使用されている暗号スイート (SSL が有効な場合)|
-|sslProtocol| 使用されている SSL/TLS プロトコル (SSL が有効になっている場合)。|
+|sslEnabled| バックエンド プールへの通信に TLS を使用するかどうか。 有効な値は on と off です。|
+|sslCipher| TLS 通信に使用されている暗号スイート (TLS が有効な場合)。|
+|sslProtocol| 使用されている SSL または TLS プロトコル (TLS が有効な場合)。|
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
 |serverResponseLatency| バックエンド サーバーからの応答の待機時間。|

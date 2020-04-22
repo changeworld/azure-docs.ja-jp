@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74932188"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309206"
 ---
 # <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
  
@@ -31,11 +31,11 @@ ms.locfileid: "74932188"
 
 ディレクトリでレガシ認証をブロックするには、その前にまず、レガシ認証を使用するアプリをユーザーが保有しているかどうかや、それがディレクトリ全体にどのような影響を与えるかを把握する必要があります。 Azure AD のサインイン ログを使用すると、レガシ認証を使用しているかどうかを把握できます。
 
-1. Azure portal > [Azure Active Directory] > [サインイン] に移動します。
-1. [クライアント アプリ] 列が表示されていない場合は、[列] > [クライアント アプリ] をクリックして追加します。
-1. [クライアント アプリ] でフィルター処理し、表示されるその他のクライアント オプションをすべてオンにして、[適用] をクリックします。
-1. [状態] を [成功] でフィルター処理し、[適用] をクリックします。 
-1. 必要に応じて [日付] フィルターを使用して、日付範囲を拡張します。
+1.  **[Azure portal]**  > **[Azure Active Directory]**  > **[サインイン]** に移動します。
+1. **[クライアント アプリ]** 列が表示されていない場合は、 **[列]**  > **[クライアント アプリ]** をクリックして追加します。
+1.  **[クライアント アプリ]**   でフィルター処理し、すべての **[Legacy Authentication Clients]\(レガシ認証クライアント\)** オプションが表示されることを確認します。
+1. **[状態]**  >  **[成功]** でフィルター処理します。 
+1. 必要に応じて **[日付]** フィルターを使用して、日付範囲を拡張します。
 
 フィルター処理によって、選択したレガシ認証プロトコルによって行われた、成功したサインイン試行のみが表示されます。 個々のサインイン試行をクリックすると、追加の詳細が表示されます。 [基本情報] タブの下の [クライアント アプリ] 列または [クライアント アプリ] フィールドには、データの個々の行の選択後、どのレガシ認証プロトコルが使用されたかが示されます。 これらのログは、どのユーザーがまだレガシ認証に依存しているか、およびどのアプリケーションがレガシ プロトコルを使用して認証要求を行っているかを示しています。 これらのログに表示されず、レガシ認証を使用していないことが確認されたユーザーに対してのみ、条件付きアクセス ポリシーを実装するか、または [ベースライン ポリシー: レガシ認証をブロックする] を有効にします。
 
@@ -62,7 +62,7 @@ Office 2013 以前の Windows クライアントを使用している場合は�
 
 Office 2010 は、先進認証をサポートしていません。 Office 2010 を使用しているすべてのユーザーを最新バージョンの Office にアップグレードする必要があります。 既定でレガシ認証がブロックされるため、Office 2016 以降にアップグレードすることをお勧めします。
 
-MacOS を使用している場合は、Office for Mac 2016 以降にアップグレードすることをお勧めします。 ネイティブなメール クライアントを使用している場合は、すべてのデバイスに MacOS バージョン 10.14 以降を用意する必要があります。
+macOS を使用している場合は、Office for Mac 2016 以降にアップグレードすることをお勧めします。 ネイティブなメール クライアントを使用している場合は、すべてのデバイスに macOS バージョン 10.14 以降を用意する必要があります。
 
 ### <a name="step-3-exchange-and-sharepoint"></a>手順 3:Exchange と SharePoint
 

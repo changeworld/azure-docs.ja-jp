@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705328"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312088"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトするアプリケーション ゲートウェイを作成する
 
-Azure portal を使用し、SSL 終了の証明書を使って[アプリケーション ゲートウェイ](overview.md)を作成できます。 アプリケーション ゲートウェイで HTTP トラフィックを HTTPS ポートにリダイレクトするために、ルーティング規則が使用されます。 また、この例では、2 つの仮想マシン インスタンスが含まれるアプリケーション ゲートウェイのバックエンド プールのために[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を作成します。
+Azure portal で TLS 終端の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 アプリケーション ゲートウェイで HTTP トラフィックを HTTPS ポートにリダイレクトするために、ルーティング規則が使用されます。 また、この例では、2 つの仮想マシン インスタンスが含まれるアプリケーション ゲートウェイのバックエンド プールのために[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を作成します。
 
 この記事では、次のことについて説明します。
 
@@ -67,7 +67,7 @@ Export-PfxCertificate `
 
 作成したリソース間の通信には仮想ネットワークが必要です。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 3. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 4. 次のアプリケーション ゲートウェイの値を入力します。
@@ -146,7 +146,7 @@ Export-PfxCertificate `
 12. **[ネットワーク]** で、 **[負荷分散オプションの選択]** が **[Application Gateway]** に確実に設定されているようにします。
 13. **[アプリケーション ゲートウェイ]** が確実に **[myAppGateway]** に設定されているようにします。
 14. **[サブネット]** が **[myBackendSubnet]** に確実に設定されているようにします。
-15. **作成** を選択します。
+15. **［作成］** を選択します
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>スケール セットを適切なバックエンド プールに関連付ける
 

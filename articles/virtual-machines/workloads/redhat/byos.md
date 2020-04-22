@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 825d26307f2b462d51b143b88127e229508f2f25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231199"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273173"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -120,7 +120,7 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
 1. VM に SSH で接続し、権利のないイメージがあることを確認します。 この手順を行うには、`sudo yum repolist`を実行します。 RHEL 8 の場合は `sudo dnf repolist` を使用します。 出力で、サブスクリプション マネージャーを使用して、VM を Red Hat に登録するよう求められます。
 
 >[!NOTE]
->RHEL 8 では、`dnf` と `yum` は交換可能です。 詳細については、[RHEL 8 管理者ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings)を参照してください。
+>RHEL 8 では、`dnf` と `yum` は交換可能です。 詳細については、[RHEL 8 管理者ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)を参照してください。
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>PowerShell から Red Hat Gold Image を使用する
 
@@ -214,6 +214,7 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 
 ## <a name="next-steps"></a>次のステップ
 
+- Red Hat Cloud Access の詳細については、[Red Hat パブリック クラウドのドキュメント](https://access.redhat.com/public-cloud)を参照してください。
 - Cloud Access のステップバイステップ ガイドとプログラムの詳細については、[Red Hat Cloud Access のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)を参照してください。
 - Red Hat Update Infrastructure の詳細については、[Azure Red Hat Update Infrastructure](./redhat-rhui.md) に関する記事を参照してください。
 - Azure でのすべての Red Hat イメージの詳細については、[ドキュメントのページ](./redhat-images.md)を参照してください。

@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278094"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273428"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure でホストされる VM を構成する
 
-この記事では、Azure でホストされている仮想マシン (VM) をサイズ指定、更新、および一般化する方法について説明します。  次の手順は、Azure Marketplace からデプロイする VM を準備するために必要です。
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://aka.ms/AzureVMTechAsset)」の手順に従って、移行されたオファーを管理します。
 
+この記事では、Azure でホストされている仮想マシン (VM) をサイズ指定、更新、および一般化する方法について説明します。  次の手順は、Azure Marketplace からデプロイする VM を準備するために必要です。
 
 ## <a name="sizing-the-vhds"></a>VHD のサイズ変更
 

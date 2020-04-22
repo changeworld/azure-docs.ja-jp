@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 7c799c4a56ee5fc2074e4d644bdbcbc6d2b1ca5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2a4bb107309894a7180e0a4585cdba6f04d1bee
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288752"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273037"
 ---
 # <a name="windows-remote-management-over-https"></a>HTTPS 経由での Windows リモート管理
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://aka.ms/CreateAzureVMoffer)」の手順に従って、移行されたオファーを管理します。
 
 このセクションでは、PowerShell を使用してリモートで管理およびデプロイできるように、Azure でホストされる Windows ベースの VM を構成する方法について説明します。  PowerShell のリモート操作を有効にするには、ターゲット VM が Windows リモート管理 (WinRM) HTTPS エンドポイントを公開する必要があります。  PowerShell のリモート操作について詳しくは、「[Running Remote Commands](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands)」(リモート コマンドの実行) をご覧ください。  WinRM について詳しくは、「[Windows Remote Management](https://docs.microsoft.com/windows/desktop/WinRM/portal)」(Windows リモート管理) をご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT Linux セキュリティ エージェントのトラブルシューティング ガイド| Microsoft Docs
+title: セキュリティ エージェントのスタートアップのトラブルシューティング (Linux)
 description: Linux 用の Azure Security Center for IoT セキュリティ エージェントの使用に関するトラブルシューティング。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f3bd4be3ef927f73643146a457bc551ef86a450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 935a99dd34b0a4e3d4970e8d91f9332d2bc1489a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68600318"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310566"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>セキュリティ エージェントのトラブルシューティング ガイド (Linux)
 
@@ -29,56 +29,70 @@ ms.locfileid: "68600318"
 Azure Security Center for IoT エージェントは、インストールの直後に自己起動します。 エージェントの起動プロセスには、ローカル構成の読み取り、Azure IoT Hub への接続、およびリモート ツイン構成の取得が含まれます。 これらの手順のいずれかに失敗すると、セキュリティ エージェントでエラーが発生する可能性があります。
 
 このトラブルシューティング ガイドでは、次の方法について説明します。
+
 > [!div class="checklist"]
 > * セキュリティ エージェントが実行されているかどうかを確認する
 > * セキュリティ エージェントのエラーを取得する
-> * セキュリティ エージェントのエラーについて理解し、修復を行う 
+> * セキュリティ エージェントのエラーについて理解し、修復を行う
 
 ## <a name="validate-if-the-security-agent-is-running"></a>セキュリティ エージェントが実行されているかどうかを確認する
 
-1. セキュリティ エージェントが実行されていることを確認するには、エージェントのインストール後、数分待機し、次のコマンドを実行します。 
+1. セキュリティ エージェントが実行されていることを確認するには、エージェントのインストール後、数分待機し、次のコマンドを実行します。
      <br>
 
     **C エージェント**
+
     ```bash
     grep "ASC for IoT Agent initialized" /var/log/syslog
     ```
+
     **C# エージェント**
+
     ```bash
     grep "Agent is initialized!" /var/log/syslog
     ```
-2. コマンドにより空の行が返された場合、セキュリティ エージェントが正常に起動できなかったことになります。    
 
-## <a name="force-stop-the-security-agent"></a>セキュリティ エージェントを強制的に停止する 
+1. コマンドにより空の行が返された場合、セキュリティ エージェントが正常に起動できなかったことになります。
+
+## <a name="force-stop-the-security-agent"></a>セキュリティ エージェントを強制的に停止する
+
 セキュリティ エージェントを起動できない場合は、次のコマンドを使用してエージェントを停止し、以下のエラー表に進みます。
 
 ```bash
 systemctl stop ASCIoTAgent.service
 ```
+
 ## <a name="get-security-agent-errors"></a>セキュリティ エージェントのエラーを取得する
+
 1. 次のコマンドを実行して、セキュリティ エージェントのエラーを取得します。
+
     ```bash
     grep ASCIoTAgent /var/log/syslog
     ```
-2. このセキュリティ エージェントのエラー取得コマンドにより、Azure Security Center for IoT エージェントによって作成されたすべてのログが取得されます。 次の表を使用して、エラーについて理解し、修復のための正しい手順を実行します。 
+
+1. このセキュリティ エージェントのエラー取得コマンドにより、Azure Security Center for IoT エージェントによって作成されたすべてのログが取得されます。 次の表を使用して、エラーについて理解し、修復のための正しい手順を実行します。
 
 > [!Note]
-> エラー ログは時系列順に表示されます。 修復に役立つように、各エラーのタイムスタンプに注意してください。 
+> エラー ログは時系列順に表示されます。 修復に役立つように、各エラーのタイムスタンプに注意してください。
 
 ## <a name="restart-the-agent"></a>エージェントを再起動する
 
-1. セキュリティ エージェントのエラーを検出して修正した後、次のコマンドを実行してエージェントを再起動します。 
+1. セキュリティ エージェントのエラーを検出して修正した後、次のコマンドを実行してエージェントを再起動します。
+
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
-1. エージェントの起動プロセスが引き続き失敗する場合は、前の手順を繰り返し、停止してからエラーを取得します。 
+
+1. エージェントの起動プロセスが引き続き失敗する場合は、前の手順を繰り返し、停止してからエラーを取得します。
 
 ## <a name="understand-security-agent-errors"></a>セキュリティ エージェントのエラーを理解する
 
-セキュリティ エージェントのエラーのほとんどは、次の形式で表示されます。 
+セキュリティ エージェントのエラーのほとんどは、次の形式で表示されます。
+
 ```
 Azure Security Center for IoT agent encountered an error! Error in: {Error Code}, reason: {Error sub code}, extra details: {error specific details}
 ```
+
 | エラー コード | エラー サブ コード | エラーの詳細 | C での修復 | C# での修復 |
 |:-----------|:---------------|:--------|:------------|:------------|
 | Local Configuration (ローカル構成) | Missing configuration (構成の欠落) | ローカル構成ファイルに構成がありません。 エラー メッセージにより、どのキーが欠落しているか示されます。 | 欠落しているキーを /var/LocalConfiguration.json ファイルに追加します。詳細については、[cs-localconfig-reference](azure-iot-security-local-configuration-c.md) に関する記事を参照してください。| 欠落しているキーを General.config ファイルに追加します。詳細については、[c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) に関する記事を参照してください。 |
@@ -95,14 +109,17 @@ Azure Security Center for IoT agent encountered an error! Error in: {Error Code}
 |
 
 ## <a name="restart-the-agent"></a>エージェントを再起動する
+
 1. セキュリティ エージェントのエラーを検出して修正した後、次のコマンドを実行してエージェントを再起動します。
 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
-2. エージェントの起動プロセスが引き続き失敗する場合、必要に応じて、前の手順を繰り返してエージェントを強制的に停止し、エラーを取得します。 
+
+1. エージェントの起動プロセスが引き続き失敗する場合、必要に応じて、前の手順を繰り返してエージェントを強制的に停止し、エラーを取得します。
 
 ## <a name="next-steps"></a>次のステップ
+
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
 - Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - Azure Security Center for IoT の[サービス](quickstart-onboard-iot-hub.md)を有効にします

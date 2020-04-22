@@ -1,5 +1,5 @@
 ---
-title: C# の Azure Security Center for IoT セキュリティ エージェント ローカル構成ファイルについて | Microsoft Docs
+title: セキュリティ エージェントのローカル構成 (C#)
 description: Azure Security Center for IoT セキュリティ サービスの C# のセキュリティ エージェントローカル構成ファイルについて説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664197"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311674"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>ローカル構成ファイル (C# エージェント) について
-
 
 Azure Security Center for IoT セキュリティ エージェントでは、ローカル構成ファイルの構成が使用されます。
 
@@ -35,18 +34,21 @@ C# セキュリティ エージェントでは、複数の構成ファイルが�
 - **Authentication.config** - 認証関連の構成 (認証の詳細を含む)。
 - **SecurityIotInterface.config** - IoT 関連の構成。
 
-構成ファイルには、既定の構成が含まれます。 認証の構成は、エージェントのインストール中に取り込まれます。構成ファイルへの変更は、エージェントの再起動時に有効になります。 
+構成ファイルには、既定の構成が含まれます。 認証の構成は、エージェントのインストール中に取り込まれます。構成ファイルへの変更は、エージェントの再起動時に有効になります。
 
 ## <a name="configuration-file-location"></a>構成ファイルの場所
+
 Linux の場合:
+
 - オペレーティング システムの構成ファイルは、`/var/ASCIoTAgent` にあります。
 
 Windows の場合:
-- オペレーティング システムの構成ファイルは、セキュリティ エージェントのディレクトリ内にあります。 
+
+- オペレーティング システムの構成ファイルは、セキュリティ エージェントのディレクトリ内にあります。
 
 ### <a name="generalconfig-configurations"></a>General.config の構成
 
-| 構成名 | 指定できる値 | 詳細 | 
+| 構成名 | 指定できる値 | 詳細 |
 |:-----------|:---------------|:--------|
 | agentId | GUID | エージェントの一意識別子 |
 | readRemoteConfigurationTimeout | TimeSpan | IoT Hub からリモート構成を取り込む期間。 エージェントが指定時間内に構成を取り込むことができない場合、操作はタイムアウトになります。|
@@ -61,6 +63,7 @@ Windows の場合:
 | defaultEventPriority | "High"、"Low"、"Off" | 既定のイベント優先度。 |
 
 ### <a name="generalconfig-example"></a>General.config の例
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,7 +83,7 @@ Windows の場合:
 
 ### <a name="authenticationconfig"></a>Authentication.config
 
-| 構成名 | 指定できる値 | 詳細 | 
+| 構成名 | 指定できる値 | 詳細 |
 |:-----------|:---------------|:--------|
 | moduleName | string | セキュリティ モジュール ID の名前。 この名前は、デバイスのモジュール ID 名に対応している必要があります。 |
 | deviceId | string | デバイスの ID (Azure IoT Hub に登録されているもの)。 || schedulerInterval | TimeSpan 文字列 | 内部スケジューラの間隔。 |
@@ -94,6 +97,7 @@ Windows の場合:
 |
 
 ### <a name="authenticationconfig-example"></a>Authentication.config の例
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ Windows の場合:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
-| 構成名 | 指定できる値 | 詳細 | 
+| 構成名 | 指定できる値 | 詳細 |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq"、"Mqtt" | IoT Hub のトランスポートの種類。 |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config の例
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ Windows の場合:
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
 - Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - Azure Security Center for IoT の[サービス](quickstart-onboard-iot-hub.md)を有効にします

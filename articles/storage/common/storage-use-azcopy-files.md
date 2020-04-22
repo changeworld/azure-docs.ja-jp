@@ -4,15 +4,15 @@ description: AzCopy とファイル ストレージでデータを転送しま�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8aa0e5304825b3f016694a40b3fc1e176518237a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59f5733009424c60f2b9c48e68d70bbc29ad7095
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526690"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263371"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 
@@ -20,16 +20,16 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 始める前に、[AzCopy を使ってみる](storage-use-azcopy-v10.md)の記事を参照して、AzCopy をダウンロードし、ツールについて理解してください。
 
+> [!TIP]
+> この記事の例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
+
 ## <a name="create-file-shares"></a>ファイル共有の作成
 
 [azcopy make](storage-ref-azcopy-make.md) コマンドを使用し、ファイル共有を作成できます。 このセクションの例では、`myfileshare` という名前のファイル共有を作成します。
 
-> [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
-
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy make 'https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>'` |
+| **構文** | `azcopy make 'https://<storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>'` |
 | **例** | `azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 詳細なリファレンス ドキュメントについては、「[azcopy make](storage-ref-azcopy-make.md)」を参照してください。
@@ -46,13 +46,20 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 > * ディレクトリの内容をアップロードする
 > * 特定のファイルをアップロードする
 
+> [!TIP]
+> オプションのフラグを使用して、アップロード操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
+> |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
+> |追加 BLOB またはページ BLOB としてファイルをアップロードします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |特定のアクセス層 (アーカイブ層など) にアップロードします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> 
+> 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
+
 > [!NOTE]
 > AzCopy では、ファイルの md5 ハッシュ コードが自動的に計算されたり、保存されたりすることはありません。 AzCopy にそれを行わせる場合、各コピー コマンドの先頭に `--put-md5` フラグを追加します。 そうすることで、ファイルがダウンロードされたとき、AzCopy では、ダウンロードするデータの MD5 ハッシュが計算され、ファイルの `Content-md5` プロパティに格納されている MD5 ハッシュが計算されたハッシュに一致するかどうかが検証されます。
-
-詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
-
-> [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする
 
@@ -105,7 +112,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 | **構文** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' --include-path <semicolon-separated-file-list>` |
 | **例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-path 'photos;documents\myFile.txt'` |
 
-この例では、AzCopy によって `C:\myDirectory\photos` ディレクトリと `C:\myDirectory\documents\myFile.txt` ファイルが転送されます。 `--recursive` ディレクトリ内のすべてのファイルを転送するには、`C:\myDirectory\photos` オプションを含める必要があります。
+この例では、AzCopy によって `C:\myDirectory\photos` ディレクトリと `C:\myDirectory\documents\myFile.txt` ファイルが転送されます。 `C:\myDirectory\photos` ディレクトリ内のすべてのファイルを転送するには、`--recursive` オプションを含める必要があります。
 
 `--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
@@ -134,13 +141,19 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 > * ディレクトリの内容をダウンロードする
 > * 特定のファイルをダウンロードする
 
+> [!TIP]
+> オプションのフラグを使用して、ダウンロード操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
+> |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
+> |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
+> 
+> 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
+
 > [!NOTE]
 > ファイルの `Content-md5` プロパティ値にハッシュが含まれる場合、AzCopy では、ダウンロードするデータの MD5 ハッシュが計算され、ファイルの `Content-md5` プロパティに格納されている MD5 ハッシュが計算されたハッシュに一致するかどうかが検証されます。 これらの値が一致しない場合、`--check-md5=NoCheck` または `--check-md5=LogOnly` をコピー コマンドに追加してこの動作をオーバーライドしない限り、ダウンロードは失敗します。
-
-詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
-
-> [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="download-a-file"></a>ファイルをダウンロードする
 
@@ -183,7 +196,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 | **構文** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-この例では、AzCopy によって `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` ディレクトリと `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` ファイルが転送されます。 `--recursive` ディレクトリ内のすべてのファイルを転送するには、`https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` オプションを含める必要があります。
+この例では、AzCopy によって `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` ディレクトリと `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` ファイルが転送されます。 `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` ディレクトリ内のすべてのファイルを転送するには、`--recursive` オプションを含める必要があります。
 
 `--exclude-path` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
@@ -214,37 +227,44 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > * 別のストレージ アカウントにファイル共有をコピーする
 > * すべてのファイル共有、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
 
-詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
-
 > [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
+> オプションのフラグを使用して、コピー操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
+> |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
+> |追加 BLOB またはページ BLOB としてファイルをコピーします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |特定のアクセス層 (アーカイブ層など) にコピーします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> 
+> 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
 ### <a name="copy-a-file-to-another-storage-account"></a>別のストレージ アカウントにファイルをコピーする
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
+| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
 | **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>別のストレージ アカウントにディレクトリをコピーする
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ### <a name="copy-a-file-share-to-another-storage-account"></a>別のストレージ アカウントにファイル共有をコピーする
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>すべてのファイル共有、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
+| **構文** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
 | **例** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ## <a name="synchronize-files"></a>ファイルを同期する
@@ -258,10 +278,16 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 
 `--delete-destination` フラグを `true` に設定すると、AzCopy では、プロンプトを与えずにファイルが削除されます。 AzCopy でファイルが削除される前にプロンプトを表示する場合、`--delete-destination` フラグを `prompt` に設定します。
 
-詳細なリファレンス ドキュメントについては、「[azcopy sync](storage-ref-azcopy-sync.md)」を参照してください。
-
 > [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
+> オプションのフラグを使用して、同期操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |ダウンロードの際に MD5 ハッシュを検証する厳密さを指定します。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |パターンに基づいてファイルを除外します。|**--exclude-path**|
+> |同期に関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> 
+> 完全な一覧については、「[オプション](storage-ref-azcopy-sync.md#options)」を参照してください。
 
 ### <a name="update-a-file-share-with-changes-to-another-file-share"></a>別のファイル共有への変更を使用してファイル共有を更新する
 
@@ -269,7 +295,7 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **構文** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **例** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>別のファイル共有内のディレクトリへの変更を使用してディレクトリを更新する
@@ -278,8 +304,19 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' --recursive` |
+| **構文** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' --recursive` |
 | **例** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
+### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>共有スナップショットの内容と一致するようにファイル共有を更新する
+
+このコマンドに表示される最初のファイル共有がソースです。 URI の末尾に文字列 `&sharesnapshot=` を追加し、その後にスナップショットの **DateTime** 値を追加します。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>&sharesnapsot<snapshot-ID>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **例** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
+共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

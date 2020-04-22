@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278146"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273020"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>仮想マシンの作成後に WinRM を構成する
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://aka.ms/CreateAzureVMoffer)」の手順に従って、移行されたオファーを管理します。
 
 この記事では、Azure でホストされる既存の仮想マシン (VM) で HTTPS 経由の WinRM を有効にするよう構成する方法について説明します。  この構成は Windows ベースの VM にのみ適用され、次の 2 段階のプロセスが必要です。
 
@@ -26,8 +29,8 @@ ms.locfileid: "80278146"
 
 HTTPS プロトコル経由の WinRM では、ポート 5986 が使用されます。このポートは、Azure Marketplace で提供される事前構成済みの Windows VM では、既定では有効になっていません。 このプロトコルを有効にするには、[Azure portal](https://portal.azure.com) で次の手順を使用してネットワーク セキュリティ グループ (NSG) に新しい規則を追加します。  NSG について詳しくは、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)」をご覧ください。
 
-1.  **[Virtual Machines] >**   <*VM 名*>   **> [Settings/Networking]\(設定/ネットワーク\)** ブレードに移動します。
-2.  NSG の名前 (この例では **testvm11002**) をクリックして、そのプロパティを表示します。
+1. **[Virtual Machines] >**   <*VM 名*>   **> [Settings/Networking]\(設定/ネットワーク\)** ブレードに移動します。
+2. NSG の名前 (この例では **testvm11002**) をクリックして、そのプロパティを表示します。
 
     ![ネットワーク セキュリティ グループのプロパティ](./media/nsg-properties.png)
  
