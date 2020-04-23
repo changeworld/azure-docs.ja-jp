@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991347"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314171"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の UI にアクセスする
 
-HDInsight クラスターは、インターネット経由で Apache Ambari Web UI にアクセスできますが、一部の機能には SSH トンネルが必要です。 たとえば、Apache Oozie サービスの Web UI には、SSh トンネルなしでインターネット経由でアクセスすることはできません。
+HDInsight クラスターは、インターネット経由で Apache Ambari Web UI にアクセスできますが、 一部の機能には SSH トンネルが必要です。 たとえば、Apache Oozie の Web UI には、SSH トンネルなしでインターネット経由でアクセスすることはできません。
 
 ## <a name="why-use-an-ssh-tunnel"></a>SSH トンネルを使用する理由
 
@@ -31,7 +31,7 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 * Oozie Web UI
 * HBase Master と Logs の UI
 
-クラスターをカスタマイズするスクリプト アクションを使用する場合、インストールするサービスまたはユーティリティで Web UI を公開するには、SSH トンネルが必要です。 たとえば、スクリプト アクションを使用して Hue をインストールする場合、SSH トンネルを使用して Hue Web UI にアクセスする必要があります。
+Web サービスを公開するスクリプト アクションでインストールされたサービスには、SSH トンネルが必要です。 スクリプト アクションでインストールされた Hue には、Web UI にアクセスするための SSH トンネルが必要です。
 
 > [!IMPORTANT]  
 > 仮想ネットワーク経由で HDInsight に直接アクセスできる場合は、SSH トンネルを使用する必要はありません。 仮想ネットワーク経由で HDInsight に直接アクセスする例については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」をご覧ください。
@@ -64,14 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 このコマンドは、ローカル ポート 9876 へのトラフィックを SSH 経由でクラスターにルーティングする接続を作成します。 オプションは次のとおりです。
 
-* **D 9876** - トンネル経由でトラフィックをルーティングするローカル ポートです。
-* **C** - すべてのデータを圧縮します (Web トラフィックの大部分はテキストであるため)。
-* **2** - SSH プロトコル バージョンを強制的に 2 のみに指定します。
-* **q** - Quiet モードです。
-* **T** - pseudo-tty の割り当てを無効にします (ポートの転送だけを行うため)。
-* **n** - STDIN を読み取らないようにします (ポートの転送だけを行うため)。
-* **N** - リモート コマンドを実行しません (ポートの転送だけを行うため)。
-* **f** - バックグラウンドで実行します。
+    |オプション |説明 |
+    |---|---|
+    |D 9876|トンネル経由でトラフィックをルーティングするローカル ポートです。|
+    |C|すべてのデータを圧縮します (Web トラフィックの大部分はテキストであるため)。|
+    |2|SSH でプロトコル バージョン 2 のみを強制的に試行します。|
+    |q|非表示モードです。|
+    |T|pseudo-tty の割り当てを無効にします (ポートの転送だけを行うため)。|
+    |n|STDIN を読み取らないようにします (ポートの転送だけを行うため)。|
+    |N|リモート コマンドを実行しません (ポートの転送だけを行うため)。|
+    |f|バックグラウンドで実行します。|
 
 コマンドが完了すると、ローカル コンピューターのポート 9876 に送信されるトラフィックは、クラスターのヘッド ノードにルーティングされるようになります。
 

@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867364"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415037"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、REST エンドポイントからデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
@@ -60,7 +61,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 |:--- |:--- |:--- |
 | type | **type** プロパティには **RestService** を設定する必要があります。 | はい |
 | url | REST サービスのベース URL。 | はい |
-| enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の SSL 証明書を検証するかどうか。 | いいえ<br /> (既定値は **true** です)。 |
+| enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の TLS/SSL 証明書を検証するかどうか。 | いいえ<br /> (既定値は **true** です)。 |
 | authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 

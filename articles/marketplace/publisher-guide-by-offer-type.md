@@ -1,28 +1,28 @@
 ---
-title: Azure Marketplace における公開オプションの選定 | Azure Marketplace
-description: この記事では､パートナーが Azure Marketplace にアプリを公開しようとするときに理解しておく必要がある適格性条件と公開要件を説明します｡
-author: qianw211
+title: Microsoft 商用マーケットプレースのオファ－の種類別の公開ガイド
+description: この記事では、Microsoft 商用マーケットプレースで利用できるオファーの種類について説明します。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: a471e756cd4c3f174538f51eb657df2e3216bd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6521f19ea566719fee39c238adda8e3a068e2c25
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285063"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419291"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
-[公開オプションを選定](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)したら、オファーの提示に使用するオファーの種類を選択できます。 
+[公開オプションを選定](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)したら、オファーの提示に使用するオファーの種類を選択できます。
 
  マーケットプレースでのオファーの提示に使用するオファーの構造 (メタデータ、成果物、およびその他のコンテンツを含む) は、*オファーの種類*によって定義されます。
 
-オファーを作成する前に、オファーの種類を選択する必要があります。 オファーの種類は、公開するソリューション、アプリ、またはサービスの種類および Microsoft の製品とサービスとの連携方法に対応します。 
+オファーを作成する前に、オファーの種類を選択する必要があります。 オファーの種類は、公開するソリューション、アプリ、またはサービスの種類および Microsoft の製品とサービスとの連携方法に対応します。
 
-1 つのオファーの種類をさまざまな方法で構成して、異なる公開オプション、行動喚起、プロビジョニング、または価格を使用することができます。 オファーの種類の公開オプションと構成は、オファーの適格性と技術面の要件に合わせて指定されます。 
+1 つのオファーの種類をさまざまな方法で構成して、異なる公開オプション、行動喚起、プロビジョニング、または価格を使用することができます。 オファーの種類の公開オプションと構成は、オファーの適格性と技術面の要件に合わせて指定されます。
 
 オファーの作成前に、ネットショップおよびオファーの種類の適格性の要件と、公開に関する技術面の要件を確認してください。
 
@@ -32,19 +32,19 @@ ms.locfileid: "80285063"
 
 | **オファリング タイプ**    | **説明**  |
 | :------------------- | :-------------------|
-| [**Virtual Machines**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | 顧客に関連付けられているサブスクリプションに仮想アプライアンスをデプロイするときは、オファーの種類として仮想マシンを使用します。 |
-| [**ソリューション テンプレート**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | デプロイと構成に関して、シンプルな VM 以外の追加のオートメーションが必要となるソリューションの場合、プランの種類としてソリューション テンプレート (Azure アプリケーションとも呼ばれる) を使用します。 ソリューション テンプレートでは、VM を含むがそれに限定されない、さまざまな種類の Azure リソースを使用できます。  |
-| [**マネージド アプリケーション**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | 次の条件が必須であるときは、オファーの種類として Azure アプリ (マネージド アプリ) を使用します。 <br> <ul> <li> VM または完全な IaaS ベースのソリューションを使用して、サブスクリプション ベースのソリューションを顧客向けにデプロイする。 </li> <li>貴社または貴社の顧客の要件として、ソリューションをパートナーが管理しなければならない。 </li> <ul> |
-| [**SaaS アプリケーション**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | SaaS ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS アプリを使用します。 |
-| [**コンテナー オファー**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | 対象となるソリューションが、Kubernetes ベースの Azure コンテナー サービスとしてプロビジョニングされる Docker コンテナー イメージであるときは、オファーの種類としてコンテナーを使用します。 |
-| [**IoT Microsoft Edge モジュール**](https://docs.microsoft.com/azure/marketplace/iot-edge-module) | Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービス、独自ソリューション固有のコードのいずれかを含めることができます。 |
-| [**コンサルティング サービス**](https://docs.microsoft.com/azure/marketplace/consulting-services) | コンサルティング サービスは、Azure、Dynamics 365、または Power Suite サービスの使用をサポートし、拡張するために、お客様とサービスを結ぶうえで役立ちます。|
+| [**Virtual Machines**](./marketplace-virtual-machines.md) | 顧客に関連付けられているサブスクリプションに仮想アプライアンスをデプロイするときは、オファーの種類として仮想マシンを使用します。 |
+| [**ソリューション テンプレート**](./marketplace-solution-templates.md) | デプロイと構成に関して、単一 VM 以外の追加のオートメーションが必要となるソリューションの場合、オファーの種類としてソリューション テンプレート (Azure アプリケーションとも呼ばれる) を使用します。 ソリューション テンプレートでは、VM を含むがそれに限定されない、さまざまな種類の Azure リソースを使用できます。  |
+| [**マネージド アプリケーション**](./marketplace-managed-apps.md) | 次の条件が必須であるときは、オファーの種類として Azure アプリ (マネージド アプリ) を使用します。 <br> <ul> <li> VM または完全な IaaS ベースのソリューションを使用して、サブスクリプション ベースのソリューションを顧客向けにデプロイする。 </li> <li>貴社または貴社の顧客の要件として、ソリューションをパートナーが管理しなければならない。 </li> <ul> |
+| [**SaaS アプリケーション**](./marketplace-saas-applications-technical-publishing-guide.md) | SaaS ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS アプリを使用します。 |
+| [**コンテナー オファー**](./marketplace-containers.md) | 対象となるソリューションが、Kubernetes ベースの Azure コンテナー サービスとしてプロビジョニングされる Docker コンテナー イメージであるときは、オファーの種類としてコンテナーを使用します。 |
+| [**Azure IoT Edge モジュール**](./iot-edge-module.md) | Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービス、独自ソリューション固有のコードのいずれかを含めることができます。 |
+| [**コンサルティング サービス**](./consulting-services.md) | コンサルティング サービスは、Azure、Dynamics 365、または Power Suite サービスの使用をサポートし、拡張するために、お客様とサービスを結ぶうえで役立ちます。|
+| [**Office 365、Dynamics 365、および Power BI**](./appsource-offer-publishing-guide.md) | Dynamics 365、Office 365、Power BI、および Power Apps 上でビルドされる、またはそれらを拡張する AppSource オファーを公開できます。|
+| [**統合ソリューション**](./integrated-solutions-for-publishers.md) | テクノロジとサービスを単一のオファーとして組み合わせる、業界に合わせた統合ソリューションを公開できます。|
 
-
-最後に、シングル サインオンの要件の詳細については、リスト オプションとオファーの種類別の [**Azure AD の要件**](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad)を参照してください。
+リスト オプションとオファーの種類別のシングル サインオンの要件については、「[**Azure AD 要件**](./enable-appsource-marketplace-using-azure-ad.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-*    選択したオファーの種類について、公開オプションにおける適格性の要件を確認し、オファーの選択および構成を確定する。
-*    ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。
-
+- オファーの種類に対応する記事 (以降のセクション) に示されている適格性の要件を確認し、オファーの選択と構成を確定する。
+- ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。

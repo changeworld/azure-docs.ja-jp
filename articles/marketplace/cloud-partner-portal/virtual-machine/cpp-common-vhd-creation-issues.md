@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 8ae1dcbeff6e14e6f1f7cd44ae3a0a68bd379b56
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387344"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273445"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>VHD 作成における一般的な問題 (FAQ)
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [VHD の作成に関してよく寄せられる質問](https://aka.ms/VHDcreationIssues)ページの手順に従い、移行後のオファーを管理します。
 
 次に挙げるよく寄せられる質問 (FAQ) では、VM オファーの仮想ハード ディスク (VHD) と仮想マシン (VM) の作成中に発生する一般的な問題について説明します。 
 

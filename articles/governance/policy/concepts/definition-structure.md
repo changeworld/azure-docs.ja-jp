@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 11/26/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587126"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461006"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -76,20 +76,20 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `all`: リソース グループとすべてのリソースの種類を評価します
 - `indexed`: タグと場所をサポートするリソースの種類のみを評価します
 
-たとえば、リソース `Microsoft.Network/routeTables` では、タグと場所がサポートされ、両方のモードで評価されます。 ただし、タグ付けできないリソース `Microsoft.Network/routeTables/routes` は、`Indexed` モードでは評価されません。
+たとえば、リソース `Microsoft.Network/routeTables` では、タグと場所がサポートされ、両方のモードで評価されます。 ただし、リソース `Microsoft.Network/routeTables/routes` は、タグ付けできず、`Indexed` モードでは評価されません。
 
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
 タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/management/tag-support.md)」を参照してください。
 
-### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />リソース プロバイダーのモード (プレビュー)
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />リソース プロバイダーのモード (プレビュー)
 
 現在、プレビューの間は、次のリソース プロバイダー モードがサポートされています。
 
 - [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用するポリシーでは、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。
 - Azure で自己管理型 AKS エンジン Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。
   このリソース プロバイダー モードを使用するポリシーでは、[EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果を使用する**必要があります**。
-- [Azure Key Vault](../../../key-vault/key-vault-overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。
+- [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。
 
 > [!NOTE]
 > プレビュー期間中のリソース プロバイダー モードでは、組み込みポリシー定義のみがサポートされ、イニシアティブはサポートされません。
@@ -159,19 +159,19 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 現時点で **strongType** で使用できる値には、以下が含まれます。
+`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 ある "_リソースの種類_" が **strongType** に対して有効かどうかを確認するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。
+
+**Get-AzResourceProvider** によって返されない一部の "_リソースの種類_" もサポートされています。 これらには次のようなものがあります。
+
+- `Microsoft.RecoveryServices/vaults/backupPolicies`
+
+"_リソースの種類_" でない **strongType** の許可される値には、次のものがあります。
 
 - `location`
 - `resourceTypes`
 - `storageSkus`
 - `vmSKUs`
 - `existingResourceGroups`
-- `omsWorkspace`
-- `Microsoft.EventHub/Namespaces/EventHubs`
-- `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
-- `Microsoft.EventHub/Namespaces/AuthorizationRules`
-- `Microsoft.RecoveryServices/vaults`
-- `Microsoft.RecoveryServices/vaults/backupPolicies`
 
 ## <a name="definition-location"></a>定義の場所
 
@@ -252,11 +252,13 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `"notIn": ["stringValue1","stringValue2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
-- `"less": "value"`
-- `"lessOrEquals": "value"`
-- `"greater": "value"`
-- `"greaterOrEquals": "value"`
+- `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
+- `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
+- `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
 - `"exists": "bool"`
+
+**less**、**lessOrEquals**、**greater**、**greaterOrEquals** では、プロパティの種類が条件の種類と一致しない場合、エラーがスローされます。 文字列比較は、`InvariantCultureIgnoreCase` を使用して行われます。
 
 **like** 条件と **notLike** 条件を使用する場合は、値にワイルドカード (`*`) を指定できます。
 値に複数のワイルドカード (`*`) を指定することはできません。
@@ -322,13 +324,13 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>値
 
 条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。
 **value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
 
 > [!WARNING]
-> _テンプレート関数_結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。 新しいポリシーの定義をテストしたり検証したりしている間、失敗となった評価の影響が新しいリソースや更新されたリソースに波及するのを避けるには、[enforcementMode](./assignment-structure.md#enforcement-mode) として **DoNotEnforce** を使用してください。
+> _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。 新しいポリシーの定義をテストしたり検証したりしている間、失敗となった評価の影響が新しいリソースや更新されたリソースに波及するのを避けるには、[enforcementMode](./assignment-structure.md#enforcement-mode) として **DoNotEnforce** を使用してください。
 
 #### <a name="value-examples"></a>値の例
 
@@ -361,7 +363,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -372,7 +374,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 #### <a name="avoiding-template-failures"></a>テンプレート エラーの回避
 
-**value** で _テンプレート関数_ を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
+**value** で_テンプレート関数_を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
 
 ```json
 {
@@ -578,25 +580,27 @@ Azure Policy では、次の種類の効果をサポートしています。
 - resourceId()
 - variables()
 
-ポリシー規則では、次の関数をすべて使用できますが、Azure Resource Manager テンプレートでの使用方法とは異なります。
+> [!NOTE]
+> これらの関数は、**deployIfNotExists** ポリシー定義のテンプレートのデプロイの `details.deployment.properties.template` の部分で引き続き使用できます。
 
-- `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列
-  - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数
+次の関数は、ポリシー規則で使用できますが、Azure Resource Manager テンプレートでの使用方法とは異なります。
+
 - `utcNow()` - Resource Manager テンプレートとは異なり、これは defaultValue 外で使用できます。
   - 現在の日時に設定されているユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列が返されます。
 
 次の関数は、ポリシー ルールでのみ使用できます。
 
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列
+  - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数
 - `field(fieldName)`
   - **fieldName**: [必須] 文字列 - 取得する[フィールド](#fields)の名前
   - そのフィールドの値を、If 条件による評価の対象となっているリソースから返します。
   - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 - `requestContext().apiVersion`
-  - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。 これは、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
+  - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。
+    これは、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
   
-
-
 #### <a name="policy-function-example"></a>ポリシー関数の例
 
 このポリシー規則の例では、`resourceGroup` リソース関数を使用して **name** プロパティを取得します。ここでは、`concat` 配列およびオブジェクト関数と組み合わせて、リソース グループ名で始まるリソース名を指定する `like` 条件を作成します。
@@ -708,13 +712,14 @@ Azure Policy では、次の種類の効果をサポートしています。
 }
 ```
 
-
-
 詳細については、[[\*] エイリアスの評価](../how-to/author-policies-for-arrays.md#evaluating-the--alias) に関する説明を参照してください。
 
 ## <a name="initiatives"></a>イニシアティブ
 
 イニシアティブを使用すると、複数の関連するポリシー定義をグループ化できます。グループを単一の項目として操作するので、割り当てと管理が単純になります。 たとえば、関連するタグ付けポリシー定義を 1 つのイニシアティブとしてグループ化できます。 それぞれのポリシーを個別に割り当てるのではなく、イニシアティブを適用することになります。
+
+> [!NOTE]
+> いったんイニシアティブが割り当てられると、イニシアティブ レベルのパラメーターを変更することはできません。 このため、パラメーターを定義するときに **defaultValue** を設定することをお勧めします。
 
 次の例は、2 つのタグ (`costCenter` および `productName`) を扱うためのイニシアティブの作成方法を示しています。 2 つの組み込みポリシーを使用して、既定のタグの値を適用しています。
 
@@ -729,13 +734,15 @@ Azure Policy では、次の種類の効果をサポートしています。
                 "type": "String",
                 "metadata": {
                     "description": "required value for Cost Center tag"
-                }
+                },
+                "defaultValue": "DefaultCostCenter"
             },
             "productNameValue": {
                 "type": "String",
                 "metadata": {
                     "description": "required value for product Name tag"
-                }
+                },
+                "defaultValue": "DefaultProduct"
             }
         },
         "policyDefinitions": [{

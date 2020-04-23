@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633275"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416126"
 ---
-# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso Retail データを Synapse SQL データ ウェアハウスに読み込む
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso Retail データを Synapse SQL に読み込む 
 
 このチュートリアルでは、PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Synapse SQL データ ウェアハウスに読み込む方法を説明します。
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>データを新しいテーブルに読み込む
 
-Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用します。 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。 新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。
+Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用します。 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。 新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 

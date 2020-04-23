@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: dabcc5afe4a092e4919c854071a698c6e6ebf0b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926167"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415353"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory を使用して ServiceNow からデータをコピーする
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、ServiceNow からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -53,8 +54,8 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
 | clientId | OAuth2 認証のクライアント ID。  | いいえ |
 | clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
-| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は、true です。  | いいえ |
-| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
+| useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうか指定します。 既定値は、true です。  | いいえ |
+| usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
 
 **例:**
 

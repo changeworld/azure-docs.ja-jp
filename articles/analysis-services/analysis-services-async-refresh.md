@@ -4,15 +4,15 @@ description: Azure Analysis Services REST API を使用し、モデル データ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273713"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406287"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 
@@ -208,8 +208,8 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 ### <a name="to-use-the-code-sample"></a>サンプル コードを使用するには
 
-1.  リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
-2.  「**client.BaseAddress = …** 」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
+1.    リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
+2.    「**client.BaseAddress = …** 」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
 
 このコード例では、[サービス プリンシパル](#service-principal)の認証を使用しています。
 
@@ -217,9 +217,9 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 Azure AS でサービス プリンシパルを設定し、必要なアクセス許可を割り当てる方法については、[Azure Portal でサービス プリンシパルを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページと「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。 これらの手順を完了したら、追加で次の手順を実行します。
 
-1.  コード サンプル内で「**string authority = …** 」を見つけたら、「**common**」をご所属の組織のテナント ID に置き換えます。
-2.  コメント化およびコメントの解除を行って、ClientCredential クラスで cred オブジェクトをインスタンス化します。 \<App ID> と \<App Key> の値が安全な方法でアクセスされていることを確認します。または、サービス プリンシパルの証明書ベース認証を使用します。
-3.  サンプルを実行します。
+1.    コード サンプル内で "**string authority = …** " を見つけたら、"**common**" を自分の組織のテナント ID に置き換えます。
+2.    コメント化およびコメントの解除を行って、ClientCredential クラスで cred オブジェクトをインスタンス化します。 \<App ID> と \<App Key> の値が安全な方法でアクセスされていることを確認します。または、サービス プリンシパルの証明書ベース認証を使用します。
+3.    サンプルを実行します。
 
 
 ## <a name="see-also"></a>関連項目

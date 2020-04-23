@@ -11,14 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: b01dcad71747da6b7aa770e3993cb82892ae55fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929436"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415020"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Azure Data Factory を使用して Google AdWords からデータをコピーする
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 この記事では、Azure Data Factory でのコピー アクティビティを使用して、Google AdWords からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -55,7 +58,7 @@ Google AdWords のリンクされたサービスには、次のプロパティ�
 | clientSecret | 更新トークンを取得するために使用される google アプリケーションのクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ |
 | email | ServiceAuthentication で使用されるサービス アカウントの電子メール ID。これはセルフホステッド IR のみで使用できます。  | いいえ |
 | keyFilePath | サービス アカウントの電子メール アドレスを認証するために使用される .p12 キー ファイルへの完全なパス。これはセルフホステッド IR のみで使用できます。  | いいえ |
-| trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ |
+| trustedCertPath | TLS 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR 上で TLS を使用している場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ |
 | useSystemTrustStore | システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 既定値は false です。  | いいえ |
 
 **例:**

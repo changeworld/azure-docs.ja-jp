@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228683"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419265"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "79228683"
 Azure SQL Database は、SQL Database サーバーの接続ポリシー設定について次の 3 つのオプションをサポートしています。
 
 - **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。これにより、待機時間が短縮され、スループットが向上します。 接続でこのモードを使用するには、クライアントで次を行う必要があります。
-   - 11000 11999 の範囲のポートで、クライアントから、リージョン内のすべての Azure IP アドレスへのアウトバウンド通信を許可します。 SQL のサービス タグを使用すると、この管理が簡単になります。  
+   - 11000 から 11999 の範囲のポートで、クライアントから、リージョン内のすべての Azure SQL IP アドレスへのアウトバウンド通信を許可します。 SQL のサービス タグを使用すると、この管理が簡単になります。  
    - ポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのアウトバウンド通信を許可します。
 
 - **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシ化されるため、待機時間が長くなり、スループットが低下します。 接続でこのモードを使用するには、クライアントのポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのアウトバウンド通信を許可する必要があります。

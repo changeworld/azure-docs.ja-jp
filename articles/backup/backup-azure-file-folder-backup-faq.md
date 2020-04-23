@@ -3,12 +3,12 @@ title: ファイルとフォルダーのバックアップに関する一般的�
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233915"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254752"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
@@ -22,7 +22,7 @@ Windows Server マシン、System Center DPM、および Microsoft Azure Backup 
 
 ### <a name="how-long-are-vault-credentials-valid"></a>コンテナー資格情報の有効期間はどのくらいですか。
 
-コンテナー資格情報は 48 時間後に有効期限が切れます。 資格情報ファイルが期限切れになったら、Azure portal から再度ファイルをダウンロードしてください。
+コンテナー資格情報は 10 日後に有効期限が切れます。 資格情報ファイルが期限切れになったら、Azure portal から再度ファイルをダウンロードしてください。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>どのようなドライブからファイルとフォルダーをバックアップできますか。
 
@@ -57,6 +57,10 @@ Windows Server マシン、System Center DPM、および Microsoft Azure Backup 
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS エージェントでは、Windows Server 2012 の重複除去をサポートしていますか。
 
 はい。 MARS エージェントでは、バックアップ操作を準備するときに、重複除去されたデータを通常のデータに変換します。 そのデータをバックアップ用に最適化し、データを暗号化してから、暗号化データをコンテナーに送信します。
+
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>MARS エージェントのインストールと構成に管理者のアクセス許可は必要ですか。
+
+必要です。MARS エージェントのインストールと MARS コンソールを使用したバックアップの構成は、保護されるサーバー上のローカル管理者が行う必要があります。
 
 ## <a name="manage-backups"></a>バックアップの管理
 
@@ -181,7 +185,6 @@ Azure Backup エージェントでは、バックアップしたデータを復�
 | --- | --- | --- |
 | 紛失 |利用可能 |元のコンピューターの登録時に指定したものと同じパスフレーズを持つ別のコンピューターに、MARS エージェントをインストールして登録することができます。 **[復旧オプション]**  >  **[別の場所]** を選択して、復元を実行します。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)を参照してください。
 | 忘れた |忘れた |データを復旧できないか、データを利用できません。 |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか。
 

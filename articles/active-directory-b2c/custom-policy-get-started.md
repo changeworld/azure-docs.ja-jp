@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc87628d8b47435012c3d20ec2e72ac186983555
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407288"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -116,7 +116,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **[アプリの登録 (レガシ)]** で、 **[新しいアプリケーションの登録]** を選択します。
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
 1. **アプリケーションの種類**については、**ネイティブ**を選択します。
-1. **リダイレクト URI** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は Azure AD B2C テナントです。
+1. **[リダイレクト URI]** に「`myapp://auth`」と入力します。
 1. **［作成］** を選択します 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
 1. **[設定]** を選択し、 **[必要なアクセス許可]** を選択したら、 **[追加]** を選択します。
 1. **[API を選択します]** を選択し、**IdentityExperienceFramework** を検索して選択してから、 **[選択]** をクリックします。
@@ -129,7 +129,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で、ドロップダウンを使用して **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
-1. **リダイレクト URI** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は Azure AD B2C テナントです。
+1. **[リダイレクト URI]** に「`myapp://auth`」と入力します。
 1. **[アクセス許可]** で、 *[openid と offline_access アクセス許可に対して管理者の同意を付与します]* チェック ボックスをオンにします。
 1. **[登録]** を選択します。
 1. 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
@@ -190,7 +190,7 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 拡張子ファイル *TrustFrameworkExtensions.xml*  にアプリケーション ID を追加します。
 
-1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** を開いて、`<TechnicalProfile Id="login-NonInteractive">` 要素を見つけます。
+1. `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** を開いて、`<TechnicalProfile Id="login-NonInteractive">` 要素を見つけます。
 1. `IdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した IdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
 1. `ProxyIdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
 1. ファイルを保存します。
@@ -225,7 +225,7 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 [前提条件](#prerequisites)で説明したように、Facebook はカスタム ポリシーを使用するための必須条件では "*ありません*" が、カスタム ポリシーでソーシャル ログインを連携できることを示す目的でここでは使用されています。
 
-1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
+1. `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">

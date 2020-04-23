@@ -5,16 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8ddcaf6a5c9ab51147e540e2426ef8c4a1fdd3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366702"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392372"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
 [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) を使用して Azure のほとんどのサービスのベース レベルのメトリックとログを監視します。 [アクション グループ](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json)またはクラシック アラートから Azure Automation Runbook を呼び出して、アラートに基づくタスクを自動化することができます。 この記事では、アラートを使用して Runbook を構成および実行する方法を示します。
+
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="alert-types"></a>アラートの種類
 
@@ -32,8 +35,8 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 |アラート:  |説明|ペイロード スキーマ  |
 |---------|---------|---------|
 |[共通アラート](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|今日の Azure でのアラート通知の使用エクスペリエンスを標準化する共通アラート スキーマ。|共通アラートのペイロード スキーマ|
-|[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure のアクティビティ ログ内の新しいイベントのいずれかが特定の条件と一致する場合に、通知が送信されます。 たとえば、`Delete VM` 処理が **myProductionResourceGroup** で発生した場合、または状態が **[アクティブ]** な新しい Azure Service Health イベントが表示されている場合などです。| [アクティビティ ログ アラートのペイロード スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[ほぼリアルタイムのメトリック アラート](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |1 つまたは複数のプラットフォーム レベルのメトリックが指定した条件を満たす場合に、メトリック アラートよりも速く通知が送信されます。 たとえば、過去 5 分間の VM の **CPU %** の値が **90** より大きく、 **[ネットワーク入力]** の値が **500 MB** より大きい場合などです。| [ほぼリアルタイムのメトリック アラートのペイロード スキーマ](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure のアクティビティ ログ内の新しいイベントのいずれかが特定の条件と一致する場合に、通知が送信されます。 たとえば、`Delete VM` 操作が **myProductionResourceGroup** で発生した場合、または状態が [アクティブ] の新しい Azure Service Health イベントが表示されている場合などです。| [アクティビティ ログ アラートのペイロード スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[ほぼリアルタイムのメトリック アラート](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |1 つまたは複数のプラットフォーム レベルのメトリックが指定した条件を満たす場合に、メトリック アラートよりも速く通知が送信されます。 たとえば、過去 5 分間の VM の **CPU %** の値が 90 より大きく、 **[ネットワーク入力]** の値が 500 MB より大きい場合などです。| [ほぼリアルタイムのメトリック アラートのペイロード スキーマ](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 種類ごとに提供されるデータは異なるため、アラートは種類ごとに異なる方法で処理されます。 次のセクションでは、さまざまな種類のアラートを処理する Runbook を作成する方法について説明します。
 
@@ -41,11 +44,11 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 アラートでオートメーションを使用するには、Runbook に渡されるアラートの JSON ペイロードを管理するロジックを持つ Runbook が必要です。 次の例の Runbook が Azure アラートから呼び出される必要があります。
 
-前のセクションで説明したように、アラートの種類ごとにスキーマは異なります。 スクリプトは、アラートから `WebhookData` Runbook 入力パラメーターの Webhook データを取り込みます。 次に、スクリプトは JSON ペイロードを評価してどの種類のアラートが使用されたかを判断します。
+前のセクションで説明したように、アラートの種類ごとにスキーマは異なります。 このスクリプトでは、`WebhookData` Runbook 入力パラメーターのアラートから Webhook データを取得します。 次に、スクリプトによって JSON ペイロードが評価され、使用されているアラートの種類が判断されます。
 
-この例では、VM からのアラートを使用します。 ペイロードから VM のデータを取得し、その情報を使用して VM を停止します。 接続は、Runbook が実行される Automation アカウントで設定する必要があります。 アラートを使用して Runbook をトリガーする場合は、トリガーされる Runbook でアラートの状態を確認することが重要です。 アラートの状態が変化するたびに Runbook がトリガーされます。 アラートには複数の状態があり、最も一般的な 2 つの状態が `Activated` と `Resolved` です。 Runbook が複数回実行されないように、Runbook ロジックでこの状態を確認します。 この記事の例では、`Activated` アラートのみを検索する方法を示しています。
+この例では、VM からのアラートを使用します。 ペイロードから VM のデータを取得し、その情報を使用して VM を停止します。 接続は、Runbook が実行される Automation アカウントで設定する必要があります。 アラートを使用して Runbook をトリガーする場合は、トリガーされる Runbook でアラートの状態を確認することが重要です。 アラートの状態が変化するたびに、Runbook がトリガーされます。 アラートには複数の状態があります。最も一般的な 2 つの状態は "アクティブ" と "解決済み" です。 Runbook が複数回実行されないことを確実にするために、Runbook ロジックの状態を確認します。 この記事の例では、状態がアクティブのアラートのみを検索する方法を示しています。
 
-Runbook は、VM に対する管理アクションを実行するために、**AzureRunAsConnection** [実行アカウント](automation-create-runas-account.md)を使用して Azure を認証します。
+Runbook では、VM に対する管理アクションを実行するために、接続資産の `AzureRunAsConnection` [実行アカウント](automation-create-runas-account.md)を使用して Azure を認証します。
 
 この例を使用して**Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
 
@@ -139,13 +142,13 @@ Runbook は、VM に対する管理アクションを実行するために、**A
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
-                Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+                Set-AzContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
                 # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
-                Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
+                Stop-AzVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
@@ -195,3 +198,5 @@ Runbook は、VM に対する管理アクションを実行するために、**A
 * Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 * アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)」をご覧ください。
 * ほぼリアルタイムのアラートの作成方法については、「[Azure Portal でアラート ルールを作成する](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)」をご覧ください。

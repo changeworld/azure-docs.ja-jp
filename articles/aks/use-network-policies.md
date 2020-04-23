@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) のネットワーク ポリシーによるポッドの保護
+title: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク ポリシーを使用して、ポッドとの間で送受信されるトラフィックをセキュリティ保護する方法について説明します。
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473610"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392611"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -81,6 +82,8 @@ Azure ネットワーク ポリシーを使用するには、[Azure CNI プラ�
 * 仮想ネットワーク上の AKS クラスター サービス プリンシパルに*共同作成者*のアクセス許可を割り当てます。
 * 定義された仮想ネットワーク内に AKS クラスターを作成し、ネットワーク ポリシーを有効にします。
     * *azure* ネットワーク ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。 注:Calico は `--network-plugin azure` または `--network-plugin kubenet` で使用できます。
+
+なお、サービス プリンシパルを使用する代わりに、マネージド ID をアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 独自の安全な *SP_PASSWORD* を指定してください。 *RESOURCE_GROUP_NAME* および *CLUSTER_NAME* 変数を置き換えることができます。
 

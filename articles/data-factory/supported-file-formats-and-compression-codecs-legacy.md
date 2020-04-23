@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1f11a1ff25117c07e61475e7e83fc0c170cd552
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229995"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414647"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック (レガシ)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 *この記事は、次のコネクターに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
 
@@ -530,7 +532,7 @@ Avro ファイルを解析するか、Avro 形式でデータを書き込む場�
 }
 ```
 
-Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
+Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアル](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
 
 以下の点に注意してください。
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621962"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383066"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -72,13 +72,13 @@ Web アプリケーション ファイアウォール (WAF) は、一般的な�
 
 Azure Firewall サービスは、ネットワーク セキュリティ グループの機能を補完します。 全体で、優れた "多層防御" ネットワーク セキュリティを実現します。 ネットワーク セキュリティ グループには、分散ネットワーク レイヤーのトラフィック フィルター機能があり、この機能によって各サブスクリプションの仮想ネットワーク内のリソースに対するトラフィックを制限します。 Azure Firewall は、完全にステートフルな一元化されたネットワーク ファイアウォールです。さまざまなサブスクリプションと仮想ネットワーク全体にネットワークレベルとアプリケーションレベルの保護を提供します。
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Azure Firewall サブネットでネットワーク セキュリティ グループ (NSG) はサポートされていますか?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>AzureFirewallSubnet でネットワーク セキュリティ グループ (NSG) はサポートされていますか?
 
-Azure Firewall は、NIC レベル NSG (表示不可) によるプラットフォーム保護など、複数の保護レイヤーがあるマネージド サービスです。  サブネット レベル NSG は Azure Firewall サブネットで必要なく、サービスの中断を防ぐために無効にされています。
+Azure Firewall は、NIC レベル NSG (表示不可) によるプラットフォーム保護など、複数の保護レイヤーがあるマネージド サービスです。  サブネット レベル NSG は AzureFirewallSubnet で必要なく、サービスの中断を確実に防ぐために無効にされています。
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>サービス エンドポイントに Azure Firewall を設定するにはどうすればよいですか?
 
-PaaS サービスへのアクセスをセキュリティで保護するには、サービス エンドポイントをお勧めします。 Azure Firewall サブネット内のサービス エンドポイントを有効にし、接続されているスポーク仮想ネットワーク上ではそれらを無効にすることを選択できます。 このようにして、サービス エンドポイントのセキュリティとすべてのトラフィックの一元的ログ記録という、両方の機能の長所を生かすことができます。
+PaaS サービスへのアクセスをセキュリティで保護するには、サービス エンドポイントをお勧めします。 Azure Firewall サブネット内のサービス エンドポイントを有効にし、接続されているスポーク仮想ネットワーク上ではそれらを無効にすることを選択できます。 このようにして、サービス エンドポイントのセキュリティとすべてのトラフィックの一元的ログ記録という、両方の機能の長所を活かすことができます。
 
 ## <a name="what-is-the-pricing-for-azure-firewall"></a>Azure Firewall の価格を教えてください
 
@@ -121,7 +121,7 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Firewall では、同じ仮想ネットワーク (またはピアリングされた仮想ネットワーク) のサブネット間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
 
-はい。 ただし、同じ VNET 内のサブネット間でトラフィックをリダイレクトするよう UDR を構成する場合、さらに注意が必要です。 UDR のターゲット プレフィックスとして VNET アドレス範囲を使用する場合、これにより、Azure Firewall インスタンスを介して、同じサブネット内で一方のマシンから他方のマシンにすべてのトラフィックがルーティングされることになります。 これを回避するために、次ホップ タイプ **VNET** を使用して UDR にサブネットのルートを組み込みます。 これらのルートの管理は、手間がかかり、誤りが発生する可能性もあります。 内部ネットワークのセグメント化の推奨される方法は、UDR を必要としないネットワーク セキュリティ グループを使用する方法です。
+はい。 ただし、同じ VNET 内のサブネット間でトラフィックをリダイレクトするよう UDR を構成する場合、さらに注意が必要です。 UDR のターゲット プレフィックスとして VNET アドレス範囲を使用する場合、これにより、Azure Firewall インスタンスを介して、同じサブネット内で一方のマシンから他方のマシンにすべてのトラフィックがルーティングされることになります。 これを回避するために、次ホップ タイプ **VNET** を使用して UDR にサブネットのルートを組み込みます。 これらのルートの管理は、手間がかかり、誤りが発生する可能性もあります。 内部ネットワークのセグメント化について推奨される方法は、UDR を必要としないネットワーク セキュリティ グループを使用する方法です。
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall で、プライベート ネットワーク間のアウトバウンド SNAT は実行されますか?
 
@@ -151,8 +151,12 @@ Azure Firewall には、インターネットへの直接接続が必要です�
 
 構成の変更が適用されるたびに、Azure Firewall は、その基になるすべてのバックエンド インスタンスを更新しようとします。 まれに、これらのバックエンド インスタンスの 1 つが新しい構成での更新に失敗し、更新プロセスが停止して、失敗したプロビジョニングの状態になることがあります。 Azure Firewall はまだ操作可能ですが、適用された構成は矛盾した状態になっている可能性があります。この場合、一部のインスタンスは以前の構成であり、他のインスタンスはルール セットが更新されています。 このような場合は、操作が成功してファイアウォールが "*成功*" プロビジョニング状態になるまで、もう一度構成を更新してみてください。
 
-### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure Firewall は計画メンテナンスや予期しない障害にどのように対処しますか。
+## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure Firewall は計画メンテナンスや予期しない障害にどのように対処しますか。
 Azure Firewall は、アクティブ/アクティブ構成の複数のバックエンドノードで構成されます。  計画メンテナンスの場合は、ノードを適切に更新するための接続のドレイン ロジックがあります。  更新は、中断のリスクをさらに制限するために、Azure リージョンごとに営業時間外に予定されます。  予期しない問題の場合は、新しいノードをインスタンス化して、障害が発生したノードを置き換えます。  新しいノードへの接続は、通常、障害発生時から 10 秒以内に再確立されます。
+
+## <a name="how-does-connection-draining-work"></a>接続のドレインはどのように機能しますか。
+
+計画されたメンテナンスの場合、接続のドレイン ロジックにより、バックエンド ノードが適切に更新されます。 既存の接続が閉じられるまで、Azure Firewall は 90 秒間待機します。 必要に応じて、クライアントは別のバックエンド ノードへの接続を自動的に再確立できます。
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>ファイアウォール名に文字制限はありますか。
 
@@ -168,12 +172,42 @@ Azure Firewall では、スケールの際により多くの仮想マシン イ�
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>ファイアウォールのスループットを増やすにはどうすればよいですか。
 
-Azure Firewall の初期スループット容量は 2.5 から 3 Gbps で、30 Gbps までスケールアウトします。 スケールアウトは CPU 使用率とスループットに基づきます。 ファイアウォールがニーズを満たすようにスケールアウトされていない場合や、より多くのスループット容量が必要な場合は、サポートに問い合わせてファイアウォールのスループット容量を増やしてください。
+Azure Firewall の初期スループット容量は 2.5 から 3 Gbps で、30 Gbps までスケールアウトします。 CPU 使用率とスループットに基づいて自動的にスケールアウトされます。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Firewall のスケールアウトにはどのくらいの時間がかかりますか。
 
-Azure Firewall のスケールアウトには 5 から 7 分かかります。より高速な自動スケーリングを必要とするバーストが発生している場合は、サポートに連絡して、ファイアウォールの初期スループット容量を増やしてください。
+Azure Firewall は、平均スループットまたは CPU 使用率が 60% になると、徐々にスケーリングされます。 スケールアウトには 5 から 7 分かかります。 パフォーマンス テストを行うときは、少なくとも 10 から 15 分のテストを行い、新しく作成された Firewall ノードを活用するために新しい接続を開始してください。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Firewall では Active Directory へのアクセスが既定で許可されますか。
 
 いいえ。 Azure Firewall では、Active Directory へのアクセスは既定でブロックされます。 アクセスを許可するには、AzureActiveDirectory サービス タグを構成します。 詳しくは、「[Azure Firewall サービス タグ](service-tags.md)」をご覧ください。
+
+## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall の脅威インテリジェンス ベースのフィルター処理から、FQDN または IP アドレスを除外できますか。
+
+はい。Azure PowerShell を使用して、それを行うことができます。
+
+```azurepowershell
+# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+
+## Create the Whitelist with both FQDN and IPAddresses
+
+$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
+$fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
+   -FQDN @("fqdn1", "fqdn2", …) -IpAddress @("ip1", "ip2", …)
+
+## Or Update FQDNs and IpAddresses separately
+
+$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
+$fw.ThreatIntelWhitelist.FQDNs = @("fqdn1", "fqdn2", …)
+$fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
+
+Set-AzFirewall -AzureFirewall $fw
+```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>TCP ping や類似のツールが、そのトラフィックを許可するルールが Azure Firewall にない場合でも、ターゲット FQDN に正常に接続できるのはなぜですか。
+
+TCP ping は実際にはターゲット FQDN に接続していません。 Azure Firewall の透過プロキシでは、ポート 80/443 で送信トラフィックがリッスンされるためにこのようなことが起こります。 TCP ping を実行すると、ファイアウォールとの接続が確立されます。これにより、パケットが破棄され、接続がログに記録されます。 この動作はセキュリティに影響しません。 ただし、混乱を避けるために、この動作に対する変更の可能性を調査しています。
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP グループでサポートされる IP アドレスの数に制限はありますか。
+
+はい。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)」を参照してください。

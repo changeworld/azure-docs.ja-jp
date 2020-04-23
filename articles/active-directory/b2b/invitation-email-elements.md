@@ -5,75 +5,81 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 04/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65768366"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407208"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
-招待メールは、パートナーを B2B コラボレーション ユーザーとして Azure AD に参加させるための重要なコンポーネントです。 それらを使用して、受信者の信頼を高めることができます。 電子メールに正当性と社会的証明を加えることによって、受信者が安心して **[開始]** ボタンを選択して招待に応じることができるようにします。 この信頼は、共有時の摩擦を軽減するための重要な手段です。 さらに、電子メールの見栄えを良くすることができます。
+招待メールは、パートナーを B2B コラボレーション ユーザーとして Azure AD に参加させるための重要なコンポーネントです。 [B2B コラボレーションの使用について招待メールを送信することは必須ではありません](add-user-without-invite.md)が、送信すれと、招待を受け入れるかどうかを決定するために必要なすべての情報がユーザーに提供されます。 また、ユーザーが後でリソースに戻る必要がある場合に常に参照できるリンクも提供されます。
 
 ![B2B の招待メールを示すスクリーンショット](media/invitation-email-elements/invitation-email.png)
 
+> [!NOTE]
+> この新しいメール テンプレートはすべてのテナントへのロールアウトの途中であるため、一部のテナントではまだ古いデザインが使用されています。 2020 年 5 月末までには、すべてのテナントからの招待でこのテンプレートが使用されるようになります。
+
 ## <a name="explaining-the-email"></a>電子メールの説明
+
 これらの機能の最適な使用方法がわかるように、電子メールの要素をいくつか見てみましょう。
 
 ### <a name="subject"></a>サブジェクト
-電子メールの件名は次のパターンに従います:You're invited to the &lt;テナント名&gt; organization (テナント名の組織に招待されています)
+
+メールの件名のパターンは次のようになります。
+
+組織内のアプリケーションにアクセスするための &lt;ユーザー名&gt; さんからの招待。
 
 ### <a name="from-address"></a>差出人アドレス
-差出人アドレスには、LinkedIn と同様のパターンが使用されています。  招待元がどの会社のだれであるかを明らかにし、電子メールが Microsoft の電子メール アドレスから送信されていることを明確に示す必要があります。 形式は次のようになります:Microsoft Invitations <invites@microsoft.com>、または &lt;テナント名&gt; からの &lt;招待元の表示名&gt; (Microsoft 経由) <invites@microsoft.com>。
+
+差出人アドレスには、LinkedIn と同様のパターンが使用されています。 このパターンにより、メールは invites@microsoft.com からのものであっても、招待は別の組織からであることがはっきりわかります。 形式は次のようになります:Microsoft Invitations  <invites@microsoft.com> または Microsoft Invitations (&lt;テナント名&gt; の代理)  <invites@microsoft.com>. 
 
 ### <a name="reply-to"></a>返信
+
 電子メールの返信先は招待元の電子メール アドレス (使用可能な場合) に設定されるので、電子メールに返信すると、招待元に送信されます。
 
-### <a name="branding"></a>ブランド
-テナントからの招待メールでは、テナントで設定されている会社のブランドを使用します。 この機能を利用する場合は、[こちら](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal)で構成方法の詳細を参照してください。 バナー ロゴが電子メールに表示されます。 最良の結果を得るために、画像のサイズと品質については[こちら](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal)の指示に従ってください。 また、行動への呼び掛けには会社名も表示されます。
+### <a name="phishing-warning"></a>フィッシングの警告
 
-### <a name="call-to-action"></a>行動への呼び掛け
-行動への呼び掛けは、受信者が電子メールを受け取った理由と、受信者に求める行動の 2 つの部分で構成されます。
-- "why"(理由) セクションは、次のパターンを使用して指定できます:You've been invited to access applications in the &lt;テナント名&gt; organization (テナント名の組織のアプリケーションにアクセスするよう招待を受けています)
+メールの冒頭にはユーザーに対するフィッシングについての簡単な警告文があり、予期されている招待のみを受け入れる必要があることが警告されています。 事前に招待先に連絡しておくことで、招待先のパートナーが招待を受け取って驚かないようにすることをお勧めします。
 
-- また、"受信者に求める行動" セクションは、 **[開始]** ボタンの存在によって示されます。 招待を必要とせずに受信者が追加された場合、このボタンは表示されません。
+![メールに記載されるフィッシング詐欺の警告の画像](media/invitation-email-elements/phishing-warning.png)
 
 ### <a name="inviters-information"></a>招待元の情報
-電子メールには、招待元の表示名が含まれます。 また、Azure AD アカウントのプロフィール画像を設定している場合は、招待メールにその画像も含まれます。 どちらも、電子メールに対する受信者の信頼を高めることを目的としています。
 
-招待元がプロファイル画像をまだ設定していない場合は、次のように招待元のイニシャルを示すアイコンが画像の場所に作成されます。
+メールには、招待元と、招待元が招待を送信している組織に関する情報が含まれています。 これには、送信者の名前とメール アドレス、および組織に関連付けられている名前とプライマリ ドメインが含まれます。 この情報はすべて、招待された人が招待を受け入れるかどうかを情報に基づいて決定するのに役立ちます。
 
-  ![招待元のイニシャルが表示されている招待を示すスクリーンショット](media/invitation-email-elements/inviters-initials.png)
+![メールに記載されている招待元の情報の画像](media/invitation-email-elements/inviters-information.png)
 
-### <a name="body"></a>Body
-本文には、[ゲスト ユーザーをディレクトリ、グループ、またはアプリに招待](add-users-administrator.md)するときに、または [Invitation API を使用して](customize-invitation-api.md)招待元が作成するメッセージが含まれています。 これはテキスト領域であるため、セキュリティ上の理由で HTML タグは処理されません。
+### <a name="invitation-message"></a>招待メッセージ
 
-  ![招待メールの本文を示すスクリーンショット](media/invitation-email-elements/invitation-email-body.png)
+[ディレクトリ、グループ、アプリにゲスト ユーザーを招待する](add-users-administrator.md)とき、または[招待 API を使用する](customize-invitation-api.md)ときに、招待元が招待の一部としてメッセージを含めた場合、メールのメイン セクションでメッセージが強調表示されます。 また、招待元が設定した場合は、招待元の名前とプロファイル イメージも含まれます。 メッセージ自体はテキスト領域であるため、セキュリティ上の理由から、HTML タグは処理されません。
+
+![メールでの招待メッセージの画像](media/invitation-email-elements/invitation-message.png)
+
+### <a name="accept-button-and-redirect-url"></a>同意ボタンとリダイレクト URL
+
+メールの次のセクションには、招待に同意した後で招待された人が移動される先の場所に関する情報と、そのためのボタンが含まれています。  将来、招待された人はいつでもこのリンクを使用してリソースに直接戻ることができます。
+
+![メールの同意ボタンとリダイレクト URL の画像](media/invitation-email-elements/accept-button.png)
 
 ### <a name="footer-section"></a>フッター セクション
-フッターには Microsoft 社のブランドが含まれており、電子メールが監視されていないエイリアスから送信されたものかどうかを受信者に伝えます。 
 
-特殊なケースは次のとおりです。
+フッターには、送信された招待に関する詳細情報が含まれています。 招待された人が将来の招待をブロックするためのオプションが常にあります。 組織に[プライバシーに関する声明が設けられている](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)場合、声明へのリンクがここに表示されます。  それ以外の場合は、組織によってプライバシーに関する声明が設けられていないことが示されます。
 
-- 招待元が招待元のテナントで電子メール アドレスを持っていない場合
-
-  ![招待元が招待元のテナントでメール アドレスを持っていない場合のスクリーンショット](media/invitation-email-elements/inviter-no-email.png)
-
-
-- 受信者が招待を利用する必要がない場合
-
-  ![受信者が招待を利用する必要がない場合のスクリーンショット](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
-
+![メールのフッター セクションの画像](media/invitation-email-elements/footer-section.png)
+ 
 ## <a name="how-the-language-is-determined"></a>言語が決定される方法
-招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。 
+
+招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。
+
 - 招待の作成 API が使用されている場合は、[invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) オブジェクトの **messageLanguage** プロパティ
 -   ゲストの[ユーザー オブジェクト](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)で指定されている **preferredLanguage** プロパティ
 -   ゲスト ユーザーのホーム テナントのプロパティで設定されている**通知言語** (Azure AD テナントの場合のみ)

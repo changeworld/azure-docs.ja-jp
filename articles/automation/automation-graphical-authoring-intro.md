@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 09afca7eaf385795baf9c4a3c94232622527e357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf8ced05066923c94e80628651d8983560601d69
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500964"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406048"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 
@@ -441,3 +441,5 @@ Azure Automation の各グラフィカル Runbook には、ドラフト バー�
 * グラフィカル Runbook の使用を開始するには、「[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)」を参照してください。
 * Runbook の種類と利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 * Automation の実行アカウントを使った認証方法を理解するには、[Azure の実行アカウントの構成](automation-sec-configure-azure-runas-account.md)に関する記事を参照してください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)」をご覧ください。

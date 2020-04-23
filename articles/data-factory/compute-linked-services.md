@@ -6,18 +6,21 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 10/10/2019
+ms.openlocfilehash: 63843230b3d4a521df858b00c8e5c887e8f53a7a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225583"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415588"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
 
 次の表は、Data Factory でサポートされているコンピューティング環境と、その環境で実行できるアクティビティの一覧です。 
@@ -36,13 +39,15 @@ ms.locfileid: "79225583"
 >  
 
 ## <a name="on-demand-hdinsight-compute-environment"></a>オンデマンドの HDInsight コンピューティング環境
+
 この種類の構成では、コンピューティング環境は Azure Data Factory サービスにより完全管理されます。 データを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。 オンデマンドのコンピューティング環境のために「リンクされたサービス」を作成し、構成し、ジョブ実行、クラスター管理、ブートストラップ アクションの詳細設定を制御できます。
 
 > [!NOTE]
 > オンデマンド構成は現在のところ、Azure HDInsight クラスターにのみ対応しています。 Azure Databricks は、ジョブ クラスターを使用したオンデマンド ジョブもサポートしています。詳細については、「[Azure Databricks のリンクされたサービス](#azure-databricks-linked-service)」を参照してください。
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight のオンデマンドのリンクされたサービス
-Azure Data Factory サービスは、データを処理するためのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 ストレージ アカウントは、汎用の標準的な Azure ストレージ アカウントである必要があります。 
+
+Azure Data Factory サービスは、データを処理するためのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 ストレージ アカウントは、汎用の Standard Azure Storage アカウントである必要があります。 
 
 オンデマンド HDInsight のリンクされたサービスに関する次の **重要な** 点に注意してください。
 
@@ -55,6 +60,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 > オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **20 分**以上かかります。
 
 ### <a name="example"></a>例
+
 次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。 Data Factory サービスは、必要なアクティビティを処理するために、**Linux ベースの** HDInsight クラスターを自動的に作成します。 
 
 ```json
@@ -93,25 +99,24 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 > HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。 
 >
 > 実行するアクティビティが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
->
-> 
 
 ### <a name="properties"></a>Properties
+
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | type プロパティは **HDInsightOnDemand**に設定されます。 | はい      |
 | clusterSize                  | クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。 | はい      |
-| linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、この Azure Storage アカウントと同じリージョンに作成されます。 Azure HDInsight には、サポートされる各 Azure リージョンで使用できるコアの合計数に制限があります。 必要な clusterSize を満たせるだけ十分なコア クォータが、その Azure リージョンに存在することを確認してください。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Store にデータをコピーします。 </p> | はい      |
+| linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、この Azure Storage アカウントと同じリージョンに作成されます。 Azure HDInsight には、サポートされる各 Azure リージョンで使用できるコアの合計数に制限があります。 必要な clusterSize を満たせるだけ十分なコア クォータが、その Azure リージョンに存在することを確認してください。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください<p>現時点では、Azure Data Lake Storage (Gen 2) をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Storage (Gen 2) に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Storage (Gen 2) にデータをコピーします。 </p> | はい      |
 | clusterResourceGroup         | HDInsight クラスターは、このリソース グループに作成されます。 | はい      |
 | timetolive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。 最小許容値は 5 分 (00:05:00) です。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の完了直後にクラスターが削除されます。 ただし、高い値を設定した場合、クラスターは、何らかのトラブルシューティングの目的でログオンできるようにアイドル状態を維持できますが、その結果コストが高くなる可能性があります。 そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | はい      |
 | clusterType                  | 作成する HDInsight クラスターの種類。 許可される値は "hadoop" および "spark" です。 指定しない場合は、既定値の hadoop が使用されます。 Enterprise セキュリティ パッケージ対応のクラスターをオンデマンドで作成することはできません。代わりに[既存のクラスターを使用するか、自分のコンピューティングを持ち込んでください](#azure-hdinsight-linked-service)。 | いいえ       |
 | version                      | HDInsight クラスターのバージョン。 指定しない場合、現在の HDInsight 定義の既定バージョンを使用します。 | いいえ       |
 | hostSubscriptionId           | HDInsight クラスターを作成するために使用する Azure サブスクリプション ID です。 指定されていない場合は、Azure のログイン コンテキストのサブスクリプション ID を使用します。 | いいえ       |
-| clusterNamePrefix           | HDI クラスター名のプレフィックス (クラスター名の末尾にタイムスタンプが自動的に付加されます)| いいえ       |
+| clusterNamePrefix           | HDI クラスター名のプレフィックス (クラスター名の末尾にタイムスタンプが自動的に追加されます)| いいえ       |
 | sparkVersion                 | クラスターの種類が "Spark" の場合の Spark のバージョンです | いいえ       |
 | additionalLinkedServiceNames | Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 これらのストレージ アカウントは、linkedServiceName で指定されたストレージ アカウントと同じリージョンに作成されている HDInsight クラスターと同じリージョンにある必要があります。 | いいえ       |
 | osType                       | オペレーティング システムの種類。 使用できる値は、以下のとおりです。Linux と Windows (HDInsight 3.3 の場合のみ)。 既定値は Linux です。 | いいえ       |
-| hcatalogLinkedServiceName    | HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、Azure SQL データベースを metastore として使用して作成されます。 | いいえ       |
+| hcatalogLinkedServiceName    | HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、Azure SQL Database をメタストアとして使用して作成されます。 | いいえ       |
 | connectVia                   | この HDInsight リンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 オンデマンド HDInsight リンク サービスの場合、Azure 統合ランタイムだけをサポートします。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 | clusterUserName                   | クラスターにアクセスするユーザー名。 | いいえ       |
 | clusterPassword                   | クラスターにアクセスするセキュリティで保護された文字列の種類のパスワード。 | いいえ       |
@@ -125,8 +130,6 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 >
 > [!IMPORTANT]
 > 現在、HDInsight のリンクされたサービスは、HBase、Interactive Query (Hive LLAP)、Storm をサポートしていません。 
->
-> 
 
 #### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON の例
 
@@ -291,7 +294,7 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 | clusterUri        | HDInsight クラスターの URI です。                            | はい      |
 | username          | 既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 | はい      |
 | password          | ユーザー アカウントのパスワードを指定します。                       | はい      |
-| linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p> | はい      |
+| linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Storage (Gen 2) のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive または Pig スクリプトから Azure Data Lake Storage (Gen 2) 内のデータにアクセスできます。 </p> | はい      |
 | isEspEnabled      | HDInsight クラスターが [Enterprise セキュリティ パッケージ](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture)対応の場合は、'*true*' を指定します。 既定値は '*false*' です。 | いいえ       |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 <br />Enterprise セキュリティ パッケージ (ESP) 対応の HDInsight クラスターには、クラスターへの通信経路があるセルフホステッド統合ランタイムを使用するか、ESP HDInsight クラスターと同じ仮想ネットワーク内にデプロイする必要があります。 | いいえ       |
 
@@ -483,7 +486,7 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 
 
 ## <a name="azure-databricks-linked-service"></a>Azure Databricks のリンクされたサービス
-**Azure Databricks のリンクされたサービス**を作成して、Databricks ワークロード (ノートブック、jar、phthon) の実行に使用する Databricks ワークスペースを登録できます。 
+**Azure Databricks のリンクされたサービス**を作成して、Databricks ワークロード (Notebook、Jar、Phthon) の実行に使用する Databricks ワークスペースを登録できます。 
 > [!IMPORTANT]
 > Databricks のリンクされたサービスでは、[インスタンス プール](https://aka.ms/instance-pools)がサポートされています。 
 
@@ -546,15 +549,19 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 
 
 ## <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
+
 Azure SQL のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL コネクタ](connector-azure-sql-database.md#linked-service-properties) に関する記事を参照してください。
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse のリンクされたサービス
+
 Azure SQL Data Warehouse のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL Data Warehouse コネクタ](connector-azure-sql-data-warehouse.md#linked-service-properties) に関する記事をご覧ください。
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
+
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [SQL Server コネクタ](connector-sql-server.md#linked-service-properties) に関する記事をご覧ください。
 
 ## <a name="azure-function-linked-service"></a>Azure 関数のリンクされたサービス
+
 Azure 関数のリンクされたサービスを作成し、それを [Azure 関数アクティビティ](control-flow-azure-function-activity.md)と共に使用して、Data Factory パイプラインで Azure 関数を実行します。 Azure 関数の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject`以外の戻り値の型が失敗し、ユーザー エラー*応答コンテンツは有効な JObject ではない*が発生します。
 
 | **プロパティ** | **説明** | **必須** |
@@ -565,4 +572,5 @@ Azure 関数のリンクされたサービスを作成し、それを [Azure 関
 |   |   |   |
 
 ## <a name="next-steps"></a>次のステップ
+
 Azure Data Factory でサポートされる変換アクティビティの一覧については、[データの変換](transform-data.md)に関する記事を参照してください。

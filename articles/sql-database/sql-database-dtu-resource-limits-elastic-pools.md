@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 7b7ef3b6f2d400dafb28cfb7a15cf95cbbe2c457
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 76085dc29d40944cf704dbc5efc578b3314f499a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351008"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419240"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限
 
@@ -32,6 +32,9 @@ ms.locfileid: "80351008"
 > スケーリングのガイダンスと考慮事項については、[エラスティック プールのスケーリング](sql-database-elastic-pool-scale.md)に関するページを参照してください
 > [!NOTE]
 > エラスティック プール内の個々のリソース制限は、一般的に DTU やサービス層に基づくプール外の単一のデータベースのリソース制限と同じです。 たとえば、S2 データベースの最大同時実行ワーカー数は 120 ワーカーです。 そのため、プール内の各データベースの最大 DTU が 50 DTU (S2 と同じ) の場合、Standard プール内のデータベースの最大同時実行ワーカー数も 120 ワーカーです。
+
+> [!NOTE]
+> 次の各表に示すプールあたりのストレージ リソースの制限には、tempdb およびログ ストレージは含まれません。
 
 ### <a name="basic-elastic-pool-limits"></a>Basic エラスティック プールの制限
 

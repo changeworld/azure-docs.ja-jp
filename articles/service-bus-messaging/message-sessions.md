@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660667"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314054"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
 Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、先入れ先出し (FIFO) および要求 - 応答のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
@@ -78,7 +78,7 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 
 セッション状態は、セッション内のすべてのメッセージが処理されても、クリア (**null** を返す) されない限りそのままです。
 
-キューまたはサブスクリプションに存在するすべてのセッションは、Java API の **SessionBrowser** メソッドを使用して、.NET クライアントでは [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) および [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) の [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) を使って列挙できます。
+キューまたはサブスクリプションに存在するすべてのセッションは、Java API の **SessionBrowser** メソッドを使用して、.NET Framework クライアントでは [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) および [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) の [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) を使って列挙できます。
 
 キューに保持されたセッション状態またはサブスクリプション数は、そのエンティティのストレージ クォータがいっぱいになるまで計算されます。 このため、セッションで、アプリケーションが終了したら、外部管理コストを回避するために、アプリケーションで保持された状態をクリーンアップすることをを推奨します。
 

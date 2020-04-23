@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117044"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008640"
 ---
 Azure Ultra ディスクは、Azure IaaS 仮想マシン (VM) に高スループット、高 IOPS、および一貫性のある低待機時間のディスク ストレージを提供します。 この新しいオファリングは、Microsoft の既存のディスク オファリングと同じレベルの可用性で最上のパフォーマンスを提供します。 Ultra ディスクの 1 つの主なメリットは、VM を再起動することなく、SSD のパフォーマンスをワークロードと共に動的に変更する機能です。 Ultra ディスクは、SAP HANA、最上位層のデータベース、トランザクションの多いワークロードなどのデータ集中型のワークロードに適しています。
 
@@ -23,9 +23,11 @@ Azure Ultra ディスクは、Azure IaaS 仮想マシン (VM) に高スループ
 
 ## <a name="determine-vm-size-and-region-availability"></a>VM のサイズと利用可能なリージョンの確認
 
+### <a name="vms-using-availability-zones"></a>可用性ゾーンを使用する VM
+
 Ultra ディスクを利用するには、ご使用の可用性ゾーンを確認する必要があります。 すべてのリージョンで、Ultra ディスクに対してすべての VM サイズがサポートされるわけではありません。 ご使用のリージョン、ゾーン、および VM サイズで Ultra ディスクがサポートされているかどうかを確認するには、次のコマンドのいずれかを実行します。最初に、必ず **region**、**vmSize**、および **subscription** の値を置き換えてください。
 
-CLI:
+#### <a name="cli"></a>CLI
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -37,7 +39,7 @@ $vmSize = "<yourVMSize>"
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
 
-PowerShell:
+#### <a name="powershell"></a>PowerShell
 
 ```powershell
 $region = "southeastasia"
@@ -58,9 +60,58 @@ $vmSize = "Standard_E64s_v3"
 
 これでデプロイ先のゾーンがわかったので、この記事のデプロイ手順に従って、Ultra ディスクが接続された VM をデプロイするか、または Ultra ディスクを既存の VM に接続します。
 
+### <a name="vms-with-no-redundancy-options"></a>冗長オプションのない VM
+
+米国西部に Ultra ディスクをデプロイする場合、現行では、冗長オプションなしでデプロイする必要があります。 ただし、Ultra ディスク対応のすべてのディスク サイズがこのリージョンにあるとは限りません。 米国西部で Ultra ディスクをサポートしているディスク サイズを判断する目的で、次のコード スニペットのいずれかを利用できます。 まず、`vmSize` と `subscription` の値を置き換えてください。
+
+```azurecli
+$subscription = "<yourSubID>"
+$region = "westus"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
+```
+
+```azurepowershell
+$region = "westus"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
+```
+
+応答は次のフォームのようになります。`UltraSSDAvailable   True` は、このリージョンでは VM サイズで Ultra ディスクをサポートしているかどうかを示します。
+
+```
+Name                                         Value
+----                                         -----
+MaxResourceVolumeMB                          884736
+OSVhdSizeMB                                  1047552
+vCPUs                                        64
+HyperVGenerations                            V1,V2
+MemoryGB                                     432
+MaxDataDiskCount                             32
+LowPriorityCapable                           True
+PremiumIO                                    True
+VMDeploymentTypes                            IaaS
+vCPUsAvailable                               64
+ACUs                                         160
+vCPUsPerCore                                 2
+CombinedTempDiskAndCachedIOPS                128000
+CombinedTempDiskAndCachedReadBytesPerSecond  1073741824
+CombinedTempDiskAndCachedWriteBytesPerSecond 1073741824
+CachedDiskBytes                              1717986918400
+UncachedDiskIOPS                             80000
+UncachedDiskBytesPerSecond                   1258291200
+EphemeralOSDiskSupported                     True
+AcceleratedNetworkingEnabled                 True
+RdmaEnabled                                  False
+MaxNetworkInterfaces                         8
+UltraSSDAvailable                            True
+```
+
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Azure Resource Manager を使用して Ultra ディスクをデプロイする
 
-最初に、デプロイする VM のサイズを決定します。 サポートされている VM サイズの一覧については、「[GA の範囲と制限事項](#ga-scope-and-limitations)」を参照してください。
+最初に、デプロイする VM のサイズを決定します。 サポートされている VM サイズの一覧については、「[GA の範囲と制限事項](#ga-scope-and-limitations)」セクションを参照してください。
 
 複数の Ultra ディスクを含む VM を作成する場合は、[複数の Ultra ディスクを含む VM の作成](https://aka.ms/ultradiskArmTemplate)に関するページにあるサンプルを参照してください。
 
@@ -151,6 +202,18 @@ Ultra ディスクを接続するには、Ultra ディスクを使用できる V
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>既存 VM で Ultra ディスクの互換性を有効にする
+
+「[GA の範囲と制限事項](#ga-scope-and-limitations)」にある要件を VM が満たし、[アカウントの該当ゾーン](#determine-vm-size-and-region-availability)に置かれている場合、VM で Ultra ディスク互換性を有効にできます。
+
+Ultra ディスクの互換性を有効にするには、VM を停止する必要があります。 VM を停止したら、互換性を有効にし、Ultra ディスクを接続し、VM を再起動できます。
+
+```azurecli
+az vm deallocate -n $vmName -g $rgName
+az vm update -n $vmName -g $rgName --ultra-ssd-enabled true
+az vm start -n $vmName -g $rgName
+```
+
 ### <a name="create-an-ultra-disk-using-cli"></a>CLI を使用して Ultra ディスクを作成する
 
 これで Ultra ディスクを接続できる VM が用意されたので、Ultra ディスクを作成し、その VM に接続できます。
@@ -214,9 +277,22 @@ New-AzVm `
     -Name $vmName `
     -Location "eastus2" `
     -Image "Win2016Datacenter" `
-    -EnableUltraSSD `
+    -EnableUltraSSD $true `
     -size "Standard_D4s_v3" `
     -zone $zone
+```
+
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>既存 VM で Ultra ディスクの互換性を有効にする
+
+「[GA の範囲と制限事項](#ga-scope-and-limitations)」にある要件を VM が満たし、[アカウントの該当ゾーン](#determine-vm-size-and-region-availability)に置かれている場合、VM で Ultra ディスク互換性を有効にできます。
+
+Ultra ディスクの互換性を有効にするには、VM を停止する必要があります。 VM を停止したら、互換性を有効にし、Ultra ディスクを接続し、VM を再起動できます。
+
+```azurepowershell
+#stop the VM
+$vm1 = Get-AzureRMVM -name $vmName -ResourceGroupName $rgName
+Update-AzureRmVM -ResourceGroupName $rgName -VM $vm1 -UltraSSDEnabled 1
+#start the VM
 ```
 
 ### <a name="create-an-ultra-disk-using-powershell"></a>PowerShell を使用して Ultra ディスクを作成する
@@ -265,7 +341,3 @@ Ultra ディスクには、ユーザーがパフォーマンスを調整でき�
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
-
-## <a name="next-steps"></a>次のステップ
-
-新しいディスクの種類を試してみたい場合は、[この調査を使用してアクセスを要求](https://aka.ms/UltraDiskSignup)してください。

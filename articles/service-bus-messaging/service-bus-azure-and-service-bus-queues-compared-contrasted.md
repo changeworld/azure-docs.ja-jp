@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: 8379b7f48e7e494370f3fdba81676d34821d7b6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffa98e511053edc75fd0e6f25f7b0e21ee9ddda0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75563379"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414524"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -73,7 +73,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 配信保証 |**At-Least-Once** |**At-Least-Once** (PeekLock 受信モードを使用 - これは既定値です) <br/><br/>**At-Most-Once** (ReceiveAndDelete 受信モードを使用) <br/> <br/> さまざまな[受信モード](service-bus-queues-topics-subscriptions.md#receive-modes)に関する詳細  |
 | 分割不可能な操作のサポート |**いいえ** |**はい**<br/><br/> |
 | 受信動作 |**非ブロッキング**<br/><br/>(新しいメッセージがない場合はすぐに完了します) |**タイムアウトあり/なしのブロッキング**<br/><br/>(長いポーリングまたは ["Comet 手法"](https://go.microsoft.com/fwlink/?LinkId=613759) を提供します)<br/><br/>**非ブロッキング**<br/><br/>(.NET マネージド API のみを使用) |
-| プッシュ型 API |**いいえ** |**はい**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) と **OnMessage** セッション .NET API |
+| プッシュ型 API |**いいえ** |**はい**<br/><br/>[QueueClient.OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) と [MessageSessionHandler.OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__) セッション .NET API。 |
 | 受信モード |**Peek & Lease** |**Peek & Lock**<br/><br/>**Receive & Delete** |
 | 排他アクセス モード |**リース ベース** |**ロック ベース** |
 | リース/ロックの期間 |**30 秒 (既定値)**<br/><br/>**7 日間 (最大)** ([UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API を使用してメッセージ リースを更新または変更できます) |**60 秒 (既定値)**<br/><br/>[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API を使用してメッセージのロックを更新できます。 |
@@ -133,7 +133,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
 | 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/common/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
-| 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
+| 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)。<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
 | メッセージの最大 TTL |**無限** (api-version 2017-07-27 の時点) |**TimeSpan.Max** |
 | キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり) |
 | 同時クライアントの最大数 |**無制限** |**無制限**<br/><br/>(最大 100 のコンカレント接続数の制限は TCP プロトコル ベースの通信にのみ適用されます) |

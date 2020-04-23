@@ -5,42 +5,28 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 2c07e5eeedd2e4f42ec7b165bf161e142421df58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527896"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272085"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での低速クエリ ログ
 Azure Database for MariaDB では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
 
 低速クエリ ログについて詳しくは、[低速クエリ ログ](https://mariadb.com/kb/en/library/slow-query-log-overview/)に関する MariaDB のドキュメントをご覧ください。
 
-## <a name="access-slow-query-logs"></a>低速クエリ ログにアクセスする
-Azure portal と Azure CLI を使用して、Azure Database for MariaDB の低速クエリ ログを一覧表示およびダウンロードできます。
-
-Azure portal で Azure Database for MariaDB サーバーを選択します。 **[監視]** の見出しの下の、 **[サーバー ログ]** ページを選択します。
-
-Azure CLI の詳細については、「[Configure and access server logs using Azure CLI (Azure CLI を使用したサーバー ログの構成とアクセス)](howto-configure-server-logs-cli.md)」を参照してください。
-
-同様に、診断ログを使用してログを Azure Monitor にパイプできます。 詳細については、[以下](concepts-server-logs.md#diagnostic-logs)を参照してください。
-
-## <a name="log-retention"></a>ログのリテンション期間
-ログは、作成日から最大 7 日間使用できます。 使用可能なログの合計サイズが 7 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。
-
-ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
-
 ## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する
-既定では、低速クエリ ログは無効です。 有効にするには、slow_query_log をオンに設定します。
+既定では、低速クエリ ログは無効です。 有効にするには、`slow_query_log` を ON に設定します。 これは Azure portal または Azure CLI を使用して有効にできます。 
 
 調整できるその他のパラメーターは次のとおりです。
 
 - **long_query_time**: long_query_time (秒単位) より長いクエリがある場合は、そのクエリが記録されます。 既定値は 10 秒です。
 - **log_slow_admin_statements**: オンの場合は、slow_query_log に書き込まれるステートメントに、ALTER_TABLE や ANALYZE_TABLE などの管理ステートメントが含まれます。
 - **log_queries_not_using_indexes**: インデックスを使用していないクエリを slow_query_log に記録するかどうかを決定します。
-- **log_throttle_queries_not_using_indexes**: このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
+- **log_throttle_queries_not_using_indexes**:このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
 - **log_output**: "File" の場合、ローカル サーバー ストレージと Azure Monitor 診断ログの両方に低速クエリ ログの書き込みが許可されます。 "None" の場合、低速クエリ ログは Azure Monitor 診断ログのみに書き込まれます。 
 
 > [!IMPORTANT]
@@ -48,6 +34,21 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 > 低速クエリのログ記録を長時間にわたって行う場合は、`log_output` を "None" に設定することをお勧めします。 "File" に設定すると、これらのログはローカル サーバー ストレージに書き込まれ、MariaDB のパフォーマンスに影響を与える可能性があります。 
 
 低速クエリ ログのパラメーターの完全な説明については、MariaDB の[低速クエリ ログのドキュメント](https://mariadb.com/kb/en/library/slow-query-log-overview/)を参照してください。
+
+## <a name="access-slow-query-logs"></a>低速クエリ ログにアクセスする
+Azure Database for MariaDB の低速クエリ ログにアクセスするには、ローカル サーバー ストレージまたは Azure Monitor 診断ログの 2 つのオプションがあります。 これは `log_output` パラメーターを使用して設定します。
+
+ローカル サーバー ストレージの場合は、Azure portal または Azure CLI を使用して、低速クエリ ログを一覧表示およびダウンロードできます。 Azure portal で、Azure portal 内のご使用のサーバーに移動します。 **[監視]** の見出しの下の、 **[サーバー ログ]** ページを選択します。 Azure CLI の詳細については、「[Configure and access server logs using Azure CLI (Azure CLI を使用したサーバー ログの構成とアクセス)](howto-configure-server-logs-cli.md)」を参照してください。 
+
+Azure Monitor 診断ログを使用すると、低速クエリ ログを Azure Monitor ログ (Log Analytics)、Azure Storage、または Event Hubs にパイプすることができます。 詳細については、[以下](concepts-server-logs.md#diagnostic-logs)を参照してください。
+
+## <a name="local-server-storage-log-retention"></a>ローカル サーバー ストレージ ログの保持期間
+サーバーのローカル ストレージにログを記録する場合、ログは作成から最大 7 日間利用できます。 使用可能なログの合計サイズが 7 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。
+
+ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
+
+> [!Note]
+> 上記のログ保持期間は、Azure Monitor 診断ログを使用してパイプ処理されたログには適用されません。 出力先のデータ シンク (Azure Storage など) の保持期間を変更することが できます。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 Azure Database for MariaDB は、Azure Monitor 診断ログと統合されます。 MariaDB サーバーで低速クエリ ログを有効にした場合、それらが Azure Monitor のログ、イベント ハブ、または Azure Storage に出力されるようにすることもできます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)の操作方法のセクションを参照してください。
@@ -81,6 +82,9 @@ Azure Database for MariaDB は、Azure Monitor 診断ログと統合されます
 | `server_id_s` | サーバー ID |
 | `thread_id_s` | スレッド ID |
 | `\_ResourceId` | リソース URI |
+
+> [!Note]
+> `sql_text` の場合、2048 文字を超えたログは切り捨てられます。
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを分析する
 

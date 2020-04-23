@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2df49e65603573e4a3adcdda0635982252e70b18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130817"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419325"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -147,7 +147,7 @@ GO
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy)をご覧ください。 |クエリ ステートメント。 |いいえ |
 | allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **SQL Data Warehouse へのデータ読み込みには、PolyBase の使用をお勧めします。** 制約と詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」をご覧ください。 |True <br/>False (既定値) |いいえ |
 | polyBaseSettings |**allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 |&nbsp; |いいえ |
-| rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](https://msdn.microsoft.com/library/dn935021.aspx) 」をご覧ください。 |0 (既定値)、1、2、… |いいえ |
+| rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「**CREATE EXTERNAL TABLE (Transact-SQL)** 」トピックの「[引数](https://msdn.microsoft.com/library/dn935021.aspx)」セクションをご覧ください。 |0 (既定値)、1、2、… |いいえ |
 | rejectType |rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 |Value (既定値)、Percentage |いいえ |
 | rejectSampleValue |拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 |1、2、… |はい (**rejectType** が **percentage** の場合) |
 | useTypeDefault |PolyBase によってテキスト ファイルからデータが取得されるときに、区切りテキスト ファイル内の不足値を処理する方法を指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。 |True、False (既定値) |いいえ |
@@ -421,9 +421,9 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 ```
 **Azure SQL Data Warehouse の入力データセット:**
 
-このサンプルでは、Azure SQL Data Warehouse で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
+このサンプルでは、Azure SQL Data Warehouse で "MyTable" というテーブルを作成し、時系列データ用に "timestampcolumn" という列が含まれているものと想定しています。
 
-”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+"external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```JSON
 {
@@ -607,7 +607,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 ```
 **Azure BLOB の入力データセット:**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" 設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" 設定では Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
 
 ```JSON
 {
@@ -675,7 +675,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 ```
 **Azure SQL Data Warehouse の出力データセット:**
 
-このサンプルは Azure SQL Data Warehouse の「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL Data Warehouse にテーブルを作成する必要があります。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルでは、Azure SQL Data Warehouse の "MyTable" という名前のテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL Data Warehouse にテーブルを作成する必要があります。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```JSON
 {

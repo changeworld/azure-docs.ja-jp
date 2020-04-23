@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c8997f5cd1bed06fab8ca90e7b1cdfcb3e5ec6b3
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618535"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313773"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ ms.locfileid: "80618535"
 
 自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。
 
+> [!NOTE]
+> 自動 ML で作成されたモデルを [ONNX モデル](concept-onnx.md)にエクスポートする予定がある場合は、* で示されたアルゴリズムのみを ONNX 形式に変換できます。 [モデルの ONNX への変換](concept-automated-ml.md#use-with-onnx)の詳細についてご確認ください。 <br> <br> また、ONNX では現在、分類と回帰のタスクのみがサポートされていることにもご注意ください。 
+
 分類 | 回帰 | 時系列予測
 |-- |-- |--
-[ロジスティック回帰](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)|[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[サポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN 線形分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[高速線形リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[オンライン勾配降下リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[ロジスティック回帰](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[サポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN 分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN 線形分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[高速線形リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[オンライン勾配降下リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
 |[平均化パーセプトロン分類子](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[線形 SVM 分類子](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[Linear SVM Classifier](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 `AutoMLConfig` コンストラクターで `task` パラメーターを使用して、実験の種類を指定します。
 
@@ -194,7 +197,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-use-automated-ml-for-ml-models.md#featurization)から参照してください。
 
-実験を構成するときに、詳細設定の `featurization` を有効にすることができます。 次の表は、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)の特徴付けで許可されている設定です。
+実験を構成するときに、詳細設定の `featurization` を有効にすることができます。 次の表は、[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)の特徴付けで許可されている設定です。
 
 |特徴付けの構成 | 説明 |
 | ------------- | ------------- |
@@ -450,7 +453,7 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
 ```
 
-詳細については、[こちらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification/auto-ml-classification.ipynb)に示されたヘルパー関数を使用してください。
+詳細情報を取得するには、次のヘルパー関数を使用します。 
 
 ```python
 from pprint import pprint
@@ -470,7 +473,7 @@ def print_model(model, prefix=""):
             print()
 
 
-print_model(fitted_model)
+print_model(model)
 ```
 
 次のサンプル出力は、特定のアルゴリズム (この例では、LogisticRegression with RobustScalar) を使用したパイプラインのものです。

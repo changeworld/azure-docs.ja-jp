@@ -3,20 +3,20 @@ title: Azure Front Door - よく寄せられる質問
 description: このページでは、Azure Front Door に関してよく寄せられる質問の回答を示します
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: sohamnchatterjee
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2019
-ms.author: sharadag
-ms.openlocfilehash: 1cfee9749bf2eb30799efb05ac875843bcde6651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.author: sohamnc
+ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372615"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313766"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -34,7 +34,7 @@ Azure Front Door は、Application Delivery Network (ADN) をサービスとし�
 
 ### <a name="what-features-does-azure-front-door-support"></a>Azure Front Door ではどのような機能がサポートされますか?
 
-Azure Front Door では、動的サイト アクセラレーション (DSA)、SSL オフロードおよびエンド ツー エンド SSL、Web アプリケーション ファイアウォール、cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、無料の証明書と複数のドメイン管理などがサポートされます。 サポートされる機能の一覧については、[Azure Front Door の概要](front-door-overview.md)に関する記事をご覧ください。
+Azure Front Door では、動的サイト アクセラレーション (DSA)、TLS/SSL オフロードとエンド ツー エンド TLS、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、無料の証明書、複数ドメインの管理などがサポートされます。 サポートされる機能の一覧については、[Azure Front Door の概要](front-door-overview.md)に関する記事をご覧ください。
 
 ### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure Front Door と Azure Application Gateway の違いは何ですか?
 
@@ -46,7 +46,7 @@ Front Door の背後で Application Gateway を使用するべき主要なシナ
 
 - Front Door は、パス ベースの負荷分散をグローバル レベルでしか実行できません。仮想ネットワーク (VNET) 内でトラフィックをさらに負荷分散したい場合は、Application Gateway を使用する必要があります。
 - Front Door は VM/コンテナー レベルで機能しないので、接続のドレインは実行できません。 ただし、Application Gateway を使用すると、接続のドレインを実行できます。 
-- AFD の背後で Application Gateway を使用して、100% の SSL オフロードを実現し、その仮想ネットワーク (VNET) 内で HTTP 要求のみをルーティングすることができます。
+- AFD の背後で Application Gateway を使用すると、100% の TLS/SSL オフロードを実現し、その仮想ネットワーク (VNET) 内で HTTP 要求のみをルーティングできます。
 - Front Door と Application Gateway は両方ともセッション アフィニティをサポートします。 Front Door は、後続のトラフィックをユーザー セッションから特定のリージョン内の同じクラスターまたはバックエンドに転送できますが、Application Gateway は、トラフィックをクラスター内の同じサーバーにアフィニタイズ (affinitize) できます。  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Front Door の背後に Azure Load Balancer をデプロイできますか?
@@ -118,7 +118,7 @@ Front Door のフロントエンド エニーキャスト IP は、通常は変�
 
 新しい Front Door の作成または既存の Front Door の更新は、グローバル デプロイの場合には約 3 ~ 5 分かかります。 つまり、約 3 ~ 5 分間で、Front Door の構成はすべての POP 間でグローバルにデプロイされます。
 
-注 - カスタム SSL 証明書の更新は、グローバルにデプロイされるまで約 30 分かかります。
+注 - カスタム TLS/SSL 証明書の更新は、グローバルにデプロイされるまでに約 30 分かかります。
 
 ルートやバックエンド プールなどに対する更新はシームレスであり、ダウンタイムは発生しません (新しい構成が正しい場合)。 また、"AFD マネージド" から "独自の証明書の使用" に、またはその逆に切り替える場合を除き、証明書の更新もアトミックであり、停止が発生することはありません。
 
@@ -139,7 +139,7 @@ Azure Front Door (AFD) には、トラフィックをルーティングするた
 
 Azure Front Door は、アプリケーションのスケーラビリティのニーズに対応できる大容量を利用した、グローバルに分散されたマルチ テナント プラットフォームです。 Microsoft のグローバル ネットワークのエッジから提供される Front Door は、リージョン間またはさまざまなクラウド間でのアプリケーション全体または個別のマイクロサービスのフェールオーバーを可能にする、グローバル負荷分散機能を提供します。
 
-## <a name="ssl-configuration"></a>SSL の構成
+## <a name="tls-configuration"></a>TLS の構成
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure Front Door ではどの TLS バージョンがサポートされますか?
 
@@ -150,16 +150,20 @@ Front Door では、TLS バージョン 1.0、1.1、1.2 がサポートされま
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure Front Door ではどの証明書がサポートされますか?
 
 Front Door のカスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、Azure Front Door によって管理されている証明書を使用するか、または独自の証明書を使用することを選択できます。
-Front Door マネージド オプションは、Digicert を介し、Front Door のキー コンテナーに格納される標準 SSL 証明書をプロビジョニングします。 独自の証明書を使用する場合、サポートされている CA から証明書をオンボードできます。証明書は、標準的な SSL、拡張検証証明書、またはワイルドカード証明書でも構いません。 自己署名証明書はサポートされていません。 [カスタム ドメインに対する HTTPS の有効化の方法](https://aka.ms/FrontDoorCustomDomainHTTPS)を説明します。
+Front Door のマネージド オプションは、Digicert 経由で、かつ Front Door の Key Vault に格納されている標準の TLS/SSL 証明書をプロビジョニングします。 独自の証明書を使用することを選択した場合は、サポートされている CA から証明書をオンボードできます。これは標準の TLS 証明書、Extended Validation 証明書、ワイルドカード証明書のいずれであってもかまいません。 自己署名証明書はサポートされていません。 [カスタム ドメインに対する HTTPS の有効化の方法](https://aka.ms/FrontDoorCustomDomainHTTPS)を説明します。
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Front Door は証明書のオートローテーションをサポートしていますか?
 
 Front Door が管理する証明書オプションの場合、証明書は Front Door によってオートローテーションされます。 Front Door が管理する証明書を使用していて、証明書の有効期限日が 60 日未満であることが確認された場合は、サポート チケットを送信します。
-</br>独自のカスタム SSL 証明書については、オートローテーションはサポートされません。 特定のカスタム ドメインに対して初めて設定が行われる方法と同様に、Front Door に Key Vault 内の適切な証明書のバージョンを参照させて、Front Door のサービス プリンシパルが引き続き Key Vault にアクセスできることを確認する必要があります。 Front Door による、この更新された証明書ロールアウト処理はアトミックであり、証明書のサブジェクト名や SAN が変更されない限り、運用環境への影響は一切発生しません。
+</br>独自のカスタム TLS/SSL 証明書の場合、オートローテーションはサポートされません。 特定のカスタム ドメインに対して初めて設定が行われる方法と同様に、Front Door に Key Vault 内の適切な証明書のバージョンを参照させて、Front Door のサービス プリンシパルが引き続き Key Vault にアクセスできることを確認する必要があります。 Front Door による、この更新された証明書ロールアウト処理はアトミックであり、証明書のサブジェクト名や SAN が変更されない限り、運用環境への影響は一切発生しません。
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure Front Door でサポートされている最新の暗号スイートはどれですか?
 
-Azure Front Door でサポートされている最新の暗号スイートは次のとおりです。
+TLS1.2 では、次の暗号スイートがサポートされています。
+
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+
+TLS1.0 または TLS1.1 が有効になっているカスタム ドメインを使用している場合は、次の暗号スイートがサポートされます。
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -182,13 +186,13 @@ Azure Front Door でサポートされている最新の暗号スイートは次
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>SSL プロトコルのバージョンを管理する SSL ポリシーを構成できますか?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS プロトコルのバージョンを制御するように TLS ポリシーを構成できますか?
 
 Azure portal または [Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) を使用して、カスタム ドメインの HTTPS の設定で、Azure Front Door での最低の TLS バージョンを構成できます。 現時点では、1.0 と 1.2 のどちらかを選択できます。
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Front Door は特定の暗号スイートのみをサポートするように構成できますか?
 
-いいえ、Front Door を特定の暗号スイートに対して構成することはサポートされていません。 ただし、証明機関 (Verisign、Entrust、Digicert など) から独自のカスタム SSL 証明書を取得し、証明書を生成するときに特定の暗号スイートをマークすることができます。 
+いいえ、Front Door を特定の暗号スイートに対して構成することはサポートされていません。 ただし、証明機関 (Verisign、Entrust、Digicert など) から独自のカスタム TLS/SSL 証明書を取得し、生成される証明書に対して特定の暗号スイートがマークされるようにすることができます。 
 
 ### <a name="does-front-door-support-ocsp-stapling"></a>Front Door では OCSP スタップリングはサポートされていますか?
 
@@ -196,20 +200,20 @@ Azure portal または [Azure REST API](https://docs.microsoft.com/rest/api/fron
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure Front Door ではバックエンドへのトラフィックの再暗号化もサポートされていますか?
 
-はい。Azure Front Door では SSL オフロードとエンド ツー エンド SSL がサポートされており、バックエンドへのトラフィックが再暗号化されます。 実際には、バックエンドへの接続はそのパブリック IP を介して行われるので、Front Door 転送プロトコルとして HTTPS を使用するように構成することをお勧めします。
+はい。Azure Front Door では、バックエンドへのトラフィックを再暗号化する TLS/SSL オフロードやエンド ツー エンド TLS がサポートされています。 実際には、バックエンドへの接続はそのパブリック IP を介して行われるので、Front Door 転送プロトコルとして HTTPS を使用するように構成することをお勧めします。
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Front Door では、HTTPS 接続のバックエンドでの自己署名証明書はサポートされていますか?
 
 いいえ。Front Door では自己署名証明書はサポートされておらず、両方に制限が適用されます。
 
 1. **バックエンド**: HTTPS または HTTPS 正常性プローブとしてトラフィックを転送するとき、またはキャッシュが有効になっているルーティング規則で配信元からキャッシュに格納するときは、自己署名証明書を使用できません。
-2. **フロントエンド**: カスタム ドメインで HTTPS を有効にするために独自のカスタム SSL 証明書を使用するときは、自己署名証明書を使用できません。
+2. **フロントエンド**: カスタム ドメインで HTTPS を有効にするために独自のカスタム TLS/SSL 証明書を使用している場合は、自己署名証明書を使用できません。
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>バックエンドへの HTTPS トラフィックが失敗するのはなぜですか?
 
 正常性プローブか転送要求かに関係なく、バックエンドに正常に HTTPS 接続した場合、HTTPS トラフィックが失敗する原因は 2 つあります。
 
-1. **証明書のサブジェクト名の不一致**: HTTPS 接続の場合、Front Door では、バックエンドからバックエンドのホスト名と一致するサブジェクト名を持つ有効な CA からの証明書が提示されることを前提としています。 たとえば、バックエンドのホスト名が `myapp-centralus.contosonews.net` に設定されていて、SSL ハンドシェイク中にバックエンドによって提示された証明書のサブジェクト名が `myapp-centralus.contosonews.net` でも `*myapp-centralus*.contosonews.net` でもない場合、Front Door は接続を拒否し、エラーが発生します。 
+1. **証明書のサブジェクト名の不一致**: HTTPS 接続の場合、Front Door では、バックエンドからバックエンドのホスト名と一致するサブジェクト名を持つ有効な CA からの証明書が提示されることを前提としています。 例として、バックエンドのホスト名が `myapp-centralus.contosonews.net` に設定されており、TLS ハンドシェイク中にバックエンドが提供する証明書のサブジェクト名に `myapp-centralus.contosonews.net` も `*myapp-centralus*.contosonews.net` も含まれていない場合、Front Door はその接続を拒否してエラーを生成します。 
     1. **解決策**:コンプライアンスの観点からは推奨されませんが、Front Door で証明書のサブジェクト名のチェックを無効にすることで、このエラーを回避できます。 これは、Azure portal の [設定]、および API の BackendPoolsSettings で設定できます。
 2. **無効な CA からのバックエンド ホスティング証明書**: Front Door のバックエンドでは、[有効な CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca) からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
 

@@ -1,6 +1,6 @@
 ---
 title: 主キー、外部キー、および一意キー
-description: Azure Synapse Analytics の SQL Analytics でのテーブル制約のサポート
+description: Azure Synapse Analytics の Synapse SQL プールでのテーブル制約のサポート
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,33 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b9336a5e230e90e1abd7f2d40d431b988385c009
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f97163d02836442430037e18439bcf0724046332
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350034"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990771"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>SQL Analytics の主キー、外部キー、および一意キー
+# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Synapse SQL プールの主キー、外部キー、および一意キー
 
-主キー、外部キー、一意キーなど、SQL Analytics のテーブル制約について説明します。
+主キー、外部キー、一意キーなど、Synapse SQL プールのテーブル制約について説明します。
 
-## <a name="table-constraints"></a>テーブル制約 
-SQL Analytics では、次のテーブル制約がサポートされています。 
+## <a name="table-constraints"></a>テーブル制約
+
+Synapse SQL プールでは、次のテーブル制約がサポートされています。 
 - PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されている場合にのみサポートされます。    
-- UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。   
+- UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。
 
-FOREIGN KEY 制約は SQL Analytics ではサポートされません。  
+構文については、[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) と [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse) をご覧ください。 
+
+FOREIGN KEY 制約は、Synapse SQL プールではサポートされません。  
+
 
 ## <a name="remarks"></a>解説
-主キーまたは一意キー (あるいはその両方) を使用すると、SQL Analytics エンジンでクエリの最適な実行プランを生成できます。  主キー列または一意制約列のすべての値は、一意である必要があります。 
 
-SQL Analytics で主キーまたは一意制約を使用してテーブルを作成した後、ユーザーはそれらの列のすべての値が一意であることを確認する必要があります。  これに違反すると、クエリで不正確な結果が返される可能性があります。  この例では、主キーまたは一意制約の列に重複した値が含まれている場合に、クエリでどのように不正確な結果が返される可能性があるかを示します。  
+主キーや一意キーを使用すると、Synapse SQL プール エンジンでクエリの最適な実行プランを生成できます。  主キー列または一意制約列のすべての値は、一意である必要があります。
+
+Synapse SQL プールで主キーまたは一意制約を使用してテーブルを作成した後、ユーザーはそれらの列のすべての値が一意であることを確認する必要があります。  これに違反すると、クエリで不正確な結果が返される可能性があります。  この例では、主キーまたは一意制約の列に重複した値が含まれている場合に、クエリでどのように不正確な結果が返される可能性があるかを示します。  
 
 ```sql
  -- Create table t1
@@ -158,12 +163,13 @@ a1          total
 ```
 
 ## <a name="examples"></a>例
-主キーを設定して SQL Analytics テーブルを作成する 
+
+主キーを使用して Synapse SQL プール テーブルを作成します。 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-一意制約を設定して SQL Analytics テーブルを作成する
+一意制約を使用して Synapse SQL プール テーブルを作成します。
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +177,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL Analytics データベースにテーブルを作成したら、次の手順はテーブルへのデータの読み込みです。 読み込みのチュートリアルについては、[SQL Analytics データベースへのデータの読み込み](load-data-wideworldimportersdw.md)に関するページを参照してください。
+Synapse SQL プールにテーブルを作成した後の次の手順はテーブルへのデータの読み込みです。 読み込みのチュートリアルについては、[Synapse SQL プールへのデータの読み込み](load-data-wideworldimportersdw.md)に関するページを参照してください。

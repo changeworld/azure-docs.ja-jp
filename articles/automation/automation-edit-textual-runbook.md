@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3bbfe26f336a25ee85f2223226d6eb513ae21736
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632154"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406038"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Azure Automation でのテキスト形式の Runbook の編集
 
@@ -106,4 +106,4 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [資格情報](automation-credentials.md)
 * [スケジュール](automation-schedules.md)
 * [変数](automation-variables.md)
-
+* [PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234747"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405268"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -63,7 +63,7 @@ Application Insights では、以下を定義する [W3C Trace-Context](https://
 
 Application Insights SDK の最新バージョンでは Trace-Context プロトコルがサポートされますが、それを利用する必要が生じる場合があります (Application Insights SDK によってサポートされている以前の相関付けプロトコルによる下位互換性は、引き続き利用できます)。
 
-[相関付け HTTP プロトコル (Request-Id とも呼ばれます)](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) は、非推奨になる予定です。 このプロトコルは、2 つのヘッダーを定義しています。
+[相関付け HTTP プロトコル (Request-Id とも呼ばれます)](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) は、非推奨になる予定です。 このプロトコルは、2 つのヘッダーを定義しています。
 
 - `Request-Id`:呼び出しのグローバルに一意の ID を記述します。
 - `Correlation-Context`:分散トレースのプロパティの名前と値のペアのコレクションを記述します。
@@ -129,6 +129,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Java アプリの W3C 分散トレース サポートを有効にする
 
+#### <a name="java-30-agent"></a>Java 3.0 エージェント
+
+  Java 3.0 エージェントでは、既定で W3C がサポートされ、追加構成をする必要がありません。 
+
+#### <a name="java-sdk"></a>Java SDK
 - **受信の構成**
 
   - Java EE アプリの場合は、ApplicationInsights.xml 内の `<TelemetryModules>` タグに以下を追加します。
@@ -202,13 +207,13 @@ public void ConfigureServices(IServiceCollection services)
 
 [OpenTracing データ モデルの仕様](https://opentracing.io/)と Application Insights のデータ モデルの対応を次に示します。
 
-| Application Insights                  | OpenTracing                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `span.kind = server` を含む `Span`                  |
-| `Dependency`                          | `span.kind = client` を含む `Span`                  |
-| `Request` と `Dependency` の `Id`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | タイプ `ChildOf` の `Reference` (親スパン)   |
+| Application Insights                   | OpenTracing                                        |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `span.kind = server` を含む `Span`                    |
+| `Dependency`                           | `span.kind = client` を含む `Span`                    |
+| `Request` と `Dependency` の `Id`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | タイプ `ChildOf` の `Reference` (親スパン)     |
 
 詳細については、「[Application Insights Telemetry のデータ モデル](../../azure-monitor/app/data-model.md)」をご覧ください。
 
@@ -309,7 +314,7 @@ logger.warning('After the span')
 
 しかし、それらの方法では、自動分散トレースがサポートされていませんでした。 `DiagnosticSource` では、マシン間の自動的な関連付けをサポートします。 .NET ライブラリは `DiagnosticSource` をサポートしており、HTTP などのトランスポート経由で、関連付けのコンテキストをマシン間で自動的に伝達できます。
 
-`DiagnosticSource`の「[Activity User Guide (アクティビティ ユーザー ガイド)](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)」では、アクティビティの追跡の基本を説明しています。
+`DiagnosticSource`の「[Activity User Guide (アクティビティ ユーザー ガイド)](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)」では、アクティビティの追跡の基本を説明しています。
 
 ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビティの開始がサポートされています。
 
@@ -320,24 +325,32 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 バージョン 2.4.0-beta1 以降の Application Insights SDK は、`DiagnosticSource` と `Activity` を使用してテレメトリを収集し、それを現在のアクティビティに関連付けます。
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK におけるテレメトリの相関付け
+## <a name="telemetry-correlation-in-java"></a>Java におけるテレメトリの相関付け
 
-バージョン 2.0.0 以降の [Application Insights SDK for Java](../../azure-monitor/app/java-get-started.md) では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](../../azure-monitor/app/java-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
+[Java エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)および [Java SDK](../../azure-monitor/app/java-get-started.md) バージョン 2.0.0 以降では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](../../azure-monitor/app/java-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
 
 > [!NOTE]
-> 関連付け機能では、Apache HttpClient を使用して行われた呼び出しのみがサポートされます。 Spring RestTemplate および Feign は、どちらも Apache HttpClient で内部的に使用できます。
+> Application Insights Java エージェントでは、JMS、Kafka、Netty/Webflux などの要求と依存関係が自動収集されます。 Java SDK については、関連付け機能では、Apache HttpClient を使用して行われた呼び出しのみがサポートされます。 SDK では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 
 
-現時点では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 ただし、`trackDependency` および `trackRequest` メソッドを使用してそのようなシナリオを手動でコーディングすることはできます。 これらのメソッドでは、依存関係テレメトリはプロデューサーによってエンキューされるメッセージを表します。 要求は、コンシューマーによって処理されるメッセージを表します。 この場合、`operation_id` と `operation_parentId` の両方を、メッセージのプロパティで伝達する必要があります。
+> [!NOTE]
+> カスタム テレメトリを収集するには、Java 2.6 SDK を使用してアプリケーションをインストルメント化する必要があります。 
 
-### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>非同期 Java アプリケーションにおけるテレメトリの関連付け
-
-非同期 Spring Boot アプリケーション内でテレメトリを関連付ける方法については、「[非同期 Java アプリケーションにおける分散トレース](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)」を参照してください。 この記事では、Spring の [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) と [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) をインストルメント化するためのガイダンスが提供されています。
-
-
-<a name="java-role-name"></a>
-## <a name="role-name"></a>ロール名
+### <a name="role-names"></a>ロール名
 
 [アプリケーション マップ](../../azure-monitor/app/app-map.md)にコンポーネント名を表示する方法をカスタマイズする必要が生じる場合があります。 そのためには、次のいずれかのアクションを実行して、`cloud_RoleName` を手動で設定します。
+
+- Application Insights Java エージェント3.0 の場合は、クラウド ロール名を次のように設定します。
+
+    ```json
+    {
+      "instrumentationSettings": {
+        "preview": {
+          "roleName": "my cloud role name"
+        }
+      }
+    }
+    ```
+    代わりに、`APPLICATIONINSIGHTS_ROLE_NAME` の環境変数を使用して、クラウド ロール名を設定することもできます。
 
 - Application Insights Java SDK 2.5.0 以降では、`<RoleName>` を ApplicationInsights.xml ファイルに追加することで、`cloud_RoleName` を指定できます。
 

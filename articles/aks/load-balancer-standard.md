@@ -1,17 +1,18 @@
 ---
-title: Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
+title: Standard SKU ロード バランサーの使用
+titleSuffix: Azure Kubernetes Service
 description: Standard SKU でロード バランサーを使用して、Azure Kubernetes Service (AKS) でサービスを公開する方法について説明します。
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1d2c0e48394fbde1b595ae4b405d84f437dc5e4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227603"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392813"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -31,7 +32,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 この記事では、*Standard* SKU Azure Load Balancer を持つ AKS クラスターがあることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可も必要です。 一般に、委任されたリソースのサービス プリンシパルには*ネットワーク共同作成者*ロールを割り当てます。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
+既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可も必要です。 一般に、委任されたリソースのサービス プリンシパルには*ネットワーク共同作成者*ロールを割り当てます。 サービス プリンシパルの代わりに、システム割り当てのマネージド ID もアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
 
 ### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Basic SKU から Standard SKU にロード バランサーを移行する
 
@@ -63,7 +64,7 @@ AKS クラスターを作成すると、既定では、そのクラスターで�
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>ロード バランサーを内部として構成する
 
-また、ロード バランサーを内部にして、パブリック IP を公開しないように構成することもできます。 ロード バランサーを内部として構成するには、`service.beta.kubernetes.io/azure-load-balancer-internal: "true"`LoadBalancer*サービスにアノテーションとして* を追加します。 サンプルの yaml マニフェストと内部ロード バランサーの詳細について、[こちら][internal-lb-yaml]で確認できます。
+また、ロード バランサーを内部にして、パブリック IP を公開しないように構成することもできます。 ロード バランサーを内部として構成するには、*LoadBalancer* サービスにアノテーションとして `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` を追加します。 サンプルの yaml マニフェストと内部ロード バランサーの詳細について、[こちら][internal-lb-yaml]で確認できます。
 
 ## <a name="scale-the-number-of-managed-public-ips"></a>管理対象のパブリック IP の数をスケーリングする
 
@@ -199,7 +200,7 @@ az aks update \
 ```
 
 > [!IMPORTANT]
-> 接続またはスケーリングの問題を回避するために [allocatedOutboundPorts][calculate-required-quota] をカスタマイズする前に、*必要なクォータを計算する*必要があります。 *allocatedOutboundPorts* に指定する値は、8 の倍数である必要もあります。
+> 接続またはスケーリングの問題を回避するために *allocatedOutboundPorts* をカスタマイズする前に、[必要なクォータを計算する][calculate-required-quota]必要があります。 *allocatedOutboundPorts* に指定する値は、8 の倍数である必要もあります。
 
 クラスターを作成するときに *load-balancer-outbound-ports* および *load-balancer-idle-timeout* パラメーターを使用することもできますが、*load-balancer-managed-outbound-ip-count*、*load-balancer-outbound-ips*、または *load-balancer-outbound-ip-prefixes* のいずれかも指定する必要があります。  次に例を示します。
 

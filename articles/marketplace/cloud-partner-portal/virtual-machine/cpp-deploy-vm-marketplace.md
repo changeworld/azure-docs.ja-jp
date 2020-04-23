@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 7d5269cf8865faeb65356bc8fd3eea087cb7653c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e39f1c70cd94c14b12e54817941ea9106aacfdd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277975"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273870"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Azure Marketplace から仮想マシンをデプロイする
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://aks.ms/CertifyVMimage)」の手順に従ってください。
 
 この記事では、与えられた Azure PowerShell スクリプトを使用し、Azure Marketplace から事前構成済み仮想マシンをデプロイする方法について説明します。  このスクリプトによって、VM 上で WinRM HTTP と HTTPS のエンドポイントも公開されます。  このスクリプトでは、Azure Key Vault に証明書を既にアップロードしていることが前提条件となります。詳細は「[Create certificates for Azure Key Vault](./cpp-create-key-vault-cert.md)」(Azure Key Vault の証明書を作成する) にあります。 
 
@@ -26,16 +29,16 @@ ms.locfileid: "80277975"
 
 |  **パラメーター**        |   **説明**                                 |
 |  -------------        |   ---------------                                 |
-| newStorageAccountName | ストレージ アカウントの名前                       |
+| newStorageAccountName    | ストレージ アカウントの名前                       |
 | dnsNameForPublicIP    | パブリック IP の DNS 名。 小文字にする必要があります。    |
-| adminUserName         | 管理者のユーザー名                          |
-| adminPassword         | 管理者のパスワード                          |
+| adminUserName            | 管理者のユーザー名                          |
+| adminPassword            | 管理者のパスワード                          |
 | imagePublisher        | イメージ発行者                                   |
 | imageOffer            | イメージ オファー                                       |
-| imageSKU              | イメージ SKU                                         |
+| imageSKU                | イメージ SKU                                         |
 | vmSize                | VM のサイズ                                    |
 | vmName                | VM の名前                                    |
-| vaultName             | Key Vault の名前                             |
+| vaultName                | Key Vault の名前                             |
 | vaultResourceGroup    | Key Vault のリソース グループ                   |
 | certificateUrl        | 証明書の URL。`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` のように KeyVault のバージョンが含まれます |
 |  |  |

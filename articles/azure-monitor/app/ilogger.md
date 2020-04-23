@@ -4,12 +4,12 @@ description: ASP.NET Core とコンソール アプリケーションで Azure A
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276378"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313657"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core の ILogger ログ
 
@@ -213,7 +213,7 @@ public class Startup
 - ASP.NET Core (2.0 以降) で[ログ記録プロバイダーを有効にする](https://github.com/aspnet/Announcements/issues/255)推奨される方法は、**Program.cs** 自体の ILoggingBuilder で拡張メソッドを使用することです。
 
 > [!Note]
-> 新しいプロバイダーは、NETSTANDARD2.0 以降を対象とするアプリケーションで使用できます。 アプリケーションが .NET Core 1.1 のような古いバージョンの .NET Core または .NET Framework を対象にしている場合は、引き続き古いプロバイダーを使用してください。
+> 新しいプロバイダーは、NETSTANDARD2.0 以降を対象とするアプリケーションで使用できます。 [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.14.0 以降では、新しいプロバイダーは .NET Framework NET461 以降を対象とするアプリケーションでも使用できます。 アプリケーションが .NET Core 1.1 のような古いバージョンの .NET Core を対象としている場合、または NET46 より前の .NET Framework を対象としている場合は、引き続き古いプロバイダーを使用してください。
 
 ## <a name="console-application"></a>コンソール アプリケーション
 

@@ -3,26 +3,28 @@ title: Azure Automation での Runbook の実行
 description: Azure Automation で Runbook が処理される方法の詳細について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/04/2019
+ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7dd9de1f2ae41b20d94cf31de48e92fbb71ca6a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367144"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405637"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
-Runbook は、その内部で定義されているロジックに基づいて実行されます。 Runbook は、中断された場合、先頭から再開されます。 この動作では、一時的な問題が発生した場合の再起動をサポートするように Runbook を作成する必要があります。
+Azure Automation でのプロセス自動化によって、PowerShell、PowerShell ワークフロー、グラフィカル Runbook を作成し、管理することができます。 詳細については、[Azure Automation Runbook](automation-runbook-types.md) に関するページを参照してください。 
 
-Azure Automation で Runbook を開始すると、ジョブが作成されます。 ジョブは、Runbook の単一の実行インスタンスです。 ジョブごとに、Azure サブスクリプションに接続することによって Azure リソースにアクセスします。 データ センター内のリソースにパブリック クラウドからアクセスできる場合、ジョブはそれらのリソースにのみアクセスします。
+Runbook は、Automation によって、その内部で定義されているロジックに基づいて実行されます。 Runbook は、中断された場合、先頭から再開されます。 この動作では、一時的な問題が発生した場合の再起動をサポートするように Runbook を作成する必要があります。
 
-Azure Automation では、Runbook の実行中に各ジョブを実行するための worker が割り当てられます。 ワーカーは多数の Azure アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。 ジョブの要求を処理する worker を制御することはできません。
+Azure Automation で Runbook を開始すると、ジョブが作成されます。ジョブは Runbook の単一の実行インスタンスです。 ジョブごとに、Azure サブスクリプションに接続することによって Azure リソースにアクセスします。 ジョブでデータ センター内のリソースにアクセスできるのは、それらのリソースがパブリック クラウドからアクセスできる場合に限られます。
 
-Azure portal で Runbook の一覧を表示すると、各 Runbook に対して開始された各ジョブの状態が示されます。 Azure Automation には、ジョブのログが最大 30 日間保存されます。 
+Azure Automation では、Runbook の実行中に各ジョブを実行するための worker が割り当てられます。 ワーカーは多数の Azure アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。 どの worker がジョブの要求を処理するかを制御することはできません。
 
-次の図では、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks)、[グラフィック Runbook](automation-runbook-types.md#graphical-runbooks)、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) に対する Runbook ジョブのライフサイクルを示します。
+Azure portal で Runbook の一覧を表示すると、各 Runbook に対して開始された各ジョブの状態が示されます。 Azure Automation には、ジョブのログが最大 30 日間保存されます。
+
+次の図では、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks)、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks)、[グラフィック Runbook](automation-runbook-types.md#graphical-runbooks)での Runbook ジョブのライフサイクルを示します。
 
 ![ジョブの状態 - PowerShell Workflow](./media/automation-runbook-execution/job-statuses.png)
 
@@ -33,27 +35,30 @@ Azure portal で Runbook の一覧を表示すると、各 Runbook に対して�
 
 ## <a name="where-to-run-your-runbooks"></a>Runbook を実行する場所
 
-Azure Automation の Runbook は、Azure サンドボックスまたは [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) のいずれかで実行できます。 ほとんどの Runbook は、複数のジョブで使用できる共有環境である Azure サンドボックスで簡単に実行できます。 同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。
+Azure Automation の Runbook は、Azure サンドボックスまたは [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) のいずれかで実行できます。 Runbook は、Azure のリソースに対して認証および実行されるように設計されている場合、複数のジョブで使用できる共有環境である Azure サンドボックスで実行されます。 同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。
+
+>[!NOTE]
+>Azure サンドボックス環境では、対話型操作はサポートされていません。 また、Win32 呼び出しを行う Runbook には、ローカルの MOF ファイルを使用する必要があります。
 
 Hybrid Runbook Worker を使用すると、ロールがホストされているコンピューター上で、環境内のリソースに対して、Runbook を直接実行できます。 Azure Automation によって Runbook が格納および管理された後、1 つ以上の割り当てられたコンピューターに配信されます。
 
 次の表では、いくつかの Runbook 実行タスクと、それぞれに対して推奨される実行環境を示します。
 
-|タスク|最適な選択肢|Notes|
+|タスク|推奨|Notes|
 |---|---|---|
 |Azure リソースと統合する|Azure サンドボックス|Azure でホストされ、認証がより簡単です。 Azure VM で Hybrid Runbook Worker を使用している場合は、[Azure リソース用のマネージド ID](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) を使用できます。|
 |Azure リソースを管理するための最適なパフォーマンスを得る|Azure サンドボックス|スクリプトは同じ環境内で実行され、待ち時間が短くなります。|
 |運用コストを最小限に抑える|Azure サンドボックス|コンピューティングのオーバーヘッドがなく、VM の必要がありません。|
-|実行時間の長いスクリプトを実行する|Hybrid Runbook Worker|Azure のサンドボックスには[リソースの制限があります](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
-|ローカル サービスと対話する|Hybrid Runbook Worker|ホスト コンピューターに直接アクセスできます。|
+|実行時間の長いスクリプトを実行する|Hybrid Runbook Worker|Azure サンドボックスには[リソースの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)があります。|
+|ローカル サービスと対話する|Hybrid Runbook Worker|ホスト コンピューター、他のクラウド環境内のリソース、オンプレミス環境内のリソースに直接アクセスできます。 |
 |サードパーティのソフトウェアと実行可能ファイルが必要である|Hybrid Runbook Worker|自分でオペレーティング システムを管理し、ソフトウェアをインストールできます。|
 |Runbook でファイルまたはフォルダーを監視する|Hybrid Runbook Worker|Hybrid Runbook Worker で [Watcher タスク](automation-watchers-tutorial.md)を使用します。|
-|リソースを大量に消費するスクリプトを実行する|Hybrid Runbook Worker| Azure のサンドボックスには[リソースの制限があります](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
-|特定の要件を持つモジュールを使用する| Hybrid Runbook Worker|いくつかの例を次に示します。</br> WinSCP - winscp.exe への依存関係 </br> IISAdministration - IIS の有効化に対する依存関係。|
+|リソースを大量に消費するスクリプトを実行する|Hybrid Runbook Worker| Azure サンドボックスには[リソースの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)があります。|
+|特定の要件を持つモジュールを使用する| Hybrid Runbook Worker|いくつかの例を次に示します。</br> WinSCP - winscp.exe への依存関係 </br> IIS administration - IIS の有効化または管理に対する依存関係。|
 |インストーラでモジュールをインストールする|Hybrid Runbook Worker|サンドボックス用のモジュールでは、コピーがサポートされている必要があります。|
-|4\.7.2 以外のバージョンの .NET Framework が必要な Runbook またはモジュールを使用する|Hybrid Runbook Worker|Automation のサンドボックスには .NET Framework 4.7.2 が備わっており、それをアップグレードする方法はありません。|
-|昇格が必要なスクリプトを実行する|Hybrid Runbook Worker|サンド ボックスでは、昇格は許可されません。 Hybrid Runbook Worker を使用すると、UAC をオフにして、昇格が必要なコマンドを実行するときに **Invoke-Command** を使用できます。|
-|WMI へのアクセスが必要なスクリプトを実行する|Hybrid Runbook Worker|クラウドのサンドボックスで実行されているジョブでは、WMI にアクセスできません。 |
+|4\.7.2 以外のバージョンの .NET Framework が必要な Runbook またはモジュールを使用する|Hybrid Runbook Worker|Automation サンドボックスでは .NET Framework 4.7.2 がサポートされており、別のバージョンへのアップグレードはサポートされていません。|
+|昇格が必要なスクリプトを実行する|Hybrid Runbook Worker|サンドボックスでは、昇格は許可されません。 Hybrid Runbook Worker を使用すると、UAC をオフにして、昇格が必要なコマンドを実行するときに [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) を使用できます。|
+|Windows Management Instrumentation (WMI) へのアクセスを必要とするスクリプトを実行する|Hybrid Runbook Worker|クラウドのサンドボックスで実行されているジョブでは、WMI プロバイダーにアクセスできません。 |
 
 ## <a name="runbook-behavior"></a>Runbook の動作
 
@@ -70,7 +75,7 @@ $vmExists = Get-AzResource -Name $vmName -ResourceGroupName $resourceGroupName
 if(!$vmExists)
     {
     Write-Output "VM $vmName does not exist, creating"
-    New-AzureRMVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
+    New-AzVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
     }
 else
     {
@@ -89,7 +94,7 @@ Runbook が時間制約内で普通に実行される場合は、スクリプト
 
 ### <a name="tracking-progress"></a>進行状況の追跡
 
-Runbook をモジュール形式で作成し、簡単に再利用したり再起動したりできるように Runbook のロジックを構成することをお勧めします。 Runbook の進行状況を追跡することは、問題がある場合に Runbook のロジックが正常に実行されることを保証する適切な方法です。 ストレージ アカウント、データベース、ファイル共有などの外部ソースを使用することで、Runbook の進行状況を追跡できます。 最後に実行されたアクションの状態をまずチェックするロジックを、Runbook に作成できます。 その後、チェックの結果に基づいて、Runbook 内の特定のタスクをスキップまたは続行できます。
+簡単に再利用や再起動ができるロジックを使用したモジュールの形式で Runbook を作成することをお勧めします。 Runbook の進行状況を追跡することは、問題がある場合に Runbook のロジックが正常に実行されることを保証する適切な方法です。 ストレージ アカウント、データベース、ファイル共有などの外部ソースを使用することで、Runbook の進行状況を追跡できます。 最後に実行されたアクションの状態をまずチェックするロジックを、Runbook に作成できます。 その後、チェックの結果に基づいて、Runbook 内の特定のタスクをスキップまたは続行できます。
 
 ### <a name="preventing-concurrent-jobs"></a>同時実行ジョブの防止
 
@@ -123,7 +128,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ### <a name="working-with-multiple-subscriptions"></a>複数のサブスクリプションの操作
 
-複数のサブスクリプションを扱うには、Runbook で [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) コマンドレットを使用して、同じサンドボックスで実行されている別の Runbook から認証コンテキストが取得されないようにする必要があります。 また、Runbook は、Az モジュール コマンドレットで `AzContext` パラメーターを使用して、適切なコンテキストを渡します。
+複数のサブスクリプションを処理するには、Runbook で [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) コマンドレットを使用する必要があります。 このコマンドレットを使用するのは、同じサンドボックスで実行されている別の Runbook から認証コンテキストが取得されないようにするためです。 また、Runbook は、Az モジュール コマンドレットで `AzContext` パラメーターを使用して、適切なコンテキストを渡します。
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -154,13 +159,13 @@ Start-AzAutomationRunbook `
 
 #### <a name="erroractionpreference"></a>ErrorActionPreference
 
-[ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 変数により、終了しないエラーに対して PowerShell が対応する方法が決まります。 終了するエラーは常に終了し、*ErrorActionPreference* の影響を受けません。
+[ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 変数により、終了しないエラーに対して PowerShell が対応する方法が決まります。 終了するエラーは常に終了し、`ErrorActionPreference` の影響を受けません。
 
-Runbook で `ErrorActionPreference` を使用すると、`Get-ChildItem` コマンドレットの **PathNotFound** など、通常は強制終了にならないエラーによって Runbook の完了が停止されます。 次の例は、`ErrorActionPreference` の使用方法を示しています。 スクリプトが停止するため、最後の `Write-Output` コマンドは実行されません。
+Runbook で `ErrorActionPreference` を使用すると、[Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) コマンドレットの `PathNotFound` などの通常は終了しないエラーによって、Runbook の完了が停止します。 次の例は、`ErrorActionPreference` の使用方法を示しています。 スクリプトが停止するため、最後の [Write-Output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) コマンドは実行されません。
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
-Get-Childitem -path nofile.txt
+Get-ChildItem -path nofile.txt
 Write-Output "This message will not show"
 ```
 
@@ -198,25 +203,25 @@ function Get-ContosoFiles
 
 ### <a name="using-executables-or-calling-processes"></a>実行可能ファイルの使用またはプロセスの呼び出し
 
-Azure サンドボックスで実行される Runbook では、実行可能ファイル ( **.exe** ファイル) やサブプロセスなどの、プロセスの呼び出しはサポートされていません。  その理由は、Azure サンドボックスは、基になるすべての API にアクセスできない可能性があるコンテナーで実行される共有プロセスであるためです。 サードパーティー製ソフトウェアやサブプロセスの呼び出しが必要なシナリオの場合は、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で Runbook を実行することをお勧めします。
+Azure サンドボックスで実行される Runbook では、実行可能ファイル ( **.exe** ファイル) やサブプロセスなどのプロセスの呼び出しはサポートされていません。 その理由は、Azure サンドボックスは、基になるすべての API にアクセスできるとは限らないコンテナーで実行される共有プロセスであるためです。 サード パーティ製ソフトウェアや、サブプロセスの呼び出しを必要とするシナリオの場合は、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で Runbook を実行する必要があります。
 
 ### <a name="accessing-device-and-application-characteristics"></a>デバイスとアプリケーションの特性へのアクセス
 
-Azure サンドボックスで実行される Runbook ジョブには、デバイスまたはアプリケーションの特性に対するアクセス権はありません。 Windows でパフォーマンス メトリック (一般的なものはメモリや CPU の使用率など) のクエリを実行するために使用される最も一般的な API は WMI です。 ただし、クラウドで実行されているジョブでは Web-Based Enterprise Management (WBEM) の Microsoft による実装にアクセスできないため、どの API が使用されるかは問題ではありません。 このプラットフォームは、デバイスとアプリケーションの特性を定義するための業界標準を提供する Common Information Model (CIM) に基づいて構築されています。
+Azure サンドボックスで実行される Runbook ジョブでは、デバイスまたはアプリケーションの特性にアクセスすることはできません。 Windows でパフォーマンス メトリック (一般的なものはメモリや CPU の使用率など) のクエリを実行するために使用される最も一般的な API は WMI です。 ただし、クラウドで実行されているジョブでは Web-Based Enterprise Management (WBEM) の Microsoft による実装にアクセスできないため、どの API が使用されるかは問題ではありません。 このプラットフォームは、デバイスとアプリケーションの特性を定義するための業界標準を提供する Common Information Model (CIM) に基づいて構築されています。
 
 ## <a name="handling-errors"></a>エラーの処理
 
 Runbook はエラーを処理できる必要があります。 PowerShell には、終了するエラーと終了しないエラーの 2 種類があります。 終了するエラーが発生すると、Runbook の実行は停止されます。 Runbook は、[失敗] のジョブ状態で停止します。
 
-終了しないエラーの場合は、エラー発生後もスクリプトを継続できます。 終了しないエラーの例は、Runbook で、存在しないパスを指定して `Get-ChildItem` コマンドレットを使用したときに発生するものです。 PowerShell では、パスが存在しないことを確認して、エラーをスローし、次のフォルダーへと処理を継続します。 この場合のエラーでは、Runbook のジョブ状態は [失敗] に設定されず、ジョブが完了する可能性もあります。 終了しないエラー時に Runbook を強制的に停止するには、コマンドレットで `-ErrorAction Stop` を使用できます。
+終了しないエラーの場合は、エラー発生後もスクリプトを継続できます。 終了しないエラーの例は、Runbook で、存在しないパスを指定して `Get-ChildItem` コマンドレットを使用したときに発生するものです。 PowerShell では、パスが存在しないことを確認して、エラーをスローし、次のフォルダーへと処理を継続します。 この場合のエラーでは、Runbook のジョブ状態は [失敗] に設定されず、ジョブが完了する可能性もあります。 終了しないエラー時に Runbook を強制的に停止するには、コマンドレットで `ErrorAction Stop` を使用できます。
 
 ## <a name="handling-jobs"></a>ジョブの処理
 
 同じ Automation アカウントからジョブの実行環境を再利用できます。 1 つの Runbook で、多数のジョブを同時に実行することができます。 同時に実行するジョブが多いほど、同じサンドボックスにディスパッチする頻度が上がります。
 
-同じサンドボックス プロセスで実行するジョブは、お互いに影響し合う可能性があります。 1 つの例は、`Disconnect-AzAccount` コマンドレットの実行です。 このコマンドレットを実行すると、共有サンドボックス プロセス内の各 Runbook ジョブが切断されます。
+同じサンドボックス プロセスで実行するジョブは、お互いに影響し合う可能性があります。 1 つの例は、[Disconnect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) コマンドレットの実行です。 このコマンドレットを実行すると、共有サンドボックス プロセス内の各 Runbook ジョブが切断されます。
 
-Azure サンドボックスで実行されている Runbook から開始された PowerShell ジョブは、完全言語モードで実行されないことがあります。 PowerShell 言語モードの詳細については、「[PowerShell 言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)」を参照してください。 Azure Automation でのジョブの操作について詳しくは、「[PowerShell を使用したジョブの状態の取得](#retrieving-job-status-using-powershell)」を参照してください。
+Azure サンドボックスで実行されている Runbook から開始された PowerShell ジョブは、完全な [PowerShell 言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)で実行されないことがあります。 Azure Automation でのジョブの操作について詳しくは、「[PowerShell を使用したジョブの状態の取得](#retrieving-job-status-using-powershell)」を参照してください。
 
 ### <a name="job-statuses"></a>ジョブの状態
 
@@ -239,7 +244,7 @@ Azure サンドボックスで実行されている Runbook から開始され�
 
 ### <a name="viewing-job-status-from-the-azure-portal"></a>Azure Portal を使用したジョブの状態の表示
 
-すべての Runbook ジョブの状態の概要を表示したり、Azure portal での特定の Runbook ジョブの詳細にドリルダウンしたりできます。 Log Analytics ワークスペースとの統合を構成し、Runbook のジョブの状態やジョブ ストリームを転送することも可能です。 Azure Monitor ログとの統合の詳細については、「[Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
+Azure portal で、すべての Runbook ジョブの状態の概要を表示したり、特定の Runbook ジョブの詳細にドリルダウンしたりできます。 Log Analytics ワークスペースとの統合を構成し、Runbook のジョブの状態やジョブ ストリームを転送することも可能です。 Azure Monitor ログとの統合の詳細については、「[Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
 
 選択した Automation アカウントの右にある **[ジョブの統計情報]** タイルでは、すべての Runbook ジョブの概要を確認できます。
 
@@ -273,7 +278,7 @@ Azure サンドボックスで実行されている Runbook から開始され�
 
 ### <a name="retrieving-job-status-using-powershell"></a>PowerShell を使用したジョブの状態の取得
 
-Runbook 用に作成されたジョブと、特定のジョブの詳細を取得するには、`Get-AzAutomationJob` コマンドレットを使用します。 `Start-AzAutomationRunbook` を使用して PowerShell で Runbook を開始すると、結果として作成されたジョブが返されます。 ジョブの出力を取得するには [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) を使用します。
+Runbook 用に作成されたジョブと、特定のジョブの詳細を取得するには、[Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) コマンドレットを使用します。 `Start-AzAutomationRunbook` を使用して PowerShell で Runbook を開始すると、結果として作成されたジョブが返されます。 ジョブの出力を取得するには [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) を使用します。
 
 次の例では、サンプル Runbook の最後のジョブが取得されて、その状態、Runbook パラメーターに指定された値、およびジョブの出力が表示されます。
 
@@ -286,7 +291,7 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
 ```
 
-次の例では、特定のジョブの出力が取得されて、各レコードが返されます。 いずれかのレコードで例外が発生した場合、スクリプトでは値ではなく例外が書き出されます。 出力中に正常にログに記録されない可能性がある追加情報を例外で提供できるため、この動作は有用です。
+次の例では、特定のジョブの出力が取得されて、各レコードが返されます。 いずれかのレコードで例外が発生した場合、スクリプトでは値ではなく例外が書き出されます。 この動作は役に立ちます。出力時に通常はログに記録されない追加情報が、例外によって提供される可能性があるためです。
 
 ```azurepowershell-interactive
 $output = Get-AzAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
@@ -342,11 +347,14 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 長時間実行されるタスクの場合は、Hybrid Runbook Worker の使用をお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限がありません。 その他のジョブの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間のフェア シェア制限を受けませんが、予期しないローカル インフラストラクチャの問題からの再起動がサポートされる worker で実行されるように Runbook を開発する必要があります。
 
-もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 たとえば、複数のデータベースに対するデータベース操作など、複数のリソースに対する同じ機能によって Runbook がループする可能性があります。 この関数を[子 Runbook](automation-child-runbooks.md) に移動し、`Start-AzAutomationRunbook` を使用して、お使いの Runbook でそれを呼び出すことができます。 子 Runbook は別々のプロセスで並列に実行されます。
+もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 たとえば、複数のデータベースに対するデータベース操作など、複数のリソースに対する同じ機能によって Runbook がループする可能性があります。 このような機能は、[子 Runbook](automation-child-runbooks.md) に移動し、[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) を使用して親 Runbook でそれを呼び出すことができます。 子 Runbook は別々のプロセスで並列に実行されます。
 
-子 Runbook を使用すると、親 Runbook の完了までにかかる合計時間が短縮されます。 Runbook は、子 Runbook が完了した後にまだ実行する操作がある場合、`Get-AzAutomationJob` コマンドレットを使用して、子 Runbook のジョブ状態を確認できます。
+子 Runbook を使用すると、親 Runbook の完了までにかかる合計時間が短縮されます。 Runbook で子の完了後にまだ実行する操作がある場合、[Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) コマンドレットを使用して、子 Runbook のジョブ状態を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
+* Runbook の使用方法については、「[Azure Automation でモジュールを管理する](manage-runbooks.md)」を参照してください。
 * Azure Automation で Runbook を開始するために使用できる方法について詳しくは、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
-* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)」をご覧ください。

@@ -11,15 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336216"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606219"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) のカスタム セットアップには、使用する Azure-SSIS IR のセットアップまたは再構成中に独自の手順を追加するためのインターフェイスが用意されています。 
 
@@ -32,7 +34,7 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 高速および標準のカスタム セットアップでは、無料のライセンスなしのコンポーネントおよび有料のライセンスありコンポーネントの両方をインストールできます。 お客様が独立ソフトウェア ベンダー (ISV) である場合は、[Azure SSIS IR の有料またはライセンスありのコンポーネントの開発](how-to-develop-azure-ssis-ir-licensed-components.md)に関するドキュメントを参照してください。
 
 > [!IMPORTANT]
-> Azure-SSIS IR の v2 シリーズ ノードはカスタム セットアップには適していないため、代わりに v3 シリーズ ノードを使用してください。 既に v2 シリーズのノードを使用している場合は、できるだけ早く v3 シリーズのノードに切り替えてください。
+> 将来の機能強化の恩恵を受けるには、カスタム セットアップのある Azure-SSIS IR に v3 以降の一連のノードを使用することをお勧めします。
 
 ## <a name="current-limitations"></a>現在の制限
 

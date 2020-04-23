@@ -11,14 +11,16 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
-ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77b49d8446c7882a155742e8455d77bd1ec110cb
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230003"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606201"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Active Directory (Azure AD) 認証と Azure Data Factory (ADF) のマネージド ID を有効にし、従来の認証方法 (SQL 認証など) の代わりにそれを使用して以下を行う方法について説明します。
 

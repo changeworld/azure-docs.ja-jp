@@ -1,38 +1,47 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 01/16/2020
+ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328944"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991911"
 ---
-# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
-
-この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)を使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行し、そのオファーを購入した顧客が Azure の委任されたリソース管理のリソースをオンボードできるようにする方法について説明します。
-
-> [!NOTE]
-> これらのオファーを作成して発行するには、[パートナー センターの有効なアカウント](../../marketplace/partner-center-portal/create-account.md)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)に従って、パートナー センターのアカウントを作成し、商業マーケットプレース プログラムに登録する手順を進めてください。 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../billing/billing-partner-admin-link-started.md)。
->
-> オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure の委任されたリソース管理に顧客をオンボードする](onboard-customer.md)」を参照してください。
-
-マネージド サービス オファーの発行は、他の種類のオファーを Azure Marketplace に発行する場合と同様です。 そのプロセスについては、「[Azure Marketplace と AppSource の公開ガイド](../../marketplace/marketplace-publishers-guide.md)」および「[Azure Marketplace と AppSource Marketplace のオファーを管理する](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」(特に「[マネージド サービス](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
-
-顧客がオファーを追加すると、1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任できるようになります。これらは、[Azure の委任されたリソース管理のためにオンボード](#the-customer-onboarding-process)されます。 サブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードできるようにするには、先に **Microsoft.ManagedServices** リソース プロバイダーを手動で登録して、サブスクリプションのオンボードを承認する必要があることに注意してください。
+# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
 > [!IMPORTANT]
-> マネージド サービス オファー内の各プランには、 **[Manifest Details]\(マニフェストの詳細\)** セクションが含まれています。そこでは、そのプランを購入した顧客に代わり、委任されたリソース グループやサブスクリプションへのアクセス権を持つ Azure Active Directory (Azure AD) エンティティをお客様のテナント内に定義します。 ここに含めたグループ (またはユーザーまたはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意する必要があります。 顧客ごとに異なる担当グループを割り当てるには、各顧客に限定された個別のプライベート プランを発行する必要があります。
+> 2020 年 4 月 13 日より、マネージド サービス オファーの管理はパートナー センターに移行されます。 移行後は、パートナー センターでオファーを作成および管理します。 移行後のオファーは、「[新しいマネージド サービス オファーの作成](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)」の手順に従って管理します。
 
-## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Cloud パートナー ポータル内で実際のオファーを作成する
+この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)を使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 オファーを購入した顧客は、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)のためにサブスクリプションとリソース グループをオンボードできます。
+
+## <a name="publishing-requirements"></a>発行要件
+
+オファーを作成して発行するには、[パートナー センターの有効なアカウント](../../marketplace/partner-center-portal/create-account.md)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)の手順に従って、パートナー センターのアカウントを作成し、コマーシャル マーケットプレース プログラムに登録します。
+
+[マネージド サービス オファーの認定要件](https://docs.microsoft.com/legal/marketplace/certification-policies#7004-business-requirements)に従って、マネージド サービス オファーを発行するには、[Silver または Gold Cloud Platform コンピテンシー レベル](https://docs.microsoft.com/partner-center/learn-about-competencies)を取得しているか、または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) である必要があります。
+
+顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../billing/billing-partner-admin-link-started.md)。
+
+> [!NOTE]
+> オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure の委任されたリソース管理に顧客をオンボードする](onboard-customer.md)」を参照してください。
+
+マネージド サービス オファーの発行は、他の種類のオファーを Azure Marketplace に発行する場合と同様です。 一般的な発行プロセスについては、「[Azure Marketplace と AppSource の公開ガイド](../../marketplace/marketplace-publishers-guide.md)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」(特に「[マネージド サービス](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
+
+顧客がオファーを追加すると、1 つまたは複数のサブスクリプションまたはリソース グループを委任できるようになり、これらは [Azure の委任されたリソース管理のためにオンボード](#the-customer-onboarding-process)されます。
+
+> [!IMPORTANT]
+> マネージド サービス オファー内の各プランには、 **[Manifest Details]\(マニフェストの詳細\)** セクションが含まれています。そこでは、そのプランを購入した顧客に代わり、委任されたリソース グループやサブスクリプションへのアクセス権を持つ Azure Active Directory (Azure AD) エンティティをお客様のテナント内に定義します。 含まれるグループ (またはユーザーまたはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意する必要があります。 顧客ごとに異なる担当グループを割り当てるには、各顧客専用の個別の[プライベート プラン](../../marketplace/private-offers.md)を発行する必要があります。
+
+## <a name="create-your-offer"></a>プランを作成する
 
 1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 2. 左側のナビゲーション メニューから **[新しいプラン]** を選択し、 **[マネージド サービス]** を選択します。
 3. お客様のオファーの **[エディター]** セクションが表示されます。入力が必要な箇所が 4 つあります。 **[プランの設定]** 、 **[プラン]** 、 **[Marketplace]** 、 **[サポート]** です。 これらのセクションに入力する方法のガイダンスについては、そのまま読み進めてください。
 
-## <a name="enter-offer-settings"></a>オファーの設定を入力する
+### <a name="enter-offer-settings"></a>オファーの設定を入力する
 
 **[プランの設定]** セクションでは、次を指定します。
 
@@ -44,13 +53,13 @@ ms.locfileid: "78328944"
 
 完了したら、 **[保存]** を選択します。 これで、 **[プラン]** セクションに進む準備ができました。
 
-## <a name="create-plans"></a>プランを作成する
+### <a name="create-plans"></a>プランを作成する
 
 各オファーには 1 つ以上のプラン (SKU と呼ばれることもあります) が必要です。 異なる価格で異なる機能セットをサポートする複数のプランを追加したり、特定の顧客の限られた対象ユーザーに合わせて特定のプランをカスタマイズしたりすることができます。 顧客は、親オファーに含まれている、自分が利用可能なプランを表示できます。
 
 [プラン] セクションで、 **[新しいプラン]** を選択します。 次に、**プラン ID** を入力します。 この ID には、最長 50 文字で、小文字の英数字、ダッシュ、アンダースコアのみを含めることができます。 プラン ID は、製品 URL や請求レポートなどの場所で顧客に表示されることがあります。 オファーの発行後は、この値を変更することはできません。
 
-### <a name="plan-details"></a>プランの詳細
+#### <a name="plan-details"></a>プランの詳細
 
 **[プランの詳細]** セクションで、次のセクションに入力します。
 
@@ -65,7 +74,7 @@ ms.locfileid: "78328944"
 > [!IMPORTANT]
 > プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に[委任へのアクセス権を削除](onboard-customer.md#remove-access-to-a-delegation)できるのは、 その**ロールの定義**セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の**承認**を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
 
-### <a name="manifest-details"></a>マニフェストの詳細
+#### <a name="manifest-details"></a>マニフェストの詳細
 
 プランの **[Manifest Details]\(マニフェストの詳細\)** セクションを設定します。 これにより、顧客リソースを管理するための承認情報を含むマニフェストが作成されます。 この情報は、Azure の委任されたリソース管理を有効にするために必要です。
 
@@ -95,7 +104,7 @@ ms.locfileid: "78328944"
 
 情報の入力が終わったら、必要な回数だけ **[新しいプラン]** を選択して、追加のプランを作成できます。 完了したら、 **[保存]** を選択し、 **[Marketplace]** セクションに進みます。
 
-## <a name="provide-marketplace-text-and-images"></a>Marketplace のテキストと画像を指定する
+### <a name="provide-marketplace-text-and-images"></a>Marketplace のテキストと画像を指定する
 
 **[Marketplace]** セクションでは、Azure marketplace と Azure portal 内で顧客に表示されるテキストと画像を指定します。
 
@@ -135,7 +144,7 @@ ms.locfileid: "78328944"
 
 **[サポート]** セクションに進む前に、必ず変更内容を保存してください。
 
-## <a name="add-support-info"></a>サポート情報を追加する
+### <a name="add-support-info"></a>サポート情報を追加する
 
 **[サポート]** では、エンジニアリングの連絡先や顧客サポートの連絡先の名前、メール、電話番号を入力します。 また、サポートの URL も指定する必要があります。 Microsoft は、ビジネスやサポートの問題についてお客様に連絡する必要がある場合に、この情報を使用することがあります。
 
@@ -152,11 +161,12 @@ ms.locfileid: "78328944"
 顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。
 
 > [!IMPORTANT]
-> 委任は、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みコール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
+> 委任は、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナント内で実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 
-顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任すると、そのサブスクリプションに **Microsoft. ManagedServices** リソースプロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
+顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任した後、そのサブスクリプションに **Microsoft.ManagedServices** リソース プロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 
+- [コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)について説明します。
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。

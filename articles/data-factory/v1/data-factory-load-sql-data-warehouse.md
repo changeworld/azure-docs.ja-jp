@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130880"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419308"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -116,7 +116,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。
 
    1. **[名前]** に「**LoadIntoSQLDWDataFactory**」と入力します。
-       Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **データ ファクトリ名 "LoadIntoSQLDWDataFactory" は使用できません** が表示された場合は、データ ファクトリの名前を変更し (yournameLoadIntoSQLDWDataFactory など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
+       Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー **データ ファクトリ名 "LoadIntoSQLDWDataFactory" は使用できません**が表示された場合は、データ ファクトリの名前を変更し (yournameLoadIntoSQLDWDataFactory など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
    2. Azure **サブスクリプション**を選択します。
    3. リソース グループについて、次の手順のいずれかを行います。
       1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
@@ -160,7 +160,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
     ![コピー ウィザード - 入力フォルダーの選択](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. **[次へ]** をクリックすると、ファイル形式の設定が自動的に検出されます。  列区切り記号が、既定のカンマ ‘,’ ではなく、‘|’ になっていることを確認します。  データをプレビューした後、 **[次へ]** をクリックします。
+4. **[次へ]** をクリックすると、ファイル形式の設定が自動的に検出されます。  列区切り記号が、既定のコンマ ',' ではなく、'|' になっていることを確認します。  データをプレビューした後、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - ファイル形式の設定](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 

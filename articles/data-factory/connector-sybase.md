@@ -11,17 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0552cdc50e2b760600ad8c58bd3d1cd4d2dc50a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930995"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416616"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-sybase-connector.md)
 > * [現在のバージョン](connector-sybase.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Sybase データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 

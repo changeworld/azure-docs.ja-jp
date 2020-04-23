@@ -1,30 +1,33 @@
 ---
-title: Apache Kafka SSL 暗号化および認証 - Azure HDInsight
-description: Kafka ブローカー間や、Kafka クライアントと Kafka ブローカー間の通信用に SSL 暗号化を設定します。 クライアントの SSL 認証を設定します。
+title: Apache Kafka TLS 暗号化および認証 - Azure HDInsight
+description: Kafka ブローカー間と、Kafka クライアントと Kafka ブローカー間の通信用に TLS 暗号化を設定します。 クライアントの SSL 認証を設定します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.author: hrasheed
-ms.openlocfilehash: 9b07d16ed97a93b5b5b9422673cfc38ada8e8116
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764362"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261773"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する
+# <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight で Apache Kafka 用に TLS 暗号化および認証を設定する
 
-この記事では、Apache Kafka クライアントと Apache Kafka ブローカー間の通信に SSL 暗号化を設定する方法を示します。 クライアントの認証を設定する方法についても説明します (双方向 SSL とも呼ばれます)。
+この記事では、Apache Kafka クライアントと Apache Kafka ブローカーの間に、トランスポート層セキュリティ (TLS) 暗号化 (旧称 Secure Sockets Layer (SSL) 暗号化) を設定する方法について説明します。 クライアントの認証を設定する方法についても説明します (双方向 TLS とも呼ばれます)。
 
 > [!Important]
-> Kafka アプリケーションでは、Java クライアントとコンソール クライアントの 2 種類のクライアントを使用できます。 生成と使用の両方に SSL を使用できるのは、Java クライアント `ProducerConsumer.java` のみです。 コンソール プロデューサー クライアント `console-producer.sh` は、SSL では機能しません。
+> Kafka アプリケーションでは、Java クライアントとコンソール クライアントの 2 種類のクライアントを使用できます。 生成と使用の両方に TLS を使用できるのは、Java クライアント `ProducerConsumer.java` のみです。 TLS では、コンソール プロデューサー クライアント `console-producer.sh` は機能しません。
+
+> [!Note]
+> バージョン 1.1 の HDInsight Kafka コンソール プロデューサーでは、SSL はサポートされていません。
 
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka ブローカーのセットアップ
 
-Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラスター VM が次のように使用されます。
+Kafka TLS ブローカーのセットアップでは、4 つの HDInsight クラスター VM が次のように使用されます。
 
 * ヘッドノード 0 - 証明機関 (CA)
 * ワーカー ノード 0、1、2 - ブローカー
@@ -117,7 +120,7 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>SSL を使用してブローカーを再起動するように Kafka 構成を更新する
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>TLS を使用してブローカーを再起動するように Kafka 構成を更新する
 
 キーストアとトラストストアを使用して各 Kafka ブローカーを設定し、適切な証明書をインポートしました。 次に、Ambari を使用して関連の Kafka 構成プロパティを変更して、Kafka ブローカーを再起動します。
 
@@ -134,7 +137,7 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
 
     ![Ambari での kafka ssl 構成プロパティの編集](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. 新しい構成プロパティを server.properties ファイルに追加します。
+1. HDI バージョン 3.6 の場合は、Ambari UI にアクセスし、**Advanced kafka-env** と **kafka-env テンプレート** プロパティの下に次の構成を追加します。
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -149,16 +152,21 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Ambari 構成 UI にアクセスし、新しいプロパティが **[Advanced kafka-env]\(kafka-env の詳細\)** と **[kafka-env template]\(kafka-env テンプレート\)** プロパティの下に表示されていることを確認します。
+1. これらの変更を含む Ambari 構成 UI を示すスクリーンショットを次に示します。
+
+    HDI バージョン 3.6 の場合:
 
     ![Ambari 上で kafka-env テンプレート プロパティを編集する](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
+    HDI バージョン 4.0 の場合:
+
+     ![Ambari four 上で kafka-env テンプレート プロパティを編集する](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
+
 1. すべての Kafka ブローカーを再起動します。
-1. プロデューサーとコンシューマーのオプションを使用して管理者クライアントを起動し、プロデューサーとコンシューマーの両方がポート 9093 上で動作していることを確認します。
 
 ## <a name="client-setup-without-authentication"></a>クライアントのセットアップ (認証なし)
 
-認証が必要ない場合、SSL 暗号化のみを設定する手順の概要は次のとおりです。
+認証が必要ない場合に TLS 暗号化のみを設定する手順の概要は次のとおりです。
 
 1. CA (アクティブ ヘッド ノード) にサインインします。
 1. CA マシン (wn0) からクライアント マシンに CA 証明書をコピーします。
@@ -200,7 +208,7 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. ファイル `client-ssl-auth.properties` を作成します。 このファイルには、次の行が含まれています。
+1. クライアント コンピューター (hn1) でファイル `client-ssl-auth.properties` を作成します。 このファイルには、次の行が含まれています。
 
     ```config
     security.protocol=SSL
@@ -208,10 +216,12 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
     ssl.truststore.password=MyClientPassword123
     ```
 
+1. プロデューサーとコンシューマーのオプションを使用して管理者クライアントを起動し、プロデューサーとコンシューマーの両方がポート 9093 上で動作していることを確認します。 コンソール プロデューサーまたはコンシューマーを使用してセットアップを確認するために必要な手順については、後述の「[検証](apache-kafka-ssl-encryption-authentication.md#verification)」セクションを参照してください。
+
 ## <a name="client-setup-with-authentication"></a>クライアントのセットアップ (認証を使用)
 
 > [!Note]
-> 次の手順は、SSL 暗号化と認証の "**両方**" を設定する場合にのみ必要です。 暗号化のみを設定する場合は、「[クライアントのセットアップ (認証なし)](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)」を参照してください。
+> 次の手順は、TLS 暗号化と認証の "**両方**" を設定する場合にのみ必要です。 暗号化のみを設定する場合は、「[クライアントのセットアップ (認証なし)](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)」を参照してください。
 
 次の 4 つの手順は、クライアントのセットアップを完了するために必要なタスクをまとめたものです。
 
@@ -270,17 +280,24 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. 署名された証明書を使用してクライアント ストアを作成し、CA 証明書をキーストアとトラストストアにインポートします。
+    1. クライアント コンピューター (スタンバイ ヘッド ノード) にサインインして、ssl ディレクトリに移動します。
 
     ```bash
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ssh sshuser@HeadNode1_Name
+    cd ssl
     ```
 
-1. ファイル `client-ssl-auth.properties` を作成します。 このファイルには、次の行が含まれています。
+1. 署名された証明書を使用してクライアント ストアを作成し、CA 証明書をクライアント コンピューター (hn1) のキーストアとトラストストアにインポートします。
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. クライアント コンピューター (hn1) でファイル `client-ssl-auth.properties` を作成します。 このファイルには、次の行が含まれています。
 
     ```bash
     security.protocol=SSL
@@ -293,8 +310,10 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
 
 ## <a name="verification"></a>検証
 
+クライアント コンピューターで次の手順を行います。
+
 > [!Note]
-> HDInsight 4.0 と Kafka 2.1 がインストールされている場合は、コンソール プロデューサー/コンシューマーを使用してセットアップを確認できます。 そうでない場合は、ポート 9092 で Kafka プロデューサーを実行し、トピックにメッセージを送信してから、SSL を使用するポート 9093 で Kafka コンシューマーを使用します。
+> HDInsight 4.0 と Kafka 2.1 がインストールされている場合は、コンソール プロデューサー/コンシューマーを使用してセットアップを確認できます。 そうでない場合は、ポート 9092 で Kafka プロデューサーを実行し、トピックにメッセージを送信してから、TLS を使用するポート 9093 で Kafka コンシューマーを使用します。
 
 ### <a name="kafka-21-or-above"></a>Kafka 2.1 以上
 
@@ -304,13 +323,13 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  コンソール プロデューサーを起動し、プロデューサーの構成ファイルとして `client-ssl-auth.properties` へのパスを指定します。
+1. コンソール プロデューサーを起動し、プロデューサーの構成ファイルとして `client-ssl-auth.properties` へのパスを指定します。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1.  クライアント マシンへの別の SSH 接続を開き、コンソール コンシューマーを起動して、コンシューマーの構成ファイルとして `client-ssl-auth.properties` へのパスを指定します。
+1. クライアント マシンへの別の SSH 接続を開き、コンソール コンシューマーを起動して、コンシューマーの構成ファイルとして `client-ssl-auth.properties` へのパスを指定します。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -324,13 +343,13 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE_0>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  コンソール プロデューサーを起動し、プロデューサーの構成ファイルとして client-ssl-auth.properties へのパスを指定します。
+1. コンソール プロデューサーを起動し、プロデューサーの構成ファイルとして client-ssl-auth.properties へのパスを指定します。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-3.  クライアント マシンへの別の SSH 接続を開き、コンソール コンシューマーを起動して、コンシューマーの構成ファイルとして `client-ssl-auth.properties` へのパスを指定します。
+1. クライアント マシンへの別の SSH 接続を開き、コンソール コンシューマーを起動して、コンシューマーの構成ファイルとして `client-ssl-auth.properties` へのパスを指定します。
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

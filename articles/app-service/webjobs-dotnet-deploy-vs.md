@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d73c858bdbfee7c5b7c7e31b62b1f601b7b6838a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684167"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866437"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
@@ -175,7 +175,7 @@ Web ジョブのデプロイメント用にコンソール アプリケーショ
           "runMode": "Continuous"
         }
 
-このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) に格納され、そこで表示できます。  
+このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) に格納され、そこで表示できます。  
 
 ### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 Web ジョブ対応のプロジェクトを Web プロジェクトにリンクすると、Visual Studio は Web ジョブ プロジェクトの名前を Web プロジェクトの *Properties* フォルダー内の *webjobs-list.json* ファイルに格納します。 次の例に示すように、一覧には複数の WebJobs プロジェクトが含まれる場合があります。
@@ -192,7 +192,7 @@ Web ジョブ対応のプロジェクトを Web プロジェクトにリンク�
           ]
         }
 
-このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) に格納され、そこで表示できます。
+このファイルは直接編集でき、Visual Studio で IntelliSense を使用できます。 ファイル スキーマは [https://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) に格納され、そこで表示できます。
 
 ### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>Web ジョブ プロジェクトをデプロイする
 Web プロジェクトにリンクされた Web ジョブ プロジェクトは、Web プロジェクトと共に自動的にデプロイされます。 Web プロジェクトのデプロイメントについては、左のナビゲーションにある **[How-to guides]\(ハウツー ガイド\)** の  >  **[Deploy app]\(アプリをデプロイする\)** を参照してください。
@@ -225,7 +225,7 @@ WebJobs では、Azure Functions でのタイマー トリガーと同じ CRON �
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-### <a name="settingjob-reference"></a>setting.job 参照
+### <a name="settingsjob-reference"></a>settings.job 参照
 
 WebJobs では、次の設定がサポートされています。
 

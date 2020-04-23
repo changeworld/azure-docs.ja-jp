@@ -11,15 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/15/2020
+ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346634"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605493"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、セルフホステッド統合ランタイム (セルフホステッド IR) をプロキシとして構成して、Azure Data Factory の Azure-SSIS Integration Runtime (Azure-SSIS IR) で SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。 
 
@@ -52,7 +54,7 @@ ms.locfileid: "80346634"
 
 Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設定されているのと同じデータ ファクトリに作成します (まだそうしていない場合)。 これを行うには、[Azure データ ファクトリのリンクされたサービスの作成 ](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)に関する記事を参照してください。 次のことを行ってください。
 - **[データ ソース]** で **[Azure Blob Storage]** を選択します。  
-- **統合ランタイム経由で接続**する場合は、既定の Azure IR を使用して Azure Blob Storage のアクセス資格情報を取得するため、(Azure-SSIS IR でもセルフホステッド IR でもなく) **AutoResolveIntegrationRuntime** を選択します。  
+- **統合ランタイム経由で接続**する場合は、既定の Azure IR を使用して Azure Blob Storage のアクセス資格情報を取り込むため、(Azure-SSIS IR でもセルフホステッド IR でもなく) **AutoResolveIntegrationRuntime** を選択します。
 - **[認証方法]** で、 **[アカウント キー]** 、 **[SAS URI]** 、または **[サービス プリンシパル]** を選択します。  
 
     >[!TIP]
@@ -171,7 +173,7 @@ Azure-SSIS IR で実行される 2 番目のステージング タスクは個�
 
 ## <a name="current-limitations"></a>現在の制限
 
-- ODBC (Open Database Connectivity)/OLEDB/フラット ファイルのソースを使用するデータ フロー タスクのみが現在サポートされています。 
+- Open Database Connectivity (ODBC)、OLEDB、フラット ファイルのソースまたは OLEDB 出力先を使用するデータ フロー タスクのみが、現在サポートされています。 
 - *アカウント キー*、*Shared Access Signature (SAS) URI*、または*サービス プリンシパル*の認証を使って構成された Azure Blob Storage のリンクされたサービスのみが現在サポートされています。
 - OLEDB ソースの *ParameterMapping* はまだサポートされていません。 回避策として、*AccessMode* として*変数からの SQL コマンド*を使用し、*式*を使用して SQL コマンドに変数やパラメーターを挿入してください。 図のように、パブリック プレビュー コンテナーの *SelfHostedIRProxy/Limitations* フォルダーに置かれた *ParameterMappingSample.dtsx* パッケージを参照してください。 Azure Storage Explorer を使用して、上の SAS URI を入力することで、パブリック プレビュー コンテナーに接続できます。
 

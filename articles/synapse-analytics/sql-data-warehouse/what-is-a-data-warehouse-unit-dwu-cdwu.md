@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7f27215c7ba053933d9d12658253ea92aefa526
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351112"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408066"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse ユニット (DWU)
 
@@ -24,14 +24,18 @@ ms.locfileid: "80351112"
 
 ## <a name="what-are-data-warehouse-units"></a>Data Warehouse ユニットとは
 
-[SQL プール](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)は、[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) を使用しているときにプロビジョニングされる分析リソースのコレクションを表します。 分析リソースは、CPU、メモリ、および IO の組み合わせとして定義されます。 これらの 3 つのリソースは、Data Warehouse ユニット (DWU) と呼ばれるコンピューティング スケールのユニットにバンドルされます。 DWU は、コンピューティング リソースとパフォーマンスの抽象的な正規化された単位を表します。 サービス レベルを変更すると、システムで使用できる DWU の数が変更され、それによってさらにシステムのパフォーマンスやコストが調整されます。
+[Synapse SQL プール](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)は、プロビジョニングされる分析リソースのコレクションを表します。 分析リソースは、CPU、メモリ、および IO の組み合わせとして定義されます。
+
+これらの 3 つのリソースは、Data Warehouse ユニット (DWU) と呼ばれるコンピューティング スケールのユニットにバンドルされます。 DWU は、コンピューティング リソースとパフォーマンスの抽象的な正規化された単位を表します。
+
+サービス レベルを変更すると、システムで使用できる DWU の数が変更され、それによってさらにシステムのパフォーマンスやコストが調整されます。
 
 パフォーマンス向上のために、Data Warehouse ユニットの数を増やすことができます。 パフォーマンスを低下させるには、Data Warehouse ユニットの数を減らします。 ストレージのコストとコンピューティングのコストは、別々に請求されます。したがって、Data Warehouse ユニットの数を変更してもストレージ コストには影響しません。
 
-Data Warehouse ユニットのパフォーマンスは、次のワークロード メトリックに基づいています。
+Data Warehouse ユニットのパフォーマンスは、次のようなデータ ウェアハウスのワークロードのメトリックに基づいています。
 
-- 標準的なデータ ウェアハウス クエリがどれだけ速く多数の行をスキャンし、次に複雑な集計を実行できるか。 これは I/O と CPU を集中的に使用する操作です。
-- データ ウェアハウスがどれだけ速く Azure Storage BLOB または Azure Data Lake からデータを取り込むことができるか。 これはネットワークと CPU を集中的に使用する操作です。
+- 標準的な SQL プール クエリがどれだけ速く多数の行をスキャンし、次に複雑な集計を実行できるか。 これは I/O と CPU を集中的に使用する操作です。
+- SQL プールがどれだけ速く Azure Storage BLOB または Azure Data Lake からデータを取り込むことができるか。 これはネットワークと CPU を集中的に使用する操作です。
 - [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL コマンドがどれだけ速くテーブルをコピーできるか。 この操作には、ストレージからのデータの読み取り、アプライアンスのノード間でのデータ分散、ストレージへのデータの再書き込みが必要です。 これは CPU、IO、ネットワークを集中的に使用する操作です。
 
 DWU の数を増やすと、次のメリットが得られます。
@@ -42,21 +46,37 @@ DWU の数を増やすと、次のメリットが得られます。
 
 ## <a name="service-level-objective"></a>サービス レベル目標
 
-サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 SQL プールのサービス レベルは、DW2000c など、Data Warehouse ユニット (DWU) で測定されます。
+サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 用のサービス レベルは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます (例: DW2000c)。 Gen1 サービス レベルは DWU の単位で計測されます (例: DW2000)。
 
-T-SQL では、SERVICE_OBJECTIVE 設定でお使いの SQL プールのサービス レベルが決定されます。
+サービス レベル目標 (SLO) は、SQL プール のコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 SQL プールのサービス レベルは、DW2000c など、Data Warehouse ユニット (DWU) で測定されます。
+
+> [!NOTE]
+> Azure SQL Data Warehouse Gen2 には、最近、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+
+T-SQL では、SERVICE_OBJECTIVE 設定によって SQL プールのサービス レベルとパフォーマンス レベルが決定されます。
 
 ```sql
 CREATE DATABASE mySQLDW
-( EDITION = 'Datawarehouse'
+(Edition = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
+## <a name="performance-tiers-and-data-warehouse-units"></a>パフォーマンス レベルと Data Warehouse ユニット
+
+各パフォーマンス レベルで、Data Warehouse ユニットの測定単位は若干異なります。 スケールの単位は課金に直接つながるため、この違いは請求書に反映されます。
+
+- Gen1 データ ウェアハウスは、データ ウェアハウス単位 (DWU) で測定されます。
+- Gen2 データ ウェアハウスは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます。
+
+DWU と cDWU はいずれも、コンピューティングのスケール アップとスケール ダウン、データ ウェアハウスの使用が不要になった場合のコンピューティングの一時停止をサポートしています。 これらの操作はすべて、オンデマンドで実行できます。 Gen2 では、パフォーマンス向上のためにコンピューティング ノードでのローカル ディスク ベースのキャッシュを使用します。 スケール操作やシステムの一時停止を行うと、このキャッシュが無効化されるため、最適なパフォーマンスを実現する前にキャッシュの準備期間が必要となります。  
+
+各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) クォータがあります。 詳細については、[ワークロード管理の容量制限](sql-data-warehouse-service-capacity-limits.md#workload-management)に関する記事を参照してください。
+
 ## <a name="capacity-limits"></a>容量制限
 
-各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../sql-database/sql-database-service-tiers-dtu.md) クォータがあります。 詳細については、[ワークロード管理の容量制限](sql-data-warehouse-service-capacity-limits.md#workload-management)に関する記事を参照してください。
+各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) クォータがあります。 詳細については、[ワークロード管理の容量制限](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)に関する記事を参照してください。
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>必要な Data Warehouse ユニットの数
 
@@ -68,7 +88,9 @@ CREATE DATABASE mySQLDW
 2. システムへのデータの読み込みをテストする際に、アプリケーションのパフォーマンスを監視し、選択した DWU の数に対するパフォーマンスの変化を観察します。
 3. 定期的なピーク アクティビティ期間のための追加要件があれば識別します。 アクティビティに顕著なピークと谷があることを示すワークロードには、頻繁なスケーリングが必要になる場合があります。
 
-SQL Analytics は、大量のコンピューティングをプロビジョニングし、相当な量のデータにクエリを実行できるスケールアウト システムです。 特に大規模な DWU での実際のスケール機能を確認する場合は、CPU に十分なデータをフィードできるように、スケール時のデータ セットのスケールを決定してください。 スケールのテストでは、少なくとも 1 TB を使用することをお勧めします。
+SQL プールは、大量のコンピューティングをプロビジョニングし、相当な量のデータにクエリを実行できるスケールアウト システムです。
+
+特に大規模な DWU での実際のスケール機能を確認する場合は、CPU に十分なデータをフィードできるように、スケール時のデータ セットのスケールを決定してください。 スケールのテストでは、少なくとも 1 TB を使用することをお勧めします。
 
 > [!NOTE]
 >
@@ -76,7 +98,7 @@ SQL Analytics は、大量のコンピューティングをプロビジョニン
 
 ## <a name="permissions"></a>アクセス許可
 
-Data Warehouse ユニットを変更するには、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)」で説明されているアクセス許可が必要です。
+Data Warehouse ユニットを変更するには、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」で説明されているアクセス許可が必要です。
 
 SQL DB 共同作成者や SQL Server 共同作成者などの Azure リソースの組み込みロールで DWU 設定を変更できます。
 
@@ -109,17 +131,17 @@ DWU を変更するには、次の手順に従います。
 
 3. **[保存]** をクリックします。 確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、 **[いいえ]** をクリックします。
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-DWU を変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、MyServer サーバーにホストされているデータベース MySQLDW のサービス レベル目標を DW1000c に設定します。
+DWU を変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、MyServer サーバーにホストされているデータベース MySQLDW のサービスレベル目標を DW1000 に設定します。
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-詳細については、[SQL Data Warehouse の PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)に関するページを参照してください。
+詳細については、[SQL Data Warehouse の PowerShell コマンドレット](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -128,7 +150,7 @@ T-SQL で現在の DWU の設定を表示したり、設定を変更したり、
 DWU を変更するには、次の手順に従います。
 
 1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
-2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000c に設定します。
+2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000c に設定します。
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -146,12 +168,12 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000c
+        "requestedServiceObjectiveName": DW1000
     }
 }
 ```
 
-REST API の例については、「[SQL Data Warehouse の REST API](sql-data-warehouse-manage-compute-rest-api.md)」を参照してください。
+REST API の例については、「[SQL Data Warehouse の REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
 
 ## <a name="check-status-of-dwu-changes"></a>DWU 変更の状態の確認
 
@@ -164,15 +186,14 @@ Azure Portal でスケールアウト操作のデータベースの状態を確�
 DWU の変更の状態を確認するには、次の手順に従います。
 
 1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+2. 次のクエリを送信して、データベースの状態を確認します。
 
-1. 次のクエリを送信して、データベースの状態を確認します。
+```sql
+SELECT    *
+FROM      sys.databases
+;
+```
 
-    ```sql
-    SELECT    *
-    FROM      sys.databases
-    ;
-    ```
-    
 1. 次のクエリを送信して、操作の状態を確認します。
 
     ```sql
@@ -182,7 +203,7 @@ DWU の変更の状態を確認するには、次の手順に従います。
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 この DMV は、操作や操作の状態 (IN_PROGRESS または COMPLETED のどちらか) などの SQL プールに対するさまざまな管理操作に関する情報を返します。
 
 ## <a name="the-scaling-workflow"></a>スケーリングのワークフロー

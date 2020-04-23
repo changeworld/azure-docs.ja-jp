@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77618474"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314120"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI コマンド、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell コマンド、[Azure portal](https://portal.azure.com)、または [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) のいずれかを使用します。
 
 >[!WARNING]
-> 暗号化シークレットがリージョンの境界を超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要があります。 暗号化する VM と同じリージョン内に Key Vault を作成して使用します。 
+> キー コンテナーと VM は、同じサブスクリプションに配置する必要があります。 また、暗号化シークレットがリージョンの境界を確実に超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要もあります。 暗号化する VM と同じサブスクリプションとリージョン内に Key Vault を作成して使用します。 
 
 各キー コンテナーには一意の名前が必要です。 次の例では、<your-unique-keyvault-name> をお使いのキー コンテナーの名前に置き換えてください。
 
@@ -89,7 +89,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **必要に応じて Key Vault のテンプレート デプロイを有効にする:** 資格情報コンテナーからシークレットを取得することをリソース マネージャーに許可します。
+ - **必要に応じて Key Vault のテンプレートのデプロイを有効にする:** Resource Manager がコンテナーからシークレットを取得することを許可します。
      ```azurecli-interactive  
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-template-deployment "true"
      ```

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7feb0f00c5431048d19d4ad6cb3860f6eb8ed052
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371272"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312704"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -26,9 +26,9 @@ Application Gateway と Web アプリケーション ファイアウォール (W
   ゾーン冗長性は、Azure ゾーンが使用可能な場所でのみ使用できます。 他のリージョンでは、その他のすべての機能がサポートされます。 詳しくは、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md#services-support-by-region)」をご覧ください。
 - **静的 VIP**: Application Gateway v2 SKU では、静的 VIP の種類だけがサポートされます。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、デプロイのライフサイクルの間は、再起動後であっても変化しません。  v1 には静的 VIP がないため、アプリケーション ゲートウェイを経由して App Services にルーティングするドメイン名の IP アドレスの代わりに、アプリケーション ゲートウェイの URL を使用する必要があります。
 - **ヘッダーの書き換え**: Application Gateway では、HTTP 要求と応答のヘッダーを v2 SKU で追加、削除、更新することができます。 詳しくは、「[Application Gateway で HTTP ヘッダーを書き換える](rewrite-http-headers.md)」をご覧ください
-- **Key Vault の統合**: Application Gateway v2 では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
+- **Key Vault の統合**: Application Gateway v2 では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」 を参照してください。
 - **Azure Kubernetes Service のイングレス コントローラー**: Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳細については、「[Application Gateway イングレス コントローラーとは](ingress-controller-overview.md)」を参照してください。
-- **パフォーマンスの向上**: v2 SKU では、Standard/WAF SKU と比較して、SSL オフロードのパフォーマンスが最大で 5 倍になります。
+- **パフォーマンスの向上**: v2 SKU では、Standard/WAF SKU と比較して、TLS オフロードのパフォーマンスが最大で 5 倍になります。
 - **デプロイと更新の時間の短縮**: v2 SKU では、Standard/WAF SKU と比較して、デプロイと更新の時間が短縮されます。 これには、WAF の構成の変更も含まれます。
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
@@ -77,7 +77,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 
 **例 2**
 
-アプリケーション ゲートウェイ standard_v2 が最小インスタンス 0 で 1 か月プロビジョニングされ、この間に、毎秒 25 個の新規 SSL 接続と平均 8.88 Mbps のデータ転送を受け取ります。 接続の有効期間が短いと仮定した場合、価格は次のようになります。
+Application Gateway standard_v2 が最小インスタンス 0 で 1 か月プロビジョニングされ、この間に、毎秒 25 個の新規 TLS 接続と平均 8.88 Mbps のデータ転送を受け取ります。 接続の有効期間が短いと仮定した場合、価格は次のようになります。
 
 固定価格 = 744 (時間) * $0.20 = $148.8
 
@@ -105,7 +105,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 
 **例 4**
 
-アプリケーション ゲートウェイ standard_v2 が最小インスタンス 5 で 1 か月プロビジョニングされますが、この例では、データ転送の平均が 125 Mbps で秒あたりの SSL 接続が 25 です。 トラフィックがなく、接続の有効期間が短いと仮定した場合、価格は次のようになります。
+Application Gateway standard_v2 が最小インスタンス 5 で 1 か月プロビジョニングされますが、この例では、データ転送の平均が 125 Mbps で秒あたりの TLS 接続が 25 です。 トラフィックがなく、接続の有効期間が短いと仮定した場合、価格は次のようになります。
 
 固定価格 = 744 (時間) * $0.20 = $148.8
 
@@ -117,7 +117,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 
 **例 5**
 
-ある WAF_v2 アプリケーション ゲートウェイは、1 か月間だけプロビジョニングされます。 この間に、毎秒 25 個の新規 SSL 接続と平均 8.88 Mbps のデータ転送を受け取り、1 秒間に 80 件の要求を行います。 接続の有効期間が短く、アプリケーションのコンピューティング ユニットの計算でコンピューティング ユニットあたり 10 RPS がサポートされると仮定した場合、価格は次のようになります。
+ある WAF_v2 アプリケーション ゲートウェイは、1 か月間だけプロビジョニングされます。 この間に、毎秒 25 個の新規 TLS 接続と平均 8.88 Mbps のデータ転送を受け取り、1 秒間に 80 件の要求が行われます。 接続の有効期間が短く、アプリケーションのコンピューティング ユニットの計算でコンピューティング ユニットあたり 10 RPS がサポートされると仮定した場合、価格は次のようになります。
 
 固定価格 = 744 (時間) * $0.36 = $267.84
 
@@ -152,8 +152,8 @@ Application Gateway と WAF は、2 つのモードでスケーリングする�
 | トラフィック リダイレクト                               | &#x2713; | &#x2713; |
 | Web アプリケーション ファイアウォール (WAF)                    | &#x2713; | &#x2713; |
 | WAF カスタム規則                                  |          | &#x2713; |
-| Secure Sockets Layer (SSL) ターミネーション            | &#x2713; | &#x2713; |
-| エンドツーエンド SSL 暗号化                         | &#x2713; | &#x2713; |
+| トランスポート層セキュリティ (TLS) または Secure Sockets Layer (SSL) の終了            | &#x2713; | &#x2713; |
+| エンド ツー エンド TLS 暗号化                         | &#x2713; | &#x2713; |
 | セッション アフィニティ                                  | &#x2713; | &#x2713; |
 | カスタム エラー ページ                                | &#x2713; | &#x2713; |
 | WebSocket のサポート                                 | &#x2713; | &#x2713; |
@@ -167,7 +167,7 @@ Application Gateway と WAF は、2 つのモードでスケーリングする�
 
 |相違点|詳細|
 |--|--|
-|認証証明書|サポートされていません。<br>詳細については、「[Application Gateway でのエンド ツー エンド SSL の概要](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)」を参照してください。|
+|認証証明書|サポートされていません。<br>詳細については、「[Application Gateway でのエンド ツー エンド TLS の概要](ssl-overview.md#end-to-end-tls-with-the-v2-sku)」を参照してください。|
 |同じサブネット上の Standard_v2 と Standard Application Gateway の混在|サポートされていません|
 |Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされています (特定のシナリオ)。 プレビュー段階です。<br> サポートされているシステムの詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。|
 |受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|

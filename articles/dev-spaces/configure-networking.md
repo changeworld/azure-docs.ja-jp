@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Azure Kubernetes Services で Azure Dev Spaces を実行するためのネットワーク要件について説明します。
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、コンテナー、CNI、kubenet、SDN、ネットワーク
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240569"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262045"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>さまざまなネットワーク トポロジで Azure Dev Spaces 用のネットワークを構成する
 
@@ -20,7 +20,7 @@ Azure Dev Spaces は、既定のネットワーク構成を使用して Azure Ku
 
 ## <a name="virtual-network-or-subnet-configurations"></a>仮想ネットワークまたはサブネット構成
 
-AKS クラスターには、その AKS クラスターへのイングレスまたはエグレス トラフィックを制限するための別の仮想ネットワークまたはサブネット構成が含まれている可能性があります。 たとえば、クラスターがファイアウォール (Azure Firewall など) の背後に存在したり、ネットワーク トラフィックを制限するためのネットワーク セキュリティ グループまたはカスタム ロールを使用したりすることがあります。
+AKS クラスターには、その AKS クラスターへのイングレスまたはエグレス トラフィックを制限するための別の仮想ネットワークまたはサブネット構成が含まれている可能性があります。 たとえば、クラスターがファイアウォール (Azure Firewall など) の背後に存在したり、ネットワーク トラフィックを制限するためのネットワーク セキュリティ グループまたはカスタム ロールを使用したりすることがあります。 ネットワーク構成の例は、[GitHub の Azure Dev Spaces のサンプル リポジトリ][sample-repo]にあります。
 
 Azure Dev Spaces には、*イングレスおよびエグレス* ネットワーク トラフィックや、*イングレスのみ*のトラフィックに対する特定の要件があります。 AKS クラスターへのトラフィックを制限する仮想ネットワークまたはサブネット構成を含む AKS クラスター上で Azure Dev Spaces を使用している場合、Azure Dev Spaces が正しく機能するには、次のイングレスのみのトラフィックとイングレスおよびエグレス トラフィックの要件に従う必要があります。
 
@@ -109,4 +109,5 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

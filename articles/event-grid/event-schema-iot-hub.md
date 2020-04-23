@@ -1,29 +1,27 @@
 ---
-title: IoT Hub 用の Azure Event Grid スキーマ | Microsoft Docs
+title: Event Grid ソースとしての Azure IoT Hub
 description: この記事では、Azure IoT Hub イベントのプロパティとスキーマについて説明します。 使用可能なイベントの種類、イベントの例、およびイベントのプロパティが一覧表示されます。
 services: iot-hub
 documentationcenter: ''
-author: kgremban
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/21/2020
-ms.author: kgremban
-ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513033"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393322"
 ---
-# <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT Hub 用の Azure Event Grid イベント スキーマ
-
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>Event Grid ソースとしての Azure IoT Hub
 この記事では、Azure IoT Hub イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 
 
-サンプル スクリプトとチュートリアルの一覧については、[IoT Hub のイベント ソース](event-sources.md#iot-hub)に関する記事をご覧ください。
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
 
-## <a name="available-event-types"></a>使用可能なイベントの種類
+### <a name="available-event-types"></a>使用可能なイベントの種類
 
 Azure IoT Hub から出力されるイベントの種類は次のとおりです。
 
@@ -37,7 +35,7 @@ Azure IoT Hub から出力されるイベントの種類は次のとおりです
 
 デバイス テレメトリ イベントを除くすべてのデバイス イベントは、Event Grid でサポートされているすべてのリージョンで一般提供されています。 デバイス テレメトリ イベントはパブリック プレビュー段階であり、米国東部、米国西部、西ヨーロッパ、[Azure Government](../azure-government/documentation-government-welcome.md)、[Azure China 21Vianet](/azure/china/china-welcome)、[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) を除くすべてのリージョンで利用できます。
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 DeviceConnected イベントと DeviceDisconnected イベントのスキーマは同じ構造です。 このサンプル イベントでは、デバイスが IoT Hub に接続されると発生するイベントのスキーマを示します。
 
@@ -148,7 +146,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 すべてのイベントには、同じ最上位レベルのデータが格納されます。 
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | id | string | イベントの一意識別子。 |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
@@ -161,7 +159,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 すべての IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | hubName | string | デバイスが作成または削除された IoT Hub の名前。 |
 | deviceId | string | デバイスの一意識別子。 この文字列は大文字と小文字が区別され、最大 128 文字まで指定でき、ASCII 7 ビットの英数字と、特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) を使うことができます。 |
@@ -170,7 +168,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス接続**および**デバイス切断** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | moduleId | string | モジュールの一意の識別子。 このフィールドは、モジュール デバイスに対してのみ出力されます。 この文字列は大文字と小文字が区別され、最大 128 文字まで指定でき、ASCII 7 ビットの英数字と、特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) を使うことができます。 |
 | deviceConnectionStateEventInfo | object | デバイス接続状態イベント情報
@@ -178,7 +176,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス テレメトリ** IoT Hub イベントでは、データ オブジェクトに [IoT ハブ メッセージ形式](../iot-hub/iot-hub-devguide-messages-construct.md)の device-to-cloud メッセージが含まれ、次のプロパティを含みます。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | body | string | デバイスからのメッセージの内容。 |
 | properties | string | アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略可能です。 |
@@ -186,7 +184,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス接続**および**デバイス削除** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | twin | object | デバイス ツインについての情報。アプリケーション デバイス メタデータのクラウド表現です。 | 
 | deviceID | string | デバイス ツインの一意識別子。 | 
@@ -205,6 +203,13 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 | desired | object | アプリケーション バックエンドだけが書き込むことができ、デバイスで読み取ることができる、プロパティの一部分。 | 
 | reported | object | デバイスだけが書き込むことができ、アプリケーション バックエンドで読み取ることができる、プロパティの一部分。 |
 | lastUpdated | string | デバイス ツインのプロパティが最後に更新されたときの ISO8601 タイムスタンプ。 | 
+
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+|タイトル  |説明  |
+|---------|---------|
+| [Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、お使いの IoT Hub にデバイスが追加されるたびに、通知メールを送信します。 |
+| [Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md) | IoT Hub と Event Grid の統合の概要です。 |
+| [デバイス接続イベントおよびデバイス切断イベントの順序を設定する](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | デバイス接続状態イベントの順序付け方法を示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

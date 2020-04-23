@@ -1,25 +1,27 @@
 ---
-title: Azure Event Grid の Container Registry イベント スキーマ
+title: Event Grid ソースとして Azure Container Registry
 description: Azure Event Grid で Container Registry イベント用に用意されているプロパティについて説明します
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345466"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393361"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 用の Azure Event Grid イベント スキーマ
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Event Grid ソースとして Azure Container Registry
 
 この記事では、Container Registry イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
-## <a name="available-event-types"></a>使用可能なイベントの種類
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
+
+### <a name="available-event-types"></a>使用可能なイベントの種類
 
 Azure Container Registry では、次の種類のイベントが生成されます。
 
@@ -30,7 +32,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 | Microsoft.ContainerRegistry.ChartPushed | Helm チャートがプッシュされたときに発生します。 |
 | Microsoft.ContainerRegistry.ChartDeleted | Helm チャートが削除されたときに発生します。 |
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 次の例は、イメージ プッシュ イベントのスキーマを示しています。 
 
@@ -151,7 +153,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 }]
 ```
 
-## <a name="event-properties"></a>イベントのプロパティ
+### <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
@@ -198,6 +200,12 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 | host | string | レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の http ホスト ヘッダーで指定されています。 |
 | method | string | イベントを生成した要求メソッド。 |
 | useragent | string | 要求のユーザー エージェント ヘッダー。 |
+
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+|タイトル |説明  |
+|---------|---------|
+| [クイック スタート: コンテナー レジストリ イベントを送信する](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Container Registry イベントを送信する方法を示します。 |
+
 
 ## <a name="next-steps"></a>次のステップ
 

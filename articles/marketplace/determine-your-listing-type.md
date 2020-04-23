@@ -1,19 +1,18 @@
 ---
-title: Microsoft AppSource および Azure Marketplace で公開オプションを選定する
+title: Microsoft の商業マーケットプレースのネットショップで公開オプションを決定する
 description: この記事では､パートナーが Microsoft AppSource や Azure Marketplace にアプリを公開しようとするときに理解しておく必要がある適格性条件と公開要件を説明します｡
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349541"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415738"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 
@@ -21,32 +20,47 @@ ms.locfileid: "80349541"
 
 オファーを構成するには、商業マーケットプレースの主要な概念 (公開オプション、オファーの種類と構成、および商業マーケットプレースのネットショップでオファーを提示する方法と場所を管理する行動喚起) について理解する必要があります。
 
-![Microsoft の商業マーケットプレースのネットショップと公開オプション](./media/marketplace-publishers-guide/storefronts_options_table.png)
-
 この記事では、次のことについて説明します。
 
 - ソリューションに適したネットショップを選定する方法
 - 各ネットショップで使用可能な公開オプションと行動喚起
 - 各公開オプションで使用可能なオファーの種類
 
-## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>ソリューションのネットショップ、公開オプション、およびオファーの種類の選択
+## <a name="commercial-marketplace-publishing-options"></a>商業マーケットプレースの公開オプション
 
-公開オプションを選択する前に、商業マーケットプレースのソリューション、アプリ、およびサービスに対するネットショップの適格性の要件を理解しておくことが重要です。
+次の表は、Microsoft AppSource と Azure Marketplace でのオファーの種類に対する公開オプションを示しています。
+
+|   | **一覧 (問い合わせ)**  | **一覧 (試用版)**  | **Free** | **BYOL** | **トランザクション**|
+| :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
+| **仮想マシン** |  |  |  | Azure Marketplace |  Azure Marketplace |
+| **Azure アプリ (マルチ VM)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
+| **コンテナー イメージ** |  |  | Azure Marketplace | Azure Marketplace |   |
+| **IoT Edge モジュール** |  |  | Azure Marketplace | Azure Marketplace |   |
+| **マネージド サービス** |  |  |  | Azure Marketplace |   |
+| **コンサルティング サービス** | 両方のネットショップ |  |  |  |   |
+| **SaaS アプリ** | 両方のネットショップ | 両方のネットショップ | 両方のネットショップ |  | 両方のネットショップ* |
+| **Microsoft 365 アプリ** | AppSource | AppSource |  |  | AppSource**  |
+| **Dynamics 365 アドイン** |  AppSource | AppSource |  |  |   |
+| **PowerApps** | AppSource |AppSource  |  |  |   |
+
+&#42; Microsoft AppSource での SaaS アプリのトランザクション オファーは、現在クレジット カードのみです。
+
+&#42;&#42; Microsoft 365 のオファーは、無料でインストールすることができ、SaaS オファーを介してライセンス サービスとして収益化できます。 詳細については、「[Microsoft Commercial Marketplace を通して Office 365 アドインを収益化する](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)」を参照してください。
+
+## <a name="selecting-a-storefront"></a>ネットショップの選択
+
+公開オプションを選択する前に、商業マーケットプレースのソリューション、アプリ、サービスに対するネットショップの適格性の要件を理解しておくことが重要です。 各ネットショップは、一意の顧客要件に対して機能し、特定の対象者をターゲットとします。 オファーの種類、機能、カテゴリまたは業界によって、オファーの公開先が決まります。
 
 **Microsoft AppSource** のアプリケーションは、Azure 上に構築可能な、または Dynamics 365、Office 365、Power BI、または PowerApps 用に構築可能な基幹業務ソリューションです。 AppSource コンサルティング サービスは、お客様が Dynamics 365 と Power BI の使用を開始または促進するために役立つプロフェッショナル サービスです。
 
 **Azure Marketplace** のアプリケーションは、Azure 上または Azure 用に構築された、IT または開発者向けの技術的な "構成要素" ソリューションです。 Azure Marketplace コンサルティング サービスは、お客様が Azure の使用を開始または促進するために役立つプロフェッショナル サービスです。
 
-## <a name="understand-storefront-selection"></a>ネットショップの選択について理解する
-
-各ネットショップは、一意の顧客要件に対して機能します。 オファーが公開されるネットショップは、オファーの種類、オファーのトランザクション機能、特定の対象ユーザーをターゲットにしたカテゴリ/業種の選択によって決定されます。 
-
 >[!Note]
->"重複表示" (SaaS アプリの場合のみ): リストまたは試用版ベースのオファーが技術ユーザーとビジネス ユーザーの両方の条件を満たしている場合は、2 つのネットショップにオファーが表示されます。 公開オプションについて詳しくは、以下の内容を参照してください。
+>クロス リスト (SaaS アプリの場合のみ): 一覧または試用版ベースのオファーが技術ユーザーとビジネス ユーザーの両方の条件を満たしている場合は、どちらのネットショップにもオファーが表示されます。 公開オプションについて詳しくは、以下の内容を参照してください。
 
 ## <a name="choose-a-publishing-option"></a>公開オプションを選択する
 
-公開オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や[商業マーケットプレース特典](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)へのアクセスも可能になります。  公開オプションに対応した行動喚起を次に示します。
+公開オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や[商業マーケットプレース特典](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)へのアクセスも可能になります。 公開オプションに対応した行動喚起を次に示します。
 
 | **公開オプション**    | **説明**  |
 | :------------------- | :-------------------|
@@ -55,8 +69,8 @@ ms.locfileid: "80349541"
 | **BYOL** | 商業マーケットプレースを使用して、ソリューションを見つけやすくし、ソリューションのプロビジョニングを自動化し、金融取引を個別に完了します。 BYOL オファーの種類は、オンプレミスからクラウドへの移行に最適です。 行動喚起は、**今すぐ入手する**です。
 | **トランザクション** | トランザクション オファーは、商業マーケットプレースを通して販売されます。 課金と回収については Microsoft が担当します。 行動喚起は、**今すぐ入手する**です。|
 
->[!Note]
->トランザクション公開オプションを使用する場合は、オファーの種類を選択してオファーを作成する前に、価格、課金、請求、および支払いに関する考慮事項を理解することが重要です。 詳細については、[マーケットプレースでの課金と販売に関する考慮事項](./marketplace-commercial-transaction-capabilities-and-considerations.md)に関する記事を確認してください。
+> [!Note]
+> トランザクション公開オプションを使用する場合は、オファーの種類を選択してオファーを作成する前に、価格、課金、請求、および支払いに関する考慮事項を理解することが重要です。 詳細については、「[商用マーケットプレース トランザクションの機能と考慮事項](./marketplace-commercial-transaction-capabilities-and-considerations.md)」の記事を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548862"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311939"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
-Application Gateway v2 SKU では、バックエンド サーバーを許可するために、信頼されたルート証明書の使用を導入しています。 これにより、v1 SKU で必要だった認証証明書が不要になります。 この "*ルート証明書*" は、バックエンド証明書サーバーからの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 サーバー証明書を発行したルート証明機関 (CA) が識別され、サーバー証明書が SSL 通信に使用されます。
+Application Gateway v2 SKU では、バックエンド サーバーを許可するために、信頼されたルート証明書の使用を導入しています。 これにより、v1 SKU で必要だった認証証明書が不要になります。 この "*ルート証明書*" は、バックエンド証明書サーバーからの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 サーバー証明書を発行したルート証明機関 (CA) が識別され、サーバー証明書が TLS/SSL 通信に使用されます。
 
-Application Gateway は、よく知られている CA (GoDaddy や DigiCert など) によって署名されている Web サイトの証明書を既定で信頼します。 その場合は、ルート証明書を明示的にアップロードする必要はありません。 詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください。 ただし、開発/テスト環境を所有していて、検証済みの CA 署名証明書を購入したくない場合は、独自のカスタム CA を作成し、それを使用して自己署名証明書を作成することができます。 
+Application Gateway は、よく知られている CA (GoDaddy や DigiCert など) によって署名されている Web サイトの証明書を既定で信頼します。 その場合は、ルート証明書を明示的にアップロードする必要はありません。 詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。 ただし、開発/テスト環境を所有していて、検証済みの CA 署名証明書を購入したくない場合は、独自のカスタム CA を作成し、それを使用して自己署名証明書を作成することができます。 
 
 > [!NOTE]
 > 自己署名証明書は、既定では信頼されないため、管理が困難になる可能性があります。 また、強力でない可能性のある旧式のハッシュや暗号スイートが使用される場合もあります。 セキュリティを強化するには、よく知られている証明機関によって署名された証明書を購入してください。
@@ -125,15 +125,15 @@ CSR は、証明書を要求するときに CA に与えられる公開キーで
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Web サーバーの SSL 設定で証明書を構成する
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Web サーバーの TLS 設定で証明書を構成する
 
-Web サーバーで fabrikam.crt ファイルと fabrikam.key ファイルを使用して SSL を構成します。 Web サーバーで 2 つのファイルを受け取ることができない場合は、OpenSSL コマンドを使用して、単一の .pem または .pfx ファイルに結合することができます。
+Web サーバーで fabrikam.crt ファイルと fabrikam.key ファイルを使用して TLS を構成します。 Web サーバーで 2 つのファイルを受け取ることができない場合は、OpenSSL コマンドを使用して、単一の .pem または .pfx ファイルに結合することができます。
 
 ### <a name="iis"></a>IIS
 
 証明書をインポートして IIS でサーバー証明書としてアップロードする方法については、「[[HOW TO] インポートした証明書を Windows Server 2003 の Web サーバーにインストールする方法](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)」をご覧ください。
 
-SSL バインドの手順については、「[How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)」 (IIS 7 で SSL を設定する方法) を参照してください。
+TLS バインドの手順については、「[IIS 7 で SSL を設定する方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)」を参照してください。
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ SSL バインドの手順については、「[How to Set Up SSL on IIS 7](https
 
 ### <a name="nginx"></a>NGINX
 
-次の構成は、SSL 構成での [NGINX サーバー ブロック](https://nginx.org/docs/http/configuring_https_servers.html)の例です。
+次の構成は、TLS 構成での [NGINX サーバー ブロック](https://nginx.org/docs/http/configuring_https_servers.html)の例です。
 
-![SSL での NGINX](media/self-signed-certificates/nginx-ssl.png)
+![TLS での NGINX](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>サーバーにアクセスして構成を確認する
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>次のステップ
 
-Application Gateway の SSL/TLS の詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください。
+Application Gateway の SSL/TLS の詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。
 

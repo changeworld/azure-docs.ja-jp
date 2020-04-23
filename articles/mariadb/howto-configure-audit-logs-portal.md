@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d31b7531e00199ea63c7b057dacff1b67d7cedc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528933"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382968"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Azure portal での監査ログの構成とアクセス
 
@@ -30,7 +30,7 @@ ms.locfileid: "79528933"
 
 監査ログを有効化および構成します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. Azure Database for MariaDB サーバーを選択します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "79528933"
 1. **audit_log_enabled** パラメーターを ON に更新します。
     ![監査ログの有効化](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. [audit_log_events](concepts-audit-logs.md#configure-audit-logging) パラメーターを更新して、ログに記録する**イベントの種類**を選択します。
+1. **audit_log_events** パラメーターを更新して、ログに記録する[イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
     ![監査ログのイベント](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. **audit_log_exclude_users** パラメーターを更新して、ログから除外する MariaDB ユーザーを追加します。 ユーザーは MariaDB ユーザー名で指定します。
@@ -69,4 +69,5 @@ ms.locfileid: "79528933"
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Database for MariaDB の[監査ログ](concepts-audit-logs.md)の詳細について学習します。
+- Azure Database for MariaDB の[監査ログ](concepts-audit-logs.md)について詳しく確認します
+- [Azure CLI](howto-configure-audit-logs-cli.md) で監査ログを構成する方法を学習します

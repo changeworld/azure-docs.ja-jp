@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278197"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273496"
 ---
 # <a name="certify-your-vm-image"></a>VM イメージを認定する
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://aks.ms/CertifyVMimage)」の手順に従ってください。
 
 仮想マシン (VM) を作成してデプロイしたら、VM イメージをテストし、送信して、Azure Marketplace の認定を受ける必要があります。 この記事では、"*Azure 認定用の認定テスト ツール*" の入手場所を紹介すると共に、このツールを使用して VM イメージを認定する方法や、VHD が置かれている Azure コンテナーに検証結果をアップロードする方法について説明します。 
 

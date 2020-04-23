@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656414"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261807"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Cognitive Search で簡単なクエリを作成する
 
 Azure Cognitive Search では、[単純なクエリ構文](query-simple-syntax.md)で既定のクエリ パーサーが呼び出されて、インデックスに対してフルテキスト検索クエリが実行されます。 このパーサーは高速で、フルテキスト検索、フィルター検索、ファセット検索、地理検索などの一般的なシナリオに対応します。 
 
-この記事では、例を使用して単純な構文を示します。
+この記事では、例を使用して、単純な構文を説明し、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作の `search=` パラメーターを設定します。
 
 代替のクエリ構文には[完全な Lucene](query-lucene-syntax.md) 構文があります。この構文は、あいまい検索、ワイルドカード検索などのより複雑なクエリ構造をサポートし、処理に時間がかかります。 完全な構文の詳細と例については、[完全な Lucene 構文の使用](search-query-lucene-examples.md)に関するページを参照してください。
 

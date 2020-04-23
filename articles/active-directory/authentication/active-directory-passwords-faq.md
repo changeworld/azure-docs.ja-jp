@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae3ace24d6f33702c15a364b913f841d90fd8872
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654191"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407174"
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -235,7 +235,7 @@ ms.locfileid: "80654191"
   >
 * **Q:パスワードのリセットまたは登録レポート データにアクセスする API はありますか。**
 
-  > **A:** はい。 パスワード リセット レポート データ ストリームにアクセスする方法については、「[パスワード リセット レポート イベントにプログラムでアクセスする方法](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)」をご覧ください。
+  > **A:** はい。 パスワード リセット レポート データにアクセスする方法については、[Azure Log Analytics REST API リファレンス](/rest/api/loganalytics/)を参照してください。
   >
   >
 

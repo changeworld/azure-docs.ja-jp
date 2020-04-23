@@ -7,16 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 156a405d93aeac27f27fe617e1a5485044309846
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277723"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273819"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>仮想マシンの [Marketplace] タブ
 
-**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、 **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[リードの管理]** 、 **[法的情報]** の 4 つのセクションに分かれています。
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://aka.ms/CreateAzureVMoffer)」の手順に従って、移行されたオファーを管理します。
+
+**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[Lead Management]\(潜在顧客の管理\)** 、 **[法的情報]** 。
 
 
 ## <a name="overview-section"></a>[概要] セクション
@@ -42,7 +45,7 @@ ms.locfileid: "80277723"
 
 ## <a name="marketing-artifacts-section"></a>[マーケティングの成果物] セクション
 
-この 2 つ目のセクションは、 **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** の 3 つのサブセクションに分かれています。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。 
+この 2 番目のセクションは、次の 3 つのサブセクションに分かれています: **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** 。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。 
 
 ![仮想マシン用の [新しいプラン] フォームにある [Marketplace] タブの [Marketing Artifacts]\(マーケティングの成果物\) セクション](./media/publishvm_009.png)
 
@@ -57,10 +60,10 @@ ms.locfileid: "80277723"
 | **ワイド\***                  | 255 x 115 ピクセルの .ico ビットマップ                                                    |
 | **ヒーロー**                  | 815 x 290 のビットマップ。  オプション。ただし、ヒーロー アイコンはアップロードしたら削除できません。 |
 | *スクリーンショット*  | オプション。ただし、SKU あたり最大 5 つのスクリーンショット。 |
-| **Name**                  | 名前またはタイトル <!-- TODO - max char length? none specified in UI -->                               |
+| **名前**                  | 名前またはタイトル <!-- TODO - max char length? none specified in UI -->                               |
 | **Image**                 | 画面キャプチャ画像。533 x 324 ピクセル                                         |
 | *ビデオ*  |  |
-| **Name**                  | 名前またはタイトル  <!-- TODO - max char length? -->                              |
+| **名前**                  | 名前またはタイトル  <!-- TODO - max char length? -->                              |
 | **リンク**                  | ビデオの URL。YouTube や Vimeo でホストされます                                        |
 | **サムネイル**             | 533 x 324 のビットマップ                                                               |
 |   |   |

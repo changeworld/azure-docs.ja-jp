@@ -5,12 +5,12 @@ description: Azure CLI を使用して、仮想ノードを使用する Azure Ku
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b3dec8a7d46226b9d6f4416c98332f0023c0c294
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984676"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392601"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -108,9 +108,9 @@ az network vnet subnet create \
     --address-prefixes 10.241.0.0/16
 ```
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+## <a name="create-a-service-principal-or-use-a-managed-identity"></a>サービス プリンシパルの作成またはマネージド ID の使用
 
-AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルを使用します。 このサービス プリンシパルは、Azure CLI または Azure portal で自動的に作成するか、または事前に手動で作成しておいて、アクセス許可を追加で割り当てることができます。
+AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルを使用します。 このサービス プリンシパルは、Azure CLI または Azure portal で自動的に作成するか、または事前に手動で作成しておいて、アクセス許可を追加で割り当てることができます。 または、サービス プリンシパルの代わりに、マネージド ID をアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドを使用して、サービス プリンシパルを作成します。 `--skip-assignment` パラメーターで、余分なアクセス許可の割り当てを制限します。
 

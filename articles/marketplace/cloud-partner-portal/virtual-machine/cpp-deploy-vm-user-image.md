@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277958"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273887"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>ユーザー VHD から Azure VM をデプロイする
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://aks.ms/CertifyVMimage)」の手順に従ってください。
 
 この記事では、提供された Azure Resource Manager テンプレートおよび Azure PowerShell スクリプトを使用することにより、汎用化された VHD イメージをデプロイして新しい Azure VM リソースを作成する方法について説明します。
 
@@ -31,7 +34,7 @@ ms.locfileid: "80277958"
 | userStorageAccountName     | ストレージ アカウントの名前                                                    |
 | sNameForPublicIP           | パブリック IP の DNS 名。 小文字にする必要があります。                                  |
 | subscriptionId             | Azure サブスクリプションの識別子。                                                  |
-| Location                   | リソース グループの標準的な Azure 地理的場所                       |
+| 場所                   | リソース グループの標準的な Azure 地理的場所                       |
 | vmName                     | 仮想マシンの名前                                                    |
 | vaultName                  | Key Vault の名前                                                          |
 | vaultResourceGroup         | Key Vault のリソース グループ

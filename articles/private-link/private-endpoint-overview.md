@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048439"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115240"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -24,7 +24,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 |プロパティ  |説明 |
 |---------|---------|
-|Name    |    リソース グループ内の一意の名前。      |
+|名前    |    リソース グループ内の一意の名前。      |
 |Subnet    |  仮想ネットワークからデプロイしてプライベート IP アドレスを割り当てるサブネット。 サブネットの要件については、この記事の「制限事項」セクションを参照してください。         |
 |Private Link リソース    |   使用可能な種類の一覧から、リソース ID または別名を使用して接続するプライベート リンク リソース。 このリソースに送信されるすべてのトラフィックに対して、一意のネットワーク識別子が生成されます。       |
 |ターゲット サブリソース   |      接続するサブリソース。 それぞれの種類のプライベート リンク リソースには、好みに応じて選択できるさまざまなオプションがあります。    |
@@ -54,7 +54,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |---------|---------|---------|
 |**Private Link サービス** (独自のサービス)   |  Microsoft.Network/privateLinkServices       | empty |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        | 
 |**Azure ストレージ**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)<BR> Table (table、table_secondary)<BR> Queue (queue、queue_secondary)<BR> File (file、file_secondary)<BR> Web (web、web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)<BR> Data Lake ファイル システム Gen2 (dfs、dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、Table|
@@ -62,6 +62,19 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | コンテナー |
+|**Azure Kubernetes Service - Kubernetes API** | Microsoft.ContainerService/managedClusters | managedCluster |
+|**Azure Search** | Microsoft.Search/searchService| searchService|  
+|**Azure Container Registry** | Microsoft.ContainerRegistry/registries  | 使用) |
+|**Azure App Configuration** | Microsoft.Appconfiguration/configurationStores   | configurationStore |
+|**Azure Backup** | Microsoft.RecoveryServices/vaults   | コンテナー |
+|**Azure Event Hub** | Microsoft.EventHub/namespaces    | namespace |
+|**Azure Service Bus** | Microsoft.ServiceBus/namespaces | namespace |
+|**Azure Relay** | Microsoft.Relay/namespaces | namespace |
+|**Azure Event Grid** | Microsoft.EventGrid/topics  | topic |
+|**Azure Event Grid** | Microsoft.EventGrid/domains | domain |
+|**Azure WebApps** | Microsoft.Web/sites    | site |
+|**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces  | ワークスペース |
+  
  
 ## <a name="network-security-of-private-endpoints"></a>プライベート エンドポイントのネットワーク セキュリティ 
 Azure サービスでプライベート エンドポイントを使用する場合、トラフィックは特定のプライベート リンク リソースに対してセキュリティで保護されます。 プラットフォームによってアクセス制御が実行され、指定されたプライベート リンク リソースのみに到達するネットワーク接続が検証されます。 同じ Azure サービス内の追加のリソースにアクセスするには、追加のプライベート エンドポイントが必要です。 
@@ -100,11 +113,12 @@ Azure サービスでプライベート エンドポイントを使用する場�
 > [!IMPORTANT]
 > パブリック エンドポイントを解決する目的でアクティブに使用されているゾーンをオーバーライドすることはお勧めしません。 リソースへの接続は、パブリック DNS への DNS 転送なしでは正しく解決できません。 問題を回避するには、別のドメイン名を作成するか、次の各サービスの推奨される名前に従ってください。 
  
-Azure サービスについては、次の表に示すように、推奨されるゾーン名を使用します。
+Azure サービスについては、次の表に示すようにゾーン名を使用します。
 
 |Private Link リソースの種類   |サブリソース  |ゾーン名  |
 |---------|---------|---------|
-|SQL DB または DW (Microsoft.Sql/servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
+|SQL DB (Microsoft.Sql/servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
+|Azure Synapse Analytics (Microsoft.Sql/servers)    |  SQL Server (sqlServer)        | privatelink.database.windows.net |
 |Storage アカウント (Microsoft.Storage/storageAccounts)    |  BLOB (blob、blob_secondary)        |    privatelink.blob.core.windows.net      |
 |Storage アカウント (Microsoft.Storage/storageAccounts)    |    Table (table、table_secondary)      |   privatelink.table.core.windows.net       |
 |Storage アカウント (Microsoft.Storage/storageAccounts)    |    Queue (queue、queue_secondary)     |   privatelink.queue.core.windows.net       |
@@ -120,6 +134,18 @@ Azure サービスについては、次の表に示すように、推奨され�
 |Azure Database for MySQL (Microsoft.DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
 |Azure Key Vault (Microsoft.KeyVault/vaults)|コンテナー|privatelink.vaultcore.azure.net|
+|Azure Kubernetes Service - Kubernetes API (Microsoft.ContainerService/managedClusters) | managedCluster | {guid}.privatelink.<region>.azmk8s.io|
+|Azure Search (Microsoft.Search/searchServices)|searchService|privatelink.search.windows.net|   
+|Azure Container Registry (Microsoft.ContainerRegistry/registries) | 使用) | privatelink.azurecr.io |
+|Azure App Configuration (Microsoft.Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|
+|Azure Backup (Microsoft.RecoveryServices/vaults)| コンテナー |privatelink.{region}.backup.windowsazure.com|
+|Azure Event Hub (Microsoft.EventHub/namespaces)| namespace |privatelink.servicebus.windows.net|
+|Azure Service Bus (Microsoft.ServiceBus/namespaces) | namespace |privatelink.servicebus.windows.net|
+|Azure Relay (Microsoft.Relay/namespaces) | namespace |privatelink.servicebus.windows.net|
+|Azure Event Grid (Microsoft.EventGrid/topics)   | topic | topic.{region}.privatelink.eventgrid.azure.net|
+|Azure Event Grid (Microsoft.EventGrid/domains) | domain | domain.{region}.privatelink.eventgrid.azure.net |
+|Azure WebApps (Microsoft.Web/sites)    | site | privatelink.azurewebsites.net |
+|Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)   | ワークスペース | privatelink.api.azureml.ms |
  
 提案されたドメイン名に解決をリダイレクトするために、Azure によってパブリック DNS に正規名の DNS レコード (CNAME) が作成されます。 この解決は、プライベート エンドポイントのプライベート IP アドレスでオーバーライドすることができます。 
  

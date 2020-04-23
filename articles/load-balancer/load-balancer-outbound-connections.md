@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 411c06e19b932b441f27a3c7578d847c6dfc1f7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336989"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393101"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の Outbound connections
 
@@ -168,7 +168,7 @@ SNAT ポートは Azure によって各 VM の NIC の IP 構成に事前に割�
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> [複数フロントエンド](load-balancer-multivip-overview.md)で Standard Load Balancer を使用する場合、フロントエンド IP アドレスごとに、前の表に記載されている使用可能な SNAT ポート数を増やします。 たとえば、それぞれ個別のフロントエンド IP アドレスを使用する 2 つの負荷分散規則を持つ、50 個の VM のバックエンド プールでは、IP 構成ごとに 2048 (2x 1024) 個の SNAT ポートが使用されます。 詳細については、[複数のフロントエンド](#multife)に関するセクションを参照してください。
+> [複数フロントエンド](load-balancer-multivip-overview.md)で Standard Load Balancer を使用する場合、フロントエンド IP アドレスごとに、前の表に記載されている使用可能な SNAT ポート数を増やします。 たとえば、それぞれに個別のフロントエンド IP アドレスがある 2 つの負荷分散規則を持つ、50 個の VM のバックエンド プールでは、規則ごとに 2048 (2x 1024) 個の SNAT ポートを使用します。 詳細については、[複数のフロントエンド](#multife)に関するセクションを参照してください。
 
 利用できる SNAT ポートの数が、そのままフローの数に変換されるわけではないことに注意してください。 複数の一意の送信先に単一の SNAT ポートを再利用できます。 ポートは、フローを一意にするために必要な場合にのみ消費されます。 設計と軽減策のガイダンスについて、[この有限のリソースを管理する方法](#snatexhaust)に関するセクション、および [PAT](#pat) について説明しているセクションを参照してください。
 
@@ -193,11 +193,11 @@ SNAT ポートの割り当ては、IP トランスポート プロトコル固�
 このセクションは、Azure での送信接続で発生する可能性のある SNAT の枯渇の緩和に役立つことを目的にしています。
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> SNAT (PAT) ポート不足の管理
-[PAT](#pat) に使用される[エフェメラル ポート](#preallocatedports)は、「[パブリック IP アドレスなしのスタンドアロン VM](#defaultsnat)」および「[パブリック IP アドレスなしの負荷分散 VM](#lb)」で説明されている有限のリソースです。
+「[パブリック IP アドレスなしのスタンドアロン VM](#defaultsnat)」および「[パブリック IP アドレスなしの負荷分散 VM](#lb)」で説明されているように、[PAT](#pat) に使用される[エフェメラル ポート](#preallocatedports)は有限のリソースです。[この](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation)ガイドを使用すると、エフェメラル ポートの使用状況を監視し、現在の割り当てと比較することによって、SNAT の枯渇のリスクを判定したり、そのリスクを確認したりできます。
 
 同じ宛先 IP アドレスとポートに対して多数の TCP 送信接続または UDP 送信接続が開始されることがわかっている場合、送信接続エラーが出る場合、または SNAT ポート ([PAT](#pat) によって使用される事前割り当て済みの[エフェメラル ポート](#preallocatedports)) が不足しているとサポートから指摘された場合、いくつかの一般的な軽減策の選択肢があります。 これらのオプションを確認し、使用可能であり、実際のシナリオに最適な選択肢を判断してください。 それらを 1 つまたは複数組み合わせることが状況改善に役立つ場合もあります。
 
-送信接続の動作の理解が難しい場合は、IP スタック統計 (netstat) を使用できます。 また、パケット キャプチャを使用した接続動作を観察することも効果的です。 これらのパケット キャプチャはインスタンスのゲスト OS で実行できます。また、[パケット キャプチャには Network Watcher](../network-watcher/network-watcher-packet-capture-manage-portal.md) も使用できます。
+送信接続の動作の理解が難しい場合は、IP スタック統計 (netstat) を使用できます。 また、パケット キャプチャを使用した接続動作を観察することも効果的です。 これらのパケット キャプチャはインスタンスのゲスト OS で実行できます。また、[パケット キャプチャには Network Watcher](../network-watcher/network-watcher-packet-capture-manage-portal.md) も使用できます。 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>接続を再利用するようにアプリケーションを変更する 
 SNAT に使用される一時ポートの需要は、アプリケーションで接続を再利用することで減らすことができます。 これには、既定で接続が再利用される HTTP/1.1 などのプロトコルが特に有効です。 また、HTTP が転送に使用されるその他のプロトコル (REST など) も活用できます。 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277941"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273904"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Azure 仮想マシンのテクニカル アセットの作成](https://aka.ms/AzureVMTechAsset)に関するページの手順に従って、移行されたオファーを管理します。
 
 このセクションでは、Azure にデプロイされた仮想ハード ディスク (VHD) からの仮想マシン (VM) をデプロイする方法について説明します。  必要なツールを一覧し、それらのツールを使ってユーザー VM イメージを作成し、PowerShell スクリプトを使って Azure にデプロイする方法を説明しています。
 

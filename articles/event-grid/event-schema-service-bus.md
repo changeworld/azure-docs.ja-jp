@@ -1,27 +1,26 @@
 ---
-title: Azure Event Grid Service Bus のイベント スキーマ
+title: Event Grid ソースとしての Azure Service Bus
 description: Azure Event Grid で Service Bus イベント用に提供されているプロパティについて説明します
 services: event-grid
 author: banisadr
-manager: darosa
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: babanisa
-ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561763"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393236"
 ---
-# <a name="azure-event-grid-event-schema-for-service-bus"></a>Service Bus 用の Azure Event Grid イベント スキーマ
+# <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Service Bus
 
 この記事では、Service Bus イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
-サンプル スクリプトとチュートリアルの一覧については、[Service Bus のイベント ソース](event-sources.md#service-bus)に関する記事を参照してください。
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
 
-## <a name="available-event-types"></a>使用可能なイベントの種類
+### <a name="available-event-types"></a>使用可能なイベントの種類
 
 Service Bus から出力されるイベントの種類は次のとおりです。
 
@@ -30,7 +29,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | キューまたはサブスクリプションにアクティブなメッセージがあり、リッスンしているレシーバーがない場合に生成されます。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 配信不能キューにアクティブなメッセージがあり、アクティブなレシーバーがない場合に生成されます。 |
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 次の例では、リスナー イベントがないアクティブなメッセージのスキーマを示します。
 
@@ -76,7 +75,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 }]
 ```
 
-## <a name="event-properties"></a>イベントのプロパティ
+### <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
@@ -101,6 +100,12 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 | queueName | string | キューをサブスクライブしている場合、アクティブなメッセージのあるキュー。 トピック/サブスクリプションを使っている場合は値 null。 |
 | topicName | string | アクティブなメッセージのある Service Bus サブスクリプションが属しているトピック。 キューを使っている場合は値 null。 |
 | subscriptionName | string | アクティブなメッセージのある Service Bus サブスクリプション。 キューを使っている場合は値 null。 |
+
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+|タイトル  |説明  |
+|---------|---------|
+| [チュートリアル:Azure Service Bus の Azure Event Grid への統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
+| [Azure Service Bus と Event Grid の統合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Service Bus と Event Grid の統合の概要です。 |
 
 ## <a name="next-steps"></a>次のステップ
 

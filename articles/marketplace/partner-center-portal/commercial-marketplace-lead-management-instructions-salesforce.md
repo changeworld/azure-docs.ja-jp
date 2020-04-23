@@ -5,18 +5,21 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281495"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263096"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce 用にリード管理を構成する
 
-この記事では、マーケットプレース オファーからリードを処理するように Salesforce システムをセットアップする方法について説明します。
+この記事では、商業マーケットプレース オファーからリードを処理するように Salesforce システムをセットアップする方法について説明します。
+
+> [!Note]
+> Marketplace では、 **[Country]\(国\)** フィールドの値の一覧など、事前設定済みのリストはサポートされていません。 続行する前に、リストが設定されていないことを確認してください。 代わりに、リードを受信するために [HTTPS エンドポイント](./commercial-marketplace-lead-management-instructions-https.md)や [Azure テーブル](./commercial-marketplace-lead-management-instructions-azure-table.md)を構成できます。
 
 ## <a name="set-up-your-salesforce-system"></a>Salesforce システムを設定する
 
@@ -26,14 +29,16 @@ ms.locfileid: "80281495"
     ![Salesforce のセットアップ](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. [セットアップ] ページで、左側のナビゲーションを使用して **[プラットフォーム ツール] -> [機能の設定] -> [マーケティング] -> [Web-to-Lead]\(Web-to-Lead\)** に移動します。
-    ![Salesforce の [Web-to-Lead]\(Web からリード\)](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+
+        ![Salesforce の Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. Salesforce Classic Experience を使用している場合:
     1. Salesforce ホーム ページから **[セットアップ]** を選択します。
     ![Salesforce Classic の [セットアップ]](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
     1. [セットアップ] ページで、左側のナビゲーションを使用して、 **[ビルド] -> [カスタマイズ] -> [リード] -> [Web-to-Lead]\(Web-to-Lead\)** に移動します。
-    ![Salesforce classic の [Web-to-Lead]\(Web-to-Lead\)](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+
+        ![Salesforce Classic の Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 残りの手順は、使用している Salesforce エクスペリエンスに関係なく同じです。
 
@@ -59,11 +64,15 @@ ms.locfileid: "80281495"
 
 1. [接続の詳細] ポップアップ ウィンドウで、 **[リードのターゲット]** に対して **[Salesforce]** を選択し、前の手順で作成した Web-to-Lead フォームの `oid` を **[組織 ID]** フィールドに貼り付けます。
 
-1. **[保存]** を選択します。 
+1. **連絡先の電子メール** - 新しいリードを受信したときに、メール通知を受け取る必要のある、社内のユーザーにメールを送信します。 複数の電子メールを指定するには、セミコロンで区切ります。
 
-    >[!Note]
-    >オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。
+1. **[OK]** を選択します。
 
-    ![[接続の詳細] - [リードのターゲット] の選択](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+リードの宛先に正常に接続したことを確認するには、[検証] ボタンをクリックします。 成功した場合は、リードの宛先にテスト リードが表示されます。
 
-    ![[接続の詳細] - [リードのターゲット] の選択](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。
+
+![[接続の詳細] - [リードのターゲット] の選択](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![[接続の詳細] - [リードのターゲット] の選択](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

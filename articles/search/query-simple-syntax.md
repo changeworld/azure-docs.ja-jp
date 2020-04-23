@@ -7,49 +7,69 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/12/2020
+ms.openlocfilehash: 066190ff6b735d30db351ff90c0b6e5173b7f583
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152671"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258866"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での単純なクエリ構文
 
-Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 Azure Cognitive Search では、単純なクエリ構文では fuzzy/slop のオプションは除外されます。  
+Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 
+
+Azure Cognitive Search の単純なクエリ構文では、あいまい検索の操作は除外されます。 代わりに、[あいまい検索](search-query-fuzzy.md)には完全な Lucene 構文を使用します。
 
 > [!NOTE]
 > 単純なクエリ構文は、[Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
 >
 > Azure Cognitive Search では、**search** パラメーターでのより複雑なクエリについては、[完全な Lucene クエリ構文](query-lucene-syntax.md)という代替方法が用意されています。 クエリ解析のアーキテクチャと各構文の利点の詳細については、[Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関する記事を参照してください。
 
-## <a name="how-to-invoke-simple-parsing"></a>単純な解析を呼び出す方法
+## <a name="invoke-simple-parsing"></a>単純な解析を呼び出す
 
-簡単な構文は既定値です。 呼び出しが必要なのは、フルから単純に構文をリセットする場合のみです。 構文を明示的に設定するには、`queryType` 検索パラメーターを使用します。 有効な値には `simple|full` が含まれます。`simple` が既定値で、`full` が Lucene の値です。 
+簡単な構文は既定値です。 呼び出しが必要なのは、フルから単純に構文をリセットする場合のみです。 構文を明示的に設定するには、`queryType` 検索パラメーターを使用します。 有効な値には、`queryType=simple` または `queryType=full` が含まれます。`simple` は既定値で、`full` は詳細なクエリのために[完全な Lucene クエリ パーサー](query-lucene-syntax.md)を呼び出します。 
 
-## <a name="query-behavior-anomalies"></a>クエリの動作の異常
+## <a name="syntax-fundamentals"></a>構文の基礎
 
-1 つ以上の用語を含むテキストはすべて、クエリ実行の有効な開始ポイントと見なされます。 Azure Cognitive Search は、テキストの分析中に検出されたバリエーションを含め、それらの用語の一部またはすべてを含むドキュメントをマッチングします。 
+1 つ以上の用語を含むテキストはすべて、クエリ実行の有効な開始ポイントと見なされます。 Azure Cognitive Search は、テキストの分析中に検出されたバリエーションを含め、それらの用語の一部またはすべてを含むドキュメントをマッチングします。
 
-単純に思われるかもしれませんが、Azure Cognitive Search でのクエリ実行には、入力文字列に追加される用語および演算子が増えるにつれて、検索結果が減るのではなく増えるという、予期しない結果を生み出す*可能性がある* 1 つの側面があります。 この拡張が実際に行われるかどうかは、NOT 演算子の組み込みと、AND または OR の動作の観点から NOT の解釈方法を決定する `searchMode` パラメーター設定の組み合わせで決まります。 既定値の `searchMode=Any` と NOT 演算子を指定すると、演算は OR アクションとして計算されます。たとえば、`"New York" NOT Seattle` を指定すると、Seattle 以外のすべての都市が返されます。  
+単純に思われるかもしれませんが、Azure Cognitive Search でのクエリ実行には、入力文字列に追加される用語および演算子が増えるにつれて、検索結果が減るのではなく増えるという、予期しない結果を生み出す*可能性がある* 1 つの側面があります。 この拡張が実際に行われるかどうかは、NOT 演算子の組み込みと、AND または OR の動作の観点から NOT の解釈方法を決定する **searchMode** パラメーター設定の組み合わせで決まります。 詳細については、「[NOT 演算子](#not-operator)」を参照してください。
 
-通常、これらの動作は、コンテンツを検索するアプリケーションのユーザー対話パターンでよく見られます。そこでは、組み込みナビゲーション構造が多い e コマースのサイトとは対照的に、ユーザーがクエリに演算子を含める可能性が高くなります。 詳細については、「[NOT 演算子](#not-operator)」を参照してください。 
+### <a name="precedence-operators-grouping"></a>優先順位の演算子 (グループ化)
 
-## <a name="boolean-operators-and-or-not"></a>ブール演算子 (AND、OR、NOT) 
+かっこを使用して、かっこで囲まれたステートメント内に演算子を含むサブクエリを作成できます。 たとえば、`motel+(wifi||luxury)` を指定すると、"motel" という用語と "wifi" または "luxury" (あるいはその両方) を含むドキュメントが検索されます。
 
-クエリ文字列に演算子を埋め込んで、一致するドキュメントの検出に使用する豊富な条件セットを作成することができます。 
+フィールドのグループ化は似ていますが、グループ化のスコープを 1 つのフィールドに設定します。 たとえば、`hotelAmenities:(gym+(wifi||pool))` を指定すると、"hotelAmenities" のフィールドで "gym" と "wifi"、または "gym" と "pool" が検索されます。  
+
+### <a name="escaping-search-operators"></a>検索演算子のエスケープ  
+
+検索文字列の一部として検索演算子を使用するには、円記号 (`\`) 1 つを前に付けて文字をエスケープします。 たとえば、`https://` のワイルドカード検索で、`://` がクエリ文字列の一部である場合、`search=https\:\/\/*` を指定します。 同様に、エスケープされた電話番号パターンは、`\+1 \(800\) 642\-7676` のようになります。
+
+エスケープが必要な特殊文字には、`- * ? \ /` などがあります。  
+
+より標準的なケースで操作を簡単にするために、この規則には、エスケープが必要ない次の 2 つの例外があります。  
+
++ NOT 演算子 `-` のエスケープが必要なのは、この演算子が用語の真ん中に配置されているのではなく、空白の後の最初の文字である場合のみになります。 たとえば、GUID `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD` は、エスケープ文字がなくても有効です。
+
++ サフィックス演算子 `*` のエスケープが必要なのは、この演算子が用語の真ん中に配置されているのではなく、空白の前の最後の文字の場合のみになります。 たとえば、`4*4=16` には円記号は必要ありません。
+
+> [!NOTE]  
+> エスケープすることでトークンが一緒に保持されますが、インデックスを作成するときの[字句解析](search-lucene-query-architecture.md#stage-2-lexical-analysis)で削除される場合があります。たとえば、標準の Lucene アナライザーでは、ハイフン、スペース、およびその他の文字で単語が削除されたり、分割されたりします。 クエリ文字列で特殊文字が必要な場合は、それらをインデックスに保持するアナライザーが必要になることがあります。 選択肢には、ハイフンでつながれた単語を保持する Microsoft 自然[言語アナライザー](index-add-language-analyzers.md)や、より複雑なパターン用のカスタム アナライザーなどが含まれます。 詳細については、[部分的な語句、パターン、特殊文字](search-query-partial-matching.md)に関する記事を参照してください。
+
+### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>URL での安全でない文字および予約文字のエンコード
+
+安全でない文字および予約文字はすべて、URL でエンコードするようにしてください。 たとえば、'#' は、URL 内のフラグメント ID またはアンカー ID のため、安全でない文字です。 この文字を URL で使用する場合は、`%23` にエンコードする必要があります。 '&' と '=' は、予約文字の例です。これらの文字は、Azure Cognitive Search でパラメーターを区切り、値を指定します。 詳細については、「[RFC1738: Uniform Resource Locators (URL)](https://www.ietf.org/rfc/rfc1738.txt)」を参照してください。
+
+安全でない文字は ``" ` < > # % { } | \ ^ ~ [ ]`` です。 予約文字は `; / ? : @ = + &` です。
+
+###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> クエリ サイズの上限
+
+ Azure Cognitive Search に送信できるクエリのサイズには制限があります。 具体的には、最大で 1024 句 (AND、OR、その他で区切られた式) を持つことができます。 クエリ内の個々の用語のサイズにも約 32 KB の制限があります。 アプリケーションがプログラムで検索クエリを生成する場合は、無制限のサイズのクエリが生成されないように設計することをお勧めします。  
+
+## <a name="boolean-search"></a>ブール検索
+
+クエリ文字列にブール演算子 (AND、OR、NOT) を埋め込んで、一致するドキュメントの検出に使用する豊富な条件セットを作成することができます。 
 
 ### <a name="and-operator-"></a>AND 演算子 `+`
 
@@ -63,35 +83,34 @@ OR 演算子は、縦棒、つまりパイプ文字です。 たとえば、`wif
 
 ### <a name="not-operator--"></a>NOT 演算子 `-`
 
-NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を指定すると、`wifi` という用語を含む、および/または `luxury` を含まないドキュメントが検索されます ("および/または" は `searchMode` によって制御されます)。
+NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を指定すると、`wifi` という用語を含む、または `luxury` を含まないドキュメントが検索されます。
 
-> [!NOTE]  
->  `searchMode` オプションは、`+` 演算子または `|` 演算子が指定されていない場合、NOT 演算子を持つ用語で、クエリ内の他の用語との論理積または論理和をとるかどうかを制御します。 `searchMode` は、`any`(既定値) または `all` のどちらにも設定できることを思い出してください。 `any` を使用すると、より多くの結果を含めることによりクエリの再現率が増加し、既定で `-` は "OR NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含むドキュメント、または `luxury` という用語を含まないドキュメントのどちらにも一致します。 `all` を使用すると、より少ない結果を含めることによりクエリの精度が上がり、既定で - は "AND NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含み、かつ "luxury" という用語を含まないドキュメントに一致します。 これはほぼ間違いなく、`-` 演算子にとってより直感的な動作です。 したがって、再現率ではなく精度で検索を最適化する場合、*そして*ユーザーが検索で `-` 演算子を頻繁に使用する場合は、`searchMode=any` よりも `searchMode=all` を選択することを検討してください。
+クエリ要求の **searchMode** パラメーターでは、NOT 演算子がついた用語を、クエリ内の他の用語と AND 演算するか OR 演算するかどうかが制御されます (他の用語に `+` または `|` 演算子がないと仮定します)。 有効な値は、`any` または `all` です。
 
-## <a name="suffix-operator"></a>サフィックス演算子
+`searchMode=any` にすると、より多くの結果を含めることによりクエリの再現率が増加し、既定で `-` は "OR NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含むドキュメント、または `luxury` という用語を含まないドキュメントのどちらにも一致します。
 
-サフィックス演算子はアスタリスク `*` です。 たとえば、`lux*` は、`lux` で始まる用語を持つドキュメントを検索します。大文字と小文字は区別されません。  
+`searchMode=all` にすると、より少ない結果を含めることによりクエリの精度が上がり、既定で - は "AND NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含み、かつ "luxury" という用語を含まないドキュメントに一致します。 これはほぼ間違いなく、`-` 演算子にとってより直感的な動作です。 したがって、再現率ではなく精度で検索を最適化し、"*かつ*" ユーザーが検索で `-` 演算子を頻繁に使用する場合は、`searchMode=any` よりも `searchMode=all` を選択することを検討してください。
 
-## <a name="phrase-search-operator"></a>語句検索演算子
+**searchMode** 設定を決定するときは、さまざまなアプリケーションでのクエリのユーザー操作パターンを検討してください。 情報を検索するユーザーは、より多くの組み込みのナビゲーション構造を持つ eコマース サイトとは対照的に、クエリに演算子を含める可能性が高くなります。
 
-語句演算子では、語句を引用符 `" "` で囲みます。 たとえば、`Roach Motel` (引用符なし) は、`Roach` と `Motel` (またはそのいずれか) を含むドキュメントを検索します。その際、語句が指定されている場所と順序は関係ありません。一方、`"Roach Motel"` (引用符あり) は、その語句全体を一緒に、その順序で含むドキュメントだけに一致します (テキスト分析は適用されます)。
+<a name="prefix-search"></a>
 
-## <a name="precedence-operator"></a>優先順位演算子
+## <a name="prefix-search"></a>プレフィックス検索
 
-優先順位演算子では、括弧 `( )` で文字列を囲みます。 たとえば、`motel+(wifi | luxury)` を指定すると、"motel" という用語と `wifi` または `luxury` (あるいはその両方) を含むドキュメントが検索されます。  
+サフィックス演算子はアスタリスク `*` です。 たとえば、`lingui*` では "linguistic" または "linguini" が検索され、大文字小文字は無視されます。 
 
-## <a name="escaping-search-operators"></a>検索演算子のエスケープ  
+フィルターと同様に、プレフィックス クエリは完全一致を検索します。 そのため、関連性スコアリングは存在しません (すべての結果が 1.0 の検索スコアを受け取ります)。 プレフィックス クエリは、特にインデックスが大きく、プレフィックスが少ない文字数で構成されている場合、低速になる場合があります。 
 
- 上記の記号を検索テキストの実際の一部として使用するためには、円記号を前に付けてエスケープする必要があります。 たとえば、`luxury\+hotel` と指定すると `luxury+hotel` という用語になります。 より標準的なケースで操作を簡単にするために、この規則には、エスケープが必要ない次の 2 つの例外があります。  
+文字列の最後の部分を照合するサフィックス クエリを実行する場合は、[ワイルドカード検索](query-lucene-syntax.md#bkmk_wildcard)と完全な Lucene 構文を使用します。
 
-- NOT 演算子 `-` のエスケープが必要なのは、この演算子が用語の真ん中に配置されているのではなく、空白の後の最初の文字である場合のみになります。 たとえば、`wi-fi` は 1 つの用語です。一方、GUID (`3352CDD0-EF30-4A2E-A512-3B30AF40F3FD` など) は 1 つのトークンとして扱われます。
-- サフィックス演算子 `*` のエスケープが必要なのは、この演算子が用語の真ん中に配置されているのではなく、空白の前の最後の文字の場合のみになります。 たとえば、`wi*fi` は 1 つのトークンとして扱われます。
+## <a name="phrase-search-"></a>語句検索 `"`
 
-> [!NOTE]  
->  エスケープでトークンは一緒に保持されますが、分析モードによっては、テキスト分析で分割される可能性があります。 詳細については、[言語サポート &#40;Azure Cognitive Search REST API&#41;](index-add-language-analyzers.md) に関する記事を参照してください。  
+用語検索は、1 つ以上の用語に対するクエリで、いずれかの用語が一致と見なされます。 語句検索は引用符 `" "` で囲まれた完全に一致する語句です。 たとえば、`Roach Motel` (引用符なし) は、`Roach` と `Motel` (またはそのいずれか) を含むドキュメントを検索します。その際、語句が指定されている場所と順序は関係ありません。一方、`"Roach Motel"` (引用符あり) は、その語句全体を一緒に、その順序で含むドキュメントだけに一致します (テキスト分析は適用されます)。
 
 ## <a name="see-also"></a>関連項目  
 
-+ [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
++ [単純な検索のクエリの例](search-query-simple-examples.md)
++ [完全な Lucene 検索のクエリの例](search-query-lucene-examples.md)
++ [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [Lucene クエリ構文](query-lucene-syntax.md)
 + [OData 式の構文](query-odata-filter-orderby-syntax.md) 

@@ -4,12 +4,12 @@ description: Azure portal を使用して、仮想ノードを使用する Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616424"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392574"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -66,7 +66,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * [ホストのエイリアス](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI の exec の[引数](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) ではポッドは仮想ノードにデプロイされません
-* [Windows Server ノード (現在は AKS でプレビュー段階)](windows-container-cli.md) を仮想ノードと併用することはサポートされていません。 仮想ノードを使用して、Windows Server コンテナーをスケジュールすることができ、AKS クラスター内の Windows Server ノードは必要ありません。
+* 仮想ノードでは、Linux ポッドのスケジュール設定がサポートされています。 オープンソースの [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) プロバイダーを手動でインストールして、Windows Server のコンテナーを ACI にスケジュールすることができます。 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -89,7 +89,7 @@ Azure portal の左上隅で、 **[リソースの作成]**  >  **[Kubernetes Se
 
 ![AKS クラスターを作成し、仮想ノードを有効にする](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-既定では、Azure Active Directory サービス プリンシパルが作成されます。 このサービス プリンシパルは、クラスター通信と他の Azure サービスとの統合に使用されます。
+既定では、Azure Active Directory サービス プリンシパルが作成されます。 このサービス プリンシパルは、クラスター通信と他の Azure サービスとの統合に使用されます。 または、サービス プリンシパルの代わりに、マネージド ID をアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 このクラスターは高度なネットワークに対しても構成されます。 仮想ノードは、独自の Azure 仮想ネットワーク サブネットを使用するように構成されます。 このサブネットには、Azure リソースと AKS クラスター間を接続するための委任されたアクセス許可があります。 委任されたサブネットがまだない場合、Azure portal によって仮想ノードで使用するための Azure 仮想ネットワークとサブネットが作成および構成されます。
 

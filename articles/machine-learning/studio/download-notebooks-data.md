@@ -7,17 +7,17 @@ ms.subservice: studio
 ms.topic: how-to
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.date: 03/12/2020
-ms.openlocfilehash: 9c4215d2c2e811b4c6369ee3773fb811695da4fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: a342ef86817f4f66a6e74b72b4d167fa548b6345
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204360"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419189"
 ---
 # <a name="download-notebookspreview-data"></a>ノートブック (プレビュー) データをダウンロードする
 
-Notebooks (プレビュー) 機能は、*2020 年 4 月 13 日*に削除されます。 その日が過ぎると、[Notebooks (プレビュー)] タブは表示されなくなり、ノートブック データを復元することはできなくなります。 2020 年 4 月 13 日より前に、ノートブックデータをダウンロードしてください。
+Notebooks (プレビュー) 機能は、*2020 年 4 月 13 日*に削除されました。 Notebooks (プレビュー) のタブとユーザー ノートブック ファイルの削除は、現在、世界中の Azure リージョンにロールアウトされています。
 
 この記事では、Notebooks (プレビュー) データをダウンロードする手順について詳しく説明します。
 

@@ -3,17 +3,17 @@ title: Azure Kubernetes Service (AKS) 用のサービス プリンシパル
 description: Azure Kubernetes Service (AKS) のクラスター用の Azure Active Directory サービス プリンシパルを作成して管理する
 services: container-service
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229607"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392735"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
-Azure API で操作するために、AKS クラスターには [Azure Active Directory (AD) サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、Azure のロード バランサーやコンテナー レジストリ (ACR) などの Azure リソースを動的に作成し、管理するために必要です。
+AKS クラスターには、Azure API での対話に [Azure Active Directory (AD) サービス プリンシパル][aad-service-principal]または[マネージド ID](use-managed-identity.md) が必要です。 サービス プリンシパルまたはマネージド ID は、Azure のロード バランサーや Azure Container Registry (ACR) などのその他の Azure リソースを動的に作成および管理するために必要です。
 
 この記事では、AKS クラスター用のサービス プリンシパルを作成して使用する方法を示します。
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 
 ## <a name="specify-a-service-principal-for-an-aks-cluster"></a>AKS クラスター用のサービス プリンシパルを指定する
 
-[az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに既存のサービス プリンシパルを使用するには、`--service-principal` パラメーターと `--client-secret` パラメーターを使用して、`appId`az ad sp create-for-rbac`password` コマンドの出力の [ と ][az-ad-sp-create] を指定します。
+[az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに既存のサービス プリンシパルを使用するには、`--service-principal` パラメーターと `--client-secret` パラメーターを使用して、[az ad sp create-for-rbac][az-ad-sp-create] コマンドの出力の `appId` と `password` を指定します。
 
 ```azurecli-interactive
 az aks create \
@@ -70,7 +70,7 @@ az aks create \
 > [!NOTE]
 > カスタマイズされたシークレットがある既存のサービス プリンシパルを使用する場合は、そのシークレットの長さが 190 バイトを超えていないことを確認します。
 
-Azure portal を使用して AKS クラスターをデプロイする場合は、 *[Create Kubernetes cluster]\(Kubernetes クラスターの作成)* ダイアログ ボックスの **[Authentication]\(認証)** ページで、 **[Configure service principal]\(サービス プリンシパルの構成)** を選択します。 **[既存のものを使用]** を選択し、以下の値を指定します。
+Azure portal を使用して AKS クラスターをデプロイする場合は、 **[Create Kubernetes cluster]\(Kubernetes クラスターの作成)** ダイアログ ボックスの *[Authentication]\(認証)* ページで、 **[Configure service principal]\(サービス プリンシパルの構成)** を選択します。 **[既存のものを使用]** を選択し、以下の値を指定します。
 
 - **[Service principal client ID]\(サービス プリンシパルのクライアント ID)** は、実際の *appId* です
 - **[Service principal client secret]\(サービス プリンシパルのクライアント シークレット)** は、*password* の値です
@@ -140,7 +140,7 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 AKS クラスターのサービス プリンシパルの資格情報は、Azure CLI によってキャッシュされます。 これらの資格情報が期限切れになると、AKS クラスターのデプロイ中にエラーが発生します。 [az aks create][az-aks-create] を実行しているときの次のエラー メッセージは、キャッシュされているサービス プリンシパルの資格情報に問題があることを示す可能性があります。
 

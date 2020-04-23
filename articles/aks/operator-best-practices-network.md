@@ -1,15 +1,16 @@
 ---
-title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) のネットワーク接続
+title: ネットワーク リソースのベスト プラクティス
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) での仮想ネットワーク リソースと接続に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 93659a0891b09c83db9f63fe0756fcf4d7e87f6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594687"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392709"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 
@@ -42,7 +43,7 @@ Azure CNI ネットワークを使用する場合、仮想ネットワーク リ
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-AKS サービス プリンシパルへの委任の詳細については、[他の Azure リソースへのアクセスの委任][sp-delegation]に関するページを参照してください。
+AKS サービス プリンシパルへの委任の詳細については、[他の Azure リソースへのアクセスの委任][sp-delegation]に関するページを参照してください。 サービス プリンシパルの代わりに、システム割り当てのマネージド ID もアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが kubenet ネットワークと Azure CNI ネットワークの両方で実行するポッドの数には、既定の制限があります。 スケールアウト イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要となります。 Windows Server コンテナー (現在 AKS でプレビュー段階) を使用している場合、これらの追加のアドレス空間は特に重要です。これらのノード プールをアップグレードして最新のセキュリティ パッチを適用する必要があるためです。 Windows Server ノードの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関する記事を参照してください。
 

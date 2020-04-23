@@ -1,15 +1,15 @@
 ---
-title: プレビュー - Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
+title: Azure Kubernetes Service クラスターで Windows Server コンテナーを実行する
 description: 迅速に Kubernetes クラスターを作成し、Azure CLI を使用して Azure Kubernetes Service (AKS) で Windows Server コンテナーにアプリケーションをデプロイする方法について説明します。
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.openlocfilehash: 259728da5ea7f71110ce183ae25bb47a0f873614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2aecebcc45cb24c9ab3a594aa4d74b1584c7ffa7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475512"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392655"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>プレビュー - Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -302,7 +302,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。
+> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。 マネージド ID を使用した場合、ID はプラットフォームによって管理されるので、削除する必要はありません。
 
 ## <a name="next-steps"></a>次のステップ
 

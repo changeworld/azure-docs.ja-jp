@@ -1,16 +1,16 @@
 ---
 title: アプリケーションでマネージド ID を使用する
-description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法。 この機能はパブリック プレビュー段階にあります。
+description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610320"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461567"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Service Fabric アプリケーションのマネージド ID を活用して Azure サービスにアクセスする方法 (プレビュー)
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric アプリケーションのマネージド ID を活用して Azure サービスにアクセスする方法
 
 Service Fabric アプリケーションは、マネージド ID を利用して、Azure Active Directory ベースの認証をサポートしている他の Azure リソースにアクセスできます。 アプリケーションはその ID を表す[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token) (システム割り当ての場合とユーザー割り当ての場合がある) を取得でき、それを "ベアラー" トークンとして使用して、別のサービス ([保護されたリソース サーバー](../active-directory/develop/developer-glossary.md#resource-server)とも呼ばれる) に対してそれ自体を認証することができます。 このトークンは Service Fabric アプリケーションに割り当てられた ID を表し、その ID を共有する Azure リソース (SF アプリケーションを含む) に対してのみ発行されます。 マネージド ID の詳細な説明、およびシステム割り当ての ID とユーザー割り当ての ID の違いについては、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するドキュメントを参照してください。 この記事の中では、マネージド ID が有効になった Service Fabric アプリケーションを[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)と呼びます。
 
@@ -24,39 +24,37 @@ Service Fabric アプリケーションは、マネージド ID を利用して�
 マネージド ID が有効になっているクラスターでは、Service Fabric ランタイムによって、アプリケーションがアクセス トークンを取得するために使用できる localhost エンドポイントが公開されます。 このエンドポイントはクラスターのすべてのノードで使用でき、そのノード上のすべてのエンティティからアクセス可能です。 承認された呼び出し元は、このエンドポイントを呼び出して認証コードを提示することで、アクセス トークンを取得できます。このコードは、個別のサービス コード パッケージのアクティブ化ごとに Service Fabric ランタイムによって生成され、そのサービス コード パッケージをホストしているプロセスの有効期間にバインドされます。
 
 具体的には、マネージド ID が有効になっている Service Fabric サービスの環境は、次の変数を使用してシード処理されます。
-- "MSI_ENDPOINT": localhost エンドポイント。そのサービスのマネージド ID に対応するパス、API バージョン、およびパラメーターが含まれています
-- "MSI_SECRET": 認証コード。不透明な文字列で、現在のノードのサービスを一意に表します
-
-> [!NOTE]
-> "MSI_ENDPOINT" と "MSI_SECRET" という名前は、マネージド ID の以前の名称 ("マネージド サービス ID") を指しますが、現在、これは使用されていません。 これらの名前は、マネージド ID をサポートする他の Azure サービスで使用されている同等の環境変数名とも一致します。
+- 'IDENTITY_ENDPOINT': サービスのマネージド ID に対応する localhost エンドポイント
+- 'IDENTITY_HEADER': 現在のノード上のサービスを表す一意の認証コード
+- 'IDENTITY_SERVER_THUMBPRINT': Service Fabric のマネージド ID サーバーのサムプリント
 
 > [!IMPORTANT]
-> アプリケーション コードでは、"MSI_SECRET" 環境変数の値を機密データと見なすべきであり、ログに記録したり、または別の方法で配布したりすべきではありません。 認証コードにはローカル ノードの外部の値がないか、サービスをホストしているプロセスが終了した後です。ただし、これは Service Fabric サービスの ID を表しているため、アクセス トークンそのものと同じぐらい注意して扱う必要があります。
+> アプリケーション コードでは、'IDENTITY_HEADER' 環境変数の値を機密データと見なす必要があり、ログに記録したり、別の方法で配布したりすることはできません。 認証コードにはローカル ノードの外部の値がないか、サービスをホストしているプロセスが終了した後です。ただし、これは Service Fabric サービスの ID を表しているため、アクセス トークンそのものと同じぐらい注意して扱う必要があります。
 
 クライアントは、トークンを取得するために次の手順を実行します。
-- マネージド ID エンドポイント (MSI_ENDPOINT 値) と、API バージョン、およびトークンに必要なリソース (audience) を連結して URI を形成する
+- マネージド ID エンドポイント (IDENTITY_ENDPOINT 値) と、API バージョン、およびトークンに必須のリソース (audience) を連結して URI を形成する
 - 指定した URI の GET HTTP 要求を作成する
-- 認証コード (MSI_SECRET 値) をヘッダーとして要求に追加する
+- 適切なサーバー証明書の検証ロジックを追加する
+- 認証コード (IDENTITY_HEADER 値) をヘッダーとして要求に追加する
 - 要求を送信する
 
 成功の応答には、結果のアクセス トークンを表す JSON ペイロードと、それを記述するメタデータが含まれます。 失敗の応答には、エラーの説明も含まれます。 エラー処理の詳細情報については、以下を参照してください。
 
 アクセス トークンは、Service Fabric によって、さまざまなレベル (ノード、クラスター、リソース プロバイダー サービス) でキャッシュされます。したがって、成功の応答は、必ずしも、ユーザー アプリケーションの要求に応答してトークンが直接発行されたことを意味するわけではありません。 トークンがキャッシュされる期間はそれらの有効期間よりも短くなるため、アプリケーションは有効なトークンを受け取ることが保証されます。 アプリケーション コードでは、コード自体と取得したアクセス トークンをキャッシュすることをお勧めします。キャッシュするキーには、audience (の派生) を含める必要があります。 
 
-
 要求のサンプル:
 ```http
-GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
 各値の説明:
 
 | 要素 | 説明 |
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | Service Fabric アプリケーションのマネージド ID エンドポイント。MSI_ENDPOINT 環境変数を介して提供されます。 |
+| `https://localhost:2377/metadata/identity/oauth2/token` | Service Fabric アプリケーションのマネージド ID エンドポイント。IDENTITY_ENDPOINT 環境変数を介して提供されます。 |
 | `api-version` | クエリ文字列パラメーター。マネージド ID トークン サービスの API バージョンを指定します。現在、許容される唯一の値は `2019-07-01-preview` であり、これは変更される可能性があります。 |
-| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 これは、発行されたトークンの `aud` (audience) 要求として反映されます。 この例では、Azure Key Vault にアクセスするためのトークンを要求します。そのアプリ ID URI は https:\//keyvault.azure.com/ です。 |
-| `Secret` | HTTP 要求ヘッダー フィールド。Service Fabric サービスが呼び出し元を認証するために、Service Fabric マネージド ID トークン サービスで必要です。 この値は、MSI_SECRET 環境変数を介して SF ランタイムによって提供されます。 |
+| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 これは、発行されたトークンの `aud` (audience) 要求として反映されます。 この例では、Azure Key Vault にアクセスするためのトークンを要求します。そのアプリ ID URI は https:\//vault.azure.net/ です。 |
+| `Secret` | HTTP 要求ヘッダー フィールド。Service Fabric サービスが呼び出し元を認証するために、Service Fabric マネージド ID トークン サービスで必要です。 この値は、IDENTITY_HEADER 環境変数を介して SF ランタイムによって提供されます。 |
 
 
 応答のサンプル:
@@ -67,7 +65,7 @@ Content-Type: application/json
     "token_type":  "Bearer",
     "access_token":  "eyJ0eXAiO...",
     "expires_on":  1565244611,
-    "resource":  "https://keyvault.azure.com/"
+    "resource":  "https://vault.azure.net/"
 }
 ```
 各値の説明:
@@ -124,20 +122,33 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
         /// <returns>Access token</returns>
         public static async Task<string> AcquireAccessTokenAsync()
         {
-            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT");
-            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("MSI_SECRET");
+            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT");
+            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("IDENTITY_HEADER");
+            var managedIdentityServerThumbprint = Environment.GetEnvironmentVariable("IDENTITY_SERVER_THUMBPRINT");
+            // Latest api version, 2019-07-01-preview is still supported.
+            var managedIdentityApiVersion = Environment.GetEnvironmentVariable("IDENTITY_API_VERSION");
             var managedIdentityAuthenticationHeader = "secret";
-            var managedIdentityApiVersion = "2019-07-01-preview";
             var resource = "https://management.azure.com/";
 
             var requestUri = $"{managedIdentityEndpoint}?api-version={managedIdentityApiVersion}&resource={HttpUtility.UrlEncode(resource)}";
 
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, requestUri);
             requestMessage.Headers.Add(managedIdentityAuthenticationHeader, managedIdentityAuthenticationCode);
+            
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, certChain, policyErrors) =>
+            {
+                // Do any additional validation here
+                if (policyErrors == SslPolicyErrors.None)
+                {
+                    return true;
+                }
+                return 0 == string.Compare(cert.GetCertHashString(), managedIdentityServerThumbprint, StringComparison.OrdinalIgnoreCase);
+            };
 
             try
             {
-                var response = await new HttpClient().SendAsync(requestMessage)
+                var response = await new HttpClient(handler).SendAsync(requestMessage)
                     .ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();

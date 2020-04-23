@@ -1,15 +1,15 @@
 ---
 title: Azure portal を使用してブロックチェーン データ マネージャーを構成する - Azure Blockchain Service
 description: Azure portal を使用して、Azure Blockchain Service 用のブロックチェーン データ マネージャーを作成および管理します。
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233835"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260600"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portal を使用してブロックチェーン データ マネージャーを構成する
 
@@ -22,13 +22,13 @@ ms.locfileid: "79233835"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了していること
+* 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了してください。 Blockchain Data Manager を使用する場合は、Azure Blockchain Service *Standard* レベルが推奨されます。
 * [Event Grid トピック](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)を作成する
 * [Azure Event Grid のイベント ハンドラー](../../event-grid/event-handlers.md)について学習する
 
 ## <a name="create-instance"></a>インスタンスを作成する
 
-Blockchain Data Manager インスタンスは、Azure Blockchain Service トランザクション ノードに接続して監視します。 トランザクション ノードにアクセスできるユーザーのみが接続を作成できます。 インスタンスは、トランザクション ノードから生のブロックと生のトランザクション データをすべてキャプチャします。
+Blockchain Data Manager インスタンスは、Azure Blockchain Service トランザクション ノードに接続して監視します。 トランザクション ノードにアクセスできるユーザーのみが接続を作成できます。 インスタンスは、トランザクション ノードから生のブロックと生のトランザクション データをすべてキャプチャします。 Blockchain Data Manager により **RawBlockAndTransactionMsg** メッセージが発行されます。これは、web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) および [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) クエリから返される情報のスーパーセットです。
 
 送信接続により、ブロックチェーン データを Azure Event Grid に送信します。 インスタンスを作成するときに、1 つの送信接続を構成します。 ブロックチェーン データ マネージャーでは、すべてのブロックチェーン データ マネージャー インスタンスに対して複数の Event Grid トピック送信接続がサポートされています。 1 つの宛先にブロックチェーン データを送信することも、複数の宛先にブロックチェーン データを送信することもできます。 別の宛先を追加する場合は、インスタンスへの送信接続を追加するだけです。
 

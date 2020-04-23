@@ -1,30 +1,30 @@
 ---
-title: Azure Event Grid の Event Hubs 用のイベント スキーマ
+title: Event Grid ソースとしての Azure Event Hub
 description: Azure Event Grid の Event Hubs イベントに対して用意されているプロパティについて説明します
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561830"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393351"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid の Event Hubs 用のイベント スキーマ
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Event Hub
 
 この記事では、Event Hubs イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
-サンプル スクリプトとチュートリアルの一覧については、[Event Hubs のイベント ソース](event-sources.md#event-hubs)に関する記事をご覧ください。
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
 
 ### <a name="available-event-types"></a>使用可能なイベントの種類
 
 Event Hubs は、キャプチャ ファイルが作成されたときに、種類が **Microsoft.EventHub.CaptureFileCreated** であるイベントを出力します。
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 このサンプル イベントは、ファイルがキャプチャ機能によって保存されるときに発生する Event Hubs イベントのスキーマを示しています。 
 
@@ -53,7 +53,7 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 ]
 ```
 
-## <a name="event-properties"></a>イベントのプロパティ
+### <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
@@ -81,6 +81,12 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 | lastSequenceNumber | 整数 (integer) | キューの最後のシーケンス番号。 |
 | firstEnqueueTime | string | キューの最初の時間。 |
 | lastEnqueueTime | string | キューの最後の時間。 |
+
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+
+|タイトル  |説明  |
+|---------|---------|
+| [チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

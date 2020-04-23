@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398316"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261909"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -45,7 +45,7 @@ Event Hubs 名前空間は一意のスコープ コンテナーを提供しま�
 
 AMQP 1.0、Kafka 1.0 (以降)、または HTTPS 経由でイベントを発行できます。 Event Hubs は、.NET クライアントからイベント ハブへのイベント発行で使用できる[クライアント ライブラリとクラス](event-hubs-dotnet-framework-api-overview.md)を提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](https://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントまたはバッチのどちらであるかには関係なく、単一パブリケーション (イベント データ インスタンス) には 1 MB の制限があります。 このしきい値より大きいイベントを発行すると、エラーが発生します。 発行元にとっては、イベント ハブ内のパーティションを意識せずに、次のセクションで説明する "*パーティション キー*" のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
 
-AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の SSL オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
+AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の TLS オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 
