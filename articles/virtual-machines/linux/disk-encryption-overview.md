@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548435"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459782"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -105,7 +105,7 @@ Azure Disk Encryption 機能を有効にするには、Linux VM で次のネッ�
   - お使いのキー コンテナーに接続するためのトークンを取得するには、Linux VM が Azure Active Directory エンドポイント \[login.microsoftonline.com\] に接続できる必要があります。
   - 暗号化キーをお使いのキー コンテナーに書き込むには、Linux VM がキー コンテナー エンドポイントに接続できる必要があります。
   - Linux VM では、Azure 拡張リポジトリがホストされている Azure ストレージ エンドポイントと、VHD ファイルがホストされている Azure ストレージ アカウントに接続できる必要があります。
-  -  セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。 詳細については、「[ファイアウォールの内側にある Azure Key Vault へのアクセス](../../key-vault/key-vault-access-behind-firewall.md)」を参照してください。  
+  -  セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。 詳細については、「[ファイアウォールの内側にある Azure Key Vault へのアクセス](../../key-vault/general/access-behind-firewall.md)」を参照してください。  
 
 ## <a name="encryption-key-storage-requirements"></a>暗号化キーのストレージ要件  
 

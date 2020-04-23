@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: fadf07f312c86f8ca15f5a97ebbe99e84bcffc89
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548237"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450017"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -155,7 +155,7 @@ Azure Disk Encryption 使用時のベスト プラクティスを次に示しま
 **詳細**: Azure Disk Encryption は、暗号化キーを生成してキー コンテナーに書き込みます。 Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。 この目的で Azure AD アプリケーションを作成します。 認証には、クライアント シークレット ベースの認証か、[クライアント証明書ベースの Azure AD 認証](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)を使用できます。
 
 **ベスト プラクティス**: 暗号化キーのセキュリティに対する追加レイヤーとしてキー暗号化キー (KEK) を使用する。 キー コンテナーに KEK を追加します。   
-**詳細**: キー コンテナーにキー暗号化キーを作成するには、[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレットを使用します。 キー管理用のオンプレミスのハードウェア セキュリティ モジュール (HSM) から KEK をインポートすることもできます。 詳細については、[Key Vault](../../key-vault/key-vault-hsm-protected-keys.md) のドキュメントを参照してください。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。 このキーのエスクロー コピーをオンプレミスのキー管理 HSM で保持することは、キーを誤って削除した場合の二重の保護を提供します。
+**詳細**: キー コンテナーにキー暗号化キーを作成するには、[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレットを使用します。 キー管理用のオンプレミスのハードウェア セキュリティ モジュール (HSM) から KEK をインポートすることもできます。 詳細については、[Key Vault](../../key-vault/keys/hsm-protected-keys.md) のドキュメントを参照してください。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。 このキーのエスクロー コピーをオンプレミスのキー管理 HSM で保持することは、キーを誤って削除した場合の二重の保護を提供します。
 
 **ベスト プラクティス**: ディスクを暗号化する前に、[スナップショット](../../virtual-machines/windows/snapshot-copy-managed-disk.md)またはバックアップ、あるいはその両方を作成する。 バックアップは、暗号化中に予期しないエラーが発生した場合の回復オプションを提供します。   
 **詳細**: マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成した後、**Set-AzVMDiskEncryptionExtension** コマンドレットで *-skipVmBackup* パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、[Azure Backup](../../backup/backup-azure-vms-encryption.md) に関する記事を参照してください。

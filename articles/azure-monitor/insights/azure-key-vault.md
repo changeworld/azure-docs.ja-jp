@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667145"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455463"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure Key Vault Analytics ソリューション
 
@@ -94,7 +94,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
     どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
-Azure Key Vault ソリューションによって分析されるのは、Azure Diagnostics の [AuditEvent ログ](../../key-vault/key-vault-logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
+Azure Key Vault ソリューションによって分析されるのは、Azure Diagnostics の [AuditEvent ログ](../../key-vault/general/logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
 | プロパティ | 説明 |
 |:--- |:--- |
@@ -107,7 +107,7 @@ Azure Key Vault ソリューションによって分析されるのは、Azure D
 | `httpStatusCode_d` |要求によって返された HTTP 状態コード (例: *200*) |
 | `id_s` |要求の一意の ID |
 | `identity_claim_appid_g` | アプリケーション ID の GUID |
-| `OperationName` |操作の名前 (「[Azure Key Vault のログ記録](../../key-vault/key-vault-logging.md)」を参照) |
+| `OperationName` |操作の名前 (「[Azure Key Vault のログ記録](../../key-vault/general/logging.md)」を参照) |
 | `OperationVersion` |クライアントによって要求された REST API バージョン (例: *2015-06-01*) |
 | `requestUri_s` |要求の URI |
 | `Resource` |Key Vault の名前 |

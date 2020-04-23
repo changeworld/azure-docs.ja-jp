@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252131"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453525"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -36,7 +36,7 @@ Azure Container Registry は、追加の[認証オプション](../container-reg
 
 ### <a name="create-key-vault"></a>キー コンテナーの作成
 
-[Azure キー コンテナー](../key-vault/key-vault-overview.md)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
+[Azure キー コンテナー](../key-vault/general/overview.md)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
 
 `RES_GROUP` 変数をキー コンテナーが作成される既存のリソース グループの名前で、また `ACR_NAME` をコンテナー レジストリの名前で更新します。 簡潔にするために、この記事のコマンドでは、レジストリ、キー コンテナー、コンテナー インスタンスがすべて同じリソース グループ内に作成されることを前提としています。
 

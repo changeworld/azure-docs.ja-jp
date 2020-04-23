@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811447"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456500"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Azure Key Vault でカスタマー マネージド キーを Import/Export サービスのために使用する
 
 Azure Import/Export では暗号化キーを使用して、ドライブのロックに使用される BitLocker キーが保護されます。 既定では、BitLocker キーは Microsoft マネージド キーで暗号化されます。 暗号化キーをさらに制御するために、カスタマー マネージド キーを提供することもできます。
 
-カスタマー マネージド キーは、Azure Key Vault で作成して格納する必要があります。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../../key-vault/key-vault-overview.md)
+カスタマー マネージド キーは、Azure Key Vault で作成して格納する必要があります。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../../key-vault/general/overview.md)
 
 この記事では、[Azure portal](https://portal.azure.com/) の Import/Export サービスで、カスタマー マネージド キーを使用する方法について説明します。
 
@@ -33,12 +33,12 @@ Azure Import/Export では暗号化キーを使用して、ドライブのロッ
     - [ファイルのインポート ジョブを作成する](storage-import-export-data-to-files.md)
     - [BLOB のエクスポート ジョブを作成する](storage-import-export-data-from-blobs.md)
 
-2. BitLocker キーを保護するために使用できるキーを含む既存の Azure Key Vault があります。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-portal.md)」をご覧ください。
+2. BitLocker キーを保護するために使用できるキーを含む既存の Azure Key Vault があります。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-portal.md)」をご覧ください。
 
     - 既存の Key Vault には、**論理的な削除**や**消去保護**が設定されています。 これらのプロパティは、既定では有効になっていません。 これらのプロパティを有効にするには、次のいずれかの記事の「**論理的な削除を有効にする**」および「**消去保護を有効にする**」を参照してください。
 
-        - [PowerShell で Key Vault の論理的な削除を使用する方法](../../key-vault/key-vault-soft-delete-powershell.md)
-        - [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/key-vault-soft-delete-cli.md)
+        - [PowerShell で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)
+        - [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)
     - 既存のキー コンテナーには、2048 サイズ以上の RSA キーが必要です。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
     - キー コンテナーは、データのストレージ アカウントと同じリージョンに存在する必要があります。  
     - 既存の Azure Key Vault がない場合は、次のセクションで説明するように、インラインで作成することもできます。

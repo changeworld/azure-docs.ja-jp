@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b1c985eeec9af25ec576f4e2375c417dc376f95
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067184"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452759"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 
@@ -28,9 +28,9 @@ ms.locfileid: "80067184"
 - [推奨されますが、必須ではありません] TDE 保護機能のキー マテリアルのローカル コピーを作成するためのハードウェア セキュリティ モジュール (HSM) またはローカル キー ストアを用意します。
 - Azure PowerShell がインストールされ、実行されている必要があります。
 - TDE に使用する Azure Key Vault とキーを作成します。
-  - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-hsm-protected-keys.md)
+  - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/keys/hsm-protected-keys.md)
     - TDE に使用するには、キー コンテナーに次のプロパティが必要です。
-  - [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)と消去保護
+  - [論理的な削除](../key-vault/general/overview-soft-delete.md)と消去保護
 - TDE に使用するには、キーに次の属性が必要です。
    - 有効期限がない
    - 無効化されていない
@@ -40,7 +40,7 @@ ms.locfileid: "80067184"
 
 Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。 具体的なコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。
 
-Key Vault の詳細については、「[PowerShell を使用した Key Vault の操作](../key-vault/quick-create-powershell.md)」と「[PowerShell で Key Vault の論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-powershell.md)」を参照してください。
+Key Vault の詳細については、「[PowerShell を使用した Key Vault の操作](../key-vault/secrets/quick-create-powershell.md)」と「[PowerShell で Key Vault の論理的な削除を使用する方法](../key-vault/general/soft-delete-powershell.md)」を参照してください。
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 必要な Command-Line Interface バージョン 2.0 移行をインストールして Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
-Key Vault の詳細については、「[CLI 2.0 を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli2.md)」と「[CLI で Key Vault の論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-cli.md)」を参照してください。
+Key Vault の詳細については、「[CLI 2.0 を使用した Key Vault の管理](../key-vault/general/manage-with-cli2.md)」と「[CLI で Key Vault の論理的な削除を使用する方法](../key-vault/general/soft-delete-cli.md)」を参照してください。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD ID をサーバーに割り当てる
 

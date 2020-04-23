@@ -3,16 +3,16 @@ title: Key Vault のシークレットとテンプレート
 description: デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460196"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458268"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
-お使いのテンプレートやパラメーター ファイルに安全な値 (パスワードなど) を直接入れる代わりに、デプロイ時に、[Azure Key Vault](../../key-vault/key-vault-overview.md) から値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションにあってもかまいません。
+お使いのテンプレートやパラメーター ファイルに安全な値 (パスワードなど) を直接入れる代わりに、デプロイ時に、[Azure Key Vault](../../key-vault/general/overview.md) から値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションにあってもかまいません。
 
 この記事では、テンプレート パラメーターとして機密性の高い値を渡すシナリオに焦点を当てます。 仮想マシンのプロパティをキー コンテナーの証明書の URL に設定するシナリオについては取り上げていません。 そのシナリオのクイックスタート テンプレートについては、[Azure Key Vault から証明書を仮想マシンにインストールする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)方法に関する記事を参照してください。
 
@@ -91,11 +91,11 @@ Set-AzKeyVaultAccessPolicy `
 
 キー コンテナーの作成とシークレットの追加の詳細については、次を参照してください。
 
-- [CLI を使用したシークレットの設定と取得](../../key-vault/quick-create-cli.md)
-- [PowerShell を使用したシークレットの設定と取得](../../key-vault/quick-create-powershell.md)
-- [ポータルを使用したシークレットの設定と取得](../../key-vault/quick-create-portal.md)
-- [.NET を使用したシークレットの設定と取得](../../key-vault/quick-create-net.md)
-- [Node.js を使用したシークレットの設定と取得](../../key-vault/quick-create-node.md)
+- [CLI を使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-cli.md)
+- [PowerShell を使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-powershell.md)
+- [ポータルを使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-portal.md)
+- [.NET を使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-net.md)
+- [Node.js を使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>シークレットへのアクセスを許可する
 
@@ -375,5 +375,5 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>次のステップ
 
-- キー コンテナーの一般的な情報については、「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」をご覧ください。
+- キー コンテナーの一般的な情報については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
 - キー シークレットの詳細な参照例については、 [Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。

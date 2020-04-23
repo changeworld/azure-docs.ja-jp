@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5749b2fc58c4e1c5c75142f85a5132946714e25b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77473203"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457435"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>カスタマー マネージド キーを使用して App Configuration データを暗号化する
 Azure App Configuration では、[保存されている機密情報を暗号化](../security/fundamentals/encryption-atrest.md)します。 カスタマー マネージド キーを使用すると、暗号化キーを管理できるため、データ保護が強化されます。  マネージド キー暗号化が使用されている場合、App Configuration 内のすべての機密情報が、ユーザー指定の Azure Key Vault キーで暗号化されます。  これにより、必要に応じて暗号化キーを交換することができます。  また、App Configuration インスタンスのキーへのアクセスを取り消すことによって、機密情報への Azure App Configuration のアクセスを取り消すことができます。
@@ -20,7 +20,7 @@ Azure App Configuration では、[保存されている機密情報を暗号化]
 Azure App Configuration では、Microsoft によって提供される 256 ビットの AES 暗号化キーを使用して、保存されている機密情報を暗号化します。 すべての App Configuration インスタンスには、サービスによって管理され、機密情報を暗号化するために使用される独自の暗号化キーがあります。 機密情報には、キーと値のペアで検出された値が含まれます。  カスタマー マネージド キーの機能が有効になっている場合、App Configuration では、App Configuration インスタンスに割り当てられたマネージド ID を使用して Azure Active Directory で認証を行います。 その後、マネージド ID で Azure Key Vault が呼び出され、App Configuration インスタンスの暗号化キーがラップされます。 ラップされた暗号化キーはその後、格納され、ラップされていない暗号化キーは App Configuration 内に 1 時間キャッシュされます。 App Configuration では、ラップされていないバージョンの App Configuration インスタンスの暗号化キーが 1 時間ごとに更新されます。 これにより、通常の運用条件下の可用性が保証されます。 
 
 >[!IMPORTANT]
-> App Configuration インスタンスに割り当てられた ID でインスタンスの暗号化キーのラップを解除することが承認されなくなった場合、またはマネージド キーが完全に削除されている場合は、App Configuration インスタンスに格納されている機密情報の暗号化を解除できなくなります。 Azure Key Vault の[論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)機能を使用すると、暗号化キーを誤って削除する可能性が少なくなります。
+> App Configuration インスタンスに割り当てられた ID でインスタンスの暗号化キーのラップを解除することが承認されなくなった場合、またはマネージド キーが完全に削除されている場合は、App Configuration インスタンスに格納されている機密情報の暗号化を解除できなくなります。 Azure Key Vault の[論理的な削除](../key-vault/general/overview-soft-delete.md)機能を使用すると、暗号化キーを誤って削除する可能性が少なくなります。
 
 ユーザーは、Azure App Configuration インスタンスでマネージド キー機能を有効にした場合、機密情報にアクセスするサービスの機能を制御することができます。 マネージド キーはルート暗号化キーとして機能します。 ユーザーは、キー コンテナーのアクセス ポリシーを変更することで、App Configuration インスタンスのマネージド キーへのアクセスを取り消すことができます。 このアクセスが取り消されると、App Configuration では 1 時間以内にユーザー データの暗号化を解除できなくなります。 この時点で、App Configuration インスタンスではすべてのアクセス試行を禁止します。 この状況は、もう一度サービスにマネージド キーへのアクセスを許可することで回復できます。  1 時間以内に、App Configuration ではユーザー データの暗号化を解除し、通常の条件下で動作できるようになります。
 

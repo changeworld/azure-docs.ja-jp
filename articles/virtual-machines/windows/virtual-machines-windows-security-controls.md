@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569c989e8876bb7213d1469c7a70da99aa0b1e9c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190562"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455344"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows Virtual Machines のセキュリティ コントロール
 
@@ -50,7 +50,7 @@ ms.locfileid: "77190562"
 
 | セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
-| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | 「[Windows VM の仮想ディスクを暗号化する](/azure/virtual-machines/windows/encrypt-disks)」を参照してください。 |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | 「[Windows VM の仮想ディスクを暗号化する](/azure/virtual-machines/windows/disk-encryption-overview)」を参照してください。 |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Virtual Machines では、[ExpressRoute](/azure/expressroute) と VNet の暗号化がサポートされています。 「[VM での転送中の暗号化](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。 |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい | カスタマー マネージド キーは、サポートされている Azure の暗号化シナリオです。「[Azure の暗号化の概要](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。|
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |

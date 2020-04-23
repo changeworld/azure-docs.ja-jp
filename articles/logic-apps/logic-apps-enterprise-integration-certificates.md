@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191382"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450142"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>証明書を使用して B2B メッセージのセキュリティを強化する
 
@@ -66,7 +66,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 > [!NOTE]
 > プライベート証明書の場合、メッセージの署名と暗号化のために [AS2 契約](logic-apps-enterprise-integration-as2.md)の**送信と受信**の設定に表示される、対応するパブリック証明書を追加する必要があります。
 
-1. [Azure Key Vault に秘密キーを追加](../key-vault/certificate-scenarios.md#import-a-certificate)し、 **[キー名]** を指定します。
+1. [Azure Key Vault に秘密キーを追加](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)し、 **[キー名]** を指定します。
    
 2. Azure Logic Apps が Azure Key Vault で操作を実行することを承認します。 Logic Apps サービス プリンシパルへのアクセスを許可するには、次の例のように、PowerShell コマンド [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) を使います。
 

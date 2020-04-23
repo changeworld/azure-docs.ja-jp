@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターを作成する
 description: Azure で Azure Resource Manager を使用してセキュリティで保護された Service Fabric クラスターを設定する方法について説明します。  既定のテンプレートを使用して、または独自のクラスター テンプレートを使用して、クラスターを作成することができます。
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624127"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458302"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
@@ -251,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>キー コンテナーにアップロードされたシークレットへのポインターを使用する
 
-既存のキー コンテナーを使用するには、コンピューティング リソース プロバイダーがキー コンテナーから証明書を取得し、クラスター ノードにインストールできるように、キー コンテナーで[展開を有効にする](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI)必要があります。
+既存のキー コンテナーを使用するには、コンピューティング リソース プロバイダーがキー コンテナーから証明書を取得し、クラスター ノードにインストールできるように、キー コンテナーで[展開を有効にする](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI)必要があります。
 
 PowerShell を使用してクラスターを展開します。
 

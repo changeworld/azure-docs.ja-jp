@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066493"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460072"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンのファイルをバックアップおよび復元する
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンのファイルをバックアップおよび復元する
 
 データは、定期的にバックアップすることで保護することができます。 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体を復元するか、特定のファイルを復元することができます。 この記事では、nginx を実行する Linux VM に単一のファイルを復元する方法について説明します。 まだ使用する VM がない場合は、[Linux のクイック スタート](quick-create-cli.md)を使用して作成してください。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -43,7 +42,7 @@ Azure Backup サービスによってバックアップが開始されると、�
 ## <a name="create-a-backup"></a>バックアップの作成
 Recovery Services コンテナーに対するバックアップを 1 日 1 回のスケジュールで作成します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューから **[仮想マシン]** を選択します。 
 3. バックアップする VM を一覧から選択します。
 4. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
@@ -94,8 +93,8 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 7. 一覧から VM を選択します。
 8. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップ]** ブレードが開きます。 
 9. ブレード上部のメニューで **[ファイルの回復]** を選択します。 **[ファイルの回復]** ブレードが開きます。
-10. **[ステップ 1: 回復ポイントを選択する]** で、ドロップダウンから復旧ポイントを選択します。
-11. **[ステップ 2: ファイルを参照および回復するためのスクリプトをダウンロードする]** の **[実行可能ファイルのダウンロード]** ボタンをクリックします。 ダウンロードしたファイルをローカル コンピューターに保存します。
+10. **[ステップ 1:回復ポイントを選択する]** で、ドロップダウンから復旧ポイントを選択します。
+11. **[ステップ 2:ファイルを参照および回復するためのスクリプトをダウンロードする]** の **[実行可能ファイルのダウンロード]** をクリックします。 ダウンロードしたファイルをローカル コンピューターに保存します。
 7. **[スクリプトのダウンロード]** をクリックして、スクリプト ファイルをローカルにダウンロードします。
 8. Bash プロンプトを開いて以下のように入力します。*Linux_myVM_05-05-2017.sh* は実際にダウンロードしたスクリプトのパスとファイル名に、*azureuser* は VM のユーザー名に、*13.69.75.209* は VM のパブリック IP アドレスに置き換えてください。
     
@@ -156,7 +155,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
     ![nginx の既定の Web ページ](./media/tutorial-backup-vms/nginx-working.png)
 
-18. ローカル コンピューターで Azure Portal のブラウザー タブに移動し、 **[ステップ 3: 回復後にディスクのマウントを解除する]** の **[ディスクのマウント解除]** ボタンをクリックします。 この手順を実行するのを忘れた場合、12 時間後にマウント ポイントへの接続が自動的に解除されます。 12 時間が経過した後、新しいマウント ポイントを作成するには、新しいスクリプトをダウンロードする必要があります。
+18. ローカル コンピューターで Azure portal のブラウザー タブに戻り、 **[ステップ 3:回復後にディスクのマウントを解除する]** の **[ディスクのマウント解除]** をクリックします。 この手順を実行するのを忘れた場合、12 時間後にマウント ポイントへの接続が自動的に解除されます。 12 時間が経過した後、新しいマウント ポイントを作成するには、新しいスクリプトをダウンロードする必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ

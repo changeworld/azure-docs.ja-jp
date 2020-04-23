@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: acf3e6273f98d98d5da55cfb5b044677116c44dc
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9d1e89919647d9d94b287618da2f9a77278425a5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520805"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459085"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL のデータ暗号化
 
@@ -22,13 +22,13 @@ Azure portal を使用して Azure Database for MySQL のデータ暗号化を�
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
 * Azure Key Vault で、カスタマー マネージド キーに使用する Key Vault とキーを作成します。
 * カスタマー マネージド キーとして使用するには、Key Vault に次のプロパティが必要です。
-  * [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)
+  * [論理的な削除](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [消去保護](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+  * [消去保護](../key-vault/general/overview-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

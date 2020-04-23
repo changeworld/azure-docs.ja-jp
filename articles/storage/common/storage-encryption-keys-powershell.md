@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f24c89a53af5e618d64b78d6001040190c1f339c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618346"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456398"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>PowerShell を使用して Azure Key Vault でカスタマー マネージド キーを構成する
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-この記事では、PowerShell を使用するカスタマー マネージド キーでAzure Key Vault を構成する方法を説明します。 Azure CLI を使用してキー コンテナーを作成する方法を学習するには、「[クイック スタート: PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-powershell.md)」を参照してください。
+この記事では、PowerShell を使用するカスタマー マネージド キーでAzure Key Vault を構成する方法を説明します。 Azure CLI を使用してキー コンテナーを作成する方法を学習するには、「[クイック スタート: PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-powershell.md)」を参照してください。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>ストレージ アカウントに ID を割り当てる
 
@@ -51,7 +51,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-PowerShell を使用して既存のキー コンテナーで **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** を有効にする方法については、[PowerShell で論理的な削除を使用する方法](../../key-vault/key-vault-soft-delete-powershell.md)に関する記事の「**論理的な削除を有効にする**」および「**消去保護を有効にする**」を参照してください。
+PowerShell を使用して既存のキー コンテナーで **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** を有効にする方法については、[PowerShell で論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)に関する記事の「**論理的な削除を有効にする**」および「**消去保護を有効にする**」を参照してください。
 
 ## <a name="configure-the-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを構成する
 

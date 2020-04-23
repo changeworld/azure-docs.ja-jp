@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea944d4cfa3006c33f1dee3dd8e6ee6088681aa7
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 796e3b3f46bc83b776826baf6e078c696eda543b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618646"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456773"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Azure CLI を使用して Azure Key Vault でカスタマー マネージド キーを構成する
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-この記事では、Azure CLI を使用して、カスタマー マネージド キーを使用する Azure Key Vault を構成する方法について説明します。 Azure CLI を使用してキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-cli.md)」を参照してください。
+この記事では、Azure CLI を使用して、カスタマー マネージド キーを使用する Azure Key Vault を構成する方法について説明します。 Azure CLI を使用してキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-cli.md)」を参照してください。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>ストレージ アカウントに ID を割り当てる
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Azure CLI を使用して既存のキー コンテナーで **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** を有効にする方法については、[CLI で論理的な削除を使用する方法](../../key-vault/key-vault-soft-delete-cli.md)に関する記事の「**論理的な削除を有効にする**」および「**消去保護を有効にする**」を参照してください。
+Azure CLI を使用して既存のキー コンテナーで **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** を有効にする方法については、[CLI で論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)に関する記事の「**論理的な削除を有効にする**」および「**消去保護を有効にする**」を参照してください。
 
 ## <a name="configure-the-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを構成する
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411142"
+ms.locfileid: "81450034"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 
@@ -23,7 +23,7 @@ Azure Cosmos アカウントに格納されているデータは、Microsoft が
 
 ![顧客データに関する暗号化のレイヤー](./media/how-to-setup-cmk/cmk-intro.png)
 
-カスタマー マネージド キーは [Azure Key Vault](../key-vault/key-vault-overview.md) に格納し、カスタマー マネージド キーが有効になっている Azure Cosmos アカウントごとにキーを指定する必要があります。 このキーは、そのアカウントに格納されているすべてのデータを暗号化するために使用されます。
+カスタマー マネージド キーは [Azure Key Vault](../key-vault/general/overview.md) に格納し、カスタマー マネージド キーが有効になっている Azure Cosmos アカウントごとにキーを指定する必要があります。 このキーは、そのアカウントに格納されているすべてのデータを暗号化するために使用されます。
 
 > [!NOTE]
 > 現在、カスタマー マネージド キーは新しい Azure Cosmos アカウントでのみ使用できます。 これらは、アカウントの作成時に構成します。
@@ -44,8 +44,8 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
 既存の Azure Key Vault インスタンスでこれらのプロパティを有効にする方法については、次のいずれかの記事の「論理的な削除を有効にする」と「消去保護を有効にする」のセクションを参照してください。
 
-- [PowerShell で論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-powershell.md)
-- [Azure CLI で論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-cli.md)
+- [PowerShell で論理的な削除を使用する方法](../key-vault/general/soft-delete-powershell.md)
+- [Azure CLI で論理的な削除を使用する方法](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Azure Key Vault インスタンスにアクセス ポリシーを追加する
 

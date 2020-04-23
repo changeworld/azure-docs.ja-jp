@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 572147ca43e9a4dea9d9601dfa1dac8ba1c97ed0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083543"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458234"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct ポートで MACsec を構成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "74083543"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    キー コンテナーまたはリソース グループが既にある場合、それを再利用できます。 ただし、既存のキー コンテナーで [**soft-delete** 機能](../key-vault/key-vault-ovw-soft-delete.md)を有効にすることが非常に重要です。 soft-delete が有効になっていない場合は、次のコマンドを使用して有効にできます。
+    キー コンテナーまたはリソース グループが既にある場合、それを再利用できます。 ただし、既存のキー コンテナーで [**soft-delete** 機能](../key-vault/general/overview-soft-delete.md)を有効にすることが非常に重要です。 soft-delete が有効になっていない場合は、次のコマンドを使用して有効にできます。
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

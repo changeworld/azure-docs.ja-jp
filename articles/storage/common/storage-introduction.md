@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1cc047ee60cf8287f32a42b878371c5fc9680b7a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985747"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456347"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>コア Azure Storage サービスの概要
 
@@ -131,7 +131,7 @@ Azure Storage のクライアント ライブラリには、クライアント �
 
 ## <a name="redundancy"></a>冗長性
 
-データの持続性を確保するために、Azure Storage はデータの複数のコピーを格納します。 冗長性オプションは、ストレージ アカウントを設定するときに選択します。 詳細については、「[Azure Storage の冗長性](/storage-redundancy?toc=/azure/storage/blobs/toc.json)」をご覧ください。
+データの持続性を確保するために、Azure Storage はデータの複数のコピーを格納します。 冗長性オプションは、ストレージ アカウントを設定するときに選択します。 詳細については、「[Azure Storage の冗長性](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json)」をご覧ください。
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>Azure Storage との間でデータを転送する
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73838702"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459034"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -276,7 +276,7 @@ Azure portal を使用してストレージ アカウントを削除するには
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-新しいストレージ アカウントを含め、リソース グループとそれに関連付けられているリソースを削除するには、[Remove-AzStorageAccount](/powershell/module/az.resources/remove-azstorageaccount) コマンドを使用します。
+新しいストレージ アカウントを含め、リソース グループとそれに関連付けられているリソースを削除するには、[Remove-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) コマンドを使用します。
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount

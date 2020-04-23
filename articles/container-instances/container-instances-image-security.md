@@ -4,12 +4,12 @@ description: Azure Container Instances のイメージとシークレットを�
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76260499"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457996"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
@@ -37,7 +37,7 @@ ms.locfileid: "76260499"
 
 ### <a name="protect-credentials"></a>資格情報を保護する
 
-コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最低限の特権を設定する[ロールベースのアクセス制御](../role-based-access-control/overview.md)が含まれていることを確認します。 [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
+コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最低限の特権を設定する[ロールベースのアクセス制御](../role-based-access-control/overview.md)が含まれていることを確認します。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>コンテナー エコシステムに関する考慮事項
 

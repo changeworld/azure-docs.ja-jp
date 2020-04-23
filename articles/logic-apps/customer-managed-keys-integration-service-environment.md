@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127634"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458439"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
 Azure Logic Apps は Azure Storage を利用して、データを格納し、自動的に[保存データを暗号化](../storage/common/storage-service-encryption.md)します。 この暗号化によってデータが保護され、組織のセキュリティとコンプライアンスの要件を満たすことができます。 既定では、Azure Storage は Microsoft マネージド キーを使用してデータを暗号化します。 Azure Storage の暗号化の仕組みについて詳しくは、「[保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)」と「[Azure Data Encryption-at-Rest](../security/fundamentals/encryption-atrest.md)」を参照してください。
 
-ロジック アプリをホストするための[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成し、Azure Storage で使用される暗号化キーをより詳細に制御したい場合は、[Azure Key Vault](../key-vault/key-vault-overview.md) を使用して、独自のキーを設定、使用、管理することができます。 この機能は "Bring Your Own Key" (BYOK) とも呼ばれ、キーは "カスタマー マネージド キー" と呼ばれます。
+ロジック アプリをホストするための[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成し、Azure Storage で使用される暗号化キーをより詳細に制御したい場合は、[Azure Key Vault](../key-vault/general/overview.md) を使用して、独自のキーを設定、使用、管理することができます。 この機能は "Bring Your Own Key" (BYOK) とも呼ばれ、キーは "カスタマー マネージド キー" と呼ばれます。
 
 このトピックでは、Logic Apps REST API を使って ISE を作成するときに使用する、独自の暗号化キーを設定および指定する方法を示します。 Logic Apps REST API で ISE を作成する一般的な手順については、「[Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する](../logic-apps/create-integration-service-environment-rest-api.md)」を参照してください。
 
@@ -39,7 +39,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** プロパティが有効になっている Azure キー コンテナー。
 
-  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/key-vault-ovw-soft-delete.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/quick-create-portal.md#create-a-vault)を確認してください。
+  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/overview-soft-delete.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md#create-a-vault)を確認してください。
 
 * キー コンテナーで、次のプロパティ値を使用して作成されたキー。
 
@@ -225,8 +225,8 @@ ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に�
 
    1. **[アクセス ポリシー]** ペインでの作業が終了したら、 **[保存]** を選択します。
 
-詳細については、「[マネージド ID で Key Vault の認証を提供する](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault)」を参照してください。
+詳細については、「[マネージド ID で Key Vault の認証を提供する](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Key Vault](../key-vault/key-vault-overview.md) の詳細を確認する
+* [Azure Key Vault](../key-vault/general/overview.md) の詳細を確認する

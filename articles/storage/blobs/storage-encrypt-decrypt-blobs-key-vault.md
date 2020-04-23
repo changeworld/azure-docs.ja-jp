@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 3f4f1f5e163dfed9f356aed538d934d0e4258790
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618880"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456891"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 
@@ -23,7 +23,7 @@ ms.locfileid: "80618880"
 
 **推定所要時間:** 20 分
 
-Azure Key Vault の概要については、「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」をご覧ください。
+Azure Key Vault の概要については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
 
 Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 
@@ -48,7 +48,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault のセットアップ
 
-このチュートリアルを続けるために実行する必要のある手順の概要が、チュートリアル「[クイックスタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-net.md)」で説明されています。
+このチュートリアルを続けるために実行する必要のある手順の概要が、チュートリアル「[クイックスタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-net.md)」で説明されています。
 
 * Key Vault を作成します。
 * キーやシークレットを Key Vault に追加します。
