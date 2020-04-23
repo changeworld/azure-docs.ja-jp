@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:イマーシブ リーダーを起動する iOS アプリを作成する (Swift)
+title: クイック スタート:Immersive Reader を起動する iOS アプリを作成する (Swift)
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、iOS アプリを一から作成してイマーシブ リーダー機能を追加します。
+description: このクイックスタートでは、iOS アプリを一から作成して Immersive Reader 機能を追加します。
 author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
@@ -15,18 +15,18 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841611"
 ---
-# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>クイック スタート:イマーシブ リーダーを起動する iOS アプリを作成する (Swift)
+# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>クイック スタート:Immersive Reader を起動する iOS アプリを作成する (Swift)
 
-[イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
+[Immersive Reader](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
-このクイックスタートでは、iOS アプリを一から作成してイマーシブ リーダーを統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)で入手できます。
+このクイックスタートでは、iOS アプリを一から作成して Immersive Reader を統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)で入手できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 サンプル プロジェクトのプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* Azure Active Directory 認証用に構成された Immersive Reader リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 サンプル プロジェクトのプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 
 ## <a name="create-an-xcode-project"></a>Xcode プロジェクトを作成する
 
@@ -48,7 +48,7 @@ Xcode で新しいプロジェクトを作成します。
 
 ![スキームの編集](./media/ios/quickstart-ios-env-vars.png)
 
-**[環境変数]** セクションで、以下の名前と変数を追加し、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
+**[環境変数]** セクションで、以下の名前と変数を追加し、Immersive Reader リソースを作成したときに取得した値を指定します。
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -568,10 +568,10 @@ Xcode で、**Ctrl + R** キーを押すか再生ボタンをクリックして�
 
 ![サンプル アプリ](./media/ios/sample-app-ipad.png)
 
-**[Immersive Reader]** ボタンをクリックすると、イマーシブ リーダーが起動し、アプリのコンテンツが表示されます。
+**[Immersive Reader]** ボタンをクリックすると、Immersive Reader が起動し、アプリのコンテンツが表示されます。
 
 ![Immersive Reader](./media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [イマーシブ リーダー SDK リファレンス](./reference.md)を参照する
+* [Immersive Reader SDK リファレンス](./reference.md)を参照する
