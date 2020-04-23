@@ -1,26 +1,18 @@
 ---
 title: アプリの計画 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 関連するアプリの意図とエンティティについて概説し、Language Understanding Intelligent Service (LUIS) でアプリケーション プランを作成します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.author: diberry
-ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74326778"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382306"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>サブジェクト ドメインとデータ抽出を使用して LUIS アプリ スキーマを計画する
 
-LUIS アプリ スキーマには、サブジェクト [ドメイン](luis-glossary.md#intent)に関連する[意図](luis-glossary.md#entity)と[エンティティ](luis-glossary.md#domain)が含まれています。 [意図](luis-glossary.md#utterance)はユーザーの発話を分類し、エンティティはユーザー発話からデータを抽出します。
+LUIS アプリ スキーマには、サブジェクト [ドメイン](luis-glossary.md#domain)に関連する[意図](luis-glossary.md#intent)と[エンティティ](luis-glossary.md#entity)が含まれています。 [意図](luis-glossary.md#utterance)はユーザーの発話を分類し、エンティティはユーザー発話からデータを抽出します。
 
 ## <a name="identify-your-domain"></a>ドメインの特定
 
@@ -44,7 +36,7 @@ LUIS アプリはサブジェクト ドメインが中心です。 たとえば�
 
 ## <a name="create-example-utterances-for-each-intent"></a>各意図の発話の例の作成
 
-最初は、各意図に多くの発話を作成しないようにします。 意図を特定したら、意図ごとに 15 個から 30 個の発話の例を作成します。 各発話は、以前に提供された発話とは異なる必要があります。 全体の単語数、単語の選択、動詞の時制、句読点など、発話に多様性を持たせることをお勧めします。
+最初は、各意図に多くの発話を作成しないようにします。 意図を特定したら、意図ごとに 15 個から 30 個の発話の例を作成します。 各発話は、以前に提供された発話とは異なる必要があります。 全体の単語数、単語の選択、動詞の時制、[句読点](luis-reference-application-settings.md#punctuation-normalization)など、発話に多様性を持たせることをお勧めします。
 
 詳細については、[LUIS アプリに適した発話の概要](luis-concept-utterance.md)に関する記事を参照してください。
 

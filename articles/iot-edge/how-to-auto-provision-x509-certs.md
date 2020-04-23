@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 03/06/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d5e968e578428a16a0005149a409986015a1fc5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668614"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393754"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -44,6 +44,12 @@ X.509 証明書を構成証明メカニズムとして使用することは、�
 デバイス ID 証明書は、IoT Edge デバイスのプロビジョニングと、Azure IoT Hub でのデバイス認証を行うためにのみ使用されます。 証明書に署名するためのものではありません (IoT Edge デバイスから確認のためにモジュールまたはリーフ デバイスに提示される CA 証明書とは異なります)。 詳細については、[Azure IoT Edge 証明書の使用方法に関する詳細](iot-edge-certs.md)のページを参照してください。
 
 デバイス ID 証明書を作成すると、2 つのファイルができます。証明書の公開部分を含む .cer または pem ファイルと、証明書の秘密キーを含む .cer または pem ファイルです。 DPS でグループ登録を使用する予定がある場合は、同じ信頼する証明書チェーン内にある中間証明書またはルート CA 証明書の公開部分も必要です。
+
+X.509 を使用して自動プロビジョニングを設定するには、次のファイルが必要です。
+
+* デバイス ID 証明書とその秘密キー証明書。 個別登録を作成すると、デバイス ID 証明書が DPS にアップロードされます。 秘密キーは IoT Edge ランタイムに渡されます。
+* 完全なチェーン証明書。少なくともデバイス ID と中間証明書が含まれている必要があります。 完全なチェーン証明書は IoT Edge ランタイムに渡されます。
+* 信頼する証明書チェーンからの中間証明書またはルート CA 証明書。 グループ登録を作成すると、この証明書は DPS にアップロードされます。
 
 ### <a name="use-test-certificates"></a>テスト証明書を使用する
 
@@ -86,7 +92,7 @@ Device Provisioning Service での登録の詳細については、[デバイス
 
    * **[プライマリ証明書の .pem ファイルまたは .cer ファイル]** : デバイス ID 証明書からパブリック ファイルをアップロードします。 スクリプトを使用してテスト証明書を生成した場合は、次のファイルを選択します。
 
-      `<WRKDIR>/certs/iot-edge-device-identity-<name>-full-chain.cert.pem`
+      `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
    * **[IoT Hub のデバイス ID]** : 必要に応じて、デバイス ID を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しない場合は、X.509 証明書内の共通名 (CN) が使用されます。
 
@@ -205,7 +211,7 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
 デバイスをプロビジョニングする際には、次の情報が必要になります。
 
 * DPS の **ID スコープ**値。 Azure portal で、使用している DPS インスタンスの概要ページから、この値を取得できます。
-* デバイス上のデバイス ID 証明書ファイル。
+* デバイス上のデバイス ID 証明書チェーン ファイル。
 * デバイス上のデバイス ID キー ファイル。
 * オプションの登録 ID (指定しない場合、デバイス ID 証明書内の共通名から取得されます)。
 
@@ -217,7 +223,7 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
 
 X.509 証明書とキー情報を config.yaml ファイルに追加する場合、パスはファイル URI として指定する必要があります。 次に例を示します。
 
-* `file:///<path>/identity_certificate.pem`
+* `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
 
 構成ファイル内の X.509 自動プロビジョニングに関するセクションは、次のようになります。
@@ -235,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-`scope_id`、`identity_cert`、`identity_pk` のプレースホルダー値を、使用している DPS インスタンスのスコープ ID と、デバイス上の証明書およびキー ファイルの場所を表す URI に置き換えます。 必要に応じてデバイスの `registration_id` を指定するか、この行をコメントアウトして、デバイスを ID 証明書の CN 名で登録します。
+`scope_id`、`identity_cert`、`identity_pk` のプレースホルダー値を、使用している DPS インスタンスのスコープ ID と、デバイス上の証明書チェーンおよびキー ファイルの場所を表す URI に置き換えます。 必要に応じてデバイスの `registration_id` を指定するか、この行をコメントアウトして、デバイスを ID 証明書の CN 名で登録します。
 
 config.yaml ファイルを更新した後は、必ずセキュリティ デーモンを再起動します。
 
@@ -245,7 +251,7 @@ sudo systemctl restart iotedge
 
 ### <a name="windows-device"></a>Windows デバイス
 
-ID 証明書と ID キーを生成したデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムを、手動プロビジョニングではなく、自動プロビジョニング用に構成します。
+ID 証明書チェーンと ID キーを生成したデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムを、手動プロビジョニングではなく、自動プロビジョニング用に構成します。
 
 Windows での IoT Edge のインストールの詳細については、コンテナーの管理や IoT Edge の更新などのタスクに関する前提条件や手順を含めて、「[Windows に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-windows.md)」を参照してください。
 
@@ -262,11 +268,11 @@ Windows での IoT Edge のインストールの詳細については、コン�
 
 1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 自動プロビジョニングを使用するために `-Dps` フラグを使用する場合を除き、このコマンドでは、手動プロビジョニングが既定で設定されます。
 
-   `{scope_id}`、`{identity cert path}`、`{identity key path}` のプレースホルダー値を、使用している DPS インスタンスの適切な値およびデバイス上のファイル パスに置き換えます。 登録 ID を指定する場合は、`-RegistrationId {registration_id}` も含めて、プレースホルダーを適宜置き換えます。
+   `{scope_id}`、`{identity cert chain path}`、`{identity key path}` のプレースホルダー値を、使用している DPS インスタンスの適切な値およびデバイス上のファイル パスに置き換えます。 登録 ID を指定する場合は、`-RegistrationId {registration_id}` も含めて、プレースホルダーを適宜置き換えます。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399303"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991264"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -33,9 +33,10 @@ Reporting API は、 [OAuth](https://docs.microsoft.com/azure/api-management/api
 レポート API へのアクセスを準備するには、次が必要です。
 
 1. [ロールの割り当て](#assign-roles)
-2. [アプリケーションを登録する](#register-an-application)
-3. [アクセス許可を付与する](#grant-permissions)
-4. [構成設定を収集する](#gather-configuration-settings)
+2. [ライセンスの要件](#license-requirements)
+3. [アプリケーションを登録する](#register-an-application)
+4. [アクセス許可を付与する](#grant-permissions)
+5. [構成設定を収集する](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>ロールを割り当てる
 
@@ -46,6 +47,10 @@ API を介してレポート データにアクセスするには、次のいず
 - セキュリティ管理者
 
 - グローバル管理者
+
+## <a name="license-requirements"></a>ライセンスの要件
+
+テナントのサインイン レポートにアクセスするには、Azure AD テナントに Azure AD Premium ライセンスが関連付けられている必要があります。 任意の Azure AD テナントのサインイン レポートにアクセスするには Azure AD Premium P1 (以上) のライセンスが必要です。 また、ディレクトリ タイプが Azure AD B2C の場合は、追加のライセンス要件なしで、API を使用してサインイン レポートにアクセスできます。 
 
 
 ## <a name="register-an-application"></a>アプリケーションを登録する

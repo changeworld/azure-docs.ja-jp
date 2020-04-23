@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 940b49d29707a55bc5d63d6f49cdef19ba3f28e5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c08b99b0449608309b42e51c0ffb8d4b71a0621f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045725"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085334"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB のアプリを構築する
 
@@ -132,7 +132,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 Cosmos DB アカウントが作成されると、Azure CLI によって次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "consistencyPolicy":
   {
@@ -141,12 +141,12 @@ Cosmos DB アカウントが作成されると、Azure CLI によって次の例
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb-name>.documents.azure.com:443/",
+  "documentEndpoint": "https://&lt;cosmosdb-name&gt;.documents.azure.com:443/",
   "failoverPolicies":
   ...
-  < Output truncated for readability >
+  &lt; Output truncated for readability &gt;
 }
-```
+</pre>
 
 ## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して構成されたアプリを運用データベースに接続する
 
@@ -162,14 +162,14 @@ az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
 
 Azure CLI によって次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "primaryMasterKey": "RS4CmUwzGRASJPMoc0kiEvdnKmxyRILC9BWisAYh3Hq4zBYKr0XQiSE4pqx3UchBeO4QRCzUt1i7w0rOkitoJw==",
   "primaryReadonlyMasterKey": "HvitsjIYz8TwRmIuPEUAALRwqgKOzJUjW22wPL2U8zoMVhGvregBkBk9LdMTxqBgDETSq7obbwZtdeFY7hElTg==",
   "secondaryMasterKey": "Lu9aeZTiXU4PjuuyGBbvS1N9IRG3oegIrIh95U6VOstf9bJiiIpw3IfwSUgQWSEYM3VeEyrhHJ4rn3Ci0vuFqA==",
   "secondaryReadonlyMasterKey": "LpsCicpVZqHRy7qbMgrzbRKjbYCwCKPQRl0QpgReAOxMcggTvxJFA94fTi0oQ7xtxpftTJcXkjTirQ0pT7QFrQ=="
 }
-```
+</pre>
 
 `primaryMasterKey` の値をコピーします。 この情報は、次の手順に必要です。
 
@@ -271,7 +271,7 @@ db: {
 
 [!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
@@ -287,9 +287,9 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app-name>.scm.azurewebsites.net/<app-name>.git
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
  * [new branch]      master -> master
-```
+</pre>
 
 デプロイ プロセスにより、`npm install` の後、[Gulp](https://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。
 

@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387650"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115381"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Azure SQL Database で一般的なセキュリティ要件を解決するためのプレイブック
 
@@ -89,14 +89,14 @@ ID の中央管理には、次のような利点があります。
 
 - Azure AD テナントを作成し、人間のユーザーを表す[ユーザーを作成](../active-directory/fundamentals/add-users-azure-active-directory.md)し、アプリ、サービス、自動化ツールを表す[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)を作成します。 サービス プリンシパルは、Windows および Linux でのサービス アカウントに相当します。 
 
-- グループ割り当てを使用して Azure AD プリンシパルにリソースへのアクセス権を割り当てます。Azure AD グループを作成し、グループにアクセス権を付与し、個々のメンバーをグループに追加します。 データベースに、Azure AD グループをマップする包含データベース ユーザーを作成します。 データベース内のアクセス許可を割り当てるには、適切なアクセス許可があるデータベース ロールをユーザーに付与します。
+- グループ割り当てを使用して Azure AD プリンシパルにリソースへのアクセス権を割り当てます。Azure AD グループを作成し、グループにアクセス権を付与し、個々のメンバーをグループに追加します。 データベースに、Azure AD グループをマップする包含データベース ユーザーを作成します。 データベース内のアクセス許可を割り当てるには、適切なアクセス許可があるデータベース ロールを、Azure AD グループに関連付けられているユーザーに付与します。
   - 「[SQL による Azure Active Directory 認証の構成と管理](sql-database-aad-authentication-configure.md)」と[Azure AD を使用した SQL の認証](sql-database-aad-authentication.md)に関する記事を参照してください。
   > [!NOTE]
   > マネージド インスタンスでは、マスター データベースの Azure AD プリンシパルにマップされるログインを作成することもできます。 「[CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
 
 - Azure AD グループを使用するとアクセス許可の管理が簡素化され、グループ所有者とリソース所有者の両方が、グループへのメンバーの追加またはグループからのメンバーの削除を行うことができます。 
 
-- SQL DB サーバーの Azure AD 管理者用に別のグループを作成します。
+- 各 SQL DB サーバーの Azure AD 管理者用に別のグループを作成します。
 
   - 「[Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)」という記事を参照してください。
 
@@ -213,7 +213,7 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
 
 ## <a name="access-management"></a>アクセス管理
 
-アクセス管理とは、承認されたユーザーの Azure SQL Database へのアクセス権と特権を制御および管理するプロセスです。
+アクセス管理 (承認) とは、承認されたユーザーの Azure SQL Database へのアクセス権と特権を制御および管理するプロセスです。
 
 ### <a name="implement-principle-of-least-privilege"></a>最小特権の原則を実装する
 
@@ -225,7 +225,7 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
 
 必要なタスクを完了するのに必要な[アクセス許可](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)のみを割り当てます。
 
-- SQL データ プレーンの場合: 
+- SQL データベースの場合: 
     - 粒度の細かいアクセス許可とユーザー定義データベース ロール (MI ではサーバー ロール) を使用します。 
         1. 必要なロールを作成します
             - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -294,7 +294,7 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
   - サーバー全体のタスク (新しいログイン、データベースの作成) のサーバー ロールをマネージド インスタンスに作成します。 
   - データベース レベルのタスクに対するデータベース ロールを作成します。
 
-- 特定の機密性の高いタスクについては、ユーザーに代わってタスクを実行するために、証明書によって署名された特殊なストアド プロシージャを作成することを検討してください。 
+- 特定の機密性の高いタスクについては、ユーザーに代わってタスクを実行するために、証明書によって署名された特殊なストアド プロシージャを作成することを検討してください。 デジタル署名されたストアド プロシージャの重要な利点の 1 つは、プロシージャが変更された場合に、以前のバージョンのプロシージャに与えられたアクセス許可が直ちに削除されることです。
   - 例:[チュートリアル:証明書を使用したストアド プロシージャへの署名](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Azure Key Vault のカスタマー マネージド キーを使用して Transparent Data Encryption (TDE) を実装し、データ所有者とセキュリティ所有者の間での職務の分離を可能にします。 
@@ -303,7 +303,7 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
 - 非常に機密性が高いと見なされるデータを DBA が表示できないようにしながらも、DBA のタスクを実行できるようにするには、ロール分離と共に Always Encrypted を使用することができます。 
   - 「[Always Encrypted のキー管理の概要](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)」、「[役割の分離を指定してキーを与える](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)」、および「[役割の分離ありの列マスター キーの交換](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)」の記事を参照してください。 
 
-- 少なくとも大きなコストと努力を払わなくては実現できないようなケースでは (それにより、システムがほぼ使用不可になる可能性があります)、次のような補完コントロールの使用により妥協し、侵害を軽減できます。 
+- Always Encrypted の使用が不可能な場合や、少なくとも大きなコストと努力を払わなくては実現できないようなケースでは (それにより、システムがほぼ使用不可になる可能性すらある場合)、次のような補完コントロールの使用により妥協し、侵害を軽減できます。 
   - プロセスへの人間の介入。 
   - 監査証跡 - 監査の詳細については、「[重要なセキュリティ イベントを監査する](#audit-critical-security-events)」を参照してください。
 
@@ -315,11 +315,11 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
 
 - アクセス許可が、必要なアクセス許可に完全に一致する場合は組み込みロールを使用します。複数の組み込みロールのすべてのアクセス許可を合わせると 100% 一致する場合は、複数のロールを同時に割り当てることもできます。 
 
-- 組み込みロールで付与されるアクセス許可が多すぎる場合や不十分な場合は、カスタム ロールを作成して使用します。 
+- 組み込みロールで付与されるアクセス許可が多すぎる場合や不十分な場合は、ユーザー定義ロールを作成して使用します。 
 
 - ロールの割り当ては、T-SQL の SQL エージェント ジョブ ステップ内で、または RBAC ロール用の Azure PIM を使用して一時的に行うこともできます。これは、動的な職務の分離 (DSD) とも呼ばれます。 
 
-- DBA が暗号化キーやキー ストアにアクセスできないことを確認し、次に、キーにアクセスできるセキュリティ管理者がデータベースにアクセスできないことを確認します。 
+- DBA が暗号化キーやキー ストアにアクセスできないことを確認し、次に、キーにアクセスできるセキュリティ管理者がデータベースにアクセスできないことを確認します。 [拡張キー管理 (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) を使用すると、このような分離を簡単に実現できます。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用して EKM を実装できます。 
 
 - セキュリティに関連した操作については、常に監査証跡を取るようにします。 
 
@@ -402,7 +402,7 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 **ベスト プラクティス**:
 
-- 保存時の暗号化を必要とするデータをマスター・データベースに格納しないでください。 マスター データベースは、TDE を使用して暗号化できません。
+- 保存時の暗号化を必要とするデータをマスター データベースに格納しないでください。 マスター データベースは、TDE を使用して暗号化できません。
 
 - TDE 保護に対して透過性を高め、きめ細かい制御を行う必要がある場合は、Azure Key Vault 内のカスタマー マネージド キーを使用します。 Azure Key Vault では、いつでもアクセス許可を取り消して、データベースをアクセス不可にすることができます。 TDE 保護機能を他のキーと共に中央で管理したり、Azure Key Vault を使用して独自のスケジュールで TDE 保護機能をローテーションしたりすることができます。
 
@@ -440,7 +440,7 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 - Always Encrypted では、キー (および保護されたデータ) への一時的アクセスの付与は容易にはサポートされません。 たとえば、キーを DBA と共有して、DBA が機密データおよび暗号化されたデータに対して何らかのクレンジング操作を実行できるようにする必要がある場合があります。 DBA からのデータへのアクセスを確実に取り消す唯一の方法は、データを保護する列暗号化キーと列マスター キーの両方を回転することですが、これはコストのかかる操作です。 
 
-- 暗号化された列のプレーンテキスト値にアクセスするには、ユーザーは、列を保護する CMK にアクセスできる必要があります。これは、CMK が保持されているキー ストアに構成されています。 また、ユーザーには、 **[列マスター キー定義を表示する]** と **[列暗号化キー定義を表示する]** のデータベース権限が必要です。
+- 暗号化された列のプレーンテキスト値にアクセスするには、ユーザーは、列を保護する列マスター キー (CMK) にアクセスできる必要があります。これは、CMK が保持されているキー ストアに構成されています。 また、ユーザーには、 **[列マスター キー定義を表示する]** と **[列暗号化キー定義を表示する]** のデータベース権限が必要です。
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>暗号化によってアプリケーション ユーザーの機密データへのアクセスを制御する
 
@@ -735,7 +735,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 **実装方法**:
 
 - SQL 監査とデータ分類を組み合わせて使用します。 
-  - [SQL Database Audit](sql-database-auditing.md) ログで、特に機密データへのアクセスを追跡できます。 また、アクセスされたデータや機密ラベルなどの情報を表示することもできます。 詳細については、「[機密データへのアクセスの監査](sql-database-data-discovery-and-classification.md#subheading-3)」を参照してください。 
+  - [SQL Database Audit](sql-database-auditing.md) ログで、特に機密データへのアクセスを追跡できます。 また、アクセスされたデータや機密ラベルなどの情報を表示することもできます。 詳細については、[データ検出と分類](sql-database-data-discovery-and-classification.md)に関するページと「[機密データへのアクセスの監査](sql-database-data-discovery-and-classification.md#audit-sensitive-data)」を参照してください。 
 
 **ベスト プラクティス**:
 

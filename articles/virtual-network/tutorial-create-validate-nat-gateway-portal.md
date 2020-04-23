@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80059996"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084745"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>チュートリアル:Azure portal を使用した NAT ゲートウェイの作成と NAT サービスのテスト
 
@@ -41,14 +41,14 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
 
 このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-| パラメーター                   | Value                |
+| パラメーター                   | 値                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetsource          |
 | **\<region-name>**          | 米国東部 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnetsource        |
-| **\<subnet-address-range>** | 192.168.0.0\24          |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -100,7 +100,7 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 
 2. **[パブリック IP アドレスの作成]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | IP バージョン | **[IPv4]** を選択します。
     | SKU | **[Standard]** を選択します。
@@ -164,14 +164,14 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 
 このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-| パラメーター                   | Value                |
+| パラメーター                   | 値                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetdestination          |
 | **\<region-name>**          | 米国東部 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnetdestination        |
-| **\<subnet-address-range>** | 192.168.0.0\24          |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

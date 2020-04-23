@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 839f7034ec510dd181228409d6ff52ddbe201bd5
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: f62c2249f6a29e8bda04c3056da5c9fcf639b85e
+  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77621456"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "82024576"
 landingContent:
 - title: エネルギー ソリューションを構築する
   linkLists:
@@ -38,7 +38,7 @@ landingContent:
     - text: デバイス テンプレートを設定する
       url: ../core/howto-set-up-template.md
     - text: デバイスの接続
-      url: ../core/tutorial-connect-device.md
+      url: ../core/tutorial-connect-device-nodejs.md
     - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
       url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide

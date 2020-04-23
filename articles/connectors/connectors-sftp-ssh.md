@@ -4,16 +4,16 @@ description: SSH と Azure Logic Apps を使用して、SFTP サーバーのフ�
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/7/2020
+ms.date: 04/13/2020
 tags: connectors
-ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128401"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393632"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -147,6 +147,16 @@ SFTP-SSH は、SFTP ファイル システムをポーリングし、前回の�
 
 1. `.pem` のファイル名拡張子で秘密キー ファイルを保存します。
 
+## <a name="considerations"></a>考慮事項
+
+このセクションでは、このコネクタのトリガーとアクションについて確認すべき考慮事項について説明します。
+
+<a name="create-file"></a>
+
+### <a name="create-file"></a>[ファイルの作成]
+
+SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファイルの作成]** アクションを使用できます。 このアクションによってファイルが作成されると、Logic Apps サービスはファイルのメタデータを取得するために、SFTP サーバーも自動的に呼び出します。 ただし、メタデータを取得するために Logic Apps サービスが呼び出しを行うことができるようになる前に、新しく作成されたファイルを移動すると、`404` エラー メッセージ `'A reference was made to a file or folder which does not exist'` が表示されます。 ファイルの作成後にファイルのメタデータの読み取りをスキップするには、[ **[Get all file metadata]\(すべてのファイル メタデータの取得\)** プロパティを追加して **[いいえ]** に設定する](#file-does-not-exist)手順に従ってください。
+
 <a name="connect"></a>
 
 ## <a name="connect-to-sftp-with-ssh"></a>SSH で SFTP に接続する
@@ -211,9 +221,27 @@ SFTP-SSH は、SFTP ファイル システムをポーリングし、前回の�
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH アクション: パスを使用してコンテンツを取得する
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP - SSH アクション: パスを使用してファイルの内容を取得する
 
-このアクションは、SFTP サーバー上のファイルの内容を取得します。 そのため、たとえば前の例のトリガーと、ファイルの内容が満たす必要がある条件を追加できます。 条件が true であれば、内容を取得するアクションを実行できます。
+このアクションは、ファイル パスを指定することによって SFTP サーバー上のファイルの内容を取得します。 そのため、たとえば前の例のトリガーと、ファイルの内容が満たす必要がある条件を追加できます。 条件が true であれば、内容を取得するアクションを実行できます。
+
+<a name="troubleshooting-errors"></a>
+
+## <a name="troubleshoot-errors"></a>エラーをトラブルシューティングする
+
+このセクションでは、一般的なエラーまたは問題に対する考えられる解決策について説明します。
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 エラー:"存在しないファイルまたはフォルダーが参照されました"
+
+このエラーが発生する可能性があるのは、Logic Apps が SFTP-SSH の **[ファイルの作成]** アクションを通じて SFTP サーバー上に新しいファイルを作成したが、新しく作成されたファイルのメタデータを Logic Apps サービスが取得できるようになる前に、そのファイルがすぐに移動された場合です。 Logic Apps が **[ファイルの作成]** アクションを実行すると、Logic Apps サービスはファイルのメタデータを取得するために、SFTP サーバーも自動的に呼び出します。 ただし、ファイルが移動されると Logic Apps サービスはファイルを見つけられなくなるため、ユーザーは `404` エラー メッセージを受け取ります。
+
+ファイルの移動を回避も遅延もできない場合は、次の手順に従って、ファイルの作成後にファイルのメタデータを読み取ることをスキップできます。
+
+1. **[ファイルの作成]** アクションで、 **[新しいパラメーターの追加]** リストを開き、 **[Get all file metadata]\(すべてのファイル メタデータの取得\)** プロパティを選択して、値を **[いいえ]** に設定します。
+
+1. 後でこのファイル メタデータが必要になった場合は、 **[ファイルのメタデータの取得]** アクションを使用できます。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

@@ -3,12 +3,12 @@ title: Azure Pipelines とテンプレートを使用した CI/CD
 description: Visual Studio で Azure リソース グループのデプロイ プロジェクトを使用して Resource Manager テンプレートをデプロイし、Azure Pipelines での継続的インテグレーションを設定する方法を説明します。
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153456"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084653"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Azure Pipelines を使用した ARM テンプレートの統合
 
@@ -28,7 +28,7 @@ Azure Pipelines を使用してテンプレートをデプロイする方法は 
 
 * Azure DevOps 組織があること。 ない場合は、[無料で作成](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)してください。 チームに Azure DevOps 組織が既にある場合は、使用する Azure DevOps プロジェクトの管理者であることを確認します。
 
-* Azure サブスクリプションへの[サービス接続](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)が構成済みであること。 パイプライン内のタスクは、サービス プリンシパルの ID で実行されます。 接続を作成する手順については、「[DevOps プロジェクトを作成する](template-tutorial-use-azure-pipelines.md#create-a-devops-project)」を参照してください。
+* Azure サブスクリプションへの[サービス接続](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)が構成済みであること。 パイプライン内のタスクは、サービス プリンシパルの ID で実行されます。 接続を作成する手順については、「[DevOps プロジェクトを作成する](deployment-tutorial-pipeline.md#create-a-devops-project)」を参照してください。
 
 * **Azure リソース グループ** スタート テンプレートから作成された Visual Studio プロジェクトがあること。 この種類のプロジェクトを作成する方法の詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](create-visual-studio-deployment-project.md)」を参照してください。
 
@@ -261,4 +261,4 @@ ContainerName: '<container-name>'
 
 ## <a name="next-steps"></a>次のステップ
 
-ARM テンプレートで Azure Pipelines を使用するステップ バイ ステップのプロセスについては、「[チュートリアル:Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション](template-tutorial-use-azure-pipelines.md)」を参照してください。
+ARM テンプレートで Azure Pipelines を使用するステップ バイ ステップのプロセスについては、「[チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](deployment-tutorial-pipeline.md)」を参照してください。

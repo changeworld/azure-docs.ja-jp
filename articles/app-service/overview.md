@@ -5,18 +5,18 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045168"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535640"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
 *Azure App Service* は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするための HTTP ベースのサービスです。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。 アプリケーションの実行とスケーリングは、Windows ベースの環境と Linux ベースの環境の両方で容易に行うことができます。 Linux ベースの環境については、[App Service on Linux](containers/app-service-linux-intro.md) に関するページを参照してください。 
 
-App Service は、セキュリティ、負荷分散、自動スケーリング、自動管理などの Microsoft Azure の機能を、アプリケーションに追加するだけではありません。 Azure DevOps、GitHub、Docker Hub およびその他のソースからの継続的デプロイ、パッケージ管理、ステージング環境、カスタム ドメイン、SSL 証明書など、DevOps 機能を利用することもできます。 
+App Service は、セキュリティ、負荷分散、自動スケーリング、自動管理などの Microsoft Azure の機能を、アプリケーションに追加するだけではありません。 Azure DevOps、GitHub、Docker Hub およびその他のソースからの継続的デプロイ、パッケージ管理、ステージング環境、カスタム ドメイン、TLS/SSL 証明書など、DevOps 機能を利用することもできます。 
 
 App Service では、使用した Azure コンピューティング リソースに応じて課金されます。 使用するコンピューティング リソースは、アプリが実行されている "_App Service プラン_" によって決まります。 詳細については、「[Azure App Service プランの概要](overview-hosting-plans.md)」を参照してください。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229915"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991571"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
 
@@ -34,7 +34,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ## <a name="supported-scenarios-and-authentication-types"></a>サポートされているシナリオと認証の種類
 
-この HTTP コネクタを使用すると、HTTP *GET* または **POST** メソッドを使用して、**クラウドとオンプレミスの両方の HTTP/S エンドポイント**からデータを取得できます。 サポートされている認証の種類は、**Anonymous**、**Basic**、**Digest**、**Windows**、および **ClientCertificate** です。 このコネクタと [Web テーブル コネクタ](data-factory-web-table-connector.md)の違いに注意してください。 Web テーブル コネクタは、HTML Web ページからテーブルの内容を抽出します。
+この HTTP コネクタを使用すると、HTTP **GET** または **POST** メソッドを使用して、*クラウドとオンプレミスの両方の HTTP/S エンドポイント*からデータを取得できます。 次の認証の種類がサポートされています。**Anonymous**、**Basic**、**Digest**、**Windows**、および **ClientCertificate**。 このコネクタと [Web テーブル コネクタ](data-factory-web-table-connector.md)の違いに注意してください。 Web テーブル コネクタは、HTML Web ページからテーブルの内容を抽出します。
 
 オンプレミスの HTTP エンドポイントからデータをコピーする場合は、オンプレミスの環境または Azure VM に Data Management Gateway をインストールする必要があります。 Data Management Gateway の詳細、およびゲートウェイを設定する方法に関する詳細な手順については、[オンプレミスの場所とクラウドの間のデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページを参照してください。
 
@@ -42,7 +42,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 さまざまなツールまたは API を使用して、HTTP ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-- パイプラインを作成するための最も簡単な方法は、データのコピー ウィザードの使用です。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用してパイプラインを作成する方法のチュートリアル](data-factory-copy-data-wizard-tutorial.md)を参照してください。
+- パイプラインを作成するための最も簡単な方法は、データのコピー ウィザードの使用です。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
 
 - また、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API** などのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成する方法に関する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 HTTP ソースから Azure Blob Storage にデータをコピーする JSON サンプルについては、「[JSON の使用例](#json-examples)」を参照してください。
 
@@ -55,7 +55,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 | type | **type** プロパティは **Http** に設定する必要があります。 | はい |
 | url | Web サーバーへのベース URL | はい |
 | authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類のその他のプロパティや JSON サンプルについては、この記事の後の方のセクションを参照してください。 | はい |
-| enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーで自己署名証明書を使用している場合は、これを **false** に設定します。 | いいえ<br /> (既定値は **true** です)。 |
+| enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの TLS/SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーで自己署名証明書を使用している場合は、これを **false** に設定します。 | いいえ<br /> (既定値は **true** です)。 |
 | gatewayName | オンプレミスの HTTP ソースに接続するために使用する Data Management Gateway インスタンスの名前。 | オンプレミスの HTTP ソースからデータをコピーしている場合は はい |
 | encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 この値は、コピー ウィザードで、または **ClickOnce** ダイアログ ボックスを使用して認証情報を構成していると自動生成されます。 | いいえ<br /> (オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用されます) |
 
@@ -68,9 +68,9 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | userName | HTTP エンドポイントにアクセスするために使用するユーザー名。 | はい |
-| パスワード | ユーザー (**username**) のパスワード。 | はい |
+| password | ユーザー (**username**) のパスワード。 | はい |
 
-**例: 基本、ダイジェスト、または Windows 認証の使用**
+**例:基本、ダイジェスト、または Windows 認証の使用**
 
 ```json
 {
@@ -97,7 +97,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 | --- | --- | --- |
 | embeddedCertData | PFX ファイルのバイナリ データの Base64 でエンコードされたコンテンツ。 | **embeddedCertData** または **certThumbprint** のどちらかを指定します。 |
 | certThumbprint | ゲートウェイ コンピューターの証明書ストアにインストールされた証明書の拇印。 オンプレミスの HTTP ソースからデータをコピーする場合にのみ適用されます。 | **embeddedCertData** または **certThumbprint** のどちらかを指定します。 |
-| パスワード | 証明書に関連付けられているパスワード。 | いいえ |
+| password | 証明書に関連付けられているパスワード。 | いいえ |
 
 認証に **certThumbprint** を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、ゲートウェイ サービスに読み取りアクセス許可を付与します。
 
@@ -106,7 +106,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 3. 個人用ストアの証明書を右クリックし、 **[すべてのタスク]**  > **[秘密キーの管理]** の順に選択します。
 3. **[セキュリティ]** タブで、証明書に対する読み取りアクセス権を使用して、Data Management Gateway ホスト サービスが実行されているユーザー アカウントを追加します。  
 
-**例: クライアント証明書の使用**
+**例:クライアント証明書の使用**
 
 このリンクされたサービスは、データ ファクトリをオンプレミスの HTTP Web サーバーにリンクします。 これは、Data Management Gateway がインストールされているコンピューターにインストールされているクライアント証明書を使用します。
 
@@ -128,7 +128,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 }
 ```
 
-**例: ファイル内のクライアント証明書の使用**
+**例:ファイル内のクライアント証明書の使用**
 
 このリンクされたサービスは、データ ファクトリをオンプレミスの HTTP Web サーバーにリンクします。 これは、Data Management Gateway がインストールされているコンピューター上のクライアント証明書ファイルを使用します。
 
@@ -164,10 +164,10 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 | requestMethod | HTTP メソッド。 使用できる値は **GET** と **POST** です。 | いいえ <br />(既定値は **GET**) |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
 | requestBody | HTTP 要求の本文。 | いいえ |
-| format | *HTTP エンドポイントからそのままデータを取得する*だけで解析しない場合は、**format** の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、および **ParquetFormat** の形式の種類がサポートされます。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)の各セクションを参照してください。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類: **GZip**、**Deflate**、**BZip2**、**ZipDeflate**。 サポートされるレベル: **Optimal** と **Fastest**。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | *HTTP エンドポイントからそのままデータを取得する*だけで解析しない場合は、**format** の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合に、次の種類の形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)の各セクションを参照してください。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
-**例: GET (既定) メソッドの使用**
+**例:GET (既定) メソッドの使用**
 
 ```json
 {
@@ -188,7 +188,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 }
 ```
 
-**例: POST メソッドの使用**
+**例:POST メソッドの使用**
 
 ```json
 {
@@ -222,7 +222,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 これは応答データを読み取るタイムアウトではなく、応答を取得するタイムアウトです。 | いいえ<br />(既定値: **00:01:40**) |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 これは応答データを読み取るタイムアウトではなく、応答を取得するタイムアウトです。 | いいえ<br />(既定値:**00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
 
@@ -230,17 +230,17 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ## <a name="json-examples"></a>JSON の使用例
 
-次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、HTTP ソースから Azure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用すると、任意のソースから*サポートされている*任意のシンクに[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)データをコピーできます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、HTTP ソースから Azure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用すると、任意のソースから[サポートされている](data-factory-data-movement-activities.md#supported-data-stores-and-formats)任意のシンクに*直接*データをコピーできます。
 
-**例: HTTP ソースから Azure Blob Storage にデータをコピーする**
+**例:HTTP ソースから Azure Blob Storage にデータをコピーする**
 
 このサンプルの Data Factory ソリューションには、次の Data Factory エンティティが含まれています。
 
 *   [HTTP](#linked-service-properties) 型のリンクされたサービス。
 *   [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
-*   [Http](data-factory-create-datasets.md) 型の入力[データセット](#dataset-properties)。
-*   [AzureBlob](data-factory-create-datasets.md) 型の出力[データセット](data-factory-azure-blob-connector.md#dataset-properties)。
-*   [HttpSource](data-factory-create-pipelines.md) と [BlobSink](#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-azure-blob-connector.md#copy-activity-properties)。
+*   [Http](#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+*   [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+*   [HttpSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルでは、1 時間おきに HTTP ソースから Azure BLOB にデータがコピーされます。 これらのサンプルで使用されている JSON プロパティは、サンプルの後の各セクションで説明されています。
 
@@ -303,7 +303,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
 
-データは新しい BLOB に 1 時間おきに書き込まれます (**頻度**: **時間**、**間隔**: **1**)。
+データは、1 時間おきに新しい BLOB に書き込まれます (**頻度**: **時間**、**間隔**: **1**)。
 
 ```json
 {

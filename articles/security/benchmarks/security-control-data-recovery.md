@@ -1,19 +1,18 @@
 ---
 title: Azure セキュリティ コントロール - データの復旧
-description: セキュリティ コントロール データの復旧
+description: Azure セキュリティ コントロール データの復旧
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: c585ebd903d4070f6247456e06efffbc6ec45270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934507"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408590"
 ---
 # <a name="security-control-data-recovery"></a>セキュリティ コントロールデータの復旧
 
@@ -27,9 +26,7 @@ ms.locfileid: "75934507"
 
 Azure Backup を有効にし、バックアップ ソース (Azure VM、SQL Server、またはファイル共有)、および必要な頻度と保持期間を構成します。
 
-Azure Backup を有効にする方法:
-
-https://docs.microsoft.com/azure/backup/
+- [Azure Backup を有効にする方法](https://docs.microsoft.com/azure/backup/)
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
@@ -39,13 +36,9 @@ https://docs.microsoft.com/azure/backup/
 
 Azure Backup を有効にし、ターゲット VM および必要な頻度と保持期間を設定します。 Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
-Azure Backup を有効にする方法:
+- [Azure Backup を有効にする方法](https://docs.microsoft.com/azure/backup/)
 
-https://docs.microsoft.com/azure/backup/
-
-Azure で Key Vault のキーをバックアップする方法:
-
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
@@ -53,15 +46,11 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 |--|--|--|
 | 9.3 | 10.3 | Customer |
 
-Azure Backup 内でコンテンツのデータ復元を定期的に実行できるようにします。 必要に応じて、分離された VLAN への復元をテストします。 バックアップされたカスタマー マネージド キーの復元をテストします。
+Azure Backup 内でコンテンツのデータ復元を定期的に実行できるようにします。 バックアップされたカスタマー マネージド キーの復元をテストします。
 
-Azure 仮想マシンのバックアップからファイルを復旧する方法:
+- [Azure 仮想マシンのバックアップからファイルを復旧する方法](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)
 
-https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm
-
-Azure で Key Vault のキーを復元する方法:
-
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
@@ -69,12 +58,17 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 |--|--|--|
 | 9.4 | 10.4 | Customer |
 
-オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護することができます。
+オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 ロールベースのアクセス制御を使用して、バックアップとカスタマー マネージド キーを保護します。  
 
-Key Vault で論理的な削除を有効にする方法:
+Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。  Azure Storage を使用してバックアップを格納した場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 
 
-https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+- [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+
+- [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+
+- [Azure Storage Blob の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+
 
 ## <a name="next-steps"></a>次のステップ
 
-次のセキュリティ コントロールを参照してください: [インシデント対応](security-control-incident-response.md)
+- 次のセキュリティ コントロールを参照してください。[インシデント対応](security-control-incident-response.md)

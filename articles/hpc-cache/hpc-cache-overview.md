@@ -4,14 +4,14 @@ description: ハイパフォーマンス コンピューティングのための
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216390"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536643"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
 
@@ -49,22 +49,20 @@ Azure HPC Cache のデプロイは定量分析計算やリスク分析ワーク�
 
 Azure HPC Cache は、次の Azure リージョンで使用できます。
 
+| 北米      | ヨーロッパ         | アジア            | オーストラリア      |
+|--------------------|----------------|-----------------|----------------|
+| 米国東部            | 北ヨーロッパ   | 韓国中部   | オーストラリア東部 |
+| 米国東部 2          | 西ヨーロッパ    | 東南アジア  |               |
+| 米国中南部 | | | |
+| 米国西部 2        | | | |
+
+[カスタマーマネージド キー機能](customer-keys.md)は、次のリージョンでのみサポートされます。
+
 * 米国東部
-* 米国東部 2
-* 北ヨーロッパ
-* 西ヨーロッパ
-* 東南アジア
-* シドニー
+* 米国中南部
 * 米国西部 2
-* 韓国中部
 
 最新情報については、[Azure HPC Cache の製品ページ](https://azure.microsoft.com/services/hpc-cache)をご覧ください。
-
-## <a name="service-availability"></a>サービスの提供状況
-
-Azure HPC Cache で使用する各サブスクリプションへのアクセスを依頼する必要があります。 この制限は、一般公開の最初の月のサービス品質を保証するのに役立ちます。
-
-アクセスを依頼するには、[こちらのフォーム](https://aka.ms/onboard-hpc-cache)に入力してください。 サブスクリプションがアクセス一覧に追加された後に、キャッシュを作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 

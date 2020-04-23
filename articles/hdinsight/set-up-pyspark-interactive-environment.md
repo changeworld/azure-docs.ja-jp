@@ -2,18 +2,18 @@
 title: Azure HDInsight Tools を利用した PySpark 対話型環境
 description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
 keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,インタラクティブ Hive,インタラクティブ クエリ
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2a725f3c5c9e1428079807b5b76dbe72d416a9c7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73241548"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393674"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -34,7 +34,7 @@ ms.locfileid: "73241548"
 
 2. 以下のコマンドを実行して、**virtualenv** をインストールします。
 
-   ```
+   ```bash
    pip install virtualenv
    ```
 
@@ -44,22 +44,24 @@ ms.locfileid: "73241548"
 
    ![Python 用 libkrb5 パッケージをインストールする](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
-```
+```bash
 sudo apt-get install libkrb5-dev
 ```
 
-```
+```bash
 sudo apt-get install python-dev
 ```
 
-VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
+VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。**
 
 ## <a name="next-steps"></a>次のステップ
 
 ### <a name="demo"></a>デモ
-* HDInsight for VS Code: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
+
+* HDInsight for VS Code:[ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
+
 * [Azure HDInsight Tool for Visual Studio Code を使用する](hdinsight-for-vscode.md)
 * [Azure Toolkit for IntelliJ を使用して Apache Spark Scala アプリケーションを作成して送信する](spark/apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)

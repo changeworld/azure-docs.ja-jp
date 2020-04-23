@@ -1,28 +1,20 @@
 ---
 title: 予測スコア - LUIS
-titleSuffix: Azure Cognitive Services
 description: 予測スコアは、LUIS API サービスがユーザーの発話に基づいて予測結果に対して持つ信頼度を示します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280822"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382373"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>意図とエンティティの予測精度を示す予測スコア
 
 予測スコアは、LUIS がユーザーの発話の予測結果に対して持つ信頼度を示します。
 
-予測スコアは、0 と 1 の間です。 十分に信頼できる LUIS スコアの例は 0.99 です。 信頼度の低いのスコアの例は 0.01 です。 
+予測スコアは、0 と 1 の間です。 十分に信頼できる LUIS スコアの例は 0.99 です。 信頼度の低いのスコアの例は 0.01 です。
 
 |スコアの値|Confidence|
 |--|--|
@@ -33,11 +25,11 @@ ms.locfileid: "74280822"
 
 ## <a name="top-scoring-intent"></a>トップ スコアの意図
 
-すべての発話予測で、トップ スコアの意図が返されます。 この予測は予測スコアの数値を比較したものです。 
+すべての発話予測で、トップ スコアの意図が返されます。 この予測は予測スコアの数値を比較したものです。
 
 ## <a name="proximity-of-scores-to-each-other"></a>スコアの相互近接性
 
-上位 2 つのスコアでは、違いが非常に小さいことがあります。 LUIS でこの近接性が示されるのは、上位のスコアを返すときのみです。  
+上位 2 つのスコアでは、違いが非常に小さいことがあります。 LUIS でこの近接性が示されるのは、上位のスコアを返すときのみです。
 
 ## <a name="return-prediction-score-for-all-intents"></a>すべての意図について予測スコアを返す
 
@@ -56,7 +48,7 @@ ms.locfileid: "74280822"
 
 スコアが非常に近い 2 つの意図は、**非決定性トレーニング**のために順序が逆になる可能性があります。 トップ スコアがセカンド トップになり、セカンド トップ スコアがファースト トップ スコアになることがあります。 この状況を防ぐには、上位 2 つの各意図に、2 つの意図を区別する単語選択とコンテキストを含む発話の例を追加します。 2 つの意図の発話例の数はだいたい同じにする必要があります。 トレーニングによる逆転を防ぐために分離の目安は、スコアの差を 15% にすることです。
 
-**すべてのデータを使用してトレーニングする**ことで、[非決定性トレーニング](luis-how-to-train.md#train-with-all-data)をオフにすることができます。
+[すべてのデータを使用してトレーニングする](luis-how-to-train.md#train-with-all-data)ことで、**非決定性トレーニング**をオフにすることができます。
 
 ## <a name="differences-with-predictions-between-different-training-sessions"></a>異なるトレーニング セッション間の予測との違い
 
@@ -64,19 +56,21 @@ ms.locfileid: "74280822"
 
 意図の信頼性を示すためにチャットボットで特定の LUIS スコアを必要とする場合、上位 2 つの意図のスコアの差異を使用する必要があります。 このような状況では、トレーニングのバリエーションが柔軟になります。
 
-**すべてのデータを使用してトレーニングする**ことで、[非決定性トレーニング](luis-how-to-train.md#train-with-all-data)をオフにすることができます。
+[すべてのデータを使用してトレーニングする](luis-how-to-train.md#train-with-all-data)ことで、**非決定性トレーニング**をオフにすることができます。
 
 ## <a name="e-exponent-notation"></a>E (指数) 表記
 
-予測スコアでは、 _など、0 から 1 の範囲を超えているように "_ 見える`9.910309E-07`" 指数表記が使用される場合があります。 このスコアは、非常に**小さな**数を表します。
+予測スコアでは、`9.910309E-07` など、0 から 1 の範囲を超えているように "_見える_" 指数表記が使用される場合があります。 このスコアは、非常に**小さな**数を表します。
 
 |E 表記スコア |実際のスコア|
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>句読点
+<a name="punctuation"></a>
 
-句読点を使用する方法または無視する方法の[詳細を確認](luis-concept-utterance.md#punctuation-marks)してください。 
+## <a name="application-settings"></a>アプリケーションの設定
+
+[アプリケーションの設定](luis-reference-application-settings.md)を使用して、分音記号と句読点が予測スコアに与える影響を制御します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/25/2020
+ms.date: 04/18/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2231d70e6c4368a7c896f9063b58cc97ee292f53
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282122"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682588"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -51,8 +51,12 @@ Azure リソースのマネージド ID のドキュメント セット全体で
 - **ユーザー割り当てマネージド ID** は、スタンドアロン Azure リソースとして作成されます。 作成プロセスで、使用されているサブスクリプションによって信頼されている Azure AD テナントに、Azure が ID を作成します。 作成された ID は、1 つまたは複数の Azure サービス インスタンスに割り当てることができます。 ユーザー割り当て ID のライフサイクルは、その ID が割り当てられている Azure サービス インスタンスのライフサイクルとは個別に管理されます。
 
 内部的には、マネージド ID は特別な種類のサービス プリンシパルであり、Azure リソースとだけ使用されるようにロックされています。 マネージド ID が削除されると、対応するサービス プリンシパルが自動的に削除されます。
+同様に、ユーザー割り当て ID またはシステム割り当て ID が作成されると、その ID に対し、マネージド ID リソースプロバイダー (MSRP) によって内部的に証明書が発行されます。 
 
-Azure AD Authentication をサポートするサービスのアクセス トークンは、コードからマネージド ID を使用して要求できます。 Azure は、サービス インスタンスによって使用される資格情報のローリングを実行します。
+Azure AD Authentication をサポートするサービスのアクセス トークンは、コードからマネージド ID を使用して要求できます。 Azure は、サービス インスタンスによって使用される資格情報のローリングを実行します。 
+
+## <a name="credential-rotation"></a>資格情報のローテーション
+資格情報のローテーションは、Azure リソースをホストするリソースプロバイダーによって制御されます。 資格情報の既定のローテーションは 46 日おきに行われます。 新しい資格情報を要求する役割はリソースプロバイダーが担うため、リソースプロバイダーの待機日数は 46 日を超える可能性があります。
 
 次の図は、マネージド サービス ID と Azure 仮想マシン (VM) が連携するようすを示したものです。
 

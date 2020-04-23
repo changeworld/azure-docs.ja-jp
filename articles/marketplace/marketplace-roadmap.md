@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261977"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084908"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft の商業マーケットプレースのロードマップ
 
@@ -33,7 +33,7 @@ ms.locfileid: "81261977"
 * [標準的な契約](https://aka.ms/standardcontract)
 * [SaaS Fulfillment API](https://aka.ms/saasapiv2)
 * [Marketplace の地域および通貨](https://aka.ms/marketplacegeos)
-* [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+* [Seller Insights](./partner-center-portal/analytics.md)
 * [Microsoft Build の Marketplace ブログ](https://aka.ms/marketplacebuildblog)
 * [Marketplace 5 月更新プログラムのブログ](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
 * パートナー センター:[アカウントを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [アカウントを管理する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [CPP から移行する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)

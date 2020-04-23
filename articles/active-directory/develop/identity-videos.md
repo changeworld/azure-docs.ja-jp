@@ -1,6 +1,6 @@
 ---
 title: Microsoft ID プラットフォームのビデオ | Azure
-description: Microsoft ID プラットフォームに関するビデオの一覧
+description: 先進認証および Microsoft ID プラットフォームに関するビデオの一覧
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -8,24 +8,73 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 04/08/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085200"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991298"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft ID プラットフォームのビデオ
 
-Microsoft ID プラットフォームと Microsoft 認証ライブラリ (MSAL) について説明します。 通常、1 分から 2 分の長さになっています。
+先進認証の基礎、Microsoft ID プラットフォームと Microsoft 認証ライブラリ (MSAL) について説明します。
+
+## <a name="authentication-fundamentals"></a>認証の基礎
+
+ID プロバイダー、セキュリティ トークン、要求、対象ユーザーなどの概念に詳しくない場合は、このビデオ シリーズの視聴から開始することをお勧めします。
+___
+
+:::row:::
+    :::column:::
+        1 - 基本:先進認証の概念 (4:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+     :::column:::
+        2 - Web アプリケーションの先進認証 (6:02)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3 - Web シングル サインオン (4:13)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        4 - フェデレーション Web 認証 (6:19)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5 - ネイティブ クライアント アプリケーション - パート 1 (8:12)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        6 - ネイティブ クライアント アプリケーション - パート 2 (5:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="microsoft-identity-platform-basics"></a>Microsoft ID プラットフォームの基礎
 
-**Microsoft ID プラットフォームの基本的概念について説明します**
+Microsoft ID プラットフォームである Microsoft Authentication Library (MSAL) のコンポーネントの概要と、これらのコンポーネントが Azure Active Directory とどのように連携するかについて説明します。 One Dev Question のビデオの長さは 1 から 2 分です。
+___
 
 :::row:::
     :::column:::
@@ -112,7 +161,8 @@ Microsoft ID プラットフォームと Microsoft 認証ライブラリ (MSAL) 
 
 ## <a name="migrate-from-v10-to-v20"></a>v1.0 から v2.0 に移行する
 
-**Microsoft ID プラットフォームの最新版への移行について説明します**
+Active Directory 認証ライブラリ (ADAL) から MSAL への移行など、最新バージョンの Microsoft ID プラットフォームへの移行について説明します。
+___
 
 :::row:::
     :::column:::

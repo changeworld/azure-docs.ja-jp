@@ -1,22 +1,14 @@
 ---
 title: 発話の良い例 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 発話は、アプリが解釈する必要のあるユーザーからの入力です。 ユーザーが入力すると思われる語句を収集します。 同じことを意味しますが、異なる単語の長さと単語の配置で構成されている発話を含めるようにします。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.author: diberry
-ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218777"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382284"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -25,13 +17,13 @@ ms.locfileid: "79218777"
 ユーザーが入力すると思われる発話を収集します。 同じことを意味するが、さまざまな異なる方法で構成されている発話を含めます。
 
 * 発話の長さ - クライアント アプリケーションに対して短い、中程度、長い
-* 単語や語句の長さ 
+* 単語や語句の長さ
 * 単語の配置 - 発話の先頭、中央、末尾にあるエンティティ
-* 文法 
+* 文法
 * 複数形化
 * 語幹検索
 * 名詞と動詞の選択
-* 句読点 - 正しい文法、正しくない文法、文法なしを使用した多様性
+* [句読点](luis-reference-application-settings.md#punctuation-normalization) - 正しい文法、正しくない文法、文法なしを使用した多様性
 
 ## <a name="how-to-choose-varied-utterances"></a>さまざまな発話を選択する方法
 
@@ -39,7 +31,7 @@ LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterance
 
 ### <a name="utterances-arent-always-well-formed"></a>発話は常に正しい形式になっているわけではない
 
-"パリ行きのチケットを予約して" のような文の場合も、"予約" や "パリ便" のような文の一部の場合もあります。  ユーザーはスペルミスをすることがよくあります。 アプリを計画するときは、LUIS に渡す前に [Bing Spell Check](luis-tutorial-bing-spellcheck.md) を実行してユーザー入力を修正するかどうかを検討します。 
+"パリ行きのチケットを予約して" のような文の場合も、"予約" や "パリ便" のような文の一部の場合もあります。  ユーザーはスペルミスをすることがよくあります。 アプリを計画するときは、LUIS に渡す前に [Bing Spell Check](luis-tutorial-bing-spellcheck.md) を実行してユーザー入力を修正するかどうかを検討します。
 
 ユーザーの発話のスペルチェックを行わない場合は、タイプミスやミススペルを含む発話で LUIS をトレーニングする必要があります。
 
@@ -58,17 +50,17 @@ LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterance
 |コンピューターはどうすれば手に入りますか?|
 |コンピューターはどこで手に入りますか?|
 |コンピューターを手に入れたいのですが、どうすればよいですか?|
-|いつコンピューターを入手できますか?| 
+|いつコンピューターを入手できますか?|
 
 ここでのコア用語 "コンピューター" は全部同じです。 デスクトップ コンピューター、ラップトップ、ワークステーション、マシンなどの代替を使用します。 LUIS はコンテキストからシノニムをインテリジェントに推論できますが、それでもトレーニング用の発話を作成するときは、常に変更することをお勧めします。
 
 ## <a name="example-utterances-in-each-intent"></a>各意図での発話の例
 
-意図ごとに少なくとも 15 個の発話の例が必要です。 発話の例がない意図がある場合、LUIS をトレーニングできません。 意図の発話の例が 1 つまたは非常に少ない場合、LUIS は意図を正確に予測できないことがあります。 
+意図ごとに少なくとも 15 個の発話の例が必要です。 発話の例がない意図がある場合、LUIS をトレーニングできません。 意図の発話の例が 1 つまたは非常に少ない場合、LUIS は意図を正確に予測できないことがあります。
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>作成イテレーションごとに 15 個の発話からなる小さいグループを追加する
 
-モデルの各イテレーションでは、大量の発話を追加しないようにします。 15 個の発話を追加します。 もう一度[トレーニング](luis-how-to-train.md)し、[発行](luis-how-to-publish-app.md)し、[テスト](luis-interactive-test.md)します。  
+モデルの各イテレーションでは、大量の発話を追加しないようにします。 15 個の発話を追加します。 もう一度[トレーニング](luis-how-to-train.md)し、[発行](luis-how-to-publish-app.md)し、[テスト](luis-interactive-test.md)します。
 
 LUIS は、LUIS モデルの作成者によって慎重に選択された発話で有効なモデルを構築します。 追加する発話が多すぎると、混乱が発生するので役に立ちません。
 
@@ -76,13 +68,13 @@ LUIS は、LUIS モデルの作成者によって慎重に選択された発話�
 
 ## <a name="utterance-normalization"></a>発話の正規化
 
-発話の正規化とは、トレーニングおよび予測中に句読点や分音記号の影響を無視する処理のことです。
+発話の正規化とは、トレーニングおよび予測中に句読点や分音記号の影響を無視する処理のことです。 発話の正規化が発話予測に与える影響を制御するには、[アプリケーションの設定](luis-reference-application-settings.md)を使用します。
 
 ## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>分音記号および句読点に対する発話の正規化
 
-発話の正規化は、アプリの JSON ファイル内の設定であるため、アプリの作成時またはインポート時に定義します。 既定では、発話の正規化の設定は、オフになっています。 
+発話の正規化は、アプリの JSON ファイル内の設定であるため、アプリの作成時またはインポート時に定義します。 既定では、発話の正規化の設定は、オフになっています。
 
-分音記号とは、テキスト内のマークや記号のことです。例を次に示します。 
+分音記号とは、テキスト内のマークや記号のことです。例を次に示します。
 
 ```
 İ ı Ş Ğ ş ğ ö ü
@@ -96,41 +88,41 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 "settings": [
     {"name": "NormalizePunctuation", "value": "true"},
     {"name": "NormalizeDiacritics", "value": "true"}
-] 
+]
 ```
 
-**句読点**を正規化すると、モデルがトレーニングされる前、およびエンドポイント クエリが予測される前に、発話から句読点が削除されます。 
+**句読点**を正規化すると、モデルがトレーニングされる前、およびエンドポイント クエリが予測される前に、発話から句読点が削除されます。
 
-**分音記号**を正規化すると、発話内の分音記号を持つ文字が通常の文字に置き換えられます。 たとえば、`Je parle français` は `Je parle francais` になります。 
+**分音記号**を正規化すると、発話内の分音記号を持つ文字が通常の文字に置き換えられます。 たとえば、`Je parle français` は `Je parle francais` になります。
 
 正規化を行うと、発話または予測応答の例に句読点や分音記号が表示されなくなるわけではありません。トレーニングおよび予測中に句読点や分音記号が無視されるだけです。
 
-
 ### <a name="punctuation-marks"></a>句読点
 
-句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話と末尾にピリオドを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。 
+句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話と末尾にピリオドを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。
 
-既定では、句読点を正規化しない場合、LUIS で句読点は無視されません。これは、クライアント アプリケーションによっては、句読点が重要視されるものがあるためです。 どちらの形式でも同じ相対スコアが返されるように、発話の例では必ず、句読点があるケースとないケースの両方を使用してください。 
+既定では、句読点を正規化しない場合、LUIS で句読点は無視されません。これは、クライアント アプリケーションによっては、句読点が重要視されるものがあるためです。 どちらの形式でも同じ相対スコアが返されるように、発話の例では必ず、句読点があるケースとないケースの両方を使用してください。
 
 モデルが発話の例 (句読点がある場合とない場合) か、または[パターン](luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
 
-クライアント アプリケーションで句読点が特別な意味を持たない場合は、句読点を正規化して[句読点を無視](#utterance-normalization)することを検討してください。 
+クライアント アプリケーションで句読点が特別な意味を持たない場合は、句読点を正規化して[句読点を無視](#utterance-normalization)することを検討してください。
 
 ### <a name="ignoring-words-and-punctuation"></a>単語と句読点を無視する
 
-パターン内の特定の語や句読点を無視する場合は、[パターン](luis-concept-patterns.md#pattern-syntax)使用時に大かっこ _の_ignore`[]` 構文を指定します。 
+パターン内の特定の語や句読点を無視する場合は、[パターン](luis-concept-patterns.md#pattern-syntax)使用時に大かっこ `[]` の _ignore_ 構文を指定します。
 
 ## <a name="training-utterances"></a>発話のトレーニング
 
-一般にトレーニングは非決定論的です。発話の予測は、バージョンまたはアプリによって若干変わる可能性があります。 トレーニング データをすべて使用するために、[バージョン設定](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API を `UseAllTrainingData` の名前/値のペアで更新して非決定論的トレーニングを削除することができます。
+一般にトレーニングは非決定論的です。発話の予測は、バージョンまたはアプリによって若干変わる可能性があります。
+トレーニング データをすべて使用するために、[バージョン設定](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API を `UseAllTrainingData` の名前/値のペアで更新して非決定論的トレーニングを削除することができます。
 
-## <a name="testing-utterances"></a>発話のテスト 
+## <a name="testing-utterances"></a>発話のテスト
 
-開発者は、発話を[予測エンドポイント](luis-how-to-azure-subscription.md) URL に送信することにより、実際のトラフィックで LUIS アプリケーションのテストを開始する必要があります。 これらの発話は、[発話の確認](luis-how-to-review-endpoint-utterances.md)での意図とエンティティのパフォーマンスを向上させるために使われます。 LUIS Web サイトのテスト ウィンドウで送信されるテストは、エンドポイント経由では送信されず、したがってアクティブな学習には影響しません。 
+開発者は、発話を[予測エンドポイント](luis-how-to-azure-subscription.md) URL に送信することにより、実際のトラフィックで LUIS アプリケーションのテストを開始する必要があります。 これらの発話は、[発話の確認](luis-how-to-review-endpoint-utterances.md)での意図とエンティティのパフォーマンスを向上させるために使われます。 LUIS Web サイトのテスト ウィンドウで送信されるテストは、エンドポイント経由では送信されず、したがってアクティブな学習には影響しません。
 
 ## <a name="review-utterances"></a>発話を確認する
 
-モデルがトレーニングされて発行され、[エンドポイント](luis-glossary.md#endpoint) クエリを受け取った後、LUIS によって提案された[発話を確認](luis-how-to-review-endpoint-utterances.md)します。 LUIS は、意図またはエンティティに対してスコアの低いエンドポイント発話を選択します。 
+モデルがトレーニングされて発行され、[エンドポイント](luis-glossary.md#endpoint) クエリを受け取った後、LUIS によって提案された[発話を確認](luis-how-to-review-endpoint-utterances.md)します。 LUIS は、意図またはエンティティに対してスコアの低いエンドポイント発話を選択します。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
@@ -138,14 +130,14 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 
 ## <a name="label-for-word-meaning"></a>単語の意味のラベル
 
-単語の選択や配置は同じなのに同じものを意味しない場合は、そのエンティティでラベル付けしません。 
+単語の選択や配置は同じなのに同じものを意味しない場合は、そのエンティティでラベル付けしません。
 
 次の発話で、単語 `fair` は、同形異義語です。 スペルは同じですが、意味が異なります。
 
 |発話|
 |--|
-|今年の夏、シアトル地区でどのような種類のカウンティー フェアが開催されますか?|
-|シアトル レビューの現在の評価は公正ですか?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 イベント エンティティですべてのイベント データを検索する場合は、2 つ目ではなく最初の発話の単語 `fair` にラベルを付けます。
 

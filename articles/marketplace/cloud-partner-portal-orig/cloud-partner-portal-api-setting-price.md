@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 487e66b39bc63363497cb3497d32158efd0c6c8a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280441"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255891"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 ==================================
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 仮想マシン プランの価格を指定する方法は、カスタマイズされたコア価格、コアごとの価格、およびスプレッドシート価格の 3 つを提供します。
 
@@ -111,7 +114,7 @@ ms.locfileid: "80280441"
 
 次の表は、カスタマイズされたコア価格に対して指定できるさまざまなリージョンと、それぞれに対応する通貨コードを示します。
 
-| **[リージョン]** | **Name**             | **通貨コード** |
+| **リージョン** | **名前**             | **通貨コード** |
 |------------|----------------------|-------------------|
 | DZ         | アルジェリア              | DZD               |
 | AR         | アルゼンチン            | ARS               |
@@ -122,7 +125,7 @@ ms.locfileid: "80280441"
 | BE         | ベルギー              | EUR               |
 | BR         | ブラジル               | USD               |
 | BG         | ブルガリア             | BGN               |
-| CA         | カナダ               | CAD               |
+| CA         | Canada               | CAD               |
 | CL         | チリ                | CLP               |
 | CO         | コロンビア             | COP               |
 | CR         | コスタリカ           | CRC               |
@@ -198,7 +201,7 @@ ms.locfileid: "80280441"
 | UA         | ウクライナ              | UAH               |
 | AE         | アラブ首長国連邦 | EUR               |
 | GB         | イギリス       | GBP               |
-| US         | アメリカ        | USD               |
+| US         | United States        | USD               |
 | UY         | ウルグアイ              | UYU               |
 | VE         | ベネズエラ            | USD               |
 |  |  |  |

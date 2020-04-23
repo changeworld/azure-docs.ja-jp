@@ -3,27 +3,23 @@ title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666515"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010727"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
-[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)のグラフの注釈では、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 注釈により、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 それらは、[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) ビルド システムで自動的に作成できます。 PowerShell から作成することにより、任意のイベントにフラグを設定する注釈を作成することもできます。
-
-> [!NOTE]
-> この記事には、非推奨の**クラシック メトリック エクスペリエンス**が反映されています。 現在、注釈は、クラシック エクスペリエンスと **[ブック](../../azure-monitor/app/usage-workbooks.md)** においてのみ使用できます。 現在のメトリック エクスペリエンスについて詳しくは、「[Azure メトリックス エクスプローラーの高度な機能](../../azure-monitor/platform/metrics-charts.md)」をご覧ください。
-
-![注釈の例](./media/annotations/0-example.png)
+注釈は、新しいビルドのデプロイ先やその他の重要なイベントを示します。 注釈により、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 それらは、[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) ビルド システムで自動的に作成できます。 PowerShell から作成することにより、任意のイベントにフラグを設定する注釈を作成することもできます。
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines ビルドでのリリース注釈
 
 リリース注釈は、Azure DevOps のクラウド ベースの Azure Pipelines サービスの機能です。
 
 ### <a name="install-the-annotations-extension-one-time"></a>注釈拡張機能のインストール (1 回限り)
+
 リリース注釈を作成できるようにするには、Visual Studio Marketplace で入手可能な Azure DevOps 拡張機能のいずれかをインストールする必要があります。
 
 1. [Azure DevOps](https://azure.microsoft.com/services/devops/) プロジェクトにサインインします。
@@ -74,11 +70,26 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
 1. メイン リリース テンプレート ウィンドウで **[保存]** 選択して、テンプレートを保存します。
 
 ## <a name="view-annotations"></a>注釈を表示する
-これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになります。 注釈は、**メトリックス エクスプローラー**のグラフに表示されます。
 
-注釈マーカー (薄いグレーの矢印) を選択すると、要求元、ソース管理の分岐、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
 
-![リリース注釈マーカーを選択する。](./media/annotations/8-release.png)
+   > [!NOTE]
+   > リリース注釈は、Application Insights の [メトリック] ペインでは現在使用できません。
+
+これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになります。 注釈は次の場所に表示できます。
+
+使用状況ペイン。ここではリリース注釈を手動で作成することもできます。
+
+![一定時間内のユーザーのアクセス数を表示した棒グラフのスクリーンショット。 リリース注釈は、リリースが発生した時刻を示すグラフの上の緑色のチェックマークとして表示されます。](./media/annotations/usage-pane.png)
+
+視覚化により x 軸に時間を表示したログベースのブック クエリ。
+
+![注釈が表示された時系列ログベース クエリを示すブック ペインのスクリーンショット](./media/annotations/workbooks-annotations.png)
+
+ブックの注釈を有効にするには、 **[詳細設定]** に移動して **[コメントを表示する]** を選択します。
+
+![[詳細設定] メニューのスクリーンショット。[コメントを表示する] というテキストが強調表示され、有効にするために設定の横にチェックマークが付いています。](./media/annotations/workbook-show-annotations.png)
+
+注釈マーカーを選択すると、要求元、ソース管理の分岐、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
 
 ## <a name="create-custom-annotations-from-powershell"></a>PowerShell からカスタム注釈を作成する
 Azure DevOps を使わずに、GitHub の [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell スクリプトを使って、任意のプロセスから注釈を作成できます。 

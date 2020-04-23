@@ -1,24 +1,19 @@
 ---
 title: C# と Resource Manager テンプレートを使用して VM をデプロイする
 description: C# および Resource Manager テンプレートを使用して Azure VM をデプロイする方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: f636af911b3c6eb7d40a5ce5052bf17ae5d10f01
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452198"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082919"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77160450"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536065"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -30,7 +30,7 @@ ms.locfileid: "77160450"
 
 * [Microsoft アカウント](https://www.outlook.com)または [Office 365 Developer Program](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>アプリケーションの登録 
+## <a name="register-your-application"></a>アプリケーションの登録
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 1. アカウントが複数の Azure AD テナントに存在する場合:
     - ページの右上隅にあるメニューからプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
@@ -78,7 +78,7 @@ or
 
 プロジェクト ルート ディレクトリから、次のコマンドを実行します。
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>アプリケーションの構成
 

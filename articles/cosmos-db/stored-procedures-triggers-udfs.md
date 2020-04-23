@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB でストアドプロシージャ、トリガー、UDF を操作する
 description: この記事では、Azure Cosmos DB のストアド プロシージャ、トリガー、ユーザー定義関数などの概念について説明します。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065892"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010547"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、およびユーザー定義関数
 
@@ -90,7 +90,7 @@ Azure Cosmos DB には、Azure Cosmos 項目に対して操作を実行するこ
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>ユーザー定義関数
 
-ユーザー定義関数 (UDF) は、SQL API クエリ言語の構文を拡張してカスタム ビジネス ロジックを簡単に実装するために使用します。 これらは、クエリ内でのみ呼び出すことができます。 UDF は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF はセカンダリ レプリカで実行できます。 例については、「[ユーザー定義関数を記述する方法](how-to-write-stored-procedures-triggers-udfs.md#udfs)」の記事を参照してください。
+[ユーザー定義関数](sql-query-udfs.md) (UDF) は、SQL API クエリ言語の構文を拡張してカスタム ビジネス ロジックを簡単に実装するために使用します。 これらは、クエリ内でのみ呼び出すことができます。 UDF は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF はセカンダリ レプリカで実行できます。 例については、「[ユーザー定義関数を記述する方法](how-to-write-stored-procedures-triggers-udfs.md#udfs)」の記事を参照してください。
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript 統合言語クエリ API
 

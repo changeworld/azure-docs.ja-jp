@@ -1,5 +1,5 @@
 ---
-title: パートナー センターでの商用マーケットプレース向け分析
+title: パートナー センターでのコマーシャル マーケットプレース向け分析
 description: 分析レポートにアクセスして、売上を監視し、パフォーマンスを評価し、マーケットプレースのオファーを最適化することについての概要。
 author: dsindona
 ms.author: dsindona
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 1f1db4479d04b8f81f95b95c5277efb35210745b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279778"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262283"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでの商用マーケットプレース向け分析
+# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース向け分析
 
 Microsoft Partner Center の分析レポートにアクセスして、売上を監視し、パフォーマンスを評価し、マーケットプレースのオファーを最適化する方法について説明します。 パートナーは、パートナー センターでサポートされているデータ視覚化および分析情報グラフを使用してオファーの一覧を監視し、売上を最大化する方法を見つけることができます。 改善された分析ツールにより、パフォーマンスの結果に基づいて行動し、顧客とリセラーとの優れた関係を維持することができます。
 
@@ -32,5 +32,5 @@ Microsoft Partner Center の分析レポートにアクセスして、売上を�
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
 - 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](./customer-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./downloads-dashboard.md)」を参照してください。
-- Azure Marketplace と AppSource でのプランに関する顧客からのフィードバックを統合して表示する方法については、「[コマーシャル マーケットプレース分析の評価とレビューのダッシュボード](./ratings-reviews.md)」を参照してください。
+- Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[コマーシャル マーケットプレース分析の [評価とレビュー] ダッシュボード](./ratings-reviews.md)」を参照してください。
 - コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。

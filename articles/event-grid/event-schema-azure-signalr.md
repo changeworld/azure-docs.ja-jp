@@ -1,25 +1,26 @@
 ---
-title: Azure Event Grid の Azure SignalR 用のイベント スキーマ
+title: Event Grid ソースとしての Azure SingnalR
 description: Azure Event Grid の Azure SignalR イベントに対して用意されているプロパティについて説明します
 services: event-grid
-author: chenyl
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 06/11/2019
-ms.author: chenyl
-ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67788514"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393391"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR Service 用の Azure Event Grid イベント スキーマ
 
-この記事では、SignalR Service イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+この記事では、SignalR Service イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 また、Azure SingnalR をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
 
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
 
-## <a name="available-event-types"></a>使用可能なイベントの種類
+### <a name="available-event-types"></a>使用可能なイベントの種類
 
 SignalR Service から出力されるイベントの種類は次のとおりです。
 
@@ -28,7 +29,7 @@ SignalR Service から出力されるイベントの種類は次のとおりで�
 | Microsoft.SignalRService.ClientConnectionConnected | クライアント接続が接続されたときに発生します。 |
 | Microsoft.SignalRService.ClientConnectionDisconnected | クライアント接続が接続解除されたときに発生します。 |
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 次の例では、クライアント接続が接続された場合のイベントのスキーマを示します。 
 
@@ -71,7 +72,7 @@ SignalR Service から出力されるイベントの種類は次のとおりで�
 }]
 ```
 
-## <a name="event-properties"></a>イベントのプロパティ
+### <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
@@ -95,6 +96,12 @@ SignalR Service から出力されるイベントの種類は次のとおりで�
 | connectionId | string | クライアント接続の一意の識別子です。 |
 | userId | string | 要求で定義されているユーザーの識別子です。 |
 | errorMessage | string | 接続解除の原因となったエラーです。 |
+
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+|タイトル | 説明 |
+|---------|---------|
+| [Event Grid を使用して Azure SignalR Service のイベントに反応する](../azure-signalr/signalr-concept-event-grid-integration.md) | Azure SignalR Service と Event Grid の統合の概要。 |
+| [Azure SignalR Service のイベントを Event Grid に送信する方法](../azure-signalr/signalr-howto-event-grid-integration.md) | Event Grid を通して Azure SignalR Service のイベントをアプリケーションに送信する方法を示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

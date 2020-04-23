@@ -1,21 +1,14 @@
 ---
 title: エンティティにラベルを付ける発話例
-titleSuffix: Azure Cognitive Services
 description: LUIS ポータルの意図の詳細ページで、発話例内にサブコンポーネントがある機械学習エンティティにラベルを付ける方法について説明します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898369"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382400"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>発話例内の機械学習エンティティにラベルを付ける
 
@@ -87,6 +80,10 @@ ms.locfileid: "78898369"
 1. エンティティ パレットが開いたら、エンティティの一覧からエンティティを選択します。
 1. **エンティティ インスペクター**に移動し、既存のロールを選択するか、または新しくロールを作成します。
 1. 発話の例のテキストに、エンティティのロールをラベル付けします。
+
+## <a name="labeling-for-punctuation"></a>句読点のラベル付け
+
+句読点にラベルを付ける必要はありません。 句読点が発話予測に与える影響を制御するには、[アプリケーションの設定](luis-reference-application-settings.md)を使用します。
 
 ## <a name="unlabel-entities"></a>エンティティのラベルの解除
 

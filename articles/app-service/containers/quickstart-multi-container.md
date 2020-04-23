@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 62e34859775cb8c574d8d463f636ed81dce8ece3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ab8e416e460546dcf758c83aa8b357139c6dbefb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045865"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085877"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose 構成を使用してマルチコンテナー (プレビュー) アプリを作成する
 
@@ -77,7 +77,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 App Service プランが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -88,12 +88,12 @@ App Service プランが作成されると、Azure CLI によって、次の例�
   "location": "South Central US",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 }
-```
+</pre>
 
 ## <a name="create-a-docker-compose-app"></a>Docker Compose アプリを作成する
 
@@ -108,7 +108,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 
-```json
+<pre>
 {
   "additionalProperties": {},
   "availabilityState": "Normal",
@@ -117,11 +117,11 @@ Web アプリが作成されると、Azure CLI によって次の例のような
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
+  "defaultHostName": "&lt;app_name&gt;.azurewebsites.net",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 ### <a name="browse-to-the-app"></a>アプリの参照
 

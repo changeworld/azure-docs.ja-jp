@@ -132,7 +132,7 @@
     - name: 業界アプリケーション テンプレート
       items:
         - name: 小売
-          href: ../retail/overview-iot-central-retail-pnp.md
+          href: ../retail/overview-iot-central-retail.md
         - name: エネルギー
           href: ../energy/overview-iot-central-energy.md
         - name: Government

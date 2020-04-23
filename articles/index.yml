@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 7f78774b0c26e26bb0fb0da1ac7a11ab13ee23e0
-  ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+  ms.openlocfilehash: c4f5f9516e4c96876bbdb3e37680ccf0ce7fea7a
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/21/2020
-  ms.locfileid: "81732929"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82086506"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -475,15 +475,6 @@ productDirectory:
     - featured
     - compute
     url: virtual-machines/linux/index.yml
-  - title: Mobile Apps
-    summary: モバイル アプリ用のバックエンドを構築およびホスト
-    imageSrc: https://docs.microsoft.com/media/common/i_mobileapp.svg
-    azureCategories:
-    - compute
-    - containers
-    - mobile
-    - web
-    url: app-service-mobile/index.yml
   - title: SAP HANA on Azure Large Instances
     summary: どのハイパースケール クラウド プロバイダーよりも大規模な SAP HANA ワークロードを実行
     imageSrc: https://static.docs.com/ui/media/product/azure/sap.svg

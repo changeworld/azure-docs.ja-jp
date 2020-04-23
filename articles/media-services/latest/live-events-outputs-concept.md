@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546046"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010581"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -34,7 +34,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
-[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)には、パススルーとライブ エンコードの 2 種類があります。 これらの種類は、[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
+[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 これらの種類は、[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
 
 * **LiveEventEncodingType.None**:オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 パススルー モードとも呼ばれます。
 * **LiveEventEncodingType.Standard**:オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 投稿フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします。
@@ -69,7 +69,7 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ## <a name="creating-live-events"></a>ライブ イベントの作成
 
-### <a name="options"></a>オプション
+### <a name="options"></a>Options
 
 ライブ イベントの作成時には次のオプションを指定できます。
 
@@ -89,7 +89,7 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 * ライブ イベントの名前は最大 32 文字です。
 * 名前は、次の [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
 
-[「ストリーミング エンドポイント」の「命名規則」](streaming-endpoint-concept.md#naming-convention)も参照してください。
+[ストリーミング エンドポイントの命名規則](streaming-endpoint-concept.md#naming-convention)に関するページも参照してください。
 
 > [!TIP]
 > ライブ イベント名の一意性を保証するには、GUID を生成してから、すべてのハイフンと中かっこを削除します (存在する場合)。 文字列はすべてのライブ イベントで一意であり、長さは 32 であることが保証されています。
@@ -111,15 +111,18 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 * バニティ URL
 
-    バニティ モードは、ハードウェア ブロードキャスト エンコーダーを使用していて、ライブ イベントの開始時にエンコーダーを再構成したくない大規模なメディア放送局に好まれています。 時間の経過と共に変化しない、予測的な取り込み URL が望まれています。
+    バニティ モードは、ハードウェア ブロードキャスト エンコーダーを使用していて、ライブ イベントの開始時にエンコーダーを再構成したくない大規模なメディア放送局に好まれています。 これらの放送局は、時間が経過しても変化しない、予測的な取り込み URL を必要としています。
+    
+    > [!NOTE]
+    > Azure portal では、バニティ URL は "*永続的な入力 URL*" という名前になります。
 
-    このモードを指定するには、作成時に `vanityUrl` を `true` に設定します (既定値は `false`)。 また、作成時に、独自のアクセス トークン (`LiveEventInput.accessToken`) を渡す必要があります。 トークンの値を指定して、URL 内のランダムなトークンを回避します。 このアクセス トークンは、有効な GUID 文字列 (ハイフン付きまたはなし) である必要があります。 モードはいったん設定されると、更新できません。
+    API でこのモードを指定するには、作成時に `vanityUrl` を `true` に設定します (既定値は `false`)。 また、作成時に、独自のアクセス トークン (`LiveEventInput.accessToken`) を渡す必要があります。 トークンの値を指定して、URL 内のランダムなトークンを回避します。 このアクセス トークンは、有効な GUID 文字列 (ハイフン付きまたはなし) である必要があります。 モードはいったん設定されると、更新できません。
 
     アクセス トークンは、データ センター内で一意である必要があります。 アプリでバニティ URL を使用する必要がある場合は、(既存の GUID を再利用する代わりに) 常にアクセス トークン用の新しい GUID インスタンスを作成することをお勧めします。
 
     バニティ URL を有効にしたり、アクセス トークンを有効な GUID (たとえば `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) に設定したりするには、次の API を使用します。  
 
-    |言語|バニティ URL を有効にする|アクセス トークンを設定する|
+    |Language|バニティ URL を有効にする|アクセス トークンを設定する|
     |---|---|---|
     |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
@@ -176,7 +179,11 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ライブ出力の詳細については、「[クラウド DVRの使用](live-event-cloud-dvr.md)」を参照してください。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+[よく寄せられる質問](frequently-asked-questions.md#live-streaming)に関する記事をご覧ください。
+
+## <a name="ask-questions-and-get-updates"></a>質問する、および更新を取得する
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

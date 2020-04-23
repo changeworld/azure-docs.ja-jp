@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75421669"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537000"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
@@ -21,9 +21,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
+https://portal.azure.com で Azure にサインインします。
 
-## <a name="create-runbook"></a>Runbook を作成する
+## <a name="create-the-runbook"></a>Runbook の作成
 
 まず Runbook を作成します。 このクイックスタートで作成されるサンプル Runbook は、既定で `Hello World` を出力します。
 
@@ -31,17 +31,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[プロセス オートメーション]** の **[Runbook]** をクリックします。 Runbook の一覧が表示されます。
 
-1. 一覧の上部にある **[Runbook の作成]** ボタンをクリックします。
+1. リストの一番上にある **[Runbook の作成]** をクリックします。
 
-1. Runbook の **[名前]** に「Hello-World」と入力し、 **[Runbook の種類]** に **[PowerShell]** を選択します。 **Create** をクリックしてください。
+1. **[名前]** フィールドに Runbook の名前として「`Hello-World`」を入力し、 **[Runbook の種類]** フィールドで **[PowerShell]** を選択します。 
 
    ![このページに Automation Runbook に関する情報を入力します](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Runbook が作成され、 **[PowerShell Runbook の編集]** ページが開きます。
+1. **Create** をクリックしてください。 Runbook が作成され、[PowerShell Runbook の編集] ページが開きます。
 
     ![Runbook エディターで PowerShell スクリプトを作成する](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. 以下のコードを編集ウィンドウに入力するか貼り付けます。 その結果、既定値が "World" の Name というオプションの入力パラメーターが作成され、その入力値を使用する文字列が出力されます。
+1. 以下のコードを編集ウィンドウに入力するか貼り付けます。 その結果、既定値が `World` の `Name` というオプションの入力パラメーターが作成され、その入力値を使用する文字列が出力されます。
 
    ```powershell-interactive
    param
@@ -61,15 +61,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Runbook が作成されたら、Runbook をテストして動作することを確認します。
 
-1. **[テスト ウィンドウ]** をクリックして、 **[テスト]** ページを開きます。
+1. **[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。
 
 1. **[名前]** の値を入力し、 **[開始]** をクリックします。 テスト ジョブが開始され、ジョブの状態と出力が表示されます。
 
     ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. 右上の **[X]** をクリックして、 **[テスト]** ページを閉じます。 表示されるポップアップで **[OK]** を選択します。
+1. 右上の **[X]** をクリックして、[テスト] ペインを閉じます。 表示されるポップアップで **[OK]** を選択します。
 
-1. **[PowerShell Runbook の編集]** ページで **[発行]** をクリックして、アカウントの Runbook の公式バージョンとして Runbook を発行します。
+1. [PowerShell Runbook の編集] ページで **[発行]** をクリックして、アカウントの Runbook の公式バージョンとして Runbook を発行します。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
@@ -77,7 +77,7 @@ Runbook が作成されたら、Runbook をテストして動作することを�
 
 Runbook が公開されると、概要ページが表示されます。
 
-1. Runbook の概要ページで、 **[開始]** をクリックしてこの Runbook の **[Runbook の開始]** 構成ページを開きます。
+1. Runbook の概要ページで、 **[開始]** をクリックしてこの Runbook の [Runbook の開始] 構成ページを開きます。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
@@ -85,7 +85,7 @@ Runbook が公開されると、概要ページが表示されます。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. **[ジョブの状態]** が **[実行中]** または **[完了]** に変わったら、 **[出力]** をクリックして **[出力]** ウィンドウを開き、Runbook の出力を確認します。
+1. [ジョブの状態] が `Running` または `Completed` に変わったら、 **[出力]** をクリックして [出力] ペインを開き、Runbook の出力を確認します。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

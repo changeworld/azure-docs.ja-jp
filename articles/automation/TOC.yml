@@ -134,7 +134,7 @@
           href: source-control-integration.md
     - name: 構成管理
       items:
-        - name: State Configuration の管理 (DSC)
+        - name: 状態の構成 (DSC)
           items:
             - name: 概要
               href: automation-dsc-overview.md
@@ -156,7 +156,7 @@
               href: automation-dsc-diagnostics.md
             - name: DSC による問題のトラブルシューティング
               href: troubleshoot/desired-state-configuration.md
-        - name: Change Tracking と Inventory の管理
+        - name: 変更履歴とインベントリ
           items:
             - name: 概要
               href: change-tracking.md
@@ -182,7 +182,7 @@
                   href: troubleshoot/onboarding.md
                 - name: 変更履歴とインベントリの使用
                   href: troubleshoot/change-tracking.md
-    - name: 勤務時間外の VM の起動/停止
+    - name: 勤務時間外に VM を起動/停止する
       items:
         - name: 概要
           href: automation-solution-vm-management.md

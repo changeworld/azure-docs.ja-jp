@@ -1,25 +1,19 @@
 ---
 title: パターンの構文リファレンス - LUIS
-titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) アプリでユーザーの発話から重要なデータを抽出するエンティティを作成します。 抽出されたデータは、クライアント アプリケーションによって使用されます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218709"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382156"
 ---
 # <a name="pattern-syntax"></a>パターンの構文
 
-パターンの構文は、発話のテンプレートです。 テンプレートには、一致させるワードとエンティティのほか、無視するワードや句読点が含まれている必要があります。 正規表現では**ありません**。
+パターンの構文は、発話のテンプレートです。 テンプレートには、一致させるワードとエンティティのほか、無視するワードや[句読点](luis-reference-application-settings.md#punctuation-normalization)が含まれている必要があります。 正規表現では**ありません**。
 
 > [!CAUTION]
 > パターンに含まれるのは、サブコンポーネントではなく、機械学習エンティティの親のみです。
@@ -28,7 +22,7 @@ ms.locfileid: "79218709"
 
 パターン構文では、次の構文がサポートされています。
 
-|Function|構文|入れ子レベル|例|
+|機能|構文|入れ子レベル|例|
 |--|--|--|--|
 |エンティティ| {} - 中かっこ|2|フォーム {エンティティ名} はどこですか?|
 |省略可能|[] - 大かっこ<BR><BR>省略可能とグループ化の組み合わせの入れ子レベルは、3 に制限されています |2|疑問符は省略可能です [?]|
@@ -125,7 +119,7 @@ LUIS は Pattern.any エンティティに基づいて書籍のタイトルの�
 
 前の表では、subject は `the man from La Mancha` (書籍のタイトル) である必要がありますが、subject にオプションのワード `from` が含まれているため、タイトルが間違って予測されています。
 
-このパターンの例外を修正するには、`the man from la mancha`明示的なリストのオーサリング API[ を使用して、](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) を {subject} エンティティに対する明示的なリストの一致として追加します。
+このパターンの例外を修正するには、[明示的なリストのオーサリング API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) を使用して、`the man from la mancha` を {subject} エンティティに対する明示的なリストの一致として追加します。
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>テンプレートの発話でオプションのテキストをマークする構文
 正規表現の角かっこの構文 `[]` を使用して、発話内のオプションのテキストをマークします。 オプションのテキストは、最大で 2 つの角かっこのみを入れ子にできます。

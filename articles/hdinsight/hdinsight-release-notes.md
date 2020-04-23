@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: e5a96d2eb67937ce4eeaa1999d8168e7f5d3d926
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130181"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084891"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -34,7 +34,7 @@ Azure HDInsight は、Azure 上でオープン ソース分析を行うエンタ
 ### <a name="tls-12-enforcement"></a>TLS 1.2 の適用
 TLS (トランスポート層セキュリティ) と SSL (Secure Sockets Layer) は、コンピューター ネットワーク上の通信にセキュリティを確保する暗号プロトコルです。 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0) の詳細を参照してください。 HDInsight はパブリック HTTPs エンドポイントで TLS 1.2 を使用しますが、TLS 1.1 も下位互換性のために引き続きサポートされています。 
 
-このリリースでは、お客様はパブリック クラスター エンドポイント経由のすべての接続でのみ TLS 1.2 を選択できます。 これのサポートに、クラスターの作成時に指定できる新しいプロパティ **minSupportedTlsVersion** が導入されました。 このプロパティを設定しない場合、クラスターは TLS 1.0、1.1、1.2 を引き続きサポートします。これは、今日の動作と同じです。 お客様はこのプロパティの値を "1.2" に設定できます。これは、クラスターが TLS 1.2 以降のみをサポートすることを意味します。 詳細については、[仮想ネットワークの計画に関するページの「トランスポート層セキュリティ」](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security)のセクションを参照してください。
+このリリースでは、お客様はパブリック クラスター エンドポイント経由のすべての接続でのみ TLS 1.2 を選択できます。 これのサポートに、クラスターの作成時に指定できる新しいプロパティ **minSupportedTlsVersion** が導入されました。 このプロパティを設定しない場合、クラスターは TLS 1.0、1.1、1.2 を引き続きサポートします。これは、今日の動作と同じです。 お客様はこのプロパティの値を "1.2" に設定できます。これは、クラスターが TLS 1.2 以降のみをサポートすることを意味します。 詳細については、「[トランスポート層セキュリティ](./transport-layer-security.md)」を参照してください。
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>Bring Your Own Key でディスクを暗号化する
 HDInsight のマネージド ディスクはすべて、Azure Storage Service Encryption (SSE) で保護されます。 これらのディスク上のデータは、既定で Microsoft が管理するキーを使用して暗号化されます。 このリリース以降、ディスクの暗号化に Bring Your Own Key (BYOK) を使用し、Azure Key Vault を使用して管理することができます。 BYOK 暗号化はクラスターの作成時に 1 回のステップで構成でき、追加コストはかかりません。 Azure Key Vault にマネージド ID として HDInsight を登録し、お使いのクラスターの作成時に暗号化キーを追加するだけです。 詳細については、「[お客様が管理するキー ディスクの暗号化](https://docs.microsoft.com/azure/hdinsight/disk-encryption)」を参照してください。
@@ -66,14 +66,3 @@ HDInsight は引き続き、クラスターの信頼性とパフォーマンス�
 ## <a name="component-version-change"></a>コンポーネントのバージョンの変更
 このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 および HDInsight 3.6 の現在のコンポーネント バージョンについては、こちらを参照してください。
 
-## <a name="known-issues"></a>既知の問題
-
-2020 年 3 月 18 日の時点で、西ヨーロッパまたは北ヨーロッパの一部の Azure HDInsight のお客様は、これらのリージョン内で HDInsight クラスターを作成またはスケーリングするときにエラー通知を受け取りました。 この問題に関連するエラーには次のものがあります。
-
-- Internal server error occurred while processing the request. Please retry the request or contact support. (要求を処理しているときに内部サーバー エラーが発生しました。要求を再試行するか、サポートに連絡してください。)
-- 少なくとも 1 つのリソースのデプロイ操作に失敗しました。 詳細については、デプロイ操作の一覧を表示してください。 使用状況の詳細については、 https://aka.ms/DeployOperations を参照してください
-- ユーザーの SubscriptionId '\<サブスクリプション ID\>' には、リソース '\<クラスター名>' を作成するためのコアが残っていません。 必須: \<X\>、利用可能な数:0。
-
-エンジニアはこの問題を認識しており、積極的に調査しています。
-
-さらにヘルプが必要な場合は、[サポート リクエスト](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を作成してください。

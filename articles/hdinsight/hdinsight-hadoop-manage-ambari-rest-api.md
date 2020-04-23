@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/07/2019
-ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233599"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381380"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -21,21 +21,21 @@ ms.locfileid: "79233599"
 
 Apache Ambari REST API を使用して Azure HDInsight の Apache Hadoop クラスターを管理および監視する方法を説明します。
 
-## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Apache Ambari とは
+## <a name="what-is-apache-ambari"></a>Apache Ambari とは
 
 [Apache Ambari](https://ambari.apache.org) は、[REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) に支えられた使いやすい Web UI を提供することで、Hadoop クラスターの管理と監視を簡素化します。  Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* **Bash on Ubuntu on Windows 10**。  この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。  代わりに、Windows PowerShell を使用することもできます。
+* Bash on Ubuntu on Windows 10。  この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。  または、Windows PowerShell を使うこともできます。
 
-* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
+* jq。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
-* **Windows PowerShell**。  代わりに、[Bash](https://www.gnu.org/software/bash/) を使用することもできます。
+* Windows PowerShell。  または、[Bash](https://www.gnu.org/software/bash/) を使うこともできます。
 
-## <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API のベース URI
+## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API のベース URI
 
  HDInsight の Ambari REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` はお使いのクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別**されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
 
@@ -48,6 +48,7 @@ Enterprise セキュリティ パッケージ クラスターの場合、`admin`
 ## <a name="examples"></a>例
 
 ### <a name="setup-preserve-credentials"></a>セットアップ (資格情報の保存)
+
 各例で再入力しなくて済むように、資格情報を保存します。  クラスター名は別の手順で保存します。
 
 **A.Bash**  
@@ -64,9 +65,10 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>大文字と小文字が正しく区別されたクラスター名を確認する
-クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。  ここでの手順では、実際の大文字小文字の区別を示し、以降のすべての例で使用できるように、それを変数に格納します。
 
-次のスクリプトを編集して、`CLUSTERNAME` を実際のクラスター名に置き換えます。 その後、コマンドを入力します。 (FQDN のクラスター名では、大文字と小文字は区別されません)。
+クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。  ここの手順では、実際の大文字小文字の区別を示し、後のすべての例のために、それを変数に格納します。
+
+次のスクリプトを編集して、`CLUSTERNAME` を実際のクラスター名に置き換えます。 その後、コマンドを入力します。 (FQDN のクラスター名は大文字と小文字が区別されません。)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -99,9 +101,9 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a> クラスター ノードの FQDN を取得する
+### <a name="get-the-fqdn-of-cluster-nodes"></a>クラスター ノードの FQDN を取得する
 
-HDInsight を使用する際は、クラスター ノードの完全修飾ドメイン名 (FQDN) を知ることが必要になる場合があります。 次の例を使用して、クラスター内のさまざまなノードの FQDN を簡単に取得できます。
+クラスター ノードの完全修飾ドメイン名 (FQDN) を知ることが必要になる場合があります。 次の例を使用して、クラスター内のさまざまなノードの FQDN を簡単に取得できます。
 
 **すべてのノード**  
 
@@ -159,13 +161,13 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a> クラスター ノードの内部 IP アドレスを取得する
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a>クラスター ノードの内部 IP アドレスを取得する
 
 このセクションの例によって返される IP アドレスは、インターネット経由で直接アクセスすることはできません。 HDInsight クラスターが含まれている Azure Virtual Network 内からだけアクセスできます。
 
 HDInsight と仮想ネットワークの操作の詳細については、「[Plan a virtual network for HDInsight](hdinsight-plan-virtual-network-deployment.md)」 (HDInsight 用の仮想ネットワークの計画) を参照してください。
 
-IP アドレスを検索するには、クラスター ノードの内部完全修飾ドメイン名 (FQDN) が必要です。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会し、次に Ambari に各ホストの IP アドレスを照会します。
+IP アドレスを検索するには、クラスター ノードの内部完全修飾ドメイン名 (FQDN) が必要です。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会します。 次に Ambari に各ホストの IP アドレスを照会します。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
@@ -183,7 +185,7 @@ foreach($item in $respObj.items) {
     $hostName = [string]$item.Hosts.host_name
     $hostInfoResp = Invoke-WebRequest -Uri "$uri/$hostName" `
         -Credential $creds -UseBasicParsing
-    $hostInfoObj = ConvertFrom-Json $hostInfoResp 
+    $hostInfoObj = ConvertFrom-Json $hostInfoResp
     $hostIp = $hostInfoObj.Hosts.ip
     "$hostName <--> $hostIp"
 }
@@ -191,7 +193,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>既定のストレージを取得する
 
-HDInsight クラスターを作成する場合は、クラスターの既定のストレージとして Azure Storage アカウントまたは Data Lake Storage を使用する必要があります。 Ambari を使用すると、クラスターが作成された後にこの情報を取得できます。 たとえば、HDInsight の外部のコンテナーにデータの読み取り/書き込みをする場合です。
+HDInsight クラスターでは、既定のストレージとして Azure Storage アカウントまたは Data Lake Storage を使用する必要があります。 Ambari を使用すると、クラスターが作成された後にこの情報を取得できます。 たとえば、HDInsight の外部のコンテナーにデータの読み取り/書き込みをする場合です。
 
 以下の例では、クラスターの既定のストレージ構成を取得します。
 
@@ -253,7 +255,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 > [!NOTE]  
 > [Azure PowerShell](/powershell/azure/overview) に用意されている [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) コマンドレットも、クラスターのストレージ情報を返します。
 
-### <a name="get-all-configurations"></a><a name="get-all-configurations"></a> すべての構成を取得する
+### <a name="get-all-configurations"></a>すべての構成を取得する
 
 クラスターに使用できる構成を取得します。
 
@@ -267,7 +269,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-この例は、クラスターにインストールされているコンポーネントの現在の構成 ( *tag* 値で特定) を含む JSON ドキュメントを返します。 次の例は Spark タイプのクラスターから返されるデータの抜粋です。
+この例では、インストールされたコンポーネントの現在の構成を含む JSON ドキュメントが返されます。 *tag* の値を参照してください。 次の例は Spark タイプのクラスターから返されるデータの抜粋です。
 
 ```json
 "jupyter-site" : {
@@ -286,7 +288,7 @@ $respObj.Content
 
 ### <a name="get-configuration-for-specific-component"></a>特定のコンポーネントの構成を取得する
 
-興味のあるコンポーネントの構成を取得します。 次の例では、`INITIAL` を、前の要求から返されるタグ値で置き換えます。
+目的のコンポーネントの構成を取得します。 次の例では、`INITIAL` を、前の要求から返されるタグ値で置き換えます。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
@@ -305,10 +307,11 @@ $resp.Content
 1. `newconfig.json` を作成します。  
    変更後、次のコマンドを入力します。
 
-   * `livy2-conf` を必要なコンポーネントに置き換えます。
+   * `livy2-conf` を新しいコンポーネントで置き換えます。
    * `INITIAL` を、「[すべての構成を取得する](#get-all-configurations)」で取得した `tag` の実際の値に置き換えます。
 
-     **A.Bash**  
+     **A.Bash**
+
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
@@ -326,11 +329,11 @@ $resp.Content
      $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     jq を使用して、HDInsight から取得したデータを新しい構成テンプレートに変換します。 具体的には、これらの例では以下の操作を実行します。
+     jq を使用して、HDInsight から取得したデータを新しい構成テンプレートに変換します。 具体的には、これらの例では以下の操作が実行されます。
 
    * 文字列 "version" と日付を含む一意の値が作成され、`newtag` に格納されます。
 
-   * 新しい望ましい構成のルート ドキュメントが作成されます。
+   * 新しい構成のルート ドキュメントが作成されます。
 
    * `.items[]` 配列のコンテンツが取得され、**desired_config** 要素の下に追加されます。
 
@@ -382,7 +385,7 @@ $resp.Content
     $resp.Content
     ```  
 
-    これらのコマンドは、**newconfig.json** ファイルの内容を新たな望ましい構成としてクラスターに送信します。 要求から、JSON ドキュメントが返されます。 このドキュメントの **versionTag** 要素は、送信したバージョンに一致する必要があります。**configs** オブジェクトには、要求した構成変更が含まれます。
+    これらのコマンドは、**newconfig.json** ファイルの内容を新たな構成としてクラスターに送信します。 要求から、JSON ドキュメントが返されます。 このドキュメントの **versionTag** 要素は、送信したバージョンに一致する必要があります。**configs** オブジェクトには、要求した構成変更が含まれます。
 
 ### <a name="restart-a-service-component"></a>サービス コンポーネントの再起動
 

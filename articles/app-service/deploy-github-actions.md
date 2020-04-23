@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562209"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084993"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -62,7 +62,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 4. ここで、ご自分のブランチの `.github/workflows/workflow.yml` のワークフロー ファイルで、デプロイ Azure Web アプリ アクションの入力 `publish-profile` のシークレットを置き換えます。
     
     ```yaml
-        - uses: azure/webapps-deploy@v1
+        - uses: azure/webapps-deploy@v2
           with:
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
@@ -182,7 +182,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 ## <a name="deploy-to-app-service"></a>App Service にデプロイする
 
-ご自分のコードを App Service アプリにデプロイするには、`azure/webapps-deploy@v1 ` アクションを使用します。 このアクションには、次の 4 つのパラメーターがあります。
+ご自分のコードを App Service アプリにデプロイするには、`azure/webapps-deploy@v2` アクションを使用します。 このアクションには、次の 4 つのパラメーターがあります。
 
 | **パラメーター**  | **説明**  |
 |---------|---------|
@@ -219,7 +219,7 @@ jobs:
         npm run test --if-present
        
     - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v1
+          uses: azure/webapps-deploy@v2
           with: 
             app-name: node-rn
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
@@ -258,7 +258,7 @@ jobs:
         npm run test --if-present
                
     # deploy web app using Azure credentials
-    - uses: azure/webapps-deploy@v1
+    - uses: azure/webapps-deploy@v2
       with:
         app-name: 'node-rn'
 

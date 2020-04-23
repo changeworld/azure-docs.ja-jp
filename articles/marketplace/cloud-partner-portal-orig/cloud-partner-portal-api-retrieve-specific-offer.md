@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2182ed2377a392f55af2c1f723be325bd518349
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280458"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255918"
 ---
 <a name="retrieve-a-specific-offer"></a>特定のプランを取得する
 =========================
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 発行元の名前空間内で指定のプランが取得されます。  
 
@@ -38,11 +41,11 @@ ms.locfileid: "80280458"
 --------------
 
 
-| **Name**    | **説明**                                                                          | **データの種類** |
+| **名前**    | **説明**                                                                          | **データの種類** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | 発行元の ID。 たとえば、Contoso です。                                                        | String        |
 | offerId     | プランを一意に識別する GUID。                                                 | String        |
-| version     | 取得されるプランのバージョン。 既定では、最新版のプランが取得されます。 | 整数       |
+| version     | 取得されるプランのバージョン。 既定では、最新版のプランが取得されます。 | Integer       |
 | slotId      | プランが取得されるスロット。次のいずれかになります。      <br/>  - `Draft` (既定) の場合、現在ドラフトの状態にあるプランが取得されます。  <br/>  -  `Preview` の場合、現在プレビューの状態にあるプランが取得されます。     <br/>  -  `Production` の場合、現在運用の状態にあるプランが取得されます。          |      enum |
 | api-version | API の最新バージョン                                                                    | Date          |
 |  |  |  |
@@ -51,7 +54,7 @@ ms.locfileid: "80280458"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**          |   **Value**            |
+|  **名前**          |   **Value**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
 |  承認     | `Bearer YOUR_TOKEN`    |
@@ -168,7 +171,7 @@ ms.locfileid: "80280458"
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **Name**       |   **説明**                                                                                                               |
+|  **名前**       |   **説明**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
 |  offerTypeId    | オファーの種類を示します                                                                                                    |
 |  publisherId    | 発行元の一意の識別子。                                                                                              |
@@ -193,7 +196,7 @@ ms.locfileid: "80280458"
 
 ### <a name="offer-status"></a>オファーの状態
 
-|  **Name**                   |   **説明**                             |
+|  **名前**                   |   **説明**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | オファーは発行されていません。               |
 |  NotStarted                 | 新しいオファーですが、開始されていません。              |

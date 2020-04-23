@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76703475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536150"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
@@ -69,13 +69,13 @@ ms.locfileid: "76703475"
      - **[スコープ名]** には、`access_as_user` を使用します。
      - **[同意できるユーザー]** で **[管理者とユーザー]** オプションが選択されていることを確認します。
      - **[管理者の同意の表示名]** には、「`Access TodoListService as a user`」と入力します。
-     - **[管理者の同意の説明]** には、「`Accesses the TodoListService Web API as a user`」と入力します。
+     - **[管理者の同意の説明]** には、「`Accesses the TodoListService web API as a user`」と入力します。
      - **[ユーザーの同意の表示名]** には、「`Access TodoListService as a user`」と入力します。
-     - **[ユーザーの同意の説明]** には、「`Accesses the TodoListService Web API as a user`」と入力します。
+     - **[ユーザーの同意の説明]** には、「`Accesses the TodoListService web API as a user`」と入力します。
      - **[状態]** を **[有効化]** のままにします。
      - **[スコープの追加]** を選択します
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>登録されている Web API に一致するようにサービス プロジェクトを構成する 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>登録されている Web API に一致するようにサービス プロジェクトを構成する
 
 1. Visual Studio でソリューションを開き、**TodoListService** プロジェクトのルートの下にある **Web.config** ファイルを開きます。
 1. `ida:ClientId` パラメーターの値を、アプリケーション登録ポータルで登録したアプリケーションの**クライアント ID (アプリケーション ID)** に置き換えます。
@@ -86,7 +86,7 @@ ms.locfileid: "76703475"
 
    > 注:次の形式が使用されていることを確認します。
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >({TodoListService-Application-ID} は、TodoListService のアプリケーション ID を表す GUID です)。
 
@@ -126,7 +126,7 @@ ms.locfileid: "76703475"
 
 ## <a name="pre-authorize-your-client-application"></a>クライアント アプリケーションを事前承認する
 
-他のディレクトリのユーザーが Web API にアクセスできるようにする方法の 1 つは、Web API に対する*事前承認済み*アプリケーションの一覧にあるクライアント アプリケーションのアプリケーション ID を追加することで、Web API にアクセスするためにクライアント アプリケーションを*事前承認*することです。 事前承認済みのクライアントを追加することで、Web API の使用に同意する必要がなくなります。 Web アプリケーションを事前承認するには、次の手順に従います。
+他のディレクトリのユーザーが Web API にアクセスできるようにする方法の 1 つは、Web API に対する "*事前承認済み*" アプリケーションの一覧にあるクライアント アプリケーションのアプリケーション ID を追加することで、Web API にアクセスするためにクライアント アプリケーションを "*事前承認*" することです。 事前承認済みのクライアントを追加することで、Web API の使用に同意する必要がなくなります。 Web アプリケーションを事前承認するには、次の手順に従います。
 
 1. *アプリケーション登録ポータル*に戻り、**TodoListService** のプロパティを開きます。
 1. **[API の公開]** セクションで、 *[承認済みのクライアント アプリケーション]* セクションの **[クライアント アプリケーションの追加]** をクリックします。
@@ -141,7 +141,7 @@ ms.locfileid: "76703475"
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>省略可能:アプリケーションへのサインイン アクセスを制限する
 
-既定では、このコード サンプルをダウンロードして、前の手順の後に Azure Active Directory v2 エンドポイントを使用するようにアプリケーションを構成すると、個人アカウント (outlook.com、live.com など) と、Azure AD に統合された組織の職場または学校アカウントの両方で、トークンを要求して Web API にアクセスできます。 
+既定では、このコード サンプルをダウンロードして、前の手順の後に Azure Active Directory v2 エンドポイントを使用するようにアプリケーションを構成すると、個人アカウント (outlook.com、live.com など) と、Azure AD に統合された組織の職場または学校アカウントの両方で、トークンを要求して Web API にアクセスできます。
 
 アプリケーションにサインインできるユーザーを制限するには、次のいずれかのオプションを使用します。
 

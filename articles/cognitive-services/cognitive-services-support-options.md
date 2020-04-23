@@ -9,26 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169082"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258431"
 ---
-# <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
+# <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure Cognitive Services のサポートとフィードバックのオプション
 
-Azure Cognitive Services の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装中ですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
+Azure Cognitive Services の機能を調べ始めたばかりですか。 今まさに、アプリケーションに新しい機能を実装中でしょうか。 あるいはもうすでにサービスを使用して、その改善方法についての提案をお持ちでしょうか。 ここでは、Cognitive Services のサポートを受ける方法、最新の状態を維持する方法、フィードバックを提供する方法、バグを報告する方法に関するオプションを説明します。
 
-> [!div class="checklist"]
-> * *Azure Cognitive Services* の新しい開発に関する最新情報を入手します。
-> * リリース ノートには、すべてのリリースの情報が含まれています。
-> * 問題がコミュニティで話題に上がっていないかどうかや、既存のドキュメントで既に説明されていないかどうかを検索して確認します。
-> * 十分な答えが見つからない場合は、*Stack Overflow* で質問を投稿します。
-> * GitHub のサンプルに関する問題の場合は、*GitHub* で問題を提起します。
-> * *UserVoice フォーラム*で解決策を検索します。
+## <a name="get-support"></a>サポートを受ける
 
-## <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
+### <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
@@ -39,31 +33,88 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 アプ
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [米国政府機関向け Azure portal](https://portal.azure.us)
 
-## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow に質問を投稿する
+### <a name="search"></a>検索
+
+<div class='icon is-large'>
+    <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
+</div>
+
+より迅速に結果を得るには、[Stack Overflow](https://stackoverflow.com/)、[Microsoft Docs](https://docs.microsoft.com/azure/cognitive-services/)、[GitHub コード サンプル](https://github.com/azure-samples)など、関連するサイトへの検索を実行します。 [お気に入りの検索エンジン](https://bing.com)で`site:`クエリ表記を使用します。以下に例を示します。
+
+```
+{search keywords} site:stackoverflow.com
+```
+
+この場合、`{search keywords}` は検索のコンテキストです。 以下の範囲指定検索を適切に使用することを検討してください。
+
+ - Stack Overflow: `site:stackoverflow.com`
+ - Microsoft Docs: `site:docs.microsoft.com`
+ - GitHub のサンプル: `site:github.com/azure-samples`
+
+### <a name="post-a-question-on-stack-overflow"></a>Stack Overflow に質問を投稿する
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-コミュニティからの即時の回答を確認するには、Stack Overflow をご覧ください。 Stack Overflow は、開発関連の質問を投稿するのに適したチャネルです。 コミュニティのメンバーや Microsoft チームのメンバーから、問題の解決方法について直接意見を聞くことができます。
+Stack Overflow の検索ボックスで検索しても問題に対する回答が見つからない場合は、新しい質問を投稿します。 Stack Overflow は、開発関連の質問を投稿するのに適したチャネルです。 ここでは、Stack Overflow コミュニティのメンバーと Microsoft チームのメンバーが、問題の解決のために直接かかわって支援してくれます。
 
-検索で問題に対する回答が見つからない場合は、Stack Overflow に新しい質問を提出します。 質問を作成するときは、次のタグのいずれかを使います。
-
- - [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+質問は[こちら](https://go.microsoft.com/fwlink/?linkid=2126464)に投稿してください。 質問を確実に確認できるようにするために、質問に適切なタグを使用してください。
 
 > [!TIP]
 > Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。
 > * [よい質問をする方法](https://stackoverflow.com/help/how-to-ask)
 > * [再現可能な最小の例を作成する方法](https://stackoverflow.com/help/minimal-reproducible-example)
 
-## <a name="uservoice-forum"></a>UserVoice フォーラム
+## <a name="stay-informed"></a>最新情報を入手
+
+機能に関する新たなリリースやAzure ブログのニュースを常に把握しておくことで、プログラミング エラー、サービスバグ、あるいは Cognitive Services ではまだ利用できない機能についての役立つ情報を得ることができます。
+
+### <a name="release-notes"></a>リリース ノート
+
+<div class='icon is-large'>
+    <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
+</div>
+
+新たなリリースが利用可能になると、Cognitive Services のリリース ノートが更新されます。 ノートには、新機能、改善、バグ修正に関する情報が含まれます。
+
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Face](face/releasenotes.md)
+ - [Language Understanding (LUIS)](LUIS/whats-new.md)
+ - [Speech Services](speech-service/releasenotes.md)
+ - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)
+ - [Text Analytics](text-analytics/whats-new.md)
+ - [Video Indexer](../media-services/video-indexer/release-notes.md)
+
+### <a name="azure-blog"></a>Azure のブログ:
+
+<div class='icon is-large'>
+    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+</div>
+
+Cognitive Services に関するニュースは、[Azure ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)で共有されています。
+
+### <a name="reddit"></a>Reddit
+
+<div class='icon is-large'>
+    <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
+</div>
+
+Reddit はコミュニティ主導のディスカッション Web サイトであり、[Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) に関するニュース、ヘルプ、情報、ヒント、テクニックについての最新の会話を提供しています。 メンバー登録すると、コンテンツの投稿や、他のユーザーの投稿に対する投票が可能です。それによって、最も関連性の高いコンテンツが一番上に表示されるようになります。
+
+## <a name="give-feedback"></a>フィードバックを送る
+
+### <a name="uservoice-forum"></a>UserVoice フォーラム
 
 <div class='icon is-large'>
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
 </div>
 
-新機能を要求するには、UserVoice に投稿します。 開発しているアプリケーションで Cognitive Services と関連 API をいっそう適切に動作させるためのアイデアを共有します。
+新機能を要求するには、UserVoice に投稿します。 Cognitive Services とその API を、あなたが開発するアプリケーションによりいっそう役立てるためのアイデアを共有します。 
+
+> [!NOTE]
+> これはパブリック フォーラムであり、ここで Microsoft からのサポートを受けることはできませんが、Cognitive Services の今後のリリースにおいて各自が期待する新機能についての議論をお楽しみください。
+
 
 | サービス                       | Cognitive Services UserVoice の URL |
 |-------------------------------|---------------|
@@ -73,112 +124,58 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 アプ
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Face                          | https://cognitive.uservoice.com/forums/430315-face |
-| Form                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
-| イマーシブ                     | https://feedback.azure.com/forums/34192--general-feedback |
+| Form Recognizer               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Ink Recognizer                | https://cognitive.uservoice.com/forums/921559-ink-recognizer |
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Speech Services               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | Text Analytics                | https://cognitive.uservoice.com/forums/555922-text-analytics |
 | Translator Text               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
-## <a name="release-notes"></a>リリース ノート
+## <a name="report-bugs"></a>バグの報告
 
-<div class='icon is-large'>
-    <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
-</div>
-
-リリース ノートは、新しいリリースが使用可能になると更新されます。 ノートには、新機能、改善、バグ修正に関する情報が含まれます。
-
- - [Custom Vision](custom-vision-service/release-notes.md)
- - [Face](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
- - [Speech Services](speech-service/releasenotes.md)
- - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)
- - [Text Analytics](text-analytics/whats-new.md)
-
-## <a name="stay-informed"></a>最新情報を入手
-
-<div class='icon is-large'>
-    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
-</div>
-
-Cognitive Services に関するニュースは、[Azure ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)で共有されています。
-
-## <a name="search"></a>検索
-
-<div class='icon is-large'>
-    <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
-</div>
-
-必要な回答が、ドキュメント、サンプル、または [Stack Overflow](https://www.stackoverflow.com) の質問への回答で見つかるかもしれません。
-
- - https://stackoverflow.com/questions/tagged/azure-cognitive-services
-
-### <a name="scoped-search"></a>範囲指定の検索
-
-より迅速な結果を得るには、Stack Overflow、Microsoft Docs、GitHub のコード サンプルなど、関連するサイトに検索範囲を絞ります。 `site:`お気に入りの検索エンジン[で ](https://bing.com) クエリ表記を使用します。
-
-```
-{search keywords} site:stackoverflow.com
-```
-
-この場合、`{search keywords}` は検索のコンテキストです。 この検索では、結果の範囲が Stack Overflow になります。 以下の範囲指定検索を適切に使用することを検討してください。
-
- - Stack Overflow: `site:stackoverflow.com`
- - Microsoft Docs: `site:docs.microsoft.com`
- - GitHub のサンプル: `site:github.com/azure-samples`
-
-## <a name="create-a-github-issue"></a>GitHub の issue を作成する
+### <a name="create-a-github-issue-or-pull-request"></a>GitHub イシュー または pull request の作成
 
 <div class='icon is-large'>
     <img alt='GitHub' src='https://docs.microsoft.com/media/logos/logo_octokitty.svg'>
 </div>
 
-多くの場合、サンプルはオープン ソースとして投稿されます。 質問や問題の場合は、それぞれの GitHub リポジトリで "*問題*" を作成します。 pull request を送信することもできます。 **Azure サンプル**のソース コードについては、以下の Cognitive Services のサンプル ソース コードのリストを参照してください。
+開発者がイシューの送信や pull request の作成を行う際に使用する、3つのタイプのリポジトリを以下に示します。 イシューを作成するには、GitHub リポジトリの [*のイシュー*] タブで、[*新しいイシュー*] を選択します。 修正を提案する場合には、ファイルを直接編集し、pull request を送信します。 送信した pull requestは、リポジトリの所有者が閲覧可能になるまで、[*Pull requests*] タブに表示されたままになります。
+
+#### <a name="cognitive-services-samples"></a>Cognitive Services のサンプル
+
+多くの場合、パブリック リポジトリの中でオープンソースとしてのサンプルが見つかります。 クイックスタートのサンプルには独自のリポジトリがあり、Microsoft のドキュメントにも参照が掲載されています。 コードのエラーを見つけた場合には、イシューまたは pull request を作成します。
+
+Cognitive Services のクイック スタートとサンプル コードの一覧を以下に示します。
 
 * [Azure サンプル - Cognitive Services](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
+* [Cognitive Services のクイック スタート](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+* [Cognitive Services:Dotnet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+* [Cognitive Services:Go](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
+* [Cognitive Services:Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+* [Cognitive Services:Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Cognitive Services:Python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-バグ レポート、機能要求、または一般的な質問を作成し、ベスト プラクティスを共有できます。 バグ レポートの場合は、提供されているテンプレートに従ってください。
+#### <a name="cognitive-services-sdk-source-code"></a>Cognitive Services SDK のソースコード
 
-**バグの説明**
+SDK のソースコードには、各サービス向けの SDK の基盤情報の一部が表示されます。 バグを見つけた場合、または修正を提案する場合には、イシューの提出、または pull request の作成を行います。
 
-バグの明確で簡潔な説明。
+次に示すのは、言語別の Cognitive Services SDK ソースコードの一覧です。
 
-**再現方法**
+* [Azure SDK for Dotnet](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices)
+* [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)<br>
+* [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices)
+* [Azure SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices)
+* [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices)
 
-動作を再現する手順:
-1. ...
-2. ...
+#### <a name="azure-cognitive-services-documentation"></a>Azure Cognitive Services のドキュメント
 
-**正しい動作**
+Cognitive Services のドキュメントでは、サービスの使用方法について説明し、開発者向けのサンプルとリソースを提供します。 バグを見つけた場合、または修正を提案する場合には、イシューの提出、または pull request の作成を行います。
 
-正しい反応の明確で簡潔な説明。
-
-**使用する Cognitive Services オファリング**
-
-使用しようとしている Cognitive Services オファリングについて詳しく説明し、達成しようとしている内容の詳細を説明します。
-
-**プラットフォーム、オペレーティング システム、プログラミング言語**
-
- - OS: (例: Windows、Linux、Android、iOS、...) - 具体的にご記入ください
- - ハードウェア - x64、x86、ARM、...
- - ブラウザー (例: Chrome、Safari) (該当する場合) - 具体的にご記入ください
-
-**コンテキスト**
-
- - エラー メッセージ、ログ情報、スタック トレース、...
- - 特定のサービス操作のエラーを報告する場合は、報告するインシデントのセッション ID と時刻 (タイムゾーンを含む) を報告してください。 セッション ID は、すべてのコールバック/受け取ったイベントで報告されます。
- - 他の追加情報
-
-## <a name="reddit"></a>Reddit
-
-<div class='icon is-large'>
-    <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
-</div>
-
-Reddit は、Web コンテンツの評価とディスカッションのためのコミュニティ主導の Web サイトであり、[Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) の最新の詳細情報を提供します。 登録されたメンバーはコンテンツを送信でき、他のユーザーはそれに投票できます。最も関連性の高いコンテンツを組織的に有効にすると、そのコンテンツは一番上に表示されます。
+[MicrosoftDocs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/cognitive-services)
 
 ## <a name="next-steps"></a>次のステップ
 

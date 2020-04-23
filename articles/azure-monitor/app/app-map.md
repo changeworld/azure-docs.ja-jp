@@ -4,12 +4,12 @@ description: アプリケーション マップを使用した複雑なアプリ
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666277"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989529"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -85,7 +85,7 @@ ms.locfileid: "77666277"
 
 アプリケーション マップでは、**クラウド ロール名**プロパティを使用して、マップ上のコンポーネントが識別されます。 Application Insights SDK では、コンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。 たとえば、SDK では、Web サイト名またはサービス ロール名がクラウド ロール名プロパティに追加されます。 ただし、既定値をオーバーライドする必要のある場合があります。 クラウド ロール名をオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
 
-### <a name="netnet-core"></a>.NET/.NET Core
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **以下のようにカスタム TelemetryInitializer を作成します。**
 
@@ -153,7 +153,44 @@ ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコ�
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+**Java エージェント**
+
+[Java エージェント3.0 の場合](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)、クラウド ロール名は次のように設定されます。
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+代わりに、環境変数 ```APPLICATIONINSIGHTS_ROLE_NAME``` を使用して、クラウド ロール名を設定することもできます。
+
+**Java SDK**
+
+SDK を使用している場合、Application Insights Java SDK 2.5.0 以降では、`ApplicationInsights.xml` ファイルに `<RoleName>` を追加することで、クラウド ロール名を指定できます。例:
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Application Insights Spring Boot スターターで Spring Boot を使用する場合、必要な変更は application.properties ファイルにアプリケーションのカスタム名を設定することだけです。
+
+`spring.application.name=<name-of-app>`
+
+Spring Boot スターターにより、クラウド ロール名が、ユーザーが spring.application.name プロパティに入力した値に自動的に割り当てられます。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +211,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Application Insights Java SDK 2.5.0 以降では、`ApplicationInsights.xml` ファイルに `<RoleName>` を追加することで、クラウド ロール名を指定できます。例:
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-Application Insights Spring Boot スターターで Spring Boot を使用する場合、必要な変更は application.properties ファイルにアプリケーションのカスタム名を設定することだけです。
-
-`spring.application.name=<name-of-app>`
-
-Spring Boot スターターにより、クラウド ロール名が、ユーザーが spring.application.name プロパティに入力した値に自動的に割り当てられます。
-
-### <a name="clientbrowser-side-javascript"></a>クライアント/ブラウザー側の JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +221,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>アプリケーション マップのコンテキスト内でのクラウド ロール名の理解
 

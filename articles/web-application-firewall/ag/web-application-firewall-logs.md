@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb1af86e04c0b4ba0b59398161fa111fd8065042
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980964"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310047"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールの診断ログ
 
@@ -101,7 +101,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
 |sentBytes| 送信したパケットのサイズ (バイト単位)。|
 |timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
-|sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
+|sslEnabled| バックエンド プールへの通信に TLS または SSL を使用するかどうか。 有効な値は on と off です。|
 |host| 要求がバックエンド サーバーに送信されたときに使用されたホスト名。 バックエンドのホスト名が上書きされている場合、この名前にそのことが反映されます。|
 |originalHost| Application Gateway がクライアントから要求を受信したときに使用されたホスト名。|
 ```json
@@ -144,9 +144,9 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
 |sentBytes| 送信したパケットのサイズ (バイト単位)。|
 |timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
-|sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
-|sslCipher| SSL 通信に使用されている暗号スイート (SSL が有効な場合)|
-|sslProtocol| 使用されている SSL プロトコル (SSL が有効な場合)|
+|sslEnabled| バックエンド プールへの通信に TLS を使用するかどうか。 有効な値は on と off です。|
+|sslCipher| TLS 通信に使用されている暗号スイート (TLS が有効な場合)。|
+|sslProtocol| 使用されている TLS プロトコル (TLS が有効な場合)。|
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
 |serverResponseLatency| バックエンド サーバーからの応答の待機時間。|

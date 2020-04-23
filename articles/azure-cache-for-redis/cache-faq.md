@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235543"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010224"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -54,7 +54,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [Redis データベースについて](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
-* [Redis への接続に非 SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [Redis への接続に非 TLS/SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>運用に関する FAQ
 * [いくつかの運用上のベスト プラクティスについて](#what-are-some-production-best-practices)
@@ -112,7 +112,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Cache for Redis のパフォーマンス
-次の表に、Azure Cache for Redis のエンドポイントに対して IaaS VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 SSL のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
+次の表に、Azure Cache for Redis のエンドポイントに対して IaaS VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 TLS のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
 
 >[!NOTE] 
 >これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。 アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
@@ -244,7 +244,7 @@ Azure Cache for Redis のローカル エミュレーターがなくても、ロ
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、ブログ記事「[Azure Cache for Redis で Redis コマンドライン ツールを使用する方法](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)」の記事を参照してください。
+> Redis コマンド ライン ツールは TLS ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを TLS ポートに安全に接続することができます。詳細については、ブログ記事「[Azure Cache for Redis で Redis コマンドライン ツールを使用する方法](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)」の記事を参照してください。
 >
 >
 
@@ -281,15 +281,15 @@ Redis データベースとは、単に同じ Redis インスタンス内でデ�
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Redis への接続に非 SSL ポートを有効にする必要がある状況
-Redis サーバーはネイティブで SSL をサポートしませんが、Azure Cache for Redis では SSL がサポートされます。 Azure Cache for Redis に接続しようとしていて、クライアントが StackExchange.Redis のように SSL をサポートしている場合は、SSL を使用する必要があります。
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>Redis への接続に非 TLS/SSL ポートを有効にする必要がある状況
+Redis サーバーはネイティブで TLS をサポートしませんが、Azure Cache for Redis ではサポートされます。 Azure Cache for Redis に接続しようとしていて、クライアントが StackExchange.Redis のように TLS をサポートしている場合は、TLS を使用する必要があります。
 
 >[!NOTE]
->既定では、新しい Azure Cache for Redis インスタンスの SSL 以外のポートは無効になっています。 クライアントが SSL をサポートしていない場合は、[Azure Cache for Redis でのキャッシュの構成](cache-configure.md)に関するページの「[アクセス ポート](cache-configure.md#access-ports)」セクションの指示に従って、非 SSL ポートを有効にする必要があります。
+>既定では、新しい Azure Cache for Redis インスタンスの TLS 以外のポートは無効になっています。 クライアントが TLS をサポートしていない場合は、[Azure Cache for Redis でのキャッシュの構成](cache-configure.md)に関するページの「[アクセス ポート](cache-configure.md#access-ports)」セクションの指示に従って、非 TLS ポートを有効にする必要があります。
 >
 >
 
-`redis-cli` などの Redis ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、ブログ記事「[Announcing ASP.NET Session State Provider for Redis Preview Release (Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表)](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」を参照してください。
+`redis-cli` などの Redis ツールは TLS ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを TLS ポートに安全に接続することができます。詳細については、[Redis のプレビュー リリース用の ASP.NET セッション状態プロバイダーの発表](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
 
 Redis ツールのダウンロードの詳細については、「 [Redis コマンドの実行方法](#cache-commands) 」セクションを参照してください。
 
@@ -312,7 +312,7 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 * [修正プログラムの適用やフェールオーバーによる](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)接続の中断に対応できるようなシステムを開発する。
 
 #### <a name="performance-testing"></a>パフォーマンス テスト
-* 独自のパフォーマンス テストを作成する前に、 `redis-benchmark.exe` を使用して実現可能なスループットを確認してください。 `redis-benchmark` では SSL はサポートされていないため、テストを行うには、[Azure Portal で非 SSL ポートを有効にする](cache-configure.md#access-ports)必要があります。 例については、「 [キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* 独自のパフォーマンス テストを作成する前に、 `redis-benchmark.exe` を使用して実現可能なスループットを確認してください。 `redis-benchmark` では TLS はサポートされていないため、テストを行うには、[Azure portal で非 TLS ポートを有効にする](cache-configure.md#access-ports)必要があります。 例については、「 [キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * テストに使用するクライアント VM は、Azure Cache for Redis インスタンスと同じリージョンにある必要があります。
 * Dv2 VM シリーズはハードウェアが強力であり、最良の結果が得られるため、クライアントにはこれらのシリーズを使用することをお勧めします。
 * クライアント VM については、コンピューティング能力と帯域幅がテスト対象のキャッシュと同等以上であるものを選択してください。

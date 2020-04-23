@@ -5,26 +5,27 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280509"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255917"
 ---
-<a name="retrieve-offer-status"></a>プランの状態の取得 
-=====================
+# <a name="retrieve-offer-status"></a>プランの状態の取得
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、プランがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 プランの現在の状態が取得されます。
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI パラメーター
---------------
+## <a name="uri-parameters"></a>URI パラメーター
 
-|  **Name**       |   **説明**                            |  **データの種類** |
+|  **名前**       |   **説明**                            |  **データの種類** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | パブリッシャー ID。たとえば、`Contoso`  |     String     |
 |  offerId        | プランを一意に識別する GUID      |     String     |
@@ -32,18 +33,17 @@ ms.locfileid: "80280509"
 |  |  |
 
 
-<a name="header"></a>ヘッダー
-------
+## <a name="header"></a>ヘッダー
 
-|  Name           |  値               |
+
+|  名前           |  値               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  承認  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>本文の例
 
-<a name="body-example"></a>本文の例
-------------
 
 ### <a name="response"></a>Response
 
@@ -115,14 +115,13 @@ ms.locfileid: "80280509"
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **Name**             |    **説明**                                                                             |
+|  **名前**             |    **説明**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | プランの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。 |
 |  messages             | プランに関連付けられている一連のメッセージ                                                    |
@@ -136,9 +135,8 @@ ms.locfileid: "80280509"
 |  processPercentage    | 手順の完了率                                                              |
 |  previewLinks         | *現在、実装されていません*                                                                    |
 |  liveLinks            | *現在、実装されていません*                                                                    |
-|  notificationEmails   | 操作の進捗状況を通知するメール アドレスのコンマ区切りの一覧        |
+|  notificationEmails   | パートナー センターに移行されるプランでは非推奨となりました。 移行されるプランの通知メールは、[アカウント設定] の販売者の連絡先情報で指定された電子メールに送信されます。<br><br>移行されないプランの場合、操作の進捗状況を通知するメール アドレスのコンマ区切りの一覧です        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>応答状態コード
 
@@ -149,10 +147,9 @@ ms.locfileid: "80280509"
 |  404     | `Not found` - 指定のエンティティが存在しません。                                                |
 |  |  |
 
-
 ### <a name="offer-status"></a>オファーの状態
 
-|  **Name**                    |    **説明**                                       |
+|  **名前**                    |    **説明**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | オファーは発行されていません。                          |
 |  NotStarted                  | 新しいオファーですが、開始されていません。                            |
@@ -163,10 +160,9 @@ ms.locfileid: "80280509"
 |  失敗                      | オファーを提出できませんでした。                                 |
 |  |  |
 
-
 ### <a name="step-status"></a>手順の状態
 
-|  **Name**                    |    **説明**                           |
+|  **名前**                    |    **説明**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 手順が開始されていません。                        |
 |  InProgress                  | 手順を実行しています。                             |

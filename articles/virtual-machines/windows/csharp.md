@@ -1,25 +1,18 @@
 ---
 title: C# を使用した Azure 仮想マシンの作成および管理
 description: C# と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 3930e51f63615abd21a7b04199a0f4767925792a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944510"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082885"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
@@ -59,7 +52,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 ### <a name="create-the-authorization-file"></a>承認ファイルを作成する
 
-1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 **[Visual C# アイテム]** で *[テキスト ファイル]* を選択します。 ファイルに *azureauth.properties* と名前を付けて、 **[追加]** をクリックします。
+1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 *[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、 **[追加]** をクリックします。
 2. 次の承認プロパティを追加します。
 
     ```

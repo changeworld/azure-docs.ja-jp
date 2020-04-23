@@ -4,18 +4,18 @@ description: Azure リソースのマネージド ID と Azure AD 認証をサ�
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0576a70b1b345d31ffc11c55f7fa5cbd288acd5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357923"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991281"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -31,9 +31,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 ### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | プレビュー | プレビュー | プレビュー | 
-| ユーザー割り当て済み | 利用可能 | プレビュー | プレビュー | プレビュー |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー | 
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | プレビュー | プレビュー |
 
 Azure Virtual Machines のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -46,9 +46,9 @@ Azure Virtual Machines のために (それが提供されているリージョ�
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セット
 
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | プレビュー | プレビュー | プレビュー |
-| ユーザー割り当て済み | 利用可能 | プレビュー | プレビュー | プレビュー |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | プレビュー | プレビュー | プレビュー |
+| ユーザー割り当て済み | ![利用可能][check] | プレビュー | プレビュー | プレビュー |
 
 Azure Virtual Machine Scale Sets のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -61,9 +61,9 @@ Azure Virtual Machine Scale Sets のために (それが提供されているリ
 ### <a name="azure-app-service"></a>Azure App Service
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
-| ユーザー割り当て済み | 利用可能 | 使用不可 | 使用不可 | 使用不可 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check]  | ![利用可能][check]  | ![利用可能][check] |
 
 Azure App Service のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -75,9 +75,9 @@ Azure App Service のために (それが提供されているリージョンで
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | 利用可能 | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | 利用可能 | 利用可能 | 使用不可 | 使用不可 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | 使用不可 |
 
 [Azure Blueprints](../../governance/blueprints/overview.md) でマネージド ID を使用するには、次の一覧を参照してください。
 
@@ -87,9 +87,9 @@ Azure App Service のために (それが提供されているリージョンで
 ### <a name="azure-functions"></a>Azure Functions
 
 マネージド ID の種類 |すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
-| ユーザー割り当て済み | 利用可能 | 使用不可 | 使用不可 | 使用不可 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check]  | ![利用可能][check]  | ![利用可能][check]  |
 
 Azure Functions のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -101,20 +101,21 @@ Azure Functions のために (それが提供されているリージョンで) 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
+
 
 Azure Logic Apps のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
 - [Azure Portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity)
+- [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | 利用可能 | 使用不可 | 利用可能 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
 | ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
@@ -127,9 +128,9 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 ### <a name="azure-api-management"></a>Azure API Management
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | 利用可能 | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
+| ユーザー割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
 
 Azure API Management のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -138,7 +139,7 @@ Azure API Management のために (それが提供されているリージョン
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
+| --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
@@ -151,8 +152,8 @@ Azure Container Instances のために (それが提供されているリージ�
 ### <a name="azure-container-registry-tasks"></a>Azure Container Registry タスク
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | 使用不可 | 使用不可 | 使用不可 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Container Registry タスクのために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
@@ -163,9 +164,9 @@ Azure Container Registry タスクのために (それが提供されている�
 [Service Fabric アプリケーションのマネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) はプレビュー段階であり、すべてのリージョンで使用できます。
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| システム割り当て済み | 利用可能 | 利用不可 | 利用不可 | 利用不可 |
-| ユーザー割り当て済み | 利用可能 | 利用不可 | 利用不可 |利用不可 |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | 利用不可 | 利用不可 | 利用不可 |
+| ユーザー割り当て済み | ![利用可能][check] | 利用不可 | 利用不可 |利用不可 |
 
 すべてのリージョンの Azure Service Fabric アプリケーションのためにマネージド ID を構成するには、次の一覧を参照してください。
 - [Azure Resource Manager テンプレート](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
@@ -184,26 +185,26 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 - [Azure Resource Manager テンプレートでアクセスを割り当てる](../../role-based-access-control/role-assignments-template.md)
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://management.azure.com/`| 利用可能 |
-| Azure Government | `https://management.usgovcloudapi.net/` | 利用可能 |
-| Azure Germany | `https://management.microsoftazure.de/` | 利用可能 |
-| Azure China 21Vianet | `https://management.chinacloudapi.cn` | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://management.azure.com/`| ![利用可能][check] |
+| Azure Government | `https://management.usgovcloudapi.net/` | ![利用可能][check] |
+| Azure Germany | `https://management.microsoftazure.de/` | ![利用可能][check] |
+| Azure China 21Vianet | `https://management.chinacloudapi.cn` | ![利用可能][check] |
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://vault.azure.net`| 利用可能 |
-| Azure Government | `https://vault.usgovcloudapi.net` | 利用可能 |
-| Azure Germany |  `https://vault.microsoftazure.de` | 利用可能 |
-| Azure China 21Vianet | `https://vault.azure.cn` | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://vault.azure.net`| ![利用可能][check] |
+| Azure Government | `https://vault.usgovcloudapi.net` | ![利用可能][check] |
+| Azure Germany |  `https://vault.microsoftazure.de` | ![利用可能][check] |
+| Azure China 21Vianet | `https://vault.azure.cn` | ![利用可能][check] |
 
 ### <a name="azure-data-lake"></a>Azure Data Lake 
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://datalake.azure.net/` | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://datalake.azure.net/` | ![利用可能][check] |
 | Azure Government |  | 利用不可 |
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
@@ -211,17 +212,17 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 ### <a name="azure-sql"></a>Azure SQL 
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://database.windows.net/` | 利用可能 |
-| Azure Government | `https://database.usgovcloudapi.net/` | 利用可能 |
-| Azure Germany | `https://database.cloudapi.de/` | 利用可能 |
-| Azure China 21Vianet | `https://database.chinacloudapi.cn/` | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://database.windows.net/` | ![利用可能][check] |
+| Azure Government | `https://database.usgovcloudapi.net/` | ![利用可能][check] |
+| Azure Germany | `https://database.cloudapi.de/` | ![利用可能][check] |
+| Azure China 21Vianet | `https://database.chinacloudapi.cn/` | ![利用可能][check] |
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://eventhubs.azure.net` | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://eventhubs.azure.net` | ![利用可能][check] |
 | Azure Government |  | 利用不可 |
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
@@ -229,9 +230,9 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://servicebus.azure.net`  | 利用可能 |
-| Azure Government |  | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://servicebus.azure.net`  | ![利用可能][check] |
+| Azure Government |  | ![利用可能][check] |
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
 
@@ -246,11 +247,11 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage の BLOB とキュー
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 利用可能 |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | 利用可能 |
-| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | 利用可能 |
-| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | ![利用可能][check] |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | ![利用可能][check] |
+| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | ![利用可能][check] |
+| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | ![利用可能][check] |
 
 
 
@@ -264,8 +265,14 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
 | クラウド | Resource ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://*.asazure.windows.net` | 利用可能 |
-| Azure Government | `https://*.asazure.usgovcloudapi.net` | 利用可能 |
-| Azure Germany | `https://*.asazure.cloudapi.de` | 利用可能 |
-| Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | 利用可能 |
+|--------|------------|:-:|
+| Azure Global | `https://*.asazure.windows.net` | ![利用可能][check] |
+| Azure Government | `https://*.asazure.usgovcloudapi.net` | ![利用可能][check] |
+| Azure Germany | `https://*.asazure.cloudapi.de` | ![利用可能][check] |
+| Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![利用可能][check] |
+
+> [!Note]
+> Microsoft Power BI は[マネージド ID もサポートします](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
+
+
+[check]: media/services-support-managed-identities/check.png "利用可能"

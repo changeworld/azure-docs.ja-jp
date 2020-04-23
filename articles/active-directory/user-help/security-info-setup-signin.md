@@ -1,24 +1,24 @@
 ---
-title: サインイン プロンプトから自分のセキュリティ情報 (プレビュー) を設定する - Azure AD
-description: 組織のサインイン ページで求められた後、自分の職場または学校アカウントのセキュリティ情報 (プレビュー) を設定する方法について説明します。
+title: サインイン プロンプトから自分のセキュリティ情報を設定する - Azure AD
+description: 組織のサインイン ページで求められた後、自分の職場または学校アカウントのセキュリティ情報を設定する方法について説明します。
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063987"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454495"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>サインイン プロンプトから自分のセキュリティ情報 (プレビュー) を設定する
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>サインイン プロンプトから自分のセキュリティ情報を設定する
 
 職場または学校アカウントにサインインした直後にセキュリティ情報の設定を求められた場合は、次の手順のようにして設定できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "77063987"
 
 セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| 方法 | 使用目的 |
+| Method | 使用目的 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
@@ -122,7 +122,7 @@ ms.locfileid: "77063987"
 Outlook 2010 などの特定のアプリでは、2 段階認証はサポートされていません。 このサポートの欠如は、組織で 2 段階認証を使用している場合、アプリが動作しないことを意味します。 この問題を回避するために、通常のパスワードとは別に、各非ブラウザー アプリで使用する自動生成パスワードを作成できます。
 
 >[!Note]
->ウィザードにこのオプションが表示されない場合は、管理者が設定していないことを意味します。 これが設定されていないが、アプリ パスワードを使用する必要があることがわかっている場合は、「[セキュリティ情報 (プレビュー) ページからアプリ パスワードを管理する](security-info-app-passwords.md)」の手順に従ってください。
+>ウィザードにこのオプションが表示されない場合は、管理者が設定していないことを意味します。 これが設定されていないが、アプリ パスワードを使用する必要があることがわかっている場合は、[セキュリティ情報ページからアプリ パスワードを設定する](security-info-app-passwords.md)方法に関するページの手順に従ってください。
 
 アプリ パスワードを使用する場合は、次の点に注意してください。
 

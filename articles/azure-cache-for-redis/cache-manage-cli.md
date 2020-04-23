@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235319"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010836"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Cache for Redis を作成および管理する方法
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Azure Cache for Redis インスタンスを作成および更新する場合に�
 | location |-l, --location |キャッシュを作成する場所です。 |
 | size |-z, --size |Azure Cache for Redis のサイズです。 有効な値: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
 | sku |-x, --sku |Redis SKU です。 値は次のいずれかです: [Basic、Standard、Premium] |
-| EnableNonSslPort |-e、--enable-non-ssl-port |Azure Cache for Redis の EnableNonSslPort プロパティです。 キャッシュの非 SSL ポートを有効にする場合は、このフラグを追加します。 |
+| EnableNonSslPort |-e、--enable-non-ssl-port |Azure Cache for Redis の EnableNonSslPort プロパティです。 キャッシュの非 TLS/SSL ポートを有効にする場合は、このフラグを追加します。 |
 | Redis 構成 |-c、--redis-configuration |Redis 構成。 構成のキーと値の JSON 形式の文字列をここに入力します。 形式: "{"":"","":""}" |
 | Redis 構成 |-f、--redis-configuration-file |Redis 構成。 構成キーおよび値を含むファイルのパスをここに入力します。 ファイル エントリの形式: {"":"","":""} |
 | シャード数 |-r、--shard-count |クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
@@ -108,7 +108,7 @@ Azure Cache for Redis を作成するには、次のコマンドを使用しま�
     help:      -l, --location <location>                                Location to create cache.
     help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
     help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the Non SSL Port for your cache
+    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
     help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
     help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
     help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache
@@ -219,7 +219,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
 
-`Primary` に対して、`Secondary` または `key-type` を指定します。
+`key-type` に対して、`Primary` または `Secondary` を指定します。
 
 このコマンドの詳細を確認するには、`azure rediscache renew-key -h` コマンドを実行します。
 

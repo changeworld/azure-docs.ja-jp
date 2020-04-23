@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768512"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456993"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>クイック スタート:Machine Learning service で R を使用して Azure SQL データベースにクエリを実行する (プレビュー)
 
@@ -30,14 +31,11 @@ ms.locfileid: "76768512"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Azure SQL データベース](sql-database-single-database-get-started.md)
-- R が有効な [Machine Learning Services](sql-database-machine-learning-services-overview.md)。 [プレビューにサインアップしてください](sql-database-machine-learning-services-overview.md#signup)。
+- R が有効な [Machine Learning Services](sql-database-machine-learning-services-overview.md)。
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
 > この記事のスクリプトは、**Adventure Works** データベースを使用するように記述されています。
-
-> [!NOTE]
-> パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。ただし、マネージド インスタンスのデプロイ オプションは現在サポートされていません。
 
 Machine Learning Services と R は、データベース内の R スクリプトを実行するために使用される、Azure SQL Database の機能です。 詳細については、[R プロジェクト](https://www.r-project.org/)に関するページを参照してください。
 

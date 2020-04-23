@@ -3,12 +3,12 @@ title: Linux で Azure Service Fabric アプリをデバッグする
 description: ローカルの Linux 開発用コンピューターで Service Fabric サービスを監視し、診断する方法について説明します。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526296"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991332"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>ローカル Linux コンピューター開発のセットアップでサービスを監視して診断する
 
@@ -40,7 +40,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `entrypoint.sh` フォルダー内の `<applicationfolder>/<servicePkg>/Code/` を修正して、`java.util.logging.config.file` プロパティを `app.properties` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
+`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.properties` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
@@ -59,7 +59,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ## <a name="debugging-service-fabric-c-applications"></a>Service Fabric の C# アプリケーションのデバッグ
 
 
-Linux で CoreCLR アプリケーションをトレースするときには、複数のフレームワークを使用できます。 詳細については、「[GitHub: logging](http:/github.com/aspnet/logging)」(GitHub: ログ記録) を参照してください。  EventSource は、C# 開発者にとってわかりやすいので、この資料では、Linux での CoreCLR サンプルでのトレースに EventSource を使用します。
+Linux で CoreCLR アプリケーションをトレースするときには、複数のフレームワークを使用できます。 詳細については、[ロギング用の .NET 拡張機能](https://github.com/dotnet/extensions/tree/master/src/Logging)に関するページをご覧ください。  EventSource は、C# 開発者にとってわかりやすいので、この資料では、Linux での CoreCLR サンプルでのトレースに EventSource を使用します。
 
 最初の手順では、メモリ、出力ストリーム、またはコンソール ファイルにログを書き込むことができるように、System.Diagnostics.Tracing を含めます。  EventSource を使用したログ記録の場合は、project.json に、次のプロジェクトを追加します。
 

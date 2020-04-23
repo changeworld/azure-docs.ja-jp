@@ -1,26 +1,27 @@
 ---
 title: 管理グループを作成してリソースを整理する - Azure のガバナンス
 description: ポータル、Azure PowerShell、および Azure CLI を使用して、複数のリソースを管理する Azure 管理グループを作成する方法について説明します。
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436528"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381583"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
 管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを作成して、[Azure Policy](../policy/overview.md) と [Azure ロール ベースのアクセス制御](../../role-based-access-control/overview.md)で使用できる効果的で効率的な階層を構築します。 管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](overview.md)」をご覧ください。
 
-ディレクトリに作成される最初の管理グループは、完了までに最大 15 分かかる場合があります。 Azure 内でディレクトリの管理グループ サービスを初めて設定する際に実行するプロセスがあります。 プロセスが完了すると、通知を受け取ります。 詳細については、「[管理グループの初期セットアップ](./overview.md#initial-setup-of-management-groups)」を参照してください。 
+ディレクトリに作成される最初の管理グループは、完了までに最大 15 分かかる場合があります。 Azure 内でディレクトリの管理グループ サービスを初めて設定する際に実行するプロセスがあります。 プロセスが完了すると、通知を受け取ります。 詳細については、「[管理グループの初期セットアップ](./overview.md#initial-setup-of-management-groups)」を参照してください。
 
 ## <a name="create-a-management-group"></a>管理グループの作成
 
-テナント内のすべての Azure AD ユーザーは、そのユーザーに割り当てられた管理グループの書き込みアクセス許可なしで管理グループを作成できます。  この新しい管理グループは、ルート管理グループの子になり、作成者には "所有者" ロールの割り当てが付与されます。 管理グループ サービスでは、この機能が許可されるため、ルート レベルでのロールの割り当ては必要ありません。 ルート管理グループには、その作成時に、どのユーザーもアクセスできません。  管理グループの使用を開始する場合に Azure AD の全体管理者を見つけるという困難を回避するために、ルート レベルで最初の管理グループを作成できるようになっています。      
+テナント内のすべての Azure AD ユーザーは、そのユーザーに割り当てられた管理グループの書き込みアクセス許可なしで管理グループを作成できます。 この新しい管理グループは、ルート管理グループの子になり、作成者には "所有者" ロールの割り当てが付与されます。 管理グループ サービスでは、この機能が許可されるため、ルート レベルでのロールの割り当ては必要ありません。 ルート管理グループには、その作成時に、どのユーザーもアクセスできません。 管理グループの使用を開始する場合に Azure AD の全体管理者を見つけるという困難を回避するために、ルート  
+レベルで最初の管理グループを作成できるようになっています。
 
-管理グループを作成するには、ポータル、PowerShell、または Azure CLI を使用します。 現時点では、Resource Manager テンプレートを使用して管理グループを作成することはできません。
+管理グループを作成するには、ポータル、[Resource Manager テンプレート](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell、または Azure CLI を使用します。
 
 ### <a name="create-in-portal"></a>ポータルで作成する
 
@@ -34,14 +35,15 @@ ms.locfileid: "75436528"
 
 1. **[+ 管理グループの追加]** を選択します。
 
-   ![管理グループを操作するためのページ](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="管理グループを操作するためのページ" border="false":::
 
 1. [管理グループ ID] フィールドに入力します。
 
    - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 [ルート管理グループ](overview.md#root-management-group-for-each-directory)は、Azure Active Directory ID である ID を使用して自動的に作成されます。 他のすべての管理グループには、一意の ID を割り当てます。
-   - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。  
+   - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、  
+     いつでも変更できます。
 
-   ![新しい管理グループを作成するための [オプション] ウィンドウ](./media/create_context_menu.png)  
+   :::image type="content" source="./media/create_context_menu.png" alt-text="新しい管理グループを作成するための [オプション] ペイン" border="false":::
 
 1. **[保存]** を選択します。
 
@@ -94,8 +96,8 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 管理グループについて詳しくは、以下をご覧ください。
 
-- [管理グループを作成して Azure リソースを整理する](create.md)
-- [管理グループを変更、削除、または管理する方法](manage.md)
+- [管理グループを作成して Azure リソースを整理する](./create.md)
+- [管理グループを変更、削除、または管理する方法](./manage.md)
 - [Azure PowerShell Resources モジュールで管理グループを確認する](/powershell/module/az.resources#resources)
 - [REST API で管理グループを確認する](/rest/api/resources/managementgroups)
 - [Azure CLI で管理グループを確認する](/cli/azure/account/management-group)

@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 04/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844780"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605721"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする
 
@@ -32,30 +32,50 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 1. BLOB ストレージを作成するには、 **[リソースの作成]** を選択します。 
 
-   ![リソースの作成](./media/blob-event-quickstart-portal/create-resource.png)
-
 1. 使用可能なオプションをフィルター選択するために **[ストレージ]** を選択し、 **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
 
    ![[ストレージ] を選択する](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. イベントに対してサブスクライブするには、汎用 v2 ストレージ アカウントまたは BLOB ストレージ アカウントのどちらかを作成します。 詳しくは、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」をご覧ください。
+   イベントに対してサブスクライブするには、汎用 v2 ストレージ アカウントまたは BLOB ストレージ アカウントのどちらかを作成します。
+   
+1. **[ストレージ アカウントの作成]** ページで、次の手順を実行します。
+    1. Azure サブスクリプションを選択します。 
+    2. **リソース グループ**には、新しいリソース グループ名を作成するか既存の名前を選択します。 
+    3. ストレージ アカウントの名前を入力します。 
+    4. **[Review + create]\(レビュー + 作成\)** を選択します。 
 
-   ![手順の開始](./media/blob-event-quickstart-portal/provide-blob-values.png)
+       ![手順の開始](./media/blob-event-quickstart-portal/provide-blob-values.png)    
+    5. **[確認および作成]** ページで設定を確認し、 **[作成]** を選択します。 
 
->[!NOTE]
-> イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** と **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
+        >[!NOTE]
+        > イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** と **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
 BLOB ストレージのイベントをサブスクライブする前に、イベント メッセージのエンドポイントを作成しましょう。 通常、エンドポイントは、イベント データに基づくアクションを実行します。 このクイック スタートを簡素化するために、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をデプロしします。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
 
-1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
+1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+2. **[カスタム デプロイ]** ページで、次の手順を実行します。 
+    1. **[リソース グループ]** で、ストレージ アカウントの作成時に作成したリソース グループを選択します。 チュートリアルの完了後は、リソース グループを削除して容易にクリーンアップすることができます。  
+    2. **[サイト名]** に、Web アプリの名前を入力します。
+    3. Web アプリのホストに使用する App Service プランの名前を **[ホスティング プラン名]** に入力します。
+    4. **[上記の使用条件に同意する]** のチェック ボックスをオンにします。 
+    5. **[購入]** を選択します。 
 
-1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
+       ![展開のパラメーター](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
+1. デプロイが完了するまでに数分かかる場合があります。 ポータルでアラート (ベルのアイコン) を選択し、 **[リソース グループに移動]** を選択します。 
 
-1. サイトは表示されますが、イベントはまだ送信されていません。
+    ![アラート - リソース グループに移動する](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. **[リソース グループ]** ページのリソースの一覧で、作成した Web アプリを選択します。 この一覧には、App Service プランとストレージ アカウントも表示されます。 
+
+    ![Web サイトを選択する](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. Web アプリの **[App Service]** ページで、Web サイトに移動するための URL を選択します。 この URL は、`https://<your-site-name>.azurewebsites.net` 形式になっている必要があります。
+    
+    ![Web サイトに移動する](./media/blob-event-quickstart-portal/web-site.png)
+
+6. サイトは表示されますが、イベントはまだ送信されていないことを確認します。
 
    ![新しいサイトを表示する](./media/blob-event-quickstart-portal/view-site.png)
 
@@ -65,15 +85,20 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
 どのイベントを追跡し、どこにイベントを送信するかは、トピックを購読することによって Event Grid に伝えます。
 
-1. ポータルで、対象の BLOB ストレージを選択し、 **[イベント]** を選択します。
-
-   ![[イベント] を選択する](./media/blob-event-quickstart-portal/select-events.png)
-
-1. イベントをビューアー アプリに送信するには、エンドポイントの Web hook を使用します。 **[その他のオプション]** を選択し、 **[webhook]** を選択します。
+1. ポータルで、先ほど作成した Azure Storage アカウントに移動します。 左側のメニューにある **[すべてのリソース]** を選択し、自分のストレージ アカウントを選択します。 
+2. **[ストレージ アカウント]** ページの左側のメニューにある **[イベント]** を選択します。
+1. **[その他のオプション]** を選択し、 **[webhook]** を選択します。 エンドポイントの Web hook を使用して、ビューアー アプリにイベントを送信します。 
 
    ![[webhook] を選択する](./media/blob-event-quickstart-portal/select-web-hook.png)
+3. **[イベント サブスクリプションの作成]** ページで、次の手順を実行します。 
+    1. イベント サブスクリプションの**名前**を入力します。
+    2. **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
 
-1. イベント サブスクリプションには、BLOB ストレージの値があらかじめ入力されています。 Web hook エンドポイントに対して、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。 サブスクリプションに名前を付けます。 完了したら、 **[作成]** を選択します。
+       ![エンドポイントのタイプに Webhook を選択する](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
+4. **[エンドポイント]** で **[エンドポイントの選択]** をクリックし、Web アプリの URL を入力して、ホーム ページの URL に `api/updates` を追加し (例: `https://spegridsite.azurewebsites.net/api/updates`)、 **[選択の確認]** を選択します。
+
+   ![エンドポイントの選択の確認](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
+5. 次に、 **[イベント サブスクリプションの作成]** ページの **[作成]** を選択して、イベント サブスクリプションを作成します。 
 
    ![ログの選択](./media/blob-event-quickstart-portal/create-subscription.png)
 
@@ -87,11 +112,11 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
 BLOB ストレージのイベントをトリガーするには、ファイルをアップロードします。 このファイルは、特定のコンテンツを必要としません。 この記事では、testfile.txt という名前のファイルがあると仮定していますが、任意のファイルを使用できます。
 
-1. BLOB ストレージのために、 **[BLOB]** を選択します。
+1. Azure portal で Blob Storage アカウントに移動し、 **[概要]** ページの **[Containers]** を選択します。
 
    ![BLOB の選択](./media/blob-event-quickstart-portal/select-blobs.png)
 
-1. **[+ コンテナー]** を選択します。 コンテナーに名前を付け、任意のアクセス レベルを使用します。
+1. **[+ コンテナー]** を選択します。 コンテナーに名前を付け、任意のアクセス レベルを使用して、 **[作成]** を選択します。 
 
    ![コンテナーの追加](./media/blob-event-quickstart-portal/add-container.png)
 
@@ -99,39 +124,15 @@ BLOB ストレージのイベントをトリガーするには、ファイルを
 
    ![コンテナーの選択](./media/blob-event-quickstart-portal/select-container.png)
 
-1. ファイルをアップロードするには、 **[アップロード]** を選択します。
+1. ファイルをアップロードするには、 **[アップロード]** を選択します。 **[BLOB のアップロード]** ページで、テスト用にアップロードするファイルを参照して選択し、ページ上の **[アップロード]** を選択します。 
 
    ![[アップロード] を選択する](./media/blob-event-quickstart-portal/upload-file.png)
 
 1. テスト ファイルを参照し、それをアップロードします。
 
-1. 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 メッセージは JSON 形式であり、1 つまたは複数のイベントの配列が含まれています。 次の例の JSON メッセージには、1 つのイベントの配列が含まれています。 Web アプリを表示して、BLOB 作成イベントが受信されたことを確認します。 
+1. 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 メッセージは JSON 形式であり、1 つまたは複数のイベントの配列が含まれています。 次の例の JSON メッセージには、1 つのイベントの配列が含まれています。 Web アプリを表示して、**BLOB 作成**イベントが受信されたことを確認します。 
 
-   ```json
-   [{
-    "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
-    "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
-    "eventType": "Microsoft.Storage.BlobCreated",
-    "eventTime": "2018-06-25T22:50:41.1823131Z",
-    "id": "89a2f9da-c01e-00bb-13d6-0c599506e4e3",
-    "data": {
-      "api": "PutBlockList",
-      "clientRequestId": "41341a9b-e977-4a91-9000-c64125039047",
-      "requestId": "89a2f9da-c01e-00bb-13d6-0c5995000000",
-      "eTag": "0x8D5DAEE13C8F9ED",
-      "contentType": "text/plain",
-      "contentLength": 4,
-      "blobType": "BlockBlob",
-      "url": "https://demoblob0625.blob.core.windows.net/eventcontainer/testfile.txt",
-      "sequencer": "00000000000000000000000000001C24000000000004712b",
-      "storageDiagnostics": {
-        "batchId": "ef633252-32fd-464b-8f5a-0d10d68885e6"
-      }
-    },
-    "dataVersion": "",
-    "metadataVersion": "1"
-   }]
-   ```
+   ![BLOB 作成イベント](./media/blob-event-quickstart-portal/blob-created-event.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

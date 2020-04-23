@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 188ef3a1b9777c37f8557a69e19887638a973611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062526"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380295"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Azure portal での Azure Database for MySQL の監査ログの構成とアクセス
 
@@ -30,7 +30,7 @@ ms.locfileid: "80062526"
 
 監査ログを有効化および構成します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. Azure Database for MySQL サーバーを選択します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "80062526"
 1. **audit_log_enabled** パラメーターを ON に更新します。
     ![監査ログの有効化](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. [audit_log_events](concepts-audit-logs.md#configure-audit-logging) パラメーターを更新して、ログに記録する**イベントの種類**を選択します。
+1. **audit_log_events** パラメーターを更新して、ログに記録する[イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
     ![監査ログのイベント](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. **audit_log_exclude_users** パラメーターを更新して、ログから除外する MySQL ユーザーを追加します。 ユーザーは MySQL ユーザー名で指定します。
@@ -69,4 +69,5 @@ ms.locfileid: "80062526"
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Database for MySQL の[監査ログ](concepts-audit-logs.md)の詳細について学習します。
+- Azure Database for MySQL の[監査ログ](concepts-audit-logs.md)の詳細について学習します
+- [Azure CLI](howto-configure-audit-logs-cli.md) で監査ログを構成する方法について学習します

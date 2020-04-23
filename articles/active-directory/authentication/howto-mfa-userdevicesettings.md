@@ -1,61 +1,55 @@
 ---
-title: Azure MFA を使用してユーザーとデバイスを管理する - Azure Active Directory
-description: 追加のセキュリティ確認を強制するなど、管理者がユーザー設定を変更する方法。
+title: Azure Multi-Factor Authentication のユーザー設定を管理する - Azure Active Directory
+description: Azure Multi-Factor Authentication の Azure Active Directory ユーザー設定を構成する方法について説明します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 04/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d94fa761980151c420984eb7e8c3254a3509ef
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653488"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309768"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
+# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-factor Authentication のユーザー設定の管理
 
-管理者は、ユーザーとデバイスの次の設定を管理できます。
+Azure Multi-Factor Authentication のユーザーを管理しやすくするために、パスワードのリセット、MFA の再登録、または既存の MFA セッションの取り消しをユーザーに要求することができます。 アプリ パスワードを定義したユーザーの場合、これらのパスワードを削除して、これらのアプリケーションのレガシ認証が失敗するようにすることも選択できます。 これらの操作は、ユーザーを支援する必要がある場合やセキュリティ ステータスをリセットする場合に必要になることがあります。
 
-* 連絡方法をもう一度提供するようユーザーに要求する
-* アプリ パスワードを削除する
-* 信頼されているすべてのデバイスについて MFA を要求する
+## <a name="manage-user-authentication-options"></a>ユーザー認証オプションを管理する
 
-## <a name="manage-authentication-methods"></a>認証方法を管理する
+*認証管理者*ロールが割り当てられている場合、パスワードのリセット、MFA の再登録、またはユーザー オブジェクトからの既存の MFA セッションの取り消しをユーザーに要求できます。 ユーザー設定を管理するには、次の手順を実行します。
 
-管理者が認証管理者ロールを割り当てると、パスワードのリセット、MFA の再登録、またはユーザー オブジェクトからの既存の MFA セッションの取り消しをユーザーに要求できます。
-
-![Azure portal から認証方法を管理する](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
-
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
-1. 操作の実行対象のユーザーを選択し、 **[認証方法]** を選択します。
+1. 操作の実行対象のユーザーを選択し、 **[認証方法]** を選択します。 ウィンドウの上部で、ユーザーに対して次のいずれかのオプションを選択します。
    - **[パスワードのリセット]** では、ユーザーのパスワードがリセットされ、次のサインイン時に変更する必要がある一時パスワードが割り当てられます。
    - **[MFA の再登録が必要]** では、ユーザーが次回サインインするときに、新しい MFA 認証方法を設定するように要求されます。
    - **[MFA セッションの取り消し]** では、ユーザーの記憶済み MFA セッションがクリアされ、デバイス上のポリシーによって次回要求されたときに MFA を実行するように要求されます。
 
+   ![Azure portal から認証方法を管理する](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+
 ## <a name="delete-users-existing-app-passwords"></a>ユーザーの既存のアプリ パスワードを削除する
 
-この設定では、ユーザーが作成したすべてのアプリ パスワードが削除されます。 これらのアプリ パスワードに関連付けられているブラウザー以外のアプリは、新しいアプリ パスワードが作成されるまで機能しなくなります。 この操作を実行するには、グローバル管理者のアクセス許可が必要です。
+必要に応じて、ユーザーが作成したすべてのアプリ パスワードを削除できます。 これらのアプリ パスワードに関連付けられているブラウザー以外のアプリは、新しいアプリ パスワードが作成されるまで機能しなくなります。 この操作を実行するには、*グローバル管理者*のアクセス許可が必要です。
 
-### <a name="how-to-delete-users-existing-app-passwords"></a>ユーザーの既存のアプリ パスワードを削除する方法
+ユーザーのアプリ パスワードを削除するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-2. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
-3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。
-4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック ステップのオプションの一覧が右側に表示されます。
-5. **[Manage user settings]** (ユーザー設定の管理) を選択します。
-6. **[選択したユーザーが生成したすべての既存のアプリ パスワードを削除する]** チェック ボックスをオンにします。
-   ![すべての既存のアプリ パスワードを削除する](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-7. **[Save]** をクリックします。
-8. **[閉じる]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
+1. **[Multi-Factor Authentication]** を選択します。 このメニュー オプションを表示するには、必要に応じて右にスクロールします。 次のスクリーンショット例を選択すると、完全な Azure portal ウィンドウとメニューの場所が表示されます。[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD の [ユーザー] ウィンドウから [Multi-Factor Authentication] を選択します")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック ステップのオプションの一覧が右側に表示されます。
+1. 次の例に示すように、 **[ユーザー設定の管理]** を選択し、 **[選択したユーザーが生成したすべての既存のアプリケーション パスワードを削除する]** チェックボックスをオンにします。![すべての既存のアプリ パスワードを削除する](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. **[保存]** 、 **[閉じる]** の順に選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」をご覧ください。
-- ヘルプが必要な場合、「[2 段階認証のユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)」を参照してください。
+この記事では、個々のユーザー設定の構成について説明しました。 Azure Multi-Factor Authentication サービス設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
+
+ユーザーがヘルプを必要とする場合は、[Azure Multi-Factor Authentication のユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)を参照してください。

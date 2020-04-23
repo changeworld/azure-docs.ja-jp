@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.date: 4/3/2020
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131965"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310121"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 
@@ -139,6 +139,8 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 |特定のデータベース メタデータの変更|新しいデータベース タグの追加。<br>最大仮想コア数、最小仮想コア数、または自動一時停止遅延の変更。|
 |SQL Server Management Studio (SSMS)|18.1 以前の SSMS バージョンを使用し、サーバーでデータベースの新しいクエリ ウィンドウを開くと、同じサーバーで自動一時停止されていたデータベースが再開します。 この動作は、18.1 以降の SSMS バージョンを使用している場合は発生しません。|
 
+監視、管理、または上記のいずれかの操作を実行するその他のソリューションでは、自動再開がトリガーされます。
+
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中にも、自動再開がトリガーされます。
 
 ### <a name="connectivity"></a>接続
@@ -149,11 +151,15 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 サーバーレス データベースの自動再開および自動一時停止の待機時間は、通常、自動再開までに 1 分、自動停止までに 1 - 10 分かかります。
 
+### <a name="customer-managed-transparent-data-encryption-byok"></a>お客様が管理する透過的なデータ暗号化 (BYOK)
+
+[お客様が管理する透過的なデータ暗号化](transparent-data-encryption-byok-azure-sql.md) (BYOK) を使用していて、キーの削除または失効が発生したときにサーバーレス データベースが自動一時停止されている場合、データベースは自動一時停止状態のままになります。  この場合、データベースが次に再開された後、約 10 分以内にデータベースにアクセスできなくなります。  データベースがアクセス不可になった後、復旧プロセスは、プロビジョニングされたコンピューティング データベースの場合と同じです。  キーの削除または失効が発生したときにサーバーレス データベースがオンラインになっている場合も、プロビジョニングされたコンピューティング データベースと同じように約 10 分以内にデータベースにアクセスできなくなります。
+
 ## <a name="onboarding-into-serverless-compute-tier"></a>サーバーレス コンピューティング レベルへのオンボード
 
 サーバーレス コンピューティング レベルでの新しいデータベースの作成または既存のデータベースの移動は、プロビジョニング済みコンピューティング レベルでの新規データベースの作成と同じパターンに従い、次の 2 つのステップが含まれます。
 
-1. サービス目標名を指定します。 サービス目標では、サービス レベル、ハードウェアの世代、および最大仮想コア数が規定されます。 次の表にサービス目標のオプションを示します。
+1. サービス目標を指定します。 サービス目標では、サービス レベル、ハードウェアの世代、および最大仮想コア数が規定されます。 次の表にサービス目標のオプションを示します。
 
    |サービス目標名|サービス階層|ハードウェアの世代|最大仮想コア数|
    |---|---|---|---|
@@ -172,12 +178,12 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
    |パラメーター|値の選択肢|既定値|
    |---|---|---|---|
    |最小仮想コア|構成された最大仮想コアによって異なります。[リソースの制限](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)に関するページを参照してください。|0.5 仮想コア|
-   |自動一時停止遅延|最小:60 分 (1 時間)<br>最大値:10080 分 (7 日)<br>増分: 約 60 分<br>自動一時停止の無効化: -1|約 60 分|
+   |自動一時停止遅延|最小:60 分 (1 時間)<br>最大値:10080 分 (7 日)<br>増分: 10 分<br>自動一時停止の無効化: -1|約 60 分|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>サーバーレス コンピューティング レベルで新しいデータベースを作成する 
 
-次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。 例では、最小仮想コア数、最大仮想コア数、自動一時停止遅延を明示的に指定します。
+次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。
 
 #### <a name="use-azure-portal"></a>Azure Portal の使用
 
@@ -201,7 +207,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
-次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。
+T-SQL を使用すると、最小仮想コアと自動一時停止遅延に既定値が適用されます。
 
 ```sql
 CREATE DATABASE testdb
@@ -212,7 +218,7 @@ CREATE DATABASE testdb
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動する
 
-次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 例では、最小仮想コア数、最大仮想コア数、自動一時停止遅延を明示的に指定します。
+次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。
 
 #### <a name="use-powershell"></a>PowerShell の使用
 
@@ -233,7 +239,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
-次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。
+T-SQL を使用すると、最小仮想コアと自動一時停止遅延に既定値が適用されます。
 
 ```sql
 ALTER DATABASE testdb 

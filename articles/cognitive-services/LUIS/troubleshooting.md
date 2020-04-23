@@ -1,22 +1,15 @@
 ---
 title: よく寄せられる質問 (FAQ) - LUIS
-titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59d9b1f21e1936b7d03293ec3d338677380a7c99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218701"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530234"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -59,7 +52,10 @@ LUIS アプリをプログラムで編集するには、[Authoring API](https://
 [エンティティ](luis-concept-entity-types.md)および[データ抽出](luis-concept-data-extraction.md)に関するページをご覧ください。
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>発話例のバリエーションは句読点を含む必要がありますか?
-発話例として異なるバリエーションを意図に追加するか、句読点を[無視する構文](luis-concept-patterns.md#pattern-syntax)を使用して発話例のパターンを追加します。
+次のいずれかのソリューションを使用します。
+* [句読点](luis-reference-application-settings.md#punctuation-normalization)を無視します
+* 発話例として異なるバリエーションを意図に追加します
+* 句読点を[無視する構文](luis-concept-patterns.md#pattern-syntax)を使用して発話例のパターンを追加します。
 
 ### <a name="does-luis-currently-support-cortana"></a>LUIS は現在 Cortana をサポートしていますか。
 
@@ -68,11 +64,11 @@ Cortana 事前構築済みアプリは 2017 年に非推奨になりました。
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>LUIS アプリの所有権を譲渡するにはどうすればよいですか?
 LUIS アプリを別の Azure サブスクリプションに譲渡するには、LUIS アプリをエクスポートした後、新しいアカウントを使用してインポートします。 LUIS アプリを呼び出しているクライアント アプリケーションで、LUIS アプリ ID を更新します。 新しいアプリは、元のアプリとは若干異なる LUIS スコアを返す可能性があります。
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>発話の例では、自分のカスタム エンティティではなく事前構築済みのエンティティにタグ付けされています。 これをどのように修正すればよいですか? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>発話の例では、自分のカスタム エンティティではなく事前構築済みのエンティティにタグ付けされています。 これをどのように修正すればよいですか?
 
-LUIS ポータルでは、抽出するエンティティのテキストにラベルを付けることができます。 LUIS ポータルに正しいエンティティ予測が表示されない場合は、さらに発話を追加し、テキスト内でそのエンティティにラベルを付けるか、記述子 (機能など) を追加する必要があることがあります。 
+LUIS ポータルでは、抽出するエンティティのテキストにラベルを付けることができます。 LUIS ポータルに正しいエンティティ予測が表示されない場合は、さらに発話を追加し、テキスト内でそのエンティティにラベルを付けるか、記述子 (機能など) を追加する必要があることがあります。
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>アプリまたはバージョン ファイルをインポートしようとしましたが、エラーが発生しました。なぜでしょうか? 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>アプリまたはバージョン ファイルをインポートしようとしましたが、エラーが発生しました。なぜでしょうか?
 
 [バージョン インポート エラー](luis-how-to-manage-versions.md#import-errors)について確認してください。
 
@@ -82,7 +78,7 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Azure Active Directory (Azure AD) またはロールベースのアクセス制御 (RBAC) で、コラボレーターに LUIS へのアクセス権を付与するにはどうすればよいですか?
 
-コラボレーターにアクセス権を付与する方法については、「[Azure Active Directory リソース](luis-how-to-collaborate.md#azure-active-directory-resources)」および「[Azure Active Directory テナント ユーザー](luis-how-to-collaborate.md#azure-active-directory-tenant-user)」を参照してください。 
+コラボレーターにアクセス権を付与する方法については、「[Azure Active Directory リソース](luis-how-to-collaborate.md#azure-active-directory-resources)」および「[Azure Active Directory テナント ユーザー](luis-how-to-collaborate.md#azure-active-directory-tenant-user)」を参照してください。
 
 <a name="luis-endpoint"></a>
 
@@ -92,7 +88,7 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 
 価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。 価格レベルを上げるか、Language Understanding [コンテナー](luis-container-howto.md)を使用してください。
 
-無料の 1000 エンドポイント クエリをすべて使用しているか、価格レベルの 1 か月あたりのトランザクションのクォータを超えた場合は、HTTP 403 エラー状態コードが表示されます。 
+無料の 1000 エンドポイント クエリをすべて使用しているか、価格レベルの 1 か月あたりのトランザクションのクォータを超えた場合は、HTTP 403 エラー状態コードが表示されます。
 
 このエラーを解決するには、高いレベルに[価格レベルを変更](luis-how-to-azure-subscription.md#change-pricing-tier)するか、[新しいリソースを作成](get-started-portal-deploy-app.md#create-the-endpoint-resource)して[アプリに割り当てる](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)必要があります。
 
@@ -105,23 +101,23 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 
 価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。 価格レベルを上げるか、Language Understanding [コンテナー](luis-container-howto.md)を使用してください。
 
-この状態コードは、1 秒あたりのトランザクションが価格レベルを超えると返されます。  
+この状態コードは、1 秒あたりのトランザクションが価格レベルを超えると返されます。
 
 解決方法は次のとおりです。
 
 * 最高レベルではない場合は、[価格レベルを上げる](luis-how-to-azure-subscription.md#change-pricing-tier)ことができます。
 * 使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
-* この状態コードが表示された場合は、自分で実装する[再試行ポリシー](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。 
+* この状態コードが表示された場合は、自分で実装する[再試行ポリシー](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>エンドポイントのクエリで予期していなかった結果が返されました。 どうすればよいですか。
 
-クエリで予期しない予測結果が返される原因は、公開されているモデルの状態にあります。 モデルを修正するには、モデルを変更し、トレーニングしてからもう一度公開することが必要になる場合があります。 
+クエリで予期しない予測結果が返される原因は、公開されているモデルの状態にあります。 モデルを修正するには、モデルを変更し、トレーニングしてからもう一度公開することが必要になる場合があります。
 
 モデルの修正は、[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)から始まります。
 
 トレーニング データをすべて使用するために、[アプリケーションのバージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を更新して非決定論的トレーニングを削除することができます。
 
-他のヒントについては、[ベスト プラクティス](luis-concept-best-practices.md)を参照してください。 
+他のヒントについては、[ベスト プラクティス](luis-concept-best-practices.md)を参照してください。
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>LUIS がクエリの単語の周りまたは途中にスペースを追加するのはなぜですか?
 LUIS は、[カルチャ](luis-language-support.md#tokenization)に基づいて発話を[トークン化](luis-glossary.md#token)します。 元の値とトークン化された値の両方を、[データ抽出](luis-concept-data-extraction.md#tokenized-entity-returned)に使用できます。
@@ -145,7 +141,7 @@ PowerShell コマンドを使用して、エンドポイントのクォータを
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
-``` 
+```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>昨日は動いていた LUIS アプリで、今日は 403 エラーが発生します。 アプリは変更していません。 どのように修正すればよいですか
 こちらの[説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへのクライアント アプリケーションの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md)必要があります。 別のリージョンに新しいリソースを作成した場合、HTTP クライアント要求のリージョンも変更します。
@@ -186,7 +182,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 [同じアプリのコピー間での予測の相違](luis-concept-prediction-score.md#review-intents-with-similar-scores)に関するページをご覧ください。
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>アプリを変更した後、いくつかの発話は、間違った意図になります。 問題は、ランダムに表示されなくなるようです。 どのように修正すればよいですか 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>アプリを変更した後、いくつかの発話は、間違った意図になります。 問題は、ランダムに表示されなくなるようです。 どのように修正すればよいですか
 
 「[すべてのデータでトレーニングする](luis-how-to-train.md#train-with-all-data)」を参照してください。
 
@@ -202,27 +198,27 @@ Azure では、テナントはサービスに関連付けられているクラ�
 
 
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>割り当てた数より多くのエンドポイント キーがアプリに割り当てられているのはなぜですか?
-利便性のため、それぞれの LUIS アプリには、オーサリング/スターター キーがエンドポイント リストにあります。 このキーでは、LUIS を試用できるよう、数個のエンドポイント ヒットのみが許可されます。  
+利便性のため、それぞれの LUIS アプリには、オーサリング/スターター キーがエンドポイント リストにあります。 このキーでは、LUIS を試用できるよう、数個のエンドポイント ヒットのみが許可されます。
 
 LUIS の一般公開 (GA) よりも前からアプリが存在していた場合、お使いのサブスクリプション内のエンドポイント キーが自動的に割り当てられます。 これは、GA の移行を容易にするために行われました。 Azure portal 内の新しい LUIS エンドポイント キーが自動的に LUIS に割り当てられることは_ありません_。
 
 ## <a name="key-management"></a>キー管理
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>どのキーが必要で、それをどこで取得し、それで何を行うかを知るにはどうすればよいですか? 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>どのキーが必要で、それをどこで取得し、それで何を行うかを知るにはどうすればよいですか?
 
-オーサリング キーと予測ランタイム キーの違いの詳細については、[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)に関する記事を参照してください。 
+オーサリング キーと予測ランタイム キーの違いの詳細については、[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)に関する記事を参照してください。
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>クォータ不足に関するエラーを受信しました。 どのように修正すればよいですか 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>クォータ不足に関するエラーを受信しました。 どのように修正すればよいですか
 
 詳細については、HTTP 状態コード [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) および [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) の解決に関する記事を参照してください。
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>さらに多くのエンドポイント クエリを処理する必要があります。 どうすればよいですか? 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>さらに多くのエンドポイント クエリを処理する必要があります。 どうすればよいですか?
 
 詳細については、HTTP 状態コード [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) および [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) の解決に関する記事を参照してください。
 
 ### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>オーサリング キーを作成しましたが、LUIS ポータルに表示されません。 なぜでしょうか?
 
-オーサリング キーは、[オーサリング キーを移行後に](luis-migration-authoring.md) LUIS ポータルで利用できるようになります。  
+オーサリング キーは、[オーサリング キーを移行後に](luis-migration-authoring.md) LUIS ポータルで利用できるようになります。
 
 ## <a name="app-management"></a>アプリの管理
 
@@ -266,28 +262,28 @@ Microsoft の取り組みと、Azure サービスでのデータ管理とアク�
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>LUIS ボットが機能しません。 どうすればよいですか。
 
-最初に、問題が LUIS に関連するものか、または LUIS ミドルウェアの外で起きているものかを切り分ける必要があります。 
+最初に、問題が LUIS に関連するものか、または LUIS ミドルウェアの外で起きているものかを切り分ける必要があります。
 
 #### <a name="resolve-issue-in-luis"></a>LUIS での問題を解決する
 [LUIS エンドポイント](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)から LUIS に同じ発話を渡します。 エラーが発生する場合は、エラーが返されなくなるまで、LUIS の問題を解決します。 一般的なエラーの理由は、次のとおりです。
 
-* `Out of call volume quota. Quota will be replenished in <time>.` - この問題は、オーサリング キーから[エンドポイント キー](luis-how-to-azure-subscription.md)に変更する必要があること、または[サービス レベル](luis-how-to-azure-subscription.md#change-pricing-tier)を変更する必要があることを、示しています。 
+* `Out of call volume quota. Quota will be replenished in <time>.` - この問題は、オーサリング キーから[エンドポイント キー](luis-how-to-azure-subscription.md)に変更する必要があること、または[サービス レベル](luis-how-to-azure-subscription.md#change-pricing-tier)を変更する必要があることを、示しています。
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure Bot Service で問題を解決する
 
 Azure Bot Service を使用していて、 **[Test in Web Chat]\(Web チャットでのテスト\)** から `Sorry, my bot code is having an issue` が返ることが問題である場合は、ログをチェックします。
 
 1. Azure portal で、お使いのボットの **[ボットの管理]** セクションから **[ビルド]** を選択します。
-1. オンライン コード エディターを開きます。 
+1. オンライン コード エディターを開きます。
 1. 上部の青いナビゲーション バーで、ボットの名前 (右側の 2 番目の項目) を選択します。
 1. 結果のドロップダウン リストで、 **[Kudu コンソールを開く]** を選択します。
-1. **LogFiles** を選択し、**Application** を選択します。 すべてのログ ファイルを確認します。 アプリケーション フォルダーにエラーが見あたらない場合は、**LogFiles** ですべてのログ ファイルを確認します。 
+1. **LogFiles** を選択し、**Application** を選択します。 すべてのログ ファイルを確認します。 アプリケーション フォルダーにエラーが見あたらない場合は、**LogFiles** ですべてのログ ファイルを確認します。
 1. C# などのコンパイル言語を使用している場合は、プロジェクトを忘れずにリビルドします。
 
-> [!Tip] 
-> コンソールでは、パッケージをインストールすることもできます。 
+> [!Tip]
+> コンソールでは、パッケージをインストールすることもできます。
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework を使用してローカル コンピューターでデバッグしながら問題を解決します。 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework を使用してローカル コンピューターでデバッグしながら問題を解決します。
 
 ボットのローカル デバッグについて詳しくは、「[ボットをデバッグする](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)」をご覧ください。
 
@@ -303,19 +299,19 @@ LUIS テンプレートを選択し、テンプレート ウィンドウで **[�
 
 ## <a name="api-programming-strategies"></a>API プログラミング戦略
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>リソースの LUIS リージョンをプログラムで取得するには、どうすればよいですか? 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>リソースの LUIS リージョンをプログラムで取得するには、どうすればよいですか?
 
-LUIS のサンプルを使用して、プログラムで[リージョンを検索](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region)するには、C# または Node.Js を使用します。 
+LUIS のサンプルを使用して、プログラムで[リージョンを検索](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region)するには、C# または Node.Js を使用します。
 
 ## <a name="luis-service"></a>LUIS サービス
 
 ### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>オンプレミスまたはプライベート クラウドで Language Understanding (LUIS) を使用できますか?
 
-はい。使用量を測定するために必要な接続があれば、それらのシナリオで LUIS [コンテナー](luis-container-howto.md)を使用できます。 
+はい。使用量を測定するために必要な接続があれば、それらのシナリオで LUIS [コンテナー](luis-container-howto.md)を使用できます。
 
 ## <a name="migrating-to-the-next-version"></a>次のバージョンへの移行
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>V3 API に移行して、プレビューするにはどうすればいいですか? 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>V3 API に移行して、プレビューするにはどうすればいいですか?
 
 [LUIS アプリの API v2 から v3 への移行ガイド](luis-migration-api-v3.md)を参照してください
 
@@ -325,8 +321,8 @@ Build 2019 Conference では、次の機能が公開されました。
 
 * [V3 API 移行ガイドのプレビュー](luis-migration-api-v3.md)
 * [改善された分析ダッシュ ボード](luis-how-to-use-dashboard.md)
-* [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md) 
-* [動的なリスト エンティティ](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md)
+* [動的なリスト エンティティ](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部エンティティ](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 ビデオ:
