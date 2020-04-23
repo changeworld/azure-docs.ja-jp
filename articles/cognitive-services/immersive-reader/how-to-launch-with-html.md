@@ -1,7 +1,7 @@
 ---
-title: イマーシブ リーダーを起動して HTML コンテンツを表示する
+title: Immersive Reader を起動して HTML コンテンツを表示する
 titleSuffix: Azure Cognitive Services
-description: この記事では、イマーシブ リーダーを起動して HTML コンテンツを表示する方法について説明します。
+description: この記事では、Immersive Reader を起動して HTML コンテンツを表示する方法について説明します。
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -16,13 +16,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946078"
 ---
-# <a name="how-to-launch-the-immersive-reader-with-html-content"></a>イマーシブ リーダーを起動して HTML コンテンツを表示する方法
+# <a name="how-to-launch-the-immersive-reader-with-html-content"></a>Immersive Reader を起動して HTML コンテンツを表示する方法
 
-この記事では、イマーシブ リーダーを起動して HTML コンテンツを表示する方法について説明します。
+この記事では、Immersive Reader を起動して HTML コンテンツを表示する方法について説明します。
 
 ## <a name="prepare-the-html-content"></a>HTML コンテンツを準備する
 
-イマーシブ リーダーでレンダリングしたいコンテンツをコンテナー要素内に配置します。 コンテナー要素に一意の `id` があることを確認してください。 イマーシブ リーダーは、基本的な HTML 要素をサポートします。詳細については、[リファレンス](./reference.md#html-support)を参照してください。
+Immersive Reader でレンダリングしたいコンテンツをコンテナー要素内に配置します。 コンテナー要素に一意の `id` があることを確認してください。 Immersive Reader は、基本的な HTML 要素をサポートします。詳細については、[リファレンス](./reference.md#html-support)を参照してください。
 
 ```html
 <div id='immersive-reader-content'>
@@ -46,7 +46,7 @@ JavaScript コードで HTML コンテンツを取得するには、コンテナ
 const htmlContent = document.getElementById('immersive-reader-content').innerHTML;
 ```
 
-## <a name="launch-the-immersive-reader-with-your-html-content"></a>イマーシブ リーダーを起動して HTML コンテンツを表示する
+## <a name="launch-the-immersive-reader-with-your-html-content"></a>Immersive Reader を起動して HTML コンテンツを表示する
 
 `ImmersiveReader.launchAsync` を呼び出すときに、チャンクの `mimeType` プロパティを `text/html` に設定すると、HTML のレンダリングが有効になります。
 
@@ -63,4 +63,4 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 
 ## <a name="next-steps"></a>次のステップ
 
-* [イマーシブ リーダー SDK リファレンス](./reference.md)を参照する
+* [Immersive Reader SDK リファレンス](./reference.md)を参照する
