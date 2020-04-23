@@ -2,13 +2,13 @@
 title: Azure Monitor for containers の Prometheus 統合を構成する | Microsoft Docs
 description: この記事では、Kubernetes クラスターで Prometheus からメトリックをスクレーピングするために、Azure Monitor for containers エージェントを構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 7fcf52cceb69834f68f8e4ce7a2674972a6430fd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931419"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537374"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する
 
@@ -22,7 +22,6 @@ ms.locfileid: "75931419"
 Prometheus メトリックのスクレーピングは、次にホストされている Kubernetes クラスターでサポートされています。
 
 - Azure Kubernetes Service (AKS)
-- Azure Container Instances
 - Azure Stack またはオンプレミス
 - Azure Red Hat OpenShift
 
