@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: イマーシブ リーダーのドキュメント
+title: Immersive Reader のドキュメント
 summary: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
 metadata:
-  title: イマーシブ リーダーのドキュメント
+  title: Immersive Reader のドキュメント
   description: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
   services: service
   ms.service: cognitive-services
@@ -19,7 +19,7 @@ metadata:
   ms.lasthandoff: 03/24/2020
   ms.locfileid: "77108690"
 landingContent:
-- title: イマーシブ リーダーの概要
+- title: Immersive Reader の概要
   linkLists:
   - linkListType: overview
     links:
@@ -43,21 +43,21 @@ landingContent:
     links:
     - text: Python
       url: tutorial-python.md
-    - text: 複数のイマーシブ リーダー リソースの使用
+    - text: 複数の Immersive Reader リソースの使用
       url: tutorial-multiple-resources.md
-- title: イマーシブ リーダーを試す
+- title: Immersive Reader を試す
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: イマーシブ リーダーのリソースを作成する
+    - text: Immersive Reader のリソースを作成する
       url: how-to-create-immersive-reader.md
     - text: Cookie のポリシーを設定する
       url: how-to/set-cookie-policy.md
     - text: 数式を表示する
       url: how-to/display-math.md
-    - text: イマーシブ リーダーを起動して HTML コンテンツを表示する
+    - text: Immersive Reader を起動して HTML コンテンツを表示する
       url: how-to-launch-with-html.md
-    - text: イマーシブ リーダーのボタンをカスタマイズする
+    - text: Immersive Reader のボタンをカスタマイズする
       url: how-to-customize-launch-button.md
     - text: 認証トークンをキャッシュする
       url: how-to-cache-token.md
