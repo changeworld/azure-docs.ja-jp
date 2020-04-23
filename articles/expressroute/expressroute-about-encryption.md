@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75437055"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461465"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute の暗号化
  
 ExpressRoute では、お使いのネットワークと Microsoft のネットワークの間を行き来するデータの機密性と整合性を確保するために、暗号化テクノロジがいくつかサポートされています。
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>MACsec によるポイントツーポイント暗号化に関する FAQ
-MACsec は [IEEE 標準](https://1.ieee802.org/security/802-1ae/)です。 MAC (メディア アクセス コントロール) レベルまたはネットワーク レイヤー 2 でデータが暗号化されます。 [ExpressRoute Direct](expressroute-erdirect-about.md) 経由で Microsoft に接続するとき、MACsec を利用し、お使いのネットワーク デバイスと Microsoft のネットワーク デバイスの間の物理リンクを暗号化できます。 既定では、MACsec は ExpressRoute Direct ポートで無効になっています。 暗号化用に自分の MACsec キーを持ち込み、それを [Azure Key Vault](../key-vault/key-vault-overview.md) に格納します。 キーを交換するタイミングを決定します。 以下でその他のよくあるご質問をご覧ください。
+MACsec は [IEEE 標準](https://1.ieee802.org/security/802-1ae/)です。 MAC (メディア アクセス コントロール) レベルまたはネットワーク レイヤー 2 でデータが暗号化されます。 [ExpressRoute Direct](expressroute-erdirect-about.md) 経由で Microsoft に接続するとき、MACsec を利用し、お使いのネットワーク デバイスと Microsoft のネットワーク デバイスの間の物理リンクを暗号化できます。 既定では、MACsec は ExpressRoute Direct ポートで無効になっています。 暗号化用に自分の MACsec キーを持ち込み、それを [Azure Key Vault](../key-vault/general/overview.md) に格納します。 キーを交換するタイミングを決定します。 以下でその他のよくあるご質問をご覧ください。
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>ExpressRoute プロバイダーからプロビジョニングされた自分の ExpressRoute 回線で MACsec を有効にできますか。
 いいえ。 MACsec では、あるエンティティ (すなわち、顧客) が所有するキーによって物理リンク上のあらゆるトラフィックが暗号化されます。 そのため、ExpressRoute Direct 上でのみ利用できます。
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>ExpressRoute 回線の一部を自分の ExpressRoute Direct ポートで暗号化し、他の回線を同じポートで暗号化しないままにすることができますか。 

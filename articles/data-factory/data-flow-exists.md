@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 512d9a688d7f808056a91b5bc0484c378af33948
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a303c8fa1e23460fb906232eedb6bfb1930b4bc9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413814"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606462"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>マッピング データ フローの存在変換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 存在変換は、ご利用のデータが別のソースまたはストリームに存在するかどうかを確認する行のフィルター変換です。 出力ストリームには、左側ストリームに存在するすべての行が含まれます。これらの行には、右側ストリームに存在する行も存在しない行もあります。 存在変換は ```SQL WHERE EXISTS``` および ```SQL WHERE NOT EXISTS``` と同様です。
 

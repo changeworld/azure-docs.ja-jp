@@ -3,12 +3,12 @@ title: Azure Application Insights を使用してライブ ASP.NET Web アプリ
 description: Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミスまたは VM でホストされた ASP.NET Web アプリが対象です。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670051"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536830"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
@@ -314,7 +314,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 テレメトリの表示:
 
-* パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します
+* パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します
 * 問題を診断するために[イベントとログを検索][diagnostic]します
 * より高度なクエリのために [Analytics](../../azure-monitor/app/analytics.md) を使用します
 

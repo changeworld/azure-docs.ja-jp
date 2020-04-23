@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0fb80b8a3fe9dd642b1574b35ff48b30272ce848
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880875"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533719"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>チュートリアル:Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "80880875"
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-アプリは、ASP.NET MVC アプリケーションとしてビルドされています。 ユーザーのサインインには OWIN OpenID Connect ミドルウェアを使用します。  
+アプリは、ASP.NET MVC アプリケーションとしてビルドされています。 ユーザーのサインインには OWIN OpenID Connect ミドルウェアを使用します。
 
 このサンプルの "デーモン" としてのコンポーネントは、API コントローラー `SyncController.cs` です。 このコントローラーを呼び出すと、顧客の Azure Active Directory (Azure AD) テナントに存在するユーザーのリストが Microsoft Graph からプルされます。 `SyncController.cs` は、Web アプリケーション内の AJAX 呼び出しによってトリガーされます。 Microsoft Graph のアクセス トークンの取得には、[Microsoft Authentication Library (MSAL) for .NET](msal-overview.md) が使用されます。
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    - **[リダイレクト URI (省略可能)]** セクションで、コンボ ボックスの **[Web]** を選択し、次のリダイレクト URI を入力します。
        - **https://localhost:44316/**
        - **https://localhost:44316/Account/GrantPermissions**
-          
+
      リダイレクト URI が 3 つ以上ある場合は、アプリが正常に作成された後、 **[認証]** タブから URI を追加する必要があります。
 1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
@@ -121,7 +121,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
    1. キーの説明 (たとえば**アプリのシークレット**) を入力します。
    1. キーの有効期間として **[1 年]** 、 **[2 年]** 、または **[有効期限なし]** を選択します。
-   1. **[追加]** ボタンを選びます。 
+   1. **[追加]** ボタンを選びます。
    1. キーの値が表示されたら、コピーして安全な場所に保存します。 このキーは、後から Visual Studio でプロジェクトを構成するために必要となります。 これは二度と表示されず、他の手段で取得することもできません。
 1. アプリのページの一覧から **[API のアクセス許可]** を選択します。 その後、以下を実行します。
    1. **[アクセス許可の追加]** ボタンを選択します。
@@ -174,21 +174,21 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 
 ## <a name="re-create-the-sample-app"></a>サンプル アプリを再作成する
 
-1. Visual Studio で、新しい **Visual C#** **ASP.NET Web アプリケーション (.NET Framework)** プロジェクトを作成します。 
+1. Visual Studio で、新しい **Visual C#** **ASP.NET Web アプリケーション (.NET Framework)** プロジェクトを作成します。
 1. 次の画面で、**MVC** プロジェクト テンプレートを選択します。 後で Web API コントローラーを追加するので、**Web API** 用のフォルダーと主要な参照も追加します。 プロジェクトで選択される認証モードは既定値 ( **[認証なし]** ) のままにします。
-1. **ソリューション エクスプローラー** ウィンドウでプロジェクトを選択し、**F4** キーを押します。 
+1. **ソリューション エクスプローラー** ウィンドウでプロジェクトを選択し、**F4** キーを押します。
 1. プロジェクトのプロパティで、 **[SSL 有効]** を  **True** に設定します。 **[SSL URL]** に表示される情報を書き留めておきます。 これは、このアプリケーションの登録を Azure portal で構成する際に必要になります。
-1. 次の ASP.NET OWIN ミドルウェア NuGet パッケージを追加します。 
+1. 次の ASP.NET OWIN ミドルウェア NuGet パッケージを追加します。
    - Microsoft.Owin.Security.ActiveDirectory
    - Microsoft.Owin.Security.Cookies
    - Microsoft.Owin.Host.SystemWeb
    - Microsoft.IdentityModel.Protocol.Extensions
    - Microsoft.Owin.Security.OpenIdConnect
-   - Microsoft.Identity.Client 
+   - Microsoft.Identity.Client
 1. **[App_Start]** フォルダー内で、次のことを行います。
-   1. **Startup.Auth.cs** という名前のクラスを作成します。 
-   1. 名前空間の名前から **.App_Start** を削除します。 
-   1. **Startup** クラスのコードを、サンプル アプリの同じファイルにあるコードに置き換えます。       
+   1. **Startup.Auth.cs** という名前のクラスを作成します。
+   1. 名前空間の名前から **.App_Start** を削除します。
+   1. **Startup** クラスのコードを、サンプル アプリの同じファイルにあるコードに置き換えます。
    必ずクラス定義全体を置き換えてください。 定義が **public class Startup** から **public partial class Startup** に変わります。
 1. **Startup.Auth.cs** で、Visual Studio の IntelliSense によって提示される **using** ステートメントを追加して、不足している参照を解決します。
 1. プロジェクトを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
@@ -220,12 +220,12 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 1. Web サイトが作成されたら、 **[ダッシュボード]** でそれを探して選択し、アプリ サービスの **[概要]** 画面を開きます。
 1. アプリ サービスの **[概要]** タブで、 **[発行プロファイルの取得]** リンクを選択して発行プロファイルをダウンロードし、保存します。 ソース管理のデプロイなど、他のデプロイ メカニズムを使用することもできます。
 1. Visual Studio に切り替えて、次の操作を行います。
-   1. **dotnet-web-daemon-v2** プロジェクトに移動します。 
+   1. **dotnet-web-daemon-v2** プロジェクトに移動します。
    1. ソリューション エクスプローラーでプロジェクトを右クリックして、 **[発行]** をクリックします。
    1. 下部のバーにある **[プロファイルのインポート]** を選択し、前にダウンロードした発行プロファイルをインポートします。
 1. **[構成]** をクリックします。
 1. **[接続]** タブで、接続先 URL を "https" を使ったものに更新します。 たとえば、[https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net) を使用します。 **[次へ]** を選択します。
-1. **[設定]** タブで、 **[組織認証の有効化]** が選択されていないことを確認します。  
+1. **[設定]** タブで、 **[組織認証の有効化]** が選択されていないことを確認します。
 1. **[保存]** を選択します。 メイン画面で **[発行]** を選択します。
 
 Visual Studio によってプロジェクトが発行され、ブラウザーでプロジェクトの URL が自動的に開きます。 プロジェクトの既定の Web ページが表示された場合には、発行が成功しています。

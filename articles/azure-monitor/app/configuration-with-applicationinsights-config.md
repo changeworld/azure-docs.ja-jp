@@ -4,12 +4,12 @@ description: データ コレクション モジュールを有効または無�
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 460bd79e3a37c492301f7438112fef4487618fed
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 3375c24739da8663aa6a40deeb53e02e65d1f9bf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982091"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537561"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかに対してパラメーターを設定したりできます。
@@ -120,7 +120,7 @@ Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https:
 * `OperationNameTelemetryInitializer` は、HTTP メソッドのほか、ASP.NET MVC コントローラーの名前、要求の処理のために呼び出されるアクションに基づいて、すべてのテレメトリ項目の`RequestTelemetry` の `Name` プロパティと `Operation` コンテキストの `Name` プロパティを更新します。
 * `OperationIdTelemetryInitializer` または `OperationCorrelationTelemetryInitializer` は、追跡されたすべてのテレメトリ項目の `Operation.Id` コンテキスト プロパティを更新し、自動生成された `RequestTelemetry.Id` が付いた要求を処理します。
 * `SessionTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_session` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `Session` コンテキストの `Id` プロパティを更新します。
-* `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、`Operation` コンテキスト プロパティを更新します。 既定では、 [メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md) には合成テレメトリは表示されません。
+* `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、`Operation` コンテキスト プロパティを更新します。 既定では、 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md) には合成テレメトリは表示されません。
 
     `<Filters>` は、要求の識別プロパティを設定します。
 * `UserTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_user` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `User` コンテキストの `Id` および `AcquisitionDate` プロパティを更新します。

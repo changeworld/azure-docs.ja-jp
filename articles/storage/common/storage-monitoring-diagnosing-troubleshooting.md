@@ -8,12 +8,12 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228543"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605066"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -516,24 +516,24 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 | 要求 ID | [操作テキスト] |
 | --- | --- |
-| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に同期要求を開始しています。 |
+| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に同期要求を開始しています。 |
 | 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |応答を待機しています。 |
 | 07b26a5d-... |応答を受け取りました。 状態コード = 200、要求 ID = eeead849-...Content-MD5 = 、ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |応答ヘッダーは正常に処理されました。残りの操作を処理しています。 |
 | 07b26a5d-... |応答の本文をダウンロードしています。 |
 | 07b26a5d-... |操作は正常に完了しました。 |
-| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に同期要求を開始しています。 |
+| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に同期要求を開始しています。 |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |応答を待機しています。 |
 | 07b26a5d-... |応答を受け取りました。 状態コード = 202、要求 ID = 6ab2a4cf-...、Content-MD5 = ETag = 。 |
 | 07b26a5d-... |応答ヘッダーは正常に処理されました。残りの操作を処理しています。 |
 | 07b26a5d-... |応答の本文をダウンロードしています。 |
 | 07b26a5d-... |操作は正常に完了しました。 |
-| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に非同期要求を開始しています。</td> |
+| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に非同期要求を開始しています。</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |応答を待機しています。 |
-| de8b1c3c-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt ) に同期要求を開始しています。 |
+| de8b1c3c-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` ) に同期要求を開始しています。 |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |要求データを書き込む準備をしています。 |
 | e2d06d78-... |応答の待機中に例外がスローされました。リモート サーバーがエラー「(404) 見つかりません」を返しました。 |
@@ -541,7 +541,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 | e2d06d78-... |応答ヘッダーは正常に処理されました。残りの操作を処理しています。 |
 | e2d06d78-... |応答の本文をダウンロードしています。 |
 | e2d06d78-... |操作は正常に完了しました。 |
-| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](https://domemaildist.blob.core.windows.net/azuremmblobcontainer ) に非同期要求を開始しています。 |
+| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に非同期要求を開始しています。 |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |応答を待機しています。 |
 | de8b1c3c-... |要求データを待機しています。 |
@@ -567,10 +567,10 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 | 要求の開始時刻 | 2014-05-30T06:17:48.4473697Z |
 | 操作の種類     | GetBlobProperties            |
 | 要求の状態     | SASAuthorizationError        |
-| HTTP 状態コード   | 404                          |
+| HTTP 状態コード   | 404                            |
 | 認証の種類| SAS                          |
 | サービスの種類       | BLOB                         |
-| 要求 URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| 要求 URL         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | 要求 ID ヘッダー  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | クライアント要求 ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |

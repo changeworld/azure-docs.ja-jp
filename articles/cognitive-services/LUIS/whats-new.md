@@ -3,12 +3,12 @@ title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 562f7f8b4974363daab91991e6a8219b352432fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156006"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538020"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -73,8 +73,8 @@ Build 2019 Conference では、次の機能が公開されました。
 * [V3 API 移行ガイドのプレビュー](luis-migration-api-v3.md)
 * [改善された分析ダッシュ ボード](luis-how-to-use-dashboard.md)
 * [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md)
-* [動的なリスト エンティティ](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
-* [外部エンティティ](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+* [動的なリスト エンティティ](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+* [外部エンティティ](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>ブログ
 

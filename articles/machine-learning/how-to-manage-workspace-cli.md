@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
-ms.openlocfilehash: 64c2e77ffc43ec98c13ce8c0cad002cdb2053241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296917"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617782"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ az login
 
 CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザーを開き、コマンド ラインの指示に従う必要があります。 この手順では、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) にアクセスして認証コードを入力する必要があります。
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 その他の認証方法については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください。
 

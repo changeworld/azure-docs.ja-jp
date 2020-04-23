@@ -3,12 +3,12 @@ title: ワーカー サービス アプリ (非 HTTP アプリ) 向け Applicati
 description: Azure Monitor Application Insights を使用した .NET Core/.NET Framework (非 HTTP アプリ) の監視。
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 34a64ffa67b1a43a77391e0d50ddf1bfad0f73ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f043140e5a342d114f777ad16bba588790b7f8cc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501163"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536728"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -207,9 +207,9 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
             {
                 _logger.LogWarning("A sample warning message. By default, logs with severity Warning or higher is captured by Application Insights");
                 _logger.LogInformation("Calling bing.com");
-                var res = await httpClient.GetAsync("https://bing.com");
+                var res = httpClient.GetAsync("https://bing.com").GetAwaiter().GetResult();
                 _logger.LogInformation("Calling bing completed with status:" + res.StatusCode);
-                telemetryClient.TrackEvent("Bing call event completed");
+                _telemetryClient.TrackEvent("Bing call event completed");
             }
         }
     }

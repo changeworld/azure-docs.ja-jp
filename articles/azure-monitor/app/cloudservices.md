@@ -3,12 +3,12 @@ title: Azure クラウド サービス向けの Application Insights | Microsoft
 description: Application Insights で Web と worker ロールを効果的に監視する
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234767"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537595"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -31,7 +31,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 
 このオプションで十分な場合、これで完了です。 
 
-次の手順は、[アプリからのメトリックの表示](../../azure-monitor/app/metrics-explorer.md)、[Analytics によるデータのクエリの実行](../../azure-monitor/app/analytics.md)です。 
+次の手順は、[アプリからのメトリックの表示](../../azure-monitor/platform/metrics-charts.md)、[Analytics によるデータのクエリの実行](../../azure-monitor/app/analytics.md)です。 
 
 ブラウザーでパフォーマンスを監視するには、[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)を設定して、[お客様の Web ページにコードを追加](../../azure-monitor/app/javascript.md)することもできます。
 
@@ -165,7 +165,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 
 1. お客様が作成した Application Insights リソースを開きます。
 
-   個別のデータ ポイントは [[検索]][diagnostic] に表示され、集計されたデータは [[メトリック エクスプローラー]](../../azure-monitor/app/metrics-explorer.md) に表示されます。
+   個別のデータ ポイントは [[検索]][diagnostic] に表示され、集計されたデータは [[メトリック エクスプローラー]](../../azure-monitor/platform/metrics-charts.md) に表示されます。
 
 1. さらにテレメトリを追加し (以下のセクションを参照)、お客様のアプリを発行して、ライブの診断と使用状況のフィードバックを取得します。 
 
@@ -184,7 +184,7 @@ Application Insights の [Azure 診断](https://docs.microsoft.com/azure/monitor
 * Windows イベント ログは、トレースとカスタム イベントとして表示されます。
 * アプリケーション ログ、ETW ログ、診断インフラストラクチャ ログは、トレースとして表示されます。
 
-パフォーマンス カウンターおよびイベント数を表示するには、[[メトリックス エクスプローラー]](../../azure-monitor/app/metrics-explorer.md) を開き、次のグラフを追加します。
+パフォーマンス カウンターおよびイベント数を表示するには、[[メトリックス エクスプローラー]](../../azure-monitor/platform/metrics-charts.md) を開き、次のグラフを追加します。
 
 ![Azure 診断データ](./media/cloudservices/23-wad.png)
 

@@ -4,12 +4,12 @@ description: Web アプリに対する要求の失敗率の異常な変化を通
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671751"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536813"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、Web アプリで要求の失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーにアラートを送信します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 アラートの詳細には、問題のトリアージと診断に役立つよう、失敗の特性および関連するアプリケーション データの分析が表示されます。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -353,7 +353,7 @@ Application Insights リソース ページで **[アラート]** をクリッ�
 ## <a name="next-steps"></a>次のステップ
 これらの診断ツールを使用すると、アプリからのデータを調査できます。
 
-* [メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)
+* [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)
 * [Search エクスプローラー](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics - 強力なクエリ言語](../../azure-monitor/log-query/get-started-portal.md)
 

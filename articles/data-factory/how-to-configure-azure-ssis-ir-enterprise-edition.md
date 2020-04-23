@@ -10,16 +10,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: c0bedde8431ce713f0cc7185d0ec607d49b48ef1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0e35a309fd30a36263b498b6a8e74a312004a99
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414953"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606156"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度なプレミアム機能を使用できます。
 -   変更データ キャプチャ (CDC) コンポーネント

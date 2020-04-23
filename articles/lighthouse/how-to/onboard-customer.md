@@ -1,14 +1,14 @@
 ---
 title: Azure の委任されたリソース管理に顧客をオンボードする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 03/24/2020
+ms.date: 04/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9eef2e73de7812fc65104131dfd319bf8dfb014e
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 22c96d43f3d5f284c2cba995eb33f5f8cd238659
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984591"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481685"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -206,14 +206,14 @@ az role definition list --name "<roleName>" | grep name
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
 # Deploy Azure Resource Manager template using template and parameter file locally
-New-AzDeployment -Name <deploymentName> `
+New-AzSubscriptionDeployment -Name <deploymentName> `
                  -Location <AzureRegion> `
                  -TemplateFile <pathToTemplateFile> `
                  -TemplateParameterFile <pathToParameterFile> `
                  -Verbose
 
 # Deploy Azure Resource Manager template that is located externally
-New-AzDeployment -Name <deploymentName> `
+New-AzSubscriptionDeployment -Name <deploymentName> `
                  -Location <AzureRegion> `
                  -TemplateUri <templateUri> `
                  -TemplateParameterUri <parameterUri> `

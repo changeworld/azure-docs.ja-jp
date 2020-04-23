@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 401ce2aed2c783169592f0dc664a3a7baea415b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cafc311c842cd5bc17fefe34eacbdfc99b7147a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336623"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617723"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ az login
 
 CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザーを開き、コマンド ラインの指示に従う必要があります。 この手順では、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) にアクセスして認証コードを入力する必要があります。
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 ## <a name="install-the-machine-learning-extension"></a>機械学習拡張機能をインストールする
 

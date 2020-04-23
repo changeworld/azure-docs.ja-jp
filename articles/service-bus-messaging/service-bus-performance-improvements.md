@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: aschhab
-ms.openlocfilehash: b864f433c67d47b4b92a1d4b98693ebd42806dd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229619"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606050"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -135,7 +135,7 @@ receiver.RegisterMessageHandler(
     new MessageHandlerOptions(e => LogErrorAsync(e.Exception))
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 
@@ -159,7 +159,7 @@ receiver.OnMessageAsync(
     new OnMessageOptions
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 

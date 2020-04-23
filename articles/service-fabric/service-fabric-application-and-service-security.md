@@ -3,12 +3,12 @@ title: Azure Service Fabric のアプリケーション セキュリティにつ
 description: Service Fabric でマイクロサービス アプリケーションを安全に実行する方法の概要。 別のセキュリティ アカウントでサービスとスタートアップ スクリプトを実行する方法、ユーザーを認証および承認する方法、アプリケーション シークレットを管理する方法、サービス通信を保護する方法、API ゲートウェイを使用する方法、アプリケーション データを安全に保護する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756239"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461431"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ
 マイクロサービス アーキテクチャには、[多くの利点](service-fabric-overview-microservices.md)があります。 しかし、マイクロサービスのセキュリティの管理は困難であり、従来のモノリシックなアプリケーション セキュリティの管理とは異なります。 
@@ -99,7 +99,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [クラスター セキュリティについて学習する](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-overview.md
+[key-vault-get-started]:../key-vault/general/overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

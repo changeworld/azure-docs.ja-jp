@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920498"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606145"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
 
 - [SAP 管理ガイド](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [SAP インストール ガイド](https://service.sap.com/instguides)
-- [SAP ノート](https://sservice.sap.com/notes)
+- [SAP ノート](https://service.sap.com/notes)
 
 ## <a name="prerequisites"></a>前提条件
 このガイドを使用するには、次の Azure コンポーネントに関する基本的な知識が必要です。

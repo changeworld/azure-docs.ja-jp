@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4538afcef85c4a6eaef4213133963ecab9987e1f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876219"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603346"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -80,7 +80,7 @@ ms.locfileid: "80876219"
 | -| -|
 | [ADFS からパスワード ハッシュ同期への移行](../hybrid/plan-migrate-adfs-password-hash-sync.md)| パスワード ハッシュ同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。これにより Azure AD では、オンプレミスの Active Directory とやり取りすることなくユーザーを認証することができます |
 | [ADFS からパススルー認証への移行](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウドベースのアプリケーションの両方にサインインできます。 この機能により、ユーザー エクスペリエンスが向上します。ユーザーは、覚えておくパスワードが 1 つ少なくなり、ユーザーがサインイン方法を忘れる可能性が低くなるため IT ヘルプデスクのコストが削減されます。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。 |
-| [Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan.md) |現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。 |
+| [Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。 |
 | [シームレス SSO](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) では、ユーザーが企業ネットワークに接続される会社のデバイスを使用するときに、自動的にサインインを行います。 この機能を使用すると、ユーザーは Azure AD にサインインするためにパスワードを入力する必要がなくなり、通常はユーザー名の入力も不要です。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、認可されたユーザーはクラウドベースのアプリケーションに簡単にアクセスできるようになります。 |
 
 ## <a name="deploy-user-provisioning"></a>ユーザー プロビジョニングのデプロイ

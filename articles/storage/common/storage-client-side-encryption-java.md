@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460452"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460513"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -103,7 +103,7 @@ ms.locfileid: "75460452"
 > クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。 クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。 クエリでサーバー側のプロジェクションが実行される場合、クライアント ライブラリは既定で、特別な暗号化メタデータ プロパティ (_ClientEncryptionMetadata1 および _ClientEncryptionMetadata2) を選択した列に追加します。
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 詳細については、「 [Azure Key Vault とは](../../key-vault/key-vault-overview.md)」を参照してください。
+Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 詳細については、「 [Azure Key Vault とは](../../key-vault/general/overview.md)」を参照してください。
 
 ストレージ クライアント ライブラリは Key Vault のコア ライブラリを使用して、Azure 全体でのキー管理用の一般的なフレームワークを提供します。 Key Vault 拡張機能ライブラリを使用すると追加のメリットも得られます。 拡張機能ライブラリには、シンプルかつシームレスな対称/RSA ローカルおよびクラウドのキー プロバイダーに関する便利な機能や、集計またはキャッシュに関する機能が用意されています。
 
@@ -256,4 +256,4 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 * Java Maven パッケージの Azure Key Vault Maven Library をダウンロードする:
   * [コア](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) パッケージ
   * [クライアント](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) パッケージ
-* [Azure Key Vault のドキュメント](../../key-vault/key-vault-overview.md)
+* [Azure Key Vault のドキュメント](../../key-vault/general/overview.md)

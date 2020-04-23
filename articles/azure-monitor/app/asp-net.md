@@ -3,12 +3,12 @@ title: Azure Application Insights を使用した ASP.NET の Web アプリ分�
 description: オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、およびユーザー動作の分析ツールを構成します。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665920"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536898"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -93,7 +93,7 @@ Application Insights リソースを開きます。 [Azure Portal](https://porta
 詳細を表示するには、ポータルで任意のタイルまたはグラフをクリックします。
 
 ## <a name="step-4-publish-your-app"></a>手順 4:アプリケーションの発行
-IIS サーバーまたは Azure にアプリを発行します。 [ライブ メトリック ストリーム](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) を観察して、必要な処理がすべて滞りなく実行されていることを確認してください。
+IIS サーバーまたは Azure にアプリを発行します。 [ライブ メトリック ストリーム](../../azure-monitor/app/live-stream.md) を観察して、必要な処理がすべて滞りなく実行されていることを確認してください。
 
 Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したりすることができます。 強力な [Kusto クエリ言語](/azure/kusto/query/)を使用して、使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
 

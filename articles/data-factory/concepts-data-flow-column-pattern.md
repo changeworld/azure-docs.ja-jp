@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 5e1c0eb1c4f1fc74e56db8f83f1bab6406ec5306
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415547"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606132"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>マッピング データ フロー内の列パターンを使用する
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 複数のマッピング データ フローの変換によって、ハードコーディングされた列名ではなく、パターンに基づいてテンプレート列を参照できるようになります。 このマッチングは、"*列パターン*" と呼ばれます。 正確なフィールド名を必要とするのではなく、パターンを定義して名前、データ、型、ストリーム、位置に基づいて列を照合できます。 列パターンが役立つシナリオが 2 つあります。
 

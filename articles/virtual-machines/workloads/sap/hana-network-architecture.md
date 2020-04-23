@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3bc87b183803c0854542d6925af7429b593d2af
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502403"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605168"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -182,7 +182,7 @@ ExpressRoute Global Reach を有効にする方法の詳細については、「
 HANA L インスタンスは、インターネットに直接接続することは*できません*。 たとえば、この制限によって、OS イメージを OS ベンダーに直接登録することができない可能性があります。 ローカルの SUSE Linux Enterprise Server Subscription Management Tool サーバーや Red Hat Enterprise Linux Subscription Manager を使用することが必要になる場合があります。
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM と HANA L インスタンス間でのデータの暗号化
-HANA L インスタンスと VM 間で転送されるデータは暗号化されません。 ただし、HANA DBMS 側と JDBC/ODBC ベースのアプリケーションとの間でのデータ交換のみを目的としている場合は、トラフィックの暗号化を有効にすることができます。 詳細については、[SAP から提供されているこちらのドキュメント](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)をご覧ください。
+HANA L インスタンスと VM 間で転送されるデータは暗号化されません。 ただし、HANA DBMS 側と JDBC/ODBC ベースのアプリケーションとの間でのデータ交換のみを目的としている場合は、トラフィックの暗号化を有効にすることができます。 詳細については、[SAP から提供されているこちらのドキュメント](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)をご覧ください。
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>複数のリージョンでの HANA L インスタンス ユニットの使用
 

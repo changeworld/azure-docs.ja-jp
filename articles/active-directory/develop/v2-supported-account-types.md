@@ -12,18 +12,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6c9ccb3dc29865c790e5d8cc9cfc35e68f5561d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886145"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535776"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 
 この記事では、アプリケーションでサポートされているアカウントの種類 (対象ユーザーと呼ばれることもある) について説明します。
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Microsoft ID プラットフォームのアプリケーションでサポートされているアカウントの種類
 
@@ -44,7 +44,7 @@ Microsoft Azure パブリック クラウドでは、ほとんどの種類のア
 
 一部のアカウントの種類は、特定の認証フローでは使用できません。 たとえば、デスクトップでは、UWP アプリケーションやデーモン アプリケーションが該当します。
 
-- デーモン アプリケーションは、Azure Active Directory の組織でのみ使用できます。 Microsoft 個人アカウントを操作するためにデーモン アプリケーションを使用しても意味がありません (管理者の同意は付与されません)。  
+- デーモン アプリケーションは、Azure Active Directory の組織でのみ使用できます。 Microsoft 個人アカウントを操作するためにデーモン アプリケーションを使用しても意味がありません (管理者の同意は付与されません)。
 - 統合 Windows 認証フローは、(お客様の組織または任意の組織の) 職場または学校のアカウントでのみ使用できます。 実際、統合 Windows 認証はドメイン アカウントで動作し、マシンをドメインに参加させるか Azure AD に参加させる必要があります。 このフローは、個人の Microsoft アカウントには意味がありません。
 - [リソース所有者のパスワード付与](./v2-oauth-ropc.md) (ユーザー名/パスワード) は、個人の Microsoft アカウントでは使用できません。 実際、個人の Microsoft アカウントでは、ユーザーがサインイン セッションごとに個人のリソースへのアクセスに同意する必要があります。 このため、この動作は非対話型フローとは互換性がありません。
 - デバイス コード フローは、個人の Microsoft アカウントではまだ機能しません。

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 94ac75c4165b11e343ce5c31480a511ebf978a36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67838775"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640544"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi の Azure IoT Hub への接続 (C)
 
@@ -160,7 +160,7 @@ BME280 が正常に Raspberry Pi に接続されると、下の図のように�
 
 ### <a name="connect-pi-to-the-network"></a>Pi のネットワークへの接続
 
-micro USB ケーブルと AC アダプターを使って、Pi の電源を入れます。 イーサネット ケーブルを使用して Pi を有線ネットワークに接続するか、[Raspberry Pi Foundation の手順](https://www.raspberrypi.org/learning/software-guide/wifi/)に従って、Pi をワイヤレス ネットワークに接続します。 Pi がネットワークに正常に接続されたら、[Pi の IP アドレス](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)をメモしておく必要があります。
+micro USB ケーブルと AC アダプターを使って、Pi の電源を入れます。 イーサネット ケーブルを使用して Pi を有線ネットワークに接続するか、[Raspberry Pi Foundation の手順](https://www.raspberrypi.org/documentation/configuration/wireless/)に従って、Pi をワイヤレス ネットワークに接続します。 Pi がネットワークに正常に接続されたら、[Pi の IP アドレス](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)をメモしておく必要があります。
 
 ![接続先の有線ネットワーク](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587959"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461635"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
 
@@ -60,11 +60,11 @@ CMK をプロビジョニングするには、次の手順を実行します。�
     > [!NOTE]
     >  キーとアクセスを保護するため、Azure Key Vault を回復可能として構成する必要があります。
 
-1.  [回復オプションを有効にする:](../key-vault/key-vault-best-practices.md#turn-on-recovery-options)
+1.  [回復オプションを有効にする:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   [[論理的な削除]](../key-vault/key-vault-ovw-soft-delete.md) が有効になっていることを確認します。
+    -   [[論理的な削除]](../key-vault/general/overview-soft-delete.md) が有効になっていることを確認します。
 
-    -   論理的な削除の後でもシークレットまたはコンテナーの強制削除を防ぐには、[消去保護](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)を有効にする必要があります
+    -   論理的な削除の後でもシークレットまたはコンテナーの強制削除を防ぐには、[消去保護](../key-vault/general/overview-soft-delete.md#purge-protection)を有効にする必要があります
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>手順 2: Log Analytics ワークスペースで CMK を有効にする
 

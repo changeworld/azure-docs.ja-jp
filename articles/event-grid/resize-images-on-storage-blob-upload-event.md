@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: fc5e379aae7d8ff0d7cb685b0dd7e7e0a46bb677
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393290"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482194"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -102,7 +102,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
       --resource-group $resourceGroupName --consumption-plan-location southeastasia \
-      --functions_version 2
+      --functions-version 2
     ```
 
 ここで、[前のチュートリアル][previous-tutorial]で作成した BLOB ストレージ アカウントに接続するように関数アプリを構成します。

@@ -3,12 +3,12 @@ title: Azure Application Insights からの Stream Analytics のエクスポー�
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664016"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536881"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -55,7 +55,7 @@ ms.locfileid: "77664016"
 
     ![イベントの種類の選択](./media/export-stream-analytics/080.png)
 
-1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
+1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
 2. エクスポートされたデータを検査します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。

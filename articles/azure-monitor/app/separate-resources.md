@@ -3,12 +3,12 @@ title: Azure Application Insights でのテレメトリの分離
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671462"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536779"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
 
@@ -69,7 +69,7 @@ iKey は、アプリの Web ページや、[クイックスタート ブレー�
 
 ![[新規]、[Application Insights] の順にクリックする](./media/separate-resources/01-new.png)
 
-* **アプリケーションの種類** に応じて、概要ブレードに表示されるものと [メトリック エクスプローラー](../../azure-monitor/app/metrics-explorer.md)で使用できるプロパティが決まります。 自分のアプリの種類が表示されない場合、Web ページの Web の種類を 1 つ選択します。
+* **アプリケーションの種類** に応じて、概要ブレードに表示されるものと [メトリック エクスプローラー](../../azure-monitor/platform/metrics-charts.md)で使用できるプロパティが決まります。 自分のアプリの種類が表示されない場合、Web ページの Web の種類を 1 つ選択します。
 * **リソース グループ** は、 [アクセス制御](../../azure-monitor/app/resources-roles-access-control.md)などのプロパティを管理するのに便利です。 開発、テスト、および実稼働用に別々のリソース グループを使用できます。
 * **サブスクリプション** は、Azure での支払いアカウントです。
 * **場所** は、データの保存場所です。 現在、これは変更できません。 
@@ -89,7 +89,7 @@ iKey は、アプリの Web ページや、[クイックスタート ブレー�
 ## <a name="filter-on-build-number"></a>ビルド番号でのフィルター処理
 新しいバージョンのアプリを発行するときは、異なるビルドのテレメトリを区別する必要があります。
 
-アプリケーション バージョン プロパティを設定することで、[検索](../../azure-monitor/app/diagnostic-search.md)と[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)の結果をフィルター処理できます。
+アプリケーション バージョン プロパティを設定することで、[検索](../../azure-monitor/app/diagnostic-search.md)と[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)の結果をフィルター処理できます。
 
 ![プロパティでのフィルター処理](./media/separate-resources/050-filter.png)
 
@@ -139,7 +139,7 @@ iKey は、アプリの Web ページや、[クイックスタート ブレー�
     </PropertyGroup>
 ```
 
-ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](../../azure-monitor/app/diagnostic-search.md)を実行するとき、または[メトリックを調べる](../../azure-monitor/app/metrics-explorer.md)ときに、バージョンによってフィルター処理できます。
+ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](../../azure-monitor/app/diagnostic-search.md)を実行するとき、または[メトリックを調べる](../../azure-monitor/platform/metrics-charts.md)ときに、バージョンによってフィルター処理できます。
 
 ただし、Visual Studio の開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 

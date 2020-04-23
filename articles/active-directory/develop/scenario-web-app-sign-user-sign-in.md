@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881317"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537068"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ:サインインとサインアウト
 
@@ -205,7 +205,7 @@ def _get_token_from_cache(scope=None):
 ## <a name="sign-out"></a>サインアウト
 
 Web アプリからのサインアウトに必要なのは、サインインしたアカウントに関する情報を Web アプリの状態から削除することだけではありません。
-サインアウトするには、Web アプリによってユーザーが Microsoft ID プラットフォーム `logout` エンドポイントにリダイレクトされる必要もあります。 
+サインアウトするには、Web アプリによってユーザーが Microsoft ID プラットフォーム `logout` エンドポイントにリダイレクトされる必要もあります。
 
 Web アプリによってユーザーが `logout` エンドポイントにリダイレクトされると、このエンドポイントでは、ユーザーのセッションがブラウザーから消去されます。 アプリが `logout` エンドポイントに移動しなかった場合、ユーザーは資格情報を再入力しなくてもアプリに再認証されます。 理由は、Microsoft ID プラットフォーム エンドポイントとの有効なシングル サインイン セッションがあるからです。
 
@@ -306,7 +306,7 @@ Python のクイックスタートでは、サインアウト ボタンは [temp
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

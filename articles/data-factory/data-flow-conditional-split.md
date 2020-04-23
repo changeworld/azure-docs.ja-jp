@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 20def8ca51f21d914e7090999e8284244c5f3ec7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416509"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606477"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>マッピング データ フローの条件分割変換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 条件分割変換では、データ行を、一致条件に応じて異なるストリームにルーティングします。 条件分割変換は、プログラミング言語の CASE 決定構造と似ています。 この変換では式を評価し、その結果に基づいて、データ行を指定されたストリームに送ります。
 

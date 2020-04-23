@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529422"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460989"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します
 Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想マシン (VM) に安全にアクセスできるようにするために、ラボ用のリモート デスクトップ ゲートウェイを構成できます。 ラボは、ラボ ユーザーがアクセスできるすべての仮想マシンを表示および接続するための中央の場所を提供します。 **[仮想マシン]** ページの **[接続]** ボタンにより、そのマシンに接続するために開くことができるマシン固有の RDP ファイルが作成されます。 ラボをリモート デスクトップ ゲートウェイに接続することで、RDP 接続をさらにカスタマイズして保護できます。 
@@ -64,7 +64,7 @@ Azure 関数は、`https://{function-app-uri}/app/host/{lab-machine-name}/port/{
 ## <a name="configure-the-lab-to-use-token-authentication"></a>トークン認証を使用するようにラボを構成する 
 このセクションでは、トークン認証をサポートするリモート デスクトップ ゲートウェイ マシンを使用するようにラボを構成する方法について説明します。 このセクションでは、リモート デスクトップ ゲートウェイ ファーム自体の設定方法については説明しません。 その情報については、この記事の最後にある「[リモート デスクトップ ゲートウェイを作成するためのサンプル](#sample-to-create-a-remote-desktop-gateway)」セクションを参照してください。 
 
-ラボの設定を更新する前に、認証トークンを返す関数を正常に実行するために必要なキーをラボのキー コンテナーに格納します。 関数のキー値は、Azure portal 内の関数の **[管理]** ページで取得できます。 シークレットをキー コンテナーに保存する方法について詳しくは、「[Key Vault にシークレットを追加する](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)」を参照してください。 後で使用するためにシークレットの名前を保存します。
+ラボの設定を更新する前に、認証トークンを返す関数を正常に実行するために必要なキーをラボのキー コンテナーに格納します。 関数のキー値は、Azure portal 内の関数の **[管理]** ページで取得できます。 シークレットをキー コンテナーに保存する方法について詳しくは、「[Key Vault にシークレットを追加する](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)」を参照してください。 後で使用するためにシークレットの名前を保存します。
 
 ラボのキー コンテナーの ID を見つけるには、次の Azure CLI コマンドを実行します。 
 

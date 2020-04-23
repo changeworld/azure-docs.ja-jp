@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 1f920f2672c19455a8e8ac979e8d6d1eb14d4c35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924295"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606625"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 
@@ -33,6 +33,8 @@ ms.locfileid: "74924295"
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET カスタム](transform-data-using-dotnet-custom-activity.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="overview"></a>概要
 この記事では、Azure Data Factory でのデータ変換アクティビティについて説明します。このアクティビティを使用すると、生データを大規模な予測と分析情報に変換して処理することができます。 変換アクティビティは、Azure Databricks や Azure HDInsight などのコンピューティング環境で実行されます。 各変換アクティビティの詳細情報に関する記事へのリンクが提供されています。

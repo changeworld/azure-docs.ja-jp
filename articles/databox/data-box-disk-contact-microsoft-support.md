@@ -8,14 +8,14 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 000659793707c860de881f150e6ce07e4506c602
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064970"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461737"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く 
+# <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く
 
 この記事は、Azure Data Box、Azure Data Box Heavy、および Azure Data Box Disk に適用されます。これらはすべて Azure Data Box サービスによって管理されます。 Azure Data Box サービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
@@ -27,11 +27,11 @@ ms.locfileid: "80064970"
 サポート要求を作成するには、次の手順を実行します。
 
 1. Data Box または Data Box Disk の注文に移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート要求]** をクリックします。
-     
+
     ![新しいサポート要求](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
-   
+
 2. **[新しいサポート要求]** で、 **[基本]** を選択します。 **[基本]** で次の手順を実行します。
-    
+
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
     2. **サブスクリプション**を選択します。
     3. **[サービス]** の **[すべてのサービス]** をオンにします。 ドロップダウン リストから、 **[Data Box]** を選びます。 
@@ -41,7 +41,7 @@ ms.locfileid: "80064970"
         ![基本](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
 3. **[新しいサポート要求]** で、 **[手順 2 問題]** を選択します。 **[問題]** で次の手順を実行します。
-    
+
     1. **[重大度]** で **[C - 最小限の影響]** を選択します。 必要に応じてサポートが更新されます。
     2. ドロップダウン リストで **[問題の種類]** を選択します。
     3. 選択した問題の種類に基づき、対応する **[カテゴリ]** を選択します。
@@ -58,7 +58,7 @@ ms.locfileid: "80064970"
    1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
    2. **[連絡先情報]** で、名前、メール、オプションの連絡先、国や地域を指定します。 **[今後のサポート リクエストのために連絡先の変更を保存します]** をオンにします。
    3. **Create** をクリックしてください。
-   
+
        ![連絡先情報](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
       Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
@@ -72,15 +72,14 @@ ms.locfileid: "80064970"
 
 1. ヘルプとサポート ページにアクセスするには、 **[参照] > [ヘルプとサポート]** の順に移動します。
 
-    ![サポート要求を管理する](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)   
+    ![サポート要求を管理する](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)
 
 2. **[ヘルプとサポート]** に **[最近のサポート要求]** の表形式の一覧が表示されます。
 
-    ![サポート要求を管理する](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png) 
+    ![サポート要求を管理する](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
 3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
 
-   
 ## <a name="next-steps"></a>次のステップ
 
 [Data Box Disk に関する問題のトラブルシューティング](data-box-disk-troubleshoot.md)方法を確認します。

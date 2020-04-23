@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3547062f100eeb4dfa741a0566d737a0eac776a0
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659902"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605110"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Azure PowerShell を使用して Log Analytics ワークスペースを作成する
 
@@ -108,7 +108,7 @@ PowerShell をローカル環境にインストールして使用する場合、
     }
     ```
 
-2. 要件に合わせてテンプレートを編集します。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
+2. 要件に合わせてテンプレートを編集します。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)のリファレンスを参照してください。 
 3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。   
 4. これでこのテンプレートをデプロイする準備が整いました。 テンプレートがあるフォルダーから以下のコマンドを使用します。 ワークスペース名の入力を求められたら、すべての Azure サブスクリプションでグローバルに一意の名前を指定します。
 

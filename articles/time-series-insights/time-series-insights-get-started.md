@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934844"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602368"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal で新しい Time Series Insights 環境を作成する
 
@@ -39,9 +39,9 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
 1. **[Time Series Insights]** ページで、 **[作成]** を選択します。
 
 1. 必要なパラメーターを入力します。 次の表に各パラメーターを示します。
-   
+
    [![Time Series Insights リソース グループの作成](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
-   
+
    設定|推奨値|説明
    ---|---|---
    環境名 | 一意の名前 | この名前は、[Time Series エクスプローラー](https://insights.timeseries.azure.com)でその環境を表します。
@@ -49,7 +49,7 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
    Resource group | 新しいグループを作成するか、既存のグループを使用 | リソース グループとは、一緒に使用される Azure リソースのコレクションです。 既存のリソース グループ (イベント ハブまたは IoT ハブが含まれているグループなど) を選択できます。 このリソースが他のリソースに関連していない場合は、新しいリソース グループを作成することもできます。
    Location | イベント ソースに最も近い場所 | リージョン間およびゾーン間での帯域幅利用料の追加や、データをリージョンの外部に移動するときの待機時間の増加を回避するために、可能であれば、イベント ソース データがあるデータ センターの場所を選択します。
    Pricing tier | S1 | 必要なスループットを選択します。 コストと初期容量を最小限に抑えるために、S1 を選択します。
-   容量 | 1 | 容量は、イングレス レート、ストレージ容量、選択した SKU に関連するコストに適用される乗数です。  環境の容量は、作成後に変更できます。 コストを最小限に抑えるために、容量として 1 を選択します。 
+   容量 | 1 | 容量は、イングレス レート、ストレージ容量、選択した SKU に関連するコストに適用される乗数です。  環境の容量は、作成後に変更できます。 コストを最小限に抑えるために、容量として 1 を選択します。
   
 1. **[作成]** をクリックして、プロビジョニング プロセスを開始します。 このプロセスには数分かかることがあります。
 

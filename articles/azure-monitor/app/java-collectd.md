@@ -3,12 +3,12 @@ title: Linux での Java Web アプリ パフォーマンスの監視 | Microsof
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 687f97c305bffdfb408feb314ccded4f93ac574a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660735"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537527"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
@@ -128,6 +128,6 @@ Application Insights の Write プラグインは特定の Read プラグイン�
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 
 

@@ -3,12 +3,12 @@ title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663859"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536864"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -45,7 +45,7 @@ ms.locfileid: "77663859"
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-アラームを表示するには [メトリック エクスプローラー](../../azure-monitor/app/metrics-explorer.md) でグラフを作成します。
+アラームを表示するには [メトリック エクスプローラー](../../azure-monitor/platform/metrics-charts.md) でグラフを作成します。
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "77663859"
 
 ## <a name="visualize-data"></a>データの視覚化
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>複数のアプリケーションのメトリックを使用したダッシュボード
-* [Metric エクスプローラー](../../azure-monitor/app/metrics-explorer.md)でグラフをカスタマイズし、お気に入りとして保存します。 Azure ダッシュボードにピン留めします。
+* [Metric エクスプローラー](../../azure-monitor/platform/metrics-charts.md)でグラフをカスタマイズし、お気に入りとして保存します。 Azure ダッシュボードにピン留めします。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>他のソースや Application Insights からのデータのあるダッシュボード
 * [テレメトリを Power BI にエクスポートします](../../azure-monitor/app/export-power-bi.md )。
@@ -159,5 +159,5 @@ ASP.NET Core アプリケーションの場合は、[ASP.NET Core の依存関�
 * **Unix サーバー** - [collectd をインストール](../../azure-monitor/app/java-collectd.md)します。
 
 ### <a name="to-display-more-performance-counters"></a>表示するパフォーマンス カウンターの数を増やすには
-* 最初に、 [新しいグラフを追加](../../azure-monitor/app/metrics-explorer.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
+* 最初に、 [新しいグラフを追加](../../azure-monitor/platform/metrics-charts.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](../../azure-monitor/app/performance-counters.md)します。

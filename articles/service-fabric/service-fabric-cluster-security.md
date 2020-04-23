@@ -4,12 +4,12 @@ description: Azure Service Fabric クラスターのセキュリティ シナリ
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753799"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461584"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 
@@ -90,7 +90,7 @@ Azure でホストされているパブリック ネットワークにデプロ�
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 証明書と Service Fabric
 
-一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。 [Key Vault](../key-vault/key-vault-overview.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
+一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。 [Key Vault](../key-vault/general/overview.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
 
 次のような、考慮すべき重要な点がいくつかあります。
 

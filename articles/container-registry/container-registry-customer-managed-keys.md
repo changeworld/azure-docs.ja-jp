@@ -4,18 +4,18 @@ description: Azure コンテナー レジストリの保存時の暗号化、お
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498950"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461754"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した暗号化
 
 イメージや他の成果物を Azure コンテナー レジストリに格納すると、保存時のレジストリの内容は Azure によって[サービス マネージド キー](../security/fundamentals/encryption-atrest.md#data-encryption-models)を使用して自動的に暗号化されます。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、Azure CLI と Azure portal を使用する手順について説明します。
 
-カスタマー マネージド キーを使用するサーバー側暗号化は、[Azure Key Vault](../key-vault/key-vault-overview.md) との統合によってサポートされます。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 Azure Key Vault を使用してキー使用法を監査することもできます。
+カスタマー マネージド キーを使用するサーバー側暗号化は、[Azure Key Vault](../key-vault/general/overview.md) との統合によってサポートされます。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 Azure Key Vault を使用してキー使用法を監査することもできます。
 
 この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry SKU](container-registry-skus.md)」をご覧ください。
 
@@ -176,7 +176,7 @@ Azure portal で、ユーザー割り当てによる [Azure リソース用マ�
 
 ### <a name="create-a-key-vault"></a>Key Vault を作成します
 
-キー コンテナーを作成する手順については、「[クイックスタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/quick-create-portal.md)」をご覧ください。
+キー コンテナーを作成する手順については、「[クイックスタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/secrets/quick-create-portal.md)」をご覧ください。
 
 カスタマー マネージド キー用のキー コンテナーを作成するときに、 **[基本]** タブで、次の保護設定を有効にする必要があります: **論理的な削除**と**消去保護**。 これらの設定は、キーまたはキー コンテナーを誤って削除することでデータが失われないようにするのに役立ちます。
 
@@ -392,7 +392,7 @@ az keyvault delete-policy \
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure での保存時の暗号化](../security/fundamentals/encryption-atrest.md)についてさらに学習します。
-* アクセス ポリシーと、[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/key-vault-secure-your-key-vault.md)方法についてさらに学習します。
+* アクセス ポリシーと、[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/secure-your-key-vault.md)方法についてさらに学習します。
 * Azure Container Registry でのカスタマー マネージド キーについてフィードバックを提供するには、[ACR GitHub サイト](https://aka.ms/acr/issues)にアクセスしてください。
 
 

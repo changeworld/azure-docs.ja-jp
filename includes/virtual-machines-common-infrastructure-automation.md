@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7c1ad2581d025a9259c5cb2a84e4237f938fc892
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419177"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637147"
 ---
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
@@ -125,7 +125,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 
 ## <a name="jenkins"></a>Jenkins
-[Jenkins](https://www.jenkins.io) は、アプリケーションのデプロイとテスト、コード配信用の自動化されたパイプラインの作成に役立つ継続的インテグレーション サーバーです。 Jenkins のコア プラットフォームを拡張するプラグインは多数あります。また、webhook を介して他のさまざまな製品やソリューションと統合することもできます。 Azure VM に手動で Jenkins をインストールしたり、Docker コンテナー内から Jenkins を実行したり、事前に構築された Azure Marketplace イメージを使用したりできます。
+[Jenkins](https://jenkins.io) は、アプリケーションのデプロイとテスト、コード配信用の自動化されたパイプラインの作成に役立つ継続的インテグレーション サーバーです。 Jenkins のコア プラットフォームを拡張するプラグインは多数あります。また、webhook を介して他のさまざまな製品やソリューションと統合することもできます。 Azure VM に手動で Jenkins をインストールしたり、Docker コンテナー内から Jenkins を実行したり、事前に構築された Azure Marketplace イメージを使用したりできます。
 
 具体的には、次の方法を学習します。
 

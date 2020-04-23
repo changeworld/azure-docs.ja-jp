@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b51d0747a4ffa08bc230b33cd416986dda1e1908
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80154306"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460479"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている TLS/SSL 証明書を使用して Azure 内の Linux 仮想マシン上の Web サーバーをセキュリティで保護する
 Web サーバーをセキュリティ保護するには、従来より SSL (Secure Sockets Layer) として知られていたトランスポート層セキュリティ (TLS) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの TLS/SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。

@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5527fbfc05eb5aadf5c5775fb9987a88d5ba81bb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222259"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460445"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
 
 Azure 仮想マシンでは、内部と外部のネットワーク通信に Azure ネットワークが使用されます。 このチュートリアルでは、2 台の仮想マシンをデプロイし、それらの VM に使用する Azure ネットワークを構成する手順について説明します。 このチュートリアルの例では、これらの VM が、データベース バックエンドを持つ Web アプリケーションのホストになっていることを想定していますが、アプリケーションのデプロイは、このチュートリアルでは行いません。 このチュートリアルでは、以下の内容を学習します。
 

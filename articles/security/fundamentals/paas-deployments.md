@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461703"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -74,7 +74,7 @@ PaaS と従来のオンプレミス デプロイにおけるもう 1 つの重�
 ID 境界を管理するためのベスト プラクティスを次に示します。
 
 **ベスト プラクティス**: キーと資格情報をセキュリティ保護して PaaS デプロイをセキュリティ保護する   
-**詳細**: キーや資格情報の紛失は、よくある問題です。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 [Azure Key Vault](../../key-vault/key-vault-overview.md) は、HSM によって保護されているキーを使用して、認証キー、ストレージ アカウント キー、データ暗号化キー、.pfx ファイル、およびパスワードを暗号化することによって、キーとシークレットを保護します。
+**詳細**: キーや資格情報の紛失は、よくある問題です。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 [Azure Key Vault](../../key-vault/general/overview.md) は、HSM によって保護されているキーを使用して、認証キー、ストレージ アカウント キー、データ暗号化キー、.pfx ファイル、およびパスワードを暗号化することによって、キーとシークレットを保護します。
 
 **ベスト プラクティス**: 資格情報やその他のシークレットをソース コードや GitHub に格納しない。   
 **詳細**: 資格情報やその他のシークレットを紛失するよりも悪い唯一のことは、権限のない第三者がキーや資格情報にアクセスすることです。 攻撃者はボット テクノロジを利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを検索することができます。 これらのパブリックなコード レポジトリには、キーやシークレットを格納しないようにします。

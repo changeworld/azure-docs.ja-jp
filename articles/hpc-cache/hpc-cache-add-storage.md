@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657425"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538003"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -117,8 +117,6 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 各名前空間パスに対して、次の値を入力します。
 
 * **[Virtual namespace path]\(仮想名前空間パス\)** - このストレージ ターゲットに使用するクライアント側のファイル パスを設定します。 仮想名前空間の機能の詳細については、「[集約された名前空間を構成する](hpc-cache-namespace.md)」を参照してください。
-
-<!--  The virtual path should start with a slash ``/``. -->
 
 * **[NFS export path]\(NFS エクスポート パス\)** - NFS エクスポートのパスを入力します。
 

@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ca0e17e5-d78e-42e6-9dad-c1e8f1c58027
 ms.service: virtual-machines-linux
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 3dd46f0c1c1e36e0373311ce6dcbf5d2f155dacc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd4a93f4c0b2f052fe5c9890bee01e5da0dcead2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616268"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460955"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンにタグを付ける方法
 この記事では、Azure で Resource Manager デプロイ モデルを通して Linux 仮想マシンにタグを付けるさまざまな方法について説明します。 タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。 現在、Azure では、1 つのリソースまたはリソース グループにつき最大 50 個のタグがサポートされます。 タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。 タグは、Resource Manager デプロイ モデル経由で作成されたリソースでのみサポートされます。

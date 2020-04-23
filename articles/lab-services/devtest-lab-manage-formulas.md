@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 4f8c8d4ff0a8014fe0b9a6ae4aead35ec7df4bf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce980167cd88adfada1aa294aafa885184565799
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501998"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641158"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 
@@ -129,7 +129,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
-* [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+* [Custom images or formulas? (カスタム イメージか数式か?)](devtest-lab-faq.md#what-is-the-difference-between-a-custom-image-and-a-formula)
 
 ## <a name="next-steps"></a>次のステップ
 VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](devtest-lab-add-vm.md)します。

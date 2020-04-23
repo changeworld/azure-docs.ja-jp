@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ea73e2ca20faea30294bc5d5e1788415095c39f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0a2f703d9224b8b9dd77c80b2b6a7faee70f5bb
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905373"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538105"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
 

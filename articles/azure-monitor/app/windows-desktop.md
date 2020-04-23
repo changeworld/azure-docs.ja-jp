@@ -3,12 +3,12 @@ title: Windows デスクトップ アプリでの使用状況とパフォーマ�
 description: Application Insights を使用して、Windows デスクトップ アプリの使用状況とパフォーマンスを分析します。
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670833"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537391"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
@@ -109,6 +109,6 @@ namespace CustomInitializer.Telemetry
 ## <a name="next-steps"></a>次のステップ
 * [ダッシュボードを作成する](../../azure-monitor/app/overview-dashboard.md)
 * [診断検索](../../azure-monitor/app/diagnostic-search.md)
-* [メトリックを探索する](../../azure-monitor/app/metrics-explorer.md)
+* [メトリックを探索する](../../azure-monitor/platform/metrics-charts.md)
 * [Analytics クエリを作成する](../../azure-monitor/app/analytics.md)
 

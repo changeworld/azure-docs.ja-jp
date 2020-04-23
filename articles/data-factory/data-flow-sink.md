@@ -9,16 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: a728ec6f261b82d563aeb4a8f5c98bbd546f4400
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413228"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605980"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 データを変換した後、そのデータを変換先のデータセットにシンクできます。 各データ フローには少なくとも 1 つのシンク変換が必要ですが、変換フローを完了するために必要な数だけのシンクに書き込むことができます。 追加のシンクに書き込むには、新しい分岐と条件分割によって新しいストリームを作成します。
 

@@ -3,12 +3,12 @@ title: カスタムのイベントとメトリックのための Application Ins
 description: デバイスまたはデスクトップ アプリケーション、Web ページ、またはサービスに数行のコードを追加して、使用状況の追跡や問題の診断を行います。
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585882"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536949"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -107,7 +107,7 @@ Node.js のプロジェクトでは、`new applicationInsights.TelemetryClient(i
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights の*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)では集計カウントとして、[診断検索](../../azure-monitor/app/diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
+Application Insights の*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)では集計カウントとして、[診断検索](../../azure-monitor/app/diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
 
 さまざまなイベントをカウントするために、`TrackEvent` 呼び出しを挿入します。 これによって、ユーザーが特定の機能を使用する頻度や、特定の目標を達成する頻度、特定の種類の間違いを起こす頻度をカウントできます。
 
@@ -443,7 +443,7 @@ requests
 
 次の目的で例外を Application Insights に送信します。
 
-* 問題の頻度の指標として[例外の件数](../../azure-monitor/app/metrics-explorer.md)を数える。
+* 問題の頻度の指標として[例外の件数](../../azure-monitor/platform/metrics-charts.md)を数える。
 * [個々の発生を確認する](../../azure-monitor/app/diagnostic-search.md)。
 
 レポートにはスタック トレースが含まれます。
@@ -774,7 +774,7 @@ ASP.NET Web MVC アプリケーションでの例:
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント**をカウントするグラフを作成できます。
+[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント**をカウントするグラフを作成できます。
 
 また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索する](../../azure-monitor/app/diagnostic-search.md)こともできます。
 
