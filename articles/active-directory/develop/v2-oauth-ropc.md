@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309459"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868650"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 
@@ -50,8 +50,8 @@ ROPC フローは 1 件の要求です。クライアント ID とユーザー�
 > [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | `tenant` | 必須 | ユーザーをログインさせるディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 このパラメーターは `common` と `consumers` に設定できませんが、`organizations` には設定できます。 |
-| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 | 
+| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `grant_type` | 必須 | `password` に設定する必要があります。 |
 | `username` | 必須 | ユーザーの電子メール アドレス。 |
 | `password` | 必須 | ユーザーのパスワード。 |
 | `scope` | 推奨 | アプリで必要となる[スコープ](v2-permissions-and-consent.md) (アクセス許可) をスペースで区切った一覧。 対話型のフローでは、管理者またはユーザーが事前にこれらのスコープに同意する必要があります。 |
-| `client_secret`| 必要な場合あり | アプリがパブリック クライアントである場合、`client_secret` または `client_assertion` を含めることはできません。  アプリが機密クライアントである場合は、それを含める必要があります。 | 
-| `client_assertion` | 必要な場合あり | 証明書を使用して生成された、`client_secret` の別の形式。  詳細については、[証明書の資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 | 
+| `client_secret`| 必要な場合あり | アプリがパブリック クライアントである場合、`client_secret` または `client_assertion` を含めることはできません。  アプリが機密クライアントである場合は、それを含める必要があります。 |
+| `client_assertion` | 必要な場合あり | 証明書を使用して生成された、`client_secret` の別の形式。  詳細については、[証明書の資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 |
 
 ### <a name="successful-authentication-response"></a>正常な認証応答
 

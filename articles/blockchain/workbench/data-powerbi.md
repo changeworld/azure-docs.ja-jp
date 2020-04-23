@@ -1,15 +1,15 @@
 ---
 title: Microsoft Power BI で Azure Blockchain Workbench データを使用する
 description: Microsoft Power BI で Azure Blockchain Workbench SQL DB のデータを読み込んで表示する方法を説明します。
-ms.date: 05/09/2019
+ms.date: 04/22/2020
 ms.topic: article
-ms.reviewer: mmercuri
-ms.openlocfilehash: 6e1f160c3563a280548c74ebe84f30bf08945c3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: sunri
+ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74324790"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082528"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Microsoft Power BI で Azure Blockchain Workbench データを使用する
 
@@ -19,7 +19,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Power BI Desktop](https://aka.ms/pbidesktopstore) をダウンロードします。
+* [Power BI Desktop](https://powerbi.microsoft.com/desktop/) をダウンロードします。
 
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI を Azure Blockchain Workbench のデータに接続する
 

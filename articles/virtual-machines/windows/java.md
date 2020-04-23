@@ -2,24 +2,18 @@
 title: Java を使用した Azure 仮想マシンの作成および管理
 description: Java と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 35d5569cb36cb538585b9d2c85a392b668e9fc34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944497"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870024"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -140,7 +134,7 @@ ms.locfileid: "78944497"
 
 ### <a name="create-the-management-client"></a>管理クライアントを作成する
 
-1. `App.java` の中の `src\main\java\com\fabrikam` ファイルを開き、次の package ステートメントが先頭にあることを確認します。
+1. `src\main\java\com\fabrikam` の中の `App.java` ファイルを開き、次の package ステートメントが先頭にあることを確認します。
 
     ```java
     package com.fabrikam.testAzureApp;

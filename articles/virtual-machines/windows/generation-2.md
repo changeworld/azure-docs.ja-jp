@@ -1,24 +1,19 @@
 ---
 title: 第 2 世代 VM に対する Azure のサポート
 description: 第 2 世代 VM に対する Azure のサポートの概要
-services: virtual-machines-windows
-documentationcenter: ''
 author: ju-shim
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 99abb6cb493cca3aa4e2ac0c42744e1fbaf84f12
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 239e339d1870060d95d6c7e7b602be7d61af5f77
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272986"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869639"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 

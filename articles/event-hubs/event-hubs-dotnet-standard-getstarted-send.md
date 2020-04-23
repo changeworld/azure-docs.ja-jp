@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398359"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025171"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core を使用して Azure Event Hubs との間でイベントを送受信する(Microsoft.Azure.EventHubs)
 このクイックスタートでは、**Microsoft.Azure.EventHubs** .NET Core ライブラリを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。
@@ -373,7 +373,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 - [ロールベースのアクセス制御 (RBAC) のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    これらのサンプルでは古い **Microsoft.Azure.EventHubs** ライブラリが使用されていますが、これは最新の **Azure.Messaging.EventHubs** ライブラリを使用して簡単に更新できます。 古いライブラリから新しいライブラリを使用するようにサンプルを移行するには、[Microsoft.Azure.EventHubs から Azure.Messaging.EventHubs への移行のガイド](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)を参照してください。
+    これらのサンプルでは古い **Microsoft.Azure.EventHubs** ライブラリが使用されていますが、これは最新の **Azure.Messaging.EventHubs** ライブラリを使用して簡単に更新できます。 古いライブラリから新しいライブラリを使用するようにサンプルを移行する方法については、[Microsoft.Azure.EventHubs から Azure.Messaging.EventHubs への移行のガイド](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)に関する記事を参照してください。
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure Event Hubs の機能と用語](event-hubs-features.md)
 - [Event Hubs の FAQ](event-hubs-faq.md)

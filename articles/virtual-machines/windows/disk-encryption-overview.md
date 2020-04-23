@@ -2,17 +2,18 @@
 title: Windows VM 用の Azure Disk Encryption を有効にする
 description: この記事では、Windows VM 用の Microsoft Azure Disk Encryption を有効にする手順について説明します。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bed34e816207c9f0bd0565abab6af4adbaeb7fd
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231871"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081644"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption 
 
@@ -30,11 +31,13 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 
 ## <a name="supported-vms-and-operating-systems"></a>サポートされている VM とオペレーティング システム
 
-### <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
+### <a name="supported-vms"></a>サポート対象の VM
 
 Windows VM は、[さまざまなサイズ](sizes-general.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。
 
 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
+
+Azure Disk Encryption は、[Generation 2 VM](generation-2.md#generation-1-vs-generation-2-capabilities) と [Lsv2 シリーズ VM](../lsv2-series.md) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -52,12 +55,12 @@ Azure Disk Encryption を有効にするには、VM が次のネットワーク 
   - ご利用のキー コンテナーに接続するためのトークンを取得するには、Windows VM が Azure Active Directory エンドポイント \[login.microsoftonline.com\] に接続できる必要があります。
   - 暗号化キーをご利用のキー コンテナーに書き込むには、Windows VM がキー コンテナー エンドポイントに接続できる必要があります。
   - Windows VM は、Azure 拡張リポジトリをホストする Azure ストレージ エンドポイントと、VHD ファイルをホストする Azure ストレージ アカウントに接続できる必要があります。
-  -  セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。 詳細については、「[ファイアウォールの内側にある Azure Key Vault へのアクセス](../../key-vault/key-vault-access-behind-firewall.md)」を参照してください。    
+  -  セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。 詳細については、「[ファイアウォールの内側にある Azure Key Vault へのアクセス](../../key-vault/general/access-behind-firewall.md)」を参照してください。    
 
 
 ## <a name="group-policy-requirements"></a>グループ ポリシーの要件
 
-Azure Disk Encryption では、Windows VM に対して BitLocker 外部キー保護機能が使用されます。 ドメインに参加している VM の場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、「[BitLocker Group Policy Reference](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)」(BitLocker グループ ポリシー リファレンス) をご覧ください。
+Azure Disk Encryption では、Windows VM に対して BitLocker 外部キー保護機能が使用されます。 ドメインに参加している VM の場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、[BitLocker グループ ポリシー リファレンス](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)に関するページをご覧ください。
 
 ドメインに参加済みであり、カスタム グループ ポリシーを使用する仮想マシンでの BitLocker ポリシーには、次の設定を含める必要があります。[[BitLocker 回復情報のユーザー記憶域を構成する] -> [256 ビットの回復キーを許可する]](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないマシンでは、新しいポリシーを適用し、新しいポリシーを強制的に更新して (gpupdate.exe /force)、再起動する処理が必要になる可能性があります。
 

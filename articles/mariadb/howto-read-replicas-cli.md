@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: abf80e98881b73bed53c5a939a79bc8b3a9de2db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530582"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025052"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
@@ -45,9 +45,6 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | source-server | mydemoserver | レプリケート元の既存のマスター サーバーの名前または ID。 |
 
 リージョンをまたがる読み取りレプリカを作成するには、`--location` パラメーターを使用します。 
-
-> [!NOTE]
-> リージョン間のレプリケーションはプレビュー段階です。
 
 次の CLI の例では、米国西部にレプリカを作成します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881810"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868717"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出す Web アプリ: Web API を呼び出す
 
@@ -26,7 +26,7 @@ ms.locfileid: "80881810"
 
 以下に、`HomeController` のアクションの簡略化されたコードを示します。 このコードでは、Microsoft Graph を呼び出すトークンを取得します。 Microsoft Graph を REST API として呼び出す方法を示すコードが追加されています。 Microsoft Graph API の URL は、appsettings.json ファイルで提供され、`webOptions` という名前の変数に読み取られます。
 
-```JSon
+```json
 {
   "AzureAd": {
     "Instance": "https://login.microsoftonline.com/",

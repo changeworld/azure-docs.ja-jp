@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082973"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868138"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>オンプレミスから CloudSimple プライベート クラウド環境およびアプリケーションにアクセスする
 
@@ -35,7 +35,7 @@ Azure ExpressRoute またはサイト間 VPN を使用して、オンプレミ�
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>オンプレミスの Active Directory を ID ソースとして使用するために必要なポート
 
-オンプレミスの Active Directory をプライベート クラウドの vCenter 上の ID ソースとして構成するには、表に定義されているポートを開く必要があります。  構成手順については、「[CloudSimple プライベート クラウド上の vCenter の ID プロバイダーとして Azure AD を使用する](https://docs.azure.cloudsimple.com/azure-ad/)」を参照してください。
+オンプレミスの Active Directory をプライベート クラウドの vCenter 上の ID ソースとして構成するには、表に定義されているポートを開く必要があります。  構成手順については、「[CloudSimple プライベート クラウド上の vCenter の ID プロバイダーとして Azure AD を使用する](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/)」を参照してください。
 
 | Port         | source                           | 宛先                                         | 目的                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,6 +60,6 @@ Azure ExpressRoute またはサイト間 VPN を使用して、オンプレミ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [VLAN とサブネットを作成して管理する](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
-* [Azure ExpressRoute を使用してオンプレミスのネットワークに接続する](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [オンプレミスからのサイト間 VPN を設定する](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [VLAN とサブネットを作成して管理する](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
+* [Azure ExpressRoute を使用してオンプレミスのネットワークに接続する](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
+* [オンプレミスからのサイト間 VPN を設定する](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)

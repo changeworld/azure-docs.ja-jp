@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub を使用した大規模な自動デバイス管理 | Microsoft Docs
 description: Azure IoT Hub 自動構成を使用し、複数の IoT デバイスおよびモジュールを管理する
-author: ChrisGMsft
-manager: bruz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: chrisgre
-ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: robinsh
+ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233263"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025069"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portal を使用した IoT デバイスおよびモジュールの自動管理
 

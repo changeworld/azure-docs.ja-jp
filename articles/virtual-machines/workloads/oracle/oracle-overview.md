@@ -3,8 +3,7 @@ title: Microsoft Azure での Oracle ソリューション | Microsoft Docs
 description: Oracle のアプリケーションおよびソリューションを Microsoft Azure にデプロイするためのオプション (全面的に Azure インフラストラクチャ上で実行する、クラウド間接続と Oracle Cloud Infrastructure (OCI) を使用するなど) について学びます。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
-manager: gwallace
+author: BorisB2015
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: mimckitt
-ms.openlocfilehash: 8c266986ac795be48f3a8439afc5ae4752ff3ed7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: borisb
+ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263252"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870503"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
@@ -50,7 +49,7 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 
 * [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) を使用して、Azure 内の Oracle Linux VM と、オンプレミスまたは物理サーバーのディザスター リカバリーを調整および管理します。 
 
-* [Azure VMWare Solution](https://docs.azure.cloudsimple.com/oracle-rac/) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
+* [Azure VMWare Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
 
 ## <a name="backup-oracle-workloads"></a>Oracle ワークロードのバックアップ
 

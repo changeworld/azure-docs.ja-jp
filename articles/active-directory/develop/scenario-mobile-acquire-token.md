@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf967525283f28d5829d80b75e40e263f7eaedef
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a77e6c9086a745804c23f431f633d530e2655f16
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882745"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868896"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリ トークンを取得する
 
@@ -26,7 +26,7 @@ ms.locfileid: "80882745"
 
 ## <a name="define-a-scope"></a>スコープの定義
 
-トークンを要求する場合、スコープを定義する必要があります。 スコープでは、お使いのアプリでアクセスできるデータを決定します。  
+トークンを要求する場合、スコープを定義する必要があります。 スコープでは、お使いのアプリでアクセスできるデータを決定します。
 
 スコープを定義する最も簡単な方法は、必要な Web API `App ID URI` をスコープ `.default` と組み合わせることです。 この定義により、アプリで、ポータルに設定されているすべてのスコープが必要であることを Microsoft ID プラットフォームに通知できます。
 
@@ -41,7 +41,7 @@ let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 ### <a name="xamarin"></a>Xamarin
-```csharp 
+```csharp
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
@@ -72,13 +72,13 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
             /* No accounts or > 1 account. */
         }
     }
-});    
+});
 
 [...]
 
 // No accounts found. Interactively request a token.
 // TODO: Create an interactive callback to catch successful or failed requests.
-sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());        
+sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 ```
 
 #### <a name="ios"></a>iOS
@@ -89,22 +89,22 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 
 NSArray *scopes = @[@"https://graph.microsoft.com/.default"];
 NSString *accountIdentifier = @"my.account.id";
-    
+
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
-    
+
 MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
 [application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
-        
+
     if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
-        // Access token to call the Web API
+
+        // Access token to call the web API
         NSString *accessToken = result.accessToken;
     }
-        
+
     // Check the error
     if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
     {
@@ -113,34 +113,34 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
     }
 }];
 ```
- 
+
 ```swift
 
 let scopes = ["https://graph.microsoft.com/.default"]
 let accountIdentifier = "my.account.id"
-        
+
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
 let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
 application.acquireTokenSilent(with: silentParameters) { (result, error) in
-            
+
     guard let authResult = result, error == nil else {
-                
+
     let nsError = error! as NSError
-                
+
     if (nsError.domain == MSALErrorDomain &&
         nsError.code == MSALError.interactionRequired.rawValue) {
-                    
+
             // Interactive auth will be required, call acquireToken()
             return
          }
          return
      }
-            
+
     // You'll want to get the account identifier to retrieve and reuse the account
     // for later acquireToken calls
     let accountIdentifier = authResult.account.identifier
-            
-    // Access token to call the Web API
+
+    // Access token to call the web API
     let accessToken = authResult.accessToken
 }
 ```
@@ -149,15 +149,15 @@ MSAL から `MSALErrorInteractionRequired` が返された場合は、トーク�
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
-MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithParentViewController:viewController];
+MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:viewController];
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:webParameters];
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
-    if (!error) 
+    if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
+
         NSString *accessToken = result.accessToken;
     }
 }];
@@ -165,15 +165,15 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 
 ```swift
 let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
-let webviewParameters = MSALWebviewParameters(parentViewController: viewController)
+let webviewParameters = MSALWebviewParameters(authPresentationViewController: viewController)
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: webviewParameters)
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-                
+
     guard let authResult = result, error == nil else {
         print(error!.localizedDescription)
         return
     }
-                
+
     // Get access token from result
     let accessToken = authResult.accessToken
 })
@@ -207,7 +207,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET の必須のパラメーター
 
-`AcquireTokenInteractive` の必須パラメーターは `scopes`の 1 つだけです。 `scopes` パラメーターで、トークンが必要なスコープを定義する文字列を列挙します。 Microsoft Graph 用のトークンの場合、必要なスコープは各 Microsoft Graph API の API リファレンスで見つけることができます。 リファレンスの「アクセス許可」セクションにアクセスします。 
+`AcquireTokenInteractive` の必須パラメーターは `scopes`の 1 つだけです。 `scopes` パラメーターで、トークンが必要なスコープを定義する文字列を列挙します。 Microsoft Graph 用のトークンの場合、必要なスコープは各 Microsoft Graph API の API リファレンスで見つけることができます。 リファレンスの「アクセス許可」セクションにアクセスします。
 
 たとえば、[ユーザーの連絡先を一覧表示する](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)には、"User.Read"、"Contacts.Read" スコープを使用します。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)」を参照してください。
 
@@ -215,7 +215,7 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET の特定の省略可能なパラメーター
 
-以下のセクションでは、MSAL.NET の省略可能なパラメーターについて説明します。 
+以下のセクションでは、MSAL.NET の省略可能なパラメーターについて説明します。
 
 ##### <a name="withprompt"></a>WithPrompt
 
@@ -225,19 +225,19 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
 
 このクラスでは次の定数を定義します。
 
-- `SelectAccount` は、セキュリティ トークン サービス (STS) で、アカウントの選択ダイアログ ボックスを強制的に表示します。 ダイアログ ボックスには、ユーザーがセッションを持っているアカウントが表示されます。 このオプションは、ユーザーが異なる ID を選択できるようにする場合に使用できます。 このオプションを使用すると、MSAL から ID プロバイダーに `prompt=select_account` が送信されます。 
-    
+- `SelectAccount` は、セキュリティ トークン サービス (STS) で、アカウントの選択ダイアログ ボックスを強制的に表示します。 ダイアログ ボックスには、ユーザーがセッションを持っているアカウントが表示されます。 このオプションは、ユーザーが異なる ID を選択できるようにする場合に使用できます。 このオプションを使用すると、MSAL から ID プロバイダーに `prompt=select_account` が送信されます。
+
     `SelectAccount` 定数は既定値であり、使用可能な情報に基づいて、考えられる最善のエクスペリエンスが効果的に提供されます。 使用可能な情報には、アカウントや、ユーザーのセッションの有無などが含まれます。 適切な理由がない限り、この既定値を変更しないでください。
-- `Consent` を使用すると、事前に同意が得られていた場合でも、ユーザーに同意を求めることができます。 この場合、MSAL から ID プロバイダーに `prompt=consent` が送信されます。 
+- `Consent` を使用すると、事前に同意が得られていた場合でも、ユーザーに同意を求めることができます。 この場合、MSAL から ID プロバイダーに `prompt=consent` が送信されます。
 
     `Consent` 定数は、組織のガバナンスにより、ユーザーがアプリケーションを使用するたびに同意ダイアログ ボックスを表示することが求められるセキュリティ重視のアプリケーションで使用できます。
-- `ForceLogin` を使用すると、プロンプトが必須ではない場合でも、ユーザーに資格情報の入力を求めるサービスを実現できます。 
+- `ForceLogin` を使用すると、プロンプトが必須ではない場合でも、ユーザーに資格情報の入力を求めるサービスを実現できます。
 
     このオプションは、トークンの取得に失敗し、ユーザーが再度サインインできるようにする場合に役立ちます。 この場合、MSAL から ID プロバイダーに `prompt=login` が送信されます。 このオプションは、組織のガバナンスにより、ユーザーがアプリケーションの特定の部分にアクセスするたびにサインインすることが求められるセキュリティ重視のアプリケーションで使用できます。
 - `Never` は、.NET 4.5 と Windows ランタイム (WinRT) のみに使用できます。 この定数を使用すると、ユーザーの操作を求めず、非表示の埋め込み Web ビューに格納された Cookie を使用しようとします。 詳細については、「[Web ブラウザーを使用する (MSAL.NET)](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)」を参照してください。
 
     このオプションが失敗した場合は、`AcquireTokenInteractive` によって、UI 操作が必要であることを通知する例外がスローされます。 このとき、別の `Prompt` パラメーターを使用する必要があります。
-- `NoPrompt` を使用すると、ID プロバイダーにプロンプトが送信されません。 
+- `NoPrompt` を使用すると、ID プロバイダーにプロンプトが送信されません。
 
     このオプションは、Azure Active Directory (Azure AD) B2C のプロファイルの編集ポリシーに対してのみ有効です。 詳細については、[B2C の詳細](https://aka.ms/msal-net-b2c-specificities)に関するページを参照してください。
 
@@ -245,7 +245,7 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
 
 複数のリソースに対してユーザーの事前の同意を求める高度なシナリオでは、`WithExtraScopeToConsent` 修飾子を使用します。 この修飾子は、MSAL.NET または Microsoft ID プラットフォーム 2.0 で通常使用される増分同意を使用しない場合に使用できます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)」を参照してください。
 
-次にコード例を示します。 
+次にコード例を示します。
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -261,14 +261,14 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 プロトコルを直接使用してトークンを取得することはお勧めしません。 これを行うと、シングルサインオン (SSO)、デバイス管理、条件付きアクセスが含まれるいくつかのシナリオがアプリでサポートされなくなります。
 
-プロトコルを使用してモバイル アプリのトークンを取得する場合は、次の 2 つの要求を行います。 
+プロトコルを使用してモバイル アプリのトークンを取得する場合は、次の 2 つの要求を行います。
 
 * 承認コードを取得します。
 * トークンのコードを交換します。
 
 #### <a name="get-an-authorization-code"></a>承認コードを取得する
 
-```Text
+```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=<CLIENT_ID>
 &response_type=code
@@ -280,7 +280,7 @@ client_id=<CLIENT_ID>
 
 #### <a name="get-access-and-refresh-the-token"></a>アクセスを取得してトークンを更新する
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded

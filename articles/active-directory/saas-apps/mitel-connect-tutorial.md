@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 30a4dcbd15d8a47d99b3a61879a7e61938d3b133
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 26a761708f56ff7aba8daf86d2991579e60291cb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160540"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>チュートリアル:Azure Active Directory と Mitel MiCloud Connect の統合
 
@@ -202,7 +202,7 @@ MiCloud Connect に Azure AD による SSO を構成する際は、Azure portal 
 
 このセクションでは、お使いの MiCloud Connect アカウントで Britta Simon というユーザーを作成します。 シングル サインオンを使用する前に、ユーザーを作成し、アクティブにする必要があります。
 
-Mitel アカウント ポータルでのユーザーの追加の詳細については、Mitel Knowledge Base で「[Adding a User (ユーザーの追加)](https://docs.shoretel.com/connectcloud/Account/Users/AddUser)」を参照してください。
+Mitel アカウント ポータルでのユーザーの追加の詳細については、Mitel Knowledge Base で「[Adding a User (ユーザーの追加)](https://oneview.mitel.com/s/article/Adding-a-User-092815)」を参照してください。
 
 次の詳細情報を使用して、MiCloud Connect アカウントにユーザーを作成します。
 

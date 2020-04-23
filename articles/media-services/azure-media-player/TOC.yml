@@ -1,0 +1,48 @@
+- name: 概要
+  items:
+    - name: Azure Media Player の概要
+      href: azure-media-player-overview.md
+    - name: リリース ノート
+      href: azure-media-player-release-notes.md
+    - name: 変更ログ
+      href: azure-media-player-changelog.md
+- name: クイックスタート
+  items:
+    - name: Azure Media Player クイックスタート
+      href: azure-media-player-quickstart.md
+- name: チュートリアル
+  items:
+    - name: Azure Media Player のフル セットアップ
+      href: azure-media-player-full-setup.md
+- name: 概念
+  items:
+    - name: 再生テクノロジ
+      href: azure-media-player-playback-technology.md
+    - name: 保護されたコンテンツ
+      href: azure-media-player-protected-content.md
+    - name: 機能一覧
+      href: azure-media-player-feature-list.md
+    - name: URL リライター
+      href: azure-media-player-url-rewriter.md
+    - name: アクセシビリティ
+      href: azure-media-player-accessibility.md
+    - name: プラグインを作成する
+      href: azure-media-player-writing-plugins.md
+    - name: プラグイン ギャラリー
+      href: azure-media-player-plugin-gallery.md
+    - name: ローカリゼーション
+      href: azure-media-player-localization.md
+- name: リファレンス
+  items:
+    - name: サンプル
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
+    - name: API
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
+    - name: API メソッド
+      href: azure-media-player-api-methods.md
+    - name: Options
+      href: azure-media-player-options.md
+    - name: エラー コード
+      href: azure-media-player-error-codes.md
+    - name: 既知の問題
+      href: azure-media-player-known-issues.md

@@ -10,12 +10,8 @@
   items:
     - name: クライアント ライブラリ
       items:
-        - name: 'C# の使用'
-          href: quickstarts/detect-data-anomalies-csharp-sdk.md
-        - name: Python の使用
-          href: quickstarts/detect-data-anomalies-python-sdk.md
-        - name: Node.js の使用
-          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+        - name: Anomaly Detector クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
         - name: 'C# の使用'
@@ -82,7 +78,7 @@
       items:
         - name: サポートを受ける
           href: 'https://aka.ms/adsupport'
-        - name: スタック オーバーフロー
+        - name: Stack Overflow
           href: 'https://aka.ms/adso'
         - name: MSDN
           href: 'https://aka.ms/admsdn'

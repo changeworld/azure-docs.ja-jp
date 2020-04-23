@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f307553a97973d03b0699248373e53e4845aa39a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78248848"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869914"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -92,8 +92,6 @@ Azure Resource Manager を使用してご自身のサービスを管理する操
 Azure Resource Manager にアクセスして構成を更新しようとするユーザーの ID を検証することが重要です。 アクセスを許可する前に、追加の認証を要求して ID を検証します。
 
 テナントでセキュリティの既定値群を有効にすると、Azure portal、Azure PowerShell、または Azure CLI にアクセスしようとしているユーザーがいずれも、追加の認証を完了しなければならなくなります。 このポリシーは、Azure Resource Manager にアクセスしようとしているユーザーであれば、管理者であるかユーザーであるかに関係なく全員に適用されます。 
-
-ユーザーが Multi-Factor Authentication に登録していない場合、そのユーザーが操作を続行するには、Microsoft Authenticator アプリを使用してユーザー登録を行う必要があります。 Multi-Factor Authentication に登録するための 14 日の期間は提供されません。
 
 > [!NOTE]
 > 2017 年より前の Exchange Online テナントでは、先進認証が既定で無効になっています。 これらのテナントを通じて認証を行うときにログイン ループの可能性を回避するために、[先進認証を有効にする](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)必要があります。

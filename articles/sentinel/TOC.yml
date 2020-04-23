@@ -87,7 +87,7 @@
             - name: CEF ベースのソリューション
               href: connect-common-event-format.md
               items:
-                - name: 手順 1 エージェントをデプロイする
+                - name: 手順 1 ログ フォワーダーをデプロイする
                   href: connect-cef-agent.md
                 - name: 手順 2 セキュリティ ソリューションを構成する
                   href: connect-cef-solution-config.md

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093197"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル:Azure Active Directory と Rackspace SSO の統合
 
@@ -187,7 +187,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Rackspace コントロール パネルでの属性マッピングの設定
 
-Rackspace は、**属性マッピング ポリシー**を使用して Rackspace のロールやグループをシングル サインオン ユーザーに割り当てます。 Azure AD の SAML 要求は、**属性マッピング ポリシー**によって、Rackspace に必要なユーザー構成フィールドに変換されます。 詳細については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)を参照してください。 いくつかの考慮事項があります。
+Rackspace は、**属性マッピング ポリシー**を使用して Rackspace のロールやグループをシングル サインオン ユーザーに割り当てます。 Azure AD の SAML 要求は、**属性マッピング ポリシー**によって、Rackspace に必要なユーザー構成フィールドに変換されます。 詳細については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)を参照してください。 いくつかの考慮事項があります。
 
 * Azure AD グループを使用して、さまざまなレベルの Rackspace アクセスを割り当てたい場合は、Azure **Rackspace SSO** のシングル サインオン設定でグループ要求を有効にする必要があります。 それらのグループは、**属性マッピング ポリシー**を使用して、Rackspace の適切なロールとグループに対応付けられます。
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > ポリシー ファイルの編集する際は YAML 構文が検証されるテキスト エディターを必ず使用してください。
 
-その他の例については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)を参照してください。
+その他の例については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)を参照してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

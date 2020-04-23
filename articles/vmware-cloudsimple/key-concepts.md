@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: efe6cc132b062e833dc85c13cf2f6c5f6289484c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564621"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869023"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Azure VMware Solution by CloudSimple を管理するための重要な概念
 
@@ -61,4 +61,4 @@ CloudSimple サービスでは、Azure portal から VMware 仮想マシンを�
 各項目の詳細情報
 
 * [CloudSimple 仮想マシン](cloudsimple-virtual-machines.md)
-* [Azure サブスクリプションのマッピング](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)
+* [Azure サブスクリプションのマッピング](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)

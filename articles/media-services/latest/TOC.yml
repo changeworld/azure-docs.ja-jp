@@ -13,6 +13,9 @@
     - name: ポータルと Wirecast を使用したライブ イベント
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
+    - name: ポータルと OBS を使用したライブ イベント
+      displayName: 'live, event, portal, obs'
+      href: live-events-obs-quickstart.md
 - name: チュートリアル
   items:
     - name: リモート ファイルのエンコードとビデオのストリーム配信
@@ -406,3 +409,5 @@
       href: limits-quotas-constraints.md
     - name: Azure のクラウドとリージョン
       href: azure-clouds-regions.md
+    - name: ドキュメントの更新
+      href: docs-release-notes.md

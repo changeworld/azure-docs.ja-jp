@@ -208,6 +208,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: パススルー認証に関する FAQ
           href: how-to-connect-pta-faq.md
+        - name: Azure AD Connect "構成しない" による PTA の無効化
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: フェデレーション サービスを管理する
       items:
         - name: Azure AD Connect とのフェデレーションを管理する

@@ -119,7 +119,11 @@
             - name: データの検出と分類
               href: sql-database-data-discovery-and-classification.md
             - name: 脆弱性評価
-              href: sql-vulnerability-assessment.md
+              items:
+                - name: 脆弱性評価
+                  href: sql-vulnerability-assessment.md
+                - name: ファイアウォールと VNet の内側に VA スキャンを格納する
+                  href: sql-database-vulnerability-assessment-storage.md
             - name: 高度な脅威保護
               href: sql-database-threat-detection-overview.md
             - name: セキュリティ属性
@@ -843,7 +847,7 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: トラブルシューティング
       items:

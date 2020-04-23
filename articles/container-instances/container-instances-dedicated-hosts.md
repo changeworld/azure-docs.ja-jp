@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934145"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025035"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>専用ホストへのデプロイ
 
@@ -37,7 +37,7 @@ API バージョン 2019-12-01 以降、デプロイ テンプレートのコン
 ## <a name="modify-your-json-deployment-template"></a>JSON デプロイ テンプレートを変更する
 
 デプロイ テンプレートで、次のプロパティを変更または追加します。
-* `resources` の下で、`apiVersion` を `2012-12-01` に設定します。
+* `resources` の下で、`apiVersion` を `2019-12-01` に設定します。
 * コンテナー グループのプロパティの下に、`Dedicated` プロパティと値 `sku` を追加します。
 
 Dedicated SKU を使用するコンテナー グループ デプロイ テンプレートのリソース セクションのスニペットの例を次に示します。

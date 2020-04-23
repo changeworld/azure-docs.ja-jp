@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718141"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023624"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
-Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
+Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/Environments)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
 
 ユーザーをラボに追加するには、ラボに **DevTest Labs ユーザー** ロールを追加します。 この記事では、以下の方法のいずれかを使用して、ユーザーのラボへの追加を自動化する方法を示します。
 

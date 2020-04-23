@@ -641,6 +641,10 @@
       items:
         - name: ビッグ データの処理
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure サービスとの統合
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: クエリの高速化によるデータのフィルター処理
+          href: data-lake-storage-query-acceleration.md
         - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure BLOB ファイル システムの URI
@@ -790,6 +794,10 @@
               href: data-lake-storage-explorer.md
             - name: Hadoop ファイル システム CLI
               href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: クエリ
+          items:
+            - name: クエリの高速化によるデータのフィルター処理
+              href: data-lake-storage-query-acceleration-how-to.md
         - name: 転送
           items:
             - name: AzCopy
@@ -838,6 +846,8 @@
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2
+        - name: クエリの高速化
+          href: query-acceleration-sql-reference.md
         - name: AzCopy v10
           items:
             - name: azcopy
@@ -911,7 +921,7 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: サービスの更新情報
           href: 'https://azure.microsoft.com/updates/?product=storage'
-        - name: スタック オーバーフロー
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: ビデオ
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'

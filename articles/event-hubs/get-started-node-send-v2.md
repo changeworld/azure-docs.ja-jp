@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478482"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025018"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>JavaScript を使用して Event Hubs との間でイベントを送受信する (azure/event-hubs バージョン 5)
 このクイックスタートでは、**azure/event-hubs バージョン 5** JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -185,7 +185,7 @@ Azure Storage アカウントを作成して、そこに BLOB コンテナーを
 1. コマンド プロンプトから `node receive.js` を実行して、このファイルを実行します。 受信したイベントに関するメッセージがウィンドウに表示されます。
 
     > [!NOTE]
-    > 情報提供を目的とした補足コメントを含む完全なソース コードについては、[GitHub の receiveEventsUsingCheckpointStore.js ページ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)にアクセスしてください。
+    > 情報提供を目的とした補足コメントを含む完全なソース コードについては、[GitHub の receiveEventsUsingCheckpointStore.js ページ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js)にアクセスしてください。
 
 お疲れさまでした。 これで、イベント ハブからイベントを受信できました。 受信側プログラムは、イベント ハブの既定のコンシューマー グループのすべてのパーティションからイベントを受信します。
 

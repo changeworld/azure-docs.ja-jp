@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 244de9a3236977308a9f7bcaf5106e86a0984201
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77019045"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024678"
 ---
 # <a name="what-are-application-templates"></a>アプリケーション テンプレートとは
 
@@ -41,7 +41,7 @@ Azure IoT Central のアプリケーション テンプレートは、ソリュ�
 
 Azure IoT Central は、業界を問わないアプリケーション プラットフォームです。 アプリケーション テンプレートは、特定業界に焦点を合わせた例であり、現在は以下の業界に向けて提供されています。また、今後さらに多くが提供される予定です。
 
-- [小売](../retail/overview-iot-central-retail-pnp.md)
+- [小売](../retail/overview-iot-central-retail.md)
   - コネクテッド ロジスティクス
   - デジタル流通センター
   - ストア内分析 - 条件監視

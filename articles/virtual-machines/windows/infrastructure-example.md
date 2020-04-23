@@ -1,26 +1,19 @@
 ---
 title: サンプルの Azure インフラストラクチャによるチュートリアル
 description: Azure でのサンプルのインフラストラクチャのデプロイに関する主要な設計と実装のガイドラインについて説明します。
-documentationcenter: ''
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: example-scenario
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038560"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869463"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワーク、およびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -71,15 +64,15 @@ Adventure Works Cycles では、Azure Managed Disks を使用する必要があ�
 
 Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
 
-* 名前: AZOS-USE-VN01
-* 場所: East US 2
-* 仮想ネットワークのアドレス空間: 10.0.0.0/8
+* 名前:AZOS-USE-VN01
+* 場所:米国東部 2
+* 仮想ネットワークのアドレス空間:10.0.0.0/8
 * 1 番目のサブネット:
-  * 名前: FrontEnd
-  * アドレス空間: 10.0.1.0/24
+  * 名前:FrontEnd
+  * アドレス空間:10.0.1.0/24
 * 2 番目のサブネット:
-  * 名前: BackEnd
-  * アドレス空間: 10.0.2.0/24
+  * 名前:BackEnd
+  * アドレス空間:10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性セット
 オンライン ストアの 4 つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の 4 つの可用性セットを採用しました。

@@ -13,21 +13,18 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 42f3ca233597d0fbc31ce656bd856875e873e3c2
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309400"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868477"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
 
-Microsoft ID プラットフォームでは、ユーザーがスマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできるようにする[デバイス許可付与](https://tools.ietf.org/html/rfc8628)がサポートされています。  このフローを実現するには、デバイスのユーザーが別のデバイス上のブラウザーを使って Web ページにアクセスしてサインインするようにします。  ユーザーがサインインすると、デバイスは必要に応じてアクセス トークンと更新トークンを取得できます。  
+Microsoft ID プラットフォームでは、ユーザーがスマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできるようにする[デバイス許可付与](https://tools.ietf.org/html/rfc8628)がサポートされています。  このフローを実現するには、デバイスのユーザーが別のデバイス上のブラウザーを使って Web ページにアクセスしてサインインするようにします。  ユーザーがサインインすると、デバイスは必要に応じてアクセス トークンと更新トークンを取得できます。
 
 この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
-
-> [!NOTE]
-> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure Active Directory シナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -43,7 +40,7 @@ Microsoft ID プラットフォームでは、ユーザーがスマート TV、I
 > を必ず置き換えてください)。
 > [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
@@ -57,12 +54,12 @@ scope=user.read%20openid%20profile
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | `tenant` | 必須 | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
-| `client_id` | 必須 | **Azure portal の [アプリの登録]** エクスペリエンスでアプリに割り当てられた[アプリケーション (クライアント) ID](https://go.microsoft.com/fwlink/?linkid=2083908)。 |
+| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
 | `scope` | 推奨 | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  |
 
 ### <a name="device-authorization-response"></a>デバイス承認応答
 
-正常な応答は、ユーザーがサインインするために必要な情報が含まれている JSON オブジェクトです。  
+正常な応答は、ユーザーがサインインするために必要な情報が含まれている JSON オブジェクトです。
 
 | パラメーター | Format | 説明 |
 | ---              | --- | --- |
@@ -71,7 +68,7 @@ scope=user.read%20openid%20profile
 |`verification_uri`| URI | ユーザーがサインインするために `user_code` を使用してアクセスする必要がある URI。 |
 |`expires_in`      | INT | `device_code` と `user_code` の有効期限か切れるまでの秒数。 |
 |`interval`        | INT | ポーリング要求の間にクライアントが待機する秒数。 |
-| `message`        | String | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、 **という形式で**クエリ パラメーター`?mkt=xx-XX`を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
+| `message`        | String | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、`?mkt=xx-XX` という形式で**クエリ パラメーター**を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
 
 > [!NOTE]
 > `verification_uri_complete` 応答フィールドは現時点では含まれておらず、サポートされていません。  このことに触れる理由は、[標準](https://tools.ietf.org/html/rfc8628)を読むと、デバイス コード フロー標準のオプションの部分として `verification_uri_complete` が示されているためです。
@@ -80,11 +77,11 @@ scope=user.read%20openid%20profile
 
 `user_code` と `verification_uri` を受け取ると、クライアントによりこれらがユーザーに表示され、携帯電話または PC のブラウザーを使ってサインインするよう指示されます。
 
-ユーザーが個人のアカウント (/common または /consumers) で認証された場合は、認証状態をデバイスに転送するためにもう一度サインインするように求められます。  また、アクセス許可が付与されることを承知していることを確認するために、同意を求めるメッセージも表示されます。  これは、認証に使用される職場または学校のアカウントには適用されません。 
+ユーザーが個人のアカウント (/common または /consumers) で認証された場合は、認証状態をデバイスに転送するためにもう一度サインインするように求められます。  また、アクセス許可が付与されることを承知していることを確認するために、同意を求めるメッセージも表示されます。  これは、認証に使用される職場または学校のアカウントには適用されません。
 
-ユーザーが `verification_uri` で認証している間、クライアントは `/token` を使用して要求されたトークンを取得するために `device_code` エンドポイントをポーリングする必要があります。
+ユーザーが `verification_uri` で認証している間、クライアントは `device_code` を使用して要求されたトークンを取得するために `/token` エンドポイントをポーリングする必要があります。
 
-``` 
+```HTTP
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -95,21 +92,21 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | パラメーター | 必須 | 説明|
 | -------- | -------- | ---------- |
-| `tenant`  | 必須 | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 | 
+| `tenant`  | 必須 | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 |
 | `grant_type` | 必須 | `urn:ietf:params:oauth:grant-type:device_code` である必要があります。|
 | `client_id`  | 必須 | 最初の要求で使用された `client_id` と一致する必要があります。 |
 | `device_code`| 必須 | デバイス承認要求に対して返された `device_code`。  |
 
 ### <a name="expected-errors"></a>予期されるエラー
 
-デバイス コード フローはポーリング プロトコルなので、クライアントでは、ユーザーが認証を完了する前にエラーが発生することを想定しておく必要があります。  
+デバイス コード フローはポーリング プロトコルなので、クライアントでは、ユーザーが認証を完了する前にエラーが発生することを想定しておく必要があります。
 
 | エラー | 説明 | クライアント側の処理 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | ユーザーはまだ認証を完了していませんが、フローを取り消していません。 | 少なくとも `interval` 秒後に要求を繰り返します。 |
 | `authorization_declined` | エンド ユーザーが承認要求を拒否しました。| ポーリングを停止し、未認証の状態に戻します。  |
-| `bad_verification_code`| `device_code` エンドポイントに送信された `/token` が認識されませんでした。 | クライアントが要求時に正しい `device_code` を送信していることを確認します。 |
-| `expired_token` | 少なくとも `expires_in` 秒が経過したので、この `device_code` を使って認証することはもうできません。 | ポーリングを停止し、未認証の状態に戻します。 |   
+| `bad_verification_code`| `/token` エンドポイントに送信された `device_code` が認識されませんでした。 | クライアントが要求時に正しい `device_code` を送信していることを確認します。 |
+| `expired_token` | 少なくとも `expires_in` 秒が経過したので、この `device_code` を使って認証することはもうできません。 | ポーリングを停止し、未認証の状態に戻します。 |
 
 ### <a name="successful-authentication-response"></a>正常な認証応答
 
@@ -135,4 +132,4 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | `id_token`   | JWT | 元の `scope` パラメーターに `openid` スコープが含まれている場合に発行されます。  |
 | `refresh_token` | 不透明な文字列 | 元の `scope` パラメーターに `offline_access` が含まれている場合に発行されます。  |
 
-[OAuth コード フローのドキュメント](v2-oauth2-auth-code-flow.md#refresh-the-access-token)で説明されているのと同じフローに従い、更新トークンを使用して新しいアクセス トークンと更新トークンを取得できます。  
+[OAuth コード フローのドキュメント](v2-oauth2-auth-code-flow.md#refresh-the-access-token)で説明されているのと同じフローに従い、更新トークンを使用して新しいアクセス トークンと更新トークンを取得できます。

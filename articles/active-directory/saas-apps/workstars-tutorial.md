@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43fbc158c9ed0bbe87a75cd845433c7a7be2e6d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086637"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>チュートリアル: Azure Active Directory と Workstars の統合
 
@@ -110,7 +110,7 @@ Worstars で Azure AD シングル サインオンを構成するには、次の
     b. **[応答 URL]** ボックスに、`https://<subdomain>.workstars.com/saml/login_check` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Workstars クライアント サポート チーム](https://support.workstars.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Workstars クライアント サポート チーム](http://support.workstars.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -210,7 +210,7 @@ Worstars で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-workstars-test-user"></a>Workstars のテスト ユーザーの作成
 
-このセクションでは、Workstars で Britta Simon というユーザーを作成します。 [Workstars サポート チーム](https://support.workstars.com)と連携して、Workstars プラットフォームにユーザーを追加してください。
+このセクションでは、Workstars で Britta Simon というユーザーを作成します。 [Workstars サポート チーム](http://support.workstars.com)と連携して、Workstars プラットフォームにユーザーを追加してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

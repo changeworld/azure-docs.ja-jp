@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048502"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870541"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>チュートリアル:Azure Active Directory と Jobscience の統合
 
@@ -116,7 +116,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
     **[サインオン URL]** ボックスに、`http://<company name>.my.salesforce.com` のパターンを使用して URL を入力します。
     
     > [!NOTE] 
-    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値は、[Jobscience クライアント サポート チーム](https://www.jobscience.com/support)から、または後で作成する SSO プロファイルから取得します。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値は、[Jobscience クライアント サポート チーム](http://www.jobscience.com/support)から、または後で作成する SSO プロファイルから取得します。 
  
 1. **[SAML 署名証明書]** セクションで、 **[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 

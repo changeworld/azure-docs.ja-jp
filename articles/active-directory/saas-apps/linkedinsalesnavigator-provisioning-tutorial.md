@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057381"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869743"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Sales Navigator を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -99,7 +99,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. **[管理者資格情報]** の下で、以下のフィールドを入力します。
 
-    * **[テナント URL]** フィールドに、「 https://api.linkedin.com 」と入力します。
+    * **[テナント URL]** フィールドに、「 https://developer.linkedin.com 」と入力します。
 
     * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、 **[テスト接続]** をクリックします。
 

@@ -95,9 +95,11 @@
         - name: パターン
           href: luis-concept-patterns.md
           displayName: roles
-        - name: 機能
+        - name: 特徴
           href: luis-concept-feature.md
           displayName: 'descriptor, phrase list'
+        - name: 実行時のアプリの拡張
+          href: schema-change-prediction-runtime.md
     - name: 予測スコア
       href: luis-concept-prediction-score.md
     - name: ベスト プラクティス
@@ -154,8 +156,6 @@
         - name: 記述子の追加
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
-        - name: V3 Authoring に移行する
-          href: luis-migration-authoring-entities.md
         - name: REST API を使用
           items:
             - name: Node.js を使ってプログラムによりアプリをビルドする
@@ -191,6 +191,8 @@
           displayName: 'import, export'
     - name: 発行
       href: luis-how-to-publish-app.md
+    - name: クエリ予測ランタイム
+      href: luis-get-started-get-intent-from-browser.md
     - name: アプリの管理
       items:
         - name: Azure リソース
@@ -214,11 +216,10 @@
       items:
         - name: 開発者向け
           href: developer-reference-resource.md
-        - name: API の作成
-          href: luis-migration-api-authoring.md
-        - name: V3 API への移行
+        - name: V3 Authoring API に移行する
+          href: luis-migration-authoring-entities.md
+        - name: V3 Prediction API に移行する
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
         - name: V2 API への移行
           href: luis-migration-api-v1-to-v2.md
     - name: コンテナーの使用
@@ -394,7 +395,7 @@
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: 言語とリージョンのサポート
+    - name: 言語のサポート
       href: luis-language-support.md
       displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure のロードマップ
@@ -410,7 +411,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化
       href: luis-encryption-of-data-at-rest.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2092090'

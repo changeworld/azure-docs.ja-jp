@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025318"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870470"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple ポータルからのプライベート クラウド vCenter 特権のエスカレート
 
 プライベート クラウド vCenter への管理者アクセスのために、CloudSimple 特権を一時的にエスカレートすることができます。  エスカレートした特権を使用して、VMware のソリューションのインストール、ID ソースの追加、およびユーザーの管理を行うことができます。
 
-vCenter SSO ドメインで新しいユーザーを作成し、vCenter へのアクセスを付与できます。  新しいユーザーを作成したら、vCenter にアクセスするために CloudSimple 組み込みグループに追加します。  詳細については、「[VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/)」を参照してください。
+vCenter SSO ドメインで新しいユーザーを作成し、vCenter へのアクセスを付与できます。  新しいユーザーを作成したら、vCenter にアクセスするために CloudSimple 組み込みグループに追加します。  詳細については、「[VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)」を参照してください。
 
 > [!CAUTION]
 > 管理コンポーネントの構成は変更しないでください。 特権がエスカレートされた状態でアクションを実行すると、システムに悪影響が出たり、システムが使用できなくなったりする可能性があります。
@@ -88,5 +88,5 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Active Directory を使用するための vCenter ID ソースの設定](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* [ワークロード仮想マシンのバックアップ](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)を行うためのバックアップ ソリューションのインストール
+* [Active Directory を使用するための vCenter ID ソースの設定](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* [ワークロード仮想マシンのバックアップ](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)を行うためのバックアップ ソリューションのインストール

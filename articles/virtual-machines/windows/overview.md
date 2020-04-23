@@ -1,22 +1,19 @@
 ---
 title: Azure での Windows VM の概要
 description: Azure における Windows 仮想マシンの概要です。
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: efcbdb2ebd7f4830214dbd0f2ea2ea1cfe36c3de
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e304841d09913aac59f5e6ba082d3e76ec791e81
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75893514"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869347"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -48,7 +45,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | --- | --- |
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
@@ -74,7 +71,7 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 
 次の表に、イメージに関する情報を見つける方法をいくつか示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | --- | --- |
 | Azure portal |値は、使用するイメージを選択する際に自動的に指定されます。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |

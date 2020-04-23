@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5c28697b27e9cf910302b7379e1443f7e78e96b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530616"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025086"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
@@ -45,9 +45,6 @@ ms.locfileid: "79530616"
 6. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。
 
     ![Azure Database for MariaDB - レプリカの場所](./media/howto-read-replica-portal/replica-location.png)
-
-   > [!NOTE]
-   > リージョン間のレプリケーションはプレビュー段階です。 レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
 
 7. **[OK]** を選択して、レプリカの作成を確認します。
 

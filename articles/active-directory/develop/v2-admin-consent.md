@@ -12,16 +12,16 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9f633e0d205adaf5cefb2e3c036ce7f48253651
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886383"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868664"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームの管理者の同意
 
-一部のアクセス許可は、テナント内で付与される前に、管理者からの同意を必要とします。  管理者の同意エンドポイントを使用し、テナント全体にアクセス許可を付与することもできます。  
+一部のアクセス許可は、テナント内で付与される前に、管理者からの同意を必要とします。  管理者の同意エンドポイントを使用し、テナント全体にアクセス許可を付与することもできます。
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>推奨:ユーザーをアプリにサインインさせる
 
@@ -33,15 +33,15 @@ ms.locfileid: "80886383"
 
 組織の管理者にアクセス許可を要求する準備ができたら、Microsoft ID プラットフォームの*管理者の同意エンドポイント*にユーザーをリダイレクトできます。
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "80886383"
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
 | `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
-|`scope`        | 必須      | アプリケーションによって要求されるアクセス許可のセットを定義します。 これは静的スコープ (/.default を使用) か動的スコープになります。  これには OIDC スコープ (`openid`、`profile`、`email`) が含まれることもあります。 | 
+|`scope`        | 必須      | アプリケーションによって要求されるアクセス許可のセットを定義します。 これは静的スコープ (/.default を使用) か動的スコープになります。  これには OIDC スコープ (`openid`、`profile`、`email`) が含まれることもあります。 |
 
 
 現在 Azure AD では、テナント管理者がサインインして、要求を完了する必要があります。 管理者は、ユーザーが `scope` パラメーターで要求したすべてのアクセス許可を承認するように求められます。  静的な (`/.default`) 値を使用した場合、それは v1.0 管理者の同意エンドポイントのように機能し、アプリに必要なアクセス許可で見つかったすべてのスコープに対する同意を要求します。

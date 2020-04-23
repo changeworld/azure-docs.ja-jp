@@ -1,213 +1,158 @@
 ---
 title: テンプレートを作成する - Visual Studio Code
 description: Visual Studio Code と Azure Resource Manager ツールの拡張機能を使用して Resource Manager テンプレートを操作する方法について説明します。
-author: mumian
-ms.date: 03/04/2019
+author: neilpeterson
+ms.date: 04/17/2020
 ms.topic: quickstart
-ms.author: jgao
-ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.author: nepeters
+ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984454"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686608"
 ---
-# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 
-Visual Studio Code と Azure Resource Manager ツール拡張機能を使用して Azure Resource Manager (ARM) テンプレートを作成および編集する方法について説明します。 Visual Studio Code では、拡張機能を使わずに ARM テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
+Visual Studio Code 用の Azure Resource Manager ツールでは、言語サポート、リソース スニペット、およびリソース オートコンプリートが提供されます。 これらのツールは、Azure Resource Manager テンプレートを作成および検証するのに役立ちます。 このクイックスタートでは、拡張機能を使用して Azure Resource Manager テンプレートを一から作成します。 操作では、ARM テンプレート スニペット、検証、入力候補、パラメーター ファイルのサポートなどの拡張機能を使用します。
 
-このクイックスタートでは、ストレージ アカウントをデプロイします。
-
-![Resource Manager テンプレート クイック スタートの Visual Studio Code 図](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+このクイックスタートを完了するには、[Azure Resource Manager ツールの拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)がインストールされている [Visual Studio Code](https://code.visualstudio.com/) が必要です。 また、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) か [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0)のどちらかがインストールされて認証されている必要があります。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="create-an-arm-template"></a>ARM テンプレートを使用する
 
-この記事を完了するには、以下が必要です。
+"*azuredeploy. json*" という名前の新しいファイルを Visual Studio Code で作成して開きます。 コード エディターに「`arm`」と入力します。これにより、ARM テンプレートをスキャフォールディングするための Azure Resource Manager スニペットが開始されます。
 
-- [Visual Studio Code](https://code.visualstudio.com/)。
-- Resource Manager ツール拡張機能。 インストールするには、次の手順を使用します。
+`arm!` を選択して、Azure リソース グループのデプロイの対象となるテンプレートを作成します。
 
-    1. Visual Studio Code を開きます。
-    2. **Ctrl + Shift + X** キーを押して、拡張機能ウィンドウを開きます
-    3. **[Azure Resource Manager ツール]** を探して、 **[インストール]** を選択します。
-    4. **[再読み込み]** を選択して、拡張機能のインストールを完了します。
+![Azure Resource Manager のスキャフォールディングを示す画像](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
+このスニペットは、ARM テンプレートの基本的な構成要素を作成します。
 
-ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイック スタート テンプレートは、ARM テンプレートのリポジトリです。
+![完全にスキャフォールディングされた ARM テンプレートを示す画像](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
+Visual Studio Code 言語モードが *JSON* から *Azure Resource Manager テンプレート*に変更されていることに注目してください。 この拡張機能には、ARM テンプレート固有の検証、入力候補、その他の言語サービスを提供する ARM テンプレート固有の言語サーバーが含まれています。
 
-1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
-2. **[ファイル名]** に以下の URL を貼り付けます。
+![Visual Studio Code 言語モードの Azure Resource Manager を示す画像](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
-    ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-    ```
+## <a name="add-an-azure-resource"></a>Azure リソースを追加する
 
-3. **[開く]** を選択して、ファイルを開きます。
-4. **[ファイル]** > **[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
+この拡張機能には、多くの Azure リソースのスニペットが含まれています。 これらのスニペットを使用して、テンプレートのデプロイにリソースを簡単に追加できます。
 
-## <a name="edit-the-template"></a>テンプレートの編集
+テンプレートの **resources** ブロックにカーソルを置き、「`storage`」と入力し、"*arm-storage*" スニペットを選択します。
 
-Visual Studio Code を使用してテンプレートを編集する方法を体験するために、`outputs` セクションに要素をもう 1 つ追加して、ストレージ URI を表示します。
+![ARM テンプレートに追加されているリソースを示す画像](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-1. エクスポートしたテンプレートに出力をもう 1 つ追加します。
+このアクションにより、ストレージ リソースがテンプレートに追加されます。
 
-    ```json
-    "storageUri": {
-      "type": "string",
-      "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-    }
-    ```
+![ARM テンプレートの Azure Storage リソースを示す画像](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-    完了すると、outputs セクションは次のようになります。
+**Tab** キーを使用して、ストレージ アカウントの構成可能なプロパティを切り替えることができます。
 
-    ```json
-    "outputs": {
-      "storageAccountName": {
-        "type": "string",
-        "value": "[variables('storageAccountName')]"
-      },
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-      }
-    }
-    ```
+![Tab キーを使用してリソース構成内を移動する方法を示す画像](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
-    Visual Studio Code 内でコードをコピーして貼り付けたら、**value** 要素を再入力して、Resource Manager ツール拡張機能の IntelliSense 機能を体験してみます。
+## <a name="completion-and-validation"></a>入力候補と検証
 
-    ![Resource Manager テンプレートにおける Visual Studio Code の IntelliSense](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+拡張機能の最も強力な機能の 1 つが、Azure スキーマとの統合です。 Azure スキーマは、検証とリソース対応の入力候補機能を備えた拡張機能を提供します。 ストレージ アカウントを変更して、検証と入力候補が動作することを確認してみましょう。 
 
-2. **[ファイル]** > **[保存]** を選択して、ファイルを保存します。
+最初に、ストレージ アカウントの種類を、`megaStorage` などの無効な値に更新します。 このアクションでは、`megaStorage` が有効な値ではないことを示す警告が生成されます。
+
+![無効なストレージ構成を示す画像](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+
+入力候補機能を使用するには、`megaStorage` を削除し、二重引用符内にカーソルを置き、`ctrl` + `space` を押します。 このアクションでは、有効な値の入力候補一覧が表示されます。
+
+![オートコンプリートの拡張機能を示す画像](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+
+## <a name="add-template-parameters"></a>テンプレート パラメーターを追加する
+
+ここでは、ストレージ アカウント名を指定するためのパラメーターを作成して使用します。
+
+parameters ブロックにカーソルを置き、キャリッジ リターンを追加して「`par`」と入力し、`arm-param-value` スニペットを選択します。 このアクションにより、ジェネリック パラメーターがテンプレートに追加されます。
+
+![ARM テンプレートに追加されているパラメーターを示す画像](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+
+パラメーターの名前を `storageAccountName` に、説明を `Storage Account Name` に更新します。
+
+![ARM テンプレートに入力されたパラメーターを示す画像](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+
+Azure ストレージ アカウント名の長さは 3 文字以上、24 文字以内です。 `minLength` と `maxLength` の両方をパラメーターに追加し、適切な値を指定します。
+
+![ARM テンプレート パラメーターに追加される minLength と maxLength を示す画像](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+
+次に、ストレージ リソースで、パラメーターを使用するように name プロパティを更新します。 これを行うには、現在の名前を削除します。 二重引用符と左角かっこ `[` を入力します。これにより、ARM テンプレート関数の一覧が生成されます。 一覧から "*parameters*" を選択します。 
+
+![ARM テンプレート リソースで parameters を使用するときのオートコンプリートを示す画像](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+
+丸かっこ内に一重引用符 `'` 入力すると、テンプレートに定義されているすべてのパラメーターの一覧が生成されます。この例では "*storageAccountName*" です。 パラメーターを選択します。
+
+![ARM テンプレート リソースに入力されたパラメーターを示す画像](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+
+## <a name="create-a-parameter-file"></a>パラメーター ファイルを作成する
+
+ARM テンプレート パラメーター ファイルを使用すると、環境固有のパラメーター値を格納し、デプロイ時にその値をグループとして渡すことができます。 たとえば、テスト環境に固有の値を持つパラメーター ファイルの他に、運用環境用のパラメーター ファイルも持つことができます。
+
+この拡張機能を使用すると、既存のテンプレートからパラメーター ファイルを簡単に作成できます。 これを行うには、コード エディターでテンプレートを右クリックし、`Select/Create Parameter File` を選択します。
+
+![ARM テンプレートからパラメーター ファイルを作成するための右クリック プロセスを示す画像](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+
+`New` > `All Parameters` を選択し、パラメーター ファイルの名前と場所を選択します。
+
+![ARM テンプレートからパラメーター ファイルを作成するときの名前と、ファイルの保存のダイアログを示す画像](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+
+このアクションにより、新しいパラメーター ファイルが作成され、作成元のテンプレートにマップされます。 テンプレートを選択しているときに、Visual Studio Code ステータス バーで現在のテンプレートまたはパラメーターのファイル マッピングを表示および変更できます。
+
+![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+
+パラメーター ファイルがテンプレートにマップされたので、拡張機能がテンプレートとパラメーター ファイルの両方を同時に検証します。 この検証を実際に確認するには、パラメーター ファイルの `storageAccountName` パラメーターに 2 文字の値を追加し、ファイルを保存します。
+
+![パラメーター ファイルのイシューにより無効になったテンプレートを示す画像](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+
+ARM テンプレートに戻ると、値がパラメーターの条件を満たしていないことを示すエラーが発生していることがわかります。
+
+![有効な ARM テンプレートを示す画像](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+
+値を適切なものに更新し、ファイルを保存して、テンプレートに戻ります。 パラメーターのエラーが解決されたことを確認してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-テンプレートをデプロイする方法は多数あります。 このクイック スタートでは Azure Cloud シェルを使用します。 Cloud Shell では、Azure CLI と Azure PowerShell の両方がサポートされます。 タブ セレクターを使用して CLI と PowerShell のいずれかを選択します。
+`ctrl` + ```` ` ```` キーの組み合わせを使用して Visual Studio Code の統合ターミナルを開き、Azure CLI または Azure PowerShell のどちらかのモジュールを使用してテンプレートをデプロイします。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+# <a name="cli"></a>[CLI](#tab/CLI)
 
-1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
+```azurecli
+az group create --name arm-vscode --location eastus
 
-2. 左上の **[PowerShell]** または **[Bash]** (CLI) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
+az deployment group create --resource-group arm-vscode --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+```
 
-    # <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Azure portal の Cloud Shell の CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+```azurepowershell
+New-AzResourceGroup -Name arm-vscode -Location eastus
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portal の Cloud Shell の PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
-
-    ---
-
-3. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portal の Cloud Shell のファイルのアップロード](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portal の Cloud Shell のファイルのアップロード](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
-
-    ---
-
-    前のセクションで保存したファイルを選択します。 既定の名前は **azuredeploy.json** です。 テンプレート ファイルはシェルからアクセスできる必要があります。
-
-    オプションで **ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portal の Cloud Shell のファイルの一覧表示](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portal の Cloud Shell のファイルの一覧表示](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
-
-    ---
-4. Cloud Shell で次のコマンドを実行します。 PowerShell コードまたは CLI コードを表示するタブを選択します。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter a project name that is used to generate resource group name:" &&
-    read projectName &&
-    echo "Enter the location (i.e. centralus):" &&
-    read location &&
-    resourceGroupName="${projectName}rg" &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
-    ```
-
-    ---
-
-    **azuredeploy.json** 以外の名前でファイルを保存する場合は、テンプレートのファイル名を更新します。
-
-    次のスクリーンショットは、サンプルのデプロイを示しています。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portal の Cloud Shell のテンプレートのデプロイ](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portal の Cloud Shell のテンプレートのデプロイ](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
-
-    ---
-
-    outputs セクションにあるストレージ アカウント名とストレージ URL は、スクリーンショット上で強調表示されています。 ストレージ アカウント名は、次の手順で必要です。
-
-5. 次の CLI または PowerShell コマンドを実行して、新しく作成されたストレージ アカウントの一覧を表示します。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the Storage Account name:" &&
-    read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
-    Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-    ```
-
-    ---
-
-Azure ストレージ アカウントの使用の詳細については、「[クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
+New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azuredeploy.json -TemplateParameterFile ./azuredeploy.parameters.json
+```
+---
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。
+Azure リソースが不要になったら、Azure CLI か Azure PowerShell のどちらかのモジュールを使用してクイックスタート リソース グループを削除します。
 
-1. Azure portal で、左側のメニューから **[リソース グループ]** を選択します。
-2. **[名前でフィルター]** フィールドに、リソース グループ名を入力します。
-3. リソース グループ名を選択します。  リソース グループ内の合計 6 つのリソースが表示されます。
-4. トップ メニューから **[リソース グループの削除]** を選択します。
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name arm-vscode
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name arm-vscode
+```
+---
 
 ## <a name="next-steps"></a>次のステップ
-
-このクイックスタートの主な目的は、Visual Studio Code を使用して、Azure クイック スタート テンプレートの既存のテンプレートを編集することです。 Azure Cloud Shell から CLI または PowerShell を使用してテンプレートをデプロイする方法も学習しました。 Azure クイック スタート テンプレートのテンプレートでは、必要なものすべてを得ることができないことがあります。 テンプレートの開発についてさらに学習するには、以下の新しい初心者向けチュートリアル シリーズを参照してください。
 
 > [!div class="nextstepaction"]
 > [初心者向けチュートリアル](./template-tutorial-create-first-template.md)

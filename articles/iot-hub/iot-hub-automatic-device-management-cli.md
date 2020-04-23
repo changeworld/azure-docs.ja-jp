@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub を使用した大規模な自動デバイス管理 (CLI) | Microsoft Docs
 description: Azure IoT Hub 自動構成を使用し、複数の IoT デバイスまたはモジュールを管理する
-author: ChrisGMsft
-manager: bruz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: chrisgre
-ms.openlocfilehash: 748f3e09fd03a6f37954c8dfaf4b6ae9144384bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: robinsh
+ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235600"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024967"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Azure CLI を使用した IoT デバイス/モジュールの自動管理
 
