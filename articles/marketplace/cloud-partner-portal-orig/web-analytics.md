@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6d6375b19689c582c0f129378c76936e624e04
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285335"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416276"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -40,7 +40,7 @@ ms.locfileid: "80285335"
 
 1. それが何のキャンペーンで、それらの顧客がどのページやイベントから誘導されてきているかを表すクエリ パラメーター **mktcmpid** を URL に追加する。
 
-使用例: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+使用例: ```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign```
 
 1. (上級): サポートされているいずれかの汎用キャンペーン ID を URL 内で使用する。 必要な ref タグを追加できる柔軟な表記法がサポートされています。以下の追加タグが自動的に認識されます。
     
@@ -49,14 +49,14 @@ ms.locfileid: "80285335"
     3. **ref**
     4. **src**
 
-使用例: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+使用例: ```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign```
 
 これらのキャンペーン ID を複数組み合わせれば、顧客の流入元 (例: メール、ブログ、ソーシャル メディア) など、キャンペーンのトラフィックの源泉となっている複数のソースを特定することができます。
 
 次に例を示します。
 
-1. ニュースレターが参照元の場合:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn が参照元の場合:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. ニュースレターが参照元の場合:  ```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter```
+2. LinkedIn が参照元の場合:  ```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn```
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**ページをすべて経由するようにキャンペーンを設定する**
 
@@ -64,13 +64,13 @@ ms.locfileid: "80285335"
 
 たとえば次のようになります。
 
-1. トラフィックを会社のランディング ページ <https://contoso.com> に誘導する広告をマーケティング担当者が Google から購入します。 このランディング ページには、\"製品を試用する\" というリンクがあります。リンク先は <https://appsource.com> です。
+1. トラフィックを会社のランディング ページ ```https://contoso.com``` に誘導する広告をマーケティング担当者が Google から購入します。 このランディング ページには、\"製品を試用する\" というリンクがあります。リンク先は ```https://appsource.com``` です。
 2. ユーザーが広告をクリックすると、会社のランディング ページに誘導されます。
     1.  参照 URL = google.com
-    2.  ランディング ページ URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2.  ランディング ページ URL = ```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
 3. \"製品を試用する\" リンクをクリックすると、ユーザーが AppSource に誘導されます。
-    1. 参照 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. ランディング ページ URL (**この URL には必ず utm\_campaign と utm\_source を追加する**) =  [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    1. 参照 URL = ```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
+    2. ランディング ページ URL (**この URL には utm\_campaign と utm\_source を確実に追加する**) = ```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>キャンペーンの成果を評価する方法
 -----------------------------------------
