@@ -7,10 +7,12 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: メンバーを作成する - ポータル
+    - name: ポータルを使用してメンバーを作成する
       href: create-member.md
-    - name: メンバーを作成する - CLI
+    - name: CLI を使用してメンバーを作成する
       href: create-member-cli.md
+    - name: テンプレートを使用してメンバーを作成する
+      href: create-member-template.md
     - name: トランザクション ノードに接続する
       items:
         - name: VS コードを使用する
