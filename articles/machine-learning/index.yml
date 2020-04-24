@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Machine Learning のドキュメント
-summary: Azure Machine Learning を使用して、機械学習モデルとパイプラインを大規模にトレーニング、デプロイ、管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+summary: Azure Machine Learning を使用して、機械学習モデル、AutoML 実験、およびパイプラインを大規模にトレーニング、デプロイ、管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
 metadata:
   title: Azure Machine Learning のドキュメント
-  description: Azure Machine Learning を使用して、機械学習モデルとパイプラインを大規模にトレーニング、デプロイ、管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+  description: Azure Machine Learning を使用して、機械学習モデル、AutoML 実験、およびパイプラインを大規模にトレーニング、デプロイ、管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/18/2020
-  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/22/2020
+  ms.openlocfilehash: 174c5b1164505900345e35ff58d2970bf119cc82
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80063951"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82084211"
 landingContent:
 - title: 機械学習の概要
   linkLists:
@@ -27,16 +27,28 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: デザイナー (ドラッグ アンド ドロップ)
       url: tutorial-designer-automobile-price-train-score.md
+    - text: AutoML (コードなし/少量のコード)
+      url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-    - text: 自動 ML
-      url: tutorial-first-experiment-automated-ml.md
+- title: スタジオの Web エクスペリエンスを使用する
+  linkLists:
   - linkListType: overview
     links:
-    - text: Azure Machine Learning とは
-      url: overview-what-is-azure-ml.md
-    - text: アーキテクチャと概念
-      url: concept-azure-machine-learning-architecture.md
+    - text: デザイナー (ドラッグ アンド ドロップ) とは
+      url: concept-designer.md
+    - text: 自動化された機械学習とは
+      url: concept-automated-ml.md
+  - linkListType: tutorial
+    links:
+    - text: 'AutoML: 分類モデルをビルドする'
+      url: tutorial-first-experiment-automated-ml.md
+    - text: 'AutoML: ML モデルのトレーニングとデプロイ'
+      url: how-to-use-automated-ml-for-ml-models.md
+    - text: 'デザイナー: 自動価格の予測'
+      url: tutorial-designer-automobile-price-train-score.md
+    - text: イメージのラベル付けプロジェクトを作成する
+      url: tutorial-labeling.md
 - title: Python SDK の使用
   linkLists:
   - linkListType: tutorial
@@ -45,8 +57,10 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: 画像を分類する
       url: tutorial-train-models-with-aml.md
-    - text: 自動 ML を使用してタクシー料金を予測する
+    - text: AutoML を使用してタクシー料金を予測する
       url: tutorial-auto-train-models.md
+    - text: Azure ML パイプラインを作成する
+      url: tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
     - text: 環境の設定方法
@@ -59,20 +73,8 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: Keras を使ってトレーニングする
       url: how-to-train-keras.md
-- title: ML パイプラインの構築
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: ML パイプラインを作成する (Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-    - text: 線形回帰による価格の予測 (デザイナー)
-      url: tutorial-designer-automobile-price-train-score.md
-  - linkListType: overview
-    links:
     - text: ML パイプラインとは
       url: concept-ml-pipelines.md
-    - text: デザイナーとは
-      url: concept-designer.md
 - title: モデルの展開と管理
   linkLists:
   - linkListType: how-to-guide
@@ -81,27 +83,25 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: デプロイの方法と場所
       url: how-to-deploy-and-where.md
-    - text: MLOps の例
-      url: https://github.com/microsoft/MLOps
     - text: リアルタイムの予測
       url: how-to-consume-web-service.md
     - text: バッチ予測
       url: how-to-use-parallel-run-step.md
-    - text: 認証
-      url: how-to-setup-authentication.md
 - title: リファレンス ドキュメントに移動する
   linkLists:
   - linkListType: reference
     links:
     - text: Python 用 SDK
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
-    - text: R 用 SDK
-      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: デザイナーのアルゴリズムとモジュール
+      url: algorithm-module-reference/module-reference.md
+    - text: MLOps の例のリポジトリ
+      url: https://github.com/microsoft/MLOps
     - text: REST API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine Learning CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: デザイナーのアルゴリズムとモジュール
-      url: algorithm-module-reference/module-reference.md
     - text: AI リファレンス アーキテクチャ (GitHub)
       url: https://github.com/Microsoft/AI
+    - text: R 用 SDK
+      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html

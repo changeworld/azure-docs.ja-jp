@@ -25,12 +25,14 @@
       items:
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
-        - name: セキュリティの既定値
+        - name: セキュリティの既定値群
           href: concept-fundamentals-security-defaults.md
         - name: レガシ認証をブロックする
           href: concept-fundamentals-block-legacy-authentication.md
         - name: ID セキュリティ スコア
           href: identity-secure-score.md
+        - name: 継続的アクセスの評価
+          href: concept-fundamentals-continuous-access-evaluation.md
     - name: グループとユーザー
       items:
         - name: グループとアクセス管理

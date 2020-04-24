@@ -45,13 +45,15 @@
               href: data-box-gateway-connect-powershell-interface.md
         - name: モニター
           href: data-box-gateway-monitor.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           href: data-box-gateway-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
           href: data-box-edge-contact-microsoft-support.md
     - name: リリース ノート
       items:
-        - name: 1906 - 最新
+        - name: 1911 - 最新
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
           href: data-box-gateway-1906-release-notes.md
         - name: 1905
           href: data-box-gateway-1905-release-notes.md
@@ -107,7 +109,7 @@
               href: data-box-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: data-box-edge-connect-powershell-interface.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           href: data-box-edge-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
           href: data-box-edge-contact-microsoft-support.md
@@ -117,7 +119,9 @@
           href: data-box-edge-return-device.md
     - name: リリース ノート
       items:
-        - name: 1906 - 最新
+        - name: 1911 - 最新
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
           href: data-box-gateway-1906-release-notes.md
         - name: 1905
           href: data-box-gateway-1905-release-notes.md

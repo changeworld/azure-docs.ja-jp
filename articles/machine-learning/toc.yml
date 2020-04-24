@@ -149,8 +149,9 @@
             - name: Private Link を使用する
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: SSL を使用して Web サービスをセキュリティで保護する
+            - name: TLS を使用して Web サービスをセキュリティで保護する
               href: how-to-secure-web-service.md
+              displayName: ssl
             - name: AKS デプロイで Azure AD ID を使用する
               href: how-to-use-azure-ad-identity.md
             - name: ストレージ アクセス キーの再生成
