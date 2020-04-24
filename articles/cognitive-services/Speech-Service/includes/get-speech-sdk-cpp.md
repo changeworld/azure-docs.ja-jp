@@ -13,7 +13,7 @@ ms.locfileid: "81399899"
 ---
 :::row:::
     :::column span="3":::
-        C++ 音声SDKはWindows, Linux, macOSで使用できます。 詳細については、 <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech <span class="docon docon-navigate-external x-hidden-focus"> </span></a>を参照してください。
+        C++ Speech SDK は Windows, Linux, macOSで使用できます。 詳細については、 <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech <span class="docon docon-navigate-external x-hidden-focus"> </span></a>を参照してください。
     :::column-end:::
     :::column:::
         <br>
@@ -25,7 +25,7 @@ ms.locfileid: "81399899"
 
 #### <a name="c-nuget-package"></a>C++ NuGet パッケージ
 
-C++ 音声SDKは**パッケージマネージャー**から以下の`Install-Package`コマンドでインストールができます。
+C++ Speech SDK は**パッケージマネージャー**から以下の`Install-Package`コマンドでインストールができます。
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
@@ -33,7 +33,7 @@ Install-Package Microsoft.CognitiveServices.Speech
 
 #### <a name="c-binaries-and-header-files"></a>C++バイナリファイルとヘッダーファイル
 
-または、 C++ 音声SDK をバイナリからインストールすることもできます。 <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">.tarパッケージ<span class="docon docon-navigate-external x-hidden-focus"></span></a>としてSDKをダウンロードし、ファイルを任意のディレクトリにアンパックします。 このパッケージ (x86 と x64 の両方のターゲットアーキテクチャのヘッダーファイルを含む) の内容は、次のように構成されています：
+または、 C++ Speech SDK をバイナリからインストールすることもできます。 <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">.tarパッケージ<span class="docon docon-navigate-external x-hidden-focus"></span></a>としてSDKをダウンロードし、ファイルを任意のディレクトリにアンパックします。 このパッケージ (x86 と x64 の両方のターゲットアーキテクチャのヘッダーファイルを含む) の内容は、次のように構成されています：
 
   | Path                   | 説明                                          |
   |------------------------|------------------------------------------------------|

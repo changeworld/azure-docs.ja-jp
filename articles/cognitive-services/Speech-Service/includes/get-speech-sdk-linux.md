@@ -13,7 +13,7 @@ ms.locfileid: "81399907"
 ---
 :::row:::
     :::column span="3":::
-        音声SDKは、Linuxで使用する際、**Ubuntu 16.04/18.04**,**Debian 9**, **Red Hat Enterprise Linux (RHEL) 7/8**,**CentOS 7/8**のみサポートしています：
+        Speech SDKは、Linuxで使用する際、**Ubuntu 16.04/18.04**,**Debian 9**, **Red Hat Enterprise Linux (RHEL) 7/8**,**CentOS 7/8**のみサポートしています：
         - x64
     :::column-end:::
     :::column:::
@@ -32,7 +32,7 @@ ms.locfileid: "81399907"
 
 ### <a name="system-requirements"></a>システム要件
 
-ネイティブアプリケーションの場合、音声SDK は`libMicrosoft.CognitiveServices.Speech.core.so`に依存します。 ターゲットアーキテクチャ (x86、x64) がアプリケーションと一致していることを確認します。 Linux のバージョンによっては、追加の依存関係が必要になる場合があります。
+ネイティブアプリケーションの場合、Speech SDK は`libMicrosoft.CognitiveServices.Speech.core.so`に依存します。 ターゲットアーキテクチャ (x86、x64) がアプリケーションと一致していることを確認します。 Linux のバージョンによっては、追加の依存関係が必要になる場合があります。
 
 - GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
 - OpenSSL ライブラリ (`libssl.so.1.0.0` または `libssl.so.1.0.2`)

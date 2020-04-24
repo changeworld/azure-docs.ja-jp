@@ -11,14 +11,14 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2020
 ms.locfileid: "81399934"
 ---
-MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
+MacOS 用に開発する場合は、3つの Speech Sdk を利用できます。
 
-- Objective-C S音声SDK は、Cocoアポストロフィ d パッケージとしてネイティブに使用できます。
-- .NET音声SDKは **.NET Standard 2.0**を実装しているため Xamarin. Mac と共に使用できます
-- Python音声SDK は PyPI モジュールとして提供されています。
+- Objective-C Speech SDK は、CocoaPod パッケージとしてネイティブに使用できます。
+- .NET Speech SDKは **.NET Standard 2.0**を実装しているため Xamarin. Mac と共に使用できます
+- Python Speech SDK は PyPI モジュールとして提供されています。
 
 > [!TIP]
-> Objective-C-音声SDK と Swift の使用の<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">詳細については、「Objective-C をSwiftにインポートする 」を参照してください <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> Objective-C Speech SDK と Swift の使用の<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">詳細については、「Objective-C をSwiftにインポートする 」を参照してください <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ### <a name="system-requirements"></a>システム要件
 
@@ -28,7 +28,7 @@ MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 
 :::row:::
     :::column span="3":::
-        macOS Cocoアポストロフィ d パッケージは、 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (またはそれ以降) <span class="docon docon-navigate-external x-hidden-focus"></span></a>統合開発環境 (IDE) と共にダウンロードして使用することができます。 <a href="https://aka.ms/csspeech/macosbinary" target="_blank">まず、バイナリ Cocoアポストロフィ <span class="docon docon-navigate-external x-hidden-focus"></span></a>をダウンロードします。 使用目的に合わせて同じディレクトリ内のポッドを抽出し、*Podfile*を作成して、`pod`を `target`として一覧表示します。
+        macOS CocoaPod パッケージは、 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (またはそれ以降) <span class="docon docon-navigate-external x-hidden-focus"></span></a>統合開発環境 (IDE) と共にダウンロードして使用することができます。 まず、<a href="https://aka.ms/csspeech/macosbinary" target="_blank">バイナリ CocoaPod<span class="docon docon-navigate-external x-hidden-focus"></span></a> をダウンロードします。 使用目的に合わせて同じディレクトリ内のポッドを抽出し、*Podfile*を作成して、`pod`を `target`として一覧表示します。
     :::column-end:::
     :::column:::
         <br>
@@ -71,5 +71,5 @@ end
 
 #### <a name="additional-resources"></a>その他のリソース
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS音声 SDK クイックスタートのObjective-Cソースコード<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS音声SDK クイックスタート Swift ソースコード<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS Speech SDK クイックスタートのObjective-Cソースコード<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS Speech SDK クイックスタート Swift ソースコード<span class="docon docon-navigate-external x-hidden-focus"></span></a>
