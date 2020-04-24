@@ -108,7 +108,7 @@
           items:
             - name: Azure SQL 監査
               href: sql-database-auditing.md
-            - name: VNet またはファイアウォールの内側にあるストレージへ
+            - name: VNet またはファイアウォールの背後にあるストレージ アカウントに対する監査
               href: create-auditing-storage-account-vnet-firewall.md
             - name: 監査ログの形式
               href: sql-database-audit-log-format.md

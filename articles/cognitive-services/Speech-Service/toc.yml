@@ -483,6 +483,8 @@
           href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
         - name: Speech Devices SDK のサンプル (GitHub)
           href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+        - name: 音声アシスタントのサンプル (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: リファレンス
       items:
         - name: C++

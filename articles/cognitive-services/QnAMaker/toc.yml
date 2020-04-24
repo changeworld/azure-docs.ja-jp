@@ -61,6 +61,8 @@
     - name: ベスト プラクティス
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: QnA Maker と LUIS の使用
+      href: choose-natural-language-processing-service.md
 - name: 操作方法ガイド
   items:
     - name: Azure のリソースを管理する
@@ -74,6 +76,8 @@
           href: How-To/collaborate-knowledge-base.md
         - name: アクティブ ラーニングを有効にする
           href: How-To/use-active-learning.md
+        - name: 既定の回答の変更
+          href: How-To/change-default-answer.md
     - name: ナレッジ ベースの管理
       items:
         - name: ナレッジ ベースを作成する
@@ -227,7 +231,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金と制限
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
