@@ -71,7 +71,7 @@ Azure AD Connect には、データを格納する SQL Server データベース
    ![ようこそ](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
-   ![のインスタンスに接続するときには、](./media/how-to-connect-install-existing-database/db5.png)
+   ![接続](./media/how-to-connect-install-existing-database/db5.png)
  
 1. **[ディレクトリの接続]** 画面では、ディレクトリ同期に構成されている既存の AD フォレストは、赤色の×アイコンで表示されます。 オンプレミスの AD フォレストの変更を同期するには、AD DS アカウントが必要です。 Azure AD Connect ウィザードでは、ADSync データベースに格納されている AD DS アカウントの資格情報を取得できません。これは、資格情報が暗号化され、復号には前の Azure AD Connect サーバーが必要なためです。 **[資格情報の変更]** をクリックして、AD フォレストの AD DS アカウントを指定します。
    ![Directories](./media/how-to-connect-install-existing-database/db6.png)
