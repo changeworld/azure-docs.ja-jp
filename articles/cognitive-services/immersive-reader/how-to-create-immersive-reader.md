@@ -1,7 +1,7 @@
 ---
-title: イマーシブ リーダーのリソースを作成する
+title: Immersive Reader のリソースを作成する
 titleSuffix: Azure Cognitive Services
-description: この記事では、カスタム サブドメインを含む新しいイマーシブ リーダー リソースを作成した後、Azure テナントで Azure AD を構成する方法について説明します。
+description: この記事では、カスタム サブドメインを含む新しい Immersive Reader リソースを作成した後、Azure テナントで Azure AD を構成する方法について説明します。
 services: cognitive-services
 author: rwaller
 manager: guillasi
@@ -17,15 +17,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330721"
 ---
-# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
+# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Immersive Reader リソースを作成して Azure Active Directory 認証を構成する
 
-この記事では、イマーシブ リーダー リソースの作成と Azure Active Directory (Azure AD) 認証の構成を行うスクリプトを紹介します。 このスクリプトとポータルのどちらを使用した場合でも、イマーシブ リーダー リソースが作成されるたびに、Azure AD のアクセス許可も構成する必要があります。 その作業に、このスクリプトが役に立ちます。
+この記事では、Immersive Reader リソースの作成と Azure Active Directory (Azure AD) 認証の構成を行うスクリプトを紹介します。 このスクリプトとポータルのどちらを使用した場合でも、Immersive Reader リソースが作成されるたびに、Azure AD のアクセス許可も構成する必要があります。 その作業に、このスクリプトが役に立ちます。
 
-このスクリプトは、イマーシブ リーダーと Azure AD に関して必要なすべてのリソースを、1 つの手順だけで作成および構成できるように設計されています。 ただし、たとえば、Azure portal で既にイマーシブ リーダー リソースを作成していた場合は、既存のイマーシブ リーダー リソースに対する Azure AD 認証の構成だけを行うこともできます。
+このスクリプトは、Immersive Reader と Azure AD に関して必要なすべてのリソースを、1 つの手順だけで作成および構成できるように設計されています。 ただし、たとえば、Azure portal で既に Immersive Reader リソースを作成していた場合は、既存の Immersive Reader リソースに対する Azure AD 認証の構成だけを行うこともできます。
 
-お客様によっては、開発向けと運用向け、またはサービスのデプロイ先となる複数の異なるリージョン向けなど、複数のイマーシブ リーダー リソースを作成しなければならない場合もあります。 そのような場合は、スクリプトを複数回使用してさまざまなイマーシブ リーダー リソースを作成し、Azure AD のアクセス許可を構成することができます。
+お客様によっては、開発向けと運用向け、またはサービスのデプロイ先となる複数の異なるリージョン向けなど、複数の Immersive Reader リソースを作成しなければならない場合もあります。 そのような場合は、スクリプトを複数回使用してさまざまな Immersive Reader リソースを作成し、Azure AD のアクセス許可を構成することができます。
 
-スクリプトは柔軟に設計されています。 最初は、お使いのサブスクリプション内で既存のイマーシブ リーダーと Azure AD リソースを探し、存在しない場合は必要に応じて作成します。 イマーシブ リーダー リソースの作成が初めての場合、必要な処理はすべてスクリプトによって実行されます。 ポータルで作成された既存のイマーシブ リーダー リソースに Azure AD を構成するためだけに使用したい場合は、その処理も行われます。 また、複数のイマーシブ リーダー リソースの作成と構成にも使用できます。
+スクリプトは柔軟に設計されています。 最初は、お使いのサブスクリプション内で既存の Immersive Reader と Azure AD リソースを探し、存在しない場合は必要に応じて作成します。 Immersive Reader リソースの作成が初めての場合、必要な処理はすべてスクリプトによって実行されます。 ポータルで作成された既存の Immersive Reader リソースに Azure AD を構成するためだけに使用したい場合は、その処理も行われます。 また、複数の Immersive Reader リソースの作成と構成にも使用できます。
 
 ## <a name="set-up-powershell-environment"></a>PowerShell 環境をセットアップする
 
@@ -159,16 +159,16 @@ ms.locfileid: "78330721"
 
     | パラメーター | 説明 |
     | --- | --- |
-    | SubscriptionName |イマーシブ リーダー リソースで使用する Azure サブスクリプションの名前。 リソースを作成するには、サブスクリプションが必要です。 |
+    | SubscriptionName |Immersive Reader リソースで使用する Azure サブスクリプションの名前。 リソースを作成するには、サブスクリプションが必要です。 |
     | ResourceName |  英数字を使用する必要があります。最初または最後の文字を除き、"-" を含めることができます。 長さは 63 文字を超えないようにしてください。|
-    | ResourceSubdomain |イマーシブ リーダー リソースには、カスタム サブドメインが必要です。 サブドメインは、イマーシブ リーダー サービスを呼び出してリーダーを起動する際に、SDK によって使用されます。 サブドメインはグローバルに一意である必要があります。 サブドメインには英数字を使用する必要があります。最初または最後の文字を除き、"-" を含めることができます。 長さは 63 文字を超えないようにしてください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
+    | ResourceSubdomain |Immersive Reader リソースには、カスタム サブドメインが必要です。 サブドメインは、Immersive Reader サービスを呼び出してリーダーを起動する際に、SDK によって使用されます。 サブドメインはグローバルに一意である必要があります。 サブドメインには英数字を使用する必要があります。最初または最後の文字を除き、"-" を含めることができます。 長さは 63 文字を超えないようにしてください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
     | ResourceSKU |オプション: `S0`。 使用可能な各 SKU の詳細については、[Cognitive Services の価格に関するページ](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)を参照してください。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
     | ResourceLocation |オプションは、`eastus`、`eastus2`、`southcentralus`、`westus`、`westus2`、`australiaeast`、`southeastasia`、`centralindia`、`japaneast`、`northeurope`、`uksouth`、`westeurope` です。 リソースが既に存在する場合、このパラメーターは省略可能です。 |
     | ResourceGroupName |リソースは、サブスクリプション内のリソース グループに作成されます。 既存のリソース グループの名前を指定します。 リソース グループがまだ存在しない場合は、この名前を使用して新しく作成されます。 |
     | ResourceGroupLocation |リソース グループが存在しない場合は、グループの作成先の場所を指定する必要があります。 場所の一覧を表示するには、`az account list-locations` を実行します。 返された結果の *name* プロパティ (スペースなし) を使用します。 リソース グループが既に存在する場合、このパラメーターは省略可能です。 |
     | AADAppDisplayName |Azure Active Directory アプリケーションの表示名。 既存の Azure AD アプリケーションが見つからない場合は、この名前を使用して新しく作成されます。 Azure AD アプリケーションが既に存在する場合、このパラメーターは省略可能です。 |
     | AADAppIdentifierUri |Azure AD アプリの URI。 既存の Azure AD アプリが見つからない場合は、この URI を使用して新しく作成されます。 たとえば、「 `https://immersivereaderaad-mycompany` 」のように入力します。 |
-    | AADAppClientSecret |作成するパスワード。このパスワードは、後でイマーシブ リーダーを起動するためのトークンを取得する際の認証に使用されます。 パスワードは 16 文字以上でなければなりません。また、特殊文字を 1 文字以上、数字を 1 文字以上含める必要があります。 |
+    | AADAppClientSecret |作成するパスワード。このパスワードは、後で Immersive Readerを起動するためのトークンを取得する際の認証に使用されます。 パスワードは 16 文字以上でなければなりません。また、特殊文字を 1 文字以上、数字を 1 文字以上含める必要があります。 |
 
 1. 後で使用するために、JSON 出力をテキスト ファイルにコピーします。 出力は次のようになります。
 
@@ -183,7 +183,7 @@ ms.locfileid: "78330721"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Node.js クイックスタート](./quickstart-nodejs.md)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
+* [Node.js クイックスタート](./quickstart-nodejs.md)で、Node.js と Immersive Reader SDK を使用して他にできることを確認する
 * [Python チュートリアル](./tutorial-python.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
 * [Swift チュートリアル](./tutorial-ios-picture-immersive-reader.md)で、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する
