@@ -7,14 +7,8 @@
       href: Overview.md
 - name: クイックスタート
   items:
-    - name: クライアント SDK の使用
-      items:
-        - name: .NET SDK
-          href: Quickstarts/csharp-sdk.md
-        - name: Python SDK
-          href: QuickStarts/python-sdk.md
-        - name: Go SDK
-          href: QuickStarts/go-sdk.md
+    - name: クライアント ライブラリの使用
+      href: Quickstarts/client-libraries.md
     - name: REST API の使用
       items:
         - name: 画像内の顔を検出する
@@ -107,7 +101,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/430315-face-api'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

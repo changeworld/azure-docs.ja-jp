@@ -1,4 +1,5 @@
 - name: Speaker Recognition のドキュメント
+  href: Home.md
 - name: 概要
   items:
     - name: Speaker Recognition について
