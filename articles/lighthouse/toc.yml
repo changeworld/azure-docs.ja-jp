@@ -44,6 +44,9 @@
     - name: 顧客を表示し、管理する
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: 委任へのアクセスを削除する
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
     - name: Azure Monitor の統合
       items:
         - name: Azure Monitor ログの大規模な使用

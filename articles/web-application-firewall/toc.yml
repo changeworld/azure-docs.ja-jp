@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: 既存の Application Gateway とのポリシーの関連付け
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: 診断ログ
+        - name: リソース ログ
           href: ./ag/web-application-firewall-logs.md
         - name: WAF のトラブルシューティング
           href: ./ag/web-application-firewall-troubleshoot.md
