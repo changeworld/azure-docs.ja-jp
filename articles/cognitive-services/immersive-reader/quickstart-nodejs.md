@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Node.js を使用してイマーシブ リーダーを起動する Web アプリを作成する
+title: クイック スタート:Node.js を使用して Immersive Reader を起動する Web アプリを作成する
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
+description: このクイックスタートでは、Web アプリを一から構築して Immersive Reader API 機能を追加します。
 author: pasta
 manager: nitinme
 ms.service: cognitive-services
@@ -16,17 +16,17 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945969"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (Node.js)
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>クイック スタート:Immersive Reader を起動する Web アプリを作成する (Node.js)
 
-[イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
+[Immersive Reader](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
-このクイックスタートでは、Web アプリを一から構築し、Immersive Reader SDK を使用してイマーシブ リーダー機能を統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)で入手できます。
+このクイックスタートでは、Web アプリを一から構築し、Immersive Reader SDK を使用して Immersive Reader 機能を統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)で入手できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* Azure Active Directory 認証用に構成された Immersive Reader リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * [Node.js](https://nodejs.org/) と [Yarn](https://yarnpkg.com)
 * [Visual Studio Code](https://code.visualstudio.com/) などの IDE
 
@@ -52,7 +52,7 @@ yarn add dotenv
 
 ### <a name="configure-authentication-values"></a>認証の値の構成
 
-プロジェクトのルートに、 _.env_ という名前の新しいファイルを作成します。 そこに次のコードを貼り付けて、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
+プロジェクトのルートに、 _.env_ という名前の新しいファイルを作成します。 そこに次のコードを貼り付けて、Immersive Reader リソースを作成したときに取得した値を指定します。
 引用符や中かっこ ({ }) は含めないでください。
 
 ```text
@@ -125,7 +125,7 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-**GetTokenAndSubdomain** API エンドポイントを、なんらかの認証形式 ([OAuth](https://oauth.net/2/) など) の背後で保護して、お使いのイマーシブ リーダー サービスと請求に対して使用するトークンを、未承認のユーザーが取得できないようにする必要があります。この作業については、このクイックスタートでは説明していません。
+**GetTokenAndSubdomain** API エンドポイントを、なんらかの認証形式 ([OAuth](https://oauth.net/2/) など) の背後で保護して、お使いの Immersive Reader サービスと請求に対して使用するトークンを、未承認のユーザーが取得できないようにする必要があります。この作業については、このクイックスタートでは説明していません。
 
 ## <a name="add-sample-content"></a>サンプル コンテンツの追加
 
@@ -235,7 +235,7 @@ script(type="text/javascript").
 ```
 
 
-すべてのテキストに、テキストの言語を示す **lang** 属性があることに注意してください。 この属性は、イマーシブ リーダーが適切な言語と文法の機能を提供するために役立ちます。
+すべてのテキストに、テキストの言語を示す **lang** 属性があることに注意してください。 この属性は、Immersive Reader が適切な言語と文法の機能を提供するために役立ちます。
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
@@ -249,9 +249,9 @@ npm start
 
 ![サンプル アプリ](./media/quickstart-nodejs/1-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>イマーシブ リーダーの起動
+## <a name="launch-the-immersive-reader"></a>Immersive Reader の起動
 
-[イマーシブ リーダー] ボタンをクリックすると、イマーシブ リーダーが起動し、ページのコンテンツが表示されます。
+[Immersive Reader] ボタンをクリックすると、Immersive Reader が起動し、ページのコンテンツが表示されます。
 
 ![Immersive Reader](./media/quickstart-nodejs/2-viewimmersivereader.png)
 
