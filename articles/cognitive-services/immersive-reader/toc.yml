@@ -15,21 +15,21 @@
       href: ios-quickstart.md
 - name: チュートリアル
   items:
-    - name: イマーシブ リーダーの起動 (Python)
+    - name: Immersive Reader の起動 (Python)
       href: tutorial-python.md
-    - name: 複数のイマーシブ リーダー リソースの使用
+    - name: 複数の Immersive Reader リソースの使用
       href: tutorial-multiple-resources.md
 - name: 操作方法
   items:
-    - name: イマーシブ リーダーのリソースを作成する
+    - name: Immersive Reader のリソースを作成する
       href: how-to-create-immersive-reader.md
     - name: Cookie のポリシーを設定する
       href: how-to/set-cookie-policy.md
     - name: 数式を表示する
       href: how-to/display-math.md
-    - name: イマーシブ リーダーを起動して HTML コンテンツを表示する
+    - name: Immersive Reader を起動して HTML コンテンツを表示する
       href: how-to-launch-with-html.md
-    - name: イマーシブ リーダーのボタンをカスタマイズする
+    - name: Immersive Reader のボタンをカスタマイズする
       href: how-to-customize-launch-button.md
     - name: 認証トークンをキャッシュする
       href: how-to-cache-token.md
