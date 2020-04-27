@@ -26,6 +26,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
 - name: 概念
   items:
+    - name: Automation アカウントの認証の概要
+      href: automation-security-overview.md
     - name: Runbook 実行の概要
       href: automation-runbook-execution.md
     - name: Hybrid Runbook Worker の概要
@@ -48,6 +50,8 @@
           href: automation-create-standalone-account.md
         - name: Resource Manager テンプレートを使って Automation アカウントを作成する
           href: automation-create-account-template.md
+        - name: アマゾン ウェブ サービスで認証を構成する
+          href: automation-config-aws-account.md
         - name: Automation 実行アカウントを管理する
           href: manage-runas-account.md
         - name: ロールのアクセス許可とセキュリティの管理
@@ -156,6 +160,8 @@
               href: automation-dsc-diagnostics.md
             - name: DSC による問題のトラブルシューティング
               href: troubleshoot/desired-state-configuration.md
+            - name: Azure DSC 拡張機能のバージョン履歴
+              href: automation-dsc-extension-history.md
         - name: 変更履歴とインベントリ
           items:
             - name: 概要
@@ -248,8 +254,6 @@
           href: automation-create-alert-triggered-runbook.md
         - name: Office 365 サービスを管理する
           href: manage-office-365.md
-        - name: アマゾン ウェブ サービスで Runbook を認証する
-          href: automation-config-aws-account.md
         - name: Automation Runbook を使用して AWS VM をデプロイする
           href: automation-scenario-aws-deployment.md
         - name: Runbook を使用して Resource Manager テンプレートをデプロイする

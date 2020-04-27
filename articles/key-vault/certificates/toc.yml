@@ -19,6 +19,8 @@
   items:
     - name: 証明書のインポート
       href: tutorial-import-certificate.md
+    - name: 証明書のローテーションの構成
+      href: tutorial-rotate-certificates.md
 - name: 概念
   items:
     - name: Key Vault 証明書の概要

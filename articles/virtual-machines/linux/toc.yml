@@ -45,9 +45,13 @@
       href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b - Jenkins を Azure DevOps と統合する
       href: ../../jenkins/tutorial-build-deploy-jenkins.md
-    - name: 15a - Azure での IaaS と PaaS の DevOps
+    - name: 15a - ローリング デプロイ戦略を構成する
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b - Azure Pipelines を使用した CI/CD (YAML)
+    - name: 15b - カナリア デプロイ戦略を構成する
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: 15c - ブルーグリーン デプロイ戦略を構成する
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: 15d - Azure Pipelines を使用した CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - LAMP スタックの作成
       href: tutorial-lamp-stack.md
@@ -434,10 +438,14 @@
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: メンテナンス管理
           items:
+            - name: 概要
+              href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: ポータル
+              href: ../maintenance-control-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: スケジュールされたイベント
           href: scheduled-events.md
     - name: VM を監視する
@@ -783,7 +791,7 @@
       href: 'https://azure.microsoft.com/pricing/details/#Linux'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'

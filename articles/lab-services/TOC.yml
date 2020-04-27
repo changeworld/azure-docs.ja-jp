@@ -20,10 +20,28 @@
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
     - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: 外部ユーザーをラボに追加する
+          href: scripts/add-external-user-to-lab.md
+        - name: マーケットプレース イメージをラボに追加する
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: VHD からカスタム イメージを作成する
+          href: scripts/create-custom-image-from-vhd.md
+        - name: ラボ内にカスタム ロールを作成する
+          href: scripts/create-custom-role-in-lab.md
+        - name: 許可される VM のサイズをラボ内に設定する
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: Azure PowerShell - Az.DevTestLabs2 モジュール
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure CLI
       href: samples-cli.md
+      items:
+        - name: VM の作成と可用性の検証を行う
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: VM の起動
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: VM の停止と削除を行う
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: 概念
   items:
     - name: DevTest ラボの概念
@@ -237,7 +255,7 @@
               href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: Azure でアプリをテストする
       href: test-app-azure.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: VM および環境の作成の失敗に関するトラブルシューティング
           href: troubleshoot-vm-environment-creation-failures.md
@@ -263,7 +281,7 @@
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=devtest-lab'

@@ -227,6 +227,8 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHub
           href: ../connectors/connectors-create-api-github.md
+        - name: Gmail - Google データのセキュリティとプライバシー ポリシー
+          href: ../connectors/connectors-google-data-security-privacy-policy.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger
@@ -411,7 +413,7 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter
       href: 'https://twitter.com/logicappsio'

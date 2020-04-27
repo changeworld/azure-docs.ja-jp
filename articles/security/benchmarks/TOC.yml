@@ -34,6 +34,8 @@
       href: security-baselines-overview.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Backup のセキュリティ ベースライン
+      href: ../../backup/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
     - name: Container Registry のセキュリティ ベースライン
@@ -56,3 +58,5 @@
       href: ../../postgresql/security-baseline.md
     - name: SQL Database のセキュリティ ベースライン
       href: ../../sql-database/security-baseline.md
+    - name: Storage のセキュリティ ベースライン
+      href: ../../storage/common/security-baseline.md
