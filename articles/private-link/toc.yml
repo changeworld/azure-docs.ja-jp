@@ -24,6 +24,8 @@
       href: private-endpoint-overview.md
     - name: Private Link サービス
       href: private-link-service-overview.md
+    - name: プライベート エンドポイントの DNS 統合
+      href: private-endpoint-dns.md
 - name: 方法
   items:
     - name: ストレージ アカウントに非公開で接続する
@@ -38,7 +40,7 @@
       href: disable-private-link-service-network-policy.md
     - name: プライベート エンドポイントを管理する
       href: manage-private-endpoint.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: プライベート エンドポイントの接続に関する問題のトラブルシューティング
           href: troubleshoot-private-endpoint-connectivity.md
@@ -80,7 +82,7 @@
       href: 'https://azure.microsoft.com/pricing/details/private-link/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: よく寄せられる質問
       href: private-link-faq.md

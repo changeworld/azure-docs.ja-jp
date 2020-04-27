@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 2e914cc8cf1951d5e725ac8ad34140103e599fcb
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 556af0c505197170a633cf1f949d87f5d2584690
+  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78204958"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82131327"
 landingContent:
 - title: Custom Vision について
   linkLists:
@@ -38,16 +38,8 @@ landingContent:
     links:
     - text: Web ポータルの使用
       url: getting-started-build-a-classifier.md
-    - text: .NET SDK の使用
-      url: csharp-tutorial.md
-    - text: Python SDK の使用
-      url: python-tutorial.md
-    - text: Java SDK の使用
-      url: java-tutorial.md
-    - text: Node.js SDK の使用
-      url: node-tutorial.md
-    - text: Go SDK の使用
-      url: go-tutorial.md
+    - text: Custom Vision SDK の使用
+      url: quickstarts/image-classification.md
   - linkListType: how-to-guide
     links:
     - text: 予測 API の使用
@@ -58,16 +50,8 @@ landingContent:
     links:
     - text: Web ポータルの使用
       url: get-started-build-detector.md
-    - text: .NET SDK の使用
-      url: csharp-tutorial-od.md
-    - text: Python SDK の使用
-      url: python-tutorial-od.md
-    - text: Java SDK の使用
-      url: java-tutorial-od.md
-    - text: Node.js SDK の使用
-      url: node-tutorial-object-detection.md
-    - text: Go SDK の使用
-      url: go-tutorial-object-detection.md
+    - text: Custom Vision SDK の使用
+      url: quickstarts/object-detection.md
   - linkListType: tutorial
     links:
     - text: モバイル向けのロゴ検出機能
@@ -136,5 +120,5 @@ landingContent:
     links:
     - text: UserVoice
       url: https://cognitive.uservoice.com/forums/598141-custom-vision-service
-    - text: スタック オーバーフロー
+    - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

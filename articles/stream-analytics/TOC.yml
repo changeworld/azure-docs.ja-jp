@@ -219,7 +219,7 @@
           href: stream-analytics-troubleshoot-output.md
         - name: クエリ ロジック
           href: stream-analytics-troubleshoot-query.md
-        - name: アクティビティ ログと診断ログ
+        - name: アクティビティとリソースのログ
           href: stream-analytics-job-diagnostic-logs.md
         - name: データ エラー
           href: data-errors.md
@@ -601,7 +601,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-stream-analytics'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'

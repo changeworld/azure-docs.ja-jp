@@ -34,6 +34,8 @@
       href: azure-media-player-localization.md
 - name: サンプル
   items:
+    - name: Azure Media Player のデモ
+      href: demos.md
     - name: Azure Media Player のサンプル
       href: 'https://github.com/Azure-Samples/azure-media-player-samples'
 - name: リファレンス

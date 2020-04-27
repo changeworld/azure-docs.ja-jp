@@ -99,7 +99,7 @@
           href: ea-portal-vm-reservations.md
         - name: Azure EA Portal のアクセスのトラブルシューティング
           href: ea-portal-troubleshoot.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   items:
     - name: サブスクリプションが見つからない
       href: no-subscriptions-found.md
@@ -107,7 +107,7 @@
       href: billing-troubleshoot-azure-payment-issues.md
     - name: 拒否されたカード
       href: troubleshoot-declined-card.md
-    - name: サインアップの問題
+    - name: Azure アカウントのサインアップの問題
       href: troubleshoot-azure-sign-up.md
     - name: サブスクリプションのサインインの問題
       href: troubleshoot-sign-in-issue.md

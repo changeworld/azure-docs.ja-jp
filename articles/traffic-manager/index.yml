@@ -11,12 +11,12 @@ metadata:
   author: rohinkoul
   ms.author: rohink
   ms.date: 08/19/2019
-  ms.openlocfilehash: eb0172894a1cc03e465ada78575c9b7b1f76141a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 2159cd10327d5a2d58ed012d7e2572e9f8ec387b
+  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76937995"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82130745"
 landingContent:
 - title: Traffic Manager の概要
   linkLists:
@@ -72,11 +72,11 @@ landingContent:
       url: traffic-manager-point-internet-domain.md
     - text: パフォーマンスに関する考慮事項
       url: traffic-manager-performance-considerations.md
-- title: '[トラブルシューティング]'
+- title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 診断ログの有効化
+    - text: リソース ログの有効化
       url: traffic-manager-diagnostic-logs.md
     - text: 機能低下状態のトラブルシューティング
       url: traffic-manager-troubleshooting-degraded.md
