@@ -102,7 +102,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 1. モデルの名前を入力し、Enter キーを押して名前を保存します。
 
 > [!NOTE]
-> ベスト プラクティスは、アニメーション化された系列ごとに 1 つの　Custom Vision モデルを使用する方法です。 
+> ベスト プラクティスは、アニメーション化された系列ごとに 1 つの　Custom Vision モデルを使用する方法です。
 
 ### <a name="index-a-video-with-an-animated-model"></a>アニメーション化されたモデルでビデオにインデックスを付ける
 
