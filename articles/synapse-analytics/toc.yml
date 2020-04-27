@@ -20,8 +20,8 @@
       href: quickstart-synapse-studio.md
     - name: プールを作成する
       items:
-        - name: Web ツールを使用して Apache Spark プールを作成する
-          href: ./spark/apache-spark-notebook-create-spark-use-sql.md
+        - name: Web ツールを使用して Apache Spark ノートブックを作成する
+          href: quickstart-apache-spark-notebook.md
         - name: Azure portal を使用して Apache Spark プールを作成する
           href: quickstart-create-apache-spark-pool.md
         - name: SQL プールを作成する
@@ -320,8 +320,6 @@
           href: troubleshoot/troubleshoot-synapse-studio.md
         - name: PowerShell による Synapse Analytics Studio のトラブルシューティング
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-        - name: Power BI との統合
-          items: null
 - name: 方法
   items:
     - name: セキュリティで保護
