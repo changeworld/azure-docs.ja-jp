@@ -168,7 +168,7 @@ ms.locfileid: "78330721"
     | ResourceGroupLocation |リソース グループが存在しない場合は、グループの作成先の場所を指定する必要があります。 場所の一覧を表示するには、`az account list-locations` を実行します。 返された結果の *name* プロパティ (スペースなし) を使用します。 リソース グループが既に存在する場合、このパラメーターは省略可能です。 |
     | AADAppDisplayName |Azure Active Directory アプリケーションの表示名。 既存の Azure AD アプリケーションが見つからない場合は、この名前を使用して新しく作成されます。 Azure AD アプリケーションが既に存在する場合、このパラメーターは省略可能です。 |
     | AADAppIdentifierUri |Azure AD アプリの URI。 既存の Azure AD アプリが見つからない場合は、この URI を使用して新しく作成されます。 たとえば、「 `https://immersivereaderaad-mycompany` 」のように入力します。 |
-    | AADAppClientSecret |作成するパスワード。このパスワードは、後で Immersive Readerを起動するためのトークンを取得する際の認証に使用されます。 パスワードは 16 文字以上でなければなりません。また、特殊文字を 1 文字以上、数字を 1 文字以上含める必要があります。 |
+ | AADAppClientSecret |作成するパスワード。このパスワードは、後で Immersive Reader を起動するためのトークンを取得する際の認証に使用されます。 パスワードは 16 文字以上でなければなりません。また、特殊文字を 1 文字以上、数字を 1 文字以上含める必要があります。 |
 
 1. 後で使用するために、JSON 出力をテキスト ファイルにコピーします。 出力は次のようになります。
 
