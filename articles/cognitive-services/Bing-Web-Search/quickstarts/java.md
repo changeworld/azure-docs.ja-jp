@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76166742"
 ---
-# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>クイック スタート:Java を使用して、Azure Cognitive Services である Bing Web Search REST API で Web を検索する
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>クイック スタート: Java を使用して、Azure Cognitive Services である Bing Web Search REST API で Web を検索する
 
 このクイックスタートでは、Java アプリケーションを使用して Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ります。 この Java アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
