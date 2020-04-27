@@ -210,7 +210,7 @@ Immersive Reader では、さまざまな言語がサポートされています
     });
     ```
 
-3. 再度 _http://localhost:3000_ に移動します。 ページにスペイン語のテキストが表示されます。 **[Immersive Reader]** をクリックすると、それがImmersive Reader にも表示されます。
+3. 再度 _http://localhost:3000_ に移動します。 ページにスペイン語のテキストが表示されます。 **[Immersive Reader]** をクリックすると、それが Immersive Reader にも表示されます。
 
 ## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Immersive Reader のインターフェイスの言語を指定する
 
