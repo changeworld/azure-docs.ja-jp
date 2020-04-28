@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Oneteam の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Oneteam の統合 | Microsoft Docs
 description: Azure Active Directory と Oneteam の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095907"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870324"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>チュートリアル: Azure Active Directory と Oneteam の統合
+# <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>チュートリアル:Azure Active Directory と Oneteam の統合
 
 このチュートリアルでは、Oneteam と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Oneteam と Azure AD の統合には、次の利点があります。
@@ -118,7 +118,7 @@ Oneteam で Azure AD シングル サインオンを構成するには、次の�
     **[サインオン URL]** ボックスに、`https://<team name>.one-team.io/` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Oneteam クライアント サポート チーム](https://support.one-team.com/hc/requests/new)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、Oneteam クライアント サポート チームにお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -136,7 +136,7 @@ Oneteam で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-oneteam-single-sign-on"></a>Oneteam のシングル サインオンの構成
 
-**Oneteam** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Oneteam サポート チーム](https://support.one-team.com/hc/requests/new)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Oneteam** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を Oneteam サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -194,7 +194,7 @@ Oneteam で Azure AD シングル サインオンを構成するには、次の�
 このセクションでは、Britta Simon というユーザーを Oneteam に作成します。 Oneteam では、Just-In-Time ユーザー プロビジョニングがサポートされます。この設定は既定で有効です。 このセクションでは、ユーザー側で必要な操作はありません。 Oneteam にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
 >[!NOTE]
->ユーザーを手動で作成する必要がある場合は、[Oneteam サポート チーム](https://support.one-team.com/hc/requests/new)へのサポート チケットを上げることができます。
+>ユーザーを手動で作成する必要がある場合は、Oneteam サポート チームへのサポート チケットを作成することができます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
