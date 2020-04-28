@@ -4,12 +4,12 @@ description: このチュートリアルでは、Kestrel を使用して ASP.NET
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756085"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757183"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -41,7 +41,7 @@ ms.locfileid: "80756085"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Visual Studio 2019 のバージョン 15.5 以降](https://www.visualstudio.com/)をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
+* [Visual Studio 2019](https://www.visualstudio.com/) のバージョン 16.5 以降をインストールし、**Azure の開発**ワークロードと **ASP.NET と Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>証明書を取得する、または開発用の自己署名証明書を作成する
@@ -156,27 +156,42 @@ serviceContext =>
 `localhost` へのローカル デプロイの場合は、認証例外を回避するために "CN = localhost" を使用することをお勧めします。
 
 ```csharp
-private X509Certificate2 GetHttpsCertificateFromStore()
+private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
 {
     using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
-        store.Open(OpenFlags.ReadOnly);
+        store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
-        var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
+        var matchingCerts = new X509Certificate2Collection();
+    
+    foreach (var enumeratedCert in certCollection)
+    {
+      if (StringComparer.OrdinalIgnoreCase.Equals(subjectCommonName, enumeratedCert.GetNameInfo(X509NameType.SimpleName, forIssuer: false))
+        && DateTime.Now < enumeratedCert.NotAfter
+        && DateTime.Now >= enumeratedCert.NotBefore)
+        {
+          matchingCerts.Add(enumeratedCert);
+        }
+    }
+
+        if (matchingCerts.Count == 0)
+    {
+        throw new Exception($"Could not find a match for a certificate with subject 'CN={subjectCommonName}'.");
+    }
         
-        if (currentCerts.Count == 0)
-                {
-                    throw new Exception("Https certificate is not found.");
-                }
-        
-        return currentCerts[0];
+        return matchingCerts[0];
     }
 }
+
+
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>証明書の秘密キーへのアクセス権を "ネットワーク サービス" に与える
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>証明書の秘密キーへのアクセスを "ネットワーク サービス" に許可する
 
 前の手順で、証明書を開発用コンピューターの `Cert:\LocalMachine\My` ストアにインポートしました。  ここで、サービスを実行しているアカウント (既定では "ネットワーク サービス") に証明書の秘密キーへのアクセス権を明示的に与える必要があります。 この手順は (certlm.msc ツールを使用して) 手動で行うことができますが、サービス マニフェストの **SetupEntryPoint** に[スタートアップ スクリプトを構成](service-fabric-run-script-at-service-startup.md)して自動的に PowerShell スクリプトを実行することをお勧めします。
+
+>[!NOTE]
+> Service Fabric は、拇印またはサブジェクトの共通名によるエンドポイント証明書の宣言をサポートしています。 その場合、ランタイムは、バインドを設定し、サービスが実行されている ID への証明書の秘密キーを ACL に登録します。 また、ランタイムは、証明書の変更や更新を監視し、対応する秘密キーをそれに応じて ACL に再登録します。
 
 ### <a name="configure-the-service-setup-entry-point"></a>サービス セットアップ エントリ ポイントを構成する
 
@@ -385,7 +400,7 @@ $slb | Set-AzLoadBalancer
 
 すべてのファイルを保存します。"デバッグ" から "リリース" に切り替えた後、F6 キーを押してリビルドします。  ソリューション エクスプローラーで、 **[Voting]** を右クリックし、 **[発行]** を選択します。 [クラスターへのアプリケーションのデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページで作成したクラスターの接続エンドポイントを選択するか、別のクラスターを選択します。  **[発行]** をクリックして、リモート クラスターにアプリケーションを発行します。
 
-アプリケーションがデプロイされたら、Web ブラウザーを開き、[https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) に移動します (クラスターの接続エンドポイントで URL を更新します)。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
+アプリケーションがデプロイされたら、Web ブラウザーを開き、`https://mycluster.region.cloudapp.azure.com:443` に移動します (クラスターの接続エンドポイントで URL を更新します)。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
 
 ![投票アプリケーション][image3]
 

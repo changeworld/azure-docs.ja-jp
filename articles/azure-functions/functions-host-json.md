@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878250"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758839"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -141,7 +141,7 @@ ms.locfileid: "80878250"
 完全な JSON 構造については、前の [サンプル host.json ファイル](#sample-hostjson-file) を参照してください。
 
 > [!NOTE]
-> ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。 ログ サンプリングを回避するには、`samplingExcludedTypes: "Request"` を `applicationInsights` 値に追加します。
+> ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。 ログ サンプリングを回避するには、`excludedTypes: "Request"` を `samplingSettings` 値に追加します。
 
 | プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
@@ -166,8 +166,8 @@ ms.locfileid: "80878250"
 | minSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最小サンプリング率が決定されます。 |
 | maxSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最大サンプリング率が決定されます。 |
 | movingAverageRatio | 1.0 | 移動平均の計算で最新値に割り当てられる重み。 1 以下の値を使用します。 小さい値にすると、急変に対する反応が低いアルゴリズムになります。 |
-| excludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
-| includedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `excludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
+| excludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される種類は、`Dependency`、`Event`、`Exception`、`PageView`、`Request`、`Trace` です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
+| includedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `excludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される種類は、`Dependency`、`Event`、`Exception`、`PageView`、`Request`、`Trace` です。 指定された型のインスタンスがサンプリングされます。明示的にも暗黙的にも指定されていない型はサンプリングなしで転送されます。 |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 
@@ -216,7 +216,7 @@ ms.locfileid: "80878250"
 
 ## <a name="eventhub"></a>eventHub
 
-構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs-output.md#host-json)に関する記事に記載されています。 
+構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs-trigger.md#host-json)に関する記事に記載されています。 
 
 ## <a name="extensions"></a>拡張機能
 

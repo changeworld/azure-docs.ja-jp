@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 505f58f13a7186948a228fefe872d74fb98eba33
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: bf69d2963c74723cb3fea542e28288e4f136d5c3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345772"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458762"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをトレーニングするためのデータを準備する
 
@@ -41,13 +42,11 @@ ms.locfileid: "80345772"
 
 [パート 3](sql-database-tutorial-predictive-model-deploy.md) では、モデルをデータベースに格納した後、パート 1 と 2 で開発した R スクリプトからストアド プロシージャを作成する方法を学習します。 このストアド プロシージャは、SQL データベース内で実行され、新しいデータに基づいて予測を行います。
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - Azure サブスクリプションをお持ちでない場合は、開始する前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-* Machine Learning Services が有効な Azure SQL Database サーバー - パブリック プレビュー期間中は、Microsoft でお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
+* [Azure SQL Database の Machine Learning service と R](sql-database-machine-learning-services-overview.md) が有効になっていること。
 
 * RevoScaleR パッケージ - このパッケージをローカルでインストールするためのオプションについては、[RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) に関するページを参照してください。
 

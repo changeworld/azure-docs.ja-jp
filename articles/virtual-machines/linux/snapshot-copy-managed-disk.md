@@ -1,25 +1,20 @@
 ---
 title: Azure で VHD のスナップショットを作成する
 description: バックアップまたは問題のトラブルシューティングに使うために、Azure で VHD のコピーを作成する方法について説明します。
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 15696469ca3861586617e9f418f8a55a7ea90467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d905d041198bd35c4657052bf18d981904dc44
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034792"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758400"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成 
 
@@ -41,7 +36,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-*az snapshot create* を使用して、[osDisk-backup](/cli/azure/snapshot#az-snapshot-create) という名前のスナップショットを取得します。
+[az snapshot create](/cli/azure/snapshot#az-snapshot-create) を使用して、*osDisk-backup* という名前のスナップショットを取得します。
 
 ```azurecli-interactive
 az snapshot create \
@@ -63,7 +58,7 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左上の **[リソースの作成]** をクリックし、 **[スナップショット]** を探します。 検索結果から **[スナップショット]** を選択します。
 3. **[スナップショット]** ブレードで **[作成]** をクリックします。
 4. スナップショットの **[名前]** を入力します。

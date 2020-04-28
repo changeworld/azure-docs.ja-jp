@@ -2,18 +2,17 @@
 title: Azure Linux VM でスクリプトを実行する
 description: このトピックは、仮想マシン内でスクリプトを実行する方法について説明します
 services: automation
-ms.service: automation
+ms.service: virtual-machines-linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67477034"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758588"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Linux VM でスクリプトを実行する
 

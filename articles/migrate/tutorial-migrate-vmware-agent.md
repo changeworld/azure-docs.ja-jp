@@ -4,18 +4,16 @@ description: Azure Migrate を使用して VMware VM のエージェントベー
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6855c3e81aece0358146608b6cf179fb923c54c8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222029"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535334"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
 この記事では、Azure Migrate Server Migration ツールによるエージェントベースの移行を使用して、オンプレミスの VMware VM を Azure に移行する方法について説明します。
-
-[Azure Migrate](migrate-services-overview.md) では、オンプレミスのアプリとワークロード、および AWS または GCP VM インスタンスの検出、評価、Azure への移行を追跡するための中央ハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
 
 
 このチュートリアルでは、以下の内容を学習します。
@@ -78,7 +76,7 @@ Azure Migrate Server Assessment を使用して評価を既に実行している
 評価を実行していない場合は、Azure Migrate Server Migration を使用して移行する前に、Azure のアクセス許可を設定する必要があります。
 
 - **プロジェクトを作成する**: ご自分の Azure アカウントには、Azure Migrate プロジェクトを作成するためのアクセス許可が必要です。 
-- **Azure Migrate レプリケーション アプライアンスを登録する**: レプリケーション アプライアンスによって、ご自分の Azure アカウントに Azure Active Directory アプリが作成され、登録されます。 これに対するアクセス許可を委任する必要があります。
+- **Azure Migrate レプリケーション アプライアンスを登録する**: レプリケーション アプライアンスによって、ご自分の Azure アカウントに Azure Active Directory アプリが作成され、登録されます。 これに対するアクセス許可を委任します。
 - **キー コンテナーを作成する**: Azure Migrate Server Migration を使用して VMware VM を移行するために、Azure Migrate によってリソース グループにキー コンテナーが作成され、ご自分のサブスクリプションのレプリケーション ストレージ アカウントへのアクセス キーが管理されます。 コンテナーを作成するには、Azure Migrate プロジェクトが存在しているリソース グループに対するロールの割り当てアクセス許可が必要です。 
 
 
@@ -191,23 +189,15 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
 3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
 4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
 
-    ![サーバーの検出と評価](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ![サーバーの検出と評価](./media/tutorial-migrate-vmware-agent/assess-migrate.png
 
 1. **[サーバーの検出、評価、移行]** で、 **[ツールの追加]** をクリックします。
 2. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-3. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地域を指定し、 **[次へ]** をクリックします。
+3. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地域を指定し、 **[次へ]** をクリックします。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
     ![Azure Migrate プロジェクトの作成](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
-    Azure Migrate プロジェクトは、これらのいずれの地域でも作成できます。
 
-    **地理的な場所** | **リージョン**
-    --- | ---
-    アジア | 東南アジア
-    ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
-    アメリカ | 米国東部または米国中西部
-
-    プロジェクトのために指定した地理的な場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。 実際の移行では、任意のターゲット リージョンを選択できます。
 4. **[評価ツールの選択]** で、 **[今は評価ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
 5. **[移行ツールの選択]** で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[次へ]** 。
 6. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします
@@ -221,7 +211,10 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
 - **プロセス サーバー**:プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、それをキャッシュ、圧縮、暗号化によって最適化して、Azure のキャッシュ ストレージ アカウントに送信します。 また、プロセス サーバーでは、レプリケートする VM へのモビリティ サービス エージェントのインストールや、オンプレミスの VMware VM の自動検出も行います。
 
 
-レプリケーション アプライアンスを設定するには、用意されている Open Virtualization Application (OVA) テンプレートをダウンロードします。 テンプレートを VMware にインポートして、レプリケーション アプライアンス VM を作成します。 
+レプリケーション アプライアンスは 2 とおりの方法で設定できます。
+
+- ダウンロードした Open Virtualization Application (OVA) テンプレートを使用して設定します。 テンプレートを VMware にインポートして、レプリケーション アプライアンス VM を作成します。 このチュートリアルでは、この方法を使用します。
+- スクリプトを使用して設定します。
 
 ### <a name="download-the-replication-appliance-template"></a>レプリケーション アプライアンスのテンプレートをダウンロードする
 

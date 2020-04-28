@@ -36,6 +36,8 @@
       href: hpc-cache-mount.md
     - name: キャッシュを管理する
       href: hpc-cache-manage.md
+    - name: オプション設定を構成する
+      href: configuration.md
 - name: リソース
   items:
     - name: サポート チケットを開く
@@ -46,5 +48,7 @@
       href: troubleshoot-nas.md
     - name: リージョンの障害から復旧する
       href: hpc-region-recovery.md
+    - name: カスタマーマネージド暗号化キーを使用する
+      href: customer-keys.md
     - name: Azure HPC Cache で Azure NetApp Files を使用する
       href: hpc-cache-netapp.md

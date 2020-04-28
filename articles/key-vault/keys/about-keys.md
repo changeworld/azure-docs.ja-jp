@@ -10,80 +10,34 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c12135ec6e5a0f4de1fdd46134a056447d3c331
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420346"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686055"
 ---
 # <a name="about-azure-key-vault-keys"></a>Azure Key Vault のキーについて
 
-Azure Key Vault では、Microsoft Azure アプリケーションとユーザーがキーを保存して使用できます。 複数のキーの種類とアルゴリズムがサポートされ、値の大きいキーにハードウェア セキュリティ モジュール (HSM) が使用できるようになります。 
+Azure Key Vault は複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。
 
-Key Vault の一般的な情報については、「[Azure Key Vault とは](/azure/key-vault/key-vault-overview)」をご覧ください。
+Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryption (JOSE) の仕様は、次のとおりです。
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+-   [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON Web Encryption (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
+-   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-以下のセクションでは、Key Vault サービスの実装に該当する一般的な情報を提供します。
+基本の JWK/JWA の仕様は、Key Vault の実装に固有のキーの種類も有効にするように拡張されます。 たとえば、HSM ベンダー固有のパッケージを使用してキーをインポートすると、Key Vault HSM でのみ使用できるキーの安全なトランスポートが可能です。 
 
-### <a name="supporting-standards"></a>標準のサポート
-
-JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryption (JOSE) の仕様は、重要な背景情報です。  
-
--   [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JSON Web Encryption (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JSON Web Algorithms (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="data-types"></a>データ型
-
-キー、暗号化、および署名に関連するデータ型については、JOSE の仕様をご覧ください。  
-
--   **algorithm** - キーの操作に対してサポートされるアルゴリズムです (RSA1_5 など)  
--   **ciphertext-value** - Base64URL を使用してエンコードされた暗号テキスト オクテットです  
--   **digest-value** - Base64URL を使用してエンコードされたハッシュ アルゴリズムの出力です  
--   **key-type** - サポートされているキーの種類の 1 つです (RSA (Rivest-Shamir-Adleman) など)。  
--   **plaintext-value** - Base64URL を使用してエンコードされたプレーンテキスト オクテットです  
--   **signature-value** - Base64URL を使用してエンコードされた署名アルゴリズムの出力です  
--   **base64URL** - Base64URL [RFC4648] でエンコードされたバイナリ値です  
--   **boolean** - true または false です  
--   **Identity** - Azure Active Directory (Azure AD) からの ID です。  
--   **IntDate** - 1970-01-01T0:0:0Z UTC から指定された UTC 日時までの秒数を表す JSON 10 進値です。 一般的および UTC 固有の日付/時刻に関する詳細については、RFC3339 をご覧ください。  
-
-### <a name="objects-identifiers-and-versioning"></a>オブジェクト、識別子、バージョン管理
-
-Key Vault に格納されるオブジェクトは、オブジェクトの新しいインスタンスが作成されるたびにバージョン管理されます。 各バージョンには、一意の識別子と URL が割り当てられます。 オブジェクトが最初に作成されるときに、オブジェクトに一意のバージョン識別子が指定され、オブジェクトの現在のバージョンとしてマークされます。 同じオブジェクト名の新しいインスタンスが作成されると、新しいオブジェクトに一意のバージョン識別子が与えられ、現在のバージョンになります。  
-
-Key Vault 内のオブジェクトは、現在の識別子またはバージョン固有の識別子を使用してアドレス指定できます。 たとえば、キーの名前を `MasterKey` とすると、現在の識別子を指定して操作を実行すると、システムは使用可能な最新のバージョンを使用します。 バージョン固有の識別子を指定して操作を実行すると、システムはオブジェクトの特定のバージョンを使用します。  
-
-Key Vault 内のオブジェクトは、URL を使用して一意に識別されます。 地理的場所に関係なく、システム内の複数のオブジェクトが同じ URL を持つことはありません。 オブジェクトの完全な URL は、オブジェクト識別子と呼ばれます。 URL は、Key Vault を示すプレフィックス、オブジェクトの種類、ユーザー指定のオブジェクト名、およびオブジェクトのバージョンで構成されます。 オブジェクト名は大文字と小文字が区別されず、変更できません。 オブジェクトのバージョンを含まない識別子は、ベース識別子と呼ばれます。  
-
-詳しくは、「[Authentication, requests, and responses](../general/authentication-requests-and-responses.md)」(認証、要求、応答) をご覧ください。
-
-オブジェクト識別子の一般的な形式は次のとおりです。  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-各値の説明:  
-
-|||  
-|-|-|  
-|`keyvault-name`|Microsoft Azure Key Vault サービスでのキー コンテナーの名前。<br /><br /> キー コンテナーの名前はユーザーが選択し、グローバルに一意です。<br /><br /> Key Vault の名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 3 ～ 24 文字の文字列である必要があります。|  
-|`object-type`|オブジェクトの種類で、"keys" または "secrets" です。|  
-|`object-name`|`object-name` は、ユーザーが指定する名前で、キー コンテナー内で一意である必要があります。 名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 1 ～ 127 文字の文字列である必要があります。|  
-|`object-version`|`object-version` はシステムが生成し、オブジェクトの一意のバージョンに対応するために必要に応じて使用される 32 文字の文字列識別子です。|  
-
-## <a name="key-vault-keys"></a>Key Vault のキー
-
-### <a name="keys-and-key-types"></a>キーとキーの種類
-
-Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 基本の JWK/JWA の仕様は、Key Vault の実装に固有のキーの種類も有効にするように拡張されます。 たとえば、HSM ベンダー固有のパッケージを使用してキーをインポートすると、Key Vault HSM でのみ使用できるキーの安全なトランスポートが可能です。  
+Azure Key Vault は、ソフト キーとハード キーの両方をサポートします。
 
 - **"ソフト" キー**:Key Vault によってソフトウェアで処理されるが、HSM 内のシステム キーを使って保存時に暗号化されるキー。 クライアントは、既存の RSA または EC (Elliptic Curve) キーをインポートするか、または Key Vault による生成を要求できます。
 - **"ハード" キー**:HSM (ハードウェア セキュリティ モジュール) で処理されるキー。 これらのキーは、Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとに 1 つのセキュリティ ワールドがあります)。 クライアントは、RSA または EC キーをインポートできます (ソフト形式で、または互換性のある HSM デバイスからエクスポートすることにより)。 クライアントは、Key Vault にキーの生成を要求することもできます。 このキーの種類では、HSM キー マテリアルを取得するために、key_hsm 属性が JWK に追加されます。
 
-     地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。  
+地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。  
+
+## <a name="cryptographic-protection"></a>暗号化による保護
 
 Key Vault では、RSA キーと楕円曲線キーのみがサポートされます。 
 
@@ -94,9 +48,7 @@ Key Vault では、RSA キーと楕円曲線キーのみがサポートされま
 
 Key Vault では、サイズが 2048、3072、4096 の RSA キーがサポートされています。 サポートされている楕円曲線キーの種類は P-256、P-384、P-521、P-256K (SECP256K1) です。
 
-### <a name="cryptographic-protection"></a>暗号化による保護
-
-Key Vault が使う暗号化モジュールは、HSM でもソフトウェアでも、FIPS (Federal Information Processing Standards) で検証されます。 FIPS モードで実行するために特別なことを行う必要はありません。 HSM で保護されて**作成**または**インポート**されたキーは、HSM 内で処理され、FIPS 140-2 レベル 2 について検証されます。 ソフトウェアで保護されて**作成**または**インポート**されたキーは、暗号化モジュール内で処理され、FIPS 140-2 レベル 1 について検証されます。 詳しくは、「[Keys and key types](#keys-and-key-types)」(キーとキーの種類) をご覧ください。
+Key Vault が使う暗号化モジュールは、HSM でもソフトウェアでも、FIPS (Federal Information Processing Standards) で検証されます。 FIPS モードで実行するために特別なことを行う必要はありません。 HSM で保護されて**作成**または**インポート**されたキーは、HSM 内で処理され、FIPS 140-2 レベル 2 について検証されます。 ソフトウェアで保護されて**作成**または**インポート**されたキーは、暗号化モジュール内で処理され、FIPS 140-2 レベル 1 について検証されます。
 
 ###  <a name="ec-algorithms"></a>EC アルゴリズム
  Key Vault の EC および EC-HSM キーでは、次のアルゴリズム識別子がサポートされます。 
@@ -114,7 +66,6 @@ Key Vault が使う暗号化モジュールは、HSM でもソフトウェアで
 -   **ES256SHA-256** - SHA-256 ダイジェストおよび P-256K 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、標準としての承認待ちです。
 -   **ES384** - SHA-384 ダイジェストおよび P-384 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518](https://tools.ietf.org/html/rfc7518) で説明されます。
 -   **ES512** - SHA-512 ダイジェストおよび P-521 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518](https://tools.ietf.org/html/rfc7518) で説明されます。
-
 
 ###  <a name="rsa-algorithms"></a>RSA アルゴリズム  
  Key Vault の RSA および RSA-HSM キーでは、次のアルゴリズム識別子がサポートされます。  
@@ -134,7 +85,7 @@ Key Vault が使う暗号化モジュールは、HSM でもソフトウェアで
 -   **RS512** - SHA-512 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-512 を使用して計算され、長さは 64 バイトである必要があります。  
 -   **RSNULL** - RFC2437 を参照。特定の TLS シナリオを有効にする特殊なユース ケース。  
 
-###  <a name="key-operations"></a>キーの操作
+##  <a name="key-operations"></a>キーの操作
 
 Key Vault では、キー オブジェクトに対する次の操作がサポートされます。  
 
@@ -164,7 +115,7 @@ Key Vault では EXPORT 操作はサポートされていません。 キーが�
 
 JWK オブジェクトについて詳しくは、「[JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)」をご覧ください。  
 
-###  <a name="key-attributes"></a>キーの属性
+## <a name="key-attributes"></a>キーの属性
 
 キー マテリアルに加えて、次の属性を指定できます。 JSON 要求では、属性を指定しない場合であっても、attributes キーワードとかっこ { } は必要です。  
 
@@ -177,24 +128,24 @@ JWK オブジェクトについて詳しくは、「[JSON Web Key (JWK)](https:/
 - *created*:IntDate、省略可能。 *created* 属性は、このバージョンのキーが作成された日時を示します。 この属性が追加される前に作成されたキーについては、値は null です。 その値は、IntDate 値を含む数値でなければなりません。  
 - *updated*:IntDate、省略可能。 *updated* 属性は、このバージョンのキーが更新された日時を示します。 この属性が追加される前に最後に更新されたキーについては、値は null です。 その値は、IntDate 値を含む数値でなければなりません。  
 
-IntDate および他のデータ型について詳しくは、「[データ型](#data-types)」をご覧ください。  
+IntDate および他のデータ型について詳しくは、「キー、シークレット、証明書について」を参照してください。[データ型](../general/about-keys-secrets-certificates.md#data-types)。
 
-#### <a name="date-time-controlled-operations"></a>日付と時刻で制御される操作
+### <a name="date-time-controlled-operations"></a>日付と時刻で制御される操作
 
 *nbf* / *exp* ウィンドウの範囲外である、有効期間前および有効期間後のキーは、**復号化**、**ラップ解除**、**検証**操作には使用できます (403 Forbidden を返しません)。 有効期間前状態を使用する理由は、運用環境で使用する前にキーをテストできるようにすることです。 期限切れ状態を使用する理由は、キーが有効であったときに作成されたデータを回復できるようにすることです。 また、Key Vault のポリシーを使って、または *enabled* キー属性を **false** に更新することで、キーへのアクセスを無効にすることもできます。
 
-データ型について詳しくは、「[データ型](#data-types)」をご覧ください。
+データ型について詳しくは、「[データ型](../general/about-keys-secrets-certificates.md#data-types)」をご覧ください。
 
 他の使用可能な属性について詳しくは、「[JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)」をご覧ください。
 
-### <a name="key-tags"></a>キーのタグ
+## <a name="key-tags"></a>キーのタグ
 
 タグの形式で、アプリケーション固有の追加メタデータを指定できます。 Key Vault は最大 15 個のタグをサポートし、それぞれが 256 文字の名前と 256 文字の値を持つことができます。  
 
 >[!Note]
 >呼び出し元は、そのオブジェクトの種類 (キー、シークレット、証明書) に対して *list* または *get* アクセス許可を持っている場合、タグを読み取ることができます。
 
-###  <a name="key-access-control"></a>キーのアクセス制御
+##  <a name="key-access-control"></a>キーのアクセス制御
 
 Key Vault によって管理されているキーのアクセス制御は、キーのコンテナーとして機能する Key Vault のレベルで提供されます。 キーのアクセス制御ポリシーは、同じキー コンテナー内のシークレットに対するアクセス制御ポリシーとは別です。 ユーザーは、1 つまたは複数のコンテナーを作成してキーを保持することができ、キーのセグメント化と管理に適切なシナリオを維持する必要があります。 キーのアクセス制御は、シークレットのアクセス制御に依存しません。  
 
@@ -224,7 +175,11 @@ Key Vault によって管理されているキーのアクセス制御は、キ�
 
 キーの処理について詳しくは、[Key Vault REST API リファレンスのキーの操作](/rest/api/keyvault)に関するページをご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。 
 
-## <a name="see-also"></a>参照
+## <a name="next-steps"></a>次のステップ
 
+- [Key Vault について](../general/overview.md)
+- [キー、シークレット、証明書について](../general/about-keys-secrets-certificates.md)
+- [シークレットについて](../secrets/about-secrets.md)
+- [証明書について](../certificates/about-certificates.md)
 - [認証、要求、応答](../general/authentication-requests-and-responses.md)
 - [Key Vault 開発者ガイド](../general/developers-guide.md)

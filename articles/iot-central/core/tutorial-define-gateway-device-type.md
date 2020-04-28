@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79298837"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758135"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
-このチュートリアルでは、ビルダーとして IoT Central アプリケーションでゲートウェイ デバイス テンプレートを使用してゲートウェイ デバイスを定義する方法について説明します。 次に、ゲートウェイ デバイスを介して IoT Central アプリケーションに接続するいくつかのダウンストリーム デバイスを構成します。 
+"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
+
+このチュートリアルでは、ソリューション ビルダーとして IoT Central アプリケーションでゲートウェイ デバイス テンプレートを使用してゲートウェイ デバイスを定義する方法について説明します。 次に、ゲートウェイ デバイスを介して IoT Central アプリケーションに接続するいくつかのダウンストリーム デバイスを構成します。 
 
 このチュートリアルでは、**スマート ビルディング** ゲートウェイ デバイス テンプレートを作成します。 **スマート ビルディング** ゲートウェイデバイスは、他のダウンストリーム デバイスとリレーションシップがあります。
 
@@ -207,7 +209,7 @@ ms.locfileid: "79298837"
 > [!NOTE]
 > 現在、IoT Central でモデル化されたゲートウェイ デバイスでは、VS Code ベースのコード生成はサポートされていません。
 
-次に、以下を実行できます。
+次に、デバイス開発者は、以下の方法を学ぶことができます。
 
 > [!div class="nextstepaction"]
-> [デバイスを接続する](tutorial-connect-device.md)
+> [Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する](tutorial-add-edge-as-leaf-device.md)

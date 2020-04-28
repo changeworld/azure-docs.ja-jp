@@ -2,7 +2,7 @@
 title: Azure 上の Oracle データベース用リファレンス アーキテクチャ | Microsoft Docs
 description: Oracle Database Enterprise Edition データベースを Microsoft Azure Virtual Machines 上で実行するためのリファレンス アーキテクチャ。
 services: virtual-machines-linux
-author: mimckitt
+author: BorisB2015
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: mimckitt
+ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 1dc677ded1e13a64c082d49140fa0de69c0ed9d4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263269"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683485"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
 

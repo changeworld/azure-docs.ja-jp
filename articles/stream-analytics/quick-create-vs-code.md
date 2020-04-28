@@ -7,16 +7,19 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313877"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767772"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>クイック スタート:Visual Studio Code で Azure Stream Analytics ジョブを作成する (プレビュー)
 
 このクイックスタートでは、Visual Studio Code 用の Azure Stream Analytics ツール拡張機能を使用して、Azure Stream Analytics ジョブを作成および実行する方法について説明します。 サンプル ジョブでは、Azure IoT Hub デバイスからストリーミング データを読み取ります。 温度が 27 度を超えるときに平均温度を計算し、結果の出力イベントを BLOB ストレージ内の新しいファイルに書き込むジョブを定義します。
+
+> [!NOTE]
+> Visual Studio と Visual Studio Code のツールでは、中国東部、中国北部、ドイツ中部、ドイツ北東部のリージョンでのジョブはサポートされていません。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -140,14 +143,6 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
    FROM Input
    HAVING Temperature > 27
    ```
-
-## <a name="test-the-query-locally-with-sample-data"></a>サンプル データを使用してクエリをローカルでテストする
-
-クラウドでクエリを実行する前に、ローカルのサンプル データ ファイルまたはライブ入力からキャプチャされたデータを使用してローカルでクエリをテストし、クエリ ロジックを検証することができます。
-
-詳細については、[サンプル データを使用したローカルでのクエリのテスト](visual-studio-code-local-run.md)に関するページの手順に従ってください。
-
- ![Visual Studio Code でサンプル データを使用してテストする](./media/vscode-local-run/localrun-localinput.gif)
 
 ## <a name="define-a-live-input"></a>ライブ入力を定義する
 
@@ -279,6 +274,8 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 このクイックスタートでは、Visual Studio Code を使用してシンプルな Stream Analytics ジョブをデプロイしました。 [Azure portal](stream-analytics-quick-create-portal.md)、[PowerShell](stream-analytics-quick-create-powershell.md)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用して Stream Analytics ジョブをデプロイすることもできます。
 
 Visual Studio Code の Azure Stream Analytics ツールについて学習するには、次の記事に進んでください。
+
+* [Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run.md)
 
 * [Visual Studio Code を使用してライブ入力に対して Azure Stream Analytics ジョブをローカルでテストする](visual-studio-code-local-run-live-input.md)
 

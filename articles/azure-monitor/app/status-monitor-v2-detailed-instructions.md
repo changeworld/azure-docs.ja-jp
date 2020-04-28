@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234623"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766869"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -219,7 +219,7 @@ Application Insights SDK では、アプリのテレメトリを Microsoft に�
 
 モニターを有効にするには `Enable-ApplicationInsightsMonitoring` コマンドを使用します。
 
-このコマンドレットの使用方法の詳細については、[API リファレンス](status-monitor-v2-api-enable-monitoring.md)に関する記事を参照してください。
+このコマンドレットの使用方法の詳細については、[API リファレンス](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)に関する記事を参照してください。
 
 
 
@@ -227,7 +227,7 @@ Application Insights SDK では、アプリのテレメトリを Microsoft に�
 
  テレメトリの表示:
 
-- パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。
+- パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します。
 - 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
 - より高度なクエリのために[分析を使用](../../azure-monitor/app/analytics.md)します。
 - [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。

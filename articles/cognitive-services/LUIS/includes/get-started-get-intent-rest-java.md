@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 04/20/2020
 ms.author: diberry
-ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d59b7ebd1376d0bee10482cfe5faac1c53d1bde0
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987788"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733256"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit Standard Edition)
 * [Visual Studio Code](https://code.visualstudio.com/) または任意の IDE。
-* パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* LUIS アプリ ID - パブリック IoT アプリ ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` を使用します。 クイックスタートのコードで使用されるユーザー クエリは、そのアプリに固有のものです。
 
 ## <a name="create-luis-runtime-key-for-predictions"></a>予測の LUIS ランタイム キーを作成する
 
@@ -29,9 +29,9 @@ ms.locfileid: "76987788"
 
     |設定|値|
     |--|--|
-    |Name|任意の名前 (2 から 64 文字)|
+    |名前|任意の名前 (2 から 64 文字)|
     |サブスクリプション|適切なサブスクリプションを選択します|
-    |作成場所|近くにある任意の使用可能な場所を選択します|
+    |場所|近くにある任意の使用可能な場所を選択します|
     |価格レベル|`F0` -最小限の価格レベル|
     |リソース グループ|使用可能なリソース グループを選択します|
 

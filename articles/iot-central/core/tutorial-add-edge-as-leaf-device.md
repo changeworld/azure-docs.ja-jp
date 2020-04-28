@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77026395"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758163"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する
+
+"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
 このチュートリアルでは、Azure IoT Edge デバイスを構成して、お使いの Azure IoT Central アプリケーションに追加する方法について説明します。 このチュートリアルでは、Azure Marketplace から入手した IoT Edge 対応 Linux 仮想マシン (VM) を使用して、IoT Edge デバイスをシミュレートします。 この IoT Edge デバイスは、シミュレートされた環境のテレメトリを生成するモジュールを使用します。 テレメトリは、Azure IoT Central アプリケーションのダッシュボードに表示されます。
 
@@ -262,9 +264,9 @@ IoT Edge デバイスとして VM をプロビジョニングするには:
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順は以下のとおりです。
+デバイス開発者として IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順として、以下をお読みください。
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [透過的なゲートウェイを構成する](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Azure IoT Central に接続する](./concepts-get-connected.md)

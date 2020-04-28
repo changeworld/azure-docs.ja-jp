@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70195654"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460547"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [Data Science Virtual Machine](overview.md) (DSVM) では、人工知能 (AI) およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure プラットフォーム上にリッチな環境を提供します。
@@ -43,7 +43,7 @@ DSVM は、Azure インフラストラクチャ レベルで動作するため�
 * [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [ポリシーの設定と適用](../../governance/policy/overview.md)
 * [マルウェア対策](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
+* [暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
 * [データの探索とガバナンス](https://docs.microsoft.com/azure/data-catalog/)
 
 最後に、[Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/)では、クラウド ベースの分析インフラストラクチャを構築して管理するための詳細なエンドツーエンド アーキテクチャとモデルが提供されています。

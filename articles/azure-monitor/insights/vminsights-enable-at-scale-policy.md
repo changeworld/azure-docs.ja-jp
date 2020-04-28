@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282938"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767259"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs を有効にする
 
@@ -79,7 +79,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 - スコープにイニシアチブを割り当てる: 管理グループ、サブスクリプション、またはリソース グループ。
 - コンプライアンスの結果をレビューおよび修復する。
 
-続ける前に、Azure Policy の割り当ての詳細について、[Azure Policy の概要](../../governance/policy/overview.md#policy-assignment)および[管理グループの概要](../../governance/management-groups/overview.md)に関する記事をご覧ください。
+続ける前に、Azure Policy の割り当ての詳細について、[Azure Policy の概要](../../governance/policy/overview.md#assignments)および[管理グループの概要](../../governance/management-groups/overview.md)に関する記事をご覧ください。
 
 ### <a name="policies-for-azure-vms"></a>Azure VM のポリシー
 

@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: abe7d5ed1d4ba1308abde04aee32a3ea222456b8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345849"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452878"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリングを実行するためのデータを準備する
 
@@ -43,13 +44,11 @@ K-Means クラスタリングは、類似性に基づいてデータのパター
 
 [パート 3](sql-database-tutorial-clustering-model-deploy.md) では、R で新しいデータに基づいてクラスタリングを実行できるストアド プロシージャを Azure SQL データベースで作成する方法について学習します。
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - Azure サブスクリプションをお持ちでない場合は、開始する前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-* Machine Learning Services が有効な Azure SQL Database サーバー - パブリック プレビュー期間中は、Microsoft でお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
+* [Azure SQL Database の Machine Learning service と R](sql-database-machine-learning-services-overview.md) が有効になっていること。
 
 * RevoScaleR パッケージ - このパッケージをローカルでインストールするためのオプションについては、[RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) に関するページを参照してください。
 

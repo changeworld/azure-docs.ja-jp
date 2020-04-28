@@ -2,16 +2,16 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 2d16febd4676ca7ba763eb7bc6dcecda4608ebb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74224579"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768748"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>キーのトランザクション (リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup>):
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>キーのトランザクション (リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup>):
 
 |キーの種類|HSM キー<br>CREATE キー|HSM キー<br>その他すべてのトランザクション|ソフトウェア キー<br>CREATE キー|ソフトウェア キー<br>その他すべてのトランザクション|
 |:---|---:|---:|---:|---:|
@@ -28,13 +28,14 @@ ms.locfileid: "74224579"
 >
 > スロットルのしきい値は重み付けされ、合計に対して適用されます。 たとえば、前の表で示されているように、RSA HSM キーで GET 操作を実行する場合に 4,096 ビット キーを使用すると、2,048 ビット キーと比較して 8 倍のコストがかかります。 これは、1,000/125 = 8 から導き出されます。
 >
-> 10 秒間に、Azure Key Vault クライアントは、*のスロットル HTTP 状態コードが発生するまで、次の操作のいずれか*1 つのみ`429`を実行できます。
+> 10 秒間に、Azure Key Vault クライアントは、`429` のスロットル HTTP 状態コードが発生するまで、次の操作のいずれか *1 つのみ*を実行できます。
 > - 2,000 件の RSA 2,048 ビット ソフトウェア キー GET トランザクション
 > - 1,000 件の RSA 2,048 ビット HSM キー GET トランザクション
 > - 125 件の RSA 4,096 ビット HSM キー GET トランザクション
 > - 124 件の RSA 4,096 ビット HSM キー GET トランザクションおよび 8 件の RSA 2,048 ビット HSM キー GET トランザクション
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>シークレット、管理ストレージ アカウント キー、およびコンテナーのトランザクション:
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>シークレット、管理ストレージ アカウント キー、およびコンテナーのトランザクション:
+
 | トランザクションの種類 | リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup> |
 | --- | --- |
 | すべてのトランザクション |2,000 |
@@ -42,3 +43,10 @@ ms.locfileid: "74224579"
 これらの制限を超えたときにスロットルを処理する方法については、「[Azure Key Vault のスロットル ガイダンス](../articles/key-vault/key-vault-ovw-throttling.md)」をご覧ください。
 
 <sup>1</sup> すべてのトランザクションの種類に適用されるサブスクリプション レベルの制限は、キー コンテナーの制限の 5 倍です。 たとえば、1 つのサブスクリプションで許可される HSM - その他のトランザクションの最大数は、10 秒間に 5,000 トランザクションです。
+
+### <a name="azure-private-link-integration"></a>Azure Private Link の統合
+
+| リソース | 制限 |
+| -------- | ----- |
+| キー コンテナーあたりのプライベート エンドポイント | 64 |
+| サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナー | 64 |

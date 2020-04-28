@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60382139"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680038"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 
@@ -93,7 +93,7 @@ Azure AD の UserPrincipalName 属性の値が MOERA に設定される可能性
 - mailNickName      : &lt;未設定&gt;
 - proxyAddresses        : {SMTP:us1@contoso.com}
 - mail          : us2@contoso.com
-- userPrincipalName : us3@contoso.com`
+- userPrincipalName : us3@contoso.com
 
 Azure AD テナントとの間でユーザー オブジェクトを初回同期
 - Azure AD の MailNickName 属性をプライマリ SMTP アドレスのプレフィックスに設定します。

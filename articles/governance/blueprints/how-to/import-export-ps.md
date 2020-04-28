@@ -3,12 +3,12 @@ title: PowerShell を使用してブループリント定義のインポート�
 description: ブループリント定義をコードとして使用する方法について説明します。 export コマンドと import コマンドを使用して、それらの共有、ソース管理、および管理を行います。
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677137"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686829"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell を使用したブループリント定義のインポートとエクスポート
 
@@ -88,7 +88,7 @@ Azure Blueprints は、Azure portal で完全に管理できます。 組織で�
 
 [エクスポートしたブループリント定義](#export-your-blueprint-definition)があるか、[必要なフォルダー構造](#folder-structure-of-a-blueprint-definition)に手動で作成したブループリント定義がある場合は、そのブループリント定義を別の管理グループまたはサブスクリプションにインポートすることができます。
 
-組み込みのブループリント定義の例については、[Azure Blueprint の GitHub リポジトリ](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)を参照してください。
+組み込みのブループリント定義の例については、[Azure Blueprint の GitHub リポジトリ](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)を参照してください。
 
 - **Name** [必須]
   - 新しいブループリント定義の名前を指定します

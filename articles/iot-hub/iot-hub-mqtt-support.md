@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 86fc5d4845e746604c1ba69f661d1b9ea9d8dca4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233219"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732313"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -44,7 +47,7 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 
 次の表では、サポートされている各言語のコード サンプルへのリンクを提供すると共に、MQTT プロトコルまたは MQTT over WebSocket プロトコルを使用して IoT Hub への接続を確立するために使用するパラメーターを示します。
 
-| 言語 | MQTT プロトコルのパラメーター | MQTT over WebSocket プロトコルのパラメーター
+| Language | MQTT プロトコルのパラメーター | MQTT over WebSocket プロトコルのパラメーター
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
@@ -71,7 +74,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 クライアント/IoT Hub 接続を確実に存続させるために、サービスとクライアントは、どちらも*キープアライブ* ping を定期的に相手に送信します。 IoT SDK を使用しているクライアントは、次の表に定義されている間隔でキープアライブを送信します。
 
-|言語  |既定のキープアライブ間隔  |構成可能  |
+|Language  |既定のキープアライブ間隔  |構成可能  |
 |---------|---------|---------|
 |Node.js     |   180 秒      |     いいえ    |
 |Java     |    230 秒     |     いいえ    |
@@ -93,7 +96,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * AMQP では、MQTT 接続を終了するときに、多くの条件のエラーが返されます。 そのため、例外処理のロジックを一部変更する必要が生じることがあります。
 
-* MQTT は、*クラウドからデバイスへのメッセージ*を受信するときの "[拒否](iot-hub-devguide-messaging.md)" 操作をサポートしていません。 バックエンド アプリではデバイス アプリから応答を受信する必要がある場合、[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)の使用を検討してください。
+* MQTT は、[クラウドからデバイスへのメッセージ](iot-hub-devguide-messaging.md)を受信するときの "*拒否*" 操作をサポートしていません。 バックエンド アプリではデバイス アプリから応答を受信する必要がある場合、[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)の使用を検討してください。
 
 * Python SDK では AMQP は サポートされていません。
 
@@ -118,7 +121,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
   SAS トークンの生成方法について詳しくは、[IoT Hub のセキュリティ トークンの使用](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)に関するページにあるデバイスのセクションをご覧ください。
 
-  テストするときは、クロスプラットフォームの [Visual Studio Code 対応の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) か、[Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) ツールを使用して、SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+  テスト時には、クロスプラットフォームの [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または CLI 拡張機能コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) を使用して SAS トークンを簡単に生成し、コピーして自分のコードに貼り付けることができます。
 
 ### <a name="for-azure-iot-tools"></a>Azure IoT Tools の場合
 
@@ -129,16 +132,6 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 3. **[期限]** を設定し、Enter キーを押します。
   
 4. SAS トークンが作成され、クリップボードにコピーされます。
-
-### <a name="for-device-explorer"></a>デバイス エクスプローラーの場合
-
-1. **デバイス エクスプローラー**で **[管理]** タブに移動します。
-
-2. **[SAS トークン]** (右上) をクリックします。
-
-3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。 **[TTL]** を設定します。
-
-4. **[生成]** をクリックしてトークンを作成します。
 
    生成される SAS トークンは、次のような構成になります。
 
@@ -317,7 +310,7 @@ IoT Hub では、メッセージは**トピック名** `devices/{device_id}/mess
 
 ## <a name="retrieving-a-device-twins-properties"></a>デバイス ツインのプロパティの取得
 
-まずデバイスが、操作の応答を受信するために、`$iothub/twin/res/#` にサブスクライブします。 次に、デバイスは、空のメッセージをトピック `$iothub/twin/GET/?$rid={request id}` に送信します (**要求 ID** に値を指定します)。 その後サービスが、要求と同じ `$iothub/twin/res/{status}/?$rid={request id}`要求 ID**を使用して、トピック** のデバイス ツイン データを含む応答メッセージを送信します。
+まずデバイスが、操作の応答を受信するために、`$iothub/twin/res/#` にサブスクライブします。 次に、デバイスは、空のメッセージをトピック `$iothub/twin/GET/?$rid={request id}` に送信します (**要求 ID** に値を指定します)。 その後サービスが、要求と同じ **要求 ID** を使用して、トピック `$iothub/twin/res/{status}/?$rid={request id}` のデバイス ツイン データを含む応答メッセージを送信します。
 
 要求 ID には、[IoT Hub メッセージング開発者のガイド](iot-hub-devguide-messaging.md)に従って、メッセージ プロパティ値として有効な任意の値を指定できます。ステータスは、整数として検証されます。
 
