@@ -8,12 +8,13 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2bad581c925bb62cbe65a45000f6d3ae35db011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372684"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733008"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -282,13 +283,13 @@ IoT Edge VM の作成に使用した *[Azure IoT Edge on Ubuntu]* イメージ�
     sudo systemctl restart iotedge
     ```
 
-7. IoT Edge デーモンのステータスを確認します (コマンドの後、終了するには「:q」と入力します)。
+7. IoT Edge デーモンの状態を確認します (コマンドの後、終了するには「:q」と入力します)。
 
     ```bash
     systemctl status iotedge
     ```
 
-8. ステータスにエラー ("\[ERROR\]" のプレフィックスが付いた色付きのテキスト) がある場合、デーモンのログを調べて詳細なエラー情報を確認します。
+8. 状態にエラー ("\[ERROR\]" のプレフィックスが付いた色付きのテキスト) がある場合、デーモンのログを調べて詳細なエラー情報を確認します。
 
     ```bash
     journalctl -u iotedge --no-pager --no-full
@@ -296,7 +297,7 @@ IoT Edge VM の作成に使用した *[Azure IoT Edge on Ubuntu]* イメージ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure IoT Edge の透過的なゲートウェイとして Azure VM を構成する作業が完了しました。 まず、テスト証明書を生成して Azure Key Vault にアップロードしました。 次に、スクリプトと Resource Manager テンプレート、さらに Azure Marketplace の "Ubuntu Server 16.04 LTS + Azure IoT Edge runtime" イメージを使用して VM をデプロイしました。 VM を稼動状態にし、SSH 経由で接続して、Azure にサインインし、Key Vault から証明書をダウンロードしました。 config.yaml ファイルを更新して IoT Edge ランタイムの構成にいくつかの変更を加えました。
+Azure IoT Edge の透過的なゲートウェイとして Azure VM を構成する作業が完了しました。 まず、テスト証明書を生成して Azure Key Vault にアップロードしました。 次に、スクリプトと Resource Manager テンプレート、さらに Azure Marketplace の "Ubuntu Server 16.04 LTS + Azure IoT Edge ランタイム" イメージを使用して VM をデプロイしました。 VM を稼動状態にし、SSH 経由で接続して、Azure にサインインし、Key Vault から証明書をダウンロードしました。 config.yaml ファイルを更新して IoT Edge ランタイムの構成にいくつかの変更を加えました。
 
 詳細については、「[IoT Edge デバイスをゲートウェイとして使用する方法](iot-edge-as-gateway.md)」および「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
 

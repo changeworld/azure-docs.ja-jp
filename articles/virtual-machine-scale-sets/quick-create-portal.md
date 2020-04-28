@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: jushiman
-ms.openlocfilehash: 410ae93ea109e5757ccb5b65d353a600574dd595
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 5855c53a73ac94985f34f229fbe5ab77067ef17d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010479"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680417"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 
