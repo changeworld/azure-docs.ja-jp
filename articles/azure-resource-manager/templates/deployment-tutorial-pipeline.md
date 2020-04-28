@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines を使用した継続的インテグレーション
 description: Azure Resource Manager テンプレートを継続的にビルド、テスト、およびデプロイする方法について説明します。
-ms.date: 03/13/2020
+ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255075"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084330"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -57,11 +57,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
 1. 緑色の **[New]** ボタンを選択します。
 1. **[Repository name]** にリポジトリ名を入力します。  たとえば、**AzureRmPipeline-repo** とします。 忘れずにそれぞれの **AzureRmPipeline** をプロジェクト名で置き換えてください。 このチュートリアルを **[Public]** または **[Private]** のどちらにするかを選択できます。 続いて、 **[Create repository]** を選択します。
-1. URL を書き留めます。 リポジトリの URL は、次の形式です。
-
-    ```url
-    https://github.com/[YourAccountName]/[YourRepositoryName]
-    ```
+1. URL を書き留めます。 リポジトリの URL は **https://github.com/ [YourAccountName]/[YourRepositoryName]** 形式をとります。
 
 このリポジトリは、*リモート リポジトリ*と呼ばれます。 同じプロジェクトの開発者は、自分の*ローカル リポジトリ*を複製して変更をリモート リポジトリにマージできます。
 

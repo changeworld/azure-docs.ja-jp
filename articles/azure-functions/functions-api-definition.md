@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227408"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866716"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
 Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポートは、関数アプリ内での OpenAPI 2.0 定義の作成に使用できるプレビュー機能です。 関数アプリを使用して、そのファイルをホストできます。
@@ -60,7 +60,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 > [!NOTE]
 > x-ms-summary 拡張子は、Logic Apps、PowerApps、および Flow の表示名を示します。
 >
-> 詳細については、「[Customize your Swagger definition for PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)」(PowerApps の Swagger 定義のカスタマイズ) を参照してください。
+> 詳細については、「[Customize your Swagger definition for PowerApps](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions)」(PowerApps の Swagger 定義のカスタマイズ) を参照してください。
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>CI/CD を使用した API 定義の設定
 

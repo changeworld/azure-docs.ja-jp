@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0941a6cdde5b60b71da6f58ea6b0fd2ccbb262
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160960"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867305"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>チュートリアル: Azure Active Directory と Splunk Enterprise and Splunk Cloud の統合
 
@@ -113,7 +113,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD シングル サインオンを�
     c. **[応答 URL]** ボックスに、`https://<splunkserver>/saml/acs` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Splunk Enterprise and Splunk Cloud クライアント サポート チーム](https://www.splunk.com/about-us/contact.html#tabs/customer-support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Splunk Enterprise and Splunk Cloud クライアント サポート チーム](https://www.splunk.com/en_us/about-splunk/contact-us.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -121,7 +121,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD シングル サインオンを�
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>Splunk Enterprise and Splunk Cloud シングル サインオンの構成
 
-**Splunk Enterprise and Splunk Cloud** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Splunk Enterprise and Splunk Cloud サポート チーム](https://www.splunk.com/about-us/contact.html#tabs/customer-support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Splunk Enterprise and Splunk Cloud** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Splunk Enterprise and Splunk Cloud サポート チーム](https://www.splunk.com/en_us/about-splunk/contact-us.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -176,7 +176,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD シングル サインオンを�
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Splunk Enterprise and Splunk Cloud のテスト ユーザーの作成
 
-このセクションでは、Splunk Enterprise and Splunk Cloud で Britta Simon というユーザーを作成します。  [Splunk Enterprise and Splunk Cloud サポート チーム](https://www.splunk.com/about-us/contact.html#tabs/customer-support)と連携して、Splunk Enterprise and Splunk Cloud プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Splunk Enterprise and Splunk Cloud で Britta Simon というユーザーを作成します。  [Splunk Enterprise and Splunk Cloud サポート チーム](https://www.splunk.com/en_us/about-splunk/contact-us.html)と連携して、Splunk Enterprise and Splunk Cloud プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

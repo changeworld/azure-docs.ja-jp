@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HR2day by Merces の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と HR2day by Merces の統合 | Microsoft Docs
 description: Azure Active Directory と HR2day by Merces の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67442850"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866794"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル: Azure Active Directory と HR2day by Merces の統合
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル:Azure Active Directory と HR2day by Merces の統合
 
 このチュートリアルでは、HR2day by Merces と Azure Active Directory (Azure AD) を統合する方法について説明します。
 HR2day by Merces と Azure AD の統合には、次の利点があります。
@@ -121,7 +121,7 @@ HR2day by Merces で Azure AD シングル サインオンを構成するには�
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | Name |  ソース属性 |
+    | 名前 |  ソース属性 |
     | ---------- | ----------- |
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     | | |
@@ -163,7 +163,7 @@ HR2day by Merces で Azure AD シングル サインオンを構成するには�
 **HR2day by Merces** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [HR2day by Merces サポート チーム](mailto:servicedesk@merces.nl)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!NOTE]
-> Merces チームに、この統合ではエンティティ ID を **https://hr2day.force.com/INSTANCENAME** というパターンで設定する必要があることを伝えます。
+> Merces チームに、この統合ではエンティティ ID を **https:\//hr2day.force.com/INSTANCENAME** というパターンで設定する必要があることを伝えます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
