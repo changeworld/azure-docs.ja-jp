@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403717"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769867"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
 このサンプル アプリでは、Custom Vision を使用して、カメラでデバイスをトレーニングして視覚的な状態を検出する方法を示します。 この検出シナリオは、エクスポートされた ONNX モデルを使用して、IoT デバイスで実行できます。
 
-視覚的な状態は、誰もいない部屋あるいは人がいる部屋、またはトラックが 1 台ある空の私道などの画像の内容を表します。 次の図では、カメラの前にバナナまたはりんごが配置されているかどうかをアプリが検出しています。
+視覚的な状態は、誰もいない部屋あるいは人がいる部屋、または空の私道やトラックが通っている私道などの画像の内容を表します。 次の図では、カメラの前にバナナまたはりんごが配置されているかどうかをアプリが検出しています。
 
 ![カメラの前にあるフルーツにラベル付けされる UI のアニメーション](./media/iot-visual-alerts-tutorial/scoring.gif)
 

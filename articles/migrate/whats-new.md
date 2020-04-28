@@ -2,18 +2,30 @@
 title: Azure Migrate の新着情報
 description: Azure Migrate サービスの最新の情報や最近行われた更新について説明します。
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 9767f3ea31b57d23c8a6772ff5eb6500f7550802
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127590"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677240"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+
+## <a name="update-april-2020"></a>更新 (2020 年 4 月)
+
+Azure Migrate では、Azure Government へのデプロイがサポートされます。 
+
+- VMware VM、Hyper-V VM、物理サーバーを検出して評価することができます。
+- VMware VM、Hyper-V VM、物理サーバーを Azure に移行できます。
+- VMware の移行では、エージェントレスまたはエージェントベースの移行を使用できます。 [詳細については、こちらを参照してください](server-migrate-overview.md)。
+- Azure Government でサポートされている地域やリージョンを[確認](migrate-support-matrix.md#supported-geographies-azure-government)します。
+- [エージェントベースの依存関係の分析](concepts-dependency-visualization.md#agent-based-analysis)は、Azure Government ではサポートされません。
+- Azure Government でプレビュー段階の機能 (具体的には[エージェントレスの依存関係の分析](concepts-dependency-visualization.md#agentless-analysis)と[アプリケーション検出](how-to-discover-applications.md)) がサポートされます。
 
 ## <a name="update-march-2020"></a>更新 (2020 年 3 月)
 
@@ -58,7 +70,7 @@ Azure Migrate の現在のバージョン (2019 年 7 月リリース) には、
 
 ## <a name="azure-migrate-previous-version"></a>Azure Migrate の以前のバージョン
 
-前バージョンの Azure Migrate (評価のサポート対象がオンプレミスの VMware VM のみ) を使用している場合、今後は最新バージョンを使用してください。 前のバージョンでは、新しい Azure Migrate プロジェクトを作成したり、新しい検出を実行したりできなくなりました。 既存のプロジェクトには引き続きアクセスできます。 それを行うには、Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。 Azure Migrate の通知には、古い Azure Migrate プロジェクトにアクセスするためのリンクがあります。
+旧バージョンの Azure Migrate (オンプレミスの VMware VM の評価のみサポート) を使用している場合、今後は最新バージョンを使用してください。 前のバージョンでは、新しい Azure Migrate プロジェクトを作成したり、新しい検出を実行したりできなくなりました。 既存のプロジェクトには引き続きアクセスできます。 それを行うには、Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。 Azure Migrate の通知には、古い Azure Migrate プロジェクトにアクセスするためのリンクがあります。
 
 
 

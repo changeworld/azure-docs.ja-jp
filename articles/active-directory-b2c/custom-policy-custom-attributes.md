@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc5204518cb6e801ba661aecd5498a501122225f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473661"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678268"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C:カスタム プロファイル ポリシーでカスタム属性を有効にする
 
@@ -75,7 +75,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
             <Item Key="ApplicationObjectId"></Item>
           </Metadata>
         </TechnicalProfile>
-      <TechnicalProfiles> 
+      </TechnicalProfiles> 
     </ClaimsProvider>
     ```
 

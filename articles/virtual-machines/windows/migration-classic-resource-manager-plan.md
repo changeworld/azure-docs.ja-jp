@@ -1,30 +1,24 @@
 ---
 title: クラシックから Azure Resource Manager への移行の計画
 description: クラシックから Azure Resource Manager への IaaS リソースの移行計画
-services: virtual-machines-windows
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 62cc33b9cfe1a0dc96f0a6a771b753ff48bfb9f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ae2e1a85d5250e4da836c6f57e3619befd9330
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919551"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865927"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 
 > [!IMPORTANT]
-> 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨の[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)について確認してください。
+> 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨についての[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)について確認してください。
 
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
 
@@ -88,7 +82,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 大規模な移行の多くで検出された問題を以下に示します。 これは包括的なリストではないため、詳しくは「[サポートされていない機能と構成](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations)」をご覧ください。  これらの技術的な問題が発生するかどうかはわかりませんが、問題が発生した場合は、移行の前に解決しておくと、移行をスムーズに行うことができます。
 
-- **検証/準備/ドライ ランの中止の実施** - これはおそらく、クラシックから Azure Resource Manager への移行を成功させるための最も重要な手順です。 移行 API には 3 つの主要な手順 (検証、準備、コミット) があります。 検証では、クラシック環境の状態を把握して、すべての問題の結果を返します。 ただし、一部の問題は Azure Resource Manager スタックに存在する可能性があるため、すべての問題を検証で取得できるわけではありません。 移行プロセスの次の手順である準備では、これらの問題を公開します。 準備では、クラシックから Azure Resource Manager にメタデータを移動しますが、移動をコミットしません。また、クラシック側で何かを削除または変更することもありません。 ドライ ランでは移行の準備を行ってから、移行の準備を中止します (**コミットしません**)。 検証/準備/ドライ ランの中止の目的は、Azure Resource Manager スタック内のすべてのメタデータを確認し、(*プログラムを使用して、またはポータルで*) 調査し、すべてが正しく移行されたかどうかを検証して、技術的な問題に対処することです。  また、移行期間の感覚をつかむことができるため、それに応じたダウンタイムを計画できます。  検証/準備/中止ではユーザー ダウンタイムが発生しないため、アプリケーションの使用が中断されることはありません。
+- **検証/準備/ドライ ランの中止の実施** - これはおそらく、クラシックから Azure Resource Manager への移行を成功させるための最も重要な手順です。 移行 API には、次の 3 つの主要ステップがあります:検証、準備、コミット。 検証では、クラシック環境の状態を把握して、すべての問題の結果を返します。 ただし、一部の問題は Azure Resource Manager スタックに存在する可能性があるため、すべての問題を検証で取得できるわけではありません。 移行プロセスの次の手順である準備では、これらの問題を公開します。 準備では、クラシックから Azure Resource Manager にメタデータを移動しますが、移動をコミットしません。また、クラシック側で何かを削除または変更することもありません。 ドライ ランでは移行の準備を行ってから、移行の準備を中止します (**コミットしません**)。 検証/準備/ドライ ランの中止の目的は、Azure Resource Manager スタック内のすべてのメタデータを確認し、(*プログラムを使用して、またはポータルで*) 調査し、すべてが正しく移行されたかどうかを検証して、技術的な問題に対処することです。  また、移行期間の感覚をつかむことができるため、それに応じたダウンタイムを計画できます。  検証/準備/中止ではユーザー ダウンタイムが発生しないため、アプリケーションの使用が中断されることはありません。
   - ドライ ランの前に以下の項目を解決する必要がありますが、ドライ ラン テストは、準備の手順が失敗しても安全に進められます。 エンタープライズでの移行中に、ドライ ランが移行の準備のための安全かつ貴重な方法であることがわかりました。
   - 準備の実施中は、コントロール プレーン (Azure の管理操作) が仮想ネットワーク全体に対してロックされるため、検証/準備/中止の際に VM のメタデータを変更することはできません。  ただし、それ以外のアプリケーション機能 (RD、VM の使用など) が影響を受けることはありません。  ドライ ランが実施されていることは VM のユーザーにはわかりません。
 

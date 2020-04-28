@@ -1,34 +1,34 @@
 ---
-title: PowerShell:SSL をアップロードしてバインドする
-description: Azure PowerShell を使用して App Service のデプロイと管理を自動化する方法について説明します。 このサンプルでは、カスタム SSL 証明書をアプリにバインドする方法を紹介しています。
+title: PowerShell:TLS/SSL をアップロードしてバインドする
+description: Azure PowerShell を使用して App Service のデプロイと管理を自動化する方法について説明します。 このサンプルでは、カスタム TLS/SSL 証明書をアプリにバインドする方法を紹介しています。
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8422c4ef29366888a2bdd53c18462e6cfb680c78
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5116585b701717a82b757cae70f938c321a1f7d1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044559"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532546"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>PowerShell を使ってカスタム SSL 証明書を Web アプリにバインドする
+# <a name="bind-a-custom-tlsssl-certificate-to-a-web-app-using-powershell"></a>PowerShell を使ってカスタム TLS/SSL 証明書を Web アプリにバインドする
 
-このサンプル スクリプトは、関連するリソースを使用して App Service に Web アプリを作成し、そこにカスタム ドメイン名の SSL 証明書をバインドします。 
+このサンプル スクリプトは、関連するリソースを使用して App Service に Web アプリを作成し、そこにカスタム ドメイン名の TLS/SSL 証明書をバインドします。 
 
 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、次のことを確認します。
 
 - Azure との接続が、`az login` コマンドを使用して作成されている。
 - ドメイン レジストラーの DNS 構成ページにアクセスできる。
-- アップロードしてバインドする SSL 証明書の有効な .PFX ファイルとパスワードを持っている。
+- アップロードしてバインドする TLS/SSL 証明書の有効な .PFX ファイルとパスワードを持っている。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -49,7 +49,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Web アプリを作成します。 |
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | App Service プランを変更して価格レベルを変更します。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Web アプリの構成を変更します。 |
-| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | Web アプリの SSL 証明書のバインディングを作成します。 |
+| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | Web アプリの TLS/SSL 証明書のバインディングを作成します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

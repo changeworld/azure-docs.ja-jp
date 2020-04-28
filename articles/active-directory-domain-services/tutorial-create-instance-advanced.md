@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: a7ab79fe7ccfbf6d292b6ba7be58026955a06516
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: f2d7f1725623dcc031f3c2b36bacd6dbc9ad339d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519305"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639950"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services インスタンスを作成、構成する
 
@@ -207,7 +207,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 > [!TIP]
 > Azure AD テナントにクラウド専用ユーザーとオンプレミス AD からのユーザーが混在している場合は、両方の手順を実行する必要があります。
 
-クラウド専用ユーザー アカウントの場合、ユーザーは Azure AD DS を使用する前に各自のパスワードを変更する必要があります。 このパスワード変更プロセスによって、Kerberos 認証と NTLM 認証に使用されるパスワード ハッシュが Azure AD に生成されて保存されます。 テナント内のユーザーのうち、Azure AD DS を使用する必要がある全ユーザーのパスワードを期限切れにして、次回のサインイン時にパスワードの変更を強制するか、または、各自のパスワードを手動で変更するようユーザーに指示してください。 このチュートリアルでは、ユーザー パスワードを手動で変更しましょう。
+クラウド専用ユーザー アカウントの場合、ユーザーは Azure AD DS を使用する前に各自のパスワードを変更する必要があります。 このパスワード変更プロセスによって、Kerberos 認証と NTLM 認証に使用されるパスワード ハッシュが Azure AD に生成されて保存されます。 パスワードが変更されるまで、アカウントは Azure AD から Azure AD DS に同期されません。 テナント内のクラウド ユーザーのうち、Azure AD DS を使用する必要がある全ユーザーのパスワードを期限切れにして、次回のサインイン時にパスワードの変更を強制するか、または、各自のパスワードを手動で変更するようクラウド ユーザーに指示してください。 このチュートリアルでは、ユーザー パスワードを手動で変更しましょう。
 
 ユーザーが自分のパスワードをリセットできるように、あらかじめ Azure AD テナントを[セルフサービス パスワード リセット 用に構成][configure-sspr]しておく必要があります。
 

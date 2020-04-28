@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475219"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733023"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -187,7 +187,7 @@ public int getServerPort()
 
 ### <a name="use-keyvault-references"></a>KeyVault 参照を使用する
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) では、アクセス ポリシーと監査履歴を使用した一元的なシークレット管理を提供しています。 シークレット (パスワードや接続文字列など) を KeyVault に格納し、環境変数を使用してアプリケーション内でこれらのシークレットにアクセスすることができます。
+[Azure Key Vault](../key-vault/general/overview.md) では、アクセス ポリシーと監査履歴を使用した一元的なシークレット管理を提供しています。 シークレット (パスワードや接続文字列など) を KeyVault に格納し、環境変数を使用してアプリケーション内でこれらのシークレットにアクセスすることができます。
 
 最初に、[Key Vault へのアクセス権をアプリに付与](app-service-key-vault-references.md#granting-your-app-access-to-key-vault)したり、[アプリケーション設定で自分のシークレットに対する KeyVault 参照を設定](app-service-key-vault-references.md#reference-syntax)したりするための手順に従います。 App Service のターミナルにリモートでアクセスしている間に環境変数を出力することで、シークレットへの参照が解決されることを確認できます。
 
@@ -318,7 +318,7 @@ Azure でサポートされている Java Development Kit (JDK) は、[Azul Syst
 
 メジャー バージョンの更新プログラムは、Azure App Service for Windows の新しいランタイム オプションによって提供されます。 お客様は、App Service デプロイを構成することで Java のこれらの新しいバージョンに更新します。また、主要な更新プログラムをテストし、ニーズを満たしていることを確認する必要があります。
 
-サポートされている JDK は、毎年 1 月、4 月、7 月、および 10 月の四半期ごとに自動的に適用されます。 Azure 上の Java の詳細については、[こちらのサポート ドキュメント](https://docs.microsoft.com/azure/java/jdk/)を参照してください。
+サポートされている JDK は、毎年 1 月、4 月、7 月、および 10 月の四半期ごとに自動的に適用されます。 Azure 上の Java の詳細については、[こちらのサポート ドキュメント](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)を参照してください。
 
 ### <a name="security-updates"></a>セキュリティ更新プログラム
 

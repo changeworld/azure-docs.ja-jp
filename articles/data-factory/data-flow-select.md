@@ -1,5 +1,5 @@
 ---
-title: マッピング データ フローの選択変換
+title: マッピング データ フローでの選択変換
 description: Azure Data Factory のマッピング データ フローの選択変換
 author: kromerm
 ms.author: makromer
@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/18/2020
-ms.openlocfilehash: 498ce053e8a52897d9087091b92fa51a04e195a4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413248"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686492"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>マッピング データ フローでの選択変換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 列の名前変更、削除、または並べ替えを行うには、選択変換を使用します。 この変換は、行データを変更するものではなく、どの列が下流に伝達されるかを選択するものです。 
 

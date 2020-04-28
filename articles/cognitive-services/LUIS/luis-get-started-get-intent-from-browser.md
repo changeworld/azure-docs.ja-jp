@@ -1,24 +1,16 @@
 ---
-title: クイック スタート:ブラウザーで意図を取得する - LUIS
-titleSuffix: Azure Cognitive Services
+title: クイック スタート:ブラウザーを使用して予測を照会する - LUIS
 description: このクイックスタートでは、利用可能なパブリック LUIS アプリを使用して、ブラウザーで会話形式のテキストからユーザーの意図を判断します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/03/2020
-ms.author: diberry
-ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/21/2020
+ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987956"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769984"
 ---
-# <a name="quickstart-get-intent-with-a-browser"></a>クイック スタート:ブラウザーで意図を取得する
+# <a name="quickstart-query-prediction-runtime-with-user-text"></a>クイック スタート:ユーザー テキストを使用して予測ランタイムに照会する
 
 LUIS の予測エンドポイントから返される内容を理解するために、予測結果を Web ブラウザーで表示します。
 
@@ -26,13 +18,15 @@ LUIS の予測エンドポイントから返される内容を理解するため
 
 パブリック アプリのクエリには、以下が必要です。
 
-* ご自身の Language Understanding (LUIS) 作成キーまたは予測キー。これは、[LUIS ポータル (プレビュー)](https://preview.luis.ai/) から取得できます。 まだキーを作成するサブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
-* パブリック アプリの ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`。
+* お使いの Language Understanding (LUIS) リソース情報:
+    * **予測キー** - [LUIS ポータル](https://www.luis.ai/)から取得できます。 まだキーを作成するサブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
+    * **予測エンドポイント サブドメイン** - サブドメインは、お使いの LUIS リソースの**名前**でもあります。
+* LUIS アプリ ID - パブリック IoT アプリ ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` を使用します。 クイックスタートのコードで使用されるユーザー クエリは、そのアプリに固有のものです。
 
 ## <a name="use-the-browser-to-see-predictions"></a>ブラウザーを使用して予測を表示する
 
 1. Web ブラウザーを開きます。
-1. 以下の完全な URL を使用して、`YOUR-KEY` を独自の LUIS 作成キーまたは予測キーで置き換えます。 要求は GET 要求であり、クエリ文字列パラメーターとして LUIS 作成キーまたは予測キーキーを使用した承認が含まれます。
+1. 以下の完全な URL を使用して、`YOUR-KEY` を独自の LUIS 予測キーに置き換えます。 要求は GET 要求であり、LUIS 予測キーと共に、クエリ文字列パラメーターとして承認が含まれます。
 
     #### <a name="v3-prediction-request"></a>[V3 予測要求](#tab/V3-1-1)
 
@@ -40,7 +34,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
     **GET** エンドポイント (スロットによる) 要求に使う V3 URL の形式は、次のとおりです。
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY
     `
 
     #### <a name="v2-prediction-request"></a>[V2 予測要求](#tab/V2-1-2)
@@ -48,7 +42,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
     **GET** エンドポイント要求に使う V2 URL の形式は、次のとおりです。
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-LUIS-PREDICTION-KEY&q=turn on all lights
     `
 
 1. この URL をブラウザー ウィンドウに貼り付け、Enter キーを押します。 `HomeAutomation.TurnOn` の意図が最上位の意図であることと、値が `on` の `HomeAutomation.Operation` エンティティが LUIS で検出されたことを示す JSON 結果がブラウザーに表示されます。
@@ -104,7 +98,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
     **すべての意図を表示する**には、クエリ文字列の末尾に `show-all-intents=true` を追加します。
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY&show-all-intents=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
     `
 
     ```JSON
@@ -137,7 +131,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
     **すべての意図を表示する**には、クエリ文字列の末尾に `verbose=true` を追加します。
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key={your-key}&verbose=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true
     `
 
     ```json
@@ -173,12 +167,11 @@ LUIS の予測エンドポイントから返される内容を理解するため
     }
     ```
 
-
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
-
 ## <a name="next-steps"></a>次のステップ
 
-[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
+各項目の詳細情報
+* [V3 予測エンドポイント](luis-migration-api-v3.md)
+* [カスタム サブドメイン](../cognitive-services-custom-subdomains.md)
 
 > [!div class="nextstepaction"]
 > [LUIS ポータル内でアプリを作成する](get-started-portal-build-app.md)

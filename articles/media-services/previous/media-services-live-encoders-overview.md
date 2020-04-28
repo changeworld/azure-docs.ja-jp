@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a17f98d69cb2196f92e19b66fc23dcd89bce188
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133265"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687138"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用してマルチビットレートのストリームを作成するときにオンプレミス エンコーダーを構成する方法
 このトピックには、ライブ イベントをキャプチャし、単一ビットレート ライブ ストリームを (Live Encoding が有効になっている) AMS チャネルに送信してさらに処理を行うために使用できるオンプレミス ライブ エンコーダーがリストされています。 このトピックには、リストされているエンコーダーを構成する方法を示すチュートリアルへのリンクもあります。
@@ -33,11 +33,8 @@ ms.locfileid: "77133265"
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
 単一ビットレート ライブ ストリームが AMS チャネルに送信されるように [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) エンコーダーを構成する方法については、[Wirecast の構成](media-services-configure-wirecast-live-encoder.md)に関するページをご覧ください。
 
-## <a name="newtek-tricaster"></a>NewTek TriCaster
-単一ビットレート ライブ ストリームが AMS チャネルに送信されるように [Tricaster](https://newtek.com/products/tricaster-40.html) エンコーダーを構成する方法については、[Tricaster の構成](media-services-configure-tricaster-live-encoder.md)に関するページをご覧ください。
-
 ## <a name="elemental-live"></a>Elemental Live
-詳細については、[Elemental Live](https://www.elementaltechnologies.com/products/elemental-live) に関するページを参照してください。
+詳細については、[Elemental Live](https://www.elemental.com/products/aws-elemental-appliances-software/#elemental-live) に関するページを参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

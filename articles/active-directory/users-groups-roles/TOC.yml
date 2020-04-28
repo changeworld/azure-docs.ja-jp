@@ -18,7 +18,7 @@
       href: groups-quickstart-naming-policy.md
 - name: チュートリアル
   items:
-    - name: 動的に設定されるグループの作成
+    - name: 動的グループの作成
       href: groups-dynamic-tutorial.md
 - name: 概念
   expanded: true
@@ -40,21 +40,23 @@
       items:
         - name: ユーザーの作成
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: ユーザーの一括作成 (プレビュー)
+        - name: ユーザーの一括作成
           href: users-bulk-add.md
         - name: ユーザー プロファイルの管理
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: ユーザー情報をダウンロードする (プレビュー)
+        - name: マイ スタッフの委任
+          href: my-staff-configure.md
+        - name: ユーザー情報のダウンロード
           href: users-bulk-download.md
         - name: ユーザー アカウントの共有
           href: users-sharing-accounts.md
         - name: 管理者ロールへのユーザーの割り当て
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: ユーザーの一括削除 (プレビュー)
+        - name: ユーザーの一括削除
           href: users-bulk-delete.md
         - name: 削除済みユーザーの復元
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: ユーザーの一括復元 (プレビュー)
+        - name: ユーザーの一括復元
           href: users-bulk-restore.md
         - name: 非管理対象ディレクトリのアカウントを削除する
           href: users-close-account.md
@@ -82,42 +84,18 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: グループの管理
       items:
-        - name: グループとメンバーの一覧の検索 (プレビュー)
-          href: groups-members-owners-search.md
+        - name: Azure AD グループを使用したアクセスの管理
+          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: グループの作成 (Azure portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: 機密ラベルの割り当て (プレビュー)
-          href: groups-assign-sensitivity-labels.md
         - name: グループの管理 (PowerShell for Graph (v2))
           href: groups-settings-v2-cmdlets.md
-        - name: グループの管理 (PowerShell MSOnline)
+        - name: PowerShell MSOnline を使用したグループの管理
           href: groups-settings-cmdlets.md
+        - name: グループとメンバーの一覧の検索
+          href: groups-members-owners-search.md
         - name: グループ メンバーの追加または削除
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: メンバーの一括追加 (プレビュー)
-          href: groups-bulk-import-members.md
-        - name: メンバーの一括削除 (プレビュー)
-          href: groups-bulk-remove-members.md
-        - name: メンバー リストの一括ダウンロード (プレビュー)
-          href: groups-bulk-download-members.md
-        - name: グループ所有者を管理する
-          href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: グループ リストの一括ダウンロード (プレビュー)
-          href: groups-bulk-download.md
-        - name: グループ内のグループの管理
-          href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: SaaS アプリへのグループ アクセスの追加
-          href: groups-saasapps.md
-        - name: グループの名前付けのリファレンス
-          href: groups-naming-policy.md
-        - name: グループの有効期限のリファレンス
-          href: groups-lifecycle.md
-        - name: 削除されたグループの復元
-          href: groups-restore-deleted.md
-        - name: グループ設定の管理
-          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: グループ セルフサービスのセットアップ
-          href: groups-self-service-management.md
         - name: 動的グループ
           items:
             - name: 動的グループの作成
@@ -128,6 +106,32 @@
               href: groups-dynamic-rule-validation.md
             - name: グループ メンバーシップの種類の変更
               href: groups-change-type.md
+        - name: メンバーの一括追加
+          href: groups-bulk-import-members.md
+        - name: メンバーの一括削除
+          href: groups-bulk-remove-members.md
+        - name: メンバー リストの一括ダウンロード
+          href: groups-bulk-download-members.md
+        - name: グループ リストの一括ダウンロード
+          href: groups-bulk-download.md
+        - name: 削除されたグループの復元
+          href: groups-restore-deleted.md
+        - name: グループ設定の管理
+          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: グループ所有者を管理する
+          href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: グループ内のグループの管理
+          href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: SaaS アプリへのグループ アクセスの追加
+          href: groups-saasapps.md
+        - name: グループの名前付けポリシーの設定
+          href: groups-naming-policy.md
+        - name: グループの有効期限ポリシーの設定
+          href: groups-lifecycle.md
+        - name: グループ セルフサービスのセットアップ
+          href: groups-self-service-management.md
+        - name: 秘密度ラベルの割り当て
+          href: groups-assign-sensitivity-labels.md
     - name: ライセンスを割り当てる
       items:
         - name: グループへのライセンスの割り当て
@@ -145,14 +149,15 @@
         - name: ライセンス供与のためのサービス プラン ID
           href: licensing-service-plan-reference.md
     - name: Azure AD 管理者ロール
+      expanded: true
       items:
         - name: ロールとアクセス許可
           href: directory-assign-admin-roles.md
         - name: ロールの表示と割り当て
           href: directory-manage-roles-portal.md
-        - name: カスタム ロール (プレビュー)
+        - name: カスタム ロール
           items:
-            - name: カスタム ロール (プレビュー)
+            - name: カスタム ロール
               href: roles-custom-overview.md
             - name: カスタム ロールの作成
               href: roles-create-custom.md
@@ -162,7 +167,7 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: PowerShell でのカスタム ロールの割り当て
               href: roles-assign-powershell.md
-            - name: カスタム ロール (プレビュー) のアクセス許可
+            - name: カスタム ロールのアクセス許可
               href: roles-custom-available-permissions.md
             - name: アプリ管理者のアクセス許可を委任する
               href: roles-delegate-app-roles.md
@@ -177,7 +182,19 @@
             - name: 緊急アカウントの作成
               href: directory-emergency-access.md
         - name: 管理単位
-          href: directory-administrative-units.md
+          items:
+            - name: 管理単位の概要
+              href: directory-administrative-units.md
+            - name: AU の追加と管理
+              href: roles-admin-units-manage.md
+            - name: AU でのユーザーの追加と管理
+              href: roles-admin-units-add-manage-users.md
+            - name: AU でのグループの追加と管理
+              href: roles-admin-units-add-manage-groups.md
+            - name: AU スコープを使用してロールを割り当てる
+              href: roles-admin-units-assign-roles.md
+            - name: FAQ とトラブルシューティング
+              href: roles-admin-units-faq-troubleshoot.md
     - name: サインインの管理
       items:
         - name: 会社のブランドのカスタマイズ

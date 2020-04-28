@@ -50,6 +50,8 @@
           href: class-type-jupyter-notebook.md
         - name: Android Studio を使用したモバイル アプリ開発
           href: class-type-mobile-dev-android-studio.md
+        - name: ビッグ データ分析
+          href: class-type-big-data-analytics.md
     - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)
       items:
         - name: ラボ アカウントを作成および管理する
@@ -106,6 +108,8 @@
           href: how-to-windows-shutdown.md
         - name: サポート情報の表示 (講師)
           href: lab-creator-support-information.md
+        - name: インストラクター ビューから学生の VM にアクセスする
+          href: instructor-access-virtual-machines.md
     - name: クラスルーム ラボの VM に接続する (学生)
       items:
         - name: クラスルーム ラボへのアクセス

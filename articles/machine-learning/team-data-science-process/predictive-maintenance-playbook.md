@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 5cf3f02284777a54a9d26cad8a7f3b5b4fa6b335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087760"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686752"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -449,6 +449,6 @@ Microsoft Azure では、一般的な AI の概念や実践に関するコンテ
 | [Microsoft AI YouTube ウェビナー](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | パブリック |
 | [Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | パブリック |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | パートナー |
-| [Microsoft Partner Network](https://learningportal.microsoft.com) | パートナー |
+| [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | パートナー |
 
 さらに、MIT などの教育機関やその他の教育的企業によって、AI に関する無料の MOOCS (Massive Open Online Courses) がオンラインで提供されています。

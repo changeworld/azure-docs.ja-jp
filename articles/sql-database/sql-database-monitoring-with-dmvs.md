@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 6f33f49be74419a8f0cd31d973d64798f5d76a2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214019"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683012"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する
 
@@ -604,7 +604,7 @@ ORDER BY start_time DESC
 
 3. 各リソース メトリックの平均値と最大値に関するこの情報に基づいて、選択したコンピューティング サイズにワークロードが適合しているかどうかを評価できます。 通常、**sys.resource_stats** からの平均値が目標サイズに対する有効な基準となります。 これを主要なものさしとしてください。 たとえば、S2 コンピューティング サイズで Standard サービス レベルを使用しているとします。 CPU と IO の読み取り/書き込みの平均使用率が 40% を下回り、ワーカーの平均数が 50 を下回り、セッションの平均数が 200 を下回っています。 このワークロードには、S1 コンピューティング サイズが適している可能性があります。 データベースがワーカーとセッションの制限内に収まるかどうかは簡単にわかります。 CPU、読み取り、書き込みに関して、データベースが下位のコンピューティング サイズに適合するかどうかを確認するには、下位コンピューティング サイズの DTU 数を現在のコンピューティング サイズの DTU 数で割り、その計算結果に 100 を掛けます。
 
-    ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
+    `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
     この結果は、2 つのコンピューティング サイズの間の相対的パフォーマンス差異を百分率で表したものになります。 リソースの使用がこの量を超えていない場合、ワークロードは下位のコンピューティング サイズに適合する可能性があります。 ただし、リソース使用率の値を全範囲で見て、どのくらいの頻度でデータベースのワークロードが下位のコンピューティング サイズに適合するかを割合の観点から判断する必要があります。 次のクエリは、この例で計算した 40% のしきい値に基づき、リソース ディメンション別の適合率を出力します。
 

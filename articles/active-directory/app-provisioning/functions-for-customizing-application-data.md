@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc41a18063202bfefb9ddf7238de17fc691984af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28e591234e28770a90bed827e4d36c6342661dd1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612145"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866602"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -469,11 +469,11 @@ RemoveDuplicates([proxyAddresses])
 
 **説明:**<br> 少なくとも 2 つの引数が必要です。引数は、式を使用して定義されている一意値生成ルールです。 関数では、各ルールが評価された後、生成された値の対象となるアプリ/ディレクトリでの一意性が確認されます。 最初に見つかった一意の値が返されます。 すべての値がターゲットに既に存在する場合、エントリはエスクローされて、理由が監査ログに記録されます。 渡すことができる引数の数に上限はありません。
 
-> [!NOTE]
-> - これは最上位の関数であり、入れ子にはできません。
-> - この関数は、照合の優先順位を持つ属性には適用できません。  
-> - この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、 **[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
-> - 現在、この関数は "Workday to Active Directory User Provisioning" でのみサポートされています。 他のプロビジョニング アプリでは使用できません。 
+
+ - これは最上位の関数であり、入れ子にはできません。
+ - この関数は、照合の優先順位を持つ属性には適用できません。   
+ - この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、 **[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
+ - 現在、この関数は "Workday to Active Directory User Provisioning" でのみサポートされています。 他のプロビジョニング アプリでは使用できません。 
 
 
 **パラメーター:**<br> 

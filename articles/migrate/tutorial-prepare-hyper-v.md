@@ -2,18 +2,18 @@
 title: Azure Migrate を使用した評価と移行に向けて Hyper-V VM を準備する
 description: Azure Migrate を使用した評価と移行に向けて Hyper-V VM を準備する方法について説明します。
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436218"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641629"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
-この記事では、Azure Migrate:Server Assessment(migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用したオンプレミスの Hyper-V VM の評価と、[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用した Hyper-V VM の移行を準備する方法について説明します。
+この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用したオンプレミスの Hyper-V VM の評価と、[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用した Hyper-V VM の移行を準備する方法について説明します。
 
 
 これはシリーズの最初のチュートリアルであり、Hyper-V VM を評価して Azure に移行する方法を示しています。 このチュートリアルでは、以下の内容を学習します。
@@ -214,9 +214,11 @@ Azure Migrate が VM 上のオペレーティング システム情報をキャ�
 次のチュートリアルで Azure Migrate アプライアンスを設定して評価を開始する前に、アプライアンスのデプロイの準備を行います。
 
 1. アプライアンスの要件を[確認](migrate-appliance.md#appliance---hyper-v)します。
-2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-appliance.md#url-access)します。
+2. アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government](migrate-appliance.md#government-cloud-urls) クラウドでアクセスする必要がある Azure の URL について確認します。 URL ベースのファイアウォールまたはプロキシを使用している場合は、必要な URL へのアクセスが許可されていることを確認します。
 3. 検出および評価中にアプライアンスによって収集されるデータを確認します。
-4. アプライアンスのポート アクセス要件に[注意](migrate-appliance.md#collected-data---hyper-v)します。
+4. アプライアンスのポート アクセス要件を[確認](migrate-appliance.md#collected-data---hyper-v)します。
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Hyper-V の移行の準備

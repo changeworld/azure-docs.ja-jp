@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 04/22/2019
 ms.author: victorh
-ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312388"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024495"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する
 
@@ -56,13 +56,11 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-[Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。
+[Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。 パスワードの長さが 4 - 12 文字であることを確認してください。
 
-> [!NOTE]
-> .pfx ファイルのパスワードに特殊文字は一切使用しないでください。 サポートされるのは英数字のみです。
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String <your password> -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +148,7 @@ Export-PfxCertificate `
 
    - **[PFX 証明書ファイル]** - 前に作成した c:\appgwcert.pfx ファイルを参照して選択します。
    - **[証明書名]** - 証明書の名前として「*mycert1*」と入力します。
-   - **[パスワード]** - パスワードとして「*Azure123456*」と入力します。
+   - **[パスワード]** - 自分のパスワードを入力します。
   
         **[リスナー]** タブで他の設定の既定値をそのまま使用し、 **[バックエンド ターゲット]** タブを選択して、ルーティング規則の残りの部分を構成します。
 
@@ -194,10 +192,10 @@ Export-PfxCertificate `
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*myVM*」と入力します。
     - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
-    - **パスワード**:管理者パスワードとして「*Azure123456*」と入力します。
-4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
-5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
-6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。
+    - **パスワード**:管理者アカウントのパスワードを入力します。
+1. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
+2. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
+3. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。
 
    Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
 1. **[管理]** タブで、 **[ブート診断]** を **[オフ]** に設定します。 他の既定値をそのまま使用し、 **[確認および作成]** を選択します。

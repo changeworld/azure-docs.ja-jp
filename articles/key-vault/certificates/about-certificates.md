@@ -10,57 +10,14 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9fbe624563ad03880ff1a75efdc2df41b151846
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420406"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685909"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
-
-Azure Key Vault を使用すると、Microsoft Azure アプリケーションとユーザーは、キーとシークレットの上に構築された証明書を格納して使用し、自動更新機能を追加することができます。
-
-Key Vault の一般的な情報については、「[Azure Key Vault とは](/azure/key-vault/key-vault-overview)」をご覧ください。
-
-## <a name="azure-key-vault"></a>Azure Key Vault
-
-以下のセクションでは、Key Vault サービスの実装に該当する一般的な情報を提供します。
-
-### <a name="supporting-standards"></a>標準のサポート
-
-JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryption (JOSE) の仕様は、重要な背景情報です。  
-
--   [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JSON Web Encryption (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JSON Web Algorithms (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="objects-identifiers-and-versioning"></a>オブジェクト、識別子、バージョン管理
-
-Key Vault に格納されるオブジェクトは、オブジェクトの新しいインスタンスが作成されるたびにバージョン管理されます。 各バージョンには、一意の識別子と URL が割り当てられます。 オブジェクトが最初に作成されるときに、オブジェクトに一意のバージョン識別子が指定され、オブジェクトの現在のバージョンとしてマークされます。 同じオブジェクト名の新しいインスタンスが作成されると、新しいオブジェクトに一意のバージョン識別子が与えられ、現在のバージョンになります。  
-
-Key Vault 内のオブジェクトは、現在の識別子またはバージョン固有の識別子を使用してアドレス指定できます。 たとえば、キーの名前を `MasterKey` とすると、現在の識別子を指定して操作を実行すると、システムは使用可能な最新のバージョンを使用します。 バージョン固有の識別子を指定して操作を実行すると、システムはオブジェクトの特定のバージョンを使用します。  
-
-Key Vault 内のオブジェクトは、URL を使用して一意に識別されます。 地理的場所に関係なく、システム内の複数のオブジェクトが同じ URL を持つことはありません。 オブジェクトの完全な URL は、オブジェクト識別子と呼ばれます。 URL は、Key Vault を示すプレフィックス、オブジェクトの種類、ユーザー指定のオブジェクト名、およびオブジェクトのバージョンで構成されます。 オブジェクト名は大文字と小文字が区別されず、変更できません。 オブジェクトのバージョンを含まない識別子は、ベース識別子と呼ばれます。  
-
-詳しくは、「[Authentication, requests, and responses](../general/authentication-requests-and-responses.md)」(認証、要求、応答) をご覧ください。
-
-オブジェクト識別子の一般的な形式は次のとおりです。  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-各値の説明:  
-
-|||  
-|-|-|  
-|`keyvault-name`|Microsoft Azure Key Vault サービスでのキー コンテナーの名前。<br /><br /> キー コンテナーの名前はユーザーが選択し、グローバルに一意です。<br /><br /> Key Vault の名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 3 ～ 24 文字の文字列である必要があります。|  
-|`object-type`|オブジェクトの種類で、"keys" または "secrets" です。|  
-|`object-name`|`object-name` は、ユーザーが指定する名前で、キー コンテナー内で一意である必要があります。 名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 1 ～ 127 文字の文字列である必要があります。|  
-|`object-version`|`object-version` はシステムが生成し、オブジェクトの一意のバージョンに対応するために必要に応じて使用される 32 文字の文字列識別子です。|  
-
-
-## <a name="key-vault-certificates"></a>Key Vault 証明書
 
 Key Vault 証明書のサポートにより、x509 証明書が管理されるようになります。動作は次のとおりです。  
 
@@ -73,7 +30,7 @@ Key Vault 証明書のサポートにより、x509 証明書が管理される�
 >[!Note]
 >パートナーではないプロバイダー/証明機関も許可されますが、自動更新機能はサポートされません。
 
-### <a name="composition-of-a-certificate"></a>証明書の構成
+## <a name="composition-of-a-certificate"></a>証明書の構成
 
 Key Vault 証明書が作成されると、アドレス指定可能なキーとシークレットも同じ名前で作成されます。 Key Vault のキーを使うとキー操作を行うことができ、Key Vault のシークレットを使うとシークレットとして証明書の値を取得できます。 Key Vault 証明書には、公開 x509 証明書メタデータも含まれます。  
 
@@ -81,7 +38,7 @@ Key Vault 証明書が作成されると、アドレス指定可能なキーと�
  
 ![証明書は複合オブジェクトである](../media/azure-key-vault.png)
 
-### <a name="exportable-or-non-exportable-key"></a>エクスポート可能なキーまたはエクスポート不可能なキー
+## <a name="exportable-or-non-exportable-key"></a>エクスポート可能なキーまたはエクスポート不可能なキー
 
 Key Vault 証明書が作成されるとき、秘密キーと共にアドレス指定可能なシークレットから PFX または PEM 形式で取得できます。 証明書の作成に使用されるポリシーでは、キーがエクスポート可能であることが示されている必要があります。 ポリシーでエクスポートできないことが示されている場合、シークレットとして取得されるとき、秘密キーは値に含まれません。  
 
@@ -89,11 +46,11 @@ Key Vault 証明書が作成されるとき、秘密キーと共にアドレス�
 
 証明書では、*RSA* または *RSA HSM* の 2 種類のキーがサポートされています。 エクスポート可能は RSA でのみ許可され、RSA HSM ではサポートされていません。  
 
-### <a name="certificate-attributes-and-tags"></a>証明書の属性とタグ
+## <a name="certificate-attributes-and-tags"></a>証明書の属性とタグ
 
 証明書のメタデータ、アドレス指定可能なキー、およびアドレス指定可能なシークレットだけでなく、Key Vault 証明書にも属性とタグが含まれます。  
 
-#### <a name="attributes"></a>属性
+### <a name="attributes"></a>属性
 
 証明書の属性は、KV 証明書の作成時に作成されるアドレス指定可能なキーとシークレットの属性に反映されます。  
 
@@ -111,14 +68,14 @@ Key Vault 証明書には次の属性があります。
 > [!Note] 
 > Key Vault 証明書の期限が切れると、アドレス指定可能なキーとシークレットは機能しなくなります。  
 
-#### <a name="tags"></a>Tags
+### <a name="tags"></a>Tags
 
  キーとシークレットのタグに似た、クライアントによって指定されたキーと値のペアのディクショナリです。  
 
  > [!Note]
 > 呼び出し元は、そのオブジェクトの種類 (キー、シークレット、証明書) に対して *list* または *get* アクセス許可を持っている場合、タグを読み取ることができます。
 
-### <a name="certificate-policy"></a>証明書ポリシー
+## <a name="certificate-policy"></a>証明書ポリシー
 
 証明書ポリシーには、Key Vault 証明書のライフサイクルを作成して管理する方法に関する情報が含まれています。 秘密キーを含む証明書がキー コンテナーにインポートされると、X509 証明書を読み取ることによって既定のポリシーが作成されます。  
 
@@ -138,7 +95,7 @@ Key Vault 証明書を最初から作成するときは、ポリシーを提供�
 -   発行者:x509 証明書の発行に使用する証明書発行者に関するパラメーターです。  
 -   ポリシー属性: ポリシーに関連付けられた属性が含まれます  
 
-#### <a name="x509-to-key-vault-usage-mapping"></a>X509 と Key Vault の使用方法の対応
+### <a name="x509-to-key-vault-usage-mapping"></a>X509 と Key Vault の使用方法の対応
 
 次の表では、x509 キー使用ポリシーと、Key Vault 証明書作成の一部として作成されるキーの有効なキー操作との対応を示します。
 
@@ -153,7 +110,7 @@ Key Vault 証明書を最初から作成するときは、ポリシーを提供�
 |NonRepudiation|sign、verify| 該当なし |
 |crlsign|sign、verify| 該当なし |
 
-### <a name="certificate-issuer"></a>証明書の発行者
+## <a name="certificate-issuer"></a>証明書の発行者
 
 Key Vault 証明書オブジェクトは、x509 証明書を要求するための選択された証明書発行者プロバイダーとの通信に使用される構成を保持しています。  
 
@@ -180,7 +137,7 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 
 発行者オブジェクトはコンテナー内に作成され、同じコンテナー内の KV 証明書でのみ使用できます。  
 
-### <a name="certificate-contacts"></a>証明書の連絡先
+## <a name="certificate-contacts"></a>証明書の連絡先
 
 証明書の連絡先には、証明書有効期間イベントによってトリガーされる通知を送信する連絡先情報が含まれています。 連絡先情報は、キー コンテナー内のすべての証明書によって共有されます。 通知は、キー コンテナー内の任意の証明書のイベントに指定されているすべての連絡先に送信されます。  
 
@@ -191,7 +148,7 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 
   証明書のポリシーが手動更新に設定されている場合 (メールのみ)、証明書を更新する必要があるときに通知が送信されます。  
 
-### <a name="certificate-access-control"></a>証明書のアクセス制御
+## <a name="certificate-access-control"></a>証明書のアクセス制御
 
  証明書のアクセス制御は Key Vault によって管理され、それらの証明書を格納している Key Vault によって提供されます。 証明書のアクセス制御ポリシーは、同じキー コンテナー内のキーとシークレットに対するアクセス制御ポリシーとは別です。 ユーザーは、1 つまたは複数のコンテナーを作成して証明書を保持し、証明書のセグメント化と管理に適切なシナリオを維持することができます。  
 
@@ -219,7 +176,11 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 
 詳しくは、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
 
-## <a name="see-also"></a>参照
+## <a name="next-steps"></a>次のステップ
 
+- [Key Vault について](../general/overview.md)
+- [キー、シークレット、証明書について](../general/about-keys-secrets-certificates.md)
+- [キーについて](../keys/about-keys.md)
+- [シークレットについて](../secrets/about-secrets.md)
 - [認証、要求、応答](../general/authentication-requests-and-responses.md)
 - [Key Vault 開発者ガイド](../general/developers-guide.md)

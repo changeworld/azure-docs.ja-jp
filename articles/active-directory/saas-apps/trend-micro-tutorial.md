@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/03/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a4c2cddbc9086c80922fcf9c5d96cd197ab4778
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5f4dc7223d64fd299da70375329260f7b4f8b322
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425281"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-securitytmws"></a>チュートリアル:Trend Micro Web Security (TMWS) と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -87,7 +87,7 @@ Trend Micro Web Security (TMWS) に対する Azure AD SSO を構成してテス�
     b. **[応答 URL]** ボックスに、`https://auth.iws-hybrid.trendmicro.com/simplesaml/module.php/saml/sp/saml2-acs.php/ics-sp` という URL を入力します。
 
     > [!NOTE]
-    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 識別子の値を取得するには、[Trend Micro Web Security (TMWS) クライアント サポート チーム](https://success.trendmicro.com/contact-support-north-america)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 これらの値は、Azure AD の **[認証方法]** 画面の **[Service Provider Settings for the Azure Admin Portal]\(Azure 管理ポータルのサービス プロバイダー設定\)** 領域で **[管理]> [ディレクトリ サービス]** から取得できます。
 
 1. Trend Micro Web Security (TMWS) アプリケーションでは、特定の形式の SAML アサーションが使用されるため、カスタム属性のマッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -173,7 +173,41 @@ Trend Micro Web Security (TMWS) に対する Azure AD SSO を構成してテス�
 
 ## <a name="configure-trend-micro-web-security-sso"></a>Trend Micro Web Security SSO の構成
 
-**Trend Micro Web Security(TMWS)** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Trend Micro Web Security (TMWS) サポート チーム](https://success.trendmicro.com/contact-support-north-america)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. TMWS 管理コンソールにサインインし、 **[Administration]\(管理\)**  >  **[USERS & AUTHENTICATION]\(ユーザーと認証\)**  >  **[Directory Services]\(ディレクトリ サービス\)** に移動します。
+
+1. 画面の上部の領域のここをクリックします。
+
+1. 表示される [Authentication Method]\(認証方法\) 画面で、 **[Azure AD]** をクリックします。
+
+1. **[On]\(オン\)** または **[Off]\(オフ\)** をクリックして、組織の AD ユーザーのデータが TMWS に同期されていない場合にユーザーが TMWS を通じて Web サイトにアクセスできるようにするかどうかを決定します。
+
+    > [!NOTE]
+    > Azure AD から同期されていないユーザーは、既知の TMWS ゲートウェイまたは組織の専用ポートを介してのみ認証できます。
+
+1. **[Identity Provider Settings]\(ID プロバイダー設定\)** セクションで、次の手順を実行します。
+
+    a. **[Service URL]\(サービス URL\)** フィールドに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます
+
+    b. **[Logon name attribute]\(ログオン名属性\)** フィールドに、Azure portal から取得したユーザー要求名を **user.onpremisessamaccountname** ソース属性と共に貼り付けます。
+
+    c. **[Public SSL certificate]\(公開 SSL 証明書\)** フィールドで、Azure portal からダウンロードした**証明書 (Base64)** を使用します。
+
+1. **[Synchronization Settings]\(同期の設定\)** セクションで、次の手順を実行します。
+
+    a. **[Tenant]\(テナント\)** フィールドで、Azure portal から取得した **[ディレクトリ (テナント) ID]** または **[カスタム ドメイン名]** の値を使用します。
+
+    b. **[Application ID]\(アプリケーション ID\)** フィールドで、Azure portal から取得した **[アプリケーション (クライアント) ID]** の値を使用します。
+
+    c. **[Client secret]\(クライアント シークレット\)** フィールドで、Azure portal から取得した**クライアント シークレット**を使用します。
+
+    d. **[Synchronization schedule]\(同期スケジュール\)** フィールドで、Azure AD との同期を手動で行うか、スケジュールに従って行うかを選択します。 [Manually]\(手動\) を選択した場合は、Active Directory ユーザー情報に変更があるたびに必ず [Directory Services]\(ディレクトリ サービス\) 画面に戻って手動同期を実行して、TMWS の情報を最新の状態に保つようにしてください。
+
+    e. **[Test Connection]\(接続のテスト\)** をクリックして、Azure AD サービスが正常に接続できるかどうかを確認します。 
+    
+    f. **[保存]** をクリックします。
+ 
+ > [!NOTE]
+ > Azure AD に対して Trend Micro Web Security を構成する方法の詳細については、[こちら](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx)のドキュメントを参照してください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

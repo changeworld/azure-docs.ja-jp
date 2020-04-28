@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: feaa0c22ec98d170a65e5c9bee119ba3904a95cf
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: cc7a8df80e719173c7818055ab8771ddd7f73691
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673741"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682773"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 TabularDatasets では、データの列から、またはデータが格納されている任意のパス パターンからタイム スタンプを指定して、時系列特性を有効にすることができます。 この指定により、時間による簡単かつ効率的なフィルター処理が可能になります。
 
-タイムスタンプの列を指定し、時間でのフィルター処理を有効にするには、`TabularDataset` クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドを使用します。 詳細については、「[NOAA 気象データを使用した表形式の時系列関連の API のデモ](https://aka.ms/azureml-tsd-notebook)」を参照してください。
+タイムスタンプの列を指定し、時間でのフィルター処理を有効にするには、`TabularDataset` クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドを使用します。 詳細については、「[NOAA 気象データを使用した表形式の時系列関連の API のデモ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)」を参照してください。
 
 ```Python
 # create a TabularDataset with time series trait

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234619"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770959"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
@@ -36,14 +36,14 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 - 開始する方法の詳細については、[詳細な手順](status-monitor-v2-detailed-instructions.md)に関する記事を参照してください。
 
 ## <a name="powershell-api-reference"></a>PowerShell API リファレンス
-- [Disable-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
-- [Disable-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
-- [Enable-InstrumentationEngine](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
-- [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
-- [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
-- [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
+- [Disable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [Disable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [Enable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [Enable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
+- [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
+- [Start-ApplicationInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 - [トラブルシューティング](status-monitor-v2-troubleshoot.md)
@@ -64,7 +64,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 
 - 有効化が成功したことを確認する方法を教えてください。
 
-  - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) コマンドレットは、有効化が成功したことを確認するために使用できます。
+  - [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) コマンドレットは、有効化が成功したことを確認するために使用できます。
   - アプリからテレメトリが送信されているかどうかをすばやく判断するには、[Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) を使用することをお勧めします。
 
   - [Log Analytics](../log-query/get-started-portal.md) を使用して、現在テレメトリを送信しているすべてのクラウド ロールを一覧表示することもできます。
@@ -76,7 +76,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 
 テレメトリの表示:
 
-* パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。
+* パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します。
 * 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
 * より高度なクエリのために[分析を使用](../../azure-monitor/app/analytics.md)します。
 * [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。

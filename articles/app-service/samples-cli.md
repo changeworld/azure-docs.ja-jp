@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971504"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535623"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service の CLI サンプル
 
@@ -28,7 +28,7 @@ ms.locfileid: "74971504"
 | [Docker コンテナーに ASP.NET Core アプリを作成する](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Linux 上で App Service アプリを作成し、Docker Hub から Docker イメージを読み込みます。 |
 |**アプリケーションの構成**||
 | [アプリにカスタム ドメインをマップする](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名をマップします。 |
-| [カスタム SSL 証明書をアプリにバインドする](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名の SSL 証明書をバインドします。 |
+| [カスタム TLS/SSL 証明書をアプリにバインドする](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名の TLS/SSL 証明書をバインドします。 |
 |**アプリのスケール**||
 | [アプリを手動でスケーリングする](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | App Service アプリを作成し、2 つのインスタンス間でスケーリングします。 |
 | [高可用性アーキテクチャを使用して世界規模でアプリをスケーリングする](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | 2 つの異なる地理的リージョンに 2 つの App Service アプリを作成し、Azure Traffic Manager を使用して、1 つのエンドポイントを介してそれらを利用できるようにします。 |

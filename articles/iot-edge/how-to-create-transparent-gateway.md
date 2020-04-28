@@ -8,12 +8,15 @@ ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: e563e67b5e951b43e5782f8c845c8ec46ff3e9bb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666661"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687157"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 

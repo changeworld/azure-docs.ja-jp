@@ -1,20 +1,20 @@
 ---
 title: IoT プラグ アンド プレイ プレビューの概要 | Microsoft Docs
 description: IoT プラグ アンド プレイ プレビューについて説明します IoT プラグ アンド プレイは、IoT デバイスがその機能を宣言できるようにするオープン モデリング言語に基づいています。 IoT デバイスが Azure IoT Central やパートナー アプリケーションなどのクラウド ソリューションに接続するとき、IoT デバイスからはデバイス機能モデルと呼ばれる宣言が提示されます。 これで、クラウド ソリューションでは、デバイスを自動的に認識して、デバイスとのやりとりを開始できるようになります。すべてコードを記述することなく行うことができます。
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 12f3febac2c5c8ed01b9b156a64dc77f6ed0704f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064322"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770435"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューとは
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: f1d0ca1ffc2e7a3d645ac5acbaafdf45f85550be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f195a5c05c6c95dac898b2d471747952a3446d52
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271109"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681725"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(非推奨) Azure Container Service の Kubernetes クラスターを CoScale を使用して監視する
 
@@ -62,7 +62,7 @@ az acs kubernetes install-cli
 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) は Kubernetes によって使用され、クラスターのホストごとに 1 つのコンテナーの 1 つのインスタンスを実行します。
 この DaemonSet は、CoScale などの監視エージェントの実行に最適です。
 
-CoScale にログインしたら、[エージェント ページ](https://app.coscale.com/)に移動し、DaemonSet エージェントを使用してクラスターに CoScale エージェントをインストールします。 CoScale UI によって、エージェントの作成とKubernetes クラスター全体の監視を開始するための構成手順が示されます。
+CoScale にログインしたら、[エージェント ページ](https://developer.newrelic.com/)に移動し、DaemonSet エージェントを使用してクラスターに CoScale エージェントをインストールします。 CoScale UI によって、エージェントの作成とKubernetes クラスター全体の監視を開始するための構成手順が示されます。
 
 ![CoScale エージェントの構成](./media/container-service-kubernetes-coscale/installation.png)
 
@@ -70,7 +70,7 @@ CoScale にログインしたら、[エージェント ページ](https://app.co
 
 ![CoScale エージェントを開始する](./media/container-service-kubernetes-coscale/agent_script.png)
 
-これで完了です。 エージェントが実行されると、数分後にデータがコンソールに表示されます。 [エージェント ページ](https://app.coscale.com/)で、クラスターの概要を確認し、追加の構成手順を実行します。**Kubernetes クラスターの概要**などのダッシュボードが表示されます。
+これで完了です。 エージェントが実行されると、数分後にデータがコンソールに表示されます。 [エージェント ページ](https://developer.newrelic.com/)で、クラスターの概要を確認し、追加の構成手順を実行します。**Kubernetes クラスターの概要**などのダッシュボードが表示されます。
 
 ![Kubernetes クラスターの概要](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 

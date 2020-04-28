@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 947bfe88443489084a20653d835ab849087ac92d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 5dd99d9aa7e63066ac4801282e548f2995e57e67
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810569"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085599"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>チュートリアル:Azure で Node.js と MongoDB のアプリを構築する
 
@@ -87,17 +87,12 @@ npm start
 
 アプリが完全に読み込まれると、次のようなメッセージが表示されます。
 
-```console
+<pre>
 --
 MEAN.JS - Development Environment
 
-Environment:     development
-Server:          http://0.0.0.0:3000
-Database:        mongodb://localhost/mean-dev
-App version:     0.5.0
-MEAN.JS version: 0.5.0
---
-```
+Environment:     development Server:        http://0.0.0.0:3000 Database:        mongodb://localhost/mean-dev App version:   0.5.0 MEAN.JS version:0.5.0 --
+</pre>
 
 ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[サインアップ]** をクリックし、テスト ユーザーを作成します。 
 
@@ -142,7 +137,7 @@ az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kin
 
 Cosmos DB アカウントが作成されると、Azure CLI によって次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "consistencyPolicy":
   {
@@ -151,12 +146,12 @@ Cosmos DB アカウントが作成されると、Azure CLI によって次の例
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://&lt;cosmosdb_name&gt;.documents.azure.com:443/",
   "failoverPolicies": 
   ...
-  < Output truncated for readability >
+  &lt; Output truncated for readability &gt;
 }
-```
+</pre>
 
 ## <a name="connect-app-to-production-mongodb"></a>アプリを運用 MongoDB に接続する
 
@@ -172,14 +167,14 @@ az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
 
 Azure CLI によって次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "primaryMasterKey": "RS4CmUwzGRASJPMoc0kiEvdnKmxyRILC9BWisAYh3Hq4zBYKr0XQiSE4pqx3UchBeO4QRCzUt1i7w0rOkitoJw==",
   "primaryReadonlyMasterKey": "HvitsjIYz8TwRmIuPEUAALRwqgKOzJUjW22wPL2U8zoMVhGvregBkBk9LdMTxqBgDETSq7obbwZtdeFY7hElTg==",
   "secondaryMasterKey": "Lu9aeZTiXU4PjuuyGBbvS1N9IRG3oegIrIh95U6VOstf9bJiiIpw3IfwSUgQWSEYM3VeEyrhHJ4rn3Ci0vuFqA==",
   "secondaryReadonlyMasterKey": "LpsCicpVZqHRy7qbMgrzbRKjbYCwCKPQRl0QpgReAOxMcggTvxJFA94fTi0oQ7xtxpftTJcXkjTirQ0pT7QFrQ=="
 }
-```
+</pre>
 
 `primaryMasterKey` の値をコピーします。 この情報は、次の手順に必要です。
 
@@ -225,16 +220,12 @@ node server.js
 
 アプリが読み込まれたら、運用環境で実行されていることを確認します。
 
-```console
+<pre>
 --
 MEAN.JS
 
-Environment:     production
-Server:          http://0.0.0.0:8443
-Database:        mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false
-App version:     0.5.0
-MEAN.JS version: 0.5.0
-```
+Environment:     production Server:        http://0.0.0.0:8443 Database:        mongodb://&lt; cosmosdb_name&gt;:&lt; primary_master_key&gt;@&lt; cosmosdb_name&gt;.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false App version:   0.5.0 MEAN.JS version:0.5.0
+</pre>
 
 ブラウザーで `http://localhost:8443` にアクセスします。 上部のメニューの **[サインアップ]** をクリックし、テスト ユーザーを作成します。 ユーザーの作成とサインインに成功すると、アプリが Azure の Cosmos DB データベースにデータを書き込みます。 
 
@@ -284,7 +275,7 @@ db: {
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
@@ -300,9 +291,9 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
-``` 
+</pre>
 
 デプロイ プロセスにより、`npm install` の後、[Gulp](https://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。 
 

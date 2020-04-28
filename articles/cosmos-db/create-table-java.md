@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c8427333a0a395ca4a0998662cacf13dea662e04
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e3517804cb66a9f98351e4c68f4f7c4387cee8fe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212851"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083803"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>クイック スタート:Azure Cosmos DB Table API データを管理する Java アプリを作成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "77212851"
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -71,6 +71,8 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
     ```
+
+> ![ヒント] 類似のコードの詳細なチュートリアルについては、[Cosmos DB Table API サンプル](table-storage-how-to-use-java.md)に関する記事を参照してください。 
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 

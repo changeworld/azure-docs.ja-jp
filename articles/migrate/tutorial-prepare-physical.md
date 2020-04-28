@@ -1,19 +1,15 @@
 ---
 title: Azure Migrate を使用した評価と移行に向けて物理サーバーを準備する
 description: Azure Migrate を使用した評価と移行に向けて物理サーバーを準備する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: raynew
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f9048b08b3e77a0c8d5ae9a9d10c614a4e0af61
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336684"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535283"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -35,21 +31,18 @@ ms.locfileid: "80336684"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
 
-## <a name="prepare-azure"></a>Azure を準備する
+## <a name="prepare-azure-for-server-assessment"></a>サーバー評価のために Azure を準備します。
 
-### <a name="azure-permissions"></a>Azure のアクセス許可
-
-Azure Migrate のデプロイに対するアクセス許可を設定する必要があります。
+Azure Migrate と連携するように Azure を設定します。 
 
 **タスク** | **詳細** 
 --- | --- 
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。 | 
-**リソースプロバイダーの登録** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment によって Hyper-V VM を検出しおよび評価します。<br/><br/> アプライアンスの登録中、リソースプロバイダーはアプライアンスで選択されたサブスクリプションに登録されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
-**Azure AD アプリの作成** | アプライアンスを登録するとき、Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信に使用される Azure Active Directory (Azure AD) アプリが作成されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> Azure AD アプリを作成するためのアクセス許可が必要です (アプリケーション開発者ロールで利用可能)。
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。 
+**リソースプロバイダーの登録 (評価のみ)** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Azure Migrate:Server Assessment によってマシンを検出し、評価します。<br/><br/> アプライアンスの登録中、リソースプロバイダーはアプライアンスで選択されたサブスクリプションに登録されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+**Azure AD アプリの作成 (評価のみ)** | アプライアンスを登録するとき、Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信に使用される Azure Active Directory (Azure AD) アプリが作成されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> Azure AD アプリを作成するためのアクセス許可が必要です (アプリケーション開発者ロールで利用可能)。
 
 
-
-### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる
+### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる 
 
 Azure Migrate プロジェクトを作成するためのアクセス許可があることを確認します。
 
@@ -60,7 +53,7 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
     - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
 
 
-### <a name="assign-permissions-to-register-the-appliance"></a>アプライアンスを登録するためのアクセス許可を割り当てる
+### <a name="assign-permissions-to-register-the-appliance"></a>アプライアンスを登録するためのアクセス許可を割り当てる 
 
 次のいずれかの方法を使用して、アプライアンスの登録時に Azure AD アプリを作成するためのアクセス許可を Azure Migrate に割り当てることができます。
 
@@ -89,6 +82,39 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
+## <a name="prepare-azure-for-physical-server-migration"></a>物理サーバーの移行に向けて Azure を準備する
+
+Server Migration を使用して物理サーバーを移行する準備を Azure で行います。
+
+**タスク** | **詳細**
+--- | ---
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。
+**Azure アカウントのアクセス許可の確認** | ご使用の Azure アカウントには、VM を作成するためのアクセス許可と Azure マネージド ディスクへの書き込みアクセス許可が必要です。
+**Azure ネットワークの作成** | Azure にネットワークを設定します。
+
+
+### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる
+
+1. Azure portal でサブスクリプションを開き、 **[アクセス制御 (IAM)]** を選択します。
+2. **[アクセスの確認]** で関連するアカウントを探し、それをクリックしてアクセス許可を表示します。
+3. **共同作成者**または**所有者**のアクセス許可を持っている必要があります。
+    - 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。
+    - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
+
+
+### <a name="assign-azure-account-permissions"></a>Azure アカウントのアクセス許可を割り当てる
+
+仮想マシン共同作成者ロールを Azure アカウントに割り当てます。 これで、次の作業を行うためのアクセス許可が得られます。
+
+    - 選択したリソース グループ内に VM を作成する。
+    - 選択した仮想ネットワーク内に VM を作成する。
+    - Azure マネージド ディスクに書き込む。 
+
+### <a name="create-an-azure-network"></a>Azure ネットワークを作成する
+
+Azure 仮想ネットワーク (VNet) を[設定](../virtual-network/manage-virtual-network.md#create-a-virtual-network)します。 Azure にレプリケートすると、Azure VM が作成され、移行の設定時に指定した Azure VNet に参加させられます。
+
+
 ## <a name="prepare-for-physical-server-assessment"></a>物理サーバーの評価を準備する
 
 物理サーバーの評価を準備するには、物理サーバーの設定を確認し、アプライアンスのデプロイの設定を確認する必要があります。
@@ -104,7 +130,7 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 次のチュートリアルで Azure Migrate アプライアンスを設定して評価を開始する前に、アプライアンスのデプロイの準備を行います。
 
 1. 物理サーバーのアプライアンスの要件を[確認](migrate-appliance.md#appliance---physical)します。
-2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-appliance.md#url-access)します。
+2. アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government](migrate-appliance.md#government-cloud-urls) クラウドでアクセスする必要がある Azure の URL について確認します。
 3. 検出および評価中にアプライアンスによって収集されるデータを[確認](migrate-appliance.md#collected-data---vmware)します。
 4. 物理サーバー評価のためのポート アクセスの要件に[注意](migrate-support-matrix-physical.md#port-access)します。
 
@@ -113,17 +139,23 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 
 Azure Migrate には、オンプレミスのサーバーを検出するためのアクセス許可が必要です。
 
-- **Windows:** 探索に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。ユーザー アカウントは、リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザーのグループに追加する必要があります。
+- **Windows:** 検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 ユーザー アカウントは、Remote Management Users、Performance Monitor Users、Performance Log Users の各グループに追加する必要があります。
 - **Linux:** 検出する Linux サーバーのルート アカウントが必要です。
 
 ## <a name="prepare-for-physical-server-migration"></a>物理サーバーの移行を準備する
 
 物理サーバーの移行の要件を確認します。
 
+> [!NOTE]
+> 物理マシンを移行するとき、Azure Migrate:Server Migration では、Azure Site Recovery サービスのエージェントベースのディザスター リカバリーと同じレプリケーション アーキテクチャが使用されており、一部のコンポーネントでは、同じコード ベースが共有されています。 一部のコンテンツは、Site Recovery のドキュメントにリンクされている場合があります。
+
 - 移行のための物理サーバーの要件を[確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)します。
-- Azure Migrate: サーバー移行では、物理サーバーの移行にレプリケーション サーバーを使用します。
+- Azure Migrate:Server Migration では、物理サーバーの移行にレプリケーション サーバーが使用されます。
     - レプリケーション アプライアンスのデプロイ要件と、アプライアンスでの MySQL のインストールの[オプション](migrate-replication-appliance.md#mysql-installation)を[確認](migrate-replication-appliance.md#appliance-requirements)します。
-    - レプリケーション アプライアンスの [URL](migrate-replication-appliance.md#url-access) と[ポート] (migrate-replication-appliance.md#port-access) アクセス要件を確認します。
+    - パブリック クラウドおよび政府機関向けクラウドにアクセスするレプリケーション アプライアンスに必要な [Azure URL](migrate-appliance.md#url-access) を確認します。
+    - レプリケーション アプライアンスの[ポート](migrate-replication-appliance.md#port-access) アクセス要件を確認します。
+
+
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -4,14 +4,14 @@ description: Spring Boot アプリに機能フラグを追加し、Azure App Con
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944336"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687361"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -57,7 +57,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. テキスト エディターで *pom.xml* ファイルを開き、`<dependencies>` の一覧に以下を追加します。
 
-### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+    **Spring Cloud 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+    **Spring Cloud 1.2.x**
 
     ```xml
     <dependency>
@@ -103,7 +103,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 1. アプリの `resources` ディレクトリに移動し、`bootstrap.properties` を開きます。  ファイルが存在しない場合は、作成してください。 次の行をファイルに追加します。
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. 構成ストアの App Configuration ポータルで、サイドバーから `Access keys` を選択します。 [読み取り専用キー] タブを選択します。プライマリ接続文字列の値をコピーします。
@@ -283,7 +283,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     mvn spring-boot:run
     ```
 
-1. ブラウザー ウィンドウを開いて、`https://localhost:8080` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+1. ブラウザー ウィンドウを開き、`http://localhost:8080/welcome` に移動します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

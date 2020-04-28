@@ -2,14 +2,14 @@
 title: Azure Migrate を使用した評価と移行に向けて VMware VM を準備する
 description: Azure Migrate を使用した評価と移行に向けて VMware VM を準備する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619427"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677301"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -123,7 +123,7 @@ VMware VM の評価を準備するには、以下が必要です。
 次のチュートリアルで Azure Migrate アプライアンスを設定して評価を開始する前に、アプライアンスのデプロイの準備を行います。
 
 1. Azure Migrate アプライアンスの要件を[確認](migrate-appliance.md#appliance---vmware)します。
-2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-appliance.md#url-access)します。 URL ベースのファイアウォールまたはプロキシを使用している場合は、必要な URL へのアクセスが許可されていることを確認します。
+2. アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government](migrate-appliance.md#government-cloud-urls) クラウドでアクセスする必要がある Azure の URL について確認します。
 3. 検出および評価中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---vmware)します。
 4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-vmware.md#port-access)します。
 
@@ -138,7 +138,8 @@ VMware VM の[エージェントレス移行](server-migrate-overview.md)の要�
 2. vCenter Server にアクセスする Azure Migrate に必要な[アクセス許可を確認](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)します。
 3. VMware VM の要件を[確認](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)します。
 4. Azure Migrate アプライアンスの要件を[確認](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance)します。
-5. [URL アクセス](migrate-appliance.md#url-access)と[ポート アクセス](migrate-support-matrix-vmware-migration.md#agentless-ports)の要件に注意します。
+5. [パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドに必要な URL アクセスをメモします。
+6. [ポートのアクセス](migrate-support-matrix-vmware-migration.md#agentless-ports)要件を確認します。
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>エージェントベースの VMware 移行の準備
 
@@ -150,7 +151,8 @@ VMware VM の[エージェントベース移行](server-migrate-overview.md)の�
 3. エージェントベース移行では、レプリケーション アプライアンスを使用します。
     - レプリケーション アプライアンスのデプロイ要件を[確認](migrate-replication-appliance.md#appliance-requirements)します。
     - アプライアンスに MySQL をインストールするための[いくつかの方法を確認](migrate-replication-appliance.md#mysql-installation)します。
-    - レプリケーション アプライアンスの [URL](migrate-replication-appliance.md#url-access) と[ポート](migrate-replication-appliance.md#port-access) アクセス要件を確認します。
+    - [パブリック](migrate-replication-appliance.md#url-access) クラウドと[政府機関向け](migrate-replication-appliance.md#azure-government-url-access)クラウドに必要な URL アクセスをメモします。
+    - レプリケーション アプライアンスの[ポート アクセス](migrate-replication-appliance.md#port-access)要件を確認します。
     
 ## <a name="next-steps"></a>次のステップ
 

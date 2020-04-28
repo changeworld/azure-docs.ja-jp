@@ -3,7 +3,7 @@ title: Azure 仮想マシンでの Oracle ソリューション | Microsoft Docs
 description: Microsoft Azure でサポートされている Oracle 仮想マシン イメージの構成と制限事項について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: BorisB2015
 manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
@@ -12,14 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
-ms.author: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 0a2374a4c3526b77a25f9fa8faa94c9cb0d4c4ea
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: borisb
+ms.openlocfilehash: 0cee7c25960d567c75a14d8ad9ef95b3e7221862
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263235"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683419"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 

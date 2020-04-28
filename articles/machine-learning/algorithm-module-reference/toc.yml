@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: 異常検出モデルのトレーニング
       href: train-anomaly-detection-model.md
+- name: Web サービス
+  items:
+    - name: Web サービスの入出力
+      href: web-service-input-output.md
 - name: モジュールのエラーとトラブルシューティング
   href: designer-error-codes.md

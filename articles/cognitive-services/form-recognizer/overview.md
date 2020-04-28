@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399451"
+ms.locfileid: "81529894"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -92,7 +92,7 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 
 レシート モデルの入力要件は少し異なります。
 
-* 形式は、JPEG、PNG、BMP、PDF (テキストまたはスキャン)、または TIFF である必要があります。
+* 形式は、JPEG、PNG、PDF (テキストまたはスキャン済み)、TIFF のいずれかである必要があります。
 * ファイル サイズは 20 MB 未満である必要があります。
 * 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。
 * PDF の寸法は、最大で 17 x 17 インチにする必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。

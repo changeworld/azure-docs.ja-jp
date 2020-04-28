@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309669"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680089"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル
 
 業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用した Identity-as-a-Service (サービスとしての ID) としての Microsoft ID プラットフォームのエンドポイント。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 ここでは、Microsoft のオープンソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティの[オープンソース ライブラリ](reference-v2-libraries.md)を使用する場合に役立つ情報を紹介します。
-
-> [!NOTE]
-> Microsoft ID プラットフォーム エンドポイントでは、Azure AD のすべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](active-directory-v2-limitations.md)に関するページを参照してください。
 
 ## <a name="the-basics"></a>基本
 
@@ -39,7 +36,7 @@ OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報の
 
 ## <a name="app-registration"></a>アプリの登録
 
-個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、**Azure portal** の[アプリの登録](https://aka.ms/appregistrations) エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、[Azure portal](https://aka.ms/appregistrations) の**アプリの登録** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する**アプリケーション ID**。
 * 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI** (オプション)
@@ -68,7 +65,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 これらのエンドポイントと対話する方法について学習するには、「[プロトコル](#protocols)」セクションで特定のアプリの種類を選択し、リンクから詳細情報にアクセスしてください。
 
 > [!TIP]
-> Azure AD に登録されたアプリはいずれも、個人用アカウントにサインインしなくても、Microsoft ID プラットフォーム エンドポイントを使用できます。  アプリケーションを作成し直さなくても、このようにして既存のアプリケーションを Microsoft ID プラットフォームと [MSAL](reference-v2-libraries.md) に移行することができます。  
+> Azure AD に登録されたアプリはいずれも、個人用アカウントにサインインしなくても、Microsoft ID プラットフォーム エンドポイントを使用できます。  アプリケーションを作成し直さなくても、このようにして既存のアプリケーションを Microsoft ID プラットフォームと [MSAL](reference-v2-libraries.md) に移行することができます。
 
 ## <a name="tokens"></a>トークン
 

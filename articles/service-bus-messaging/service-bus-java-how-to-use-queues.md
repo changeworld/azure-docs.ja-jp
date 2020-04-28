@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294124"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732188"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>クイック スタート:Java で Azure Service Bus キューを使用してメッセージを送受信する
 
@@ -43,7 +43,7 @@ ms.locfileid: "80294124"
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 
 
-Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。 IntelliJ を使用している場合は、[Azure Toolkit for IntelliJ のインストール](/azure/java/intellij/azure-toolkit-for-intellij-installation)に関するページを参照してください。 
+Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。 IntelliJ を使用している場合は、[Azure Toolkit for IntelliJ のインストール](/azure/developer/java/toolkit-for-intellij/installation)に関するページを参照してください。 
 
 ![Microsoft Azure Libraries for Java を Eclipse プロジェクトに追加する](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
@@ -196,7 +196,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 詳細については、 [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)を参照してください。
 
-[Azure SDK for Java]: /azure/java/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
