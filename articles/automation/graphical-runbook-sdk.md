@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 0058c0a0cedf2ea3f6c32f8f8368cca5b8dc6e3c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682914"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509008"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Automation Grpahical Runbook SDK を使用する
 
@@ -18,7 +18,7 @@ ms.locfileid: "81682914"
 
 ## <a name="prerequisites"></a>前提条件
 
-`Microsoft.Azure.Automation.GraphicalRunbook.Model` パッケージをプロジェクトにインポートします。
+`Microsoft.Azure.Management.Automation.GraphicalRunbook.Model` パッケージをプロジェクトにインポートします。
 
 ## <a name="create-a-runbook-object-instance"></a>Runbook オブジェクトのインスタンスを作成する
 
