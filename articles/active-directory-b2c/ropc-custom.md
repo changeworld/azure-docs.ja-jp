@@ -12,10 +12,10 @@ ms.date: 04/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529186"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する

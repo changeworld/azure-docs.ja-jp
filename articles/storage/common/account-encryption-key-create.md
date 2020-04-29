@@ -29,7 +29,7 @@ Queue storage と Table Storage でアカウント暗号化キーを使用する
 
 Queue storage と Table Storage でアカウント暗号化キーを使用するストレージ アカウントを作成できるのは、次のリージョンになります。
 
-- 米国東部
+- East US
 - 米国中南部
 - 米国西部 2  
 

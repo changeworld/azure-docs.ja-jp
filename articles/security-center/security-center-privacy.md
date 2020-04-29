@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
 ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585970"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
