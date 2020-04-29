@@ -45,8 +45,8 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 |
 | `subdomain` | string | Azure 内の Immersive Reader リソースのカスタム サブドメイン。 |
-| `content` | [Content](#content) | Immersive Reader で表示するコンテンツを含むオブジェクト。 |
-| `options` | Options (#options) | Immersive Reader の特定の動作を構成するオプション。 省略可能。 |
+| `content` | [コンテンツ](#content) | Immersive Reader で表示するコンテンツを含むオブジェクト。 |
+| `options` | [[オプション]](#options) | Immersive Reader の特定の動作を構成するオプション。 省略可能。 |
 
 ### <a name="returns"></a>戻り値
 
@@ -122,7 +122,7 @@ Immersive Reader で表示するコンテンツを含みます。
 
 ### <a name="cookiepolicy-enum"></a>CookiePolicy 列挙型
 
-Immersive Reader の Cookie の使用に関するポリシーを設定するために使用される列挙型です。 [Options](#options)を参照してください。
+Immersive Reader の Cookie の使用に関するポリシーを設定するために使用される列挙型です。 [オプション](#options)を参照してください。
 
 ```typescript
 enum CookiePolicy { Disable, Enable }
