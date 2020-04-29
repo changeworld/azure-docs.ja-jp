@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>概要
-指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインを読み取るためのアクセス権を付与します。
+基本の読み取りアクセス許可用に、ご使用の Active Directory フォレストとドメインを初期化します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -291,7 +291,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>概要
-指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される Exchange ハイブリッド機能のためのアクセス権を付与します。
+Exchange ハイブリッド機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -458,7 +458,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>概要
-指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される Exchange メールのパブリック フォルダー機能のためのアクセス権を付与します。
+Exchange メールのパブリック フォルダー機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -620,7 +620,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>概要
-指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される mS-DS-ConsistencyGuid 機能のためのアクセス権を付与します。
+mS-DS-ConsistencyGuid 機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -781,8 +781,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>概要
-指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるパスワード ハッシュの同期機能のためのアクセス権を付与します。
-
+パスワード ハッシュの同期用に、ご使用の Active Directory フォレストとドメインを初期化します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -903,7 +902,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>概要
-指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるパスワード ライトバック機能のためのアクセス権を付与します。
+Azure AD からのパスワード ライトバック用に、ご使用の Active Directory フォレストとドメインを初期化します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -1199,7 +1198,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>概要
-指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるグループ ライトバック機能のためのアクセス権を付与します。
+Azure AD からのグループ ライトバック用に、ご使用の Active Directory フォレストとドメインを初期化します。
 
 ### <a name="syntax"></a>SYNTAX
 
