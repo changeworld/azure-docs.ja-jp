@@ -4,10 +4,10 @@ description: この記事では、カスタマイズ可能な Fabric の設定�
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416239"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする

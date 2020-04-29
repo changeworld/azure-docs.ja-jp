@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883476"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450885"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
-アプリケーション マニフェストには、Microsoft ID プラットフォームにあるアプリケーション オブジェクトのすべての属性の定義が含まれます。 それは、アプリケーション オブジェクトを更新するメカニズムとしても機能します。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)を参照してください。
+アプリケーション マニフェストには、Microsoft ID プラットフォームにあるアプリケーション オブジェクトのすべての属性の定義が含まれます。 それは、アプリケーション オブジェクトを更新するメカニズムとしても機能します。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)を参照してください。
 
 Azure portal で、あるいは [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) または [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) を使用してプログラムで、アプリの属性を構成できます。 ただし、一部のシナリオでは、アプリ マニフェストを編集してアプリの属性を構成する必要があります。 これらのシナリオは、次のとおりです。
 
@@ -40,6 +40,20 @@ Azure portal で、あるいは [REST API](https://docs.microsoft.com/previous-v
 ## <a name="manifest-reference"></a>マニフェスト リファレンス
 
 ここでは、アプリケーション マニフェストで見られる属性について説明します。
+
+### <a name="id-attribute"></a>id 属性
+
+| Key | 値の型 |
+| :--- | :--- |
+| id | String |
+
+ディレクトリ内のアプリの一意識別子。 この ID は、いずれかのプロトコル トランザクション内のアプリを識別するために使用される識別子ではありません。 これは、ディレクトリ クエリ内のオブジェクトを参照するために使用されます。
+
+例:
+
+```json
+    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
+```
 
 ### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion 属性
 
@@ -230,19 +244,7 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
     "optionalClaims": null,
 ```
 
-### <a name="id-attribute"></a>id 属性
 
-| Key | 値の型 |
-| :--- | :--- |
-| id | String |
-
-ディレクトリ内のアプリの一意識別子。 この ID は、いずれかのプロトコル トランザクション内のアプリを識別するために使用される識別子ではありません。 これは、ディレクトリ クエリ内のオブジェクトを参照するために使用されます。
-
-例:
-
-```json
-    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
 

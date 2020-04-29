@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 82660cdb4ab6523bae7608fe3b071f20cb3603f8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419172"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>マッピング データ フローをパラメーター化する
