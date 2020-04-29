@@ -204,54 +204,54 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 | Language              | 言語コード | ユーザー フロー         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
 | アラビア語                | ar            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ブルガリア語 | bg | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Bulgarian             | bg            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ベンガル語                | bn            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | カタロニア語               | ca            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| チェコ語                 | cs            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| デンマーク語                | da            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ドイツ語                | de            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ギリシャ語                 | el            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| 英語               | en            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| スペイン語               | es            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| エストニア語 | et | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Czech                 | cs            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Danish                | da            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| German                | de            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Greek                 | el            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| English               | en            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Spanish               | es            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Estonian              | et            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | バスク語                | eu            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| フィンランド語               | fi            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| フランス語                | fr            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Finnish               | fi            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| French                | fr            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ガリシア語              | gl            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | グジャラート語              | gu            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | ヘブライ語                | he            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ヒンディー語                 | hi            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| クロアチア語              | hr            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ハンガリー語             | hu            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Croatian              | hr            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Hungarian             | hu            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | インドネシア語            | id            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| イタリア語               | it            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| 日本語              | ja            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Italian               | it            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Japanese              | ja            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | カザフ語                | kk            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | カンナダ語               | kn            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
-| 韓国語                | ko            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| リトアニア語 | lt | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ラトビア語 | lv | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Korean                | ko            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Lithuanian            | lt            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Latvian               | lv            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | マラヤーラム語             | ml            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | マラーティー語               | mr            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | マレー語                 | ms            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ノルウェー語 - ブークモール      | nb            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
-| オランダ語                 | nl            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Dutch                 | nl            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ノルウェー語             | no            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | パンジャーブ語               | pa            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
-| ポーランド語                | pl            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Polish                | pl            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ポルトガル語 - ブラジル   | pt-br         | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ポルトガル語 - ポルトガル | pt-pt         | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ルーマニア語              | ro            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ロシア語               | ru            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| スロバキア語                | sk            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| スロベニア語 | sl | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Romanian              | ro            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Russian               | ru            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Slovak                | sk            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Slovenian             | sl            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | セルビア語 - キリル    | sr-cryl-cs    | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | セルビア語 - ラテン       | sr-latn-cs    | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| スウェーデン語               | sv            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Swedish               | sv            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | タミル語                 | ta            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | テルグ語                | te            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
-| タイ語                  | th            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| トルコ語               | tr            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Thai                  | th            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| Turkish               | tr            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ウクライナ語             | uk            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ベトナム語            | vi            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | 中国語 - 簡体字  | zh-hans       | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
