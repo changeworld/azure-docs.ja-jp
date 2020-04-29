@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80672968"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の JSON とデータ構造の操作

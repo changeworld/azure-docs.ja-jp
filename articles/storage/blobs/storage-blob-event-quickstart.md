@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745516"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする

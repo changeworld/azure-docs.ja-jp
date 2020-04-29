@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655007"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行

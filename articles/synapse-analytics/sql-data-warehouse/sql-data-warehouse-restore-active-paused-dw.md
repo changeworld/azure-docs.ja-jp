@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745214"
 ---
 # <a name="restore-an-existing-sql-pool"></a>既存の SQL プールを復元する

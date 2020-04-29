@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80802385"
 ---
 # <a name="http-features"></a>HTTP 機能
