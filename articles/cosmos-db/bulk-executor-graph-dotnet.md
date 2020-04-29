@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
 ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982705"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する

@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
 ms.openlocfilehash: 1a5de2647df5b8092fdcf8e6233f1fddc1690b03
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80981326"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報

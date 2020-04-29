@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
 ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878206"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー

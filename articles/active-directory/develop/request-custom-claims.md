@@ -13,10 +13,10 @@ ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 4974fe3b387683f662d7a7b4f3ccb4935153f07e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883098"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>方法:iOS および macOS 用の MSAL を使用してカスタム要求を行う

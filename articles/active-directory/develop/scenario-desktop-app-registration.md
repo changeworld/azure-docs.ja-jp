@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885159"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
