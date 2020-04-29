@@ -62,7 +62,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | BW | ボツワナ|
 | BY | ベラルーシ|
 | BZ | ベリーズ|
-| CA | カナダ|
+| CA | Canada|
 | CD | コンゴ民主共和国|
 | CF | 中央アフリカ共和国|
 | CH | スイス|
@@ -198,7 +198,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | アメリカ|
+| US | United States|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|
