@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237207"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605913"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps から Azure 関数を呼び出す
 
@@ -101,7 +101,9 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
 ## <a name="create-functions-inside-logic-apps"></a>ロジック アプリの内部で関数を作成する
 
-ロジック アプリ デザイナーを使用して、ロジック アプリ内から開始される Azure 関数を作成するには、まず Azure 関数アプリを用意する必要があります。このアプリが自分の関数のコンテナーになります。 関数アプリを持っていない場合は、まず関数アプリを作成します。 「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
+ロジック アプリ デザイナーに組み込みの Azure Functions アクションを使用して、ロジック アプリのワークフローから直接 Azure 関数を作成することができますが、このメソッドは、JavaScript で記述された Azure 関数に対してのみ使用できます。 その他の言語の場合は、Azure portal の Azure Functions エクスペリエンスを使用して Azure 関数を作成できます。 詳細については、「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
+
+ただし、Azure 関数を作成する前に、関数のコンテナーである Azure 関数アプリをあらかじめ用意しておく必要があります。 関数アプリを持っていない場合は、まず関数アプリを作成します。 「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 

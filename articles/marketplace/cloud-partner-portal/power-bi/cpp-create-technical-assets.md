@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 90317591b2666f48363c2ee636e36822e2083ed3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1d67bd46cfc961e14ec1e1eb95fbc2d748b8a629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984812"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143083"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>Power BI アプリ オファーの技術資産を作成する
 
 >[!Important]
->2020 年 4 月 13 日以降、パートナー センターへの Power BI アプリ オファーの管理の移行を開始します。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Power BI アプリ作成の概要](https://aka.ms/AzureCreatePBIServiceApp)の手順に従い、移行後のオファーを管理します。
+>2020 年 4 月 13 日以降、パートナー センターへの Power BI アプリ オファーの管理の移行を開始します。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Power BI アプリ作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)の手順に従い、移行後のオファーを管理します。
 
 このオファーの種類に必要な主な技術資産は Power BI アプリです。 Power BI アプリは、主なデータセット、レポート、またはダッシュボードのコレクションであり、オプションとして接続サービスと埋め込みデータセットがあります。 これは、以前は[コンテンツ パック](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)と呼ばれていた資産の種類から進化したものです。 この種類のアプリを開発する場合の詳細については、「[Power BI テンプレート アプリとは](https://go.microsoft.com/fwlink/?linkid=2028636)」を参照してください。
 

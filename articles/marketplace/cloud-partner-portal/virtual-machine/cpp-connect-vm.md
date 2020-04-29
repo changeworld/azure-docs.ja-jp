@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4aea624c2127c9b0a61d72b8d14929ce6f47df24
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272663"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142488"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure ベースの仮想マシンに接続する
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://aka.ms/AzureVMTechAsset)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
-この記事では、Azure に作成した仮想マシン (VM) に接続してサインインする方法について説明します。  接続に成功した後は、ホスト サーバーにローカルからログオンしている感覚で VM を操作することができます。 
+この記事では、Azure に作成した仮想マシン (VM) に接続してサインインする方法について説明します。  接続に成功した後は、ホスト サーバーにローカルからログオンしている感覚で VM を操作することができます。
 
 ## <a name="connect-to-a-windows-based-vm"></a>Windows ベースの VM に接続する
 

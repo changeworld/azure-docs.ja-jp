@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: adac73d64feb6280c5043776249072e9f7595faa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273088"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142984"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>仮想マシンの [体験版] タブ
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://aka.ms/CreateAzureVMoffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
 **[新しいプラン]** ページの **[体験版]** タブを使用すると、標準シナリオで製品の主な機能とメリットを示すセルフ型ハンズオン デモを見込み顧客に提供できます。  体験版は、体験版をサポートする種類のプランのオプション機能です。  体験版では、適切に実装する資産をサポートしている必要があります。  詳細については、記事「[Azure Marketplace Test Drive (Azure Marketplace 体験版) ](https://azure.microsoft.com/blog/azure-marketplace-test-drive/)」をご覧ください。  <!--TD: Replace with migrated version of Test Drive article! -->
 

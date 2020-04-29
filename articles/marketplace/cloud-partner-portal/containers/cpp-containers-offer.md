@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: dsindona
-ms.openlocfilehash: cd9f98d42efcb35dbab4f3c0a06c5a11360e36b6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 81908de5c2fb3960684ed6cf37952e8815d8a5d5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270351"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148309"
 ---
 # <a name="containers"></a>Containers
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure Container オファーを作成する](https://aka.ms/CreateContainerOffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure Container オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)」の手順に従って、移行されたオファーを管理します。
 
 <table> <tr> <td>このセクションでは、コンテナー イメージを <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> に発行する方法を説明します。  
 コンテナー オファーの種類では、<a href="https://docs.microsoft.com/azure/aks/index">Azure Kubernetes Service</a> インスタンスまたは <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure Container Instances</a> としてプロビジョニングされ、<a href="https://docs.microsoft.com/azure/container-registry">Azure Container Registry</a> リポジトリでホストされている、Docker コンテナー イメージがサポートされています。 </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>

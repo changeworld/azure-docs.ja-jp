@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: af88fdf3378a6290c773c658ea6dd3469d7c92cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531279"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606090"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
 
@@ -101,7 +101,7 @@ ms.locfileid: "79531279"
 
 ### <a name="connections-from-inside-azure"></a>Azure 内からの接続
 
-Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 開始 IP アドレスと終了 IP アドレスが *0.0.0.0* であるファイアウォール設定は、Azure 接続が許可されていることを示します。 これは、ファイアウォール ルールを設定し、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 接続が許可されていない場合、要求は SQL Database サーバーに到達しません。
+Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 これは、ファイアウォール ルールを設定し、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 接続が許可されていない場合、要求は SQL Database サーバーに到達しません。
 
 > [!IMPORTANT]
 > このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。

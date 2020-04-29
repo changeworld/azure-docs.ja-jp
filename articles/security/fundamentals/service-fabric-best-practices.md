@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548821"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461652"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -32,7 +32,7 @@ Azure Service Fabric のセキュリティに関して推奨されるベスト �
 -   X.509 証明書を使用する。
 -   セキュリティ ポリシーを構成する。
 -   Reliable Actors のセキュリティ構成を実装する。
--   Azure Service Fabric に SSL を構成する。
+-   Azure Service Fabric に TLS を構成する。
 -   Azure Service Fabric にネットワークの分離とセキュリティを使用する。
 -   セキュリティ確保のために Azure Key Vault を構成する。
 -   ユーザーをロールに割り当てる。
@@ -118,13 +118,13 @@ Service Fabric では、Reliable Actors アプリケーション フレームワ
 レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、[レプリケーターのセキュリティ構成](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)を使用します。 この構成は、サービスがお互いのレプリケーション トラフィックを見ることができないようにするものであり、高可用性データのセキュリティの確保に役立ちます。 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
 レプリケーター構成では、アクター状態プロバイダーの状態の信頼性を高める役割を担うレプリケーターを構成します。
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>Azure Service Fabric の SSL を構成する
-サーバー認証プロセスにより、管理クライアントに対してクラスター管理エンドポイントを[認証](../../service-fabric/service-fabric-cluster-creation-via-arm.md)します。 これにより、管理クライアントは自らが実際のクラスターと通信していることを認識します。 この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対しても [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) を提供します。
+## <a name="configure-tls-for-azure-service-fabric"></a>Azure Service Fabric に TLS を構成する
+サーバー認証プロセスにより、管理クライアントに対してクラスター管理エンドポイントを[認証](../../service-fabric/service-fabric-cluster-creation-via-arm.md)します。 これにより、管理クライアントは自らが実際のクラスターと通信していることを認識します。 また、この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対する [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) も提供します。
 クラスターのカスタム ドメイン名を取得する必要があります。 証明機関に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
-アプリケーションに SSL を構成するには、まず CA によって署名された SSL 証明書を取得する必要があります。 CA は信頼されたサード パーティであり、SSL を使ったセキュリティ保護のための証明書を発行する機関です。 まだ SSL 証明書を持っていない場合には、SSL 証明書を販売する会社から購入する必要があります。
+アプリケーションに TLS を構成するには、まず CA によって署名された SSL/TLS 証明書を取得する必要があります。 CA は信頼されたサード パーティであり、TLS を使ったセキュリティ保護のための証明書を発行する機関です。 まだ SSL/TLS 証明書を持っていない場合には、SSL/TLS 証明書を販売する会社から購入する必要があります。
 
-証明書は、Azure における SSL 証明書の次の要件を満たす必要があります。
+証明書は、Azure における SSL/TLS 証明書について、次の要件を満たす必要があります。
 -   証明書は秘密キーを含む必要があります。
 
 -   証明書はキー交換のために作成しておく必要があります。また、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
@@ -135,13 +135,13 @@ Service Fabric では、Reliable Actors アプリケーション フレームワ
     - CA に対して、サービスのカスタム ドメイン名と一致するサブジェクト名の証明書を要求します。 たとえば、カスタム ドメイン名が __contoso__ **.com** であれば、CA から取得する証明書のサブジェクト名は **.contoso.com** または __www__ **.contoso.com** になっている必要があります。
 
     >[!NOTE]
-    >CA から __cloudapp__ **.net** ドメインの SSL 証明書を取得することはできません。
+    >CA から __cloudapp__ **.net** ドメインの SSL/TLS 証明書を取得することはできません。
 
 -   証明書では、2,048 ビット以上の暗号化を使用する必要があります。
 
 HTTP は安全なプロトコルではないため、傍受される可能性があります。 HTTP を使って転送されるデータは、Web ブラウザーから Web サーバーまでの間や、それ以外のエンドポイント相互間でプレーン テキストとしてやり取りされます。 このため、HTTP を使ってクレジット カード情報やアカウントのログイン情報などの機微なデータを送信すると、攻撃者に傍受および閲覧されるおそれがあります。 これに対して、ブラウザーから HTTPS を使ってデータを送信または投稿した場合には、SSL により機微な情報が暗号化されるため、傍受から守ることができます。
 
-SSL 証明書の使用に関する詳細については、[Azure アプリケーションの SSL 構成](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)に関するページを参照してください。
+SSL/TLS 証明書の使用に関する詳細については、「[Azure でアプリケーションの SSL を構成する](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)」を参照してください。
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Azure Service Fabric にネットワークの分離とセキュリティを使用する
 サンプルとしての [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使って、3 ノードタイプ セキュア クラスターを設定します。 ネットワーク トラフィックは受信と送信のどちらも、テンプレートとネットワーク セキュリティ グループ (NSG) を使って制御します。
@@ -155,7 +155,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 
 クラスターのセキュリティを確保し、アプリケーションにセキュリティ機能を提供するうえで Service Fabric が使用するのは、X.509 証明書です。 Azure の Service Fabric クラスターの[証明書の管理](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)には、Azure Key Vault を使用します。 クラスターを作成する Azure リソース プロバイダーは、キー コンテナーから証明書を取得します。 プロバイダーはその後、クラスターを Azure にデプロイするときにその証明書を VM にインストールします。
 
-[Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md)、Service Fabric クラスター、証明書を使用するリソース プロバイダーの三者の間には、証明書に基づく関係が存在します。 クラスターの作成時には、この関係に関する情報がキー コンテナーに格納されます。
+[Azure Key Vault](../../key-vault/general/secure-your-key-vault.md)、Service Fabric クラスター、証明書を使用するリソース プロバイダーの三者の間には、証明書に基づく関係が存在します。 クラスターの作成時には、この関係に関する情報がキー コンテナーに格納されます。
 
 キー コンテナーを設定する基本的な手順は、以下の 2 段階です:
 1. キー コンテナー専用のリソース グループを作成する。
@@ -166,7 +166,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 
     キー コンテナーは、デプロイが有効になっている必要があります。 デプロイが有効になっていないと、コンピューティング リソース プロバイダーがコンテナーから証明書を取得し、VM インスタンスに証明書をインストールすることができなくなります。
 
-キー コンテナーを設定する方法の詳細については、「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」を参照してください。
+キー コンテナーを設定する方法の詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」を参照してください。
 
 ## <a name="assign-users-to-roles"></a>ユーザーをロールに割り当てる
 クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (読み取り専用と管理者) にユーザーを割り当てます。ロールの割り当てには、Azure Portal を使用します。

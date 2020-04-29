@@ -11,10 +11,10 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/16/2020
 ms.openlocfilehash: a237beb72e35a236e353c58db520a8d611fdfdcd
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81618002"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする

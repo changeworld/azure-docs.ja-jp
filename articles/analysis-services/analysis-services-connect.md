@@ -4,15 +4,15 @@ description: Azure の Analysis Services サーバーに接続してデータを
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411310"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676644"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 
@@ -23,6 +23,9 @@ ms.locfileid: "80411310"
 [最新のクライアント ライブラリを入手する](analysis-services-data-providers.md)
 
 サーバーへの接続全般に言えることですが、Analysis Services サーバーに接続してデータをやり取りするためには、最新の AMO、ADOMD.NET、OLEDB クライアント ライブラリが必要となります。 SSMS、Visual Studio、Excel 2016 以降、および Power BI では、毎月のリリースにより最新のクライアント ライブラリがインストールまたは更新されます。 ただし、場合によっては、アプリケーションの最新バージョンがないこともあります。 たとえば、ポリシーによって更新が先延ばしされたり、Office 365 の更新プログラムが段階的提供チャネルで提供されたりするケースがそれに該当します。
+
+> [!NOTE]
+> クライアント ライブラリは、ユーザー名とパスワードを必要とするプロキシ サーバー経由で Azure Analysis Services に接続することはできません。 
 
 ## <a name="server-name"></a>サーバー名
 
