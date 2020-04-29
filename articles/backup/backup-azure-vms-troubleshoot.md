@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297392"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677349"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -191,6 +191,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | **エラー コード**:ExtensionSnapshotFailedNoSecureNetwork <br/> **エラー メッセージ**:セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
 | **エラー コード**:ExtensionVCRedistInstallationFailure <br/> **エラー メッセージ**:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
 | **エラー コード**:UserErrorRequestDisallowedByPolicy <BR> **エラー メッセージ**:VM に無効なポリシーが構成されており、スナップショット操作が妨げられています。 | [環境内のタグを管理する](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags) Azure Policy がある場合は、ポリシーを [Deny 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)から [Modify 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)に変更することを検討するか、[Azure Backup で要求される名前付けスキーマ](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)に従って手動でリソース グループを作成してください。
+
 ## <a name="jobs"></a>ジョブ
 
 | エラーの詳細 | 回避策 |
@@ -229,12 +230,12 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 #### <a name="windows-vms"></a>Windows VM
 
 * [エージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを完了するには、管理者特権が必要です。
-* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされたことを示します。 この手順は、Azure Resource Manager 仮想マシンの場合は必要ありません。
+* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)して、エージェントがインストールされたことを示します。 この手順は、Azure Resource Manager 仮想マシンの場合は必要ありません。
 
 #### <a name="linux-vms"></a>Linux VM
 
 * ディストリビューション リポジトリから最新バージョンのエージェントをインストールします。 パッケージ名について詳しくは、[Linux エージェント リポジトリ](https://github.com/Azure/WALinuxAgent)をご覧ください。
-* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[こちらのブログに従って](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) VM のプロパティを更新し、エージェントがインストールされていることを確認します。 このステップは、Resource Manager 仮想マシンの場合は必要ありません。
+* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)し、エージェントがインストールされていることを確認します。 このステップは、Resource Manager 仮想マシンの場合は必要ありません。
 
 ### <a name="update-the-vm-agent"></a>VM エージェントの更新
 
@@ -280,4 +281,3 @@ PowerShell を使用して静的 IP を設定する方法については、以�
 
 * [既存の VM に静的内部 IP を追加する方法](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
 * [ネットワーク インターフェイスに割り当てられているプライベート IP アドレスの割り当て方法を変更する](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
-

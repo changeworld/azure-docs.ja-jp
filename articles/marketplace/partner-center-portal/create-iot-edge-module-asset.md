@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e83c70424c131e5324192b07e65321d63bf06e2e
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674866"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730698"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 
@@ -25,8 +25,8 @@ ms.locfileid: "80674866"
 
 IoT Edge モジュールは、IoT Edge デバイスで実行する Docker 互換コンテナーです。
 
-- IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](https://aka.ms/UnderstandAzureIoTEdgemodules)を参照してください。
-- IoT Edge モジュールの開発を開始するには、[独自の IoT Edge モジュールを開発する](https://aka.ms/DevelopyourownIoTEdgemodules)を参照してください。
+- IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)を参照してください。
+- IoT Edge モジュールの開発を開始するには、[独自の IoT Edge モジュールを開発する](https://docs.microsoft.com/azure/iot-edge/module-development)を参照してください。
 
 ## <a name="technical-requirements"></a>技術的な要件
 
@@ -38,15 +38,15 @@ IoT Edge モジュールは、次のプラットフォーム オプションの�
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォーム
 
-IoT Edge でサポートされているすべてのレベル 1 プラットフォーム ([Azure IoT Edge サポート](https://aka.ms/AzureIoTEdgesupport)に記録されているもの) をサポートしなくてはなりません。 より良いカスタマー エクスペリエンスを提供するため、このオプションをお勧めします。 この基準を満たすモジュールが紹介されます。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
+IoT Edge でサポートされているすべてのレベル 1 プラットフォーム ([Azure IoT Edge サポート](https://docs.microsoft.com/azure/iot-edge/support)に記録されているもの) をサポートしなくてはなりません。 より良いカスタマー エクスペリエンスを提供するため、このオプションをお勧めします。 この基準を満たすモジュールが紹介されます。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
-- [GitHub Manifest-tool](https://aka.ms/GitHubmanifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。
+- [GitHub Manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。
 
-- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/)に追加します。 [Azure IoT Edge デバイス カタログ](https://catalog.azureiotsolutions.com/)に解決されるリダイレクト リンク https://aka.ms/iot-edge-certified を使用できます。
+- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/)に追加します。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォームのサブセット
 
-お使いになっているモジュールは、IoT Edge でサポートされているレベル 1 のプラットフォーム ([Azure IoT Edge サポート](https://aka.ms/AzureIoTEdgesupport)に記録されているもの) のサブセットを少なくとも 1 つサポートする必要があります。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
+お使いになっているモジュールは、IoT Edge でサポートされているレベル 1 のプラットフォーム ([Azure IoT Edge サポート](https://docs.microsoft.com/azure/iot-edge/support)に記録されているもの) のサブセットを少なくとも 1 つサポートする必要があります。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - 複数のプラットフォームがサポートされている場合は、GitHub の [manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。 マニフェスト タグは、1 つのプラットフォームのみがサポートされている場合は省略できます。
 - [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/)から少なくとも 1 つの IoT Edge デバイスに追加します。
@@ -146,4 +146,4 @@ IoT Edge モジュールを Azure Marketplace にアップロードするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [IoT Edge モジュール プランの作成](https://aka.ms/AzureCreateIoT)
+- [IoT Edge モジュール プランの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)

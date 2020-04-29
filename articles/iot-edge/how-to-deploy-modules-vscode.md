@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e1b2e2a80670cf0409f8f8477563b9a209cc8706
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4ac1a6e56cdbf47fd174d5244fc6ab51c63fb07
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77209207"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133896"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 
 ビジネス ロジックで IoT Edge モジュールを作成したら、それらをデバイスにデプロイしてエッジで動作させます。 連携してデータを収集および処理する複数のモジュールがある場合は、一度にそのすべてをデプロイし、それらを接続するルーティング規則を宣言できます。
 
-この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、[Visual Studio Code を使用して IoT Edge モジュールを大規模にデプロイする](how-to-deploy-monitor-vscode.md)方法に関するページを参照してください。
+この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、[Visual Studio Code を使用して IoT Edge モジュールを大規模にデプロイする](how-to-deploy-vscode-at-scale.md)方法に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -150,4 +150,4 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Visual Studio Code を使用して IoT Edge を大規模にデプロイおよび監視する](how-to-deploy-monitor.md)方法を確認します。
+[Visual Studio Code を使用して IoT Edge を大規模にデプロイおよび監視する](how-to-deploy-at-scale.md)方法を確認します。

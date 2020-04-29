@@ -1,38 +1,66 @@
 ---
-title: データフローの並べ替え変換のマッピング
+title: マッピング データ フローでの並べ替え変換
 description: Azure Data Factory の Mapping Data の並べ替え変換
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/08/2018
-ms.openlocfilehash: c09439c5f54ae4b0884e9e25ae9a5a488f935bac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930224"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606338"
 ---
-# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory Data Flow の並べ替え変換
+# <a name="sort-transformation-in-mapping-data-flow"></a>マッピング データ フローでの並べ替え変換
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+並べ替え変換を使用すると、現在のデータ ストリームで受信した行を並べ替えることができます。 個々の列を選択し、昇順または降順に並べ替えることができます。
+
+> [!NOTE]
+> マッピング データ フローは、複数のノードやパーティションにデータが分散される Spark クラスター上で実行されます。 後続の変換でデータのパーティションを再作成すると、データが再びシャッフルされるため、並べ替えた順序が失われる可能性があります。
+
+## <a name="configuration"></a>構成
 
 ![並べ替えの設定](media/data-flow/sort.png "並べ替え")
 
-並べ替え変換を使用すると、現在のデータ ストリームで受信した行を並べ替えることができます。 その後、並べ替え変換から送信される行は、設定された順序付けの規則に従います。 各フィールドの横にある矢印インジケーターを使用して、個々の列を選択して昇順または降順で並べ替えることができます。 並べ替えを適用する前に列を変更する必要がある場合は、[計算列] をクリックして式エディターを起動します。 これにより、単に列に並べ替えを適用するのではなく、並べ替え操作用の式を作成できます。
+**大文字と小文字の区別をしない:** 文字列やテキスト フィールドを並べ替えるときに大文字と小文字を区別するかどうか
 
-## <a name="case-insensitive"></a>大文字と小文字は区別されない
-文字列やテキスト フィールドを並べ替えるときに大文字と小文字を区別したくない場合は、[大文字と小文字を区別しない] を有効にできます。
+**Sort Only Within Partitions (パーティション内でのみ並べ替え):** データ フローは spark 上で実行されるため、各データ ストリームはパーティションに分割されます。 この設定では、データ ストリーム全体を並べ替えるのではなく、受信パーティション内でのみデータを並べ替えます。 
 
-[Sort Only Within Partitions]\(パーティション内のみの並べ替え\) では、Spark のデータのパーティション分割を利用します。 各パーティション内だけで受信データを並べ替えることにより、Data Flow では、データ ストリーム全体を並べ替えることなく、パーティション分割されたデータを並べ替えることができます。
+**並べ替え条件:** 並べ替えの基準となる列と並べ替えの順序を選択します。 順序によって並べ替えの優先順位が決まります。 データ ストリームの先頭または末尾に null が出現するかどうかを選択します。
 
-並べ替え変換の並べ替え条件の順序は変更できます。 そのため、並べ替えの優先順位の上位に列を移動する必要がある場合は、マウスでその行をつかんで、並べ替えの一覧を上または下に移動します。
+### <a name="computed-columns"></a>計算列
 
-並べ替えに対するパーティション分割の影響
+並べ替えを適用する前に列の値を変更または抽出するには、列の上にマウス ポインターを移動し、[計算列] を選択します。 これにより、式ビルダーが開き、列の値を使用する代わりに並べ替え操作用の式が作成されます。
 
-ADF Data Flow は、複数のノードやパーティションにデータが分散されている、ビッグ データの Spark クラスター上で実行されます。 並べ替え変換によってデータの順序を保持している場合は、データ フローの設計時にこの点に留意することが重要です。 後続の変換でデータのパーティションを再作成すると、データがシャッフルされるため、並べ替えた順序が失われる可能性があります。
+## <a name="data-flow-script"></a>データ フローのスクリプト
+
+### <a name="syntax"></a>構文
+
+```
+<incomingStream>
+    sort(
+        desc(<sortColumn1>, { true | false }),
+        asc(<sortColumn2>, { true | false }),
+        ...
+    ) ~> <sortTransformationName<>
+```
+
+### <a name="example"></a>例
+
+![並べ替えの設定](media/data-flow/sort.png "並べ替え")
+
+次のコード スニペットには、上記の並べ替え構成に対するデータ フロー スクリプトが含まれています。
+
+```
+BasketballStats sort(desc(PTS, true),
+    asc(Age, true)) ~> Sort1
+```
 
 ## <a name="next-steps"></a>次のステップ
 

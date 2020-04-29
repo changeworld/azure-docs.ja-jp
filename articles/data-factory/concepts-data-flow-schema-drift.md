@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418424"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606115"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 スキーマの誤差は、ソースのメタデータが頻繁に変更されるケースです。 フィールド、列、および型は、その場で追加、削除、または変更できます。 スキーマの誤差に対処しないと、アップストリームのデータ ソースの変更に対して、データ フローが脆弱になります。 通常、受信列およびフィールドが変更された場合、ETL パターンは、それらのソース名に関連している傾向があるため、失敗します。
 
@@ -30,6 +30,10 @@ ms.locfileid: "81418424"
 Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイティブでサポートしているため、データ フローを再コンパイルしなくても、汎用的なデータ変換ロジックを構築できます。
 
 フロー全体を通じてスキーマの誤差を受け入れるには、データ フロー内でアーキテクチャの決定を行う必要があります。 これを行うと、ソースのスキーマの変更の影響を防ぐことができます。 ただし、データ フロー全体を通じて、列および型の早いバインディングは失われます。 Azure Data Factory では、スキーマの誤差のフローは、遅いバインディング フローとして扱われます。そのため、変換を作成する場合、フロー全体を通じて、スキーマ ビュー内で誤差のある列名は使用できません。
+
+この動画では、データ フローのスキーマの誤差機能を使用して ADF で簡単に構築できる複雑なソリューションの概要について説明します。 この例では、柔軟なデータベース スキーマに基づいて再利用可能なパターンを構築します。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>ソースのスキーマの誤差
 
