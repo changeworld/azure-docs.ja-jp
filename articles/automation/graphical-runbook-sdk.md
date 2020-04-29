@@ -1,24 +1,24 @@
 ---
-title: Azure Automation Grpahical Runbook SDK の概要
+title: Azure Automation Grpahical Runbook SDK を使用する
 description: この記事では、Azure Automation Graphical Runbook SDK の使用方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418262"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682914"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Automation Grpahical Runbook SDK を使用する
 
-[グラフィック Runbook](automation-graphical-authoring-intro.md) は、基礎となる Windows PowerShell または PowerShell Workflow コードの複雑さを管理するために役立つ Runbook です。 Microsoft Azure Automation Graphical Authoring SDK を使用すると、Azure Automation サービスに使用できるグラフィック Runbook を作成および編集できます。 次のコード スニペットは、コードからグラフィック Runbook を作成する基本的な流れを示しています。
+[グラフィック Runbook](automation-graphical-authoring-intro.md) は、基礎となる Windows PowerShell または PowerShell Workflow コードの複雑さを管理するために役立ちます。 Microsoft Azure Automation Graphical Authoring SDK を使用すると、Azure Automation に使用できるグラフィック Runbook を作成および編集できます。 この記事では、コードからグラフィック Runbook を作成するための基本的な手順について説明します。
 
-## <a name="pre-requisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
-まず、`Microsoft.Azure.Automation.GraphicalRunbook.Model` パッケージをプロジェクトにインポートします。
+`Microsoft.Azure.Automation.GraphicalRunbook.Model` パッケージをプロジェクトにインポートします。
 
 ## <a name="create-a-runbook-object-instance"></a>Runbook オブジェクトのインスタンスを作成する
 
@@ -99,9 +99,9 @@ var initializeRunbookVariable = runbook.AddActivity(
 |WorkflowScriptActivity     | Runbook のコンテキストで、(Runbook の種類に応じて) PowerShell または PowerShell Workflow コードのブロックを実行します。 これは強力なツールですが、使いすぎないようにしてください。UI には、このスクリプト ブロックがテキストとして表示されます。実行エンジンは指定されたブロックをブラック ボックスとして扱い、基本的な構文チェックを除き、内容を分析しません。 単一の PowerShell コマンドを呼び出すだけの場合は、CommandActivity を使用することをお勧めします。        |
 
 > [!NOTE]
-> 指定されたクラスから独自のアクティビティを派生させないでください。Azure Automation では、カスタム アクティビティ タイプの Runbook を使用できません。
+> 指定のクラスから独自のアクティビティを派生させることはしないでください。 Azure Automation では、カスタムのアクティビティ タイプで Runbook を実行できません。
 
-CommandActivity および InvokeRunbookActivity パラメーターは、直接の値ではなく値記述子として指定する必要があります。 値記述子には、実際のパラメーター値の生成方法を指定します。 現在、次の値記述子が用意されています。
+`CommandActivity` パラメーターと `InvokeRunbookActivity` パラメーターを値記述子として指定する必要があります。直接値は指定できません。 値記述子は、実際のパラメーター値の生成方法を指定します。 現在、次の値記述子が用意されています。
 
 
 |記述子  |定義  |
@@ -115,7 +115,7 @@ CommandActivity および InvokeRunbookActivity パラメーターは、直接�
 |PowerShellExpressionValueDescriptor     | アクティビティを呼び出す直前に評価される自由形式の PowerShell 式を指定します。  <br/>これは強力なツールですが、使いすぎないようにしてください。UI には、この式がテキストとして表示されます。実行エンジンは指定されたブロックをブラック ボックスとして扱い、基本的な構文チェックを除き、内容を分析しません。 可能であれば、より具体的な値記述子を使用することお勧めします。      |
 
 > [!NOTE]
-> 指定されたクラスから独自の値記述子を派生させないでください。Azure Automation では、カスタム値記述子タイプの Runbook を使用できません。
+> 指定のクラスから独自の値記述子を派生させないでください。 Azure Automation では、カスタムの値記述子タイプで Runbook を実行できません。
 
 アクティビティを接続するリンクをインスタンス化し、Runbook に追加します。
 
@@ -136,10 +136,9 @@ runbook.AddLink(
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-この文字列は、拡張子が **.graphRunbook** のファイルに保存できます。このファイルは Azure Automation にインポートできます。
+この文字列をファイルに保存するには、 **.graphrunbook** 拡張機能を使用します。 対応する Runbook を Azure Automation にインポートできます。
 シリアル化された形式は、`Orchestrator.GraphRunbook.Model.dll` の今後のバージョンで変更される可能性がありますが、 下位互換性は保証されます。つまり、旧バージョンの `Orchestrator.GraphRunbook.Model.dll` でシリアル化された Runbook は、新しいバージョンで逆シリアル化できます。 上位互換性は保証されません。つまり、新しいバージョンでシリアル化された Runbook は、旧バージョンで逆シリアル化できません。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Automation のグラフィック Runbook の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください
-
+Azure Automation のグラフィック Runbook の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。

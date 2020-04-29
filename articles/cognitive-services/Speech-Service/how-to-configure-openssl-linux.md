@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331146"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683161"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux 用 OpenSSL の構成
 
@@ -50,6 +50,8 @@ Speech SDK を使用するプログラムを実行する前に、環境変数 `S
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+> [!NOTE]
+> また、Linux の一部のディストリビューションでは、TMP または TMPDIR 環境変数が定義されていないことにも注意してください。 これにより、Speech SDK は、有効期限が切れるまで証明書失効リスト (CRL) を再利用できるようにディスクにキャッシュするのではなく、毎回 CRL をダウンロードします。 初回接続のパフォーマンスを向上させるには、[TMPDIR という名前の環境変数を作成し、選択した一時ディレクトリのパスに設定します](https://help.ubuntu.com/community/EnvironmentVariables)。
 
 ## <a name="next-steps"></a>次のステップ
 
