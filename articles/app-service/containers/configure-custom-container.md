@@ -138,7 +138,7 @@ wordpress:
 
 - command
 - entrypoint
-- environment
+- 環境
 - image
 - ports
 - restart

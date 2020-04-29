@@ -19,7 +19,7 @@ ms.locfileid: "79236607"
 |属性|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|AppInstanceDefinitionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -76,7 +76,7 @@ ms.locfileid: "79236607"
 |属性|値|
 |---|---|
 |content|2 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ApplicationHealthPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -170,7 +170,7 @@ Microsoft Azure Service Fabric アプリケーションのインスタンスに�
 |属性|値|
 |---|---|
 |content|4 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ApplicationInstanceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -251,7 +251,7 @@ ApplicationInstance ドキュメントのバージョン。
 |属性|値|
 |---|---|
 |content|9 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ApplicationManifestType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -435,7 +435,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |属性|値|
 |---|---|
 |content|2 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ApplicationPackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -512,7 +512,7 @@ ApplicationPackage は、ノードに必要なバージョン管理されたア�
 |属性|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ApplicationPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -604,7 +604,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|AzureBlobETWType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -628,7 +628,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|AzureBlobType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -651,7 +651,7 @@ ETW イベントの Azure BLOB 格納先について説明します。 Azure 環
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|AzureRoleType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -697,7 +697,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |属性|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|AzureStoreBaseType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -742,7 +742,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |属性|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|BlackbirdRoleType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -796,7 +796,7 @@ Azure ストレージ アカウント内の診断ストアについて説明し�
 |属性|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|CertificatesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -872,7 +872,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |属性|値|
 |---|---|
 |content|4 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ClusterManifestType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1123,7 +1123,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |属性|値|
 |---|---|
 |content|3 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|CodePackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1214,7 +1214,7 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |属性|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ConfigOverrideType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1266,7 +1266,7 @@ Settings.xml ファイルを含む Name 属性を使用して名前が付けら�
 |属性|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ConfigPackageDescriptionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1342,7 +1342,7 @@ ConfigPackage Settings.xml のセクション名。
 |属性|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ConfigPackagePoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1388,7 +1388,7 @@ Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ConfigPackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1410,7 +1410,7 @@ PFX ファイルとパスワードには、コンテナーで Certificates_Servi
 |属性|値|
 |---|---|
 |content|0 個の要素、8 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerCertificateType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1547,7 +1547,7 @@ true の場合、パスワードの値は暗号化されます。
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerHealthConfigType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1602,7 +1602,7 @@ true の場合、パスワードの値は暗号化されます。
 |属性|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerHostEntryPointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1671,7 +1671,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 |属性|値|
 |---|---|
 |content|10 個の要素、8 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerHostPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1962,7 +1962,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerLabelType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -1997,7 +1997,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |属性|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerLoggingDriverType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2047,7 +2047,7 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 |属性|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerNetworkConfigType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2078,7 +2078,7 @@ NetworkType。 現在サポートされている種類は "Open" と "Isolated" 
 |属性|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerNetworkPolicyEndpointBindingType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2113,7 +2113,7 @@ NetworkType。 現在サポートされている種類は "Open" と "Isolated" 
 |属性|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerNetworkPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2170,7 +2170,7 @@ NetworkType。 現在サポートされている種類は "Open" と "Isolated" 
 |属性|値|
 |---|---|
 |content|1 個の要素、4 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ContainerVolumeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2269,7 +2269,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|DataPackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2289,7 +2289,7 @@ Azure Files ボリューム プラグインのドライバー名は "sfazurefile
 |属性|値|
 |---|---|
 |content|4 個の要素、10 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|DebugParametersType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2508,7 +2508,7 @@ key=value 形式のコンテナーのラベル。
 |属性|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|DefaultServicesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2599,7 +2599,7 @@ key=value 形式のコンテナーのラベル。
 |属性|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|DiagnosticsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2730,7 +2730,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |属性|値|
 |---|---|
 |content|2 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|DllHostEntryPointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2795,7 +2795,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |属性|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|DriverOptionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2880,7 +2880,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EndpointBindingPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2935,7 +2935,7 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EndpointCertificateType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -2991,7 +2991,7 @@ X509 証明書の拇印。
 |属性|値|
 |---|---|
 |content|0 個の要素、6 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EndpointOverrideType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3094,7 +3094,7 @@ URI スキーム。 サービス マニフェストの値をオーバーライ�
 |属性|値|
 |---|---|
 |content|0 個の要素、8 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EndpointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3247,7 +3247,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EntryPointDescriptionType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3315,7 +3315,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|1 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EnvironmentOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3366,7 +3366,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EnvironmentType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3410,7 +3410,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EnvironmentVariableOverrideType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3463,7 +3463,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EnvironmentVariableType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3537,7 +3537,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|EnvironmentVariablesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3574,7 +3574,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|4 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ExeHostEntryPointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3684,7 +3684,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ExtensionsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3730,7 +3730,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |属性|値|
 |---|---|
 |content|0 個の要素、5 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|FabricCertificateType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -3820,7 +3820,7 @@ X509 証明書のストア名。
 |属性|値|
 |---|---|
 |content|21 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|FabricEndpointsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4034,7 +4034,7 @@ X509 証明書のストア名。
 |属性|値|
 |---|---|
 |content|3 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|FabricKtlLoggerSettingsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4118,7 +4118,7 @@ Microsoft Azure Service Fabric ノードについて説明します。
 |属性|値|
 |---|---|
 |content|0 個の要素、6 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|FabricNodeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4223,7 +4223,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|FileStoreETWType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4247,7 +4247,7 @@ ETW イベントのファイル格納先について説明します。 オンプ
 |属性|値|
 |---|---|
 |content|1 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|FileStoreType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4311,7 +4311,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ImageOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4352,7 +4352,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ImageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4398,7 +4398,7 @@ OS のビルド バージョン。 たとえば、Windows Server バージョン
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|InfrastructureInformationType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4434,7 +4434,7 @@ OS のビルド バージョン。 たとえば、Windows Server バージョン
 |属性|値|
 |---|---|
 |content|2 個の要素、7 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|InfrastructureNodeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4585,7 +4585,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|InputEndpointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4628,7 +4628,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|InternalEndpointType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4671,7 +4671,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|KeyValuePairType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4687,7 +4687,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|LinuxInfrastructureType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4720,7 +4720,7 @@ NodeTypes セクションで定義されているノード型の名前。
 |属性|値|
 |---|---|
 |content|0 個の要素、5 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|LoadMetricType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4824,7 +4824,7 @@ ETW イベントのノード内の格納先について説明します。
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|LocalStoreETWType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4848,7 +4848,7 @@ ETW イベントのノード内の格納先について説明します。
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|LocalStoreType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4882,7 +4882,7 @@ LogicalDirectoryType について説明します。
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|LogicalDirectoryType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4947,7 +4947,7 @@ LogicalDirectory のパス。
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ManagedAssemblyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -4969,7 +4969,7 @@ LogicalDirectory のパス。
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|NetworkPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5006,7 +5006,7 @@ LogicalDirectory のパス。
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|PaaSRoleType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5050,7 +5050,7 @@ LogicalDirectory のパス。
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|PaaSVoteType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5093,7 +5093,7 @@ LogicalDirectory のパス。
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|PackageSharingPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5148,7 +5148,7 @@ LogicalDirectory のパス。
 |属性|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ParameterType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5179,7 +5179,7 @@ true の場合、このパラメーターの値は暗号化されます
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ParametersType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5208,7 +5208,7 @@ true の場合、このパラメーターの値は暗号化されます
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|PortBindingType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5252,7 +5252,7 @@ true の場合、このパラメーターの値は暗号化されます
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|RepositoryCredentialsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5320,7 +5320,7 @@ true の場合、このパラメーターの値は暗号化されます
 |属性|値|
 |---|---|
 |content|0 個の要素、12 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ResourceGovernancePolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5520,7 +5520,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ResourceOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5565,7 +5565,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ResourcesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5606,7 +5606,7 @@ CPU の相対的な重み。 正の整数にする必要があります。
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|RunAsPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5684,7 +5684,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ScalingPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5707,7 +5707,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |属性|値|
 |---|---|
 |content|0 個の要素、4 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|SecurityAccessPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5803,7 +5803,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |属性|値|
 |---|---|
 |content|0 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|SecurityOptionsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -5835,7 +5835,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |属性|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|SecurityPrincipalsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6022,7 +6022,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |属性|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceAndServiceGroupTypesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6074,7 +6074,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceDiagnosticsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6143,7 +6143,7 @@ Setup は、他のエントリ ポイントの前に実行される特権を持�
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceFabricRuntimeAccessPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6188,7 +6188,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |属性|値|
 |---|---|
 |content|1 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceGroupMemberType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6264,7 +6264,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |属性|値|
 |---|---|
 |content|4 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceGroupTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6380,7 +6380,7 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |属性|値|
 |---|---|
 |content|11 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceManifestImportPoliciesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6541,7 +6541,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceManifestRefType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6561,7 +6561,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |属性|値|
 |---|---|
 |content|7 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceManifestType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6676,7 +6676,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |属性|値|
 |---|---|
 |content|1 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServicePackageContainerPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6740,7 +6740,7 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 |属性|値|
 |---|---|
 |content|0 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServicePackageResourceGovernancePolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -6788,7 +6788,7 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 |属性|値|
 |---|---|
 |content|11 個の要素、4 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServicePackageType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7038,7 +7038,7 @@ ServiceManifest ファイルのチェックサム値。
 |属性|値|
 |---|---|
 |content|4 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceTemplatesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7090,7 +7090,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |属性|値|
 |---|---|
 |content|5 個の要素、2 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7298,7 +7298,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceTypeExtensionPolicyPropertiesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7334,7 +7334,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |属性|値|
 |---|---|
 |content|0 個の要素、3 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceTypeHealthPolicyType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7397,7 +7397,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |属性|値|
 |---|---|
 |content|4 個の要素、1 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7527,7 +7527,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |属性|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|ServiceTypesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7573,7 +7573,7 @@ Microsoft Azure Service Fabric サービスを定義する基本データ型。
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|SettingsOverridesType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7647,7 +7647,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|SettingsType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7706,7 +7706,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatefulServiceGroupType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7741,7 +7741,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatefulServiceGroupTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7769,7 +7769,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatefulServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7817,7 +7817,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatefulServiceTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7850,7 +7850,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatelessServiceGroupType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7885,7 +7885,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatelessServiceGroupTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7907,7 +7907,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatelessServiceType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7935,7 +7935,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|StatelessServiceTypeType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -7962,7 +7962,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|2 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|TargetInformationType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8000,7 +8000,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|UnmanagedDllType|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8021,7 +8021,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|0 個の要素、11 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|WindowsFabricDeploymentInformation|
 
 ### <a name="xml-source"></a>XML ソース
@@ -8193,7 +8193,7 @@ ServiceComponent や Application に対するユーザー定義の設定につ�
 |属性|値|
 |---|---|
 |content|1 個の要素、0 個の属性|
-|defined|グローバル|
+|定義済み|グローバルに|
 |name|WindowsInfrastructureType|
 
 ### <a name="xml-source"></a>XML ソース
