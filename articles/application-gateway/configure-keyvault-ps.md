@@ -1,5 +1,5 @@
 ---
-title: Key Vault 証明書を使用して SSL 終焉を構成する - PowerShell
+title: Key Vault 証明書を使用して TLS 終端を構成する - PowerShell
 titleSuffix: Azure Application Gateway
 description: HTTPS 対応リスナーにアタッチされているサーバー証明書の Key Vault と Azure Application Gateway を統合する方法について説明します。
 services: application-gateway
@@ -8,20 +8,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371222"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457843"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して SSL 終焉を構成する
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して TLS 終端を構成する
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) はプラットフォームマネージド シークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway v2 SKU に制限されます。
+[Azure Key Vault](../key-vault/general/overview.md) はプラットフォームマネージド シークレット ストアです。シークレット、キー、TLS または SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway v2 SKU に制限されます。
 
-詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
+詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
 
-この記事では、Azure PowerShell スクリプトを使用して SSL 終了証明書のためにキー コンテナーとアプリケーション ゲートウェイを統合する方法を示します。
+この記事では、Azure PowerShell スクリプトを使用して TLS または SSL 終端の証明書のためにキー コンテナーとアプリケーション ゲートウェイを統合する方法を示します。
 
 この記事では、Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 この記事でコマンドを実行するには、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> SSL 終了が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
+> TLS 終端が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -102,7 +102,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>SSL 証明書をキー コンテナーに向ける
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>TLS または SSL 証明書をキー コンテナーに向ける
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>次のステップ
 
-[SSL 終焉に関する詳細](ssl-overview.md)
+[TLS 終端に関する詳細情報](ssl-overview.md)

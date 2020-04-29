@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: peterclu
-ms.author: peterlu
-ms.date: 02/22/2020
-ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: likebupt
+ms.author: keli19
+ms.date: 04/13/2020
+ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399061"
+ms.locfileid: "81458201"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
 
@@ -59,6 +59,10 @@ ms.locfileid: "81399061"
 | 推奨 | 推奨モデルを構築します。 | [レコメンダーの評価](evaluate-recommender.md) <br/> [SVD レコメンダーのスコア付け](score-svd-recommender.md) <br/> [SVD レコメンダーのトレーニング](train-SVD-recommender.md) |
 | 異常検出 | 異常検出モデルを構築します。 | [PCA ベースの異常検出](pca-based-anomaly-detection.md) <br/> [異常検出モデルのトレーニング](train-anomaly-detection-model.md) |
 
+
+## <a name="web-service"></a>Web サービス
+
+Azure Machine Learning デザイナーでリアルタイムの推論を行うために必要な [Web サービス モジュール](web-service-input-output.md)について説明します。
 
 ## <a name="error-messages"></a>エラー メッセージ
 

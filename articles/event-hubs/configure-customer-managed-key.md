@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77621999"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459136"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する
 Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -26,9 +26,9 @@ BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ
 > [!NOTE]
 > BYOK 機能は [Event Hubs Dedicated のシングルテナント](event-hubs-dedicated-overview.md) クラスターでサポートされています。 Standard Event Hubs 名前空間用に有効にすることはできません。
 
-キーの管理およびキーの使用状況の監査には、Azure Key Vault を使用できます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/key-vault-overview.md)
+キーの管理およびキーの使用状況の監査には、Azure Key Vault を使用できます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
 
-この記事では、Azure portal を使って、カスタマー マネージド キーでキー コンテナーを構成する方法について説明します。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/quick-create-portal.md)」をご覧ください。
+この記事では、Azure portal を使って、カスタマー マネージド キーでキー コンテナーを構成する方法について説明します。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../key-vault/secrets/quick-create-portal.md)」をご覧ください。
 
 > [!IMPORTANT]
 > Azure Event Hubs でカスタマー マネージド キーを使うには、キー コンテナーに 2 つの必須プロパティが構成されている必要があります。 これらは次のとおりです。 **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** です。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
@@ -44,9 +44,9 @@ Azure portal でカスタマー マネージド キーを有効にするには�
     ![カスタマー マネージド キーの有効化](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>キーを使用したキー コンテナーの設定
-カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Event Hubs 名前空間に関連付ける必要があります。 Event Hubs では Azure Key Vault のみがサポートされています。 前のセクションで**カスタマー マネージド キーによる暗号化**のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/key-vault-soft-delete-powershell.md) または [CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection) を使用して構成できます。
+カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Event Hubs 名前空間に関連付ける必要があります。 Event Hubs では Azure Key Vault のみがサポートされています。 前のセクションで**カスタマー マネージド キーによる暗号化**のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/soft-delete-powershell.md) または [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) を使用して構成できます。
 
-1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/key-vault-overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/about-keys-secrets-and-certificates.md)」を参照してください。
+1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/about-keys-secrets-and-certificates.md)」を参照してください。
 1. コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
 
     ```azurecli-interactive
@@ -71,10 +71,10 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 
 
 ## <a name="rotate-your-encryption-keys"></a>暗号化キーのローテーション
-Azure Key Vault のローテーション メカニズムを使用して、キー コンテナー内のキーをローテーションできます。 詳細については、[キー ローテーションと監査を設定する](../key-vault/key-vault-key-rotation-log-monitoring.md)方法に関するページを参照してください。 アクティブ化と有効期限の日付を設定してキー ローテーションを自動化することもできます。 Event Hubs サービスによって新しいキーのバージョンが検出され、自動的に使用が開始されます。
+Azure Key Vault のローテーション メカニズムを使用して、キー コンテナー内のキーをローテーションできます。 詳細については、[キー ローテーションと監査を設定する](../key-vault/secrets/key-rotation-log-monitoring.md)方法に関するページを参照してください。 アクティブ化と有効期限の日付を設定してキー ローテーションを自動化することもできます。 Event Hubs サービスによって新しいキーのバージョンが検出され、自動的に使用が開始されます。
 
 ## <a name="revoke-access-to-keys"></a>キーへのアクセスの取り消し
-暗号化キーへのアクセスを取り消しても、Event Hubs からデータが消去されることはありません。 ただし、Event Hubs 名前空間からデータへのアクセスはできません。 暗号化キーは、アクセス ポリシーを使用して、またはキーを削除することで取り消すことができます。 アクセス ポリシーと、キー コンテナーのセキュリティ保護の詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/key-vault-secure-your-key-vault.md)」を参照してください。
+暗号化キーへのアクセスを取り消しても、Event Hubs からデータが消去されることはありません。 ただし、Event Hubs 名前空間からデータへのアクセスはできません。 暗号化キーは、アクセス ポリシーを使用して、またはキーを削除することで取り消すことができます。 アクセス ポリシーと、キー コンテナーのセキュリティ保護の詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/secure-your-key-vault.md)」を参照してください。
 
 暗号化キーを取り消すと、暗号化した名前空間で Event Hubs サービスが機能しなくなります。 キーへのアクセスを有効にするか、削除キーを復元すると、Event Hubs サービスによってキーが選択され、暗号化した Event Hubs 名前空間からデータにアクセスできるようになります。
 
@@ -423,7 +423,7 @@ BYOK 暗号化が有効になっている場合に調べる一般的なエラー
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。
 - [Event Hubs の概要](event-hubs-about.md)
-- [Key Vault の概要](../key-vault/key-vault-overview.md)
+- [Key Vault の概要](../key-vault/general/overview.md)
 
 
 

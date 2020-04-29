@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671944"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457299"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
@@ -120,7 +120,7 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 
 ## <a name="user-actions"></a>ユーザー操作
 
-ユーザー操作とは、ユーザーが実行できるタスクです。 現在サポートされている唯一のアクションは、**セキュリティに関する情報の登録 (プレビュー)** です。これにより、統合された登録が有効になったユーザーが自分のセキュリティに関する情報を登録しようとすると、条件付きアクセス ポリシーが適用されます。 詳細情報については、「[統合されたセキュリティ情報の登録 (プレビュー)](../authentication/concept-registration-mfa-sspr-combined.md)」という記事を参照してください。
+ユーザー操作とは、ユーザーが実行できるタスクです。 現在サポートされている唯一のアクションは、**セキュリティに関する情報の登録**です。これにより、統合された登録が有効になったユーザーが自分のセキュリティに関する情報を登録しようとすると、条件付きアクセス ポリシーが適用されます。 詳細情報については、「[統合されたセキュリティ情報の登録](../authentication/concept-registration-mfa-sspr-combined.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

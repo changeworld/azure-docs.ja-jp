@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 9d1e89919647d9d94b287618da2f9a77278425a5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459085"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL のデータ暗号化
@@ -21,7 +21,7 @@ Azure portal を使用して Azure Database for MySQL のデータ暗号化を�
 
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
 * Azure Key Vault で、カスタマー マネージド キーに使用する Key Vault とキーを作成します。
-* カスタマー マネージド キーとして使用するには、Key Vault に次のプロパティが必要です。
+* カスタマー マネージド キーとして使用するには、キー コンテナーに次のプロパティが必要です。
   * [論理的な削除](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
@@ -45,7 +45,7 @@ Azure portal を使用して Azure Database for MySQL のデータ暗号化を�
 
    ![[アクセス ポリシー] と [アクセスポリシーの追加] が強調表示されている Key Vault のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. **[キーのアクセス許可]** を選択して、 **[取得]** 、 **[ラップ]** 、 **[ラップ解除]** 、および MySQL サーバーの名前である **[プリンシパル]** を選択します。 既存のプリンシパルの一覧にお使いのサーバー プリンシパルが見つからない場合は、登録する必要があります。 初めてデータの暗号化を設定しようとして失敗したときに、サーバー プリンシパルを登録するように求められます。
+2. **[キーのアクセス許可]** を選択して、 **[取得]** 、 **[ラップ]** 、 **[ラップ解除]** 、および MySQL サーバーの名前である **[プリンシパル]** を選択します。 お使いのサーバー プリンシパルが既存のプリンシパルの一覧に見つからない場合は、登録する必要があります。 初めてデータの暗号化を設定しようとして失敗したときに、サーバー プリンシパルを登録するように求められます。
 
    ![アクセス ポリシーの概要](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
@@ -73,24 +73,24 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 
    ![[概要] と [復元] が強調表示されている Azure Database for MySQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   レプリケーションが有効なサーバーでは、 **[設定]** 見出しの下にある **[レプリケーション]** を選択します。
+   または、レプリケーションが有効なサーバーでは、 **[設定]** 見出しの下にある **[レプリケーション]** を選択します。
 
    ![[レプリケーション] が強調表示されている Azure Database for MySQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
 
-2. 復元操作が完了すると、作成された新しいサーバーは、プライマリ サーバーのキーで暗号化されます。 ただし、このサーバーの機能とオプションは無効になっており、サーバーにアクセスできません。 新しいサーバーの ID には、キー コンテナーへのアクセス許可がまだ付与されていないため、これにより、データ操作が抑止されます。
+2. 復元操作が完了すると、作成された新しいサーバーは、プライマリ サーバーのキーで暗号化されます。 ただし、このサーバーの機能とオプションは無効になっており、サーバーにアクセスできません。 新しいサーバーの ID には、キー コンテナーへのアクセス許可がまだ付与されていないため、これによってデータ操作が抑止されます。
 
    ![[アクセス不可] 状態が強調表示されている Azure Database for MySQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
 3. サーバーにアクセスできるようにするには、復元されたサーバーでキーを再検証します。 **[データの暗号化]**  >  **[キーの再検証]** の順に選択します。
 
    > [!NOTE]
-   > 新しいサーバーのサービス プリンシパルに Key Vault へのアクセス権を付与する必要があるため、最初の再検証の試行は失敗します。 サービス プリンシパルを生成するには、 **[キーの再検証]** を選択します。これにより、エラーが表示されますが、サービス プリンシパルが生成されます。 その後、この記事で前述した[こちらの手順](#set-the-right-permissions-for-key-operations)を参照してください。
+   > 新しいサーバーのサービス プリンシパルにキー コンテナーへのアクセス権を付与する必要があるため、最初の再検証の試行は失敗します。 サービス プリンシパルを生成するには、 **[キーの再検証]** を選択します。これにより、エラーが表示されますが、サービス プリンシパルが生成されます。 その後、この記事で前述した[こちらの手順](#set-the-right-permissions-for-key-operations)を参照してください。
 
    ![再検証の手順が強調表示されている Azure Database for MySQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
    新しいサーバーへのアクセス権をキー コンテナーに付与する必要があります。
 
-4. サービス プリンシパルを登録した後、キーを再検証します。これにより、サーバーは通常の機能を再開します。
+4. サービス プリンシパルを登録した後、もう一度キーを再検証すると、サーバーの通常の機能が再開されます。
 
    ![復元された機能を示している Azure Database for MySQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 

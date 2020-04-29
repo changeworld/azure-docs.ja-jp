@@ -5,24 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 54f77f55a127cd712d43419eb6a85fd5d93a478c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a9f4e641e60d6cf1c481c445767422e8b4df683b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652177"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457690"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する
 
 Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 このプロセスは、ワークスペースのリンク設定を伴わず、完全に独立しています。 ジョブ ログとジョブ ストリームは、Azure Portal または PowerShell を使用してジョブごとに表示できます。これを使用して、簡単な調査を行うことができます。 Azure Monitor ログを使用すると、次のことを行うことができます。
 
-* Automation ジョブに関する情報を得る。
+* Automation ジョブの状態に関する分析情報を得る。
 * Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする。
 * ジョブ ストリームをまたぐ高度なクエリを記述する。
 * Automation アカウントをまたいでジョブどうしを関連付ける。
-* ジョブの履歴を時系列で視覚化する。
+* カスタム ビューと検索クエリを使用して、Runbook の結果、Runbook ジョブの状態、その他の関連する主要な指標やメトリックを視覚化します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="prerequisites-and-deployment-considerations"></a>前提条件とデプロイに関する考慮事項
 
@@ -35,7 +38,7 @@ Azure Monitor ログへの Automation ログの送信を開始するには、次
 自分の Azure Automation アカウントのリソース ID を調べるには、次のコマンドを使用します。
 
 ```powershell-interactive
-# Find the ResourceId for the Automation Account
+# Find the ResourceId for the Automation account
 Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
 ```
 
@@ -50,8 +53,9 @@ Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
 1. Azure portal の **[Automation アカウント]** ブレードで Automation アカウントを選択し、 **[すべての設定]** を選択します。 
 2. **[すべての設定]** ブレードで、 **[アカウント設定]** の **[プロパティ]** を選択します。  
-3. **[プロパティ]** ブレードで、以下の値を記録します。<br> ![Automation アカウントのプロパティ](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
+3. **[プロパティ]** ブレードで、次に示すプロパティを確認します。
 
+    ![Automation アカウントのプロパティ](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
 
@@ -146,7 +150,7 @@ Azure Monitor ログへの Automation ジョブ ログの送信を開始した�
 2. クエリ フィールドに次の検索クエリを入力して、アラート用のログ検索クエリを作成します。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>次のクエリを使用して、Runbook 名でグループ化することもできます。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。 Automation アカウント名は `JobLogs` の検索の `Resource` フィールドで確認できます。
-3. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../azure-monitor/platform/alerts-unified-log.md)」をご覧ください。
+3. **[ルールの作成]** 画面を開くには、ページの上部にある **[新しいアラート ルール]** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../azure-monitor/platform/alerts-unified-log.md)」をご覧ください。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>エラーが発生したすべてのジョブを特定する
 
@@ -178,15 +182,6 @@ $automationAccountId = "[resource ID of your Automation account]"
 
 Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
-
-## <a name="summary"></a>まとめ
-
-Automation ジョブの状態とストリーム データを Azure Monitor ログに送信し、次の対応を行うと、Automation ジョブの状態をより適確に理解できます。
-+ 問題が発生した場合に通知するアラートの設定。
-+ カスタム ビューと検索クエリを使用した Runbook の結果、Runbook ジョブの状態、その他の関連する主要な指標やメトリックの視覚化。
-
-Azure Monitor ログによって、Automation ジョブの状態をさらに詳しく把握でき、インシデントにより迅速に対処できるようになります。
-
 ## <a name="next-steps"></a>次のステップ
 
 * Log Analytics のトラブルシューティングについては、[Log Analytics がデータを収集しなくなった場合のトラブルシューティング](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)に関する記事を参照してください。
@@ -194,4 +189,3 @@ Azure Monitor ログによって、Automation ジョブの状態をさらに詳�
 * Runbook から出力とエラー メッセージを作成および取得する方法については、[Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)に関するページを参照してください。
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
 * Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページを参照してください。
-

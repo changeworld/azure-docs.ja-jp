@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133074"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457877"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -102,7 +102,7 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 - **失敗した要求**
 
-  Application Gateway が処理した失敗した要求の数です。 要求の数をさらにフィルター処理することで、各々のまたは特定のバックエンド プール http 設定の組み合わせごとに数を表示できます。
+  Application Gateway が 5xx サーバー エラーコードで処理した要求の数。 これには、Application Gateway から生成された 5xx コードと、バックエンドから生成された 5xx のコードが含まれます。 要求の数をさらにフィルター処理することで、各々のまたは特定のバックエンド プール http 設定の組み合わせごとに数を表示できます。
    
 - **固定請求可能容量ユニット**
 
@@ -162,7 +162,7 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 - **失敗した要求**
 
-  Application Gateway が処理した失敗した要求の数です。 要求の数をさらにフィルター処理することで、各々のまたは特定のバックエンド プール http 設定の組み合わせごとに数を表示できます。
+  Application Gateway が 5xx サーバー エラーコードで処理した要求の数。 これには、Application Gateway から生成された 5xx コードと、バックエンドから生成された 5xx のコードが含まれます。 要求の数をさらにフィルター処理することで、各々のまたは特定のバックエンド プール http 設定の組み合わせごとに数を表示できます。
 
 - **応答の状態**
 
