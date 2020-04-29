@@ -74,7 +74,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 - **ON DATABASE** 句も [ALTER EVENT SESSION](https://msdn.microsoft.com/library/bb630368.aspx) および [DROP EVENT SESSION Transact-SQL](https://msdn.microsoft.com/library/bb630257.aspx) コマンドに適用されます。
 
 
-- **CREATE EVENT SESSION** または **ALTER EVENT SESSION** ステートメントで **STARTUP_STATE = ON** のイベント セッション オプションを含ませるのがベスト プラクティスです。
+- **CREATE EVENT SESSION** または **ALTER EVENT SESSION** ステートメントで **STARTUP_STATE = ON** のイベント セッション オプションを含ませるベスト プラクティス。
     - **= ON** 値は、フェールオーバーに伴う論理データベース再構成の後の自動再起動をサポートします。
 
 ## <a name="new-catalog-views"></a>新しいカタログ ビュー
