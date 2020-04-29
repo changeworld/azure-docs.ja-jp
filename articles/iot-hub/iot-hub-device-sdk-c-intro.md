@@ -8,12 +8,15 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: b9b27bb142cb729536a3b7a561ed8b8ff5e0ccf5
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813796"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731317"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -73,7 +76,7 @@ C 用 Azure IoT device SDK のサンプルを実行する前に、Azure サブ�
 
 IoT ハブの管理に役立つオープン ソース ツールがいくつかあります。
 
-* [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)と呼ばれる Windows アプリケーション。
+* [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) という Windows アプリケーション。
 
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) と呼ばれるクロスプラットフォームの Visual Studio Code 拡張機能。
 

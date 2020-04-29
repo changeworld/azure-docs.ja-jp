@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25eb93a01c59225b6d9e64db5d08b954adb4f8ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420106"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680503"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
 
@@ -26,7 +26,7 @@ OPENROWSET は、現在 SQL プールではサポートされていません。
 
 ## <a name="syntax"></a>構文
 
-```
+```syntaxsql
 --OPENROWSET syntax for reading Parquet files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , 
@@ -60,36 +60,39 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 - 'PARQUET' - Parquet 形式のバイナリ ファイル 
 
-'unstructured_data_path'
+**'unstructured_data_path'**
 
-データへのパスを確立する unstructured_data_path は、次のように構成されます: '<prefix>://<storage_account_path>/<storage_path>' 
+データへのパスを確立する unstructured_data_path は、次のように構成されます:  
+'\<prefix>://\<storage_account_path>/\<storage_path>'
  
  
  以下に、特定の外部データ ソースにリンクする、関連するストレージ アカウント パスを示します。 
 
-| 外部データ ソース       | Prefix | ストレージ アカウント パス                                |
-| -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Storage         | https  | <storage_account>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | <storage_account>.dfs.core.windows.net              |
+| 外部データ ソース       | Prefix | ストレージ アカウント パス                                 |
+| -------------------------- | ------ | ---------------------------------------------------- |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
+||||
 
- '<storage_path>' 
+'\<storage_path>'
 
  読み取り対象のフォルダーまたはファイルを指す、ストレージ内のパスを指定します。 パスがコンテナーまたはフォルダーを指している場合は、その特定のコンテナーまたはフォルダーからすべてのファイルが読み取られます。 サブフォルダー内のファイルは含まれません。 
  
  ワイルドカードを使用して、複数のファイルまたはフォルダーを対象にすることができます。 連続しない複数のワイルドカードを使用できます。
-次に示すのは、 */csv/population* で始まるすべてのフォルダーから、*population* で始まるすべての *csv* ファイルを読み取る例です:  'https://sqlondemandstorage.blob.core.windows.net/csv/population */population*.csv'
+次に示すのは、 */csv/population* で始まるすべてのフォルダーから、*population* で始まるすべての *csv* ファイルを読み取る例です。  
+`https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 unstructured_data_path でフォルダーを指定すると、SQL オンデマンド クエリはそのフォルダーからファイルを取得します。 
 
 > [!NOTE]
 > Hadoop や PolyBase とは異なり、SQL オンデマンドではサブフォルダーは返されません。 また、Hadoop や PloyBase とは異なり、SQL オンデマンドでは、ファイル名が下線 (_) やピリオド (.) で始まるファイルが返されます。
 
-次の例で、unstructured_data_path='https://mystorageaccount.dfs.core.windows.net/webdata/ ' の場合、SQL オンデマンド クエリでは、mydata.txt と _hidden.txt からの行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
+次の例で、unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、SQL オンデマンド クエリでは、mydata.txt と _hidden.txt からの行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
 
 ![外部テーブルの再帰型データ](./media/develop-openrowset/folder-traversal.png)
 
-[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]
+`[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
 WITH 句を使用すると、ファイルから読み取る列を指定できます。
 
@@ -113,7 +116,8 @@ WITH (
     --[population] bigint
 )
 ```
-<bulk_options>
+
+**\<bulk_options>**
 
 FIELDTERMINATOR ='field_terminator'
 

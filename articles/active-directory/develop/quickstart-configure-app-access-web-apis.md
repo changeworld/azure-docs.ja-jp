@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215970"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082324"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>クイック スタート:Web API にアクセスするためのクライアント アプリケーションの構成
 
@@ -110,7 +110,10 @@ Web API にアクセスするようにアプリケーションを構成するに
    | **Web**              | アプリケーションの**リダイレクト URI** を入力します。 |
    | **iOS / macOS**              | アプリの**バンドル ID** を入力します。これは、Info.plist の XCode または [ビルド設定] で見つけることができます。 バンドル ID を追加すると、アプリケーションのリダイレクト URI が自動的に作成されます。 |
    | **Android**          | アプリの**パッケージ名**を指定します。これは、AndroidManifest.xml ファイルで見つけることができます。<br/>**署名ハッシュ**を生成して入力します。 署名ハッシュを追加すると、アプリケーションのリダイレクト URI が自動的に作成されます。  |
-   | **モバイル アプリケーションとデスクトップ アプリケーション**  | 省略可能。 デスクトップとデバイス用のアプリを構築している場合は、 **[推奨されるリダイレクト URI]** でいずれかを選択します。<br/>省略可能。 **カスタム リダイレクト URI** を入力します。これは、Azure AD が認証要求に応答してユーザーをリダイレクトする場所として使用されます。 たとえば、対話が必要な .NET Core アプリケーションの場合、`https://localhost` を使用します。 |
+   | **モバイル アプリケーションとデスクトップ アプリケーション**  | 省略可能。 デスクトップとデバイス用のアプリを構築している場合は、 **[推奨されるリダイレクト URI]** でいずれかを選択します。<br/>省略可能。 **カスタム リダイレクト URI** を入力します。これは、Azure AD が認証要求に応答してユーザーをリダイレクトする場所として使用されます。 たとえば、対話が必要な .NET Core アプリケーションの場合、`http://localhost` を使用します。 |
+
+   > [!NOTE]
+   > Active Directory フェデレーション サービス (AD FS) および Azure AD B2C では、ポート番号も指定する必要があります。  (例: `http://localhost:1234`)。 
 
    > [!IMPORTANT]
    > 最新の Microsoft Authentication Library (MSAL) を使用していない、またはブローカーを使用していないモバイル アプリケーションでは、これらのアプリケーションのリダイレクト URI を **[デスクトップとデバイス]** で構成する必要があります。

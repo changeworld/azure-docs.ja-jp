@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331806"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024440"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 
@@ -53,6 +53,9 @@ Azure AD にデバイスを追加する場合、次の複数のオプション�
 
 ![[Azure AD デバイス] ブレードに表示されるデバイス](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> ハイブリッド状態とは、デバイスの状態だけではありません。 ハイブリッド状態を有効にするには、有効な Azure AD ユーザーも必要です。
+
 ## <a name="device-management"></a>デバイス管理
 
 Azure AD のデバイスは、Microsoft Intune、Microsoft Endpoint Configuration Manager、グループ ポリシー (ハイブリッド Azure AD 参加)、モバイル アプリケーション管理 (MAM) ツール、その他のサードパーティ ツールなど、モバイル デバイス管理 (MDM) ツールを使用して管理できます。
@@ -63,6 +66,8 @@ Azure AD へのデバイスの登録および参加により、ユーザーは�
 
 > [!NOTE]
 > デバイス ベースの条件付きアクセス ポリシーには、Hybrid Azure AD 参加済みデバイスか、準拠している Azure AD 参加済みデバイスまたは Azure AD 登録済みデバイスが必要となります。
+
+プライマリ更新トークン (PRT) は、デバイスに関する情報を含むもので、SSO に必要です。 PRT を使用せずにデバイスベースの条件付きアクセス ポリシーをアプリケーションに設定している場合、アクセスは拒否されます。 ハイブリッド条件付きアクセス ポリシーには、ハイブリッド状態のデバイスと、サインインしている有効なユーザーが必要です。
 
 Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのデバイスには、組織のオンプレミス リソースとクラウド リソースに SSO できるという利点があります。 詳細については、記事「[Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ](azuread-join-sso.md)」をご覧ください。
 

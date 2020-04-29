@@ -2,18 +2,18 @@
 title: Azure 上の Linux VM でシェル スクリプトを実行する
 description: このトピックでは、実行コマンド機能を使用して Azure Linux 仮想マシン内でスクリプトを実行する方法について説明します
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80fc33a93d4d83dad1e687b176b39728fc7e8807
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72597892"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758609"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
@@ -49,7 +49,7 @@ ms.locfileid: "72597892"
 The entity was not found in this Azure location
 ```
 
-|**Name**|**説明**|
+|**名前**|**説明**|
 |---|---|
 |**RunShellScript**|Linux シェル スクリプトを実行します。|
 |**ifconfig**| すべてのネットワーク インターフェイスの構成を取得します。|

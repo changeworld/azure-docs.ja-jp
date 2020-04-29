@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406729"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770300"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -48,8 +48,6 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 (例: `http(s)://*.adventure-works.com`)。
 
 内部 URL と外部 URL には異なるドメインを使用できますが、同じドメインにすることがベスト プラクティスとして推奨されます。 アプリケーションの発行時、いずれかの URL にワイルドカードがないとエラーが表示されます。
-
-構成設定が異なるその他のアプリケーションがある場合、これらの例外を別個のアプリケーションとして発行し、ワイルドカードに設定された既定値を上書きする必要があります。 ワイルドカードのないアプリケーションは、常にワイルドカード アプリケーションよりも優先されます。 構成上、これらは "ただの" 通常のアプリケーションです。
 
 ワイルドカード アプリケーションの作成は、他のすべてのアプリケーションで使用できるのと同じ[アプリケーション発行フロー](application-proxy-add-on-premises-application.md)に基づきます。 唯一の違いは、URL にワイルドカードを含めることだけです。場合によっては SSO 構成にもワイルドカードを含めます。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50028e81c4ca130aa3266c164a431dc935a271cb
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71266056"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730032"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB Cassandra API アカウントにデータを移行する
 
@@ -155,7 +155,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    ![Connect to target](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. ターゲットを構成する前に、[Striim の Java 環境に Baltimore ルート証明書](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)が追加されていることを確認します。
+1. ターゲットを構成する前に、[Striim の Java 環境に Baltimore ルート証明書](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)が追加されていることを確認します。
 
 1. ターゲット Azure Cosmos DB インスタンスの構成プロパティを入力し、 **[保存]** を選択して続行します。 注意が必要な重要なパラメーターを次に示します。
 

@@ -39,6 +39,9 @@
         - name: Python
           href: /azure/databricks/languages/python
           maintainContext: true
+        - name: Koalas
+          href: /azure/databricks/languages/koalas
+          maintainContext: true
         - name: R
           items:
             - name: R のガイド
@@ -1058,6 +1061,8 @@
             - name: シークレット ワークフローの例
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: GDPR のベスト プラクティス
+          href: /azure/databricks/security/privacy/gdpr-delta
         - name: クラスター ワーカー ノード間のトラフィックを暗号化する
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: ノートブック用に顧客が管理するキーを有効にする
@@ -1611,8 +1616,24 @@
               href: /azure/databricks/dev-tools/api/latest/examples
               maintainContext: true
             - name: 認証
-              href: /azure/databricks/dev-tools/api/latest/authentication
-              maintainContext: true
+              items:
+                - name: 個人用アクセス トークン
+                  href: /azure/databricks/dev-tools/api/latest/authentication
+                  maintainContext: true
+                - name: Azure Active Directory (AAD) トークン
+                  items:
+                    - name: AAD トークン認証の概要
+                      href: /azure/databricks/dev-tools/api/latest/aad/index
+                      maintainContext: true
+                    - name: AAD 認証ライブラリを使用した AAD トークンの取得
+                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
+                      maintainContext: true
+                    - name: サービス プリンシパルを使用した AAD トークンの取得
+                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
+                      maintainContext: true
+                    - name: AAD アクセス トークンのトラブルシューティング
+                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
+                      maintainContext: true
             - name: クラスター
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true

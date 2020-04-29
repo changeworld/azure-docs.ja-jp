@@ -2,14 +2,14 @@
 title: Azure Migrate を使用して Azure に移行するために Hyper-V VM を評価する | Microsoft Docs
 description: Azure Migrate Server Assessment を使用して Azure に移行するためにオンプレミスの Hyper-V VM を評価する方法について説明します。
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336769"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535453"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[作業の開始]** で、 **[ツールの追加]** をクリックします。
 5. **[移行プロジェクト]** タブで、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したいリージョンを指定します。 Azure Migrate プロジェクトを作成できるリージョンを[確認](migrate-support-matrix.md#supported-geographies)します。
+6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したいリージョンを指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
     - プロジェクトのリージョンは、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。
     - VM を移行するときに、別の Azure ターゲット リージョンを選択できます。 移行ターゲットとしては、すべての Azure リージョンがサポートされています。
@@ -67,9 +67,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
-Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate に送信します。
-- アプライアンスは、ダウンロードした Hyper-V VHD を使用して Hyper-V VM 上に設定できます。 または、PowerShell インストーラー スクリプトを使用して、VM 上または物理マシン上にアプライアンスを設定することもできます。
-- このチュートリアルでは、VHD を使用します。 スクリプトを使用してアプライアンスを設定する場合は、[この記事](deploy-appliance-script.md)を参照してください。
+
+Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate に送信します。 このアプライアンスは、さまざまな方法で設定できます。
+
+- ダウンロードした Hyper-V VHD を使用して Hyper-V VM 上に設定できます。 このチュートリアルでは、この方法を使用します。
+- PowerShell インストーラー スクリプトを使用して Hyper-V VM 上または物理マシン上に設定します。 VHD を使用して VM を設定できない場合や、Azure Government をご利用の場合は、[この方法](deploy-appliance-script.md)を使用してください。
 
 アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
@@ -125,9 +127,9 @@ Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライア
 7. Hyper-V マネージャーの **[仮想マシン]** で、VM を起動します。
 
 
-### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
+## <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンス VM が [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
+[パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
 ### <a name="configure-the-appliance"></a>アプライアンスを構成する
 

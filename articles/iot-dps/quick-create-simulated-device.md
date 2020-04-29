@@ -8,13 +8,16 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: d41c4757f0b81312cefa580c3a3263f87bccffa9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: 5d52cd134c8c0f1702f57bff1f60bffa12ef6f4d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290600"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687225"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>クイック スタート:Azure IoT C SDK を使用してシミュレートされた TPM デバイスをプロビジョニングする
 

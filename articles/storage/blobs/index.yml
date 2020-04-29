@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: f937c88b70e60b7613cc08ba9d3f91748e3f0bd2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 9db4921b6f0b8382b69dbac658536b5151bdd653
+  ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75981848"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82117252"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -97,8 +97,10 @@ landingContent:
       url: storage-quickstart-blobs-java.md
     - text: Python 用 Azure Blob Storage
       url: storage-quickstart-blobs-python.md
-    - text: JavaScript 用 Azure Blob Storage
+    - text: Node.js を使用した JavaScript 用 Azure Blob Storage
       url: storage-quickstart-blobs-nodejs.md
+    - text: ブラウザーでの JavaScript 用 Azure Blob Storage
+      url: quickstart-blobs-javascript-browser.md
     - text: イベントを Web エンドポイントにルーティングする
       url: ../../event-grid/blob-event-quickstart-portal.md
     - text: 静的 Web サイトのホスト

@@ -10,53 +10,16 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2578f48ce218a0feaa5fb515ebc5d0e7154802ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420386"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685451"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
-Azure Key Vault では、Microsoft Azure アプリケーションとユーザーはいくつかの種類のシークレット データを保存して使用できます。
-
-- シークレット:パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。
-
-- Azure Storage:Azure Storage アカウントのキーを自動的に管理できます。 内部的には、Key Vault は Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 
-
-Key Vault の一般的な情報については、「[Azure Key Vault とは](/azure/key-vault/key-vault-overview)」をご覧ください。
-
-## <a name="azure-key-vault"></a>Azure Key Vault
-
-以下のセクションでは、Key Vault サービスの実装に該当する一般的な情報を提供します。 
-
-### <a name="objects-identifiers-and-versioning"></a>オブジェクト、識別子、バージョン管理
-
-Key Vault に格納されるオブジェクトは、オブジェクトの新しいインスタンスが作成されるたびにバージョン管理されます。 各バージョンには、一意の識別子と URL が割り当てられます。 オブジェクトが最初に作成されるときに、オブジェクトに一意のバージョン識別子が指定され、オブジェクトの現在のバージョンとしてマークされます。 同じオブジェクト名の新しいインスタンスが作成されると、新しいオブジェクトに一意のバージョン識別子が与えられ、現在のバージョンになります。  
-
-Key Vault 内のオブジェクトは、現在の識別子またはバージョン固有の識別子を使用してアドレス指定できます。 たとえば、キーの名前を `MasterKey` とすると、現在の識別子を指定して操作を実行すると、システムは使用可能な最新のバージョンを使用します。 バージョン固有の識別子を指定して操作を実行すると、システムはオブジェクトの特定のバージョンを使用します。  
-
-Key Vault 内のオブジェクトは、URL を使用して一意に識別されます。 地理的場所に関係なく、システム内の複数のオブジェクトが同じ URL を持つことはありません。 オブジェクトの完全な URL は、オブジェクト識別子と呼ばれます。 URL は、Key Vault を示すプレフィックス、オブジェクトの種類、ユーザー指定のオブジェクト名、およびオブジェクトのバージョンで構成されます。 オブジェクト名は大文字と小文字が区別されず、変更できません。 オブジェクトのバージョンを含まない識別子は、ベース識別子と呼ばれます。  
-
-詳しくは、「[Authentication, requests, and responses](../general/authentication-requests-and-responses.md)」(認証、要求、応答) をご覧ください。
-
-オブジェクト識別子の一般的な形式は次のとおりです。  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-各値の説明:  
-
-|||  
-|-|-|  
-|`keyvault-name`|Microsoft Azure Key Vault サービスでのキー コンテナーの名前。<br /><br /> キー コンテナーの名前はユーザーが選択し、グローバルに一意です。<br /><br /> Key Vault の名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 3 ～ 24 文字の文字列である必要があります。|  
-|`object-type`|オブジェクトの種類で、"keys" または "secrets" です。|  
-|`object-name`|`object-name` は、ユーザーが指定する名前で、キー コンテナー内で一意である必要があります。 名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 1 ～ 127 文字の文字列である必要があります。|  
-|`object-version`|`object-version` はシステムが生成し、オブジェクトの一意のバージョンに対応するために必要に応じて使用される 32 文字の文字列識別子です。|  
-
-## <a name="key-vault-secrets"></a>キー コンテナーのシークレット 
-
-### <a name="working-with-secrets"></a>シークレットの操作
+Key Vault は、パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。
 
 開発者から見ると、Key Vault API はシークレット値を文字列として受け取って返します。 Key Vault の内部では、シークレットはオクテット (8 ビット バイト) のシーケンスとして格納および管理され、最大サイズはそれぞれ 25k バイトです。 Key Vault サービスでは、シークレットのセマンティクスは提供されていません。 データを受け取り、暗号化し、格納して、シークレット識別子 ("id") を返すだけです。 後で識別子を使用して、シークレットを取得できます。  
 
@@ -64,7 +27,7 @@ Key Vault 内のオブジェクトは、URL を使用して一意に識別され
 
 Key Vault では、シークレットの contentType フィールドもサポートされています。 クライアントは、シークレットのコンテンツ タイプを指定して、取得されるときのシークレット データの解釈を支援できます。 このフィールドの最大長は 255 文字です。 定義済みの値はありません。 推奨される使用方法は、シークレット データを解釈するためのヒントです。 たとえば、実装がパスワードと証明書の両方をシークレットとして格納する場合は、このフィールドを使用して区別します。 定義済みの値はありません。  
 
-### <a name="secret-attributes"></a>シークレットの属性
+## <a name="secret-attributes"></a>シークレットの属性
 
 シークレット データに加えて、次の属性を指定できます。  
 
@@ -77,11 +40,11 @@ Key Vault では、シークレットの contentType フィールドもサポー
 - *created*:IntDate、省略可能。 created 属性は、このバージョンのシークレットが作成された日時を示します。 この属性が追加される前に作成されたシークレットについては、この値は null です。 その値は、IntDate 値を含む数値でなければなりません。  
 - *updated*:IntDate、省略可能。 updated 属性は、このバージョンのシークレットが更新された日時を示します。 この属性が追加される前に最後に更新されたシークレットについては、この値は null です。 その値は、IntDate 値を含む数値でなければなりません。
 
-#### <a name="date-time-controlled-operations"></a>日付と時刻で制御される操作
+### <a name="date-time-controlled-operations"></a>日付と時刻で制御される操作
 
 シークレットの**取得**操作は、*nbf* / *exp* ウィンドウの外側の、有効期間前および期限切れ後のシークレットでも動作します。 有効期間前のシークレットの**取得**操作は、テスト目的に使用できます。 期限切れのシークレットの**取得**は、復旧操作に使用できます。
 
-### <a name="secret-access-control"></a>シークレットのアクセス制御
+## <a name="secret-access-control"></a>シークレットのアクセス制御
 
 Key Vault で管理されているシークレットのアクセス制御は、そのシークレットを格納している Key Vault のレベルで提供されます。 シークレットのアクセス制御ポリシーは、同じキー コンテナー内のキーに対するアクセス制御ポリシーとは別です。 ユーザーは、1 つまたは複数のコンテナーを作成してシークレットを保持することができ、シークレットのセグメント化と管理に適切なシナリオを維持する必要があります。   
 
@@ -101,7 +64,7 @@ Key Vault で管理されているシークレットのアクセス制御は、�
 
 シークレットの処理について詳しくは、[Key Vault REST API リファレンス内のシークレットの操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。 
 
-### <a name="secret-tags"></a>シークレットのタグ  
+## <a name="secret-tags"></a>シークレットのタグ  
 タグの形式で、アプリケーション固有の追加メタデータを指定できます。 Key Vault は最大 15 個のタグをサポートし、それぞれが 256 文字の名前と 256 文字の値を持つことができます。  
 
 >[!Note]
@@ -118,7 +81,7 @@ Key Vault では、Azure ストレージ アカウント キーを管理でき�
 
 詳細については、[Azure Key Vault のストレージ アカウント キー](../secrets/overview-storage-keys.md)に関する記事をご覧ください。
 
-### <a name="storage-account-access-control"></a>ストレージ アカウントのアクセス制御
+## <a name="storage-account-access-control"></a>ストレージ アカウントのアクセス制御
 
 ユーザーまたはアプリケーション プリンシパルがマネージド ストレージ アカウントに対する操作を実行するのを承認するときは、次のアクセス許可を使用できます。  
 
@@ -142,7 +105,11 @@ Key Vault では、Azure ストレージ アカウント キーを管理でき�
 
 詳しくは、[Key Vault REST API リファレンス内のストレージ アカウントの操作](/rest/api/keyvault)に関するページをご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
 
-## <a name="see-also"></a>参照
+## <a name="next-steps"></a>次のステップ
 
+- [Key Vault について](../general/overview.md)
+- [キー、シークレット、証明書について](../general/about-keys-secrets-certificates.md)
+- [キーについて](../keys/about-keys.md)
+- [証明書について](../certificates/about-certificates.md)
 - [認証、要求、応答](../general/authentication-requests-and-responses.md)
 - [Key Vault 開発者ガイド](../general/developers-guide.md)

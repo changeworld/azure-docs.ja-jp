@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77206125"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684826"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -63,6 +63,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |フランス語|    `fr`    |   ニューラル|
 |ドイツ語|    `de`    |   ニューラル|
 |ギリシャ語| `el`    |   ニューラル|
+|グジャラート語|  `gu`    |   ニューラル|
 |ハイチ・クレオール語|    `ht`        |統計|
 |ヘブライ語 |`he`   |ニューラル
 |ヒンディー語| `hi`    |   ニューラル|
@@ -85,6 +86,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |マラヤーラム語| `ml` | ニューラル
 |マルタ語|   `mt`    |   統計|
 |マオリ語| `mi`  | ニューラル|
+|マラーティー語| `mr`  | ニューラル|
 |ノルウェー語| `nb`    |   ニューラル|
 |ペルシャ語|   `fa`    |   ニューラル|
 |ポーランド語|    `pl`    |   ニューラル|

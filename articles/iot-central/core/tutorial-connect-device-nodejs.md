@@ -7,16 +7,19 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b7aebb5b9c1aa6566cedda869f97f2d1aa20df83
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.custom: mqtt
+ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674654"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758206"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>チュートリアル:Node.js クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Node.js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
 このチュートリアルでは、デバイス開発者を対象に、Node.js クライアント アプリケーションを Azure IoT Central アプリケーションに接続する方法を説明します。 Node.js アプリケーションは、環境センサー デバイスの動作をシミュレートします。 IoT Central で、サンプル "_デバイス機能モデル_" を使用して "_デバイス テンプレート_" を作成します。 デバイス テンプレートにビューを追加して、オペレーターがデバイスと対話できるようにします。
 
@@ -325,7 +328,12 @@ node environmentalSensor.js
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス機能モデルと、独自のデバイス テンプレートの作成方法の詳細については、攻略ガイドに進んでください。
+デバイス開発者として、Node.js を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
+
+- 「[MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](./howto-connect-devkit.md)」ハウツー記事で、実際のデバイスを IoT Central に接続する方法を確認します。
+- IoT Central にデバイスを登録する方法と IoT Central でデバイスの接続を保護する方法の詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
+
+一連の IoT Central チュートリアルを続行し、IoT Central ソリューションの構築方法の詳細を確認するには、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [新しい IoT デバイスの種類を定義する](./howto-set-up-template.md)
+> [ゲートウェイ デバイス テンプレートを作成する](./tutorial-define-gateway-device-type.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064277"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768260"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer のコンポーネントと制限事項
 Azure Load Balancer には、その操作に必要な重要なコンポーネントがいくつか含まれています。  これらのコンポーネントは、サブスクリプションで、Azure portal、Azure CLI、または Azure PowerShell を使用して構成できます。  
@@ -171,6 +171,8 @@ Load Balancer は、Basic SKU と Standard SKU の両方をサポートしてい
 
 SKU によって、完全なシナリオ構成が若干異なる場合があります。 Load Balancer のドキュメントでは、記事が特定の SKU だけに適用される場合は、そのことが示されています。 違いを比較して理解するには、次の表をご覧ください。 詳しくは、「[Azure Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。
 
+Basic Load Balancer を Standard にアップグレードするには、[Basic Load Balancer のアップグレード](upgrade-basic-standard.md)に関するページをご覧ください。
+
 >[!NOTE]
 > Microsoft では、Standard Load Balancer を推奨しています。
 スタンドアロン VM、可用性セット、および仮想マシン スケール セットは、どちらか一方の SKU にのみ接続でき、両方には接続できません。 パブリック IP アドレスで使うときは、Load Balancer とパブリック IP アドレスの SKU が一致していなければなりません。 Load Balancer とパブリック IP の SKU は変更できません。
@@ -207,6 +209,7 @@ SKU によって、完全なシナリオ構成が若干異なる場合があり�
 
 ## <a name="next-steps"></a>次のステップ
 
+- Basic Load Balancer を Standard Load Balancer にアップグレードするには、[Basic Load Balancer のアップグレード](upgrade-basic-standard.md)に関するページをご覧ください。
 - Load Balancer の使用を始めるには、[パブリック Standard Load Balancer の作成](quickstart-load-balancer-standard-public-portal.md)に関するページを参考に Load Balancer を 1 つ作成し、カスタム IIS 拡張機能がインストールされている VM を作成して、Web アプリを VM 間で負荷分散します。
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
 - [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。

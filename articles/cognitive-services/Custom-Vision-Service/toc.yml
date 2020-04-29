@@ -13,30 +13,14 @@
       items:
         - name: Web ポータルの使用
           href: getting-started-build-a-classifier.md
-        - name: .NET SDK の使用
-          href: csharp-tutorial.md
-        - name: Python SDK の使用
-          href: python-tutorial.md
-        - name: Java SDK の使用
-          href: java-tutorial.md
-        - name: Node.js SDK の使用
-          href: node-tutorial.md
-        - name: Go SDK の使用
-          href: go-tutorial.md
+        - name: Custom Vision SDK の使用
+          href: quickstarts/image-classification.md
     - name: オブジェクト検出器の構築
       items:
         - name: Web ポータルの使用
           href: get-started-build-detector.md
-        - name: .NET SDK の使用
-          href: csharp-tutorial-od.md
-        - name: Python SDK の使用
-          href: python-tutorial-od.md
-        - name: Java SDK の使用
-          href: java-tutorial-od.md
-        - name: Node.js SDK の使用
-          href: node-tutorial-object-detection.md
-        - name: Go SDK の使用
-          href: go-tutorial-object-detection.md
+        - name: Custom Vision SDK の使用
+          href: quickstarts/object-detection.md
 - name: チュートリアル
   items:
     - name: IoT デバイスでビジュアルの状態をレポートする
@@ -97,7 +81,7 @@
       href: limits-and-quotas.md
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

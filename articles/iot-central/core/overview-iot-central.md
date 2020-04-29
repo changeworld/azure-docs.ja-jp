@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 6c50e5892aca37bac47e68a9ae17435611c99817
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80157468"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025239"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -60,7 +60,7 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 - クラウドベースのアプリケーション。このアプリケーションによってデバイスからテレメトリを受信し、それらのデバイスの管理が可能となります。
 - カスタム コードを実行する複数のデバイス。これらのデバイスが、クラウドベースのアプリケーションに接続されます。
 
-新しい IoT Central アプリケーションは、ブラウザーからすばやくデプロイし、具体的な要件に合わせてカスタマイズすることができます。 汎用の "_アプリケーション テンプレート_"、または[小売業](../retail/overview-iot-central-retail-pnp.md)、[エネルギー](../energy/overview-iot-central-energy.md)、[政府機関](../government/overview-iot-central-government.md)、[医療](../healthcare/overview-iot-central-healthcare.md)の各業界にフォーカスしたアプリケーション テンプレートのいずれかを使用して開始できます。
+新しい IoT Central アプリケーションは、ブラウザーからすばやくデプロイし、具体的な要件に合わせてカスタマイズすることができます。 汎用の "_アプリケーション テンプレート_"、または[小売業](../retail/overview-iot-central-retail.md)、[エネルギー](../energy/overview-iot-central-energy.md)、[政府機関](../government/overview-iot-central-government.md)、[医療](../healthcare/overview-iot-central-healthcare.md)の各業界にフォーカスしたアプリケーション テンプレートのいずれかを使用して開始できます。
 
 ソリューション ビルダーは、自社アプリケーションに接続するデバイス用に、Web ベースのツールを使って "_デバイス テンプレート_" を作成します。 デバイス テンプレートは、特定の種類のデバイスについて、その特性と動作を定義するブループリントです。次に示したのは、その例です。
 
@@ -197,7 +197,7 @@ IoT Central ではアプリケーション プラットフォームとして、I
 
 ## <a name="next-steps"></a>次のステップ
 
-これで IoT Central の概要を把握できました。推奨される次の手順は以下のとおりです。
+これで IoT Central の概要を把握できました。推奨される次の手順のいくつかを次に示します。
 
 - [IoT ソリューションを作成するための Azure のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)を把握する。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
@@ -205,3 +205,5 @@ IoT Central ではアプリケーション プラットフォームとして、I
 - [IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md)の詳細を確認する。
 - [Azure IoT Edge デバイスを接続する](./tutorial-add-edge-as-leaf-device.md)方法について学習する。
 - [Azure IoT のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)の詳細を確認する。
+
+デバイス開発者がコードの内容を詳しく知りたい場合は、次の手順として、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device-nodejs.md)ことをお勧めします。

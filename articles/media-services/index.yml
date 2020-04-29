@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: a1c31725883204f473a46a3d20ca6fd4bbd741e8
-  ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+  ms.openlocfilehash: 2f2049f710dcdbb210594331fa69e6743f5e431e
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 04/22/2020
-  ms.locfileid: "81755342"
+  ms.locfileid: "81869307"
 highlightedContent:
   items:
   - title: Azure Media Services v3 について
@@ -39,9 +39,6 @@ highlightedContent:
   - title: Media Services v2 を v3 に移行する
     itemType: concept
     url: ./latest/migrate-from-v2-to-v3.md
-  - title: Azure Media Services の仕様
-    itemType: concept
-    url: media-services-specifications-live-timed-metadata.md
   - title: Azure Media Player
     itemType: overview
     url: azure-media-player/azure-media-player-overview.md
@@ -55,6 +52,9 @@ conceptualContent:
     - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
       itemType: sample
       text: コード サンプル
+    - url: ./latest/release-notes.md
+      itemType: concept
+      text: Media Services v3 の最新情報
   - title: ライブ ストリーム配信
     links:
     - url: ./latest/live-streaming-overview.md
@@ -99,6 +99,17 @@ conceptualContent:
     - url: ./latest/analyze-videos-tutorial-with-api.md
       itemType: tutorial
       text: ビデオを分析する
+  - title: Media Services の仕様について
+    links:
+    - url: media-services-specifications-live-timed-metadata.md
+      itemType: concept
+      text: ライブ ストリーミングでの時間指定メタデータ (RTMP および Smooth Streaming)
+    - url: media-services-specifications-ms-sstr-amendment-hevc.md
+      itemType: concept
+      text: HEVC のための Smooth Streaming プロトコル (MS-SSTR) の変更
+    - url: media-services-fmp4-live-ingest-overview.md
+      itemType: concept
+      text: Smooth Streaming 取り込みプロトコル
 additionalContent:
   sections:
   - items:

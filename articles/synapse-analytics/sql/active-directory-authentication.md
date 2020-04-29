@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5808f892f189bd6cb2cc39bd157be1d61c966763
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421086"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086098"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory 認証を使用して Synapse SQL での認証を行う
 
@@ -48,26 +48,34 @@ Azure Synapse Analytics では、Azure Active Directory ID を使用してデー
 
 次の図は、Synapse SQL で Azure AD 認証を使用するソリューション アーキテクチャの概要を示しています。 Azure AD のネイティブ ユーザー パスワードをサポートする場合は、クラウドの部分と Azure AD または Synapse SQL のみを考慮します。 フェデレーション認証 (または Windows 資格情報のユーザー/パスワード) をサポートするには、ADFS ブロックとの通信が必要です。 矢印は通信経路を示します。
 
-![aad auth diagram][1]
+![aad auth diagram](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
-次の図は、クライアントがトークンの送信によってデータベースへの接続を許可される、フェデレーション、信頼、およびホスティングの関係を示しています。 トークンは、Azure AD によって認証され、データベースによって信頼されます。 顧客 1 は、Azure Active Directory とネイティブ ユーザーまたは Azure AD とフェデレーション ユーザーを表します。 顧客 2 は、インポートされたユーザーなどの可能性のあるソリューションを表します。この例では、Azure Active Directory および Azure Active Directory と同期された ADFS です。 重要なのは、Azure AD 認証を使用してデータベースにアクセスするには、ホストしているサブスクリプションを Azure AD に関連付ける必要があることを理解することです。 同じサブスクリプションを使用して、Azure SQL Database または SQL プールをホストする SQL Server を作成する必要があります。
+次の図は、クライアントがトークンの送信によってデータベースへの接続を許可される、フェデレーション、信頼、およびホスティングの関係を示しています。 トークンは、Azure AD によって認証され、データベースによって信頼されます。 
 
-![サブスクリプションの関係性][2]
+顧客 1 は、Azure Active Directory とネイティブ ユーザーまたは Azure AD とフェデレーション ユーザーを表します。 顧客 2 は、インポートされたユーザーなどの可能性のあるソリューションを表します。この例では、Azure Active Directory および Azure Active Directory と同期された ADFS です。 
+
+重要なのは、Azure AD 認証を使用してデータベースにアクセスするには、ホストしているサブスクリプションを Azure AD に関連付ける必要があることを理解することです。 同じサブスクリプションを使用して、Azure SQL Database または SQL プールをホストする SQL Server を作成する必要があります。
+
+![サブスクリプションの関係性](./media/aad-authentication/2-subscription-relationship.png)
 
 ## <a name="administrator-structure"></a>管理者の構造
 
-Azure AD 認証を使用すると、Synapse SQL の管理者アカウントは、元の SQL Server 管理者と Azure AD 管理者の 2 つになります。 ユーザー データベースに最初の Azure AD 包含データベース ユーザーを作成できるのは、Azure AD アカウントに基づく管理者のみです。 Azure AD の管理者ログインには、Azure AD ユーザーまたは Azure AD グループを使用できます。 
+Azure AD 認証を使用すると、Synapse SQL の管理者アカウントは、元の SQL Server 管理者と Azure AD 管理者の 2 つになります。 ユーザー データベースに最初の Azure AD 包含データベース ユーザーを作成できるのは、Azure AD アカウントに基づく管理者のみです。 
 
-管理者がグループ アカウントである場合、グループの任意のメンバーがこれを使用できるため、その Synapse SQL インスタンスに対して複数の Azure AD 管理者を配置できます。 グループ アカウントを管理者として使用すると、Synapse Analytics ワークスペースでユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。 いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
+Azure AD の管理者ログインには、Azure AD ユーザーまたは Azure AD グループを使用できます。 管理者がグループ アカウントである場合、グループの任意のメンバーがこれを使用できるため、その Synapse SQL インスタンスに対して複数の Azure AD 管理者を配置できます。 
 
-![admin structure][3]
+グループ アカウントを管理者として使用すると、Synapse Analytics ワークスペースでユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。 いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
+
+![admin structure](./media/aad-authentication/3-admin-structure.png)
 
 ## <a name="permissions"></a>アクセス許可
 
 新しいユーザーを作成するには、データベースにおける `ALTER ANY USER` アクセス許可が必要です。 `ALTER ANY USER` アクセス許可は、任意のデータベース ユーザーに付与できます。 `ALTER ANY USER` アクセス許可は、サーバーの管理者アカウント、そのデータベースの `CONTROL ON DATABASE`または `ALTER ON DATABASE` アクセス許可を持つデータベース ユーザー、`db_owner` データベース ロールのメンバーも保持しています。
 
-Synapse SQL に包含データベース ユーザーを作成するには、Azure AD の ID を使用してデータベースに接続する必要があります。 最初の包含データベース ユーザーを作成するには、(データベースの所有者である) Azure AD 管理者を使用してデータベースに接続する必要があります。 Synapse SQL に対して Azure AD 管理者が作成された場合にのみ、任意の Azure AD 認証が可能です。 Azure Active Directory 管理者がサーバーから削除された場合、Synapse SQL 内に以前に作成された既存の Azure Active Directory ユーザーは、Azure Active Directory 資格情報を使用してデータベースにアクセスできなくなります。
+Synapse SQL に包含データベース ユーザーを作成するには、Azure AD の ID を使用してデータベースに接続する必要があります。 最初の包含データベース ユーザーを作成するには、(データベースの所有者である) Azure AD 管理者を使用してデータベースに接続する必要があります。 
 
+Synapse SQL に対して Azure AD 管理者が作成された場合にのみ、任意の Azure AD 認証が可能です。 Azure Active Directory 管理者がサーバーから削除された場合、Synapse SQL 内に以前に作成された既存の Azure Active Directory ユーザーは、Azure Active Directory 資格情報を使用してデータベースにアクセスできなくなります。
+ 
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD の機能と制限事項
 
 - Azure AD の次のメンバーを Synapse SQL にプロビジョニングできます。
@@ -120,21 +128,8 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse SQL でのアクセスおよび制御の概要については、[Synapse SQL のアクセス制御](../sql/access-control.md)に関するページを参照してください。 データベース プリンシパルの詳細については、[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)に関するページを参照してください。 データベース ロールの詳細については、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)に関する記事を参照してください。
+- Synapse SQL でのアクセスおよび制御の概要については、[Synapse SQL のアクセス制御](../sql/access-control.md)に関するページを参照してください。
+- データベース プリンシパルの詳細については、「[プリンシパル](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+- データベース ロールの詳細については、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)に関するページを参照してください。
+
  
-
-<!--Image references-->
-
-[1]: ./media/aad-authentication/1-active-directory-authentication-diagram.png
-[2]: ./media/aad-authentication/2-subscription-relationship.png
-[3]: ./media/aad-authentication/3-admin-structure.png
-[4]: ./media/aad-authentication/4-select-subscription.png
-[5]: ./media/aad-authentication/5-active-directory-settings-portal.png
-[6]: ./media/aad-authentication/6-edit-directory-select.png
-[7]: ./media/aad-authentication/7-edit-directory-confirm.png
-[8]: ./media/aad-authentication/8-choose-active-directory.png
-[9]: ./media/aad-authentication/9-active-directory-settings.png
-[10]: ./media/aad-authentication/10-choose-admin.png
-[11]: ./media/aad-authentication/11-connect-using-integrated-authentication.png
-[12]: ./media/aad-authentication/12-connect-using-password-authentication.png
-[13]: ./media/aad-authentication/13-connect-to-db.png

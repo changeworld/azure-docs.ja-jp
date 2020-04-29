@@ -168,13 +168,15 @@
         - name: 大規模にデプロイする
           items:
             - name: Azure portal
-              href: how-to-deploy-monitor.md
+              href: how-to-deploy-at-scale.md
             - name: Azure CLI
-              href: how-to-deploy-monitor-cli.md
+              href: how-to-deploy-cli-at-scale.md
             - name: Visual Studio Code
-              href: how-to-deploy-monitor-vscode.md
+              href: how-to-deploy-vscode-at-scale.md
     - name: デプロイの監視と診断
       items:
+        - name: IoT Edge デプロイの監視
+          href: how-to-monitor-iot-edge-deployments.md
         - name: EdgeAgent ダイレクト メソッド
           href: how-to-edgeagent-direct-method.md
     - name: ゲートウェイとしての IoT Edge デバイスの使用
@@ -265,7 +267,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=iot-edge'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-edge'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

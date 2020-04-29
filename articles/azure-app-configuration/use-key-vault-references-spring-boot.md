@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216739"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085027"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -140,6 +140,14 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Key Vault 参照を使用するようコードを更新する
 
+1. **APP_CONFIGURATION_ENDPOINT** という環境変数を作成します。 その値を App Configuration ストアのエンドポイントに設定します。 エンドポイントは、Azure portal の **[アクセス キー]** ブレードで確認できます。
+
+1. *resources* フォルダー内の *bootstrap.properties* を開きます。 接続文字列ではなく App Configuration エンドポイントを使用するようにこのファイルを更新します。
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
+    ```
+
 1. *MessageProperties.java* を開きます。 *keyVaultMessage* という新しい変数を追加します。
 
     ```java
@@ -166,7 +174,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 1. *AzureCredentials.java* という新しいファイルを作成し、次のコードを追加します。
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
@@ -195,7 +203,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 1. *AppConfiguration.java* という新しいファイルを作成します。 さらに、次のコードを追加します。
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -214,7 +222,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-    com.example.AppConfiguration
+    com.example.demo.AppConfiguration
     ```
 
 1. Spring Boot アプリケーションを Maven でビルドし、実行します。次に例を示します。

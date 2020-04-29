@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76901423"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536441"
 ---
 | リソース | Standard ファイル共有 | Premium ファイル共有 |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "76901423"
 | オブジェクト (ディレクトリとファイル) の名前の最大長 | 2,048 文字 | 2,048 文字 |
 | 最大パス名コンポーネント (パス \A\B\C\D 内。各文字はコンポーネント) | 255 文字 | 255 文字 |
 
-\*ほとんどのリージョンで利用できます。利用可能なリージョンの詳細については、[リージョン別の提供状況](../articles/storage/files/storage-files-planning.md#regional-availability)を参照してください。
+\* Standard ファイル共有での既定サイズは 5 TiB です。Standard ファイル共有を 100 TiB にスケールアップする方法について詳しくは、「[大きなファイル共有の有効化と作成](../articles/storage/files/storage-files-how-to-create-large-file-share.md)」を参照してください。

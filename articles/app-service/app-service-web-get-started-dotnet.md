@@ -3,14 +3,14 @@ title: クイック スタート:C# ASP.NET Core アプリを作成する
 description: Visual Studio から既定の C# ASP.NET Core Web アプリ テンプレートをデプロイすることによって、Azure App Service で Web アプリを実行する方法について説明します。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313279"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086047"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -107,7 +107,7 @@ Web アプリを更新して再デプロイするには、次の手順に従い�
 
 1. **ソリューション エクスプローラー**で、対象プロジェクトから **[ページ]**  >  **[Index.cshtml]** の順に開きます。
 
-1. 2 つの `<div>` タグを次のコードに置き換えます。
+1. `<div>` タグ全体を次のコードに置き換えます。
 
    ```HTML
    <div class="jumbotron">

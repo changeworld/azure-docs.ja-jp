@@ -60,7 +60,7 @@ Immersive Reader の読み込みに失敗した場合、返された `Promise` �
 
 Immersive Reader を閉じます。
 
-この関数のユース ケースの例には、```hideExitButton: true```オプション[で ](#options) を設定して終了ボタンを非表示にする場合があります。 その後、別のボタン (たとえば、モバイル ヘッダーの戻る矢印) がクリックされたときに、この ```close``` 関数を呼び出すことができます。
+この関数の使用例は、[オプション](#options)で ```hideExitButton: true``` を設定して終了ボタンを非表示にする場合です。 その後、別のボタン (たとえば、モバイル ヘッダーの戻る矢印) がクリックされたときに、この ```close``` 関数を呼び出すことができます。
 
 ```typescript
 close(): void;
@@ -86,7 +86,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ## <a name="types"></a>型
 
-### <a name="content"></a>コンテンツ
+### <a name="content"></a>Content
 
 Immersive Reader で表示するコンテンツを含みます。
 
@@ -192,7 +192,7 @@ Immersive Reader ボタンをレンダリングするためのオプション。
 | コード | 説明 |
 | ---- | ----------- |
 | BadArgument | 与えられた引数が無効です。詳細は `message` を参照してください。 |
-| タイムアウト | 指定されたタイムアウト時間内に Immersive Reader を読み込めませんでした。 |
+| Timeout | 指定されたタイムアウト時間内に Immersive Reader を読み込めませんでした。 |
 | TokenExpired | 与えられたトークンの期限が切れています。 |
 | Throttled | 呼び出しレートの制限を超えました。 |
 

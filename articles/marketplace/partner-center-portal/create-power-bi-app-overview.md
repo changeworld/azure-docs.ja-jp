@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c348a172b16e12334d33cf2718609694147fdce3
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674962"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732672"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI アプリの作成の概要
 
@@ -69,7 +69,7 @@ Power BI アプリをビルドできるのは、[Power BI](https://powerbi.micro
 2. Power BI でアプリを作成してテストします。
 3. アプリのインストール Web アドレスを受け取ったら、パートナー センターの **[技術的な構成]** ページに追加します。
 
-Power BI でアプリが作成され、テストされた後、アプリケーションのインストール Web アドレスを保存します。これは [Power BI アプリ オファーを作成する](https://aka.ms/AzureCreatePBIServiceApp)際に必要になるためです。
+Power BI でアプリが作成され、テストされた後、アプリケーションのインストール Web アドレスを保存します。これは [Power BI アプリ オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)際に必要になるためです。
 
 ### <a name="business-requirements"></a>ビジネス要件
 
@@ -81,4 +81,4 @@ Power BI でアプリが作成され、テストされた後、アプリケー�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー センターで Power BI アプリ オファーを作成する](https://aka.ms/AzureCreatePBIServiceApp)
+- [パートナー センターで Power BI アプリ オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

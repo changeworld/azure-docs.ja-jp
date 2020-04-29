@@ -6,12 +6,12 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 678dc8b058d0ae0694dafeb4222b2fc9f10ecda7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a930dfb38007349155581424d03ee7b3e7a6b46
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288701"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730201"
 ---
 # <a name="payout-reporting"></a>支払いレポート
 
@@ -175,4 +175,4 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 
 ## <a name="billing-questions-and-support"></a>課金に関する質問とサポート
 
-課金に関する質問のサポートを受けるには、[商用マーケットプレースの公開元のサポート](https://aka.ms/marketplacepublishersupport)に問い合わせてください。
+課金に関する質問のサポートを受けるには、[商用マーケットプレースの公開元のサポート](https://partner.microsoft.com/support/v2/?stage=1)に問い合わせてください。

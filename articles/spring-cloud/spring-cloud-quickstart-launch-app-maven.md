@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: d1e6d6db1465b20f1f32a8ffb2f978d0a04a1033
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4eddf34f4887f0e2bad08eb5700d83eaeae0ef7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470845"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687088"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 
@@ -93,7 +93,7 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 1. 親 POM を含む PiggyMetrics のルート フォルダー内で次のコマンドを実行して、構成を生成します。
 
     ```console
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
     a. `gateway`、`auth-service`、および `account-service` モジュールを選択します。

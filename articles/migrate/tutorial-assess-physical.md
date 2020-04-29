@@ -2,17 +2,17 @@
 title: Azure に移行するために Azure Migrate Server Assessment を使用して物理サーバーを評価する
 description: Azure Migrate Server Assessment を使用して、Azure に移行するためにオンプレミスの物理サーバーを評価する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76990302"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535436"
 ---
-# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Azure Migrate を使用した物理サーバーの評価: Server Assessment
+# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure Migrate:Server Assessment を使用して物理サーバーを評価する
 
-この記事では、Azure Migrate: Server Assessment ツールを使用して、オンプレミスの物理サーバーを評価する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
+この記事では、Azure Migrate:Server Assessment ツールを使用してオンプレミスの物理サーバーを評価する方法について説明します。
 
 [Azure Migrate](migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
 
@@ -34,8 +34,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - このシリーズの最初のチュートリアルを[完了](tutorial-prepare-physical.md)します。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
-    - Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-physical.md#prepare-azure)する。
+    - Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-physical.md)する。
     - 評価のために[物理サーバーを準備する](tutorial-prepare-physical.md#prepare-for-physical-server-assessment)。 アプライアンスの要件を確認する必要があります。 また、物理サーバーの検出用にアカウントが設定されている必要があります。 必要なポートが使用可能であり、Azure にアクセスするための URL がわかっている必要があります。
+
+
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
@@ -49,8 +51,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![サーバーの検出と評価](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. **[作業の開始]** で、 **[ツールの追加]** をクリックします。
-5. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。     
-6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 アジア、ヨーロッパ、英国、および米国がサポートされています。
+5. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。  
+6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
     - プロジェクトの地理的な場所は、オンプレミスのサーバーから収集されたメタデータを格納するためにのみ使用されます。
     - 移行を実行するときは、任意のターゲット リージョンを選択できます。
@@ -96,16 +98,24 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
-2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
+2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  ハッシュ値を確認します。
+ 
+    - パブリック クラウドの場合 (最新のアプライアンス バージョン):
 
-3.  アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの設定と一致する必要があります。
+        **アルゴリズム** | **ハッシュ値**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-  **アルゴリズム** | **ハッシュ値**
-  --- | ---
-  MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-  SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    - Azure Government の場合 (最新のアプライアンス バージョン):
+
+        **アルゴリズム** | **ハッシュ値**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
 
@@ -116,28 +126,26 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 - IIS 書き込み可能モジュールをダウンロードしてインストールする。 [詳細については、こちらを参照してください](https://www.microsoft.com/download/details.aspx?id=7435)。
 - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
 - パスに次のファイルを作成する。
-    - **構成ファイル**: %ProgramData%\Microsoft Azure\Config
-    - **ログ ファイル**: %ProgramData%\Microsoft Azure\Logs
+    - **構成ファイル**: %Programdata%\Microsoft Azure\Config
+    - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
 
 次のようにスクリプトを実行します。
 
-1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。
+
+    - パブリック クラウドの場合: ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Azure Government の場合: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+
+    スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。
 
 問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
 
-> [!NOTE]
-> 既存の Azure Migrate アプライアンスで Azure Migrate インストーラー スクリプトを実行しないでください。
-
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンスが [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
+[パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンスから接続できることを確認します。
 
 
 ### <a name="configure-the-appliance"></a>アプライアンスを構成する
@@ -173,7 +181,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 次に、アプライアンスから検出対象の物理サーバーに接続し、検出を開始します。
 
 1. **[資格情報の追加]** をクリックして、アプライアンスがサーバーの検出に使用するアカウント資格情報を指定します。  
-2. **オペレーティング システム**、資格情報のフレンドリ名、**ユーザー名**、**パスワード**を指定し、 **[追加]** をクリックします。
+2. **オペレーティング システム**、資格情報のフレンドリ名、ユーザー名、パスワードを指定します。 **[追加]** をクリックします。
 Windows および Linux サーバーごとに 1 セットの資格情報を追加できます。
 4. **[サーバーの追加]** をクリックし、サーバーの詳細 (FQDN/IP アドレスと資格情報のフレンドリ名 (行ごとに 1 つのエントリ)) を指定してサーバーに接続します。
 3. **[検証]** をクリックします。 検証後、検出可能なサーバーの一覧が表示されます。

@@ -5,38 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 2/11/2020
+ms.date: 04/13/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77166453"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603414"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する (プレビュー)
-
-|     |
-| --- |
-| この記事では、Azure Active Directory のパブリック プレビュー機能について説明します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
-
-> [!NOTE]
-> 2019 年 12 月 22 日の時点では、一括招待ユーザー (プレビュー) 機能は一時的に無効になっています。
-> 現在、Azure portal でこの機能が再び有効になる日付は未定です。 PowerShell を使用してゲスト ユーザーを一括で招待するには、[B2B 一括招待に関するチュートリアル](bulk-invite-powershell.md)または [B2B コードと PowerShell のサンプル](code-samples.md)に関するページを参照してください。
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する
 
 Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、Azure portal を使用して、外部ユーザーに招待状を一括送信する方法について説明します。 具体的には、以下を実行します。
 
 > [!div class="checklist"]
-> * **ユーザー一括招待 (プレビュー)** を使用して、ユーザー情報と招待状のユーザー設定を含むコンマ区切り値 (.csv) ファイルを準備する
+> * **ユーザー一括招待**を使用して、ユーザー情報と招待状のユーザー設定を含むコンマ区切り値 (.csv) ファイルを準備する
 > * Azure AD に .csv ファイルをアップロードする
 > * ユーザーがディレクトリに追加されたことを確認する
 
-Azure Active Directory をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。 
+Azure Active Directory をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +38,7 @@ Azure Active Directory をお持ちでない場合は、開始する前に[無�
 1. 組織のユーザー管理者アカウントで、Azure portal にサインインします。
 2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
 3. **[管理]** の **[ユーザー]**  >  **[一括招待]** を選択します。
-4. **[ユーザー一括招待 (プレビュー)]** ページで、 **[ダウンロード]** を選択して、招待のプロパティを含んだ有効な .csv ファイルを取得します。
+4. **[ユーザー一括招待]** ページで、 **[ダウンロード]** を選択して、招待のプロパティを含んだ有効な .csv ファイルを取得します。
 
     ![一括招待のダウンロード ボタン](media/tutorial-bulk-invite/bulk-invite-button.png)
 
@@ -63,10 +54,10 @@ Azure Active Directory をお持ちでない場合は、開始する前に[無�
    > **[カスタマイズされた招待メッセージ]** にはコンマを使用しないでください。メッセージが正しく解析されなるためです。
 
 6. ファイルを保存します。
-7. **[ユーザー一括招待 (プレビュー)]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択すると、.csv ファイルの検証が開始されます。 
+7. **[ユーザー一括招待]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択すると、.csv ファイルの検証が開始されます。 
 8. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 9. ファイルが検証に合格したら、 **[送信]** を選択して、招待を追加する Azure の一括操作を開始します。 
-10. ジョブの状態を表示するには、 **[各操作の状態を表示するには、ここをクリックします]** を選択します。 または、 **[アクティビティ]** セクションの **[一括操作の結果 (プレビュー)]** を選択します。 一括操作に含まれる各行の項目の詳細については、 **[成功数]** 、 **[失敗数]** 、 **[要求数合計]** の各列の値を選択してください。 エラーが発生した場合、その理由が表示されます。
+10. ジョブの状態を表示するには、 **[各操作の状態を表示するには、ここをクリックします]** を選択します。 または、 **[アクティビティ]** セクションの **[一括操作の結果]** を選択します。 一括操作に含まれる各行の項目の詳細については、 **[成功数]** 、 **[失敗数]** 、 **[要求数合計]** の各列の値を選択してください。 エラーが発生した場合、その理由が表示されます。
 
     ![一括操作の結果の例](media/tutorial-bulk-invite/bulk-operation-results.png)
 

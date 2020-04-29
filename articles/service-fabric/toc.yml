@@ -7,6 +7,9 @@
 - name: クイックスタート
   expanded: true
   items:
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-cluster-template.md
     - name: .NET アプリケーションの作成
       href: service-fabric-quickstart-dotnet.md
     - name: Linux コンテナー アプリケーションのデプロイ

@@ -187,7 +187,7 @@
           href: service-bus-metrics-azure-monitor.md
         - name: Service Bus 管理ライブラリ
           href: service-bus-management-libraries.md
-        - name: 診断ログ
+        - name: リソース ログ
           href: service-bus-diagnostic-logs.md
         - name: メッセージ エンティティの一時停止と再アクティブ化
           href: entity-suspend.md
@@ -272,7 +272,7 @@
       href: 'https://github.com/paolosalvatori/ServiceBusExplorer'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=service-bus'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azureservicebus'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-bus'

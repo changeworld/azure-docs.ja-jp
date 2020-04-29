@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671156"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732952"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent (旧称 Status Monitor v2) のトラブルシューティング
 
@@ -116,7 +116,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
    - Application Insights SDK のバージョン
    - PowerShell モジュールのファイル パス
     
-このコマンドレットの使用方法の詳細については、[API リファレンス](status-monitor-v2-api-get-status.md)に関する記事を参照してください。
+このコマンドレットの使用方法の詳細については、[API リファレンス](status-monitor-v2-api-reference.md)に関する記事を参照してください。
 
 
 ### <a name="troubleshooting-running-processes"></a>実行中のプロセスのトラブルシューティング
@@ -126,7 +126,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 `Get-ApplicationInsightsMonitoringStatus -InspectProcess` コマンドを使用して DLL を確認します。
 
-このコマンドレットの使用方法の詳細については、[API リファレンス](status-monitor-v2-api-get-status.md)に関する記事を参照してください。
+このコマンドレットの使用方法の詳細については、[API リファレンス](status-monitor-v2-api-reference.md)に関する記事を参照してください。
 
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>PerfView を使用して ETW ログを収集する

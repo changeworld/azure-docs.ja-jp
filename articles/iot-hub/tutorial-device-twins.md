@@ -8,13 +8,15 @@ ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.custom: mvc
-ms.openlocfilehash: bda8f1e3419f80faabb2f469a9ac5fd5c77bd79e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78674395"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767813"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -35,7 +37,7 @@ ms.locfileid: "78674395"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

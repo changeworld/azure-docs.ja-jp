@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63ec58711c5dd142064e2d5cb29ccaa9eb9c0ed9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79300356"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と InVision の統合
 
@@ -157,13 +157,15 @@ InVision で Azure AD SSO を構成してテストするには、次の構成要
 
     e. ダウンロードした**証明書 (Base64)** をメモ帳で開き、その内容をコピーして **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
 
-    f. **[HASH Algorithm]\(ハッシュ アルゴリズム\)** のドロップダウンで **[SHA-256]** を選択します。
+    f. **[Name ID Format]\(名前 ID の形式\)** ボックスで、**名前 ID の形式**に `Unspecified` を使用します。
 
-    g. **[SSO Button Label]\(SSO ボタン ラベル\)** に適切な名前を入力します。
+    g. **[HASH Algorithm]\(ハッシュ アルゴリズム\)** のドロップダウンで **[SHA-256]** を選択します。
 
-    h. **[Allow Just-in-Time provisioning]\(Just-in-Time プロビジョニングを許可する\)** をオンにします。
+    h. **[SSO Button Label]\(SSO ボタン ラベル\)** に適切な名前を入力します。
 
-    i. **[Update]** をクリックします。
+    i. **[Allow Just-in-Time provisioning]\(Just-in-Time プロビジョニングを許可する\)** をオンにします。
+
+    j. **[Update]** をクリックします。
 
 ### <a name="create-invision-test-user"></a>InVision テスト ユーザーの作成
 

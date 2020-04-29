@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-ms.date: 01/15/2019
-ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819936"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687752"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL Database の JSON 機能の概要
 Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。 Azure SQL Database では次の JSON のシナリオを使用できます。
@@ -30,7 +30,7 @@ Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json
 
 次の例では、FOR JSON 句を使用して、Sales.Customer テーブルの行を JSON 形式にしています。
 
-```
+```sql
 select CustomerName, PhoneNumber, FaxNumber
 from Sales.Customers
 FOR JSON PATH
@@ -38,7 +38,7 @@ FOR JSON PATH
 
 FOR JSON PATH 句は、クエリの結果を JSON テキストとして書式設定します。 次のように、セルの値が JSON 値として生成される場合、列名はキーとして使用されます。
 
-```
+```json
 [
 {"CustomerName":"Eric Torres","PhoneNumber":"(307) 555-0100","FaxNumber":"(307) 555-0101"},
 {"CustomerName":"Cosmina Vlad","PhoneNumber":"(505) 555-0100","FaxNumber":"(505) 555-0101"},
@@ -50,7 +50,7 @@ FOR JSON PATH 句は、クエリの結果を JSON テキストとして書式設
 
 PATH は、列の別名にドット表記を使用して、JSON の結果の出力形式をカスタマイズできることを示します。 次のクエリでは、JSON 形式の出力で "CustomerName" キーの名前を変更し、電話番号と FAX 番号を "Contact" サブオブジェクトに入力します。
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
 from Sales.Customers
 where CustomerID = 931
@@ -59,7 +59,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 このクエリの出力は次のようになります。
 
-```
+```json
 {
     "Name":"Nada Jovanovic",
     "Contact":{
@@ -73,7 +73,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 FOR JSON 句の主な値を使用すると、入れ子になった JSON オブジェクトまたは配列として書式設定されたデータベースから複雑な階層データを返すことができます。 次の例では、`Orders` の入れ子になった配列として、`Customer` に属する `Orders` テーブルから行を含める方法を示します。
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
         Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
@@ -81,12 +81,11 @@ from Sales.Customers Customer
         on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
-
 ```
 
 Customer データを取得して、関連する Orders のリストを取得するために、個別のクエリを送信する代わりに、次の出力例のように、1 つのクエリで必要なデータをすべて取得することができます。
 
-```
+```json
 {
   "Name":"Nada Jovanovic",
   "Phone":"(215) 555-0100",
@@ -95,7 +94,7 @@ Customer データを取得して、関連する Orders のリストを取得す
     {"OrderID":382,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":395,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":1657,"OrderDate":"2013-01-31","ExpectedDeliveryDate":"2013-02-01"}
-]
+  ]
 }
 ```
 
@@ -104,7 +103,7 @@ Customer データを取得して、関連する Orders のリストを取得す
 
 JSON は、Azure SQL Database の他の文字列型のように使用できるテキスト形式です。 JSON データは、標準の NVARCHAR として送信または格納することができます。
 
-```
+```sql
 CREATE TABLE Products (
   Id int identity primary key,
   Title nvarchar(200),
@@ -120,7 +119,7 @@ END
 
 この例で使用される JSON データは、NVARCHAR(MAX) 型を使用して表されます。 JSON は、次の例のように標準の Transact-SQL 構文を使用して、このテーブルに挿入したり、格納されたプロシージャの引数として指定したりすることができます。
 
-```
+```sql
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
@@ -131,7 +130,7 @@ Azure SQL テーブルに格納された JSON 形式のデータがある場合�
 
 Azure SQL データベースで使用可能な JSON 関数を使用すると、JSON 形式のデータを他の SQL データ型として処理できます。 JSON テキストから簡単に値を抽出し、任意のクエリで JSON データを使用できます。
 
-```
+```sql
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
 from Products
 where JSON_VALUE(Data, '$.Color') = 'White'
@@ -149,7 +148,7 @@ JSON_MODIFY 関数は、更新する必要がある JSON テキストの値だ�
 
 JSON は標準テキストで格納されるため、値が適切に書式設定されたテキスト列に格納される保証はありません。 標準の Azure SQL Database の CHECK 制約および ISJSON 関数を使用すると、JSON 列に格納されたテキストが適切に書式設定されていることを確認できます。
 
-```
+```sql
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
         CHECK (ISJSON(Data) > 0)
@@ -168,7 +167,7 @@ OPENJSON は、テーブル値関数です。この関数は、JSON テキスト
 
 @orders 変数の JSON 配列を行セットに変換したり、この結果セットを分析したり、標準テーブルに行を挿入したりすることができます。
 
-```
+```sql
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
@@ -181,9 +180,9 @@ AS BEGIN
             Customer varchar(200),
             Quantity int
      )
-
 END
 ```
+
 JSON 配列として書式設定され、ストアド プロシージャにパラメーターとして指定される orders のコレクションは、解析され、Orders テーブルに挿入することができます。
 
 ## <a name="next-steps"></a>次のステップ

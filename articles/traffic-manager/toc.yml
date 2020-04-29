@@ -83,7 +83,7 @@
       href: traffic-manager-load-balancing-azure.md
     - name: Traffic Manager のパフォーマンスの測定
       href: traffic-manager-performance-considerations.md
-    - name: Traffic Manager で診断ログを有効にする
+    - name: リソース ログの有効化
       href: traffic-manager-diagnostic-logs.md
     - name: Azure PowerShell を使用して Traffic Manager を管理する
       href: traffic-manager-powershell-arm.md
@@ -95,7 +95,7 @@
           href: traffic-manager-subnet-override-cli.md
         - name: サブネットのオーバーライドの構成 - PowerShell
           href: traffic-manager-subnet-override-powershell.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: Azure Traffic Manager での機能低下状態のトラブルシューティング
           href: traffic-manager-troubleshooting-degraded.md

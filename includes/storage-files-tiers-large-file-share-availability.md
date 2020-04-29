@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 625b7fc8d49c91a9f2b1c09e1add72993e828d43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27e3f0ef7539f3fb875c087ff7d1351916877d19
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597832"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536491"
 ---
-100 TiB の容量制限がある Standard ファイル共有は、すべての Azure リージョンでグローバルに使用可能です。ただし、次の例外があります。
+100 TiB の容量を持つ Standard ファイル共有には、いくつかの制限事項があります。
 
-- ローカル冗長ストレージ:南アフリカ北部、南アフリカ西部、ドイツ中西部、およびドイツ北部を除くすべてのリージョン。
-- ゾーン冗長ストレージ:東日本、北ヨーロッパ、南アフリカ北部を除く、ゾーン冗長ストレージがサポートされているすべてのリージョンでサポートされます。
-- geo 冗長/geo ゾーン冗長ストレージ:サポートされていません。
+- 現在サポートされているのは、ローカル冗長ストレージ (LRS) アカウントとゾーン冗長ストレージ (ZRS) アカウントだけです。
+- 大きなファイル共有を有効にした後は、ストレージ アカウントを geo 冗長ストレージ (GRS) アカウントや geo ゾーン冗長ストレージ (GZRS) アカウントに変換することはできません。
+- いったん大きなファイル共有を有効にすると、無効にすることはできなくなります。

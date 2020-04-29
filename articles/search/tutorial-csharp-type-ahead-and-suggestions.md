@@ -1,23 +1,23 @@
 ---
-title: オートコンプリートと検索候補に関する C# チュートリアル
+title: オートコンプリートと検索候補
 titleSuffix: Azure Cognitive Search
-description: このチュートリアルでは、ドロップダウン リストを使用してユーザーからの検索用語の入力を収集する方法として、オートコンプリートと検索候補を示します。 これは既存のホテル プロジェクト上に構築されます。
+description: このチュートリアルでは、ドロップダウン リストを使用してユーザーからの検索語句の入力を収集する方法として、オートコンプリートと検索候補を示します。 これは既存のホテル プロジェクト上に構築されます。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121532"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641071"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# のチュートリアル: オートコンプリートと検索候補を追加する - Azure Cognitive Search
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# のチュートリアル: オートコンプリートと検索候補を追加する - Azure Cognitive Search
 
-ユーザーが検索ボックスへの入力を開始したときのオートコンプリート (先行入力と検索候補の提示) を実装する方法について説明します。 このチュートリアルでは、先行入力の結果と検索候補の結果を個別に示したうえで、さらに優れたユーザー エクスペリエンスを実現するために、それらを組み合わせる方法を示します。 ユーザーは、2 つまたは 3 つのキーを入力するだけで、使用可能なすべての結果を検索することができます。 このチュートリアルは、「[C# チュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」チュートリアルで作成した無限スクロール プロジェクトを基にしています。
+ユーザーが検索ボックスへの入力を開始したときのオートコンプリート (先行入力クエリと検索候補のドキュメント) を実装する方法について説明します。 このチュートリアルでは、オートコンプリートされたクエリと検索候補の結果を個別に表示した後、それらを統合します。 ユーザーは、2 つまたは 3 つの文字を入力するだけで、使用可能なすべての結果を検索することができます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -28,23 +28,21 @@ ms.locfileid: "77121532"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下を実行する必要があります。
+このチュートリアルはシリーズの一部であり、「[C# のチュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」で作成したページング プロジェクトを基に作成されています。
 
-「[C# チュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」プロジェクトを稼働させます。 このプロジェクトは、前のチュートリアルで完成させた独自のバージョンでも、GitHub からインストールした 「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」サンプルを開きます。
+別途 [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead) チュートリアルのソリューションをダウンロードして実行してもかまいません。
 
 ## <a name="add-suggestions"></a>検索候補を追加する
 
 ユーザーに代わりの候補を提示する際の最もシンプルなケース、つまり検索候補のドロップダウン リストから始めましょう。
 
-1. index.cshtml ファイルで、**TextBoxFor** ステートメントを以下のように変更します。
+1. index.cshtml ファイルで、**TextBoxFor** ステートメントの `@id` を **azureautosuggest** に変更します。
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-    ここで重要なのは、検索ボックスの ID を **azureautosuggest** に設定したということです。
-
-2. このステートメントに続けて、 **&lt;/div&gt;** で閉じた後に次のスクリプトを入力します。
+2. このステートメントに続けて、 **&lt;/div&gt;** で閉じた後に次のスクリプトを入力します。 このスクリプトは、オープンソースの jQuery UI ライブラリにある[オートコンプリート ウィジェット](https://api.jqueryui.com/autocomplete/)を活用して、検索候補のドロップダウン リストを表示します。 
 
     ```javascript
     <script>
@@ -59,11 +57,9 @@ ms.locfileid: "77121532"
     </script>
     ```
 
-    同じ ID を使用して、このスクリプトを検索ボックスに接続しました。 また、検索をトリガーするためには最低 2 つの文字が必要です。さらに home コントローラー内で 2 つのクエリ パラメーター (**highlights** と **fuzzy**) が指定された **Suggest** アクションを呼び出します。これらのパラメーターは、このインスタンス内では両方とも false に設定されています。
+    上記のスクリプトは、"azureautosuggest" という ID によって検索ボックスに接続されます。 ウィジェットの source オプションには Suggest メソッドを設定し、**highlights** と **fuzzy** という 2 つのクエリ パラメーターを指定して、Suggest API を呼び出しています。この例では、2 つのクエリ パラメーターが、どちらも false に設定されています。 また、検索をトリガーするためには、少なくとも 2 つの文字が必要です。
 
 ### <a name="add-references-to-jquery-scripts-to-the-view"></a>ビューに jQuery スクリプトへの参照を追加する
-
-上記のスクリプト内で呼び出されたオートコンプリート関数は、jQuery ライブラリに用意されているので、自分で記述する必要はありません。 
 
 1. jQuery ライブラリにアクセスするには、ビュー ファイルの &lt;head&gt; セクションを次のコードに変更します。
 
@@ -80,7 +76,7 @@ ms.locfileid: "77121532"
     </head>
     ```
 
-2. (**Views/Shared** フォルダー内にある) _Layout.cshtml ファイル内で、jQuery を参照する行を削除またはコメントアウトする必要もあります。 次の行を見つけて、最初のスクリプト行を次のようにコメントアウトします。 この変更により、jQuery への参照の競合を回避できます。
+2. また、ここでは新しい jQuery 参照を導入するので、(**Views/Shared** フォルダーの) _Layout.cshtml ファイルから既定の jQuery 参照は削除 (またはコメント アウト) する必要があります。 次の行を見つけて、最初のスクリプト行を次のようにコメントアウトします。 この変更により、jQuery への参照の競合を回避できます。
 
     ```html
     <environment include="Development">
@@ -90,7 +86,7 @@ ms.locfileid: "77121532"
     </environment>
     ```
 
-    これで、定義済みの autocomplete jQuery 関数を使用できるようになりました。
+    これで、定義済みの Autocomplete jQuery 関数を使用できるようになりました。
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>コントローラーに Suggest アクションを追加する
 
@@ -114,7 +110,8 @@ ms.locfileid: "77121532"
                 parameters.HighlightPostTag = "</b>";
             }
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+            // Only one suggester can be specified per index. It is defined in the index schema.
+            // The name of the suggester is set when the suggester is specified by other API calls.
             // The suggester for the hotel database is called "sg", and simply searches the hotel name.
             DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
 
@@ -128,7 +125,7 @@ ms.locfileid: "77121532"
 
     **Top** パラメーターは、返される結果の数を指定するものです (指定しない場合、既定値は 5 です)。 _suggester_ は、データの設定時に Azure のインデックス上で指定されます。このチュートリアルのようなクライアント アプリによって指定されるものではありません。 この場合、suggester は "sg" と呼ばれ、**HotelName** フィールドのみを検索します。 
 
-    あいまい一致では "ニア ミス" を出力に含めることができるようになります。 **highlights** パラメーターが true に設定されている場合は、太字の HTML タグが出力に追加されます。 次のセクションで、これら 2 つのパラメーターを true に設定します。
+    あいまい一致では、編集距離の上限を 1 とする "ニア ミス" を出力に含めることができるようになります。 **highlights** パラメーターが true に設定されている場合は、太字の HTML タグが出力に追加されます。 次のセクションで、これら 2 つのパラメーターを true に設定します。
 
 2. 構文エラーがいくつか発生する場合があります。 その場合は、次の 2つの **using** ステートメントをファイルの先頭に追加します。
 
@@ -151,7 +148,7 @@ ms.locfileid: "77121532"
 
 ## <a name="add-highlighting-to-the-suggestions"></a>検索候補に強調表示を追加する
 
-ユーザーに表示される検索候補の見た目は、**highlights** パラメーターを true に設定することで、少し向上させることができます。 ただし、まずはいくつかのコードをビューに追加して、太字のテキストを表示できるようにする必要があります。
+ユーザーに表示される検索候補の見た目は、**highlights** パラメーターを true に設定することで向上させることができます。 ただし、まずはいくつかのコードをビューに追加して、太字のテキストを表示できるようにする必要があります。
 
 1. ビュー (index.cshtml) 内で、上記で入力した **azureautosuggest** スクリプトの後に、次のスクリプトを追加します。
 
@@ -194,11 +191,11 @@ ms.locfileid: "77121532"
 
 4. 上記の強調表示のスクリプトで使用されるロジックは、絶対確実なものではありません。 同じ名前内で 2 回出現する用語を入力すると、太字の結果はうまく表示されません。 「mo」と入力してみてください。
 
-    開発者は、どのようなときにスクリプトが "十分に機能" しているか、そしてどのようなときに問題に対処すべきかを把握している必要があります。 このチュートリアルではこれ以上強調表示については説明しませんが、強調表示についてさらに調べたい場合は、精度の高いアルゴリズムを見つけることを検討してください。
+    開発者は、どのようなときにスクリプトが "十分に機能" しているか、そしてどのようなときに問題に対処すべきかを把握している必要があります。 このチュートリアルではこれ以上強調表示については説明しませんが、実際のデータに対して強調表示が効果的でない場合は、精度の高いアルゴリズムを見つけることを検討してください。 詳細については、「[検索結果の強調表示](search-pagination-page-layout.md#hit-highlighting)」を参照してください。
 
-## <a name="add-autocompletion"></a>オートコンプリートを追加する
+## <a name="add-autocomplete"></a>オートコンプリートを追加する
 
-検索候補とは若干異なるもう 1 つのバリエーションとして、オートコンプリートがあります ("先行入力" とも呼ばれます)。 ここでも、ユーザー エクスペリエンスの向上に進む前に、最もシンプルな実装から開始します。
+検索候補とは若干異なるもう 1 つのバリエーションとして、オートコンプリートがあります。"先行入力" とも呼ばれ、検索語を補完するものです。 ここでも、ユーザー エクスペリエンスの向上に取り組む前に、最もシンプルな実装から開始します。
 
 1. ビュー内で、これまでのスクリプトの後に、次のスクリプトを入力します。
 
@@ -246,7 +243,7 @@ ms.locfileid: "77121532"
 
     検索候補の提示のときのように、オートコンプリート検索内で "sg" と呼ばれる同じ *suggester* 関数を使用していることに注目してください (こうすることで、ホテル名のみオートコンプリートしようとしています)。
 
-    **AutocompleteMode** の設定はいくつか存在し、ここで使用しているのは **OneTermWithContext** です。 ここで使用できるオプションの範囲については、[Azure の Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) に関する記事を参照してください。
+    **AutocompleteMode** の設定はいくつか存在し、ここで使用しているのは **OneTermWithContext** です。 その他のオプションについては、[オートコンプリート API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) に関するページを参照してください。
 
 4. アプリケーションを実行します。 ドロップダウン リストに表示される選択候補が単語単位になっていることに注目してください。 "re" で始まる単語を入力してみてください。 入力される文字数が増えるにつれて、選択候補の数が減ることに注目してください。
 

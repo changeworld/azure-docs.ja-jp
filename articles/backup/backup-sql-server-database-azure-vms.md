@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure 仮想マ�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233887"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685708"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -112,7 +112,7 @@ HTTP プロキシを使用する | VM に対するインターネット アク�
 * セミコロン ';'
 * スラッシュ '/'
 
-サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)」を参照してください。
+サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」を参照してください。
 
 >[!NOTE]
 >名前に "+" や "&" などの特殊文字が含まれるデータベースに対する**保護の構成**操作はサポートされていません。 データベース名を変更するか、これらのデータベースを適切に保護できる**自動保護**を有効にできます。

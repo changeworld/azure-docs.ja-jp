@@ -7,16 +7,18 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891596"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758188"
 ---
-# <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>チュートリアル:Python クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
 このチュートリアルでは、デバイス開発者を対象に、Python クライアント アプリケーションを Azure IoT Central アプリケーションに接続する方法を説明します。 Python アプリケーションは、環境センサー デバイスの動作をシミュレートします。 IoT Central で、サンプル "_デバイス機能モデル_" を使用して "_デバイス テンプレート_" を作成します。 デバイス テンプレートにビューを追加して、オペレーターがデバイスと対話できるようにします。
 
@@ -199,7 +201,7 @@ ms.locfileid: "80891596"
 
     コマンドの名前 (`blink`、`turnon`、`turnoff`、`rundiagnostics`) は、デバイス テンプレートで使用されている名前と一致している必要があります。
 
-    現在、IoT Central は、デバイス機能モデルに定義されている応答スキーマを使用しません。 同期コマンドの場合、応答ペイロードは任意の有効な JSON にすることができます。 非同期コマンドの場合、デバイスはすぐに 202 応答を返し、その後、作業が終了したときに reported プロパティの更新を返します。 reported プロパティの更新の形式は次のとおりです。
+    現在、IoT Central では、デバイス機能モデルで定義されている応答スキーマを使用しません。 同期コマンドの場合、応答ペイロードは任意の有効な JSON にすることができます。 非同期コマンドの場合、デバイスはすぐに 202 応答を返し、その後、作業が完了したときに reported プロパティの更新を返します。 reported プロパティの更新の形式は次のとおりです。
 
     ```json
     {
@@ -239,7 +241,7 @@ ms.locfileid: "80891596"
             )
     ```
 
-    オペレーターが IoT Central アプリケーションで書き込み可能なプロパティを設定すると、アプリケーションではデバイス ツインによって必要とされるプロパティを使用して、デバイスに値を送信します。 次に、デバイスは、デバイス ツインの reported プロパティを使用して応答します。 IoT Central は、reported プロパティの値を受け取ると、**同期済み**の状態でプロパティ ビューを更新します。
+    オペレーターが IoT Central アプリケーションで書き込み可能なプロパティを設定すると、アプリケーションではデバイス ツインによって必要とされるプロパティを使用して、デバイスに値を送信します。 次に、デバイスによってデバイス ツインの reported プロパティが使用され、応答が行われます。 IoT Central は、reported プロパティの値を受け取ると、**同期済み**の状態でプロパティ ビューを更新します。
 
     プロパティの名前 (`name` と `brightness`) は、デバイス テンプレートで使用されている名前と一致している必要があります。
 
@@ -303,7 +305,12 @@ python3 environmental_sensor.py
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス機能モデルと、独自のデバイス テンプレートの作成方法の詳細については、攻略ガイドに進んでください。
+デバイス開発者として、Node.js を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
+
+- 「[MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](./howto-connect-devkit.md)」ハウツー記事で、実際のデバイスを IoT Central に接続する方法を確認します。
+- IoT Central にデバイスを登録する方法と IoT Central でデバイスの接続を保護する方法の詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
+
+一連の IoT Central チュートリアルを続行し、IoT Central ソリューションの構築方法の詳細を確認するには、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [新しい IoT デバイスの種類を定義する](./howto-set-up-template.md)
+> [ゲートウェイ デバイス テンプレートを作成する](./tutorial-define-gateway-device-type.md)

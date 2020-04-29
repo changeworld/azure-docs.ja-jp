@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4186a4ed369eb289360b74c0758e5ce3f7eca929
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75374306"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482170"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -38,6 +38,9 @@ SQL Server Azure VM では、[自動修正](virtual-machines-windows-sql-automat
 ## <a name="automated-backups"></a>自動バックアップ
 
 SQL Server Azure VM では[自動バックアップ](virtual-machines-windows-sql-automated-backup-v2.md)を活用できます。これにより、データベースのバックアップが Blob Storage に定期的に作成されます。 また、この手法は手動で使用できます。 詳細については、「[Azure Storage を使用した SQL Server のバックアップと復元](virtual-machines-windows-use-storage-sql-server-backup-restore.md)」を参照してください。
+
+Azure では、Azure VM で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ ソリューションも提供されています。 それはフル マネージド バックアップ ソリューションであり、Always On 可用性グループ、長期保有、特定の時点に復旧、一元的な管理と監視がサポートされています。 詳細については、[Azure VM での SQL Server 用の Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-sql-database) に関する記事をご覧ください。
+  
 
 ## <a name="high-availability"></a>高可用性
 
@@ -126,7 +129,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 - [SQL 仮想マシンを作成する](quickstart-sql-vm-create-portal.md)
 
 ## <a name="sql-vm-image-refresh-policy"></a><a id="lifecycle"></a>SQL VM イメージの更新ポリシー
-Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、**SQL Server VM の FAQ** に関するページの「[イメージ](virtual-machines-windows-sql-server-iaas-faq.md#images)」セクションを参照してください。
+Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](virtual-machines-windows-sql-server-iaas-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)」を参照してください。

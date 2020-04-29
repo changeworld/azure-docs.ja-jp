@@ -48,7 +48,7 @@ Azure Functions、Azure Automation、Azure Data Factory で Data Manager を使�
 StorSimple Data Manager は、次の 7 つのリージョンで利用できます。
 
  - 東南アジア
- - 米国東部
+ - East US
  - 米国西部
  - 米国西部 2
  - 米国中西部

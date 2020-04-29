@@ -1,25 +1,20 @@
 ---
 title: Azure での Linux VM のサイズ
 description: Azure の Linux 仮想マシンで使用できるさまざまなサイズを一覧表示します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: da681171-f045-4c80-a5a9-d8bd47964673
-ms.service: virtual-machines-linux
+author: ju-shim
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: 46fad0dd2e39f1f563ed248458da622ad83f061e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 246ab6551667f54e3ef4ec8f91573d9aaa98d64c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161118"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758399"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシンのサイズ
 

@@ -20,8 +20,8 @@
     - name: アプリケーションを開発する
       expanded: true
       items:
-        - name: Draft の使用
-          href: kubernetes-draft.md
+        - name: Helm を使用した開発
+          href: quickstart-helm.md
         - name: Azure Dev Spaces
           expanded: true
           items:
@@ -316,7 +316,7 @@
                 - name: 3 - チーム開発
                   href: ../dev-spaces/team-development-nodejs.md
                   maintainContext: true
-        - name: Helm を使用したアプリケーションの実行
+        - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用
           href: openfaas.md
@@ -410,7 +410,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 製品フィードバックの提供
       href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

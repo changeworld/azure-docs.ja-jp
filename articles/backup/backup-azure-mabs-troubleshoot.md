@@ -4,12 +4,12 @@ description: Azure Backup Server のインストールと登録、およびア�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421286"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688048"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -62,7 +62,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 | Operation | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| 保護されたサーバーへのエージェントのプッシュ | \<ServerName> の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**。 <ul><li> 信頼されていないドメインのコンピューターを接続している場合は、[こちらの手順](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)に従います。 <br> (または) </li><li> 信頼されているドメインのコンピューターを接続している場合は、[このブログ](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)で説明されている手順でトラブルシューティングを行います。 <br>(または)</li><li> トラブルシューティングの一環としてウイルス対策ソフトウェアを無効にします。 それで問題が解決する場合は、[この記事](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))で推奨されているとおりにウイルス対策の設定を変更します。</li></ul> |
+| 保護されたサーバーへのエージェントのプッシュ | \<ServerName> の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**。 <ul><li> 信頼されていないドメインのコンピューターを接続している場合は、[こちらの手順](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)に従います。 <br> (または) </li><li> 信頼されているドメインのコンピューターを接続している場合は、[このブログ](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)で説明されている手順でトラブルシューティングを行います。 <br>(または)</li><li> トラブルシューティングの一環としてウイルス対策ソフトウェアを無効にします。 それで問題が解決する場合は、[この記事](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)で推奨されているとおりにウイルス対策の設定を変更します。</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>セットアップでレジストリのメタデータを更新できません
 
@@ -96,7 +96,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | バックアップ | システム状態だけをバックアップする場合は、保護されたコンピューターにシステム状態のバックアップを格納するのに十分な空き領域があることを確認してください。 | <ol><li>保護されたマシンに Windows Server バックアップがインストールされていることを確認します。</li><li>保護されたコンピューターにシステム状態のための十分な領域があることを確認します。 これを確認する最も簡単な方法として、保護されたコンピューターに移動し、Windows Server バックアップを開き、選択項目をクリックして BMR を選択します。 必要な領域量が UI に表示されます。 **WSB** >  **[ローカル バックアップ]**  >  **[バックアップのスケジュール]**  >  **[バックアップの構成の選択]**  >  **[サーバー全体]** (サイズが表示される) と開きます。 このサイズを検証に使用します。</li></ol>
 | バックアップ | BMR のバックアップの失敗 | BMR サイズが大きい場合は、一部のアプリケーション ファイルを OS ドライブに移動して、再試行してください。 |
 | バックアップ | 新しい Microsoft Azure Backup Server 上の VMware VM を再保護するオプションが、追加可能と表示されません。 | VMware のプロパティが、Microsoft Azure Backup Server の提供終了になった古いインスタンスを参照しています。 この問題を解決するには、次の手順を実行します。<br><ol><li>VCenter (SC-VMM に相当) で、 **[概要]** タブ、 **[カスタム属性]** と移動します。</li>  <li>**DPMServer** 値から、古い Microsoft Azure Backup Server 名を削除します。</li>  <li>新しい Microsoft Azure Backup Server に戻り、PG を変更します。  **[更新]** ボタンを選択すると、保護の追加に使用できるチェック ボックスが VM に表示されます。</li></ol> |
-| バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | 「[DPM サーバーでのウイルス対策ソフトウェアの実行](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))」という記事で提案されているようにウイルス対策の設定を変更してみてください。|
+| バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | 「[DPM サーバーでのウイルス対策ソフトウェアの実行](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)」という記事で提案されているようにウイルス対策の設定を変更してみてください。|
 
 ## <a name="change-passphrase"></a>パスフレーズの変更
 

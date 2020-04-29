@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79087952"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686877"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を接続、設定、アクティブ化する
 
@@ -41,7 +41,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
 
 1. ブラウザー ウィンドウを開き、次のリンクからデバイスのローカル Web UI にアクセスします。
    
-   [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
+   https:\//ip-address-of-network-interface
    
    前のチュートリアルに記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーまたは警告が表示されます。
 

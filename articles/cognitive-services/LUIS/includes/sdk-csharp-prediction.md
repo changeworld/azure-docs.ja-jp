@@ -10,16 +10,17 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 3bb0b9fb8b268c3e036ffb365eb8d5b80a241269
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372128"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732078"
 ---
 .NET 用 Language Understanding (LUIS) 予測クライアント ライブラリの用途は次のとおりです。
 
 * スロット別の予測を取得する
+* バージョン別の予測
 
 [リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [予測ランタイム パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C# サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
@@ -27,10 +28,7 @@ ms.locfileid: "77372128"
 
 * Language Understanding (LUIS) ポータル アカウント - [無料で作成できます](https://www.luis.ai)。
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-
-その他のドキュメントをお探しですか?
-
- * [SDK のリファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
+* LUIS アプリ ID - パブリック IoT アプリ ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` を使用します。 クイックスタートのコードで使用されるユーザー クエリは、そのアプリに固有のものです。
 
 ## <a name="setting-up"></a>設定
 

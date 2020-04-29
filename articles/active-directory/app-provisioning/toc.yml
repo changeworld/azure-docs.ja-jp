@@ -79,6 +79,8 @@
   items:
     - name: SCIM 2.0 プロトコルへの準拠
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM と Graph のシナリオ
+      href: scim-graph-scenarios.md
     - name: プロビジョニング方法を選択する
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: クラウド HR のプロビジョニング
@@ -103,7 +105,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

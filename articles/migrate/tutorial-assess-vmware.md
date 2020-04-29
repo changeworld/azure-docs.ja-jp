@@ -1,16 +1,17 @@
 ---
-title: Azure への移行のために VMware VM を評価する
+title: Azure Migrate Server Assessment を使用して VMware VM を評価する
 description: Azure Migrate Server Assessment を使用して Azure に移行するためにオンプレミスの VMware VM を評価する方法について説明します。
 ms.topic: tutorial
-ms.date: 03/23/2019
-ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.custom: mvc
+ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548740"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535368"
 ---
-# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して VMware VM を評価する
+# <a name="assess-vmware-vms-with-server-assessment"></a>Server Assessment による VMware VM の評価
 
 この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールを使用して、オンプレミスの VMware 仮想マシン (VM) を評価する方法について説明します。
 
@@ -48,9 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[作業の開始]** で、 **[ツールの追加]** を選択します。
 1. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。     
-1. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 アジア、ヨーロッパ、英国、および米国がサポートされています。
-
-   プロジェクトの地理的な場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。 移行を実行するときは、任意のターゲット リージョンを選択できます。
+1. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
    ![プロジェクト名とリージョンのボックス](./media/tutorial-assess-vmware/migrate-project.png)
 
@@ -65,12 +64,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
-Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate に送信します。
-- アプライアンスは、ダウンロードした OVA テンプレートを使用して VMware VM 上に設定できます。 または、PowerShell インストーラー スクリプトを使用して、VM 上または物理マシン上にアプライアンスを設定することもできます。
-- このチュートリアルでは、OVA テンプレートを使用します。 スクリプトを使用してアプライアンスを設定する場合は、[この記事](deploy-appliance-script.md)を参照してください。
+Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate に送信します。 このアプライアンスは、さまざまな方法で設定できます。
+
+- ダウンロードした OVA テンプレートを使用して VMware VM 上に設定します。 このチュートリアルでは、この方法を使用します。
+- PowerShell インストーラー スクリプトを使用して VMware VM 上または物理マシン上に設定します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、[この方法](deploy-appliance-script.md)を使用してください。
 
 アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
-
 
 
 ### <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
@@ -115,9 +114,9 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. **[ネットワーク マッピング]** で、VM の接続先となるネットワークを指定します。 そのネットワークには、Azure Migrate Server Assessment にメタデータを送信するためのインターネット接続が必要です。
 1. 設定を確認し、 **[Finish]\(完了\)** を選択します。
 
-### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
+## <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンス VM が [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
+[パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
 ### <a name="configure-the-appliance"></a>アプライアンスを構成する
 
@@ -136,7 +135,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
    - **接続**:VM でインターネットにアクセスできることが、アプリによって確認されます。 VM でプロキシを使用する場合:
      - **[プロキシの設定]** を選択し、 http://ProxyIPAddress または http://ProxyFQDN の形式で、プロキシ アドレスとリスニング ポートを指定します。
      - プロキシで認証が必要な場合は、資格情報を指定します。
-     - HTTP プロキシのみがサポートされていることに注意してください。
+     - サポートされるのは HTTP プロキシのみです。
    - **時刻同期**:検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
    - **更新プログラムのインストール**:アプライアンスでは、最新の更新プログラムがインストールされることが保証されます。
    - **Install VDDK\(VDDK のインストール\)** :アプライアンスでは、VMWare vSphere Virtual Disk Development Kit (VDDK) がインストールされていることが確認されます。 インストールされていない場合は、VMware から VDDK 6.7 をダウンロードし、ダウンロードした zip コンテンツをアプライアンス上の指定された場所に抽出します。

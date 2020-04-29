@@ -11,16 +11,16 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 8ce954e956da62d645e9b1e852ce7a7318c85791
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6aad01808ad155b745b614d8de6009386f0d2914
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415358"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687960"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="overview"></a>概要
 
@@ -236,11 +236,13 @@ function getPipelineDependencies {
         return @($activity.Pipeline.ReferenceName)
     } elseif ($activity.Activities) {
         $result = @()
-        return $activity.Activities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        $activity.Activities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        return $result
     } elseif ($activity.ifFalseActivities -or $activity.ifTrueActivities) {
         $result = @()
         $activity.ifFalseActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
         $activity.ifTrueActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        return $result
     } elseif ($activity.defaultActivities) {
         $result = @()
         $activity.defaultActivities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
@@ -248,6 +250,8 @@ function getPipelineDependencies {
             $activity.cases | ForEach-Object{ $_.activities } | ForEach-Object{$result += getPipelineDependencies -activity $_ }
         }
         return $result
+    } else {
+        return @()
     }
 }
 

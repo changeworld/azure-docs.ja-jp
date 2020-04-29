@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: ff4c33aea3d3ce604f44c38e6e3856242388b0e9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: eabec50f57785bde6760db053eb3b12f6f5b6452
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371673"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732067"
 ---
 Python 用 Language Understanding (LUIS) 予測クライアント ライブラリの用途は次のとおりです。
 
@@ -28,6 +28,7 @@ Python 用 Language Understanding (LUIS) 予測クライアント ライブラ�
 
 * Language Understanding (LUIS) ポータル アカウント - [無料で作成できます](https://www.luis.ai)。
 * [Python 3.x](https://www.python.org/)
+* LUIS アプリ ID - パブリック IoT アプリ ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` を使用します。 クイックスタートのコードで使用されるユーザー クエリは、そのアプリに固有のものです。
 
 ## <a name="setting-up"></a>設定
 

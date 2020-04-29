@@ -17,7 +17,7 @@
       items:
         - name: PowerShell を使用した一括招待
           href: bulk-invite-powershell.md
-        - name: ポータルを使用した一括招待 (プレビュー)
+        - name: ポータルを使用した一括招待
           href: tutorial-bulk-invite.md
         - name: 多要素認証を適用する
           href: b2b-tutorial-require-mfa.md

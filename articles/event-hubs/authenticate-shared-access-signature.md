@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521318"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676350"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -22,7 +22,7 @@ Shared Access Signature (SAS) を使用すると、共有アクセス署名を�
 - SAS によって付与されるアクセス許可。 たとえば、Event Hubs 名前空間の SAS では、リッスン アクセス許可は付与できますが、送信アクセス許可は付与できません。
 - 有効な資格情報を提示するクライアントだけが Event Hub にデータを送信できる。
 - クライアントが別のクライアントを偽装できないようにする。
-- 悪意のあるクライアントをブロックしてイベント ハブにデータを送信できないようにする。
+- 悪意のあるクライアントをブロックして Event Hub にデータを送信できないようにする。
 
 この記事では、SAS を使用する Event Hubs リソースへのアクセスの認証について説明します。 SAS を使用する Event Hubs リソースへのアクセスの**承認**については、[こちらの記事](authorize-access-shared-access-signature.md)を参照してください。 
 

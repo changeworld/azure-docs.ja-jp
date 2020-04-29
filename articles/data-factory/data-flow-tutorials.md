@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: 8aedbba5d65281753ca61f13e7e1a28c856948ec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/17/2020
+ms.openlocfilehash: 4dba719453546337f9e5657cbe56755ac1ac9149
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417795"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686250"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -113,6 +113,8 @@ ms.locfileid: "81417795"
 
 [実行時にデータ フロー クラスター サイズを動的に最適化する](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
+[データ フローの起動時間の最適化](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
 ## <a name="mapping-data-flow-scenarios"></a>マッピング データ フローのシナリオ
 
 [Fuzzy lookups (あいまい参照)](http://youtu.be/7gdwExjHBbw)
@@ -156,3 +158,5 @@ ms.locfileid: "81417795"
 [文字列補間とパラメーターを楽しむ](https://youtu.be/hb3-cn2CMgM)
 
 [データ フロー スクリプトの概要: コピー、貼り付け、スニペット](https://www.youtube.com/watch?v=3_1I4XdoBKQ)
+
+[データ品質の式](https://www.youtube.com/watch?v=O8gmv5-lXhs)

@@ -3,12 +3,12 @@ title: Azure Application Insights における依存関係の追跡 | Microsoft 
 description: オンプレミスまたは Microsoft Azure Web アプリケーションからの依存関係呼び出しを Application Insights で監視します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292120"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731507"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -97,7 +97,7 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 | プラットフォーム | 完全な SQL クエリを取得するために必要な手順 |
 | --- | --- |
 | Azure Web アプリ |Web アプリのコントロール パネルで [Application Insights ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、SQL コマンドを .NET |
-| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | Status Monitor PowerShell モジュールを使用して[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md)し、IIS を再起動します。 |
+| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | Status Monitor PowerShell モジュールを使用して[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-reference.md)し、IIS を再起動します。 |
 | Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) または [ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
 | IIS Express | サポートされていません
 

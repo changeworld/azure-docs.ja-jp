@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063043"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686484"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure リソースのロールベースのアクセス制御 (RBAC) の概要
 
@@ -35,14 +35,6 @@ RBAC でできることの例を次に示します。
 - DBA グループにサブスクリプション内の SQL データベースの管理を許可します
 - あるユーザーに、仮想マシン、Web サイト、サブネットなど、リソース グループ内のすべてのリソースの管理を許可します
 - あるアプリケーションに、リソース グループ内のすべてのリソースへのアクセスを許可します
-
-## <a name="best-practice-for-using-rbac"></a>RBAC を使用するためのベスト プラクティス
-
-RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定のスコープで特定の操作のみを許可することができます。
-
-アクセス制御戦略を計画する場合のベスト プラクティスは、ユーザーの作業を実行できる最低限の特権をユーザーに付与することです。 次の図は、RBAC を使用するための推奨パターンを示しています。
-
-![RBAC と最小限の特権](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>RBAC のしくみ
 
@@ -139,4 +131,4 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 - [クイック スタート: Azure portal を使用して Azure リソースに対するユーザーのアクセス権を表示する](check-access.md)
 - [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
 - [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
-- [エンタープライズ クラウドの導入: Azure でのリソース アクセス管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
+- [クラウド導入フレームワーク:Azure でのリソース アクセス管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -10,12 +10,12 @@ metadata:
   author: malopMSFT
   ms.author: allensu
   ms.date: 09/16/2019
-  ms.openlocfilehash: a22284524891c71ec206ef100de9a736cb1a5714
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: c062c0aa38037485e6bd892b3dbce67160f64995
+  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77587653"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82127615"
 landingContent:
 - title: Azure Private Link について
   linkLists:
@@ -29,6 +29,8 @@ landingContent:
     links:
     - text: プライベート エンドポイントとは
       url: private-endpoint-overview.md
+    - text: プライベート エンドポイントの DNS 統合
+      url: private-endpoint-dns.md
   - linkListType: quickstart
     links:
     - text: プライベート エンドポイントを作成する
@@ -53,13 +55,3 @@ landingContent:
       url: /powershell/module/az.network
     - text: REST
       url: /rest/api/virtualnetwork/privatelinkservices
-- title: Azure Private Link を調べる
-  linkLists:
-  - linkListType: video
-    links:
-    - text: Azure Private Link
-      url: https://www.youtube.com/watch?reload=9&v=nuFEVvewUgQ
-    - text: Private Link を使用した Azure PaaS サービスへのプライベート接続
-      url: https://www.youtube.com/watch?v=aVFV1_ZwAEY
-    - text: 'Azure ネットワーク - #11 - Azure Private Link'
-      url: https://www.youtube.com/watch?v=PWKM5KXjWno

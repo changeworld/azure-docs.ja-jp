@@ -32,10 +32,14 @@
       href: azure-media-player-plugin-gallery.md
     - name: ローカリゼーション
       href: azure-media-player-localization.md
+- name: サンプル
+  items:
+    - name: Azure Media Player のデモ
+      href: demos.md
+    - name: Azure Media Player のサンプル
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
 - name: リファレンス
   items:
-    - name: サンプル
-      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
     - name: API
       href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
     - name: API メソッド

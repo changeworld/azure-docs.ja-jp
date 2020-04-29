@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482309"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531102"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ラベル付けされたデータを使用してモデルをトレーニングするためには、入力として、サブフォルダーに次のファイルが必要となります。 ここでは、以下のファイルの作成方法について説明しています。
 
-* **ソース フォーム** - データの抽出元となるフォーム。 サポートされる種類は、JPEG、PNG、BMP、PDF、TIFF です。
+* **ソース フォーム** - データの抽出元となるフォーム。 サポートされる種類は、JPEG、PNG、PDF、TIFF です。
 * **OCR レイアウト ファイル** - 各ソース フォームに含まれるすべての読み取り可能テキストのサイズと位置を表す JSON ファイル。 このデータは、Form Recognizer Layout API を使用して生成します。 
 * **ラベル ファイル** - ユーザーが手動で入力したデータ ラベルを表す JSON ファイル。
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ print("Train operation did not complete within the allocated time.")
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

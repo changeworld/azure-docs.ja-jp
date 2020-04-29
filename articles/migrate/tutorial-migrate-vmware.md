@@ -2,20 +2,20 @@
 title: Azure Migrate Server Migration を使用して VMware VM のエージェントレス移行を実行する
 description: Azure Migrate を使用して VMware VM のエージェントレス移行を実行する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78304210"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535317"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
 この記事では、Azure Migrate Server Migration ツールによるエージェントレス移行を使用して、オンプレミスの VMware VM を Azure に移行する方法について説明します。
 
-[Azure Migrate](migrate-services-overview.md) では、オンプレミスのアプリとワークロード、および AWS または GCP VM インスタンスの検出、評価、Azure への移行を追跡するための中央ハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
+[Azure Migrate](migrate-services-overview.md) では、オンプレミスのアプリとワークロード、および AWS/GCP VM インスタンスの検出、評価、それらの Azure への移行を追跡するための中央ハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
 
 これはシリーズの 3 番目のチュートリアルであり、Azure Migrate の Server Assessment と Server Migration を使用して VMware VM を評価し、Azure に移行する方法を示します。 このチュートリアルでは、以下の内容を学習します。
 
@@ -55,9 +55,12 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Migrate Server Migration ツールを追加する
 
-2 番目のチュートリアルに従って VMware VM を評価していない場合は、[これらの手順に従って](how-to-add-tool-first-time.md) Azure Migrate プロジェクトを設定し、Azure Migrate Server Migration ツールを選択する必要があります。 
+Azure Migrate Server Migration ツールを追加します。
 
-2 番目のチュートリアルに従って Azure Migrate プロジェクトを既に設定してある場合は、次のとおりに Azure Migrate Server Migration ツールを追加します。
+- 2 番目のチュートリアルに従って [VMware VM を評価](/tutorial-assess-vmware.md)した場合は、そのままツールを追加できます。
+- 2 番目のチュートリアルに従っていない場合は、[こちらの手順に従って](how-to-add-tool-first-time.md)、Azure Migrate プロジェクトの設定を行ってください。  プロジェクトの作成時に Azure Migrate:Server Migration ツールを追加します。
+
+プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。
 
 1. Azure Migrate プロジェクトで、 **[概要]** をクリックします。 
 2. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
@@ -74,15 +77,14 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
-Azure Migrate Server Migration では、軽量の VMware VM アプライアンスを実行します。 このアプライアンスによって VM の検出が実行され、VM のメタデータとパフォーマンス データが Azure Migrate Server Migration に送信されます。 Azure Migrate Server Assessment ツールでも、同じアプライアンスが使用されます。
+Azure Migrate Server Migration では、軽量の VMware VM アプライアンスを実行します。 このアプライアンスによって VM の検出が実行され、VM のメタデータとパフォーマンス データが Azure Migrate Server Migration に送信されます。 Azure Migrate:Server Assessment ツールでも、VMware VM のエージェントレス移行を実行するために同じアプライアンスが使用されます。
 
-2 番目のチュートリアルに従って VMware VM を評価した場合は、そのチュートリアルの中でアプライアンスを既に設定してあります。 そのチュートリアルに従っていない場合は、ここでアプライアンスを設定する必要があります。 このためには、次の手順に従います。 
+- [VMware VM を評価するチュートリアル](tutorial-assess-vmware.md)に従った場合は、そのチュートリアルの中でアプライアンスを既に設定してあります。
+- そのチュートリアルに従っていない場合は、次のどちらかの方法を使用して、アプライアンスを設定してください。
+    - ダウンロードした OVA テンプレートを使用して VMware VM 上に[設定](how-to-set-up-appliance-vmware.md)します。
+    - PowerShell インストーラー スクリプトを使用して VMware VM 上または物理マシン上に設定します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、[この方法](deploy-appliance-script.md)を使用してください。
 
-- OVA テンプレート ファイルをダウンロードし、それを vCenter Server にインポートします。
-- アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。 
-- アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
-
-[こちらの記事](how-to-set-up-appliance-vmware.md)の手順に従って、アプライアンスを設定します。
+アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
 
 ## <a name="prepare-vms-for-migration"></a>移行のために VM を準備する

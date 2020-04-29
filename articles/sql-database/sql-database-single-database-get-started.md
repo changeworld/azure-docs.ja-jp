@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 03/10/2020
-ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/19/2020
+ms.openlocfilehash: b06c255f94b4d539c7c85e318238b10629cbb907
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215430"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685144"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
@@ -67,7 +67,7 @@ ms.locfileid: "79215430"
 
 これらのリソースの使用が完了したら、作成したリソース グループを削除することができます。これにより、サーバーとその中の単一データベースも削除されます。
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して **myResourceGroup** とそのすべてのリソースを削除するには、次の手順に従います。
 
@@ -75,7 +75,7 @@ Azure portal を使用して **myResourceGroup** とそのすべてのリソー�
 1. [リソース グループ] ページで、 **[リソース グループの削除]** を選択します。
 1. **[リソース グループ名を入力してください]** に「*myResourceGroup*」を入力し、 **[削除]** を選択します。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 リソース グループとそのすべてのリソースを削除するには、自分のリソース グループの名前を使用して次の Azure CLI コマンドを実行します。
 
@@ -83,15 +83,16 @@ Azure portal を使用して **myResourceGroup** とそのすべてのリソー�
 az group delete --name <your resource group>
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 リソース グループとそのすべてのリソースを削除するには、自分のリソース グループの名前を使用して次の PowerShell コマンドレットを実行します。
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group>
 ```
 
 ---
+
 ## <a name="next-steps"></a>次のステップ
 
 さまざまなツールと言語を使用してデータベースを[接続してクエリを実行](sql-database-connect-query.md)します。

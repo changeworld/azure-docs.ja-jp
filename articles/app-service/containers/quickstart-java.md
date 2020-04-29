@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2192260c3106a6b8d3d3ffd0e063ee945734f308
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136314"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732900"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Java アプリを作成する
 
@@ -52,19 +52,19 @@ az login
 
 次に、デプロイを構成し、コマンド プロンプトで maven コマンドを実行し、 **[Confirm (Y/N)]\(確認 (Y/N)\)** プロンプトが表示されるまで **Enter** キーを押して既定の構成を使用し、**y** キーを押して構成を完了します。 
 ```cmd
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 サンプル プロセスは次のようになります。
 
 ```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.0:config
+~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ----------------------< example.demo:helloworld >-----------------------
 [INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
 [INFO] --------------------------------[ war ]---------------------------------
 [INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.0:config (default-cli) @ helloworld ---
+[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
 [WARNING] The plugin may not work if you change the os of an existing webapp.
 Define value for OS(Default: Linux):
 1. linux [*]
@@ -141,10 +141,10 @@ az group delete --name <your resource group name; for example: helloworld-155840
 > [Java を使用して Azure SQL データベースに接続する](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Java を使用して Azure DB for MySQL に接続する](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+> [Java を使用して Azure DB for MySQL に接続する](/azure/mysql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Java を使用して Azure DB for PostgreSQL に接続する](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
+> [Java を使用して Azure DB for PostgreSQL に接続する](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
 > [Java アプリを構成する](configure-custom-container.md)
