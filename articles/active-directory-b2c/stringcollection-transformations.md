@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186779"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729717"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
@@ -159,4 +159,38 @@ StringCollection 要求の種類に要素が含まれているかどうかをチ
 - 出力要求:
     - **outputClaim**: "true"
 
+## <a name="stringcollectioncontainsclaim"></a>StringCollectionContainsClaim
 
+StringCollection 要求の種類に要求の値が含まれているかどうかをチェックします。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | collection | stringCollection | 検索する要求の種類。 |
+| InputClaim | item|string| 検索する値を含む要求の種類。|
+|InputParameter|ignoreCase|string|この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。|
+| OutputClaim | outputClaim | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType。 コレクションにこのような文字列が含まれているかどうかを示すブール値のインジケーター |
+
+次の例では、`roles` stringCollection 要求の種類に `role` の要求の値が含まれているかどうかをチェックしています。
+
+```XML
+<ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />
+    <InputClaim ClaimTypeReferenceId="role" TransformationClaimType="item" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="ignoreCase" DataType="string" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="hasAccess" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation> 
+```
+
+- 入力要求:
+    - **collection**: ["reader", "author", "admin"]
+    - **項目**:"Admin"
+- 入力パラメーター:
+    - **ignoreCase**: "true"
+- 出力要求:
+    - **outputClaim**: "true"

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
 ms.openlocfilehash: 2b85e3085a7265fa007422180ff1cfe93d4fef57
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732042"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>クイック スタート:SDK を使用した V3 予測エンドポイントに対するクエリの実行

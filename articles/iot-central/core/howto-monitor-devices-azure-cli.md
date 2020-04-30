@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 0fa1b58547e0260ec5486003cf4cb85d855de33a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310232"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756672"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 
-*このトピックはビルダーおよび管理者向けです。*
+*このトピックの対象は、デバイス開発者とソリューション ビルダーにです。*
 
 Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に送信されるメッセージを確認し、デバイス ツインでの変更を観察します。 このツールを使用し、デバイスの接続状態をデバッグし、観察し、クラウドに達しないデバイス メッセージの問題や、ツイン変更に応答しないデバイスの問題を診断できます。
 
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>次のステップ
 
-これで IoT Central エクスプローラーの使用方法についての学習が終わりました。推奨される次の手順は、[IoT Central でのデバイスの管理](howto-manage-devices.md)について確認することです。
+デバイス開発者にお勧めする次の手順は、[Azure IoT Central のデバイス接続機能](./concepts-get-connected.md)に関する記事を読むことです。

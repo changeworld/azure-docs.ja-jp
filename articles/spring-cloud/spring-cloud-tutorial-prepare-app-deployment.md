@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Java Spring アプリケーションを Azure Spring Cloud にデプロイできるように準備する
-description: このチュートリアルでは、Java Spring アプリケーションを Azure Spring Cloud にデプロイできるように準備します。
+title: 方法 - Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
+description: このトピックでは、Java Spring アプリケーションを Azure Spring Cloud にデプロイできるように準備します。
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78200024"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731175"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
-このクイックスタートでは、Azure Spring Cloud にデプロイできるように既存の Java Spring アプリケーションを準備する方法について説明します。 適切に構成すると、Azure Spring Cloud によって Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが実現します。
+このトピックでは、Azure Spring Cloud にデプロイできるように既存の Java Spring アプリケーションを準備する方法について説明します。 適切に構成すると、Azure Spring Cloud によって Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが実現します。
 
 POM ファイルが構成されているときにアプリケーションを Azure Spring Cloud にデプロイする方法については、その他の例で説明しています。 
 * [Azure portal を使用してアプリを起動する](spring-cloud-quickstart-launch-app-portal.md)
@@ -27,7 +27,7 @@ POM ファイルが構成されているときにアプリケーションを Azu
 
 Azure Spring Cloud で稼働できるのは、Spring または Java アプリケーションのみです。
 
-Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)に関するページを参照してください。
+Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot と Spring Cloud のバージョン
 
@@ -225,7 +225,7 @@ pom.xml ファイルの依存関係セクションに次の `spring-cloud-starte
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、次のチュートリアルに進んでください。
+このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Config Server インスタンスを設定する方法を確認する](spring-cloud-tutorial-config-server.md)

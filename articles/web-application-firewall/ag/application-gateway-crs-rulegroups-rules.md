@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521842"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730571"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
@@ -218,6 +218,7 @@ WAF は、次の Web の脆弱性から保護します。
 |932120|リモート コマンド実行 = Windows PowerShell コマンドが見つかりました|
 |932130|リモート コマンド実行 = Unix シェル式が見つかりました|
 |932140|リモート コマンド実行 = Windows FOR/IF コマンドが見つかりました|
+|932150|リモート コマンド実行: Unix コマンドの直接実行|
 |932160|リモート コマンド実行 = Unix シェル コードが見つかりました|
 |932170|リモート コマンド実行 = Shellshock (CVE-2014-6271)|
 |932171|リモート コマンド実行 = Shellshock (CVE-2014-6271)|
