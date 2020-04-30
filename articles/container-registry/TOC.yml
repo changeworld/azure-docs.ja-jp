@@ -187,6 +187,8 @@
               href: container-registry-tasks-cross-registry-authentication.md
             - name: キー コンテナーを使用した外部認証
               href: container-registry-tasks-authentication-key-vault.md
+        - name: Resource Manager テンプレートを使用したクイック タスクの実行
+          href: container-registry-task-run-template.md
         - name: Buildpack を使用したイメージのビルド (プレビュー)
           href: container-registry-tasks-pack-build.md
         - name: タスク ログを表示する
@@ -229,7 +231,7 @@
       href: 'https://aka.ms/acr/roadmap'
     - name: 製品フィードバックの提供
       href: 'https://feedback.azure.com/forums/903958-azure-container-registry'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'

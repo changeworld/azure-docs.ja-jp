@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671970"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086615"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -91,6 +91,8 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>エラー:Web API 要求が失敗したため、スキルを実行できませんでした
 Web API の呼び出しに失敗したため、スキルを実行できませんでした。 このクラスのエラーは通常、カスタム スキルが使用されている場合に発生します。この場合は、カスタム コードをデバッグして問題を解決する必要があります。 これとは異なり、エラーが組み込みのスキルで発生した場合は、エラー メッセージを参照して問題を修正してください。
+
+この問題をデバッグするときは、このスキルの[スキルの入力警告](#warning-skill-input-was-invalid)に注意してください。 インデクサーから予期しない入力が渡されたために Web API エンドポイントが動作しなくなる可能性があります。
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fe8eb0b363fc95ac5913e66884a2ed8f3d225a6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228627"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086489"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>クイック スタート:BACPAC ファイルを Azure SQL Database 内のデータベースにインポートする
 
@@ -61,7 +61,7 @@ ms.locfileid: "79228627"
 
 ## <a name="using-sqlpackage"></a>SqlPackage の使用
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL Server データベースをインポートするには、「[インポート パラメーターとプロパティ](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)」をご覧ください。 SqlPackage には、最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) と [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) が含まれています。 最新の [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) は、Microsoft ダウンロード センターからダウンロードすることもできます。
+[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) コマンドライン ユーティリティを使用して SQL Server データベースをインポートするには、「[インポート パラメーターとプロパティ](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)」をご覧ください。 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) と [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) には、SqlPackage が含まれています。 最新の [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) は、Microsoft ダウンロード センターからダウンロードすることもできます。
 
 スケールとパフォーマンスのために、ほとんどの運用環境では、Azure portal の使用ではなく SqlPackage の使用をお勧めします。 `BACPAC` ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」をご覧ください。
 
@@ -144,7 +144,8 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="limitations"></a>制限事項
 
-エラスティック プール内のデータベースへのインポートはサポートされていません。 データを単一データベースにインポートしてから、そのデータベースをエラスティック プールに移動することはできます。
+- エラスティック プール内のデータベースへのインポートはサポートされていません。 データを単一データベースにインポートしてから、そのデータベースをエラスティック プールに移動することはできます。
+- [Azure サービスへのアクセスを許可] を [オフ] に設定すると、インポートまたはエクスポート サービスは機能しません。 ただし、Azure VM から sqlpackage.exe を手動で実行するか、DACFx API を使用してコード内で直接エクスポートを実行することにより、この問題を回避することができます。
 
 ## <a name="import-using-wizards"></a>ウィザードを使用したインポート
 

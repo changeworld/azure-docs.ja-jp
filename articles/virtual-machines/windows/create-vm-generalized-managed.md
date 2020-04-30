@@ -1,24 +1,18 @@
 ---
 title: Azure で管理イメージから VM を作成する
-description: Resource Manager デプロイ モデルで Azure PowerShell または Azure Portal を使って、一般化した管理イメージから仮想マシンを作成します。
-services: virtual-machines-windows
-documentationcenter: ''
+description: Azure PowerShell またはポータルを使用して、一般化されたマネージド イメージから Windows 仮想マシンを作成します。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74841933"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086319"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 

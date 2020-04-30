@@ -136,10 +136,10 @@
         - name: コンテナーとデータベースのスループットのプロビジョニング
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: スループットのプロビジョニング - オートパイロット モード
-          href: provision-throughput-autopilot.md
-        - name: オートパイロットについてよく寄せられる質問
-          href: autopilot-faq.md
+        - name: スループットのプロビジョニング - 自動スケーリング モード
+          href: provision-throughput-autoscale.md
+        - name: 自動スケーリングに関する FAQ
+          href: autoscale-faq.md
     - name: SQL クエリ (SQL query)
       items:
         - name: 作業の開始
@@ -518,6 +518,7 @@
         - name: 総保有コスト (TCO)
           href: total-cost-ownership.md
         - name: 課金内容を確認する
+          displayName: free tier
           href: understand-your-bill.md
         - name: プロビジョニング スループット コストの最適化
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: マルチリージョンのコストの最適化
           href: optimize-cost-regions.md
         - name: 開発とテストのコストの最適化
+          displayName: free tier
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md

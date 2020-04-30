@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 95bfa7b1918da09e4f5913eeb2b57c290b093efe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232999"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086438"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -79,7 +79,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 詳細については、以下のトピックを参照してください。
 
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md) 
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -91,7 +91,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 Azure Pipelines と Azure Resource Manager テンプレートの継続的インテグレーションおよび継続的デプロイ (CI/CD) の詳細については、以下のトピックとサンプルを参照してください。
 
 * [Azure Pipelines を使用した Resource Manager テンプレートの統合](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
-* [チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
+* [チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
 * [サンプル:Azure Logic Apps から Azure Service Bus キューに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [サンプル:Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [サンプル:Azure Logic Apps の関数アプリ アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988245"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086030"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -65,6 +65,9 @@ azcopy sync <source> <destination> [flags]
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
+
+> [!NOTE]
+> 同期先の BLOB が存在している*必要があります*。 同期先にまだ存在しない単一のファイルをコピーするには、`azcopy copy` を使用します。 そうでないと、次のエラーが発生します: `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
 
 上記と同じですが、今度はファイル コンテンツの MD5 ハッシュも計算し、BLOB の Content-MD5 プロパティとして保存します。
 

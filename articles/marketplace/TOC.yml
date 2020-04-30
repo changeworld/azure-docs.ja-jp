@@ -23,7 +23,7 @@
               href: ./standard-contract.md
             - name: Azure パートナーの顧客の使用状況の属性
               href: ./azure-partner-customer-usage-attribution.md
-        - name: プランの種類別の公開ガイド
+        - name: オファー別の公開ガイド
           href: ./publisher-guide-by-offer-type.md
           items:
             - name: Virtual Machines
@@ -40,7 +40,7 @@
               href: ./iot-edge-module.md
             - name: コンサルティング サービス
               href: ./consulting-services.md
-            - name: Office 365、Dynamics 365、Power BI の発行ガイド
+            - name: Office 365、Dynamics 365、Power BI
               href: ./appsource-offer-publishing-guide.md
             - name: Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -69,7 +69,7 @@
         - name: コマーシャル マーケットプレースに対するサポート
           href: ./support-azure-marketplace.md
           items:
-            - name: Marketplace に関する FAQ
+            - name: マーケットプレースに関する FAQ
               href: ./marketplace-faq-publisher-guide.md
             - name: 利用可能な地域と通貨
               href: ./marketplace-geo-availability-currencies.md
@@ -559,6 +559,8 @@
       href: ./partner-center-portal/publishing-status.md
     - name: 既存のオファーを更新する
       href: ./partner-center-portal/update-existing-offer.md
+    - name: ベネフィットのアクティブ化
+      href: ./partner-center-portal/marketplace-rewards.md
     - name: サポート オプション
       href: ./partner-center-portal/support.md
     - name: パートナー センターの分析

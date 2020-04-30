@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 8bb56db9eed962ac8f8202c61a7446527c15dfc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060890"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086625"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Queue storage のセキュリティに関する推奨事項
 
@@ -40,7 +40,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 |-|----|--|
 | Azure Active Directory (Azure AD) を使用してキュー データへのアクセスを承認する | Azure AD では、Queue storage への要求を承認するために、共有キーよりも優れたセキュリティと使いやすさが実現されます。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](../common/storage-auth-aad.md)に関するページを参照してください。 | - |
 | RBAC を使用して Azure AD セキュリティ プリンシパルにアクセス許可を割り当てる場合は、最小限の特権の原則を念頭に置く | ユーザー、グループ、またはアプリケーションにロールを割り当てる場合は、そのセキュリティ プリンシパルに対して、それぞれのタスクを実行するために必要なアクセス許可のみを付与します。 リソースへのアクセスを制限することで、意図しない、または悪意のあるデータの誤用を防ぐことができます。 | - |
-| Azure Key Vault を使用してアカウント アクセス キーをセキュリティで保護する | Azure Storage への要求を承認するには、Azure AD を使用することをお勧めします。 ただし、共有キー認証を使用する必要がある場合は、Azure Key Vault を使用してアカウント キーをセキュリティで保護します。 キーは、アプリケーションと共に保存するのではなく、実行時に Key Vault から取得できます。 | - |
+| Azure Key Vault を使用してアカウント アクセス キーをセキュリティで保護する | Azure Storage への要求を承認するには、Azure AD を使用することをお勧めします。 ただし、共有キー認証を使用する必要がある場合は、Azure Key Vault を使用してアカウント キーをセキュリティで保護します。 キーは、アプリケーションと共に保存するのではなく、実行時にキー コンテナーから取得できます。 | - |
 | アカウント キーを定期的に再生成する | アカウント キーを定期的に交換することで、悪意のあるアクターにデータが公開されるリスクが軽減されます。 | - |
 | SAS にアクセス許可を割り当てる場合は、最小限の特権の原則を念頭に置く | SAS を作成する場合は、クライアントに対して、その機能を実行するために必要なアクセス許可のみを指定します。 リソースへのアクセスを制限することで、意図しない、または悪意のあるデータの誤用を防ぐことができます。 | - |
 | クライアントに発行するすべての SAS に対して失効計画を立てておく | SAS が侵害された場合は、できるだけ早くその SAS を失効させることをお勧めします。 ユーザーの委任 SAS を失効させるには、ユーザーの委任キーを失効させて、そのキーに関連付けられているすべての署名をただちに無効にします。 保存されているアクセス ポリシーに関連付けられているサービス SAS を失効させるには、保存されているアクセス ポリシーを削除するか、ポリシーの名前を変更するか、または有効期限を過去の時間に変更します。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。  | - |
@@ -53,6 +53,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | ファイアウォール規則を有効にする | ストレージ アカウントへのアクセスを、Azure 仮想ネットワーク (VNet) 内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限するように、ファイアウォール規則を構成します。 ファイアウォール規則の構成の詳細については、「[Azure File Sync のプロキシとファイアウォールの設定](../files/storage-sync-files-firewall-and-proxy.md)」を参照してください。 | - |
 | 信頼された Microsoft サービスによるストレージ アカウントへのアクセスを許可する | ストレージ アカウントのファイアウォール規則を有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外を追加して、信頼された Microsoft サービスがストレージ アカウントにアクセスできるようにすることによって、他の Azure サービスからの要求を許可できます。 信頼された Microsoft サービスの例外の追加の詳細については、「[Azure File Sync のプロキシとファイアウォールの設定](../files/storage-sync-files-firewall-and-proxy.md)」を参照してください。| - |
 | プライベート エンドポイントを使用する | プライベート エンドポイントによって、Azure 仮想ネットワーク (VNet) からストレージ アカウントにプライベート IP アドレスが割り当てられます。 これにより、VNet とストレージ アカウントの間のすべてのトラフィックがプライベート リンクで保護されます。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する](../../private-link/create-private-endpoint-storage-portal.md)」を参照してください。 | - |
+| VNet サービス タグを使用する | サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 Azure Storage でサポートされるサービス タグの詳細については、[Azure サービス タグの概要](../../virtual-network/service-tags-overview.md)に関する記事を参照してください。 サービス タグを使用してアウトバウンド ネットワーク ルールを作成する方法を示すチュートリアルについては、[PaaS リソースへのアクセスの制限](../../virtual-network/tutorial-restrict-network-access-to-resources.md)に関するページを参照してください。 | - |
 | 特定のネットワークへのネットワーク アクセスを制限する | アクセスを必要とするクライアントをホストしているネットワークへのネットワーク アクセスを制限すると、リソースがネットワーク攻撃にさらされる危険性が軽減されます。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>ログ記録または監視

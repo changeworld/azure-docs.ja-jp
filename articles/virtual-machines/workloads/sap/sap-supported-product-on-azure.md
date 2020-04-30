@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0aaa13ff4d3331378cc17cd0cde29be43822397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460791"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086132"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure デプロイでサポートされている SAP ソフトウェア
 この記事では、Azure デプロイでサポートされている SAP ソフトウェアと、必要なオペレーティング システム リリースまたは DBMS リリースを確認する方法について説明します。
@@ -135,7 +135,13 @@ Azure Kubernetes Services (AKS) の SAP Datahub または Vora のサポート�
 
 SAP BPC 10.1 SP08 のサポートについては、[SAP サポート ノート #2451795](https://launchpad.support.sap.com/#/notes/2451795) で説明されています
 
-Azure での SAP Hybris Commerce Platform 5.x および 6.x のサポートについては、[Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) で詳しく説明されています
+Azure での SAP Hybris Commerce Platform のサポートについては、[Hybris のドキュメント](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html)で詳しく説明されています。 SAP Hybris Commerce Platform でサポートされている DBMS の場合、次のような一覧が表示されます。
+
+- Windows オペレーティング システム プラットフォーム上の SQL Server および Oracle。 SAP NetWeaver の場合と同じ最小リリースが適用されます。 詳細については、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) を参照してください
+- Red Hat および SUSE Linux 上の SAP HANA。 [このドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)で前述したように、SAP HANA 認定の VM の種類が必要です。 SAP (Hybris) Commerce Platform は OLTP ワークロードと見なされます
+- SAP (Hybris) Commerce Platform バージョン 1811 での SQL Azure DB
+
+
 
 
 ## <a name="next-steps"></a>次の手順

@@ -7,14 +7,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256931"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085724"
 ---
-# <a name="preview-dcsv2-series"></a>プレビュー:DCsv2 シリーズ
+# <a name="dcsv2-series"></a>DCsv2 シリーズ
 
 
 DCsv2 シリーズは、パブリック クラウドで処理中のデータおよびコードの機密性と整合性を保護するために役立ちます。 これらのマシンは、最新世代の Intel XEON E-2288G プロセッサと SGX テクノロジによって支援されています。 Intel Turbo Boost Technology により、これらのマシンは最大 5.0 GHz まで高速化できます。 DCsv2 シリーズのインスタンスを使用すると、安全なエンクレーブ ベースのアプリケーションを構築して、コードやデータを使用中に保護することができます。
@@ -41,9 +41,9 @@ Premium Storage キャッシュ:サポート対象*
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - DCsv2 シリーズの VM は、[第 2 世代の VM](./linux/generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみをサポートしています。
-- 現在、英国南部およびカナダ中部のみでご利用いただけます。
-- 前世代の機密コンピューティング VM:[DC シリーズ](sizes-previous-gen.md)
-- DCsv2 VM は Azure Portal を使用して作成します (「[VM の作成 - ポータル](./linux/quick-create-portal.md)」)
+- 現在、英国南部、カナダ中部、および米国東部のみでご利用いただけます。
+- 前世代の機密コンピューティング VM:[DC シリーズ](sizes-previous-gen.md#preview-dc-series)
+- [Azure portal](./linux/quick-create-portal.md) または [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) を使用して DCsv2 VM を作成します
 
 
 

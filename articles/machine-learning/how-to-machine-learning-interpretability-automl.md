@@ -1,5 +1,5 @@
 ---
-title: 自動機械学習の説明
+title: 自動 ML での説明可能性
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用している場合に、自動 ML モデルがどのように特徴量の重要度を判定して予測を行うかに関する説明を取得する方法について説明します。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257166"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086421"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>解釈可能性: 自動機械学習のモデルの説明
 

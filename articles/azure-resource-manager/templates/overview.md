@@ -3,12 +3,12 @@ title: テンプレートの概要
 description: リソースのデプロイに Azure Resource Manager テンプレートを使用する利点について説明します。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885737"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086336"
 ---
 # <a name="what-are-arm-templates"></a>ARM テンプレートとは
 
@@ -50,7 +50,7 @@ ARM テンプレートを使用するか、他のいずれかのコードとし�
 
 * **デプロイのブループリント**:Microsoft が提供する[ブループリント](../../governance/blueprints/overview.md)を活用することで、規制やコンプライアンスの基準を満たすことができます。 これらのブループリントには、さまざまなアーキテクチャ用の既成のテンプレートが含まれています。
 
-* **CI/CD の統合**: テンプレートを継続的インテグレーションと継続的配置 (CI/CD) ツールに統合することができます。これにより、リリース パイプラインを自動化し、高速で信頼性の高いアプリケーションとインフラストラクチャの更新を行うことができます。 Azure DevOps と Resource Manager テンプレート タスクを使うことで、Azure Pipelines を使用して ARM テンプレート プロジェクトを継続的にビルドおよびデプロイすることができます。 詳細については、[パイプラインを使用した VS プロジェクト](add-template-to-azure-pipelines.md)の記事と、[Azure Pipelines を使用した継続的インテグレーション](template-tutorial-use-azure-pipelines.md)の記事を参照してください。
+* **CI/CD の統合**: テンプレートを継続的インテグレーションと継続的配置 (CI/CD) ツールに統合することができます。これにより、リリース パイプラインを自動化し、高速で信頼性の高いアプリケーションとインフラストラクチャの更新を行うことができます。 Azure DevOps と Resource Manager テンプレート タスクを使うことで、Azure Pipelines を使用して ARM テンプレート プロジェクトを継続的にビルドおよびデプロイすることができます。 詳細については、[パイプラインを使用した VS プロジェクト](add-template-to-azure-pipelines.md)に関するページおよび「[チュートリアル: Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](./deployment-tutorial-pipeline.md)」を参照してください。
 
 * **エクスポート可能なコード**:リソース グループの現在の状態をエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。 [エクスポートしたテンプレート](export-template-portal.md)を表示すると、テンプレートの構文について理解するのに役立ちます。
 

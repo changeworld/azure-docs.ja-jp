@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981530"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086387"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -35,38 +35,38 @@ ms.locfileid: "80981530"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | サービス (service) | グローバル | 1-50 | 英数字。<br><br>文字で開始します。 |
-> | service/apis | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/issues | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/issues/attachments | イシュー | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/issues/comments | イシュー | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/operations | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/operations/tags | operation | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
+> | service/apis | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/apis/issues | api | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/apis/issues/attachments | イシュー | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/apis/issues/comments | イシュー | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/apis/operations | api | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/apis/operations/tags | operation | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
 > | service/apis/releases | api | 1 ～ 80 | 英数字、アンダースコア、およびハイフン。<br><br>先頭と末尾には、英数字またはアンダースコアを使用します。 |
-> | service/apis/schemas | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/tagDescriptions | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / apis / tags | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/api-version-sets | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/authorizationServers | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/backends | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/certificates | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / diagnostics | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/groups | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/groups/users | group | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/identityProviders | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/loggers | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/notifications | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/notifications/recipientEmails | 通知 (notification) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/openidConnectProviders | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/policies | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/products | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / products / apis | product | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/products/groups | product | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/products/tags | product | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / properties | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/subscriptions | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / tags | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/templates | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/users | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
+> | service/apis/schemas | api | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/apis/tagDescriptions | api | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service / apis / tags | api | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/api-version-sets | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/authorizationServers | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/backends | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/certificates | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service / diagnostics | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/groups | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/groups/users | group | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/identityProviders | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/loggers | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/notifications | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/notifications/recipientEmails | 通知 (notification) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/openidConnectProviders | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/policies | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/products | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service / products / apis | product | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/products/groups | product | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/products/tags | product | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service / properties | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/subscriptions | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service / tags | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/templates | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
+> | service/users | サービス (service) | 1-256 | 次は使用できません: <br> `*#&+:<>?` |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -91,14 +91,14 @@ ms.locfileid: "80981530"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | automationAccounts | resource group | 6-50 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
-> | automationAccounts/certificates | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。  |
-> | automationAccounts/connections | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
-> | automationAccounts/credentials | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
+> | automationAccounts/certificates | Automation アカウント | 1-128 | 次は使用できません: <br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。  |
+> | automationAccounts/connections | Automation アカウント | 1-128 | 次は使用できません: <br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
+> | automationAccounts/credentials | Automation アカウント | 1-128 | 次は使用できません: <br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
 > | automationAccounts / runbooks | Automation アカウント | 1 ～ 63 | 英数字、アンダースコア、およびハイフン。<br><br>文字で開始します。  |
-> | automationAccounts/schedules | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
-> | automationAccounts/variables | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
+> | automationAccounts/schedules | Automation アカウント | 1-128 | 次は使用できません: <br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
+> | automationAccounts/variables | Automation アカウント | 1-128 | 次は使用できません: <br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
 > | automationAccounts/watchers | Automation アカウント | 1 ～ 63 |  英数字、アンダースコア、およびハイフン。<br><br>文字で開始します。 |
-> | automationAccounts / webhooks | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
+> | automationAccounts / webhooks | Automation アカウント | 1-128 | 次は使用できません: <br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。 |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -172,8 +172,8 @@ ms.locfileid: "80981530"
 > | galleries/images/versions | image | 32-bit integer | 数字とピリオド。 |
 > | images | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | スナップショット | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/""[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
-> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません:<br> `\/""[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません: <br> `\/""[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | 次は使用できません: <br> `\/""[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
 
 > [!NOTE]
 > Azure 仮想マシンには、リソース名とホスト名の 2 つの異なる名前があります。 ポータルで仮想マシンを作成すると、両方の名前に同じ値が使用されます。 前の表に記載されている制限事項は、ホスト名に適用されます。 実際のリソース名の最大文字数は 64 文字です。
@@ -231,8 +231,8 @@ ms.locfileid: "80981530"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | associations | resource group | 1-180 | 次は使用できません:<br>`%&\\?/`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
-> | resourceProviders | resource group | 3-64 | 次は使用できません:<br>`%&\\?/`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
+> | associations | resource group | 1-180 | 次は使用できません: <br>`%&\\?/`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
+> | resourceProviders | resource group | 3-64 | 次は使用できません: <br>`%&\\?/`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -254,13 +254,13 @@ ms.locfileid: "80981530"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | factories | グローバル | 3 ～ 63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
-> | factories/dataflows | factory | 1-260 | 次は使用できません:<br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
-> | factories/datasets | factory | 1-260 | 次は使用できません:<br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
+> | factories/dataflows | factory | 1-260 | 次は使用できません: <br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
+> | factories/datasets | factory | 1-260 | 次は使用できません: <br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
 > | factories / integrationRuntimes | factory | 3 ～ 63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
-> | factories/linkedservices | factory | 1-260 | 次は使用できません:<br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
-> | factories / pipelines | factory | 1-260 | 次は使用できません:<br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
-> | factories / triggers | factory | 1-260 | 次は使用できません:<br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
-> | factories/triggers/rerunTriggers | トリガー (trigger) | 1-260 | 次は使用できません:<br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
+> | factories/linkedservices | factory | 1-260 | 次は使用できません: <br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
+> | factories / pipelines | factory | 1-260 | 次は使用できません: <br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
+> | factories / triggers | factory | 1-260 | 次は使用できません: <br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
+> | factories/triggers/rerunTriggers | トリガー (trigger) | 1-260 | 次は使用できません: <br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
@@ -390,7 +390,7 @@ ms.locfileid: "80981530"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | components | resource group | 1-260 | 次は使用できません:<br>`%&\?/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | components | resource group | 1-260 | 次は使用できません: <br>`%&\?/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -440,9 +440,9 @@ ms.locfileid: "80981530"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | commitmentPlans | resource group | 1-260 | 次は使用できません:<br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
-> | webServices | resource group | 1-260 | 次は使用できません:<br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
-> | workspaces | resource group | 1-260 | 次は使用できません:<br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
+> | commitmentPlans | resource group | 1-260 | 次は使用できません: <br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
+> | webServices | resource group | 1-260 | 次は使用できません: <br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
+> | workspaces | resource group | 1-260 | 次は使用できません: <br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -535,6 +535,13 @@ ms.locfileid: "80981530"
 > | clusters | resource group | 4-63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 > | workspaces | resource group | 4-63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | Entity | Scope | 長さ | 有効な文字 |
+> | --- | --- | --- | --- |
+> | solutions | ワークスペース | 該当なし | Microsoft によって作成されたソリューションの場合、名前は次のパターンになっている必要があります: <br>`SolutionType(WorkspaceName)`<br><br>サード パーティによって作成されたソリューションの場合、名前は次のパターンになっている必要があります: <br>`SolutionType[WorkspaceName]`<br><br>有効な名前の例を次に示します: <br>`AntiMalware(contoso-IT)`<br><br>ソリューションの種類では、大文字と小文字が区別されます。 |
+
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
@@ -583,7 +590,7 @@ ms.locfileid: "80981530"
 > | --- | --- | --- | --- |
 > | deployments | resource group | 1 ～ 64 | 英数字、アンダースコア、かっこ、ハイフン、およびピリオド。 |
 > | resourcegroups | subscription | 1-90 | [正規表現ドキュメント](/rest/api/resources/resourcegroups/createorupdate)の記載と一致する英数字、アンダースコア、かっこ、ハイフン、ピリオド、および Unicode 文字。<br><br>末尾をピリオドにすることはできません。 |
-> | tagNames | resource | 1-512 | 次は使用できません:<br>`<>%&\?/` |
+> | tagNames | resource | 1-512 | 次は使用できません: <br>`<>%&\?/` |
 > | tagNames / tagValues | タグ名 | 1-256 | すべての文字。 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
@@ -624,11 +631,11 @@ ms.locfileid: "80981530"
 > | managedInstances | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers / administrators | server |  | `ActiveDirectory`である必要があります。 |
-> | servers/databases | server | 1-128 | 次は使用できません:<br>`<>*%&:\/?`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
+> | servers/databases | server | 1-128 | 次は使用できません: <br>`<>*%&:\/?`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
 > | servers/databases/syncGroups | database | 1-150 | 英数字、ハイフン、およびアンダースコア。 |
-> | servers/elasticPools | server | 1-128 | 次は使用できません:<br>`<>*%&:\/?`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
+> | servers/elasticPools | server | 1-128 | 次は使用できません: <br>`<>*%&:\/?`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
 > | servers/failoverGroups | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
-> | servers / firewallRules | server | 1-128 | 次は使用できません:<br>`<>*%&:;\/?`<br><br>末尾をピリオドにすることはできません。 |
+> | servers / firewallRules | server | 1-128 | 次は使用できません: <br>`<>*%&:;\/?`<br><br>末尾をピリオドにすることはできません。 |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -676,9 +683,9 @@ ms.locfileid: "80981530"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | 環境 | resource group | 1-90 | 次は使用できません:<br>`'<>%&:\?/#` |
-> | environments / accessPolicies | 環境 | 1-90 | 次は使用できません:<br> `'<>%&:\?/#` |
-> | environments/eventSources | 環境 | 1-90 | 次は使用できません:<br>`'<>%&:\?/#` |
+> | 環境 | resource group | 1-90 | 次は使用できません: <br>`'<>%&:\?/#` |
+> | environments / accessPolicies | 環境 | 1-90 | 次は使用できません: <br> `'<>%&:\?/#` |
+> | environments/eventSources | 環境 | 1-90 | 次は使用できません: <br>`'<>%&:\?/#` |
 > | environments / referenceDataSets | 環境 | 3 ～ 63 | 英数字 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

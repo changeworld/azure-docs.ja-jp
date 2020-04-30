@@ -6,21 +6,21 @@ ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
-ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
+ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235675"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085146"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
 この記事では、実行可能ファイルまたはスクリプトをアップロードする Web ジョブを [Azure ポータル](https://portal.azure.com)を使用してデプロイする方法について説明します。 Visual Studio を使用した Web ジョブの開発とデプロイ方法については、[Visual Studio を使用した Web ジョブのデプロイ](webjobs-dotnet-deploy-vs.md)に関する記事を参照してください。
 
 ## <a name="overview"></a>概要
-Web ジョブは、Web アプリ、API アプリ、またはモバイル アプリと同じコンテキストでプログラムやスクリプトを実行できる [Azure App Service](index.yml) の機能です。 Web ジョブの使用に追加コストはかかりません。
+Web ジョブは、Web アプリ、API アプリ、またはモバイル アプリと同じインスタンスでプログラムやスクリプトを実行できる [Azure App Service](index.yml) の機能です。 Web ジョブの使用に追加コストはかかりません。
 
 > [!IMPORTANT]
 > Web ジョブは App Service on Linux ではまだサポートされていません。
@@ -77,7 +77,7 @@ when making changes in one don't forget the other two.
 
    | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **Name** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
+   | **名前** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **Type** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **スケール** | 複数のインスタンス | 継続的 Web ジョブでのみ使用できます。 プログラムまたはスクリプトがすべてのインスタンスで実行されるか、1 つのインスタンスだけで実行されるかどうかを決定します。 複数のインスタンスで実行するオプションは、Free または Shared [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)には適用されません。 | 
@@ -115,7 +115,7 @@ when making changes in one don't forget the other two.
 
    | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **Name** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
+   | **名前** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **Type** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **トリガー** | マニュアル | |
@@ -153,7 +153,7 @@ when making changes in one don't forget the other two.
 
    | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **Name** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
+   | **名前** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **Type** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **トリガー** | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|

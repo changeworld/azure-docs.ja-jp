@@ -138,6 +138,8 @@
           href: service-fabric-security-controls.md
         - name: Service Fabric での証明書ベースの認証
           href: cluster-security-certificates.md
+        - name: Service Fabric での証明書管理
+          href: cluster-security-certificate-management.md
     - name: 用語
       href: service-fabric-technical-overview.md
     - name: アプリケーションの構築

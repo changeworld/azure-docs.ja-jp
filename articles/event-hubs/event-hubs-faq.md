@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283669"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086370"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -182,7 +182,7 @@ Event Hubs Dedicated クラスターは、最も要求の厳しい要件を持�
 これらの結果は、専用の Event Hubs クラスターでどれだけの容量を実現できるかを示しています。 さらに、マイクロバッチおよび長期保有シナリオで有効になる Event Hubs Capture には専用クラスターが付属しています。
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Event Hubs Dedicated クラスターを作成するにはどうしたらよいですか。
-Event Hubs Dedicated クラスターは、[クォータ引き上げサポート要求](https://portal.azure.com/#create/Microsoft.Support)を送信するか、または [Event Hubs チーム](mailto:askeventhubs@microsoft.com)に連絡することによって作成します。 通常、クラスターをデプロイし、ユーザーが使用できるようにして渡すには約 2 週間かかります。 このプロセスは、Azure Portal または Azure Resource Manager テンプレートを介して完全なセルフサービスが使用可能になるまでの一時的なものです。クラスターをデプロイするには、約 2 時間かかります。
+Event Hubs Dedicated クラスターは、[クォータ引き上げサポート要求](https://portal.azure.com/#create/Microsoft.Support)を送信するか、または [Event Hubs チーム](mailto:askeventhubs@microsoft.com)に連絡することによって作成します。 通常、クラスターをデプロイし、ユーザーが使用できるようにして渡すには約 2 週間かかります。 このプロセスは、Azure portal を通じて完全なセルフサービスが利用可能になるまでの一時的なものです。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
