@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c683e9847864de4e3409fb6dbd533497a5ae3cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060992"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537680"
 ---
 # <a name="enable-and-create-large-file-shares"></a>大きなファイル共有の有効化と作成
 
@@ -33,7 +33,7 @@ ms.locfileid: "80060992"
 
 ### <a name="portal"></a>ポータル
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure Portal で **[すべてのサービス]** を選択します。 
 1. リソースの一覧で、「**Storage Accounts**」と入力します。 入力すると、入力内容に基づいて一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
 1. 表示された **[ストレージ アカウント]** ウィンドウで、 **[追加]** を選択します。
@@ -43,7 +43,7 @@ ms.locfileid: "80060992"
     ![ポータルでリソース グループを作成する方法を示すスクリーンショット](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. 次に、ストレージ アカウントの名前を入力します。 この名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 ~ 24 文字にする必要があり、数字と小文字のみを使用できます。
-1. ストレージ アカウントの場所を選択し、それが[大きなファイル共有でサポートされているレプリケーションの 1 つ](storage-files-planning.md#regional-availability)であることを確認します。
+1. ストレージ アカウントの場所を選択します。
 1. レプリケーションを **[ローカル冗長ストレージ]** または **[ゾーン冗長ストレージ]** に設定します。
 1. 以下のフィールドは既定値のままにします。
 
@@ -59,7 +59,7 @@ ms.locfileid: "80060992"
 
     ![Azure portal の新しいストレージ アカウントの [有効] オプション ボタンのスクリーンショット](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ### <a name="cli"></a>CLI
 

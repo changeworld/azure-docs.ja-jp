@@ -4,10 +4,10 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536949"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API

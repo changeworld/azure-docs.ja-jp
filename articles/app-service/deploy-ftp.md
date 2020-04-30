@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231635"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532589"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -67,7 +67,7 @@ FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンド
 
 ## <a name="enforce-ftps"></a>FTPS を強制する
 
-セキュリティを強化するには、FTP over SSL のみを許可する必要があります。 FTP デプロイを使用していない場合は、FTP と FTPS の両方を無効にすることもできます。
+セキュリティを強化するには、FTP over TLS/SSL のみを許可する必要があります。 FTP デプロイを使用していない場合は、FTP と FTPS の両方を無効にすることもできます。
 
 [Azure portal](https://portal.azure.com) のご使用のアプリのリソース ページで、左側のナビゲーションの **[構成]**  >  **[全般設定]** を選択します。
 

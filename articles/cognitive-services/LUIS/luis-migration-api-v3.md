@@ -2,27 +2,25 @@
 title: V3 API での予測エンドポイントの変更
 description: クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 9a8e8cb331dd11eebaddbcbf8f603c1148415aef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117370"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530387"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
 クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
 **一般公開状態** - この V3 API には、V2 API から大幅に変更された JSON の要求と応答が含まれています。
 
 V3 API には、次の機能が用意されています。
 
-* [外部エンティティ](#external-entities-passed-in-at-prediction-time)
-* [動的リスト](#dynamic-lists-passed-in-at-prediction-time)
+* [外部エンティティ](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
+* [動的リスト](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [事前構築済みエンティティの JSON の変更](#prebuilt-entity-changes)
 
 上記の新機能をサポートするために、予測エンドポイントの[要求](#request-changes)と[応答](#response-changes)が大幅に変更されました。これには、次のものが含まれます。
@@ -77,7 +75,7 @@ V2 予測 API は、V3 プレビューの後、少なくとも 9 か月間は非
 
 V3 エンドポイントの HTTP 呼び出しの形式が変更されました。
 
-バージョンによってクエリを実行する場合は、まず [ を使用して ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)API 経由で発行`"directVersionPublish":true`する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
+バージョンによってクエリを実行する場合は、まず `"directVersionPublish":true` を使用して [API 経由で発行](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
 
 |予測 API のバージョン|メソッド|URL|
 |--|--|--|
@@ -97,7 +95,7 @@ V3 エンドポイントの HTTP 呼び出しの形式が変更されました�
 
 V3 API には異なるクエリ文字列パラメーターがあります。
 
-|パラメーター名|種類|Version|Default|目的|
+|パラメーター名|Type|Version|Default|目的|
 |--|--|--|--|--|
 |`log`|boolean|V2 および V3|false|ログ ファイルにクエリを格納します。 既定値は false です。|
 |`query`|string|V3 のみ|既定値なし - GET 要求では必須|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
@@ -121,15 +119,13 @@ V3 API には異なるクエリ文字列パラメーターがあります。
 }
 ```
 
-|プロパティ|種類|Version|Default|目的|
+|プロパティ|Type|Version|Default|目的|
 |--|--|--|--|--|
-|`dynamicLists`|array|V3 のみ|不要。|[動的リスト](#dynamic-lists-passed-in-at-prediction-time)を使用すると、既に LUIS アプリに存在し、トレーニングおよび発行済みの既存のリスト エンティティを拡張することができます。|
-|`externalEntities`|array|V3 のみ|不要。|[外部エンティティ](#external-entities-passed-in-at-prediction-time)を使用すると、LUIS アプリが実行時にエンティティを特定してラベル付けを行い、それを既存のエンティティの特徴として使用できるようになります。 |
+|`dynamicLists`|array|V3 のみ|不要。|[動的リスト](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)を使用すると、既に LUIS アプリに存在し、トレーニングおよび発行済みの既存のリスト エンティティを拡張することができます。|
+|`externalEntities`|array|V3 のみ|不要。|[外部エンティティ](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)を使用すると、LUIS アプリが実行時にエンティティを特定してラベル付けを行い、それを既存のエンティティの特徴として使用できるようになります。 |
 |`options.datetimeReference`|string|V3 のみ|既定値なし|[datetimeV2 オフセット](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)を決定するために使用されます。 datetimeReference の形式は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) です。|
-|`options.preferExternalEntities`|boolean|V3 のみ|false|予測にユーザーの[外部エンティティ (既存のエンティティと同じ名前)](#override-existing-model-predictions) を使用するか、それともモデル内の既存のエンティティを使用するかを指定します。 |
+|`options.preferExternalEntities`|boolean|V3 のみ|false|予測にユーザーの[外部エンティティ (既存のエンティティと同じ名前)](schema-change-prediction-runtime.md#override-existing-model-predictions) を使用するか、それともモデル内の既存のエンティティを使用するかを指定します。 |
 |`query`|string|V3 のみ|必須。|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
-
-
 
 ## <a name="response-changes"></a>応答の変更
 
@@ -281,185 +277,12 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 }
 ```
 
-## <a name="external-entities-passed-in-at-prediction-time"></a>予測時に渡される外部エンティティ
+<a name="external-entities-passed-in-at-prediction-time"></a>
+<a name="override-existing-model-predictions"></a>
 
-外部エンティティを使用すると、LUIS アプリが実行時にエンティティを特定してラベル付けを行い、それを既存のエンティティの特徴として使用できるようになります。 これにより、予測エンドポイントにクエリを送信する前に、個別のカスタム エンティティ エクストラクターを使用することができます。 これはクエリ予測エンドポイントで行われるため、モデルを再トレーニングして発行する必要がありません。
+## <a name="extend-the-app-at-prediction-time"></a>予測時にアプリを拡張する
 
-クライアント アプリケーションでは、エンティティの一致を管理し、一致したエンティティの発話内の場所を特定し、その情報を要求で送信することで、アプリケーション独自のエンティティ エクストラクターを提供しています。
-
-外部エンティティは、任意のエンティティの種類を拡張するためのメカニズムであり、同時に、ロールや複合などの他のモデルへのシグナルとしても使用されます。
-
-これは、クエリ予測の実行時にのみ使用可能なデータを持つエンティティの場合に便利です。 この種類のデータの例としては、常に変化するデータや、ユーザーに固有のデータなどがあります。 ユーザーの連絡先リストから得た外部情報を使用して、LUIS の連絡先エンティティを拡張することができます。
-
-### <a name="entity-already-exists-in-app"></a>アプリに既に存在するエンティティ
-
-エンドポイント要求 POST 本文で渡される外部エンティティの `entityName` の値は、要求時にはトレーニングおよび発行済みのアプリに既に存在していなければなりません。 エンティティの種類にかかわらず、すべての種類がサポートされています。
-
-### <a name="first-turn-in-conversation"></a>会話の最初の発話
-
-チャット ボットの会話の最初の発話で、ユーザーが次のような不完全な情報を入力した場合を考えてみましょう。
-
-`Send Hazem a new message`
-
-チャット ボットから LUIS への要求では、`Hazem` に関する情報を POST 本文で渡すことができるため、そのままユーザーの連絡先の 1 つとして照合されます。
-
-```json
-    "externalEntities": [
-        {
-            "entityName":"contacts",
-            "startIndex": 5,
-            "entityLength": 5,
-            "resolution": {
-                "employeeID": "05013",
-                "preferredContactType": "TeamsChat"
-            }
-        }
-    ]
-```
-
-予測の応答には、この外部エンティティと、予測されたその他すべてのエンティティが含まれます (要求で定義されているため)。
-
-### <a name="second-turn-in-conversation"></a>会話の 2 番目の発話
-
-チャット ボットに対するユーザーの次の発話では、さらにあいまいな言葉を使います。
-
-`Send him a calendar reminder for the party.`
-
-前の発話では、`him` を `Hazem` への参照として使用しています。 会話のチャット ボットは、POST 本文で、`him` を最初の発話から抽出されたエンティティの値 `Hazem` にマップすることができます。
-
-```json
-    "externalEntities": [
-        {
-            "entityName":"contacts",
-            "startIndex": 5,
-            "entityLength": 3,
-            "resolution": {
-                "employeeID": "05013",
-                "preferredContactType": "TeamsChat"
-            }
-        }
-    ]
-```
-
-予測の応答には、この外部エンティティと、予測されたその他すべてのエンティティが含まれます (要求で定義されているため)。
-
-### <a name="override-existing-model-predictions"></a>既存のモデルの予測をオーバーライドする
-
-`preferExternalEntities` オプションのプロパティは、同じ名前の予測されたエンティティと重複する外部エンティティをユーザーが送信する場合に、渡されたエンティティまたはモデル内に存在するエンティティを LUIS が選択することを指定します。
-
-たとえば、クエリ `today I'm free` を考えます。 LUIS は `today` を datetimeV2 として検出し、応答は次のとおりです。
-
-```JSON
-"datetimeV2": [
-    {
-        "type": "date",
-        "values": [
-            {
-                "timex": "2019-06-21",
-                "value": "2019-06-21"
-            }
-        ]
-    }
-]
-```
-
-ユーザーが外部エンティティを送信する場合:
-
-```JSON
-{
-    "entityName": "datetimeV2",
-    "startIndex": 0,
-    "entityLength": 5,
-    "resolution": {
-        "date": "2019-06-21"
-    }
-}
-```
-
-`preferExternalEntities` が `false` に設定されている場合、LUIS は外部エンティティが送信されなかったかのように応答を返します。
-
-```JSON
-"datetimeV2": [
-    {
-        "type": "date",
-        "values": [
-            {
-                "timex": "2019-06-21",
-                "value": "2019-06-21"
-            }
-        ]
-    }
-]
-```
-
-`preferExternalEntities` が `true` に設定されている場合、LUIS は次を含む応答を返します。
-
-```JSON
-"datetimeV2": [
-    {
-        "date": "2019-06-21"
-    }
-]
-```
-
-
-
-#### <a name="resolution"></a>解決策
-
-"_省略可能な_" `resolution` プロパティが予測応答で返されることで、この外部エンティティに関連付けられているメタデータを渡し、それを応答で再び受け取ることができます。
-
-この主な目的は、事前構築済みエンティティを拡張することですが、そのエンティティの種類に限定されません。
-
-`resolution` プロパティには、数値、文字列、オブジェクト、配列のいずれも指定することができます。
-
-* "Dallas"
-* {"text": "value"}
-* 12345
-* ["a", "b", "c"]
-
-
-
-## <a name="dynamic-lists-passed-in-at-prediction-time"></a>予測時に渡される動的リスト
-
-動的リストを使用すると、既に LUIS アプリに存在し、トレーニングおよび発行済みの既存のリスト エンティティを拡張することができます。
-
-リスト エンティティの値を定期的に変更する必要がある場合は、この機能を使用します。 この機能を使用することで、既にトレーニングおよび発行済みのリスト エンティティを次のように拡張することができます。
-
-* クエリ予測エンドポイント要求時。
-* 単一の要求に対して。
-
-リスト エンティティは、LUIS アプリで空にすることができますが、必ず存在している必要があります。 LUIS アプリのリスト エンティティは変更されませんが、エンドポイントでの予測機能が拡張され、約 1,000 項目を含む最大 2 つのリストを含めることができるようになります。
-
-### <a name="dynamic-list-json-request-body"></a>動的リストの JSON 要求本文
-
-次の JSON 本文を送信して類義語を含む新しいサブリストをリストに追加し、`LUIS` クエリ予測要求を使用してテキスト `POST` のリスト エンティティを予測します。
-
-```JSON
-{
-    "query": "Send Hazem a message to add an item to the meeting agenda about LUIS.",
-    "options":{
-        "timezoneOffset": "-8:00"
-    },
-    "dynamicLists": [
-        {
-            "listEntity*":"ProductList",
-            "requestLists":[
-                {
-                    "name": "Azure Cognitive Services",
-                    "canonicalForm": "Azure-Cognitive-Services",
-                    "synonyms":[
-                        "language understanding",
-                        "luis",
-                        "qna maker"
-                    ]
-                }
-            ]
-        }
-    ]
-}
-```
-
-予測の応答には、このリスト エンティティと、予測されたその他すべてのエンティティが含まれます (要求で定義されているため)。
+予測ランタイムにアプリを拡張する方法についての[概念](schema-change-prediction-runtime.md)について説明します。
 
 ## <a name="deprecation"></a>非推奨
 

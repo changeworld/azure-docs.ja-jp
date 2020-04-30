@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 594bac257c2b9739f1ece276c881348b35d2f704
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547751"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604811"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>Azure Automation でセキュリティで保護された資産を暗号化する
 
@@ -32,7 +32,7 @@ Azure Automation でセキュリティ保護される資産としては、資格
 
 独自のキーを使用して、Automation アカウントのセキュリティで保護された資産の暗号化を管理できます。 Automation アカウントのレベルでカスタマー マネージド キーを指定すると、そのキーは Automation アカウントのアカウント暗号化キーへのアクセスを保護および制御するために使用されます。 この機能は、セキュリティで保護されたすべての資産を暗号化および暗号化を解除するために使用されます。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、セキュリティで保護された資産を保護するために使用される暗号化キーを監査することもできます。
 
-カスタマー マネージド キーを格納するには、Azure Key Vault を使用します。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。  Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/key-vault-overview.md)
+カスタマー マネージド キーを格納するには、Azure Key Vault を使用します。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。  Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Automation アカウントのカスタマー マネージド キーを有効にする
 
@@ -192,10 +192,7 @@ Azure Key Vault のカスタマー マネージド キーは、お使いのコ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Key Vault とは](../key-vault/key-vault-overview.md)
-
+- [Azure Key Vault とは](../key-vault/general/overview.md)
 - [Azure Automation の証明書資産](shared-resources/certificates.md)
-
 - [Azure Automation の資格情報資産](shared-resources/credentials.md)
-
 - [Azure Automation の変数資産](shared-resources/variables.md)

@@ -4,10 +4,10 @@ description: Azure Monitor Application Insights を使用した .NET Core/.NET F
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.openlocfilehash: f043140e5a342d114f777ad16bba588790b7f8cc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536728"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights

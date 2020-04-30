@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
 ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537952"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal からキャッシュを管理する

@@ -12,23 +12,19 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46ca4661d06b52c861431a680a69297575ac99b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345827"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461414"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services と R (プレビュー)
 
 Machine Learning Services は、データベース内の R スクリプトを実行するために使用される、Azure SQL Database の機能です。 その機能には、高パフォーマンスの予測分析と機械学習のための Microsoft R パッケージが含まれています。 ストアド プロシージャ、R ステートメントを含む T-SQL、または T-SQL を含む R コードにより、R スクリプトでリレーショナル データを使用できます。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
-> [!NOTE]
-> プレビューは、**General Purpose** および **Business Critical** サービス レベルでの仮想コアベースの購入モデルを使用した、単一データベースとエラスティック プールを対象に提供されます。 この初回プレビューでは、**ハイパースケール** サービス レベルと**マネージド インスタンス** デプロイ オプションはサポートされていません。 現在、サポートされている言語は R だけです。 現時点では、Python はサポートされていません。
->
-> プレビューは現在、次のリージョンでご利用いただけます:西ヨーロッパ、北ヨーロッパ、米国西部 2、米国東部、米国中南部、米国中北部、カナダ中部、東南アジア、インド南部、およびオーストラリア南東部。
 
 ## <a name="what-you-can-do-with-r"></a>R でできること
 

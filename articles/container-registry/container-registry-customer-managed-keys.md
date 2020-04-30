@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
 ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461754"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した暗号化

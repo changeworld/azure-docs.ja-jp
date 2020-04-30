@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77131402"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535096"
 ---
 # <a name="recommended-on-premises-encoders"></a>推奨のオンプレミス エンコーダー
 
@@ -35,8 +35,6 @@ Azure Media Services では、RTMP を使用した、次のいずれかのライ
 
   RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
 - Teradek Slice 756
-- TriCaster 8000
-- Tricaster Mini HD-4
 - OBS Studio
 - VMIX
 - xStream
