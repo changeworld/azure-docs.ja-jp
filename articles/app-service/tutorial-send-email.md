@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604847"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562306"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -26,27 +26,27 @@ ms.locfileid: "81604847"
 
 任意の言語フレームワークを使用してアプリを App Service にデプロイします。 チュートリアルに従ってサンプル アプリをデプロイするには、以下を参照してください。
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 [チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 [チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](app-service-web-tutorial-dotnetcore-sqldb.md)
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 [チュートリアル:Azure で Node.js と MongoDB のアプリを構築する](app-service-web-tutorial-nodejs-mongodb-app.md)
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 [チュートリアル:Azure で PHP と MySQL アプリを構築する](app-service-web-tutorial-php-mysql.md)
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 [チュートリアル:Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する](containers/tutorial-python-postgresql-app.md)
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 [Azure App Service on Linux で Ruby および Postgres のアプリを構築する](containers/tutorial-ruby-postgres-app.md)
 
@@ -150,7 +150,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 例を表示するには、下の該当する言語またはフレームワークのタブをクリックします。
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 ASP.NET では、[System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
 
@@ -175,7 +175,7 @@ var statusCode = result.StatusCode.ToString();
 
 このコードを「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Create アクション](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)で、`Todo` 項目の追加後に確認メールを送信できます。 上の非同期コードを使用するには、Create アクションを非同期に変換します。
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 ASP.NET Core では、[System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
 
@@ -203,7 +203,7 @@ var statusCode = result.StatusCode.ToString();
 
 このコードを「[チュートリアル: Azure App Service での ASP.NET Core および SQL Database アプリの作成](app-service-web-tutorial-dotnetcore-sqldb.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Create アクション](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)で、`Todo` 項目の追加後に確認メールを送信できます。
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 Node.js では、[axios](https://www.npmjs.com/package/axios) のような npm パッケージを使用して、HTTP Post を簡単に送信できます。 次に例を示します。
 
@@ -230,7 +230,7 @@ var jsonData = {
 
 このコードを「[チュートリアル: Azure で Node.js と MongoDB のアプリを構築する](app-service-web-tutorial-nodejs-mongodb-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[create 関数](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)で、[記事が正常に保存された](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)後に確認メールを送信できます。
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 PHP では、[Guzzle](http://docs.guzzlephp.org/en/stable/index.html) を使用して、HTTP Post を簡単に送信できます。 次に例を示します。
 
@@ -262,7 +262,7 @@ Log::info(print_r($response, TRUE));
 
 このコードを「[チュートリアル: Azure で PHP と MySQL アプリを構築する](app-service-web-tutorial-php-mysql.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Route::post 関数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)の return ステートメントの直前で確認メールを送信できます。
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Python では、[requests](https://pypi.org/project/requests/) を使用して、HTTP Post を簡単に送信できます。 次に例を示します。
 
@@ -293,7 +293,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 このコードを「[チュートリアル: Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する](containers/tutorial-python-postgresql-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Route::post 関数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)の return ステートメントの直前で確認メールを送信できます。
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 Ruby では、[JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient) を使用して、HTTP Post を簡単に送信できます。 次に例を示します。
 
@@ -312,7 +312,7 @@ connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 
 ---
 
-# <a name="more-resources"></a>その他のリソース
+## <a name="more-resources"></a>その他のリソース
 
 [チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする](app-service-web-tutorial-rest-api.md)  
 [Logic Apps の HTTP 要求および応答のリファレンス](../connectors/connectors-native-reqres.md)  
