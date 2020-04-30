@@ -22,7 +22,7 @@ ms.locfileid: "75946050"
 
 ## <a name="using-aspnet"></a>ASP.NET を使用する
 
-**Microsoft.IdentityModel.Clients.ActiveDirectory** の NuGet パッケージをインポートします。これは、トークンを取得する際に使用されます。 次に、以下のコードを使用して `AuthenticationResult` を取得します。[Immersive Reader リソースを作成](./how-to-create-immersive-reader.md)するときに取得した認証値を使用してください。
+**Microsoft.IdentityModel.Clients.ActiveDirectory** の NuGet パッケージをインポートします。これは、トークンを取得する際に使用されます。 次に、以下のコードを使用して `AuthenticationResult` を取得します。[イマーシブ リーダー リソースを作成](./how-to-create-immersive-reader.md)するときに取得した認証値を使用してください。
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,11 +34,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult` オブジェクトには、`AccessToken` プロパティがあります。このプロパティが、SDK を使用して Immersive Reader を起動する際に実際に使用することになるトークンです。 また、トークンの有効期限を表す `ExpiresOn` プロパティもあります。 Immersive Reader を起動する前に、トークンの有効期限が切れているかどうかを調べ、切れている場合にのみ新しいトークンを取得することができます。
+`AuthenticationResult` オブジェクトには、`AccessToken` プロパティがあります。このプロパティが、SDK を使用してイマーシブ リーダーを起動する際に実際に使用することになるトークンです。 また、トークンの有効期限を表す `ExpiresOn` プロパティもあります。 イマーシブ リーダーを起動する前に、トークンの有効期限が切れているかどうかを調べ、切れている場合にのみ新しいトークンを取得することができます。
 
 ## <a name="using-nodejs"></a>Node.JS を使用する
 
-[**request**](https://www.npmjs.com/package/request) npm パッケージをプロジェクトに追加します。 以下のコードで、[Immersive Reader リソースを作成](./how-to-create-immersive-reader.md)するときに取得した認証値を使用してトークンを取得します。
+[**request**](https://www.npmjs.com/package/request) npm パッケージをプロジェクトに追加します。 以下のコードで、[イマーシブ リーダー リソースを作成](./how-to-create-immersive-reader.md)するときに取得した認証値を使用してトークンを取得します。
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -77,4 +77,4 @@ async function getToken() {
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Immersive Reader SDK リファレンス](./reference.md)を参照する
+* [イマーシブ リーダー SDK リファレンス](./reference.md)を参照する

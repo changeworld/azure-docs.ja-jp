@@ -1,7 +1,7 @@
 ---
-title: Immersive Reader のボタンをカスタマイズする
+title: イマーシブ リーダーのボタンをカスタマイズする
 titleSuffix: Azure Cognitive Services
-description: この記事では、Immersive Reader の起動ボタンをカスタマイズする方法について説明します。
+description: この記事では、イマーシブ リーダーの起動ボタンをカスタマイズする方法について説明します。
 services: cognitive-services
 author: metanMSFT
 manager: guillasi
@@ -17,13 +17,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946066"
 ---
-# <a name="how-to-customize-the-immersive-reader-button"></a>Immersive Reader のボタンをカスタマイズする方法
+# <a name="how-to-customize-the-immersive-reader-button"></a>イマーシブ リーダーのボタンをカスタマイズする方法
 
-この記事では、Immersive Reader の起動ボタンをアプリケーションのニーズに合わせてカスタマイズする方法について説明します。
+この記事では、イマーシブ リーダーの起動ボタンをアプリケーションのニーズに合わせてカスタマイズする方法について説明します。
 
-## <a name="add-the-immersive-reader-button"></a>Immersive Reader のボタンを追加する
+## <a name="add-the-immersive-reader-button"></a>イマーシブ リーダーのボタンを追加する
 
-Immersive Reader SDK には、Immersive Reader の起動ボタンに使用される既定のスタイルが用意されています。 このスタイルを有効にするには、`immersive-reader-button` クラス属性を使用します。
+イマーシブ リーダー SDK には、イマーシブ リーダーの起動ボタンに使用される既定のスタイルが用意されています。 このスタイルを有効にするには、`immersive-reader-button` クラス属性を使用します。
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -73,7 +73,7 @@ Immersive Reader SDK には、Immersive Reader の起動ボタンに使用され
 
 ## <a name="customize-the-size-of-the-icon"></a>アイコンのサイズをカスタマイズする
 
-Immersive Reader アイコンのサイズは、`data-icon-px-size` 属性を使用して構成できます。 アイコンのサイズがピクセル単位で設定されます。 既定のサイズは 20px です。
+イマーシブ リーダー アイコンのサイズは、`data-icon-px-size` 属性を使用して構成できます。 アイコンのサイズがピクセル単位で設定されます。 既定のサイズは 20px です。
 
 ```html
 <div class='immersive-reader-button' data-icon-px-size='50'></div>
@@ -81,4 +81,4 @@ Immersive Reader アイコンのサイズは、`data-icon-px-size` 属性を使�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Immersive Reader SDK リファレンス](./reference.md)を参照する
+* [イマーシブ リーダー SDK リファレンス](./reference.md)を参照する

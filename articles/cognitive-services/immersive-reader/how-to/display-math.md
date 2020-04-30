@@ -1,7 +1,7 @@
 ---
-title: Immersive Reader で数式を表示する
+title: イマーシブ リーダーで数式を表示する
 titleSuffix: Azure Cognitive Services
-description: この記事では、Immersive Reader で数式を表示する方法について説明します。
+description: この記事では、イマーシブ リーダーで数式を表示する方法について説明します。
 author: pasta
 manager: guillasi
 ms.service: cognitive-services
@@ -16,13 +16,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946034"
 ---
-# <a name="how-to-display-math-in-the-immersive-reader"></a>Immersive Reader で数式を表示する方法
+# <a name="how-to-display-math-in-the-immersive-reader"></a>イマーシブ リーダーで数式を表示する方法
 
-Immersive Reader は、数学用マークアップ言語 ([MathML](https://developer.mozilla.org/docs/Web/MathML)) の形式で指定された数式を表示できます。
-MIME の種類は、Immersive Reader の[チャンク](../reference.md#chunk)で設定できます。 詳細については、[サポートされる MIME の種類](../reference.md#supported-mime-types)に関するセクションを参照してください。
+イマーシブ リーダーは、数学用マークアップ言語 ([MathML](https://developer.mozilla.org/docs/Web/MathML)) の形式で指定された数式を表示できます。
+MIME の種類は、イマーシブ リーダーの[チャンク](../reference.md#chunk)で設定できます。 詳細については、[サポートされる MIME の種類](../reference.md#supported-mime-types)に関するセクションを参照してください。
 
-## <a name="send-math-to-the-immersive-reader"></a>Immersive Reader に数式を送信する
-Immersive Reader に数式を送信するには、MathML を含んだチャンクを指定し、MIME の種類を ```application/mathml+xml``` に設定します。
+## <a name="send-math-to-the-immersive-reader"></a>イマーシブ リーダーに数式を送信する
+イマーシブ リーダーに数式を送信するには、MathML を含んだチャンクを指定し、MIME の種類を ```application/mathml+xml``` に設定します。
 
 たとえば、次のようなコンテンツがあるとします。
 
@@ -67,9 +67,9 @@ const data = {
 ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 ```
 
-Immersive Reader を起動すると、次のように表示されます。
+イマーシブ リーダーを起動すると、次のように表示されます。
 
-![Immersive Reader における数式](../media/how-tos/1-math.png)
+![イマーシブ リーダーにおける数式](../media/how-tos/1-math.png)
 
 ## <a name="next-steps"></a>次のステップ
 
