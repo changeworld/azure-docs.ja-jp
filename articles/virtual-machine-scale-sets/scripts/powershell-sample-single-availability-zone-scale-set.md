@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 21d83b3e39a2002725731c04f1727a0e50af335a
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81008490"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して単一ゾーン仮想マシン スケール セットを作成する
