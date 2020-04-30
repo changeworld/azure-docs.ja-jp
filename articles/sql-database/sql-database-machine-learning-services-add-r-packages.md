@@ -15,10 +15,10 @@ manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ab066609bff773ceacb06be604e386eed5cdf7ec
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81453338"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) に R パッケージを追加する
