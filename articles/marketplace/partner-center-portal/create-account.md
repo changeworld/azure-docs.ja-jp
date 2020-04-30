@@ -1,22 +1,22 @@
 ---
-title: 商業マーケットプレース アカウントをパートナー センターに作成する
-description: Commercial Marketplace アカウントをパートナー センターで作成する方法を説明します。
+title: パートナー センターでコマーシャル マーケットプレース アカウントを作成する
+description: パートナー センターでコマーシャル マーケットプレース アカウントを作成する方法を説明します。
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 82caf46905c0b76deae524d8b172d70b436361d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 1bd71a4fb150d544125703679cf0fa0b8951e1eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281359"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684132"
 ---
-# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>商業マーケットプレース アカウントをパートナー センターに作成する
+# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/) または [AppSource](https://appsource.microsoft.com/) にオファーを発行するには、商業マーケットプレース プログラムのアカウントをパートナー センターに作成する必要があります。 この記事では、パートナー センター アカウントを作成する方法および商業マーケットプレース プログラムに新しい発行元を追加する方法について説明します。
+[Azure Marketplace](https://azuremarketplace.microsoft.com/) または [Microsoft AppSource](https://appsource.microsoft.com/) にオファーを発行するには、パートナー センターでコマーシャル マーケットプレース プログラムのアカウントを作成する必要があります。 この記事では、パートナー センター アカウントを作成する方法および商業マーケットプレース プログラムに新しい発行元を追加する方法について説明します。
 
 >[!IMPORTANT]
 >[Cloud パートナー ポータル (CPP)](https://cloudpartner.azure.com) のアカウントをパートナー センターに移動してある場合は、新しいアカウントを作成する必要はありません。 詳細については、「[CPP から移動されている発行元](#publishers-moving-from-cpp)」を参照してください。
@@ -75,7 +75,7 @@ ms.locfileid: "80281359"
 
 登録したら、[Commercial Marketplace Overview]\(商業マーケットプレースの概要\) ページに移動します。 **商業マーケットプレース**が左側のナビゲーション バーに表示されます。 **[設定]**  >  **[パートナーの設定]**  >  **[プログラム]** を選択すると、商業マーケットプレースが登録済みとして表示されます。
 
-パートナー センターで商業マーケットプレース アカウントをお作りいただいてありがとうございます。 詳細については、[商業マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
+パートナー センターで商業マーケットプレース アカウントをお作りいただいてありがとうございます。 詳細については、[コマーシャル マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
 
 ## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Microsoft パートナー センターの既存の登録を使用してアカウントを作成する
 
@@ -100,7 +100,7 @@ Microsoft パートナー センターで既に登録を行っている場合は
 
 Microsoft Partner Network に既に登録済みの場合は、このセクションを使用して、パートナー センターからアカウントを直接作成します。
 
-Microsoft Partner Network アカウントを使用して[パートナー センター](https://partner.microsoft.com/)にサインインし、会社の職場メール アカウント ドメインを新しいパートナー センター アカウントにリンクします。 これらのアカウントを関連付けることにより、会社の従業員は職場アカウントのユーザー名とパスワードでパートナー センターにサインインできます。
+Microsoft Partner Network アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインし、会社の職場メール アカウント ドメインを新しいパートナー センター アカウントにリンクします。 これらのアカウントを関連付けることにより、会社の従業員は職場アカウントのユーザー名とパスワードでパートナー センターにサインインできます。
 
 >[!NOTE]
 >会社にパートナー センターの職場アカウントが既にあるかどうかを確認する方法、新しい職場アカウントを作成する方法、またはパートナー センターで使用する複数の職場アカウントを設定する方法については、[会社の職場アカウントとパートナー センター](./company-work-accounts.md)に関するページをご覧ください。
@@ -119,7 +119,7 @@ Microsoft Partner Network アカウントを使用して[パートナー セン�
 
 登録したら、[Commercial Marketplace Overview]\(商業マーケットプレースの概要\) ページに移動します。 **商業マーケットプレース**が左側のナビゲーション バーに表示されます。 **[設定]**  >  **[パートナーの設定]**  >  **[プログラム]** を選択すると、商業マーケットプレースが登録済みとして表示されます。
 
-パートナー センターにアカウントを作成していただき、ありがとうございます。 詳細については、[商業マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
+パートナー センターにアカウントを作成していただき、ありがとうございます。 詳細については、[コマーシャル マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
 
 ### <a name="enrolled-in-a-developer-program"></a>開発者プログラムに登録済み
 
@@ -130,7 +130,7 @@ Microsoft Partner Network アカウントを使用して[パートナー セン�
 >
 >個人アカウントは、単独で作業する 1 人の開発者を対象としています。 会社アカウントは、組織や企業向けです。 会社アカウントでは、追加機能を使用してアプリを送信することができます。 会社アカウントの場合、会社用のアカウントの設定を承認されていることを確認するため、登録後に、さらに検証する必要があります。 この検証には、数日から数週間かかることがあり、多くの場合、会社への電話連絡が含まれます。 どちらの種類のアカウントでも、アプリ、アドイン、サービスを送信できます。 詳しくは、「 [アカウントの種類、場所、料金](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)」をご覧ください。
 
-Microsoft パートナー センター アカウントを使用して[パートナー センター](https://partner.microsoft.com/)にサインインし、同じアカウントで商業マーケットプレース プログラムに登録します。 同じアカウントを使用して商業マーケットプレースにサインアップすることにより、パートナー センターの左側のナビゲーション メニューで、既存のプログラム登録と商業マーケットプレースの両方を見ることができます。
+Microsoft パートナー センター アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインし、同じアカウントで商業マーケットプレース プログラムに登録します。 同じアカウントを使用して商業マーケットプレースにサインアップすることにより、パートナー センターの左側のナビゲーション メニューで、既存のプログラム登録と商業マーケットプレースの両方を見ることができます。
 
 サインインした後、次の手順を使用して、アカウントのセットアップを完了します。
 
@@ -143,13 +143,13 @@ Microsoft パートナー センター アカウントを使用して[パート�
 
 登録したら、[Commercial Marketplace Overview]\(商業マーケットプレースの概要\) ページに移動します。 **商業マーケットプレース**が左側のナビゲーション バーに表示されます。 **[設定]**  >  **[開発者向け設定]**  >  **[プログラム]** を選択すると、商業マーケットプレースが登録済みとして表示されます。
 
-パートナー センターにアカウントを作成していただき、ありがとうございます。 詳細については、[商業マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
+パートナー センターにアカウントを作成していただき、ありがとうございます。 詳細については、[コマーシャル マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
 
 ## <a name="publishers-moving-from-cpp"></a>CPP から移行されている発行元
 
 アカウントを [Cloud パートナー ポータル (CPP)](https://cloudpartner.azure.com) から移行済みの場合は、新しいパートナー センター アカウントを作成する必要はありません。 新しいパートナー センター アカウントへのカスタマイズされたリンクを、電子メールや既存の CPP アカウントへのログイン後のバナー通知で受け取っているはずです。
 
-このカスタマイズされたリンクにアクセスして、新しいパートナー センター アカウントを有効にした後は、パートナー センターで [Commercial Marketplace ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にアクセスして、アカウントに戻ることができます。
+このカスタマイズされたリンクにアクセスして、新しいパートナー センター アカウントを有効にした後は、パートナー センターで[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にアクセスして、アカウントに戻ることができます。
 
 発行への同意と会社のプロファイル情報は、以前に設定したとアカウント支払いプロファイル情報、ユーザー アカウントとアクセス許可、CPP アカウントに関連付けられているアクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。
 
@@ -164,13 +164,13 @@ Microsoft パートナー センター アカウントを使用して[パート�
 
 同じ Azure Active Directory テナントの別のユーザーは、次の手順に従って、新しい発行元を追加できます。
 
-1. [Microsoft パートナー センター](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv)でサインアップ フローを開始します。
+1. [Microsoft パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)でサインアップ フローを開始します。
 2. **[職場アカウントでサインインする]** を選択し、お使いの仕事用メール アドレスを入力します。
 3. **[パブリッシャーの追加]** ボタンを選択します。
 4. 発行元に関連付ける MPN ID を選択します。
 5. フォームの**発行元の詳細**を更新します。
 
-   1. **発行元の名前**:Azure Marketplace または AppSource でオファーと共に表示される名前。
+   1. **発行元の名前**:コマーシャル マーケットでオファーと共に表示される名前。
    1. **PublisherID**:発行元を一意に識別するためにパートナー センターで使用される識別子。 このフィールドの既定値は、システム内の既存の一意の `PublisherID` にマップされ、再利用することはできません。このため、このフィールドを更新する必要があります。
    1. **連絡先情報**:必要に応じて連絡先情報を更新します。
 
@@ -178,4 +178,4 @@ Microsoft パートナー センター アカウントを使用して[パート�
 
 ## <a name="next-step"></a>次のステップ
 
-- [パートナー センターで Commercial Marketplace アカウントを管理する](./manage-account.md)
+- [パートナー センターでコマーシャル マーケットプレース アカウントを管理する](./manage-account.md)

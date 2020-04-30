@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671717"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640969"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
@@ -168,13 +168,9 @@ ms.locfileid: "77671717"
 
     ![プロファイラー トレースを表示する](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>既知の問題
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Linux プロファイラーで、[今すぐプロファイル] ボタンが機能しません。
-Linux バージョンの App Insights プロファイラーで、[今すぐプロファイル] ボタンを使用したオンデマンドのプロファイリングがまだサポートされていません。
 
 
 ## <a name="next-steps"></a>次のステップ
 Azure App Service でホストされているカスタム コンテナーを使用する場合は、[コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で Application Insight Profiler を有効にします。
 
-問題やご提案があれば、Application Insights GitHub リポジトリ [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues) にご報告ください。
+問題やご提案があれば、次の Application Insights GitHub リポジトリにご報告ください:[ApplicationInsights-Profiler-AspNetCore:Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)。

@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481101"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677167"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
@@ -306,6 +306,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 - **Microsoft ピアリング**:Managed Instance が存在する仮想ネットワークと直接または推移的にピアリングされた Express Route 回線で [Microsoft ピアリング](../expressroute/expressroute-faqs.md#microsoft-peering)を有効にすると、仮想ネットワーク内の Managed Instance コンポーネント間のトラフィック フローと、それに依存するサービスに影響が及び、可用性の問題が発生します。 Microsoft ピアリングが既に有効になっている仮想ネットワークへの Managed Instance デプロイは、失敗することが予想されます。
 - **グローバル仮想ネットワーク ピアリング**:Azure リージョン間での[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)接続は、[ドキュメントに記載されているロード バランサーの制約](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)により、Managed Instance では機能しません。
 - **AzurePlatformDNS**:AzurePlatformDNS [サービス タグ](../virtual-network/service-tags-overview.md)を使用してプラットフォーム DNS 解決をブロックすると、Managed Instance をレンダリングできなくなります。 Managed Instance では、エンジン内部での DNS 解決にユーザー定義の DNS を使用することがサポートされていますが、プラットフォームの操作については、プラットフォーム DNS への依存性が存在します。
+- **NAT Gateway**:[Virtual Network NAT](../virtual-network/nat-overview.md) を使用して、特定のパブリック IP アドレスでの送信接続を制御すると、Managed Instance が使用できなくなります。 現時点では、Managed Instance サービスは基本的なロード バランサーの使用に制限されています。このロード バランサーは、Virtual Network NAT を使用した受信フローと送信フローを同時に実行することができません。
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[非推奨] サービス支援サブネット構成を使用しないネットワーク要件
 

@@ -4,16 +4,16 @@ description: この記事では、Azure Resource Manager を使用した Azure S
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481118"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682641"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
 
-Azure Service Fabric アプリケーションを Service Fabric クラスターにデプロイするには、複数の選択肢があります。 Azure Resource Manager を使用することをお勧めします。 Resource Manager を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell や Azure CLI を使ってアプリケーションをデプロイして管理する場合と違い、Resource Manager を使用する場合は、クラスターの準備が整うまで待つ必要はありません。アプリケーションの登録、プロビジョニング、およびデプロイをすべて 1 回の手順で実行できます。 クラスターでアプリケーションのライフ サイクルを管理するには、Resource Manager を使用するのが最良の方法です。 詳細については、「[ベスト プラクティス:コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)」を参照してください。
+Azure Service Fabric アプリケーションを Service Fabric クラスターにデプロイするには、複数の選択肢があります。 Azure Resource Manager を使用することをお勧めします。 Resource Manager を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell や Azure CLI を使ってアプリケーションをデプロイして管理する場合と違い、Resource Manager を使用する場合は、クラスターの準備が整うまで待つ必要はありません。アプリケーションの登録、プロビジョニング、およびデプロイをすべて 1 回の手順で実行できます。 クラスターでアプリケーションのライフ サイクルを管理するには、Resource Manager を使用するのが最良の方法です。 詳細については、「[ベスト プラクティス: コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)」を参照してください。
 
 Resource Manager でアプリケーションをリソースとして管理すると、次のような分野での改善に役立ちます。
 
@@ -99,7 +99,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 | applicationTypeVersion | アプリケーションの種類のバージョン         | 1.0.0                                                        | ApplicationManifest.xml と一致する必要があります                 |
 | serviceName            | サービスの名前         | Voting~VotingWeb                                             | ApplicationName~ServiceType の形式にする必要があります            |
 | serviceTypeName        | サービスの種類名                | VotingWeb                                                    | ServiceManifest.xml と一致する必要があります                 |
-| appPackageUrl          | アプリケーションの BLOB ストレージ URL     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | BLOB ストレージ内のアプリケーション パッケージの URL (URL を設定する手順については、この記事の後半で説明します) |
+| appPackageUrl          | アプリケーションの BLOB ストレージ URL     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | BLOB ストレージ内のアプリケーション パッケージの URL (URL を設定する手順については、この記事の後半で説明します) |
 
 ```json
 {
@@ -184,7 +184,7 @@ Resource Manager でアプリケーション リソース モデルを使用し�
 
 * [Service Fabric のアプリケーションのモデル化](service-fabric-application-model.md)
 * [Service Fabric のアプリケーション マニフェストとサービス マニフェスト](service-fabric-application-and-service-manifests.md)
-* [ベスト プラクティス:コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [ベスト プラクティス: コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
 * [アプリケーションとサービスを Azure リソースとして管理する](service-fabric-best-practices-infrastructure-as-code.md)
 
 

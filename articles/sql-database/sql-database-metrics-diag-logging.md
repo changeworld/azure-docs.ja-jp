@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 288d4e4d0c5faa6bb2b51451fb36bbb6d666c9eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756423"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683174"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Azure SQL Database 診断テレメトリのストリーミング エクスポートを構成する
 
@@ -363,7 +363,7 @@ Azure SQL Analytics を使用して一連の Azure SQL データベースを監�
 
 ## <a name="stream-into-event-hubs"></a>Event Hubs へのストリーム
 
-Azure SQL Database のメトリックとリソース ログは、Microsoft Azure portal に組み込まれている **[イベント ハブへのストリーム]** オプションを使用してイベント ハブにストリーミングできます。 Service Bus ルール ID は、PowerShell コマンドレット、Azure CLI、または Azure Monitor REST API を使用して診断設定をすることでも有効にできます。
+Azure SQL Database のメトリックとリソース ログは、Microsoft Azure portal に組み込まれている **[イベント ハブへのストリーム]** オプションを使用してイベント ハブにストリーミングできます。 Service Bus ルール ID は、PowerShell コマンドレット、Azure CLI、または Azure Monitor REST API を使用して診断設定をすることでも有効にできます。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>Event Hubs におけるメトリックとリソース ログの活用方法
 

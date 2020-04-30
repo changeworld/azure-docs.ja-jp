@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064923"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683324"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -40,7 +40,7 @@ Microsoft は Azure 専用 HSM サービスを提供するために Gemalto と�
 
 ### <a name="q-what-is-an-hsm-used-for"></a>Q:HSM は何に使用されますか。
 
-HSM を使用する目的は、SSL (Secure Socket Layer)、データの暗号化、PKI (公開キー基盤)、DRM (デジタル著作権管理)、ドキュメントの署名などの暗号化機能で使用される暗号化キーを格納することです。
+HSM を使用する目的は、TLS (トランスポート層セキュリティ)、データの暗号化、PKI (公開キー基盤)、DRM (デジタル著作権管理)、ドキュメントの署名などの暗号化機能で使用される暗号化キーを格納することです。
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>Q:専用 HSM はどのように動作しますか。
 
@@ -69,6 +69,7 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 * 米国東部
 * 米国東部 2
 * 米国西部
+* 米国西部 2
 * 米国中南部
 * 東南アジア
 * 東アジア
@@ -84,6 +85,10 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 * カナダ東部
 * オーストラリア東部
 * オーストラリア南東部
+* スイス北部
+* スイス西部
+* US Gov バージニア州
+* US Gov テキサス
 
 ## <a name="interoperability"></a>相互運用性
 
@@ -132,13 +137,13 @@ PKCS#11、Java (JCA/JCE)、Microsoft CAPI、CNG、OpenSSL
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>Q:Azure Key Vault または Azure 専用 HSM のどちらを使用するかをどのように判断したらよいですか。
 
-HSM を使用する Azure オンプレミス アプリケーションに移行している企業では、Azure 専用 HSM が適切な選択です。 専用 HSM は、変更を最小限に抑えてアプリケーションを移行するオプションを提供します。 Azure VM または Web App で実行されるアプリケーションのコード内で、暗号操作が行われている場合は、専用 HSM を使用できます。 一般に、HSM をキー ストアとしてサポートし、IaaS (サービスとしてのインフラストラクチャ) モデルで実行される市販のソフトウェアでは、専用 HSM を使用できます。キーのない SSL に対するアプリケーション ゲートウェイまたはトラフィック マネージャー、ADCS (Active Directory 証明書サービス)、類似の PKI ツール、ドキュメント署名に使用されるツール/アプリケーション、コード署名、EKM (拡張可能キー管理) プロバイダーを使用する HSM においてマスター キーを使った TDE (Transparent Database Encryption) によって構成されている SQL Server (IaaS) などがあります。 "クラウド生まれ" のアプリケーションや、お客様のデータが PaaS (サービスとしてのプラットフォーム) または SaaS (サービスとしてのソフトウェア) シナリオで処理される暗号保存のシナリオでは、Azure Key Vault が適しています。このシナリオには、Office 365 カスタマー キー、Azure Information Protection、Azure Disk Encryption、カスタマー マネージド キーを使用した Azure Data Lake Store 暗号化、カスタマー マネージド キーを使用した Azure Storage 暗号化、およびカスタマー マネージド キーを使用した Azure SQL などがあります。
+HSM を使用する Azure オンプレミス アプリケーションに移行している企業では、Azure 専用 HSM が適切な選択です。 専用 HSM は、変更を最小限に抑えてアプリケーションを移行するオプションを提供します。 Azure VM または Web App で実行されるアプリケーションのコード内で、暗号操作が行われている場合は、専用 HSM を使用できます。 一般に、HSM をキー ストアとしてサポートし、IaaS (サービスとしてのインフラストラクチャ) モデルで実行される市販のソフトウェアでは、専用 HSM を使用できます。キーのない TLS に対するアプリケーション ゲートウェイまたはトラフィック マネージャー、ADCS (Active Directory 証明書サービス)、類似の PKI ツール、ドキュメント署名に使用されるツール/アプリケーション、コード署名、EKM (拡張可能キー管理) プロバイダーを使用する HSM においてマスター キーを使った TDE (Transparent Database Encryption) によって構成されている SQL Server (IaaS) などがあります。 "クラウド生まれ" のアプリケーションや、お客様のデータが PaaS (サービスとしてのプラットフォーム) または SaaS (サービスとしてのソフトウェア) シナリオで処理される暗号保存のシナリオでは、Azure Key Vault が適しています。このシナリオには、Office 365 カスタマー キー、Azure Information Protection、Azure Disk Encryption、カスタマー マネージド キーを使用した Azure Data Lake Store 暗号化、カスタマー マネージド キーを使用した Azure Storage 暗号化、およびカスタマー マネージド キーを使用した Azure SQL などがあります。
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>Q:Azure 専用 HSM にはどのような使用シナリオが最適ですか。
 
 Azure 専用 HSM は、移行のシナリオに最適です。 つまり、既に HSM を使用している Azure にオンプレミス アプリケーションを移行する場合です。 これにより、アプリケーションへの変更を最小限に抑えて Azure に移行するという、問題が生じにくいオプションが提供されます。 Azure VM または Web App で実行されるアプリケーションのコード内で暗号操作が行われている場合、専用 HSM を使用できます。 一般に、HSM をキー ストアとしてサポートし、IaaS (サービスとしてのインフラストラクチャ) モデルで実行される市販のソフトウェアでは、専用 HSM を使用できます。次のような例があります。
 
-* キーのない SSL に対するアプリケーション ゲートウェイまたはトラフィック マネージャー
+* キーのない TLS に対するアプリケーション ゲートウェイまたはトラフィック マネージャー
 * ADCS (Active Directory 証明書サービス)
 * 類似の PKI ツール
 * ドキュメント署名に使用されるツール/アプリケーション

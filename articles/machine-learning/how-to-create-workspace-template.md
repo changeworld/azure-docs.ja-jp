@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 9403cc05ed5b31f3b76c16c4232506e2ddc5da2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402905"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682756"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -81,7 +81,9 @@ ms.locfileid: "78402905"
 
 * ワークスペースの高機密性の設定を有効にする
 * ワークスペースの暗号化を有効にする
-* 既存の Azure Key Vault を使用する
+* 既存の Azure Key Vault を使用して、カスタマー マネージド キーを取得する
+
+詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
 
 ```json
 {
@@ -121,7 +123,7 @@ ms.locfileid: "78402905"
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ ms.locfileid: "78402905"
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbi_workspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-Key Vault の ID と、このテンプレートに必要なキー URI を取得するために、Azure CLI を使用できます。 次のコマンドは、Azure CLI を使用して Key Vault リソースの ID および URI を取得する例です。
+Key Vault の ID と、このテンプレートに必要なキー URI を取得するために、Azure CLI を使用できます。 次のコマンドを実行すると、Key Vault ID を取得できます。
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-このコマンドにより、次のテキストのような値が返されます。 最初の値は ID で、2 番目は URI です。
+このコマンドでは `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"` のような値が返されます。
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+カスタマー マネージド キーの URI を取得するには、次のコマンドを使用します。
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+このコマンドでは `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"` のような値が返されます。
+
+> [!IMPORTANT]
+> ワークスペースが作成されたら、機密データ、暗号化、Key Vault ID、またはキー識別子の設定を変更することはできません。 これらの値を変更するには、新しい値を使用して新しいワークスペースを作成する必要があります。
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
