@@ -5,22 +5,22 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743870"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617430"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitor Logs で Update Management の更新レコードに対してクエリを実行する
 
-Update Management ソリューションで提供される詳細に加えて、Log Analytics ワークスペースに格納されているログを検索することができます。 ソリューション ページの左側のペインで、 **[ログ]** を選択します。 **[ログ検索]** ページが開きます。
+Update Management ソリューションで提供される詳細に加えて、Log Analytics ワークスペースに格納されているログを検索することができます。 ソリューション ページの左側のペインで、 **[ログ]** を選択します。 [ログ検索] ページが開きます。
 
-クエリをカスタマイズする方法や、さまざまなクライアントから使用する方法などについては、[Log Analytics の検索 API のドキュメント](https://dev.loganalytics.io/)を参照してください。
+また、クエリをカスタマイズする方法や、さまざまなクライアントから使用する方法も学べます。 [Log Analytics の検索 API のドキュメント](https://dev.loganalytics.io/)を参照してください。
 
 ## <a name="update-records"></a>Update レコード
 
-Windows および Linux VM の Update Management によって収集されるレコードと、ログ検索結果に表示されるデータの種類。 以下のセクションで、これらのレコードについて説明します。
+Update Management では、Windows および Linux VM のレコードと、ログ検索結果に表示されるデータ型が収集されます。 以下のセクションで、これらのレコードについて説明します。
 
 ### <a name="required-updates"></a>必要な更新プログラム
 
@@ -49,36 +49,36 @@ Windows および Linux VM の Update Management によって収集されるレ�
 
 | プロパティ | 説明 | 
 |----------|-------------|
-| ApprovalSource | Windows オペレーティング システムにのみ適用されます。 値は "*Microsoft Update*" です。 |
-| Approved | "*True*" または "*False*" |
-| 分類 | *更新プログラム* |
+| ApprovalSource | Windows オペレーティング システムにのみ適用されます。 レコードの承認のソース。 値は [Microsoft Update] です。 |
+| Approved | レコードが承認されている場合は True、それ以外の場合は False。 |
+| 分類 | 承認の分類。 値は [更新プログラム] です。 |
 | Computer | レポート コンピューターの完全修飾ドメイン名。 |
-| ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 |
-| MSRCBulletinID | セキュリティ情報 ID 番号 | 
-| MSRCSeverity | 脆弱性の重大度の評価。 値は次のとおりです。<br> *重大*<br> *重要*<br> *中*<br> *低* |  
+| ComputerEnvironment | 環境。 可能な値は、[Azure] または [Azure 以外] です。 |
+| MSRCBulletinID | セキュリティ情報 ID 番号。 | 
+| MSRCSeverity | 脆弱性の重大度の評価。 値は次のとおりです。<br> Critical<br> 重要<br> 中<br> 低 |  
 | KBID | Windows Update のサポート技術情報の記事 ID。 |
 | ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
 | UpdateID | ソフトウェア更新プログラムの一意識別子。 |
 | RevisionNumber | 更新プログラムの特定のリビジョンのリビジョン番号。 |
-| 省略可能 | "*True*" または "*False*" | 
+| 省略可能 | レコードが省略可能な場合は True、それ以外の場合は False。 | 
 | RebootBehavior | 更新プログラムをインストールまたはアンインストールした後の再起動動作。 |
-| _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
-| Type | *アップデート* |
+| _ResourceId | レコードに関連付けられているリソースの一意識別子。 |
+| Type | レコードの種類。 値は [更新] です。 |
 | VMUUID | 仮想マシンの一意識別子。 |
 | MG | 管理グループまたは Log Analytics ワークスペースの一意識別子。 | 
 | TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 | 
-| SourceSystem | *OperationsManager* | 
-| TimeGenerated | レコードが作成された日付と時刻。 | 
+| SourceSystem | レコードのソース システム。 値は `OperationsManager`です。 | 
+| TimeGenerated | レコードの作成日時。 | 
 | SourceComputerId | ソース コンピューターを表す一意識別子。 | 
 | タイトル | 更新プログラムのタイトル。 |
 | PublishedDate (UTC) | Windows Update から更新プログラムをダウンロードしてインストールする準備ができた日付。  |
 | UpdateState | 更新プログラムの現在の状態。 | 
 | Product | 更新プログラムが適用される製品。 |
 | SubscriptionId | Azure サブスクリプションの一意識別子。 | 
-| ResourceGroup | リソースがメンバーであるリソース グループの名前。 | 
-| ResourceProvider | リソース プロバイダーを指定します。 | 
+| ResourceGroup | リソースが属しているリソース グループの名前。 | 
+| ResourceProvider | リソース プロバイダー。 | 
 | リソース | リソースの名前。 | 
-| ResourceType | リソースの種類の名前。 | 
+| ResourceType | リソースの種類。 | 
 
 ### <a name="update-agent"></a>更新エージェント
 
@@ -94,12 +94,12 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | OSVersion | オペレーティング システムのバージョン。 |
 | サーバー | |
 | SourceHealthServiceId | Log Analytics Windows エージェント ID を表す一意識別子。 |
-| SourceSystem | *OperationsManager* | 
+| SourceSystem | レコードのソース システム。 値は `OperationsManager`です。 | 
 | TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 |
-| TimeGenerated | レコードが作成された日付と時刻。 |
-| Type | *アップデート* | 
+| TimeGenerated | レコードの作成日時。 |
+| Type | レコードの種類。 値は [更新] です。 | 
 | WindowsUpdateAgentVersion | Windows Update エージェントのバージョン。 |
-| WSUSServer | Windows Update エージェントにトラブルシューティングに役立つ問題がある場合は、エラーが表示されます。 |
+| WSUSServer | Windows Update エージェントで問題が発生した場合のエラー。トラブルシューティングに役立ちます。 |
 
 ### <a name="update-deployment-status"></a>更新プログラムのデプロイの状態 
 
@@ -108,30 +108,30 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | プロパティ | 説明 | 
 |----------|-------------|
 | Computer | レポート コンピューターの完全修飾ドメイン名。 |
-| ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 | 
+| ComputerEnvironment | 環境。 値は [Azure] または [Azure 以外] です。 | 
 | CorrelationId | 更新プログラムに対して実行される Runbook ジョブの一意識別子。 |
 | EndTime | 同期プロセスが終了した時刻。 | 
 | ErrorResult | 更新プログラムのインストールに失敗した場合に生成される Windows Update のエラー コード。 | 
-| InstallationStatus | クライアント コンピューター上の更新プログラムの考えられるインストール状態。<br> *NotStarted* - ジョブがまだトリガーされていません。<br> *FailedToStart* - コンピューターでジョブを開始できません。<br> *Failed* - ジョブは開始されましたが、例外が発生して失敗しました。<br> *InProgress* - ジョブが進行中です。<br> *MaintenanceWindowExceeded* - 実行が残っているが、メンテナンス期間に達した場合。<br> *Succeeded* - ジョブに成功しました。<br> *InstallFailed* - 更新を正常にインストールできませんでした。<br> *NotIncluded*<br> *Excluded* |
+| InstallationStatus | クライアント コンピューター上の更新プログラムの考えられるインストール状態。<br> `NotStarted` - ジョブはまだトリガーされていません。<br> `FailedToStart` - マシンでジョブを開始できません。<br> `Failed` - ジョブは開始されましたが、例外が発生して失敗しました。<br> `InProgress` - ジョブは進行中です。<br> `MaintenanceWindowExceeded` - 実行が残っているが、メンテナンス期間に達した場合。<br> `Succeeded` - ジョブが成功しました。<br> `InstallFailed` - 更新を正常にインストールできませんでした。<br> `NotIncluded`<br> `Excluded` |
 | KBID | Windows Update のサポート技術情報の記事 ID。 | 
 | ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
-| OSType | オペレーティング システムの種類 ("*Windows*" または "*Linux*") を指定します。 | 
+| OSType | オペレーティング システムの種類。 値は [Windows] または [Linux] です。 | 
 | Product | 更新プログラムが適用される製品。 |
 | リソース | リソースの名前。 | 
-| ResourceId | レコードが関連付けられているリソースの一意識別子。 |
-| ResourceProvider | リソース プロバイダーを指定します。 | 
-| ResourceType | リソースの種類の名前。 | 
+| ResourceId | レコードに関連付けられているリソースの一意識別子。 |
+| ResourceProvider | リソース プロバイダー。 | 
+| ResourceType | リソースの種類。 | 
 | SourceComputerId | ソース コンピューターを表す一意識別子。 | 
-| SourceSystem | *OperationsManager* |
+| SourceSystem | レコードのソース システム。 値は `OperationsManager`です。 |
 | StartTime | 更新プログラムのインストールがスケジュールされている時刻。 |
 | SubscriptionId | Azure サブスクリプションの一意識別子。 | 
-| SucceededOnRetry | 最初の試行で更新プログラムの実行がいつ失敗したかと、現在の操作が再試行であることを示します。 |
-| TimeGenerated | レコードが作成された日付と時刻。 |
+| SucceededOnRetry | 更新プログラムの実行が最初の試行で失敗したかどうかと、現在の操作が再試行であるかどうかを示す値。 |
+| TimeGenerated | レコードの作成日時。 |
 | タイトル | 更新プログラムのタイトル。 |
-| Type | *UpdateRunProgress* |
+| Type | 更新の種類。 値は `UpdateRunProgress`です。 |
 | UpdateId | ソフトウェア更新プログラムの一意識別子。 |
 | VMUUID | 仮想マシンの一意識別子。 |
-| _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
+| ResourceId | レコードに関連付けられているリソースの一意識別子。 |
 
 ### <a name="update-summary"></a>概要の更新 
 
@@ -140,32 +140,32 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | プロパティ | 説明 | 
 |----------|-------------|
 | Computer | レポート コンピューターの完全修飾ドメイン名。 |
-| ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 | 
+| ComputerEnvironment | 環境。 値は [Azure] または [Azure 以外] です。 | 
 | CriticalUpdatesMissing | 適用可能だが、インストールされていない重要な更新プログラムの数。 | 
 | ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
 | NETRuntimeVersion | Windows コンピューターにインストールされている .NET Framework のバージョン。 |
-| OldestMissingSecurityUpdateBucket | 値は次のとおりです。<br> *最近* (値が 30 日未満の場合)<br> *30 日前*<br> *60 日前*<br> *90 日前*<br> *120 日前*<br> *150 日前*<br> *180 日前*<br> *古い* (値が 180 日を超える場合) | 
+| OldestMissingSecurityUpdateBucket | 不足している最も古いセキュリティ バケットの指定子。 値は次のとおりです。<br> 最近 (値が 30 日未満の場合)<br> 30 日前<br> 60 日前<br> 90 日前<br> 120 日前<br> 150 日前<br> 180 日前<br> それより以前 (値が 180 日を超える場合)。 | 
 | OldestMissingSecurityUpdateInDays | 適用可能として検出された、インストールされていない最も古い更新プログラムの合計日数。 |
 | OsVersion | オペレーティング システムのバージョン。 |
 | OtherUpdatesMissing | インストールされていない更新プログラムの検出数。 |
-| リソース |  リソースの名前。 | 
-| ResourceGroup | リソースがメンバーであるリソース グループの名前。 |
-| ResourceId | レコードが関連付けられているリソースの一意識別子。 |
-| ResourceProvider | リソース プロバイダーを指定します。 |
-| ResourceType | リソースの種類の名前。 |
-| RestartPending | *True* または *False* です。 |
+| リソース | レコードのリソースの名前。 | 
+| ResourceGroup | リソースを含むリソース グループの名前。 |
+| ResourceId | レコードに関連付けられているリソースの一意識別子。 |
+| ResourceProvider | リソース プロバイダー。 |
+| ResourceType | リソースの種類。 |
+| RestartPending | 再起動が保留中の場合は True、それ以外の場合は False。 |
 | SecurityUpdatesMissing | 適用可能だが、インストールされていないセキュリティ更新プログラムの数。| 
 | SourceComputerId | 仮想マシンの一意識別子。 |
-| SourceSystem | *OpsManager* | 
+| SourceSystem | レコードのソース システム。 値は `OpsManager`です。 | 
 | SubscriptionId | Azure サブスクリプションの一意識別子。 |
-| TimeGenerated | レコードが作成された日付と時刻。 |
+| TimeGenerated | レコードの作成日時。 |
 | TotalUpdatesMissing | 適用可能だが、インストールされていない更新プログラムの合計数。 | 
-| Type | *UpdateSummary* |
+| Type | レコードの種類。 値は `UpdateSummary`です。 |
 | VMUUID | 仮想マシンの一意識別子。 |
 | WindowsUpdateAgentVersion | Windows Update エージェントのバージョン。 |
-| WindowsUpdateSetting | Windows Update エージェントの状態を表示します。 次のいずれかの値になります。<br> "*Scheduled installation*" (スケジュールに従ってインストールする)<br> "*Notify before installation*" (インストールする前に通知する)<br> 異常な WUA エージェントからはエラーが返されます。 | 
-| WSUSServer | Windows Update エージェントにトラブルシューティングに役立つ問題がある場合は、エラーが表示されます。 |
-| _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
+| WindowsUpdateSetting | Windows Update エージェントの状態。 次のいずれかの値になります。<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
+| WSUSServer | Windows Update エージェントで問題が発生した場合のエラー。トラブルシューティングに役立ちます。 |
+| _ResourceId | レコードに関連付けられているリソースの一意識別子。 |
 
 ## <a name="sample-queries"></a>サンプル クエリ
 
@@ -306,8 +306,6 @@ on SourceComputerId
 | summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
 | summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeedOtherUpdatesCount=sum(computersNeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
 | extend allComputersCount=assessedComputersCount+notAssessedComputersCount
-
-
 ```
 
 #### <a name="missing-updates-summary"></a>不足している更新プログラムの概要

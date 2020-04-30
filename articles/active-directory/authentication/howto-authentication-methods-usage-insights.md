@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654142"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680185"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
@@ -93,6 +93,8 @@ ms.locfileid: "80654142"
 これらのレポートに表示されるデータには、最大 60 分のタイム ラグが存在します。 Azure portal には、ご自分のデータがどの程度新しいかを確認できる [最終更新日時] フィールドがあります。
 
 使用状況と分析情報のデータは、Azure Multi-Factor Authentication のアクティビティ レポートや、Azure AD のサインイン レポートに含まれる情報の代わりとなるものではありません。
+
+現在、外部ユーザーを除外するためにレポートをフィルター処理することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

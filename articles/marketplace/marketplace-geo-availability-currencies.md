@@ -1,22 +1,22 @@
 ---
-title: 利用可能な地域と通貨サポート | Azure
-description: Azure Marketplace と AppSource の利用可能な地域
+title: コマーシャル マーケットプレースで利用可能な地域と通貨のサポート | Azure Marketplace
+description: コマーシャル マーケットプレースで利用可能な地域
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288429"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687583"
 ---
-# <a name="geographic-availability-and-currency-support"></a>利用可能な地域と通貨サポート
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
-Azure Marketplace と AppSource のオファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
+コマーシャル マーケットプレース オファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
 
 |   国/地域名               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
@@ -44,7 +44,7 @@ Azure Marketplace と AppSource のオファリングは、顧客の請求先住
 | ブルネイ                              | BN        | USD          |
 | ブルガリア                            | BG        | EUR          |
 | カメルーン                            | CM        | USD          |
-| カナダ                              | CA        | CAD          |
+| Canada                              | CA        | CAD          |
 | カーボベルデ                          | CV        | USD          |
 | ケイマン諸島                      | KY        | USD          |
 | チリ                               | CL        | USD          |
@@ -154,7 +154,7 @@ Azure Marketplace と AppSource のオファリングは、顧客の請求先住
 | ウクライナ                             | UA        | USD          |
 | アラブ首長国連邦                | AE        | USD          |
 | イギリス                      | GB        | GBP          |
-| アメリカ                       | US        | USD          |
+| United States                       | US        | USD          |
 | ウルグアイ                             | UY        | USD          |
 | ウズベキスタン                          | UZ        | USD          |
 | ベネズエラ                           | VE        | USD          |

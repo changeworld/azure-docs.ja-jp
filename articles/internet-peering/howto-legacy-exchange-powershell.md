@@ -1,39 +1,39 @@
 ---
-title: PowerShell を使用して従来の Exchange ピアリングを Azure リソースに変換する
+title: PowerShell を使用してレガシの Exchange ピアリングを Azure リソースに変換する
 titleSuffix: Azure
-description: PowerShell を使用して従来の Exchange ピアリングを Azure リソースに変換する
+description: PowerShell を使用してレガシの Exchange ピアリングを Azure リソースに変換する
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: aa11f329cf0a0cb27d58b940b42731a2ec41c272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774002"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686794"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-powershell"></a>PowerShell を使用して従来の Exchange ピアリングを Azure リソースに変換する
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>PowerShell を使用してレガシの Exchange ピアリングを Azure リソースに変換する
 
-この記事では、PowerShell コマンドレットを使用して既存の従来の Exchange ピアリングを Azure リソースに変換する方法について説明します。
+この記事では、PowerShell コマンドレットを使用して既存のレガシの Exchange ピアリングを Azure リソースに変換する方法について説明します。
 
-必要に応じて、[ポータル](howto-legacy-exchange-portal.md)を使用してこのガイドを完了することもできます。
+必要に応じて、Azure [portal](howto-legacy-exchange-portal.md) を使用してこのガイドを完了することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
-* 構成を開始する前に、[前提条件](prerequisites.md)に関するページと「[Exchange ピアリングのチュートリアル](walkthrough-exchange-all.md)」を確認してください。
+* 構成を開始する前に、[前提条件](prerequisites.md)と [Exchange ピアリングのチュートリアル](walkthrough-exchange-all.md)を確認します。
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
+### <a name="work-with-azure-powershell"></a>Azure PowerShell を使用する
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>従来の Exchange ピアリングを Azure リソースに変換する
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>レガシの Exchange ピアリングを Azure リソースに変換する
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択する
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>変換のための従来の Exchange ピアリングを取得する
-シアトルのピアリングの場所で従来の Exchange ピアリングを取得する例を次に示します。
+### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>変換対象のレガシの Exchange ピアリングを取得する
+次の例は、シアトルのピアリングの場所でレガシの Exchange ピアリングを取得する方法を示しています。
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
@@ -58,7 +58,7 @@ $legacyPeering
 ```
 
 ### <a name="convert-legacy-peering"></a>従来のピアリングを変換する
-従来の Exchange ピアリングを Azure リソースに変換するには、次のコマンドを使用できます。
+次のコマンドを使用して、レガシの Exchange ピアリングを Azure リソースに変換できます。
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -69,9 +69,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> 従来のピアリングを Azure リソースに変換する場合は、変更がサポートされないことに注意してください。&nbsp;
+> レガシのピアリングを Azure リソースに変換する場合、変更はサポートされません。
+[https://github.com/mysqljs/mysql/](&nbsp;)
 
-エンド ツー エンドのプロビジョニングが正常に完了した場合の応答の例を次に示します。
+次の応答は、エンド ツー エンドのプロビジョニングが正常に完了した場合の例を示しています。
 
 ```powershell
     Name                     : SeattleExchangePeering

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064216"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684704"
 ---
 # <a name="execute-r-script"></a>R スクリプトの実行
 
@@ -44,7 +44,10 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>R パッケージのインストール
-追加の R パッケージをインストールするには、`install.packages()` メソッドを使用します。 必ず CRAN リポジトリを指定してください。 パッケージは、**R スクリプトの実行**モジュールごとにインストールされ、他の **R スクリプトの実行**モジュール間で共有されることはありません。
+追加の R パッケージをインストールするには、`install.packages()` メソッドを使用します。 パッケージは、**R スクリプトの実行**モジュールごとにインストールされ、他の **R スクリプトの実行**モジュール間で共有されることはありません。
+
+> [!NOTE]
+> `install.packages("zoo",repos = "http://cran.us.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定してください。
 
 このサンプルは、Zoo のインストール方法を示しています。
 ```R
@@ -52,7 +55,13 @@ azureml_main <- function(dataframe1, dataframe2){
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -77,7 +86,13 @@ azureml_main <- function(dataframe1, dataframe2){
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -124,6 +139,12 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. **[R script]\(R スクリプト\)** テキストボックスに、有効な R スクリプトを入力するか貼り付けます。
 
+    > [!NOTE]
+    > スクリプトを記述するときは十分に注意し、宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 また、このドキュメントの最後にある、事前にインストールされているパッケージの一覧にも特別な注意を払ってください。 一覧表示されていないパッケージを使用するには、`install.packages("zoo",repos = "http://cran.us.r-project.org")` などのスクリプトでインストールしてください。
+    
+    > [!NOTE]
+    > X11 ライブラリが事前にインストールされていないため、"View" などの X11 ライブラリに依存する関数はサポートされていません。
+    
     作業を支援するために、 **[R Script]\(R スクリプト\)** テキスト ボックスにはサンプル コードが事前に入力されており、編集または置換することができます。
     
     ```R
@@ -131,7 +152,13 @@ azureml_main <- function(dataframe1, dataframe2){
     # The script MUST contain a function named azureml_main
     # which is the entry point for this module.
 
-    # The entry point function can contain up to two input arguments:
+    # Please note that functions dependant on X11 library
+    # such as "View" are not supported because X11 library
+    # is not pre-installed.
+    
+    # The entry point function MUST have two input arguments.
+    # If the input port is not connected, the corresponding
+    # dataframe argument will be null.
     #   Param<dataframe1>: a R DataFrame
     #   Param<dataframe2>: a R DataFrame
     azureml_main <- function(dataframe1, dataframe2){
@@ -148,8 +175,8 @@ azureml_main <- function(dataframe1, dataframe2){
 
  * スクリプトには、このモジュールのエントリ ポイントである `azureml_main` という名前の関数を含める必要があります。
 
- * エントリ ポイント関数には、最大 2 つの入力引数を含めることができます (`Param<dataframe1>` および `Param<dataframe2>`)。
- 
+ * `Param<dataframe1>` と `Param<dataframe2>` の 2 つの入力引数が関数で使用されていない場合でも、エントリ ポイント関数にはこの 2 つの引数が必要です。
+
    > [!NOTE]
     > **[R スクリプトの実行]** モジュールに渡されるデータは、`dataframe1` および `dataframe2` として参照されます。これは、Azure Machine Learning デザイナーとは異なります (デザイナーでは `dataset1`、`dataset2` として参照されます)。 スクリプトで入力データが正しく参照されていることを確認してください。  
  
@@ -195,7 +222,14 @@ R スクリプトで結果を出力する必要がある場合は、モジュー
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
-# The entry point function can contain up to two input arguments:
+
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){

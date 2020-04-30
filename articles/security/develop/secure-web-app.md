@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811244"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686805"
 ---
 # <a name="develop-a-secure-web-app"></a>セキュリティで保護された Web アプリを開発する
 
@@ -259,7 +259,7 @@ Azure CLI を使用して Azure Key Vault をデプロイするには、次の�
 Azure CLI を使用して Azure Database for PostgreSQL をデプロイするには、次の手順を実行します。
 
 1. Azure CLI を使用してターミナルを開き、Azure サブスクリプションのセットアップを開きます。
-2. データベースへのアクセスに使用する、セキュリティで保護されたユーザー名とパスワードの組み合わせを生成します (これらは、それらを使用するアプリの Azure Key Vault に格納する必要があります)。
+2. データベースへのアクセスに使用する、セキュリティで保護されたユーザー名とパスワードの組み合わせを生成します  (これらは、それらを使用するアプリの Azure Key Vault に格納する必要があります)。
 3. PostgreSQL サーバー インスタンスを作成します。
 4. 手順 3. で作成したサーバー インスタンスにデータベースを作成します。
 5. PostgreSQL インスタンスで PostgreSQL スクリプトを実行します。
@@ -803,7 +803,7 @@ Azure portal で、次のように、必要な資格情報が使用されるよ�
 キー コンテナーに Azure AD 構成とシークレットを追加すると、Azure OAuth 認証を使用してユーザーをアプリに認証できるようになります。
 アプリ コードでは、これは Azure Active Directory 認証ライブラリ (ADAL) によって処理されます。
 
-シークレットがキー コンテナーに格納され、アプリケーションがシークレットとデータベースにアクセスできるようになると、ゲートウェイのアプリケーション URL (https://GATEWAY_HASH.cloudapp.net) ) を介してアプリケーション サービスに到達できます。この URL はそのブレードから取得できます。
+シークレットがキー コンテナーに格納され、アプリケーションがシークレットとデータベースにアクセスできるようになると、ブレードから取得できるゲートウェイのアプリケーション URL (https:\//GATEWAY_HASH.cloudapp.net) を介してアプリケーション サービスに到達できます。
 
 Azure AD にサインインしたときに、"User is not registered in the directory you're trying to log into"\(ログインしようとしているディレクトリにユーザーが登録されていません\) というエラーが表示される場合は、ユーザーを追加する必要があります。 ユーザーを追加するには、Azure AD の **[ユーザー]** タブに移動し、ユーザーの詳細を入力して手動でユーザーを追加するか、 **[ゲストを招待する]** ブレードで電子メール アドレスを入力してゲスト ユーザーとして Azure AD にユーザーを招待します。
 
@@ -978,7 +978,7 @@ Python のリンティング ライブラリである PyFlakes は、次に示�
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>アプリの依存関係の脆弱性を発見して修正する
 
-アプリケーションの依存関係を検索して修正するには、[OWASP のDependency Check](https://www.owasp.org/index.php/OWASP_Dependency_Check) を使用します。
+アプリケーションの依存関係を検索して修正するには、[OWASP のDependency Check](https://owasp.org/www-project-dependency-check/) を使用します。
 
 Safety も、依存関係を確認する類似のアプリケーションです。 これは [GitHub](https://github.com/pyupio/safety) にあります。 Safety では、既知の脆弱性データベースに登録されている脆弱性が検出されます。
 

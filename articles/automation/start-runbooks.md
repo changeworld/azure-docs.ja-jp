@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 71dd83db02537ed12dc2e711127e32d90603af6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f2c0dda952959db3bffba6016f48b986016c19e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227523"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679467"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Automation で Runbook を開始する
 
@@ -30,47 +30,8 @@ ms.locfileid: "79227523"
 
 ![Runbook のアーキテクチャ](media/automation-starting-runbook/runbooks-architecture.png)
 
-## <a name="start-a-runbook-with-the-azure-portal"></a>Azure portal で Runbook を開始する
-
-1. Azure Portal で、 **[Automation]** を選択し、Automation アカウントの名前をクリックします。
-2. [ハブ] メニューで、 **[Runbook]** を選択します。
-3. **[Runbook]** ページで Runbook を選択し、 **[開始]** をクリックします。
-4. Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。 パラメーターについて詳しくは、「[Runbook のパラメーター](#runbook-parameters)」をご覧ください。
-5. **[ジョブ]** ページで、Runbook ジョブの状態を表示することができます。
-
-## <a name="start-a-runbook-with-powershell"></a>PowerShell で Runbook を開始する
-
-[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) を使用して、Windows PowerShell で Runbook を開始できます。 次のサンプル コードは、Test-Runbook という Runbook を開始します。
-
-```azurepowershell-interactive
-Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
-```
-
-Start-AzureRmAutomationRunbook は、Runbook の開始後にその状態を追跡するために使用できるジョブ オブジェクトを返します。 このジョブ オブジェクトは、[Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) で使用するとジョブの状態を確認でき、[Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) で使用すると出力を取得できます。 次のサンプル コードは、Test-Runbook という Runbook を開始し、完了するまで待機してからその出力を表示します。
-
-```azurepowershell-interactive
-$runbookName = "Test-Runbook"
-$ResourceGroup = "ResourceGroup01"
-$AutomationAcct = "MyAutomationAccount"
-
-$job = Start-AzureRmAutomationRunbook –AutomationAccountName $AutomationAcct -Name $runbookName -ResourceGroupName $ResourceGroup
-
-$doLoop = $true
-While ($doLoop) {
-   $job = Get-AzureRmAutomationJob –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup
-   $status = $job.Status
-   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
-}
-
-Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
-```
-
-Runbook にパラメーターが必要な場合は、[ハッシュテーブル](https://technet.microsoft.com/library/hh847780.aspx)として提供する必要があります。 ハッシュテーブルのキーはパラメーター名と一致する必要があり、値はパラメーターの値です。 次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。 パラメーターについて詳しくは、次の「[Runbook のパラメーター](#runbook-parameters)」をご覧ください。
-
-```azurepowershell-interactive
-$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
-```
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="runbook-parameters"></a>Runbook のパラメーター
 
@@ -151,11 +112,9 @@ Joe
 Smith
 ```
 
-### <a name="credentials"></a>[資格情報]
+### <a name="credentials"></a>資格情報
 
-パラメーターのデータ型が **PSCredential**の場合、Azure Automation の [資格情報資産](automation-credentials.md)の名前を指定できます。 Runbook は、指定した名前を持つ資格情報を取得します。
-
-credential というパラメーターを受け入れる次のテスト Runbook について考慮してください。
+パラメーターのデータ型が `PSCredential` の場合、Azure Automation の[資格情報資産](automation-credentials.md)の名前を指定できます。 Runbook は、指定した名前を持つ資格情報を取得します。 次のテスト Runbook は、`credential` というパラメーターを受け入れます。
 
 ```powershell
 Workflow Test-Parameters
@@ -167,20 +126,62 @@ Workflow Test-Parameters
 }
 ```
 
-*My Credential*という資格情報資産がある場合、user パラメーターで次のテキストを使用できます。
+`My Credential` という資格情報資産がある場合、次のテキストを user パラメーターに使用できます。
 
 ```input
 My Credential
 ```
 
-資格情報のユーザー名が *jsmith*であると仮定すると、次の出力が生成されます。
+資格情報のユーザー名が `jsmith` である場合、次の出力が表示されます。
 
 ```output
 jsmith
 ```
 
+## <a name="start-a-runbook-with-the-azure-portal"></a>Azure portal で Runbook を開始する
+
+1. Azure portal で、 **[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+2. [ハブ] メニューで、 **[Runbook]** を選択します。
+3. [Runbook] ページで Runbook を選択し、 **[開始]** をクリックします。
+4. Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。 パラメーターについて詳しくは、「[Runbook のパラメーター](#runbook-parameters)」をご覧ください。
+5. [ジョブ] ペインで、Runbook ジョブの状態を表示することができます。
+
+## <a name="start-a-runbook-with-powershell"></a>PowerShell で Runbook を開始する
+
+[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) を使用して、Windows PowerShell で Runbook を開始できます。 次のサンプル コードは、**Test-Runbook** という Runbook を開始します。
+
+```azurepowershell-interactive
+Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
+```
+
+`Start-AzAutomationRunbook` は、Runbook の開始後に状態を追跡するために使用できるジョブ オブジェクトを返します。 次に、このジョブ オブジェクトを [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) で使用してジョブの状態を判断し、[Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) で使用してその出力を取得できます。 次の例は、**Test-Runbook** という Runbook を開始し、完了するまで待ってからその出力を表示します。
+
+```azurepowershell-interactive
+$runbookName = "Test-Runbook"
+$ResourceGroup = "ResourceGroup01"
+$AutomationAcct = "MyAutomationAccount"
+
+$job = Start-AzAutomationRunbook –AutomationAccountName $AutomationAcct -Name $runbookName -ResourceGroupName $ResourceGroup
+
+$doLoop = $true
+While ($doLoop) {
+   $job = Get-AzAutomationJob –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup
+   $status = $job.Status
+   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
+}
+
+Get-AzAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
+```
+
+Runbook にパラメーターが必要な場合は、[ハッシュテーブル](https://technet.microsoft.com/library/hh847780.aspx)として提供する必要があります。 ハッシュテーブルのキーはパラメーター名と一致する必要があり、値はパラメーターの値です。 次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。 パラメーターについて詳しくは、「[Runbook のパラメーター](#runbook-parameters)」をご覧ください。
+
+```azurepowershell-interactive
+$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
+Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-* この記事の Runbook アーキテクチャは、Hybrid Runbook Worker で Azure とオンプレミスのリソースを管理する Runbook の概要を示しています。 自社のデータセンターで Automation Runbook を実行する方法については、 [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)に関する記事をご覧ください。
+* 自社のデータセンターで Automation Runbook を実行する方法については、 [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)に関する記事をご覧ください。
 * 他の Runbook で特定の関数または一般的な関数に使用されるモジュールの Runbook の作成方法については、 [子 Runbook](automation-child-runbooks.md)に関する記事をご覧ください。
 * PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。

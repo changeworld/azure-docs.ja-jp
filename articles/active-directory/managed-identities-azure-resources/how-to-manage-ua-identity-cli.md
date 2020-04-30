@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231811"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639758"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する
 
@@ -37,6 +37,12 @@ Azure リソースのマネージド ID は、Azure Active Directory で管理�
     - Azure ポータルから [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する (次のセクションを参照してください)。
     - 各コード ブロックの右上隅にある「試してみる」ボタンを利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
     - ローカル CLI コンソールを使用する場合は、[Azure CLI の最新バージョン (2.0.13 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 ユーザー割り当て ID をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用して、Azure に `az login` でサインインします。
+
+
+> [!NOTE]
+> CLI を使用してアプリのサービス プリンシパルを使用しているときにユーザーのアクセス許可を変更するには、サービス プリンシパルに Azure AD Graph API の追加のアクセス許可を提供する必要があります。これは、CLI の一部が Graph API に対して GET 要求を実行するからです。 そうしないと、"この操作を完了するのに十分な特権がありません" というメッセージが表示される可能性があります。 これを行うには、Azure Active Directory でアプリの登録に移動し、アプリを選択し、[API のアクセス許可] をクリックし、下へスクロールして Azure Active Directory Graph を選択する必要があります。 そこから、[アプリケーションのアクセス許可] を選択し、適切なアクセス許可を追加します。 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -60,7 +66,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
 ```
-json 応答内のユーザー割り当てマネージド ID には、キー `"Microsoft.ManagedIdentity/userAssignedIdentities"` に対して返された `type` の値が含まれます。
+json 応答内のユーザー割り当てマネージド ID には、キー `type` に対して返された `"Microsoft.ManagedIdentity/userAssignedIdentities"` の値が含まれます。
 
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 

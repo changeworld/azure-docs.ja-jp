@@ -1,17 +1,17 @@
 ---
-title: Azure Monitor REST API のチュートリアル
+title: Azure 監視 REST API のチュートリアル
 description: 要求を認証し、Azure Monitor REST API を使用して使用可能なメトリック定義およびメトリックの値を取得する方法を説明します。
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: f52776fc6b5f5f530cc368a2f148a2ff63fb5b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294616"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687413"
 ---
-# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Monitor REST API のチュートリアル
+# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -311,7 +311,7 @@ Invoke-RestMethod -Uri $request `
 
 **メソッド**: GET
 
-**要求 URI**: https://management.azure.com/subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames= *{metric}* &timespan= *{starttime/endtime}* &$filter= *{filter}* &interval= *{timeGrain}* &aggregation= *{aggreation}* &api-version= *{apiVersion}*
+**要求 URI**: https:\//management.azure.com/subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames= *{metric}* &timespan= *{starttime/endtime}* &$filter= *{filter}* &interval= *{timeGrain}* &aggregation= *{aggreation}* &api-version= *{apiVersion}*
 
 たとえば、5 分の範囲内の 'Transactions' の数を基準にして、GeotType が 'Primary' である上位 3 つの API を降順で取得する場合、要求は次のようになります。
 
@@ -463,7 +463,7 @@ Invoke-RestMethod -Uri $request `
 
 **メソッド**: GET
 
-**要求 URI**: `https://management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**要求 URI**: `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 たとえば、特定の時間範囲と 1 時間の時間グレインに対して RunsSucceeded メトリック データ ポイントを取得する場合、要求は次のようになります。
 
@@ -718,7 +718,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor の概要](../../azure-monitor/overview.md)に関するページを確認します。
+* [監視の概要](../../azure-monitor/overview.md)に関するページを確認します。
 * [Azure Monitor のサポートされるメトリック](metrics-supported.md)を表示します。
 * [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を確認します。
 * [Azure 管理ライブラリ](https://msdn.microsoft.com/library/azure/mt417623.aspx)を確認します。

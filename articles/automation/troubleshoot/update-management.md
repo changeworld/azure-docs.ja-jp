@@ -1,6 +1,6 @@
 ---
-title: Azure Update Management のエラーをトラブルシューティングする
-description: Azure の Update Management ソリューションに関する問題のトラブルシューティングと解決方法について説明します。
+title: Azure Automation の Update Management のトラブルシューティング
+description: Azure Automation の Update Management ソリューションに関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984625"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678867"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Update Management ソリューションに関する問題のトラブルシューティング
 
-この記事では、Update Management の使用時に発生する可能性がある問題について説明します。
+この記事では、Update Management ソリューションの使用時に発生する可能性がある問題について説明します。 根本的な問題を特定するためのハイブリッド Runbook Worker エージェント用のエージェント トラブルシューティング ツールがあります。 トラブルシューティング ツールの詳細については、「[Windows Update エージェントの問題をトラブルシューティングする](update-agent-issues.md)」と「[Linux Update エージェントに関する問題のトラブルシューティング](update-agent-issues-linux.md)」を参照してください。 他のオンボードの問題については、[ソリューションをオンボードする際のトラブルシューティング](onboarding.md)に関する記事を参照してください。
 
-根本的な問題を特定するためのハイブリッド worker エージェント用のエージェント トラブルシューティング ツールがあります。 このトラブルシューティング ツールの詳細については、[更新エージェントの問題のトラブルシューティング](update-agent-issues.md)に関する記事を参照してください。 その他のすべての問題については、次のトラブルシューティング ガイダンスを使用してください。
+>[!NOTE]
+>仮想マシン (VM) にソリューションをオンボードしているときに問題が発生した場合は、ローカル コンピューターの **[アプリケーションとサービス ログ]** にある **Operations Manager** のログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
 
-仮想マシン (VM) にソリューションをオンボードしているときに問題が発生した場合は、ローカル コンピューターの **[アプリケーションとサービス ログ]** にある **Operations Manager** のログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
-
-次のセクションでは、具体的なエラー メッセージと、考えられる個別の解決策を示します。 他のオンボードの問題については、[ソリューションをオンボードする際のトラブルシューティング](onboarding.md)に関する記事を参照してください。
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>シナリオ:"Failed to enable the Update solution" (Update ソリューションを有効にできませんでした) というエラーが表示される
 
@@ -299,7 +299,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * ソース コンピューター ID が異なるが、コンピューター名が重複するものがあります。 このシナリオは、異なる複数のリソース グループ内に、ある特定のコンピューター名を持つ VM が作成され、サブスクリプションの同じロジスティック エージェント ワークスペースにレポートしている場合に発生します。
 
-* オンボードしている VM イメージの複製元が、Microsoft Monitoring Agent (MMA) がインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
+* オンボードしている VM イメージの複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
 ### <a name="resolution"></a>解像度
 
@@ -351,17 +351,16 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 ### <a name="resolution"></a>解像度
 
-次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdate` パラメーターを指定して [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) コマンドレットを使用します。 次に、[AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
+次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) コマンドレットを使用します。 次に、[New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>シナリオ:原因不明の再起動
@@ -614,7 +613,7 @@ KB2267602 は [Windows Defender の定義更新](https://www.microsoft.com/wdsi/
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルで追加のサポートを受けてください。
+自分の問題が見つからない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
 
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。

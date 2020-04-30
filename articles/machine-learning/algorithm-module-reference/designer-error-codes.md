@@ -8,23 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/03/2019
-ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/16/2020
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364197"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684697"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
 
 この記事では、Machine Learning パイプラインのトラブルシューティングに役立つ Azure Machine Learning デザイナー (プレビュー) のエラー メッセージと例外コードについて説明します。
 
-デザイナーでエラー メッセージの完全なテキストを取得するには 2 つの方法があります。  
+デザイナーでエラー メッセージを確認するには、次の手順に従います。  
 
-- 右側のウィンドウの **[View Output Log]\(出力ログの表示\)** リンクをクリックして、一番下までスクロールします。 ウィンドウの最後の 2 行に、詳細なエラー メッセージが表示されます。  
-  
-- エラーのあるモジュールを選択し、赤い X をクリックします。関連するエラー テキストのみが表示されます。
+- 失敗したモジュールを選択し、 **[Outputs+logs]\(出力とログ\)** タブにアクセスすると、**azureml-logs** カテゴリの下の **70_driver_log.txt** ファイルに詳細なログがあります。
+
+- 詳細なモジュール エラーについては、**module_statistics** カテゴリの下にある error_info.json で確認できます。
+
+デザイナーにおけるモジュールのエラー コードを次に示します。
 
 ## <a name="error-0001"></a>エラー 0001  
  データ セットで指定した列のうち 1 つまたは複数が見つからない場合、例外が発生します。  
@@ -143,6 +145,7 @@ ms.locfileid: "80364197"
 |Parameter "{arg_name}" value should be less than or equal to parameter "{upper_boundary_parameter_name}" value. (パラメーター "{arg_name}" の値は、パラメーター "{upper_boundary_parameter_name}" の値以下とする必要があります。)|
 |Parameter "{arg_name}" has value "{actual_value}" which should be less than or equal to {upper_boundary}. (パラメーター "{arg_name}" には値 "{actual_value}" が含まれていますが、これは {upper_boundary} 以下とする必要があります。)|
 |Parameter "{arg_name}" value {actual_value} should be less than or equal to parameter "{upper_boundary_parameter_name}" value {upper_boundary}. (パラメーター "{arg_name}" の値 {actual_value} は、パラメーター "{upper_boundary_parameter_name}" の値 {upper_boundary} 以下とする必要があります。)|
+|Parameter "{arg_name}" value {actual_value} should be less than or equal to {upper_boundary_meaning} value {upper_boundary}. (パラメーター "{arg_name}" の値 {actual_value} は、"{upper_boundary_meaning}" の値 {upper_boundary} 以下とする必要があります。)|
 
 
 ## <a name="error-0008"></a>エラー 0008  
@@ -269,6 +272,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |Learner of invalid type is passed. (無効な種類の学習器が渡されました。)|
 |Learner "{arg_name}" has invalid type. (学習器 "{arg_name}" の種類が無効です。)|
 |Learner "{arg_name}" has invalid type "{learner_type}". (学習器 "{arg_name}" の種類 "{learner_type}" は無効です。)|
+|Learner of invalid type is passed. (無効な種類の学習器が渡されました。) Exception message: {exception_message} (例外メッセージ: {exception_message})|
 
 
 ## <a name="error-0014"></a>エラー 0014  
@@ -391,6 +395,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |Values in column are not sorted. (列の値が並べ替えられていません。)|
 |Values in column "{col_index}" are not sorted. (列 "{col_index}" の値が並べ替えられていません。)|
 |Values in column "{col_index}" of dataset "{dataset}" are not sorted. (データセット "{dataset}" の列 "{col_index}" の値が並べ替えられていません。)|
+|Values in argument "{arg_name}" are not sorted in "{sorting_order}" order. (引数 "{arg_name}" の値が "{sorting_order}" の順序で並べ替えられていません。)|
 
 
 ## <a name="error-0020"></a>エラー 0020  
@@ -631,6 +636,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |------------------------|
 |Argument must be finite. (引数は有限である必要があります。)|
 |"{arg_name}" is not finite. ("{arg_name}" が有限ではありません。)|
+|Column "{column_name}" contains infinite values. (列 "{column_name}" に無限の値が含まれています。)|
 
 
 ## <a name="error-0034"></a>エラー 0034  
@@ -1490,6 +1496,18 @@ Exception occurs when label column is missing or has insufficient number of labe
 |------------------------------------------------------------|
 |Given TransformationDirectory is invalid. (指定された TransformationDirectory は無効です。)|
 |TransformationDirectory "{arg_name}" is invalid. (TransformationDirectory "{arg_name}" は無効です。) Reason: {reason}. (理由: {reason}。) Please rerun training experiment which generates the Transform file. (変換ファイルを生成するトレーニング実験を再実行してください。) If training experiment was deleted, please recreate and save the Transform file. (トレーニング実験が削除された場合は、変換ファイルを再作成して保存してください。)|
+|TransformationDirectory "{arg_name}" is invalid. (TransformationDirectory "{arg_name}" は無効です。) Reason: {reason}. (理由: {reason}。) {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>エラー 0159
+ モジュール モデル ディレクトリに渡されたものが無効な場合に、例外が発生します。 
+
+|例外メッセージ|
+|------------------------------------------------------------|
+|Given ModelDirectory is invalid. (指定された ModelDirectory が無効です。)|
+|ModelDirectory "{arg_name}" is invalid. (ModelDirectory "{arg_name}" が無効です。)|
+|ModelDirectory "{arg_name}" is invalid. (ModelDirectory "{arg_name}" が無効です。) Reason: {reason}. (理由: {reason}。)|
+|ModelDirectory "{arg_name}" is invalid. (ModelDirectory "{arg_name}" が無効です。) Reason: {reason}. (理由: {reason}。) {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>エラー 1000  

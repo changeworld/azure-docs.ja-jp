@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/22/2018
-ms.openlocfilehash: 1943c16c678d0783b99a0f16c25fa72137defc8a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/16/2020
+ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415883"
+ms.locfileid: "81461110"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
 
@@ -49,13 +49,9 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。
 
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+2. **[新しいデータ ファクトリ]** ページで、次の項目の値を指定します。
 
-2. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。
-
-   ![[新しいデータ ファクトリ] ページ](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
-
-    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadSQLDWDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **Name**:名前に「*LoadSQLDWDemo*」を入力します。 データ ファクトリの名前はグローバルに一意にする必要があります。 "データ ファクトリ名 'LoadSQLDWDemo' は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
     * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
     * **バージョン**: **[V2]** を選択します。
@@ -64,7 +60,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 3. **［作成］** を選択します
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
 
-   ![データ ファクトリのホーム ページ](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
+   ![データ ファクトリのホーム ページ](./media/doc-common-process/data-factory-home-page.png)
 
    **[作成と監視]** タイルを選択して、別のタブでデータ統合アプリケーションを起動します。
 
@@ -72,50 +68,49 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 1. **[Get started]\(開始\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
 
-   ![データのコピー ツールのタイル](./media/load-azure-sql-data-warehouse/copy-data-tool-tile.png)
 1. **[プロパティ]** ページで、 **[タスク名]** フィールドに「**CopyFromSQLToSQLDW**」と指定し、 **[次へ]** を選択します。
 
     ![[プロパティ] ページ](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
 1. **[ソース データ ストア]** ページで、次の手順を実行します。
+    >[!TIP]
+    >ソース データ ストアの認証の種類として、このチュートリアルでは "*SQL 認証*" を使用しますが、サポートされている他の認証方法 ("*サービス プリンシパル*"、"*マネージド ID*") を必要に応じて選ぶこともできます。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)の対応するセクションを参照してください。
+    >さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
 
     a. **[+ 新しい接続の作成]** をクリックします。
-
-    ![[ソース データ ストア] ページ](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
 
     b. ギャラリーから **[Azure SQL Database]** を選択し、 **[続行]** を選択します。 検索ボックスに「SQL」と入力して、コネクタをフィルター処理できます。
 
     ![Azure SQL DB の選択](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ドロップダウン リストからご自身のサーバー名と DB を選択し、ユーザー名とパスワードを指定します。 **[テスト接続]** をクリックして設定を検証し、 **[完了]** を選択します。
+    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ドロップダウン リストからご自身のサーバー名と DB を選択し、ユーザー名とパスワードを指定します。 **[テスト接続]** をクリックして設定を検証し、 **[作成]** を選択します。
 
     ![Azure SQL DB の構成](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. 新しく作成したリンクされたサービスをソースとして選択し、 **[次へ]** をクリックします。
 
-    ![ソースのリンクされたサービスの選択](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
-
 1. **[Select tables from which to copy the data or use a custom query]\(データのコピー元またはカスタム クエリの使用元となるテーブルの選択\)** ページで、「**SalesLT**」と入力してテーブルをフィルター処理します。 **[(すべて選択)]** ボックスを選択してコピーにすべてのテーブルを使用し、 **[次へ]** を選択します。
 
     ![ソース テーブルの選択](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
+1. **[フィルターの適用]** ページで、設定を指定するか、 **[次へ]** を選択します。
+
 1. **[配布先データ ストア]** ページで、次の手順を実行します。
+    >[!TIP]
+    >配布先データ ストアの認証の種類として、このチュートリアルでは "*SQL 認証*" を使用しますが、サポートされている他の認証方法 ("*サービス プリンシパル*"、"*マネージド ID*") を必要に応じて選ぶこともできます。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#linked-service-properties)の対応するセクションを参照してください。
+    >さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
 
     a. **[+ 新しい接続の作成]** をクリックして、接続を追加します
 
-    ![シンク データ ストア ページ](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
-
-    b. ギャラリーから **[Azure SQL Data Warehouse]** を選択し、 **[次へ]** を選択します。
+    b. ギャラリーから **[Azure Synapse Analytics (旧称 SQL DW)]** を選択し、 **[続行]** を選択します。 検索ボックスに「SQL」と入力して、コネクタをフィルター処理できます。
 
     ![Azure SQL DW の選択](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ドロップダウン リストからご自身のサーバー名と DB を選択し、ユーザー名とパスワードを指定します。 **[テスト接続]** をクリックして設定を検証し、 **[完了]** を選択します。
+    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ドロップダウン リストからご自身のサーバー名と DB を選択し、ユーザー名とパスワードを指定します。 **[テスト接続]** をクリックして設定を検証し、 **[作成]** を選択します。
 
     ![Azure SQL DW の構成](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. 新しく作成したリンクされたサービスをシンクとして選択し、 **[次へ]** をクリックします。
-
-    ![シンクのリンクされたサービスの選択](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
 1. **[テーブル マッピング]** ページで、コンテンツを確認し、 **[次へ]** を選択します。 インテリジェント テーブル マッピングが表示されます。 ソース テーブルは、テーブル名に基づくコピー先テーブルにマップされます。 コピー先にソース テーブルが存在しない場合、Azure Data Factory によって同名のコピー先テーブルが既定で作成されます。 既存のコピー先テーブルにソース テーブルをマップすることもできます。
 
@@ -124,19 +119,15 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
    ![[テーブル マッピング] ページ](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-1. **[スキーマ マッピング]** ページで、コンテンツを確認し、 **[次へ]** を選択します。 インテリジェント テーブル マッピングは、列名に基づきます。 Data Factory でテーブルを自動的に作成する場合、ソースとコピー先のストア間に互換性がないとデータ型の変換が行われます。 コピー元とコピー先の列の間でサポートされていないデータ型変換がある場合、対応するテーブルの横にエラー メッセージが表示されます。
+1. **[列マッピング]** ページで、内容を確認し、 **[次へ]** を選択します。 インテリジェント テーブル マッピングは、列名に基づきます。 Data Factory でテーブルを自動的に作成する場合、ソースとコピー先のストア間に互換性がないとデータ型の変換が行われます。 コピー元とコピー先の列の間でサポートされていないデータ型変換がある場合、対応するテーブルの横にエラー メッセージが表示されます。
 
-    ![[スキーマ マッピング] ページ](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    ![[列マッピング] ページ](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
 1. **[設定]** ページで、次の手順を完了します。
 
-    a. **[Staging settings]\(ステージングの設定\)** セクションで、 **[+ 新規]** をクリックしてステージング ストレージを新規作成します。 このストレージは、PolyBase を使用して SQL Data Warehouse に読み込む前に、データをステージングするために使用されます。 コピーの完了後、Azure Storage 内の暫定データは自動的にクリーンアップされます。
+    a. **[Staging settings]\(ステージングの設定\)** セクションで、 **[+ 新規]** をクリックしてステージング ストレージを新規作成します。 このストレージは、PolyBase を使用して SQL Data Warehouse に読み込む前に、データをステージングするために使用されます。 コピーの完了後、Azure Blob Storage 内の暫定データは自動的にクリーンアップされます。
 
-    ![ステージングの構成](./media/load-azure-sql-data-warehouse/configure-staging.png)
-
-    b. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ストレージ アカウントを選択して、 **[完了]** を選択します。
-
-    ![Azure Storage の構成](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
+    b. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ストレージ アカウントを選択し、 **[作成]** を選択してリンクされたサービスをデプロイします。
 
     c. **[詳細設定]** セクションで **[Use type default]\(型の既定を使用する\)** オプションをオフにして、 **[次へ]** を選択します。
 
@@ -147,17 +138,17 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
     ![概要ページ](./media/load-azure-sql-data-warehouse/summary-page.png)
 1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
 
-    ![[Deployment]\(デプロイ\) ページ](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. 左側の **[監視]** タブが自動的に選択されたことがわかります。 **[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。
+1. 左側の **[監視]** タブが自動的に選択されたことがわかります。 パイプラインの実行が正常に完了したら、 **[パイプライン名]** 列の下の **[CopyFromSQLToSQLDW]** リンクを選択してアクティビティの実行の詳細を表示し、パイプラインを再実行します。
 
-    ![パイプラインの実行を監視する](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 パイプラインの実行ビューに戻るには、上部の **[パイプライン]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
+    [![パイプラインの実行を監視する](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+1. パイプラインの実行ビューに戻るには、上部の **[すべてのパイプラインの実行]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
     ![アクティビティの実行を監視する](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
-1. 各コピー アクティビティの実行状況の詳細を監視するには、アクティビティ監視ビューの **[アクション]** の下の **[詳細]** リンクを選択します。 ソースからシンクにコピーされるデータの量、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視することができます。
+1. 各コピー アクティビティの実行の詳細を監視するには、アクティビティの実行ビューの **[アクティビティ名]** の下の **[詳細]** リンク (眼鏡のアイコン) を選択します。 ソースからシンクにコピーされるデータの量、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視できます。
+    ![アクティビティの実行の詳細を監視](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
 
-    ![アクティビティの実行状況の詳細の監視](./media/load-azure-sql-data-warehouse/monitor-activity-run-details.png)
+    ![アクティビティの実行状況の詳細の監視](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

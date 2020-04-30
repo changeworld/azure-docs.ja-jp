@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f11c19ba33ee2fbae0fef265371bedad2fe29cb7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821735"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684950"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Database マネージド インスタンスを使用する
 
@@ -35,7 +35,7 @@ SQL Database マネージド インスタンスでは、その仮想ネットワ
 
 ## <a name="secure-data-in-motion"></a>移動中のデータをセキュリティで保護する
 
-クライアント ドライバーで暗号化をサポートする場合、マネージド インスタンスのデータ トラフィックは常に暗号化されます。 マネージド インスタンスとその他の Azure 仮想マシンまたは Azure サービスとの間で送信されるデータは、Azure のバックボーンから移動されることはありません。 マネージド インスタンスとオンプレミス ネットワーク間の接続がある場合は、Azure ExpressRoute と Microsoft ピアリングを使用することをお勧めします。 ExpressRoute を使用すると、パブリック インターネット経由でのデータの移動を防ぐことができます。 マネージド インスタンス プライベート接続の場合、プライベート ピアリングのみを使用できます。
+クライアント ドライバーで暗号化をサポートする場合、マネージド インスタンスのデータ トラフィックは常に暗号化されます。 マネージド インスタンスとその他の Azure 仮想マシンまたは Azure サービスとの間で送信されるデータは、Azure のバックボーンから移動されることはありません。 マネージド インスタンスとオンプレミス ネットワーク間の接続がある場合は、Azure ExpressRoute を使用することをお勧めします。 ExpressRoute を使用すると、パブリック インターネット経由でのデータの移動を防ぐことができます。 マネージド インスタンス プライベート接続の場合、プライベート ピアリングのみを使用できます。
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>インバウンド接続とアウトバウンド接続をロック ダウンする
 

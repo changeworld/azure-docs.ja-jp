@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475917"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685509"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>資格情報の管理に ID ブローカー (プレビュー) を使用する
 
@@ -38,13 +38,53 @@ ID ブローカーでは、パスワードを指定せずに Multi-Factor Authen
 
 ID ブローカーが有効になっている ESP クラスターを作成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ESP クラスターの基本的な作成手順に従います。 詳細については、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)」を参照してください。
 1. **[HDInsight ID ブローカーを有効にする]** を選択します。
 
 ID ブローカー機能によって、クラスターに追加の VM が 1 つ追加されます。 この VM は ID ブローカー ノードであり、認証をサポートするサーバー コンポーネントが含まれています。 ID ブローカー ノードは、Azure AD DS ドメインに参加しているドメインです。
 
 ![ID ブローカーを有効にするオプション](./media/identity-broker/identity-broker-enable.png)
+
+### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
+テンプレートのコンピューティング プロファイルに次の属性を含む `idbrokernode` という名前の新しいロールを追加すると、ID ブローカー ノードが有効になっているクラスターが作成されます。
+
+```json
+.
+.
+.
+"computeProfile": {
+    "roles": [
+        {
+            "autoscale": null,
+            "name": "headnode",
+           ....
+        },
+        {
+            "autoscale": null,
+            "name": "workernode",
+            ....
+        },
+        {
+            "autoscale": null,
+            "name": "idbrokernode",
+            "targetInstanceCount": 1,
+            "hardwareProfile": {
+                "vmSize": "Standard_A2_V2"
+            },
+            "virtualNetworkProfile": {
+                "id": "string",
+                "subnet": "string"
+            },
+            "scriptActions": [],
+            "dataDisksGroups": null
+        }
+    ]
+}
+.
+.
+.
+```
 
 ## <a name="tool-integration"></a>ツールの統合
 
@@ -55,6 +95,14 @@ HDInsight [IntelliJ プラグイン](https://docs.microsoft.com/azure/hdinsight/
 ID ブローカーを有効にした後も、ドメイン アカウントを使用する SSH シナリオ用に、Azure AD DS に格納されているパスワード ハッシュが必要になります。 ドメインに参加している VM に SSH 接続する場合、または `kinit` コマンドを実行する場合は、パスワードを入力する必要があります。 
 
 SSH 認証を使用するには、Azure AD DS でハッシュを使用できるようにする必要があります。 管理シナリオ用にのみ SSH を使用する場合は、クラウド専用アカウントを 1 つ作成し、それを使用してクラスターに SSH 接続することができます。 その他のユーザーは、Azure AD DS でパスワード ハッシュを使用できるようにしなくても、Ambari または HDInsight ツール (IntelliJ プラグインなど) を使用できます。
+
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>ID ブローカーのセットアップで OAuth を使用して HDInsight ゲートウェイに接続するクライアント
+
+ID ブローカーのセットアップでは、ゲートウェイに接続するカスタム アプリやクライアントを、必要な OAuth トークンを最初に取得するように更新できます。 この[ドキュメント](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)の手順に従って、次の情報を含むトークンを取得できます。
+
+*   OAuth リソース URI: https://hib.azurehdinsight.net 
+* アプリID: 7865c1d2-f040-46cc-875f-831a1ef6a28a
+*   アクセス許可: (名前: Cluster.ReadWrite、ID:8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>次のステップ
 

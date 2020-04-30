@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/02/2020
+ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163592"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687111"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -70,9 +70,9 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 
 ### <a name="audio-insights"></a>オーディオの分析情報
 
-* **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、簡体中国語、日本語、ロシア語、ポルトガル語 (ブラジル) などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
+* **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、アラビア語、ロシア語、ポルトガル語 (ブラジル)、ヒンディー語、韓国語などの言語がサポートされています。
+* **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、ロシア語、ポルトガル語 (ブラジル) などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
 * **複数言語の音声識別と文字起こし** (プレビュー):音声から異なるセグメントにある音声言語を自動的に識別します。 書き起こされるようにメディア ファイルの各セグメントを送信した後、文字起こしが 1 つの統合された文字起こしに結合されます。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
-* **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、簡体中国語、日本語、アラビア語、ロシア語、ポルトガル語 (ブラジル)、ヒンディー語、韓国語などの言語がサポートされています。
 * **字幕**:VTT、TML、SRT という 3 つの形式で字幕を作成します。
 * **2 チャネル処理**:個別のトランスクリプトを自動検出し、1 つのタイムラインに結合します。
 * **ノイズリダクション**:(Skype フィルターに基づいて) テレフォニー音声やノイズの多い録音を明瞭にします。
@@ -94,7 +94,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * **成果物**:各モデルについて、"次のレベルの詳細情報" 成果物の豊富なセットを抽出します。
 * **センチメント分析**:音声と視覚テキストから、ポジティブ、ネガティブ、ニュートラルのセンチメントを識別します。
 
-## <a name="how-can-i-get-started-with-video-indexer"></a>Video Indexer を使い始めるにはどうすればよいですか?
+## <a name="how-can-i-get-started-with-video-indexer"></a>Video Indexer を使い始めるにはどうすればよいですか? 
 
 Video Indexer の機能には、次の 3 つの方法でアクセスできます。
 

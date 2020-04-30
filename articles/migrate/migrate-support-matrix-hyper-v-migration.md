@@ -2,13 +2,13 @@
 title: Azure Migrate での Hyper-V の移行のサポート
 description: Azure Migrate を使用した Hyper-V の移行のサポートについて説明します。
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 8ec0b72cac75518ac938faa202b28d055409e8dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225423"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538190"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -23,18 +23,44 @@ ms.locfileid: "79225423"
 
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
-| **デプロイ**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 <br/>Azure Migrate レプリケーション ソフトウェア (Hyper-V レプリケーション プロバイダー) を Hyper-V ホストにインストールする必要があります。|
+| **デプロイ**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 <br/>Azure Migrate レプリケーション ソフトウェア (Hyper-V レプリケーション プロバイダー) は Hyper-V ホストにインストールします。|
 | **アクセス許可**           | Hyper-V ホストに対する管理者のアクセス許可が必要です。 |
 | **ホスト オペレーティング システム** | Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2。 |
-| **URL アクセス** | Hyper-V ホストのレプリケーション プロバイダー ソフトウェアは、次の URL にアクセスできる必要があります。<br/><br/> - login.microsoftonline.com:Active Directory を使用したアクセス制御と ID 管理。<br/><br/> - *.backup.windowsazure.com:レプリケーション データの転送と調整。 サービス URL を移行します。<br/><br/> - *.blob.core.windows.net:ストレージ アカウントにデータをアップロードします。<br/><br/> - dc.services.visualstudio.com:内部監視に使用するアプリ ログをアップロードします。<br/><br/> - time.windows.com:システム時刻とグローバル時刻間の時刻同期を確認します。
 | **ポート アクセス** |  VM レプリケーション データを送信するための HTTPS ポート 443 での送信接続。
+
+### <a name="url-access-public-cloud"></a>URL アクセス (パブリック クラウド)
+
+Hyper-V ホストのレプリケーション プロバイダー ソフトウェアは、次の URL にアクセスできる必要があります。
+
+**URL** | **詳細**
+--- | ---
+login.microsoftonline.com | Active Directory を使用したアクセス制御と ID 管理。
+backup.windowsazure.com | レプリケーション データの転送と調整。
+*.hypervrecoverymanager.windowsazure.com | 移行に使用されます。
+*.blob.core.windows.net | ストレージ アカウントにデータをアップロードします。 
+dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
+time.windows.com | システム時刻とグローバル時刻間の時刻同期を確認します。
+
+### <a name="url-access-azure-government"></a>URL アクセス (Azure Government)
+
+Hyper-V ホストのレプリケーション プロバイダー ソフトウェアは、次の URL にアクセスできる必要があります。
+
+**URL** | **詳細**
+--- | ---
+login.microsoftonline.us | Active Directory を使用したアクセス制御と ID 管理。
+backup.windowsazure.us | レプリケーション データの転送と調整。
+*.hypervrecoverymanager.windowsazure.us | 移行に使用されます。
+*.blob.core.usgovcloudapi.net | ストレージ アカウントにデータをアップロードします。
+dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
+time.nist.gov | システム時刻とグローバル時刻間の時刻同期を確認します。
+
 
 ## <a name="hyper-v-vms"></a>Hyper-V VM
 
 | **サポート**                  | **詳細**               
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
-| **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 移行の前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。 |
+| **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 移行の前に手動で調整してください。 関連する記事には、その手順が記載されています。 |
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。
   |

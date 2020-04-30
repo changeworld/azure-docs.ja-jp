@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71199998"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686938"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスをビルドしてデプロイする
 
@@ -90,7 +90,7 @@ Web アプリ バイナリのみを再デプロイすることもできます。
 
 その方法は次のとおりです。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. サービスがデプロイされたリソース グループに移動します。
 3. **[リソース グループの削除]** を選択し、確認します。
 4. しばらくすると、デプロイされたすべてのサービス コンポーネントが削除されます。
@@ -107,7 +107,7 @@ Web アプリ バイナリのみを再デプロイすることもできます。
 
 ### <a name="website-name-already-in-use"></a>既に使用されている Web サイト名
 
-Web サイトの名前が既に使用されている可能性があります。 別のリソース グループ名を使用する必要があります。 デプロイ スクリプトで使用されているホスト名は、 https://resourcegroupname.azurewebsites.net と https://resourgroupname-service.azurewebsites.net とです。
+Web サイトの名前が既に使用されている可能性があります。 別のリソース グループ名を使用する必要があります。 デプロイ スクリプトで使用されているホスト名は https:\//resourcegroupname.azurewebsites.net と https:\//resourgroupname-service.azurewebsites.net です。
 他のサービス名は、短い名前ハッシュの組み合わせによって作成され、他のサービスと競合する可能性は低くなります。
 
 ### <a name="azure-ad-registration"></a>Azure AD の登録 

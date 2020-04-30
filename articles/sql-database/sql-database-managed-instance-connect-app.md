@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823393"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538088"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにアプリケーションを接続する
 
@@ -132,6 +132,8 @@ Azure App Service をマネージド インスタンスに接続する場合の�
    ```
 
 - VNet ピアリングを使用している場合、[ゲートウェイ転送を許可し、リモート ゲートウェイを使用する方法](#connect-from-on-premises-with-vnet-peering)に関する説明の設定手順に必ず従ってください。
+
+- VNet ピアリングを使用して Azure App Service ホスト アプリケーションに接続し、マネージド インスタンス VNet にパブリック IP アドレス範囲がある場合は、ホストされるアプリケーションの設定で送信トラフィックをパブリック IP ネットワークにルーティングできるようにしてください。 「[リージョン VNet 統合](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)」の手順に従います。
 
 ## <a name="required-versions-of-drivers-and-tools"></a>ドライバーとツールの必要なバージョン
 

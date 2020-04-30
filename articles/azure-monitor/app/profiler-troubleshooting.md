@@ -6,19 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671564"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640960"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
 ## <a name="active-issues"></a>アクティブな懸案事項
 
-* ASP.NET Core 3.x アプリケーションのプロファイリングは、まだサポートされていません。
-  * Profiler をオンにする必要がある場合は、回避策として [ASP.NET Core 用の Application Insights Profiler](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) を使用することができます。 プロファイラーには Linux 用のラベルが付けられますが、Windows 上の .NET Core 3.0 以降のアプリケーションでも動作します。 詳細については、「[サポートされているバージョン](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)」を参照してください。
+* 現在は、Azure App Service で ASP.NET Core 3.x アプリケーションのプロファイリングがサポートされています。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>一般的なトラブルシューティング
 

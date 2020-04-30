@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75911907"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688092"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 
@@ -48,7 +48,7 @@ ms.locfileid: "75911907"
 * 有効な Azure サブスクリプション
 * サブスクリプションの Azure IoT Hub。
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または [Visual Studio Code でこのリンクを開きます](vscode:extension/vsciot-vscode.azure-iot-tools)。
+* [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。または URL (`vscode:extension/vsciot-vscode.azure-iot-tools`) をコピーして、ブラウザー ウィンドウに貼り付けてください。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 

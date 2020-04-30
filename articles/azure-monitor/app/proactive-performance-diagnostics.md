@@ -4,12 +4,12 @@ description: Application Insights は、アプリのテレメトリの高度な�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671734"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687691"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -39,9 +39,9 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
 ![サーバー応答時間の低下の検出例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
-1. **トリアージ**: 通知は、影響を受けるユーザーまたは操作の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
-2. **スコープ**: 問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
-3. **診断**: 多くの場合、通知内の診断情報は問題の性質を示します。 たとえば、要求率が高い場合に応答時間が遅くなると、サーバーまたは依存関係が過負荷状態であることを示します。 
+1. **トリアージ**:  通知は、影響を受けるユーザーまたは操作の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
+2. **スコープ**:  問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
+3. **診断**:  多くの場合、通知内の診断情報は問題の性質を示します。 たとえば、要求率が高い場合に応答時間が遅くなると、サーバーまたは依存関係が過負荷状態であることを示します。 
 
     それ以外の場合は、Application Insights の [パフォーマンス] ブレードを開きます。 このブレードには[プロファイラー](profiler.md) データが表示されます。 例外がスローされた場合は、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)を試すこともできます。
 
@@ -71,7 +71,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
   * 現時点ではできません。ただし、次のことができます。
     * メトリックがしきい値を超えたときに通知する[アラートを設定](../../azure-monitor/app/alerts.md)する。
-    * 自分で分析できるように、[データベース](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)または [PowerBI](../../azure-monitor/app/export-power-bi.md ) に[テレメトリをエクスポート](../../azure-monitor/app/export-telemetry.md)する。
+    * 自分で分析できるように、[データベース](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)または [Power BI](../../azure-monitor/app/export-power-bi.md ) に[テレメトリをエクスポート](../../azure-monitor/app/export-telemetry.md)する。
 * *どのくらいの頻度で分析は実行されますか。*
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。

@@ -8,24 +8,24 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 69031550bdab1535213c78f81426fa76e8ea62ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7639499aaef8d479c2552849b2124e709c46fd36
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773646"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680747"
 ---
-# <a name="create-or-modify-a-direct-peering-using-powershell"></a>PowerShell を使用して Direct ピアリングを作成または変更する
+# <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>PowerShell を使用して Direct ピアリングを作成または変更する
 
-この記事では、PowerShell コマンドレットと Resource Manager デプロイ モデルを使用して、Microsoft Direct ピアリングを作成する方法について説明します。 この記事では、リソースの状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事では、PowerShell コマンドレットと Azure Resource Manager デプロイ モデルを使用して、Microsoft Direct ピアリングを作成する方法について説明します。 またこの記事では、リソースの状態確認、更新、削除およびプロビジョニング解除の方法も紹介します。
 
-必要に応じて、[ポータル](howto-direct-portal.md)を使用してこのガイドを完了することもできます。
+必要に応じて、Azure [portal](howto-direct-portal.md) を使用してこのガイドを完了することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
-* 構成を開始する前に、[前提条件](prerequisites.md)に関する記事と「[Direct ピアリングのチュートリアル](walkthrough-direct-all.md)」を確認してください。
-* Microsoft との Direct ピアリングが既にあり、Azure リソースに変換されていない場合は、「[ポータルを使用してレガシの Direct ピアリングを Azure リソースに変換する](howto-legacy-direct-powershell.md)」を参照してください
+* 構成を開始する前に、[前提条件](prerequisites.md)と [Direct ピアリングのチュートリアル](walkthrough-direct-all.md)を確認します。
+* Microsoft との Direct ピアリング接続が既にあり、Azure リソースに変換されていない場合は、「[PowerShell を使用してレガシの Direct ピアリングを Azure リソースに変換する](howto-legacy-direct-powershell.md)」を参照してください。
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
+### <a name="work-with-azure-powershell"></a>Azure PowerShell を使用する
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
 ## <a name="create-and-provision-a-direct-peering"></a>Direct ピアリングを作成およびプロビジョニングする
@@ -50,8 +50,8 @@ ms.locfileid: "75773646"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [PowerShell を使用して Exchange ピアリングを作成または変更します](howto-exchange-powershell.md)。
-* [PowerShell を使用してレガシの Exchange ピアリングを Azure リソースに変換します](howto-legacy-exchange-powershell.md)。
+* [PowerShell を使用して Exchange ピアリングを作成または変更する](howto-exchange-powershell.md)
+* [PowerShell を使用してレガシの Exchange ピアリングを Azure リソースに変換する](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 次のコマンドを実行することで、すべてのパラメーターの詳細な説明を取得できます。

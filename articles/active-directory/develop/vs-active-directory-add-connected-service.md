@@ -10,16 +10,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: b3d068a8100cf78ccffac6d537fe71942239f383
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886162"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535827"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
-Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリケーションまたは Web API サービスの Active Directory Authentication のためのシングル サインオン (SSO) をサポートできます。 Azure AD Authentication を使用すると、ユーザーは Azure Active Directory のアカウントを使用して Web アプリケーションに接続できます。 Web API で Azure AD 認証を利用する利点には、Web アプリケーションから API を公開するときにデータのセキュリティが強化されることが含まれます。 Azure AD では、独自のアカウントとユーザー管理で別個の認証システムを管理する必要がありません。
+Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリケーションまたは Web API サービスの Active Directory Authentication のためのシングル サインオン (SSO) をサポートできます。 Azure AD Authentication を使用すると、ユーザーは Azure Active Directory のアカウントを使用して Web アプリケーションに接続できます。 Web API で Azure AD Authentication を使用する利点として、Web アプリケーションから API を公開するときにデータのセキュリティが強化されることなどが挙げられます。 Azure AD では、独自のアカウントとユーザー管理で別個の認証システムを管理する必要がありません。
 
 この記事と関連記事では、Active Directory に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Visual Studio 2015 以降で利用できます。
 

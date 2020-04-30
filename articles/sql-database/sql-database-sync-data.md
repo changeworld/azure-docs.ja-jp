@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8708c458e1064e4b9ea7dc67f1a4d4fbce1547b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74422529"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481963"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
@@ -134,6 +134,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - Azure Active Directory 認証はサポートされていません。
 - 名前が同じでスキーマが異なるテーブル (たとえば、dbo.customers や sales.customers など) はサポートされていません。
 - ユーザー定義データ型の列はサポートされていません
+- 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 

@@ -7,17 +7,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: b06000d6b3cd7a429b7ad0fc9c453595f21bd893
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/17/2020
+ms.openlocfilehash: 18099e853aa44e4434a14d7ea913f968593021ec
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418475"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687907"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 データ フローの作成とデバッグが完了したら、データ フローをスケジュールし、そのスケジュールに基づいて、パイプラインのコンテキスト内でデータ フローを実行する必要があります。 Azure Data Factory からパイプラインをスケジュールするときは、トリガーを使用します。 Azure Data Factory のパイプライン ビルダーから [Trigger Now]\(今すぐトリガー\) オプションを使用して単体実行を行い、パイプラインのコンテキスト内でデータ フローをテストすることもできます。
 
@@ -32,6 +32,10 @@ ms.locfileid: "81418475"
 グラフィカルなノード監視ビューを開いているときは、表示専用のシンプルなバージョンのデータ フロー グラフが表示されます。
 
 ![データ フローの監視](media/data-flow/mon003.png "データ フローの監視")
+
+次のビデオでは、ADF の監視画面からデータ フローのパフォーマンスを監視するようすを簡単に紹介しています。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4u4mH]
 
 ## <a name="view-data-flow-execution-plans"></a>データ フローの実行プランの表示
 

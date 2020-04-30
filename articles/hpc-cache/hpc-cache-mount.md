@@ -4,14 +4,14 @@ description: Azure HPC Cache サービスにクライアントを接続する方
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: f176e30cfaf9a52e4f58091b7fc76098a4c88a48
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657347"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458381"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
 
@@ -45,51 +45,65 @@ NFS の mount コマンドをサポートするために適切な Linux ユー�
 
 ### <a name="create-a-local-path"></a>ローカル パスを作成する
 
-各クライアントに、キャッシュに接続するためのローカル ディレクトリ パスを作成します。 マウントする各ストレージ ターゲットのパスを作成します。
+各クライアントに、キャッシュに接続するためのローカル ディレクトリ パスを作成します。 マウントする名前空間のパスごとにパスを作成します。
 
 例: `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
+Azure portal の [[マウントに関する指示]](#use-the-mount-instructions-utility) ページに、コピーできるプロトタイプ コマンドがあります。
+
+クライアント マシンをキャッシュに接続するときに、このパスを、ストレージ ターゲット エクスポートを表す仮想名前空間のパスに関連付けます。 クライアントが使用する仮想名前空間のパスごとに、ディレクトリを作成します。
+
 ## <a name="use-the-mount-instructions-utility"></a>マウント手順ユーティリティを使用する
 
-Azure portal の [キャッシュ] ビューの **[構成]** セクションから、 **[Mount instructions]\(マウント手順\)** ページを開きます。
+Azure portal の **[マウントに関する指示]** ページを使用して、コピー可能な mount コマンドを作成できます。 このページは、ポータルのキャッシュ ビューの **[構成]** セクションから開きます。
+
+クライアントでコマンドを使用する前に、クライアントが前提条件を満たしており、前述の「[クライアントを準備する](#prepare-clients)」で説明したように、NFS `mount` コマンドを使用するために必要なソフトウェアがあることを確認してください。
 
 ![[構成] > [Mount instructions]\(マウント手順\) ページが読み込まれている、ポータルの Azure HPC Cache インスタンスのスクリーンショット](media/mount-instructions.png)
 
-mount コマンドのページには、クライアントのマウント プロセスと前提条件に関する情報、およびコピー可能な mount コマンドの作成に使用できるフィールドが含まれています。
+mount コマンドを作成するには、次の手順に従います。
 
-このページを使用するには、次の手順に従います。
+1. **[クライアント パス]** フィールドをカスタマイズします。 このフィールドは、クライアントでローカル パスを作成するために使用できるコマンドの例を示します。 クライアントは、このディレクトリで Azure HPC Cache からローカルにコンテンツにアクセスします。
 
-<!--1.  In step one of **Mounting your file system**, enter the path that the client will use to access the Azure HPC Cache storage target.
+   フィールドをクリックし、コマンドを編集して目的のディレクトリ名を含めます。 その名前は、`sudo mkdir -p` の後の文字列の末尾に配置します
 
-   * This path is local to the client.
-   * After you provide the directory name, the field populates with a command you can copy. Use this command on the client directly or in a setup script to create the directory path on the client VM. -->
+   ![カーソルが末尾に置かれた [クライアント パス] フィールドのスクリーンショット](media/mount-edit-client.png)
 
-1. クライアントの前提条件を確認し、前述の「[クライアントを準備する](#prepare-clients)」の説明に従って、NFS の `mount` コマンドを使用するために必要なユーティリティをインストールします。
+   フィールドの編集が完了すると、ページの下部にある mount コマンドが新しいクライアント パスで更新されます。
 
-1. **[ファイル システムのマウント]**<!-- label will change --> の手順 1 には、クライアントにローカル パスを作成するためのコマンド例が示されます。 これは、クライアントが Azure HPC Cache の内容にアクセスするために使用するパスです。
+1. 一覧から**キャッシュのマウント アドレス**を選択します。 このメニューには、キャッシュの[クライアント マウント ポイント](#find-mount-command-components)がすべて一覧表示されます。
 
-   必要に応じてコマンド内で変更できるように、パス名をメモしておきます。
+   キャッシュのパフォーマンスを向上させるために、使用可能なすべてのマウント アドレスでクライアントの負荷を分散させます。
 
-1. 手順 2 では、使用可能な IP アドレスのいずれかを選択します。 キャッシュのすべての[クライアント マウント ポイント](#find-mount-command-components)がここに一覧表示されます。 すべての IP アドレス間で負荷を分散するためのシステムがあることを確認します。
+   ![[キャッシュのマウント アドレス] フィールドのスクリーンショット (選択できる 3 つの IP アドレスがセレクターに表示されている)](media/mount-select-ip.png)
 
-1. 手順 3 のフィールドには、プロトタイプの mount コマンドが自動的に入力されます。 フィールドの右側にあるコピー記号をクリックすると、自動的にクリップボードにコピーされます。
+1. クライアントに使用する**仮想名前空間のパス**を選択します。 これらのパスは、バックエンド ストレージ システム上のエクスポートにリンクします。
 
-   > [!NOTE]
-   > 使用する前に、コピー コマンドを確認してください。 場合によっては、クライアントのマウント パスとストレージ ターゲットの仮想名前空間のパスをカスタマイズする必要があります。それらは、このインターフェイスではまだ選択できません。 また、下の[推奨されるオプション](#mount-command-options)を反映するように mount コマンドのオプションを更新する必要もあります。 詳細については、「[mount コマンドの構文について](#understand-mount-command-syntax)」をお読みください。
+   ![セレクターが開いた状態の名前空間パス フィールドのスクリーンショット](media/mount-select-target.png)
 
-1. コピーした mount コマンド (必要に応じて編集) をクライアント マシンで使用して、Azure HPC Cache のストレージ ターゲットに接続します。 コマンドをクライアントのコマンド ラインから直接発行することも、クライアントのセットアップ スクリプトまたはテンプレートに mount コマンドを含めることもできます。
+   仮想名前空間のパスは、[ストレージ ターゲット] ポータル ページで表示および変更できます。 方法については、「[ストレージ ターゲットを追加する](hpc-cache-add-storage.md)」を参照してください。
+
+   Azure HPC Cache の集約された名前空間の機能の詳細については、「[集約された名前空間を計画する](hpc-cache-namespace.md)」を参照してください。
+
+1. 手順 3 の **[Mount command]\(mount コマンド\)** フィールドには、前のフィールドで設定したマウント アドレス、仮想名前空間のパス、クライアント パスを使用する、カスタマイズされた mount コマンドが自動的に入力されます。
+
+   フィールドの右側にあるコピー記号をクリックすると、自動的にクリップボードにコピーされます。
+
+   ![セレクターが開いた状態の名前空間パス フィールドのスクリーンショット](media/mount-command-copy.png)
+
+1. コピーした mount コマンドをクライアント マシンで使用して、それを Azure HPC Cache に接続します。 コマンドをクライアントのコマンド ラインから直接発行することも、クライアントのセットアップ スクリプトまたはテンプレートに mount コマンドを含めることもできます。
 
 ## <a name="understand-mount-command-syntax"></a>mount コマンドの構文について
 
 mount コマンドの形式は次のとおりです。
 
-> sudo mount *cache_mount_address*:/*namespace_path* *local_path* {*options*}
+> sudo mount {*options*} *cache_mount_address*:/*namespace_path* *local_path*
 
 例:
 
 ```bash
 root@test-client:/tmp# mkdir hpccache
-root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -o hard,proto=tcp,mountproto=tcp,retry=30
+root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0.0.28:/blob-demo-0722 hpccache
 root@test-client:/tmp#
 ```
 
@@ -110,16 +124,16 @@ root@test-client:/tmp#
 
 ### <a name="find-mount-command-components"></a>mount コマンドのコンポーネントを見つける
 
-**[Mount instructions]\(マウント手順\)** ページを使用せずに mount コマンドを作成する場合は、キャッシュの **[概要]** ページと **[ストレージ ターゲット]** ページの仮想名前空間パスで、マウント アドレスを確認できます。
+**[マウントに関する指示]** ページを使用せずに mount コマンドを作成する場合は、キャッシュの **[概要]** ページではマウント アドレス、 **[ストレージ ターゲット]** ページでは仮想名前空間のパスを確認できます。
 
 ![Azure HPC Cache インスタンスの概要ページのスクリーンショット (右下に一連のマウント アドレスが枠囲みで強調表示されている)](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
 > キャッシュのマウント アドレスは、キャッシュのサブネット内のネットワーク インターフェイスに対応します。 リソース グループでは、これらの NIC が、末尾に `-cluster-nic-` と数字が付いた名前で表示されます。 これらのインターフェイスは変更したり削除したりしないでください。キャッシュが利用できなくなります。
 
-仮想名前空間パスは、 **[ストレージ ターゲット]** ページに表示されます。 個々のストレージ ターゲット名をクリックすると、それに関連付けられている集約された名前空間パスなどの詳細が表示されます。
+仮想名前空間のパスは、各ストレージ ターゲットの詳細ページに表示されます。 個々のストレージ ターゲット名をクリックすると、それに関連付けられている集約された名前空間パスなどの詳細が表示されます。
 
-![キャッシュのストレージ ターゲット パネルのスクリーンショット (テーブルの [パス] 列のエントリが枠囲みで強調表示されている)](media/hpc-cache-view-namespace-paths.png)
+![ストレージ ターゲットの詳細ページ (ヘッダー [ストレージ ターゲットの更新]) のスクリーンショット。 テーブルの [仮想名前空間のパス] 列のエントリが枠で囲まれて強調表示されています](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>次のステップ
 

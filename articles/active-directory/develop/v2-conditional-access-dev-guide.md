@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e8c890a6daf2411b09162ab0072aed594820b936
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886349"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535895"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -38,7 +38,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 > この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
 > [Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
 
-## <a name="how-does-conditional-access-impact-an-app"></a>条件付きアクセスはどのようにアプリに影響を与えますか?
+## <a name="how-does-conditional-access-impact-an-app"></a>条件付きアクセスはどのようにアプリに影響を与えますか? 
 
 ### <a name="app-types-impacted"></a>アプリの種類が影響を受ける
 
@@ -59,12 +59,12 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 
 シナリオによっては、条件付きアクセスを処理するためにコードの変更が必要なものと、不要なものがあります。 その違いに分析情報を提供する、条件付きアクセスを使用して多要素認証を行うシナリオを少し次に示します。
 
-* シングル テナントの iOS アプリをビルドして、条件付きアクセス ポリシーを適用するとします。 アプリがユーザーのサインインを処理し、API へのアクセスは要求されません。 ユーザーがサインインすると、ポリシーが自動的に呼び出され、ユーザーは、多要素認証 (MFA) を実行する必要があります。 
+* シングル テナントの iOS アプリをビルドして、条件付きアクセス ポリシーを適用するとします。 アプリがユーザーのサインインを処理し、API へのアクセスは要求されません。 ユーザーがサインインすると、ポリシーが自動的に呼び出され、ユーザーは、多要素認証 (MFA) を実行する必要があります。
 * 中間層サービスを使用して、ダウンストリーム API にアクセスするネイティブ アプリを作成するとします。 このアプリを使用する会社のお客様は、ダウンストリーム API にポリシーを適用します。 エンドユーザーがサインインすると、ネイティブ アプリケーションは中間層へのアクセスを要求し、トークンを送信します。 中間層では On-Behalf-Of フローが実行され、ダウンストリーム API へのアクセスが要求されます。 この時点では、"チャレンジ" 要求は、中間層に提示されます。 中間層では、条件付きアクセス ポリシーに準拠する必要があるネイティブのアプリにチャレンジを送信します。
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-Microsoft Graph では、条件付きアクセスの環境でアプリを構築する場合に、特別な考慮事項があります。 通常、条件付きアクセスのメカニズムは同様に動作しますが、ユーザーに表示されるポリシーは、アプリがグラフから要求している基本データに基づくものとなります。 
+Microsoft Graph では、条件付きアクセスの環境でアプリを構築する場合に、特別な考慮事項があります。 通常、条件付きアクセスのメカニズムは同様に動作しますが、ユーザーに表示されるポリシーは、アプリがグラフから要求している基本データに基づくものとなります。
 
 具体的に言うと、Microsoft Graph のスコープはすべて、ポリシーを個別に適用できる、いくつかのデータセットを表します。 条件付きアクセスのポリシーには特定のデータセットが割り当てられるため、Azure AD では、Graph 自体ではなく、Graph の背後にあるデータに基づいた条件付きアクセス ポリシーが適用されます。
 
@@ -74,13 +74,13 @@ Microsoft Graph では、条件付きアクセスの環境でアプリを構築�
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-この場合アプリでは、ユーザーが Bookings と Exchange で設定されたすべてのポリシーを満たすことを想定できます。 一部のスコープは、複数のデータセットにマップされる場合があります (アクセスを許可する場合)。 
+この場合アプリでは、ユーザーが Bookings と Exchange で設定されたすべてのポリシーを満たすことを想定できます。 一部のスコープは、複数のデータセットにマップされる場合があります (アクセスを許可する場合)。
 
 ### <a name="complying-with-a-conditional-access-policy"></a>条件付きアクセス ポリシーへの準拠
 
 いくつかの異なるアプリ トポロジでは、セッションが確立されたときに、条件付きアクセス ポリシーが評価されます。 条件付きアクセス ポリシーは、アプリやサービスの粒度に従って動作するため、実行しようとしているシナリオによって呼び出されるポイントが大きく異なります。
 
-アプリが条件付きアクセス ポリシーを使用してサービスにアクセスしようとすると、条件付きアクセスのチャレンジが発生する可能性があります。 このチャレンジは、Azure AD からの応答に含まれる `claims` パラメーターにエンコードされています。 このチャレンジ パラメーターの例を次に示します。 
+アプリが条件付きアクセス ポリシーを使用してサービスにアクセスしようとすると、条件付きアクセスのチャレンジが発生する可能性があります。 このチャレンジは、Azure AD からの応答に含まれる `claims` パラメーターにエンコードされています。 このチャレンジ パラメーターの例を次に示します。
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -106,7 +106,7 @@ Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.micros
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ:On-Behalf-Of フローを実行するアプリ
 
-このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 呼び出されたサービスは、On-Behalf-Of フローでダウンストリーム サービスを呼び出します。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリではなく、ネイティブ アプリを使用しています。 
+このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 呼び出されたサービスは、On-Behalf-Of フローでダウンストリーム サービスを呼び出します。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリではなく、ネイティブ アプリを使用しています。
 
 ![On-Behalf-Of フローを実行するアプリのフロー ダイアグラム](./media/v2-conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 

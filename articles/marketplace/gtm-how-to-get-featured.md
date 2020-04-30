@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - マーケットプレースでおすすめになる方法 | Azure
+title: Go-To-Market Services - マーケットプレースでおすすめになる方法 | Azure Marketplace
 description: Go-To-Market Services - このセクションでは、Azure Marketplace のおすすめリストに掲載される方法を説明します
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286287"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684618"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource および Azure Marketplace でおすすめになる方法
 
@@ -38,7 +38,7 @@ Azure Marketplace や AppSource の **[おすすめアプリ]** セクション�
 おすすめアプリのプロモーションは、検索アルゴリズムとは別に動作します。
 
 >[!Note]
->自分のソリューションが検索結果に正しく表示されない場合は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)の [ヘルプ] メニューからサポート チケットを提出します。
+>自分のソリューションが検索結果に正しく表示されない場合は、[パートナー センター](https://partner.microsoft.com/)の [ヘルプ] メニューからサポート チケットを提出します。
 
 GTM のサポートには、掲載とビジネスのいっそうの促進に役立つセルフヘルプ テンプレート、Web コンテンツ、トレーニング、ツールの完全なライブラリも含まれています。
 
@@ -46,6 +46,6 @@ GTM のサポートには、掲載とビジネスのいっそうの促進に役�
 
 [商用マーケットプレースのベネフィット](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)の詳細を確認します。
 
-[Cloud パートナー ポータル](https://cloudpartner.azure.com)にログインして、オファーを作成および構成する。
+[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインして、オファーを作成して構成します。
 
 ---

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678829"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681851"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -38,7 +38,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 最初に、システム要件の「[ソフトウェア](../overview/system-requirements.md#software)」セクションに記載されている **HEVC Video Extensions** を必ずインストールしてください。
 
-それでも問題が発生する場合は、使用しているグラフィックス カードで H265 がサポートされていて、最新のグラフィックス ドライバーがインストールされていることを確認してください。 ベンダー固有の情報については、システム要件の「[開発用 PC](../overview/system-requirements.md#development-pc)」セクションをご覧ください。
+それでも問題が発生する場合は、使用しているグラフィックス カードで H265 がサポートされていて、最新のグラフィックス ドライバーがインストールされていることを確認してください。 ベンダー固有の情報については、システム必要条件の「[開発用 PC](../overview/system-requirements.md#development-pc)」セクションをご覧ください。
 
 **H265 コーデックがインストールされているが、使用できない:**
 
@@ -77,6 +77,14 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 * [ネットワークに関する問題を特定する](#unstable-holograms)ための手順をご覧ください。
 * 最新のグラフィックス ドライバーのインストールについては、「[システム要件](../overview/system-requirements.md#development-pc)」をご覧ください。
 
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC で記録された動画にライブ エクスペリエンスの品質が反映されていない
+
+動画は [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) を介して Hololens に記録できます。 ただし、結果として得られる動画の画質は、次の 2 つの理由により、ライブ エクスペリエンスよりも低くなります。
+* 動画のフレームレートが 60 Hz ではなく 30 Hz に制限されている。
+* 動画の画像に [Late Stage Reprojection](../overview/features/late-stage-reprojection.md) の処理ステップが実行されないため、動画が途切れているように見える。
+
+どちらも記録技法に固有の制限事項です。
+
 ## <a name="black-screen-after-successful-model-loading"></a>モデルの読み込みが成功した後にブラック スクリーンが発生する
 
 レンダリング ランタイムに接続し、モデルが正常に読み込まれましたが、その後、ブラック スクリーンしか表示されない場合は、いくつかの明確な原因が考えられます。
@@ -93,6 +101,35 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 **モデルがビューの視錐台の内側にない:**
 
 多くの場合、そのモデルは正しく表示されますが、カメラの視錐台の外側にあります。 一般的な理由の 1 つは、そのモデルが中心から外れた遠くのピボットを使用してエクスポートされたために、カメラの遠クリップ面で切り取られてしまうことです。 これは、モデルの境界ボックスに対してプログラムでクエリを実行し、Unity でそのボックスを線のボックスとして視覚化したり、その値をデバッグ ログに出力したりするのに役立ちます。
+
+さらに、変換処理では、変換されたモデルと共に[出力 json ファイル](../how-tos/conversion/get-information.md)が生成されます。 モデル ポジショニングの問題をデバッグするには、[outputStatistics セクション](../how-tos/conversion/get-information.md#the-outputstatistics-section)の `boundingBox` エントリを参照してください。
+
+```JSON
+{
+    ...
+    "outputStatistics": {
+        ...
+        "boundingBox": {
+            "min": [
+                -43.52,
+                -61.775,
+                -79.6416
+            ],
+            "max": [
+                43.52,
+                61.775,
+                79.6416
+            ]
+        }
+    }
+}
+```
+
+境界ボックスは、3D 空間での `min` と `max` の位置として、メートル単位で示されます。 したがって、座標が 1000.0 の場合は、原点から 1 キロメートル離れていることを意味します。
+
+この境界ボックスには、ジオメトリの非表示につながる 2 つの問題があります。
+* **ボックスが中心から遠く離れている場合がある**。このため、遠方平面クリッピングによりオブジェクトが完全に切り取られる。 この場合の `boundingBox` 値は、`min = [-2000, -5,-5], max = [-1990, 5,5]` のようになります。ここでは、例として、x 軸上の大きなオフセットを使用します。 この種類の問題を解決するには、[モデル変換構成](../how-tos/conversion/configure-model-conversion.md)で `recenterToOrigin` オプションを有効にします。
+* **ボックスは中央に配置できるが、スケールが大きすぎる**。 つまり、カメラがモデルの中心から開始されても、そのジオメトリはすべての方向で切り取られます。 この場合の典型的な `boundingBox` 値は、`min = [-1000,-1000,-1000], max = [1000,1000,1000]` のようになります。 この種類の問題の原因は、通常、単位スケールの不一致です。 補正するには、[変換時のスケーリング値](../how-tos/conversion/configure-model-conversion.md#geometry-parameters)を指定するか、ソース モデルを正しい単位でマークアップします。 スケーリングは、実行時にモデルを読み込むときにルート ノードに適用することもできます。
 
 **Unity のレンダリング パイプラインにレンダリング フックが含まれていない:**
 

@@ -3,12 +3,12 @@ title: Azure Functions で関数を無効にする方法
 description: Azure Functions で関数を無効または有効にする方法を学びます。
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116148"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686882"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
@@ -42,6 +42,9 @@ az functionapp config appsettings set --name <myFunctionApp> \
 関数の **[管理]** タブにある **[関数の状態]** スイッチを使用することもできます。このスイッチを機能させるには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定を作成および削除します。
 
 ![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
+
+> [!NOTE]  
+> ポータルに統合されたテスト機能では、`Disabled` 設定が無視されます。 つまり、ポータルの **[テスト]** ウィンドウから開始した場合、関数は無効にされていても実行されます。 
 
 ## <a name="other-methods"></a>その他の方法
 

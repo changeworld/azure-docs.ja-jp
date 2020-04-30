@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174244"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536626"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する
 
@@ -28,6 +28,13 @@ ms.locfileid: "74174244"
 2. そのスクリプトを Cloud Shell ウィンドウにコピーして実行します。
 3. スクリプトでは、サブスクリプション ID、リソースグループ名、WAF 構成に関連付けられている Application Gateway の名前、および作成する新しい WAF ポリシーの名前が求められます。 これらを入力すると、スクリプトが実行され、新しいご自分の WAF ポリシーが作成されます。
 4. 新しい WAF ポリシーをお使いのアプリケーション ゲートウェイと関連付けます。 ポータルで WAF ポリシーにアクセスし、 **[関連付けられたアプリケーション ゲートウェイ]** タブを選択します。 **[アプリケーション ゲートウェイを関連付けます]** を選択し、WAF ポリシーに関連付ける Application Gateway を選択します。
+
+> [!NOTE]
+> 次の条件に該当する場合、スクリプトで移行は完了しません。
+> - ルール全体が無効になっている。 移行を完了するには、rulegroup 全体が無効になっていないようにしてください。
+> - "*いずれかと等しい*" を含む除外エントリがある。 移行を完了するには、"*いずれかと等しい*" 演算子を含む除外エントリが存在しないようにしてください。
+>
+> 詳細については、スクリプトの *ValidateInput* 関数を参照してください。
 
 ```azurepowershell-interactive
 <#PSScriptInfo

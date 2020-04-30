@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230763"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680067"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
@@ -243,19 +243,25 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         }')
         ```
 
-    2. ポリシーを作成するには、次のコマンドを実行します。
+    1. ポリシーを作成するには、次のコマンドを実行します。
 
         ```powershell
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. 新しいポリシーを表示し、ポリシーの **ObjectId** を取得するには、次のコマンドを実行します。
+    1. 空白を削除するには、次のコマンドを実行します。
+
+        ```powershell
+        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
+        ```
+
+    1. 新しいポリシーを表示し、ポリシーの **ObjectId** を取得するには、次のコマンドを実行します。
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. ポリシーを更新します。
+1. ポリシーを更新します。
 
     この例で設定する最初のポリシーは、サービスに求められるほど厳密にしないようにすることもできます。 単一要素更新トークンを 2 日で期限が切れるように設定するには、次のコマンドを実行します。
 
@@ -277,13 +283,13 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. 新しいポリシーを表示し、ポリシーの **ObjectId** を取得するには、次のコマンドを実行します。
+    1. 新しいポリシーを表示し、ポリシーの **ObjectId** を取得するには、次のコマンドを実行します。
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの **ObjectId** も取得する必要があります。
+1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの **ObjectId** も取得する必要があります。
 
     1. [Get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) コマンドレットを使用して、組織のすべてのサービス プリンシパルまたは 1 つのサービス プリンシパルを表示します。
         ```powershell
@@ -291,7 +297,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
-    2. サービス プリンシパルがある場合、次のコマンドを実行します。
+    1. サービス プリンシパルがある場合、次のコマンドを実行します。
         ```powershell
         # Assign policy to a service principal
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
@@ -308,13 +314,13 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. 新しいポリシーを表示するには、次のコマンドを実行します。
+    1. 新しいポリシーを表示するには、次のコマンドを実行します。
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Web API にポリシーを割り当てます。 アプリケーションの **ObjectId** を取得する必要もあります。 [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) コマンドレットを使用して、アプリの **ObjectId** を見つけるか、[Azure portal](https://portal.azure.com/) を使用します。
+1. Web API にポリシーを割り当てます。 アプリケーションの **ObjectId** を取得する必要もあります。 [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) コマンドレットを使用して、アプリの **ObjectId** を見つけるか、[Azure portal](https://portal.azure.com/) を使用します。
 
     アプリの **ObjectId** を取得し、ポリシーを割り当てます。
 
@@ -337,19 +343,19 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2. 新しいポリシーを表示するには、次のコマンドを実行します。
+    1. 新しいポリシーを表示するには、次のコマンドを実行します。
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. サービス プリンシパルにポリシーを割り当てます。
+1. サービス プリンシパルにポリシーを割り当てます。
 
     これで、組織全体に適用されるポリシーが得られます。 特定のサービス プリンシパルに対してはこの 30 日間のポリシーを保持しますが、組織の既定のポリシーを "until-revoked" の上限となるよう変更するとします。
 
     1. 組織のすべてのサービス プリンシパルを表示するには、[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) コマンドレットを使用します。
 
-    2. サービス プリンシパルがある場合、次のコマンドを実行します。
+    1. サービス プリンシパルがある場合、次のコマンドを実行します。
 
         ```powershell
         # Get ID of the service principal
@@ -359,13 +365,13 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. `IsOrganizationDefault` フラグを false に設定します。
+1. `IsOrganizationDefault` フラグを false に設定します。
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
-4. 新しい組織の既定のポリシーを作成します。
+1. 新しい組織の既定のポリシーを作成します。
 
     ```powershell
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"

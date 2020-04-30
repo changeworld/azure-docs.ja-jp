@@ -3,17 +3,17 @@ title: Azure Application Insights のデータ モデル | Microsoft Docs
 description: JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663877"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536847"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights エクスポート データ モデル
 次のテーブルは、 [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) からポータルに送信されるテレメトリのプロパティを一覧表示したものです。
 [連続エクスポート](export-telemetry.md)からのデータ出力で、テレメトリのプロパティが表示されます。
-テレメトリは[メトリック エクスプローラー](../../azure-monitor/app/metrics-explorer.md)と[診断検索](../../azure-monitor/app/diagnostic-search.md)のプロパティ フィルターでも表示されます。
+テレメトリは[メトリック エクスプローラー](../../azure-monitor/platform/metrics-charts.md)と[診断検索](../../azure-monitor/app/diagnostic-search.md)のプロパティ フィルターでも表示されます。
 
 注意する点:
 
@@ -105,7 +105,7 @@ ms.locfileid: "77663877"
 ## <a name="context"></a>Context
 テレメトリのすべての種類には、コンテキストのセクションが付いています。 これらのフィールドのすべてが各データ ポイントで送信されるわけではありません。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | context.custom.dimensions [0] |object [ ] |カスタム プロパティ パラメーターによって設定される、キーと値の文字列ペア。 キーの最大長は 100 で、値の最大長は 1024 です。 100 を超える一意の値で、プロパティを検索することはできますが、セグメント化には使用できません。 ikey あたり最大 200 キー。 |
 | context.custom.metrics [0] |object [ ] |カスタム測定パラメーターと TrackMetrics によって設定される、キーと値のペア。 キーの最大長は 100 で、値は通常は数値です。 |
@@ -127,16 +127,16 @@ ms.locfileid: "77663877"
 | context.device.roleName |string | |
 | context.device.screenResolution |string | |
 | context.device.type |string |PC、ブラウザー、 ... |
-| context.location |object |clientip から派生します。 |
-| context.location.city |string |わかっている場合、clientip から派生されます。 |
+| context.location |object |`clientip` から派生。 |
+| context.location.city |string |`clientip` から派生 (既知の場合) |
 | context.location.clientip |string |最後の 8 文字は 0 に匿名化されます。 |
 | context.location.continent |string | |
 | context.location.country |string | |
 | context.location.province |string |都道府県 |
-| context.operation.id |string |同じ操作 ID を持つ項目は、ポータルで関連項目として表示されます。 通常は、要求 ID です。 |
+| context.operation.id |string |同じ `operation id` を持つ項目は、関連項目としてポータルに表示されます。 通常は、`request id` です。 |
 | context.operation.name |string |URL または要求の名前 |
 | context.operation.parentId |string |入れ子になった関連項目を許可します。 |
-| context.session.id |string |同じソースからの操作のグループの ID。 30 分間操作が行われないと、セッションの終了が通知されます。 |
+| context.session.id |string |同じソースからの操作グループの `Id`。 30 分間操作が行われないと、セッションの終了が通知されます。 |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |string | |
 | context.user.accountId |string | |
@@ -147,12 +147,12 @@ ms.locfileid: "77663877"
 | context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |string | |
 | internal.data.documentVersion |string | |
-| internal.data.id |string | Application Insights に項目が取り込まれるときに割り当てられる一意の ID |
+| internal.data.id |string | Application Insights に項目が取り込まれるときに割り当てられる `Unique id` |
 
 ## <a name="events"></a>events
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)によって生成されたカスタム イベント。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | event [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | event [0] name |string |イベント名。  最大長 250。 |
@@ -163,7 +163,7 @@ ms.locfileid: "77663877"
 ## <a name="exceptions"></a>例外
 サーバーおよびブラウザーの [例外](../../azure-monitor/app/asp-net-exceptions.md) をレポートします。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | basicException [0] assembly |string | |
 | basicException [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
@@ -173,7 +173,7 @@ ms.locfileid: "77663877"
 | basicException [0] failedUserCodeAssembly |string | |
 | basicException [0] handledAt |string | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0] id |string | |
+| basicException [0] `id` |string | |
 | basicException [0] method |string | |
 | basicException [0] message |string |例外メッセージ。 最大長 10k。 |
 | basicException [0] outerExceptionMessage |string | |
@@ -192,7 +192,7 @@ ms.locfileid: "77663877"
 ## <a name="trace-messages"></a>トレース メッセージ
 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) および[ログ アダプター](../../azure-monitor/app/asp-net-trace-logs.md)によって送信されます。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | message [0] loggerName |string | |
 | message [0] parameters |string | |
@@ -202,7 +202,7 @@ ms.locfileid: "77663877"
 ## <a name="remote-dependency"></a>リモート依存関係
 TrackDependency によって送信されます。 サーバーでの [依存関係の呼び出し](../../azure-monitor/app/asp-net-dependencies.md) とブラウザーでの AJAX の呼び出しのパフォーマンスおよび使用状況をレポートするために使用されます。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |string | |
@@ -210,7 +210,7 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 | remoteDependency [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | remoteDependency [0] dependencyTypeName |string |HTTP、SQL、... |
 | remoteDependency [0] durationMetric.value |number |呼び出しから依存関係による応答の完了までの時間 |
-| remoteDependency [0] id |string | |
+| remoteDependency [0] `id` |string | |
 | remoteDependency [0] name |string |URL。 最大長 250。 |
 | remoteDependency [0] resultCode |string |HTTP の依存関係から |
 | remoteDependency [0] success |boolean | |
@@ -223,11 +223,11 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 ## <a name="requests"></a>Requests
 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
-| request [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
+| request [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 次に例を示します。4 =&gt; 25%。 |
 | request [0] durationMetric.value |number |要求の到着から応答までの時間。 1e7 == 1 秒 |
-| request [0] id |string |操作 ID |
+| request [0] `id` |string |`Operation id` |
 | request [0] name |string |GET/POST + URL ベース。  最大長 250 |
 | request [0] responseCode |整数 (integer) |クライアントに送信された HTTP 応答 |
 | request [0] success |boolean |既定 == (responseCode &lt; 400) |
@@ -241,7 +241,7 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 
 コンテキストの値は、クライアント OS やブラウザーのバージョンを示します。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess.value |整数 (integer) |HTML の取得終了からページの表示までの時間。 |
 | clientPerformance [0] name |string | |
@@ -258,7 +258,7 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 ## <a name="page-views"></a>ページ ビュー
 trackPageView() または [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | view [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | view [0] durationMetric.value |整数 (integer) |trackPageView() で、または startTrackPage() - stopTrackPage() によって、オプションで設定される値。 clientPerformance 値と同じではありません。 |
@@ -271,7 +271,7 @@ trackPageView() または [stopTrackPage](../../azure-monitor/app/api-custom-eve
 ## <a name="availability"></a>可用性
 [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)をレポートします。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |string |availability |
 | availability [0] availabilityMetric.value |number |1.0 または 0.0 |
@@ -342,7 +342,7 @@ TrackMetric() によって生成されます。
 ### <a name="durations"></a>期間
 特記がない限り、期間は 1/10 マイクロ秒で表されます。そのため、10000000.0 は 1 秒を意味します。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [連続エクスポート](export-telemetry.md)
 * [コード サンプル](export-telemetry.md#code-samples)

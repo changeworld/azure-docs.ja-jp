@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481940"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -68,7 +68,7 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 <sup>1</sup> アーカイブ層は、ZRS アカウントでは現在サポートされていません。<br />
 <sup>2</sup> 仮想マシン用の Azure マネージド ディスクを含むストレージ アカウントは、常に LRS を使用します。 Azure のアンマネージド ディスクでは、LRS も使用する必要があります。 GRS を使用する Azure アンマネージド ディスクのストレージ アカウントを作成することはできますが、非同期 geo レプリケーションの整合性に関する潜在的な問題のため、推奨されません。 マネージドとアンマネージド ディスクのどちらも ZRS または GZRS をサポートしていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
 
-ZRS をサポートしているリージョンの詳細については、「**Azure の Availability Zones の概要**」の「[リージョン別のサービスのサポート](../../availability-zones/az-overview.md)」を参照してください。
+ZRS をサポートしているリージョンの詳細については、「[Azure の Availability Zones の概要](../../availability-zones/az-overview.md)」の「**リージョン別のサービスのサポート**」を参照してください。
 
 ## <a name="redundancy-in-a-secondary-region"></a>セカンダリ リージョンでの冗長性
 
@@ -160,7 +160,7 @@ geo 冗長ストレージ (GRS または GZRS を使用) は、リージョン�
 
 <sup>2</sup> ストレージ アカウントの種類については、「[Azure ストレージ アカウントの概要](storage-account-overview.md)」　を参照してください。
 
-ストレージ アカウントの冗長オプションに従って、すべての種類のストレージ アカウントのすべてのデータがコピーされます。 ブロック BLOB、追加 BLOB、ページ BLOB、キュー、テーブル、ファイルなどのオブジェクトがコピーされます。
+ストレージ アカウントの冗長オプションに従って、すべての種類のストレージ アカウントと[すべての層 (アーカイブを含む)](../blobs/storage-blob-storage-tiers.md) のすべてのデータがコピーされます。 ブロック BLOB、追加 BLOB、ページ BLOB、キュー、テーブル、ファイルなどのオブジェクトがコピーされます。
 
 各冗長オプションの料金情報については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。
 
@@ -171,7 +171,7 @@ geo 冗長ストレージ (GRS または GZRS を使用) は、リージョン�
 
 Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納データの整合性を定期的に検証します。 データの破損が検出された場合は、冗長データを使用して修復されます。 また Azure Storage では、データの格納時または取得時にデータ パケットの破損を検出する目的ですべてのネットワーク トラフィックのチェックサムを計算します。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)
 - [ストレージ アカウントの冗長オプションを変更する](redundancy-migration.md)

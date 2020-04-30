@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255657"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685749"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -44,7 +44,7 @@ Azure Marketplace では、静的コード分析を実行してコード レビ�
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>アプリケーションに対するすべての入力を検証してサニタイズする
 
-すべての入力を信頼されていないものとして扱い、最も一般的な Web アプリケーションの脆弱性からアプリケーションを保護します。 信頼されていないデータは、インジェクション攻撃の手段です。 アプリケーションに対する入力には、URL 内のパラメーター、ユーザーからの入力、データベースや API からのデータ、およびユーザーが操作できる可能性のあるすべての渡されるものが含まれます。 アプリケーションでは、何らかの方法でデータを使用する前に (ユーザーへの表示を含む)、データが構文的および意味的に有効であることを[検証する](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs)必要があります。
+すべての入力を信頼されていないものとして扱い、最も一般的な Web アプリケーションの脆弱性からアプリケーションを保護します。 信頼されていないデータは、インジェクション攻撃の手段です。 アプリケーションに対する入力には、URL 内のパラメーター、ユーザーからの入力、データベースや API からのデータ、およびユーザーが操作できる可能性のあるすべての渡されるものが含まれます。 アプリケーションでは、何らかの方法でデータを使用する前に (ユーザーへの表示を含む)、データが構文的および意味的に有効であることを[検証する](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs)必要があります。
 
 データ フローの早い段階で入力を検証し、適切な形式のデータのみがワークフローに入ることを確認します。 不適切なデータがデータベースに保存されたり、下流コンポーネントでの異常の原因になったりしないようにする必要があります。
 
@@ -81,7 +81,7 @@ Server、X-Powered-By、X-AspNet-Version などのヘッダーによって、サ
 
 ### <a name="segregate-your-production-data"></a>運用データを分離する
 
-運用データ (または "実" データ) を、開発、テスト、またはビジネス以外の目的に使用しないようにする必要があります。 すべての開発とテストには、マスクされた ([匿名化された](https://en.wikipedia.org/wiki/Data_anonymization)) データセットを使用する必要があります。
+運用データ ("実" データ) を、開発、テスト、またはビジネス以外の目的に使用しないようにする必要があります。 すべての開発とテストには、マスクされた ([匿名化された](https://en.wikipedia.org/wiki/Data_anonymization)) データセットを使用する必要があります。
 
 これは、実データにアクセスできるユーザーが少なくなり、攻撃対象領域が経ることを意味します。 また、個人データを見る従業員が減り、機密性が侵害される可能性がなくなることも意味します。
 

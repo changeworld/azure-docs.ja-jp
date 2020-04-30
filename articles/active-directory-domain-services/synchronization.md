@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944433"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639910"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
@@ -31,6 +31,8 @@ Azure Active Directory Domain Services (AD DS) のマネージド ドメイン�
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Azure AD から Azure AD DS への同期
 
 ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD から Azure AD DS に一方向で同期されます。 この同期プロセスは自動的に行われます。 この同期プロセスを構成、監視、または管理する必要はありません。 Azure AD ディレクトリ内のオブジェクトの数に応じて、初期同期には数時間から数日かかることがあります。 初期同期が完了した後、Azure AD 内で加えられた変更 (パスワードや属性の変更など) は、Azure AD DS に自動的に同期されます。
+
+Azure AD で作成されたユーザーは、Azure AD でパスワードを変更するまで Azure AD DS に同期されません。 このパスワード変更プロセスによって、Kerberos 認証と NTLM 認証に使用されるパスワード ハッシュが Azure AD に生成されて保存されます。 Azure AD DS でユーザーを正常に認証するには、パスワード ハッシュが必要です。
 
 設計上、同期プロセスは一方向です。 Azure AD DS から Azure AD への変更の逆方向の同期は行われません。 Azure AD DS マネージド ドメインは、作成できるカスタムの組織単位 (OU) を除き、主に読み取り専用です。 Azure AD DS マネージド ドメイン内でユーザー属性、ユーザー パスワード、またはグループ メンバーシップを変更することはできません。
 
@@ -134,7 +136,7 @@ Azure AD DS を有効にすると、NTLM + Kerberos 認証用の従来のパス�
 
 その後、従来のパスワード ハッシュは、Azure AD から Azure AD DS マネージド ドメインのドメイン コントローラーに同期されます。 Azure AD DS 内のこれらのマネージド ドメイン コントローラーのディスクは、保存時に暗号化されます。 オンプレミスの AD DS 環境にパスワードが保存され、セキュリティで保護される場合と同様に、これらのパスワード ハッシュは、これらのドメイン コントローラーに保存され、セキュリティで保護されます。
 
-クラウドのみの Azure AD 環境では、必要なパスワード ハッシュを生成して Azure AD に保存するために、[ユーザーにパスワードをリセットまたは変更](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)するよう求めています。 Azure AD Domain Services を有効にした後に Azure AD で作成されたクラウド ユーザー アカウントの場合、パスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 これらの新しいアカウントでは、パスワードをリセットまたは変更する必要がなく、従来のパスワード ハッシュが生成されます。
+クラウドのみの Azure AD 環境では、必要なパスワード ハッシュを生成して Azure AD に保存するために、[ユーザーにパスワードをリセットまたは変更](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)するよう求めています。 Azure AD Domain Services を有効にした後に Azure AD で作成されたクラウド ユーザー アカウントの場合、パスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 すべてのクラウド ユーザー アカウントは、Azure AD DS に同期される前にパスワードを変更する必要があります。
 
 Azure AD Connect を使用してオンプレミスの AD DS 環境から同期されたハイブリッド ユーザー アカウントの場合、[NTLM および Kerberos 互換の形式でパスワード ハッシュを同期するように Azure AD Connect を構成](tutorial-configure-password-hash-sync.md)する必要があります。
 

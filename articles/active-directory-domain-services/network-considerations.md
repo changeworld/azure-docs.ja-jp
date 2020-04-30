@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e610bf94dfdee4e2765e4fae4259f18a9f1036b5
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408828"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639992"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -109,10 +109,11 @@ Azure AD DS で認証と管理サービスを提供するには、次のネッ�
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | Azure AD テナントとの同期。 |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | はい      | ドメインの管理。 |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | ドメインの管理。 |
-| 636         | TCP      | Any                                | Any         | Allow  | いいえ       | セキュリティで保護された LDAP (LDAPS) を構成するときにのみ有効になります。 |
 
 > [!WARNING]
 > これらのネットワーク リソースと構成を手動で編集しないでください。 正しく構成されていないネットワーク セキュリティ グループまたはユーザー定義のルート テーブルを、Azure AD DS が展開されているサブネットに関連付けると、Microsoft のドメインのサービスと管理の機能が中断する可能性があります。 Azure AD テナントと Azure AD DS マネージド ドメインの間の同期も中断されます。
+>
+> Secure LDAP を使用する場合は、必要な TCP ポート 636 の規則を適宜追加することで、外部トラフィックを許可することができます。 この規則を追加しても、ネットワーク セキュリティ グループの規則がサポート対象外の状態に設定されることはありません。 詳細については、「[インターネット経由での Secure LDAP アクセスをロック ダウンする](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)」を参照してください。
 >
 > *AllowVnetInBound*、*AllowAzureLoadBalancerInBound*、*DenyAllInBound*、*AllowVnetOutBound*、*AllowInternetOutBound*、*DenyAllOutBound* の既定の規則もネットワーク セキュリティ グループに存在します。 これらの既定の規則は編集または削除しないでください。
 >

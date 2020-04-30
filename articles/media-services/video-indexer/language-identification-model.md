@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513883"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687121"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>言語識別モデルを使用して音声言語を自動的に識別する
 
-Video Indexer は、自動言語識別 (LID) をサポートしています。これは、オーディオから音声言語コンテンツが自動的に識別され、識別された主要言語で書き起こすメディア ファイルが送信されるプロセスです。 現在、LID は、英語、スペイン語、フランス語、ドイツ語、イタリア語、簡体中国語、日本語、ロシア語、ポルトガル語 (ブラジル) をサポートしています。 
+Video Indexer は、自動言語識別 (LID) をサポートしています。これは、オーディオから音声言語コンテンツが自動的に識別され、識別された主要言語で書き起こすメディア ファイルが送信されるプロセスです。 
+
+LID の現在のサポート対象: 英語、スペイン語、フランス語、ドイツ語、イタリア語、標準中国語、日本語、ロシア語、ポルトガル語 (ブラジル)。 
+
+後述する「[ガイドラインと制限](#guidelines-and-limitations)」セクションを確認してください。
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>インデックス作成時の自動言語識別の選択
 
@@ -49,7 +53,10 @@ API を使用して動画のインデックスを作成するとき、または[
 
 ## <a name="guidelines-and-limitations"></a>ガイドラインと制限
 
-* 英語、スペイン語、フランス語、ドイツ語、イタリア語、簡体中国語、日本語、ロシア語、ポルトガル語 (ブラジル) などの言語がサポートされています。
+* 自動言語識別 (LID) は、次の言語をサポートしています。 
+
+    英語、スペイン語、フランス語、ドイツ語、イタリア語、標準中国語、日本語、ロシア語、ポルトガル語 (ブラジル)。
+* Video Indexer ではアラビア語 (現代標準とレバント)、ヒンディー語、および韓国語がサポートされていますが、これらの言語は LID ではサポートされていません。
 * オーディオに上のサポートされている一覧以外の言語が含まれている場合は、予期しない結果になります。
 * Video Indexer で十分に高い信頼度 (`>0.6`) で言語が識別されない場合、フォールバック言語は英語です。
 * 現在、言語が混在したオーディオを含むファイルはサポートされていません。 オーディオに複数の言語が混在している場合は、予期しない結果になります。 

@@ -1,24 +1,24 @@
 ---
-title: 標準契約 | Azure
+title: 標準契約 | Azure Marketplace
 description: Azure Marketplace と AppSource の標準契約
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 00a83a1b3005043f317ed49cafa735540cd21793
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284961"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681449"
 ---
 # <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースの標準契約
 
 お客様の調達プロセスを簡素化し、ソフトウェア ベンダーの法的な複雑さを軽減するために、Microsoft では、マーケットプレースでの取引の促進に役立つ Microsoft 商業マーケットプレースの標準契約を用意しています。 商業マーケットプレース パブリッシャーは、カスタムの使用条件を作成するのではなく、標準契約の下で各自のソフトウェアを提供することを選択でき、お客様はそれを詳細に調べて 1 回同意するだけで済みます。 標準契約はこちらで見つけることができます[https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)。
 
-オファーの使用条件は、パートナー センターまたはクラウド パートナー ポータルでオファーを作成するときに定義されます。 独自のカスタムの使用条件を提供する代わりに、Microsoft 商業マーケットプレースの標準契約を使用することを選択できます。
+オファーの使用条件は、パートナー センターでオファーを作成するときに定義されます。 独自のカスタムの使用条件を提供する代わりに、Microsoft 商業マーケットプレースの標準契約を使用することを選択できます。
 
 >[!Note]
 >Microsoft 商業マーケットプレースの標準契約を使用してオファーを発行した後に、独自のカスタムの使用条件を使用することはできません。 これは、"または" のシナリオです。 ソリューションは、標準契約*または*独自の使用条件のどちらかの下で提供されます。 標準契約の使用条件を変更したい場合は、Standard Contract Amendments (標準契約の修正) を使用して行うことができます。

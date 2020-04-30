@@ -1,52 +1,31 @@
 ---
-title: Azure での Update Management のデプロイで事前および事後スクリプトを構成する
+title: Azure での Update Management のデプロイで事前スクリプトと事後スクリプトを管理する
 description: この記事では、更新プログラムの展開のための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: bbf7f2945ad6a94c51cfd0c7db1e8c85d739c6ed
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 00cde5255f9c9a2baa7c7042ae2a8f73448da0ae
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631614"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679984"
 ---
-# <a name="manage-pre-and-post-scripts"></a>事前および事後スクリプトを管理する
+# <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
-事前スクリプトおよび事後スクリプトを使用すると、更新プログラムの展開の前 (事前タスク) と後 (事後タスク) に Azure Automation アカウントで PowerShell Runbook を実行できます。 事前および事後スクリプトはローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 事後スクリプトは、展開の最後に、構成されているすべての再起動の後で実行されます。
+事前スクリプトと事後スクリプトは、更新プログラムのデプロイの前 (事前タスク) と後 (事後タスク) に Azure Automation アカウントで実行する Runbook です。 事前スクリプトと事後スクリプトは、ローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 事後スクリプトは、展開の最後に、構成されているすべての再起動の後で実行されます。
 
-## <a name="runbook-requirements"></a>Runbook の要件
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
-Runbook が事前または事後スクリプトとして使用されるようにするには、その Runbook を Automation アカウントにインポートして発行する必要があります。 このプロセスの詳細については、「[Runbook を発行する](manage-runbooks.md#publishing-a-runbook)」を参照してください。
+## <a name="pre-script-and-post-script-requirements"></a>事前スクリプトと事後スクリプトの要件
 
-## <a name="using-a-pre-script-or-post-script"></a>事前スクリプトまたは事後スクリプトを使用する
+Runbook を事前スクリプトまたは事後スクリプトとして使用するには、Automation アカウントにインポートし、[Runbook を発行](manage-runbooks.md#publishing-a-runbook)する必要があります。
 
-更新プログラムの展開において事前スクリプトまたは事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[事前スクリプトと事後スクリプト]** を選択します。 この操作で、 **[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。
+## <a name="pre-script-and-post-script-parameters"></a>事前スクリプトと事後スクリプトのパラメーター
 
-![スクリプトを選択する](./media/pre-post-scripts/select-scripts.png)
-
-使用するスクリプトを選択します。 この例では、**UpdateManagement-TurnOnVms** Runbook を使用します。 Runbook を選択すると、 **[スクリプトの構成]** ページが開きます。 **[事前スクリプト]** を選択してから、 **[OK]** を選択します。
-
-**UpdateManagement-TurnOffVms** スクリプトについて、このプロセスを繰り返します。 ただし、 **[スクリプトの種類]** を選択した場合は、 **[事後スクリプト]** を選択します。
-
-これで、 **[選択された項目]** セクションに、ご自身が選択した両方のスクリプトが表示されます。 1 つは事前スクリプトで、もう 1 つは事後スクリプトです。
-
-![[Selected items] (選択された項目)](./media/pre-post-scripts/selected-items.png)
-
-更新プログラムの展開の構成を終了します。
-
-更新プログラムの展開が完了したら、 **[更新プログラムの展開]** に移動して結果を表示できます。 見てわかるように、事前スクリプトと事後スクリプトの状態が表示されます。
-
-![更新プログラムの結果](./media/pre-post-scripts/update-results.png)
-
-実行された更新プログラムの展開を選択すると、事前および事後スクリプトの追加の詳細情報が表示されます。 実行の時点でのスクリプト ソースへのリンクが表示されます。
-
-![展開の実行の結果](./media/pre-post-scripts/deployment-run.png)
-
-## <a name="passing-parameters"></a>パラメーターを渡す
-
-事前および事後スクリプトを構成する場合、Runbook のスケジュール設定のように、パラメーターを渡すことができます。 パラメーターは、更新プログラムの展開の作成の時点で定義されます。 事前および事後スクリプトでは、次の型がサポートされます。
+事前スクリプトと事後スクリプトを構成する場合、Runbook のスケジュール設定と同様にパラメーターを渡すことができます。 パラメーターは、更新プログラムの展開の作成の時点で定義されます。 事前スクリプトと事後スクリプトでは、次の型がサポートされます。
 
 * [char]
 * [byte]
@@ -58,13 +37,11 @@ Runbook が事前または事後スクリプトとして使用されるように
 * [DateTime]
 * [string]
 
+事前スクリプトと事後スクリプトの Runbook パラメーターでは、boolean、object、または array 型はサポートされません。 これらの値を指定すると、Runbook は失敗します。 
+
 別のオブジェクト型が必要な場合は、Runbook 内の独自のロジックで別の方にキャストできます。
 
-標準の Runbook パラメーターに加えて、もう 1 つの次のパラメーターが表示されます。**SoftwareUpdateConfigurationRunContext**
-
-このパラメーターは JSON 文字列であるため、事前または事後スクリプト内にパラメーターを定義すると、更新プログラムが展開されることによって、自動的に渡されます。 パラメーターには、[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) から返された情報のサブセットである、更新プログラムの展開に関する情報が含まれます。 
-
-次の表に、変数内で指定されるプロパティを示します。
+標準の Runbook パラメーターに加えて、`SoftwareUpdateConfigurationRunContext` パラメーター (JSON 文字列の型) が提供されます。 事前スクリプトまたは事後スクリプトにパラメーターを定義すると、更新プログラムのデプロイによって自動的に渡されます。 パラメーターには、[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) から返された情報のサブセットである、更新プログラムの展開に関する情報が含まれます。 以下のセクションでは、関連するプロパティを定義します。
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
@@ -74,7 +51,7 @@ Runbook が事前または事後スクリプトとして使用されるように
 |SoftwareUpdateConfigurationRunId     | 実行の一意の ID。        |
 |SoftwareUpdateConfigurationSettings     | ソフトウェア更新構成に関連したプロパティのコレクション。         |
 |SoftwareUpdateConfigurationSettings.operatingSystem     | 更新プログラムの展開の対象となるオペレーティング システム。         |
-|SoftwareUpdateConfigurationSettings.duration     | ISO8601 に従った `PT[n]H[n]M[n]S` として実行される更新プログラムの展開の最大期間。"*メンテナンス期間*" とも呼ばれる。          |
+|SoftwareUpdateConfigurationSettings.duration     | ISO8601 に従って `PT[n]H[n]M[n]S` として実行される更新プログラムのデプロイの最大期間。メンテナンス期間とも呼ばれる。          |
 |SoftwareUpdateConfigurationSettings.Windows     | Windows コンピューターに関連したプロパティのコレクション。         |
 |SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | 更新プログラムの展開から除外される KB の一覧。        |
 |SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | 更新プログラムの展開のために選択された更新プログラムの分類。        |
@@ -115,8 +92,33 @@ Runbook が事前または事後スクリプトとして使用されるように
 すべてのプロパティの完全な例は、「[Get software update configuration by name (ソフトウェア更新構成を名前別に取得する)](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)」にあります。
 
 > [!NOTE]
-> `SoftwareUpdateConfigurationRunContext` オブジェクトには、マシン用の重複するエントリを含めることができます。 これにより、同じマシン上で事前および事後スクリプトが複数回実行される可能性があります。 この動作を回避するには、`Sort-Object -Unique` を使用して、スクリプト内の一意の VM 名だけを選択します。
+> `SoftwareUpdateConfigurationRunContext` オブジェクトには、マシン用の重複するエントリを含めることができます。 これにより、同じマシンで事前スクリプトと事後スクリプトが複数回実行される可能性があります。 この動作を回避するには、`Sort-Object -Unique` を使用して一意の VM 名だけを選択します。
 
+## <a name="using-a-pre-script-or-post-script-in-a-deployment"></a>デプロイでの事前スクリプトまたは事後スクリプトの使用
+
+更新プログラムの展開において事前スクリプトまたは事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[事前スクリプトと事後スクリプト]** を選択します。 この操作で、 **[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。
+
+![スクリプトを選択する](./media/pre-post-scripts/select-scripts.png)
+
+使用するスクリプトを選択します。 この例では、**UpdateManagement-TurnOnVms** Runbook を使用します。 Runbook を選択すると、 **[スクリプトの構成]** ページが開きます。 **[事前スクリプト]** を選択してから、 **[OK]** を選択します。
+
+**UpdateManagement-TurnOffVms** スクリプトについて、このプロセスを繰り返します。 ただし、 **[スクリプトの種類]** を選択した場合は、 **[事後スクリプト]** を選択します。
+
+これで、 **[選択された項目]** セクションに、ご自身が選択した両方のスクリプトが表示されます。 1 つは事前スクリプトで、もう 1 つは事後スクリプトです。
+
+![[Selected items] (選択された項目)](./media/pre-post-scripts/selected-items.png)
+
+更新プログラムの展開の構成を終了します。
+
+更新プログラムの展開が完了したら、 **[更新プログラムの展開]** に移動して結果を表示できます。 見てわかるように、事前スクリプトと事後スクリプトの状態が表示されます。
+
+![更新プログラムの結果](./media/pre-post-scripts/update-results.png)
+
+更新プログラムのデプロイの実行を選択すると、事前スクリプトと事後スクリプトの追加の詳細情報が表示されます。 実行の時点でのスクリプト ソースへのリンクが表示されます。
+
+![展開の実行の結果](./media/pre-post-scripts/deployment-run.png)
+
+スクリプト内。
 
 ## <a name="stopping-a-deployment"></a>デプロイの停止
 
@@ -135,9 +137,47 @@ foreach($summary in $finalStatus)
 }
 ```
 
+
+
+## <a name="interacting-with-machines"></a>マシンの操作
+
+事前スクリプトと事後タスクは、デプロイ内のマシンで直接実行されるのではなく、Automation アカウント内で Runbook として実行されます。 事前タスクと事後タスクは Azure コンテキストでも実行され、Azure 以外のマシンにはアクセスできません。 以降のセクションでは、Azure VM であるか Azure 以外のマシンであるかにかかわらず、それらのマシンと直接対話できる方法について説明します。
+
+### <a name="interact-with-azure-machines"></a>Azure マシンの操作
+
+事前タスクと事後タスクは、Runbook として実行され、デプロイ内の Azure VM でネイティブに実行されることはありません。 Azure VM と対話するには、次のものが必要です。
+
+* 実行アカウント
+* 実行する Runbook
+
+Azure マシンを操作するには、[Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - Run Script with Run Command (更新管理 - スクリプトを実行コマンドで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)」にある Runbook の例を参照してください。
+
+### <a name="interact-with-non-azure-machines"></a>Azure 以外のマシンの操作
+
+事前タスクと事後タスクは Azure コンテキストで実行され、Azure 以外のマシンにはアクセスできません。 Azure 以外のマシンと対話するには、次のものが必要です。
+
+* 実行アカウント
+* コンピューターにインストールされた Hybrid Runbook Worker
+* ローカルで実行する Runbook
+* 親 Runbook
+
+Azure 以外のマシンと対話するためには、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) コマンドレットを使用して子 Runbook を呼び出します。 `RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。 Runbook の例「[Update Management - スクリプトをローカルで実行する](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)」を参照してください。
+
+## <a name="aborting-patch-deployment"></a>修正プログラムのデプロイの中止
+
+事前スクリプトからエラーが返されたときに、展開を中止したい場合があります。 それを行うには、スクリプト内で障害を起こしているロジックのエラーを[スロー](/powershell/module/microsoft.powershell.core/about/about_throw)する必要があります。
+
+```powershell
+if (<My custom error logic>)
+{
+    #Throw an error to fail the patch deployment.
+    throw "There was an error, abort deployment"
+}
+```
+
 ## <a name="samples"></a>サンプル
 
-事前および事後スクリプトのサンプルは [Script Center Gallery](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) または [PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)にあります。または、Azure portal 経由でインポートできます。 Automation アカウントで、 **[プロセス オートメーション]** の下にある **[Runbook ギャラリー]** を選択することで、行うことができます。 フィルターに **[更新管理]** を使用します。
+事前スクリプトと事後スクリプトのサンプルは[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)と [PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)にあります。または、Azure portal を使用してインポートできます。 Automation アカウントで、 **[プロセス オートメーション]** の下にある **[Runbook ギャラリー]** を選択することで、行うことができます。 フィルターに **[更新管理]** を使用します。
 
 ![ギャラリーの一覧](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -152,7 +192,7 @@ foreach($summary in $finalStatus)
 > [!IMPORTANT]
 > Runbook をインポートした後、使用できるようにするには、発行する必要があります。 それを行うには、Automation アカウントで Runbook を見つけて、 **[編集]** を選択してから **[発行]** を選択します。
 
-サンプルはすべて、次の例で定義されている基本のテンプレートに基づいています。 このテンプレートを使用すると、事前および事後スクリプトで使用する独自の Runbook を作成できます。 Azure に対して認証したり、`SoftwareUpdateConfigurationRunContext` パラメーターを処理したりするために必要なロジックが含まれています。
+サンプルはすべて、次の例で定義されている基本のテンプレートに基づいています。 このテンプレートを使用すると、事前スクリプトと事後スクリプトで使用する独自の Runbook を作成できます。 Azure に対して認証したり、`SoftwareUpdateConfigurationRunContext` パラメーターを処理したりするために必要なロジックが含まれています。
 
 ```powershell
 <#
@@ -174,13 +214,13 @@ param(
 #This requires a RunAs account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
-Add-AzureRmAccount `
+Add-AzAccount `
     -ServicePrincipal `
     -TenantId $ServicePrincipalConnection.TenantId `
     -ApplicationId $ServicePrincipalConnection.ApplicationId `
     -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
 
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+$AzureContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
 #endregion BoilerplateAuthentication
 
 #If you wish to use the run context, it must be converted from JSON
@@ -194,7 +234,7 @@ Write-Output $context
 #Example: How to create and write to a variable using the pre-script:
 <#
 #Create variable named after this run so it can be retrieved
-New-AzureRmAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false
+New-AzAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false
 #Set value of variable
 Set-AutomationVariable –Name $runId -Value $vmIds
 #>
@@ -205,45 +245,8 @@ $variable = Get-AutomationVariable -Name $runId
 #>
 ```
 
-## <a name="interacting-with-machines"></a>マシンの操作
-
-事前および事後タスクは、デプロイ内のマシン上で直接実行されるのではなく、ご利用の Automation アカウント内で Runbook として実行されます。 また、事前および事後タスクは Azure コンテキストで実行されるため、Azure 以外のマシンにはアクセスできません。 以降のセクションでは、Azure VM であるか Azure 以外のマシンであるかにかかわらず、それらのマシンと直接対話できる方法について説明します。
-
-### <a name="interacting-with-azure-machines"></a>Azure マシンとの対話
-
-事前タスクと事後タスクは、Runbook として実行されます。デプロイ内の Azure VM でネイティブに実行されるわけではありません。 Azure VM と対話するには、次のものが必要です。
-
-* 実行アカウント
-* 実行する Runbook
-
-Azure マシンと対話するには、[Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) コマンドレットを使用して、目的の Azure VM と対話する必要があります。 この方法を示した例については、「[Update Management - Run Script with Run Command (更新管理 - スクリプトを実行コマンドで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)」にある Runbook の例を参照してください。
-
-### <a name="interacting-with-non-azure-machines"></a>Azure 以外のマシンとの対話
-
-事前および事後タスクは Azure コンテキストで実行されるため、Azure 以外のマシンにはアクセスできません。 Azure 以外のマシンと対話するには、次のものが必要です。
-
-* 実行アカウント
-* コンピューターにインストールされた Hybrid Runbook Worker
-* ローカルで実行する Runbook
-* 親 Runbook
-
-Azure 以外のマシンと対話するためには、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットを使用して子 Runbook を呼び出します。 `-RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。 詳細については、「[Update Management - Run Script Locally (Update Management - スクリプトをローカルで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)」にある Runbook の例を参照してください。
-
-## <a name="abort-patch-deployment"></a>修正プログラムのデプロイを中止する
-
-事前スクリプトからエラーが返されたときに、展開を中止したい場合があります。 それを行うには、スクリプト内で障害を起こしているロジックのエラーを[スロー](/powershell/module/microsoft.powershell.core/about/about_throw)する必要があります。
-
-```powershell
-if (<My custom error logic>)
-{
-    #Throw an error to fail the patch deployment.
-    throw "There was an error, abort deployment"
-}
-```
-
-## <a name="known-issues"></a>既知の問題
-
-* 事前および事後スクリプトを使用している場合は、パラメーターにブール値、オブジェクト、または配列を渡すことができません。 行った場合、Runbook は失敗します。 サポートされている型の完全な一覧については、「[パラメーターを渡す](#passing-parameters)」を参照してください。
+> [!NOTE]
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -251,4 +254,3 @@ if (<My custom error logic>)
 
 > [!div class="nextstepaction"]
 > [Azure Windows VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)
-

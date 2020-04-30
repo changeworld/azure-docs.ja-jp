@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 001a77734a8cedf08c5523380c1cbd00dce89f40
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679201"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687082"
 ---
 # <a name="get-service-access-tokens"></a>サービス アクセス トークンを取得する
 
@@ -24,7 +24,7 @@ ARR REST API へのアクセスは、権限のあるユーザーにのみ許可�
 
 ## <a name="token-service-rest-api"></a>トークン サービスの REST API
 
-アクセス トークンを作成するために、*セキュリティ トークン サービス*には 1 つの REST API が用意されています。 ARR STS サービスの URL は [https://sts.mixedreality.azure.com](https://sts.mixedreality.azure.com) です。
+アクセス トークンを作成するために、*セキュリティ トークン サービス*には 1 つの REST API が用意されています。 ARR STS サービスの URL は https:\//sts.mixedreality.azure.com です。
 
 ### <a name="get-token-request"></a>'トークンの取得' 要求
 

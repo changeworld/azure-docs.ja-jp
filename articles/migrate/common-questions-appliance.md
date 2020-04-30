@@ -2,13 +2,13 @@
 title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437611"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529690"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -31,6 +31,15 @@ Azure Migrate アプライアンスに関する詳細を示します。
 
 アプライアンスの[詳細をご覧ください](migrate-appliance.md)。
 
+## <a name="how-can-i-deploy-the-appliance"></a>アプライアンスをデプロイするにはどうすればよいですか。
+
+アプライアンスは次のようにデプロイできます。
+
+- VMware VM と Hyper-V VM 用のテンプレート (VMware の場合は OVA テンプレート、Hyper-V の場合は VHD) を使用します。
+- テンプレートを使用しない場合、または Azure Government を利用している場合は、PowerShell スクリプトを使用して VMware または Hyper-V 用のアプライアンスをデプロイできます。
+- 物理サーバーの場合は、必ずスクリプトを使用してアプライアンスをデプロイします。
+
+
 ## <a name="how-does-the-appliance-connect-to-azure"></a>アプライアンスはどのように Azure に接続しますか。
 
 アプライアンスはインターネット経由で接続できます。または、Azure ExpressRoute をパブリックまたは Microsoft ピアリングで使用できます。
@@ -45,11 +54,8 @@ Azure Migrate アプライアンスでは、パフォーマンス データを�
 
 ## <a name="what-network-connectivity-is-required"></a>どのようなネットワーク接続が必要ですか。
 
-Azure Migrate アプライアンスのネットワーク接続要件の詳細については、次の記事を参照してください。
 
-- **VMware の評価**:[URL アクセス](migrate-appliance.md#url-access) と [ポート アクセス](migrate-support-matrix-vmware.md#port-access)
-- **VMware のエージェントレス移行**:[URL アクセス](migrate-appliance.md#url-access) と [ポート アクセス](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-V の評価**:[URL アクセス](migrate-appliance.md#url-access) と [ポート アクセス](migrate-support-matrix-hyper-v.md#port-access)
+アプライアンスは Azure の URL にアクセスできる必要があります。 URL リストを[確認してください](migrate-appliance.md#url-access)。
 
 ## <a name="what-data-does-the-appliance-collect"></a>アプライアンスはどのようなデータを収集しますか。
 

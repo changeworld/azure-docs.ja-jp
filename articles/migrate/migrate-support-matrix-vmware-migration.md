@@ -2,13 +2,13 @@
 title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232711"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538139"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -45,9 +45,9 @@ VMware VM は、次のいくつかの方法で移行できます。
 --- | ---
 **サポートされているオペレーティング システム** | Azure でサポートされる [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システムは、エージェントレス移行を使用して移行できます。
 **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 次のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8<br/><br/> その他のオペレーティング システムについては、移行前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。
-**Linux ブート** | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
+**Linux ブート** | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、'/' パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
 **UEFI ブート** | UEFI ブートを使用した VM の移行はサポートされません。
-**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 4 TB。
+**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
 **ディスクの制限** |  VM あたり最大 60 台のディスク。
 **暗号化されたディスクまたはボリューム** | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。
 **共有ディスク クラスター** | サポートされていません。
@@ -64,10 +64,12 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Agentless-Azure Migrate のアプライアンス 
-エージェントレスの移行では、VMware VM にデプロイされた Azure Migrate アプライアンスを使用します。
+
+エージェントレスの移行では、[Azure Migrate アプライアンス](migrate-appliance.md)を使用します。 アプライアンスを VMWare VM としてデプロイするには、OVA テンプレートを使用するか、vCenter Server にインポートするか、[PowerShell スクリプト](deploy-appliance-script.md)を使用します。
 
 - VMware の[アプライアンスの要件](migrate-appliance.md#appliance---vmware)を確認してください。
-- アプライアンスがアクセスする必要のある [URL](migrate-appliance.md#url-access) を確認してください。
+- アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government](migrate-appliance.md#government-cloud-urls) クラウドでアクセスする必要がある URL について確認します。
+- Azure Government では、スクリプトを使用してアプライアンスをデプロイする必要があります。
 
 ## <a name="agentless-ports"></a>エージェントレス - ポート
 
@@ -123,7 +125,8 @@ Azure Migrate ハブで提供されている OVA テンプレートを使用し�
 
 - VMware の[レプリケーション アプライアンスの要件](migrate-replication-appliance.md#appliance-requirements)を確認してください。
 - アプライアンスに MySQL がインストールされている必要があります。 [インストール オプション](migrate-replication-appliance.md#mysql-installation)を確認してください。
-- レプリケーション アプライアンスがアクセスする必要のある [URL](migrate-replication-appliance.md#url-access) および[ポート](migrate-replication-appliance.md#port-access)を確認してください。
+- レプリケーション アプライアンスが[パブリック](migrate-replication-appliance.md#url-access)および [Government](migrate-replication-appliance.md#azure-government-url-access) クラウドでアクセスする必要がある URL について確認します。
+- レプリケーション アプライアンスがアクセスする必要のある[ポート](migrate-replication-appliance.md#port-access)を確認します。
 
 ## <a name="agent-based-ports"></a>エージェントベースのポート
 

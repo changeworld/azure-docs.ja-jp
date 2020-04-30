@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 354b0eae1620c49006b350371aae38f8867c18b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124668"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481979"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "80124668"
 
 3. Web サービスが JSON シリアル化データを受け入れて返すことを確認します。
 
-4. 高スケールの運用デプロイ向けの [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) にモデルをデプロイします。 Web サービスがジョブからの要求数を処理できない場合、Stream Analytics ジョブのパフォーマンスが低下し、待機時間に影響します。
+4. 高スケールの運用デプロイ向けの [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) にモデルをデプロイします。 Web サービスがジョブからの要求数を処理できない場合、Stream Analytics ジョブのパフォーマンスが低下し、待機時間に影響します。 Azure Container Instances にデプロイされたモデルは現在サポートされていませんが、今後数か月のうちに使用できるようになります。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>機械学習モデルをジョブに追加する
 

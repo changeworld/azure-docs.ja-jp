@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 910f284eedbf50be5b58b6c18f02e50adda35e9a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417781"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680001"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS の更新プログラムの展開を Azure に移行する
 
-Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/platform/oms-portal-transition.md)となっています。 Update Management 用の OMS ポータルで使用できたすべての機能が、Azure portal で使用できます。 この記事では、Azure portal に移行するために必要な情報を提供しています。
+Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/platform/oms-portal-transition.md)となっています。 Update Management 用の OMS ポータルで使用できたすべての機能が、Azure Monitor ログを通じて Azure portal で使用できます。 この記事では、Azure portal に移行するために必要な情報を提供しています。
 
 ## <a name="key-information"></a>重要な情報
 
@@ -23,7 +23,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 
 ## <a name="access-the-azure-portal"></a>Azure portal にアクセスする
 
-OMS ワークスペースで、 **[Azure で開く]** をクリックします。 これにより OMS が使用していた Log Analytics ワークスペースに移動します。
+OMS ワークスペースで、 **[Azure で開く]** をクリックします。 この選択により、OMS が使用している Log Analytics ワークスペースに移動します。
 
 ![Azure で開く - OMS ポータル](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
@@ -31,11 +31,13 @@ Azure portal で、 **[Automation アカウント]** をクリックします。
 
 ![Azure Monitor ログ](media/migrate-oms-update-deployments/log-analytics.png)
 
-Automation アカウントから、 **[Update Management]** をクリックして、Update Management を開きます。
+Automation アカウントで、 **[Update Management]** をクリックします。
 
 ![更新管理](media/migrate-oms-update-deployments/azure-automation.png)
 
-今後は、 **[すべてのサービス]** の **[管理ツール]** の下で **[Automation アカウント]** を選択し、該当する Automation アカウントを選択し、 **[Update Management]** をクリックすると、直接 Azure portal に移動できるようになります。
+Azure portal で、 **[すべてのサービス]** の下の **[Automation アカウント]** を選択します。 
+
+**[管理ツール]** の下から適切な Automation アカウントを選択し、 **[Update Management]** をクリックします。
 
 ## <a name="recreate-existing-deployments"></a>既存の展開を再作成する
 
@@ -49,13 +51,13 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
 
 ![更新プログラムの展開のスケジュール](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-**[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
+[新しい更新プログラムの展開] ペインが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
 
-更新するマシンには、既存の OMS の展開で使用された保存された検索条件を選択します。
+**[更新するマシン]** には、既存の OMS の展開で使用された保存済みの検索条件を選択します。
 
 | プロパティ | 説明 |
 | --- | --- |
-|Name |更新プログラムの展開を識別する一意の名前。 |
+|名前 |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| **Linux** か **Windows** を選択します。|
 |更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
 |更新プログラムの分類|必要な更新プログラムの分類をすべて選択します。 CentOS ではこれは既定ではサポートされていません。|

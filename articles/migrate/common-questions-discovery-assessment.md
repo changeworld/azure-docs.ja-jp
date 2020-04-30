@@ -2,13 +2,13 @@
 title: Azure Migrate での検出、評価、および依存関係分析に関する質問
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 7a63271811053ee2da79f134ac117559e31b0fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460808"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681914"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -19,9 +19,20 @@ ms.locfileid: "79460808"
 - [サーバー移行](common-questions-server-migration.md) に関する質問
 - [Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)で質問の回答を示します。
 
+
+## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Azure Migrate を使用した検出と評価は、どの地域でサポートされていますか?
+
+[パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
+
+
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM の数を教えてください？
 
 1 つのアプライアンスを使って最大 10,000 までの VMware VM、最大 5,000 までの Hyper-V VM、および最大 250 までの物理サーバーを検出できます。 多くのマシンがある場合は、「[Hyper-v の評価のスケーリング](scale-hyper-v-assessment.md)」、「[VMware の評価のスケーリング](scale-vmware-assessment.md)」、または「[物理サーバーの評価のスケーリング](scale-physical-assessment.md)」を参照してください。
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Azure Government に一部の VM の種類が表示されない
+
+評価と移行がサポートされている VM の種類は、Azure Government の場所で使用できるかどうかによって異なります。 Azure Government の VM の種類を[確認および比較](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)できます。
+
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>VM のサイズが変更しました。 評価を再実行できますか?
 
@@ -80,7 +91,7 @@ Azure で評価を作成する場合は、設定されているパフォーマ�
 依存関係の視覚化は、移行する VM のグループ評価の信頼性を高める上で役立ちます。 依存関係の視覚化により、評価を実行する前に、マシンの依存関係がクロスチェックされます。 これにより、見落としがなくなり、Azure への移行時に予期しない障害を回避しやすくなります。 Azure Migrate では、依存関係の視覚化を実現するために Azure Monitor の Service Map ソリューションを使用します。 [詳細については、こちらを参照してください](concepts-dependency-visualization.md)。
 
 > [!NOTE]
-> 依存関係の視覚化は、Azure Government では使用できません。
+> エージェントベースの依存関係の分析は、Azure Government では使用できません。 エージェントレスの依存関係の分析を使用できます
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>エージェントベースとエージェントレスの違いは何ですか?
 

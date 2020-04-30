@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure DevOps と Azure Dev Spaces を使用して、継続的インテグレーション/継続的配置を設定する方法について学習します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438445"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685630"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -79,7 +79,7 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 1. テンプレートとして、 **[コードとしての構成]** または **[YAML]** を選択します。
 1. この時点で、ビルド パイプラインの構成ページが表示されています。 前述したように、 **[...]** ボタンを使用して **[YAML ファイル パス]** の言語固有パスに移動します。 たとえば、「 `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 」のように入力します。
 1. **[変数]** タブに移動します。
-1. _dockerId_ を変数として手動で追加します。[Azure Container Registry 管理者アカウント](../../container-registry/container-registry-authentication.md#admin-account)のユーザー名です (記事の「前提条件」に記載されています)。
+1. _dockerId_ を変数として手動で追加します。[Azure Container Registry 管理者アカウント](../../container-registry/container-registry-authentication.md#admin-account)のユーザー名です  (記事の「前提条件」に記載されています)。
 1. _dockerPassword_ を変数として手動で追加します。[Azure Container Registry 管理者アカウント](../../container-registry/container-registry-authentication.md#admin-account)のパスワードです。 セキュリティのために、_dockerPassword_ は必ずシークレットとして指定 (鍵のアイコンを選択) します。
 1. **[保存してキューに登録]** を選択します。
 
@@ -131,7 +131,7 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 すべてのタスクが完了すると、リリースが行われます。
 
 > [!TIP]
-> "*UPGRADE FAILED: timed out waiting for the condition*" のようなエラー メッセージでリリースが失敗した場合、[Kubernetes ダッシュボードを使用して](../../aks/kubernetes-dashboard.md)、ご自身のクラスター内のポッドを調べてみてください。 ポットがエラーになっており、エラー メッセージが "*Failed to pull image "azdsexample.azurecr.io/mywebapi:122": rpc error: code = Unknown desc = Error response from daemon:Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: unauthorized: authentication required*" のように始まっている場合、クラスターがお使いの Azure コンテナー レジストリからプルするための承認を受けていないことが原因になっている可能性があります。 「[お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../aks/cluster-container-registry-integration.md)」の前提条件を完了していることを確認してください。
+> "*UPGRADE FAILED: timed out waiting for the condition*" のようなエラー メッセージでリリースが失敗した場合、[Kubernetes ダッシュボードを使用して](../../aks/kubernetes-dashboard.md)、ご自身のクラスター内のポッドを調べてみてください。 ポットがエラーになっており、エラー メッセージが "*Failed to pull image "azdsexample.azurecr.io/mywebapi:122": rpc error: code = Unknown desc = Error response from daemon:Get https:\//azdsexample.azurecr.io/v2/mywebapi/manifests/122: unauthorized: authentication required*" のような場合、クラスターが、お使いの Azure Container Registry からプルすることを承認されていないことが原因である可能性があります。 「[お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../aks/cluster-container-registry-integration.md)」の前提条件を完了していることを確認してください。
 
 これで、Dev Spaces サンプル アプリの GitHub フォークに対応する CI/CD パイプラインを完全に自動化できました。 コードをコミットしてプッシュするたびに、ビルド パイプラインでは *mywebapi* および *webfrontend* イメージをビルドして、お使いのカスタム ACR インスタンスにプッシュします。 その後、リリース パイプラインでは、アプリごとの Helm チャートを Dev Spaces が有効になっているクラスター上の _dev_ 空間にデプロイします。
 

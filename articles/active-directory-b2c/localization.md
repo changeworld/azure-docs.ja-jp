@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126761"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681416"
 ---
 # <a name="localization"></a>ローカリゼーション
 
@@ -39,9 +39,9 @@ ms.locfileid: "79126761"
 
 **Localization** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| 有効 | いいえ | 指定できる値: `true` または `false`。 |
+| Enabled | いいえ | 指定できる値: `true` または `false`。 |
 
 **Localization** 要素には、次の XML 要素が含まれています。
 
@@ -54,7 +54,7 @@ ms.locfileid: "79126761"
 
 **SupportedLanguages** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | はい | ローカライズされたリソースの既定値として使用される言語。 |
 | MergeBehavior | いいえ | 同じ識別子を持つ親ポリシーに存在するすべての ClaimType と一緒にマージされる、値の列挙値。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、または `ReplaceAll`。 `Append` 値は、存在するデータのコレクションを、親ポリシーで指定したコレクションの末尾に追加する必要があることを指定します。 `Prepend` 値は、存在するデータのコレクションを、親ポリシーで指定したコレクションの前に追加する必要があることを指定します。 `ReplaceAll` 値は、親ポリシーで定義されているデータのコレクションを、現在のポリシーで定義されているデータを代わりに使用して無視する必要があることを指定します。 |
@@ -71,7 +71,7 @@ ms.locfileid: "79126761"
 
 **LocalizedResources** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | ローカライズされたリソースを一意に識別するために使用される識別子。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "79126761"
 
 **LocalizedCollection** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | ElementType | はい | ポリシー ファイル内の ClaimType 要素またはユーザー インターフェイス要素を参照します。 |
 | ElementId | はい | **ElementType** が ClaimType に設定されている場合に使用される、ClaimsSchema セクションで定義済みの要求の種類への参照を含む文字列。 |
@@ -102,19 +102,19 @@ ms.locfileid: "79126761"
 
 **LocalizedCollection** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
-| アイテム | 0:n | ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (ドロップダウン リストの値など) を定義します。 |
+| Item | 0:n | ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (ドロップダウン リストの値など) を定義します。 |
 
 **Item** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Text | はい | このオプションのユーザー インターフェイスでユーザーに表示する必要がある、ユーザーフレンドリーな表示文字列。 |
-| 値 | はい | このオプションの選択に関連付けられている要求の文字列値。 |
-| SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 使用可能な値: True または False。 |
+| Value | はい | このオプションの選択に関連付けられている要求の文字列値。 |
+| SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
-次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 **の**Restriction`Gender` コレクションを設定します。
+次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -144,67 +144,192 @@ ms.locfileid: "79126761"
 
 **LocalizedString** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| ElementType | はい | ポリシー内の要求の種類要素またはユーザー インターフェイス要素への参照。 指定できる値: `ClaimType`、`UxElement`、`ErrorMessage`、`Predicate`、または `GetLocalizedStringsTransformationClaimType`。 `ClaimType` 値は、StringId で指定された、要求属性のいずれかをローカライズするために使用されます。 `UxElement` 値は、StringId で指定されたユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 `ErrorMessage` 値は、StringId で指定されたシステム エラー メッセージのいずれかをローカライズするために使用されます。 `Predicate` 値は、StringId で指定された、[Predicate](predicates.md) エラー メッセージのいずれかをローカライズするために使用されます。 `InputValidation` 値は、StringId で指定された [PredicateValidation](predicates.md) グループ エラー メッセージのいずれかをローカライズするために使用されます。 `GetLocalizedStringsTransformationClaimType` 値は、ローカライズされた文字列を要求にコピーするために使用されます。 詳細については、[GetLocalizedStringsTransformation 要求変換](string-transformations.md#getlocalizedstringstransformation)に関する記事を参照してください。  | 
+| ElementType | はい | 指定できる値[ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation)、または [UxElement](#uxelement)。   | 
 | ElementId | はい | **ElementType** が `ClaimType`、`Predicate`、または `InputValidation` に設定されている場合、この要素には ClaimsSchema セクションで定義済みの要求の種類への参照が含まれます。 |
-| StringId | はい | **ElementType** が `ClaimType` に設定されている場合、この要素には要求の種類の属性への参照が含まれます。 指定できる値: `DisplayName`、`AdminHelpText`、または `PatternHelpText`。 `DisplayName` 値は、要求の表示名を設定するために使用されます。 `AdminHelpText` 値は、要求ユーザーのヘルプ テキスト名を設定するために使用されます。 `PatternHelpText` 値は、要求パターンのヘルプ テキストを設定するために使用されます。 **ElementType** が `UxElement` に設定されている場合、この要素にはユーザー インターフェイス要素の属性への参照が含まれます。 **ElementType** が `ErrorMessage` に設定されている場合、この要素はエラー メッセージの識別子を指定します。 [ 識別子の完全な一覧については、「](localization-string-ids.md)ローカライズ文字列 ID`UxElement`」を参照してください。|
+| StringId | はい | **ElementType** が `ClaimType` に設定されている場合、この要素には要求の種類の属性への参照が含まれます。 指定できる値: `DisplayName`、`AdminHelpText`、または `PatternHelpText`。 `DisplayName` 値は、要求の表示名を設定するために使用されます。 `AdminHelpText` 値は、要求ユーザーのヘルプ テキスト名を設定するために使用されます。 `PatternHelpText` 値は、要求パターンのヘルプ テキストを設定するために使用されます。 **ElementType** が `UxElement` に設定されている場合、この要素にはユーザー インターフェイス要素の属性への参照が含まれます。 **ElementType** が `ErrorMessage` に設定されている場合、この要素はエラー メッセージの識別子を指定します。 `UxElement` 識別子の完全な一覧については、「[ローカライズ文字列 ID](localization-string-ids.md)」を参照してください。|
 
+## <a name="elementtype"></a>ElementType
 
-次の例は、ローカライズされたサインアップ ページを示しています。 最初の 3 つの **LocalizedString** 値は、要求属性を設定します。 4 つ目の値は、続行ボタンの値を変更します。 最後の値は、エラーメッセージを変更します。
+ElementType は、要求の種類、要求変換、またはローカライズされるポリシーのユーザー インターフェイス要素を参照します。
 
-```XML
-<LocalizedResources Id="api.selfasserted.en">
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
+| ローカライズする要素 | ElementType | ElementId |StringId |
+| --------- | -------- | ----------- |----------- |
+| ID プロバイダー名 |`ClaimsProvider`| | ClaimsExchange 要素の ID|
+| 要求の種類の属性|`ClaimType`|要求の種類の名前| ローカライズされる要求の属性。 使用できる値: `AdminHelpText`、`DisplayName`、`PatternHelpText`、および `UserHelpText`。|
+|エラー メッセージ|`ErrorMessage`||エラー メッセージの ID |
+|ローカライズされた文字列を要求にコピーする|`GetLocalizedStringsTra nsformationClaimType`||出力要求の名前|
+|述語ユーザー メッセージ|`Predicate`|述語の名前| ローカライズされる述語の属性。 使用可能な値: `HelpText`。|
+|述語グループ ユーザー メッセージ|`InputValidation`|PredicateValidation 要素の ID。|PredicateGroup 要素の ID。 述語グループは、ElementId に定義されている述語検証要素の子である必要があります。|
+|ユーザー インターフェイスの要素 |`UxElement` | | ローカライズされるユーザー インターフェイス要素の ID。|
 
-次の例は、Id **を持つ**Predicate**のローカライズされた**UserHelpText`IsLengthBetween8And64` を示しています。 また、Id **を持つ**PredicateValidation**の Id** を持つ `CharacterClasses`PredicateGroup**のローカライズされた**UserHelpText`StrongPassword` を示しています。
+## <a name="examples"></a>例
 
-```XML
-<PredicateValidation Id="StrongPassword">
-  <PredicateGroups>
-    ...
-    <PredicateGroup Id="CharacterClasses">
-    ...
-    </PredicateGroup>
-  </PredicateGroups>
-</PredicateValidation>
+### <a name="claimsprovider"></a>ClaimsProvider
 
-...
+ClaimsProvider 値は、要求プロバイダーの表示名のいずれかをローカライズするために使用されます。 
 
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
+```xml
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   ...
-</Predicate>
-...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
+  </ClaimsExchanges>
+</OrchestrationStep>
 
-
-<LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
-
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
-## <a name="set-up-localization"></a>ローカライズを設定する
+次の例は、要求プロバイダーの表示名をローカライズする方法を示しています。
 
-この記事では、ユーザー体験に関するポリシーで複数のロケールや言語をサポートする方法について説明します。 ローカライズには、3 つのステップ (サポートされている言語の明示的な一覧の設定、言語固有の文字列とコレクションの指定、およびページのContentDefinition の編集) が必要です。
+```xml
+<LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="GoogleExchange">Google</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="LinkedInExchange">LinkedIn</LocalizedString>
+```
 
-### <a name="set-up-the-explicit-list-of-supported-languages"></a>サポートされている言語の明示的な一覧を設定する
+### <a name="claimtype"></a>ClaimType
 
-**BuildingBlocks** 要素の下に、サポートされている言語の一覧を含む **Localization** 要素を追加します。 次の例は、英語 (既定値) とスペイン語の両方に対するローカライズのサポートを定義する方法を示しています。
+ClaimType 値は、いずれかの要求属性をローカライズするために使用されます。 
+
+```xml
+<ClaimType Id="email">
+  <DisplayName>Email Address</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Email address that can be used to contact you.</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
+```
+
+次の例は、要求の種類 email の DisplayName、UserHelpText、および PatternHelpText の各属性をローカライズする方法を示しています。
 
 ```XML
-<Localization Enabled="true">
-  <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-    <SupportedLanguage>en</SupportedLanguage>
-    <SupportedLanguage>es</SupportedLanguage>
-  </SupportedLanguages>
-</Localization>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
+```
+
+### <a name="errormessage"></a>ErrorMessage
+
+ErrorMessage 値は、システム エラー メッセージのいずれかをローカライズするために使用されます。 
+
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+  <Metadata>
+    <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+    <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered, please press the back button and sign in instead.</Item>
+  </Metadata>
+  ...
+</TechnicalProfile>
+```
+
+次の例は、UserMessageIfClaimsPrincipalAlreadyExists エラー メッセージをローカライズする方法を示しています。
+
+
+```XML
+<LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
+
+GetLocalizedStringsTransformationClaimType 値は、ローカライズされた文字列を要求にコピーするために使用されます。 詳細については、[GetLocalizedStringsTransformation 要求変換](string-transformations.md#getlocalizedstringstransformation)に関する記事を参照してください。
+
+
+```xml
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+次の例は、GetLocalizedStringsTransformation 要求変換の出力要求をローカライズする方法を示しています。
+
+```xml
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+```
+
+### <a name="predicate"></a>Predicate
+
+Predicate 値は、[Predicate](predicates.md) エラー メッセージのいずれかをローカライズするために使用されます。 
+
+```xml
+<Predicates>
+  <Predicate Id="LengthRange" Method="IsLengthRange"  HelpText="The password must be between 6 and 64 characters.">
+    <Parameters>
+      <Parameter Id="Minimum">6</Parameter>
+      <Parameter Id="Maximum">64</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">a-z</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">A-Z</Parameter>
+    </Parameters>
+  </Predicate>
+</Predicates>
+```
+
+次の例は、述語のヘルプ テキストをローカライズする方法を示しています。
+
+```xml
+<LocalizedString ElementType="Predicate" ElementId="LengthRange" StringId="HelpText">The password must be between 6 and 64 characters.</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Lowercase" StringId="HelpText">a lowercase letter</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Uppercase" StringId="HelpText">an uppercase letter</LocalizedString>
+```
+
+### <a name="inputvalidation"></a>InputValidation
+
+InputValidation 値は、[PredicateValidation](predicates.md) グループのエラー メッセージのいずれかをローカライズするために使用されます。 
+
+```xml
+<PredicateValidations>
+  <PredicateValidation Id="CustomPassword">
+    <PredicateGroups>
+      <PredicateGroup Id="LengthGroup">
+        <PredicateReferences MatchAtLeast="1">
+          <PredicateReference Id="LengthRange" />
+        </PredicateReferences>
+      </PredicateGroup>
+      <PredicateGroup Id="CharacterClasses">
+        <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+        <PredicateReferences MatchAtLeast="3">
+          <PredicateReference Id="Lowercase" />
+          <PredicateReference Id="Uppercase" />
+          <PredicateReference Id="Number" />
+          <PredicateReference Id="Symbol" />
+        </PredicateReferences>
+      </PredicateGroup>
+    </PredicateGroups>
+  </PredicateValidation>
+</PredicateValidations>
+```
+
+次の例は、述語検証グループのヘルプ テキストをローカライズする方法を示しています。
+
+```XML
+<LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
+```
+
+### <a name="uxelement"></a>UxElement
+
+UxElement 値は、ユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 次の例は、続行とキャンセルのボタンをローカライズする方法を示しています。
+
+```XML
+<LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
+<LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
 ## <a name="next-steps"></a>次のステップ

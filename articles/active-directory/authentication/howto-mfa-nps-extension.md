@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8606f0b7ab47d624ec66c8cda539e571cec6ce
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393053"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617659"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -142,6 +142,14 @@ NPS 拡張機能を展開して使用する前に、2 段階認証を実行す�
 1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。
 2. 表示されたメッセージに従って、確認方法を設定します。
 3. テスト アカウントに対して多要素認証を要求するには、[条件付きアクセス ポリシーを作成](howto-mfa-getstarted.md#create-conditional-access-policy)します。
+
+> [!IMPORTANT]
+>
+> ユーザーが Azure Multi-Factor Authentication に正常に登録していることを確認してください。 ユーザーが以前にセルフサービス パスワード リセット (SSPR) のみに登録している場合は、そのアカウントに対して *StrongAuthenticationMethods* が有効になります。 ユーザーが SSPR のみに登録した場合でも、*StrongAuthenticationMethods* が構成されている場合は、Azure Multi-Factor Authentication が適用されます。
+>
+> SSPR と Azure Multi-Factor Authentication を同時に構成する、統合されたセキュリティ登録を有効にすることができます。 詳細については、「[Azure Active Directory での統合されたセキュリティ情報の登録の有効化](howto-registration-mfa-sspr-combined.md)」を参照してください。
+>
+> 以前に SSPR のみを有効にした場合は、[認証方法を再登録するようユーザーに強制する](howto-mfa-userdevicesettings.md#manage-user-authentication-options)こともできます。
 
 ## <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 

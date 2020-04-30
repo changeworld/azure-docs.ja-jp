@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - マーケティングのベスト プラクティス | Azure
+title: Go-To-Market サービス - マーケティングのベスト プラクティス | Azure Marketplace
 description: Go-To-Market Services - このセクションでは、Azure Marketplace のパブリッシャー向けのマーケティングのベスト プラクティスについて説明します
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 6/24/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 2926752884576bcf3a7a15d68eecb6f1248f7e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e874343b5bb38928ae2fc429d901d8f7ec163580
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286270"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684594"
 ---
 # <a name="marketing-best-practices"></a>マーケティングのベスト プラクティス
 
@@ -22,6 +22,6 @@ ms.locfileid: "80286270"
 
 マーケットプレース GTM サービスの詳細については、「[Go-to-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
 
-[Cloud パートナー ポータル](https://cloudpartner.azure.com)にサインインして、オファーを作成および構成する。
+[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインして、オファーを作成して構成します。
 
 ---

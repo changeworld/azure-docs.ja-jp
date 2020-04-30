@@ -1,5 +1,5 @@
 ---
-title: Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
+title: 使用しているアプリケーションでユーザーがプロビジョニングされていない
 description: Azure AD でユーザー プロビジョニングのために構成した Azure AD ギャラリー アプリケーションにユーザーが表示されない場合に発生する一般的な問題をトラブルシューティングする方法
 services: active-directory
 documentationcenter: ''
@@ -12,23 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 04/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b60261d63e1bcb75aea9d2e8a6b74902520f391
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac6d4f24d3b6c21828ccb11785005df736c6b070
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77522919"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680348"
 ---
-# <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
+# <a name="no-users-are-being-provisioned"></a>ユーザーがプロビジョニングされていない 
+>[!NOTE]
+>2020 年 4 月 16 日以降、既定のアクセス ロールが割り当てられているユーザーの動作が変更されました。 詳細については、以下のセクションをご覧ください。 
+>
 アプリケーションで自動プロビジョニングが構成された後 (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認を含む)、そのアプリに対してユーザーまたはグループ、あるいはその両方がプロビジョニングされます。 プロビジョニングは、次のものによって決定されます。
 
 -   どのユーザーとグループがアプリケーションに**割り当てられている**か。 入れ子になったグループまたは Office 365 グループのプロビジョニングはサポートされていません。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」を参照してください。
 -   **属性マッピング**が有効になっているかどうか、および有効な属性を Azure AD からアプリに同期するように構成されているかどうか。 属性マッピングの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
 -   特定の属性値に基づいてユーザーをフィルター処理する**スコープ フィルター**が存在するかどうか。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
+  
   
 ユーザーがプロビジョニングされていないことがわかった場合は、Azure AD の[プロビジョニング ログ (プレビュー)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) を調べてください。 特定のユーザーのログ エントリを検索します。
 
@@ -58,7 +62,14 @@ Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンター�
 - **ユーザーが "実質的に有効でない" 状態です**。 この特定のエラー メッセージが表示された場合、その原因は、Azure AD に格納されているユーザー割り当てレコードの問題です。 この問題を解決するには、アプリからユーザー (またはグループ) を割り当て解除し、再割り当てします。 割り当ての詳細については、[ユーザーまたはグループ アクセスの割り当て](../manage-apps/assign-user-or-group-access-portal.md)に関するページを参照してください。
 - **必須の属性が見つからないか、ユーザー用に設定されていません**。 プロビジョニングを設定するときに考慮すべき重要なことは、どのユーザー (またはグループ) プロパティが Azure AD からアプリケーションに提供されるかを定義する属性マッピングとワークフローを確認して構成することです。 この構成には、2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される "照合プロパティ" の設定が含まれます。 この重要なプロセスの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
 - **グループの属性マッピング:** 一部のアプリケーションでサポートされている場合は、メンバーだけでなくグループの名前と詳細もプロビジョニングします。 **[プロビジョニング]** タブに表示されるグループ オブジェクトの **[マッピング]** を有効または無効にして、この機能を有効または無効にすることができます。グループのプロビジョニングが有効になっている場合は、適切なフィールドが "照合 ID" に使用されていることを確かめるために、属性マッピングを必ず確認してください。 この照合 ID は、表示名または電子メール エイリアスである場合があります。 照合プロパティが空か、または Azure AD のグループ用に設定されていない場合、グループとそのメンバーはプロビジョニングされません。
+## <a name="provisioning-users-assigned-to-the-default-access-role"></a>既定のアクセス ロールに割り当てられたユーザーのプロビジョニング
+ギャラリーからのアプリケーションの既定のロールは、"既定のアクセス" ロールと呼ばれます。 これまで、このロールに割り当てられたユーザーは、"実質的に資格なし" であるため、プロビジョニングされず、[プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) で [スキップされました] とマークされています。 
 
+**2020 年 4 月 16 日より後に作成されたプロビジョニング構成の動作:** 既定のアクセス ロールに割り当てられているユーザーは、他のすべてのロールと同じように評価されます。 既定のアクセスが割り当てられているユーザーは、"実質的に資格なし" としてスキップされなくなります。 
+
+**2020 年 4 月 16 日より前に作成されたプロビジョニング構成の動作:** 今後 3 か月間は、現在の動作と同じままです。 既定のアクセス ロールを持つユーザーは、実質的に資格なしとしてスキップされます。 2020 年 7 月以降、すべてのアプリケーションで動作が統一されます。 "実質的に資格なし" という理由で、既定のアクセス ロールを持つユーザーのプロビジョニングがスキップされなくなります。 この変更は Microsoft によって行われ、お客様による操作は必要ありません。 この変更の後も、これらのユーザーが引き続きスキップされるようにする場合は、適切なスコープ フィルターを適用するか、アプリケーションからユーザーの割り当てを解除してスコープ外になるようにしてください。  
+
+これらの変更に関するご質問は、 provisioningfeedback@microsoft.com までお問い合わせください。
 ## <a name="next-steps"></a>次のステップ
 
 [Azure AD Connect 同期:宣言型のプロビジョニングについて](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

@@ -3,17 +3,17 @@ title: 価格および課金モデル
 description: Azure Logic Apps の価格および課金モデルのしくみに関する概要
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
+author: jonfancey
+ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233003"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536235"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -23,50 +23,55 @@ ms.locfileid: "79233003"
 
 ## <a name="consumption-pricing-model"></a>従量課金モデル
 
-パブリック ("グローバル") な Azure Logic Apps サービスで実行される新しいロジック アプリの場合は、使用分についてのみ課金されます。 これらのロジック アプリでは、従量制のプランと価格モデルが使用されます。 ロジック アプリでは、各ステップがアクションになります。Azure Logic Apps によって、ロジック アプリで実行されるすべてのアクションが測定されます。
+パブリック ("グローバル") なマルチテナント Azure Logic Apps サービスで実行される新しいロジック アプリの場合は、使用分についてのみ課金されます。 これらのロジック アプリでは、従量制のプランと価格モデルが使用されます。 ロジック アプリでは、各ステップがアクションになります。Azure Logic Apps によって、ロジック アプリで実行されるすべてのアクションが測定されます。
 
 たとえば、アクションには以下が含まれます。
 
-* トリガー。これは特別なアクションです。 すべてのロジック アプリには、最初のステップとしてトリガーが必要です。
+* [トリガー](#triggers)。これは特別なアクションです。 すべてのロジック アプリには、最初のステップとしてトリガーが必要です。
+
 * HTTP などの ["組み込み" (ネイティブ) アクション](../connectors/apis-list.md#built-in)や、Azure Functions と API Management の呼び出しなど。
+
 * Outlook 365 や Dropbox などの[マネージド コネクタ](../connectors/apis-list.md#managed-connectors)の呼び出し。
-* ループや条件付きステートメントなどの制御フローのステップ。
+
+* ループや条件付きステートメントなどの[制御ワークフローのアクション](../connectors/apis-list.md#control-workflow)
 
 [標準コネクタ](../connectors/apis-list.md#managed-connectors)は、[標準コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps)で課金されます。 一般公開されている[エンタープライズ コネクタ](../connectors/apis-list.md#managed-connectors)は[エンタープライズ コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps)で課金され、パブリック プレビュー エンタープライズ コネクタは[標準コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps)で課金されます。
 
-[トリガー](#triggers)と[アクション](#actions)に対する課金のしくみの詳細を参照してください。
+[トリガー](#triggers)と[アクション](#actions)のレベルにおける課金のしくみの詳細を参照してください。 また、制限の詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md)に関するページを参照してください。
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>固定価格モデル
 
-"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、分離された方法が用意されています。 ISE 内で実行される新しいロジック アプリでは、次の機能に対して、[固定の月額料金](https://azure.microsoft.com/pricing/details/logic-apps)を支払います。
+"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、分離された方法が用意されています。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。 ISE を作成する場合、作成時にのみ、異なる[価格レート](https://azure.microsoft.com/pricing/details/logic-apps)の [ISE レベルまたは "SKU"](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) を選択できます。
+
+* **Premium** ISE:この SKU の基本単位の容量は固定されていますが、さらにスループットが必要な場合は、ISE の作成中または作成後に[スケール ユニットを追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 ISE の制限の詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#integration-service-environment-ise)に関するページを参照してください。
+
+* **Developer** ISE:この SKU にはスケールアップの機能、サービス レベル アグリーメント (SLA)、および公開されている制限はありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
+
+ユーザーが作成して ISE で実行する新しいロジック アプリの場合は、次の機能に対して、[固定の月額料金](https://azure.microsoft.com/pricing/details/logic-apps)を支払います。
 
 * [組み込みの](../connectors/apis-list.md#built-in)トリガーとアクション
 
   ISE 内で、組み込みのトリガーとアクションは **Core** というラベルを表示し、ロジック アプリと同じ ISE で実行されます。
 
-* [標準](../connectors/apis-list.md#managed-connectors)コネクタと[エンタープライズ](../connectors/apis-list.md#enterprise-connectors) コネクタ (必要な数のエンタープライズ接続)
+* [標準](../connectors/apis-list.md#managed-connectors)コネクタと[エンタープライズ](../connectors/apis-list.md#enterprise-connectors) コネクタ (必要な数のエンタープライズ接続を確立できます)
 
-   **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、グローバルな Logic Apps サービスで実行されます。 固定月額料金は、グローバル サービスで実行されるコネクタにも適用されます (ISE で実行されるロジック アプリで使用する場合)。
+   **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、パブリック ("グローバル") なマルチテナント Logic Apps サービスで実行されます。 固定月額料金は、マルチテナント サービスで実行されるコネクタにも適用されます (ISE で実行されるロジック アプリで使用する場合)。
 
 * 追加コストなしの[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。お使いの [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づきます。
 
-  * **Premium SKU**:単一の [Standard レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
+  * **Premium** ISE SKU:単一の [Standard レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
 
-  * **Developer SKU**:単一の[Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
+  * **Developer** ISE SKU:単一の[Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
 
   各 ISE SKU の統合アカウントは、合計で 5 つに制限されています。 コストを追加することで、ISE SKU に基づいて、さらに多くの統合アカウントを作成できます。
 
-  * **Premium SKU**:最大 4 つの追加の Standard アカウント。 無料または Basic アカウントはありません。
+  * **Premium** ISE SKU:最大 4 つの追加の Standard アカウント。 無料または Basic アカウントはありません。
 
-  * **Developer SKU**:最大 4 つの追加の Standard アカウント、または合計で最大 5 つの標準 Standard アカウント。 Basic アカウントはありません。
+  * **Developer** ISE SKU:最大 4 つの追加の Standard アカウント、または合計で最大 5 つの標準 Standard アカウント。 Basic アカウントはありません。
 
-  統合アカウントの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)」をご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。
-
-Premium ISE SKU を選択した場合、基本単位の容量は固定されています。 さらにスループットが必要な場合は、作成中または作成後に[スケール ユニットをさらに追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 Developer ISE SKU には、スケール ユニットを追加する機能はありません。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。
-
-価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
+  統合アカウントの制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)に関するページをご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。
 
 <a name="connectors"></a>
 

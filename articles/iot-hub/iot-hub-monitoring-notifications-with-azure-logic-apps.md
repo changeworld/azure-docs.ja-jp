@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68385716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680717"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -212,7 +212,7 @@ IoT ハブに Service Bus キューのカスタム エンドポイントを追�
       [Hotmail/Outlook.com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970)、[Gmail](https://support.google.com/a/answer/176600?hl=en)、[Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html) の SMTP 情報を入手します。
 
       > [!NOTE]
-      > 接続を確立するために SSL を無効にすることが必要になる場合があります。 このとき、接続が確立された後に SSL を再び有効にする場合は、このセクションの最後にある省略可能な手順を参照してください。
+      > 接続を確立するために TLS/SSL を無効にすることが必要になる場合があります。 このとき、接続が確立された後に TLS を再び有効にする場合は、このセクションの最後にある省略可能な手順を参照してください。
 
    1. **[電子メールの送信]** 手順の **[新しいパラメーターの追加]** ドロップダウンから、 **[From] (差出人)** 、 **[To] (宛先)** 、 **[件名]** 、および **[本文]** を選択します。 画面上の任意の場所をクリックまたはタップして選択ボックスを閉じます。
 
@@ -224,7 +224,7 @@ IoT ハブに Service Bus キューのカスタム エンドポイントを追�
 
    1. **[保存]** を選択して SMTP 接続を保存します。
 
-1. (省略可能) 電子メール プロバイダーとの接続を確立するために SSL を無効にする必要があり、ここで再び有効にする場合は、次の手順に従います。
+1. (省略可能) 電子メール プロバイダーとの接続を確立するために TLS を無効にする必要があり、ここで再び有効にする場合は、次の手順に従います。
 
    1. **[ロジック アプリ]** ウィンドウの **[開発ツール]** で、 **[API 接続]** を選択します。
 

@@ -3,12 +3,12 @@ title: Azure Application Insights のスマート検出 | Microsoft Docs
 description: Application Insights は、アプリのテレメトリの詳細な分析を自動的に実行し、潜在的なパフォーマンスの問題について警告します。
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536796"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
  スマート検出により、Web アプリケーションの潜在的なパフォーマンスの問題と失敗の異常について警告を自動的に受け取ることができます。 スマート検出では、アプリから [Application Insights](../../azure-monitor/app/app-insights-overview.md) に送信されるテレメトリがプロアクティブに分析されます。 障害発生率が急激に上昇したり、クライアントまたはサーバーのパフォーマンスに異常なパターンが発生したりした場合に、アラートが表示されます。 この機能には構成は不要です。 アプリケーションから適切なテレメトリが送信されていれば動作します。
@@ -40,7 +40,7 @@ ms.locfileid: "77671802"
 
 ## <a name="smart-detection-email-notifications"></a>スマート検出の電子メール通知
 
-_プレビュー_とマークされているルールを除く、すべてのスマート検出ルールは、検出の発見時に既定で電子メール通知を送信するように構成されます。
+_プレビュー_ とマークされているルールを除く、すべてのスマート検出ルールは、検出の発見時に既定で電子メール通知を送信するように構成されます。
 
 特定のスマート検出ルールの電子メール通知を構成するには、スマート検出の **[設定]** ブレードを開き、ルールを選択すると、 **[ルールの編集]** ブレードが開きます。
 
@@ -53,7 +53,7 @@ _プレビュー_とマークされているルールを除く、すべてのス
 ## <a name="next-steps"></a>次のステップ
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
-* [メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)
+* [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)
 * [Search エクスプローラー](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics - 強力なクエリ言語](../../azure-monitor/log-query/get-started-portal.md)
 

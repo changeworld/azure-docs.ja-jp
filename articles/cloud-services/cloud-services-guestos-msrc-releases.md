@@ -10,17 +10,55 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/3/2020
+ms.date: 04/17/2020
 ms.author: raiye
-ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656344"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617697"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="april-2020-guest-os"></a>2020 年 4 月のゲスト OS
+
+>[!NOTE]
+>4 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされています。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 4 月のゲスト OS には、次の修正プログラムが含まれています。 この一覧は変更されることがあります。
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-04  |  [4550965]  |  Windows セキュリティ  | 2.97 | 2020 年 4 月 14 日 |
+|  Rel 20-04  |  [4550905]  |  Internet Explorer  | 2.97、3.84、4.77 | 2020 年 4 月 14 日 |
+|  Rel 20-04  |  [4550971]  |  Windows セキュリティ  | 3.84 | 2020 年 4 月 14 日 |
+|  Rel 20-04  |  [4550970]  |  Windows セキュリティ  | 4.77 | 2020 年 4 月 14 日 |
+|  Rel 20-04  |  [4550929]  |  最新の累積的な更新プログラム (LCU)  | 5.42 | 2020 年 4 月 14 日 |
+|  Rel 20-04  |  [4549949]  |  最新の累積的な更新プログラム (LCU)  | 6.18 | 2020 年 4 月 14 日 |
+|  Rel 20-04  |  [4540688]  |  マンスリー ロールアップ  | 2.97 | 2020 年 3 月 10 日 |
+|  Rel 20-04  |  [4550735]  |  サービス スタック更新プログラム  | 2.97 | 2020 年 3 月 10 日 |
+|  Rel 20-04  |  [4540726]  |  サービス スタック更新プログラム  | 3.84 | 2020 年 3 月 10 日 |
+|  Rel 20-04  |  [4541510]  |  マンスリー ロールアップ  | 3.84 | 2020 年 3 月 10 日 |
+|  Rel 20-04  |  [4541509]  |  マンスリー ロールアップ  | 4.77 | 2020 年 3 月 10 日 |
+|  Rel 20-04  |  [4540725]  |  サービス スタック更新プログラム  | 4.77 | 2020 年 3 月 10 日 |
+|  Rel 20-04  |  [4540723]  |  サービス スタック更新プログラム  | 5.42 | 2020 年 3 月 10 日 |
+|  Rel 20-04  |  [4539571]  |  サービス スタック更新プログラム  | 6.18 | 2020 年 3 月 10 日 |
+
+[4550965]: https://support.microsoft.com/kb/4550965
+[4550905]: https://support.microsoft.com/kb/4550905
+[4550971]: https://support.microsoft.com/kb/4550971
+[4550970]: https://support.microsoft.com/kb/4550970
+[4550929]: https://support.microsoft.com/kb/4550929
+[4549949]: https://support.microsoft.com/kb/4549949
+[4540688]: https://support.microsoft.com/kb/4540688
+[4550735]: https://support.microsoft.com/kb/4550735
+[4540726]: https://support.microsoft.com/kb/4540726
+[4541510]: https://support.microsoft.com/kb/4541510
+[4541509]: https://support.microsoft.com/kb/4541509
+[4540725]: https://support.microsoft.com/kb/4540725
+[4540723]: https://support.microsoft.com/kb/4540723
+[4539571]: https://support.microsoft.com/kb/4539571
+
 
 ## <a name="march-2020-guest-os"></a>2020 年 3 月のゲスト OS
 

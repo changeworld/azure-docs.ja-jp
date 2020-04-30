@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473525"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639267"
 ---
-# <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限 #
+# <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限
 
 アクセス制限により、アプリへのネットワーク アクセスを制御する優先度で順序付けされた許可/拒否のリストを定義することができます。 リストには、IP アドレスまたは Azure Virtual Network のサブネットを含めることができます。 1 つまたは複数のエントリがある場合、リストの最後にあるものは暗黙的に "すべて拒否" になります。
 
@@ -125,12 +125,12 @@ management.azure.com/subscriptions/ **<サブスクリプション ID>** /resour
 }
 ```
 
-## <a name="azure-function-app-access-restrictions"></a>Azure Function App のアクセス制限
+## <a name="azure-functions-access-restrictions"></a>Azure Functions のアクセス制限
 
-アクセス制限は、Function App でも App Service プランと同じ機能を利用できます。 アクセス制限を有効にすると、許可されていない IP に対するポータル コード エディターは無効になります。
+アクセス制限は、関数アプリでも App Service プランと同じ機能を利用できます。 アクセス制限を有効にすると、許可されていない IP に対するポータル コード エディターは無効になります。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Function Apps のアクセス制限](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Azure Functions のアクセス制限](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [サービス エンドポイントと Application Gateway の統合](networking/app-gateway-with-service-endpoints.md)
 
