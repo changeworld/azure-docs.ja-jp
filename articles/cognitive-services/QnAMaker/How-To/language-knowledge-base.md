@@ -45,19 +45,19 @@ Azure Cognitive Search の機能はサポートされている言語に従いま
 |追加のランカーがある言語|
 |--|
 |中国語|
-|チェコ語|
-|オランダ語|
-|英語|
-|フランス語|
-|ドイツ語|
-|ハンガリー語|
-|イタリア語|
-|日本語|
-|韓国語|
-|ポーランド語|
-|ポルトガル語|
-|スペイン語|
-|スウェーデン語|
+|Czech|
+|Dutch|
+|English|
+|French|
+|German|
+|Hungarian|
+|Italian|
+|Japanese|
+|Korean|
+|Polish|
+|Portuguese|
+|Spanish|
+|Swedish|
 
 この追加のランキングは、QnA Maker のランカーの内部処理です。
 

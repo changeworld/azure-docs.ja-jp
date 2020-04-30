@@ -25,16 +25,16 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |カルチャ|サブカルチャ|メモ|
 |--|--|--|
 |中国語|[zh-CN](#chinese-entity-support)||
-|オランダ語|[nl-NL](#dutch-entity-support)||
-|英語|[en-US (米国)](#english-american-entity-support)||
-|フランス語|[fr-CA (カナダ)](#french-canadian-entity-support)、[fr-FR (フランス)](#french-france-entity-support), ||
-|ドイツ語|[de-DE](#german-entity-support)||
-|イタリア語|[it-IT](#italian-entity-support)||
-|日本語|[ja-JP](#japanese-entity-support)||
-|韓国語|[ko-KR](#korean-entity-support)||
-|ポルトガル語|[pt-BR (ブラジル)](#portuguese-brazil-entity-support)||
-|スペイン語|[es-ES (スペイン)](#spanish-spain-entity-support)、[es-MX (メキシコ)](#spanish-mexico-entity-support)||
-|トルコ語|[turkish](#turkish-entity-support)|トルコ語では、あらかじめ構築されたエンティティはサポートされていません|
+|Dutch|[nl-NL](#dutch-entity-support)||
+|English|[en-US (米国)](#english-american-entity-support)||
+|French|[fr-CA (カナダ)](#french-canadian-entity-support)、[fr-FR (フランス)](#french-france-entity-support), ||
+|German|[de-DE](#german-entity-support)||
+|Italian|[it-IT](#italian-entity-support)||
+|Japanese|[ja-JP](#japanese-entity-support)||
+|Korean|[ko-KR](#korean-entity-support)||
+|Portuguese|[pt-BR (ブラジル)](#portuguese-brazil-entity-support)||
+|Spanish|[es-ES (スペイン)](#spanish-spain-entity-support)、[es-MX (メキシコ)](#spanish-mexico-entity-support)||
+|Turkish|[turkish](#turkish-entity-support)|トルコ語では、あらかじめ構築されたエンティティはサポートされていません|
 
 ## <a name="prediction-endpoint-runtime"></a>予測エンドポイントのランタイム
 
