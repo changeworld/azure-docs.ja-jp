@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810298"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232412"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
@@ -39,10 +39,6 @@ Microsoft Defender ATP を使用すると、次の機能が得られます。
 - **自動オンボード**:Microsoft Defender ATP センサーは、Azure Security Center にオンボードされた Windows サーバー (Windows Server 2019 を実行しているものを除く) に対して自動的に有効になります。
 
 - **1 つのウィンドウ**:Azure Security Center コンソールには、Microsoft Defender ATP のアラートが表示されます。
-
-- **マシンの詳細な調査**:Azure Security Center のお客様は、Microsoft Defender ATP コンソールを使用して、詳細な調査を実行し、侵害の範囲を明らかにすることができます。
-
-![アラートの一覧と各アラートに関する一般的な情報が表示されている Azure Security Center](media/security-center-wdatp/image1.png)
 
 さらに調査するには、Microsoft Defender ATP を使用します。 Microsoft Defender ATP には、アラート プロセス ツリーやインシデント グラフなどの追加情報が表示されます。 最大 6 か月前まで遡って、すべての動作を示す詳細なマシン タイムラインを見ることもできます。
 

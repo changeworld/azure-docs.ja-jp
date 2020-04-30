@@ -8,13 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: timlt
-ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025239"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82560958"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -157,11 +156,11 @@ IoT ソリューションを大規模に運用するには、デバイス管理�
 
 組み込みの[ダッシュボード](./howto-set-up-template.md#generate-default-views)は、デバイスの正常性とテレメトリを監視するための、カスタマイズ可能な UI を備えています。 [アプリケーション テンプレート](howto-use-app-templates.md)のあらかじめ構築されたダッシュボードを利用して開始するか、オペレーターのニーズに合わせた独自のダッシュボードを作成します。 ダッシュボードは、アプリケーション内のすべてのユーザーと共有することも、非公開に保つこともできます。
 
-### <a name="rules-and-actions"></a>ルールとアクション 
+### <a name="rules-and-actions"></a>ルールとアクション
 
 デバイスの状態とテレメトリに基づいて[カスタム規則](tutorial-create-telemetry-rules.md)を作成することで、注意を要するデバイスを迅速に特定します。 適切なユーザーに通知するアクションを構成し、適切なタイミングで是正措置が講じられるようにします。
 
-### <a name="jobs"></a>ジョブ 
+### <a name="jobs"></a>ジョブ
 
 [ジョブ](howto-run-a-job.md)を使用すると、プロパティを設定したりコマンドを呼び出したりして、デバイスに単独または一括の更新を実行できます。 
 

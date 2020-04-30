@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df6d7943a5344b4288dfe369dcce9087b894984f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76166302"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580580"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Azure Automation Runbook を使用してラボで仮想マシンを順番に起動する
 DevTest Labs の[自動起動](devtest-lab-set-lab-policy.md#set-autostart)機能を使用すると、指定した時間に自動的に VM が起動するように構成できます。 ただし、この機能は、特定の順序で起動するマシンをサポートしていません。 このタイプのオートメーションに役立つシナリオがいくつかあります。  1 つのシナリオは、Jumpbox が他の VM へのアクセス ポイントとして使用されているため、ラボ内の Jumpbox VM を他の VM より先に起動する必要がある場合です。  この記事では、スクリプトを実行する PowerShell Runbook を使用して Azure Automation アカウントを設定する方法を説明します。 スクリプトでは、ラボの VM 上のタグを使用して、スクリプトを変更しなくても起動順序を制御できるようにします。
@@ -133,7 +133,7 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>スケジュールを作成する
-このスクリプトを毎日実行するには、Automation アカウントで[スケジュールを作成](../automation/shared-resources/schedules.md#creating-a-schedule)します。 スケジュールが作成されたら、[Runbook にリンク](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook)します。 
+このスクリプトを毎日実行するには、Automation アカウントで[スケジュールを作成](../automation/shared-resources/schedules.md#create-a-schedule)します。 スケジュールが作成されたら、[Runbook にリンク](../automation/shared-resources/schedules.md#link-a-schedule-to-a-runbook)します。 
 
 複数のラボを持つ複数のサブスクリプションがある大規模な状況では、パラメーター情報を異なるラボ用のファイルに格納し、ファイルを個々のパラメーターではなくスクリプトに渡します。 スクリプトを変更する必要がありますが、コアの実行は同じになります。 このサンプルでは Azure Automation を使用して PowerShell スクリプトを実行していますが、ビルド/リリース パイプラインでタスクを使用するなど、他のオプションもあります。
 

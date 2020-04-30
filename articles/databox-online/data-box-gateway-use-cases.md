@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022683"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562404"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース
 
@@ -77,7 +77,7 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>Data Box Gateway を使用した継続的なフィード
 
-Data Box Gateway を使用して継続的なインジェストを行うには、以下の手順に従います。
+Data Box Gateway を使用して継続的なインジェストを行うには、以下の手順に従います。 
 
 1. Data Box Gateway 上にクラウド共有を作成します。 この共有から、データが Azure ストレージ アカウントに自動的にアップロードされます。 お客様の Data Box Gateway リソースの **[共有]** に移動して、 **+ [共有の追加]** をクリックします。
 

@@ -4,14 +4,15 @@ description: 高可用性を有効または無効にする方法
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a8d4b5949b34d16191e9ec10a1dd39faff3660dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78e6e8c18e67ce2dff0de94d298f06693a40135f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74977663"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584060"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Hyperscale (Citus) の高可用性を構成する
 

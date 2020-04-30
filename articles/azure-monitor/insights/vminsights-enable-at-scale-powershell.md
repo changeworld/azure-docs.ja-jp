@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77fe4b4ffbf7c189a5bf64e662f395fc78e53944
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480846"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581506"
 ---
 # <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs を有効にする
 
@@ -170,7 +170,7 @@ provisioningState       : Succeeded
 
 ## <a name="enable-with-powershell"></a>PowerShell を使用した有効化
 
-複数の VM または仮想マシン スケール セットに対して Azure Monitor for VMs を有効にするには、PowerShell スクリプト [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) を使用します。 これは Azure PowerShell ギャラリーから入手できます。 このスクリプトでは以下について反復処理が実行されます。
+複数の VM または仮想マシン スケール セットに対して Azure Monitor for VMs を有効にするには、PowerShell スクリプト [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights) を使用します。 これは Azure PowerShell ギャラリーから入手できます。 このスクリプトでは以下について反復処理が実行されます。
 
 - サブスクリプションに設定されているすべての仮想マシンと仮想マシン スケール セット。
 - *ResourceGroup* で指定されたスコープ付きリソース グループ。

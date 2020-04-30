@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229843"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562442"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway のシステム要件
 
-この記事では、Microsoft Azure Data Box Gateway ソリューション、および Azure Data Box Gateway に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報は、Data Box Gateway をデプロイする前によく確認し、デプロイ時やそれ以降の操作時にも、必要に応じて繰り返し参照することをお勧めします。
+この記事では、Microsoft Azure Data Box Gateway ソリューション、および Azure Data Box Gateway に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報は、Data Box Gateway をデプロイする前によく確認し、デプロイ時やそれ以降の操作時にも、必要に応じて繰り返し参照することをお勧めします。 
 
 Data Box Gateway 仮想デバイスのシステム要件は次のとおりです。
 

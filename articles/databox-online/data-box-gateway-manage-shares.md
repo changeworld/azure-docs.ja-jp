@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3df7ca90b81b697c72ba8f36bfff56c70cc090f2
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231459"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561310"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の共有を管理する 
 
@@ -37,7 +37,7 @@ ms.locfileid: "79231459"
 共有を作成するには、Azure portal で次の手順を実行します。
 
 1. Azure portal で Data Box Gateway リソースに移動し、 **[概要]** に移動します。 コマンド バーの **+ [共有の追加]** をクリックします。
-2. **[共有の追加]** で共有設定を指定します。 共有の一意の名前を指定します。
+2. **[共有の追加]** で共有設定を指定します。 共有の一意の名前を指定します。 
 
     ![[共有の追加] をクリックする](media/data-box-gateway-manage-shares/add-share-1.png)
 

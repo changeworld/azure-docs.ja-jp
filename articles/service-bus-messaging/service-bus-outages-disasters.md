@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 29eb0625ceebf4fee75d0c1accef7ae03b5f61b9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984948"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208382"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -36,7 +36,7 @@ Service Bus Premium では、名前空間のレベルで geo ディザスター 
 Service Bus Premium SKU では、同じ Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 Service Bus は、メッセージング ストアの 3つのコピー (1つのプライマリと 2つのセカンダリ) を管理します。 Service Bus は、データ操作および管理操作のために 3つのコピーをすべて同期します。 プライマリ コピーがフェイルした場合には、セカンダリ コピーの 1つをプライマリに昇格させ、ダウンタイムを発生させません。 アプリケーションが Service Bus からの一時的な切断を認識した場合には、SDK の再試行ロジックによって Service Bus に自動で再接続します。 
 
 > [!NOTE]
-> Azure Service Bus Premium に対する Availability Zones のサポートは、可用性ゾーンが利用可能な [Azure リージョン](../availability-zones/az-overview.md#services-support-by-region)でのみ利用できます。でのみ利用できます。
+> Azure Service Bus Premium に対する Availability Zones のサポートは、可用性ゾーンが利用可能な [Azure リージョン](../availability-zones/az-region.md)でのみ利用できます。でのみ利用できます。
 
 Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Service Bus では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
 

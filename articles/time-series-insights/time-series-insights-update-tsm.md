@@ -8,21 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476656"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580607"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューの時系列モデル
 
 この記事ではタイム シリーズ モデルに関して、機能、および Azure Time Series Insights プレビュー環境で独自のモデルの構築と更新を開始する方法について説明します。
 
 > [!TIP]
->  * タイム シリーズ モデルのライブによる実例については、 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境を参照してください。
+>
+> * タイム シリーズ モデルのライブによる実例については、 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境を参照してください。
 > * タイム シリーズ モデル UI の操作方法については、[Azure Time Series Insights プレビュー エクスプローラー](time-series-insights-update-explorer.md)に関するページを参照してください。
 > * Time Series Insights Web エクスプローラーを使用して[タイム シリーズ モデルを操作する方法](time-series-insights-update-how-to-tsm.md)について説明します。
 
@@ -51,9 +52,9 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 [![タイム シリーズ モデルのスマート オーブン グラフの例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* タイム シリーズ モデルは、クエリとナビゲーションで重要な役割を果たします。これは、時間の範囲やセンサーとデバイスの種類の間で比較を描画できるようにすることで、データをコンテキスト化するためです。 (**A**) 
+* タイム シリーズ モデルは、クエリとナビゲーションで重要な役割を果たします。これは、時間の範囲やセンサーとデバイスの種類の間で比較を描画できるようにすることで、データをコンテキスト化するためです。 (**A**)
 * タイム シリーズ モデルで保持されるデータは、タイム シリーズ クエリの計算を変数として保持し、クエリ時にそれらを再利用するため、データはさらにコンテキスト化します。
-* タイム シリーズ モデルは、視覚化と管理能力を向上させるためにデータを整理して集計します。 (**B**) 
+* タイム シリーズ モデルは、視覚化と管理能力を向上させるためにデータを整理して集計します。 (**B**)
 
 ### <a name="key-capabilities"></a>主な機能
 
@@ -290,7 +291,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 各変数には、*数値*、*カテゴリ別*、および*集計*の 3 *種類*のうちのいずれかを指定できます。
 
-* **数値**の種類は、連続する値を処理します。 
+* **数値**の種類は、連続する値を処理します。
 * **カテゴリ別**の種類は、定義されている不連続値のセットを処理します。
 * **集計**の値は、1 種類の複数の変数 (すべて数値、またはすべてカテゴリ別) を結合します。
 

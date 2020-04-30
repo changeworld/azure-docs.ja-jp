@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63f3572dcb5affb9fcf89d86a665bef9414cb011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feae75b1fbb832f833a01fa20ce07962ab5c484f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60755350"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561422"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の帯域幅のスケジュールを管理する  
 
@@ -84,4 +84,4 @@ Data Box Gateway デバイスに関連付けられている帯域幅のスケジ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [帯域幅を管理する](data-box-gateway-manage-bandwidth-schedules.md)方法について学習します。
+- [帯域幅を管理する](data-box-gateway-manage-bandwidth-schedules.md)方法について学習します。 

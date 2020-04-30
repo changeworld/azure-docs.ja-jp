@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントレス
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 86f24b7fdfee30c182419023e4ed33f6228b3711
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535317"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509314"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -57,7 +57,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 
 Azure Migrate Server Migration ツールを追加します。
 
-- 2 番目のチュートリアルに従って [VMware VM を評価](/tutorial-assess-vmware.md)した場合は、そのままツールを追加できます。
+- 2 番目のチュートリアルに従って [VMware VM を評価](tutorial-assess-vmware.md)した場合は、そのままツールを追加できます。
 - 2 番目のチュートリアルに従っていない場合は、[こちらの手順に従って](how-to-add-tool-first-time.md)、Azure Migrate プロジェクトの設定を行ってください。  プロジェクトの作成時に Azure Migrate:Server Migration ツールを追加します。
 
 プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686877"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561697"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を接続、設定、アクティブ化する
 
@@ -65,7 +65,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
    
 ![ローカル Web UI の [ダッシュボード] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-1. 左側のウィンドウで **[デバイス名]** を選択し、デバイスのフレンドリ名を入力します。 フレンドリ名は 1 から 15 文字の長さにし、文字、数字、およびハイフンを含める必要があります。
+1. 左側のウィンドウで **[デバイス名]** を選択し、デバイスのフレンドリ名を入力します。 フレンドリ名は 1 から 15 文字の長さにし、文字、数字、およびハイフンを含める必要があります。 
 
     ![ローカル Web UI の [デバイス名] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 

@@ -2,17 +2,17 @@
 title: 仮想ネットワークの Azure IoT Hub サポート
 description: IoT Hub で仮想ネットワークの接続パターンを使用する方法
 services: iot-hub
-author: rezasherafat
+author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.author: rezas
-ms.openlocfilehash: 34f66c13b0e7eb7092332a48744f9abfd8f0db80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.author: jlian
+ms.openlocfilehash: c0d01ae6507864373a79282476846d6f96adf83b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501441"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231443"
 ---
 # <a name="iot-hub-support-for-virtual-networks"></a>仮想ネットワークの IoT Hub サポート
 
@@ -199,7 +199,7 @@ Azure Storage、Event Hubs、Service Bus リソースに対するファイアウ
 リソースの `name`、`location`、`SKU.name`、`SKU.tier` の値を置き換えた後、以下の Azure CLI を使用して、既存のリソース グループにリソースをデプロイすることができます。
 
 ```azurecli-interactive
-az group deployment create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
 ```
 
 リソースが作成された後、以下の Azure CLI を使用して、ハブに割り当てられたマネージド サービス ID を取得できます。
