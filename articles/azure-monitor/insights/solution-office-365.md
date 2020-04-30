@@ -6,17 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437040"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023607"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
 ![Office 365 のロゴ](media/solution-office-365/icon.png)
-
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>ソリューションの更新
@@ -36,8 +35,8 @@ ms.locfileid: "80437040"
 >
 > ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>Q:現時点から 4 月 30 日までの間に、Office 365 Azure Monitor ソリューションをオンボードすることはできますか。
-> いいえ、Azure Monitor Office 365 ソリューションのオンボード スクリプトは使用できません。 このソリューションは 4 月 30 日に削除されます。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>Q:現時点から 7 月 30 日までの間に、Office 365 Azure Monitor ソリューションをオンボードすることはできますか。
+> いいえ、Azure Monitor Office 365 ソリューションのオンボード スクリプトは使用できません。 このソリューションは 7 月 30 日に削除されます。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Q:テーブルとスキーマは変更されますか。
 > **OfficeActivity** テーブル名とスキーマは、現在のソリューションと同じままです。 新しいソリューションでは、Azure AD データを参照するクエリを除き、同じクエリを使用し続けることができます。
@@ -103,11 +102,11 @@ ms.locfileid: "80437040"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Q:Azure Sentinel は、ソリューションの一部として追加のコネクタを提供しますか。
 > はい。[Azure Sentinel データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
 > 
-> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Q:4 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>Q:7 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
 > 
 > - **Office365** ソリューションからデータを受信することができなくなります。 このソリューションは Marketplace で使用できなくなります
 > - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
-> - ソリューションを手動でオフボードしない場合、データは 4 月 30 日に自動的に切断されます。
+> - ソリューションを手動でオフボードしない場合、データは 7 月 30 日に自動的に切断されます。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Q:データは新しいソリューションに転送されますか。
 > はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 

@@ -7,77 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7bfc74b2d27a879352f54df0772784a98e15e46d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393536"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81865536"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Azure アプリケーションの技術アセットを準備する
 
-この記事では、Azure アプリケーションの技術アセットを準備するためのリソースについて説明します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Azure アプリケーション オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[Azure アプリケーション オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)」を参照してください。
 
-## <a name="before-you-begin"></a>開始する前に
-
-次のビデオ「[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)」で、Azure Resource Manager を作成して Azure アプリケーション ソリューションを定義する方法と、その後でアプリ オファーを Azure Marketplace に公開する方法に関する概要を確認してください。
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
-
-
-クイック スタート、チュートリアル、サンプルが提供されている以下の Azure アプリケーションのドキュメントを確認してください。
-
-- [Azure Resource Manager テンプレートについての理解](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-- クイック スタート:
-
-  - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
-  - [GitHub Azure クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates)
-  - [アプリケーション定義の発行](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [サービス カタログ アプリのデプロイ](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
-
-  
-- チュートリアル:
-
-  - [定義ファイルの作成](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-  - [マーケットプレース アプリケーションの発行](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
-
-  - サンプル:
-
-    - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    - [マネージド アプリケーション ソリューション](https://docs.microsoft.com/azure/managed-applications/sample-projects)
-
-## <a name="fundamental-technical-knowledge"></a>技術的な知識の基礎
-
-こうした資産の設計と構築､テストには時間がかかり､Azure プラットフォームとその構築に使用する技術に関する知識が必要です｡
-
-エンジニアリング チームには､Microsoft の次の技術に関する知識も必要です｡
-
-- [Azure Services](https://azure.microsoft.com/services/) に関する基本知識
-- [Azure アプリケーションそのものとそのアーキテクチャを](https://azure.microsoft.com/solutions/architecture/)設計する方法
-- [Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)、[Azure ストレージ](https://azure.microsoft.com/services/?filter=storage)､[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking)に関する実用的な知識
-- [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) に関する実用的な知識
-- [JSON](https://www.json.org/) に関する実用的な知識
-
-## <a name="suggested-tools"></a>推奨ツール
-
-Azure アプリケーションを管理するためのスクリプト環境として、次のいずれか一方または両方を選択します。
-
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
-
-開発環境には次にツールを加えることを推奨します｡
-
-- [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-- [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
-
-  - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - 拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
-
-また､[Azure Developer Tools](https://azure.microsoft.com/tools/) ページの記載されている利用可能なツールもご覧になることをお勧めします｡Visual Studio を使用する場合は､[Visual Studio Marketplace](https://marketplace.visualstudio.com/) もご覧ください｡
-
-## <a name="next-steps"></a>次のステップ
-
-[Azure アプリケーション プランの作成](./cpp-create-offer.md)
-
+新しい Azure アプリケーション オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[Azure アプリケーション オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)」の手順に従ってオファーを作成します。

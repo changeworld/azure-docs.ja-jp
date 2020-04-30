@@ -1,15 +1,17 @@
 ---
+title: インクルード ファイル
+description: インクルード ファイル
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feea9696316723a2750be6fc1e13001224320324
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75752192"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865623"
 ---
 Azure でホストされている VM が大幅に増加すると、サポートするアプリケーションやインフラストラクチャサービスに影響を与えるパフォーマンスと正常性の問題を特定することが重要になります。 基本的な監視は、CPU 使用率、ディスク使用率、メモリ使用率、およびホスト ハイパーバイザーによって収集されたネットワーク トラフィックのメトリックの種類ごとに、Azure によって既定で提供されます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使用して追加のメトリックとログ データを収集し、ゲスト オペレーティング システムから VM の診断を構成することができます。
 
@@ -17,7 +19,7 @@ VM 内で実行されているゲスト オペレーティング システム、
 
 ## <a name="diagnostics-and-metrics"></a>診断とメトリック 
 
-Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログラミング インターフェイス (API) のプログラミングで、[メトリック](https://docs.microsoft.com/cli/azure/vm/diagnostics)を使った[診断データ](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)の収集を設定し、監視することができます。 たとえば、次のように操作できます。
+Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログラミング インターフェイス (API) のプログラミングで、[メトリック](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)を使った[診断データ](https://docs.microsoft.com/cli/azure/vm/diagnostics)の収集を設定し、監視することができます。 たとえば、次のように操作できます。
 
 - **VM の基本的なメトリックを観察する。** Azure Portal の [概要] 画面には、CPU 使用率、ネットワーク使用率、ディスクの総バイト数、1 秒あたりのディスクの操作数など、基本的なメトリックが表示されます。
 

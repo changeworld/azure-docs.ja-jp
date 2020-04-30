@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:Python を使用して Immersive Reader を起動する
+title: チュートリアル:Python を使用してイマーシブ リーダーを起動する
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Immersive Reader を起動する Python アプリケーションを作成します。
+description: このチュートリアルでは、イマーシブ リーダーを起動する Python アプリケーションを作成します。
 services: cognitive-services
 author: dylankil
 manager: nitinme
@@ -17,22 +17,22 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844362"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用して Immersive Reader を起動する
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用してイマーシブ リーダーを起動する
 
-[概要](./overview.md)に関するページでは、Immersive Reader の機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 このチュートリアルでは、Immersive Reader を起動する Python Web アプリケーションの作成方法について説明します。 このチュートリアルでは、以下の内容を学習します。
+[概要](./overview.md)に関するページでは、イマーシブ リーダーの機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 このチュートリアルでは、イマーシブ リーダーを起動する Python Web アプリケーションの作成方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * サンプル プロジェクトを使用して、Pip、Flask、Jinja、および virtualenv を使用する Python Web アプリを作成する
 > * アクセス トークンの取得
-> * Immersive Reader を起動してサンプル コンテンツを表示する
+> * イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Active Directory 認証用に構成された Immersive Reader リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * [Git](https://git-scm.com/)
-* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk)
+* [イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) と [pip](https://docs.python.org/3/installing/index.html)。 Python 3.4 以降では、pip は Python バイナリ インストーラーに既定で含まれています。
 * [Flask](https://flask.palletsprojects.com/en/1.0.x/)
 * [Jinja](http://jinja.pocoo.org/docs/2.10/)
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-authentication-credentials"></a>認証資格情報の構成
 
-_.env_ という名前の新しいファイルを作成し、そこに次のコードを貼り付けて、Immersive Reader リソースを作成したときに取得した値を指定します。
+_.env_ という名前の新しいファイルを作成し、そこに次のコードを貼り付けて、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -53,7 +53,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 このファイルは、公開するべきでない機密情報を含んでいるため、ソース管理にはコミットしないでください。
 
-**getimmersivereadertoken** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用の Immersive Reader サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
+**getimmersivereadertoken** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用のイマーシブ リーダー サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
 
 ## <a name="create-a-python-web-app-on-windows"></a>Windows で Python Web アプリを作成する
 
@@ -61,7 +61,7 @@ Windows 上で `flask` を使用して Python Web アプリを作成します。
 
 [Git](https://git-scm.com/) のインストール。
 
-Git がインストールされたら、コマンド プロンプトを開き、Immersive Reader SDK Git リポジトリを、お使いのコンピューターのフォルダーに "複製" します
+Git がインストールされたら、コマンド プロンプトを開き、イマーシブ リーダー SDK Git リポジトリを、お使いのコンピューターのフォルダーに "複製" します
 
 ```cmd
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -163,7 +163,7 @@ deactivate
 workon advanced-python
 ```
 
-### <a name="launch-the-immersive-reader-with-sample-content"></a>Immersive Reader を起動してサンプル コンテンツを表示する
+### <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
 この環境がアクティブになったら、サンプル プロジェクトのルート フォルダーから `flask run` を入力してサンプル プロジェクトを実行します。
 
@@ -179,7 +179,7 @@ OSX 上で `flask` を使用して Python Web アプリを作成します。
 
 [Git](https://git-scm.com/) のインストール。
 
-Git がインストールされたら、ターミナルを開き、Immersive Reader SDK Git リポジトリを、お使いのコンピューターのフォルダーに "複製" します
+Git がインストールされたら、ターミナルを開き、イマーシブ リーダー SDK Git リポジトリを、お使いのコンピューターのフォルダーに "複製" します
 
 ```bash
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -260,7 +260,7 @@ pip install python-dotenv --user
 mkdir ~/.virtualenvs
 ```
 
-`cd` を使用して、Immersive Reader SDK の Python サンプル アプリケーション フォルダーに移動します。
+`cd` を使用して、イマーシブ リーダー SDK の Python サンプル アプリケーション フォルダーに移動します。
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -300,7 +300,7 @@ deactivate
 workon advanced-python
 ```
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Immersive Reader を起動してサンプル コンテンツを表示する
+## <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
 この環境がアクティブになったら、サンプル プロジェクトのルート フォルダーから `flask run` を入力してサンプル プロジェクトを実行します。
 
