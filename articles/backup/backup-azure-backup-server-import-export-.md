@@ -4,12 +4,12 @@ description: Azure Backup では、Azure Import/Export サービスを使用し�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 080b0bc53b2058bd186e90f354b8f5bcda510414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d45716fea92a25b0deea6ee5c1972820341d64a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197070"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183859"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM と Azure Backup Server のオフライン バックアップのワークフロー
 
@@ -53,7 +53,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
     | ソブリン クラウドのリージョン | Azure 発行設定ファイルのリンク |
     | --- | --- |
-    | アメリカ | [リンク](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | United States | [リンク](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | 中国 | [リンク](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * Resource Manager デプロイ モデルを使用する Azure Storage アカウントが、発行設定ファイルをダウンロードしたサブスクリプションに作成されていること。
@@ -137,7 +137,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
     ![インポート ページ](./media/backup-azure-backup-import-export/offlineBackupscreenInputs.png)
 
     DPM の対応するページを次に示します。 <br/>
-    
+
     ![DPM および Azure Backup Server のインポート ページ](./media/backup-azure-backup-import-export/dpmoffline.png)
 
     入力するボックスは次のとおりです。
@@ -242,7 +242,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
     ![発送情報の保存](./media/backup-azure-backup-import-export/storingshippinginformation.png)<br/>
 
    > [!IMPORTANT]
-   > *AzureOfflineBackupDiskPrep* ユーティリティを使用して発送情報を指定してから 2 週間以内にドライブが Azure データセンターに届くようにしてください。 そうしないと、ドライブが処理されないことがあります。 
+   > *AzureOfflineBackupDiskPrep* ユーティリティを使用して発送情報を指定してから 2 週間以内にドライブが Azure データセンターに届くようにしてください。 そうしないと、ドライブが処理されないことがあります。
 
 前の手順を完了すると、Azure データセンターはドライブを受け取る準備ができ、さらにドライブからユーザーが作成したクラシック タイプの Azure ストレージ アカウントにバックアップ データを転送する処理を行います。
 

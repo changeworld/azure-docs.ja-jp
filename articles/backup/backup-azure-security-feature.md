@@ -4,12 +4,12 @@ description: Azure Backup のセキュリティ機能を使用してバックア
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 7213f26493a118c2cb32f8f9935b4954176b99a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24dc108ce4d9c991b1e062c0435b38a63899a249
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586395"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186772"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 
@@ -21,10 +21,10 @@ ms.locfileid: "77586395"
 
 > [!NOTE]
 > サービスとしてのインフラストラクチャ (IaaS) VM バックアップを使用している場合は、セキュリティ機能を有効にしないでください。 現時点ではこれらの機能を IaaS VM バックアップで使用することはできません。そのため、これらの機能を有効にしても効果はありません。 セキュリティ機能は、次に示す機能を使用している場合にのみ有効にする必要があります。 <br/>
->  * **Azure Backup エージェント**。 エージェントの最小バージョンは 2.0.9052 です。 これらの機能を有効にすると、重要な操作を実行するには、このエージェント バージョンにアップグレードする必要があります。 <br/>
->  * **Azure Backup Server**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Azure Backup Server Update 1) です。 <br/>
->  * **System Center Data Protection Manager**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Data Protection Manager 2012 R2 UR12 または Data Protection Manager 2016 UR2) です。 <br/>
-
+>
+> - **Azure Backup エージェント**。 エージェントの最小バージョンは 2.0.9052 です。 これらの機能を有効にすると、重要な操作を実行するには、このエージェント バージョンにアップグレードする必要があります。 <br/>
+> - **Azure Backup Server**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Azure Backup Server Update 1) です。 <br/>
+> - **System Center Data Protection Manager**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Data Protection Manager 2012 R2 UR12 または Data Protection Manager 2016 UR2) です。 <br/>
 
 > [!NOTE]
 > これらの機能は、Recovery Services コンテナーでのみ使用できます。 新しく作成されるすべての Recovery Services コンテナーでは、これらの機能が既定で有効になります。 既存の Recovery Services コンテナーでは、次のセクションで説明する手順に従ってこれらの機能を有効にできます。 機能が有効になったら、そのコンテナーに登録されているすべての Recovery Services エージェント コンピューター、Azure Backup Server インスタンス、および Data Protection Manager サーバーに機能が適用されます。 この設定の有効化は 1 回限りの操作であり、これらの機能を有効にした後で無効にすることはできません。

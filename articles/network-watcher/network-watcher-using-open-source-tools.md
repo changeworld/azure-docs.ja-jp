@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840657"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189064"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>VM の送受信ネットワーク トラフィックのパターンをオープン ソース ツールで視覚化する
 
@@ -47,7 +47,7 @@ Network Watcher で取得したパケット キャプチャ データは、[URL 
 
 CapAnalysis へのリンクを指定するときは必ず、ストレージ BLOB の URL に SAS トークンを付加してください。  ストレージ アカウントから Shared Access Signature に移動して、付与するアクセス許可を指定し、[SAS の生成] ボタンをクリックしてトークンを作成します。 SAS トークンを、パケット キャプチャ データの格納先となるストレージ BLOB の URL に付加することができます。
 
-結果の URL は、次のようになります。 http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+結果の URL は、次のようになります。 `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>パケット キャプチャ データの分析

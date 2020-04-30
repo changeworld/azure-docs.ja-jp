@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: fcdd7c13c9e0a5f9e858309bea50bb0264b7b301
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 77c464f51bd17921052b3ae1e9fefb49e777d6c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460683"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181907"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -80,7 +80,7 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
     az postgres server key create –name  <server name>  -g <resource_group> --kid <key url>
     ```
 
-    キーの URL: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>
+    キーの URL: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>復元またはレプリカ サーバーでのデータ暗号化の使用
 
@@ -105,7 +105,7 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
     az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
     ```
 
-    Key url:  https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>
+    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>使用されているキーを一覧表示する
 

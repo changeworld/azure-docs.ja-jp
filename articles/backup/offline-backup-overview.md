@@ -3,12 +3,12 @@ title: オフライン バックアップの概要
 description: オフライン バックアップのコンポーネントについて説明します。 これには、Azure Data Box に基づくオフライン バックアップと Azure Import/Export サービスに基づくオフライン バックアップが含まれます。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 4dae68c46e0072a726bba13139e405b44be0f008
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196166"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160923"
 ---
 # <a name="overview-of-offline-backup"></a>オフライン バックアップの概要
 
@@ -27,7 +27,7 @@ Azure Backup では、ネットワーク帯域幅を使用せずに初期バッ�
 
 ## <a name="offline-backup-based-on-azure-data-box-preview"></a>Azure Data Box に基づくオフライン バックアップ (プレビュー)
 
-このモードは、現在、Microsoft Azure Recovery Services (MARS) エージェントでサポートされています (プレビュー段階)。 このオプションは、[Azure Data Box](https://azure.microsoft.com/services/databox/) を利用し、USB コネクタを使用して Microsoft 独自の安全で改ざん防止機能を備えた転送アプライアンスをデータセンターやリモート オフィスに転送します。 バックアップ データは、これらのデバイスに直接書き込まれます。 このオプションを使用すると、Azure と互換性のあるディスクやコネクタを自分で調達したり、一時的ストレージをステージング場所としてプロビジョニングしたりするために必要な労力を節約できます。 また、Microsoft では、Azure portal を通じて追跡できるエンドツーエンドの転送ロジスティックも処理します。 
+このモードは、現在、Microsoft Azure Recovery Services (MARS) エージェントでサポートされています (プレビュー段階)。 このオプションは、[Azure Data Box](https://azure.microsoft.com/services/databox/) を利用し、USB コネクタを使用して Microsoft 独自の安全で改ざん防止機能を備えた転送アプライアンスをデータセンターやリモート オフィスに転送します。 バックアップ データは、これらのデバイスに直接書き込まれます。 このオプションを使用すると、Azure と互換性のあるディスクやコネクタを自分で調達したり、一時的ストレージをステージング場所としてプロビジョニングしたりするために必要な労力を節約できます。 また、Microsoft では、Azure portal を通じて追跡できるエンドツーエンドの転送ロジスティックも処理します。
 
 このオプションを使用したバックアップ データの移動について説明するアーキテクチャを次に示します。
 
@@ -44,7 +44,7 @@ Azure Data Box に基づいてオフライン バックアップを使用する�
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Azure Import/Export サービスに基づくオフライン バックアップ
 
-このオプションは、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) DPM A、および MARS エージェントでサポートされています。 [Azure Import/Export サービス](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)が使用されます。 Azure と互換性のある独自のディスクとコネクタを使用して、Azure に初期バックアップ データを転送できます。 この方法では、ステージング場所と呼ばれる一時的ストレージをプロビジョニングし、事前に構築されたユーティリティを使用してバックアップ データをフォーマットし、お客様が所有するディスクにコピーする必要があります。 
+このオプションは、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) DPM A、および MARS エージェントでサポートされています。 [Azure Import/Export サービス](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)が使用されます。 Azure と互換性のある独自のディスクとコネクタを使用して、Azure に初期バックアップ データを転送できます。 この方法では、ステージング場所と呼ばれる一時的ストレージをプロビジョニングし、事前に構築されたユーティリティを使用してバックアップ データをフォーマットし、お客様が所有するディスクにコピーする必要があります。
 
 このオプションを使用したバックアップ データの移動について説明するアーキテクチャを次に示します。
 
@@ -81,6 +81,6 @@ MABS または DPM-A と共に同じものを使用するには、「[DPM と Az
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Data Box を使用した Azure Backup のオフライン バックアップ](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
-* [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md) 
-* [DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export-.md)
+- [Azure Data Box を使用した Azure Backup のオフライン バックアップ](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
+- [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)
+- [DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export-.md)

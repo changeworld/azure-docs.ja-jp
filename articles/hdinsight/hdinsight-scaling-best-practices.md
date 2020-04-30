@@ -6,13 +6,14 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 0fc067f0be4ac5d2b8fa7db9ad7999efe06625a0
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.custom: seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804505"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189366"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -107,7 +108,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 
 保留中または実行中のジョブの一覧を表示するには、次の手順に従って YARN **Resource Manager UI** を使用できます。
 
-1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](./hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 このクラスターは、新しいポータル ページで開かれます。
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  このクラスターは、新しいポータル ページで開かれます。
 2. メイン ビューから、 **[クラスター ダッシュボード]**  >  **[Ambari ホーム]** に移動します。 クラスターの資格情報を入力します。
 3. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
 4. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[Resource Manager UI]** を選択します。
@@ -251,4 +252,3 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight クラスターを自動的にスケーリングする](hdinsight-autoscale-clusters.md)
-* [Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)

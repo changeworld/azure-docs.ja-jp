@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a22d48554573e2517b318f6172b759864bf46612
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 611d3e6d5ecaf986cc09c550c4aee760ed0a0d98
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277728"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166150"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-sysdig"></a>(非推奨) Sysdig を使って Azure Container Service クラスターを監視します
 
@@ -31,7 +31,7 @@ Sysdig は監視サービスです。クラスター内のコンテナーを監�
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>Marathon を使用した Sysdig のデプロイの構成
 以降、Marathon を使用して Sysdig アプリケーションを構成し、クラスターにデプロイする方法について説明します。 
 
-[http://localhost:80/](http://localhost:80/) を使用して DC/OS の UI にアクセスします。DC/OS の UI が表示されたら、左下にある "Universe" に移動し、"Sysdig" を探します。
+`http://localhost:80/` を使用して DC/OS の UI にアクセスします。DC/OS の UI が表示されたら、左下にある "Universe" に移動し、"Sysdig" を探します。
 
 ![Sysdig in DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig1.png)
 

@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナ
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5d0d1541600f4c10b021d5d7f7f435f1aa5ae589
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e6fa490285582c827b8704496fb7a20a7eb9cfbc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80239723"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166021"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio と .NET Core - Azure Dev Spaces
 
@@ -89,12 +89,12 @@ Built container image in 39s
 Waiting for container...
 36s
 
-Service 'webfrontend' port 'http' is available at http://default.webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`
 Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-上記の例では、パブリック URL は http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ です。 
+上記の例では、パブリック URL は `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/` です。 
 
 **[デバッグ]** を選択し、次に **[デバッグの開始]** を選択します。 数秒後にサービスが開始され、Visual Studio でサービスのパブリック URL を使用してブラウザーが開かれます。 ブラウザーが自動的に開かれない場合は、ブラウザーでご自分のサービスのパブリック URL に移動し、開発空間で実行されているサービスを操作します。
 

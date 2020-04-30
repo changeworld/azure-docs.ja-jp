@@ -10,14 +10,8 @@
   items:
     - name: Web 上で Content Moderator を試す
       href: quick-start.md
-    - name: クライアント SDK の使用
-      items:
-        - name: .NET SDK の使用
-          href: dotnet-sdk-quickstart.md
-        - name: Python SDK の使用
-          href: python-sdk-quickstart.md
-        - name: Java SDK の使用
-          href: java-sdk-quickstart.md
+    - name: クライアント ライブラリの使用
+      href: client-libraries.md
 - name: チュートリアル
   items:
     - name: eコマース イメージをモデレートする
@@ -126,7 +120,7 @@
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: 言語のサポート
       href: language-support.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

@@ -91,6 +91,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
+    - name: コストの計画と管理
+      href: concept-plan-manage-cost.md
     - name: ワークスペース
       href: concept-workspace.md
     - name: 環境
@@ -156,6 +158,8 @@
               href: how-to-use-azure-ad-identity.md
             - name: ストレージ アクセス キーの再生成
               href: how-to-change-storage-access-key.md
+            - name: Azure Firewall の使用
+              href: how-to-access-azureml-behind-firewall.md
         - name: 認証の設定
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md

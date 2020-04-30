@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB の競合カテゴリと競合
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: a8ee72f46e1789088e779c10a0824262469ffde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b1cf01cbaa8de8ec33bbf9c19ee991ae898d58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75441979"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182754"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>競合のタイプと解決ポリシー
 

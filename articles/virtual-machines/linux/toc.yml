@@ -564,14 +564,14 @@
             - name: cloud-init のための既存の VM の準備
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: ../../jenkins/overview.md
+          href: /azure/developer/jenkins/overview.md
           items:
             - name: Jenkins サーバーを作成する
-              href: ../../jenkins/install-jenkins-solution-template.md
+              href: /azure/developer/jenkins/configure-on-linux-vm.md
             - name: Azure VM エージェントでスケーリングする
-              href: ../../jenkins/jenkins-azure-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
             - name: アーティファクトをストレージに発行する
-              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
             - name: Jenkins をセキュリティ保護する
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: コンテナーの実行

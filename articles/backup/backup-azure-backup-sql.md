@@ -3,12 +3,12 @@ title: SQL Server を Azure に DPM ワークロードとしてバックアッ�
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8cbb8c833bc2933afac300bcc848fd50861011d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01504fcfd81040d75e57ce62a9f77a5bb248d59b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505936"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183791"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 
@@ -24,13 +24,14 @@ SQL Server データベースを Azure にバックアップし、Azure から�
 
 ## <a name="before-you-start"></a>開始する前に
 
-開始する前に、Azure Backup を使用してワークロードを保護するための[前提条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)を満たしていることを確認します。 前提条件となるタスクの一部を次に示します。 
+開始する前に、Azure Backup を使用してワークロードを保護するための[前提条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)を満たしていることを確認します。 前提条件となるタスクの一部を次に示します。
+
 * バックアップ コンテナーを作成します。
-* コンテナー資格情報をダウンロードします。 
+* コンテナー資格情報をダウンロードします。
 * Azure Backup エージェントをインストールします。
 * 資格情報コンテナーにサーバーを登録します。
 
-## <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成 
+## <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
 
 Azure で SQL Server データベースを保護するには、まずバックアップ ポリシーを作成します。
 
@@ -74,7 +75,7 @@ Azure で SQL Server データベースを保護するには、まずバック�
     初回バックアップ コピーでは、データ ソース (SQL Server データベース) 全体を転送する必要があります。 バックアップ データは、運用サーバー (SQL Server マシン) から DPM サーバーに移動されます。 このバックアップが大きい場合、ネットワーク経由でデータを転送すると、帯域幅の輻輳が発生する可能性があります。 このため、管理者は、リムーバブル メディアを使用して初回バックアップを**手動**で転送することを選択できます。 または、指定した時間に**自動的 (ネットワーク経由)** にデータを転送できます。
 
     初回バックアップが完了すると、バックアップは初回バックアップ コピーで増分的に続行されます。 増分バックアップは一般に非常に小さく、ネットワーク経由で容易に転送できます。
-    
+
 1. 整合性チェックを実行するタイミングを選択します。 **[次へ]** を選択します。
 
     ![整合性チェックを実行するタイミングを選択する](./media/backup-azure-backup-sql/pg-consistent.png)
@@ -106,7 +107,7 @@ Azure で SQL Server データベースを保護するには、まずバック�
     * 土曜日午後 12:00 のバックアップは、104 週間保持されます。
     * 月の最終土曜日午後 12:00 のバックアップは 60 か月間保持されます。
     * 3 月の最終土曜日午後 12:00 のバックアップは 10 年間保持されます。
-    
+
     保持ポリシーを選択したら、 **[次へ]** を選択します。
 
 1. 初回バックアップ コピーを Azure に転送する方法を選択します。

@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619127"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82161127"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "80619127"
 - Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
 - ローカル Web サーバー。 この記事では、[Node.js](https://nodejs.org) を使用して基本的なサーバーを起動します。
 - [Visual Studio Code](https://code.visualstudio.com)。
-- ブラウザー デバッグ用の VS Code 拡張機能 ([Debugger for Chrome](vscode:extension/msjsdiag.debugger-for-chrome)、[Debugger for Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge) など)。
+- ブラウザー デバッグ用の VS Code 拡張機能 ([Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)、[Debugger for Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge) など)。
 
 ## <a name="setting-up-storage-account-cors-rules"></a>ストレージ アカウントの CORS ルールの設定
 
@@ -94,7 +94,7 @@ SAS が生成されたら、戻り値をコピーして、後の手順で使用�
 
 ## <a name="implement-the-html-page"></a>HTML ページを実装する
 
-このセクションでは、基本的な Web ページを作成してから、VS Code を構成してページの起動とデバッグを行います。 ただし、起動を行うには、Node.js を使用してローカル Web サーバーを立ち上げて、ブラウザーからの要求に応じてページを提供する必要があります。 その後、各種 BLOB ストレージ API を呼び出して、ページ上に結果を表示する JavaScript コードを追加します。 これらの呼び出しの結果は、[Azure portal](https://portal.azure.com)、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer)、および VS Code 用の [Azure Storage 拡張機能](vscode:extension/ms-azuretools.vscode-azurestorage)でも確認できます。
+このセクションでは、基本的な Web ページを作成してから、VS Code を構成してページの起動とデバッグを行います。 ただし、起動を行うには、Node.js を使用してローカル Web サーバーを立ち上げて、ブラウザーからの要求に応じてページを提供する必要があります。 その後、各種 BLOB ストレージ API を呼び出して、ページ上に結果を表示する JavaScript コードを追加します。 これらの呼び出しの結果は、[Azure portal](https://portal.azure.com)、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer)、および VS Code 用の [Azure Storage 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)でも確認できます。
 
 ### <a name="set-up-the-web-application"></a>Web アプリケーションをセットアップする
 

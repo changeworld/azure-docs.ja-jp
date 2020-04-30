@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673898"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189183"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -23,7 +23,7 @@ ms.locfileid: "80673898"
 
 ## <a name="data-ingress"></a>データのイングレス
 
-Azure Time Series Insights 環境には、時系列データを収集、処理、格納するための*インジェスト エンジン*が含まれています。 
+Azure Time Series Insights 環境には、時系列データを収集、処理、格納するための*インジェスト エンジン*が含まれています。
 
 [環境を計画する](time-series-insights-update-plan.md)ときは、すべての着信データが確実に処理されるようにし、高いイングレス スケールを実現し、*インジェストの待機時間* (Time Series Insights でイベント ソースからデータが読み取られて処理されるまでに要する時間) を最小限に抑えるために考慮すべき検討事項がいくつかあります。
 
@@ -31,7 +31,7 @@ Time Series Insights プレビューのデータ イングレス ポリシーに
 
 ### <a name="ingress-policies"></a>イングレス ポリシー
 
-*データのイングレス*には、データが Azure Time Series Insights プレビュー環境に送信される方法が含まれています。 
+*データのイングレス*には、データが Azure Time Series Insights プレビュー環境に送信される方法が含まれています。
 
 主な構成、書式設定、ベストプラクティスを以下にまとめています。
 
@@ -42,10 +42,11 @@ Azure Time Series Insights プレビューでは、次のイベント ソース�
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Azure Time Series Insights プレビューでは、インスタンスごとに最大で 2 つのイベント ソースがサポートされています。 イベント ソースに接続すると、TSI 環境は、IoT Hub またはイベント ハブに現在格納されているすべてのイベントを、最も古いイベントから読み取ります。 
+Azure Time Series Insights プレビューでは、インスタンスごとに最大で 2 つのイベント ソースがサポートされています。 イベント ソースに接続すると、TSI 環境は、IoT Hub またはイベント ハブに現在格納されているすべてのイベントを、最も古いイベントから読み取ります。
 
-> [!IMPORTANT] 
-> * プレビュー環境にイベント ソースをアタッチすると、初期の待機時間が長くなることがあります。 
+> [!IMPORTANT]
+>
+> * プレビュー環境にイベント ソースをアタッチすると、初期の待機時間が長くなることがあります。
 > イベント ソースの待機時間は、現在 IoT Hub またはイベント ハブにあるイベントの数によって変わります。
 > * 最初にイベント ソース データが取り込まれた後は、待機時間が短くなります。 長い待機時間が継続する場合は、Azure portal からサポート チケットを送信してください。
 
@@ -64,7 +65,7 @@ Azure Time Series Insights では、Azure IoT Hub または Azure Event Hubs か
 
 #### <a name="objects-and-arrays"></a>オブジェクトと配列
 
-オブジェクトや配列などの複合型はイベント ペイロードの一部として送信できますが、格納時にはデータのフラット化プロセスが実行されます。 
+オブジェクトや配列などの複合型はイベント ペイロードの一部として送信できますが、格納時にはデータのフラット化プロセスが実行されます。
 
 JSON イベントの調整方法、複合型の送信方法、入れ子になったオブジェクトのフラット化の詳細については、計画と最適化を支援する[イングレスとクエリのための JSON の調整方法](./time-series-insights-update-how-to-shape-events.md)に関する記事を参照してください。
 
@@ -78,7 +79,7 @@ JSON イベントの調整方法、複合型の送信方法、入れ子になっ
 
 * [イングレスとクエリに対して JSON を整形する方法](./time-series-insights-update-how-to-shape-events.md)に関する記事を読み、Json データを最適化して整形する方法と、プレビューでの現在の制限事項について理解します。
 
-### <a name="ingress-scale-and-preview-limitations"></a>イングレス スケールとプレビューの制限事項 
+### <a name="ingress-scale-and-preview-limitations"></a>イングレス スケールとプレビューの制限事項
 
 Azure Time Series Insights プレビューのイングレスの制限事項について以下で説明します。
 
@@ -93,7 +94,8 @@ Azure Time Series Insights プレビューのイングレスの制限事項に�
 
 既定では、Time Series Insights プレビューは、**Time Series Insights 環境ごとに最大 1 MB/秒 (MBps)** の速度で受信データを取り込むことができます。 [ハブのパーティションごとに](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)追加の制限があります。
 
-> [!TIP] 
+> [!TIP]
+>
 > * 要求により、環境でサポートされる取り込み速度を最大 16 MBps に指定できます。
 > * より高いスループットが必要な場合は、Azure portal からサポート チケットを送信してお問い合わせください。
  
@@ -117,7 +119,7 @@ Azure Time Series Insights プレビューのイングレスの制限事項に�
 
 Time Series Insights 環境を計画するときは、Time Series Insights に接続するイベント ソースの構成を考慮することが重要です。 Azure IoT Hub と Event Hubs はどちらもパーティションを使用して、イベント処理のための水平スケールを有効にします。 
 
-*パーティション*は、ハブで保持されている順序付けされた一連のイベントです。 パーティション数は、ハブの作成フェーズ中に設定され、変更することはできません。 
+*パーティション*は、ハブで保持されている順序付けされた一連のイベントです。 パーティション数は、ハブの作成フェーズ中に設定され、変更することはできません。
 
 Event Hubs のパーティション分割のベスト プラクティスについては、「[パーティションはいくつ必要ですか。](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)」を参照してください。
 
@@ -132,7 +134,7 @@ Azure Time Series Insights プレビューには現在、一般的な **0.5 MBps
 
 デバイスは、IoT Hub に作成されるとパーティションに永続的に割り当てられます。 これにより、IoT Hub ではイベントの順序を保証できます (この割り当ては変更されないため)。
 
-固定パーティション割り当ては、IoT Hub のダウンストリームから送信されるデータを取り込んでいる Time Series Insights インスタンスにも影響します。 複数のデバイスからのメッセージが同じゲートウェイ デバイス ID を使用してハブに転送されると、それらは同じパーティションに同時に到着することがあるため、パーティションごとのスケール制限を超える可能性があります。 
+固定パーティション割り当ては、IoT Hub のダウンストリームから送信されるデータを取り込んでいる Time Series Insights インスタンスにも影響します。 複数のデバイスからのメッセージが同じゲートウェイ デバイス ID を使用してハブに転送されると、それらは同じパーティションに同時に到着することがあるため、パーティションごとのスケール制限を超える可能性があります。
 
 **影響**:
 
@@ -145,6 +147,7 @@ Azure Time Series Insights プレビューには現在、一般的な **0.5 MBps
 
 > [!IMPORTANT]
 > IoT Hub をイベント ソースとして使用している環境では、使用中のハブ デバイスの数を使ってインジェスト率を計算し、プレビューでのパーティションあたりの制限が確実に 0.5 MBps 未満になるようにします。
+>
 > * 複数のイベントが同時に到着した場合でも、プレビューの制限を超えなくなります。
 
   ![IoT Hub パーティションのダイアグラム](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
@@ -186,7 +189,7 @@ Azure Blob Storage の詳細については、[Storage Blob の概要](../storag
 
 Azure Time Series Insights プレビューの PAYG 環境を作成すると、Azure Storage General Purpose V1 BLOB アカウントが、長期的なコールド ストアとして作成されます。  
 
-Azure Time Series Insights プレビューでは、Azure Storage アカウントで、各イベントごとに最大 2 つのコピーが保持されます。 1 つのコピーには、イベントがインジェスト時間によって並べ替えられて格納され、常に時間順に並べられた一連のイベントにアクセスできるようになります。 時間の経過と共に、Time Series Insights プレビューでは、高パフォーマンスの Time Series Insights クエリに最適化するために、データの再パーティション分割コピーも作成されます。 
+Azure Time Series Insights プレビューでは、Azure Storage アカウントで、各イベントごとに最大 2 つのコピーが保持されます。 1 つのコピーには、イベントがインジェスト時間によって並べ替えられて格納され、常に時間順に並べられた一連のイベントにアクセスできるようになります。 時間の経過と共に、Time Series Insights プレビューでは、高パフォーマンスの Time Series Insights クエリに最適化するために、データの再パーティション分割コピーも作成されます。
 
 パブリック プレビュー中、データは、Azure Storage アカウントに無期限に格納されます。
 
@@ -194,7 +197,7 @@ Azure Time Series Insights プレビューでは、Azure Storage アカウント
 
 クエリのパフォーマンスとデータの可用性を確保するため、Time Series Insights プレビューによって作成されたすべての BLOB を編集または削除しないでください。
 
-#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Time Series Insights プレビューのコールド ストア データへのアクセス 
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Time Series Insights プレビューのコールド ストア データへのアクセス
 
 [Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)および [Time Series Query](./time-series-insights-update-tsq.md) からデータにアクセスするだけでなく、コールド ストアに格納されている Parquet ファイルから直接データにアクセスすることもできます。 たとえば、Jupyter Notebook でデータの読み取り、変換、クレンジングを行った後、それを使用して同じ Spark ワークフローで Azure Machine Learning モデルをトレーニングできます。
 
@@ -223,6 +226,7 @@ Time Series Insights プレビューでは、次のようにデータのコピ�
 どちらの場合も、Parquet ファイルの time プロパティは BLOB の作成時刻に対応します。 `PT=Time` フォルダー内のデータは、一旦ファイルに書き込まれると、変更されずに保持されます。 `PT=TsId` フォルダー内のデータは、時間の経過と共にクエリに合わせて最適化され、静的ではありません。
 
 > [!NOTE]
+>
 > * `<YYYY>` は、4 桁の年表記に対応します。
 > * `<MM>` は、2 桁の月表記に対応します。
 > * `<YYYYMMDDHHMMSSfff>` は、4 桁の年 (`YYYY`)、2 桁の月 (`MM`)、2 桁の日 (`DD`)、2 桁の時 (`HH`)、2 桁の分 (`MM`)、2 桁の秒 (`SS`)、3 桁のミリ秒 (`fff`) のタイムスタンプ表現に対応します。

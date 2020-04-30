@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671632"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188928"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
 ## <a name="updated-profiler-agent"></a>更新された Profiler エージェント
-トリガー機能は、バージョン 2.6 以降のプロファイラー エージェントでのみ動作します。 Azure App Service を実行している場合、エージェントは自動的に更新されます。 Web サイトの Kudu URL にアクセスし、 https://yourwebsite.scm.azurewebsites.net/diagnosticservices のように末尾に /diagnosticservices 追加すると、実行しているエージェントのバージョンを確認できます。 Application Insights Profiler の Web ジョブはバージョン 2.6 以降である必要があります。 Web アプリを再起動することで、強制的にアップグレードすることができます。 
+トリガー機能は、バージョン 2.6 以降のプロファイラー エージェントでのみ動作します。 Azure App Service を実行している場合、エージェントは自動的に更新されます。 Web サイトの Kudu URL にアクセスし、 `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` のように末尾に /diagnosticservices 追加すると、実行しているエージェントのバージョンを確認できます。 Application Insights Profiler の Web ジョブはバージョン 2.6 以降である必要があります。 Web アプリを再起動することで、強制的にアップグレードすることができます。 
 
 プロファイラーを VM またはクラウド サービスで実行している場合は、Windows Azure Diagnostics (WAD) 拡張機能バージョン 16.0.4 以降がインストールされている必要があります。 WAD のバージョンを確認するには、VM にログオンし、次のディレクトリを参照します。C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 ディレクトリ名が、インストールされている WAD のバージョンです。 新しいバージョンが利用可能になると、Azure VM エージェントは WAD を自動的に更新します。
 

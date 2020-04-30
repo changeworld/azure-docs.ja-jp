@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d773e6302edf0b799e6dfccc702750a9cc74f60
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406696"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82172408"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
@@ -97,7 +97,7 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 2. パッケージから [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) を抽出し、管理者特権でのコマンド プロンプトから **psexec -i -u "nt authority\network service" cmd.exe** を実行します。
 3. 新しく表示されたコマンド プロンプトで **certmgr.msc** を実行します
 2. 管理コンソールで、[個人用] コンテナーを展開し、[証明書] をクリックします
-3. **connectorregistrationca.msappproxy.ne によって発行された証明書を見つけます
+3. **connectorregistrationca.msappproxy.net** によって発行された証明書を見つけます
 
 **クライアント証明書を更新するには:**
 

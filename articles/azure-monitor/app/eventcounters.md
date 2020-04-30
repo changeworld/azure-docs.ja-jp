@@ -3,16 +3,16 @@ title: Application Insights のイベント カウンター | Microsoft Docs
 description: Application Insights でシステムとカスタムの .NET/.NET Core EventCounter を監視します。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 2094c012e86131073fc66be4f2ac2fb2e81ef4c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663591"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187097"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
-`EventCounter` は、カウンターまたは統計情報を発行および使用するための .NET/.NET Core メカニズムです。 `EventCounters` の概要と、それらを発行および使用する方法の例は、[こちらの](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)ドキュメントで説明しています。 EventCounter は、Windows、Linux、および macOS のすべての OS プラットフォームでサポートされています。 これは、Windows システムでのみサポートされている [PerformanceCounter](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) のクロスプラットフォームの同等のものと考えることができます。
+`EventCounter` は、カウンターまたは統計情報を発行および使用するための .NET/.NET Core メカニズムです。 `EventCounters` の概要と、それらを発行および使用する方法の例は、[こちらの](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)ドキュメントで説明しています。 EventCounter は、Windows、Linux、および macOS のすべての OS プラットフォームでサポートされています。 これは、Windows システムでのみサポートされている [PerformanceCounter](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) のクロスプラットフォームの同等のものと考えることができます。
 
 ユーザーは必要に応じてカスタムの `EventCounters` を発行できますが、.NET Core 3.0 ランタイムによってこれらのカウンターのセットが既定で発行されます。 このドキュメントでは、Azure Application Insights での (システム定義またはユーザー定義の) `EventCounters` の収集および表示に必要な手順について説明します。
 

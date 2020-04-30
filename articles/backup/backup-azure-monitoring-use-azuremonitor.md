@@ -4,12 +4,12 @@ description: Azure Monitor を使用して、Azure Backup ワークロードを�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 547cef66be9902468f4e2755c31e5f586eccad5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54a98cebc2887f7508543a4dc752b2145c3bbda2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459516"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183655"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -135,13 +135,12 @@ Log Analytics ワークスペースの **[ログ]** セクションを開き、�
     (AddonAzureBackupStorage
     | where OperationName == "StorageAssociation"
     //Get latest record for each Backup Item
-    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId
     | project BackupItemUniqueId , StorageConsumedInMBs)
     on BackupItemUniqueId
-    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs
     | sort by StorageConsumedInMBs desc
     ````
-
 
 ### <a name="diagnostic-data-update-frequency"></a>診断データの更新頻度
 

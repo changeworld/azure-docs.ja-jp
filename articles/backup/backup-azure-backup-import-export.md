@@ -4,12 +4,12 @@ description: Azure Import/Export サービスを使用してネットワーク�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 1359616e074f36a1324a418d5b2c889076ced52d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206760"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183893"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 
@@ -36,7 +36,7 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
 > * Microsoft Azure Recovery Services (MARS) エージェント (Azure Backup エージェントとも呼ばれます) によるファイルとフォルダーのバックアップ。
 > * System Center Data Protection Manager (DPM) でのすべてのワークロードとファイルのバックアップ。
 > * Microsoft Azure Backup Server でのすべてのワークロードとファイルのバックアップ。
- 
+
    > [!NOTE]
    > Azure Backup エージェントを使用して行われたシステム状態のバックアップでは、オフライン バックアップはサポートされていません。
 

@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: db7c7ae9889d26479f51a7714e7e9fb04b444628
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.custom: seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 5abc3395152e03520eaff14b02d150892abf0e22
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757114"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184216"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -161,4 +162,3 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 
 * [HDInsight で Apache Hive Hadoop と共に Apache Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](../hdinsight-use-hive.md)
 * [HDInsight の対話型クエリを使用したフライトの遅延データの分析](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [HDInsight での Apache Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data-linux.md)
