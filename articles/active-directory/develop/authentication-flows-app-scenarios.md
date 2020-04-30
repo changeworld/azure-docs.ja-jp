@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: bf47a352542be0ad4467ed420cc38f62da0d47dc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 66c34206b96acf0414f2f2285ca267fa5c9c2e03
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534874"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583174"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -44,7 +44,7 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントは、さま�
 - [保護されたリソースとクライアント アプリケーション](#protected-resources-vs-client-applications):Web アプリや Web API などのリソースを保護するシナリオもあれば、 保護された Web API を呼び出すためのセキュリティ トークンを取得するシナリオもあります。
 - [ユーザーありとユーザーなし](#with-users-or-without-users):サインイン済みのユーザーが関与するシナリオと、デーモンなどのようにユーザーが関与しないシナリオとがあります。
 - [シングルページ、パブリック クライアント、機密クライアント アプリケーション](#single-page-public-client-and-confidential-client-applications):アプリケーションの種類は、これらの 3 つの大きなカテゴリに分類されます。 それぞれ、併用するライブラリとオブジェクトが異なります。
-- [サインイン対象ユーザー](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types):利用できる認証フローは、サインインの対象ユーザーによって異なります。 一部のフローは、職場または学校アカウントでのみ利用できます。 一部は、職場または学校アカウントと個人用 Microsoft アカウントのどちらでも利用できます。 許可される対象ユーザーは、認証フローによって異なります。
+- [サインイン対象ユーザー](v2-supported-account-types.md):利用できる認証フローは、サインインの対象ユーザーによって異なります。 一部のフローは、職場または学校アカウントでのみ利用できます。 一部は、職場または学校アカウントと個人用 Microsoft アカウントのどちらでも利用できます。 許可される対象ユーザーは、認証フローによって異なります。
 - [サポートされている OAuth 2.0 フロー](#scenarios-and-supported-authentication-flows):トークンを要求するアプリケーションのシナリオを実装するには、認証フローを使用します。 アプリケーション シナリオと認証フローの間に 1 対 1 の対応関係はありません。
 - [サポートされているプラットフォーム](#scenarios-and-supported-platforms-and-languages):すべてのプラットフォームですべてのアプリケーションのシナリオを使用できるわけではありません。
 
