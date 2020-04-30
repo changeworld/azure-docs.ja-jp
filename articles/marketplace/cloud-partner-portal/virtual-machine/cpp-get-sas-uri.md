@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 46b3764fe2a1e09875f2b92a461591b6ff08540f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273853"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147903"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[VM イメージの Shared Access Signature URI の取得](https://aka.ms/GetSASURI)」の指示に従い、移行後のオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[VM イメージの Shared Access Signature URI の取得](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)」の指示に従い、移行後のオファーを管理します。
 
 発行プロセスでは、ご利用の SKU に関連付けられた仮想ハード ディスク (VHD) ごとに URI (Uniform Resource Identifier) を指定する必要があります。 マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この記事では、VHD ごとに Shared Access Signature (SAS) URI を生成する方法について説明します。 この URI は、Cloud パートナー ポータルの **[SKU]** タブに入力することになります。
 

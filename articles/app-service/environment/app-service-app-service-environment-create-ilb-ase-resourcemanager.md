@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: f05780610a2a6033b069721b143aca5e5efa6c35
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: e24e78d5661c2fbb60a96c2fb6d6192ffade9579
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804522"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159696"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
@@ -50,7 +50,7 @@ ILB ASE に関して *azuredeploy.parameters.json* ファイルへの入力が�
 Azure Resource Manager テンプレートを送信した後、ILB ASE が作成されるまでには数時間かかります。  作成が完了すると、ポータル UX で、デプロイを開始したサブスクリプションの App Service Environment の一覧に ILB ASE が表示されます。
 
 ## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>"既定の" TLS/SSL 証明書のアップロードと構成
-ILB ASE を作成したら、TLS/SSL 証明書を、アプリへの TLS/SSL 接続を確立するために使用する "既定の" TLS/SSL証明書として ASE に関連付ける必要があります。  ここでも架空の Contoso Corporation の例で考えると、ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 *https://some-random-app.internal-contoso.com* への接続には * *.internal-contoso.com* に対して有効な TLS/SSL 証明書が必要です。 
+ILB ASE を作成したら、TLS/SSL 証明書を、アプリへの TLS/SSL 接続を確立するために使用する "既定の" TLS/SSL証明書として ASE に関連付ける必要があります。  ここでも架空の Contoso Corporation の例で考えると、ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 *`https://some-random-app.internal-contoso.com`* への接続には * *.internal-contoso.com* に対して有効な TLS/SSL 証明書が必要です。 
 
 有効な TLS/SSL 証明書を取得するには、内部 CA を利用する、外部の発行元から証明書を購入する、自己署名証明書を使用するなどの方法があります。  どのようなソースから TLS/SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
@@ -122,7 +122,7 @@ TLS/SSL 証明書が正常に生成され、base64 でエンコードされた�
 
 Azure Resource Manager テンプレートを送信した後、変更が適用されるまでには、ASE フロントエンドあたり約 40 分かかります。  たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまで約 1 時間 20 分かかります。  テンプレートの実行中に、ASE をスケーリングすることはできません。  
 
-テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の TLS/SSL 証明書を使用して保護されます。  既定の TLS/SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。  たとえば、 *https://mycustomapp.internal-contoso.com* の場合、* *.internal-contoso.com* の既定の TLS/SSL 証明書が使用されます。
+テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の TLS/SSL 証明書を使用して保護されます。  既定の TLS/SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。  たとえば、 *`https://mycustomapp.internal-contoso.com`* の場合、* *.internal-contoso.com* の既定の TLS/SSL 証明書が使用されます。
 
 ただし、パブリック マルチテナント サービスで実行されているアプリと同様に、開発者が個々のアプリに対してカスタム ホスト名を設定し、各アプリに固有の SNI TLS/SSL 証明書バインドを構成することもできます。  
 

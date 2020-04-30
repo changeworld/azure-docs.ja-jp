@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dsindona
-ms.openlocfilehash: 0453117ee2984e0b8ebee60145353584a02a359a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2a5d82af609ab5eafbbc29dc95b8b6e4c8aa32df
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270130"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146254"
 ---
 # <a name="container-publishing-prerequisites"></a>コンテナー発行の前提条件
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure Container オファーを作成する](https://aka.ms/CreateContainerOffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure Container オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)」の手順に従って、移行されたオファーを管理します。
 
 この記事では、Azure Marketplace でコンテナー オファーを発行するための前提条件について説明します。  まだ完了していない場合は、「[Containers のオファー発行ガイド](../../marketplace-containers.md)」を確認する必要があります。
 

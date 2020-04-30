@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a3c168d0bd13e7c335841ac4016f18464cd50d5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 406a37a1ef946b1c3ceb0d7b02ba318f423dcf53
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985118"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146696"
 ---
 # <a name="offer-settings-tab"></a>[プランの設定] タブ
 
 >[!Important]
->2020 年 4 月 13 日以降、コンサルティング サービス オファーのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [コンサルティング サービス作成の概要](https://aka.ms/AzureCreateConsultingService)の手順に従い、移行後のオファーを管理します。
+>2020 年 4 月 13 日以降、コンサルティング サービス オファーのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [コンサルティング サービス作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)の手順に従い、移行後のオファーを管理します。
 
 **[新しいプラン]** 画面では、まずプラン ID を作成します。 オファー ID は、次の 3 つのパーツで構成されます。**プラン ID**、**パブリッシャー ID**、**名前**です。 次の各セクションで、それぞれの要素について説明します。
 

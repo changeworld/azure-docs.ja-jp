@@ -3,15 +3,16 @@ title: Azure PowerShell を使用して Azure パブリック IP を別の Azure
 description: Azure PowerShell を使用して Azure パブリック IP を Azure リージョン間で移動するには、Azure Resource Manager テンプレートを使用します。
 author: asudbring
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: c55b6011381d385fed7c7b8175ff02ec9be66fdb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76924705ff801ce3be6a5c76f7ae276bdbf93def
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75641555"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147880"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure パブリック IP を別のリージョンに移動する
 

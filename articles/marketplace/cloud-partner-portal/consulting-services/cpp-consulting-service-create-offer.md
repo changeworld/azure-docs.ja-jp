@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ed744cfbb49393980c2622b00233fca373b32019
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a9fbf402bb8de11ae0353ef05d2a526d686c5884
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985135"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148169"
 ---
 # <a name="create-a-consulting-offer"></a>コンサルティング オファーを作成する
 
 >[!Important]
->2020 年 4 月 13 日以降、パートナー センターへのコンサルティング サービス オファーの管理の移行が開始されます。 移行後は、パートナー センターでオファーを作成および管理します。 [コンサルティング サービス作成の概要](https://aka.ms/AzureCreateConsultingService)の手順に従い、移行後のオファーを管理します。
+>2020 年 4 月 13 日以降、パートナー センターへのコンサルティング サービス オファーの管理の移行が開始されます。 移行後は、パートナー センターでオファーを作成および管理します。 [コンサルティング サービス作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)の手順に従い、移行後のオファーを管理します。
 
 この記事では、コンサルティング サービス オファーを作成して発行する方法について説明します。
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 191a2246afdc60953d8c353f9ccdc2339130f910
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187236"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159337"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs データを Azure Storage にキャプチャし、Python を使用してそれを読み取る (azure-eventhub バージョン 5)
 
@@ -46,7 +46,7 @@ ms.locfileid: "77187236"
 - Azure Storage アカウント、ストレージ アカウントの BLOB コンテナー、ストレージ アカウントへの接続文字列。 これらの項目がない場合は、次の手順を実行します。  
     1. [Azure Storage アカウントを作成する](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
     1. [ストレージ アカウントに BLOB コンテナーを作成する](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-    1. [ストレージ アカウントへの接続文字列を取得する](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
+    1. [ストレージ アカウントへの接続文字列を取得する](../storage/common/storage-configure-connection-string.md)
 
     接続文字列とコンテナー名を記録しておいてください。後でこのクイックスタートの中で使用します。  
 - イベント ハブの Capture 機能の有効化。 [Azure portal を使用して Event Hubs Capture を有効にする方法](event-hubs-capture-enable-through-portal.md)に関するページの手順に従ってください。 前の手順で作成したストレージ アカウントと BLOB コンテナーを選択します。 この機能はまた、イベント ハブの作成時に有効にすることもできます。  

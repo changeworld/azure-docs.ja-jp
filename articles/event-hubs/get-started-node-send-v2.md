@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 71c50e8efdf26f2a7d3f270a774b08e49c92faa7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025018"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159422"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>JavaScript を使用して Event Hubs との間でイベントを送受信する (azure/event-hubs バージョン 5)
 このクイックスタートでは、**azure/event-hubs バージョン 5** JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -119,7 +119,7 @@ Azure Storage アカウントを作成して、そこに BLOB コンテナーを
 
 1. [Azure Storage アカウントを作成する](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [ストレージ アカウントに BLOB コンテナーを作成する](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-3. [ストレージ アカウントへの接続文字列を取得する](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [ストレージ アカウントへの接続文字列を取得する](../storage/common/storage-configure-connection-string.md)
 
 接続文字列とコンテナー名を記録しておいてください。後から受信コードで使用します。
 

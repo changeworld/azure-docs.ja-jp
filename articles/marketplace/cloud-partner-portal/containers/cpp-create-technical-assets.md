@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 1116bd03cf0ef734b74b387ff8f3cff74b29b215
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 68db606c9a01c4b1122f9b0cce620762485ca40a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270317"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148277"
 ---
 # <a name="prepare-your-container-technical-assets"></a>コンテナーの技術資産を準備する
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Azure Container の技術資産の準備](https://aka.ms/CreateContainerTechAssets)に関するページの手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Azure Container の技術資産の準備](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)に関するページの手順に従って、移行されたオファーを管理します。
 
 この記事では、Azure Marketplace 用のコンテナー オファーを構成するための手順と要件について説明します。
 

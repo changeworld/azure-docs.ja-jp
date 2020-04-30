@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f3e3dc6e0d73627f49ba04a8b861253bafcddfa9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273921"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148048"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>仮想ハード ディスクのデプロイ テンプレート
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://aks.ms/CertifyVMimage)」の手順に従ってください。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)」の手順に従ってください。
 
-次の Azure Resource Manager テンプレートでは、ローカル仮想ハード ディスク (VHD) から作成される新しい Azure 仮想マシン (VM) インスタンスを定義します。  このテンプレートは、記事「[Deploy an Azure VM from a user VHD](./cpp-deploy-vm-user-image.md)」(ユーザー VHD から Azure VM をデプロイする) で使用されています。 
+次の Azure Resource Manager テンプレートでは、ローカル仮想ハード ディスク (VHD) から作成される新しい Azure 仮想マシン (VM) インスタンスを定義します。  このテンプレートは、記事「[Deploy an Azure VM from a user VHD](./cpp-deploy-vm-user-image.md)」(ユーザー VHD から Azure VM をデプロイする) で使用されています。
 
 ```json
 {

@@ -3,12 +3,12 @@ title: Azure Application Insights を使用した ASP.NET の Web アプリ分�
 description: オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、およびユーザー動作の分析ツールを構成します。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d3181c3d43f07c7cb920b9fe265a8420c1417a56
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536898"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145277"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -115,10 +115,6 @@ Application Insights ポータルにはテレメトリが蓄積されており�
 [SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)にアップグレードするには、**NuGet パッケージ マネージャー**を開き、インストールされているパッケージに対してフィルターを実行します。 **[Microsoft.ApplicationInsights.Web]** 、 **[アップグレード]** の順に選択します。
 
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておきます。 その後、新しいバージョンに変更をマージします。
-
-## <a name="video"></a>ビデオ
-
-* [.NET アプリケーションを使って最初から Application Insights を構成する](https://www.youtube.com/watch?v=blnGAVgMAfA)ステップ バイ ステップの外部ビデオ。
 
 ## <a name="next-steps"></a>次のステップ
 

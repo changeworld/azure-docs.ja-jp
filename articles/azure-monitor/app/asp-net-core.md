@@ -3,12 +3,12 @@ title: ASP.NET Core アプリケーション用の Azure Application Insights | 
 description: ASP.NET Core Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284791"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145257"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -162,11 +162,11 @@ ASP.NET Core での[パフォーマンス カウンター](https://azure.microso
     
 または、`FullScript` を使用するには、SDK v2.14 で `ScriptBody` を使用します。 コンテンツ セキュリティ ポリシーを設定するために `<script>` タグをコントロールする必要がある場合は、次のようにします。
 
-    ```cshtml
-        <script> // apply custom changes to this script tag.
-            @Html.Raw(JavaScriptSnippet.ScriptBody)
-        </script>
-    ```
+```cshtml
+ <script> // apply custom changes to this script tag.
+     @Html.Raw(JavaScriptSnippet.ScriptBody)
+ </script>
+```
 
 上で参照されている `.cshtml` ファイル名は、既定の MVC アプリケーション テンプレートからのものです。 最終的に、アプリケーションに対するクライアント側の監視を正しく有効にするためには、JavaScript スニペットが、監視するアプリケーションの各ページの `<head>` セクションにある必要があります。 このアプリケーション テンプレートでは、Javascript スニペットを `_Layout.cshtml` に追加することで、実質的にこの目標を達成できます。 
 
@@ -454,11 +454,6 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
 [コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
-
-## <a name="video"></a>ビデオ
-
-- 最初から [.NET Core と Visual Studio を使って Application Insights を構成する](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)には、この手順に関するステップ バイ ステップの外部ビデオをご覧ください。
-- 最初から [.NET Core と Visual Studio Code を使って Application Insights を構成する](https://youtu.be/ygGt84GDync)には、この手順に関するステップ バイ ステップの外部ビデオをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 723762695d34380b7f237fa9082dc470dafcc8df
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273462"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147045"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>SAS URL に関する一般的な問題と解決策
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[SAS URL に関する一般的な問題と解決策](https://aka.ms/AzureSAS_URL_FAQ)」の手順に従い、移行後のオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[SAS URL に関する一般的な問題と解決策](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)」の手順に従い、移行後のオファーを管理します。
 
 次の表では、共有アクセス署名 (ソリューション用のアップロードされた VHD を識別して共有するために使用されます) を使用するときに発生する一般的な問題と、推奨される解決策を示します。
 

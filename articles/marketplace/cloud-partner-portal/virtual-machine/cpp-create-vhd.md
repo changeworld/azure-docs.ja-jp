@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 642c6964aaad8d6e8750fca67efb11eb3feaf19d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273938"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147010"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure と互換性のある VHD の作成
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://aka.ms/AzureVMTechAsset)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
 この記事では、Azure Marketplace での仮想マシン (VM) プランのための仮想ハード ディスク (VHD) を作成するのに必要な手順を詳しく説明します。  リモート デスクトップ プロトコル (RDP) の使用、VM サイズの選択、最新の Windows 更新プログラムのインストール、VHD イメージの汎用化などのさまざまな側面に関するベスト プラクティスも紹介します。  次のセクションでは、Windows ベースの VHD に主に注目します。Linux ベースの VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](../../../virtual-machines/linux/endorsed-distros.md)」を参照してください。 
 

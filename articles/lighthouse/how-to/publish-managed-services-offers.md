@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 04/08/2020
+ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 19c4d1a4bd0ffd7c0162cbf7f20c49a5b219b9bc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991911"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146739"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -72,7 +72,7 @@ ms.locfileid: "80991911"
 |**Is this a private plan? (プライベート プランか)**     | SKU がプライベートかパブリックかどうかを示します。 既定値は **[いいえ]** です。 この選択のままにした場合、実際のプランは特定の顧客 (または特定の数の顧客) に制限されません。パブリック プランを発行後にプライベートに変更することはできません。 このプランを特定の顧客だけが利用できるようにするには、 **[はい]** を選択します。 その場合は、顧客のサブスクリプション ID を指定して顧客を特定する必要があります。 これらは、1 つずつ (最大 10 件のサブスクリプション)、または .csv ファイルのアップロード (最大 20,000 件のサブスクリプション) によって入力できます。 オファーをテストして検証できるように、ここではお客様自身のサブスクリプションを必ず含めてください。 詳細については、「[プライベート SKU とプラン](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)」を参照してください。  |
 
 > [!IMPORTANT]
-> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に[委任へのアクセス権を削除](onboard-customer.md#remove-access-to-a-delegation)できるのは、 その**ロールの定義**セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の**承認**を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
+> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に[委任へのアクセス権を削除](remove-delegation.md)できるのは、 その**ロールの定義**セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の**承認**を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
 
 #### <a name="manifest-details"></a>マニフェストの詳細
 
@@ -100,7 +100,7 @@ ms.locfileid: "80991911"
 - **Assignable Roles (割り当て可能なロール)** :この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合は、これは必須です。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーは、これらの**割り当て可能なロール**を[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。 ここで 1 つ以上のロールを選択しない場合、送信の認定は成功しません。 (このユーザーの [ロール定義] に対して [ユーザーアクセス管理者] を選択しなかった場合、このフィールドは無効になります)。
 
 > [!TIP]
-> 必要に応じて[委任へのアクセス権を削除](onboard-customer.md#remove-access-to-a-delegation)できるようにするには、 その**ロールの定義**セットに、 [「管理されたサービスの登録割り当て削除ロール」](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)の**承認**を含めます。 このロールが割り当てられていない場合、委任されたリソースは顧客のテナント内のユーザーによってのみ削除できます。
+> 必要に応じて[委任へのアクセス権を削除](remove-delegation.md)できるようにするには、 その**ロールの定義**セットに、 [「管理されたサービスの登録割り当て削除ロール」](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)の**承認**を含めます。 このロールが割り当てられていない場合、委任されたリソースは顧客のテナント内のユーザーによってのみ削除できます。
 
 情報の入力が終わったら、必要な回数だけ **[新しいプラン]** を選択して、追加のプランを作成できます。 完了したら、 **[保存]** を選択し、 **[Marketplace]** セクションに進みます。
 
@@ -116,7 +116,7 @@ ms.locfileid: "80991911"
 |**まとめ**     | 実際のオファーの簡潔な目的または機能。 通常、これはタイトルの下に表示されます。 最大長は 100 文字です。        |
 |**Long Summary (長い要約)**     | 実際のオファーの目的または機能のより長い概要。 最大長は 256 文字です。        |
 |**説明**     | オファーについての詳細。 このフィールドは、最大長が 3,000 文字で、単純な HTML 書式がサポートされています。 説明のどこかに、"マネージド サービス" という語を含める必要があります。       |
-|**Marketing Identifier (マーケティング識別子)**     | 一意の URL フレンドリ識別子。 この識別子には、小文字の英数字とダッシュのみを使用できます。 このオファーの Marketplace URL で使用されます。 たとえば、お客様の発行元 ID が *contoso* で、お客様のマーケティング識別子が *sampleApp* の場合、Azure Marketplace 内では、実際のオファーの URL は *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* になります。        |
+|**Marketing Identifier (マーケティング識別子)**     | 一意の URL フレンドリ識別子。 この識別子には、小文字の英数字とダッシュのみを使用できます。 このオファーの Marketplace URL で使用されます。 たとえば、お客様の発行元 ID が *contoso* で、お客様のマーケティング識別子が *sampleApp* の場合、Azure Marketplace 内では、実際のオファーの URL は `https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp` になります。       |
 |**Preview Subscription IDs (プレビュー サブスクリプション ID)**     | 1 から 100 個のサブスクリプション識別子を追加します。 これらのサブスクリプションに関連付けられている顧客は、オファーの一般公開前に、Azure Marketplace 内でそのオファーを表示することができるようになります。 実際のオファーを顧客が購入できるようにする前に、そのオファーが Azure Marketplace 内でどのように表示されるかをプレビューできるように、ここでお客様自身のサブスクリプションを含めることをお勧めします  (Microsoft のサポートとエンジニアリング チームも、このプレビュー期間中にお客様のオファーを表示することができるようになります)。   |
 |**役に立つリンク**     | ドキュメント、リリース ノート、FAQ など、実際のオファーに関連する URL。        |
 |**推奨されるカテゴリ (最大 5 個)**     | 実際のオファーに該当する 1 つ以上のカテゴリ (最大 5 つ)。 これらのカテゴリは、顧客が Azure Marketplace と Azure portal 内でお客様のプランを見つけるのに役立ちます。        |

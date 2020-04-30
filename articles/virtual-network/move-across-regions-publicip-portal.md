@@ -3,15 +3,16 @@ title: Azure portal を使用して Azure パブリック IP を別の Azure リ
 description: Azure portal を使用して Azure パブリック IP を Azure リージョン間で移動するには、Azure Resource Manager テンプレートを使用します。
 author: asudbring
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 6d10265e8383b68ebe13c95d8b2a9632668e85da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6dd4b3279fc0110fff2ee0397a785c87b63644d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75641403"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147826"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure パブリック IP を別のリージョンに移動する
 

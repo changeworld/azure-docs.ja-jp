@@ -3,12 +3,12 @@ title: Azure Backup Server を使用した SQL Server のバックアップ
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 4a4d4b7e70e2df0e014ea4b4d23027aa7c48f2fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cd6a8b76e4618031f4d21dc04a82a78fad0076d
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505949"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159252"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Server を使用して SQL Server を Azure にバックアップする
 
@@ -24,7 +24,7 @@ SQL Server データベースをバックアップし、それを Azure から�
 
 開始する前に、[Azure Backup Server をインストールし、準備を完了](backup-azure-microsoft-azure-backup.md)しておきます。
 
-## <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成 
+## <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
 
 Azure で SQL Server データベースを保護するには、最初にバックアップ ポリシーを作成します。
 
@@ -87,7 +87,6 @@ Azure で SQL Server データベースを保護するには、最初にバッ�
     > Data Protection Manager (DPM) を使用して、ローカル ディスクのバックアップが終了した後に Azure のバックアップをスケジュールします。 この方法に従うと、最新のディスク バックアップが Azure にコピーされます。
     >
 
-
 1. 保有ポリシーのスケジュールを選択します。 保持ポリシーのしくみの詳細については、[Azure Backup を使用したテープ インフラストラクチャの置換](backup-azure-backup-cloud-as-tape.md)に関するページを参照してください。
 
     ![MABS で保持ポリシーを選択する](./media/backup-azure-backup-sql/pg-retentionschedule.png)
@@ -123,7 +122,7 @@ Azure で SQL Server データベースを保護するには、最初にバッ�
 1. ドロップダウン メニューで、 **[オンライン保護]** を選択します。 次に、 **[OK]** を選択して、Azure での回復ポイントの作成を開始します。
 
     ![Azure での回復ポイントの作成を開始する](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-1. ジョブの進行状況は **[監視]** ワークスペースで確認できます。 
+1. ジョブの進行状況は **[監視]** ワークスペースで確認できます。
 
     ![[監視] コンソールでジョブの進行状況を表示する](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 

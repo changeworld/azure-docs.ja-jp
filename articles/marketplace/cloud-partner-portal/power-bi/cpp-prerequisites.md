@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ac27a2c95789eac3e824e4ecb31138a6720868a6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f68d8cfb4a221d1f7ec5123f532e7b0bf420b123
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981649"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147689"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI アプリ オファーの前提条件
 
 >[!Important]
->2020 年 4 月 13 日以降、Power BI アプリの Partner Center への移行管理が開始されます。 移行後は、Partner Center でオファーを作成・管理することになります。 「[Power BI アプリ作成の概要](https://aka.ms/AzurePBIAppCreationOverview)」の手順に従い、移行後のオファーを管理します。
+>2020 年 4 月 13 日以降、Power BI アプリの Partner Center への移行管理が開始されます。 移行後は、Partner Center でオファーを作成・管理することになります。 「[Power BI アプリ作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)」の手順に従い、移行後のオファーを管理します。
 
 この記事では、AppSource マーケットプレースに Power BI アプリのオファーを公開する前に満たす必要がある技術要件とビジネス要件を示します。  まだお読みになっていない場合は、「[Office 365、Dynamics 365、PowerApps、Power BI 用のオファー発行ガイド](../../appsource-offer-publishing-guide.md)」をご確認ください。
 

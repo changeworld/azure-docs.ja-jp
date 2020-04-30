@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c6ca017e18a83f0745140cba15d9c894e5a21c32
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273972"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148135"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>出品する仮想マシンの技術資産を作成する
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://aka.ms/AzureVMTechAsset)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシンのテクニカル アセットを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
 このセクションでは､Azure Marketplace に出品する仮想マシン (VM) の技術資産を作成､構成する手順を説明します｡  1 つの VM は､ソリューション用の仮想ハード ディスク (VHD) と関連するデータ ディスク オプションの 2 つのコンポーネントで構成されてます｡  
 

@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a35277a61217dab2982d6436903cd09abfe8c7d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d6d2306dfd44bad6e1f903c3cef3eeb4993f4cd9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984965"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82148039"
 ---
 # <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge モジュールの [プランの設定] タブ
 
 >[!Important]
->2020 年 4 月 13 日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[IoT Edge モジュール オファーを作成する](https://aka.ms/AzureCreateIoT)」の手順に従い、移行後のオファーを管理します。
+>2020 年 4 月 13 日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[IoT Edge モジュール オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)」の手順に従い、移行後のオファーを管理します。
 
-**[IoT Edge モジュール] > [新しいプラン]** ページが開くと、 **[プランの設定]** タブにフォーカスが設定されています。 
+**[IoT Edge モジュール] > [新しいプラン]** ページが開くと、 **[プランの設定]** タブにフォーカスが設定されています。
 
 ![IoT Edge モジュールの [新しいプラン] ページ](./media/iot-edge-module-offer-settings-tab.png)
 
