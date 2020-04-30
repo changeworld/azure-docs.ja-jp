@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
-ms.date: 09/26/2019
+ms.date: 04/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b1c3435222ada52c01f21c2c242dc886f566a81
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72757073"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192852"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Azure Cosmos DB を使用した組み込みの分析のユース ケース
 
@@ -37,7 +37,7 @@ Azure Cosmos DB では、ネイティブに組み込まれた Apache Spark を�
 
 場合によっては、過去に完了したイベントに対して、特定の時点で、データに基づいて質問に回答することが必要になる場合があります。 たとえば、特定の日付の CRM アクティビティの状態の数を取得するといった場合です。 1 週間前にレポートを実行した場合、状態の数は、その時点での各アクティビティの状態のとおりになります。 今日、同じレポートを実行すると、今日の時点の状態のアクティビティの数が表示されます。アクティビティは開始から終了までのライフサイクルを経ているため、先週から変更されている可能性があります。 そのため、ケースのライフサイクルの各ステージでスナップショットに関するレポートを作成する必要があります。
 
-従来のデータ ウェアハウスのシナリオでは、スナップショットの概念は実現できません。これは、データ ウェアハウスはスナップショットを組み込むように設計されておらず、データで提供されるのは、現在の状況のビューだけだからです。 Azure Cosmos DB を使用すると、ユーザーはタイム トラベルの概念を実装することができます。さかのぼってデータに対してクエリを実行したり、分析を実行したりすることができます。また、過去の特定の時点におけるデータの状態を確認することができます。 これは、ユーザーがデータの現在のビューと履歴ビューの両方を簡単に表示し、それに対して分析を実行できることを意味します。
+Azure Cosmos DB を使用すると、ユーザーはタイム トラベルの概念を実装することができます。さかのぼってデータに対してクエリを実行したり、分析を実行したりすることができます。また、過去の特定の時点におけるデータの状態を確認することができます。 これは、ユーザーがデータの現在のビューと履歴ビューの両方を簡単に表示し、それに対して分析を実行できることを意味します。
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>グローバルに分散された機械学習と AI
 

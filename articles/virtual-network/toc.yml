@@ -223,16 +223,6 @@
               href: virtual-network-network-interface-addresses.md
     - name: Security
       items:
-        - name: ネットワーク セキュリティ グループを使用したアクセスの制限
-          items:
-            - name: Azure portal
-              href: tutorial-restrict-network-access-to-resources.md
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-            - name: ネットワーク セキュリティ グループの管理
-              href: manage-network-security-group.md
         - name: ネットワーク トラフィックのフィルター処理
           items:
             - name: Azure portal
@@ -271,6 +261,8 @@
           href: manage-ddos-protection.md
         - name: DDoS Protection Standard へのパートナーのオンボード
           href: ddos-protection-partner-onboarding.md
+        - name: ネットワーク セキュリティ グループの管理
+          href: manage-network-security-group.md
         - name: セキュリティのシナリオ
           items:
             - name: 仮想アプライアンスでネットワークをセキュリティで保護する
@@ -427,7 +419,7 @@
       href: 'https://azure.microsoft.com/pricing/details/virtual-network'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: よく寄せられる質問
       href: virtual-networks-faq.md

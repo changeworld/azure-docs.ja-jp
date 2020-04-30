@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682878"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204221"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -817,9 +817,9 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 1. Azure Cosmos DB Python SDK は DSVM に既にインストールされています。 これを更新するには、コマンド プロンプトから ```pip install pydocumentdb --upgrade``` を実行します。
 2. [Azure portal](https://portal.azure.com) で Azure Cosmos DB アカウントとデータベースを作成します。
 3. [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=53595)から Azure Cosmos DB データ移行ツールをダウンロードして、任意のディレクトリに展開します。
-4. 移行ツールへの次のコマンド パラメーターを使用して、[パブリック BLOB](https://dotnet.microsoft.com/) に格納されている JSON データ (火山に関するデータ) を Azure Cosmos DB にインポートします (Azure Cosmos DB データ移行ツールをインストールしたディレクトリから dtui.exe を使用します)。これらのパラメーターでインポート元とインポート先の場所を入力します。
+4. 移行ツールへの次のコマンド パラメーターを使用して、[パブリック BLOB](https://https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) に格納されている JSON データ (火山に関するデータ) を Azure Cosmos DB にインポートします (Azure Cosmos DB データ移行ツールをインストールしたディレクトリから dtui.exe を使用します)。これらのパラメーターでインポート元とインポート先の場所を入力します。
    
-    `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
+    `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
 データをインポートしたら、Jupyter にアクセスして、*DocumentDBSample* というタイトルのノートブックを開くことができます。 それには、Azure Cosmos DB にアクセスして何らかの基本的なクエリを実行するための Python コードが含まれています。 Azure Cosmos DB の詳細については、サービスの[ドキュメント ページ](https://docs.microsoft.com/azure/cosmos-db/)をご覧ください。
 

@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77582655"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193277"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -125,17 +125,17 @@ DPM サーバー/MABS は、次の URL にアクセスできる必要があり�
 
 パブリック ピアリングを使用して、次のドメインまたはアドレスへのアクセスを確保します。
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
 
 Microsoft ピアリングを使用して、次のサービスまたはリージョン、および関連するコミュニティ値を選択してください。
 
-* Azure Active Directory (12076:5060)
-* Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
-* Azure Storage (Recovery Services コンテナーの場所による)
+- Azure Active Directory (12076:5060)
+- Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
+- Azure Storage (Recovery Services コンテナーの場所による)
 
 詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
 

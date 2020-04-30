@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 03/06/2020
+ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218287"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191636"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する
 
@@ -252,12 +252,3 @@ Azure Machine Learning では、個人データは、実行履歴ドキュメン
 
 デザイナーでデータセットを削除するには、Azure portal または Storage Explorer を使用して接続ストレージ アカウントに移動し、そこでデータセットを削除します。 デザイナーでデータセットの登録を解除した場合、ストレージから削除されるのは参照ポイントだけです。
 
-## <a name="export-data-in-the-designer"></a>デザイナーでデータをエクスポートする
-
-実験で作成したデザイナーで、追加したデータをエクスポートします。
-
-1. 左側で、 **[データセット]** を選択します。
-
-1. 一覧で、エクスポートするデータセットを選択します
-
-    ![データをダウンロードする](./media/how-to-export-delete-data/unregister-dataset.png)

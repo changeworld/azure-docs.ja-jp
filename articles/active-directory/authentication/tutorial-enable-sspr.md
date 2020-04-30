@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b9052f364dfbae205dd324ba69de9578ccc225
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84aa99608a4fc2ac1842c617cca54e2afc3cdbe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77026315"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201994"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
@@ -104,7 +104,7 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
 ユーザーが SSPR プロセスについてさらにサポートを必要とする場合は、"管理者に連絡" のリンクをカスタマイズできます。 このリンクは、SSPR 登録プロセスと、ユーザーが自分のアカウントのロックを解除したりパスワードをリセットしたりするときに使用されます。 ユーザーが必要なサポートを受けられるようにするには、カスタム ヘルプデスクのメール アドレスまたは URL を指定することを強くお勧めします。
 
 1. 左側のメニューから **[カスタマイズ]** ページに移動し、 *[ヘルプデスク リンクのカスタマイズ]* を **[はい]** に設定します。
-1. **[カスタム ヘルプデスクの電子メールまたは URL]** フィールドに、ユーザーが組織からさらにサポートを得ることのできるメール アドレスまたは Web ページ URL ( *https://support.contoso.com/* など) を指定します。
+1. **[カスタム ヘルプデスクの電子メールまたは URL]** フィールドに、ユーザーが組織からさらにサポートを得ることのできるメール アドレスまたは Web ページ URL ( *`https://support.contoso.com/`* など) を指定します。
 1. カスタム リンクを適用するには、 **[保存]** を選択します。
 
 ## <a name="test-self-service-password-reset"></a>セルフサービス パスワード リセット をテストする

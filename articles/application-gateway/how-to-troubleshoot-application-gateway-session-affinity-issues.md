@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: aa3617b30fe1ef9b4d4a6c5fe5aac51bff95bb92
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866688"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202538"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 
@@ -75,7 +75,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 #### <a name="symptom"></a>症状
 
-Cookie ベースのアフィニティ設定を有効にしており、Internet Explorer で短い名前の URL (たとえば [http://website](http://website/)) を使用して Application Gateway にアクセスすると、要求がまだバックエンド サーバー間でバウンスしています。
+Cookie ベースのアフィニティ設定を有効にしており、Internet Explorer で短い名前の URL (たとえば `http://website`) を使用して Application Gateway にアクセスすると、要求がまだバックエンド サーバー間でバウンスしています。
 
 この問題を特定するには、次の手順に従います。
 

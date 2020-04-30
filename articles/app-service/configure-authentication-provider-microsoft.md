@@ -7,12 +7,12 @@ ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: a78208ba592f86400e9b06b15d8a76923dda736f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 6fe0e39584cbaa001e11f712bb2f60b45dba6914
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519895"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203490"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリまたは Azure Functions アプリを構成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "80519895"
 
 1. [Azure portal] で自分のアプリケーションに移動します。
 1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
-1. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。 **[管理モード]** の下の **[Advanced]\(詳細\)** を選択します。 前に取得したアプリケーション (クライアント) ID とクライアント シークレットを貼り付けます。 **[発行者の URL]** フィールドには **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** を使用します。
+1. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。 **[管理モード]** の下の **[Advanced]\(詳細\)** を選択します。 前に取得したアプリケーション (クライアント) ID とクライアント シークレットを貼り付けます。 **[発行者の URL]** フィールドには **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** を使用します。
 1. **[OK]** を選択します。
 
    App Service は認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
