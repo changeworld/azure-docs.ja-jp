@@ -2,21 +2,26 @@
 title: VMware 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して VMware VM を評価し移行する方法について説明します。
 ms.topic: article
-ms.date: 03/23/2020
-ms.openlocfilehash: 7a7d0007d2824abc781411f9529f9fa4ac89e55c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336788"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538258"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
-この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる評価のため、および [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用したエージェントレス移行のために、Azure Migrate アプライアンスを設定する方法について説明します。
+[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる評価と [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用したエージェントレス移行を行うには、この記事に従って Azure Migrate アプライアンスを設定してください。
 
 [Azure Migrate アプライアンス](migrate-appliance.md) は、エージェントレス移行時にオンプレミスの VMware VM の検出、VM のメタデータ/パフォーマンス データの Azure への送信、VMware VM のレプリケーションを行うために、Azure Migrate:Server Assessment および Server Migration によって使用される軽量のアプライアンスです。
 
-ダウンロードした OVA テンプレートを使用するか、または PowerShell インストール スクリプトを使用して、VMware VM 評価用に Azure Migrate アプライアンスを設定できます。 この記事では、OVA テンプレートを使用してアプライアンスを設定する方法について説明します。 スクリプトを使用してアプライアンスを設定する場合は、[この記事](deploy-appliance-script.md)の手順に従ってください。
+アプライアンスは、次の 2 とおりの方法でデプロイできます。
+
+- ダウンロードした OVA テンプレートを使用して VMware VM 上に設定します。 この記事で説明しているのは、こちらの方法です。
+- PowerShell インストーラー スクリプトを使用して VMware VM 上または物理マシン上に設定します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、[この方法](deploy-appliance-script.md)を使用してください。
+
+アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
 
 ## <a name="appliance-deployment-ova"></a>アプライアンスのデプロイ (OVA)
@@ -62,9 +67,9 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 9. 設定を再確認したら、 **[Finish]\(完了\)** をクリックします。
 
 
-### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
+## <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンス VM が [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
+[パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
 
 ## <a name="configure-the-appliance"></a>アプライアンスを構成する

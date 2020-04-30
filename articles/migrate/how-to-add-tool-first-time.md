@@ -1,17 +1,14 @@
 ---
 title: Azure Migrate で評価/移行ツールを追加する
 description: Azure Migrate プロジェクトを作成し、評価/移行ツールを追加する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/16/2020
+ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185953"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537731"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>評価/移行ツールの初回追加
 
@@ -37,28 +34,14 @@ Azure サブスクリプション内に新しい Azure Migrate プロジェク�
 
 1. **[サーバーの検出、評価、移行]** で、 **[ツールの追加]** をクリックします。
 2. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-3. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 
+3. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。  [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
     ![Azure Migrate プロジェクトの作成](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    Azure Migrate プロジェクトは、これらのいずれの地域でも作成できます。
+    - プロジェクトのために指定した地理的な場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。 実際の移行では、任意のターゲット リージョンを選択できます。
+    - ある地域の特定のリージョン内にプロジェクトをデプロイする必要がある場合は、次の API を使用してプロジェクトを作成します。 サブスクリプション ID、リソース グループ名、およびプロジェクト名を場所と共に指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)の地域/リージョンを確認します。
 
-   **地理的な場所** | **保存場所のリージョン**
-    --- | ---
-    アジア   | 東南アジアまたは東アジア
-    ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
-    日本  | 東日本または西日本
-    イギリス | 英国南部または英国西部
-    アメリカ | 米国中部または米国西部 2
-    カナダ | カナダ中部
-    インド  | インド中部またはインド南部
-    オーストラリア | オーストラリア南東部
-
-    プロジェクトのために指定した地理的な場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。 実際の移行では、任意のターゲット リージョンを選択できます。
-
-    移行プロジェクトとそれに関連付けられているリソースをデプロイするために、geo 内の特定のリージョンを指定する必要がある場合 (サブスクリプションのポリシー制限により、特定の Azure リージョンへの Azure リソースのデプロイのみが許可される場合があります)、以下の API を使用して移行プロジェクトを作成できます。 サブスクリプション ID、リソース グループ名、Migrate プロジェクト名、および場所 (Azure Migrate がデプロイされる、表に記載されているいずれかの Azure リージョン) を指定します。
-
-    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+        `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
 
 
 4. **[次へ]** をクリックし、評価ツールまたは移行ツールを追加します。
