@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: deb2860c8d027a0a258c4a962fe33d6f516e10dc
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085645"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM での Azure Disk Encryption シナリオ

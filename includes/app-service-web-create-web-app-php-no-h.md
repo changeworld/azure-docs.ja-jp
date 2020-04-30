@@ -9,10 +9,10 @@ ms.date: 02/02/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 14b84c27140c7aebf83684d7c80dfbae5713850b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085240"
 ---
 [ App Service プランで ](../articles/app-service/containers/app-service-linux-intro.md)Web アプリ`myAppServicePlan`を作成します。 
