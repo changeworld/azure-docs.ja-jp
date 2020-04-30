@@ -37,7 +37,7 @@ ms.locfileid: "81415096"
 
    ![接続の管理](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "接続の管理")
 
-   ![のインスタンスに接続するときには、](./media/sql-data-warehouse-source-control-integration/3-connect.png "接続する")
+   ![接続する](./media/sql-data-warehouse-source-control-integration/3-connect.png "接続する")
 
 3. プロジェクトからお使いのローカル コンピューターに Azure Repo リポジトリを複製します
 
