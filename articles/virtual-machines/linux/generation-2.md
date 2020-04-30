@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: b68179caed4df5efd3696d7d6a3739a1e07a3c80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232031"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084279"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -27,7 +27,7 @@ ms.locfileid: "79232031"
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC シリーズ](../dcv2-series.md)
+* [DCsv2 シリーズ](../dcv2-series.md)
 * [DSv2 シリーズ](../dv2-dsv2-series.md)および[Dsv3 シリーズ](../dv3-dsv3-series.md)
 * [Esv3 シリーズ](../ev3-esv3-series.md)
 * [Fsv2 シリーズ](../fsv2-series.md)
@@ -53,7 +53,7 @@ ms.locfileid: "79232031"
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04、18.04、19.04、19.10 
 * RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7.0
-* Cent OS 8.0、7.7、7.6、7.5、7.4
+* Cent OS 8.1、8.0、7.7、7.6、7.5、7.4
 * Oracle Linux 7.7、7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較

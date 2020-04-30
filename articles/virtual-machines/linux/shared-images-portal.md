@@ -1,24 +1,21 @@
 ---
-title: ポータルを使用して Linux 用の共有 Azure VM イメージを作成する
-description: Azure portal を使用して、仮想マシン イメージを作成して共有する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
+title: ポータルを使用して共有 Azure Linux VM イメージを作成する
+description: Azure portal を使用して、Linux 仮想マシン イメージを作成して共有する方法について説明します。
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: akjosh
+ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978698"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758435"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>ポータルを使用して Azure 共有イメージ ギャラリーを作成する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Automation での変数アセット
+title: Azure Automation で変数を管理する
 description: 変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。  この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4a4a92feb3e1b400c0f40076148f7898c4bdef1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4778e9b2c0d3b442b214966ab69810d2f42b70b8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365823"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732755"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
+# <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
 変数アセットとは、Automation アカウント内のすべての Runbook と DSC 構成に使用できる値です。 それらの管理は、Azure portal または PowerShell を使用して行うか、Runbook または DSC 構成内で行うことができます。
 
@@ -45,11 +45,14 @@ Azure portal を使用して変数を作成する場合、変数値を入力す�
 * Boolean
 * [Null]
 
-変数は、ここに指定されているデータ型に限定されません。 別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 `Not defined` を指定した場合、変数の値は Null に設定され、[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) コマンドレットまたは `Set-AutomationVariable` アクティビティを使用して値を設定する必要があります。
+変数は、ここに指定されているデータ型に限定されません。 別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 `Not defined` を指定した場合、変数の値は Null に設定されます。 [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) コマンドレットまたは `Set-AutomationVariable` アクティビティを使用して値を設定する必要があります。
 
 Azure portal を使用して、複合型の変数の値を作成したり変更したりすることはできません。 ただし、Windows PowerShell を使用すると、任意の型の値を指定できます。 複合型は [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) として取得されます。
 
 配列またはハッシュ テーブルを作成し、それを変数に保存することによって、複数の値を 1 つの変数に格納することができます。
+
+>[!NOTE]
+>VM 名の変数に使用できる文字数は最大 80 文字です。 リソース グループの変数には最大 90 文字まで使用できます。 「[Azure リソースの名前付け規則と制限事項](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)」を参照してください。
 
 ## <a name="powershell-cmdlets-that-create-and-manage-variable-assets"></a>変数資産を作成および管理するための PowerShell コマンドレット
 

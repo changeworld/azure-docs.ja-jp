@@ -3,12 +3,12 @@ title: Resource Health アラートを作成するためのテンプレート
 description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c01934cc88dc29d0503abfafc203ab0f04bf1761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062911"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759018"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -228,6 +228,9 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
 ```
 
 正常性イベントの 4 つすべての段階で通知を受け取るには、この条件をすべて削除して、`status` プロパティとは関係なくアラートが生成されるようにします。
+
+> [!NOTE]
+> 各 "anyOf" セクションには、フィールド型の値を 1 つだけ含める必要があります。
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>"Unknown" イベントを回避するための Resource Health アラートの調整
 

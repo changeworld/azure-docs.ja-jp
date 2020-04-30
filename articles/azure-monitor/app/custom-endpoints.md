@@ -3,20 +3,25 @@ title: Azure Application Insights による既定の SDK エンドポイント�
 description: Azure Government などのリージョンの既定の Azure Monitor Application Insights SDK エンドポイントを変更します。
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b43bd13c73f77c6292e2062db88d68a20e5bf480
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298319"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729526"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>既定のエンドポイントをオーバーライドする Application Insights
 
 Application Insights から特定のリージョンにデータを送信するには、既定のエンドポイント アドレスをオーバーライドする必要があります。 SDK ごとに必要な変更点は若干異なります。そのすべてについてこの記事で説明します。 これらの変更には、サンプル コードを調整し、`QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address`、および `Profile_Query_Endpoint_address` のプレースホルダー値をお客様の特定のリージョンに対応する実際のエンドポイント アドレスに置き換える必要があります。 この記事の末尾には、この構成が必要なリージョンのエンドポイント アドレスのリンクを記載しています。
 
+> [!NOTE]
+> Application Insights 内にカスタム エンドポイントを設定する方法として、新たに[接続文字列](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)が推奨されています。
+
+---
+
 ## <a name="sdk-code-changes"></a>SDK コードの変更
 
-### <a name="net-with-applicationinsightsconfig"></a>applicationinsights.config を使用した .NET
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > applicationinsights.config ファイルは、SDK のアップグレードが実行されるたびに自動的に上書きされます。 SDK のアップグレードを実行した後は、リージョン固有のエンドポイント値を必ず再入力します。
@@ -41,7 +46,7 @@ Application Insights から特定のリージョンにデータを送信する�
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Core
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 メイン エンドポイントを調整するには、プロジェクト内の appsettings.json ファイルを次のように変更します。
 
@@ -68,6 +73,8 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
+
+# <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
 ### <a name="azure-functions-v2x"></a>Azure Functions v2.x
 
@@ -120,7 +127,7 @@ namespace Example
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 既定のエンドポイント アドレスを変更するように applicationinsights.xml ファイルを変更します。
 
@@ -155,7 +162,7 @@ namespace Example
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,7 +181,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">
@@ -187,9 +194,11 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
-### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
 opencensus-python SDK のインジェスト エンドポイントの変更に関するガイダンスについては、[opencensus-python リポジトリ](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)を参照してください。
+
+---
 
 ## <a name="regions-that-require-endpoint-modification"></a>エンドポイントの変更が必要なリージョン
 

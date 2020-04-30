@@ -8,12 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73947674"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733384"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT Hub モジュール ID とモジュール ツイン (.NET) の概要
 
@@ -53,7 +54,7 @@ ms.locfileid: "73947674"
 
 このセクションでは、モジュール ツインによって報告されるプロパティを更新する、シミュレートされたデバイス上に.NET を作成するコンソール アプリを作成します。
 
-まず、モジュールの接続文字列を取得します。 [Azure portal](https://portal.azure.com/) にサインインする ご自身のハブに移動し、 **[IoT デバイス]** を選択します。 **myFirstDevice** を探します。 **[myFirstDevice]** を選択して開き、 **[myFirstModule]** を選択して開きます。 **[モジュール ID の詳細]** で、次の手順で必要な場合に **[接続文字列 (主キー)]** をコピーします。
+まず、モジュールの接続文字列を取得します。 [Azure portal](https://portal.azure.com/) にサインインします。 ご自身のハブに移動し、 **[IoT デバイス]** を選択します。 **myFirstDevice** を探します。 **[myFirstDevice]** を選択して開き、 **[myFirstModule]** を選択して開きます。 **[モジュール ID の詳細]** で、次の手順で必要な場合に **[接続文字列 (主キー)]** をコピーします。
 
    ![Azure Portal モジュールの詳細](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
@@ -71,7 +72,7 @@ ms.locfileid: "73947674"
 
     ![Azure IoT Hub .NET service SDK の現在のバージョンをインストールする](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Devices.Client;

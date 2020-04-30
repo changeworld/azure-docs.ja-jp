@@ -1,31 +1,26 @@
 ---
-title: Azure Resource Manager で Windows VM にキー コンテナーを設定する
-description: Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法
-services: virtual-machines-windows
-documentationcenter: ''
+title: Key Vault の設定
+description: 仮想マシンで使用するために Key Vault を設定する方法。
 author: mimckitt
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 33a483e2-cfbc-4c62-a588-5d9fd52491e2
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 3dcf82a8d4bc698c1900903649a2dd5a383f64b4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: e4bff4d1826d9586495207095eccf8f6c66164a0
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878410"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870009"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの Key Vault を設定する
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Azure Resource Manager スタックでは、Key Vault のリソース プロバイダーにより提供されるリソースとしてシークレット/証明書がモデル化されます。 Key Vault の詳細については、「 [Azure Key Vault とは](../../key-vault/key-vault-overview.md)
+Azure Resource Manager スタックでは、Key Vault のリソース プロバイダーにより提供されるリソースとしてシークレット/証明書がモデル化されます。 Key Vault の詳細については、「 [Azure Key Vault とは](../../key-vault/general/overview.md)
 
 > [!NOTE]
 > 1. Key Vault を Azure Resource Manager 仮想マシンと共に使用するには、Key Vault の **EnabledForDeployment** プロパティを True に設定する必要があります。 この設定は、さまざまなクライアントで実行できます。
@@ -34,7 +29,7 @@ Azure Resource Manager スタックでは、Key Vault のリソース プロバ�
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>PowerShell を使用して Key Vault を設定する
-PowerShell を使用して Key Vault を作成するには、「[PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-powershell.md)」を参照してください。
+PowerShell を使用して Key Vault を作成するには、「[PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-powershell.md)」を参照してください。
 
 新しい Key Vault の場合は、次の PowerShell コマンドレットを使用することができます。
 
@@ -45,7 +40,7 @@ PowerShell を使用して Key Vault を作成するには、「[PowerShell を�
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>CLI を使用して Key Vault を設定する
-コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「 [CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)」を参照してください。
+コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「 [CLI を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md#create-a-key-vault)」を参照してください。
 
 CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。 この処理には、次のコマンドを使用できます。
 

@@ -3,12 +3,13 @@ title: Azure App Services のパフォーマンスを監視する | Microsoft Do
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437184"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729806"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -55,15 +56,16 @@ Azure App Services がホストするアプリケーションについてアプ�
 2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 ASP.NET アプリの監視は既定でオンであり、2 つの異なる収集レベルがあります。
 
     ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new.png)
-
-   * .NET **基本収集**レベルの場合、必要なシングルインスタンス APM 機能が提供されます。
-
-   * .NET **推奨収集**レベルの場合、
-       * CPU、メモリ、I/O の使用状況傾向が追加されます。
-       * 要求/依存関係の境界を越えてマイクロサービスが相互に関連付けられます。
-       * 使用状況傾向が収集され、可用性の結果とトランザクションを関連付けることができます。
-       * ホスト プロセスで処理されていない例外が収集されます。
-       * サンプリングが使用されるとき、負荷の下で APM メトリックの精度が上がります。
+ 
+ それぞれのルートで収集されるデータは次のとおりです。
+        
+|  | .NET 基本収集 | .NET 推奨収集 |
+| --- | --- | --- |
+| CPU、メモリ、および I/O の使用状況の傾向が追加されます |はい |はい |
+| 使用状況の傾向が収集され、可用性の結果からトランザクションへの相関関係が有効になります | はい |はい |
+| ホスト プロセスによって処理されていない例外が収集されます | はい |はい |
+| 負荷がかかっているときの APM メトリックの精度が上がります (サンプリングが使用される場合) | はい |はい |
+| 要求/依存関係の境界を越えてマイクロサービスが相互に関連付けられます | いいえ (シングルインスタンス APM 機能のみ) |はい |
 
 3. 以前に applicationinsights.config ファイルで制御できたサンプリングなどの設定を構成する場合、[アプリケーション設定] で対応するプレフィックスを使用して同じ設定と対話できるようになりました。 
 

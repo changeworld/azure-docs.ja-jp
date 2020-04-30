@@ -1,18 +1,18 @@
 ---
 title: Cloud パートナー ポータルからパートナー センターへのアカウントの移行 - Azure 用商業マーケットプレース
-description: アカウントを CPP からパートナー センターに移行する方法。 - Azure 向けの Commercial Marketplace
+description: アカウントを CPP からパートナー センターに移行する方法 - Azure のコマーシャル マーケットプレース
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4aa336183d25a524246a2036fb95e0a7657b84f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279812"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024423"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへのアカウントの移行
 
@@ -43,11 +43,21 @@ CPP からパートナー センターへの移行が完了しているすべて
 
     CPP アカウントが Microsoft Partner Network ID を持っていないか、無効な ID を持っている場合は、アクティブ化プロセスの一環として、Microsoft Partner Network プログラムにサインアップする必要があります。
 
+## <a name="publishers-moving-from-cpp"></a>CPP から移行されている発行元
+
+アカウントを [Cloud パートナー ポータル (CPP)](https://cloudpartner.azure.com) から移行済みの場合は、新しいパートナー センター アカウントを作成する必要はありません。 新しいパートナー センター アカウントへのカスタマイズされたリンクを、電子メールや既存の CPP アカウントへのログイン後のバナー通知で受け取っているはずです。
+
+このカスタマイズされたリンクにアクセスして、新しいパートナー センター アカウントを有効にした後は、パートナー センターで[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にアクセスして、アカウントに戻ることができます。
+
+発行への同意と会社のプロファイル情報は、以前に設定したとアカウント支払いプロファイル情報、ユーザー アカウントとアクセス許可、CPP アカウントに関連付けられているアクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。
+
+お使いのアカウント情報が CPP からパートナー センターに移された後は、アカウントを更新したり、ユーザー、アクセス許可、および課金を管理したりするために CPP を使用することはなくなります。 CPP ポータルが最終的に非推奨になるまでの期間限定で、パートナー センターで実行されたすべてのアカウントの更新は、読み取り専用の CPP アカウントに自動的に反映されます。
+
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Microsoft Partner Network プログラムへのサインアップ
 
 Microsoft との提携を希望される企業は、Microsoft Partner Network (MPN) に参加し、MPN ID を取得する必要があります。 既に Microsoft Partner Network のメンバーであり、MPN ID を持っている場合は、アカウントのアクティブ化プロセスで必要になるため、情報をお手元に用意してください。  
 
-Microsoft Partner Network のメンバーでない場合は、[こちらで参加](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)して MPN ID を取得できます。 アカウントのアクティブ化プロセスで入力する必要があるため、MPN ID をメモしておきます。
+Microsoft Partner Network のメンバーでない場合は、[こちらで参加](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)して MPN ID を取得できます。 アカウントのアクティブ化プロセスで入力する必要があるため、MPN ID をメモしておきます。
 
 Microsoft Partner Network の詳細については、パートナー Web サイト「[Microsoft Partner Network に参加する](https://partner.microsoft.com/en-US/membership)」を参照してください。 Microsoft Partner Network の ISV 特典の詳細については、「[ISV リソース ハブ](https://partner.microsoft.com/isv-resource-hub)」を参照してください。  
 
@@ -61,7 +71,7 @@ Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のオフ
 > これは、Dynamics 365 Business Central オファーには適用されません。  
 
 1. MPN メンバーシップ アカウントが最初にパートナー メンバーシップ センター (PMC) で作成された場合は、[パートナー センター](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)にサインインしてそのアカウントが移行されていることを確認してください。 MPN ID を含むプロファイル画面が表示されている場合は、処理を続行する準備ができています。 そうでない場合は、[パートナー メンバーシップ センター](https://partners.microsoft.com/partnerprogram/Welcome.aspx)のプロンプトに従って、アカウントの移行を開始する必要があります。 ヘルプが必要な場合は、[サポート](https://partner.microsoft.com/support?issueid=100-0077)を参照してください。
-2. [パートナー センターの商業マーケットプレースの概要ページ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)に移動します。 左側のナビゲーション ウィンドウに "商業マーケットプレース" が表示されている場合は、登録済みであり、次の手順に進んでください。 そうでない場合は、ここで[商業マーケットプレースに登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)します。
+2. [パートナー センターの商業マーケットプレースの概要ページ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)に移動します。 左側のナビゲーション ウィンドウに "商業マーケットプレース" が表示されている場合は、登録済みであり、次の手順に進んでください。 そうでない場合は、ここで[商業マーケットプレースに登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。
 3. [プランを検索](https://appsource.microsoft.com/)して、プランが AppSource にあることを確認します。 オファーが AppSource に既に存在する場合は、次の手順に進みます。 AppSource にないオファーの場合は、[新しい Dynamics 365 for Customer Engagement オファー](create-new-customer-engagement-offer.md)または[新しい Dynamics 365 for Operations オファー](create-new-operations-offer.md)を作成します。
 4. パートナー センターの[契約ページ](https://partner.microsoft.com/dashboard/account/agreements)で「**Business アプリケーション ISV 補遺**」を確認し、同意していることを確認します。
 5. パートナー センターの [[アカウント設定]](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile) で、課金情報が入力されていることを確認します。
@@ -73,10 +83,10 @@ Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のオフ
 
 ## <a name="additional-resources"></a>その他のリソース
 
-サポートと更新プログラムについては、週単位の [Dynamics ISV コミュニティ コール](https://aka.ms/DynamicsISV-CommunityCall)に参加してください。
+「[Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0)」で、フォーラムのエキスパートや同業者の協力を得ることができるほか、ブログやウェビナー、ビデオ、イベントなどをご覧いただけます。
 
-マーケットプレースのオファーの公開、認定、または管理に関するサポートが必要な場合は、[サポート チケットを提出](https://aka.ms/MarketplacePublisherSupport)してください。
+マーケットプレースのオファーの公開、認定、または管理に関するサポートが必要な場合は、[サポート チケットを提出](https://partner.microsoft.com/support/v2/?stage=1)してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-step"></a>次のステップ
 
-- [パートナー センターで Commercial Marketplace アカウントを管理する](./manage-account.md)
+- [パートナー センターでコマーシャル マーケットプレース アカウントを管理する](./manage-account.md)

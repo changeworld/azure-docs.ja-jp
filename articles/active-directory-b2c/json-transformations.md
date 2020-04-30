@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187595"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756745"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -223,6 +223,39 @@ JSON データから、指定した数値の (長) 要素を取得します。
 - 出力要求:
     - **extractedClaim**:6353399
 
+## <a name="getsingleitemfromjson"></a>GetSingleItemFromJson
+
+JSON データから最初の要素を取得します。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputJson | string | JSON データから項目を取得する要求変換で使用される ClaimTypes。 |
+| OutputClaim | key | string | JSON 内の最初の要素キー。 |
+| OutputClaim | value | string | JSON 内の最初の要素値。 |
+
+次の例では、JSON データから要求変換によって最初の要素 (名) が抽出されます。
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+  - **inputJson**: {"givenName":"Emilty", "lastName":"Smith"}
+- 出力要求:
+  - **key**: givenName
+  - **value**:Emilty
+
+
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 JSON データの配列から最初の要素を取得します。
@@ -294,3 +327,5 @@ XML データを JSON 形式に変換します。
   }
 }
 ```
+
+

@@ -11,20 +11,17 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435747"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758032"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
-
-> [!NOTE]
-> セキュリティ ソリューションのサブセットは、2019 年 7 月 31 日に廃止されました。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_solutions)」を参照してください。
 
 ## <a name="integrated-azure-security-solutions"></a>統合された Azure セキュリティ ソリューション
 Security Center を使用すると、Azure で統合されたセキュリティ ソリューションを簡単に有効にすることができます。 利点は次のとおりです。
@@ -37,52 +34,57 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 
 > [!NOTE]
 > ほとんどのセキュリティ ベンダーがアプライアンス上での外部エージェントの実行を禁止しているため、Security Center はパートナー仮想アプライアンスに Log Analytics エージェントをインストールしません。
->
->
+
+Standard レベルのお客様が利用できる組み込みのスキャナーなど、Qualys の脆弱性スキャン ツールの統合の詳細については、以下を参照してください。 
+
+- [仮想マシン向けの統合された脆弱性スキャナー](built-in-vulnerability-assessment.md)。
+- [パートナーの脆弱性スキャン ソリューションをデプロイする](partner-vulnerability-assessment.md)。
+
+Security Center では、次の脆弱性分析も提供しています：
+
+* SQL データベース - 「[脆弱性評価ダッシュボードで脆弱性評価レポートの探索をする](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports) 」を参照する
+* Azure Container Registry イメージ - 「[Azure Container Registry を Security Center と統合する （プレビュー）](azure-container-registry-integration.md)」を参照する
 
 ## <a name="how-security-solutions-are-integrated"></a>セキュリティ ソリューションを統合するしくみ
 Security Center からデプロイされている Azure セキュリティ ソリューションは自動的に接続されます。 オンプレミスまたは他のクラウドで実行されているコンピューターなど、その他のセキュリティ データ ソースも接続できます。
 
-![パートナー ソリューションの統合](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
+[![パートナー ソリューションの統合](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>統合された Azure セキュリティ ソリューションとその他のデータ ソースの管理
 
-1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
+1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) から **Security Center** を開きます。
 
-2. **[Microsoft Azure] メニュー**の **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
+1. Security Center のメニューから **[セキュリティ ソリューション]** を選択します。
 
-3. Security Center のメニューで、 **[セキュリティ ソリューション]** を選択します。
-
-   ![Security Center の概要](./media/security-center-partner-integration/overview.png)
-
-**[セキュリティ ソリューション]** では、統合された Azure セキュリティ ソリューションの正常性を表示し、基本的な管理タスクを実行できます。
+**[セキュリティ ソリューション]** ページから、統合された Azure セキュリティ ソリューションの正常性を確認し、基本的な管理タスクを実行できます。
 
 ### <a name="connected-solutions"></a>接続済みソリューション
 
 **[接続済みソリューション]** セクションには、Security Center に現在接続されているセキュリティ ソリューションが含まれます。 また、各ソリューションの正常性状態も表示されます。  
 
-![接続済みソリューション](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
+![接続済みソリューション](./media/security-center-partner-integration/connected-solutions.png)
 
 パートナー ソリューションの状態は、次のいずれかになります。
 
-* 正常 (緑) - 正常性の問題はありません。
-* 異常 (赤) - 早急な対処が必要な正常性の問題があります。
-* 正常性の問題 (オレンジ) - ソリューションが正常性の報告を停止しています。
-* レポートなし (灰色) - ソリューションがまだ何も報告しておらず、正常性データはありません。 最近接続されて、まだデプロイ中の場合、ソリューションの状態が報告されない可能性があります。
+* **正常** (緑) - 正常性の問題はありません。
+* **異常** (赤) - 早急な対処が必要な正常性の問題があります。
+* **レポート停止** (オレンジ) - ソリューションが正常性の報告を停止しています。
+* **レポートなし** (灰色) - ソリューションがまだ何も報告しておらず、正常性データはありません。 最近接続されて、まだデプロイ中の場合、ソリューションの状態が報告されない可能性があります。
 
 > [!NOTE]
 > 正常性状態データを使用できない場合、Security Center には、最後に受信したイベントの日時が表示され、ソリューションが報告を行っているかどうかを示します。 使用できる正常性データがなく、過去 14 日以内にアラートを受信していなかった場合、Security Center は、ソリューションで異常が発生しているか、報告が行われていないことを示します。
 >
 >
 
-1. **[表示]** を選択すると、次のような追加情報とオプションを確認できます。
+**[表示]** を選択すると、次のような追加情報とオプションを確認できます。
 
-   - **ソリューション コンソール**。 このソリューションの管理エクスペリエンスが開きます。
-   - **VM をリンクする**。 [アプリケーションのリンク] ページが開きます。 ここで、パートナー ソリューションにリソースを接続できます。
-   - **ソリューションの削除**。
-   - **構成**。
+   - **ソリューション コンソール** - このソリューションの管理エクスペリエンスが開きます。
+   - **VM をリンクする** - [アプリケーションのリンク] ページが開きます。 ここで、パートナー ソリューションにリソースを接続できます。
+   - **Delete solution (ソリューションを削除する)**
+   - **構成**
 
-   ![パートナー ソリューションの詳細](./media/security-center-partner-solutions/partner-solutions-detail.png)
+   ![パートナー ソリューションの詳細](./media/security-center-partner-integration/partner-solutions-detail.png)
+
 
 ### <a name="discovered-solutions"></a>検出されたソリューション
 
@@ -91,7 +93,6 @@ Security Center は、Azure で実行されていても Security Center に接�
 > [!NOTE]
 > 検出されたソリューション機能のサブスクリプション レベルで、Security Center の Standard レベルが必要です。 価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 >
->
 
 ソリューションの下の **[接続]** を選択して、Security Center と統合し、セキュリティのアラートが通知されるようにします。
 
@@ -99,57 +100,13 @@ Security Center は、Azure で実行されていても Security Center に接�
 
 **[データ ソースの追加]** セクションには、接続できるその他の使用可能なデータ ソースが表示されます。 このようなソースのいずれかからデータを追加する手順については、 **[追加]** をクリックしてください。
 
-![データ ソース](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
+![データ ソース](./media/security-center-partner-integration/add-data-sources.png)
 
-## <a name="exporting-data-to-a-siem"></a>SIEM へのデータのエクスポート
-
-> [!NOTE]
-> SIEM にデータをエクスポートするためのより簡単な方法 (現在はプレビュー段階) の詳細については、「[セキュリティ アラートと推奨事項のエクスポート (プレビュー)](continuous-export.md)」を参照してください。 この新しい方法では、アクティビティ ログは仲介として使用されず、Security Center から Event Hubs への直接エクスポート (およびその後の SIEM への直接エクスポート) を許可しています。また、セキュリティの推奨事項のエクスポートもサポートしています。
-
-
-Azure Security Center イベントを受信するように SIEM またはその他の監視ツールを構成できます。
-
-Azure Security Center からのすべてのイベントは、Azure Monitor の Azure [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)に発行されます。 Azure Monitor は、[統合されたパイプライン](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)を使用して、データをイベント ハブにストリーミングします。そこから、それを監視ツールに取り込むことができます。
-
-以降のセクションでは、イベント ハブにストリーミングされるようにデータを構成する方法について説明します。 以下の手順では、Azure Security Center が Azure サブスクリプションで既に構成されているものとします。
-
-### <a name="high-level-overview"></a>概要
-
-![概要](media/security-center-export-data-to-siem/overview.png)
-
-### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>SIEM に公開される Azure セキュリティ データ
-
-このバージョンでは、[セキュリティのアラート](../security-center/security-center-managing-and-responding-alerts.md)を公開します。 今後のリリースでは、セキュリティに関する推奨事項でデータ セットを増やします。
-
-### <a name="how-to-set-up-the-pipeline"></a>パイプラインを設定する方法
-
-#### <a name="create-an-event-hub"></a>Event Hub を作成する
-
-開始する前に、すべての監視データの送信先である [Event Hubs 名前空間を作成します](../event-hubs/event-hubs-create.md)。
-
-#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
-
-[アクティビティ ログの Event Hubs へのストリーム](../azure-monitor/platform/activity-logs-stream-event-hubs.md)に関する記事を参照してください。
-
-#### <a name="install-a-partner-siem-connector"></a>パートナー SIEM コネクタをインストールする 
-
-Azure Monitor で監視データを Event Hub にルーティングすると、パートナー SIEM や監視ツールに簡単に統合することができます。
-
-[サポートされる SIEM](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration) の一覧に関する記事を参照してください。
-
-### <a name="example-for-querying-data"></a>データのクエリの例 
-
-アラート データの取得に使用できる Splunk クエリを次に示します。
-
-| **クエリの説明** | **クエリ** |
-|----|----|
-| すべての警告| index=main Microsoft.Security/locations/alerts|
-| 名前を指定した操作の数の集計| index=main sourcetype="amal:security" \| table operationName \| stats count by operationName|
-| 警告情報:日時、名前、状態、ID、サブスクリプション | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
+この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 関連情報については、次の記事をご覧ください。
 
+* [セキュリティ アラートと推奨事項のエクスポート](continuous-export.md)。 Azure Sentinel または任意の他の SIEM との統合を設定する方法について説明しています。
 * [Security Center でのセキュリティ正常性の監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。

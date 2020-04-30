@@ -6,14 +6,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414355"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732682"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローで SQL の切り捨てエラー行を処理する
 
@@ -30,6 +30,9 @@ Data Factory のマッピング データ フローを使用する際の一般�
     ![映画のデータ フロー 1](media/data-flow/error4.png)
     
 3. 問題は、シンク列に格納できる文字数が 5 文字までであり、映画のタイトルが入りきらないケースがありそうだということです。 このデータ フローを実行すると、次のようなエラーが発生します: ```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+
+このビデオでは、データ フローにエラー行の処理ロジックを設定する例を紹介しています。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]
 
 ## <a name="how-to-design-around-this-condition"></a>この状況を回避する設計方法
 

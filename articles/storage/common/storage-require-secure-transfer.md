@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/12/2019
+ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457445"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870529"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する
 
@@ -25,14 +25,14 @@ ms.locfileid: "75457445"
 
 ストレージ アカウントに対して安全な転送が求められている場合、暗号化なしの SMB 経由で Azure ファイル共有に接続しても失敗します。 セキュリティで保護されていない接続の例としては、SMB 2.1、SMB 3.0 (暗号化なし)、または一部のバージョンの Linux SMB クライアントがあります。
 
-Azure portal でストレージ アカウントを作成すると、既定では **[安全な転送が必須]** プロパティが有効になります。 ただし、SDK を使用してストレージ アカウントを作成した場合は無効になります。
+既定では、ストレージ アカウントを作成すると、 **[安全な転送が必須]** プロパティが有効になります。
 
 > [!NOTE]
 > Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。 また、クラシック ストレージ アカウントはサポートされていません。
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure portal で安全な転送を要求する
 
-**Azure portal** でストレージ アカウントを作成するときに、[[安全な転送が必須]](https://portal.azure.com) プロパティを有効にすることができます。 既存のストレージ アカウントの場合も有効にすることができます。
+[Azure portal](https://portal.azure.com) でストレージ アカウントを作成するときに、 **[安全な転送が必須]** プロパティを有効にすることができます。 既存のストレージ アカウントの場合も有効にすることができます。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新しいストレージ アカウントの安全な転送が必須
 

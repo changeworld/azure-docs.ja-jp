@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673261"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025103"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -79,8 +79,8 @@ ms.locfileid: "78673261"
 
     ![項目の選択](./media/backup-azure-manage-mars/select-items-remove.png)
 
-> [!NOTE]
-> ポリシーからボリュームを完全に削除するときには、注意して操作を進めてください。  もう一度追加する必要がある場合、それは新しいボリュームとして扱われます。 次のスケジュールされたバックアップでは、増分バックアップではなく初回バックアップ (完全バックアップ) が実行されます。 後で項目を一時的に削除して追加する必要がある場合は、完全バックアップではなく増分バックアップとなるように、 **[項目の削除]** ではなく **[除外の設定]** を使用することをお勧めします。
+    > [!NOTE]
+    > ポリシーからボリュームを完全に削除するときには、注意して操作を進めてください。  もう一度追加する必要がある場合、それは新しいボリュームとして扱われます。 次のスケジュールされたバックアップでは、増分バックアップではなく初回バックアップ (完全バックアップ) が実行されます。 後で項目を一時的に削除して追加する必要がある場合は、完全バックアップではなく増分バックアップとなるように、 **[項目の削除]** ではなく **[除外の設定]** を使用することをお勧めします。
 
 2. 後続の手順を完了し、 **[完了]** をクリックして操作を完了します。
 
@@ -90,7 +90,7 @@ ms.locfileid: "78673261"
 
 - **保護を停止してバックアップ データを保持します**。
   - このオプションでは、今後、バックアップ ジョブによる保護がすべて停止されます。
-  - Azure Backup サービスは、保持ポリシーに基づいて、バックアップされた復旧ポイントを保持します。
+  - 既存のすべての復旧ポイントは、引き続き Azure Backup サービスによって保持されます。  
   - 有効期限になっていない復旧ポイントのバックアップ データを復元することができます。
   - 保護を再開する場合は、*バックアップ スケジュールを再有効化する*オプションを使用できます。 その後は、新しい保持ポリシーに基づいてデータが保持されます。
 - **保護を停止してバックアップ データを削除します**。
@@ -167,7 +167,6 @@ ms.locfileid: "78673261"
 
     ![パスフレーズを生成します。](./media/backup-azure-manage-mars/passphrase2.png)
 - パスフレーズは、(ソース マシンではない) 別の場所、できれば Azure Key Vault に安全に保存するようにします。 複数のマシンが MARS エージェントでバックアップされている場合は、すべてのパスフレーズを追跡します。
-
 
 ## <a name="next-steps"></a>次のステップ
 

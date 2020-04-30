@@ -11,147 +11,164 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/05/2020
+ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: b3a08eb351d29fd71889807c9a21d03b564117a7
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673744"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766995"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics のデータの検出と分類
 
-データの検出と分類では、Azure SQL Database に組み込まれた、データベース内の機微なデータの**検出**、**分類**、**ラベル付け** & **報告**を行うための高度な機能が用意されています。
+データの検出と分類は Azure SQL Database に組み込まれています。 これにより、データベース内の機密データの検出、分類、ラベル付け、およびレポート作成を行うための高度な機能が提供されます。
 
-最も機密性の高いデータの検出と分類 (ビジネス、金融、医療、個人を特定できる情報など) は、組織の情報保護水準において極めて重要な役割を果たします。 次のような場合にインフラストラクチャとして使用できます。
+最も機密性の高いデータには、ビジネス、財務、医療、個人情報などが含まれる場合があります。 このようなデータの検出と分類は、組織の情報保護アプローチにおいて極めて重要な役割を果たすことができます。 次のような場合にインフラストラクチャとして使用できます。
 
-- データのプライバシー基準および規制のコンプライアンス要件を満たす支援。
+- データのプライバシーと規制コンプライアンスの要件への基準を満たすための支援。
 - さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
-- 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
+- 機密性の高いデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
 
-データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 データの検出と分類は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
+データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) オファリングの一部です。 データの検出と分類は、Azure portal の一元的な **[SQL Advanced Data Security]** セクションからアクセスして管理できます。
 
 > [!NOTE]
-> このドキュメントは、Azure SQL Database と Azure Synapse に関するものです。 わかりやすいように、SQL Database という言葉で SQL Database と Azure Synapse の両方を言い表します。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification (SQL のデータの検出と分類)](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
+> この記事は、Azure SQL Database と Azure Synapse Analytics に関するものです。 わかりやすいように、*SQL Database* という言葉で SQL Database と Azure Synapse の両方を言い表します。 SQL Server (オンプレミス) については、「[SQL データの検出と分類](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>データの検出と分類とは
 
-データの検出と分類では、一連の高度なサービスと新しい SQL 機能が導入され、データベースだけでなくデータの保護も目的とする新しい SQL Information Protection パラダイムが形成されます。
+データの検出と分類には、一連の高度なサービスと SQL Database の新機能が導入されています。 これにより、データベースだけでなくデータの保護を目的として、SQL Database の新しい情報保護パラダイムを形成します。 このパラダイムには次のものが含まれます。
 
-- **検出と推奨事項**
+- **検出と推奨事項:** 分類エンジンは、データベースをスキャンして、機密データが含まれる可能性のある列を識別します。 その後、Azure portal を使って、推奨される分類を確認して適用するための簡単な方法を提供します。
 
-  分類エンジンは、データベースをスキャンして、機密データが含まれる可能性のある列を識別します。 その後、Azure Portal を使ってレビューし、適切な分類の推奨事項を適用するための簡単な方法を提供します。
+- **ラベル付け:** SQL データベース エンジンに追加された新しいメタデータ属性を使用して、機密度の分類ラベルを列に永続的に適用できます。 このメタデータは、機密度に基づく高度な監査と保護のシナリオに利用できます。
 
-- **ラベル付け**
+- **クエリ結果セットの機密度:** 監査のため、クエリ結果セットの機密度がリアルタイムで計算されます。
 
-  機密度分類ラベルは、SQL エンジンに導入された新しい分類メタデータ属性を使って、列に永続的にタグを付けることができます。 このメタデータは、機密度に基づく高度な監査と保護のシナリオに利用できます。
+- **可視性:** データベースの分類状態は、Azure portal の詳細ダッシュボードで見ることができます。 また、コンプライアンスと監査の目的や他のニーズのために使用される Excel 形式のレポートをダウンロードできます。
 
-- **クエリ結果セットの機密度**
+## <a name="discover-classify-and-label-sensitive-columns"></a><a id="discover-classify-columns"></a>機密性の高い列の検出、分類、ラベル付け
 
-  監査のため、クエリ結果セットの機密度がリアルタイムで計算されます。
+このセクションでは、次の手順について説明します。
 
-- **表示**
-
-  データベースの分類状態は、ポータルの詳細ダッシュボード上で見ることができます。 さらに、コンプライアンスと監査の目的や他のニーズに使われる Excel 形式のレポートをダウンロードできます。
-
-## <a name="discover-classify--label-sensitive-columns"></a><a id="discover-classify-columns"></a>機密性の高い列の検出、分類、ラベル付け
-
-次のセクションでは、データベース内の機密データを含む列の検出、分類、およびラベル付けの手順に加え、データベースの現在の分類状態の表示とレポートのエクスポートの手順について説明します。
+- データベース内の機密データを含む列の検出、分類、ラベル付け。
+- データベースの現在の分類状態の表示と、レポートのエクスポート。
 
 分類には、次の 2 つのメタデータ属性が含まれます。
 
-- **ラベル** – メインの分類属性であり、列に格納されているデータの機密レベルを定義するために使われます。  
-- **情報の種類** - 列に格納されるデータの種類をさらに細分化します。
+- **ラベル**:列に格納されるデータの機密レベルを定義するために使用される、主な分類属性。  
+- **情報の種類**:列に格納されているデータの型に関するより詳細な情報を提供する属性。
 
-## <a name="define-and-customize-your-classification-taxonomy"></a>分類法を定義してカスタマイズする
+### <a name="define-and-customize-your-classification-taxonomy"></a>分類法を定義してカスタマイズする
 
-データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度を、ご自身の環境に合わせて定義できるようになりました。
+データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度をお使いの環境に合わせて定義できるようになりました。
 
-Azure テナント全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、テナントのルート管理グループの管理者権限を持つユーザーのみが実行できます。
+Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
 
-SQL Information Protection ポリシー管理の一環として、カスタム ラベルを定義し、優先度を設定し、そのラベルを、選択した一連の情報の種類に関連付けることができます。 独自のカスタム情報の種類を追加し、文字列パターンで構成することもできます。これは、ご自身のデータベース内のこの種類のデータを特定するために検出ロジックに追加されます。
+SQL Information Protection のポリシー管理の一環として、カスタム ラベルを定義し、優先度を設定し、選択した一連の情報の種類に関連付けることができます。 独自のカスタム情報の種類を追加し、文字列パターンで構成することもできます。 パターンは、データベース内のこの種類のデータを識別するための検出ロジックに追加されます。
+
 ご自身のポリシーのカスタマイズと管理の詳細については、[SQL Information Protection ポリシーの攻略ガイド](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)に関するページを参照してください。
 
-テナント全体のポリシーが定義されたら、カスタマイズしたポリシーを使用して個別のデータベースの分類を続行できます。
+組織全体のポリシーを定義したら、カスタマイズしたポリシーを使用して個別のデータベースの分類を続行できます。
 
-## <a name="classify-your-sql-database"></a>SQL Database を分類する
+### <a name="classify-your-sql-database"></a>SQL Database を分類する
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-2. [Azure SQL Database] ウィンドウの [セキュリティ] で、 **[Advanced Data Security]** に移動します。 [Advanced Data Security を有効にします] をクリックして、 **[データの検出と分類]** カードをクリックします。
+2. [Azure SQL Database] ペインの **[セキュリティ]** の見出しの下にある **[Advanced Data Security]** に移動します。 **[Advanced Data Security]** を選択して、 **[データの検出と分類]** カードを選択します。
 
-   ![データベースのスキャン](./media/sql-data-discovery-and-classification/data_classification.png)
+   ![Azure portal の [Advanced Data Security] ペイン](./media/sql-data-discovery-and-classification/data_classification.png)
 
-3. **[概要]** タブには、データベースの現在の分類状態の概要が表示されます。これには分類済みのすべての列の詳細な一覧が含まれ、これをフィルター処理して、特定のスキーマの部分、情報の種類、ラベルだけを表示することもできます。 まだどの列も分類していない場合は、[手順 5 に進みます](#step-5)。
+3. **[データの検出と分類]** ページの **[概要]** タブには、データベースの現在の分類状態の概要が表示されます。 この概要には、分類済みのすべての列の詳細なリストが含まれ、これをフィルター処理して、特定のスキーマの部分、情報の種類、ラベルのみを表示することもできます。 まだどの列も分類していない場合は、[手順 5 に進みます](#step-5)。
 
    ![現在の分類状態の概要](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
 
-4. Excel 形式でレポートをダウンロードするには、ウィンドウ上部のメニューの **[エクスポート]** オプションをクリックします。
+4. Excel 形式でレポートをダウンロードするには、ペイン上部のメニューの **[エクスポート]** を選択します。
 
-5. <a id="step-5"></a>データの分類を始めるには、ウィンドウの上部にある **[分類]** タブをクリックします。
+5. <a id="step-5"></a>データの分類を開始するには、 **[データの検出と分類]** ページの **[分類]** タブを選択します。
 
-6. 分類エンジンがデータベースで機密データを含む可能性のある列をスキャンし、**推奨される列の分類**のリストを提供します。 分類の推奨事項を表示して適用するには:
+    分類エンジンによって、機密データが含まれる可能性のある列についてデータベースがスキャンされ、推奨される列の分類のリストが提供されます。
 
-   - 推奨される列の分類のリストを表示するには、ウィンドウの下部にある推奨事項パネルをクリックします
+6. 分類の推奨事項を表示して適用します。
 
-   - 推奨事項の一覧を確認し、特定の列に対する推奨事項を受け入れるには、該当する行の左側にあるチェック ボックスをオンにします。 推奨事項テーブル ヘッダーのチェック ボックスをオンにして、*すべての推奨事項* を承諾済みとしてマークすることもできます。
+   - 推奨される列の分類のリストを表示するには、ペインの下部にある推奨事項パネルを選択します。
 
-       ![推奨事項の一覧を確認する](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
+   - 特定の列の推奨事項を受け入れるには、関連する行の左側の列のチェック ボックスをオンにします。 推奨事項テーブル ヘッダーの左端のチェック ボックスをオンにして、すべての推奨事項を受け入れ済みとしてマークすることもできます。
 
-   - 選択した推奨事項を適用するには、青い **[Accept selected recommendations]\(選択した推奨事項を承諾\)** ボタンをクリックします。
+       ![分類の推奨事項のリストから確認して選択する](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-7. 代わりに列を**手動で分類**することもできます。さらに、推奨事項ベースの分類について、次の操作を実行することもできます。
+   - 選択した推奨事項を適用するには、 **[選択した推奨事項を受け入れます]** を選択します。
 
-   - ウィンドウの上部のメニューで **[分類の追加]** をクリックします。
+7. 代わりに、列を手動で分類することもできます。さらに、推奨事項ベースの分類について、次の操作を実行することもできます。
 
-   - 開いたコンテキスト メニューで、分類するスキーマ、テーブル、列の順に選択し、情報の種類と機密ラベルを選択します。 次に、コンテキスト ウィンドウの下部にある青い **[分類の追加]** ボタンをクリックします。
+   1. ペインの上部のメニューで **[分類の追加]** を選択します。
+
+   1. 表示されたコンテキスト ウィンドウで、分類するスキーマ、テーブル、列と、情報の種類および機密ラベルを選択します。
+
+   1. コンテキスト ウィンドウの下部にある **[分類の追加]** をクリックします。
 
       ![分類する列を選択する](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
-8. 分類を完了し、新しい分類メタデータでデータベース列に永続的にラベル (タグ) を付けるには、ウィンドウの上部のメニューで **[保存]** をクリックします。
+8. 分類を完了し、新しい分類メタデータでデータベース列に永続的にラベル (タグ) を付けるには、ウィンドウの上部のメニューで **[保存]** を選択します。
 
-## <a name="auditing-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>機密データへのアクセスの監査
+## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>機密データへのアクセスを監査する
 
-機密データへのアクセスを監視できることは、情報保護パラダイムの重要な要素の 1 つです。 [Azure SQL Database Auditing](sql-database-auditing.md) が拡張され、監査ログに *data_sensitivity_information* という名前の新しいフィールドが追加されています。このフィールドには、クエリによって返された実際のデータの重大度の分類 (ラベル) が記録されます。
+機密データへのアクセスを監視できることは、情報保護パラダイムの重要な要素の 1 つです。 [Azure SQL Database Auditing](sql-database-auditing.md) は拡張され、`data_sensitivity_information` という新しいフィールドが監査ログに追加されました。 このフィールドには、クエリーによって返されたデータの機密度の分類 (ラベル) が記録されます。 次に例を示します。
 
 ![監査ログ](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
 ## <a name="permissions"></a><a id="permissions"></a>アクセス許可
 
-`Owner`、`Reader`、`Contributor`、`SQL Security Manager`、`User Access Administrator` の組み込みロールでは Azure SQL データベースのデータ分類を読み取ることができます。
+次の組み込みロールでは、Azure SQL データベースのデータ分類を読み取ることができます。
 
-`Owner`、`Contributor`、`SQL Security Manager` の組み込みロールでは Azure SQL データベースのデータ分類を変更することができます。
+- 所有者
+- Reader
+- Contributor
+- SQL Security Manager
+- User Access Administrator
 
-[Azure リソースの RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)の詳細はこちら
+次の組み込みロールでは、Azure SQL データベースのデータ分類を変更できます。
+
+- 所有者
+- Contributor
+- SQL Security Manager
+
+ロールベースのアクセス許可の詳細については、[Azure リソースの RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) に関する記事をご覧ください。
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>分類の管理
 
-### <a name="using-t-sql"></a>T-SQL の使用
-T-SQL を使って、列の分類を追加/削除し、データベース全体のすべての分類を取得することができます。
+分類の管理には、T-SQL、REST API、または PowerShell を使用できます。
+
+### <a name="use-t-sql"></a>T-SQL の使用
+
+T-SQL を使って、列の分類を追加または削除したり、データベース全体のすべての分類を取得したりできます。
 
 > [!NOTE]
-> T-SQL を使ってラベルを管理するとき、列に追加されるラベルが組織の情報保護ポリシー (ポータルのレコメンデーションに表示されるラベルのセット) に存在することの検証は行われません。 したがって、その検証はユーザーが行う必要があります。
+> T-SQL を使ってラベルを管理するときに、列に追加するラベルが組織の情報保護ポリシー (ポータルの推奨事項に表示されるラベルのセット) に存在することの検証は行われません。 そのため、この検証はユーザーが行う必要があります。
 
-- 1 つ以上の列の分類の追加/更新:[ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- 1 つ以上の列の分類の削除:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+T-SQL を使用した分類の詳細については、次のリファレンスを参照してください。
 
-### <a name="using-rest-api"></a>REST API の使用
-REST API を使用して、分類および推奨事項をプログラムで管理できます。 公開された REST API は、次の操作をサポートします。
+- 1 つ以上の列の分類を追加または更新するには:[ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- 1 つ以上の列の分類を削除するには:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- データベースのすべての分類を表示するには: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 指定された列の機密ラベルを作成または更新します
-- [削除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): 指定された列の機密ラベルを削除します
-- [推奨の無効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) - 指定された列に対する秘密度の推奨を無効にします
-- [推奨の有効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) - 指定された列に対する秘密度の推奨を有効にします (既定では、すべての列で推奨事項が有効になっています)
-- [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): 指定された列の機密ラベルを取得します
-- [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 指定されたデータベースの現在の機密ラベルを取得します
-- [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 指定されたデータベースの推奨される機密ラベルを取得します
+### <a name="use-the-rest-api"></a>REST API を使用する
 
-### <a name="using-powershell-cmdlet"></a>PowerShell コマンドレットの使用
-PowerShell を使用して、Azure SQL Database と Managed Instance の分類および推奨事項を管理できます。
+REST API を使用して、分類および推奨事項をプログラムで管理できます。 公開された REST API では、次の操作がサポートされます。
 
-#### <a name="powershell-cmdlet-for-azure-sql-database"></a>Azure SQL Database 用の PowerShell コマンドレット
+- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate):指定された列の機密ラベルを作成または更新します。
+- [[削除]](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete):指定された列の機密ラベルを削除します。
+- [推奨の無効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation):指定された列の機密度の推奨を無効にします。
+- [推奨の有効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation):指定された列の機密度の推奨を有効にします。 (推奨は、すべての列に対して既定で有効になっています。)
+- [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get):指定された列の機密ラベルを取得します。
+- [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
+- [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
+
+### <a name="use-powershell-cmdlets"></a>PowerShell コマンドレットの使用
+PowerShell を使用して、Azure SQL Database とマネージド インスタンスの分類および推奨事項を管理できます。
+
+#### <a name="powershell-cmdlets-for-sql-database"></a>SQL Database 用の PowerShell コマンドレット
+
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -159,7 +176,8 @@ PowerShell を使用して、Azure SQL Database と Managed Instance の分類�
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-#### <a name="powershell-cmdlets-for-managed-instance"></a>Managed Instance 用の PowerShell コマンドレット
+#### <a name="powershell-cmdlets-for-managed-instances"></a>マネージド インスタンス用の PowerShell コマンドレット
+
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
@@ -172,4 +190,4 @@ PowerShell を使用して、Azure SQL Database と Managed Instance の分類�
 
 - [Advanced Data Security](sql-database-advanced-data-security.md) の詳細について学習します。
 - 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Database Auditing](sql-database-auditing.md) を構成することを検討します。
-- データの検出と分類に関するプレゼンテーションについては、「[SQL データの検出、分類、ラベル付け、保護 | データ公開](https://www.youtube.com/watch?v=itVi9bkJUNc)」を参照してください。
+- データの検出と分類に関するプレゼンテーションについては、[Data Exposed の SQL データの検出、分類、ラベル付け、保護](https://www.youtube.com/watch?v=itVi9bkJUNc)に関するビデオをご覧ください。

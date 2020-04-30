@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2d6f41756d87e43ac7db9e6a8670c453920c834
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659953"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770369"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)を参照してください。
@@ -21,7 +21,6 @@ ms.locfileid: "77659953"
 
 1. 構成の移行
 2. Standard Load Balancer のバックエンド プールに VM を追加する
-3. 送信接続用のアウトバウンド規則を Load Balancer で作成する
 
 この記事では、構成の移行について説明します。 バックエンド プールへの VM の追加は、お客様固有の環境によって異なる場合があります。 ただし、一般的な推奨事項を簡単に[説明しています](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
@@ -31,17 +30,18 @@ ms.locfileid: "77659953"
 
 * 指定したリソース グループと場所に Standard SKU ロード バランサーを作成します。
 * 新しく作成した Standard SKU ロード バランサーに Basic SKU ロード バランザーの構成をシームレスにコピーします。
+* 送信接続を有効にする既定のアウトバウンド規則を作成します。
 
 ### <a name="caveatslimitations"></a>注意事項と制限事項
 
-* スクリプトは Public Load Balancer のアップグレードのみをサポートします。 Internal Basic Load Balancer のアップグレードの場合は、アウトバウンド接続が必要ない場合は Standard Internal Load Balancer を作成し、アウトバウンド接続が必要な場合は Standard Internal Load Balancer と Standard Public Load Balancer を作成してください。
+* スクリプトは Public Load Balancer のアップグレードのみをサポートします。 内部 Basic Load Balancer のアップグレードの手順については、[こちらのページ](https://docs.microsoft.com/azure/load-balancer/upgrade-basicinternal-standard)を参照してください。
 * Standard Load Balancer に新しいパブリック アドレスがあります。 既存の Basic Load Balancer に関連付けられている IP アドレスを Standard Load Balancer にシームレスに移動することはできません。それぞれの SKU が異なるためです。
 * Standard Load Balancer が別のリージョンに作成されている場合、以前のリージョンに存在する VM を新しく作成した Standard Load Balancer に関連付けることはできません。 この制限を回避するには、必ず新しいリージョンに新しい VM を作成してください。
 * Load Balancer にフロントエンド IP 構成またはバックエンド プールがない場合は、スクリプトの実行中にエラーが発生する可能性があります。 それらが空でないことを確認してください。
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。

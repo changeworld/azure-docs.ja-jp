@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77592613"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732623"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -37,28 +37,31 @@ ms.locfileid: "77592613"
 
 ## <a name="webjobs-nuget-packages"></a>WebJobs NuGet パッケージ
 
-1. `Microsoft.Azure.WebJobs` を含む、`Microsoft.Azure.WebJobs.Extensions` NuGet パッケージの最新の安定した 3.x バージョンをインストールします。
+1. `Microsoft.Azure.WebJobs` を含む、[`Microsoft.Azure.WebJobs.Extensions` NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/)の最新の安定した 3.x バージョンをインストールします。
 
-     バージョン 3.0.2 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
+     **パッケージ マネージャー コンソール** コマンドを次に示します。
 
      ```powershell
-     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.2
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version <3_X_VERSION>
      ```
+
+    このコマンドの `<3_X_VERSION>` は、サポートされているバージョンのパッケージに置き換えてください。 
 
 ## <a name="create-the-host"></a>ホストを作成する
 
 ホストは関数のランタイム コンテナーであり、トリガーをリッスンし、関数を呼び出します。 以下の手順では、[`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost) を実装するホストを作成します。これは、ASP.NET Core での汎用ホストです。
 
-1. *Program.cs* で、`using` ステートメントを追加します。
+1. *Program.cs* に、次の `using` ステートメントを追加します。
 
     ```cs
+    using System.Threading.Tasks;
     using Microsoft.Extensions.Hosting;
     ```
 
 1. `Main` メソッドを次のコードに置き換えます。
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.ConfigureWebJobs(b =>
@@ -68,7 +71,7 @@ ms.locfileid: "77592613"
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```
@@ -79,12 +82,12 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 ここでは、[ASP.NET Core ログ記録フレームワーク](/aspnet/core/fundamentals/logging)を使用するコンソール ログ記録を設定します。
 
-1. `Microsoft.Extensions.Logging` を含む、`Microsoft.Extensions.Logging.Console` NuGet パッケージの最新の安定したバージョンをインストールします。
+1. `Microsoft.Extensions.Logging` を含む、[`Microsoft.Extensions.Logging.Console` NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)の最新の安定したバージョンをインストールします。
 
-   バージョン 2.2.0 用の **パッケージ マネージャー コンソール** コマンドを次に示しします。
+   **パッケージ マネージャー コンソール** コマンドを次に示します。
 
    ```powershell
-   Install-Package Microsoft.Extensions.Logging.Console -version 2.2.0
+   Install-Package Microsoft.Extensions.Logging.Console -version <3_X_VERSION>
    ```
 
 1. *Program.cs* で、`using` ステートメントを追加します。
@@ -92,6 +95,8 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
    ```cs
    using Microsoft.Extensions.Logging;
    ```
+
+    このコマンドの `<3_X_VERSION>` は、サポートされている 3.x バージョンのパッケージに置き換えてください。
 
 1. [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) で [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) メソッドを呼び出します。 [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) メソッドでは、構成にコンソールのログ記録が追加されます。
 
@@ -105,7 +110,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
     `Main` メソッドは次のようになります。
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.ConfigureWebJobs(b =>
@@ -119,7 +124,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```
@@ -129,7 +134,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
     * [ダッシュボード ログ記録](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs)を無効にします。 ダッシュボードはレガシ監視ツールであり、ダッシュボード ログ記録は高スループットの実稼働シナリオにはお勧めしません。
     * 既定の[フィルター](webjobs-sdk-how-to.md#log-filtering)を使用してコンソールのプロバイダーを追加します。
 
-これで、[Azure Storage キュー](../azure-functions/functions-bindings-storage-queue.md)へのメッセージ到着によってトリガーされる関数を追加することができます。
+これで、Azure Storage キューへのメッセージ到着によってトリガーされる関数を追加することができます。
 
 ## <a name="install-the-storage-binding-extension"></a>Storage バインディング拡張機能をインストールする
 
@@ -137,11 +142,13 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 1. [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージの最新の安定バージョンであるバージョン 3.x をインストールします。 
 
-    バージョン 3.0.4 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
+    **パッケージ マネージャー コンソール** コマンドを次に示します。
 
     ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version <3_X_VERSION>
     ```
+    
+    このコマンドの `<3_X_VERSION>` は、サポートされているバージョンのパッケージに置き換えてください。 
 
 2. `ConfigureWebJobs` 拡張メソッド内で、[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) インスタンスの `AddAzureStorage` メソッドを呼び出し、ストレージ拡張機能を初期化します。 この段階で、`ConfigureWebJobs` メソッドは次の例のようになります。
 
@@ -158,26 +165,26 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 1. プロジェクトを右クリックし、 **[追加]**  > 、 **[新しいアイテム]** の順に選択し、 **[クラス]** を選択し、新しい C# クラス ファイルに *Functions.cs* という名前を付け、 **[追加]** を選択します。
 
 1. Functions.cs で、生成されたテンプレートを次のコードに置き換えます。
-
-   ```cs
-   using Microsoft.Azure.WebJobs;
-   using Microsoft.Extensions.Logging;
-
-   namespace WebJobsSDKSample
-   {
-       public class Functions
-       {
-           public static void ProcessQueueMessage([QueueTrigger("queue")] string message, ILogger logger)
-           {
-               logger.LogInformation(message);
-           }
-       }
-   }
-   ```
+    
+    ```cs
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Extensions.Logging;
+    
+    namespace WebJobsSDKSample
+    {
+        public class Functions
+        {
+            public static void ProcessQueueMessage([QueueTrigger("queue")] string message, ILogger logger)
+            {
+                logger.LogInformation(message);
+            }
+        }
+    }
+    ```
 
    `QueueTrigger` 属性は、`queue` と呼ばれる Azure Storage キューに新しいメッセージが書き込まれたときに、この関数を呼び出すようランタイムに通知します。 キュー メッセージの内容は、`message` パラメーター内のメソッド コードに提供されます。 メソッドの本文では、トリガー データを処理します。 この例では、コードはメッセージをログに記録するだけです。
 
-   `message` パラメーターは文字列である必要はありません。 JSON オブジェクト、バイト配列、または [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) オブジェクトにバインドすることもできます。 [キュー トリガーの使用方法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)に関するページをご覧ください。 バインドの種類 (キュー、BLOB、テーブルなど) ごとに、バインドできる異なる種類のパラメーター セットがあります。
+   `message` パラメーターは文字列である必要はありません。 JSON オブジェクト、バイト配列、または [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) オブジェクトにバインドすることもできます。 [キュー トリガーの使用方法](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage)に関するページをご覧ください。 バインドの種類 (キュー、BLOB、テーブルなど) ごとに、バインドできる異なる種類のパラメーター セットがあります。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -265,7 +272,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    ![キューの作成](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. **[メッセージの追加]** ダイアログで、「*Hello World!* 」を **[メッセージ テキスト]** として入力し、 **[OK]** を選択します。 これでキューにメッセージが入りました。
+1. **[メッセージの追加]** ダイアログで、「*Hello World!* 」を  **[メッセージ テキスト]** として入力し、 **[OK]** を選択します。 これでキューにメッセージが入りました。
 
    ![キューの作成](./media/webjobs-sdk-get-started/hello-world-text.png)
 
@@ -273,7 +280,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    `ProcessQueueMessage` 関数で `QueueTrigger` 属性を使用したので、WeJobs SDK ランタイムは起動時にキュー メッセージをリッスンします。 "*キュー*" という名前のキューで新しいキュー メッセージを検索し、関数を呼び出します。
 
-   [キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)により、ランタイムがメッセージを検索して関数を呼び出すのに 2 分ほどかかる場合があります。 [開発モード](webjobs-sdk-how-to.md#host-development-settings)で実行すると、この待機時間を短縮できます。
+   [キュー ポーリング指数バックオフ](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)により、ランタイムがメッセージを検索して関数を呼び出すのに 2 分ほどかかる場合があります。 [開発モード](webjobs-sdk-how-to.md#host-development-settings)で実行すると、この待機時間を短縮できます。
 
    コンソール出力は次のようになります。
 
@@ -324,7 +331,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
    |---------|---------|------|
    |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|Custom|
 
-1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
+1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します  (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
    |名前  |値  |
    |---------|---------|
@@ -351,21 +358,22 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 [Application Insights](../azure-monitor/app/app-insights-overview.md) のログ記録を利用するには、ログ記録のコードを次のように更新します。
 
-* 既定の[フィルター](webjobs-sdk-how-to.md#log-filtering)を使用して、Application Insights のログ記録プロバイダーを追加します。ローカル環境で実行すると、すべての情報と高レベルのログが、コンソールと Application Insights の両方に送られます。
+* 既定の[フィルタリング](webjobs-sdk-how-to.md#log-filtering)で Application Insights ログ プロバイダーを追加します。 ローカルで実行しているときは、情報レベルとそれより高いレベルのログがすべて、コンソールと Application Insights の両方に出力されます。
 * ホストの終了時にログ出力がフラッシュされるように、[LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) オブジェクトを `using` ブロックに配置します。
 
-1. Application Insights ログ記録プロバイダー用の NuGet パッケージの最新の安定した 3.x バージョンをインストールします: `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`。
+1. [NuGet パッケージ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) の最新の安定した 3.x バージョンをインストールします 
 
-   バージョン 3.0.2 用の**パッケージ マネージャー コンソール** コマンドを次に示します。
+   **パッケージ マネージャー コンソール** コマンドを次に示します。
 
    ```powershell
-   Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version 3.0.2
+   Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <3_X_VERSION>
    ```
+    このコマンドの `<3_X_VERSION>` は、サポートされているバージョンのパッケージに置き換えてください。
 
 1. *Program.cs* を開き、`Main` メソッド内のコードを次のコードに置き換えます。
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.UseEnvironment(EnvironmentName.Development);
@@ -388,7 +396,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```
@@ -415,7 +423,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    ![[検索] の選択](./media/webjobs-sdk-get-started/select-search.png)
 
-1. "*Hello App Insights!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します (Application Insights クライアントが処理するログをフラッシュするのに少し時間がかかるので、ログはすぐには表示されません)。
+1. "*Hello App Insights!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します  (Application Insights クライアントが処理するログをフラッシュするのに少し時間がかかるので、ログはすぐには表示されません)。
 
    ![Application Insights のログ](./media/webjobs-sdk-get-started/logs-in-ai.png)
 
@@ -436,7 +444,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 1. **[キュー]** ページを更新すると、Azure で実行されている関数によって処理されたため、新しいメッセージが表示されなくなります。
 
    > [!TIP]
-   > Azure でテストするときに、[開発モード](webjobs-sdk-how-to.md#host-development-settings)を使用して、キュー トリガー関数がすぐに呼び出されることを確認し、[キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)による遅延を回避します。
+   > Azure でテストするときに、[開発モード](webjobs-sdk-how-to.md#host-development-settings)を使用して、キュー トリガー関数がすぐに呼び出されることを確認し、[キュー ポーリング指数バックオフ](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)による遅延を回避します。
 
 ### <a name="view-logs-in-application-insights"></a>Application Insights のログの表示
 
@@ -444,9 +452,9 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[検索]** を選択します。
 
-1. "*Hello Azure!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します
+1. "*Hello Azure!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します 
 
-   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* " テキストが含まれます。
+   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* "  テキストが含まれます。
 
 ## <a name="add-an-input-binding"></a>入力バインディングの追加
 
@@ -478,7 +486,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、 **[OK]** をクリックします。
 
-1. BLOB コンテナーに *Program.cs* ファイルをアップロードします (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
+1. BLOB コンテナーに *Program.cs* ファイルをアップロードします  (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
 
    a. **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
 

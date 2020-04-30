@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349593"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870560"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -27,7 +27,7 @@ Azure Logic Apps におけるアクセスを制御し、データを保護する
 
 ## <a name="access-to-request-based-triggers"></a>要求ベースのトリガーへのアクセス
 
-着信した呼び出しや要求を受け取る要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [Webhook](../connectors/connectors-native-webhook.md) トリガーなど) がロジック アプリで使用されている場合、承認されたクライアントだけがそのロジック アプリを呼び出すことができるように、アクセスを制限できます。 ロジック アプリで受信されるすべての要求は、Secure Sockets Layer (SSL) プロトコルで暗号化され、セキュリティ保護されます。
+着信した呼び出しや要求を受け取る要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [Webhook](../connectors/connectors-native-webhook.md) トリガーなど) がロジック アプリで使用されている場合、承認されたクライアントだけがそのロジック アプリを呼び出すことができるように、アクセスを制限できます。 ロジック アプリで受信するすべての要求は、これまではSecure Sockets Layer (SSL) プロトコルと呼ばれていたトランスポート層セキュリティ (TLS) で暗号化され、セキュリティ保護されます。
 
 この種類のトリガーへのアクセスをセキュリティで保護するためのオプションを次に示します。
 
@@ -182,7 +182,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ロジック アプリが実行されている間、すべてのデータの[暗号化が転送中](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) (トランスポート層セキュリティ (TLS) を使用) と[保存時](../security/fundamentals/encryption-atrest.md)に行われます。 ロジック アプリの実行が完了したら、実行されたステップを含め、その実行の履歴を、各アクションの状態、期間、入力、出力と共に確認できます。 この豊富な詳細情報から、ロジック アプリがどのように実行されたか、発生した問題のトラブルシューティングをどこから始めるかに関する分析情報が得られます。
 
-ロジック アプリの実行履歴を表示するときは、Logic Apps によってアクセスの認証が行われた後、各実行の要求と応答に対する入力および出力へのリンクが提供されます。 ただし、パスワード、シークレット、キーなどの秘匿性の高い情報を処理するアクションについては、他のユーザーがそのデータを表示したり利用したりできないようにします。 たとえば、ロジックアプリが HTTP アクションの認証時に使用する [Azure Key Vault](../key-vault/key-vault-overview.md) のシークレットを取得する場合、そのシークレットが見えないようにする必要があります。
+ロジック アプリの実行履歴を表示するときは、Logic Apps によってアクセスの認証が行われた後、各実行の要求と応答に対する入力および出力へのリンクが提供されます。 ただし、パスワード、シークレット、キーなどの秘匿性の高い情報を処理するアクションについては、他のユーザーがそのデータを表示したり利用したりできないようにします。 たとえば、ロジックアプリが HTTP アクションの認証時に使用する [Azure Key Vault](../key-vault/general/overview.md) のシークレットを取得する場合、そのシークレットが見えないようにする必要があります。
 
 ロジック アプリの実行履歴にある入力と出力へのアクセスを制御するには、次のオプションがあります。
 
@@ -370,7 +370,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 [Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)場合は、デプロイ時に評価される、セキュリティで保護された[テンプレート パラメーター](../azure-resource-manager/templates/template-parameters.md)を、`securestring` 型と `secureobject` 型を使用して定義できます。 テンプレート パラメーターを定義するには、テンプレートの最上位の `parameters` セクションを使用します。このセクションは独立しており、ワークフロー定義の `parameters` セクションとは異なります。 テンプレートのパラメーターに値を指定するには、別途[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を使用します。
 
-たとえばシークレットを使用する場合、それらのシークレットをデプロイ時に [Azure Key Vault](../key-vault/key-vault-overview.md) から取得する、セキュリティで保護されたテンプレート パラメーターを定義して使用することができます。 その後、パラメーター ファイルの中で、キー コンテナーとシークレットを参照することができます。 詳細については、以下のトピックを参照してください。
+たとえばシークレットを使用する場合、それらのシークレットをデプロイ時に [Azure Key Vault](../key-vault/general/overview.md) から取得する、セキュリティで保護されたテンプレート パラメーターを定義して使用することができます。 その後、パラメーター ファイルの中で、キー コンテナーとシークレットを参照することができます。 詳細については、以下のトピックを参照してください。
 
 * [デプロイ時に Azure Key Vault を使用して機密性の値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 * このトピックの後にある [Azure Resource Manager テンプレート内のパラメーターをセキュリティで保護する](#secure-parameters-deployment-template) (このトピックで後出)
@@ -425,7 +425,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーターをセキュリティで保護する
 
-ロジック アプリ用の [Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)には、複数の `parameters` セクションが存在します。 パスワード、キー、シークレットなどの秘匿性の高い情報を保護するには、テンプレート レベルおよびワークフロー定義レベルで、`securestring` または `secureobject` 型を使用して、セキュリティで保護されたパラメーターを定義します。 その後、これらの値を [Azure Key Vault](../key-vault/key-vault-overview.md) に格納すれば、[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を使用して Key Vault とシークレットを参照することができます。 その後、デプロイ時にご利用のテンプレートからその情報を取得します。 詳しくは、[デプロイ時に Azure Key Vault を使用して機密性の値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)方法に関する記事をご覧ください。
+ロジック アプリ用の [Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)には、複数の `parameters` セクションが存在します。 パスワード、キー、シークレットなどの秘匿性の高い情報を保護するには、テンプレート レベルおよびワークフロー定義レベルで、`securestring` または `secureobject` 型を使用して、セキュリティで保護されたパラメーターを定義します。 その後、これらの値を [Azure Key Vault](../key-vault/general/overview.md) に格納すれば、[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を使用して Key Vault とシークレットを参照することができます。 その後、デプロイ時にご利用のテンプレートからその情報を取得します。 詳しくは、[デプロイ時に Azure Key Vault を使用して機密性の値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)方法に関する記事をご覧ください。
 
 次に、これらの `parameters` セクションについて詳しく説明します。
 
@@ -655,7 +655,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
+| **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | TLS/SSL クライアント証明書に使用する認証の種類 <p><p>**注**:自己署名証明書はサポートされていますが、TLS/SSL 用の自己署名証明書はサポートされていません。 HTTP コネクタは、中間 TLS/SSL 証明書をサポートしていません。 |
 | **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **パスワード** | `password`| いいえ | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
 |||||
@@ -684,7 +684,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 * [Azure API Management でクライアント証明書認証を使用してバックエンド サービスのセキュリティを強化する](../api-management/api-management-howto-mutual-certificates.md)
 * [クライアント証明書を使用して RESTfuL サービスのセキュリティを強化する](../active-directory-b2c/secure-rest-api.md)
 * [アプリケーションを認証するための証明書資格情報](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Azure App Service のアプリケーション コードに SSL 証明書を使用する](../app-service/configure-ssl-certificate-in-code.md)
+* [Azure App Service のご自分のコードから TLS/SSL 証明書を使用する](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 

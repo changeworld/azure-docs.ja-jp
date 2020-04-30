@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882388"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868837"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
@@ -82,9 +82,9 @@ Web API に固有の他の設定は、公開されている API と公開され�
     - **[スコープ名]** を選択し、「**access_as_user**」と入力します。
     - **[同意できるユーザー]** を選択し、 **[管理者とユーザー]** が選択されていることを確認します。
     - **[管理者の同意の表示名]** を選択し、「**Access TodoListService as a user**」と入力します。
-    - **[管理者の同意の説明]** を選択し、「**Accesses the TodoListService Web API as a user**」と入力します。
+    - **[管理者の同意の説明]** を選択し、「**Accesses the TodoListService web API as a user**」と入力します。
     - **[ユーザーの同意の表示名]** を選択し、「**Access TodoListService as a user**」と入力します。
-    - **[ユーザーの同意の説明]** を選択し、「**Accesses the TodoListService Web API as a user**」と入力します。
+    - **[ユーザーの同意の説明]** を選択し、「**Accesses the TodoListService web API as a user**」と入力します。
     - **[状態]** の値は、 **[有効]** に設定されたままにします。
  1. **[スコープの追加]** を選択します。
 
@@ -108,7 +108,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 次の例では、`appRoles` の内容を示します。`id` の値には、任意の一意の GUID を指定できます。
 
-```JSon
+```json
 "appRoles": [
     {
     "allowedMemberTypes": [ "Application" ],
@@ -125,7 +125,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 #### <a name="ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients"></a>Azure AD で、許可されたクライアントのみに Web API のトークンが発行されることを確認する
 
-Web API によってアプリ ロールが確認されます ソフトウェア開発者は、このロールにより、アプリケーションのアクセス許可を公開します。 また、テナント管理者が API アクセスを承認するアプリに対してのみ API トークンを発行するように、Azure AD を構成することもできます。
+Web API によってアプリ ロールが確認されます  ソフトウェア開発者は、このロールにより、アプリケーションのアクセス許可を公開します。 また、テナント管理者が API アクセスを承認するアプリに対してのみ API トークンを発行するように、Azure AD を構成することもできます。
 
 この強化されたセキュリティを追加するには、次のようにします。
 
@@ -145,7 +145,7 @@ Web API によってアプリ ロールが確認されます ソフトウェア�
    >
    > **[ユーザーの割り当てが必要ですか?]** を **[いいえ]** のままにした場合、クライアントが Web API のアクセス トークンを要求したときに、Azure AD ではアプリ ロールの割り当てが確認されません。 すべてのデーモン クライアント (つまり、クライアントの資格情報フローを使用するすべてのクライアント) では、その対象ユーザーを指定するだけで、API のアクセス トークンを取得できます。 すべてのアプリケーションで、そのアクセス許可を要求しなくても、API にアクセスできます。
    >
-   > ただし、前のセクションで説明したように、Web API では常に、アプリケーションに (テナント管理者によって承認される) 適切なロールがあることを検証できます。API では、アクセス トークンにロール要求があり、この要求の値が正しいことを確認することで、この検証を行います 前の JSON サンプルでは、値は `access_as_application` です。
+   > ただし、前のセクションで説明したように、Web API では常に、アプリケーションに (テナント管理者によって承認される) 適切なロールがあることを検証できます。API では、アクセス トークンにロール要求があり、この要求の値が正しいことを確認することで、この検証を行います  前の JSON サンプルでは、値は `access_as_application` です。
 
 1. **[保存]** を選択します。
 

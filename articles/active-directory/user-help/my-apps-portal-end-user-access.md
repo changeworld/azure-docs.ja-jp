@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80347167"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869718"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -110,7 +110,7 @@ Intune で管理されるブラウザーから、または iOS または Android
 
 iOS および Android デバイスで Intune Managed Browser から組織のアプリを表示し使用します。
 
-1. モバイル デバイス上では、[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) および [Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)から Intune Managed Browser アプリをダウンロードしインストールします。
+1. モバイル デバイスでは、Apple App Store および Google Play ストアから Intune Managed Browser アプリをダウンロードしインストールします。
 
 2. Intune Managed Browser アプリを開き、 https://myapps.microsoft.com に移動するか、組織から提供されている https://myapps.microsoft.com/contoso.com などのカスタマイズされたページへのリンクを使用します。
 

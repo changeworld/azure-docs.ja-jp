@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582798"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769747"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -35,7 +35,13 @@ ms.locfileid: "80582798"
 > [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
- 
+
+## <a name="april-2020"></a>2020 年 4 月
+
+### <a name="improvements-in-documentation"></a>ドキュメントの改善
+
+Azure Media Player ドキュメントは、[Azure ドキュメント](../azure-media-player/azure-media-player-overview.md)に移行されました。
+
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>メディア プロセッサの機能強化
@@ -361,4 +367,5 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 ## <a name="next-steps"></a>次のステップ
 
 - [概要](media-services-overview.md)
+- [Media Services v3 ドキュメントの更新](docs-release-notes.md)
 - [Media Services v2 リリース ノート](../previous/media-services-release-notes.md)

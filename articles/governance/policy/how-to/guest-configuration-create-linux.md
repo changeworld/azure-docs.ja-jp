@@ -3,12 +3,12 @@ title: Linux 用のゲスト構成ポリシーを作成する方法
 description: Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f93aafc8f2c016218b1b7fea82558ea6ba4b4ff8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365400"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024984"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -24,6 +24,10 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 
 > [!IMPORTANT]
 > ゲスト構成でのカスタム ポリシーは、プレビュー機能です。
+>
+> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。
+> すべての Linux マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
+>   - [Linux VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
@@ -89,7 +93,7 @@ supports:
     - os-family: unix
 ```
 
-このファイルをプロジェクト ディレクトリ内の `linux-path` という名前のフォルダーに保存します。
+このファイルを `inspec.yml` という名前で、プロジェクト ディレクトリ内の `linux-path` という名前のフォルダーに保存します。
 
 次に、マシンの監査に使用される InSpec 言語抽象化で Ruby ファイルを作成します。
 
@@ -99,9 +103,9 @@ describe file('/tmp') do
 end
 ```
 
-このファイルを `linux-path` ディレクトリ内の `controls` という名前の新しいフォルダーに保存します。
+このファイルを `linux-path.rb` という名前で、`linux-path` ディレクトリ内の `controls` という名前の新しいフォルダーに保存します。
 
-最後に、構成を作成し、**GuestConfiguration** リソース モジュールをインポートし、`ChefInSpecResource` リソースを使用して InSpec プロファイルの名前を設定します。
+最後に、構成を作成し、**PSDesiredStateConfiguration** リソース モジュールをインポートした後、構成をコンパイルします。
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -119,10 +123,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+このファイルを `config.ps1` という名前でプロジェクト フォルダーに保存します。 ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい mof ファイルが作成されます。
+
 `Node AuditFilePathExists` コマンドは技術的には必須ではありませんが、既定の `localhost.mof` ではなく `AuditFilePathExists.mof` という名前のファイルを生成します。 .mof ファイル名が構成に従うことにより、大規模な運用時に多くのファイルを簡単に整理できます。
+
+
 
 これで、プロジェクトの構造は次のようになります。
 
@@ -150,11 +159,11 @@ AuditFilePathExists -out ./Config
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
-構成パッケージを作成したら、Azure に発行する前に、ワークステーションまたは CI/CD 環境からパッケージをテストすることができます。 GuestConfiguration `Test-GuestConfigurationPackage` コマンドレットには、Azure マシンで使われるのと同じエージェントが開発環境に含まれます。 このソリューションを使って、有料のクラウド環境にリリースする前に、ローカル環境で統合テストを実行できます。
+構成パッケージを作成したら、Azure に発行する前に、ワークステーションまたは CI/CD 環境からパッケージをテストできます。 GuestConfiguration `Test-GuestConfigurationPackage` コマンドレットには、Azure マシンで使われるのと同じエージェントが開発環境に含まれます。 このソリューションを使って、有料のクラウド環境にリリースする前に、ローカル環境で統合テストを実行できます。
 
 エージェントは実際にローカル環境を評価しているため、ほとんどの場合、監査を計画しているのと同じ OS プラットフォームで Test- コマンドレットを実行する必要があります。
 
@@ -168,7 +177,7 @@ New-GuestConfigurationPackage `
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 コマンドレットでは、PowerShell パイプラインからの入力もサポートされています。 `New-GuestConfigurationPackage` コマンドレットの出力を `Test-GuestConfigurationPackage` コマンドレットにパイプします。
@@ -269,7 +278,7 @@ New-GuestConfigurationPolicy `
 最後に、`Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。
 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。
 
-Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは **リソース ポリシーの共同作成者**です。
+Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者**です。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
@@ -292,7 +301,7 @@ Azure で作成されるポリシーに関する最後のステップでは、�
 > [!IMPORTANT]
 > ゲスト構成ポリシーは**常に**、"_AuditIfNotExists_" ポリシーと "_DeployIfNotExists_" ポリシーを組み合わせたイニシアティブを使って割り当てる必要があります。 "_AuditIfNotExists_" ポリシーのみを割り当てた場合は、前提条件がデプロイされず、ポリシーでは、準拠しているサーバーが常に "0" と示されます。
 
-_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、さらにレベルのアクセス権が必要です。 最小限の特権を付与するために、**リソース ポリシーの共同作成者**を拡張するカスタム ロール定義を作成できます。 次の例では、**リソース ポリシーの共同作成者 DINE** という名前のロールを作成し、追加のアクセス許可を _Microsoft.Authorization/roleAssignments/write_ にします。
+_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、**リソース ポリシーの共同作成者**を拡張するカスタム ロール定義を作成できます。 次の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
 
 ```azurepowershell-interactive
 $subscriptionid = '00000000-0000-0000-0000-000000000000'
@@ -373,14 +382,14 @@ Configuration AuditFilePathExists
 
 ポリシー定義の更新をリリースするには、注意が必要な 2 つのフィールドがあります。
 
-- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。 プロパティは、更新されたパッケージをエージェントが認識できるように、ゲスト構成割り当てのバージョンを更新します。
-- **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能はコンテンツ パッケージを受け入れません。
+- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。 プロパティによって、更新されたパッケージをエージェントが認識できるように、ゲスト構成割り当てのバージョンが更新されます。
+- **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>省略可能:ゲスト構成パッケージに署名する
 
-ゲスト構成カスタム ポリシーは、SHA256 ハッシュを使用して、ポリシー パッケージが変更されていないことを検証します。
+ゲスト構成カスタム ポリシーでは、SHA256 ハッシュを使用して、ポリシー パッケージが変更されていないことが検証されます。
 必要に応じて、お客様は証明書を使ってパッケージに署名し、署名されたコンテンツのみを許可するようにゲスト構成拡張機能を強制することもできます。
 
 このシナリオを有効にするには、2 つのステップを実行する必要があります。 コマンドレットを実行してコンテンツ パッケージに署名し、コードが署名されていることを要求する必要があるようにマシンにタグを追加します。

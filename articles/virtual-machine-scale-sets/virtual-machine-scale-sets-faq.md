@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273717"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870216"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -369,7 +369,7 @@ Azure Monitor ログと統合する仮想マシン スケール セット テン
 
 更新ポリシーが**手動**に設定されている場合は、まず拡張機能を更新したうえで、VM のすべてのインスタンスを手動で更新する必要があります。
 
-### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>既存の仮想マシン スケール セットに関連付けられている拡張機能を更新した場合、既存の VM に影響はありますか
+### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>既存の仮想マシン スケール セットに関連付けられている拡張機能を更新した場合、既存の VM に影響はありますか 
 
 仮想マシン スケール セット モデル内の拡張機能の定義を更新した場合、upgradePolicy プロパティが**自動**に設定されていれば VM が更新されます。 upgradePolicy プロパティが**手動**に設定されている場合は、拡張機能がモデルと一致しないことを示すフラグが設定されます。
 
@@ -445,7 +445,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     スケール セット モデルの管理者資格情報を直接更新します (たとえば Azure Resource Explorer、PowerShell、CLI を使用します)。 スケール セットが更新されると、すべての新しい VM では新しい資格情報が使用されます。 既存の VM では、新しい資格情報は、それらが再イメージ化された場合のみ使用されます。
 
-- VM アクセス拡張機能を使用してパスワードをリセットする。
+- VM アクセス拡張機能を使用してパスワードをリセットする。 [こちら](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)で説明されているパスワードの要件に従っていることを確認します。
 
     次の PowerShell サンプルを使用します。
 
@@ -634,7 +634,7 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
 
 仮想マシン スケール セットを新しいイメージに更新し、パッチの適用を管理する方法については、「[仮想マシン スケール セットのアップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)」を参照してください。
 
-### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
+### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか  (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
 
 はい。イメージを変更せずに、再イメージ化操作を使用して VM をリセットできます。 ただし、`version = latest` が指定されたプラットフォーム イメージを仮想マシン スケール セットが参照している場合、`reimage` を呼び出すと、VM が新しい OS イメージに更新される可能性があります。
 
@@ -689,7 +689,7 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
 
 いいえ。仮想マシン スケール セットの VM にそれぞれ異なる拡張機能の引数を渡すことはできません。 ただし、拡張機能は、それが実行される VM の一意のプロパティ (マシン名など) に基づいて動作することができます。 また、拡張機能から http://169.254.169.254 でインスタンスのメタデータを照会して、VM についての詳細情報を取得することもできます。
 
-### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか 次に例を示します。0、1、3...
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか  次に例を示します。0、1、3...
 
 仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの**過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成されます。 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671633"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869943"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要
 
@@ -31,6 +31,10 @@ Azure Functions の場合、関数アプリに移動し、上部ナビゲーシ�
 App Service 診断のホームページ上で、各ホームページ タイルにあるキーワードを使用して、アプリでの問題を最もよく表しているカテゴリを選択できます。 また、このページでは、Windows アプリ用の**診断ツール**を見つけることができます。 「[Diagnostic tools (only for Windows app) (診断ツール (Windows アプリのみ))](#diagnostic-tools-only-for-windows-app)」をご覧ください。
 
 ![ホームページ](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+
+> [!NOTE]
+> アプリがダウンしているか、パフォーマンスが低下している場合は、[プロファイリング トレースを収集](https://azure.github.io/AppService/2018/06/06/App-Service-Diagnostics-Profiling-an-ASP.NET-Web-App-on-Azure-App-Service.html)して、問題の根本原因を特定できます。 プロファイリングは軽量であり、運用シナリオ向けに設計されています。
+>
 
 ## <a name="interactive-interface"></a>対話型インターフェイス
 

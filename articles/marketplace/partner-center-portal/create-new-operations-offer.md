@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f7c4b25dad50b8fe620d358aa7fb3e9decabc2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd8d9bdfb356ff9816056b85b1dc5688d17b58c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294346"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869752"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>新しい Dynamics 365 for Operations オファーを作成する
 
@@ -196,6 +196,9 @@ Dynamics 365 for Operations オファーの作成を開始するには、確実�
 
 このセクションでは、顧客にオファーを表示するときに使用されるロゴや画像を指定できます。 画像はすべて .png 形式である必要があります。
 
+>[!Note]
+>ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
+
 #### <a name="store-logos"></a>ストア ロゴ
 
 オファーのロゴを、2 つのサイズで提供します。**小 (48 x 48)** と**大 (216 x 216)** です。
@@ -294,7 +297,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **インスタンス URL** (必須): 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: `https://testdrive.crm.dynamics.com`)。
 
-- **Instance Web API URL (インスタンスの Web API URL)** (必須): ご利用の Microsoft 365 アカウントにログインし、 **[設定]** \&gt; **[カスタマイズ]** \&gt; **[開発者リソース]** \&gt; **[インスタンスの Web API] ([サービスのルート URL])** の順に移動することでご利用の Dynamics 365 インスタンスの Web API URL を取得し、その URL (例: `https://testdrive.crm.dynamics.com/api/data/v9.0`) をここにコピーします。
+- **Instance Web API URL (インスタンスの Web API URL)** (必須): お使いの Microsoft 365 アカウントにログインし、 **[設定]** \&gt; **[カスタマイズ]** \&gt; **[開発者リソース]** \&gt; **[インスタンスの Web API] ([サービスのルート URL])** の順に移動することでお使いの Dynamics 365 インスタンスの Web API URL を取得し、その URL (例: `https://testdrive.crm.dynamics.com/api/data/v9.0`) をここにコピーします。
 
 - **ロール名** (必須): Dynamics 365 のカスタム体験版で自分が定義したセキュリティ ロールの名前を入力します。 これは、体験版の使用中にユーザーに割り当てられます (たとえば、test-drive-role)。
 

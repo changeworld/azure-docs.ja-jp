@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472777"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756781"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -615,13 +615,17 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | inputClaim | claimToMatch | string | 比較する要求の種類。 |
 | InputParameter | matchTo | string | 照合する正規表現。 |
 | InputParameter | outputClaimIfMatched | string | 文字列が等しい場合に設定する値。 |
+| InputParameter | extractGroups | boolean | [省略可能] Regex の一致でグループ値を抽出するかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 | 
 | OutputClaim | outputClaim | string | 正規表現が一致する場合は、この出力要求に `outputClaimIfMatched` 入力パラメーターの値が含まれます。 一致するものがない場合は null になります。 |
 | OutputClaim | regexCompareResultClaim | boolean | 正規表現で結果の出力要求の種類が照合されます。これは照合の結果に基づいて、`true` または `false` として設定されます。 |
+| OutputClaim| 要求の名前| string | extractGroups 入力パラメーターが true に設定されている場合は、この要求変換が呼び出された後に生成される要求の種類の一覧です。 claimType の名前は、Regex グループ名と一致する必要があります。 | 
 
-たとえば、電話番号の正規表現パターンに基づいて、指定された電話番号が有効かどうかをチェックします。
+### <a name="example-1"></a>例 1
+
+電話番号の正規表現パターンに基づいて、指定された電話番号が有効かどうかをチェックします。
 
 ```XML
-<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
   </InputClaims>
@@ -636,8 +640,6 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>例
-
 - 入力要求:
     - **claimToMatch**:"64854114520"
 - 入力パラメーター:
@@ -647,6 +649,39 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
     - **outputClaim**: "isPhone"
     - **regexCompareResultClaim**: true
 
+### <a name="example-2"></a>例 2
+
+指定された電子メール アドレスが有効かどうかを確認し、電子メールの別名を返します。
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- 入力要求:
+    - **claimToMatch**: "emily@contoso.com"
+- 入力パラメーター:
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**:  "isEmail"
+    - **extractGroups**: true
+- 出力要求:
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 文字列の要求と `matchTo` 入力パラメーターが等しいことをチェックし、出力要求を `stringMatchMsg` および `stringMatchMsgCode` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。

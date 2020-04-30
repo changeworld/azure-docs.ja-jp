@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659987"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770393"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続が必要
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。
@@ -21,8 +21,7 @@ ms.locfileid: "77659987"
 
 1. 構成を Standard Public Load Balancer に移行する
 2. Standard Public Load Balancer のバックエンド プールに VM を追加する
-3. 送信接続用に Load Balancer でアウトバウンド規則を作成する
-4. インターネットとの間でリフレインされる必要があるサブネット/VM の NSG ルールを設定する
+3. インターネットとの間でリフレインされる必要があるサブネット/VM の NSG ルールを設定する
 
 この記事では、構成の移行について説明します。 バックエンド プールへの VM の追加は、お客様固有の環境によって異なる場合があります。 ただし、一般的な推奨事項を簡単に[説明しています](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
@@ -32,6 +31,7 @@ ms.locfileid: "77659987"
 
 * 指定したリソース グループと場所に Standard SKU Public Load Balancer を作成します。
 * Basic SKU Internal Load Balancer の構成を、新しく作成された Standard Public Load Balancer にシームレスにコピーします。
+* エグレス接続を有効にするアウトバウンド規則を作成します。
 
 ### <a name="caveatslimitations"></a>注意事項と制限事項
 
@@ -42,7 +42,7 @@ ms.locfileid: "77659987"
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。

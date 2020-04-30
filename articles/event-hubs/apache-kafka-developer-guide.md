@@ -8,12 +8,12 @@ ms.author: spelluru
 ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 8a72d20101aacaf59b4be5c4a231b132237113f3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80634096"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729625"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure Event Hubs のための Apache Kafka 開発者ガイド
 この記事では、Apache Kafka アプリケーションを Azure Event Hubs と統合する方法を説明している記事のリンクを紹介します。 
@@ -75,8 +75,16 @@ Microsoft のドキュメントの次のハウツー ガイドを参照してく
 | [Apache Flink をイベント ハブに接続する](event-hubs-kafka-flink-tutorial.md) | プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Apache Flink をイベント ハブに接続する方法について説明します。 |
 | [Apache Kafka Connect をイベント ハブと統合する (プレビュー)](event-hubs-kafka-connect-tutorial.md) | イベント ハブに Kafka Connect を統合し、基本的な FileStreamSource および FileStreamSink コネクタをデプロイする手順について説明します。 |
 | [Akka Streams をイベント ハブに接続する](event-hubs-kafka-akka-streams-tutorial.md) | プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Akka Streams をイベント ハブに接続する方法について説明します。 |
-| [Azure Event Hubs で Apache Kafka 用 Spring Boot Starter を使用する](/azure/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Spring Boot Initializer を使用して作成された Java ベースの Spring Cloud Stream Binder を、Apache Kafka と Azure Event Hubs を使用するように構成する方法について説明します。 |
+| [Azure Event Hubs で Apache Kafka 用 Spring Boot Starter を使用する](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Spring Boot Initializer を使用して作成された Java ベースの Spring Cloud Stream Binder を、Apache Kafka と Azure Event Hubs を使用するように構成する方法について説明します。 |
 
 ## <a name="next-steps"></a>次のステップ
 GitHub リポジトリ [azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) のクイックスタートおよびチュートリアル フォルダーの下にあるサンプルを確認します。
+
+また、次の記事を参照してください。
+
+- [Event Hubs 用 Apache Kafka トラブルシューティング ガイド](apache-kafka-troubleshooting-guide.md)
+- [よく寄せられる質問 - Apache Kafka 用 Event Hubs](apache-kafka-frequently-asked-questions.md)
+- [Event Hubs 用 Apache Kafka 移行ガイド](apache-kafka-migration-guide.md)
+
+
 

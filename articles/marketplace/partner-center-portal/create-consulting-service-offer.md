@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873822"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869793"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーを作成する
 
@@ -25,7 +25,7 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 
 ## <a name="publishing-benefits"></a>公開の利点
 
-コマーシャル マーケットプレースに公開する利点:
+コマーシャル マーケットプレースに公開する利点: 
 
 - Microsoft のブランドを使用して、会社の宣伝ができる。
 - AppSource 上で 1 億を超える Office 365 および Dynamics 365 ユーザーに、さらに Azure Marketplace を通じて 20 万を超える組織にリーチできる可能性がある。
@@ -131,20 +131,20 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 この説明は、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
 
 説明には、次の 1 つまたは複数を含めます。
 
 - オファーによってもたらされる価値と主なメリット
 - カテゴリまたは業界のアソシエーション、あるいはその両方
-- アプリ内購入の営業案件
+- アプリ内購入の機会
 - 必要な開示
 
 説明を記述するためのいくつかのヒントを次に示します。
 
 - 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
   - プランの説明。
-  - オファーの恩恵を受けるユーザーの種類。
+  - オファーから利益を得るユーザーの種類。
   - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
 - 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
 - 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される値に焦点を当ててください。
@@ -173,6 +173,9 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
 オファーで使用するロゴと画像を提供します。 画像はすべて .png 形式である必要があります。 ぼやけた画像は拒否されます。
+
+>[!Note]
+>ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 

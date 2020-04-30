@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602941"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758896"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -155,14 +155,14 @@ static void Main(string[] args)
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-`QueueTrigger` 属性は、キュー メッセージが `myqueue-items` キューに出現するたびに関数を呼び出すようランタイムに通知します。 `Blob` 属性は、キュー メッセージを使用して *sample-workitems* コンテナー内の BLOB を読み取るようランタイムに通知します。 `myQueueItem` パラメーターで関数に渡されるキュー メッセージの内容は、BLOB の名前です。
+`QueueTrigger` 属性は、キュー メッセージが `myqueue-items` キューに出現するたびに関数を呼び出すようランタイムに通知します。 `Blob` 属性は、キュー メッセージを使用して *sample-workitems* コンテナー内の BLOB を読み取るようランタイムに通知します。 `samples-workitems` コンテナー内の BLOB 項目の名前は、キュー トリガーからバインド式 (`{queueTrigger}`) として直接取得されます。
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)に関する記事をご覧ください。
 
 ### <a name="queue-storage-trigger-configuration"></a>Queue Storage トリガーの構成
 

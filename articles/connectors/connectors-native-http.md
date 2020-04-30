@@ -3,16 +3,16 @@ title: HTTP または HTTPS を使用してサービス エンドポイントを
 description: Azure Logic Apps からサービス エンドポイントに送信 HTTP または HTTPS 要求を送信します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ed3d960b3f5653ea8706b39559c9d5a71c45a6c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297206"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867628"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -20,6 +20,8 @@ ms.locfileid: "79297206"
 
 > [!NOTE]
 > この HTTP コネクタは、ターゲット エンドポイントの機能に基づき、トランスポート層セキュリティ (TLS) バージョン 1.0、1.1、1.2 をサポートしています。 Logic Apps は、考えられる最高のサポート バージョンを使用してエンドポイントとネゴシエートします。 そのため、たとえばエンドポイントが 1.2 をサポートしている場合、コネクタはまず 1.2 を使用します。 それ以外の場合、コネクタは、2 番目に高いサポート バージョンを使用します。
+>
+> HTTP コネクタは、認証用の中間 TLS/SSL 証明書をサポートしていません。
 
 定期的なスケジュールでエンドポイントを調べる、つまり "*ポーリング*" するには、ワークフローの最初のステップとして [HTTP トリガーを追加](#http-trigger)します。 トリガーによるエンドポイントの調査ごとに、トリガーからそのエンドポイントに対して、呼び出しまたは*要求*の送信が行われます。 エンドポイントの応答によって、ロジック アプリのワークフローが実行されるかどうかが決定します。 エンドポイントの応答からの任意のコンテンツが、トリガーによってロジック アプリのアクションに渡されます。
 
@@ -140,8 +142,8 @@ HTTP 要求に `multipart/form-data` 型を含むコンテンツを処理する�
 基礎ワークフロー定義で HTTP アクションの JSON 定義を示す同じ例は次のようになります。
 
 ```json
-{
-   "HTTP_action": {
+"HTTP_action": {
+   "inputs": {
       "body": {
          "$content-type": "multipart/form-data",
          "$multipart": [

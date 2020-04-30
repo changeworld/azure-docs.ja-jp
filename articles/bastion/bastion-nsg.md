@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: charwen
-ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0188f9bc1c7c0e8d7fed9f590d078085b175614f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087275"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732199"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
@@ -32,9 +32,9 @@ Azure Bastion の使用時にネットワーク セキュリティ グループ 
 
 このセクションでは、ユーザーと Azure Bastion との間のネットワーク トラフィックと、仮想ネットワーク内のターゲット VM へのネットワークトラフィックについて説明します。
 
-### <a name="azurebastionsubnet"></a>AzureBastionSubnet
+### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure Bastion は、AzureBastionSubnet に特定してデプロイされます。
+Azure Bastion は、***AzureBastionSubnet*** に対して明示的にデプロイされます。
 
 * **イグレス トラフィック:**
 
@@ -46,19 +46,11 @@ Azure Bastion は、AzureBastionSubnet に特定してデプロイされます�
    * **ターゲット VM へのエグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 NSG では、他のターゲット VM サブネットへのエグレス トラフィックをポート 3389 と 22 に許可する必要があります。
    * **Azure の他のパブリックエンド ポイントへのエグレス トラフィック:** Azure Bastion から Azure 内のさまざまなパブリック エンドポイントに接続できる必要があります (たとえば、診断ログや測定ログを格納するため)。 このため、Azure Bastion には **AzureCloud** サービス タグに対する 443 への送信が必要です。
 
-* **ターゲット VM サブネット:** これは、RDP/SSH で接続するターゲット仮想マシンを含むサブネットです。
+### <a name="target-vm-subnet"></a>ターゲット VM サブネット
+これは、RDP/SSH で接続するターゲット仮想マシンを含むサブネットです。
 
    * **Azure Bastion からのイグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 プライベート IP 経由のターゲット VM 側で RDP/SSH ポート (それぞれポート 3389/22) が開かれている必要があります。 ベスト プラクティスとして、この規則に Azure Bastion サブネットの IP アドレス範囲を追加して、ターゲット VM サブネット内のターゲット VM で Bastion によってのみこれらのポートが開かれるよにすることができます。
 
-## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet への NSG の適用
-
-NSG を作成して ***AzureBastionSubnet*** に適用する場合は、NSG に次の規則を追加済みであることを確認してください。 これらのルールを追加しないと、NSG の作成/更新は失敗します。
-
-* **コントロール プレーンの接続:** 443 での GatewayManager からの受信
-* **診断ログとその他:** 443 での AzureCloud への送信。 このサービス タグ内で地域タグはまだサポートされていません。
-* **ターゲット VM:** 3389 および 22 に対する VirtualNetwork への送信
-
-NSG ルールの例は、この[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)で参照できます。
 
 ## <a name="next-steps"></a>次のステップ
 

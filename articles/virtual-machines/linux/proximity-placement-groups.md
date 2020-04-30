@@ -1,21 +1,18 @@
 ---
-title: Linux VM に近接通信配置グループを使用する
-description: Azure で Linux 仮想マシンに対して近接通信配置グループを作成して使用する方法について説明します。
-services: virtual-machines-linux
+title: 近接通信配置グループを使用する
+description: Azure で仮想マシンに対して近接通信配置グループを作成して使用する方法について説明します。
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f89b28e7a3c29e45efa2796788e27325c01d7098
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73171057"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759257"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI を使用して近接通信配置グループに VM をデプロイする
 

@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6f93d74653aab78e48e613ddf9252a0876548b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157672"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756651"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する
+
+"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
 デバイス テンプレートは、Azure IoT Central アプリケーションに接続するデバイスの種類の、特性と動作を定義するブループリントです。
 
@@ -253,18 +255,6 @@ IoT Central からデバイス コマンドを呼び出すことができます�
 
 デバイス テンプレートを発行すると、オペレーターは **[Devices]\(デバイス\)** ページに移動して、デバイス テンプレートを使用する実際のデバイスまたはシミュレートされたデバイスを追加できます。 変更を行っている間は、引き続きデバイス テンプレートを変更して保存できます。 これらの変更をオペレーターにプッシュして、 **[Devices]\(デバイス\)** ページで表示する場合は、毎回、 **[Publish]\(発行\)** を選択する必要があります。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、以下の内容を学習しました。
-
-* 新しい IoT デバイス テンプレートの作成。
-* クラウド プロパティの作成。
-* カスタマイズの作成。
-* デバイス テレメトリの視覚化の定義。
-* デバイス テンプレートの公開。
-
-次に、以下を実行できます。
-
-> [!div class="nextstepaction"]
-> [デバイスを接続する](howto-connect-devkit.md)
+デバイス開発者にお勧めする次の手順は、[デバイス テンプレートのバージョン管理](./howto-version-device-template.md)に関する記事を読むことです。

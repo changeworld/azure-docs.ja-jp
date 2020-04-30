@@ -4,12 +4,12 @@ description: Azure でのアラートの概要です。 アラート、クラシ
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234335"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769767"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -125,7 +125,10 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 
 ## <a name="create-an-alert-rule"></a>アラート ルールを作成する
-アラートは、監視サービスやシグナルの種類には関係なく、一貫した方法で作成できます。 発生したすべてのアラートや関連する詳細を単一のページで確認できます。
+アラート ルールは、監視サービスやシグナルの種類には関係なく、一貫した方法で作成できます。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
+
  
 新しいアラート ルールを作成する方法は、次のとおりです。
 1. アラートの _ターゲット_ を選択します。

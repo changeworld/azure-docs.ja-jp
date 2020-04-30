@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 21bcaf8636638153ad5e5659ef3e1bff0631d9b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427363"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866254"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 
@@ -80,10 +80,10 @@ KV 証明書の作成要求が完了すると、保留中オブジェクトの�
 ## <a name="partnered-ca-providers"></a>提携 CA プロバイダー
 証明書の作成は、手動で、または "Self" 発行者を使用して、完了できます。 また、Key Vault は、特定の発行者プロバイダーと提携して、証明書の作成を簡素化します。 次の種類の証明書を、キー コンテナー用として、これらのパートナー発行者プロバイダーに注文できます。  
 
-|プロバイダー|証明書の種類|  
-|--------------|----------------------|  
-|DigiCert|Key Vault は、DigiCert による OV または EV SSL 証明書を提供します。|
-|GlobalSign|Key Vault は、GlobalSign による OV または EV SSL 証明書を提供します。|
+|プロバイダー|証明書の種類|構成のセットアップ  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault は、DigiCert による OV または EV SSL 証明書を提供します。| [統合ガイド](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|GlobalSign|Key Vault は、GlobalSign による OV または EV SSL 証明書を提供します。| [統合ガイド](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931689"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767539"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -159,7 +159,7 @@ hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 HDInsight のログは、STDOUT と STDERR に書き込まれた出力を記述します。 Ambari Web UI を使用して、この情報を表示できます。
 
 > [!NOTE]  
-> Apache Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
+> Apache Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、[スクリプト アクションのトラブルシューティング](./troubleshoot-script-action.md)に関するページで、ログに記録された情報にアクセスする他の方法を確認してください。
 
 ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 次に例を示します。
 
@@ -175,7 +175,7 @@ echo "Getting ready to install Foo"
 
 これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、「[https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)」を参照してください。
 
-スクリプト アクションによってログに記録される情報の表示の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
+スクリプト アクションによってログに記録される情報の表示の詳細については、[スクリプト アクションのトラブルシューティング](./troubleshoot-script-action.md)に関するページを参照してください。
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> LF 行の終わりで、ファイルを ASCII として保存する
 

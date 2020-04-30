@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 39edaa32b0695f4ab83206cd5701629f12295a0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527913"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024627"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
@@ -33,9 +33,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="cross-region-replication"></a>リージョン間レプリケーション
 マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
-
-> [!NOTE]
-> リージョン間のレプリケーションはプレビュー段階です。
 
 任意の [Azure Database for MariaDB リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)にマスター サーバーを作成できます。  マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。 次の図は、マスター リージョンに応じて使用できるレプリカ リージョンを示しています。
 
@@ -73,7 +70,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="connect-to-a-replica"></a>レプリカへの接続
 
-作成されたレプリカでは、マスター サーバーのファイアウォール規則または VNet サービス エンドポイントが継承されます。 その後、これらの規則はマスター サーバーから独立したものになります。
+レプリカは、作成時にマスター サーバーのファイアウォール規則を継承します。 その後、これらの規則はマスター サーバーから独立したものになります。
 
 レプリカの管理者アカウントは、マスター サーバーから継承されます。 マスター サーバー上のすべてのユーザー アカウントが、読み取りレプリカにレプリケートされます。 マスター サーバー上で使用可能なユーザー アカウントを使って読み取りレプリカにのみ接続できます。
 
@@ -126,7 +123,7 @@ Azure Database for MariaDB は、Azure Monitor に**レプリケーションの�
 > [!IMPORTANT]
 > マスター サーバー構成が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新してください。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
 
-レプリカが作成されるとき、ファイアウォール規則、仮想ネットワーク規則、パラメーターの設定が、マスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立したものなります。
+ファイアウォール規則とパラメーターの設定は、レプリカの作成時にマスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立したものなります。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564722"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867978"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
 
@@ -148,7 +148,7 @@ VLAN/サブネットが作成されます。  この VLAN ID を使って、プ�
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>環境を Azure 仮想ネットワークに接続する
 
-CloudSimple では、プライベート クラウドに対する ExpressRoute 回線が提供されます。 Azure 上の仮想ネットワークを ExpressRoute 回線に接続できます。 接続の設定の詳細については、「[Azure Virtual Network Connection using ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)」 (ExpressRoute を使用した Azure 仮想ネットワークの接続) をご覧ください。
+CloudSimple では、プライベート クラウドに対する ExpressRoute 回線が提供されます。 Azure 上の仮想ネットワークを ExpressRoute 回線に接続できます。 接続の設定の詳細については、「[Azure Virtual Network Connection using ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)」 (ExpressRoute を使用した Azure 仮想ネットワークの接続) をご覧ください。
 
 ## <a name="sign-in-to-vcenter"></a>vCenter にサインインする
 
@@ -159,8 +159,8 @@ vCenter にサインインして、仮想マシンとポリシーを設定でき
     ![vSphere Client を起動する](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. 優先する vSphere クライアントを選択して vCenter にアクセスし、ユーザー名とパスワードでサインインします。  既定値は次のとおりです。
-    * ユーザー名: **CloudOwner\@cloudsimple.local**
-    * Password (パスワード):**CloudSimple123!**  
+    * ユーザー名: `CloudOwner@cloudsimple.local`
+    * パスワード: `CloudSimple123!`
 
 次の手順での vCenter の画面は、vSphere (HTML5) クライアントのものです。
 

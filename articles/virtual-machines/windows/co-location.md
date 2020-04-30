@@ -1,22 +1,18 @@
 ---
-title: Microsoft Azure VM を併置する
+title: VM の併置による待ち時間の短縮
 description: Azure VM リソースを併置することで待機時間を短縮する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: b61a84f2b284177b7443be00efeea65e7eb8aaef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 066b6d10dbe07b902abfd15565c5ccf1a5e9c115
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231875"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083174"
 ---
 # <a name="co-locate-resource-for-improved-latency"></a>リソースの併置による待機時間の短縮
 

@@ -10,20 +10,23 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9f12b2b31da4c7fe67eef9674d96b517d4e2bfa
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231807"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867748"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロール セキュリティ ウィザード
 
 Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (PIM) を初めて実行するユーザーには、開始のためのウィザードが表示されます。 このウィザードを使用すると、特権 ID のセキュリティ リスクと、Privileged Identity Management を使用してそのリスクを軽減する方法がわかります。 既存のロール割り当てを後で変更する場合は、ウィザードで実行する必要はありません。
+
+> [!Important]
+> セキュリティ ウィザードは、一時的に利用できません。 ご不便をおかけして申し訳ございませんでした。
 
 ## <a name="wizard-overview"></a>ウィザードの概要
 
@@ -32,12 +35,12 @@ Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (P
 ウィザードの 2 番目の手順では、管理者のロール割り当てを変更できます。  
 
 > [!WARNING]
-> ここで重要なのは、グローバル管理者が少なくとも 1 人存在し、組織アカウント (Microsoft アカウントではない) を持つ特権ロール管理者が複数存在していることです。 特権ロール管理者が 1 人しかいない場合、そのアカウントが削除されると、組織は Privileged Identity Management を管理できなくなります。
+> ここで重要なのは、グローバル管理者が少なくとも 1 人存在し、職場または学校アカウント (Microsoft アカウントではない) を持つ特権ロール管理者が複数存在していることです。 特権ロール管理者が 1 人しかいない場合、そのアカウントが削除されると、組織は Privileged Identity Management を管理できなくなります。
 > また、ユーザーに Microsoft アカウント (つまり、Skype、Outlook.com などの Microsoft サービスへのサインインに使用するアカウント) がある場合は、ロールの割り当てを永続的に維持してください。 そのロールのアクティブ化に多要素認証を要求すると、ユーザーはロックアウトされます。
 
 ## <a name="run-the-wizard"></a>ウィザードの実行
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 

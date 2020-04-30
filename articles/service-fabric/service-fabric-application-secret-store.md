@@ -3,12 +3,12 @@ title: Azure Service Fabric セントラル シークレット ストア
 description: この記事では、Azure Service Fabric のセントラル シークレット ストアを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589166"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770423"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric のセントラル シークレット ストア 
 この記事では、Azure Service Fabric のセントラル シークレットストア (CSS) を使用して Service Fabric アプリケーションでシークレットを作成する方法について説明します。 CSS は、パスワード、トークン、キーなどの機密データを暗号化してメモリに保持するローカル シークレット ストア キャッシュです。
@@ -47,31 +47,9 @@ ms.locfileid: "77589166"
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>シークレット リソースを宣言する
-シークレット リソースは、Resource Manager テンプレートまたは REST API を使用することで作成できます。
-
-### <a name="use-resource-manager"></a>Resource Manager の使用
-
-Resource Manager を使用してシークレット リソースを作成するには、次のテンプレートを使用します。 このテンプレートは `supersecret` シークレット リソースを作成しますが、シークレット リソースの値はまだ設定されていません。
-
-
-```json
-   "resources": [
-      {
-        "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-          }
-        }
-      ]
-```
-
-### <a name="use-the-rest-api"></a>REST API の使用
+REST API を使用して、シークレット リソースを作成できます。
+  > [!NOTE] 
+  > クラスターで Windows 認証を使用している場合、REST 要求はセキュリティで保護されていない HTTP チャネルを経由して送信されます。 セキュリティで保護されたエンドポイントを持つ X509 ベースのクラスターを使用することをお勧めします。
 
 REST API を使用して `supersecret` シークレット リソースを作成するために、`https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` に PUT 要求を出します。 シークレット リソースを作成するには、クラスター証明書または管理者クライアント証明書が必要です。
 
@@ -81,48 +59,6 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 ```
 
 ## <a name="set-the-secret-value"></a>シークレット値を設定する
-
-### <a name="use-the-resource-manager-template"></a>Resource Manager テンプレートを使用する
-
-シークレット値を作成および設定するには、次の Resource Manager を使用します。 このテンプレートは、`supersecret` シークレットリソースのシークレット値をバージョン `ver1` として設定します。
-```json
-  {
-  "parameters": {
-  "supersecret": {
-      "type": "string",
-      "metadata": {
-        "description": "supersecret value"
-      }
-   }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-        }
-    },
-    {
-      "apiVersion": "2018-07-01-preview",
-      "name": "supersecret/ver1",
-      "type": "Microsoft.ServiceFabricMesh/secrets/values",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "Microsoft.ServiceFabricMesh/secrets/supersecret"
-      ],
-      "properties": {
-        "value": "[parameters('supersecret')]"
-      }
-    }
-  ],
-  ```
-### <a name="use-the-rest-api"></a>REST API の使用
 
 REST API を使用してシークレット値を設定するには、次のスクリプトを使用します。
 ```powershell

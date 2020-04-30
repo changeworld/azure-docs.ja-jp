@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76167343"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767888"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -45,7 +45,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 *米国西部 2 は、リージョン間レプリカの場所として一時的に使用できません。
 
-
 ### <a name="paired-regions"></a>ペアになっているリージョン
 ユニバーサル レプリカ リージョンに加えて、マスター サーバーの Azure のペアになっているリージョンに読み取りレプリカを作成できます。 リージョンのペアがわからない場合は、[Azure のペアになっているリージョンに関する記事](../best-practices-availability-paired-regions.md)を参照してください。
 
@@ -71,7 +70,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="connect-to-a-replica"></a>レプリカへの接続
 
-作成されたレプリカでは、マスター サーバーのファイアウォール規則または VNet サービス エンドポイントが継承されます。 その後、これらの規則はマスター サーバーから独立したものになります。
+レプリカは、作成時にマスター サーバーのファイアウォール規則を継承します。 その後、これらの規則はマスター サーバーから独立したものになります。
 
 レプリカの管理者アカウントは、マスター サーバーから継承されます。 マスター サーバー上のすべてのユーザー アカウントが、読み取りレプリカにレプリケートされます。 マスター サーバー上で使用可能なユーザー アカウントを使って読み取りレプリカにのみ接続できます。
 
@@ -124,7 +123,7 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 > [!IMPORTANT]
 > マスター サーバー構成が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新してください。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
 
-レプリカが作成されるとき、ファイアウォール規則、仮想ネットワーク規則、パラメーターの設定が、マスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立したものなります。
+ファイアウォール規則とパラメーターの設定は、レプリカの作成時にマスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立したものなります。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 

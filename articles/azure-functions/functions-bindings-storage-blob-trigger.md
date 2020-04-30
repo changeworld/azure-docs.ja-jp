@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348972"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084959"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -391,7 +391,7 @@ Azure Functions では、BLOB の配信確認メッセージは (アプリ設定
 * BLOB の名前
 * ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 
-BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。 再処理がすぐに行われない場合がありますが、後で必ず行われます。
+BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。 再処理がすぐに行われない場合がありますが、後で必ず行われます。 すぐに再処理するには、*azure-webjobs-hosts/blobscaninfo* 内の *scaninfo* BLOB を更新できます。 `LatestScan` プロパティの後に最後に変更されたタイムスタンプを持つすべての BLOB が再びスキャンされます。
 
 ## <a name="poison-blobs"></a>有害な BLOB
 

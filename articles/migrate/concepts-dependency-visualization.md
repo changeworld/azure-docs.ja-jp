@@ -2,13 +2,13 @@
 title: Azure Migrate Server Assessment での依存関係の分析
 description: Azure Migrate Server Assessment を使用して、評価のために依存関係の分析を使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455640"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024763"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析
 
@@ -30,7 +30,7 @@ ms.locfileid: "79455640"
 - **エージェントレス**:エージェントレスの分析では、クロスチェックを行うコンピューターにエージェントをインストールする必要はありません。 このオプションは現在プレビュー段階であり、VMware VM でのみ使用できます。
 
 > [!NOTE]
-> 依存関係の分析は、Azure Government では使用できません。
+> エージェントベースの依存関係の分析は、Azure Government では使用できません。 エージェントレスの依存関係の分析を使用できます。
 
 ## <a name="agentless-analysis"></a>エージェントレスの分析
 
@@ -51,7 +51,7 @@ ms.locfileid: "79455640"
 
 ### <a name="collected-data"></a>収集されるデータ
 
-エージェントベースの視覚化では、以下のデータが収集されます。
+エージェントベースの分析では、以下のデータが収集されます。
 
 - ソース マシンのサーバー名、プロセス、アプリケーション名。
 - ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。

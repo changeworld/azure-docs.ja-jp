@@ -7,38 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83ec57290f56a903a7c4456ba760fbbb3b54f885
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289024"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869367"
 ---
 # <a name="azure-application-support-tab"></a>Azure アプリケーションの [サポート] タブ
 
-[サポート] タブを使用して、エンジニアリング向けとカスタマー向けのサポートの情報を提供します。
- 
-## <a name="identify-contacts-and-websites"></a>連絡先と Web サイトを指定する
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Azure アプリケーション オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[Azure アプリケーション オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)」を参照してください。
 
-次の画面キャプチャを参考にして、必要な情報を指定します。 名前に赤いアスタリスク (*) が付いているフィールドはすべて必須です。
-
-  ![オファーのサポート フォーム](./media/azureapp-support-tab.png)
-
-1. **[Engineering Contact]\(エンジニアリング連絡先\)** で、以下のフィールドの情報を指定します。
-
-   - **[名前]\*** - アプリのエンジニアリング関連の連絡先の名前を入力します。 この連絡先が、Microsoft から技術的な通信を受け取ることになります。
-   - **[電子メール]\*** - エンジニアリング関連の連絡先のメール アドレスを入力します。
-   - **[電話]\*** - エンジニアリング関連の連絡先の電話番号を入力します。
-  
-2. **[Support Contact]\(サポート連絡先\)** で、以下のフィールドの情報を指定します。
-
-   - **[名前]\*** - アプリのサポート連絡先の名前を入力します。 この連絡先が、Microsoft からサポート関連の通信を受け取ることになります。
-   - **[電子メール]\*** - アプリのサポート連絡先のメール アドレスを入力します。
-   - **[電話]\*** - サポート連絡先の電話番号を入力します。
- 
-3. **[Support Urls]\(サポート URL\)** で、顧客がサポート チケットを開くときに Microsoft が使用する適切なサポート URL を指定します。 これらの URL は、パブリック Azure または Azure Government クラウド向けです。
-4. 終了したら、 **[保存]** を選択します。
-
-## <a name="next-steps"></a>次のステップ
-
-[Azure アプリケーション プランの公開](./cpp-publish-offer.md)
+新しい Azure アプリケーション オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[Azure アプリケーション オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)」の手順に従ってオファーを作成します。

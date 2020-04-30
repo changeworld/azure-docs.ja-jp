@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235674"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733592"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -82,7 +83,13 @@ DevKit をコンピューターに接続するには、次の手順を実行し�
     ```
 
    > [!NOTE]
-   > `device-identity` の実行中にエラーが発生した場合、詳細を得るには [Azure IOT Extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) インストールします。
+   > `device-identity` の実行中にエラーが発生する場合は、[Azure IoT Extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) インストールします。
+   > 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Extension により、IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) に固有のコマンドが Azure CLI に追加されます。
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
@@ -169,9 +176,7 @@ DevKit は、IoT ハブ上のデバイス固有のエンドポイントに接続
 
     ![Azure IoT Tools のインストール](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    または、次の直接リンクを使用します。
-    > [!div class="nextstepaction"]
-    > [Azure IoT Tools 拡張パックのインストール](vscode:extension/vsciot-vscode.azure-iot-tools)
+    または、この URL をコピーしてブラウザー ウィンドウに貼り付けます: `vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Azure IoT Tools 拡張パックには、[Azure IoT Device Workbench](https://aka.ms/iot-workbench) が含まれています。このワークベンチは、さまざまな IoT DevKit デバイスの開発とデバッグに使用されます。 [Azure IoT Hub 拡張機能](https://aka.ms/iot-toolkit)は Azure IoT Tools 拡張パックにも含まれていますが、Azure IoT Hubs を管理し、それとやりとりする目的で使用されます。
@@ -321,6 +326,17 @@ DevKit が再起動され、コードの実行が開始されます。
 * MXChip IoT DevKit の LED が点滅している。
 
 ![シリアル モニターの出力](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> テスト中に、LED が点滅せず、Azure portal にデバイスから受信したデータが表示されないにもかかわらず、デバイスの OLED 画面には "**実行中**" と表示されるエラーが発生することがあります。この問題を解決するには、Azure portal で IoT ハブのデバイスに移動し、デバイスにメッセージを送信します。 VS Code のシリアル モニターで次の応答が表示される場合は、デバイスからの直接通信がルーター レベルでブロックされている可能性があります。 接続中のデバイスに構成されているファイアウォールとルーターのルールを確認してください。 また、送信ポート 1833 が開いていることを確認してください。
+> 
+> ERROR: mqtt_client.c (ln 454):Error: failure opening connection to endpoint  
+> INFO: >>>Connection status: disconnected  
+> ERROR: tlsio_mbedtls.c (ln 604):Underlying IO open failed  
+> ERROR: mqtt_client.c (ln 1042):Error: io_open failed  
+> ERROR: iothubtransport_mqtt_common.c (ln 2283): failure connecting to address atcsliothub.azure-devices.net.  
+> INFO: >>>Re-connect.  
+> INFO:IoThub Version:1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Azure IoT Hub によって受信されたテレメトリを確認する
 

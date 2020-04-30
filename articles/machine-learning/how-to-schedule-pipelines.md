@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116762"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024559"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -91,13 +91,17 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
 
-reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on time",
+reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on input file change.",
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 
 ### <a name="optional-arguments-when-creating-a-schedule"></a>スケジュールを作成するときの省略可能な引数
 
 前に説明した引数に加えて、`status` 引数を `"Disabled"` に設定して、非アクティブなスケジュールを作成することもできます。 最後に、`continue_on_step_failure` を使用すると、パイプラインの既定のエラー動作をオーバーライドするブール値を渡すことができます。
+
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>より複雑なワークフローに Azure Logic Apps を使用する
+
+Azure Logic Apps は、Azure Machine Learning パイプラインよりも複雑なワークフローをサポートしており、はるかに広範に統合されています。 詳細については、「[ロジック アプリから Machine Learning パイプラインの実行をトリガーする](how-to-trigger-published-pipeline.md)」を参照してください。
 
 ## <a name="view-your-scheduled-pipelines"></a>スケジュールされたパイプラインを表示する
 

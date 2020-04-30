@@ -8,12 +8,13 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
-ms.openlocfilehash: fd3e02101f206ebdb183da87089eadcbc9619b33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68883170"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732600"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
 
@@ -216,7 +217,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 最初の 2 つのリターン コードでは、 **IoTHubClient** ライブラリが、メッセージをデバイスのキューから削除して、再度配信されないようにする必要があることを示すメッセージを IoT Hub に送信します。 実質的な効果は同じ (デバイスのキューからメッセージを削除する) ですが、メッセージが受け入れられるか拒否するかも記録されます。  この違いを記録することは、メッセージの送信側がフィードバックに注目し、デバイスが特定のメッセージを受け入れるか拒否するかを調べる際に役立ちます。
 
-最後の場合もメッセージは IoT Hub に送信されますが、これは、メッセージを再配信する必要があることを示しています。 いくつかのエラーが発生したがメッセージをもう一度処理する必要がある場合、通常はメッセージを破棄します。 これに対して、回復不可能なエラーが発生した場合 (またはメッセージを処理しないことを単に決定した場合) は、メッセージを拒否するのは適切なことです。
+最後の場合もメッセージは IoT Hub に送信されますが、これは、メッセージを再配信する必要があることを示しています。 いくつかのエラーが発生したがメッセージをもう一度処理する必要がある場合、通常はメッセージを破棄します。 これに対して、回復不可能なエラーが発生した場合 (またはメッセージを処理しないことを単に決定した場合) は、メッセージを拒否することが適切です。
 
 いずれの場合も、 **IoTHubClient** ライブラリから目的の動作を導き出せるように、さまざまなリターン コードがあることのみ知っておいてください。
 

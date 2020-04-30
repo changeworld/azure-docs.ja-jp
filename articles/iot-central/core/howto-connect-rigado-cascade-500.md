@@ -10,15 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158368"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758252"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500 ゲートウェイ デバイスを Azure IoT Central アプリケーションに接続する
 
+"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
 この記事では、ソリューション ビルダーとして、Rigado Cascade 500 ゲートウェイ デバイスを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。 
 
@@ -70,4 +71,7 @@ Cascade 500 デバイスを IoT Central アプリケーションに接続する�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Rigado Cascade 500 をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順として、次は[ストア内の分析アプリケーションを作成](../retail/tutorial-in-store-analytics-create-app-pnp.md)し、エンド ツー エンド ソリューションを構築する方法を学習します。 
+デバイス開発者にお勧めする次の手順は以下です。
+
+- [Azure IoT Central のデバイス接続](./concepts-get-connected.md)について確認する
+- [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する

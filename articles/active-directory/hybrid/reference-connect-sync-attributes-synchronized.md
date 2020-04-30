@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227819"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082120"
 ---
-# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: Azure Active Directory に同期される属性
+# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同期: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
 属性は、関連する Azure AD アプリによってグループ化されます。
 
@@ -52,7 +52,7 @@ ms.locfileid: "79227819"
 | userPrincipalName |X |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="exchange-online"></a>Exchange Online
-| 属性名 | User | Contact | Group | 解説 |
+| 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | assistant |X |X | | |
@@ -175,7 +175,7 @@ ms.locfileid: "79227819"
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| 属性名 | User | Contact | Group | 解説 |
+| 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | authOrig |X |X |X | |
@@ -257,7 +257,7 @@ ms.locfileid: "79227819"
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Teams と Skype for Business Online
-| 属性名 | User | Contact | Group | 解説 |
+| 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | c |X |X | | |
@@ -305,7 +305,7 @@ ms.locfileid: "79227819"
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| 属性名 | User | Contact | Group | 解説 |
+| 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | cn |X | |X |共通名または別名です。 多くの場合、[mail] 値のプレフィックスです。 |
@@ -320,7 +320,7 @@ ms.locfileid: "79227819"
 | userPrincipalName |X | | |この UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="intune"></a>Intune
-| 属性名 | User | Contact | Group | 解説 |
+| 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | c |X |X | | |
@@ -338,7 +338,7 @@ ms.locfileid: "79227819"
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| 属性名 | User | Contact | Group | 解説 |
+| 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | c |X |X | | |
@@ -375,9 +375,9 @@ ms.locfileid: "79227819"
 * Yammer (User のみを使用)
 * [SharePoint のようなリソースによって提供されるハイブリッド企業間取引 (B2B) の組織間コラボレーションのシナリオ](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-このグループは、Office 365、Dynamics、または Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる属性セットです。 この中には、少数のコア属性が含まれます。
+このグループは、Office 365、Dynamics、または Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる属性セットです。 この中には、少数のコア属性が含まれます。 一部のサードパーティ アプリケーションへのシングル サインオンまたはプロビジョニングでは、ここで説明する属性に加えて、属性の同期を構成する必要があることに注意してください。 [SaaS アプリのチュートリアル](../saas-apps/tutorial-list.md)に、各アプリケーションの要件が説明されています。
 
-| 属性名 | User | Contact | Group | 解説 |
+| 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | cn |X | |X | |
@@ -422,15 +422,15 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 ## <a name="exchange-hybrid-writeback"></a>Exchange ハイブリッドの書き戻し
 次の属性は、 **Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
-| 属性名 (オンプレミスの AD) | 属性名 (Connect の UI) | User | Contact | Group | 解説 |
+| 属性名 (オンプレミスの AD) | 属性名 (Connect の UI) | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 と Windows Server 2016 AD で導入されました。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。 |
-| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
-| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
-| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
+| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |フィルター:オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
+| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |フィルター:オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
+| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |フィルター:オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
 | msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。 |
-| msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。 |
+| msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |訴訟ホールド: クラウド サービスが訴訟ホールド状態にあるユーザーを特定できるようにします。 |
 | proxyAddresses| proxyAddresses |X |X |X |Exchange Online の x500 アドレスのみが挿入されます。 |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できます。 Azure AD Connect ビルド 1.1.552.0 以降が必要です。 |
 
@@ -466,7 +466,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>メモ
+## <a name="notes"></a>Notes
 * 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。 mail などの代替 ID 属性は、Azure AD の userPrincipalName 属性と同期されます。
 * 前の一覧で、オブジェクトの種類 **User** は、オブジェクトの種類 **iNetOrgPerson** にも適用されます。
 

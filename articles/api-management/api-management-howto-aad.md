@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473542"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868390"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -38,13 +38,13 @@ ms.locfileid: "79473542"
 3. 検索ボックスに、「**api**」と入力します。
 4. **[API Management サービス]** を選択します。
 5. お使いの API Management サービス インスタンスを選択します。
-6. **[セキュリティ]** の **[ID]** を選択します。
+6. **[開発者ポータル]** で **[ID]** を選択します。
 7. 一番上にある **[+追加]** を選択します。
 
     **[ID プロバイダーの追加]** ウィンドウが右側に表示されます。
 8. **[プロバイダーの種類]** で **[Azure Active Directory]** を選択します。
 
-    その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、 **[クライアント ID]** や **[クライアント シークレット]** があります (これらのコントロールに関する情報は、記事の後半で取得します)。
+    その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、 **[クライアント ID]** や **[クライアント シークレット]** があります  (これらのコントロールに関する情報は、記事の後半で取得します)。
 9. **[リダイレクト URL]** の内容をメモします。
     
    ![Azure Portal で ID プロバイダーを追加するための手順](./media/api-management-howto-aad/api-management-with-aad001.png)  

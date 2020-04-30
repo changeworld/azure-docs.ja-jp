@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ac49d2da9d05c9677dbb6f5328874ab3a45ff661
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985730"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081542"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
@@ -216,6 +216,8 @@ Premium Storage キャッシュ:サポートされていません
 <br>
 
 ## <a name="preview-dc-series"></a>プレビュー:DC シリーズ
+
+**新しいサイズ (推奨)** :[DCsv2 シリーズ](dcv2-series.md)
 
 Premium Storage: サポートされています
 

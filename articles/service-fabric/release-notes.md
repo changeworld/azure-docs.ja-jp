@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: cb4fdd56e9cf67c71ac690d423499929167f8977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064243"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729593"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -23,6 +23,56 @@ ms.locfileid: "77064243"
 この記事では、Service Fabric のランタイムと SDK に対する最新リリースと更新プログラムの詳細を提供します。
 
 ## <a name="whats-new-in-service-fabric"></a>Service Fabric の新機能
+
+### <a name="service-fabric-71"></a>Service Fabric 7.1
+Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危機が発生しているため、お客様が直面している困難な状況を考慮して、クラスターが自動アップグレードを受け取るように設定されていても自動的にアップグレードしません。 予期しない中断を防ぎ、お客様が最適なタイミングでアップグレードを適用できるよう、あらためてお知らせするまでの間、自動アップグレードを一時停止します。
+
+7\.1 への更新は、[Azure portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) を使用するか、[Azure Resource Manager デプロイ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)によって行うことができます。
+
+自動アップグレードを有効にした Service Fabric クラスターには、Microsoft が標準的なロールアウト手順を再開した時点で、7.1 更新プログラムが自動で届き始めます。 標準ロールアウトを開始する際は、別途、[Service Fabric テクノロジ コミュニティ サイト](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で事前にお知らせいたします。
+また、6.5 から 7.1 までのメジャー リリースについて、サポート終了日の最新情報を[こちら](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions)で公開しています。 
+
+## <a name="what-is-new-in-service-fabric-71"></a>Service Fabric 7.1 の新機能
+いよいよ Service Fabric の次期リリースが発表となりました。 このリリースでは、重要な機能の追加と改良が行われています。 以下、主な機能をいくつか紹介します。
+## <a name="key-announcements"></a>重要な発表
+- [**Service Fabric アプリケーション用 Service Fabric マネージド ID**](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) を**一般提供**
+- [**Ubuntu 1804 をサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**プレビュー: VMSS エフェメラル OS ディスクをサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**: エフェメラル OS ディスクは、ローカル仮想マシン上に作成されるストレージであり、リモート Azure Storage には保存されません。 エフェメラル OS ディスクは、従来の永続 OS ディスクと比べて、次のような特徴を持っているため、すべての Service Fabric ノードの種類 (プライマリとセカンダリ) で推奨されます。
+      -  OS ディスクへの読み取り/書き込み待機時間が短縮される
+      -  ノード管理操作をすばやくリセットまたは再イメージ化できる
+      -  全体的なコストが削減される (ディスクは無料であり、追加のストレージ コストは発生しません)
+- [**Service Fabric アプリケーションのサービス エンドポイント証明書をサブジェクトの共通名**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)で宣言可能。
+- [**コンテナー化されたサービスの正常性プローブをサポート**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage): コンテナー化されたアプリケーションに対する Liveness Probe メカニズムがサポートされます。 Liveness Probe は、コンテナー化されたアプリケーションの活動性を通知するのに役立ちます。また、アプリケーションが適切なタイミングで応答しない場合は、再起動されます。 
+- [コンテナー](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview)と[ゲスト実行可能](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction)アプリケーションの[**初期化子コード パッケージをサポート**](https://docs.microsoft.com/azure/service-fabric/initializer-codepackages)。 指定した順序でコード パッケージ (コンテナーなど) を実行して、サービス パッケージの初期化を実行できるようになります。
+- **FabricObserver と ClusterObserver** は、SF クラスターのさまざまな側面に関連した Service Fabric テレメトリをキャプチャするステートレス アプリケーションです。 そのどちらのアプリケーションも運用環境の Windows クラスターへのデプロイに対応しており、ApplicationInsights、EventSource、LogAnalytics の実装済みのサポートを利用してさまざまなテレメトリをキャプチャできます。
+    - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer) - すべてのノード上で実行され、正常性イベントを生成します。ユーザーによって構成されたリソース使用量のしきい値に達すると、テレメトリが出力されます。 このリリースでは、監視、データ管理、正常性イベントの詳細、構造化テレメトリ全体にわたり、何点か機能強化が行われています。
+     - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) - 1 つのノード上で動作し、クラスター レベルの正常性テレメトリをキャプチャします。 このリリースの ClusterObserver は、ノードの状態も監視し、ユーザーが指定した所定の時間、ダウン、無効化中、無効のいずれかの状態が続くと、テレメトリを出力します。
+
+### <a name="improve-application-life-cycle-experience"></a>アプリケーション ライフ サイクル エクスペリエンスの強化
+
+- **[プレビュー: 要求ドレイン](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-planned-downtime-of-stateless-services)** : サービスの計画メンテナンス中 (サービスのアップグレード、ノードの非アクティブ化など) は、サービスで正しく接続をドレインできるのが理想です。 この機能では、インスタンス終了の延期時間がサービスの構成に追加されます。 計画された操作が行われている間、SF はそのサービスのアドレスを検出から除外し、指定された時間待機した後で、サービスをシャットダウンします。
+- **[サブクラスターの自動検出と負荷分散](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )** : サブクラスター化は、配置の制約が異なるサービスに共通の[負荷メトリック](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics)がある場合に発生します。 それぞれのノード セットの負荷が大幅に異なる場合、たとえそれが配置の制約上、最善のバランスであったとしても、Service Fabric Cluster Resource Manager は、クラスターに不均衡が生じていると見なします。 その結果、クラスターの再調整が試みられ、不要なサービスの移動を招く可能性があります ("不均衡" を本質的に改善することは不可能であるため)。 このリリース以降では、Cluster Resource Manager がこうした構成の自動検出を試み、移動によって不均衡を解消できるか、または本質的な改善が見込めないため、そのまま放置すべきかを認識します。  
+- [**セカンダリ レプリカ用の移動コストを新たに導入**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost): 新しい移動コスト値 VeryHigh を導入しました。一部のシナリオで、セカンダリ レプリカに別個の移動コストを使用すべきかどうかを定義する際の柔軟性が増します。
+- コンテナー化されたアプリケーションに対する [**Liveness Probe**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage ) メカニズムに対応。 Liveness Probe は、コンテナー化されたアプリケーションの活動性を通知するのに役立ちます。また、アプリケーションが適切なタイミングで応答しない場合は、再起動されます。
+- [**完了まで実行するか、サービスに対して 1 回実行**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
+
+### <a name="image-store-improvements"></a>Image Store の改良
+ - Service Fabric 7.1 は、**既定でカスタム トランスポートを使用してノード間のファイル転送をセキュリティで保護**します。 SMB ファイル共有への依存は、バージョン 7.1 からは取り除かれています。 既定の動作をオプトアウトすることを希望するお客様のために、また、アップグレードまたは以前のバージョンへのダウングレードに対応するために、Image Store サービスのレプリカを格納するノードには、セキュリティで保護された SMB ファイル共有が引き続き存在します。
+       
+ ### <a name="reliable-collections-improvements"></a>リライアブル コレクションの改良
+
+- [**ステートフル サービス向けに、リライアブル コレクションを使用したインメモリのみのストアをサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): 揮発性のリライアブル コレクションを使用すると、大規模な停電に備えてデータをディスクに保存して永続化することができます。揮発性のリライアブル コレクションは、レプリケートされたキャッシュなど、低頻度であればデータの損失が許容されるようなワークロードに使用できます。[揮発性のリライアブル コレクションの制限事項と制約事項](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)に基づき、まれに発生するクォーラム損失を処理するサービスで、永続化を必要としないワークロードにお勧めします。
+- [**プレビュー: Service Fabric バックアップ エクスプローラー**](https://github.com/microsoft/service-fabric-backup-explorer): Service Fabric のステートフル アプリケーションで使用するリライアブル コレクションのバックアップを管理しやすくするために、Service Fabric バックアップ エクスプローラーには次の機能が備わっています。
+    - リライアブル コレクションの内容を監査、確認する
+    - 現在の状態を一貫したビューに反映する
+    - リライアブル コレクションの最新のスナップショットのバックアップを作成する
+    - データの破損を修復する
+                 
+### <a name="service-fabric-71-releases"></a>Service Fabric 7.1 リリース
+| リリース日 | Release | 詳細情報 |
+|---|---|---|
+| 2020 年 4 月 20 日 | [Azure Service Fabric 7.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [リリース ノート](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
+
 
 ### <a name="service-fabric-70"></a>Service Fabric 7.0
 
@@ -55,9 +105,10 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
 
 | リリース日 | Release | 詳細情報 |
 |---|---|---|
-| 2019 年 11 月 18 日 | [Azure Service Fabric 7.0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
-| 2020 年 1 月 30 日 | [Azure Service Fabric 7.0 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
-| 2020 年 2 月 6 日 | [Azure Service Fabric 7.0 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
+| 2019 年 11 月 18 日 | [Azure Service Fabric 7.0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+| 2020 年 1 月 30 日 | [Azure Service Fabric 7.0 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
+| 2020 年 2 月 6 日 | [Azure Service Fabric 7.0 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
+| 2020 年 3 月 2 日 | [Azure Service Fabric 7.0 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-fourth-refresh-release/ba-p/1205414)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU4-releasenotes.md)
 
 ### <a name="service-fabric-65"></a>Service Fabric 6.5
 
@@ -92,11 +143,11 @@ Service Fabric 6.5 の新機能は以下のとおりです。
 
 | リリース日 | Release | 詳細情報 |
 |---|---|---|
-| 2019 年 6 月 11 日 | [Azure Service Fabric 6.5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
-| 2019 年 7 月 2 日 | [Azure Service Fabric 6.5 更新リリース](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
-| 2019 年 7 月 29 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
-| 2019 年 8 月 23 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
-| 2019 年 10 月 14 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md)  |
+| 2019 年 6 月 11 日 | [Azure Service Fabric 6.5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
+| 2019 年 7 月 2 日 | [Azure Service Fabric 6.5 更新リリース](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
+| 2019 年 7 月 29 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
+| 2019 年 8 月 23 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
+| 2019 年 10 月 14 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
 
 ## <a name="previous-versions"></a>以前のバージョン

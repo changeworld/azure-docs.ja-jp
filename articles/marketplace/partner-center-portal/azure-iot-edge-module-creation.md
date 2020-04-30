@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6b56b748ef31bcfd33893e55d3ea5f8d9851a3ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674946"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869144"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
@@ -37,7 +37,7 @@ IoT Edge モジュール オファーを作成する前に、パートナー セ
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
-**オファー ID** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
+**[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
 - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
@@ -57,7 +57,7 @@ IoT Edge モジュール オファーを作成する前に、パートナー セ
 このページには、ユーザーの選択に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
 - オファーがドラフトの場合 - [ドラフトのオファーを削除する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- オファーが公開中の場合 - [オファーの販売を停止する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
+- オファーが発行中の場合 - [オファーの販売を停止する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
 - オファーがプレビューの場合 - [公開する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
 - 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
 
@@ -84,7 +84,7 @@ IoT Edge モジュール オファーを作成する前に、パートナー セ
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [潜在顧客管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
@@ -158,7 +158,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 - オファーによってもたらされる価値と主なメリット
 - カテゴリまたは業界のアソシエーション、あるいはその両方
-- アプリ内購入の営業案件
+- アプリ内購入の機会
 - 必要な開示
 
 IoT Edge モジュールのオファーには、説明の一番下に最小ハードウェア要件の段落が含まれている必要があります。 次に例を示します。
@@ -223,6 +223,9 @@ IoT Edge モジュールのオファーには、説明の一番下に最小ハ�
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
 オファーで使用するロゴと画像を提供します。 画像はすべて .png 形式である必要があります。 ぼやけた画像は拒否されます。
+
+>[!Note]
+>ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
@@ -322,9 +325,9 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 プランは、Azure IoT Hub を利用し、少なくとも 1 つのクラウドで利用できる必要があります。
 
-マーケットプレースを利用するすべてのグローバル Azure リージョンで顧客がプランを利用できるよう、 **[Azure Global]** オプションを選択します。 詳細については、「[利用可能な地域と通貨サポート](https://aka.ms/AzureGovCurrencies)」を参照してください。
+マーケットプレースを利用するすべてのグローバル Azure リージョンで顧客がプランを利用できるよう、 **[Azure Global]** オプションを選択します。 詳細については、「[利用可能な地域と通貨サポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」を参照してください。
 
-[[Azure Government クラウド]](https://aka.ms/WhatIsAzureGovernment) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカの連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](https://aka.ms/azuregovpublish)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを計画し、テストするには、[Microsoft Azure 政府機関向け試用版](https://aka.ms/AzureGovernmentTrial)に試用版アカウントを申請します。
+[[Azure Government クラウド]](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカの連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを計画し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
 
 > [!NOTE]
 > プランが公開され、特定のクラウドで利用できるようになったら、そのクラウドは削除できません。
@@ -378,11 +381,11 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-**IoT Edge モジュール** プランの種類は、IoT Edge デバイスで実行されているコンテナーの特定の種類です。 **[技術的な構成]** タブでは、[Azure Container Registry](https://aka.ms/ContainerRegistry) 内のコンテナー イメージ リポジトリの参照情報と、顧客にモジュールを簡単に使用してもらうための構成設定を指定できます。
+**IoT Edge モジュール** プランの種類は、IoT Edge デバイスで実行されているコンテナーの特定の種類です。 **[技術的な構成]** タブでは、[Azure Container Registry](https://azure.microsoft.com/services/container-registry/) 内のコンテナー イメージ リポジトリの参照情報と、顧客にモジュールを簡単に使用してもらうための構成設定を指定できます。
 
 オファーの公開後、特定のパブリック コンテナー レジストリで IoT Edge コンテナー イメージが Azure Marketplace にコピーされます。 Azure ユーザーがモジュールの使用を要求すると、プライベート コンテナー レジストリではなく、Azure Marketplace パブリック コンテナー レジストリからサービスが提供されます。
 
-複数のプラットフォームを対象にしたり、タグを利用し、複数のバージョンのモジュール コンテナー イメージを提供したりできます。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](https://aka.ms/AzureIoTTechAsset)」を参照してください。
+複数のプラットフォームを対象にしたり、タグを利用し、複数のバージョンのモジュール コンテナー イメージを提供したりできます。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)」を参照してください。
 
 ### <a name="image-repository-details"></a>イメージ リポジトリの詳細
 
@@ -392,25 +395,25 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 **[Azure サブスクリプション ID]** :リソースの使用状況が報告され、コンテナー イメージが含まれる Azure Container Registry に対してサービスが課金されるサブスクリプション ID を入力します。 この ID は Azure portal の[サブスクリプション ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にあります。
 
-**[Azure リソース グループ名]** :Azure Container Registry とコンテナー イメージが含まれる[リソース グループ](https://aka.ms/ResourceManagerAzurePortal)名を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできます。 この名前は Azure portal の[リソース グループ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
+**[Azure リソース グループ名]** :Azure Container Registry とコンテナー イメージが含まれる[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)名を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできます。 この名前は Azure portal の[リソース グループ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
 
-**[Azure コンテナー レジストリ名]** :コンテナー イメージが含まれる [Azure Container Registry](https://aka.ms/DockerContainerRegistriesAzure) の名前を指定します。 このコンテナー レジストリは、前に指定した Azure リソース グループに存在する必要があります。 完全なログイン サーバー名ではなく、レジストリ名のみを指定します。 名前からは必ず **azurecr.io** を省略します。 レジストリ名は、Azure portal の[コンテナー レジストリ ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)にあります。
+**[Azure コンテナー レジストリ名]** :コンテナー イメージが含まれる [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) の名前を指定します。 このコンテナー レジストリは、前に指定した Azure リソース グループに存在する必要があります。 完全なログイン サーバー名ではなく、レジストリ名のみを指定します。 名前からは必ず **azurecr.io** を省略します。 レジストリ名は、Azure portal の[コンテナー レジストリ ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)にあります。
 
-**[Azure Container Registry の管理者ユーザー名]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている[管理者ユーザー名](https://aka.ms/AdminAccountContainerRegistry)を指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 任意で、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
+**[Azure Container Registry の管理者ユーザー名]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている[管理者ユーザー名](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)を指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 任意で、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
 
-**[Azure Container Registry のパスワード]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 **[コンテナー レジストリ]** 、 **[アクセス キー]** の順に移動するか、Azure CLI で [show コマンド](https://aka.ms/azacrcredentialshow)を使用することで、Azure portal からパスワードを取得できます。
+**[Azure Container Registry のパスワード]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 **[コンテナー レジストリ]** 、 **[アクセス キー]** の順に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Azure portal のアクセス キー画面の画像。":::
 
-**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://aka.ms/ContainerRegistry) の**リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](https://aka.ms/ContainerRegistryRepositoriesAzure)」を参照してください。 名前は設定後に変更できません。 アカウント内のオファー別に一意の名前を使用します。
+**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) の**リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)」を参照してください。 名前は設定後に変更できません。 アカウント内のオファー別に一意の名前を使用します。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>新しいバージョンのオファーのイメージ タグ
 
 更新プログラムを公開したとき、顧客は Azure Marketplace から更新プログラムを自動的に取得できなければなりません。 更新しない場合、特定のバージョンのイメージを維持できなければなりません。 これはイメージを更新するたびに新しいイメージ タグを追加することで行います。
 
-**イメージ タグ**。 サポートされているすべてのプラットフォームで、最新版のイメージを指す**最新**のタグをこのフィールドに含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://aka.ms/GitHubmanifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。 マニフェスト タグ (最新のタグを除く) はすべて X.Y- か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、最新のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](https://aka.ms/PrepareIoTEdgeModTechAssets)」を参照してください。
+**イメージ タグ**。 サポートされているすべてのプラットフォームで、最新版のイメージを指す**最新**のタグをこのフィールドに含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://github.com/estesp/manifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。 マニフェスト タグ (最新のタグを除く) はすべて X.Y- か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、最新のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)」を参照してください。
 
 ### <a name="default-deployment-settings-optional"></a>既定の展開設定 (省略可能)
 
@@ -418,7 +421,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 **既定のルート**。 IoT Edge ハブは、モジュール、IoT ハブ、デバイス間の通信を管理します。 モジュールと IoT Hub の間でデータの入力と出力のルートを設定することにより、メッセージの処理や追加のコードの記述を行うための追加のサービスを必要とせず、自由な場所にメッセージを送信できます。 ルートは名前と値のペアを使用して作成されます。 最大 5 つの既定ルート名を定義できます。それぞれ最大 512 文字を使用できます。
 
-ルート値には正しい[ルート構文](https://aka.ms/DeclareRoutesAzureIoT)を使用してください (通常、FROM/message/* INTO $upstream として定義されています)。 つまり、モジュールにより送信されるメッセージはすべて、IoT Hub に移動します。 モジュールを参照するには、既定のモジュール名を使用します。モジュール名は、スペースと特殊文字を除いた**オファー名**です。 未知の他のモジュールを参照するには、お客様がこの情報を更新する必要があることがわかるように <FROM_MODULE_NAME> 規約を使用します。 IoT Edge ルートの詳細については、「[ルートの宣言](https://aka.ms/DeclareRoutesAzureIoT)」を参照してください。
+ルート値には正しい[ルート構文](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)を使用してください (通常、FROM/message/* INTO $upstream として定義されています)。 つまり、モジュールにより送信されるメッセージはすべて、IoT Hub に移動します。 モジュールを参照するには、既定のモジュール名を使用します。モジュール名は、スペースと特殊文字を除いた**オファー名**です。 未知の他のモジュールを参照するには、お客様がこの情報を更新する必要があることがわかるように <FROM_MODULE_NAME> 規約を使用します。 IoT Edge ルートの詳細については、「[ルートの宣言](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)」を参照してください。
 
 たとえば、モジュール ContosoModule が ContosoInput の入力をリッスンし、ContosoOutput の出力データをリッスンする場合、次の 2 つの既定のルートを定義するのが適切です。
 
@@ -427,7 +430,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 - 名前 #2:FromContosoModuleToCloud
 - 値 #2:FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**既定のモジュール ツインの必要なプロパティ**。 モジュール ツインは IoT Hub の JSON ドキュメントであり、必要なプロパティなど、モジュール インスタンスの状態情報が格納されます。 モジュールの構成や状態を同期するために、必要なプロパティを報告されるプロパティと共に使用します。 ソリューション バックエンドにより必要なプロパティを設定でき、モジュールによりそれらを読み取れます。 モジュールでは、必要なプロパティに対する変更を知らせる通知を受け取ることもできます。 必要なプロパティは最大 5 つの名前と値のペアで作成され、各既定値は 512 文字未満にする必要があります。 最大 5 つの名前と値のツインの目的のプロパティを定義できます。 ツインの目的のプロパティの値は、有効な JSON であり、エスケープせず、配列を含まず、最大ネスト階層は 4 レベルでなければなりません。 既定値に必要なパラメーターでは意味をなさないシナリオでは (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。 ツインの必要なプロパティに関する詳細については、「[必要なプロパティの定義または更新](https://aka.ms/DefineUpdateProperties)」をご覧ください。
+**既定のモジュール ツインの必要なプロパティ**。 モジュール ツインは IoT Hub の JSON ドキュメントであり、必要なプロパティなど、モジュール インスタンスの状態情報が格納されます。 モジュールの構成や状態を同期するために、必要なプロパティを報告されるプロパティと共に使用します。 ソリューション バックエンドにより必要なプロパティを設定でき、モジュールによりそれらを読み取れます。 モジュールでは、必要なプロパティに対する変更を知らせる通知を受け取ることもできます。 必要なプロパティは最大 5 つの名前と値のペアで作成され、各既定値は 512 文字未満にする必要があります。 最大 5 つの名前と値のツインの目的のプロパティを定義できます。 ツインの目的のプロパティの値は、有効な JSON であり、エスケープせず、配列を含まず、最大ネスト階層は 4 レベルでなければなりません。 既定値に必要なパラメーターでは意味をなさないシナリオでは (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。 ツインの必要なプロパティに関する詳細については、「[必要なプロパティの定義または更新](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)」をご覧ください。
 
 たとえば、モジュールがツインの目的のプロパティによって動的に構成可能なリフレッシュ レートをサポートする場合、以下の既定ツインの目的のプロパティを定義するのが適切です。
 
@@ -441,7 +444,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 - 名前 #1:ACCEPT_EULA
 - 値 #1:Y
 
-**既定のコンテナー作成オプション**。 コンテナー作成オプションでは、IoT Edge モジュールの Docker コンテナーの作成が指示されます。 IoT Edge では、Docker エンジン API のコンテナー作成オプションがサポートされています。 すべてのオプションは「[List containers](https://aka.ms/ContainerList)」(コンテナーの一覧) をご覧ください。 作成オプション フィールドは有効に JSON、エスケープなし、512 文字未満にする必要があります。
+**既定のコンテナー作成オプション**。 コンテナー作成オプションでは、IoT Edge モジュールの Docker コンテナーの作成が指示されます。 IoT Edge では、Docker エンジン API のコンテナー作成オプションがサポートされています。 すべてのオプションは「[List containers](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)」(コンテナーの一覧) をご覧ください。 作成オプション フィールドは有効に JSON、エスケープなし、512 文字未満にする必要があります。
 
 たとえば、モジュールでポートをバインドする必要がある場合、次の作成オプションを定義します。
 
@@ -449,7 +452,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 ## <a name="review-and-publish"></a>レビューと公開
 
-オファーの必須セクションをすべて完了したら、レビューと公開のためにそれを送信することができます。
+オファーの必須セクションをすべて完了したら、レビューと発行のためにそれを送信することができます。
 
 ポータルの右上隅で、 **[レビューと公開]** を選択します。
 
@@ -457,8 +460,8 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 - オファーの各セクションの完了状態を確認する。 オファーの全セクションに完了の印が付くまで公開できません。
     - **[未開始]** - セクションは着手されておらず、完了する必要があります。
-    - **[未完了]** - 修正が必要なエラーがセクションにあり、追加の情報を入力する必要があります。 ガイダンスについては、このドキュメントの前のセクションを参照してください。
-    - **[完了]** - セクションには必要なすべてのデータがあり、エラーはありません。 オファーを送信するには、オファーのすべてのセクションが完了している必要があります。
+    - **未完了** - 修正が必要なエラーがセクションにあり、追加情報を入力する必要があります。 ガイダンスについては、このドキュメントの前のセクションを参照してください。
+    - **完了** - セクションには必要なすべてのデータがあり、エラーはありません。 オファーを送信するには、オファーのすべてのセクションが完了している必要があります。
 - オファーが確実に正しくテストされるよう、認定チームにはテストの指示を提供します。 また、オファーの理解に役立つ補足事項を提供します。
 
 オファーを送信して公開するには、 **[公開]** を選択します。

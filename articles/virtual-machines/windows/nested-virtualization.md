@@ -1,22 +1,18 @@
 ---
 title: Azure Virtual Machines で入れ子になった仮想化を有効にする方法
 description: Azure Virtual Machines で入れ子になった仮想化を有効にする方法
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c66f88cc49028fae50d89a9a7c24233d5a926b4
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437307"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865713"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -42,7 +38,7 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 
 1. 仮想マシンのプロパティで、 **[接続]** ボタンをクリックします。 リモート デスクトップ プロトコル ファイル (.rdp ファイル) が作成されてダウンロードされます。
 
-2. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、 **[接続]** をクリックします。 Mac では、この[リモート デスクトップ クライアント](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
+2. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、 **[接続]** をクリックします。 Mac では、この[リモート デスクトップ クライアント](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
 
 3. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、 **[OK]** をクリックします。
 
@@ -52,7 +48,7 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 この設定は手動で構成するか、用意されている PowerShell スクリプトを使って自動で構成できます。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>オプション 1: PowerShell スクリプトを使用して、入れ子になった仮想化を構成する
-Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください https://aka.ms/AzureNVblog
+Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください  https://aka.ms/AzureNVblog
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>オプション 2:入れ子になった仮想化を手動で構成する
 

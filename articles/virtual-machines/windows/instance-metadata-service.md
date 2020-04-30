@@ -1,25 +1,21 @@
 ---
 title: Azure Instance Metadata Service
-description: Windows VM のコンピューティング、ネットワーク、今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。
-services: virtual-machines-windows
-documentationcenter: ''
+description: VM のコンピューティング、ネットワーク、および今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。
 author: KumariSupriya
 manager: paulmey
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.subservice: monitoring
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cb9453e1a25f4042c45d4e89229b555c996d4c8b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520969"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870084"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 

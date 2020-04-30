@@ -5,12 +5,12 @@ author: jumeder
 ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
-ms.openlocfilehash: 675f8d988e64ed7b556f154f681ccb53ed1000c6
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393929"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868151"
 ---
 # <a name="debug-rendering"></a>デバッグ レンダリング
 
@@ -56,7 +56,7 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
 * テキスト オーバーレイを有効にした場合、パフォーマンスのオーバーヘッドはほとんど発生しません。
-* さらにオーバーレイを有効にすると、かなりのパフォーマンスのオーバーヘッドが発生します。ただし、これはシーンによって異なる場合があります。 複雑なシーンでは、このモードによってフレームレートが 60 Hz のターゲットを下回ることがあります。
+* ワイヤーフレーム モードを有効にすると、かなりのパフォーマンスのオーバーヘッドが発生します。ただし、これはシーンによって異なる場合があります。 複雑なシーンでは、このモードによってフレーム レートが 60 Hz のターゲットを下回ることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

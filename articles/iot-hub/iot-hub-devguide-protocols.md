@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237363"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729124"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 
@@ -39,7 +42,7 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 
 * **C2D のパターン**。 HTTPS には、サーバー プッシュを実装する効率的な方法がありません。 そのため、HTTPS を使うと、デバイスは IoT Hub に対して C2D メッセージのポーリングを行います。 この方法は、デバイスと IoT Hub の両方で非効率的です。 現在の HTTPS ガイドラインでは、各デバイスによるメッセージのポーリングの間隔は 25 分以上となっています。 MQTT と AMQP では、C2D メッセージを受信する場合のサーバー プッシュがサポートされています。 IoT Hub からデバイスへのメッセージも即座にプッシュできます。 配信の待機時間が問題となる場合は、MQTT または AMQP が使用に最適なプロトコルです。 頻繁に接続されないデバイスの場合は、HTTPS でも対応できます。
 
-* **フィールド ゲートウェイ**。 MQTT と HTTPS を使う場合は、同じ TLS 接続で (それぞれがデバイス独自の資格情報を有する) 複数のデバイスに接続することはできません。 [フィールド ゲートウェイ シナリオ](iot-hub-devguide-endpoints.md#field-gateways)の場合、接続するデバイスごとにフィールド ゲートウェイと IoT Hub の間に TLS 接続が 1 つ必要となるため、次善のプロトコルになります。
+* **フィールド ゲートウェイ**。 MQTT と HTTPS でサポートされるデバイス ID (デバイス ID と資格情報) は、TLS 接続ごとに 1 つだけです。 このような理由から、IoT Hub への単一のアップストリーム接続またはそのプール全体で複数のデバイス ID を使用したメッセージの多重化を必要とする[フィールド ゲートウェイのシナリオ](iot-hub-devguide-endpoints.md#field-gateways)では、これらのプロトコルがサポートされません。 そのようなゲートウェイでは、アップストリーム トラフィックの接続ごとに複数のデバイス ID をサポートするプロトコル (AMQP など) を使用してください。
 
 * **リソースの少ないデバイス**。 MQTT および HTTPS ライブラリのフットプリントは、AMQP ライブラリの場合より小さくなります。 そのため、リソースが限られたデバイス (RAM が 1 MB 未満など) の場合、MQTT と HTTP/1 が実装可能な唯一のプロトコルとなります。
 

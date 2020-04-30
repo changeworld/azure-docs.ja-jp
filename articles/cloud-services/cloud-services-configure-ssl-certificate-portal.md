@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811687"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024848"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Azure でアプリケーション用に TLS を構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "80811687"
 
 証明書は、Azure における TLS/SSL 証明書の次の要件を満たす必要があります。
 
-* 証明書は秘密キーを含む必要があります。
+* 証明書は公開キーを含む必要があります。
 * 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
 * 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 証明機関 (CA) から cloudapp.net ドメインの TLS/SSL 証明書を取得することはできません。 サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。 たとえば、カスタム ドメイン名が **contoso.com** の場合は、* **.contoso.com** または **www\.contoso.com** の証明書を CA に要求します。
 * 証明書では、2048 ビット以上の暗号化を使用する必要があります。

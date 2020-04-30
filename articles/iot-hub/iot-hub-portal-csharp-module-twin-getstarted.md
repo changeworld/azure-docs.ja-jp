@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954621"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759786"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>ポータルと .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -74,7 +75,7 @@ IoT Hub 内にモジュール ID が正常に作成されたら、 シミュレ�
 
 1. Visual Studio で、 **[新しいプロジェクトの作成]** を選択します。 **[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** で、 *[プロジェクト名]* として「**UpdateModuleTwinReportedProperties**」と入力します。 **[作成]** をクリックして続行します。
+1. **[新しいプロジェクトの構成]** で、 **[プロジェクト名]** として「*UpdateModuleTwinReportedProperties*」と入力します。 **[作成]** をクリックして続行します。
 
     ![Visual Studio プロジェクトを構成する](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
@@ -94,7 +95,7 @@ IoT Hub 内にモジュール ID が正常に作成されたら、 シミュレ�
 
 コンソール アプリ用のモジュールの接続文字列が必要です。 次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. お使いの IoT ハブに移動し、 **[IoT デバイス]** を選択します。 **myFirstDevice** を開くと、**myFirstModule** が正常に作成されていることを確認できます。
 
@@ -106,7 +107,7 @@ IoT Hub 内にモジュール ID が正常に作成されたら、 シミュレ�
 
 アプリを作成するには、次の手順を実行します。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
   ```csharp
   using Microsoft.Azure.Devices.Client;

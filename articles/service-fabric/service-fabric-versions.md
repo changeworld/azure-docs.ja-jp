@@ -2,13 +2,13 @@
 title: Azure Service Fabric でサポートされているクラスターのバージョン
 description: Service Fabric チーム ブログからの最新リリースへのリンクなど、Azure Service Fabric のクラスターのバージョンについて説明します。
 ms.topic: troubleshooting
-ms.date: 03/02/2020
-ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/20/2020
+ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385046"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732871"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
@@ -37,9 +37,10 @@ ms.locfileid: "80385046"
 | 6.3.* | 6.1.480.* |バージョン 3.2 以前 |2019 年 3 月 31 日  |
 | 6.4.* | 6.2.301.* |バージョン 3.3 以前 |2019 年 9 月 15 日 |
 | 6.5.* | 6.4.617.* |バージョン 3.4 以前 |2020 年 8 月 1 日 |
-| 7.0.466.* | 6.4.664.* |バージョン 4.0 以前|最新バージョンのため、終了日なし |
-| 7.0.466.* | 6.5.* |バージョン 4.0 以前|最新バージョンのため、終了日なし |
-| 7.0.470.* | 7.0.466.* |バージョン 4.0 以前 |最新バージョンのため、終了日なし |
+| 7.0.466.* | 6.4.664.* |バージョン 4.0 以前|2020 年 8 月 1 日  |
+| 7.0.466.* | 6.5.* |バージョン 4.0 以前|2020 年 8 月 1 日 |
+| 7.0.470.* | 7.0.466.* |バージョン 4.0 以前 |2020 年 8 月 1 日  |
+| 7.1.409.* | 7.0.466.* |バージョン 4.0 以前 |最新バージョンのため、終了日なし |
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -106,3 +107,4 @@ ms.locfileid: "80385046"
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

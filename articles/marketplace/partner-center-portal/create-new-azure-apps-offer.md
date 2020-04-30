@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 516ebce176f53a0495ea493f5327658162e7ea9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277241"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867279"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -58,7 +58,7 @@ Azure アプリケーション プランには、マネージド アプリケー
 
     * [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates)
-    * [アプリケーション定義の発行](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [アプリケーション定義の発行](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [サービス カタログ アプリのデプロイ](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * チュートリアル:
@@ -103,7 +103,7 @@ Azure アプリケーションを管理するためのスクリプト環境と�
 
 ## <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
-Azure アプリケーション オファーを作成する前に、まず、[パートナー センター アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)し、[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いて **[概要]** タブを選択する必要があります。
+Azure アプリケーション オファーを作成するには、まず[パートナー センター アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)し、[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いて **[概要]** タブを選択しておく必要があります。
 
 >[!Note]
 >オファーが発行されると、パートナー センターで行われたオファーへの編集は、再発行後はシステム内およびネットショップでのみ更新されます。  変更を行った後に、発行のために必ずオファーを送信してください。
@@ -114,7 +114,7 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
-* **プラン ID**: 自分のアカウントでの各オファーの一意識別子。 この ID は、マーケットプレース オファーの URL アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。 <br> <br> オファー ID は、小文字の英数字である必要があります (ハイフンとアンダースコアは使用できますが、空白は使用できません)。 文字数は 50 文字に制限されており、[作成] を選択した後は変更できません。 <br> <br> たとえば、ここに「`test-offer-1`」と入力すると、オファーの URL は `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。 
+* **プラン ID**: 自分のアカウントでの各オファーの一意識別子。 この ID は、マーケットプレース オファーの URL アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。 <br> <br> オファー ID は、小文字の英数字である必要があります (ハイフンとアンダースコアは使用できますが、空白は使用できません)。 これは 50 文字に制限されており、[作成] を選択した後は変更できません。 <br> <br> たとえば、ここに「`test-offer-1`」と入力すると、オファーの URL は `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。 
 
 * **オファーの別名**:パートナー センター内でオファーを参照するために使用される名前。 この名前はマーケットプレースでは使用されず、顧客に表示されるオファー名やその他の値とは異なります。 **[作成]** の選択後にこの値を変更することはできません。
 
@@ -221,6 +221,9 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 
 このセクションでは、顧客にオファーを表示するときに使用されるロゴや画像を指定できます。 画像はすべて .png 形式である必要があります。
 
+>[!Note]
+>ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
+
 #### <a name="store-logos"></a>ストア ロゴ
 
 オファーのロゴを次の 3 つのサイズで提供します: **S (48 x 48)** 、**M (90 x 90)** 、**L (216 x 216)** 。
@@ -293,7 +296,7 @@ Azure アプリケーション オファーを作成する前に、まず、[パ
 
 マーケットプレースが統合されているすべてのパブリック Azure リージョンの顧客にソリューションをデプロイできるようにするには、 **[パブリック Azure]** オプションを選択します。  詳しくは、[利用可能な地域](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)に関する記事をご覧ください。
 
-[Azure Government クラウド](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)にソリューションをデプロイできるようにするには、 **[Azure Government クラウド]** オプションを選択します。Azure Government クラウドは政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。  発行元は、このクラウド コミュニティにサービスを提供するためのコンプライアンス管理、セキュリティ対策、ベスト プラクティスについて責任を持ちます。  Azure Government では、物理的に切り離されたデータ センターとネットワーク (米国のみに存在) が使用されます。  特定のエンドポイントが異なる可能性があるため、[Azure Government](https://aka.ms/azuregovpublish) に発行する前に、環境でソリューションをテストおよび検証することをお勧めします。 ソリューションをステージングしてテストするには、こちらの[リンク](https://azure.microsoft.com/global-infrastructure/government/request/)から試用版のアカウントを要求してください。
+[Azure Government クラウド](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)にソリューションをデプロイできるようにするには、 **[Azure Government クラウド]** オプションを選択します。Azure Government クラウドは政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。  発行元は、このクラウド コミュニティにサービスを提供するためのコンプライアンス管理、セキュリティ対策、ベスト プラクティスについて責任を持ちます。  Azure Government では、物理的に切り離されたデータ センターとネットワーク (米国のみに存在) が使用されます。  特定のエンドポイントが異なる可能性があるため、[Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、環境でソリューションをテストおよび検証することをお勧めします。 ソリューションをステージングしてテストするには、こちらの[リンク](https://azure.microsoft.com/global-infrastructure/government/request/)から試用版のアカウントを要求してください。
 
 >[!Note]
 >特定のクラウドで利用可能としてプランを発行した後で、そのクラウドを削除することはできません。
@@ -330,7 +333,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 各プランがすべてのユーザーに表示されるようにするのか、それとも自分が選択した特定の対象ユーザーだけに表示されるようにするのかを構成できます。 Azure サブスクリプション ID を使用して、この限定対象ユーザーにメンバーシップを割り当てることができます。
 
-**[Privacy / This is a private plan]\(プライバシー/これはプライベート プランです\)** (省略可能なチェック ボックス) - プランをプライベートにして、自分が選択した限定対象ユーザーにのみ表示されるようにするには、このチェック ボックスをオンにします。 プライベート プランとして公開すると、対象ユーザーを更新したり、そのプランをすべてのユーザーが利用できる状態にしたりできます。 プランは、すべてのユーザーに表示されるものとして公開すると、すべてのユーザーに表示したままにしなければなりません (プランをもう一度プライベート プランとして構成することはできません)。
+**[Privacy / This is a private plan]\(プライバシー/これはプライベート プランです\)** (省略可能なチェック ボックス) - プランをプライベートにして、自分が選択した限定対象ユーザーにのみ表示されるようにするには、このチェック ボックスをオンにします。 プライベート プランとして公開すると、対象ユーザーを更新したり、そのプランをすべてのユーザーが利用できる状態にしたりできます。 プランは、すべてのユーザーに表示されるものとして公開すると、すべてのユーザーに表示したままにしなければなりません  (プランをもう一度プライベート プランとして構成することはできません)。
 
 **[制限付きの対象ユーザー (Azure サブスクリプション ID)]** - このプライベート プランにアクセスできる対象ユーザーを割り当てます。 アクセス権は Azure サブスクリプション ID を使用して割り当てられます。必要に応じて、割り当て先の各 Azure サブスクリプション ID の説明を含めることができます。 最大 10 個のサブスクリプション ID を追加できます (.csv スプレッドシート ファイルをインポートする場合は、20,000 個の顧客サブスクリプション ID)。  Azure サブスクリプション ID は GUID として表されます。文字は小文字にする必要があります。
 
@@ -355,7 +358,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 このプランの月ごとの価格を指定します。  このソリューションによってデプロイされるリソースによって発生する Azure インフラストラクチャまたは従量課金制ソフトウェアのコストに、この価格が追加されます。
 
-現地通貨 (USD = 米国ドル) で設定された価格は、セットアップ中に使用可能な現時点の為替レートを使用して、選択されたすべての市場の現地通貨に変換されます。 これらの価格は公開前に検証してください。そのためには、価格スプレッドシートをエクスポートして各市場の価格を確認します。 個々の市場でカスタム価格を設定したい場合は、価格スプレッドシートを修正してインポートします。 
+USD (USD = 米国ドル) で設定された価格は、保存時の最新の為替レートを使用して、選択されたすべての市場の現地通貨に変換されます。 これらの価格は公開前に検証してください。そのためには、価格スプレッドシートをエクスポートして各市場の価格を確認します。 個々の市場でカスタム価格を設定したい場合は、価格スプレッドシートを修正してインポートします。 
 
 >[!Note]
 >価格データのエクスポートを有効にするには、先に価格の変更を保存する必要があります。
@@ -369,7 +372,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 各プランがすべてのユーザーに表示されるようにするのか、それとも自分が選択した特定の対象ユーザーだけに表示されるようにするのかを構成できます。 Azure サブスクリプション ID を使用して、この限定対象ユーザーにメンバーシップを割り当てることができます。
 
-**[Privacy / This is a private plan]\(プライバシー/これはプライベート プランです\)** (省略可能なチェック ボックス) - プランをプライベートにして、自分が選択した限定対象ユーザーにのみ表示されるようにするには、このチェック ボックスをオンにします。 プライベート プランとして公開すると、対象ユーザーを更新したり、そのプランをすべてのユーザーが利用できる状態にしたりできます。 プランは、すべてのユーザーに表示されるものとして公開すると、すべてのユーザーに表示したままにしなければなりません (プランをもう一度プライベート プランとして構成することはできません)。
+**[Privacy / This is a private plan]\(プライバシー/これはプライベート プランです\)** (省略可能なチェック ボックス) - プランをプライベートにして、自分が選択した限定対象ユーザーにのみ表示されるようにするには、このチェック ボックスをオンにします。 プライベート プランとして公開すると、対象ユーザーを更新したり、そのプランをすべてのユーザーが利用できる状態にしたりできます。 プランは、すべてのユーザーに表示されるものとして公開すると、すべてのユーザーに表示したままにしなければなりません  (プランをもう一度プライベート プランとして構成することはできません)。
 
 **[制限付きの対象ユーザー (Azure サブスクリプション ID)]** - このプライベート プランにアクセスできる対象ユーザーを割り当てます。 アクセス権は Azure サブスクリプション ID を使用して割り当てられます。必要に応じて、割り当て先の各 Azure サブスクリプション ID の説明を含めることができます。 最大 10 個のサブスクリプション ID を追加できます (.csv スプレッドシート ファイルをインポートする場合は、20,000 個の顧客サブスクリプション ID)。  Azure サブスクリプション ID は GUID として表されます。文字は小文字にする必要があります。
 
@@ -397,7 +400,16 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 * [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。
 
+サポートされる最大ファイル サイズは次のとおりです。
+
+* `.zip` 圧縮アーカイブ サイズ合計で最大 1 GB
+
+* `.zip` アーカイブ内の圧縮されていなり個々のファイルについて最大 1 GB  
+
 すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) も含まれている必要があります。
+
+>[!Note]
+>ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 ### <a name="previously-published-packages"></a>発行済みのパッケージ 
 
@@ -429,7 +441,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 
 ### <a name="customize-allowed-customer-actions"></a>許可されている顧客アクションのカスタマイズ
 
-既定で使用できる "`*/read`" アクションに加えて、顧客が管理対象リソースに対して実行できるアクションを指定するには、このオプションを選択します。 
+このオプションは、既定で使用できる "`*/read`" アクションに加えて、顧客がマネージド リソースに対してどのアクションを実行できるかを指定する場合に選択します。 
 
 ここでは、顧客が実行できるようにする追加のアクションを、セミコロンで区切って列挙します。  詳しくは、「[Azure リソースの拒否割り当ての概要](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)」をご覧ください。  使用できるアクションについては、「[Azure Resource Manager のリソース プロバイダー操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)」を参照してください。 たとえば、仮想マシンの再起動をコンシューマーに許可するには、許可されているアクションに `Microsoft.Compute/virtualMachines/restart/action` を追加します。
 
@@ -444,7 +456,7 @@ Azure Government サービスでは、FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 
 プリンシパルごとに、一覧から Azure AD 組み込みロールのいずれかを選択します (所有者または共同作成者)。 選択したロールによって、顧客のサブスクリプションのリソースに対してプリンシパルが持つアクセス許可が記述されます。 詳細については、「[Azure リソースの組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」を参照してください。  ロールベースのアクセス制御 (RBAC) について詳しくは、[Azure portal での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/overview)に関する記事をご覧ください。
 
 >[!Note]
->クラウドあたり最大 100 個の承認を追加できますが、一般に、Active Directory のユーザー グループを作成し、その ID を "プリンシパル ID" で指定する方が簡単です。  これにより、プランをデプロイした後で管理グループにより多くのユーザーを追加でき、承認を追加するためだけにプランを更新する必要がなくなります。
+>クラウドあたり最大 100 個の承認を追加できますが、一般には、Active Directory ユーザー グループを作成し、その ID を "プリンシパル ID" で指定する方が簡単です。  これにより、プランをデプロイした後で管理グループにより多くのユーザーを追加でき、承認を追加するためだけにプランを更新する必要がなくなります。
 
 ### <a name="policy-settings"></a>ポリシー設定
 
@@ -466,7 +478,7 @@ Azure アプリケーションでは、本質的に Azure Resource Manager の�
 
 ### <a name="deployment-subscription-details"></a>デプロイ サブスクリプションの詳細
 
-体験版を自動的にデプロイするには、固有の Azure サブスクリプションを別個に作成し、指定してください (Power BI の体験版では不要です)。
+体験版を自動的にデプロイするには、固有の Azure サブスクリプションを別個に作成し、指定してください  (Power BI の体験版では不要です)。
 
 - **Azure サブスクリプション ID** (Azure Resource Manager とロジック アプリでは必須): リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](https://docs.microsoft.com/azure/billing/billing-create-subscription)を検討することをお勧めします。 Azure サブスクリプション ID は、[Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
 

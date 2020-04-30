@@ -8,12 +8,13 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
-ms.openlocfilehash: dfea53e62383409411925f2fe2f18d61a6855ec1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75429380"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767019"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 
@@ -317,7 +318,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 
 この場合は、**DECLARE\_STRUCT** マクロを削除しており、単にモデリング言語の単純型を使用してこのシナリオのデータ項目を定義しています。
 
-しばらくの間は、**Time** イベントを無視します。 それを無視した場合、 **Temperature**を受信するコードは次のとおりです。
+しばらくの間は、**Time** イベントを無視します。 それを無視した場合、**Temperature**を受信するコードは次のとおりです。
 
 ```C
 time_t now;

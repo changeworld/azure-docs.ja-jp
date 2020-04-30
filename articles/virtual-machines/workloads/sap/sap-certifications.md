@@ -13,19 +13,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 43fc2e9369b9d11b1ac0205beddea01b633fb633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598376"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084823"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定と構成
 
-SAP および Microsoft は、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 Microsoft では、定期的にプラットフォームを更新し、Microsoft Azure が SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定の詳細を SAP に提出しています。 次の表に、Azure がサポートする構成と、増加する SAP 認定資格の一覧を示します。 
+SAP および Microsoft は、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 Microsoft では、定期的にプラットフォームを更新し、Microsoft Azure が SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定の詳細を SAP に提出しています。 次の表に、Azure がサポートする構成と、増加する SAP 認定資格の一覧を示します。 この一覧は概要一覧であり、公式の SAP の一覧と多少異なる場合があります。 詳細データを取得する方法については、「[Azure デプロイでサポートされている SAP ソフトウェア](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)」に説明されています
 
 ## <a name="sap-hana-certifications"></a>SAP HANA 認定
 参照:
@@ -47,7 +47,7 @@ SAP では、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com
 以下の SAP 製品に関して Microsoft Azure は認定を受けており、マイクロソフトと SAP から完全サポートを受けることができます。
 参照:
 
-- SAP TREX、SAP LiveCache、SAP Content Server を含むすべての SAP NetWeaver ベース アプリケーションに関する「[1928533 - SAP Applications on Azure: Supported Products and Azure VM types](https://launchpad.support.sap.com/#/notes/1928533)」(1928533 - Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)。 SAP HANA を除くすべてのデータベース。
+- 「[1928533 - SAP Applications on Azure:Supported Products and Azure VM types](https://launchpad.support.sap.com/#/notes/1928533)」(1928533 - Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)。これは SAP TREX、SAP LiveCache、SAP Content Server を含むすべての SAP NetWeaver ベース アプリケーションに該当します。 SAP HANA を除くすべてのデータベース。
 
 
 | SAP 製品 | ゲスト OS | RDBMS | 仮想マシンの種類 |
@@ -65,4 +65,7 @@ SAP では、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com
 | SAP BPC 10.01 MS SP08 | Windows と Linux | | すべての種類の NetWeaver 認定 VM<br /> SAP Note #2451795 |
 | SAP ビジネス オブジェクト BI プラットフォーム | Windows と Linux | | SAP Note #2145537 |
 | SAP Data Services 4.2 | | | SAP Note #2288344 |
-| SAP Hybris Commerce Platform 5.x および 6.x | Windows | SQL Server、Oracle | すべての種類の NetWeaver 認定 VM<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Commerce Platform  | Windows | SQL Server、Oracle | すべての種類の NetWeaver 認定 VM <br /> [Hybris のドキュメント](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Commerce Platform  | SLES 12 以降 | SAP HANA | すべての種類の NetWeaver 認定 VM <br /> [Hybris のドキュメント](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Commerce Platform  | RHEL 7 以降 | SAP HANA | すべての種類の NetWeaver 認定 VM <br /> [Hybris のドキュメント]https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP (Hybris) Commerce Platform 1811 以降  | Windows、SLES、または RHEL | SQL Azure DB | すべての種類の NetWeaver 認定 VM <br /> [Hybris のドキュメント](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) |

@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74014262"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081712"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル:Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -44,7 +44,7 @@ ms.locfileid: "74014262"
     - ADAL を使用してユーザー キー、アプリケーション キー、証明書からアクセス トークンを取得
     - Graph API でページ単位の結果を処理
 
-6. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。 セッションは次のような画面になります。![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。 セッションは次のような画面になります。![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. **New-SelfSignedCertificate** PowerShell コマンドレットを使用して、テスト証明書を作成します。
 
@@ -63,13 +63,13 @@ ms.locfileid: "74014262"
 
 1. [Azure portal](https://portal.azure.com) に移動し、 **[Azure Active Directory]** 、 **[アプリの登録]** の順に選択し、リストからアプリケーションを選択します。 
 
-2. **[設定]**  >  **[キー]** を選択し、 **[公開キーのアップロード]** を選択します。
+2. [アプリケーションの登録] ブレードの **[管理]** セクションで **[Certificates & secrets]\(証明書とシークレット\)** を選択し、 **[証明書のアップロード]** を選択します。
 
-3. 前の手順の証明書ファイルを選択し、 **[保存]** を選択します。 
+3. 前の手順の証明書ファイルを選択し、 **[追加]** を選択します。 
 
-4. アプリケーション ID と、アプリケーションで登録した証明書のサムプリントを書き留めます。 サムプリントを調べるには、ポータルのアプリケーション ページから **[設定]** に移動し、 **[キー]** をクリックします。 サムプリントは **[公開鍵]** 一覧の下にあります。
+4. アプリケーション ID と、アプリケーションで登録した証明書のサムプリントを書き留めます。 サムプリントを調べるには、ポータルのアプリケーション ページから **[管理]** セクションの **[Certificates & secrets]\(証明書とシークレット\)** に移動します。 サムプリントは **[証明書]** 一覧の下にあります。
 
-5. インライン マニフェスト エディターでアプリケーション マニフェストを開き、次のスキーマを使用して、*keyCredentials* プロパティを新しい証明書情報に置き換えます。 
+5. インライン マニフェスト エディターでアプリケーション マニフェストを開き、次に示すように *keyCredentials* プロパティが新しい証明書情報で更新されていることを確認します 
 
    ```
    "keyCredentials": [
@@ -81,23 +81,20 @@ ms.locfileid: "74014262"
             "value":  "$base64Value" //base64 encoding of the certificate raw data
         }
     ]
-   ```
-
-6. マニフェストを保存します。 
-  
-7. これで、この証明書を使用して MS Graph API のアクセス トークンを取得できるようになりました。 MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使い、前の手順で取得したアプリケーション ID とサムプリントを渡します。 
+   ``` 
+6. これで、この証明書を使用して MS Graph API のアクセス トークンを取得できるようになりました。 MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使い、前の手順で取得したアプリケーション ID とサムプリントを渡します。 
 
    ![Azure portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-8. Powershell スクリプトでアクセス トークンを使用して、Graph API のクエリを実行します。 MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns と directoryAudits エンドポイントを列挙します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
+7. PowerShell スクリプトでアクセス トークンを使用して、Graph API のクエリを実行します。 MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns と directoryAudits エンドポイントを列挙します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
 
-9. directoryAudits エンドポイントを照会して、監査ログを取得します。 
+8. directoryAudits エンドポイントを照会して、監査ログを取得します。 
    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-10. SignIns エンドポイントを照会して、サインイン ログを取得します。
+9. SignIns エンドポイントを照会して、サインイン ログを取得します。
     ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-11. このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
+10. このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
 
 ## <a name="next-steps"></a>次のステップ
 

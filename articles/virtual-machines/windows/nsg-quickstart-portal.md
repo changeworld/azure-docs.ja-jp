@@ -1,24 +1,18 @@
 ---
 title: Azure portal を使用した VM へのポートの開放
-description: Azure Portal で Resource Manager デプロイ モデルを使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
+description: Azure portal を使用して Windows VM へのポートを開き、エンドポイントを作成する方法について説明します
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371413"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865482"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -31,7 +25,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. VM のリソース グループを検索して選択し、 **[追加]** を選択して、 **[ネットワーク セキュリティ グループ]** を検索して選択します。
 
-2. **作成** を選択します。
+2. **［作成］** を選択します
 
     **[ネットワーク セキュリティ グループの作成]** ウィンドウが開きます。
 
