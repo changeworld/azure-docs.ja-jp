@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 3a67371ce6f951a9e446ab639ea5b59248b79565
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273020"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144136"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>仮想マシンの作成後に WinRM を構成する
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://aka.ms/CreateAzureVMoffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
 この記事では、Azure でホストされる既存の仮想マシン (VM) で HTTPS 経由の WinRM を有効にするよう構成する方法について説明します。  この構成は Windows ベースの VM にのみ適用され、次の 2 段階のプロセスが必要です。
 

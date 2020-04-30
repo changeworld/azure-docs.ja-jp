@@ -1,22 +1,14 @@
 ---
 title: Azure Batch タスク失敗イベント
 description: Batch のタスク失敗イベントのリファレンスです。 このイベントは、タスク完了イベントに加えて出力され、タスクが失敗したときの検出に使用できます。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 08/15/2019
-ms.author: labrenne
-ms.openlocfilehash: 2bc958d6dca2b3caae665e6f9b080c651ace9ea0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e973a7e0a2ab67300a0f6762c837336e12bae3b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022887"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116453"
 ---
 # <a name="task-fail-event"></a>タスク失敗イベント
 

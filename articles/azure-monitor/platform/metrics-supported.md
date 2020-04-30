@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991894"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128449"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -2407,7 +2407,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Http5xx|HTTP サーバー エラー|Count|合計|HTTP サーバー エラー|インスタンス|
 |MemoryWorkingSet|メモリ ワーキング セット|バイト|Average|メモリ ワーキング セット|インスタンス|
 |AverageMemoryWorkingSet|平均メモリ ワーキング セット|バイト|Average|平均メモリ ワーキング セット|インスタンス|
-|ResponseTime|応答時間|Seconds|合計|応答時間|インスタンス|
+|HttpResponseTime|応答時間|Seconds|合計|応答時間|インスタンス|
 |AverageResponseTime|平均応答時間 (非推奨)|Seconds|Average|平均応答時間|インスタンス|
 |AppConnections|接続|Count|Average|接続|インスタンス|
 |ハンドル|ハンドルの数|Count|Average|ハンドルの数|インスタンス|

@@ -1,21 +1,18 @@
 ---
 title: Data Factory から Python スクリプトを実行する - Azure Batch Python
 description: チュートリアル - Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する方法について説明します。
-services: batch
 author: mammask
-manager: jeconnoc
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 2995c5da4491f14471d9ed03022a144a02beab5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78201639"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117065"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: d814ebc34193f5d7c0c3828d32aa3d2af29f3679
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b012ac012c7de3c6428ecbe2d2b922a2a9aa0523
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981360"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82141769"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI アプリの [技術的情報] タブ
 
 >[!Important]
->2020 年 4 月 13 日以降、パートナー センターへの Power BI アプリ オファーの管理の移行を開始します。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Power BI アプリ作成の概要](https://aka.ms/AzureCreatePBIServiceApp)の手順に従い、移行後のオファーを管理します。
+>2020 年 4 月 13 日以降、パートナー センターへの Power BI アプリ オファーの管理の移行を開始します。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Power BI アプリ作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)の手順に従い、移行後のオファーを管理します。
 
 **[新しいオファー]** ページ上の **[技術情報]** タブを使用して、Power BI インストーラー パッケージの URL と新しいオファーを検証するために必要なその他の情報を指定します。  初期リリースでは、すべての Power BI アプリは無料で、AppSource からのダウンロードが可能です。 このため、このオファーの種類に対して Stock Keeping Unit (SKU) を定義することはできません。
 

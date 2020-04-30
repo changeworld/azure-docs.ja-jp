@@ -1,22 +1,15 @@
 ---
 title: Azure Batch のプール削除完了イベント
 description: Batch のプール削除完了イベントのリファレンスです。 このイベントは、プールの削除操作が完了したときに出力されます。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d28223c79f96f35a6ee11f98e0f09f21d7db4451
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023618"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115943"
 ---
 # <a name="pool-delete-complete-event"></a>プール削除の完了イベント
 

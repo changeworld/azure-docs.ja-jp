@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 5c59ddf046e7ffe936b097878d5d049b43ea8aec
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729025"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133143"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 
@@ -28,7 +28,7 @@ ms.locfileid: "81729025"
 
 ## <a name="automatic-device-management"></a>自動デバイス管理
 
-Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団のライフサイクル全体を管理する複雑な反復タスクの多くを自動化します。 自動デバイス管理を利用すると、プロパティに基づいて対象のデバイス セットを設定し、必要な構成を定義して、デバイスがスコープ内になったときにいつでも IoT Hub がデバイスを更新できるようにすることができます。  [自動デバイス構成](iot-hub-auto-device-config.md)と [IoT Edge の自動展開](../iot-edge/how-to-deploy-monitor.md)で構成されます。
+Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団のライフサイクル全体を管理する複雑な反復タスクの多くを自動化します。 自動デバイス管理を利用すると、プロパティに基づいて対象のデバイス セットを設定し、必要な構成を定義して、デバイスがスコープ内になったときにいつでも IoT Hub がデバイスを更新できるようにすることができます。  [自動デバイス構成](iot-hub-auto-device-config.md)と [IoT Edge の自動展開](../iot-edge/how-to-deploy-at-scale.md)で構成されます。
 
 ## <a name="automatic-device-configuration"></a>自動デバイス構成
 

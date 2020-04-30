@@ -4,12 +4,12 @@ description: Azure portal を使用して、仮想ノードを使用する Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 5f7bf75598c09c5c8c0654f7db863068f9e7be7d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392574"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128861"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerInstance
 ## <a name="known-limitations"></a>既知の制限事項
 仮想ノードの機能は、ACI の機能セットに大きく依存します。 次のシナリオは、仮想ノードではまだサポートされていません
 
-* サービス プリンシパルを使用した ACR イメージのプル。 [対処法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)は、[Kubernetes シークレット](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)を使用することです
+* サービス プリンシパルを使用した ACR イメージのプル。 [対処法](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry)は、[Kubernetes シークレット](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)を使用することです
 * [仮想ネットワークの制限事項](../container-instances/container-instances-vnet.md) (VNet ピアリング、Kubernetes ネットワーク ポリシー、およびネットワーク セキュリティ グループを使用したインターネットへの送信トラフィックなど)。
 * Init コンテナー
 * [ホストのエイリアス](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233307"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133917"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
 ビジネス ロジックで IoT Edge モジュールを作成したら、それらをデバイスにデプロイしてエッジで動作させます。 連携してデータを収集および処理する複数のモジュールがある場合は、一度にそのすべてをデプロイし、それらを接続するルーティング規則を宣言できます。
 
-この記事では、Azure Portal を使用して配置マニフェストを作成し、IoT Edge デバイスにデプロイをプッシュする方法を紹介します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[IoT Edge モジュールを大規模にデプロイおよび監視する](how-to-deploy-monitor.md)」をご覧ください。
+この記事では、Azure Portal を使用して配置マニフェストを作成し、IoT Edge デバイスにデプロイをプッシュする方法を紹介します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[IoT Edge モジュールを大規模にデプロイおよび監視する](how-to-deploy-at-scale.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,4 +106,4 @@ Azure Marketplace のモジュールを、Azure portal の IoT Hub デバイス�
 
 ## <a name="next-steps"></a>次のステップ
 
-[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)の方法を学習します
+[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-at-scale.md)の方法を学習します

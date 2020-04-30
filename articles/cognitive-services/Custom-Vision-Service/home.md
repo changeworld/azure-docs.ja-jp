@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: bdb2b31ee3abb30e6e7339f641b778ff5dc522b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 79ecb801e1b4d0fa96ca7ae06223fc231cbf12e6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403804"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129884"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
 
@@ -49,4 +49,4 @@ Cognitive Services 全般に言えることですが、Custom Vision サービ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[分類器の構築](getting-started-build-a-classifier.md)に関するガイドに従って、Web で Custom Vision の使用を開始するか、[画像分類のチュートリアル](csharp-tutorial.md)を実行して、コードで基本的なシナリオを実装します。
+[分類器の構築](getting-started-build-a-classifier.md)に関するガイドに従って、Web で Custom Vision の使用を開始するか、[画像分類のチュートリアル](quickstarts/image-classification.md)を実行して、コードで基本的なシナリオを実装します。

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c8273025b92a74286d3f918289ef9f21bd992182
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984846"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143121"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
 >[!Important]
->2020 年 4 月 13 日以降、パートナー センターへの Power BI アプリ オファーの管理の移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 [Power BI アプリ作成の概要](https://aka.ms/AzureCreatePBIServiceApp)の手順に従って、移行後のオファーを管理してください。
+>2020 年 4 月 13 日以降、パートナー センターへの Power BI アプリ オファーの管理の移行を開始します。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Power BI アプリ作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)の手順に従って、移行後のオファーを管理してください。
 
 この記事では、[AppSource](https://appsource.microsoft.com) に新しい Power BI アプリ オファーを作成するための実行手順について説明します。 各プランは、AppSource で独自のエンティティとして表示されます。 [Cloud パートナー ポータル](https://cloudpartner.azure.com/)で新しいプランを作成するときに、ご利用のプランに対して資産グループを 4 つ指定する必要があります。
 

@@ -1,24 +1,15 @@
 ---
 title: ジョブやタスクからの出力をデータ ストアに保存する - Azure Batch
 description: Batch タスクやジョブから出力データを保持するさまざまなオプションについて説明します。 データは、Azure Storage、または別のデータ ストアに保持することができます。
-services: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0809a838f1d34491eb4e276ce356eded9b98756e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a0c8f7517e88bf4e5476c7bad98d167ce760a9a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022836"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116419"
 ---
 # <a name="persist-job-and-task-output"></a>ジョブとタスク出力を保持する
 

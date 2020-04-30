@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 619ba7cb2d99e0137fd1834096dd5b66ffcd6ec9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd0d65624852737c424128e9125b8370b870d4d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240382"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133942"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI を使用して Azure IoT Edge モジュールをデプロイする
 
@@ -22,7 +22,7 @@ ms.locfileid: "80240382"
 
 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 これを使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。 新しい IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
 
-この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor-cli.md)」をご覧ください。
+この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-cli-at-scale.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -140,4 +140,4 @@ device ID パラメーターでは大文字と小文字が区別されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)の方法を学習します
+[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-at-scale.md)の方法を学習します

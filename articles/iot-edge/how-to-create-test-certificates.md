@@ -4,16 +4,16 @@ description: テスト証明書を作成し、それらを Azure IoT Edge デバ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/14/2020
+ms.date: 04/23/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 9540913cd86b74fd51e96aa9d1d1dd34c5d60631
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393814"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129790"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -313,7 +313,7 @@ IoT Hub で認証できるように、IoT デバイスにはデバイス証明�
 3. 各証明書から SHA1 フィンガープリント (IoT Hub のコンテキストではサムプリントと呼ばれます) を取得します。 フィンガープリントは、40 文字の 16 進数文字列です。 次の openssl コマンドを使用して、証明書を表示し、フィンガープリントを見つけます。
 
    ```PowerShell
-   openssl x509 -in <WRKDIR>\certs\iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
+   openssl x509 -in <WRKDIR>\certs\iot-device-<device name>-primary.cert.pem -text -fingerprint
    ```
 
    このコマンドは 2 回実行します。1 回目はプライマリ証明書、2 回目はセカンダリ証明書に対して実行します。 自己署名 X.509 証明書を使用して新しい IoT デバイスを登録する場合は、両方の証明書のフィンガープリントを指定します。

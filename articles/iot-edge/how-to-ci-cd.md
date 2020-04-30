@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4b99e83a8e71b13183c76321c7076b85a212f021
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510976"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131411"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
@@ -226,4 +226,4 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
 
 * [IoT Edge 用のAzure DevOps プロジェクト](how-to-devops-project.md)内の IoT Edge DevOps のベスト プラクティスのサンプル
 * 「[1 台のデバイスまたは一群のデバイスを対象とした IoT Edge デプロイについて](module-deployment-monitoring.md)」で IoT Edge デプロイについて理解します。
-* 「[Deploy and monitor IoT Edge modules at scale (IoT Edge モジュールを大規模にデプロイして監視する)](how-to-deploy-monitor.md)」で、デプロイを作成、更新、または削除するための手順を学習してください。
+* 「[Deploy and monitor IoT Edge modules at scale (IoT Edge モジュールを大規模にデプロイして監視する)](how-to-deploy-at-scale.md)」で、デプロイを作成、更新、または削除するための手順を学習してください。

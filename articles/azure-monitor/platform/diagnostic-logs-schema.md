@@ -4,12 +4,12 @@ description: Azure リソース ログでサポートされているサービス
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7183c0b268342d08fe7c0ed79c7fa589e3e28afe
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226343"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128468"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -22,7 +22,7 @@ ms.locfileid: "79226343"
 
 ## <a name="top-level-resource-logs-schema"></a>リソース ログの上位スキーマ
 
-| Name | 必須/省略可能 | 説明 |
+| 名前 | 必須/省略可能 | 説明 |
 |---|---|---|
 | time | 必須 | イベントのタイムスタンプ (UTC)。 |
 | resourceId | 必須 | イベントを出力したリソースのリソース ID。 テナント サービスの場合、形式は /tenants/tenant-id/providers/provider-name です。 |
@@ -48,13 +48,13 @@ ms.locfileid: "79226343"
 | --- | --- |
 | Azure Active Directory | [概要](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[監査ログ スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)、および[サインイン スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
-| API Management | [API Management のリソース ログ](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
+| API Management | [API Management のリソース ログ](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
 | Application Gateway |[Application Gateway のログ記録](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch のログ記録](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database for PostgreSQL | [Azure Database for PostgreSQL のログ](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Data Explorer | [Azure Data Explorer のログ](../../data-explorer/using-diagnostic-logs.md) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL のログ](../../postgresql/concepts-server-logs.md#resource-logs) |
+| Azure Data Explorer | [Azure Data Explorer のログ](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Azure Cognitive Services のログ記録](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Azure Container Registry のログ記録](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [CDN の Azure ログ](../../cdn/cdn-azure-diagnostic-logs.md) |
@@ -66,7 +66,7 @@ ms.locfileid: "79226343"
 | ExpressRoute | スキーマは使用できません。 |
 | Azure Firewall | スキーマは使用できません。 |
 | IoT Hub | [IoT Hub 操作](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Azure Key Vault のログ記録](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Azure Key Vault のログ記録](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Azure Kubernetes のログ記録](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Azure Load Balancer のログ分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |

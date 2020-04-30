@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 934be24d07c01c76c8caf5e16af4b765df79c964
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273054"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142913"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketplace で既存の VM プランを更新する
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://aka.ms/CreateAzureVMoffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
-この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で仮想マシン (VM) プランを更新し、そのプランを再発行する際のさまざまな側面について説明します。 
+この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で仮想マシン (VM) プランを更新し、そのプランを再発行する際のさまざまな側面について説明します。
 
 プランを更新する理由には、次のような多くの一般的な理由があります。
 

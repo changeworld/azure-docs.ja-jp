@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 68f8607db25b70ea5e6bfe21a7d6e002aeb127d6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426999"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116844"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -125,7 +125,7 @@ ms.locfileid: "81426999"
    1. 構成変数を追加します。
 
       ```csharp
-      private static readonly IConfiguration _configuration;
+      private static IConfiguration _configuration;
       ```
 
    1. このコンストラクターを追加するか、既存のコンストラクターを次のように置き換えます。

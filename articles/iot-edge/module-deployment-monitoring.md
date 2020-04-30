@@ -8,18 +8,18 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76895970"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127600"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 
 自動デプロイと多層デプロイを使用すると、多数の IoT Edge デバイスでのモジュールの管理と構成が容易になります。
 
-Azure IoT Edge には、IoT Edge デバイスで実行するようにモジュールを構成する方法が 2 つあります。 最初の方法では、デバイスごとにモジュールをデプロイします。 配置マニフェストを作成してから、それを特定のデバイスに名前で適用します。 2 つ目の方法では、定義された一連の条件を満たす登録済みデバイスにモジュールを自動的にデプロイします。 配置マニフェストを作成してから、デバイス ツインの[タグ](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags)に基づいて、適用対象のデバイスを定義します。
+Azure IoT Edge には、IoT Edge デバイスで実行するようにモジュールを構成する方法が 2 つあります。 最初の方法では、デバイスごとにモジュールをデプロイします。 配置マニフェストを作成してから、それを特定のデバイスに名前で適用します。 2 つ目の方法では、定義された一連の条件を満たす登録済みデバイスにモジュールを自動的にデプロイします。 配置マニフェストを作成してから、デバイス ツインの[タグ](../iot-edge/how-to-deploy-at-scale.md#identify-devices-using-tags)に基づいて、適用対象のデバイスを定義します。
 
 この記事では、多数のデバイスの構成と監視 (全体を指して *IoT Edge の自動デプロイ*と呼ばれます) に重点を置いて説明をします。 基本的なデプロイ手順は次のとおりです。
 
@@ -28,7 +28,7 @@ Azure IoT Edge には、IoT Edge デバイスで実行するようにモジュ�
 3. IoT Hub サービスでは、IoT Edge デバイスからステータスを取得し、オペレーターが利用可能になるようにします。  たとえば、オペレーターは Edge デバイスが正常に構成されているかどうかや、実行時にモジュールでエラーが発生していないかかどうかを確認することができます。
 4. ターゲット条件を満たしている新しい IoT Edge デバイスは、随時デプロイ用に構成されます。
 
-この記事では、デプロイの構成と監視に関係する各コンポーネントについて説明します。 デプロイの作成と更新に関するチュートリアルについては、[IoT Edge モジュールの大規模なデプロイと監視](how-to-deploy-monitor.md)に関するページを参照してください。
+この記事では、デプロイの構成と監視に関係する各コンポーネントについて説明します。 デプロイの作成と更新に関するチュートリアルについては、[IoT Edge モジュールの大規模なデプロイと監視](how-to-deploy-at-scale.md)に関するページを参照してください。
 
 ## <a name="deployment"></a>デプロイ
 
@@ -197,5 +197,5 @@ IoT Edge デバイスで適用できる標準の自動デプロイは 1 つだ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 「[Deploy and monitor IoT Edge modules at scale (IoT Edge モジュールを大規模にデプロイして監視する)](how-to-deploy-monitor.md)」で、デプロイを作成、更新、または削除するための手順を学習してください。
+* 「[Deploy and monitor IoT Edge modules at scale (IoT Edge モジュールを大規模にデプロイして監視する)](how-to-deploy-at-scale.md)」で、デプロイを作成、更新、または削除するための手順を学習してください。
 * [IoT Edge ランタイム](iot-edge-runtime.md)や [IoT Edge モジュール](iot-edge-modules.md)など、IoT Edge のその他の概念について学習してください。

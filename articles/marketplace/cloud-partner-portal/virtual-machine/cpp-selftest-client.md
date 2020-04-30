@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f16d26fa95254282e453cd7bf35d85f8b81ed73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273156"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143211"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure 仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://aks.ms/CertifyVMimage)」の手順に従ってください。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)」の手順に従ってください。
 
 この記事は、自己テスト API を使用するクライアント サービスを作成する場合のガイドとして使用してください。 自己テスト API を使用して仮想マシン (VM) を事前検証することで、Azure Marketplace の最新の公開要件を確実に満たすことができます。 このクライアント サービスを使用すると、マイクロソフト認定資格を受けるためにオファーを送信する前に VM をテストできます。
 

@@ -1,25 +1,14 @@
 ---
 title: Azure Active Directory を使用した Azure Batch サービスの認証
 description: Batch は、Batch サービスからの認証に Azure AD をサポートしています。 次の 2 つの方法のいずれかで認証する方法について説明します。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 01/28/2020
-ms.author: labrenne
-ms.openlocfilehash: f56c05f64086ac2e98e69d6b21fae7a0a63b5006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77019521"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116181"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 

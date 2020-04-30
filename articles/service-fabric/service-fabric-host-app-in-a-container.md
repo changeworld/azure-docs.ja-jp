@@ -3,12 +3,12 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: d1602d292af24d8c0bc9139debb3967aa7183a06
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 08bbab2d92e9631f75c46be2e3f822532b62718a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75463047"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82136641"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -93,7 +93,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
     -ServerName $servername `
     -FirewallRuleName "AllowClient" -StartIpAddress $clientIP -EndIpAddress $clientIP
 
-# Creeate the database in the server.
+# Create the database in the server.
 New-AzSqlDatabase  -ResourceGroupName $dbresourcegroupname `
     -ServerName $servername `
     -DatabaseName $databasename `

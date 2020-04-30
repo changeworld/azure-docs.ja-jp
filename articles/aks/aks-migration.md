@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 8315560c679f9807715af14dc315fa3000be0472
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624526"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129100"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -119,7 +119,7 @@ Azure Managed Disks を使用する場合は、どの VM にも接続されて�
 * [静的 Azure Disk をボリュームとしてマウントする](https://docs.microsoft.com/azure/aks/azure-disk-volume#mount-disk-as-volume)
 
 どちらの方法も機能しない場合は、バックアップと復元のオプションを使用できます。
-* [Azure での Velero](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+* [Azure での Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
 #### <a name="azure-files"></a>Azure Files
 

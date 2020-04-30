@@ -1,26 +1,15 @@
 ---
 title: エラー後のタスクの再試行
 description: エラーを確認し、それらを再試行します。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: azure-batch
-ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/15/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 94ed936e619461a2dbf7ec837c2d80e21c01c88e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8addc4418f268a2c27b730543bdb309ef45fd5f4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919993"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116538"
 ---
 # <a name="detecting-and-handling-batch-service-errors"></a>Batch サービス エラーの検出と処理
 

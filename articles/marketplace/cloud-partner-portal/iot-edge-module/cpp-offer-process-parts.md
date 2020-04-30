@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 20c76cec82944568c1b16694bef2838626b90b03
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e9116e5cdb3bd9ed61205ceabd4d51c96c6aadc2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983349"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144664"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge モジュール オファー発行の概要
 
 >[!Important]
->2020年4月13日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[IoT Edge モジュール オファーを作成する](https://aka.ms/AzureCreateIoT)」の手順に従い、移行後のオファーを管理します。
+>2020年4月13日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[IoT Edge モジュール オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)」の手順に従い、移行後のオファーを管理します。
 
 <table> <tr> <td>このセクションでは、新しい Azure IoT Edge モジュール オファーを Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> に公開する方法について説明します。 IoT Edge モジュールは、IoT Edge デバイスで実行するように作成された、Docker と互換性のあるコンテナーです。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure サービスまたはカスタム ソリューションのコードを含めることができます。 </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 

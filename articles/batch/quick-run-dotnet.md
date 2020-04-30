@@ -1,21 +1,15 @@
 ---
 title: Azure クイック スタート - Batch ジョブの実行 - .NET
 description: C# アプリケーションから Batch .NET クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを簡単に実行できます。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77017209"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117218"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート: .NET API で最初の Azure Batch ジョブを実行する
 

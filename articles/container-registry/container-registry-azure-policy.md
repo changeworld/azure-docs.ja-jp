@@ -3,12 +3,12 @@ title: Azure Policy を使用したコンプライアンス
 description: Azure Policy で組み込みポリシーを割り当て、Azure コンテナー レジストリのコンプライアンスを監査します
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78330738"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144999"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査
 
@@ -25,7 +25,7 @@ Azure Policy を使用するのに料金は一切かかりません。
 
 次の組み込みのポリシー定義は Azure Container Registry に固有となります。
 
-[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/azure-policy-samples-policies-container-registry.md)]
+[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
 組み込みネットワーク ポリシー定義の「[[プレビュー] Container Registry では仮想ネットワーク サービス エンドポイントを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)」もご覧ください。
 

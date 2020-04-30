@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c4e762ebf10a5ca2120c13a52750a7781d60b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232267"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137724"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -410,7 +410,7 @@ Azure File Sync での最初のオンボードで完全なファイル忠実性�
 VSS スナップショットと以前のバージョンは、Azure File Sync からは独立して機能します。ただし、クラウドを使った階層化を互換モードに設定する必要があります。 多くの Azure File Sync サーバー エンドポイントが、同じボリューム上に存在できます。 クラウドを使った階層化を使用しているか使用する予定のサーバー エンドポイントが 1 つでもあるボリュームでは、次の PowerShell 呼び出しを実行する必要があります。
 
 ```powershell
-Import-Module ‘<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll’
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
 Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]] 
 ```
 
@@ -426,7 +426,7 @@ Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]]
 セルフサービス復元の互換性が有効かどうかを確認するには、次のコマンドレットを実行する必要があります。
 
 ```powershell
-    Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
+Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 ```
 
 これにより、サーバー上のすべてのボリュームと、そのそれぞれの、クラウドを使った階層化との互換性が維持される日数の一覧が表示されます。 この日数は、ボリュームごとに可能な最大のスナップショット数と、既定のスナップショット スケジュールに基づいて自動的に計算されます。 そのため既定では、インフォメーション ワーカーに提示されている以前のバージョンはすべて、復元のために使用することができます。 既定のスケジュールを、より多くのスナップショットを作成するように変更する場合も同様です。
