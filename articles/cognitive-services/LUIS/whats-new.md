@@ -3,12 +3,12 @@ title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538020"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097729"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -38,7 +38,7 @@ ms.locfileid: "81538020"
     * [分解可能な機械学習エンティティ](tutorial-machine-learned-entity.md)
 * 高度な言語理解機能 - 少ない労力で[洗練された言語モデルを構築](luis-concept-entity-types.md)します。
 * モデル レベルで機械学習機能を定義し、モデルを他のモデルへの信号として使用できるようにします。たとえば、エンティティを機能として、意図やその他のエンティティに使用します。
-* 新しい、拡張された[制限](luis-boundaries.md) - フレーズ リストおよびフレーズの合計のより高い最大値、機能制限としての新しいモデル
+* 新しい、拡張された[制限](luis-limits.md) - フレーズ リストおよびフレーズの合計のより高い最大値、機能制限としての新しいモデル
 * 深い階層構造の形式でテキストから情報を抽出することで、メッセージ交換アプリケーションをより強力にします。
 
     ![機械学習したエンティティの画像](./media/whats-new/deep-entity-extraction-example.png)

@@ -1,19 +1,19 @@
 ---
 title: ポータルを使用した Azure スポット VM のデプロイ
 description: Azure PowerShell を使用してスポット VM をデプロイし、コストを節約する方法について学びます。
-services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 045cec080b9b1b8f2e4cb589b053c421897db5be
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: 6e7723a437e90807063e3c3b7af2bf068dca5b9f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547384"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100653"
 ---
 # <a name="deploy-spot-vms-using-the-azure-portal"></a>Azure portal を使用してスポット VM をデプロイする
 

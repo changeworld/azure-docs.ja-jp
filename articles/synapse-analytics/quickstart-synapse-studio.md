@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 294f53fe929343708bdbb9564b23c46865cf02ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419816"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096335"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>クイック スタート:Synapse Studio (プレビュー) の使用
 
@@ -52,7 +52,7 @@ Synapse Studio を開いたら、 **[データ]** を参照し、 **[ストレ�
 > ファイルに対してクエリを実行できるようにするには、基になるストレージの `Storage Blob Reader` ロールのメンバーである必要があります。 [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可を割り当てる](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)方法について確認してください。
 
 1. いくつかの `PARQUET` ファイルをアップロードします。
-2. 1 つ以上のファイルを選択し、新しい SQL スクリプトまたは Spark ノートブックを作成して、ファイルの内容を確認します。 ノートブックを作成する場合は、[ワークスペースに Apache Spark プール](spark/apache-spark-notebook-create-spark-use-sql.md)を作成する必要があります。
+2. 1 つ以上のファイルを選択し、新しい SQL スクリプトまたは Spark ノートブックを作成して、ファイルの内容を確認します。 ノートブックを作成する場合は、[ワークスペースに Apache Spark プール](quickstart-create-apache-spark-pool.md)を作成する必要があります。
 
    ![ストレージ上のファイルに対してクエリを実行する](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
@@ -66,5 +66,5 @@ Synapse Studio を開いたら、 **[データ]** を参照し、 **[ストレ�
 
 - [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可を割り当てる](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)ことにより、Azure AD ユーザーがファイルに対してクエリを実行できるようにする
 - [SQL オンデマンドを使用して、Azure Storage 上のファイルに対してクエリを実行する](sql/on-demand-workspace-overview.md)
-- [Apache Spark プールを作成する](spark/apache-spark-notebook-create-spark-use-sql.md)
+- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
 - [Azure Storage に格納されているファイルについて Power BI レポートを作成する](sql/tutorial-connect-power-bi-desktop.md)

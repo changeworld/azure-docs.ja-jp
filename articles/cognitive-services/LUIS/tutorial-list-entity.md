@@ -3,12 +3,12 @@ title: チュートリアル:リスト エンティティ - LUIS
 description: 事前に定義された項目の一覧に一致するデータを取得します。 一覧の各項目には、同様に完全に一致するシノニムを含めることができます。
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9530719c43260751d64d7ccf446bc7941078d6e9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79297409"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101129"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>チュートリアル:リスト エンティティを使って発話から完全一致のテキスト データを取得する
 
@@ -33,7 +33,7 @@ ms.locfileid: "79297409"
 リスト エンティティがこのデータの種類に適しているのは次の場合です。
 
 * データ値が既知のセットである。
-* セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
+* セットがこのエンティティ型の最大 LUIS [境界](luis-limits.md)を超えていない。
 * 発話内のテキストがシノニムまたは正規名に大文字と小文字が区別されず一致している。 LUIS では、この一致以外にリストは使用しません。 語幹抽出、複数形、その他のバリエーションは、リスト エンティティだけでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
 
 > [!CAUTION]

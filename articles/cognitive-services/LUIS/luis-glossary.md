@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f764b0d42e08e68b45d49a5aae8542f05707ccde
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219153"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82099361"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
@@ -30,7 +30,7 @@ Language Understanding (LUIS) 用語集では、LUIS API サービスの使用�
 
 ## <a name="authoring-key"></a><a name="authoring-key"></a>オーサリング キー
 
-以前の名前付き "プログラム" キーです。 アプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-boundaries.md#key-limits)」を参照してください。
+以前の名前付き "プログラム" キーです。 アプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-limits.md#key-limits)」を参照してください。
 
 ## <a name="batch-test-json-file"></a><a name="batch-test-json-file"></a>バッチ テスト JSON ファイル
 
@@ -51,7 +51,7 @@ Language Understanding (LUIS) 用語集では、LUIS API サービスの使用�
 
 ## <a name="descriptor"></a><a name="descriptor"></a>記述子
 
-記述子は、[語句リスト](#features)や[エンティティ](#phrase-list)など、トレーニング時にモデルに適用される[特徴量](#entity)です。 
+記述子は、[語句リスト](#features)や[エンティティ](#phrase-list)など、トレーニング時にモデルに適用される[特徴量](#entity)です。
 
 ## <a name="domain"></a><a name="domain"></a>ドメイン
 
@@ -121,7 +121,7 @@ LUIS アプリは、[意図](#intent)、[エンティティ](#entity)、ラベ�
 
 ## <a name="publish"></a><a name="publish"></a>公開
 
-公開とは、LUIS のアクティブ バージョンを、ステージングまたは運用[エンドポイント](#endpoint)のいずれかで使用できるようにすることです。  
+公開とは、LUIS のアクティブ バージョンを、ステージングまたは運用[エンドポイント](#endpoint)のいずれかで使用できるようにすることです。
 
 ## <a name="quota"></a><a name="quota"></a>クォータ
 

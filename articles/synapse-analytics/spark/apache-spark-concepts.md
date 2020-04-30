@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3cf654e77bf68c5194a0213d4452242b5c44e234
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b1db306ffdb1c05c880e5fc639de2cc1db130d8e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419536"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096284"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics の Apache Spark の主要な概念
 
@@ -30,7 +30,7 @@ Spark プールは、その作成に関して料金もリソース コストも�
 
 ベスト プラクティスとして、開発とデバッグ用に作成する Spark プールは小さく、運用環境のワークロードの実行用に作成する Spark プールは大きくすることをお勧めします。
 
-Spark プールの作成方法とそのすべてのプロパティは、[Synapse Analytics の Spark プールの概要](apache-spark-notebook-create-spark-use-sql.md#create-an-apache-spark-pool)に関するページでご覧いただけます。
+Spark プールの作成方法とそのすべてのプロパティは、[Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool.md)に関するページでご覧いただけます。
 
 ## <a name="spark-instances"></a>Spark インスタンス
 

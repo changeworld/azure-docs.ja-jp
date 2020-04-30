@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78194511"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096624"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -66,7 +66,7 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 * **必要に応じて**、各アプリのコラボレーターの一覧を保存します。 このメールの一覧は、移行プロセスの一部として提供されています。
 
 
-**LUIS アプリの作成は無料です**。これは `F0` レベルの印で確認できます。 価格レベルの詳細については[こちら](luis-boundaries.md#key-limits)をご覧ください。
+**LUIS アプリの作成は無料です**。これは `F0` レベルの印で確認できます。 価格レベルの詳細については[こちら](luis-limits.md#key-limits)をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、[サインアップ](https://azure.microsoft.com/free/)してください。
 

@@ -3,12 +3,12 @@ title: リスト エンティティ型 - LUIS
 description: リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、[Recommend] (推奨) 機能を使用します。
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297239"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097576"
 ---
 # <a name="list-entity"></a>リスト エンティティ
 
@@ -20,7 +20,7 @@ ms.locfileid: "79297239"
 
 * 既知のセットである。
 * あまり変化しない。 リストを頻繁に変更する必要がある、またはリストを自己拡張させたい場合、フレーズ リストで強化したシンプル エンティティの方が良い選択肢です。
-* セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
+* セットがこのエンティティ型の最大 LUIS [境界](luis-limits.md)を超えていない。
 * 発話内のテキストがシノニムまたは正規名に大文字と小文字が区別されず一致している。 LUIS では、この一致以外にリストは使用されません。 あいまい一致、語幹抽出、複数形、その他のバリエーションは、リスト エンティティでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
 
 ![リスト エンティティ](./media/luis-concept-entities/list-entity.png)

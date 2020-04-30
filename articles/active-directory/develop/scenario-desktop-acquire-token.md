@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a5942a9d614bbb06fadb1d4b16d4c68c007434c7
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 24567461ee8a87fc9dbd1c5fb4eba5e34d458f7b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885320"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097763"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必須のパラメーター
 
-`AcquireTokenInteractive` の必須のパラメーターは 1 つだけです (``scopes``)。これには、トークンが必要なスコープを定義する文字列のリストが含まれています。 Microsoft Graph 用のトークンの場合、必要なスコープは各 Microsoft Graph API の API リファレンスの「アクセス許可」というセクションにあります。 たとえば、[ユーザーの連絡先を一覧表示する](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)には、"User.Read"、"Contacts.Read" スコープを使用する必要があります。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)」を参照してください。
+`AcquireTokenInteractive` の必須のパラメーターは 1 つだけです (``scopes``)。これには、トークンが必要なスコープを定義する文字列のリストが含まれています。 Microsoft Graph 用のトークンの場合、必要なスコープは各 Microsoft Graph API の API リファレンスの「アクセス許可」というセクションにあります。 たとえば、[ユーザーの連絡先を一覧表示する](https://docs.microsoft.com/graph/api/user-list-contacts)には、"User.Read"、"Contacts.Read" スコープを使用する必要があります。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)」を参照してください。
 
 Android では、示されているように `.WithParentActivityOrWindow` を使用して親アクティビティを指定する必要もあります。これにより、操作後にトークンが親アクティビティに戻ります。 そのように指定しないと、`.ExecuteAsync()` の呼び出し時に例外がスローされます。
 

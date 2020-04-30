@@ -1,22 +1,15 @@
 ---
 title: Azure Batch プールのサイズ変更の完了イベント
 description: Batch プールのサイズ変更完了イベントのリファレンスです。 サイズが増加し、正常に完了したプールの例を参照してください。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: e2c66471ad9fe8d917d1ffddceb6e01c339d62dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4268c9d840aa9dfadd785d74811e9d12ac32ec31
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022224"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115892"
 ---
 # <a name="pool-resize-complete-event"></a>プールのサイズ変更の完了イベント
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369779"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085741"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>カスタム エンティティの参照認知スキル (プレビュー)
 
@@ -29,7 +29,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 ## <a name="data-limits"></a>データ制限
 + サポートされる入力レコードの最大サイズは 256 MB です。 カスタム エンティティの参照スキルにデータを送信する前にデータを分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用することをお勧めします。
-+ *entitiesDefitionUri* パラメーターを使用して指定されている場合、サポートされるエンティティ定義テーブルの最大サイズは 10 MB です。 
++ *entitiesDefinitionUri* パラメーターを使用して指定されている場合、サポートされるエンティティ定義テーブルの最大サイズは 10 MB です。 
 + エンティティが *inlineEntitiesDefinition* パラメーターを使用してインラインで定義されている場合、サポートされる最大サイズは 10 KB です。
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
@@ -63,13 +63,13 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 カスタム エンティティの一覧をカスタム エンティティの参照スキルに指定するには、3 種類の方法があります。 .CSV ファイル、.JSON ファイル、またはスキル定義の一部であるインライン定義として一覧を指定できます。  
 
-定義ファイルが .CSV または .JSON ファイルである場合、ファイルのパスを *entitiesDefitionUri* パラメーターの一部として指定する必要があります。 この場合、各インデクサーの実行の開始時に 1 度、ファイルがダウンロードされます。 インデクサーの実行を想定している限り、ファイルにアクセスできる必要があります。 また、ファイルは UTF-8 でエンコードされている必要があります。
+定義ファイルが .CSV または .JSON ファイルである場合、ファイルのパスを *entitiesDefinitionUri* パラメーターの一部として指定する必要があります。 この場合、各インデクサーの実行の開始時に 1 度、ファイルがダウンロードされます。 インデクサーの実行を想定している限り、ファイルにアクセスできる必要があります。 また、ファイルは UTF-8 でエンコードされている必要があります。
 
 定義をインラインで指定する場合、*inlineEntitiesDefinition* スキル パラメーターの内容としてインラインで指定する必要があります。 
 
 ### <a name="csv-format"></a>CSV 形式
 
-検索するカスタム エンティティの定義をコンマ区切り値 (CSV) ファイルで指定するには、ファイルのパスを用意し、それを *entitiesDefitionUri* スキル パラメーターに設定します。 このパスは、https の場所にある必要があります。 定義ファイルの最大サイズは 10 MB です。
+検索するカスタム エンティティの定義をコンマ区切り値 (CSV) ファイルで指定するには、ファイルのパスを用意し、それを *entitiesDefinitionUri* スキル パラメーターに設定します。 このパスは、https の場所にある必要があります。 定義ファイルの最大サイズは 10 MB です。
 
 CSV 形式は単純です。 次に示すように、各行は一意のエンティティを表します。
 
@@ -85,7 +85,7 @@ Satya Nadella
 
 JSON ファイルで検索するカスタム エンティティの定義を指定することもできます。 JSON 形式では用語ごとに照合ルールを定義できるため、やや柔軟に利用できます。 たとえば、各用語のあいまい一致距離 (ダメラウレーベンシュタイン距離)、または照合で大文字と小文字を区別するかどうかを指定できます。 
 
- CSV ファイルと同様に、JSON ファイルへのパスを指定し、*entitiesDefitionUri* スキル パラメーターで設定する必要があります。 このパスは、https の場所にある必要があります。 定義ファイルの最大サイズは 10 MB です。
+ CSV ファイルと同様に、JSON ファイルへのパスを指定し、*entitiesDefinitionUri* スキル パラメーターで設定する必要があります。 このパスは、https の場所にある必要があります。 定義ファイルの最大サイズは 10 MB です。
 
 最も基本的な JSON カスタム エンティティ一覧定義としては、照合するエンティティの一覧を使用できます。
 

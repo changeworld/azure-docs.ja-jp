@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 954e7a22ae6b242c6221119c688259e4ce629a2a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219157"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101061"
 ---
 # <a name="authoring-and-runtime-keys"></a>オーサリング キーとランタイム キー
 
-Language Understanding (LUIS) には、次の 2 つのサービスと API セットがあります。 
+Language Understanding (LUIS) には、次の 2 つのサービスと API セットがあります。
 
 * オーサリング (以前は _プログラム_ と呼ばれていました)
 * 予測ランタイム
@@ -42,8 +42,8 @@ Language Understanding (LUIS) には、次の 2 つのサービスと API セッ
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
 
-LUIS では、次の 3 種類の Azure リソースを使用できます。 
- 
+LUIS では、次の 3 種類の Azure リソースを使用できます。
+
 |Key|目的|Cognitive service `kind`|Cognitive service `type`|
 |--|--|--|--|
 |[オーサリング キー](#programmatic-key)|作成、トレーニング、発行、テストを使用して、アプリケーションのデータにアクセスして管理します。 プログラムを使用して LUIS アプリを作成する場合は、LUIS オーサリング キーを作成します。<br><br>`LUIS.Authoring` キーの目的は、次のことを可能にすることです。<br>* トレーニングや発行など、Language Understanding のアプリとモデルをプログラムで管理する<br> * [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御する|`LUIS.Authoring`|`Cognitive Services`|
@@ -55,42 +55,42 @@ LUIS では、次の 3 種類の Azure リソースを使用できます。
 発行およびクエリを行う[リージョン](luis-reference-regions.md#publishing-regions)内で LUIS アプリを作成することが重要です。
 
 > [!CAUTION]
-> 便宜上、サンプルの多くでは[スターター キー](#starter-key)が使用されますが、これは、いくつかの無料エンドポイント呼び出しが[クォータ](luis-boundaries.md#key-limits)に提供されるためです。  
+> 便宜上、サンプルの多くでは[スターター キー](#starter-key)が使用されますが、これは、いくつかの無料エンドポイント呼び出しが[クォータ](luis-limits.md#key-limits)に提供されるためです。
 
 
 ### <a name="query-prediction-resources"></a>予測リソースに対するクエリの実行
 
-* ランタイム キーは、ご使用のすべての LUIS アプリまたは特定の LUIS アプリで使用できます。 
-* LUIS アプリの作成にはランタイム キーを使用しないでください。 
+* ランタイム キーは、ご使用のすべての LUIS アプリまたは特定の LUIS アプリで使用できます。
+* LUIS アプリの作成にはランタイム キーを使用しないでください。
 
 LUIS ランタイム エンドポイントには、2 つのクエリ スタイルを使用できます。いずれも予測エンドポイントのランタイム キーを使用しますが、場所は異なります。
 
-ランタイムにアクセスするために使用されるエンドポイントでは、次の表の `{region}` で示すように、リソースの領域に固有のサブドメインを使用します。 
+ランタイムにアクセスするために使用されるエンドポイントでは、次の表の `{region}` で示すように、リソースの領域に固有のサブドメインを使用します。
 
 ## <a name="assignment-of-the-key"></a>キーの割り当て
 
-ランタイム キーは、[LUIS ポータル](https://www.luis.ai)または対応する API を介して[割り当てる](luis-how-to-azure-subscription.md)ことができます。 
+ランタイム キーは、[LUIS ポータル](https://www.luis.ai)または対応する API を介して[割り当てる](luis-how-to-azure-subscription.md)ことができます。
 
 ## <a name="key-limits"></a>キーの制限
 
-サブスクリプションごとに、各リージョンで最大 10 個のオーサリング キーを作成できます。 
+サブスクリプションごとに、各リージョンで最大 10 個のオーサリング キーを作成できます。
 
-[キーの制限](luis-boundaries.md#key-limits)と [Azure リージョン](luis-reference-regions.md)に関するページを参照してください。 
+[キーの制限](luis-limits.md#key-limits)と [Azure リージョン](luis-reference-regions.md)に関するページを参照してください。
 
 公開リージョンは、オーサリング リージョンとは異なります。 クライアント アプリケーションを配置する公開リージョンに対応する オーサリング リージョンにアプリを作成してください。
 
 ## <a name="key-limit-errors"></a>キーの制限に関するエラー
-1 秒あたりのトランザクション数 (TPS) のクォータを超えると、HTTP 429 エラーが発生します。 1 か月あたりのトランザクション数 (TPM) のクォータを超えると、HTTP 403 エラーが発生します。 
+1 秒あたりのトランザクション数 (TPS) のクォータを超えると、HTTP 429 エラーが発生します。 1 か月あたりのトランザクション数 (TPM) のクォータを超えると、HTTP 403 エラーが発生します。
 
 ## <a name="contributions-from-other-authors"></a>他の作成者からの投稿
 
-**[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合**: オーサリング リソースの "_共同作成者_" は、 **[アクセス制御 (IAM)]** ページを使用して、Azure portal で管理されます。 コラボレーターのメール アドレスと "_共同作成者_" ロールを使用して、[ユーザーを追加する方法](luis-how-to-collaborate.md)を参照してください。 
+**[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合**: オーサリング リソースの "_共同作成者_" は、 **[アクセス制御 (IAM)]** ページを使用して、Azure portal で管理されます。 コラボレーターのメール アドレスと "_共同作成者_" ロールを使用して、[ユーザーを追加する方法](luis-how-to-collaborate.md)を参照してください。
 
 **まだ移行されていないアプリの場合**: すべての "_コラボレーター_" は、LUIS ポータルの **[管理] -> [コラボレーター]** ページから管理されます。
 
 ## <a name="move-transfer-or-change-ownership"></a>所有権の移動、移転、または変更
 
-アプリは、Azure リソースによって定義され、所有者のサブスクリプションによって決まります。 
+アプリは、Azure リソースによって定義され、所有者のサブスクリプションによって決まります。
 
 LUIS アプリを移行できます。 Azure portal または Azure CLI では、次のドキュメント リソースを使用します。
 
@@ -98,22 +98,22 @@ LUIS アプリを移行できます。 Azure portal または Azure CLI では�
 * [新しいリソース グループまたはサブスクリプションにリソースを移行する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [同じサブスクリプション内またはサブスクリプション間でリソースを移行する](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
 
-サブスクリプションの[所有権](../../cost-management-billing/manage/billing-subscription-transfer.md)を移転するには 
+サブスクリプションの[所有権](../../cost-management-billing/manage/billing-subscription-transfer.md)を移転するには
 
 **移行したユーザーの場合 - [移行されたオーサリング リソース](luis-migration-authoring.md) アプリ**: リソースの所有者として、`contributor` を追加できます。
 
-**まだ移行していないユーザーの場合**: アプリを JSON ファイルとしてエクスポートします。 別の LUIS ユーザーがアプリをインポートすると、アプリの所有者になります。 新しいアプリには別のアプリ ID が割り当てられます。  
+**まだ移行していないユーザーの場合**: アプリを JSON ファイルとしてエクスポートします。 別の LUIS ユーザーがアプリをインポートすると、アプリの所有者になります。 新しいアプリには別のアプリ ID が割り当てられます。
 
 ## <a name="access-for-private-and-public-apps"></a>プライベート アプリとパブリック アプリのアクセス
 
-**プライベート** アプリの場合、所有者と共同作成者がランタイム アクセスを利用できます。 **パブリック** アプリについては、ランタイム アクセスは、自分の Azure [Cognitive Service](../cognitive-services-apis-create-account.md) または [LUIS](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) ランタイム リソースを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
+**プライベート** アプリの場合、所有者と共同作成者がランタイム アクセスを利用できます。 **パブリック** アプリについては、ランタイム アクセスは、自分の Azure [Cognitive Service](../cognitive-services-apis-create-account.md) または [LUIS](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) ランタイム リソースを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。
 
 現在、パブリック アプリのカタログはありません。
 
 ### <a name="authoring-access"></a>オーサリング アクセス
-[LUIS](luis-reference-regions.md#luis-website) ポータルまたは[オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) からのアプリへのアクセスは、Azure オーサリング リソースによって制御されます。 
+[LUIS](luis-reference-regions.md#luis-website) ポータルまたは[オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) からのアプリへのアクセスは、Azure オーサリング リソースによって制御されます。
 
-所有者とすべての共同作成者は、アプリを作成できるアクセス権を持っています。 
+所有者とすべての共同作成者は、アプリを作成できるアクセス権を持っています。
 
 |オーサリング アクセスに含まれるもの|Notes|
 |--|--|
@@ -131,7 +131,7 @@ LUIS アプリを移行できます。 Azure portal または Azure CLI では�
 
 ### <a name="prediction-endpoint-runtime-access"></a>予測エンドポイントのランタイム アクセス
 
-予測エンドポイントをクエリするためのアクセスは、 **[管理]** セクションの **[アプリケーション情報]** ページの設定によってによって制御されます。 
+予測エンドポイントをクエリするためのアクセスは、 **[管理]** セクションの **[アプリケーション情報]** ページの設定によってによって制御されます。
 
 |[プライベート エンドポイント](#runtime-security-for-private-apps)|[パブリック エンドポイント](#runtime-security-for-public-apps)|
 |:--|:--|
@@ -153,19 +153,19 @@ LUIS ランタイム キーを表示できるユーザーを制御するには�
 
 アプリをいったんパブリックとして構成すると、キーでエンドポイントのクォータを使い切ってない場合に限り、"_すべての_" 有効な LUIS オーサリング キーまたは LUIS エンドポイント キーでアプリにクエリを実行できます。
 
-所有者または共同作成者ではないユーザーは、アプリ ID が与えられている場合にのみ、パブリック アプリのランタイムにアクセスできます。 LUIS には、パブリックな "_マーケット_" やパブリック アプリを検索する他の方法がありません。  
+所有者または共同作成者ではないユーザーは、アプリ ID が与えられている場合にのみ、パブリック アプリのランタイムにアクセスできます。 LUIS には、パブリックな "_マーケット_" やパブリック アプリを検索する他の方法がありません。
 
 パブリック アプリはすべてのリージョンで公開されるので、リージョン ベースの LUIS リソース キーを持つユーザーは、どのリージョンがリソース キーと関連付けられているかにかかわらず、アプリにアクセスできます。
 
 ## <a name="transfer-of-ownership"></a>所有権の移転
 
-LUIS には、リソースの所有権を移転するという概念はありません。 
+LUIS には、リソースの所有権を移転するという概念はありません。
 
-## <a name="securing-the-endpoint"></a>エンドポイントのセキュリティ保護 
+## <a name="securing-the-endpoint"></a>エンドポイントのセキュリティ保護
 
-LUIS 予測ランタイム エンドポイント キーを表示できるユーザーを制御するには、サーバー間環境でキーを呼び出します。 ボットから LUIS を使用している場合、このボットと LUIS の間の接続は既にセキュリティで保護されています。 LUIS エンドポイントを直接呼び出している場合は、アクセスが制御された ([AAD](https://azure.microsoft.com/services/active-directory/) など) サーバー側 API (Azure [関数](https://azure.microsoft.com/services/functions/)など) を作成する必要があります。 サーバー側 API が呼び出され、認証と承認が確認されると、LUIS への呼び出しが渡されます。 この戦略では man-in-the-middle (中間者) 攻撃を防ぐことはできませんが、ユーザーからエンドポイントを難読化し、アクセスの追跡を可能にして、エンドポイントの応答のログ ([Application Insights](https://azure.microsoft.com/services/application-insights/) など) を追加できます。  
+LUIS 予測ランタイム エンドポイント キーを表示できるユーザーを制御するには、サーバー間環境でキーを呼び出します。 ボットから LUIS を使用している場合、このボットと LUIS の間の接続は既にセキュリティで保護されています。 LUIS エンドポイントを直接呼び出している場合は、アクセスが制御された ([AAD](https://azure.microsoft.com/services/active-directory/) など) サーバー側 API (Azure [関数](https://azure.microsoft.com/services/functions/)など) を作成する必要があります。 サーバー側 API が呼び出され、認証と承認が確認されると、LUIS への呼び出しが渡されます。 この戦略では man-in-the-middle (中間者) 攻撃を防ぐことはできませんが、ユーザーからエンドポイントを難読化し、アクセスの追跡を可能にして、エンドポイントの応答のログ ([Application Insights](https://azure.microsoft.com/services/application-insights/) など) を追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [バージョン管理](luis-concept-version.md)の概念を理解します。 
+* [バージョン管理](luis-concept-version.md)の概念を理解します。
 * [キーの作成方法](luis-how-to-azure-subscription.md)を確認します。

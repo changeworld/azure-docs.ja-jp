@@ -4,15 +4,16 @@ description: Azure PowerShell を使用してスポット VM をデプロイし�
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 234cf3f51173c53ef8ca15af4ca6f24881be3109
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: 321983fbe99d17dc78198feb195eed8ea26de569
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547282"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100619"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Azure PowerShell を使用してスポット VM をデプロイする
 

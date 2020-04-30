@@ -5,18 +5,17 @@ description: エラー メッセージとその解決方法など、Microsoft Ge
 keywords: トラブルシューティング, エラー, デバッグ
 services: genomics
 author: ruchir
-editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73485996"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100908"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
