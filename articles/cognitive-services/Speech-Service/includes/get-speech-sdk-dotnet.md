@@ -25,13 +25,13 @@ ms.locfileid: "81399858"
 
 #### <a name="c-nuget-package"></a>C#NuGetパッケージ
 
-.NET音声SDK は、次の`dotnet add`コマンドを使用して **.NET Core CLI**からインストールできます。
+.NET Speech SDK は、次の`dotnet add`コマンドを使用して **.NET Core CLI**からインストールできます。
 
 ```dotnetcli
 dotnet add package Microsoft.CognitiveServices.Speech
 ```
 
-.NET音声SDK は、次の`Install-Package`コマンドを使用して**Package Manager**からインストールできます。
+.NET Speech SDK は、次の`Install-Package`コマンドを使用して**Package Manager**からインストールできます。
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech

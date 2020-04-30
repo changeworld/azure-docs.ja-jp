@@ -13,7 +13,7 @@ ms.locfileid: "81399938"
 ---
 :::row:::
     :::column span="3":::
-        Python 音声 SDK は Python Package Index (PyPI) モジュールとして提供されています。詳細については、「 <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">azure-cognitiveservices-speech 」<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照してください。 Python音声SDK は、Windows、Linux　および macOS と互換性があります。
+        Python Speech SDK は Python Package Index (PyPI) モジュールとして提供されています。詳細については、「 <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">azure-cognitiveservices-speech 」<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照してください。 Python Speech SDK は、Windows、Linux　および macOS と互換性があります。
     :::column-end:::
     :::column:::
         <br>
@@ -35,4 +35,4 @@ pip install azure-cognitiveservices-speech
 
 #### <a name="additional-resources"></a>その他のリソース
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python 音声 SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> クイックスタートソースコード
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> クイックスタートソースコード

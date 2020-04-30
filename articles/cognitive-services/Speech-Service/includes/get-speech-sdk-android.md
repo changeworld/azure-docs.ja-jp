@@ -13,7 +13,7 @@ ms.locfileid: "81400050"
 ---
 :::row:::
     :::column span="3":::
-        Android 用に開発する場合は、2つの音声Sdk を利用できます。 Java音声SDK は、Android パッケージとしてネイティブに使用できます。また、.NET Speech SDK は .NET Standard 2.0 を実装しているため**Xamarin Android**と共に使用することもできます。
+        Android 用に開発する場合は、2つの Speech Sdk を利用できます。 Java Speech SDK は、Android パッケージとしてネイティブに使用できます。また、.NET Speech SDK は .NET Standard 2.0 を実装しているため**Xamarin Android**と共に使用することもできます。
     :::column-end:::
     :::column:::
         <br>
