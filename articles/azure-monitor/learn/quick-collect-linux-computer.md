@@ -14,10 +14,10 @@ ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80637893"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用してハイブリッド環境の Linux コンピューターからデータを収集する
