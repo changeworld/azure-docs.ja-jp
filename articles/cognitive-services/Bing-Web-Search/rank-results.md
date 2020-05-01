@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390136"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>ランキングを使用して Bing Web Search API の結果を表示する方法  
@@ -30,7 +30,7 @@ ms.locfileid: "66390136"
 
 ID を使用するのは簡単です。必要があるのは、ランキング ID を回答またはその結果の ID と一致させることだけです。 回答オブジェクトに `id` フィールドが含まれている場合は、すべての回答の結果を一緒に表示します。 たとえば、`News` オブジェクトに `id` フィールドが含まれている場合は、すべてのニュース記事を一緒に表示します。 `News` オブジェクトに `id` フィールドが含まれていない場合は、各ニュース記事に `id` フィールドが含まれており、ランキング応答によって、ニュース記事と他の回答の結果がミックスされます。  
 
-`answerType` と `resultIndex` を使用するのはもう少し複雑です。 `answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用してその回答の結果にインデックスを付けて、表示する結果を取得できるようにします (`answerType` 値は、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。  
+`answerType` と `resultIndex` を使用するのはもう少し複雑です。 `answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用してその回答の結果にインデックスを付けて、表示する結果を取得できるようにします  (`answerType` 値は、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。  
 
 ## <a name="ranking-response-example"></a>ランキング応答の例
 
