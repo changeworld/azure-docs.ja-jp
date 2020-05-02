@@ -697,6 +697,8 @@
               href: mongodb-feature-support-36.md
             - name: ワイヤ プロトコルのサポート (3.2)
               href: mongodb-feature-support.md
+            - name: よく寄せられる質問
+              href: mongodb-api-faq.md
         - name: 操作方法ガイド
           items:
             - name: 移行前ガイド
@@ -763,6 +765,10 @@
           items:
             - name: 1 - データのクエリ
               href: tutorial-query-graph.md
+        - name: 概念
+          items:
+            - name: よく寄せられる質問
+              href: gremlin-api-faq.md
         - name: 操作方法ガイド
           items:
             - name: グラフ データのモデリング
@@ -844,6 +850,10 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
+        - name: 概念
+          items:
+            - name: よく寄せられる質問
+              href: table-api-faq.md
         - name: 操作方法ガイド
           items:
             - name: Table API によるアプリの構築

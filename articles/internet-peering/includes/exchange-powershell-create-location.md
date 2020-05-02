@@ -8,14 +8,14 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 6f5d2dc30ac0f6316587fa0836b87cbd4efc0a8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8d8ccef7d6ad6e1b5d9f19de61e45ee8c439fa
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773694"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587878"
 ---
-PowerShell コマンドレット **AzPeeringLocation** は、必須パラメーター `Kind` でピアリングの場所の一覧を返します。これは後述の手順で使用します。
+PowerShell コマンドレット **Get-AzPeeringLocation** の必須パラメーター `Kind` によって、ピアリングの場所の一覧が返されます。これは後述の手順で使用します。
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
@@ -30,9 +30,9 @@ Exchange ピアリングの場所には、次のフィールドが含まれま�
 * MicrosoftIPv4Address
 * MicrosoftIPv6Address
 
-[PeeringDB](https://wwww.peeringdb.com) を参照して、そこが目的のピアリング ファシリティであることを確認します。
+[PeeringDB](https://www.peeringdb.com) を参照して、そこが目的のピアリング ファシリティであることを確認します。
 
-ピアリングの場所として Seattle を使用してピアリングを作成する方法の例を以下に示します。
+この例は、ピアリングの場所として Seattle を使用してピアリングを作成する方法を示します。
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

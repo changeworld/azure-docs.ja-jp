@@ -214,6 +214,7 @@
             - name: Web ページ
               items:
                 - name: クライアント側の JavaScript
+                  displayname: 'SPA, Single Page Applications, React, JS, Angular'
                   href: app/javascript.md
                 - name: JavaScript のソース マップ
                   href: app/source-map-support.md
@@ -243,11 +244,13 @@
             - name: スタンドアロン - 任意の環境
               items:
                 - name: Java (プレビュー)
-                  href: app/java-in-process-agent.md
-                - name: Java JVM 構成
-                  href: app/java-standalone-arguments.md
-                - name: Java の構成オプション
-                  href: app/java-standalone-config.md
+                  items:
+                    - name: 概要
+                      href: app/java-in-process-agent.md
+                    - name: 構成オプション
+                      href: app/java-standalone-config.md
+                    - name: JVM 引数の設定
+                      href: app/java-standalone-arguments.md
             - name: オンプレミスのサーバー
               items:
                 - name: ASP.NET
@@ -439,6 +442,11 @@
               href: app/custom-data-correlation.md
             - name: Connection strings
               href: app/sdk-connection-string.md
+            - name: Connection strings
+              href: app/sdk-connection-string.md
+            - name: GetMetric
+              displayname: 'get metric, custom metrics, metrics, TrackMetric'
+              href: app/get-metric.md
             - name: 特別なトピック
               items:
                 - name: Web アプリおよびサービスの詳細な診断
@@ -690,8 +698,10 @@
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: ハイブリッド クラスターでの有効化
                   href: insights/container-insights-hybrid-setup.md
-                - name: Azure Red Hat OpenShift での有効化
+                - name: Azure Red Hat OpenShift v3 での有効化
                   href: insights/container-insights-azure-redhat-setup.md
+                - name: Azure Red Hat OpenShift v4 での有効化
+                  href: insights/container-insights-azure-redhat4-setup.md
                 - name: リージョンのマッピング
                   href: insights/container-insights-region-mapping.md
             - name: パフォーマンスの監視
@@ -724,10 +734,16 @@
               href: insights/container-insights-update-metrics.md
             - name: 正常性の監視の構成
               href: insights/container-insights-health-monitors-config.md
-            - name: AKS の監視の無効化
-              href: insights/container-insights-optout.md
-            - name: Red Hat OpenShift の監視の無効化
-              href: insights/container-insights-optout-openshift.md
+            - name: 監視を無効にする
+              items:
+                - name: AKS の監視の無効化
+                  href: insights/container-insights-optout.md
+                - name: Red Hat OpenShift v3 の監視の無効化
+                  href: insights/container-insights-optout-openshift-v3.md
+                - name: Red Hat OpenShift v4 の監視の無効化
+                  href: insights/container-insights-optout-openshift-v4.md
+                - name: ハイブリッド クラスターの監視の無効化
+                  href: insights/container-insights-optout-hybrid.md
             - name: トラブルシューティング
               href: insights/container-insights-troubleshoot.md
         - name: Docker および Windows コンテナーの監視

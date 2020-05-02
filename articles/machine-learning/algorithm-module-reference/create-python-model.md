@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 929938bba9c9512ecfd663a540cf4a7ebbf68e2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371819"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189856"
 ---
 # <a name="create-python-model-module"></a>Create Python Model モジュール
 
@@ -31,13 +31,21 @@ Create Python Model モジュールを使用して、Python スクリプトか�
 ## <a name="configure-the-module"></a>モジュールを構成する
 
 このモジュールを使用するには、Python の中級またはエキスパートの知識が必要です。 このモジュールは、Azure Machine Learning に既にインストールされている Python パッケージに含まれるすべての学習器の使用をサポートしています。 「[Execute Python Script](execute-python-script.md)」で、プレインストールされた Python パッケージの一覧を参照してください。
-  
 
+> [!NOTE]
+> スクリプトを記述するときは十分に注意し、宣言されていないオブジェクトやインポートされていないモジュールの使用など、構文エラーがないことを確認してください。
+
+> [!NOTE]
+> また、[Python スクリプトの実行](execute-python-script.md)で事前にインストールされているモジュールの一覧にも、特に注意を払ってください。 事前にインストールされているモジュールのみをインポートします。 このスクリプトに "pip install xgboost" などの追加パッケージをインストールしないでください。そうしないと、ダウンストリーム モジュールでモデルを読み取るときにエラーが発生します。
+  
 この記事では、単純なパイプラインで **Create Python Model** を使用する方法について説明します。 パイプラインのダイアグラムを以下に示します。
 
 ![Create Python Model のダイアグラム](./media/module/create-python-model.png)
 
 1. **[Create Python Model]** を選択し、モデリングまたはデータ管理プロセスを実装するようにスクリプトを編集します。 Azure Machine Learning 環境の Python パッケージに含まれるいずれかの学習器を、モデル作成のベースにできます。
+
+> [!NOTE]
+> スクリプトのサンプル コードのコメントに特に注意を払って、スクリプトがクラス名、メソッド、メソッド シグネチャなどの要件に厳密に従っていることを確認してください。 違反があると、例外が発生します。 
 
    ２クラス Naive Bayes 分類器の以下のサンプルコードは、一般的な *sklearn* パッケージを使用しています。
 
@@ -50,7 +58,9 @@ Create Python Model モジュールを使用して、Python スクリプトか�
        # predict: which generates prediction result, the input argument and the prediction result MUST be pandas DataFrame.
    # The signatures (method names and argument names) of all these methods MUST be exactly the same as the following example.
 
-
+   # Please do not install extra packages such as "pip install xgboost" in this script,
+   # otherwise errors will be raised when reading models in down-stream modules.
+   
    import pandas as pd
    from sklearn.naive_bayes import GaussianNB
 
@@ -61,10 +71,15 @@ Create Python Model モジュールを使用して、Python スクリプトか�
            self.feature_column_names = list()
 
        def train(self, df_train, df_label):
+           # self.feature_column_names records the column names used for training.
+           # It is recommended to set this attribute before training so that the
+           # feature columns used in predict and train methods have the same names.
            self.feature_column_names = df_train.columns.tolist()
            self.model.fit(df_train, df_label)
 
        def predict(self, df):
+           # The feature columns used for prediction MUST have the same names as the ones for training.
+           # The name of score column ("Scored Labels" in this case) MUST be different from any other columns in input data.
            return pd.DataFrame(
                {'Scored Labels': self.model.predict(df[self.feature_column_names]), 
                 'probabilities': self.model.predict_proba(df[self.feature_column_names])[:, 1]}
@@ -73,9 +88,9 @@ Create Python Model モジュールを使用して、Python スクリプトか�
 
    ```
 
-1. 作成した **Create Python Model** モジュールを、**Train Model** および **Score Model** に接続します。
+2. 作成した **Create Python Model** モジュールを、**Train Model** および **Score Model** に接続します。
 
-1. モデルを評価する必要がある場合には、[Execute Python Script](execute-python-script.md) モジュールを追加し、Python スクリプトを編集します。
+3. モデルを評価する必要がある場合には、[Execute Python Script](execute-python-script.md) モジュールを追加し、Python スクリプトを編集します。
 
    以下のスクリプトは、サンプル評価コードです。
 
@@ -88,7 +103,7 @@ Create Python Model モジュールを使用して、Python スクリプトか�
    # imports up here can be used to 
    import pandas as pd
 
-   # The entry point function can contain up to two input arguments:
+   # The entry point function MUST have two input arguments:
    #   Param<dataframe1>: a pandas.DataFrame
    #   Param<dataframe2>: a pandas.DataFrame
    def azureml_main(dataframe1 = None, dataframe2 = None):

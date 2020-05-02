@@ -6,26 +6,24 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 02/24/2020
-ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: e5d9d4f215752d95ee1d676e8a5b126b6d0d3ab2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623105"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190624"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
-通常、Apache HBase は、低レベルの API (スキャン、取得、および配置) または Apache Phoenix を使用した SQL 構文のいずれかでクエリされます。 Apache は Apache Spark HBase コネクタも備えており、これは HBase に格納されたデータをクエリおよび変更するための便利で効率的な代替手段となります。
+通常、Apache HBase は、低レベルの API (スキャン、取得、および配置) または Apache Phoenix を使用した SQL 構文のいずれかでクエリされます。 Apache には、Apache Spark HBase コネクタも用意されています。 そのコネクタは、HBase に格納されたデータのクエリおよび変更を行うための便利で効率的な代替手段となります。
 
 ## <a name="prerequisites"></a>前提条件
 
 * 2 つの異なる HDInsight クラスターが、同じ[仮想ネットワーク](./hdinsight-plan-virtual-network-deployment.md)にデプロイされていること。 一方は HBase で、もう一方は Spark 2.1 (HDInsight 3.6) 以降がインストールされた Spark です。 詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」をご覧ください。
 
-* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 このスキーマは、Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// になります。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
+* クラスターのプライマリ ストレージの URI スキーム。 このスキーマは、Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では adl:// になります。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 ## <a name="overall-process"></a>全体的なプロセス
 
@@ -34,7 +32,7 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 1. HBase でいくつかのサンプル データを準備します。
 2. HBase クラスターの構成フォルダー (/etc/hbase/conf) から hbase-site.xml ファイルを取得します。
 3. hbase-site.xml のコピーを Spark 2 の構成フォルダー (/etc/spark2/conf) に配置します。
-4. `spark-shell` オプションで、Maven 座標を使用して Spark HBase コネクターを参照する `packages` を実行します。
+4. `packages` オプションで、Maven 座標を使用して Spark HBase コネクターを参照する `spark-shell` を実行します。
 5. Spark のスキーマを HBase にマップするカタログを定義します。
 6. RDD または DataFrame API を使用して HBase データと対話します。
 

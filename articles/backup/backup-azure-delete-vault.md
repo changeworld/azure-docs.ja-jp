@@ -1,18 +1,18 @@
 ---
 title: Microsoft Azure Recovery Services コンテナーを削除する
-description: この記事では、依存関係を削除してから、Microsoft Azure Backup Recovery Services (MARS) コンテナーを削除する方法について説明します。
+description: この記事では、依存関係を削除してから Azure Backup Recovery Services コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: f33f52048729b50015ba86db71118b9a21e1a2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fcf8004cd5792b30ec57537d5d8ab0bc085dfb3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500390"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183757"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
-この記事では、Microsoft [Azure Backup](backup-overview.md) Recovery Services (MARS) コンテナーを削除する方法について説明します。 依存関係を削除してからコンテナーの削除を行うための手順が含まれています。
+この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーを削除する方法について説明します。 依存関係を削除してからコンテナーの削除を行うための手順が含まれています。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -90,6 +90,7 @@ Azure への MABS (Microsoft Azure Backup Server) または DPM (System Center D
 
      警告メッセージと、同意のチェック ボックスの指示を確認します。
     > [!NOTE]
+    >
     >- 保護されたサーバーが Azure サービスと同期していて、バックアップ アイテムが存在する場合は、同意のチェック ボックスに、依存するバックアップ アイテムの数と、バックアップ アイテムを表示するためのリンクが表示されます。
     >- 保護されたサーバーが Azure サービスと同期しておらず、バックアップ アイテムが存在する場合は、同意のチェック ボックスに、バックアップ アイテムの数だけが表示されます。
     >- バックアップ アイテムが存在しない場合は、同意のチェック ボックスで削除が求められます。
@@ -193,7 +194,7 @@ MABS 管理コンソールからバックアップ アイテムを削除する�
 
   Azure Backup で保護された項目の保護を無効にする方法について、[詳細を参照](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0)してください。
 
-- クラウド内のバックアップで保護されているすべての項目の保護を停止し、データを削除します (例: laaS VM、Azure ファイル共有など)。
+- クラウド内のバックアップで保護されているすべての項目の保護を停止し、データを削除します (例:  laaS VM、Azure ファイル共有など)。
 
     ```PowerShell
        Disable-AzRecoveryServicesBackupProtection

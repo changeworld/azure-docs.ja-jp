@@ -36,8 +36,12 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: コンポーネントと制限事項
-      href: concepts-limitations.md
+    - name: Components
+      href: components.md
+    - name: 概念
+      href: concepts.md
+    - name: 型
+      href: types.md
     - name: 正常性の監視
       items:
         - name: 正常性プローブ
@@ -133,6 +137,8 @@
       items:
         - name: Azure Load Balancer のトラブルシューティング
           href: load-balancer-troubleshoot.md
+        - name: 一般的なデプロイ エラーのトラブルシューティング
+          href: load-balancer-common-deployment-errors.md
 - name: リファレンス
   items:
     - name: コード サンプル

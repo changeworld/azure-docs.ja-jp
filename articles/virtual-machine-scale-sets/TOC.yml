@@ -109,7 +109,7 @@
           href: ../virtual-machines/windows/sizes-gpu.md
           maintainContext: true
           items:
-            - name: GPU ドライバーの設定
+            - name: NVIDIA GPU ドライバーの設定
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: ハイ パフォーマンス コンピューティング
@@ -315,5 +315,5 @@
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'

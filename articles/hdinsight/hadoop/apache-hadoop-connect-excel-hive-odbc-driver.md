@@ -1,27 +1,27 @@
 ---
-title: ODBC ドライバーを使用した Excel と Apache Hadoop - Azure HDInsight
+title: Open Database Connectivity (ODBC) ドライバーを使用した Excel と Apache Hadoop - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/02/2020
-ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/22/2020
+ms.openlocfilehash: 388f59f5090be43469acfde5197a658942e817f7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251060"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182448"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Microsoft のビッグ データ ソリューションでは、Azure HDInsight にデプロイされた Apache Hadoop クラスターと Microsoft Business Intelligence (BI) コンポーネントが統合されます。 たとえば、Microsoft Hive Open Database Connectivity (ODBC) ドライバーを使用すれば、HDInsight で Hadoop クラスターの Hive データ ウェアハウスに Excel を接続できます。
+Microsoft のビッグ データ ソリューションでは、HDInsight にデプロイされた Apache Hadoop クラスターと Microsoft Business Intelligence (BI) コンポーネントが統合されます。 たとえば、Hadoop クラスターの Hive データ ウェアハウスに Excel を接続する機能があります。 Microsoft Hive Open Database Connectivity (ODBC) ドライバーを使用して接続します。
 
-また、Microsoft Power Query for Excel アドインを使用して Excel から HDInsight クラスターや、その他の (HDInsight 以外の) Hadoop クラスターなどのデータ ソースを接続することもできます。 Power Query のインストール方法と使用方法については、[Power Query を使用した Excel から HDInsight への接続](../hdinsight-connect-excel-power-query.md)に関するページを参照してください。
+Microsoft Power Query for Excel アドインを使用して、HDInsight クラスターに関連付けられているデータを Excel から接続できます。 詳細については、[ を使用した Excel と HDInsight の接続](../hdinsight-connect-excel-power-query.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,13 +32,13 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
 
-ODBC ドライバーを使用するアプリケーションのバージョンと一致した [Microsoft Hive ODBC Driver](https://www.microsoft.com/download/details.aspx?id=40886) のバージョンをダウンロードしてインストールします。  この記事では、Office Excel に対してこのドライバーを使用します。
+[Microsoft Hive ODBC ドライバー](https://www.microsoft.com/download/details.aspx?id=40886)をダウンロードしてインストールします。 ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンを選択してください。  この記事では、Office Excel に対してこのドライバーを使用します。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC データ ソースを作成する
 
 次の手順に従って、Hive ODBC データ ソースを作成します。
 
-1. Windows で、[スタート]、[Windows 管理ツール]、[ODBC データ ソース (32 ビット)/(64 ビット)] の順に移動します。  これにより、 **[ODBC データ ソース アドミニストレーター]** ウィンドウが開きます。
+1. Windows で、 **[スタート] > [Windows 管理ツール] > [ODBC データ ソース (32 ビット)] または [ODBC データ ソース (64 ビット)]** の順に移動します。  このアクションにより、 **[ODBC データ ソース アドミニストレーター]** ウィンドウが開きます。
 
     ![ODBC データ ソース アドミニストレーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成する")
 
@@ -68,7 +68,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンと
 
     ![DSN 詳細構成オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "DSN 詳細構成オプション")
 
-1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功!** " と表示されます。  
+1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功!** " と表示されます
 
 1. **[OK]** を選択して、[テスト] ウィンドウを閉じます。  
 
@@ -100,8 +100,5 @@ ODBC ドライバーを使用するアプリケーションのバージョンと
 
 * [Azure HDInsight の Microsoft Power BI で Apache Hive データを視覚化する](apache-hadoop-connect-hive-power-bi.md)。
 * [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
-* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
 * [Power Query を使用して Excel を Apache Hadoop に接続する](apache-hadoop-connect-excel-power-query.md)。
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する](apache-hadoop-visual-studio-tools-get-started.md)。
-* [Azure HDInsight Tool for Visual Studio Code の使用](../hdinsight-for-vscode.md)。
-* [HDInsight にデータをアップロードする](./../hdinsight-upload-data.md)。

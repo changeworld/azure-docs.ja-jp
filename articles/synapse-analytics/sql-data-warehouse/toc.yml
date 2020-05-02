@@ -8,6 +8,8 @@
       href: sql-data-warehouse-overview-what-is.md
     - name: Azure Synapse Analytics のアーキテクチャ
       href: massively-parallel-processing-mpp-architecture.md
+    - name: データ ウェアハウス ユニット
+      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: チート シート
       href: cheat-sheet.md
     - name: ベスト プラクティス
@@ -395,7 +397,7 @@
       href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-sqldw/'
     - name: サポート
       href: sql-data-warehouse-get-started-create-support-ticket.md

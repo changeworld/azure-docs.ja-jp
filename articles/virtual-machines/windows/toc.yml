@@ -225,7 +225,7 @@
               href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NVv4 シリーズ
               href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: GPU ドライバーの設定
+            - name: NVIDIA GPU ドライバーの設定
               href: n-series-driver-setup.md
             - name: AMD GPU ドライバーの設定
               href: n-series-amd-driver-setup.md
