@@ -1,38 +1,38 @@
 ---
-title: Go-To-Market Services - オファー掲載のベスト プラクティス | Azure
+title: Go-To-Market Services - オファー掲載のベスト プラクティス | Azure Marketplace
 description: Go-To-Market Services - このセクションでは、オファーの掲載に関するベスト プラクティスについて説明します
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 3cb625e613d8dbe9398e947925a8dc574a277614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f5083b5f00834e65a8385835635588033bd977
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286253"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684573"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
-このセクションの表は、魅力的なマーケットプレースのオファーを作成するための提案をまとめたものです。 マーケティング素材を作成し、構成するには、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)にアクセスします。 
+このセクションの表は、魅力的なマーケットプレースのオファーを作成するための提案をまとめたものです。 マーケティング素材を作成し、構成するには、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)にアクセスします。 
 
 ## <a name="storefront-offer-details"></a>ストアフロント オファーの詳細
 
 | ストアフロントの設定 | ベスト プラクティス |
 |:--- |:--- |  
-| プラン名 | 強力なタイトルを付ける:<br> <ul> <li> アプリには、顧客に対する中心的な価値を伝える名前を付けるようにします。 </li> <li> 検索エンジンの結果で高い順位を得られるように、アプリのタイトルに検索キーワードを含めます。 </li> </ul> コンサルティング サービスのリストは、決められたタイトルの形式<br>[オファー名\]: [期間] [オファーの種類] に従います \(例: *Contoso:2 週間の実装*)。 <br><br> ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
+| プラン名 | 強力なタイトルを付ける:<br> <ul> <li> アプリには、顧客に対する中心的な価値を伝える名前を付けるようにします。 </li> <li> 検索エンジンの結果で高い順位を得られるように、アプリのタイトルに検索キーワードを含めます。 </li> </ul> コンサルティング サービスのリストは、決められたタイトルの形式 <br>[オファー名\]: [期間] [オファーの種類] に従います \(例: *Contoso:2 週間の実装*)。 <br><br> ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
 | オファーの説明 | オファーの明確な説明を入力する:<br> <ul> <li> 説明の先頭の数文で、オファーの価値提案を明確に説明します。 </li> <li> 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。 </li> <li> 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。 </li> <li> できるだけ業界固有の語彙や利益に基づく表現を使用します。</li> <li> さらに、コンサルティング サービスの掲載では、提供するプロフェッショナル サービスを明確に示す必要があります。 </li></ul> 価値提案の中心の要素には、以下の情報を含めるようにします。<ul><li>製品の説明。</li><li>製品から利益を得られるユーザーの種類。</li><li>製品が対応する顧客のニーズや問題。</li></ul> |
 
-このセクションの表は、魅力的なマーケットプレースのオファーを作成するための提案をまとめたものです。 マーケティング素材を作成し、構成するには、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)にアクセスします。 
+このセクションの表は、魅力的なマーケットプレースのオファーを作成するための提案をまとめたものです。 マーケティング素材を作成し、構成するには、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)にアクセスします。 
 
 ## <a name="storefront-listing-details"></a>ストアフロントのリストの詳細
 
 | ストアフロントの設定 | ベスト プラクティス |
 |:--- |:--- |  
-| 業界:AppSource アプリとコンサルティング サービスのみ | オファーが業界固有のニーズに対応している場合は、業界を選択する: <ul><li> オファーの説明に業界固有の機能を含めるようにします。</li> </ul> **注**:オプションの最大数は、オファーの種類によって異なり、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)に表示されます。 |
-| Categories | オファーに最も合っているカテゴリを選択する:<br> <ul> <li> カテゴリはお客様が関連アプリを検索するときに使用するので、慎重に選択してください。 </li> <li> オファーがカテゴリ固有のニーズにどのように対応しているかをプランの説明に含めます。 </li> </ul> **注**:オプションの最大数は、オファーの種類によって異なり、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)に表示されます。 |
+| 業界:AppSource アプリとコンサルティング サービスのみ | オファーが業界固有のニーズに対応している場合は、業界を選択する: <ul><li> オファーの説明に業界固有の機能を含めるようにします。</li> </ul> **注**:オプションの最大数は、オファーの種類によって異なり、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)に表示されます。 |
+| Categories | オファーに最も合っているカテゴリを選択する:<br> <ul> <li> カテゴリはお客様が関連アプリを検索するときに使用するので、慎重に選択してください。 </li> <li> オファーがカテゴリ固有のニーズにどのように対応しているかをプランの説明に含めます。 </li> </ul> **注**:オプションの最大数は、オファーの種類によって異なり、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)に表示されます。 |
 | アプリが連携する製品 (最大 3 個):AppSource アプリのみ | ソリューションで使用する、または拡張される追加の製品とテクノロジを列挙します。 たとえば、Azure IoT Hub、Azure Machine Learning などです。 |
 | 検索キーワード (最大 3 個) | 検索キーワードは、ビジネス ユーザーが探しているオファーを見つけるのに役立つことがあります <ul> <li> Azure Marketplace で </li> <li> AppSource で </li> <li> 検索エンジンを使用 </li> </ul> 掲載がこれらの検索に表示されるためには、次のことが必要です。 <ul> <li> オファーの上位 3 つの検索キーワードを明らかにします。 </li> <li> オファーの概要と説明に検索キーワードを組み込みます </li> <li> ここに検索キーワードを列記します。 </li> </ul> |
 
@@ -89,12 +89,12 @@ AppSource で選択した製品に表示されるオファーについて、ア�
 
 次の URL の例には、前述のクエリ パラメーターの両方が含まれています。`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-これらのパラメーターを AppSource の URL に追加すると、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)の分析ダッシュボードでキャンペーンの効果を確認できます。
+これらのパラメーターを AppSource の URL に追加すると、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)の分析ダッシュボードでキャンペーンの効果を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[商用マーケットプレースのベネフィット](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)の詳細を確認します。
+[商用マーケットプレースのベネフィット](./gtm-your-marketplace-benefits.md)の詳細を確認します。
 
-[Cloud パートナー ポータル](https://cloudpartner.azure.com)にログインして、オファーを作成および構成する。
+[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインして、オファーを作成して構成します。
 
 ---
