@@ -6,57 +6,67 @@
       href: intro-openshift.md
 - name: チュートリアル
   items:
-    - name: Azure Red Hat OpenShift クラスターの作成と管理
-      items:
-        - name: 1 - Azure Red Hat OpenShift クラスターを作成する
-          href: tutorial-create-cluster.md
-        - name: 2 - Azure Red Hat OpenShift クラスターをスケーリングする
-          href: tutorial-scale-cluster.md
-        - name: 3 - Azure Red Hat OpenShift クラスターを削除する
-          href: tutorial-delete-cluster.md
-- name: クラスターの管理
-  items:
-    - name: Azure Red Hat OpenShift クラスターの管理
-      items:
-        - name: 1 - Azure Red Hat OpenShift クラスターの管理者ロール
-          href: cluster-administration-cluster-admin-role.md
-        - name: 2 - セキュリティ コンテキスト制約の管理
-          href: cluster-administration-security-context-constraints.md
+    - name: 1 - Azure Red Hat OpenShift 4 クラスターを作成する
+      href: tutorial-create-cluster.md
+    - name: 2 - Azure Red Hat OpenShift 4 クラスターに接続する
+      href: tutorial-connect-cluster.md
+    - name: 3 - Azure Red Hat OpenShift 4 クラスターを削除する
+      href: tutorial-delete-cluster.md
 - name: 操作方法ガイド
   expanded: true
   items:
-    - name: Azure Red Hat OpenShift 開発環境の設定
-      href: howto-setup-environment.md
-      expanded: true
+    - name: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
+      href: create-private-cluster.md
+    - name: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
+      href: dns-forwarding.md
+    - name: Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する
       items:
-        - name: Azure AD テナントを作成する
-          href: howto-create-tenant.md
-        - name: Azure AD アプリ オブジェクトとユーザーの作成
-          href: howto-aad-app-configuration.md
-    - name: Azure Red Hat OpenShift 4.3 (プレビュー)
+        - name: Azure Active Directory 認証を構成する (CLI)
+          href: configure-azure-ad-cli.md
+        - name: Azure Active Directory 認証を構成する (ポータル)
+          href: configure-azure-ad-ui.md
+    - name: Azure Red Hat OpenShift 4 の監視とログ記録
       items:
-        - name: Azure Red Hat OpenShift 4.3 クラスターの作成
-          href: howto-using-azure-redhat-openshift.md
-        - name: Azure Red Hat OpenShift 4.3 向けの Azure Monitor の設定
-          href: howto-azure-monitor-v4.md
-    - name: Azure Red Hat OpenShift クラスターでスタンドアロンの Prometheus をデプロイする
-      href: howto-deploy-prometheus.md
-    - name: Azure Red Hat OpenShift クラスター内でプロジェクトを管理する
-      href: howto-manage-projects.md
-    - name: プライベートの Azure Red Hat OpenShift クラスターの作成
-      href: howto-create-private-cluster.md
-    - name: 監視およびログ記録
-      items:
-        - name: Azure Monitor for containers (プレビュー)
+        - name: Azure Red Hat OpenShift 4 における Azure Monitor for containers (プレビュー)
           items:
-            - name: Azure Monitor for containers を構成する
-              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
-              maintainContext: true
-            - name: Azure Monitor for containers を有効にする
-              href: ../azure-monitor/insights/container-insights-optout-openshift.md
-              maintainContext: true
-    - name: Azure Red Hat OpenShift クラスター内で特権コンテナーを実行する
-      href: howto-run-privileged-containers.md
+            - name: Azure Red Hat OpenShift 4 向けに Azure Monitor for containers を構成する (プレビュー)
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を無効にする (プレビュー)
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 3.11
+      items:
+        - name: Azure Red Hat OpenShift 3.11 向けに Azure Red Hat OpenShift 開発環境を設定する
+          href: howto-setup-environment.md
+          expanded: true
+          items:
+            - name: Azure AD テナントを作成する
+              href: howto-create-tenant.md
+            - name: Azure AD アプリ オブジェクトとユーザーの作成
+              href: howto-aad-app-configuration.md
+        - name: Azure Red Hat OpenShift 3.11 クラスターにスタンドアロンの Prometheus をデプロイする
+          href: howto-deploy-prometheus.md
+        - name: Azure Red Hat OpenShift 3.11 クラスター内でプロジェクトを管理する
+          href: howto-manage-projects.md
+        - name: プライベート Azure Red Hat OpenShift 3.11 クラスターを作成する
+          href: howto-create-private-cluster.md
+        - name: Azure Red Hat OpenShift 3.11 の監視とログ記録
+          items:
+            - name: Azure Red Hat OpenShift 3.11 における Azure Monitor for containers (プレビュー)
+              items:
+                - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を構成する
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を無効にする
+                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  maintainContext: true
+        - name: Azure Red Hat OpenShift 3.11 で特権コンテナーを実行する
+          href: howto-run-privileged-containers.md
+        - name: Azure Red Hat OpenShift 3.11 におけるクラスター管理
+          items:
+            - name: 1 - Azure Red Hat OpenShift 3.11 クラスターの管理者ロール
+              href: cluster-administration-cluster-admin-role.md
+            - name: 2 - Azure Red Hat OpenShift 3.11 でセキュリティ コンテキスト制約を管理する
+              href: cluster-administration-security-context-constraints.md
 - name: リファレンス
   items:
     - name: Azure Red Hat OpenShift CLI
@@ -69,8 +79,10 @@
       href: openshift-faq.md
     - name: トラブルシューティング
       href: troubleshoot.md
-    - name: サポートされているリソース
+    - name: Azure Red Hat OpenShift 3.11 でサポートされているリソース
       href: supported-resources.md
+    - name: Azure Red Hat OpenShift 4.3 でサポートされているリソース
+      href: support-policies-v4.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Red Hat OpenShift のドキュメント

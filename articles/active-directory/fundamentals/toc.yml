@@ -31,7 +31,9 @@
           href: concept-fundamentals-block-legacy-authentication.md
         - name: ID セキュリティ スコア
           href: identity-secure-score.md
-        - name: 継続的アクセスの評価
+        - name: リモート ワーカーをセキュリティで保護する
+          href: concept-secure-remote-workers.md
+        - name: 継続的アクセス評価
           href: concept-fundamentals-continuous-access-evaluation.md
     - name: グループとユーザー
       items:

@@ -103,7 +103,15 @@
   items:
     - name: 認証の基本
       displayName: Auth basics
-      href: authentication-scenarios.md
+      items:
+        - name: 認証と承認
+          href: authentication-vs-authorization.md
+        - name: セキュリティ トークン
+          href: security-tokens.md
+        - name: アプリケーション モデル
+          href: application-model.md
+        - name: アプリのサインイン フロー
+          href: app-sign-in-flow.md
     - name: 認証フローとアプリ シナリオ
       displayName: Auth flows
       href: authentication-flows-app-scenarios.md
@@ -250,129 +258,120 @@
       items:
         - name: 概要
           href: msal-overview.md
-        - name: アカウントとテナント プロファイル - Android
-          href: accounts-overview.md
-        - name: 承認エージェント - Android
-          href: authorization-agents.md
-        - name: 仲介型認証 - Android
-          href: brokered-auth.md
-        - name: 移行
+        - name: .NET
+          displayName: 'xamarin, ASP.NET Core'
           items:
-            - name: 概要
-              href: msal-migration.md
+            - name: アプリケーションの初期化
+              href: msal-net-initializing-client-applications.md
+            - name: クライアント アサーション
+              href: msal-net-client-assertions.md
+            - name: Azure AD B2C との統合
+              href: msal-net-aad-b2c-considerations.md
+            - name: ADFS による統合
+              href: msal-net-adfs-support.md
             - name: MSAL.NET への移行
               href: msal-net-migration.md
-            - name: MSAL.js への移行
-              href: msal-compare-msal-js-and-adal-js.md
-            - name: MSAL.Android への移行
-              href: migrate-android-adal-msal.md
-            - name: MSAL.iOS/macOS への移行
-              href: migrate-objc-adal-msal.md
-            - name: MSAL Python への移行
-              href: migrate-python-adal-msal.md
-            - name: MSAL for Java への移行
-              href: migrate-adal-msal-java.md
             - name: ブローカーを使用する Xamarin アプリの MSAL.NET への移行
               href: msal-net-migration-ios-broker.md
-        - name: サポートされている認証フロー
-          href: msal-authentication-flows.md
-        - name: 単一および複数アカウントのパブリック クライアント アプリ (Android)
-          href: single-multi-account.md
-        - name: トークンの取得およびキャッシュ
+            - name: Web ブラウザーの考慮事項
+              href: msal-net-web-browsers.md
+            - name: エラーと例外を処理する
+              href: msal-handling-exceptions.md?tabs=dotnet
+            - name: ログ記録
+              href: msal-logging.md?tabs=dotnet
+        - name: Android
           items:
+            - name: アカウントとテナント プロファイル
+              href: accounts-overview.md
+            - name: 承認エージェント
+              href: authorization-agents.md
+            - name: 仲介型認証
+              href: brokered-auth.md
+            - name: Azure AD B2C との統合
+              href: msal-android-b2c.md
+            - name: MSAL.Android への移行
+              href: migrate-android-adal-msal.md
+            - name: 共有デバイス モード
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: 単一および複数アカウントのパブリック クライアント アプリ
+              href: single-multi-account.md
+            - name: ログ記録
+              href: msal-logging.md?tabs=android
+        - name: iOS と macOS
+          items:
+            - name: Azure AD B2C との統合
+              href: 'config-authority.md#b2c'
+            - name: MSAL.iOS/macOS への移行
+              href: migrate-objc-adal-msal.md
+            - name: iOS デバイスの共有デバイス モード
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: MSAL アプリ間の SSO
+              href: single-sign-on-macos-ios.md
+            - name: ADAL アプリと MSAL アプリの間の SSO
+              href: sso-between-adal-msal-apps-macos-ios.md
+            - name: SSL に関する問題のトラブルシューティング (MSAL iOS/macOS)
+              href: ssl-issues.md
+            - name: エラーと例外を処理する
+              href: msal-handling-exceptions.md?tabs=iosmacos
+            - name: ログ記録
+              href: msal-logging.md?tabs=swift
+        - name: Java
+          items:
+            - name: MSAL for Java への移行
+              href: migrate-adal-msal-java.md
+            - name: MSAL for Java での ADFS のサポート
+              href: msal-java-adfs-support.md
+            - name: エラーと例外を処理する
+              href: msal-handling-exceptions.md?tabs=java
+            - name: ログ記録
+              href: msal-logging.md?tabs=java
+        - name: JavaScript と Node.js
+          items:
+            - name: アプリケーションの初期化 - JavaScript
+              href: msal-js-initializing-client-applications.md
+            - name: Azure AD B2C との統合
+              href: msal-b2c-overview.md
+            - name: MSAL.js への移行
+              href: msal-compare-msal-js-and-adal-js.md
+            - name: MSAL.js でのシングル サインオン
+              href: msal-js-sso.md
+            - name: 考慮事項 - IE
+              href: msal-js-use-ie-browser.md
+            - name: 既知の問題 - IE と Microsoft Edge
+              href: msal-js-known-issues-ie-edge-browsers.md
+            - name: 既知の問題 - Safari
+              href: msal-js-known-issues-safari-browser.md
+            - name: エラーと例外を処理する
+              href: msal-handling-exceptions.md?tabs=javascript
+            - name: ログ記録
+              href: msal-logging.md?tabs=javascript
+        - name: Python
+          items:
+            - name: MSAL Python への移行
+              href: migrate-python-adal-msal.md
+            - name: MSAL for Python での ADFS のサポート
+              href: msal-python-adfs-support.md
+            - name: エラーと例外を処理する
+              href: msal-handling-exceptions.md?tabs=python
+            - name: ログ記録
+              href: msal-logging.md?tabs=python
+        - Name: すべてのプラットフォーム
+          items:
+            - name: サポートされている認証フロー
+              href: msal-authentication-flows.md
             - name: トークンの取得およびキャッシュ
               href: msal-acquire-cache-tokens.md
-            - name: v1.0 アプリ用のスコープ
-              href: msal-v1-app-scopes.md
-        - name: クライアント アプリケーション
-          displayName: Client apps
-          items:
-            - name: ロール要求の構成
-              href: active-directory-enterprise-app-role-management.md
-            - name: 要求のカスタマイズ - ポータル
-              href: active-directory-saml-claims-customization.md
-            - name: 要求のカスタマイズ - PowerShell
-              href: active-directory-claims-mapping.md
-            - name: 省略可能な要求の構成
-              href: active-directory-optional-claims.md
-            - name: トークンの有効期間の構成
-              href: active-directory-configurable-token-lifetimes.md
-            - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
-              href: howto-handle-samesite-cookie-changes-chrome-browser.md
-        - name: アプリケーションの構成
-          displayName: App configuration
-          items:
-            - name: クライアント アプリケーション
+            - name: パブリックおよび機密クライアント アプリ
               href: msal-client-applications.md
             - name: アプリケーションの構成
               href: msal-client-application-configuration.md
-            - name: アプリケーションの初期化 - .NET
-              href: msal-net-initializing-client-applications.md
-            - name: クライアント アサーション - .NET
-              href: msal-net-client-assertions.md
-            - name: アプリケーションの初期化 - JavaScript
-              href: msal-js-initializing-client-applications.md
-        - name: エラーと例外を処理する
-          href: msal-handling-exceptions.md
-        - name: ログ記録
-          href: msal-logging.md
-        - name: 共有デバイス
-          items:
-            - name: 概要 - 共有デバイス
+            - name: 共有デバイス
               href: msal-shared-devices.md
-              displayName: 'shared device mode, firstline worker, frontline worker'
-            - name: iOS デバイスの共有デバイス モード
-              href: msal-ios-shared-devices.md
-              displayName: 'firstline worker, frontline worker'
-            - name: Android デバイスの共有デバイス モード
-              href: msal-android-shared-devices.md
-              displayName: 'firstline worker, frontline worker'
-        - name: シングル サインオン
-          displayName: SSO
-          items:
-            - name: MSAL.js でのシングル サインオン
-              href: msal-js-sso.md
-            - name: iOS と macOS での MSAL によるシングル サインオン
-              items:
-                - name: MSAL アプリ間の SSO
-                  href: single-sign-on-macos-ios.md
-                - name: ADAL アプリと MSAL アプリの間の SSO
-                  href: sso-between-adal-msal-apps-macos-ios.md
-        - name: ADFS による統合
-          displayName: Active Directory Federation Services
-          items:
-            - name: MSAL.NET での ADFS のサポート
-              href: msal-net-adfs-support.md
-            - name: MSAL for Python での ADFS のサポート
-              href: msal-python-adfs-support.md
-            - name: MSAL for Java での ADFS のサポート
-              href: msal-java-adfs-support.md
-        - name: Azure AD B2C との統合
-          items:
-            - name: Android
-              href: msal-android-b2c.md
-            - name: JavaScript
-              href: msal-b2c-overview.md
-            - name: .NET
-              href: msal-net-aad-b2c-considerations.md
-            - name: iOS と macOS
-              href: 'config-authority.md#b2c'
-        - name: 考慮事項と既知の問題
-          items:
-            - name: MSAL.NET
-              items:
-                - name: Web ブラウザー
-                  href: msal-net-web-browsers.md
-            - name: MSAL.js
-              items:
-                - name: 考慮事項 - IE
-                  href: msal-js-use-ie-browser.md
-                - name: 既知の問題 - IE と Microsoft Edge
-                  href: msal-js-known-issues-ie-edge-browsers.md
-                - name: 既知の問題 - Safari
-                  href: msal-js-known-issues-safari-browser.md
-            - name: SSL に関する問題のトラブルシューティング (MSAL iOS/macOS)
-              href: ssl-issues.md
+              displayName: 'shared device mode, firstline worker, frontline worker, flw'
+            - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
     - name: 認証プロトコル
       displayName: Auth protocol
       items:
@@ -457,9 +456,13 @@
     - name: 自動ユーザー プロビジョニング (SCIM)
       items:
         - name: 自動ユーザー プロビジョニングとは
-          href: /azure/active-directory/manage-apps/user-provisioning
-        - name: SCIM エンドポイントの構築と統合
-          href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
+          href: /azure/active-directory/app-provisioning/user-provisioning
+        - name: SCIM エンドポイントの開発と統合
+          href: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
+        - name: 一般的なプロビジョニングのシナリオ
+          href: /azure/active-directory/app-provisioning/scim-graph-scenarios
+        - name: MS Graph を使用した構成の自動化
+          href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
 - name: 操作方法ガイド
   items:
     - name: 認証

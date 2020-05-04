@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 03/03/2020
-  ms.openlocfilehash: 396b416d2c2fae101fee4ba64d85375e6d3da794
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 4bdb7c1765bdbd170d06eaef44b7578d1ddebedc
+  ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79471440"
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82509637"
 landingContent:
 - title: Azure Front Door について
   linkLists:
@@ -23,6 +23,8 @@ landingContent:
     links:
     - text: Azure Front Door とは
       url: front-door-overview.md
+    - text: 新機能
+      url: front-door-whats-new.md
 - title: Front Door を作成する
   linkLists:
   - linkListType: quickstart
@@ -69,3 +71,17 @@ landingContent:
     links:
     - text: Azure 負荷分散
       url: front-door-lb-with-azure-app-delivery-suite.md
+- title: ルール エンジンを構成する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ルール エンジンとは
+      url: front-door-rules-engine.md
+    - text: ルール エンジンの一致条件
+      url: front-door-rules-engine-match-conditions.md
+    - text: ルール エンジンのアクション
+      url: front-door-rules-engine-actions.md
+  - linkListType: tutorial
+    links:
+    - text: ルール エンジンの構成を設定する
+      url: front-door-tutorial-rules-engine.md

@@ -76,6 +76,8 @@
       href: user-overview.md
     - name: ユーザー プロファイルの属性
       href: user-profile-attributes.md
+    - name: SSO セッション
+      href: session-overview.md
 - name: 操作方法ガイド
   items:
     - name: アプリの統合
@@ -335,8 +337,8 @@
                       href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
-                    - name: SAML
-                      href: saml-technical-profile.md
+                    - name: SAML ID プロバイダー
+                      href: saml-identity-provider-technical-profile.md
                     - name: SAML トークン発行者
                       href: saml-issuer-technical-profile.md
                     - name: セルフアサート
@@ -433,7 +435,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: ソリューションとトレーニング
       href: solution-articles.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: サポート
       href: support-options.md

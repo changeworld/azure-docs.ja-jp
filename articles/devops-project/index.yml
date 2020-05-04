@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Azure DevOps Projects のドキュメント
-summary: Azure DevOps Projects により、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
+title: Azure DevOps Starter のドキュメント
+summary: Azure DevOps Starter により、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 metadata:
-  title: Azure DevOps Projects のドキュメント
+  title: Azure DevOps Starter のドキュメント
   description: 既存のコードと Git リポジトリを使用するか、サンプル アプリを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942466"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231470"
 landingContent:
-- title: Azure DevOps Projects について
+- title: Azure DevOps Starter について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure DevOps Projects とは
+    - text: Azure DevOps Starter とは
       url: overview.md
   - linkListType: video
     links:
-    - text: DevOps Projects による CI/CD の作成に関するビデオ (8:53)
+    - text: DevOps Starter のビデオ (8:53) を利用して CI/CD を作成する
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: CI/CD パイプラインの作成
   linkLists:

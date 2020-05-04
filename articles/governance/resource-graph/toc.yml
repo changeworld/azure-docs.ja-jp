@@ -17,6 +17,9 @@
     - name: 最初のクエリを実行する - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+    - name: 共有クエリをデプロイする - ARM テンプレート
+      displayName: 'resource manager, queries'
+      href: shared-query-template.md
 - name: チュートリアル
   items:
     - name: Azure portal でのクエリの作成と共有
@@ -49,7 +52,7 @@
     - name: リソースの変更の取得
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: リファレンス
@@ -78,6 +81,8 @@
       href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.resourcegraph/allversions
     - name: Resource Graph テーブルとリソースの種類
       href: ./reference/supported-tables-resources.md
 - name: リソース

@@ -252,7 +252,7 @@
         - name: コンテナー データをリアルタイムで表示する
           href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
-    - name: Windows Server コンテナーの使用 (プレビュー)
+    - name: Windows Server コンテナーを使用する
       items:
         - name: AKS クラスターを作成する
           href: windows-container-cli.md

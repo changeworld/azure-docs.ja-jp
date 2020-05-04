@@ -167,6 +167,10 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL の構成
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: ビジネス継続性
+          items:
+            - name: バックアップと復元
+              href: concepts-hyperscale-backup.md
         - name: 監視と調整
           items:
             - name: 監視と調整
@@ -273,6 +277,8 @@
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
+            - name: データ暗号化の検証
+              href: howto-data-encryption-validation.md
         - name: サーバーの再起動
           items:
             - name: Azure portal
@@ -329,7 +335,7 @@
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: ビデオ
       items:

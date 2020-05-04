@@ -43,6 +43,8 @@
       href: analysis-services-long-operations.md
     - name: サポートされるデータ ソース
       href: analysis-services-datasource.md
+    - name: ネットワーク接続に関する FAQ
+      href: analysis-services-network-faq.md
 - name: 操作方法
   items:
     - name: サーバー
@@ -131,7 +133,7 @@
       href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-analysis-services'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest'

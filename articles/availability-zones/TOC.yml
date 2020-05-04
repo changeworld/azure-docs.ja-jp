@@ -8,10 +8,12 @@
   items:
     - name: Azure アプリケーションの高可用性
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: リージョンと Availability Zones
+      href: az-overview.md
     - name: 可用性ゾーンのドキュメント
       items:
-        - name: 可用性ゾーンとは
-          href: az-overview.md
+        - name: 可用性ゾーンをサポートしているリージョン
+          href: az-region.md
         - name: 仮想マシン
           items:
             - name: CLI を使用して可用性ゾーン内に Linux VM を作成する

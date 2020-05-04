@@ -291,7 +291,7 @@
       items:
         - name: すべての関数
           href: template-functions.md
-        - name: 配列とオブジェクトの関数
+        - name: 配列関数
           href: template-functions-array.md
         - name: 比較関数
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: 数値関数
           href: template-functions-numeric.md
+        - name: オブジェクト関数
+          href: template-functions-object.md
         - name: リソース関数
           href: template-functions-resource.md
         - name: 文字列関数
@@ -327,7 +329,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

@@ -48,6 +48,8 @@
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault のスロットル ガイダンス
       href: overview-throttling.md
+    - name: Azure Key Vault の可用性と冗長性
+      href: disaster-recovery-guidance.md
     - name: Azure Key Vault の仮想ネットワーク サービス エンドポイント - Azure Key Vault
       href: overview-vnet-service-endpoints.md
 - name: 操作方法ガイド
@@ -92,6 +94,10 @@
           href: soft-delete-cli.md
         - name: PowerShell での論理的な削除の使用
           href: soft-delete-powershell.md
+    - name: キー コンテナーを移動する
+      items:
+        - name: キー コンテナーを別のリージョンに移動する
+          href: keyvault-moveregion.md
     - name: トラブルシューティング
       items:
         - name: サブスクリプション移行後にキー コンテナー テナント ID を変更する
