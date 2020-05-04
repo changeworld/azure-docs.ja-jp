@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: trbye
 ms.openlocfilehash: 464e21caf3105b12f0fbf44dc2aa3674a252d3c6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81401035"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
@@ -43,7 +43,7 @@ Speech Service は次の機能で構成されています。 各機能の一般�
 
 ## <a name="try-the-speech-service"></a>Speech Service を試す
 
-ほとんどの一般的なプログラミング言語向けのクイック スタートが提供されており、いずれも 10 分もかからずにコードを実行できるように作られています。 各機能の最も人気のあるクイック スタートを次の表に示します。 その他の言語やプラットフォームを調べるには、左側のナビゲーションを使用してください。
+ ほとんどの一般的なプログラミング言語向けのクイック スタートが提供されており、いずれも 10 分もかからずにコードを実行できるように作られています。  各機能の最も人気のあるクイック スタートを次の表に示します。 その他の言語やプラットフォームを調べるには、左側のナビゲーションを使用してください。
 
 | 音声テキスト変換 (SDK) | テキスト読み上げ (SDK) | 翻訳 (SDK) |
 |----------------------|----------------------|-------------------|

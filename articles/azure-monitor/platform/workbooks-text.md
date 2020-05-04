@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658051"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687324"
 ---
 # <a name="workbook-text-parameters"></a>ブックのテキスト パラメーター
 
@@ -30,7 +30,7 @@ ms.locfileid: "77658051"
     1. Parameter name: `SlowRequestThreshold` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Text`ドロップ ダウン]
     3. [必須ですか?]\: `checked`オン
-    4. [クエリから既定値を取得します]\: オン
+    4. [クエリから既定値を取得します]\: オン `unchecked`
 5. ツール バーの [保存] を選択して、パラメーターを作成します。
 
     ![テキスト パラメーターの作成を示す画像](./media/workbooks-text/text-create.png)
@@ -59,6 +59,8 @@ ms.locfileid: "77658051"
 
     ![KQL で参照されるテキスト パラメーターを示す画像](./media/workbooks-text/text-reference.png)
 
+> [!NOTE]
+> 上の例の `{SlowRequestThreshold}` は整数値を表します。 文字列 (`{ComputerName}` など) を照会する場合、パラメーター フィールドに引用符なしで入力値を指定できるようにするには、Kusto クエリに変更を加え、`"{ComputerName}"` のように引用符を追加する必要があります。
 
 ## <a name="setting-default-values"></a>既定値の設定
 1. 編集モードの空白のブックを使用して開始します。
@@ -68,7 +70,7 @@ ms.locfileid: "77658051"
     1. Parameter name: `SlowRequestThreshold` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Text`ドロップ ダウン]
     3. [必須ですか?]\: `checked`オン
-    4. [クエリから既定値を取得します]\: オン
+    4. [クエリから既定値を取得します]\: オン `checked`
 5. KQL ボックスに、このスニペットを追加します。
     ```kusto
     requests

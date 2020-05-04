@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/24/2020
-ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 04/12/2020
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364396"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81758812"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor のカスタマー マネージド キーの構成 
 
@@ -44,23 +44,23 @@ Azure Monitor の暗号化の使用は、[Azure Storage の暗号化](https://do
 
 折り返し操作と折り返しの解除操作のために Azure Monitor Storage が Key Vault にアクセスする頻度は、6 ～ 60 秒です。 Azure Monitor Storage は、常に 1 時間以内にキーのアクセス許可の変更に対応します。
 
-過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、CMK の構成に関係なく Microsoft キーで暗号化されたままになりますが、2020 年の早い時期に SSD を CMK で暗号化できるように取り組んでいます。
+過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、CMK の構成に関係なく Microsoft キーで暗号化されたままになりますが、2020 年上半期に SSD を CMK で暗号化できるように取り組んでいます。
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Azure Monitor での CMK の動作
 
 Azure Monitor は、システム割り当てのマネージド ID を活用して Azure Key Vault にアクセス権を付与します。 システム割り当てのマネージド ID は、1 つの Azure リソースにのみ関連付けることができます。 Azure Monitor データ ストア (ADX クラスター) の ID はクラスター レベルでサポートされます。これは、CMK 機能が専用 ADX クラスターで配信されることを示します。 複数のワークスペースで CMK をサポートするために、新しい Log Analytics リソース (*クラスター*) は、Key Vault と Log Analytics のワークスペースの間の中間 ID 接続として実行されます。 この概念はシステムで割り当てられた ID 制約に準拠しており、ID は ADX クラスターと Log Analytics の*クラスター* リソースとの間で管理されますが、関連するすべてのワークスペースのデータは Key Vault キーで保護されます。 土台となる ADX クラスター ストレージは、*クラスター* リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由で Azure Key Vault へのアクセスを認証します。
 
-![CMK の概要](media/customer-managed-keys/cmk-overview.png)
-1.  お客様の Key Vault。
-2.  Key Vault に対するアクセス許可を持つマネージド ID を持つお客様の Log Analytics クラスター リソース – ID は、データストア (ADX クラスター) レベルでサポートされます。
-3.  Azure Monitor 専用の ADX クラスター。
-4.  CMK 暗号化のためにクラスター リソースに関連付けられているお客様のワークスペース。
+![CMK の概要](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    お客様の Key Vault。
+2.    Key Vault に対するアクセス許可を持つマネージド ID を持つお客様の Log Analytics *クラスター* リソース – ID は、データストア (ADX クラスター) レベルでサポートされます。
+3.    Azure Monitor 専用の ADX クラスター。
+4.    CMK 暗号化のために*クラスター* リソースに関連付けられているお客様のワークスペース。
 
 ## <a name="encryption-keys-management"></a>暗号化キーの管理
 
 ストレージ データの暗号化には、次の 3 種類のキーが関係します。
 
-- **KEK** - Key Vault 内のキー暗号化キー (CMK)
+- **KEK** - キー暗号化キー (CMK)
 - **AEK** - アカウント暗号化キー
 - **DEK** - データ暗号化キー
 
@@ -70,13 +70,11 @@ Azure Monitor は、システム割り当てのマネージド ID を活用し�
 
 - AEK は、ディスクに書き込まれた各データ ブロックの暗号化に使用されるキーである DEK を派生させるために使用されます。
 
-- Key Vault でキーを構成し、*クラスター* リソースでそのキーを参照すると、Azure Storage は Azure Key Vault の KEK で AEK を折り返します。
+- Key Vault でキーを構成し、それを*クラスター* リソースで参照すると、Azure Storage から Azure Key Vault に要求が送信され、AEK をラップおよびアンラップしてデータの暗号化および復号化操作を実行します。
 
 - KEK が Key Vault から離れることはありません。また、HSM キーの場合はハードウェアから離れることはありません。
 
 - Azure Storage は、*クラスター* リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由で Azure Key Vault へのアクセスを認証します。
-
-- 読み取り/書き込み操作の場合、Azure Storage は Azure Key Vault に要求を送信して、暗号化と暗号化解除の操作を実行するために AEK を折り返しおよび折り返しの解除を行います。
 
 ## <a name="cmk-provisioning-procedure"></a>CMK のプロビジョニング手順
 
@@ -84,9 +82,9 @@ Application Insights CMK の構成の場合、手順 3 と 6 については付�
 
 1. サブスクリプションのホワイトリスト登録 - これは、この初期アクセス機能に必要です
 2. Azure Key Vault の作成とキーの格納
-3. *クラスター* リソースを作成する
+3. *クラスター* リソースの作成
 4. Azure Monitor のデータストア (ADX クラスター) のプロビジョニング
-5. Key Vault へのアクセス許可を付与する
+5. Key Vault へのアクセス許可の付与
 6. Log Analytics ワークスペースの関連付け
 
 この手順は現時点で UI ではサポートされておらず、プロビジョニング プロセスは REST API を介して実行されます。
@@ -97,8 +95,7 @@ Application Insights CMK の構成の場合、手順 3 と 6 については付�
 次に例を示します。
 
 ```rst
-GET
-https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -107,38 +104,91 @@ Authorization: Bearer eyJ0eXAiO....
 トークンは次のいずれかの方法を使用して取得できます。
 
 1. [アプリの登録](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)方法を使用します。
-
 2. Azure ポータルで次の操作を行います。
-    1. 開発者ツール (F12) で Azure portal に移動します
-    1. "batch? api-version" インスタンスのいずれかで、"要求ヘッダー" の下にある認証文字列を検索します。 これは "authorization: Bearer \<token\>" のように表示されます。 
+    1. "開発者ツール" (F12) の使用中に Azure portal に移動します。
+    1. "batch? api-version" インスタンスのいずれかで、"要求ヘッダー" の下にある認証文字列を検索します。 これは "authorization: Bearer eyJ0eXAiO...." のようになります。 
     1. これを、次の例に従って API 呼び出しにコピーして追加します。
-
 3. Azure REST ドキュメント サイトに移動します。 任意の API で [試してみる] を押し、ベアラー トークンをコピーします。
+
+### <a name="asynchronous-operations-and-status-check"></a>非同期操作と状態のチェック
+
+この構成手順の一部の操作は迅速に完了できないため、非同期的に実行されます。 非同期操作の応答では、最初に HTTP 状態コード 200 (OK) が返され、受け入れられたときに *Azure-AsyncOperation* プロパティを含むヘッダーが返されます。
+```json
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
+```
+
+*Azure-AsyncOperation* ヘッダー値に GET 要求を送信することにより、非同期操作の状態を確認できます。
+```rst
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
+Authorization: Bearer <token>
+```
+
+この応答には、操作とその*状態*に関する情報が含まれています。 これは、次のいずれかになります。
+
+操作が進行中です
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "InProgress", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
+
+操作が完了しました
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Succeeded", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
+
+操作に失敗しました
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Failed", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+    "error" : { 
+        "code": "error-code",  
+        "message": "error-message" 
+    }
+}
+```
 
 ### <a name="subscription-whitelisting"></a>サブスクリプションのホワイトリスト登録
 
 CMK の機能は初期アクセス機能です。 *クラスター* リソースを作成する予定のサブスクリプションは、Azure 製品グループによって事前にホワイトリストに登録されている必要があります。 連絡先を Microsoft に登録して、サブスクリプション ID を提供します。
 
 > [!IMPORTANT]
-> CMK 機能はリージョン別です。 Azure Key Vault、ストレージ アカウント、*クラスター* リソース、および関連付けられた Log Analytics のワークスペースは同じリージョンに存在している必要があります。ただし、サブスクリプションは異なっていてもかまいません。
+> CMK 機能はリージョン別です。 Azure Key Vault、*クラスター* リソース、および関連付けられた Log Analytics のワークスペースは同じリージョンに存在している必要があります。ただし、サブスクリプションは異なっていてもかまいません。
 
 ### <a name="storing-encryption-key-kek"></a>暗号化キー (KEK) の格納
 
-Azure Key Vault リソースを作成してから、データの暗号化に使用するキーを生成またはインポートします。
+Azure Key Vault を作成するか既存のものを使用して、データの暗号化に使用するキーを生成またはインポートします。 キーを保護し、Azure Monitor のデータへのアクセスを保護するには、Azure Key Vault を回復可能として構成する必要があります。 この構成は Key Vault のプロパティで確認できます。 *[論理的な削除]* と *[Purge protection]\(消去保護\)* の両方を有効にしてください。
 
-キーを保護し、Azure Monitor データへのアクセスを保護するには、Azure Key Vault を回復可能として構成する必要があります。
+![論理的な削除と消去保護の設定](media/customer-managed-keys/soft-purge-protection.png)
 
 これらの設定は、CLI と PowerShell を使用して利用できます。
-- [論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)を有効にする必要があります
-- 論理的な削除の後でもシークレット/コンテナーの強制削除を防ぐには、[消去保護](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)を有効にする必要があります
+- [論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+- [[Purge protection]\(消去保護\)](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) は、論理的な削除の後もシークレットやコンテナーを強制削除から保護します
 
 ### <a name="create-cluster-resource"></a>*クラスター* リソースを作成する
 
-このリソースは、Key Vault とワークスペースの間の中間 ID 接続として使用されます。 サブスクリプションがホワイトリストに登録されたことを示すメッセージが表示されたら、ワークスペースが配置されているリージョンで Log Analytics の*クラスター* リソースを作成します。 Application Insights と Log Analytics には別々のクラスター リソースが必要です。 *クラスター* リソースの種類は、作成時に "clusterType" プロパティを 'LogAnalytics' または 'ApplicationInsights' のいずれかに設定することによって定義されます。 クラスター リソースの種類を変更することはできません。
+このリソースは、Key Vault と Log Analytics ワークスペースの間の中間 ID 接続として使用されます。 サブスクリプションがホワイトリストに登録されたことを示すメッセージが表示されたら、ワークスペースが配置されているリージョンで Log Analytics の*クラスター* リソースを作成します。 Application Insights と Log Analytics には別々の種類の*クラスター* リソースが必要です。 *クラスター* リソースの種類は、作成時に *clusterType* プロパティを *[LogAnalytics]* または *[ApplicationInsights]* のいずれかに設定することによって定義されます。 クラスター リソースの種類を後から変更することはできません。
 
-Application Insights CMK の構成の場合、この手順については付録の内容に従ってください。
+Application Insights CMK の構成の場合は、付録の内容に従ってください。
+
+*クラスター* リソースを作成するときに、容量予約レベル (sku) を指定する必要があります。 容量予約レベルは1 日あたり 1,000 ～ 2,000 GB の範囲で指定でき、後から 100 刻みで更新できます。 一日あたり 2,000 GB を超える容量予約レベルが必要な場合は、Microsoft の担当者に有効化を依頼してください。 現在、このプロパティは請求には影響しません。専用クラスターの価格モデルが導入された段階で、既存の CMK デプロイに請求が適用されます。
 
 **作成**
+
+この Resource Manager の要求は非同期操作です。
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -146,39 +196,42 @@ Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "<region-name>",
-   "properties": {
-      "clusterType": "LogAnalytics"
+  "identity": {
+    "type": "systemAssigned"
     },
-   "identity": {
-      "type": "systemAssigned"
-   }
+  "sku": {
+    "name": "capacityReservation",
+    "Capacity": 1000
+    },
+  "properties": {
+    "clusterType": "LogAnalytics",
+    },
+  "location": "<region-name>",
 }
 ```
 この ID は、作成時に "*クラスター*" リソースに割り当てられます。
-"clusterType" の値は、Application Insights CMK の "ApplicationInsights" です。
 
 **Response**
 
-202 受理されました。 これは、非同期操作に対する標準の Resource Manager 応答です。
-
-何らかの理由で (別の名前または clusterType を使用して作成する場合など) "*クラスター*" リソースを削除する場合は、次の REST API を使用します。
-
-```rst
-DELETE
-https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-```
+200 OK とヘッダー。
+この機能の早期アクセス期間中は、ADX クラスターは手動でプロビジョニングされます。 土台となる ADX クラスターのプロビジョニングには時間がかかりますが、次の 2 つの方法でプロビジョニングの状態を確認できます。
+1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
+2. *クラスター* リソースに GET 要求を送信し、*provisioningState* 値を確認します。 プロビジョニング中は *ProvisioningAccount*、完了時は *Succeeded* になります。
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor のデータストア (ADX クラスター) のプロビジョニング
 
-この機能の初期アクセス期間中は、前の手順が完了した後に、製品チームによって ADX クラスターが手動でプロビジョニングされます。 Microsoft チャネルを使用して、"*クラスター*" リソースの詳細を提供します。 "*クラスター*" リソースの GET REST API からの JSON 応答をコピーします。
+この機能の初期アクセス期間中は、前の手順が完了した後に、製品チームによって ADX クラスターが手動でプロビジョニングされます。 この手順を実行するには、Microsoft の担当者に連絡して、*クラスター* リソースの応答をお伝えください。 
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 ```
 
+> [!IMPORTANT]
+> これらの詳細は次の手順で必要になるため、応答をコピーして保存してください。
+
 **Response**
+
 ```json
 {
   "identity": {
@@ -186,8 +239,13 @@ Authorization: Bearer <token>
     "tenantId": "tenant-id",
     "principalId": "principal-id"
     },
+  "sku": {
+    "name": "capacityReservation",
+    "capacity": 1000,
+    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+    },
   "properties": {
-    "provisioningState": "Succeeded",
+    "provisioningState": "ProvisioningAccount",
     "clusterType": "LogAnalytics", 
     "clusterId": "cluster-id"
     },
@@ -195,33 +253,27 @@ Authorization: Bearer <token>
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
   "location": "region-name"
-  }
+}
 ```
 
-"principal-id" は、"*クラスター*" リソースのマネージド ID サービスによって生成される GUID です。
-
-> [!IMPORTANT]
-> "principal-id" の値は、次の手順で必要になるため、コピーして保持します。
-
+"principalId" GUID は、*クラスター* リソースのマネージド ID サービスによって生成されます。
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault アクセス許可を付与する
 
-> [!IMPORTANT]
-> この手順は、Azure Monitor データストア (ADX クラスター) のプロビジョニングが満たされたことの確認を、Microsoft チャネルを通じて製品グループから受信した後に実行する必要があります。 このプロビジョニングの前に Key Vault アクセス ポリシーを更新すると、失敗する場合があります。
-
-"*クラスター*" リソースにアクセス許可を付与する新しいアクセス ポリシーで Key Vault を更新します。 これらのアクセス許可は、データの暗号化のために下層の Azure Monitor ストレージによって使用されます。
-Azure portal で Key Vault を開き、[アクセス ポリシー]、[+ アクセス ポリシーの追加] の順にクリックして、次の設定で新しいポリシーを作成します。
+*クラスター* リソースにアクセス許可を付与する新しいアクセス ポリシーで Key Vault を更新します。 これらのアクセス許可は、データの暗号化のために下層の Azure Monitor ストレージによって使用されます。 Azure portal で Key Vault を開き、[アクセス ポリシー]、[+ アクセス ポリシーの追加] の順にクリックして、次の設定でポリシーを作成します。
 
 - [キーのアクセス許可]: [取得]、[キーを折り返す]、および [キーの折り返しを解除] の各アクセス許可を選択します。
 - [プリンシパルの選択]: 前の手順の応答で返された principal-id 値を入力します。
 
-![Key Vault アクセス許可の付与](media/customer-managed-keys/grant-key-vault-permissions.png)
+![Key Vault アクセス許可の付与](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 *[取得]* アクセス許可は、キーを保護し、Azure Monitor データへのアクセスを保護するために、Key Vault が回復可能として構成されていることを確認するために必要です。
 
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>キー識別子の詳細を使用してクラスター リソースを更新する
 
-この手順は、Key Vault の今後のキー バージョンの更新に適用されます。 Key Vault の*キー識別子*の詳細で*クラスター* リソースを更新して、Azure Monitor Storage で新しいキー バージョンを使用できるようにします。 Azure Key Vault で現在のバージョンのキーを選択して、キー識別子の詳細を取得します。
+この手順は、Key Vault の初期および将来のキー バージョンの更新時に実行されます。 データの暗号化に使用されるキーのバージョンについて Azure Monitor ストレージに通知します。 更新すると、新しいキーを使用してストレージ キー (AEK) のラップとラップ解除が行われます。
+
+Key Vault の*キー識別子*の詳細で*クラスター* リソースを更新するには、Azure Key Vault で現在のバージョンのキーを選択して、キー識別子の詳細を取得します。
 
 ![Key Vault アクセス許可を付与する](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -229,12 +281,24 @@ Azure portal で Key Vault を開き、[アクセス ポリシー]、[+ アク�
 
 **アップデート**
 
+この Resource Manager 要求は、容量の値を更新する場合は同期操作ですが、キー識別子の詳細を更新する場合は非同期操作です。
+
+> [!Warning]
+> *クラスター* リソースの更新で、*identity*、*sku*、*KeyVaultProperties*、*location* を含む完全な本体を指定する必要があります。 *KeyVaultProperties* の詳細がないと、キー識別子が*クラスター* リソースから削除され、[キーが失効](#cmk-kek-revocation)します。
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
+   "identity": { 
+     "type": "systemAssigned" 
+     },
+   "sku": {
+     "name": "capacityReservation",
+     "capacity": 1000
+     },
    "properties": {
      "KeyVaultProperties": {
        KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
@@ -242,15 +306,19 @@ Content-type: application/json
        KeyVersion: "<current-version>"
        },
    },
-   "location":"<region-name>",
-   "identity": { 
-     "type": "systemAssigned" 
-     }
+   "location":"<region-name>"
 }
 ```
 "KeyVaultProperties" には Key Vault キー識別子の詳細が含まれています。
 
 **Response**
+
+200 OK とヘッダー。
+キー識別子の伝播が完了するまで数分かかります。 更新の状態を確認するには、次の 2 つの方法があります。
+1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
+2. *クラスター* リソースに GET 要求を送信し、*KeyVaultProperties* 値を確認します。 最近更新されたキー識別子の詳細が、応答で返されます。
+
+キー識別子の更新が完了すると、*クラスター* リソースの GET 要求に対する応答は次のようになります。
 
 ```json
 {
@@ -258,13 +326,18 @@ Content-type: application/json
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
     "principalId": "principle-id"
-  },
+    },
+  "sku": {
+    "name": "capacityReservation",
+    "capacity": 1000,
+    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+    },
   "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://key-vault-name.vault.azure.net",
-            KeyName: "key-name",
-            KeyVersion: "current-version"
-            },
+    "KeyVaultProperties": {
+      KeyVaultUri: "https://key-vault-name.vault.azure.net",
+      KeyName: "key-name",
+      KeyVersion: "current-version"
+      },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
     "clusterId": "cluster-id"
@@ -277,19 +350,22 @@ Content-type: application/json
 ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>*クラスター* リソースへのワークスペースの関連付け
-
-> [!NOTE]
-> この手順は、**Azure Monitor データストア (ADX クラスター) のプロビジョニング**が満たされたことの確認を、Microsoft チャネルを通じて製品グループから受信した後に**のみ**実行してください。 この**プロビジョニング**の前にワークスペースを関連付けてデータを取り込むと、データは削除され、回復できなくなります。
-
 Application Insights CMK の構成の場合、この手順については付録の内容に従ってください。
 
-この操作を実行するには、ワークスペースと "*クラスター*" リソースの両方において、以下のアクションが含まれる "書き込み" アクセス許可を保持している必要があります。
+この操作を実行するには、ワークスペースと "*クラスター*" リソースの両方に対して、以下のアクションが含まれる "書き込み" アクセス許可を保持している必要があります。
 
 - ワークスペースの場合:Microsoft.OperationalInsights/workspaces/write
 - "*クラスター*" リソースの場合:Microsoft.OperationalInsights/clusters/write
 
+> [!IMPORTANT]
+> この手順は、ADX クラスターのプロビジョニング後にのみ実行してください。 このプロビジョニングの前にワークスペースを関連付けてデータを取り込むと、取り込まれたデータは削除され、回復できなくなります。
+
+**ワークスペースを関連付ける**
+
+この Resource Manager の要求は非同期操作です。
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -302,24 +378,13 @@ Content-type: application/json
 
 **Response**
 
-```json
-{
-  "properties": {
-    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
-    },
-  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
-  "name": "workspace-name/cluster",
-  "type": "microsoft.operationalInsights/workspaces/linkedServices",
-}
-```
-
-関連付けの後、ワークスペースに送信されるデータは、マネージド キーで暗号化された状態で格納されます。
-
-### <a name="workspace-association-verification"></a>ワークスペースの関連付けの検証
-ワークスペースが *Custer* リソースに関連付けられているかどうかを確認するには、[Workspaces – Get](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)応答を参照します。 関連付けられたワークスペースには、*クラスター* リソース ID を持つ 'clusterResourceId' プロパティがあります。
+200 OK とヘッダー。
+取り込まれたデータは、関連付け操作の後、マネージド キーで暗号化された状態で格納されます。これが完了するには最大 90 分かかることがあります。 ワークスペースの関連付けの状態は、次の 2 つの方法で確認できます。
+1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
+2. [Workspaces – Get](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) 要求を送信し、応答を観察します。関連付けられたワークスペースでは "features" の下に clusterResourceId が含まれます。
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
 **Response**
@@ -338,7 +403,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
     "features": {
       "legacy": 0,
       "searchVersion": 1,
-      "enableLogAccessUsingOnlyResourcePermissions": true/false,
+      "enableLogAccessUsingOnlyResourcePermissions": true,
       "clusterResourceId": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name"
     },
     "workspaceCapping": {
@@ -356,29 +421,28 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>CMK (KEK) の失効
 
-Azure Monitor Storage は常に 1 時間以内にキーのアクセス許可の変更に対応し、通常はすぐにストレージを使用できなくなります。 *クラスター* リソースに関連付けられているワークスペースに取り込まれたデータは削除され、クエリは失敗します。 キーが失効していて、ワークスペースが削除されていない限り、以前に取り込まれたデータは Azure Monitor Storage ではアクセスできません。 アクセスできないデータは、データ保持ポリシーによって管理され、リテンション期間に達すると削除されます。
+Key Vault でキーを無効にするか、*クラスター* リソースのアクセス ポリシーを削除することによって、データへのアクセスを失効させることができます。 Azure Monitor Storage は常に 1 時間以内にキーのアクセス許可の変更に対応し、通常はすぐにストレージを使用できなくなります。 *クラスター* リソースに関連付けられているワークスペースに取り込まれたデータは削除され、クエリは失敗します。 *クラスター* リソースおよびワークスペースが削除されていない限り、以前に取り込まれたデータは Azure Monitor Storage ではアクセスできません。 アクセスできないデータは、データ保持ポリシーによって管理され、リテンション期間に達すると削除されます。
 
 ストレージは、Key Vault を定期的にポーリングして暗号化キーの折り返しを解除しようとし、アクセスされた後、データ インジェストとクエリが 30 分以内に再開されます。
 
 ## <a name="cmk-kek-rotation"></a>CMK (KEK) のローテーション
 
-CMK のローテーションを行うには、新しい Azure Key Vault キー バージョンで*クラスター* リソースを明示的に更新する必要があります。 新しいキー バージョンで Azure Monitor を更新するには、「*キー識別子*の詳細で*クラスター* リソースを更新する」の手順に従います。
-
-Key Vault でキーを更新し、*クラスター* リソース* の新しい*キー識別子*の詳細を更新しない場合、Azure Monitor Storage では以前のキーが引き続き使用されます。
+CMK のローテーションを行うには、Azure Key Vault の新しいキー バージョンで*クラスター* リソースを明示的に更新する必要があります。 新しいキー バージョンで Azure Monitor を更新するには、「キー識別子の詳細で*クラスター* リソースを更新する」の手順に従います。 Key Vault でキー バージョンを更新し、*クラスター* リソースの新しいキー識別子の詳細を更新しない場合、Azure Monitor Storage では以前のキーが引き続き使用されます。
+AEK は新しいキー暗号化キー (KEK) バージョンによって暗号化されるようになりますが、すべてのデータはアカウント暗号化キー (AEK) によって暗号化されたままであるため、キー ローテーション操作後も、ローテーションの前と後に取り込まれたデータを含め、すべてのデータにアクセスできます。
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
-- CMK 機能は ADX クラスター レベルでサポートされており、専用の Azure Monitor ADX クラスターが必要です
+- CMK 機能は ADX クラスター レベルでサポートされており、1 日あたり 1 TB 以上を送信する必要がある専用の Azure Monitor ADX クラスターが必要です。
 
-- サブスクリプションごとの*クラスター* リソースの最大数は 5 に制限されています
+- サブスクリプションごとの*クラスター* リソースの最大数は 2 に制限されています
 
-- ワークスペースへの*クラスター* リソースの関連付けは、ADX クラスターのプロビジョニングが満たされたことの確認を製品グループから受信した後にのみ実行してください。 このプロビジョニングの前に送信されたデータは削除され、回復できなくなります。
+- ワークスペースへの "*クラスター*" リソースの関連付けは、ADX クラスターのプロビジョニングが完了したことを確認した後にのみ実行してください。 プロビジョニングの完了前にワークスペースに送信されたデータは削除され、復旧できなくなります。
 
-- CMK の暗号化は、CMK の構成後に新しく取り込まれたデータに適用されます。 CMK の構成より前に取り込まれたデータは、Microsoft キーで暗号化されたままになります。 データのクエリは構成の前後にシームレスに実行できます。
+- CMK の暗号化は、CMK の構成後に新しく取り込まれたデータに適用されます。 CMK の構成より前に取り込まれたデータは、Microsoft キーで暗号化されたままになります。 取り込まれたデータのクエリは CMK 構成の前後にシームレスに実行できます。
 
-- ワークスペースが*クラスター* リソースに関連付けられた後、データはキーで暗号化され、Azure Key Vault で KEK を使用しないとアクセスできないため、*クラスター* リソースから関連付けを解除することはできません。
+- 特定のワークスペースで CMK が不要であると判断した場合は、"*クラスター*" リソースからワークスペースの関連付けを解除できます。 関連付け解除操作後に新たに取り込まれたデータは、"*クラスター*" リソースに関連付けられる前と同じように、共有 Log Analytics ストレージに格納されます。 "*クラスター*" リソースがプロビジョニングされ、有効な Key Vault キーで構成されている場合は、関連付け解除の前および後に取り込まれたデータに対してシームレスにクエリを実行できます。
 
-- Azure Key Vault は、回復可能として構成する必要があります。 これらのプロパティは既定では有効になっておらず、CLI と PowerShell を使用して構成する必要があります。
+- Azure Key Vault は、回復可能として構成する必要があります。 これらのプロパティは既定では有効になっておらず、CLI または PowerShell を使用して構成する必要があります。
 
   - [論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)を有効にする必要があります
   - 論理的な削除の後でもシークレット/コンテナーの強制削除を防ぐには、[消去保護](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)を有効にする必要があります
@@ -394,11 +458,11 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
 ## <a name="troubleshooting-and-management"></a>トラブルシューティングと管理
 
 - Key Vault の可用性
-    - 通常の運用では、Storage のキャッシュの AEK は、折り返しを解除するために短時間の間、一時的に Key Vault に戻ります。
+    - 通常の運用では、Storage は一時的に AEK をキャッシュし、定期的に Key Vault に戻ってラップを解除します。
     
-    - 一時的な接続エラー。 Storage は、キーが短時間キャッシュにとどまることができるようにすることで一時的なエラー (タイムアウト、接続エラー、DNS の問題) を処理し、これにより可用性の小さな中断を克服できます。 クエリ機能と取り込み機能は中断されることなく続行されます。
+    - 一時的な接続エラー -- Storage は、キーが短時間キャッシュにとどまることができるようにすることで一時的なエラー (タイムアウト、接続エラー、DNS の問題) を処理し、これにより可用性の小さな中断を克服できます。 クエリ機能と取り込み機能は中断されることなく続行されます。
     
-    - ライブ サイトが約 30 分で使用できなくなると、Storage アカウントが使用できなくなります。 クエリ機能は使用できず、データの損失を防ぐために、Microsoft キーを使用して数時間の間、取り込まれたデータがキャッシュされます。 Key Vault へのアクセスが復元されると、クエリが使用可能になり、一時的にキャッシュされたデータがデータストアに取り込まれ、CMK で暗号化されます。
+    - ライブ サイト -- 約 30 分で使用できなくなると、Storage アカウントが使用できなくなります。 クエリ機能は使用できず、データの損失を防ぐために、Microsoft キーを使用して数時間の間、取り込まれたデータがキャッシュされます。 Key Vault へのアクセスが復元されると、クエリが使用可能になり、一時的にキャッシュされたデータがデータストアに取り込まれ、CMK で暗号化されます。
 
 - システム ID が*クラスター* リソースに割り当てられるまでアクセス ポリシーを定義できないため、*クラスター* リソースを作成して KeyVaultProperties をすぐに指定すると、操作が失敗する可能性があります。
 
@@ -406,10 +470,12 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
 
 - ワークスペースに関連付けられている*クラスター* リソースを削除しようとすると、削除操作は失敗します。
 
-- この API を使用して、リソース グループのすべての*クラスター* リソースを取得します。
+- "*クラスター*" リソースを作成するときに競合エラーが発生した場合は、過去 14 日以内に "*クラスター*" リソースを削除し、それが論理的な削除の期間内にある可能性があります。 *クラスター* リソース名は、論理的な削除の期間中は予約されたままであり、その名前で新しいクラスターを作成することはできません。 この名前は、論理的な削除の期間の後、"*クラスター*" リソースが完全に削除されたときに解放されます。
+
+- リソース グループのすべての*クラスター* リソースを取得します。
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -424,6 +490,11 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -443,22 +514,23 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
   }
   ```
 
-- 次の API 呼び出しを使用して、サブスクリプションのすべての*クラスター* リソースを取得します。
+- サブスクリプションのすべての*クラスター* リソースを取得します。
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
   **Response**
     
   'リソース グループの*クラスター* リソース' について、ただしサブスクリプション スコープ内のリソースと同じ応答です。
-    
-- この API 呼び出しを使用して*クラスター* リソースを削除します。*クラスター* リソースを削除する前に、関連付けられているすべてのワークスペースを削除する必要があります。
+
+- "*クラスター*" リソースの "*容量予約*" の更新 -- 関連付けられているワークスペースのデータ ボリュームが変化し、課金を考慮して容量予約レベルを更新する場合は、["*クラスター*" リソースの更新](#update-cluster-resource-with-key-identifier-details)の手順に従い、新しい容量の値を指定します。 容量予約レベルは、1 日あたり 1,000 から 2,000 GB の範囲で、100 刻みで指定できます。 1 日あたり 2,000 GB を超えるレベルの場合は、Microsoft の担当者に有効化を依頼してください。
+
+- "*クラスター*" リソースの削除 -- 不注意による削除か意図的な削除かにかかわらず、14 日以内であればデータを含む "*クラスター*" リソースを復旧できるように、論理的な削除操作が実行されます。 *クラスター* リソース名は、論理的な削除の期間中は予約されたままであり、その名前で新しいクラスターを作成することはできません。 論理的な削除の期間後は、"*クラスター*" リソース名が解放され、"*クラスター*" リソースとデータは完全に削除されて、復旧できなくなります。 関連付けられているすべてのワークスペースは、削除操作時に "*クラスター*" リソースから関連付けを解除されます。 新たに取り込まれたデータは、共有 Log Analytics ストレージに格納され、Microsoft キーで暗号化されます。 ワークスペースの関連付け解除操作は非同期です。
 
   ```rst
-  DELETE
-  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
@@ -466,6 +538,7 @@ Key Vault でキーを更新し、*クラスター* リソース* の新しい*�
 
   200 OK
 
+- "*クラスター*" リソースとデータの復旧 -- 過去 14 日以内に削除された "*クラスター*" リソースは、論理的な削除状態であり、復旧できます。 これは、現在、製品グループごとに手動で実行されます。 復旧要求には、Microsoft チャネルを使用します。
 
 ## <a name="appendix"></a>付録
 
@@ -492,56 +565,85 @@ CMK を Application Insights 用に構成する場合は、上記の手順では
 
 **作成**
 
+この Resource Manager の要求は非同期操作です。
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "<region-name>",
-  "properties": {
-      "clusterType":"ApplicationInsights"
-  },
   "identity": {
-      "type": "systemAssigned"
-  }
+    "type": "systemAssigned"
+    },
+  "sku": {
+    "name": "capacityReservation",
+    "Capacity": 1000
+    },
+  "properties": {
+    "clusterType":"ApplicationInsights"
+    },
+  "location": "<region-name>"
 }
 ```
 
 **Response**
 
-ID は、作成時に*クラスター* リソースに割り当てられます。
+200 OK とヘッダー。
+この機能の早期アクセス期間中は、ADX クラスターは手動でプロビジョニングされます。 土台となる ADX クラスターのプロビジョニングには時間がかかりますが、次の 2 つの方法でプロビジョニングの状態を確認できます。
+1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
+2. *クラスター* リソースに GET 要求を送信し、*provisioningState* 値を確認します。 プロビジョニング中は *ProvisioningAccount*、完了時は *Succeeded* になります。
 
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>[コンポーネント - 作成または更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API を使用してコンポーネントを*クラスター* リソースに関連付ける
+
+この操作を実行するには、コンポーネントと*クラスター* リソースの両方において、以下のアクションが含まれる "書き込み" アクセス許可を保持している必要があります。
+
+- コンポーネントの場合:Microsoft.Insights/component/write
+- "*クラスター*" リソースの場合:Microsoft.OperationalInsights/clusters/write
+
+> [!IMPORTANT]
+> この手順は、ADX クラスターのプロビジョニング後にのみ実行してください。 このプロビジョニングの前にコンポーネントを関連付けてデータを取り込むと、取り込まれたデータは削除され、回復できなくなります。
+> ADX クラスターがプロビジョニングされていることを確認するには、*クラスター* リソースの Get REST API を実行し、*provisioningState* の値が *Succeeded* であることを確認します。
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+Authorization: Bearer <token>
+```
+
+**Response**
 ```json
-
 {
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
+    "principalId": "principal-id"
+    },
+  "sku": {
+    "name": "capacityReservation",
+    "capacity": 1000,
+    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+    },
   "properties": {
+    "KeyVaultProperties": {
+      KeyVaultUri: "https://key-vault-name.vault.azure.net",
+      KeyName: "key-name",
+      KeyVersion: "current-version"
+      },
     "provisioningState": "Succeeded",
-    "clusterType": "ApplicationInsights",    //The value is ‘ApplicationInsights’ for Application Insights CMK
-    "clusterId": "cluster-id" 
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
+    "clusterType": "ApplicationInsights", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
   "location": "region-name"
-}
+  }
 ```
-"principle-id" は、マネージド ID サービスによって生成された GUID です。
 
 > [!IMPORTANT]
-> "principle-id" の値は、次の手順で必要になるため、コピーして保持します。
+> 応答は次の手順で必要になるため、コピーして保持してください。
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>[コンポーネント - 作成または更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API を使用してコンポーネントを*クラスター* リソースに関連付ける
-
-この操作を実行するには、コンポーネントと "*クラスター*" リソースの両方において、以下のアクションが含まれる "書き込み" アクセス許可を保持している必要があります。
-
-- コンポーネントの場合:Microsoft.Insights/component/write
-- "*クラスター*" リソースの場合:Microsoft.OperationalInsights/clusters/write
+**コンポーネントを関連付ける**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01
