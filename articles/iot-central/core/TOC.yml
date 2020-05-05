@@ -131,14 +131,6 @@
               href: howto-show-hide-chat.md
 - name: リソース
   items:
-    - name: 最近の更新 (いずれかのクエリ)
-      href: 'https://azure.microsoft.com/updates/?category=iot&query=azure%20iot%20central'
-    - name: 最新の更新 (またはリスト...)
-      items:
-        - name: 2020 年 4 月
-          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
-        - name: 2020 年 3 月
-          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
     - name: サポート オプションとヘルプ オプション
       href: /azure/iot-fundamentals/iot-support-help
     - name: 業界アプリケーション テンプレート
