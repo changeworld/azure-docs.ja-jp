@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72790087"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117571"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Azure Cognitive Search でのインポートおよびインデックス作成用にリレーショナル SQL データをモデル化する方法
 
@@ -107,7 +107,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
 これで、この行セットを Azure Cognitive Search にインポートする準備ができました。
 
 > [!NOTE]
-> このアプローチでは、埋め込みの JSON が [SQL Server の最大列サイズ制限](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)を下回ることを前提としています。 データが適合しない場合は、プログラムによるアプローチを試すことができます。「[例:AdventureWorks の在庫データベースを Azure Cognitive Search 用にモデル化する](search-example-adventureworks-modeling.md)」を参照してください。
+> このアプローチでは、埋め込みの JSON が [SQL Server の最大列サイズ制限](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)を下回ることを前提としています。 
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>一対多リレーションシップの "多" の側に複雑なコレクションを使用する
 

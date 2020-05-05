@@ -16,10 +16,10 @@ ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 89ed39d1cd18fc97cec06dce4313271731b23b90
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460037"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure 内の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法
@@ -147,7 +147,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-仮想 NIC は、[az network nic create](/cli/azure/network/nic) を使用して作成します。 以下の例では、3 つの仮想 NIC を作成します (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
+仮想 NIC は、[az network nic create](/cli/azure/network/nic) を使用して作成します。 以下の例では、3 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
 
 ```azurecli
 for i in `seq 1 3`; do

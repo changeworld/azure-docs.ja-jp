@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
 ms.openlocfilehash: 227aae23babbcd5d734a10821d9311f91532ea4e
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770975"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 

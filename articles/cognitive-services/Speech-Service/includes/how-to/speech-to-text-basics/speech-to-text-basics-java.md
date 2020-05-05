@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2de836a63eed79b7d166db220218e0c11ef11e70
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d59f2ef564da710d084dc027950bc983a88143de
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399782"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204577"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,7 +83,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 Speech SDK for Java 用の [認識エンジン](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) では、音声認識に使用できるいくつかの手法が公開されています。
 
 * 単発の認識 (非同期) - 非ブロッキング (非同期) モードで認識を実行します。 これにより、1 つの発話が認識されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
-* 継続的認識 (非同期) - 継続的な認識操作を非同期に開始します。 マイクを使用するのでなくオーディオ ファイルを提供する場合でも、 を提供する必要があります。 非同期の継続的認識を停止するには、[stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) を呼び出します。
+* 継続的認識 (非同期) - 継続的な認識操作を非同期に開始します。 マイクを使用するのでなくオーディオ ファイルを提供する場合でも、`audioConfig` を指定する必要があります。 非同期の継続的認識を停止するには、[stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) を呼び出します。
 
 > [!NOTE]
 > [音声認識モードを選択](../../../how-to-choose-recognition-mode.md)する方法の詳細情報。

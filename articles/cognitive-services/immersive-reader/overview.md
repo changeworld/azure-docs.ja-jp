@@ -1,7 +1,7 @@
 ---
-title: Immersive Reader API とは
+title: イマーシブ リーダー API とは
 titleSuffix: Azure Cognitive Services
-description: Immersive Reader API は、学習障碍者に対応したり、新しい読者や言語学習者をサポートしたりするために使用できるツールです。
+description: イマーシブ リーダー API は、学習障碍者に対応したり、新しい読者や言語学習者をサポートしたりするために使用できるツールです。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
 ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80052377"
 ---
 # <a name="what-is-immersive-reader"></a>Immersive Reader とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-[Immersive Reader](https://www.onenote.com/learningtools)は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
+[イマーシブ リーダー](https://www.onenote.com/learningtools)は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
 
-## <a name="what-does-immersive-reader-do"></a>Immersive Reader の機能
+## <a name="what-does-immersive-reader-do"></a>イマーシブ リーダーの機能
 
-Immersive Reader は、あらゆるユーザーの読む力を支援するように設計されています。
+イマーシブ リーダーは、あらゆるユーザーの読む力を支援するように設計されています。
 
 * 最小限の閲覧ビューでコンテンツを表示する
 
@@ -53,9 +53,9 @@ Immersive Reader は、あらゆるユーザーの読む力を支援するよう
 
   ![分節法](./media/syllabification.png)
 
-## <a name="how-does-immersive-reader-work"></a>Immersive Reader のしくみ
+## <a name="how-does-immersive-reader-work"></a>イマーシブ リーダーのしくみ
 
-Immersive Reader はスタンドアロンの Web アプリです。Immersive Reader JavaScript SDK を使用して呼び出すと、`iframe` を介して既存の Web アプリ上に表示されます。 Immersive Reader を起動する API を呼び出すときに、Immersive Reader で表示するコンテンツを指定します。 SDK では、`iframe` の作成とスタイル設定のほか、品詞、テキスト読み上げ、翻訳などのコンテンツ処理を行う Immersive Reader のバックエンド サービスとの通信が行われます。
+イマーシブ リーダーはスタンドアロンの Web アプリです。Immersive Reader JavaScript SDK を使用して呼び出すと、`iframe` を介して既存の Web アプリ上に表示されます。 イマーシブ リーダーを起動する API を呼び出すときに、イマーシブ リーダーで表示するコンテンツを指定します。 SDK では、`iframe` の作成とスタイル設定のほか、品詞、テキスト読み上げ、翻訳などのコンテンツ処理を行うイマーシブ リーダーのバックエンド サービスとの通信が行われます。
 
 ## <a name="next-steps"></a>次のステップ
 

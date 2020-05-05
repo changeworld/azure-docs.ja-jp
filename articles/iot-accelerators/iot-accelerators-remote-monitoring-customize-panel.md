@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447065"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187230"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI のダッシュボードにカスタム パネルを追加する
 
@@ -90,7 +90,7 @@ import {
 npm start
 ```
 
-前のコマンドは、ローカルの [http://localhost:3000/dashboard](http://localhost:3000/dashboard) で UI を実行します。 新しいパネルを表示するには、 **[ダッシュボード]** ページに移動します。
+前のコマンドは、`http://localhost:3000/dashboard` のローカルで UI を実行します。 新しいパネルを表示するには、 **[ダッシュボード]** ページに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 

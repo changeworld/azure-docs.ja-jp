@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: cfc6e4790b67137b423cc90d93874d4914f81251
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 8d22f8a2722dc55a13ce8e3752ca69d6e7251070
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393369"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115127"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 

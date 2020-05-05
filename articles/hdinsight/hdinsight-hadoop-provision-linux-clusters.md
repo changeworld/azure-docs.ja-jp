@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 02/12/2020
-ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 04/10/2020
+ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770314"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232838"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -128,6 +128,9 @@ HDInsight を使用したストレージ オプションの詳細については
 構成時、既定のストレージ エンドポイントには、Azure Storage アカウントの BLOB コンテナーまたは Data Lake Storage を指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 必要に応じて、クラスターからアクセスできるリンクされた Azure Storage アカウントおよび Data Lake Storage アカウントを追加指定できます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+
+> [!IMPORTANT]
+> クラスターの作成後にセキュリティで保護されたストレージ転送を有効にすると、ストレージ アカウントを使用する際にエラーが発生する可能性があるため、推奨されません。 セキュリティで保護された転送が既に有効になっているストレージ アカウントを使用して新しいクラスターを作成することをお勧めします。
 
 ### <a name="metastore-settings"></a>メタストアの設定
 

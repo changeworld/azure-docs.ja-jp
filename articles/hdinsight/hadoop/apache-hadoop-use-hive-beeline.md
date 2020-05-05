@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.custom: seoapr2020
+ms.date: 04/17/2020
+ms.openlocfilehash: 2396207c88716420d299382006a270eb747ddc03
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383567"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192665"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
@@ -40,7 +41,8 @@ Azure 仮想ネットワーク経由でクライアントから HDInsight に接
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>`<headnode-FQDN>` をクラスター ヘッドノードの完全修飾ドメイン名に置き換えます。 ヘッドノードの完全修飾ドメイン名を検索するには、[Apache Ambari REST API を使用した HDInsight の管理](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)に関するドキュメントの情報を使用してください。
+`<headnode-FQDN>` をクラスター ヘッドノードの完全修飾ドメイン名に置き換えます。 ヘッドノードの完全修飾ドメイン名を検索するには、[Apache Ambari REST API を使用した HDInsight の管理](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)に関するドキュメントの情報を使用してください。
+
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Kerberos を使用して HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターへ
@@ -84,11 +86,11 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ### <a name="use-beeline-with-apache-spark"></a>Apache Spark での Beeline の使用
 
-Apache Spark は独自の HiveServer2 実装を提供します。これは Spark Thrift サーバーとも呼ばれます。 このサービスでは、Spark SQL を使用して Hive の代わりにクエリを解決します。クエリによってはパフォーマンスが向上します。
+Apache Spark は独自の HiveServer2 実装を提供します。これは Spark Thrift サーバーとも呼ばれます。 このサービスは、Hive ではなく、Spark SQL を使用してクエリを解決します。 クエリによっては、パフォーマンスが向上する可能性があります。
 
 #### <a name="through-public-or-private-endpoints"></a>パブリック エンドポイントまたはプライベート エンドポイント経由
 
-使用される接続文字列は少し異なります。 `httpPath=/hive2` の代わりに `httpPath/sparkhive2` が含まれます。 `clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
+使用される接続文字列は少し異なります。 `httpPath=/hive2` が含まるのではなく、`httpPath/sparkhive2`を使用します。 `clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -118,7 +120,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)に注目してください。 たとえば、Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は`abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 詳細については、[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。
+* クラスターのプライマリ ストレージの URI スキームに注目してください。 たとえば、Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は`abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 詳細については、[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。
 
 * オプション 1: SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。
 
@@ -177,7 +179,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     この情報は、テーブル内の列を説明します。
 
-5. 次のステートメントを入力して、HDInsight クラスター付属のサンプル データを使用する **log4jLogs**という名前のテーブルを作成します。([URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)に基づいて必要に応じて修正してください。)
+5. 次のステートメントを入力して、HDInsight クラスター付属のサンプル データを使用する **log4jLogs**という名前のテーブルを作成します。(URI スキームに基づいて必要に応じて修正してください。)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -244,7 +246,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="run-a-hiveql-file"></a>HiveQL ファイルを実行する
 
-これは前の例からの続きです。 次の手順でファイルを作成し、Beeline を使用してそれを実行します。
+この例は、前の例からの続きです。 次の手順でファイルを作成し、Beeline を使用してそれを実行します。
 
 1. 次のコマンドを使用して、**query.hql** という名前の新しいファイルを作成します。
 
@@ -300,7 +302,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="install-beeline-client"></a>Beeline クライアントをインストールする
 
-Beeline はご利用の HDInsight クラスターのヘッド ノードに含まれていますが、それをローカル コンピューターにインストールしたい場合があります。  ローカル コンピューター上に Beeline をインストールするための以下の手順は、[Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10)に関するページに基づいています。
+Beeline はヘッド ノードに含まれていますが、ローカルにインストールしたい場合があります。  ローカル コンピューターにインストールするための手順は、[Linux 用 Windows サブシステム](https://docs.microsoft.com/windows/wsl/install-win10)に基づいています。
 
 1. パッケージ リストを更新します。 ご利用の Bash シェルで次のコマンドを入力します。
 

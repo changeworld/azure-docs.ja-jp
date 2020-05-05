@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286321"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160615"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
 
@@ -45,7 +45,7 @@ SaaS 技術要件に関する詳細については、「[SaaS アプリケーシ
 
 ## <a name="azure-ad-integration"></a>Azure AD の統合
 
-- 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory]( https://aka.ms/aaddev) に関する記事をご覧ください。
+- 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory]( https://docs.microsoft.com/azure/active-directory/develop/) に関する記事をご覧ください。
 - Azure AD シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」をご覧ください。
 
 ## <a name="enable-a-trial-listing"></a>試用版の一覧を有効にする
@@ -87,5 +87,10 @@ Azure AD を使用して、次のアクションの 1 つをサポートしま�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Marketplace に登録](https://azuremarketplace.microsoft.com/sell)したことを確認します。
-- オファーを作成または完了する方法の詳細については、[パートナー センター アカウントの作成方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を参照してください。
+まだ行っていない場合は、 
+
+- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
+
+パートナー センターに登録するには、新しいプランの作成を開始するか、既存のものを操作します。
+
+- [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)して、プランを作成するか完成させます。

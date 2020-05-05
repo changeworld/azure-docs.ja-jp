@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure REST API と Python を使用して画像から顔を検出する
+title: 'クイック スタート: Azure REST API と Python を使用して画像内の顔を検出する'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と Python を使用して、画像内の顔を検出します。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403217"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート:Face REST API と Python を使用して画像から顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート: Face REST API と Python を使用して画像内の顔を検出する
 
 このクイック スタートでは、Azure Face REST API と Python を使用して、画像内の人の顔を検出します。 このスクリプトでは、顔を囲むフレームを描き、画像の上に性別と年齢の情報をスーパーインポーズします。
 

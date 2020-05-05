@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01b5f87c2557e2195573b90766ee45e001798cca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232303"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537697"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -45,7 +45,7 @@ ms.locfileid: "79232303"
 
     Azure Files は、明確にファイル システムです。 Azure Files には、オンプレミスのオペレーティング システムで長年使われてきた、皆さんもおなじみのファイルの概念がすべて備わっています。 Azure Blob Storage と同様、Azure Files にも REST インターフェイスと REST ベースのクライアント ライブラリが用意されています。 Azure Files が Azure Blob Storage と違うのは、Azure ファイル共有に SMB でアクセスできることです。 SMB を使用すれば、オンプレミスの VM であれ、クラウドの VM であれ、Windows、Linux、macOS 上で Azure ファイル共有を直接マウントすることができます。コードを記述したり、特別なドライバーをファイル システムにアタッチする必要はありません。 また、データが使用される場所に近接したオンプレミスのファイル サーバーに Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。 
    
-    Azure Files と Azure Blob Storage の違いに関する詳細な説明については、「[Azure BLOB、Azure Files、Azure Disks の使い分け](../common/storage-decide-blobs-files-disks.md)」をご覧ください。 Azure Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
+    Azure Files と Azure BLOB ストレージの違いに関する詳細な説明については、「[コア Azure Storage サービスの概要](../common/storage-introduction.md)」を参照してください。 Azure Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
 
 * <a id="files-versus-disks"></a>**Azure Disks ではなく Azure ファイル共有を使用する理由を教えてください。**  
     Azure Disks におけるディスクは、ただのディスクに過ぎません。 Azure Disks を有効活用するには、Azure で実行されている仮想マシンにディスクをアタッチする必要があります。 Azure Disks は、オンプレミスのサーバーで使われるディスクとまったく同じ用途で使用することができます。 OS システム ディスクや OS のスワップ領域、アプリケーションの専用ストレージとして使用可能です。 Azure ファイル共有を使用する代わりに Azure Disks を使用してクラウドにファイル サーバーを作成するのも面白い使い方です。 Azure Files では現在サポートされていないデプロイ オプションを必要とする場合 (NFS プロトコル サポートや Premium Storage など)、Azure Virtual Machines にファイル サーバーをデプロイすれば、高パフォーマンスで Azure にファイル ストレージを設置できます。 
@@ -54,7 +54,7 @@ ms.locfileid: "79232303"
 
     (Azure Disks をバックエンド ストレージとして使用することに加え) Azure Virtual Machines にホストされたファイル サーバーと Azure Files の両方の利点を活かす方法の 1 つは、クラウド VM 上でホストされているファイル サーバーに Azure File Sync をインストールすることです。 Azure ファイル共有がお使いのファイル サーバーと同じリージョンにある場合、クラウドの階層化を有効にして、ボリュームの空き領域を最大 (99%) に設定できます。 これによりデータの重複を最小限に抑えることができます。 また、NFS プロトコル サポートを必要とするアプリケーションなど、どのようなアプリケーションでも必要に応じてファイル サーバーで使用することができます。
 
-    Azure で高パフォーマンスで高可用なファイル サーバーを設定する方法については、「[Deploying IaaS VM Guest Clusters in Microsoft Azure (Microsoft Azure に IaaS VM ゲスト クラスターをデプロイする)](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)」をご覧ください。 Azure Files と Azure Disks の違いに関する詳細な説明については、「[Azure BLOB、Azure Files、Azure Disks の使い分け](../common/storage-decide-blobs-files-disks.md)」をご覧ください。 Azure ディスクの詳細については、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
+    Azure で高パフォーマンスで高可用なファイル サーバーを設定する方法については、「[Deploying IaaS VM Guest Clusters in Microsoft Azure (Microsoft Azure に IaaS VM ゲスト クラスターをデプロイする)](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)」をご覧ください。 Azure Files と Azure ディスクの違いに関する詳細な説明については、「[コア Azure Storage サービスの概要](../common/storage-introduction.md)」を参照してください。 Azure ディスクの詳細については、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
 * <a id="get-started"></a>
   **Azure Files を使い始めるにはどうしたらよいですか。**  
@@ -164,7 +164,7 @@ ms.locfileid: "79232303"
 * <a id="ad-support"></a>
 **Azure Files では、ID ベースの認証とアクセス制御はサポートされていますか。**  
     
-    はい。Azure Files では、ID ベースの認証とアクセス制御がサポートされています。 ID ベースのアクセス制御を使用するには、次の 2 つの方法のいずれかを選択できます。Active Directory (AD) (プレビュー) または Azure Active Directory Domain Services (Azure AD DS) (GA)。 AD は、AD ドメインに参加しているマシン (オンプレミスまたは Azure) を使用した認証をサポートし、SMB 経由で Azure ファイル共有にアクセスします。 Azure Files での SMB 経由の Azure AD DS 認証により、Azure AD DS ドメイン参加 Windows VM は Azure AD 資格情報を使用して共有、ディレクトリ、およびファイルにアクセスできるようになります。 詳細については、「[ SMB アクセスに対する Azure Files ID ベース認証サポートの概要](storage-files-active-directory-overview.md)」を参照してください。 
+    はい。Azure Files では、ID ベースの認証とアクセス制御がサポートされています。 オンプレミス Active Directory Domain Services (プレビュー) または Azure Active Directory Domain Services (Azure AD DS) という 2 つの方法のいずれかを使用し、ID ベースでアクセスを制御できます。 オンプレミス Active Directory Domain Services (AD DS) は、AD DS ドメインに参加しているマシン (オンプレミスまたは Azure) を使用した認証をサポートし、SMB 経由で Azure ファイル共有にアクセスします。 Azure Files での SMB 経由の Azure AD DS 認証により、Azure AD DS ドメイン参加 Windows VM は Azure AD 資格情報を使用して共有、ディレクトリ、およびファイルにアクセスできるようになります。 詳細については、「[ SMB アクセスに対する Azure Files ID ベース認証サポートの概要](storage-files-active-directory-overview.md)」を参照してください。 
 
     Azure Files では、その他 2 つの方法でアクセス制御を管理できます。
 
@@ -185,39 +185,29 @@ ms.locfileid: "79232303"
     はい、[2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (またはそれ以降) の REST API を使用する場合は、ディレクトリまたはファイルの NTFS ACL を取得、設定、またはコピーする REST API がサポートされます。
 
 * <a id="ad-vm-subscription"></a>
-**異なるサブスクリプションの VM から Azure AD 資格情報を使用して Azure Files にアクセスすることはできますか。**
+**異なるサブスクリプションの VM から Azure AD 資格情報を使用して Azure ファイル共有にアクセスすることはできますか?**
 
-    ファイル共有のデプロイ元であるサブスクリプションが、VM のドメイン参加先である Azure AD Domain Services デプロイと同じ Azure AD テナントに関連付けられている場合は、同じ Azure AD 資格情報を使用して Azure Files にアクセスできます。 制限は、サブスクリプションにではなく、関連付けられている Azure AD テナントに課せられます。
+    ファイル共有のデプロイ元であるサブスクリプションが、VM のドメイン参加先である Azure AD DS デプロイと同じ Azure AD テナントに関連付けられている場合は、同じ Azure AD 資格情報を使用して Azure ファイル共有にアクセスできます。 制限は、サブスクリプションにではなく、関連付けられている Azure AD テナントに課せられます。
     
 * <a id="ad-support-subscription"></a>
-**ファイル共有が関連付けられているプライマリ テナントとは異なる Azure AD テナントを使用して、Azure Files の Azure AD DS 認証または AD 認証のいずれかを有効にすることはできますか?**
+**Azure ファイル共有のプライマリ テナントとは異なる Azure AD テナントを使用し、Azure ファイル共有のために Azure AD DS またはオンプレミス AD DS 認証を有効にすることはできますか?**
 
-    いいえ。Azure Files では、ファイル共有と同じサブスクリプションに存在する Azure AD テナントとの Azure AD DS または AD 統合のみがサポートされます。 Azure AD テナントに関連付けることができるサブスクリプションは 1 つだけです。 この制限は、Azure AD DS と AD の両方の認証方法に適用されます。 認証に AD を使用する場合は、ストレージ アカウントが関連付けられている Azure AD に AD 資格情報を同期する必要があります。
+    いいえ。Azure Files では、ファイル共有と同じサブスクリプションに存在する Azure AD テナントとの Azure AD DS またはオンプレミス AD DS 統合のみがサポートされます。 Azure AD テナントに関連付けることができるサブスクリプションは 1 つだけです。 この制限は、Azure AD DS とオンプレミス AD DS の両方の認証方法に適用されます。 認証にオンプレミス AD DS を使用する場合は、ストレージ アカウントが関連付けられている [Azure AD に AD DS 資格情報を同期する必要があります](../../active-directory/hybrid/how-to-connect-install-roadmap.md)。
 
 * <a id="ad-linux-vms"></a>
-**Azure Files Azure AD DS または AD 認証では Linux VM はサポートされていますか?**
+**Azure ファイル共有のための Azure AD DS またはオンプレミス AD DS 認証は Linux VM をサポートしていますか?**
 
     いいえ。Linux VM からの認証はサポートされていません。
 
-* <a id="ad-multiple-forest"></a>
-**Azure Files AD 認証では、複数のフォレストを使用する AD 環境との統合をサポートしていますか?**    
-
-    Azure Files AD 認証は、ストレージ アカウントが登録されている AD Domain Services のフォレストにのみ統合されます。 別の AD フォレストからの認証をサポートするには、環境でフォレストの信頼が適切に構成されている必要があります。 Azure Files が AD Domain Services に登録される方法は、通常のファイル サーバーとほぼ同じです。このサーバーでは、認証のために AD で ID (コンピューターまたはサービスのログオン アカウント) が作成されます。 唯一の違いは、ストレージ アカウントの登録済み SPN が、ドメイン サフィックスと一致しない "file.core.windows.net" で終了することです。 ドメインの管理者に問い合わせて、ドメイン サフィックスが異なることで、複数のフォレスト認証を有効にするために DNS ルーティング ポリシーの更新が必要かどうかを確認してください。
-
-* <a id=""></a>
-**Azure Files AD 認証 (プレビュー) はどのリージョンで利用できますか?**
-
-    詳細については、[AD のリージョン別の提供状況](storage-files-identity-auth-active-directory-enable.md#regional-availability) を参照してください。
-
 * <a id="ad-aad-smb-afs"></a>
-**Azure File Sync によって管理されているファイル共有で Azure Files Azure AD DS 認証または Active Directory (AD) 認証 (プレビュー) を利用できますか?**
+**Azure File Sync で管理されているファイル共有では、Azure AD DS またはオンプレミス AD DS (プレビュー) 認証がサポートされていますか?**
 
-    はい。Azure File Sync によって管理されるファイル共有で Azure AD DS または AD 認証を有効にすることができます。ローカル ファイル サーバー上のディレクトリまたはファイルの NTFS ACL への変更は、Azure Files に階層化され、その逆も行われます。
+    はい。Azure File Sync によって管理されるファイル共有で Azure AD DS またはオンプレミス AD 認証を有効にすることができます。ローカル ファイル サーバー上のディレクトリまたはファイルの NTFS ACL への変更は、Azure Files に階層化され、その逆も行われます。
 
 * <a id="ad-aad-smb-files"></a>
-**自分のストレージ アカウントと AD ドメイン情報に対して AD 認証が有効になっているかどうかを確認するにはどうすればよいですか?**
+**自分のストレージ アカウントで AD DS 認証を有効にしていることを確認し、ドメイン情報を取得するにはどうすればよいですか?**
 
-    [こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)に記載されている手順を参照して、ご自身のストレージ アカウントに対して Azure Files AD 認証が有効になっているかどうかを検証し、AD ドメイン情報を取得することができます。
+    手順については、[こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)を参照してください。
     
 * <a id="encryption-at-rest"></a>
 **Azure ファイル共有に保存時の暗号化を確保するには、どうすればよいですか。**  
@@ -243,6 +233,37 @@ ms.locfileid: "79232303"
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
 
    Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/trustcenter/default.aspx)にアクセスできます。
+   
+### <a name="ad-authentication"></a>AD Authentication
+* <a id=""></a>
+**Azure Files の Azure AD Authentication は Linux VM をサポートしていますか?** 
+
+    いいえ。Linux VM からの認証はサポートされていません。
+
+* <a id="ad-multiple-forest"></a>
+**Azure ファイル共有のためのオンプレミス AD DS 認証では、複数のフォレストを使用する AD DS 環境との統合をサポートしていますか?**    
+
+    Azure Files オンプレミス AD DS 認証は、ストレージ アカウントが登録されているドメイン サービスのフォレストにのみ統合されます。 別のフォレストからの認証をサポートするには、環境でフォレストの信頼が正しく構成されている必要があります。 Azure Files を AD DS に登録する方法は、通常のファイル サーバーとほとんど同じです。このサーバーでは、認証のために AD で ID (コンピューターまたはサービスのログオン アカウント) が作成されます。 唯一の違いは、ストレージ アカウントの登録済み SPN が、ドメイン サフィックスと一致しない "file.core.windows.net" で終了することです。 ドメインの管理者に問い合わせて、ドメイン サフィックスが異なることで、複数のフォレスト認証を有効にするために DNS ルーティング ポリシーの更新が必要かどうかを確認してください。
+
+* <a id=""></a>
+**Azure Files AD DS 認証 (プレビュー) はどのリージョンで利用できますか?**
+
+    詳細については、[AD DS のリージョン別の提供状況](storage-files-identity-auth-active-directory-enable.md#regional-availability) を参照してください。
+    
+* <a id="ad-aad-smb-afs"></a>
+**Azure File Sync によって管理されているファイル共有で Azure Files Active Directory (AD) Authentication (プレビュー) を利用できますか?** 
+
+    はい。Azure File Sync によって管理されるファイル共有で AD Authentication を有効にすることができます。ローカル ファイル サーバー上のディレクトリまたはファイルの NTFS ACL への変更は、Azure Files に階層化され、その逆も行われます。
+
+* <a id="ad-aad-smb-files"></a>
+**自分のストレージ アカウントと AD ドメイン情報に対して AD 認証が有効になっているかどうかを確認するにはどうすればよいですか?**
+
+    [こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)に記載されている手順を参照して、ご自身のストレージ アカウントに対して Azure Files AD 認証が有効になっているかどうかを検証し、AD ドメイン情報を取得することができます。
+
+* <a id="ad-aad-smb-files"></a>
+**AD で自分のストレージ アカウントを表す場合、コンピューター アカウントまたはサービス ログオン アカウントを作成するかによって違いはありますか?** 
+
+    [コンピューター アカウント](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定) または [サービスのログオン アカウント](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)のいずれを作成しても、認証が Azure Files でどのように機能するかに違いはありません。 ストレージ アカウントをご利用の AD 環境内の ID として表す方法については、自分自身で選択することができます。 Join-AzStorageAccountForAuth コマンドレットの既定の DomainAccountType セットは、コンピューター アカウントです。 ただし、ご利用の AD 環境で構成されているパスワードの有効期限は、コンピューター アカウントまたはサービス ログオン アカウントによって異なる可能性があります。また、[AD でストレージ アカウント ID のパスワードを更新する](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)ことを考慮する必要があります。
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
 
@@ -370,7 +391,7 @@ ms.locfileid: "79232303"
 
 * <a id="slow-perf-windows-81-2012r2"></a>
 **Windows Server 2012 R2 または Windows 8.1 で Azure ファイル共有をマウントした後、パフォーマンスが低下します。**  
-    Windows Server 2012 R2 および Windows 8.1 で Azure ファイル共有をマウントした場合、問題が生じることが確認されています。 この問題は、2014 年 4 月の Windows 8.1 および Windows Server 2012 R2 向けの累積更新プログラムのパッチで解決されています。 パフォーマンスを最適化するために、Windows Server 2012 R2 および Windows 8.1 のすべてのインスタンスに、このパッチが適用されていることを確認してください (Windows Update で常に Windows パッチを取得することが推奨されます)。詳細については、関連する Microsoft サポート技術情報の記事「[Slow performance when you access Azure Files from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/kb/3114025)」を参照してください。
+    Windows Server 2012 R2 および Windows 8.1 で Azure ファイル共有をマウントした場合、問題が生じることが確認されています。 この問題は、2014 年 4 月の Windows 8.1 および Windows Server 2012 R2 向けの累積更新プログラムのパッチで解決されています。 パフォーマンスを最適化するために、Windows Server 2012 R2 および Windows 8.1 のすべてのインスタンスに、このパッチが適用されていることを確認してください  (Windows Update で常に Windows パッチを取得することが推奨されます)。詳細については、関連する Microsoft サポート技術情報の記事「[Slow performance when you access Azure Files from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/kb/3114025)」を参照してください。
 
 ## <a name="features-and-interoperability-with-other-services"></a>機能およびその他のサービスとの相互運用性
 * <a id="cluster-witness"></a>

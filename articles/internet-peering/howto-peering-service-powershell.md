@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: c029b822d00ce545e3623a6212421a55b2d1971f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686996"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-powershell"></a>PowerShell を使用して Direct ピアリングで Azure Peering Service を有効にする

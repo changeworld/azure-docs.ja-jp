@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: c48d5a02cdb8ef63904642c6c2c76cb5d61e1f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f038412079ad0620a445b85e4bbc3c325e1aa211
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840912"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100109"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Network Watcher と Grafana を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する
 
 [ネットワーク セキュリティ グループ (NSG) のフロー ログ](network-watcher-nsg-flow-logging-overview.md)の情報を使用して、ネットワーク インターフェイスでのイングレスおよびエグレス IP トラフィックについて理解できます。 こうしたフロー ログからは、NSG ルールごとの送信および受信フロー、フローが適用されている NIC、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル)、およびトラフィックの許可/拒否の状況がわかります。
-
-> [!Warning]  
-> 次の手順は、フロー ログのバージョン 1 に使用できます。 詳細については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」を参照してください。 次の手順は、変更しなければ、ログ ファイルのバージョン 2 で使用できません。
 
 フロー ログが有効になっているネットワークには多くの NSG がある場合があります。 このログ データ量により、ログを解析して洞察を得ることが煩雑になります。 この記事では、オープン ソースのグラフ作成ツールである Grafana、分散型の検索および分析エンジンである ElasticSearch、オープン ソースのサーバー側のデータ処理パイプラインである Logstash を使用してこれらの NSG フロー ログを一元的に管理するソリューションについて説明します。  
 
@@ -107,6 +104,11 @@ Logstash を使用して、JSON 形式のフロー ログをフロー タプル 
           "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
           "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
           "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+      "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+      "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+      "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+      "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+      "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
         }
         add_field => {
           "time" => "%{[records][time]}"

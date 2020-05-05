@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80348788"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0228f317e2d3380f2387dd557a27203eb3abc4ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240258"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187264"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム ページを追加する
 
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-前のコマンドは、ローカルの [http://localhost:3000/dashboard](http://localhost:3000/dashboard) で UI を実行します。
+前のコマンドは、`http://localhost:3000/dashboard` のローカルで UI を実行します。
 
 Web UI のローカル インスタンスをソリューション アクセラレータのデプロイ済みインスタンスに接続していない場合、ダッシュボードにエラーが表示されます。 このようなエラーは、新しいページをテストする機能に影響しません。
 

@@ -6,16 +6,19 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8caf502db91ab09eea48fc8a902dacf6bf40f24c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235519"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535572"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
 Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。 [RBAC](../role-based-access-control/overview.md) を使用して、チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。 Azure portal、Azure コマンドライン ツール、Azure Management API を使用して、ロールベースのアクセス権をユーザーに付与できます。
+
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="roles-in-automation-accounts"></a>Automation アカウントのロール
 
@@ -204,11 +207,11 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |Microsoft.Authorization/*|承認の管理|
 |Microsoft.Support/*|サポート チケットの作成と管理|
 
-## <a name="onboarding"></a>オンボード
+## <a name="onboarding-permissions"></a>オンボード アクセス許可
 
-変更追跡または更新管理ソリューション用の仮想マシンのオンボードに必要な最小限のアクセス許可を次の表に示します。
+次のセクションでは、変更追跡または更新管理ソリューション用の仮想マシンのオンボードに必要な最小限のアクセス許可について説明します。
 
-### <a name="onboarding-from-a-virtual-machine"></a>仮想マシンからのオンボード
+### <a name="permissions-for-onboarding-from-a-vm"></a>VM からオンボードするためのアクセス許可
 
 |**操作**  |**権限**  |**最小スコープ**  |
 |---------|---------|---------|
@@ -230,7 +233,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 <sup>1</sup> VM ポータル エクスペリエンス経由でオンボードするには、このアクセス許可が必要です。
 
-### <a name="onboarding-from-automation-account"></a>Automation アカウントからのオンボード
+### <a name="permissions-for-onboarding-from-automation-account"></a>Automation アカウントからオンボードするためのアクセス許可
 
 |**操作**  |**権限** |**最小スコープ**  |
 |---------|---------|---------|
@@ -250,7 +253,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write           | ワークスペース        |
 |スコープ構成を作成および編集する  | Microsoft.OperationalInsights/workspaces/write   | ワークスペース|
 
-## <a name="update-management"></a>更新管理
+## <a name="update-management-permissions"></a>更新管理のアクセス許可
 
 更新管理は、複数のサービスにまたがってサービスを提供します。 更新管理デプロイを管理するために必要なアクセス許可を次の表に示します。
 
@@ -265,12 +268,12 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 ## <a name="configure-rbac-for-your-automation-account"></a>Automation アカウントの RBAC を構成する
 
-次のセクションでは、[ポータル](#configure-rbac-using-the-azure-portal)および [PowerShell](#configure-rbac-using-powershell) を使用してご利用の Automation アカウントの RBAC を構成する方法について説明します。
+次のセクションでは、[Azure portal](#configure-rbac-using-the-azure-portal) と [PowerShell](#configure-rbac-using-powershell) を使用してご利用の Automation アカウントの RBAC を構成する方法について説明します。
 
 ### <a name="configure-rbac-using-the-azure-portal"></a>Azure Portal を使用した RBAC の構成
 
 1. [Azure Portal](https://portal.azure.com/) にログインし、[Automation アカウント] ページから、ご利用の Automation アカウントを開きます。
-2. 左上隅にある **[アクセス制御 (IAM)]** コントロールをクリックして、[アクセス制御 (IAM)] ページを開きます。 このページを使用すると、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。
+2. **アクセス制御 (IAM)** をクリックし、[アクセス制御 (IAM)] ページを開きます。 このページを使用すると、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。
 3. **[ロールの割り当て]** タブをクリックします。
 
    ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)
@@ -281,7 +284,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 2. 利用可能なロールの一覧からロールを選択します。 Automation アカウントでサポートされている任意の組み込みロールを選択してもかまいません。また、自分で定義したカスタム ロールを選択することもできます。
 
-3. アクセス許可を付与するユーザーのユーザー名を **[選択]** フィールドに入力します。 一覧からユーザーを選択し、 **[保存]** をクリックします。
+3. アクセス許可を付与するユーザーの名前を **[選択]** フィールドに入力します。 一覧からユーザーを選択し、 **[保存]** をクリックします。
 
    ![Add users](media/automation-role-based-access-control/automation-04-add-users.png)
 
@@ -311,10 +314,10 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
 Automation アカウントに対するロールベースのアクセスは、次の [Azure PowerShell コマンドレット](../role-based-access-control/role-assignments-powershell.md)を使用して構成することもできます。
 
-[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)): Azure Active Directory で利用できるすべての RBAC ロールを一覧表示します。 このコマンドレットを *Name* パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
+[Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) では、Azure Active Directory で利用できるすべての RBAC ロールが一覧表示されます。 このコマンドレットを `Name` パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
 
 ```azurepowershell-interactive
-Get-AzureRmRoleDefinition -Name 'Automation Operator'
+Get-AzRoleDefinition -Name 'Automation Operator'
 ```
 
 出力の例を次に示します。
@@ -330,12 +333,12 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)): 特定のスコープにおける Azure AD RBAC ロールの割り当てを一覧表示します。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、*ExpandPrincipalGroups* パラメーターを使用します。
+[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) では、特定のスコープにおける Azure AD RBAC ロールの割り当てが一覧表示されます。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、`ExpandPrincipalGroups` パラメーターを使用します。
 
 **例:** Automation アカウント内のすべてのユーザーとそのロールを一覧表示するには、次のコマンドレットを使用します。
 
 ```azurepowershell-interactive
-Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+Get-AzRoleAssignment -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
 出力の例を次に示します。
@@ -352,12 +355,12 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てるには、[New-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)) を使用します。
+特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てるには、[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) を使用します。
     
 **例:** Automation アカウント スコープのユーザーに対して "Automation オペレーター" ロールを割り当てるには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+New-AzRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
 出力の例を次に示します。
@@ -374,15 +377,15 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-[Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
+[Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
 
-**例:** Automation アカウント スコープの "Automation オペレーター" ロールからユーザーを削除するには、次のコマンドを使用します。
+**例:** Automation アカウント スコープの Automation オペレーター ロールからユーザーを削除するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-前の例で、"削除するユーザーのサインイン ID"、"SubscriptionID"、"リソースグループ名"、および "Automation アカウント名" を、ご自分のアカウントの詳細に置き換えます。 ユーザー ロールの割り当ての削除を続行する前に確認を求められた場合は、 **[はい]** を選択します。
+前の例では、`sign-in ID of a user you wish to remove`、`SubscriptionID`、`Resource Group Name`、`Automation account name` をアカウントの詳細に置き換えます。 ユーザー ロールの割り当ての削除を続行する前に確認を求められた場合は、 **[はい]** を選択します。
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Automation オペレーター ロールのユーザー エクスペリエンス - Automation アカウント
 
@@ -401,19 +404,19 @@ $rbName = "<Name of Runbook>" # Name of the runbook
 $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from the directory
 
 # Gets the Automation account resource
-$aa = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
+$aa = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
-$rb = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
 
 # The Automation Job Operator role only needs to be run once per user.
-New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
+New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
 
 # Adds the user to the Automation Runbook Operator role to the Runbook scope
-New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
+New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-スクリプトが実行されたら、ユーザーに Azure portal にログインしてもらい、さらに **[すべてのリソース]** を表示してもらいます。 一覧内で、ユーザーは自分が Automation Runbook オペレーターとして追加された Runbook を確認することができます。
+スクリプトが実行されたら、ユーザーに Azure portal にログインしてもらい、さらに **[すべてのリソース]** を選択してもらいます。 一覧内で、ユーザーは自分が Automation Runbook オペレーターとして追加された Runbook を確認することができます。
 
 ![ポータルの Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 

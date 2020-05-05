@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 70810b21def1672758683abd49f92b86776c9d7b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393787"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81458983"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -158,7 +158,7 @@ az provider register --namespace Microsoft.Compute
 - そのギャラリー イメージの最新バージョンから、新しいイメージ バージョンを除外しないでください。 ギャラリー イメージの最新バージョンから除外されたイメージ バージョンは、OS イメージの自動アップグレードによってスケール セットにロールアウトされません。
 
 > [!NOTE]
->スケール セットが OS の自動アップグレードに向けて構成された後、スケール セットが最初のイメージのロールアウトを取得するまで、最大 2 時間かかることがあります。 これは、スケール セットごとに 1 回限りの遅延です。 それ以降のイメージのロールアウトは、この遅延なしにスケール セットに適用されます。
+>スケール セットが OS の自動アップグレードに向けて構成された後、スケール セットが最初のイメージのアップグレード ロールアウトをトリガーするまで、最大 3 時間かかることがあります。 これは、スケール セットごとに 1 回限りの遅延です。 それ以降のイメージのロールアウトは、30 分以内にスケール セットにトリガーされます。
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>OS イメージの自動アップグレードの構成

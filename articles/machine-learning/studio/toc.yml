@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: 管理する
           href: manage-workspace.md
-        - name: トラブルシューティング
-          href: troubleshooting-creating-ml-workspace.md
         - name: ARM を使用してデプロイする
           href: deploy-with-resource-manager-template.md
     - name: トレーニング データをインポートする
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: 結果を解釈する
               href: interpret-model-results.md
-            - name: デバッグ
-              href: debug-models.md
         - name: モデルの再トレーニング
           items:
             - name: '"新しい" Web サービス'
@@ -96,19 +92,12 @@
           items:
             - name: R の概要
               href: r-get-started.md
-            - name: R スクリプトを実行する
-              href: extend-your-experiment-with-r.md
             - name: カスタム R モジュールを作成する
               href: custom-r-modules.md
             - name: Python スクリプトを実行する
               href: execute-python-scripts.md
     - name: アルゴリズムを選択する
-      items:
-        - name: アルゴリズムを選択する
-          href: algorithm-choice.md
-        - name: アルゴリズムの使用例
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: モデルをデプロイする
       items:
         - name: Web サービスのデプロイ
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: Excel アドインを使用する
           href: excel-add-in-for-web-services.md
-    - name: ユース ケース
-      items:
-        - name: 顧客離反
-          href: azure-ml-customer-churn-scenario.md
-        - name: センチメント分析
-          href: text-analytics-module-tutorial.md
-        - name: Excel から Studio への分析の移行 (クラシック)
-          href: use-case-excel-studio.md
     - name: 顧客データの削除とエクスポート
       items:
         - name: Studio (クラシック) データ

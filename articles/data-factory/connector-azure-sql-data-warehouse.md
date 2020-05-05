@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e469a38f4730eb0f9d8debe71bde9a56dd152028
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417573"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146395"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータをコピーして変換する 
 
@@ -25,13 +25,6 @@ ms.locfileid: "81417573"
 > * [現在のバージョン](connector-azure-sql-data-warehouse.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Synapse Analytics との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 のデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
-
-
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure SQL Data Warehouse との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 でデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Synapse Analytics との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 のデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 

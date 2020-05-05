@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 59469aaa0a63cd56debe6af84d48bafa727df88c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981870"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142309"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge モジュールの [サポート] タブ
 
 >[!Important]
->2020 年 4 月 13 日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターでオファーを作成および管理します。 「[IoT Edge モジュール オファーを作成する](https://aka.ms/AzureCreateIoT)」の手順に従い、移行後のオファーを管理します。
+>2020年4月13日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、Partner Center でオファーを作成・管理することになります。 「[IoT Edge モジュール オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)」の手順に従い、移行後のオファーを管理します。
 
-**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  サポート フォームには、次の入力領域が用意されています。**Engineering Contact (エンジニアリングの連絡先)** 、**Customer Support (カスタマー サポート)** 、および **Support Urls (サポート URL)** 。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
+**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  [サポート] フォームには、 **[Engineering Contact]\(エンジニアリング連絡先\)** 、 **[カスタマー サポート]** 、 **[サポート URL]** の各入力領域があります。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
 
 ![IoT Edge モジュールの [新しいプラン] フォームの [サポート] タブ](./media/iot-edge-module-support-tab.png)
 

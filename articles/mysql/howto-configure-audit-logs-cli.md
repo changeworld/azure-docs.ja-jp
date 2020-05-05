@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: d532e1990586d80d675a8ccb247c0c9f7908bb6f
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81384120"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Azure CLI での監査ログの構成とアクセス
@@ -40,7 +40,7 @@ Azure CLI を使用して、[Azure Database for MySQL の監査ログ](concepts-
     az mysql server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. **audit_log_events** パラメーターを更新して、ログに記録する[イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
+1. [audit_log_events](concepts-audit-logs.md#configure-audit-logging) パラメーターを更新して、ログに記録する**イベントの種類**を選択します。
     ```azurecli-interactive
     az mysql server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```

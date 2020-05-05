@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Edge とは | Microsoft Docs
+title: Azure SQL Database Edge とは  | Microsoft Docs
 description: Azure SQL Database Edge について説明します
 keywords: sql database edge の紹介, sql database edge とは, sql database edge の概要
 services: sql-database-edge
@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 03/24/2020
 ms.openlocfilehash: d5c48b6036065f6182912c21c144cab80fc3cfbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246706"
 ---
 # <a name="what-is-azure-sql-database-edge-preview"></a>Azure SQL Database Edge プレビューとは

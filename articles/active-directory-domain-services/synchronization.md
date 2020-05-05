@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639910"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ

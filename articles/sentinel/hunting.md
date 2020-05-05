@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587900"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686632"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel で脅威を検出する
 
@@ -54,7 +54,7 @@ Azure Sentinel 検出機能では、次の機能を利用できます。
 
 3. クエリ詳細ウィンドウの基になるクエリをさっと確認するか、 **[クエリ結果の表示]** をクリックして Log Analytics でクエリを開きます。 下部で、クエリの一致結果を確認します。
 
-4.  行をクリックし、 **[ブックマークの追加]** を選択して、調査対象の行を追加します。疑わしく見えるものすべてに対してこれを行えます。 
+4.    行をクリックし、 **[ブックマークの追加]** を選択して、調査対象の行を追加します。疑わしく見えるものすべてに対してこれを行えます。 
 
 5. 続いて、メインの **[Hunting]** (検出) ページに戻り、 **[ブックマーク]** タブをクリックして、疑わしいアクティビティをすべて確認します。 
 
@@ -66,7 +66,7 @@ Azure Sentinel 検出機能では、次の機能を利用できます。
 
 ## <a name="query-language"></a>クエリ言語 
 
-Azure Sentinel の検出機能は Kusto クエリ言語に基づきます。 クエリ言語とサポートされている演算子の詳細については、[クエリ言語リファレンス](https://docs.loganalytics.io/docs/Language-Reference/)に関するページを参照してください。
+Azure Sentinel の検出機能は Kusto クエリ言語に基づきます。 クエリ言語とサポートされている演算子の詳細については、[クエリ言語リファレンス](/azure/azure-monitor/log-query/get-started-queries)に関するページを参照してください。
 
 ## <a name="public-hunting-query-github-repository"></a>パブリック検出クエリの GitHub リポジトリ
 

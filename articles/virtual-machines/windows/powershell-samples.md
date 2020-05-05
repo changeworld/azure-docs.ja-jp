@@ -1,26 +1,19 @@
 ---
 title: Azure 仮想マシンの PowerShell のサンプル
 description: Azure 仮想マシンの PowerShell のサンプル
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: sample
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f068b79f1b1eaa9a11df70052619c8e3993101cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03d27e1e72eaa5f5dee8cfa9062a56c6dd45007a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033013"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100024"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 仮想マシンの PowerShell のサンプル
 

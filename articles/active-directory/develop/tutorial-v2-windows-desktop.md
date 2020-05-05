@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990941"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181540"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
 このガイドでは、ネイティブの Windows デスクトップ .NET アプリケーションでアクセス トークンを使用して Microsoft Graph API を呼び出す方法を紹介します。 また、このアプリは、開発者用の Microsoft ID プラットフォーム v2.0 エンドポイントのアクセス トークンを必要とする他の API にもアクセスできます。 このプラットフォームは、以前 Azure AD という名前でした。
 
-このガイドを完了すると、アプリケーションで個人アカウント (outlook.com、live.com など) を使用する保護された API を呼び出すことができるようになります。 このアプリケーションでは、Azure Active Directory を使用する会社または組織の職場および学校のアカウントも使用します。  
+このガイドを完了すると、アプリケーションで個人アカウント (outlook.com、live.com など) を使用する保護された API を呼び出すことができるようになります。 このアプリケーションでは、Azure Active Directory を使用する会社または組織の職場および学校のアカウントも使用します。
 
 > [!NOTE]
 > このガイドでは、Visual Studio 2015 Update 3、Visual Studio 2017、または Visual Studio 2019 が必要です。 これらのバージョンをお持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
@@ -54,7 +54,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
-このセクションでは、Windows デスクトップ .NET アプリケーション (XAML) に *"Microsoft でサインイン"* を統合して、トークンを必要とする Web API でクエリを実行できるようにする方法を示すために、新しいプロジェクトを作成します。
+このセクションでは、Windows デスクトップ .NET アプリケーション (XAML) に "*Microsoft でサインイン*" を統合して、トークンを必要とする Web API でクエリを実行できるようにする方法を示すために、新しいプロジェクトを作成します。
 
 このガイドで作成したアプリケーションには、グラフを呼び出すボタン、結果を画面に表示する領域、およびサインアウト ボタンが表示されます。
 
@@ -77,7 +77,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
     Install-Package Microsoft.Identity.Client -Pre
     ```
 
-    > [!NOTE] 
+    > [!NOTE]
     > このコマンドを実行すると、Microsoft Authentication Library がインストールされます。 MSAL は、Azure Active Directory v2.0 で保護される API へのアクセスで使用するユーザー トークンの取得、キャッシュ、更新を処理します
     >
 
@@ -136,7 +136,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
                 .Build();
         }
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant by the information about the accounts allowed to sign-in in your application:
@@ -156,7 +156,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 ## <a name="create-the-application-ui"></a>アプリケーション UI を作成する
 
-このセクションでは、アプリケーションで、Microsoft Graph のような保護されたバックエンド サーバーに対してクエリを実行する方法を示します。 
+このセクションでは、アプリケーションで、Microsoft Graph のような保護されたバックエンド サーバーに対してクエリを実行する方法を示します。
 
 *MainWindow.xaml* ファイルは、プロジェクト テンプレートの一部として自動的に作成されます。 このファイルを開き、アプリケーションの *\<Grid>* ノードを次のコードに置き換えます。
 
@@ -253,7 +253,6 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
         }
     ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
@@ -266,14 +265,13 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 最終的に、`AcquireTokenSilent` メソッドは失敗します。 この失敗は、ユーザーがサインアウトしたか、別のデバイスでパスワードを変更したことが原因と考えられます。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-* すぐに `AcquireTokenInteractive` を呼び出します。 この呼び出しにより、ユーザーにサインインを求めます。 ユーザーが使用できるオフライン コンテンツがないオンライン アプリケーションでは、通常、このパターンを使用します。 このガイド付きセットアップで生成されるサンプルでは、このパターンを使用します。サンプルの初回実行時に、実際の動作を確認できます。 
+* すぐに `AcquireTokenInteractive` を呼び出します。 この呼び出しにより、ユーザーにサインインを求めます。 ユーザーが使用できるオフライン コンテンツがないオンライン アプリケーションでは、通常、このパターンを使用します。 このガイド付きセットアップで生成されるサンプルでは、このパターンを使用します。サンプルの初回実行時に、実際の動作を確認できます。
 
-* アプリケーションはユーザーによって使用されたことがないため、`PublicClientApp.Users.FirstOrDefault()` には null 値が含まれ、`MsalUiRequiredException` 例外がスローされます。 
+* アプリケーションはユーザーによって使用されたことがないため、`PublicClientApp.Users.FirstOrDefault()` には null 値が含まれ、`MsalUiRequiredException` 例外がスローされます。
 
 * サンプルのコードでは、`AcquireTokenInteractive` を呼び出してユーザーにサインインを求めることにより、この例外を処理します。
 
 * 対話形式でのサインインが必要であることをユーザーに視覚的に示すことで、ユーザーが適切なタイミングでサインインできるようにします。 または、アプリケーションが後で `AcquireTokenSilent` を再試行します。 アプリケーションでオフライン コンテンツを使用できる場合など、ユーザーが中断なしでアプリケーションの他の機能を使用できる場合に、このパターンがよく使用されます。 この場合、保護されたリソースにアクセスしたり、古くなった情報を更新したりするために、サインインするタイミングをユーザーが決定できます。 また、一時的に使用できなくなっていたネットワークが回復したときに、アプリケーションが `AcquireTokenSilent` の再試行を決定することもできます。
-<!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>取得したトークンを使用して Microsoft Graph API を呼び出す
 
@@ -306,11 +304,9 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>保護された API に対する REST 呼び出しの実行についての詳細
 
 このサンプル アプリケーションでは、`GetHttpContentWithToken` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行し、呼び出し元にその内容を返します。 このメソッドは、取得したトークンを HTTP Authorization ヘッダーに追加します。 このサンプルで使用するリソースは、ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
-<!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-a-user"></a>ユーザーをサインアウトさせるメソッドを追加する
 
@@ -322,7 +318,7 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 /// </summary>
 private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 {
-    var accounts = await App.PublicClientApp.GetAccountsAsync(); 
+    var accounts = await App.PublicClientApp.GetAccountsAsync();
 
     if (accounts.Any())
     {
@@ -341,13 +337,11 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information-about-user-sign-out"></a>ユーザーのサインアウトに関する詳細情報
 
 `SignOutButton_Click` メソッドは、MSAL ユーザー キャッシュからユーザーを削除します。これは実質的に MSAL に現在のユーザーを忘れさせることになり、以降の要求が対話形式で行われる場合のみトークンの取得が成功します。
 
 このサンプルのアプリケーションは単一ユーザーに対応していますが、MSAL は複数のアカウントで同時にサインインするシナリオをサポートしています。 例として、電子メール アプリケーションで 1 人のユーザーが複数のアカウントを持っている場合が挙げられます。
-<!--end-collapse-->
 
 ## <a name="display-basic-token-information"></a>基本的なトークン情報を表示する
 
@@ -368,10 +362,8 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
 
 Microsoft Graph API の呼び出しに使用するアクセス トークンに加えて、MSAL はユーザーのサインイン後に ID トークンも取得します。 このトークンには、ユーザー関連情報の少量のサブセットが含まれています。 `DisplayBasicTokenInfo` メソッドは、このトークンに含まれている基本的な情報を表示します。 たとえば、トークンの有効期限やアクセス トークンそのものを表す文字列に加えて、ユーザーの表示名や ID です。 *[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)* ボタンを複数回押すと、後の要求で同じトークンが再利用されてことが確認できます。 また、MSAL がトークンの更新時期だと判断したときに、有効期限が延長されることも確認できます。
-<!--end-collapse-->
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]

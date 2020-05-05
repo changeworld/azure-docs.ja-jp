@@ -1,25 +1,14 @@
 ---
-title: 多数のタスクを送信する - Azure Batch | Microsoft Docs
+title: 多数のタスクを送信する
 description: 1 つの Azure Batch ジョブで大量のタスクを効率的に送信する方法
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 08/24/2018
-ms.author: labrenne
-ms.custom: ''
-ms.openlocfilehash: c3857e512da5fe4fceefa5f735ddc65f73e11623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0be30e1a413a224d566db535d369a0b285b1f668
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026049"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117405"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>1 つの Batch ジョブに多数のタスクを送信する
 
@@ -54,7 +43,7 @@ Batch API を使用すると、複数のタスクを 1 つの*コレクション
 
 * **タスク サイズ**: 大きなタスクの追加には、小さなタスクの追加よりも時間がかかります。 コレクション内の各タスクのサイズを縮小するには、タスクのコマンド ラインを簡素化する、環境変数の数を減らす、またはタスク実行の要件をより効率的に処理するという方法があります。 たとえば、多数のリソース ファイルを使用する代わりに、プール上の[開始タスク](batch-api-basics.md#start-task)を使用してタスクの依存関係をインストールするか、[アプリケーション パッケージ](batch-application-packages.md)または [Docker コンテナー](batch-docker-container-workloads.md)を使用します。
 
-* **同時実行操作数**: Batch API に応じて、Batch クライアントの同時実行操作の最大数を増やすことでスループットを向上します。 この設定の構成には、.NET API の [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) プロパティ、または Batch Python SDK 拡張機能の [ TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) などのメソッドの `threads` パラメーターを使用します (このプロパティは、ネイティブの Batch Python SDK では使用できません)。このプロパティは既定では 1 に設定されていますが、操作のスループットを向上するには高く設定してください。 ネットワーク帯域幅を使用し、CPU のパフォーマンスがいくらか低下しますが、スループットは向上します。 タスクのスループットは、`MaxDegreeOfParallelism` または `threads` の最大 100 倍まで増加します。 実用の面では、同時実行操作数を 100 未満に設定することをお勧めします。 
+* **同時実行操作数**: Batch API に応じて、Batch クライアントの同時実行操作の最大数を増やすことでスループットを向上します。 この設定の構成には、.NET API の [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) プロパティ、または Batch Python SDK 拡張機能の [ TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) などのメソッドの `threads` パラメーターを使用します  (このプロパティは、ネイティブの Batch Python SDK では使用できません)。このプロパティは既定では 1 に設定されていますが、操作のスループットを向上するには高く設定してください。 ネットワーク帯域幅を使用し、CPU のパフォーマンスがいくらか低下しますが、スループットは向上します。 タスクのスループットは、`MaxDegreeOfParallelism` または `threads` の最大 100 倍まで増加します。 実用の面では、同時実行操作数を 100 未満に設定することをお勧めします。 
  
   Azure Batch CLI 拡張機能と Batch テンプレートを使用すると、使用できるコア数に基づいて同時実行操作数が自動的に増えますが、このプロパティは CLI で構成できません。 
 

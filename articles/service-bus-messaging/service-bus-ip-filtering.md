@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9601689bbce9566b52664058911e9c45647152d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878189"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116820"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Azure Service Bus の IP ファイアウォール規則を構成する
 既定では、要求が有効な認証と承認を受けている限り、Service Bus 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -29,19 +29,33 @@ ms.locfileid: "80878189"
 ## <a name="ip-firewall-rules"></a>IP ファイアウォール規則
 この IP ファイアウォール規則は、Service Bus 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Service Bus 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 
+>[!WARNING]
+> ファイアウォール ルールを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。
+>
+> IP フィルター処理 (ファイアウォール ルール) が実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
+>
+> IP フィルター処理では動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
+> - Azure Event Grid との統合
+> - Azure IoT Hub ルート
+> - Azure IoT Device Explorer
+>
+> 仮想ネットワーク上には、次の Microsoft サービスが必要です
+> - Azure App Service
+> - Azure Functions
+
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure portal を使用して、Service Bus 名前空間の IP ファイアウォール規則を作成する方法について説明します。 
 
-1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間**に移動します。
+1. **Azure portal** で、ご利用の [Service Bus 名前空間](https://portal.azure.com)に移動します。
 2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 既定では、 **[すべてのネットワーク]** オプションが選択されています。 Service Bus 名前空間では、すべての IP アドレスからの接続を受け入れます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
-    ![[ファイアウォール] - [すべてのネットワーク] オプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-1. ページの上部で、 **[選択されたネットワーク]** オプションを選択します。 **[ファイアウォール]** セクションで、次の手順に従います。
+    ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. ページの上部で、 **[選択されたネットワーク]** オプションを選択します。 **[ファイアウォール]** セクションで、次の手順のようにします。
     1. 現在のクライアント IP にその名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** オプションを選択します。 
     2. **[アドレス範囲]** に、特定の IPv4 アドレスまたは IPv4 アドレスの範囲を CIDR 表記で入力します。 
     3. **信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する**かどうかを指定します。 
 
-        ![[ファイアウォール] - [すべてのネットワーク] オプションが選択されている](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+        ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. ツール バーの **[保存]** を選択して設定を保存します。 ポータルの通知に確認が表示されるまで、数分間お待ちください。
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
@@ -62,7 +76,7 @@ ms.locfileid: "80878189"
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> から
 > ```json
 > "defaultAction": "Deny"
 > ```

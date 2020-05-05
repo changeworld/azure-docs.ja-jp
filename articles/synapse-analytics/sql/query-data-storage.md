@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cdad95b1a910a45629e85bcc716218b272afd9de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421296"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116249"
 ---
 # <a name="overview-query-data-in-storage"></a>概要:ストレージ内のデータを照会する
 
@@ -72,9 +72,6 @@ CREATE DATABASE mydbname;
 > SQL オンデマンドでは、既定で常に AAD パススルーが使用されます。
 
 ストレージのアクセス制御の管理方法の詳細については、この[リンク](develop-storage-files-storage-access-control.md)を参照してください。
-
-> [!WARNING]
-> エンドポイント リージョンにあるストレージ アカウントの資格情報を作成する必要があります。 SQL オンデマンドは異なるリージョンからストレージにアクセスできますが、ストレージとエンドポイントを同じリージョンに配置するとパフォーマンスが向上します。
 
 CSV、JSON、および Parquet コンテナーの資格情報を作成するには、次のコードを実行します。
 
@@ -175,13 +172,13 @@ FROM
 
 - [単一の CSV ファイルに対するクエリを実行する](query-single-csv-file.md)
 
-- [フォルダーと複数の CSV ファイルに対するクエリを実行する](query-folders-multiple-csv-files.md)
+- [フォルダーと複数の CSV ファイルに対してクエリを実行する](query-folders-multiple-csv-files.md)
 
-- [特定のファイルに対するクエリを実行する](query-specific-files.md)
+- [特定のファイルに対してクエリを実行する](query-specific-files.md)
 
-- [Parquet ファイルに対するクエリを実行する](query-parquet-files.md)
+- [Parquet ファイルに対してクエリを実行する](query-parquet-files.md)
 
-- [Parquet の入れ子にされた型に対するクエリを実行する](query-parquet-nested-types.md)
+- [Parquet の入れ子にされた型に対してクエリを実行する](query-parquet-nested-types.md)
 
 - [JSON ファイルに対するクエリを実行する](query-json-files.md)
 

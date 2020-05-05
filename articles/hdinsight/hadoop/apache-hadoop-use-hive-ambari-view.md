@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/06/2020
-ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745097"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192682"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
 
@@ -162,8 +162,4 @@ Hive の実行エンジンを Tez (既定値) から MapReduce に変更する�
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
-
-HDInsight での Hadoop のその他の使用方法に関する情報
-
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
-* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
+* [Apache Hive で Apache Beeline クライアントを使用する](apache-hadoop-use-hive-beeline.md)

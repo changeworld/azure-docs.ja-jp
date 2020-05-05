@@ -2,15 +2,15 @@
 title: テンプレートを使用して VM 拡張機能をデプロイする
 description: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする方法について説明します
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477597"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184964"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -23,7 +23,6 @@ ms.locfileid: "80477597"
 > * クイック スタート テンプレートを開く
 > * テンプレートの編集
 > * テンプレートのデプロイ
-> * デプロイを検証する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -42,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell スクリプトを準備する
 
-次の内容が含まれた PowerShell スクリプトは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) から共有されます。
+インライン PowerShell スクリプトまたはスクリプト ファイルを使用することができます。  このチュートリアルでは、スクリプト ファイルの使用方法について説明します。 次の内容が含まれた PowerShell スクリプトは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) から共有されます。
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -55,16 +54,21 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
 1. Visual Studio Code の **[ファイル]**  >  **[ファイルを開く]** を選択します。
-1. **[ファイル名]** ボックスに https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json という URL を貼り付けます。
+1. **[ファイル名]** ボックスに次の URL を貼り付けます。
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. ファイルを開くには、 **[開く]** を選択します。
     このテンプレートには、次の 5 つのリソースが定義されています。
 
-   * **Microsoft.Storage/storageAccounts**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
-   * **Microsoft.Network/publicIPAddresses**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
-   * **Microsoft.Network/virtualNetworks**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
-   * **Microsoft.Network/networkInterfaces**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
-   * **Microsoft.Compute/virtualMachines**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts)。
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)。
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)。
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)。
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)。
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)。
 
      カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 
@@ -77,7 +81,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 * **fileUris**: スクリプト ファイルが格納される場所です。 提供された場所を使用しない場合は、値を更新する必要があります。
 * **commandToExecute**: このコマンドによってスクリプトが呼び出されます。
 
+インライン スクリプトを使用するには、**fileUris** を削除し、**commandToExecute** を次のように変更します。
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+このインライン スクリプトは、iisstart.html の内容も更新します。
+
 Web サーバーにアクセスできるよう HTTP ポートを開放する必要があります。
 
 1. テンプレートで **securityRules** を探します。
@@ -130,10 +142,13 @@ Web サーバーにアクセスできるよう HTTP ポートを開放する必�
 
 デプロイ手順については、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」の「テンプレートのデプロイ」セクションを参照してください。 生成されたパスワードを仮想マシンの管理者アカウントに対して使用することが推奨されます。 この記事の「[前提条件](#prerequisites)」セクションを参照してください。
 
-## <a name="verify-the-deployment"></a>デプロイを検証する
+Cloud Shell から次のコマンドを実行して、VM のパブリック IP アドレスを取得します。
 
-1. Azure portal で VM を選択します。
-1. VM の概要で、 **[クリックしてコピー]** を選択して IP アドレスをコピーし、ブラウザーのタブに貼り付けます。インターネット インフォメーション サービス (IIS) の既定のウェルカム ページ (下記) が表示されます。
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+IP アドレスを Web ブラウザーに貼り付けます。 インターネット インフォメーション サービス (IIS) の既定のウェルカム ページ (下記) が表示されます。
 
 ![インターネット インフォメーション サービスのウェルカム ページ](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

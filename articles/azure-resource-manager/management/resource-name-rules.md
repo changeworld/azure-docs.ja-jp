@@ -4,10 +4,10 @@ description: Azure リソースの名前付けに関する規則と制限事項�
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086387"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項

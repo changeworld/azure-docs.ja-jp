@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: ba281ffb30801e0ae10cab10ceb95c0a3bffde2d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640017"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でのユーザー アカウント、パスワード、および管理の管理の概念

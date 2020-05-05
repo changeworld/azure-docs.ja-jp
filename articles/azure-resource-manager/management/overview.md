@@ -4,10 +4,10 @@ description: Azure Resource Manager を使用して、Azure のリソースを�
 ms.topic: overview
 ms.date: 04/21/2020
 ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81870486"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは

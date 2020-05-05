@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 4cb2159b02635e659a8ca7236523e899bf01550c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411151"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133241"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
@@ -99,7 +99,7 @@ Azure SQL Database には、ワークロードの特性に関する詳細な分�
 
 [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)は、組み込みの SQL Server 監視機能です。これはクエリのパフォーマンスをリアルタイムで記録して、潜在的なパフォーマンスの問題と上位のリソース コンシューマーを特定できるようにします。 自動チューニングとレコメンデーションでは、低下したパフォーマンスと欠落または重複したインデックスがあるクエリに関するアドバイスが提供されます。 SQL Database で自動チューニングを使用すると、問題を解決できるスクリプトを手動で適用したり、SQL Database に修正プログラムを適用させたりすることができます。 また、SQL Database では、修正プログラムによって何らかのベネフィットが得られるかどうかをテストおよび検証し、結果に応じて変更を保持するか、元に戻すことができます。 クエリ ストアと自動チューニング機能に加えて、標準の [DMV と XEvent](sql-database-monitoring-with-dmvs.md) を使用して、ワークロードのパフォーマンスを監視することができます。
 
-Azure には、パフォーマンス評価と組み合わせた[組み込みのパフォーマンス監視](sql-database-performance-guidance.md)と[アラート](sql-database-insights-alerts-portal.md)のツールが用意されています。これにより、何千ものデータベースの状態を監視できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
+Azure には、パフォーマンス評価と組み合わせた[組み込みのパフォーマンス監視](sql-database-performance-guidance.md)と[アラート](sql-database-insights-alerts-portal.md)のツールが用意されています。これにより、何千ものデータベースの状態を監視できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするために[メトリックとリソース ログを出力する](sql-database-metrics-diag-logging.md)ことができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
 - **Azure Storage**:大量の利用統計情報を低価格でアーカイブします。
 - **Azure Event Hubs**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。

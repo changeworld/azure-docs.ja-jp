@@ -5,18 +5,16 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 140d59894b38c7f07f16b0ac3cf99316c201d120
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886791"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208042"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する
 
 Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を通して、AKS の Windows Server ノードへのアクセスが必要になる場合があります。 メンテナンス、ログ収集、その他のトラブルシューティング操作のための接続です。 RDP を使用して AKS の Windows Server ノードにアクセスできます。 または、SSH を使用して AKS の Windows Server ノードにアクセスする場合、クラスターの作成時に使用したのと同じキー ペアにアクセス可能であれば、[Azure Kubernetes Service (AKS) クラスター ノードへの SSH 接続][ssh-steps]に関する記事の手順に従います。 セキュリティのため、AKS ノードはインターネットに公開されていません。
-
-現在、AKS で Windows Server ノードのサポートはプレビュー段階にあります。
 
 この記事では、プライベート IP アドレスを使用して、AKS ノードとの RDP 接続を作成する方法を示します。
 

@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75722128"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535402"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate プロジェクトのトラブルシューティング
 
@@ -32,7 +32,7 @@ Azure Migrate プロジェクトを作成するには、サブスクリプショ
 
 ## <a name="cant-find-a-geography"></a>地域が見つからない
 
-Azure Migrate プロジェクトは、[サポートされている地域](migrate-support-matrix.md#supported-geographies)で作成できます。 プロジェクトの地域は、検出されたマシン メタデータを格納するために使用されます。 他の場所のマシンも評価または移行できます。
+Azure Migrate プロジェクトは、[パブリック クラウド](migrate-support-matrix.md#supported-geographies-public-cloud)と[政府クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域で作成できます。
 
 ## <a name="what-are-vm-limits"></a>VM の制限とは
 

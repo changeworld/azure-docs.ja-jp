@@ -12,10 +12,10 @@ ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478545"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>クイック スタート:Bing Image Search REST API と Python を使用してイメージを検索する

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066654"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
@@ -90,7 +90,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
   - ドライ ランの前に以下の項目を解決する必要がありますが、ドライ ラン テストは、準備の手順が失敗しても安全に進められます。 エンタープライズでの移行中に、ドライ ランが移行の準備のための安全かつ貴重な方法であることがわかりました。
   - 準備の実施中は、コントロール プレーン (Azure の管理操作) が仮想ネットワーク全体に対してロックされるため、検証/準備/中止の際に VM のメタデータを変更することはできません。  ただし、それ以外のアプリケーション機能 (RD、VM の使用など) が影響を受けることはありません。  ドライ ランが実施されていることは VM のユーザーにはわかりません。
 
-- **ExpressRoute 回線と VPN** - 現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
+- **ExpressRoute 回線と VPN** -  現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
 
 - **VM 拡張機能** - 仮想マシン拡張機能は、実行中の VM を移行する際の最も大きな障害の 1 つとなる可能性があります。 VM 拡張機能の修復には 1 ～ 2 日かかる可能性があるため、それに応じた計画を行ってください。  動作中の VM の VM 拡張機能の状態を報告するには、Azure エージェントを稼働させておく必要があります。 実行中の VM について不適切な状態が返された場合は、移行が停止します。 移行を可能にするためにエージェント自体が正常に動作している必要はありませんが、VM に拡張機能が存在する場合は、移行を進めるために、動作中のエージェントと送信インターネット接続 (DNS を使用) の両方が必要になります。
   - 移行中に DNS サーバーへの接続が失われた場合は、移行準備前のすべての VM から BGInfo v1.\* を除くすべての VM 拡張機能を削除し、Azure Resource Managerの移行後に VM に追加し直す必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。 **注:** Azure Diagnostics やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。

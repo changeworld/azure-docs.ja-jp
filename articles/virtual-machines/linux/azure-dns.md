@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969314"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641726"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。
@@ -47,7 +47,7 @@ Azure では、パブリック DNS 名の解決と共に、同じ仮想ネット
 
 * Azure が作成する DNS サフィックスは変更できません。
 * 独自のレコードを手動で登録することはできません。
-* WINS と NetBIOS はサポートされません
+* WINS と NetBIOS はサポートされません 
 * ホスト名は DNS 互換である必要があります。
     使用できる文字は 0 ～ 9、a ～ z、'-' のみであり、最初または最後の文字として '-' は使用できません。 RFC 3696 セクション 2 を参照してください。
 * DNS クエリ トラフィックは仮想マシンごとに調整されます。 調整は、ほとんどのアプリケーションに影響がありません。  要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。  詳しくは、「[Azure が提供する名前解決から最大限の効果を得る](#getting-the-most-from-name-resolution-that-azure-provides)」をご覧ください。
@@ -79,7 +79,7 @@ dnsmasq など、いくつかの異なる DNS キャッシュ パッケージを
 5. ネットワーク サービスを再起動し ("service network restart")、ローカル DNS リゾルバーとしてキャッシュを設定する
 
 > [!NOTE]
-> : 'dnsmasq' パッケージは、Linux で使用可能な多くの DNS キャッシュの 1 つにすぎません。 使用する前に、目的とするニーズに適合するかどうかと、その他のキャッシュがインストールされていないことを確認してください。
+> :'dnsmasq' パッケージは、Linux で使用可能な多くの DNS キャッシュの 1 つにすぎません。 使用する前に、目的とするニーズに適合するかどうかと、その他のキャッシュがインストールされていないことを確認してください。
 >
 >
 
@@ -97,7 +97,7 @@ Linux 仮想マシンの現在の設定を確認するには、次に示す 'cat
 resolv.conf ファイルは自動生成され、編集すべきではありません。 'options' 行を追加する具体的な手順は、ディストリビューションによって異なります。
 
 **Ubuntu** (resolvconf を使用)
-1. options 行を '/etc/resolveconf/resolv.conf.d/head' に追加します。
+1. options 行を '/etc/resolvconf/resolv.conf.d/head' に追加します。
 2. ' resolvconf -u' を実行して更新します。
 
 **SUSE** (netconf を使用)

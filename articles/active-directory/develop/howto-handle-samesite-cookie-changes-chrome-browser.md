@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e414e5cb7ad9097eb815240f83d9f529f839b6b4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884003"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81534603"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome ブラウザーにおける SameSite Cookie の変更の処理
 

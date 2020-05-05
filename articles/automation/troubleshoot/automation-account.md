@@ -8,14 +8,14 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c66b1728144b8517f6ac444059b3a8def956c6e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80299199"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81679378"
 ---
-# <a name="automation-account-troubleshooting"></a>Automation アカウントのトラブルシューティング
+# <a name="troubleshoot-the-automation-account"></a>Automation アカウントのトラブルシューティング
 
 この記事では、Automation アカウントを使用する際に発生する可能性がある問題の解決方法について説明します。 次のセクションでは、具体的なエラー メッセージと、考えられる個別の解決策を示します。 Automation アカウントに関する一般的な情報については、[Azure アカウントの作成](../automation-quickstart-create-account.md)に関するページを参照してください。
 
@@ -45,11 +45,11 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 4. リソース プロバイダーの一覧で、**Microsoft.Automation** リソース プロバイダーが登録されていることを確認します。
 
-5. 一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](/azure/azure-resource-manager/resource-manager-register-provider-errors)」の手順に従って、**Microsoft. Automation** プロバイダーを登録します。
+5. プロバイダーが一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](/azure/azure-resource-manager/resource-manager-register-provider-errors)」に記載の手順に従ってそれを登録します。
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルで追加のサポートを受けてください。
+自分の問題が上記にない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
 
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
 * [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。

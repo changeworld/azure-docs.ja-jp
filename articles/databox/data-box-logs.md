@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229791"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81676407"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy の追跡とイベントのログ記録
 
@@ -47,7 +47,7 @@ Azure Data Box サービスに対して定義できる 2 つのロールは次�
 - 注文レベルでロールを割り当てます。 その特定の Data Box の注文のみを操作し、その他は何も操作しないように、ユーザーはロールによって定義されているアクセス許可のみを持ちます。
 - リソース グループ レベルのロールを割り当てます。ユーザーはリソース グループ内のすべての Data Box の注文へのアクセス権を持ちます。
 
-推奨される RBAC の使用の詳細については、[RBAC のベスト プラクティス](../role-based-access-control/overview.md#best-practice-for-using-rbac)に関するページを参照してください。
+推奨される RBAC の使用の詳細については、「[Azure RBAC のベスト プラクティス](../role-based-access-control/best-practices.md)」を参照してください。
 
 ## <a name="track-the-order"></a>注文を追跡する
 

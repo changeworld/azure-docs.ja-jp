@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
 ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732682"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローで SQL の切り捨てエラー行を処理する

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 94d3993c6a0c62a68ea77a888d3351c8fea1d935
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990992"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181615"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -70,10 +70,8 @@ ms.locfileid: "80990992"
     Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 
-<!--start-collapse-->
-> ### <a name="about-these-libraries"></a>これらのライブラリについて
-> これらのライブラリでは、Cookie ベースの認証を通じて OpenID Connect を使用して、シングル サインオン (SSO) を有効にします。 認証が完了し、ユーザーを表すトークンがアプリケーションに送信されたら、OWIN ミドルウェアはセッションの Cookie を作成します。 その後、ブラウザーはこの Cookie を後の要求に使用するため、ユーザーはパスワードを再入力する必要がなく、追加の認証は必要ありません。
-<!--end-collapse-->
+### <a name="about-these-libraries"></a>これらのライブラリについて
+これらのライブラリでは、Cookie ベースの認証を通じて OpenID Connect を使用して、シングル サインオン (SSO) を有効にします。 認証が完了し、ユーザーを表すトークンがアプリケーションに送信されたら、OWIN ミドルウェアはセッションの Cookie を作成します。 その後、ブラウザーはこの Cookie を後の要求に使用するため、ユーザーはパスワードを再入力する必要がなく、追加の認証は必要ありません。
 
 ## <a name="configure-the-authentication-pipeline"></a>認証パイプラインを構成する
 
@@ -117,7 +115,7 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -171,10 +169,9 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
 > `ValidateIssuer = false` の設定は、このクイック スタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証する必要があります。
 > その方法については、サンプルを参照してください。
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>詳細情報
-> *OpenIDConnectAuthenticationOptions* に指定したパラメーターは、アプリケーションが Microsoft ID プラットフォームと通信するための調整役として機能します。 OpenID Connect のミドルウェアはバックグラウンドで Cookie を使用するため、前のコードで示したように、Cookie 認証も設定する必要があります。 *ValidateIssuer* 値によって、OpenIdConnect はアクセスを 1 つの特定の組織に制限しないように設定されます。
-<!--end-collapse-->
+### <a name="more-information"></a>詳細情報
+
+*OpenIDConnectAuthenticationOptions* に指定したパラメーターは、アプリケーションが Microsoft ID プラットフォームと通信するための調整役として機能します。 OpenID Connect のミドルウェアはバックグラウンドで Cookie を使用するため、前のコードで示したように、Cookie 認証も設定する必要があります。 *ValidateIssuer* 値によって、OpenIdConnect はアクセスを 1 つの特定の組織に制限しないように設定されます。
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>サインインとサインアウト要求を処理するコントローラーを追加する
 
@@ -208,7 +205,7 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -266,10 +263,8 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
     </html>
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>詳細情報
-> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "ブランド化ガイドライン")をご覧ください。
-<!--end-collapse-->
+### <a name="more-information"></a>詳細情報
+このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "ブランド化ガイドライン")をご覧ください。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
 このコントローラーでは、コントローラーを保護する `[Authorize]` 属性の使用例を示します。 この属性は、認証されたユーザーのみを許可することで、コントローラーへのアクセスを制限します。 次のコードではこの属性を利用して、サインインの一部として取得されたユーザー要求を表示します。
@@ -291,28 +286,26 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
+
             //You get the user’s first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>詳細情報
-> `[Authorize]` 属性を使用しているため、このコントローラーのすべてのメソッドは、ユーザーが認証されている場合にのみ実行できます。 認証されていないユーザーがコントローラーにアクセスしようとすると、OWIN は認証チャレンジを開始し、ユーザーに認証を強制します。 前のコードは、ユーザーの ID トークンに含まれている特定のユーザー属性に対する要求の一覧を参照します。 これらの属性には、ユーザーのフルネームとユーザー名、さらにグローバル ユーザー識別子のサブジェクトが含まれます。 また、ユーザーの組織の ID を表す*テナント ID* も含まれています。 
-<!--end-collapse-->
+### <a name="more-information"></a>詳細情報
+`[Authorize]` 属性を使用しているため、このコントローラーのすべてのメソッドは、ユーザーが認証されている場合にのみ実行できます。 認証されていないユーザーがコントローラーにアクセスしようとすると、OWIN は認証チャレンジを開始し、ユーザーに認証を強制します。 前のコードは、ユーザーの ID トークンに含まれている特定のユーザー属性に対する要求の一覧を参照します。 これらの属性には、ユーザーのフルネームとユーザー名、さらにグローバル ユーザー識別子のサブジェクトが含まれます。 また、ユーザーの組織の ID を表す*テナント ID* も含まれています。
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>ユーザー要求を表示するビューを作成する
 
@@ -403,16 +396,16 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 <br/><br/>
 ![Microsoft アカウントへのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-<!--start-collapse-->
-> ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
->  Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
->  > - アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
->  > - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
->
-> 詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)」を参照してください。
-<!--end-collapse-->
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
-#### <a name="view-application-results"></a>アプリケーションの結果を表示する
+Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
+
+- アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
+- または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
+
+詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)」を参照してください。
+
+### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
 サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定されている HTTPS の URL です。 ホーム ページには、 *"Hello \<ユーザー>"* というウェルカム メッセージ、サインアウトのためのリンク、ユーザーの要求を表示するリンクが表示されます。 ユーザーの要求へのリンクは、前に作成した Claims コントローラーに接続しています。
 
@@ -446,14 +439,13 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 ## <a name="advanced-options"></a>[詳細オプション]
 
-<!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Web サイト全体を保護する
+
 Web サイト全体を保護するには、**Global.asax** ファイルで、`AuthorizeAttribute` 属性を `Application_Start` メソッドの `GlobalFilters` フィルターに追加します。
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
-<!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>アプリケーションにサインインできるユーザーを制限する
 

@@ -4,10 +4,10 @@ description: Azure Migrate プロジェクトを作成し、評価/移行ツー�
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537731"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>評価/移行ツールの初回追加

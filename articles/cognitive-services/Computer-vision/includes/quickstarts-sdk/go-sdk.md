@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: d8f40ab57ee2569b2cb5bf62f391919476b8ab17
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80133678"
 ---
 <a name="HOLTop"></a>

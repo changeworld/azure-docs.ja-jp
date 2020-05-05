@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226099"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677408"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -141,6 +141,13 @@ VM をバックアップするときにディスク サイズが 32 TB よりも
 **エラー メッセージ**:エラーが発生したため、バックアップに失敗しました。 詳細については、ジョブ エラー メッセージの詳細をご覧ください。
 
 このエラーは、IaaS VM から報告されます。 問題の根本原因を特定するには、Recovery Services コンテナーの設定にアクセスします。 **[監視]** セクション下で、 **[バックアップ ジョブ]** を選択して、状態をフィルター処理して表示します。 **[失敗]** をクリックして、基になるエラー メッセージの詳細を確認します。 エラーの詳細ページの推奨事項に従って、さらにアクションを実行します。
+
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent - バックアップ失敗: この仮想マシンは、Azure Backup によって (アクティブに) 保護されていません
+
+**エラー コード**:UserErrorBcmDatasourceNotPresent <br>
+**エラー メッセージ**:バックアップ失敗: この仮想マシンは、Azure Backup によって (アクティブに) 保護されていません。
+
+指定された仮想マシンが Azure Backup によってアクティブに保護されている (一時停止状態でない) ことを確認してください。 この問題を解決するには、仮想マシンがアクティブであることを確実にしてから、操作を再試行します。
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
 

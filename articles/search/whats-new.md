@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/24/2020
 ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80247199"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
@@ -37,7 +37,7 @@ Azure Search は、コア操作での拡張された (ただし、省略可能�
 
 + [PII 検出 (プレビュー)](cognitive-search-skill-pii-detection.md) は、入力テキストから個人を特定できる情報を抽出する認知スキルであり、インデックス作成中に使用されます。入力テキストから個人を特定できる情報をさまざまな方法でマスクするためのオプションがあります。
 
-+ [カスタム エンティティの参照 (プレビュー)](cognitive-search-skill-custom-entity-lookup.md ) では、ユーザーが定義したカスタムの単語と語句のリストからテキストが検索されます。 このリストを使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。 
++ [カスタム エンティティの参照 (プレビュー)](cognitive-search-skill-custom-entity-lookup.md ) では、ユーザーが定義したカスタムの単語と語句のリストからテキストが検索されます。 このリストを使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルでは、ある程度のあいまい一致もサポートされており、類似しているが完全一致ではない一致を見つけるために適用できます。 
 
 ### <a name="january-2020"></a>2020 年 1 月
 
@@ -45,7 +45,7 @@ Azure Search は、コア操作での拡張された (ただし、省略可能�
 
 + 検索サービスへのプライベート アクセスは、次の 2 つのメカニズムで利用できます (どちらも現在プレビュー段階です)。
 
-  + Management REST API `api-version=2019-10-01-Preview` を使用してサービスを作成することにより、特定の IP アドレスにアクセスを制限できます。 プレビュー API の [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) には、新しい **IpRule** および **NetworkRuleSet** プロパティがあります。 このプレビュー機能は、特定のリージョンで使用できます。 詳しくは、「[Management REST API の使用方法](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)」をご覧ください。
+  + Management REST API `api-version=2019-10-01-Preview` を使用してサービスを作成することにより、特定の IP アドレスにアクセスを制限できます。 プレビュー API の **CreateOrUpdate API** には、新しい **IpRule** および [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) プロパティがあります。 このプレビュー機能は、特定のリージョンで使用できます。 詳しくは、「[Management REST API の使用方法](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)」をご覧ください。
 
   + 現在はアクセスが制限されたプレビューで利用でき、同じ仮想ネットワーク上のクライアントからの接続に対して Azure プライベート エンドポイントをサポートする Azure Search Service をプロビジョニングすることができます。 詳しくは、[安全な接続のためのプライベート エンドポイントの作成](service-create-private-endpoint.md)に関する記事をご覧ください。
 

@@ -7,13 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 2a725f3c5c9e1428079807b5b76dbe72d416a9c7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.custom: seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 47f774f7b848e34aa7dc219ee4b08fb083cbd813
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393674"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188210"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -23,9 +24,9 @@ ms.locfileid: "81393674"
 
 1. [Python](https://www.python.org/downloads/) と [pip](https://pip.pypa.io/en/stable/installing/) をインストールします。
 
-   + [https://www.python.org/downloads/](https://www.python.org/downloads/) から Python をインストールします。
-   + pip を [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) からインストールします (Python インストールからインストールされてない場合)。
-   + 次のコマンドを使用して、Python と pip が正常にインストールされていることを確認します。 (省略可能)
+   * [https://www.python.org/downloads/](https://www.python.org/downloads/) から Python をインストールします。
+   * pip を [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) からインストールします (Python インストールからインストールされてない場合)。
+   * 次のコマンドを使用して、Python と pip が正常にインストールされていることを確認します。 (省略可能)
 
         ![Python pip バージョンの確認コマンド](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
@@ -52,24 +53,16 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。**
+VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
 
 ## <a name="next-steps"></a>次のステップ
 
 ### <a name="demo"></a>デモ
 
-* HDInsight for VS Code:[ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight for VS Code: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 
 * [Azure HDInsight Tool for Visual Studio Code を使用する](hdinsight-for-vscode.md)
 * [Azure Toolkit for IntelliJ を使用して Apache Spark Scala アプリケーションを作成して送信する](spark/apache-spark-intellij-tool-plugin.md)
-* [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Azure Toolkit for IntelliJ を使用して VPN 経由で Apache Spark アプリケーションをリモートでデバッグする](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](spark/apache-spark-eclipse-tool-plugin.md)
-* [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](spark/apache-spark-zeppelin-notebook.md)
-* [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](spark/apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter Notebook で外部のパッケージを使用する](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Azure HDInsight の Microsoft Power BI で Apache Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](./interactive-query/hdinsight-connect-hive-zeppelin.md)

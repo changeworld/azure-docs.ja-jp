@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c5cf218632c720fd042cc5f5d4ed95d5096b5b5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 5f37d157e11b8cd7cf093fa558e81d9a1ce345a9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270198"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146198"
 ---
 # <a name="container-skus-tab"></a>コンテナーの SKU のタブ
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure Container オファーを作成する](https://aka.ms/CreateContainerOffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、Partner Center でオファーを作成・管理することになります。 「[Azure Container オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)」の手順に従って、移行されたオファーを管理します。
 
 **[新しいプラン]** ページの **[SKU]** タブを使用すると、1 つまたは複数の SKU を作成して、それらを新しいプランに関連付けることができるようになります。  異なる SKU を使用して、機能セット、課金モデル、その他の特性によってソリューションを区別できます。
 

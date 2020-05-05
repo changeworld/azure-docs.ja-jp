@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447099"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186290"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム グリッドを追加する
 
@@ -182,7 +182,7 @@ describe('BasicPage Component', () => {
 npm start
 ```
 
-前のコマンドは、ローカルの [http://localhost:3000/dashboard](http://localhost:3000/dashboard) で UI を実行します。 **[例]** ページに移動して、サービスからのグリッド表示データを確認します。
+前のコマンドは、`http://localhost:3000/dashboard` のローカルで UI を実行します。 **[例]** ページに移動して、サービスからのグリッド表示データを確認します。
 
 ## <a name="select-rows"></a>行を選択する
 

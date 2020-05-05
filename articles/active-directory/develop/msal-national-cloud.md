@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76695740"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81533991"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 
@@ -71,7 +71,7 @@ MSAL.NET を使用して、国内クラウドへのユーザーのサインイ�
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
 1. [Azure portal](https://portal.azure.us/) にサインインします。
-    
+
    他の国内クラウドの Azure portal エンドポイントを見つけるには、「[アプリ登録エンドポイント](authentication-national-cloud.md#app-registration-endpoints)」を参照してください。
 
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
@@ -126,12 +126,12 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 - `Enter_the_Tenant_Info_Here` には、次のオプションのいずれかが設定されます。
     - アプリケーションで**この組織のディレクトリ内のアカウント**がサポートされる場合は、この値をテナント ID またはテナント名 (例: contoso.microsoft.com) に置き換えます。
     - アプリケーションで**任意の組織のディレクトリ内のアカウント**がサポートされる場合は、この値を `organizations` に置き換えます。
-    
+
     すべての国内クラウドの認証エンドポイントを見つけるには、「[Azure AD 認証エンドポイント](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)」を参照してください。
 
     > [!NOTE]
     > 個人用 Microsoft アカウントは、国内クラウドではサポートされません。
-  
+
 - `graphEndpoint` は、米国政府機関向け Microsoft クラウド用の Microsoft Graph エンドポイントです。
 
    すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、[国内クラウド内の Microsoft Graph エンドポイント](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)に関する記事を参照してください。
@@ -149,16 +149,16 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     ```json
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
-    
+
 - Microsoft Graph を呼び出すには、使用しているクラウドに応じた特定の Graph エンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
 
     次に示すのは、Graph エンドポイントとスコープの例です。
-    
+
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
     "scope": "User.Read"
     ```
-    
+
 ## <a name="java"></a>[Java](#tab/java)
 
 ソブリン クラウド用の MSAL for Java アプリケーションを有効にするには、次のようにします。
@@ -194,12 +194,12 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
@@ -213,7 +213,7 @@ iOS および macOS 用の MSAL は、各国のクラウドでトークンを取
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```

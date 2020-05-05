@@ -7,14 +7,16 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 69660152458de26e9dbcbf1f50db6ce6824351d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026507"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81759092"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
+
+"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
 IoT Edge は、次の 3 つのコンポーネントで構成されます。
 
@@ -72,4 +74,4 @@ IoT Edge デバイスをゲートウェイ デバイスにするよう選択し�
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Central アプリケーション テンプレートとは何であるかわかったので、[IoT Central アプリケーションの作成](quick-deploy-iot-central.md)を開始します。
+デバイス開発者の場合は、次のステップとして [IoT Central のゲートウェイ デバイスの種類](./tutorial-define-gateway-device-type.md)について学習することをお勧めします。

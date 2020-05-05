@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - mqtt
 ms.date: 06/21/2019
-ms.openlocfilehash: 24b6d2eca2eaa12e3e04647d403a015bdbf24ec6
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 5c34dcc606e87e11a3a018df1b2d6bbedb262d04
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770024"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82209113"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Node.js)
 
@@ -86,19 +86,19 @@ az extension add --name azure-iot
 
     この値は、このクイックスタートの後の方で使用します。
 
-1. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
+1. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --policy-name service --output table
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-    次のようなサービス接続文字列をメモしておきます。
-
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
-
-    この値は、このクイックスタートの後の方で使用します。 このサービス接続文字列は、前の手順でメモしたデバイス接続文字列とは異なります。
+    クイックスタートの後の方で使うので、これら 3 つの値をメモしておきます。
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされたテレメトリの送信
 
@@ -127,9 +127,13 @@ az extension add --name azure-iot
 
 1. 別のローカル ターミナル ウィンドウを開いて、サンプルの Node.js プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **ReadDeviceToCloudMessages.js** ファイルを開きます。
+1. 適当なテキスト エディターで **ReadDeviceToCloudMessages.js** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
-    `connectionString` 変数の値を、前にメモしたサービス接続文字列に置き換えます。 **ReadDeviceToCloudMessages.js** に変更を保存します。
+    | 変数 | 値 |
+    | -------- | ----------- |
+    | `eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
+    | `eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
+    | `iotHubSasKey`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
 
 1. ローカル ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションを実行します。
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152839"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117269"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -76,6 +76,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [ユーザー名] (省略可能) - ユーザー名を作成します。 
    * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
    * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
+   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
    * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
 
    > [!div class="mx-imgBorder"]
@@ -103,14 +104,14 @@ Azure CLI から次のコマンドを実行して、サンプル ラベル付け
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
 az container create \
-  --resource-group <resorunce_group_name> \
+  --resource-group <resource_group_name> \
   --name <name> \
   --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
   --cpu 2 \
-  --memory 8
+  --memory 8 \
   --command-line "./run.sh eula=accept"
 ```
 

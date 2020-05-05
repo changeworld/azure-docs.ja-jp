@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: f8f1eb353087c5121eaafb4c8789e7a2f7638b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475123"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678453"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
 Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイン パターンがサポートされています。これは、クラスと依存関係の間で[制御の反転 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) を実現するための技術です。
 
-- Azure Functions の依存関係挿入は、.NET Core の依存関係挿入機能を基盤としています。 [.NET Core 依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)について理解していることが推奨されます。 ただし、依存関係のオーバーライド方法と、従量課金プランで Azure Functions により構成値を読み取る方法に違いがあります。
+- Azure Functions の依存関係挿入は、.NET Core の依存関係挿入機能を基盤としています。 [.NET Core 依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)について理解しておくことをお勧めします。 依存関係のオーバーライド方法と、従量課金プランで Azure Functions により構成値を読み取る方法に違いがあります。
 
 - 依存関係の挿入のサポートは、Azure Functions 2.x から開始されます。
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641617"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法

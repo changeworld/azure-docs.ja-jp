@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 00f6a5f88a66f0a19943ff3a2c722ae1a9938e9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80576762"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81604736"
 ---
 # <a name="how-to-query-logs-from-startstop-vms-solution"></a>Start/Stop VMs ソリューションからログのクエリを実行する方法
 
@@ -71,4 +71,4 @@ Azure Automation により、ジョブ ログとジョブ ストリームの 2 �
 
 ## <a name="next-steps"></a>次のステップ
 
-Start/Stop VMs during off hours ソリューションには、事前に定義された一連のアラートは含まれていません。 Azure Monitor を使用した「[ログ アラートの作成](../azure-monitor/platform/alerts-log.md)」をレビューして、ジョブ失敗アラートを作成し、DevOps や運用プロセスおよび手順をサポートする方法について学習してください。
+**Start/Stop VMs during off-hours** ソリューションには、事前に定義された一連のアラートは含まれていません。 Azure Monitor を使用した「[ログ アラートの作成](../azure-monitor/platform/alerts-log.md)」をレビューして、ジョブ失敗アラートを作成し、DevOps や運用プロセスおよび手順をサポートする方法について学習してください。

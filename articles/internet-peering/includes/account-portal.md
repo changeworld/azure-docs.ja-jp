@@ -8,21 +8,21 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7316dba7559c4a50e94771d69ce03bac51c0f3c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e9a9a0415a85c8b8c5fb27d911124c43a2447d0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773738"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678569"
 ---
-ブラウザーから[ポータル](https://portal.azure.com/)に移動し、Azure アカウントでサインインします。
+ブラウザーから Azure [portal](https://portal.azure.com/) に移動し、Azure アカウントでサインインします。
 
 サブスクリプションが複数あり、サブスクリプションを切り替える必要がある場合は、次のようにします。
 
-1. プロファイル ボタンをクリックし、 **[ディレクトリの切り替え]** を選択します。
+1. プロファイル ボタンを選択して、 **[ディレクトリの切り替え]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![ディレクトリの切り替えの選択](../media/choose-subscription-2.png)
+    > ![[ディレクトリの切り替え] の選択](../media/choose-subscription-2.png)
 
 1. ピアリングの設定に使用するサブスクリプションを選択します。
 

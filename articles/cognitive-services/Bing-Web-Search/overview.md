@@ -12,10 +12,10 @@ ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80477473"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
@@ -26,7 +26,7 @@ Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTf
 
 しくみを確認するには、 [Bing Web Search API のデモ](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)を試してください。
 
-## <a name="features"></a>特徴  
+## <a name="features"></a>[機能]  
 
 Bing Web Search では、インスタント アンサーにアクセスできるだけではありません。 ユーザーの検索結果をカスタマイズできるさまざまな機能も利用できます。
 

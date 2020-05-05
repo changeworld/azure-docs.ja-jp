@@ -3,12 +3,12 @@ title: Linux 上に開発環境をセットアップする
 description: Linux にランタイムと SDK をインストールし、ローカル開発クラスターを作成します。 このセットアップが終わると、アプリケーションを構築する準備は完了です。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309113"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193413"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -179,7 +179,7 @@ RHEL | - | OpenJDK 1.8 | npm から暗黙的に | latest |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Web ブラウザーを開いて､[Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
+2. Web ブラウザーを開いて､**Service Fabric Explorer** (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
 
     ![Service Fabric Explorer on Linux][sfx-linux]
 
@@ -265,7 +265,7 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 
 2. **[Help]\(ヘルプ\)**  >  **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
-3. **[Work with]\(作業対象\)** ボックスに「 **https://dl.microsoft.com/eclipse** 」と入力します。
+3. **[Work with]\(作業対象\)** ボックスに、「**https:\//dl.microsoft.com/eclipse**」と入力します。
 
 4. **[追加]** を選択します。
 

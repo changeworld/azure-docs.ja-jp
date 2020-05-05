@@ -4,10 +4,10 @@ description: ブループリントの更新と削除を含む、ブループリ�
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80677382"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要

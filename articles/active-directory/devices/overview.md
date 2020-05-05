@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のデバイス ID とは
+title: 'Azure Active Directory のデバイス ID とは '
 description: デバイス ID 管理を活用して、環境内のリソースにアクセスするデバイスを管理する方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82024440"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは

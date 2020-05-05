@@ -4,10 +4,10 @@ description: Application Insights を使用して Node.js サービスのパフ�
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411576"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
@@ -35,10 +35,10 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Application Insights リソースを設定する
 
 
-1. [Azure portal][portal] にサインインします。
+1. [Azure portal][portal] にサインインする
 2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。 このリソースには、テレメトリ データを受信するためのエンドポイント、そのデータのストレージ、保存済みのレポートとダッシュボード、ルールとアラートの構成などが含まれています。
 
-3. リソース作成ページの **[アプリケーションの種類]** ボックスで **[Node.js アプリケーション]** を選択します。 アプリの種類によって、作成される既定のダッシュボードとレポートが決まります (どの Application Insights リソースでも、あらゆる言語およびプラットフォームからデータを収集できます)。
+3. リソース作成ページの **[アプリケーションの種類]** ボックスで **[Node.js アプリケーション]** を選択します。 アプリの種類によって、作成される既定のダッシュボードとレポートが決まります  (どの Application Insights リソースでも、あらゆる言語およびプラットフォームからデータを収集できます)。
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK の設定
 
@@ -64,7 +64,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
    appInsights.start();
    ```
    
-   ikey は、`setup()` または `new appInsights.TelemetryClient()` に手動で渡す代わりに、APPINSIGHTS\_INSTRUMENTATIONKEY 環境変数を使用して渡すこともできます。 この方法では、コミットされたソース コードに ikey を含めず、異なる環境に合わせて異なる ikey を指定できます。
+   ikey は、\_ または `setup()` に手動で渡す代わりに、APPINSIGHTS`new appInsights.TelemetryClient()`INSTRUMENTATIONKEY 環境変数を使用して渡すこともできます。 この方法では、コミットされたソース コードに ikey を含めず、異なる環境に合わせて異なる ikey を指定できます。
 
    その他の構成方法については、以降のセクションを参照してください。
 

@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d6ac5961cbecf4e81c0b6bcc25c39aad42b18416
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427019"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686191"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -88,7 +88,7 @@ Azure CLI を使用するには:
 
 1. Azure portal にサインインします。*az login* で Azure にサインインします。
 
-1. 「*az account get-access-token --resource https://vault.azure.net* 」と入力して、アクセスを確認します。 エラーが発生した場合は、適切なバージョンの Azure CLI が正しくインストールされていることを確認してください。
+1. 「*az account get-access-token --resource https:\//vault.azure.net*」と入力して、アクセスを確認します。 エラーが発生した場合は、適切なバージョンの Azure CLI が正しくインストールされていることを確認してください。
 
    Azure CLI が既定のディレクトリにインストールされていない場合は、`AzureServiceTokenProvider` で Azure CLI のパスが見つけられないことを報告するエラーが発生することがあります。 **AzureCLIPath** 環境変数を使用して、Azure CLI のインストール フォルダーを定義してください。 `AzureServiceTokenProvider` は、必要な場合に、**AzureCLIPath** 環境変数に指定されたディレクトリを **Path** 環境変数に追加します。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670612"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186426"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -100,7 +100,8 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 
 3. 次のコマンドを使用して、CollectD と Linux 用 Log Analytics エージェントを再起動します。
 
-    sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
+        sudo service collectd restart
+        sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD メトリックから Azure Monitor スキーマへの変換
 既に Linux 用 Log Analytics エージェントによって収集されたインフラストラクチャ メトリックと、CollectD によって収集された新しいメトリックの間で使い慣れたモデルを維持するために、次のスキーマ マッピングが使用されます。

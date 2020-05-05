@@ -7,10 +7,10 @@ description: このクイックスタートでは、Azure Dev Spaces と Visual 
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: ac7a1b37b565f3589b7c049a3c1ed2a84972ded0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80239731"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Java を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces

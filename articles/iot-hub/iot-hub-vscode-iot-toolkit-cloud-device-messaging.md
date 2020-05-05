@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 0b081229dcb382786fea03dff358b5cc47d77ee7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912012"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81682494"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する
 
@@ -41,7 +41,7 @@ Visual Studio Code 用 Azure IoT Tools を使用して、デバイスからク�
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または [Visual Studio Code でこのリンクを開きます](vscode:extension/vsciot-vscode.azure-iot-tools)。
+* [VS Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)またはこの URL (`vscode:extension/vsciot-vscode.azure-iot-tools`) をコピーして、ブラウザー ウィンドウに貼り付けてください。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 

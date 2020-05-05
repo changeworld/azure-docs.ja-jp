@@ -8,18 +8,18 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e1cb1bec6273fa79315b9439bec1412622ebfe28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773666"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81680825"
 ---
-次の例は、シアトルで 10Gbps 直接ピアリングを作成する方法を示しています。
+次の例は、シアトルで 10 Gbps Direct ピアリングを作成する方法を示しています。
 
-新しいピアリング要求で使用される DirectConnections を作成するには、PowerShell コマンドレット **AzPeeringDirectConnectionObject** を使用します。
+新しいピアリング要求で使用される DirectConnection オブジェクトを作成するには、PowerShell コマンドレット **New-AzPeeringDirectConnectionObject** を使用します。
 
-DirectConnection の作成例を以下に示します。
+この例では、DirectConnection オブジェクトを作成する方法を示します。
 
 ```powershell
 $connection1 = New-AzPeeringDirectConnectionObject `
@@ -32,7 +32,7 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> 上の例の $peeringLocation [<index>] の <index> は、選択したピアリングの場所に対応している必要があります。
+> 前の例にある <index> **$peeringLocation[]** <index> の値は、選択したピアリングの場所に対応している必要があります。
 
 指定されたピアリングの場所で冗長性が必要な場合に備えて、別の接続を作成します。
 
@@ -46,7 +46,7 @@ $connection2 = New-AzPeeringDirectConnectionObject `
     -BandwidthInMbps 10000
 ```
 
-PowerShell コマンドレット **New-AzPeering** を使用して、新しい直接ピアリングを作成します。 このコマンドでは、以下で示すように、取得可能な ASN リソース ID が必要です。
+PowerShell コマンドレット **New-AzPeering** を使用して、新しい Direct ピアリングを作成します。 このコマンドでは、ここに示すように取得できる ASN リソース ID が必要です。
 
 
 ```powershell
@@ -60,7 +60,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-要求が正常に処理された場合の応答の例を以下に示します。
+この例では、要求が正常に処理された場合の応答を示します。
 
 ```powershell
 
@@ -78,4 +78,4 @@ New-AzPeering `
     Tags                 : {}
 
 ```
-上記の出力の **{subscriptionId}** の代わりに、実際のサブスクリプション ID が表示されることに注意してください。
+この出力の **{subscriptionId}** の代わりに、実際のサブスクリプション ID が表示されることに注意してください。

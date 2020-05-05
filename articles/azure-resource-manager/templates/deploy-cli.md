@@ -4,10 +4,10 @@ description: Azure Resource Manager と Azure CLI を使用してリソースを
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685701"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする

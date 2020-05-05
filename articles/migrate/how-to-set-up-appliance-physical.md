@@ -5,10 +5,10 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538275"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する

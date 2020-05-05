@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677021"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641101"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -31,7 +31,7 @@ ms.locfileid: "80677021"
 Azure Media Services (AMS) では、 **チャネル** はライブ ストリーミング コンテンツを処理するパイプラインを表します。 **チャネル** は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
 * オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効なチャネルに、シングル ビットレート ストリームが送信されます:RTMP またはスムーズ ストリーミング (Fragmented MP4)。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
-* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、AMS によるライブ エンコードの実行が無効なチャネルに送信します。 取り込んだストリームは、追加の処理なしで **チャネル**を通過します。 この方式は、 **パススルー**と呼ばれます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Haivision、Teradek、Tricaster の各エンコーダー。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、AMS によるライブ エンコードの実行が無効なチャネルに送信します。 取り込んだストリームは、追加の処理なしで **チャネル**を通過します。 この方式は、 **パススルー**と呼ばれます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Haivision、Teradek エンコーダー。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
   > [!NOTE]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
