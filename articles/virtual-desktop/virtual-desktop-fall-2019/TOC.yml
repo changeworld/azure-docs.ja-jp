@@ -1,0 +1,104 @@
+- name: Windows Virtual Desktop Fall 2019 リリース
+  href: ../index.yml
+- name: 概要
+  items:
+    - name: Windows Virtual Desktop とは
+      href: ../overview.md
+    - name: Spring 2020 リリースのドキュメント
+      href: ../create-host-pools-azure-marketplace.md
+- name: チュートリアル
+  items:
+    - name: 1. テナントの作成
+      href: tenant-setup-azure-active-directory.md
+    - name: 2. PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
+      href: create-service-principal-role-powershell.md
+    - name: 3. Azure Marketplace を使用してホスト プールを作成する
+      href: create-host-pools-azure-marketplace-2019.md
+    - name: 4. アプリ グループを管理する
+      href: manage-app-groups-2019.md
+    - name: 5. サービスの更新プログラムを検証するためのホスト プールを作成する
+      href: create-validation-host-pool-2019.md
+    - name: 6. サービス アラートを設定する
+      href: set-up-service-alerts-2019.md
+- name: 操作方法
+  items:
+    - name: Windows Virtual Desktop リソースに接続する
+      items:
+        - name: Web クライアントに接続する
+          href: connect-web-2019.md
+        - name: Android クライアントに接続する
+          href: connect-android-2019.md
+        - name: macOS クライアントに接続する
+          href: connect-macos-2019.md
+        - name: iOS クライアントに接続する
+          href: connect-ios-2019.md
+    - name: ホスト プールとセッション ホストを作成する
+      items:
+        - name: Azure Resource Manager テンプレート
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell-2019.md
+        - name: Windows 7 仮想マシンをデプロイする
+          href: deploy-windows-7-virtual-machine.md
+        - name: GPU ベースのセッション ホストをデプロイする
+          href: configure-vm-gpu-2019.md
+        - name: 既存のホスト プールを展開する
+          href: expand-existing-host-pool-2019.md
+    - name: ホスト プール設定を構成する
+      items:
+        - name: RDP のプロパティ
+          href: customize-rdp-properties-2019.md
+        - name: 個人用デスクトップの割り当ての種類
+          href: configure-host-pool-personal-desktop-assignment-type-2019.md
+    - name: セッション ホストを自動的にスケーリングする
+      href: set-up-scaling-script.md
+    - name: フィードをカスタマイズする
+      href: customize-feed-virtual-desktop-users-2019.md
+    - name: 管理ツールをデプロイする
+      items:
+        - name: Azure Resource Manager テンプレート
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
+    - name: サービスの診断を使用する
+      items:
+        - name: 診断ツールをデプロイする
+          href: deploy-diagnostics.md
+        - name: Log Analytics で診断を使用する
+          href: diagnostics-log-analytics-2019.md
+    - name: 組み込みアプリの公開
+      href: publish-apps-2019.md
+- name: 概念
+  items:
+    - name: Windows Virtual Desktop の環境
+      href: environment-setup-2019.md
+    - name: Windows Virtual Desktop における委任されたアクセス
+      href: delegated-access-virtual-desktop-2019.md
+    - name: ホスト プールの負荷分散方法
+      href: host-pool-load-balancing-2019.md
+    - name: データの場所
+      href: data-locations-2019.md
+- name: トラブルシューティング
+  items:
+    - name: トラブルシューティングの概要、フィードバック、サポート
+      href: troubleshoot-set-up-overview-2019.md
+    - name: 問題の特定と診断
+      href: diagnostics-role-service-2019.md
+    - name: テナントとホスト プールの作成
+      href: troubleshoot-set-up-issues-2019.md
+    - name: セッション ホスト仮想マシンの構成
+      href: troubleshoot-vm-configuration-2019.md
+    - name: Windows 7 仮想マシンのトラブルシューティング
+      href: troubleshoot-windows-7-vm.md
+    - name: 管理ツールのトラブルシューティング
+      href: troubleshoot-management-tool.md
+    - name: リモート デスクトップ サービスの接続
+      href: troubleshoot-service-connection-2019.md
+    - name: Windows Virtual Desktop PowerShell
+      href: troubleshoot-powershell-2019.md
+- name: リファレンス
+  items:
+    - name: PowerShell
+      href: /powershell/windows-virtual-desktop/overview
+    - name: REST API
+      href: /rest/api/virtual-desktop/

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure リソースの RBAC に関するドキュメント
-summary: ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるシステムです。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
+title: Azure RBAC のドキュメント
+summary: Azure のロールベースのアクセス制御 (Azure RBAC) は、Azure リソースのアクセス権を詳細に管理できるシステムです。 Azure RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 metadata:
-  title: Azure リソースのロールベースのアクセス制御 (RBAC) に関するドキュメント
-  description: Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するためのロールベースのアクセス制御 (RBAC) について学習します。
+  title: Azure RBAC のドキュメント
+  description: Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するための Azure のロールベースのアクセス制御 (Azure RBAC) について学習します。
   services: role-based-access-control
   ms.service: role-based-access-control
   ms.subservice: na
@@ -11,19 +11,19 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/26/2019
-  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70968310"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82733483"
 landingContent:
-- title: Azure リソースの RBAC について
+- title: Azure RBAC について
   linkLists:
   - linkListType: overview
     links:
-    - text: RBAC とは
+    - text: Azure RBAC とは
       url: overview.md
     - text: 各種ロールについて
       url: rbac-and-directory-admin-roles.md
@@ -45,7 +45,7 @@ landingContent:
       url: tutorial-role-assignments-group-powershell.md
   - linkListType: learn
     links:
-    - text: RBAC による Azure リソースのセキュリティ保護
+    - text: Azure RBAC による Azure リソースのセキュリティ保護
       url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
 - title: アクセスを管理する
   linkLists:
@@ -63,12 +63,16 @@ landingContent:
       url: role-assignments-rest.md
     - text: Template
       url: role-assignments-template.md
-- title: カスタム ロールを作成する
+- title: カスタム ロールの作成または更新
   linkLists:
   - linkListType: overview
     links:
     - text: カスタム ロール
       url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム ロールの作成 - ポータル
+      url: custom-roles-portal.md
   - linkListType: tutorial
     links:
     - text: カスタム ロールの作成 - PowerShell

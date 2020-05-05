@@ -1,22 +1,20 @@
-- name: Windows Virtual Desktop
+- name: Windows Virtual Desktop Spring 2020 リリース
   href: index.yml
 - name: 概要
   items:
     - name: Windows Virtual Desktop とは
       href: overview.md
+    - name: Fall 2019 リリースのドキュメント
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: チュートリアル
   items:
-    - name: 1. Windows Virtual Desktop でテナントを作成する
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
-      href: create-service-principal-role-powershell.md
-    - name: 3. Azure Marketplace を使用してホスト プールを作成する
+    - name: 1. Azure portal を使用してホスト プールを作成する
       href: create-host-pools-azure-marketplace.md
-    - name: 4. アプリ グループを管理する
+    - name: 2. アプリ グループを管理する
       href: manage-app-groups.md
-    - name: 5. サービスの更新プログラムを検証するためのホスト プールを作成する
+    - name: 3. サービスの更新プログラムを検証するためのホスト プールを作成する
       href: create-validation-host-pool.md
-    - name: 6. サービス アラートを設定する
+    - name: 4. サービス アラートを設定する
       href: set-up-service-alerts.md
 - name: 操作方法
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: iOS クライアントに接続する
           href: connect-ios.md
+    - name: PowerShell モジュールを設定する
+      href: powershell-module.md
     - name: ホスト プールとセッション ホストを作成する
       items:
-        - name: Azure Resource Manager テンプレート
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: Windows 7 仮想マシンをデプロイする
-          href: deploy-windows-7-virtual-machine.md
         - name: GPU ベースのセッション ホストをデプロイする
           href: configure-vm-gpu.md
         - name: 既存のホスト プールを展開する
           href: expand-existing-host-pool.md
+        - name: PowerShell を使用してアプリ グループを管理する
+          href: manage-app-groups-powershell.md
     - name: プロファイル コンテナーを作成する
       items:
         - name: VM ベースのファイル共有を使用する
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: マスター VHD イメージに Office をインストールする
           href: install-office-on-wvd-master-image.md
-    - name: セッション ホストを自動的にスケーリングする
-      href: set-up-scaling-script.md
     - name: フィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
-    - name: 管理ツールをデプロイする
-      items:
-        - name: Azure Resource Manager テンプレート
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: サービスの診断を使用する
       items:
-        - name: 診断ツールをデプロイする
-          href: deploy-diagnostics.md
         - name: Log Analytics で診断を使用する
           href: diagnostics-log-analytics.md
     - name: 組み込みアプリの公開
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md
-    - name: Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
-      href: troubleshoot-windows-7-vm.md
-    - name: Windows Virtual Desktop 管理ツールのトラブルシューティング
-      href: troubleshoot-management-tool.md
     - name: リモート デスクトップ サービスの接続
       href: troubleshoot-service-connection.md
     - name: リモート デスクトップ クライアントの問題
@@ -140,10 +124,6 @@
   items:
     - name: Linux Support
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST API
-      href: /rest/api/virtual-desktop/
     - name: サポートされる RDP ファイルの設定
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: ネットワーク ガイダンス

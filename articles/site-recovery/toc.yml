@@ -165,8 +165,6 @@
               href: azure-to-azure-about-networking.md
             - name: ターゲット Azure VM のネットワーク構成をカスタマイズする
               href: azure-to-azure-customize-networking.md
-            - name: モビリティ サービスのプロキシ設定を構成する
-              href: configure-mobility-service-proxy-settings.md
             - name: ネットワーク マッピングを設定し、フェールオーバー後に IP アドレスを保持する
               href: azure-to-azure-network-mapping.md
             - name: フェールオーバー後に IP アドレスを保持する例
@@ -191,6 +189,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Azure への移行後に Azure VM のディザスター リカバリーをセットアップする
               href: azure-to-azure-replicate-after-migration.md
+            - name: ゾーン間ディザスター リカバリーを有効にする
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: 管理する
           items:
             - name: Azure VM のモビリティ サービスを更新する
@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: モビリティ サービスをデプロイする
               items:
-                - name: モビリティ サービスのインストールについて
+                - name: モビリティ サービスの概要とインストール
                   href: vmware-physical-mobility-service-overview.md
                 - name: プッシュ インストールの準備
                   href: vmware-azure-install-mobility-service.md

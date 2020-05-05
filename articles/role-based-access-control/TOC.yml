@@ -1,9 +1,9 @@
-- name: Azure リソースの RBAC に関するドキュメント
+- name: Azure RBAC のドキュメント
   href: index.yml
   items: null
 - name: 概要
   items:
-    - name: RBAC とは
+    - name: Azure RBAC とは
       href: overview.md
     - name: 各種ロールについて
       href: rbac-and-directory-admin-roles.md
@@ -74,7 +74,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: カスタム ロールを作成する
+    - name: カスタム ロールの作成または更新
       items:
         - name: 概要
           href: custom-roles.md
@@ -100,7 +100,7 @@
       href: built-in-roles.md
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
-    - name: RBAC の制限
+    - name: Azure RBAC の制限
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
