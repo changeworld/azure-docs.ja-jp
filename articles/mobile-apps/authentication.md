@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 820005bca008ea3bdb59659c815da3ec36beb0d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241047"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>ご利用のモバイル アプリに認証を追加し、ユーザー ID を管理する
@@ -34,7 +34,7 @@ ms.locfileid: "80241047"
     - 会社のドメインに対する認証を有効にします。
     - 機密データへのアクセスを管理します。
 - シンプルなユーザー エクスペリエンスと Microsoft 認証ライブラリを Visual Studio App Center SDK. でラップすることによる魔法のような SDK エクスペリエンス。
-- iOS、Android、Xamarin、React Native のプラットフォームのサポート。
+- プラットフォームのサポート。iOS、Android、Xamarin、React Native が対象です。
 
 **参照**
 - [Visual Studio App Center にサインアップする](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 

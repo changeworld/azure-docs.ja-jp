@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369235"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのバックアップと復元
@@ -42,7 +42,7 @@ Azure Database for MariaDB は、プロビジョニングされているサー�
 
 バックアップ ストレージのコストの詳細については、[MariaDB の価格のページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
 Azure Database for MariaDB で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成され、そのサーバーに含まれているすべてのデータベースが復元されます。
 

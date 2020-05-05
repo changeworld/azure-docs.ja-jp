@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335968"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233484"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="contact-us"></a>お問い合わせ
-* [Microsoft Azure API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 * [機能がプレビュー段階とはどういう意味ですか。](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -48,15 +45,8 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [API のインポートには制限事項や既知の問題はありますか。](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Microsoft Azure API Management チームに質問するにはどうすればよいですか。
-次の方法のいずれかを使用して、チームに問い合わせることができます。
-
-* [API Management MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt)に質問を投稿する。
-* <mailto:apimgmt@microsoft.com> に電子メールを送信する。
-* [Azure フィードバック フォーラム](https://feedback.azure.com/forums/248703-api-management)に機能に関する要望を送信する。
-
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>機能がプレビュー段階とはどういう意味ですか。
-機能がプレビュー段階にあるとき、Microsoft ではその機能がユーザーにどのように役立っているかについてフィードバックを積極的に求めています。 プレビュー段階の機能は機能的に完成していますが、お客様からのフィードバックに応じて大きな変更を加える可能性があります。 そのため、プレビュー段階にある機能は運用環境では使用しないことをお勧めします。 プレビュー段階の機能に関するご意見やご感想がありましたら、「[Microsoft Azure API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)」に記載された連絡方法のいずれかを使用してお知らせください。
+機能がプレビュー段階にあるとき、Microsoft ではその機能がユーザーにどのように役立っているかについてフィードバックを積極的に求めています。 プレビュー段階の機能は機能的に完成していますが、お客様からのフィードバックに応じて大きな変更を加える可能性があります。 そのため、プレビュー段階にある機能は運用環境では使用しないことをお勧めします。
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ゲートウェイとバックエンド サービス間の接続をセキュリティで保護するにはどうすればよいですか。
 API Management ゲートウェイとバックエンド サービス間の接続は複数の方法で保護できます。 次のようにすることができます。
@@ -83,7 +73,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>ユーザーを Administrators グループに追加するにはどうすればよいですか。
 次の手順に従って、ユーザーを Administrators グループに追加できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
 3. API Management で、目的のユーザーに **API Management サービス共同作成者**ロールを割り当てます。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 9e6eafc4e2f6ae4a0cf1d99cb63bfed53db77f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029062"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81461984"
 ---
 Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](../articles/virtual-network/virtual-networks-overview.md) (VNet) を作成するか、既存の VNet を使用する必要があります。 VNet における VM への望ましいアクセス方法を決定する必要もあります。 [リソースを作成する前に計画](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)を立て、必ず[ネットワーク リソースの制限](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)を確認することが大切です。
 
@@ -38,15 +38,15 @@ VNet は、VM の作成前と作成時に作成できます。 VM との通信�
 
 複数の NIC を持つ VM を作成し、VM のライフサイクルを通じて NIC を追加または削除することができます。 複数の NIC を使用すると、VM を異なるサブネットに接続し、最も適切なインターフェイスでトラフィックを送受信できます。 VM のサイズでサポートされている最大数までのネットワーク インターフェイスがアタッチされた VM が同じ可用性セットに存在できます。 
 
-VM に接続された各 NIC は、VM と同じ場所およびサブスクリプションに存在する必要があります。 NIC と同じ Azure の場所およびサブスクリプションに存在する VNet に各 NIC を接続する必要があります。 VM の作成後に接続先のサブネットを変更できますが、VNet を変更することはできません。 VM に接続された各 NIC には、VM が削除されるまで変更されない MAC アドレスが割り当てられます。
+VM に接続された各 NIC は、VM と同じ場所およびサブスクリプションに存在する必要があります。 NIC と同じ Azure の場所およびサブスクリプションに存在する VNet に各 NIC を接続する必要があります。 VM の作成後に接続先のサブネットを変更できますが、VNet を変更することはできません。 VM に接続された各 NIC には、その VM が削除されるまで変更されない MAC アドレスが割り当てられます。
 
 次の表に、ネットワーク インターフェイスの作成に使用できる方法の一覧を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | ------ | ----------- |
 | Azure portal | Azure Portal で VM を作成する場合、ネットワーク インターフェイスは自動的に作成されます (別個に作成する NIC は使用できません)。 ポータルで作成されるのは、NIC を 1 つだけ備えた VM です。 複数の NIC を備えた VM を作成したい場合は、別の方法で作成する必要があります。 |
-| [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を [-PublicIpAddressId](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) パラメーターで指定して、**New-AzNetworkInterface** を実行します。 |
-| [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、[--public-ip-address](https://docs.microsoft.com/cli/azure/network/nic) パラメーターを使用して **az network nic create** を実行します。 |
+| [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を **-PublicIpAddressId** パラメーターで指定して、[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を実行します。 |
+| [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、 **--public-ip-address** パラメーターを使用して [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) を実行します。 |
 | [テンプレート](../articles/virtual-network/template-samples.md) | テンプレートを使用したネットワーク インターフェイスのデプロイのガイドとして、「[Network Interface in a Virtual Network with Public IP Address (パブリック IP アドレスを使用した仮想ネットワークのネットワーク インターフェイス)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)」を使用してください。 |
 
 ## <a name="ip-addresses"></a>IP アドレス 
@@ -64,11 +64,11 @@ VM の IP アドレスが変わらないようにするため、割り当て方�
     
 次の表に、IP アドレスの作成に使用できる方法の一覧を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | 既定では、パブリック IP アドレスは動的であり、VM が停止または削除されると、それらの IP アドレスに関連付けられたアドレスは変更される場合があります。 VM で常に同じパブリック IP アドレスが使用されるようにするには、静的パブリック IP アドレスを作成します。 既定では、VM の作成時にポータルによって動的プライベート IP アドレスが NIC に割り当てられます。 この IP アドレスは、VM の作成後に "静的" に変更できます。|
-| [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | [-AllocationMethod](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) パラメーターを Dynamic または Static に設定して **New-AzPublicIpAddress** を実行します。 |
-| [Azure CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | [allocation-method](https://docs.microsoft.com/cli/azure/network/public-ip) パラメーターを Dynamic または Static に設定して **az network public-ip create** を実行します。 |
+| [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | **-AllocationMethod** パラメーターを Dynamic または Static に設定して [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) を実行します。 |
+| [Azure CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | **allocation-method** パラメーターを Dynamic または Static に設定して [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を実行します。 |
 | [テンプレート](../articles/virtual-network/template-samples.md) | テンプレートを使用したパブリック IP アドレスのデプロイのガイドとして、「[Network Interface in a Virtual Network with Public IP Address (パブリック IP アドレスを使用した仮想ネットワークのネットワーク インターフェイス)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)」を使用してください。 |
 
 パブリック IP アドレスの作成後、それを NIC に割り当てて VM に関連付けることができます。
@@ -79,13 +79,13 @@ VM の IP アドレスが変わらないようにするため、割り当て方�
 
 VNet を設定するときに、使用できるアドレス空間やサブネットなど、トポロジを指定します。 VNet が他の VNet またはオンプレミスのネットワークに接続される予定の場合、重複のないアドレス範囲を選択する必要があります。 IP アドレスはプライベートであり、インターネットからアクセスできません。これは、以前は 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 などのルーティング不可能な IP アドレスのみに当てはまりました。 現在の Azure では、どのアドレス範囲も、VNet 内、相互接続された VNet 内、およびオンプレミスの場所からのみ到達可能なプライベート VNet IP アドレス空間の一部として扱われます。 
 
-内部ネットワークの担当者が他にいる組織で作業する場合、アドレス空間を選択する前にその担当者と相談することをお勧めします。 必ず重複を避け、使用する空間を伝えて、同じ範囲の IP アドレスを使用しないようにしてください。 
+内部ネットワークの担当者が他にいる組織で作業する場合、アドレス空間を選択する前にその担当者と相談することをお勧めします。 重複がないことを確認し、同じ IP アドレスの範囲が他で使用されないように、使用したい空間を知らせるようにしてください。 
 
 既定ではサブネット間にセキュリティ境界がないため、各サブネットの VM は互いに通信できます。 ただし、ネットワーク セキュリティ グループ (NSG) を設定して、サブネット間と VM 間のトラフィック フローを制御できます。 
 
-次の表に、VNet とサブネットの作成に使用できる方法の一覧を示します。 
+次の表に、VNet とサブネットの作成に使用できる方法の一覧を示します。    
 
-| 方法 | 説明 |
+| Method | 説明 |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/quick-create-portal.md) | VM の作成時に Azure に VNet を自動的に作成させる場合、VNet の名前は、VNet が含まれたリソース グループ名と **-vnet** の組み合わせになります。 アドレス空間は 10.0.0.0/24、必要なサブネット名は **default**、サブネットのアドレス範囲は 10.0.0.0/24 です。 |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) と [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) を使用して、サブネットと VNet を作成します。 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) を使用して既存の VNet にサブネットを追加することもできます。 |
@@ -106,7 +106,7 @@ VM と VNet を計画する際は、必ず NSG の[計画](../articles/virtual-n
 
 次の表に、ネットワーク セキュリティ グループの作成に使用できる方法の一覧を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Azure Portal で VM を作成する場合、NSG は自動的に作成され、ポータルで作成された NIC に関連付けられます。 NSG の名前は、VM の名前と **-nsg** の組み合わせです。 この NSG には、優先順位 (1000)、サービス (RDP)、プロトコル (TCP)、ポート (3389)、アクション (許可) が設定された受信ルールが 1 つ含まれています。 VM への他の受信トラフィックを許可したい場合は、NSG に他のルールを追加する必要があります。 |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用し、必要なルールの情報を指定します。 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) を使用して NSG を作成します。 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用して NSG をサブネット用に構成します。 [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) を使用して NSG を VNet に追加します。 |
@@ -121,29 +121,34 @@ VM と VNet を計画する際は、必ず NSG の[計画](../articles/virtual-n
 
 ロード バランサーを作成する際には、次の構成要素も考慮する必要があります。
 
-- **フロントエンド IP 構成** - ロード バランサーには、仮想 IP (VIP) とも呼ばれる 1 つ以上のフロントエンド IP アドレスを含めることができます。 これらの IP アドレスは、受信トラフィック用として機能します。
+- **フロントエンド IP 構成** – ロード バランサーには、1 つ以上のフロントエンド IP アドレスを含めることができます。 これらの IP アドレスは、受信トラフィック用として機能します。
 - **バックエンド アドレス プール** - 負荷分散先の NIC に関連付けられた IP アドレスです。
-- **NAT 規則** - フロントエンド IP を通過し、バックエンド IP に分散される受信トラフィックを定義します。
+- **[ポート フォワーディング](../articles/load-balancer/tutorial-load-balancer-port-forwarding-portal.md)** - 受信トラフィックがフロントエンド IP を通過し、インバウンド NAT 規則を利用するバックエンド IP に分散される方法を定義します。
 - **ロード バランサー規則** - 特定のフロントエンド IP とポートの組み合わせを、一連のバックエンド IP アドレスとポートの組み合わせにマップします。 1 つのロード バランサーで複数の負荷分散規則を使用できます。 各規則は、VM に関連付けられた、フロントエンド IP/ポートとバックエンド IP/ポートの組み合わせです。
 - **[プローブ](../articles/load-balancer/load-balancer-custom-probe-overview.md)** - VM の正常性を監視します。 プローブが応答できない場合、ロード バランサーは異常な VM への新しい接続の送信を停止します。 既存の接続への影響はなく、新しい接続が正常な VM に送信されます。
+- **[アウトバウンド規則](../articles/load-balancer/load-balancer-outbound-rules-overview.md)** - アウトバウンド規則では、Standard Load Balancer のバックエンド プールによって識別されたすべての仮想マシンまたはインスタンスがフロントエンドに変換されるように、アウトバウンド ネットワーク アドレス変換 (NAT) が構成されます。
 
 次の表に、インターネットに接続するロード バランサーの作成に使用できる方法の一覧を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | ------ | ----------- |
 | Azure portal |  [Azure Portal を使用して VM へのインターネット トラフィックを負荷分散](../articles/load-balancer/tutorial-load-balancer-standard-manage-portal.md)できます。 |
-| [Azure PowerShell](/azure/load-balancer/load-balancer-get-started-ilb-arm-ps) | 以前作成したパブリック IP アドレスの識別子を指定するために、[-PublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) パラメーターを使用して **New-AzLoadBalancerFrontendIpConfig** を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
+| [Azure PowerShell](/azure/load-balancer/load-balancer-get-started-ilb-arm-ps) | 以前作成したパブリック IP アドレスの識別子を指定するために、 **-PublicIpAddress** パラメーターを使用して [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
 | [Azure CLI](../articles/load-balancer/load-balancer-get-started-internet-arm-cli.md) | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) を使用してロード バランサーの初期構成を作成します。 [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) を使用して、以前作成したパブリック IP アドレスを追加します。 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) を使用して、バックエンド アドレス プールの構成を追加します。 [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) を使用して NAT 規則を追加します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) を使用してロード バランサー規則を追加します。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) を使用してプローブを追加します。 |
 | [テンプレート](../articles/load-balancer/quickstart-load-balancer-standard-public-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 2 つの VM の作成とそのロード バランサーでの NAT 規則の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create)に関するページをガイドとして使用してください。 |
     
 次の表に、内部ロード バランサーの作成に使用できる方法の一覧を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | ------ | ----------- |
-| Azure portal | [Azure Portal の Basic ロード バランサーを使用して内部トラフィックの負荷を分散](../articles/load-balancer/tutorial-load-balancer-basic-internal-portal.md)できます。 |
-| [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | ネットワーク サブネットのプライベート IP アドレスを指定するために、[-PrivateIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) パラメーターを使用して **New-AzLoadBalancerFrontendIpConfig** を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
-| [Azure CLI](../articles/load-balancer/load-balancer-get-started-ilb-arm-cli.md) | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) コマンドを使用してロード バランサーの初期構成を作成します。 プライベート IP アドレスを定義するために、[--private-ip-address](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) パラメーターを使用して **az network lb frontend-ip create** を実行します。 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) を使用して、バックエンド アドレス プールの構成を追加します。 [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) を使用して NAT 規則を追加します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) を使用してロード バランサー規則を追加します。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) を使用してプローブを追加します。|
+| Azure portal | [Azure portal のロード バランサーを使用して内部トラフィックを負荷分散](../articles/load-balancer/tutorial-load-balancer-standard-internal-portal.md)できます。 |
+| [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | ネットワーク サブネットのプライベート IP アドレスを指定するために、 **-PrivateIpAddress** パラメーターを使用して [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
+| [Azure CLI](../articles/load-balancer/load-balancer-get-started-ilb-arm-cli.md) | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) コマンドを使用してロード バランサーの初期構成を作成します。 プライベート IP アドレスを定義するために、 **--private-ip-address** パラメーターを使用して [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) を実行します。 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) を使用して、バックエンド アドレス プールの構成を追加します。 [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) を使用して NAT 規則を追加します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) を使用してロード バランサー規則を追加します。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) を使用してプローブを追加します。|
 | [テンプレート](../articles/load-balancer/load-balancer-get-started-ilb-arm-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 2 つの VM の作成とそのロード バランサーでの NAT 規則の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)に関するページをガイドとして使用してください。 |
+
+### <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
+
+ロード バランサーと仮想マシン スケール セットの詳細については、「[Azure 仮想マシン スケール セットのネットワーク](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)」を参照してください。
 
 ## <a name="vms"></a>VM
 
@@ -155,7 +160,7 @@ VM にはデプロイ時に IP アドレスが割り当てられます。 複数
 
 次の表に、VNet に VM を作成する際に使用できる方法の一覧を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-machines/windows/quick-create-portal.md) | 前に述べた既定のネットワーク設定を使用して、1 つの NIC を備えた VM を作成します。 複数の NIC を備えた VM を作成するには、別の方法を使用する必要があります。 |
 | [Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md) | [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) を使用して、以前作成した NIC を VM 構成に追加します。 |

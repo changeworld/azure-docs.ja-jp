@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: 9d057a4be02d8d93d3ef02ee3153baebe9146ff1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 4/16/2020
+ms.openlocfilehash: f39e9450fb922e5b93d7b4b809df73cf5ab007c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632705"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81602401"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 
@@ -60,7 +60,8 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 |Basic レベルの innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
-|innodb_log_file_size|512 MB|
+|innodb_log_file_size|256MB|
+|innodb_log_files_in_group|2|
 
 ここに記載されていないその他のサーバー パラメーターはすべて、[MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/) に対する MariaDB の初期既定値に設定されます。
 

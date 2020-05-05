@@ -1,14 +1,14 @@
 ---
 title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
-ms.date: 09/23/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231415"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81683218"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -20,6 +20,7 @@ ms.locfileid: "79231415"
 - description
 - metadata
 - 適用モード
+- 除外範囲
 - ポリシーの定義
 - parameters
 
@@ -34,6 +35,7 @@ ms.locfileid: "79231415"
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -59,12 +61,16 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 このプロパティの値は次のとおりです。
 
-|モード |JSON 値 |種類 |手動で修復 |アクティビティ ログ エントリ |説明 |
+|モード |JSON 値 |Type |手動で修復 |アクティビティ ログ エントリ |説明 |
 |-|-|-|-|-|-|
-|有効 |Default |string |はい |はい |ポリシーの効果は、リソースの作成時または更新時に適用されます。 |
+|Enabled |Default |string |はい |はい |ポリシーの効果は、リソースの作成時または更新時に適用されます。 |
 |無効 |DoNotEnforce |string |はい |いいえ | ポリシーの効果は、リソースの作成時または更新時に適用されません。 |
 
-ポリシーまたはイニシアティブの定義で **enforcementMode** を指定しないと、値 _Default_ が使用されます。 [enforcementMode](../how-to/remediate-resources.md) が [DoNotEnforce](./effects.md#deployifnotexists) に設定されている場合でも、**deployIfNotExists** のポリシーに対して_修復タスク_を開始できます。
+ポリシーまたはイニシアティブの定義で **enforcementMode** を指定しないと、値 _Default_ が使用されます。 **enforcementMode** が _DoNotEnforce_ に設定されている場合でも、[deployIfNotExists](./effects.md#deployifnotexists) のポリシーに対して[修復タスク](../how-to/remediate-resources.md)を開始できます。
+
+## <a name="excluded-scopes"></a>除外範囲
+
+割り当ての**範囲**には、子リソース コンテナーと子リソースがすべて含まれます。 子リソース コンテナーまたは子リソースに定義を適用しない場合、**notScopes** を設定することで各々を評価から除外できます。 このプロパティは、1 つまたは複数のリソース コンテナーまたはリソースを評価から除外することを可能にする配列です。 **notScopes** は、初回割り当ての作成後、追加または更新できます。
 
 ## <a name="policy-definition-id"></a>ポリシー定義 ID
 

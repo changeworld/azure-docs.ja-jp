@@ -4,19 +4,19 @@ description: Microsoft Authenticator アプリを使用した Azure AD へのパ
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126690"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450974"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
 
@@ -41,7 +41,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="enable-the-combined-registration-experience"></a>統合された登録エクスペリエンスを有効にする
 
-パスワードなしの認証方法の登録機能は、統合された登録のプレビューに依存しています。 「[統合されたセキュリティ情報の登録の有効化 (プレビュー)](howto-registration-mfa-sspr-combined.md)」の記事に記載されている手順に従って、統合された登録のプレビューを有効にします。
+パスワードなしの認証方法の登録機能は、統合された登録機能に依存しています。 [統合されたセキュリティ情報の登録の有効化](howto-registration-mfa-sspr-combined.md)に関する記事に記載されている手順に従って、統合された登録を有効にします。
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>パスワードなしの電話によるサインインの認証方法を有効にする
 
@@ -82,13 +82,13 @@ Web にユーザー名を入力し、 **[次へ]** を選択すると、ユー�
 
 ### <a name="ad-fs-integration"></a>AD FS の統合
 
-ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[Use your password instead]\(代わりにパスワードを使用する) をクリックする追加の手順を取ることなく、サインイン確認のために ADFS にリダイレクトされることを防ぎます。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
+ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[代わりにパスワードを使用する] をクリックする追加の手順を行わずに、サインイン確認のために ADFS に移動されないようにします。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
 
 ユーザーがパスワードなしの電話によるサインインの確認に回答せずに保留していて、もう一度サインインを試行した場合は、代わりにパスワードを入力するようにユーザーに ADFS を表示することができます。  
 
 ### <a name="azure-mfa-server"></a>Azure MFA サーバー
 
-組織のオンプレミスの Azure MFA サーバーを介して MFA に対して有効にされたエンド ユーザーは、単一のパスワードなしの電話によるサインイン資格情報を引き続き作成し、使用することができます。 ユーザーが資格情報で Microsoft Authenticator の複数のインストール (5 つ以上) をアップグレードしようとすると、この変更はエラーになることがあります。  
+組織のオンプレミスの Azure MFA サーバーを介して MFA を有効にしたエンド ユーザーは、電話を使用したパスワードなしのサインイン情報を 1 回引き続き作成して、使用することができます。 ユーザーが資格情報で Microsoft Authenticator の複数のインストール (5 つ以上) をアップグレードしようとすると、この変更はエラーになることがあります。  
 
 ### <a name="device-registration"></a>デバイス登録
 

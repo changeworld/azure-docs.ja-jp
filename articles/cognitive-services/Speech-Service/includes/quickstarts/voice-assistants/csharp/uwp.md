@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671109"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -83,7 +83,7 @@ ms.locfileid: "80671109"
 
 デザイン ビューが更新されてアプリケーションのユーザー インターフェイスが表示されます。
 
-1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)。このファイルの内容を次に置き換えます。これには次のものが含まれます。
+1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます  (`MainPage.xaml` にグループ化されています)。このファイルの内容を次に置き換えます。これには次のものが含まれます。
 
 - `Speech` 名前空間と `Speech.Dialog` 名前空間の `using` ステートメント
 - ボタン ハンドラーに接続された、マイクへのアクセスを確実にするための簡単な実装

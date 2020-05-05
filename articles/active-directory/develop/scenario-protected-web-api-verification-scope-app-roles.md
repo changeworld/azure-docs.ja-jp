@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fe029cdec5bca8885a78267c45bace51e7b3c141
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 018e7f9bc389e3d148ff6860dae9fef88991e5c4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882371"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537170"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>保護された Web API: スコープとアプリのロールを検証する
 
@@ -89,7 +89,7 @@ public class TodoListController : Controller
     /// method throws an HTTP Unauthorized error with a message noting which scopes are expected in the token.
     /// </summary>
     /// <param name="acceptedScopes">Scopes accepted by this API</param>
-    /// <exception cref="HttpRequestException"/> with a <see cref="HttpResponse.StatusCode"/> set to 
+    /// <exception cref="HttpRequestException"/> with a <see cref="HttpResponse.StatusCode"/> set to
     /// <see cref="HttpStatusCode.Unauthorized"/>
     public static void VerifyUserHasAnyAcceptedScope(this HttpContext context,
                                                      params string[] acceptedScopes)
@@ -109,7 +109,7 @@ public class TodoListController : Controller
     }
 ```
 
-上記の[サンプル コード](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47)は、ASP.NET Core 用です。 ASP.NET の場合は、`HttpContext.User` を `ClaimsPrincipal.Current` に置き換え、要求の種類 `"http://schemas.microsoft.com/identity/claims/scope"` を `"scp"` に置き換えるだけです この記事の後の方のコード スニペットも参照してください。
+上記の[サンプル コード](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47)は、ASP.NET Core 用です。 ASP.NET の場合は、`HttpContext.User` を `ClaimsPrincipal.Current` に置き換え、要求の種類 `"http://schemas.microsoft.com/identity/claims/scope"` を `"scp"` に置き換えるだけです  この記事の後の方のコード スニペットも参照してください。
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>デーモン アプリによって呼び出される API のアプリ ロールの確認
 
@@ -149,7 +149,7 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-今回は、このコード スニペットは ASP.NET 用です。 ASP.NET Core の場合は、`ClaimsPrincipal.Current` を `HttpContext.User` に置き換え、要求の名前 `"roles"` を `"http://schemas.microsoft.com/identity/claims/roles"` に置き換えるだけです この記事の前の方のコード スニペットも参照してください。
+今回は、このコード スニペットは ASP.NET 用です。 ASP.NET Core の場合は、`ClaimsPrincipal.Current` を `HttpContext.User` に置き換え、要求の名前 `"roles"` を `"http://schemas.microsoft.com/identity/claims/roles"` に置き換えるだけです  この記事の前の方のコード スニペットも参照してください。
 
 ### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Web API がデーモン アプリのみによって呼び出される必要がある場合のアプリ専用トークンの受け入れ
 

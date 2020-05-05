@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 457b2d2211ea1ba5fa36cec4b7e9a214f5bcad77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367093"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535538"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 
@@ -240,7 +240,7 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 **アクティビティ レベルのトレースを有効にするには:**
 
 1. Azure ポータルで、Automation アカウントを開きます。
-2. **[プロセス オートメーション]** セクションの **[Runbook]** を選択し、Runbook の一覧を開きます。
+2. **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
 3. [Runbook] ページで、Runbook の一覧からグラフィカル Runbook を選択します。
 4. **[設定]** の下の **[ログとトレース]** をクリックします。
 5. [ログとトレース] ページの **[詳細レコードのログ]** で、 **[オン]** をクリックして詳細ログを有効にします。
@@ -253,7 +253,7 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 Azure Automation では、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 Azure Monitor では、次のことを可能にするログがサポートされます。
 
 * Automation ジョブに関する情報を得る。
-* Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする。
+* Runbook ジョブの状態 (失敗や中断など) に基づいて電子メールまたはアラートをトリガーする。
 * ジョブ ストリームをまたぐ高度なクエリを記述する。
 * Automation アカウントをまたいでジョブどうしを関連付ける。
 * ジョブ履歴を視覚化する。

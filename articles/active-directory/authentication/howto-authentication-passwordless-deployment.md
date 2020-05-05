@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582475"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81451433"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -53,11 +53,11 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 
 | シナリオ | 電話認証 | セキュリティ キー | Windows Hello for Business |
 | --- | --- | --- | --- |
-| **コンピューターでのサインイン**: <br> 割り当てられた Windows 10 デバイスから | **いいえ** | **はい** <br> 生体認証、PIN を使用 | **はい**<br>生体認証および PIN を使用 |
-| **コンピューターでのサインイン**: <br> 共有 Windows 10 デバイスから | **いいえ** | **はい** <br> 生体認証、PIN を使用  | **いいえ** |
+| **コンピューターでのサインイン**:  <br> 割り当てられた Windows 10 デバイスから | **いいえ** | **はい** <br> 生体認証、PIN を使用 | **はい**<br>生体認証および PIN を使用 |
+| **コンピューターでのサインイン**:  <br> 共有 Windows 10 デバイスから | **いいえ** | **はい** <br> 生体認証、PIN を使用  | **いいえ** |
 | **Web アプリのサインイン**: <br>‎ ユーザー専用コンピューターから | **はい** | **はい** <br> コンピューターのサインインによってアプリへのシングル サインオンが有効になっている場合 | **はい**<br> コンピューターのサインインによってアプリへのシングル サインオンが有効になっている場合 |
 | **Web アプリのサインイン**: <br> モバイル デバイスまたは Windows 以外のデバイスから | **はい** | **いいえ** | **いいえ** |
-| **コンピューターでのサインイン**: <br> Windows 以外のコンピューター | **いいえ** | **いいえ** | **いいえ** |
+| **コンピューターでのサインイン**:  <br> Windows 以外のコンピューター | **いいえ** | **いいえ** | **いいえ** |
 
 ご自分の組織に最適な方法を選択する詳細については、「[パスワードレスの方法を決定する](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)」を参照してください。
 
@@ -67,7 +67,7 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 
 | 前提条件 | Authenticator アプリ | FIDO2 セキュリティ キー |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) の統合された登録](howto-registration-mfa-sspr-combined.md)が有効になっている (プレビュー機能) | √ | √ |
+| [Azure Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) の統合された登録](howto-registration-mfa-sspr-combined.md)が有効になっている | √ | √ |
 | [ユーザーが Azure Multi-Factor Authentication を実行できる](howto-mfa-getstarted.md) | √ | √ |
 | [ユーザーが Azure Multi-Factor Authentication と SSPR の登録をしている](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [ユーザーがモバイル デバイスを Azure Active Directory に登録している](../devices/overview.md) | √ |   |
@@ -173,7 +173,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 
 1. **キーの配布**:組織にキーをプロビジョニングする方法を計画します。 集中的なプロビジョニング プロセスを使用することも、エンド ユーザーが FIDO 2.0 と互換性のあるキーを購入できるようにすることもできます。
 1. **キーのアクティブ化**:エンド ユーザーは、自分でセキュリティ キーをアクティブ化する必要があります。 エンド ユーザーは、[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) でセキュリティ キーを登録し、最初の使用時に 2 番目の要素 (PIN または生体認証) を有効にします。
-1. **キーの無効化**:セキュリティ キー機能がプレビュー段階の間は、管理者がユーザー アカウントからキーを削除する方法はありません。 ユーザーが削除する必要があります。 キーをなくしたり盗まれたりした場合:
+1. **キーの無効化**:セキュリティ キー機能がプレビュー段階の間は、管理者がユーザー アカウントからキーを削除する方法はありません。 ユーザーが削除する必要があります。 キーをなくしたり盗まれたりした場合: 
    1. パスワードなし認証が有効になっているすべてのグループからユーザーを削除します。
    1. ユーザーが認証方法としてのキーを削除したことを確認します。
    1. 新しいキーを発行します。 **キーの交換**:ユーザーは、2 つのセキュリティ キーを同時に有効にすることができます。 セキュリティ キーを交換するときは、ユーザーも交換されるキーを削除したことを確認します。

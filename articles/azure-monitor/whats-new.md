@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
 ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80802606"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
@@ -26,7 +26,7 @@ ms.locfileid: "80802606"
 ### <a name="alerts"></a>警告
 
 - [Azure Monitor でアクティビティ ログ アラートを作成、表示、管理する](platform/alerts-activity-log.md) -Resource Manager テンプレートの説明を追加しました。
-- [Azure Monitor でのメトリック アラートのしくみを理解する](platform/alerts-metric-overview.md) - 政府機関のサポート向けに更新されました。
+- [Azure Monitor でのメトリック アラートのしくみを理解する](platform/alerts-metric-overview.md)  - 政府機関のサポート向けに更新されました。
 - [Azure Monitor のアラートと通知のトラブルシューティング](platform/alerts-troubleshoot.md) - 新しい記事。
 
 ### <a name="application-insights"></a>Application Insights
@@ -204,7 +204,7 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 - [Azure でのアラートと通知監視の概要](platform/alerts-overview.md) - Resource Graph クエリを更新しました。
 - [Azure Monitor のメトリック アラートでサポートされるリソース](platform/alerts-metric-near-real-time.md) - サポートされるメトリックとディメンションについて更新しました。
 - [従来の Log Analytics アラート API から新しい Azure Alerts API に切り替える](platform/alerts-log-api-switch.md) - 変更されたアラート名についての注意を追加しました。
-- [Azure Monitor でのメトリック アラートのしくみを理解する](platform/alerts-metric-overview.md) - 大規模な監視でサポートされるリソースの種類を追加しました。
+- [Azure Monitor でのメトリック アラートのしくみを理解する](platform/alerts-metric-overview.md)  - 大規模な監視でサポートされるリソースの種類を追加しました。
 
 ### <a name="application-insights"></a>Application Insights
 - [ワーカー サービス アプリ (非 HTTP アプリ) 向け Application Insights](app/worker-service.md) - C# コードに既定のログ レベルを追加しました。 パッケージの参照バージョンを更新しました。

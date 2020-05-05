@@ -4,15 +4,15 @@ description: Azure の Analysis Services サーバーでデータベース ロ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273696"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81454205"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -27,8 +27,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 
 表形式のモデル プロジェクトを作成する場合、Analysis Services プロジェクトを使って Visual Studio 内でロール マネージャーを使用して、ロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
 
-**セキュリティ グループ**は、[ プロパティが ](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) に設定された`MailEnabled`メール対応`True`である必要があります。 メール アドレスでグループを指定する場合は、`obj:groupid@tenantid` を使用します。
-
+**セキュリティ グループ**を追加するときは、`obj:groupid@tenantid` を使用します。
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio でロールおよびユーザーを追加または管理する方法  
   
@@ -47,7 +46,7 @@ model データベース レベルでは、すべてのユーザーがロール�
     |**なし**|メンバーは、モデル スキーマの読み取りまたは変更はできず、データのクエリもできません。|  
     |**読み取り**|メンバーは、(行フィルターに基づいて) データをクエリできますが、モデル スキーマを変更することはできません。|  
     |**読み取りと処理**|メンバーは、(行レベル フィルターに基づいて) データをクエリし、プロセス操作および Process All (すべてプロセス) 操作を実行できますが、モデル スキーマを変更することはできません。|  
-    |**[処理]**|メンバーは、処理およびすべて処理の各操作を実行できます。 モデル スキーマの読み取りまたは変更はできず、データのクエリもできません。|  
+    |**処理**|メンバーは、処理およびすべて処理の各操作を実行できます。 モデル スキーマの読み取りまたは変更はできず、データのクエリもできません。|  
     |**管理者**|メンバーは、モデル スキーマの変更とすべてのデータのクエリを実行できます。|   
   
 5.  作成しているロールに「Read (読み取り)」または「Read and Process (読み取りとプロセス)」のアクセス許可がある場合、DAX 数式を使用して行フィルターを追加できます。 **[Row Filters(行フィルター)]** タブをクリックし、テーブルを選択してから、 **[DAX Filter(DAX フィルター)]** フィールドをクリックし、DAX 数式を入力します。
@@ -73,8 +72,8 @@ model データベース レベルでは、すべてのユーザーがロール�
 
    |権限|説明|  
    |----------------|-----------------|  
-   |**[フル コントロール (管理者)]**|メンバーは、モデル スキーマの変更とプロセス、およびすべてのデータのクエリを実行できます。| 
-   |**[データベースの処理]**|メンバーは、処理およびすべて処理の各操作を実行できます。 モデル スキーマを変更することはできませんし、データをクエリすることもできません。|  
+   |**フル コントロール (管理者)**|メンバーは、モデル スキーマの変更とプロセス、およびすべてのデータのクエリを実行できます。| 
+   |**データベースの処理**|メンバーは、処理およびすべて処理の各操作を実行できます。 モデル スキーマを変更することはできませんし、データをクエリすることもできません。|  
    |**読み取り**|メンバーは、(行フィルターに基づいて) データをクエリできますが、モデル スキーマを変更することはできません。|  
   
 4. **[Membership(メンバーシップ)]** をクリックし、Azure AD のテナントにユーザーまたはグループを電子メール アドレスごとに入力します。
@@ -133,7 +132,7 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
   
 行フィルターは、Read (読み取り) アクセス許可および Read and Process (読み取りとプロセス) アクセス許可を持つロールに対してのみ定義できます。 既定では、行フィルターが特定のテーブルに対して定義されていない場合、別のテーブルからクロス フィルターが適用されていない限り、メンバーはテーブル内のすべての行をクエリできます。
   
- 行フィルターは、その特定のロールのメンバーがクエリできる行を定義するために、TRUE または FALSE の値に評価される必要がある DAX 数式が必要です。 DAX 数式に含まれていない行はクエリできません。 たとえば、行フィルター式 *=Customers [Country] = “USA”* がある Customers テーブルでは、Sales (セールス) ロールのメンバーは米国のお客様のみを表示できます。  
+ 行フィルターは、その特定のロールのメンバーがクエリできる行を定義するために、TRUE または FALSE の値に評価される必要がある DAX 数式が必要です。 DAX 数式に含まれていない行はクエリできません。 たとえば、行フィルター式 *=Customers [Country] = "USA"* がある Customers テーブルでは、Sales (セールス) ロールのメンバーは米国のお客様のみを表示できます。  
   
 行フィルターは、指定した行と関連する行に適用されます。 1 つのテーブルに複数のリレーションシップがある場合、フィルターによりセキュリティがアクティブなリレーションシップに適用されます。 行フィルターは、関連するテーブルに対して定義されたその他の行フィルターと交差します。次に例を示します。  
   

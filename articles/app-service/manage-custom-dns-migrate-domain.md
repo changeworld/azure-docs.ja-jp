@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672372"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535691"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -129,7 +129,7 @@ FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` のドメイン名�
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタム SSL 証明書を App Service にバインドする方法を確認します。
+カスタム TLS/SSL 証明書を App Service にバインドする方法を確認します。
 
 > [!div class="nextstepaction"]
-> [SSL 証明書を Azure App Service にバインドする](configure-ssl-bindings.md)
+> [Azure App Service で TLS バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)

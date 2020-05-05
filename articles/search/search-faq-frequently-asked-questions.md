@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792911"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81618031"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search - よく寄せられる質問 (FAQ)
 
@@ -24,16 +24,6 @@ ms.locfileid: "72792911"
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Azure Cognitive Search と DBMS の全文検索の違いは何ですか?
 
 Azure Cognitive Search は、複数のデータ ソース、[多数の言語の言語分析](https://docs.microsoft.com/rest/api/searchservice/language-support)、[興味深く普通とは異なるデータ入力のカスタム分析](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)による検索ランク制御、ユーザー エクスペリエンス機能 (先行入力、検索結果の強調表示、ファセット ナビゲーションなど) をサポートしています。 また、シノニム、高度なクエリ構文などの機能も含まれていますが、一般的に特別な機能ではありません。
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Azure Cognitive Search と Elasticsearch の違いは何ですか?
-
-お客様から検索テクノロジの比較で、Azure Cognitive Search と Elasticsearch の比較についてよく質問をいただきます。 検索アプリケーション プロジェクトに Elasticsearch ではなく Azure Cognitive Search を選択するお客様は、一般的に主要なタスクが簡単であることや、他の Microsoft テクノロジが組み込まれ統合されているためにそれを選択されています。
-
-+ Azure Cognitive Search は、十分な冗長性 (読み取りアクセス用に 2 レプリカ、読み取り/書き込み用に 3 レプリカ) でプロビジョニングされた場合、99.9% のサービス レベル アグリーメント (SLA) があるフル マネージド クラウド サービスです。
-+ Microsoft の[自然言語プロセッサ](https://docs.microsoft.com/rest/api/searchservice/language-support)は、最先端の言語分析を提供します。  
-+ [Azure Cognitive Search インデクサー](search-indexer-overview.md)では、インデックスを初回および増分作成するときに、さまざまな Azure データ ソースをクロールできます。
-+ クエリまたはインデックス作成ボリュームの変動にすばやく反応する必要がある場合、Azure Portal の[スライダー コントロール](search-manage.md#scale-up-or-down)を使用するか [PowerShell スクリプト](search-manage-powershell.md)を実行して、シャード管理を直接パイパスすることができます。  
-+ [スコア付け機能と調整機能](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)を使用すると、検索エンジンのみで提供される結果を超える影響を検索順位スコアに与えることができます。
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Azure Cognitive Search サービスを一時停止し、課金を停止することはできますか?
 
@@ -91,7 +81,15 @@ Azure Cognitive Search は、複数のデータ ソース、[多数の言語の�
 
 既定で、検索結果は[一致する用語の統計プロパティ](search-lucene-query-architecture.md#stage-4-scoring)に基づいて評価され、結果セットで高位から下位の順序が付けられます。 ただし、一部の検索の種類 (ワイルドカード、プレフィックス、正規表現) は、文書全体のスコアに対して常に一定のスコアをもたらします。 この動作は仕様です。 Azure Cognitive Search では、定数にスコアを付与することで、ランクには影響を与えずに、クエリの拡張で見つかった一致を結果に反映することができます。
 
-たとえば、ワイルドカード検索に「tour*」と入力すると、"tours"、"tourettes"、"tourmaline" との一致が生成されます。 こうした結果の性質上、語句の相対的な重みを適切に推測することができません。 そのため、ワイルドカード検索、プレフィックス検索、正規表現検索では、結果のスコア付けを行う際に、語句の出現頻度が無視されます。 予期しない一致に対するバイアスを回避するために、部分的な入力に基づく検索結果には一定のスコアが与えられます。
+たとえば、ワイルドカード検索に「tour*」と入力すると、「tours」、「tourettes」、「tourmaline」との一致が生成されます。 こうした結果の性質上、語句の相対的な重みを適切に推測することができません。 そのため、ワイルドカード検索、プレフィックス検索、正規表現検索では、結果のスコア付けを行う際に、語句の出現頻度が無視されます。 予期しない一致に対するバイアスを回避するために、部分的な入力に基づく検索結果には一定のスコアが与えられます。
+
+## <a name="skillset-operations"></a>スキルセットの操作
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>インジェストにかかる認知サービス料金を下げるためのヒントやコツはありますか?
+
+組み込みのスキルやカスタム スキルを必要以上に実行したくないことは理解できます。何百万ものドキュメントを処理する場合は特にそうです。 このことを念頭に置いて、スキルセットの実行に "インクリメンタル エンリッチメント" 機能を追加しました。 基本的に、"中間" エンリッチメント手順の出力を格納するために使用されるキャッシュの場所 (BLOB ストレージの接続文字列) を指定できます。  これにより、エンリッチメント パイプラインがスマートになり、スキルセットを変更するときに必要なエンリッチメントのみを適用できます。 これにより、パイプラインが効率的になるため、当然ながらインデックス作成の時間も短縮されます。
+
+[インクリメンタル エンリッチメント](cognitive-search-incremental-indexing-conceptual.md)の詳細情報
 
 ## <a name="design-patterns"></a>設計パターン
 

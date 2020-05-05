@@ -1,7 +1,7 @@
 ---
 title: Immersive Reader SDK リファレンス
 titleSuffix: Azure Cognitive Services
-description: Immersive Reader SDK には、お客様のアプリケーションに Immersive Reader を統合できる JavaScript ライブラリが含まれています。
+description: イマーシブ リーダー SDK には、お客様のアプリケーションにイマーシブ リーダーを統合できる JavaScript ライブラリが含まれています。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76156405"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231919"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Immersive Reader SDK リファレンス ガイド
 
-Immersive Reader SDK には、お客様のアプリケーションに Immersive Reader を統合させる JavaScript ライブラリが含まれています。
+イマーシブ リーダー SDK には、お客様のアプリケーションにイマーシブ リーダーを統合させる JavaScript ライブラリが含まれています。
 
 ## <a name="functions"></a>関数
 
@@ -33,7 +33,7 @@ SDK では、次の関数が公開されています。
 
 ## <a name="launchasync"></a>launchAsync
 
-Web アプリケーションの `iframe` 内で Immersive Reader を起動します。
+Web アプリケーションの `iframe` 内でイマーシブ リーダーを起動します。
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -44,23 +44,23 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | 名前 | Type | 説明 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 |
-| `subdomain` | string | Azure 内の Immersive Reader リソースのカスタム サブドメイン。 |
-| `content` | [コンテンツ](#content) | Immersive Reader で表示するコンテンツを含むオブジェクト。 |
-| `options` | [[オプション]](#options) | Immersive Reader の特定の動作を構成するオプション。 省略可能。 |
+| `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 |
+| `content` | [コンテンツ](#content) | イマーシブ リーダーで表示するコンテンツを含むオブジェクト。 |
+| `options` | [[オプション]](#options) | イマーシブ リーダーの特定の動作を構成するオプション。 省略可能。 |
 
 ### <a name="returns"></a>戻り値
 
-Immersive Reader が読み込まれたときに解決される `Promise<LaunchResponse>` を返します。 `Promise` は [`LaunchResponse`](#launchresponse) オブジェクトに解決されます。
+イマーシブ リーダーが読み込まれたときに解決される `Promise<LaunchResponse>` を返します。 `Promise` は [`LaunchResponse`](#launchresponse) オブジェクトに解決されます。
 
 ### <a name="exceptions"></a>例外
 
-Immersive Reader の読み込みに失敗した場合、返された `Promise` は [`Error`](#error) オブジェクトで拒否されます。 詳細については、「[エラー コード](#error-codes)」を参照してください。
+イマーシブ リーダーの読み込みに失敗した場合、返された `Promise` は [`Error`](#error) オブジェクトで拒否されます。 詳細については、「[エラー コード](#error-codes)」を参照してください。
 
 ## <a name="close"></a>close
 
-Immersive Reader を閉じます。
+イマーシブ リーダーを閉じます。
 
-この関数の使用例は、[オプション](#options)で ```hideExitButton: true``` を設定して終了ボタンを非表示にする場合です。 その後、別のボタン (たとえば、モバイル ヘッダーの戻る矢印) がクリックされたときに、この ```close``` 関数を呼び出すことができます。
+この関数のユース ケースの例には、```hideExitButton: true```オプション[で ](#options) を設定して終了ボタンを非表示にする場合があります。 その後、別のボタン (たとえば、モバイル ヘッダーの戻る矢印) がクリックされたときに、この ```close``` 関数を呼び出すことができます。
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-この関数は、ドキュメントの Immersive Reader ボタン要素のスタイル設定と更新を行います。 ```options.elements``` が指定されている場合、この関数により ```options.elements``` 内にボタンがレンダリングされます。 それ以外の場合は、クラス ```immersive-reader-button``` を持つドキュメントの要素内にボタンがレンダリングされます。
+この関数は、ドキュメントのイマーシブ リーダー ボタン要素のスタイル設定と更新を行います。 ```options.elements``` が指定されている場合、この関数により ```options.elements``` 内にボタンがレンダリングされます。 それ以外の場合は、クラス ```immersive-reader-button``` を持つドキュメントの要素内にボタンがレンダリングされます。
 
 この関数は、ウィンドウの読み込み時に SDK によって自動的に呼び出されます。
 
@@ -86,9 +86,9 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ## <a name="types"></a>型
 
-### <a name="content"></a>Content
+### <a name="content"></a>コンテンツ
 
-Immersive Reader で表示するコンテンツを含みます。
+イマーシブ リーダーで表示するコンテンツを含みます。
 
 ```typescript
 {
@@ -99,7 +99,7 @@ Immersive Reader で表示するコンテンツを含みます。
 
 ### <a name="chunk"></a>チャンク
 
-1 つのデータ チャンク。Immersive Reader のコンテンツに渡されます。
+1 つのデータ チャンク。イマーシブ リーダーのコンテンツに渡されます。
 
 ```typescript
 {
@@ -122,7 +122,7 @@ Immersive Reader で表示するコンテンツを含みます。
 
 ### <a name="cookiepolicy-enum"></a>CookiePolicy 列挙型
 
-Immersive Reader の Cookie の使用に関するポリシーを設定するために使用される列挙型です。 [オプション](#options)を参照してください。
+イマーシブ リーダーの Cookie の使用に関するポリシーを設定するために使用される列挙型です。 [オプション](#options)を参照してください。
 
 ```typescript
 enum CookiePolicy { Disable, Enable }
@@ -144,13 +144,12 @@ enum CookiePolicy { Disable, Enable }
 | フォント スタイル | 太字、斜体、下線、コード、取り消し線、上付き文字、下付き文字 |
 | 順不同のリスト | ディスク、円、正方形 |
 | 順序指定済みリスト | 小数点、大文字アルファベット、小文字アルファベット、大文字ローマ字、小文字ローマ字 |
-| ハイパーリンク | 近日対応予定 |
 
 サポートされていないタグが同等にレンダリングされます。 イメージとテーブルは現在サポートされていません。
 
 ### <a name="options"></a>Options
 
-Immersive Reader の特定の動作を構成するプロパティを含みます。
+イマーシブ リーダーの特定の動作を構成するプロパティを含みます。
 
 ```typescript
 {
@@ -168,7 +167,7 @@ Immersive Reader の特定の動作を構成するプロパティを含みます
 
 ### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
 
-Immersive Reader ボタンをレンダリングするためのオプション。
+イマーシブ リーダー ボタンをレンダリングするためのオプション。
 
 ```typescript
 {
@@ -192,13 +191,13 @@ Immersive Reader ボタンをレンダリングするためのオプション。
 | コード | 説明 |
 | ---- | ----------- |
 | BadArgument | 与えられた引数が無効です。詳細は `message` を参照してください。 |
-| Timeout | 指定されたタイムアウト時間内に Immersive Reader を読み込めませんでした。 |
+| タイムアウト | 指定されたタイムアウト時間内にイマーシブ リーダーを読み込めませんでした。 |
 | TokenExpired | 与えられたトークンの期限が切れています。 |
 | Throttled | 呼び出しレートの制限を超えました。 |
 
-## <a name="launching-the-immersive-reader"></a>Immersive Reader の起動
+## <a name="launching-the-immersive-reader"></a>イマーシブ リーダーの起動
 
-SDK は、Immersive Reader の起動用ボタンに既定のスタイルを提供します。 このスタイルを有効にするには、`immersive-reader-button` クラス属性を使用します。 詳細については、 [この記事](./how-to-customize-launch-button.md) を参照してください。
+SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイルを提供します。 このスタイルを有効にするには、`immersive-reader-button` クラス属性を使用します。 詳細については、 [この記事](./how-to-customize-launch-button.md) を参照してください。
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -216,7 +215,7 @@ SDK は、Immersive Reader の起動用ボタンに既定のスタイルを提�
 
 ## <a name="browser-support"></a>ブラウザーのサポート
 
-Immersive Reader のエクスペリエンスを最適化するには、次のブラウザーの最新バージョンを使用してください。
+イマーシブ リーダーのエクスペリエンスを最適化するには、次のブラウザーの最新バージョンを使用してください。
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -227,4 +226,4 @@ Immersive Reader のエクスペリエンスを最適化するには、次のブ
 ## <a name="next-steps"></a>次のステップ
 
 * [GitHub 上の Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) を探索する
-* [クイック スタート: Immersive Reader を起動する Web アプリを作成する (C#)](./quickstart.md)
+* [クイック スタート: イマーシブ リーダーを起動する Web アプリを作成する (C#)](./quickstart.md)
