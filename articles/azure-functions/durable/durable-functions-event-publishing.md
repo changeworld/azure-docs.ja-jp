@@ -3,12 +3,12 @@ title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249760"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535487"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -68,14 +68,36 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 Durable Functions プロジェクトで、`host.json` ファイルを検索します。
 
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
+
 `eventGridTopicEndpoint` と `eventGridKeySettingName` を `durableTask` プロパティに追加します。
 
 ```json
 {
+  "durableTask": {
+    "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+    "eventGridKeySettingName": "EventGridKey"
+  }
+}
+```
+
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
+
+ファイルの `durableTask` プロパティに `notifications` セクションを追加し、`<topic_name>` を自分で選択した名前に置換します。 `durableTask` または `extensions` プロパティが存在しない場合、次の例のように作成します。
+
+```json
+{
+  "version": "2.0",
+  "extensions": {
     "durableTask": {
-        "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
-        "eventGridKeySettingName": "EventGridKey"
+      "notifications": {
+        "eventGrid": {
+          "topicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+          "keySettingName": "EventGridKey"
+        }
+      }
     }
+  }
 }
 ```
 

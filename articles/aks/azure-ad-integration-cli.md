@@ -4,12 +4,12 @@ description: Azure CLI を使用して Azure Active Directory 対応の Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227647"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779945"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -57,7 +57,7 @@ serverApplicationId=$(az ad app create \
     --identifier-uris "https://${aksname}Server" \
     --query appId -o tsv)
 
-# Update the application group memebership claims
+# Update the application group membership claims
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 

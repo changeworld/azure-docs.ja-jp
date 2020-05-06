@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476554"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81605982"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -77,7 +77,7 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>手順 2: VM と Azure KMS サービスの間の接続を確認する
 
-1. ライセンス認証できない VM のローカル フォルダーに [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) ツールをダウンロードし、展開します。 
+1. ライセンス認証できない VM のローカル フォルダーに [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) ツールをダウンロードし、展開します。 
 
 2. [スタート] で [Windows PowerShell] を検索し、それを右クリックして [管理者として実行] を選択します。
 
@@ -98,7 +98,7 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 
    Lost が 0 (ゼロ) より大きい場合、VM には KMS サーバーへの接続がありません。 この状況で、VM が仮想ネットワーク内にあり、その VM にカスタム DNS サーバーが指定されている場合は、その DNS サーバーが kms.core.windows.net を解決できることを確認する必要があります。 または、DNS サーバーを、kms.core.windows.net を解決できるサーバーに変更します。
 
-   仮想ネットワークから DNS サーバーをすべて削除すると、VM が Azure 内部の DNS サービスを使用するという点を覚えておいてください。 このサービスは、kms.core.windows.net を解決できます。
+   仮想ネットワークから DNS サーバーをすべて削除すると、VM で Azure の内部の DNS サービスが使用されることにご注意ください。 このサービスは、kms.core.windows.net を解決できます。
   
     また、1688 ポートを持つ KMS エンドポイントへの送信ネットワーク トラフィックは、VM 内のファイアウォールによってブロックされません。
 

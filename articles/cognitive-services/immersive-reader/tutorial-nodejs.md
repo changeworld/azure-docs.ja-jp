@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:Node.js を使用して Immersive Reader を起動する
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Immersive Reader を起動する Node.js アプリケーションを作成します。
+description: このチュートリアルでは、イマーシブ リーダーを起動する Node.js アプリケーションを作成します。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842029"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>チュートリアル:Immersive Reader の起動 (Node.js)
 
-[概要](./overview.md)に関するページでは、Immersive Reader の機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 このチュートリアルでは、Immersive Reader を起動する Node.js Web アプリケーションの作成方法について説明します。 このチュートリアルでは、以下の内容を学習します。
+[概要](./overview.md)に関するページでは、イマーシブ リーダーの機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 このチュートリアルでは、イマーシブ リーダーを起動する Node.js Web アプリケーションの作成方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Express を使用して Node.js Web アプリを作成する
 > * アクセス トークンの取得
-> * Immersive Reader を起動してサンプル コンテンツを表示する
+> * イマーシブ リーダーを起動してサンプル コンテンツを表示する
 > * コンテンツの言語を指定する
-> * Immersive Reader のインターフェイスの言語を指定する
-> * Immersive Reader を起動して数学コンテンツを表示する
+> * イマーシブ リーダーのインターフェイスの言語を指定する
+> * イマーシブ リーダーを起動して数学コンテンツを表示する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Active Directory 認証用に構成された Immersive Reader リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * [Node.js](https://nodejs.org/) と [Yarn](https://yarnpkg.com)
 * [Visual Studio Code](https://code.visualstudio.com/) などの IDE
 
@@ -128,9 +128,9 @@ module.exports = router;
 
 ```
 
-**getimmersivereaderlaunchparams** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用の Immersive Reader サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
+**getimmersivereaderlaunchparams** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用のイマーシブ リーダー サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Immersive Reader を起動してサンプル コンテンツを表示する
+## <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
 1. _views\layout.pug_ を開いて、`head` タグと `body` タグの間に次のコードを追加します。 これらの `script` タグによって、[Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と jQuery が読み込まれます。
 
@@ -139,7 +139,7 @@ module.exports = router;
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. _views\index.pug_ を開いて、その内容を次のコードに置き換えます。 このコードによって、ページにサンプル コンテンツが表示され、Immersive Reader を起動するボタンが追加されます。
+2. _views\index.pug_ を開いて、その内容を次のコードに置き換えます。 このコードによって、ページにサンプル コンテンツが表示され、イマーシブ リーダーを起動するボタンが追加されます。
 
     ```pug
     extends layout
@@ -189,11 +189,11 @@ module.exports = router;
     npm start
     ```
 
-4. ブラウザーを開き、 _http://localhost:3000_ に移動します。 ページに上記のコンテンツが表示されます。 **[Immersive Reader]** ボタンをクリックすると、Immersive Reader が起動し、コンテンツが表示されます。
+4. ブラウザーを開き、 _http://localhost:3000_ に移動します。 ページに上記のコンテンツが表示されます。 **[イマーシブ リーダー]** ボタンをクリックすると、イマーシブ リーダーが起動し、コンテンツが表示されます。
 
 ## <a name="specify-the-language-of-your-content"></a>コンテンツの言語を指定する
 
-Immersive Reader では、さまざまな言語がサポートされています。 次の手順に従って、コンテンツの言語を指定できます。
+イマーシブ リーダーでは、さまざまな言語がサポートされています。 次の手順に従って、コンテンツの言語を指定できます。
 
 1. _views\index.pug_ を開き、前の手順で追加した `p(id=content)` タグの下に次のコードを追加します。 このコードによって、ページにスペイン語のコンテンツが追加されます。
 
@@ -201,7 +201,7 @@ Immersive Reader では、さまざまな言語がサポートされています
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
     ```
 
-2. JavaScript コードでは、`ImmersiveReader.launchAsync` への呼び出しの前に次を追加します。 このコードによって、スペイン語のコンテンツが Immersive Reader に渡されます。
+2. JavaScript コードでは、`ImmersiveReader.launchAsync` への呼び出しの前に次を追加します。 このコードによって、スペイン語のコンテンツがイマーシブ リーダーに渡されます。
 
     ```pug
     content.chunks.push({
@@ -210,11 +210,11 @@ Immersive Reader では、さまざまな言語がサポートされています
     });
     ```
 
-3. 再度 _http://localhost:3000_ に移動します。 ページにスペイン語のテキストが表示されます。 **[Immersive Reader]** をクリックすると、それが Immersive Reader にも表示されます。
+3. 再度 _http://localhost:3000_ に移動します。 ページにスペイン語のテキストが表示されます。 **[イマーシブ リーダー]** をクリックすると、それがイマーシブ リーダーにも表示されます。
 
-## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Immersive Reader のインターフェイスの言語を指定する
+## <a name="specify-the-language-of-the-immersive-reader-interface"></a>イマーシブ リーダーのインターフェイスの言語を指定する
 
-既定では、Immersive Reader のインターフェイスの言語は、ブラウザーの言語設定と一致します。 次のコードを使用して、Immersive Reader のインターフェイスの言語を指定することもできます。
+既定では、イマーシブ リーダーのインターフェイスの言語は、ブラウザーの言語設定と一致します。 次のコードを使用して、イマーシブ リーダーのインターフェイスの言語を指定することもできます。
 
 1. _views\index.pug_ で、`ImmersiveReader.launchAsync(token, subdomain, content)` への呼び出しを下のコードに置き換えます。
 
@@ -225,11 +225,11 @@ Immersive Reader では、さまざまな言語がサポートされています
     ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
-2. _http://localhost:3000_ に移動します。 Immersive Reader を起動すると、インターフェイスがフランス語で表示されます。
+2. _http://localhost:3000_ に移動します。 イマーシブ リーダーを起動すると、インターフェイスがフランス語で表示されます。
 
-## <a name="launch-the-immersive-reader-with-math-content"></a>Immersive Reader を起動して数学コンテンツを表示する
+## <a name="launch-the-immersive-reader-with-math-content"></a>イマーシブ リーダーを起動して数学コンテンツを表示する
 
-[MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) を使用して、Immersive Reader に数学コンテンツを含めることができます。
+[MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) を使用して、イマーシブ リーダーに数学コンテンツを含めることができます。
 
 1. _views\index.pug_ を編集し、`ImmersiveReader.launchAsync` への呼び出しの前に次のコードを含めます。
 
@@ -256,7 +256,7 @@ Immersive Reader では、さまざまな言語がサポートされています
     });
     ```
 
-2. _http://localhost:3000_ に移動します。Immersive Reader を起動して一番下までスクロールすると、数式を確認できます。
+2. _http://localhost:3000_ に移動します。 イマーシブ リーダーを起動して一番下までスクロールすると、数式を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

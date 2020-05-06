@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061509"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81767965"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "80061509"
 
 ## <a name="supported-azure-service-integrations"></a>サポートされる Azure サービスの統合
 
-Data Lake Storage gen2 は、データの取り込み、分析の実行、およびビジュアル表現の作成に使用できるいくつかの Azure サービスをサポートしています。 サポートされる Azure サービスの一覧については、「[Azure Data Lake Storage Gen2 をサポートする Azure サービス](data-lake-storage-supported-azure-services.md)」を参照してください。
+Azure Data Lake Storage Gen2 は、データの取り込み、分析の実行、およびビジュアル表現の作成に使用できるいくつかの Azure サービスをサポートしています。 サポートされる Azure サービスの一覧については、「[Azure Data Lake Storage Gen2 をサポートする Azure サービス](data-lake-storage-supported-azure-services.md)」を参照してください。
 
 「[Azure Data Lake Storage Gen2 をサポートするAzure サービス](data-lake-storage-supported-azure-services.md)」を参照してください。
 
@@ -62,14 +62,11 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>SDK でのファイル システムのサポート
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell、Azure CLI でのファイル システムのサポート
 
-get および set ACL 操作は現在、再帰的ではありません。
-
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>PowerShell と Azure CLI でのファイル システムのサポート
-
-- [PowerShell](data-lake-storage-directory-file-acl-powershell.md) と [Azure CLI](data-lake-storage-directory-file-acl-cli.md) のサポートは、パブリック プレビュー段階です。
 - get および set ACL 操作は現在、再帰的ではありません。
+- [Azure CLI](data-lake-storage-directory-file-acl-cli.md) のサポートはパブリック プレビュー段階です。
+
 
 ## <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
 
@@ -112,11 +109,8 @@ REST API を使用して動作するサード パーティ製アプリケーシ�
 
 コンテナーへの[匿名読み取りアクセス](storage-manage-access-to-resources.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure Storage Blob (WASB) ドライバー
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) ドライバー (Data Lake Storage Gen2 ではサポートされていません)
 
-現在、階層型名前空間があるアカウントと共に、WASB ドライバーの使用に関して、いくつかの問題があります。 ワークロードには、[Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) ドライバーを使用することをお勧めします。 
+現時点では、BLOB API のみで動作するように設計された WASB ドライバーでは、いくつかの一般的なシナリオで問題が発生します。 特に、階層型名前空間が有効なストレージ アカウントのクライアントである場合です。 これらの問題は、Data Lake Storage のマルチプロトコル アクセスによっても軽減されません。 
 
-
-
-
-
+しばらく (おそらく当面) の間は、階層型名前空間が有効なストレージ アカウントのクライアントとして、WASB ドライバーを使用しているお客様はサポートされません。 代わりに、Hadoop 環境で [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) ドライバーを使用することをお勧めします。 Hadoop branch 3 より前のバージョンを使用するオンプレミスの Hadoop 環境から移行しようとしている場合は、お客様と組織にとって適切な方法についてご連絡できるように、Azure サポート チケットを開いてください。

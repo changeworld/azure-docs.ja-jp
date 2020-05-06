@@ -10,10 +10,10 @@ ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
 ms.openlocfilehash: 2fa2e40ba2a7fe84b6df57bfb711d01332b8f523
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274803"
 ---
 <a name="HOLTop"></a>
@@ -262,7 +262,7 @@ Language: English
 
 
 > [!NOTE]
-> バージョン `3.0-preview` の新機能:
+> バージョン `3.0-preview` の新機能: 
 > * エンティティ リンク設定がエンティティの認識から切り離されました。
 
 

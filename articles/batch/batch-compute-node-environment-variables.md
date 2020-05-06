@@ -1,22 +1,15 @@
 ---
-title: タスク実行環境変数 - Azure Batch | Microsoft Docs
+title: タスク ランタイム環境変数
 description: タスク実行の環境変数に関するガイダンスと Azure Batch 解析のリファレンスです。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: big-compute
 ms.date: 09/12/2019
 ms.author: labrenne
-ms.openlocfilehash: ebaa06acf309a0f941b8b4efd76fa4e9e7460810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd30444585cb1adaaf2b42cebdfa04683b12ecfc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053948"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117337"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 

@@ -8,13 +8,13 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
 ms.openlocfilehash: 8f49811ad0d40c70933d32227cfb17a5144b857a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067819"
 ---
-# <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは -
+# <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは - 
 
 Azure Database for MySQL は、Microsoft クラウドにおける、(GPLv2 ライセンスで利用可能な) [MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジン バージョン 5.6、5.7、および 8.0 をベースとしたリレーショナル データベース サービスです。 Azure Database for MySQL には、次の特長があります。
 

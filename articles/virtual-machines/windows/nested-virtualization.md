@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.openlocfilehash: 2c66f88cc49028fae50d89a9a7c24233d5a926b4
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81865713"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法

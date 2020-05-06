@@ -8,12 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237339"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81732495"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -184,7 +187,7 @@ Event Grid 経由でテレメトリ イベントをサブスクライブする�
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続状態イベントを受信するには、デバイスが IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 ただし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、[Receive Async API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって C2D リンクを開くことができます。
+デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 しかし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、[Receive Async API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって C2D リンクを開くことができます。
 
 テレメトリを送信する場合は、D2C リンクが開いています。 
 
