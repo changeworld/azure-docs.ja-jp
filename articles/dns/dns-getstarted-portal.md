@@ -8,16 +8,16 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76937129"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160768"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
 
-パブリック ドメイン内のホスト名を解決するように Azure DNS を構成できます。 たとえば、*contoso.xyz* というドメイン名をドメイン名レジストラーから購入した場合、*contoso.xyz* ドメインをホストし、*www.contoso.xyz* を Web サーバーまたは Web アプリの IP アドレスに解決するように Azure DNS を構成できます。
+パブリック ドメイン内のホスト名を解決するように Azure DNS を構成できます。 たとえば、*contoso.xyz* というドメイン名をドメイン名レジストラーから購入した場合、*contoso.xyz* ドメインをホストし、 *`www.contoso.xyz`* を Web サーバーまたは Web アプリの IP アドレスに解決するように Azure DNS を構成できます。
 
 このクイック スタートでは、テスト ドメインを作成し、*www* を IP アドレス *10.10.10.10* に解決するアドレス レコードを作成します。
 

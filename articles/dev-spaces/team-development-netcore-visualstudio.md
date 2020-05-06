@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service の .NET Core アプリケーションでのチーム開発を行う方法を示します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78245048"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166038"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces での .NET Core と Visual Studio を使用したチーム開発
 
@@ -81,7 +81,7 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 パブリック URL を開き、Web アプリに移動するすべてのユーザーは、既定の _dev_ 空間を使用して両方のサービスを介して実行される、作成済みのコード パスを呼び出すことになります。 ここでは、*mywebapi* の開発を続けるとします。開発空間を使用している他の開発者の作業を妨げずに続行するにはどうすればよいのでしょうか。 それには、独自のスペースを設定することです。
 
 ### <a name="create-a-new-dev-space"></a>新しい開発空間を作成する
-Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例: _sprint4_ または _demo_)。
+Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例:  _sprint4_ または _demo_)。
 
 新しいスペースを作成するには、次の手順を実行します。
 1. *mywebapi* プロジェクトがある Visual Studio ウィンドウに切り替えます。
@@ -102,7 +102,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 
 ### <a name="update-code-for-mywebapi"></a>*mywebapi* のコードを更新する
 
-1. *mywebapi* プロジェクトで、`string Get(int id)` ファイル内の `Controllers/ValuesController.cs` メソッドのコードを次のように変更します。
+1. *mywebapi* プロジェクトで、`Controllers/ValuesController.cs` ファイル内の `string Get(int id)` メソッドのコードを次のように変更します。
  
     ```csharp
     [HttpGet("{id}")]
@@ -122,7 +122,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 Azure Dev Spaces のこの組み込み機能を使用すると、共有環境でコードをエンド ツー エンドでテストできます。各開発者が自分のスペースにサービスの完全なスタックを再作成する必要はありません。 このガイドの以前の手順で示したように、このルーティングではアプリ コードで伝達ヘッダーを転送する必要があります。
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>_dev/scott_ 空間で実行されているコードをテストする
-*mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL (たとえば、 http://dev.webfrontend.123456abcdef.eus.azds.io) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
+*mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL (たとえば、`http://dev.webfrontend.123456abcdef.eus.azds.io`) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
 
 URL に "scott.s." の部分を追加して、 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io になるようにし、ブラウザーを更新します。 *mywebapi* プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、*mywebapi* で更新したコードのパスが _dev/scott_ 空間で実行されているためです。
 

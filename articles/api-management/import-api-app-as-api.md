@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108490"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202827"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API アプリを API としてインポートする
 
@@ -32,14 +32,14 @@ ms.locfileid: "74108490"
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 + サブスクリプションに API アプリがあることを確認します。 詳細については、[App Service のドキュメント](https://docs.microsoft.com/azure/app-service/)に関するページを参照してください
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
-1. **[API Management]** で **[API]** を選びます。
+1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[API アプリ]** を選択します。
 
     ![API アプリ](./media/import-api-app-as-api/api-app.png)
@@ -56,7 +56,8 @@ ms.locfileid: "74108490"
 
     * **スターター**
     * **無制限**   
-7. **作成** を選択します。
+7. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+8. **［作成］** を選択します
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal での新しい API のテスト
 
