@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
 ms.openlocfilehash: 9ed3d960b3f5653ea8706b39559c9d5a71c45a6c
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81867628"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す

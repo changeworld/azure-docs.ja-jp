@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79370918"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
@@ -154,7 +154,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ターゲット サブリソース |*[postgresqlServer]* を選択します|
     |||
 7. **構成** を選択します。
-8. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
+8. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |

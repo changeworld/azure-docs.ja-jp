@@ -1,44 +1,44 @@
 ---
 title: システム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする方法
-description: Azure Cosmos DB のキーにアクセスするように Azure AD システム割り当てマネージド ID を構成する方法について説明します。 msi, マネージド サービス ID, aad, azure active directory, ID
+description: Azure Cosmos DB のキーにアクセスするように Azure Active Directory (Azure AD) システム割り当てマネージド ID (マネージド サービス ID) を構成する方法について説明します。
 author: j-patrick
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 102efba5d028eef621f392ef1739ea9ebeca0b44
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80416976"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641224"
 ---
-# <a name="how-to-use-a-system-assigned-managed-identity-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする方法
+# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 
-この記事では、[マネージド ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) を利用して Azure Cosmos DB キーにアクセスするための、**堅牢でキー ローテーションに依存しない**ソリューションを設定します。 この記事の例では、Azure 関数を使用します。 ただし、このソリューションは、マネージド ID をサポートするすべてのサービスでご利用いただけます。 
+この記事では、[マネージド ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) を使用して Azure Cosmos DB キーにアクセスするための、"*堅牢でキー ローテーションに依存しない*" ソリューションを設定します。 この記事の例では Azure Functions を使用しますが、マネージド ID をサポートする任意のサービスを使用できます。 
 
-ここでは、Azure Cosmos DB キーをコピーしなくても Azure Cosmos DB にアクセスできる Azure 関数を作成する方法について説明します。 この関数は、1分ごとにウェイクアップし、水族館の水槽の現在の気温を記録します。 タイマーでトリガーされる Azure 関数の設定方法については、「[Azure でタイマーによってトリガーされる関数を作成する](../azure-functions/functions-create-scheduled-function.md)」の記事を参照してください。
+ここでは、Azure Cosmos DB キーをコピーしなくても Azure Cosmos DB データにアクセスできる関数アプリを作成する方法について説明します。 この関数アプリは、1 分ごとにウェイクアップし、これにより水族館の水槽の現在の気温が記録されます。 タイマーでトリガーされる関数アプリの設定方法については、「[Azure でタイマーによってトリガーされる関数を作成する](../azure-functions/functions-create-scheduled-function.md)」の記事を参照してください。
 
-このシナリオを簡略化するため、古い温度ドキュメントのクリーンアップは、既に構成されている [有効期限](./time-to-live.md)の設定によって処理されます。 
+このシナリオを簡略化するために、[有効期限](./time-to-live.md)の設定は、古い温度ドキュメントをクリーンアップするように既に構成されています。 
 
-## <a name="assign-a-system-assigned-managed-identity-to-an-azure-function"></a>Azure 関数にシステム割り当てマネージド ID を割り当てる
+## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>関数アプリにシステム割り当てマネージド ID を割り当てる
 
-このステップでは、Azure 関数にシステム割り当てマネージド ID を割り当てます。
+このステップでは、関数アプリにシステム割り当てマネージド ID を割り当てます。
 
 1. [Azure portal](https://portal.azure.com/) で、**Azure 関数**ウィンドウを開き、関数アプリに移動します。 
 
 1. **[プラットフォーム機能]**  >  **[ID]** タブの順に開きます。 
 
-   ![[ID] タブ](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   ![関数アプリのプラットフォーム機能と ID オプションを示すスクリーンショット。](./media/managed-identity-based-authentication/identity-tab-selection.png)
 
-1. **[ID]** タブで、 **[システム ID]** 状態を **[オン]** にします。 必ず **[保存]** を選択し、システム ID をオンにすることを確認します。 最後に、 **[システム ID]** ウィンドウは次のようになります。  
+1. **[ID]** タブで、システム ID の **[状態]** を **[オン]** にし、 **[保存]** を選択します。 **[ID]** ウィンドウは次のようになります。  
 
-   ![システム ID がオンの状態](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   ![システム ID の [状態] が [オン] に設定されている場合のスクリーンショット。](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
 
-## <a name="grant-the-managed-identity-access-to-your-azure-cosmos-account"></a>マネージド ID に Azure Cosmos アカウントへのアクセス権を付与する
+## <a name="grant-access-to-your-azure-cosmos-account"></a>Azure Cosmos アカウントへのアクセスを許可する
 
-このステップでは、Azure 関数のシステム割り当てマネージド ID にロールを割り当てます。 Azure Cosmos DB には、マネージド ID に割り当てることが可能な複数の組み込みロールがあります。 このソリューションでは、次の 2 つのロールを使用します。
+このステップでは、関数アプリのシステム割り当てマネージド ID にロールを割り当てます。 Azure Cosmos DB には、マネージド ID に割り当てることが可能な複数の組み込みロールがあります。 このソリューションでは、次の 2 つのロールを使用します。
 
 |組み込みのロール  |説明  |
 |---------|---------|
@@ -46,44 +46,44 @@ ms.locfileid: "80416976"
 |[Cosmos DB アカウント閲覧者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。 読み取りキーの取得を許可します。 |
 
 > [!IMPORTANT]
-> Azure Cosmos DB の RBAC サポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、マスター キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[データへのアクセスをセキュリティで保護する](secure-access-to-data.md)」の記事を参照してください。
+> Azure Cosmos DB でのロールベースのアクセス制御のサポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、マスター キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[データへのアクセスをセキュリティで保護する](secure-access-to-data.md)」の記事を参照してください。
 
 > [!TIP] 
-> ロールを割り当てるときは、必要なアクセス権のみを割り当ててください。 サービスがデータの読み取りのみを必要とする場合は、マネージド ID を **Cosmos DB アカウントの閲覧者**ロールに割り当てます。 最小特権アクセスの重要性についての詳細は、「[特権アカウントの公開時間を短縮する](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)」の記事を参照してください。
+> ロールを割り当てるときは、必要なアクセス権のみを割り当ててください。 サービスがデータの読み取りのみを必要とする場合は、マネージド ID に **Cosmos DB アカウントの閲覧者**ロールを割り当てます。 最小特権アクセスの重要性についての詳細は、「[特権アカウントの公開時間を短縮する](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)」の記事を参照してください。
 
-シナリオに合わせて、気温を読み取り、Azure Cosmos DB のコンテナーにそのデータを書き戻します。 データを書き込む必要があるため、**DocumentDB Account Contributor** ロールを使用します。 
+このシナリオでは、関数アプリによって水族館の気温が読み取られ、Azure Cosmos DB のコンテナーにそのデータが書き戻されます。 関数アプリによってデータを書き込む必要があるため、**DocumentDB アカウント共同作成者**ロールを割り当てる必要があります。 
 
-1. Azure portal にサインインし、Azure Cosmos DB アカウントに移動します。 **[アクセス管理 (IAM)] ウィンドウ**、 **[ロールの割り当て]** タブの順に開きます。
+1. Azure portal にサインインし、Azure Cosmos DB アカウントに移動します。 **[アクセス管理 (IAM)]** ウィンドウ、 **[ロールの割り当て]** タブの順に開きます。
 
-   ![IAM ウィンドウ](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   ![[アクセス制御] ウィンドウと [ロールの割り当て] タブを示すスクリーンショット。](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
 
-1. **[+ 追加]** ボタン、 **[ロールの割り当てを追加する]** の順に選択します。
+1. **[+ 追加]**  >  **[ロール割り当ての追加]** の順に選択します。
 
 1. **[ロールの割り当ての追加]** ウィンドウが右側に表示されます。
 
-   ![ロールの追加](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   ![[役割の割り当ての追加] ウィンドウを示すスクリーンショット。](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
 
-   * **[ロール]** - **[DocumentDB Account Contributor]** を選択します。
-   * **[アクセスの割り当て先]** - [**システム割り当てマネージド ID]** の選択のサブセクションで、 **[関数アプリ]** を選択します。
-   * **[選択]** - このウィンドウには、サブスクリプション内の、 **[マネージド システム ID]** を持つすべての関数アプリが表示されます。 ここでは、関数アプリ **SummaryService** を選択します。 
+   * **ロール**: **[DocumentDB Account Contributor]** を選択します。
+   * **アクセスの割り当て先**: **[システム割り当てマネージド ID]** の選択のサブセクションで、 **[関数アプリ]** を選択します。
+   * **Select**:このウィンドウには、サブスクリプション内の、 **[マネージド システム ID]** を持つすべての関数アプリが表示されます。 この場合は、 **[FishTankTemperatureService]** 関数アプリを選択します。 
 
-      ![割り当てを選択する](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      ![例が表示された [ロールの割り当ての追加] ウィンドウを示すスクリーンショット。](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
 
-1. 関数アプリの ID を選択したら、 **[保存]** をクリックします。
+1. 関数アプリを選択したら、 **[保存]** を選択します。
 
-## <a name="programmatically-access-the-azure-cosmos-db-keys-from-the-azure-function"></a>Azure 関数からプログラムを使用して Azure Cosmos DB キーにアクセスする
+## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>プログラムを使用して Azure Cosmos DB キーにアクセスする
 
-これで、システム割り当てマネージド ID を持つ関数アプリができました。 この ID には、Azure Cosmos DB のアクセス許可で **DocumentDB Account Contributor** ロールが付与されています。 次の関数アプリ コードは、Azure Cosmos DB キーを取得し、CosmosClient オブジェクトを作成し、気温を取得して、これを Cosmos DB に保存します。
+これで、Azure Cosmos DB のアクセス許可で **DocumentDB アカウント共同作成者**ロールが割り当てられた、システム割り当てマネージド ID を持つ関数アプリが作成されました。 次の関数アプリ コードでは、Azure Cosmos DB キーが取得され、CosmosClient オブジェクトが作成され、水族館の気温が取得されて Azure Cosmos DB に保存されます。
 
 このサンプルでは、[List Keys API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) を使用して、Azure Cosmos DB アカウント キーにアクセスします。
 
 > [!IMPORTANT] 
-> [**Cosmos DB アカウント閲覧者**](#grant-the-managed-identity-access-to-your-azure-cosmos-account)ロールを割り当てるには、読み取り専用の [List Keys api](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) を使用する必要があります。 読み取り専用キーのみが設定されます。
+> [Cosmos DB アカウントの閲覧者](#grant-access-to-your-azure-cosmos-account)ロールを割り当てるには、[List Read Only Keys API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) を使用する必要があります。 これにより、読み取り専用キーのみが設定されます。
 
 List Keys API は `DatabaseAccountListKeysResult` オブジェクトを返します。 この型は C# ライブラリで定義されていません。 次のコードは、このクラスを実装する方法を示しています。  
 
 ```csharp 
-namespace SummarizationService 
+namespace Monitor 
 {
   public class DatabaseAccountListKeysResult
   {
@@ -112,7 +112,8 @@ namespace Monitor
 }
 ```
 
-[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ライブラリを使用して、システム割り当てマネージド ID トークンを取得します。 トークンを取得する他の方法と、`Microsoft.Azure.Service.AppAuthentication`ライブラリの詳細については、「[サービス間認証](../key-vault/service-to-service-authentication.md)」の記事を参照してください。
+[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ライブラリを使用して、システム割り当てマネージド ID トークンを取得します。 トークンを取得する他の方法と、`Microsoft.Azure.Service.AppAuthentication` ライブラリの詳細については、[サービス間認証](../key-vault/general/service-to-service-authentication.md)に関する記事を参照してください。
+
 
 ```csharp
 using System;
@@ -126,7 +127,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Monitor
 {
-    public static class TemperatureMonitor
+    public static class FishTankTemperatureService
     {
         private static string subscriptionId =
         "<azure subscription id>";
@@ -141,7 +142,7 @@ namespace Monitor
         private static string containerName =
         "<container to store the temperature in>";
 
-        [FunctionName("TemperatureMonitor")]
+        [FunctionName("FishTankTemperatureService")]
         public static async Task Run([TimerTrigger("0 * * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"Starting temperature monitoring: {DateTime.Now}");
@@ -149,20 +150,20 @@ namespace Monitor
             // AzureServiceTokenProvider will help us to get the Service Managed token.
             var azureServiceTokenProvider = new AzureServiceTokenProvider();
 
-            // In order to get the Service Managed token we need to authenticate to the Azure Resource Manager.
+            // Authenticate to the Azure Resource Manager to get the Service Managed token.
             string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
 
-            // To get the Azure Cosmos DB keys setup the List Keys API:
+            // Setup the List Keys API to get the Azure Cosmos DB keys.
             string endpoint = $"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys?api-version=2019-12-12";
 
-            // setup an HTTP Client and add the access token.
+            // Setup an HTTP Client and add the access token.
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
             // Post to the endpoint to get the keys result.
             var result = await httpClient.PostAsync(endpoint, new StringContent(""));
 
-            // Get the Result back as a DatabaseAccountListKeysResult.
+            // Get the result back as a DatabaseAccountListKeysResult.
             DatabaseAccountListKeysResult keys = await result.Content.ReadAsAsync<DatabaseAccountListKeysResult>();
 
             log.LogInformation("Starting to create the client");
@@ -187,7 +188,7 @@ namespace Monitor
 
         private static int GetTemperature()
         {
-            // fake the temperature sensor for this demo
+            // Fake the temperature sensor for this demo.
             Random r = new Random(DateTime.UtcNow.Second);
             return r.Next(0, 120);
         }
@@ -195,10 +196,10 @@ namespace Monitor
 }
 ```
 
-これで [Azure 関数をデプロイする](../azure-functions/functions-create-first-function-vs-code.md)準備が整いました。
+これで、[関数アプリをデプロイする](../azure-functions/functions-create-first-function-vs-code.md)準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Cosmos DB と Active Directory Domain Services を使用した証明書ベースの認証](certificate-based-authentication.md)
-* [Azure Key Vault を使用して Azure Cosmos キーをセキュリティで保護する](access-secrets-from-keyvault.md)
+* [Azure Cosmos DB と Azure Active Directory を使用した証明書ベースの認証](certificate-based-authentication.md)
+* [Azure Key Vault を使用して Azure Cosmos DB キーをセキュリティで保護する](access-secrets-from-keyvault.md)
 * [Azure Cosmos DB のセキュリティ ベースライン](security-baseline.md)

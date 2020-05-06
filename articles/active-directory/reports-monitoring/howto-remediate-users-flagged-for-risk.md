@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68989694"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100789"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -87,7 +87,6 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 
 - [異常なアクティビティへの対処に関するこのガイダンス](https://aka.ms/fixaccount)を読み、実装します。 
 - テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](https://aka.ms/improvesecurity)にします。 完了すると、監査ストアはアクティビティ ログの読み込みを開始します。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査のリソース](https://aka.ms/sccsearch)を活用することもできます。 
-- すべてのアカウントに対して、この[スクリプトを使用してメールボックスの監査を有効](https://aka.ms/mailboxaudit1)にします。 
 - すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](https://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,17 +1,14 @@
 ---
 title: Azure Migrate のよくあるご質問
 description: Azure Migrate サービスに関する一般的な質問の回答を示します。
-author: snehaamicrosoft
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: snehaa
-ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78926726"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81530319"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: 一般的な質問
 
@@ -56,8 +53,7 @@ Server Assessment は移行計画ツールです。 Site Recovery Deployment Pla
 
 ## <a name="which-geographies-are-supported"></a>サポートされている地域を教えてください。
 
-- **VMware VM**:VMware VM で Azure Migrate が[サポートされている地域](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)を確認します。
-- **Hyper-V VM**:Hyper-V VM で Azure Migrate が[サポートされている地域](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)を確認します。
+[パブリック クラウド](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
 ## <a name="how-do-i-get-started"></a>開始するには?
 

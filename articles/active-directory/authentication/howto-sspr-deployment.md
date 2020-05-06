@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676742"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450991"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -115,7 +115,7 @@ SSPR をデプロイする前に、各パスワード リセット呼び出し�
 
 組織では SSPR と多要素認証に対する統合された登録エクスペリエンスを有効にすることをお勧めします。 この統合された登録エクスペリエンスを有効にすると、ユーザーは登録情報を 1 回選択するだけで両方の機能を有効にすることができます。
 
-統合された登録エクスペリエンスでは、SSPR と Azure Multi-Factor Authentication の両方を有効にする必要はありません。 登録を組み合わせると、組織ではより優れたユーザー エクスペリエンスを実現できます。 詳細については、「[統合されたセキュリティ情報の登録 (プレビュー)](concept-registration-mfa-sspr-combined.md)」を参照してください
+統合された登録エクスペリエンスでは、SSPR と Azure Multi-Factor Authentication の両方を有効にする必要はありません。 登録を組み合わせると、組織ではより優れたユーザー エクスペリエンスを実現できます。 詳細については、[統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md)に関する記事を参照してください
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 

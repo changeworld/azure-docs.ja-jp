@@ -16,10 +16,10 @@ ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639758"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する

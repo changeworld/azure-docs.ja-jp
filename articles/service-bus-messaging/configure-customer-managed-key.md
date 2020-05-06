@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: aschhab
 ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459068"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する

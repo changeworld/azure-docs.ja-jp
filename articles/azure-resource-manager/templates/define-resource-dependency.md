@@ -3,12 +3,12 @@ title: リソースにデプロイ順序を設定する
 description: デプロイ時にリソースが正しい順序でデプロイされるように、あるリソースが別のリソースに依存するように設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153286"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535470"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM テンプレートでのリソース デプロイ順序の定義
 
@@ -18,7 +18,7 @@ Resource Manager により、リソース間の依存関係が評価され、リ
 
 ## <a name="dependson"></a>dependsOn
 
-テンプレート内で dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 その値は、リソース名のコンマ区切りリストです。 リストには、[条件付きでデプロイされた](conditional-resource-deployment.md)リソースを含めることができます。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
+テンプレート内で dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 その値は文字列の JSON 配列であり、それぞれがリソース名です。 配列には、[条件付きでデプロイされた](conditional-resource-deployment.md)リソースを含めることができます。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
 
 次の例では、ロード バランサー、仮想ネットワーク、および複数のストレージ アカウントを作成するループに依存する仮想マシン スケール セットを示します。 こうした他のリソースは、次の例には示されていませんが、テンプレートの他の場所に存在する必要があります。
 

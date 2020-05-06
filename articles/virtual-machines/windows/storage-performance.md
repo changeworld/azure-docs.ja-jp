@@ -1,21 +1,19 @@
 ---
 title: Azure Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する - ストレージ
 description: Lsv2 シリーズの仮想マシン上でソリューションのパフォーマンスを最適化する方法を紹介します。
-services: virtual-machines-windows
 author: sasha-melamed
-manager: gwallace
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: sizes
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 57b248908a02327f2521be05920259681a26817a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920231"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100551"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
 

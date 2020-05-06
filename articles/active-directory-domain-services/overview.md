@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: 0f5f890b4f32961e00fb30316a1dc7c88ef93a45
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654841"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは

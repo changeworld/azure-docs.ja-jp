@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870376"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを追加および管理する

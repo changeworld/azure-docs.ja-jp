@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 2734bc0868584f9d02147abb953458bbcdec205e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 15bbd7776f2ac8fef78cde43a22e59b0e60a6f50
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273105"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143001"
 ---
 # <a name="virtual-machine-support-tab"></a>仮想マシンの [サポート] タブ
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://aka.ms/CreateAzureVMoffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、Partner Center でオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
-**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定できます。  これは次の 3 つの領域に分かれています。**Engineering (エンジニアリング)** 、**Customer Support (カスタマー サポート)** 、および **Support URLs (サポート URL)** 。
+**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定できます。  **[Engineering Contact]\(エンジニアリング連絡先\)** 、 **[カスタマー サポート]** 、 **[サポート URL]** の 3 つの領域に分かれています。
 
 ![仮想マシンの [新しいプラン] フォームの [サポート] タブ](./media/publishvm_012.png)
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 9dbf65522d5c85e1054ed3f1f6ca9f86180e7f7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1766ffb579bb1a86da91ac73a396ce0d008f89e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454983"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117626"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Azure Service Bus 用の仮想ネットワーク サービス エンドポイントを構成する
 
@@ -25,10 +25,24 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 
 その結果、メッセージング サービス エンドポイントの監視可能なネットワーク アドレスがパブリック IP 範囲内にあるにもかかわらず、サブネットにバインドされたワークロードとそれぞれの Service Bus 名前空間の間にプライベートな分離された関係が確立されます。
 
+>[!WARNING]
+> 仮想ネットワーク統合を実装すると、他の Azure サービスが Service Bus と対話するのを防ぐことができます。
+>
+> 仮想ネットワークが実装されているときは、信頼できる Microsoft サービスはサポートされません。
+>
+> 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
+> - Azure Event Grid との統合
+> - Azure IoT Hub ルート
+> - Azure IoT Device Explorer
+>
+> 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
+> - Azure App Service
+> - Azure Functions
+
 > [!IMPORTANT]
 > 仮想ネットワークは、[Premium レベル](service-bus-premium-messaging.md)の Service Bus 名前空間でのみサポートされます。
 > 
-> Service Bus で VNet サービス エンドポイントを使用するときには、Standard レベルと Premium レベルの Service Bus 名前空間が混在するアプリケーションでこれらのエンドポイントを有効にしないでください。 Standard レベルでは VNet がサポートされないためです。 エンドポイントは、Premium レベルの名前空間のみに制限されます。
+> Service Bus で VNet サービス エンドポイントを使用するときには、Standard レベルと Premium レベルの Service Bus 名前空間が混在するアプリケーションでこれらのエンドポイントを有効にしないでください。 これは Standard レベルでは VNet がサポートされないためです。 エンドポイントは、Premium レベルの名前空間のみに制限されます。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet の統合によって有効になる高度なセキュリティのシナリオ 
 
@@ -42,14 +56,14 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 "*仮想ネットワーク規則*" は、Azure Service Bus サーバーが特定の仮想ネットワーク サブネットからの接続を許可するかどうかを制御するファイアウォール セキュリティ機能です。
 
-仮想ネットワークへの Service Bus 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワーク サブネットに**仮想ネットワーク サービス エンドポイント**を作成し、[サービス エンドポイントの概要][vnet-sep]に関する記事で説明しているように、そのエンドポイントを **Microsoft.ServiceBus** に対して有効にする必要があります。 サービス エンドポイントを追加した後、Service Bus 名前空間を "**仮想ネットワーク規則**" にバインドします。
+仮想ネットワークへの Service Bus 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワーク サブネットに**仮想ネットワーク サービス エンドポイント**を作成し、**サービス エンドポイントの概要**に関する記事で説明しているように、そのエンドポイントを [Microsoft.ServiceBus][vnet-sep] に対して有効にする必要があります。 サービス エンドポイントを追加した後、Service Bus 名前空間を "**仮想ネットワーク規則**" にバインドします。
 
 仮想ネットワーク規則は、Service Bus 名前空間と仮想ネットワーク サブネットの関連付けです。 ルールが存在する間、サブネットにバインドされているすべてのワークロードには、Service Bus 名前空間へのアクセス権が付与されます。 Service Bus 自体は送信接続を確立することはなく、アクセス許可を取得する必要はないので、このルールを有効にすることでサブネットへのアクセス権が付与されることはありません。
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure portal を使用して仮想ネットワーク サービス エンドポイントを追加する方法を示します。 アクセスを制限するには、この Event Hubs 名前空間に対して仮想ネットワーク サービス エンドポイントを統合する必要があります。
 
-1. [Azure portal](https://portal.azure.com) で、使用する **Service Bus 名前空間**に移動します。
+1. **Azure portal** で、ご利用の [Service Bus 名前空間](https://portal.azure.com)に移動します。
 2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 既定では、 **[すべてのネットワーク]** オプションが選択されています。 名前空間は、どの IP アドレスからの接続も受け入れます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
     ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-endpoints/firewall-all-networks-selected.png)
@@ -61,7 +75,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
    
    ![サブネットを選択する](./media/service-endpoints/select-subnet.png)
 
-4. **Microsoft.ServiceBus** に対して、サブネットのサービス エンドポイントが有効になると、次の成功メッセージが表示されます。 ページの下部にある **[追加]** を選択してネットワークを追加します。 
+4. **Microsoft.ServiceBus** に対して、サブネットのサービス エンドポイントが有効になると、次の成功メッセージが表示されます。 ページの下部にある **[追加]** を選択して、ネットワークを追加します。 
 
     ![サブネットを選択してエンドポイントを有効にする](./media/service-endpoints/subnet-service-endpoint-enabled.png)
 
@@ -76,8 +90,8 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 テンプレート パラメーター:
 
-* **namespaceName**:Service Bus 名前空間。
-* **virtualNetworkingSubnetId**:仮想ネットワーク サブネットの Resource Manager の完全修飾パス。たとえば、仮想ネットワークの既定のサブネットの場合は `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` です。
+* **namespaceName**: Service Bus 名前空間。
+* **virtualNetworkingSubnetId**: 仮想ネットワーク サブネットの Resource Manager の完全修飾パス。たとえば、仮想ネットワークの既定のサブネットの場合は `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` です。
 
 > [!NOTE]
 > 可能な拒否ルールはありませんが、Azure Resource Manager テンプレートには、接続を制限しない **"Allow"** に設定された既定のアクション セットがあります。
@@ -87,7 +101,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> から
 > ```json
 > "defaultAction": "Deny"
 > ```

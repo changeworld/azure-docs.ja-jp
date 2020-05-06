@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684911"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位を管理する

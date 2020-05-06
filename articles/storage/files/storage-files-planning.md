@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76a96d36387f55889b65f16ea1ca6ec07359c377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502439"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209487"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -36,8 +36,8 @@ Azure ファイル共有をストレージ アカウントにデプロイする�
 
 ## <a name="identity"></a>ID
 Azure ファイル共有にアクセスするには、ファイル共有のユーザーを認証し、共有へのアクセスを承認する必要があります。 これは、ファイル共有にアクセスするユーザーの ID に基づいて行われます。 Azure Files は、次の 3 つの主な ID プロバイダーと統合されています。
-- **顧客所有 Active Directory** (プレビュー):Azure ストレージ アカウントは、Windows Server ファイル サーバーや NAS デバイスと同様に、顧客所有の Windows Server Active Directory ドメインに参加させることができます。 Active Directory ドメイン コントローラーは、オンプレミスや Azure VM で、さらには別のクラウド プロバイダーの VM としてデプロイすることができます。Azure Files は、DC がホストされている場所に依存しません。 ストレージ アカウントがドメインに参加すると、エンド ユーザーは、PC にサインインしたユーザー アカウントを使用してファイル共有をマウントできます。 AD ベースの認証では、Kerberos 認証プロトコルが使用されます。
-- **Azure Active Directory Domain Services (Azure AD DS)** :Azure AD DS では、Azure リソースに使用できる Microsoft が管理する Active Directory ドメイン コントローラーが提供されます。 Azure AD DS ドメインにストレージ アカウントを参加させることで、顧客所有の Active Directory ドメインに参加させる場合と同様の利点が得られます。 このデプロイ オプションは、AD ベースのアクセス許可を必要とするアプリケーションのリフトアンドシフト シナリオに最も役立ちます。 Azure AD DS では AD ベースの認証が提供されるため、このオプションでも Kerberos 認証プロトコルが使用されます。
+- **オンプレミス Active Directory Domain Services (AD DS、またはオンプレミス AD DS)** (プレビュー):Azure ストレージ アカウントは、Windows Server ファイル サーバーや NAS デバイスと同様に、顧客所有の Active Directory Domain Services ドメインに参加させることができます。 ドメイン コントローラーは、Azure VM や、別のクラウド プロバイダーの VM としてもオンプレミスにデプロイできます。Azure Files は、ドメイン コントローラーがホストされている場所に依存しません。 ストレージ アカウントがドメインに参加すると、エンド ユーザーは、PC にサインインしたユーザー アカウントを使用してファイル共有をマウントできます。 AD ベースの認証では、Kerberos 認証プロトコルが使用されます。
+- **Azure Active Directory Domain Services (Azure AD DS)** :Azure AD DS では、Azure リソースに使用できる Microsoft が管理するドメイン コントローラーが提供されます。 Azure AD DS ドメインにストレージ アカウントを参加させることで、顧客所有の Active Directory ドメインに参加させる場合と同様の利点が得られます。 このデプロイ オプションは、AD ベースのアクセス許可を必要とするアプリケーションのリフトアンドシフト シナリオに最も役立ちます。 Azure AD DS では AD ベースの認証が提供されるため、このオプションでも Kerberos 認証プロトコルが使用されます。
 - **Azure ストレージ アカウント キー**:Azure ファイル共有は、Azure ストレージ アカウント キーを使用してマウントすることもできます。 この方法でファイル共有をマウントするために、ストレージ アカウント名がユーザー名として使用され、ストレージ アカウント キーがパスワードとして使用されます。 ストレージ アカウント キーを使用して Azure ファイル共有をマウントすることは、実質的には管理者の操作です。これは、マウントされたファイル共有には、ACL がある場合でも、共有上のすべてのファイルとフォルダーに対する完全なアクセス許可が付与されるためです。 ストレージ アカウント キーを使用して SMB 経由でマウントする場合は、NTLMv2 認証プロトコルが使用されます。
 
 オンプレミスのファイル サーバーから移行するか、あるいは Windows ファイル サーバーや NAS アプライアンスと同様に動作させることが目的の Azure Files で新しいファイル共有を作成するお客様の場合は、**顧客所有 Active Directory** ドメインにストレージ アカウントを参加させることをお勧めします。 顧客所有 Active Directory ドメインへのストレージ アカウントの参加の詳細については、[Azure Files Active Directory の概要](storage-files-active-directory-overview.md)に関するページを参照してください。
@@ -90,7 +90,7 @@ Azure ストレージ アカウントでの転送中の暗号化を無効にす�
     - Premium ファイル共有の場合、追加作業なしで最大 100 TiB のプロビジョニングが可能です。
     - 既定では、Standard ファイル共有は最大 5 TiB にのみまたがることができますが、"*大きいファイルの共有*" ストレージ アカウント機能フラグを選択することで、共有の制限を 100 TiB に増やすことができます。 ローカル冗長ストレージ アカウントまたはゾーン冗長ストレージ アカウントの場合、Standard ファイル共有は最大 100 TiB にのみまたがることができます。 ファイル共有サイズの増加の詳細については、「[大きなファイル共有の有効化と作成](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)」を参照してください。
 - **リージョン別の提供状況**
-    - Premium ファイル共有はすべてのリージョンで使用できるわけではありません。ゾーン冗長サポートは、リージョンの小さなサブセットで利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS がサポートされるリージョンを確認する場合は、[リージョン別の Azure 可用性ゾーンのサポート](../../availability-zones/az-overview.md#services-support-by-region)に関する記事を参照してください。 この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
+    - Premium ファイル共有はすべてのリージョンで使用できるわけではありません。ゾーン冗長サポートは、リージョンの小さなサブセットで利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS がサポートされるリージョンを確認する場合は、[リージョン別の Azure 可用性ゾーンのサポート](../../availability-zones/az-region.md)に関する記事を参照してください。 この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
     - Standard ファイル共有は、すべての Azure リージョンで使用できます。
 - Azure Kubernetes Service (AKS) では、バージョン 1.13 以降での Premium ファイル共有がサポートされています。
 
@@ -153,7 +153,7 @@ Premium ファイル共有は、最大 3 倍の IOPS をバーストできます
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Standard ファイル共有を最大 100 TiB にまたがることができるようにする
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>リージョン別の提供状況
+#### <a name="limitations"></a>制限事項
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="redundancy"></a>冗長性

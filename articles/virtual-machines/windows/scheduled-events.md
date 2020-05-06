@@ -1,25 +1,18 @@
 ---
 title: Azure の Windows VM のスケジュール化されたイベント
 description: Windows 仮想マシンでは Azure メタデータ サービスを使用してイベントがスケジュールされています。
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: 28d8e1f2-8e61-4fbe-bfe8-80a68443baba
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: c1e9ef8de65912c4f33e17ee2bb2175c76e7ea07
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258683"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099548"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 

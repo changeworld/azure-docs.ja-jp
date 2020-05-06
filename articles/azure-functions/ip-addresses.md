@@ -4,10 +4,10 @@ description: 関数アプリの着信 IP アドレスと送信 IP アドレス�
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656784"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
@@ -25,7 +25,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 各関数アプリには、1 つの着信 IP アドレスがあります。 この IP アドレスを確認するには、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 関数アプリに移動します。
 3. **[プラットフォーム機能]** を選択します。
 4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
@@ -78,7 +78,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 }
 ```
 
- このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、[[ダウンロード センター] ページ](https://www.microsoft.com/en-us/download/details.aspx?id=56519)の **[詳細]** セクションを展開してください。
+ このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、 **[ダウンロード センター] ページ**の[[詳細]](https://www.microsoft.com/en-us/download/details.aspx?id=56519) セクションを展開してください。
 
 ## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
 
@@ -115,7 +115,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
 4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。

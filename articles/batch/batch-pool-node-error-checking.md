@@ -1,18 +1,16 @@
 ---
-title: プールとノードのエラーのチェック - Azure Batch
+title: プールとノードのエラーのチェック
 description: この記事では、発生する可能性のあるバックグラウンド操作、およびプールとノードを作成するときにチェックするエラーとそれらを回避する方法について説明します。
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: a68d812a044c776819d169d5bf179f011d06390f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5051b9c536ded50e77fb75515c16daba884d5d24
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472947"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115909"
 ---
 # <a name="check-for-pool-and-node-errors"></a>プールとノードのエラーのチェック
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732623"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する

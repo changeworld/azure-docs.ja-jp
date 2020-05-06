@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768119"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する

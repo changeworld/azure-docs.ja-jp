@@ -1,5 +1,5 @@
 ---
-title: Azure App Configuration とは
+title: 'Azure App Configuration とは '
 description: Azure App Configuration サービスの概要。
 author: lisaguthrie
 ms.author: lcozzens
@@ -7,13 +7,13 @@ ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
 ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77523477"
 ---
-# <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは
+# <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは 
 
 Azure App Configuration は、アプリケーション設定と機能フラグを一元的に管理するためのサービスを提供します。 近年のプログラム、特にクラウドで実行されるプログラムは、その性質上、分散されたコンポーネントが多数存在するのが一般的です。 これらのコンポーネント全体に構成設定を分散させることは、トラブルシューティングすることの難しいエラーがアプリケーションのデプロイ中に発生する原因となります。 App Configuration を使用すると、アプリケーションのすべての設定を 1 か所に格納して、そのアクセスをセキュリティで保護することができます。
 

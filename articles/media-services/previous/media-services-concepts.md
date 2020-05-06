@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475249"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160224"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念 
 
@@ -111,7 +111,7 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 ## <a name="live-streaming"></a>ライブ ストリーミング
 Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはSmooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Live Encoder、[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision、および Tricaster エンコーダー。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはSmooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Live Encoder、[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision エンコーダー。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 * シングル ビットレートのストリーム (RTMP または Smooth Streaming (Fragmented MP4) のいずれかの形式) は、Media Services でのライブ エンコードの実行が有効になっているチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 ### <a name="channel"></a>チャネル
@@ -192,7 +192,7 @@ Media Services におけるコンテンツ配信ワークフローの手順の 1
 
 ユーザーにプログレッシブ ダウンロード URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、資産への基本パスが提供されます。 それに MP4 ファイルの名前を付加する必要があります。 次に例を示します。
 
-http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 ### <a name="streaming-urls"></a>ストリーミング URL
 コンテンツをクライアントにストリーミングします。 ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、ストリーミングするコンテンツが含まれているアセットの基本パスが提供されます。 ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。 ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターの Path の値とマニフェスト (filename.ism) ファイルの名前を連結する必要があります。 その後、/Manifest と適切な形式 (必要な場合) をロケーターのパスに付加します。

@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756745"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換

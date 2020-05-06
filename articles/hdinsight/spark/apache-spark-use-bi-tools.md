@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc
-ms.date: 03/02/2020
-ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,mvc,seoapr2020
+ms.date: 04/21/2020
+ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251950"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82195113"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル:HDInsight での Power BI を使用した Apache Spark データの分析
 
-このチュートリアルでは、[Microsoft Power BI](https://powerbi.microsoft.com/) を使用して [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) で Apache Spark クラスター内のデータを視覚化する方法を学習します。
+このチュートリアルでは、Microsoft Power BI を使用して Azure HDInsight で Apache Spark クラスター内のデータを視覚化する方法を学習します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -70,9 +70,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop でレポートを作成する
 
 Spark を操作する最初のステップでは、Power BI Desktop のクラスターに接続し、クラスターからデータを読み込み、そのデータを基に基本的な視覚エフェクトを作成します。
-
-> [!NOTE]  
-> この記事で説明するコネクタは、現在プレビューの段階です。 お客様のフィードバックを [Power BI コミュニティ](https://community.powerbi.com/) サイトや [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) を通じてお寄せください。
 
 1. Power BI Desktop を開きます。 起動のスプラッシュ画面が開いていれば閉じます。
 
@@ -180,7 +177,7 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、[Microsoft Power BI](https://powerbi.microsoft.com/) を使用して [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) で Apache Spark クラスター内のデータを視覚化する方法を学習しました。 次の記事に進み、Machine Learning アプリケーションを作成できることを確認します。
+このチュートリアルでは、Microsoft Power BI を使用して Azure HDInsight で Apache Spark クラスター内のデータを視覚化する方法を学習しました。 次の記事に進み、Machine Learning アプリケーションを作成できることを確認します。
 
 > [!div class="nextstepaction"]
 > [Machine Learning アプリケーションの作成](./apache-spark-ipython-notebook-machine-learning.md)

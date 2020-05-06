@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: 066b6d10dbe07b902abfd15565c5ccf1a5e9c115
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82083174"
 ---
 # <a name="co-locate-resource-for-improved-latency"></a>リソースの併置による待機時間の短縮

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: f89b28e7a3c29e45efa2796788e27325c01d7098
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759257"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI を使用して近接通信配置グループに VM をデプロイする

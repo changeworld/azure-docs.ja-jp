@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 04/22/2020
+ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117221"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184199"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
@@ -35,7 +35,7 @@ Spark 構造化ストリーミングは、Spark SQL を基盤とするストリ�
 
 * HDInsight の Spark での [Jupyter Notebook](https://jupyter.org/) の使用方法を熟知していること。 詳細については、[HDInsight の Apache Spark を使用したデータの読み込みとクエリの実行](spark/apache-spark-load-data-run-query.md)に関するドキュメントを参照してください。
 
-* [Scala](https://www.scala-lang.org/) プログラミング言語の知識があること。 このチュートリアルで使用するコードは、Scala で記述されています。
+* Scala プログラミング言語の知識があること。 このチュートリアルで使用するコードは、Scala で記述されています。
 
 * Kafka トピックの作成方法を熟知していること。 詳細については、[HDInsight の Apache Kafka のクイック スタート](kafka/apache-kafka-get-started.md)に関するドキュメントを参照してください。
 
@@ -140,7 +140,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
 2. 次の情報に従って、 **[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | --- | --- |
     | サブスクリプション | お使いの Azure サブスクリプション |
     | Resource group | リソースが含まれるリソース グループ。 |
@@ -277,7 +277,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     println("Schema declared")
     ```
 
-1. データを選択してストリーミングを開始します。 次のコマンドは、バッチ クエリを使用して Kafka からデータを取得してから、その結果を Spark クラスター上の HDFS に書き出す方法を示しています。 この例では、`select` が Kafka からメッセージ (値フィールド) を取得し、そのメッセージにスキーマを適用します。 その後、データは parquet 形式で HDFS (WASB または ADL) に書き込まれます。 次の Jupyter セルにコマンドを入力します。
+1. データを選択してストリーミングを開始します。 次のコマンドは、バッチ クエリを使用して Kafka からデータを取得する方法を示しています。 次に、Spark クラスター上の HDFS に結果を書き込みます。 この例では、`select` が Kafka からメッセージ (値フィールド) を取得し、そのメッセージにスキーマを適用します。 その後、データは parquet 形式で HDFS (WASB または ADL) に書き込まれます。 次の Jupyter セルにコマンドを入力します。
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
+このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスターも削除されます。 さらに、リソース グループに関連付けられている他のリソースも削除されます。
 
 Azure Portal を使用してリソース グループを削除するには:
 
@@ -331,7 +331,7 @@ Azure Portal を使用してリソース グループを削除するには:
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、[Apache Spark 構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)を使用して、HDInsight の [Apache Kafka](./kafka/apache-kafka-introduction.md) からデータを読み書きする方法を説明しました。 Kafka で [Apache Storm](./storm/apache-storm-overview.md) を使用する方法については、次のリンクを参照してください。
+このチュートリアルでは、Apache Spark 構造化ストリーミングを使用する方法を学習しました。 HDInsight 上の Apache Kafka との間でデータの書き込みと読み取りを行うには、 次のリンクを参照して、Kafka で Apache Storm を使用する方法を学習してください。
 
 > [!div class="nextstepaction"]
 > [Apache Kafka で Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)

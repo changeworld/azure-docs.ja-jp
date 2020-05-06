@@ -1,19 +1,19 @@
 ---
 title: Web ブラウザーを使用して Apache Hadoop クラスターを作成する - Azure HDInsight
-description: Web ブラウザーと Azure portal を使用して、Linux 上に HDInsight 用の Apache Hadoop、Apache HBase、Apache Storm、または Apache Spark クラスターを作成する方法について説明します。
+description: HDInsight 上での Apache Hadoop、Apache HBase、Apache Storm、または Apache Spark クラスターの作成について説明します。 Web ブラウザーと Azure portal を使用します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 02/19/2020
-ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623268"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192095"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
@@ -25,7 +25,7 @@ Azure Portal は、Microsoft Azure クラウドでホストされるサービス
 
 Azure Portal には、ほとんどのクラスターのプロパティが公開されます。 Azure Resource Manager テンプレートを使用すると、多くの詳細を非表示にできます。 詳しくは、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-clusters"></a>クラスターの作成
 
@@ -51,7 +51,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 |Resource group|ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** を選択します。|
 |クラスター名|グローバルに一意の名前を入力します。|
 |リージョン|ドロップダウン リストから、クラスターの作成先となるリージョンを選択します。|
-|クラスターの種類|**[クラスターの種類の選択]** を選択して一覧を開きます。 一覧から目的のクラスターの種類を選択します。 HDInsight クラスターにはさまざまな種類があります。 それぞれに対応するワークロードやテクノロジがあり、それに合わせてクラスターが調整されます。 複数の種類を組み合わせたクラスターを作成する方法はサポートされていません。|
+|クラスターの種類|**[クラスターの種類の選択]** をクリックして、一覧を開きます。 一覧から、目的のクラスターの種類を選択します。 HDInsight クラスターには、さまざまな種類があります。 それぞれに対応するワークロードやテクノロジがあり、それに合わせてクラスターが調整されます。 複数の種類を組み合わせたクラスターを作成する方法はサポートされていません。|
 |Version|ドロップダウン リストから**バージョン**を選択します。 どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。|
 |クラスター ログイン ユーザー名|ユーザー名を指定します。既定値は **admin** です。|
 |クラスター ログイン パスワード|パスワードを指定します。|
@@ -67,7 +67,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="primary-storage"></a>プライマリ ストレージ
 
-**[プライマリ ストレージの種類]** ドロップダウン リストから、既定のストレージの種類を選択します。 次に完了するフィールドは、選択内容によって異なります。 **Azure Storage** の場合:
+**[プライマリ ストレージの種類]** ドロップダウン リストから、既定のストレージの種類を選択します。 後で入力するフィールドは、選択内容によって異なります。 **Azure Storage** の場合:
 
 1. **[選択方法]** については、 **[一覧から選択する]** または **[アクセス キーを使用する]** を選択します。
     * **[一覧から選択する]** では、ドロップダウン リストからお使いの**プライマリ ストレージ アカウント**を選択するか、 **[新規作成]** を選択します。
@@ -94,7 +94,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 |プロパティ |説明 |
 |---|---|
 |Enterprise セキュリティ パッケージ|省略可能:**Enterprise セキュリティ パッケージ**を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
-|TLS|省略可能:ドロップダウン リストから TLS バージョンを選択します。 詳細については、「[トランスポート層セキュリティ](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)」を参照してください。|
+|TLS|省略可能:ドロップダウン リストから TLS バージョンを選択します。 詳細については、「[トランスポート層セキュリティ](./transport-layer-security.md)」を参照してください。|
 |仮想ネットワーク|省略可能:ドロップダウン リストから既存の仮想ネットワークとサブネットを選択します。 詳細については、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](hdinsight-plan-virtual-network-deployment.md)に関する記事を参照してください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。|
 |ディスク暗号化設定|省略可能:暗号化を使用するには、このチェックボックスをオンにします。 詳細については、「[お客様が管理するキー ディスクの暗号化](./disk-encryption.md)」を参照してください。|
 |Kafka REST プロキシ|この設定は、Kafka のクラスターの種類にのみ使用できます。 詳細については、[REST プロキシの使用](./kafka/rest-proxy.md)に関する記事を参照してください。|
@@ -141,11 +141,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 |SSH およびクラスターのログイン|SSH を使用してクラスターにアクセスするために必要な情報が提供されます。|
 |削除|HDInsight クラスターを削除します。|
 
-## <a name="customize-clusters"></a>クラスターのカスタマイズ
-
-* [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)
-* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
-
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
 「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](./hdinsight-delete-cluster.md)」を参照してください。
@@ -158,25 +153,6 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 HDInsight クラスターが正常に作成されました。 次に、クラスターを操作する方法を学習してください。
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
-
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
-
-### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
-
 * [HDInsight での Apache HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight での Apache HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
-
-### <a name="apache-storm-clusters"></a>Apache Storm クラスター
-
-* [HDInsight での Apache Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
-* [HDInsight の Apache Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
-* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](storm/apache-storm-deploy-monitor-topology-linux.md)
-
-### <a name="apache-spark-clusters"></a>Apache Spark クラスター
-
-* [Scala を使用してスタンドアロン アプリケーションを作成する](spark/apache-spark-create-standalone-application.md)
-* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用して対話型データ分析を実行する](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)

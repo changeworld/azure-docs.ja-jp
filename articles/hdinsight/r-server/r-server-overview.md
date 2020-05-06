@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 1dd716a279f7a09e7d9152ee34ff5c7bdac201dc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657034"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82188244"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
@@ -23,7 +23,7 @@ HDInsight の ML Services は、ほぼすべてのサイズのデータセット
 
 エッジ ノードは、クラスターに接続して R スクリプトを実行するのに便利な場所です。 エッジ ノードでは、サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce を使用して、クラスターのノード間でそれらを実行することもできます。 Apache Spark のコンピューティング コンテキストも使用できます。
 
-分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、Azure 内の他の場所で運用化することもできます。 具体的には、[Azure Machine Learning Studio (classic)](https://studio.azureml.net)、および [Web サービス](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)を使用します。
+分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、Azure 内の他の場所で運用化 (`operationalized`) することもできます。 具体的には、[Azure Machine Learning Studio (classic)](https://studio.azureml.net)、および [Web サービス](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)を使用します。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight での ML Services の概要
 
@@ -63,16 +63,16 @@ HDInsight の ML Services には次の機能が含まれます。
 | R 対応 | [R パッケージ](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference): R で記述されたソリューション用であり、R のオープンソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。 |
 | Python 対応 | [Python モジュール](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference): Python で記述されたソリューション用であり、Python のオープン ソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。
 | [事前トレーニング済みモデル](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | ビジュアル分析とテキストのセンチメント分析に対応し、ユーザーが提供するデータをスコア付けできる状態になっています。 |
-| [展開と使用](r-server-operationalize.md) | サーバーを運用化し、Web サービスとしてソリューションを展開します。 |
+| [展開と使用](r-server-operationalize.md) | サーバーを運用化 (`Operationalize`) し、Web サービスとしてソリューションを展開します。 |
 | [リモート実行](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | クライアント ワークステーションからネットワーク上の ML Services でリモート セッションを開始します。 |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのデータ ストレージ オプション
 
-HDFS ファイル システムの既定のストレージには、Azure Storage アカウントまたは Azure Data Lake Storage を指定できます。 分析中にクラスター ストレージにアップロードされたデータは永続的になります。 このデータは、クラスターの削除後も使用できます。 ストレージへのデータ転送は、さまざまなツールで処理できます。 このツールには、ストレージ アカウントのポータルベースのアップロード機能と [AzCopy](../../storage/common/storage-use-azcopy.md) ユーティリティが含まれます。
+HDFS ファイル システムの既定のストレージには、Azure Storage アカウントまたは Azure Data Lake Storage を指定できます。 分析中にクラスター ストレージにアップロードされたデータは永続的になります。 このデータは、クラスターの削除後も使用できます。 ストレージへのデータ転送は、さまざまなツールで処理できます。 このツールには、ストレージ アカウントのポータルベースのアップロード機能と AzCopy ユーティリティが含まれます。
 
 クラスターの作成中に、追加の BLOB および Data Lake Store へのアクセスを有効にできます。 使用しているプライマリ ストレージ オプションによって制限されることはありません。  複数のストレージ アカウントの使用について詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](./r-server-storage.md)に関する記事をご覧ください。
 
-エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files により、Azure Storage で作成されたファイル共有を Linux ファイル システムで有効にできます。 詳細については、[HDInsight の ML Services 向けの Azure Storage オプション](r-server-storage.md)に関する記事を参照してください。
+エッジ ノードで使用するストレージ オプションとして、Azure Files を使用することもできます。 Azure Files により、Azure Storage で作成されたファイル共有を Linux ファイル システムで有効にできます。 詳細については、[HDInsight の ML Services 向けの Azure Storage オプション](r-server-storage.md)に関する記事を参照してください。
 
 ## <a name="access-ml-services-edge-node"></a>ML Services エッジ ノードにアクセスする
 
@@ -82,9 +82,9 @@ HDFS ファイル システムの既定のストレージには、Azure Storage 
 
 R スクリプトでは、8000 個以上のオープンソース R パッケージのいずれも使用できます。 また、ScaleR ライブラリの並列化および分散化されたルーチンも使用できます。 エッジ ノード上で実行されるスクリプトは、そのノードの R インタープリター内で実行されます。 Map Reduce (RxHadoopMR) または Spark (RxSpark) のコンピューティング コンテキストで ScaleR 関数を呼び出すステップを除きます。 この関数は、データに関連付けられているデータ ノード全体で、分散された方法で実行されます。 コンテキスト オプションの詳細については、「[HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)」をご覧ください。
 
-## <a name="operationalize-a-model"></a>モデルの運用化
+## <a name="operationalize-a-model"></a>モデルを運用化 (`Operationalize`) する
 
-データ モデリングが完了したら、モデルを運用化して、Azure とオンプレミスの両方で新しいデータについての予測を行うことができます。 このプロセスはスコア付けと呼ばれます。 スコア付けは、HDInsight や Azure Machine Learning のほか、オンプレミスで行うことができます。
+データ モデリングが完了したら、モデルを運用化 (`operationalize`) して、Azure とオンプレミスの両方で新しいデータについての予測を行うことができます。 このプロセスはスコア付けと呼ばれます。 スコア付けは、HDInsight や Azure Machine Learning のほか、オンプレミスで行うことができます。
 
 ### <a name="score-in-hdinsight"></a>HDInsight でのスコア付け
 
@@ -96,7 +96,7 @@ Azure Machine Learning を使ってスコア付けを行うには、[AzureML](ht
 
 ### <a name="score-on-premises"></a>オンプレミスのスコア付け
 
-モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、ダウンロードし、逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「[HDInsight でのスコア付け](#score-in-hdinsight)」で前述した方法を使用するか、[Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
+モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、ダウンロードし、逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「HDInsight でのスコア付け」で前述した方法を使用するか、[Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
 
 ## <a name="maintain-the-cluster"></a>クラスターの管理
 
@@ -130,7 +130,7 @@ OS のメンテナンスは、HDInsight クラスター内の基礎となる Lin
 
 HDInsight クラスターの Linux エッジ ノードは、R ベースの分析のランディング ゾーンです。 HDInsight の最新バージョンには、エッジ ノードに RStudio Server のブラウザーベースの IDE が提供されています。 RStudio Server は、開発および実行用の R コンソールよりも生産性が高くなります。
 
-デスクトップ IDE は、リモート MapReduce または Spark コンピューティング コンテキストを介してクラスターにアクセスできます。 次のオプションがあります。Microsoft の [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio、Walware の Eclipse ベースの [StatET](http://www.walware.de/goto/statet)。
+デスクトップ IDE は、リモート MapReduce または Spark コンピューティング コンテキストを介してクラスターにアクセスできます。 次のオプションがあります。Microsoft の [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio、Walware の Eclipse ベースの StatET。
 
 コマンド プロンプトに **R** と入力して、エッジ ノードの R コンソールにアクセスします。 コンソールのインターフェイスを使用しているときは、テキスト エディターで R スクリプトを開発すると便利です。 次に、必要に応じてスクリプトのセクションを切り取って R コンソールに貼り付けます。
 

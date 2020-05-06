@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77621000"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要
@@ -21,7 +21,7 @@ Azure Functions を使用すると、アプリケーションのインフラス�
 
 数あるサービスを対象としたコードを直接記述することもできますが、バインドを使用すれば、他のサービスとの統合を効率化することができます。 バインディングにより、[Azure やサードパーティのさまざまなサービスに対して宣言型の手法でアクセス](./functions-triggers-bindings.md)することができます。
 
-## <a name="features"></a>機能
+## <a name="features"></a>特徴
 
 Azure Functions のいくつかの重要な機能を次に示します。
 

@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: e81cca3e20d5b6c050489e80b91d013d5e934cce
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349334"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81453201"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) での R および SQL データの処理
 
@@ -37,7 +38,7 @@ ms.locfileid: "80349334"
 
 - Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-- 以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services (R を使用) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
+- 以降の演習のサンプル コードを実行するには、あらかじめ、[Machine Learning Services (R を使用) が有効になった Azure SQL データベース](sql-database-machine-learning-services-overview.md)を用意しておく必要があります。
 
 - 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは SSMS を使用します。
 
@@ -71,7 +72,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 
 答えは通常、R の `str()` コマンドを使用すればわかります。 指定の R オブジェクトのデータ スキーマが情報メッセージとして返されるよう、R スクリプトの任意の場所に関数 `str(object_name)` を追加します。 このメッセージは SSMS の **[メッセージ]** タブで表示することができます。
 
-なぜ例 1 と例 2 の結果がこれほど異なるのかを理解するため、各ステートメントの `str(OutputDataSet)` 変数定義の最後に、行 `@script` を次のように挿入します。
+なぜ例 1 と例 2 の結果がこれほど異なるのかを理解するため、各ステートメントの `@script` 変数定義の最後に、行 `str(OutputDataSet)` を次のように挿入します。
 
 **str 関数が追加された例 1**
 
@@ -116,7 +117,7 @@ $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-ご覧のように、R 構文をわずかに変更するだけで結果のスキーマに大きな影響がありました。 すべての詳細については、 *"Advanced R" by Hadley Wickham*の「[Data Structures](http://adv-r.had.co.nz)」セクションで R データ型の相違点が詳細に説明されています。
+ご覧のように、R 構文をわずかに変更するだけで結果のスキーマに大きな影響がありました。 すべての詳細については、["Advanced R" by Hadley Wickham](http://adv-r.had.co.nz)の「*Data Structures*」セクションで R データ型の相違点が詳細に説明されています。
 
 現時点では、R オブジェクトをデータ フレームに強制変換するときは予想される結果を確認する必要がある、という点のみ注意してください。
 

@@ -2,13 +2,13 @@
 title: Azure Migrate プロジェクトの作成と管理
 description: Azure Migrate でプロジェクトを検索、作成、管理、および削除します。
 ms.topic: how-to
-ms.date: 02/17/2020
-ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232751"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81676392"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate プロジェクトの作成と管理
 
@@ -23,7 +23,7 @@ Azure Migrate を初めて設定するときは、プロジェクトを作成し
 
 Azure Migrate プロジェクトが既にあり、追加のプロジェクトを作成する場合は、次の手順を実行します。  
 
-1. [Azure portal](https://portal.azure.com) で **Azure Migrate** を検索します。
+1. [Azure パブリック ポータル](https://portal.azure.com)または [Azure Government](https://portal.azure.us) で、**Azure Migrate** を検索します。
 2. Azure Migrate ダッシュボードの **[サーバー]** で、右上隅の **[変更]** を選択します。
 
    ![Azure Migrate プロジェクトを変更する](./media/create-manage-projects/switch-project.png)

@@ -6,20 +6,20 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198600"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535589"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>内部ロード バランサー (ILB) エンドポイントでアプリケーション ゲートウェイを構成する
 
 Azure Application Gateway は、インターネットに接続する VIP のほか、インターネットに接続されていない内部エンドポイントを使用して構成できます。 内部エンドポイントは、フロントエンドのプライベート IP アドレスを使用します。これは、*内部ロードバランサー (ILB) エンドポイント* とも呼ばれます。
 
-フロントエンド プライベート IP アドレスを使用したゲートウェイの構成は、インターネットに接続されていない基幹業務アプリケーションで便利です。 また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または Secure Sockets Layer (SSL) ターミネーションが必要です。
+フロントエンド プライベート IP アドレスを使用したゲートウェイの構成は、インターネットに接続されていない基幹業務アプリケーションで便利です。 また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または トランスポート層セキュリティ (TLS) (旧称 Secure Sockets Layer (SSL)) 終端が必要です。
 
 この記事では、Azure portal からフロントエンド プライベート IP アドレスを使用してアプリケーション ゲートウェイを構成する手順について説明します。
 
@@ -95,8 +95,8 @@ Azure portal (<https://portal.azure.com>) にサインインする
    - **リソースグループ**に対して *[myResourceGroupAG]* を選択します。
    - *myVM* - **仮想マシン名**です。
    - **Image**に **[Windows Server 2019 Datacenter]** を選択します。
-   - *azureadmin* - **ユーザー名**です。
-   - *Azure123456!* **パスワード**用。
+   - 有効な**ユーザー名**。
+   - 有効な**パスワード**。
 5. 残りのデフォルトを受け入れて **[次へ:ディスク]** を選択します。
 6. デフォルトを受け入れて **[次へ:ネットワーク]** を選択します。
 7. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。

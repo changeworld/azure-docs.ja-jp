@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767019"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー

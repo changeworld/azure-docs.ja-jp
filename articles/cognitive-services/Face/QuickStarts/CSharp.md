@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure REST API と C# を使用して画像から顔を検出する
+title: 'クイック スタート: Azure REST API と C# を使って画像から顔を検出する'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と C# を使用して、画像から顔を検出します。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 69d3f1a7f0c455275a212401110459abb1b8d8d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403407"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート:Face REST API と C# を使用して画像から顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート: Face REST API と C# を使って画像から顔を検出する
 
 このクイック スタートでは、Azure Face REST API と C# を使用して、画像から人の顔を検出します。
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="include-namespaces"></a>名前空間を含める
 
-*Program.cs* ファイルの先頭に次の `using` ステートメントを追加します。
+`using`Program.cs*ファイルの先頭に次の* ステートメントを追加します。
 
 ```csharp
 using System;

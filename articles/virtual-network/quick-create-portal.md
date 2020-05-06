@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79214790"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート:Azure ポータルを使用した仮想ネットワークの作成
@@ -36,7 +36,7 @@ ms.locfileid: "79214790"
 
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -63,7 +63,7 @@ ms.locfileid: "79214790"
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -90,7 +90,7 @@ ms.locfileid: "79214790"
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値の **[myVirtualNetwork]** になります。 |
     | Subnet | 既定値の **[myVirtualSubnet (10.1.0.0/24)]** になります。 |
@@ -105,7 +105,7 @@ ms.locfileid: "79214790"
 
 1. **[ストレージ アカウントの作成]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「*myvmstorageaccount*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
     | アカウントの種類 | 既定値の **[Azure Storage General Purpose v1]** になります。 |

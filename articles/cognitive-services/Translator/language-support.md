@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81684826"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
@@ -100,7 +100,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |セルビア語 (キリル)|    `sr-Cyrl`|  統計|
 |セルビア語 (ラテン)|   `sr-Latn`       |統計|
 |スロバキア語|    `sk`    |   ニューラル|
-|スロベニア語| `sl`    |   ニューラル|
+|スロベニア語 | `sl`    |   ニューラル|
 |スペイン語|   `es`    |   ニューラル|
 |スウェーデン語|   `sv`    |ニューラル|
 |タヒチ語|  `ty`    |統計|
@@ -191,7 +191,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | ロシア語      | `ru`          |
 | セルビア語 (ラテン)      | `sr-Latn`          |
 | スロバキア語     | `sk`          |
-| スロベニア語      | `sl`          |
+| スロベニア語       | `sl`          |
 | スペイン語      | `es`          |
 | スウェーデン語      | `sv`          |
 | タミル語      | `ta`          |
@@ -258,7 +258,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | サモア語|   `sm`    |
 | セルビア語 (ラテン)      | `sr-Latn`          |
 | スロバキア語     | `sk`          |
-| スロベニア語      | `sl`          |
+| スロベニア語       | `sl`          |
 | スペイン語      | `es`          |
 | スウェーデン語      | `sv`          |
 | タイ語      | `th`          |

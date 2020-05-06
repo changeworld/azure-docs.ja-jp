@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bf8abb2d8ac6c1c9d2e03ef5e4f1edce530cbdb
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ddedc15b41b2b163f85f5443275daf9fbb56bac8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985764"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143027"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>Power BI アプリの [プランの設定] タブ
 
 >[!Important]
->2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://aka.ms/AzureCreatePBIServiceApp)に関するページの手順に従ってください。
+>2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)に関するページの手順に従ってください。
 
 サービス アプリの **[新しいプラン]** ページを開くと、最初に **[プランの設定]** タブが表示されます。このタブで、オファーの主要な識別子と名前を指定します。アスタリスク (*) は必須フィールドを示しています。
 

@@ -7,17 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, OpenShift, プライベート クラスター, Rad Hat
-ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399268"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204170"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Azure Red Hat OpenShift 3.11 を使用してプライベート クラスターを作成する
-
-> [!IMPORTANT]
-> 現在、Azure Red Hat OpenShift (ARO) プライベート クラスターは、米国東部 2 のプライベート プレビューでのみご利用いただけます。 プライベート プレビューの受け入れは招待によってのみ可能です。 この機能を有効にする前に、必ずサブスクリプションを登録してください。
 
 プライベート クラスターには、次のような利点があります。
 
@@ -25,9 +22,6 @@ ms.locfileid: "78399268"
 * プライベート クラスターの仮想ネットワークの構成は、お客様が行うことができます。これにより、ExpressRoute 環境など、他の仮想ネットワークとのピアリングが可能になるようにネットワークを設定できます。 また、仮想ネットワークにカスタム DNS を構成して、内部サービスと統合することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
-
-> [!NOTE]
-> この機能には、ARO HTTP API のバージョン 2019-10-27-preview が必要です。 これは、Azure CLI ではまだサポートされていません。
 
 次の構成スニペットのフィールドは新しいものであり、クラスター構成に含める必要があります。 `managementSubnetCidr` はクラスターの仮想ネットワーク内にある必要があり、クラスターを管理するために Azure によって使用されます。
 

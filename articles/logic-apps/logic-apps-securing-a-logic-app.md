@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
 ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870560"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護

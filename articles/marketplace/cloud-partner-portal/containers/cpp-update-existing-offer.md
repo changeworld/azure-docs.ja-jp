@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: cc378dcc1d5f777f4e81825e2f99dedd37a87f96
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271269"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143817"
 ---
 # <a name="update-an-existing-container-offer"></a>既存のコンテナー オファーを更新する
 
 > [!IMPORTANT]
-> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure Container オファーを作成する](https://aka.ms/CreateContainerOffer)」の手順に従って、移行されたオファーを管理します。
+> 2020 年 4 月 13 日以降、Azure Container オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターでオファーを作成および管理します。 「[Azure Container オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)」の手順に従って、移行されたオファーを管理します。
 
 この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)でコンテナー オファーを更新する際のさまざまな側面での手順を説明します。
 

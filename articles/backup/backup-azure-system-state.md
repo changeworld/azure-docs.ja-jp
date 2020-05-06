@@ -4,12 +4,12 @@ description: Windows Server コンピューターまたは Windows コンピュ�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "76294016"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128153"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows のシステム状態を Resource Manager デプロイメントにバックアップする
 
@@ -224,10 +224,10 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 ## <a name="questions"></a>疑問がある場合
 
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](https://aka.ms/azurebackup_feedback)。
+ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](https://feedback.azure.com/forums/258995-azure-backup)。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Windows コンピューターのバックアップ](backup-configure-vault.md)の詳細を参照してください。
+* [Windows コンピューターのバックアップ](backup-windows-with-mars-agent.md)の詳細を参照してください。
 * Windows Server のシステム状態をバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 * バックアップを復元する必要がある場合は、 [Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。

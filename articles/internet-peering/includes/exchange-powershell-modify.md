@@ -8,23 +8,23 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 86e1a9cce1864ce259fe07b6949be2e32be242a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773702"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678656"
 ---
-Exchange ピアリングでは、次の変更操作がサポートされています
-1. Exchange ピアリング接続を追加する
-1. Exchange ピアリング接続を削除する
-1. アクティブな接続で IPv4/IPv6 セッションを追加します。
-1. アクティブな接続で IPv4/IPv6 セッションを削除します。
+Exchange ピアリングでは、次の変更操作がサポートされています。
+* Exchange ピアリング接続を追加する。
+* Exchange ピアリング接続を削除する。
+* アクティブな接続で IPv4 または IPv6 セッションを追加する。
+* アクティブな接続の IPv4 または IPv6 セッションを削除する。
 
 
 ### <a name="add-exchange-peering-connections"></a>Exchange ピアリング接続を追加する
 
-次の例では、既存の Exchange ピアリングに接続を追加する方法について説明します
+次の例では、既存の Exchange ピアリングへの接続を追加する方法について説明します。
 
 ```powershell
 
@@ -45,7 +45,7 @@ $exchangePeering | Update-AzPeering
 
 ### <a name="remove-exchange-peering-connections"></a>Exchange ピアリング接続を削除する
 
-次の例では、既存の Exchange ピアリングに接続を削除する方法について説明します
+次の例では、既存の Exchange ピアリングへの接続を削除する方法について説明します。
 
 ```powershell
 
@@ -85,7 +85,7 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>アクティブな接続の IPv4/IPv6 セッションを追加する
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>アクティブな接続で IPv4 または IPv6 セッションを追加する
 
 次の例では、既存の Exchange 接続に IPv6 セッションを追加する方法について説明します。
 
@@ -99,6 +99,6 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>アクティブな接続の IPv4/IPv6 セッションを削除する
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>アクティブな接続の IPv4 または IPv6 セッションを削除する
 
-PowerShell では、既存の接続から IPv4/IPv6 セッションを削除することは現在サポートされていません。 [Microsoft ピアリング](mailto:peeringexperience@microsoft.com)にお問い合わせください。
+PowerShell では、既存の接続から IPv4 または IPv6 セッションを削除することは現在サポートされていません。 詳細については、[Microsoft ピアリング](mailto:peeringexperience@microsoft.com)にお問い合わせください。

@@ -9,10 +9,10 @@ manager: gwallace
 description: Azure DevOps と Azure Dev Spaces を使用して、継続的インテグレーション/継続的配置を設定する方法について学習します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685630"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する

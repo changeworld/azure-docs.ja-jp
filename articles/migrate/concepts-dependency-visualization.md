@@ -4,10 +4,10 @@ description: Azure Migrate Server Assessment を使用して、評価のため�
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024763"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析

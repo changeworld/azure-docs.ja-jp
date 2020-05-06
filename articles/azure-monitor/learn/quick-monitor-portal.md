@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 3775070320b8c6e96dd06031bd87ea53f37046c5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78894851"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82142633"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web アプリケーションの監視を開始する
 
@@ -100,10 +100,6 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 ```
 
 詳細については、GitHub リポジトリにアクセスして、Microsoft の[オープンソース JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) をご覧ください。
-
-## <a name="video"></a>ビデオ
-
-* [.NET アプリケーションを使って最初から Application Insights を構成する](https://www.youtube.com/watch?v=blnGAVgMAfA)ステップ バイ ステップの外部ビデオ。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。

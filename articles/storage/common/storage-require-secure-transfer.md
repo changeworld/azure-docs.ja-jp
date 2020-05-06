@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870529"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する

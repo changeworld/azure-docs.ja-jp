@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986216"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450353"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィードの設計パターン
 

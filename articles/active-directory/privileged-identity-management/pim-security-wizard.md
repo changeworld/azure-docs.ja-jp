@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9f12b2b31da4c7fe67eef9674d96b517d4e2bfa
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81867748"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロール セキュリティ ウィザード

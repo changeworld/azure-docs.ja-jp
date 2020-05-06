@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288718"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687498"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>仮想マシンのオファー発行ガイド
 
@@ -53,7 +53,7 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 | 要件 | 詳細 |  
 |:--- |:--- | 
 | 請求/メータリング | 対象の VM は、BYOL または従量課金制の月額請求をサポートしている必要があります。 |  
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 <ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」を参照してください。</li> </ul> |  
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 <ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./partner-center-portal/azure-vm-create-offer.md)」を参照してください。</li> </ul> |  
 
 >[!Note]
 >クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
@@ -62,9 +62,9 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 
 まだ行っていない場合は、 
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
+- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
-- 詳細については、「[仮想マシン サイズ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer)」を参照してください。
+- [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
+- 詳細については、「[仮想マシン オファーを作成する](./partner-center-portal/azure-vm-create-offer.md)」を参照してください。

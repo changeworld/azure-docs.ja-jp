@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
 ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461355"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
