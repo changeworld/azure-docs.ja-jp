@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/23/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239203"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184981"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する (プレビュー)
 
@@ -48,13 +48,12 @@ Azure Resource Manager (ARM) テンプレートでデプロイ スクリプト�
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  次の PowerShell スクリプトを使用して、リソース グループ名と ID 名を指定することで ID を取得します。
+  次の CLI スクリプトを使用して、リソース グループ名と ID 名を指定することで ID を取得します。
 
-  ```azurepowershell-interactive
-  $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
-  $idName = Read-Host -Prompt "Enter the name of the managed identity"
-
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  az identity list -g $resourceGroupName
   ```
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
@@ -285,35 +284,43 @@ Azure Resource Manager (ARM) テンプレートでデプロイ スクリプト�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Cloud Shell を開いてテンプレート ファイルをそのシェルにアップロードするには、Visual Studio Code のクイックスタートの「[テンプレートのデプロイ](./quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)」セクションを参照してください。 その後、次の PowerShell スクリプトを実行します。
+1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
-$identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
+1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
 
-$adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
-$resourceGroupName = "${projectName}rg"
-$keyVaultName = "${projectName}kv"
+    ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。  前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
+1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
 
-Write-Host "Press [ENTER] to continue ..."
-```
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
+    $identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
-デプロイ スクリプト サービスでは、スクリプトの実行用に追加のデプロイ スクリプト リソースを作成する必要があります。 実際のスクリプトの実行時間に加えて、準備とクリーンアップ プロセスが完了するまでに最大で 1 分かかることがあります。
+    $adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
+    $resourceGroupName = "${projectName}rg"
+    $keyVaultName = "${projectName}kv"
 
-スクリプトで無効なコマンド **Write-Output1** が使用されているため、デプロイが失敗します。 次のようなエラーが表示されます。
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-```error
-The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
-program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
-```
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
 
-デプロイ スクリプトの実行結果は、トラブルシューティングの目的でデプロイ スクリプト リソースに格納されます。
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    デプロイ スクリプト サービスでは、スクリプトの実行用に追加のデプロイ スクリプト リソースを作成する必要があります。 実際のスクリプトの実行時間に加えて、準備とクリーンアップ プロセスが完了するまでに最大で 1 分かかることがあります。
+
+    スクリプトで無効なコマンド **Write-Output1** が使用されているため、デプロイが失敗します。 次のようなエラーが表示されます。
+
+    ```error
+    The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
+    program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
+    ```
+
+    デプロイ スクリプトの実行結果は、トラブルシューティングの目的でデプロイ スクリプト リソースに格納されます。
 
 ## <a name="debug-the-failed-script"></a>失敗したスクリプトをデバッグする
 

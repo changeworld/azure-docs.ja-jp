@@ -5,19 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a55653c0f23be594fe65e7a322c11edc37ee1ce6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc60d1266f4aad4c337611f0fa32fe8293744559
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67181137"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792277"
 ---
-## <a name="shared-image-management"></a>共有イメージの管理 
-
-ここでは、一般的な管理タスクの例を示すと共に、PowerShell を使用してそれらを遂行する方法について説明します。
+## <a name="list-information"></a>リストの情報
 
 すべてのギャラリーを名前別に一覧表示します。
 

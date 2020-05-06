@@ -2,14 +2,14 @@
 title: クイック スタート:SDK を使用して学習ループを作成および使用する - Personalizer
 description: このクイックスタートでは、クライアント SDK を使用してナレッジ ベースを作成および管理する方法について説明します。
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 7ebe22227b4323b2e6b1c3fc9ca31e171d1d97cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c65be6c68372ffe92ffd942bf71d2b635ec2fd16
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77524871"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188870"
 ---
 # <a name="quickstart-personalizer-client-library"></a>クイック スタート:Personalizer クライアント ライブラリ
 
@@ -17,7 +17,7 @@ Personalizer サービスを使用するこのクイックスタートでパー�
 
 Personalizer クライアント ライブラリの概要 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 
- * Rank API - コンテンツとコンテキストに関して指定したリアルタイム情報に基づき、最も適切な項目をコンテンツ項目から選択します。
+ * Rank API - コンテンツとコンテキストに関して指定したリアルタイム情報に基づき、最も適切な項目をアクションから選択します。
  * Reward API - ビジネス ニーズに基づいて報酬スコアを決定し、この API を使用してこれを Personalizer に送信します。 このスコアは、適切な場合は 1、不適切な場合は 0 というように 1 つの値にすることができます。また、ビジネス ニーズに基づいてアルゴリズムを作成することもできます。
 
 ::: zone pivot="programming-language-csharp"

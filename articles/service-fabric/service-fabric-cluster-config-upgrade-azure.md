@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 476a2d910b916ea29132b108478d06f756454813
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75463291"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793076"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure でクラスターの構成をアップグレードする 
 
@@ -53,4 +53,4 @@ Azure Resource Manager を使用して次の方法のいずれかでクラスタ
 
 ## <a name="next-steps"></a>次のステップ
 * [Service Fabric クラスターの設定](service-fabric-cluster-fabric-settings.md)について学習します。
-* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)を行う方法を学習します。
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-in-out.md)を行う方法を学習します。

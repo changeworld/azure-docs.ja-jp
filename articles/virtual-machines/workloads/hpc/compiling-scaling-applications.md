@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67707837"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594799"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
 
@@ -37,7 +37,7 @@ Clang は、前処理、解析、最適化、コード生成、アセンブリ�
 
 ### <a name="flang"></a>FLANG
 
-FLANG コンパイラは、AOCC スイートに最近追加された (2018 年 4 月に追加された) ものであり、現在は開発者がダウンロードしてテストするためのプレリリース段階です。 AMD では Fortran 2008 に基づいて GitHub バージョンの FLANG (https://github.com/flangcompiler/flang) ) が拡張されます。 FLANG コンパイラは、すべての Clang コンパイラ オプションとその他の FLANG 固有のコンパイラ オプションをサポートしています。
+FLANG コンパイラは、AOCC スイートに最近追加された (2018 年 4 月に追加された) ものであり、現在は開発者がダウンロードしてテストするためのプレリリース段階です。 AMD では Fortran 2008 に基づいて GitHub バージョンの FLANG (https://github.com/flang-compiler/flang) ) が拡張されます。 FLANG コンパイラは、すべての Clang コンパイラ オプションとその他の FLANG 固有のコンパイラ オプションをサポートしています。
 
 ### <a name="dragonegg"></a>DragonEgg
 

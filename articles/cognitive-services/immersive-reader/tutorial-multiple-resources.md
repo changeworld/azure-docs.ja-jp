@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:複数の Immersive Reader リソースを統合する
+title: チュートリアル:複数のイマーシブ リーダー リソースを統合する
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、複数の Immersive Reader リソースを使用して、Immersive Reader を起動する Node.js アプリケーションを作成します。
+description: このチュートリアルでは、複数のイマーシブ リーダー リソースを使用して、イマーシブ リーダーを起動する Node.js アプリケーションを作成します。
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -9,30 +9,30 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76046477"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195623"
 ---
-# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>チュートリアル:複数の Immersive Reader リソースを統合する
+# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>チュートリアル:複数のイマーシブ リーダー リソースを統合する
 
-[概要](./overview.md)に関するページでは、Immersive Reader の機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 [Node.js のクイックスタート](./quickstart-nodejs.md)では、単一のリソースで Immersive Reader を使用する方法について説明しました。 このチュートリアルでは、複数の Immersive Reader リソースを同じアプリケーションに統合する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
+[概要](./overview.md)に関するページでは、イマーシブ リーダーの機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 [Node.js のクイックスタート](./quickstart-nodejs.md)では、単一のリソースでイマーシブ リーダーを使用する方法について説明しました。 このチュートリアルでは、複数のイマーシブ リーダー リソースを同じアプリケーションに統合する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * 既存のリソース グループの下に複数の Immersive Reader リソースを作成する
-> * 複数のリソースを使用して Immersive Reader を起動する
+> * 既存のリソース グループの下に複数のイマーシブ リーダー リソースを作成する
+> * 複数のリソースを使用してイマーシブ リーダーを起動する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [クイックスタート](./quickstart-nodejs.md)に従い、NodeJS を使用して Immersive Reader を起動する Web アプリを作成します。 クイックスタートでは、1 つの Immersive Reader リソースを構成します。 このチュートリアルでは、それをベースにして構築を行います。
+* [クイックスタート](./quickstart-nodejs.md)に従い、NodeJS を使用してイマーシブ リーダーを起動する Web アプリを作成します。 クイックスタートでは、1 つのイマーシブ リーダー リソースを構成します。 このチュートリアルでは、それをベースにして構築を行います。
 
-## <a name="create-the-immersive-reader-resources"></a>Immersive Reader リソースを作成する
+## <a name="create-the-immersive-reader-resources"></a>イマーシブ リーダー リソースを作成する
 
-[こちらの手順](./how-to-create-immersive-reader.md)に従って、各 Immersive Reader リソースを作成します。 **Create-ImmersiveReaderResource** スクリプトには、`ResourceName`、`ResourceSubdomain`、および `ResourceLocation` がパラメーターとして含まれています。 これらは、作成するリソースごとに一意である必要があります。 残りのパラメーターは、最初の Immersive Reader リソースを設定したときに使用したものと同じにする必要があります。 これにより、各リソースを同じ Azure リソース グループおよび Azure AD アプリケーションにリンクすることができます。
+[こちらの手順](./how-to-create-immersive-reader.md)に従って、各イマーシブ リーダー リソースを作成します。 **Create-ImmersiveReaderResource** スクリプトには、`ResourceName`、`ResourceSubdomain`、および `ResourceLocation` がパラメーターとして含まれています。 これらは、作成するリソースごとに一意である必要があります。 残りのパラメーターは、最初のイマーシブ リーダー リソースを設定したときに使用したものと同じにする必要があります。 これにより、各リソースを同じ Azure リソース グループおよび Azure AD アプリケーションにリンクすることができます。
 
 次の例は、2 つのリソースを作成する方法を示しています。1 つは WestUS に、もう 1 つは EastUS に作成されます。 `ResourceName`、`ResourceSubdomain`、および `ResourceLocation` には一意の値を指定する点に注意してください。
 
@@ -143,11 +143,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-**getimmersivereaderlaunchparams** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用の Immersive Reader サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
+**getimmersivereaderlaunchparams** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用のイマーシブ リーダー サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Immersive Reader を起動してサンプル コンテンツを表示する
+## <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
-1. _views\index.pug_ を開いて、その内容を次のコードに置き換えます。 このコードによって、ページにサンプル コンテンツが表示され、Immersive Reader を起動する 2 つのボタンが追加されます。 1 つは EastUS リソースの Immersive Reader を起動するためのもので、もう 1 つは WestUS リソース用です。
+1. _views\index.pug_ を開いて、その内容を次のコードに置き換えます。 このコードによって、ページにサンプル コンテンツが表示され、イマーシブ リーダーを起動する 2 つのボタンが追加されます。 1 つは EastUS リソースのイマーシブ リーダーを起動するためのもので、もう 1 つは WestUS リソース用です。
 
     ```pug
     doctype html
@@ -258,7 +258,7 @@ module.exports = router;
     npm start
     ```
 
-4. ブラウザーを開き、[http://localhost:3000](http://localhost:3000) に移動します。 ページに上記のコンテンツが表示されます。 **EastUS Immersive Reader** ボタンまたは **WestUS Immersive Reader** ボタンをクリックし、それぞれのリソースを使用してイマーシ ブリーダーを起動します。
+4. ブラウザーを開き、`http://localhost:3000` に移動します。 ページに上記のコンテンツが表示されます。 **[EastUS Immersive Reader]\(EastUS イマーシブ リーダー\)** ボタンまたは **[WestUS Immersive Reader]\(WestUS イマーシブ リーダー\)** ボタンをクリックし、それぞれのリソースを使用してイマーシ ブリーダーを起動します。
 
 ## <a name="next-steps"></a>次のステップ
 

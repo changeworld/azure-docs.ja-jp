@@ -1,27 +1,31 @@
 ---
-title: Azure のサインアップのトラブルシューティング
+title: Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 description: Microsoft Azure portal アカウント センターで新しいアカウントにサインアップしようとしたときに発生する問題を解決します。
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409454"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133179"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>Azure のサインアップのトラブルシューティング
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
 Microsoft Azure portal または Azure アカウント センターで新しいアカウントにサインアップしようとすると、問題が発生する場合があります。 問題のトラブルシューティングを行う前に、まず次のことを確認してください。
 
 - Azure アカウント プロファイルに指定した情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
 - クレジット カード情報が正しいこと。
 - 同じ情報を持つ既存の Microsoft アカウントをがないこと。
+
+> [!NOTE]
+> 既にアカウントがあって、サインインの問題をトラブルシューティングするためのガイダンスをお探しの場合は、「[Azure サブスクリプションのサインインに関する問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)」を参照してください。
 
 ## <a name="resolutions"></a>解決策
 
@@ -110,7 +114,7 @@ Azure イン オープン プランのサブスクリプションを作成する
 
 - Azure アカウント プロファイルに指定した情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
 - クレジット カード情報が正しいこと。
-- 同じ情報を使用する既存の Microsoft アカウントをがないこと。
+- 同じ情報を使用する既存の Microsoft アカウントがないこと。
 
 ### <a name="error-your-current-account-type-is-not-supported"></a>エラー:"*現在のアカウントの種類はサポートされていません*"
 

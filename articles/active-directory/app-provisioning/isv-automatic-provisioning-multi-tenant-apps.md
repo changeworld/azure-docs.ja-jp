@@ -2,25 +2,21 @@
 title: マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする - Azure AD
 description: 自動プロビジョニングを有効にするための独立系ソフトウェア ベンダー向けのガイド
 services: active-directory
-documentationcenter: azure
 author: BarbaraSelden
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
-ms.collection: active-directory
-ms.openlocfilehash: 93e1d879f69a95fe7472ce530e0e9f38f3480f39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3713b7a191c5c7c90e0e76bde25d1b1b3bf3700b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77522395"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593592"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
 

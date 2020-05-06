@@ -12,12 +12,12 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 11/04/2019
-  ms.openlocfilehash: 61cda4ccab69396c13581598f399104b0a4fb181
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
+  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73570113"
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82562357"
 landingContent:
 - title: Azure Stack Edge と Data Box Gateway について
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
     - text: Data Box Gateway とは
       url: data-box-gateway-overview.md
     - text: Azure Stack Edge とは
-      url: data-box-edge-overview.md
+      url: azure-stack-edge-overview.md
   - linkListType: architecture
     links:
     - text: Azure のデータ転送オプションの選択
@@ -44,11 +44,11 @@ landingContent:
     - text: Data Box Gateway の要件
       url: data-box-gateway-system-requirements.md
     - text: Azure Stack Edge の要件
-      url: data-box-edge-system-requirements.md
+      url: azure-stack-edge-system-requirements.md
     - text: Data Box Gateway の制限
       url: data-box-gateway-limits.md
     - text: Azure Stack Edge の制限
-      url: data-box-edge-limits.md
+      url: azure-stack-edge-limits.md
 - title: 配置
   linkLists:
   - linkListType: tutorial
@@ -56,13 +56,13 @@ landingContent:
     - text: Data Box Gateway
       url: data-box-gateway-deploy-prep.md
     - text: Azure Stack Edge
-      url: data-box-edge-deploy-prep.md
+      url: azure-stack-edge-deploy-prep.md
 - title: 開発
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: C# Edge コンピューティング モジュール
-      url: data-box-edge-create-iot-edge-module.md
+      url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
     - text: サンプル - Azure Stack Edge 向けの C#
@@ -74,11 +74,11 @@ landingContent:
     - text: Data Box Gateway の共有
       url: data-box-gateway-manage-shares.md
     - text: Azure Stack Edge の共有
-      url: data-box-edge-manage-shares.md
+      url: azure-stack-edge-manage-shares.md
     - text: Edge コンピューティング
-      url: data-box-edge-manage-compute.md
+      url: azure-stack-edge-manage-compute.md
     - text: Edge コンピューティングのネットワーク
-      url: data-box-edge-extend-compute-access-modules.md
+      url: azure-stack-edge-extend-compute-access-modules.md
 - title: '[トラブルシューティング]'
   linkLists:
   - linkListType: how-to-guide
@@ -86,10 +86,10 @@ landingContent:
     - text: Data Box Gateway
       url: data-box-gateway-troubleshoot.md
     - text: Azure Stack Edge
-      url: data-box-edge-troubleshoot.md
+      url: azure-stack-edge-troubleshoot.md
     - text: Edge コンピューティング モジュール
-      url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
+      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
     - text: Azure Stack Edge の返却または交換
-      url: data-box-edge-return-device.md
+      url: azure-stack-edge-return-device.md
     - text: サポート チケットを開く
-      url: data-box-edge-contact-microsoft-support.md
+      url: azure-stack-edge-contact-microsoft-support.md

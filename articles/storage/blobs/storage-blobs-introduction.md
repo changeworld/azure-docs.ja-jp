@@ -1,5 +1,6 @@
 ---
-title: Blob (オブジェクト) Storage の概要 - Azure Storage
+title: Blob (オブジェクト) Storage の概要
+titleSuffix: Azure Storage
 description: Azure Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納します。 Azure Blob Storage は、高度にスケーラブルな高可用性のストレージです。 クライアントは、PowerShell または Azure CLI から Azure Storage クライアント ライブラリまたは REST を使用して、Blob Storage 内のデータ オブジェクトにプログラムによってアクセスできます。
 services: storage
 author: tamram
@@ -8,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f7d1967c8a9585fbf5131da986595761030f0e5f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631991"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82176671"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
