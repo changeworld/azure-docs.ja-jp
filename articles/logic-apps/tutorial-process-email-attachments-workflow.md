@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 332be9cb0f31119e7d2f2d9fe2d3dc1f73e6d3ab
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77662748"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146721"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -42,6 +42,9 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
   このロジック アプリでは、Office 365 Outlook アカウントを使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
+  > [!IMPORTANT]
+  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+
 * [無料の Microsoft Azure Storage Explorer](https://storageexplorer.com/) のダウンロードとインストール。 ストレージ コンテナーが正しく設定されているかどうかをこのツールでチェックすることができます。
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
@@ -54,7 +57,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の[ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
 
-   | 設定 | Value | 説明 |
+   | 設定 | 値 | 説明 |
    |---------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |  
    | **リソース グループ** | <*Azure-resource-group*> | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 この例では、"LA-Tutorial-RG" を使用します。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 |
@@ -68,7 +71,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    **[詳細]** タブで、次の設定を選択します。
 
-   | 設定 | Value | 説明 |
+   | 設定 | 値 | 説明 |
    |---------|-------|-------------|
    | **安全な転送が必須** | 無効 | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 |
    ||||
@@ -138,7 +141,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. 関数を作成する前に、次の設定で[関数アプリを作成](../azure-functions/functions-create-function-app-portal.md)します。
 
-   | 設定 | Value | 説明 |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **アプリ名** | <*関数アプリの名前*> | 関数アプリの名前。Azure 全体で一意である必要があります。 この例では既に "CleanTextFunctionApp" が使用されているため、別の名前 (たとえば "MyCleanTextFunctionApp-<*your-name*>") を付けます |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション |
@@ -235,7 +238,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | 設定 | Value | 説明 |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション |
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
@@ -274,7 +277,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![メールをチェックするフォルダー、間隔、頻度を指定](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | 設定 | Value | 説明 |
+      | 設定 | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **フォルダー** | Inbox | チェックするメール フォルダー |
       | **添付ファイルあり** | はい | ファイルが添付されているメールのみ取得します。 <p>**注:** このトリガーは、お使いのアカウントからメールを削除することはありません。新着メッセージだけをチェックし、件名フィルターに一致するメールだけを処理します。 |
@@ -287,7 +290,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    1. このアクションで **[件名フィルター]** ボックスが表示されたら、次に示す件名を指定します。
 
-      | 設定 | Value | 説明 |
+      | 設定 | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **件名フィルター** | `Business Analyst 2 #423501` | メールの件名から探すテキスト |
       ||||
@@ -436,7 +439,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![ストレージ アカウントへの接続を作成](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | 設定 | Value | 説明 |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **Connection Name** | AttachmentStorageConnection | 接続の名前。わかりやすい名前を付けます。 |
    | **ストレージ アカウント** | attachmentstorageacct | 添付ファイルの保存用に作成しておいたストレージ アカウントの名前 |
@@ -448,7 +451,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![メールの本文に使う BLOB 情報の指定](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | 設定 | Value | 説明 |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **フォルダー パス** | /attachments | あらかじめ作成しておいたコンテナーのパスと名前。 この例では、フォルダー アイコンをクリックし、"/attachments" コンテナーを選択します。 |
    | **BLOB 名** | **[差出人]** フィールド | この例では、BLOB の名前として送信者の名前を使用します。 このボックス内をクリックして動的コンテンツ リストを表示し、 **[新しい電子メールが届いたとき]** アクションの **[From]** フィールドを選択します。 |
@@ -533,7 +536,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![BLOB 情報の指定](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | 設定 | Value | 説明 |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **フォルダー パス** | /attachments | あらかじめ作成しておいたコンテナーのパスと名前。 この例では、フォルダー アイコンをクリックし、"/attachments" コンテナーを選択します。 |
    | **BLOB 名** | **[名前]** フィールド | この例では、BLOB の名前として添付ファイルの名前を使用します。 このボックス内をクリックして動的コンテンツ リストを表示し、 **[新しい電子メールが届いたとき]** アクションの **[Name]** フィールドを選択します。 |
@@ -598,7 +601,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    動的コンテンツ リストで必要なフィールドが見つからない場合は、 **[新しい電子メールが届いたとき]** の横の **[See more]\(詳細表示\)** を選択します。
 
-   | 設定 | Value | Notes |
+   | 設定 | 値 | Notes |
    | ------- | ----- | ----- |
    | **To** | <*recipient-email-address*> | テスト目的で自分の電子メール アドレスを使用できます。 |
    | **件名**  | ```ASAP - Review applicant for position:``` **件名** | メールに付ける件名。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから **[新しい電子メールが届いたとき]** の **[Subject]** フィールドを選択します。 |

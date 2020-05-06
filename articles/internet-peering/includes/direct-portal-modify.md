@@ -8,38 +8,40 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d9ff01cf0180dae7f75d9753ba889d0caddad937
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773986"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81681052"
 ---
 このセクションでは、Direct ピアリングで次の変更操作を実行する方法について説明します。
 
 ### <a name="add-direct-peering-connections"></a>Direct ピアリング接続を追加する
-1. 上部にある **[+ Add connections]\ (+ 接続の追加\)** ボタンをクリックし、新しいピアリング接続を構成します。
+1. **[+ Add connections]\(+ 接続の追加\)** ボタンを選択し、新しいピアリング接続を構成します。
     > [!div class="mx-imgBorder"]
     > ![ピアリング リソース ビュー](../media/setup-direct-modify-addconnection.png)
-1. **[Direct peering Connection]\(Direct ピアリング接続\)** フォームに入力して、 **[保存]** をクリックします。 ピアリング接続の構成の詳細については、上記の Direct ピアリングを作成およびプロビジョニングする方法に関するセクションで手順を確認してください。
+
+1. **[Direct peering Connection]\(Direct ピアリング接続\)** フォームに入力して、 **[保存]** を選択します。 ピアリング接続の構成のヘルプについては、「Direct ピアリングを作成およびプロビジョニングする」セクションの手順を確認してください。
     > [!div class="mx-imgBorder"]
-    > ![ピアリング リソース ビュー](../media/setup-direct-modify-savenewconnection.png)
+    > ![[Direct Peering Connection]\(Direct ピアリング接続\) フォーム](../media/setup-direct-modify-savenewconnection.png)
 
 ### <a name="remove-direct-peering-connections"></a>Direct ピアリング接続を削除する
 
-接続の削除は、現在ポータルではサポートされていません。 [Microsoft ピアリング](mailto:peeringexperience@microsoft.com)にお問い合わせください。
+接続の削除は、現在 Azure portal ではサポートされていません。 詳細については、[Microsoft ピアリング](mailto:peeringexperience@microsoft.com)にお問い合わせください。
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>アクティブな接続で帯域幅をアップグレードまたはダウングレードする
-1. 変更するピアリング接続をクリックし、 **[...]**  >  **[接続の編集]** ボタンをクリックします。
+1. 変更するピアリング接続を選択して、 **[...]**  >  **[接続の編集]** を選択します。
     > [!div class="mx-imgBorder"]
-    > ![ピアリング接続の編集](../media/setup-direct-modify-editconnection.png)
-1. 次に示すように帯域幅を変更し、 **[保存]** をクリックします。
+    > ![接続の編集](../media/setup-direct-modify-editconnection.png)
+
+1. スライダーを移動して帯域幅を変更し、 **[保存]** を選択します。
     > [!div class="mx-imgBorder"]
-    > ![ピアリング接続の帯域幅の変更](../media/setup-direct-modify-editconnectionsettings.png)
+    > ![帯域幅の変更](../media/setup-direct-modify-editconnectionsettings.png)
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>アクティブな接続で IPv4/IPv6 セッションを追加します。
-1. 変更するピアリング接続をクリックし、上記のように **[...]**  >  **[接続の編集]** ボタンをクリックします。
-1. **セッション IPv4 プレフィックス**または**セッション IPv6 プレフィックス**の情報を追加し、 **[保存]** をクリックします。
+### <a name="add-ipv4-or-ipv6-session-information-on-active-connections"></a>アクティブな接続で IPv4 または IPv6 セッションの情報を追加する
+1. 変更するピアリング接続を選択して、手順 1 のように **[...]**  >  **[接続の編集]** を選択します。
+1. **セッション IPv4 プレフィックス**または**セッション IPv6 プレフィックス**の情報を入力し、 **[保存]** を選択します。
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>アクティブな接続で IPv4/IPv6 セッションを削除します。
-    Removing a **Session IPv4 prefix** or **Session IPv6 prefix** info is not currently supported on portal. Contact [Microsoft peering](mailto:peeringexperience@microsoft.com).
+### <a name="remove-ipv4-or-ipv6-session-information-on-active-connections"></a>アクティブな接続で IPv4 または IPv6 セッションの情報を削除する
+**セッション IPv4 プレフィックス**または**セッション IPv6 プレフィックス**の情報を削除することは、現在ポータルではサポートされていません。 詳細については、[Microsoft ピアリング](mailto:peeringexperience@microsoft.com)にお問い合わせください。

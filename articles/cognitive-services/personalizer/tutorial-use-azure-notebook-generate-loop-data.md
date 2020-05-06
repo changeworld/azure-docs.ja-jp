@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1f004fe1dae58faaded0b872dcdebdb4e9af66aa
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986837"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193005"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 
@@ -297,7 +297,7 @@ def add_event_id(rankjsonobj):
 
 この関数は、一意のユーザー、天気、および時間帯を選択した後、ランク要求に送信する JSON オブジェクトにそれらの項目を追加します。
 
-このセルには出力がありません。 この関数は呼び出されると、ランダムなユーザーの名前、ランダムな天気、ランダムな時間帯が返されます。
+このセルには出力がありません。 この関数が呼び出されると、ランダムなユーザーの名前、ランダムな天気、ランダムな時間帯が返されます。
 
 4 人のユーザーと彼らの好みのリストです。簡潔にするために、好みは一部しか表示されていません。
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77047942"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166312"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合
 
@@ -89,6 +88,9 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 
     c. **[応答 URL]** ボックスに、`https://samltoolkit.azurewebsites.net/SAML/Consume` という URL を入力します。
 
+    > [!NOTE]
+    > これらの値は実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL に置き換えます。実際の値については後で説明します。
+
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
@@ -154,6 +156,8 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
     1. **[ファイルの選択]** をクリックして、Azure portal からダウンロードした**証明書 (未加工)** ファイルをアップロードします。
 
     1. **Create** をクリックしてください。
+
+    1. SAML Toolkit SSO の構成ページでサインオン URL、識別子、および ACS URL の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションで、対応するテキスト ボックスに貼り付けます。
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Azure AD SAML Toolkit のテスト ユーザーの作成
 

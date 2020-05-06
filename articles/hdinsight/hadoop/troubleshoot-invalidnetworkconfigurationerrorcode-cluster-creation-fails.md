@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720386"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780438"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗する
 
@@ -54,7 +54,7 @@ ms.locfileid: "76720386"
 
 ### <a name="cause"></a>原因
 
-Azure Storage と SQL には固定の IP アドレスがないため、これらのサービスにアクセスできるようにするには、すべての IP への発信接続を許可する必要があります。 正確な解決手順は、ネットワーク セキュリティ グループ (NSG) またはユーザー定義規則 (UDR) を設定しているかどうかによって異なります。 これらの構成の詳細については、[HDInsight でのネットワーク セキュリティ グループとユーザー定義ルートを使用したネットワーク トラフィックの制御](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)に関するページを参照してください。
+Azure Storage と SQL には固定の IP アドレスがないため、これらのサービスにアクセスできるようにするには、すべての IP への発信接続を許可する必要があります。 正確な解決手順は、ネットワーク セキュリティ グループ (NSG) またはユーザー定義規則 (UDR) を設定しているかどうかによって異なります。 これらの構成の詳細については、[HDInsight でのネットワーク セキュリティ グループとユーザー定義ルートを使用したネットワーク トラフィックの制御](../control-network-traffic.md)に関するページを参照してください。
 
 ### <a name="resolution"></a>解決策
 

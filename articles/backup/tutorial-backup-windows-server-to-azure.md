@@ -4,11 +4,11 @@ description: このチュートリアルでは、オンプレミスの Windows S
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79222469"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
@@ -23,7 +23,7 @@ Azure Backup を利用し、破損、攻撃、災害から Windows Server を守
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ( https://portal.azure.com ) にサインインします。
+Azure portal (<https://portal.azure.com.>) にサインインする
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 

@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: f5920541d49c454bd6648318c04ed607eada1dfb
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922500"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルをデプロイする

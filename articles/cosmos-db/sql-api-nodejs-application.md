@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 3c50e82647b22a18edee92f47abc1d136670cacc
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 18af9b395aac24608c0a1383b5abdfeb062f58c1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519667"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184879"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 
@@ -437,7 +437,7 @@ ms.locfileid: "80519667"
 
 アプリケーションをビルドしたら、お客様は次の手順を使用して、それをローカルで実行できます。  
 
-1. お客様のローカル コンピューター上でアプリケーションをテストするには、ターミナルで `npm start` を実行してお客様のアプリケーションを起動し、[http://localhost:3000](http://localhost:3000) ブラウザー ページを更新します。 これで、ページは次のスクリーンショットのように表示されているはずです。
+1. お客様のローカル コンピューター上でアプリケーションをテストするには、ターミナルで `npm start` を実行してお客様のアプリケーションを起動し、`http://localhost:3000` ブラウザー ページを更新します。 これで、ページは次のスクリーンショットのように表示されているはずです。
    
     ![ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

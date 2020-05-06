@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 045f6d50846092820014ccc7f11a81f1e2234311
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75982570"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144095"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>チュートリアル:Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する
 
@@ -49,6 +49,9 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
   このチュートリアルでは、Office 365 Outlook のアカウントを使用します。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
+  > [!IMPORTANT]
+  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+
 * 単体で自身の Azure リソース グループに属する[仮想マシン](https://azure.microsoft.com/services/virtual-machines)。 仮想マシンをまだ作成していない場合は、[VM を作成するチュートリアル](../virtual-machines/windows/quick-create-portal.md)に従って作成してください。 仮想マシンでイベントを発行する場合は、[他の操作を行う必要はありません](../event-grid/overview.md)。
 
 ## <a name="create-blank-logic-app"></a>空のロジック アプリを作成する
@@ -63,7 +66,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    ![ロジック アプリの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **名前** | はい | <*ロジック アプリ名*> | 一意の名前をロジック アプリに指定します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | このチュートリアルでは、すべてのサービスで同じ Azure サブスクリプションを選択します。 |
@@ -98,7 +101,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    ![イベント サブスクリプションの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    | -------- | -------- | ----- | ----------- |
    | **サブスクリプション** | はい | <*イベント発行者の Azure サブスクリプション名*> | "*イベント発行者*" に関連付けられている Azure サブスクリプションの名前を選択します。 このチュートリアルでは、自分の仮想マシンの Azure サブスクリプション名を選択します。 |
    | **リソースの種類** | はい | <*イベント発行者の Azure リソースの種類*> | イベント発行者の Azure リソースの種類を選択します。 Azure リソースの種類の詳細については、「[Azure リソースプロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください このチュートリアルでは、Azure リソース グループを監視するために `Microsoft.Resources.ResourceGroups` 値を選択します。 |
@@ -196,7 +199,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
    > [!TIP]
    > 前のワークフロー ステップからの出力を選択するには、編集ボックス内をクリックして動的なコンテンツの一覧を表示するか、 **[動的なコンテンツの追加]** を選択します。 さらに結果を表示するには、一覧の各セクションの **[もっと見る]** を選択します。 動的なコンテンツの一覧を閉じるには、 **[動的なコンテンツの追加]** を再度選択します。
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    | -------- | -------- | ----- | ----------- |
    | **To** | はい | <*受信者\@ドメイン*> | 受信者の電子メール アドレスを入力します。 テスト目的で自分の電子メール アドレスを使用できます。 |
    | **件名** | はい | `Resource updated:` **件名** | 電子メールの件名の内容を入力します。 このチュートリアルでは、指定されたテキストを入力し、イベントの **[件名]** フィールドを選択します。 ここでは、電子メールの件名には更新リソース (仮想マシン) の名前が含まれています。 |

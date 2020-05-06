@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: edf5a6a6a0f17c21abb818a0d41d0d0b1c39949c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419726"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82187547"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio (プレビュー) を使用して Synapse SQL に接続する
 
@@ -61,11 +61,11 @@ Azure Active Directory を使用するには、必要な認証の種類を選択
 
 ![AAD 認証](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-このスクリーンショットは、 **[Windows 認証]** の **[接続の詳細]** を示しています。
+次のスクリーンショットは、 **[Windows 認証]** の **[接続の詳細]** を示しています。
 
 ![Windows 認証](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-このスクリーンショットは、 **[SQL ログイン]** を使用した **[接続の詳細]** を示しています。
+次のスクリーンショットは、 **[SQL ログイン]** を使用した **[接続の詳細]** を示しています。
 
 ![SQL ログイン](./media/get-started-azure-data-studio/2-database-details.png)
 

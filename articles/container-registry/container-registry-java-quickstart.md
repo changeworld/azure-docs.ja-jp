@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 62d63b24baab204cb029565b109ea2de768e1d80
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fa64ec526ab85e412b407da8566ac6f802ca2d20
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78165088"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82195283"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>クイック スタート:Java コンテナー イメージを作成して Azure Container Registry にプッシュする
 
@@ -94,6 +94,9 @@ ms.locfileid: "78165088"
 
 最後にプロジェクトの構成を更新し、コマンド プロンプトを使用してイメージを作成、デプロイします。
 
+> [!NOTE]
+> 先ほど作成した Azure コンテナー レジストリにログインするには、Docker デーモンが実行されている必要があります。 マシンに Docker をインストールするには、[公式の Docker ドキュメント](https://docs.docker.com/install/)を参照してください。
+
 1. Azure CLI から次のコマンドを使用して Azure Container Registry にログインします。 プレースホルダーは、実際のレジストリ名に置き換えてください。
 
    ```azurecli
@@ -105,13 +108,13 @@ ms.locfileid: "78165088"
 
 1. Spring Boot アプリケーションの完了プロジェクト ディレクトリ ("*C:\SpringBoot\gs-spring-boot-docker\complete*" や " */users/robert/SpringBoot/gs-spring-boot-docker/complete*" など) に移動し、*pom.xml* ファイルをテキスト エディターで開きます。
 
-1. *pom.xml* ファイル内の `<properties>` コレクションを次の XML で更新します。 プレースホルダーは実際のレジストリ名に置き換えてください。また、`<jib-maven-plugin.version>` の値は、最新バージョンの [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) に更新してください。
+1. *pom.xml* ファイル内の `<properties>` コレクションを次の XML で更新します。 プレースホルダーは実際のレジストリ名に置き換えてください。さらに、`<jib-maven-plugin.version>` プロパティを追加し、その値に `2.2.0` または [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) の新しいバージョンを指定します。
 
    ```xml
    <properties>
       <docker.image.prefix><your registry name>.azurecr.io</docker.image.prefix>
-      <jib-maven-plugin.version>1.8.0</jib-maven-plugin.version>
       <java.version>1.8</java.version>
+      <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
    </properties>
    ```
 
@@ -136,7 +139,7 @@ ms.locfileid: "78165088"
 1. Spring Boot アプリケーション用の完了プロジェクト ディレクトリに移動し、次のコマンドを実行してイメージを作成し、そのイメージをレジストリにプッシュします。
 
    ```bash
-   mvn compile jib:build
+   az acr login && mvn compile jib:build
    ```
 
 > [!NOTE]
@@ -163,7 +166,7 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
 Spring および Azure の詳細については、Azure ドキュメント センターで引き続き Spring に関するドキュメントをご確認ください。
 
 > [!div class="nextstepaction"]
-> [Azure の Spring](/azure/java/spring-framework)
+> [Azure の Spring](/azure/developer/java/spring-framework)
 
 ### <a name="additional-resources"></a>その他のリソース
 
@@ -173,5 +176,5 @@ Spring および Azure の詳細については、Azure ドキュメント セ�
 * [Azure DevOps と Java の操作](/azure/devops/java)
 * [Docker での Spring Boot の使用開始](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [Spring Boot アプリケーションを Azure App Service にデプロイする](/azure/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+* [Spring Boot アプリケーションを Azure App Service にデプロイする](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
 * [Azure Web App on Linux 向けのカスタム Docker イメージを使用する](/azure/app-service-web/app-service-linux-using-custom-docker-image)

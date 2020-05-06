@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: fe15c02286223ec0829b31664811b7f589cf16aa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74774834"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146811"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Azure CLI コマンドの az postgres up (プレビュー) を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
@@ -63,7 +63,7 @@ sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コ�
 backup-retention | 7 | バックアップが保持される期間。 単位は日数です。
 geo-redundant-backup | 無効 | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。
 location | westus2 | サーバーの Azure の場所。
-ssl-enforcement | 無効 | このサーバーに対して ssl を有効にする必要があるかどうかどうか。
+ssl-enforcement | 無効 | このサーバーに対して TLS/SSL を有効にする必要があるかどうかどうか。
 storage-size | 5120 | サーバーのストレージ容量 (単位はメガバイト)。
 version | 10 | PostgreSQL のメジャー バージョン。
 admin-user | システム生成 | 管理者のユーザー名。
