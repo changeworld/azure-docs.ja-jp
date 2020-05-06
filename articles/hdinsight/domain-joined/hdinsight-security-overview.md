@@ -6,67 +6,68 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.date: 03/03/2020
-ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78267713"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780081"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
-Azure HDInsight には、エンタープライズ セキュリティ ニーズに対応するためのさまざまな方法が用意されています。 これらのソリューションのほとんどは、既定ではアクティブ化されていません。 この柔軟性により、ユーザーにとって最も重要なセキュリティ機能を選択することができ、不要な機能に支払いを行う必要がありません。 これは、セットアップと環境で適切なソリューションが有効になっていることをユーザーが責任を持って確認する必要があるということでもあります。
+Azure HDInsight には、エンタープライズ セキュリティ ニーズに対応するためのさまざまな方法が用意されています。 これらのソリューションのほとんどは、既定ではアクティブ化されていません。 この柔軟性により、ユーザーにとって最も重要なセキュリティ機能を選択することができます。 また、不要な機能の支払いを避けることもできます。 つまり、セットアップと環境で適切なソリューションが有効になっていることをユーザーが責任を持って確認する必要があるということでもあります。
 
-この記事では、セキュリティ ソリューションを、境界セキュリティ、認証、承認、暗号化の 4 つの従来のセキュリティの柱に沿って分け、セキュリティ ソリューションについて説明します。
+この記事では、セキュリティ ソリューションについて、境界セキュリティ、認証、承認、暗号化という従来からある 4 つの柱に分けて説明します。
 
 この記事では、**Azure HDInsight Enterprise セキュリティ パッケージ (ESP)** についても説明します。ESP は、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御を HDInsight のクラスターに提供します。
 
 ## <a name="enterprise-security-pillars"></a>エンタープライズ セキュリティの柱
 
-エンタープライズ セキュリティを確認する 1 つの方法は、コントロールの種類に基づいて、セキュリティ ソリューションを 4 つの主要なグループに分けることです。 これらのグループはセキュリティの柱とも呼ばれ、境界セキュリティ、認証、承認、および暗号化があります。
+エンタープライズ セキュリティを確認する 1 つの方法は、コントロールの種類に基づいて、セキュリティ ソリューションを 4 つの主要なグループに分けることです。 セキュリティの柱とも呼ばれるこれらのグループは、境界セキュリティ、認証、承認、および暗号化に分けられます。
 
 ### <a name="perimeter-security"></a>境界セキュリティ
 
 HDInsight の境界セキュリティは、[仮想ネットワーク](../hdinsight-plan-virtual-network-deployment.md)を使用して実現されます。 エンタープライズ管理者は、仮想ネットワーク (VNET) 内にクラスターを作成し、ネットワーク セキュリティ グループ (NSG) を使用して仮想ネットワークへのアクセスを制限できます。 HDInsight クラスターと通信できるのは、NSG の受信規則で許可されている IP アドレスだけです。 この構成では、境界セキュリティを提供します。
 
-VNET にデプロイされるすべてのクラスターには、クラスター ゲートウェイへのプライベート HTTP アクセスのために、VNET 内のプライベート IP に解決されるプライベート エンドポイントもあります。
+VNET に配置されているすべてのクラスターにも、プライベート エンドポイントがあります。 このエンドポイントは、クラスター ゲートウェイへのプライベート HTTP アクセスが可能になるように、VNET 内のプライベート IP に解決されます。
 
 ### <a name="authentication"></a>認証
 
-HDInsight の [Enterprise セキュリティ パッケージ](apache-domain-joined-architecture.md) は、Active Directory ベースの認証、マルチ ユーザー サポート、およびロールベースのアクセス制御を提供します。 Active Directory 統合は、[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) を使用して実現されます。 これらの機能を使用して、マネージド Active Directory ドメインに参加している HDInsight クラスターを作成できます。 その後、認証してクラスターにサインインできる企業の従業員の一覧を構成できるようになります。
+HDInsight の [Enterprise セキュリティ パッケージ](apache-domain-joined-architecture.md) では、Active Directory ベースの認証、マルチユーザー サポート、およびロールベースのアクセス制御が提供されます。 Active Directory 統合は、[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) を使用して実現されます。 これらの機能を使用して、Active Directory ドメインに参加する HDInsight クラスターを作成できます。 その後、クラスターに対して認証できる企業従業員の一覧を構成します。
 
-この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。
+この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、他の承認済みエンドポイント ( Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証して、クラスターと対話することもできます。
 
 ### <a name="authorization"></a>承認
 
-ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにはアクセスできないようにするベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 これは、ESP クラスターでのみ使用できます。
+ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにフル アクセスできるわけではないというベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 この操作は、ESP クラスターでのみ使用できます。
 
-Hadoop 管理者は、Apache Ranger のプラグインを使用し、ロールベースのアクセス制御 (RBAC) を構成して Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md)、および [Kafka](apache-domain-joined-run-kafka.md) を保護できます。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
+Hadoop 管理者は、ロールベースのアクセス制御 (RBAC) を構成できます。 この構成では、Apache Range プラグインを使用して、Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md)、および [Kafka](apache-domain-joined-run-kafka.md) をセキュリティで保護します。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
 
-たとえば、管理者は [Apache Ranger](https://ranger.apache.org/) を構成して Hive のアクセス制御ポリシーを設定できます。 この機能により、行レベルおよび列レベルのフィルター処理 (データ マスキング) が実現され、権限のないユーザーから機密データがフィルター処理されます。
+たとえば、管理者は [Apache Ranger](https://ranger.apache.org/) を構成して Hive のアクセス制御ポリシーを設定できます。 この機能により、行レベルおよび列レベルのフィルター処理 (データ マスキング) が実現されます。 また、未承認のユーザーがアクセスできないように、機密データがフィルター処理されます。
 
 ### <a name="auditing"></a>監査
 
-リソースにおいて許可されていないアクセスや意図しないアクセスを追跡するには、クラスター リソース、およびデータへのアクセスをすべて監査する必要があります。 HDInsight クラスター リソースを許可されていないユーザーから保護し、データをセキュリティで保護することが重要です。
+リソースへの許可されていないアクセスや意図しないアクセスを追跡するには、クラスター リソースへのアクセスを監査する必要があります。 これは、許可されていないアクセスからクラスター リソースを保護するのと同じくらい重要です。
 
-管理者は HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。 また、管理者は Apache Ranger のサポートされているエンドポイントで作成されたアクセス制御ポリシーのすべての変更を表示し、レポートを作成することもできます。
+管理者は HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。 また、管理者はアクセス制御ポリシーへの変更を表示して報告することができます。
 
-Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)にし、監査レコードが記載されたテーブルを表示します。
+Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)にします。 次に、監査レコードが記載されたテーブルを表示します。
 
 ### <a name="encryption"></a>暗号化
 
 データの保護は、組織のセキュリティとコンプライアンス要件を満たすために重要です。 許可されていない従業員からデータへのアクセスを制限すると共に、暗号化する必要があります。
 
-HDInsight クラスターのデータ ストア (Azure BLOB ストレージおよび Azure Data Lake Storage Gen1/Gen2) はどちらも、保存データの透過的なサーバー側[暗号化](../../storage/common/storage-service-encryption.md)をサポートしています。 セキュリティで保護された HDInsight クラスターは、この保存データのサーバー側暗号化の機能とシームレスに連携します。
+Azure Storage および Azure Data Lake Storage Gen1/Gen2 はどちらも、保存データの透過的なサーバー側[暗号化](../../storage/common/storage-service-encryption.md)をサポートしています。 セキュリティで保護された HDInsight クラスターは、保存データのサーバー側暗号化とシームレスに連携します。
 
 ### <a name="compliance"></a>コンプライアンス
 
-Azure のコンプライアンス認証は、独立したサードパーティの監査企業による正式な認証、証明、検証、承認、および評価の他に、Microsoft による契約の修正、自己評価、顧客向けのガイダンス ドキュメントを含むさまざまな種類の保証に基づいています。 HDInsight のコンプライアンス情報については、[Microsoft セキュリティセンター](https://www.microsoft.com/trust-center)と [Microsoft Azure コンプライアンスの概要](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。
+Azure コンプライアンス認証は、正式な認定資格を含むさまざまな種類の保証に基づいています。 また、構成証明、検証、承認にも基づいています。 さらに、独立したサードパーティの監査会社による評価や、 Microsoft によって作成された契約の修正、自己評価、顧客向けのガイダンス ドキュメントにも基づきます。 HDInsight のコンプライアンス情報については、[Microsoft セキュリティセンター](https://www.microsoft.com/trust-center)と [Microsoft Azure コンプライアンスの概要](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。
 
 ## <a name="shared-responsibility-model"></a>共同責任モデル
 
-次の図は、主要なシステム セキュリティ領域と、それぞれで使用できるセキュリティ ソリューションをまとめたものです。 また、顧客としての責任があるセキュリティ領域と、サービス プロバイダーとしての HDInsight の責任がある領域についても取り上げます。
+次の図は、主要なシステム セキュリティ領域と、それぞれで使用できるセキュリティ ソリューションをまとめたものです。 また、どのセキュリティ領域がお客様の責任となり、 どの領域がサービス プロバイダーである HDInsight の責任になるかも示しています。
 
 ![HDInsight の共有責任図](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
 
@@ -77,7 +78,7 @@ Azure のコンプライアンス認証は、独立したサードパーティ�
 | データ アクセス セキュリティ | Azure Data Lake Storage Gen1 および Gen2 対象の[アクセス制御リスト ACL](../../storage/blobs/data-lake-storage-access-control.md) を構成する  | Customer |
 |  | ストレージ アカウントで [[安全な転送が必須]](../../storage/common/storage-require-secure-transfer.md) プロパティを有効にします。 | Customer |
 |  | [Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)および仮想ネットワークを構成する | Customer |
-|  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を構成する | Customer |
+|  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | Customer |
 |  | 転送中のデータに対して [TLS 暗号化](../../storage/common/storage-security-tls.md)が有効になっていることを確認する。 | Customer |
 |  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
 | アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | Customer |
@@ -86,7 +87,7 @@ Azure のコンプライアンス認証は、独立したサードパーティ�
 | オペレーティング システムのセキュリティ | 最新の安全な基本イメージを使用してクラスターを作成する | Customer |
 |  | [OS の修正プログラム](../hdinsight-os-patching.md)が定期的に適用されるようにする | Customer |
 | ネットワークのセキュリティ | [仮想ネットワーク](../hdinsight-plan-virtual-network-deployment.md)を構成する |
-|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../hdinsight-plan-virtual-network-deployment.md#networktraffic)を構成する | Customer |
+|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../control-network-traffic.md)を構成する | Customer |
 |  | ファイアウォールを使用して[送信トラフィックの制限](../hdinsight-restrict-outbound-traffic.md)を構成する | Customer |
 | 仮想化インフラストラクチャ | 該当なし | HDInsight (クラウド プロバイダー) |
 | 物理インフラのセキュリティ | 該当なし | HDInsight (クラウド プロバイダー) |

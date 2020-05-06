@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: a73e1e9f7a9c017dd29b627a24c25ae2e064c0a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cf4859d3bf4c34fff4cb076eec11bcd2d81e4ab
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75894143"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780778"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>シナリオ:InvalidNetworkSecurityGroupSecurityRules - Azure HDInsight でクラスターの作成が失敗する
 
@@ -28,7 +28,7 @@ ms.locfileid: "75894143"
 
 ## <a name="resolution"></a>解像度
 
-Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **受信セキュリティ規則**セクションで、[ここ](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)に記述されている IP アドレスについてポート 443 への受信アクセスがルールによって許可されていることを確認します。
+Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **受信セキュリティ規則**セクションで、[ここ](../control-network-traffic.md)に記述されている IP アドレスについてポート 443 への受信アクセスがルールによって許可されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

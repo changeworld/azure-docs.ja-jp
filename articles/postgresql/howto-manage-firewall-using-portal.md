@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74770307"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - 単一サーバー用のファイアウォール規則を作成して管理する
@@ -32,7 +32,7 @@ ms.locfileid: "74770307"
    ![Azure Portal - [自分の IP を追加] のクリック](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
 3. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、開始 IP と終了 IP を変更してルール関数を予想どおりにする必要があります。
-   検索エンジンまたはその他のオンライン ツールを使用して、自分の IP アドレスを確認します (たとえば、"what is my IP" を検索します)。
+   検索エンジンまたはその他のオンライン ツールを使用して、自分の IP アドレスを確認します  (たとえば、"what is my IP" を検索します)。
 
    ![「What is my IP」の Bing 検索](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 

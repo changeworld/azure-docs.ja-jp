@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760812"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677600"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
@@ -434,7 +434,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 
 1. [Hive クエリ] を **データ ソース**
 2. **[Hive データベース クエリ]** ボックスでは、SELECT * FROM <your\_database\_name.your\_table\_name> のみで十分です。
-3. **Hcatalog サーバー URI**:クラスターが "abc" の場合は、単純に https://abc.azurehdinsight.net となります
+3. **Hcatalog サーバー URI**:クラスターが "abc" の場合は、単に https:\//abc.azurehdinsight.net となります。
 4. **Hadoop ユーザーのアカウント名**:クラスターの設定時に選択したユーザー名。 (リモート アクセスのユーザー名ではありません)。
 5. **Hadoop ユーザー アカウントのパスワード**:クラスターの設定時に選択した上記のユーザー名のパスワード。 (リモート アクセスのパスワードではありません)。
 6. **出力データの場所**:[Azure] を選択します

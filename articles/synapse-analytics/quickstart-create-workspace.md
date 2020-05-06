@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676726"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792209"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>クイック スタート:Azure Synapse Analytics ワークスペースを作成する (プレビュー)
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
     | 設定 | 推奨値 | 説明 |
     | :------ | :-------------- | :---------- |
     | **サブスクリプション** | *該当するサブスクリプション* | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-    | **リソース グループ** | "*任意のリソース グループ*" | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)に関するページを参照してください。 |
+    | **リソース グループ** | "*任意のリソース グループ*" | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)に関するページを参照してください。 |
     | **ワークスペース名** | mysampleworkspace | ワークスペースの名前を指定します。これは、接続エンドポイントにも使用されます。|
     | **リージョン** | 米国東部 2 | ワークスペースの場所を指定します。|
     | **Data Lake Storage Gen2** | アカウント: `storage account name` </br> ファイルシステム: `root file system to use` | プライマリ ストレージとして使用する ADLS Gen2 ストレージ アカウント名と、使用するファイルシステムを指定します。|

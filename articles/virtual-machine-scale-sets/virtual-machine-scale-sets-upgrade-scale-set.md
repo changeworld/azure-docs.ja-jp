@@ -8,11 +8,11 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimckitt
-ms.openlocfilehash: 66fd656b5175547641150a048e57c978dc06d291
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476826"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
@@ -342,7 +342,6 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 可用性ゾーン
 - イメージ参照発行元
 - イメージ参照プラン
-- イメージ参照 SKU
 - 管理対象 OS ディスク ストレージ アカウントの種類
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>現在の値に基づいてのみ変更できるプロパティ

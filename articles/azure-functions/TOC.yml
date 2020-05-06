@@ -125,6 +125,10 @@
           href: functions-reference-python.md
         - name: TypeScript
           href: 'functions-reference-node.md#typescript'
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 診断
       href: functions-diagnostics.md
     - name: 従量課金プランのコスト
@@ -477,7 +481,7 @@
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter
       href: 'https://twitter.com/azurefunctions'
