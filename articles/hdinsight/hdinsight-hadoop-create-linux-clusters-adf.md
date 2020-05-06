@@ -6,19 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 03/18/2020
-ms.openlocfilehash: b184a42c52384440445181ac44c616c3139e064f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: 41482af619ad94ee059fc11a74581fa30c2e7011
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130679"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190233"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-このチュートリアルでは、Azure Data Factory を使用して Azure HDInsight で [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) クラスター (オンデマンド) を作成する方法について説明します。 その後 Azure Data Factory でデータ パイプラインを使用して Hive ジョブを実行し、クラスターを削除します。 このチュートリアルを完了すると、クラスターの作成、ジョブの実行、クラスターの削除がスケジュールに従って実行されるビッグ データ ジョブの実行を作動可能な状態にする方法を習得できます。
+このチュートリアルでは、Azure Data Factory を使用して Azure HDInsight で [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) クラスター (オンデマンド) を作成する方法について説明します。 その後 Azure Data Factory でデータ パイプラインを使用して Hive ジョブを実行し、クラスターを削除します。 このチュートリアルを完了すると、クラスターの作成、ジョブの実行、クラスターの削除がスケジュールに従って実行されるビッグ データ ジョブの実行を `operationalize` する方法を習得できます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -42,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-preliminary-azure-objects"></a>予備の Azure オブジェクトを作成します。
 
-このセクションでは、オンデマンドで作成する HDInsight クラスターに使用する各種オブジェクトを作成します。 作成されるストレージ アカウントには、クラスターで実行されるサンプル Apache Hive ジョブのシミュレートに使用するサンプル [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) スクリプトの `partitionweblogs.hql` が含まれます。
+このセクションでは、オンデマンドで作成する HDInsight クラスターに使用する各種オブジェクトを作成します。 作成されるストレージ アカウントには、クラスターで実行されるサンプル Apache Hive ジョブのシミュレートに使用するサンプル HiveQL スクリプトの `partitionweblogs.hql` が含まれます。
 
 このセクションでは、Azure PowerShell スクリプトを使用してストレージ アカウントを作成し、ストレージ アカウント内の必要なファイルをコピーします。 このセクションの Azure PowerShell サンプル スクリプトでは、次のタスクを実行します。
 
@@ -158,7 +159,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 1. PowerShell スクリプトで作成したリソース グループの名前を選択します。 一覧表示されるリソース グループが多すぎる場合は、フィルターを使用します。
 1. **[概要]** ビューには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 ストレージ アカウント名を選択します。
 1. **[コンテナー]** タイルを選択します。
-1. **adfgetstarted** コンテナーを選択します。 **hivescripts** というフォルダーが表示されます。
+1. **adfgetstarted** コンテナーを選択します。 **`hivescripts`** というフォルダーが表示されます。
 1. このフォルダーを開き、サンプル スクリプト ファイル (**partitionweblogs.hql**) があることを確認します。
 
 ## <a name="understand-the-azure-data-factory-activity"></a>Azure Data Factory のアクティビティを理解する
@@ -167,8 +168,8 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 Azure Data Factory では、データ ファクトリに 1 つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 次の 2 種類のアクティビティがあります。
 
-* [データ移動アクティビティ](../data-factory/copy-activity-overview.md) - データ移動アクティビティを使用して、ソース データ ストアから宛先データ ストアにデータを移動します。
-* [データ変換アクティビティ](../data-factory/transform-data.md) - データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。
+* [データ移動アクティビティ](../data-factory/copy-activity-overview.md) -  データ移動アクティビティを使用して、ソース データ ストアから宛先データ ストアにデータを移動します。
+* [データ変換アクティビティ](../data-factory/transform-data.md) -  データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。
 
 この記事では、オンデマンドの HDInsight Hadoop クラスターを作成するように Hive アクティビティを構成します。 アクティビティを実行してデータ を処理するときには、次のことが行われます。
 
@@ -185,13 +186,13 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. 左側のメニューから、 **[+ リソースの作成]**  >  **[Analytics]**  >  **[データ ファクトリ]** に移動します。
+2. 左側のメニューで、 **[`+ Create a resource`]**  >  **[分析]**  >  **[データ ファクトリ]** の順に移動します。
 
     ![ポータルの Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "ポータルの Azure Data Factory")
 
 3. **新しいデータ ファクトリ**タイルに以下の値を入力するか選択します。
 
-    |プロパティ  |Value  |
+    |プロパティ  |値  |
     |---------|---------|
     |名前 | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
     |Version | **V2**のままにします。 |
@@ -233,7 +234,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 4. ストレージのリンク サービスに次の値を指定します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |---|---|
     |名前 |「`HDIStorageLinkedService`」と入力します。|
     |Azure サブスクリプション |ドロップダウン リストからサブスクリプションを選択します。|
@@ -255,7 +256,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 4. **[New Linked Service]** (新しいリンク サービス) ウィンドウで 次の値を入力し、残りは既定値のままにしておきます。
 
-    | プロパティ | Value |
+    | プロパティ | 値 |
     | --- | --- |
     | 名前 | 「`HDInsightLinkedService`」と入力します。|
     | Type | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |
@@ -286,7 +287,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     ![Data Factory パイプラインにアクティビティを追加する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Data Factory パイプラインにアクティビティを追加する")
 
-1. Hive アクティビティが選択されていることを確認します。 **[HDI Cluster]\(HDI クラスター\)** タブを選択し、 **[HDInsight のリンクされたサービス]** ドロップダウン リストから HDInsight 用に以前に作成したリンク サービスの **HDInsightLinkedService** を選択します。
+1. Hive アクティビティが選択されていることを確認し、 **[HDI Cluster]\(HDI クラスター\)** タブを選択します。 **[HDInsight Linked Service]\(HDInsight のリンクされたサービス\)** ドロップダウン リストで、HDInsight 用に以前に作成したリンク サービスの **HDInsightLinkedService** を選択します。
 
     ![パイプラインの HDInsight クラスターの詳細を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "パイプラインの HDInsight クラスターの詳細を指定する")
 
@@ -298,9 +299,9 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
         ![パイプラインの Hive スクリプトの詳細を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "パイプラインの Hive スクリプトの詳細を指定する")
 
-    1. **[詳細設定]**  >  **[パラメーター]** で、 **[Auto-fill from script]\(スクリプトから自動入力\)** を選択します。 このオプションを選択すると、実行時に値を必要とする、Hive スクリプトのパラメーターが検索されます。
+    1. **[詳細設定]**  >  **[パラメーター]** で、 **[`Auto-fill from script`]** を選択します。 このオプションを選択すると、実行時に値を必要とする、Hive スクリプトのパラメーターが検索されます。
 
-    1. **[値]** ボックスに、`wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` 形式で既存のフォルダーを追加します。 パスの大文字と小文字は区別されます。 これはスクリプトの出力が格納されるパスです。 ストレージ アカウントではセキュリティで保護された転送が既定で有効であることが必要になったため、`wasbs` スキーマが不可欠です。
+    1. **[値]** ボックスに、`wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` 形式で既存のフォルダーを追加します。 パスの大文字と小文字は区別されます。 このパスにスクリプトの出力が格納されます。 ストレージ アカウントではセキュリティで保護された転送が既定で有効であることが必要になったため、`wasbs` スキーマが不可欠です。
 
         ![Hive スクリプトのパラメーターを指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Hive スクリプトのパラメーターを指定する")
 
@@ -346,9 +347,9 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-オンデマンドの HDInsight クラスターを作成した場合、HDInsight クラスターを明示的に削除する必要はありません。 クラスターは、パイプラインの作成時に指定した構成に基づいて削除されます。 ただし、クラスターを削除した後も、クラスターに関連付けられているストレージ アカウントは引き続き存在します。 データをそのまま保持できるように、この動作は仕様です。 データを保持する必要がない場合は、作成したストレージ アカウントを削除してかまいません。
+オンデマンドの HDInsight クラスターを作成した場合、HDInsight クラスターを明示的に削除する必要はありません。 クラスターは、パイプラインの作成時に指定した構成に基づいて削除されます。 クラスターを削除した後も、クラスターに関連付けられているストレージ アカウントは引き続き存在します。 データをそのまま保持できるように、この動作は仕様です。 データを保持する必要がない場合は、作成したストレージ アカウントを削除してかまいません。
 
-また、このチュートリアルで作成したリソース グループ全体を削除することもできます。 これにより、作成したストレージ アカウントと Azure Data Factory が削除されます。
+また、このチュートリアルで作成したリソース グループ全体を削除することもできます。 このプロセスにより、作成したストレージ アカウントと Azure Data Factory が削除されます。
 
 ### <a name="delete-the-resource-group"></a>リソース グループを削除します
 
@@ -358,13 +359,13 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 1. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、既定のストレージ アカウントとデータ ファクトリが表示されます。
 1. **[リソース グループの削除]** を選択します。 この操作を実行すると、ストレージ アカウントと、そのストレージ アカウントに格納されているデータが削除されます。
 
-    ![Azure portal でのリソース グループの削除](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループの削除")
+    ![`Azure portal でのリソース グループの削除`](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループの削除")
 
 1. リソース グループ名を入力して削除を確認し、 **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Data Factory を使用してオンデマンドの HDInsight クラスターを作成し、[Apache Hive](https://hive.apache.org/) ジョブを実行する方法を説明しました。 次の記事に進み、HDInsight クラスターをカスタム構成で作成する方法を確認してください。
+この記事では、Azure Data Factory を使用してオンデマンドの HDInsight クラスターを作成し、Apache Hive ジョブを実行する方法を説明しました。 次の記事に進み、HDInsight クラスターをカスタム構成で作成する方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [Azure HDInsight クラスターをカスタム構成で作成する](hdinsight-hadoop-provision-linux-clusters.md)

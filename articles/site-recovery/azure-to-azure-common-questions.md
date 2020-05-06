@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547888"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738050"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -194,10 +194,10 @@ Site Recovery には **マルチ VM 整合性**オプションがあります。
 マルチ VM 整合性では CPU が集中的に消費されるので、これを有効にすると、ワークロードのパフォーマンスに影響する場合があります。 複数のマシンが同じワークロードを実行しているとき、複数のマシン間に整合性を持たせる必要がある場合にのみ、マルチ VM 整合性を使用してください。 たとえば、2 個の SQL Server インスタンスと 2 個の Web サーバーがアプリケーション内にある場合、SQL Server インスタンスに対してのみマルチ VM 整合性を有効にする必要があります。
 
 ### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>既にレプリケートしている VM をレプリケーション グループに追加できますか?
-
 レプリケーションを有効にしている間、新しいレプリケーション グループに VM を追加することができます。 また、レプリケーションを有効にしている間、既存のレプリケーション グループに VM を追加することもできます。 ただし、既にレプリケートしている VM は新しいレプリケーション グループにも、既存のレプリケーション グループにも追加することはできません。
-
+ 
 ## <a name="failover"></a>[フェールオーバー]
+
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように確保されますか?
 

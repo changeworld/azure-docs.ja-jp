@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 754f30f7931f9fad6a95328cbf8ab34f70cb75a0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426111"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82105575"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>チュートリアル:Azure Key Vault に証明書をインポートする
 
@@ -76,11 +76,14 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     - **[証明書の作成方法]** :インポート。
     - **[証明書名]** :ExampleCertificate。
     - **[証明書ファイルのアップロード]** : ディスクから証明書ファイルを選択します
-    - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
+    - **[パスワード]** : パスワードで保護された証明書ファイルをアップロードする場合は、ここにパスワードを指定します。 それ以外の場合は空白のまま残します。 証明書ファイルが正常にインポートされると、このパスワードはキー コンテナーによって削除されます。
+4. **Create** をクリックしてください。
 
 ![証明書のプロパティ](../media/certificates/tutorial-import-cert/cert-import.png)
 
-証明書が正常にインポートされたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 すると、いくつかのプロパティを確認できます。 
+**[インポート]** を使用して証明書を追加することにより、証明書のパラメーター (有効期間、発行者名、アクティブ化した日など) は、Azure Key Vault によって自動的に設定されます。
+
+証明書が正常にインポートされたことを示すメッセージが表示されたら、一覧でその証明書をクリックすることで、対応するプロパティを表示できます。 
 
 ![証明書のプロパティ](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
@@ -101,6 +104,22 @@ az keyvault certificate import --file
 ```
 パラメーターの詳細については、[こちら](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)を参照してください
 
+証明書のインポート後は、[certificate show](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) を使用して証明書を表示できます。
+
+
+```azurecli
+az keyvault certificate show [--id]
+                             [--name]
+                             [--only-show-errors]
+                             [--subscription]
+                             [--vault-name]
+                             [--version]
+```
+
+
+
+以上で終了です。キー コンテナーを作成して、証明書をインポートし、証明書のプロパティを確認しました。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Key Vault に関する他のクイック スタートとチュートリアルは、このクイック スタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
@@ -115,6 +134,6 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 
 このチュートリアルでは、キー コンテナーを作成して証明書を内部にインポートしました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
-- [Azure Key Vault での証明書の管理](/archive/blogs/kv/manage-certificates-via-azure-key-vault)の詳細を確認する
+- [Azure Key Vault での証明書作成の管理](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)の詳細を確認する
 - [REST API を使用した証明書のインポート](/rest/api/keyvault/importcertificate/importcertificate)の例を参照する
 - [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する

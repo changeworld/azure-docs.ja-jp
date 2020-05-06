@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a2bb636ba749cae50195cefeb8e7237d382fb99
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224039"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82182346"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -127,7 +127,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 2. **[ポリシーの作成と関連付け]** で、ポリシー名を指定します。 ここでは、**ContosoReplicationPolicy** を使用しています。
 3. このチュートリアルでは、既定の設定のままにします。
     - **[コピーの頻度]** には、(初期レプリケーション後に) 差分データをレプリケートする頻度が示されています。 既定の頻度は 5 分ごとです。
-    - **[復旧ポイントの保持期間]** は、復旧ポイントが 2 時間保持されるように設定されています。
+    - **[復旧ポイントの保持期間]** は、復旧ポイントが 2 時間保持されるように設定されています。 Hyper-V ホストでホストされている仮想マシンを保護する場合、リテンション期間の最大許容値は 24 時間です。
     - **[アプリ整合性スナップショットの頻度]** は、アプリ整合性スナップショットを含む復旧ポイントが 1 時間ごとに作成されるように設定されています。
     - **[初期レプリケーションの開始時刻]** には、初期レプリケーションがすぐに開始されることが示されています。
 4. ポリシーが作成されたら、 **[OK]** を選択します。 新しいポリシーを作成すると、指定された Hyper-V サイトに自動的に関連付けられます。 このチュートリアルでは、それは **ContosoHyperVSite** です。

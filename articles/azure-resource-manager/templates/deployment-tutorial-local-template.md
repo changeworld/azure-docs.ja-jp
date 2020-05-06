@@ -4,12 +4,12 @@ description: ローカル コンピューターから Azure Resource Manager テ
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8e3eb62fa52caeaa63808b6b9ea199bdff5c4da
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081821"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82188826"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>チュートリアル:ローカル Azure Resource Manager テンプレートをデプロイする
 
@@ -37,9 +37,7 @@ Azure PowerShell または Azure CLI をインストールした後で、初回�
 
 ## <a name="review-template"></a>テンプレートを確認する
 
-このチュートリアルで使用しているテンプレートは、[クイックスタート テンプレートに関するチュートリアル](template-tutorial-quickstart-template.md)で使用されているテンプレートに似ています。 テンプレートの作成に興味がある方は、そちらのチュートリアルをご覧ください。 ただし、このチュートリアルに取り組むうえで必須というわけではありません。
-
-このテンプレートは、ストレージ アカウント、App Service プラン、Web アプリをデプロイするものです。
+このテンプレートは、ストレージ アカウント、App Service プラン、Web アプリをデプロイするものです。 テンプレートの作成に興味がある方は、[クイックスタート テンプレートのチュートリアル](template-tutorial-quickstart-template.md)を参照してください。 ただし、このチュートリアルに取り組むうえで必須というわけではありません。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 

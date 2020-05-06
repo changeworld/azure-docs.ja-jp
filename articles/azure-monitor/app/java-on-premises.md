@@ -6,10 +6,10 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 04/16/2020
 ms.openlocfilehash: ea604a4e0f11db7146e6e3c11b47d5687abf571e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733628"
 ---
 # <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>オンレミスでの Java コード不要のアプリケーション監視 - Azure Monitor Application Insights - パブリック プレビュー
