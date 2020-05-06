@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75456631"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146516"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>チュートリアル:スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
 
@@ -38,6 +38,9 @@ ms.locfileid: "75456631"
 
 * Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。 このクイックスタートでは、Office 365 Outlook のアカウントを使用します。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI がやや異なることがあります。
 
+  > [!IMPORTANT]
+  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+
 * ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、[Bing 地図のキーを取得する方法](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)に関するページの手順に従ってください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
@@ -54,7 +57,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![ロジック アプリに関する情報を入力する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | LA-TravelTime | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"LA-TravelTime" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | お使いの Azure サブスクリプション名 |
@@ -89,7 +92,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![繰り返しトリガーの間隔と頻度を変更する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **間隔** | はい | 1 | チェックの間隔 (単位数) |
    | **頻度** | はい | Week | 定期実行の時間の単位 |
@@ -107,7 +110,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![スケジュールと定期実行の詳細を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **設定曜日** | 月曜日,火曜日,水曜日,木曜日,金曜日 | **[頻度]** を "週" に設定したときにのみ選択できます。 |
    | **設定時刻 (時間)** | 7,8,9 | **[頻度]** を "週" または "日" に設定したときにのみ選択できます。 この定期実行の時刻 (時) を選択します。 この例では、7 時、8 時、9 時に実行されます。 |
@@ -138,7 +141,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![Bing Maps API の接続を作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | BingMapsConnection | 接続の名前を指定します。 この例では、"BingMapsConnection" を使用しています。 |
    | **API キー** | はい | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、[キーの取得方法](https://msdn.microsoft.com/library/ff428642.aspx)に関するページを参照してください。 |
@@ -158,7 +161,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    !["Get route (ルートを取得する)" アクションの詳細を入力する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **通過地点 1** | はい | <*start-location*> | ルートの起点 |
    | **通過地点 2** | はい | <*end-location*> | ルートの目的地 |
@@ -189,10 +192,10 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 1. 変数の詳細を次のように入力します。
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **名前** | はい | travelTime | 変数の名前。 この例では、"travelTime" を使用します。 |
-   | **Type** | はい | 整数 | 変数のデータ型 |
+   | **Type** | はい | Integer | 変数のデータ型 |
    | **Value** | いいえ| 最新の移動時間を秒から分に変換する式 (この表の下の手順を参照)。 | 変数の初期値 |
    ||||
 
