@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219009"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker のリソースとナレッジ ベースに対する言語のサポート
@@ -35,52 +35,52 @@ ms.locfileid: "79219009"
 |アルメニア語|
 |ベンガル語|
 |バスク語|
-|ブルガリア語|
+|Bulgarian|
 |カタロニア語|
 |簡体中国語|
 |繁体字中国語|
-|クロアチア語|
-|チェコ語|
-|デンマーク語|
-|オランダ語|
-|英語|
-|エストニア語|
-|フィンランド語|
-|フランス語|
+|Croatian|
+|Czech|
+|Danish|
+|Dutch|
+|English|
+|Estonian|
+|Finnish|
+|French|
 |ガリシア語|
-|ドイツ語|
-|ギリシャ語|
+|German|
+|Greek|
 |グジャラート語|
 |ヘブライ語|
 |ヒンディー語|
-|ハンガリー語|
+|Hungarian|
 |アイスランド語|
 |インドネシア語|
 |アイルランド語|
-|イタリア語|
-|日本語|
+|Italian|
+|Japanese|
 |カンナダ語|
-|韓国語|
-|ラトビア語|
-|リトアニア語|
+|Korean|
+|Latvian|
+|Lithuanian|
 |マラヤーラム語|
 |マレー語|
 |ノルウェー語|
-|ポーランド語|
-|ポルトガル語|
+|Polish|
+|Portuguese|
 |パンジャーブ語|
-|ルーマニア語|
-|ロシア語|
+|Romanian|
+|Russian|
 |セルビア語 (キリル)|
 |セルビア語 (ラテン)|
-|スロバキア語|
-|スロベニア語|
-|スペイン語|
-|スウェーデン語|
+|Slovak|
+|Slovenian|
+|Spanish|
+|Swedish|
 |タミル語|
 |テルグ語|
-|タイ語|
-|トルコ語|
+|Thai|
+|Turkish|
 |ウクライナ語|
 |ウルドゥ語|
 |ベトナム語|

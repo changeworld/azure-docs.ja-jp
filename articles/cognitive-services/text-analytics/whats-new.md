@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 162e60ac8d33dc5d1951a58b0a9643b668608d7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77188802"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能

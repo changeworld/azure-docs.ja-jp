@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:C# を使用して Immersive Reader を起動する Web アプリを作成する
+title: クイック スタート:C# を使用してイマーシブ リーダーを起動する Web アプリを作成する
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Web アプリを一から構築して Immersive Reader API 機能を追加します。
+description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 8dd8459922caa9f765d59bc28fbf050b86834b46
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845249"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>クイック スタート:Immersive Reader を起動する Web アプリを作成する (C#)
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)
 
-[Immersive Reader](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
+[イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
-このクイックスタートでは、Web アプリを一から構築し、Immersive Reader SDK を使用して Immersive Reader 機能を統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)で入手できます。
+このクイックスタートでは、Web アプリを一から構築し、Immersive Reader SDK を使用してイマーシブ リーダー機能を統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)で入手できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
-* Azure Active Directory 認証用に構成された Immersive Reader リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 サンプル プロジェクトのプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
+* Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./how-to-create-immersive-reader.md)に従ってください。 サンプル プロジェクトのプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 
 ## <a name="create-a-web-app-project"></a>Web アプリ プロジェクトの作成
 
@@ -44,7 +44,7 @@ Model-View-Controller が組み込まれた ASP.NET Core Web アプリケーシ�
 
 ### <a name="configure-authentication-values"></a>認証の値の構成
 
-_ソリューション エクスプローラー_でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、_secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、Immersive Reader リソースを作成したときに取得した値を指定します。
+_ソリューション エクスプローラー_でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、_secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
 
 ```json
 {
@@ -216,11 +216,11 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 </div>
 ```
 
-すべてのテキストに、テキストの言語を示す **lang** 属性があることに注意してください。 この属性は、Immersive Reader が適切な言語と文法の機能を提供するために役立ちます。
+すべてのテキストに、テキストの言語を示す **lang** 属性があることに注意してください。 この属性は、イマーシブ リーダーが適切な言語と文法の機能を提供するために役立ちます。
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Immersive Reader の起動を処理するための JavaScript の追加
+## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>イマーシブ リーダーの起動を処理するための JavaScript の追加
 
-Immersive Reader ライブラリは、Immersive Reader の起動、Immersive Reader のボタンの表示などの機能を提供します。 [こちら](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)をご覧ください。
+イマーシブ リーダー ライブラリは、イマーシブ リーダーの起動、イマーシブ リーダーのボタンの表示などの機能を提供します。 [こちら](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)をご覧ください。
 
 _Views\Home\Index.cshtml_ の末尾に、次のコードを追加します。
 
@@ -300,15 +300,15 @@ _Views\Home\Index.cshtml_ の末尾に、次のコードを追加します。
 
 ![サンプル アプリ](./media/quickstart-csharp/4-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>Immersive Reader の起動
+## <a name="launch-the-immersive-reader"></a>イマーシブ リーダーの起動
 
-[Immersive Reader] ボタンをクリックすると、Immersive Reader が起動し、ページのコンテンツが表示されます。
+[イマーシブ リーダー] ボタンをクリックすると、イマーシブ リーダーが起動し、ページのコンテンツが表示されます。
 
 ![Immersive Reader](./media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Node.js クイックスタート](./quickstart-nodejs.md)で、Node.js と Immersive Reader SDK を使用して他にできることを確認する
+* [Node.js クイックスタート](./quickstart-nodejs.md)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
 * [Python チュートリアル](./tutorial-python.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
 * [iOS チュートリアル](./tutorial-ios-picture-immersive-reader.md)を見て、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する

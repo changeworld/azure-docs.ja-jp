@@ -4,10 +4,10 @@ description: Personalizer では、強化学習の用語を使用します。 �
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77624201"
 ---
 # <a name="terminology"></a>用語

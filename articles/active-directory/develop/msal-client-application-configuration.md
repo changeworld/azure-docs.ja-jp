@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230675"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81534467"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -85,7 +85,7 @@ Azure AD クラウド機関には、2 つの部分があります。
 
 Azure AD 機関の対象ユーザーとテナント ID の両方を指定した場合、MSAL では意味のある例外がスローされます。
 
-対象ユーザーを指定しない場合、アプリの対象ユーザーは Azure AD および個人用 Microsoft アカウントになります (つまり、`common` を指定した場合と同様の動作になります)。
+対象ユーザーを指定しない場合、アプリの対象ユーザーは Azure AD および個人用 Microsoft アカウントになります  (つまり、`common` を指定した場合と同様の動作になります)。
 
 ### <a name="effective-audience"></a>有効な対象ユーザー
 
@@ -106,11 +106,11 @@ Azure AD 機関の対象ユーザーとテナント ID の両方を指定した�
 ### <a name="redirect-uri-for-public-client-apps"></a>パブリック クライアント アプリ用のリダイレクト URI
 
 MSAL を使用してパブリック クライアント アプリを開発している場合:
-- デスクトップまたは UWP アプリケーションで `.WithDefaultRedirectUri()` を使用することがあります (MSAL.NET 4.1 以上)。 このメソッドは、パブリック クライアント アプリケーションのリダイレクト URI プロパティを、パブリック クライアント アプリケーションの既定の推奨リダイレクト URI に設定します。 
+- デスクトップまたは UWP アプリケーションで `.WithDefaultRedirectUri()` を使用することがあります (MSAL.NET 4.1 以上)。 このメソッドは、パブリック クライアント アプリケーションのリダイレクト URI プロパティを、パブリック クライアント アプリケーションの既定の推奨リダイレクト URI に設定します。
 
-  プラットフォーム  | リダイレクト URI  
+  プラットフォーム  | リダイレクト URI
   ---------  | --------------
-  デスクトップ アプリ (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  デスクトップ アプリ (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` の値。 これは、登録する必要がある WebAuthenticationBroker.GetCurrentApplicationCallbackUri() の結果に値を設定することによって、ブラウザーでの SSO を有効にします
   .NET Core | `https://localhost` 今のところ、埋め込み Web ビュー用の UI が .NET Core には存在しないため、これによって、ユーザーはシステム ブラウザーを使用して対話型認証を実行できるようになります。
 

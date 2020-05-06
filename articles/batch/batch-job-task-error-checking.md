@@ -1,18 +1,16 @@
 ---
-title: ジョブとタスクのエラーを確認する - Azure Batch | Microsoft Docs
+title: ジョブとタスクのエラーを確認する
 description: 確認するエラーとジョブやタスクのトラブルシューティング
-services: batch
 author: mscurrell
-ms.service: batch
 ms.topic: article
 ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c58bdf50f3e69b2b7d18f750f94fecdb512af85
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087008"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116028"
 ---
 # <a name="job-and-task-error-checking"></a>ジョブとタスクのエラーの確認
 
@@ -37,7 +35,7 @@ ms.locfileid: "79087008"
 
 エラーについては、次のジョブ プロパティをチェックする必要があります。
 
-- "[executionInfo](https://docs.microsoft.com/rest/api/batchservice/job/get#jobexecutioninformation)":
+- "[executionInfo](https://docs.microsoft.com/rest/api/batchservice/job/get#jobexecutioninformation)": 
   - ジョブの制約で指定された `terminateReason` を超えたためジョブが強制終了されたことを示す値が、`maxWallClockTime` プロパティに設定されることがあります。 また、ジョブの `onTaskFailure` プロパティが適切に設定されていない場合にタスクが失敗したことを示すように設定されることもあります。
   - スケジュール エラーが発生した場合は、[schedulingError](https://docs.microsoft.com/rest/api/batchservice/job/get#jobschedulingerror) プロパティが設定されます。
  

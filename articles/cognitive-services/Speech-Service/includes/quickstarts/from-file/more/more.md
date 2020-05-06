@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 5ebd56e102ab2ac113e509ea44966aa5f67e9b75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400624"
 ---
 ## <a name="additional-language-and-platform-support"></a>言語とプラットフォームのその他のサポート
 
 このタブをクリックした場合、お気に入りのプログラミング言語でクイックスタートが表示されないことがあります。 ご安心ください。GitHub で入手できる追加のクイックスタートの素材とコード サンプルを用意しています。 この表を使用して、お使いのプログラミング言語とプラットフォーム/OS の組み合わせに適したサンプルを見つけます。
 
-| Language | その他のクイックスタート | コード サンプル |
+| 言語 | その他のクイックスタート | コード サンプル |
 |--|--|--|
 | C# | [mic から][1-mic]、[BLOB から][1-blob] | [.NET Framework][dotnet]、[.NET Core][netcore]、[UWP][uwp]、[Unity][unity]、[Xamarin][xamarin] |
 | C++ | [mic から][2-mic]、[BLOB から][2-blob] | [Windows][cpp-windows]、[Linux][cpp-linux]、[macOS][cpp-mac] |

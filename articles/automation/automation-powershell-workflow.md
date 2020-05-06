@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235535"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81457537"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明
 
@@ -20,9 +20,12 @@ A workflow is a sequence of programmed, connected steps that perform long-runnin
 
 この記事のトピックに関する詳細については、「 [Windows PowerShell ワークフローについて](https://technet.microsoft.com/library/jj134242.aspx)」をご覧ください。
 
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+
 ## <a name="basic-structure-of-a-workflow"></a>ワークフローの基本構造
 
-PowerShell スクリプトを PowerShell ワークフローに変換する最初のステップは、スクリプトを **Workflow** キーワードで囲むことです。  ワークフローは、 **Workflow** キーワードで始まり、中かっこで囲まれたスクリプトの本文が後に続きます。 次の構文に示すように、ワークフローの名前は **Workflow** キーワードの後に続きます。
+PowerShell スクリプトを PowerShell ワークフローに変換する最初のステップは、スクリプトを `Workflow` キーワードで囲むことです。  ワークフローは、`Workflow` キーワードで始まり、中かっこで囲まれたスクリプトの本文が後に続きます。 次の構文に示すように、ワークフローの名前は `Workflow` キーワードの後に続きます。
 
 ```powershell
 Workflow Test-Workflow
@@ -33,7 +36,7 @@ Workflow Test-Workflow
 
 ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は " *.ps1*" でなければなりません。
 
-ワークフローにパラメーターを追加するには、スクリプトの場合と同様に **Param** キーワードを使用します。
+ワークフローにパラメーターを追加するには、スクリプトの場合と同様に `Param` キーワードを使用します。
 
 ## <a name="code-changes"></a>コードの変更
 
@@ -99,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。  ワークフロー内のコマンドは Windows Workflow Foundation に送信されて処理されますが、InlineScript ブロック内のコマンドは Windows PowerShell によって処理されます。
+`InlineScript` アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。  ワークフロー内のコマンドは Windows Workflow Foundation に送信されて処理されますが、InlineScript ブロック内のコマンドは Windows PowerShell によって処理されます。
 
 InlineScript は、次に示す構文を使用します。
 
@@ -154,7 +157,7 @@ InlineScript の使用について詳しくは、「[ワークフローでの Wi
 
 Windows PowerShell ワークフローの利点の 1 つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
 
-**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。 これは、次に示す構文を使用します。 この場合、Activity1 と Activity2 は同時に開始されます。 Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+`Parallel` キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。 これは、次に示す構文を使用します。 この場合、Activity1 と Activity2 は同時に開始されます。 Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
 
 ```powershell
 Parallel
@@ -189,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-**ForEach -Parallel** の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。 これは、次に示す構文を使用します。 この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 各項目について、Activity1 が完了してから Activity2 が開始されます。 Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。 並列処理を制限するため、`ThrottleLimit` パラメーターを使用します。 `ThrottleLimit` が高すぎると、問題が発生することがあります。 `ThrottleLimit` パラメーターの理想的な値は、環境内のさまざまな要因によって異なります。 最初は低い値で試して、特定の状況で機能するものが見つかるまで値を大きくしてさまざまな値を試してください。
+`ForEach -Parallel` の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。 これは、次に示す構文を使用します。 この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 各項目について、Activity1 が完了してから Activity2 が開始されます。 Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。 並列処理を制限するため、`ThrottleLimit` パラメーターを使用します。 `ThrottleLimit` が高すぎると、問題が発生することがあります。 `ThrottleLimit` パラメーターの理想的な値は、環境内のさまざまな要因によって異なります。 最初は低い値で試して、特定の状況で機能するものが見つかるまで値を大きくしてさまざまな値を試してください。
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +225,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>チェックポイント
 
-*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。 ワークフローがエラーで終了した場合、または中断した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。  **Checkpoint-Workflow** アクティビティを使用してワークフローにチェックポイントを設定できます。 Azure Automation には[フェア シェア](automation-runbook-execution.md#fair-share)という機能があり、実行時間が 3 時間を超える Runbook は、他の Runbook を実行できるようにアンロードされます。 アンロードされた Runbook は最終的には再び読み込まれ、その Runbook の最新のチェックポイントから再開されます。 最終的には Runbook が確実に完了するようにするには、3 時間未満の実行間隔でチェックポイントを追加する必要があります。 各実行中に新しいチェックポイントが追加され、3 時間後にエラーが原因で Runbook が削除されると、Runbook の再開がいつまでも実行されます。
+*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。 ワークフローがエラーで終了した場合、または中断した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。  `Checkpoint-Workflow` アクティビティを使用してワークフローにチェックポイントを設定できます。 Azure Automation には[フェア シェア](automation-runbook-execution.md#fair-share)という機能があり、実行時間が 3 時間を超える Runbook は、他の Runbook を実行できるようにアンロードされます。 アンロードされた Runbook は最終的には再び読み込まれ、その Runbook の最新のチェックポイントから再開されます。 最終的には Runbook が確実に完了するようにするには、3 時間未満の実行間隔でチェックポイントを追加する必要があります。 各実行中に新しいチェックポイントが追加され、3 時間後にエラーが原因で Runbook が削除されると、Runbook の再開がいつまでも実行されます。
 
 次のサンプル コードでは、Activity2 の後に例外が発生し、ワークフローが終了します。 ワークフローを再実行すると、設定された最後のチェックポイントの直後に Activity2 があるため、まず Activity2 が実行されます。
 
@@ -254,36 +257,37 @@ Workflow Copy-Files
 }
 ```
 
-ユーザー名資格情報は、[Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) アクティビティを呼び出した後、または最後のチェックポイントの後は保持されないため、資格情報を null に設定し、**Suspend-Workflow** またはチェックポイントが呼び出された後にアセット ストアから再取得する必要があります。  そうしないと、次のエラー メッセージが表示される場合があります。*永続データの保存が完了できなかったか、保存された永続データが壊れているため、ワークフロー ジョブを再開できません。ワークフローを再起動する必要があります。*
+ユーザー名資格情報は、[Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) アクティビティを呼び出した後、または最後のチェックポイントの後は保持されないため、資格情報を null に設定し、`Suspend-Workflow` またはチェックポイントが呼び出された後にアセット ストアから再取得する必要があります。  そうしないと、`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.` というエラー メッセージが表示される場合があります。
 
 次の同じコードは、PowerShell ワークフロー Runbook でこれを処理する方法を示しています。
 
 ```powershell
 workflow CreateTestVms
 {
-    $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-    $null = Connect-AzureRmAccount -Credential $Cred
+    $Cred = Get-AzAutomationCredential -Name "MyCredential"
+    $null = Connect-AzAccount -Credential $Cred
 
-    $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+    $VmsToCreate = Get-AzAutomationVariable -Name "VmsToCreate"
 
     foreach ($VmName in $VmsToCreate)
         {
         # Do work first to create the VM (code not shown)
 
         # Now add the VM
-        New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+        New-AzVM -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
         # Checkpoint so that VM creation is not repeated if workflow suspends
         $Cred = $null
         Checkpoint-Workflow
-        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-        $null = Connect-AzureRmAccount -Credential $Cred
+        $Cred = Get-AzAutomationCredential -Name "MyCredential"
+        $null = Connect-AzAccount -Credential $Cred
         }
 }
 ```
 
-> [!IMPORTANT]
-> これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
+> [!NOTE]
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
+
 
 これは、サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合には必要ありません。
 

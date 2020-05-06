@@ -1,31 +1,26 @@
 ---
 title: 統合された登録の使用のトラブルシューティング - Azure Active Directory
-description: Azure AD Multi-Factor Authentication とセルフサービス パスワード リセット の結合された登録のトラブルシューティングを行う (プレビュー)
+description: Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの結合された登録のトラブルシューティングを行う
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847390"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450940"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>結合されたセキュリティ情報の登録のトラブルシューティング (プレビュー)
+# <a name="troubleshooting-combined-security-information-registration"></a>結合されたセキュリティ情報の登録のトラブルシューティング
 
 この記事の情報は、統合された登録エクスペリエンスのユーザーによって報告された問題をトラブルシューティングしている管理者を支援するように考慮されています。
-
-|     |
-| --- |
-| Azure Multi-Factor Authentication と Azure Active Directory (Azure AD) セルフサービス パスワード リセットのための統合されたセキュリティ情報の登録は、Azure AD のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
 
 ## <a name="audit-logs"></a>監査ログ
 
@@ -57,7 +52,7 @@ ms.locfileid: "74847390"
 
 | 症状 | トラブルシューティングの手順 |
 | --- | --- |
-| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 3.方法が有効になっている場合は、ユーザーが設定を許可されている、その最大数の方法を既に設定していないことを確認します。|
+| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 3.方法が有効になっている場合は、ユーザーが設定できるメソッドの最大数をまだ設定していないことを確実にします。|
 
 ## <a name="disable-combined-registration"></a>結合された登録を無効にする
 
@@ -150,16 +145,16 @@ PowerShell ウィンドウで、次のコマンドを実行し、スクリプト
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>プレビュー エクスペリエンスを無効にする
+### <a name="disable-the-updated-experience"></a>更新されたエクスペリエンスを無効にする
 
-ユーザーのプレビュー エクスペリエンスを無効にするには、次の手順を実行します。
+ユーザーの更新されたエクスペリエンスを無効にするには、次の手順を行います。
 
 1. ユーザー管理者として Azure Portal にサインインします。
 2. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
 3. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます]** で、セレクターを **[なし]** に設定して **[保存]** を選択します。
 
-ユーザーは、プレビュー エクスペリエンスを使った登録を求められなくなります。
+ユーザーは、更新されたエクスペリエンスを使った登録を求められなくなります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [セルフサービス パスワード リセット と Azure Multi-Factor Authentication の結合された登録のパブリック プレビューについてさらに学習する](concept-registration-mfa-sspr-combined.md)
+* [セルフサービス パスワード リセットと Azure Multi-Factor Authentication の統合された登録についてさらに学習する](concept-registration-mfa-sspr-combined.md)

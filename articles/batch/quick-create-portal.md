@@ -1,20 +1,15 @@
 ---
 title: Azure クイック スタート - Batch ジョブの実行 - ポータル
 description: Azure portal を使用して Batch アカウント、コンピューティング ノードのプール、そのプールで基本的なタスクを実行するジョブを作成する方法を説明します。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4857b9ffb38cf48678f793284afaaf3bbefb7e42
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215310"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82114158"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート: Azure Portal で最初の Batch ジョブを実行する
 

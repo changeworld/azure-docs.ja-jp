@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653931"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450923"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -48,7 +48,7 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 Insider Build 18945 
 
 ### <a name="enable-the-combined-registration-experience"></a>統合された登録エクスペリエンスを有効にする
 
-パスワードなしの認証方法の登録機能は、統合された登録のプレビューに依存しています。 「[統合されたセキュリティ情報の登録の有効化 (プレビュー)](howto-registration-mfa-sspr-combined.md)」の記事に記載されている手順に従って、統合された登録のプレビューを有効にします。
+パスワードなしの認証方法の登録機能は、統合された登録機能に依存しています。 [統合されたセキュリティ情報の登録の有効化 (プレビュー)](howto-registration-mfa-sspr-combined.md) に関する記事に記載されている手順に従って、統合された登録を有効にします。
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2 セキュリティ キーの方法を有効にする
 

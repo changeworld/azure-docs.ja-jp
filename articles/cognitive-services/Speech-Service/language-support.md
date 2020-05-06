@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 2a876349af2bd53a46737dda82961afe442bae05
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0b6fea381bd6b4aa8ad3e7061e6f632176c41033
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81401079"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82113835"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -241,6 +241,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | フランス語                  | `fr`          |
 | ドイツ語                  | `de`          |
 | ギリシャ語                   | `el`          |
+| グジャラート語                | `gu`          |
 | ハイチ・クレオール語          | `ht`          |
 | ヘブライ語                  | `he`          |
 | ヒンディー語                   | `hi`          |
@@ -261,6 +262,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | マレー語                   | `ms`          |
 | マラヤーラム語               | `ml`          |
 | マルタ語                 | `mt`          |
+| マオリ語                   | `mi`          |
+| マラーティー語                 | `mr`          |
 | ノルウェー語               | `nb`          |
 | ペルシャ語                 | `fa`          |
 | ポーランド語                  | `pl`          |
@@ -274,7 +277,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | セルビア語 (キリル)      | `sr-Cyrl`     |
 | セルビア語 (ラテン)         | `sr-Latn`     |
 | スロバキア語                  | `sk`          |
-| スロベニア語               | `sl`          |
+| スロベニア語                | `sl`          |
 | スペイン語                 | `es`          |
 | スウェーデン語                 | `sv`          |
 | タヒチ語                | `ty`          |

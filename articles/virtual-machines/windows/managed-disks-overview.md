@@ -1,18 +1,18 @@
 ---
-title: Windows VM 向け Azure Disk Storage の概要
-description: Azure Windows VM を使用するときにストレージ アカウントを管理する Azure マネージド ディスクの概要
+title: Azure Disk Storage の概要
+description: Azure VM を使用するときにストレージ アカウントを管理する Azure マネージド ディスクの概要
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7b2c2c1289a40d63b2f396ee59000c3aedb14c3d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4b3a66ce00582a3ef05e77f65acdc46fbde8ce72
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75460032"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82148080"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 

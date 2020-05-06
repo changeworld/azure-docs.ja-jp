@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336725"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677323"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -41,6 +41,15 @@ ms.locfileid: "80336725"
 - プロキシに承認資格情報が必要な場合は、それを提供します。
 - URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、[以下の URL](migrate-appliance.md#url-access) を許可リストに追加します。
 - インターネットへの接続にインターセプト プロキシを使用している場合は、[こちらの手順](https://docs.microsoft.com/azure/migrate/concepts-collector)を使用して、プロキシの証明書をアプライアンス VM にインポートします。
+
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>アプライアンス Web アプリから Azure にサインインできない
+
+Azure へのサインインに正しくない Azure アカウントを使用している場合は、"申し訳ありませんが、サインイン中に問題が発生しました" というエラーが表示されます。 このエラーは、次のいくつかの理由で発生します。
+
+- パブリック クラウド用のアプライアンス Web アプリケーションにサインインする場合に、Government クラウド ポータルのユーザー アカウント資格情報を使用している。
+- Government クラウド用のアプライアンス Web アプリケーションにサインインする場合に、プライベート クラウド ポータルのユーザー アカウントの資格情報を使用している。
+
+正しい資格情報を使用していることを確認します。
 
 ##  <a name="datetime-synchronization-error"></a>日付と時刻の同期エラー
 
@@ -83,13 +92,13 @@ ms.locfileid: "80336725"
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>エラー 60028: 検出を開始できなかった
 
-エラー 60028: "Discovery couldn't be initiated because of an error. The operation failed for the specified list of hosts or clusters" (エラーが発生したため、検出を開始できませんでした。指定されたホストまたはクラスターのリストに対する操作に失敗しました) は、VM 情報のアクセスまたは取得で問題が発生したため、エラーで示されているホストで検出を開始できなかったことを示します。 残りのホストは正常に追加されました。
+エラー 60028: "Discovery couldn't be initiated because of an error.  The operation failed for the specified list of hosts or clusters" (エラーが発生したため、検出を開始できませんでした。指定されたホストまたはクラスターのリストに対する操作に失敗しました) は、VM 情報のアクセスまたは取得で問題が発生したため、エラーで示されているホストで検出を開始できなかったことを示します。 残りのホストは正常に追加されました。
 
 - **[ホストの追加]** オプションを使用して、エラーで示されているホストをもう一度追加します。
 - 検証エラーが発生している場合は、修復のガイダンスを確認してエラーを修正し、 **[保存して検出を開始]** オプションをもう一度試します。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>エラー 60025: Azure AD operation failed (Azure AD の操作が失敗しました) 
-エラー 60025: "An Azure AD operation failed. The error occurred while creating or updating the Azure AD application" (Azure AD の操作が失敗しました。Azure AD アプリケーションを作成または更新しているときにエラーが発生しました) は、検出を開始するために使用された Azure ユーザー アカウントが、アプライアンスの登録に使用されたアカウントと異なる場合に発生します。 次のいずれかの操作を行います。
+エラー 60025: "An Azure AD operation failed.  The error occurred while creating or updating the Azure AD application" (Azure AD の操作が失敗しました。Azure AD アプリケーションを作成または更新しているときにエラーが発生しました) は、検出を開始するために使用された Azure ユーザー アカウントが、アプライアンスの登録に使用されたアカウントと異なる場合に発生します。 次のいずれかの操作を行います。
 
 - 検出を開始するユーザー アカウントが、アプライアンスの登録に使用するものと同じであることを確認します。
 - 検出操作が失敗しているユーザー アカウントに、Azure Active Directory アプリケーションのアクセス許可を提供します。

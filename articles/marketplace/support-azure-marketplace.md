@@ -1,33 +1,34 @@
 ---
-title: Azure Marketplace および AppSource のサポート | Azure
+title: コマーシャル マーケットプレースのサポート | Azure Marketplace
 description: Azure Marketplace と AppSource のサポート情報とリンク
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 3/19/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284927"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159917"
 ---
-# <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
+# <a name="support-for-the-marketplace"></a>サポート (Marketplace)
+
 Marketplace のサポート オプションの一覧です。  
 
 さらに、[C+AI コミュニティ フォーラムの Marketplace チャネル](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)で、多くの質問の答えを得ることができます。  
 
 ## <a name="onboarding"></a>オンボード
 
-オンボードおよび作業の開始に関する問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://aka.ms/marketplacepublishersupport)のチケットを開きます。
+オンボードおよび作業の開始に関する問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://partner.microsoft.com/support/v2/?stage=1)のチケットを開きます。
 
-## <a name="partner-center-or-cloud-partner-portal"></a>パートナー センターまたは Cloud パートナー ポータル  
+## <a name="partner-center"></a>パートナー センター   
 
 | サポート窓口 | 説明 | 可用性 |  
 |:--- |:--- |:--- |  
-| 詳細については、[Marketplace のサポート](https://aka.ms/marketplacepublishersupport) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターまたは Cloud パートナー ポータルのサポート | 24x5 がサポートされています。 |  
+| 詳細については、[Marketplace のサポート](https://partner.microsoft.com/support/v2/?stage=1) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターのサポート。 | 24x5 がサポートされています。 |  
 
 ## <a name="technical"></a>技術  
 
@@ -47,7 +48,7 @@ Marketplace のサポート オプションの一覧です。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [「Azure Marketplace と AppSource の公開ガイド」ページ](https://docs.microsoft.com/azure/marketplace/)を参照してください。
-* 詳細については、「[パートナー センターでの商業マーケットプレース プログラムのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)」を参照してください。
+* [コマーシャル マーケットプレース公開ガイドのページ](https://docs.microsoft.com/azure/marketplace/)を参照してください。
+* 詳細については、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)」を参照してください。
 
 ---

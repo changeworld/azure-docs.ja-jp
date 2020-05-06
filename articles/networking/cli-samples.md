@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
 manager: timlt
-editor: tysonn
 tags: ''
 ms.assetid: ''
 ms.service: virtual-network
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: kumud
-ms.openlocfilehash: 21d8896e4f87b432908a2ccf6a994a5c29d4b293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84754a61bfe9537e928759aefbcb5dcddce33089
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840521"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81457962"
 ---
 # <a name="azure-cli-samples-for-networking"></a>ネットワーク用の Azure CLI サンプル
 
