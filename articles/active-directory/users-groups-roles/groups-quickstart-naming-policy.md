@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e419ac5c3d292b7e630d1ebb3d3b9f59ef7b8a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74026931"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582823"
 ---
-# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート: Azure Active Directory におけるグループの名前付けポリシー
+# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート:Azure Active Directory におけるグループの名前付けポリシー
 
-このクイック スタートでは、Azure Active Directory (Azure AD) テナントに存在するグループの並べ替えと検索がしやすいよう、ユーザーによって作成される Office 365 グループの名前付けポリシーをテナントに設定します。 名前付けポリシーの使用例を次に示します。
+このクイックスタートでは、Azure Active Directory (Azure AD) 組織に存在するグループの並べ替えと検索がしやすいよう、ユーザーによって作成される Office 365 グループの名前付けポリシーを組織に設定します。 名前付けポリシーの使用例を次に示します。
 
 * グループ、メンバーシップ、地理的地域の機能やグループ作成者の職務を伝える。
 * アドレス帳でグループを分類しやすいようにする。
@@ -31,7 +31,7 @@ ms.locfileid: "74026931"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Azure portal を使用してテナントのグループ名前付けポリシーを構成する
+## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>Azure portal でグループの名前付けポリシーを構成する
 
 1. ユーザー管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を選択し、 **[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a2d79391832bbb5424c6d4096eb5c1a597623367
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81421896"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204453"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -49,7 +49,7 @@ P2S クライアント用の DNS サーバーを追加するには、2つのオ�
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>ユーザー VPN (ポイント対サイト) の場合、サポートされているクライアントの数はいくつですか。
 
-各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 10 では、5,000 接続がサポートされます。スケール ユニット 11 以上では最大 10,000 接続がサポートされます。 たとえば、ユーザーが 1 スケール ユニットを選択したとします。 各スケール ユニットはデプロイされた 1 つのアクティブ/アクティブ ゲートウェイを意味し、(この例では 2 つある) インスタンスのそれぞれで最大 500 接続がサポートされます。 このスケール ユニットでは、ゲートウェイあたり 500 接続 x 2 となるからといって、500 ではなく 1,000 を見込んで計画を立てるわけにはいきません。インスタンスがサービスを提供する必要がある場合に、推奨接続数を超えると、余剰分の 500 の接続が中断される可能性があるためです。
+各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 12 では、5,000 接続がサポートされます。スケール ユニット 13 から 20 では最大 10,000 接続がサポートされます。 たとえば、ユーザーが 1 スケール ユニットを選択したとします。 各スケール ユニットはデプロイされた 1 つのアクティブ/アクティブ ゲートウェイを意味し、(この例では 2 つある) インスタンスのそれぞれで最大 500 接続がサポートされます。 このスケール ユニットでは、ゲートウェイあたり 500 接続 x 2 となるからといって、500 ではなく 1,000 を見込んで計画を立てるわけにはいきません。インスタンスがサービスを提供する必要がある場合に、推奨接続数を超えると、余剰分の 500 の接続が中断される可能性があるためです。
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) と Azure Virtual WAN VPN ゲートウェイの違いは何ですか。
 
@@ -212,9 +212,13 @@ Azure Virtual WAN ハブでは、最大で 1,000 個のサイト間接続、10,0
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Virtual WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか
 
 仮想ハブが複数のリモート ハブから同じルートを学習する場合は、次の順序で決定されます。
-1) ルートの発信元 a) ネットワーク ルート – 仮想ハブ ゲートウェイによって直接習得された VNET プレフィックス b) BGP c) ハブの RouteTable (静的に構成されたルート) d) InterHub ルート
+1) ルートの発信元  a) ネットワーク ルート – 仮想ハブ ゲートウェイによって直接習得された VNET プレフィックス  b) ハブの RouteTable (静的に構成されたルート)  c) BGP  d) InterHub ルート
 2)  ルート メトリック:Virtual WAN では、VPN よりも ExpressRoute が優先されます。 ExpressRoute ピアは VPN ピアと比べて重み付けが高くなります
 3)  AS パスの長さ
+
+### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
+
+IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。IPv6 をサポートする VNET があり、その VNET を Virtual WAN に接続する必要がある場合、このシナリオもサポートされません。 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Basic タイプの Virtual WAN と Standard タイプの Virtual WAN の違いは何ですか。
 
