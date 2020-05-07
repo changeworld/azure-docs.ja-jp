@@ -2,20 +2,20 @@
 title: テンプレートでの Azure Key Vault の使用
 description: Azure Key Vault を使用して Resource Manager テンプレートのデプロイ時にセキュリティで保護されたパラメーターの値を渡す方法について説明します
 author: mumian
-ms.date: 05/23/2019
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 440835f50d2ef9c03dabc7a66e8f162e3fa15b2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 7fd84fc2e98578772c806f358cb8d6c400e0d994
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260702"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185015"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
-Azure のキー コンテナーからシークレットを取得し、Azure Resource Manager (ARM) テンプレートのデプロイ時にシークレットをパラメーターとして渡す方法を説明します。 キー コンテナー ID のみを参照するため、パラメーター値が公開されることはありません。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください
+Azure のキー コンテナーからシークレットを取得し、Azure Resource Manager (ARM) テンプレートのデプロイ時にシークレットをパラメーターとして渡す方法を説明します。 キー コンテナー ID のみを参照するため、パラメーター値が公開されることはありません。 キー コンテナーのシークレットは、静的 ID または動的 ID を使用して参照することができます。 このチュートリアルでは、静的 ID を使用します。 静的 ID を使用する場合、テンプレート ファイルではなく、テンプレート パラメーター ファイルでキー コンテナーを参照します。 両方のアプローチの詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください
 
 「[リソースのデプロイ順序の設定](./template-tutorial-create-templates-with-dependent-resources.md)」チュートリアルでは、仮想マシン (VM) を作成します。 VM 管理者のユーザー名とパスワードを指定する必要があります。 パスワードを指定する代わりに、Azure Key Vault にパスワードを事前に格納しておき、デプロイ時にキー コンテナーからパスワードを取得するようテンプレートをカスタマイズすることができます。
 
@@ -33,8 +33,6 @@ Azure のキー コンテナーからシークレットを取得し、Azure Reso
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
@@ -49,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-key-vault"></a>キー コンテナーを準備する
 
-このセクションでは、テンプレートをデプロイするときにシークレットを取得できるように、キー コンテナーを作成し、それにシークレットを追加します。 キー コンテナーを作成するにはさまざまな方法があります。 このチュートリアルでは、Azure PowerShell を使用して [ARM テンプレート](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)をデプロイします。 このテンプレートは、次の処理を実行します。
+このセクションでは、テンプレートをデプロイするときにシークレットを取得できるように、キー コンテナーを作成し、それにシークレットを追加します。 キー コンテナーを作成するにはさまざまな方法があります。 このチュートリアルでは、Azure PowerShell を使用して [ARM テンプレート](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)をデプロイします。 このテンプレートは、次の 2 つのことを行います。
 
 * `enabledForTemplateDeployment` プロパティを有効にしてキー コンテナーを作成します。 テンプレートのデプロイ プロセスが、このキー コンテナーで定義されているシークレットにアクセスできるようにするには、このプロパティを *true* にする必要があります。
 * キー コンテナーにシークレットを追加します。 シークレットは、VM の管理者パスワードを格納します。
@@ -72,14 +70,16 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId -secretValue $secretValue
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!IMPORTANT]
 > * リソース グループ名は、**rg** が追加されたプロジェクト名です。 [このチュートリアルで作成したリソースのクリーンアップ](#clean-up-resources)を容易にするには、[次のテンプレートをデプロイする](#deploy-the-template)ときに、同じプロジェクト名およびリソース グループ名を使用します。
 > * シークレットの既定の名前は **vmAdminPassword** です。 これは、テンプレート内でハードコードされています。
-> * テンプレートによってシークレットを取得できるようにするには、キー コンテナーに対する [テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする] アクセス ポリシーを有効にする必要があります。 このポリシーは、テンプレートで有効にします。 アクセス ポリシーの詳細については、「[キー コンテナーとシークレットをデプロイする](./key-vault-parameter.md#deploy-key-vaults-and-secrets)」を参照してください。
+> * テンプレートによってシークレットを取得できるようにするには、キー コンテナーに対する **[テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする]** アクセス ポリシーを有効にする必要があります。 このポリシーは、テンプレートで有効にします。 アクセス ポリシーの詳細については、「[キー コンテナーとシークレットをデプロイする](./key-vault-parameter.md#deploy-key-vaults-and-secrets)」を参照してください。
 
-テンプレートには、*keyVaultId* という 1 つの出力値があります。 仮想マシンをデプロイするときに、後で使用するために ID 値を書き留めておきます。 リソース ID の形式は、次のとおりです。
+テンプレートには、*keyVaultId* という 1 つの出力値があります。 後でこのチュートリアルの中でシークレット値を取得する際、シークレット名と共にこの ID を使用することになります。 リソース ID の形式は、次のとおりです。
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -107,14 +107,15 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. **[開く]** を選択して、ファイルを開きます。 シナリオは、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」で使用したものと同じです。
-   このテンプレートには、次の 5 つのリソースが定義されています。
+1. **[開く]** を選択して、ファイルを開きます。 シナリオは、「[チュートリアル: 依存リソースを含む ARM テンプレートを作成する](./template-tutorial-create-templates-with-dependent-resources.md)」の「テンプレートのデプロイ」セクションを参照してください。
+   このテンプレートには、次の 6 つのリソースが定義されています。
 
-   * `Microsoft.Storage/storageAccounts` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
-   * `Microsoft.Network/publicIPAddresses` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
-   * `Microsoft.Network/virtualNetworks` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
-   * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
-   * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts)。
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)。
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)。
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)。
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)。
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)。
 
    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 
@@ -128,7 +129,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="edit-the-parameters-file"></a>パラメーター ファイルを編集する
 
-テンプレート ファイルに変更を加える必要はありません。
+静的 ID を使用した方法では、テンプレート ファイルに変更を加える必要はありません。 シークレット値の取得は、テンプレート パラメーター ファイルを構成することによって行います。
 
 1. Visual Studio Code で、*azuredeploy.parameters.json* がまだ開かれていない場合は、開きます。
 1. `adminPassword` パラメーターを次のように更新します。
@@ -145,7 +146,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     ```
 
     > [!IMPORTANT]
-    > **id** の値を、前の手順で作成したキー コンテナーのリソース ID に置き換えます。
+    > **id** の値を、前の手順で作成したキー コンテナーのリソース ID に置き換えます。 secretName は **vmAdminPassword** としてハードコーディングされます。  「[キー コンテナーを準備する](#prepare-a-key-vault)」を参照してください。
 
     ![キー コンテナーと Resource Manager テンプレートの仮想マシンのデプロイ パラメーター ファイルを統合する](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
@@ -160,22 +161,30 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-「[テンプレートのデプロイ](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」の手順に従います。 *azuredeploy.json* と *azuredeploy.parameters.json* の両方を Cloud Shell にアップロードし、次の PowerShell スクリプトを使用してテンプレートをデプロイします。
+1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
-```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
-$location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
+1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
 
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile "$HOME/azuredeploy.json" `
-    -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
+    ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-Write-Host "Press [ENTER] to continue ..."
-```
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 *azuredeploy.json* と *azuredeploy.parameters.json* の両方を Cloud Shell にアップロードします。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
-テンプレートをデプロイするときに、キー コンテナーで使用したのと同じリソース グループを使用します。 このようにすると、2 つではなく 1 つのリソース グループのみを削除すればよいため、リソースのクリーンアップが簡単になります。
+1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
+    $location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroupDeployment `
+        -ResourceGroupName $resourceGroupName `
+        -TemplateFile "$HOME/azuredeploy.json" `
+        -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
+
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    テンプレートをデプロイするときに、キー コンテナーで使用したのと同じリソース グループを使用します。 このようにすると、2 つではなく 1 つのリソース グループのみを削除すればよいため、リソースのクリーンアップが簡単になります。
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 

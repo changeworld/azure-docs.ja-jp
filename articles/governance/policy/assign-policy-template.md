@@ -4,12 +4,12 @@ description: このクイックスタートでは、Resource Manager テンプ�
 ms.date: 03/16/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: ae6b2d151baaa904215639276c7fb74766810c6a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 646e2e064618e70fd9e9e747926f0886d85fde26
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606595"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82187785"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 次の値を選択または入力します。
 
-   | 名前 | Value |
+   | 名前 | 値 |
    |------|-------|
    | サブスクリプション | Azure サブスクリプションを選択します。 |
    | Resource group | **[新規作成]** を選択し、名前を指定して、 **[OK]** を選択します。 スクリーンショットでは、リソース グループ名は _mypolicyquickstart\<MMDD 形式の日付\>rg_ です。 |
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ページの左側にある **[コンプライアンス]** を選択します。 次に、作成した "**Managed Disks を使用していない VM の監査**" ポリシー割り当てを見つけます。
 
-![ポリシーのコンプライアンスの概要ページ](./media/assign-policy-template/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="ポリシーのコンプライアンスの概要ページ" border="false":::
 
 この新しい割り当てに準拠していない既存のリソースがある場合、 **[準拠していないリソース]** の下に表示されます。
 
@@ -84,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. "**マネージド ディスクを使用しない VM の監査**" ポリシー割り当てを右クリックし、 **[割り当ての削除]** を選択します。
 
-   ![コンプライアンスの概要ページから割り当てを削除する](./media/assign-policy-template/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="コンプライアンスの概要ページから割り当てを削除する" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

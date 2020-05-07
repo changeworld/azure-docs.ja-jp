@@ -4,12 +4,12 @@ description: Azure でバックアップおよび Recovery Services を使用し
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 56410b5302611d5de3d72f727e1a4c36bd49ca7e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222449"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160940"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure でディスクを復元し、回復した VM を作成する
 
@@ -87,8 +87,21 @@ az backup recoverypoint list \
         --target-resource-group targetRG
     ```
 
-> [!WARNING]
-> ターゲット リソース グループを指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。
+    > [!WARNING]
+    > ターゲット リソース グループを指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアの利点が得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、target-resource-group パラメーターを指定せず、restore-as-unmanaged-disk パラメーターを代わりに指定します。 このパラメーターは、az 3.4.0 以降で利用できます。
+
+    ```azurecli-interactive
+    az backup restore restore-disks \
+    --resource-group myResourceGroup \
+    --vault-name myRecoveryServicesVault \
+    --container-name myVM \
+    --item-name myVM \
+    --storage-account mystorageaccount \
+    --rp-name myRecoveryPointName
+    --restore-as-unmanaged-disk
+    ```
+
+これにより、マネージド ディスクがアンマネージド ディスクとして指定のストレージ アカウントに復元され、"インスタント" リストア機能は利用されなくなります。 CLI の将来のバージョンでは、target-resource-group パラメーターと 'restore-as-unmanaged-disk' パラメーターのどちらかを指定することが必須となります。
 
 ### <a name="unmanaged-disks-restore"></a>アンマネージド ディスクの復元
 
@@ -191,7 +204,7 @@ az backup job show \
 
 ### <a name="fetch-the-deployment-template"></a>デプロイ テンプレートをフェッチする
 
-このテンプレートは、顧客のストレージ アカウントと指定されたコンテナーの下にあるため、直接にはアクセスできません。 このテンプレートにアクセスするには (一時的な SAS トークンと共に) 完全な URL が必要です。
+テンプレートは、顧客のストレージ アカウントと指定されたコンテナーの下にあるため、直接アクセスすることはできません。 このテンプレートにアクセスするには (一時的な SAS トークンと共に) 完全な URL が必要です。
 
 最初に、ジョブの詳細からテンプレートの BLOB URI を抽出します
 

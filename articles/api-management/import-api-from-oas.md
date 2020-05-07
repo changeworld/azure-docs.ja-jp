@@ -10,21 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2e4dee74eb0c50e8e12d3f9ff0dccdd83271ea65
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77468390"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202912"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI 仕様のインポート
 
 この記事では、 https://conferenceapi.azurewebsites.net?format=json に存在する "OpenAPI の仕様" のバックエンド API をインポートする方法を示します。 このバックエンド API は Microsoft によって提供され、Azure でホストされています。 また、APIM API をテストする方法についても説明します。
-
-> [!IMPORTANT]
-> OpenAPI のインポートに関する重要な情報とヒントについては、この[ドキュメント](https://azure.microsoft.com/blog/announcing-the-preview-of-openapi-specification-v3-support-in-azure-api-management/)を参照してください。
 
 この記事では、次のことについて説明します。
 
@@ -35,47 +32,21 @@ ms.locfileid: "77468390"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
+次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
-1. **[API Management]** で **[API]** を選びます。
+1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[OpenAPI の仕様]** を選択します。
 
     ![OpenAPI の仕様](./media/import-api-from-oas/oas-api.png)
-3. 適切な設定を入力します。 作成時に API のすべての値を設定できます。 また、 **[設定]** タブに移動することで、一部の値を後で設定することもできます。 <br/> **Tab** キーを押すと、一部 (またはすべて) のフィールドに、指定したバックエンド サービスの情報が入力されます。
-
-    ![API の作成](./media/api-management-get-started/create-api.png)
-
-    |設定|値|説明|
-    |---|---|---|
-    |**OpenAPI の仕様**|https://conferenceapi.azurewebsites.net?format=json|API を実装しているサービスを参照します。 要求は、API Management によってこのアドレスに転送されます。|
-    |**[表示名]**|*Demo Conference API\(デモ会議 API\)*|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。 <br/>この名前は開発者ポータルに表示されます。|
-    |**名前**|*demo-conference-api*|API の一意の名前を指定します。 <br/>サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。|
-    |**説明**|API の任意の説明を指定します。|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。|
-    |**API URL サフィックス**|*conference*|サフィックスは、API Management サービスのベース URL に付加されます。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。|
-    |**[URL スキーム]**|*HTTPS*|API へのアクセスに使用できるプロトコルを決定します。 |
-    |**成果物**|*無制限*| API を成果物に関連付けることで API を公開します。 必要に応じてこの新しい API を成果物に追加するには、成果物名を入力します。 この手順を複数回繰り返して、API を複数の成果物に追加できます。<br/>製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。<br/> 各 API Management インスタンスは、**スターター**および**無制限**という 2 つのサンプル成果物を既定で備えています。 |
-
-4. **作成** を選択します。
+3. API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+4. **［作成］** を選択します
 
 > [!NOTE]
 > API インポートの制限事項については、[別の記事](api-management-api-import-restrictions.md)で説明されています。
-
-## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal での新しい API のテスト
-
-![API のテスト マップ](./media/api-management-get-started/01-import-first-api-01.png)
-
-Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。
-
-1. 前の手順 ( **[API]** タブ) で作成した API を選びます。
-2. **[テスト]** タブをクリックします。
-3. **[GetSpeakers]** をクリックします。 このページには、クエリ パラメーターのフィールド (この例では何も表示されません) とヘッダーが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 キーが自動的に入力されます。
-4. **[送信]** をクリックします。
-
-    バックエンドは **200 OK** といくつかのデータで応答します。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

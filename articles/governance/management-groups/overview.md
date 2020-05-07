@@ -4,10 +4,10 @@ description: 管理グループ、そのアクセス許可のしくみ、その�
 ms.date: 04/15/2020
 ms.topic: overview
 ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81381536"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
@@ -50,7 +50,7 @@ ms.locfileid: "81381536"
   - 既定では、新しいサブスクリプションは作成時に自動的にルート管理グループに設定されます。
 - すべての Azure ユーザーはルート管理グループを表示できますが、すべてのユーザーがルート管理グループを管理するアクセス権を持つわけではありません。
   - サブスクリプションへのアクセス権を持つすべてのユーザーは、階層内にそのサブスクリプションが存在するコンテキストを参照できます。  
-  - 既定では、ルート管理グループには誰もアクセスできません。 Azure AD 全体管理者は、自分自身を昇格させてアクセス権を取得できる唯一のユーザーです。 ルート管理グループへのアクセス権を取得した全体管理者は、他のユーザーが管理できるように任意の  
+  - 既定では、ルート管理グループには誰もアクセスできません。 Azure AD 全体管理者は、自分自身を昇格させてアクセス権を取得できる唯一のユーザーです。 ルート管理グループへのアクセス権を取得した全体管理者は、他のユーザーが管理できるように任意の   
     RBAC ロールを割り当てることができます。
 - SDK では、ルート管理グループ ("Tenant Root") が管理グループとして機能します。
 

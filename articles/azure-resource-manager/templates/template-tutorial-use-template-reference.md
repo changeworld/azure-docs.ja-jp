@@ -2,16 +2,16 @@
 title: テンプレート リファレンスの使用
 description: Azure Resource Manager テンプレート リファレンスを利用してテンプレートを作成します。
 author: mumian
-ms.date: 03/27/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878505"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185049"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>チュートリアル:Resource Manager テンプレート リファレンスを利用する
 
@@ -102,21 +102,42 @@ Visual Studio Code から、次のスクリーンショットに示したスト�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-デプロイ手順については、Visual Studio Code のクイック スタートの「[テンプレートのデプロイ](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)」セクションを参照してください。 テンプレートをデプロイするときは、**storageAccountType** パラメーターに、新しく追加する値を指定します (**Premium_ZRS** など)。 元のクイックスタート テンプレートを使用した場合、**Premium_ZRS** という値は許可されないため、デプロイに失敗します。  パラメーター値を渡すには、次のスイッチをデプロイ コマンドに追加します。
+1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
 
-```azurecli
---parameters storageAccountType='Premium_ZRS'
-```
+    ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
-```azurepowershell
--storageAccountType "Premium_ZRS"
-```
+1. Cloud Shell で次のコマンドを実行します。 PowerShell コードまたは CLI コードを表示するタブを選択します。
 
----
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters storageAccountType='Standard_RAGRS'
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -storageAccountType "Standard_RAGRS"
+    ```
+
+    ---
+
+ テンプレートをデプロイするときは、**storageAccountType** パラメーターに、新しく追加する値を指定します (**Standard_RAGRS** など)。 元のクイックスタート テンプレートを使用した場合、**Standard_RAGRS** という値は許可されないため、デプロイに失敗します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

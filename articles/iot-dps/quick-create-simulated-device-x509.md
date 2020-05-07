@@ -3,17 +3,17 @@ title: シミュレートされた X.509 デバイスを C を使用して Azure
 description: このクイック スタートでは、個別登録を使用します。 このクイックスタートでは、Azure IoT Hub Device Provisioning Service (DPS) 対応の C デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングします。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 04/26/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f0c95e495e222cc72f0a6fc432404fcbaa47df65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 882d62c088fa51153ca496231beccd4bfd5af0cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216350"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190361"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>クイック スタート:シミュレートされた X.509 デバイスを Azure IoT C SDK を使用してプロビジョニングする
 
@@ -172,7 +172,7 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 
 7. ポータルで、Provisioning Service にリンクされた IoT ハブに移動し、 **[IoT デバイス]** タブを選択します。シミュレートされた X.509 デバイスをハブにプロビジョニングすると、そのデバイス ID が **有効** な "*状態*" で **[IoT デバイス]** ブレードに表示されます。 場合によっては、一番上にある **[最新の情報に更新]** を押す必要があります。 
 
-    ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device/hub-registration.png) 
+    ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-x509/hub-registration.png) 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

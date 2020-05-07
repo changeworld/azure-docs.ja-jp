@@ -3,14 +3,14 @@ title: チュートリアル:ASP.NET Core と SQL Database
 description: SQL Database に接続された .NET Core アプリを Azure App Service で動作させる方法について説明します。
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 04/23/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c4dacd06cd53ebb71ca9db2722fdf46aade841bc
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: f8e76c90a670adb8fa5de5a33063d9de3bcc6cc3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085437"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207651"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -22,7 +22,7 @@ ms.locfileid: "82085437"
 
 ![App Service で実行されるアプリ](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
-学習内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で SQL データベースを作成する
@@ -38,8 +38,8 @@ ms.locfileid: "82085437"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Git をインストールする](https://git-scm.com/)
-* [.NET Core SDK をインストールする](https://dotnet.microsoft.com/download)
+* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">最新の .NET Core 3.1 SDK をインストールする</a>
 
 ## <a name="create-local-net-core-app"></a>ローカル .NET Core アプリを作成する
 
@@ -63,8 +63,8 @@ cd dotnetcore-sqldb-tutorial
 次のコマンドを実行して、必要なパッケージをインストールし、データベースの移行を実行し、アプリケーションを起動します。
 
 ```bash
-dotnet tool install -g dotnet-ef --version 3.1.1
-dotnet-ef database update
+dotnet tool install -g dotnet-ef
+dotnet ef database update
 dotnet run
 ```
 
@@ -90,25 +90,25 @@ SQL Database については、このチュートリアルでは [Azure SQL Data
 
 Cloud Shell で、[`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) コマンドを使用して SQL Database 論理サーバーを作成します。
 
-" *\<server_name >* " プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server_name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、" *\<db_username >* " と "*db_password >\<* " を選択したユーザー名とパスワードで置換します。 
+*\<server-name>* プレースホルダーを "*一意の*" SQL Database 名で置換します。 この名前は、グローバルに一意の SQL Database エンドポイント `<server-name>.database.windows.net` の一部として使用されます。 有効な文字は `a`-`z`、`0`-`9`、`-` です。 また、 *\<db-username>* と *\<db-password>* を、選択したユーザー名とパスワードで置換します。 
 
 
 ```azurecli-interactive
-az sql server create --name <server_name> --resource-group myResourceGroup --location "West Europe" --admin-user <db_username> --admin-password <db_password>
+az sql server create --name <server-name> --resource-group myResourceGroup --location "West Europe" --admin-user <db-username> --admin-password <db-password>
 ```
 
 SQL Database 論理サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
 <pre>
 {
-  "administratorLogin": "&lt;db_username&gt;",
+  "administratorLogin": "&lt;db-username&gt;",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "&lt;server_name&gt;.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/&lt;server_name&gt;",
+  "fullyQualifiedDomainName": "&lt;server-name&gt;.database.windows.net",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/&lt;server-name&gt;",
   "identity": null,
   "kind": "v12.0",
   "location": "westeurope",
-  "name": "&lt;server_name&gt;",
+  "name": "&lt;server-name&gt;",
   "resourceGroup": "myResourceGroup",
   "state": "Ready",
   "tags": null,
@@ -122,30 +122,101 @@ SQL Database 論理サーバーが作成されると、Azure CLI によって、
 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create)コマンドを使用して、[Azure SQL Database のサーバー レベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
 ```azurecli-interactive
-az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
 > [アプリで使用する送信 IP アドレスのみを使用する](overview-inbound-outbound-ips.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
+Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+
+```azurecli-interactive
+az sql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
+```
+
 ### <a name="create-a-database"></a>データベースを作成する
 
 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) コマンドで [S0 パフォーマンス レベル](../sql-database/sql-database-service-tiers-dtu.md)のデータベースをサーバーに作成します。
 
 ```azurecli-interactive
-az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
+az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
 ```
 
 ### <a name="create-connection-string"></a>接続文字列を作成する
 
-次の文字列を前に使用した " *\<server_name>* "、" *\<db_username>* "、" *\<db_password>* " で置換します。
+[`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) コマンドを使用して、接続文字列を取得します。
 
+```azurecli-interactive
+az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
 ```
-Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
-```
+
+コマンド出力の *\<username>* と *\<password>* は、前に使用したデータベース管理者の資格情報に置き換えてください。
 
 これは .NET Core アプリの接続文字列です。 後で使用するためコピーします。
+
+### <a name="configure-app-to-connect-to-production-database"></a>運用データベースに接続するようにアプリを構成する
+
+ローカル リポジトリで、Startup.cs を開き、次のコードを検索します。
+
+```csharp
+services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlite("Data Source=localdatabase.db"));
+```
+
+これを次のコードに置き換えます。
+
+```csharp
+services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+```
+
+> [!IMPORTANT]
+> スケールアウトする必要がある運用アプリの場合は、「[運用環境で移行を適用する](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)」のベスト プラクティスに従ってください。
+> 
+
+### <a name="run-database-migrations-to-the-production-database"></a>運用データベースへのデータベースの移行を実行する
+
+現在、対象のアプリはローカルの Sqlite データベースに接続しています。 Azure SQL Database を構成したので、これをターゲットとする最初の移行を再作成します。 
+
+リポジトリのルートから、次のコマンドを実行します。 *\<connection-string>* は、前に作成した接続文字列に置き換えてください。
+
+```
+# Delete old migrations
+rm Migrations -r
+# Recreate migrations
+dotnet ef migrations add InitialCreate
+
+# Set connection string to production database
+# PowerShell
+$env:ConnectionStrings:MyDbConnection="<connection-string>"
+# CMD (no quotes)
+set ConnectionStrings:MyDbConnection=<connection-string>
+# Bash (no quotes)
+export ConnectionStrings__MyDbConnection=<connection-string>
+
+# Run migrations
+dotnet ef database update
+```
+
+### <a name="run-app-with-new-configuration"></a>新しい構成でアプリを実行する
+
+データベースの移行が運用データベースで実行されるようになったら、以下を実行してアプリをテストします。
+
+```
+dotnet run
+```
+
+ブラウザーで `http://localhost:5000` にアクセスします。 **[新規作成]** リンクを選択し、いくつかの _To Do_ アイテムを作成します。 これで、アプリは、運用データベースに対してデータの読み取りと書き込みを行うようになりました。
+
+ローカルの変更をコミットし、それを Git リポジトリにコミットします。 
+
+```bash
+git add .
+git commit -m "connect to SQLDB in Azure"
+```
+
+これでコードをデプロイする準備が整いました。
 
 ## <a name="deploy-app-to-azure"></a>アプリを Azure にデプロイする
 
@@ -165,94 +236,44 @@ Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_u
 
 ### <a name="configure-connection-string"></a>接続文字列を構成する
 
-Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、" *\<app name>* " および " *\<connection_string>* " パラメーターを先ほど作成した接続文字列で置換します。
+Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、 *\<app-name>* および *\<connection-string>* パラメーターを、先ほど作成した接続文字列で置換します。
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection="<connection_string>" --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
 ASP.NET Core では、*appsettings.json* で指定される接続文字列のように、標準パターンを使用して、この名前付き接続文字列 (`MyDbConnection`) を使用できます。 この場合、`MyDbConnection` は、*appsettings.json* でも定義されています。 App Service で実行する場合、App Service で定義された接続文字列は、*appsettings.json* で定義された接続文字列よりも優先されます。 コードは、ローカル開発中は *appsettings.json* 値を使用し、同じコードがデプロイ時には App Service 値を使用します。
 
-コード内で接続文字列がどのように参照されるかについては、「[運用環境の SQL Database に接続する](#connect-to-sql-database-in-production)」を参照してください。
-
-### <a name="configure-environment-variable"></a>環境変数を構成する
-
-次に、`ASPNETCORE_ENVIRONMENT` アプリ設定を "_Production_" に設定します。 ローカル開発環境では SQLite を使用し、Azure 環境では SQL Database を使用するため、Azure で実行しているかどうかをこの設定で把握できます。
-
-次の例では、Azure アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 " *\<appname>* " プレースホルダーを置換します。
-
-```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
-```
-
-コード内で環境変数がどのように参照されるかについては、「[運用環境の SQL Database に接続する](#connect-to-sql-database-in-production)」を参照してください。
-
-### <a name="connect-to-sql-database-in-production"></a>運用環境の SQL Database に接続する
-
-ローカル リポジトリで、Startup.cs を開き、次のコードを検索します。
-
-```csharp
-services.AddDbContext<MyDatabaseContext>(options =>
-        options.UseSqlite("Data Source=localdatabase.db"));
-```
-
-前に構成した環境変数を使用する次のコードで置換します。
-
-```csharp
-// Use SQL Database if in Azure, otherwise, use SQLite
-if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
-else
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlite("Data Source=localdatabase.db"));
-
-// Automatically perform database migration
-services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
-```
-
-このコードは、運用環境 (Azure 環境を示します) で実行されていることを検出すると、SQL Database に接続するように構成した接続文字列を使用します。
-
-`Database.Migrate()` 呼び出しは、移行の構成に基づいて .NET Core アプリが必要とするデータベースを自動的に作成するため、Azure で実行するときに役立ちます。 
-
-> [!IMPORTANT]
-> スケールアウトする必要がある運用アプリの場合は、「[運用環境で移行を適用する](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)」のベスト プラクティスに従ってください。
-> 
-
-変更を保存し、それを Git リポジトリにコミットします。 
-
-```bash
-git add .
-git commit -m "connect to SQLDB in Azure"
-```
+コード内で接続文字列がどのように参照されるかについては、「[運用データベースに接続するようにアプリを構成する](#configure-app-to-connect-to-production-database)」を参照してください。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
+[!INCLUDE [push-to-azure-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 <pre>
-Counting objects: 98, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (92/92), done.
-Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
-Total 98 (delta 8), reused 0 (delta 0)
+Enumerating objects: 268, done.
+Counting objects: 100% (268/268), done.
+Compressing objects: 100% (171/171), done.
+Writing objects: 100% (268/268), 1.18 MiB | 1.55 MiB/s, done.
+Total 268 (delta 95), reused 251 (delta 87), pack-reused 0
+remote: Resolving deltas: 100% (95/95), done.
 remote: Updating branch 'master'.
-remote: .
 remote: Updating submodules.
-remote: Preparing deployment for commit id '0c497633b8'.
+remote: Preparing deployment for commit id '64821c3558'.
 remote: Generating deployment script.
-remote: Project file path: ./DotNetCoreSqlDb.csproj
+remote: Project file path: .\DotNetCoreSqlDb.csproj
+remote: Generating deployment script for ASP.NET MSBuild16 App
 remote: Generated deployment script files
 remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
+remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
 remote: .
 remote: .
 remote: .
 remote: Finished successfully.
 remote: Running post deployment command(s)...
-remote: Deployment successful.
+remote: Triggering recycle (preview mode disabled).
 remote: App container will begin restart within 10 seconds.
-To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
  * [new branch]      master -> master
 </pre>
 
@@ -261,7 +282,7 @@ To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
 Web ブラウザーを使用して、デプロイされたアプリを参照します。
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 いくつかの To Do アイテムを追加します。
@@ -282,17 +303,12 @@ http://<app_name>.azurewebsites.net
 public bool Done { get; set; }
 ```
 
-### <a name="run-code-first-migrations-locally"></a>Code First Migrations をローカルで実行する
+### <a name="rerun-database-migrations"></a>データベースの移行を再実行する
 
-いくつかのコマンドを実行して、ローカル データベースを更新します。
+いくつかのコマンドを実行して、運用データベースを更新します。
 
 ```bash
 dotnet ef migrations add AddProperty
-```
-
-ローカル データベースを更新します。
-
-```bash
 dotnet ef database update
 ```
 
@@ -364,7 +380,7 @@ git push azure master
 
 ![Code First Migration の手順後の Azure アプリ](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
-既存のすべての To Do 項目がまだ表示されています。 .NET Core アプリを再発行しても、SQL Database 内の既存のデータは消失しません。 また、Entity Framework Core Migrations によって変更されるのはデータ スキーマのみであり、既存のデータはそのまま残されます。
+既存のすべての To Do 項目がまだ表示されています。 ASP.NET Core アプリを再発行しても、SQL Database 内の既存のデータは消失しません。 また、Entity Framework Core Migrations によって変更されるのはデータ スキーマのみであり、既存のデータはそのまま残されます。
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
@@ -378,7 +394,7 @@ Azure App Service で ASP.NET Core アプリが稼動している間、コンソ
 App Service で ASP.NET Core の[ログ レベル](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level)を、既定のレベルである `Error` から `Information` に設定するには、Cloud Shell から [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) コマンドを使用します。
 
 ```azurecli-interactive
-az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
+az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging true --level information
 ```
 
 > [!NOTE]
@@ -388,7 +404,7 @@ az webapp log config --name <app_name> --resource-group myResourceGroup --applic
 ログのストリーミングを開始するには、Cloud Shell で [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) コマンドを使用します。
 
 ```azurecli-interactive
-az webapp log tail --name <app_name> --resource-group myResourceGroup
+az webapp log tail --name <app-name> --resource-group myResourceGroup
 ```
 
 ログのストリーミングが開始されたら、ブラウザーで Azure アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
@@ -407,7 +423,7 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側には、開くことができるさまざまな構成ページが表示されます。
+既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
 ![Azure Portal の [App Service] ページ](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 
@@ -429,4 +445,4 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure App Service にマップする](app-service-web-tutorial-custom-domain.md)
+> [チュートリアル:カスタム DNS 名をアプリにマップする](app-service-web-tutorial-custom-domain.md)

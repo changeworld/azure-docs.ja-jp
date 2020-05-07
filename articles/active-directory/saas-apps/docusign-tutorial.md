@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76983640"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509365"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
 
@@ -45,7 +45,7 @@ SaaS (サービスとしてのソフトウェア) アプリと Azure AD の統�
 
 * DocuSign では、Service Provider (SP) Initiated SSO がサポートされます。
 
-* DocuSign では、*Just-In-Time* ユーザー プロビジョニングがサポートされます。
+* DocuSign では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 * DocuSign では、[自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)がサポートされます。
 * DocuSign を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
@@ -87,12 +87,20 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します: 
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2` というパターンを使用して URL を入力します。
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します: 
+
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+
+    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します: 
+    
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
-    > かっこで囲まれたこれらの値はプレースホルダーです。 実際のサインオン URL と識別子の値に置き換えてください。 これらの詳細は、このチュートリアルの後ろにある [View SAML 2.0 Endpoints]\(SAML 2.0 エンドポイントの表示\) に関するセクションで説明されています。
+    > かっこで囲まれたこれらの値はプレースホルダーです。 これらを実際のサインオン URL、識別子、および返信 URL の値に置き換えてください。 これらの詳細は、このチュートリアルの後ろにある [View SAML 2.0 Endpoints]\(SAML 2.0 エンドポイントの表示\) に関するセクションで説明されています。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけます。 **[ダウンロード]** を選択して証明書をダウンロードし、コンピューターに保存します。
 
@@ -206,20 +214,23 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
        ![[Identity Providers]\(ID プロバイダー\) の [Endpoints]\(エンドポイント\)][59]
 
     l. DocuSign 管理ポータルの **[View SAML 2.0 Endpoints]\(SAML 2.0 エンドポイントの表示\)** セクションで、これらの手順を実行します。
-       1. **[Service Provider Issuer URL]\(サービス プロバイダー発行者 URL\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
-
-       1. **[Service Provider Login URL]\(サービス プロバイダーのログイン URL\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
-
-       1. **[閉じる]** を選択します。
 
        ![[View SAML 2.0 Endpoints]\(SAML 2.0 エンドポイントの表示\)][60]
+       
+       1. **[Service Provider Issuer URL]\(サービス プロバイダー発行者 URL\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
+       
+       1. **[Service Provider Assertion Consumer Service URL]\(サービス プロバイダー アサーション コンシューマー サービス URL\)** 値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
+       
+       1. **[Service Provider Login URL]\(サービス プロバイダーのログイン URL\)** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。 **[Service Provider Login URL]\(サービス プロバイダーのログイン URL\)** 値の末尾に IDPID 値があります。
+
+       1. **[閉じる]** を選択します。
 
 ### <a name="create-docusign-test-user"></a>DocuSign のテスト ユーザーの作成
 
 このセクションでは、B. Simon というユーザーを DocuSign に作成します。 DocuSign では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 DocuSign にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
->[!Note]
->ユーザーを手動で作成する必要がある場合は、[DocuSign のサポート チーム](https://support.docusign.com/)にお問い合わせください。
+> [!Note]
+> ユーザーを手動で作成する必要がある場合は、[DocuSign のサポート チーム](https://support.docusign.com/)にお問い合わせください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

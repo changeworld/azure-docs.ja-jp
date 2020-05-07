@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4384d29811d29f06422802abba5d3eb1ea5737e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 091c0a8cb4c0db517ab2dbabaf16633227dba42c
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72430081"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594697"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -162,7 +162,7 @@ SAP HANA スナップショットの作成を開始するには、ストレー�
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>手順 6:スナップショット スクリプトを取得し、スナップショットを構成して、構成と接続をテストする
 
-[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) から最新バージョンのスクリプトをダウンロードします。 スクリプトのインストール方法は、スクリプトのリリース 4.1 で変更されました。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Enable communication with SAP HANA (SAP HANA との通信を有効にする)」をご覧ください。
+[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.2) から最新バージョンのスクリプトをダウンロードします。 スクリプトのインストール方法は、スクリプトのリリース 4.1 で変更されました。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Enable communication with SAP HANA (SAP HANA との通信を有効にする)」をご覧ください。
 
 コマンドの正確なシーケンスについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Easy installation of snapshot tools (default) (スナップショット ツールの簡単なインストール (既定))」をご覧ください。 既定のインストールを使うことをお勧めします。 
 

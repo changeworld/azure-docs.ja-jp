@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74027108"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582883"
 ---
-# <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル: グループ メンバーを自動的に追加/削除する
+# <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル:グループ メンバーを自動的に追加/削除する
 
-Azure Active Directory (Azure AD) では、セキュリティ グループまたは Office 365 グループのユーザーを自動的に追加したり削除したりできるので、この作業を必ずしも手動で行う必要はありません。 ユーザーまたはデバイスのいずれかのプロパティが変更されると、Azure AD はテナント内のすべての動的グループ規則を評価し、その変更によってメンバーの追加または削除が必要であるかどうかを確認します。
+Azure Active Directory (Azure AD) では、セキュリティ グループまたは Office 365 グループのユーザーを自動的に追加したり削除したりできるので、この作業を必ずしも手動で行う必要はありません。 ユーザーまたはデバイスのいずれかのプロパティが変更されると、Azure AD は Azure AD 組織内のすべての動的グループ規則を評価し、その変更によってメンバーの追加または削除が必要であるかどうかを確認します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -35,15 +35,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能を使うには、テナントのグローバル管理者に Azure AD Premium ライセンスが 1 つ必要となります。 ライセンスがない場合は、Azure AD の **[ライセンス]**  >  **[製品]**  >  **[試用/購入]** を選択してください。
+この機能を使うには、組織の全体管理者に Azure AD Premium ライセンスが 1 つ必要となります。 ライセンスがない場合は、Azure AD の **[ライセンス]**  >  **[製品]**  >  **[試用/購入]** を選択してください。
 
-ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありません。 その対象となるすべてのユーザーをカバーできるだけの Azure AD Premium P1 ライセンス数がテナントにあれば済みます。 
+ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありません。 その対象となるすべてのユーザーをカバーできるだけの最小限の Azure AD Premium P1 ライセンス数が組織にあれば済みます。 
 
 ## <a name="create-a-group-of-guest-users"></a>ゲスト ユーザーのグループを作成する
 
 まず、全員が単一のパートナー企業に所属するゲスト ユーザーのグループを作成します。 これらのユーザーには特別なライセンスが必要であるため、通常は、そのためのグループを作成した方が効率的です。
 
-1. テナントのグローバル管理者アカウントで Azure portal (https://portal.azure.com) にサインインします。
+1. 組織の全体管理者アカウントで Azure portal (https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[グループ]**  >  **[新しいグループ]** の順に選択します。
    ![新しいグループを開始するためのコマンドを選択](./media/groups-dynamic-tutorial/new-group.png)
 3. **[グループ]** ブレードで次の操作を行います。
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="remove-guests-from-all-users-group"></a>"すべてのユーザー" グループからゲストを削除する
 
-最終的な管理の計画は、すべてのゲスト ユーザーを各自の会社ごとのグループに割り当てることでしょう。 そこで、自分のテナント内のメンバー ユーザーのみが対象となるように、**すべてのユーザー** グループを変更することもできます。 そのうえで、ホーム組織に固有のアプリとライセンスを割り当てることができます。
+最終的な管理の計画は、すべてのゲスト ユーザーを各自の会社ごとのグループに割り当てることでしょう。 そこで、自分の組織内のメンバー ユーザーのみが対象となるように、**すべてのユーザー** グループを変更することもできます。 そのうえで、ホーム組織に固有のアプリとライセンスを割り当てることができます。
 
    !["すべてのユーザー" グループをメンバー専用に変更](./media/groups-dynamic-tutorial/all-users-edit.png)
 
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **ゲスト ユーザー グループを削除するには**
 
-1. テナントの全体管理者アカウントで [Azure portal](https://portal.azure.com) にサインインします。
+1. 組織の全体管理者アカウントで [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[グループ]** を選択します。 **[Guest users Contoso]** グループを選択し、省略記号 (...) を選択して、 **[削除]** を選択します。 グループを削除すると、割り当てられているライセンスはすべて削除されます。
 
 **"すべてのユーザー" グループを復元するには**

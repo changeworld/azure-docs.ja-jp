@@ -1,38 +1,35 @@
 ---
-title: Azure Database for MariaDB に対する予約割引の適用方法
-description: Azure Database for MariaDB に対する予約割引の適用方法
+title: 予約割引の概要 - Azure Database for MariaDB
+description: Azure Database for MariaDB サーバーに対する予約割引の適用方法について学習します
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/17/2019
-ms.openlocfilehash: 340d395278eb924570e07d106308e63be3c2f9af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 02/13/2020
+ms.openlocfilehash: b7d258f88212c8c97e3b0dbb8e803d1c767c51d0
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75986743"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509450"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>Azure Database for MariaDB に対する予約割引の適用方法
 
-Azure Database for MariaDB の予約容量を購入すると、予約の属性や数量に合致する MariaDB サーバーに対して予約割引が自動的に適用されます。 予約の対象となるのは、Azure Database for MariaDB のコンピューティング コストのみです。 ストレージおよびネットワークについては、通常料金が適用されます。 
+Azure Database for MariaDB の予約容量を購入すると、予約の属性や数量に合致する MariaDB サーバーに対して予約割引が自動的に適用されます。 予約の対象となるのは、Azure Database for MariaDB のコンピューティング コストのみです。 ストレージおよびネットワークについては、通常料金が適用されます。
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 
-予約割引は、***使用しないと失われます***。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。</br>
+予約割引は、***使用しないと失われます***。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
 
 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は失われます。
 
 ## <a name="discount-applied-to-azure-database-for-mariadb"></a>Azure Database for MariaDB に適用される割引
 
-Azure Database for MariaDB の予約容量割引は、実行中の MariaDB サーバーに対して時間単位で適用されます。 購入した予約は、実行中の Azure Database for MariaDB サーバーで生成されるコンピューティング使用量と一致します。 MariaDB サーバーの実行時間が 1 時間に満たない場合、その予約は、予約の属性に一致する他の Azure Database for MariaDB に自動的に適用されます。 この割引は、同時に実行されている Azure Database for MariaDB サーバーに適用できます。 1 時間実行され、予約の属性に一致する MariaDB サーバーがない場合は、その時間について予約割引の特典を完全に活用することができません。
+Azure Database for MariaDB の予約容量割引は、実行中の MariaDB サーバーに対して時間単位で適用されます。 購入した予約は、実行中の Azure Database for MariaDB サーバーで生成されるコンピューティング使用量と一致します。 MariaDB サーバーの実行時間が 1 時間に満たない場合、その予約は、予約の属性に一致する他の Azure Database for MariaDB に自動的に適用されます。 この割引は、同時に実行されている Azure Database for MariaDB サーバーに適用できます。 予約の属性に一致し、まる 1 時間実行される MariaDB サーバーがない場合は、その時間について予約割引の特典を完全に活用することができません。
 
 次の例は、購入したコア数と実行する時間に応じて、Azure Database for MariaDB の予約容量割引がどのように適用されるかを示しています。
 
-* **例 1**:8 仮想コア用の Azure Database for MariaDB の予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for MariaDB サーバーを実行している場合、MariaDB サーバーのコンピューティング使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの MariaDB サーバーのコンピューティング使用量に対して予約割引が適用されます。</br>
+* **例 1**:8 仮想コア用の Azure Database for MariaDB の予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for MariaDB サーバーを実行している場合、MariaDB サーバーのコンピューティング使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの MariaDB サーバーのコンピューティング使用量に対して予約割引が適用されます。
 
 以降の例では、購入する Azure Database for MariaDB の予約容量は、16 仮想コアの Azure Database for MariaDB 用であり、残りの予約属性は実行中の MariaDB サーバーと一致するものとします。
 
@@ -44,5 +41,6 @@ Azure Database for MariaDB の予約容量割引は、実行中の MariaDB サ�
 
 Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)に関するページを参照してください。
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
+## <a name="next-steps"></a>次のステップ
+
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

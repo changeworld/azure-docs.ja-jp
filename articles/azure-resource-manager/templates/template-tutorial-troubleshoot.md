@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 737e8a247a232278db73de716647fc5bb890fe39
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239251"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184998"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>チュートリアル:ARM テンプレート デプロイのトラブルシューティング
 
@@ -26,24 +26,22 @@ Azure Resource Manager (ARM) テンプレート デプロイ エラーのトラ�
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
-> * 問題のあるテンプレートの作成
-> * 検証エラーのトラブルシューティング
-> * デプロイ エラーのトラブルシューティング
-> * リソースをクリーンアップする
+> - 問題のあるテンプレートの作成
+> - 検証エラーのトラブルシューティング
+> - デプロイ エラーのトラブルシューティング
+> - リソースをクリーンアップする
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+- Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
 
 ## <a name="create-a-problematic-template"></a>問題のあるテンプレートの作成
 
-「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」から [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) テンプレートを開き、2 つのテンプレートの問題を設定します。
+「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)」から [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) テンプレートを開き、2 つのテンプレートの問題を設定します。
 
 1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
@@ -51,12 +49,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. **[開く]** を選択して、ファイルを開きます。
 4. **apiVersion** 行を次の行に変更します。
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
+
     - **apiVersion1** は無効な要素名です。 これは検証エラーになります。
     - API バージョンは "2018-07-01" である必要があります。  これはデプロイ エラーになります。
 
@@ -64,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="troubleshoot-the-validation-error"></a>検証エラーのトラブルシューティング
 
-「[テンプレートのデプロイ](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)」セクションを参照してテンプレートをデプロイします。
+「[テンプレートのデプロイ](template-tutorial-create-multiple-instances.md#deploy-the-template)」セクションを参照してテンプレートをデプロイします。
 
 シェルから次のようなエラーが返されます。
 
@@ -78,7 +78,7 @@ Visual Studio Code を使用して **apiVersion1** を **apiVersion** に変更�
 
 ## <a name="troubleshoot-the-deployment-error"></a>デプロイ エラーのトラブルシューティング
 
-「[テンプレートのデプロイ](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)」セクションを参照してテンプレートをデプロイします。
+「[テンプレートのデプロイ](template-tutorial-create-multiple-instances.md#deploy-the-template)」セクションを参照してテンプレートをデプロイします。
 
 シェルから次のようなエラーが返されます。
 

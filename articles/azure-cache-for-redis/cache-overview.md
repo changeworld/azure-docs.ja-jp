@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 03/11/2020
-ms.openlocfilehash: 38936000e426d560237295105b5456429d9ae16d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cd4e7c8e2693c25f3fc092fb53874a97cfd62434
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126373"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82113206"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure Cache for Redis の説明
 
@@ -19,7 +19,7 @@ Azure Cache for Redis は、オープンソース ソフトウェア [Redis](htt
 
 Azure Cache for Redis は、メモリ内のデータ構造ストア、分散型の非リレーショナル データベース、およびメッセージ ブローカーとして使用できます。 Redis エンジンの短い待機時間、高スループットのパフォーマンスを活用して、アプリケーションのパフォーマンスが向上します。
 
-Azure Cache for Redis を使用すると、セキュリティ保護された専用の Redis キャッシュにアクセスできます。 Azure Cache for Redis は、Microsoft で管理されており、Azure 内でホストされ、Azure 内外の任意のアプリケーションからアクセスできます。
+Azure Cache for Redis を使用すると、セキュリティ保護された専用の Redis キャッシュにアクセスできます。 Azure Cache for Redis は、Microsoft で管理されており、Azure 内でホストされ、Azure 内外の任意のアプリケーションからアクセスできます。 また、Azure Redis for Cache は、ディスクレス レプリケーション方式を採用しているため、ペイメント カード業界との親和性が高くなっています。
 
 ## <a name="using-azure-cache-for-redis"></a>Azure Cache for Redis の使用
 

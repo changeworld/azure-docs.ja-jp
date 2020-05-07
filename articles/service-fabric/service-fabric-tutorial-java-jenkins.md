@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75376655"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594765"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
@@ -85,7 +85,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
    a. 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/testaccount/dev_test``)。
 
-   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *https://github.com/testaccount/dev_test.git* )。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
+   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *`https://github.com/testaccount/dev_test.git`* )。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
 
 1. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
 
