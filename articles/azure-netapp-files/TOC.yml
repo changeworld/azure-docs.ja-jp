@@ -23,10 +23,10 @@
       items:
         - name: Azure NetApp Files のパフォーマンスに関する考慮事項
           href: azure-netapp-files-performance-considerations.md
-        - name: Azure NetApp Files のパフォーマンス ベンチマークのテスト結果
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Linux のパフォーマンス ベンチマーク
+          href: performance-benchmarks-linux.md
         - name: SMB のパフォーマンスに関する FAQ
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp Files のコスト モデル
@@ -37,10 +37,12 @@
       items:
         - name: Azure NetApp Files を使用したソリューション アーキテクチャ
           href: azure-netapp-files-solution-architectures.md
-        - name: Oracle Database での Azure NetApp Files 利用のメリット
-          href: solutions-benefits-azure-netapp-files-oracle-database.md
-        - name: 電子設計自動化に Azure NetApp Files を使用するメリット
-          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+        - name: 特定のソリューション
+          items:
+            - name: Oracle Database での Azure NetApp Files 利用のメリット
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: 電子設計自動化に Azure NetApp Files を使用するメリット
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: Azure NetApp Files についての FAQ
       href: azure-netapp-files-faqs.md
 - name: 操作方法ガイド

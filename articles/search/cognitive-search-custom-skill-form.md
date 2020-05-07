@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81275880"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792005"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -164,8 +164,8 @@ Azure BLOB ストレージにないリモート ドキュメントを分析す�
 
 このガイドでは、Azure Form Recognizer サービスからカスタム スキルを作成しました。 カスタム スキルの詳細については、次のリソースを参照してください。 
 
-* [Azure Search Power Skills: カスタム スキルのリポジトリ](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Azure Search Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
 * [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
 * [スキルセットを定義する](cognitive-search-defining-skillset.md)
-* [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 * [強化されたフィールドをマッピングする](cognitive-search-output-field-mapping.md)

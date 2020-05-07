@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: Automation Runbook から
                   href: automation-onboard-solutions.md
-            - name: 追跡対象ファイルの内容の表示
+            - name: 変更の追跡とインベントリを管理する
               href: change-tracking-file-contents.md
             - name: VM からのインベントリ収集を管理する
               href: automation-vm-inventory.md
@@ -230,7 +230,7 @@
           href: updatemgmt-mecmintegration.md
         - name: Windows Update クライアントを構成する
           href: automation-configure-windows-update.md
-        - name: 動的グループの使用
+        - name: 動的グループを使用する
           href: automation-update-management-groups.md
         - name: Update Management ログにクエリを実行する
           href: automation-update-management-query-logs.md

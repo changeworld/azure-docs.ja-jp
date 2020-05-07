@@ -2,20 +2,21 @@
 title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+author: davidsmatlak
+ms.author: v-dasmat
+ms.date: 05/04/2020
+ms.openlocfilehash: 892b59b3d3e980abfcdb9cd692c2598ceb1284ad
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804777"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780931"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
 既定では、各リソース グループにはリソースの種類のインスタンスを最大 800 個までデプロイできます。 ただし、一部のリソースの種類は、800 インスタンスの制限から除外されています。 この記事では、リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。 他のすべてのリソースの種類は、800 インスタンスに制限されます。
 
 リソースの種類によっては、800 インスタンスの制限を解除するためにサポートに連絡する必要があります。 この記事では、それらのリソースの種類について注記されています。
-
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 

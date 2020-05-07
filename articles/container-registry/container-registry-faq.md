@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 39b543c5f886b22d488198873b75cf76555692fa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618790"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731646"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -493,10 +493,10 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git サービス | ソース コンテキスト | 手動ビルド | コミット トリガーを使用した自動ビルド |
 |---|---|---|---|
-| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | はい | はい |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | はい | はい |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | はい | いいえ |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | はい | いいえ |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | はい | はい |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | はい | はい |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | はい | いいえ |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | はい | いいえ |
 
 ## <a name="run-error-message-troubleshooting"></a>実行のエラー メッセージのトラブルシューティング
 
