@@ -5,37 +5,41 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609810"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204289"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
-最近、Service Fabric Java バイナリが Service Fabric Java SDK から Maven ホスティングに移行されました。 これで、**mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできるようになりました。 このクイック スタートでは、以前に Service Fabric Java SDK と共に使用するように作成した既存の Java アプリケーションを更新します。Maven ベースのビルドに対応するように、Yeoman テンプレートまたは Eclipse を使用します。
+Service Fabric Java バイナリは、Service Fabric Java SDK から Maven ホスティングに移行されました。 **mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできます。 このガイドは、Yeoman テンプレートまたは Eclipse を使用して Service Fabric Java SDK 用に作成された既存の Java アプリケーションを、Maven ベースのビルドと互換性を持つように更新する際に役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
-1. 最初に既存の Java SDK をアンインストールする必要があります。
+
+1. まず、既存の Java SDK をアンインストールします。
 
    ```bash
    sudo dpkg -r servicefabricsdkjava
    ```
+
 2. [ここ](service-fabric-cli.md)に記載されている手順に従って、最新の Service Fabric CLI をインストールします。
 
-3. Service Fabric Java アプリケーションをビルドして操作するには、必ず JDK 1.8 と Gradle がインストールされている必要があります。 まだインストールしていない場合は、以下を実行して、JDK 1.8 (openjdk-8-jdk) と Gradle をインストールすることができます。
+3. Service Fabric Java アプリケーションをビルドして操作するには、JDK 1.8 と Gradle がインストールしておく必要があります。 まだインストールしていない場合は、以下を実行して、JDK 1.8 (openjdk-8-jdk) と Gradle をインストールすることができます。
 
    ```bash
    sudo apt-get install openjdk-8-jdk-headless
    sudo apt-get install gradle
    ```
+
 4. [ここ](service-fabric-application-lifecycle-sfctl.md)に記載されている手順に従って、新しい Service Fabric CLI を使用するようにアプリケーションのインストール/アンインストール スクリプトを更新します。 参考にするために、入門用の[例](https://github.com/Azure-Samples/service-fabric-java-getting-started)を参照することができます。
 
 >[!TIP]
 > Service Fabric Java SDK をアンインストールすると、Yeoman は機能しなくなります。 Service Fabric Yeoman Java テンプレート ジェネレーターを起動して動作させるには、[ここ](service-fabric-create-your-first-linux-application-with-java.md)に記載されている前提条件に従ってください。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上の Service Fabric Java ライブラリ
-Service Fabric Java ライブラリは、Maven でホストされてきました。 ``pom.xml``mavenCentral``build.gradle`` から Service Fabric Java ライブラリを使用するために、プロジェクトの **または** に依存関係を追加することができます。
+
+Service Fabric Java ライブラリは、Maven でホストされてきました。 **mavenCentral** から Service Fabric Java ライブラリを使用するために、プロジェクトの ``pom.xml`` または ``build.gradle`` に依存関係を追加することができます。
 
 ### <a name="actors"></a>アクター
 
@@ -80,6 +84,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
   ```
 
 ### <a name="others"></a>その他
+
 #### <a name="transport"></a>トランスポート
 
 Service Fabric Java アプリケーションのトランスポート層サポート。 トランスポート層でプログラムを作成する場合以外は、Reliable Actors または Service アプリケーションにこの依存関係を明示的に追加する必要はありません。
@@ -122,11 +127,11 @@ Service Fabric のシステム レベルのサポート。ネイティブの Ser
   }
   ```
 
-
 ## <a name="migrating-service-fabric-stateless-service"></a>Service Fabric ステートレス サービスの移行
 
 Maven からフェッチされた Service Fabric 依存関係を使用して既存の Service Fabric ステートレス Java サービスをビルドできるようにするには、サービス内の ``build.gradle`` ファイルを更新する必要があります。 以前は、次のようになっていました。
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':Interface')
@@ -158,8 +163,10 @@ task copyDeps <<{
     }
 }
 ```
+
 現在は、Maven から依存関係をフェッチするために、**更新された** ``build.gradle`` には次のような対応する部分があります。
-```
+
+```gradle
 repositories {
         mavenCentral()
 }
@@ -211,11 +218,13 @@ task copyDeps <<{
     }
 }
 ```
+
 一般に、Service Fabric ステートレス Java サービスに対するビルド スクリプトがどのようなものであるかを把握するには、入門用の例で任意のサンプルを参照してください。 EchoServer サンプルの build.gradle は、[ここ](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle)にあります。
 
 ## <a name="migrating-service-fabric-actor-service"></a>Service Fabric アクター サービスの移行
 
 Maven からフェッチされた Service Fabric 依存関係を使用して既存の Service Fabric Actor Java アプリケーションをビルドできるようにするには、インターフェイス パッケージ内とサービス パッケージ内の ``build.gradle`` ファイルを更新する必要があります。 TestClient パッケージがある場合は、それも更新する必要があります。 そのため、アクター ``Myactor`` の場合は、次の場所を更新する必要があります。
+
 ```
 ./Myactor/build.gradle
 ./MyactorInterface/build.gradle
@@ -225,15 +234,18 @@ Maven からフェッチされた Service Fabric 依存関係を使用して既�
 #### <a name="updating-build-script-for-the-interface-project"></a>インターフェイス プロジェクト用のビルド スクリプトの更新
 
 以前は、次のようになっていました。
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
 }
 .
 .
 ```
+
 現在は、Maven から依存関係をフェッチするために、**更新された** ``build.gradle`` には次のような対応する部分があります。
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -266,7 +278,8 @@ compileJava.dependsOn(explodeDeps)
 #### <a name="updating-build-script-for-the-actor-project"></a>アクター プロジェクト用のビルド スクリプトの更新
 
 以前は、次のようになっていました。
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':MyactorInterface')
@@ -304,8 +317,10 @@ task copyDeps<< {
     }
 }
 ```
+
 現在は、Maven から依存関係をフェッチするために、**更新された** ``build.gradle`` には次のような対応する部分があります。
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -365,7 +380,8 @@ task copyDeps<< {
 #### <a name="updating-build-script-for-the-test-client-project"></a>テスト クライアント プロジェクト用のビルド スクリプトの更新
 
 ここでの変更は、前のセクション (アクター プロジェクト) で説明した変更と似ています。 以前は、Gradle スクリプトは次のようなものでした。
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
       compile project(':MyactorInterface')
@@ -404,8 +420,10 @@ task copyDeps<< {
         }
 }
 ```
+
 現在は、Maven から依存関係をフェッチするために、**更新された** ``build.gradle`` には次のような対応する部分があります。
-```
+
+```gradle
 repositories {
     mavenCentral()
 }

@@ -1,19 +1,14 @@
 ---
-title: Azure Batch プールでノード エンドポイントを構成する | Microsoft Docs
+title: Azure Batch プールでノード エンドポイントを構成する
 description: Azure Batch プールの計算ノードで SSH ポートまたは RDP ポートへのアクセスを構成する方法と無効にする方法。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: labrenne
-ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b0ae4b80757bfa647cd5322668d793fa66ffca3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77017226"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82113852"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールの計算ノードへのリモート アクセスを構成する/無効にする
 

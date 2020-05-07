@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 04/01/2020
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb39606cdbb6488ccdee2828029d3617d689508
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 30b777cce9b704be558460edf20cf243258c160b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891940"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202300"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -199,7 +199,7 @@ SaaS アプリのオンボードに関する問題については、[SaaS アプ
 | 構成設定| AD FS| Azure AD での構成方法| SAML トークン |
 | - | - | - | - |
 | **アプリのサインオン URL** <p>サービス プロバイダー (SP) によって開始された SAML フローでユーザーがアプリにサインインするための URL。| 該当なし| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| 該当なし |
-| **アプリの応答 URL** <p>ID プロバイダー (IdP) から見たアプリの URL。 IdP は、ユーザーが IdP にサインインした後、ここでユーザーとトークンを送信します。  ‎これは、**SAML アサーション コンシューマー エンドポイント**とも呼ばれます。| **[エンドポイント]** タブを選択します| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| SAML トークンの Destination 要素。 値の例: [https://contoso.my.salesforce.com](https://contoso.my.salesforce.com/) |
+| **アプリの応答 URL** <p>ID プロバイダー (IdP) から見たアプリの URL。 IdP は、ユーザーが IdP にサインインした後、ここでユーザーとトークンを送信します。  ‎これは、**SAML アサーション コンシューマー エンドポイント**とも呼ばれます。| **[エンドポイント]** タブを選択します| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| SAML トークンの Destination 要素。 値の例: `https://contoso.my.salesforce.com` |
 | **アプリのサインアウト URL** <p>これは、ユーザーがアプリからサインアウトしたときに "サインアウト クリーンアップ" 要求が送信される URL です。 IdP は、他のすべてのアプリからユーザーをサインアウトさせる要求も送信します。| **[エンドポイント]** タブを選択します| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| 該当なし |
 | **アプリ識別子** <p>これは、IdP から見たアプリの識別子です。 多くの場合、サインイン URL 値が識別子に使用されます (そうでない場合もあります)。  ‎アプリではこれを "エンティティ ID" と呼ぶこともあります。| **[識別子]** タブを選択します|SAML ベースのサインオンから [基本的な SAML 構成] を開きます| SAML トークンの **Audience** 要素にマッピングします。 |
 | **アプリのフェデレーション メタデータ** <p>これは、アプリのフェデレーション メタデータの場所です。 エンドポイントや暗号化証明書などの特定の構成設定を自動更新するために、IdP によって使用されます。| **[監視]** タブをクリックします| 該当なし。 Azure AD では、アプリケーション フェデレーション メタデータの使用は直接はサポートされていません。 フェデレーション メタデータは手動でインポートできます。| 該当なし |
@@ -224,7 +224,7 @@ SSO 対応の Azure AD に対して AD FS を指し示すようにアプリケ�
 
 | 要素| 構成値 |
 | - | - |
-| ID プロバイダーの発行者| [https://sts.windows.net/{tenant-id}/](https://sts.windows.net/{tenant-id}/) |
+| ID プロバイダーの発行者| https:\//sts.windows.net/{tenant-id}/ |
 | ID プロバイダーのログイン URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | ID プロバイダーのログアウト URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | フェデレーション メタデータの場所| [https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}](https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}) |
@@ -236,11 +236,11 @@ SaaS アプリでは、認証要求の送信先と、受信したトークンの
 
 | 構成設定| AD FS| Azure AD での構成方法 |
 | - | - | - |
-| **IdP のサインオン URL** <p>アプリから見た IdP のサインオン URL (ユーザーがログインのためにリダイレクトされる場所)。| AD FS のサインオン URL は、AD FS フェデレーション サービス名に "/adfs/ls/" を付加したものです。 <p>例: [https://fs.contoso.com/adfs/ls/](https://fs.contoso.com/adfs/ls/)| {tenant-id} をテナント ID に置き換えます。 <p> ‎SAML-P プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>‎WS-Federation プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP のサインアウト URL**<p>アプリから見た IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。| サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: [https://fs.contoso.com/adfs/ls/?wa=wsignout1.0](https://fs.contoso.com/adfs/ls/?wa=wsignout1.0)| {tenant-id} をテナント ID に置き換えます。<p>SAML-P プロトコルを使用するアプリの場合:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> ‎WS-Federation プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **IdP のサインオン URL** <p>アプリから見た IdP のサインオン URL (ユーザーがログインのためにリダイレクトされる場所)。| AD FS のサインオン URL は、AD FS フェデレーション サービス名に "/adfs/ls/" を付加したものです。 <p>例: `https://fs.contoso.com/adfs/ls/`| {tenant-id} をテナント ID に置き換えます。 <p> ‎SAML-P プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>‎WS-Federation プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **IdP のサインアウト URL**<p>アプリから見た IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。| サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| {tenant-id} をテナント ID に置き換えます。<p>SAML-P プロトコルを使用するアプリの場合: <p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> ‎WS-Federation プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **トークン署名証明書**<p>IdP では、発行されたトークンに署名するために、証明書の秘密キーが使用されます。 アプリが信頼するように構成されているのと同じ IdP からトークンが来ていることを確認します。| AD FS トークン署名証明書は、[AD FS の管理] の **[証明書]** の下にあります。| Azure portal で、アプリケーションの **[シングル サインオンのプロパティ]** の **[SAML 署名証明書]** ヘッダーの下にあります。 ここで、アプリにアップロードするための証明書をダウンロードすることができます。  <p>アプリケーションに複数の証明書がある場合は、フェデレーション メタデータ XML ファイルですべての証明書を確認することができます。 |
-| **識別子/"発行者"**<p>アプリから見た IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。<p>‎SAML トークンでは、値は Issuer 要素として表示されます。| AD FS の識別子は、通常、 **[サービス] > [フェデレーション サービスのプロパティの編集]** の下にある [AD FS の管理] のフェデレーション サービス識別子です。 例: [http://fs.contoso.com/adfs/services/trust](http://fs.contoso.com/adfs/services/trust)| {tenant-id} をテナント ID に置き換えます。<p>[https://sts.windows.net/{tenant-id}/](https://sts.windows.net/{tenant-id}/) |
-| **IdP のフェデレーション メタデータ**<p>IdP の一般公開されているフェデレーション メタデータの場所。 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。| AD FS フェデレーション メタデータ URL は、[AD FS の管理] にあり、これは **[サービス] > [エンドポイント] > [メタデータ] > [種類: フェデレーション メタデータ]** の下で確認できます。 例: [https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml](https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml)| Azure AD での対応する値は、[https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) というパターンに従います。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。   <p>詳細については、「[フェデレーション メタデータ](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)」を参照してください。 |
+| **識別子/"発行者"**<p>アプリから見た IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。<p>‎SAML トークンでは、値は Issuer 要素として表示されます。| AD FS の識別子は、通常、 **[サービス] > [フェデレーション サービスのプロパティの編集]** の下にある [AD FS の管理] のフェデレーション サービス識別子です。 例: `http://fs.contoso.com/adfs/services/trust`| {tenant-id} をテナント ID に置き換えます。<p>https:\//sts.windows.net/{tenant-id}/ |
+| **IdP のフェデレーション メタデータ**<p>IdP の一般公開されているフェデレーション メタデータの場所。 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。| AD FS フェデレーション メタデータ URL は、[AD FS の管理] にあり、これは **[サービス] > [エンドポイント] > [メタデータ] > [種類: フェデレーション メタデータ]** の下で確認できます。 例: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD での対応する値は、[https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) というパターンに従います。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。   <p>詳細については、「[フェデレーション メタデータ](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)」を参照してください。 |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>AD FS セキュリティ ポリシーを Azure AD で表す
@@ -482,7 +482,7 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 
 デプロイが完了したら、デプロイが成功したことと、実行する必要がある新しい手順の注意を、ユーザーに通知できます。
 
-* 移行されたすべてのアプリケーションにアクセスするには[アクセス パネル](https://myapps.microsoft.com.com/)を使用するようユーザーに指示します。 
+* 移行されたすべてのアプリケーションにアクセスするには[アクセス パネル](https://myapps.microsoft.com)を使用するようユーザーに指示します。 
 
 * MFA の設定の更新が必要な場合があることをユーザーに通知します。 
 

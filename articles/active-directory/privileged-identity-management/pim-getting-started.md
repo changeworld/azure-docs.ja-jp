@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/13/2020
+ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cbb9b4340a7cdb9be5039722a8f75e09288ec48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f8d41fb3e6233d319725cac924c0c0ed41b7ce4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472862"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234300"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management の使用開始
 
-Privileged Identity Management (PIM) を使用すると、Azure Active Directory (Azure AD) 組織内のアクセス権を管理、制御、および監視できます。 この範囲には、Azure リソース、Azure AD のほか、Office 365 や Microsoft Intune などのその他の Microsoft オンライン サービスへのアクセスが含まれます。
+この記事では、Privileged Identity Management (PIM) を有効にしてその使用を開始する方法について説明します。
 
-この記事では、Privileged Identity Management を有効にしてその使用を開始する方法について説明します。
+Privileged Identity Management (PIM) を使用すると、Azure Active Directory (Azure AD) 組織内のアクセス権を管理、制御、および監視できます。 PIM を使用すると、Azure リソース、Azure AD リソースのほか、Office 365 や Microsoft Intune などのその他の Microsoft オンライン サービスへのアクセスを、必要に応じて適切なタイミングで提供できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,29 +36,30 @@ Privileged Identity Management を使用するには、次のライセンスの�
 
 詳細については、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
 
-## <a name="sign-up-pim-for-azure-ad-roles"></a>Azure AD ロールを取得するために PIM にサインアップする
+## <a name="prepare-pim-for-azure-ad-roles"></a>Azure AD ロール用に PIM を準備する
 
-ディレクトリに対して Privileged Identity Management を有効にしたら、Azure AD ロールを管理するために Privileged Identity Management にサインアップする必要があります。
+ディレクトリに対して Privileged Identity Management を有効にしたら、Azure AD ロールを管理するために Privileged Identity Management を準備できます。
 
-1. **[Azure AD Privileged Identity Management]** を開きます。
+Azure AD ロールを準備するために推奨されるタスクは次のとおりです。
 
-1. **[Azure AD ロール]** を選択します。
+1. [Azure AD ロールの設定を構成する](pim-how-to-change-default-settings.md)。
+1. [資格に応じて割り当てる](pim-how-to-add-role-to-user.md)。
+1. [資格のあるユーザーが Azure AD ロールを適切なタイミングでアクティブ化できるようにする](pim-how-to-activate-role.md)。
 
-    ![Azure AD ロールを取得するために Privileged Identity Management にサインアップする](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+## <a name="prepare-pim-for-azure-roles"></a>Azure ロール用に PIM を準備する
 
-1. **[サインアップ]** を選択します。
+ディレクトリに対して Privileged Identity Management を有効にしたら、サブスクリプションの Azure リソース アクセス用の Azure ロールを管理するために Privileged Identity Management を準備できます。
 
-1. 表示されるメッセージで、 **[はい]** をクリックして、Azure AD ロールを管理するために Privileged Identity Management にサインアップします。
+Azure ロールを準備するために推奨されるタスクは次のとおりです。
 
-    ![Azure AD ロールのメッセージを取得するために Privileged Identity Management にサインアップする](./media/pim-getting-started/sign-up-pim-message.png)
-
-    サインアップを完了すると、Azure AD オプションが有効になります。 場合によっては、ポータルを更新する必要があります。
-
-    Privileged Identity Management で保護する Azure リソースを検出して選択する方法については、[Privileged Identity Management で管理する Azure リソースの検出](pim-resource-roles-discover-resources.md)に関するページを参照してください。
+1. [Azure リソースを見つける](pim-resource-roles-discover-resources.md)
+1. [Azure ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)。
+1. [資格に応じて割り当てる](pim-resource-roles-assign-roles.md)。
+1. [資格のあるユーザーが Azure ロールを適切なタイミングでアクティブ化できるようにする](pim-resource-roles-activate-your-roles.md)。
 
 ## <a name="navigate-to-your-tasks"></a>タスクへの移動
 
-Privileged Identity Management が設定されたら、ID 管理タスクを開始できます。
+Privileged Identity Management の設定が済んだら、使用してみることができます。
 
 ![[タスク] と [管理] のオプションを示す Privileged Identity Management のナビゲーション ウィンドウ](./media/pim-getting-started/pim-quickstart-tasks.png)
 
@@ -68,12 +69,12 @@ Privileged Identity Management が設定されたら、ID 管理タスクを開�
 | **個人の要求** | 適格なロール割り当てのアクティブ化の保留中要求が表示されます。 |
 | **申請の承認** | ディレクトリ内のユーザーによる適格なロールのアクティブ化要求のうち、自分が承認するものの一覧が表示されます。 |
 | **アクセスのレビュー** | 自分に完了が割り当てられているアクティブなアクセス レビューが一覧表示されます (自分自身のアクセスをレビューするものと、他のユーザーのアクセスをレビューするものの両方)。 |
-| **Azure AD ロール** | Azure AD ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
-| **Azure リソース** | Azure リソース ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
+| **Azure AD ロール** | Azure AD ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、組織全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
+| **Azure リソース** | Azure リソース ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、組織全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>ダッシュボードに PIM タイルを追加する
 
-Privileged Identity Management を簡単に開けるようにするには、Azure portal ダッシュボードに [Privileged Identity Management] タイルを追加します。
+Privileged Identity Management を簡単に開けるようにするには、Azure portal ダッシュボードに PIM タイルを追加します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -94,4 +95,4 @@ Privileged Identity Management を簡単に開けるようにするには、Azur
 ## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
-- [Privileged Identity Management で管理する Azure リソースを検出する](pim-resource-roles-discover-resources.md)
+- [Privileged Identity Management で Azure リソースのアクセス権を管理する](pim-resource-roles-discover-resources.md)

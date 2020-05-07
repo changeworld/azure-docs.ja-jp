@@ -1,25 +1,15 @@
 ---
-title: 開発者のための概要 - Azure Batch | Microsoft Docs
+title: 開発者向けの概要
 description: 開発の観点から、Batch サービスとその API の機能について説明します。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 590ce6d6804c25ea9a3c1104f8fea2ea00c66356
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225995"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509195"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -89,7 +79,7 @@ Batch では、次の Azure ストレージ アカウントの種類がサポー
 
 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
-ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
+ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています  (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
 
 ## <a name="compute-node"></a>コンピューティング ノード
 
@@ -439,7 +429,7 @@ VNet で Batch プールを設定する方法の詳細については、[仮想�
 * **リソース メトリック** : CPU 使用量、帯域幅使用量、メモリ使用量、およびノードの数に基づきます。
 * **タスク メトリック**: "*アクティブ*" (キューに登録済み)、"*実行中*"、"*完了*" などのタスクの状態に基づきます。
 
-プール内のコンピューティング ノードの数が自動スケールによって縮小される場合、その縮小操作のタイミングで実行されているタスクの扱いを考慮に入れる必要があります。 その点に対応するために、Batch には " *ノードの割り当て解除オプション* " が用意されていて、それを式に含めることができます。 たとえば、実行中のタスクを即座に停止したうえで再度キューに登録して別のノードで実行するか、完了するまで待ってノードをプールから削除するかを指定できます。
+プール内のコンピューティング ノードの数が自動スケールによって縮小される場合、その縮小操作のタイミングで実行されているタスクの扱いを考慮に入れる必要があります。 その点に対応するために、Batch には式に含めることができる[*ノードの割り当て解除オプション*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)が用意されています。 たとえば、実行中のタスクを即座に停止したうえで再度キューに登録して別のノードで実行するか、完了するまで待ってノードをプールから削除するかを指定できます。 ノードの割り当て解除オプションを `taskcompletion` または `retaineddata` として設定すると、すべてのタスクが完了するまで、またはすべてのタスク保持期間が経過するまで、プールのサイズ変更操作ができなくなります。
 
 アプリケーションの自動的なスケーリングの詳細については、「 [Azure Batch プール内のコンピューティング ノードの自動スケール](batch-automatic-scaling.md)」を参照してください。
 

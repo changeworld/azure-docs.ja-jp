@@ -1,69 +1,281 @@
 ---
-title: Azure ファイル共有のバックアップに関するトラブルシューティング
+title: Azure ファイル共有のバックアップのトラブルシューティング
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
-ms.date: 08/20/2019
+ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227443"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562085"
 ---
-# <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップに関する問題のトラブルシューティング
+# <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
 
-次の表に示す情報を使って、Azure ファイル共有のバックアップを使用中に発生した問題やエラーのトラブルシューティングを行うことができます。
+この記事では、Azure Backup サービスを使用して、Azure ファイル共有のバックアップを構成したり復元したりする際に発生する問題に対処するためのトラブルシューティング情報を提供します。
 
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
+## <a name="common-configuration-issues"></a>一般的な構成の問題
 
-Azure ファイル共有のバックアップはプレビュー段階です。 汎用 v1 ストレージ アカウントと汎用 v2 ストレージ アカウント、どちらの Azure ファイル共有もサポートされています。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
+### <a name="could-not-find-my-storage-account-to-configure-backup-for-the-azure-file-share"></a>Azure ファイル共有のバックアップを構成するストレージ アカウントが見つかりませんでした
 
-- Azure Backup を使用して Azure Files を保護するために利用できる CLI はありません。
-- スケジュール バックアップの数は、1 日につき 1 個が上限となります。
-- オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
-- ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
-- Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
-- Azure Backup で保護されているファイル共有は削除しないでください。 現在のソリューションでは、ファイル共有が削除されると Azure Backup によって取得されたスナップショットがすべて削除されます。そのため、すべての復元ポイントが失われます。
+- 検出が完了するまで待ってください。
+- そのストレージ アカウントのファイル共有が既に別の Recovery Services コンテナーによって保護されているかどうかを確認してください。
 
-[ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS)、米国東部 (EUS)、米国東部 2 (EUS2)、北ヨーロッパ (NE)、東南アジア (SEA)、西ヨーロッパ (WE)、米国西部 2 (WUS2) でのみ使用できます。
+  >[!NOTE]
+  >ストレージ アカウントのすべてのファイル共有は、1 つの Recovery Services コンテナーのみで保護できます。 [このスクリプト](scripts/backup-powershell-script-find-recovery-services-vault.md)を使用すると、ご自分のストレージ アカウントが登録されている Recovery Services コンテナーを見つけるのに役立ちます。
 
-## <a name="configuring-backup"></a>バックアップを構成する
+- サポートされていないストレージ アカウントのいずれにもファイル共有が存在しないようにしてください。 サポートされているストレージ アカウントを見つけるには、「[Azure ファイル共有のバックアップのサポート マトリックス](azure-file-share-support-matrix.md)」を参照してください。
+- ストレージ アカウントのファイアウォール設定を確認して、信頼された Microsoft サービスからストレージ アカウントへのアクセスを許可するオプションが有効になっていることを確認します。
 
-次の表は、バックアップの構成に関連しています。
+### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>ポータルのエラーが、ストレージ アカウントの検出に失敗したことを示しています
 
-| エラー メッセージ | 回避策または解決策のヒント |
-| ------------------ | ----------------------------- |
-| Azure ファイル共有のバックアップを構成するストレージ アカウントが見つかりませんでした | <ul><li>検出が完了するまで待ってください。 <li>ストレージ アカウントのファイル共有が既に別の Recovery Services コンテナーによって保護されているかどうかを確認してください。 **注**: ストレージ アカウントのすべてのファイル共有は、1 つの Recovery Services コンテナーのみで保護できます。 <li>ファイル共有がサポートされていないストレージ アカウントのいずれにも存在しないようにしてください。<li> ストレージ アカウントで **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** チェックボックスがオンになっていることを確認します。詳細については、[こちら](../storage/common/storage-network-security.md)をご確認ください。|
-| ポータルのエラーが、ストレージ アカウントの検出に失敗したことを示しています。 | サブスクリプションがパートナー (CSP 対応) の場合は、このエラーを無視してください。 サブスクリプションが CSP 対応でなく、ストレージ アカウントを検出できない場合は、サポートにお問い合わせください。|
-| 選択したストレージ アカウントの検証または登録に失敗しました。| 操作を再試行してください。問題が解決しない場合は、サポートにお問い合わせください。|
-| 選択したストレージ アカウントでファイル共有を一覧表示または検索できませんでした。 | <ul><li> ストレージ アカウントがリソース グループに存在する (さらに、コンテナーで最後に検証/登録した後に削除または移動されていない) ことを確認してください。<li>保護しようとしているファイル共有が削除されていないことを確認してください。 <li>ストレージ アカウントが、ファイル共有のバックアップ用にサポートされているストレージ アカウントであることを確認してください。<li>ファイル共有が既に同じ Recovery Services コンテナー内で保護されているかどうかを確認してください。|
-| ファイル共有のバックアップの構成 (または保護ポリシーの構成) が失敗しています。 | <ul><li>操作を再試行して、問題が解決していないかどうかを確認してください。 <li> 保護したいファイル共有が削除されていないことを確認してください。 <li> 複数のファイル共有を一度に保護しようとしていて、ファイル共有の一部が失敗している場合は、失敗したファイル共有のバックアップを再度構成してみてください。 |
-| ファイル共有の保護を解除した後に Recovery Services コンテナーを削除できません。 | Azure portal で、お使いのコンテナー > **[バックアップ インフラストラクチャ]**  >  **[ストレージ アカウント]** の順に開き、 **[登録解除]** をクリックして、Recovery Services コンテナーからストレージ アカウントを削除してください。|
+パートナー サブスクリプション (CSP 対応) をお持ちの場合は、このエラーを無視してください。 サブスクリプションが CSP 対応でなく、ストレージ アカウントを検出できない場合は、サポートにお問い合わせください。
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>バックアップ ジョブまたは復元ジョブの失敗に関するエラー メッセージ
+### <a name="selected-storage-account-validation-or-registration-failed"></a>選択したストレージ アカウントの検証または登録に失敗しました
 
-| エラー メッセージ | 回避策または解決策のヒント |
-| -------------- | ----------------------------- |
-| ファイル共有が見つからないため、操作が失敗しました。 | 保護しようとしているファイル共有が削除されていないことを確認してください。|
-| ストレージ アカウントが見つからないか、サポートされていません。 | <ul><li>ストレージ アカウントがリソース グループに存在し、最後の検証後にリソース グループから削除または除外されていないことを確認してください。 <li> ストレージ アカウントが、ファイル共有のバックアップ用にサポートされているストレージ アカウントであることを確認してください。|
-| このファイル共有のスナップショットの上限に達しました。以前のものの有効期限が切れると、スナップショットを実行できるようになります。 | <ul><li> このエラーは、1 つのファイルに対してオンデマンド バックアップを複数作成したときに発生する場合があります。 <li> スナップショットには、ファイル共有につき 200 個という上限があります (これには、Azure Backup によって作成されたものも含まれます)。 スケジュールされた古いバックアップ (またはスナップショット) は自動的にクリーンアップされます。 上限に達した場合は、オンデマンド バックアップ (またはスナップショット) を削除する必要があります。<li> Azure Files ポータルからオンデマンド バックアップ (Azure ファイル共有スナップショット) を削除してください。 **注**: Azure Backup によって作成されたスナップショットを削除すると、復旧ポイントが失われます。 |
-| File share backup or restore failed due to storage service throttling. This may be because the storage service is busy processing other requests for the given storage account. (ストレージ サービスの調整のため、ファイル共有のバックアップまたは復元に失敗しました。その理由として考えられるのは、ストレージ サービスが特定のストレージ アカウントの他の要求が処理中であることです。)| しばらくしてから操作を再試行してください。 |
-| Restore failed with Target File Share Not Found. (復元に失敗しました。ターゲット ファイル共有が見つかりません。) | <ul><li>選択したストレージ アカウントが存在し、ターゲット ファイル共有が削除されていないことを確認してください。 <li> ストレージ アカウントが、ファイル共有のバックアップ用にサポートされているストレージ アカウントであることを確認してください。 |
-| Backup or Restore jobs failed due to storage account being in Locked state.(ストレージ アカウントがロック状態のため、バックアップ ジョブまたは復元ジョブに失敗しました。) | ストレージ アカウントのロックを解除するか、読み取りロックではなく削除ロックを使用し、操作を再試行してください。 |
-| 失敗したファイルの数がしきい値を超えているため、回復が失敗しました。 | <ul><li> 回復が失敗した理由はファイル (ジョブの詳細で指定されたパス) に示されています。 エラーを解決し、失敗したファイルに対してのみ復元操作を再試行してください。 <li> ファイル復元が失敗した一般的な理由: <br/> - 失敗したファイルが現在使用されていないことを確認します。 <br/> - 失敗したファイルと同じ名前のディレクトリが親ディレクトリに存在します。 |
-| 回復は失敗し、ファイルを回復できませんでした。 | <ul><li> 回復が失敗した理由はファイル (ジョブの詳細で指定されたパス) に示されています。 エラーを解決し、失敗したファイルに対してのみ復元操作を再試行してください。 <li> ファイル復元が失敗した一般的な理由: <br/> - 失敗したファイルが現在使用されていないことを確認します。 <br/> - 失敗したファイルと同じ名前のディレクトリが親ディレクトリに存在します。 |
-| Restore fails because one of the files in the source does not exist. (ソース内のファイルの 1 つが存在しないため、復元に失敗します。) | <ul><li> 選択した項目は復旧ポイントのデータに存在しません。 ファイルを復旧するには、正しいファイル リストを指定してください。 <li> 復旧ポイントに対応するファイル共有スナップショットは手動で削除されます。 別の復旧ポイントを選択し、復元操作を再試行してください。 |
-| 同じ宛先への回復ジョブが処理中です。 | <ul><li>ファイル共有のバックアップでは、同じターゲット ファイル共有への並列復旧がサポートされていません。 <li>既存の回復が完了するのを待ってから、もう一度試してください。 Recovery Services コンテナーに回復ジョブが見つからない場合は、同じサブスクリプション内の他の Recovery Services コンテナーを確認してください。 |
-| ターゲット ファイルの共有がいっぱいのため、復元操作に失敗しました。 | 復元データに対応できるようにターゲット ファイル共有のサイズ クォータを引き上げ、操作を再試行してください。 |
-| Restore operation failed as an error occurred while performing pre restore operations on File Sync Service resources associated with the target file share. (ターゲット ファイル共有に関連付けられている File Sync Service リソースで復元前の操作を実行しているときにエラーが発生したため復元操作に失敗しました。) | しばらくしてからやり直してください。問題が解消されない場合は、Microsoft サポートにお問い合わせください。 |
-| いくつかのファイルを正常に回復できませんでした。 詳しくは、上記のパスにある失敗したファイルの一覧を確認してください。 | <ul> <li> 回復に失敗した理由はファイル (ジョブの詳細で指定されたパス) に示されるため、その理由を解決し、失敗したファイルに対してのみ復元操作を再試行してください。 <li> ファイル復元が失敗する一般的な理由は次のとおりです。 <br/> - 失敗したファイルが現在使用されていないことを確認します。 <br/> - 失敗したファイルと同じ名前のディレクトリが親ディレクトリに存在します。 |
+もう一度登録してみてください。 問題が解決しない場合は、サポートにお問い合わせください。
 
-## <a name="modify-policy"></a>ポリシーを変更する
+### <a name="could-not-list-or-find-file-shares-in-the-selected-storage-account"></a>選択したストレージ アカウントでファイル共有を一覧表示または検索できませんでした
 
-| エラー メッセージ | 回避策または解決策のヒント |
-| ------------------ | ----------------------------- |
-| この項目には別の保護構成操作が進行中です。 | 先行するポリシー変更操作が完了するのを待って、しばらくしてから再試行してください。|
-| 選択された項目で別の操作が実行中です。 | 進行中の他の操作が完了するのを待って、しばらくしてから再試行してください。 |
+- ストレージ アカウントがリソース グループに存在していて、コンテナーで最後に検証または登録した後に削除または移動されていないことを確認してください。
+- 保護しようとしているファイル共有が削除されていないことを確認してください。
+- ストレージ アカウントが、ファイル共有のバックアップ用にサポートされているストレージ アカウントであることを確認してください。 サポートされているストレージ アカウントを見つけるには、「[Azure ファイル共有のバックアップのサポート マトリックス](azure-file-share-support-matrix.md)」を参照してください。
+- ファイル共有が、同じ Recovery Services コンテナー内で既に保護されているかどうかを確認してください。
+
+### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>ファイル共有のバックアップの構成 (または保護ポリシーの構成) が失敗しています
+
+- 再度構成して、問題が解決していないかどうかを確認してください。
+- 保護するファイル共有が削除されていないことを確認してください。
+- 複数のファイル共有を一度に保護しようとして、一部のファイル共有が失敗する場合は、失敗したファイル共有のバックアップを再度構成してみてください。
+
+### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>ファイル共有の保護を解除した後に Recovery Services コンテナーを削除できません
+
+Azure portal で、お使いの**コンテナー** >  **[バックアップ インフラストラクチャ]**  >  **[ストレージ アカウント]** の順に開き、 **[登録解除]** をクリックして、Recovery Services コンテナーからストレージ アカウントを削除してください。
+
+>[!NOTE]
+>Recovery Services コンテナーは、コンテナーに登録されているすべてのストレージ アカウントの登録を解除した後にのみ削除できます。
+
+## <a name="common-backup-or-restore-errors"></a>バックアップまたは復元に関する一般的なエラー
+
+### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound- ファイル共有が見つからないため、操作が失敗しました
+
+Error Code:FileShareNotFound
+
+エラー メッセージ:ファイル共有が見つからないため、操作が失敗しました
+
+保護しようとしているファイル共有が削除されていないことを確認してください。
+
+### <a name="usererrorfileshareendpointunreachable--storage-account-not-found-or-not-supported"></a>UserErrorFileShareEndpointUnreachable- ストレージ アカウントが見つからないか、サポートされていません
+
+Error Code:UserErrorFileShareEndpointUnreachable
+
+エラー メッセージ:ストレージ アカウントが見つからないか、サポートされていません
+
+- ストレージ アカウントがリソース グループに存在し、最後の検証後にリソース グループから削除または除外されていないことを確認してください。
+
+- ストレージ アカウントが、ファイル共有のバックアップ用にサポートされているストレージ アカウントであることを確認してください。
+
+### <a name="afsmaxsnapshotreached--you-have-reached-the-max-limit-of-snapshots-for-this-file-share-you-will-be-able-to-take-more-once-the-older-ones-expire"></a>AFSMaxSnapshotReached- このファイル共有のスナップショットの上限に達しました。以前のものの有効期限が切れると、スナップショットを実行できるようになります
+
+Error Code:AFSMaxSnapshotReached
+
+エラー メッセージ:このファイル共有のスナップショットの上限に達しました。以前のものの有効期限が切れると、スナップショットを実行できるようになります。
+
+- このエラーは、1 つのファイル共有に対してオンデマンド バックアップを複数作成したときに発生する場合があります。
+- スナップショットには、ファイル共有につき 200 個という上限があります (これには、Azure Backup によって作成されたものも含まれます)。 スケジュールされた古いバックアップ (またはスナップショット) は自動的にクリーンアップされます。 上限に達した場合は、オンデマンド バックアップ (またはスナップショット) を削除する必要があります。
+
+Azure Files ポータルからオンデマンド バックアップ (Azure ファイル共有スナップショット) を削除してください。
+
+>[!NOTE]
+> Azure Backup によって作成されたスナップショットを削除すると、復旧ポイントが失われます。
+
+### <a name="usererrorstorageaccountnotfound--operation-failed-as-the-specified-storage-account-does-not-exist-anymore"></a>UserErrorStorageAccountNotFound- 指定されたストレージ アカウントは存在しなくなったため、操作は失敗しました
+
+Error Code:UserErrorStorageAccountNotFound
+
+エラー メッセージ:指定されたストレージ アカウントは存在しなくなったため、操作は失敗しました。
+
+ストレージ アカウントがまだ存在していて、削除されていないことを確認してください。
+
+### <a name="usererrordtsstorageaccountnotfound--the-storage-account-details-provided-are-incorrect"></a>UserErrorDTSStorageAccountNotFound- 指定されたストレージ アカウントの詳細が正しくありません
+
+Error Code:UserErrorDTSStorageAccountNotFound
+
+エラー メッセージ:指定されたストレージ アカウントの詳細が正しくありません。
+
+ストレージ アカウントがまだ存在していて、削除されていないことを確認してください。
+
+### <a name="usererrorresourcegroupnotfound--resource-group-doesnt-exist"></a>UserErrorResourceGroupNotFound- リソース グループが存在しません
+
+Error Code:UserErrorResourceGroupNotFound
+
+エラー メッセージ:リソース グループが存在しません
+
+既存のリソース グループを選択するか、新しいリソース グループを作成します。
+
+### <a name="parallelsnapshotrequest--a-backup-job-is-already-in-progress-for-this-file-share"></a>ParallelSnapshotRequest- このファイル共有では、バックアップ ジョブが既に進行中です
+
+Error Code:ParallelSnapshotRequest
+
+エラー メッセージ:このファイル共有では、バックアップ ジョブが既に進行中です。
+
+- ファイル共有のバックアップでは、同じファイル共有に対する並列スナップショット要求はサポートされていません。
+
+- 既存のバックアップ ジョブが完了するのを待ってから、もう一度やり直してください。 Recovery Services コンテナーにバックアップ ジョブが見つからない場合は、同じサブスクリプション内の他の Recovery Services コンテナーを確認してください。
+
+### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>FileshareBackupFailedWithAzureRpRequestThrottling/ FileshareRestoreFailedWithAzureRpRequestThrottling- ストレージ サービスの調整のため、ファイル共有のバックアップまたは復元に失敗しました。 ストレージ サービスが特定のストレージ アカウントの他の要求を処理中であることが原因である可能性があります
+
+Error Code:FileshareBackupFailedWithAzureRpRequestThrottling/ FileshareRestoreFailedWithAzureRpRequestThrottling
+
+エラー メッセージ:File share backup or restore failed due to storage service throttling. This may be because the storage service is busy processing other requests for the given storage account. (ストレージ サービスの調整のため、ファイル共有のバックアップまたは復元に失敗しました。その理由として考えられるのは、ストレージ サービスが特定のストレージ アカウントの他の要求が処理中であることです。)
+
+後でバックアップまたは復元操作を試してください。
+
+### <a name="targetfilesharenotfound--target-file-share-not-found"></a>TargetFileShareNotFound- ターゲット ファイル共有が見つかりません
+
+Error Code:TargetFileShareNotFound
+
+エラー メッセージ:ターゲット ファイル共有が見つかりません。
+
+- 選択したストレージ アカウントが存在していて、ターゲット ファイル共有が削除されていないことを確認してください。
+
+- ストレージ アカウントが、ファイル共有のバックアップ用にサポートされているストレージ アカウントであることを確認してください。
+
+### <a name="usererrorstorageaccountislocked--backup-or-restore-jobs-failed-due-to-storage-account-being-in-locked-state"></a>UserErrorStorageAccountIsLocked- ストレージ アカウントがロック状態のため、バックアップ ジョブまたは復元ジョブに失敗しました
+
+Error Code:UserErrorStorageAccountIsLocked
+
+エラー メッセージ:ストレージ アカウントがロック状態のため、バックアップ ジョブまたは復元ジョブに失敗しました。
+
+ストレージ アカウントのロックを解除するか、**読み取りロック**ではなく**削除ロック**を使用して、バックアップまたは復元操作を再試行してください。
+
+### <a name="datatransferservicecoflimitreached--recovery-failed-because-number-of-failed-files-are-more-than-the-threshold"></a>DataTransferServiceCoFLimitReached- 失敗したファイルの数がしきい値を超えているため、回復が失敗しました
+
+Error Code:DataTransferServiceCoFLimitReached
+
+エラー メッセージ:失敗したファイルの数がしきい値を超えているため、回復が失敗しました。
+
+- 回復が失敗した理由はファイル (ジョブの詳細で指定されたパス) に示されています。 エラーを解決し、失敗したファイルに対してのみ復元操作を再試行してください。
+
+- ファイル復元が失敗した一般的な理由:
+
+  - 失敗したファイルが現在使用中
+  - 失敗したファイルと同じ名前のディレクトリが親ディレクトリに存在する
+
+### <a name="datatransferserviceallfilesfailedtorecover--recovery-failed-as-no-file-could-be-recovered"></a>DataTransferServiceAllFilesFailedToRecover- 回復は失敗し、ファイルを回復できませんでした
+
+Error Code:DataTransferServiceAllFilesFailedToRecover
+
+エラー メッセージ:回復は失敗し、ファイルを回復できませんでした。
+
+- 回復が失敗した理由はファイル (ジョブの詳細で指定されたパス) に示されています。 エラーを解決し、失敗したファイルに対してのみ復元操作を再試行してください。
+
+- ファイル復元が失敗した一般的な理由:
+
+  - 失敗したファイルが現在使用中
+  - 失敗したファイルと同じ名前のディレクトリが親ディレクトリに存在する
+
+### <a name="usererrordtssourceurinotvalid---restore-fails-because-one-of-the-files-in-the-source-does-not-exist"></a>UserErrorDTSSourceUriNotValid - ソース内のファイルの 1 つが存在しないため、復元に失敗します
+
+Error Code:DataTransferServiceSourceUriNotValid
+
+エラー メッセージ:Restore fails because one of the files in the source does not exist. (ソース内のファイルの 1 つが存在しないため、復元に失敗します。)
+
+- 選択した項目は復旧ポイントのデータに存在しません。 ファイルを復旧するには、正しいファイル リストを指定してください。
+- 復旧ポイントに対応するファイル共有スナップショットは手動で削除されます。 別の復旧ポイントを選択し、復元操作を再試行してください。
+
+### <a name="usererrordtsdestlocked--a-recovery-job-is-in-process-to-the-same-destination"></a>UserErrorDTSDestLocked- 同じ宛先への回復ジョブが処理中です
+
+Error Code:UserErrorDTSDestLocked
+
+エラー メッセージ:同じ宛先への回復ジョブが処理中です。
+
+- ファイル共有のバックアップでは、同じターゲット ファイル共有への並列復旧がサポートされていません。
+
+- 既存の回復が完了するのを待ってから、もう一度試してください。 Recovery Services コンテナーに回復ジョブが見つからない場合は、同じサブスクリプション内の他の Recovery Services コンテナーを確認してください。
+
+### <a name="usererrortargetfilesharefull--restore-operation-failed-as-target-file-share-is-full"></a>UserErrorTargetFileShareFull- ターゲット ファイルの共有がいっぱいのため、復元操作に失敗しました
+
+エラー コード:UserErrorTargetFileShareFull
+
+エラー メッセージ:ターゲット ファイルの共有がいっぱいのため、復元操作に失敗しました。
+
+復元データに対応できるようにターゲット ファイル共有のサイズ クォータを引き上げ、復元操作を再試行してください。
+
+### <a name="usererrortargetfilesharequotanotsufficient--target-file-share-does-not-have-sufficient-storage-size-quota-for-restore"></a>UserErrorTargetFileShareQuotaNotSufficient- ターゲット ファイル共有には、復元のための十分なストレージ サイズのクォータがありません
+
+Error Code:UserErrorTargetFileShareQuotaNotSufficient
+
+エラー メッセージ:ターゲット ファイル共有には、復元のための十分なストレージ サイズのクォータがありません
+
+復元データに対応できるようにターゲット ファイル共有のサイズ クォータを引き上げ、操作を再試行してください
+
+### <a name="file-sync-prerestorefailed--restore-operation-failed-as-an-error-occurred-while-performing-pre-restore-operations-on-file-sync-service-resources-associated-with-the-target-file-share"></a>File Sync PreRestoreFailed- ターゲット ファイル共有に関連付けられている File Sync Service リソースで復元前の操作を実行しているときにエラーが発生したため復元操作に失敗しました
+
+Error Code:File Sync PreRestoreFailed
+
+エラー メッセージ:Restore operation failed as an error occurred while performing pre restore operations on File Sync Service resources associated with the target file share. (ターゲット ファイル共有に関連付けられている File Sync Service リソースで復元前の操作を実行しているときにエラーが発生したため復元操作に失敗しました。)
+
+後でデータを復元してみてください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
+
+### <a name="azurefilesyncchangedetectioninprogress--azure-file-sync-service-change-detection-is-in-progress-for-the-target-file-share-the-change-detection-was-triggered-by-a-previous-restore-to-the-target-file-share"></a>AzureFileSyncChangeDetectionInProgress- ターゲット ファイル共有に対して Azure File Sync サービスの変更検出が進行中です。 変更検出は、ターゲット ファイル共有に対する以前の復元によってトリガーされました
+
+Error Code:AzureFileSyncChangeDetectionInProgress
+
+エラー メッセージ:ターゲット ファイル共有に対して Azure File Sync サービスの変更検出が進行中です。 変更検出は、ターゲット ファイル共有に対する以前の復元によってトリガーされました。
+
+別のターゲット ファイル共有を使用してください。 または、復元を再試行する前に、ターゲット ファイル共有の Azure File Sync サービスの変更検出が完了するまでお待ちください。
+
+### <a name="usererrorafsrecoverysomefilesnotrestored--one-or-more-files-could-not-be-recovered-successfully-for-more-information-check-the-failed-file-list-in-the-path-given-above"></a>UserErrorAFSRecoverySomeFilesNotRestored- いくつかのファイルを正常に回復できませんでした。 詳しくは、上記のパスにある失敗したファイルの一覧を確認してください
+
+Error Code:UserErrorAFSRecoverySomeFilesNotRestored
+
+エラー メッセージ:いくつかのファイルを正常に回復できませんでした。 詳しくは、上記のパスにある失敗したファイルの一覧を確認してください。
+
+- 回復が失敗した理由はファイル (ジョブの詳細で指定されたパス) に示されています。 理由を解決し、失敗したファイルに対してのみ復元操作を再試行してください。
+- ファイル復元が失敗した一般的な理由:
+
+  - 失敗したファイルが現在使用中
+  - 失敗したファイルと同じ名前のディレクトリが親ディレクトリに存在する
+
+### <a name="usererrorafssourcesnapshotnotfound--azure-file-share-snapshot-corresponding-to-recovery-point-cannot-be-found"></a>UserErrorAFSSourceSnapshotNotFound- 回復ポイントに対応している Azure ファイル共有スナップショットが見つかりません
+
+Error Code:UserErrorAFSSourceSnapshotNotFound
+
+エラー メッセージ:回復ポイントに対応している Azure ファイル共有スナップショットが見つかりません
+
+- 回復に使用しようとしている回復ポイントに対応するファイル共有スナップショットがまだ存在していることを確認してください。
+
+  >[!NOTE]
+  >Azure Backup によって作成されたファイル共有スナップショットを削除すると、対応する回復ポイントが使用できなくなります。 確実に復旧できるように、スナップショットは削除しないことをお勧めします。
+
+- データを回復するには、別の復元ポイントを選択してみてください。
+
+### <a name="usererroranotherrestoreinprogressonsametarget--another-restore-job-is-in-progress-on-the-same-target-file-share"></a>UserErrorAnotherRestoreInProgressOnSameTarget- 別の復元ジョブが同じターゲット ファイル共有で実行中です
+
+Error Code:UserErrorAnotherRestoreInProgressOnSameTarget
+
+エラー メッセージ:別の復元ジョブが同じターゲット ファイル共有で実行中です
+
+別のターゲット ファイル共有を使用してください。 または、キャンセルするか他の復元が完了するのをお待ちください。
+
+## <a name="common-modify-policy-errors"></a>ポリシーの変更に関する一般的なエラー
+
+### <a name="bmsusererrorconflictingprotectionoperation--another-configure-protection-operation-is-in-progress-for-this-item"></a>BMSUserErrorConflictingProtectionOperation- この項目には別の保護構成操作が進行中です
+
+Error Code:BMSUserErrorConflictingProtectionOperation
+
+エラー メッセージ:この項目には別の保護構成操作が進行中です。
+
+先行するポリシー変更操作が完了するのを待って、しばらくしてから再試行してください。
+
+### <a name="bmsusererrorobjectlocked--another-operation-is-in-progress-on-the-selected-item"></a>BMSUserErrorObjectLocked- 選択された項目で別の操作が実行中です
+
+Error Code:BMSUserErrorObjectLocked
+
+エラー メッセージ:選択された項目で別の操作が実行中です。
+
+進行中の他の操作が完了するのを待って、しばらくしてから再試行してください。
 
 ## <a name="next-steps"></a>次のステップ
 

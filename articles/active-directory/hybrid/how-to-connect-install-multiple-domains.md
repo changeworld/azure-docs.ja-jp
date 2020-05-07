@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b5f19e3e994aa05fa99caf360d0c1be69ec7a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049786"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201042"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -137,7 +137,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 ## <a name="support-for-subdomains"></a>サブドメインのサポート
 サブドメインの追加では、Azure AD がドメインを処理する方法のために、親の設定を継承します。  そのため、IssuerUri は親に一致させる必要があります。
 
-たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、 **http://bmcontoso.com/adfs/services/trust とする必要があります。**  しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
+たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、 **`http://bmcontoso.com/adfs/services/trust`** とする必要があります。  しかし、上で Azure AD に適用した標準ルールでは、発行者を **`http://corp.bmcontoso.com/adfs/services/trust`**  としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>サブドメインのサポートを有効にする方法
 この動作を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。  そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。
@@ -169,7 +169,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 ## <a name="next-steps"></a>次のステップ
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](how-to-connect-post-installation.md)ことができます。
 
-インストールの結果有効になった機能については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
+インストールの結果有効になった機能について詳しくは、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
 
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](how-to-connect-sync-feature-scheduler.md)に関するページを参照してください。
 

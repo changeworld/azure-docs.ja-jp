@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 119f9c28b5413b8d2db5fa14ea839d1743f3d64a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a273ccad0d30ede3f0ed4ee532d61161074d304
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297624"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188295"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -282,7 +282,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="cause"></a>原因
 
-ポイント対サイト VPN クライアントは、Azure 仮想ネットワーク内に構成されている Azure DNS サーバーを使用します。 Azure DNS サーバーはクライアント内に構成されているローカル DNS サーバーに優先するため、すべての DNS クエリは Azure DNS サーバーに送信されます。 Azure DNS サーバーにローカル リソースのレコードがない場合、クエリは失敗します。
+ポイント対サイト VPN クライアントでは通常、Azure 仮想ネットワーク内に構成されている Azure DNS サーバーが使用されます。 (Ethernet インターフェイスのメトリックがより低い場合を除いて、) Azure DNS サーバーはクライアント内に構成されているローカル DNS サーバーに優先するため、すべての DNS クエリは Azure DNS サーバーに送信されます。 Azure DNS サーバーにローカル リソースのレコードがない場合、クエリは失敗します。
 
 ### <a name="solution"></a>解決策
 

@@ -1,20 +1,20 @@
 ---
 title: 既定の回答を取得する - QnA Maker
 description: 規定の回答は、質問に対する回答が見つからなかった場合に返されます。 標準の既定の回答から既定の応答を変更することもできます。
-ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: fae5c38fd64435a3fae56862bad04e000916e88b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/22/2020
+ms.openlocfilehash: db5a79ec612a73066ac37365a1815841fafb3862
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76843278"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097100"
 ---
-# <a name="set-default-answer-for-a-knowledge-base"></a>ナレッジ ベースの既定の回答を設定する
+# <a name="change-default-answer-for-a-qna-maker-resource"></a>QnA Maker リソースの既定の回答を変更する
 
 規定の回答は、質問に対する回答が見つからなかった場合に返されます。 標準の既定の回答から既定の応答を変更することもできます。
 
-## <a name="change-default-answer"></a>既定の回答の変更
+## <a name="change-default-answer-in-the-azure-portal"></a>Azure portal で既定の回答を変更する
 
 1. [Azure Portal](https://portal.azure.com) に移動し、作成した QnA Maker サービスを表すリソース グループに移動します。
 
@@ -32,4 +32,4 @@ ms.locfileid: "76843278"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [QnA Maker と LUIS を使用したボットの作成](../tutorials/integrate-qnamaker-luis.md)
+* [ナレッジ ベースの作成](../How-to/manage-knowledge-bases.md)

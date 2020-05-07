@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225311"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231103"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する
 
-  スコアリングとは、検索結果に返されるすべての項目の "*検索スコア*" を計算することです。 スコアは、現在の検索操作のコンテキストにおける項目の関連性を示すインジケーターです。 スコアが高いほど、項目の関連性が高くなります。 検索結果内の項目は、項目ごとに計算された検索スコアに基づいて、順位の高い順に並べられます。  
+"*スコアリング*" では、順位に従って並べられる結果セット内の各項目の検索スコアが計算されます。 検索結果セット内のすべての項目にそれぞれ検索スコアが割り当てられ、最上位から最下位まで順位が付けられます。
 
  Azure Cognitive Search では、既定のスコアリングを使用して初期スコアを計算しますが、"*スコアリング プロファイル*" を介して計算をカスタマイズすることができます。 スコアリング プロファイルでは、検索結果の項目の順位付けをより細かく制御できます。 たとえば、収益の可能性に基づいて項目をブーストしたり、より新しい項目を昇格させたり、場合によっては在庫期間が長すぎる項目をブーストしたりできます。  
 
@@ -285,6 +285,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
  他の例については、「[XML Schema:Datatypes (XML スキーマ: データ型)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)」(W3.org の Web サイト) をご覧ください。  
 
 ## <a name="see-also"></a>関連項目  
- [Azure Cognitive Search REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+
++ [REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)   
++ [インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
++ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

@@ -5,15 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/30/2020
-ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/23/2020
+ms.openlocfilehash: 58dbb52cd906d91daec7e4b16625bc264135e90c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437538"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82114855"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
+
 監視ソリューションでは、Azure のサービスを利用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報が提供されます。 この記事では、Azure の監視ソリューションの簡単な概要と、監視ソリューションの使用とインストールの詳細について説明します。
 
 > [!NOTE]
@@ -26,6 +27,7 @@ ms.locfileid: "80437538"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="use-monitoring-solutions"></a>監視ソリューションの使用
+
 Azure Monitor の **[概要]** ページを開くと、ワークスペースにインストールされた各ソリューションのタイルが表示されます。 
 
 1. [Azure ポータル](https://ms.portal.azure.com)にアクセスします。 **[モニター]** を検索して選択します。
@@ -37,7 +39,8 @@ Azure Monitor の **[概要]** ページを開くと、ワークスペースに�
 
 監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、[クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。[ログ クエリ](../log-query/log-query-overview.md)でアドホック分析を実行するときにこれらのクエリを使用できます。
 
-## <a name="list-installed-monitoring-solutions"></a>インストールされている監視ソリューションを一覧表示する 
+## <a name="list-installed-monitoring-solutions"></a>インストールされている監視ソリューションを一覧表示する
+
 サブスクリプションにインストールされている監視ソリューションを一覧表示するには、次の手順を使用します。
 
 1. [Azure ポータル](https://ms.portal.azure.com)にアクセスします。 **[ソリューション]** を検索して選択します。
@@ -51,9 +54,8 @@ Azure Monitor の **[概要]** ページを開くと、ワークスペースに�
 
 ![ソリューションのプロパティ](media/solutions/solution-properties.png)
 
-
-
 ## <a name="install-a-monitoring-solution"></a>監視ソリューションをインストールする
+
 Microsoft およびパートナーの監視ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。
 
 1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-monitoring-solutions)で、 **[追加]** をクリックします。
@@ -65,6 +67,7 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
 ![ソリューションをインストールする](media/solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>コミュニティからソリューションをインストールする
+
 コミュニティのメンバーは、Azure クイック スタート テンプレートに管理ソリューションを提出できます。 これらのソリューションを直接インストールするか、または後でインストールするためにテンプレートにダウンロードできます。
 
 1. 「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
@@ -75,28 +78,29 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
 6. ソリューションのパラメーターの値に加えて、リソース グループや場所などの必須情報を入力するように求められます。
 7. **[購入]** をクリックして、ソリューションをインストールします。
 
-
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント
+
 ソリューションによって収集されたデータを格納し、ログ検索とビューをホストするために、すべての監視ソリューションでは [Log Analytics ワークスペース](../platform/manage-access.md)が必要です。 また、一部のソリューションでは、Runbook と関連するリソースを格納するために、[Automation アカウント](../../automation/automation-security-overview.md#automation-account-overview)も必要になります。 ワークスペースとアカウントは、次の要件を満たす必要があります。
 
 * ソリューションの各インストールで使うことができる Log Analytics ワークスペースと Automation アカウントは、それぞれ 1 つのみです。 複数のワークスペースにソリューションを個別にインストールできます。
 * ソリューションに Automation アカウントが必要な場合は、Log Analytics ワークスペースと Automation アカウントを互いにリンクさせる必要があります。 1 つの Automation アカウントにリンクできる Log Analytics ワークスペースは 1 つのみであり、同様に 1 つの Log Analytics ワークスペースにリンクできる Automation アカウントは 1 つのみです。
-* Log Analytics ワークスペースと Automation アカウントをリンクさせるには、これらのリソース グループとリージョンが同じである必要があります。 例外として、米国東部リージョンのワークスペースと米国東部 2 の Automation アカウントはリンク可能です。
+* リンクを設定するには、Log Analytics ワークスペースと Automation アカウントが同じサブスクリプションに含まれている必要がありますが、同じリージョンにデプロイされた異なるリソース グループに含まれていても構いません。 例外として、米国東部リージョンのワークスペースと米国東部 2 の Automation アカウントはリンク可能です。
 
 Azure Marketplace からソリューションをインストールする場合は、ワークスペースと Automation アカウントが求められます。 まだリンクされていない場合は、これらの間にリンクが作成されます。
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント間のリンクを検証する
+
 Log Analytics ワークスペースと Automation アカウント間のリンクは、次の方法で確認できます。
 
 1. Azure Portal で Automation アカウントを選択します。
-1. メニューの **[関連リソース]** セクションまでスクロールします。
-1. **[ワークスペース]** 設定が有効になっている場合、このアカウントは Log Analytics ワークスペースにリンクされます。 **[ワークスペース]** をクリックして、ワークスペースの詳細を表示できます。
+1. メニューの **[関連リソース]** セクションまでスクロールし、 **[リンクされたワークスペース]** を選択します。
+1. **ワークスペース**が Automation アカウントにリンクされている場合、リンクされているワークスペースがこのページに表示されます。 表示されるワークスペースの名前を選択すると、そのワークスペースの概要ページにリダイレクトされます。
 
 ## <a name="remove-a-monitoring-solution"></a>監視ソリューションを削除する
+
 インストール済みのソリューションを削除するには、[インストールされているソリューションの一覧](#list-installed-monitoring-solutions)で検索します。 ソリューション名をクリックして [概要] ページを開き、 **[削除]** をクリックします。
 
-
 ## <a name="next-steps"></a>次のステップ
+
 * [Microsoft の監視ソリューションの一覧](solutions-inventory.md)を取得します。
 * 監視ソリューションで収集されたデータを分析するための[クエリを作成する](../log-query/log-query-overview.md)方法を確認します。
-

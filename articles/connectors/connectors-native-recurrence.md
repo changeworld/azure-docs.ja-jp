@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: a9c167c5767a4156147e13a1e4ae21162e506474
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3618e6d3fe919bc06496d5b41d162bd211c3d404
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445857"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231936"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps で繰り返しトリガーを使用して繰り返しタスクおよびワークフローを作成、スケジュール設定、および実行する
 
@@ -77,7 +77,7 @@ ms.locfileid: "75445857"
    | **タイム ゾーン** | `timeZone` | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 |
    | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
    | **設定曜日** | `weekDays` | いいえ | 文字列または文字列配列 | [週] を選択した場合は、ワークフローを実行するときに **[月曜日]** 、 **[火曜日]** 、 **[水曜日]** 、 **[木曜日]** 、 **[金曜日]** 、 **[土曜日]** 、および **[日曜日]** のうちの 1 日以上を選択できます。 |
-   | **設定時刻 (時間)** | `hours` | いいえ | 整数または整数配列 | [日] または [週] を選択した場合は、ワークフローを実行する時刻として 0 ～ 23 の 1 つ以上の整数を選択できます。 <p><p>たとえば、[10]、[12]、[14] を指定した場合は、時刻として午前 10 時、午後 12 時、および午後 2 時が指定されますが、時刻の分は繰り返しの開始時刻に基づいて計算されます。 時刻の分を設定するには、 **[設定時刻 (分)]** プロパティの値を指定します。 |
+   | **設定時刻 (時間)** | `hours` | いいえ | 整数または整数配列 | [日] または [週] を選択した場合は、ワークフローを実行する時刻として 0 ～ 23 の 1 つ以上の整数を選択できます。 <p><p>たとえば、[10]、[12]、[14] を指定した場合は、時刻として午前 10 時、午後 12 時、および午後 2 時が指定されますが、時刻の分は繰り返しの開始時刻に基づいて計算されます。 特定の時刻 (たとえば、午前 10:00、午後 12:00、午後 2:00) を設定するには、 **[設定時刻 (分)]** プロパティを使用してこれらの値を指定します。 |
    | **設定時刻 (分)** | `minutes` | いいえ | 整数または整数配列 | [日] または [週] を選択した場合、ワークフローを実行する時刻 (分) として 0 ～ 59 の整数を選択できます (複数選択可)。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 |
    |||||
 

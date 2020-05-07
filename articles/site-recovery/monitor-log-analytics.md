@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74133422"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131186"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
 この記事では、Azure [Site Recovery](site-recovery-overview.md) によってレプリケートされたマシンを [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)と [Log Analytics](../azure-monitor/log-query/log-query-overview.md) を使って監視する方法を説明します。
 
-Azure Monitor ログは、アクティビティと診断のログを他の監視データと共に収集するログ データ プラットフォームです。 Azure Monitor ログ内で Log Analytics を使用し、ログ クエリを記述してテストしたり、ログ データを対話形式で分析したりすることができます。 ログの結果を可視化してクエリを実行したり、監視対象データに基づいてアクションを実行するようにアラートを構成したりすることが可能です。
+Azure Monitor ログは、アクティビティ ログとリソース ログを他の監視データと共に収集するログ データ プラットフォームです。 Azure Monitor ログ内で Log Analytics を使用し、ログ クエリを記述してテストしたり、ログ データを対話形式で分析したりすることができます。 ログの結果を可視化してクエリを実行したり、監視対象データに基づいてアクションを実行するようにアラートを構成したりすることが可能です。
 
 Site Recovery では、Azure Monitor ログを次の目的に使用できます。
 
@@ -44,7 +44,7 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 
 1. コンテナーで、 **[診断設定]**  >  **[診断設定を追加する]** の順にクリックします。
 
-    ![診断ログを選択する](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![リソース ログの選択](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. **[診断設定]** で名前を指定し、 **[Log Analytics への送信]** ボックスをオンにします。
 3. Azure Monitor ログのサブスクリプションと Log Analytics ワークスペースを選択します。

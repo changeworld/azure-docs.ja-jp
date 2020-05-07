@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131411"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561032"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
@@ -54,7 +54,7 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
 >
 >詳細については、「[ビルド パイプラインを作成する](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline)」を参照してください。
 
-1. ご自身の Azure DevOps 組織 (**https:\//dev.azure.com/{your organization}/** ) にサインインして、IoT Edge ソリューションのリポジトリが含まれているプロジェクトを開きます。
+1. ご自身の Azure DevOps 組織 (**https:\//dev.azure.com/{組織}/** ) にサインインして、IoT Edge ソリューションのリポジトリが含まれているプロジェクトを開きます。
 
    この記事では、**IoTEdgeRepo** というリポジトリを作成しました。 そのリポジトリには、**filtermodule** という名前のモジュール用のコードがある **IoTEdgeSolution** が含まれています。
 
@@ -100,6 +100,13 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
    * **既定のプラットフォーム**:ターゲットの IoT Edge デバイスに基づいて、モジュールの適切なプラットフォームを選択します。
    * **出力変数**:出力変数には、deployment.json ファイルが生成されるファイル パスの構成に使用できる参照名が含まれます。 参照名を **edge** のような覚えやすい名前に設定します。
 
+
+   これらの構成では、`module.json` ファイルで定義されているイメージ リポジトリとタグを使用して、モジュール イメージに名前とタグを付けます。 また、 **[Build module images]\(モジュール イメージのビルド\)** は、`module.json` ファイルで定義するのと同じ値に変数を置き換えるのにも役立ちます。 Visual Studio または Visual Studio Code では、`.env` ファイルに実際の値を指定します。 Azure Pipelines では、 **[パイプライン変数]** タブで値を設定します。 **[変数]** タブを選択し、次のように名前と値を構成します。
+
+    * **ACR_ADDRESS**:Azure Container Registry SLA のアドレス。 
+
+    プロジェクトに他の変数がある場合は、このタブでその名前と値を指定できます。 **[Build module images]\(モジュール イメージのビルド\)** では、`${VARIABLE}` 形式の変数のみが認識されます。 `**/module.json` ファイルでこの形式を使用していることを確認してください。
+    
 7. 2 番目の **Azure IoT Edge** タスクを選択して編集します。 このタスクでは、すべてのモジュール イメージが選択したコンテナー レジストリにプッシュされます。
 
    * **表示名**:表示名は、アクション フィールドが変更されると自動的に更新されます。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 4ea29888d4dcf589e3e5d4dfe594f5f4bff2287e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397301"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559979"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Azure アクティビティ ログ イベントを表示して取得する
 
@@ -71,7 +71,7 @@ ms.locfileid: "80397301"
 PowerShell からアクティビティ ログを取得するには、[Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) コマンドレットを使用します。 一般的な例を次に示します。
 
 > [!NOTE]
-> `Get-AzLog` は、15 日間の履歴のみを提供します。 **-MaxEvents** パラメーターを使用して、15 日間を超えて最後の N 件のイベントをクエリします。 15 日より前のイベントにアクセスするには、REST API または SDK を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
+> `Get-AzLog` は、15 日間の履歴のみを提供します。 **-MaxRecord** パラメーターを使用して、15 日間を超えて最後の N 件のイベントのクエリを実行します。 15 日より前のイベントにアクセスするには、REST API または SDK を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
 
 
 特定の日時以降に作成されたログ エントリを取得します。
@@ -107,7 +107,7 @@ Get-AzLog -Caller 'myname@company.com'
 過去 1,000 件のイベントを取得します。
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 1000
 ```
 
 

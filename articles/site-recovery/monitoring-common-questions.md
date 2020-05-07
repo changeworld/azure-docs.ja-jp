@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 07/31/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1d30a9cdd2cd6ca288edd609a2e2e7bee9174d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66ce267581d4748ea51a3dcbd7caa61907115cc1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68718162"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131163"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>Site Recovery 監視に関する一般的な質問
 
@@ -52,7 +52,7 @@ Site Recovery では、マルチステップの非同期プロセスを使用し
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
 
-### <a name="how-often-does-site-recovery-send-diagnostic-logs-to-azure-monitor-log"></a>Site Recovery はどのくらいの頻度で診断ログを Azure Monitor ログに送信しますか。 
+### <a name="how-often-does-site-recovery-send-resource-logs-to-azure-monitor-log"></a>Site Recovery ではどのくらいの頻度でリソース ログが Azure Monitor ログに送信されますか。 
 
 - AzureSiteRecoveryReplicationStats と AzureSiteRecoveryRecoveryPoints は、15 分ごとに送信されます。  
 - AzureSiteRecoveryReplicationDataUploadRate と AzureSiteRecoveryProtectedDiskDataChurn は、5 分ごとに送信されます。 
@@ -64,7 +64,7 @@ Site Recovery では、マルチステップの非同期プロセスを使用し
 
 既定では、リテンション期間は 31 日です。 この期間は、Log Analytics ワークスペースの **[使用量と推定コスト]** セクションで延ばすことができます。 **[データ保有期間]** をクリックし、範囲を選択します。
 
-### <a name="whats-the-size-of-the-diagnostic-logs"></a>診断ログのサイズはどれくらいですか。 
+### <a name="whats-the-size-of-the-resource-logs"></a>リソース ログのサイズはどれくらいですか。 
 
 通常、ログのサイズは 15 から 20 KB です。 
 

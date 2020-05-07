@@ -1,26 +1,25 @@
 ---
-title: チュートリアル:Azure DevOps Projects を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
-description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用すると、Azure Cosmos DB を使用する Node.js アプリを簡単な手順で Windows Web アプリにデプロイできます。
+title: チュートリアル:Azure DevOps Starter を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
+description: Azure DevOps Starter を利用すると、Azure を使い始めるのが簡単になります。 DevOps Starter を使用すると、Azure Cosmos DB を使用する Node.js アプリを簡単な手順で Windows Web アプリにデプロイできます。
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 03/24/2020
 author: mlearned
-monikerRange: vsts
-ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07579cf22738e195e3e4ae7a2aa18ffeb885bbe2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73888900"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233257"
 ---
-# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>DevOps Projects を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
+# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>DevOps Starter を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
 
-Azure DevOps Projects によって提供される合理化されたエクスペリエンスを使用すると、Azure への継続的インテグレーション (CI) と継続的デプロイ (CD) のパイプラインを作成することができます。 これは、既存のコードと Git リポジトリを使用するか、またはサンプル アプリケーションを選択することによって行います。
+Azure DevOps Starter によって提供される合理化されたエクスペリエンスを使用すると、Azure への継続的インテグレーション (CI) と継続的デプロイ (CD) のパイプラインを作成することができます。 これは、既存のコードと Git リポジトリを使用するか、またはサンプル アプリケーションを選択することによって行います。
 
-DevOps Projects には、以下の機能もあります。
+DevOps Starter では次のこともできます。
 
 * Azure Cosmos DB、Azure Application Insights、Azure App Service、App Service プランなど、Azure のリソースを自動的に作成する
 
@@ -29,7 +28,7 @@ DevOps Projects には、以下の機能もあります。
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * DevOps Projects を使用して Azure Cosmos DB を使用する Node.js アプリをデプロイする
+> * DevOps Starter を使用して Azure Cosmos DB を使用する Node.js アプリをデプロイする
 > * Azure DevOps と Azure サブスクリプションを構成する
 > * Azure Cosmos DB を確認する
 > * CI パイプライン を確認する
@@ -41,17 +40,15 @@ DevOps Projects には、以下の機能もあります。
 
 Azure サブスクリプションが必要です。Azure サブスクリプションは、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で入手できます。
 
-## <a name="use-devops-projects-to-deploy-nodejs-app"></a>DevOps Projects を使用して、Node.js アプリをデプロイする
+## <a name="use-devops-starter-to-deploy-nodejs-app"></a>DevOps Starter を使用して、Node.js アプリをデプロイする
 
-DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、Azure Cosmos DB、Application Insights、App Service、App Service プランなどの Azure リソースも、選択した Azure サブスクリプションに作成されます。
+DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Starter では、Azure Cosmos DB、Application Insights、App Service、App Service プランなどの Azure リソースも、選択した Azure サブスクリプションに作成されます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
+1. 検索ボックスに「**DevOps Starter**」と入力して選択します。 新しく作成するには、 **[追加]** をクリックします。
 
-1. 検索ボックスに「**DevOps Projects**」と入力し、 **[追加]** を選択します。
-
-   ![DevOps Projects ウィンドウ](_img/azure-devops-project-cosmos-db/devops-project.png)
+    ![DevOps Starter ダッシュボード](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. ランタイムとして **[Node.js]** を選択し、次に **[次へ]** を選択します。 **[アプリケーション フレームワークを選択します]** で、 **[Express.js]** を選択します。
 
@@ -59,7 +56,7 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
     ![データベースを追加する](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Azure DevOps Projects では、**Express.js**、**サンプル Node.js アプリ**、**Sail.js** などさまざまなアプリケーション フレームワークがサポートされます。 このチュートリアルでは、**Express.js** を使用します。
+    Azure DevOps Starter では、**Express.js**、**サンプル Node.js アプリ**、**Sail.js** などさまざまなアプリケーション フレームワークがサポートされます。 このチュートリアルでは、**Express.js** を使用します。
 
 1. アプリケーションをデプロイする Azure サービスを選択し、 **[次へ]** を選択します。 Windows Web アプリ、Azure Kubernetes Service、Azure Web App for Containers などを選択できます。 このチュートリアルでは、**Windows Web アプリ**を使用します。
 
@@ -77,17 +74,17 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
 1. 数分後に、処理が完了します。 サンプル Node.js アプリが Azure DevOps 組織の Git リポジトリに設定されます。 次に、Azure Cosmos DB、App Service、App Service プラン、Application Insights の各リソースに加え、CI/CD パイプラインが作成されます。 その後、アプリが Azure にデプロイされます。
 
-   これらの処理がすべて完了すると、Azure DevOps Project ダッシュボードが Azure portal に表示されます。 DevOps Projects ダッシュボードには、Azure portal の **[すべてのリソース]** から直接移動することもできます。
+   これらの処理がすべて完了すると、Azure DevOps Starter ダッシュボードが Azure portal に表示されます。 DevOps Starter ダッシュボードには、Azure portal の **[すべてのリソース]** から直接移動することもできます。
 
    このダッシュボードによって、Azure DevOps コード リポジトリ、CI/CD パイプライン、Azure Cosmos DB データベースが可視化されます。 Azure DevOps パイプラインで追加の CI/CD オプションを構成できます。 ダッシュボードの右側の **[Azure Cosmos DB]** を選択すると、それらのオプションが表示されます。
 
 ## <a name="examine-azure-cosmos-db"></a>Azure Cosmos DB を確認する
 
-DevOps Projects によって、Azure Cosmos DB が自動的に構成されます。これを調べて、カスタマイズすることができます。 Azure Cosmos DB について理解するには、次の手順に従います。
+DevOps Starter によって、Azure Cosmos DB が自動的に構成されます。これを調べて、カスタマイズすることができます。 Azure Cosmos DB について理解するには、次の手順に従います。
 
-1. DevOps Projects ダッシュボードに移動します。
+1. DevOps Starter ダッシュボードに移動します。
 
-    ![DevOps Projects ダッシュボード](_img/azure-devops-project-cosmos-db/devops-project-dashboard.png)
+    ![DevOps Projects ダッシュボード](_img/azure-devops-project-cosmos-db/devops-starter-dashboard.png)
 
 1. 右側の [Azure Cosmos DB] を選択します。 Azure Cosmos DB のウィンドウが開きます。 このビューから、操作の監視やログの検索など、さまざまなアクションを実行できます。
 
@@ -95,9 +92,9 @@ DevOps Projects によって、Azure Cosmos DB が自動的に構成されます
 
 ## <a name="examine-the-ci-pipeline"></a>CI パイプライン を確認する
 
-DevOps Projects によって、Azure DevOps 組織内に CI/CD パイプラインが自動的に構成されます。 パイプラインを探索し、カスタマイズできます。 これについて理解するには、次の手順に従います。
+DevOps Starter によって、Azure DevOps 組織内に CI/CD パイプラインが自動的に構成されます。 パイプラインを探索し、カスタマイズできます。 これについて理解するには、次の手順に従います。
 
-1. DevOps Projects ダッシュボードに移動します。
+1. DevOps Starter ダッシュボードに移動します。
 
 1. **[ビルド]** の下のハイパーリンクを選択します。 ブラウザーのタブに、新しいプロジェクトのビルド パイプラインが表示されます。
 
@@ -105,7 +102,7 @@ DevOps Projects によって、Azure DevOps 組織内に CI/CD パイプライ�
 
 1. **[編集]** を選択します。 このウィンドウで、ビルド パイプラインのさまざまなタスクを調べることができます。 ビルドでは、Git リポジトリからのソース コードのフェッチ、アプリケーションのビルド、単体テストの実行、デプロイに使用される出力の発行など、さまざまなタスクが実行されます。
 
-1. **[トリガー]** を選択します。 DevOps Projects では、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。 CI プロセスのブランチを含めるか除外するかを選択できます。
+1. **[トリガー]** を選択します。 DevOps Starter では、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。 CI プロセスのブランチを含めるか除外するかを選択できます。
 
 1. **[保持]** を選択します。 シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
 
@@ -117,7 +114,7 @@ DevOps Projects によって、Azure DevOps 組織内に CI/CD パイプライ�
 
 ## <a name="examine-the-cd-release-pipeline"></a>CD リリース パイプラインを調べる
 
-DevOps Projects では、Azure DevOps 組織から Azure サブスクリプションにデプロイするために必要な手順が自動的に作成され、構成されます。 これらの手順には、Azure サブスクリプションで Azure DevOps を認証するための Azure サービス接続の構成が含まれます。 自動化によってリリース パイプラインも作成され、このパイプラインによって CD が Azure に提供されます。 リリース パイプラインの詳細を知るには、次の手順を行います。
+DevOps Starter では、Azure DevOps 組織から Azure サブスクリプションにデプロイするために必要な手順が自動的に作成され、構成されます。 これらの手順には、Azure サブスクリプションで Azure DevOps を認証するための Azure サービス接続の構成が含まれます。 自動化によってリリース パイプラインも作成され、このパイプラインによって CD が Azure に提供されます。 リリース パイプラインの詳細を知るには、次の手順を行います。
 
 1. **[パイプライン]** に移動し、 **[リリース]** を選択します。
 
@@ -150,18 +147,18 @@ App Service に最新の作業をデプロイする CI/CD プロセスを使用�
 
 1. 右上隅の **[コミット]** を選択し、もう一度 **[コミット]** を選択して、変更をプッシュします。
 
-     数秒後に Azure DevOps でビルドが開始され、リリースが実行されて、変更がデプロイされます。 DevOps Projects ダッシュボードで、またはブラウザーで Azure DevOps 組織を使用して、ビルドの状態を監視します。
+     数秒後に Azure DevOps でビルドが開始され、リリースが実行されて、変更がデプロイされます。 DevOps Starter ダッシュボードで、またはブラウザーで Azure DevOps 組織を使用して、ビルドの状態を監視します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-作成した関連リソースが必要なくなったら、削除してください。 DevOps Projects ダッシュボードで**削除**機能を使用します。
+作成した関連リソースが必要なくなったら、削除してください。 DevOps Starter ダッシュボードで**削除**機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 この CI/CD パターンをご自身の他のパイプラインのテンプレートとして使用することもできます。 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * DevOps Projects を使用して Azure Cosmos DB を使用する Node.js アプリをデプロイする
+> * DevOps Starter を使用して Azure Cosmos DB を使用する Node.js アプリをデプロイする
 > * Azure DevOps と Azure サブスクリプションを構成する 
 > * Azure Cosmos DB を確認する
 > * CI パイプライン を確認する

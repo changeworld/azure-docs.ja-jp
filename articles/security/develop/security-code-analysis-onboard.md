@@ -1,10 +1,10 @@
 ---
 title: Microsoft Security Code Analysis のオンボード ガイド
 description: この記事では、Microsoft Security Code Analysis 拡張機能のインストールについて説明します
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 04/24/2020
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b7e36c12dab65f4bcc6c05a1ee902301c402d5e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197007"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147679"
 ---
 # <a name="onboarding-and-installing"></a>オンボードとインストール
 
@@ -44,11 +44,12 @@ Microsoft Security Code Analysis の使用を開始するための前提条件:
 
 **次の手順:**
 
-以下の一覧のパートナーに連絡して、Microsoft Security Code Analysis 拡張機能の購入を依頼してください。
+上記の要件を満たしている場合は、以下の一覧のパートナーに連絡して、Microsoft Security Code Analysis 拡張機能を購入してください。 その他の場合、[Microsoft Security Code Analysis サポート](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)までお問い合わせください。
 
 >**パートナー:**
 
 - Zones - 連絡先の詳細: cloudsupport@zones.com
+- Wortell - 連絡先の詳細: info@wortell.nl
 
 ### <a name="become-a-partner"></a>パートナーになる
 

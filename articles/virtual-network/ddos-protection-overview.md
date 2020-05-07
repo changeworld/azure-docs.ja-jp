@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: f1dd33425a57689974fc98a28724adf7b130ab40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc47e1f4fbdb48e6e0abc1f2a7e32127b0325f47
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536345"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82130969"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -33,7 +33,7 @@ Azure DDoS Protection をアプリケーション設計のベスト プラクテ
 |攻撃の自動軽減                    |はい                                   |はい                                           |
 |可用性の保証                          |Azure リージョン                          |Application                                   |
 |軽減ポリシー                             |Azure トラフィック リージョン ボリュームに合わせて調整 |アプリケーション トラフィック ボリュームに合わせて調整          |
-|メトリックとアラート                                |いいえ                                    |Azure Monitor を使用したリアルタイムの攻撃メトリックと診断ログ                                 |
+|メトリックとアラート                                |いいえ                                    |Azure Monitor を使用したリアルタイムの攻撃メトリックとリソース ログ                                 |
 |軽減レポート                              |いいえ                                    |攻撃軽減後レポート                |
 |軽減フロー ログ                            |いいえ                                    |SIEM 統合の NRT ログ ストリーム           |
 |リスク軽減ポリシーのカスタマイズ                 |いいえ                                    |DDoS エキスパートとの連携                           |

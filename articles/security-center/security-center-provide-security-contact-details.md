@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: 64a9600a3014f7e85a7f924d38882bfadaf631db
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 08ad761e81909e6ab23c7c07f5ce05865136bc47
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387820"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204102"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Security Center でセキュリティ連絡先の詳細情報を指定する
 Azure Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定していない場合、それを指定するよう推奨されます。 この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 MSRC では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者からの脅威インテリジェンスと不正使用の報告を受け取ります。
@@ -36,12 +36,12 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
  
 たとえば、RDP 攻撃について警告するメール メッセージが既に送信されている場合、別のアラートがトリガーされた場合でも、同じ日に RDP 攻撃に関する別のメール メッセージを受信することはありません。 
 
-> [!NOTE]
+> [!IMPORTANT]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
 
 ## <a name="set-up-email-notifications-for-alerts"></a>アラートの電子メール通知を設定する<a name="email"></a>
 
-1. **[電子メール通知]** ページを開きます。
+1. セキュリティ管理者またはサブスクリプション所有者のロールを持つユーザーとして、 **[メール通知]** ページを開きます。
 
     - アラートの場合、 **[価格と設定]** を開き、該当するサブスクリプションを選択して、 **[電子メール通知]** を選択します。
 

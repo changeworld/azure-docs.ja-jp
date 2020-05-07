@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 3d34ebe22344be8acc6ec3cc974071639293e2b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 586b8d25a9f391487640e9b1f8adb3be0e4be6db
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277771"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166174"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(非推奨) ELK を使って Azure Container Service クラスターを監視します
 
@@ -28,7 +28,7 @@ Azure Container Service によって構成された DC/OS クラスターを[デ
 ELK スタックは、クラスター内のログの監視および分析に使用できるエンド ツー エンドのスタックを提供する、Elasticsearch、Logstash、Kibana の組み合わせです。
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>DC/OS クラスターで ELK スタックを構成する
-[http://localhost:80/](http://localhost:80/) を介して DC/OS UI にアクセスしたら、**Universe** に移動します。 DC/OS Universe から Elasticsearch、Logstash、Kibana を検索し、この順序でインストールします。 **[Advanced Installation (高度なインストール)]** のリンクに移動すると、構成の詳細を確認できます。
+`http://localhost:80/` を介して DC/OS UI にアクセスしたら、**Universe** に移動します。 DC/OS Universe から Elasticsearch、Logstash、Kibana を検索し、この順序でインストールします。 **[Advanced Installation (高度なインストール)]** のリンクに移動すると、構成の詳細を確認できます。
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 

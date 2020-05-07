@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 89f981fcda8f40daff49ebdf796b896d90ce1754
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69900624"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562476"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway のセキュリティとデータ保護
 
@@ -39,7 +39,7 @@ Data Box Gateway サービスは、Azure でホストされる管理サービス
 
 Data Box Gateway デバイスは、お客様が用意するオンプレミス システムのハイパーバイザー内にプロビジョニングする仮想デバイスです。 このデバイスは、データを Azure に送信するために役立ちます。 お客様のデバイスは...
 
-- Data Box Edge/Data Box Gateway のサービスにアクセスするためのアクティブ化キーが必要です。
+- Azure Stack Edge または Data Box Gateway のサービスにアクセスするためのアクティブ化キーが必要です。
 - デバイスのパスワードで常に保護されます。
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
