@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa241a261b8dcb21dd39b5dacacac9aa4889304
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 99a6c0153105627e272d05af5514a030577431f7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519651"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233994"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 
@@ -45,16 +45,16 @@ ms.locfileid: "80519651"
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. テナント ID を検索するには、 **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** に移動します。 [コマンドレット] セクションで resourceId を指定する必要がある場合は、常にこの ID を使用します。
+1. Azure AD 組織のテナント ID を検索するには、 **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** に移動します。 [コマンドレット] セクションで resourceId を指定する必要がある場合は、常にこの ID を使用します。
 
-    ![Azure AD 組織のプロパティでテナント ID を検索する](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
+    ![Azure AD 組織のプロパティで組織 ID を検索する](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、 https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management を参照してください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織のテナント ID を resourceId パラメーターとして使用する必要もあります。
+> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、 https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management を参照してください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織の組織 ID を resourceId パラメーターとして使用する必要もあります。
 
 ## <a name="retrieving-role-definitions"></a>ロール定義の取得
 
-次のコマンドレットを使用して、Azure AD 組織 (テナント) 内のすべての組み込みおよびカスタムの Azure AD ロールを取得します。 この重要な手順では、ロール名と roleDefinitionId の間のマッピングが提供されます。 特定のロールを参照するために、これらのコマンドレット全体で roleDefinitionId が使用されます。
+次のコマンドレットを使用して、Azure AD 組織内のすべての組み込みおよびカスタムの Azure AD ロールを取得します。 この重要な手順では、ロール名と roleDefinitionId の間のマッピングが提供されます。 特定のロールを参照するために、これらのコマンドレット全体で roleDefinitionId が使用されます。
 
 この roleDefinitionId は Azure AD 組織に固有のものであり、ロール管理 API によって返される roleDefinitionId とは異なります。
 

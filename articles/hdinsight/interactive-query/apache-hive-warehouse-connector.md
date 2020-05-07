@@ -6,21 +6,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252415"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509535"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
-Apache Hive Warehouse Connector (HWC) は、Apache Spark と Apache Hive をより簡単に連携できるライブラリです。Spark DataFrame と Hive テーブルの間のデータ移動などのタスクをサポートするほか、Spark ストリーミング データを Hive テーブルに転送します。 Hive Warehouse Connector は、Spark と Hive の間で橋渡しのように動作します。 Scala、Java、Python が開発用にサポートされます。
+Apache Hive Warehouse Connector (HWC) は、Apache Spark と Apache Hive でより簡単に作業できるようにするライブラリです。 Spark DataFrames Hive テーブル間でデータを移動するなどのタスクをサポートすることで、より簡単になります。 また、Spark ストリーミング データを Hive テーブルに転送します。 Hive Warehouse Connector は、Spark と Hive の間で橋渡しのように動作します。 Scala、Java、Python が開発用にサポートされます。
 
-Hive Warehouse Connector を使用すると、Hive および Spark の独自の機能を活用して、強力なビッグデータ アプリケーションを構築できます。 Apache Hive では、ACID (原子性、一貫性、分離性、持続性) なデータベース トランザクションがサポートされています。 Hive における ACID およびトランザクションの詳細については、「[Hive Transactions (Hive トランザクション)](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)」を参照してください。 Hive には、Apache Ranger を通じた詳細なセキュリティ コントロールと Apache Spark では使用できない Low Latency Analytical Processing も備わっています。
+Hive Warehouse Connector を使用すると、Hive および Spark の独自の機能を活用できます。 強力なビッグ データ アプリケーションを構築するために使用される機能です。 Apache Hive では、ACID (原子性、一貫性、分離性、持続性) なデータベース トランザクションがサポートされています。 Hive における ACID およびトランザクションの詳細については、「[Hive Transactions (Hive トランザクション)](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)」を参照してください。 Hive には、Apache Ranger を通じた詳細なセキュリティ コントロールと Apache Spark では使用できない Low Latency Analytical Processing も備わっています。
 
-Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 HDInsight 4.0 以降、Apache Spark 2.3.1 と Apache Hive 3.1.0 は異なる metastore になっており、相互運用性が困難になることがあります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリによって LLAP デーモンから Spark Executor にデータが並列で読み込まれるため、Spark から Hive への標準的な JDBC 接続を使用するよりも効率的でスケーラブルになります。
+Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 HDInsight 4.0 以降、Apache Spark 2.3.1 と Apache Hive 3.1.0 は異なるメタストアになっています。 これらの個別のメタストアによって相互運用性が困難になる可能性があります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリは、LLAP (低待機時間分析処理) デーモンから Spark Executor にデータを並列で読み込みます。 この操作により、Spark から Hive への標準の JDBC 接続を使用するよりも効率性と適応性が高まります。
 
 ![Hive Warehouse Connector のアーキテクチャ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -72,7 +73,7 @@ Spark Ambari Web UI から、 **[Spark2]**  >  **[CONFIGS]**  >  **[Custom spark
 
 ![Apache Ambari Spark2 の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-必要に応じて **[Add Property]\(プロパティの追加\)** を選択し、次のものを追加または更新します。
+必要に応じて **[プロパティの追加]** を選択し、次の値を追加または更新します。
 
 | Key | 値 |
 |----|----|
@@ -122,9 +123,9 @@ spark-shell セッションを開始するには、次の手順を実行しま�
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Enterprise セキュリティ パッケージ (ESP) クラスター上でのクエリの接続と実行
 
-Enterprise セキュリティ パッケージ (ESP) を使用すると、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御など、エンタープライズレベルの機能を Azure HDInsight の Apache Hadoop クラスターで利用できます。 ESP に関する詳細については、「[HDInsight で Enterprise セキュリティ パッケージを使用する](../domain-joined/apache-domain-joined-architecture.md)」を参照してください。
+Enterprise セキュリティ パッケージ (ESP) は、Azure Active Directory ベースの認証など、エンタープライズ グレードの機能を備えています。 また、マルチ ユーザー サポート、および Azure HDInsight の Apache Hadoop クラスターに対するロールベースのアクセス制御があります。 ESP に関する詳細については、「[HDInsight で Enterprise セキュリティ パッケージを使用する](../domain-joined/apache-domain-joined-architecture.md)」を参照してください。
 
-1. Apache Spark クラスターのヘッドノードに SSH 接続します。 クラスターへの SSH 接続の詳細については、「[SSH を使用して HDInsight (Apache Hadoop) に接続する](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+1. Apache Spark クラスターのヘッドノードに SSH 接続します。
 
 1. 「`kinit`」と入力して、ドメイン ユーザーでログインします。
 
@@ -181,7 +182,7 @@ Spark は、Hive によって管理される ACID テーブルへの書き込み
 
 Hive Warehouse Connector を使用すると、Spark ストリーミングを使って Hive テーブルにデータを書き込むことができます。
 
-下の手順に従って、localhost ポート 9999 上の Spark ストリームから Hive テーブルにデータを取り込む Hive Warehouse Connector サンプルを作成します。
+Hive Warehouse Connector を作成するには、次の手順に従います。 この例では、localhost ポート 9999 の Spark ストリームから Hive テーブルにデータを取り込みます。
 
 1. 「[クエリの接続と実行](#connecting-and-running-queries)」の手順に従います。
 
@@ -193,7 +194,7 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
 
 1. 次の手順を実行して、作成した Spark ストリームのためのデータを生成します。
     1. 同じ Spark クラスターで2番目の SSH セッションを開きます。
-    1. コマンド プロンプトで、「`nc -lk 9999`」と入力します。 このコマンドでは、netcat ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
+    1. コマンド プロンプトで、「`nc -lk 9999`」と入力します。 このコマンドでは、`netcat` ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
 
 1. 最初の SSH セッションに戻り、ストリーミング データを保持する新しい Hive テーブルを作成します。 spark-shell で、次のコマンドを入力します。
 
@@ -224,7 +225,7 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
     hive.table("stream_table").show()
     ```
 
-2番目の SSH セッションで、**Ctrl + C** を使用して netcat を停止します。 最初の SSH セッションで、`:q` を使用して spark-shell を終了します。
+2 番目の SSH セッションで、**Ctrl + C** を使用して `netcat` を停止します。 最初の SSH セッションで、`:q` を使用して spark-shell を終了します。
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Spark ESP クラスター上のデータのセキュリティ保護
 
@@ -253,7 +254,7 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
 
         ![Hive Warehouse Connector の Ranger Hive ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
+    a. ポリシー名を提供します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
                 ![ポリシーの作成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. テーブルの内容をもう一度表示します。 Ranger ポリシーの適用後は、列の最後の 4 文字だけを確認できます。
 

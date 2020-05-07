@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のポッドで使用するための
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 17795ae696c0d710f099a5c21aa754fc925953ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32e9da592d4c8f3997d5b1844065bf550d7d7d48
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047939"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207515"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
 
@@ -38,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-ここで、[az disk create][az-disk-create] コマンドを使用してディスクを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､そのディスク リソースに対して､*myAKSDisk* などの名前を指定します｡ 次の例では、*20* GiB のディスクを作成し、作成後にそのディスクの ID を出力します。 Windows Server コンテナー (現在 AKS でプレビュー段階) で使用されるディスクを作成する必要がある場合は、ディスクを適切にフォーマットするために `--os-type windows` パラメーターを追加します。
+ここで、[az disk create][az-disk-create] コマンドを使用してディスクを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､そのディスク リソースに対して､*myAKSDisk* などの名前を指定します｡ 次の例では、*20* GiB のディスクを作成し、作成後にそのディスクの ID を出力します。 Windows Server コンテナーで使用するディスクを作成する必要がある場合は、`--os-type windows` パラメーターを追加して、ディスクを適切にフォーマットします。
 
 ```azurecli-interactive
 az disk create \
@@ -59,7 +59,7 @@ az disk create \
 
 ## <a name="mount-disk-as-volume"></a>ディスクをボリュームとしてマウントする
 
-Azure ディスクをポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-disk-pod.yaml` という名前の新しいファイルを作成します。 前の手順で作成したディスクの名前で `diskName` を更新し、ディスク作成コマンドの出力に示されたディスク ID で `diskURI` を更新します。 必要な場合は、`mountPath` を更新します。これは Azure ディスクがポッドにマウントされているパスです。 Windows Server コンテナー (AKS では現在プレビュー段階) の場合、 *'D:'* などの Windows パス規則を使用して、*mountPath* を指定します。
+Azure ディスクをポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-disk-pod.yaml` という名前の新しいファイルを作成します。 前の手順で作成したディスクの名前で `diskName` を更新し、ディスク作成コマンドの出力に示されたディスク ID で `diskURI` を更新します。 必要な場合は、`mountPath` を更新します。これは Azure ディスクがポッドにマウントされているパスです。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
 ```yaml
 apiVersion: v1

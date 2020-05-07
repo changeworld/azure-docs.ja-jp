@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3113f01341d2a1ec6160cfea3eb9d12d18b8495c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 49a94b8877d46cf95ec8701f470d87e187713f69
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687183"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583299"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -185,9 +185,9 @@ Windows ホストで OpenSSL または別の TLS ライブラリを使用して�
 
 このセクションでは、Azure IoT Python デバイス クライアントを IoT Edge ゲートウェイに接続するサンプル アプリケーションを示します。
 
-1. **send_message** のサンプルを [Python 用 Azure IoT device SDK のサンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)から入手します。
-2. IoT Edge コンテナーまたはデバッグ シナリオで実行していること、`EdgeHubConnectionString` 環境変数と `EdgeModuleCACertificateFile` 環境変数が設定されていることを確認します。
-3. お使いのデバイス上でサンプルを実行する方法を示す手順については、SDK ドキュメントを参照してください。
+1. **send_message_downstream** のサンプルを [Python 用 Azure IoT device SDK のサンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)から入手します。
+2. Python スクリプトのコメントに指定されているように、`IOTHUB_DEVICE_CONNECTION_STRING` および `IOTEDGE_ROOT_CA_CERT_PATH` 環境変数を設定します。
+3. お使いのデバイス上でサンプルを実行する方法に関する追加の手順については、SDK ドキュメントを参照してください。
 
 ## <a name="test-the-gateway-connection"></a>ゲートウェイ接続をテストする
 

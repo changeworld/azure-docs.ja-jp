@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046194"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131252"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング
 
@@ -178,7 +178,7 @@ Azure PowerShell を使用する場合は、「[PowerShell を使用した Web �
 
 ![WAF の除外](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
 
-ファイアウォールのログを調べて、除外リストに追加する必要があるものを確認するための情報を取得することもできます。 ログ記録を有効にするには、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](../../application-gateway/application-gateway-diagnostics.md)」をご覧ください。
+ファイアウォールのログを調べて、除外リストに追加する必要があるものを確認するための情報を取得することもできます。 ログ記録を有効にするには、[Application Gateway のバックエンドの正常性、リソース ログ、およびメトリック](../../application-gateway/application-gateway-diagnostics.md)に関する記事をご覧ください。
 
 ファイアウォール ログを調べて、検査対象の要求が発生した時間について PT1H.json ファイルを確認します。
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67fe9ef4ad2b025d11f88976973658c9cd8ae693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 183fe1604cc363a9121d5eef3737751c54e9bdf1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187952"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229716"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](custom-policy-overview.md)を使用して Salesforce 組織からのユーザーのサインインを有効にする方法について説明します。 [SAML 技術プロファイル](saml-technical-profile.md)をカスタム ポリシーに追加することで、サインインを有効にします。
+この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](custom-policy-overview.md)を使用して Salesforce 組織からのユーザーのサインインを有効にする方法について説明します。 サインインを有効にするには、[SAML ID プロバイダー技術プロファイル](saml-identity-provider-technical-profile.md)をカスタム ポリシーに追加します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -103,7 +103,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 ユーザーが Salesforce アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
-Salesforce アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。 詳細については、[SAML 技術プロファイルを定義する](saml-technical-profile.md)方法に関するページを参照してください。
+Salesforce アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。 詳しくは、[SAML ID プロバイダー技術プロファイルの定義](saml-identity-provider-technical-profile.md)に関するページをご覧ください。
 
 1. *TrustFrameworkExtensions.xml* を開きます。
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
@@ -203,13 +203,13 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 ここでのアクションは、Azure AD B2C が Salesforce アカウントと通信してトークンを受信するためのアクションです。
 
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
+2. 次の **ClaimsExchange** 要素を追加します。**ID** には、**TargetClaimsExchangeId** に使用したものと同じ値を使用します。
 
     ```XML
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `LinkedIn-OAUTH` 」のように入力します。
+    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **ID** に更新します。 たとえば、「 `LinkedIn-OAUTH` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 

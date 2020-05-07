@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840623"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189047"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -134,7 +134,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>未処理のログを別のサブスクリプションで格納することはできますか?
 
-いいえ。 NSG のフロー ログが有効になっているストレージ アカウントでは、未処理のログを保存できます。 ただし、ストレージ アカウントと未処理のログは、同じサブスクリプションとリージョンに属している必要があります。
+はい。 別のサブスクリプションにあるストレージ アカウントに送信されるように NSG フロー ログを構成できます。ただし、適切な特権があり、ストレージ アカウントが NSG と同じリージョンに配置されている必要があります。 また、NSG と送信先のストレージ アカウントが同じ Azure Active Directory テナントを共有する必要もあります。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>"見つかりません" エラーによってトラフィック分析用に NSG を構成できないとどうなりますか?
 
@@ -153,7 +153,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ダッシュボードを最初に表示する際は最大で 30 分かかることがあります。 ソリューションで意味がある分析情報が導出されるには、まず十分なデータを集計する必要があります。 その後にレポートが生成されます。 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval. 時間間隔を変更してみるか、別のワークスペースを選択してください"。
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval.  時間間隔を変更してみるか、別のワークスペースを選択してください"。
 
 次の方法を試してください。
 - 上部のバーで期間を変更します。
@@ -162,7 +162,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
     
 問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Analyzing your NSG flow logs for the first time. This process may take 20-30 minutes to complete. Check back after some time. 2) If the above step doesn’t work and your workspace is under the free SKU, then check your workspace usage here to validate over quota, else refer to FAQs for further information (上記のステップが機能せず、ワークスペースが無料 SKU にある場合は、ここでワークスペースの使用状況をチェックして超過クォータを検証します。該当しない場合は、詳細について FAQ を参照してください)"。
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Analyzing your NSG flow logs for the first time.  This process may take 20-30 minutes to complete. Check back after some time. 2) If the above step doesn’t work and your workspace is under the free SKU, then check your workspace usage here to validate over quota, else refer to FAQs for further information (上記のステップが機能せず、ワークスペースが無料 SKU にある場合は、ここでワークスペースの使用状況をチェックして超過クォータを検証します。該当しない場合は、詳細について FAQ を参照してください)"。
 
 このメッセージは、次の理由で表示される場合があります。
 - Traffic Analytics は最近有効化されたため、意味のある分析情報を導出するために十分なデータをまだ集計していない可能性があります。
@@ -170,7 +170,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
     
 問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Looks like we have resources data (Topology) and no flows information. Meanwhile, click here to see resources data and refer to FAQs for further information. (まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。)"
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Looks like we have resources data (Topology) and no flows information.  Meanwhile, click here to see resources data and refer to FAQs for further information. (まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。)"
 
 ダッシュボードにはリソース情報が表示されていますが、フロー関連の統計がありません。 リソース間の通信フローがないためにデータが示されない可能性があります。 60 分間待ってから、状態を再確認します。 問題が解決せず、リソース間の通信フローが存在することが確実な場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 
@@ -258,7 +258,7 @@ Traffic Analytics では、IP を悪意のあるものとみなす上で、Micro
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Traffic Analytics のデータに対してアラートを設定するにはどうすればよいですか?
 
-Traffic Analytics には、アラートに対する組み込みのサポートがありません。 ただし、Traffic Analytics のデータは Log Analytics に格納されるので、カスタム クエリを作成し、それらに対してアラートを設定することができます。 手順:
+Traffic Analytics には、アラートに対する組み込みのサポートがありません。 ただし、Traffic Analytics のデータは Log Analytics に格納されるので、カスタム クエリを作成し、それらに対してアラートを設定することができます。 手順: 
 - Traffic Analytics では Log Analytics への短縮リンクを使用することができます。 
 - [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 
 - [新しいアラート ルール] をクリックして、アラートを作成します。

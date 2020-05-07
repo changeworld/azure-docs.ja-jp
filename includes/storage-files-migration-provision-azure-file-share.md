@@ -1,5 +1,5 @@
 ---
-title: Azure ファイル共有のプロビジョニングに関する考慮事項。
+title: Azure ファイル共有のプロビジョニングに関する考慮事項
 description: Azure File Sync で使用するために Azure ファイル共有をプロビジョニングします。移行ドキュメント間で共有する一般的なテキスト ブロック。
 author: fauhse
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 8cb398d1b1ec14f52d9c5fa5c122dc2e4ba4376d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48baba5ee60a2bf5a4cb5e4d1ce840fce8eec43
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209282"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143555"
 ---
 Azure ファイル共有は、Azure ストレージ アカウントのクラウドに格納されます。
 ここで、パフォーマンスに関する考慮事項には、もう 1 つのレベルがあります。
@@ -22,7 +22,7 @@ Azure ファイル共有は、Azure ストレージ アカウントのクラウ�
 ベスト プラクティスは、それぞれ 1 つのファイル共有を持つストレージ アカウントをデプロイすることです。
 アーカイブ共有をお持ちの場合、またはそれらの中での日々のアクティビティが少ないことが予想される場合、複数の Azure ファイル共有を同じストレージアカウントにプールすることができます。
 
-これらの考慮事項は、Azure File Sync に適用されるよりも、(Azure VM 経由で) クラウドへの直接アクセスに適用される方が多くなります。これらの共有で Azure File Sync のみを使用する場合は、いくつかを 1 つの Azure ストレージ アカウントにグループ化するのが適切です。
+これらの考慮事項は、Azure File Sync よりも、(Azure VM 経由で) クラウドへの直接アクセスに適用される方が多くなります。これらの共有でのみ Azure File Sync を使用する場合は、いくつかを 1 つの Azure ストレージ アカウントにグループ化するのが適切です。
 
 ご利用の共有のリストを作成した場合は、各共有を、それらが配置されるストレージ アカウントにマップする必要があります。
 
@@ -33,8 +33,8 @@ Azure ファイル共有は、Azure ストレージ アカウントのクラウ�
 > [!CAUTION]
 > 上限が 100 TiB の Azure ファイル共有を作成する場合、その共有で使用できるのは、ローカル冗長ストレージまたはゾーン冗長ストレージの冗長オプションのみとなります。 100 TiB のファイル共有を使用する場合は、事前にご自分のストレージ冗長のニーズを検討してください。
 
-既定では、Azure ファイル共有は引き続き 5 TiB の上限で作成されます。 新しいストレージアカウントを作成しているので、[上限が 100 TiB の Azure ファイル共有を許容するストレージ アカウントを作成するためのガイドライン](../articles/storage/files/storage-files-how-to-create-large-file-share.md)に必ず従ってください。
+既定では、Azure ファイル共有は引き続き 5 TiB の上限で作成されます。 新しいストレージ アカウントを作成しているので、[上限が 100 TiB の Azure ファイル共有を許容するストレージ アカウントを作成するためのガイドライン](../articles/storage/files/storage-files-how-to-create-large-file-share.md)に必ず従ってください。
 
-ストレージ アカウントをデプロイする際のもう 1 つの考慮事項は、使用する Azure ストレージの冗長性です。 参照:[Azure Storage 冗長オプション](../articles/storage/common/storage-redundancy.md)
+ストレージ アカウントをデプロイする際のもう 1 つの考慮事項は、使用する Azure ストレージの冗長性です。 詳細については、「[Azure Storage 冗長オプション](../articles/storage/common/storage-redundancy.md)」を参照してください。
 
 ご利用のリソースの名前も重要です。 たとえば、人事部の複数の共有を Azure ストレージ アカウントにグループ化する場合は、そのストレージ アカウントに適切な名前を指定する必要があります。 同様に、使用する Azure ファイル共有に名前を付けるときは、オンプレミスの対応するものに使用したのと同じような名前を使用する必要があります。

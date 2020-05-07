@@ -5,15 +5,16 @@ author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 04/05/2019
+ms.topic: how-to
+ms.date: 05/04/2019
 ms.author: cynthn
-ms.openlocfilehash: 4259ca01dbe45463b73cf1ec1c620c3921ab9459
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.reviewer: akjosh
+ms.openlocfilehash: 62f136eb1c2684bfd307a05ccbb4836739da6f3a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758469"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789455"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure テナント間でギャラリー VM イメージを共有する
 

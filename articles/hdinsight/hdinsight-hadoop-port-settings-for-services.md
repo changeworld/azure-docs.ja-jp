@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/06/2020
-ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: c5f01a00d70869882d3d3398607ecfebbfd54417
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754214"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209079"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
@@ -156,7 +156,7 @@ HDInsight クラスターのすべてのノードは、Azure Virtual Network 内
 
 | サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
-| ブローカー |ワーカー ノード |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html) |クライアント通信に使用 |
+| ブローカー |ワーカー ノード |9092 |Kafka Wire Protocol |クライアント通信に使用 |
 | &nbsp; |Zookeeper ノード |2181 |&nbsp; |クライアントが ZooKeeper への接続に使用するポート |
 | REST プロキシ | Kafka 管理ノード |9400 |HTTPS |[Kafka REST 仕様](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 

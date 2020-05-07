@@ -10,17 +10,20 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
-ms.date: 02/07/2019
-ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 9ac30b6d502bb0fbdb454d7a3c36cde23a57fb6b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299075"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231630"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する
 
-トランザクション レプリケーションを使用すると、SQL Server データベースや別のインスタンス データベースから、Azure SQL Database マネージド インスタンス データベースにデータをレプリケートできます。 
+トランザクション レプリケーションを使用すると、SQL Server データベースや別のインスタンス データベースから、Azure SQL Database マネージド インスタンス データベースにデータをレプリケートできます。
+
+> [!NOTE]
+> この記事では、Azure SQL Managed Instance での[トランザクション レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のインスタンスの完全な読み取り可能レプリカを作成するための Azure SQL Managed Instance の機能である、アクティブ geo レプリケーションまたは[フェールオーバー グループ](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)とは無関係です。
 
 この記事では、マネージド インスタンス パブリッシャー/ディストリビューターとマネージド インスタンス サブスクライバーの間のレプリケーションを構成する方法について説明します。 
 

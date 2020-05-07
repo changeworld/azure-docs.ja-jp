@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c93c8e354c7c02c6a085c2baa8fd664faaf1f64
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77559149"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582618"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory で Microsoft Graph API を使用してカスタム管理者ロールを割り当てる 
 
@@ -26,7 +26,7 @@ Microsoft Graph API を使って、ユーザー アカウントにロールを�
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
-ロールの割り当てまたは削除を行うには、グローバル管理者アカウントまたは Privileged Identity 管理者を使って Azure AD テナントに接続します。
+ロールの割り当てまたは削除を行うには、グローバル管理者アカウントまたは Privileged Identity 管理者を使って Azure AD 組織に接続します。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment での POST 操作
 

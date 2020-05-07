@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666756"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144337"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps でのメッセージの送信、受信、バッチ処理
 
@@ -31,13 +31,15 @@ ms.locfileid: "75666756"
 
 ## <a name="prerequisites"></a>前提条件
 
-この例に従うには、次の項目が必要です。
-
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金制サブスクリプション](https://azure.microsoft.com/pricing/purchase-options/)にサインアップすることもできます。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。
+また、[従量課金制サブスクリプション](https://azure.microsoft.com/pricing/purchase-options/)にサインアップすることもできます。
 
 * 任意の [Azure Logic Apps でサポートされる電子メール プロバイダー](../connectors/apis-list.md)の電子メール アカウント
 
-* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識 
+  > [!IMPORTANT]
+  > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントをお持ちの場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
+
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
 * Azure portal ではなく Visual Studio を使う場合は、[Logic Apps と連携するように Visual Studio を設定](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)してください。
 
@@ -83,9 +85,7 @@ ms.locfileid: "75666756"
    2. 検索ボックスに、フィルターとして「send email」と入力します。
    電子メール プロバイダーに基づいて、電子メール コネクタを選択します。
 
-      たとえば個人用アカウント (@outlook.com、@hotmail.com など) がある場合、Outlook.com コネクタを選択します。 
-      Gmail アカウントがある場合は、Gmail コネクタを選択します。 
-      この例では Office 365 Outlook を使います。 
+      たとえば個人用アカウント (@outlook.com、@hotmail.com など) がある場合、Outlook.com コネクタを選択します。 この例では Office 365 Outlook コネクタを使用します。
 
    3. このアクションを選択: **[電子メールの送信 - <*電子メール プロバイダー*>]**
 

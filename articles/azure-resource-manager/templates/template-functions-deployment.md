@@ -2,15 +2,15 @@
 title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156329"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203796"
 ---
-# <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数 
+# <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数
 
 Resource Manager には、Azure Resource Manager (ARM) テンプレートの現在のデプロイに関連する値を取得する次の関数が用意されています。
 
@@ -29,7 +29,12 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートの現�
 
 ### <a name="return-value"></a>戻り値
 
-この関数は、デプロイ中に渡されたオブジェクトを返します。 返されるオブジェクトのプロパティは、デプロイ オブジェクトがリンクとして渡されたか、インライン オブジェクトとして渡されたかによって異なります。 デプロイ オブジェクトがインラインで渡された場合 (Azure PowerShell の **TemplateFile** パラメーターを使用してローカル ファイルを参照する場合など)、返されるオブジェクトは次の形式になります。
+この関数は、デプロイ中に渡されたオブジェクトを返します。 返されたオブジェクトのプロパティは、以下に該当するかどうかによって異なります。
+
+* ローカル ファイルであるテンプレートをデプロイするか、URI を使用してアクセスされるリモート ファイルであるテンプレートをデプロイする。
+* リソース グループにデプロイするか、他のいずれかのスコープ ([Azure サブスクリプション](deploy-to-subscription.md)、[管理グループ](deploy-to-management-group.md)、または[テナント](deploy-to-tenant.md)) にデプロイする。
+
+ローカル テンプレートをリソース グループにデプロイする場合は、関数から次の形式が返されます。
 
 ```json
 {
@@ -44,6 +49,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートの現�
             ],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -51,7 +57,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートの現�
 }
 ```
 
-オブジェクトがリンクとして渡された場合 ( **-TemplateUri** パラメーターを使用してリモート オブジェクトを参照する場合など)、オブジェクトは次の形式で返されます。 
+リモート テンプレートをリソース グループにデプロイする場合は、関数から次の形式が返されます。
 
 ```json
 {
@@ -68,6 +74,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートの現�
             "resources": [],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -75,7 +82,26 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートの現�
 }
 ```
 
-[Azure のサブスクリプションにデプロイする](deploy-to-subscription.md)場合は、リソース グループの代わりに、返されるオブジェクトに `location` プロパティが含まれています。 ローカル テンプレートまたは外部テンプレートのいずれかをデプロイする場合は、場所プロパティが含まれています。
+Azure サブスクリプション、管理グループ、またはテナントにデプロイする場合は、返されるオブジェクトに `location` プロパティが含まれています。 ローカル テンプレートまたは外部テンプレートのいずれかをデプロイする場合は、場所プロパティが含まれています。 形式は次のようになります:
+
+```json
+{
+    "name": "",
+    "location": "",
+    "properties": {
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
+            "resources": [],
+            "outputs": {}
+        },
+        "templateHash": "",
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+    }
+}
+```
 
 ### <a name="remarks"></a>解説
 
@@ -99,7 +125,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
             "value": "[deployment()]",
             "type" : "object"
         }
@@ -118,20 +144,19 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
           "type": "Object",
           "value": "[deployment()]"
         }
       }
     },
+    "templateHash": "13135986259522608210",
     "parameters": {},
     "mode": "Incremental",
     "provisioningState": "Accepted"
   }
 }
 ```
-
-デプロイ関数を使用するサブスクリプションレベルのテンプレートについては、[サブスクリプション デプロイ関数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)に関するページを参照してください。 これは `az deployment create` コマンドまたは `New-AzDeployment` コマンドのいずれかでデプロイされます。
 
 ## <a name="environment"></a>環境
 
@@ -428,8 +453,5 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 変数の使用方法の詳細については、「[Azure Resource Manager テンプレートの変数](template-variables.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](template-syntax.md)に関するページを参照してください。
-* 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)に関するページを参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
-* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。
 
+* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

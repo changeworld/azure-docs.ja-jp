@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 3a5cf2b210781d43ddd1a7aa87736a53df222cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 4270e4c71cca28d43b1ecbaca1ec0f262251252b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477393"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137605"
 ---
 # <a name="two-class-neural-network-module"></a>2 クラス ニューラル ネットワーク モジュール
 
@@ -74,9 +74,19 @@ ms.locfileid: "79477393"
   
      同じパイプラインを実行するたびに再現性を確保したい場合は、シード値を指定すると効果的です。  指定しない場合は、システム クロック値がシードとして使用され、パイプラインを実行するたびに若干異なる結果になる可能性があります。
   
-13. タグ付けされたデータセットをパイプラインに追加し、いずれかの[トレーニング モジュール](module-reference.md)を接続します。  
+13. ラベル付けされたデータセットをパイプラインに追加し、モデルをトレーニングします。
+
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
   
-    -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
+  
+    > [!NOTE]
+    > 
+    > パラメーター範囲を[モデルのトレーニング](train-model.md)に渡すと、単一のパラメーター リストの既定値のみが使用されます。  
+    > 
+    > [モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。  
+    > 
+    > **[Parameter Range]\(パラメーター範囲\)** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一の値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。  
   
 14. パイプラインを送信します。
 

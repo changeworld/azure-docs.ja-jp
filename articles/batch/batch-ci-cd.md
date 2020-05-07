@@ -1,23 +1,20 @@
 ---
-title: Azure Pipelines を使用して HPC ソリューションを構築してデプロイする - Azure Batch
+title: Azure Pipelines を使用した HPC ソリューションのビルドとデプロイ
 description: Azure Batch で実行する HPC アプリケーションのビルド/リリース パイプラインをデプロイする方法について説明します。
 author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
-ms.custom: fasttrack-new
-services: batch
-ms.service: batch
-ms.openlocfilehash: 50cb711dfd16c2a8718d13ba9255ace1e7e3e26d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533132"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117388"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
-Azure DevOps サービスでは、開発チームがカスタム アプリケーションの構築時に使用するさまざまなツールが提供されます。 Azure DevOps によって提供されるツールを、ハイ パフォーマンス コンピューティング ソリューションの自動構築とテストに利用できます。 この記事では、Azure Batch にデプロイされるハイ パフォーマンス コンピューティング ソリューションのために、Azure Pipelines を使用して継続的インテグレーション (CI) と継続的配置 (CD) をどのように設定するかを説明します。
+Azure DevOps サービスでは、開発チームがカスタム アプリケーションの構築時に使用するさまざまなツールが提供されています。 Azure DevOps によって提供されるツールを、ハイ パフォーマンス コンピューティング ソリューションの自動構築とテストに利用できます。 この記事では、Azure Batch にデプロイされるハイ パフォーマンス コンピューティング ソリューションのために、Azure Pipelines を使用して継続的インテグレーション (CI) と継続的配置 (CD) をどのように設定するかを説明します。
 
 Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト、および監視のためにさまざまな最新 CI/CD プロセスが提供されます。 これらのプロセスによってソフトウェアの提供が早まるため、サポート インフラストラクチャや操作ではなくコードに集中することができます。
 

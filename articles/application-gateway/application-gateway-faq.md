@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544504"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836667"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -28,11 +28,11 @@ Azure Application Gateway は、アプリケーション デリバリー コン�
 
 ### <a name="what-features-does-application-gateway-support"></a>Application Gateway はどのような機能をサポートしますか?
 
-Application Gateway は、自動スケーリング、SSL オフロードとエンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティ、URL パスベースのルーティング、マルチサイト ホスティングなどの機能をサポートしています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+Application Gateway は、自動スケーリング、TLS オフロードとエンド ツー エンド TLS、Web アプリケーション ファイアウォール (WAF)、Cookie ベースのセッション アフィニティ、URL パスベースのルーティング、マルチサイト ホスティングなどの機能をサポートしています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Application Gateway と Azure Load Balancer の違いは何ですか?
 
-Application Gateway はレイヤー 7 のロード バランサーです。つまり、Web トラフィックのみ (HTTP、HTTPS、WebSocket、HTTP/2) に対して機能します。 また、SSL ターミネーション、Cookie ベースのセッション アフィニティ、ラウンド ロビンによるトラフィックの負荷分散などの機能をサポートしています。 Load Balancer は、レイヤー 4 (TCP または UDP) でトラフィックを負荷分散するものです。
+Application Gateway はレイヤー 7 のロード バランサーです。つまり、Web トラフィックのみ (HTTP、HTTPS、WebSocket、HTTP/2) に対して機能します。 また、TLS 終端、Cookie ベースのセッション アフィニティ、ラウンド ロビンによるトラフィックの負荷分散などの機能をサポートします。 Load Balancer は、レイヤー 4 (TCP または UDP) でトラフィックを負荷分散するものです。
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Application Gateway はどのようなプロトコルをサポートしますか?
 
@@ -72,7 +72,7 @@ v2 SKU の場合は、パブリック IP リソースを開き、 **[構成]** �
 
 *キープアライブ タイムアウト*では、固定接続が再利用されるか、または閉じられる前に、クライアントによってその接続上で別の HTTP 要求が送信されるまでの Application Gateway の待機時間が制御されます。 *TCP アイドル タイムアウト*では、アクティビティがない場合に TCP 接続が開いた状態になる時間の長さが制御されます。 
 
-Application Gateway v1 SKU での*キープアライブ タイムアウト*は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト*は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 
+Application Gateway v1 SKU での*キープアライブ タイムアウト*は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト*は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 これらの値は変更できません。
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>アプリケーション ゲートウェイの有効期間内に IP や DNS 名が変わることはありますか?
 
@@ -121,6 +121,15 @@ v2 SKU を使用するデプロイのほとんどは、プロビジョニング�
 ### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Application Gateway v1 SKU は引き続きサポートされますか?
 
 はい。 Application Gateway v1 SKU は引き続きサポートされます。 ただし、その SKU で行われた機能の更新を利用するために、v2 に移行することを強くお勧めします。 詳細については、「[自動スケーリングとゾーン冗長 Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)」を参照してください。
+
+### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Application Gateway v2 では、NTLM 認証を使用したプロキシ要求をサポートしていますか?
+
+いいえ。 Application Gateway v2 では、NTLM 認証を使用したプロキシ要求をまだサポートしていません。
+
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
+はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 
+
+このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)」セクションを参照してください。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -216,7 +225,30 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 現在、Application Gateway v2 は IPv6 をサポートしていません。 IPv4 のみを使用してデュアル スタック VNet で動作できますが、ゲートウェイ サブネットは IPv4 のみである必要があります。 Application Gateway v1 は、デュアル スタック VNet をサポートしていません。 
 
-## <a name="configuration---ssl"></a>構成 - SSL
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>プライベート フロントエンド IP アドレスのみで Application Gateway V2 を使用するにはどうすればよいですか?
+
+現在、Application Gateway V2 はプライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
+* プライベート IP とパブリック IP
+* パブリック IP のみ
+
+ただし、プライベート IP のみで Application Gateway V2 を使用する場合は、次の手順に従うことができます。
+1. パブリックとプライベートの両方のフロントエンド IP アドレスを使用して Application Gateway を作成する
+2. パブリック フロントエンド IP アドレスのリスナーは作成しないでください。 リスナーが作成されていない場合、Application Gateway ではパブリック IP アドレスのトラフィックがリッスンされません。
+3. Application Gateway サブネットの[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を作成し、次の構成を使用して優先度順にアタッチします。
+    
+    a. [ソース] には **GatewayManager** サービス タグ、[宛先] には **[すべて]** 、[宛先のポート] には **65200-65535** を指定してトラフィックを許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、証明書の認証によって保護 (ロック ダウン) されます。 ゲートウェイ ユーザー管理者を含む外部エンティティは、適切な証明書が配置されていないと、このようなエンドポイントに対する変更を開始できません。
+    
+    b. [ソース] には **AzureLoadBalancer** サービスタグ、[宛先] と [宛先のポート] には **[すべて]** を指定してトラフィックを許可します。
+    
+    c. [ソース] には **Internet** サービス タグ、[宛先] と [宛先のポート] には **[すべて]** を指定して受信トラフィックを拒否します。 この規則には、受信規則で*最小の優先順位*を指定します。
+    
+    d. プライベート IP アドレスへのアクセスがブロックされないように、VirtualNetwork の受信を許可するなどの既定の規則をそのまま使用します。
+    
+    e. 送信インターネット接続はブロックできません。 そうしないと、ログ記録やメトリックなどの問題が発生します。
+
+プライベート IP のみのアクセスの NSG 構成の例:![プライベート IP アクセスのみの Application Gateway V2 NSG 構成](./media/application-gateway-faq/appgw-privip-nsg.png)
+
+## <a name="configuration---tls"></a>構成 - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Application Gateway はどのような証明書をサポートしていますか?
 
@@ -255,13 +287,13 @@ Application Gateway は、次の暗号スイートをサポートしています
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-SSL オプションのカスタマイズ方法については、「[Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する](application-gateway-configure-ssl-policy-powershell.md)」を参照してください。
+TLS オプションのカスタマイズ方法については、「[Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する](application-gateway-configure-ssl-policy-powershell.md)」を参照してください。
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Application Gateway はバックエンドへのトラフィックの再暗号化をサポートしていますか?
 
-はい。 Application Gateway は SSL オフロードとエンド ツー エンド SSL をサポートしており、バックエンドへのトラフィックが再暗号化されます。
+はい。 Application Gateway は TLS オフロードとエンド ツー エンド TLS をサポートしており、バックエンドへのトラフィックが再暗号化されます。
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>SSL ポリシーを構成して SSL プロトコルのバージョンを管理することはできますか?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS プロトコルのバージョンを制御するように TLS ポリシーを構成できますか?
 
 はい。 Application Gateway を構成して、TLS1.0、TLS1.1、TLS1.2 を拒否することができます。 SSL 2.0 および 3.0 は既定で無効になっているため、構成できません。
 
@@ -278,9 +310,9 @@ SSL オプションのカスタマイズ方法については、「[Application 
 
 Application Gateway では、バックエンドの管理に SHA256 を使用しています。
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>Application Gateway は、SSL 証明書をいくつサポートしていますか?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>Application Gateway は、TLS または SSL 証明書をいくつサポートしていますか?
 
-Application Gateway は、SSL 証明書を 100 件までサポートしています。
+Application Gateway は、TLS または SSL 証明書を 100 件までサポートしています。
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Application Gateway は、バックエンドの再暗号化用の認証証明書をいくつサポートしていますか?
 
@@ -288,7 +320,7 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway は Azure Key Vault とネイティブに統合されていますか?
 
-はい、Application Gateway v2 SKU では、Key Vault をサポートします。 詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
+はい、Application Gateway v2 SKU では、Key Vault をサポートします。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>.com と .net のサイトの HTTPS リスナーはどのように構成するのでしょうか? 
 
@@ -298,52 +330,16 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 
 いいえ、.pfx ファイルのパスワードには英数字のみを使用してください。
 
-## <a name="configuration---web-application-firewall-waf"></a>構成 - Web アプリケーション ファイアウォール (WAF)
-
-### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>WAF SKU では、Standard SKU で利用可能な機能をすべて利用できますか?
-
-はい。 WAF は Standard SKU に含まれる機能をすべてサポートしています。
-
-### <a name="how-do-i-monitor-waf"></a>WAF を監視するにはどうすればよいですか?
-
-WAF の監視には、診断ログを使用します。 詳細については、[Application Gateway の診断ログとメトリック](application-gateway-diagnostics.md)に関するページを参照してください。
-
-### <a name="does-detection-mode-block-traffic"></a>検出モードではトラフィックがブロックされますか?
-
-いいえ。 検出モードでは、WAF 規則をトリガーするトラフィックをログに記録するにとどまります。
-
-### <a name="can-i-customize-waf-rules"></a>WAF ルールはカスタマイズできますか?
-
-はい。 詳細については、[WAF 規則グループと規則のカスタマイズ](application-gateway-customize-waf-rules-portal.md)に関するページを参照してください。
-
-### <a name="what-rules-are-currently-available-for-waf"></a>WAF で現在利用できるのはどのような規則ですか?
-
-WAF で現在サポートされているのは、CRS [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229)、[3.0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)、および [3.1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31) です。 これらの規則は、Open Web Application Security Project (OWASP) が特定した 10 の脆弱性のほとんどに対するベースライン セキュリティを提供するものです。 
-
-* SQL インジェクションからの保護
-* クロスサイト スクリプティングに対する保護
-* 一般的な Web 攻撃 (コマンド インジェクション、HTTP 要求スマグリング、HTTP 応答スプリッティング、リモート ファイル インクルード攻撃など) に対する保護
-* HTTP プロトコル違反に対する保護
-* HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
-* ボット、クローラー、スキャナーの防止
-* アプリケーションのよくある構成ミスの検出 (Apache、IIS など)
-
-詳細については、[OWASP の 10 の脆弱性](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)に関するページを参照してください。
-
-### <a name="does-waf-support-ddos-protection"></a>WAF は DDoS 保護をサポートしていますか?
-
-はい。 アプリケーション ゲートウェイをデプロイしてある仮想ネットワーク上で、DDos 保護を有効にすることができます。 この設定によって、アプリケーション ゲートウェイの仮想 IP (VIP) も Azure DDoS Protection サービスによる保護の対象になります。
-
 ## <a name="configuration---ingress-controller-for-aks"></a>構成 - AKS のイングレス コントローラー
 
-### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか?
+### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか? 
 
-Kubernetes を使用すると、`deployment` リソースおよび `service` リソースを作成して、クラスター内のポッドのグループを内部で公開できます。 同じサービスを外部で公開するには、[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) リソースを定義します。これは、負荷分散、SSL 終了、および名前ベースの仮想ホスティングを提供します。
+Kubernetes を使用すると、`deployment` リソースおよび `service` リソースを作成して、クラスター内のポッドのグループを内部で公開できます。 同じサービスを外部で公開するには、[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) リソースを定義します。これは、負荷分散、TLS 終端、および名前ベースの仮想ホスティングを提供します。
 この `Ingress` リソースを満たすには、`Ingress` リソースの変更をリスンし、ロード バランサー ポリシーを構成するイングレス コントローラーが必要です。
 
 Application Gateway のイングレス コントローラーを使用すると、AKS クラスターとも呼ばれる [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) に対するイングレスとして [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) を使用できます。
 
-### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>イングレス コントローラーの単一のインスタンスで複数の Application Gateway を管理できますか?
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>イングレス コントローラーの単一のインスタンスで複数の Application Gateway を管理できますか? 
 
 現在、イングレス コントローラーの 1 つのインスタンスは、1 つの Application Gateway にのみ関連付けることができます。
 
