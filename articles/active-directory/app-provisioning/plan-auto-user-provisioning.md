@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77522412"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593541"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 

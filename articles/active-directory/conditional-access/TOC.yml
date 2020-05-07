@@ -35,6 +35,8 @@
           href: concept-conditional-access-grant.md
         - name: Session
           href: concept-conditional-access-session.md
+    - name: 分析情報とレポート
+      href: howto-conditional-access-insights-reporting.md
     - name: レポート専用モード
       href: concept-conditional-access-report-only.md
     - name: サービスの依存関係
@@ -110,7 +112,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

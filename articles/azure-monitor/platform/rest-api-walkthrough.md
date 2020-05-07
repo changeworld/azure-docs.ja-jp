@@ -4,12 +4,13 @@ description: 要求を認証し、Azure Monitor REST API を使用して使用�
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687413"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610889"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228011"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612454"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>セッション ホスト仮想マシンに Windows ライセンスを適用する
 
@@ -23,7 +23,7 @@ Windows Virtual Desktop ライセンスを使用すると、ホスト プール�
 
 Windows Virtual Desktop ライセンスを使用する方法は、いくつかあります。
 - [Azure Marketplace オファリング](./create-host-pools-azure-marketplace.md)を使用して、ホスト プールとそのセッション ホスト仮想マシンを作成できます。 この方法で作成された仮想マシンには、ライセンスが自動的に適用されます。
-- [GitHub の Azure Resource Manager テンプレート](./create-host-pools-arm-template.md)を使用して、ホスト プールとそのセッション ホスト仮想マシンを作成できます。 この方法で作成された仮想マシンには、ライセンスが自動的に適用されます。
+- [GitHub の Azure Resource Manager テンプレート](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)を使用して、ホスト プールとそのセッション ホスト仮想マシンを作成できます。 この方法で作成された仮想マシンには、ライセンスが自動的に適用されます。
 - 既存のセッション ホスト仮想マシンにライセンスを適用できます。 これを行うには、まず「[PowerShell を使用してホスト プールを作成する](./create-host-pools-powershell.md)」の手順に従ってホスト プールと関連 VM を作成してから、この記事に戻ってライセンスを適用する方法を確認します。
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>セッション ホスト VM に Windows ライセンスを適用する

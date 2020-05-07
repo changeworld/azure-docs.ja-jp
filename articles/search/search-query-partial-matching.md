@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262878"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592045"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分的な用語検索と特殊文字を含むパターン (ワイルドカード、正規表現、パターン)
 
@@ -24,7 +24,7 @@ ms.locfileid: "81262878"
 解決策は、必要に応じて空白や特殊文字を含む完全な文字列を保持するアナライザーを呼び出し、部分的な用語とパターンで照合できるようにすることです。 そのままの文字列に対して追加のフィールドを作成し、コンテンツを保持するアナライザーを使用することは、この解決策の基盤となります。
 
 > [!TIP]
-> Postman と REST API を使い慣れている場合は、 [クエリ例のコレクションをダウンロード](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples)して、この記事で説明されている部分的な用語と特殊文字のクエリを実行します。
+> Postman と REST API を使い慣れている場合は、 [クエリ例のコレクションをダウンロード](https://github.com/Azure-Samples/azure-search-postman-samples/)して、この記事で説明されている部分的な用語と特殊文字のクエリを実行します。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure Cognitive Search での部分的検索
 

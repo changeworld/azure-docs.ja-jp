@@ -16,12 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.custom: has-adal-ref
+ms.openlocfilehash: 690cb37df4a5d195bfce6ee792f7565a6f7f1768
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686805"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612777"
 ---
 # <a name="develop-a-secure-web-app"></a>セキュリティで保護された Web アプリを開発する
 

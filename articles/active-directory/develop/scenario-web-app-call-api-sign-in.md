@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 934b756329065c466f21fca1480247065bdea28b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e138b3513b42dda47b0a114d866d657e18e3e393
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881614"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181649"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web API を呼び出す Web アプリ:グローバル サインアウト時にトークン キャッシュからアカウントを削除する
 
@@ -30,35 +30,7 @@ ms.locfileid: "80881614"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core の場合、インターセプトのメカニズムは [WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) の `AddMsal()` メソッドに示されています。
-
-アプリケーションに対して以前登録したログアウト URL を使用して、シングル サインアウトを実装することができます。Microsoft ID プラットフォーム `logout` エンドポイントは、ログアウト URL を呼び出します。 この呼び出しは、サインアウトがユーザーの Web アプリから開始された場合、または別の Web アプリやブラウザーから開始された場合に行われます。 詳細については、「[シングル サインアウト](v2-protocols-oidc.md#single-sign-out)」をご覧ください。
-
-```csharp
-public static class WebAppServiceCollectionExtensions
-{
- public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")
- {
-  // Code omitted here
-
-  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-  {
-   // Code omitted here
-
-   // Handling the sign-out: Remove the account from MSAL.NET cache.
-   options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-   {
-    // Remove the account from MSAL.NET token cache.
-    var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
-    await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
-   };
-  });
-  return services;
- }
-}
-```
-
-`RemoveAccountAsync` のコードは、[Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) から入手することができます。
+Microsoft.Identity.Web では、サインアウトの実装が自動処理されます。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

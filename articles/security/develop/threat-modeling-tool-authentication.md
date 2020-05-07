@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72244628"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607828"
 ---
-# <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム:認証 | 対応策 
+# <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム:認証 | 対応策
 
 | 製品/サービス | [アーティクル] |
 | --------------- | ------- |
@@ -44,8 +45,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web アプリケーション |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -55,8 +56,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web アプリケーション |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -66,8 +67,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web アプリケーション |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -77,8 +78,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web アプリケーション |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -88,8 +89,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web アプリケーション |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -99,8 +100,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web アプリケーション |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -110,8 +111,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web アプリケーション | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web アプリケーション |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -121,8 +122,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | データベース |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | OnPrem |
 | **属性**              | SQL バージョン - すべて |
 | **参照**              | [SQL Server - 認証モードの選択](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -132,8 +133,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | データベース |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | SQL Azure |
 | **属性**              | SQL バージョン - V12 |
 | **参照**              | [Azure Active Directory の認証を使用して、SQL データベースに接続します。](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -143,8 +144,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | データベース |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [SQL Server のパスワード ポリシー](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -154,8 +155,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | データベース | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | データベース |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | OnPrem、SQL Azure |
 | **属性**              | SQL バージョン - MSSQL2012、SQL バージョン - V12 |
 | **参照**              | [包含データベースでのセキュリティのベスト プラクティス](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -165,8 +166,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Event Hub | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Azure Event Hub |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -176,8 +177,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | Azure の信頼の境界 |
+| **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Multi-Factor Authentication とは](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -187,8 +188,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | Service Fabric の信頼の境界 |
+| **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure  |
 | **参照**              | [Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -198,8 +199,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | Service Fabric の信頼の境界 |
+| **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure、環境、 - スタンドアロン |
 | **参照**              | [Service Fabric クライアントとノードの間の証明書セキュリティ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security)、[クライアント証明書を使用したセキュリティ保護されたクラスターへの接続](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -209,8 +210,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | Service Fabric の信頼の境界 |
+| **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [クラスターのセキュリティ シナリオ - セキュリティに関する推奨事項](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -220,8 +221,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Service Fabric の信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | Service Fabric の信頼の境界 |
+| **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 環境 - Azure |
 | **参照**              | [X.509 証明書と Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -231,8 +232,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Identity Server |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IdentityServer3 - 概要](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -242,8 +243,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | Identity Server |
+| **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Identity Server のデプロイ - キャッシュ](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -253,8 +254,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | デプロイ |  
+| **コンポーネント**               | コンピューターの信頼の境界 |
+| **SDL フェーズ**               | デプロイ |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -264,8 +265,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | WCF |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -304,8 +305,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | WCF |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -320,8 +321,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | WCF |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -336,8 +337,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Web API |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET Web API での認証と権限承認](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[ASP.NET Web API (C#) の外部認証サービス](https://www.asp.net/web-api/overview/security/external-authentication-services) |
@@ -347,8 +348,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure AD | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Azure AD |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure AD の認証シナリオ](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)、[Azure Active Directory のコード例](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/)、[Azure Active Directory 開発者ガイド](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -358,8 +359,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure AD | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Azure AD |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Web アプリケーション用 Azure Active Directory による最新の認証](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)、[ADAL トークン キャッシュとしての Redis の使用](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -369,8 +370,8 @@ ms.locfileid: "72244628"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure AD | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Azure AD |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Web アプリケーション用 Azure Active Directory による最新の認証](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -430,8 +431,8 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure AD | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Azure AD |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -441,8 +442,8 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | IoT フィールド ゲートウェイ | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | IoT フィールド ゲートウェイ |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -452,11 +453,11 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | IoT クラウド ゲートウェイ | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | IoT クラウド ゲートウェイ |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック、C#、Node.JS、  |
 | **属性**              | 該当なし、ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | 該当なし、[.NET での Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[IoT Hub と Node.JS の概要](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[SAS と証明書による IoT のセキュリティ保護](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **参照**              | 該当なし、[.NET での Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[IoT Hub と Node.JS の概要](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[SAS と証明書による IoT のセキュリティ保護](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/) |
 | **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドによって、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスが作成されます。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
 
 ### <a name="example"></a>例
@@ -512,9 +513,9 @@ await deviceClient.SendEventAsync(message);
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
-* SAS トークンを使用して接続します: 
+* SAS トークンを使用して接続します:
     ```javascript
-    Client.fromSharedAccessSignature(sas, Http); 
+    Client.fromSharedAccessSignature(sas, Http);
     ```
   #### <a name="certificates"></a>証明書
 * OpenSSL などのツールを使用して自己署名 X509 証明書を生成し、証明書を格納する .cert ファイルと、キーを格納する .key ファイルを生成します
@@ -541,7 +542,7 @@ await deviceClient.SendEventAsync(message);
     var options = {
         key: fs.readFileSync('./key.pem', 'utf8'),
         cert: fs.readFileSync('./server.crt', 'utf8')
-    }; 
+    };
     // Calling setOptions with the x509 certificate and key (and optionally, passphrase) will configure the client //transport to use x509 when connecting to IoT Hub
     client.setOptions(options);
     //call fn to execute after the connection is set up
@@ -552,8 +553,8 @@ await deviceClient.SendEventAsync(message);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | IoT クラウド ゲートウェイ  | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | IoT クラウド ゲートウェイ  |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
 | **参照**              | [Azure IoT Hub セキュリティ トークン](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -563,8 +564,8 @@ await deviceClient.SendEventAsync(message);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Azure Storage |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - BLOB |
 | **参照**              | [コンテナーと BLOB への匿名読み取りアクセスを管理する](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/)、[Shared Access Signatures、第 1 部: SAS モデルについて](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -574,8 +575,8 @@ await deviceClient.SendEventAsync(message);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | Build |  
+| **コンポーネント**               | Azure Storage |
+| **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし |
 | **参照**              | [Shared Access Signature、第 1 部: SAS モデルについて](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[Shared Access Signatures、第 2 部: Blob Storage での SAS の作成と使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[Shared Access Signature と Stored Access Policy を使用してアカウントのオブジェクトに対するアクセス権を委任する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

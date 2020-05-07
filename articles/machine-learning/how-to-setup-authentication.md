@@ -10,12 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237027"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611842"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -125,7 +126,7 @@ az ad sp show --id your-client-id
 }
 ```
 
-次に、次のコマンドを使用して、サービス プリンシパルのアクセス権を Machine Learning ワークスペースに割り当てます。 `-w` と `-g` のパラメーターに、それぞれワークスペース名とリソース グループ名が必要になります。 `--user` パラメーターには、前の手順の `objectId` 値を使用します。 `--role` パラメーターでは、サービス プリンシパルのアクセス ロールを設定でき、通常は **owner** または **contributor** を使用します。 どちらにもコンピューティング クラスターやデータストアなどの既存のリソースへの書き込みアクセス権がありますが、これらのリソースをプロビジョニングできるのは **owner** だけです。 
+次に、次のコマンドを使用して、サービス プリンシパルのアクセス権を Machine Learning ワークスペースに割り当てます。 `-w` と `-g` のパラメーターに、それぞれワークスペース名とリソース グループ名が必要になります。 `--user` パラメーターには、前の手順の `objectId` 値を使用します。 `--role` パラメーターでは、サービス プリンシパルのアクセス ロールを設定でき、通常は **owner** または **contributor** を使用します。 どちらにもコンピューティング クラスターやデータストアなどの既存のリソースへの書き込みアクセス権がありますが、これらのリソースをプロビジョニングできるのは **owner** だけです。
 
 ```azurecli-interactive
 az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -148,7 +149,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
 `sp` 変数は、SDK で直接使用する認証オブジェクトを保持するようになりました。 一般に、次のコードに示すように、上記で使用した ID/シークレットを環境変数に格納することをお勧めします。
 
 ```python
-import os 
+import os
 
 sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_id=os.environ['AML_PRINCIPAL_ID'],
@@ -160,7 +161,7 @@ Python で実行され、SDK を主に使用する自動化されたワークフ
 ```python
 from azureml.core import Workspace
 
-ws = Workspace.get(name="ml-example", 
+ws = Workspace.get(name="ml-example",
                    auth=sp,
                    subscription_id="your-sub-id")
 ws.get_details()
@@ -168,7 +169,7 @@ ws.get_details()
 
 ## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API 認証
 
-上記の手順で作成したサービス プリンシパルを使用して、Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) に対する認証を行うこともできます。 Azure Active Directory の[クライアント資格情報付与フロー](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)を使用します。これにより、自動化されたワークフローでヘッドレス認証に対するサービス間の呼び出しが許可されます。 これらの例は、Python と Node.js の両方で [ADAL ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)と共に実装されていますが、OpenID Connect 1.0 をサポートする任意のオープンソース ライブラリを使用することもできます。 
+上記の手順で作成したサービス プリンシパルを使用して、Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) に対する認証を行うこともできます。 Azure Active Directory の[クライアント資格情報付与フロー](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)を使用します。これにより、自動化されたワークフローでヘッドレス認証に対するサービス間の呼び出しが許可されます。 これらの例は、Python と Node.js の両方で [ADAL ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)と共に実装されていますが、OpenID Connect 1.0 をサポートする任意のオープンソース ライブラリを使用することもできます。
 
 > [!NOTE]
 > MSAL js は ADAL より新しいライブラリですが、MSAL.js によってクライアント資格情報を使用したサービス間認証を行うことはできません。これは、主に、特定のユーザーに関連付けられた対話型/UI 認証を目的とするクライアント側ライブラリであるためです。 次に示すように、ADAL を使用して、REST API で自動化されたワークフローを構築することをお勧めします。
@@ -206,7 +207,7 @@ context.acquireTokenWithClientCredentials(
 変数 `tokenResponse` は、トークンと関連メタデータ (有効期限など) を含むオブジェクトです。 トークンは 1 時間有効ですが、同じ呼び出しを再度実行して新しいトークンを取得することによって更新できます。 次に、応答のサンプルを示します。
 
 ```javascript
-{ 
+{
     tokenType: 'Bearer',
     expiresIn: 3599,
     expiresOn: 2019-12-17T19:15:56.326Z,
@@ -214,13 +215,13 @@ context.acquireTokenWithClientCredentials(
     accessToken: "random-oauth-token",
     isMRRT: true,
     _clientId: 'your-client-id',
-    _authority: 'https://login.microsoftonline.com/your-tenant-id' 
+    _authority: 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
 
 `accessToken` プロパティを使用して、認証トークンをフェッチします。 トークンを使用して API を呼び出す方法の例については、[REST API のドキュメント](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API)を参照してください。
 
-### <a name="python"></a>Python 
+### <a name="python"></a>Python
 
 Python を使用して認証トークンを生成するには、次の手順に従います。 現在の環境で、`pip install adal` を実行します。 次に、前の手順で作成したサービス プリンシパルの `tenantId`、`clientId`、および `clientSecret` を、次のスクリプトで適切な変数の値として使用します。
 
@@ -242,13 +243,13 @@ print(token_response)
 
 ```python
 {
-    'tokenType': 'Bearer', 
-    'expiresIn': 3599, 
-    'expiresOn': '2019-12-17 19:47:15.150205', 
-    'resource': 'https://management.azure.com/', 
-    'accessToken': 'random-oauth-token', 
-    'isMRRT': True, 
-    '_clientId': 'your-client-id', 
+    'tokenType': 'Bearer',
+    'expiresIn': 3599,
+    'expiresOn': '2019-12-17 19:47:15.150205',
+    'resource': 'https://management.azure.com/',
+    'accessToken': 'random-oauth-token',
+    'isMRRT': True,
+    '_clientId': 'your-client-id',
     '_authority': 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
@@ -314,9 +315,9 @@ print(token)
 > [!IMPORTANT]
 > トークンの `refresh_by` 時刻の後に新しいトークンを要求する必要があります。 Python SDK の外部でトークンを更新する必要がある場合は、前に説明したように、サービス プリンシパル認証で REST API を使用して定期的に `service.get_token()` 呼び出しを行う方法があります。
 >
-> Azure Machine Learning ワークスペースは、ご利用の Azure Kubernetes Service クラスターと同じリージョンに作成することを強くお勧めします。 
+> Azure Machine Learning ワークスペースは、ご利用の Azure Kubernetes Service クラスターと同じリージョンに作成することを強くお勧めします。
 >
-> トークンを使用して認証するために、Web サービスは、Azure Machine Learning ワークスペースの作成先のリージョンに対して呼び出しを行います。 ワークスペースのリージョンが利用不可になった場合、ワークスペースとは異なるリージョンにクラスターがあったとしても、Web サービスのトークンがフェッチできなくなります。 その結果、ワークスペースのリージョンが再び使用可能になるまで Azure AD Authentication は使用できなくなります。 
+> トークンを使用して認証するために、Web サービスは、Azure Machine Learning ワークスペースの作成先のリージョンに対して呼び出しを行います。 ワークスペースのリージョンが利用不可になった場合、ワークスペースとは異なるリージョンにクラスターがあったとしても、Web サービスのトークンがフェッチできなくなります。 その結果、ワークスペースのリージョンが再び使用可能になるまで Azure AD Authentication は使用できなくなります。
 >
 > また、クラスターのリージョンとワークスペースのリージョンとの間の距離が長くなるほど、トークンのフェッチにかかる時間も長くなります。
 

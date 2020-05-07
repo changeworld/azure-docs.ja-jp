@@ -1,5 +1,5 @@
 ---
-title: モデルに対して複数のエンドポイントを作成する
+title: 複数のモデル エンドポイントを作成する
 titleSuffix: ML Studio (classic) - Azure
 description: アルゴリズムは同じでトレーニング データセットだけが異なる複数の Machine Learning モデルと複数の Web サービス エンドポイントを PowerShell を使用して作成します。
 services: machine-learning
@@ -10,14 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 4f8bb1f20dcc3a7900e3347616018a6e156962d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70fafa79c87d19d62ef936b286c82813d8e7fe17
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218190"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208518"
 ---
-# <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>PowerShell を使用して 1 つの実験から Studio (クラシック) モデルと Web サービス エンドポイントを作成する
+# <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (クラシック) と PowerShell を使用して 1 つの実験から複数の Web サービス エンドポイントを作成する
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "79218190"
 > 
 
 ## <a name="set-up-the-training-experiment"></a>トレーニング実験のセットアップ
-[Cortana Intelligence ギャラリー](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)にある[トレーニング実験](https://gallery.azure.ai)の例を使用します。 この実験を [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) ワークスペースで開いてください。
+[Cortana Intelligence ギャラリー](https://gallery.azure.ai)にある[トレーニング実験](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)の例を使用します。 この実験を [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) ワークスペースで開いてください。
 
 > [!NOTE]
 > この例に沿って理解するためには、無料ワークスペースではなく標準のワークスペースを使用する必要があります。 エンドポイントは顧客ごとに 1 つ作成します (合計 10 エンドポイント)。無料のワークスペースはエンドポイント数が 3 個に限定されているため、標準のワークスペースが必要となります。
@@ -96,7 +96,7 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>個別のトレーニング データセットを使用するように PowerShell を使ってエンドポイントを更新する
 次に、各顧客の個別のデータで独自にトレーニングされたモデルでエンドポイントを更新します。 ただし最初に、これらのモデルを **Bike Rental Training** Web サービスから生成する必要があります。 **Bike Rental Training** Web サービスに戻りましょう。 10 個の異なるモデルを作成するためには、対応する BES エンドポイントを 10 回、10 個の異なるトレーニング データセットで呼び出す必要があります。 ここでは、PowerShell コマンドレット **InovkeAmlWebServiceBESEndpoint** を使用してこの処理を実行します。
 
-また、Blob Storage アカウントの資格情報を `$configContent` に与える必要があります。 つまり、フィールド `AccountName`、`AccountKey`、`RelativeLocation` です。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**Azure Portal** ( *[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある `AccountKey`[アクセス キーの管理] **ボタンを押して**プライマリ アクセス キー*をコピーすることによって、対応する*  を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../../storage/common/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** をクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
+また、Blob Storage アカウントの資格情報を `$configContent` に与える必要があります。 つまり、フィールド `AccountName`、`AccountKey`、`RelativeLocation` です。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**Azure Portal** ( *[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して*プライマリ アクセス キー*をコピーすることによって、対応する `AccountKey` を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../../storage/common/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** をクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service
@@ -116,7 +116,7 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 > 
 > 
 
-上述のように、10 個の異なる BES ジョブ構成 json ファイルを作成する代わりに、構成文字列を動的に作成します。 次に、*InvokeAmlWebServceBESEndpoint* コマンドレットの **jobConfigString** パラメーターにフィードします。 実際にディスク上にコピーを保持する必要はありません。
+上述のように、10 個の異なる BES ジョブ構成 json ファイルを作成する代わりに、構成文字列を動的に作成します。 次に、**InvokeAmlWebServceBESEndpoint** コマンドレットの *jobConfigString* パラメーターにフィードします。 実際にディスク上にコピーを保持する必要はありません。
 
 問題がなければ、しばらくすると Azure ストレージ アカウントに 10 個の .ilearner ファイルが生成されます (*model001.ilearner* から *model010.ilearner*)。 後は、PowerShell コマンドレット **Patch-AmlWebServiceEndpoint** を使用し、スコア付け Web サービスの 10 個のエンドポイントをこれらのモデルで更新することになります。 既に述べたように更新できるのは、先ほどプログラムから作成した既定以外のエンドポイントだけであることにご注意ください。
 

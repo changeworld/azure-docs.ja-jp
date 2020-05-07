@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870590"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
@@ -197,9 +197,9 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 > [!NOTE]
 > 「OAuth の設定」での定義の一部として、次のことをお勧めします。
 >
-> 1) フェーズ 2「[インスタンスにアクセスするためのクライアントのエンドポイントを作成する](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0)」の「[OAuth の設定](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0)」の一部として、**更新トークンの有効期限を 90 日間 (7,776,000 秒) に更新します**。エンドポイントの定義の後、ServiceNow ブレードで System OAuth を検索し、[Application Registry]\(アプリケーション レジストリ\) を選択します。 定義した OAuth の名前を選択し、更新トークンの有効期限のフィールドを 7,776,000 (秒単位。90 日間) に更新します。
+> 1) **更新トークンの有効期限を 90 日間 (7,776,000 秒) に更新する:** [[OAuth の設定]](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) (フェーズ 2 の「[インスタンスにアクセスするためのクライアントのエンドポイントを作成する](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0)」) の一部として。エンドポイントの定義の後、ServiceNow ブレードで「System OAuth」を検索し、次に [アプリケーション レジストリ] を選択します。 定義した OAuth の名前を選択し、更新トークンの有効期限のフィールドを 7,776,000 (秒単位。90 日間) に更新します。
 > 最後に [update]\(更新\) をクリックします。
-> 2) トークンを更新するための更新トークンの有効期限にしたがって、**接続が維持されるように内部プロシージャを確立することをお勧めします。** 更新トークンの予想される有効期限の前に必ず次の操作を行ってください (更新トークンの有効期限が切れる数日前に行うことをお勧めします)。
+> 2) **接続が維持されるように内部プロシージャを確立することを推奨します:** トークンを更新するための更新トークンの有効期限にしたがってください。 更新トークンの予想される有効期限の前に必ず次の操作を行ってください (更新トークンの有効期限が切れる数日前に行うことをお勧めします)。
 >
 >>  1) [ITSM コネクタ構成の手動での同期プロセスを完了します](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
  >> 2) セキュリティ上の理由から古いキーを保持することは推奨されないため、古い更新トークンを取り消します。 ServiceNow ブレードで System OAuth を検索し、[Manage Tokens]\(トークンの管理\) を選択します。 OAuth 名と有効期限の日付にしたがって、一覧から古いトークンを選択します。 [Revoke Access]\(アクセス権の取り消し\)、[Revoke]\(取り消し\) の順にクリックします。

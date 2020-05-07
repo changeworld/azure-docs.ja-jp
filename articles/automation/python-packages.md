@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 05d892edf20cda228bc566b30b0b693ea7c4a184
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417643"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508991"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Automation で Python 2 パッケージを管理する
 
@@ -18,25 +18,25 @@ Azure Automation では、Azure および Linux Hybrid Runbook Worker で Python
 
 ## <a name="import-packages"></a>パッケージをインポートする
 
-Automation アカウントの **[共有リソース]** で **[Python 2 packages]\(Python 2 パッケージ\)** を選択します。 **[+ Python 2 パッケージを追加する]** をクリックします。
+Automation アカウントの **[共有リソース]** で **[Python 2 パッケージ]** を選択します。 **[+ Python 2 パッケージを追加する]** をクリックします。
 
 ![Python パッケージを追加する](media/python-packages/add-python-package.png)
 
-**[Python 2 パッケージの追加]** ページで、アップロードするローカル パッケージを選択します。 パッケージは `.whl` ファイルまたは `.tar.gz` ファイルを指定できます。 選択したら、 **[OK]** をクリックしてパッケージをアップロードします。
+[Python 2 パッケージの追加] ページで、アップロードするローカル パッケージを選択します。 パッケージは、 **.whl** または **.tar.gz** ファイルの場合があります。 パッケージを選択したら、 **[OK]** をクリックしてアップロードします。
 
 ![Python パッケージを追加する](media/python-packages/upload-package.png)
 
-パッケージがインポートされると、Automation アカウントの **[Python 2 packages]\(Python 2 パッケージ\)** ページに一覧表示されます。 パッケージを削除する必要がある場合は、そのパッケージを選択し、パッケージ ページの **[削除]** を選びます。
+パッケージがインポートされると、Automation アカウントの [Python 2 パッケージ] ページに一覧表示されます。 パッケージを削除する必要がある場合は、パッケージを選択し、 **[削除]** をクリックします。
 
 ![パッケージ一覧](media/python-packages/package-list.png)
 
 ## <a name="import-packages-with-dependencies"></a>依存関係があるパッケージをインポートする
 
-Azure Automation はインポート プロセス中に python パッケージの依存関係を解決しません。 すべての依存関係を含め、パッケージをインポートする方法は 2 つあります。 Automation アカウントにパッケージをインポートするには、以下の手順の 1 つのみを使用する必要があります。
+Azure Automation ではインポート プロセス中に Python パッケージの依存関係を解決しません。 すべての依存関係を含め、パッケージをインポートする方法は 2 つあります。 Automation アカウントにパッケージをインポートするには、次の手順の 1 つのみを使用する必要があります。
 
 ### <a name="manually-download"></a>手動ダウンロード
 
-[python2.7](https://www.python.org/downloads/release/latest/python2) および [pip](https://pip.pypa.io/en/stable/) がインストールされている Windows 64 ビット マシン上で、次のコマンドを実行してパッケージとそのすべての依存関係をダウンロードします。
+[Python2.7](https://www.python.org/downloads/release/latest/python2) および [pip](https://pip.pypa.io/en/stable/) がインストールされている Windows 64 ビット マシン上で、次のコマンドを実行してパッケージとそのすべての依存関係をダウンロードします。
 
 ```cmd
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
@@ -46,7 +46,7 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 
 ### <a name="runbook"></a>Runbook
 
-ギャラリーの python Runbook [Import Python 2 packages from pypi into Azure Automation account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) を Automation アカウントにインポートします。 [実行設定] が **[Azure]** に設定されていることを確認し、パラメーターを指定して Runbook を開始します。 Automation アカウントが機能するには、Runbook に実行アカウントが必要です。 各パラメーターについて、次の一覧と画像に示すように、必ずスイッチを指定して開始してください。
+ Runbook を取得するには、ギャラリーから [Import Python 2 packages from pypi into Azure Automation account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) を Automation アカウントにインポートします。 [実行設定] が **[Azure]** に設定されていることを確認し、パラメーターを指定して Runbook を開始します。 Automation アカウントが機能するためには、Runbook に実行アカウントが必要です。 各パラメーターについて、次の一覧と画像に示すように、必ずスイッチを指定して開始してください。
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
@@ -55,13 +55,13 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 
 ![パッケージ一覧](media/python-packages/import-python-runbook.png)
 
-Runbook では、ダウンロードするパッケージを指定できます。たとえば、`Azure` (4 番目のパラメーター) を指定すると、すべての Azure モジュールとそのすべての依存関係 (約 105 個) がダウンロードされます。
+Runbook では、ダウンロードするパッケージを指定できます。 たとえば、`Azure` パラメーターを使用すると、すべての Azure モジュールとすべての依存関係 (約 105 個) がダウンロードされます。
 
-Runbook が完了したら、Automation アカウントの **[共有リソース]** の下にある **[Python 2 packages]\(Python 2 パッケージ\)** ページでパッケージが正しくインポートされたことを確認できます。
+Runbook が完了したら、Automation アカウントの **[共有リソース]** の下にある **[Python 2 パッケージ]** を調べて、パッケージが正しくインポートされていることを確認できます。
 
 ## <a name="use-a-package-in-a-runbook"></a>Runbook でパッケージを使用する
 
-パッケージをインポートすると、Runbook で使用できるようになります。 次の例では、[Azure Automation ユーティリティ パッケージ](https://github.com/azureautomation/azure_automation_utility)を使用します。 このパッケージにより、Azure Automation で Python が使いやすくなります。 パッケージを使用するには、GitHub リポジトリの指示に従って、Runbook に追加します。その場合、`from azure_automation_utility import get_automation_runas_credential` などを使用して、RunAs アカウントを取得するための関数をインポートします。
+パッケージがインポートされたら、それを Runbook で使用できます。 次の例では、[Azure Automation ユーティリティ パッケージ](https://github.com/azureautomation/azure_automation_utility)を使用します。 このパッケージにより、Azure Automation で Python が使いやすくなります。 パッケージを使用するには、GitHub リポジトリの指示に従って、Runbook に追加します。 たとえば、`from azure_automation_utility import get_automation_runas_credential` を使用して、実行アカウントを取得するための関数をインポートできます。
 
 ```python
 import azure.mgmt.resource

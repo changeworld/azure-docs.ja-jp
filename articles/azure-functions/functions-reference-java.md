@@ -3,12 +3,12 @@ title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672998"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145326"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -159,6 +159,9 @@ JKD および関数アプリに関する問題に対する [Azure サポート](
 
 `JAVA_OPTS` という名前のアプリ設定には、追加の引数を指定できます。 Azure portal または Azure CLI で、Azure にデプロイされているお使いの関数アプリにアプリ設定を追加することができます。
 
+> [!IMPORTANT]  
+> 従量課金プランでは、カスタマイズを機能させるために、値を 0 にした WEBSITE_USE_PLACEHOLDER 設定も追加する必要があります。 この設定によって、Java 関数のコールド スタート時間が長くなることはありません。
+
 ### <a name="azure-portal"></a>Azure portal
 
 [Azure portal](https://portal.azure.com) の [[アプリケーション設定]](functions-how-to-use-azure-function-app-settings.md#settings) タブを使用して `JAVA_OPTS` の設定を追加します。
@@ -167,16 +170,22 @@ JKD および関数アプリに関する問題に対する [Azure サポート](
 
 次の例のように、[az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) コマンドを使用して `JAVA_OPTS` を設定できます。
 
+#### <a name="consumption-plan"></a>[従量課金プラン](#tab/consumption)
 ```azurecli-interactive
-az functionapp config appsettings set --name <APP_NAME> \
---resource-group <RESOURCE_GROUP> \
---settings "JAVA_OPTS=-Djava.awt.headless=true"
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+"WEBSITE_USE_PLACEHOLDER=0" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-この例では、ヘッドレス モードが有効になります。 `<APP_NAME>` をお使いの関数アプリ名に置き換え、`<RESOURCE_GROUP>` をリソース グループに置き換えます。
+#### <a name="dedicated-plan--premium-plan"></a>[専用プラン/Premium プラン](#tab/dedicated+premium)
+```azurecli-interactive
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+---
 
-> [!WARNING]  
-> [従量課金プラン](functions-scale.md#consumption-plan)では、`0` の値と共に `WEBSITE_USE_PLACEHOLDER` 設定を追加する必要があります。  
-この設定によって、Java 関数のコールド スタート時間が長くなることはありません。
+この例では、ヘッドレス モードが有効になります。 `<APP_NAME>` をお使いの関数アプリ名に置き換え、`<RESOURCE_GROUP>` をリソース グループに置き換えます。 
 
 ## <a name="third-party-libraries"></a>サードパーティ製ライブラリ 
 
@@ -446,6 +455,9 @@ public class Function {
 }
 
 ```
+
+> [!NOTE]
+> 最適化されたコールド スタート エクスペリエンスを実現するには、アプリ設定 FUNCTIONS_EXTENSION_VERSION の値を ~2 または ~3 にする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

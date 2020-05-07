@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637095"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611995"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
@@ -104,4 +104,4 @@ Windows Virtual Desktop と Windows 10 Enterprise マルチセッションの詳
 
 - [Windows Virtual Desktop プレビューのドキュメント](overview.md)を確認する
 - [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスする
-- [Windows Virtual Desktop のチュートリアル](tenant-setup-azure-active-directory.md)を使用して Windows Virtual Desktop のデプロイをセットアップする
+- [Windows Virtual Desktop のチュートリアル](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)を使用して Windows Virtual Desktop のデプロイをセットアップする

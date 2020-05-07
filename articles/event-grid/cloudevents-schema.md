@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e4de91034de0d036cd99e265949ba85a5939180
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393484"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629329"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid に CloudEvents v1.0 スキーマを使用する
 Azure Event Grid は、[既定のイベント スキーマ](event-schema.md)に加え、[CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) および [HTTP プロトコル バインディング](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)の JSON 実装のイベントをネイティブでサポートします。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/v1.0/spec.md)です。
@@ -139,7 +139,7 @@ New-AzureRmEventGridSubscription `
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 を使用したエンドポイントの検証
 
-Event Grid を既に使い慣れている場合、不正使用を防ぐための Event Grid のエンドポイント検証ハンドシェイクをご存じかもしれません。 CloudEvents v1.0 では、HTTP OPTIONS メソッドを使用して、独自の[不正使用防止のセマンティクス](security-authentication.md#webhook-event-delivery)が実装されています。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
+Event Grid を既に使い慣れている場合、不正使用を防ぐための Event Grid のエンドポイント検証ハンドシェイクをご存じかもしれません。 CloudEvents v1.0 では、HTTP OPTIONS メソッドを使用して、独自の[不正使用防止のセマンティクス](webhook-event-delivery.md)が実装されています。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
 
 <a name="azure-functions"></a>
 
@@ -147,7 +147,7 @@ Event Grid を既に使い慣れている場合、不正使用を防ぐための
 
 [Azure Functions Event Grid バインド](../azure-functions/functions-bindings-event-grid.md)では CloudEvents がネイティブにサポートされていないため、CloudEvents メッセージの読み取りには HTTP によってトリガーされる関数が使用されます。 CloudEvents の読み取りに HTTP トリガーを使用する場合は、Event Grid トリガーによって自動的に行われる処理のコードを記述する必要があります。
 
-* [サブスクリプション検証要求](../event-grid/security-authentication.md#webhook-event-delivery)に検証応答を送信します。
+* [サブスクリプション検証要求](../event-grid/webhook-event-delivery.md)に検証応答を送信します。
 * 要求本文に含まれるイベント配列の要素ごとに、関数を 1 回呼び出します。
 
 関数をローカルに呼び出す場合、または Azure 内で実行するときに使う URL については、[HTTP トリガーのバインドに関するリファレンス ドキュメント](../azure-functions/functions-bindings-http-webhook.md)をご覧ください

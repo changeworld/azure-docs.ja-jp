@@ -4,12 +4,12 @@ description: Azure Container Instances サービスに関連するよく寄せ�
 author: dkkapur
 ms.topic: article
 ms.date: 04/10/2020
-ms.openlocfilehash: 8730dcb24af61730d7f93ea37a53cf87435eb9f9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261620"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115229"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
@@ -55,9 +55,12 @@ Azure Container Instances のデプロイ可能なコンテナー イメージ�
 
 ### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>コンテナーまたはコンテナー グループに割り当てる必要があるコアとメモリはどのくらいですか。
 
-実際のところ、これはワークロードによって異なります。 小規模から始めてパフォーマンスをテストし、コンテナーの動作を確認します。 [CPU およびメモリ リソースの使用状況を監視します](container-instances-monitor.md)。次に、コンテナーにデプロイするプロセスの種類に基づいてコアまたはメモリを追加します。 
+実際のところ、これはワークロードによって異なります。 小規模から始めてパフォーマンスをテストし、コンテナーの動作を確認します。 [CPU およびメモリ リソースの使用状況を監視します](container-instances-monitor.md)。次に、コンテナーにデプロイするプロセスの種類に基づいてコアまたはメモリを追加します。
 
 コンテナー グループごとに使用できる CPU コアとメモリの上限について、デプロイしているリージョンの[リソースの可用性](container-instances-region-availability.md#availability---general)も必ず確認します。 
+
+> [!NOTE]
+> コンテナー グループの少量のリソースは、サービスの基になるインフラストラクチャによって使用されます。 コンテナーでは、グループに割り当てられているほとんどのリソースにアクセスできますが、すべてのリソースにアクセスできるわけではありません。 このため、グループ内のコンテナーのリソースを要求するときは、小さいリソース バッファーを計画してください。
 
 ### <a name="what-underlying-infrastructure-does-aci-run-on"></a>ACI はどのような基盤インフラストラクチャ上で動作しますか。
 

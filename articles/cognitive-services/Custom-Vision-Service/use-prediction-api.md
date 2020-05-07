@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169947"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82129870"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する
 
@@ -134,8 +134,4 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 
 このガイドでは、C# SDK を使用して、カスタム画像分類器/検出器にイメージを送信し、応答をプログラムで受信する方法について説明しました。 次は、C# を使用してエンドツーエンドのシナリオを完了したり、さまざまな言語の SDK を使用して作業を開始したりする方法について説明します。
 
-* [クイック スタート: .NET SDK](csharp-tutorial.md)
-* [クイック スタート: Python SDK:](python-tutorial.md)
-* [クイック スタート: Java SDK](java-tutorial.md)
-* [クイック スタート: Node SDK](node-tutorial.md)
-* [クイック スタート: Go SDK](go-tutorial.md)
+* [クイック スタート: Custom Vision SDK](quickstarts/image-classification.md)

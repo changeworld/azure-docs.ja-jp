@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 02/14/2020
 ms.author: diberry
 ms.openlocfilehash: c0ee1abcb99e10d57d05945f45595e5bfd76fa28
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80155989"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
@@ -64,6 +64,6 @@ QnA Maker の新機能について説明します。
 > [!div class="nextstepaction"]
 > [QnA Maker サービスを作成する](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>Cognitive Services の更新プログラム
+## <a name="cognitive-service-updates"></a>コグニティブ サービスの更新プログラム
 
 [Cognitive Services に対する Azure 更新プログラムのお知らせ](https://azure.microsoft.com/updates/?product=cognitive-services)

@@ -426,6 +426,8 @@
               href: faq-voice-assistants.md
     - name: カスタム キーワード
       items:
+        - name: カスタム キーワードの概要
+          href: custom-keyword-overview.md
         - name: カスタム キーワードの名前付けのガイドライン
           href: speech-devices-sdk-kws-guidelines.md
         - name: カスタム キーワード認識
@@ -519,6 +521,10 @@
           href: speech-devices-sdk-roobo-v1.md
         - name: Roobo v2 の詳細
           href: speech-devices-sdk-roobo-v2.md
+    - name: 操作方法ガイド
+      items:
+        - name: マイク配列を構成する方法
+          href: how-to-devices-microphone-array-configuration.md
     - name: クイック スタート
       items:
         - name: Speech Devices SDK を使用する

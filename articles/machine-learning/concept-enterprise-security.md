@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756572"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188397"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -78,7 +78,7 @@ Azure Machine Learning では、Web サービスに関してキーとトーク�
 組み込みのロールがニーズを満たしていない場合は、カスタムのロールを作成できます。 カスタム ロールは、ワークスペースと Machine Learning コンピューティングに対する操作でのみサポートされます。 カスタム ロールでは、ワークスペースとそのワークスペース内のコンピューティング リソースに対する読み取り、書き込み、または削除のアクセス許可を持つことができます。 ロールは、特定のワークスペース レベル、特定のリソース グループ レベル、または特定のサブスクリプション レベルで使用できるようにすることができます。 詳細については、[Azure Machine Learning ワークスペースでのユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
 
 > [!WARNING]
-> Azure Machine Learning は現在、Azure Active Directory の企業間コラボレーションではサポートされていません。
+> Azure Machine Learning は Azure Active Directory の B2B の共同作業ではサポートされていますが、現時点では Azure Active Directory の B2C の共同作業ではサポートされていません。
 
 ### <a name="securing-compute-targets-and-data"></a>コンピューティング先とデータのセキュリティ保護
 
@@ -183,7 +183,7 @@ Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリ�
         > [!NOTE]
         > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
 
-この Cosmos DB インスタンスは、サブスクリプション内の Microsoft が管理対象リソース グループに作成されます。 
+この Cosmos DB インスタンスは、サブスクリプション内の Microsoft が管理対象リソース グループに作成されます。 マネージド リソース グループの名前は、`<AML Workspace Resource Group Name><GUID>` という形式で指定されます。
 
 > [!IMPORTANT]
 > * この Cosmos DB インスタンスを削除する必要がある場合は、それを使用する Azure Machine Learning ワークスペースを削除する必要があります。 
@@ -243,9 +243,9 @@ Azure Databricks は Azure Machine Learning パイプラインで使用できま
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
-TLS を使用して、Azure Machine Learning マイクロサービス間の内部通信をセキュリティで保護し、スコアリング エンドポイントへの外部呼び出しをセキュリティで保護することができます。 すべての Azure Storage アクセスも、セキュリティで保護されたチャネル経由で行われます。
+Azure Machine Learning では、さまざまな Azure Machine Learning マイクロサービス間の内部通信をセキュリティで保護するために、TLS を使用します。 すべての Azure Storage アクセスも、セキュリティで保護されたチャネル経由で行われます。
 
-詳細については、「[TSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)」を参照してください。
+スコアリング エンドポイントへの外部呼び出しをセキュリティで保護するために、Azure Machine Learning では TLS を使用します。 詳細については、「[TSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)」を参照してください。
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 
@@ -348,7 +348,7 @@ Azure Machine Learning ワークスペースに関連付けられているディ
 * トレーニング ジョブを実行するために、マネージド コンピューティング先 (Machine Learning コンピューティングなど) またはアンマネージド コンピューティング先 (VM など) のいずれかを選択できます。 両方のシナリオのデータ フローを次に示します。
    * VM/HDInsight。Microsoft サブスクリプションのキー コンテナー内の SSH 資格情報でアクセスされます。 Azure Machine Learning では、以下を行うコンピューティング先で管理コードを実行します。
 
-   1. 環境を準備します (Docker は VM とローカル コンピューターのオプションです。 Docker コンテナーで実験を行う方法については、Machine Learning コンピューティングに関する以下の手順を参照してください)。
+   1. 環境を準備します  (Docker は VM とローカル コンピューターのオプションです。 Docker コンテナーで実験を行う方法については、Machine Learning コンピューティングに関する以下の手順を参照してください)。
    1. コードをダウンロードします。
    1. 環境変数と構成を設定します。
    1. ユーザー スクリプト (前のセクションで説明したコード スナップショット) を実行します。
@@ -385,10 +385,7 @@ Machine Learning コンピューティングはマネージド コンピュー�
 
 * [TLS を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた Machine Learning モデルを使用する](how-to-consume-web-service.md)
-* [バッチ予測を実行する方法](how-to-use-parallel-run-step.md)
-* [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
-* [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Azure Firewall と共に Azure Machine Learning を使用する](how-to-access-azureml-behind-firewall.md)
 * [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
 * [推奨システムを構築するためのベスト プラクティス](https://github.com/Microsoft/Recommenders)
 * [Azure 上でリアルタイム レコメンデーション API を構築する](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

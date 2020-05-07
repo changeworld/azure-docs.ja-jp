@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac9b76dd8d3c950b14f6d7b331f15647427ac89
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652732"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143220"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -134,7 +134,7 @@ Microsoft Azure AD Connect エージェント アップデーター サービス
 * Microsoft Azure AD Connect Agent Updater サービスでは、[TLS 要件](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements)で指定されている TLS 1.2 の手順も必要です。
 
 > [!WARNING]
-> Azure AD パスワード保護プロキシと Azure AD アプリケーション プロキシでは、異なるバージョンの Microsoft Azure AD Connect エージェント アップデーター サービスがインストールされます。そのため、説明ではアプリケーション プロキシの内容を示しています。 これらの異なるバージョンはサイド バイ サイドでインストールしたときに互換性がないため、Azure AD パスワード保護プロキシとアプリケーション プロキシを同じマシンにインストールすることはお勧めしません。
+> Azure AD パスワード保護プロキシと Azure AD アプリケーション プロキシでは、異なるバージョンの Microsoft Azure AD Connect エージェント アップデーター サービスがインストールされます。そのため、説明ではアプリケーション プロキシの内容を示しています。 これらの異なるバージョンは、サイドバイサイドでインストールされた場合に互換性がないため、これを実行するとエージェント アップデーター サービスがソフトウェアの更新のために Azure に接続できなくなります。そのため、Azure AD パスワード保護プロキシとアプリケーション プロキシを同じコンピューター上にインストールしないでください。
 
 ## <a name="download-required-software"></a>必要なソフトウェアのダウンロード
 
