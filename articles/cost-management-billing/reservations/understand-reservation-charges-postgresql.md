@@ -1,20 +1,17 @@
 ---
-title: Azure Database for PostgreSQL 単一サーバーに対する予約割引の適用方法
-description: Azure Database for PostgreSQL 単一サーバーに対する予約割引の適用方法
+title: 予約割引の概要 - Azure Database for PostgreSQL 単一サーバー
+description: Azure Database for PostgreSQL 単一サーバーに対する予約割引の適用方法について学習します。
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e01b35bc540045bc272484159380f8a11e5a6c48
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199298"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509399"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーに対する予約割引の適用方法
 
@@ -28,7 +25,7 @@ Azure Database for PostgreSQL 単一サーバーの予約容量を購入する�
 
 ## <a name="discount-applied-to-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーに適用される割引
 
-Azure Database for PostgreSQL 単一サーバーの予約容量の割引は、実行中の PostgreSQL 単一サーバーに対して時間単位で適用されます。 購入した予約は、実行中の Azure Database for PostgreSQL 単一サーバーで生成されるコンピューティング使用量と一致します。 PostgreSQL 単一サーバーの実行時間が 1 時間に満たない場合、その予約は、予約の属性に一致する他の Azure Database for PostgreSQL 単一サーバーに自動的に適用されます。 この割引は、同時に実行されている Azure Database for PostgreSQL 単一サーバーに適用できます。 まる 1 時間実行され、予約の属性に一致する PostgreSQL 単一サーバーがない場合は、その時間について予約割引の特典を完全に活用することができません。
+Azure Database for PostgreSQL 単一サーバーの予約容量の割引は、実行中の PostgreSQL 単一サーバーに対して時間単位で適用されます。 購入した予約は、実行中の Azure Database for PostgreSQL 単一サーバーで生成されるコンピューティング使用量と一致します。 PostgreSQL 単一サーバーの実行時間が 1 時間に満たない場合、その予約は、予約の属性に一致する他の Azure Database for PostgreSQL 単一サーバーに自動的に適用されます。 この割引は、同時に実行されている Azure Database for PostgreSQL 単一サーバーに適用できます。 予約の属性に一致し、まる 1 時間実行される PostgreSQL 単一サーバーがない場合は、その時間について予約割引の特典を完全に活用することができません。
 
 次の例は、購入したコア数と実行する時間に応じて、Azure Database for PostgreSQL 単一サーバーの予約容量割引がどのように適用されるかを示しています。
 
@@ -44,5 +41,6 @@ Azure Database for PostgreSQL 単一サーバーの予約容量の割引は、�
 
 Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)に関するページを参照してください。
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
+## <a name="next-steps"></a>次のステップ
+
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

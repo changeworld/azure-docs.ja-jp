@@ -1,5 +1,5 @@
 ---
-title: Video Indexer とは
+title: Azure Media Services Video Indexer とは
 titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services Video Indexer サービスの概要を説明します。
 services: media-services
@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687111"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788855"
 ---
-# <a name="what-is-video-indexer"></a>Video Indexer とは
+# <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
 
 Video Indexer (VI) は、Azure Media Services AI ソリューションであり、Azure Cognitive Services ブランドの一部です。 Video Indexer では、複数のチャンネル (音声、ボーカル、ビジュアル) に基づく機械学習モデルを使用して、(データ分析やコーディング スキルを必要としない) 詳細な分析情報を抽出する機能を提供します。 さらに、モデルのカスタマイズとトレーニングを行うことができます。 このサービスを使用すると、ディープ検索が可能になり、運用コストが削減され、新しい収益化の機会が可能になり、(エントリ バリアが低い) ビデオの大規模なアーカイブで新しいユーザー エクスペリエンスを生み出します。
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025998"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233535"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
@@ -325,7 +325,7 @@ Privileged Identity Management ソリューションを実装する前に、組�
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Privileged Identity Management について影響を受ける利害関係者に連絡する
 
-Privileged Identity Management をデプロイすると、特権ロールのユーザー向けの手順が増えます。 Privileged Identity Management によって特権 ID に関するセキュリティ問題が大幅に減りますが、テナント全体のデプロイの前に効率的に連絡するために変更が必要になります。 影響を受ける管理者の数に応じて、組織では、多くの場合、変更に関する内部ドキュメント、ビデオ、あるいはメールを作成することを選択します。 これらの連絡内容には以下のものがよく含まれます。
+Privileged Identity Management をデプロイすると、特権ロールのユーザー向けの手順が増えます。 Privileged Identity Management によって特権 ID に関するセキュリティ問題が大幅に減りますが、組織全体のデプロイの前に効率的に連絡するために変更が必要になります。 影響を受ける管理者の数に応じて、組織では、多くの場合、変更に関する内部ドキュメント、ビデオ、あるいはメールを作成することを選択します。 これらの連絡内容には以下のものがよく含まれます。
 
 - PIM とは
 - 組織での利点
@@ -371,7 +371,7 @@ Privileged Identity Management が運用環境で必要に応じて機能しな�
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Privileged Identity Management アラートを使用して特権アクセスを保護する
 
-テナントの保護を強化するには、Privileged Identity Management の組み込みアラート機能を利用する必要があります。 詳細については、[セキュリティ アラート](pim-how-to-configure-security-alerts.md#security-alerts)に関するページを参照してください。 これらのアラートには、管理者が特権ロールを使用していない、ロールが Privileged Identity Management 外で割り当てられている、ロールのアクティブ化の頻度が高すぎるなどがあります。 組織を完全に保護するには、定期的にアラート リストを確認し、問題を修正する必要があります。 アラートは、次のようにして表示および修正できます。
+組織の保護を強化するには、Privileged Identity Management の組み込みアラート機能を利用する必要があります。 詳細については、[セキュリティ アラート](pim-how-to-configure-security-alerts.md#security-alerts)に関するページを参照してください。 これらのアラートには、管理者が特権ロールを使用していない、ロールが Privileged Identity Management 外で割り当てられている、ロールのアクティブ化の頻度が高すぎるなどがあります。 組織を完全に保護するには、定期的にアラート リストを確認し、問題を修正する必要があります。 アラートは、次のようにして表示および修正できます。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。

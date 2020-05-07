@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.author: diberry
 ms.openlocfilehash: 904953f028eb31afe42cf477ac05be43e8b72a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80336024"
 ---
 # <a name="personalizer-troubleshooting"></a>Personalizer のトラブルシューティング
@@ -68,7 +68,7 @@ ms.locfileid: "80336024"
 <details>
 <summary><b>学習ループによる学習は進行していますが、何も学習していないように見えます。Rank の結果の品質もあまり良くありません。どうすればよいですか。</b></summary>
 
-**回答**:
+**回答**: 
 * その Personalizer リソース (学習ループ) について、Azure portal で 1 回の評価を完了し、適用したことを確認します。
 * Reward API を介してすべての報酬が送信され、処理されたことを確認します。
 

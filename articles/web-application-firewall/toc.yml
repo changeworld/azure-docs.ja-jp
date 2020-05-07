@@ -63,6 +63,8 @@
           href: ./ag/policy-overview.md
         - name: ボット保護の概要
           href: ./ag/bot-protection-overview.md
+        - name: よく寄せられる質問
+          href: ./ag/application-gateway-waf-faq.md
     - name: フロントドア
       items:
         - name: カスタム規則

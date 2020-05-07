@@ -3,17 +3,17 @@ title: チュートリアル - Azure の予算を作成して管理する
 description: このチュートリアルでは、使用する Azure サービスのコストの計画とアカウントについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/03/2020
+ms.date: 04/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 655194a1335ae258e27dff2c75a370578253794a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605866"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101758"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -156,7 +156,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 EA ユーザーは、Azure PowerShell モジュールを使用してプログラムから予算を作成、編集することができます。  最新バージョンの Azure PowerShell をダウンロードするには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-install-module -name AzureRm
+install-module -name Az
 ```
 
 次に示したのは、予算を作成するコマンドの例です。
@@ -164,31 +164,24 @@ install-module -name AzureRm
 ```azurepowershell-interactive
 #Sign into Azure Powershell with your account
 
-Connect-AzureRmAccount
+Connect-AzAccount
 
 #Select a subscription to to monitor with a budget
 
-select-AzureRmSubscription -Subscription "Your Subscription"
+select-AzSubscription -Subscription "Your Subscription"
 
 #Create an action group email receiver and corresponding action group
 
-$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
-$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+$email1 = New-AzActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
 
 #Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
 
-New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+New-AzConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して予算を作成する
 
-Azure Resource Manager テンプレートを使用して予算を作成できます。 テンプレートを使用すると、リソース グループごとに予算を作成できます。 
-
-次のイメージを選択して、Azure portal にサインインし、テンプレートを開きます。
-
-[![予算の作成テンプレートを Azure にデプロイする](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
-
-すべてのテンプレート パラメーターとその説明の一覧を表示するには、[予算の作成](https://azure.microsoft.com/resources/templates/create-budget/)テンプレートを参照してください。
-
+Azure Resource Manager テンプレートを使用して予算を作成できます。 テンプレートの使用については、[Azure Resource Manager テンプレートを使用した予算の作成](quick-create-budget-template.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

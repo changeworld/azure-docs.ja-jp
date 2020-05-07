@@ -3,21 +3,25 @@ title: Hyper-V 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して Hyper-V VM を評価し移行する方法について説明します。
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336805"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81538292"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM のアプライアンスを設定する
 
-この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる Hyper-V VM の評価のために、Azure Migrate アプライアンスを設定する方法について説明します。
+この記事を読み、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる Hyper-V VM の評価のために、Azure Migrate アプライアンスを設定してください。
 
 [Azure Migrate アプライアンス](migrate-appliance.md)は、Azure Migrate:Server Assessment/Migration によって、オンプレミス Hyper-V VM を検出し、VM メタデータ/パフォーマンス データを Azure に送信するために使用される軽量アプライアンスです。
 
-ダウンロードした VHD テンプレートを使用するか、PowerShell インストール スクリプトを使用して、Hyper-V VM の評価のための Azure Migrate アプライアンスを設定できます。 この記事では、VHD テンプレートを使用して、アプライアンスを設定する方法について説明します。 スクリプトを使用してアプライアンスを設定する場合は、[この記事](deploy-appliance-script.md)の手順に従ってください。
+アプライアンスは、次の 2 とおりの方法でデプロイできます。
 
+- ダウンロードした VHD を使用して Hyper-V VM 上に設定できます。 この記事で説明しているのは、こちらの方法です。
+- PowerShell インストーラー スクリプトを使用して Hyper-V VM 上または物理マシン上に設定します。 VHD を使用して VM を設定できない場合や、Azure Government をご利用の場合は、[この方法](deploy-appliance-script.md)を使用してください。
+
+アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
 ## <a name="appliance-deployment-vhd"></a>アプライアンスのデプロイ (VHD)
 
@@ -73,7 +77,7 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-アプライアンス VM が [Azure URL](migrate-appliance.md#url-access) に接続できることを確認します。
+[パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
 ## <a name="configure-the-appliance"></a>アプライアンスを構成する
 

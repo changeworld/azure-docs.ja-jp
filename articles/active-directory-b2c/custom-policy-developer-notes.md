@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408711"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229665"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -80,7 +80,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | 例: Google+。  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | 例: Facebook。  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | 例: Twitter。 |
-| [SAML2](saml-technical-profile.md) |  |   | X | 例: Salesforce、ADFS。 |
+| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | 例: Salesforce、ADFS。 |
 | WSFED| X |  |  |  |
 
 
@@ -134,7 +134,8 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [既定の SSO セッション プロバイダー](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [外部ログイン セッション プロバイダー](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
 | [SAML SSO セッション プロバイダー](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
-
+| [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
+| [シングル サインアウト](session-overview.md#sign-out)  |  | X |  |  |
 
 ### <a name="security"></a>Security
 

@@ -57,12 +57,14 @@
           items:
             - name: .NET
               href: relay-hybrid-connections-dotnet-api-overview.md
-            - name: ノード
+            - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: 管理する
+    - name: 管理および監視
       items:
         - name: Azure 監視による Azure Relay の監視
           href: relay-metrics-azure-monitor.md
+        - name: 診断ログの設定
+          href: diagnostic-logs.md
 - name: リファレンス
   items:
     - name: .NET
@@ -89,5 +91,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サンプル
       href: 'https://github.com/azure/azure-relay/tree/master/samples'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

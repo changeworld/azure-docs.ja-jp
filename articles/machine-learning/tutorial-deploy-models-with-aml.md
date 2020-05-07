@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 02/10/2020
+ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d064b0953d8d6e9089dcfa765ff29bb97088f34
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159081"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801112"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,14 +27,13 @@ ms.locfileid: "80159081"
 > [!div class="checklist"]
 > * テスト環境を設定する。
 > * ワークスペースからモデルを取得する。
-> * ローカルでモデルをテストする。
 > * Container Instances にモデルをデプロイする。
 > * デプロイしたモデルをテストする。
 
 Container Instances は、ワークフローをテストして理解するうえで優れたソリューションです。 スケーラブルな運用環境のデプロイの場合は、Azure Kubernetes Service の使用を検討してください。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.41 を使用してテストされました。
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.83 を使用してテストされています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,76 +55,175 @@ Container Instances は、ワークフローをテストして理解するうえ
 
 このチュートリアルに必要な Python パッケージをインポートします。
 
+
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
  
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
 
 # Display the core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 
-### <a name="retrieve-the-model"></a>モデルを取得する
+## <a name="deploy-as-web-service"></a>Web サービスとしてデプロイする
 
-前のチュートリアルでは、ワークスペースにモデルを登録しました。 ここでは、このワークスペースを読み込み、モデルをローカル ディレクトリにダウンロードします。
+ACI でホストされた Web サービスとしてモデルをデプロイします。 
+
+ACI に適した環境を構築するには、以下を用意します。
+* モデルの使用方法を示すスコアリング スクリプト
+* ACI を構築する構成ファイル
+* トレーニング済みのモデル
+
+### <a name="create-scoring-script"></a>スコアリング スクリプトを作成する
+
+Web サービスの呼び出しに使用される score.py というスコアリング スクリプトを作成してモデルの使用方法を示します。
+
+スコアリング スクリプトには、2 つの必要な関数を含める必要があります。
+* `init()` 関数。通常、グローバル オブジェクトにモデルを読み込みます。 この関数は、Docker コンテナーを開始するときに 1 回だけ実行されます。 
+
+* `run(input_data)` 関数。モデルを使用して、入力データに基づく値を予測します。 実行に対する入力と出力は、通常、JSON を使用してシリアル化およびシリアル化解除が実行されますが、その他の形式もサポートされています。
+
+```python
+%%writefile score.py
+import json
+import numpy as np
+import os
+import pickle
+import joblib
+
+def init():
+    global model
+    # AZUREML_MODEL_DIR is an environment variable created during deployment.
+    # It is the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION)
+    # For multiple models, it points to the folder containing all deployed models (./azureml-models)
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+    model = joblib.load(model_path)
+
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    y_hat = model.predict(data)
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
+```
+
+### <a name="create-configuration-file"></a>構成ファイルの作成
+
+デプロイの構成ファイルを作成し、ACI コンテナーに必要な CPU 数と RAM ギガバイト数を指定します。 実際のモデルにもよりますが、通常、多くのモデルには既定値の 1 コアと 1 ギガバイトの RAM で十分です。 後でもっと必要になった場合は、イメージを再作成し、サービスをデプロイし直す必要があります。
 
 
 ```python
+from azureml.core.webservice import AciWebservice
+
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                               memory_gb=1, 
+                                               tags={"data": "MNIST",  "method" : "sklearn"}, 
+                                               description='Predict MNIST with sklearn')
+```
+
+### <a name="deploy-in-aci"></a>ACI にデプロイする
+推定所要時間: **約 2-5 分**
+
+イメージを構成してデプロイします。 以下のコードでは、次の手順が実行されます。
+
+1. トレーニング中に保存した環境 (`tutorial-env`) を使用して、モデルに必要な依存関係を含んだ環境オブジェクトを作成します。
+1. Web サービスとしてモデルをデプロイするために必要な推論構成を作成します。次の情報を使用します。
+   * スコアリング ファイル (`score.py`)
+   * 前の手順で作成した環境オブジェクト
+1. ACI コンテナーにモデルをデプロイします。
+1. Web サービス HTTP エンドポイントを取得します。
+
+
+```python
+%%time
+from azureml.core.webservice import Webservice
+from azureml.core.model import InferenceConfig
+from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model
-import os
+
 ws = Workspace.from_config()
 model = Model(ws, 'sklearn_mnist')
 
-model.download(target_dir=os.getcwd(), exist_ok=True)
 
-# verify the downloaded model file
-file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+myenv = Environment.get(workspace=ws, name="tutorial-env", version="1")
+inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 
-os.stat(file_path)
+service = Model.deploy(workspace=ws, 
+                       name='sklearn-mnist-svc3', 
+                       models=[model], 
+                       inference_config=inference_config, 
+                       deployment_config=aciconfig)
+
+service.wait_for_deployment(show_output=True)
 ```
 
-## <a name="test-the-model-locally"></a>ローカルでモデルをテストする
+スコアリング Web サービスの HTTP エンドポイントを取得します。このエンドポイントで REST クライアントの呼び出しを受け取ります。 このエンドポイントは、Web サービスをテストしたい、またはアプリケーションに統合したい任意のユーザーと共有できます。
 
-デプロイ前に、モデルがローカルで動作していることを確認します。
-* テスト データを読み込む。
-* テスト データを予測する。
-* 混同行列を調べる。
+
+```python
+print(service.scoring_uri)
+```
+
+## <a name="test-the-model"></a>モデルのテスト
+
+
+### <a name="download-test-data"></a>テスト データをダウンロードする
+テスト データを **./data/** ディレクトリにダウンロードします。
+
+
+```python
+import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
+
+data_folder = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_folder, exist_ok=True)
+
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
+```
 
 ### <a name="load-test-data"></a>テスト データの読み込み
 
 トレーニング チュートリアルで作成した **./data/** ディレクトリからテスト データを読み込みます。
 
+
 ```python
 from utils import load_data
 import os
+import glob
 
 data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-images-idx3-ubyte.gz"), recursive=True)[0], False) / 255.0
+y_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-labels-idx1-ubyte.gz"), recursive=True)[0], True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>テスト データを予測する
 
-予測を取得するために、テスト データセットをモデルにフィードします。
+テスト データセットをモデルにフィードし、予測を取得します。
+
+
+以下のコードでは、次の手順が実行されます。
+1. JSON 配列として、ACI でホストされている Web サービスにデータを送信します。 
+
+1. SDK の `run` API を使用してサービスを呼び出します。 また、curl など、任意の HTTP ツールを使用して生の呼び出しを行うこともできます。
+
 
 ```python
-import pickle
-from sklearn.externals import joblib
-
-clf = joblib.load(os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
-y_hat = clf.predict(X_test)
+import json
+test = json.dumps({"data": X_test.tolist()})
+test = bytes(test, encoding='utf8')
+y_hat = service.run(input_data=test)
 ```
 
 ###  <a name="examine-the-confusion-matrix"></a>混同行列を調べる
 
-混同行列を生成して、テスト セットのうち正しく分類されているサンプル数を確認します。 正しくない予測については、分類が不適切な値に注目します。 
+混同行列を生成して、テスト セットのうち正しく分類されているサンプル数を確認します。 正しくない予測については、分類が不適切な値に注目します。
+
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -175,141 +273,17 @@ plt.show()
 
 ![混同行列が表示されたチャート](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-a-web-service"></a>Web サービスとしてデプロイする
 
-モデルをテストし、結果に満足したら、Container Instances でホストされる Web サービスとしてモデルをデプロイします。 
+## <a name="show-predictions"></a>予測を表示する
 
-Container Instances に適した環境を構築するには、以下のコンポーネントを用意します。
-* モデルの使用方法を示すスコアリング スクリプト。
-* インストールする必要があるパッケージを示す環境ファイル。
-* コンテナー インスタンスを構築する構成ファイル。
-* トレーニング済みのモデル。
+テスト データのうちランダムなサンプルの 30 個の画像を使用して、デプロイされたモデルをテストします。  
 
-<a name="make-script"></a>
-
-### <a name="create-scoring-script"></a>スコアリング スクリプトを作成する
-
-**score.py** という名前のスコアリング スクリプトを作成します。 Web サービスの呼び出しでは、モデルの使用方法を示すためにこのスクリプトを使用します。
-
-スコアリング スクリプトには、次の 2 つの関数を含める必要があります。
-* `init()` 関数。通常、グローバル オブジェクトにモデルを読み込みます。 この関数は、Docker コンテナーを開始するときに 1 回だけ実行されます。 
-
-* `run(input_data)` 関数。モデルを使用して、入力データに基づく値を予測します。 実行に対する入力と出力は、通常、JSON を使用してシリアル化およびシリアル化解除が実行されますが、その他の形式もサポートされています。
-
-```python
-%%writefile score.py
-import json
-import numpy as np
-import os
-import pickle
-from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
-
-from azureml.core.model import Model
-
-def init():
-    global model
-    # retrieve the path to the model file using the model name
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-    model = joblib.load(model_path)
-
-def run(raw_data):
-    data = np.array(json.loads(raw_data)['data'])
-    # make prediction
-    y_hat = model.predict(data)
-    # you can return any data type as long as it is JSON-serializable
-    return y_hat.tolist()
-```
-
-<a name="make-myenv"></a>
-
-### <a name="create-environment-file"></a>環境ファイルを作成する
-
-次に、**myenv.yml** という環境ファイルを作成します。このファイルには、すべてのスクリプトのパッケージ依存関係が指定されています。 このファイルは、すべての依存関係を Docker イメージに確実にインストールするために使用されます。 このモデルには `scikit-learn` と `azureml-sdk` が必要です。 すべてのカスタム環境ファイルには、pip の依存関係として 1.0.45 以降のバージョンの azureml-defaults を列挙する必要があります。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
-
-```python
-from azureml.core.conda_dependencies import CondaDependencies
-
-myenv = CondaDependencies()
-myenv.add_conda_package("scikit-learn")
-myenv.add_pip_package("azureml-defaults")
-
-with open("myenv.yml", "w") as f:
-    f.write(myenv.serialize_to_string())
-```
-`myenv.yml` ファイルの内容を確認します。
-
-```python
-with open("myenv.yml", "r") as f:
-    print(f.read())
-```
-
-### <a name="create-a-configuration-file"></a>構成ファイルを作成する
-
-デプロイ構成ファイルを作成します。 お使いの Container Instances コンテナーに必要な CPU 数と RAM ギガバイト数を指定します。 実際のモデルにもよりますが、多くのモデルには既定値の 1 コアと 1 ギガバイトの RAM で十分です。 後でもっと必要になった場合は、イメージを再作成し、サービスをデプロイし直す必要があります。
-
-```python
-from azureml.core.webservice import AciWebservice
-
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                               memory_gb=1, 
-                                               tags={"data": "MNIST",  
-                                                     "method": "sklearn"},
-                                               description='Predict MNIST with sklearn')
-```
-
-### <a name="deploy-in-container-instances"></a>Container Instances にデプロイする
-デプロイ完了までの推定時間は、**約 7 分から 8 分**です。
-
-イメージを構成してデプロイします。 以下のコードでは、次の手順が実行されます。
-
-1. 以下のファイルを使用してイメージをビルドします。
-   * スコアリング ファイル (`score.py`)。
-   * 環境ファイル (`myenv.yml`)。
-   * モデル ファイル。
-1. ワークスペースにイメージを登録します。 
-1. Container Instances のコンテナーにイメージを送信します。
-1. イメージを使用して、Container Instances のコンテナーを起動します。
-1. Web サービス HTTP エンドポイントを取得します。
-
-独自の環境ファイルを定義する場合、pip の依存関係として 1.0.45 以降のバージョンの azureml-defaults を列挙する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
-
-```python
-%%time
-from azureml.core.webservice import Webservice
-from azureml.core.model import InferenceConfig
-from azureml.core.environment import Environment
-
-myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
-service = Model.deploy(workspace=ws,
-                       name='sklearn-mnist-svc',
-                       models=[model], 
-                       inference_config=inference_config,
-                       deployment_config=aciconfig)
-
-service.wait_for_deployment(show_output=True)
-```
-
-スコアリング Web サービスの HTTP エンドポイントを取得します。このエンドポイントで REST クライアントの呼び出しを受け取ります。 このエンドポイントは、Web サービスをテストしたい、またはアプリケーションに統合したい任意のユーザーと共有できます。 
-
-```python
-print(service.scoring_uri)
-```
-
-## <a name="test-the-deployed-service"></a>デプロイされたサービスをテストする
-
-以前は、ローカル バージョンのモデルを使用してすべてのテスト データにスコアを付けました。 ここでは、テスト データのうちランダムなサンプルの 30 個のイメージを使用して、デプロイされたモデルをテストできます。  
-
-以下のコードでは、次の手順が実行されます。
-1. JSON 配列として、Container Instances でホストされている Web サービスにデータを送信します。 
-
-1. SDK の `run` API を使用してサービスを呼び出します。 また、**curl** など、任意の HTTP ツールを使用して生の呼び出しを行うこともできます。
 
 1. 返された予測を出力し、入力イメージと共にプロットします。 赤い文字と白抜きの画像 (黒地に白) は、不適切な分類のサンプルを強調表示するために使用されています。 
 
-モデルの精度は高いので、必要に応じて、不適切な分類のサンプルが表示されるまで次のコードを何度か実行します。
+ モデルの精度は高いので、必要に応じて、不適切な分類のサンプルが表示されるまで次のコードを何度か実行します。
+
+
 
 ```python
 import json
@@ -326,7 +300,7 @@ result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
-plt.figure(figsize=(20, 1))
+plt.figure(figsize = (20, 1))
 
 for s in sample_indices:
     plt.subplot(1, n, i + 1)
@@ -344,11 +318,8 @@ for s in sample_indices:
 plt.show()
 ```
 
-テスト イメージのランダムなサンプルの 1 つの結果を次に示します。
-
-![結果を示すグラフィック](./media/tutorial-deploy-models-with-aml/results.png)
-
 また、生の HTTP 要求を送信して Web サービスをテストすることもできます。
+
 
 ```python
 import requests
