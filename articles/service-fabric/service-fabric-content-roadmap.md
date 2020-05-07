@@ -3,12 +3,12 @@ title: Azure Service Fabric の詳細について説明します。
 description: Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458151"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791852"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -136,7 +136,7 @@ Linux スタンドアロン クラスターはまだサポートされていま�
 詳細については、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)に関するページを参照してください。
 
 ### <a name="scaling"></a>Scaling
-新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、パーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。 Azure 上のクラスターは、[手動で](service-fabric-cluster-scale-up-down.md)または[プログラムで](service-fabric-cluster-programmatic-scaling.md)スケールできます。 スタンドアロン クラスターは[手動で](service-fabric-cluster-windows-server-add-remove-nodes.md)スケールできます。
+新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、パーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。 Azure 上のクラスターは、[手動で](service-fabric-cluster-scale-in-out.md)または[プログラムで](service-fabric-cluster-programmatic-scaling.md)スケールできます。 スタンドアロン クラスターは[手動で](service-fabric-cluster-windows-server-add-remove-nodes.md)スケールできます。
 
 ### <a name="cluster-upgrades"></a>クラスターのアップグレード
 定期的に、Service Fabric ランタイムの新しいバージョンがリリースされます。 常に[サポートされるバージョン](service-fabric-support.md)を実行しているように、クラスターで、ランタイム、またはファブリック、アップグレードを実行します。 ファブリックのアップグレードだけでなく、証明書やアプリケーション ポートなどのクラスター構成を更新することもできます。

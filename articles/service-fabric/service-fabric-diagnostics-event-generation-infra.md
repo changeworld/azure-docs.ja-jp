@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75376938"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791818"
 ---
 # <a name="monitoring-the-cluster"></a>クラスターの監視
 
@@ -74,7 +74,7 @@ Azure Service Fabric クラスターに関する支援を得るために Microso
 
 ## <a name="measuring-performance"></a>パフォーマンスの測定
 
-クラスターのパフォーマンスを測定すると、クラスターが負荷をどのように処理できるのかを理解しやすくなり、クラスターのスケーリングに関する意思決定が促進されます ([Azure](service-fabric-cluster-scale-up-down.md) または[オンプレミス](service-fabric-cluster-windows-server-add-remove-nodes.md)のクラスターのスケーリングの詳細を参照してください)。 また、パフォーマンス データは、今後ログを分析したときに、開発者またはアプリケーションやサービスによって実行された可能性のあるアクションと比較する際にも役立ちます。 
+クラスターのパフォーマンスを測定すると、クラスターが負荷をどのように処理できるのかを理解しやすくなり、クラスターのスケーリングに関する意思決定が促進されます ([Azure](service-fabric-cluster-scale-in-out.md) または[オンプレミス](service-fabric-cluster-windows-server-add-remove-nodes.md)のクラスターのスケーリングの詳細を参照してください)。 また、パフォーマンス データは、今後ログを分析したときに、開発者またはアプリケーションやサービスによって実行された可能性のあるアクションと比較する際にも役立ちます。 
 
 Service Fabric の使用時に収集されるパフォーマンス カウンターの一覧については、[Service Fabric のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)に関する記事をご覧ください。
 

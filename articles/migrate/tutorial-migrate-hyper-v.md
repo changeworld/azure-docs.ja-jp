@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535351"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583327"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Hyper-V の移行のアーキテクチャを[確認](hyper-v-migration-architecture.md)します。
 2. Hyper-V ホストの要件と、Hyper-V ホストがアクセスする必要のある Azure URL を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)します。
 3. 移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)します。 Hyper-V VM は [Azure VM の要件](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)に準拠している必要があります。
-2. このシリーズの先行するチュートリアルを済ませておくことをお勧めします。 [最初のチュートリアル](tutorial-prepare-hyper-v.md)では、移行に向けて Azure と Hyper-V を設定する方法を紹介しています。 2 番目のチュートリアルでは、移行前に、Azure Migrate:Server Assessment を使用して [Hyper-V VM を評価](tutorial-assess-hyper-v.md)する方法を説明しています。 
+2. このシリーズの先行するチュートリアルを済ませておくことをお勧めします。 [最初のチュートリアル](tutorial-prepare-hyper-v.md)では、移行に向けて Azure と Hyper-V を設定する方法を紹介しています。 2 番目のチュートリアルでは、移行前に、Azure Migrate:Server Assessment を使用して [Hyper-V VM を評価する](tutorial-assess-hyper-v.md)方法を説明しています。 
     > [!NOTE]
     > 評価を試してみることをお勧めしますが、VM を移行する前に評価を実行しなければならないわけではありません。
     > Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、ソフトウェア エージェント (Microsoft Azure Site Recovery プロバイダーおよび Microsoft Azure Recovery Services エージェント) を Hyper-V ホストまたはクラスター ノード上で実行することによってデータを調整し、Azure Migrate にレプリケートします。 Hyper-V の移行に [Azure Migrate アプライアンス](migrate-appliance.md)は使用されません。

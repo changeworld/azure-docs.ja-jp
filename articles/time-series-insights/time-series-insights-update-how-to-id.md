@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083526"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838724"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
@@ -27,6 +27,7 @@ ms.locfileid: "77083526"
 
 > [!IMPORTANT]
 > 時系列 ID：
+>
 > * *大文字と小文字を区別する* プロパティ： 大文字と小文字の区別は、検索、比較、更新、およびパーティション化で使用されます。
 > * *変更できません* プロパティ： 一度作成した後は変更できません。
 
@@ -56,7 +57,7 @@ ms.locfileid: "77083526"
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>例 2:複合キーを持つ時系列 ID
 
-* 資産の同じフリート内で複数のプロパティが一意である必要があります。 
+* 資産の同じフリート内で複数のプロパティが一意である必要があります。
 * あなたはスマート ビルディングのメーカーで、すべての部屋にセンサーをデプロイしています。 通常、各部屋の **sensorId** の値は同じです。 例として、**sensor1**、**sensor2**、および **sensor3** となります。
 * 建物には、プロパティ **flrRm** のサイト間で、重複しているフロア番号と部屋番号があります。 これらの数値には、**1a**、**2b**、**3a** などの値があります。
 * プロパティ **location** には、**Redmond**、**Barcelona**、**Tokyo** などの値が含まれています。 一意性を作成するには、時系列 ID のキーとして、3 つのプロパティ **sensorId**、**flrRm**、**location** を指定します。
@@ -72,7 +73,7 @@ ms.locfileid: "77083526"
 }
 ```
 
-Azure portal では、次のようにして、複合キーを入力できます： 
+Azure portal では、次のようにして、複合キーを入力できます：
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441102"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184777"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
 
@@ -36,9 +36,9 @@ ms.locfileid: "75441102"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Post 関数をヒーロー サービスに追加する
 
-1. Visual Studio Code の **[エディターの分割]** ボタン (**Visual Studio の [エディターの分割] ボタン**) を押して、**routes.js** と ![hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png) を左右に並べて表示します。
+1. Visual Studio Code の **[エディターの分割]** ボタン (![Visual Studio の [エディターの分割] ボタン](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)) を押して、**routes.js** と **hero.service.js** を左右に並べて表示します。
 
-    `getHeroes`hero.service.js**の 5 行目にある** 関数が、routes.js の 7 行目で呼び出されていることがわかります。  これと同じペアリングを Post、Put、Delete の各関数についても作成する必要があります。 
+    **hero.service.js** の 5 行目にある `getHeroes` 関数が、routes.js の 7 行目で呼び出されていることがわかります。  これと同じペアリングを Post、Put、Delete の各関数についても作成する必要があります。 
 
     ![Visual Studio Code で routes.js と hero.service.js を表示したところ](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
     
@@ -76,7 +76,7 @@ ms.locfileid: "75441102"
     };
     ```
 
-4. **routes.js** の `post` ルーターの後に、`get` 関数のルーターを追加します。 このルーターは一度に 1 つのヒーローをポストします。 このような構造をルーター ファイルに持たせることで、利用可能なすべての API エンドポイントを明確化しつつ、実際の処理を **hero.service.js** ファイルに委ねることができます。
+4. **routes.js** の `get` ルーターの後に、`post` 関数のルーターを追加します。 このルーターは一度に 1 つのヒーローをポストします。 このような構造をルーター ファイルに持たせることで、利用可能なすべての API エンドポイントを明確化しつつ、実際の処理を **hero.service.js** ファイルに委ねることができます。
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -86,7 +86,7 @@ ms.locfileid: "75441102"
 
 5. アプリを実行して正常に動作するかどうかを確かめます。 Visual Studio Code で変更内容をすべて保存してください。左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)) を選択し、 **[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ開始アイコン](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)) を選択します。
 
-6. インターネット ブラウザーに戻り、デベロッパー ツールの [Network] タブを開きます。ほとんどのマシンでは、F12 キーを押すと、デベロッパー ツールが表示されます。 [http://localhost:3000](http://localhost:3000) にアクセスして、ネットワーク上で実行される呼び出しを観察します。
+6. インターネット ブラウザーに戻り、デベロッパー ツールの [Network] タブを開きます。ほとんどのマシンでは、F12 キーを押すと、デベロッパー ツールが表示されます。 `http://localhost:3000` にアクセスして、ネットワーク上で実行される呼び出しを観察します。
 
     ![Chrome の [Network] タブでネットワーク アクティビティを表示](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 

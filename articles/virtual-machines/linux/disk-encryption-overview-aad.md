@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459799"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792566"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD での Azure Disk Encryption (以前のリリース)
 
@@ -26,8 +26,6 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
 - [サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [追加の VM 要件](disk-encryption-overview.md#additional-vm-requirements)
 
-
- 
 
 ## <a name="networking-and-group-policy"></a>ネットワークとグループ ポリシー
 

@@ -8,17 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d160b0ead1ceb8c41bede20cb389a360d24258f9
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60755232"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561366"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway の制限
 
-Microsoft Azure Data Box Gateway ソリューションをデプロイおよび運用する際には、以下の制限事項を考慮してください。 
-
+Microsoft Azure Data Box Gateway ソリューションをデプロイおよび運用する際には、以下の制限事項を考慮してください。
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway サービスの制限
 
@@ -30,7 +29,7 @@ Microsoft Azure Data Box Gateway ソリューションをデプロイおよび�
 
 | 説明 | 値 |
 |---|---|
-|いいえ。 デバイスあたりのファイル数 |1 億 <br> 制限は、2 TB のディスク領域ごとに最大 2500 万ファイルであり、上限は 1 億です |
+|いいえ。 デバイスあたりのファイル数 |1 億 <br> 2500 万個のファイルが追加されるたびに (上限は 1 億個)、2 TB のディスク領域、8 GB の RAM、4 コアの CPU を追加してください。 |
 |いいえ。 デバイスあたりの共有数 |24 |
 |いいえ。 数 (Azure Storage コンテナーあたり) |1 |
 |1 つの共有に書き込まれる最大サイズ ファイル|2 TB の仮想デバイスの場合、最大ファイル サイズは 500 GB です。 <br> 最大ファイル サイズは、最大 5 TB に達するまで、前の比率でデータ ディスク のサイズと増加します。 |

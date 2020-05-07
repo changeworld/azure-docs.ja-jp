@@ -3,12 +3,12 @@ title: クラスターの Azure Service Fabric のバージョンをアップグ
 description: Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、クラスター アップグレード モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。 アップグレードを実行しているときに、どのようなことが起きるでしょうか?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451817"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789602"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>クラスターの Service Fabric バージョンをアップグレードする
 
@@ -110,7 +110,7 @@ Output:
 
 ## <a name="next-steps"></a>次のステップ
 * [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-in-out.md)
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 <!--Image references-->

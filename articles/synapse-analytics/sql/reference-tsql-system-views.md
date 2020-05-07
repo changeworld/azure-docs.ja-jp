@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96a2cce5d0e8abfd1f22b5fc64633eebc41aca39
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f58c34a46f4eb1bffe4516f2a6f9f17a799fbfb3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427551"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786599"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL でサポートされるシステム ビュー
 Synapse SQL でサポートされている T-SQL ステートメントのドキュメントへのリンク。
@@ -249,6 +249,6 @@ SQL プールと、Analytics Platform System の Parallel Data Warehouse (PDW) �
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Synapse SQL の T-SQL ステートメント](/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)および [Synapse SQL の T-SQL 言語要素](/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)に関するページを参照してください。
+詳細については、[Synapse SQL の T-SQL ステートメント](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)および [Synapse SQL の T-SQL 言語要素](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)に関するページを参照してください。
 
  

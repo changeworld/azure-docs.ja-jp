@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 1d340aadc20110e6aa4bfb05b1cf794fd6a286b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7b1e7471f7850f71596317c7e2c38db367bfd3a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146174"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790118"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>PowerShell を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "82146174"
      -AllocationMethod "Static"
    ```
 
-   パブリック IP アドレスが Standard SKU でなければならない場合は、[パブリック IP アドレスの作成](virtual-network-public-ip-address.md#create-a-public-ip-address)、[ネットワーク インターフェイスの作成](virtual-network-network-interface.md#create-a-network-interface)、[パブリックIPアドレスのネットワーク インターフェイスへの割り当て](virtual-network-network-interface-addresses.md#add-ip-addresses)を行った後、[ネットワーク インターフェイスを持つ仮想マシンの作成](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)を行います (それぞれが独立した手順です)。 [パブリック IP アドレスの SKU](virtual-network-ip-addresses-overview-arm.md#sku) の詳細を確認してください。 パブリック Azure Load Balancer のバックエンド プールに仮想マシンを追加する場合は、仮想マシンのパブリック IP アドレスの SKU がロード バランサーのパブリック IP アドレスの SKU と一致する必要があります。 詳細については、[Azure Load Balancer](../load-balancer/concepts-limitations.md#skus) に関する記事を参照してください。
+   パブリック IP アドレスが Standard SKU でなければならない場合は、[パブリック IP アドレスの作成](virtual-network-public-ip-address.md#create-a-public-ip-address)、[ネットワーク インターフェイスの作成](virtual-network-network-interface.md#create-a-network-interface)、[パブリックIPアドレスのネットワーク インターフェイスへの割り当て](virtual-network-network-interface-addresses.md#add-ip-addresses)を行った後、[ネットワーク インターフェイスを持つ仮想マシンの作成](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)を行います (それぞれが独立した手順です)。 [パブリック IP アドレスの SKU](virtual-network-ip-addresses-overview-arm.md#sku) の詳細を確認してください。 パブリック Azure Load Balancer のバックエンド プールに仮想マシンを追加する場合は、仮想マシンのパブリック IP アドレスの SKU がロード バランサーのパブリック IP アドレスの SKU と一致する必要があります。 詳細については、[Azure Load Balancer](../load-balancer/skus.md) に関する記事を参照してください。
 
 4. [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、割り当てられたパブリック IP アドレスを表示し、それが静的アドレスとして作成されたことを確認します。
 

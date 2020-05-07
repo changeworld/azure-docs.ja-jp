@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 80881d96d713f3dc4127c94fd324e925e3c68792
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382924"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82165724"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -150,9 +150,9 @@ mvn clean package
 mvn azure-functions:run
 ```
 ::: zone-end
-出力に `HttpExample` エンドポイントが表示されたら、[`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions) に移動します。 `name` クエリ パラメーターに指定された値、`Functions` をエコーバックする "hello" メッセージがブラウザーに表示されます。
+出力に `HttpExample` エンドポイントが表示されたら、`http://localhost:7071/api/HttpExample?name=Functions` に移動します。 `name` クエリ パラメーターに指定された値、`Functions` をエコーバックする "hello" メッセージがブラウザーに表示されます。
 
-**Ctrl** + **C** キーを使用してホストを停止します。
+**Ctrl** - **C** キーを使用してホストを停止します。
 
 ## <a name="build-the-container-image-and-test-locally"></a>コンテナー イメージを作成してローカルでテストする
 
@@ -179,7 +179,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-ローカル コンテナーでイメージが実行状態になったら、[`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions) に移動します。そこに、前と同じ "hello" メッセージが表示されます。 Maven アーキタイプでは、匿名の承認を使用する、HTTP によってトリガーされる関数が生成されるため、関数はコンテナーで実行されている場合でも呼び出すことができます。 
+ローカル コンテナーでイメージが実行状態になったら、`http://localhost:8080/api/HttpExample?name=Functions` に移動します。そこに、前と同じ "hello" メッセージが表示されます。 Maven アーキタイプでは、匿名の承認を使用する、HTTP によってトリガーされる関数が生成されるため、関数はコンテナーで実行されている場合でも呼び出すことができます。 
 ::: zone-end  
 
 コンテナー内の関数アプリを確認したら、**Ctrl** + **C** キーで Docker を停止します。

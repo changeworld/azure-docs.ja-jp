@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 0de28fc75d5eb1b0867e4ba6d8eda9f0f42c8498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ef96c83b460346ba49051f6f5c4fd0dd5df34ab
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148016"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790169"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -49,7 +49,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
    ![[静的] の選択](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-   パブリック IP アドレスが Standard SKU である必要がある場合は、 **[SKU]** で **[Standard]** を選択します。 [パブリック IP アドレスの SKU](virtual-network-ip-addresses-overview-arm.md#sku) の詳細を確認してください。 パブリック Azure Load Balancer のバックエンド プールに仮想マシンを追加する場合は、仮想マシンのパブリック IP アドレスの SKU がロード バランサーのパブリック IP アドレスの SKU と一致する必要があります。 詳細については、[Azure Load Balancer](../load-balancer/concepts-limitations.md#skus) に関する記事を参照してください。
+   パブリック IP アドレスが Standard SKU である必要がある場合は、 **[SKU]** で **[Standard]** を選択します。 [パブリック IP アドレスの SKU](virtual-network-ip-addresses-overview-arm.md#sku) の詳細を確認してください。 パブリック Azure Load Balancer のバックエンド プールに仮想マシンを追加する場合は、仮想マシンのパブリック IP アドレスの SKU がロード バランサーのパブリック IP アドレスの SKU と一致する必要があります。 詳細については、[Azure Load Balancer](../load-balancer/skus.md) に関する記事を参照してください。
 
 6. **[パブリック受信ポートを選択]** で、ポートを選択するか、ポートなしを選択します。 インターネットから Windows Server 仮想マシンへのリモート アクセスを有効にするために、ポータル 3389 が選択されています。 運用環境のワークロードでは、インターネットからポート 3389 を開くことはお勧めしません。
 

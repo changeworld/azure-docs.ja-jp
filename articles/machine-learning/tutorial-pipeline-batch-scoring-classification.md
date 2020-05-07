@@ -10,18 +10,18 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 41d68c58c43262b36b93af0008e7d35de13dff4d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472222"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562272"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning のパイプラインを作成してバッチ スコアリング ジョブを実行する方法について説明します。 機械学習パイプラインは、速度、移植性、再利用によってワークフローを最適化します。これにより、ユーザーはインフラストラクチャや自動化にではなく、機械学習に専念することができます。 パイプラインを作成して発行したら、REST エンドポイントを構成します。それを使用して、任意のプラットフォームで任意の HTTP ライブラリからパイプラインをトリガーできます。 
+この高度なチュートリアルでは、Azure Machine Learning でパイプラインを作成してバッチ スコアリング ジョブを実行する方法について説明します。 機械学習パイプラインは、速度、移植性、再利用によってワークフローを最適化します。これにより、ユーザーはインフラストラクチャや自動化にではなく、機械学習に専念することができます。 パイプラインを作成して発行したら、REST エンドポイントを構成します。それを使用して、任意のプラットフォームで任意の HTTP ライブラリからパイプラインをトリガーできます。 
 
 この例では、TensorFlow で実装された事前トレーニング済みの [Inception-V3](https://arxiv.org/abs/1512.00567) 畳み込みニューラル ネットワーク モデルを使用して、ラベル付けされていない画像を分類します。 [機械学習パイプラインについての詳細情報をご覧ください](concept-ml-pipelines.md)。
 

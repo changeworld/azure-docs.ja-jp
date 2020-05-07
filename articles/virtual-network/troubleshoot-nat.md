@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: allensu
-ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396086"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508430"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure Virtual Network NAT 接続のトラブルシューティング
 
@@ -101,6 +101,7 @@ _**解決方法:**_ 代わりに、TCP 接続テスト ("TCP ping" など) と U
 
 [Virtual Network NAT](nat-overview.md) に関する接続の問題は、いくつかの異なる問題が原因で発生します。
 
+* 構成の誤りによる永続的なエラー。
 * NAT ゲートウェイの一時的または永続的な [SNAT の枯渇](#snat-exhaustion)。
 * Azure インフラストラクチャにおける一時的な障害。 
 * Azure とパブリック インターネットの宛先との間のパスに生じた一時的な障害。 
@@ -113,6 +114,13 @@ _**解決方法:**_ 代わりに、TCP 接続テスト ("TCP ping" など) と U
 | Linux | nc (汎用接続テスト) | curl (TCP アプリケーション レイヤー テスト) | アプリケーション固有 |
 | Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | アプリケーション固有 |
 
+#### <a name="configuration"></a>構成
+
+次の点をチェックしてください。
+1. NAT ゲートウェイ リソースに少なくとも 1 つのパブリック IP リソースまたは 1 つのパブリック IP プレフィックス リソースがありますか。 アウトバウンド接続を提供できるようにするには、NAT ゲートウェイに少なくとも 1 つの IP アドレスが関連付けられている必要があります。
+2. 仮想ネットワークのサブネットは NAT ゲートウェイを使用するように構成されていますか。
+3. UDR (ユーザー定義ルート) を使用していて、宛先をオーバーライドしていますか。  NAT ゲートウェイ リソースは、構成されたサブネット上の既定のルート (0/0) になります。
+
 #### <a name="snat-exhaustion"></a>SNAT の枯渇
 
 この記事の「[SNAT の枯渇](#snat-exhaustion)」セクションを参照してください。
@@ -121,7 +129,7 @@ _**解決方法:**_ 代わりに、TCP 接続テスト ("TCP ping" など) と U
 
 Azure では、そのインフラストラクチャが慎重に監視され、運用されます。 一時的な障害が発生する可能性があります。転送が無損失であるという保証はありません。  TCP アプリケーションには、SYN 再送を見込んだ設計パターンを使用してください。 SYN パケットの損失によって生じる一時的な影響を軽減するために、接続タイムアウトには、TCP SYN 再送ができるだけの十分な長さを確保します。
 
-_**解決方法:**_
+_**解決方法:**_ 
 
 * [SNAT の枯渇](#snat-exhaustion)が生じていないかチェックします。
 * SYN 再送の動作を制御する TCP スタックの構成パラメーターは、RTO ([Retransmission Time-Out: 再送タイムアウト](https://tools.ietf.org/html/rfc793)) と呼ばれます。 RTO の値は調整できますが、通常は 1 秒以上で、指数バックオフが既定で使用されます。  アプリケーションの接続タイムアウトが短すぎると (1 秒など)、接続タイムアウトが散発的に発生する可能性があります。  アプリケーションの接続タイムアウトを長くしてください。
@@ -146,7 +154,7 @@ _**解決方法:**_
 
 通常、発生している事象を調査するためには、送信元と宛先 (可能な場合) でのパケット キャプチャが必要です。
 
-_**解決方法:**_
+_**解決方法:**_ 
 
 * [SNAT の枯渇](#snat-exhaustion)が生じていないかチェックします。 
 * 同じリージョン (または比較のために他のリージョン) のエンドポイントとの接続を確認します。  
@@ -162,7 +170,7 @@ NAT ゲートウェイでは、進行中として認識されないトラフィ�
 
 TCP リセットが NAT ゲートウェイ リソースのパブリック側で生成されることはありません。 宛先側の TCP リセットは、NAT ゲートウェイ リソースではなく、送信元 VM で生成されます。
 
-_**解決方法:**_
+_**解決方法:**_ 
 
 * [設計パターン](#design-patterns)の推奨事項を確認します。  
 * 必要であれば、サポート ケースを開いて詳細なトラブルシューティングを行ってください。

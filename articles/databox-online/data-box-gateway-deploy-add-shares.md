@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79213575"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561713"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を使用してデータを転送する
 
@@ -115,7 +115,7 @@ ms.locfileid: "79213575"
 
 ### <a name="connect-to-an-nfs-share"></a>NFS 共有に接続する
 
-お客様の Data Box Edge デバイスに接続されたお客様の Linux クライアントで、次の手順を実行します。
+お客様の Azure Stack Edge デバイスに接続されている Linux クライアントで、次の手順を実行します。
 
 1. クライアントに NFSv4 クライアントがインストール済みであることを確認します。 NFS クライアントをインストールするには、次のコマンドを使用します。
 

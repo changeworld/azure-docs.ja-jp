@@ -10,6 +10,9 @@
     - name: インデックス
       displayName: 'template, sample'
       href: ./samples/index.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-samples.md
 - name: 概念
   items:
     - name: Azure の委任されたリソース管理
@@ -33,6 +36,9 @@
     - name: エンタープライズ シナリオにおける Azure Lighthouse
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: Azure Lighthouse と Azure マネージド アプリケーション
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
 - name: 操作方法ガイド
   items:
     - name: Azure の委任されたリソース管理に顧客をオンボードする
