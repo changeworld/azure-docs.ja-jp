@@ -2,13 +2,13 @@
 title: コンテナー グループでマネージド ID を有効にする
 description: ここでは、他のサービスで認証できるマネージド ID を Azure Container Instances で有効にする方法を説明します。
 ms.topic: article
-ms.date: 01/29/2020
-ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76901932"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115722"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -22,33 +22,28 @@ ms.locfileid: "76901932"
 > * マネージド ID を使用して、実行中のコンテナーから Key Vault にアクセスする
 
 サンプルを調整することにより、Azure Container Instances 内の ID を有効にし、それを使って他の Azure サービスにアクセスします。 これらのサンプルは対話型です。 ただし実際には、コンテナー イメージがコードを実行して Azure サービスにアクセスします。
-
-> [!NOTE]
-> 現在、仮想ネットワークにデプロイされたコンテナー グループ内でマネージド ID を使用することはできません。
+ 
+> [!IMPORTANT]
+> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。 現時点では、Azure Container Instances のマネージド ID は Linux コンテナーでのみサポートされており、Windows コンテナーではまだサポートされていません。
 
 ## <a name="why-use-a-managed-identity"></a>マネージド ID を使用する理由
 
 実行中のコンテナーでマネージド ID を使用すると、資格情報をコンテナー コード内で管理しなくても、[Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)に対して認証することができます。 AD 認証をサポートしないサービスについては、Azure Key Vault の中にシークレットを格納し、マネージド ID を使って Key Vault にアクセスして資格情報を取得できます。 マネージド ID の使用法の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。 現時点では、Azure Container Instances のマネージド ID は Linux コンテナーでのみサポートされており、Windows コンテナーではまだサポートされていません。
->  
-
 ### <a name="enable-a-managed-identity"></a>マネージド ID の有効化
 
- Azure Container Instances では、REST API バージョン 2018-10-01 以降および対応する SDK とツールで、Azure リソース用のマネージド ID がサポートされます。 コンテナー グループを作成するときに、[ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) プロパティを設定することで 1 つまたは複数のマネージド ID を有効にできます。 また、コンテナー グループが実行状態になった後でマネージド ID を有効化または更新できます。どちらの場合も、それによりコンテナー グループが再起動します。 新規または既存のコンテナー グループで ID を設定するには、Azure CLI、Resource Manager テンプレート、または YAML ファイルを使用します。 
+ コンテナー グループを作成するときに、[ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) プロパティを設定することで 1 つまたは複数のマネージド ID を有効にできます。 また、コンテナー グループが実行状態になった後でマネージド ID を有効化または更新できます。どちらの場合も、それによりコンテナー グループが再起動します。 新規または既存のコンテナー グループで ID を設定するには、Azure CLI、Resource Manager テンプレート、YAML ファイル、または別の Azure ツールを使用します。 
 
-Azure Container Instances は、ユーザー割り当て、システム割り当ての両方の種類の Azure マネージド ID をサポートしています。 各コンテナー グループで、1 つのシステム割り当て ID、1 つまたは複数のユーザー割り当て ID、または両方の種類の ID を有効化できます。 
-
-* **ユーザー割り当て**のマネージド ID は、使用中のサブスクリプションで信頼される Azure AD テナント内のスタンドアロン Azure リソースとして作成されます。 ID を作成した後、(Azure Container Instances または他の Azure サービスにある) 1 つまたは複数の Azure リソースにその ID を割り当てることができます。 ユーザー割り当て ID のライフサイクルは、割り当て先となるコンテナー グループまたはその他のサービス リソースのライフサイクルとは別個に管理されます。 この動作は、Azure Container Instances で特に役立ちます。 コンテナー グループの有効期間を超えて ID が存続するので、他の標準的な設定とともにそれを再利用することで、コンテナー グループのデプロイの反復可能性を高くすることができます。
-
-* **システム割り当て**のマネージド ID は、Azure Container Instances 内のコンテナー グループに対して直接有効になります。 これが有効になると、Azure は、そのインスタンスのサブスクリプションで信頼されている Azure AD テナント内にグループの ID を作成します。 ID が作成されると、コンテナー グループの各コンテナーに資格情報がプロビジョニングされます。 システム割り当て ID のライフサイクルは、対象となるコンテナー グループに直接関連付けられます。 グループが削除された場合、Azure は、Azure AD 内の資格情報と ID を自動的にクリーンアップします。
+Azure Container Instances は、ユーザー割り当て、システム割り当ての両方の種類の Azure マネージド ID をサポートしています。 各コンテナー グループで、1 つのシステム割り当て ID、1 つまたは複数のユーザー割り当て ID、または両方の種類の ID を有効化できます。 Azure リソースのマネージド ID の基本点な事柄については、[概要](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
 
 ### <a name="use-a-managed-identity"></a>マネージド ID の使用
 
-マネージド ID を使用するには、サブスクリプション内の 1 つ以上の Azure サービス リソース (Web アプリ、Key Vault、ストレージ アカウントなど) へのアクセス権を最初に ID に付与する必要があります。 実行中のコンテナーから Azure リソースにアクセスするには、Azure AD エンドポイントからの*アクセス トークン*をコードの中で取得する必要があります。 その後、Azure AD 認証をサポートするサービスを呼び出すときにアクセス トークンをコードから送信します。 
+マネージド ID を使用するには、サブスクリプション内の 1 つ以上の Azure サービス リソース (Web アプリ、キー コンテナー、ストレージ アカウントなど) へのアクセス権を ID に付与する必要があります。 実行中のコンテナーでマネージド ID を使用する方法は、Azure VM での ID の使用と似ています。 [トークン](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell または Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)、または [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) の使用に関する VM ガイダンス資料を参照してください。
 
-実行中のコンテナーでマネージド ID を使用する方法は、Azure VM での ID の使用と基本的に同じです。 [トークン](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell または Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)、または [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) の使用に関する VM ガイダンス資料を参照してください。
+### <a name="limitations"></a>制限事項
+
+* 現在、仮想ネットワークにデプロイされたコンテナー グループ内でマネージド ID を使用することはできません。
+* マネージド ID を使用して、コンテナー グループの作成時に Azure Container Registry からイメージをプルすることはできません。 ID は、実行中のコンテナー内でのみ使用できます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -100,15 +95,33 @@ az identity create \
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
-spID=$(az identity show --resource-group myResourceGroup --name myACIId --query principalId --output tsv)
+spID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACIId \
+  --query principalId --output tsv)
 
 # Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myACIId --query id --output tsv)
+resourceID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACIId \
+  --query id --output tsv)
 ```
 
-### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>コンテナー グループでユーザー割り当て ID を有効にする
+### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Key Vault へのアクセス権をユーザー割り当て ID に付与する
 
-次の [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) コマンドを実行して、Microsoft の `azure-cli` イメージに基づくコンテナー インスタンスを作成します。 この例で作成される単一コンテナーのグループを使用すると、Azure CLI を実行して他の Azure サービスに対話的にアクセスできます。 このセクションでは、基本の Ubuntu オペレーティング システムのみが使用されます。 
+次の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例では、ユーザー割り当て ID にキー コンテナーからのシークレットの取得を許可します。
+
+```azurecli-interactive
+ az keyvault set-policy \
+    --name mykeyvault \
+    --resource-group myResourceGroup \
+    --object-id $spID \
+    --secret-permissions get
+```
+
+### <a name="enable-user-assigned-identity-on-a-container-group"></a>コンテナー グループでユーザー割り当て ID を有効にする
+
+次の [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) コマンドを実行して、Microsoft の `azure-cli` イメージに基づくコンテナー インスタンスを作成します。 この例で作成される単一コンテナーのグループを使用すると、Azure CLI を実行して他の Azure サービスに対話的にアクセスできます。 このセクションでは、基本のオペレーティング システムのみが使用されます。 コンテナーで Azure CLI を使用する例については、「[コンテナー グループでシステム割り当て ID を有効にする](#enable-system-assigned-identity-on-a-container-group)」を参照してください。 
 
 `--assign-identity` パラメーターは、ユーザー割り当てのマネージド ID をグループに渡します。 実行時間の長いこのコマンドにより、コンテナーの実行状態が続きます。 この例では、Key Vault の作成に使ったのと同じリソース グループを使用していますが、別のものを指定することもできます。
 
@@ -147,18 +160,6 @@ az container show \
 [...]
 ```
 
-### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Key Vault へのアクセス権をユーザー割り当て ID に付与する
-
-次の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例では、ユーザー割り当て ID にキー コンテナーからのシークレットの取得を許可します。
-
-```azurecli-interactive
- az keyvault set-policy \
-    --name mykeyvault \
-    --resource-group myResourceGroup \
-    --object-id $spID \
-    --secret-permissions get
-```
-
 ### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>ユーザー定義 ID を使用して Key Vault からシークレットを取得する
 
 これで、実行中のコンテナー インスタンス内でマネージド ID を使って Key Vault にアクセスすることができます。 まずコンテナーで bash シェルを次のように起動します。
@@ -189,7 +190,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください ( *https://mykeyvault.vault.azure.net/...* ):
+次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https:\//mykeyvault.vault.azure.net/...* )。
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -203,11 +204,11 @@ curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-1
 
 ## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>例 2:システム割り当ての ID を使用して Azure Key Vault にアクセスする
 
-### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>コンテナー グループでシステム割り当て ID を有効にする
+### <a name="enable-system-assigned-identity-on-a-container-group"></a>コンテナー グループでシステム割り当て ID を有効にする
 
 次の [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) コマンドを実行して、Microsoft の `azure-cli` イメージに基づくコンテナー インスタンスを作成します。 この例で作成される単一コンテナーのグループを使用すると、Azure CLI を実行して他の Azure サービスに対話的にアクセスできます。 
 
-`--assign-identity` パラメーター (他の値なし) を指定すると、システム割り当てのマネージド ID がグループで有効になります。 この ID は、コンテナーグループのリソースグループにスコープが設定されています。 実行時間の長いこのコマンドにより、コンテナーの実行状態が続きます。 この例では、Key Vault の作成に使ったのと同じリソース グループを使用していますが、別のものを指定することもできます。
+`--assign-identity` パラメーター (他の値なし) を指定すると、システム割り当てのマネージド ID がグループで有効になります。 この ID は、コンテナーグループのリソースグループにスコープが設定されています。 実行時間の長いこのコマンドにより、コンテナーの実行状態が続きます。 この例では、ID のスコープ内にある、キー コンテナーの作成に使用したものと同じリソース グループを使用します。
 
 ```azurecli-interactive
 # Get the resource ID of the resource group
@@ -222,7 +223,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show](/cli/azure/container?view=azure-cli-latest#az-container-show) コマンドを使用して、その状態を確認します。
+数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show](/cli/azure/container#az-container-show) コマンドを使用して、その状態を確認します。
 
 ```azurecli-interactive
 az container show \
@@ -246,7 +247,10 @@ az container show \
 後続のステップで使用するために、この ID の変数の値を `principalId` (サービス プリンシパル ID) に設定します。
 
 ```azurecli-interactive
-spID=$(az container show --resource-group myResourceGroup --name mycontainer --query identity.principalId --out tsv)
+spID=$(az container show \
+  --resource-group myResourceGroup \
+  --name mycontainer \
+  --query identity.principalId --out tsv)
 ```
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Key Vault へのアクセス権をコンテナー グループに付与する

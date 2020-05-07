@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: cb1af86e04c0b4ba0b59398161fa111fd8065042
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4bc2aa055c40fb33edade8f7815311e392633885
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310047"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133879"
 ---
-# <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールの診断ログ
+# <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールのリソース ログ
 
 ログを使用して、Web アプリケーション ファイアウォールのリソースを監視することができます。 リソースのパフォーマンス、アクセス、その他のデータを保存し、監視のために使用することができます。
 
@@ -24,10 +24,10 @@ ms.locfileid: "81310047"
 
 Azure の各種ログを使用して、アプリケーション ゲートウェイの管理とトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、[Azure Monitor ログ](../../azure-monitor/insights/azure-networking-analytics.md)、Excel、Power BI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
-* **アクティビティ ログ**:[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
-* **アクセス ログ**:このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。
-* **パフォーマンス ログ**:このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。 パフォーマンス ログは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](../../application-gateway/application-gateway-metrics.md)を使用します。
-* **ファイアウォール ログ**:このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。
+* **アクティビティ ログ**:[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md) を使用すると、Azure サブスクリプションに送信されるすべての操作とその状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
+* **アクセス リソース ログ**: このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。
+* **パフォーマンス リソース ログ**: このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。 パフォーマンス ログは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](../../application-gateway/application-gateway-metrics.md)を使用します。
+* **ファイアウォール リソース ログ**: このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。
 
 > [!NOTE]
 > ログは、Azure Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 2 つのモデルについて理解を深めるには、「[Resource Manager デプロイとクラシック デプロイ](../../azure-resource-manager/management/deployment-models.md)」を参照してください。
@@ -50,7 +50,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
     ![ポータル: Application Gateway のリソース ID](../media/web-application-firewall-logs/diagnostics2.png)
 
-3. 次の PowerShell コマンドレットを使用して、診断ログを有効にします。
+3. 次の PowerShell コマンドレットを使用して、リソース ログを有効にします。
 
     ```powershell
     Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
@@ -73,7 +73,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
    ![診断の有効化][1]
 
-3. **[診断設定]** ページに、診断ログの設定が表示されます。 この例では、Log Analytics を使用してログを保存します。 イベント ハブとストレージ アカウントを使用して診断ログを保存することもできます。
+3. **[診断設定]** ページに、リソース ログの設定が表示されます。 この例では、Log Analytics を使用してログを保存します。 イベント ハブとストレージ アカウントを使用してリソース ログを保存することもできます。
 
    ![構成プロセスの開始][2]
 

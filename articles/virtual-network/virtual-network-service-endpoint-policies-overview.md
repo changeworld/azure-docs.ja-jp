@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 926da07ffaf0c61ca2a7fd02351ef3635ec4d73b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 495d0bce905a980f840527f4cc8cd9e2116e3e66
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651298"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133749"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure Storage の仮想ネットワーク サービス エンドポイント ポリシー
 
@@ -90,7 +90,7 @@ Virtual Network (VNet) のサービス エンドポイント ポリシーを使�
 - **オンプレミスから Azure サービスへのトラフィックのフィルター処理**:サービス エンドポイント ポリシーのみが、そのポリシーに関連付けられているサブネットからのトラフィックに適用されます。 オンプレミスから特定の Azure サービス リソースへのアクセスを許可するには、ネットワーク仮想アプライアンスまたはファイアウォールを使用してトラフィックをフィルター処理する必要があります。
 
 ## <a name="logging-and-troubleshooting"></a>ロギングおよびトラブルシューティング
-サービス エンドポイント ポリシーでは、集中ログ記録を使用することはできません。 サービスの診断ログについては、[サービス エンドポイントのログ記録](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting)に関するページを参照してください。
+サービス エンドポイント ポリシーでは、集中ログ記録を使用することはできません。 サービスのリソース ログについては、[サービス エンドポイントのログ記録](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting)に関するページを参照してください。
 
 ### <a name="troubleshooting-scenarios"></a>トラブルシューティングのシナリオ
 - プレビューで動作していたストレージ アカウントへのアクセスが拒否されました (geo ペア リージョンでは使用できません)

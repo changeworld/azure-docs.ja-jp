@@ -1,32 +1,32 @@
 ---
-title: 診断ログを使用した Azure Stream Analytics のトラブルシューティング
-description: この記事では、Azure Stream Analytics で診断ログを分析する方法について説明します。
+title: リソース ログを使用した Azure Stream Analytics のトラブルシューティング
+description: この記事では、Azure Stream Analytics でリソース ログを分析する方法について説明します。
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: cdb6629441becd0a8356debe3360830ff11a7a9d
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398417"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127747"
 ---
-# <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
+# <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング
 
-Azure Stream Analytics ジョブは予期せず処理を停止することがあります。 このため、この種のイベントのトラブルシューティングを行えることが重要です。 障害は、予期しないクエリ結果、デバイスへの接続、または予期しないサービス停止によって引き起こされる可能性があります。 Stream Analytics の診断ログは、問題が発生した際にその原因を特定し、復旧時間を短縮するのに役立ちます。
+Azure Stream Analytics ジョブは予期せず処理を停止することがあります。 このため、この種のイベントのトラブルシューティングを行えることが重要です。 障害は、予期しないクエリ結果、デバイスへの接続、または予期しないサービス停止によって引き起こされる可能性があります。 Stream Analytics のリソース ログは、問題が発生した際にその原因を特定し、復旧時間を短縮するのに役立ちます。
 
-デバッグと監視に非常に役立つため、すべてのジョブの診断ログを有効にすることを強くお勧めします。
+デバッグと監視に非常に役立つため、すべてのジョブのリソース ログを有効にすることを強くお勧めします。
 
 ## <a name="log-types"></a>ログの種類
 
 Stream Analytics には 2 種類のログがあります。
 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (常に有効) では、ジョブで実行される操作の分析情報が得られます。
+* [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md) (常に有効) では、ジョブで実行される操作の分析情報が得られます。
 
-* [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (構成可能) では、ジョブで発生するあらゆるイベントに関して豊富な分析情報が得られます。 診断ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
+* [リソース ログ](../azure-monitor/platform/platform-logs-overview.md) (構成可能) では、ジョブで発生するあらゆるイベントに関してより豊富な分析情報が得られます。 リソース ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
 
 > [!NOTE]
 > Azure Storage、Azure Event Hubs、Azure Monitor ログなどのサービスを使用して、問題となったデータを分析できます。 これらのサービスでは、価格モデルに基づいて料金が発生します。
@@ -53,33 +53,33 @@ Stream Analytics には 2 種類のログがあります。
 
 5. JSON のエラー メッセージに基づいて是正措置を取ることができます。 この例では、-90 度から 90 度の間の緯度値をクエリに追加する必要があることを確認します。
 
-6. 根本原因を特定するのにアクティビティ ログのエラー メッセージが役に立たない場合は、診断ログを有効にして Azure Monitor ログを使用します。
+6. 根本原因を特定するのにアクティビティ ログのエラー メッセージが役に立たない場合は、リソース ログを有効にして Azure Monitor ログを使用します。
 
 ## <a name="send-diagnostics-to-azure-monitor-logs"></a>Azure Monitor ログへの診断データの送信
 
-診断ログを有効にして Azure Monitor ログに送信することを、強くお勧めします。 既定では、診断ログは**オフ**になっています。 診断ログを有効にするには、次の手順を実行します。
+リソース ログをオンにして Azure Monitor ログに送信することを、強くお勧めします。 既定では、**オフ**になっています。 オンにするには、次の手順を完了します。
 
 1.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、 **[診断を有効にする]** を選択します。
 
-    ![ブレードを使った診断ログへの移動](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
+    ![リソース ログへのブレード ナビゲーション](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
 2.  **[診断設定]** で **[名前]** を作成し、 **[Log Analytics への送信]** の横にあるチェック ボックスをオンにします。 次に、既存の **Log Analytics ワークスペース**を追加するか、新規作成します。 **[ログ]** で **[実行]** と **[作成]** 、および **[メトリック]** で **[AllMetrics]** のチェック ボックスをオンにします。 **[保存]** をクリックします。 追加のコストを防ぐために、対象の Stream Analytics ジョブと同じ Azure リージョン内の Log Analytics ワークスペースを使用することをお勧めします。
 
-    ![診断ログの設定](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![リソース ログの設定](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3. Stream Analytics ジョブが開始すると、診断ログが Log Analytics ワークスペースにルーティングされます。 ジョブの診断ログを表示するには、 **[監視]** セクションの **[ログ]** を選択します。
+3. Stream Analytics ジョブが開始すると、リソース ログが Log Analytics ワークスペースにルーティングされます。 ジョブのリソース ログを表示するには、 **[監視]** セクションの **[ログ]** を選択します。
 
-   ![[監視] の [診断ログ]](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
+   ![[監視] の [リソース ログ]](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
 4. Stream Analytics には、関心のあるログを簡単に検索できる定義済みのクエリが用意されています。 **[全般]** 、 **[入力データ エラー]** 、 **[出力データ エラー]** の 3 つのカテゴリがあります。 たとえば、過去 7 日間のジョブのすべてのエラーの概要を表示するには、適切な定義済みクエリの **[実行]** を選択します。 
 
-   ![[監視] の [診断ログ]](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
+   ![[監視] の [リソース ログ]](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
 
    ![ログの結果](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
 
-## <a name="diagnostics-log-categories"></a>診断ログのカテゴリ
+## <a name="resource-log-categories"></a>リソース ログのカテゴリ
 
-Azure Stream Analytics では、次の 2 つのカテゴリの診断ログをキャプチャします。
+Azure Stream Analytics では、次の 2 つのカテゴリのリソース ログをキャプチャします。
 
 * **作成**:ジョブ作成操作 (ジョブの作成、入出力の追加と削除、クエリの追加と更新、ジョブの開始と停止など) に関連するログ イベントを取得します。
 
@@ -90,7 +90,7 @@ Azure Stream Analytics では、次の 2 つのカテゴリの診断ログをキ
         * 式評価エラー
     * その他のイベントとエラー
 
-## <a name="diagnostics-logs-schema"></a>診断ログのスキーマ
+## <a name="resource-logs-schema"></a>リソース ログのスキーマ
 
 すべてのログは JSON 形式で格納されます。 各エントリには、次の一般的な文字列フィールドが含まれています。
 

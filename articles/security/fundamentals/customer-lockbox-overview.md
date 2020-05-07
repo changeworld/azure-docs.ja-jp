@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561971"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735438"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
@@ -49,7 +49,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
     要求が **[Customer Notified]\(お客様に通知済み\)** 状態になり、アクセスを許可する前のお客様の承認待ちになります。
 
-7. お客様の組織で、Azure サブスクリプションの[所有者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)を持つユーザーに、保留中のアクセス要求について通知するメールが Microsoft から送信されます。 カスタマー ロックボックス要求では、このユーザーが承認者に指定されます。
+7. お客様の組織で、Azure サブスクリプションの[所有者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)を持つユーザーに、保留中のアクセス要求について通知するメールが Microsoft から送信されます。 カスタマー ロックボックス要求では、このユーザーが承認者に指定されます。
 
     電子メールの例:
 

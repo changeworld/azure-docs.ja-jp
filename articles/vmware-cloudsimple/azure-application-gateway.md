@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cbfdd358fdfd5403c677c067376142169cdc6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77015458"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185695"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>CloudSimple プライベート クラウド環境内の VMware 仮想マシンで Azure Application Gateway を使用する
 
 Azure Application Gateway を使用して、CloudSimple プライベート クラウド環境内の VMware 仮想マシンで実行されている Web サーバーの受信 Web トラフィックを管理することができます。
 
-パブリックとプライベートのハイブリッド デプロイで Azure Application Gateway を利用することで、アプリケーションへの Web トラフィックを管理し、セキュリティで保護されたフロントエンドを提供し、VMware 環境で実行されているサービスの SSL 処理をオフロードすることができます。 Azure Application Gateway は、構成済みの規則と正常性プローブに従って、VMware 環境に存在するバックエンド プール インスタンスに受信 Web トラフィックをルーティングします。
+パブリックとプライベートのハイブリッド デプロイで Azure Application Gateway を利用することで、アプリケーションへの Web トラフィックを管理し、セキュリティで保護されたフロントエンドを提供し、VMware 環境で実行されているサービスの TLS 処理をオフロードすることができます。 Azure Application Gateway は、構成済みの規則と正常性プローブに従って、VMware 環境に存在するバックエンド プール インスタンスに受信 Web トラフィックをルーティングします。
 
 この Azure Application Gateway ソリューションでは、次のことを行う必要があります。
 

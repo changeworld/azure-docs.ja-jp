@@ -6,14 +6,15 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236091"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131216"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
+
 Azure Database for PostgreSQL では、Postgres の標準ログを構成してアクセスできます。 ログは、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復に使用できます。 構成してアクセスできるログ情報には、エラー、クエリ情報、自動バキューム レコード、接続、チェックポイントが含まれます。 (トランザクション ログへのアクセスは利用できません)。
 
 監査ログは、Postgres 拡張機能 pgaudit を通じて利用できます。 詳細については、[監査の概念](concepts-audit.md)に関する記事をご覧ください。
@@ -46,7 +47,8 @@ Azure Database for PostgreSQL には、.log ファイル用に短期的な保存
 
 パラメーター `logging_collector` をオフに設定すると、.log ファイルの生成を停止できます。 Azure Monitor の診断設定を使用している場合は、.log ファイルの生成をオフにすることをお勧めします。 この構成により、追加のログ記録によるパフォーマンスへの影響が軽減されます。
 
-## <a name="diagnostic-logs"></a>診断ログ
+## <a name="resource-logs"></a>リソース ログ
+
 Azure Database for PostgreSQL は、Azure Monitor の診断設定と統合されます。 診断設定を使用すると、Postgres ログを JSON 形式で分析とアラート用の Azure Monitor ログ、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage に送信できます。 
 
 > [!IMPORTANT]
@@ -54,9 +56,10 @@ Azure Database for PostgreSQL は、Azure Monitor の診断設定と統合され
 
 
 ### <a name="configure-diagnostic-settings"></a>診断設定を構成する
+
 Azure portal、CLI、REST API、Powershell を使用して、Postgres サーバーの診断設定を有効にすることができます。 選択するログ カテゴリは **PostgreSQLLogs** です。 ([クエリ ストア](concepts-query-store.md)を使用している場合は、他にも構成できるログがあります。)
 
-Azure portal を使用して診断ログの有効にするには:
+Azure portal を使用してリソース ログを有効にするには
 
    1. ポータルで、Postgres サーバーのナビゲーション メニューの *[診断設定]* に移動します。
    2. *[診断設定の追加]* を選択します。
@@ -65,11 +68,11 @@ Azure portal を使用して診断ログの有効にするには:
    5. ログの種類 **PostgreSQLLogs** を選択します。
    7. 設定を保存します。
 
-Powershell、CLI、または REST API を使用して診断ログを有効にするには、[診断の設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
+Powershell、CLI、または REST API を使用してリソース ログを有効にするには、[診断の設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
 
-### <a name="access-diagnostic-logs"></a>診断ログにアクセスする
+### <a name="access-resource-logs"></a>リソース ログへのアクセス
 
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ストレージ アカウントのログ](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
 
 Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
 
@@ -99,7 +102,7 @@ AzureDiagnostics
 | TenantId | テナント ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
-| 種類 | ログの種類。 常に `AzureDiagnostics` |
+| Type | ログの種類。 常に `AzureDiagnostics` |
 | SubscriptionId | サーバーが属するサブスクリプションの GUID |
 | ResourceGroup | サーバーが属するリソース グループの名前 |
 | ResourceProvider | リソース プロバイダーの名前。 常に `MICROSOFT.DBFORPOSTGRESQL` |
@@ -108,7 +111,7 @@ AzureDiagnostics
 | リソース | サーバーの名前 |
 | カテゴリ | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | ログ レベル (LOG、ERROR、NOTICE など) |
+| errorLevel | ログ レベル、例:LOG、ERROR、NOTICE |
 | Message | プライマリ ログ メッセージ | 
 | Domain | サーバーのバージョン (postgres 10 など) |
 | Detail | セカンダリ ログ メッセージ (該当する場合) |
