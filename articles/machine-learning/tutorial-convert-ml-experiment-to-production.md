@@ -1,20 +1,22 @@
 ---
-title: 機械学習の実験コードを運用コードに変換する
+title: ノートブック コードを Python スクリプトに変換する
 titleSuffix: Azure Machine Learning
-description: MLOpsPython コード テンプレートを使用して、機械学習の実験コードを運用コードに変換する方法について説明します。
+description: MLOpsPython コード テンプレートを使用して、機械学習の実験用ノートブックを運用環境に対応するコードに変換します。 その後、そのコードをテスト、デプロイ、および自動化できます。
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/13/2020
-ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/30/2020
+ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521434"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559665"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>チュートリアル:ML の実験コードを運用コードに変換する
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
+
+このチュートリアルでは、MLOpsPython コード テンプレートと Azure Machine Learning を使用して、Juptyer ノートブックを Python スクリプトに変換し、テストと自動化を容易にする方法について学習します。 通常、このプロセスは、Juptyer ノートブックから実験またはトレーニング コードを取得して Python スクリプトに変換するために使用されます。 これらのスクリプトは、運用環境でのテストおよび CI/CD 自動化に使用できます。 
 
 機械学習プロジェクトでは、実際のデータセットを使用して Jupyter Notebook などのアジャイル ツールで仮説をテストする実験が必要です。 運用のためのモデルの準備ができたら、モデル コードを運用コード リポジトリに配置する必要があります。 場合によっては、モデル コードを Python スクリプトに変換して、運用コード リポジトリに配置する必要があります。 このチュートリアルでは、実験コードを Python スクリプトにエクスポートする方法について、推奨される方法を説明します。
 

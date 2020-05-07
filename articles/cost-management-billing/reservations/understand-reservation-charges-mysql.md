@@ -1,20 +1,17 @@
 ---
-title: Azure Database for MySQL に対する予約割引の適用方法
-description: Azure Database for MySQL に対する予約割引の適用方法
+title: 予約割引の概要 - Azure Database for MySQL
+description: Azure Database for MySQL サーバーに対する予約割引の適用方法について学習します。
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e47153b24234480ee52847f07e723c02fabb3113
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199315"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509433"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Azure Database for MySQL に対する予約割引の適用方法
 
@@ -28,7 +25,7 @@ Azure Database for MySQL の予約容量を購入すると、予約の属性や�
 
 ## <a name="discount-applied-to-azure-database-for-mysql"></a>Azure Database for MySQL に適用される割引
 
-Azure Database for MySQL の予約容量割引は、実行中の MySQL サーバーに 1 時間単位で適用されます。 購入した予約は、実行中の Azure Database for MySQL サーバーによる計算の使用量と照合されます。 実行時間が 1 時間に満たない MySQL サーバーの場合、その予約は予約の属性に一致する他の Azure Database for MySQL に自動的に適用されます。 この割引は、同時に実行されている Azure Database for MySQL サーバーに適用できます。 予約の属性に一致する MySQL サーバーのうち、実行時間が 1 時間を超える SQL データベースがない場合は、その時間について予約割引の特典を完全に活用することができません。
+Azure Database for MySQL の予約容量割引は、実行中の MySQL サーバーに 1 時間単位で適用されます。 購入した予約は、実行中の Azure Database for MySQL サーバーによる計算の使用量と照合されます。 実行時間が 1 時間に満たない MySQL サーバーの場合、その予約は予約の属性に一致する他の Azure Database for MySQL に自動的に適用されます。 この割引は、同時に実行されている Azure Database for MySQL サーバーに適用できます。 予約の属性に一致し、まる 1 時間実行される MySQL サーバーがない場合は、その時間について予約割引の特典を完全に活用することができません。
 
 次の例は、購入したコア数と実行する時間に応じて、Azure Database for MySQL の予約容量割引がどのように適用されるかを示しています。
 
@@ -44,5 +41,6 @@ Azure Database for MySQL の予約容量割引は、実行中の MySQL サーバ
 
 Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)に関するページを参照してください。
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
+## <a name="next-steps"></a>次のステップ
+
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
