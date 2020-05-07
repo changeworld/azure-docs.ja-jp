@@ -1,7 +1,7 @@
 ---
 title: 複数のテナント間の対話の特性 - Azure AD | Microsoft Docs
-description: 完全に独立した組織としての Azure Active Directory テナントの理解
-services: active-tenant
+description: Azure Active Directory 組織のデータの独立性を理解する
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878121"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582746"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>複数の Azure Active Directory 組織が対話する方法を理解する
 
-Azure Active Directory (Azure AD) では、各テナントは完全に独立した組織、つまり、管理されている他の Azure AD 組織から論理的に独立したピアです。 この組織間の独立性には、リソースの独立性、管理の独立性、同期の独立性が含まれます。 組織間に親子の関係はありません。
+Azure Active Directory (Azure AD) では、各 Azure AD 組織は完全に独立しています。つまり、管理されている他の Azure AD 組織から論理的に独立したピアです。 この組織間の独立性には、リソースの独立性、管理の独立性、同期の独立性が含まれます。 組織間に親子の関係はありません。
 
 ## <a name="resource-independence"></a>リソースの独立
 

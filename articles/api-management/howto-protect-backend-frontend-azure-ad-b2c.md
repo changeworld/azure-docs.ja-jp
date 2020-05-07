@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475478"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202878"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2.0、Azure Active Directory B2C、および Azure API Management を使用して SPA バックエンドを保護する
 
@@ -148,7 +148,7 @@ EasyAuth を使用して Azure Functions バックエンドをセキュリティ
 5. [HttpTrigger1] タブに戻り、[関数の URL の取得] をクリックして、表示される URL をコピーします。
 
    > [!NOTE]
-   > 先ほど作成したバインドによって、単に先ほどコピーした URL に匿名の HTTP GET 要求で応答するように Functions に指示されます (https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey) これで、非常に単純なペイロードを返す機能を持つスケーラブルなサーバーレス HTTPS API ができました。
+   > 先ほど作成したバインドによって、単に先ほどコピーした URL に匿名の HTTP GET 要求で応答するように Functions に指示されます (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`)。これで、非常に単純なペイロードを返す機能を持つスケーラブルなサーバーレス HTTPS API ができました。
    > 上記の URL を使用して Web ブラウザーからこの API の呼び出しをテストできるようになりました。URL の ?code=secret 部分を削除して、Azure Functions から 401 エラーが返されることを証明することもできます。
 
 ## <a name="configure-and-secure-the-function-api"></a>関数 API の構成とセキュリティ保護

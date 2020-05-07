@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672440"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159968"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -26,7 +26,7 @@ ms.locfileid: "74672440"
 
 PHP ログを有効にするには、次の手順を実行します。
 
-1. [Kudu の Web サイト](https://*yourwebsitename*.scm.azurewebsites.net)にサインインします。
+1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
 2. 上部のメニューから、 **[デバッグ コンソール]**  >  **[CMD]** の順に選択します。
 3. **Site** フォルダーを選択します。
 4. **wwwroot** フォルダーを選択します。
@@ -56,7 +56,7 @@ Node.js アプリケーションのバージョンを変更するために、次
   1. Azure Portal で、Web アプリに移動します。
   2. **[設定]** ブレードで、 **[アプリケーション設定]** を選択します。
   3. **[アプリ設定]** で、キーとして WEBSITE_NODE_DEFAULT_VERSION を含め、値として希望する Node.js のバージョンを指定できます。
-  4. [Kudu コンソール](https://*yourwebsitename*.scm.azurewebsites.net)に移動します。
+  4. **Kudu コンソール** (`https://*yourwebsitename*.scm.azurewebsites.net`) に移動します。
   5. Node.js バージョンを確認するには、次のコマンドを入力します。  
      ```
      node -v
@@ -91,7 +91,7 @@ debug.log ファイルまたは php_errors.log ファイルにエラーが表示
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>App Service にホストされている Node.js アプリをデバッグする方法は?
 
-1.  [Kudu コンソール](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)に移動します。
+1.  **Kudu コンソール** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`) に移動します。
 2.  アプリケーション ログ フォルダー (D:\home\LogFiles\Application) に移動します。
 3.  logging_errors.txt ファイルの内容を確認します。
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Red Hat OpenShift でサポートされているリソース
+title: Azure Red Hat OpenShift 3.11 でサポートされているリソース
 description: Microsoft Azure Red Hat OpenShift でサポートされている Azure リージョンと仮想マシンのサイズについて説明します。
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224759"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203677"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift のリソース
 
-このトピックでは、Microsoft Azure Red Hat OpenShift サービスでサポートされている Azure リージョンと仮想マシンのサイズを示します。
+このトピックでは、Microsoft Azure Red Hat OpenShift 3.11 サービスでサポートされている Azure リージョンと仮想マシンのサイズを示します。
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
@@ -34,7 +34,7 @@ Azure Red Hat OpenShift クラスター内のコンピューティング ノー�
 
 Azure Red Hat OpenShift の REST API では、次のコンピューティング ノードのサイズがサポートされています。
 
-|Size|vCPU|RAM|
+|サイズ|vCPU|RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
 |Standard D8s v3|8|32 GB|
@@ -54,7 +54,7 @@ Azure Red Hat OpenShift の REST API では、次のコンピューティング 
 
 Azure Red Hat OpenShift の REST API では、次のマスター/インフラストラクチャ ノードのサイズがサポートされています。
 
-|Size|vCPU|RAM|
+|サイズ|vCPU|RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
 |Standard D8s v3|8|32 GB|

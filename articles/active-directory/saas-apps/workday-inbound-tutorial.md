@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370359"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201637"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -281,6 +281,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
     ![ドメインのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_06.png "ドメイン セキュリティ ポリシー")  
 2. **[Domain]\(ドメイン)** テキスト ボックスで以下のドメインを検索し、それらをフィルターに 1 つずつ追加します。  
    * *External Account Provisioning*
+   * *Worker Data:Workers*
    * *Worker Data:Public Worker Reports*
    * *Person Data:Work Contact Information*
    * *Worker Data:All Positions*
@@ -312,6 +313,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
    | ---------- | ---------- |
    | Get と Put | Worker Data:Public Worker Reports |
    | Get と Put | Person Data:Work Contact Information |
+   | 取得 | Worker Data:ワーカー |
    | 取得 | Worker Data:All Positions |
    | 取得 | Worker Data:Current Staffing Information |
    | 取得 | Worker Data:Business Title on Worker Profile |
@@ -327,17 +329,18 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
     ![ビジネス プロセスのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_12.png "ビジネス プロセスのセキュリティ ポリシー")  
 
-2. **[Business Process Type]\(ビジネス プロセスの種類)** テキストボックスで、 *[Contact]* を検索し、 **[Contact Change]** ビジネス プロセスを選択して **[OK]** をクリックします。
+2. **[Business Process Type]\(ビジネス プロセスの種類)** テキストボックスで、 *[Contact]* を検索し、 **[Work Contact Change]** ビジネス プロセスを選択して **[OK]** をクリックします。
 
     ![ビジネス プロセスのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_13.png "ビジネス プロセスのセキュリティ ポリシー")  
 
-3. **Edit Business Process Security Policy\(ビジネス プロセス セキュリティ ポリシーの編集)** ページで、**Maintain Contact Information (Web Service)\(連絡先情報 (Web サービス) の管理)** セクションまで下へスクロールします。
+3. **[Edit Business Process Security Policy]\(ビジネス プロセス セキュリティ ポリシーの編集)** ページで、 **[Change Work Contact Information (Web Service)]\(勤務先の連絡先情報の変更 (Web サービス))** セクションまで下へスクロールします。
+    
 
-    ![ビジネス プロセスのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_14.png "ビジネス プロセスのセキュリティ ポリシー")  
-
-4. 新しい統合システム セキュリティ グループを選択し、Web サービス要求を開始できるセキュリティ グループの一覧に追加します。 **[Done]\(終了)** をクリックします。 
+4. 新しい統合システム セキュリティ グループを選択し、Web サービス要求を開始できるセキュリティ グループの一覧に追加します。 
 
     ![ビジネス プロセスのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_15.png "ビジネス プロセスのセキュリティ ポリシー")  
+
+5. **[Done]\(終了)** をクリックします。 
 
 ### <a name="activating-security-policy-changes"></a>セキュリティ ポリシーの変更のアクティブ化
 
@@ -451,11 +454,18 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 1. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **管理ユーザー名** - Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。**username\@tenant_name**
+   * **Workday ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。**username\@tenant_name**
 
-   * **管理者パスワード** - Workday 統合システム アカウントのパスワードを入力します
+   * **Workday パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL** - テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は https://wd3-impl-services1.workday.com/ccx/service/contoso4 のようになります。*contoso4* は適切テナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます。
+   * **Workday Web Services API URL** - テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4` のようになります。*contoso4* は適切テナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます。
+
+     > [!NOTE]
+     > 既定では、URL にバージョン情報が指定されていない場合、アプリによって Workday Web Services (WWS) v21.1 が使用されます。 WWS API の特定のバージョンを使用するには、次の URL 形式を使用してください: https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > 例: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
+     
+     > [!NOTE]
+     > WWS API v 30.0 以上を使用している場合は、プロビジョニング ジョブを有効にする前に、「[構成の管理](#managing-your-configuration)」セクションおよび [Workday 属性のリファレンス](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を参照して、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の下にある **XPATH API 式**を更新してください。  
 
    * **Active Directory フォレスト** - エージェントに登録されている Active Directory ドメインの "名前"。 ドロップダウンを使用して、プロビジョニングのターゲット ドメインを選択します。 通常、この値は *contoso.com* のような文字列です。
 
@@ -552,7 +562,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 | **WorkerID**  |  EmployeeID | **はい** | 作成時のみ書き込まれる |
 | **PreferredNameData**    |  cn    |   |   作成時のみ書き込まれる |
 | **SelectUniqueValue( Join("\@", Join(".",  \[FirstName\], \[LastName\]), "contoso.com"), Join("\@", Join(".",  Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("\@", Join(".",  Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | 作成時のみ書き込まれる 
-| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         作成時のみ書き込まれる |
+| `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         作成時のみ書き込まれる |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | 作成時 + 更新時 |
 | **FirstName**   | givenName       |     |    作成時 + 更新時 |
 | **LastName**   |   sn   |     |  作成時 + 更新時 |
@@ -607,11 +617,16 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 次のように表示されます: username@contoso4
+   * **Workday ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 次のように表示されます: username@contoso4
 
-   * **管理者パスワード** - Workday 統合システム アカウントのパスワードを入力します
+   * **Workday パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL** - テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources のようになります。*contoso4* は適切テナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます。 この URL が不明の場合は、Workday 統合パートナーまたはサポート担当者に連絡して、使用する正しい URL を確認してください。
+   * **Workday Web Services API URL** - テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4` のようになります。*contoso4* は適切テナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます。 この URL が不明の場合は、Workday 統合パートナーまたはサポート担当者に連絡して、使用する正しい URL を確認してください。
+
+     > [!NOTE]
+     > 既定では、URL にバージョン情報が指定されていない場合、アプリは Workday Web Services v21.1 を使用します。 Workday Web Services API の特定のバージョンを使用するには、次の URL 形式を使用します: https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > 例: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
+
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
 
@@ -708,7 +723,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
    * **管理者パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources のようになります。*contoso4* は適切なテナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます (必要な場合)。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources` のようになります。*contoso4* は適切なテナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます (必要な場合)。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
 
@@ -807,9 +822,13 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 現在、このソリューションは次の Workday API を使用しています。
 
-* 従業員情報の取り込み用の Get_Workers (v21.1)
-* 勤務先メール書き戻し機能用の Maintain_Contact_Information (v26.1)
-* ユーザー名書き戻し機能用の Update_Workday_Account (v31.2)
+* **[管理者の資格情報]** セクションで使用される **Workday Web Services API URL** 形式は、Get_Workers で使用される API バージョンを決定します
+  * URL の形式が https://\#\#\#\#\.workday\.com/ccx/service/tenantName の場合は、API v21.1 が使用されます。 
+  * URL の形式が https://\#\#\#\#\.workday\.com/ccx/service/tenantName/Human\_Resources の場合は、API v21.1 が使用されます 
+  * URL の形式が https://\#\#\#\#\.workday\.com/ccx/service/tenantName/Human\_Resources/v\#\#\.\# の場合は、指定した API のバージョンが使用されます。 (例: v34.0 が指定されている場合は、これが使用されます。)  
+   
+* Workday メール書き戻し機能は Change_Work_Contact_Information (v30.0) を使用します 
+* Workday ユーザー名書き戻し機能は Update_Workday_Account (v31.2) を使用します 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>2 つの Azure AD テナントを持つ Workday HCM テナントは構成できますか。
 
@@ -1239,7 +1258,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 1. [Workday Studio](https://community.workday.com/studio-download) をダウンロードしてインストールします。 インストーラーにアクセスするには、Workday コミュニティ アカウントが必要です。
 
-2. URL https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl から Workday Human_Resources WSDL ファイルをダウンロードします。
+2. [Workday Web Services ディレクトリ](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html)から使用する予定の、WWS API バージョンに固有の Workday **Human_Resources** WSDL ファイルをダウンロードします
 
 3. Workday Studio を起動します。
 
@@ -1259,7 +1278,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 9. **[OK]** を選択します。
 
-10. **[Request]\(要求\)** ウィンドウに以下の XML を貼り付けます。**Employee_ID** には、ご使用の Workday テナントに存在する実際のユーザーの従業員 ID を設定してください。 抽出対象となる属性が設定されているユーザーを選択します。
+10. **[Request]\(要求\)** ウィンドウに以下の XML を貼り付けます。 **Employee_ID** には、ご使用の Workday テナントに存在する実際のユーザーの従業員 ID を設定してください。 **wd: version** には、使用する予定の WWS のバージョンを設定してください。 抽出対象となる属性が設定されているユーザーを選択します。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

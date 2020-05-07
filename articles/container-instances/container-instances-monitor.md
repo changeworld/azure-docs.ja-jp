@@ -3,12 +3,12 @@ title: コンテナー インスタンスの監視
 description: Azure Container Instances のコンテナーによる CPU やメモリなどのコンピューティング リソースの使用状況を監視する方法の詳細。
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250029"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116369"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances のコンテナー リソースを監視する
 
@@ -25,13 +25,13 @@ ms.locfileid: "78250029"
 
 ## <a name="available-metrics"></a>使用可能なメトリック
 
-Azure Monitor では、次の [Azure Container Instances 用のメトリック][supported-metrics]が提供されます。 これらのメトリックは、コンテナー グループと個々のコンテナーで使用できます。
+Azure Monitor では、次の [Azure Container Instances 用のメトリック][supported-metrics]が提供されます。 これらのメトリックは、コンテナー グループと個々のコンテナーで使用できます。 既定では、メトリックは平均値として集計されます。
 
-* **[CPU 使用率]** - **ミリコア**単位です。 1 ミリコアは CPU コアの 1/1,000 なので、500 ミリコア (つまり 500 m) は CPU コアの 50% の使用率を表します。 すべてのコアにまたがる**平均使用率**として集計されます。
+* **[CPU 使用率]** - **ミリコア**単位です。 1 ミリコアは CPU コアの 1/1,000 なので、500 ミリコアは 0.5 CPU コアの使用率を表します。
 
-* **[メモリ使用量]** - **平均バイト数**として集計されます。
+* **[メモリ使用量]** - バイト単位です。
 
-* **[1 秒あたりに受信したネットワーク バイト数]** および **[1 秒あたりに送信したネットワーク バイト数]** - **1 秒あたりの平均バイト数**として集計されます。 
+* **[1 秒あたりに受信したネットワーク バイト数]** および **[1 秒あたりに送信したネットワーク バイト数]** 。 
 
 ## <a name="get-metrics---azure-portal"></a>メトリックを取得する - Azure Portal
 

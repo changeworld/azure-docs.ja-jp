@@ -5,12 +5,12 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d37c7be65eb0c03065c095196a6fec39a2509a3f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229299"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193430"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -102,7 +102,7 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
 
 3.  コンテキスト メニューから **[アプリケーションの展開]** をクリックします。
 4.  デプロイ操作の進捗状況は、コンソール ウィンドウから確認できます。
-5.  アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウでローカル クラスターの Service Fabric Explorer を開きます [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
+5.  アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウでローカル クラスターの Service Fabric Explorer を開きます (`http://localhost:19080/Explorer`)。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
 
 ローカル クラスターを使用する Eclipse でアプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。
 

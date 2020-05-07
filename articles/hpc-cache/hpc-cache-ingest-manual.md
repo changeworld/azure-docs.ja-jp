@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d5f8e6b59a4ae0149f219738952b47ce399c2ff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168486"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194994"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache のデータ取り込み - 手動でコピーする方法
 
@@ -35,7 +35,7 @@ cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1
 
 ## <a name="copy-data-with-predictable-file-names"></a>予測可能なファイル名のデータをコピーする
 
-ファイル名が予測可能な場合は、式を使用して並列コピー スレッドを作成できます。 
+ファイル名が予測可能な場合は、式を使用して並列コピー スレッドを作成できます。
 
 たとえば、ディレクトリに 1,000 個のファイルが含まれていて、それらのファイルに `0001` から `1000` まで順番に番号が付いている場合は、次の式を使用して、それぞれが 100 個のファイルをコピーする並列スレッドを 10 個作成できます。
 
@@ -54,7 +54,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 ## <a name="copy-data-with-unstructured-file-names"></a>体系化されていないファイル名のデータをコピーする
 
-ファイルの命名構造が予測可能でない場合は、ファイルをディレクトリ名別にグループ化できます。 
+ファイルの命名構造が予測可能でない場合は、ファイルをディレクトリ名別にグループ化できます。
 
 この例では、各ディレクトリ全体を収集し、バックグラウンド タスクとして実行される ``cp`` コマンドに送ります。
 
@@ -72,16 +72,16 @@ cp /mnt/source/file9* /mnt/destination1/
 
 ```bash
 cp /mnt/source/* /mnt/destination/
-mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ & 
+mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ &
 cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1c1 via recursion
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
 ## <a name="when-to-add-mount-points"></a>マウント ポイントを追加するタイミング
 
-1 つのコピー先ファイル システム マウント ポイントに対して十分な数の並列スレッドを作成した後、ある時点から、それ以上スレッドを追加してもスループットが上がらなくなります。 (スループットは、データの種類に応じて、1 秒あたりのファイル数または 1 秒あたりのバイト数の単位で測定されます。) または、さらに悪いことに、スレッド数が過剰になると、スループットが低下する場合もあります。  
+1 つのコピー先ファイル システム マウント ポイントに対して十分な数の並列スレッドを作成した後、ある時点から、それ以上スレッドを追加してもスループットが上がらなくなります。 (スループットは、データの種類に応じて、1 秒あたりのファイル数または 1 秒あたりのバイト数の単位で測定されます。) または、さらに悪いことに、スレッド数が過剰になると、スループットが低下する場合もあります。
 
 この場合、同じリモート ファイルシステム マウント パスを使用して、クライアント側のマウント ポイントを他の Azure HPC Cache マウント アドレスに追加できます。
 
@@ -92,7 +92,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-クライアント側のマウント ポイントを追加することで、追加のコピー コマンドを追加の `/mnt/destination[1-3]` マウント ポイントにフォークすることができるため、さらに高い並列度を実現できます。  
+クライアント側のマウント ポイントを追加することで、追加のコピー コマンドを追加の `/mnt/destination[1-3]` マウント ポイントにフォークすることができるため、さらに高い並列度を実現できます。
 
 たとえば、ファイルが非常に大きい場合は、個別のコピー先パスを使用するようにコピー コマンドを定義して、コピーを実行するクライアントから、より多くのコマンドを同時に送信します。
 
@@ -112,7 +112,7 @@ cp /mnt/source/file8* /mnt/destination3/ & \
 
 ## <a name="when-to-add-clients"></a>クライアントを追加するタイミング
 
-最後に、クライアントの機能の上限に達した場合、コピー スレッドまたはマウント ポイントをそれ以上追加しても、1 秒あたりのファイル数または 1 秒あたりのバイト数がさらに増加することはありません。 そのような状況では、同じマウント ポイント セットを持つ別のクライアントをデプロイして、そのクライアント独自のファイル コピー プロセスのセットを実行できます。 
+最後に、クライアントの機能の上限に達した場合、コピー スレッドまたはマウント ポイントをそれ以上追加しても、1 秒あたりのファイル数または 1 秒あたりのバイト数がさらに増加することはありません。 そのような状況では、同じマウント ポイント セットを持つ別のクライアントをデプロイして、そのクライアント独自のファイル コピー プロセスのセットを実行できます。
 
 例:
 
@@ -158,7 +158,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 その後は、マニフェストを通して反復処理ができます。BASH コマンドを使用してファイルを数え、サブディレクトリのサイズを決定します。
 
 ```bash
-ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
+ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l` `du -sh ${i}`"; done
 244    3.5M    ./atj5b5ab44b7f-02/support/gsi/2018-07-18T00:07:03EDT
 9      172K    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-18T05:01:00UTC
 124    5.8M    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-19T01:01:01UTC
@@ -194,7 +194,7 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-最後に、クライアントへの実際のファイル コピー コマンドを作成する必要があります。  
+最後に、クライアントへの実際のファイル コピー コマンドを作成する必要があります。
 
 4 つのクライアントがある場合は、このコマンドを使用します。
 
@@ -214,7 +214,7 @@ for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-結果として *N* 個のファイルを取得できます (`find` コマンドの出力の一部として取得したレベル 4 のディレクトリへのパス名を持つ、*N* 個のクライアントごとに 1 つずつ)。 
+結果として *N* 個のファイルを取得できます (`find` コマンドの出力の一部として取得したレベル 4 のディレクトリへのパス名を持つ、*N* 個のクライアントごとに 1 つずつ)。
 
 各ファイルを使用してコピー コマンドを作成します。
 
@@ -222,6 +222,6 @@ for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-上記のようにして *N* 個のファイルを取得できます。各ファイルには 1 行あたり 1 個のコピー コマンドが含まれ、それらをクライアント上で BASH スクリプトとして実行できます。 
+上記のようにして *N* 個のファイルを取得できます。各ファイルには 1 行あたり 1 個のコピー コマンドが含まれ、それらをクライアント上で BASH スクリプトとして実行できます。
 
 目標は、これらのスクリプトのスレッドを複数のクライアント上で、クライアントごとに並行して複数同時に実行することです。

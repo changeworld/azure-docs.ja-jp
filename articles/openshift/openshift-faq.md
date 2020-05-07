@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f468cb294d79c44f92ef95437c0d88639a78b9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92529c2d60b32e9c8b57b897008b5333adc2a4d4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77619502"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594969"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -23,7 +23,7 @@ Azure Red Hat OpenShift がサポートされている世界中のリージョ�
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>既存の仮想ネットワークにクラスターをデプロイできますか?
 
-いいえ。 もっとも、ピアリングを使って Azure Red Hat OpenShift クラスターを既存の VNET に接続することはできます。 詳細については、[クラスターの仮想ネットワークを既存の仮想ネットワークに接続する方法](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)に関するセクションを参照してください。
+いいえ。 しかし、ピアリングを介して既存の仮想ネットワークに Azure Red Hat OpenShift クラスターを接続できます。 詳細については、[クラスターの仮想ネットワークを既存の仮想ネットワークに接続する方法](tutorial-create-cluster.md#create-the-cluster)に関するセクションを参照してください。
 
 ## <a name="what-cluster-operations-are-available"></a>どのクラスター操作を使用できますか?
 
@@ -37,11 +37,11 @@ Azure Red Hat OpenShift クラスターで使用できる仮想マシンのサ�
 
 既定では、保存時の暗号化があります。 Azure Storage プラットフォームは、永続化する前に自動的にデータを暗号化し、取得前にデータの暗号化を解除します。 詳細については、[保存データの Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に関するページを参照してください。
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Prometheus/Grafana を使用して自分のアプリケーションを監視できますか?
+## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Prometheus/Grafana を使用して自分のアプリケーションを監視できますか? 
 
 はい、Prometheus を自分の名前空間にデプロイし、自分の名前空間内のアプリケーションを開始できます。
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Prometheus/Grafana を使用して、クラスターの正常性と容量に関連するメトリックを監視できますか?
+## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Prometheus/Grafana を使用して、クラスターの正常性と容量に関連するメトリックを監視できますか? 
 
 いいえ、現時点ではできません。
 
@@ -89,7 +89,7 @@ oc adm policy \
 
 仮想ネットワークを含むサブスクリプションでは、必ず `az provider register -n Microsoft.ContainerService --wait` を使用して `Microsoft.ContainerService` プロバイダーを登録してください。 
 
-## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Azure Red Hat OpenShift (ARO) のメンテナンス プロセスとは何ですか?
+## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Azure Red Hat OpenShift (ARO) のメンテナンス プロセスとは何ですか? 
 
 ARO 用のメンテナンスには、次の 3 種類があります。アップグレード、etcd データのバックアップと復元、クラウド プロバイダーによって開始されるメンテナンスです。
 
@@ -99,7 +99,7 @@ ARO 用のメンテナンスには、次の 3 種類があります。アップ�
 
 + クラウド プロバイダーによって開始されるメンテナンスには、ネットワーク、ストレージ、リージョンの障害が含まれます。 メンテナンスはクラウド プロバイダーに依存し、プロバイダーによって提供される更新プログラムに依存します。
 
-## <a name="what-is-the-general-upgrade-process"></a>一般的なアップグレード プロセスとは何ですか?
+## <a name="what-is-the-general-upgrade-process"></a>一般的なアップグレード プロセスとは何ですか? 
 
 アップグレードの実行は、安全なプロセス実行である必要があり、クラスター サービスを中断しないようにしてください。 SRE では、新しいバージョンが利用可能か、または CVE が未完了である場合に、アップグレード プロセスをトリガーできます。
 
@@ -113,19 +113,19 @@ ARO 用のメンテナンスには、次の 3 種類があります。アップ�
 
 Microsoft では、この 2 種類のメンテナンスを区別しません。 Microsoft チームは 24 時間年中無休で利用でき、従来のスケジュールされた "時間外" のメンテナンス期間を使用しません。
 
-## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>ホスト オペレーティング システムと OpenShift ソフトウェアはどのように更新されますか?
+## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>ホスト オペレーティング システムと OpenShift ソフトウェアはどのように更新されますか? 
 
 ホスト オペレーティング システムと OpenShift ソフトウェアは、一般的なアップグレードとイメージのビルド プロセスによって更新されます。
 
-## <a name="whats-the-process-to-reboot-the-updated-node"></a>更新されたノードを再起動するプロセスとは何ですか?
+## <a name="whats-the-process-to-reboot-the-updated-node"></a>更新されたノードを再起動するプロセスとは何ですか? 
 
 これは、アップグレードの一環として処理される必要があります。
 
-## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>ARO では etcd に格納されるデータは暗号化されますか?
+## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>ARO では etcd に格納されるデータは暗号化されますか? 
 
 etcd レベルでは暗号化されません。 このオプションをオンにすることは、現在サポートされていません。 OpenShift ではこの機能がサポートされますが、これをロードマップに加えるには、エンジニアリングの作業が必要です。 データはディスク レベルで暗号化されます。 詳細については、「[データストア層でのデータの暗号化](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html)」を参照してください。
 
-## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>基になる VM のログを顧客のログ分析システムにストリーミングできますか?
+## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>基になる VM のログを顧客のログ分析システムにストリーミングできますか? 
 
 Syslog、Docker のログ、ジャーナル、dmesg は、マネージド サービスによって処理され、顧客には公開されません。
 
@@ -133,19 +133,19 @@ Syslog、Docker のログ、ジャーナル、dmesg は、マネージド サー
 
 顧客管理者クラスター ロールで `oc adm top nodes` または `kubectl top nodes` コマンドを使用することで、ノード レベルで CPU/メモリ メトリックにアクセスできます。  また、`oc adm top pods` または `kubectl top pods` コマンドを使用して、`pods` の CPU/メモリ メトリックにアクセスすることもできます。
 
-## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO の既定のポッド スケジューラ構成とは何ですか?
+## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO の既定のポッド スケジューラ構成とは何ですか? 
 
-ARO では、OpenShift に付属する既定のスケジューラを使用します。 ARO でサポートされていない追加のメカニズムがいくつかあります。 詳細については、[既定のスケジューラのドキュメント](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler)と[マスター スケジューラのドキュメント](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json)を参照してください。
+ARO では、OpenShift に付属する既定のスケジューラを使用します。 ARO でサポートされていない追加のメカニズムがいくつかあります。 詳細については、[既定のスケジューラのドキュメント](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler)と[マスター スケジューラのドキュメント](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v16/data/master/etc/origin/master/scheduler.json)を参照してください。
 
 高度なスケジュールまたはカスタム スケジュールは、現在サポートされていません。 詳細については、[スケジュールのドキュメント](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html)を参照してください。
 
-## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>デプロイをスケールアップする場合、サービスのすべてのポッドが 1 つの障害ドメインの障害によってダウンしないことを確実にするために、Azure 障害ドメインはポッド配置にどのようにマップされますか?
+## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>デプロイをスケールアップする場合、サービスのすべてのポッドが 1 つの障害ドメインの障害によってダウンしないことを確実にするために、Azure 障害ドメインはポッド配置にどのようにマップされますか? 
 
 Azure で仮想マシン スケール セットを使用すると、既定で 5 つの障害ドメインがあります。 スケール セット内の各仮想マシン インスタンスは、これらの障害ドメインのいずれかに配置されます。 これにより、クラスター内のコンピューティング ノードにデプロイされたアプリケーションが別々の障害ドメインに確実に配置されるようになります。
 
 詳細については、「[仮想マシン スケール セットに対する障害ドメインの適切な数を選択する](https://docs.microsoft.com//azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains)」を参照してください。
 
-## <a name="is-there-a-way-to-manage-pod-placement"></a>ポッドの配置を管理する方法はありますか?
+## <a name="is-there-a-way-to-manage-pod-placement"></a>ポッドの配置を管理する方法はありますか? 
 
 顧客は、顧客管理者としてノードを取得したり、ラベルを表示したりできます。これにより、スケール セット内の任意の VM を対象にする方法が提供されます。
 
@@ -155,11 +155,11 @@ Azure で仮想マシン スケール セットを使用すると、既定で 5 
 
 - 顧客に特定のラベルまたは配置戦略の要求がある場合は、これを実現できますが、エンジニアリングの作業が必要であり、現時点ではサポートされていません。
 
-## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>ARO クラスター内のポッドの最大数とは何ですか?  ARO のノードごとの最大ポッド数とは何ですか?
+## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>ARO クラスター内のポッドの最大数とは何ですか?   ARO のノードごとの最大ポッド数とは何ですか? 
 
  Azure Red Hat OpenShift 3.11 ではノードあたりのポッド数が 50 個に制限されており、[ARO ではコンピューティング ノードが 20 個に制限されている](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)ため、ARO クラスターでサポートされるポッドの最大数は 50*20 = 1000 になります。
 
-## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>プライベート VNET にデプロイする IP 範囲を指定して、ピアリングされた他の企業 VNET との競合を回避することはできますか?
+## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>プライベート VNET にデプロイする IP 範囲を指定して、ピアリングされた他の企業 VNET との競合を回避することはできますか? 
 
 Azure Red Hat OpenShift では、VNET ピアリングをサポートしており、顧客がピアリングする VNET と、OpenShift ネットワークが動作する VNET CIDR を提供することを許可します。
 

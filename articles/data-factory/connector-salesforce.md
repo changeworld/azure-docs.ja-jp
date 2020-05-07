@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: 184c5f23ae18a58f26f4b18a884209941343e2e1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 68480f5b3b52d2347369f878802c71672213940a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418101"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146876"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 
@@ -42,7 +42,7 @@ Salesforce から、サポートされている任意のシンク データ ス�
 - Salesforce Developer、Professional、Enterprise、または Unlimited エディション。
 - Salesforce 運用環境、サンドボックス、およびカスタム ドメインをコピー先またはコピー元とするデータのコピー。
 
-Salesforce コネクタは、Salesforce の REST または Bulk API 上に構築されます。 既定では、コネクタによって、Salesforce からデータをコピーするには [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) が、Salesforce にデータをコピーするには [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) が使用されます。 また、リンクされたサービスで [`apiVersion` プロパティ](#linked-service-properties) を使用して、データの読み取りまたは書き込みに使用する API バージョンを明示的に設定することもできます。
+Salesforce コネクタは Salesforce REST/Bulk API (このコネクタはパフォーマンスが良い方を自動的に選択します) を基盤として構築されています。 既定では、コネクタによって、Salesforce からデータをコピーするには [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) が、Salesforce にデータをコピーするには [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) が使用されます。 また、リンクされたサービスで [`apiVersion` プロパティ](#linked-service-properties) を使用して、データの読み取りまたは書き込みに使用する API バージョンを明示的に設定することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 

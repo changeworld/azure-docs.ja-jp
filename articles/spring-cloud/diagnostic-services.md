@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920044"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176789"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -23,18 +23,21 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 
 監視するログ カテゴリとメトリック カテゴリを選択します。
 
+> [!TIP]
+> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)を確認してください。
+
 ## <a name="logs"></a>ログ
 
 |ログ | 説明 |
 |----|----|
-| **ApplicationConsole** | すべての顧客アプリケーションのコンソール ログ。 | 
+| **ApplicationConsole** | すべての顧客アプリケーションのコンソール ログ。 |
 | **SystemLogs** | 現在、このカテゴリーでは [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) ログのみ。 |
 
 ## <a name="metrics"></a>メトリック
 
 メトリックの完全な一覧については、[Spring Cloud のメトリック](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)に関する記事を参照してください。
 
-まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。 
+まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。
 
 ## <a name="configure-diagnostics-settings"></a>診断設定の構成
 
@@ -49,16 +52,17 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 1. **[保存]** を選択します。
 
 > [!NOTE]
-> ログまたはメトリックが生成されてから、ストレージ アカウント、イベント ハブ、または Log Analytics に表示されるまでに、最大 15 分のギャップがある場合があります。
+> 1. ログまたはメトリックが生成されてから、ストレージ アカウント、イベント ハブ、または Log Analytics に表示されるまでに、最大 15 分のギャップがある場合があります。
+> 1. Azure Spring Cloud インスタンスが削除または移動された場合、この操作は**診断設定**リソースには連鎖しません。 **診断設定**リソースは、その親 (つまり、Azure Spring Cloud インスタンス) に対して操作を行う前に手動で削除する必要があります。 そうしないと、新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または Azure Spring Cloud インスタンスが戻った場合は、以前の**診断設定**リソースが引き続きそれを拡張します。
 
 ## <a name="view-the-logs-and-metrics"></a>ログとメトリックの表示
 次の見出しで説明しているように、ログとメトリックを表示するにはさまざまな方法があります。
 
-### <a name="use-logs-blade"></a>[ログ] ブレードを使用する
+### <a name="use-the-logs-blade"></a>ログ ブレードの使用
 
 1. Azure portal で Azure Spring Cloud インスタンスに移動します。
 1. **[ログ検索]** ウィンドウを開くには、 **[ログ]** を選択します。
-1. **[ログ]** 検索ボックスで、
+1. **[テーブル]** 検索ボックスでは、以下を行うことができます
    * ログを表示するには、次のような単純なクエリを入力します。
 
     ```sql
@@ -78,7 +82,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 1. Azure portal の左ウィンドウで、 **[Log Analytics]** を選択します。
 1. 診断設定を追加したときに選択した Log Analytics ワークスペースを選択します。
 1. **[ログ検索]** ウィンドウを開くには、 **[ログ]** を選択します。
-1. **[ログ]** 検索ボックスで、
+1. **[テーブル]** 検索ボックスでは、以下を行うことができます。
    * ログを表示するには、次のような単純なクエリを入力します。
 
     ```sql
@@ -100,15 +104,14 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
-> [!NOTE]  
+> [!NOTE]
 > `==` では大文字と小文字が区別されますが、`=~` では区別されません。
 
 Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](../azure-monitor/log-query/query-language.md)」を参照してください。
 
-### <a name="use-your-storage-account"></a>ストレージ アカウントを使用する 
+### <a name="use-your-storage-account"></a>ストレージ アカウントを使用する
 
-1. Azure portal の左ウィンドウで、 **[ストレージ アカウント]** を選択します。
-
+1. Azure portal で、左側のナビゲーション パネルまたは検索ボックスから**ストレージ アカウント**を検索します。
 1. 診断設定を追加したときに選択したストレージ アカウントを選択します。
 1. **[BLOB コンテナー]** ウィンドウを開くには、 **[BLOB]** を選択します。
 1. アプリケーション ログを確認するには、**insights-logs-applicationconsole** という名前のコンテナーを検索します。
@@ -118,7 +121,7 @@ Log Analytics で使用されるクエリ言語の詳細については、「[Az
 
 ### <a name="use-your-event-hub"></a>イベント ハブを使用する
 
-1. Azure portal の左ウィンドウで、 **[イベント ハブ]** を選択します。
+1. Azure portal で、左側のナビゲーション パネルまたは検索ボックスから **[Event Hubs]** を検索します。
 
 1. 診断設定を追加したときに選択したイベント ハブを検索し、選択します。
 1. **[イベント ハブの一覧]** ウィンドウを開くには、 **[イベント ハブ]** を選択します。
@@ -153,7 +156,7 @@ AppPlatformLogsforSpring
 | where Log contains "error" or Log contains "exception"
 ```
 
-このクエリを使用してエラーを検出するか、クエリ用語を変更して特定のエラー コードまたは例外を検索します。 
+このクエリを使用してエラーを検出するか、クエリ用語を変更して特定のエラー コードまたは例外を検索します。
 
 ### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>過去 1 時間にアプリケーションから報告されたエラーと例外の数を表示する
 

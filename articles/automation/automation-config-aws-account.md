@@ -4,14 +4,14 @@ description: この記事では、AWS リソースを管理する Azure Automati
 keywords: AWS の認証, AWS の構成
 services: automation
 ms.subservice: process-automation
-ms.date: 04/17/2018
+ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff9cedfbeaa36b2fafc84637ea3141b223a064
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1bf60d17af1d9866de6a62ac538fa0bd9a15ce52
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310475"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82113393"
 ---
 # <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>アマゾン ウェブ サービスで Azure Automation Runbook を認証する
 
@@ -20,7 +20,7 @@ ms.locfileid: "81310475"
 * AWS サブスクリプションと一連の資格情報。 具体的には、AWS アクセス キーと秘密キーです。 詳細については、記事「[Using AWS Credentials (AWS 資格情報の使用)](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)」を参照してください。
 * Azure サブスクリプションと Automation アカウント。
 
-AWS で認証するには、一連の AWS 資格情報を指定して、Azure Automation から実行される Runbook を認証する必要があります。 Automation アカウントが作成済みで、それを AWS による認証に使用する場合は、次のセクションの手順に従うことができます。AWS リソースをターゲットとする Runbook 専用のアカウントにする場合は、最初に新しい [Automation アカウント](automation-offering-get-started.md)を作成し (サービス プリンシパルを作成するオプションはスキップします)、以下の手順を使用します。
+AWS で認証するには、一連の AWS 資格情報を指定して、Azure Automation から実行される Runbook を認証する必要があります。 Automation アカウントが作成済みで、それを AWS による認証に使用する場合は、次のセクションの手順に従ってください。 アカウントを、AWS リソースをターゲットとする Runbook 専用に使用する場合は、最初に新しい [Automation アカウント](automation-create-standalone-account.md)を作成します。実行アカウントを作成する手順は省略します。 アカウントを作成したら、次の手順に従って構成を完了します。
 
 ## <a name="configure-automation-account"></a>Automation アカウントの構成
 

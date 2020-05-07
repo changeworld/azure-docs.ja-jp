@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 9ed4ce6befda76069e965501a320dc110129a024
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 62972be5b363c0a22a24a9056b6f3f8b11829566
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521024"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182907"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -383,4 +383,4 @@ Azure の各場所およびサブスクリプションに対して作成でき�
 ## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使用して、または Azure [Resource Manager テンプレート](template-samples.md)を使用して、ネットワークまたはアプリケーションのセキュリティ グループを作成します
-- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します
+- 仮想ネットワーク用に [Azure Policy 定義](policy-samples.md)を作成して割り当てる

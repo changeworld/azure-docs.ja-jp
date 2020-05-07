@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 98c15fe11b64e8c177e60a2ea1eb7c50eaf69353
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1611e6d3524cc78fc20fed9d1aac6f3fd453fa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124804"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82106442"
 ---
 # <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>ログインとユーザー アカウントを使用した、認証されたユーザーに対する SQL Database および Azure Synapse Analytics へのデータベース アクセスの承認
 
@@ -39,7 +39,7 @@ ms.locfileid: "80124804"
 
 - [SQL 認証。](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-  この認証方法では、ユーザーはユーザー アカウント名と、関連付けられたパスワードを送信して接続を確立します。 このパスワードは、ログインにリンクされているユーザー アカウントのマスター データベースに格納されているか、ログインにリンクされていないユーザー アカウントのユーザー アカウントが含まれるデータベースに格納されています。
+  この認証方法では、ユーザーはユーザー アカウント名と、関連付けられたパスワードを送信して接続を確立します。 このパスワードは、ログインにリンクされているユーザー アカウントのマスター データベースに格納されているか、ログインにリンクされて "*いない*" ユーザー アカウントが含まれるデータベースに格納されています。
 - [Azure Active Directory 認証](sql-database-aad-authentication.md)
 
   この認証方法では、ユーザーはユーザー アカウント名を送信し、サービスでは Azure Active Directory に格納されている資格情報を使用するように要求します。

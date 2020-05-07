@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 3c660f7e05af43c2aad6f7283e32cfc1d85571ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52a08661ffa25bf2105791c1217cfc460034502a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066826"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188571"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
-自分の Linux VM で特定の拡張機能が使用またはインストールされないようにする必要がある場合は、CLI を使用して Azure ポリシーを作成すると、リソース グループ内で VM の拡張機能を制限できます。 
+お使いの Linux VM 上で特定の拡張機能が使用またはインストールされないようにする必要がある場合は、CLI を使用して Azure Policy の定義を作成すると、リソース グループ内での VM の拡張機能を制限できます。 
 
 このチュートリアルでは、Azure Cloud Shell で CLI を使用します。このバージョンは常に更新され最新になっています。 Azure CLI をローカルで実行する場合は、バージョン 2.0.26 以降をインストールする必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 

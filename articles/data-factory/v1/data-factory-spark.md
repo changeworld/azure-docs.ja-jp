@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ce5fb014c7d954b3e8430a86430c6a666adff204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75969244"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185593"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -247,7 +247,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 ### <a name="verify-the-results"></a>結果を確認する
 
-1. [こちらの Web サイト](https://CLUSTERNAME.azurehdinsight.net/jupyter)に移動して、HDInsight Spark クラスターの Jupyter Notebook を開始します。 HDInsight Spark クラスターのクラスター ダッシュボードを開いて、Jupyter Notebook を起動することもできます。
+1. `https://CLUSTERNAME.azurehdinsight.net/jupyter` に移動して、HDInsight Spark クラスターの Jupyter Notebook を開始します。 HDInsight Spark クラスターのクラスター ダッシュボードを開いて、Jupyter Notebook を起動することもできます。
 
 1. **[新規]**  >  **[PySpark]** を選択して、新しい Notebook を開始します。
 

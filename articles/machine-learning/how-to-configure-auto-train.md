@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8997f5cd1bed06fab8ca90e7b1cdfcb3e5ec6b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313773"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186931"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -323,7 +323,8 @@ run = experiment.submit(automl_config, show_output=True)
 >最初に依存関係が新しいマシンにインストールされます。  出力が表示されるまで、最大で 10 分間かかる場合があります。
 >`show_output` を `True` に設定すると、コンソールに出力が表示されます。
 
-### <a name="exit-criteria"></a>終了基準
+### <a name="exit-criteria"></a><a name="exit"></a> 終了基準
+
 実験を終了するために定義できるオプションがいくつかあります。
 1. 基準なし:終了パラメーターを定義しない場合、実験は、主なメトリックでそれ以上の進歩が見られなくなるまで続けられます。
 1. 一定の時間が経過したら終了する:設定で `experiment_timeout_minutes` を使用すると、実験の実行を継続する時間 (分) を定義できます。

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231719"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582783"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -100,7 +100,7 @@ Microsoft サービスの中には、すべての場所では利用できない�
 
 ## <a name="managing-new-services-added-to-products"></a>製品に追加される新しいサービスを管理する
 
-Microsoft が製品ライセンス プランに新しいサービスを追加すると、既定では、製品ライセンスを割り当てたすべてのグループでサービスが有効になります。 製品の変更に関する通知をサブスクライブしているテナントのユーザーは、今後のサービスの追加について事前に通知するメールを受け取ります。
+Microsoft が製品ライセンス プランに新しいサービスを追加すると、既定では、製品ライセンスを割り当てたすべてのグループでサービスが有効になります。 製品の変更に関する通知をサブスクライブしている組織のユーザーは、今後のサービスの追加について事前に通知するメールを受け取ります。
 
 管理者は、変更によって影響を受けるすべてのグループを確認し、各グループで新しいサービスを無効にするなどのアクションを実行できます。 たとえば、デプロイする特定のサービスのみを対象とするグループを作成した場合、それらのグループに再度アクセスし、新しく追加されたサービスが無効になっていることを確認することができます。
 
@@ -108,7 +108,7 @@ Microsoft が製品ライセンス プランに新しいサービスを追加す
 
 1. 当初、*Office 365 Enterprise E5* 製品がいくつかのグループに割り当てられています。 "*O365 E5 - Exchange のみ*" と呼ばれるこれらのグループの 1 つは、"*Exchange Online (プラン 2)* " サービスのみをメンバーに対して有効にするよう設計されています。
 
-2. ユーザーは Microsoft から、E5 製品が新しいサービス (*Microsoft Stream*) で拡張される予定であるという内容の通知を受け取ります。 サービスがテナントで利用可能になると、次の操作を行うことができます。
+2. ユーザーは Microsoft から、E5 製品が新しいサービス (*Microsoft Stream*) で拡張される予定であるという内容の通知を受け取ります。 サービスが組織で利用可能になると、次の操作を行うことができます。
 
 3. [ **[Azure Active Directory] > [ライセンス] > [すべての製品]** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ブレードに移動して、 *[Office 365 Enterprise E5]* を選択してから、 **[ライセンスされているグループ]** を選択し、その製品を持つすべてのグループの一覧を表示します。
 
@@ -128,9 +128,9 @@ Microsoft が製品ライセンス プランに新しいサービスを追加す
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>PowerShell を使用して、継承したライセンスと直接ライセンスを持つユーザーを表示する
 PowerShell スクリプトを使用して、ユーザーがライセンスを直接割り当てられたかグループから継承されたかを確認できます。
 
-1. `connect-msolservice` コマンドレットを実行してテナントを認証し、接続します。
+1. `connect-msolservice` コマンドレットを実行して組織を認証し、接続します。
 
-2. `Get-MsolAccountSku` を使用して、テナントにプロビジョニングされているすべての製品ライセンスを検出します。
+2. `Get-MsolAccountSku` を使用して、Azure AD 組織にプロビジョニングされているすべての製品ライセンスを検出します。
 
    ![Get-Msolaccountsku コマンドレットのスクリーンショット](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

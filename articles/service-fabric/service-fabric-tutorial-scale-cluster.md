@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure の Service Fabric クラ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251792"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788826"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
 
@@ -84,7 +84,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 そのため、*nt1InstanceCount* の値を更新すると、2 つ目のノード タイプのノードの数が変更されます。  100 ノードを超えてノード タイプをスケールアウトすることができない点に注意してください。  ステートフルの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 5 つ以上のノードが必要です。 ステートレスの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 2 つ以上のノードが必要です。
 
-[持続性レベル][durability]が Bronze のノード タイプをスケールインする (ノードを削除する) 場合、[それらのノードの状態を手動で削除する](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)必要があります。  持続性レベルが Silver および Gold の場合、これらの手順はプラットフォームによって自動的に行われます。
+[持続性レベル][durability]が Bronze のノード タイプをスケールインする (ノードを削除する) 場合、[それらのノードの状態を手動で削除する](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)必要があります。  持続性レベルが Silver および Gold の場合、これらの手順はプラットフォームによって自動的に行われます。
 
 ### <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
 *template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。

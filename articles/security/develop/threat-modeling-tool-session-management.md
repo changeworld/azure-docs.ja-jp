@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73161512"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203864"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | [アーティクル] |
@@ -221,7 +221,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 | **適用できるテクノロジ** | Web フォーム |
 | **属性**              | 該当なし  |
 | **参照**              | [FormsAuthentication.RequireSSL プロパティ](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **手順** | RequireSSL プロパティの値は、ASP.NET アプリケーション用の構成ファイルで、構成要素の requireSSL 属性を使うことにより設定します。 ASP.NET アプリケーション用の Web.config ファイルで、requireSSL 属性を設定することにより、SSL (Secure Sockets Layer) が forms-authentication cookie をサーバーに返す必要があるかどうかを指定できます。|
+| **手順** | RequireSSL プロパティの値は、ASP.NET アプリケーション用の構成ファイルで、構成要素の requireSSL 属性を使うことにより設定します。 ASP.NET アプリケーション用の Web.config ファイルで、requireSSL 属性を設定することにより、トランスポート層セキュリティ (TLS) (以前の SSL (Secure Sockets Layer)) が forms-authentication cookie をサーバーに返す必要があるかどうかを指定できます。|
 
 ### <a name="example"></a>例 
 次のコード例は、Web.config ファイルで requireSSL 属性を設定しています。

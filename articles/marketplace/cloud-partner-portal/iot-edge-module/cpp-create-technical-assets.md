@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b36d03695c107054549fba716f4cc27ecb7bba26
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983485"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142406"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 
 >[!Important]
->2020 年 4 月 13 日以降、パートナー センターへの IoT Edge モジュール オファーの管理の移行が開始されます。 移行後は、パートナー センターでオファーを作成および管理します。 「[IoT Edge モジュール オファーの作成](https://aka.ms/AzureIoTTechAsset)」の手順に従い、移行後のオファーを管理します。
+>2020 年 4 月 13 日以降、パートナー センターへの IoT Edge モジュール オファーの管理の移行が開始されます。 移行後、オファーはパートナー センターで作成および管理されます。 「[IoT Edge モジュール オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)」の手順に従い、移行後のオファーを管理します。
 
 この記事では、IoT Edge モジュールの技術アセットを Azure Marketplace で公開する前に満たす必要がある要件について説明します。
 
@@ -41,7 +41,7 @@ IoT Edge モジュールは、次のプラットフォーム オプションの�
 IoT Edge でサポートされているすべてのレベル 1 プラットフォーム ([Azure IoT Edge サポート](https://docs.microsoft.com/azure/iot-edge/support)に記録されているもの) をサポートします。 より良いカスタマー エクスペリエンスを提供するため、このオプションをお勧めします。 この条件を満たすモジュールが紹介されます。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - GitHub の [manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである `latest` タグとバージョン タグ (`1.0.1` など) を指定する。
-- [[Marketplace] タブ](./cpp-marketplace-tab.md)を使用して[互換性のある IoT Edge 認定デバイス](https://aka.ms/iot-edge-certified)へのリンクを追加する。 このリンクは、顧客が認定デバイスを参照または検索できる Web サイトである `https://aka.ms/iot-edge-certified` に解決されます。 この Web サイトは、 [Azure IoT Edge 認定](https://catalog.azureiotsolutions.com/)デバイス カタログとも呼ばれます。
+- [[マーケットプレース]](./cpp-marketplace-tab.md) タブを使用して [[IoT Edge 認定]](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}) にリンクを追加します。これは顧客が認定デバイスを閲覧したり、検索したりできる Web サイトです。 この Web サイトは、 [Azure IoT Edge 認定](https://catalog.azureiotsolutions.com/)デバイス カタログとも呼ばれます。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォームのサブセット
   

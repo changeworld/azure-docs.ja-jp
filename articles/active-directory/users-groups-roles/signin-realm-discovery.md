@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74024247"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582563"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory サインイン ページのホーム領域検出
 
@@ -28,23 +28,23 @@ Microsoft では、新しい認証方法用の領域を確保し、使いやす�
 
 従来、ホーム領域検出は、サインイン時に提供されるドメインによって、または一部のレガシ アプリケーションの場合はホーム領域検出ポリシーによって管理されていました。 たとえば、検出動作では、Azure Active Directory ユーザーが自分のユーザー名を間違えて入力しても、組織の資格情報コレクション画面がユーザーに表示されていました。 これは、ユーザーが組織のドメイン名 "contoso.com" を正しく入力した場合に起こります。 この動作では、個々のユーザーに合わせてエクスペリエンスをカスタマイズする細分性は許可されていません。
 
-広範な資格情報をサポートし、使いやすさを向上させるために、サインイン プロセス中に行われる Azure Active Directory のユーザー名参照動作が更新されました。 新しい動作では、サインイン ページに入力されたユーザー名に基づいてテナント設定およびユーザー レベルの設定を読み取ることで、インテリジェントな判定が行われます。 これを可能にするために、Azure Active Directory では、サインイン ページに入力されたユーザー名が指定されたドメイン内に存在するかどうかが確認されるか、または自分の資格情報を入力するようにユーザーがリダイレクトされます。
+広範な資格情報をサポートし、使いやすさを向上させるために、サインイン プロセス中に行われる Azure Active Directory のユーザー名参照動作が更新されました。 新しい動作では、サインイン ページに入力されたユーザー名に基づいて組織レベルおよびユーザー レベルの設定を読み取ることで、インテリジェントな判定が行われます。 これを可能にするために、Azure Active Directory では、サインイン ページに入力されたユーザー名が指定されたドメイン内に存在するかどうかが確認されるか、または自分の資格情報を入力するようにユーザーがリダイレクトされます。
 
 この動作の他の利点として、エラー メッセージの強化が挙げられます。 ここでは、Azure Active Directory ユーザーのみをサポートするアプリケーションにサインインする場合に表示されるエラー メッセージの改善例をいくつか示します。
 
-- ユーザー名が間違って入力されたか、ユーザー名が Azure AD にまだ同期されていない場合:
+- ユーザー名が間違って入力されたか、ユーザー名が Azure AD にまだ同期されていない場合: 
   
     ![ユーザー名が間違って入力されたか、ユーザー名が見つかりません](./media/signin-realm-discovery/typo-username.png)
   
-- ドメイン名が間違って入力された場合:
+- ドメイン名が間違って入力された場合: 
   
     ![ドメイン名が間違って入力されたか、ドメイン名が見つかりません](./media/signin-realm-discovery/typo-domain.png)
   
-- ユーザーが既知のコンシューマー ドメインを使用してサインインを試みた場合:
+- ユーザーが既知のコンシューマー ドメインを使用してサインインを試みた場合: 
   
     ![既知のコンシューマー ドメインでサインインしています](./media/signin-realm-discovery/consumer-domain.png)
   
-- パスワードは間違って入力されているが、ユーザー名は正確である場合:  
+- パスワードは間違って入力されているが、ユーザー名は正確である場合:   
   
     ![パスワードは間違って入力されているが、ユーザー名は正確です](./media/signin-realm-discovery/incorrect-password.png)
   

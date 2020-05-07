@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Manager で診断ログを有効にする
-description: Traffic Manager プロファイルの診断ログを有効にし、その結果作成されるログ ファイルにアクセスする方法について説明します。
+title: Azure Traffic Manager でリソースログを有効にする
+description: Traffic Manager プロファイルのリソース ログを有効にし、その結果作成されるログ ファイルにアクセスする方法について説明します。
 services: traffic-manager
 author: rohinkoul
 manager: twooley
@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: 0ed2ecef86795f62aa3fe5798dcd0d07adbaf9cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938669"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133898"
 ---
-# <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Azure Traffic Manager で診断ログを有効にする
+# <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager でリソースログを有効にする
 
-この記事では、Traffic Manager プロファイルの診断ログを有効にしてログ データにアクセスする方法について説明します。
+この記事では、Traffic Manager プロファイルの診断リソース ログの収集を有効にしてログ データにアクセスする方法について説明します。
 
-Azure Traffic Manager の診断ログでは、Traffic Manager プロファイル リソースの動作に関する分析情報が提供されます。 たとえば、プロファイルのログ データを使用すると、個々のプローブがエンドポイントに対してタイムアウトした理由を判断できます。
+Azure Traffic Manager のリソース ログからは、Traffic Manager プロファイル リソースの動作に関する分析情報が提供されます。 たとえば、プロファイルのログ データを使用すると、個々のプローブがエンドポイントに対してタイムアウトした理由を判断できます。
 
-## <a name="enable-diagnostic-logging"></a>診断ログの有効化
+## <a name="enable-resource-logging"></a>リソース ログの有効化
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,15 +32,15 @@ Azure Traffic Manager の診断ログでは、Traffic Manager プロファイル
 
 1. **Traffic Manager プロファイルを取得する:**
 
-    診断ログを有効にするには、Traffic Manager プロファイルの ID が必要です。 [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile) を使用して、診断ログを有効にする Traffic Manager プロファイルを取得します。 出力には、Traffic Manager プロファイルの ID 情報が含まれます。
+    リソース ログを有効にするには、Traffic Manager プロファイルの ID が必要です。 [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile) を使用して、リソース ログを有効にする Traffic Manager プロファイルを取得します。 出力には、Traffic Manager プロファイルの ID 情報が含まれます。
 
     ```azurepowershell-interactive
     Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
-2. **Traffic Manager プロファイルの診断ログを有効にする:**
+2. **Traffic Manager プロファイルのリソース ログを有効にする:** 
 
-    前のステップで取得した ID を使用して Traffic Manager プロファイルの診断ログを有効にするには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
+    前のステップで取得した ID を使用して Traffic Manager プロファイルのリソース ログを有効にするには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
@@ -55,7 +55,7 @@ Azure Traffic Manager の診断ログでは、Traffic Manager プロファイル
       Traffic Manager プロファイル リソースに関連付けられているすべてのログ カテゴリが有効と表示されることを確認します。 また、ストレージ アカウントが正しく設定されていることを検証します。
 
 ## <a name="access-log-files"></a>アクセス ログ ファイル
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 1. ポータルで Azure ストレージ アカウントに移動します。
 2. お使いの Azure ストレージ アカウントの **[概要]** ページで、 **[サービス]** の **[BLOB]** を選択します。
 3. **[コンテナー]** で **insights-logs-probehealthstatusevents** を選択し、PT1H.json ファイルまで下に移動した後、 **[ダウンロード]** をクリックしてこのログ ファイルのコピーをダウンロードして保存します。
@@ -65,13 +65,13 @@ Azure Traffic Manager の診断ログでは、Traffic Manager プロファイル
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager のログのスキーマ
 
-Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。 最上位の診断ログのスキーマについては、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/tutorial-dashboards.md)」をご覧ください。
+Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。 最上位のリソース ログのスキーマについては、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/tutorial-dashboards.md)」をご覧ください。
 
 次の表には、Azure Traffic Manager プロファイル リソースに固有のログ スキーマが含まれています。
 
 |||||
 |----|----|---|---|
-|**フィールド名**|**フィールドの型**|**[定義]**|**例**|
+|**フィールド名**|**フィールドの型**|**定義**|**例**|
 |EndpointName|String|正常性の状態が記録されている Traffic Manager エンドポイントの名前。|*myPrimaryEndpoint*|
 |Status|String|プローブされた Traffic Manager エンドポイントの正常性の状態。 状態は **Up** または **Down** のいずれかです。|**Up**|
 |||||

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560958"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790883"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -29,19 +29,6 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 - アプリケーションを管理する方法。
 - IoT Central での Azure IoT Edge 機能。
 - Azure IoT Edge ランタイム搭載デバイスをアプリケーションに接続する方法。
-
-## <a name="known-issues"></a>既知の問題
-
-- 継続的データ エクスポートで Avro 形式がサポートされていない (互換性がない)。
-- GeoJSON は現在サポートされていない。
-- マップ タイルは現在サポートされていない。
-- ジョブでは複合型がサポートされていない。
-- 配列スキーマの種類はサポートされていない。
-- C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
-- 現在、IoT Central は、米国、ヨーロッパ、アジア太平洋、オーストラリア、英国、日本で使用できます。
-- 場所が英国の場合および日本の場合、**カスタム アプリケーション (レガシ)** アプリケーション テンプレートは使用できません。
-- デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
-- [IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)のサポートはプレビュー段階であり、一部のリージョンでのみサポートされています。
 
 ## <a name="personas"></a>ペルソナ
 
@@ -152,7 +139,7 @@ IoT Central ソリューションのデバイスは、オペレーターが IoT 
 
 IoT ソリューションを大規模に運用するには、デバイス管理に対するアプローチが構造化されていることが重要です。 デバイスをクラウドに接続するだけでは十分ではありません。デバイスを常に正常な接続状態に保つ必要があります。 オペレーターは、次の IoT Central 機能を使用することで、アプリケーション ライフ サイクル全体を通じてデバイスを管理できます。
 
-### <a name="dashboards"></a>ダッシュボード 
+### <a name="dashboards"></a>ダッシュボード
 
 組み込みの[ダッシュボード](./howto-set-up-template.md#generate-default-views)は、デバイスの正常性とテレメトリを監視するための、カスタマイズ可能な UI を備えています。 [アプリケーション テンプレート](howto-use-app-templates.md)のあらかじめ構築されたダッシュボードを利用して開始するか、オペレーターのニーズに合わせた独自のダッシュボードを作成します。 ダッシュボードは、アプリケーション内のすべてのユーザーと共有することも、非公開に保つこともできます。
 
@@ -193,6 +180,18 @@ IoT Central ではアプリケーション プラットフォームとして、I
 ## <a name="quotas"></a>Quotas (クォータ)
 
 各 Azure サブスクリプションには既定のクォータが設けられており、IoT ソリューションの範囲に影響する可能性があります。 現在、IoT Central では、サブスクリプションでデプロイできるアプリケーションの数が 10 に制限されています。 この制限を引き上げる必要がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+
+## <a name="known-issues"></a>既知の問題
+
+- 継続的データ エクスポートで Avro 形式がサポートされていない (互換性がない)。
+- GeoJSON は現在サポートされていない。
+- マップ タイルは現在サポートされていない。
+- 配列スキーマの種類はサポートされていない。
+- C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
+- 現在、IoT Central は、米国、ヨーロッパ、アジア太平洋、オーストラリア、英国、日本で使用できます。
+- 場所が英国の場合および日本の場合、**カスタム アプリケーション (レガシ)** アプリケーション テンプレートは使用できません。
+- デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
+- [IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)のサポートはプレビュー段階であり、一部のリージョンでのみサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

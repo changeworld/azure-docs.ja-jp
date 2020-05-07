@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112068"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116283"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Cognitive Search での言語によるフィルター処理の方法 
 
@@ -32,7 +32,7 @@ ms.locfileid: "74112068"
 
 Azure Cognitive Search のクエリは、単一のインデックスを対象にしています。 通常、単一の検索操作で言語固有の文字列を提供したい場合は、それらの値を格納する専用のフィールドを定義します。たとえば、英語の文字列用のフィールド、フランス語用のフィールドなどです。 
 
-このサンプルには以下の[不動産のサンプル](search-get-started-portal.md)が含まれているので、次のスクリーンショットのようなフィールド定義になります。 この例では、このインデックスのフィールド用に言語アナライザーの割り当てが表示されていることに注目してください。 文字列を含むフィールドを、対象言語の言語ルールを処理するように設計されたアナライザーと組み合わせると、フル テキスト検索のパフォーマンスは向上します。
+次の例は、さまざまな言語のコンテンツを含む複数の文字列フィールドが含まれている[実際のサンプル](search-get-started-portal.md)を示しています。 このインデックスのフィールドに対する言語アナライザーの割り当てに注目してください。 文字列を含むフィールドを、対象言語の言語ルールを処理するように設計されたアナライザーと組み合わせると、フル テキスト検索のパフォーマンスは向上します。
 
   ![](./media/search-filters-language/lang-fields.png)
 
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > クエリに $filter 引数はありませんが、このユース ケースはフィルターの概念と密接に関係しているため、フィルター処理のシナリオとして紹介しています。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search のフィルター](search-filters.md)
 + [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)

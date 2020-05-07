@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b4e7d827536245a22d168c7d9923c2e5b82830b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419265"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82111795"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 > [!NOTE]
@@ -67,7 +67,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> [DAC による接続](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)を有効にするには、追加でポート 14000 ～ 14999 を開きます
+> [DAC による接続](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)を有効にするには、追加で TCP ポート 1434、14000 から 14999 を開きます
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database ゲートウェイ IP アドレス

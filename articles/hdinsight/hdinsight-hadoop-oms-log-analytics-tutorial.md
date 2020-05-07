@@ -6,19 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: e4b33e132e660fba7d06ff33c7db06c7727dd26c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: 41688792330214943eeb116dc4b5aaf7eebfeebf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162788"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192044"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
-Azure Monitor ログを有効にして HDInsight で Hadoop クラスターの操作を監視する方法と、HDInsight 監視ソリューションを追加する方法を説明します。
+Azure Monitor ログを有効にして、HDInsight で Hadoop クラスターの操作を監視する方法を説明します。 また、HDInsight 監視ソリューションを追加する方法について説明します。
 
-[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)は、可用性やパフォーマンスの維持を目的としてクラウド環境とオンプレミス環境を監視する Azure Monitor のサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)は、クラウド環境とオンプレミス環境を監視する Azure Monitor サービスです。 この監視では、可用性とパフォーマンスを維持します。 クラウド、オンプレミス環境内にあるリソースによって生成されたデータと他の監視ツールのデータを収集します。 データは、複数のソースにわたる分析を提供するために使用されます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -48,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ここでは、ジョブやデバッグ ログなどを監視するために、Azure Log Analytics ワークスペースを使用するよう既存の HDInsight Hadoop クラスターを構成します。
 
-1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](./hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 このクラスターは、新しいポータル ページで開かれます。
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。 このクラスターは、新しいポータル ページで開かれます。
 
 1. 左側の **[監視]** で **[Azure Monitor]** を選択します。
 
@@ -102,7 +103,7 @@ Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight クラスター管理ソリューションをインストールする
 
-HDInsight では、Azure Monitor ログに追加できるクラスター固有の管理ソリューションが提供されます。 [管理ソリューション](../log-analytics/log-analytics-add-solutions.md)を使用すると、Azure Monitor ログに機能を追加して、追加のデータおよび分析ツールを提供できます。 これらのソリューションは、HDInsight クラスターから重要なパフォーマンス メトリックを収集し、メトリックを検索するツールを提供します。 また、これらのソリューションは、HDInsight でサポートされるほとんどのクラスターの種類に対する視覚化とダッシュボードも提供します。 このソリューションで収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。
+HDInsight では、Azure Monitor ログに追加できるクラスター固有の管理ソリューションが提供されます。 [管理ソリューション](../log-analytics/log-analytics-add-solutions.md)を使用すると、Azure Monitor ログに機能を追加して、追加のデータおよび分析ツールを提供できます。 これらのソリューションでは、HDInsight クラスターから重要なパフォーマンス メトリックが収集されます。 メトリックを検索するためのツールが提供されます。 また、これらのソリューションは、HDInsight でサポートされるほとんどのクラスターの種類に対する視覚化とダッシュボードも提供します。 このソリューションで収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。
 
 利用可能な HDInsight ソリューションは次のとおりです。
 
@@ -113,7 +114,7 @@ HDInsight では、Azure Monitor ログに追加できるクラスター固有�
 * HDInsight Spark Monitoring
 * HDInsight Storm Monitoring
 
-管理ソリューションをインストールする手順については、「[Azure の管理ソリューション](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)」をご覧ください。 テスト用に HDInsight Hadoop Monitoring ソリューションをインストールします。 インストールが完了すると、 **[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
+管理ソリューションをインストールする手順については、[Azure の管理ソリューション](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)に関する記事をご覧ください。 テスト用に HDInsight Hadoop Monitoring ソリューションをインストールします。 インストールが完了すると、 **[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
 
 ![HDInsight 監視ソリューションのビュー](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -121,7 +122,7 @@ HDInsight では、Azure Monitor ログに追加できるクラスター固有�
 
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
 
-Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析もサポートしています。 この機能の有効化および構成の詳細については、[Azure Monitor での Linux パフォーマンス データ ソース](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)に関するページを参照してください。
+Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析がサポートされています。 詳細については、[Azure Monitor の Linux パフォーマンス データ ソース](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)に関する記事をご覧ください。
 
 ## <a name="cluster-auditing"></a>クラスターの監査
 
@@ -135,3 +136,4 @@ HDInsight では、次の種類のログをインポートすることによっ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+* [Apache Ambari と Azure Monitor ログを使用してクラスターの可用性を監視する方法](./hdinsight-cluster-availability.md)

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 38f9d0338ce4c47024d670e6d3ee89a97faecc91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d4dd69b30acb26d02218fe05a60ace9aa855ddc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238674"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194960"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure HPC Cache と Azure NetApp Files を使用する
 

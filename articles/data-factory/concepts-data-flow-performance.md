@@ -6,15 +6,17 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/27/2020
+ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409839"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188767"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory の Mapping Data Flow には、大規模なデータ変換の設計、デプロイ、および調整するためのコード不要のインターフェイスが用意されています。 マッピング データ フローに慣れていない場合は、[マッピング データ フローの概要](concepts-data-flow-overview.md)に関するページを参照してください。
 
@@ -37,7 +39,7 @@ Mapping Data Flow を設計する際に、[構成] パネルの [データ プ�
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime でコンピューティング サイズを増やす
 
-Integration Runtime でコア数を増やすと、Spark コンピューティング環境内のノード数が増加し、データの読み取り、書き込み、変換のための処理能力が向上します。
+Integration Runtime でコア数を増やすと、Spark コンピューティング環境内のノード数が増加し、データの読み取り、書き込み、変換のための処理能力が向上します。 ADF データ フローでは、コンピューティング エンジンに Spark を利用します。 Spark 環境は、メモリ最適化リソースによく適しています。
 * 処理速度を入力速度より高くしたい場合は、**コンピューティング最適化**クラスターを試してください。
 * メモリにより多くのデータをキャッシュしたい場合は、**メモリ最適化**クラスターを試してください。 メモリ最適化では、コンピューティング最適化よりもコアあたりの価格が高くなりますが、おそらく変換速度がより高速になります。
 
@@ -49,7 +51,11 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 
 既定では、デバッグを有効にすると、各データファクトリに対して自動的に作成される既定の Azure Integration Runtime が使用されます。 この既定の Azure IR は、一般コンピューティング プロパティを使用して、8 コア (ドライバー ノード用に 4、ワーカー ノード用に 4) に設定されています。 大きなデータを使用してテストする場合は、より大きな構成で Azure IR を作成することによってデバッグ クラスターのサイズを大きくし、デバッグ時に切り替えるときにこの新しい Azure IR を選択することができます。 これにより、データ フローを使用したデータ プレビューとパイプライン デバッグにこの Azure IR を使用するように、ADF に指示されます。
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL Database と Azure SQL Data Warehouse の最適化
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>TTL を使用したクラスター コンピューティングの起動時間の短縮
+
+Data Flow プロパティ下の Azure IR には、ファクトリのクラスター コンピューティング リソースのプールをスタンドアップするためのプロパティがあります。 このプールを使用すると、データ フロー アクティビティを順番に送信して実行できます。 プールが設定されると、それ以降の各ジョブでは、オンデマンドの Spark クラスターによってジョブが実行されるまでに 1-2 分かかります。 リソース プールの初期セットアップには約 6 分かかります。 有効期限 (TTL) 設定で、リソース プールを維持する時間の長さを指定します。
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Azure SQL Database と Azure SQL Data Warehouse Synapse の最適化
 
 ### <a name="partitioning-on-source"></a>ソースでのパーティション分割
 
@@ -145,7 +151,13 @@ CosmosDB シンクのスループットとバッチ プロパティの設定は�
 
 ## <a name="join-performance"></a>結合のパフォーマンス
 
-データ フロー内の結合のパフォーマンスの管理は、データ変換のライフサイクル全体にわたって実行する、非常に一般的な操作です。 ADF では、データ フローのデータを並べ替える操作は、Spark でハッシュ結合として実行されるため、結合前に行う必要はありません。 ただし、"ブロードキャスト" 結合の最適化により、パフォーマンスが向上する可能性があります。 これにより、結合関係の両側のコンテンツを Spark ノードにプッシュダウンすることで、シャッフルを回避できます。 これは、参照ルックアップに使用される小さなテーブルに適しています。 ノードのメモリに収まらない可能性がある大きいテーブルは、ブロードキャストの最適化に適していません。
+データ フロー内の結合のパフォーマンスの管理は、データ変換のライフサイクル全体にわたって実行する、非常に一般的な操作です。 ADF では、データ フローのデータを並べ替える操作は、Spark でハッシュ結合として実行されるため、結合前に行う必要はありません。 ただし、結合、存在、参照変換に適用される "ブロードキャスト" 結合の最適化により、パフォーマンスが向上する可能性があります。
+
+これにより、結合関係の両側のコンテンツを Spark ノードにプッシュダウンすることで、オンザフライのシャッフルを回避できます。 これは、参照ルックアップに使用される小さなテーブルに適しています。 ノードのメモリに収まらない可能性がある大きいテーブルは、ブロードキャストの最適化に適していません。
+
+多くの結合操作を伴うデータ フローに推奨される構成は、"ブロードキャスト" の最適化を "自動" に設定し、メモリ最適化 Azure Integration Runtime 構成を使用することです。 データ フローの実行中にメモリ不足エラーやブロードキャスト タイムアウトが発生している場合は、ブロードキャストの最適化をオフにすることができます。 ただし、これにより、データ フローのパフォーマンスが低下します。 必要に応じて、結合の左側または右側だけ、または両方をプッシュダウンするようにデータ フローに指示できます。
+
+![ブロードキャストの設定](media/data-flow/newbroad.png "ブロードキャストの設定")
 
 もう 1 つの結合の最適化は、Spark によるクロス結合の実装が回避されるような方法で結合を構築することです。 たとえば、結合条件にリテラル値を含めると、Spark ではそれが、最初に完全なデカルト積を実行した後、結合された値をフィルターで除外する要件として、見なされる場合があります。 しかし、結合条件の両側に列の値があるようにすると、この Spark に起因するデカルト積を回避し、結合とデータ フローのパフォーマンスを向上させることができます。
 

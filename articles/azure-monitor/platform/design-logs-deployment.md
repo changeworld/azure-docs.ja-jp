@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: e493b07814821496f941a4b81402ba0b49acbede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226347"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165690"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -129,7 +129,7 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 インジェスト率の既定のしきい値は、ワークスペースあたり **6 GB/分**に設定されています。 これは概算値であり、実際のサイズはログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 この上限は、エージェントまたは[データ コレクター API](data-collector-api.md) から送信されるデータには適用されません。
 
-1 つのワークスペースに高い比率でデータを送信すると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの*操作*テーブルにイベントが送信されます。 インジェスト ボリュームがインジェスト率の制限を超えている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開いて、ワークスペースの増加を要求できます。
+1 つのワークスペースに高い比率でデータを送信すると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの*操作*テーブルにイベントが送信されます。 インジェスト ボリュームがインジェスト率の制限を超えている場合、または間もなくそれに達すると予測される場合は、LAIngestionRate@microsoft.com にメールを送信するかサポート リクエストを開いて、ワークスペースの増加を要求できます。
  
 ワークスペース内でのそのようなイベントの通知を受け取るには、ゼロより大きい結果数のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。
 

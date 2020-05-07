@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587211"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187972"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Network Watcher のネットワーク セキュリティ グループ フロー ログのストレージ BLOB の削除
 
-現在、Network Watcher の[ネットワーク セキュリティ グループ (NSG) のフロー ログ](network-watcher-nsg-flow-logging-overview.md)が保持ポリシー設定に基づいて BLOB ストレージから自動的に削除されないという問題があります。 現時点では、この記事で説明されているように PowerShell スクリプトを実行して、ストレージ アカウントからフロー ログを手動で削除する必要があります。
+ストレージ アカウントからフロー ログを手動で削除する必要がある場合は、次の PowerShell スクリプトを使用できます。
+このスクリプトにより、ユーザーが指定した既存のアイテム保持ポリシーよりも古いストレージ BLOB のみが削除されます。
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>PowerShell スクリプトを実行して NSG フローログを削除する
  

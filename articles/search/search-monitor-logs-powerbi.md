@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 618033e24236d26601fafaf7b0678ee83ec973e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650158"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127878"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化する
 [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) を使用すると、お使いの検索サービスに関する操作ログとサービス メトリックを Azure Storage アカウントに格納できます。 このページでは、Power BI テンプレート アプリを使用してその情報を視覚化する方法について説明します。 このアプリでは、検索、インデックス作成、操作、サービスのメトリックに関する情報など、お使いの検索サービスに関する詳細な分析情報が提供されます。
@@ -20,7 +20,9 @@ ms.locfileid: "77650158"
 Power BI テンプレート アプリである **Azure Cognitive Search: Analyze Logs and Metrics** を [Power BI アプリのマーケットプレース](https://appsource.microsoft.com/marketplace/apps)で見つけることができます。
 
 ## <a name="how-to-get-started-with-the-app"></a>アプリの使用を開始する方法
-1. お使いの検索サービスの診断ログを有効にします。
+
+1. 検索サービスに対してメトリックとリソースのログを有効にします。
+
     1. ログをアーカイブできる [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成するか、既存のアカウントを特定します
     1. Azure portal 上で Azure Cognitive Search サービスに移動します
     1. 左側の列の [監視] セクションで、 **[診断設定]** を選択します

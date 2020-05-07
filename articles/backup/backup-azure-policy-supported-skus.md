@@ -3,18 +3,18 @@ title: Azure Policy 向けにサポートされる VM SKU
 description: バックアップによって提供される組み込みの Azure Policy 向けにサポートされている VM SKU (発行者、イメージ プラン、およびイメージ SKU 別) について説明する記事
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1b6a94b0f57ecfea946654c6cae38ac335335e00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4658d1beffe707682e173491edea1eac0db9c811
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74979940"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183621"
 ---
 # <a name="supported-vm-skus-for-azure-policy"></a>Azure Policy 向けにサポートされる VM SKU
 
 Azure Backup には、**サブスクリプションまたはリソース グループ内の指定された場所にあるすべての Azure VM** に割り当てることができる組み込みのポリシー (Azure Policy を使用) が用意されています。 このポリシーが特定のスコープに割り当てられると、そのスコープ内に作成されたすべての新しい VM は、**同じ場所およびサブスクリプション内の既存のコンテナー**にバックアップするように自動的に構成されます。 次の表は、このポリシーでサポートされているすべての VM SKU を示しています。
 
-### <a name="supported-vms"></a>**サポートされている VM**
+## <a name="supported-vms"></a>サポートされている VM*
 
 **ポリシー名:** 特定の場所の VM を同じ場所にある既存の中央コンテナーにバックアップするように構成する
 
@@ -46,7 +46,7 @@ MicrosoftWindowsServer | WindowsServerSemiAnnual | Datacenter-Core-1709-with-Con
 MicrosoftWindowsServer | WindowsServerSemiAnnual | Datacenter-Core-1803-with-Containers-smalldisk
 MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | すべてのイメージ SKU
 MicrosoftSQLServer | SQL2016SP1-WS2016 | すべてのイメージ SKU
-MicrosoftSQLServer | SQL2016-WS2016  | すべてのイメージ SKU
+MicrosoftSQLServer | SQL2016-WS2016 | すべてのイメージ SKU
 MicrosoftSQLServer | SQL2016SP1-WS2016-BYOL | すべてのイメージ SKU
 MicrosoftSQLServer | SQL2012SP3-WS2012R2 | すべてのイメージ SKU
 MicrosoftSQLServer | SQL2016-WS2012R2 | すべてのイメージ SKU
@@ -58,7 +58,7 @@ MicrosoftSQLServer | SQL2016-WS2012R2-BYOL | すべてのイメージ SKU
 MicrosoftRServer | MLServer-WS2016 | すべてのイメージ SKU
 MicrosoftVisualStudio | VisualStudio | すべてのイメージ SKU
 MicrosoftVisualStudio | Windows | すべてのイメージ SKU
-MicrosoftDynamicsAX | Dynamics  | Pre-Req-AX7-Onebox-U8
+MicrosoftDynamicsAX | Dynamics | Pre-Req-AX7-Onebox-U8
 microsoft-ads | windows-data-science-vm | すべてのイメージ SKU
 MicrosoftWindowsDesktop | Windows-10 | すべてのイメージ SKU
 RedHat | RHEL | 6.7、6.8、6.9、6.10、7.2、7.3、7.4、7.5、7.6、7.7

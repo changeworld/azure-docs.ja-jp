@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c89fae09583c96cf8139885fe2554cf6784b4e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 499e4cb2cb62ccc170637bad60898b38b4ff3be7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269821"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204255"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -76,7 +76,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [XSS 保護フィルター](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
+| **参照**              | [XSS 保護フィルター](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
 | **手順** | <p>ブラウザーのクロスサイト スクリプト フィルターは、X-XSS-Protection 応答ヘッダー構成によって制御されます。 この応答ヘッダーには、次の値を設定できます。</p><ul><li>`0:` フィルターを無効にします</li><li>`1: Filter enabled` クロスサイト スクリプティング攻撃が検出された場合、攻撃を阻止するために、ブラウザーはページをサニタイズします</li><li>`1: mode=block : Filter enabled` クロスサイト スクリプティング (XSS) 攻撃が検出された場合、ブラウザーは、ページをサニタイズするのではなく、レンダリングが行われないようにします</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled` ブラウザーはページをサニタイズして、違反をレポートします。</li></ul><p>これは、任意の URI に詳細情報を送信する CSP 違反レポートを使用する Chromium 機能です。 最後の 2 つのオプションは、安全な値と見なされます。</p>|
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする
@@ -99,7 +99,7 @@ Example: var str="alert(1)"; eval(str);
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | サード パーティ製の JavaScript は、信頼できるソースからのみ参照してください。 参照エンドポイントは必ず SSL 上に配置されている必要があります。 |
+| **手順** | サード パーティ製の JavaScript は、信頼できるソースからのみ参照してください。 参照エンドポイントは必ず TLS 上に配置されている必要があります。 |
 
 ## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>認証された ASP.NET ページに、UI Redressing (クリックジャッキング) に対する防御が組み込まれていることを確認する
 
@@ -109,7 +109,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **手順** | <p>クリックジャッキング (UI Redressing 攻撃) では、攻撃者は透明または不透明な複数のレイヤーを使用して、実際のページではなく、その上にある別のページのボタンやリンクをユーザーにクリックさせようとします。</p><p>このレイヤーは iframe で悪意のあるページを作成することで実現し、これにより攻撃対象のページが読み込まれます。 つまり、攻撃者は、攻撃対象ユーザーのページ クリックを "ハイジャック" して、そのユーザーを別のページ (ほとんどの場合、他のアプリケーションまたはドメイン、あるいはその両方が所有するページ) に誘導します。 クリックジャッキング攻撃を防ぐには、他のドメインからのフレーミングを許可しないようブラウザーに指示する、適切な X-Frame-Options HTTP 応答ヘッダーを設定します。</p>|
 
 ### <a name="example"></a>例
