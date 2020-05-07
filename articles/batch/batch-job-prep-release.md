@@ -1,25 +1,15 @@
 ---
-title: コンピューティング ノードでジョブを準備し完了するタスクの作成 - Azure Batch
+title: コンピューティング ノードでジョブを準備し完了するタスクの作成
 description: Azure Batch コンピューティング ノード間のデータ転送を最小にするにはジョブ レベルの準備タスクを使用し、ジョブの完了時にノードをクリーンアップするには解放タスクを使用します。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/17/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9c88994a65d4d2cb8c8373d2bbb4aa2877fe465
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586786"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116062"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
 
@@ -30,7 +20,7 @@ ms.locfileid: "77586786"
 
 ジョブの準備タスクとジョブの解放タスクは、ファイルのダウンロード ([リソース ファイル][net_job_prep_resourcefiles])、管理者特権での実行、カスタム環境変数、最大実行期間、再試行回数、ファイルのリテンション期間などの使い慣れた Batch タスク機能を提供します。
 
-以下のセクションでは、[Batch .NET][net_job_prep] ライブラリの [JobPreparationTask][net_job_release] クラスと [JobReleaseTask][api_net] クラスの使用方法について説明します。
+以下のセクションでは、[Batch .NET][api_net] ライブラリの [JobPreparationTask][net_job_prep] クラスと [JobReleaseTask][net_job_release] クラスの使用方法について説明します。
 
 > [!TIP]
 > ジョブの準備タスクと解放タスクは、"共有プール" 環境で特に役に立ちます。この環境では、コンピューティング ノードのプールが異なるジョブの実行間で維持され、多くのジョブによって使用されます。

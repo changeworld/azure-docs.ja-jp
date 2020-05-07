@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: e278bcedc48226a59f258ad7d7064fa224737496
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81308981"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193396"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. クラスターが起動するには少し時間がかかります。 実行状態になると、次のコマンドを使用してログを表示したり、ダッシュボードに移動してクラスターの正常性を確認したりすることができます ([http://localhost:19080](http://localhost:19080))。
+5. クラスターが起動するには少し時間がかかります。 実行状態になると、次のコマンドを使用してログを表示したり、ダッシュボードに移動してクラスターの正常性を確認したりすることができます (`http://localhost:19080`)。
 
     ```bash 
     docker logs sftestcluster

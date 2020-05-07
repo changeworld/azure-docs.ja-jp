@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 87a335f44a31436de735395adbee9035493cbbd2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263422"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176160"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -72,7 +72,7 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 
 ### <a name="optimize-throughput"></a>スループットを最適化する
 
-コマンドで `cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドでは、ジョブを再開し、スループットを 1 秒あたり `10` メガビット (MB) に制限します。 
+コマンドで `cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドでは、ジョブを再開し、スループットを 1 秒あたり `10` メガバイト (MB) に制限します。 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10

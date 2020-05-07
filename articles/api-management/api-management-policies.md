@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71219476"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128732"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。  
@@ -50,7 +50,7 @@ ms.locfileid: "71219476"
     -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付きコンテキスト変数の値を、後でアクセスできるように保持します。  
     -   [要求メソッドを設定する](api-management-advanced-policies.md#SetRequestMethod) - 要求の HTTP メソッドを変更できます。  
     -   [状態コードを設定する](api-management-advanced-policies.md#SetStatus) - HTTP 状態コードを指定された値に変更します。  
-    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、診断ログにカスタム トレースを追加します。  
+    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、およびリソース ログにカスタム トレースを追加します。  
     -   [待機](api-management-advanced-policies.md#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。  
 -   [認証ポリシー](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [基本認証](api-management-authentication-policies.md#Basic) -基本認証を使用してバックエンド サービスで認証します。  

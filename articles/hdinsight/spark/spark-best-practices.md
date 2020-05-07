@@ -1,22 +1,22 @@
 ---
-title: Azure HDInsight 上の Apache Spark のベスト プラクティス
-description: Azure HDInsight 上で Apache Spark を使用する際のベスト プラクティスを紹介します。
+title: Azure HDInsight での Apache Spark のガイドライン
+description: Azure HDInsight で Apache Spark を使用する際のガイドラインを紹介します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71106883"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562340"
 ---
-# <a name="apache-spark-best-practices"></a>Apache Spark のベスト プラクティス
+# <a name="apache-spark-guidelines"></a>Apache Spark のガイドライン
 
-この記事では、Azure HDInsight 上で Apache Spark を使用する際のさまざまなベスト プラクティスを紹介します。
+この記事では、Azure HDInsight で Apache Spark を使用する際のさまざまなガイドラインを紹介します。
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>Spark ジョブを実行または送信する方法
 
@@ -28,6 +28,10 @@ ms.locfileid: "71106883"
 | IntelliJ | [チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成](./apache-spark-create-standalone-application.md) |
 | Zeppelin Notebook | [Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](./apache-spark-zeppelin-notebook.md) |
 | Livy を使用したリモート ジョブの送信 | [Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する](./apache-spark-livy-rest-interface.md) |
+|[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。|
+|[Apache Livy](./apache-spark-livy-rest-interface.md)|Livy を使用すると、対話型の Spark シェルを実行したり、Spark で実行されるバッチ ジョブを送信したりすることができます。|
+|[Apache Spark 向け Azure Data Factory](../../data-factory/transform-data-using-spark.md)|Data Factory パイプラインの Spark アクティビティでは、独自のまたはオンデマンドの HDInsight クラスターで Spark プログラムを実行します。|
+|[Apache Hive 向け Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md)|Data Factory パイプラインの HDInsight Hive アクティビティでは、独自またはオンデマンドの HDInsight クラスターで Hive クエリを実行します。|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>Spark ジョブを監視およびデバッグする方法
 

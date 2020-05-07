@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565742"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594867"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
 この記事では、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs ファイルは、AdHandlerPlugin を作成し、Time
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>広告をサポートする IOS ビデオ プレーヤーの実装
-Microsoft Media Platform: Player Framework for iOS には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)からダウンロードできます。 GitHub ページには、Player Framework に関する追加情報とプレーヤー サンプルの概要が記載された Wiki へのリンク ([Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)) があります。
+Microsoft Media Platform: Player Framework for iOS には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)からダウンロードできます。 GitHub ページには、Player Framework に関する追加情報とプレーヤー サンプルの概要が記載された Wiki へのリンク ([Azure Media Player Wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)) があります。
 
 ### <a name="scheduling-ads-with-vmap"></a>VMAP を使用した広告のスケジュール設定
 次のサンプルは、VMAP ファイルを使用して広告のスケジュールを設定する方法を示しています。

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: c6b845eda1df39ccf5e4b2b1d6a615f3bc932b66
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474941"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133616"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 
@@ -196,7 +196,7 @@ Azure Application Gateway は、Web アプリケーションに対するトラ�
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Network Watcher
 Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。 詳細については、「[Azure Network Watcher とは](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Monitor
-ExpressRoute 回線のメトリック、診断ログ、アラートを表示する方法については、「[ExpressRoute の監視、メトリック、およびアラート](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
+ExpressRoute 回線のメトリック、リソース ログ、アラートを表示する方法については、「[ExpressRoute の監視、メトリック、およびアラート](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
 ### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Monitor
 Azure Monitor は、クラウドおよびオンプレミス環境の利用統計情報を収集、分析し、それに対応する包括的なソリューションを提供することにより、アプリケーションの可用性とパフォーマンスを最大化します。 このツールは、ご利用のアプリケーションがどのように実行されているかを把握するのに役立ちます。さらに、このツールにより、そのアプリケーションに影響している問題点およびアプリケーションが依存しているリソースを事前に明らかにしておくことができます。 詳細については、「[Azure Monitor の概要](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
 ### <a name="virtual-network-tap"></a><a name="vnettap"></a>仮想ネットワーク TAP

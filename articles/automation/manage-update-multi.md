@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676442"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731987"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>複数の Azure 仮想マシンの更新を管理する
 
@@ -21,7 +21,7 @@ Azure Automation Update Management を使用すると、Windows および Linux 
 - 必要な更新プログラムのインストールをスケジュールします。
 - 展開結果を見直して、Update Management が有効になっているすべての仮想マシンに更新プログラムが正常に適用されたことを確認します。
 
-Update Management のシステム必要条件の詳細については、[Update Management のクライアント要件](automation-update-management.md#clients)に関するページを参照してください。
+Update Management のシステム必要条件の詳細については、[Update Management のクライアント要件](automation-update-management.md#client-requirements)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

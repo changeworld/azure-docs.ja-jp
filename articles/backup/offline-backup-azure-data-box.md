@@ -3,19 +3,19 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672966"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160957"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
 [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) を使うと、Microsoft Azure Recovery Services (MARS) の大規模な初期バックアップをオフラインで (ネットワークを使用せずに) Recovery Services コンテナーにシードできます。 このプロセスにより、待機時間の長いネットワークを介して大量のバックアップ データをオンラインで移動する場合に消費される時間とネットワーク帯域幅の両方を節約することができます。 この拡張機能は、現在プレビュー段階です。 Azure Data Box に基づくオフライン バックアップには、[Azure Import/Export サービスに基づくオフライン バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)に比べて、次の 2 つの利点があります。
 
-* Azure と互換性のある独自のディスクとコネクタを用意する必要がありません。 Azure Data Box では、選択された [Data Box SKU](https://azure.microsoft.com/services/databox/data/) に関連するディスクを発送します。
-* Azure Backup (MARS エージェント) は、Azure Data Box のサポートされている SKU に直接バックアップ データを書き込むことができます。 この機能を使うと、初期バックアップ データのステージング場所をプロビジョニングする必要がなくなります。 また、そのデータをフォーマットしてディスクにコピーするためのユーティリティも必要ありません。
+- Azure と互換性のある独自のディスクとコネクタを用意する必要がありません。 Azure Data Box では、選択された [Data Box SKU](https://azure.microsoft.com/services/databox/data/) に関連するディスクを発送します。
+- Azure Backup (MARS エージェント) は、Azure Data Box のサポートされている SKU に直接バックアップ データを書き込むことができます。 この機能を使うと、初期バックアップ データのステージング場所をプロビジョニングする必要がなくなります。 また、そのデータをフォーマットしてディスクにコピーするためのユーティリティも必要ありません。
 
 ## <a name="azure-data-box-with-the-mars-agent"></a>MARS エージェントを使用した Azure Data Box
 
@@ -60,10 +60,10 @@ Azure Data Box を使用して MARS エージェントからデータをシー�
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure サブスクリプションと必要なアクセス許可
 
-* このプロセスには、Azure サブスクリプションが必要です。
-* このプロセスでは、オフライン バックアップ ポリシーを実行するよう指定されたユーザーが Azure サブスクリプションの "所有者" である必要があります。
-* Data Box ジョブと、(データをシード処理する必要がある) Recovery Services コンテナーは、同じサブスクリプション内に存在する必要があります。
-* Azure Data Box ジョブと Recovery Services コンテナーに関連するターゲット ストレージ アカウントは、同じリージョンに配置することをお勧めします。 ただし、これは必須ではありません。
+- このプロセスには、Azure サブスクリプションが必要です。
+- このプロセスでは、オフライン バックアップ ポリシーを実行するよう指定されたユーザーが Azure サブスクリプションの "所有者" である必要があります。
+- Data Box ジョブと、(データをシード処理する必要がある) Recovery Services コンテナーは、同じサブスクリプション内に存在する必要があります。
+- Azure Data Box ジョブと Recovery Services コンテナーに関連するターゲット ストレージ アカウントは、同じリージョンに配置することをお勧めします。 ただし、これは必須ではありません。
 
 ### <a name="get-azure-powershell-370"></a>Azure PowerShell 3.7.0 を入手する
 
@@ -77,7 +77,7 @@ Azure Data Box を使用して MARS エージェントからデータをシー�
     Get-Module -ListAvailable AzureRM*
     ```
 
-1.  出力に 3.7.0 よりも後のバージョンが表示される場合は、「手順 2」を実行します。 それ以外の場合は「手順 3」に進みます。
+1. 出力に 3.7.0 よりも後のバージョンが表示される場合は、「手順 2」を実行します。 それ以外の場合は「手順 3」に進みます。
 
 #### <a name="step-2-uninstall-the-powershell-version"></a>手順 2:PowerShell のバージョンをアンインストールする
 
@@ -99,11 +99,11 @@ PowerShell の現在のバージョンをアンインストールします。
 
 AzureRM モジュールが存在しないことを確認したら、次のいずれかの方法を使用してバージョン 3.7.0 をインストールします。
 
-* GitHub から[このリンク](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017)を使用します。
+- GitHub から[このリンク](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017)を使用します。
 
 または、次のことができます。
 
-* PowerShell ウィンドウで次のコマンドを実行します。
+- PowerShell ウィンドウで次のコマンドを実行します。
 
     ```powershell
     Install-Module -Name AzureRM -RequiredVersion 3.7.0
@@ -148,7 +148,7 @@ Azure Data Box インスタンス (最大 100 TB) を注文した場合は、こ
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Azure Data Box インスタンスをローカル システムとしてマウントする
 
-MARS エージェントはローカル システム コンテキストで動作するため、Azure Data Box インスタンスが接続されているマウント パスに提供されるのと同じレベルの特権が必要です。 
+MARS エージェントはローカル システム コンテキストで動作するため、Azure Data Box インスタンスが接続されているマウント パスに提供されるのと同じレベルの特権が必要です。
 
 NFS プロトコルを使用して Data Box デバイスをローカル システムとしてマウントできることを確認するには:
 
@@ -238,14 +238,14 @@ MARS エージェントによって、選択したデータの Azure Data Box �
 
 このセクションでは、Azure Data Box ディスクへのデータのバックアップが正常に完了した後に実行する手順について説明します。
 
-* こちらの記事の手順に従って、[Azure Data Box Disk を Azure に発送](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)します。 Azure Data Box の 100 TB のデバイスを使用した場合は、こちらの手順に従って [Azure Data Box デバイスを Azure に発送](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)してください。
+- こちらの記事の手順に従って、[Azure Data Box Disk を Azure に発送](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)します。 Azure Data Box の 100 TB のデバイスを使用した場合は、こちらの手順に従って [Azure Data Box デバイスを Azure に発送](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)してください。
 
-* Azure portal で [Data Box ジョブを監視](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify)します。 Azure Data Box ジョブが完了すると、MARS エージェントによって、次回のスケジュールされたバックアップ時に、ストレージ アカウントから Recovery Services コンテナーにデータが自動的に移動されます。 その後、回復ポイントが正常に作成されると、そのバックアップ ジョブは "*完了したジョブ*" としてマークされます。
+- Azure portal で [Data Box ジョブを監視](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify)します。 Azure Data Box ジョブが完了すると、MARS エージェントによって、次回のスケジュールされたバックアップ時に、ストレージ アカウントから Recovery Services コンテナーにデータが自動的に移動されます。 その後、回復ポイントが正常に作成されると、そのバックアップ ジョブは "*完了したジョブ*" としてマークされます。
 
     >[!NOTE]
     >MARS エージェントにより、ポリシー作成時にスケジュールされた時刻にバックアップがトリガーされます。 これらのジョブでは、ジョブが完了するまで "Azure Data Box ジョブの完了を待機中" というフラグが立ちます。
 
-* MARS エージェントによって最初のバックアップに対応する回復ポイントが正常に作成されたら、Azure Data Box ジョブに関連するストレージ アカウントまたは特定のコンテンツを削除できます。
+- MARS エージェントによって最初のバックアップに対応する回復ポイントが正常に作成されたら、Azure Data Box ジョブに関連するストレージ アカウントまたは特定のコンテンツを削除できます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -307,8 +307,8 @@ Microsoft Azure Backup (MAB) エージェントによって、テナントに Az
     >[!NOTE]
     > Azure ユーザー ID を取得するには、次のいずれかの操作を実行します。
     >
-    >* Azure に接続された PowerShell から、`Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` コマンドを実行します。
-    > * *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup* の *CurrentUserId* という名前のレジストリ パスに移動します。
+    >- Azure に接続された PowerShell から、`Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` コマンドを実行します。
+    > - *CurrentUserId* という名前のレジストリ パス `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` に移動します。
 
 6. 前の手順で追加した文字列を右クリックして、 **[変更]** を選択します。 値として、手順 2 でエクスポートした証明書の拇印を入力します。 **[OK]** を選択します。
 

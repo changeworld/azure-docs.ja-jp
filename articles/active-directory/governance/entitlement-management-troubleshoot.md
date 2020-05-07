@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128470"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207246"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -87,13 +87,19 @@ ms.locfileid: "80128470"
 
     要求に配信エラーが発生した場合、要求の状態は **[Undelivered]\(未配信)** または **[Partially delivered]\(一部配信済み)** になります。
 
-    配信エラーが発生した場合は、要求の詳細ウィンドウに配信エラーの数が表示されます。
+    配信エラーが発生した場合、配信エラーの数が要求の詳細ペインに表示されます。
 
 1. この数をクリックすると、要求のすべての配信エラーが表示されます。
 
 ### <a name="reprocess-a-request"></a>要求を再処理する
 
-要求でエラーが発生した場合、要求を再処理してもう一度試すことができます。 再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。
+アクセス パッケージの再処理要求をトリガーした後にエラーが発生した場合は、システムで要求が再処理されるまで待つ必要があります。 システムでは数時間にわたって再処理が複数回試行されるため、この間に再処理を強制することはできません。 
+
+再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。
+
+- 試用期間中にエラーが修正されると、要求の状態が **[Delivering]\(配信中\)** に変わります。 要求は、ユーザーからの追加のアクションなしで再処理されます。
+
+- 試用期間中にエラーが修正されなかった場合、要求の状態は **[Delivery failed]\(配信が失敗しました\)** または **[partially delivered]\(部分的に配信されました\)** である可能性があります。 その場合は **[再処理]** ボタンを使用できます。 要求の再処理には 7 日間かかります。
 
 **事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 

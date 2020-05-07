@@ -1,23 +1,23 @@
 ---
 title: Hadoop での SSH の使用 - Azure HDInsight
-description: Secure Shell (SSH) を使用して HDInsight にアクセスできます。 このドキュメントでは、Windows、Linux、Unix、または macOS の各クライアントから ssh および scp コマンドを使用して HDInsight に接続する方法について説明します。
+description: Secure Shell (SSH) を使用して HDInsight にアクセスできます。 このドキュメントでは、Windows、Linux、Unix、または macOS の各クライアントから SSH コマンドを使用して HDInsight に接続する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: a53037b5f6c43de0e08bb1c5143f27d14600ca62
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 476f265d9658d08ef62647e707c0594af8cda480
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381418"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192027"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
-[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Apache Hadoop に安全に接続する方法について説明します。 仮想ネットワーク経由の接続については、「[Azure HDInsight 仮想ネットワーク アーキテクチャ](./hdinsight-virtual-network-architecture.md)」および [Azure HDInsight クラスター用の仮想ネットワーク デプロイの計画](./hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。
+[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Apache Hadoop に安全に接続する方法について説明します。 仮想ネットワークを介した接続については、「[Azure HDInsight 仮想ネットワーク アーキテクチャ](./hdinsight-virtual-network-architecture.md)」を参照してください。 また、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](./hdinsight-plan-virtual-network-deployment.md)に関する記事も参照してください。
 
 次の表に、SSH クライアントを使用して HDInsight に接続する際に必要なアドレスとポートの情報を示します。
 
@@ -89,7 +89,7 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 | ------- | ------- |
 | Azure portal | __[SSH のクラスター ログイン パスワードを使用する]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>![HDInsight クラスター作成時の SSH 公開キー ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
 | Azure PowerShell | [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `-SshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。|
-| Azure CLI | [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
+| Azure CLI | [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
 | Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
 
 ## <a name="authentication-password"></a>認証: Password
@@ -108,7 +108,7 @@ SSH アカウントは、パスワードを使用してセキュリティ保護�
 | --------------- | ---------------- |
 | Azure portal | 既定では、SSH ユーザー アカウントには、クラスター ログイン アカウントと同じパスワードがあります。 別のパスワードを使用するには、 __[SSH のクラスター ログイン パスワードを使用する]__ チェック ボックスをオフにし、 __[SSH パスワード]__ フィールドにパスワードを入力します。</br>![HDInsight クラスター作成時の SSH パスワード ダイアログ ボックス](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
 | Azure PowerShell | [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `--SshCredential` パラメーターを使用して、SSH ユーザー アカウントの名前とパスワードを含む `PSCredential` オブジェクトを渡します。 |
-| Azure CLI | [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドの `--ssh-password` パラメーターを使用して、パスワードの値を提供します。 |
+| Azure CLI | [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドの `--ssh-password` パラメーターを使用して、パスワードの値を提供します。 |
 | Resource Manager テンプレート | テンプレートを使用したパスワードの使用例については、[SSH パスワードを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) ファイルの `linuxOperatingSystemProfile` 要素は、クラスターの作成時に SSH アカウントの名前とパスワードを Azure に渡すために使用されます。|
 
 ### <a name="change-the-ssh-password"></a>SSH パスワードを変更する
@@ -229,35 +229,8 @@ SSH アカウントが __SSH キー__ を使用してセキュリティで保護
 
 5. SSH を使用して、クラスターのエッジ ノードまたはヘッド ノードに接続します。 次に、SSH コマンドを使用して、ワーカー ノードまたは Zookeeper ノードに接続します。 転送されたキーを使用して、接続が確立します。
 
-## <a name="copy-files"></a>ファイルのコピー
-
-`scp` ユーティリティを使用すると、クラスター内の個々のノード間でファイルをコピーできます。 たとえば、次のコマンドは、ローカル システムの `test.txt` ディレクトリをプライマリ ヘッド ノードにコピーします。
-
-```bash
-scp test.txt sshuser@clustername-ssh.azurehdinsight.net:
-```
-
-`:` の後にパスが指定されていないため、ファイルは `sshuser` ホーム ディレクトリに配置されます。
-
-次の例は、`test.txt` ファイルをプライマリ ヘッド ノードの `sshuser` ホーム ディレクトリからローカル システムにコピーします。
-
-```bash
-scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
-```
-
-> [!IMPORTANT]  
-> `scp` は、クラスター内の個々のノードのファイル システムだけにアクセスできます。 クラスターの HDFS と互換性のあるストレージ内のデータにアクセスするために使用することはできません。
->
-> SSH セッションから使用するためのリソースをアップロードする必要がある場合は、`scp` を使用します。 たとえば、Python スクリプトをアップロードし、SSH セッションからスクリプトを実行します。
->
-> HDFS と互換性のあるストレージに直接データを読み込む方法の詳細については、以下のドキュメントを参照してください。
->
-> * [Azure Storage を使用する HDInsight](hdinsight-hadoop-use-blob-storage.md)
->
-> * [Azure Data Lake Storage を使用する HDInsight](hdinsight-hadoop-use-data-lake-store.md)
-
 ## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で SSH トンネリングを使用する](hdinsight-linux-ambari-ssh-tunnel.md)
-* [HDInsight で仮想ネットワークを計画する](hdinsight-plan-virtual-network-deployment.md)
 * [HDInsight でエッジ ノードを使用する](hdinsight-apps-use-edge-node.md#access-an-edge-node)
+* [HDInsight で SCP を使用する](./use-scp.md)

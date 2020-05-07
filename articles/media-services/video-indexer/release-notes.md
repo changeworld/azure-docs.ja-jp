@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933859"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131210"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,45 @@ ms.locfileid: "76933859"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="april-2020"></a>2020 年 4 月
+
+### <a name="new-widget-parameters-capabilities"></a>新しいウィジェット パラメーターの機能
+
+**Insights** ウィジェットには、`language` と `control` という新しいパラメーターが含まれています。
+
+**プレーヤー** ウィジェットには、新しい `locale` パラメーターがあります。 `locale` と `language` パラメーターは両方とも、プレーヤーの言語を制御します。
+
+詳細については、「[ウィジェットの種類](video-indexer-embed-widgets.md#widget-types)」セクションを参照してください。 
+
+### <a name="new-player-skin"></a>新しいプレーヤー スキン
+
+新しいプレーヤー スキンが、更新されたデザインで利用可能になりました。
+
+### <a name="prepare-for-upcoming-changes"></a>今後予定されている変更の準備をする
+
+* 現在、次の API からアカウント オブジェクトが返されます。
+
+    * [Create-Paid-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)
+    * [Get-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account)
+    * [Get-Accounts-Authorization](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
+    * [Get-Accounts-With-Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
+ 
+    アカウント オブジェクトには、[Video Indexer Web サイト](https://www.videoindexer.ai/)の場所をポイントする `Url` フィールドがあります。
+有料アカウントの場合、`Url` フィールドは現在、パブリック Web サイトではなく、内部 URL をポイントしています。
+数週間のうちに、Microsoft はこれを変更し、すべてのアカウント (試用版および有料版) に [Video Indexer Web サイト](https://www.videoindexer.ai/)の URL を返すようになります。
+
+    内部 URL を使用しないでください。[Video Indexer パブリック API](https://api-portal.videoindexer.ai/) を使用する必要があります。
+* Video Indexer URL をアプリケーションに埋め込んでいて、URL が [Video Indexer Web サイト](https://www.videoindexer.ai/) または [Video Indexer API エンドポイント](https://api.videoindexer.ai)をポイントしておらず、リージョン エンドポイント (`https://wus2.videoindexer.ai` など) をポイントしている場合は、URL を再生成してください。
+
+   次のいずれかでこれを行うことができます。
+
+    * URL を Video Indexer ウィジェット API をポイントする URL (たとえば、[Insights ウィジェット](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) に置き換える
+    * Video Indexer Web サイトを使用して、新しい埋め込み URL を生成する
+         
+         **[再生]** を押してビデオのページに移動し、 **&lt;/&gt; [埋め込み]** ボタンをクリックして、その URL をご利用のアプリケーションにコピーします。
+   
+    リージョンの URL はサポートされておらず、今後数週間のうちにブロックされます。
 
 ## <a name="january-2020"></a>2020 年 1 月
  

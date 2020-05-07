@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: lahugh
-ms.openlocfilehash: 764dc93608ae3b8882b7048a722c6d3415cbc644
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7df8dd439008258ea1b4986054660fb0fb9070ce
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885788"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204187"
 ---
 # <a name="mv2-series"></a>Mv2 シリーズ
 
@@ -37,7 +37,7 @@ Premium Storage キャッシュ:サポートされています
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> Mv2 シリーズの VM は第 2 世代のみです。 Linux を使用している場合、イメージを検索して選択する方法については、[Azure での第 2 世代 VM のサポート](./linux/generation-2.md)に関するページを参照してください。 Windows を使用している場合、イメージを検索して選択する方法については、[Azure での第 2 世代 VM のサポート](./windows/generation-2.md)に関するページを参照してください。 次のような 4 つのすべて異なる Mv2 シリーズ VM の種類のリストに必要な最低限のオペレーティング システム リリース:
+<sup>1</sup> Mv2 シリーズの VM は第 2 世代のみであり、第 2 世代でサポートされているイメージのサブセットがサポートされます。 Mv2 シリーズでサポートされているイメージの完全な一覧については、以下を参照してください。 Linux を使用している場合、イメージを検索して選択する方法については、[Azure での第 2 世代 VM のサポート](./linux/generation-2.md)に関するページを参照してください。 Windows を使用している場合、イメージを検索して選択する方法については、[Azure での第 2 世代 VM のサポート](./windows/generation-2.md)に関するページを参照してください。 
 
 - Windows Server 2019 以降
 - SUSE Linux Enterprise Server 12 SP4 以降または SUSE Linux Enterprise Server 15 SP1 以降

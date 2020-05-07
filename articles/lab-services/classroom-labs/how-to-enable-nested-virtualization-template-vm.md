@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 59b32834369f76d39bb4a253dad4ec541e7ef999
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502013"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184675"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Azure Lab Services のテンプレート仮想マシンで入れ子になった仮想化を有効にする
 
@@ -40,7 +40,7 @@ ms.locfileid: "79502013"
 入れ子になった仮想化を使用してラボを設定する前に、次の点を考慮する必要があります。
 
 - 新しいラボを作成するときは、仮想マシン サイズとして **[Medium (Nested Virtualization)]\(中 (入れ子になった仮想化)\)** または **[Large (Nested virtualization)]\(大 (入れ子になった仮想化)\)** のサイズを選択します。 これらの仮想マシンのサイズでは、入れ子になった仮想化がサポートされます。
-- ホストとクライアントの両方の仮想マシンに優れたパフォーマンスを提供するサイズを選択します。  仮想化を使用する場合、選択するサイズは、1 台のコンピューターだけでなく、ホストおよび同時に実行する必要があるクライアント コンピューターにも適したものでなければならないことに注意してください。
+- ホストとクライアントの両方の仮想マシンに優れたパフォーマンスを提供するサイズを選択します。  仮想化を使用する場合、選択するサイズは、1 台のコンピューターだけでなく、ホストおよび同時に実行する Hyper-V コンピューターにも適したものでなければならないことにご注意ください。
 - クライアント仮想マシンは、Azure 仮想ネットワーク上の DNS サーバーなどの Azure リソースにアクセスすることはできません。
 - ホスト仮想マシンには、クライアント コンピューターがインターネットに接続できるようにするためのセットアップが必要です。
 - クライアント仮想マシンは、独立したコンピューターとしてライセンスされます。 Microsoft のオペレーティング システムおよび製品のライセンスの詳細については、[Microsoft のライセンス](https://www.microsoft.com/licensing/default)に関するページを参照してください。 テンプレート マシンを設定する前に、使用している他のソフトウェアのライセンス契約を確認してください。
@@ -53,6 +53,17 @@ ms.locfileid: "79502013"
 >ラボの作成時、仮想マシン サイズとして **[Large (Nested Virtualization)]\(大 (入れ子になった仮想化)\)** または **[Medium (Nested Virtualization)]\(中 (入れ子になった仮想化)\)** のサイズを選択します。  それ以外の場合、入れ子になった仮想化は機能しません。  
 
 テンプレート マシンに接続するには、[クラスルーム テンプレートの作成と管理](how-to-create-manage-template.md)に関する記事をご覧ください。
+
+入れ子になった仮想化を有効にするには、いくつかのタスクを実行する必要があります。  
+
+- **Hyper-V ロールを有効にします**。 ラボ サービス仮想マシンで Hyper-V 仮想マシンを作成および実行するには、Hyper-V ロールを有効にする必要があります。
+- **DHCP を有効にします**。  ラボ サービスの仮想マシンで DHCP ロールを有効にすると、Hyper-V 仮想マシンに自動的に IP アドレスが割り当てられます。
+- **Hyper-V VM 用の NAT ネットワークを作成します**。  Hyper-V 仮想マシンからインターネットにアクセスできるように NAT ネットワークを設定します。  Hyper-V 仮想マシンは相互に通信できます。
+
+>[!NOTE]
+>NAT ネットワークをラボ サービス VM に作成すると、Hyper-V VM は、インターネットおよび、同じラボ サービス VM 上の他の Hyper-V VM にアクセスできるようになります。  Hyper-V VM は、Azure 仮想ネットワーク上の DNS サーバーなどの Azure リソースにアクセスすることはできません。
+
+上記のタスクを実行するには、スクリプトまたは Windows ツールを使用します。  詳細については、以下のセクションを参照してください。
 
 ### <a name="using-script-to-enable-nested-virtualization"></a>入れ子になった仮想化をスクリプトを使用して有効にする
 

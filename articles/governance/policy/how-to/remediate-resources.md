@@ -3,12 +3,12 @@ title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 71af5c81e0dce4d5c0a0461534f634db36bd66a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4846b6eb1ea03c6706a610cab16ec376d19b060
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471389"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195232"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -19,7 +19,7 @@ ms.locfileid: "79471389"
 **deployIfNotExists** ポリシー定義にあるテンプレートを実行するとき､Azure Policy では[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) が使用されます｡
 マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 管理対象 ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にこのエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールが自動的にマネージド ID に付与されます。 マネージド ID の "_場所_" は、Azure Policy による操作に影響を与えません。
 
-![管理対象 ID - ロールが存在しない](../media/remediate-resources/missing-role.png)
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="管理対象 ID - ロールが存在しない" border="false":::
 
 > [!IMPORTANT]
 > **deployIfNotExists** や **modify** で変更されたリソースがポリシー割り当てのスコープの範囲外の場合､あるいはテンプレートがポリシー割り当てのスコープの範囲外にあるリソース上のプロパティにアクセスした場合､その割り当ての管理対象 ID には[手動でアクセス権を付与](#manually-configure-the-managed-identity)する必要があります。さもないと､修復デプロイは失敗します。
@@ -128,11 +128,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
-   ![[すべてのサービス] で [ポリシー] を検索する](../media/remediate-resources/search-policy.png)
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
 
 1. Azure Policy ページの左側にある **[修復]** を選択します。
 
-   ![[ポリシー] ページで [修復] を選択する](../media/remediate-resources/select-remediation.png)
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="[ポリシー] ページで [修復] を選択する" border="false":::
 
 1. **deployIfNotExists** および **modify** のポリシー割り当てのうち、準拠していないリソースがあるものはすべて､ **[修復するポリシー]** タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーをクリックします。 **新しい修復タスク**ページが開きます。
 
@@ -141,17 +141,17 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、 **[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
 
-   ![修復 - 修復するリソースを選択する](../media/remediate-resources/select-resources.png)
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="修復 - 修復するリソースを選択する" border="false":::
 
 1. リソースのフィルター処理を終えたら、 **[修復]** をクリックして、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます。 修復タスクによって作成されたデプロイが、すぐに開始されます。
 
-   ![修復 - 修復タスクの進行状況](../media/remediate-resources/task-progress.png)
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="修復 - 修復タスクの進行状況" border="false":::
 
 1. ポリシー コンプライアンス ページの **[修復タスク]** をクリックすると､進行状況の詳細が表示されます｡ 修復されているリソースの一覧と共に、タスクに使用されたフィルターが表示されます。
 
 1. **[修復タスク]** ページで、修復タスクを右クリックすると、その修復タスクのデプロイまたはリソースのいずれかが表示されます。 行の末尾にあると **[関連イベント]** をクリックすると､エラー メッセージなどの詳細が表示されます｡
 
-   ![修復 - リソース タスクのコンテキスト メニュー](../media/remediate-resources/resource-task-context-menu.png)
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="修復 - リソース タスクのコンテキスト メニュー" border="false":::
 
 **[修復タスク]** を使ってデプロイされたリソースは、ポリシー コンプライアンス ページの **[デプロイされたリソース]** タブに追加されます。
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 7470af23059ccd07e48050e6dc34521e299a986f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3dd2be9a9f618f19ae71de8b19115013896b10cf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418611"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195555"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 
@@ -31,9 +31,9 @@ ms.locfileid: "81418611"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure-SSIS 統合ランタイム**: Azure-SSIS 統合ランタイムがない場合は、開始する前に [Azure Data Factory で Azure-SSIS 統合ランタイムをプロビジョニング](tutorial-deploy-ssis-packages-azure.md)してください。
+- **Azure-SSIS 統合ランタイム**:  Azure-SSIS 統合ランタイムがない場合は、開始する前に [Azure Data Factory で Azure-SSIS 統合ランタイムをプロビジョニング](tutorial-deploy-ssis-packages-azure.md)してください。
 
-- **ユーザーのアクセス許可**: Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
+- **ユーザーのアクセス許可**:  Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
 
     - 組み込みのネットワーク共同作成者ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ _Microsoft.Network/\*_ アクセス許可が備わっています。
     - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させるときに独自のパブリック IP アドレスを使用する場合は、_Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
@@ -53,7 +53,7 @@ ms.locfileid: "81418611"
 
     - 仮想ネットワークが属するリソース グループまたはサブスクリプション上で[リソースのロック](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)がないことを確認します。 読み取り専用または削除ロックを構成した場合、Azure-SSIS IR の開始と停止が失敗するか、応答しなくなります。
 
-    - 仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure ポリシーがないことを確認します。
+    - 仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure Policy の割り当てがないことを確認します。
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 

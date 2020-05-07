@@ -5,16 +5,16 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458293"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787143"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
-Azure で実行される Service Fabric クラスターは仮想マシン スケール セットの上に構築されます。  [クラスター スケーリング](./service-fabric-cluster-scale-up-down.md)では、Service Fabric クラスターが手動または自動スケール ルールでスケーリングする方法について説明します。 この記事では、資格情報を管理し、fluent Azure コンピューティング SDK を使用してクラスターをスケールインまたはスケールアウトする方法について説明します。これはより高度なシナリオになります。 概要については、[Azure のスケーリング操作をプログラムで調整する方法](service-fabric-cluster-scaling.md#programmatic-scaling)を読んでください。 
+Azure で実行される Service Fabric クラスターは仮想マシン スケール セットの上に構築されます。  [クラスター スケーリング](./service-fabric-cluster-scale-in-out.md)では、Service Fabric クラスターが手動または自動スケール ルールでスケーリングする方法について説明します。 この記事では、資格情報を管理し、fluent Azure コンピューティング SDK を使用してクラスターをスケールインまたはスケールアウトする方法について説明します。これはより高度なシナリオになります。 概要については、[Azure のスケーリング操作をプログラムで調整する方法](service-fabric-cluster-scaling.md#programmatic-scaling)を読んでください。 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -119,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 自動スケールのロジックを独自に実装するには、次の概念と、便利な API をご確認ください。
 
-- [手動でのスケーリングまたは自動スケール ルールを使用したスケーリング](./service-fabric-cluster-scale-up-down.md)
+- [手動でのスケーリングまたは自動スケール ルールを使用したスケーリング](./service-fabric-cluster-scale-in-out.md)
 - [.NET 用 Fluent Azure Management ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (Service Fabric クラスターの基盤となる仮想マシン スケール セットの操作に便利です)
 - [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (Service Fabric クラスターとそのノードの操作に便利です)

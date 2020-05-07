@@ -6,22 +6,22 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/26/2020
-ms.openlocfilehash: 2321918e9eae63a71d136753657bd7259862c2d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/09/2020
+ms.openlocfilehash: 87c3e2439d1b4bef4a58663e3ea06d8bb7cb9b19
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233679"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192537"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
-Microsoft Azure HDInsight の[Apache Hadoop](https://hadoop.apache.org/) エコシステムのコンポーネントおよびバージョンと、Enterprise セキュリティ パッケージについて説明します。 また、HDInsight で Hadoop コンポーネントのバージョンを確認する方法についても説明します。
+Microsoft Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) 環境のコンポーネントおよびバージョンと、Enterprise セキュリティ パッケージについて説明します。 また、HDInsight で Hadoop コンポーネントのバージョンを確認する方法についても説明します。
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント
 
-Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 2017 年 4 月 4 日現在、Azure HDInsight で使用される既定のクラスター バージョンは 3.6 です。
+Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 2017 年 4 月 4 日時点の Azure HDInsight で使用される既定のクラスター バージョンは 3.6 です。
 
 HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。
 
@@ -33,7 +33,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Apache Hadoop と YARN | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
 | Apache Pig             | 0.16.0        | 0.16.0                      |
-| Apache Hive            | 3.1.0         | 2.1.0 (非 ESP クラスター)、1.2.1 (ESP クラスター)                |
+| Apache Hive            | 3.1.0         | 1.2.1 (ESP Interactive Query では 2.1.0) |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
 | Apache HBase           | 2.0.2         | 1.1.2                       |
@@ -55,7 +55,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>現在の Hadoop コンポーネントのバージョン情報の確認
 
-HDInsight クラスターのバージョンに関連付けられた Hadoop エコシステム コンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。 Hadoop コンポーネントを調べて、どのバージョンがクラスターに使用されているかを確認するには、Ambari REST API を使用します。 **GetComponentInformation** コマンドによって、サービス コンポーネントに関する情報を取得します。 詳細については、[Apache Ambari のドキュメント](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) を参照してください。
+HDInsight クラスターのバージョンに関連付けられた Hadoop 環境コンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。 Hadoop コンポーネントを調べて、どのバージョンがクラスターに使用されているかを確認するには、Ambari REST API を使用します。 **GetComponentInformation** コマンドによって、サービス コンポーネントに関する情報を取得します。 詳細については、[Apache Ambari のドキュメント](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) を参照してください。
 
 ### <a name="release-notes"></a>リリース ノート
 
@@ -65,9 +65,9 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 ### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>HDInsight バージョンのサポートの有効期限と提供終了
 
-**サポートの有効期限**は、Microsoft から指定された HDInsight バージョンのサポートが提供されなくなり、クラスターの作成のために Azure portal で使用できなくなることを意味します。 しかし、これらのバージョンは、Azure CLI またはさまざまな SDK を使用して、引き続き作成することができます。 
+**サポートの有効期限**は、指定された HDInsight バージョンに対して Microsoft によるサポートが提供されなくなることを意味します。 また、クラスターを作成するために Azure portal を介して使用することができなくなります。 しかし、これらのバージョンは、Azure CLI またはさまざまな SDK を使用して、引き続き作成することができます。
 
-HDInsight バージョンの**提供終了**は、既存のクラスターが引き続きそのまま実行されることを意味します。 しかし、このバージョンの新しいクラスターは、(CLI や SDK を含む) どのような方法でも作成することはできません。 その他のコントロール プレーン機能 (手動によるスケーリングや自動スケールなど) は、バージョンの提供終了後に機能しなくなる場合があります。 提供が終了したバージョンでサポートを利用することはできません。
+HDInsight バージョンの**提供終了**は、既存のクラスターが引き続きそのまま実行されることを意味します。 ただし、このバージョンの新しいクラスターは、(CLI や SDK を含む) どのような方法でも作成することはできません。 その他のコントロール プレーン機能 (手動によるスケーリングや自動スケールなど) は、バージョンの提供終了後に機能しなくなる場合があります。 提供が終了したバージョンでサポートを利用することはできません。
 
 次の表は、HDInsight のバージョンの一覧を示しています。 サポート有効期限と提供終了日も記載されます (これらが既知の場合)。
 
@@ -110,7 +110,7 @@ Enterprise セキュリティは、クラスターの作成のワークフロー
 
 - 認証のための Active Directory との統合。
 
-    以前は、ローカル管理者ユーザーとローカル SSH ユーザーのみが HDInsight クラスターを作成できました。 ローカル管理者ユーザーは、すべてのファイル、フォルダー、テーブル、列にアクセスできます。  Enterprise セキュリティ パッケージを使用すると、オンプレミスの Active Directory、Azure Active Directory Domain Services、または IaaS 仮想マシン上の Active Directory を含む独自の Active Directory に HDInsight クラスターを統合することで、ロールベースのアクセス制御を有効にすることができます。 クラスターのドメイン管理者は、クラスターにアクセスするための自社の (ドメイン) ユーザー名とパスワードを使用する権限をユーザーに付与することができます。
+    以前は、ローカル管理者ユーザーとローカル SSH ユーザーと共に HDInsight クラスターを作成しました。 ローカル管理者ユーザーは、すべてのファイル、フォルダー、テーブル、列にアクセスできます。  Enterprise セキュリティ パッケージを使用すると、HDInsight を Active Directory と統合することにより、ロールベースのアクセス制御を有効にできます。 これには、オンプレミスの Active Directory、Azure Active Directory Domain Services、 または IaaS 仮想マシン上の Active Directory が含まれます。 クラスターのドメイン管理者は、自社の (ドメイン) ユーザー名とパスワードを使用する権限をユーザーに付与することができます。
 
     詳細については、次を参照してください。
 
@@ -144,37 +144,18 @@ Enterprise セキュリティは、クラスターの作成のワークフロー
 
 Enterprise セキュリティ パッケージでは、プライマリ ストレージとアドオン ストレージの両方として Azure Data Lake Storage の使用がサポートされます。
 
-### <a name="pricing-and-service-level-agreement"></a>価格とサービス レベル アグリーメント
+### <a name="pricing-and-service-level-agreement-sla"></a>価格とサービス レベル アグリーメント (SLA)
 
 Enterprise セキュリティ パッケージの価格と SLA について詳しくは、[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)に関するページをご覧ください。
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight クラスター バージョンのサービス レベル アグリーメント
 
-サービス レベル アグリーメント (SLA) は、_サポート ウィンドウ_ の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間です。 バージョンの _サポート有効期限_ が切れている場合、HDInsight クラスターはサポート対象外となります。 所定の HDInsight Version X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の数式で計算した日付のうち、遅い方とされます。  
+サービス レベル アグリーメント (SLA) は、"_サポート ウィンドウ_" として定義されます。 サポート ウィンドウは、HDInsight バージョンが `Microsoft Customer Service and Support` によってサポートされる期間です。 バージョンの "_サポート有効期限_" が過ぎている場合、HDInsight クラスターはサポート ウィンドウ外となります。 HDInsight バージョン X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の日付のうち、遅い方です。  
 
 - 数式 1:HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
 - 数式 2:HDInsight クラスター バージョン X+1 が Azure portal で使用可能になった日付に 90 日を加える。
 
 "_提供終了日_" とは、その日を過ぎると HDInsight でクラスター バージョンを作成できなくなる日付です。 2017 年 7 月 31 日以降は、提供終了日より後に HDInsight クラスターのサイズを変更できません。
-
-## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>HDInsight バージョンに対応する Hortonworks リリース ノート
-
-このセクションでは、HDInsight で使用される Hortonworks Data Platform ディストリビューションと Apache コンポーネントのリリース ノートへのリンクを提供します。
-* HDInsight クラスター Version 4.0 は、[Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) を基盤とする Hadoop ディストリビューションを使用します
-* HDInsight クラスター Version 3.6 は、[Hortonworks Data Platform 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) を基盤とする Hadoop ディストリビューションを使用します。
-* HDInsight クラスター Version 3.5 は、[Hortonworks Data Platform 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) を基盤とする Hadoop ディストリビューションを使用します。 HDInsight クラスター バージョン 3.5 は、Azure Portal で作成される _既定の_ Hadoop クラスターです。
-* HDInsight クラスター Version 3.4 は、 [Hortonworks Data Platform 2.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を基盤とする Hadoop ディストリビューションを使用します。
-* HDInsight クラスター Version 3.3 は、 [Hortonworks Data Platform 2.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)を基盤とする Hadoop ディストリビューションを使用します。
-
-  * [Apache Storm のリリース ノート](https://storm.apache.org/2015/11/05/storm0100-released.html)は Apache Web サイトで入手できます。
-  * [Apache Hive のリリース ノート](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843)は Apache Web サイトで入手できます。
-* HDInsight クラスター Version 3.2 は、[Hortonworks Data Platform 2.2][hdp-2-2] を基盤とする Hadoop ディストリビューションを使用します。
-
-  * 次のような特定の Apache コンポーネントのリリース ノートを入手できます。[Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450)、[Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954)、[HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810)、[Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581)、[M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180)、[HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181)、[YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197)、[Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179)、[Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742)、[Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486)、[Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)、および [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620)。
-* HDInsight クラスター Version 3.1 は、[Hortonworks Data Platform 2.1.7][hdp-2-1-7] を基盤とする Hadoop ディストリビューションを使用します。 2014 年 11 月 7 日より前に作成された HDInsight 3.1 クラスターは、[Hortonworks Data Platform 2.1.1][hdp-2-1-1] に基づいています。
-* HDInsight クラスター Version 3.0 は、[Hortonworks Data Platform 2.0][hdp-2-0-8] を基盤とする Hadoop ディストリビューションを使用します。
-* HDInsight クラスター Version 2.1 は、[Hortonworks Data Platform 1.3][hdp-1-3-0] を基盤とする Hadoop ディストリビューションを使用します。
-* HDInsight クラスター Version 1.6 は、[Hortonworks Data Platform 1.1][hdp-1-1-0] を基盤とする Hadoop ディストリビューションを使用します。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定のノード構成と仮想マシン サイズ
 
@@ -184,15 +165,4 @@ Enterprise セキュリティ パッケージの価格と SLA について詳し
 
 - [HDInsight で Apache Hadoop、Spark、その他のクラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)
 - [Windows PC から HDInsight の Apache Hadoop で作業する](hdinsight-hadoop-windows-tools.md)
-
-[hdp-2-2]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.9/bk_HDP_RelNotes/content/ch_relnotes_v229.html
-
-[hdp-2-1-7]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
-
-[hdp-2-1-1]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
-
-[hdp-2-0-8]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
-
-[hdp-1-3-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
-
-[hdp-1-1-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.1.1.16_1.html
+- [Azure HDInsight バージョンに対応する Hortonworks リリース ノート](./hortonworks-release-notes.md)

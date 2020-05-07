@@ -8,27 +8,29 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: c327440649300533c94c2a1956e3c45f433c9780
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409961"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231613"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure Cognitive Search のランク付けアルゴリズム
 
 > [!IMPORTANT]
-> 2020 年 7 月 15 日より、新しく作成された検索サービスでは BM25 ランク付け関数が使用されます。この関数はほとんどの場合、現行の既定のランク付けよりもユーザーの予測に沿った検索ランク付けを与えることが証明されています。  ランク付けで優れている以外に、BM25 では、ドキュメントのサイズなどの要素に基づいて結果を調整する構成オプションを使用できます。  
+> 2020 年 7 月 15 日より、新しく作成された検索サービスでは BM25 ランク付け関数が自動的に使用されます。この関数はほとんどの場合、現行の既定のランク付けよりもユーザーの予測に沿った検索ランク付けを与えることが証明されています。 ランク付けで優れている以外に、BM25 では、ドキュメントのサイズなどの要素に基づいて結果を調整する構成オプションを使用できます。  
 >
-> 今回の変更では、おそらく、検索結果の順序にわずかな変化が見られるでしょう。   この変更の影響をテストする人のために、2019-05-06-Preview API で、新しいインデックスで BM25 スコア付けを使用できるようにしました。  
+> 今回の変更では、おそらく、検索結果の順序にわずかな変化が見られるでしょう。 この変更の影響をテストする必要がある場合は、API バージョン 2019-05-06-Preview で BM25 アルゴリズムを使用できます。  
 
-この記事では、2020 年 7 月 15 日前に作成されたサービスを、新しい BM25 ランク付けアルゴリズムを使用できるように更新する方法について説明します。
+この記事では、Preview API を使用して作成およびクエリされた新しいインデックスに対して、既存の検索サービスで新しい BM25 ランク付けアルゴリズムを使用する方法について説明します。
 
-Azure Cognitive Search では、Okapi BM25 アルゴリズムの公式 Lucene 実装、*BM25Similarity* が使用されます。これは、以前に使用されていた *ClassicSimilarity* 実装に取って代わります。 以前の ClassicSimilarity アルゴリズムと同じく、BM25Similarity は TF-IDF タイプの取得関数であり、単語の出現頻度 (TF) と逆文書頻度 (IDF) を変数として使用し、ドキュメントとクエリの組みごとに関連スコアを計算します。ドキュメントとクエリの組みはその後、ランク付けに使用されます。 概念的には以前の ClassicSimilarity アルゴリズムと同じですが、BM25 の根底は確率的情報取得にあり、それを基に改良されています。 BM25 には高度なカスタマイズ オプションもあります。たとえば、ユーザーは、一致した単語の出現頻度で関連性スコアが変動するしくみを決定できます。
+Azure Cognitive Search では、Okapi BM25 アルゴリズムの公式 Lucene 実装、*BM25Similarity* の採用過程にあります。これは、以前に使用されていた *ClassicSimilarity* 実装に取って代わります。 以前の ClassicSimilarity アルゴリズムと同じく、BM25Similarity は TF-IDF タイプの取得関数です。この関数では、単語の出現頻度 (TF) と逆文書頻度 (IDF) が変数として使用され、ドキュメントとクエリの組みごとに関連スコアが計算されます。ドキュメントとクエリの組みはその後、ランク付けに使用されます。 
+
+概念的には以前の ClassicSimilarity アルゴリズムと同じですが、BM25 の根底は確率的情報取得にあり、それを基に改良されています。 BM25 には高度なカスタマイズ オプションもあります。たとえば、ユーザーは、一致した単語の出現頻度で関連性スコアが変動するしくみを決定できます。
 
 ## <a name="how-to-test-bm25-today"></a>今すぐ BM25 をテストする方法
 
-新しいインデックスを作成するとき、"類似性" プロパティを設定できます。 下の画像のように、*2019-05-06-Preview* バージョンを使用する必要があります。
+新しいインデックスを作成するとき、**similarity** プロパティを設定してアルゴリズムを指定できます。 次に示すように、`api-version=2019-05-06-Preview` を使用する必要があります。
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -57,12 +59,15 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-2020 年 7 月 15 日より前に作成されたサービスの場合:類似性を省略するか、null に設定した場合、インデックスでは以前の ClassicSimilarity アルゴリズムが使用されます。
+**similarity** プロパティは、両方のアルゴリズムを既存のサービスでのみ使用できる、この中間期間中に便利です。 
 
-2020 年 7 月 15 日の後に作成されたサービスの場合:類似性を省略するか、null に設定した場合、インデックスでは新しい BM25 類似性アルゴリズムが使用されます。
+| プロパティ | 説明 |
+|----------|-------------|
+| similarity | 省略可能。 有効な値には、 *"#Microsoft.Azure.Search.ClassicSimilarity"* や *"#Microsoft.Azure.Search.BM25Similarity"* などがあります。 <br/> 2020 年 7 月 15 日より前に作成された検索サービスでは、`api-version=2019-05-06-Preview` 以降が必要です。 |
 
-類似性値を *"#Microsoft.Azure.Search.ClassicSimilarity"* と *"#Microsoft.Azure.Search.BM25Similarity"* のいずれかに明示的に設定することもできます。
+2020 年 7 月 15 日以降に作成された新しいサービスでは、BM25 が自動的に使用され、これは唯一の類似性アルゴリズムです。 新しいサービスで **similarity** を `ClassicSimilarity` に設定しようとすると、新しいサービスではそのアルゴリズムがサポートされていないため、エラー 400 が返されます。
 
+2020 年 7 月 15 日より前に作成された既存のサービスでは、ClassicSimilarity は既定のアルゴリズムのままです。 **similarity** プロパティを省略するか、null に設定した場合、インデックスでは Classic アルゴリズムが使用されます。 新しいアルゴリズムを使用する場合は、前述のように **similarity** を設定する必要があります。
 
 ## <a name="bm25-similarity-parameters"></a>BM25 類似性パラメーター
 
@@ -98,10 +103,9 @@ b または k1 値をカスタマイズするには、BM25 の使用時、類似
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
-
 ## <a name="see-also"></a>関連項目  
 
- [Azure Cognitive Search REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [スコアリング プロファイルをインデックスに追加する](index-add-scoring-profiles.md)    
- [インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-  [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)   
++ [スコアリング プロファイルをインデックスに追加する](index-add-scoring-profiles.md)    
++ [インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
++ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

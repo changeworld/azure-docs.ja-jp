@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb14369275a111476867f2263766e1bb87b7c87d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295346"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160717"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -43,6 +43,9 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 - Windows Phone
 - Windows
 - macOS
+
+> [!WARNING]
+> Microsoft は、条件付きアクセス ポリシーと macOS 10.15.4 ベースのデバイスに関する問題を認識しています。 詳細については、ブログ記事「[Known Issue:Conditional access unexpectedly blocking macOS 10.15.4 native mail client/other apps](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283)」 (既知の問題: 条件付きアクセスにより macOS 10.15.4 ネイティブ メール クライアントまたはその他のアプリが予期せずにブロックされる) を参照してください。
 
 **他のクライアント**条件を使用してレガシ認証をブロックする場合は、デバイスのプラットフォーム条件も設定できます。
 

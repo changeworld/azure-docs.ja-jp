@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181635"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561761"
 ---
 1. [PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)。
 2. `Get-HcsApplianceInfo` を使用してデバイスの情報を取得します。
@@ -49,7 +49,7 @@ ms.locfileid: "67181635"
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | ローカル Web UI でデバイスのデプロイ中に構成されるデバイスのフレンドリ名。 既定のフレンドリ名は、デバイスのシリアル番号です。  |   |
     | SerialNumber                   | デバイスのシリアル番号は、出荷時に割り当てられる一意の数です。                                                                             |   |
-    | モデル                          | Data Box Edge または Data Box Gateway デバイスのモデルです。 モデルは、Data Box Gateway については仮想で、Data Box Edge については物理です。                   |   |
+    | モデル                          | Azure Stack Edge または Data Box Gateway デバイスのモデルです。 モデルは、Azure Stack Edge の場合は物理で、Data Box Gateway の場合は仮想です。                   |   |
     | FriendlySoftwareVersion        | デバイス ソフトウェアのバージョンに対応するフレンドリ文字列。 プレビューを実行しているシステムの場合、ソフトウェアのフレンドリ バージョンは Data Box Edge 1902 です。 |   |
     | HcsVersion                     | デバイスで実行されている HCS ソフトウェアのバージョン。 たとえば、Data Box Edge 1902 に対応する HCS ソフトウェアのバージョンは 1.4.771.324 です。            |   |
     | LocalCapacityInMb              | デバイスの合計容量 (メガビット単位)。                                                                                                        |   |

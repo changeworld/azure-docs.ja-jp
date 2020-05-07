@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
-ms.custom: seodec18
-ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411671"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608032"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Storage Explorer を使ってデータを操作する
 
@@ -30,9 +30,9 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 ## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 
 1. **Azure Storage Explorer** をインストールしたら、次の図の左側にある **[プラグイン]** アイコンをクリックします。
-       
+
    ![[プラグイン] アイコン](./media/storage-explorer/plug-in-icon.png)
- 
+
 2. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、 **[サインイン]** をクリックします。
 
    ![Azure サブスクリプションに接続する](./media/storage-explorer/connect-to-azure-subscription.png)
@@ -100,27 +100,27 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 * Azure Cosmos DB アカウント、データベース、コレクションを **[クイック アクセス]** に追加することもできます。
 * **[Search from Here]\(ここから検索\)** は、選択したパスのキーワード検索を有効にします。
 
-    ![ここから検索](./media/storage-explorer/search-from-here.png) 
+    ![ここから検索](./media/storage-explorer/search-from-here.png)
 
 ### <a name="database-and-collection-management"></a>データベースとコレクションの管理
-#### <a name="create-a-database"></a>データベースを作成する 
+#### <a name="create-a-database"></a>データベースを作成する
 -   Azure Cosmos DB アカウントを右クリックし、 **[データベースの作成]** を選択し、データベース名を入力し、**Enter** キーを押します。
-       
-    ![データベースの作成](./media/storage-explorer/create-database.png) 
+
+    ![データベースの作成](./media/storage-explorer/create-database.png)
 
 #### <a name="delete-a-database"></a>データベースの削除
 - データベースを右クリックし、 **[データベースの削除]** をクリックし、ポップアップ ウィンドウで **[はい]** をクリックします。 データベース ノードが削除され、Azure Cosmos DB アカウントが自動的に更新されます。
 
-    ![database1 を削除する](./media/storage-explorer/delete-database1.png)  
+    ![database1 を削除する](./media/storage-explorer/delete-database1.png)
 
-    ![database2 を削除する](./media/storage-explorer/delete-database2.png) 
+    ![database2 を削除する](./media/storage-explorer/delete-database2.png)
 
 #### <a name="create-a-collection"></a>コレクションの作成
-1. データベースを右クリックし、 **[コレクションの作成]** をクリックし、 **[コレクション ID]** や **[ストレージ容量]** などの情報を指定します。 **[OK]** をクリックして終了します。 
+1. データベースを右クリックし、 **[コレクションの作成]** をクリックし、 **[コレクション ID]** や **[ストレージ容量]** などの情報を指定します。 **[OK]** をクリックして終了します。
 
     ![collection1 を作成する](./media/storage-explorer/create-collection.png)
 
-    ![collection2 を作成する](./media/storage-explorer/create-collection2.png) 
+    ![collection2 を作成する](./media/storage-explorer/create-collection2.png)
 
 2. パーティション キーを指定できるように **[無制限]** を選択し、 **[OK]** をクリックして完了します。
 
@@ -129,11 +129,11 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
     ![パーティション キー](./media/storage-explorer/partitionkey.png)
 
 #### <a name="delete-a-collection"></a>コレクションの削除
-- コレクションを右クリックし、 **[コレクションの削除]** をクリックし、ポップアップ ウィンドウで **[はい]** をクリックします。 
+- コレクションを右クリックし、 **[コレクションの削除]** をクリックし、ポップアップ ウィンドウで **[はい]** をクリックします。
 
     コレクション ノードが削除され、データベースが自動的に更新されます。
 
-    ![コレクションを削除する](./media/storage-explorer/delete-collection.png) 
+    ![コレクションを削除する](./media/storage-explorer/delete-collection.png)
 
 ### <a name="document-management"></a>ドキュメントの管理
 
@@ -155,8 +155,8 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 ### <a name="graph-management"></a>Graph の管理
 
 #### <a name="create-and-modify-vertex"></a>頂点の作成と変更
-1. 新しい頂点を作成するには、左側のウィンドウから **Graph** を開き、 **[New Vertex]\(新しい頂点\)** をクリックして内容を編集し、 **[OK]** をクリックします。    
-2. 既存の頂点を変更するには、右側のウィンドウにあるペン アイコンをクリックします。   
+1. 新しい頂点を作成するには、左側のウィンドウから **Graph** を開き、 **[New Vertex]\(新しい頂点\)** をクリックして内容を編集し、 **[OK]** をクリックします。
+2. 既存の頂点を変更するには、右側のウィンドウにあるペン アイコンをクリックします。
 
     ![グラフ](./media/storage-explorer/vertex.png)
 
@@ -193,7 +193,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
     ![テーブルの照会](./media/storage-explorer/table-query.png)
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>ストアド プロシージャ、トリガー、および UDF の管理
-* ストアド プロシージャを作成するには、左側のツリーで **[ストアド プロシージャ]** を右クリックし、 **[ストアド プロシージャ]** を選択し、左側のウィンドウで名前を入力し、右側のウィンドウでストアド プロシージャのスクリプトを入力し、 **[作成]** をクリックします。 
+* ストアド プロシージャを作成するには、左側のツリーで **[ストアド プロシージャ]** を右クリックし、 **[ストアド プロシージャ]** を選択し、左側のウィンドウで名前を入力し、右側のウィンドウでストアド プロシージャのスクリプトを入力し、 **[作成]** をクリックします。
 * 既存のストアド プロシージャをダブルクリックし、更新を行った後、 **[更新]** をクリックして保存するか、 **[破棄]** をクリックして変更を取り消すこともできます。
 
     ![ストアド プロシージャ](./media/storage-explorer/stored-procedure.png)
@@ -248,7 +248,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 ![console](./media/storage-explorer/console.png)
 
-#### <a name="unable-to-see-the-authentication-page"></a>認証ページが表示されない 
+#### <a name="unable-to-see-the-authentication-page"></a>認証ページが表示されない
 
 認証ページが表示されない場合:
 
@@ -273,7 +273,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS プロキシの問題
 
-ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azure Cosmos DB ノードを一覧表示できません。 これは既知の問題であり、次のリリースで修正される予定です。 現時点では、Azure Portal の Azure Cosmos DB データ エクスプローラーを回避策として使用できます。 
+ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azure Cosmos DB ノードを一覧表示できません。 これは既知の問題であり、次のリリースで修正される予定です。 現時点では、Azure Portal の Azure Cosmos DB データ エクスプローラーを回避策として使用できます。
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>"ローカルで接続済み" ノードの下の "開発" ノードに関する問題
 
@@ -289,7 +289,7 @@ ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azu
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Azure Cosmos DB ノードの展開に関するエラー
 
-左側のツリー ノードを展開しようとしたときに、以下のエラーが表示される場合があります。 
+左側のツリー ノードを展開しようとしたときに、以下のエラーが表示される場合があります。
 
 ![展開のエラー](./media/storage-explorer/expand-error.png)
 
@@ -306,4 +306,3 @@ ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azu
 
 * 次のビデオを見て、Azure Storage Explorer を使用して Azure Cosmos DB を利用する方法を確認します。[Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Azure Storage Explorer で Azure Cosmos DB を使用する)。
 * Storage Explorer と他のサービスへの接続の詳細については、[Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)に関するページをご覧ください。
-

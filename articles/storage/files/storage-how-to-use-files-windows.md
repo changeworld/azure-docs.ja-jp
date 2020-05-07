@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232291"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231766"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -45,7 +45,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていること**: SMB プロトコルでは、TCP ポート 445 が開放されている必要があります。ポート 445 がブロックされていると接続に失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。
+* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。
 
     次の PowerShell コードは、Azure PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
@@ -126,7 +126,7 @@ User: AZURE\<your-storage-account-name>
 #### <a name="advanced-cmdkey-scenarios"></a>高度な cmdkey のシナリオ
 他にも cmdkey には、考慮すべきシナリオが 2 つあります。別のユーザー (サービス アカウントなど) の資格情報をマシンに保存するシナリオと、PowerShell リモート処理でリモート マシンに資格情報を保存するシナリオです。
 
-別のユーザーの資格情報をマシンに保存するのはごく簡単です。アカウントにログインする際、単純に次の PowerShell コマンドを実行します。
+別のユーザーの資格情報をマシンに保存するのは簡単です。アカウントにログインする際、単純に次の PowerShell コマンドを実行します。
 
 ```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
@@ -168,7 +168,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 ```
 
 > [!Note]  
-> `-Persist` コマンドレットの `New-PSDrive` オプションを使ってできることは、資格情報が保存されている場合に、ファイル共有を起動時に再マウントすることだけです。 資格情報を保存するには、[前述の説明](#persisting-azure-file-share-credentials-in-windows)に従って cmdkey を使います。 
+> `New-PSDrive` コマンドレットの `-Persist` オプションを使ってできることは、資格情報が保存されている場合に、ファイル共有を起動時に再マウントすることだけです。 資格情報を保存するには、[前述の説明](#persisting-azure-file-share-credentials-in-windows)に従って cmdkey を使います。 
 
 次のPowerShell コマンドレットを使えば、必要に応じて Azure ファイル共有のマウントを解除できます。
 
@@ -182,27 +182,23 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. エクスプローラーを開きます。 [スタート] メニューから開くことも、Windows + E キーを押すショートカットで開くこともできます。
 
-2. ウィンドウの左側の **[PC]** 項目に移動します。 これで、リボンで使用できるメニューが変更されます。 [コンピューター] メニューの **[ネットワーク ドライブの割り当て]** を選択します。
+1. ウィンドウの左側の **[PC]** 項目に移動します。 これで、リボンで使用できるメニューが変更されます。 [コンピューター] メニューの **[ネットワーク ドライブの割り当て]** を選択します。
     
     ![[ネットワーク ドライブの割り当て] ドロップダウン メニューのスクリーンショット](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. Azure portal の **[接続]** ウィンドウで UNC パスをコピーします。 
-
-    ![Azure Files の [接続] ウィンドウの UNC パス](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
-
-4. ドライブ文字を選択し、UNC パスを入力します。 
+1. ドライブ文字を選択し、UNC パスを入力します。UNC パスの形式は `<storageAccountName>.file.core.windows.net/<fileShareName>` です  (例: `anexampleaccountname.file.core.windows.net/example-share-name`)。
     
     ![[ネットワーク ドライブの割り当て] ダイアログのスクリーンショット](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. ユーザー名として先頭に `AZURE\` を付けたストレージ アカウント名を使用し、パスワードとしてストレージ アカウント キーを使用します。
+1. ユーザー名として先頭に `AZURE\` を付けたストレージ アカウント名を使用し、パスワードとしてストレージ アカウント キーを使用します。
     
     ![ネットワーク資格情報ダイアログのスクリーンショット](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
 
-6. Azure ファイル共有を自由に使用します。
+1. Azure ファイル共有を自由に使用します。
     
     ![Azure ファイル共有がマウントされました](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、 **[切断]** を選択します。
+1. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、 **[切断]** を選択します。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows から共有スナップショットへのアクセス
 手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure portal](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md)、および [Azure CLI](storage-how-to-use-files-cli.md) で取得することができます。
@@ -222,6 +218,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 #### <a name="restore-from-a-previous-version"></a>以前のバージョンから復元する
 共有スナップショット作成時のディレクトリ全体の内容を元の場所に再帰的にコピーするには、 **[復元]** を選択します。
+
  ![警告メッセージ内の [復元] ボタン](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Windows/Windows Server のセキュリティ保護
@@ -234,13 +231,13 @@ Windows で Azure ファイル共有をマウントするには、ポート 445 
 | Windows Server 2019                       | 無効             | Windows の機能を使って削除 |
 | Windows Server バージョン 1709 以降            | 無効             | Windows の機能を使って削除 |
 | Windows 10 バージョン 1709 以降                | 無効             | Windows の機能を使って削除 |
-| Windows Server 2016                       | 有効              | Windows の機能を使って削除 |
-| Windows 10 バージョン 1507、1607、1703 | 有効              | Windows の機能を使って削除 |
-| Windows Server 2012 R2                    | 有効              | Windows の機能を使って削除 | 
-| Windows 8.1                               | 有効              | Windows の機能を使って削除 | 
-| Windows Server 2012                       | 有効              | レジストリで無効化       | 
-| Windows Server 2008 R2                    | 有効              | レジストリで無効化       |
-| Windows 7                                 | 有効              | レジストリで無効化       | 
+| Windows Server 2016                       | Enabled              | Windows の機能を使って削除 |
+| Windows 10 バージョン 1507、1607、1703 | Enabled              | Windows の機能を使って削除 |
+| Windows Server 2012 R2                    | Enabled              | Windows の機能を使って削除 | 
+| Windows 8.1                               | Enabled              | Windows の機能を使って削除 | 
+| Windows Server 2012                       | Enabled              | レジストリで無効化       | 
+| Windows Server 2008 R2                    | Enabled              | レジストリで無効化       |
+| Windows 7                                 | Enabled              | レジストリで無効化       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1 の使用状況の監査
 > Windows Server 2019、Windows Server 半期チャネル (バージョン 1709 および 1803)、Windows Server 2016、Windows 10 (バージョン 1507、1607、1703、1709、1803)、Windows Server 2012 R2、Windows 8.1 が対象となります
@@ -284,7 +281,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>レガシ バージョンの Windows/Windows Server で SMB 1 を無効にする
 > Windows Server 2012、Windows Server 2008 R2、Windows 7 が対象となります。
 
-レガシ バージョンの Windows/Windows Server では SMB 1 を完全に削除することはできませんが、レジストリで無効にすることができます。 SMB 1 を無効にするには、`SMB1` 型で値 `DWORD` の新しいレジストリ キー `0` を `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` に作成します。
+レガシ バージョンの Windows/Windows Server では SMB 1 を完全に削除することはできませんが、レジストリで無効にすることができます。 SMB 1 を無効にするには、`DWORD` 型で値 `0` の新しいレジストリ キー `SMB1` を `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` に作成します。
 
 次の PowerShell コマンドレットを使って簡単に実行することもできます。
 

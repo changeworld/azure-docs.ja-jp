@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: e4d85bd460c39964c9f42ac946e3522f5f129c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474443"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561346"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway のアクセス、電源、接続モードを管理する
 
-この記事では、Azure Data Box Gateway のアクセス、電源、および接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
+この記事では、Azure Data Box Gateway のアクセス、電源、および接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。 
 
 この記事では、次のことについて説明します。
 
@@ -56,30 +56,30 @@ Data Box Gateway デバイスへのアクセスは、デバイスのパスワー
 
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
 
-Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage リソースを作成するには、リソース グループ レベルで共同作成者以上のアクセス許可が必要です。 対応するリソース プロバイダーも登録する必要があります。 アクティブ化キーと資格情報が関係する操作には、Azure Active Directory Graph API へのアクセス許可も必要です。 これらについては以降のセクションで説明します。
+Azure Stack Edge または Data Box Gateway、IoT Hub、Azure Storage リソースを作成するには、リソース グループ レベルで共同作成者以上のアクセス許可が必要です。 対応するリソース プロバイダーも登録する必要があります。 アクティブ化キーと資格情報が関係する操作には、Azure Active Directory Graph API へのアクセス許可も必要です。 これらについては以降のセクションで説明します。
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API のアクセス許可の管理
 
-Data Box Edge デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Microsoft Graph API のアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
+Azure Stack Edge デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Microsoft Graph API のアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
 
 -  ストレージ アカウントが関連付けられた共有の作成。
 -  デバイス上の共有にアクセスできるユーザーの作成。
 
-`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストの場合、アクティブ化キーの生成、Data Box Edge デバイス上の共有の作成、ユーザーの作成などの操作はすべて失敗します。
+`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストの場合、アクティブ化キーの生成、Azure Stack Edge デバイス上の共有の作成、ユーザーの作成などの操作はすべて失敗します。
 
-Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph アクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
+Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
 
 ### <a name="register-resource-providers"></a>リソース プロバイダーを登録する
 
 (Azure Resource Manager モデルで) Azure でリソースをプロビジョニングするには、そのリソースの作成をサポートするリソース プロバイダーが必要です。 たとえば、仮想マシンをプロビジョニングするには、サブスクリプションで利用可能な 'Microsoft.Compute' リソース プロバイダーが必要です。
  
-リソース プロバイダーはサブスクリプションのレベルで登録されます。 既定では、新しい Azure サブスクリプションには、一般的に使用されるリソース プロバイダーの一覧が事前登録されています。 'Microsoft.DataBoxEdge' のリソース プロバイダーはこの一覧に含まれていません。
+リソース プロバイダーはサブスクリプションのレベルで登録されます。 既定では、新しい Azure サブスクリプションには、一般的に使用されるリソース プロバイダーの一覧が事前登録されています。 'Microsoft.DataBoxEdge' のリソース プロバイダーは、この一覧に含まれていません。
 
 これらのリソースのリソース プロバイダーが既に登録されている限り、ユーザーが所有者権限を持っているユーザーのリソース グループ内で 'Microsoft.DataBoxEdge' などのリソースをユーザーが作成できるようにするために、サブスクリプション レベルへのアクセス許可を付与する必要はありません。
 
 何らかのリソースを作成しようとする前に、サブスクリプションにリソース プロバイダーが登録されていることを確認してください。 リソース プロバイダーが登録されていない場合、新しいリソースを作成しようとしているユーザーが、必要なリソース プロバイダーをサブスクリプション レベルで登録するための十分な権限を持っていることを確認する必要があります。 これも行われていない場合、次のエラーが表示されます。
 
-次のリソース プロバイダーを登録するためのアクセス許可が*サブスクリプション \<サブスクリプション名>にありません:Microsoft.DataBoxEdge*
+"*次のリソース プロバイダーを登録するためのアクセス許可がサブスクリプション \<サブスクリプション名> にありません": Microsoft.DataBoxEdge*
 
 
 現在のサブスクリプションに登録されているリソース プロバイダーの一覧を取得するには、次のコマンドを実行します。
@@ -88,7 +88,7 @@ Microsoft Graph API へのアクセスをユーザーに提供する方法の詳
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Data Box Edge デバイスの場合、`Microsoft.DataBoxEdge` を登録する必要があります。 `Microsoft.DataBoxEdge` を登録するには、サブスクリプション管理者が次のコマンドを実行する必要があります。
+Azure Stack Edge デバイスの場合、`Microsoft.DataBoxEdge` を登録する必要があります。 `Microsoft.DataBoxEdge` を登録するには、サブスクリプション管理者が次のコマンドを実行する必要があります。
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

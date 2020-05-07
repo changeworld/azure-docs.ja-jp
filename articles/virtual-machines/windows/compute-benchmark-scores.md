@@ -6,21 +6,22 @@ ms.service: virtual-machines-windows
 ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: ea6bca1367d4b34aa54b65e92e7cbfdd02642f4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e0fdc398d3b0b851c6f548119858e6c41a5a19
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086234"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583922"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
 次の SPECInt ベンチマーク スコアは、Windows Server を実行している Azure VM の計算性能を示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。
 
 
 ## <a name="av2---general-compute"></a>Av2 - 一般コンピューティング
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 12 | 14.2 | 0.3 | 
@@ -45,9 +46,14 @@ ms.locfileid: "82086234"
 | Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 | 104.5 | 5.1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 13 | 111.6 | 2.3 | 
 
-注:Av2 シリーズの VM は、さまざまな種類のハードウェアとプロセッサにデプロイできます (上を参照)。 Av2 シリーズの VM は、開発とテストのような、エントリ レベルのワークロードに最適な CPU のパフォーマンスとメモリ構成を備えています。 プロセッサがデプロイされるハードウェアに関係なく実行中のインスタンスのプロセッサ パフォーマンスが比較的一定となるようにサイズが調整されます。ただし、特定の新しいプロセッサ最適化を利用するソフトウェアでは、プロセッサの種類によってかなりの変動が生じる場合があります。
+
+> [!NOTE]
+> Av2 シリーズの VM は、さまざまな種類のハードウェアとプロセッサにデプロイできます (上を参照)。 Av2 シリーズの VM は、開発とテストのような、エントリ レベルのワークロードに最適な CPU のパフォーマンスとメモリ構成を備えています。 プロセッサがデプロイされるハードウェアに関係なく実行中のインスタンスのプロセッサ パフォーマンスが比較的一定となるようにサイズが調整されます。ただし、特定の新しいプロセッサ最適化を利用するソフトウェアでは、プロセッサの種類によってかなりの変動が生じる場合があります。
 
 ## <a name="b---burstable"></a>B - バースト可能
+
+(2019-10-23 から 2019-11-03 に更新 PBI:5604451)
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 6.3 | 0.2 | 
@@ -59,12 +65,20 @@ ms.locfileid: "82086234"
 | Standard_B4ms | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 43 | 28.3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 3 | 42.0 | 0.0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
+| Standard_B12ms | 12 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 19 | 58.9 | 2.3 |
+| Standard_B16ms | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 18 | 75.4 | 2.1 |
+| Standard_B20ms | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4| 2 | 90.6 | 1.3 |
 
-注:B シリーズの VM は、バースト可能なパフォーマンスが必要なワークロード向けです。 VM インスタンスでは、使用がベースラインを下回る場合、クレジットが累積されます。 VM でクレジットが累積されると、短期の CPU バースト要件に対応するために、VM は最大 100%、ベースラインを上回ってバーストできるようになります。 バースト時間は、VM のサイズと時間の関数である使用可能なクレジットによって異なります。  
 
-SPEC Int は、通常使用可能なバースト クレジットを使い果たしてしまうかなり長時間実行されるテストです。  つまり、上記の数値は VM のベースラインのパフォーマンスに近いものになります (ただし、実行間で累積されたバースト時間が反映される場合があります)。  短期の爆発的なワークロード (通常は B シリーズ) のパフォーマンスは、通常は Ds v3 シリーズのパフォーマンスに近いものになります。
+>[!NOTE]
+> B シリーズの VM は、バースト可能なパフォーマンスが必要なワークロード向けです。 VM インスタンスでは、使用がベースラインを下回る場合、クレジットが累積されます。 VM でクレジットが累積されると、短期の CPU バースト要件に対応するために、VM は最大 100%、ベースラインを上回ってバーストできるようになります。 バースト時間は、VM のサイズと時間の関数である使用可能なクレジットによって異なります。  
+>
+> SPEC Int は、通常使用可能なバースト クレジットを使い果たしてしまうかなり長時間実行されるテストです。  つまり、上記の数値は VM のベースラインのパフォーマンスに近いものになります (ただし、実行間で累積されたバースト時間が反映される場合があります)。  短期の爆発的なワークロード (通常は B シリーズ) のパフォーマンスは、通常は Ds v3 シリーズのパフォーマンスに近いものになります。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 一般コンピューティング + Premium Storage
+
+(2019-10-23 から 2019-11-03 に更新 PBI:5604451)
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 40.8 | 2.3 | 
@@ -77,9 +91,17 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_D16s_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 38 | 298.2 | 4.4. | 
 | Standard_D32s_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 545.8 | 10.5 | 
 | Standard_D32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 535.6 | 12.6 | 
+| Standard_D32-8s_v3 | 8 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 6 | 166.0 | 8.8 |
+| Standard_D32-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 4 | 300.8 | 6.4 |
+| Standard_D48s_v3 | 48 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 1 | 838.0 | 0.0 |
 | Standard_D64s_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 1070.6 | 2.4 | 
+| Standard_D64-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 4 | 340.0 | 21.4 |
+| Standard_D64-32s_v3 | 32 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 3 | 592.3 | 1.5 |
 
 ## <a name="dv3---general-compute"></a>Dv3 - 一般コンピューティング
+
+(2019-10-23 から 2019-11-03 に更新 PBI:5604451)
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 38.6 | 1.8 | 
@@ -92,9 +114,11 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 300.7 | 8.8 | 
 | Standard_D32_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 549.3 | 11.1 | 
 | Standard_D32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 7 | 538.6 | 9.4 | 
+| Standard_D48_v3 | 48 |  |  Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 3 | 839.7 | 14.4 |
 | Standard_D64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 1070.6 | 12.4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 - ストレージ最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_DS1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 12 | 33.0 | 1.1 | 
@@ -132,6 +156,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_DS15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 45 | 546.1 | 10.5 | 
 
 ## <a name="dv2---general-compute"></a>Dv2 - 一般コンピューティング
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 30 | 33.5 | 1.7 | 
@@ -156,6 +181,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_D15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 37 | 558.8 | 8.4 | 
 
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 - メモリ最適化 + Premium Storage
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 39 | 42.5 | 2.2 | 
@@ -176,11 +202,13 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_E64-32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 592.5 | 4.4. | 
 
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 - メモリ Opt + Premium Storage (分離プロセス)
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64is_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 1073.9 | 5.7 | 
 
 ## <a name="ev3---memory-optimized"></a>Ev3 - メモリ最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 41 | 41.2 | 2.4 | 
@@ -192,11 +220,13 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_E64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 1080.0 | 11.3 | 
 
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 - メモリ最適化 (分離)
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64i_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 1081.4 | 11.1 | 
 
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 - コンピューティング + ストレージ最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F2s_v2 | 2 | 1 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 46 | 56.5 | 2.4 | 
@@ -208,6 +238,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_F72s_v2 | 72 | 2 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 29 | 1372.1 | 8.2 | 
 
 ## <a name="fs---compute-and-storage-optimized"></a>Fs - コンピューティング + ストレージ最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1s | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 31 | 33.2 | 1.0 | 
@@ -222,6 +253,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_F16s | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 36 | 471.8 | 7.5 | 
 
 ## <a name="f---compute-optimized"></a>F - コンピューティング最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 15 | 32.8 | 1.8 | 
@@ -237,6 +269,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_F16 | 16 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 6 | 472.3 | 13.2 | 
 
 ## <a name="gs---storage-optimized"></a>GS - ストレージ最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_GS1 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 29 | 63.6 | 4.7 | 
@@ -259,6 +292,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_G5 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 31 | 774.1 | 4.1 | 
 
 ## <a name="h---high-performance-compute-hpc"></a>H - ハイ パフォーマンス コンピューティング (HPC)
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_H8 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 31 | 296.1 | 1.4 | 
@@ -269,6 +303,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_H16r | 16 | 2 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 17 | 562.2 | 4.2 | 
 
 ## <a name="ls---storage-optimized"></a>Ls - ストレージ最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_L4s | 4 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 29 | 122.7 | 6.6 | 
@@ -277,6 +312,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_L32s | 32 | 2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 31 | 766.1 | 3.5 | 
 
 ## <a name="m---memory-optimized"></a>M - メモリ最適化
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_M8-2ms | 2 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 15 | 42.1 | 2.1 | 
@@ -306,6 +342,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_M8ms | 8 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 13 | 158.2 | 5.5 | 
 
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 - GPU 対応
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v3 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 230.2 | 1.6 | 
@@ -314,6 +351,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_NC24s_v3 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 3 | 809.3 | 2.3 | 
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2 - GPU 対応
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v2 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 227.0 | 6.2 | 
@@ -322,6 +360,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_NC24s_v2 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 811.5 | 4.4. | 
 
 ## <a name="nc---gpu-enabled"></a>NC - GPU 対応
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz | 27 | 209.6 | 4.4. | 
@@ -330,6 +369,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_NC24r | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz | 27 | 752.9 | 3.4 | 
 
 ## <a name="nds--gpu-enabled"></a>ND - GPU 対応
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_ND6s | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 8 | 230.1 | 1.2 | 
@@ -338,6 +378,7 @@ SPEC Int は、通常使用可能なバースト クレジットを使い果た�
 | Standard_ND24s | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 812.6 | 4.4. | 
 
 ## <a name="nv---gpu-enabled"></a>NV - GPU 対応
+
 | サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NV6 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz | 28 | 210.5 | 6.1 | 

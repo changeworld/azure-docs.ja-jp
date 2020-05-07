@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a60779fb045aa612a6ba0988c4635752f973f60
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128181"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607403"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Windows Virtual Desktop でのユーザー接続の待機時間の決定
 
@@ -29,4 +29,4 @@ Windows Virtual Desktop では Azure Traffic Manager が使用されます。こ
 
 - 最適な待機時間のための最適な場所を確認するには、「[Windows Virtual Desktop エクスペリエンス見積もりツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)」を参照してください。
 - 価格プランの詳細については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
-- Windows Virtual Desktop のデプロイを開始するには、[こちらのチュートリアル](tenant-setup-azure-active-directory.md)を確認してください。
+- Windows Virtual Desktop のデプロイを開始するには、[こちらのチュートリアル](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)を確認してください。

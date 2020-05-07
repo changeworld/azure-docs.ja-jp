@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458830"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115501"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 
@@ -122,7 +122,7 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 コネクタの Swagger ファイルに記述される、アクションや制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/as2/)を参照してください。 
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、代わりにこのコネクタの元の ISE のラベルがついたバージョンが [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用します。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE の B2B メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 
