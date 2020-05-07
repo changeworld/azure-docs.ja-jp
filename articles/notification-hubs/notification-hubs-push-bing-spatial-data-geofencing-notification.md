@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0abe443521b928dd087e23b5491635b02cd832e8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127201"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592028"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
 
@@ -217,7 +217,7 @@ ms.locfileid: "80127201"
 
 ## <a name="set-up-the-backend"></a>バックエンドを設定する
 
-1. [GitHub から .NET バックエンド サンプル](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers)をダウンロードします。
+1. [GitHub から .NET バックエンド サンプル](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)をダウンロードします。
 2. ダウンロードが完了したら、`NotifyUsers` フォルダーを開いてから、Visual Studio で `NotifyUsers.sln` ファイルを開きます。
 3. `AppBackend` プロジェクトを **スタートアップ プロジェクト** として設定し、起動します。
 

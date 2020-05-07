@@ -5,14 +5,14 @@ author: msHich
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
-ms.openlocfilehash: 536b95eb07619d0ce2d02ec01e1f51ed52c1b5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00cd1d39c0110aac9ea96f73127e83197976c95a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649203"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190131"
 ---
-# <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Azure ポリシーを使用してカスタム プロバイダーの関連付けをデプロイする
+# <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Azure Policy を使用してカスタム プロバイダーの関連付けをデプロイする
 
 リソースとカスタム プロバイダーの関連付けをデプロイするために、Azure ポリシーを使用できます。 この記事では、関連付けをデプロイする組み込みのポリシーと、そのポリシーを使用する方法について説明します。
 

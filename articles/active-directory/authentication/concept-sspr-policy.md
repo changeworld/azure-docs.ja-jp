@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: e8b6d08dd2073de80ac0f7fd08f510d9cda80545
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393032"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143237"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセット ポリシーと制限
 
@@ -102,7 +102,7 @@ Microsoft クラウド サービスの*グローバル管理者*または*ユー
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 
-操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)します。 モジュールがインストールされたら、次の手順に従って各フィールドを構成します。
+操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)し、[それをお使いの Azure AD テナントに接続](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。 モジュールがインストールされたら、次の手順に従って各フィールドを構成します。
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する
 

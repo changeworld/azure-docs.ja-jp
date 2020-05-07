@@ -63,6 +63,9 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure Resource Manager
@@ -81,6 +84,8 @@
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: スケール セット内の障害ドメインを管理する
           href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: イメージ
+      href: shared-image-galleries.md
     - name: VM の種類とサイズ
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -184,6 +189,51 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: インスタンス ID について
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: イメージの使用
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Shared Image Gallery
+          items:
+            - name: PowerShell
+              items:
+                - name: ギャラリーの作成
+                  href: ../virtual-machines/shared-images-powershell.md
+                - name: イメージを作成する
+                  items:
+                    - name: VM から
+                      href: ../virtual-machines/image-version-vm-powershell.md
+                    - name: マネージド イメージから移行する
+                      href: ../virtual-machines/image-version-managed-image-powershell.md
+                    - name: 別のギャラリーからコピーする
+                      href: ../virtual-machines/image-version-another-gallery-powershell.md
+                - name: スケール セットの作成
+                  items:
+                    - name: 専用イメージ
+                      href: instance-specialized-image-version-powershell.md
+                    - name: 一般化されたイメージ
+                      href: instance-generalized-image-version-powershell.md
+                - name: イメージ リソースを更新する
+                  href: ../virtual-machines/update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: ギャラリーの作成
+                  href: ../virtual-machines/shared-images-cli.md
+                - name: イメージを作成する
+                  items:
+                    - name: VM から
+                      href: ../virtual-machines/image-version-vm-cli.md
+                    - name: マネージド イメージから移行する
+                      href: ../virtual-machines/image-version-managed-image-cli.md
+                    - name: 別のギャラリーからコピーする
+                      href: ../virtual-machines/image-version-another-gallery-cli.md
+                - name: スケール セットの作成
+                  items:
+                    - name: 専用イメージ
+                      href: instance-specialized-image-version-cli.md
+                    - name: 一般化されたイメージ
+                      href: instance-generalized-image-version-cli.md
+                - name: イメージ リソースを更新する
+                  href: ../virtual-machines/update-image-resources-cli.md
     - name: テンプレートの作成
       items:
         - name: スケール セット テンプレートを確認する

@@ -4,12 +4,12 @@ description: Kubernetes の基本のクラスターおよびワークロード�
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617434"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208161"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -88,7 +88,7 @@ kubectl describe node [NODE_NAME]
 
 - **CPU** - 予約される CPU はノードの種類とクラスター構成に依存しますが、追加の機能を実行することで、割り当てられる CPU が少なくなることがあります
 
-| ホスト上の CPU コア数 | 1 | 2 | 4 | 8 | 16 | 32|64|
+| ホスト上の CPU コア数 | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
 |Kube 予約 (ミリコア)|60|100|140|180|260|420|740|
 
@@ -126,7 +126,7 @@ AKS での複数のノード プールの使用方法の詳細については、
 
 ### <a name="node-selectors"></a>ノードのセレクター
 
-複数のノード プールを含む AKS クラスターでは、特定のリソースに使用するノード プールを、Kubernetes スケジューラに指示することができます。 たとえば、イングレス コントローラーは、Windows Server ノードで実行しないでください (現在、AKS でプレビュー中)。 ノード セレクターでは、ノード OS などのさまざまなパラメーターを定義でき、ポッドがスケジュールされる場所を制御できます。
+複数のノード プールを含む AKS クラスターでは、特定のリソースに使用するノード プールを、Kubernetes スケジューラに指示することができます。 たとえば、Windows Server ノード上でイングレス コントローラーを実行することはできません。 ノード セレクターでは、ノード OS などのさまざまなパラメーターを定義でき、ポッドがスケジュールされる場所を制御できます。
 
 次の基本的な例は、ノード セレクター *"beta.kubernetes.io/os": linux* を使用して Linux ノード上の NGINX インスタンスをスケジュールします。
 

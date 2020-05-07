@@ -40,6 +40,8 @@
       href: components.md
     - name: 概念
       href: concepts.md
+    - name: SKU
+      href: skus.md
     - name: 正常性の監視
       items:
         - name: 正常性プローブ

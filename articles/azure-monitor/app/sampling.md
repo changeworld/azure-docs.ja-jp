@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4989f8dce32e2340357e30541548b3e7e9d8a44
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234655"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508889"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -22,7 +22,7 @@ ms.locfileid: "79234655"
 
 * サンプリングには、アダプティブ サンプリング、固定レート サンプリング、インジェスト サンプリングの 3 種類があります。
 * アダプティブ サンプリングは、Application Insights ASP.NET および ASP.NET Core ソフトウェア開発キット (SDK) のすべての最新バージョンで既定で有効になっています。 また、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) でも使用されます。
-* 固定レート サンプリングは、ASP.NET、ASP.NET Core、Java、および Python 用の Application Insights SDK の最近のバージョンで使用できます。
+* 固定レート サンプリングは、ASP.NET、ASP.NET Core、Java (エージェントと SDK の両方)、および Python 用の Application Insights SDK の最近のバージョンで使用できます。
 * インジェスト サンプリングは、Application Insights サービス エンドポイントで機能します。 これは、他のサンプリングが有効になっていない場合にのみ適用されます。 SDK でテレメトリがサンプリングされると、インジェスト サンプリングは無効になります。
 * Web アプリケーションの場合、カスタム イベントを記録しており、一連のイベントが確実にまとめて保持または破棄されるようにする必要がある場合は、それらのイベントに同じ `OperationId` 値を割り当てる必要があります。
 * Analytics クエリを作成する場合は、 [サンプリングを考慮する](../../azure-monitor/log-query/aggregations.md)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
@@ -306,7 +306,29 @@ Azure Functions で実行されているアプリに対してアダプティブ 
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Java アプリケーション用の固定レート サンプリングの構成
 
-Java SDK では、既定ではどのサンプリングも有効になっていません。 現在、固定レート サンプリングのみがサポートされています。 Java SDK では、アダプティブ サンプリングはサポートされていません。
+Java エージェントおよび SDK では、既定ではどのサンプリングも有効になっていません。 現在、固定レート サンプリングのみがサポートされています。 Java では、アダプティブ サンプリングはサポートされていません。
+
+#### <a name="configuring-java-agent"></a>Java エージェントの構成
+
+1. [applicationinsights-agent-3.0.0-PREVIEW.4.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) をダウンロードします
+
+1. サンプリングを有効にするには、`ApplicationInsights.json` ファイルに以下を追加します。
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>Java SDK の構成
 
 1. 最新の [Application Insights Java SDK](../../azure-monitor/app/java-get-started.md) を使用して Web アプリケーションをダウンロードして構成します。
 
@@ -366,7 +388,7 @@ tracer = Tracer(
 オプションの引数 `logging_sampling_rate` を変更することで、`AzureLogHandler` の固定レート サンプリングを構成できます。 引数を指定しない場合、1.0 のサンプリング レートが使用されます。 サンプリング レート 1.0 は 100% を表します。つまり、すべての要求は Application Insights にテレメトリとして送信されます。
 
 ```python
-exporter = metrics_exporter.new_metrics_exporter(
+handler = AzureLogHandler(
     instrumentation_key='00000000-0000-0000-0000-000000000000',
     logging_sampling_rate=0.5,
 )
@@ -534,7 +556,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 * インジェスト サンプリングは、SDK がサンプリングを実行していない場合に任意のテレメトリが特定の量を超えると、自動的に実行される場合があります。 この構成は、たとえば、ASP.NET SDK や Java SDK の古いバージョンを使用している場合に機能します。
 * 最新の ASP.NET または ASP.NET Core SDK (Azure または独自のサーバーのいずれかでホストされる) を使用している場合、既定ではアダプティブ サンプリングが行われますが、前述の方法で固定レートに切り替えることができます。 固定レート サンプリングの場合、ブラウザー SDK は自動的にサンプル関連のイベントに同期します。 
-* 最新の Java SDK を使用している場合は、`ApplicationInsights.xml` を構成して固定レート サンプリングを有効にできます。 サンプリングは、既定で無効になっています。 固定レート サンプリングでは、ブラウザー SDK とサーバーは自動的にサンプル関連のイベントに同期されます。
+* 最新の Java エージェントを使用している場合は、`ApplicationInsights.json` を構成して (Java SDK の場合は `ApplicationInsights.xml` を構成する) 固定レート サンプリングを有効にできます。 サンプリングは、既定で無効になっています。 固定レート サンプリングでは、ブラウザー SDK とサーバーは自動的にサンプル関連のイベントに同期されます。
 
 *常に確認したい頻度の低いイベントがあります。サンプリング モジュールを使わずに確認するにはどうすればよいですか。*
 

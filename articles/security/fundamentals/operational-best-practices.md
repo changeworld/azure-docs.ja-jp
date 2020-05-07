@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500305"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188588"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -108,7 +108,7 @@ Security Center は、包括的な Endpoint Detection and Response (EDR) 機能�
 **詳細**: [Azure Sentinel](/azure/sentinel/overview) の特徴と機能を調査して、現在オンプレミスで使用しているものの機能と比較します。 Azure Sentinel が組織の SIEM の要件を満たす場合は、採用を検討します。
 
 **ベスト プラクティス**: 調査に優先順位を付けることができるよう、最も重大なセキュリティの脆弱性を見つけます。   
-**詳細**: [Azure のセキュリティ スコア](../../security-center/security-center-secure-score.md)をレビューして、Azure Security Center に組み込まれた Azure ポリシーとイニシアティブから導き出される推奨事項を確認します。 これらの推奨事項は、セキュリティ更新プログラム、エンドポイント保護、暗号化、セキュリティ構成、WAF の欠落、インターネットに接続された VM など、最大の危険への対応に役立ちます。
+**詳細**: [Azure のセキュリティ スコア](../../security-center/secure-score-security-controls.md)をレビューして、Azure Security Center に組み込まれた Azure ポリシーとイニシアティブから導き出される推奨事項を確認します。 これらの推奨事項は、セキュリティ更新プログラム、エンドポイント保護、暗号化、セキュリティ構成、WAF の欠落、インターネットに接続された VM など、最大の危険への対応に役立ちます。
 
 Center for Internet Security (CIS) コントロールを基にしたセキュリティ スコアにより、組織の Azure セキュリティを外部ソースに対してベンチマークすることができます。 外部検証は、チームのセキュリティ戦略を検証し強化することに役立ちます。
 
@@ -116,7 +116,7 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 **詳細**: 最も優先順位が高い項目から、Security Center の[セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)に従います。
 
 **ベスト プラクティス**: Security Center のアラートを、セキュリティ情報およびイベント管理 (SIEM) ソリューションに統合します。   
-**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[Azure Security Center でのセキュリティ ソリューションの統合](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
+**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[セキュリティ アラートと推奨事項のエクスポート](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
 
 **ベスト プラクティス**: Azure ログを SIEM に統合します。   
 **詳細**: [データの収集とエクスポートに Azure Monitor](/azure/azure-monitor/overview#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
@@ -216,7 +216,7 @@ Azure Policy の採用後に従うセキュリティのベストプラクティ�
 **詳細**: 割り当てられたロールに、[Azure portal](../../governance/policy/how-to/get-compliance-data.md#portal) または[コマンド ライン](../../governance/policy/how-to/get-compliance-data.md#command-line)を使用してコンプライアンスを監視させます。
 
 **ベスト プラクティス**: Azure Policy は、組織の明文化されたポリシーを技術的に表したものです。 混乱を減らし、一貫性を高めるため、すべての Azure ポリシーを組織のポリシーにマッピングします。   
-**詳細**: Azure [ポリシーの説明](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または Azure ポリシー [イニシアティブ](../../governance/policy/concepts/definition-structure.md#initiatives)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure ポリシー自体にマッピングをドキュメント化します。
+**詳細**: [Azure Policy の定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または [Azure Policy イニシアティブ](../../governance/policy/concepts/definition-structure.md#initiatives)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure Policy の定義自体にマッピングをドキュメント化します。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD のリスク レポートの監視
 ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、[リスク検出](../../active-directory/reports-monitoring/concept-risk-events.md)と呼ばれるレコードに格納されます。 リスク検出は、Azure AD のセキュリティ レポートに記録されます。 詳細については、[危険な状態のユーザー セキュリティ レポート](../../active-directory/reports-monitoring/concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)に関する記事をご覧ください。

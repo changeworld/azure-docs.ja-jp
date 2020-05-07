@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87179c79489bf781619b70b19ca8982f2e38dff
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663132"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509484"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Azure における監視ソリューションのインベントリとデータ収集の詳細
-[監視ソリューション](solutions.md)では、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報を提供します。 通常、監視ソリューションではログ データが収集されます。また、収集されたデータを分析するクエリとビューが用意されています。 使用する任意のアプリケーションおよびサービスの Azure Monitor に監視ソリューションを追加できます。 管理ソリューションは通常、無料で使用できますが、データの収集に対して利用料金が発生する場合があります。
+[監視ソリューション](solutions.md)では、Azure のサービスを使用して、特定のアプリケーションまたはサービスの操作に関するナレッジを提供します。 通常、監視ソリューションではログ データが収集されます。また、収集されたデータを分析するクエリとビューが用意されています。 使用する任意のアプリケーションおよびサービスの Azure Monitor に監視ソリューションを追加できます。 通常、これらは無料で使用できますが、利用料金が発生する可能性のあるデータが収集されます。
 
 この記事では、Microsoft で利用可能な[監視ソリューション](solutions.md)の一覧を、詳細なドキュメントへのリンクと共に示します。  また、Azure Monitor へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能な各種のソリューションを識別し、さまざまな監視ソリューションのデータ フローと接続要件を理解することができます。
 
@@ -26,11 +26,11 @@ ms.locfileid: "77663132"
 
 列の説明を次に示します。
 
-- **Microsoft Monitoring Agent** - Windows および Linux 上で使用され、SCOM からは管理パックを、また、Azure からは監視ソリューションを実行するエージェント。 この構成では、エージェントは Operations Manager 管理グループに接続されずに、直接 Azure Monitor に接続されます。 
+- **Microsoft Monitoring Agent** - Windows および Linux 上で使用され、Microsoft System Center - Operations Manager (OM) からは管理パックを、また、Azure からは監視ソリューションを実行するエージェント。 この構成では、エージェントは Operations Manager 管理グループに接続されずに、直接 Azure Monitor に接続されます。 
 - **Operations Manager** - Microsoft Monitoring Agent と同一のエージェント。 この構成では、Azure Monitor に接続されている [Operations Manager 管理グループに接続](../platform/om-agents.md)されます。 
 -  **Azure Storage** - ソリューションは、Azure ストレージ アカウントからデータを収集します。 
 - **Operations Manager が必要か** - 監視ソリューションによるデータ収集には、接続された Operations Manager 管理グループが必要です。 
-- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ SCOM 管理グループに接続されている](../platform/om-agents.md)場合、データは管理サーバーから Azure Monitor に送信されます。 この場合、エージェントが直接 Azure Monitor に接続される必要はありません。 このボックスにチェックマークがない場合、エージェントが SCOM 管理グループに接続されている場合でも、データはエージェントから直接 Azure Monitor に送信されます。 また、エージェントは、[Log Analytics ゲートウェイ](../platform/gateway.md)経由で Azure Monitor と通信できる必要があります。
+- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ OM 管理グループに接続されている](../platform/om-agents.md)場合、データは管理サーバーから Azure Monitor に送信されます。 この場合、エージェントが直接 Azure Monitor に接続される必要はありません。 このボックスにチェックマークがない場合、エージェントが OM 管理グループに接続されている場合でも、データはエージェントから直接 Azure Monitor に送信されます。 また、エージェントは、[Log Analytics ゲートウェイ](../platform/gateway.md)経由で Azure Monitor と通信できる必要があります。
 - **収集の頻度** - 監視ソリューションによってデータが収集される頻度を指定します。 
 
 
@@ -53,8 +53,8 @@ ms.locfileid: "77663132"
 | [Azure SQL Analytics (プレビュー)](azure-sql.md) | Windows | | | | | | 1 分 |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知時 |
 | [Capacity and Performance (プレビュー)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |着信時 |
-| [変更の追跡](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [変更の追跡](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [変更の追跡](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
+| [変更の追跡](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
 | [Containers](containers.md) | Windows と Linux | &#8226; | &#8226; |  |  |  | 3 分 |
 | [Key Vault Analytics](azure-key-vault.md) |Windows | | | | | |通知時 |
 | [マルウェアの評価](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |

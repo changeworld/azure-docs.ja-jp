@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 659af8b85cb3736d663e79676b04af8041aeabfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/29/2020
+ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129582"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583954"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -20,7 +21,7 @@ ms.locfileid: "80129582"
 > * [cell magic の使用](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [スクリプト アクションの使用](apache-spark-python-package-installation.md)
 
-HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 場合によっては、ユーザーが外部の Python パッケージや別の Python のバージョンのインストールなどを行って、Python 環境をカスタマイズする必要があります。 この記事では、HDInsight 上の [Apache Spark](./apache-spark-overview.md) クラスターで Python 環境を安全に管理するためのベスト プラクティスを示します。
+HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 場合によっては、顧客が Python 環境のカスタマイズを行う必要があります ( 外部の Python パッケージや別の Python バージョンのインストールなど)。 ここでは、HDInsight 上の Apache Spark クラスターで Python 環境を安全に管理するためのベスト プラクティスについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +29,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
 
-Microsoft Azure HDInsight サービスは Apache Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳細については、[Azure サポート FAQ Web サイト](https://azure.microsoft.com/support/faq/)を参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
+Microsoft Azure HDInsight サービスは、Apache Hadoop を中心に形成されたオープン ソース テクノロジの環境を利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳細については、[Azure サポート FAQ Web サイト](https://azure.microsoft.com/support/faq/)を参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 
@@ -40,7 +41,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!IMPORTANT]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や `https://stackoverflow.com` などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには `https://apache.org` にプロジェクト サイトもあります。
 
 ## <a name="understand-default-python-installation"></a>Python の既定のインストールを理解する
 
@@ -55,9 +56,9 @@ HDInsight Spark クラスターは、Anaconda のインストール付きで作�
 
 ## <a name="safely-install-external-python-packages"></a>外部 Python パッケージを安全にインストールする
 
-HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Python 3.5 の両方) に依存しています。 これらの既定の組み込み環境にカスタム パッケージを直接インストールすると、予期しないライブラリ バージョンの変更が発生し、クラスターがさらに壊れる可能性があります。 Spark アプリケーションのカスタム外部 Python パッケージを安全にインストールするには、次の手順に従います。
+HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Python 3.5 の両方) に依存しています。 これらの既定の組み込み環境にカスタム パッケージを直接インストールすると、予期しないライブラリ バージョンの変更が生じ、 クラスターがさらに壊れる可能性があります。 Spark アプリケーションのカスタム外部 Python パッケージを安全にインストールするには、次の手順に従います。
 
-1. conda を使用して Python 仮想環境を作成します。 仮想環境によって、他を壊すことなく、プロジェクト用の分離された空間が用意されます。 Python 仮想環境を作成するときに、使用する Python のバージョンを指定できます。 Python 2.7 と 3.5 を使用する場合でも、仮想環境を作成する必要があることに注意してください。 これは、クラスターの既定の環境を壊さないようにするためです。 次のスクリプトを使用して、Python 仮想環境を作成するクラスターのすべてのノードで、スクリプト アクションを実行します。
+1. conda を使用して Python 仮想環境を作成します。 仮想環境によって、他を壊すことなく、プロジェクト用の分離された空間が用意されます。 Python 仮想環境を作成するときに、使用する Python のバージョンを指定できます。 Python 2.7 および 3.5 を使用する場合でも、仮想環境を作成する必要があります。 この要件は、クラスターの既定の環境を壊さないようにするためです。 次のスクリプトを使用して、Python 仮想環境を作成するクラスターのすべてのノードで、スクリプト アクションを実行します。
 
     -   `--prefix` には、conda 仮想環境を作成するパスを指定します。 ここで指定したパスに基づいて、さらに変更する必要がある構成がいくつかあります。 この例では、クラスターに py35 という名前の既存の仮想環境が既に存在するため、py35new が使用されています。
     -   `python=` には、仮想環境用の Python のバージョンを指定します。 この例では、バージョン3.5 が使用されています。これは、クラスターに組み込まれているものと同じバージョンです。 Python の他のバージョンを使用して仮想環境を作成することもできます。
@@ -69,7 +70,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
 2. 必要に応じて、作成した仮想環境に外部の Python パッケージをインストールします。 次のスクリプトを使用して、クラスターのすべてのノードでスクリプト アクションを実行して、外部の Python パッケージをインストールします。 仮想環境フォルダーにファイルを書き込むために、ここでは sudo 特権が必要です。
 
-    [パッケージ インデックス](https://pypi.python.org/pypi)で、利用できるすべてのパッケージを検索できます。 公開されているパッケージの一覧を他のソースから入手してもかまいません。 たとえば、[conda-forge](https://conda-forge.org/feedstocks/) で使用できるパッケージをインストールできます。
+    [パッケージ インデックス](https://pypi.python.org/pypi)で、利用できるすべてのパッケージを検索します。 公開されているパッケージの一覧を他のソースから入手してもかまいません。 たとえば、[conda-forge](https://conda-forge.org/feedstocks/) で使用できるパッケージをインストールできます。
 
     最新バージョンのライブラリをインストールする場合は、次のコマンドを使用します。
 
@@ -114,7 +115,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     2. [Advanced livy2] を展開し、下のステートメントを末尾に追加します。 仮想環境を別のプレフィックスを使用してインストールした場合は、パスを適宜変更します。
 
-        ```
+        ```bash
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
@@ -123,7 +124,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     3. [Advanced spark2-env] を展開し、末尾にある既存の export PYSPARK_PYTHON ステートメントを置き換えます。 仮想環境を別のプレフィックスを使用してインストールした場合は、パスを適宜変更します。
 
-        ```
+        ```bash
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
@@ -133,7 +134,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
         ![Ambari を通して Spark 構成を変更する](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
-4. 新しく作成された仮想環境を Jupyter で使用する場合は、 Jupyter の構成を変更し、Jupyter を再起動する必要があります。 次のステートメントを使用して、すべてのヘッダー ノードでスクリプト アクションを実行して、新たに作成された仮想環境に対して Jupyter をポイントします。 パスを仮想環境用に指定したプレフィックスに必ず変更してください。 このスクリプト アクションを実行した後、Ambari UI から Jupyter サービスを再起動して、この変更を使用できるようにします。
+4. 新しく作成された仮想環境を Jupyter で使用する場合は、 Jupyter の構成を変更し、Jupyter を再起動します。 次のステートメントを使用して、すべてのヘッダー ノードでスクリプト アクションを実行して、新たに作成された仮想環境に対して Jupyter をポイントします。 パスを仮想環境用に指定したプレフィックスに必ず変更してください。 このスクリプト アクションを実行した後、Ambari UI から Jupyter サービスを再起動して、この変更を使用できるようにします。
 
     ```bash
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
@@ -145,13 +146,12 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
 ## <a name="known-issue"></a>既知の問題
 
-Anaconda のバージョン 4.7.11、4.7.12、4.8.0 には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` でハングし、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
+Anaconda のバージョン `4.7.11`、`4.7.12`、`4.8.0` には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` でハングし、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
 
 Anaconda のバージョンを確認するには、クラスターのヘッダー ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda --v` を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
+* [Apache Spark の Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)

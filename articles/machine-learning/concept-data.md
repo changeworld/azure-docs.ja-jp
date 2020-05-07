@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning のデータ
+title: クラウドでのデータ アクセスをセキュリティ保護する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning がお使いのデータにどのように安全にアクセスし、そのデータを機械学習タスクに使用するかを説明します。
+description: Azure Machine Learning からデータに安全に接続する方法と、データセットおよびデータストアを ML タスクに使用する方法について説明します。 データストアには、Azure Blob、Azure Data Lake Gen 1 および 2、SQL DB、Databricks などからのデータを格納できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/20/2020
-ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128490"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144485"
 ---
-# <a name="data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセス
+# <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
 Azure Machine Learning を使用すると、クラウド内のデータに簡単に接続できます。  基になるストレージ サービスに抽象レイヤーが用意されているため、ストレージの種類に固有のコードを記述しなくても、データに安全にアクセスし、操作することができます。 Azure Machine Learning には、次のデータ機能も用意されています。
 

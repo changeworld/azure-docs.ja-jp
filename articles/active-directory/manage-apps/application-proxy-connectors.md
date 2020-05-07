@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406824"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583111"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -49,7 +49,7 @@ Windows Server 2012 R2 以降が実行されていて、アプリケーション
 
 コネクタ サーバーのネットワーク要件の詳細については、[アプリケーション プロキシの概要とコネクタのインストール](application-proxy-add-on-premises-application.md)に関するページをご覧ください。
 
-## <a name="maintenance"></a>メンテナンス
+## <a name="maintenance"></a>メンテナンス 
 
 コネクタとサービスは、高可用性のすべてのタスクに対処します。 コネクタは動的に追加したり削除できます。 新しい要求は、受信するたびにその時点で使用できるコネクタのいずれかにルーティングされます。 コネクタは、一時的に使用できない場合はトラフィックに応答しません。
 
@@ -74,7 +74,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 コネクタの更新を行う際、次のような場合ダウンタイムが生じることがあります。
   
 - コネクタが 1 つしかない場合。2 つ目のコネクタをインストールして、[コネクタ グループを作成する](application-proxy-connector-groups.md)ことをお勧めします。 これにより、ダウンタイムを回避して、より高い可用性を提供します。  
-- 更新の開始時にコネクタがトランザクションの処理中であった場合: 初期トランザクションは失われますが、ブラウザーにより自動で操作が再試行されます。ページを更新しても構いません。 要求が再送信されると、トラフィックはバックアップ コネクタへルーティングされます。
+- 更新の開始時にコネクタがトランザクションの処理中であった場合:  初期トランザクションは失われますが、ブラウザーにより自動で操作が再試行されます。ページを更新しても構いません。 要求が再送信されると、トラフィックはバックアップ コネクタへルーティングされます。
 
 過去にリリースされたバージョンと変更履歴については、[アプリケーション プロキシのバージョン リリース履歴](application-proxy-release-version-history.md)に関するページを参照してください。
 
@@ -136,7 +136,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 コネクタは、ドメインに参加していないコンピューターで実行できます。 ただし、統合 Windows 認証 (IWA) を使用するアプリケーションへのシングル サインオン (SSO) を行う場合は、ドメイン参加済みのコンピューターが必要です。 この場合、コネクタを実行するコンピューターは、公開済みアプリケーションのユーザーの代わりに [Kerberos](https://web.mit.edu/kerberos) の制約付き委任を実行できるドメインに参加する必要があります。
 
-コネクタは、部分的な信頼関係のあるドメインやフォレスト、または読み取り専用ドメイン コントローラーに参加することもできます。
+コネクタは、部分的な信頼関係のあるフォレスト内のドメイン、または読み取り専用ドメイン コントローラーに参加することもできます。
 
 ## <a name="connector-deployments-on-hardened-environments"></a>制限の厳しい環境でのコネクタのデプロイ
 

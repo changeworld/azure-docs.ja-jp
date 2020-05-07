@@ -1,25 +1,25 @@
 ---
 title: Ambari Web UI を使用して Azure HDInsight を監視および管理する
-description: Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
+description: Apache Ambari UI を使用して HDInsight クラスターを監視および管理する方法を説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 02/05/2020
-ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/16/2020
+ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064690"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232855"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari には使いやすい Web UI と REST API が用意されているため、Apache Hadoop クラスターを簡単に管理および監視できます。 Ambari は HDInsight クラスターに含まれ、クラスターの監視と構成の変更を行うために使用します。
+Apache Ambari を使用すると、Apache Hadoop クラスターを簡単に管理および監視できます。 この単純化は、使いやすい Web UI と REST API を提供することで実現されます。 Ambari は HDInsight クラスターに含まれ、クラスターの監視と構成の変更を行うために使用します。
 
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
@@ -82,7 +82,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 ![Apache Ambari の警告グループの管理](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-**[Actions]\(アクション\)** メニューの __[Manage Notifications]\(通知の管理\)__ を選択して、アラート方法を管理したり、アラート通知を作成したりすることもできます。 現在の通知が表示されます。 ここから通知を作成することもできます。 特定のアラート/重要度の組み合わせが発生したとき、通知は **EMAIL** または **SNMP** で送信されます。 たとえば、 **[YARN Default]** グループのいずれかのアラートが **[Critical]** に設定されたときに電子メール メッセージを送信できます。
+**[Actions]\(アクション\)** メニューの __[Manage Notifications]\(通知の管理\)__ を選択して、アラート方法を管理したり、アラート通知を作成したりします。 現在の通知が表示されます。 ここで通知を作成します。 特定のアラート/重要度の組み合わせが発生したとき、通知は **EMAIL** または **SNMP** で送信されます。 たとえば、 **[YARN Default]** グループのいずれかのアラートが **[Critical]** に設定されたときに電子メール メッセージを送信できます。
 
 ![Apache Ambari のアラート通知の作成](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -119,7 +119,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 #### <a name="quick-links"></a>クイック リンク:
 
-一部のサービスでは、ページの上部に **[Quick Links]** が表示されます。 これを使用すると、サービスに固有の次のような Web UI にアクセスできます。
+一部のサービスでは、ページの上部に **[Quick Links]** が表示されます。 このリンクを使用すると、サービスに固有の次のような Web UI にアクセスできます。
 
 * **Job History** - MapReduce ジョブ履歴
 * **Resource Manager** - YARN リソース マネージャー UI
@@ -135,7 +135,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari ユーザー、グループ、およびアクセス許可
 
-[ドメイン参加済み](./domain-joined/hdinsight-security-overview.md) HDInsight クラスターを使用する場合は、ユーザー、グループ、アクセス許可の管理がサポートされています。 ドメイン参加済みクラスターでの Ambari 管理 UI の使用の詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/hdinsight-security-overview.md)に関する記事を参照してください。
+ユーザー、グループ、およびアクセス許可の操作はサポートされています。 ローカル管理については、「[Apache Ambari ビューに対してユーザーを承認する](./hdinsight-authorize-users-to-ambari.md)」をご覧ください。 ドメイン参加済みクラスターについては、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/hdinsight-security-overview.md)に関する記事をご覧ください。
 
 > [!WARNING]  
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
@@ -151,20 +151,20 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 1. 管理するホストを選択します。
 
-2. **[Actions]** メニューを使用して、実行する操作を選択します。
+2. **[Actions]\(操作\)** メニューを使用して、実行する操作を選択します。
 
     |Item |説明 |
     |---|---|
     |Start all components|ホスト上のすべてのコンポーネントを起動します。|
     |Stop all components|ホスト上のすべてのコンポーネントを停止します。|
     |Restart all components|ホスト上のすべてのコンポーネントを停止してから起動します。|
-    |Turn on maintenance mode|ホストのアラートを抑制します。 アラートを生成するアクションを実行している場合は、このモードを有効にする必要があります。 たとえば、サービスの停止と開始です。|
+    |Turn on maintenance mode|ホストのアラートを抑制します。 アラートを生成する操作を実行している場合は、このモードを有効にする必要があります。 たとえば、サービスの停止と開始です。|
     |Turn off maintenance mode|ホストを通常の警告に戻します。|
     |Stop|ホスト上の DataNode または NodeManagers を停止します。|
     |[開始]|ホスト上の DataNode または NodeManagers を起動します。|
     |Restart|ホスト上の DataNode または NodeManagers を停止して起動します。|
-    |Decommission|クラスターからホストを削除します。 **HDInsight クラスターではこの操作は使用しないでください。**|
-    |Recommission|以前に使用停止したホストをクラスターに追加します。 **HDInsight クラスターではこの操作は使用しないでください。**|
+    |Decommission|クラスターからホストを削除します。 **HDInsight クラスターでは、この操作は使用しないでください。**|
+    |Recommission|以前に使用停止したホストをクラスターに追加します。 **HDInsight クラスターでは、この操作は使用しないでください。**|
 
 ### <a name="services"></a><a id="service"></a>サービス
 
@@ -179,7 +179,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 1. **[Dashboard]** または **[Services]** ページでサービスを選択します。
 
-2. **[Summary]** タブの上部で **[Service Actions]** ボタンを使用して実行する操作を選択します。 これにより、すべてのノードでサービスが再起動されます。
+2. **[Summary]** タブの上部で **[Service Actions]** ボタンを使用して実行する操作を選択します。 この操作により、すべてのノードでサービスが再起動されます。
 
     ![Apache Ambari の個別サービス アクション](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
@@ -203,7 +203,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 ## <a name="ambari-views"></a>Ambari ビュー
 
-Ambari ビューを使うと、開発者は [Apache Ambari ビュー フレームワーク](https://cwiki.apache.org/confluence/display/AMBARI/Views)を使用して Ambari Web UI に UI 要素をプラグインできます。 HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
+Ambari ビューを使うと、開発者は Apache Ambari ビュー フレームワークを使用して Ambari Web UI に UI 要素をプラグインできます。 HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
 
 * Hive ビュー:Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、[HDInsight での Apache Hive ビューの使用](hadoop/apache-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
@@ -213,8 +213,10 @@ Ambari ビューを使うと、開発者は [Apache Ambari ビュー フレー�
 
 Ambari の次の操作は、HDInsight ではサポートされていません。
 
-* __メトリック コレクター サービスの移動__。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 HDInsight では、このアクションはサポートされていません。
+* __メトリック コレクター サービスの移動__。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 この操作は、HDInsight ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 
-HDInsight で [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使う方法を学習します。
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) と HDInsight
+* [Apache Ambari を使用して HDInsight クラスター構成を最適化する](./hdinsight-changing-configs-via-ambari.md)
+* [Azure HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md)

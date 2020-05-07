@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 3d4e8577116ba1d78aaa881887f64e71c04af4f2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668325"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208093"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -195,7 +195,7 @@ AKS のアップグレードの詳細については、[AKS でサポートさ�
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>kured を使用して Linux ノードの更新と再起動を処理する
 
-**ベスト プラクティス ガイダンス** - AKS では、各 Linux ノードへのセキュリティ パッチのダウンロードとインストールが自動的に行われますが、必要な場合に再起動が自動的に実行されることはありません。 `kured` を使用して保留中の再起動を確認してから、ノードの遮断と解放を安全に実行し、ノードを再起動し、更新プログラムを適用して、OS に関してできる限りセキュリティで保護されるようにします。 Windows Server ノード (現在 AKS でプレビュー段階) では、ポッドを安全に切断およびドレインし、更新されたノードをデプロイするために、AKS のアップグレード操作を定期的に実行します。
+**ベスト プラクティス ガイダンス** - AKS では、各 Linux ノードへのセキュリティ パッチのダウンロードとインストールが自動的に行われますが、必要な場合に再起動が自動的に実行されることはありません。 `kured` を使用して保留中の再起動を確認してから、ノードの遮断と解放を安全に実行し、ノードを再起動し、更新プログラムを適用して、OS に関してできる限りセキュリティで保護されるようにします。 Windows Server ノードでは、ポッドを安全に切断およびドレインし、更新されたノードをデプロイするために、AKS のアップグレード操作を定期的に実行します。
 
 AKS の Linux ノードでは、毎晩、ディストリビューション更新チャネルを介してセキュリティ修正プログラムを入手できます。 この動作は、ノードが AKS クラスターに展開されるときに自動的に構成されます。 中断や実行中のワークロードへの潜在的な影響を最小限に抑えるために、セキュリティ修正プログラムまたはカーネルの更新プログラムに必要な場合でも、ノードは自動的に再起動されません。
 

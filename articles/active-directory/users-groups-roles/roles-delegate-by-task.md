@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/03/2020
+ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284876"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779962"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -76,9 +76,9 @@ B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメント�
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
-パススルー認証 | グローバル管理者 | 
-すべての構成を読み取る | グローバル閲覧者 | 
-シームレス シングル サインオン | グローバル管理者 | 
+パススルー認証 | ハイブリッド ID の管理者  | 
+すべての構成を読み取る | グローバル閲覧者 | ハイブリッド ID の管理者  |
+シームレス シングル サインオン | ハイブリッド ID の管理者  | 
 
 ## <a name="connect-health"></a>Connect Health
 

@@ -4,12 +4,12 @@ description: この記事では、REST API を使用してコンテナーの構�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227435"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744563"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーの構成を更新する
 
@@ -21,7 +21,7 @@ ms.locfileid: "79227435"
 
 ただし、この機能が不要なシナリオもあります。 Azure Recovery Services コンテナーは、論理的に削除されたものも含め、その中にバックアップ項目がある場合は削除できません。 コンテナーをすぐに削除する必要がある場合、このことにより問題が発生する可能性があります。 たとえばデプロイ操作では、作成されたリソースが同じワークフローでクリーンアップされることがよくあります。 デプロイはコンテナーを作成し、項目のバックアップを構成して、テストの復元を実行してから、バックアップ項目とコンテナーの削除に進むことができます。 コンテナーの削除に失敗した場合、デプロイ全体が失敗する可能性があります。 論理的な削除を無効にすることが、即時の削除を保証する唯一の方法です。
 
-そのため、顧客はシナリオに応じて、特定のコンテナーの論理的な削除を無効にするかどうかを慎重に選択する必要があります。 詳細については、[論理的な削除に関する記事](backup-azure-security-feature-cloud.md#soft-delete)を参照してください。
+そのため、顧客はシナリオに応じて、特定のコンテナーの論理的な削除を無効にするかどうかを慎重に選択する必要があります。 詳細については、[論理的な削除に関する記事](backup-azure-security-feature-cloud.md)を参照してください。
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API を使用した論理的な削除状態の取得
 

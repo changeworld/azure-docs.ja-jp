@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 11/29/2019
-ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 75f8c1f77a372d3b9b9e9a5582927f24b99fe9ed
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75932130"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190216"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
-この記事では、[Apache Hadoop YARN](https://spark.apache.org/) UI、Spark UI、および Spark History Server を使用して、HDInsight クラスター上で実行されている [Apache Spark](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ジョブを追跡およびデバッグする方法について説明します。 まず、「**Machine Learning: MLLib を使用した食品検査データの予測分析**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 他の方法 (**spark-submit** など) で送信したアプリケーションについても、以下の手順に従って追跡することができます。
+この記事では、HDInsight クラスターで実行されている Apache Spark ジョブを追跡およびデバッグする方法について説明します。 Apache Hadoop YARN UI、Spark UI、および Spark History Server を使用してデバッグします。 まず、「**Machine Learning:MLLib を使用した食品検査データの予測分析**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 以下の手順を使用して、他の方法 (**spark-submit** など) を使って送信したアプリケーションも追跡します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
-* 「 **[Machine Learning: MLlib を使用した食品検査データの予測分析](apache-spark-machine-learning-mllib-ipython.md)** 」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 このノートブックの実行方法については、リンク先のページを参照してください。  
+* 「 **[Machine Learning:MLlib を使用した食品検査データの予測分析](apache-spark-machine-learning-mllib-ipython.md)** 」のノートブックが既に実行されているはずです。 このノートブックの実行方法については、リンク先のページを参照してください。  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>YARN UI でのアプリケーションの追跡
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    > [!TIP]  
    > Ambari UI から YARN UI を起動してもかまいません。 Ambari UI を起動するには、 **[クラスター ダッシュボード]** で **[Ambari ホーム]** を選択します。 Ambari UI で、 **[YARN]**  >  **[クイック リンク]** > アクティブな Resource Manager > **[Resource Manager UI]** に移動します。
 
-2. Jupyter Notebook を使用して Spark ジョブを開始したため、アプリケーションの名前は **remotesparkmagics** (ノートブックから開始されたすべてのアプリケーションに使用される名前) になっています。 ジョブに関する詳しい情報を確認するには、アプリケーション名に対応するアプリケーション ID を選択します。 これによりアプリケーション ビューが起動されます。
+2. Jupyter Notebook を使用して Spark ジョブを開始したため、アプリケーションの名前は **remotesparkmagics** (ノートブックから開始されたすべてのアプリケーション用の名前) になっています。 ジョブに関する詳しい情報を確認するには、アプリケーション名に対応するアプリケーション ID を選択します。 この操作により、アプリケーション ビューが起動されます。
 
     ![Spark History Server での Spark アプリケーション ID の検索](./media/apache-spark-job-debugging/find-application-id1.png)
 
@@ -76,19 +76,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![View Spark stages event timeline](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
 
-    Spark イベントがタイムラインの形式で表示されます。 タイムライン ビューには 3 種類の表示があります (ジョブ間、ジョブ内、ステージ内)。 上の画像は、特定のステージのタイムライン ビューをキャプチャしたものです。
+    この画像には、Spark イベントがタイムラインの形式で表示されています。 タイムライン ビューには 3 種類の表示があります (ジョブ間、ジョブ内、ステージ内)。 上の画像は、特定のステージのタイムライン ビューをキャプチャしたものです。
 
    > [!TIP]  
    > **[Enable zooming (ズームを有効にする)]** チェック ボックスをオンにすると、タイムライン ビューを左右にスクロールすることができます。
 
 6. Spark UI には、Spark インスタンスに関する有益な情報を得ることのできるタブが他にもあります。
 
-   * [ストレージ] タブ: アプリケーションで RDD を作成した場合、その情報を [ストレージ] タブで確認できます。
+   * [ストレージ] タブ - アプリケーション上で RDD が作成されると、[ストレージ] タブ内で情報を確認できます。
    * [環境] タブ: このタブには、Spark インスタンスに関する有益な情報が表示されます。その例を次に示します。
      * Scala バージョン
      * クラスターに関連付けられているイベント ログ ディレクトリ
      * アプリケーションの Executor のコア数
-     * など
 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>完了したジョブに関する情報を Spark History Server で探す
 
@@ -105,26 +104,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Spark History Server の完了済みアプリケーション](./media/apache-spark-job-debugging/view-completed-applications.png "Spark History Server2 を起動する")
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [拡張された Spark History Server を使用して Apache Spark ジョブをデバッグする](apache-azure-spark-history-server.md)
-
-### <a name="for-data-analysts"></a>データ アナリスト向け
-
-* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
-* [HDInsight での Apache Spark を使用した Application Insight テレメトリ データ分析](apache-spark-analyze-application-insight-logs.md)
-
-
-### <a name="for-spark-developers"></a>Spark 開発者向け
-
-* [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
-* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](apache-spark-intellij-tool-plugin.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
-* [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
+* [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをデバッグする](apache-spark-intellij-tool-debug-remotely-through-ssh.md)

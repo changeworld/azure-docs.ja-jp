@@ -9,18 +9,18 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 25cff0d0ea007bdd55131ab334a5813344991d0e
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 29baead8dbb41b004a9ace8576029c9bd8af3290
+  ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78672127"
+  ms.lasthandoff: 05/05/2020
+  ms.locfileid: "82790781"
 landingContent:
 - title: Azure App Configuration について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure App Configuration とは
+    - text: 'Azure App Configuration とは '
       url: overview.md
     - text: よく寄せられる質問
       url: faq.md
@@ -76,6 +76,8 @@ landingContent:
     links:
     - text: CI/CD パイプラインとの統合
       url: integrate-ci-cd-pipeline.md
+    - text: Helm を使用して Kubernetes デプロイと統合する
+      url: integrate-kubernetes-deployment-helm.md
   - linkListType: tutorial
     links:
     - text: ASP.NET Core アプリで Key Vault 参照を使用する

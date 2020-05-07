@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 5b04bbbbe5425e65f3ed4ff82d9700dec6dd2c39
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810534"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188329"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD アプリ用のセキュリティで保護されたアプリの開発
 ## <a name="overview"></a>概要
@@ -35,7 +35,7 @@ ms.locfileid: "80810534"
 - フロントエンド ファイアウォール アクセスで分離された専用の Azure Web アプリをデプロイする。 
 - OWASP 上位 10 のルール セットを使用するファイアウォールを使用して、Azure Application Gateway インスタンスを作成して構成する。 
 - Azure サービスを使用して、転送中および保存時のデータの暗号化を有効にする。 
-- Azure ポリシーとセキュリティ センターを設定してコンプライアンスを評価する。 
+- Azure Policy とセキュリティ センターを設定してコンプライアンスを評価する。 
 
 このアプリを開発してデプロイすると、次のサンプル Web アプリと、説明されている構成およびセキュリティ対策が設定されます。
 
@@ -417,7 +417,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
    - 必要に応じて、高度なアクセス ポリシーが構成されます。
    - Key Vault のアクセス ポリシーは、キーとシークレットに対する最低限必要なアクセス許可で定義されます。
    - Key Vault のすべてのキーとシークレットに有効期限があります。
-   - Key Vault 内のすべてのキーは、ハードウェア セキュリティ モジュール (HSM) によって保護されます。[キーの種類は、ハードウェア セキュリティ モジュール (HSM) によって保護された       
+   - Key Vault 内のすべてのキーは、ハードウェア セキュリティ モジュール (HSM) によって保護されます。[キーの種類は、ハードウェア セキュリティ モジュール (HSM) によって保護された        
      2048 ビット RSA キーです]
    - ロールベースのアクセス制御 (RBAC) を使用して、すべてのユーザー/ID に最低限必要なアクセス許可が付与されます。
    - アプリケーションは、相互に信頼し、実行時に同じシークレットへのアクセスを必要とする場合を除き、Key Vault を共有しません。
@@ -444,14 +444,16 @@ Azure サービスは、システムの正常性だけではなく、システ�
 1.  Azure portal に戻ります。 左側のナビゲーション ウィンドウで、[Azure Active Directory] サービスを選択し、[アプリの登録] を選択します。
 2.  結果の画面で、WebApp-OpenIDConnect-DotNet-code-v2 アプリケーションを選択します。
 3.  [認証] タブの [リダイレクト URI] セクションで、コンボボックスの [Web] を選択し、次のリダイレクト URI を追加します。
-    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o   [詳細設定] セクションで、[ログアウト URL] を https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc に設定します。
-4.  [ブランド] タブで、ホーム ページの URL を App Service のアドレスに更新します (たとえば https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net )。
+    `https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net`
+    `https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc`
+    [詳細設定] セクションで、[ログアウト URL] を `https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc` に設定します。
+4.  [ブランド] タブで、ホーム ページの URL を App Service のアドレスに更新します (たとえば `https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net`)。
         構成を保存します。
 5.  アプリケーションで Web API を呼び出す場合、appsettings.json プロジェクトに必要な変更を適用し、localhost でなく公開された API の URL が呼び出されるようにしてください。
 サンプルを発行します。
     1.  App Service の [概要] タブで、[発行プロファイルの取得] リンクをクリックして発行プロファイルをダウンロードし、保存します。 ソース管理などの他のデプロイ メカニズムを使用することもできます。
     2.  Visual Studio に切り替えて、WebApp-OpenIDConnect-DotNet-code-v2 プロジェクトに移動します。 ソリューション エクスプローラーでプロジェクトを右クリックし、[発行] を選択します。 下部のバーにある [プロファイルのインポート] をクリックし、前にダウンロードした発行プロファイルをインポートします。
-    3.  [構成] をクリックし、[接続] タブで宛先 URL を更新してホーム ページの URL の https になるようにします (https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net など)。 [次へ] をクリックします。
+    3.  [構成] をクリックし、[接続] タブで宛先 URL を更新してホーム ページの URL の https になるようにします (`https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net` など)。 [次へ] をクリックします。
     4.  [設定] タブで、[組織認証の有効化] が選択されていないことを確認します。 [保存] をクリックします。 メイン画面で [発行] をクリックします。
     5.  Visual Studio によってプロジェクトが発行され、ブラウザーでプロジェクトの URL が自動的に開かれます。 プロジェクトの既定の Web ページが表示された場合、発行は成功しています。
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Azure Active Directory に Multi-Factor Authentication を実装する

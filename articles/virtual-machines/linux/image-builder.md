@@ -4,15 +4,15 @@ description: Azure Image Builder で Linux VM を作成します。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 0d36d7db4d85ece8de77040925c535305951562b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b50b2a9bfca99e1868c083759cce26bb176789f4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066681"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792413"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>プレビュー:Azure Image Builder で Linux VM を作成する
 

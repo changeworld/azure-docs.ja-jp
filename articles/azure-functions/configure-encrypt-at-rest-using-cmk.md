@@ -4,10 +4,10 @@ description: Azure Storage でアプリケーション データを暗号化し�
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79408726"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した保存時の暗号化
@@ -49,9 +49,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
     ```    
 
-1. [こちらの手順](../app-service/app-service-key-vault-references.md#granting-your-app-access-to-key-vault)に従い、Key Vault へのアクセス権をアプリに付与します。
+1. [こちらの手順](../app-service/app-service-key-vault-references.md#granting-your-app-access-to-key-vault)に従い、キー コンテナーへのアクセス権をアプリに付与します。
 
-1. 次の [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) コマンドを使用して、Key Vault にシークレットとして外部 URL を追加します。   
+1. 次の [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) コマンドを使用して、キー コンテナーにシークレットとして外部 URL を追加します。   
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    

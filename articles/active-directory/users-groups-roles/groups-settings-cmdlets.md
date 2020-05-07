@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048153"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582798"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -160,7 +160,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: "" | ゲストの使用ガイドラインへのリンクの URL。 |
-|  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。 <br>*EnableMIPLabels* が *True* に設定されていて、グループに割り当てられている機密ラベルにゲスト ポリシーが関連付けられている場合は、この設定は上書きされ読み取り専用になります。<br>AllowToAddGuests 設定がテナントレベルで False に設定されている場合、グループ レベルでの AllowToAddGuests 設定はすべて無視されます。 ゲスト アクセスを少数のグループに対してのみ有効にする場合は、AllowToAddGuests をテナント レベルで true に設定した後、それを特定のグループに対して選択的に無効にする必要があります。 |
+|  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。 <br>*EnableMIPLabels* が *True* に設定されていて、グループに割り当てられている機密ラベルにゲスト ポリシーが関連付けられている場合は、この設定は上書きされ読み取り専用になります。<br>AllowToAddGuests 設定が組織レベルで False に設定されている場合、グループ レベルでの AllowToAddGuests 設定はすべて無視されます。 ゲスト アクセスを少数のグループに対してのみ有効にする場合は、AllowToAddGuests を組織レベルで True に設定した後、それを特定のグループに対して選択的に無効にする必要があります。 |
 |  <ul><li>ClassificationList<li>型: String<li>既定値: "" | Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 <br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
 |  <ul><li>EnableMIPLabels<li>型: Boolean<li>既定値は"False" |Microsoft 365 コンプライアンス センターで公開されている機密ラベルを Office 365 グループに適用できるかどうかを示すフラグ。 詳細については、[Office 365 グループへの機密ラベルの割り当て](groups-assign-sensitivity-labels.md)に関するページを参照してください。 |
 

@@ -4,12 +4,12 @@ description: Azure Service Fabric クラスターのバージョンまたは構�
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.custom: sfrev
-ms.openlocfilehash: 6897854820339fc78dd9083c82147dce95ab68b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d92ac90e0e41d534231bafbe991a05764dbee07d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229371"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789557"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレードと更新
 
@@ -105,7 +105,7 @@ Service Fabric では、クラスターの作成時に指定した [X.509 server
 ## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-in-out.md)
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 <!--Image references-->

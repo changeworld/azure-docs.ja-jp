@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 79310ddf121d6ada10755b198b515fdc9c1114d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b30c912319104726069ae98920f0bc825d7358cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247063"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182856"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
@@ -25,15 +25,15 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure アカウントをお持ちでない場合は、アクティブなサブスクリプションを使用してアカウントを設定します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 次に、この記事のセクションに記載された手順を始める前に、次のいずれかのタスクを完了してください。
+Azure アカウントをお持ちでない場合は、アクティブなサブスクリプションを使用してそれを設定します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 その後、この記事のセクションに記載された手順を始める前に、次のいずれかのタスクを完了してください。
 
 - **ポータル ユーザー**: Azure アカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 
-- **PowerShell ユーザー**: [Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、コンピューターから PowerShell を実行します。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Azure Cloud Shell のブラウザー タブで、 **[環境の選択]** ドロップダウン リストを見つけ、 **[PowerShell]** を選択します (まだ選択されていない場合)。
+- **PowerShell ユーザー**:[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行します。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Azure Cloud Shell のブラウザー タブで、 **[環境の選択]** ドロップダウン リストを見つけ、 **[PowerShell]** を選択します (まだ選択されていない場合)。
 
-    PowerShell をローカルで実行している場合、Azure PowerShell モジュール バージョン 1.0.0 以降を使用します。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az.Network` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 また、`Connect-AzAccount` を実行して、Azure との接続を作成します。
+    PowerShell をローカルで実行している場合は、Azure PowerShell モジュール バージョン 1.0.0 以降を使用してください。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az.Network` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 また、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
-- **Azure コマンド ライン インターフェイス (CLI) のユーザー**: [Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、コンピューターから CLI を実行します。 Azure CLI をローカルに実行している場合は、Azure CLI バージョン 2.0.31 以降を使用してください。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 また、`az login` を実行して、Azure との接続を作成します。
+- **Azure コマンド ライン インターフェイス (CLI) のユーザー**: [Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行します。 Azure CLI をローカルに実行している場合は、Azure CLI バージョン 2.0.31 以降を使用してください。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 また、`az login` を実行して、Azure との接続を作成します。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワーク共同作成者ロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)または「[アクセス許可](#permissions)」の一覧の適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
 
@@ -348,4 +348,4 @@ VM に接続されている各ネットワーク インターフェイスの有�
 ## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使用して、または Azure [Resource Manager テンプレート](template-samples.md)を使用して、ルート テーブルを作成します
-- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します
+- 仮想ネットワーク用に [Azure Policy 定義](policy-samples.md)を作成して割り当てる

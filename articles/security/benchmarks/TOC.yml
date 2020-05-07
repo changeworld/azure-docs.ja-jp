@@ -3,14 +3,15 @@
 - name: はじめに
   href: introduction.md
 - name: シングル サインオンの設定
+  expanded: true
   items:
-    - name: Azure セキュリティ制御の概要
+    - name: Azure セキュリティ コントロールの概要
       href: overview.md
     - name: ネットワークのセキュリティ
       href: security-control-network-security.md
     - name: ログ記録と監視
       href: security-control-logging-monitoring.md
-    - name: ID およびアクセス制御
+    - name: ID とアクセスの制御
       href: security-control-identity-access-control.md
     - name: データ保護
       href: security-control-data-protection.md
@@ -28,10 +29,12 @@
       href: security-control-incident-response.md
     - name: 侵入テストとレッド チーム演習
       href: security-control-penetration-tests-red-team-exercises.md
-- name: セキュリティ ベースライン
+- name: Azure のセキュリティ ベースライン
   items:
-    - name: Azure セキュリティ ベースラインの概要
+    - name: Azure のセキュリティ ベースラインの概要
       href: security-baselines-overview.md
+    - name: API Management のセキュリティ ベースライン
+      href: ../../api-management/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Backup のセキュリティ ベースライン
@@ -44,8 +47,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: データ エクスプローラーのセキュリティ ベースライン
       href: /azure/data-explorer/security-baseline
+    - name: Databricks のセキュリティ ベースライン
+      href: ../../azure-databricks/security-baseline.md
     - name: Event Hubs のセキュリティ ベースライン
       href: ../../event-hubs/security-baseline.md
+    - name: Functions のセキュリティ ベースライン
+      href: ../../azure-functions/security-baseline.md
     - name: HDInsight のセキュリティ ベースライン
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault のセキュリティ ベースライン

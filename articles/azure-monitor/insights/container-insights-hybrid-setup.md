@@ -2,17 +2,37 @@
 title: ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する | Microsoft Docs
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/22/2020
+ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255432"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185967"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
 Azure Monitor for containers は、Azure Kubernetes Service (AKS) と、Azure でホストされている自己管理型 Kubernetes クラスターである [Azure 上の AKS エンジン](https://github.com/Azure/aks-engine)用の監視エクスペリエンスを提供するものです。 この記事では、Azure の外部でホストしている Kubernetes クラスターの監視を有効にし、Azure と同等の監視エクスペリエンスを実現する方法について説明します。
+
+## <a name="supported-configurations"></a>サポートされている構成
+
+Azure Monitor for containers では、以下が公式にサポートされています。
+
+* 環境: 
+
+    * オンプレミスの Kubernetes
+    
+    * Azure と Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください
+    
+    * [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4 以降、オンプレミスまたはその他のクラウド環境。
+
+* Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。
+
+* コンテナー ランタイム:Docker、Moby、および CRI と互換性のあるランタイム (CRI-O、など)。
+
+* マスター ノードとワーカー ノード用の Linux OS のリリース:Ubuntu (18.04 LTS と 16.04 LTS)、および Red Hat Enterprise Linux CoreOS 43.81。
+
+* サポートされているアクセス制御:Kubernetes の RBAC と非 RBAC
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,10 +53,9 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と、Azure �
 * コンテナー化されたバージョンの Linux 用 Log Analytics エージェントが Azure Monitor と通信するためには、プロキシとファイアウォールに関する次の構成情報が必要です。
 
     |エージェントのリソース|Port |
-    |------|---------|   
-    |*.ods.opinsights.azure.com |ポート 443 |  
-    |*.oms.opinsights.azure.com |ポート 443 |  
-    |*.blob.core.windows.net |ポート 443 |  
+    |------|---------|
+    |*.ods.opinsights.azure.com |ポート 443 |
+    |*.oms.opinsights.azure.com |ポート 443 |
     |*.dc.services.visualstudio.com |ポート 443 |
 
 * コンテナー化されたエージェントがパフォーマンスに関するメトリックを収集できるように、クラスター内のすべてのノードで Kubelet の `cAdvisor secure port: 10250` または `unsecure port :10255` を開いておく必要があります。 Kubelet の cAdvisor がまだ構成されていない場合は、`secure port: 10250` を構成することをお勧めします。
@@ -45,16 +64,6 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と、Azure �
 
 >[!IMPORTANT]
 >ハイブリッド Kubernetes クラスターの監視は、ciprod10182019 以降のバージョンのエージェントに限りサポートされます。
-
-## <a name="supported-configurations"></a>サポートされている構成
-
-Azure Monitor for containers では、以下が公式にサポートされています。
-
-- 環境:オンプレミスの Kubernetes、Azure 上の AKS エンジン、Azure Stack。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
-- Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。
-- コンテナー ランタイム:Docker と Moby
-- マスター ノードとワーカー ノード用の Linux OS のリリース:Ubuntu (18.04 LTS と 16.04 LTS)
-- サポートされているアクセス制御:Kubernetes の RBAC と非 RBAC
 
 ## <a name="enable-monitoring"></a>監視を有効にする
 
@@ -107,7 +116,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 3. 次の例では、既定の JSON 形式で、サブスクリプション内のワークスペースの一覧が表示されます。
 
-    ```
+    ```azurecli
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
@@ -241,6 +250,9 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 ## <a name="install-the-chart"></a>チャートをインストールする
 
+>[!NOTE]
+>次のコマンドは、Helm バージョン 2 にのみ適用できます。 `--name` パラメーターの使用は、Helm バージョン 3 には適用されません。
+
 HELM チャートを有効にする手順は次のとおりです。
 
 1. 次のコマンドを実行して、ローカルのリストに Azure のチャート リポジトリを追加します。
@@ -269,6 +281,28 @@ HELM チャートを有効にする手順は次のとおりです。
     $ helm install --name myrelease-1 \
     --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
+
+### <a name="enable-the-helm-chart-using-the-api-model"></a>API モデルを使用して、Helm グラフを有効にする
+
+AKS エンジン クラスター仕様の JSON ファイル (API モデルとも呼ばれます) で、アドオンを指定できます。 このアドオンでは、base64 でエンコードされたバージョンの `WorkspaceGUID` と、収集した監視データが格納される Log Analytics ワークスペースの `WorkspaceKey` を指定します。
+
+Azure Stack Hub クラスターに対してサポートされる API 定義については、[kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json) の例をご覧ください。 具体的には、**kubernetesConfig** の **addons** プロパティを探します。
+
+```json
+"orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
 
 ## <a name="configure-agent-data-collection"></a>データ収集を構成する
 

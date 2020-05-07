@@ -10,34 +10,34 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227651"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582712"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
 この記事では、製品のライセンスをユーザーのグループに割り当てて、その後、Azure Active Directory (Azure AD) 内で正しくライセンスされていることを確認する手順を説明します。
 
-この例では、テナントには**人事部**というセキュリティ グループが含まれています。 このグループには、人事部のすべてのメンバーが含まれます (約 1,000 人)。 Office 365 Enterprise E3 ライセンスを部署全体に割り当てる必要があります。 製品に含まれている Yammer Enterprise サービスは、部署で使用開始の準備が整うまで、一時的に無効する必要があります。 同じユーザー グループに、Enterprise Mobility + Security ライセンスをデプロイする必要もあります。
+この例では、Azure AD 組織に**人事部**というセキュリティ グループが含まれています。 このグループには、人事部のすべてのメンバーが含まれます (約 1,000 人)。 Office 365 Enterprise E3 ライセンスを部署全体に割り当てる必要があります。 製品に含まれている Yammer Enterprise サービスは、部署で使用開始の準備が整うまで、一時的に無効する必要があります。 同じユーザー グループに、Enterprise Mobility + Security ライセンスをデプロイする必要もあります。
 
 > [!NOTE]
 > Microsoft サービスの中には、すべての場所では利用できないものもあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの [利用場所] プロパティを指定しておく必要があります。
 >
 > グループ ライセンスの割り当ての際、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。 ユーザーが複数の場所にいる場合は、Azure AD でのユーザー作成フローの一環として利用場所を常に設定することをお勧めします (AAD Connect 構成など)。これにより、ライセンス割り当ての結果が常に正しいことが保証され、ユーザーは許可されていない場所でサービスを受けられなくなります。
 
-## <a name="step-1-assign-the-required-licenses"></a>手順 1. 必要なライセンスの割り当て
+## <a name="step-1-assign-the-required-licenses"></a>手順 1:必要なライセンスを割り当てる
 
 1. ユーザー管理者アカウントを使用して [**Azure AD 管理センター**](https://aad.portal.azure.com)にサインインします。 ライセンスを管理するアカウントは、ライセンス管理者、ユーザー アカウント管理者、またはグローバル管理者である必要があります。
 
-1. **[ライセンス]** を選択して、ライセンスを付与できるテナント内のすべての製品を確認および管理できるページを開きます。
+1. **[ライセンス]** を選択して、ライセンスを付与できる組織内のすべての製品を確認および管理できるページを開きます。
 
 1. **[すべての製品]** で、製品名を選択して Office 365 Enterprise E5 と Enterprise Mobility + Security E3 の両方を選択します。 割り当てを開始するには、ページの上部にある **[割り当て]** を選択します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "79227651"
 
 グループにライセンスを割り当てると、Azure AD によりそのグループのすべての既存メンバーが処理されます。 グループのサイズにより、この処理には時間がかかる場合があります。 次の手順では、プロセスの終了を確認する方法と、問題の解決にさらなる注意が必要かどうかを確認する方法について説明します。
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2. 最初の割り当てが終了したことの確認
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2:最初の割り当てが終了したことを確認する
 
 1. **[Azure Active Directory]**  >  **[グループ]** の順に移動します。 ライセンスが割り当てられていたグループを選択します。
 
@@ -79,7 +79,7 @@ ms.locfileid: "79227651"
 
    [このセクション](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity)では、グループ ベースのライセンスによって行われた変更を、監査ログを使用して分析する方法を説明しています。
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3. ライセンスに関する問題のチェックと解決
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3:ライセンスに関する問題をチェックして解決する
 
 1. **[Azure Active Directory]**  >  **[グループ]** の順に移動して、ライセンスが割り当てられていたグループを見つけます。
 1. そのグループのページで、 **[ライセンス]** を選択します。 ページの上部の通知で、ライセンスを割り当てられなかったユーザーが 10 人いることが示されます。 それを開くと、このグループでライセンスがエラー状態である全ユーザーの一覧が表示されます。

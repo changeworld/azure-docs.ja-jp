@@ -1,15 +1,15 @@
 ---
 title: コンテナー グループの概要
-description: Azure Container Instances のコンテナー グループ、ライフサイクルとリソース (ストレージやネットワークなど) を共有するインスタンスのコレクションについて学習します
+description: Azure Container Instances のコンテナー グループ、ライフサイクルとリソース (CPU、ストレージ、ネットワークなど) を共有するインスタンスのコレクションについて説明します
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225851"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583840"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -17,7 +17,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 ## <a name="what-is-a-container-group"></a>コンテナー グループとは
 
-コンテナー グループは、同じホスト コンピューター上にスケジュール設定されるコンテナーのコレクションです。 コンテナー グループ内のコンテナーでは、ライフサイクル、リソース、ローカル ネットワーク、ストレージ ボリュームを共有します。 これは、*Kubernetes* における[ポッド][kubernetes-pod]の概念に似ています。
+コンテナー グループは、同じホスト コンピューター上にスケジュール設定されるコンテナーのコレクションです。 コンテナー グループ内のコンテナーでは、ライフサイクル、リソース、ローカル ネットワーク、ストレージ ボリュームを共有します。 これは、[Kubernetes][kubernetes-pod] における*ポッド*の概念に似ています。
 
 次の図は、複数のコンテナーを含むコンテナー グループの例を示しています。
 
@@ -44,7 +44,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 ## <a name="resource-allocation"></a>リソース割り当て
 
-Azure Container Instances では、グループにインスタンスの[リソース要求][gpus]を追加することで、CPU、メモリ、必要に応じて [GPU][resource-requests] (プレビュー) などのリソースをマルチコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのコンテナー インスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
+Azure Container Instances では、グループにインスタンスの[リソース要求][resource-requests]を追加することで、CPU、メモリ、必要に応じて [GPU][gpus] (プレビュー) などのリソースをマルチコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのコンテナー インスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
 
 ### <a name="resource-usage-by-container-instances"></a>コンテナー インスタンス別のリソース使用量
 
@@ -56,7 +56,10 @@ Azure Container Instances では、グループにインスタンスの[リソ�
     
 たとえば、あるグループに属する 2 つのコンテナー インスタンスがそれぞれ 1 CPU を要求するとき、あるコンテナーで実行されるワークロードが他のコンテナーのそれと比べ、多くの CPU 実行を要求することがあります。
 
-このシナリオでは、コンテナー インスタンスに対して 2 CPU のリソース制限を設定できます。 この構成にすると、コンテナー インスタンスには使用可能な場合に最大 2 CPU まで使用できます。
+このシナリオでは、コンテナー インスタンスに対して最大 2 つの CPU のリソース制限を設定できます。 この構成にすると、コンテナー インスタンスには最大 2 つの CPU (使用可能な場合) を使用できます。
+
+> [!NOTE]
+> コンテナー グループの少量のリソースは、サービスの基になるインフラストラクチャによって使用されます。 コンテナーでは、グループに割り当てられているほとんどのリソースにアクセスできますが、すべてのリソースにアクセスできるわけではありません。 このため、グループ内のコンテナーのリソースを要求するときは、小さいリソース バッファーを計画してください。
 
 ### <a name="minimum-and-maximum-allocation"></a>最小値と最大値の割り当て
 
@@ -66,7 +69,7 @@ Azure Container Instances では、グループにインスタンスの[リソ�
 
 ## <a name="networking"></a>ネットワーク
 
-コンテナー グループは、外部に接続する IP アドレス、その IP アドレス上の 1 つ以上のポート、完全修飾ドメイン名 (FQDN) を持つ DNS ラベルを共有することができます。 外部クライアントがグループ内のコンテナーにアクセスできるようにするには、IP アドレスのポートをコンテナーから公開する必要があります。 グループ内のコンテナーがポートの名前空間を共有するため、ポートのマッピングはサポートされません。 コンテナー グループの IP アドレスと FQDN は、コンテナー グループを削除すると解放されます。 
+コンテナー グループは、外部に接続する IP アドレス、その IP アドレス上の 1 つ以上のポート、完全修飾ドメイン名 (FQDN) を持つ DNS ラベルを共有することができます。 外部クライアントがグループ内のコンテナーにアクセスできるようにするには、IP アドレスのポートをコンテナーから公開する必要があります。 コンテナー グループの IP アドレスと FQDN は、コンテナー グループを削除すると解放されます。 
 
 コンテナー グループ内では、コンテナー インスタンスは任意のポートの localhost を通じて相互にアクセスできます。それらのポートがグループの IP アドレスまたはコンテナーで外部に公開されていなくてもかまいません。
 
@@ -115,7 +118,7 @@ Azure Resource Manager テンプレートを使用してマルチコンテナー
 [resource-limits]: /rest/api/container-instances/containergroups/createorupdate#resourcelimits
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
-[virtual-network]: container-instances-vnet.md
+[virtual-network]: container-instances-virtual-network-concepts.md
 [secret]: container-instances-volume-secret.md
 [volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md

@@ -5,18 +5,18 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: f78b65169899107bcd4626bbed65bd4fddd8af43
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c36d651fde4c10157979e12fda12604153aefdfc
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77595452"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561881"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS) を使用すると、マネージド Kubernetes クラスターを Azure 内に簡単にデプロイできます。 AKS では、責任の多くを Azure にオフロードすることで、Kubernetes の管理の複雑さと運用上のオーバーヘッドを軽減します。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。 Kubernetes マスターは、Azure によって管理されます。 ユーザーは、エージェント ノードの管理と保守のみを行います。 マネージド Kubernetes サービスである AKS は無料のため、マスターではなく、クラスター内のエージェント ノードに対してのみ料金を支払います。
 
-Azure portal では、Azure CLI、または Resource Manager テンプレートや Terraform などのテンプレート駆動型のデプロイ オプションを使用して、AKS クラスターを作成できます。 AKS クラスターをデプロイすると、Kubernetes マスターとすべてのノードが自動的にデプロイされ、構成されます。 デプロイ プロセス中に、高度なネットワーク、Azure Active Directory 統合、監視などの追加機能も構成できます。 現在、AKS で Windows Server コンテナーのサポートはプレビュー段階にあります。
+Azure portal では、Azure CLI、または Resource Manager テンプレートや Terraform などのテンプレート駆動型のデプロイ オプションを使用して、AKS クラスターを作成できます。 AKS クラスターをデプロイすると、Kubernetes マスターとすべてのノードが自動的にデプロイされ、構成されます。 デプロイ プロセス中に、高度なネットワーク、Azure Active Directory 統合、監視などの追加機能も構成できます。 AKS では、Windows Server のコンテナーがサポートされています。
 
 Kubernetes の基礎の詳細については、[AKS における Kubernetes の中心概念][concepts-clusters-workloads]に関するページを参照してください。
 
@@ -44,7 +44,7 @@ AKS クラスターやデプロイされたアプリケーションがどのよ�
 
 ## <a name="clusters-and-nodes"></a>クラスターとノード
 
-AKS ノードは Azure 仮想マシンで実行されます。 ストレージをノードやポッドに接続し、クラスター コンポーネントをアップグレードして、GPU を使用することができます。 AKS では、混在するオペレーティング システムと Windows Server コンテナー (現在プレビュー段階) をサポートするために複数のノード プールを実行する Kubernetes クラスターがサポートされています。 Linux ノードでは、カスタマイズされた Ubuntu OS イメージが実行され、Windows Server ノードでは、カスタマイズされた Windows Server 2019 OS イメージが実行されます。
+AKS ノードは Azure 仮想マシンで実行されます。 ストレージをノードやポッドに接続し、クラスター コンポーネントをアップグレードして、GPU を使用することができます。 AKS では、混在するオペレーティング システムと Windows Server コンテナーをサポートするために複数のノード プールを実行する Kubernetes クラスターがサポートされています。 Linux ノードでは、カスタマイズされた Ubuntu OS イメージが実行され、Windows Server ノードでは、カスタマイズされた Windows Server 2019 OS イメージが実行されます。
 
 ### <a name="cluster-node-and-pod-scaling"></a>クラスター ノードとポッドのスケーリング
 
@@ -88,7 +88,7 @@ HTTP アプリケーション ルーティング アドオンを利用すると�
 
 ## <a name="development-tooling-integration"></a>開発ツールの統合
 
-Kubernetes には、Helm、Draft、Visual Studio Code 用の Kubernetes 拡張機能など、開発および管理ツールの豊富なエコシステムがあります。 これらのツールは、AKS でシームレスに動作します。
+Kubernetes には、Helm、Visual Studio Code 用の Kubernetes 拡張機能など、開発および管理ツールの豊富なエコシステムがあります。 これらのツールは、AKS でシームレスに動作します。
 
 その上、Azure Dev Spaces では、高速で反復的な Kubernetes 開発エクスペリエンスをチームに提供しています。 最小限の構成で、AKS 内で直接、コンテナーの実行とデバッグを行えます。 始める際には、[Azure Dev Spaces][azure-dev-spaces] に関するページを参照してください。
 

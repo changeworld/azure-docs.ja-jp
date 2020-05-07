@@ -11,6 +11,9 @@
   items:
     - name: Azure VM を別のリージョンにレプリケートする
       href: azure-to-azure-quickstart.md
+    - name: コンテナーの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: チュートリアル
   items:
     - name: Azure への Azure VM のディザスター リカバリー

@@ -1,10 +1,10 @@
 ---
-title: Web サービスのパラメーター - Azure Machine Learning Studio (クラシック) | Microsoft Docs
+title: Web サービス パラメーター
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Web サービスを使用して、Web サービス アクセス時のモデルの動作を変更する方法です。
 services: machine-learning
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: d6ddd9603f22bd3820d18be020b9c620cf06aa42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1308f658b6ae7c8f46b989f8205568fa195fb4aa
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204411"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209351"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio Web (クラシック) サービスのパラメーターの使用
 
@@ -41,7 +41,7 @@ Web サービスのパラメーターの既定値を指定するかどうかを�
 Web サービスの API ドキュメントには、Web サービス アクセス時にプログラムで Web サービスのパラメーターを指定する方法に関する Web サービス ユーザー向けの情報が含まれます。
 
 > [!NOTE]
-> 従来の Web サービスの API ドキュメントは、Machine Learning Studio (クラシック) の Web サービス **ダッシュボード**にある **API ヘルプ ページ** リンクから入手できます。 新しい Web サービスの API ドキュメントは、Web サービスの [[Consume (使用)]](https://services.azureml.net/Quickstart) ページと **[Swagger API]** ページにある **Azure Machine Learning Web サービス** ポータルから入手できます。
+> 従来の Web サービスの API ドキュメントは、Machine Learning Studio (クラシック) の Web サービス **ダッシュボード**にある **API ヘルプ ページ** リンクから入手できます。 新しい Web サービスの API ドキュメントは、Web サービスの **[Consume (使用)]** ページと **[Swagger API]** ページにある [Azure Machine Learning Web サービス](https://services.azureml.net/Quickstart) ポータルから入手できます。
 > 
 > 
 

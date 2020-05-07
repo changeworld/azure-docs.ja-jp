@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283890"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581367"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs の一般提供 (GA) についてよく寄せられる質問
 この一般提供に関する FAQ では、GA に向けた準備の過程で 2019 年第 4 四半期から 2020 年第 1 四半期までの間に行われた変更について説明しています。
@@ -52,19 +52,19 @@ Azure Monitor for VMs を有効にする以前のメソッドでは、ご利用�
 
 パフォーマンス カウンターを有効にしたままにする場合は、[Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/) に基づいて `Perf` テーブルに取り込まれ格納されたデータに対して課金されます。
 
-## <a name="how-will-this-change-affect-my-alert-rules"></a>この変更はアラート ルールにどのように影響しますか?
+## <a name="how-will-this-change-affect-my-alert-rules"></a>この変更はアラート ルールにどのように影響しますか? 
 
 ワークスペース内で有効にされているパフォーマンス カウンターをターゲットにする `Perf` テーブルをクエリする[ログ アラート](../platform/alerts-unified-log.md)を作成した場合、代わりに `InsightsMetrics` テーブルを参照するように、これらのルールを更新する必要があります。 これらのデータ セットは `VMComputer` テーブルと `VMProcess` テーブルに移動するため、このガイダンスは `ServiceMapComputer_CL` と `ServiceMapProcess_CL` を使用したログ検索規則にも適用されます。
 
 この FAQ とドキュメントを更新して、収集するデータ セットに対するログ検索のアラート ルールの例を含めます。
 
-## <a name="how-will-this-affect-my-bill"></a>これは自分の請求書にどのように影響しますか?
+## <a name="how-will-this-affect-my-bill"></a>これは自分の請求書にどのように影響しますか? 
 
 課金は引き続き、Log Analytics ワークスペースに取り込まれ保持されるデータに基づいて行われます。
 
 Microsoft が収集するマシン レベルのパフォーマンス データは同じであり、`Perf` テーブルに格納されたデータと同様のサイズで、ほぼ同じ額のコストがかかります。
 
-## <a name="what-if-i-only-want-to-use-service-map"></a>Service Map のみを使用する場合はどうなりますか?
+## <a name="what-if-i-only-want-to-use-service-map"></a>Service Map のみを使用する場合はどうなりますか? 
 
 問題はありません。 今後の更新プログラムについて Azure Monitor for VMs 表示するときに、Azure portal にプロンプトが表示されます。 リリースされると、新しいバージョンへの更新を要求するプロンプトが表示されます。 [Maps](vminsights-maps.md) 機能のみを使用する場合は、アップグレードしないことを選択して、Azure Monitor for VMs の Maps 機能と、ご利用のワークスペースまたはダッシュボード タイルからアクセスする Service Map ソリューションを使用し続けることができます。
 
@@ -74,17 +74,17 @@ Microsoft が収集するマシン レベルのパフォーマンス データ�
 
 **VMInsights** ソリューションにアップグレードしないことを選択した場合は、`Perf` テーブルのデータを参照するレガシ バージョンのパフォーマンス ブックを引き続き提供します。  
 
-## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Service Map データ セットも InsightsMetrics に格納されますか?
+## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Service Map データ セットも InsightsMetrics に格納されますか? 
 
 両方のソリューションを使用する場合、データ セットは複製されません。 両方のオファリングでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` テーブルに格納されるデータ セットを共有して、収集するマップ データ セットを格納します。  
 
 `InsightsMetrics` テーブルには、収集された VM、プロセス、およびサービス データ セットが格納されます。このテーブルは Azure Monitor for VMs と VM Insights ソリューションを使用している場合にのみ設定されます。 Service Map ソリューションでは、データの収集も `InsightsMetrics` テーブルへのデータの格納も行われません。
 
-## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>ワークスペースに Service Map と VMInsights のソリューションがある場合、二重に課金されますか?
+## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>ワークスペースに Service Map と VMInsights のソリューションがある場合、二重に課金されますか? 
 
 いいえ、2 つのソリューションでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` に格納されているマップ データ セットを共有しています。 ワークスペースに両方のソリューションがある場合、このデータに対して二重に課金されることはありません。
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Service Map または VMInsights ソリューションのいずれかを削除した場合、自分のデータは削除されますか?
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Service Map または VMInsights ソリューションのいずれかを削除した場合、自分のデータは削除されますか? 
 
 いいえ、2 つのソリューションでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` に格納されているマップ データ セットを共有しています。 ソリューションのいずれかを削除すると、これらのデータ セットでは、データを使用するソリューションが配置されたままで、Log Analytics ワークスペースに保持されていることがわかります。 ご利用のワークスペースからデータを削除する場合は、ワークスペースから両方のソリューションを削除する必要があります。
 

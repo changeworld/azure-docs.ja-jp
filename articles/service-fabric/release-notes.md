@@ -6,10 +6,10 @@ ms.topic: conceptual
 hide_comments: true
 hideEdit: true
 ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729593"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
@@ -37,7 +37,7 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 ## <a name="key-announcements"></a>重要な発表
 - [**Service Fabric アプリケーション用 Service Fabric マネージド ID**](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) を**一般提供**
 - [**Ubuntu 1804 をサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**プレビュー: VMSS エフェメラル OS ディスクをサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**: エフェメラル OS ディスクは、ローカル仮想マシン上に作成されるストレージであり、リモート Azure Storage には保存されません。 エフェメラル OS ディスクは、従来の永続 OS ディスクと比べて、次のような特徴を持っているため、すべての Service Fabric ノードの種類 (プライマリとセカンダリ) で推奨されます。
+ - [**プレビュー: VMSS エフェメラル OS ディスクをサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**:エフェメラル OS ディスクは、ローカル仮想マシン上に作成されるストレージであり、リモート Azure Storage には保存されません。 エフェメラル OS ディスクは、従来の永続 OS ディスクと比べて、次のような特徴を持っているため、すべての Service Fabric ノードの種類 (プライマリとセカンダリ) で推奨されます。
       -  OS ディスクへの読み取り/書き込み待機時間が短縮される
       -  ノード管理操作をすばやくリセットまたは再イメージ化できる
       -  全体的なコストが削減される (ディスクは無料であり、追加のストレージ コストは発生しません)
