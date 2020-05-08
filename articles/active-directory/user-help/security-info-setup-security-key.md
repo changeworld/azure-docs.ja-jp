@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 016a09432499c5fd2be8fd488c7ef7a644c00bca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062338"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628335"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>セキュリティ キーを検証方法として設定する
 
@@ -63,7 +63,7 @@ ms.locfileid: "77062338"
 
 セキュリティ キーを使用して職場または学校アカウントにサインインするには、事前にセキュリティ キーを作成し、一意の PIN を与える必要があります。 お使いのアカウントには、最大で 10 個のキーを登録できます。 
 
-1. [https://myprofile.microsoft.com]( **) で** [マイ プロファイル]https://myprofile.microsoft.com ページにアクセスし、まだサインインしていない場合はサインインします。
+1. [https://myprofile.microsoft.com]( **) で** [マイ プロファイル]https://myaccount.microsoft.com ページにアクセスし、まだサインインしていない場合はサインインします。
 
 2. **[セキュリティ情報]** 、 **[方法の追加]** の順に選択し、 **[方法を追加します]** ドロップダウン リストで **[セキュリティ キー]** を選択します。
 
