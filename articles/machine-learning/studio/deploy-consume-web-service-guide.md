@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204394"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627961"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (クラシック) Web サービス: デプロイと使用
 
@@ -81,7 +81,6 @@ Web サービス用の Azure Machine Learning Studio (クラシック) リソー
 詳細については、次の記事とサンプル コードをご覧ください:
 
 * MSDN 上の [Azure Machine Learning Studio (クラシック) コマンドレット](https://docs.microsoft.com/powershell/module/az.machinelearning) リファレンス
-* GitHub のサンプルの [チュートリアル](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
 
 ## <a name="consume-the-web-services"></a>Web サービスを使用する
 
