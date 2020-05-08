@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 14c3dde4a86e36a4015a319e608ab8543302932f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416235"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791291"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>データ ウェアハウジングのための継続的インテグレーションと継続的デプロイ
 
@@ -46,7 +46,7 @@ ms.locfileid: "81416235"
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL Data Warehouse (または Database) デプロイ タスクを使用した継続的なデプロイ
 
-1. [Azure SQL Database デプロイ タスク](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。 [Azure SQL Data Warehouse デプロイ タスク](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)を使用することもできます。
+1. [Azure SQL Database デプロイ タスク](/azure/devops/pipelines/targets/azure-sqldb)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。 [Azure SQL Data Warehouse デプロイ タスク](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)を使用することもできます。
 
       ![デプロイ タスク](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "デプロイ タスク")
 

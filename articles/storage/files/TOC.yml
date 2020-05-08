@@ -35,6 +35,10 @@
       href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure ファイル共有スナップショット
       href: storage-snapshots-files.md
+    - name: データの冗長性
+      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: ディザスター リカバリーとフェールオーバー
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: スケーラビリティとパフォーマンスのターゲット
       href: storage-files-scale-targets.md
     - name: ID ベースの認証と承認
@@ -114,10 +118,18 @@
           href: storage-sync-files-server-endpoint.md
         - name: Azure の独立したクラウドでのストレージの管理
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: データのレプリケート方法の変更
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: アカウントのフェールオーバーを開始する
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: データの冗長性を管理する
+          items:
+            - name: データのレプリケート方法の変更
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 高可用性アプリケーションの設計
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ディザスター リカバリーの管理
+          items:
+            - name: 最終同期時刻プロパティを確認する
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: アカウントのフェールオーバーを開始する
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: モニター
       items:
         - name: Azure File Sync の監視
@@ -188,8 +200,6 @@
           href: storage-sync-files-troubleshoot.md
         - name: Azure Files の削除に関するトラブルシューティング
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
-        - name: 削除されたストレージ アカウントを復旧します
-          href: storage-how-to-recover-deleted-account.md
 - name: リファレンス
   items:
     - name: Azure PowerShell (Storage)

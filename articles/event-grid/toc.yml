@@ -8,8 +8,6 @@
       href: overview.md
     - name: メッセージング サービスの比較
       href: compare-messaging-services.md
-    - name: Premium と Basic サービス レベル
-      href: premium-basic-tiers.md
 - name: クイックスタート
   expanded: true
   items:
@@ -149,6 +147,8 @@
           href: event-filtering.md
         - name: 配信と再試行
           href: delivery-and-retry.md
+        - name: Webhook のイベント配信
+          href: webhook-event-delivery.md
     - name: 障害復旧
       items:
         - name: geo ディザスター リカバリー
@@ -161,20 +161,18 @@
           href: security-authorization.md
         - name: ネットワークのセキュリティ
           href: network-security.md
+    - name: 監視とトラブルシューティング
+      items:
+        - name: 診断ログ
+          href: diagnostic-logs.md
+        - name: メトリック
+          href: metrics.md
 - name: 操作方法ガイド
   items:
-    - name: プライベート エンドポイントの構成 (プレビュー)
-      href: configure-private-endpoints.md
-    - name: IP ファイアウォールの構成 (プレビュー)
-      href: configure-firewall.md
-    - name: 価格レベルの更新
-      href: update-tier.md
     - name: カスタム トピックへの投稿
       href: post-to-custom-topic.md
     - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md
-    - name: Webhook を AAD で保護する
-      href: secure-webhook-delivery.md
     - name: 配信不能と再試行
       href: manage-event-delivery.md
     - name: イベントのフィルター処理
@@ -191,12 +189,24 @@
       href: how-to-event-domains.md
     - name: クライアント側のフェールオーバーの実装
       href: custom-disaster-recovery.md
+    - name: 非同期 REST 操作の追跡
+      href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: セキュリティで保護
+      items:
+        - name: プライベート エンドポイントの構成 (プレビュー)
+          href: configure-private-endpoints.md
+        - name: IP ファイアウォールの構成 (プレビュー)
+          href: configure-firewall.md
+        - name: Webhook を AAD で保護する
+          href: secure-webhook-delivery.md
     - name: トラブルシューティング
       items:
-        - name: トピックの診断ログを有効にする
+        - name: Traffic Manager で診断ログを有効にする
           href: enable-diagnostic-logs-topic.md
         - name: エラーをトラブルシューティングする
           href: troubleshoot-errors.md
+        - name: サブスクリプション検証のトラブルシューティング
+          href: troubleshoot-subscription-validation.md
         - name: イベント配信の監視
           href: monitor-event-delivery.md
 - name: リファレンス
@@ -235,5 +245,5 @@
       href: 'https://azure.microsoft.com/pricing/details/event-grid/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventgrid'

@@ -65,7 +65,7 @@
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-dotnet'
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-java-stable'
         - name: Python
@@ -83,7 +83,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/911449-bing-news-search-api'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=bing+news+search'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

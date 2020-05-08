@@ -22,6 +22,11 @@
       href: data-lake-store-get-started-powershell.md
     - name: Azure CLI の使用
       href: data-lake-store-get-started-cli-2.0.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 方法
   items:
     - name: データの読み込みと移動
@@ -163,7 +168,7 @@
     - name: Node.js
       href: 'https://www.npmjs.com/package/azure-arm-datalake-store'
     - name: Python (アカウント管理)
-      href: 'https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python'
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-datalake-store/azure.mgmt.datalake.store?view=azure-python'
     - name: Python (ファイルシステム管理)
       href: 'https://azure-datalake-store.readthedocs.io/en/latest'
     - name: REST
