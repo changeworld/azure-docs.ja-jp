@@ -1,11 +1,11 @@
 ---
-title: Azure Active Directory ポータルで削除済みユーザーを一括復元する (プレビュー) | Microsoft Docs
+title: Azure Active Directory ポータルで削除済みユーザーを一括復元する | Microsoft Docs
 description: Azure Active Directory の Azure AD 管理センターで削除済みユーザーを一括復元する
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,16 +13,37 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174240"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203304"
 ---
-# <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Azure Active Directory で削除済みユーザーを一括復元する (プレビュー)
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory での削除済みユーザーの一括復元
 
-Azure Active Directory (Azure AD) では、ユーザーの一括作成および削除操作、ゲストの一括招待がサポートされています。また、ユーザー、グループ、グループ メンバーのリストのダウンロードがサポートされています。
+Azure Active Directory (Azure AD) では、ユーザーの一括復元操作がサポートされており、ユーザー、グループ、およびグループ メンバーのリストのダウンロードがサポートされています。
+
+## <a name="understand-the-csv-template"></a>CSV テンプレートについて
+
+CSV テンプレートをダウンロードして入力し、Azure AD ユーザーを正常に一括復元できるようにします。 ダウンロードする CSV テンプレートは、次の例のようになります。
+
+![アップロード用のスプレッドシートと、各行および列の目的と値を説明する吹き出し](./media/users-bulk-restore/understand-template.png)
+
+### <a name="csv-template-structure"></a>CSV テンプレートの構造
+
+ダウンロードした CSV テンプレート内の行は次のとおりです。
+
+- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
+- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*必須または空白*&gt; です。 たとえば、「 `Object ID [objectId] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
+
+### <a name="additional-guidance"></a>その他のガイダンス
+
+- アップロード テンプレートの最初の 2 行を削除または変更することはできません。アップロードを処理することができなくなります。
+- 必須の列は最初に表示されます。
+- テンプレートに新しい列を追加することはお勧めしません。 追加した追加の列は無視され、処理されません。
+- 出来る限り、常に最新の CSV テンプレートをダウンロードすることをお勧めします。
 
 ## <a name="to-bulk-restore-users"></a>ユーザーを一括復元するには
 
@@ -32,11 +53,11 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
    ![[削除済みのユーザー] ページで一括復元コマンドを選択する](./media/users-bulk-restore/bulk-restore.png)
 
-1. この CSV ファイルを開いて、復元するユーザーごとに 1 行を追加します。 唯一の必須値は **ObjectID** です。 そのうえでファイルを保存します。
+1. この CSV テンプレートを開いて、復元するユーザーごとに 1 行を追加します。 唯一の必須値は **ObjectID** です。 そのうえでファイルを保存します。
 
    ![追加するユーザーをリストするローカル CSV ファイルを選択する](./media/users-bulk-restore/upload-button.png)
 
-1. **[ユーザーの一括復元 (プレビュー)]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
+1. **[ユーザーの一括復元]** ページの **[CSV ファイルをアップロード]** で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
 1. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを復元する Azure 一括操作を開始します。
 1. 復元操作が完了すると、一括操作が成功したという通知が表示されます。
@@ -45,9 +66,9 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 ## <a name="check-status"></a>状態の確認
 
-**[一括操作の結果 (プレビュー)]** ページでは、保留中のすべての一括要求の状態を確認できます。
+**[一括操作の結果]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
-   ![[一括操作の結果] ページでアップロードの状態を確認する](./media/users-bulk-restore/bulk-center.png)
+[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
 次に、復元したユーザーが Azure AD 組織に存在するかどうかを、Azure portal または PowerShell を使用して確認できます。
 

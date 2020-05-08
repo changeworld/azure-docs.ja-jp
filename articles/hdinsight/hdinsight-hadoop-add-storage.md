@@ -6,17 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206709"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192486"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
-HDInsight に Azure Storage "*アカウント*" を追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の HDInsight クラスターにストレージ "*アカウント*" を追加します。 この記事は、ストレージ *アカウント* (既定のクラスター ストレージ アカウントではなく) に適用されます。[Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) および [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) などの追加ストレージには適用されません。
+HDInsight に Azure Storage "*アカウント*" を追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の HDInsight クラスターにストレージ "*アカウント*" を追加します。 この記事は、ストレージ "*アカウント*" (既定のクラスター ストレージ アカウントではない) に適用されます。[`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) や [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) など、追加のストレージには適用されません。
 
 > [!IMPORTANT]  
 > このドキュメントでは、クラスターの作成後に、そのクラスターにストレージ アカウントを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
@@ -29,9 +30,9 @@ HDInsight に Azure Storage "*アカウント*" を追加するためにスク�
 
 ## <a name="how-it-works"></a>しくみ
 
-このスクリプトは、処理中に次のアクションを実行します。
+処理中、スクリプトでは、次のアクションが実行されます。
 
-* クラスターの core-site.xml 構成にストレージ アカウントが既に存在する場合は、スクリプトが終了し、それ以降の操作は実行されません。
+* クラスターの core-site.xml 構成にストレージ アカウントが既に存在する場合は、スクリプトが終了し、それ以降のアクションは実行されません。
 
 * ストレージ アカウントが存在し、キーを使用してアクセスできることを確認します。
 
@@ -39,7 +40,7 @@ HDInsight に Azure Storage "*アカウント*" を追加するためにスク�
 
 * core-site.xml ファイルにストレージ アカウントを追加します。
 
-* [Apache Oozie](https://oozie.apache.org/)、 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)、 [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)、および[Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)サービスを停止して再起動します。 これらのサービスを停止して再起動することで、新しいストレージ アカウントを使用できるようになります。
+* Apache Oozie、Apache Hadoop YARN、Apache Hadoop MapReduce2、Apache Hadoop HDFS サービスを停止して再起動します。 これらのサービスを停止して再起動することで、新しいストレージ アカウントを使用できるようになります。
 
 > [!WARNING]  
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
@@ -118,13 +119,13 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="storage-firewall"></a>ストレージ ファイアウォール
 
-**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、 **[Allow trusted Microsoft services]\(信頼された Microsoft サービスを許可)** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
+**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護するように選択した場合、 **[信頼された Microsoft サービスによる...]** の例外を有効にして、HDInsight でストレージ アカウントにアクセスできるようにしてください。`.`
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>キーの変更後にストレージにアクセスできない
 
 ストレージ アカウントのキーを変更すると、HDInsight はストレージ アカウントにアクセスできなくなります。 HDInsight は、クラスターの core-site.xml 内のキャッシュされたキーのコピーを使用します。 このキャッシュされたコピーは、新しいキーに一致するように更新する必要があります。
 
-スクリプト アクションを再実行しても、キーは __更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
+スクリプト アクションを再実行しても、キーは**更新されません**。スクリプトで、ストレージ アカウントのエントリが既に存在するかどうかが確認されます。 エントリが既に存在する場合、いかなる変更もしません。
 
 この問題を回避するには、次のようにします。  
 1. ストレージ アカウントを削除します。
@@ -135,7 +136,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="poor-performance"></a>パフォーマンスが低い
 
-ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、パフォーマンスが低下することがあります。 別のリージョンのデータにアクセスすると、そのリージョンの Azure データ センター外にネットワーク トラフィックが送信され、パブリック インターネットを経由するため、遅延が生じる場合があります。
+ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、パフォーマンスが低下することがあります。 別のリージョンのデータにアクセスすると、リージョンの Azure データ センター外にネットワーク トラフィックが送信されます。 パブリック インターネットを経由するため、待機時間が生じる可能性があります。
 
 ### <a name="additional-charges"></a>追加料金が発生する
 

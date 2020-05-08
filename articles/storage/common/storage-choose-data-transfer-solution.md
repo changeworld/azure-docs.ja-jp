@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303088"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176398"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>データ転送用の Azure ソリューションを選択する
 
@@ -72,7 +72,7 @@ Azure portal で Azure Storage アカウントにアクセスして、 **[デー
 
 - [Azure Storage Explorer の概要を理解する](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)
 - [AzCopy の概要を理解する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-- [Azure Storage での Azure PowerShell の使用](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
+- [クイック スタート: PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../blobs/storage-quickstart-blobs-powershell.md)
 - [クイック スタート: Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する](../blobs/storage-quickstart-blobs-cli.md)
 - 内容は次のとおりです。
 

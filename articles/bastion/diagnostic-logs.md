@@ -1,5 +1,5 @@
 ---
-title: Azure Bastion 診断ログを有効にして使用する
+title: Azure Bastion リソース ログを有効にして使用する
 description: この記事では、Azure Bastion 診断ログを有効にして使用する方法について説明します。
 services: bastion
 author: charwen
@@ -7,18 +7,18 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 97f0cdb1e93ef2ad06d2daa04b2f4893fd5dfac2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619276"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131271"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Bastion 診断ログを有効にして使用する
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion リソース ログを有効にして使用する
 
 ユーザーが Azure Bastion を使用してワークロードに接続すると、Bastion ではリモート セッションの診断をログに記録できます。 その後、その診断を使用して、どのユーザーが、どのワークロードに、いつ、どこから接続したかということや、他のそのような関連ログ情報を確認できます。 診断を使用するには、Azure Bastion で診断ログを有効にする必要があります。 この記事では、診断ログを有効にし、ログを表示する方法について説明します。
 
-## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>診断ログを有効にする
+## <a name="enable-the-resource-log"></a><a name="enable"></a>リソース ログを有効にする
 
 1. [Azure portal](https://portal.azure.com) で、Azure Bastion リソースに移動し、Azure Bastion のページから **[診断設定]** を選択します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80619276"
 2. コンテナー内に移動すると、BLOB の中にあるさまざまなフォルダーが表示されます。 これらのフォルダーでは、Azure Bastion リソースのリソース階層が示されています。
 
    ![診断設定を追加する](./media/diagnostic-logs/2-resource-h.png)
-3. アクセス/表示する診断ログが含まれる Azure Bastion リソースの完全な階層に移動します。 "y="、"m="、"d="、"h="、"m=" は、それぞれ、診断ログの年、月、日、時、分を示します。
+3. アクセス/表示する診断ログが含まれる Azure Bastion リソースの完全な階層に移動します。 'y='、'm='、'd='、'h='、'm=' は、それぞれ、リソース ログの年、月、日、時、分を示します。
 
    ![ストレージの場所を選択する](./media/diagnostic-logs/3-resource-location.png)
 4. 移動した期間の診断ログ データが含まれる、Azure Bastion によって作成された JSON ファイルを探します。

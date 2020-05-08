@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 930fcb4c023dc58fe0eeea65aa3fa5f78569e628
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: b25d35ce467786c402c56c8a7d19a305381db94f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085673"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137792"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure Managed Disks のサーバー側暗号化
 
@@ -189,7 +189,7 @@ Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 ```
 
-#### <a name="encrypt-existing-unattached-managed-disks"></a>既存の接続されていないマネージド ディスクを暗号化する 
+#### <a name="encrypt-existing-managed-disks"></a>既存のマネージド ディスクを暗号化する 
 
 既存のディスクは、次のスクリプトを使用して暗号化するために、実行中の VM に接続することはできません。
 

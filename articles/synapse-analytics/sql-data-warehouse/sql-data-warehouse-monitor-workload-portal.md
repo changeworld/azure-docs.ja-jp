@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0658a775e40c1fc433c7c2e1d853493544e74ee4
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 327174974affb3b2511eac60755aa1bf047b3b5e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743206"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133465"
 ---
 # <a name="monitor-workload---azure-portal"></a>ワークロードを監視する - Azure portal
 
@@ -38,7 +38,7 @@ Log Analytics ワークスペースの参照ブレードに移動し、ワーク
 
 ワークスペースの詳細については、次の[ドキュメント](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)を参照してください。
 
-## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
+## <a name="turn-on-resource-logs"></a>リソース ログをオンにする
 
 SQL プールからログを出力するように診断設定を構成します。 ログは、テレメトリ ビューで構成されています。これは、よく使用されるパフォーマンス トラブルシューティングの DMV に相当します。 現在サポートされているビューは次のとおりです。
 
@@ -48,7 +48,7 @@ SQL プールからログを出力するように診断設定を構成します�
 - [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-![診断ログの有効化](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
+![リソース ログの有効化](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
 Azure Storage、Stream Analytics、または Log Analytics にログを出力できます。 このチュートリアルでは、Log Analytics を選択します。
 

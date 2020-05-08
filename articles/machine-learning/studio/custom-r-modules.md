@@ -1,7 +1,7 @@
 ---
-title: カスタム R モジュールを定義する
+title: カスタム R モジュールを作成し、デプロイする
 titleSuffix: ML Studio (classic) - Azure
-description: このトピックでは、カスタム R Studio (クラシック) を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
+description: ML Studio (クラシック) でカスタム R モジュールを作成してデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218162"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208433"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用のカスタム R モジュールを定義する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-
 このトピックでは、カスタム R Studio (クラシック) を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
 
-
-
-## <a name="what-is-a-custom-r-module"></a>カスタム R モジュールとは
 **カスタム モジュール**とは、ユーザーのワークスペースにアップロードし、Azure Machine Learning Studio (クラシック) の実験の一部として実行できるユーザー定義モジュールです。 **カスタム R モジュール** とは、ユーザー定義の R 関数を実行するカスタム モジュールです。 **R** とは、アルゴリズムを実装するために統計学者やデータ科学者によって広く使用されている統計コンピューティングおよびグラフィックス用のプログラミング言語です。 現在、カスタム モジュールでサポートされている言語は R だけですが、今後のリリースで他の言語のサポートが追加される予定です。
 
 カスタム モジュールは、他のすべてのモジュールと同様に使用できるという意味で、Azure Machine Learning Studio (クラシック) における**ファーストクラスのステータス**を持っています。 これは、公開された実験や視覚化に含まれる他のモジュールとともに実行できます。 制御できるのは、モジュールによって実装されたアルゴリズム、使用される入出力ポート、モデリング パラメーターなど、さまざまな実行時の動作です。 また、カスタム モジュールが含まれる実験を Azure AI Gallery に公開して簡単に共有することもできます。
@@ -173,7 +168,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 * **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、*true* または *false* を指定する必要があります。
 
 ### <a name="output-elements"></a>Output 要素
-**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
+**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
