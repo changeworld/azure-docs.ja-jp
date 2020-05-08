@@ -1010,6 +1010,8 @@
         - name: セキュリティの概要
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: アクセス制御
           items:
             - name: アクセス制御の概要

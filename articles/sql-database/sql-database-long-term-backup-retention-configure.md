@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1fedf889fa8d39a926067eb227b895d4fe1e3c39
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380934"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509348"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
 Azure SQL Database では、[長期的なバックアップ保有期間](sql-database-long-term-retention.md)ポリシー (LTR) を使用して、単一またはプールされたデータベースを構成し、別々の Azure Blob Storage コンテナーに最大 10 年間自動的にデータベースのバックアップを保持することができます。 Azure Portal または PowerShell でこのようなバックアップを使用して、データベースを復旧できます。
 
 > [!IMPORTANT]
-> [Azure SQL Database マネージド インスタンス](sql-database-managed-instance.md)は現在長期的なバックアップ保有期間をサポートしていません。
+> Azure SQL データベース マネージド インスタンスについては、[マネージド インスタンスの LTR サポート](sql-database-long-term-retention.md#managed-instance-support)に関する記事を参照してください。
 
 ## <a name="using-azure-portal"></a>Azure Portal の使用
 

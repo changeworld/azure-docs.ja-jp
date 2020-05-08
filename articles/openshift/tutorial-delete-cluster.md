@@ -1,40 +1,33 @@
 ---
 title: チュートリアル - Azure Red Hat OpenShift クラスターを削除する
 description: このチュートリアルでは、Azure CLI を使用して Azure Red Hat OpenShift クラスターを削除する方法を学習します
-author: jimzim
-ms.author: jzim
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/06/2019
-ms.openlocfilehash: c335236a2b0b05f03bef1ebef37f1129a5d0352b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278769"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232140"
 ---
-# <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを削除する
+# <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを削除する
 
-これは、チュートリアルの最後です。 サンプル クラスターのテストが終了したら、ここで説明されている方法でクラスターとそれに関連するリソースを削除して、使用していないものに対して課金されないようにします。
-
-シリーズの第 3 部で学習する内容は次のとおりです。
+3 部構成の第 3 部であるこのチュートリアルでは、OpenShift 4 を実行する Azure Red Hat OpenShift クラスターを削除します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Red Hat OpenShift クラスターを削除する
 
-このチュートリアル シリーズで学習する内容は次のとおりです。
-> [!div class="checklist"]
-> * [Azure Red Hat OpenShift クラスターを作成する](tutorial-create-cluster.md)
-> * [Azure Red Hat OpenShift クラスターをスケーリングする](tutorial-scale-cluster.md)
-> * Azure Red Hat OpenShift クラスターを削除する
 
-## <a name="prerequisites"></a>前提条件
+## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを開始する前に
+前のチュートリアルでは、Azure Red Hat OpenShift クラスターを作成し、OpenShift Web コンソールを使用して接続しました。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - Azure Red Hat Openshift 4 クラスターを作成する](tutorial-create-cluster.md)方法に関するページから開始してください。
 
-* チュートリアルの「[Azure Red Hat OpenShift クラスターを作成する](tutorial-create-cluster.md)」に従ってクラスターを作成します。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
-## <a name="step-1-sign-in-to-azure"></a>手順 1:Azure へのサインイン
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure CLI をローカルで実行している場合は、`az login` を実行して Azure にサインインします。
 
@@ -44,36 +37,27 @@ az login
 
 複数のサブスクリプションへのアクセス権がある場合は、`az account set -s {subscription ID}` を実行して、`{subscription ID}` を、使用するサブスクリプションに置き換えます。
 
-## <a name="step-2-delete-the-cluster"></a>手順 2:クラスターを削除する
+## <a name="delete-the-cluster"></a>クラスターを削除する
 
-Bash ターミナルを開き、変数 CLUSTER_NAME にクラスターの名前を設定します。
-
-```bash
-CLUSTER_NAME=yourclustername
-```
-
-クラスターを削除します。
+前のチュートリアルでは、次の変数を設定しました。 
 
 ```bash
-az openshift delete --resource-group $CLUSTER_NAME --name $CLUSTER_NAME
+CLUSTER=yourclustername
+RESOURCE_GROUP=yourresourcegroup
 ```
 
-クラスターを削除するかどうかを確認するメッセージが表示されます。 `y` で確認した後、クラスターが削除されるまでに数分かかります。 コマンドが終了すると、リソース グループ全体とそれに含まれているすべてのリソース (クラスターなど) が削除されます。
+これらの値を使用して、次のようにクラスターを削除します。
 
-## <a name="deleting-a-cluster-using-the-azure-portal"></a>Azure portal を使用したクラスターの削除
+```bash
+az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+```
 
-また、オンラインの Azure portal を使用して、クラスターの関連付けられたリソース グループを削除することもできます。 リソース グループの名前は、クラスター名と同じです。
-
-現時点では、クラスターを作成するときに作成された `Microsoft.ContainerService/openShiftManagedClusters` リソースは、Azure portal では表示されません。 リソース グループを表示するには、[`Resource group`] ビューで [`Show hidden types`] をオンにします。
-
-![非表示の種類のチェック ボックスのスクリーンショット](./media/aro-portal-hidden-type.png)
-
-リソース グループを削除すると、Azure Red Hat OpenShift クラスターを構築するときに作成されるすべての関連リソースが削除されます。
+次に、クラスターを削除するかどうかを確認するメッセージが表示されます。 `y` で確認した後、クラスターが削除されるまでに数分かかります。 コマンドが終了すると、リソース グループ全体とそれに含まれているすべてのリソース (クラスターなど) が削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift クラスターを削除する
+> * Azure Red Hat OpenShift 4 クラスターを削除する
 
-OpenShift の使用の詳細については、公式の [Red Hat OpenShift ドキュメント](https://docs.openshift.com/aro/welcome/index.html)を参照してください
+OpenShift の使用の詳細については、公式の [Red Hat OpenShift ドキュメント](https://www.openshift.com/try)を参照してください
