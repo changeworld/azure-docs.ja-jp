@@ -3,12 +3,12 @@ title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: c1dea6925bad96be178f875567077fafa4db9326
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938149"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101322"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure ファイル共有をバックアップする
 
@@ -23,19 +23,7 @@ ms.locfileid: "76938149"
 ## <a name="prerequisites"></a>前提条件
 
 * ファイル共有をホストするストレージ アカウントと同じリージョンの [Recovery Services コンテナー](#create-a-recovery-services-vault)を特定または作成する。
-* [サポートされているストレージ アカウントの種類](#limitations-for-azure-file-share-backup-during-preview)のいずれかにファイル共有が存在することを確認しておいてください。
-
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
-
-Azure ファイル共有のバックアップはプレビュー段階です。 汎用 v1 ストレージ アカウントと汎用 v2 ストレージ アカウント、どちらの Azure ファイル共有もサポートされています。 Azure ファイル共有のバックアップには、次の制限があります。
-
-* 現在、[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) (ZRS) レプリケーションを使用したストレージ アカウントでの Azure ファイル共有のバックアップのサポートは、[これらのリージョン](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#in-which-geos-can-i-back-up-azure-file-shares)に限定されています。
-* Azure Backup では、現在、Azure ファイル共有の 1 日 1 回のスケジュール済みバックアップの構成をサポートしています。
-* スケジュール バックアップの数は、1 日につき 1 個が上限となります。
-* オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
-* ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
-* Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
-* Azure Backup によって保護されているファイル共有は削除しないでください。 現在のソリューションでは、ファイル共有が削除されると Azure Backup によって取得されたスナップショットがすべて削除されるため、すべての復元ポイントが失われます。
+* [サポートされているストレージ アカウントの種類](azure-file-share-support-matrix.md)のいずれかにファイル共有が存在することを確認しておいてください。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -80,19 +68,22 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
 1. **[バックアップ]** を選択すると、 **[バックアップ]** ペインが開き、検出されたサポートされるストレージ アカウントの一覧からストレージ アカウントを選択するよう求められます。 これらは、このコンテナーに関連付けられている、またはコンテナーと同じリージョンに存在しているがまだ Recovery Services コンテナーに関連付けられていないストレージ アカウントです。
 
-   ![ストレージ アカウントを選択する](./media/backup-afs/select-storage-account.png)
-
 1. 検出されたストレージ アカウントの一覧からアカウントを選択し、 **[OK]** を選択します。 Azure で、バックアップ可能なファイル共有のストレージ アカウントが検索されます。 最近ファイル共有を追加したが、一覧に表示されない場合は、ファイル共有が表示されるまで少し時間を置いてください。
 
     ![ファイル共有の検出](./media/backup-afs/discovering-file-shares.png)
 
 1. **[ファイル共有]** の一覧から、バックアップするファイル共有を 1 つ以上選択します。 **[OK]** を選択します。
 
+   ![ファイル共有を選択する](./media/backup-afs/select-file-shares.png)
+
 1. ファイル共有を選択すると、 **[バックアップ]** メニューが **[バックアップ ポリシー]** に切り替わります。 このメニューから、既存のバックアップ ポリシーを選択するか新しいバックアップ ポリシーを作成します。 次に、 **[バックアップの有効化]** を選択します。
 
     ![[バックアップ ポリシー] を選択する](./media/backup-afs/select-backup-policy.png)
 
 バックアップ ポリシーを設定すると、スケジュールされた時刻にファイル共有のスナップショットが作成されます。 復旧ポイントも、選択した期間にわたって保持されます。
+
+>[!NOTE]
+>Azure Backup では、Azure ファイル共有のバックアップに対して日単位、週単位、月単位、年単位でのリテンション期間のポリシーがサポートされるようになりました。
 
 ## <a name="create-an-on-demand-backup"></a>オンデマンド バックアップの作成
 
@@ -124,8 +115,18 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
 1. ポータルの通知を監視して、バックアップ ジョブの実行完了を把握します。 コンテナー ダッシュボードでジョブの進行状況を監視できます。 **[バックアップ ジョブ]**  >  **[進行中]** を選択します。
 
+>[!NOTE]
+>対応するアカウント内の任意のファイル共有に対して保護を構成する際は、Azure Backup によってストレージ アカウントがロックされます。 これにより、バックアップされたファイル共有を含むストレージ アカウントが誤って削除されるのを防ぐことができます。
+
+## <a name="best-practices"></a>ベスト プラクティス
+
+* Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
+
+* ストレージ アカウントで Azure Backup によって行われたロックは、削除しないでください。 ロックを削除する場合は、ストレージ アカウントが誤って削除される可能性があります。削除されると、スナップショットまたはバックアップが失われます。
+
 ## <a name="next-steps"></a>次のステップ
 
 具体的には、次の方法を学習します。
+
 * [Azure ファイル共有を復元する](restore-afs.md)
 * [Azure ファイル共有のバックアップを管理する](manage-afs-backup.md)

@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74790669"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82106289"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
 
@@ -29,6 +29,10 @@ Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先
 * 統合アカウントで既に定義されている [EDIFACT 契約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>EDIFACT メッセージをデコードする
+
+> [!IMPORTANT]
+> EDIFACT コネクタでは、UTF-8 文字のみがサポートされます。
+> 出力に予期しない文字が含まれている場合は、EDIFACT メッセージで UTF-8 文字セットが使用されていることを確認します。 
 
 1. [ロジック アプリを作成](quickstart-create-first-logic-app-workflow.md)します。
 

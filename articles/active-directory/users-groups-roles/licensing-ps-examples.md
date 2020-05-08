@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77484861"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582676"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD でのグループベース ライセンスの PowerShell と Graph の例
 
@@ -29,7 +29,7 @@ ms.locfileid: "77484861"
 > コマンドレットの実行を開始する前に、`Connect-MsolService` コマンドレットを実行して、組織に接続していることを最初に確認します。
 
 > [!WARNING]
-> このコードは、デモンストレーション用のサンプルとして提供されています。 ご利用の環境で使用する場合は、まず小規模にテストするか別のテスト テナントでテストすることを検討してください。 お使いの環境の具体的なニーズに合わせてコードの調整が必要になる場合があります。
+> このコードは、デモンストレーション用のサンプルとして提供されています。 ご利用の環境で使用する場合は、まず小規模にテストするか別のテスト組織でテストすることを検討してください。 お使いの環境の具体的なニーズに合わせてコードの調整が必要になる場合があります。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>グループに割り当てられた製品ライセンスの表示
 
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>テナント全体のライセンス エラーがあるすべてのユーザーを取得する
+## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>組織全体のライセンス エラーがあるすべてのユーザーを取得する
 
 次のスクリプトを使用すると、1 つ以上のグループからのライセンス エラーを持つすべてのユーザーを一覧表示できます。 このスクリプトでは、ユーザーごと、またライセンス エラーごとに 1 行を出力するので、各エラーのソースを明確に識別することができます。
 
 > [!NOTE]
-> このスクリプトではテナントのすべてのユーザーが列挙されるため、大きなテナントでは最適でない場合があります。
+> このスクリプトでは組織のすべてのユーザーが列挙されるため、大きな組織には最適でない場合があります。
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -364,10 +364,10 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-このスクリプトは、SKU ID を入力値として利用し、テナントの各ユーザーに関数を実行します。この例では、*Enterprise Mobility + Security* のライセンスに注目します。テナントでこれは *contoso:EMS* という ID で表されます。
+このスクリプトは、SKU ID を入力値として利用し、組織の各ユーザーに関数を実行します。この例では、*Enterprise Mobility + Security* のライセンスに注目します。組織でこれは *contoso:EMS* という ID で表されます。
 
 ```powershell
-#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 314d7ebe9cc363b4186b81d8eda5f892710d71c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231135"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229988"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -149,7 +149,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | {tenant} | はい | Azure AD B2C テナントの名前。 |
 | {policy} | はい | 認証コードの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
-| client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットは安全に保存できないため、このフローでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
+| client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットを安全に保存できないため、このフローでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
 | code | はい | ユーザー フローの開始時に取得した承認コード。 |
 | grant_type | はい | 許可の種類。承認コード フローでは `authorization_code` を指定する必要があります。 |
 | redirect_uri | はい | 承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
@@ -218,7 +218,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | {tenant} | はい | Azure AD B2C テナントの名前。 |
 | {policy} | はい | 元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
-| client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットは安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
+| client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットを安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
 | grant_type | はい | 付与の種類。承認コード フローのこのパートでは、更新トークンである必要があります。 |
 | refresh_token | はい | フローの第 2 のパートで取得された元の更新トークン。 更新トークンを受信するには、承認要求とトークン要求の両方でスコープ `offline_access` を使用する必要があります。 |
 | redirect_uri | いいえ | 承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
@@ -262,7 +262,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 
-ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。
+ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。 詳しくは、「[Azure AD B2C のセッション](session-overview.md)」をご覧ください。
 
 ユーザーをサインアウトするには、前述した OpenID Connect メタデータ ドキュメントに示されている `end_session` エンドポイントにユーザーをリダイレクトします。
 
@@ -283,6 +283,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡された場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URL と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。
 
-### <a name="external-identity-provider-sign-out"></a>外部 ID プロバイダーのサインアウト
 
-ユーザーを `end_session` エンドポイントにリダイレクトすると、Azure AD B2C でユーザーのシングル サインオン状態が一部消去されますが、ユーザーがソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。 ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。 ユーザーがアプリケーションからサインアウトしようとする場合、そのユーザーは必ずしも自分の Facebook アカウントからサインアウトしようとしているとは限りません。 ただし、ローカル アカウントを使用している場合、ユーザーのセッションは正常に終了します。
