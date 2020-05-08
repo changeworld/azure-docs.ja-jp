@@ -4,15 +4,16 @@ description: Azure Image Builder と共有イメージ ギャラリーで Linux 
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: bf1dca61ec6b39e52d4f76c1c77cd3def6973ab8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: danis
+ms.openlocfilehash: 196f7b41a9d7eb5da1b2cf52a38917c34905d7bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945011"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791512"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Linux イメージを作成して共有イメージ ギャラリーに配布する 
 

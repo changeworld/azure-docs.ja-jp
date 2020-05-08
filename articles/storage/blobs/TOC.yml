@@ -90,7 +90,7 @@
             - name: 1 - アプリケーションの可用性を高める
               href: storage-create-geo-redundant-storage.md
             - name: 2 - プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
-              href: storage-simulate-failure-ragrs-account-app.md
+              href: simulate-primary-region-failure.md
         - name: Azure Key Vault を使用した BLOB の暗号化と暗号化解除
           href: storage-encrypt-decrypt-blobs-key-vault.md
     - name: サンプル
@@ -107,6 +107,9 @@
           href: storage-samples-blobs-powershell.md
         - name: Azure CLI
           href: storage-samples-blobs-cli.md
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
         - name: ストレージ アカウント
@@ -146,13 +149,17 @@
             - name: Azure プライベート エンドポイントの使用
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: データの冗長性
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: データ保護
           items:
-            - name: データの冗長性
-              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: ディザスター リカバリーとフェールオーバー
-              href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 高可用性アプリケーションの設計
-              href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: バージョン管理
+              href: versioning-overview.md
+            - name: 論理的な削除
+              href: soft-delete-overview.md
+            - name: スナップショット
+              href: snapshots-overview.md
+            - name: Change Feed
+              href: storage-blob-change-feed.md
         - name: アクセスとパフォーマンスのレベル
           items:
             - name: アクセス層
@@ -163,6 +170,8 @@
               href: storage-blob-performance-tiers.md
             - name: Azure Blob Storage のライフサイクルを管理する
               href: storage-lifecycle-management-concepts.md
+        - name: ディザスター リカバリーとフェールオーバー
+          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: パフォーマンス、スケーリング、コストの最適化
           items:
             - name: パフォーマンスとスケーラビリティのチェックリスト
@@ -177,6 +186,8 @@
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: BLOB データを検索して理解する
           items:
+            - name: BLOB インデックスを使用して BLOB データを管理および検索する
+              href: storage-manage-find-blobs.md
             - name: AI を使用して BLOB データを理解する
               href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: BLOB データに対するフルテキスト検索
@@ -227,30 +238,24 @@
                   items:
                     - name: インポート (v1) のドライブを準備する
                     - name: インポート (v2) のドライブを準備する
-        - name: 監視とトラブルシューティング
+        - name: 監視
           items:
-            - name: トラブルシューティングのチュートリアル
-              href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 監視、診断、およびトラブルシューティング
-              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure portal での監視
-              href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: メトリックとログ
+            - name: ストレージ アカウントを監視する
+              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: クラシック メトリックからの移行
+              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 監視 (クラシック)
               items:
-                - name: Azure Monitor のメトリック
-                  href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 新しいメトリックへの移行
-                  href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Storage Analytics
                   href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Storage Analytics のメトリック (クラシック)
+                - name: メトリック
                   href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Storage Analytics のログ
+                - name: ログ
                   href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 監視、診断、およびトラブルシューティング
+                  href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: イベント処理
           href: storage-blob-event-overview.md
-        - name: Change Feed
-          href: storage-blob-change-feed.md
         - name: ページ BLOB の機能
           href: storage-blob-pageblob-overview.md
         - name: 静的な Web サイト
@@ -284,8 +289,6 @@
               href: storage-blob-properties-metadata.md
             - name: BLOB のコピー (.NET)
               href: storage-blob-copy.md
-            - name: BLOB スナップショットの作成と管理 (.NET)
-              href: storage-blob-snapshots.md
         - name: BLOB データのセキュリティ保護
           items:
             - name: BLOB データへのアクセスの承認
@@ -372,16 +375,28 @@
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 不変ポリシーの設定と管理
               href: storage-blob-immutability-policies-manage.md
-        - name: データのレプリケート方法の変更
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 障害復旧
+        - name: データの冗長性を管理する
+          items:
+            - name: データのレプリケート方法の変更
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 高可用性アプリケーションの設計
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: データを保護する
+          items:
+            - name: BLOB のバージョン管理を有効にする
+              href: versioning-enable.md
+            - name: 論理的な削除を有効にする
+              href: soft-delete-enable.md
+            - name: スナップショットの作成 (.NET)
+              href: snapshots-manage-dotnet.md
+            - name: 変更フィード ログの処理
+              href: storage-blob-change-feed-how-to.md
+        - name: ディザスター リカバリーの管理
           items:
             - name: 最終同期時刻プロパティを確認する
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: アカウントのフェールオーバーを開始する
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 削除された BLOB の復旧
-              href: storage-blob-soft-delete.md
         - name: ストレージ エミュレーターを使用する
           items:
             - name: Azurite オープンソース エミュレーターを使用する
@@ -398,8 +413,8 @@
           href: storage-custom-domain-name.md
         - name: カスタム エンドポイントへのイベントのルーティング
           href: storage-blob-event-quickstart.md
-        - name: 変更フィード ログの処理
-          href: storage-blob-change-feed-how-to.md
+        - name: BLOB インデックスの使用
+          href: storage-blob-index-how-to.md
         - name: データの転送
           items:
             - name: AzCopy
@@ -434,6 +449,12 @@
               href: storage-xamarin-blob-storage.md
         - name: リージョン間で移動する
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 監視 (クラシック)
+          items:
+            - name: Azure portal での監視 (クラシック)
+              href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: トラブルシューティングのチュートリアル (クラシック)
+              href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: トラブルシューティング
           items:
             - name: 待機時間に関する問題
@@ -533,6 +554,8 @@
         - name: Resource Manager テンプレート
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
+        - name: データの監視
+          href: ../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: リソース
       items:
         - name: Azure の更新情報
@@ -616,74 +639,48 @@
     - name: 概要
       items:
         - name: Data Lake Storage の概要
-          href: ../blobs/data-lake-storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: data-lake-storage-introduction.md
     - name: クイックスタート
       items:
         - name: Databricks を使用したデータの分析
-          href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: data-lake-storage-quickstart-create-databricks-account.md
     - name: チュートリアル
       items:
         - name: Azure Databricks を使ったデータの抽出、変換、読み込み
           href: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Spark を使用した Databricks での Data Lake Storage のデータへのアクセス
-          href: ../blobs/data-lake-storage-use-databricks-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: data-lake-storage-use-databricks-spark.md
         - name: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
-          href: ../blobs/data-lake-storage-tutorial-extract-transform-load-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: data-lake-storage-tutorial-extract-transform-load-hive.md
         - name: Event Grid を使用した Databricks Delta テーブルへのデータの挿入
-          href: ../blobs/data-lake-storage-events.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: data-lake-storage-events.md
     - name: サンプル
       items:
-        - name: .NET
-          href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Java
-          href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Python
-          href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: JavaScript
-          href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
         - name: ビッグ データの処理
-          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure サービスとの統合
-          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: クエリの高速化によるデータのフィルター処理
-          href: data-lake-storage-query-acceleration.md
-        - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
-          href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure BLOB ファイル システムの URI
-          href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 階層型名前空間について
-          href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ストレージ アカウントについて
-          href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: data-lake-storage-data-scenarios.md
         - name: ベスト プラクティス
           href: data-lake-storage-best-practices.md
-        - name: データの冗長性
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: データ転送ソリューション
-          href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: コンカレンシー
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: クエリの高速化
+          href: data-lake-storage-query-acceleration.md
+        - name: Architecture
+          items:
+            - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
+              href: data-lake-storage-abfs-driver.md
+            - name: Azure BLOB ファイル システムの URI
+              href: data-lake-storage-introduction-abfs-uri.md
+            - name: 階層型名前空間について
+              href: data-lake-storage-namespace.md
         - name: Security
           items:
-            - name: データ操作の承認
-              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 管理操作の承認
-              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: セキュリティに関する推奨事項
+              href: security-recommendations.md
             - name: アクセスの制御 (ディレクトリとファイル)
               href: data-lake-storage-access-control.md
-            - name: Azure Storage の保存時の暗号化
-              href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: Azure Key Vault でのカスタマー マネージド キー
-                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 要求でのカスタマー指定のキー
-                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 高度な脅威保護
-              href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure プライベート エンドポイントの使用
-              href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 互換性
           items:
             - name: マルチプロトコル アクセス
@@ -713,73 +710,9 @@
         - name: 移行
           items:
             - name: Data Lake Storage Gen1 から移行する
-              href: ../blobs/data-lake-storage-migrate-gen1-to-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.jso
+              href: data-lake-storage-migrate-gen1-to-gen2.md
             - name: オンプレミスの HDFS ストアを移行する
-              href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: セキュリティで保護
-          items:
-            - name: データへのアクセスを承認する
-              items:
-                - name: ユーザーの承認オプション
-                  items:
-                    - name: ポータル
-                      href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: RBAC を使用したアクセス権の管理
-                  items:
-                    - name: ポータル
-                      href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure AD を使用した認証と承認
-                  items:
-                    - name: マネージド ID を使用した承認
-                      href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: アプリケーションからの承認
-                      href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 共有キーによる承認
-                  items:
-                    - name: アカウント キーの表示と管理
-                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 接続文字列の構成
-                      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure Storage REST API の使用
-                      href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Storage の暗号化の管理
-              items:
-                - name: ストレージ アカウントの暗号化キーの管理
-                  items:
-                    - name: アカウントの暗号化キー モデルの確認
-                      href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 顧客が管理する暗号化キーの構成
-                      items:
-                        - name: ポータル
-                          href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: PowerShell
-                          href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure CLI
-                          href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: クライアント側の暗号化の構成
-              items:
-                - name: .NET
-                  href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Java
-                  href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Python
-                  href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: ネットワーク セキュリティの構成
-              items:
-                - name: 安全な転送が必要
-                  href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: ファイアウォールと仮想ネットワークの構成
-                  href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: トランスポート層セキュリティの有効化
-                  href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
         - name: 管理する
           items:
             - name: .NET
@@ -797,7 +730,7 @@
             - name: ストレージ エクスプローラー
               href: data-lake-storage-explorer.md
             - name: Hadoop ファイル システム CLI
-              href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: data-lake-storage-use-hdfs-data-lake-storage.md
         - name: クエリ
           items:
             - name: クエリの高速化によるデータのフィルター処理
@@ -819,25 +752,15 @@
         - name: 最適化
           items:
             - name: パフォーマンスを最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: data-lake-storage-performance-tuning-guidance.md
             - name: HDInsight の Apache Spark を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: data-lake-storage-performance-tuning-spark.md
             - name: HDInsight の Hive を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: data-lake-storage-performance-tuning-hive.md
             - name: HDInsight の MapReduce を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: data-lake-storage-performance-tuning-mapreduce.md
             - name: HDInsight の Storm を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 復旧
-          items:
-            - name: 最終同期時刻プロパティを確認する
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: エミュレート
-          items:
-            - name: Azurite オープンソース エミュレーターを使用する
-              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Storage エミュレーターを使用する
-              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: data-lake-storage-performance-tuning-storm.md
     - name: リファレンス
       items:
         - name: .NET
@@ -850,7 +773,7 @@
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2
-        - name: クエリの高速化
+        - name: クエリ アクセラレーション リファレンス
           href: query-acceleration-sql-reference.md
         - name: AzCopy v10
           items:
