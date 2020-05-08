@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: cccb886e13482292e8ab9afa2b34bd9dd2c3229b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f389943d284c573312473f426048f8aadb79088e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050301"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81533974"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -31,11 +31,11 @@ Azure AD エンティティを認証し、Azure AD からのトークンを要�
 
 **MSAL.NET は、Microsoft ID プラットフォームと併せて使用する場合にお勧めの認証ライブラリです**。 ADAL.NET に新しい機能は実装されません。 この取り組みは、MSAL の改良に重点を置いています。
 
-この記事では、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) との違いについて説明し、MSAL への移行を支援します。  
+この記事では、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) との違いについて説明し、MSAL への移行を支援します。
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL アプリと MSAL アプリの違い
 
-ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム エンドポイント (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。 
+ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム エンドポイント (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。
 
 開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) を既に使い慣れている場合は、[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](active-directory-v2-compare.md)に関するページをお読みください。
 
@@ -53,7 +53,7 @@ MSAL.NET を使用するには、[Microsoft.Identity.Client](https://www.nuget.o
 
 ADAL.NET では*リソース* のトークンが取得されますが、MSAL.NET では*スコープ* のトークンが取得されます。 多くの MSAL.NET AcquireToken オーバーライドでは、スコープ (`IEnumerable<string> scopes`) というパラメーターが必要になります。 このパラメーターは、要求される必要なアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られているスコープとして、[Microsoft Graph のスコープ](/graph/permissions-reference)があります。
 
-MSAL.NET で v1.0 リソースにアクセスすることもできます。 詳細については、[v1.0 アプリケーションのスコープ](#scopes-for-a-web-api-accepting-v10-tokens)に関する記述を参照してください。 
+MSAL.NET で v1.0 リソースにアクセスすることもできます。 詳細については、[v1.0 アプリケーションのスコープ](#scopes-for-a-web-api-accepting-v10-tokens)に関する記述を参照してください。
 
 ### <a name="core-classes"></a>コア クラス
 
@@ -63,7 +63,7 @@ MSAL.NET で v1.0 リソースにアクセスすることもできます。 詳�
 
 ### <a name="iaccount-not-iuser"></a>IUser ではなく IAccount
 
-ADAL.NET でユーザーが操作されていました。 ユーザーは人間またはソフトウェア エージェントですが、Microsoft ID システムで 1 つまたは複数のアカウント (いくつかの Azure AD アカウント、Azure AD B2C、Microsoft の個人用アカウント) を保有/所有/担当することができます。 
+ADAL.NET でユーザーが操作されていました。 ユーザーは人間またはソフトウェア エージェントですが、Microsoft ID システムで 1 つまたは複数のアカウント (いくつかの Azure AD アカウント、Azure AD B2C、Microsoft の個人用アカウント) を保有/所有/担当することができます。
 
 MSAL.NET 2.x では、現在、(IAccount インターフェイス経由で) アカウントの概念が定義されます。 この破壊的変更によって、適切なセマンティクスが提供されます。つまり、同じユーザーが、異なる Azure AD ディレクトリ内に複数のアカウントを持つことができます。 また、MSAL.NET では、ホーム アカウント情報が提供されるので、ゲスト シナリオより詳細な情報が提供されます。
 
@@ -102,13 +102,13 @@ catch(MsalUiRequiredException exception)
 ADAL.NET では、要求チャレンジ例外が次のように処理されます。
 
 - `AdalClaimChallengeException` は、リソースでユーザーからの要求がさらに必要な場合 (2 要素認証など) に、サービスによってスローされる例外 (`AdalServiceException` から派生) です。 `Claims` メンバーには、予期される要求がある JSON フラグメントがいくつか含まれています。
-- また、ADAL.NET では、この例外を受け取るパブリック クライアント アプリケーションで、要求パラメーターを指定して `AcquireTokenInteractive` オーバーライドを呼び出す必要があります。 この `AcquireTokenInteractive` のオーバーライドでは、キャッシュのヒットは不要であるため試行もされません。 理由は、キャッシュ内のトークンに適切な要求がないためです (それ以外の場合、`AdalClaimChallengeException` はスローされていません)。 そのため、キャッシュを確認する必要はありません。 `ClaimChallengeException` は、OBO を行う WebAPI で受け取ることができますが、`AcquireTokenInteractive` は、この Web API を呼び出すパブリック クライアント アプリケーションで呼び出す必要があることに注意してください。
+- また、ADAL.NET では、この例外を受け取るパブリック クライアント アプリケーションで、要求パラメーターを指定して `AcquireTokenInteractive` オーバーライドを呼び出す必要があります。 この `AcquireTokenInteractive` のオーバーライドでは、キャッシュのヒットは不要であるため試行もされません。 理由は、キャッシュ内のトークンに適切な要求がないためです (それ以外の場合、`AdalClaimChallengeException` はスローされていません)。 そのため、キャッシュを確認する必要はありません。 `ClaimChallengeException` は、OBO を行う WebAPI で受け取ることができますが、`AcquireTokenInteractive` は、この Web API を呼び出すパブリック クライアント アプリケーションで呼び出す必要があることにご注意ください。
 - サンプルを含む詳細については、「[Handling AdalClaimChallengeException](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception)」 (AdalClaimChallengeException の処理) を参照してください
 
 MSAL.NET では、要求チャレンジ例外が次のように処理されます。
 
 - `Claims` は `MsalServiceException` に表示されます。
-- `AcquireTokenInteractive` ビルダーに適用できる `.WithClaim(claims)` メソッドがあります。 
+- `AcquireTokenInteractive` ビルダーに適用できる `.WithClaim(claims)` メソッドがあります。
 
 ### <a name="supported-grants"></a>サポートされている許可
 
@@ -151,11 +151,11 @@ v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合�
 
 トークンには次の 2 つのバージョンがあります。
 - v1.0 トークン
-- v2.0 トークン 
+- v2.0 トークン
 
 v1.0 エンドポイント (ADAL で使用) では、v1.0 トークンのみが出力されます。
 
-しかし、v2.0 エンドポイント (MSAL で使用) では、Web API で受け入れられるバージョンのトークンが出力されます。 Web API のアプリケーション マニフェストのプロパティでは、開発者は、受け入れられるトークンのバージョンを選択することができます。 [アプリケーション マニフェスト](reference-app-manifest.md)に関するリファレンス ドキュメントの `accessTokenAcceptedVersion` についての記事を参照してください。
+しかしながら、v2.0 エンドポイント (MSAL で使用) では、Web API で受け入れられるバージョンのトークンが出力されます。 Web API のアプリケーション マニフェストのプロパティでは、開発者は、受け入れられるトークンのバージョンを選択することができます。 [アプリケーション マニフェスト](reference-app-manifest.md)に関するリファレンス ドキュメントの `accessTokenAcceptedVersion` についての記事を参照してください。
 
 v1.0 トークンと v2.0 トークンの詳細については、[Azure Active Directory アクセス トークン](access-tokens.md)に関するページを参照してください
 
@@ -182,7 +182,7 @@ var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Wri
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告:v1.0 Web API に対応するスコープに 1 つまたは 2 つのスラッシュがある場合
 
-Azure Resource Manager API (https://management.core.windows.net/) に対応するスコープを書き込む場合は、次のスコープを要求する必要があります (2 つのスラッシュに注意) 
+Azure Resource Manager API (https://management.core.windows.net/) に対応するスコープを書き込む場合は、次のスコープを要求する必要があります (2 つのスラッシュに注意)
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -214,29 +214,30 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ## <a name="adal-to-msal-migration"></a>ADAL から MSAL への移行
 
-ADAL.NET v2.X では、更新トークンが公開されました。これにより、これらのトークンをキャッシュし、ADAL 2.x で提供される `AcquireTokenByRefreshToken` メソッドを使用することで、そのトークンの使用に関するソリューションを開発することができるようになります。 これらのソリューションのいくつかは、次のようなシナリオで使用されました。
-* 長時間実行されているサービスで、ユーザーの代わりにダッシュボードの更新などのアクションを行うが、ユーザーが接続されなくなった。 
+ADAL.NET v2.X では、更新トークンが公開されました。これにより、これらのトークンをキャッシュし、ADAL 2.x で提供される `AcquireTokenByRefreshToken` メソッドを使用することで、そのトークンの使用に関するソリューションを開発することができるようになります。
+これらのソリューションのいくつかは、次のようなシナリオで使用されました。
+* 長時間実行されているサービスで、ユーザーの代わりにダッシュボードの更新などのアクションを行うが、ユーザーが接続されなくなった。
 * クライアントで RT を Web サービスに移行できるようにする WebFarm シナリオ (サーバー側ではなく、クライアント側でキャッシュが行われ、Cookie が暗号化される)
 
-MSAL.NET では、セキュリティ上の理由により、更新トークンは公開されません。MSAL によって、トークンの更新が処理されます。 
+MSAL.NET では、セキュリティ上の理由により、更新トークンは公開されません。MSAL によって、トークンの更新が処理されます。
 
 さいわい、MSAL.NET では現在、API で以前の更新トークン (ADAL で取得) を `IConfidentialClientApplication` に移行することができます。
 
 ```csharp
 /// <summary>
-/// Acquires an access token from an existing refresh token and stores it and the refresh token into 
+/// Acquires an access token from an existing refresh token and stores it and the refresh token into
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.
-/// This method can be used in migration to MSAL from ADAL v2 and in various integration 
-/// scenarios where you have a RefreshToken available. 
+/// This method can be used in migration to MSAL from ADAL v2 and in various integration
+/// scenarios where you have a RefreshToken available.
 /// (see https://aka.ms/msal-net-migration-adal2-msal2)
 /// </summary>
-/// <param name="scopes">Scope to request from the token endpoint. 
+/// <param name="scopes">Scope to request from the token endpoint.
 /// Setting this to null or empty will request an access token, refresh token and ID token with default scopes</param>
 /// <param name="refreshToken">The refresh token from ADAL 2.x</param>
 IByRefreshToken.AcquireTokenByRefreshToken(IEnumerable<string> scopes, string refreshToken);
 ```
- 
-この方法では、必要なスコープ (リソース) と共に、以前使用された更新トークンを提供することができます。 更新トークンは新しいものと交換され、アプリケーションにキャッシュされます。  
+
+この方法では、必要なスコープ (リソース) と共に、以前使用された更新トークンを提供することができます。 更新トークンは新しいものと交換され、アプリケーションにキャッシュされます。
 
 この方法は、一般的ではないシナリオ用であるため、最初に `IByRefreshToken` にキャストしないと、`IConfidentialClientApplication` で簡単にはアクセスできません。
 
@@ -253,7 +254,7 @@ app = ConfidentialClientApplicationBuilder.Create(clientId)
  .WithClientSecret(ClientSecret)
  .Build();
 IByRefreshToken appRt = app as IByRefreshToken;
-         
+
 AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
                                          .ExecuteAsync()
                                          .ConfigureAwait(false);

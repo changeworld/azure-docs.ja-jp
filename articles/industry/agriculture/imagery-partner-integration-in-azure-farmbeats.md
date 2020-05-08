@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 52d817d1029e75837e55c1b942525661ace33f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136942"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613287"
 ---
 # <a name="imagery-partner-integration"></a>画像パートナーの統合
 
@@ -120,10 +121,10 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 
 ```bash
-curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
-"accept: application/json" -H  
+curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
+"accept: application/json" -H
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
-"{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  
+"{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,
 \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 

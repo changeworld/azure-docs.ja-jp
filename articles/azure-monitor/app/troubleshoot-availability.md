@@ -4,14 +4,14 @@ description: Azure Application Insights の Web テストのトラブルシュ�
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 09/19/2019
+ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 94b00a36445b0f4284caba218f6416db726611eb
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255449"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233960"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -67,6 +67,10 @@ ms.locfileid: "81255449"
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Webhook 通知が届きませんでした。
 
 Web hook 通知を受信するアプリケーションが利用可能であること、さらにそのアプリケーションによって Web hook 要求が適切に処理されることを確認します。 詳細については、[こちら](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)をご覧ください。
+
+### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>403 Forbidden エラーが発生しました。これはどういう意味でしょうか。
+
+このエラーは、可用性エージェントがお客様のターゲット URL をテストできるように、お客様の方でファイアウォールの例外を追加する必要があることを示しています。 許可するエージェント IP アドレスの完全な一覧については、[IP の例外に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)を参照してください。
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>プロトコル違反エラーでテストが断続的に失敗します。
 

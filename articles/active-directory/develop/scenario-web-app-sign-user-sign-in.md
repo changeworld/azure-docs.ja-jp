@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: df02c7d2ace6c58d86f4044607eca386f1790e1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537068"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734316"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ:サインインとサインアウト
 
@@ -33,20 +33,26 @@ ms.locfileid: "81537068"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core では、サインイン ボタンは `Views\Shared\_LoginPartial.cshtml` で公開されます。 認証済みのアカウントがない場合にのみ表示されます。 つまり、ユーザーがまだサインインしていない場合やサインアウト済みの場合に表示されます。
+ASP.NET Core では、Microsoft ID プラットフォーム アプリケーションの場合、 **[サインイン]** ボタンは `Views\Shared\_LoginPartial.cshtml` (MVC アプリの場合) または `Pages\Shared\_LoginPartial.cshtm` (Razor アプリの場合) 上に表示されます。 ユーザーが認証済みでない場合にのみ、表示されます。 つまり、ユーザーがまだサインインしていない場合やサインアウト済みの場合に表示されます。反対に、ユーザーが既にサインインしている場合は、 **[サインアウト]** ボタンが表示されます。 アカウント コントローラーは、**MicrosoftIdentity** という領域で、**Microsoft.Identity.Web.UI** NuGet パッケージ内に定義されていることに注意してください。
 
 ```html
-@using Microsoft.Identity.Web
-@if (User.Identity.IsAuthenticated)
-{
- // Code omitted code for clarity
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignIn">Sign in</a></li>
-    </ul>
-}
+<ul class="navbar-nav">
+  @if (User.Identity.IsAuthenticated)
+  {
+    <li class="nav-item">
+        <span class="navbar-text text-dark">Hello @User.Identity.Name!</span>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+    </li>
+  }
+  else
+  {
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+    </li>
+  }
+</ul>
 ```
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -68,7 +74,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java のクイックスタートでは、サインイン ボタンは [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/resources/templates/index.html) ファイルに配置されています。
+Java のクイックスタートでは、サインイン ボタンは [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) ファイルに配置されています。
 
 ```html
 <!DOCTYPE html>
@@ -106,9 +112,9 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET では、Web アプリの **[サインイン]** ボタンを選択すると、`AccountController` コントローラーの `SignIn` アクションがトリガーされます。 以前のバージョンの ASP.NET Core テンプレートでは、`Account` コントローラーは Web アプリに埋め込まれていました。 コントローラーは ASP.NET Core フレームワークの一部になったため、これは当てはまらなくなりました。
+ASP.NET では、Web アプリの **[サインイン]** ボタンを選択すると、`AccountController` コントローラーの `SignIn` アクションがトリガーされます。 以前のバージョンの ASP.NET Core テンプレートでは、`Account` コントローラーは Web アプリに埋め込まれていました。 現在では、コントローラーは **Microsoft.Identity.Web.UI** NuGet パッケージの一部になったため、これは当てはまらなくなりました。 詳細については、[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) を参照してください。
 
-`AccountController` 用のコードは、ASP.NET Core リポジトリから [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs) で入手できます。 アカウント制御では、Microsoft ID プラットフォーム エンドポイントへのリダイレクトによって、ユーザーにチャレンジを行います。 詳細については、ASP.NET Core の一部として提供されている [SignIn](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31) メソッドを参照してください。
+このコントローラーでは、Azure AD B2C アプリケーションも処理されます。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -235,23 +241,26 @@ Web アプリによってユーザーが `logout` エンドポイントにリダ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core では、サインアウト ボタンは `Views\Shared\_LoginPartial.cshtml` で公開されます。 認証済みのアカウントがある場合にのみ表示されます。 つまり、ユーザーが既にサインインしている場合に表示されます。
+ASP.NET では、Web アプリ上の **[サインアウト]** ボタンを選択すると、`AccountController` コントローラー上の `SignOut` アクションがトリガーされます (上記を参照)
 
 ```html
-@using Microsoft.Identity.Web
-@if (User.Identity.IsAuthenticated)
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">Hello @User.GetDisplayName()!</li>
-        <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignOut">Sign out</a></li>
-    </ul>
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignIn">Sign in</a></li>
-    </ul>
-}
+<ul class="navbar-nav">
+  @if (User.Identity.IsAuthenticated)
+  {
+    <li class="nav-item">
+        <span class="navbar-text text-dark">Hello @User.Identity.Name!</span>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+    </li>
+  }
+  else
+  {
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+    </li>
+  }
+</ul>
 ```
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -320,15 +329,13 @@ Python のクイックスタートでは、サインアウト ボタンは [temp
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET では、Web アプリの **[サインアウト]** ボタンを選択すると、`AccountController` コントローラーの `SignOut` アクションがトリガーされます。 以前のバージョンの ASP.NET Core テンプレートでは、`Account` コントローラーは Web アプリに埋め込まれていました。 コントローラーは ASP.NET Core フレームワークの一部になったため、これは当てはまらなくなりました。
-
-`AccountController` 用のコードは、ASP.NET Core リポジトリから [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs) で入手できます。 アカウント制御では次のことを行います。
+以前のバージョンの ASP.NET Core テンプレートでは、`Account` コントローラーは Web アプリに埋め込まれていました。 現在では、コントローラーは **Microsoft.Identity.Web.UI** NuGet パッケージの一部になったため、これは当てはまらなくなりました。 詳細については、[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) を参照してください。
 
 - Azure AD でサインアウトが完了したときにコントローラーがコールバックされるように、OpenID リダイレクト URI を `/Account/SignedOut` に設定します。
 - OpenID Connect ミドルウェアで Microsoft ID プラットフォームの `logout` エンドポイントに連絡できるようにする `Signout()` を呼び出します。 その後、エンドポイントは次のことを行います。
 
   - ブラウザーからセッション Cookie を消去します。
-  - ログアウト URL をコールバックします。 既定では、ログアウト URL は、サインアウト済みビューのページ [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) を表示します。 このページは ASP.NET Core の一部としても提供されています。
+  - ログアウト URL をコールバックします。 既定では、ログアウト URL は、サインアウト済みビューのページ [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) を表示します。 このページは、MIcrosoft.Identity.Web の一部としても提供されています。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -390,15 +397,7 @@ def logout():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core OpenID Connect ミドルウェアでは、`OnRedirectToIdentityProviderForSignOut` という名前の OpenID Connect イベントを提供することで、お客様のアプリで Microsoft ID プラットフォーム `logout` エンドポイントへの呼び出しをインターセプトすることができます。 このイベントをサブスクライブする (そしてトークン キャッシュをクリアする) 方法の例については、[Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156) を参照してください
-
-```csharp
-    // Handling the global sign-out
-    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-    {
-        // Forget about the signed-in user
-    };
-```
+ASP.NET Core OpenID Connect ミドルウェアでは、`OnRedirectToIdentityProviderForSignOut` という名前の OpenID Connect イベントを提供することで、お客様のアプリで Microsoft ID プラットフォーム `logout` エンドポイントへの呼び出しをインターセプトすることができます。 これは、Microsoft.Identity.Web によって自動的に処理されます (Web アプリによって Web API が呼び出される場合、アカウントはクリアされます)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

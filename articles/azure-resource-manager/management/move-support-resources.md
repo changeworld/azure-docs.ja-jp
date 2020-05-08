@@ -3,12 +3,12 @@ title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a92da04f5b883661d53fd291dc72351a1c4eafb1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804794"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610838"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 また、リソースを移動するときに考慮すべき特別な条件に関する情報も提供します。
@@ -1523,6 +1523,7 @@ ms.locfileid: "80804794"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | instancepools | いいえ | いいえ |
+> | locations | はい | はい |
 > | managedinstances | いいえ | いいえ |
 > | managedinstances/databases | いいえ | いいえ |
 > | servers | はい | はい |

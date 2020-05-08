@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136908"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613270"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -58,7 +59,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 5. ホーム ディレクトリに移動します。
 
     ```azurepowershell-interactive 
-    cd  
+    cd
     ```
 
 6. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
@@ -73,7 +74,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
     ```azurepowershell-interactive 
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -92,7 +93,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 - /**DeviceModel**:DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノードのいずれか) に対応します。
 - /**Device**:Device は、ファームに存在する物理デバイスに対応します。
 - /**SensorModel**:SensorModel は、センサーのメタデータ (製造元など)、センサーの種類 (アナログまたはデジタル)、センサーのメジャー (周辺温度や圧力) に対応します。
-- /**Sensor**:センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。  
+- /**Sensor**:センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。
 
 
 |        DeviceModel   |  検索候補   |
@@ -108,7 +109,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 |   DeviceModelId     |     関連付けられているデバイス モデルの ID  |
 |  HardwareId          | MAC アドレスなど、デバイスの一意の ID。
 |  ReportingInterval        |   レポートの間隔 (秒)。
-|  場所            |  デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。   
+|  場所            |  デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。
 |ParentDeviceId       |    このデバイスが接続されている親デバイスの ID。 たとえば、ゲートウェイに接続されているノードがあります。 ノードは parentDeviceId というゲートウェイを備えています。  |
 |    名前            | リソースを識別するための名前。 デバイス パートナーは、パートナー側のデバイス名と一致する名前を送信する必要があります。 パートナー デバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。|
 |     説明       |      わかりやすい説明を入力します。 |
@@ -139,7 +140,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 ### <a name="api-request-to-create-metadata"></a>メタデータを作成するための API 要求
 
-API 要求を行うには、HTTP (POST) メソッド、API サービスの URL、クエリ、データの送信、要求の作成または削除の対象となるリソースの URI を結合します。 その後、1 つまたは複数の HTTP 要求ヘッダーを追加します。 API サービスの URL は、API エンドポイント、つまりデータ ハブの URL (https://\<お使いのデータ ハブ>.azurewebsites.net) です。  
+API 要求を行うには、HTTP (POST) メソッド、API サービスの URL、クエリ、データの送信、要求の作成または削除の対象となるリソースの URI を結合します。 その後、1 つまたは複数の HTTP 要求ヘッダーを追加します。 API サービスの URL は、API エンドポイント、つまりデータ ハブの URL (https://\<お使いのデータ ハブ>.azurewebsites.net) です。
 
 ### <a name="authentication"></a>認証
 
@@ -297,10 +298,10 @@ SensorModel
 次の要求の例を使うと、デバイスを作成できます。 この要求では、要求本体にペイロードとして JSON を入力しています。
 
 ```bash
-curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
+curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
-\"reportingInterval\": 900,  \"name\": \"Device123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",
+\"reportingInterval\": 900,  \"name\": \"Device123\",
 \"description\": \"Test Device 123\"}" *
 ```
 

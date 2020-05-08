@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 5/01/2020
 ms.author: dsindona
-ms.openlocfilehash: d2fdf40dde287a65548f1db04d34ed3cf67d0374
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 130b519e69c422a5e80a7a580e90cd80137f6a9a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262164"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609081"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商業マーケットプレースのポリシーと利用規約
 
