@@ -1,28 +1,28 @@
 ---
-title: Azure VPN Gateway:診断ログ イベントでアラートを構成する
-description: VPN Gateway 診断ログ イベントにアラートを構成する手順
+title: Azure VPN Gateway:診断リソース ログ イベントでアラートを構成する
+description: VPN Gateway 診断リソース ログ イベントにアラートを構成する手順
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 95c55242baf2ceb3620ed71026af2bad0195c22d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878903"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127972"
 ---
-# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>VPN Gateway からの診断ログ イベントにアラートを設定する
+# <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway からのリソース ログ イベントにアラートを設定する
 
-この記事では、Azure Log Analytics を使用して、Azure VPN Gateway からの診断ログ イベントに基づいてアラートを設定する方法について説明します。 
+この記事は、Azure Monitor Log Analytics を使用して、Azure VPN Gateway からのリソース ログ イベントに基づいてアラートを設定するのに役立ちます。 
 
-Azure では、次のログを使用できます。
+Azure では、次のリソース ログを使用できます。
 
 |***名前*** | ***説明*** |
 |---        | ---               |
-|GatewayDiagnosticLog | ゲートウェイ構成イベント、主要な変更、およびメンテナンス イベントの診断ログが含まれています |
+|GatewayDiagnosticLog | ゲートウェイ構成イベント、主要な変更、メンテナンス イベントのリソース ログが含まれています |
 |TunnelDiagnosticLog | トンネルの状態変更イベントが含まれています。 トンネルの接続/切断イベントには、状態変更の理由の概要があります (該当する場合) |
 |RouteDiagnosticLog | ゲートウェイで発生する静的ルートへの変更および BGP イベントがログに記録されます |
 |IKEDiagnosticLog | ゲートウェイ上の IKE コントロールのメッセージおよびイベントがログに記録されます |

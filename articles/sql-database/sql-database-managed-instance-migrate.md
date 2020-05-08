@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79208947"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100279"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
@@ -30,7 +30,7 @@ ms.locfileid: "79208947"
 ![移行プロセス](./media/sql-database-managed-instance-migration/migration-process.png)
 
 - [マネージド インスタンスの互換性を評価する](#assess-managed-instance-compatibility)。ここでは、移行を妨げる可能性のある、障害となっている問題がないことを確認する必要があります。
-  - この手順には、ソース SQL Server インスタンスのリソース使用率を判断するための[パフォーマンス ベースライン](#create-performance-baseline)の作成も含まれます。 この手順は、適切なサイズに設定されたマネージド インスタンスをデプロイし、移行後のパフォーマンスに影響がないことを確認する場合に必要です。
+  - この手順には、ソース SQL Server インスタンスのリソース使用率を判断するための[パフォーマンス ベースライン](#create-performance-baseline)の作成も含まれます。 この手順は、適切なサイズに設定された Managed Instance をデプロイし、移行後のパフォーマンスに影響がないことを確認する場合に必要です。
 - [アプリの接続性オプションの選択](sql-database-managed-instance-connect-app.md)
 - [最適なサイズに設定されたマネージド インスタンスにデプロイする](#deploy-to-an-optimally-sized-managed-instance)。ここでは、マネージド インスタンスの技術的特性 (仮想コア数、メモリ容量) とパフォーマンス レベル (Business Critical、General Purpose) を選択します。
 - [移行方法の選択と移行](#select-migration-method-and-migrate)。ここでは、オフライン移行 (ネイティブ バックアップ/復元、データベースのインポート/エクスポート) またはオンライン移行 (データ移行サービス、トランザクション レプリケーション) を使用してデータベースを移行します。

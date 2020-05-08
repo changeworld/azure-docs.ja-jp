@@ -1,0 +1,42 @@
+- name: Azure VMware Solution (AVS)
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure VMware Solution (AVS) について
+      href: introduction.md
+- name: チュートリアル
+  items:
+    - name: 1 - ネットワークの計画
+      href: tutorial-network-checklist.md
+    - name: 2 - AVS プライベート クラウドの作成
+      href: tutorial-create-private-cloud.md
+    - name: 3 - ネットワークの構成
+      href: tutorial-configure-networking.md
+    - name: 4 - プライベート クラウドへのアクセス
+      href: tutorial-access-private-cloud.md
+    - name: 5 - プライベート クラウドのスケーリング
+      href: tutorial-scale-private-cloud.md
+- name: 概念
+  items:
+    - name: プライベート クラウドとクラスター
+      href: concepts-private-clouds-clusters.md
+    - name: プライベート クラウドのネットワークと相互接続
+      href: concepts-networking.md
+    - name: プライベート クラウドのストレージ
+      href: concepts-storage.md
+    - name: プライベート クラウドのアクセスと ID
+      href: concepts-identity.md
+    - name: プライベート クラウドのアップグレード
+      href: concepts-upgrades.md
+- name: 操作方法ガイド
+  items:
+    - name: DHCP の管理
+      href: manage-dhcp.md
+    - name: 障害復旧
+      href: disaster-recovery.md
+- name: リファレンス
+  items: null
+- name: リソース
+  items:
+    - name: よく寄せられる質問
+      href: faq.md
