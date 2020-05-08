@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) におけるネットワークにつ
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227919"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146057"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -131,7 +131,7 @@ AKS では、NGINX などを使用してイングレス リソースを作成す
 
 イングレスのもう 1 つの一般的な機能は、SSL/TLS 終端です。 HTTPS 経由でアクセスされる大規模な Web アプリケーションでは、アプリケーション自体の中ではなく、イングレス リソースによって TLS 終端を処理できます。 TLS 証明書の自動生成と構成を提供することで、Let's Encrypt などのプロバイダーを使用するイングレス リソースを構成できます。 Let's Encrypt を使用した NGINX イングレス コントローラーの構成の詳細については、[イングレスと TLS][aks-ingress-tls] に関する記事を参照してください。
 
-イングレス コントローラーを構成して、クライアント ソース IP を AKS クラスター内のコンテナーへの要求上で保持することもできます。 クライアントの要求が、イングレス コントローラー経由で AKS クラスター内のコントローラーにルーティングされている場合、その要求の元のソース IP は、ターゲット コンテナーに対しては利用できません。 *クライアント ソース IP の保持*を有効にすると、クライアントに対するソース IP は、*X-Forwarded-For* 下にある要求ヘッダー内で利用できます。 クライアント ソース IP の保持機能をイングレス コントローラー上で使用している場合は、SSL パススルーを使用できません。 クライアント ソース IP の保持と SSL パススルーは、*LoadBalancer* 型など、他のサービスによって使用できます。
+イングレス コントローラーを構成して、クライアント ソース IP を AKS クラスター内のコンテナーへの要求上で保持することもできます。 クライアントの要求が、イングレス コントローラー経由で AKS クラスター内のコントローラーにルーティングされている場合、その要求の元のソース IP は、ターゲット コンテナーに対しては利用できません。 *クライアント ソース IP の保持*を有効にすると、クライアントに対するソース IP は、*X-Forwarded-For* 下にある要求ヘッダー内で利用できます。 クライアント ソース IP の保持機能をイングレス コントローラー上で使用している場合は、TLS パススルーを使用できません。 クライアント ソース IP の保持と TLS パススルーは、*LoadBalancer* 型など、他のサービスによって使用できます。
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 

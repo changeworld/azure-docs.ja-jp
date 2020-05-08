@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229423"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189098"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
 Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。 Azure 上の従来の Service Fabric クラスターはマネージド サービスとして使用できるのに対して、スタンドアロンの Service Fabric クラスターはセルフサービスです。 違いについては、[Azure とスタンドアロン Service Fabric クラスターの比較](./service-fabric-deploy-anywhere.md)に関する記事をご覧ください。
@@ -144,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>手順 3:Service Fabric Explorer を使用したクラスターの視覚化
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、クラスターを視覚化してアプリケーションを管理するための最適なツールです。  Service Fabric Explorer はクラスターで動作するサービスであり、ブラウザーから [http://localhost:19080/Explorer](http://localhost:19080/Explorer) でアクセスすることができます。
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、クラスターを視覚化してアプリケーションを管理するための最適なツールです。  Service Fabric Explorer はクラスターで動作するサービスであり、ブラウザーを使用して `http://localhost:19080/Explorer` にアクセスすることができます。
 
 クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。 ノード ビューには、クラスターの物理的なレイアウトが表示されます。 特定のノードについて、そのノードでコードがデプロイされているアプリケーション、
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aebc669a90511e48ddd2a7876553948c04b97710
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667826"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185644"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -46,6 +46,10 @@ ms.locfileid: "80667826"
 > [!NOTE] 
 > Azure NetApp Files は、必要に応じてサービスの追加の IP をデプロイできます。  DNS エントリの定期的な更新が必要になる場合があります。
 
+### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Azure NetApp Files ボリュームの独自の IP アドレスを設定または選択できますか?  
+
+いいえ。 Azure NetApp Files ボリュームへの IP 割り当ては動的です。 静的 IP の割り当てはサポートされていません。 
+ 
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM とストレージ間のネットワーク トラフィックは暗号化できますか?
@@ -171,7 +175,7 @@ Azure NetApp Files には、容量プールとボリュームの使用状況の�
 
 クライアントから `stat` コマンドを使用することで、ディレクトリがサイズ上限 (320 MB) に近づいているかどうかを確認できます。
 
-320 MB のディレクトリの場合、ブロック数は 655360、各ブロック サイズは 512 バイトです  (つまり、320 x 1024 x 1024/512)。  
+320 MB のディレクトリの場合、ブロック数は 655360、各ブロック サイズは 512 バイトです   (つまり、320 x 1024 x 1024/512)。  
 
 例 :
 

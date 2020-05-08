@@ -3,22 +3,22 @@ title: Azure セキュリティ ベンチマークのドキュメント
 summary: ベスト プラクティスやガイダンスを使用して、Azure 上のクラウド ソリューションをセキュリティで保護する方法について説明します。
 metadata:
   title: Azure セキュリティ ベンチマーク
-  description: Azure セキュリティ制御ベンチマークには、Azure 上のアプリケーションとデータのセキュリティを向上させるための推奨事項が含まれています。
+  description: Azure セキュリティ ベンチマークには、Azure 上のアプリケーションとデータのセキュリティを向上させるための推奨事項が含まれています。
   services: security
   ms.service: security
   ms.subservice: fundamentals
-  ms.custom: security-baselines
+  ms.custom: security-benchmark
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: c2b36e098314af78ca3d6f28534c3d3e97697363
-  ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/15/2020
-  ms.locfileid: "81393835"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82607752"
 landingContent:
 - title: Azure セキュリティ ベンチマークについて
   linkLists:
@@ -26,9 +26,9 @@ landingContent:
     links:
     - text: Azure セキュリティ ベンチマークの概要
       url: introduction.md
-    - text: Azure セキュリティ制御の概要
+    - text: Azure セキュリティ コントロールの概要
       url: overview.md
-- title: シングル サインオンの設定
+- title: セキュリティ コントロール
   linkLists:
   - linkListType: overview
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: security-control-network-security.md
     - text: ログ記録と監視
       url: security-control-logging-monitoring.md
-    - text: ID およびアクセス制御
+    - text: ID とアクセスの制御
       url: security-control-identity-access-control.md
     - text: データ保護
       url: security-control-data-protection.md

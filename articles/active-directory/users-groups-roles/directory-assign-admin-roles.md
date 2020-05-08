@@ -9,27 +9,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
-ms.custom: fasttrack-edit
+ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b813c1caa02ce3ffd3ab0579849dff47252e7d63
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 0c16ba26d1c59bd932e657f41882fbd23dc3a69e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559166"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592232"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
-Azure Active Directory (Azure AD) を使用して、特権が低いロールで ID のタスクを管理する限定された管理者を指定できます。 ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などの目的で管理者を割り当てることができます。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
+Azure Active Directory (Azure AD) を使用して、特権が低いロールで ID のタスクを管理する限定された管理者を指定できます。 ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などの目的で管理者を割り当てることができます。 [既定のユーザー アクセス許可](../fundamentals/users-default-permissions.md)は、Azure AD のユーザー設定のみで変更できます。
 
-## <a name="limit-the-use-of-global-administrator"></a>グローバル管理者の使用を制限する
+## <a name="limit-use-of-global-administrator"></a>グローバル管理者の使用を制限する
 
 グローバル管理者ロールに割り当てられているユーザーは、Azure AD 組織内のすべての管理設定の読み取りと変更を行うことができます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、Azure AD 組織のグローバル管理者ロールが割り当てられます。 管理者ロールを委任できるのはグローバル管理者と特権ロール管理者だけです。 ビジネスに対するリスクを軽減するには、このロールを割り当てる組織内のユーザーの数をできる限り少なくすることをお勧めします。
 
-ベスト プラクティスとして、組織内でこのロールを割り当てるユーザーは 5 人未満にすることをお勧めします。 組織内でグローバル管理者ロールを割り当てるユーザーが 5 人以上になる場合は、次の方法でその利用を減らすことができます。
+ベスト プラクティスとして、組織内でこのロールを割り当てる人は 5 人未満にすることをお勧めします。 組織内でグローバル管理者ロールを割り当てる管理者が 5 人以上になる場合は、次の方法でその利用を減らすことができます。
 
 ### <a name="find-the-role-you-need"></a>必要なロールを調べる
 
@@ -52,17 +52,18 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されないことに注意してください。
 
 アプリケーション管理者は、アプリケーションを偽装できるアプリケーションの資格情報を管理できます。 そのため、このロールに割り当てられたユーザーは、Azure AD ロールに割り当てられていないか、次の管理者ロールに割り当てられているアプリケーションのいずれかのアプリケーションの資格情報を管理できます。
+
 * アプリケーション管理者
 * アプリケーション開発者
 * クラウド アプリケーション管理者
 * ディレクトリ リーダー
 
-アプリケーションが、上記で説明されていない他のロールに割り当てられている場合、アプリケーション管理者はそのアプリケーションの資格情報を管理できません。 
- 
+アプリケーションが、上記で説明されていない他のロールに割り当てられている場合、アプリケーション管理者はそのアプリケーションの資格情報を管理できません。
+
 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph API に対するアクセス許可を除く) に "_同意する_" 権限を付与します。
 
 > [!IMPORTANT]
-> この例外は、"_他の_" アプリ (サードパーティ製アプリや自分が登録したアプリなど) に対するアクセス許可には引き続き同意できるが、Azure AD 自体に対するアクセス許可には同意できないことを意味します。 アプリ登録の一環としてこれらのアクセス許可を "_要求_" することはできますが、 これらのアクセス許可を "_許可する_" (つまり、同意する) には、Azure AD 管理者が必要です。つまり、悪意のあるユーザーは、ディレクトリ全体に書き込み可能なアプリを作成してそれに同意し、そのアプリのアクセス許可を通じて自分自身をグローバル管理者に昇格させるなどの方法によって、自分のアクセス許可を簡単に昇格させることはできません。
+> この例外は、"_他の_" アプリ (たとえば、Microsoft 以外のアプリや自分が登録したアプリなど) に対するアクセス許可には引き続き同意できるが、Azure AD 自体に対するアクセス許可には同意できないことを意味します。 アプリ登録の一環としてこれらのアクセス許可を "_要求_" することはできますが、 これらのアクセス許可を "_許可する_" (つまり、同意する) には、Azure AD 管理者が必要です。つまり、悪意のあるユーザーは、ディレクトリ全体に書き込み可能なアプリを作成してそれに同意し、そのアプリのアクセス許可を通じて自分自身をグローバル管理者に昇格させるなどの方法によって、自分のアクセス許可を簡単に昇格させることはできません。
 
 ### <a name="application-developer"></a>[アプリケーション開発者](#application-developer-permissions)
 
@@ -70,13 +71,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="authentication-administrator"></a>[認証管理者](#authentication-administrator-permissions)
 
-認証管理者のロールは現在パブリック プレビュー段階です。 このロールのユーザーは、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに要求し、"**このデバイスに MFA を記憶する**" 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることができます。
+このロールのユーザーは、一部のユーザーのパスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録を管理者以外のユーザー、または一部のロールに割り当てられているユーザーに要求し、"**このデバイスに MFA を記憶する**" 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることもできます。 これらのアクションは、管理者以外のユーザー、または次の 1 つ以上のロールが割り当てられているユーザーにのみ適用されます。
 
 * 認証管理者
 * ディレクトリ リーダー
 * ゲスト招待元
 * メッセージ センター閲覧者
 * レポート閲覧者
+
+[特権認証管理者](#privileged-authentication-administrator)ロールには、すべてのユーザーに対して再登録と多要素認証を強制する権限があります。
 
 > [!IMPORTANT]
 > このロールのユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーの資格情報を変更するということは、そのユーザーの ID とアクセス許可を引き受けることができるということを意味します。 次に例を示します。
@@ -99,11 +102,11 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="b2c-user-flow-administrator"></a>[B2C ユーザー フロー管理者](#b2c-user-flow-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure portal で B2C ユーザー フロー ("組み込み" ポリシーとも呼ばれます) を作成および管理することができます。 これらのユーザーは、ユーザー フローを作成または編集することで、ユーザー エクスペリエンスの html/CSS/javascript コンテンツの変更、ユーザー フローごとの MFA 要件の変更、トークンの要求の変更、テナント内のすべてのポリシー用のセッション設定の調整を行うことができます。 その一方で、このロールには、ユーザーのデータを確認したり、テナント スキーマに含まれている属性を変更したりする機能は含まれていません。 Identity Experience Framework (カスタムとも呼ばれます) ポリシーの変更もこのロールの範囲外です。
+このロールが割り当てられたユーザーは、Azure portal で B2C ユーザー フロー ("組み込み" ポリシーとも呼ばれます) を作成および管理することができます。 これらのユーザーは、ユーザー フローを作成または編集することで、ユーザー エクスペリエンスの html/CSS/javascript コンテンツの変更、ユーザー フローごとの MFA 要件の変更、トークンの要求の変更、Azure AD 組織内のすべてのポリシー用のセッション設定の調整を行うことができます。 その一方で、このロールには、ユーザーのデータを確認したり、組織スキーマに含まれている属性を変更したりする機能は含まれていません。 Identity Experience Framework (カスタムとも呼ばれます) ポリシーの変更もこのロールの範囲外です。
 
 ### <a name="b2c-user-flow-attribute-administrator"></a>[B2C ユーザー フロー属性管理者](#b2c-user-flow-attribute-administrator-permissions)
 
-このロールが割り当てられたユーザーは、テナント内のすべてのユーザー フローに使用可能なカスタム属性を追加または削除できます。 そのため、このロールが割り当てられたユーザーは、エンド ユーザー スキーマを変更、またはエンド ユーザー スキーマに新しい要素を追加して、すべてのユーザー フローの動作に影響を及ぼしたり、エンド ユーザーが求め、最終的には要求としてアプリケーションに送信されるデータを間接的に変更したりできます。 このロールでユーザー フローを編集することはできません。
+このロールが割り当てられたユーザーは、Azure AD 組織内のすべてのユーザー フローで使用可能なカスタム属性を追加または削除できます。 そのため、このロールが割り当てられたユーザーは、エンド ユーザー スキーマを変更、またはエンド ユーザー スキーマに新しい要素を追加して、すべてのユーザー フローの動作に影響を及ぼしたり、エンド ユーザーが求め、最終的には要求としてアプリケーションに送信されるデータを間接的に変更したりできます。 このロールでユーザー フローを編集することはできません。
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF キーセット管理者](#b2c-ief-keyset-administrator-permissions)
 
@@ -114,10 +117,10 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="b2c-ief-policy-administrator"></a>[B2C IEF ポリシー管理者](#b2c-ief-policy-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure AD B2C のすべてのカスタム ポリシーを作成、読み取り、更新、および削除することができます。そのため、関連する Azure AD B2C テナント内の Identity Experience Framework を完全に制御できます。 このユーザーは、ポリシーを編集することで、外部の ID プロバイダーとの直接フェデレーションの確立、ディレクトリ スキーマの変更、ユーザー向けのすべてのコンテンツ (HTML、CSS、JavaScript) の変更、認証を完了するための要件の変更、新しいユーザーの作成、ユーザー データの外部システムへの送信 (完全な移行を含む)、パスワードや電話番号などの機密フィールドを含むすべてのユーザー情報の編集を行うことができます。 逆に、このロールでは、暗号化キーを変更したり、テナント内のフェデレーションに使用されているシークレットを編集したりすることはできません。
+このロールが割り当てられたユーザーは、Azure AD B2C のすべてのカスタム ポリシーを作成、読み取り、更新、および削除することができます。そのため、関連する Azure AD B2C 組織内の Identity Experience Framework を完全に制御できます。 このユーザーは、ポリシーを編集することで、外部の ID プロバイダーとの直接フェデレーションの確立、ディレクトリ スキーマの変更、ユーザー向けのすべてのコンテンツ (HTML、CSS、JavaScript) の変更、認証を完了するための要件の変更、新しいユーザーの作成、ユーザー データの外部システムへの送信 (完全な移行を含む)、パスワードや電話番号などの機密フィールドを含むすべてのユーザー情報の編集を行うことができます。 逆に、このロールでは、暗号化キーを変更したり、組織内のフェデレーションに使用されているシークレットを編集したりすることはできません。
 
 > [!IMPORTANT]
-> B2 IEF ポリシー管理者は、非常に機密性の高いロールであるため、運用環境ではごく限られたテナントに割り当てる必要があります。 これらのユーザーによるアクティビティは、とりわけ運用環境のテナントに対しては、注意深く監査する必要があります。
+> B2 IEF ポリシー管理者は、非常に機密性の高いロールであるため、運用環境ではごく限られた組織に割り当てる必要があります。 これらのユーザーによるアクティビティは、とりわけ運用環境の組織に対しては、注意深く監査する必要があります。
 
 ### <a name="billing-administrator"></a>[課金管理者](#billing-administrator-permissions)
 
@@ -128,6 +131,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールは、エンタープライズ アプリケーションとアプリケーション登録の全側面を作成して管理する権限を付与します。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph API を除く) に同意する権限を付与します。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
 クラウド アプリケーション管理者は、そのアプリケーションを偽装できるアプリケーションの資格情報を管理できます。 そのため、このロールに割り当てられたユーザーは、Azure AD ロールに割り当てられていないか、次の管理者ロールに割り当てられているアプリケーションのいずれかのアプリケーションの資格情報を管理できます。
+
 * アプリケーション開発者
 * クラウド アプリケーション管理者
 * ディレクトリ リーダー
@@ -185,7 +189,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、基本的なディレクトリ情報を読み取ることができます。 このロールは次の目的で使用してください。
 * 読み取りアクセスをすべてのゲスト ユーザーに付与せず、特定のゲスト ユーザー セットに付与する。
-* [Restrict access to Azure AD portal to admins only]\(Azure AD ポータルへのアクセスを管理者のみに制限する\) が [はい] に設定されている場合に、管理者以外の特定のユーザー セットに Azure portal へのアクセスを付与する。
+* [Restrict access to Azure AD portal to admins only] (Azure AD ポータルへのアクセスを管理者のみに制限する) が [はい] に設定されている場合に、管理者以外の特定のユーザー セットに Azure portal へのアクセスを付与する。
 * Directory.Read.All を選択できないディレクトリへのアクセスをサービス プリンシパルに付与する。
 
 ### <a name="directory-synchronization-accounts"></a>[ディレクトリ同期アカウント](#directory-synchronization-accounts-permissions)
@@ -198,7 +202,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 管理者/CRM 管理者](#crm-service-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[service admin ロールを使用してテナントを管理する](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
+このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、[サービス管理者ロールを使用した Azure AD 組織の管理](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)に関する記事をご覧ください。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "Dynamics 365 サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Dynamics 365 管理者" になります。
@@ -212,14 +216,14 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="external-identity-provider-administrator"></a>[外部 ID プロバイダー管理者](#external-identity-provider-administrator-permissions)
 
-この管理者は、Azure Active Directory テナントと外部 ID プロバイダー間のフェデレーションを管理します。 このロールが割り当てられたユーザーは、新しい ID プロバイダーを追加し、使用可能なすべての設定 (認証パス、サービス ID、割り当てられたキー コンテナーなど) を構成できます。 このユーザーは、テナントで外部 ID プロバイダーからの認証の信頼を有効にすることができます。 その結果としてエンド ユーザー エクスペリエンスに及ぼす影響は、テナントの種類によって異なります。
+この管理者は、Azure AD 組織と外部 ID プロバイダー間のフェデレーションを管理します。 このロールが割り当てられたユーザーは、新しい ID プロバイダーを追加し、使用可能なすべての設定 (認証パス、サービス ID、割り当てられたキー コンテナーなど) を構成できます。 このユーザーは、Azure AD 組織が外部 ID プロバイダーからの認証を信頼できるようにすることができます。 その結果としてエンド ユーザー エクスペリエンスに及ぼす影響は、組織の種類によって異なります。
 
-* 従業員とパートナー向けの Azure Active Directory テナント: (たとえば Gmail との) フェデレーションの追加は、まだ招待に応じていないすべてのゲストの招待にすぐに影響します。 「[Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)」を参照してください。
-* Azure Active Directory B2C テナント:(たとえば Facebook、または別の Azure AD 組織との) フェデレーションの追加は、ユーザー フロー (組み込みポリシーとも呼ばれます) で ID プロバイダーがオプションとして追加されるまで、エンド ユーザー フローにすぐに影響することはありません。 例については、[ID プロバイダーとしての Microsoft アカウントの構成](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)に関するページを参照してください。 ユーザー フローを変更するには、"B2C ユーザー フロー管理者" の制限されたロールが必要です。
+* 従業員とパートナー向けの Azure AD 組織: (たとえば Gmail との) フェデレーションの追加は、まだ招待に応じていないすべてのゲストの招待にすぐに影響します。 「[Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)」を参照してください。
+* Azure Active Directory B2C 組織:(たとえば Facebook、または別の Azure AD 組織との) フェデレーションの追加は、ユーザー フロー (組み込みポリシーとも呼ばれます) で ID プロバイダーがオプションとして追加されるまで、エンド ユーザー フローにすぐに影響することはありません。 例については、[ID プロバイダーとしての Microsoft アカウントの構成](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)に関するページを参照してください。 ユーザー フローを変更するには、"B2C ユーザー フロー管理者" の制限されたロールが必要です。
 
 ### <a name="global-administrator--company-administrator"></a>[全体管理者/会社の管理者](#company-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "社内管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
@@ -228,17 +232,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="global-reader"></a>[グローバル閲覧者](#global-reader-permissions)
 
-このロールのユーザーは、Microsoft 365 の各サービスにわたって設定と管理情報を読み取ることができますが、管理アクションを実行することはできません。 グローバル閲覧者は、全体管理者に対応する読み取り専用のロールです。 計画、監査、調査については、全体管理者ではなくグローバル閲覧者を割り当てます。 Exchange 管理者など、制限付きの他の管理者ロールとグローバル閲覧者を組み合わせて使用すると、全体管理者ロールを割り当てる必要がなく作業が楽になります。 グローバル閲覧者は、Microsoft 365 管理センター、Exchange 管理センター、Teams 管理センター、セキュリティ センター、コンプライアンス センター、Azure AD 管理センター、デバイス管理の管理センターと連動します。
+このロールのユーザーは、Microsoft 365 の各サービスにわたって設定と管理情報を読み取ることができますが、管理アクションを実行することはできません。 グローバル閲覧者は、全体管理者に対応する読み取り専用のロールです。 計画、監査、調査については、全体管理者ではなくグローバル閲覧者を割り当てます。 Exchange 管理者など、制限付きの他の管理者ロールとグローバル閲覧者を組み合わせて使用すると、全体管理者ロールを割り当てる必要がなく作業が楽になります。 グローバル閲覧者は、Microsoft 365 管理センター、Exchange 管理センター、SharePoint 管理センター、Teams 管理センター、セキュリティ センター、コンプライアンス センター、Azure AD 管理センター、デバイス管理の管理センターと連動します。
 
 > [!NOTE]
 > グローバル閲覧者ロールには現在、制限事項がいくつか与えられています。
 >
->- SharePoint 管理センター - SharePoint 管理センターでは、グローバル閲覧者ロールがサポートされていません。 [Microsoft 365 管理センター](https://admin.microsoft.com/Adminportal/Home#/homepage)の [管理センター] の下の左側のウィンドウに "SharePoint" が表示されません。
 >- [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールがサポートされていません。
 >- [Azure AD portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - グローバル閲覧者は企業アプリのプロビジョニング モードを閲覧できません。
 >- [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
->- [M365 セキュリティ センター](https://security.microsoft.com/homepage) - グローバル閲覧者は機密ラベルと保持ラベルを閲覧できません。 M365 セキュリティ センターの左側のウィンドウに **[機密ラベル]** 、 **[保持ラベル]** 、 **[Label analytics]\(ラベル分析\)** タブがありません。
->- [Office セキュリティ/コンプライアンス センター](https://sip.protection.office.com/homepage) - グローバル閲覧者が、SCC 監査ログを読み取れないか、コンテンツ検索を実行できません。
+>- [Office セキュリティ/コンプライアンス センター](https://sip.protection.office.com/homepage) - グローバル閲覧者は、SCC 監査ログを読み取ることも、コンテンツ検索を実行することも、セキュリティ スコアを確認することもできません。
 >- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](https://docs.microsoft.com/azure/information-protection/reports-aip)のみでサポートされ、Azure AD 組織が [統合ラベル付けプラットフォーム](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
@@ -248,7 +250,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="groups-administrator"></a>[グループ管理者](#groups-administrator-permissions)
 
-このロールのユーザーは、グループとその設定 (命名ポリシーや有効期限ポリシーなど) を作成/管理できます。 このロールにユーザーを割り当てることにより、Outlook だけでなく、Teams、SharePoint、Yammer などのさまざまなワークロードにわたって、テナント内のすべてのグループを管理する機能がユーザーに付与されるということを理解しておくことが重要です。 また、そのユーザーは、Microsoft 管理センター、Azure portal などのさまざまな管理者ポータル全般のさまざまなグループ設定を管理できるほか、Teams や SharePoint 管理センターなどのワークロード固有の場合についても管理できます。
+このロールのユーザーは、グループとその設定 (命名ポリシーや有効期限ポリシーなど) を作成/管理できます。 このロールにユーザーを割り当てることにより、Outlook だけでなく、Teams、SharePoint、Yammer などのさまざまなワークロードにわたって、組織内のすべてのグループを管理する機能がユーザーに付与されるということを理解しておくことが重要です。 また、そのユーザーは、Microsoft 管理センター、Azure portal などのさまざまな管理者ポータル全般のさまざまなグループ設定を管理できるほか、Teams や SharePoint 管理センターなどのワークロード固有の場合についても管理できます。
 
 ### <a name="guest-inviter"></a>[ゲスト招待元](#guest-inviter-permissions)
 
@@ -277,11 +279,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールは、[Azure portal](https://portal.azure.com/) で以前は "パスワード管理者" と呼ばれていました。 Azure AD での名前である "ヘルプデスク管理者" は、Azure AD PowerShell および Microsoft Graph API での名前に一致するようになりました。
 
+### <a name="hybrid-identity-administrator"></a>[ハイブリッド ID の管理者](#hybrid-identity-administrator-permissions)
+
+このロールのユーザーは、Azure AD でのハイブリッド ID の有効化に関連するサービスと設定を有効化、構成、管理できます。 このロールでは、サポートされている 3 つの認証方法であるパスワード ハッシュ同期 (PHS)、パススルー認証 (PTA)、フェデレーション (AD FS またはサードパーティのフェデレーション プロバイダー) のいずれかに Azure AD を構成し、関連するオンプレミス インフラストラクチャをデプロイして有効にすることが許可されます。 オンプレミス インフラストラクチャには、プロビジョニングと PTA エージェントが含まれます。 このロールでは、Windows 10 以外のデバイスまたは Windows Server 2016 以外のコンピューターでシームレス シングル サインオン (S-SSO) を有効にして、シームレスな認証を有効にすることが許可されます。 さらに、このロールでは、監視とトラブルシューティングのために、サインイン ログを表示し、正常性と分析にアクセスすることが許可されます。 
+
 ### <a name="intune-administrator"></a>[Intune 管理者](#intune-service-administrator-permissions)
 
 このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)」を参照してください。
 
-このロールでは、すべてのセキュリティ グループを作成および管理できます。 ただし、Intune 管理者には Office グループに対する管理者権限がありません。 つまり、管理者は、テナント内のすべての Office グループの所有者およびメンバーシップを更新することはできません。 ただし、自分で作成した Office グループを管理することはできます。これは、エンド ユーザーの特権の一部として提供されます。 そのため、自分が作成したすべての Office グループ (セキュリティ グループではありません) は、自分の 250 のクォータに対してカウントする必要があります。
+このロールでは、すべてのセキュリティ グループを作成および管理できます。 ただし、Intune 管理者には Office グループに対する管理者権限がありません。 つまり、管理者は、組織内のすべての Office グループの所有者およびメンバーシップを更新することはできません。 ただし、自分で作成した Office グループを管理することはできます。これは、エンド ユーザーの特権の一部として提供されます。 そのため、自分が作成したすべての Office グループ (セキュリティ グループではありません) は、自分の 250 のクォータに対してカウントする必要があります。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "Intune サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Intune 管理者" になります。
@@ -301,6 +307,10 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 ### <a name="message-center-reader"></a>[メッセージ センター閲覧者](#message-center-reader-permissions)
 
 このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
+
+### <a name="network-administrator"></a>[ネットワーク管理者](#network-administrator-permissions)
+
+このロールのユーザーは、ユーザーの場所からのネットワーク テレメトリに基づいて、Microsoft によるネットワーク境界アーキテクチャに関する推奨事項を確認できます。 Office 365 のネットワーク パフォーマンスは、通常はユーザーの場所に固有である、企業の顧客の慎重なネットワーク境界アーキテクチャに依存します。 このロールを使用では、検出されたユーザーの場所と、それらの場所に対するネットワーク パラメーターの構成を編集して、テレメトリの測定と設計に関する推奨事項の改善できます。 
 
 ### <a name="office-apps-administrator"></a>[Office アプリ管理者](#office-apps-administrator-permissions)
 
@@ -333,9 +343,23 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、環境、PowerApps、フロー、データ損失防止ポリシーのすべての側面を作成および管理できます。 さらに、このロールを持つユーザーは、サポート チケットを管理し、サービス正常性を監視できます。
 
+### <a name="printer-administrator"></a>[プリンター管理者](#printer-administrator-permissions)
+
+このロールのユーザーは、プリンターを登録して、ユニバーサル印刷コネクタの設定など、Microsoft ユニバーサル印刷ソリューションのすべてのプリンター構成のすべての側面を管理できます。 すべての委任された印刷アクセス許可要求に同意することができます。 プリンター管理者は、印刷レポートにアクセスすることもできます。
+
+### <a name="printer-technician"></a>[プリンター技術者](#printer-technician-permissions)
+
+このロールのユーザーは、プリンターを登録して、Microsoft ユニバーサル印刷ソリューションでプリンターの状態を管理できます。 すべてのコネクタ情報を読み取ることもできます。 プリンター技術者が行うことができない主要なタスクは、プリンターに対するユーザー アクセス許可の設定と、プリンターの共有です。
+
 ### <a name="privileged-authentication-administrator"></a>[特権認証管理者](#privileged-authentication-administrator-permissions)
 
-このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 特権認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、"このデバイスに MFA を記憶する" 機能を取り消して、すべてのユーザーが次回ログインするときに MFA の入力を求めることができます。
+このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 特権認証管理者は、パスワード以外の既存の資格情報 (MFA や FIDO など) に対する再登録をユーザーに強制することができます。また、'このデバイスに MFA を記憶する' 機能を取り消して、すべてのユーザーが次回サインインするときに MFA の入力を求めることができます。 [認証管理者](#authentication-administrator)ロールでは、管理者以外のユーザーと、次の Azure AD ロールに割り当てられているユーザーに対してのみ、再登録と MFA を強制できます。
+
+* 認証管理者
+* ディレクトリ リーダー
+* ゲスト招待元
+* メッセージ センター閲覧者
+* レポート閲覧者
 
 ### <a name="privileged-role-administrator"></a>[特権ロール管理者](#privileged-role-administrator-permissions)
 
@@ -409,7 +433,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 このロールが割り当てられたユーザーは、Azure サービスと Office 365 サービスについて Microsoft へのサポート要求を開くことができます。また、[Azure portal](https://portal.azure.com) と [Microsoft 365 管理センター](https://admin.microsoft.com)で、サービス ダッシュボードとメッセージ センターを表示できます。 詳細については、[管理者の役割](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)に関する記事をご覧ください。
 
 > [!NOTE]
-> Microsoft Graph API と Azure AD PowerShell では、このロールは "サービス サポート管理者" として識別されます。 [Azure portal](https://portal.azure.com)、[Microsoft 365 管理センター](https://admin.microsoft.com)、Intune ポータルでは "サービス管理者" になります。
+> 以前は、このロールは、[Azure portal](https://portal.azure.com) および [Microsoft 365 管理センター](https://admin.microsoft.com)の「サービス管理者」と呼ばれていました。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell の既存の名前と整合性を図り、このロールの名前を「サービス サポート管理者」に変更しました。 
 
 ### <a name="sharepoint-administrator"></a>[SharePoint 管理者](#sharepoint-service-administrator-permissions)
 
@@ -620,7 +644,7 @@ Identity Experience Framework での信頼フレームワーク ポリシーの�
 | microsoft.directory/organization/basic/update | Azure Active Directory での organization の基本プロパティの更新。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.commerce.billing/allEntities/allTasks | Office 365 課金の全側面の管理。 |
+| microsoft.commerce.billing/allEntities/allTasks | 課金の全側面の管理。 |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
@@ -730,7 +754,7 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.azure.informationProtection/allEntities/allTasks | Azure Information Protection の全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.commerce.billing/allEntities/allTasks | Office 365 課金の全側面の管理。 |
+| microsoft.commerce.billing/allEntities/allTasks | 課金の全側面の管理。 |
 | microsoft.intune/allEntities/allTasks | Intune の全側面の管理。 |
 | microsoft.office365.complianceManager/allEntities/allTasks | Office 365 コンプライアンス マネージャーの全側面の管理 |
 | microsoft.office365.desktopAnalytics/allEntities/allTasks | デスクトップ Analytics のすべての側面を管理します。 |
@@ -869,7 +893,7 @@ Microsoft サポートがお客様の組織データにアクセスする要求�
 | microsoft.directory/groupSettingTemplates/basic/read | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
 
 ### <a name="directory-readers-permissions"></a>ディレクトリ閲覧者のアクセス許可
-基本的なディレクトリ情報を読み取ることができます ユーザーではなく、アプリケーションへのアクセスを許可する場合。
+基本的なディレクトリ情報を読み取ることができます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -958,7 +982,7 @@ Azure AD Connect サービスでのみ使用されます。
 
 ### <a name="directory-writers-permissions"></a>ディレクトリ ライターのアクセス許可
 
-基本的なディレクトリ情報の読み取りと書き込みを実行できます ユーザーではなく、アプリケーションへのアクセスを許可する場合。
+基本的なディレクトリ情報の読み取りと書き込みを実行できます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -990,18 +1014,20 @@ Exchange 製品のすべての側面を管理できます。
 
 | **アクション** | **説明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
 | microsoft.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
 | microsoft.directory/groups/unified/create | Office 365 グループを作成します。 |
 | microsoft.directory/groups/unified/delete | Office 365 グループを削除します。 |
 | microsoft.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
 | microsoft.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.exchange/allEntities/allTasks | Exchange Online の全側面の管理。 |
+| microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>外部 ID プロバイダー管理者のアクセス許可
 
@@ -1012,7 +1038,7 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.aad.b2c/identityProviders/allTasks | Azure Active Directory B2C での ID プロバイダーの読み取りと構成。 |
 
 ### <a name="global-reader-permissions"></a>グローバル閲覧者のアクセス許可
-全体管理者が閲覧できるものはすべて閲覧できますが、何も編集できません。 
+全体管理者が閲覧できるものはすべて閲覧できますが、何も編集できません。
 
 > [!NOTE]
 > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記の[ロールの説明](#global-reader)を参照してください。
@@ -1021,65 +1047,66 @@ Exchange 製品のすべての側面を管理できます。
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.commerce.billing/allEntities/read   | Office 365 課金のあらゆる側面の読み取り。 |
+| microsoft.commerce.billing/allEntities/read    | 課金のあらゆる側面の読み取り。 |
 | microsoft.directory/administrativeUnits/basic/read    | Azure Active Directory での administrativeUnits の基本プロパティの読み取り。 |
-| microsoft.directory/administrativeUnits/members/read  | Azure Active Directory での administrativeUnits.members プロパティの読み取り。 |
-| microsoft.directory/applications/basic/read   | Azure Active Directory での applications の基本プロパティの読み取り。 |
-| microsoft.directory/applications/owners/read  | Azure Active Directory での applications.owners プロパティの読み取り。 |
+| microsoft.directory/administrativeUnits/members/read    | Azure Active Directory での administrativeUnits.members プロパティの読み取り。 |
+| microsoft.directory/applications/basic/read    | Azure Active Directory での applications の基本プロパティの読み取り。 |
+| microsoft.directory/applications/owners/read    | Azure Active Directory での applications.owners プロパティの読み取り。 |
 | microsoft.directory/applications/policies/read    | Azure Active Directory での applications.policies プロパティの読み取り。 |
-| microsoft.directory/contacts/basic/read   | Azure Active Directory での contacts の基本プロパティの読み取り。 |
+| microsoft.directory/contacts/basic/read    | Azure Active Directory での contacts の基本プロパティの読み取り。 |
 | microsoft.directory/contacts/memberOf/read    | Azure Active Directory での contacts.memberOf プロパティの読み取り。 |
-| microsoft.directory/contracts/basic/read  | Azure Active Directory での contracts の基本プロパティの読み取り。 |
+| microsoft.directory/contracts/basic/read    | Azure Active Directory での contracts の基本プロパティの読み取り。 |
 | microsoft.directory/devices/basic/read    | Azure Active Directory での devices の基本プロパティの読み取り。 |
-| microsoft.directory/devices/memberOf/read | Azure Active Directory での devices.memberOf プロパティの読み取り。 |
-| microsoft.directory/devices/registeredOwners/read | Azure Active Directory での devices.registeredOwners プロパティの読み取り。 |
-| microsoft.directory/devices/registeredUsers/read  | Azure Active Directory での devices.registeredUsers プロパティの読み取り。 |
-| microsoft.directory/directoryRoles/basic/read | Azure Active Directory での directoryRoles の基本プロパティの読み取り。 |
-| microsoft.directory/directoryRoles/eligibleMembers/read   | Azure Active Directory での directoryRoles.eligibleMembers プロパティの読み取り。 |
-| microsoft.directory/directoryRoles/members/read   | Azure Active Directory での directoryRoles.members プロパティの読み取り。 |
+| microsoft.directory/devices/memberOf/read    | Azure Active Directory での devices.memberOf プロパティの読み取り。 |
+| microsoft.directory/devices/registeredOwners/read    | Azure Active Directory での devices.registeredOwners プロパティの読み取り。 |
+| microsoft.directory/devices/registeredUsers/read    | Azure Active Directory での devices.registeredUsers プロパティの読み取り。 |
+| microsoft.directory/directoryRoles/basic/read    | Azure Active Directory での directoryRoles の基本プロパティの読み取り。 |
+| microsoft.directory/directoryRoles/eligibleMembers/read    | Azure Active Directory での directoryRoles.eligibleMembers プロパティの読み取り。 |
+| microsoft.directory/directoryRoles/members/read    | Azure Active Directory での directoryRoles.members プロパティの読み取り。 |
 | microsoft.directory/domains/basic/read    | Azure Active Directory での domains の基本プロパティの読み取り。 |
 | microsoft.directory/groups/appRoleAssignments/read    | Azure Active Directory での groups.appRoleAssignments プロパティの読み取り。 |
-| microsoft.directory/groups/basic/read | Azure Active Directory での groups の基本プロパティの読み取り。 |
-| microsoft.directory/groups/hiddenMembers/read | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
-| microsoft.directory/groups/memberOf/read  | Azure Active Directory での groups.memberOf プロパティの読み取り。 |
-| microsoft.directory/groups/members/read   | Azure Active Directory での groups.members プロパティの読み取り。 |
+| microsoft.directory/groups/basic/read    | Azure Active Directory での groups の基本プロパティの読み取り。 |
+| microsoft.directory/groups/hiddenMembers/read    | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
+| microsoft.directory/groups/memberOf/read    | Azure Active Directory での groups.memberOf プロパティの読み取り。 |
+| microsoft.directory/groups/members/read    | Azure Active Directory での groups.members プロパティの読み取り。 |
 | microsoft.directory/groups/owners/read    | Azure Active Directory での groups.owners プロパティの読み取り。 |
-| microsoft.directory/groups/settings/read  | Azure Active Directory での groups.settings プロパティの読み取り。 |
-| microsoft.directory/groupSettings/basic/read  | Azure Active Directory での groupSettings の基本プロパティの読み取り。 |
-| microsoft.directory/groupSettingTemplates/basic/read  | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
-| microsoft.directory/oAuth2PermissionGrants/basic/read | Azure Active Directory での oAuth2PermissionGrants の基本プロパティの読み取り。 |
-| microsoft.directory/organization/basic/read   | Azure Active Directory での organization の基本プロパティの読み取り。 |
-| microsoft.directory/organization/trustedCAsForPasswordlessAuth/read   | Azure Active Directory での organization.trustedCAsForPasswordlessAuth プロパティの読み取り。 |
+| microsoft.directory/groups/settings/read    | Azure Active Directory での groups.settings プロパティの読み取り。 |
+| microsoft.directory/groupSettings/basic/read    | Azure Active Directory での groupSettings の基本プロパティの読み取り。 |
+| microsoft.directory/groupSettingTemplates/basic/read    | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
+| microsoft.directory/oAuth2PermissionGrants/basic/read    | Azure Active Directory での oAuth2PermissionGrants の基本プロパティの読み取り。 |
+| microsoft.directory/organization/basic/read    | Azure Active Directory での organization の基本プロパティの読み取り。 |
+| microsoft.directory/organization/trustedCAsForPasswordlessAuth/read    | Azure Active Directory での organization.trustedCAsForPasswordlessAuth プロパティの読み取り。 |
 | microsoft.directory/policies/standard/read    | Azure Active Directory の標準ポリシーの読み取り。 |
 | microsoft.directory/roleAssignments/basic/read    | Azure Active Directory での roleAssignments の基本プロパティの読み取り。 |
 | microsoft.directory/roleDefinitions/basic/read    | Azure Active Directory での roleDefinitions の基本プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/appRoleAssignedTo/read  | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/appRoleAssignments/read | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/basic/read  | Azure Active Directory での servicePrincipals の基本プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/memberOf/read   | Azure Active Directory での servicePrincipals.memberOf プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/oAuth2PermissionGrants/basic/read   | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/ownedObjects/read   | Azure Active Directory での servicePrincipals.ownedObjects プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/owners/read | Azure Active Directory での servicePrincipals.owners プロパティの読み取り。 |
-| microsoft.directory/servicePrincipals/policies/read   | Azure Active Directory での servicePrincipals.policies プロパティの読み取り。 |
-| microsoft.directory/signInReports/allProperties/read  | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
-| microsoft.directory/subscribedSkus/basic/read | Azure Active Directory での subscribedSkus の基本プロパティの読み取り。 |
-| microsoft.directory/users/appRoleAssignments/read | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
-| microsoft.directory/users/basic/read  | Azure Active Directory での users の基本プロパティの読み取り。 |
-| microsoft.directory/users/directReports/read  | Azure Active Directory での users.directReports プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/read    | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/appRoleAssignments/read    | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/basic/read    | Azure Active Directory での servicePrincipals の基本プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/memberOf/read    | Azure Active Directory での servicePrincipals.memberOf プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/oAuth2PermissionGrants/basic/read    | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/ownedObjects/read    | Azure Active Directory での servicePrincipals.ownedObjects プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/owners/read    | Azure Active Directory での servicePrincipals.owners プロパティの読み取り。 |
+| microsoft.directory/servicePrincipals/policies/read    | Azure Active Directory での servicePrincipals.policies プロパティの読み取り。 |
+| microsoft.directory/signInReports/allProperties/read    | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
+| microsoft.directory/subscribedSkus/basic/read    | Azure Active Directory での subscribedSkus の基本プロパティの読み取り。 |
+| microsoft.directory/users/appRoleAssignments/read    | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
+| microsoft.directory/users/basic/read    | Azure Active Directory での users の基本プロパティの読み取り。 |
+| microsoft.directory/users/directReports/read    | Azure Active Directory での users.directReports プロパティの読み取り。 |
 | microsoft.directory/users/manager/read    | Azure Active Directory での users.manager プロパティの読み取り。 |
-| microsoft.directory/users/memberOf/read   | Azure Active Directory での users.memberOf プロパティの読み取り。 |
-| microsoft.directory/users/oAuth2PermissionGrants/basic/read   | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.directory/users/ownedDevices/read   | Azure Active Directory での users.ownedDevices プロパティの読み取り。 |
-| microsoft.directory/users/ownedObjects/read   | Azure Active Directory での users.ownedObjects プロパティの読み取り。 |
-| microsoft.directory/users/registeredDevices/read  | Azure Active Directory での users.registeredDevices プロパティの読み取り。 |
-| microsoft.directory/users/strongAuthentication/read   | MFA 資格情報などの強力な認証プロパティの読み取り。 |
-| microsoft.office365.exchange/allEntities/read | Exchange Online のあらゆる側面の読み取り。 |
-| microsoft.office365.messageCenter/messages/read   | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
-| microsoft.office365.messageCenter/securityMessages/read   | Microsoft.office365.messageCenter でセキュリティ メッセージを読み取ります。 |
-| microsoft.office365.protectionCenter/allEntities/read | Office 365 プロテクション センターの全側面の読み取り。 |
-| microsoft.office365.securityComplianceCenter/allEntities/read | microsoft.office365.securityComplianceCenter のすべての標準プロパティの読み取り。 |
-| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
-| microsoft.office365.webPortal/allEntities/standard/read   | microsoft.office365.webPortal のすべてのリソースの標準プロパティの読み取り。 |
+| microsoft.directory/users/memberOf/read    | Azure Active Directory での users.memberOf プロパティの読み取り。 |
+| microsoft.directory/users/oAuth2PermissionGrants/basic/read    | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
+| microsoft.directory/users/ownedDevices/read    | Azure Active Directory での users.ownedDevices プロパティの読み取り。 |
+| microsoft.directory/users/ownedObjects/read    | Azure Active Directory での users.ownedObjects プロパティの読み取り。 |
+| microsoft.directory/users/registeredDevices/read    | Azure Active Directory での users.registeredDevices プロパティの読み取り。 |
+| microsoft.directory/users/strongAuthentication/read    | MFA 資格情報などの強力な認証プロパティの読み取り。 |
+| microsoft.office365.exchange/allEntities/read    | Exchange Online のあらゆる側面の読み取り。 |
+| microsoft.office365.messageCenter/messages/read    | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+| microsoft.office365.messageCenter/securityMessages/read    | Microsoft.office365.messageCenter でセキュリティ メッセージを読み取ります。 |
+| microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。 |
+| microsoft.office365.protectionCenter/allEntities/read    | Office 365 プロテクション センターの全側面の読み取り。 |
+| microsoft.office365.securityComplianceCenter/allEntities/read    | microsoft.office365.securityComplianceCenter のすべての標準プロパティの読み取り。 |
+| microsoft.office365.usageReports/allEntities/read    | Office 365 の使用状況レポートの読み取り。 |
+| microsoft.office365.webPortal/allEntities/standard/read    | microsoft.office365.webPortal のすべてのリソースの標準プロパティの読み取り。 |
 
 ### <a name="groups-administrator-permissions"></a>グループ管理者の権限
 名前付けや有効期限ポリシーなど、グループやグループの設定のすべての側面を管理できます。
@@ -1101,7 +1128,6 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
-| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 
 ### <a name="guest-inviter-permissions"></a>ゲスト招待元のアクセス許可
 [メンバーがゲストを招待できる] の設定とは無関係にゲスト ユーザーを招待できます。
@@ -1133,6 +1159,50 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+
+### <a name="hybrid-identity-administrator-permissions"></a>ハイブリッド ID の管理者のアクセス許可
+
+クラウド プロビジョニング サービスと認証サービスの有効化、デプロイ、構成、管理、監視、トラブルシューティングを行うことができます。 
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.directory/applications/audience/update  | Azure Active Directory での applications.audience property プロパティの更新。 |
+| microsoft.directory/applications/authentication/update | Azure Active Directory での applications.authentication プロパティの更新。  |
+| microsoft.directory/applications/basic/update | Azure Active Directory での applications の基本プロパティの更新。 |
+| microsoft.directory/applications/create | Azure Active Directory での applications の作成。 |
+| microsoft.directory/applications/credentials/update | Azure Active Directory での applications.credentials プロパティの更新。 |
+| microsoft.directory/applications/delete | Azure Active Directory での applications の削除。 |
+| microsoft.directory/applications/owners/update | Azure Active Directory での applications.owners プロパティの更新。 |
+| microsoft.directory/applications/permissions/update | Azure Active Directory での applications.permissions プロパティの更新。 |
+| microsoft.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
+| microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンス化。 |
+| microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
+| microsoft.directory/cloudProvisioning/allProperties/allTasks | Azure AD クラウド プロビジョニング サービスのすべてのプロパティを読み取りと構成。 |
+| microsoft.directory/federatedAuthentication/allProperties/allTasks | Azure AD で Active Directory フェデレーション サービス (ADFS) またはサードパーティのフェデレーション プロバイダーのすべての側面の管理。 |
+| microsoft.directory/organization/dirSync/update | Azure Active Directory での organization.dirSync プロパティの更新。 |
+| microsoft.directory/passwordHashSync/allProperties/allTasks | Azure AD でパスワード ハッシュ同期 (PHS) のすべての側面の管理。 |
+| microsoft.directory/passThroughAuthentication/allProperties/allTasks | Azure AD でパススルー認証 (PTA) のすべての側面の管理。 |
+| microsoft.directory/seamlessSSO/allProperties/allTasks | Azure AD でシームレスなシングル サインオン (SSO) のすべての側面の管理。 |
+| microsoft.directory/servicePrincipals/audience/update | Azure Active Directory での servicePrincipals.audience プロパティの更新。 |
+| microsoft.directory/servicePrincipals/authentication/update | Azure Active Directory での servicePrincipals.authentication プロパティの更新。 |
+| microsoft.directory/servicePrincipals/basic/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
+| microsoft.directory/servicePrincipals/create | Azure Active Directory での servicePrincipals の作成。 |
+| microsoft.directory/servicePrincipals/credentials/update | Azure Active Directory での servicePrincipals.credentials プロパティの更新。 |
+| microsoft.directory/servicePrincipals/delete | Azure Active Directory での servicePrincipals の削除。 |
+| microsoft.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
+| microsoft.directory/servicePrincipals/permissions/update | Azure Active Directory での servicePrincipals.permissions プロパティの更新。 |
+| microsoft.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
+| microsoft.directory/servicePrincipals/synchronizationJobs/manage | Azure AD で同期ジョブのすべての側面の管理。 |
+| microsoft.directory/servicePrincipals/synchronizationSchema/manage | Azure AD で同期スキーマのすべての側面の管理。 |
+| microsoft.directory/servicePrincipals/synchronizationCredentials/manage | Azure AD で同期資格情報のすべての側面の管理。 |
+| microsoft.directory/servicePrincipals/tag/update | Azure Active Directory で servicePrincipals.tag プロパティの更新。 |
+| microsoft.directory/signInReports/allProperties/read | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
+| microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+
 
 ### <a name="intune-service-administrator-permissions"></a>Intune サービス管理者のアクセス許可
 
@@ -1212,10 +1282,12 @@ Skype for Business 製品のすべての側面を管理できます。
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online の全側面の管理。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.usageReports/allEntities/read    | Office 365 の使用状況レポートの読み取り。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+
 
 ### <a name="message-center-privacy-reader-permissions"></a>メッセージ センターのプライバシー閲覧者のアクセス許可
 
@@ -1244,6 +1316,19 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+
+### <a name="network-administrator-permissions"></a>ネットワーク管理者のアクセス許可
+ネットワークの場所を管理し、Microsoft 365 Software as a Service アプリケーションのエンタープライズ ネットワーク設計の分析情報を確認できます。
+
+> [!NOTE]
+> このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+>
+>
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。  |
+| microsoft.office365.network/locations/allProperties/allTasks | 各場所に対するネットワークの場所のプロパティの読み取りと構成。 |
 
 ### <a name="office-apps-administrator-permissions"></a>Office アプリ管理者のアクセス許可
 Office アプリのクラウド サービスを管理すること (ポリシーと設定の管理を含む) や、"新機能" のコンテンツをエンドユーザーのデバイスのために選択、選択解除、公開する機能を管理することができます。
@@ -1378,6 +1463,34 @@ Microsoft Dynamics 365、PowerApps、Microsoft Flow のすべての側面を作�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
+### <a name="printer-administrator-permissions"></a>プリンター管理者のアクセス許可
+
+プリンターとプリンター コネクタのすべての側面を管理できます。
+
+> [!NOTE]
+> このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+>
+>
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.print/allEntities/allProperties/allTasks | プリンターとコネクタの作成と削除、および Microsoft Print でのすべてのプロパティの読み取りと更新。 |
+
+### <a name="printer-technician-permissions"></a>プリンター技術者のアクセス許可
+
+プリンターの登録と登録解除、またプリンターの状態の更新を行うことができます。
+
+> [!NOTE]
+> このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+>
+>
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.print/connectors/allProperties/read | Microsoft Print 内のコネクタのすべてのプロパティの読み取り。 |
+| microsoft.azure.print/printers/allProperties/read | Microsoft Print 内のプリンターのすべてのプロパティの読み取り。 |
+| microsoft.azure.print/printers/basic/update | Microsoft Print 内のプリンターの基本プロパティの更新。 |
+| microsoft.azure.print/printers/register | Microsoft Print でのプリンターの登録。 |
+| microsoft.azure.print/printers/unregister | Microsoft Print でのプリンターの登録解除。 |
+
 ### <a name="privileged-authentication-administrator-permissions"></a>特権認証管理者のアクセス許可
 
 任意のユーザー (管理者または管理者以外) の認証方法の情報を表示、設定、リセットできます。
@@ -1442,7 +1555,6 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 | microsoft.office365.search/allEntities/allProperties/allTasks | microsoft.Office365.search でのすべてのリソースの作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
-| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="search-editor-permissions"></a>Search エディターのアクセス許可
@@ -1458,7 +1570,6 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 | --- | --- |
 | microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
 | microsoft.office365.search/content/allProperties/allTasks | microsoft.Office365.search でのコンテンツの作成と削除、およびすべてのプロパティの読み取りと更新。 |
-| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 
 ### <a name="security-administrator-permissions"></a>セキュリティ管理者のアクセス許可
 
@@ -1507,7 +1618,6 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 | microsoft.azure.advancedThreatProtection/allEntities/read | Azure AD Advanced Threat Protection の読み取りと構成。 |
 | microsoft.intune/allEntities/allTasks | Intune の全側面の管理。 |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | セキュリティ/コンプライアンス センターの読み取りと構成。 |
-| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Windows Defender Advanced Threat Protection の読み取りと構成。 |
 
 ### <a name="security-reader-permissions"></a>セキュリティ閲覧者のアクセス許可
@@ -1560,18 +1670,20 @@ SharePoint サービスのすべての側面を管理できます。
 
 | **アクション** | **説明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
 | microsoft.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
 | microsoft.directory/groups/unified/create | Office 365 グループを作成します。 |
 | microsoft.directory/groups/unified/delete | Office 365 グループを削除します。 |
 | microsoft.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
 | microsoft.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+| microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | microsoft.office365.sharepoint でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.usageReports/allEntities/read    | Office 365 の使用状況レポートの読み取り。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="teams-communications-administrator-permissions"></a>Teams 通信管理者のアクセス許可
 
@@ -1632,6 +1744,8 @@ Microsoft Teams サービスを管理できます。
 
 | **アクション** | **説明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.directory/groups/hiddenMembers/read | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
 | microsoft.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
@@ -1639,12 +1753,11 @@ Microsoft Teams サービスを管理できます。
 | microsoft.directory/groups/unified/delete | Office 365 グループを削除します。 |
 | microsoft.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
 | microsoft.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+| microsoft.office365.network/performance/allProperties/read | M365 管理者センターのネットワーク パフォーマンス ページを読み取ります。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 ### <a name="user-administrator-permissions"></a>ユーザー管理者のアクセス許可
 ユーザーとグループのすべての側面を、制限付きの管理者のパスワードをリセットすることも含めて、管理できます。
@@ -1709,30 +1822,34 @@ CRM サービス管理者 | Dynamics 365 管理者 | 44367163-eba1-44c3-98af-f57
 カスタマー ロックボックスのアクセス承認者 | カスタマー ロックボックスのアクセス承認者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 デスクトップ Analytics 管理者 | デスクトップ Analytics 管理者 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 デバイス管理者 | デバイス管理者 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
-デバイスの参加 | デバイスの参加 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
-デバイス マネージャー | デバイス マネージャー | 2b499bcd-da44-4968-8aec-78e1674fa64d
-デバイス ユーザー | デバイス ユーザー | d405c6df-0af8-4e3b-95e4-4d06e542189e
+デバイスの参加 | 非推奨 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
+デバイス マネージャー | 非推奨 | 2b499bcd-da44-4968-8aec-78e1674fa64d
+デバイス ユーザー | 非推奨 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 ディレクトリ リーダー | ディレクトリ閲覧者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-ディレクトリ同期アカウント | ディレクトリ同期アカウント | d29b2b05-8046-44ba-8758-1e26182fcf32
-ディレクトリ ライター | ディレクトリ ライター | 9360feb5-f418-4baa-8175-e2a00bac4301
+ディレクトリ同期アカウント | 使用するべきではないため、表示されません | d29b2b05-8046-44ba-8758-1e26182fcf32
+ディレクトリ ライター | 使用するべきではないため、表示されません | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange サービス管理者 | Exchange 管理者 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID プロバイダー管理者 | 外部 ID プロバイダー管理者 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 グローバル閲覧者 | グローバル閲覧者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 グループ管理者 | グループ管理者 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 ゲスト招待元 | ゲスト招待元 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 ヘルプデスク管理者 | ヘルプデスク管理者 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+ハイブリッド ID の管理者 | ハイブリッド ID の管理者 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Intune サービス管理者 | Intune 管理者 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理者 | Kaizala 管理者 | 74ef975b-6605-40af-a5d2-b9539d836353
 ライセンス管理者 | ライセンス管理者 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync サービス管理者 | Skype for Business 管理者 | 75941009-915a-4869-abe7-691bff18279e
 メッセージ センターのプライバシー閲覧者 | メッセージ センターのプライバシー閲覧者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 メッセージ センター閲覧者 | メッセージ センター閲覧者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+ネットワーク管理者 | ネットワーク管理者 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office アプリ管理者 | Office アプリ管理者 | 2b745bdf-0803-4d80-aa65-822c4493daac
-パートナー レベル 1 のサポート | パートナー レベル 1 のサポート | 4ba39ca4-527c-499a-b93d-d9b492c50246
-パートナー レベル 2 のサポート | パートナー レベル 2 のサポート | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+パートナー レベル 1 のサポート | 使用するべきではないため、表示されません | 4ba39ca4-527c-499a-b93d-d9b492c50246
+パートナー レベル 2 のサポート | 使用するべきではないため、表示されません | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 パスワード管理者 | パスワード管理者 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI サービス管理者 | Power BI 管理者 | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform 管理者 | Power Platform 管理者 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
+プリンター管理者 | プリンター管理者 | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
+プリンター技術者 | プリンター技術者 | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
 特権認証管理者 | 特権認証管理者 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 特権ロール管理者 | 特権ロール管理者 | e8611ab8-c189-46e8-94e1-60213ab1f814
 レポート閲覧者 | レポート閲覧者 | 4a5d8f65-41da-4de4-8968-e035b65339cf
@@ -1741,15 +1858,15 @@ Search エディター | Search エディター | 8835291a-918c-4fd7-a9ce-faa49f
 セキュリティ管理者 | セキュリティ管理者 | 194ae4cb-b126-40b2-bd5b-6091b380977d
 セキュリティ オペレーター | セキュリティ オペレーター | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 セキュリティ閲覧者 | セキュリティ閲覧者 | 5d6b6bb7-de71-4623-b4af-96380a352509
-サービス サポート管理者 | サービス管理者 | f023fd81-a637-4b56-95fd-791ac0226033
+サービス サポート管理者 | サービス サポート管理者 | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint サービス管理者 | SharePoint 管理者 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Teams 通信管理者 | Teams 通信管理者 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信サポート エンジニア | Teams 通信サポート エンジニア | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信サポート スペシャリスト | Teams 通信サポート スペシャリスト | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams サービス管理者 | Teams サービス管理者 | 69091246-20e8-4a56-aa4d-066075b2a7a8
-User | User | a0b1b346-4d3e-4e8b-98f8-753987be4970
+User | 使用できないため、表示されません | a0b1b346-4d3e-4e8b-98f8-753987be4970
 ユーザー アカウント管理者 | ユーザー管理者 | fe930be7-5e62-47db-91af-98c3a49a38b1
-デバイスの社内参加 | デバイスの社内参加 | c34f683f-4d5a-4403-affd-6615e00e3a7f
+デバイスの社内参加 | 非推奨 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>非推奨のロール
 
@@ -1763,8 +1880,29 @@ User | User | a0b1b346-4d3e-4e8b-98f8-753987be4970
 * メールボックス管理者
 * デバイスの社内参加
 
+## <a name="roles-not-shown-in-the-portal"></a>ポータルに表示されないロール
+
+PowerShell または MS Graph API によって返されるすべてのロールが Azure portal に表示されるわけではありません。 それらの違いを次の表にまとめます。
+
+API 名 | Azure portal での名前 | Notes
+-------- | ------------------- | -------------
+会社の管理者 | グローバル管理者 | [わかりやすくするために名前が変更されました](directory-assign-admin-roles.md#role-template-ids)
+CRM サービス管理者 | Dynamics 365 管理者 | [現在の製品のブランドが反映されています](directory-assign-admin-roles.md#role-template-ids)
+デバイスの参加 | 非推奨 | [非推奨になったロールのドキュメント](directory-assign-admin-roles.md#deprecated-roles)
+デバイス マネージャー | 非推奨 | [非推奨になったロールのドキュメント](directory-assign-admin-roles.md#deprecated-roles)
+デバイス ユーザー | 非推奨 | [非推奨になったロールのドキュメント](directory-assign-admin-roles.md#deprecated-roles)
+ディレクトリ同期アカウント | 使用するべきではないため、表示されません | [ディレクトリ同期アカウントのドキュメント](directory-assign-admin-roles.md#directory-synchronization-accounts)
+ディレクトリ ライター | 使用するべきではないため、表示されません | [ディレクトリ ライターのドキュメント](directory-assign-admin-roles.md#directory-writers)
+ゲスト ユーザー | 使用できないため、表示されません  | NA
+Lync サービス管理者 | Skype for Business 管理者 | [現在の製品のブランドが反映されています](directory-assign-admin-roles.md#role-template-ids)
+Partner Tier 1 サポート | 使用するべきではないため、表示されません | [Partner Tier 1 サポートのドキュメント](directory-assign-admin-roles.md#partner-tier1-support)
+Partner Tier 2 サポート | 使用するべきではないため、表示されません | [Partner Tier 2 サポートのドキュメント](directory-assign-admin-roles.md#partner-tier2-support)
+制限されたゲストユーザー | 使用できないため、表示されません | NA
+User | 使用できないため、表示されません | NA
+デバイスの社内参加 | 非推奨 | [非推奨になったロールのドキュメント](directory-assign-admin-roles.md#deprecated-roles)
+
 ## <a name="next-steps"></a>次のステップ
 
-* Azure サブスクリプションの管理者としてユーザーを割り当てる方法の詳細については、[RBAC と Azure portal を使用したアクセスの管理](../../role-based-access-control/role-assignments-portal.md)に関するページを参照してください
-* Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* Azure サブスクリプションの管理者としてユーザーを割り当てる方法の詳細については、[Azure のロール (Azure RBAC) を使用したアクセスの管理](../../role-based-access-control/role-assignments-portal.md)に関するページを参照してください
+* Microsoft Azure でリソース アクセスを制御する方法の詳細については、[さまざまなロールの概要](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

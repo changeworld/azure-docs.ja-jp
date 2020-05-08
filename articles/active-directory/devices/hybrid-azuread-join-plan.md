@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152ff52ce52b573d7f24cbb2fafc944b1794f6d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129253"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181326"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -94,7 +94,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
 
 - "<i>デバイスが Hybrid Azure AD 参加済みになり、同じユーザーがログインした後</i>"、ユーザーの既存の Azure AD 登録済み状態は自動的に削除されます。 たとえば、ユーザー A がデバイスに Azure AD 登録済み状態を持っている場合は、ユーザー A がデバイスにログインしたときにのみ、ユーザー A の二重状態はクリーンアップされます。 同じデバイスに複数のユーザーがいる場合、それらのユーザーがログインすると、二重状態は個別にクリーンアップされます。
-- レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。
+- 次のレジストリ値を HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin に追加すると、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます:"BlockAADWorkplaceJoin"=dword:00000001。
 - Windows 10 1803 では、Windows Hello for Business が構成されている場合、ユーザーは、二重状態のクリーンアップ後に Windows Hello for Business を再設定する必要があります。この問題は KB4512509 で解決されています
 
 > [!NOTE]

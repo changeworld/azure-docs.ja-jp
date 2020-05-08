@@ -1,29 +1,23 @@
 ---
 title: Azure の vCPU クォータ
-description: Azure の vCPU クォータについて説明します。
-keywords: ''
-services: virtual-machines-windows
-documentationcenter: ''
+description: Azure 仮想マシンの vCPU クォータについて説明します。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 20017f42031e126bbdae40f66bf4c36efd12f17c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13d9153d1bf6776b7d3d71c4a85c18d8529188b3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893460"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097882"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>仮想マシンの vCPU クォータ
 
-仮想マシンの vCPU クォータと仮想マシン スケール セットは、各リージョンでサブスクリプションごとに 2 つのレベルで決められています。 1 番目のレベルはリージョンの vCPU の合計で、2 番目のレベルは D シリーズの vCPU などのさまざまな VM サイズ ファミリ コアです。 新しい VM をデプロイするときは常に、VM の vCPU がその VM サイズ ファミリの vCPU クォータ、またはリージョンの vCPU クォータの合計を超えてはなりません。 いずれかのクォータを超えている場合、VM のデプロイは許可されません。 リージョン内の仮想マシンの全体的な数にもクォータがあります。 各クォータの詳細については、**Azure Portal** の **[サブスクリプション]** ページの [[使用量 + クォータ]](https://portal.azure.com) セクションで確認したり、PowerShell を使用して値を照会することができます。
+仮想マシンの vCPU クォータと仮想マシン スケール セットは、各リージョンでサブスクリプションごとに 2 つのレベルで決められています。 1 番目のレベルはリージョンの vCPU の合計で、2 番目のレベルは D シリーズの vCPU などのさまざまな VM サイズ ファミリ コアです。 新しい VM をデプロイするときは常に、VM の vCPU がその VM サイズ ファミリの vCPU クォータ、またはリージョンの vCPU クォータの合計を超えてはなりません。 いずれかのクォータを超えている場合、VM のデプロイは許可されません。 リージョン内の仮想マシンの全体的な数にもクォータがあります。 各クォータの詳細については、[Azure Portal](https://portal.azure.com) の **[サブスクリプション]** ページの **[使用量 + クォータ]** セクションで確認したり、PowerShell を使用して値を照会することができます。
 
    
  

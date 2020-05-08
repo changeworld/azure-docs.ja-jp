@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: c8ef481fe277d6451923da828f0e7473354c24cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 388f05c2af1516a0477392f37763a0480c7ad413
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231683"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128832"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -38,7 +38,7 @@ ms.locfileid: "79231683"
 -   [要求メソッドを設定する](#SetRequestMethod) - 要求の HTTP メソッドを変更できます。
 -   [状態コードを設定する](#SetStatus) - HTTP 状態コードを指定された値に変更します。
 -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付き[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数の値を、後でアクセスできるように保持します。
--   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、診断ログにカスタム トレースを追加します。
+-   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、リソース ログにカスタム トレースを追加します。
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。
 
 ## <a name="control-flow"></a><a name="choose"></a> 制御フロー
@@ -61,7 +61,7 @@ ms.locfileid: "79231683"
 </choose>
 ```
 
-制御フロー ポリシーには、1 つ以上の `<when/>` 要素が含まれている必要があります。 `<otherwise/>` 要素は省略可能です。 `<when/>` 要素内の条件は、ポリシーに記述されている順序で評価されます。 条件属性が `<when/>` と等しい最初の `true` 要素に含まれているポリシー ステートメントが適用されます。 `<otherwise/>` 要素 (存在する場合) に含まれているポリシーは、`<when/>` 要素の条件属性がすべて `false` の場合に適用されます。
+制御フロー ポリシーには、1 つ以上の `<when/>` 要素が含まれている必要があります。 `<otherwise/>` 要素は省略可能です。 `<when/>` 要素内の条件は、ポリシーに記述されている順序で評価されます。 条件属性が `true` と等しい最初の `<when/>` 要素に含まれているポリシー ステートメントが適用されます。 `<otherwise/>` 要素 (存在する場合) に含まれているポリシーは、`<when/>` 要素の条件属性がすべて `false` の場合に適用されます。
 
 ### <a name="examples"></a>例
 
@@ -69,11 +69,11 @@ ms.locfileid: "79231683"
 
 次の例は、[set-variable](api-management-advanced-policies.md#set-variable) ポリシーと 2 つの制御フロー ポリシーを示しています。
 
-変数の設定ポリシーは inbound セクションにあり、`isMobile` 要求ヘッダーにテキスト [ または ](api-management-policy-expressions.md#ContextVariables) が含まれる場合に true に設定される `User-Agent` ブール型`iPad`コンテキスト`iPhone`変数を作成します。
+変数の設定ポリシーは inbound セクションにあり、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を作成します。
 
-最初の制御フロー ポリシーも inbound セクションにあり、[ コンテキスト変数の値に応じて 2 つの](api-management-transformation-policies.md#SetQueryStringParameter)クエリ文字列パラメーターの設定`isMobile`ポリシーのうち 1 つを条件付きで適用します。
+最初の制御フロー ポリシーも inbound セクションにあり、`isMobile` コンテキスト変数の値に応じて 2 つの[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーのうち 1 つを条件付きで適用します。
 
-2 番目の制御フロー ポリシーは outbound セクションにあり、[ が ](api-management-transformation-policies.md#ConvertXMLtoJSON) に設定されている場合に `isMobile`XML から JSON への変換`true`ポリシーを条件付きで適用します。
+2 番目の制御フロー ポリシーは outbound セクションにあり、`isMobile` が `true` に設定されている場合に [XML から JSON への変換](api-management-transformation-policies.md#ConvertXMLtoJSON)ポリシーを条件付きで適用します。
 
 ```xml
 <policies>
@@ -106,7 +106,7 @@ ms.locfileid: "79231683"
 
 #### <a name="example"></a>例
 
-次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
+次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -129,12 +129,12 @@ ms.locfileid: "79231683"
 | 要素   | 説明                                                                                                                                                                                                                                                               | 必須 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | choose    | ルート要素。                                                                                                                                                                                                                                                             | はい      |
-| when      | `if` ポリシーの `ifelse` または `choose` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。 | はい      |
+| when      | `choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。 | はい      |
 | otherwise | `when` 条件のいずれも `true` に評価されない場合に使用されるポリシー スニペットが含まれます。                                                                                                                                                                               | いいえ       |
 
 ### <a name="attributes"></a>属性
 
-| Attribute                                              | 説明                                                                                               | 必須 |
+| 属性                                              | 説明                                                                                               | 必須 |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | condition="ブール式 &#124; ブール型定数" | 含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。 | はい      |
 
@@ -250,7 +250,7 @@ ms.locfileid: "79231683"
 
 ### <a name="attributes"></a>属性
 
-| Attribute                                     | 説明                                                                                                                                                                                                                                                                                                    | 必須 | Default |
+| 属性                                     | 説明                                                                                                                                                                                                                                                                                                    | 必須 | Default |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | timeout="整数"                             | バックエンド サービスによって返される HTTP 応答ヘッダーを待機する秒単位の時間。この時間を過ぎると、タイムアウト エラーが発生します。 最小値は 0 秒です。 この時間を過ぎると基盤となるネットワーク インフラストラクチャによってアイドル接続がドロップされる可能性があるため、240 秒より大きい値は受け入れられません。 | いいえ       | なし    |
 | follow-redirects="false &#124; true"          | バックエンド サービスからのリダイレクトについて、その後にゲートウェイが続くか、それとも呼び出し元に返されるかを指定します。                                                                                                                                                                                                    | いいえ       | false   |
@@ -302,7 +302,7 @@ ms.locfileid: "79231683"
 
 ### <a name="attributes"></a>属性
 
-| Attribute | 説明                                                                                        | 必須 | Default |
+| 属性 | 説明                                                                                        | 必須 | Default |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
 | key       | 文字列。 式を使用できます。 コンカレンシー スコープを指定します。 複数のポリシーで共有できます。 | はい      | 該当なし     |
 | max-count | 整数。 ポリシーに入力できる要求の最大数を指定します。           | はい      | 該当なし     |
@@ -355,7 +355,7 @@ ms.locfileid: "79231683"
 
 ### <a name="attributes"></a>属性
 
-| Attribute     | 説明                                                               | 必須                                                             |
+| 属性     | 説明                                                               | 必須                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | logger-id     | API Management サービスに登録されているロガーの ID。         | はい                                                                  |
 | partition-id  | メッセージが送信されるパーティションのインデックスを指定します。             | 省略可能。 `partition-key` を使用する場合はこの属性を使用できません。 |
@@ -400,7 +400,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute    | 説明                                                                                           | 必須 | Default |
+| 属性    | 説明                                                                                           | 必須 | Default |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | status-code  | 応答の状態コードを指定し、対応する例またはスキーマを選択するために使用します。                 | いいえ       | 200     |
 | content-type | `Content-Type` 応答のヘッダー値を指定し、対応する例またはスキーマを選択するために使用します。 | いいえ       | なし    |
@@ -459,9 +459,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute        | 説明                                                                                                                                           | 必須 | Default |
+| 属性        | 説明                                                                                                                                           | 必須 | Default |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| condition        | 再試行を停止する ([) か続行する (](api-management-policy-expressions.md)) かを指定するブール型リテラルまたは`false`式`true`。      | はい      | 該当なし     |
+| condition        | 再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。      | はい      | 該当なし     |
 | count            | 最大再試行回数を指定する正の数。                                                                                | はい      | 該当なし     |
 | interval         | 再試行の間の待機間隔を指定する正の数 (秒単位)。                                                                 | はい      | 該当なし     |
 | max-interval     | 再試行の間の最大待機間隔を指定する正の数 (秒単位)。 指数再試行アルゴリズムを実装するために使用されます。 | いいえ       | 該当なし     |
@@ -519,7 +519,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute              | 説明                                                                                                                                                                          | 必須  |
+| 属性              | 説明                                                                                                                                                                          | 必須  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | response-variable-name | たとえば、アップストリームの [send-request](api-management-advanced-policies.md#SendRequest) ポリシーから参照され、`Response` オブジェクトを含むコンテキスト変数の名前 | 省略可能。 |
 
@@ -591,7 +591,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default  |
+| 属性     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="文字列" | これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | いいえ       | 新規      |
 | name          | 設定するヘッダーの名前を指定します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | はい      | 該当なし      |
@@ -675,7 +675,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute                       | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default  |
+| 属性                       | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="文字列"                   | これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | いいえ       | 新規      |
 | response-variable-name="文字列" | 応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。                                                                                                                                                                                                                                                                                                                          | はい      | 該当なし      |
@@ -720,7 +720,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute         | 説明                                            | 必須 | Default |
+| 属性         | 説明                                            | 必須 | Default |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
 | url="string"      | http://host:port の形式のプロキシ URL。             | はい      | 該当なし     |
 | username="string" | プロキシで認証に使用するユーザー名。 | いいえ       | 該当なし     |
@@ -826,7 +826,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute       | 説明                                                | 必須 | Default |
+| 属性       | 説明                                                | 必須 | Default |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
 | code="整数"  | 返される HTTP 状態コード。                            | はい      | 該当なし     |
 | reason="文字列" | 状態コードを返す理由の説明。 | はい      | 該当なし     |
@@ -850,7 +850,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a><a name="set-variableExample"></a> 例
 
-次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数の設定ポリシーは、`isMobile` 要求ヘッダーにテキスト [ または ](api-management-policy-expressions.md#ContextVariables) が含まれる場合に true に設定される `User-Agent` ブール型`iPad`コンテキスト`iPhone`引数を作成します。
+次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数の設定ポリシーは、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)引数を作成します。
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -864,7 +864,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute | 説明                                                              | 必須 |
+| 属性 | 説明                                                              | 必須 |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | 変数の名前。                                                | はい      |
 | value     | 変数の値。 式またはリテラル値を指定できます。 | はい      |
@@ -914,11 +914,11 @@ status code and media type. If no example or schema found, the content is empty.
 
 ## <a name="trace"></a><a name="Trace"></a> トレース
 
-`trace` ポリシーによって、API Inspector の出力、Application Insights テレメトリ、診断ログにカスタム トレースが追加されます。
+`trace` ポリシーによって、API Inspector の出力、Application Insights テレメトリ、リソース ログにカスタム トレースが追加されます。
 
 -   トレースがトリガーされたときに、ポリシーによって [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。
--   [Application Insights の統合](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)が有効で、ポリシーに指定されている [ のレベルが診断設定に指定されている ](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) レベル以上である場合、このポリシーによって Application Insights に`severity`トレース`verbosity` テレメトリが作成されます。
--   [診断ログ](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
+-   [Application Insights の統合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリが作成されます。
+-   [リソース ログ](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -950,7 +950,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute | 説明                                                                                                               | 必須 | Default |
+| 属性 | 説明                                                                                                               | 必須 | Default |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。                                   | はい      | 該当なし     |
 | severity  | トレースの重大度レベルを指定します。 使用できる値は、`verbose`、`information`、`error` (最低から最高) です。 | いいえ       | "詳細" |
@@ -981,7 +981,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-次の例では、`choose` ポリシーの直接の子ポリシーとして 2 つの `wait` ポリシーがあります。 これらの `choose` ポリシーはそれぞれ並列に実行されます。 各 `choose` ポリシーは、キャッシュされた値を取得しようとします。 キャッシュ ミスがある場合は、バックエンド サービスが呼び出されて値を提供します。 この例では、`wait` 属性が `for` に設定されているため、すべての直接の子ポリシーが完了するまで、`all` ポリシーは完了しません。 この例のコンテキスト変数 (`execute-branch-one`、`value-one`、`execute-branch-two`、および `value-two`) は、このサンプル ポリシーのスコープ外で宣言されています。
+次の例では、`wait` ポリシーの直接の子ポリシーとして 2 つの `choose` ポリシーがあります。 これらの `choose` ポリシーはそれぞれ並列に実行されます。 各 `choose` ポリシーは、キャッシュされた値を取得しようとします。 キャッシュ ミスがある場合は、バックエンド サービスが呼び出されて値を提供します。 この例では、`for` 属性が `all` に設定されているため、すべての直接の子ポリシーが完了するまで、`wait` ポリシーは完了しません。 この例のコンテキスト変数 (`execute-branch-one`、`value-one`、`execute-branch-two`、および `value-two`) は、このサンプル ポリシーのスコープ外で宣言されています。
 
 ```xml
 <wait for="all">
@@ -1023,7 +1023,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| Attribute | 説明                                                                                                                                                                                                                                                                                                                                                                                                            | 必須 | Default |
+| 属性 | 説明                                                                                                                                                                                                                                                                                                                                                                                                            | 必須 | Default |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | for       | `wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> - `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。 | いいえ       | すべて     |
 

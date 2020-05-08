@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920741"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137656"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>2 クラス ブースト デシジョン ツリー モジュール
 
@@ -61,9 +61,19 @@ ms.locfileid: "77920741"
      ランダム シードは、既定では 0 に設定されます。これは、初期シード値がシステム クロックから取得されることを意味します。  ランダム シードを使用して連続実行すると、都度異なる結果を得ることができます。
   
 
-9. モデルをトレーニングする。
+9. モデルをトレーニングする: 
+
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
   
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを接続します。  
+    + **[トレーナー モードの作成]** を **[パラメーター範囲]** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
+  
+    > [!NOTE]
+    > 
+    > パラメーター範囲を[モデルのトレーニング](train-model.md)に渡すと、単一のパラメーター リストの既定値のみが使用されます。  
+    > 
+    > [モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。  
+    > 
+    > **[パラメーター範囲]** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。  
    
 ## <a name="results"></a>結果
 

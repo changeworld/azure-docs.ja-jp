@@ -3,12 +3,12 @@ title: C# を使用して Linux 上で最初の Azure Service Fabric アプリ�
 description: C# と .NET Core 2.0 を使用して、Service Fabric アプリケーションを作成し、デプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458127"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193651"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 
 これらのコマンドのパラメーターは、アプリケーション パッケージ内の生成されたマニフェストで確認できます。
 
-アプリケーションのデプロイ後、ブラウザーを開いて [http://localhost:19080/Explorer](http://localhost:19080/Explorer) の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。 次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
+アプリケーションのデプロイ後、ブラウザーを開いて `http://localhost:19080/Explorer` の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。 次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
 
 > [!IMPORTANT]
 > アプリケーションを Azure 内のセキュアな Linux クラスターにデプロイするには、Service Fabric ランタイムを使用してアプリケーションを検証するように証明書を構成する必要があります。 これにより、Reliable Services サービスが基盤の Service Fabric ランタイム API と通信できるようになります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。  
