@@ -3,12 +3,13 @@ title: Azure Active Directory を使用して Batch 管理ソリューション�
 description: Batch Management .NET ライブラリを使用するアプリケーションでの認証に Azure Active Directory を使用する方法について説明します。
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114787"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608457"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -28,7 +29,7 @@ AccountManagement サンプル アプリケーションを登録するには、[
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-登録プロセスが完了すると、アプリケーションのアプリケーション ID とオブジェクト (サービス プリンシパル) ID が表示されます。  
+登録プロセスが完了すると、アプリケーションのアプリケーション ID とオブジェクト (サービス プリンシパル) ID が表示されます。
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
@@ -44,7 +45,7 @@ Azure Portal で次の手順に従います。
     ![アプリケーションの名前を検索する](./media/batch-aad-auth-management/search-app-registration.png)
 
 3. **[設定]** ブレードを表示します。 **[API アクセス]** セクションで、 **[必要なアクセス許可]** を選択します。
-4. **[追加]** をクリックして、新しい必要なアクセス許可を追加します。 
+4. **[追加]** をクリックして、新しい必要なアクセス許可を追加します。
 5. ステップ 1 で、「**Windows Azure Service Management API**」と入力し、結果の一覧からその API を選択して **[選択]** ボタンをクリックします。
 6. ステップ 2 で、 **[Access Azure classic deployment model as organization users]\(組織のユーザーとして Azure クラシック デプロイ モデルにアクセスする\)** の横のチェック ボックスをオンにして、 **[選択]** ボタンをクリックします。
 7. **[完了]** ボタンをクリックします。
@@ -70,11 +71,11 @@ Azure AD でバッチ管理ソリューションを認証するには、よく�
 ```csharp
 // Azure Active Directory "common" endpoint.
 private const string AuthorityUri = "https://login.microsoftonline.com/common";
-// Azure Resource Manager endpoint 
+// Azure Resource Manager endpoint
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>アプリケーション ID の参照 
+## <a name="reference-your-application-id"></a>アプリケーション ID の参照
 
 クライアント アプリケーションは実行時にアプリケーション ID (クライアント ID とも呼ばれる) を使用して Azure AD にアクセスします。 Azure Portal にアプリケーションを登録したら、そのアプリケーション用に Azure AD から提供されたアプリケーション ID を使用するように、コードを更新します。 AccountManagement サンプル アプリケーションで、アプリケーション ID を Azure Portal から適切な定数にコピーします。
 
@@ -96,7 +97,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD 認証トークンを取得する
 
-AccountManagement サンプルを Azure AD テナントに登録し、サンプル ソース コードの値を更新すると、Azure AD を使用してサンプルを認証できるようになります。 サンプルを実行すると、ADAL は認証トークンの取得を試みます。 この段階で、Microsoft 資格情報の入力が求められます。 
+AccountManagement サンプルを Azure AD テナントに登録し、サンプル ソース コードの値を更新すると、Azure AD を使用してサンプルを認証できるようになります。 サンプルを実行すると、ADAL は認証トークンの取得を試みます。 この段階で、Microsoft 資格情報の入力が求められます。
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -109,7 +110,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-資格情報を入力すると、サンプル アプリケーションは認証された要求を Batch 管理サービスに発行できるようになります。 
+資格情報を入力すると、サンプル アプリケーションは認証された要求を Batch 管理サービスに発行できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -117,7 +118,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。 ADAL の使用方法の詳細な例については、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory) ライブラリを参照してください。
 
-Azure AD を使用して Batch 管理アプリケーションを認証するには、「[Batch 管理ソリューションの認証に Active Directory を使用する](batch-aad-auth.md)」を参照してください。 
+Azure AD を使用して Batch 管理アプリケーションを認証するには、「[Batch 管理ソリューションの認証に Active Directory を使用する](batch-aad-auth.md)」を参照してください。
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"

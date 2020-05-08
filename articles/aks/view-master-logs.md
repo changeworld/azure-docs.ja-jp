@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で Kubernetes マスター ノー�
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229595"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128966"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -19,9 +19,9 @@ Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-ma
 
 この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure portal][portal-quickstart] を使用して作成します。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
 
-## <a name="enable-diagnostics-logs"></a>診断ログの有効化
+## <a name="enable-resource-logs"></a>リソース ログの有効化
 
-複数のソースからデータを効率よく収集してレビューできるようにするため、Azure Monitor ログでは、環境に関するインサイトを取得するためのクエリ言語と分析エンジンが提供されています。 ワークスペースは、データの照合と分析のために使用されます。ワークスペースは、他の Azure サービス (Application Insights や Security Center など) と統合できます。 別のプラットフォームを使用してログを分析する必要がある場合は、Azure ストレージ アカウントやイベント ハブに診断ログを送信することもできます。 詳しくは、[Azure Monitor ログの概要][log-analytics-overview]に関する記事をご覧ください。
+複数のソースからデータを効率よく収集してレビューできるようにするため、Azure Monitor ログでは、環境に関するインサイトを取得するためのクエリ言語と分析エンジンが提供されています。 ワークスペースは、データの照合と分析のために使用されます。ワークスペースは、他の Azure サービス (Application Insights や Security Center など) と統合できます。 別のプラットフォームを使用してログを分析するには、Azure ストレージ アカウントやイベント ハブにリソース ログを送信することもできます。 詳しくは、[Azure Monitor ログの概要][log-analytics-overview]に関する記事をご覧ください。
 
 Azure Monitor ログの有効化と管理は、Azure portal で行います。 AKS クラスターの Kubernetes マスター コンポーネントのログ収集を有効にするには、Web ブラウザーで Azure Portal を開き、次の手順を実行します。
 

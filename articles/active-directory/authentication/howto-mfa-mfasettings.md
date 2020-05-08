@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da995afba1dc8eff295c9b724a78da95b9caac85
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653980"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82105660"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -98,11 +98,11 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 ### <a name="view-fraud-reports"></a>不正アクセスの通報を表示する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[サインイン]** の順に選択します。これで、不正アクセスの通報が標準の Azure AD サインイン レポートの一部になります。
-
+2. **[Azure Active Directory]**  >  **[サインイン]**  >  **[認証の詳細]** の順に選択します。 これで、不正アクセス レポートは、標準 Azure AD サインイン レポートに含まれます。ここには、MFA が拒否され、不正アクセスのコードが入力されたことを示す **"結果の詳細"** が記載されます。
+ 
 ## <a name="notifications"></a>通知
 
-ここで、不正アクセスのアラート メールを受信するユーザーのメール アドレスを構成します。
+**[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Multi-Factor Authentication]**  > **Notifications** で、不正アクセスのアラート メールを受信するユーザーのメール アドレスを構成します。
 
 ![不正アクセスのアラート メールのサンプル](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 

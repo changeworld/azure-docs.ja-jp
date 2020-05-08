@@ -8,12 +8,13 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: d950d41186d578702343645875dd7c565002d5a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 63cc188b5bdabedf0902c02264c1a269ca8111af
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513003"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611808"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>API に接続して認証を行う
 

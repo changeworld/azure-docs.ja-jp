@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 5d0798c77135b15e26c9787d9844cd9525cf12c5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532019"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146410"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での PostgreSQL 拡張機能
 
@@ -116,7 +116,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | 行レベルのロックに関する情報を表示するための手段を提供します。 |
 > | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | タプル レベルの統計を表示するための手段を提供します。 |
 > | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | 外部 PostgreSQL サーバーに格納されているデータへのアクセスに使用される外部データ ラッパーです。 この拡張機能については、「dblink and postgres_fdw」のセクションを参照してください。|
-> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | SSL 証明書に関する情報。 |
+> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | TLS または SSL 証明書に関する情報。 |
 > | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | 行数を制限として受け取る TABLESAMPLE メソッド。 |
 > | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | ミリ秒単位の時間を制限として受け取る TABLESAMPLE メソッド。 |
 > | [hypopg](https://hypopg.readthedocs.io/en/latest/) | CPU やディスク コストのない仮定のインデックスを作成する手段の提供。 |
