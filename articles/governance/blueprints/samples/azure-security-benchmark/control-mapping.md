@@ -3,16 +3,16 @@ title: Azure セキュリティ ベンチマーク ブループリント サン�
 description: Azure セキュリティ ベンチマーク ブループリント サンプルの Azure Policy に対するコントロール マッピング。
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538664"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691301"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Azure セキュリティ ベンチマーク ブループリント サンプルのコントロール マッピング
 
-以下の記事は、Azure Blueprints Azure セキュリティ ベンチマーク ブループリント サンプルが Azure セキュリティ ベンチマーク コントロールにどのようにマップされているかを説明したものです。 コントロールの詳細については、[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照してください。
+以下の記事は、Azure Blueprints Azure セキュリティ ベンチマーク ブループリント サンプルが Azure セキュリティ ベンチマーク コントロールにどのようにマップされているかを説明したものです。 コントロールの詳細については、[Azure セキュリティ ベンチマーク](../../../../security/benchmarks/overview.md)に関するページを参照してください。
 
 以下のマッピングは、**Azure セキュリティ ベンチマーク**のコントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップされたコントロールは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されます。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:Audit Azure Security Benchmark recommendations and deploy specific supporting VM Extensions]\(Azure セキュリティ ベンチマークの推奨事項を監査し、特定のサポート VM 拡張機能をデプロイする\)** 組み込みポリシー イニシアティブ。
 

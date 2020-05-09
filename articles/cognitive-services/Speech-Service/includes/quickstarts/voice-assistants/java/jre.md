@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 38e6bae69710dc9e1dbc8789ee9ccb636193c7f7
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671448"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -42,7 +42,7 @@ ms.locfileid: "80671448"
 
 1. 新しい空のクラスを Java プロジェクトに追加するために、 **[File]**  >  **[New]**  >  **[Class]** の順に選択します。
 
-1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、 **[Package]\(パッケージ\)** フィールドに「_speechsdk.quickstart_」と入力し、 **[Name]\(名前\)** フィールドに「_Main_」と入力します。
+1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、 _[Package]\(パッケージ\)_ フィールドに「**speechsdk.quickstart**」と入力し、 _[Name]\(名前\)_ フィールドに「**Main**」と入力します。
 
    ![[New Java Class] ウィンドウのスクリーンショット](~/articles/cognitive-services/speech-service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "80671448"
        });
    ```
 
-1. `connectAsync()` メソッドを呼び出して、`DialogServiceConnector` を Direct Line Speech に接続します。 ボットをテストするには、`listenOnceAsync` メソッドを呼び出してマイクから音声入力を送信します。 さらに、`sendActivityAsync` メソッドを使用して、カスタム アクティビティをシリアル化された文字列として送信することもできます。 これらのカスタム アクティビティを使用すると、ボットが会話に使用する追加データを提供できます。
+1. `DialogServiceConnector` メソッドを呼び出して、`connectAsync()` を Direct Line Speech に接続します。 ボットをテストするには、`listenOnceAsync` メソッドを呼び出してマイクから音声入力を送信します。 さらに、`sendActivityAsync` メソッドを使用して、カスタム アクティビティをシリアル化された文字列として送信することもできます。 これらのカスタム アクティビティを使用すると、ボットが会話に使用する追加データを提供できます。
 
    ```java
    connector.connectAsync();
@@ -187,7 +187,7 @@ ms.locfileid: "80671448"
 
 1. 応答の再生をサポートするために、getAudio() API から返される PullAudioOutputStream オブジェクトを処理しやすいように Java InputStream に変換するクラスを追加します。 この `ActivityAudioStream` は、Direct Line Speech チャネルからの音声応答を処理する特別なクラスです。 このクラスでは、再生の処理に必要なオーディオ形式の情報を取得するアクセサーを提供します。 そのために、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Class]\(クラス\)** を選択します。
 
-1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、 **[Package]\(パッケージ\)** フィールドに「_speechsdk.quickstart_」と入力し、 **[Name]\(名前\)** フィールドに「_ActivityAudioStream_」と入力します。
+1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、 _[Package]\(パッケージ\)_ フィールドに「**speechsdk.quickstart**」と入力し、 _[Name]\(名前\)_ フィールドに「**ActivityAudioStream**」と入力します。
 
 1. 新しく作成した `ActivityAudioStream` クラスを開き、次のコードに置き換えます。
 

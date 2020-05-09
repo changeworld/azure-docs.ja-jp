@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 02/20/2020
-ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233567"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195351"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
-Azure Data Lake Storage Gen2 は、ビッグ データ分析専用のクラウド ストレージ サービスで、Azure Blob Storage 上に構築されています。 Data Lake Storage Gen2 は Azure Blob Storage と Azure Data Lake Storage Gen1 の機能を結合したものです。 その結果、Azure Data Lake Storage Gen1 に由来するファイル システム セマンティクス、ディレクトリ レベルとファイル レベルのセキュリティ、スケーラビリティなどの機能と、Azure Blob Storage に由来する低コストの階層型記憶域、高可用性、ディザスター リカバリー機能とがこのサービスで提供されます。
+Azure Data Lake Storage Gen2 は、ビッグ データ分析専用のクラウド ストレージ サービスで、Azure Blob Storage 上に構築されています。 Data Lake Storage Gen2 は Azure Blob Storage と Azure Data Lake Storage Gen1 の機能を結合したものです。 その結果であるサービスによって Azure Data Lake Storage Gen1 の機能が提供されます。 これらの機能には、ファイル システムのセマンティクス、ディレクトリレベルおよびファイルレベルのセキュリティ、適応性が含まれます。 さらに、Azure Blob Storage から、低コスト、階層型ストレージ、高可用性、ディザスター リカバリー機能を利用できます。
 
 ## <a name="data-lake-storage-gen2-availability"></a>Data Lake Storage Gen2 の可用性
 
@@ -57,7 +57,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 1. **Create** をクリックしてください。
 1. **[ストレージ アカウントの作成]** 画面で次を実行します。
     1. 正しいサブスクリプションとリソース グループを選択します。
-    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。 ストレージ アカウントの命名規則の詳細については、「[Azure リソースの名前付け規則](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage)」を参照してください。
+    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。
     1. **[詳細]** タブをクリックします。
     1. **[Data Lake Storage Gen2]** の下の **[階層構造の名前空間]** の横の **[有効]** をクリックします。
     1. **[Review + create]\(レビュー + 作成\)** をクリックします。
@@ -107,7 +107,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 | `<MANAGEDIDENTITYNAME>` | Azure Data Lake Storage Gen2 アカウントに対するアクセス許可を付与するマネージド ID の名前です。 |
 | `<STORAGEACCOUNTNAME>` | 作成される新しい Azure Data Lake Storage Gen2 アカウントです。 |
 | `<CLUSTERNAME>` | HDInsight クラスターの名前です。 |
-| `<PASSWORD>` | SSH と Ambari ダッシュ ボードを使用してクラスターにサインインするために選択したパスワードです。 |
+| `<PASSWORD>` | SSH と Ambari ダッシュボードを使用してクラスターにサインインするために選択したパスワードです。 |
 
 以下のコード スニペットでは、次の初期手順が実行されます。
 
@@ -136,7 +136,7 @@ az storage account create --name <STORAGEACCOUNTNAME> \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-次に、ポータルにサインインします。 [ Azure Portal の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)に関するページの手順 3 の説明に従って、ストレージ アカウントの **[ストレージ BLOB データ共同作成者]** ロールに新しいユーザー割り当てマネージド ID を追加します。
+次に、ポータルにサインインします。 ストレージ アカウントでユーザー割り当ての新しいマネージド ID を**ストレージ BLOB データ共同作成者**ロールに割り当てます。 この手順については、[Azure portal の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)に関するページの手順 3 で説明しています。
 
 ユーザー割り当てマネージド ID のロールを割り当てたら、次のコード スニペットを使用してテンプレートをデプロイします。
 
@@ -165,15 +165,15 @@ ACL を使用したファイルのアクセス許可の詳細については、�
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で自分のデータへのアクセスを制御する方法
 
-Data Lake Storage Gen2 で HDInsight クラスターがファイルにアクセスする機能は、マネージド ID によって制御されます。 マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD にサービス プリンシパルを登録したり、証明書などの資格情報を保持したりする必要はありません。
+Data Lake Storage Gen2 で HDInsight クラスターがファイルにアクセスする機能は、マネージド ID によって制御されます。 マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD 内でサービス プリンシパルを登録する必要はありません。 または、証明書などの資格情報を保持します。
 
-Azure サービスには、システム割り当てとユーザー割り当ての 2 種類のマネージド ID があります。 HDInsight は、ユーザー割り当てマネージド ID を使用して Data Lake Storage Gen2 にアクセスします。 ユーザー割り当てマネージド ID は、スタンドアロン Azure リソースとして作成されます。 作成プロセスで、使用されているサブスクリプションによって信頼されている Azure AD テナントに、Azure が ID を作成します。 作成された ID は、1 つまたは複数の Azure サービス インスタンスに割り当てることができます。
+Azure サービスには、システム割り当てとユーザー割り当ての 2 種類のマネージド ID があります。 HDInsight は、ユーザー割り当てマネージド ID を使用して Data Lake Storage Gen2 にアクセスします。 `user-assigned managed identity` はスタンドアロンの Azure リソースとして作成されます。 作成プロセスで、使用されているサブスクリプションによって信頼されている Azure AD テナントに、Azure が ID を作成します。 作成された ID は、1 つまたは複数の Azure サービス インスタンスに割り当てることができます。
 
 ユーザー割り当て ID のライフサイクルは、その ID が割り当てられている Azure サービス インスタンスのライフサイクルとは個別に管理されます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID のしくみ](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」を参照してください。
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Hive またはその他のサービスを使用して Data Lake Storage Gen2 でデータをクエリするためのアクセス許可を Azure AD ユーザーに設定する方法
 
-データをクエリするためのアクセス許可をユーザーに設定するには、ACL で割り当て済みのプリンシパルとして Azure AD セキュリティ グループを使用します。 個々のユーザーまたはサービス プリンシパルにファイルのアクセス許可を直接割り当てないでください。 Azure AD セキュリティ グループを使用してアクセス許可のフローを制御すると、ACL をディレクトリ構造全体に再適用することなく、ユーザーまたはサービス プリンシパルを追加および削除できます。 適切な Azure AD セキュリティ グループからユーザーまたはサービス プリンシパルを追加または削除するだけです。 ACL は継承されないため、ACL を再適用するには、すべてのファイルとサブディレクトリで ACL を更新する必要があります。
+データをクエリするためのアクセス許可をユーザーに設定するには、ACL で割り当て済みのプリンシパルとして Azure AD セキュリティ グループを使用します。 個々のユーザーまたはサービス プリンシパルにファイルのアクセス許可を直接割り当てないでください。 アクセス許可のフローを制御する Azure AD セキュリティ グループを使用すると、ACL をディレクトリ構造全体に再適用することなく、ユーザーまたはサービス プリンシパルを追加および削除できます。 適切な Azure AD セキュリティ グループからユーザーまたはサービス プリンシパルを追加または削除するだけです。 ACL は継承されないため、ACL を再適用するには、すべてのファイルとサブディレクトリで ACL を更新する必要があります。
 
 ## <a name="access-files-from-the-cluster"></a>クラスターからファイルにアクセスする
 

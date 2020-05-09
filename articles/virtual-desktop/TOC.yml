@@ -122,6 +122,8 @@
       href: remotefx-graphics-performance-counters.md
 - name: リファレンス
   items:
+    - name: セキュリティの運用方法
+      href: security-guide.md
     - name: Linux Support
       href: linux-overview.md
     - name: サポートされる RDP ファイルの設定

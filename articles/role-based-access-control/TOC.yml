@@ -26,6 +26,11 @@
       href: tutorial-custom-role-powershell.md
     - name: カスタム ロールの作成 - CLI
       href: tutorial-custom-role-cli.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ベスト プラクティス

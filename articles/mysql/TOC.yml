@@ -9,12 +9,19 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: DB の作成 - ポータル
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: DB の作成 - Azure CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: DB の作成 - Azure CLI アップコマンド
-      href: quickstart-create-server-up-azure-cli.md
+    - name: DB の作成
+      items:
+        - name: DB の作成 - ポータル
+          href: quickstart-create-mysql-server-database-using-azure-portal.md
+        - name: DB の作成 - Azure CLI
+          href: quickstart-create-mysql-server-database-using-azure-cli.md
+        - name: DB の作成 - Azure CLI アップコマンド
+          href: quickstart-create-server-up-azure-cli.md
+        - name: DB の作成 - Azure PowerShell
+          href: quickstart-create-mysql-server-database-using-azure-powershell.md
+        - name: DB の作成 - Resource Manager テンプレート
+          href: quickstart-create-mysql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
     - name: 接続とクエリ
       items:
         - name: PHP
@@ -43,6 +50,8 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
         - name: Azure Resource Manager テンプレート
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
     - name: 2 - Web アプリの作成
@@ -160,6 +169,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: データベースの移行
       items:
         - name: ダンプと復元
@@ -186,12 +197,16 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: ストレージの自動拡張
       items:
         - name: Azure portal
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: サーバー ログへのアクセス
       items:
         - name: 低速クエリ ログ
@@ -218,6 +233,8 @@
           href: howto-read-replicas-portal.md
         - name: 読み取りレプリカ Azure CLI の作成、REST API
           href: howto-read-replicas-cli.md
+        - name: Azure PowerShell を使用した読み取りレプリカの作成
+          href: howto-read-replicas-powershell.md
     - name: トラブルシューティング
       items:
         - name: 接続エラーのトラブルシューティング
@@ -250,6 +267,8 @@
           href: howto-data-encryption-portal.md
         - name: Azure CLI
           href: howto-data-encryption-cli.md
+        - name: データ暗号化の検証
+          href: howto-data-encryption-validation.md
     - name: Azure AD との統合
       items:
         - name: Azure AD の統合の構成
@@ -264,6 +283,8 @@
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -284,7 +305,7 @@
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: ビデオ
       items:

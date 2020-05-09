@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 83e1e11fe38a21bbd7c44139fac562342bcab866
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396080"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229648"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -90,7 +90,14 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 | {Context:IPAddress} | ユーザーの IP アドレス。 | 11.111.111.11 |
 | {Context:KMSI} | [[サインインしたままにする]](custom-policy-keep-me-signed-in.md) チェックボックスがオンになっているかどうかを示します。 |  true |
 
-### <a name="non-protocol-parameters"></a>プロトコル以外のパラメーター
+### <a name="claims"></a>Claims 
+
+| 要求 | 説明 | 例 |
+| ----- | ----------- | --------|
+| {Claim:claim type} | ポリシーファイルまたは親ポリシーファイルの ClaimsSchema セクションで定義済みの要求の種類の識別子。  例: `{Claim:displayName}`、または `{Claim:objectId}`。 | 要求の種類の値。|
+
+
+### <a name="oauth2-key-value-parameters"></a>OAuth2 のキー値パラメーター
 
 OIDC 要求または OAuth2 要求の一部に含まれているすべてのパラメーター名は、ユーザー体験の要求にマップできます。 たとえば、アプリケーションからの要求には、`app_session` の名前、`loyalty_number`、またはカスタム クエリ 文字列が指定されたクエリ文字列パラメーターが含まれる場合があります。
 
@@ -118,6 +125,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 | {SAML:AllowCreate} | SAML 要求の `NameIDPolicy` 要素からの `AllowCreate` 属性値。 | True |
 | {SAML:ForceAuthn} | SAML 要求の `AuthnRequest` 要素からの `ForceAuthN` 属性値。 | True |
 | {SAML:ProviderName} | SAML 要求の `AuthnRequest` 要素からの `ProviderName` 属性値。| Contoso.com |
+| {SAML:RelayState} | `RelayState` クエリ文字列パラメーター。| 
 
 ## <a name="using-claim-resolvers"></a>要求リゾルバーの使用
 
@@ -131,7 +139,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 |[OpenID Connect](openid-connect-technical-profile.md) の技術プロファイル| `InputClaim`, `OutputClaim`| 1、2|
 |[要求変換](claims-transformation-technical-profile.md) の技術プロファイル| `InputClaim`, `OutputClaim`| 1、2|
 |[RESTful プロバイダー](restful-technical-profile.md) の技術プロファイル| `InputClaim`| 1、2|
-|[SAML2](saml-technical-profile.md) の技術プロファイル| `OutputClaim`| 1、2|
+|[SAML ID プロバイダー](saml-identity-provider-technical-profile.md)の技術プロファイル| `OutputClaim`| 1、2|
 |[セルフアサート](self-asserted-technical-profile.md) の技術プロファイル| `InputClaim`, `OutputClaim`| 1、2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
