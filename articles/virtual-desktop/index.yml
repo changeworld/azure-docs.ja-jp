@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 2f00d7b0b1c0bdf78a4908e945dd0f8a890ded1b
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78898669"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82611519"
 landingContent:
 - title: Windows Virtual Desktop について
   linkLists:
@@ -24,18 +24,30 @@ landingContent:
     links:
     - text: Windows Virtual Desktop とは
       url: overview.md
-- title: はじめに
+- title: Windows Virtual Desktop Spring 2020 リリースの概要
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Marketplace を使用してホスト プールを作成する
+      url: create-host-pools-azure-marketplace.md
+    - text: Windows Virtual Desktop のアプリ グループを管理する
+      url: manage-app-groups.md
+    - text: サービスの更新プログラムを検証するためのホスト プールを作成する
+      url: create-validation-host-pool.md
+    - text: サービス アラートを設定する
+      url: set-up-service-alerts.md
+- title: Windows Virtual Desktop Fall 2019 リリースの概要
   linkLists:
   - linkListType: tutorial
     links:
     - text: Windows Virtual Desktop でテナントを作成する
-      url: tenant-setup-azure-active-directory.md
+      url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
     - text: Azure Marketplace を使用してホスト プールを作成する
       url: create-host-pools-azure-marketplace.md
     - text: Windows Virtual Desktop のアプリ グループを管理する
       url: manage-app-groups.md
     - text: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
-      url: create-service-principal-role-powershell.md
+      url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
 - title: Windows Virtual Desktop に接続する
   linkLists:
   - linkListType: how-to-guide
