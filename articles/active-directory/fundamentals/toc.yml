@@ -50,7 +50,7 @@
     - name: デプロイ ガイド
       items:
         - name: デプロイ 30、90、およびそれ以降
-      href: active-directory-deployment-checklist-p2.md
+          href: active-directory-deployment-checklist-p2.md
     - name: データ ストレージ
       items:
         - name: ヨーロッパ向けの ID データ ストレージ

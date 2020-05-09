@@ -23,6 +23,9 @@
     - name: 複数のアドレスを使用したデプロイ
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
+    - name: Availability Zones を使用したデプロイ
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -61,8 +64,6 @@
       href: tutorial-hybrid-ps.md
     - name: Azure CLI を使用したデプロイ
       href: deploy-cli.md
-    - name: テンプレートを使用したデプロイ
-      href: deploy-template.md
     - name: 複数のパブリック IP を使用したデプロイ
       href: deploy-multi-public-ip-powershell.md
     - name: Availability Zones を使用したデプロイ
@@ -75,6 +76,8 @@
       href: snat-private-range.md
     - name: IP グループの作成
       href: create-ip-group.md
+    - name: Windows Virtual Desktop の保護
+      href: protect-windows-virtual-desktop.md
 - name: リファレンス
   items:
     - name: Azure CLI

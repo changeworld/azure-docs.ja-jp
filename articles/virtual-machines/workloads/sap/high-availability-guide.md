@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225515"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594884"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -452,7 +452,7 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> 前提条件
 始める前に、次のセクションで説明されている前提条件が満たされていることを確認してください。 また、「[リソース][sap-ha-guide-2]」セクションに一覧表示されているすべてのリソースをご確認ください。
 
-この記事では、[3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) 用の Azure Resource Manager テンプレートを使用します。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
+この記事では、[3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/) 用の Azure Resource Manager テンプレートを使用します。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> リソース
 Azure での SAP のデプロイについては、以下の記事で説明されています。
@@ -677,8 +677,8 @@ Azure Resource Manager の 3 層テンプレートは、2 つのクラスター�
 
 この記事で説明しているサンプル シナリオの Azure Resource Manager テンプレートは、以下で入手できます。
 
-* [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/)  
+* [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/)
 
 Architectural Template 1 のインフラストラクチャを準備するには
 
@@ -768,8 +768,8 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 
 このデプロイ シナリオの Azure Resource Manager テンプレートは以下で入手できます。
 
-* [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/)  
+* [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Architectural Template 3 のインフラストラクチャを準備する

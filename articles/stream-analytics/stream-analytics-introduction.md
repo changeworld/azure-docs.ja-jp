@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 673c6e2ed0aedcc186baf8c7e1884dd537f9567d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: f435a33befdde96a92c900663a2ddcca1d319260
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459850"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201195"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 

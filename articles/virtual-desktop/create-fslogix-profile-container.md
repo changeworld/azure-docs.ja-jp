@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270895"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607386"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -23,7 +23,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 このガイドでは、Windows Virtual Desktop で Azure NetApp Files アカウントを設定したうえで、FSLogix プロファイル コンテナーを作成する方法について説明します。
 
-この記事では、お使いの Windows Virtual Desktop 環境で[ホスト プール](create-host-pools-azure-marketplace.md)を設定し、1 つ以上のテナントにグループ化していることを前提としています。 テナントの設定方法については、[Windows Virtual Desktop でのテナントの作成](tenant-setup-azure-active-directory.md)に関する記事、および [Tech Community のブログ記事](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)を参照してください。
+この記事では、お使いの Windows Virtual Desktop 環境で[ホスト プール](create-host-pools-azure-marketplace.md)を設定し、1 つ以上のテナントにグループ化していることを前提としています。 テナントの設定方法については、[Windows Virtual Desktop でのテナントの作成](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)に関する記事、および [Tech Community のブログ記事](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)を参照してください。
 
 このガイドの手順は、Windows Virtual Desktop ユーザー専用のものです。 Windows Virtual Desktop 以外での Azure NetApp Files の設定方法と FSLogix プロファイル コンテナーの作成方法に関するより一般的なガイダンスについては、[Azure NetApp Files の設定と NFS ボリュームの作成に関するクイックスタート](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)を参照してください。
 
@@ -210,7 +210,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Azure NetApp File 共有にユーザーがアクセスできることを確認する
 
-1. インターネット ブラウザーを開き、<https://rdweb.wvd.microsoft.com/webclient/index.html> にアクセスします。
+1. インターネット ブラウザーを開き、<https://rdweb.wvd.microsoft.com/arm/webclient> にアクセスします。
 
 2. リモート デスクトップ グループに割り当てたユーザーの資格情報を使用してサインインします。
 

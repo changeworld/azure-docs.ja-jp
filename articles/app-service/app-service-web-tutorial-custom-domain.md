@@ -5,14 +5,14 @@ keywords: App Service, Azure App Service, ドメイン マッピング, ドメ�
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811777"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559890"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -93,6 +93,12 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 <a name="cname" aria-hidden="true"></a>
 
+## <a name="get-domain-verification-id"></a>ドメイン検証 ID を取得する
+
+アプリにカスタム ドメインを追加するには、ドメイン プロバイダーで検証 ID を TXT レコードとして追加して、ドメインの所有権を確認する必要があります。 アプリ ページの左側のナビゲーションで、 **[開発ツール]** の下にある **[リソース エクスプローラー]** をクリックし、 **[移動]** をクリックします。
+
+アプリのプロパティの JSON ビューで `customDomainVerificationId` を検索し、二重引用符で囲まれたその値をコピーします。 この検証 ID は、次の手順に必要です。
+
 ## <a name="map-your-domain"></a>ドメインをマップする
 
 **CNAME レコード**または **A レコード**のいずれかを使用して、カスタム DNS 名を App Service にマップします。 それぞれに対応する手順を実行します。
@@ -114,11 +120,14 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 #### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
-サブドメインをアプリの既定のドメイン名 (`<app_name>.azurewebsites.net`、`<app_name>` はアプリの名前) にマップするための CNAME レコードを追加します。
+サブドメインをアプリの既定のドメイン名 (`<app_name>.azurewebsites.net`、`<app_name>` はアプリの名前) にマップします。 `www` サブドメインの CNAME マッピングを作成するには、次の 2 つのレコードを作成します。
 
-`www.contoso.com` ドメインの例では、名前 `www` を `<app_name>.azurewebsites.net` にマップする CNAME レコードを追加します。
+| レコード タイプ | Host | 値 | 説明 |
+| - | - | - |
+| CNAME | `www` | `<app_name>.azurewebsites.net` | ドメイン マッピング自体。 |
+| TXT | `asuid.www` | [前に取得した検証 ID](#get-domain-verification-id) | App Service は、`asuid.<subdomain>` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 |
 
-CNAME を追加した後の DNS レコード ページは次の例のようになります。
+CNAME レコードと TXT レコードを追加した後の DNS レコード ページは次の例のようになります。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
@@ -183,17 +192,12 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 
 #### <a name="create-the-a-record"></a>A レコードを作成する
 
-A レコードをアプリにマップする場合、App Service では **2 つ**の DNS レコードが必要になります。
+A レコードをアプリ (通常はルート ドメイン) にマップするには、次の 2 つのレコードを作成します。
 
-- アプリの IP アドレスにマップするための **A** レコード。
-- アプリの既定のドメイン名 `<app_name>.azurewebsites.net` にマップするための **TXT** レコード。 App Service は、このレコードを、カスタム ドメインの所有者であることを検証するために構成時にのみ使用します。 App Service でカスタム ドメインが検証されて構成された後は、この TXT レコードを削除できます。
-
-`contoso.com` ドメインの場合、次の表に従って A および TXT レコードを作成します (`@` は、通常、ルート ドメインを表します)。
-
-| レコード タイプ | Host | 値 |
+| レコード タイプ | Host | 値 | 説明 |
 | - | - | - |
-| A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
-| TXT | `@` | `<app_name>.azurewebsites.net` |
+| A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス | ドメイン マッピング自体 (通常、`@` はルート ドメインを表します)。 |
+| TXT | `asuid` | [前に取得した検証 ID](#get-domain-verification-id) | App Service は、`asuid.<subdomain>` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 ルート ドメインの場合は、`asuid` を使用します。 |
 
 > [!NOTE]
 > 推奨される [CNAME レコード](#map-a-cname-record)の代わりに A レコードを使用してサブドメイン (`www.contoso.com`など) を追加するには、A レコードと TXT レコードが次の表のようになっている必要があります。
@@ -201,7 +205,7 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 > | レコード タイプ | Host | 値 |
 > | - | - | - |
 > | A | `www` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
-> | TXT | `www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
 >
 
 レコードが追加されると、DNS レコード ページは次の例のようになります。

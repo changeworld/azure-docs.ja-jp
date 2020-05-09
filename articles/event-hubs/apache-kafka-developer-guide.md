@@ -9,10 +9,10 @@ ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
 ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729625"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure Event Hubs のための Apache Kafka 開発者ガイド
@@ -50,11 +50,11 @@ GitHub の次のチュートリアルを参照してください。
 | チュートリアル | 説明 | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Akka Streams を Kafka 対応 Event Hubs に接続する方法を示します。 **Java** および **Scala** プログラミング言語を使用する 2 つの個別のチュートリアルがあります。 | 
-| [Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | このドキュメントでは、Kafka Connect を Azure Event Hubs と統合し、基本的な FileStreamSource および FileStreamSink コネクタをデプロイする方法について説明します。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして偽装する Kafka Connect のシナリオをエンド ツー エンドで示しています。| 
+| [接続する](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | このドキュメントでは、Kafka Connect を Azure Event Hubs と統合し、基本的な FileStreamSource および FileStreamSink コネクタをデプロイする方法について説明します。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして偽装する Kafka Connect のシナリオをエンド ツー エンドで示しています。| 
 | [Filebeat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | このドキュメントでは、Filebeat の Kafka の出力を介して Filebeat と Event Hubs を統合する手順について説明します。 | 
 | [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Apache Flink を Kafka 対応 Event Hubs に接続する方法を示します。 | 
 | [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | このドキュメントでは、Fluentd 用の `out_kafka` 出力プラグインを使用して、Fluentd と Event Hubs を統合する方法について説明します。 |
-| [Interop](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/interop) | このチュートリアルでは、さまざまなプロトコルを使用してコンシューマーとプロデューサー間でイベントを交換する方法について説明します。 |
+| [相互運用](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/interop) | このチュートリアルでは、さまざまなプロトコルを使用してコンシューマーとプロデューサー間でイベントを交換する方法について説明します。 |
 | [Logstash](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/logstash) | このチュートリアルでは、Logstash Kafka の入力および出力プラグインを使用して、Logstash を Kafka 対応の Event Hubs と統合する方法について説明します。 | 
 | [MirrorMaker](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) | このチュートリアルでは、イベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスにミラーリングすることで Azure に Kafka の既存のパイプラインを統合する方法について説明します。 |
 | [NiFi](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/nifi) | このチュートリアルでは、Apache NiFi を Event Hubs 名前空間に接続する方法について説明します。 | 

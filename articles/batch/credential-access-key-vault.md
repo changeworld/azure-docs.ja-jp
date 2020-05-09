@@ -1,20 +1,14 @@
 ---
-title: Batch で Key Vault に安全にアクセスする - Azure Batch
+title: Batch で Key Vault に安全にアクセスする
 description: Azure Batch を使用して、プログラムで Key Vault の資格情報にアクセスする方法について説明します。
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.workload: big-compute
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: lahugh
-ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78192304"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117456"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch で Key Vault に安全にアクセスする
 

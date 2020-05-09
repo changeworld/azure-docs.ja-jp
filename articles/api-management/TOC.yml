@@ -53,6 +53,8 @@
           href: api-management-policies.md
     - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: 組み込みのセキュリティ制御
           href: api-management-security-controls.md
     - name: サブスクリプション
@@ -101,10 +103,12 @@
           href: api-management-howto-deploy-multi-region.md
         - name: セルフホステッド ゲートウェイをプロビジョニングする
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Azure Kubernetes Service にセルフホステッド ゲートウェイをデプロイする
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Kubernetes にセルフホステッド ゲートウェイをデプロイする
-          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
         - name: Docker にセルフホステッド ゲートウェイをデプロイする
-          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+          href: how-to-deploy-self-hosted-gateway-docker.md
         - name: セルフホステッド ゲートウェイのカスタム ドメインを構成する
           href: api-management-howto-configure-custom-domain-gateway.md
     - name: キャッシュ
@@ -169,7 +173,7 @@
           href: api-management-api-templates.md
         - name: 製品
           href: api-management-product-templates.md
-        - name: '[アプリケーション]'
+        - name: アプリケーション
           href: api-management-application-templates.md
         - name: 発行
           href: api-management-issue-templates.md
@@ -209,12 +213,20 @@
           href: api-management-transformation-policies.md
     - name: 運用環境でテストする
       items:
+        - name: API を Power Platform にエクスポートする
+          href: export-api-power-platform.md
         - name: グループの管理
           href: api-management-howto-create-groups.md
         - name: IP アドレスを取得する
           href: api-management-howto-ip-addresses.md
         - name: イベントを Azure Event Hubs にログ記録する
           href: api-management-howto-log-event-hubs.md
+        - name: Azure Application Insights でログを要求する
+          href: api-management-howto-app-insights.md
+        - name: セルフホステッド ゲートウェイにクラウド メトリックとログを構成する
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: セルフホステッド ゲートウェイにローカル メトリックとログを構成する
+          href: how-to-configure-local-metrics-logs.md
         - name: Azure Application Insights でログを要求する
           href: api-management-howto-app-insights.md
         - name: バックアップ/復元を使用して DR を設定する
@@ -261,7 +273,7 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
     - name: API 設計ガイダンス
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'

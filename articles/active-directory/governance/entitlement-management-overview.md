@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 7f4ce292ad507eb0208633db7743b881508a8e58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582541"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144443"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理とは
 
@@ -40,7 +40,7 @@ Azure AD エンタイトルメント管理を使用すれば、グループ、�
 
 これらの問題は、別の組織からアクセスするユーザーがいる場合、さらに複雑になります (サプライ チェーン組織やその他のビジネス パートナーに属する外部ユーザーなど)。 次に例を示します。
 
-- 担当者が、他社のディレクトリ内のすべての個人を把握することができず、それらのユーザーを招待できない場合がある
+- 他社のディレクトリ内のすべての個人を把握する人物がおらず、それらのユーザーを招待できない場合がある
 - 招待できたとしても、ユーザー全員のアクセス権を、担当者が一貫性を持って確実に管理できない場合がある
 
 Azure AD のエンタイトルメント管理は、これらの課題への対処に役立ちます。  お客様が Azure AD エンタイトルメント管理をどのように使用しているかについて詳しくは、[Avanade のケース スタディ](https://customers.microsoft.com/story/avanade-professional-services-azure-canada)と [Centrica のケース スタディ](https://customers.microsoft.com/story/757467-centrica-energy-azure)を参照してください。  下記のビデオでは、エンタイトルメント管理とそのメリットについて概説しています。

@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653711"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611383"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
@@ -66,9 +67,9 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 認証要求の失敗が原因で、Multi-Factor Authentication からメッセージが表示されることもあります。 これは構成の結果としてエラーが発生したことを示すものではありません。認証要求が拒否された理由を説明する意図的な警告です。
 
-| エラー コード | エラー メッセージ | 推奨される手順 | 
+| エラー コード | エラー メッセージ | 推奨される手順 |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | 誤ったコードが入力されました\OATH コードが正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 | 
+| **OathCodeIncorrect** | 誤ったコードが入力されました\OATH コードが正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | 許可されている最大コード再試行回数に達しました | ユーザーが何回も検証チャレンジに失敗しました。 設定によっては、管理者によるブロック解除が必要になることがあります。  |
 | **SMSAuthFailedWrongCodeEntered** | 誤ったコードが入力されました/テキスト メッセージ OTP が正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 |
 

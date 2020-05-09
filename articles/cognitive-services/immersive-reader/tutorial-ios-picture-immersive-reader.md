@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: f9bb8743f0b0852e46b440de22038e3f84272e93
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561015"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735132"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>チュートリアル:写真のコンテンツを含むイマーシブ リーダーを起動する iOS アプリを作成する (Swift)
 
@@ -22,7 +22,7 @@ ms.locfileid: "82561015"
 
 [Computer Vision Cognitive Services Read API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) では、Microsoft の最新の認識モデルを使用して画像内のテキスト コンテンツが検出され、識別されたテキストはマシンで読み取り可能な文字ストリームに変換されます。
 
-このチュートリアルでは、iOS アプリを一から作成し、イマーシブ リーダー SDK を使用して Read API とイマーシブ リーダーを統合します。 このチュートリアルの完全に動作するサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/picture-to-immersive-reader-swift)で入手できます。
+このチュートリアルでは、iOS アプリを一から作成し、イマーシブ リーダー SDK を使用して Read API とイマーシブ リーダーを統合します。 このチュートリアルの完全に動作するサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)で入手できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

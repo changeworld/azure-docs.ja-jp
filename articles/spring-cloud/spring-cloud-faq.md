@@ -6,16 +6,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 62623bcadb35f21117ddc2601195e34598c2dff5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95260d9a15fdc32c9fddccbcf63ae9fa564fd36a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298773"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176772"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
-この記事では、Azure Spring Cloud についてよく寄せられる質問に回答します。 
+この記事では、Azure Spring Cloud についてよく寄せられる質問に回答します。
 
 ## <a name="general"></a>全般
 
@@ -92,6 +92,10 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>アプリケーション内から永続ボリュームを表示、追加、または移動できますか?
 
 はい。
+
+### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure Spring Cloud サービス インスタンスを削除または移動すると、その拡張機能リソースも削除または移動されますか?
+
+拡張リソースが属しているリソース プロバイダーのロジックによって異なります。 `Microsoft.AppPlatform` インスタンスの拡張リソースは同じ名前空間に属していないため、動作はリソース プロバイダーによって異なります。 たとえば、削除または移動操作は、**診断設定**リソースにカスケードされません。 新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または以前の Azure Spring Cloud インスタンスが戻った場合は、以前の**診断設定**リソースが引き続きそれを拡張します。
 
 ## <a name="deployment"></a>デプロイ
 
