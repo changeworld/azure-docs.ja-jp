@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414483"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641501"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,38 +31,46 @@ ms.locfileid: "81414483"
 **スケジュール トリガー** を作成して、パイプラインを定期的 (毎時、毎日など) に実行するようにスケジュールできます。 
 
 > [!NOTE]
-> パイプラインとスケジュール トリガーの作成、トリガーとパイプラインの関連付け、およびパイプラインの実行と監視の完全なチュートリアルについては、[Data Factory UI を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-portal.md)をご覧ください。
+> パイプラインとスケジュール トリガーの作成に関する完全なチュートリアル (トリガーをパイプラインに関連付けて、パイプラインを実行および監視する) については、[Data Factory UI を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-portal.md)をご覧ください。
 
-1. **[編集]** タブに切り替えます。 
+1. 鉛筆のシンボルを使用して表示された **[編集]** タブに切り替えます。 
 
     ![[編集] タブに切り替える](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. メニューの **[トリガー]** をクリックし、 **[New/Edit]\(新規作成/編集\)** をクリックします。 
+
+1. メニューの **[トリガー]** を選択して、 **[New/Edit]\(新規作成/編集\)** を選択します。 
 
     ![新しいトリガーのメニュー](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. **[Add Triggers]\(トリガーの追加\)** ページで、 **[Choose trigger...]\(トリガーの選択...\)** 、 **[新規]** の順にクリックします。 
+
+1. **[Add Triggers]\(トリガーの追加\)** ページで、 **[Choose trigger]\(トリガーの選択\)** を選択してから、 **[+新規]** を選択します。 
 
     ![トリガーの追加 - 新しいトリガー](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. **[新しいトリガー]** ページで、次の手順を実行します。 
+
+1. **[新しいトリガー]** ページで、次の手順を行います。 
 
     1. **[種類]** で **[スケジュール]** が選択されていることを確認します。 
-    2. **[開始日 (UTC)]** にトリガーの開始日時を指定します。 これは、既定で現在の日時に設定されています。 
-    3. トリガーの**繰り返し**を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、 **[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
-    4. トリガーの終了日時を指定しない場合は、 **[終了]** フィールドで **[終了日指定なし]** を選択します。 終了日時を指定するには、 **[指定日]** を選択し、終了日時を指定して、 **[適用]** をクリックします。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
+    1. **[開始日 (UTC)]** にトリガーの開始日時を指定します。 これは、既定で現在の日時に設定されています。 
+    1. トリガーの**繰り返し**を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、 **[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
+    1. トリガーの終了日時を指定しない場合は、 **[終了]** フィールドで **[終了日指定なし]** を選択します。 終了日時を指定するには、 **[指定日]** を選択し、終了日時を指定して、 **[OK]** を選択します。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
 
         ![トリガー設定](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. **[新しいトリガー]** ウィンドウで、 **[アクティブ化]** をオンにし、 **[次へ]** をクリックします。 このチェック ボックスを使用して、トリガーを後で非アクティブ化できます。 
+
+1. **[新しいトリガー]** ウィンドウで、 **[アクティブ化]** オプションの **[はい]** を選択し、 **[OK]** を選択します。 このチェック ボックスを使用して、トリガーを後で非アクティブ化できます。 
 
     ![トリガーの設定 - [次へ] ボタン](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. **[新しいトリガー]** ページで警告メッセージを確認し、 **[完了]** をクリックします。
+
+1. **[新しいトリガー]** ウィンドウで警告メッセージを確認し、 **[OK]** を選択します。
 
     ![トリガーの設定 - [完了] ボタン](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. **[発行]** をクリックして、変更を Data Factory に発行します。 変更を Data Factory に発行するまで、トリガーはパイプライン実行のトリガーを開始しません。 
+
+1. **[すべて発行]** を選択して、変更を Data Factory に発行します。 変更を Data Factory に発行するまで、そのトリガーによって、パイプライン実行のトリガーは開始されません。 
 
     ![[発行] ボタン](./media/how-to-create-schedule-trigger/publish-2.png)
-8. 左側で **[監視]** タブに切り替えます。 **[最新の情報に更新]** をクリックして、リストを更新します。 スケジュールされたトリガーによってトリガーされたパイプライン実行が表示されます。 **[トリガー元]** 列の値に注意してください。 **[Trigger Now]\(今すぐトリガー\)** を使用すると、一覧に手動のトリガー実行が表示されます。 
+
+1. 左側の **[パイプラインの実行]** タブに切り替えてから、 **[更新]** を選択して一覧を更新します。 スケジュールされたトリガーによってトリガーされたパイプライン実行が表示されます。 **[トリガー元]** 列の値に注意してください。 **[Trigger Now]\(今すぐトリガー\)** を使用すると、一覧に手動のトリガー実行が表示されます。 
 
     ![トリガーされた実行を監視する](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. **[Pipeline Runs]\(パイプラインの実行\)** の横にある下向き矢印をクリックして、 **[Trigger Runs]\(トリガーの実行\)** ビューに切り替えます。 
+
+1. **[Trigger Runs]\(トリガーの実行\)** ビューへの切り替え 
 
     ![トリガーの実行を監視する](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -112,31 +120,31 @@ ms.locfileid: "81414483"
     - トリガーは、**Adfv2QuickStartPipeline** パイプラインに関連付けられます。 複数のパイプラインをトリガーに関連付けるには、**pipelineReference** セクションを追加します。
     - クイック スタートのパイプラインは、**inputPath** と **outputPath** の 2 つの**パラメーター**の値を受け取ります。 そのため、これらのパラメーターの値をトリガーから渡します。
 
-2. **Set-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
+1. **Set-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
+1. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. **Start-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。
+1. **Start-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
+1. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  **Get-AzDataFactoryV2TriggerRun** コマンドレットを使用して、Azure PowerShell でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
+1.  **Get-AzDataFactoryV2TriggerRun** コマンドレットを使用して、Azure PowerShell でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -340,7 +348,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 | 開始時刻が過去に設定されている | 開始時刻より後の将来の最初の実行時刻を計算し、その時刻に実行されます。<br/><br/>以降は、前回の実行時刻からの計算に基づいて実行されます。<br/><br/>この表の後の例を参照してください。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初の発生は、開始時刻から計算されたスケジュールに基づきます。<br/><br/>以降は、繰り返しのスケジュールに基づいて実行されます。 |
 | 開始時刻が将来または現在に設定されている | 指定した開始時刻に 1 回実行されます。<br/><br/>以降は、前回の実行時刻からの計算に基づいて実行されます。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初の発生は、開始時刻から計算されたスケジュールに基づきます。<br/><br/>以降は、繰り返しのスケジュールに基づいて実行されます。 |
 
-ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が `2017-04-08 13:00`、開始時刻が `2017-04-07 14:00`、繰り返しが 2 日ごとであると仮定します (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
+ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が `2017-04-08 13:00`、開始時刻が `2017-04-07 14:00`、繰り返しが 2 日ごとであると仮定します  (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
 
 この条件では、最初の実行は `2017-04-09 at 14:00` になります。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 このシナリオでは、開始時刻が `2017-04-07 at 2:00pm` であるため、次回のインスタンスはその 2 日後、つまり `2017-04-09 at 2:00pm` になります。
 

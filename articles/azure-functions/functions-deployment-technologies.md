@@ -1,17 +1,17 @@
 ---
 title: Azure Functions のデプロイ テクノロジ
 description: Azure Functions にコードをデプロイするさまざまな方法について学習します。
-author: georgewallace
+author: ggailey777
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: gwallace
-ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: glenga
+ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235055"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735302"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 

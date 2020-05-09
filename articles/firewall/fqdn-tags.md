@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 04/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74169048"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232651"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN タグの概要
 
@@ -36,10 +36,11 @@ FQDN タグは、よく知られている Microsoft サービスに関連付け�
 |App Service Environment (ASE)|ASE プラットフォーム トラフィックへの発信アクセスを許可します。 このタグの対象には、ASE によって作成されたお客様固有のストレージ エンドポイントおよび SQL エンドポイントは含まれません。 これらは、[サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用して有効にするか、手動で追加する必要があります。<br><br>Azure Firewall と ASE の統合の詳細については、「[App Service 環境をロックする](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)」を参照してください。|
 |Azure Backup|Azure Backup サービスへの発信アクセスを許可します。|
 |Azure HDInsight|HDInsight プラットフォーム トラフィックへの発信アクセスを許可します。 このタグでは、HDInsight からのお客様固有のストレージ トラフィックまたは SQL トラフィックは対象になりません。 [サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用してこれらを有効にするか、手動で追加します。|
+|WindowsVirtualDesktop (WVD)|Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。 このタグの対象には、WVD によって作成されたデプロイ固有のストレージと Service Bus エンドポイントは含まれません。 また、DNS および KMS ネットワーク ルールが必要です。 Azure Firewall と WVD の統合の詳細については、[Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する](protect-windows-virtual-desktop.md)方法に関する記事を参照してください。 
 
 > [!NOTE]
 > アプリケーション ルールで FQDN タグを選択する場合は、[プロトコル:ポート] フィールドを **[https]** に設定する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Firewall のデプロイ方法については、「[チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する](tutorial-firewall-deploy-portal.md)」を参照してください。
+Azure ファイアーウォールのデプロイ方法については、「[Tutorial: Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](tutorial-firewall-deploy-portal.md)」を参照してください。

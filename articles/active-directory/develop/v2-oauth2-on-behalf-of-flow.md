@@ -2,7 +2,7 @@
 title: Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー | Azure
 description: この記事では、HTTP メッセージを使用して、OAuth2.0 On-Behalf-Of フローを使用するサービス間の認証を実装する方法について説明します。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d3e071d5f2f181f5b17e79f2f1097394d0ebaf3
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 57497c7bd8cd1d0b46c40b6977079f4a6a2d876f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868438"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689545"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -187,7 +187,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 アプリケーションのアーキテクチャまたは使用状況に基づき、OBO フローを確実に成功させるためのさまざまな方法を検討することをお勧めします。 どのような場合でも、最終的な目標は、クライアント アプリから中間層アプリを呼び出すことができ、バックエンド リソースを呼び出すアクセス許可を中間層アプリに持たせるように、適切な同意を与えることです。
 
 > [!NOTE]
-> 以前は、Microsoft アカウント システム (個人アカウント) は [Known client application]\(既知のクライアント アプリケーション\) フィールドをサポートしていませんでした。また、組み合わせた同意を表示することもできませんでした。  これが追加されたので、Microsoft ID プラットフォームのすべてのアプリは、OBO 呼び出しの同意を得るために既知のクライアント アプリケーション アプローチを使用できるようになりました。
+> 以前は、Microsoft アカウント システム (個人アカウント) は [Known client application]\(既知のクライアント アプリケーション\) フィールドをサポートしていませんでした。また、組み合わせた同意を表示することもできませんでした。  これが追加されたので、Microsoft ID プラットフォーム上のすべてのアプリは、OBO 呼び出しの同意を得るために既知のクライアント アプリケーションの手法を使用できるようになります。
 
 ### <a name="default-and-combined-consent"></a>/.default と組み合わせ同意
 

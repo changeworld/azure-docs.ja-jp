@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: 11fecd875385d8ba044cbe44e2270eed11d61ce1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/27/2020
+ms.openlocfilehash: d4e7077c338586298c5e7f0805c3d47b08a7a108
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77581551"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184335"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -55,7 +55,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
    >[!NOTE] 
    > - Azure Security Center で作成した既定のワークスペースが一覧に表示されない場合、そこに Azure Sentinel をインストールすることはできません。
-   > - Azure Sentinel は、中国、ドイツ、および Azure Government の各リージョンを除く、[Log Analytics の一般公開リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)のワークスペースで実行できます。 Azure Sentinel によって生成されるデータ (これらのワークスペースをソースとする顧客データを含む可能性がある、インシデント、ブックマーク、アラート ルールなど) は、西ヨーロッパ (ヨーロッパにあるワークスペースの場合) または米国東部 (すべての米国ベースのワークスペースおよびヨーロッパを除くその他のリージョンの場合) で保存されます。
+   > - Azure Sentinel は、中国およびドイツ (ソブリン) リージョンを除く、[Log Analytics の一般公開リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)のワークスペースで実行できます。 Azure Sentinel によって生成されるデータ (これらのワークスペースをソースとする顧客データを含む可能性がある、インシデント、ブックマーク、アラート ルールなど) は、ヨーロッパ (ヨーロッパにあるワークスペースの場合)、オーストラリア (オーストラリアにあるワークスペースの場合)、または米国東部 (他のすべてのリージョンにあるワークスペースの場合) で保存されます。
 
 1. **[Add Azure Sentinel]\(Azure Sentinel の追加\)** を選択します。
   
@@ -64,7 +64,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
 Azure Sentinel でサービスとアプリへの接続を確立するには、サービスに接続して、Azure Sentinel にイベントとログを転送します。 マシンと仮想マシンの場合、ログを収集し、そのログを Azure Sentinel に転送する Azure Sentinel エージェントをインストールできます。 ファイアウォールとプロキシの場合、Azure Sentinel は Linux Syslog サーバーを利用します。 エージェントがインストールされているなら、エージェントはそこからログ ファイルを収集し、そのログを Azure Sentinel に転送します。 
  
-1. **[データ収集]** をクリックします。
+1. **[データ コネクタ]** をクリックします。
 2. 接続できるデータ ソースごとにタイルがあります。<br>
 たとえば、 **[Azure Active Directory]** をクリックします。 このデータ ソースを接続する場合は、Azure AD から Azure Sentinel にすべてのログをストリーミングします。 サインイン ログや監査ログなど、取得するログの種類を選択できます。 <br>
 Azure Sentinel の下部には、各コネクタにインストールする必要のあるブックに関する推奨事項が示されているため、データ全体の興味深い分析をすぐに得ることができます。 <br> インストール手順を実行するか、[関連する接続のガイドを参照](connect-data-sources.md)して詳細をご確認ください。 データ コネクタについては、「[Microsoft サービスの接続](connect-data-sources.md)」をご覧ください。

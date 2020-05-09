@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 836b7a489e3c73d745b128cbbc0c3566220ac409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bd1f59d5cf33ae7f1f2e33e6c3f1312b5a13e61
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458723"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127585"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
 
@@ -60,13 +60,13 @@ Stream Analytics ジョブのパフォーマンス監視には、以下のアラ
 |メトリック|条件|時間の集計|Threshold|是正措置|
 |-|-|-|-|-|
 |SU 使用率 (%)|より大きい|最大値|80|SU 使用率 (%) が増加する要因は複数あります。 クエリの並列処理を使用してスケーリングするか、ストリーミング ユニット数を増やすことができます。 詳細については、「[Azure Stream Analytics でのクエリの並列処理の活用](stream-analytics-parallelization.md)」を参照してください。|
-|実行時エラー|より大きい|合計|0|アクティビティ ログまたは診断ログを観察して、入力、クエリ、出力を適宜変更してください。|
+|実行時エラー|より大きい|合計|0|アクティビティ ログまたはリソース ログを調べて、入力、クエリ、出力を適切に変更してください。|
 |透かしの遅延|より大きい|最大値|このメトリックの直近 15 分間の平均値が到着遅延許容期間 (秒単位) を超えたとき。 到着遅延許容期間を変更していない場合の既定値は 5 秒に設定されています。|SU 数を増やすか、クエリの並列処理を試してみてください。 SU の詳細については、「[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)」を参照してください。 クエリの並列処理の詳細については、「[Azure Stream Analytics でのクエリの並列処理の活用](stream-analytics-parallelization.md)」を参照してください。|
-|逆シリアル化の入力エラー|より大きい|合計|0|アクティビティ ログまたは診断ログを観察して、入力を適宜変更してください。 診断ログの詳細については、[診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)に関するページを参照してください。|
+|逆シリアル化の入力エラー|より大きい|合計|0|アクティビティ ログまたはリソース ログを調べて、入力を適切に変更してください。 リソース ログの詳細については、[リソース ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)に関するページを参照してください。|
 
 ## <a name="get-help"></a>ヘルプの参照
 
-Azure Portal でのアラートの構成の詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」を参照してください。  
+Azure Portal でのアラートの構成の詳細については、「[アラート通知の受信](../azure-monitor/platform/alerts-overview.md)」を参照してください。  
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 

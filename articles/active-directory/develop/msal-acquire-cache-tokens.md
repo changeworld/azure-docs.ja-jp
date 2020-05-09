@@ -13,12 +13,12 @@ ms.date: 11/07/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085154"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81534586"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用してトークンを取得し、キャッシュする
 
@@ -63,7 +63,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 
 ### <a name="recommended-call-pattern-for-public-client-applications"></a>パブリック クライアント アプリケーションの推奨される呼び出しパターン
 
-アプリケーション コードでは、まず、(キャッシュからの) トークンの自動的な取得を試みる必要があります。  メソッドの呼び出しで "UI が必要" エラーまたは例外が返される場合、他の手段でトークンの取得を試みます。 
+アプリケーション コードでは、まず、(キャッシュからの) トークンの自動的な取得を試みる必要があります。  メソッドの呼び出しで "UI が必要" エラーまたは例外が返される場合、他の手段でトークンの取得を試みます。
 
 ただし、次の 2 つのフローについては、それより前にトークンの自動的な取得を試みる**べきではありません**。
 
@@ -74,7 +74,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 
 [OpenID Connect 承認コード フロー](v2-protocols-oidc.md)が使用される Web アプリケーションの場合、コントローラーで推奨されるパターンは次のとおりです。
 
-- カスタマイズされたシリアル化を使用してトークン キャッシュで機密クライアント アプリケーションをインスタンス化します。 
+- カスタマイズされたシリアル化を使用してトークン キャッシュで機密クライアント アプリケーションをインスタンス化します。
 - 承認コード フローを使用してトークンを取得します
 
 ## <a name="acquiring-tokens"></a>トークンの取得
@@ -92,7 +92,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 ### <a name="confidential-client-applications"></a>機密クライアント アプリケーション
 
 機密クライアント アプリケーション (Web アプリ、Web API、または Windows サービスなどのデーモン アプリケーション) の場合は、次のようにします。
-- **クライアント資格情報フロー**を使用して、ユーザーではなく[アプリケーション自体に対する](msal-authentication-flows.md#client-credentials)トークンを取得します。 これは、同期ツールに対して、または特定のユーザーではなくユーザー一般を処理するツールに対して、使用できます。 
+- [クライアント資格情報フロー](msal-authentication-flows.md#client-credentials)を使用して、ユーザーではなく**アプリケーション自体に対する**トークンを取得します。 これは、同期ツールに対して、または特定のユーザーではなくユーザー一般を処理するツールに対して、使用できます。
 - ユーザーに代わって API を呼び出す Web API に対しては、[On-Behalf-Of フロー](msal-authentication-flows.md#on-behalf-of)を使用します。 ユーザー アサーションに基づいてトークンを取得するため、アプリケーションはクライアントの資格情報で識別されます (たとえば、SAML または JWT トークン)。 このフローは、サービス間呼び出しで特定のユーザーのリソースにアクセスする必要があるアプリケーションによって使用されます。
 - Web アプリでは、ユーザーが承認要求 URL でサインインした後、[承認コード フロー](msal-authentication-flows.md#authorization-code)を使用してトークンを取得します。 OpenID Connect アプリケーションでは、通常、このメカニズム (ユーザーは OpenID Connect を使用してサインイン可能) を使用してから、ユーザーに代わって Web API にアクセスします。
 

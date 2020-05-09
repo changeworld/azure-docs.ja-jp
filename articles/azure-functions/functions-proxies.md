@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74849192"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562068"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -184,8 +184,8 @@ ms.locfileid: "74849192"
 バックエンド リソースが呼び出されたときに要求に対して行う変更は、requestOverrides オブジェクトで定義します。 このオブジェクトは、次のプロパティによって定義されます。
 
 * **backend.request.method**:バックエンドを呼び出す際に使用される HTTP メソッドです。
-* **backend.request.querystring.\<ParameterName\>** :バックエンドの呼び出し時に設定できるクエリ文字列パラメーターです。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドの要求に含まれます。
-* **backend.request.headers.\<HeaderName\>** :バックエンドの呼び出し時に設定できるヘッダーです。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーはバックエンドへの要求に反映されません。
+* **backend.request.querystring.\<ParameterName\>** :バックエンドの呼び出し時に設定できるクエリ文字列パラメーターです。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドの要求に引き続き含まれることに注意してください。
+* **backend.request.headers.\<HeaderName\>** :バックエンドの呼び出し時に設定できるヘッダーです。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドの要求に引き続き含まれることに注意してください。
 
 アプリケーション設定や元のクライアント要求のパラメーターを値から参照することができます。
 

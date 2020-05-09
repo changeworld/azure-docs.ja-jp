@@ -3,7 +3,7 @@ title: Microsoft ID プラットフォームの証明書資格情報
 titleSuffix: Microsoft identity platform
 description: この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 12/18/2019
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d834d37f686279facf0052e3c8f4da3c8d259e0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309686"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690281"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 

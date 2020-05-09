@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95a1734a3e7fd65fc87f4825ae71ee3006616bc3
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257336"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629373"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -224,7 +224,7 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 データセットには、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的な形式のデータを操作するメソッドが用意されています。
 
-詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)を参照してください。
+詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)を参照してください。
 
 **データストア**は、Azure ストレージ アカウントに対するストレージの抽象化です。 データストアでは、バックエンド ストレージとして Azure BLOB コンテナーまたは Azure ファイル共有を使用できます。 各ワークスペースには既定のデータストアがあり、ユーザーは追加のデータストアを登録できます。 データストアのファイルを格納および取得するには、Python SDK API または Azure Machine Learning CLI を使用します。
 
