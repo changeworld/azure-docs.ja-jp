@@ -4,6 +4,11 @@
   items:
     - name: サーバー向け Azure Arc とは
       href: ./servers/overview.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md
 - name: 操作方法ガイド
   items:
     - name: Azure Arc への接続

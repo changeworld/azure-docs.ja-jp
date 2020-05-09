@@ -72,6 +72,9 @@
   items:
     - name: Service Bus サンプル
       href: service-bus-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Premium メッセージング

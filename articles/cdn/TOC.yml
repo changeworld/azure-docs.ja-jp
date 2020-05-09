@@ -8,10 +8,10 @@
       href: cdn-features.md
 - name: クイックスタート
   items:
-    - name: プロファイルとエンドポイントの作成
-      href: cdn-create-new-endpoint.md
     - name: ストレージ アカウントの統合
       href: cdn-create-a-storage-account-with-cdn.md
+    - name: プロファイルとエンドポイントの作成
+      href: cdn-create-new-endpoint.md
     - name: Azure Resource Manager テンプレートを使用してプロファイルを作成する
       href: create-profile-resource-manager-template.md
 - name: チュートリアル
@@ -128,7 +128,7 @@
           href: cdn-app-dev-net.md
         - name: Node.js
           href: cdn-app-dev-node.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 404 状態
           href: cdn-troubleshoot-endpoint.md
@@ -191,7 +191,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=cdn'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-cdn'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'
