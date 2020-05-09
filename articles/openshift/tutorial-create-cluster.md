@@ -1,236 +1,207 @@
 ---
-title: チュートリアル - Azure Red Hat OpenShift クラスターを作成する
+title: チュートリアル - Azure Red Hat OpenShift 4 クラスターを作成する
 description: Azure CLI を使用して Microsoft Azure Red Hat OpenShift クラスターを作成する方法を学習します
-author: jimzim
-ms.author: jzim
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 11/04/2019
-ms.openlocfilehash: 58fc695707995aafe4d804ffab8beee7c52b4320
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79455300"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509722"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
+# <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
-このチュートリアルは、シリーズの第 1 部です。 Azure CLI を使用して Microsoft Azure Red Hat OpenShift クラスターを作成し、スケーリングしてからこれを削除してリソースをクリーンアップする方法について説明します。
-
-シリーズのパート 1 で学習する内容は次のとおりです。
-
+このチュートリアルは、3 部構成のパート 1 です。OpenShift 4 が実行される Azure Red Hat OpenShift クラスターを作成する環境を準備し、クラスターを作成します。 学習内容:
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift クラスターを作成する
+> * 前提条件を設定し、必要な仮想ネットワークとサブネットを作成する
+> * クラスターのデプロイ
 
-このチュートリアル シリーズで学習する内容は次のとおりです。
-> [!div class="checklist"]
-> * Azure Red Hat OpenShift クラスターを作成する
-> * [Azure Red Hat OpenShift クラスターをスケーリングする](tutorial-scale-cluster.md)
-> * [Azure Red Hat OpenShift クラスターを削除する](tutorial-delete-cluster.md)
+## <a name="before-you-begin"></a>開始する前に
 
-## <a name="prerequisites"></a>前提条件
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
-> [!IMPORTANT]
-> このチュートリアルには、Azure CLI のバージョン 2.0.65 以降が必要です。
+### <a name="install-the-az-aro-extension"></a>`az aro` 拡張機能をインストールする
+`az aro` 拡張機能を使用すると、Azure CLI を使用してコマンド ラインから直接 Azure Red Hat OpenShift クラスターを作成、アクセス、削除できます。
 
-このチュートリアルを開始する前に
+次のコマンドを実行して、`az aro` 拡張機能をインストールします。
 
-次を含む[開発環境を設定](howto-setup-environment.md)していることを確認してください。
-- 最新の CLI (バージョン 2.0.65 以上) のインストール
-- テナントの作成 (未作成の場合)
-- Azure アプリケーション オブジェクトの作成 (未作成の場合)
-- セキュリティ グループの作成
-- クラスターにサインインするための Active Directory ユーザーの作成
-
-## <a name="step-1-sign-in-to-azure"></a>手順 1:Azure へのサインイン
-
-Azure CLI をローカルで実行している場合は、Bash コマンド シェルを開き、`az login` を実行して Azure にサインインします。
-
-```azurecli
-az login
+```azurecli-interactive
+az extension add -n aro --index https://az.aroapp.io/stable
 ```
 
- 複数のサブスクリプションへのアクセス権がある場合は、`az account set -s {subscription ID}` を実行して、`{subscription ID}` を、使用するサブスクリプションに置き換えます。
+拡張機能が既にインストールされている場合は、次のコマンドを実行して更新できます。
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>手順 2:Azure Red Hat OpenShift クラスターを作成する
-
-Bash コマンド ウィンドウで、以下の変数を設定します。
-
-> [!IMPORTANT]
-> 一意のクラスター名をすべて小文字で設定してください。そうしないと、クラスターの作成は失敗します。
-
-```bash
-CLUSTER_NAME=<cluster name in lowercase>
+```azurecli-interactive
+az extension update -n aro --index https://az.aroapp.io/stable
 ```
 
-クラスターを作成する場所を選択します。 Azure 上の OpenShift がサポートされる Azure リージョンの一覧については、[サポートされるリージョン](supported-resources.md#azure-regions)を参照してください。 (例: `LOCATION=eastus`)。
+### <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
-```bash
-LOCATION=<location>
+次に、お使いのサブスクリプションに `Microsoft.RedHatOpenShift` リソースプロバイダーを登録する必要があります。
+
+```azurecli-interactive
+az provider register -n Microsoft.RedHatOpenShift --wait
 ```
 
-`APPID` を、「[Create an Azure AD app registration (Azure AD アプリ登録を作成する)](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)」の手順 5 で保存した値に設定します。
+拡張機能が登録されていることを確認します。
 
-```bash
-APPID=<app ID value>
+```azurecli-interactive
+az -v
 ```
 
-"GROUPID" を、「[Create an Azure AD security group (Azure AD セキュリティ グループを作成する)](howto-aad-app-configuration.md#create-an-azure-ad-security-group)」の手順 10 で保存した値に設定します。
+  次のような出力が表示されます。
 
-```bash
-GROUPID=<group ID value>
+```output
+...
+Extensions:
+aro                                1.0.0
+...
 ```
 
-`SECRET` を、「[Create a client secret (クライアント シークレットを作成する)](howto-aad-app-configuration.md#create-a-client-secret)」の手順 8 で保存した値に設定します。
+### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
 
-```bash
-SECRET=<secret value>
+Red Hat プル シークレットを使用すると、クラスターは追加のコンテンツと共に Red Hat コンテナー レジストリにアクセスできます。 この手順は省略可能ですが、実施することをお勧めします。
+
+https://cloud.redhat.com/openshift/install/azure/aro-provisioned に移動し、 *[Download pull secret]\(プル シークレットのダウンロード\)* をクリックして、プル シークレットを取得します。
+
+Red Hat アカウントにログインするか、お使いのビジネス メール アドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
+
+保存されている `pull-secret.txt` ファイルは安全な場所に保管してください。このファイルは、クラスターを作成するたびに使用します。
+
+### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>2 つの空のサブネットを含む仮想ネットワークを作成する
+
+次に、2 つの空のサブネットを含む仮想ネットワークを作成します。
+
+1. **次の変数を設定します。**
+
+   ```console
+   LOCATION=eastus                 # the location of your cluster
+   RESOURCEGROUP=aro-rg            # the name of the resource group where you want to create your cluster
+   CLUSTER=cluster                 # the name of your cluster
+   ```
+
+1. **リソース グループの作成**
+
+    Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [az group create][az-group-create] コマンドを使用して、リソース グループを作成します。
+
+    ```azurecli-interactive
+    az group create --name $RESOURCEGROUP --location $LOCATION
+    ```
+
+    次の出力例では、正常に作成されたリソース グループが示されています。
+
+    ```json
+    {
+    "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "aro-rg",
+    "properties": {
+        "provisioningState": "Succeeded"
+    },
+    "tags": null
+    }
+    ```
+
+2. **仮想ネットワークを作成します。**
+
+    OpenShift 4 を実行する Azure Red Hat OpenShift クラスターでは、マスター ノードとワーカー ノード用の 2 つの空のサブネットを持つ仮想ネットワークが必要です。
+
+    前に作成したのと同じリソース グループ内に新しい仮想ネットワークを作成します。
+
+    ```azurecli-interactive
+    az network vnet create \
+    --resource-group $RESOURCEGROUP \
+    --name aro-vnet \
+    --address-prefixes 10.0.0.0/22
+    ```
+
+    次の出力例では、正常に作成された仮想ネットワークが示されています。
+
+    ```json
+    {
+    "newVNet": {
+        "addressSpace": {
+        "addressPrefixes": [
+            "10.0.0.0/22"
+        ]
+        },
+        "id": "/subscriptions/<guid>/resourceGroups/aro-rg/providers/Microsoft.Network/virtualNetworks/aro-vnet",
+        "location": "eastus",
+        "name": "aro-vnet",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "aro-rg",
+        "type": "Microsoft.Network/virtualNetworks"
+    }
+    }
+    ```
+
+3. **マスター ノード用の空のサブネットを追加します。**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name master-subnet \
+    --address-prefixes 10.0.0.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+4. **ワーカー ノード用の空のサブネットを追加します。**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name worker-subnet \
+    --address-prefixes 10.0.2.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+5. **マスター サブネットの[サブネット プライベート エンドポイント ポリシーを無効にします](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。** これは、クラスターに接続して管理できるようにするために必要です。
+
+    ```azurecli-interactive
+    az network vnet subnet update \
+    --name master-subnet \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --disable-private-link-service-network-policies true
+    ```
+
+## <a name="create-the-cluster"></a>クラスターを作成する
+
+次のコマンドを実行して、クラスターを作成します。 必要に応じて、プル シークレットを渡して、クラスターが追加のコンテンツと共に Red Hat コンテナー レジストリにアクセスできるようにすることができます。 [Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) に移動し、 **[Copy Pull Secret]\(プル シークレットのコピー\)** をクリックして、プル シークレットにアクセスします。
+
+```azurecli-interactive
+az aro create \
+  --resource-group $RESOURCEGROUP \
+  --name $CLUSTER \
+  --vnet aro-vnet \
+  --master-subnet master-subnet \
+  --worker-subnet worker-subnet
+  # --domain foo.example.com # [OPTIONAL] custom domain
+  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
 ```
+>[!NOTE]
+> 通常、クラスターの作成には約 35 分かかります。
 
-`TENANT` を、「[Create a new tenant](howto-create-tenant.md#create-a-new-azure-ad-tenant)」(新しいテナントの作成) の手順 7 で保存したテナント ID 値に設定します。
-
-```bash
-TENANT=<tenant ID>
-```
-
-クラスターのリソース グループを作成します。 上記の変数を定義するのに使用したのと同じ Bash シェルで、次のコマンドを実行します。
-
-```azurecli
-az group create --name $CLUSTER_NAME --location $LOCATION
-```
-
-### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>省略可能:クラスターの仮想ネットワークを既存の仮想ネットワークに接続する
-
-作成したクラスターの仮想ネットワーク (VNET) をピアリングによって既存の VNET に接続する必要がない場合は、この手順をスキップします。
-
-ネットワークへのピアリングを既定のサブスクリプション以外で行ってからそのサブスクリプションで行う場合は、Microsoft.ContainerService プロバイダーの登録も必要になります。 これを行うには、そのサブスクリプションで以下のコマンドを実行します。 それ以外に、ピアリング対象の VNET が同じサブスクリプションにある場合は、登録手順をスキップできます。
-
-`az provider register -n Microsoft.ContainerService --wait`
-
-最初に、既存の VNET の識別子を取得します。 この識別子は、`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}` の形式になります。
-
-既存の VNET が所属するネットワーク名またはリソース グループがわからない場合は、[[仮想ネットワーク] ブレード](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks)に移動し、仮想ネットワークをクリックします。 仮想ネットワーク ページが表示され、これが属するネットワークおよびリソース グループの名前が一覧表示されます。
-
-BASH シェルで次の CLI コマンドを使用して、VNET_ID 変数を定義します。
-
-```azurecli
-VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
-```
-
-例: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
-
-### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>省略可能:クラスターを Azure Monitoring に接続する
-
-最初に、**既存の**ログ分析ワークスペースの識別子を取得します。 この識別子は次の形式になります。
-
-`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`
-
-ログ分析ワークスペースの名前、または既存のログ分析ワークスペースが属しているリソース グループがわからない場合は、[ログ分析ワークスペース](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)にアクセスし、お使いのログ分析ワークスペースをクリックします。 ログ分析ワークスペース ページが表示され、ワークスペースの名前と所属しているリソース グループが表示されます。
-
-_ログ分析ワークスペースを作成するには、[ログ分析ワークスペースの作成](../azure-monitor/learn/quick-create-workspace-cli.md)_ に関する記事を参照してください
-
-BASH シェルで次の CLI コマンドを使用して、WORKSPACE_ID 変数を定義します。
-
-```azurecli
-WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
-```
-
-### <a name="create-the-cluster"></a>クラスターを作成する
-
-これで、クラスターを作成する準備ができました。 以下では、指定された Azure AD テナントにクラスターを作成し、Azure AD アプリ オブジェクト、セキュリティ プリンシパルとして使用するシークレット、クラスターへの管理者アクセスを備えたメンバーを含むセキュリティ グループを指定します。
-
-> [!IMPORTANT]
-> クラスターを作成する前に、[ここで詳しく説明](howto-aad-app-configuration.md#add-api-permissions)されているように、Azure AD アプリに対する適切なアクセス許可が正しく追加されていることを確認してください
-
-クラスターと仮想ネットワークの間でピアリングを実行**しない**、または Azure Monitoring を使用**しない**場合は、次のコマンドを使用します。
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
-```
-
-クラスターと仮想ネットワークの間でピアリングを実行**する**場合は、`--vnet-peer` フラグを追加する次のコマンドを使用します。
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
-```
-
-クラスターで Azure Monitoring を使用**する**場合は、次のコマンドを使用して `--workspace-id` フラグを追加します。
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
-```
-
-> [!NOTE]
-> ホスト名が使用できないというエラーが発生する場合は、クラスター名が一意でない可能性があります。 元のアプリ登録を削除し、別のクラスター名を使用して、[新しいアプリ登録の作成](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)に関するページの手順をもう一度行ってみてください。新しいユーザーとセキュリティ グループの作成手順は省略します。
-
-
-
-
-数分後、`az openshift create` が完了します。
-
-### <a name="get-the-sign-in-url-for-your-cluster"></a>クラスターのサインイン URL を取得する
-
-次のコマンドを実行して、クラスターにサインインするための URL を取得します。
-
-```azurecli
-az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
-```
-
-出力で `publicHostName` (例: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`) を探します。
-
-クラスターのサインイン URL は、`https://` の後にこの `publicHostName` の値を続けたものです。  (例: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`)。  次の手順で、この URI をアプリ登録リダイレクト URI の一部として使用します。
-
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>手順 3:アプリ登録リダイレクト URI を更新する
-
-これでクラスターのサインイン URL を用意できたので、アプリ登録リダイレクト URI を設定します。
-
-1. [[アプリの登録] ブレード](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)を開きます。
-2. アプリ登録オブジェクトをクリックします。
-3. **[リダイレクト URI を追加する]** をクリックします。
-4. **[種類]** が **[Web]** であることを確認し、`https://<public host name>/oauth2callback/Azure%20AD` のパターンを使用して **[リダイレクト URI]** を設定します。 例: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
-5. **[保存]**
-
-## <a name="step-4-sign-in-to-the-openshift-console"></a>手順 4:OpenShift コンソールにサインインする
-
-これで、新しいクラスターの OpenShift コンソールにサインインする準備ができました。 [OpenShift Web コンソール](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html)により、OpenShift プロジェクトのコンテンツの視覚化、参照、管理ができます。
-
-Azure portal へのサインインに通常使用する ID がキャッシュされていない、新しいブラウザー インスタンスが必要です。
-
-1. *シークレット* ウィンドウ (Chrome) または *InPrivate* ウィンドウ (Microsoft Edge) を開きます。
-2. 上で取得したサインオン URL (例: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`) に移動します。
-
-「[Create a new Azure Active Directory user (新しい Azure Active Directory ユーザーを作成する)](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user)」の手順 3 で作成したユーザー名を使用してサインインします。
-
-**[要求されているアクセス許可]** ダイアログが表示されます。 **[組織の代理として同意する]** 、 **[同意する]** の順にクリックします。
-
-これで、クラスター コンソールにログインしました。
-
-![OpenShift クラスター コンソールのスクリーンショット](./media/aro-console.png)
-
- [OpenShift コンソールを使用](https://docs.openshift.com/aro/getting_started/developers_console.html)してイメージを作成およびビルドする方法の詳細については、[Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) ドキュメントを参照してください。
-
-## <a name="step-5-install-the-openshift-cli"></a>手順 5:OpenShift CLI をインストールする
-
-[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (*OC ツール*) では、OpenShift クラスターのさまざまなコンポーネントと対話するためのアプリケーションおよび低レベルのユーティリティを管理するコマンドを提供します。
-
-OpenShift コンソールで、右上隅のサインイン名の横にある疑問符をクリックし、 **[コマンド ライン ツール]** を選択します。  **[最新リリース]** のリンク先に移動し、Linux、MacOS、または Windows 用にサポートされている oc CLI をダウンロードしてインストールします。
-
-> [!NOTE]
-> 右上隅の疑問符アイコンが表示されない場合は、左上のドロップダウン リストで *[サービス カタログ]* または *[Application Console]\(アプリケーション コンソール\)* を選択します。
+>[!IMPORTANT]
+> **foo.example.com** などのカスタム ドメインを指定すると、組み込みドメイン `https://console-openshift-console.apps.<random>.<location>.aroapp.io` の代わりに `https://console-openshift-console.apps.foo.example.com` などの URL で OpenShift コンソールを使用できるようになります。
 >
-> または、直接 [oc CLI をダウンロード](https://www.okd.io/download.html)できます。
-
-**[コマンド ライン ツール]** ページ フォームでは、`oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` の形式のコマンドが提供されます。  *[クリップボードにコピー]* ボタンをクリックして、このコマンドをコピーします。  ターミナル ウィンドウで、oc ツールのローカル インストールを含めるように[パスを設定します](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)。 その後、コピーした oc CLI コマンドを使用してクラスターにサインインします。
-
-上記の手順を使用してトークン値を取得できなかった場合は、`https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` からトークン値を取得します。
+> OpenShift では、既定で、`*.apps.<random>.<location>.aroapp.io` に作成されたすべてのルートに自己署名証明書が使用されます。  クラスターに接続した後でカスタム DNS を使用する場合は、OpenShift のドキュメントに従って、[イングレス コントローラー用のカスタム CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) と、[API サーバー用のカスタム CA を構成する](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)必要があります。
+>
 
 ## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
-
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift クラスターを作成する
+> * 前提条件を設定し、必要な仮想ネットワークとサブネットを作成する
+> * クラスターのデプロイ
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]
-> [Azure Red Hat OpenShift クラスターをスケーリングする](tutorial-scale-cluster.md)
+> [Azure Red Hat OpenShift クラスターに接続する](tutorial-connect-cluster.md)

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 04/20/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcccc64e0c766164a06932e9b65a4459816f9deb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89e09fd63ee6121ac9bf7f3c2be00f0ac22f752f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409118"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81731705"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>セルフ サービス アプリケーションの割り当ての構成方法
 
@@ -42,6 +42,9 @@ ms.locfileid: "79409118"
 
 -   必要に応じて、セルフ サービス機能が割り当てられたユーザーをアプリケーション ロールに直接割り当てられるように自動的に設定します。
 
+> [!NOTE]
+> ユーザーがセルフサービス アプリへの参加を要求し、所有者が要求を承認または拒否するには、Azure Active Directory Premium (P1 または P2) ライセンスが必要です。 Azure Active Directory Premium ライセンスがないと、ユーザーはセルフサービス アプリを追加できません。
+
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可します。
 
 セルフサービス アプリケーション アクセスは、ユーザーがアプリケーションを自己検出できるようにし、必要に応じて、ビジネス グループがそれらのアプリケーションへのアクセス承認できるようにするための優れた方法です。 パスワード シングル サインオン アプリケーションの場合は、[マイ アプリ] アクセス パネルから、ユーザーに割り当てられた資格情報をビジネス グループが管理できるようにすることもできます。
@@ -50,7 +53,7 @@ ms.locfileid: "79409118"
 
 1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。
 
-2. **[Azure Active Directory]** を選択します。 左側のナビゲーション メニューから、 **[エンタープライズ アプリケーション]** を選択します。
+2. **[Azure Active Directory]** を選択します。 左側のナビゲーション メニューで、 **[エンタープライズ アプリケーション]** を選択します。
 
 3. 一覧からアプリケーションを選択します。 アプリケーションが表示されていない場合は、検索ボックスにその名前の入力を開始します。 または、フィルター コントロールを使用して、アプリケーションの種類、状態、または可視性を選択し、 **[適用]** を選択します。
 

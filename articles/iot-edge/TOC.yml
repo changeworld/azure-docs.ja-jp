@@ -206,7 +206,11 @@
         - name: Jenkins 用の IoT Edge プラグイン
           href: how-to-devops-plugins.md
     - name: トラブルシューティング
-      href: troubleshoot.md
+      items:
+        - name: 標準的な診断手順
+          href: troubleshoot.md
+        - name: よくあるエラーの解決方法
+          href: troubleshoot-common-errors.md
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション

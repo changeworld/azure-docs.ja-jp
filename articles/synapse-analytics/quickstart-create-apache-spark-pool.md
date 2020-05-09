@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1457549fef3a78356c8b1af6be620fdf30ddab46
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2501f66c42360d3ec1626f5f4ee42e0212f1967b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420626"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792243"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview"></a>クイック スタート:新しい Apache Spark プールを作成する (プレビュー)
 
@@ -25,16 +25,16 @@ Synapse Analytics には、データの取り込み、変換、モデル化、�
 > [!IMPORTANT]
 > Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「**リソースのクリーンアップ**」をご覧ください。
 
-Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https:/azure.microsoft.com/free/)してください。
+Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション - [無料アカウントを作成する](https:/azure.microsoft.com/free/)
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [Synapse Analytics ワークスペース](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure ポータル](https:/portal.azure.com/)
+[Azure ポータル](https://portal.azure.com/)
 
 ## <a name="create-new-apache-spark-pool"></a>新しい Apache Spark プールを作成する
 
@@ -92,5 +92,5 @@ Apache Spark プールを削除する場合は、次の手順を実行します�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[クイック スタート:Web ツールを使用した Synapse Studio での Apache Spark プールの作成](spark/apache-spark-notebook-create-spark-use-sql.md)。
+- 「[クイック スタート:Apache Spark ノートブックの作成](quickstart-apache-spark-notebook.md)に関するページを参照してください。
 - 「[クイック スタート:Azure portal を使用した Synapse SQL プールの作成](quickstart-create-sql-pool.md)。

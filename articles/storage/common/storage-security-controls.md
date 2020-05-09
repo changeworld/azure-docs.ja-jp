@@ -1,23 +1,24 @@
 ---
-title: Azure Storage のセキュリティ コントロール
-description: Azure Storage を評価するためのセキュリティ コントロールのチェックリスト
+title: セキュリティ コントロール
+titleSuffix: Azure Storage
+description: Azure Storage を評価するためのセキュリティ コントロールのチェックリスト。
 services: storage
 author: msmbaldwin
+ms.author: mbaldwin
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/11/2020
+ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061124"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128033"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure Storage のセキュリティ コントロール
 
-この記事では、Azure Storage に組み込まれているセキュリティ コントロールについて説明します。 
+この記事では、Azure Storage に組み込まれているセキュリティ コントロールについて説明します。
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -36,6 +37,7 @@ ms.locfileid: "80061124"
 | セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
 | サービス エンドポイントのサポート| はい |  |
+| サービス タグのサポート| はい | Azure Storage でサポートされるサービス タグの詳細については、[Azure サービス タグの概要](../../virtual-network/service-tags-overview.md)に関する記事を参照してください。 |
 | VNet インジェクションのサポート| 該当なし |  |
 | ネットワークの分離とファイアウォールのサポート| はい | |
 | 強制トンネリングのサポート| 該当なし |  |
@@ -45,8 +47,8 @@ ms.locfileid: "80061124"
 | セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | Azure Monitor メトリック|
-| コントロールと管理プレーンのログ記録と監査 | はい | Azure Resource Manager アクティビティ ログ |
-| データ プレーンのログ記録と監査| はい | サービスの診断ログ|
+| コントロールと管理プレーンのログ記録と監査 | はい | [Azure Activity Log (Azure アクティビティ ログ)] |
+| データ プレーンのログ記録と監査| はい | Azure Monitor のリソース ログ |
 
 ## <a name="identity"></a>ID
 

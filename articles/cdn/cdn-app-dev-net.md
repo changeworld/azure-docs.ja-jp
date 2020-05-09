@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594174"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611468"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
 > * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
-> 
-> 
+>
+>
 
 [.NET 向け Azure CDN ライブラリ](/dotnet/api/overview/azure/cdn) を使用すると、CDN プロファイルとエンドポイントの作成と管理を自動化できます。  このチュートリアルでは、単純な .NET コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。  このチュートリアルは、.NET 向け Azure CDN ライブラリのすべての側面を詳細に説明することを目的としていません。
 
@@ -34,35 +35,35 @@ ms.locfileid: "67594174"
 
 > [!TIP]
 > [このチュートリアルに沿って作成されたプロジェクト](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) は MSDN からダウンロードできます。
-> 
-> 
+>
+>
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-nuget-packages"></a>プロジェクトを作成し、NuGet パッケージを追加する
 これまでの手順で、CDN プロファイルのリソース グループを作成し、そのグループ内の CDN プロファイルとエンドポイントを管理するための Azure AD アプリケーション アクセス許可を割り当てました。この段階で、アプリケーションの作成を開始できます。
 
-Visual Studio 2015 で、 **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順にクリックして、新しいプロジェクト ダイアログを開きます。  左側のウィンドウで **[Visual C#]** を展開し、 **[Windows]** を選択します。  中央のウィンドウで **[コンソール アプリケーション]** をクリックします。  プロジェクトに名前を付け、 **[OK]** をクリックします。  
+Visual Studio 2015 で、 **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順にクリックして、新しいプロジェクト ダイアログを開きます。  左側のウィンドウで **[Visual C#]** を展開し、 **[Windows]** を選択します。  中央のウィンドウで **[コンソール アプリケーション]** をクリックします。  プロジェクトに名前を付け、 **[OK]** をクリックします。
 
 ![[新しいプロジェクト]](./media/cdn-app-dev-net/cdn-new-project.png)
 
 このプロジェクトでは、NuGet パッケージに含まれているいくつかの Azure ライブラリを使用します。  それでは、ライブラリをプロジェクトに追加していきましょう。
 
 1. **[ツール]** メニュー、 **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** を順にクリックします。
-   
+
     ![Manage Nuget Packages](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. パッケージ マネージャー コンソールで、次のコマンドを実行して、 **Active Directory Authentication Library (ADAL)** をインストールします。
-   
+
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. 次のコマンドを実行して、 **Azure CDN Management Library**をインストールします。
-   
+
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>ディレクティブ、定数、main メソッド、およびヘルパー メソッド
 ここでは、プログラムの基本的な構造を記述します。
 
 1. [Program.cs] タブに戻り、最上部の `using` ディレクティブを次の内容で置き換えます。
-   
+
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -74,13 +75,13 @@ Visual Studio 2015 で、 **[ファイル]** 、 **[新規]** 、 **[プロジ�
     using Microsoft.Rest;
     ```
 2. 次に、メソッドで使用するいくつかの定数を定義します。  `Program` クラスの `Main` メソッドの前に次のコードを追加します。  **&lt;山かっこ&gt;** などのプレースホルダーは、必要に応じて自分の環境に合わせて置き換えます。
-   
+
     ```csharp
     //Tenant app constants
     private const string clientID = "<YOUR CLIENT ID>";
     private const string clientSecret = "<YOUR CLIENT AUTHENTICATION KEY>"; //Only for service principals
     private const string authority = "https://login.microsoftonline.com/<YOUR TENANT ID>/<YOUR TENANT DOMAIN NAME>";
-   
+
     //Application constants
     private const string subscriptionId = "<YOUR SUBSCRIPTION ID>";
     private const string profileName = "CdnConsoleApp";
@@ -89,48 +90,48 @@ Visual Studio 2015 で、 **[ファイル]** 、 **[新規]** 、 **[プロジ�
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
 3. さらに、クラス レベルで次の 2 つの変数を定義します。  これらの変数は、後でプロファイルとエンドポイントが既に存在しているかどうかを判定するために使用します。
-   
+
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
 4. 次のように、 `Main` メソッドを置き換えます。
-   
+
    ```csharp
    static void Main(string[] args)
    {
        //Get a token
        AuthenticationResult authResult = GetAccessToken();
-   
+
        // Create CDN client
        CdnManagementClient cdn = new CdnManagementClient(new TokenCredentials(authResult.AccessToken))
            { SubscriptionId = subscriptionId };
-   
+
        ListProfilesAndEndpoints(cdn);
-   
+
        // Create CDN Profile
        CreateCdnProfile(cdn);
-   
+
        // Create CDN Endpoint
        CreateCdnEndpoint(cdn);
-   
+
        Console.WriteLine();
-   
+
        // Purge CDN Endpoint
        PromptPurgeCdnEndpoint(cdn);
-   
+
        // Delete CDN Endpoint
        PromptDeleteCdnEndpoint(cdn);
-   
+
        // Delete CDN Profile
        PromptDeleteCdnProfile(cdn);
-   
+
        Console.WriteLine("Press Enter to end program.");
        Console.ReadLine();
    }
    ```
 5. 他のいくつかのメソッドでは、ユーザーが "はい/いいえ" で回答する質問を行います。  この処理を少し簡単にするために、次のメソッドを追加します。
-   
+
     ```csharp
     private static bool PromptUser(string Question)
     {
@@ -161,9 +162,9 @@ Azure CDN Management Library を使用するには、サービス プリンシ�
 ```csharp
 private static AuthenticationResult GetAccessToken()
 {
-    AuthenticationContext authContext = new AuthenticationContext(authority); 
+    AuthenticationContext authContext = new AuthenticationContext(authority);
     ClientCredential credential = new ClientCredential(clientID, clientSecret);
-    AuthenticationResult authResult = 
+    AuthenticationResult authResult =
         authContext.AcquireTokenAsync("https://management.core.windows.net/", credential).Result;
 
     return authResult;
@@ -174,8 +175,8 @@ private static AuthenticationResult GetAccessToken()
 
 > [!IMPORTANT]
 > このコード サンプルは、サービス プリンシパルの代わりに個別ユーザー認証を行う場合にのみ使用してください。
-> 
-> 
+>
+>
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -271,8 +272,8 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > 上の例では、ホスト名 *を持つ*Contoso`www.contoso.com` という名前のオリジンをエンドポイントに割り当てています。  オリジンのホスト名を指すようにこれを変更する必要があります。
-> 
-> 
+>
+>
 
 ## <a name="purge-an-endpoint"></a>エンドポイントの消去
 エンドポイントが作成されたと仮定して、プログラムで実行する一般的なタスクの 1 つに、エンドポイントの内容を消去することがあります。
@@ -292,8 +293,8 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > 上記の例の文字列 `/*` は、エンドポイント パスのルートにあるものをすべて消去することを示します。  これは、Azure Portal の "消去" ダイアログで **[すべて消去]** を選択するのと同じです。 `CreateCdnProfile` メソッドでは、**というコードを使用して**Azure CDN from Verizon`Sku = new Sku(SkuName.StandardVerizon)` としてプロファイルを作成しているため、このコードは動作します。  ただし、**Azure CDN from Akamai** プロファイルでは **[すべて消去]** がサポートされません。このチュートリアルで使用するプロファイルが Akamai プロファイルであった場合は、消去する特定のパスを含める必要があります。
-> 
-> 
+>
+>
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>CDN プロファイルとエンドポイントの削除
 最後のメソッドによって、このエンドポイントとプロファイルが削除されます。
@@ -341,4 +342,3 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 Azure CDN Management Library for .NET に関連するドキュメントについては、 [MSDN のリファレンス](/dotnet/api/overview/azure/cdn)を参照してください。
 
 [PowerShell](cdn-manage-powershell.md) で CDN リソースを管理します。
-

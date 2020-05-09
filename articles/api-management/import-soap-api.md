@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74107664"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202742"
 ---
 # <a name="import-soap-api"></a>SOAP API のインポート
 
-この記事では、SOAP API の標準的な XML 表現をインポートする方法について説明します。 また、APIM API をテストする方法についても説明します。
+この記事では、SOAP API の標準的な XML 表現をインポートする方法について説明します。 また、API Management API をテストする方法についても説明します。
 
 この記事では、次のことについて説明します。
 
@@ -32,13 +32,13 @@ ms.locfileid: "74107664"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
+次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
-1. **[API Management]** で **[API]** を選びます。
+1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[WSDL]** を選択します。
 
     ![SOAP API](./media/import-soap-api/wsdl-api.png)
@@ -48,17 +48,18 @@ ms.locfileid: "74107664"
     ![パススルー](./media/import-soap-api/pass-through.png)
 5. Tab キーを押します。
 
-    [表示名]、[名前]、[説明] の各フィールドに、SOAP API の情報が入力されます。
-6. API URL サフィックスを追加します。 サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。
-9. API を成果物に関連付けることで API を公開します。 この場合、"*無制限*" の成果物が使用されます。  API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
+    SOAP API からの情報が次のフィールドに入力されます: [表示名]、[名前]、[説明]。
+6. API URL サフィックスを追加します。 サフィックスは、この API Management インスタンスでこの特定の API を識別する名前です。 この API Management インスタンス内で一意である必要があります。
+7. API を成果物に関連付けることで API を公開します。 この場合、"*無制限*" の成果物が使用されます。  API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
 
-    製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
+    製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 API Management インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
 
     すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
     * **スターター**
     * **無制限**   
-10. **作成** を選択します。
+8. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+9. **［作成］** を選択します
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>管理ポータルでの新しい API のテスト
 
@@ -68,7 +69,7 @@ ms.locfileid: "74107664"
 2. **[テスト]** タブをクリックします。
 3. いくつかの操作を選びます。
 
-    ページに、クエリ パラメーターのフィールドとヘッダーのフィールドが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。 
+    ページに、クエリ パラメーターのフィールドとヘッダーのフィールドが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 API Management インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。 
 1. **[送信]** をクリックします。
 
     バックエンドは **200 OK** といくつかのデータで応答します。

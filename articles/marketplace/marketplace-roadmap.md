@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 0631859983944a7e33615106060d3ffb45a3c7bc
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084908"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160496"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft の商業マーケットプレースのロードマップ
 
@@ -27,14 +27,14 @@ ms.locfileid: "82084908"
 
 運用開始になると、機能はロードマップから削除されます。 マーケットプレースに追加された機能については、次のドキュメントをご覧ください。
 
-* [Marketplace + CSP 更新のブログ](https://aka.ms/marketplacemarchupdateblog)
-* [CSP チャネル (ISV) にオファリングを発行](https://aka.ms/publishtocsp)
-* [Marketplace のオファリングを再販](https://aka.ms/marketplaceincsp)
-* [標準的な契約](https://aka.ms/standardcontract)
-* [SaaS Fulfillment API](https://aka.ms/saasapiv2)
-* [Marketplace の地域および通貨](https://aka.ms/marketplacegeos)
-* [Seller Insights](./partner-center-portal/analytics.md)
-* [Microsoft Build の Marketplace ブログ](https://aka.ms/marketplacebuildblog)
+* [Marketplace + CSP 更新のブログ](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
+* [CSP チャネル (ISV) にオファリングを発行](./cloud-solution-providers.md)
+* [Marketplace のオファリングを再販](https://docs.microsoft.com/partner-center/sell-marketplace-products)
+* [Microsoft コマーシャル マーケットプレースの標準契約](./standard-contract.md)
+* [SaaS Fulfillment API シリーズ](./partner-center-portal/pc-saas-fulfillment-apis.md)
+* [コマーシャル マーケットプレースで利用可能な地域と通貨のサポート](./marketplace-geo-availability-currencies.md)
+* [パートナー センターでのコマーシャル マーケットプレース向け分析](./partner-center-portal/analytics.md)
+* [Microsoft Build の Marketplace ブログ](https://azure.microsoft.com/blog/announcing-new-marketplace-revenue-opportunities/)
 * [Marketplace 5 月更新プログラムのブログ](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
 * パートナー センター:[アカウントを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [アカウントを管理する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [CPP から移行する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
 * パートナー センター:[SaaS オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [発行状態](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status

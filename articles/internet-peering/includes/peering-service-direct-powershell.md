@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: badba278e88e5065d8a4ff57ca9506fe1f9ad203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 526d8a6a103e7623bac459004bf9ac79e4927541
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773634"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686981"
 ---
 1. 選択した Direct ピアリングで接続を表示します。
     ```powershell
@@ -47,7 +47,7 @@ ms.locfileid: "75773634"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. ここで、以下のコマンドを使用して Direct ピアリングに対する変更を保存します。
+1. ここで、このコマンドを使用して Direct ピアリングに対する変更を保存します。
     ```powershell
     $directPeering | Update-AzPeering
     ```

@@ -4,12 +4,12 @@ description: この記事では、バックアップと復旧ポイントを格�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 6ac1c7e887f80767d6ff1819476e91cb4b06bf1b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672849"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744941"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -121,7 +121,7 @@ GRS 冗長性を使用して作成されたコンテナーには、リージョ�
 
 - 既定では、 **[ストレージ レプリケーションの種類]** は **[Geo-redundant]\(geo 冗長\)** に設定されます。 バックアップを構成すると、変更オプションは無効になります。 この[手順](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)に従って、設定を確認、変更します。
 
-- 誤った削除や悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナー上で **[論理的な削除]** は既定で **[Enabled]\(有効\)** になっています。 この[手順](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete)に従って、設定を確認、変更します。
+- 誤った削除や悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナー上で **[論理的な削除]** は既定で **[Enabled]\(有効\)** になっています。 この[手順](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)に従って、設定を確認、変更します。
 
 ## <a name="next-steps"></a>次のステップ
 

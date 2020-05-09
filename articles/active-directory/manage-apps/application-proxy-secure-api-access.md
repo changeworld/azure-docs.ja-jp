@@ -11,18 +11,19 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 74c6951a718d15a9ca7b84e92662272ba1bfd182
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77166009"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610294"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護
 
-ビジネス ロジック API がオンプレミスで実行されていたり、クラウドの仮想マシンでホストされていたりすることがあります。 Android、iOS、Mac、または Windows のネイティブ アプリは、データを使用したりユーザー対話を提供したりするために、この API エンドポイントと対話する必要があります。 Azure AD アプリケーション プロキシと [Azure Active Directory 認証ライブラリ (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) を使用すると、ネイティブ アプリはオンプレミス API に安全にアクセスすることができます。 Azure Active Directory アプリケーション プロキシは、ファイアウォール ポートを開いてアプリ層で認証と承認を制御するよりも高速かつ安全なソリューションです。 
+ビジネス ロジック API がオンプレミスで実行されていたり、クラウドの仮想マシンでホストされていたりすることがあります。 Android、iOS、Mac、または Windows のネイティブ アプリは、データを使用したりユーザー対話を提供したりするために、この API エンドポイントと対話する必要があります。 Azure AD アプリケーション プロキシと [Azure Active Directory 認証ライブラリ (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) を使用すると、ネイティブ アプリはオンプレミス API に安全にアクセスすることができます。 Azure Active Directory アプリケーション プロキシは、ファイアウォール ポートを開いてアプリ層で認証と承認を制御するよりも高速かつ安全なソリューションです。
 
-この記事では、ネイティブ アプリがアクセスできる Web API サービスをホストするための Azure AD アプリケーション プロキシ ソリューションを設定する手順を説明します。 
+この記事では、ネイティブ アプリがアクセスできる Web API サービスをホストするための Azure AD アプリケーション プロキシ ソリューションを設定する手順を説明します。
 
 ## <a name="overview"></a>概要
 
@@ -34,7 +35,7 @@ ms.locfileid: "77166009"
 
 ![Azure AD アプリケーション プロキシの API アクセス](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。 
+Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
 
 Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection) の機械学習支援型のセキュリティも活用できます。
 
@@ -43,7 +44,7 @@ Azure AD アプリケーション プロキシの認証と承認は Azure AD 上
 このチュートリアルを実行するには、次のものが必要です。
 
 - アプリを作成して登録できるアカウントを持つ、Azure ディレクトリへの管理者アクセス権
-- [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) からのサンプル Web API およびネイティブ クライアント アプリ 
+- [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) からのサンプル Web API およびネイティブ クライアント アプリ
 
 ## <a name="publish-the-api-through-application-proxy"></a>アプリケーション プロキシ経由で API を公開する
 
@@ -51,49 +52,49 @@ Azure AD アプリケーション プロキシの認証と承認は Azure AD 上
 
 アプリケーション プロキシ経由で SecretAPI Web API を公開するには、次のようにします。
 
-1. ローカル コンピューターまたはイントラネット上で、サンプルの SecretAPI プロジェクトを ASP.NET Web アプリとしてビルドして公開します。 Web アプリにローカルでアクセスできることを確認します。 
-   
+1. ローカル コンピューターまたはイントラネット上で、サンプルの SecretAPI プロジェクトを ASP.NET Web アプリとしてビルドして公開します。 Web アプリにローカルでアクセスできることを確認します。
+
 1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。 次に、 **[エンタープライズ アプリケーション]** を選択します。
-   
+
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページの上部で、 **[新しいアプリケーション]** を選択します。
-   
+
 1. **[アプリケーションの追加]** ページで、 **[オンプレミスのアプリケーション]** を選択します。 **[独自のオンプレミスのアプリケーションの追加]** ページが表示されます。
-   
-1. アプリケーション プロキシ コネクタがインストールされていない場合は、インストールするように求められます。 **[アプリケーション プロキシ コネクタのダウンロード]** を選択してコネクタをダウンロードしてインストールします。 
-   
+
+1. アプリケーション プロキシ コネクタがインストールされていない場合は、インストールするように求められます。 **[アプリケーション プロキシ コネクタのダウンロード]** を選択してコネクタをダウンロードしてインストールします。
+
 1. アプリケーション プロキシ コネクタをインストールしたら、 **[独自のオンプレミスのアプリケーションの追加]** ページで、次のようにします。
-   
+
    1. **[名前]** の横に *SecretAPI* と入力します。
-      
+
    1. **[内部 URL]** の横に、イントラネット内から API へのアクセスに使用する URL を入力します。
-      
-   1. **[事前認証]** が **[Azure Active Directory]** に設定されていることを確認します。 
-      
+
+   1. **[事前認証]** が **[Azure Active Directory]** に設定されていることを確認します。
+
    1. ページの上部にある **[追加]** を選択し、アプリが作成されるまで待機します。
-   
+
    ![API アプリを追加する](./media/application-proxy-secure-api-access/3-add-api-app.png)
-   
-1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページで、 **[SecretAPI]** アプリを選択します。 
-   
+
+1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページで、 **[SecretAPI]** アプリを選択します。
+
 1. **[SecretAPI - 概要]** ページで、左側のナビゲーションから **[プロパティ]** を選択します。
-   
+
 1. エンド ユーザーが **[MyApps]** パネルで API を利用できないようにするために、 **[プロパティ]** ページの下部にある **[Visible to users]\(ユーザーに表示する\)** を **[いいえ]** に設定し、 **[保存]** を選択します。
-   
+
    ![ユーザーに表示しない](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
-   
-Azure AD アプリケーション プロキシを通じて Web API を公開しました。 次に、アプリにアクセスできるユーザーを追加します。 
+
+Azure AD アプリケーション プロキシを通じて Web API を公開しました。 次に、アプリにアクセスできるユーザーを追加します。
 
 1. **[SecretAPI - 概要]** ページで、左側のナビゲーションから **[ユーザーとグループ]** を選択します。
-   
-1. **[ユーザーとグループ]** ページで **[ユーザーの追加]** を選択します。  
-   
-1. **[割り当ての追加]** ページで **[ユーザーとグループ]** を選択します。 
-   
-1. **[ユーザーとグループ]** ページで、少なくとも自分自身を含め、アプリにアクセスできるユーザーを検索して選択します。 すべてのユーザーを選択した後、 **[選択]** を選択します。 
-   
+
+1. **[ユーザーとグループ]** ページで **[ユーザーの追加]** を選択します。
+
+1. **[割り当ての追加]** ページで **[ユーザーとグループ]** を選択します。
+
+1. **[ユーザーとグループ]** ページで、少なくとも自分自身を含め、アプリにアクセスできるユーザーを検索して選択します。 すべてのユーザーを選択した後、 **[選択]** を選択します。
+
    ![ユーザーを選択して割り当てる](./media/application-proxy-secure-api-access/7-select-admin-user.png)
-   
-1. **[割り当ての追加]** ページに戻り、 **[割り当て]** を選択します。 
+
+1. **[割り当ての追加]** ページに戻り、 **[割り当て]** を選択します。
 
 > [!NOTE]
 > 統合 Windows 認証を使用する API では、[追加の手順](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)が必要になる場合があります。
@@ -105,66 +106,66 @@ Azure AD アプリケーション プロキシを通じて Web API を公開し�
 AppProxyNativeAppSample ネイティブ アプリを登録するには、次のようにします。
 
 1. Azure Active Directory の **[概要]** ページで、 **[アプリの登録]** を選択し、 **[アプリの登録]** ウィンドウの上部で **[新規登録]** を選択します。
-   
+
 1. **[アプリケーションの登録]** ページで、次のようにします。
-   
-   1. **[名前]** に *AppProxyNativeAppSample* と入力します。 
-      
-   1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。 
-      
-   1. **[リダイレクト URL]** で、ドロップダウンから **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、*https:\//appproxynativeapp* と入力します。 
-      
-   1. **[登録]** を選択し、アプリが正常に登録されるまで待ちます。 
-      
+
+   1. **[名前]** に *AppProxyNativeAppSample* と入力します。
+
+   1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+
+   1. **[リダイレクト URL]** で、ドロップダウンから **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、*https:\//appproxynativeapp* と入力します。
+
+   1. **[登録]** を選択し、アプリが正常に登録されるまで待ちます。
+
       ![[新しいアプリケーションの登録]](./media/application-proxy-secure-api-access/8-create-reg-ga.png)
-   
+
 これで AppProxyNativeAppSample アプリが Azure Active Directory に登録されました。 ネイティブ アプリに SecretAPI Web API へのアクセス権を付与するには、次のようにします。
 
-1. Azure Active Directory の **[概要]**  >  **[アプリの登録]** ページで、 **[AppProxyNativeAppSample]** アプリを選択します。 
-   
-1. **[AppProxyNativeAppSample]** ページで、左側のナビゲーションから **[API のアクセス許可]** を選択します。 
-   
+1. Azure Active Directory の **[概要]**  >  **[アプリの登録]** ページで、 **[AppProxyNativeAppSample]** アプリを選択します。
+
+1. **[AppProxyNativeAppSample]** ページで、左側のナビゲーションから **[API のアクセス許可]** を選択します。
+
 1. **[API のアクセス許可]** ページで、 **[アクセス許可の追加]** を選択します。
-   
-1. 最初の **[API アクセス許可の要求]** ページで、 **[所属する組織で使用している API]** タブを選択し、 **[SecretAPI]** を検索して選択します。 
-   
-1. 次の **[API アクセス許可の要求]** ページで、 **[user_impersonation]** の横のチェック ボックスをオンにし、 **[アクセス許可の追加]** を選択します。 
-   
+
+1. 最初の **[API アクセス許可の要求]** ページで、 **[所属する組織で使用している API]** タブを選択し、 **[SecretAPI]** を検索して選択します。
+
+1. 次の **[API アクセス許可の要求]** ページで、 **[user_impersonation]** の横のチェック ボックスをオンにし、 **[アクセス許可の追加]** を選択します。
+
     ![API を選択する](./media/application-proxy-secure-api-access/10-secretapi-added.png)
-   
-1. **[API のアクセス許可]** ページに戻り、 **[Contoso に管理者の同意を与えます]** を選択して、他のユーザーがアプリに個別に同意しなくても済むようにします。 
+
+1. **[API のアクセス許可]** ページに戻り、 **[Contoso に管理者の同意を与えます]** を選択して、他のユーザーがアプリに個別に同意しなくても済むようにします。
 
 ## <a name="configure-the-native-app-code"></a>ネイティブ アプリ コードを構成する
 
-最後の手順では、ネイティブ アプリを構成します。 NativeClient サンプル アプリの *Form1.cs* ファイルからのものである次のスニペットによって、ADAL ライブラリは、API 呼び出しを要求するためのトークンを取得し、それをベアラーとしてアプリのヘッダーに添付します。 
-   
+最後の手順では、ネイティブ アプリを構成します。 NativeClient サンプル アプリの *Form1.cs* ファイルからのものである次のスニペットによって、ADAL ライブラリは、API 呼び出しを要求するためのトークンを取得し、それをベアラーとしてアプリのヘッダーに添付します。
+
    ```csharp
        AuthenticationResult result = null;
        HttpClient httpClient = new HttpClient();
        authContext = new AuthenticationContext(authority);
        result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectUri, new PlatformParameters(PromptBehavior.Auto));
-       
+
        // Append the token as bearer in the request header.
        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-       
+
        // Call the API.
        HttpResponseMessage response = await httpClient.GetAsync(todoListBaseAddress + "/api/values/4");
-   
+
        // MessageBox.Show(response.RequestMessage.ToString());
        string s = await response.Content.ReadAsStringAsync();
        MessageBox.Show(s);
    ```
-   
-ネイティブ アプリが Azure Active Directory に接続し、API アプリのプロキシを呼び出すように構成するには、NativeClient サンプル アプリの *App.config* ファイルにあるプレース ホルダーの値を Azure AD からの値で更新します。 
 
-- **[ディレクトリ (テナント) ID]** を `<add key="ida:Tenant" value="" />` フィールドに貼り付けます。 この値 (GUID) は、いずれかのアプリの **[概要]** ページから検索してコピーすることができます。 
-  
+ネイティブ アプリが Azure Active Directory に接続し、API アプリのプロキシを呼び出すように構成するには、NativeClient サンプル アプリの *App.config* ファイルにあるプレース ホルダーの値を Azure AD からの値で更新します。
+
+- **[ディレクトリ (テナント) ID]** を `<add key="ida:Tenant" value="" />` フィールドに貼り付けます。 この値 (GUID) は、いずれかのアプリの **[概要]** ページから検索してコピーすることができます。
+
 - AppProxyNativeAppSample の **[アプリケーション (クライアント) ID]** を `<add key="ida:ClientId" value="" />` フィールドに貼り付けます。 この値 (GUID) は AppProxyNativeAppSample の **[概要]** ページから検索してコピーすることができます。
-  
-- AppProxyNativeAppSample の **[リダイレクト URI]** を `<add key="ida:RedirectUri" value="" />` フィールドに貼り付けます。 この値 (URI) は AppProxyNativeAppSample の **[認証]** ページから検索してコピーすることができます。 
-  
+
+- AppProxyNativeAppSample の **[リダイレクト URI]** を `<add key="ida:RedirectUri" value="" />` フィールドに貼り付けます。 この値 (URI) は AppProxyNativeAppSample の **[認証]** ページから検索してコピーすることができます。
+
 - SecretAPI の **[アプリケーション ID の URI]** を `<add key="todo:TodoListResourceId" value="" />` フィールドに貼り付けます。 この値 (URI) は SecretAPI の **[API の公開]** ページから検索してコピーすることができます。
-  
+
 - SecretAPI の **[ホーム ページ URL]** を `<add key="todo:TodoListBaseAddress" value="" />` フィールドに貼り付けます。 この値 (URI) は SecretAPI の **[ブランド]** ページから検索してコピーすることができます。
 
 パラメーターを構成した後は、ネイティブ アプリをビルドして実行します。 **[サインイン]** ボタンを選択すると、アプリでサインインが行われ、SecretAPI に正常に接続されたことを確認する成功画面が表示されます。

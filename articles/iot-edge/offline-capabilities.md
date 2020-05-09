@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 55512491121aee28404ab5f85b4223c67a2f0e1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 588926a90d9a40c00bca4914dc1d5ed08301ff75
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80236055"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780795"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
@@ -108,7 +108,7 @@ az iot hub device-identity add-children \
 
 ## <a name="specify-dns-servers"></a>DNS サーバーの指定
 
-堅牢性を向上させるため、環境内で使用する DNS サーバー アドレスを指定することをお勧めします。 DNS サーバーを IoT Edge に設定するには、トラブルシューティングの記事の「[Edge エージェント モジュールで継続的に "空の構成ファイル" が報告され、デバイスでモジュールが開始しない](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device)」を参照してください。
+堅牢性を向上させるため、環境内で使用する DNS サーバー アドレスを指定することをお勧めします。 DNS サーバーを IoT Edge に設定するには、トラブルシューティングの記事の「[Edge エージェント モジュールで継続的に "空の構成ファイル" が報告され、デバイスでモジュールが開始しない](troubleshoot-common-errors.md#edge-agent-module-reports-empty-config-file-and-no-modules-start-on-the-device)」を参照してください。
 
 ## <a name="optional-offline-settings"></a>オプションのオフライン設定
 

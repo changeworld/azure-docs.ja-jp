@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662521"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691111"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) でストレージ サービスを監視する
 
@@ -67,7 +67,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 **[可用性]** 、 **[E2E Latency]\(E2E 待機時間\)** 、 **[Server Latency]\(サーバー待機時間\)** 、 **[transaction error type/Errors]\(<トランザクション エラーの種類>/エラー\)** の列で値を選択すると、ストレージ アカウントに対して選択した列と一致する、特定の種類のストレージ メトリックに合わせて調整されたレポートに移動します。 各カテゴリのブックの詳細については、後述の「[詳細なストレージ ブック](#detailed-storage-workbooks)」セクションを参照してください。 
 
 >[!NOTE]
->レポートに表示できるエラーの詳細については、[応答の種類のスキーマ](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions)に関する記事で、**ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
+>レポートに表示できるエラーの詳細については、[応答の種類のスキーマ](../../storage/common/monitor-storage-reference.md#metrics-dimensions)に関する記事で、**ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
 
 既定の **[可用性]** のしきい値は次のとおりです。
 

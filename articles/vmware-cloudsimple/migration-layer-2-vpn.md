@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083214"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81602684"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
@@ -108,7 +108,7 @@ VMware NSX-T 2.3 リリース時点:
 
 次の手順では、IPsec サービスと L2VPN サービスの Tier0 DR 論理ルーター インスタンスの論理ルーター ID をフェッチする方法を示します。 後で L2VPN を実装するときに、論理ルーター ID が必要になります。
 
-1. NSX-T Manager https://*nsx-t-manager-ip-address* にサインインし、 **[Networking]\(ネットワーク\)** 、 **[Routers]\(ルーター\)** 、 **[Provider-LR]\(プロバイダー LR\)** 、 **[Overview]\(概要\)** の順に選択します。 **[High Availability Mode]\(高可用性モード\)** については、 **[Active-Standby]\(アクティブ/スタンバイ\)** を選択します。 このアクションにより、Tier0 ルーターが現在アクティブになっている Edge VM を示すポップアップ ウィンドウが開きます。
+1. NSX-T Manager `https://*nsx-t-manager-ip-address*` にサインインし、 **[Networking]\(ネットワーク\)**  >  **[Routers]\(ルーター\)**  >  **[Provider-LR]\(プロバイダー LR\)**  >  **[Overview]\(概要\)** の順に選択します。 **[High Availability Mode]\(高可用性モード\)** については、 **[Active-Standby]\(アクティブ/スタンバイ\)** を選択します。 このアクションにより、Tier0 ルーターが現在アクティブになっている Edge VM を示すポップアップ ウィンドウが開きます。
 
     ![アクティブ/スタンバイを選択する](media/l2vpn-fetch01.png)
 
@@ -180,7 +180,7 @@ L2VPN に使用されるループバック インターフェイスとトンネ�
 ```
 Loopback interface ip : 192.168.254.254/32
 Tunnel interface subnet : 5.5.5.0/29
-Logical-router ID : UUID of Tier0 DR logical router obtained in section “Steps to fetch Logical-Router ID needed for L2VPN”
+Logical-router ID : UUID of Tier0 DR logical router obtained in section "Steps to fetch Logical-Router ID needed for L2VPN"
 Logical-switch ID(Stretch) : UUID of Stretch Logical Switch obtained earlier
 IPSec Service ID :
 IKE profile ID :
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 次の POST コマンドで、L2VPN サービス ID はたった今取得した ID であり、IPsec VPN セッション ID は前のセクションで取得した ID です。
 
-``` 
+```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {

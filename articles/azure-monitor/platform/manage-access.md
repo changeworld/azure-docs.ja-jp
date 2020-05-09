@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1e86317999a34e4ab4cb94f93fb788e3e7314cea
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255245"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193056"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -226,7 +226,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
     * ユーザーに対して、ワークスペースに対する以下のアクセス許可を付与します。 
 
-        * `Microsoft.OperationalInsights/workspaces/read` - ユーザーがワークスペースを列挙して Azure portal でワークプレース ブレードを開くことができるようにするために必要です
+        * `Microsoft.OperationalInsights/workspaces/read` - ユーザーがワークスペースを列挙して Azure portal でワークスペース ブレードを開くことができるようにするために必要です
         * `Microsoft.OperationalInsights/workspaces/query/read` - クエリを実行できるすべてのユーザーに必要です
         * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` - Azure AD のサインイン ログを読み取ることができるようにします
         * `Microsoft.OperationalInsights/workspaces/query/Update/read` - 更新管理ソリューションのログを読み取ることができるようにします

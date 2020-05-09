@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990958"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181564"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
 このガイドでは、JavaScript のシングルページ アプリケーション (SPA) で次のことを行う方法について説明します。
-- 個人用アカウントと職場または学校アカウントへのサインイン 
+- 個人用アカウントと職場または学校アカウントへのサインイン
 - アクセス トークンの取得
 - *Microsoft ID プラットフォーム エンドポイント*のアクセス トークンを必要とする Microsoft Graph API などの API の呼び出し
 
@@ -32,14 +32,10 @@ ms.locfileid: "80990958"
 
 ![このチュートリアルで生成されたサンプル アプリの動作の紹介](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
 
 このガイドで作成したサンプル アプリケーションにより、JavaScript SPA で、Microsoft Graph API、または Microsoft ID プラットフォーム エンドポイントのトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 このトークンは、**MS Graph API** からユーザーのプロファイルとメールを取得する際に使用します。 トークンの取得と更新は、**Microsoft Authentication Library (MSAL) for JavaScript** で処理されます。
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>ライブラリ
 
 このガイドでは、次のライブラリを使用します。
@@ -47,12 +43,6 @@ ms.locfileid: "80990958"
 |ライブラリ|説明|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript 用 Microsoft Authentication Library|
-
-> [!NOTE]
-> *msal.js* は、Microsoft ID プラットフォーム エンドポイントを対象とします。これにより、個人用アカウントと職場または学校アカウントでサインインして、トークンを取得することができます。 Microsoft ID プラットフォーム エンドポイントには[いくつかの制限](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)があります。
-> v1.0 のエンドポイントと v2.0 のエンドポイントの相違点を理解するには、[エンドポイントの比較ガイド](../azuread-dev/azure-ad-endpoint-comparison.md)を参照してください。
-
-<!--end-collapse-->
 
 ## <a name="set-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 
@@ -68,7 +58,7 @@ ms.locfileid: "80990958"
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
-[Node.js](https://nodejs.org/en/download/) がインストールされていることを確認し、アプリケーションをホストするフォルダーを作成します。 そこに、`index.html` ファイルを提供する簡単な [Express](https://expressjs.com/) Web サーバーを実装します。 
+[Node.js](https://nodejs.org/en/download/) がインストールされていることを確認し、アプリケーションをホストするフォルダーを作成します。 そこに、`index.html` ファイルを提供する簡単な [Express](https://expressjs.com/) Web サーバーを実装します。
 
 1. まず、Visual Studio Code 統合ターミナルを使用して、ご使用のプロジェクト フォルダーを検索し、NPM を使用して Express をインストールします。
 
@@ -170,7 +160,7 @@ ms.locfileid: "80990958"
 
        <!-- importing bootstrap.js and supporting js libraries -->
        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
        <!-- importing app scripts (load order is important) -->
@@ -188,7 +178,7 @@ ms.locfileid: "80990958"
 
    > [!TIP]
    > 上記のスクリプトにある MSAL.js のバージョンを、[MSAL.js リリース](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)の最新のリリース バージョンに置き換えることができます。
-   
+
 2. 次に、DOM 要素にアクセスして更新する `ui.js` という名前の .js ファイルを作成し、次のコードを追加します。
 
    ```JavaScript
@@ -304,7 +294,7 @@ ms.locfileid: "80990958"
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
   // Add here scopes for id token to be used at MS Identity Platform endpoints.
   const loginRequest = {
@@ -350,7 +340,7 @@ ms.locfileid: "80990958"
    function signOut() {
      myMSALObj.logout();
    }
-   
+
    function callMSGraph(theUrl, accessToken, callback) {
        var xmlHttp = new XMLHttpRequest();
        xmlHttp.onreadystatechange = function () {
@@ -404,7 +394,6 @@ ms.locfileid: "80990958"
    }
    ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
 
 ユーザーが初めて **[Sign In]** ボタンを選択すると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドによって、"*Microsoft ID プラットフォーム エンドポイント*" のポップアップ ウィンドウが開き、ユーザーの資格情報が要求されて検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされます。 トークンが受信されて `msal.js` によって処理されると、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン*と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
@@ -423,15 +412,14 @@ ms.locfileid: "80990958"
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-`acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 最初に `loginPopup` (または `loginRedirect`) を実行した後、後続の呼び出しでは、通常、`acquireTokenSilent` メソッドを使用して、保護されたリソースにアクセスするためのトークンを取得します (トークンを要求または更新するための呼び出しは自動的に行われます)。場合によっては、`acquireTokenSilent` が失敗することがあります。 たとえば、ユーザーのパスワードの期限が切れている場合です。 アプリケーションでは、この例外を 2 つの方法で処理できます。
+`acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 最初に `loginPopup` (または `loginRedirect`) を実行した後、後続の呼び出しでは、通常、`acquireTokenSilent` メソッドを使用して、保護されたリソースにアクセスするためのトークンを取得します  (トークンを要求または更新するための呼び出しは自動的に行われます)。場合によっては、`acquireTokenSilent` が失敗することがあります。 たとえば、ユーザーのパスワードの期限が切れている場合です。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
 1. すぐに `acquireTokenPopup` を呼び出し、ユーザー サインイン プロンプトをトリガーします。 オンライン アプリケーション (ユーザーが使用できる非認証コンテンツが含まれていないアプリケーション) の場合は、一般に、この方法で処理します。 このガイドの設定で生成したサンプルでは、このパターンを使用しています。
 
 1. ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `acquireTokenSilent` を再試行できるようにする。 他に中断なく使用できる機能がアプリケーションにある場合は、一般に、この方法が使用されます。 たとえば、使用可能な非認証コンテンツがアプリケーションに含まれている場合が考えられます。 この場合、ユーザーは、保護されたリソースにアクセスしたり、古くなった情報を更新したりするためにサインインするタイミングを決定できます。
 
 > [!NOTE]
-> このクイックスタートでは、既定では `loginPopup` メソッドと `acquireTokenPopup` メソッドを使用します。 ブラウザーとして Internet Explorer を使用している場合は、`loginRedirect` メソッドと `acquireTokenRedirect` メソッドを使用することをお勧めします。Internet Explorer には、ポップアップ ウィンドウの処理に関して[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)があるためです。 `Redirect methods` を使用して同じ結果を実現する方法については、[こちらを参照](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)してください。 
-<!--end-collapse-->
+> このクイックスタートでは、既定では `loginPopup` メソッドと `acquireTokenPopup` メソッドを使用します。 ブラウザーとして Internet Explorer を使用している場合は、`loginRedirect` メソッドと `acquireTokenRedirect` メソッドを使用することをお勧めします。Internet Explorer には、ポップアップ ウィンドウの処理に関して[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)があるためです。 `Redirect methods` を使用して同じ結果を実現する方法については、[こちらを参照](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)してください。
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>取得したトークンを使用して Microsoft Graph API を呼び出す
 
@@ -462,7 +450,7 @@ ms.locfileid: "80990958"
      };
 
      console.log('request made to Graph API at: ' + new Date().toString());
-  
+
      fetch(endpoint, options)
        .then(response => response.json())
        .then(response => callback(response, endpoint))
@@ -470,13 +458,9 @@ ms.locfileid: "80990958"
    }
    ```
 
-<!--start-collapse-->
-
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>保護された API に対する REST 呼び出しの実行についての詳細
 
 このガイドで作成するサンプル アプリケーションでは、`callMSGraph()` メソッドを使用して、トークンが必要な保護されたリソースに対して HTTP `GET` 要求を実行します。 その後、この要求からその内容が呼び出し元に返されます。 このメソッドは、取得したトークンを *HTTP Authorization ヘッダー*に追加します。 このガイドで作成したサンプル アプリケーションのリソースは、ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
-
-<!--end-collapse-->
 
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -506,7 +490,6 @@ ms.locfileid: "80990958"
 
 ![Microsoft Graph API 呼び出しの結果](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
 
 Microsoft Graph API には、ユーザーのプロファイルを読み取るための *user.read* スコープが必要です。 このスコープは既定で、登録ポータルに登録されているすべてのアプリケーションで自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 たとえば、Microsoft Graph API には、ユーザーのメールを表示するための *Mail.Read* スコープが必要です。
@@ -515,7 +498,5 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 > スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
 
 バックエンド API でスコープを必要としない (推奨されません) 場合は、トークンを取得するための呼び出しでスコープとして *clientId* を使用できます。
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
