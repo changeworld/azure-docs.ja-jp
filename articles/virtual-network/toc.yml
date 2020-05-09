@@ -35,9 +35,8 @@
       href: powershell-samples.md
     - name: Resource Manager テンプレート
       href: template-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+    - name: Azure Policy のテンプレート
+      href: policy-samples.md
 - name: 概念
   items:
     - name: ビジネス継続性

@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228319"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688036"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する
 
@@ -115,7 +115,7 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 - **アカウントは、SAS によるものも含め、すべての使用について課金されることを理解します。** BLOB への書き込みアクセスを許可した場合は、ユーザーが 200 GB の BLOB をアップロードする可能性があります。 ユーザーに読み取りアクセスも許可すると、この BLOB を 10 回ダウンロードする可能性があり、2 TB (テラバイト) の送信料金が発生します。 したがって、悪意のあるユーザーによるリスクが軽減されるように、制限付きアクセス許可を付与してください。 このような脅威が軽減されるように、短期間の SAS を使用してください (ただし、終了時刻のクロック スキューには注意してください)。
 - **SAS を使用して書き込まれたデータを検証します。** クライアント アプリケーションがストレージ アカウントにデータを書き込む場合は、そのデータに問題がある可能性に注意してください。 データが検証後または認証後に使用可能になることをアプリケーションが要求する場合は、書き込まれたデータをアプリケーションが使用する前に、この検証を実行する必要があります。 これを実行すると、ユーザーが SAS を正当に入手している場合でも、漏えいした SAS を利用している場合でも、破損データまたは悪意によるデータの書き込みからアカウントが保護されます。
 - **SAS を使用しない場合を認識します。** ストレージ アカウントに対する特定の操作に関連するリスクが、SAS を使用する利点より重大である場合もあります。 このような操作については、ビジネス ルールの検証、認証、および監査を実行した後にストレージ アカウントに書き込む中間層サービスを作成します。 また、別の方法でアクセスを管理した方が容易である場合もあります。 たとえば、コンテナー内のすべての BLOB が一般ユーザーに読み取り可能である場合は、すべてのクライアントにアクセス用の SAS を提供するのではなく、コンテナーをパブリックにします。
-- **Azure Monitor と Azure Storage ログを使用してアプリケーションを監視します。** Azure Monitor や Storage Analytics ログを使用して、SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を監視できます。 詳細については、「[Azure Monitor の Azure Storage メトリック](storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」および「[Azure Storage Analytics のログ](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+- **Azure Monitor と Azure Storage ログを使用してアプリケーションを監視します。** Azure Monitor や Storage Analytics ログを使用して、SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を監視できます。 詳細については、「[Azure Monitor の Azure Storage メトリック](monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」および「[Azure Storage Analytics のログ](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 ## <a name="get-started-with-sas"></a>SAS の概要
 

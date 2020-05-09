@@ -86,7 +86,7 @@
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
     - name: Open Datasets (パブリック)
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: 概念
   items:
     - name: コストの計画と管理
@@ -172,8 +172,6 @@
           href: how-to-setup-authentication.md
         - name: Azure Machine Learning の監視
           href: monitor-azure-machine-learning.md
-    - name: イベント グリッドの統合
-      href: concept-event-grid-integration.md
 - name: 操作方法ガイド
   items:
     - name: ワークスペースの作成と管理
@@ -343,7 +341,7 @@
               displayName: functions app
               href: how-to-deploy-functions.md
             - name: Azure IoT Edge デバイス
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
             - name: FPGA 推論
               href: how-to-deploy-fpga-web-service.md
             - name: カスタム Docker イメージ
@@ -384,7 +382,7 @@
           href: how-to-debug-pipelines-application-insights.md
         - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
         - name: デザイナーによるデータの変換
           displayName: pipeline
           href: how-to-designer-transform-data.md
@@ -456,7 +454,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Microsoft の ML 製品の比較
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Workbench の変更点
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md
