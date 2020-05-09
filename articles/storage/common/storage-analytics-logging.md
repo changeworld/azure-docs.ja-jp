@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637177"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204068"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -158,7 +158,11 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  Azure portal または Azure PowerShell コマンドレットを使用してストレージ ログを制御する方法に加え、いずれかの Azure Storage API を使用することもできます。 たとえば、.NET 言語を使用している場合は、ストレージ クライアント ライブラリを使用できます。  
 
- クラス **CloudBlobClient**、**CloudQueueClient**、および **CloudTableClient** はすべて、**SetServiceProperties** や **SetServicePropertiesAsync** のような、**ServiceProperties** オブジェクトをパラメーターとして使用するメソッドが用意されています。 **ServiceProperties** オブジェクトを使用して、ストレージ ログを構成することができます。 たとえば、以下の C# スニペットは、ログの記録対象、およびキュー ログの保持期間を変更する方法を示しています。  
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -170,6 +174,9 @@ serviceProperties.Logging.RetentionDays = 2;
 
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
+
+---
+
 
  .NET 言語を使用してストレージ ログを構成する方法の詳細については、「[Storage Client Library Reference (ストレージ クライアント ライブラリ リファレンス)](https://msdn.microsoft.com/library/azure/dn261237.aspx)」を参照してください。  
 

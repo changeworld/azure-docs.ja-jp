@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: e5f9762533dc2ad47f855714822ba39c645bf847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045455"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629475"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーの作成を開始する
 
@@ -61,7 +61,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 * 受信 NAT 規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングする規則が含まれます。
 * プローブ - バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
 
-詳細については、[Azure Load Balancer コンポーネント](./concepts-limitations.md#load-balancer-components)に関するページを参照してください。
+詳細については、[Azure Load Balancer コンポーネント](./components.md)に関するページを参照してください。
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Resource Manager を使用するための PowerShell をセットアップ
 

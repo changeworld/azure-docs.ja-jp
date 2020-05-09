@@ -222,7 +222,7 @@
           href: connector-azure-cosmos-db.md
         - name: Azure Cosmos DB の MongoDB 用 API
           href: connector-azure-cosmos-db-mongodb-api.md
-        - name: Azure Data Explorer
+        - name: "\_Azure Data Explorer"
           href: connector-azure-data-explorer.md
         - name: Azure Data Lake Storage Gen1
           href: connector-azure-data-lake-store.md
@@ -675,6 +675,8 @@
           href: how-to-fixed-width.md
         - name: エラー行の処理
           href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB から CosmosDB へ
+          href: how-to-sqldb-to-cosmosdb.md
     - name: オンプレミスからの SSIS の移行
       items:
         - name: SSIS の移行の概要

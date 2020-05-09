@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 73118823aec9b8d4bd872986b13f19496240c0b9
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 0ee97e2a2b788d515cad5ebd75bc50c69307acad
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393440"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626277"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid のイベント ハンドラー
 
@@ -32,7 +32,7 @@ Azure Automation を使うと、自動化された Runbook でイベントを処
 
 Azure Functions を使うと、サーバーを介さずにイベントに応答できます。
 
-ハンドラーとして Azure Functions を使用する場合は、汎用 HTTP トリガーではなく Event Grid トリガーを使用します。 Event Grid では、Event Grid 関数トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](security-authentication.md#webhook-event-delivery)を実装する必要があります。
+ハンドラーとして Azure Functions を使用する場合は、汎用 HTTP トリガーではなく Event Grid トリガーを使用します。 Event Grid では、Event Grid 関数トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](webhook-event-delivery.md)を実装する必要があります。
 
 |タイトル  |説明  |
 |---------|---------|

@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e7a2611312ffc33703dd5cc9d0a2d7142ddb0532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368928"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627689"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions の Azure Event Grid 出力バインディング
 
-イベントをカスタム トピックに書き込むには、Event Grid 出力バインディングを使用します。 有効な[カスタム トピックのアクセス キー](../event-grid/security-authentication.md#custom-topic-publishing)が必要です。
+イベントをカスタム トピックに書き込むには、Event Grid 出力バインディングを使用します。 有効な[カスタム トピックのアクセス キー](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)が必要です。
 
 セットアップと構成の詳細については、[概要](./functions-bindings-event-grid.md)を参照してください。
 

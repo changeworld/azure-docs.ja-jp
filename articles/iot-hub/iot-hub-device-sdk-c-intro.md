@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b9b27bb142cb729536a3b7a561ed8b8ff5e0ccf5
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731317"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629356"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -88,7 +88,7 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
 デバイス エクスプローラー ツールに慣れていない方のために、次の手順で、デバイス エクスプローラー ツールを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
 
-1. デバイス エクスプローラー ツールをインストールするには、「[How to use Device Explorer for IoT Hub devices (IoT Hub デバイス向けにデバイス エクスプローラーを使用する方法)](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)」を参照してください。
+1. デバイス エクスプローラー ツールをインストールするには、「[How to use Device Explorer for IoT Hub devices (IoT Hub デバイス向けにデバイス エクスプローラーを使用する方法)](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/)」を参照してください。
 
 1. プログラムを実行すると、次のインターフェイスが表示されます。
 
