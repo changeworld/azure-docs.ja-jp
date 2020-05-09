@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064021"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625410"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>[自分のサインイン (プレビュー)] ページから最近のサインイン アクティビティを表示および検索する
 
@@ -30,7 +30,7 @@ ms.locfileid: "77064021"
 
 ## <a name="view-your-recent-sign-in-activity"></a>最近のサインイン アクティビティを表示する
 
-1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。
 
 2. 左側のナビゲーション ウィンドウから **[自分のサインイン (プレビュー)]** を選択するか、 **[自分のサインイン (プレビュー)]** ブロックから **[最近のアクティビティを確認する]** リンクを選択します。
 

@@ -67,8 +67,13 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
+    - name: イメージ
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: リージョン
@@ -457,17 +462,64 @@
         - name: ログ アラートを作成する
           href: ../../azure-monitor/platform/alerts-log.md
     - name: イメージの使用
+      displayName: 'SIG, AMI, image'
       items:
-        - name: 共有イメージ ギャラリー
+        - name: Shared Image Gallery
           items:
-            - name: 概要
-              href: shared-image-galleries.md
             - name: CLI
-              href: shared-images.md
+              items:
+                - name: ギャラリーの作成
+                  href: ../shared-images-cli.md
+                - name: イメージを作成する
+                  items:
+                    - name: VM から
+                      href: ../image-version-vm-cli.md
+                    - name: マネージド イメージから移行する
+                      href: ../image-version-managed-image-cli.md
+                    - name: 別のギャラリーからコピーする
+                      href: ../image-version-another-gallery-cli.md
+                - name: VM の作成
+                  items:
+                    - name: 一般化されたイメージ
+                      href: ../vm-generalized-image-version-cli.md
+                - name: イメージ リソースを更新する
+                  href: ../update-image-resources-cli.md
+                - name: 共有のためのアプリの登録
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: ギャラリーの作成
+                  href: ../shared-images-powershell.md
+                - name: イメージ バージョンを作成する
+                  items:
+                    - name: VM から
+                      href: ../image-version-vm-powershell.md
+                    - name: マネージド イメージから移行する
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 別のギャラリーからコピーする
+                      href: ../image-version-another-gallery-powershell.md
+                - name: VM の作成
+                  items:
+                    - name: 一般化されたイメージ
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 専用イメージ
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: イメージ リソースを更新する
+                  href: ../update-image-resources-powershell.md
             - name: ポータル
-              href: shared-images-portal.md
-            - name: 共有のためのアプリの登録
-              href: share-images-across-tenants.md
+              items:
+                - name: ギャラリー、イメージ、VM の作成
+                  href: shared-images-portal.md
+            - name: リソース マネージャーのテンプレート
+              items:
+                - name: Shared Image Gallery を作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Shared Image Gallery にイメージ定義を作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Shared Image Gallery にイメージのバージョンを作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: イメージ バージョンから VM を作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: 共有イメージのトラブルシューティングを行う
               href: troubleshooting-shared-images.md
         - name: Image Builder (プレビュー)
@@ -544,9 +596,9 @@
         - name: Terraform
           items:
             - name: インストールと構成
-              href: ../../terraform/terraform-install-configure.md
+              href: /azure/developer/terraform/install-configure
             - name: 完全な VM の作成
-              href: ../../terraform/terraform-create-complete-vm.md
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
         - name: cloud-init
           items:
             - name: cloud-init の概要
@@ -564,14 +616,14 @@
             - name: cloud-init のための既存の VM の準備
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: /azure/developer/jenkins/overview.md
+          href: /azure/developer/jenkins/overview
           items:
             - name: Jenkins サーバーを作成する
-              href: /azure/developer/jenkins/configure-on-linux-vm.md
+              href: /azure/developer/jenkins/configure-on-linux-vm
             - name: Azure VM エージェントでスケーリングする
-              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
             - name: アーティファクトをストレージに発行する
-              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
             - name: Jenkins をセキュリティ保護する
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: コンテナーの実行

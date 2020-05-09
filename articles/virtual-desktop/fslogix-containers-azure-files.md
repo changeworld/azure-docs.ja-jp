@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127887"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611978"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -98,7 +98,7 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 
 次のガイドを使用して、Windows Virtual Desktop 環境を設定します。
 
-- デスクトップ仮想化ソリューションの構築を開始するには、[Windows Virtual Desktop でのテナントの作成](tenant-setup-azure-active-directory.md)に関するページを参照してください。
+- デスクトップ仮想化ソリューションの構築を開始するには、[Windows Virtual Desktop でのテナントの作成](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)に関するページを参照してください。
 - ご利用の Windows Virtual Desktop テナント内にホスト プールを作成するには、「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
 - クラウド内でフル マネージドファイル共有を設定するには、[Azure Files 共有の設定](/azure/storage/files/storage-files-active-directory-enable/)に関するページを参照してください。
 - FSLogix プロファイル コンテナーを構成するには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)」を参照してください。
