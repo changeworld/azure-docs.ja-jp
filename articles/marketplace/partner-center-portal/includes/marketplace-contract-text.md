@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: 9b99876b66826cc5a66cba686a7d6a5243b47b98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7692d8c90d71e76628ecb44ade529eabedfa909
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277224"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691504"
 ---
 Microsoft では、商業マーケットプレース向けに標準契約テンプレートを提供しています。
 
@@ -55,5 +55,4 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 顧客は、オファーを試す前にこれらの条件を承諾する必要があります。
 
-次のセクションに進む前に、必ず**保存**してください。
-次のセクションに進む前に、必ず**保存**してください。
+続行する前に、 **[下書きの保存]** を選択します。

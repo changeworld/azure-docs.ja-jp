@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/02/2020
-ms.openlocfilehash: e9e9b10cc9bae029fe11fb2bd1f8b76cf120744a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/27/2020
+ms.openlocfilehash: c9ac8d7ea465a26d29bf8f8fbc15dcefaf9d7575
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417812"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187281"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory でのデータ フローのトラブルシューティング
 
@@ -44,7 +44,7 @@ ms.locfileid: "81417812"
 
 - **メッセージ**:ブロードキャスト結合のタイムアウトエラーが発生しました。ブロードキャスト ストリームが、デバッグ実行では 60 秒以内に、ジョブ実行では 300 秒以内にデータを生成することを確認してください
 - **原因**:ブロードキャストの既定のタイムアウトは、デバッグ実行では 60 秒、ジョブ実行では 300 秒です。 ブロードキャスト用に選択されたストリームは、この制限内にデータを生成するには大きすぎると思われます。
-- **推奨事項**:処理に 60 秒を超える時間を要する可能性がある大規模なデータ ストリームのブロードキャストは避けてください。 代わりに、ブロードキャストするための小さいストリームを選択してください。 通常、大規模な SQL/DW テーブルとソース ファイルは適切な候補ではありません。
+- **推奨事項**:データ フロー変換の [最適化] タブで、結合、存在、および参照を確認します。 [Broadcast]\(ブロードキャスト\) の既定のオプションは "Auto" (自動) です。 これが設定されている場合、または "Fixed" (固定) で右側または左側でブロードキャストするよう手動で設定している場合は、より大きな Azure Integration Runtime 構成を設定するか、ブロードキャストをオフにすることができます。 データ フローで最適なパフォーマンスを得るための推奨されるアプローチは、"Auto" (自動) を使用して Spark がブロードキャストできるよう許可し、メモリ最適化 Azure IR を使用できるようにすることです。
 
 ### <a name="error-code-df-executor-conversion"></a>エラー コード:DF-Executor-Conversion
 

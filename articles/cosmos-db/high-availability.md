@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688054"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609223"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
@@ -99,6 +99,10 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 - 米国西部 2
 
 - オーストラリア東部
+
+- 東日本
+
+- 北ヨーロッパ
 
 > [!NOTE]
 > 1 つのリージョンの Azure Cosmos アカウントに対して可用性ゾーンを有効にすると、アカウントにリージョンを追加することと同等の課金が発生します。 価格の詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)と[Azure Cosmos DB における複数リージョンのコスト](optimize-cost-regions.md)に関する記事を参照してください。
