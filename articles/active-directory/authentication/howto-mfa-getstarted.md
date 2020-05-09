@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667339"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81451127"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication のデプロイを計画する
 
@@ -144,7 +144,7 @@ Microsoft Authenticator アプリなどのモバイル アプリで、30 秒ご�
 
 ## <a name="plan-registration-policy"></a>登録ポリシーを計画する
 
-管理者は、ユーザーが方法を登録する方法を決定する必要があります。 組織では、Azure MFA とセルフサービス パスワード リセット (SSPR) に対する[新しい組み合わせの登録エクスペリエンスを有効にする](howto-registration-mfa-sspr-combined.md)必要があります。 SSPR では、ユーザーは、多要素認証に使用するのと同じ方法を使用して、セキュリティで保護された方法でパスワードをリセットすることができます。 両方のサービスに 1 度に登録できる、ユーザーにとって優れたエクスペリエンスであることから、この組み合わせ登録 (現在パブリック プレビュー中) をお勧めします。 SSPR と Azure MFA に対して同じ方法を有効にすると、ユーザーは両方の機能を使用するよう登録できます。
+管理者は、ユーザーが方法を登録する方法を決定する必要があります。 組織では、Azure MFA とセルフサービス パスワード リセット (SSPR) に対する[新しい組み合わせの登録エクスペリエンスを有効にする](howto-registration-mfa-sspr-combined.md)必要があります。 SSPR では、ユーザーは、多要素認証に使用するのと同じ方法を使用して、セキュリティで保護された方法でパスワードをリセットすることができます。 両方のサービスに一度に登録できる、ユーザーにとって優れたエクスペリエンスであることから、この組み合わせ登録をお勧めします。 SSPR と Azure MFA に対して同じ方法を有効にすると、ユーザーは両方の機能を使用するよう登録できます。
 
 ### <a name="registration-with-identity-protection"></a>Identity Protection を使用する登録
 

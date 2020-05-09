@@ -15,6 +15,8 @@
   items:
     - name: Video Indexer API の使用
       href: video-indexer-use-apis.md
+    - name: Logic Apps コネクタ
+      href: logic-apps-connector-tutorial.md
 - name: サンプル
   items:
     - name: Video Indexer のサンプル

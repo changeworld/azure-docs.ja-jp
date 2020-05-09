@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75430331"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583756"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>VM から SQL Database サーバーにプライベートにアクセスする
 
 1. myVM のリモート デスクトップで、PowerShell を開きます。
-2. 「`nslookup myserver.database.windows.net`」と入力します。 
+2. 「`nslookup myserver.database.windows.net`」と入力します。 `myserver` は必ず SQL サーバー名に置き換えてください。
 
     次のようなメッセージが返されます。
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,14 +210,21 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
+    
 3. SQL Server Management Studio をインストールします。
-4. [サーバーに接続] で、次の情報を入力または選択します。[Setting Value Server type]\(サーバーの種類の値の設定\)   [データベース エンジン] を選択します。
-      [サーバー名]   [myserver.database.windows.net] を選択します。[ユーザー名]  作成時に提供されたユーザー名を入力します。
-      [パスワード]  作成時に指定したパスワードを入力します。
-      [パスワードを記録する] [はい] を選択します。
-5. [接続] を選択します。
-6. 左側のメニューで [データベース] を参照します。 
-7. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します
+4. **[サーバーに接続]** で、次の情報を入力または選択します。
+
+    | 設定 | 値 |
+    | --- | --- |
+    | サーバーの種類 | データベース エンジン |
+    | サーバー名 | myserver.database.windows.net |
+    | ユーザー名 | 作成時に指定したユーザー名を入力します |
+    | Password | 作成時に指定したパスワードを入力します |
+    | パスワードを保存する | はい |
+    
+5. **[接続]** を選択します。
+6. 左側のメニューで **[データベース]** を参照します。 
+7. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します。
 8. *myVM* へのリモート デスクトップ接続を閉じます。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 

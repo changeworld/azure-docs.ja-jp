@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: c8c4e35fb14d834721a29037c9ac12d8160507d9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417602"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209096"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -51,7 +51,7 @@ HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 このスキームは、Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
+* クラスターのプライマリ ストレージの URI スキーム。 このスキームは、Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
@@ -269,8 +269,6 @@ youth   17
 
 ## <a name="next-steps"></a>次のステップ
 
-HDInsight での MapReduce の使用方法について詳しくは、「[HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)」をご覧ください。
-
-Hive および Pig での C# の使用については、[Apache Hive および Apache Pig での C# ユーザー定義関数の使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)に関するページを参照してください。
-
-HDInsight における Storm での C# の使用については、[HDInsight での Apache Storm の C# トポロジ開発](../storm/apache-storm-develop-csharp-visual-studio-topology.md)を参照してください。
+* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)。
+* [Apache Hive と Apache Pig で C# ユーザー定義関数を使用する](apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
+* [Java MapReduce プログラムを開発する](apache-hadoop-develop-deploy-java-mapreduce-linux.md)

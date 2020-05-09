@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9017fbde1a44bcdf39fa8730bed25141da19fd56
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882405"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537204"
 ---
 # <a name="scenario-protected-web-api"></a>シナリオ:保護された Web API
 

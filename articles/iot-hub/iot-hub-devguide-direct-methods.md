@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 13936a55baed59d5b6257f13f69305a1ce72927a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730400"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583683"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -83,11 +83,19 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 #### <a name="example"></a>例
 
-`curl` を使用したベアボーンの例については、以下を参照してください。 
+この例では、Azure IoT Hub に登録されている IoT デバイス上でダイレクト メソッドを呼び出すための要求を安全に開始することができます。
+
+まず、[Azure CLI 用の Microsoft Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用して、SharedAccessSignature を作成します。 
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+次に、Authorization ヘッダーを、新しく生成された SharedAccessSignature に置き換えます。次に、以下の `curl` コマンドの例の実装に一致するように、`iothubName`、`deviceId`、`methodName`、および `payload` パラメーターを変更します。  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -100,6 +108,14 @@ curl -X POST \
 }'
 ```
 
+変更したコマンドを実行して、指定したダイレクト メソッドを呼び出します。 要求が成功すると、HTTP 200 状態コードが返されます。
+
+> [!NOTE]
+> 上の例は、デバイスでダイレクト メソッドを呼び出す方法を示しています。  IoT Edge モジュールでダイレクト メソッドを呼び出す場合は、次に示すように URL 要求を変更する必要があります。
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+```
 ### <a name="response"></a>Response
 
 バックエンド アプリは、次の項目で構成されている応答を受け取ります。
