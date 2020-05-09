@@ -1,20 +1,15 @@
 ---
-title: クラウドでのシーンのレンダリング - Azure Batch
+title: クラウドでのシーンのレンダリング
 description: チュートリアル - Batch Rendering サービスと Azure コマンド ライン インターフェイスを使用して Arnold で Autodesk 3DS Max シーンをレンダリングする方法
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78672976"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117133"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 
 
@@ -33,7 +28,7 @@ Azure Batch は、クラウド規模のレンダリング機能を従量課金�
 
 Batch で従量課金制のレンダリング アプリケーションを使用するには、従量課金制サブスクリプションまたはその他の Azure 購入オプションが必要です。 **金融クレジットを提供する無料の Azure オファーを使用する場合、従量課金制ライセンスはサポートされません。**
 
-このチュートリアル用のサンプル 3DS Max シーンは、サンプルの Bash スクリプトと JSON 構成ファイルと共に [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) にあります。 3DS Max シーンは、[Autodesk 3DS Max サンプル ファイル](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)に含まれています (Autodesk 3DS Max のサンプル ファイルは、Creative Commons Attribution-NonCommercial-Share Alike ライセンスで入手可能です。 Copyright &copy; Autodesk, Inc.)
+このチュートリアル用のサンプル 3DS Max シーンは、サンプルの Bash スクリプトと JSON 構成ファイルと共に [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) にあります。 3DS Max シーンは、[Autodesk 3DS Max サンプル ファイル](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)に含まれています  (Autodesk 3DS Max のサンプル ファイルは、Creative Commons Attribution-NonCommercial-Share Alike ライセンスで入手可能です。 Copyright &copy; Autodesk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -112,7 +107,7 @@ az storage blob upload-batch \
 
 ## <a name="create-a-rendering-pool"></a>レンダリング プールの作成
 
-[az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) コマンドを使用して、レンダリング用の Batch プールを作成します。 この例では、JSON ファイルでプールの設定を指定します。 現在のシェル内で、*mypool.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json) からダウンロードできます)。
+[az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) コマンドを使用して、レンダリング用の Batch プールを作成します。 この例では、JSON ファイルでプールの設定を指定します。 現在のシェル内で、*mypool.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json) からダウンロードできます)。
 
 
 ```json
@@ -198,7 +193,7 @@ az batch job create \
 
 ### <a name="create-a-task"></a>タスクを作成します。
 
-[az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、ジョブにレンダリング タスクを作成します。 この例では、JSON ファイルでタスクの設定を指定します。 現在のシェル内で、*myrendertask.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json) からダウンロードできます)。
+[az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、ジョブにレンダリング タスクを作成します。 この例では、JSON ファイルでタスクの設定を指定します。 現在のシェル内で、*myrendertask.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json) からダウンロードできます)。
 
 このタスクでは、3DS Max コマンドを指定して、単一フレームの *MotionBlur-DragonFlying.max* シーンをレンダリングします。
 
@@ -291,7 +286,7 @@ az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-
 
 ## <a name="render-a-multiframe-scene"></a>マルチフレーム シーンのレンダリング
 
-単一フレームの例と同様、[az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、*myrenderjob* という名前のジョブにレンダリング タスクを作成します。 ここでは、*myrendertask_multi.json* という JSON ファイルでタスクの設定を指定します (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json) からダウンロードできます)。6 つのタスクそれぞれで、Arnold コマンド ラインを指定して、3DS Max シーン *MotionBlur-DragonFlying.max* の 1 つのフレームをレンダリングします。
+単一フレームの例と同様、[az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、*myrenderjob* という名前のジョブにレンダリング タスクを作成します。 ここでは、*myrendertask_multi.json* という JSON ファイルでタスクの設定を指定します  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json) からダウンロードできます)。6 つのタスクそれぞれで、Arnold コマンド ラインを指定して、3DS Max シーン *MotionBlur-DragonFlying.max* の 1 つのフレームをレンダリングします。
 
 現在のシェルに *myrendertask_multi.json* という名前のファイルを作成し、ダウンロードしたファイルから内容をコピーして貼り付けます。 JSON ファイルの `blobSource` 要素と `containerURL` 要素を変更して、ストレージ アカウントと SAS トークンの名前を含めます。 6 つのタスクそれぞれで設定を変更するようにしてください。 ファイルを保存し、次のコマンドを実行してタスクをキューに登録します。
 

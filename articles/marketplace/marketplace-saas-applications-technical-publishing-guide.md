@@ -1,19 +1,19 @@
 ---
-title: Azure Marketplace SaaS アプリケーションの技術的な発行ガイド
+title: Azure Marketplace SaaS アプリケーションの発行ガイド
 description: Azure Marketplace に SaaS アプリケーションを発行するためのステップ バイ ステップ ガイドと発行チェックリスト
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/23/2020
+ms.author: dsindona
+ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544277"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117235"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
@@ -21,12 +21,7 @@ SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"�
 
 ## <a name="offer-overview"></a>オファーの概要  
 
-SaaS アプリケーションは、両方の Azure ネットショップで入手できます。次の表では、現在利用できるオプションについて説明しています。
-
-| ネットショップのオプション | 一覧 | 試用版/取引 |  
-| --- | --- | --- |  
-| AppSource | はい | はい |
-| Azure Marketplace | いいえ | はい |   
+SaaS アプリケーションは Microsoft AppSource と Azure Marketplace でご利用いただけます。  両方のネットショップで、プラン一覧、試用版プラン、およびトランザクション プランがサポートされています。
 
 **リスト:** リストの発行オプションは、お問い合わせのオファー タイプから構成され、試用版レベルまたは取引レベルの参加を実現できない場合に使用されます。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに取引に転換し、ビジネスを向上できるリードの受け取りを始められることです。  
 **試用版/取引:** 顧客はソリューションを直接購入するか、試用版を要求することができます。 試用版エクスペリエンスを提供することで、顧客に提供されるエンゲージメント レベルが高くなり、顧客は購入前にソリューションを調べることができます。 試用版エクスペリエンスでは、ネットショップでのプロモーションの機会が多くなり、顧客エンゲージメントからより多くの有望なリードを期待できます。 試用は、少なくとも試用期間中は無料サポートを含む必要があります。  
@@ -110,8 +105,8 @@ Azure AD を使ってアプリまたは試用版の 1 クリック認証を有�
 **マルチテナント アプリケーションの場合:**  
 
 既に Azure AD をサポートしている場合は、以下を実行します。
-1.  Azure Portal でアプリケーションを登録します
-2.  Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)を参照してください。  
+1.    Azure Portal でアプリケーションを登録します
+2.    Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)を参照してください。  
 
 Azure AD フェデレーション SSO が初めての場合は、以下を実行します。 
 1.  Azure Portal でアプリケーションを登録します
@@ -144,9 +139,9 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 ## <a name="next-steps"></a>次のステップ
 まだ行っていない場合は、
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
+* マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 
-登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
+パートナー センターに登録するには、新しいプランの作成を開始するか、既存のものを操作します。
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
-- 詳細については、「[Azure SaaS アプリケーション プラン](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)」を参照してください。
+* [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
+* 詳細については、「[新しい SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)」を参照してください。

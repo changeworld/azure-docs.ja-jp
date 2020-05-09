@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631367"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161283"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>リファレンス: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -52,7 +52,7 @@ JupyterHub でいくつかの Notebook サンプルを入手できます。
 
 H2O は、高速でインメモリの分散型機械学習と予測分析のプラットフォームです。 Python パッケージは、ルートと py35 両方の Anaconda 環境にインストールされます。 また、R パッケージもインストールされます。 
 
-コマンド ラインから H2O を起動するには、`java -jar /dsvm/tools/h2o/current/h2o.jar` を実行します。 多様な[コマンドライン オプション](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)があり、必要に応じて構成できます。 Flow Web UI にアクセスするには、まず http://localhost:54321 にアクセスします。 サンプルの Notebook は、JupyterHub でも利用できます。
+コマンド ラインから H2O を起動するには、`java -jar /dsvm/tools/h2o/current/h2o.jar` を実行します。 多様な[コマンドライン オプション](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)があり、必要に応じて構成できます。 Flow Web UI にアクセスするには、まず `http://localhost:54321` にアクセスします。 サンプルの Notebook は、JupyterHub でも利用できます。
 
 ### <a name="keras"></a>Keras
 
@@ -66,7 +66,7 @@ MXNet は、効率性と柔軟性の両方のために設計されたディー�
 
 DIGITS として知られる NVIDIA ディープ ラーニング GPU トレーニング システムは、一般的なディープ ラーニング タスクを簡略化するシステムです。 そうしたタスクには、データの管理や、GPU システムでのニュートラル ネットワークの設計とトレーニング、リアル タイムでのパフォーマンスの監視と高度な視覚化が挙げられます。
 
-DIGITS は、"*digits (ディジッツ)* " というサービスとして利用できます。 サービスを開始するには、 http://localhost:5000 を参照します。
+DIGITS は、"*digits (ディジッツ)* " というサービスとして利用できます。 サービスを開始するには、`http://localhost:5000` を参照します。
 
 また DIGITS は、Conda root 環境に Python モジュールとしてインストールされます。
 
@@ -137,7 +137,7 @@ conda install <package> -n py35
 
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用してサインインします。
 
-Jupyter Notebook サーバーは、Python 2、Python 3、R カーネルであらかじめ構成されています。 ブラウザーを開いて Notebook サーバーにアクセスするには、**Jupyter Notebook** デスクトップ アイコンを使用します。 SSH または X2Go クライアント経由で VM を使用している場合は、[https://localhost:8000/](https://localhost:8000/) で Jupyter Notebook サーバーにアクセスすることもできます。
+Jupyter Notebook サーバーは、Python 2、Python 3、R カーネルであらかじめ構成されています。 ブラウザーを開いて Notebook サーバーにアクセスするには、**Jupyter Notebook** デスクトップ アイコンを使用します。 SSH または X2Go クライアント経由で VM を使用している場合は、`https://localhost:8000/` で Jupyter Notebook サーバーにアクセスすることもできます。
 
 > [!NOTE]
 > 証明書の警告が表示されても続行してください。
@@ -337,7 +337,7 @@ rattle()
 1. **[Forest]\(フォレスト\)** オプションをオンにし、 **[Execute]\(実行\)** を選択してランダム フォレストを作成します。
 1. **[Evaluate]\(評価\)** タブを選択します。
 1. **[Risk]\(リスク\)** オプションをオンにし、 **[Execute]\(実行\)** を選択して、2 つの**リスク (累積)** パフォーマンス プロットを表示します。
-1. **[Log]\(ログ\)** タブを選択して、これまでの操作の生成済み R コードを表示します
+1. **[Log]\(ログ\)** タブを選択して、これまでの操作の生成済み R コードを表示します 
    (Rattle の現在のリリースにはバグがあるため、ログのテキストの **Export this log** の前に **#** 文字を挿入する必要があります)。
 1. **[Export]\(エクスポート\)** ボタンを選択して、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
 

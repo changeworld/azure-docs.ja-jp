@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: c64483f18b2deb061704a4eb7171e575fdd561e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164629"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144153"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
@@ -36,7 +36,12 @@ Azure Logic Apps がサポートする機能とパターンについて学習す
     * [Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [チュートリアル:スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * **メールを受信したとき**トリガーでは、[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](https://docs.microsoft.com/connectors/gmail/)、[Outlook.com](https://docs.microsoft.com/connectors/outlook/) などの Logic Apps でサポートされる任意のメール プロバイダーからの新規メールをロジック アプリでチェックすることができます。 詳細については、以下のトピックを参照してください。<p>
+  * **メールを受信したとき**トリガーでは、[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](https://docs.microsoft.com/connectors/gmail/)、[Outlook.com](https://docs.microsoft.com/connectors/outlook/) などの Logic Apps でサポートされる任意のメール プロバイダーからの新規メールをロジック アプリでチェックすることができます。
+
+    > [!IMPORTANT]
+    > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
+
+    詳細については、以下のトピックを参照してください。<p>
 
     * [チュートリアル:Azure Logic Apps を使用して承認ベースの自動化されたワークフローを作成する](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
     * [チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する](../logic-apps/tutorial-process-email-attachments-workflow.md)

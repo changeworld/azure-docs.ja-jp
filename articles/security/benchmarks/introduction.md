@@ -7,13 +7,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
-ms.custom: security-baselines
-ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: 883042c94576014c3bdeabd38516d9531c8fd3dc
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75945335"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606859"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure セキュリティ ベンチマークの概要
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72333174"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176143"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
@@ -37,7 +37,7 @@ REST API と SMB の両方を使用して、共有のスナップショットを
 
 共有スナップショット機能は、ファイル共有レベルで提供されます。 取得は、個々のファイルを復元できるように個々のファイル レベルで提供されます。 SMB、REST API、ポータル、クライアント ライブラリ、または PowerShell/CLI ツールを使用して完全なファイル共有を復元できます。
 
-ファイル共有の共有スナップショットは、そのベース ファイル共有と同じです。 唯一の違いは、共有スナップショットの作成時刻を示すために **DateTime** 値が共有 URI に追加されることです。 たとえば、ファイル共有の URI が http://storagesample.core.file.windows.net/myshare の場合、共有スナップショットの URI は次のようになります。
+ファイル共有の共有スナップショットは、そのベース ファイル共有と同じです。 唯一の違いは、共有スナップショットの作成時刻を示すために **DateTime** 値が共有 URI に追加されることです。 たとえば、ファイル共有の URI が http:\//storagesample.core.file.windows.net/myshare の場合、共有スナップショット URI は次のようになります。
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```

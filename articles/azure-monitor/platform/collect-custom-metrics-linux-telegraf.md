@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655465"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186443"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -24,11 +24,17 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
  ![Telegraph エージェントの概要](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
+> [!NOTE]  
+> カスタム メトリックは、すべてのリージョンでサポートされているわけではありません。 サポートされているリージョンについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions)の一覧を参照してください
+
 ## <a name="send-custom-metrics"></a>カスタム メトリックを送信する 
 
 このチュートリアルでは、Ubuntu 16.04 LTS オペレーティング システムを実行する Linux VM をデプロイします。 Telegraf エージェントは、ほとんどの Linux オペレーティング システムでサポートされます。 [InfluxData ダウンロード ポータル](https://portal.influxdata.com/downloads)で、Debian パッケージと RPM パッケージの両方と、パッケージ化されていない Linux バイナリを入手できます。 詳細なインストール手順とオプションについては、この[Telegraf インストール ガイド](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)を参照してください。 
 
 [Azure portal](https://portal.azure.com) にサインインします。
+
+> [!NOTE]  
+> 従来のアラート ルールを移行し、既存の Linux 仮想マシンを使用する場合は、仮想マシンにシステムによって割り当てられた ID が**オン**に設定されていることを確認します。
 
 新しい Linux VM を作成するには、次の手順を実行します。 
 

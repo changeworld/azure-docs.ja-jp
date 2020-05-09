@@ -226,7 +226,9 @@
         - name: トークンおよびセッション管理
           items:
             - name: トークンのカスタマイズ
-              href: custom-policy-manage-sso-and-token-config.md
+              href: configure-tokens-custom-policy.md
+            - name: セッションの動作を構成する
+              href: session-behavior-custom-policy.md
         - name: 外部 IdP トークンをパススルーする
           href: idp-pass-through-custom.md
         - name: アダプティブなエクスペリエンス

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271079"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735421"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(非推奨) Helm を使用して、Kubernetes クラスターにコンテナーをデプロイする
 
@@ -34,7 +34,7 @@ Helm には、次の 2 つのコンポーネントがあります。
 
 * [ローカル コンピューターで `kubectl`](../container-service-connect.md) をインストールおよび構成する
 
-* [ローカル コンピューターで Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) をインストールする
+* [ローカル コンピューターで Helm](https://helm.sh/docs/intro/quickstart/) をインストールする
 
 ## <a name="helm-basics"></a>Helm の基礎 
 
@@ -149,5 +149,5 @@ sudo mysql –h v1-mariadb
  
 ## <a name="next-steps"></a>次のステップ
 
-* Kubernetes チャートの管理に関する詳細については、「[Helm ドキュメント](https://github.com/kubernetes/helm/blob/master/docs/index.md)」を参照してください。 
+* Kubernetes チャートの管理に関する詳細については、「[Helm ドキュメント](https://helm.sh/docs/)」を参照してください。 
 
