@@ -3,7 +3,7 @@ title: リソース所有者のパスワード資格情報付与を使用して�
 titleSuffix: Microsoft identity platform
 description: リソース所有者のパスワード資格情報 (ROPC) 付与を使用して、ブラウザーなしの認証フローをサポートします。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26b3cb343aba2d45d5a14944a7f8856715bca100
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868650"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690097"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 

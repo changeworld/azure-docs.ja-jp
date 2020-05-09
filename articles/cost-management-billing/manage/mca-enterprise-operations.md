@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/01/2020
 ms.author: banders
-ms.openlocfilehash: 01a7b81794342871ae8eadc090e61bbac0876c03
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b8f588df89429bd08b1c74fbc528801fb45377ed
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586166"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692302"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する
 

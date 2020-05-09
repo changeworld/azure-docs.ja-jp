@@ -3,7 +3,7 @@ title: OAuth 2.0 デバイス コード フロー | Azure
 titleSuffix: Microsoft identity platform
 description: ブラウザーなしでユーザーをサインインさせます。 デバイス許可付与を使用して、埋め込み型およびブラウザーレスの認証フローを構築します。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42f3ca233597d0fbc31ce656bd856875e873e3c2
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868477"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689776"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
 
