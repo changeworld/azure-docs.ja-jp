@@ -36,6 +36,11 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
       href: spring-cloud-tutorial-intellij-deploy-apps.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure Spring Cloud のクォータと制限について

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972287"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127852"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN Gateway のセキュリティ コントロール
 
@@ -34,9 +34,9 @@ ms.locfileid: "75972287"
 
 | セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
-| Azure 監視サポート (Log analytics や App Insights など)| はい | [Azure Monitor の診断ログ/アラート](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor のメトリック/アラート](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)に関するページを参照してください。  |
+| Azure 監視サポート (Log analytics や App Insights など)| はい | [Azure Monitor ログ アラート](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor メトリック アラート](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)に関するページを参照してください。  |
 | コントロールと管理プレーンのログ記録と監査| はい | Azure Resource Manager アクティビティ ログ。 |
-| データ プレーンのログ記録と監査 | はい | VPN 接続のログ記録と監査のための [Azure Monitor の診断ログ](../azure-resource-manager/management/view-activity-logs.md)。 |
+| データ プレーンのログ記録と監査 | はい | VPN 接続のログ記録と監査のための [Azure Monitor アクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md)。 |
 
 ## <a name="identity"></a>ID
 

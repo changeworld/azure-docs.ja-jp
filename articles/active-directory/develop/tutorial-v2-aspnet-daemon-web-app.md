@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 0fb80b8a3fe9dd642b1574b35ff48b30272ce848
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533719"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201756"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>チュートリアル:Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
 
@@ -224,7 +224,7 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
    1. ソリューション エクスプローラーでプロジェクトを右クリックして、 **[発行]** をクリックします。
    1. 下部のバーにある **[プロファイルのインポート]** を選択し、前にダウンロードした発行プロファイルをインポートします。
 1. **[構成]** をクリックします。
-1. **[接続]** タブで、接続先 URL を "https" を使ったものに更新します。 たとえば、[https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net) を使用します。 **[次へ]** を選択します。
+1. **[接続]** タブで、接続先 URL を "https" を使ったものに更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`を使用します。 **[次へ]** を選択します。
 1. **[設定]** タブで、 **[組織認証の有効化]** が選択されていないことを確認します。
 1. **[保存]** を選択します。 メイン画面で **[発行]** を選択します。
 
