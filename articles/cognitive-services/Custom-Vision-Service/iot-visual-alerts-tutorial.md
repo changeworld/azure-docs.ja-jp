@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769867"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734333"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
@@ -62,7 +62,7 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | このコードは、XAML UI の動作を制御します。 ステート マシンの処理コードが含まれています。|
 | [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | このクラスは、Custom Vision Service との統合を処理するラッパーです。|
 | [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | このクラスは、ONNX モデルとスコアリング イメージを読み込む Windows ML との統合を処理するラッパーです。|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | このクラスは、スコアリング結果を Azure にアップロードする IoT Hub との統合を処理するラッパーです。|
+| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IoTHubWrapper.cs) | このクラスは、スコアリング結果を Azure にアップロードする IoT Hub との統合を処理するラッパーです。|
 
 ## <a name="set-up-the-visual-alerts-app"></a>Visual Alerts アプリの設定
 
@@ -90,7 +90,7 @@ ARM プロセッサを搭載した IoT デバイスにデプロイする場合�
 
 モデルを設定するには、アプリを**トレーニング イメージのキャプチャ中**状態にする必要があります。 次のいずれかのステップを使用します。
 * PC でアプリを実行している場合は、UI の右上隅にあるボタンを使用します。
-* アプリを IoT デバイスで実行している場合は、IoT Hub を通してデバイスで `EnterLearningMode` メソッドを呼び出します。 これは、Azure portal の [IoT Hub] メニューのデバイス エントリ、または [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) などのツールを使用して呼び出すことができます。
+* アプリを IoT デバイスで実行している場合は、IoT Hub を通してデバイスで `EnterLearningMode` メソッドを呼び出します。 これは、Azure portal の [IoT Hub] メニューのデバイス エントリ、または [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp) などのツールを使用して呼び出すことができます。
  
 アプリの状態が**トレーニング イメージのキャプチャ中**になると、目標のイメージ数に達するまで、1 秒ごとに 2 枚のイメージがキャプチャされます。 既定では、目標のイメージ数は 30 ですが、設定したい数を引数として `EnterLearningMode` IoT Hub メソッドに渡すことによって、このパラメーターを設定できます。 
 

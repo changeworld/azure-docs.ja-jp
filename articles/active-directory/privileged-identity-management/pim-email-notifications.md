@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 01/05/2019
+ms.date: 04/28/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee5f2edbae28276f8485ae774a5b1c52e1af2fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72756396"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232310"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
@@ -62,7 +62,7 @@ Azure AD ロールに対するこれらの電子メールをどのユーザー�
 
 ### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Azure AD ロールに関する週間 Privileged Identity Management ダイジェスト電子メール
 
-Azure AD ロールに関する週間 Privileged Identity Management サマリー電子メールは、Privileged Identity Management が有効になっている特権ロール管理者、セキュリティ管理者、およびグローバル管理者に送信されます。 この週間電子メールは、その週の Privileged Identity Management アクティビティのスナップショットのほか、特権ロールの割り当てを提供します。 これは、パブリック クラウド上のテナントについてのみ利用可能です。 電子メールの例を次に示します。
+Azure AD ロールに関する週間 Privileged Identity Management サマリー電子メールは、Privileged Identity Management が有効になっている特権ロール管理者、セキュリティ管理者、およびグローバル管理者に送信されます。 この週間電子メールは、その週の Privileged Identity Management アクティビティのスナップショットのほか、特権ロールの割り当てを提供します。 これは、パブリック クラウド上の Azure AD 組織についてのみ使用できます。 電子メールの例を次に示します。
 
 ![Azure AD ロールに関する週間 Privileged Identity Management ダイジェスト電子メール](./media/pim-email-notifications/email-directory-weekly.png)
 
@@ -70,12 +70,24 @@ Azure AD ロールに関する週間 Privileged Identity Management サマリー
 
 | タイル | 説明 |
 | --- | --- |
-| **[Users activated]\(アクティブ化されたユーザー\)** | テナント内でユーザーの有資格ロールがアクティブ化された回数です。 |
+| **[Users activated]\(アクティブ化されたユーザー\)** | 組織内でユーザーの有資格ロールがアクティブ化された回数です。 |
 | **[Users made permanent]\(永続化されたユーザー\)** | 有資格割り当てを持つユーザーが永続化された回数です。 |
 | **Privileged Identity Management でのロールの割り当て** | Privileged Identity Management の内部でユーザーに資格のあるロールが割り当てられた回数。 |
 | **[Role assignments outside of PIM]\(PIM の外部でのロール割り当て\)** | Privileged Identity Management の外部 (Azure AD の内部) でユーザーに永続的なロールが割り当てられた回数。 |
 
-**[Overview of your top roles]\(上位ロールの概要\)** セクションには、各ロールの永続管理者と有資格管理者の合計数に基づいて、上位 5 つのロールが一覧表示されます。 **[アクションの実行]** リンクをクリックすると、[PIM ウィザード](pim-security-wizard.md)が開き、そこから永続管理者を有資格管理者に一括変換することができます。
+**[Overview of your top roles]\(上位ロールの概要\)** セクションには、各ロールの永続管理者と有資格管理者の合計数に基づいて、組織内の上位 5 つのロールが一覧表示されます。 **[アクションの実行]** リンクをクリックすると、[PIM ウィザード](pim-security-wizard.md)が開き、そこから永続管理者を有資格管理者に一括変換することができます。
+
+## <a name="email-timing-for-activation-approvals"></a>アクティブ化承認の電子メールのタイミング
+
+ユーザーが各自のロールをアクティブにし、ロールの設定で承認が必要な場合、承認者は承認ごとに次の 3 通の電子メールを受け取ります。
+
+- ユーザーのアクティブ化要求を承認または拒否する要求 (要求承認エンジンによって送信されます)
+- ユーザーの要求が承認された (要求承認エンジンによって送信されます)
+- ユーザーのロールがアクティブ化された (Privileged Identity Management によって送信されます)
+
+要求承認エンジンによって送信される最初の 2 つの電子メールは、遅延する場合があります。 現在、電子メールの 90% は 3 分から 10 分かかりますが、1% のお客様については、最大で 15 分ほどになる可能性があります。
+
+最初の電子メールが送信される前に Azure portal で承認要求が承認されると、最初の電子メールはトリガーされなくなり、他の承認者が承認要求の電子メールで通知されることはありません。 他の承認者に電子メールが届かないように見えるかもしれませんが、想定されている動作です。
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>Azure リソース ロール向けの PIM 電子メール
 
