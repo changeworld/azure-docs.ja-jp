@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225491"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678161"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシー
 
@@ -43,7 +43,9 @@ ms.locfileid: "79225491"
 - **Extensions ファイル** - テナントの固有の構成変更を保持しています。
 - **証明書利用者 (RP) ファイル** - アプリケーションまたはサービス (証明書利用者) から直接呼び出される、単一タスクに焦点を置いています。 固有の各タスクには独自の RP が必要であり、ブランドの要件に応じて、この数は "アプリケーションの合計 x ユースケースの総数" になることがあります。
 
-Azure AD B2C でのユーザー フローは上に示した 3 つのファイルのパターンに従いますが、Azure portal が extensions ファイルへの変更をバックグラウンドで行なっている間、開発者には RP ファイルしか表示されません。
+Azure AD B2C でのユーザー フローは上に示したファイルのパターンに従いますが、Azure portal が Extensions ファイルへの変更をバックグラウンドで行なっている間、開発者には RP ファイルしか表示されません。
+
+ポリシー ファイルには 3 つの種類がありますが、3 つのファイルのみに制限されることはありません。 ファイルの種類ごとに複数のファイルを含めることができます。 たとえば、Extensions ファイルを変更したくない場合は、Extensions2 ファイルを作成して、Extensions ファイルをさらに拡張することができます。
 
 ## <a name="custom-policy-core-concepts"></a>カスタム ポリシーの中心概念
 

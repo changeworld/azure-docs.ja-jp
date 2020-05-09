@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756651"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する

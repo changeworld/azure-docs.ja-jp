@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 87350bae282d9d0dccef9cb2121000f7a0473762
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437029"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195487"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Java アプリケーションから JDBC ドライバーを使用して、Apache Hive のクエリを Azure HDInsight 上の Apache Hadoop に送信する方法について説明します。 このドキュメントの情報では、プログラミングによって SQuirreL SQL クライアントから接続する方法を示します。
+Java アプリケーションから JDBC ドライバーを使用する方法について説明します。 Azure HDInsight で Apache Hadoop に Apache Hive クエリを送信します。 このドキュメントの情報では、プログラミングによって SQuirreL SQL クライアントから接続する方法を示します。
 
 Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)を参照してください。
 
@@ -31,7 +31,7 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 
 ## <a name="jdbc-connection-string"></a>JDBC 接続文字列
 
-Azure の HDInsight クラスターに対する JDBC 接続はポート 443 を使用して行われ、トラフィックは TLS/SSL を使用してセキュリティで保護されます。 クラスターが背後に存在するパブリックのゲートウェイは HiveServer2 が実際にリッスンするポートにトラフィックをリダイレクトします。 次の接続文字列は、HDInsight に使用する形式を示しています。
+Azure の HDInsight クラスターに対する JDBC 接続はポート 443 を使用して行われます。 トラフィックは TLS/SSL を使用してセキュリティで保護されます。 クラスターが背後に存在するパブリックのゲートウェイは HiveServer2 が実際にリッスンするポートにトラフィックをリダイレクトします。 次の接続文字列は、HDInsight に使用する形式を示しています。
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -43,17 +43,17 @@ Azure の HDInsight クラスターに対する JDBC 接続はポート 443 を�
 
 ### <a name="host-name-in-connection-string"></a>接続文字列のホスト名
 
-接続文字列のホスト名 'CLUSTERNAME.azurehdinsight.net' は、お使いのクラスターの URL と同じです。 Azure portal を使用してそれを取得できます。 
+接続文字列のホスト名 'CLUSTERNAME.azurehdinsight.net' は、お使いのクラスターの URL と同じです。 Azure portal を使用してそれを取得できます。
 
 ### <a name="port-in-connection-string"></a>接続文字列のポート
 
-Azure 仮想ネットワークの外部にある場所からクラスターに接続するには、**ポート 443** のみを使用できます。 HDInsight はマネージド サービスです。これは、クラスターへのすべての接続がセキュリティで保護されたゲートウェイ経由で管理されることを意味します。 ポート 10001 または 10000 は外部には公開されていないため、これらのポートで HiveServer 2 に直接接続することはできません。 
+Azure 仮想ネットワークの外部にある場所からクラスターに接続するには、**ポート 443** のみを使用できます。 HDInsight は管理サービスです。これは、クラスターへのすべての接続がセキュリティで保護されたゲートウェイ経由で管理されることを意味します。 ポート 10001 または 10000 で HiveServer 2 に直接接続することはできません。 これらのポートは、外部には公開されません。
 
 ## <a name="authentication"></a>認証
 
-接続を確立するときに、HDInsight クラスターの管理者名とパスワードを使用して、クラスター ゲートウェイを認証する必要があります。 SQuirreL SQL などの JDBC クライアントから接続する場合、クライアント設定で管理者名とパスワードを入力する必要があります。
+接続を確立するときに、HDInsight クラスターの管理者名とパスワードを使用して認証を行います。 SQuirreL SQL などの JDBC クライアントから、クライアント設定で管理者名とパスワードを入力します。
 
-Java アプリケーションから接続を確立する場合、名前とパスワードを使用する必要があります。 たとえば、次の Java コードは、接続文字列、管理者名、およびパスワードを使用して新しい接続を開きます。
+Java アプリケーションから接続を確立する場合、名前とパスワードを使用する必要があります。 たとえば、次の Java コードは新しい接続を開きます。
 
 ```java
 DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
@@ -86,7 +86,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
     |プロパティ | 値 |
     |---|---|
     |名前|Hive|
-    |Example URL (URL の例)|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
+    |Example URL (URL の例)|`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`|
     |Extra Class Path (追加クラス パス)|**[追加]** ボタンを使って、以前にダウンロードしたすべての jar ファイルを追加します。|
     |Class Name (クラス名)|org.apache.hive.jdbc.HiveDriver|
 
@@ -96,7 +96,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 6. SQuirreL SQL ウィンドウの左側で、 **[Aliases]** を選択します。 次に **+** アイコンを選択して接続のエイリアスを作成します。
 
-    ![SQuirreL SQL の新しいエイリアスの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    ![`SQuirreL SQL の新しいエイリアスの追加ダイアログ`](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. **[Add Alias]\(エイリアスの追加\)** ダイアログでは次の値を使用します。
 
@@ -104,7 +104,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
     |---|---|
     |名前|HDInsight の Hive|
     |Driver|ドロップダウンを使用して、**Hive** ドライバーを選択します。|
-    |URL|jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。|
+    |URL|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2` **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。|
     |[ユーザー名]|HDInsight クラスターのクラスター ログイン アカウント名。 既定値は **admin** です。|
     |Password|クラスター ログイン アカウントのパスワード。|
 
@@ -153,12 +153,11 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 ### <a name="connection-disconnected-by-hdinsight"></a>HDInsight によって接続が切断される
 
-**現象**:JDBC/ODBC を使用して膨大な量 (たとえば数 GB) のデータをダウンロードしようとすると、ダウンロード中に HDInsight によって接続が予期せず切断されます。 
+**現象**:JDBC/ODBC を使用して膨大な量 (たとえば数 GB) のデータをダウンロードしようとすると、ダウンロード中に HDInsight によって接続が予期せず切断されます。
 
-**原因**:このエラーは、ゲートウェイ ノードの制限が原因で発生します。 JDBC/ODBC からデータを取得する場合、すべてのデータがゲートウェイ ノードを通過する必要があります。 ただし、ゲートウェイは膨大な量のデータをダウンロードするように設計されていないため、トラフィックを処理できない場合は、ゲートウェイによって接続が閉じられる可能性があります。
+**原因**:このエラーは、ゲートウェイ ノードの制限が原因で発生します。 JDBC/ODBC からデータを取得する場合、すべてのデータがゲートウェイ ノードを通過する必要があります。 ただし、ゲートウェイは膨大な量のデータをダウンロードするように設計されていないため、ゲートウェイは、トラフィックを処理できない場合は接続を閉じることがあります。
 
 **解決方法**:大量のデータをダウンロードする場合は、JDBC/ODBC ドライバーを使用しないようにします。 代わりに、BLOB ストレージから直接データをコピーします。
-
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -166,12 +165,8 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 * [Azure HDInsight の Microsoft Power BI で Apache Hive データを視覚化する](apache-hadoop-connect-hive-power-bi.md)。
 * [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
-* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](apache-hadoop-connect-excel-hive-odbc-driver.md)。
 * [Power Query を使用して Excel を Apache Hadoop に接続する](apache-hadoop-connect-excel-power-query.md)。
-* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する](apache-hadoop-visual-studio-tools-get-started.md)。
-* [Azure HDInsight Tool for Visual Studio Code の使用](../hdinsight-for-vscode.md)。
-* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md)
 * [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Apache Pig の使用](../use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)

@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77650983"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。

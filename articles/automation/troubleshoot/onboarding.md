@@ -1,6 +1,6 @@
 ---
-title: Azure Automation 管理ソリューションのオンボード時にトラブルシューティングする
-description: Update Management、Change Tracking、および Inventory ソリューションのオンボード時のエラーをトラブルシューティングする方法について説明します。
+title: Azure Automation 管理ソリューションのオンボードに関するトラブルシューティング
+description: ソリューションのオンボード エラーをトラブルシューティングする方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,24 +8,24 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75889332"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81679230"
 ---
-# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Update Management、Change Tracking、および Inventory のオンボード時のエラーをトラブルシューティングする
+# <a name="troubleshoot-solution-onboarding"></a>ソリューションのオンボードに関するトラブルシューティング
 
-Update Management または Change Tracking や Inventory などのソリューションをオンボードする際にエラーが発生することがあります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
+Update Management ソリューションをオンボードするとき、または Change Tracking および Inventory ソリューションをオンボードするとき、エラーが表示される場合があります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
 
 ## <a name="known-issues"></a>既知の問題
 
-### <a name="scenario-renaming-a-registered-node-requires-unregister--register-again"></a><a name="node-rename"></a>シナリオ:登録されたノードの名前を変更するには、登録を解除して再登録する必要があります
+### <a name="scenario-renaming-a-registered-node-requires-unregister-or-register-again"></a><a name="node-rename"></a>シナリオ:登録されたノードの名前を変更するには、登録の解除または再登録が必要です
 
 #### <a name="issue"></a>問題
 
-ノードが Azure Automation に登録された後、オペレーティング システムのコンピューター名が変更されました。  そのノードからのレポートは、引き続き元の名前で表示されます。
+ノードが Azure Automation に登録された後、オペレーティング システムのコンピューター名が変更されました。 そのノードからのレポートは、引き続き元の名前で表示されます。
 
 #### <a name="cause"></a>原因
 
@@ -33,14 +33,13 @@ Update Management または Change Tracking や Inventory などのソリュー�
 
 #### <a name="resolution"></a>解像度
 
-Azure Automation State Configuration からノードの登録を解除し、再度登録してください。  それより前にサービスに発行されたレポートは、使用できなくなります。
-
+Azure Automation State Configuration からノードの登録を解除し、再度登録してください。 それより前にサービスに発行されたレポートは、使用できなくなります。
 
 ### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>シナリオ:https プロキシ経由の証明書の再署名がサポートされていません
 
 #### <a name="issue"></a>問題
 
-お客様から、https トラフィックを終了してから新しい証明書を使用してトラフィックを再暗号化するプロキシ ソリューションを使用して接続する場合に、サービスで接続が許可されない、という報告がありました。
+HTTPS トラフィックを終了してから新しい証明書を使用してそのトラフィックを再暗号化するプロキシ ソリューションを介して接続する場合に、その接続がサービスによって許可されません。
 
 #### <a name="cause"></a>原因
 
@@ -48,7 +47,7 @@ Azure Automation では、トラフィックの暗号化に使用される証明
 
 #### <a name="resolution"></a>解像度
 
-この問題の回避策はありません。
+現時点では、この問題の回避策はありません。
 
 ## <a name="general-errors"></a>一般エラー
 
@@ -56,7 +55,7 @@ Azure Automation では、トラフィックの暗号化に使用される証明
 
 #### <a name="issue"></a>問題
 
-仮想マシンをソリューションにオンボードしようとすると、次のメッセージのいずれかが表示されます。
+VM をソリューションにオンボードしようとすると、次のメッセージのいずれかが表示されます。
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -68,17 +67,17 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="cause"></a>原因
 
-このエラーは、仮想マシン、ワークスペース、またはユーザーに対するアクセス許可が正しくないか、不足しているために発生します。
+このエラーは、VM またはワークスペースに対するアクセス許可、またはユーザーのアクセス許可が正しくないか、不足しているために発生します。
 
 #### <a name="resolution"></a>解像度
 
-仮想マシンをオンボードする正しいアクセス許可を持つことを確認します。 [マシンをオンボードするために必要なアクセス許可](../automation-role-based-access-control.md#onboarding)を確認し、再度ソリューションをオンボードしてください。 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` というエラーが発生する場合は、ワークスペースにVM がオンボードされているかどうかを調べることができる `Microsoft.OperationalInsights/workspaces/read` アクセス許可があることを確認します。
+[マシンをオンボードするために必要な正しいアクセス許可](../automation-role-based-access-control.md#onboarding-permissions)があることを確認してから、再度ソリューションをオンボードしてみてください。 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` というエラーが発生する場合は、ワークスペースに VM がオンボードされているかどうかを調べることができる `Microsoft.OperationalInsights/workspaces/read` アクセス許可があることを確認してください。
 
-### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>シナリオ:オンボードが失敗し、"診断ログのオートメーション アカウントを構成できませんでした" というメッセージが表示されます
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>シナリオ:オンボードが失敗し、次のメッセージが表示されます。診断ログのオートメーション アカウントを構成できませんでした。
 
 #### <a name="issue"></a>問題
 
-仮想マシンをソリューションにオンボードしようとすると、次のメッセージが表示されます。
+VM をソリューションにオンボードしようとすると、次のメッセージが表示されます。
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -86,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](https://aka.ms/PricingTierWarning)」を参照してください。
+このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 「[Azure Monitor での使用量と推定コストの監視](https://aka.ms/PricingTierWarning)」を参照してください。
 
 #### <a name="resolution"></a>解像度
 
@@ -96,37 +95,36 @@ Log Analytics ワークスペースを手動で作成し、オンボード プ�
 
 #### <a name="issue"></a>問題
 
-このエラー コードは、ソリューションを選択するために使用された、コンピューター グループを検索する保存済みクエリの形式が正しくなかったことを意味します。 
+このエラー コードは、ソリューションを選択するために使用された、コンピューター グループを検索する保存済みクエリの形式が正しくないことを意味します。 
 
 #### <a name="cause"></a>原因
 
-クエリを変更したか、システムによってクエリが変更された可能性があります。
+クエリが変更されたか、システムによってそれが変更されたことが考えられます。
 
 #### <a name="resolution"></a>解像度
 
-そのソリューションに対するクエリを削除し、ソリューションを再オンボードすることができます。その際にクエリが再生成されます。 クエリはワークスペース内の、 **[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。また、クエリのカテゴリは、このクエリに関連付けられたソリューションの名前です。 複数のソリューションが有効な場合は、**MicrosoftDefaultComputerGroup** が複数回 **[保存された検索条件]** に表示されます。
+そのソリューションに対するクエリを削除してから、ソリューションを再度オンボードすれば、クエリが再度作成されます。 クエリはワークスペース内の、 **[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。クエリのカテゴリは、関連付けられたソリューションの名前となります。 複数のソリューションが有効な場合は、**MicrosoftDefaultComputerGroup** クエリが複数回 **[保存された検索条件]** に表示されます。
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>シナリオ:PolicyViolation
 
 #### <a name="issue"></a>問題
 
-このエラー コードは、1 つ以上のポリシーの違反でデプロイが失敗したことを示します。
+このエラー コードは、1 つ以上のポリシーの違反が原因でデプロイが失敗したことを示します。
 
 #### <a name="cause"></a>原因 
 
-操作の完了を阻止するポリシーが存在しています。
+ポリシーによって操作の完了が阻止されています。
 
 #### <a name="resolution"></a>解像度
 
-ソリューションを正常にデプロイするには、指定されたポリシーの変更を検討する必要があります。 定義可能なポリシーが多数あるため、必要になる具体的な変更は、違反しているポリシーによって異なります。 たとえば、リソース グループ内の特定の種類のリソースの内容を変更する権限を拒否するようにポリシーがそのリソース グループで定義されている場合、次のような操作を実行できます。
+ソリューションを正常にデプロイするには、指定されたポリシーの変更を検討する必要があります。 定義可能なポリシーが多数あるため、必要になる変更は、違反しているポリシーによって異なります。 たとえば、リソース グループに対して、含まれている一部のリソースの内容を変更するためのアクセス許可を拒否するポリシーが定義されている場合は、次のいずれかの修正を選択できます。
 
 * ポリシーを完全に削除する
-* 別のリソース グループへのオンボードを試す
-* ポリシーを変更する。例:
-  * ポリシーの対象を特定のリソースに設定し直す (特定の Automation アカウントなど)。
-  * 拒否するようにポリシーが構成されているリソースのセットを変更する
+* 別のリソース グループへのソリューションのオンボードを試す。
+* Automation アカウントなどの特定のリソースに対してポリシーを再ターゲットする。
+* 拒否するようにポリシーが構成されているリソースのセットを変更する。
 
-Azure portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、 **[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、次をご覧ください。[Azure Policy の概要](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
+Azure portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、 **[設定]** の **[デプロイ]** を選択して、失敗したデプロイを表示します。 Azure Policy の詳細については、[Azure Policy の概要](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)に関するページを参照してください。
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>シナリオ:ワークスペースのリンクを解除しようとすると発生するエラー
 
@@ -144,33 +142,29 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 ### <a name="resolution"></a>解像度
 
-この問題を解決するには、次のソリューション (使用している場合) をワークスペースから削除する必要があります。
+次のソリューションを使用している場合は、ご利用のワークスペースから削除する必要があります。
 
 * 更新管理
-* 変更の追跡
+* 変更履歴とインベントリ
 * 勤務時間外に VM を起動/停止する
 
-ソリューションを削除すると、ワークスペースのリンクを解除できます。 ワークスペースおよび Automation アカウントから、これらのソリューションの既存の成果物をクリーンアップすることが重要です。  
+ソリューションを削除すると、ワークスペースのリンクを解除できます。 ご利用のワークスペースおよび Automation アカウントから、これらのソリューションの既存の成果物をクリーンアップすることが重要です。 
 
-* 更新管理
-  * Automation アカウントから、更新プログラムの展開 (スケジュール) を削除します。
-* 勤務時間外に VM を起動/停止する
-  * **[設定]**  >  **[ロック]** で、Automation アカウントのソリューション コンポーネントに対するロックを解除します。
-  * Start/Stop VMs during off-hours ソリューションを削除する追加の手順については、[Start/Stop VM during off-hours ソリューションの削除](../automation-solution-vm-management.md#remove-the-solution)に関する記事を参照してください。
+* Update Management の場合は、Automation アカウントから、更新プログラムのデプロイ (スケジュール) を削除します。
+* Start/Stop VMs during off-hours の場合、 **[設定]**  >  **[ロック]** で、Automation アカウントのソリューション コンポーネントに対するロックを解除します。 [Start/Stop VMs during off-hours ソリューションの削除](../automation-solution-vm-management.md#remove-the-solution)に関するページを参照してください。
 
-## <a name="mma-extension-failures"></a><a name="mma-extension-failures"></a>MMA 拡張機能のエラー
+## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows 拡張機能用の Log Analytics のエラー
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-ソリューションをデプロイすると、関連するさまざまなリソースがデプロイされます。 Microsoft Monitoring Agent 拡張機能または Log Analytics エージェント for Linux は、そのようなリソースの 1 つです。 これらは、仮想マシンのゲスト エージェント (構成済みの Log Analytics ワークスペースとの通信を担当する) によってインストールされる仮想マシン拡張機能です。オンボードしているソリューションが実行を開始した後で利用するバイナリや他のファイルのダウンロードを後から調整することが目的です。
-通常は、Notifications Hub に表示される通知によって、MMA または Log Analytics エージェント for Linux のインストール エラーに最初に気付きます。 その通知をクリックすると、特定のエラーの詳しい情報が表示されます。 [リソース グループ] のリソース、さらにリソース内のデプロイ要素にナビゲートすると、発生したデプロイ エラーの詳細が示されます。
-MMA または Log Analytics エージェント for Linux のインストールは、さまざまな理由からエラーが発生する可能性があるため、そうしたエラーに対処する手順は問題によって異なります。 具体的なトラブルシューティング手順はこの後で説明します。
+Windows 拡張機能用の Log Analytics エージェントのインストールは、さまざまな理由で失敗する可能性があります。 次のセクションでは、Windows 拡張機能用の Log Analytics エージェントのデプロイ中にエラーを引き起こす可能性があるオンボードに関する問題について説明します。
 
-次のセクションでは、オンボードのときに発生して MMA 拡張機能のデプロイのエラーの原因になる可能性があるさまざまな問題について説明します。
+>[!NOTE]
+>Windows 用 Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) の Azure Automation で現在使用されている名前です。
 
 ### <a name="scenario-an-exception-occurred-during-a-webclient-request"></a><a name="webclient-exception"></a>シナリオ:WebClient 要求で例外が発生した
 
-仮想マシン上の MMA 拡張機能が外部リソースと通信できず、デプロイが失敗します。
+VM 上の Windows 拡張機能用の Log Analytics が外部リソースと通信できず、デプロイが失敗します。
 
 #### <a name="issue"></a>問題
 
@@ -188,8 +182,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 このエラーの原因として考えられるものは次のとおりです。
 
-* 特定のポートしか許可しないプロキシが VM に構成されています。
-
+* VM 内で構成されているプロキシでは、特定のポートのみ許可されます。
 * ファイアウォールの設定によって、必要なポートとアドレスへのアクセスがブロックされた。
 
 #### <a name="resolution"></a>解像度
@@ -198,7 +191,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 ### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>シナリオ:環境の一時的な問題のためにインストールが失敗した
 
-デプロイのときに、別のインストールまたは操作によって妨げられたため、Microsoft Monitoring Agent 拡張機能のインストールが失敗しました
+Windows 拡張機能用の Log Analytics のインストールは、デプロイ時に別のインストールまたは操作によって妨げられるため、失敗しました。
 
 #### <a name="issue"></a>問題
 
@@ -221,7 +214,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 このエラーの原因として考えられるものは次のとおりです。
 
 * 別のインストールが進行中です。
-* テンプレートのデプロイ中にシステムの再起動がトリガーされます
+* テンプレートのデプロイ中にシステムの再起動がトリガーされます。
 
 #### <a name="resolution"></a>解像度
 
@@ -229,11 +222,11 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 
 ### <a name="scenario-installation-timeout"></a><a name="installation-timeout"></a>シナリオ:インストールのタイムアウト
 
-MMA 拡張機能のインストールがタイムアウトのために完了しませんでした。
+Windows 拡張機能用の Log Analytics のインストールがタイムアウトのために完了しませんでした。
 
 #### <a name="issue"></a>問題
 
-返されるエラー メッセージの例を次に示します。
+返される可能性のあるエラー メッセージの例を次に示します。
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -241,16 +234,16 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>原因
 
-このエラーは、インストール中に仮想マシンの負荷が高くなったために発生します。
+この種のエラーは、インストール中に VM の負荷が大きくなったために発生します。
 
 ### <a name="resolution"></a>解像度
 
-VM の負荷が低いときに、MMA 拡張機能をインストールしてみてください。
+VM の負荷が小さい場合に、Windows 拡張機能用の Log Analytics エージェントをインストールしてみてください。
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
+自分の問題が上記にない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
 
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
-* [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる – Microsoft Azure 公式アカウントです。Azure コミュニティを適切なリソース (回答、サポート、エキスパート) に結び付けることで、カスタマー エクスペリエンスを向上します。
-* さらにヘルプが必要であれば、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
+* [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
+* Azure サポート インシデントを送信する。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

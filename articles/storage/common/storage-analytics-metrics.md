@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232371"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692734"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
 
@@ -23,7 +23,7 @@ Storage Analytics では、ストレージ サービスに対する要求に関�
 
 > [!NOTE]
 > Storage Analytics メトリックは、BLOB、キュー、テーブル、ファイルのサービスごとに利用できます。
-> Storage Analytics メトリックはクラシック メトリックになりました。 Microsoft では、Storage Analytics メトリックの代わりに、[Azure Monitor の Storage メトリック](storage-metrics-in-azure-monitor.md)を使用することをお勧めします。
+> Storage Analytics メトリックはクラシック メトリックになりました。 Microsoft では、Storage Analytics メトリックの代わりに、[Azure Monitor の Storage メトリック](monitor-storage.md)を使用することをお勧めします。
 
 ## <a name="transaction-metrics"></a>トランザクション メトリック  
  各ストレージ サービスと要求された API 操作について、受信/送信、可用性、エラー、分類された要求のパーセンテージを含む信頼性の高いデータのセットが 1 時間または 1 分間隔で記録されます。 トランザクションの詳細の一覧については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema) 」をご覧ください。  

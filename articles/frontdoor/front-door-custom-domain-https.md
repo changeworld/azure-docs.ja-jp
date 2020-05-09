@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878036"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160087"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
 このチュートリアルでは、フロントエンド ホスト セクションで Front Door に関連付けられたカスタム ドメインの HTTPS プロトコルを有効にする方法について説明します。 カスタム ドメイン (例: https:\//www.contoso.com) で HTTPS プロトコルを使用すると、インターネット経由での送信時、機微なデータが TLS/SSL 暗号化でセキュリティ保護されて配信されます。 Web ブラウザーが HTTPS 経由で Web サイトに接続しているときに、Web サイトのセキュリティ証明書を検証し、正当な証明機関によって発行されていることを確認します。 このプロセスによりセキュリティを確保し、Web アプリケーションを攻撃から保護します。
 
-Azure Front Door では、既定で、Front Door の既定のホスト名の HTTPS がサポートされます。 たとえば、Front Door (例: https:\//contoso.azurefd.net) を作成すると、 https://contoso.azurefd.net に対して行われた要求で HTTPS が自動的に有効になります。 しかし、カスタム ドメイン 'www.contoso.com' をオンボードした場合、このフロントエンド ホストでも HTTPS を有効にする必要があります。   
+Azure Front Door では、既定で、Front Door の既定のホスト名の HTTPS がサポートされます。 たとえば、Front Door (例: `https://contoso.azurefd.net`) を作成すると、`https://contoso.azurefd.net` に対して行われた要求で HTTPS が自動的に有効になります。 しかし、カスタム ドメイン 'www.contoso.com' をオンボードした場合、このフロントエンド ホストでも HTTPS を有効にする必要があります。   
 
 カスタム HTTPS の機能の主な特性は次のとおりです。
 

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 9da922de38d820864b3f83de80fe64eb3ac792e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246723"
 ---
 # <a name="deploy-azure-sql-database-edge-preview"></a>Azure SQL Database Edge プレビューのデプロイ
@@ -23,7 +23,7 @@ Azure SQL Database Edge プレビューは、IoT および Azure IoT Edge のデ
 ## <a name="before-you-begin"></a>開始する前に
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-* [Azure portal](https://portal.azure.com/) にサインインします。
+* [Azure portal](https://portal.azure.com/) にサインインする
 * [こちらで](https://azure.microsoft.com/services/sql-database-edge/#contact)要求を送信して、サブスクリプションを SQL Database Edge のデプロイに対して有効にします。
 * [Azure IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)を作成します。
 * [Azure portal からIoT Edge デバイス](../iot-edge/how-to-register-device-portal.md)を登録します。

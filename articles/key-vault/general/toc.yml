@@ -96,6 +96,10 @@
           href: soft-delete-powershell.md
     - name: キー コンテナーを移動する
       items:
+        - name: キー コンテナーを別のリソース グループに移動する
+          href: keyvault-moveresourcegroup.md
+        - name: キー コンテナーを別のサブスクリプションに移動する
+          href: keyvault-move-subscription.md
         - name: キー コンテナーを別のリージョンに移動する
           href: keyvault-moveregion.md
     - name: トラブルシューティング

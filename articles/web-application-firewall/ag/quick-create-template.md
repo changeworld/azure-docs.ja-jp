@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
 ms.openlocfilehash: 6759071e73adfd3af4ac780da6db3a0e6e967ea1
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81617992"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway---resource-manager-template"></a>クイック スタート:Application Gateway に Azure WAF v2 を作成する - Resource Manager テンプレート

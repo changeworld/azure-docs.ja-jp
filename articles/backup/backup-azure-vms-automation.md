@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure VM をバックアップおよび復元�
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 1d1074eea3d530b17904e2f49fba7c0d24e84e59
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 44cffa58ea72a8a83edfaee94c616d6689e77e8c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743295"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187921"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -199,7 +199,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 既定では、開始時刻はスケジュール ポリシー オブジェクトで定義されます。 開始時刻を希望の時刻に変更するには、次の例を使用します。 希望の開始時刻も、UTC で指定する必要があります。 次の例では、毎日のバックアップの希望の開始時刻が午前 01:00 UTC であるものとします。
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -211,7 +211,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 次の例では、これらの変数を使用して、保護ポリシー *NewPolicy* の作成時にパラメーターを定義します。
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -480,8 +480,8 @@ $restorejob
 
 追加のパラメーター **TargetResourceGroupName** で、マネージド ディスクの復元先とする RG を指定できます。
 
-> [!NOTE]
-> パフォーマンスが大幅に向上するため、マネージド ディスクを復元する場合は **TargetResourceGroupName** を使用することを強くお勧めします。 また、Azure Powershell Az モジュール 1.0 以降では、マネージド ディスクを復元する場合、このパラメーターは必須です
+> [!IMPORTANT]
+> パフォーマンスが大幅に向上するため、マネージド ディスクを復元する場合は **TargetResourceGroupName** を使用することを強くお勧めします。 このパラメーターを指定しない場合、ユーザーはインスタント リストア機能の利点を活用することができず、復元操作の速度が低下します。 マネージド ディスクをアンマネージド ディスクとして復元することが目的の場合は、このパラメーターは指定せず、-RestoreAsUnmanagedDisks パラメーターを指定して意図を明確にしてください。 -RestoreAsUnmanagedDisks パラメーターは、Az PS 3.7.0 以降で使用できます。 将来のバージョンでは、適切な復元エクスペリエンスのために、これらのパラメーターのいずれかを指定することが必須となります
 >
 >
 
@@ -548,22 +548,22 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 1. 最初に、templateBlobURI からテンプレート名を抽出します。 その形式を次に示します。 Powershell の分割操作を使用して、この URL から最終的なテンプレート名を抽出できます。
 
-```http
-https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
-```
+    ```http
+    https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
+    ```
 
 2. 次に、[ここ](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment)の説明に従って完全な URL を生成できます。
 
-```powershell
-Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
-$templateBlobFullURI = New-AzStorageBlobSASToken -Container $containerName -Blob <templateName> -Permission r -FullUri
-```
+    ```powershell
+    Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
+    $templateBlobFullURI = New-AzStorageBlobSASToken -Container $containerName -Blob <templateName> -Permission r -FullUri
+    ```
 
 3. [ここ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)の説明に従って、テンプレートをデプロイして新しい VM を作成します。
 
-```powershell
-New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
-```
+    ```powershell
+    New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
+    ```
 
 ### <a name="create-a-vm-using-the-config-file"></a>構成ファイルを使用して VM を作成する
 
@@ -598,151 +598,151 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
 4. OS ディスクとデータ ディスクを接続します。 この手順では、さまざまな管理対象/暗号化 VM 構成の例を提示します。 自分の VM 構成に最適なサンプルを利用してください。
 
-* **管理対象外の暗号化されていない VM** - 管理対象外の暗号化されていない VM には、次のサンプルを使用します。
+    * **管理対象外の暗号化されていない VM** - 管理対象外の暗号化されていない VM には、次のサンプルを使用します。
 
-```powershell
-       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
-       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
-       foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
-       {
+    ```powershell
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+        {
+            $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
+
+    * **管理対象外の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、ディスクをアタッチする前に、キー コンテナーにシークレットを復元する必要があります。 詳細については、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事を参照してください。 次の例では、暗号化された VM の OS とデータ ディスクをアタッチする方法を示します。 OS ディスクの設定時には、関連する OS の種類が示されていることを確認してください。
+
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
+        foreach($dd in $obj.'properties.storageProfile'.dataDisks)
+        {
         $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-       }
-```
+        }
+    ```
 
-* **管理対象外の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、ディスクをアタッチする前に、キー コンテナーにシークレットを復元する必要があります。 詳細については、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事を参照してください。 次の例では、暗号化された VM の OS とデータ ディスクをアタッチする方法を示します。 OS ディスクの設定時には、関連する OS の種類が示されていることを確認してください。
+    * **管理対象外の Azure AD を使用して暗号化された VM (BEK と KEK)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK と KEK を使用して暗号化) では、ディスクをアタッチする前に、キー コンテナーにキーとシークレットを復元します。 詳細については、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事を参照してください。 次の例では、暗号化された VM の OS とデータ ディスクをアタッチする方法を示します。
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-      {
-       $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-      }
-```
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+        $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
+        foreach($dd in $obj.'properties.storageProfile'.dataDisks)
+        {
+        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
 
-* **管理対象外の Azure AD を使用して暗号化された VM (BEK と KEK)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK と KEK を使用して暗号化) では、ディスクをアタッチする前に、キー コンテナーにキーとシークレットを復元します。 詳細については、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事を参照してください。 次の例では、暗号化された VM の OS とデータ ディスクをアタッチする方法を示します。
+    * **管理対象外の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、元の **keyVault/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、シークレットをキー コンテナーに復元します。 次のスクリプトを実行して、復元された OS BLOB に暗号化の詳細を設定します (この手順はデータ BLOB には必要ありません)。 復元された keyVault から $dekurl をフェッチすることができます。
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-     {
-     $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-     }
-```
+    次のスクリプトは、元の keyVault/シークレットを利用できない場合にのみ実行する必要があります。
 
-* **管理対象外の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、元の **keyVault/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、シークレットをキー コンテナーに復元します。 次のスクリプトを実行して、復元された OS BLOB に暗号化の詳細を設定します (この手順はデータ BLOB には必要ありません)。 復元された keyVault から $dekurl をフェッチすることができます。
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
+        $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+        $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
+        $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+        $osBlob.ICloudBlob.SetMetadata()
+    ```
 
-次のスクリプトは、元の keyVault/シークレットを利用できない場合にのみ実行する必要があります。
+    **シークレットが使用できる**ようになり、暗号化の詳細も OS BLOB に設定されたら、次のスクリプトを使用してディスクをアタッチします。
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
-      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
-      $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
-      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
-      $osBlob.ICloudBlob.SetMetadata()
-```
+    元の keyVault/シークレットが利用できる場合、上記のスクリプトを実行する必要はありません。
 
-**シークレットが使用できる**ようになり、暗号化の詳細も OS BLOB に設定されたら、次のスクリプトを使用してディスクをアタッチします。
+    ```powershell
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+        {
+        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
 
-元の keyVault/シークレットが利用できる場合、上記のスクリプトを実行する必要はありません。
+    * **管理対象外の Azure AD を使用して暗号化された VM (BEK および KEK)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK および KEK を使用して暗号化) では、元の **keyVault/キー/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、キーとシークレットをキー コンテナーに復元します。 次のスクリプトを実行して、復元された OS BLOB に暗号化の詳細を設定します (この手順はデータ BLOB には必要ありません)。 復元された keyVault から $dekurl と $kekurl をフェッチすることができます。
 
-```powershell
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
-      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
-      {
-      $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-      }
-```
+    次のスクリプトは、元の keyVault/キー/シークレットを利用できない場合にのみ実行する必要があります。
 
-* **管理対象外の Azure AD を使用して暗号化された VM (BEK および KEK)** - 管理対象外の Azure AD を使用して暗号化された VM (BEK および KEK を使用して暗号化) では、元の **keyVault/キー/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、キーとシークレットをキー コンテナーに復元します。 次のスクリプトを実行して、復元された OS BLOB に暗号化の詳細を設定します (この手順はデータ BLOB には必要ありません)。 復元された keyVault から $dekurl と $kekurl をフェッチすることができます。
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+        $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""},""keyEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""keyUrl"":""$kekUrl""}}]}"
+        $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+        $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
+        $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+        $osBlob.ICloudBlob.SetMetadata()
+    ```
 
-次のスクリプトは、元の keyVault/キー/シークレットを利用できない場合にのみ実行する必要があります。
+    **キー/シークレットが使用できる**ようになり、暗号化の詳細が OS BLOB に設定されたら、次のスクリプトを使用してディスクをアタッチします。
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""},""keyEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""keyUrl"":""$kekUrl""}}]}"
-      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
-      $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
-      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
-      $osBlob.ICloudBlob.SetMetadata()
-```
+    元の keyVault/キー/シークレットが利用できる場合、上記のスクリプトを実行する必要はありません。
 
-**キー/シークレットが使用できる**ようになり、暗号化の詳細が OS BLOB に設定されたら、次のスクリプトを使用してディスクをアタッチします。
+    ```powershell
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+        {
+        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
 
-元の keyVault/キー/シークレットが利用できる場合、上記のスクリプトを実行する必要はありません。
+    * **管理対象の暗号化されていない VM** - 管理対象の暗号化されていない VM では、復元されたマネージド ディスクをアタッチします。 詳細については、[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)に関する記事を参照してください。
 
-```powershell
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
-      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
-      {
-      $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-      }
-```
+    * **管理対象の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、復元されたマネージド ディスクをアタッチします。 詳細については、[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)に関する記事を参照してください。
 
-* **管理対象の暗号化されていない VM** - 管理対象の暗号化されていない VM では、復元されたマネージド ディスクをアタッチします。 詳細については、[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)に関する記事を参照してください。
+    * **管理対象の Azure AD を使用して暗号化された VM (BEK および KEK)** - 管理対象の Azure AD を使用して暗号化された VM (BEK および KEK を使用して暗号化) では、復元されたマネージド ディスクをアタッチします。 詳細については、[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)に関する記事を参照してください。
 
-* **管理対象の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、復元されたマネージド ディスクをアタッチします。 詳細については、[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)に関する記事を参照してください。
+    * **管理対象の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、元の **keyVault/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、シークレットをキー コンテナーに復元します。 次のスクリプトを実行して、復元された OS ディスクに暗号化の詳細を設定します (この手順はデータディスクには必要ありません)。 復元された keyVault から $dekurl をフェッチすることができます。
 
-* **管理対象の Azure AD を使用して暗号化された VM (BEK および KEK)** - 管理対象の Azure AD を使用して暗号化された VM (BEK および KEK を使用して暗号化) では、復元されたマネージド ディスクをアタッチします。 詳細については、[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)に関する記事を参照してください。
+    次のスクリプトは、元の keyVault/シークレットを利用できない場合にのみ実行する必要があります。  
 
-* **管理対象の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、元の **keyVault/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、シークレットをキー コンテナーに復元します。 次のスクリプトを実行して、復元された OS ディスクに暗号化の詳細を設定します (この手順はデータディスクには必要ありません)。 復元された keyVault から $dekurl をフェッチすることができます。
+    ```powershell
+    $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+    $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+    $encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+    $encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+    $encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+    Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+    ```
 
-次のスクリプトは、元の keyVault/シークレットを利用できない場合にのみ実行する必要があります。  
+    シークレットが使用できるようになり、暗号化の詳細が OS ディスクに設定されたら、「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照して、復元されたマネージド ディスクをアタッチします。
 
-```powershell
-$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
-$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
-$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
-Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-```
+    * **管理対象の Azure AD を使用して暗号化された VM (BEK および KEK)** - 管理対象の Azure AD を使用して暗号化された VM (BEK および KEK を使用して暗号化) では、元の **keyVault/キー/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、キーとシークレットをキー コンテナーに復元します。 その後、次のスクリプトを実行して、復元された OS ディスクに暗号化の詳細を設定します (この手順はデータ ディスクには必要ありません)。 復元された keyVault から $dekurl と $kekurl をフェッチすることができます。
 
-シークレットが使用できるようになり、暗号化の詳細が OS ディスクに設定されたら、「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照して、復元されたマネージド ディスクをアタッチします。
+    次のスクリプトは、元の keyVault/キー/シークレットを利用できない場合にのみ実行する必要があります。
 
-* **管理対象の Azure AD を使用して暗号化された VM (BEK および KEK)** - 管理対象の Azure AD を使用して暗号化された VM (BEK および KEK を使用して暗号化) では、元の **keyVault/キー/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、キーとシークレットをキー コンテナーに復元します。 その後、次のスクリプトを実行して、復元された OS ディスクに暗号化の詳細を設定します (この手順はデータ ディスクには必要ありません)。 復元された keyVault から $dekurl と $kekurl をフェッチすることができます。
+    ```powershell
+    $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+    $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+    $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+    $encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+    $encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+    $encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+    $encryptionSettingsElement.KeyEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+    $encryptionSettingsElement.KeyEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+    $encryptionSettingsElement.KeyEncryptionKey.SourceVault.Id = $keyVaultId
+    $encryptionSettingsElement.KeyEncryptionKey.KeyUrl = $kekUrl
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+    Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+    ```
 
-次のスクリプトは、元の keyVault/キー/シークレットを利用できない場合にのみ実行する必要があります。
-
-```powershell
-$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-$kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
-$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
-$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
-$encryptionSettingsElement.KeyEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
-$encryptionSettingsElement.KeyEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
-$encryptionSettingsElement.KeyEncryptionKey.SourceVault.Id = $keyVaultId
-$encryptionSettingsElement.KeyEncryptionKey.KeyUrl = $kekUrl
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
-Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-```
-
-キー/シークレットが使用できるようになり、暗号化の詳細が OS ディスクに設定されたら、「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照して、復元されたマネージド ディスクをアタッチします。
+    キー/シークレットが使用できるようになり、暗号化の詳細が OS ディスクに設定されたら、「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照して、復元されたマネージド ディスクをアタッチします。
 
 5. ネットワーク設定を設定します。
 

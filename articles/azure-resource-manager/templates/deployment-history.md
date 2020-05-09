@@ -5,10 +5,10 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460298"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ履歴の表示

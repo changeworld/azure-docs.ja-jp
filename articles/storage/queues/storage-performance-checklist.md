@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75750504"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Queue storage のパフォーマンスとスケーラビリティのチェックリスト

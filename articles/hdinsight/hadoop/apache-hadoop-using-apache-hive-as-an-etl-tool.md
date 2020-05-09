@@ -1,31 +1,31 @@
 ---
 title: ETL ツールとして Apache Hive を使用する - Azure HDInsight
 description: Apache Hive を使用し、Azure HDInsight でデータの抽出、変換、読み込み (ETL) を行います。
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: c289892246cfce3ffac3f668577073a2af92511f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623116"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509552"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
 
-通常、受信データは、クリーニングし変換してから、分析を行うのに適した宛先に読み込む必要があります。 抽出、変換、および読み込み (ETL) の操作は、データを準備し、そのデータをデータの宛先に読み込むために実行されます。  HDInsight 上の Apache Hive では、非構造化データを読み取り、必要に応じてそのデータを処理し、意思決定支援システム用のリレーショナル データ ウェアハウスにデータを読み込むことができます。 この方法においてデータはソースから抽出され、Azure Storage Blob や Azure Data Lake Storage などのスケーラブルなストレージに格納されます。 次にデータは一連の Hive クエリを使用して変換され、最終的に、宛先データ ストアへの一括読み込みのための準備として Hive 内にステージングされます。
+通常、受信データは、クリーニングし変換してから、分析を行うのに適した宛先に読み込む必要があります。 抽出、変換、および読み込み (ETL) の操作は、データを準備し、そのデータをデータの宛先に読み込むために実行されます。  HDInsight 上の Apache Hive では、非構造化データを読み取り、必要に応じてそのデータを処理し、意思決定支援システム用のリレーショナル データ ウェアハウスにデータを読み込むことができます。 この方法では、データはソースから抽出されます。 その後、Azure Storage BLOB や Azure Data Lake Storage などの適応するストレージに格納されます。 その後、データは一連の Hive クエリを使用して変換されます。 次に、変換先のデータ ストアへの一括読み込みの準備として、Hive 内でステージングされます。
 
 ## <a name="use-case-and-model-overview"></a>ユース ケースとモデルの概要
 
-次の図に、ETL オートメーションのユース ケースとモデルの概要を示します。 入力データは、適切な出力を生成するために変換されます。  変換中には、データのシェイプおよびデータ型に加えて、データの言語も変更される可能性があります。  ETL プロセスでは、宛先の既存のデータに厳密に合うように、インペリアル法からメートル法への変換、タイム ゾーンの変更、精度の改善を行うことができます。  ETL プロセスでは、常に最新の状態がレポートされるように、または既存のデータに対するさらなる分析情報が提供されるように、新しいデータを既存のデータに結合することもできます。  レポート ツールやサービスなどのアプリケーションでは、このデータを目的の形式で利用できます。
+次の図に、ETL オートメーションのユース ケースとモデルの概要を示します。 入力データは、適切な出力を生成するために変換されます。  変換中には、データのシェイプおよびデータ型に加えて、データの言語も変更されます。  ETL プロセスでは、宛先の既存のデータに厳密に合うように、インペリアル法からメートル法への変換、タイム ゾーンの変更、精度の改善を行うことができます。 ETL プロセスでは、常に最新の状態がレポートされるように、または既存のデータに対するさらなる分析情報が提供されるように、新しいデータを既存のデータに結合することもできます。 レポート ツールやサービスなどのアプリケーションでは、このデータを目的の形式で利用できます。
 
 ![ETL アーキテクチャとしての Apache Hive](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop は、通常、膨大な数のテキスト ファイル (CSV など) か、数は少ないが頻繁に変更が発生するテキストファイル、あるいはこの両方をインポートする ETL プロセスで使用されます。  Hive は、データを宛先に読み込む前に、データの準備を行うのに優れたツールです。  Hive では、CSV に対するスキーマを作成し SQL に似た言語を使用することで、データを操作する MapReduce プログラムを生成することができます。
+Hadoop は、通常、膨大な数のテキスト ファイル (CSV など) をインポートする ETL プロセスで使用されます。 または、数は少ないが頻繁に変更が発生するテキスト ファイル、あるいはその両方も含まれます。  Hive は、データを宛先に読み込む前に、データの準備を行うのに優れたツールです。  Hive では、CSV に対するスキーマを作成し SQL に似た言語を使用することで、データを操作する MapReduce プログラムを生成することができます。
 
 Hive を使用して ETL を実行する一般的な手順は次のとおりです。
 
@@ -34,7 +34,7 @@ Hive を使用して ETL を実行する一般的な手順は次のとおりで�
 3. HDInsight クラスターを作成し、データ ストアを接続します。
 4. 読み取り時にデータ ストア内のデータに適用するスキーマを定義します。
 
-    ```
+    ```hql
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
@@ -66,30 +66,28 @@ Hive を使用して ETL を実行する一般的な手順は次のとおりで�
 
 ## <a name="output-targets"></a>出力ターゲット
 
-Hive を使用して、次に示すようなさまざまなターゲットにデータを出力することができます。
+Hive を使用して、次に示すようなあらゆる種類のターゲットにデータを出力することができます。
 
 * SQL Server または Azure SQL Database などのリレーショナル データベース。
 * Azure SQL Data Warehouse などのデータ ウェアハウス。
 * Excel。
 * Azure テーブルと BLOB ストレージ。
 * データが特定の形式に処理される、または特定の種類の情報構造体を含むファイルとしてデータが処理される必要があるアプリケーションまたはサービス。
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) などの JSON ドキュメント ストア。
+* Azure Cosmos DB などの JSON ドキュメント ストア。
 
 ## <a name="considerations"></a>考慮事項
 
 ETL モデルは、通常、次の場合に使用されます。
 
-* 外部ソースから既存のデータベースまたは情報システムに、ストリーム データまたは大量の半構造化データもしくは非構造化データを読み込む。
-* 多くの場合クラスターの中で複数の変換パスを使用して、読み込む前にデータのクリーニング、変換、検証を行う。
-* 定期的に更新されるレポートと視覚化を生成する。 たとえば、日中に生成するには時間がかかりすぎるレポートの場合、夜間に作成されるようにレポートをスケジュールすることができます。 Hive クエリを自動的に実行するために、[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) と PowerShell を使用できます。
+`*`外部ソースから既存のデータベースまたは情報システムに、ストリーム データまたは大量の半構造化データもしくは非構造化データを読み込む。
+`*`多くの場合、クラスターの中で複数の変換パスを使用して、読み込む前にデータのクリーニング、変換、検証を行う。
+`*`定期的に更新されるレポートと視覚化を生成する。 たとえば、日中に生成するには時間がかかりすぎるレポートの場合、夜間に作成されるようにレポートをスケジュールすることができます。 Hive クエリを自動的に実行するために、[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) と PowerShell を使用できます。
 
 データのターゲットがデータベースでない場合、クエリ内で適切な形式 (CSV など) でファイルを生成することができます。 このファイルは、Excel または Power BI にインポートすることができます。
 
-ETL プロセスの一環として、データに対して複数の操作を実行する必要がある場合は、該当する操作の管理方法を検討してください。 操作をソリューション内でワークフローとして制御するのでなく、外部プログラムによって制御する場合は、いくつかの操作を並列に実行できるかどうかを判断し、各ジョブの完了のタイミングを検出する必要があります。 Hadoop 内で Oozie などのワークフロー メカニズムを使用する方法は、外部スクリプトまたはカスタム プログラムを使用して一連の操作の調整を試みるよりも簡単である可能性があります。 Oozie の詳細については、「[Workflow and job orchestration](https://msdn.microsoft.com/library/dn749829.aspx)」 (ワークフローおよびジョブ オーケストレーション) を参照してください。
+ETL プロセスの一環として、データに対して複数の操作を実行する必要がある場合は、該当する操作の管理方法を検討してください。 操作をソリューション内でワークフローとして制御するのでなく、外部プログラムによって制御する場合は、いくつかの操作を並列に実行できるかどうかを判断する必要があります。 また、各ジョブの完了のタイミングを検出する必要があります。 Hadoop 内で Oozie などのワークフロー メカニズムを使用する方法は、外部スクリプトまたはカスタム プログラムを使用して一連の操作の調整を試みるよりも簡単である可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [大規模な ETL](apache-hadoop-etl-at-scale.md)
-* [データ パイプラインを運用化する](../hdinsight-operationalize-data-pipeline.md)
-
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->
+* [`Operationalize a data pipeline`](../hdinsight-operationalize-data-pipeline.md)

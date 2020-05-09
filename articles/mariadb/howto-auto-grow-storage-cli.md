@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 4be84c750f6a3ca7a0d48aa2b98d75272c1cbadf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529086"
 ---
 # <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB のストレージの自動拡張
