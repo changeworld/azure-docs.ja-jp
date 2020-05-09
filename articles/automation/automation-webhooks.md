@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367025"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582439"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 
@@ -88,7 +88,7 @@ Webhook で呼び出すかどうかを判断するためのロジックを Runbo
 
 もう 1 つの方法は、Webhook 要求の受信時に外部条件の検証を Runbook に実行させることです。 たとえば、GitHub リポジトリへの新しいコミットが発生するたびに GitHub によって呼び出される Runbook について考えてみましょう。 Runbook は、GitHub に接続して、新しいコミットが発生したことを確認してから続行することができます。
 
-## <a name="creating-a-webhook"></a>Webhook の作成
+## <a name="create-a-webhook"></a>webhook を作成する
 
 次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure ポータルに作成します。
 
@@ -106,7 +106,7 @@ Webhook で呼び出すかどうかを判断するためのロジックを Runbo
 1. **[パラメーター]** をクリックし、Runbook のパラメーターの値を指定します。 Runbook に必須のパラメーターがある場合、値を指定しない限り、Webhook を作成することはできません。
 1. **[作成]** をクリックして Webhook を作成します。
 
-## <a name="using-a-webhook"></a>Webhook の使用
+## <a name="use-a-webhook"></a>Webhook を使用する
 
 Webhook を作成後に使用するには、クライアントはその Webhook の URL を使用して HTTP `POST` 要求を発行する必要があります。 の構文は次のとおりです。
 
@@ -131,7 +131,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Runbook ジョブの完了時期と Webhook からの完了状態は、クライアントからは判別できません。 この情報は、[Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) や [Azure Automation API](/rest/api/automation/job) などの別のメカニズムでジョブ ID を使用して確認できます。
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>Webhook の更新
+## <a name="renew-a-webhook"></a>Webhook を更新する
 
 Webhook が作成されると、有効期間が 10 年に設定され、それが経過すると自動的に有効期限が切れます。 有効期限が切れた Webhook は、再アクティブ化できません。 削除してから再作成するしかありません。 
 
@@ -200,7 +200,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>サンプルのテスト
+## <a name="test-the-sample"></a>サンプルをテストする
 
 次の例では、Windows PowerShell を使用して Webhook で Runbook を開始します。 HTTP 要求を行うことができるすべての言語で、Webhook を使用できます。 ここでは、例として Windows PowerShell を使用します。
 

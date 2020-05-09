@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271129"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731765"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(非推奨) Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
@@ -102,7 +102,7 @@ waiting for AAD role to propagate.done
 
 
 1. ご使用の環境用の Draft を https://github.com/Azure/draft/releases からダウンロードし、パスにインストールしてこのコマンドを使用できるようにします。
-2. ご使用の環境用の Helm を https://github.com/kubernetes/helm/releases からダウンロードし、[パスにインストールしてこのコマンドを使用できるようにします](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client)。
+2. ご使用の環境用の Helm を https://github.com/kubernetes/helm/releases からダウンロードし、[パスにインストールしてこのコマンドを使用できるようにします](https://helm.sh/docs/intro/quickstart#install-helm)。
 3. レジストリを使用して、作成される各 Helm チャートのサブドメインを作成するように、Draft を構成します。 Draft を構成するには次が必要です。
    - Azure Container Registry 名 (この例では `draftacsdemo`)
    - レジストリ キーまたはパスワード (`az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` を使用)
