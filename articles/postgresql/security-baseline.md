@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4a94b0b84290bbf796e951dfee8b3f35b80036ce
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261162"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183162"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーの Azure セキュリティ ベースライン
 
@@ -130,7 +130,7 @@ Azure Database for PostgreSQL のサービス タグの使用方法について:
 
 - DDoS Protection Standard を有効にする必要がある
 
-- PostgreSQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
+- PostgreSQL データベース サーバーに対して TLS 接続の強制を有効にする必要がある
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -197,7 +197,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
-**ガイダンス**: 監査、セキュリティ、および診断ログにアクセスするために、Azure Database for PostgreSQL インスタンスに関する診断設定を有効にします。 PostgreSQL 監査ログが明示的に有効になっていることを確認します。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 また、Azure アクティビティ ログの診断設定を有効にし、同じ Log Analytics ワークスペースまたはストレージ アカウントにログを送信することもできます。
+**ガイダンス**: 監査、セキュリティ、およびリソース ログにアクセスするために、Azure Database for PostgreSQL インスタンスの診断設定を有効にします。 PostgreSQL 監査ログが明示的に有効になっていることを確認します。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 また、Azure アクティビティ ログの診断設定を有効にし、同じ Log Analytics ワークスペースまたはストレージ アカウントにログを送信することもできます。
 
 Azure Database for PostgreSQL のサーバー ログの構成およびアクセス方法: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
@@ -294,7 +294,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: Azure Database for PostgreSQL インスタンスのコントロール プレーン (Azure portal など) への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 さらに、Azure Database for PostgreSQL インスタンスの (データベース自体内の) データ プレーンへのアクセス権を持つ管理アカウントのインベントリを保持します (PostgreSQL サーバーを作成する場合は、管理者ユーザーの資格情報を指定します。 この管理者を使用して、追加の PostgreSQL ユーザーを作成することができます)。
+**ガイダンス**: Azure Database for PostgreSQL インスタンスのコントロール プレーン (Azure portal など) への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 さらに、Azure Database for PostgreSQL インスタンスの (データベース自体内の) データ プレーンへのアクセス権を持つ管理アカウントのインベントリを保持します  (PostgreSQL サーバーを作成する場合は、管理者ユーザーの資格情報を指定します。 この管理者を使用して、追加の PostgreSQL ユーザーを作成することができます)。
 
 Azure Database for PostgreSQL では、組み込みのロールベースのアクセス制御はサポートされませんが、特定のリソース プロバイダーの操作に基づいてカスタム ロールを作成することはできます。
 
@@ -525,7 +525,7 @@ Azure での顧客データの保護について: https://docs.microsoft.com/azu
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**: Azure Database for PostgreSQL では、Secure Sockets Layer (SSL) を使用する PostgreSQL サーバーのクライアント アプリケーションへの接続がサポートされます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 Azure portal で、すべての Azure Database for PostgreSQL インスタンスに対して [SSL 接続を強制する] が既定で有効になっていることを確認します。
+**ガイダンス**: Azure Database for PostgreSQL では、以前は Secure Sockets Layer (SSL) と呼ばれていたトランスポート層セキュリティ (TLS) を使用した、PostgreSQL サーバーのクライアント アプリケーションへの接続がサポートされます。 お使いのデータベース サーバーとクライアント アプリケーション間に TLS 接続を強制すると、サーバーとアプリケーション間のデータ ストリームが暗号化され、中間者攻撃から保護するのに役立ちます。 Azure portal で、すべての Azure Database for PostgreSQL インスタンスに対して [SSL 接続を強制する] が既定で有効になっていることを確認します。
 
 現在、Azure Database for PostgreSQL でサポートされている TLS のバージョンは、TLS 1.0、TLS 1.1、TLS 1.2 です。
 
@@ -652,7 +652,7 @@ Azure Security Center の Azure PaaS サービスを対象とする機能: https
 
 **ガイダンス**: サブスクリプション内のすべてのリソース (Azure Database for PostgreSQL インスタンスを含む) のクエリや検出を実行するには、Azure Resource Graph を使用します。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
-Azure Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Resource Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -696,7 +696,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
-**ガイダンス**:次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
+**ガイダンス**: 次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
 
 - 許可されないリソースの種類
 
@@ -738,7 +738,7 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
-**ガイダンス**:次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
+**ガイダンス**: 次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
 
 - 許可されないリソースの種類
 
@@ -794,7 +794,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 **ガイダンス**: Azure Policy を使用して、Azure Database for PostgreSQL インスタンスの標準的なセキュリティ構成を定義して実装します。 Azure Database for PostgreSQL インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforPostgreSQL" 名前空間で Azure Policy エイリアスを使用します。 次のように、Azure Database for PostgreSQL インスタンスに関連する組み込みのポリシー定義を使用することもできます。
 
-- PostgreSQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
+- PostgreSQL データベース サーバーに対して TLS 接続の強制を有効にする必要がある
 
 - PostgreSQL データベース サーバーでは接続のログが有効でなければならない
 
@@ -816,7 +816,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
+**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -836,7 +836,7 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: Azure Database for PostgreSQL インスタンスと関連リソースにカスタム Azure ポリシー定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
+**ガイダンス**: Azure Database for PostgreSQL インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
 
 Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -874,7 +874,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:Azure サービスの自動構成監視を実装する
 
-**ガイダンス**: システム構成のアラート生成、監査、および適用のためのカスタム ポリシーを作成するには、"Microsoft.DBforPostgreSQL" 名前空間で Azure Policy エイリアスを使用します。 Azure ポリシーの [audit]、[deny]、[deploy if not exist] を使用して、Azure Database for PostgreSQL インスタンスおよび関連リソースの構成を自動的に適用します。
+**ガイダンス**: システム構成のアラート生成、監査、および適用のためのカスタム ポリシーを作成するには、"Microsoft.DBforPostgreSQL" 名前空間で Azure Policy エイリアスを使用します。 Azure Policy の [audit]、[deny]、[deploy if not exist] を使用して、Azure Database for PostgreSQL インスタンスおよび関連リソースの構成を自動的に適用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
