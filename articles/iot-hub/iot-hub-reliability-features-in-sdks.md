@@ -7,12 +7,15 @@ ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 1ca7219824a00a5af0bed7d42da75fc06ce2010d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 6b8981f9a0b372c6c2d5b24236bb4f55dcf8a9d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237307"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116742"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する
 
@@ -129,7 +132,7 @@ CPU の使用率が高くなるのを避けるため、コードがすぐに失�
 
 * [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-* [Python SDK](https://github.com/Azure/azure-iot-sdk-python)
+* [Python SDK](https://github.com/Azure/azure-iot-sdk-python) (信頼性はまだ実装されていません)
 
 ## <a name="next-steps"></a>次のステップ
 

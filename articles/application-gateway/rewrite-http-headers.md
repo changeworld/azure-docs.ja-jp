@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: d0b28770940f0e1adeec16aa89cd087299bd4abc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132991"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562238"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Application Gateway で HTTP ヘッダーを書き換える
 
@@ -56,7 +56,7 @@ Application Gateway は、要求と応答に関する追加情報を格納する
 
 ## <a name="server-variables"></a>サーバー変数
 
-Application Gateway では、サーバー変数を使用して、サーバー、クライアントとの接続、およびその接続での現在の要求に関する情報が格納されます。 格納される情報には、クライアントの IP アドレスや Web ブラウザーの種類などがあります。 サーバー変数は、たとえば新しいページが読み込まるときや、フォームが投稿されるときに動的に変化します。 これらの変数を使用して、書き換え条件を評価し、ヘッダーを書き換えることができます。
+Application Gateway では、サーバー変数を使用して、サーバー、クライアントとの接続、およびその接続での現在の要求に関する情報が格納されます。 格納される情報には、クライアントの IP アドレスや Web ブラウザーの種類などがあります。 サーバー変数は、たとえば新しいページが読み込まるときや、フォームが投稿されるときに動的に変化します。 これらの変数を使用して、書き換え条件を評価し、ヘッダーを書き換えることができます。 サーバー変数の値を使用してヘッダーを書き換えるには、{var_*serverVariable*} という構文でこれらの変数を指定する必要があります
 
 アプリケーション ゲートウェイでは、次のサーバー変数がサポートされています。
 
@@ -69,20 +69,21 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | client_port                | クライアント ポート。                                                  |
 | client_tcp_rtt             | クライアント TCP 接続の情報。 TCP_INFO ソケット オプションをサポートするシステムで使用できます。 |
 | client_user                | HTTP 認証の使用時に、認証のために提供されるユーザー名。 |
-| host                       | 優先順位は次の通りです: 要求行のホスト名、Host 要求ヘッダー フィールドのホスト名、要求に一致するサーバー名。 |
+| host                       | 優先順位は次の通りです: 要求行のホスト名、Host 要求ヘッダー フィールドのホスト名、要求に一致するサーバー名。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、ホストの値は *contoso.com* になります |
 | cookie_*name*              | *name* クッキー。                                            |
 | http_method                | URL 要求を行うために使用されたメソッド。 たとえば、GET、POST などです。 |
 | http_status                | セッションの状態。 たとえば、200、400、403 です。                       |
 | http_version               | 要求プロトコル。 通常、HTTP/1.0、HTTP/1.1、または HTTP/2.0 です。 |
-| query_string               | 要求された URL 内で "?" の後にある、変数と値のペアから成る一覧。 |
+| query_string               | 要求された URL 内で "?" の後にある、変数と値のペアから成る一覧。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、query_string 値は *id=123&title=fabrikam* になります |
 | received_bytes             | 要求の長さ (要求行、ヘッダー、および要求本文を含む)。 |
 | request_query              | 要求行内の引数。                                |
 | request_scheme             | 要求スキーム。http または https です。                            |
-| request_uri                | 完全な元の要求 URI (引数を含む)。                   |
+| request_uri                | 完全な元の要求 URI (引数を含む)。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、request_uri 値は */article.aspx?id=123&title=fabrikam* になります   |
 | sent_bytes                 | クライアントに送信されたバイト数。                             |
 | server_port                | 要求を受け付けたサーバーのポート。                 |
 | ssl_connection_protocol    | 確立された TLS 接続のプロトコル。        |
 | ssl_enabled                | 接続が TLS モードで動作する場合は “オン”。 それ以外の場合は、空の文字列です。 |
+| uri_path                   | Web クライアントがアクセスする必要があるホスト内の特定のリソースを識別します。 これは、引数を含まない要求 URI の部分です。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、uri_path 値は */article.aspx* になります  |
 
 ## <a name="rewrite-configuration"></a>書き換えの構成
 
@@ -156,6 +157,8 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 ## <a name="limitations"></a>制限事項
 
 - 応答内に同じ名前のヘッダーが複数含まれている場合、これらのヘッダーのいずれかの値を書き換えると、応答内の他のヘッダーが破棄されます。 応答に複数の Set-Cookie ヘッダーを設定できるので、これは通常、Set-Cookie ヘッダーで発生します。 このようなシナリオの 1 つが、アプリ サービスをアプリケーション ゲートウェイとともに使用していて、アプリケーション ゲートウェイで Cookie ベースのセッション アフィニティを構成している場合です。 この場合、応答には 2 つの Set-Cookie ヘッダーが含まれ、1 つはアプリ サービスで使用されるもの (`Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`) で、もう 1 つはアプリケーション ゲートウェイ アフィニティ用 (`Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`) です。 このシナリオでどちらかの Set-Cookie ヘッダーを書き換えると、もう一方の Set-Cookie ヘッダーが応答から削除されることがあります。
+
+- アプリケーション ゲートウェイが要求をリダイレクトするように構成されている場合、またはカスタム エラー ページを表示するように構成されている場合は、書き換えはサポートされません。
 
 - Connection、Upgrade、および Host の各ヘッダーの書き換えは現在サポートされていません。
 

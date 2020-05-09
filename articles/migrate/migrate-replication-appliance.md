@@ -3,12 +3,12 @@ title: Azure Migrate レプリケーション アプライアンス
 description: エージェントベースの VMWare の移行のための Azure Migrate レプリケーション アプライアンスについて説明します。
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225435"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535215"
 ---
 # <a name="replication-appliance"></a>レプリケーション アプライアンス
 
@@ -28,8 +28,11 @@ ms.locfileid: "79225435"
 
 **用途** | **詳細**
 --- |  ---
-VMware VM エージェントベースの移行 | OVA テンプレートを Azure Migrate ハブからダウンロードし、それを vCenter Server にインポートして、アプライアンス VM を作成します。
-物理マシン エージェントベースの移行 | VMware インフラストラクチャがない場合、または OVA テンプレートを使用して VMware VM を作成できない場合は、Azure Migrate ハブからソフトウェア インストーラーをダウンロードし、それを実行してアプライアンス マシンを設定します。
+**VMware VM エージェントベースの移行** | OVA テンプレートを Azure Migrate ハブからダウンロードし、それを vCenter Server にインポートして、アプライアンス VM を作成します。
+**物理マシン エージェントベースの移行** | VMware インフラストラクチャがない場合、または OVA テンプレートを使用して VMware VM を作成できない場合は、Azure Migrate ハブからソフトウェア インストーラーをダウンロードし、それを実行してアプライアンス マシンを設定します。
+
+> [!NOTE]
+> Azure Government でデプロイしている場合、インストール ファイルを使用し、レプリケーション アプライアンスをデプロイします。
 
 ## <a name="appliance-requirements"></a>アプライアンスの要件
 
@@ -74,7 +77,7 @@ Azure Migrate でダウンロードしてインストールする | アプライ
 
 ## <a name="url-access"></a>URL アクセス
 
-レプリケーション アプライアンスは、次の URL にアクセスできる必要があります。
+レプリケーション アプライアンスは、Azure パブリック クラウドで次の URL にアクセスできる必要があります。
 
 **URL** | **詳細**
 --- | ---
@@ -84,10 +87,26 @@ Azure Migrate でダウンロードしてインストールする | アプライ
 \*.hypervrecoverymanager.windowsazure.com | レプリケーション管理操作と調整に使用
 https:\//management.azure.com | レプリケーション管理操作と調整に使用
 *.services.visualstudio.com | テレメトリの目的で使用 (省略可能)
-time.nist.gov | システム時刻とグローバル時刻間の時刻同期の確認に使用。
 time.windows.com | システム時刻とグローバル時刻間の時刻同期の確認に使用。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF の設定では、次の URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL のダウンロードを完了するためのものです
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | アプライアンス設定では、次の URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL のダウンロードを完了するためのものです。 いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL も確実に許可されているようにしてください。
+
+
+## <a name="azure-government-url-access"></a>Azure Government URL アクセス
+
+レプリケーション アプライアンスは、Azure Government でこれらの URL にアクセスできる必要があります。
+
+**URL** | **詳細**
+--- | ---
+\*.backup.windowsazure.us | レプリケートされたデータの転送と調整に使用
+\*.store.core.windows.net | レプリケートされたデータの転送と調整に使用
+\*.blob.core.windows.net | レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用
+\*.hypervrecoverymanager.windowsazure.us | レプリケーション管理操作と調整に使用
+https:\//management.usgovcloudapi.net | レプリケーション管理操作と調整に使用
+*.services.visualstudio.com | テレメトリの目的で使用 (省略可能)
+time.nist.gov | システム時刻とグローバル時刻間の時刻同期の確認に使用。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVA を利用するアプライアンス設定は、次の URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL のダウンロードを完了するためのものです。 いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL も確実に許可されているようにしてください。
 
 ## <a name="port-access"></a>ポート アクセス
 
@@ -107,7 +126,7 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
     - VM は、レプリケーション管理のために、受信ポート HTTPS 443 上でレプリケーション アプライアンスと通信します。
     - レプリケーション アプライアンスは、アウトバウンド ポート HTTPS 443 経由で Azure によるレプリケーションを調整します。
     - VM は、受信ポート HTTPS 9443 上でプロセス サーバーにレプリケーション データを送信します (プロセス サーバーは、レプリケーション アプライアンス上で実行されます)。 このポートは変更可能です。
-    - プロセス サーバーは、レプリケーション データを受信し、データを最適化して暗号化し、送信ポート 443 経由で Azure ストレージに送信します。
+    - プロセス サーバーは、レプリケーション データを受信し、データを最適化して暗号化し、アウトバウンド ポート 443 経由で Azure ストレージに送信します。
 5. レプリケーション データ ログは、まず Azure のキャッシュ ストレージ アカウントに記録されます。 これらのログは処理され、データは Azure マネージド ディスクに格納されます。
 
 ![Architecture](./media/migrate-replication-appliance/architecture.png)

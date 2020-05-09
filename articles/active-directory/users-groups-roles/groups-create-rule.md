@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231747"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582918"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory で動的グループを作成または更新する
 
@@ -46,7 +46,7 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 
 ## <a name="to-create-a-group-membership-rule"></a>グループ メンバーシップ ルールを作成するには
 
-1. 全体管理者、Intune 管理者、またはテナントのユーザー管理者ロールであるアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. グローバル管理者、Intune 管理者、または Azure AD 組織のユーザー管理者ロールであるアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を検索して選択します。
 1. **[すべてグループ]** を選び、 **[新しいグループ]** を選びます。
 
@@ -66,7 +66,7 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 
 ## <a name="to-update-an-existing-rule"></a>既存のロールを更新するには
 
-1. 全体管理者、グループ管理者、Intune 管理者、またはテナントのユーザー管理者ロールであるアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. グローバル管理者、グループ管理者、Intune 管理者、または Azure AD 組織のユーザー管理者ロールであるアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]**  >  **[すべてのグループ]** の順に選択します。
 1. グループを選択して、そのプロファイルを開きます。
 1. グループのプロファイル ページで、 **[動的メンバーシップ ルール]** を選択します。 ルール ビルダーでは、最大で 5 つの式がサポートされます。 5 つを超える式を追加するには、テキスト ボックスを使用する必要があります。
@@ -102,7 +102,7 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 - **進行中**: 更新は現在進行中です。
 - **不明**:最終更新時刻を取得することができません。 新しいグループである可能性があります。
 
-特定のグループのメンバーシップ規則の処理中にエラーが発生すると、そのグループの **[概要]** ページの上部にアラートが表示されます。 24 時間以上、テナント内のすべてのグループに対して保留中の動的メンバーシップの更新が処理できない場合は、 **[すべてグループ]** の上部にアラートが表示されます。
+特定のグループのメンバーシップ規則の処理中にエラーが発生すると、そのグループの **[概要]** ページの上部にアラートが表示されます。 24 時間以上、組織内のすべてのグループに対して保留中の動的メンバーシップの更新が処理できない場合は、 **[すべてグループ]** の上部にアラートが表示されます。
 
 ![処理エラー メッセージ アラート](./media/groups-create-rule/processing-error.png)
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989a033a843b861c34dc9dbdbced50399f8e5cd7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644734"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81449886"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin の互換性
 Azure Cosmos DB Graph エンジンは [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) のトラバーサル ステップの仕様に厳密に従っていますが、違いがあります。
@@ -35,7 +35,7 @@ Azure Cosmos DB Graph エンジンは [Apache TinkerPop](https://tinkerpop.apach
 
 * ***非プリミティブ JSON 型***はサポートされていません。 `string` 型、`number` 型、または `true`/`false` 型を使用してください。 `null` 値はサポートされていません。 
 
-* ***GraphSONv3*** シリアライザーは現在サポートされていません。 接続構成で `GraphSONv2` シリアライザー、リーダー、およびライター クラスを使用してください。
+* ***GraphSONv3*** シリアライザーは現在サポートされていません。 接続構成で `GraphSONv2` シリアライザー、リーダー、およびライター クラスを使用してください。 Azure Cosmos DB Gremlin API によって返される結果は、GraphSON 形式と同じ形式ではありません。 
 
 * **ラムダ式と関数**は現在サポートされていません。 これには、`.map{<expression>}`、`.by{<expression>}`、および `.filter{<expression>}` 関数が含まれます。 詳細について、および Gremlin の手順を使用してこれらを書き換える方法については、[ラムダ式に関する注意事項](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)に関する記事を参照してください。
 
