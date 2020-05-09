@@ -26,11 +26,11 @@
         - name: オファー別の公開ガイド
           href: ./publisher-guide-by-offer-type.md
           items:
-            - name: Virtual Machines
+            - name: 仮想マシン
               href: ./marketplace-virtual-machines.md
-            - name: 'Azure アプリケーション: ソリューション テンプレート'
+            - name: Azure アプリのソリューション テンプレート
               href: ./marketplace-solution-templates.md
-            - name: 'Azure アプリケーション: マネージド アプリケーション'
+            - name: Azure アプリのマネージド アプリケーション
               href: ./marketplace-managed-apps.md
             - name: SaaS アプリ
               href: ./marketplace-saas-applications-technical-publishing-guide.md
@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: Office 365、Dynamics 365、Power BI
               href: ./appsource-offer-publishing-guide.md
-            - name: Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
+            - name: Azure AD によるオファー認証を有効にする
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: 統合されたソリューション
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: オファーの掲載のベスト プラクティス
               href: ./gtm-offer-listing-best-practices.md
-            - name: 取り上げられる方法
+            - name: おすすめの取得
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace コンテンツの検証
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: コマーシャル マーケットプレースに対するサポート
           href: ./support-azure-marketplace.md
           items:
-            - name: マーケットプレースに関する FAQ
+            - name: コマーシャル マーケットプレースの FAQ
               href: ./marketplace-faq-publisher-guide.md
             - name: 利用可能な地域と通貨
               href: ./marketplace-geo-availability-currencies.md
@@ -289,49 +289,9 @@
             - name: ヘルプ Wiki
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: IoT Edge モジュール オファー
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: 前提条件
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: IoT Edge モジュール オファーの作成
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: '[プランの設定] タブ'
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: '[SKU] タブ'
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: '[Marketplace] タブ'
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: '[サポート] タブ'
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: IoT Edge モジュールの技術資産の作成
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: IoT Edge モジュール プランの発行
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: 既存のオファーの更新
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Power BI アプリ オファー
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: 前提条件
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: Power BI アプリ オファーの作成
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: '[プランの設定] タブ'
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: '[技術情報] タブ'
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: '[ネットショップの詳細] タブ'
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: '[連絡先] タブ'
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: Power BI アプリの技術資産の作成
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: Power BI アプリ オファーを発行する
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: 既存のオファーの更新
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS アプリケーション オファー
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 仮想マシンのオファー
@@ -449,6 +409,8 @@
           items:
             - name: Azure アプリケーション オファーを作成する
               href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Azure アプリケーションの従量制課金
+              href: ./partner-center-portal/azure-app-metered-billing.md
             - name: レビュー フィードバックの処理
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: オンボード用の API
@@ -493,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge モジュール オファー
           items:
-            - name: IoT Edge モジュールの技術資産の準備
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: IoT Edge モジュール オファーの作成
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: IoT Edge モジュールの技術資産の準備
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: 管理サービス オファー
           items:
             - name: 管理サービス オファーの作成
@@ -515,11 +477,6 @@
               href: ./partner-center-portal/create-new-saas-offer.md
             - name: SaaS の従量制課金
               href: ./partner-center-portal/saas-metered-billing.md
-              items:
-                - name: Marketplace の測定サービス API - FAQ
-                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-                - name: Marketplace の測定サービス API
-                  href: ./partner-center-portal/marketplace-metering-service-apis.md
             - name: SaaS Fulfillment API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -546,6 +503,14 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Marketplace の測定サービス
+          items:
+            - name: 認証の戦略
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Marketplace の測定サービス API
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Marketplace の測定サービス API - FAQ
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: オファーの体験版を設定する
           href: ./partner-center-portal/test-drive.md
         - name: 共同販売オプション
@@ -589,11 +554,13 @@
           href: ./partner-center-portal/get-paid.md
         - name: 支払いアカウントと税フォームを設定する
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: 課金の詳細
-          href: ./partner-center-portal/billing-details.md
         - name: 支払いのしきい値、方法、期間
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+        - name: 大まかな支払いの概要
+          href: ./partner-center-portal/payout-summary-overview.md
         - name: 支払いの概要
           href: ./partner-center-portal/payout-summary.md
+        - name: 支払いポリシーの詳細
+          href: ./partner-center-portal/payout-policy-details.md
         - name: 税の詳細
           href: ./partner-center-portal/tax-details-paid-transactions.md

@@ -4,6 +4,8 @@
   items:
     - name: Azure Load Balancer の概要
       href: load-balancer-overview.md
+    - name: よく寄せられる質問
+      href: load-balancer-faqs.md
 - name: クイック スタート
   items:
     - name: ロード バランサーの作成 - ポータル

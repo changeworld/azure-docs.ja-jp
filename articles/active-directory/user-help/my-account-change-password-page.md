@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75564ea463198967c6ed170851058202b5ba3478
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064055"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625954"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>[パスワードの変更] ページで、職場または学校のアカウントのパスワードを変更します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "77064055"
 
 ## <a name="update-a-password-from-the-change-password-page"></a>[パスワードの変更] ページからパスワードを更新する
 
-1. 既存のパスワードを使用して、職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myprofile.microsoft.com/) ページに移動します。
+1. 既存のパスワードを使用して、職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myaccount.microsoft.com/) ページに移動します。
 
 2. 左側のナビゲーション ペインで **[パスワード]** を選択するか、 **[パスワード]** ブロックの **[パスワードの変更]** リンクを選択します。
 

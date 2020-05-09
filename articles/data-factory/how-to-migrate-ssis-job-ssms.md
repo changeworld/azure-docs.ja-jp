@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455089"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627587"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS を使用して SQL Server エージェント ジョブを ADF に移行する
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 [オンプレミスの SQL Server Integration Services (SSIS) ワークロードを ADF の SSIS に移行する](scenario-ssis-migration-overview.md)ときは、SSIS パッケージが移行された後で、SQL Server Management Studio (SSMS) の **SSIS ジョブ移行ウィザード**を使用して、SQL Server Integration Services パッケージのジョブ ステップの種類で、Azure Data Factory (ADF) のパイプライン、アクティビティ、スケジュール トリガーへの、SQL Server エージェント ジョブの一括移行を実行できます。
 
