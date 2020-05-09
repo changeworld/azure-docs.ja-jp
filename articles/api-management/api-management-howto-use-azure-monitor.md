@@ -2,23 +2,20 @@
 title: Azure API Management で発行された API を監視する | Microsoft Docs
 description: このチュートリアルの手順に従って、Azure API Management で API を監視する方法を学びます。
 services: api-management
-documentationcenter: ''
 author: vladvino
 manager: cfowler
-editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79221929"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128836"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -28,7 +25,7 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 
 > [!div class="checklist"]
 > * アクティビティ ログを表示する
-> * 診断ログを表示する
+> * リソース ログを表示する
 > * API のメトリックを表示する 
 > * API が許可されていない呼び出しを受けたときのアラート ルールをセットアップする
 
@@ -39,8 +36,8 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -120,20 +117,20 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
 3. 目的のフィルター処理の範囲を選択し、 **[適用]** をクリックします。
 
-## <a name="diagnostic-logs"></a>診断ログ
+## <a name="resource-logs"></a>リソース ログ
 
-診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソースが実行した操作を調査できます。
+リソース ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 リソース ログは、アクティビティ ログとは異なります。 アクティビティ ログは、Azure リソースで実行された操作に関する分析情報を提供します。 リソース ログは、自分のリソースが実行した操作に関する分析情報を提供します。
 
-診断ログを構成するには、次の手順に従います。
+リソース ログを構成するには、次の手順に従います。
 
 1. APIM サービス インスタンスを選びます。
 2. **[診断設定]** をクリックします。
 
-    ![診断ログ](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    ![リソース ログ](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. **[診断を有効にする]** をクリックします。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりすることができます。 
+3. **[診断を有効にする]** をクリックします。 リソース ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりすることができます。 
 
-現時点では、API Management は、個々の API 要求についての診断ログ (1 時間ごとにバッチ処理) を、次のスキーマを持つエントリで提供します。
+現時点では、API Management は、個々の API 要求についてのリソース ログ (1 時間ごとにバッチ処理) を、次のスキーマを持つエントリで提供します。
 
 ```json
 {  
@@ -180,7 +177,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 }  
 ```
 
-| プロパティ  | 種類 | 説明 |
+| プロパティ  | Type | 説明 |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | boolean | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
 | time | date-time | ゲートウェイが要求の処理を開始した日時のタイムスタンプ |
@@ -190,7 +187,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | callerIpAddress | string | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
 | correlationId | string | API Management によって割り当てられる一意の http 要求識別子 |
 | location | string | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
-| httpStatusCodeCategory | string | http 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
+| httpStatusCodeCategory | string | HTTP 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
 | resourceId | string | API Management リソース /SUBSCRIPTIONS/\<サブスクリプション>/RESOURCEGROUPS/\<リソース グループ>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<名前> の ID |
 | properties | object | 現在の要求のプロパティ |
 | method | string | 受信要求の HTTP メソッド |
@@ -227,7 +224,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
 > [!div class="checklist"]
 > * アクティビティ ログを表示する
-> * 診断ログを表示する
+> * リソース ログを表示する
 > * API のメトリックを表示する
 > * API が許可されていない呼び出しを受けたときのアラート ルールをセットアップする
 

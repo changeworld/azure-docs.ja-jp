@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271660"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128883"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -230,7 +230,7 @@ Power BI、Excel、Reporting Services、サードパーティ製ツールなど�
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
-Azure Analysis Services は、Azure メトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[Azure リソース診断ログ](../azure-monitor/platform/platform-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
+Azure Analysis Services は、Azure Monitor のメトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[リソースのプラットフォーム ログ](../azure-monitor/platform/platform-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
 
 Azure Analysis Services は、[動的管理ビュー (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) の使用もサポートします。 SQL 構文に基づいて、DMV は、メタデータとサーバー インスタンスに関する監視情報を返すスキーマ行セットとインターフェイスします。
 

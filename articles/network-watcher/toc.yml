@@ -140,7 +140,7 @@
           href: network-watcher-nsg-auditing-powershell.md
     - name: VPN ゲートウェイと接続を診断する
       items:
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
@@ -173,7 +173,7 @@
     - name: .NET
       href: /dotnet/api/overview/azure/virtual-network
     - name: Node.js
-      href: /javascript/api/azure-arm-network
+      href: /javascript/api/@azure/arm-network
     - name: REST
       href: /rest/api/network-watcher/
 - name: リソース
@@ -190,5 +190,5 @@
       href: 'https://azure.microsoft.com/updates/?product=network-watcher'
     - name: SLA
       href: 'https://azure.microsoft.com/support/legal/sla/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/network-watcher'
