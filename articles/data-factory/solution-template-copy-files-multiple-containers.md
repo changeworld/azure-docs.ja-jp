@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 383b70bbb02e7a200c7ec0a994f7cf11e9b9520e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414816"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629050"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Azure Data Factory を使用して複数のコンテナーからファイルをコピーする
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、ファイル ストア間で複数のコンテナーからファイルをコピーするために使用できる、ソリューション テンプレートについて説明します。 たとえば、AWS S3 から Azure Data Lake Store にデータ レイクを移行することもできます。 また、テンプレートを使用して、1 つの Azure BLOB ストレージ アカウントに含まれるすべてのファイルを、別の Azure Blob ストレージ アカウントにレプリケートすることもできます。
 

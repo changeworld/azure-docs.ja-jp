@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 05/01/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cc764170f9dcdd74288e57dbef403c6092dcca2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a35a0d8ae0beb9995f8ab9fce037d0ae5bd7bf63
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404462"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691606"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用してリモート画像を分析する
 

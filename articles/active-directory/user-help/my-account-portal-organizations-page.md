@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79136f86c647c0453d600fe2601be56571ee6fed
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062474"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625886"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>[組織] ページから接続済み組織を管理する
 
@@ -34,7 +34,7 @@ ms.locfileid: "77062474"
 
 ## <a name="view-your-organizations"></a>組織を表示する
 
-1. 職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myprofile.microsoft.com/) ページ) に移動します。
+1. 職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myaccount.microsoft.com/) ページ) に移動します。
 
 2. 左側のナビゲーション ウィンドウから **[組織]** を選択するか、 **[組織]** ブロックから **[組織の確認]** リンクを選択します。
 

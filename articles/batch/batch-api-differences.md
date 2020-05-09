@@ -1,20 +1,15 @@
 ---
-title: 管理 API とサービス API の違い - Azure Batch | Microsoft Docs
+title: 管理 API とサービス API の違い
 description: API は、Azure Batch サービスのさまざまなレベルで機能します。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: conceptual
 ms.date: 02/26/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 181515c0f497af8ffadcb909c13e51a40bfbf3b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33b8c5980aba1090155d6b136c6707e928666abf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672760"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115399"
 ---
 # <a name="service-level-and-management-level-apis"></a>サービス レベル API と管理レベル API
 

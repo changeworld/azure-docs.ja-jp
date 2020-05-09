@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 1560a67d73b712ba1f295992fce4f7f1a2ae75bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100704"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792141"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>ポータルを使用して Azure 共有イメージ ギャラリーを作成する
 
@@ -25,26 +25,11 @@ ms.locfileid: "82100704"
 
 共有イメージ ギャラリー機能には、リソースの種類が複数あります。 それらを、この記事の中で使用または作成していきます。
 
-| リソース | 説明|
-|----------|------------|
-| **マネージド イメージ** | 単独で使用することも、イメージ ギャラリーに**イメージ バージョン**を作成するために使用することもできる基本的なイメージ。 マネージド イメージは、[一般化された](shared-image-galleries.md#generalized-and-specialized-images) VM から作成されます。 マネージド イメージは、複数の VM を作成する際に使用できる特別な種類の VHD で、共有イメージ バージョンを作成する際にも使用できるようになりました。 |
-| **スナップショット** | **イメージ バージョン**の作成に使用できる VHD のコピー。 [特殊化された](shared-image-galleries.md#generalized-and-specialized-images) VM (一般化されていない VM) からスナップショットを取得し、単独でまたはデータ ディスクのスナップショットと一緒に使用して、特殊化されたイメージ バージョンを作成できます。
-| **イメージ ギャラリー** | Azure Marketplace などの **イメージ ギャラリー**は、イメージを管理して共有するためのリポジトリです。ただし、アクセス権の所有者を制御します。 |
-| **イメージ定義** | イメージはギャラリー内で定義され、組織内で使用するためにイメージと要件に関する情報を伝達します。 イメージが一般化されているか特殊化されているか、オペレーティング システム、最小および最大メモリ要件、リリース ノートなどの情報を含めることができます。 これは、イメージの種類の定義です。 |
-| **イメージ バージョン** | **イメージ バージョン**は、ギャラリーを利用している場合に、VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 マネージド イメージのように、**イメージ バージョン**を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。 |
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 
-
-> [!IMPORTANT]
-> 特殊化されたイメージは、現在パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-> **プレビューに関する既知の制限事項**: VM は、ポータルまたは API を使用して、特殊化されたイメージからのみ作成できます。 プレビューでは CLI や PowerShell はサポートされていません。
-
-## <a name="before-you-begin"></a>開始する前に
-
-この記事の例を完了するには、一般化された VM の既存のマネージド イメージか、特殊化された VM のスナップショットが必要です。 お持ちでない場合は、「[チュートリアル: Azure PowerShell を使用して Azure VM のカスタム イメージを作成する](tutorial-custom-images.md)」に従って、マネージド イメージを作成するか、特殊化された VM の場合は[スナップショットを作成](snapshot-copy-managed-disk.md)してください。 マネージド イメージの場合もスナップショットの場合も、データ ディスクのサイズが 1 TB を超えることはできません。
 
 この記事の作業に出現するリソース グループと VM の名前は適宜置き換えてください。
 

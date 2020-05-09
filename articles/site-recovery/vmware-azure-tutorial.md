@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222639"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610685"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -65,11 +65,11 @@ ms.locfileid: "79222639"
 - **マスター ターゲット サーバー**:マスター ターゲット サーバーは、Azure からのフェールバック中にレプリケーション データを処理します。
 
 
-これらのコンポーネントは、"*構成サーバー*" と呼ばれる単一のオンプレミス マシンにすべて一緒にインストールされます。 VMware のディザスター リカバリーの場合、既定では、構成サーバーを高可用性 VMware VM として設定します。 そのためには、用意されている Open Virtualization Application (OVA) テンプレートをダウンロードし、そのテンプレートを VMware にインポートして VM を作成します。 
+これらのコンポーネントは、"*構成サーバー*" と呼ばれる単一のオンプレミス マシンにすべて一緒にインストールされます。 VMware のディザスター リカバリーの場合、既定では、構成サーバーを高可用性 VMware VM として設定します。 そのためには、用意されている Open Virtualization Application (OVA) テンプレートをダウンロードし、そのテンプレートを VMware にインポートして VM を作成します。
 
 - 構成サーバーの最新バージョンはポータルで入手できます。 [Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
 - 何かの理由で OVA テンプレートを使用して VM を設定できない場合は、[こちらの説明](physical-manage-configuration-server.md)に従って、構成サーバーを手動で設定してください。
-- OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 VM 上で実行される Windows を、必要なライセンスでアクティブ化する必要があります。 
+- OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 VM 上で実行される Windows を、必要なライセンスでアクティブ化する必要があります。
 
 
 ### <a name="download-the-vm-template"></a>VM テンプレートをダウンロードする
@@ -77,7 +77,7 @@ ms.locfileid: "79222639"
 1. コンテナーで、 **[インフラストラクチャの準備]**  >  **[ソース]** の順に移動します。
 2. **[ソースの準備]** で **[+ 構成サーバー]** を選びます。
 3. **[サーバーの追加]** で、 **[サーバーの種類]** に **[VMware の構成サーバー]** が表示されていることを確認します。
-4. 構成サーバー用の OVF テンプレートをダウンロードします。
+4. 構成サーバー用の OVA テンプレートをダウンロードします。
 
 
 
@@ -85,7 +85,7 @@ ms.locfileid: "79222639"
 
 
 1. VMWare vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
-2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、 **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。 
+2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、 **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。
 
      ![OVF テンプレート](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ ms.locfileid: "79222639"
 
 1. vSphere Client インベントリで VM を右クリックし、 **[Edit Settings]\(設定の編集\)** を選びます。
 2. **[Hardware]\(ハードウェア\)** で、 **[Add]\(追加\)**  >  **[Ethernet Adapter]\(イーサネット アダプター\)** の順に選択します。 **[次へ]** を選択します。
-3. アダプターの種類およびネットワークを選びます。 
+3. アダプターの種類およびネットワークを選びます。
 4. VM がオンになったときに仮想 NIC を接続するには、 **[Connect at power on]\(電源をオンにしたときに接続する\)** をオンにします。 **[次へ]**  >  **[完了]** の順に選択します。 **[OK]** をクリックします。
 
 
-## <a name="register-the-configuration-server"></a>構成サーバーを登録する 
+## <a name="register-the-configuration-server"></a>構成サーバーを登録する
 
 構成サーバーを設定した後、それをコンテナーに登録します。
 
@@ -179,7 +179,7 @@ ms.locfileid: "79222639"
 3. **[マシンの種類]** で、 **[仮想マシン]** を選択します。
 4. **[vCenter/vSphere Hypervisor]\(vCenter/vSphere ハイパーバイザー\)** で、vSphere ホストまたは vCenter サーバーを管理するホストを選択します。
 5. (構成サーバー VM に既定でインストールされる) プロセス サーバーを選択します。 **[OK]** をクリックします。 各プロセス サーバーの正常性状態が、推奨される制限とその他のパラメーターに従って示されます。 正常なプロセス サーバーを選択します。 [クリティカル](vmware-physical-azure-monitor-process-server.md#process-server-alerts)であるプロセス サーバーは選択できません。 エラーを[トラブルシューティングして解決](vmware-physical-azure-troubleshoot-process-server.md)するか、**または**[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定できます。
-6. **[ターゲット]** で、サブスクリプションと、フェールオーバー対象の VM を作成するリソース グループを選択します。 Resource Manager デプロイ モデルを使用しています。 
+6. **[ターゲット]** で、サブスクリプションと、フェールオーバー対象の VM を作成するリソース グループを選択します。 Resource Manager デプロイ モデルを使用しています。
 7. フェールオーバー後に作成された Azure VM が接続する Azure ネットワークとサブネットを選択します。
 8. **[選択したマシン用に今すぐ構成します。]** を選択し、レプリケーションを有効にするすべての VM にネットワーク設定を適用します。 マシンごとに Azure ネットワークを選択する場合は、 **[後で構成する]** を選択します。
 9. **[Virtual Machines]**  >  **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 **[OK]** をクリックします。 特定の仮想マシンを表示または選択できない場合は、問題の解決方法の[詳細を確認](https://aka.ms/doc-plugin-VM-not-showing)してください。

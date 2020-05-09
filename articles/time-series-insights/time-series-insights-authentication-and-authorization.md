@@ -11,13 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380808"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612284"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -93,7 +93,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
    1. トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
 
-* また、開発者は MSAL を使用して認証を選択することができます。 詳細については、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)に関するページを確認し、「[C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する](time-series-insights-manage-reference-data-csharp.md)」の記事を参照してください。 
+* また、開発者は MSAL を使用して認証を選択することができます。 詳細については、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)に関するページを確認し、「[C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する](time-series-insights-manage-reference-data-csharp.md)」の記事を参照してください。
 
 ## <a name="common-headers-and-parameters"></a>一般的なヘッダーとパラメーター
 
@@ -104,7 +104,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 ### <a name="authentication"></a>認証
 
-[Time Series Insights REST APIs](https://docs.microsoft.com/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)内で渡す必要があります。 
+[Time Series Insights REST APIs](https://docs.microsoft.com/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)内で渡す必要があります。
 
 > [!TIP]
 > チャートやグラフと共に [JavaScript クライアント SDK](https://tsiclientsample.azurewebsites.net/) を使用して、プログラムによって Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)に関する記事を参照してください。
@@ -115,7 +115,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 | 必要な要求ヘッダー | 説明 |
 | --- | --- |
-| 承認 | Time Series Insights で認証するには、有効な OAuth 2.0 ベアラートークンを **Authorization** ヘッダーに渡す必要があります。 | 
+| 承認 | Time Series Insights で認証するには、有効な OAuth 2.0 ベアラートークンを **Authorization** ヘッダーに渡す必要があります。 |
 
 > [!IMPORTANT]
 > そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。

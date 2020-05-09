@@ -1,36 +1,33 @@
 ---
-title: チュートリアル:Azure DevOps Projects を使用して既存のコードの CI/CD パイプラインを作成する
-description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects により、独自のコードと GitHub リポジトリを使用して、いくつかの簡単な手順で Azure サービス上にアプリを立ち上げることができます。
+title: チュートリアル:Azure DevOps Starter を使用して既存のコードの CI/CD パイプラインを作成する
+description: Azure DevOps Starter を利用すると、Azure での作業を簡単に開始できるようになります。 DevOps Projects により、独自のコードと GitHub リポジトリを使用して、いくつかの簡単な手順で Azure サービス上にアプリを立ち上げることができます。
 services: vsts
 documentationcenter: vs-devops-build
 ms.author: mlearned
 ms.manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.workload: web
 ms.prod: devops
 ms.technology: devops-cicd
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/27/2019
+ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-monikerRange: vsts
-ms.openlocfilehash: a0496999a9a5dc3e9bfd57df0ec035e6db77d620
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73615126"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233212"
 ---
-# <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して既存のコードの CI/CD パイプラインを作成する
+# <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Azure DevOps Starter を使用して GitHub リポジトリ用の CI/CD パイプラインを作成する
 
-Azure DevOps Projects は、Azure に対する継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成するプロセスを簡素化します。 既存のコードと Git リポジトリを持ち込むことができるほか、サンプル アプリケーションを選択することもできます。
+Azure DevOps Starter は、Azure に対する継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成するプロセスを簡素化します。 既存のコードと Git リポジトリを持ち込むことができるほか、サンプル アプリケーションを選択することもできます。
 
 このチュートリアルの内容は次のとおりです。
 
 > [!div class="checklist"]
-> * DevOps Projects を使用して CI/CD パイプラインを作成する
+> * DevOps Starter を使用して CI/CD パイプラインを作成する
 > * GitHub リポジトリへのアクセスを構成し、フレームワークを選択する
 > * Azure DevOps と Azure サブスクリプションを構成する 
 > * 変更を GitHub にコミットし、Azure に自動的にデプロイする
@@ -44,18 +41,14 @@ Azure DevOps Projects は、Azure に対する継続的インテグレーショ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-Azure DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 Azure DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
+Azure DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 Azure DevOps Starter では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure portal メニューから **[リソースの作成]** を選択します。
+1. 検索ボックスに「**DevOps Starter**」と入力して選択します。 新しく作成するには、 **[追加]** をクリックします。
 
-   ![Azure portal メニュー - リソースの作成](_img/azure-devops-project-github/createaresource.png)
-
-3. **[DevOps]**  >  **[DevOps プロジェクト]** の順に選択します。
-
-   ![DevOps Projects ダッシュボード](_img/azure-devops-project-github/azuredashboard.png)
-
+    ![DevOps Starter ダッシュボード](_img/azure-devops-starter-aks/search-devops-starter.png)
+    
 1. **[独自のコードを使用する]** を選択し、 **[次へ]** を選択します。
 
 ## <a name="configure-access-to-your-github-repo-and-select-a-framework"></a>GitHub リポジトリへのアクセスを構成し、フレームワークを選択する
@@ -78,9 +71,9 @@ Azure DevOps Projects によって、Azure Pipelines に CI/CD パイプライ�
 
 1. **[Azure DevOps 組織]** で新しい無料の組織を作成するか、ドロップダウン メニューから既存の組織を選択します。
 
-1. **[Azure サブスクリプション]** でサブスクリプションを選択し、 **[Web アプリ]** に名前を入力するか、または既定値を使用します。 **[場所]** を選択し、 **[完了]** を選択します。 数分後、DevOps Projects のデプロイの概要が Azure portal に表示されます。
+1. **[Azure サブスクリプション]** でサブスクリプションを選択し、 **[Web アプリ]** に名前を入力するか、または既定値を使用します。 **[場所]** を選択し、 **[完了]** を選択します。 数分後、DevOps Starter のデプロイの概要が Azure portal に表示されます。
 
-1. **[リソースに移動]** を選択して、DevOps Projects ダッシュボードを表示します。 すばやくアクセスできるように、右上隅で、**プロジェクト**をダッシュ​​ボードにピン留めします。 Azure DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されます。 コードは、GitHub リポジトリまたはその他の外部リポジトリに残り、サンプル アプリが **Azure DevOps 組織**のリポジトリに設定されます。 Azure DevOps Projects によってビルドが実行され、アプリが Azure にデプロイされます。
+1. **[リソースに移動]** を選択して、DevOps Starter ダッシュボードを表示します。 すばやくアクセスできるように、右上隅で、**プロジェクト**をダッシュ​​ボードにピン留めします。 Azure DevOps Starter によって、CI ビルドおよびリリース トリガーが自動的に構成されます。 コードは、GitHub リポジトリまたはその他の外部リポジトリに残り、サンプル アプリが **Azure DevOps 組織**のリポジトリに設定されます。 Azure DevOps Starter によってビルドが実行され、アプリが Azure にデプロイされます。
 
    ![Azure DevOps Projects ダッシュボードのビュー](_img/azure-devops-project-github/projectsdashboard.png)
 
@@ -90,15 +83,15 @@ Azure DevOps Projects によって、Azure Pipelines に CI/CD パイプライ�
 
 これでアプリの共同作業をチームで行う準備が整いました。 最新の作業が、CI/CD プロセスによって自動的に Web サイトにデプロイされます。 GitHub リポジトリに対する各変更により、Azure DevOps でビルドが開始され、CD パイプラインによって Azure へのデプロイが実行されます。
 
-1. DevOps Projects ダッシュボードから **[リポジトリ]** を選択します。 ご利用の GitHub リポジトリが新しいブラウザー タブに表示されます。アプリケーションに変更を加え、 **[変更のコミット]** を選択します。
+1. DevOps Starter ダッシュボードから **[リポジトリ]** を選択します。 ご利用の GitHub リポジトリが新しいブラウザー タブに表示されます。アプリケーションに変更を加え、 **[変更のコミット]** を選択します。
 
-1. しばらくすると、Azure Pipelines でビルドが開始されます。 ビルドの状態は、DevOps Projects ダッシュボードで監視できます。 または、自分の Azure DevOps 組織で、DevOps Projects ダッシュボードの **[ビルド パイプライン]** タブを選択して監視することもできます。
+1. しばらくすると、Azure Pipelines でビルドが開始されます。 ビルドの状態は、DevOps Starter ダッシュボードで監視できます。 または、自分の Azure DevOps 組織で、DevOps Starter ダッシュボードの **[ビルド パイプライン]** タブを選択して監視することもできます。
 
 ## <a name="examine-the-azure-pipelines-cicd-pipeline"></a>Azure Pipelines CI/CD パイプラインを調べる
 
-Azure DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが自動的に構成されます。 パイプラインを探索し、必要に応じてカスタマイズします。 ビルドおよびリリース パイプラインについて理解するには、次の手順を行います。
+Azure DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが自動的に構成されます。 パイプラインを探索し、必要に応じてカスタマイズします。 ビルドおよびリリース パイプラインについて理解するには、次の手順を行います。
 
-1. DevOps Projects ダッシュボードから **[ビルド パイプライン]** を選択します。
+1. DevOps Starter ダッシュボードで、 **[ビルド パイプライン]** を選択します。
 
 1. **[Azure Pipelines]** ページが開いて、最新のビルドの履歴と各ビルドの状態が表示されます。
 

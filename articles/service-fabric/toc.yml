@@ -655,7 +655,7 @@
             - name: スケール
               items:
                 - name: 手動によるスケールアウト
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: プログラムによるスケールアウト
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: プライマリ ノード タイプのスケールアップ

@@ -87,6 +87,9 @@
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: NoSQL とリレーショナル データベース
@@ -136,7 +139,7 @@
         - name: コンテナーとデータベースのスループットのプロビジョニング
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: スループットのプロビジョニング - 自動スケーリング モード
+        - name: スループットのプロビジョニング - 自動スケーリング
           href: provision-throughput-autoscale.md
         - name: 自動スケーリングに関する FAQ
           href: autoscale-faq.md
@@ -913,6 +916,8 @@
           href: how-to-manage-consistency.md
         - name: 競合解決ポリシーを構成する
           href: how-to-manage-conflicts.md
+        - name: セッション トークン形式の変換
+          href: how-to-convert-session-token.md
     - name: プロビジョニング スループット
       items:
         - name: コンテナーのスループットをプロビジョニングする
@@ -1051,22 +1056,26 @@
       items:
         - name: Cosmos DB を監視する
           href: monitor-cosmos-db.md
-        - name: サーバー側の待機時間を監視する
-          href: monitor-server-side-latency.md
-        - name: 要求ユニットの使用状況を監視する
-          href: monitor-request-unit-usage.md
-        - name: 診断ログを使用して監視する
-          href: cosmosdb-monitor-resource-logs.md
-        - name: コントロール プレーン ログの監査
-          href: audit-control-plane-logs.md
-        - name: Azure Monitor for Cosmos (プレビュー)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Azure Monitor のメトリックを使用する
+          items:
+            - name: Azure Monitor for Cosmos (プレビュー)
+              href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: サーバー側の待機時間を監視する
+              href: monitor-server-side-latency.md
+            - name: 要求ユニットの使用状況を監視する
+              href: monitor-request-unit-usage.md
+        - name: Azure モニター ログを使用する
+          items:
+            - name: 診断ログを使用して監視する
+              href: cosmosdb-monitor-resource-logs.md
+            - name: コントロール プレーン ログの監査
+              href: audit-control-plane-logs.md
         - name: Cosmos DB アカウントからメトリックを表示する
           href: use-metrics.md
-        - name: Logic Apps を使用したアプリケーション ログ記録
-          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 監視データのリファレンス
           href: monitor-cosmos-db-reference.md
+        - name: Logic Apps を使用したアプリケーション ログ記録
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: ローカルでの開発
       items:
         - name: エミュレーターの使用
