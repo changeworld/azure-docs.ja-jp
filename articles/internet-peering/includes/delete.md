@@ -8,11 +8,11 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 0ed2137d1fd7a3c207db3ec49590a61f00b5fd99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3f866064790fb3936fb76c1deef15ee2a38773
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773658"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678643"
 ---
-現時点では、ポータルまたは PowerShell を使用したプロビジョニング解除はサポートされていません。プロビジョニングを解除するには、[Microsoft ピアリング](mailto:peeringexperience@microsoft.com)にお問い合わせください。
+現時点では、Azure portal または PowerShell を使用したプロビジョニング解除はサポートされていません。 プロビジョニングを解除するには、[Microsoft ピアリング](mailto:peeringexperience@microsoft.com)にお問い合わせください。

@@ -5,37 +5,37 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233643"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81531018"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスターの仮想ネットワークの作成
 
-この記事では、Azure HDInsight クラスターで使用する [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を作成および構成するための例とコード サンプルを紹介します。 ネットワーク セキュリティ グループ (NSG) を作成し、DNS を構成する方法の詳細な例を紹介します。 
+この記事では、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を作成および構成するための例とコード サンプルを紹介します。 Azure HDInsight クラスターで使用します。 ネットワーク セキュリティ グループ (NSG) を作成し、DNS を構成する方法の詳細な例を紹介します。
 
 Azure HDInsight での仮想ネットワークの使用に関する背景情報については、[Azure HDInsight 用仮想ネットワークの計画](hdinsight-plan-virtual-network-deployment.md)に関する記事を参照してください。
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>コード サンプルと例についての前提条件
 
-この記事のコード サンプルを実行する前に、TCP/IP ネットワークについて理解している必要があります。 TCP/IP ネットワークに詳しくない方は、実稼働ネットワークに変更を加えた経験のある方に相談してください。
+この記事のコード サンプルを実行する前に、TCP/IP ネットワークについて理解しておきます。 TCP/IP ネットワークに詳しくない方は、実稼働ネットワークに変更を加えた経験のある方に相談してください。
 
-この記事のサンプルに関するその他の前提条件には、次のものがあります。
+この記事のサンプルに関するその他の前提条件には、次の項目があります。
 
 * PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)をインストールする必要があります。
-* Azure CLI を使用する予定でまだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI を使用する予定で、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 > [!IMPORTANT]  
 > Azure Virtual Network を使用して HDInsight をオンプレミス ネットワークに接続するための詳しい手順については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」を参照してください。
 
 ## <a name="example-network-security-groups-with-hdinsight"></a><a id="hdinsight-nsg"></a>例: HDInsight でのネットワーク セキュリティ グループ
 
-このセクションの例は、HDInsight に Azure 管理サービスとの通信を許可するネットワーク セキュリティ グループのルールを作成する方法を示します。 例を使用する前に、IP アドレスを、使用している Azure のリージョンの IP アドレスに合わせて変更してください。 この情報については、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。
+このセクションの例では、ネットワーク セキュリティ グループ規則を作成する方法について説明します。 これらのルールにより、HDInsight が Azure 管理サービスと通信できるようになります。 例を使用する前に、利用している Azure リージョンの IP アドレスと一致するように、IP アドレスを調整します。 この情報については、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。
 
 ### <a name="azure-resource-management-template"></a>Azure Resource Management テンプレート
 
@@ -202,7 +202,6 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
     このコマンドが完了すると、仮想ネットワークに HDInsight をインストールできます。
 
-
 これらの手順を実行すると、Azure クラウドの HDInsight 正常性と管理サービスへのアクセスのみが開きます。 それ以外の Virtual Network 外から HDInsight クラスターへのアクセスはすべてブロックされます。 仮想ネットワーク外からのアクセスを有効にする場合は、追加のネットワーク セキュリティ グループ ルールを追加する必要があります。
 
 次のコードでは、インターネットからの SSH アクセスを可能にする方法を示します。
@@ -238,7 +237,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. 仮想ネットワークのカスタム DNS サーバーで、`/etc/bind/named.conf.local`ファイルの内容として次のテキストを使用します。
+1. 仮想ネットワークのカスタム DNS サーバーで、`/etc/bind/named.conf.local`ファイルの内容として次のテキストを使用します。
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -252,7 +251,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
     この構成により、仮想ネットワークの DNS サフィックスのすべての DNS 要求は Azure の再帰リゾルバーにルーティングされます。
 
-2. 仮想ネットワークのカスタム DNS サーバーで、`/etc/bind/named.conf.options`ファイルの内容として次のテキストを使用します。
+1. 仮想ネットワークのカスタム DNS サーバーで、`/etc/bind/named.conf.options`ファイルの内容として次のテキストを使用します。
 
     ```
     // Clients to accept requests from
@@ -288,9 +287,9 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * `192.168.0.1` の値を、オンプレミスの DNS サーバーの IP アドレス と置き換えます。 このエントリにより、その他の DNS 要求はすべて、オンプレミスの DNS サーバーにルーティングされます。
 
-3. 構成を使用するには、バインドを再起動します。 たとえば、「 `sudo service bind9 restart` 」のように入力します。
+1. 構成を使用するには、バインドを再起動します。 たとえば、「 `sudo service bind9 restart` 」のように入力します。
 
-4. オンプレミスの DNS サーバーに、条件付きフォワーダーを追加します。 手順 1 で見つけた DNS サフィックスへの要求をカスタム DNS サーバーに送信するように条件付きフォワーダーを構成します。
+1. オンプレミスの DNS サーバーに、条件付きフォワーダーを追加します。 手順 1 で見つけた DNS サフィックスへの要求をカスタム DNS サーバーに送信するように条件付きフォワーダーを構成します。
 
     > [!NOTE]  
     > 条件付きフォワーダーを追加する方法の詳細については、DNS ソフトウェアのマニュアルをご覧ください。
@@ -351,7 +350,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
             allow-query { goodclients; };
 
             forwarders {
-            168.63.129.16;   # Azure recursive resolver         
+            168.63.129.16;   # Azure recursive resolver
             };
 
             dnssec-validation auto;
@@ -360,7 +359,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
             listen-on { any; };
     };
     ```
-    
+
    `10.0.0.0/16` と `10.1.0.0/16`の値を、使用している仮想ネットワークの IP アドレス範囲と置き換えます。 このエントリにより、それぞれのネットワーク内のリソースは DNS サーバーに要求を送信できるようになります。
 
     仮想ネットワークの DNS サフィックス以外 (microsoft.com など) の要求は、Azure の再帰リゾルバーによって処理されます。
@@ -371,7 +370,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 ## <a name="next-steps"></a>次のステップ
 
-* HDInsight を オンプレミス ネットワークに接続する構成方法の詳しい例については、 [HDInsight のオンプレミス ネットワークへの接続](./connect-on-premises-network.md)に関するページをご覧ください。
+* HDInsight をオンプレミス ネットワークに接続する構成方法の詳しい例については、[HDInsight のオンプレミス ネットワークへの接続](./connect-on-premises-network.md)に関するページを参照してください。
 * Azure 仮想ネットワークでの Apache HBase クラスターの構成については、[Azure Virtual Network での HDInsight 上の Apache HBase クラスターの作成](hbase/apache-hbase-provision-vnet.md)に関するページを参照してください。
 * Apache HBase geo レプリケーションの構成については、「[Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する](hbase/apache-hbase-replication.md)」を参照してください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。

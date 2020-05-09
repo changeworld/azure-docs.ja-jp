@@ -1,25 +1,15 @@
 ---
-title: メトリック、アラート、および診断ログ - Azure Batch | Microsoft Docs
+title: メトリック、アラート、診断ログ
 description: プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 12/05/2018
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 68d5976a5a79dbde88b7f80b02b39793ffc86de9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f75a8302c8ba368138e6c8edee6c6069c5031d8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254855"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117303"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -137,7 +127,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
 各 `PT1H.json` BLOB ファイルには、BLOB の URL で指定された時間 (たとえば `h=12`) 内に発生した JSON 形式のイベントが含まれます。 現在の時間内にイベントが発生すると、`PT1H.json` ファイルにイベントが追加されます。 分の値 (`m=00`) は常に `00` です。診断ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです。 (時刻はすべて UTC 形式です)。
 
-`PoolResizeCompleteEvent` ログ ファイル内の `PT1H.json` エントリの例を次に示します。 これには、専用ノードと優先順位の低いノードの現在の数と目標の数に関する情報に加え、操作の開始時刻と終了時刻が含まれます。
+`PT1H.json` ログ ファイル内の `PoolResizeCompleteEvent` エントリの例を次に示します。 これには、専用ノードと優先順位の低いノードの現在の数と目標の数に関する情報に加え、操作の開始時刻と終了時刻が含まれます。
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
