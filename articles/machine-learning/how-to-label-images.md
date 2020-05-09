@@ -6,13 +6,13 @@ author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879430"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204323"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける
 
@@ -25,21 +25,24 @@ ms.locfileid: "80879430"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 実行中のデータにラベル付けするプロジェクトのラベル付けポータルの URL
 * [Microsoft アカウント](https://account.microsoft.com/account)、または組織およびプロジェクト用の Azure Active Directory アカウント
+* ラベル付けプロジェクトが含まれているワークスペースへの共同作成者レベルのアクセス。
 
-> [!NOTE]
-> プロジェクト管理者は、 **[プロジェクトの詳細]** ページの **[詳細]** タブでラベル付けポータルの URL を確認できます。
+## <a name="sign-in-to-the-workspace"></a>ワークスペースにサインインする
 
-## <a name="sign-in-to-the-projects-labeling-portal"></a>プロジェクトのラベル付けポータルにサインインする
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
-プロジェクト管理者から提供されたラベル付けポータルの URL にアクセスします。 管理者によってチームに追加されたときに使用されたメール アカウントを使ってサインインします。 ほとんどのユーザーの場合、これは Microsoft アカウントです。 ラベル付けプロジェクトで Azure Active Directory が使用されている場合は、その方法でサインインします。
+1. サブスクリプションと、ラベル付けプロジェクトが含まれているワークスペースを選択します。  この情報はプロジェクト管理者から入手します。
+
+1. 左側にある **[データのラベル付け]** を選択し、プロジェクトを特定します。  
+
+1. 一覧でプロジェクト名を選択します。
 
 ## <a name="understand-the-labeling-task"></a>ラベル付けタスクを理解する
 
-サインインすると、プロジェクトの概要ページが表示されます。
+プロジェクトを選択したら、ページの上部にある **[ラベル データ]** を選択します。
 
-**[View detailed instructions]\([詳細な指示の表示]\)** に移動します。 これらの指示はプロジェクトに固有です。 これらには、取り扱うデータの種類、意思決定方法、その他の関連情報について説明しています。 この情報を読んだ後、プロジェクト ページに戻り、 **[Start labeling]\(ラベル付けの開始\)** を選択します。
+対象のプロジェクトに固有の指示が表示されます。 これらには、取り扱うデータの種類、意思決定方法、その他の関連情報について説明しています。 この情報を読んだ後、ページの上部にある **[タスク]** を選択します。  または、ページの下部にある **[ラベル付けの開始]** を選択します。
 
 ## <a name="common-features-of-the-labeling-task"></a>ラベル付けタスクの一般的な機能
 

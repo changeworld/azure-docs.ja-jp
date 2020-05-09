@@ -2,18 +2,18 @@
 title: Azure 内の Windows VM で PowerShell スクリプトを実行する
 description: このトピックでは、実行コマンド機能を使用して Azure Windows 仮想マシン内で PowerShell スクリプトを実行する方法について説明します
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
-ms.topic: article
+ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73749233"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82143774"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -51,14 +51,14 @@ ms.locfileid: "73749233"
 The entity was not found in this Azure location
 ```
 
-|**Name**|**説明**|
+|**名前**|**説明**|
 |---|---|
 |**RunPowerShellScript**|PowerShell スクリプトを実行します。|
 |**EnableRemotePS**|コンピューターを構成してリモート PowerShell を有効にします。|
 |**EnableAdminAccount**|ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。|
 |**IPConfig**| TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。|
 |**RDPSettings**|レジストリ設定およびドメインのポリシー設定を確認します。 マシンがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。|
-|**ResetRDPCert**|RDP リスナーに関連付けられている SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。|
+|**ResetRDPCert**|RDP リスナーに関連付けられている TLS または SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。|
 |**SetRDPPort**|リモート デスクトップ接続用の既定またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。|
 
 ## <a name="azure-cli"></a>Azure CLI

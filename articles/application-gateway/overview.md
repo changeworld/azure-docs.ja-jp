@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 03/04/2020
 ms.author: victorh
 ms.openlocfilehash: 4a4395801218409fe77d1081689ba80b495fcfad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78302578"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
@@ -30,7 +30,7 @@ Application Gateway では、URI パスやホスト ヘッダーなど、HTTP �
 >
 > Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 
-## <a name="features"></a>機能
+## <a name="features"></a>特徴
 
 Application Gateway の機能の詳細については、「[Azure Application Gateway の機能](features.md)」を参照してください。
 

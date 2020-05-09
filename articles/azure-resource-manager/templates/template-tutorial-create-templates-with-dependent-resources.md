@@ -2,19 +2,19 @@
 title: 依存リソースを含むテンプレート
 description: 複数のリソースを含む Azure Resource Manager テンプレートを作成し、Azure Portal を使用してデプロイする方法を説明します。
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5db2fb34a6d9330e745a9b4d1f5fed538e96c557
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: cf876d3c7c100f001ba81082d792e81a777c7315
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239318"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82193039"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む ARM テンプレートを作成する
 
-Azure Resource Manager (ARM) テンプレートを作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure Portal から Cloud Shell を使用してテンプレートをデプロイします。
+Azure Resource Manager (ARM) テンプレートを作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure portal から Cloud Shell を使用してテンプレートをデプロイします。
 
 このチュートリアルでは、ストレージ アカウント、仮想マシン、仮想ネットワーク、およびその他の依存リソースを作成します。 別のリソースが存在するまではデプロイできないリソースもあります。 たとえば、仮想マシンを作成するには、そのストレージ アカウントとネットワーク インターフェイスが存在している必要があります。 このリレーションシップは、一方のリソースと他方のリソースに依存関係を持たせることにより定義します。 Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 詳細については、「[Azure Resource Manager テンプレートでのリソース デプロイ順序の定義](./define-resource-dependency.md)」を参照してください。
 
@@ -39,6 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```console
     openssl rand -base64 32
     ```
+
     Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
@@ -51,6 +52,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
+
 3. **[開く]** を選択して、ファイルを開きます。
 4. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
@@ -67,33 +69,43 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     ![Visual Studio Code Azure Resource Manager テンプレート](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    テンプレートによって定義されたリソースは、5 つあります。
+    テンプレートによって定義されたリソースは、6 つあります。
 
-   * `Microsoft.Storage/storageAccounts`. [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
-   * `Microsoft.Network/publicIPAddresses` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
-   * `Microsoft.Network/virtualNetworks` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
-   * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
-   * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts)。
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)。
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)。
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)。
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)。
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)。
 
-     カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+     テンプレートをカスタマイズする前に、テンプレートのリファレンスを確認しておくと参考になります。
 
-2. 最初のリソースを展開します。 それはストレージ アカウントです。 リソース定義と[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)を比較します。
+1. 最初のリソースを展開します。 それはストレージ アカウントです。 リソース定義と[テンプレート リファレンス](/azure/templates/Microsoft.Storage/storageAccounts)を比較します。
 
     ![Visual Studio Code の Azure Resource Manager テンプレートのストレージ アカウント定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. 2 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/publicIPAddresses` です。 リソース定義と[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)を比較します。
+1. 2 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/publicIPAddresses` です。 リソース定義と[テンプレート リファレンス](/azure/templates/microsoft.network/publicipaddresses)を比較します。
 
     ![Visual Studio Code の Azure Resource Manager テンプレートのパブリック IP アドレス定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. 4 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/networkInterfaces` です。
 
-    ![Visual Studio Code Azure Resource Manager テンプレートの dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+1. 3 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/networkSecurityGroups` です。 リソース定義と[テンプレート リファレンス](/azure/templates/microsoft.network/networksecuritygroups)を比較します。
 
-    dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは他の 2 つのリソースに依存しています。
+    ![Visual Studio Code の Azure Resource Manager テンプレートのネットワーク セキュリティ グループ定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+
+1. 4 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/virtualNetworks` です。
+
+    ![Visual Studio Code Azure Resource Manager テンプレートの仮想ネットワークの dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+
+    dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは、もう 1 つのリソースに依存しています。
+
+    * `Microsoft.Network/networkSecurityGroups`
+
+1. 5 番目の要素を展開します。 リソースの種類は `Microsoft.Network/networkInterfaces` です。 このリソースは他の 2 つのリソースに依存しています。
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
 
-5. 5 番目の要素を展開します。 このリソースは、仮想マシンです。 次に示す他の 2 つのリソースに依存しています。
+1. 6 番目のリソースを展開します。 このリソースは、仮想マシンです。 次に示す他の 2 つのリソースに依存しています。
 
     * `Microsoft.Storage/storageAccounts`
     * `Microsoft.Network/networkInterfaces`
@@ -106,27 +118,41 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
-テンプレートをデプロイする方法は多数あります。  このチュートリアルでは、Azure Portal から Cloud Shell を使用します。
+1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
 
-1. [Cloud Shell](https://shell.azure.com) にサインインします。
-1. Cloud Shell の左上隅から **[PowerShell]** を選択し、 **[確認]** を選択します。  このチュートリアルでは、PowerShell を使用します。
-1. Cloud Shell から **[ファイルのアップロード]** を選択します。
+    ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-    ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-1. チュートリアルで前に保存したテンプレートを選択します。 既定の名前は **azuredeploy.json** です。  同じ名前のファイルが既にある場合は、古いファイルが通知なしに上書きされます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前に保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
-    オプションで **ls $HOME** コマンドと **cat $HOME/azuredeploy.json** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
+1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
 
-1. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    echo "Enter the virtual machine admin username:" &&
+    read adminUsername &&
+    echo "Enter the DNS label prefix:" &&
+    read dnsLabelPrefix &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location $location &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters adminUsername=$adminUsername dnsLabelPrefix=$dnsLabelPrefix
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment `
@@ -135,18 +161,11 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. 次の PowerShell コマンドを実行して、新しく作成された仮想マシンの一覧を表示します。
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    仮想マシンの名前は、テンプレート内に **SimpleWinVM** としてハードコーディングされています。
+    ---
 
 1. 仮想マシンの確認を目的とする仮想マシンへの RDP が、正常に作成されました。
 
@@ -156,7 +175,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 1. Azure portal で、左側のメニューから **[リソース グループ]** を選択します。
 2. **[名前でフィルター]** フィールドに、リソース グループ名を入力します。
-3. リソース グループ名を選択します。  リソース グループ内の合計 6 つのリソースが表示されます。
+3. リソース グループ名を選択します。 リソース グループ内の合計 6 つのリソースが表示されます。
 4. トップ メニューから **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
