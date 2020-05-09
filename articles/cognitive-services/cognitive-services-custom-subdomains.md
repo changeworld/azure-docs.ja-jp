@@ -43,7 +43,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 
 リージョン エンドポイントとカスタム サブドメイン名は両方サポートされており、どちらを使用しても変わりはありません。 ただし、完全なエンドポイントが必要です。
 
-リージョン情報は、**Azure portal** のご利用のリソースの [[概要]](https://portal.azure.com) ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
+リージョン情報は、**Azure portal** のご利用のリソースの [[概要]](https://portal.azure.com) ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
 
 ## <a name="are-custom-subdomain-names-regional"></a>カスタム サブドメイン名はリージョン単位ですか?
 
@@ -76,7 +76,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 | | カナダ中部 | `https://canadacentral.api.cognitive.microsoft.com` |
 | | 米国中部 | `https://centralus.api.cognitive.microsoft.com` |
 | | 東アジア | `https://eastasia.api.cognitive.microsoft.com` |
-| | East US | `https://eastus.api.cognitive.microsoft.com` |
+| | 米国東部 | `https://eastus.api.cognitive.microsoft.com` |
 | | 米国東部 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | フランス中部 | `https://francecentral.api.cognitive.microsoft.com` |
 | | インド中部 | `https://centralindia.api.cognitive.microsoft.com` |
