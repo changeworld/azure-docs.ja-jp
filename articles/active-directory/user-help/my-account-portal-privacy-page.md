@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a97b79f7927c56a737723060cd9cb3218b12bf55
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062440"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625495"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>組織でのプライバシー関連データの使用方法を表示します。
 
@@ -24,7 +24,7 @@ ms.locfileid: "77062440"
 
 ## <a name="view-your-privacy-related-info"></a>プライバシー関連情報を表示する
 
-1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。
 
 2. 左側のナビゲーション ウィンドウから **[プライバシー]** を選択するか、 **[プライバシー]** ブロックから **[プライバシーの確認]** リンクを選択します。
 

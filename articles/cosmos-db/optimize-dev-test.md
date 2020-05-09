@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: d2ca7b7e4b637802df6a78c2493e3cc088f09881
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 3fe5ea98f8db633eed7ce4e2c0ac0cafa56408ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225687"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194518"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Azure Cosmos DB での開発とテストのコストを最適化する
 
@@ -21,8 +21,9 @@ ms.locfileid: "79225687"
 
 [Azure Cosmos DB エミュレーター](local-emulator.md)は Azure Cosmos DB クラウド サービスによく似ており、ローカルにダウンロードできます。 ネットワークに接続していなくても、コストをかけずに、Azure Cosmos DB API を使用してコードの記述とテストを行うことができます。 Azure Cosmos DB エミュレーターでは、クラウド サービスとほとんど同じローカル環境が開発用に提供されます。 Azure サブスクリプションを作成することなく、アプリケーションの開発とテストをローカルに行うことができます。 アプリケーションをクラウドにデプロイする準備ができたら、クラウドの Azure Cosmos DB エンドポイントに接続するように接続文字列を更新します。それ以外の変更は必要ありません。 Azure DevOps で [Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定](tutorial-setup-ci-cd.md)し、テストを実行することもできます。 始めるには、[Azure Cosmos DB エミュレーター](local-emulator.md)に関する記事を参照してください。
 
-## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB の Free レベル 
-Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります。 また、データベース レベルで 400 RU/秒を共有する 25 個のコンテナーを備えた 1 つの共有スループット データベースを作成し、すべて Free レベルで対応することもできます (Free レベルのアカウントでは、5 つの共有スループット データベースが上限になります)。 Free レベルは、アカウントの有効期間中は無期限に存続し、無制限のストレージとスループット (RU/秒)、SLA、高可用性、すべての Azure リージョンでのターンキー グローバル分散など、通常の Azure Cosmos DB アカウントの[利点と機能](introduction.md#key-benefits)をすべて備えます。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 利用を開始するには、[Free レベルを有効にした新しいアカウントを作成します](create-cosmosdb-resources-portal.md)。 詳しくは、[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。 
+## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB の Free レベル
+
+Azure Cosmos DB の Free レベルを使用すると、アプリケーションの利用開始、開発、およびテストを簡単に行えるようになります。また、小規模な実稼働ワークロードを無料で実行することもできます。 アカウント上で Free レベルを有効にすると、そのアカウントでの最初の 400 RU/秒と 5 GB のストレージが無料で利用できるようになります。 また、データベース レベルで 400 RU/秒を共有する 25 個のコンテナーを備えた 1 つの共有スループット データベースを作成し、すべて Free レベルで対応することもできます (Free レベルのアカウントでは、5 つの共有スループット データベースが上限になります)。 Free レベルは、アカウントの有効期間中は無期限に存続し、無制限のストレージとスループット (RU/秒)、SLA、高可用性、すべての Azure リージョンでのターンキー グローバル分散など、通常の Azure Cosmos DB アカウントの[利点と機能](introduction.md#key-benefits)をすべて備えます。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](manage-sql-with-resource-manager.md#free-tier)を使用します。 詳しくは、[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB を無料で試す
 
@@ -34,7 +35,7 @@ Azure Cosmos DB が含まれる [Azure 無料アカウント](https://azure.micr
 
 ## <a name="use-shared-throughput-databases"></a>共有スループット データベースを使用する
 
-[共有スループット データベース](set-throughput.md#set-throughput-on-a-database)では、データベース内のすべてのコンテナーによって、そのデータベースのプロビジョニング済みスループット (RU/秒) が共有されます。 たとえば、400 RU/秒のデータベースがプロビジョニングされ、コンテナーが 4 つある場合、4 つのコンテナーすべてによって 400 RU/秒 が共有されます。 開発環境またはテスト環境では、各コンテナーへのアクセス頻度が低くなり、最小の 400 RU/秒未満しか必要にならない場合があります。その場合は、1 つの共有スループット データベース内にコンテナーを配置することで、コストを最適化できます。 
+[共有スループット データベース](set-throughput.md#set-throughput-on-a-database)では、データベース内のすべてのコンテナーによって、そのデータベースのプロビジョニング済みスループット (RU/秒) が共有されます。 たとえば、400 RU/秒のデータベースがプロビジョニングされ、コンテナーが 4 つある場合、4 つのコンテナーすべてによって 400 RU/秒 が共有されます。 開発環境またはテスト環境では、各コンテナーへのアクセス頻度が低くなり、最小の 400 RU/秒未満しか必要にならない場合があります。その場合は、1 つの共有スループット データベース内にコンテナーを配置することで、コストを最適化できます。
 
 たとえば、開発またはテスト アカウントに 4 つのコンテナーがあるとします。 専用のスループット (最小 400 RU/秒) で 4 つのコンテナーを作成した場合、RU/秒の合計は 1600 RU/秒になります。 一方、1 つの共有スループット データベース (最小 400 RU/秒) を作成して、そこにコンテナーを配置した場合、RU/秒の合計は 400 RU/秒になります。 一般に、共有スループット データベースは、保証されているスループットを個々のコンテナー上では必要としないシナリオに最適です。  [共有スループット データベース](set-throughput.md#set-throughput-on-a-database)に関する記事を参照してください。
 
@@ -49,4 +50,3 @@ Azure Cosmos DB が含まれる [Azure 無料アカウント](https://azure.micr
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
 * [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
 * [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します
-

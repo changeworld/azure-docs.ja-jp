@@ -155,8 +155,16 @@
           items:
             - name: Apache Ambari Web UI を使用したクラスターの管理
               href: ./hdinsight-hadoop-manage-ambari.md
-            - name: Apache Ambari Web UI を使用したクラスターの最適化
-              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: Apache Ambari を使用した最適化
+              items:
+                - name: クラスターの最適化
+                  href: ./hdinsight-changing-configs-via-ambari.md
+                - name: Apache HBase の最適化
+                  href: ./optimize-hbase-ambari.md
+                - name: Apache Hive の最適化
+                  href: ./optimize-hive-ambari.md
+                - name: Apache Pig の最適化
+                  href: ./optimize-pig-ambari.md
             - name: Apache Ambari REST API の使用
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: クラスターの削除
@@ -221,14 +229,18 @@
               href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
             - name: クラスター パフォーマンスの監視
               href: ./hdinsight-key-scenarios-to-monitor.md
-            - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
+            - name: クラスターの可用性 - Apache Ambari
               href: ./hdinsight-cluster-availability.md
+            - name: クラスターの可用性 - Azure Monitor ログ
+              href: ./cluster-availability-monitor-logs.md
         - name: トラブルシューティング
           items:
             - name: スクリプト操作のトラブルシューティング
               href: ./troubleshoot-script-action.md
             - name: リソースの作成エラー
               href: ./troubleshoot-resource-creation-fails.md
+            - name: Apache Oozie のトラブルシューティング
+              href: ./troubleshoot-oozie.md
     - name: リファレンス
       items:
         - name: Azure PowerShell
@@ -699,6 +711,8 @@
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
             - name: Apache HBase のトラブルシューティング
               href: ./hbase/apache-troubleshoot-hbase.md
+            - name: Apache HBase を照会するための REST API
+              href: ./hbase/troubleshoot-rest-api.md
 - name: Interactive Query
   items:
     - name: 概要
@@ -901,6 +915,8 @@
           href: ./transport-layer-security.md
         - name: HDInsight 用の VNET の計画
           href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: ネットワーク トラフィックを制御する
+          href: ./control-network-traffic.md
         - name: NSG と UDR に必要な IP アドレス
           href: ./hdinsight-management-ip-addresses.md
         - name: Azure Firewall のサービス タグ
@@ -931,6 +947,8 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: ネットワーク仮想アプライアンスを構成する
+          href: ./network-virtual-appliance.md
         - name: トラブルシューティング
           items:
             - name: ESP 認証の問題

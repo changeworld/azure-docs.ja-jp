@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 04ef72f7ec70b370305395ae8de8180f4594b43b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277341"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82145121"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -38,9 +38,9 @@ Azure 可用性ゾーンは、VM のセットを 2 つ以上のデータ セン�
 > Azure 可用性ゾーンは、まだ一部のリージョンでは提供されていません。最新の[サポートされているリージョンの一覧についてのお知らせ](https://docs.microsoft.com/azure/availability-zones/az-overview)を確認してください。 Open Source Cloud Foundry については、[Azure Availability Zone for open source Cloud Foundry guidance (オープン ソースの Cloud Foundry 用の Azure 可用性ゾーン ガイダンス)](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone) を確認してください。
 
 ## <a name="2-network-routing"></a>2.ネットワーク ルーティング
-既定では、受信 CF API/アプリ要求に対して Azure 基本ロード バランサーが使用され、要求は Gorouter に転送されます。 Diego Brain、MySQL、ERT などの CF コンポーネントも、ロード バランサーを使用して HA のトラフィックを分散することができます。 また、Azure には完全に管理された負荷分散ソリューションのセットが用意されています。 TLS 終端 ("SSL オフロード") または HTTP/HTTPS 要求ごとのアプリケーション レイヤー処理が必要な場合は、Application Gateway を検討してください。 レイヤー 4 の高可用性とスケーラビリティの負荷分散については、標準ロード バランサーを検討してください。
+既定では、受信 CF API/アプリ要求に対して Azure 基本ロード バランサーが使用され、要求は Gorouter に転送されます。 Diego Brain、MySQL、ERT などの CF コンポーネントも、ロード バランサーを使用して HA のトラフィックを分散することができます。 また、Azure には完全に管理された負荷分散ソリューションのセットが用意されています。 TLS または SSL 終端 ("SSL オフロード") または HTTP/HTTPS 要求ごとのアプリケーション レイヤー処理が必要な場合は、Application Gateway を検討してください。 レイヤー 4 の高可用性とスケーラビリティの負荷分散については、標準ロード バランサーを検討してください。
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) は、SSL オフロード、エンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティなど、レイヤー 7 のさまざまな負荷分散機能を提供します。 [Application Gateway は、Open Source Cloud Foundry で構成](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway)することができます。 PCF については、POC テストの [PCF 2.1 リリース ノート](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway)を確認してください。
+[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) は、SSL オフロード、エンドツーエンド TLS、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティなど、レイヤー 7 のさまざまな負荷分散機能を提供します。 [Application Gateway は、Open Source Cloud Foundry で構成](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway)することができます。 PCF については、POC テストの [PCF 2.1 リリース ノート](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway)を確認してください。
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  3. HA ポート、より豊富な監視データなど、追加の機能があります。 Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
