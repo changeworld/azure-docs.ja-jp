@@ -3,12 +3,12 @@ title: チュートリアル:コンプライアンスを強制するポリシー
 description: このチュートリアルでは、標準の強制、コストの制御、セキュリティの維持、および企業全体の設計原則の適用を行うポリシーを使用します。
 ms.date: 03/24/2020
 ms.topic: tutorial
-ms.openlocfilehash: 15a6c3df26938332d42ecbcfff43f958577062c4
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239946"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190828"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>チュートリアル:コンプライアンスを強制するポリシーの作成と管理
 
@@ -126,7 +126,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
    ポリシー ルールの _field_ プロパティは、サポートされている値にする必要があります。 値の完全な一覧については、[ポリシー定義構造のフィールド](../concepts/definition-structure.md#fields)に関する記事を参照してください。 `"Microsoft.Compute/VirtualMachines/Size"` はエイリアスの 1 つの例です。
 
-   Azure ポリシーの他のサンプルについては、「[Azure Policy のサンプル](../samples/index.md)」をご覧ください。
+   Azure Policy の他のサンプルについては、「[Azure Policy のサンプル](../samples/index.md)」を参照してください。
 
 1. **[保存]** を選択します。
 

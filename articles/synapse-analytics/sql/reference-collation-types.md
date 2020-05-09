@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4270677f8f5f77e1ada0b1d9385163dad762bbda
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2b10aea962a31ba600deca866a8d9f7ab3b81ea8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427543"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133675"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL でのデータベースの照合順序のサポート
 
@@ -101,6 +101,7 @@ SQL オンデマンド データベースの既定の照合順序を変更する
 
 *    SQL_EBCDIC1141_CP1_CS_AS
 *    SQL_EBCDIC277_2_CP1_CS_AS
+*    UTF-8
 
 ## <a name="checking-the-current-collation"></a>現在の照合順序の確認
 データベースの現在の照合順序を確認するには、次の T-SQL スニペットを実行できます。

@@ -3,12 +3,12 @@ title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
 ms.date: 04/26/2019
 ms.topic: how-to
-ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231211"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182584"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -24,10 +24,10 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 - 名前、種類、場所、リソース ID などのリソースの詳細
 - コンプライアンス対応状態と、現在のポリシー割り当ての最後の評価のタイムスタンプ
-- リソースのコンプライアンス違反の_理由_の一覧
+- リソースのコンプライアンス違反の _理由_ の一覧
 
 > [!IMPORTANT]
-> _コンプライアンス違反_のリソースのコンプライアンスの詳細に、該当のリソースでのプロパティの現在の値が表示されるときには、ユーザーにその**種類**のリソースに対する**読み取り**操作が必要です。 たとえば、_コンプライアンス違反_のリソースが **Microsoft.Compute/virtualMachines** の場合、ユーザーには、**Microsoft.Compute/virtualMachines/read** 操作が必要です。 ユーザーに必要な操作がない場合は、アクセス エラーが表示されます。
+> _コンプライアンス違反_ コンプライアンス違反のリソースのコンプライアンスの詳細に、該当のリソースでのプロパティの現在の値が表示されるときには、ユーザーにその**種類**のリソースに対する**読み取り**操作が必要です。 たとえば、_コンプライアンス違反_ のリソースが **Microsoft.Compute/virtualMachines** の場合、ユーザーには、**Microsoft.Compute/virtualMachines/read** 操作が必要です。 ユーザーに必要な操作がない場合は、アクセス エラーが表示されます。
 
 コンプライアンスの詳細を表示するには、次の手順に従います。
 
@@ -37,11 +37,11 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 1. **[Policy compliance]** (ポリシー コンプライアンス) ページの **[リソースのコンプライアンス]** タブで、 **[コンプライアンスの状態]** が _[非対応]_ になっているリソースを右クリックするか、リソースの省略記号を選択します。 次に、 **[ポリシー準拠状況の詳細]** を選択します。
 
-   ![[ポリシー準拠状況の詳細] オプション](../media/determine-non-compliance/view-compliance-details.png)
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="[ポリシー準拠状況の詳細] オプション" border="false":::
 
 1. **[ポリシー準拠状況の詳細]** ウィンドウに、現在のポリシー割り当てに対するリソースの最新の評価からの情報が表示されます。 この例では、フィールド **Microsoft.Sql/servers/version** が _12.0_ であることが検出されていますが、ポリシー定義では _14.0_ を必要としています。 リソースのコンプライアンス違反の理由が複数ある場合は、このウィンドウにそれぞれの理由が表示されます。
 
-   ![[ポリシー準拠状況の詳細] ウィンドウおよびコンプライアンス違反の理由](../media/determine-non-compliance/compliance-details-pane.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="[ポリシー準拠状況の詳細] ペインおよびコンプライアンス違反の理由" border="false":::
 
    **AuditIfNotExists** または **deployIfNotExists** ポリシー定義について、詳細に **details.type** プロパティと省略可能なプロパティが含まれます。 一覧については、「[auditIfNotExists プロパティ](../concepts/effects.md#auditifnotexists-properties)」と「[deployIfNotExists プロパティ](../concepts/effects.md#deployifnotexists-properties)」を参照してください。 **最後に評価されたリソース**は、定義の **details** セクションからの関連リソースです。
 
@@ -70,7 +70,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
    }
    ```
 
-   ![[ポリシー準拠状況の詳細] ウィンドウ - *ifNotExists](../media/determine-non-compliance/compliance-details-pane-existence.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="[ポリシー準拠状況の詳細] ペイン - *ifNotExists" border="false":::
 
 > [!NOTE]
 > データを保護するために、プロパティ値が _secret_ の場合は現在の値にアスタリスクが表示されます。
@@ -79,7 +79,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 ### <a name="compliance-reasons"></a>コンプライアンスの理由
 
-次のマトリックスは、可能性のある各_理由_と、ポリシー定義内でのその[条件](../concepts/definition-structure.md#conditions)の対応を示しています。
+次のマトリックスは、可能性のある各 _理由_ と、ポリシー定義内でのその[条件](../concepts/definition-structure.md#conditions)の対応を示しています。
 
 |理由 | 条件 |
 |-|-|
@@ -117,11 +117,11 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 **[ポリシー準拠状況の詳細]** ウィンドウで、 **[前回の評価済みリソース]** をクリックします。
 
-   ![auditIfNotExists 定義の詳細の表示](../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="auditIfNotExists 定義の詳細の表示" border="false":::
 
 **[ゲスト割り当て]** ページには、利用可能なコンプライアンスの詳細すべてが表示されます。 ビューの行はそれぞれ、マシン内で実行された評価を表します。 **[理由]** 列には、ゲストの割り当てが "_非準拠_" である理由が示されています。 たとえば、パスワード ポリシーを監査する場合、 **[理由]** 列には、各設定の現在の値を含むテキストが表示されます。
 
-![コンプライアンスの詳細を表示する](../media/determine-non-compliance/guestconfig-compliance-details.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="ポリシー準拠状況の詳細" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -200,11 +200,11 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 1. **[リソース コンプライアンス]** ページで **[Change History (preview)]\(変更履歴 (プレビュー)\)** タブを選択します。 検出された変更がある場合は、その一覧が表示されます。
 
-   ![[リソース コンプライアンス] ページの Azure Policy の [変更履歴] タブ](../media/determine-non-compliance/change-history-tab.png)
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="[リソース コンプライアンス] ページの Azure Policy の [変更履歴] タブ" border="false":::
 
-1. 検出された変更のいずれかを選択します。 _[変更履歴]_ ページに、リソースの**差分表示**が示されます。
+1. 検出された変更のいずれかを選択します。 **[変更履歴]** ページに、リソースの _差分表示_ が示されます。
 
-   ![[変更履歴] ページの Azure Policy 変更履歴の差分表示](../media/determine-non-compliance/change-history-visual-diff.png)
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="[変更履歴] ページの Azure Policy 変更履歴の差分表示" border="false":::
 
 "_差分表示_" は、リソースの変更を識別するのに役立ちます。 検出された変更が、リソースの現在のコンプライアンス対応状態に関連していない場合があります。
 

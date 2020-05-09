@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371292"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Private Link
@@ -20,7 +20,7 @@ Private Link を使用すると、プライベート エンドポイントを経
 Private Link 機能をサポートしている PaaS サービスの一覧については、Private Link の[ドキュメント](https://docs.microsoft.com/azure/private-link/index)を参照してください。 プライベート エンドポイントは、特定の [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) およびサブネット内のプライベート IP アドレスです。
 
 > [!NOTE]
-> この機能は、Azure Database for MySQL が汎用およびメモリ最適化の価格レベルをサポートしているすべての Azure リージョンで利用できます。
+> この機能は、Azure Database for MySQL が汎用およびメモリ最適化の価格レベルをサポートしているすべての Azure リージョンで使用できます。
 
 ## <a name="data-exfiltration-prevention"></a>データの流出防止
 
@@ -32,7 +32,7 @@ Azure Database for MySQL におけるデータの流出とは、データベー�
 
 * VM のプライベート IP アドレスを使用する Azure Database for MySQL へのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](concepts-data-access-and-security-vnet.md)と [VNet ファイアウォール規則](howto-manage-vnet-using-portal.md)に関する記事を参照してください。
 
-* Azure VM で、次のようにネットワーク セキュリティ グループ (NSG) とサービス タグを使用して、送信接続の範囲を絞り込みます
+* Azure VM 上で、次のようにネットワーク セキュリティ グループ (NSG) とサービス タグを使用して、送信接続の範囲を絞り込みます。
 
     * 米国西部にある Azure Database for MySQL への接続のみを許可するように、"*サービス タグ = SQL.WestUs*" のトラフィックを許可する NSG ルールを指定します
     * すべてのリージョンで Azure Database for MySQL に対する更新への接続を拒否するように、"*サービス タグ = SQL*" のトラフィックを拒否する NSG ルールを (高い優先度で) 指定します</br></br>
@@ -109,12 +109,12 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 
 ## <a name="deny-public-access-for-azure-database-for-mysql"></a>Azure Database for MySQL のパブリック アクセスの拒否
 
-Azure Database for MySQL にアクセスする方法をプライベート エンドポイントのみに依存する場合、データベース サーバーで **[パブリック ネットワーク アクセスの拒否]** 構成を設定し、すべてのパブリック エンドポイント設定 (すなわち、[ファイアウォール規則](concepts-firewall-rules.md)や [VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)) を無効にできます。 
+Azure Database for MySQL にアクセスする方法をプライベート エンドポイントのみに依存する場合、データベース サーバーで [[パブリック ネットワーク アクセスの拒否]](concepts-firewall-rules.md) 構成を設定し、すべてのパブリック エンドポイント設定 (すなわち、[ファイアウォール規則](concepts-data-access-and-security-vnet.md)や **VNet サービス エンドポイント**) を無効にできます。 
 
 この設定が *[はい]* に設定されている場合、Azure Database for MySQL にはプライベート エンドポイント経由の接続のみが許可されます。 この設定が *[いいえ]* に設定されている場合、ファイアウォール設定または VNet サービス エンドポイント設定に基づいてクライアントは Azure Database for MySQL に接続できます。 また、プライベート ネットワーク アクセスの値が設定されると、既存のファイアウォール規則や VNet サービス エンドポイント規則は追加も更新もできなくなります。
 
 > [!Note]
-> この機能は、Azure Database for PostgreSQL 単一サーバーで "General Purpose" および "メモリ最適化" 価格レベルがサポートされる、すべての Azure リージョンで利用できます。
+> この機能は、Azure Database for PostgreSQL 単一サーバーで "汎用" および "メモリ最適化" の価格レベルがサポートされているすべての Azure リージョンで利用できます。
 >
 > この設定は、Azure Database for MySQL の SSL 構成と TLS 構成に何の影響も与えません。
 

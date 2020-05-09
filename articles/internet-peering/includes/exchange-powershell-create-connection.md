@@ -8,18 +8,18 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 0014b67443797f45de51ec1bc459f71bde55cdc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773706"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678605"
 ---
 次の例では、シアトルの Equinix Internet Exchange で Exchange 接続を作成する方法を示します。 別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。
 
 PowerShell コマンドレット **New-AzPeeringExchangeConnectionObject** を使用して、新しいピアリング要求の生成に使用される PowerShell 接続オブジェクトを作成します。
 
-Exchange 接続を作成する例を次に示します。
+次の例は、Exchange 接続を作成する方法を示します。
 
 ```powershell
 $connection1 = New-AzPeeringExchangeConnectionObject `
@@ -30,7 +30,7 @@ $connection1 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-指定されたピアリングの場所で冗長性が必要な場合に備えて、別の接続を作成します。
+指定されたピアリングの場所で冗長性が必要になる場合に備えて、もう 1 つの接続を作成します。
 
 ```powershell
 $connection2 = New-AzPeeringExchangeConnectionObject `
@@ -54,7 +54,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-1 つの接続を使用して要求が実行された場合の応答の例を次に示します。
+次の例は、一方の接続を使用して要求が実行された場合の応答の例を次に示します。
 
 ```powershell
 
@@ -73,10 +73,10 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Microsoft は、要求されたピアリングのプロビジョニングを開始し、`ConnectionState` に進行状況が反映されます。
-> プロビジョニングに関連した手順については、「[Exchange ピアリングのチュートリアル](../walkthrough-exchange-all.md)」ドキュメントを参照してください。
+> Microsoft は、要求されたピアリングのプロビジョニングを開始します。進捗状況は、`ConnectionState` に反映されます。
+> プロビジョニング関連の手順の詳細については、「[Exchange ピアリングのチュートリアル](../walkthrough-exchange-all.md)」を参照してください。
 
-次に示すように ConnectionState を確認できます。
+次に示すように、接続状態を確認できます。
 
 ```powershell
 

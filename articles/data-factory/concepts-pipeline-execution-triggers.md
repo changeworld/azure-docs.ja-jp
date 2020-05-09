@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: fac9933c57a54736aed5ccfdd54d126f0ca32973
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418356"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562204"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください: "]
 > * [Version 1](v1/data-factory-scheduling-and-execution.md)
 > * [現在のバージョン](concepts-pipeline-execution-triggers.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -297,7 +297,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **開始時刻が過去** | 開始時刻より後の将来の最初の実行時刻を計算し、その時刻に実行されます。<br /><br />2 回目以降は、最後の実行時刻から計算して実行します。<br /><br />この表の後の例を参照してください。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初は、開始時刻から計算したスケジュールに基づいて実行されます。<br /><br />以降は、繰り返しのスケジュールに基づいて実行されます。 |
 | **開始時刻が将来または現在** | 指定した開始時刻に 1 回実行されます。<br /><br />2 回目以降は、最後の実行時刻から計算して実行します。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初は、開始時刻から計算したスケジュールに基づいて実行されます。<br /><br />以降は、繰り返しのスケジュールに基づいて実行されます。 |
 
-ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が 2017 年 4 月 8 日 13 時、開始時刻が 2017 年 4 月 7 日 14 時、繰り返しが 2 日ごとであると仮定します (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
+ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が 2017 年 4 月 8 日 13 時、開始時刻が 2017 年 4 月 7 日 14 時、繰り返しが 2 日ごとであると仮定します  (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
 
 これらの条件では、最初の実行は 2017 年 4 月 9 日の 14 時です。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 このシナリオでは、開始時刻は 2017 年 4 月 7 日の午後 2 時になります。 次回のインスタンスは 2 日後、つまり 2017 年 4 月 9 日の午後 2 時となります。
 
@@ -326,6 +326,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
 
 タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
+
+> [!NOTE]
+> タンブリング ウィンドウ トリガーの実行では、"*トリガーされたパイプラインの実行が完了するまで待機します*"。 実行状態には、トリガーされたパイプラインの実行の状態が反映されます。 たとえば、トリガーされたパイプラインの実行が取り消された場合、対応するタンブリング ウィンドウ トリガーの実行が取り消し済みとマークされます。 これは、パイプラインの実行が開始されている限り成功としてマークされる、スケジュール トリガーの "ファイア アンド フォーゲット" ビヘイビアーとは異なります。
 
 ## <a name="event-based-trigger"></a>イベントベースのトリガー
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236071"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202215"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -61,7 +61,7 @@ Private Link サービスでは、次のプロパティを指定します。
 
 ### <a name="details"></a>詳細
 
-- Private Link サービスには、同じリージョン内の承認されたプライベート エンドポイントからアクセスできます。 プライベート エンドポイントには、プライベート VPN または ExpressRoute 接続を使用して、同じ仮想ネットワーク、各リージョンでピアリングされた VNet、グローバルにピアリングされた VNet、およびオンプレミスから到達できます。 
+- Private Link サービスには、任意のパブリック リージョン内の承認されたプライベート エンドポイントからアクセスできます。 プライベート エンドポイントには、プライベート VPN または ExpressRoute 接続を使用して、同じ仮想ネットワーク、各リージョンでピアリングされた VNet、グローバルにピアリングされた VNet、およびオンプレミスから到達できます。 
  
 - Private Link サービスを作成すると、リソースのライフサイクルにわたってネットワーク インターフェイスが作成されます。 このインターフェイスは、顧客が管理することはできません。
  

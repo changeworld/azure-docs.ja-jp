@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842471"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82131241"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の監査ログ
 
@@ -26,14 +26,14 @@ Azure Database for PostgreSQL - Single Server でのデータベース アクテ
 ## <a name="usage-considerations"></a>使用に関する考慮事項
 既定では、pgAudit ログ ステートメントは、Postgres の標準ログ記録機能を使用して、通常のログ ステートメントと共に出力されます。 Azure Database for PostgreSQL では、これらの .log ファイルを Azure portal または CLI を介してダウンロードできます。 ファイルのコレクション用の最大ストレージ容量は 1 GB で、各ファイルは最大 7 日間 (既定では 3 日間) 使用できます。 このサービスは、短期的なストレージ オプションです。
 
-または、すべてのログが Azure Monitor の診断ログ サービスに出力されるよう構成することもできます。 Azure Monitor の診断ログを有効にすると、選択した内容に応じて、ログが (JSON 形式で) Azure Storage、Event Hubs、または Azure Monitor のログに自動的に送信されます。
+または、Azure Monitor ログ ストアに送信されるすべてのログを、Log Analytics で後で分析できるように構成することもできます。 Azure Monitor のリソース ログを有効にすると、選択した内容に応じて、ログが (JSON 形式で) Azure Storage、Event Hubs、または Azure Monitor ログに自動的に送信されます。
 
-pgAudit を有効にすると、サーバー上に大量のログ記録が生成され、パフォーマンスとログ ストレージに影響を与えます。 長期的なストレージ オプションのほか、分析やアラートの機能も提供する、Azure 診断ログ サービスを使用することをお勧めします。 追加のログ記録によるパフォーマンスへの影響を軽減するために、標準のログ記録を無効にすることをお勧めします。
+pgAudit を有効にすると、サーバー上に大量のログ記録が生成され、パフォーマンスとログ ストレージに影響を与えます。 長期的なストレージ オプションのほか、分析やアラートの機能も提供する、Azure Monitor ログを使用することをお勧めします。 追加のログ記録によるパフォーマンスへの影響を軽減するために、標準のログ記録を無効にすることをお勧めします。
 
    1. パラメーター `logging_collector` を OFF に設定します。 
    2. この変更を適用するには、サーバーを再起動します。
 
-Azure Storage、Event Hubs、または Azure Monitor のログへのログ記録を設定する方法については、[サーバー ログに関する記事](concepts-server-logs.md)の診断ログのセクションを参照してください。
+Azure Storage、Event Hubs、または Azure Monitor ログへのログ記録を設定する方法については、[サーバー ログに関する記事](concepts-server-logs.md)のリソース ログのセクションを参照してください。
 
 ## <a name="installing-pgaudit"></a>pgAudit のインストール
 
@@ -88,7 +88,7 @@ t=%m u=%u db=%d pid=[%p]:
 ## <a name="viewing-audit-logs"></a>監査ログの表示
 .log ファイルを使用している場合、監査ログは、PostgreSQL エラーログと同じファイルに含まれます。 ログ ファイルは、Azure [portal](howto-configure-server-logs-in-portal.md) または [CLI](howto-configure-server-logs-using-cli.md) からダウンロードできます。 
 
-Azure 診断ログを使用している場合、ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ストレージ アカウントのログ](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+Azure リソース ログを使用している場合、ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ストレージ アカウントのログ](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
 
 Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
 

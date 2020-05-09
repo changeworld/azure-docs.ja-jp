@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548625"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81454681"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -51,7 +51,7 @@ Encryption at Rest は、データをディスク上で確実に暗号化する�
 
 保存時の暗号化は、組織のデータ ガバナンスとコンプライアンス活動の要件にもなります。 HIPAA、PCI、FedRAMP などの業界および政府規制には、データ保護と暗号化要件について、具体的な保護対策が規定されています。 保存時の暗号化は、いくつかの規制では、規制に準拠するための必須対策と規定されています。 FIPS 140-2 の検証に対する Microsoft のアプローチについて詳しくは、「[連邦情報処理規格 (FIPS) 文書 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)」を参照してください。 
 
-コンプライアンスと規制の要件に対応することに加えて、保存時の暗号化によって、多層防御の保護が提供されます。 Microsoft Azure では、サービス、アプリケーション、およびデータのために、準拠しているプラットフォームを提供します。 また、包括的な設備と物理的セキュリティ、データ アクセスの制御、および監査を提供します。 ただし、他のセキュリティ対策の 1 つが失敗した場合に "一部が重複する" セキュリティ対策を提供することが重要であり、保存時の暗号化は、そのようなセキュリティ対策となります。
+コンプライアンスと規制の要件に対応することに加えて、保存時の暗号化によって、多層防御の保護が提供されます。 Microsoft Azure では、サービス、アプリケーション、およびデータのために、準拠しているプラットフォームを提供します。 また、包括的な設備と物理的セキュリティ、データ アクセスの制御、および監査を提供します。 ただし、他のセキュリティ対策の 1 つが失敗した場合に「一部が重複する」セキュリティ対策を提供することが重要であり、保存時の暗号化は、そのようなセキュリティ対策となります。
 
 Microsoft は、クラウド サービス全体にわたって保存時の暗号化オプションを提供し、お客様が暗号化キーとキーの使用ログを管理できるようにすることに注力しています。 Microsoft はさらに、既定でお客様の保存データがすべて暗号化されるよう取り組んでいます。
 
@@ -105,7 +105,7 @@ Azure Key Vault に保存されたキーを、その管理、または保存時�
 - ユーザーがオンプレミス (または別のセキュリティで保護されたストア) でキーを管理および保管します キーは Azure のサービスでは使用できません
 - 制限されたクラウド機能
 
-Azure でサポートされている暗号化モデルは、2 つの主なグループに分割されます。"クライアント側暗号化" と既に説明した "サーバー側暗号化" です。 使用されている保存時暗号化モデルとは無関係に、Azure サービスでは常に、TLS や HTTPS などのセキュリティで保護されたトランスポートを使用することをお勧めしています。 そのため、転送中の暗号化の問題は、トランスポート プロトコルによって解決され、どの保存時暗号化モデルを使用するかを決定する主な要因ではなくなります。
+Azure でサポートされている暗号化モデルは、2 つの主なグループに分割されます。「クライアント側暗号化」と既に説明した「サーバー側暗号化」です。 使用されている保存時暗号化モデルとは無関係に、Azure サービスでは常に、TLS や HTTPS などのセキュリティで保護されたトランスポートを使用することをお勧めしています。 そのため、転送中の暗号化の問題は、トランスポート プロトコルによって解決され、どの保存時暗号化モデルを使用するかを決定する主な要因ではなくなります。
 
 ### <a name="client-encryption-model"></a>クライアント側暗号化モデル
 
@@ -163,7 +163,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 保存データの暗号化または復号化で使用するキーを取得するには、Resource Manager サービス インスタンスとして実行されるサービス ID は UnwrapKey (複合化のためのキーを取得するため) と WrapKey (新しいキーの作成時にキー コンテナーにキーを挿入するため) を取得する必要があります。
 
 >[!NOTE]
->Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](../../key-vault/key-vault-secure-your-key-vault.md)のキー コンテナーのセキュリティ保護に関するページを参照してください。
+>Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](../../key-vault/general/secure-your-key-vault.md)のキー コンテナーのセキュリティ保護に関するページを参照してください。
 
 **長所**
 
@@ -180,7 +180,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 
 #### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>ユーザーが管理するハードウェアでユーザーが管理するキーを使用したサーバー側暗号化
 
-一部の Azure サービスでは、Host Your Own Key (HYOK) キー管理モデルが可能です。 この管理モードは、保存データを暗号化するが、キーの管理を Microsoft の管理外の独自のリポジトリで行う必要があるシナリオで有用です。 このモデルでは、サービスは、外部サイトからキーを取得する必要があります。 パフォーマンスと可用性の保証が影響を受け、構成は複雑です。 さらに、サービスは暗号化および複合化操作中に DEK にアクセスできるため、このモデルの全体としてのセキュリティ保証は、キーが Azure Key Vault でユーザーによって管理される場合と似ています。  この結果、特定のキー管理の要件がない限り、このモデルはほとんどの組織に適していません。 これらの制限により、ほとんどの Azure サービスは、ユーザーが制御するハードウェア上でサーバーが管理するキーを使用したサーバー側暗号化をサポートしていません。
+一部の Azure サービスでは、Host Your Own Key (HYOK) キー管理モデルが可能です。 この管理モードは、保存データを暗号化しても、キーの管理を Microsoft の管理外の独自のリポジトリで行う必要があるシナリオで有用です。 このモデルでは、サービスは、外部サイトからキーを取得する必要があります。 パフォーマンスと可用性の保証が影響を受け、構成は複雑です。 さらに、サービスは暗号化および複合化操作中に DEK にアクセスできるため、このモデルの全体としてのセキュリティ保証は、キーが Azure Key Vault でユーザーによって管理される場合と似ています。  この結果、特定のキー管理の要件がない限り、このモデルはほとんどの組織に適していません。 これらの制限により、ほとんどの Azure サービスは、ユーザーが制御するハードウェア上でサーバーが管理するキーを使用したサーバー側暗号化をサポートしていません。
 
 ##### <a name="key-access"></a>キーへのアクセス
 
@@ -254,7 +254,7 @@ Azure SQL Database は現在、Microsoft が管理するサービス側とクラ
 
 サーバー側の暗号化は Transparent Data Encryption と呼ばれる SQL 機能を通して提供されています。 Azure SQL Database ユーザーが有効化すると、TDE キーは自動的に作成および管理されます。 保存時の暗号化は、データベース レベルおよびサーバー レベルで有効にすることができます。 2017 年 6 月の時点で [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) は、新しく作成されたデータベースで既定で有効に設定されています。 Azure SQL Database は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーをサポートしています。 詳細については、[Azure SQL Database と Azure SQL Data Warehouse での Bring Your Own Key (BYOK) のサポートによる Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current) に関するページを参照してください。
 
-Azure SQL Database データのクライアント側の暗号化は、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 機能を通してサポートされています。 Always Encrypted では、クライアントによって作成、保存されたキーが使用されます。 ユーザーは、Windows 証明書ストア、Azure Key Vault、またはローカルのハードウェア セキュリティ モジュール (HSM) にマスター キーを格納できます。 SQL ユーザーは、SQL Server Management Studio を使用して、どの列を何を使用して暗号化するかを選択できます。
+Azure SQL Database データのクライアント側の暗号化は、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 機能を通してサポートされています。 Always Encrypted では、クライアントによって作成、保存されたキーが使用されます。 ユーザーは、Windows 証明書ストア、Azure Key Vault、またはローカルのハードウェア セキュリティ モジュール (HSM) にマスター キーを格納できます。 SQL ユーザーは、SQL Server Management Studio を使用して、どの列で何を使用して暗号化するかを選択できます。
 
 #### <a name="encryption-model-and-key-management-table"></a>暗号化モデルとキー管理テーブル
 
@@ -263,19 +263,27 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 |                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理キーを使用したクライアント側**      |
 | **AI と機械学習**      |                    |                    |                    |
 | Azure Cognitive Search           | はい                | はい                | -                  |
+| Azure Cognitive Services         | はい                | はい                | -                  |
 | Azure Machine Learning           | はい                | はい                | -                  |
 | Azure Machine Learning Studio    | はい                | プレビュー、RSA 2048 ビット | -               |
+| Content Moderator                | はい                | はい                | -                  |
+| Face                             | はい                | はい                | -                  |
+| Language Understanding           | はい                | はい                | -                  |
+| Personalizer                     | はい                | はい                | -                  |
+| QnA Maker                        | はい                | はい                | -                  |
+| Speech Services                  | はい                | はい                | -                  |
+| Translator Text                  | はい                | はい                | -                  |
 | Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |
 | **Analytics**                    |                    |                    |                    |
-| Azure Stream Analytics           | はい                | -                  | -                  |
+| Azure Stream Analytics           | はい                | 該当なし\*            | -                  |
 | Event Hubs                       | はい                | はい、RSA の長さすべて。 | -                  |
 | 関数                        | はい                | はい、RSA の長さすべて。 | -                  |
 | Azure Analysis Services          | はい                | -                  | -                  |
 | Azure Data Catalog               | はい                | -                  | -                  |
-| Azure HDInsight 上の Apache Kafka  | はい                | RSA の長さすべて。   | -                  |
+| Azure HDInsight                  | はい                | All                | -                  |
 | Azure Monitor Application Insights | はい                | はい                | -                  |
-| Azure Monitor Log Analytics | はい                | はい                | -                  |
-| Azure Data Explorer              | はい                | はい                | -                  |
+| Azure Monitor Log Analytics      | はい                | はい                | -                  |
+|  Azure Data Explorer              | はい                | はい                | -                  |
 | Azure Data Factory               | はい                | はい                | -                  |
 | Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
 | **Containers**                   |                    |                    |                    |
@@ -286,11 +294,12 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Virtual Machines                 | はい                | はい、RSA 2048 ビット  | -                  |
 | 仮想マシン スケール セット        | はい                | はい、RSA 2048 ビット  | -                  |
 | SAP HANA                         | はい                | はい、RSA 2048 ビット  | -                  |
-| App Service                      | はい                | はい                | -                  |
-| オートメーション                       | はい                | はい                | -                  |
-| Azure portal                     | はい                | はい                | -                  |
+| App Service                      | はい                | はい\*\*            | -                  |
+| オートメーション                       | はい                | はい\*\*            | -                  |
+| Azure Functions                  | はい                | はい\*\*            | -                  |
+| Azure portal                     | はい                | はい\*\*            | -                  |
 | Logic Apps                       | はい                | はい                | -                  |
-| Azure Managed Applications       | はい                | はい                | -                  |
+| Azure Managed Applications       | はい                | はい\*\*            | -                  |
 | Service Bus                      | はい                | はい                | -                  |
 | Site Recovery                    | はい                | はい                | -                  |
 | **データベース**                    |                    |                    |                    |
@@ -304,8 +313,9 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Table Storage                    | はい                | はい                | はい                |
 | Azure Cosmos DB                  | はい                | はい                | -                  |
 | Azure Databricks                 | はい                | はい                | -                  |
+| Azure Database Migration Service | はい                | 該当なし\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | はい                | -                  | はい                |
+| Azure DevOps Services            | はい                | -                  | はい                |
 | Azure Repos                      | はい                | -                  | はい                |
 | **ID**                     |                    |                    |                    |
 | Azure Active Directory           | はい                | -                  | -                  |
@@ -316,24 +326,38 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | API Management                   | はい                | -                  | -                  |
 | **IoT サービス**                 |                    |                    |                    |
 | IoT Hub                          | はい                | はい                | はい                |
+| IoT Hub Device Provisioning      | はい                | はい                | -                  |
 | **管理とガバナンス**    |                    |                    |                    |
 | Azure Site Recovery              | はい                | -                  | -                  |
+| Azure Migrate                    | はい                | はい                | -                  |
 | **メディア**                        |                    |                    |                    |
 | Media Services                   | はい                | -                  | はい                |
+| **Security**                     |                    |                    |                    |
+| Azure Security Center for IoT    | はい                | はい                | -                  |
+| Azure Sentinel                   | はい                | はい                | -                  |
 | **Storage**                      |                    |                    |                    |
 | Blob Storage                     | はい                | はい、RSA 2048 ビット  | はい                |
+| Premium Blob Storage             | はい                | はい、RSA 2048 ビット  | はい                |
 | Disk Storage                     | はい                | はい                | -                  |
+| Ultra Disk Storage               | はい                | はい                | -                  |
 | マネージド Disk Storage             | はい                | はい                | -                  |
 | File Storage                     | はい                | はい、RSA 2048 ビット  | -                  |
+| File Premium Storage             | はい                | はい、RSA 2048 ビット  | -                  |
+| File Sync                        | はい                | はい、RSA 2048 ビット  | -                  |
 | Queue Storage                    | はい                | はい                | はい                |
 | Avere vFXT                       | はい                | -                  | -                  |
-| Azure NetApp Files               | はい                | -                  | -                  |
+| Azure Cache for Redis            | はい                | 該当なし\*              | -                  |
+| Azure NetApp Files               | はい                | はい                | -                  |
 | Archive Storage                  | はい                | はい、RSA 2048 ビット  | -                  |
 | StorSimple                       | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure Backup                     | はい                | はい                | はい                |
 | Data Box                         | はい                | -                  | はい                |
 | Data Box Edge                    | はい                | はい                | -                  |
 
+\* このサービスはデータを保持しません。 一時的なキャッシュがある場合は、Microsoft キーで暗号化されます。
+
+\*\* このサービスでは、カスタマー マネージド キーを使用してサーバー側での暗号化を既にサポートしている、独自の Key Vault、ストレージ アカウント、またはその他のデータ永続化サービスへのデータの格納がサポートされています。
+
 ## <a name="conclusion"></a>まとめ
 
-Azure サービス内で保存される顧客データの保護は、Microsoft にとってきわめて重要です。 すべての Azure ホステッド サービスは、保存時暗号化オプションを提供することを目的としています。 Azure Storage、Azure SQL Database や主要な分析およびインテリジェンス サービスなどの基本的なサービスでは、すでに保存時暗号化オプションが提供されています。 これらのサービスの一部では、サービスが管理するキーと暗号化だけでなく、ユーザーが管理するキーとクライアント側暗号化もサポートされています。 Microsoft Azure サービスは、保存時の暗号化の可用性を大きく広げており、今後はプレビューや一般的な可用性のための新しいオプションを提供することが計画されています。
+Azure サービス内で保存される顧客データの保護は、Microsoft にとってきわめて重要です。 すべての Azure ホステッド サービスは、保存時暗号化オプションを提供することを目的としています。 Azure サービスでは、サービス管理キー、顧客管理キー、クライアント側の暗号化のいずれかがサポートされます。 Azure サービスは、保存時の暗号化の可用性を大きく広げており、今後はプレビューや一般的な可用性のための新しいオプションを提供することが計画されています。
