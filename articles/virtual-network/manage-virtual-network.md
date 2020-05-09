@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 643f326952f72f952aa946079e56f1fb56373c9f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236011"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182873"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -180,4 +180,4 @@ ms.locfileid: "79236011"
 ## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、仮想ネットワークを作成します
-- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します
+- 仮想ネットワーク用に [Azure Policy 定義](policy-samples.md)を作成して割り当てる

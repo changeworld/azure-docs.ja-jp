@@ -4,24 +4,27 @@ description: Azure portal、.Net、Java、Python、Node.js およびその他の
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809ebe848e38a7c99c96ef44f130da917fb35942
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873711"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161624"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを作成する
 
 この記事では、Azure Cosmos コンテナー (コレクション、テーブル、またはグラフ) を作成するいくつかの方法について説明します。 これには、Azure portal、Azure CLI、またはサポートされている SDK を使用します。 この記事では、コンテナーを作成してパーティション キーを指定し、スループットをプロビジョニングする方法を紹介します。
 
+> [!NOTE]
+> コンテナーを作成するときは、同じ名前で大文字と小文字が異なる 2 つのコンテナーを作成しないようにしてください。 これは、Azure プラットフォームの一部で大文字と小文字が区別されないため、このような名前のコンテナーでテレメトリとアクションの混同や衝突が発生する可能性があるためです。
+
 ## <a name="create-a-container-using-azure-portal"></a>Azure portal を使用してコンテナーを作成する
 
 ### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存のアカウントを選択します。
 
@@ -37,7 +40,7 @@ ms.locfileid: "74873711"
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>MongoDB 用 Azure Cosmos DB API
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-mongodb-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
@@ -53,7 +56,7 @@ ms.locfileid: "74873711"
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-cassandra-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
@@ -72,7 +75,7 @@ ms.locfileid: "74873711"
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin API
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-graph-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
@@ -89,7 +92,7 @@ ms.locfileid: "74873711"
 
 ### <a name="table-api"></a><a id="portal-table"></a>Table API
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-table-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 

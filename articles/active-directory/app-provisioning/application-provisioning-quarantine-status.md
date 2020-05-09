@@ -2,26 +2,21 @@
 title: 検疫のアプリケーション プロビジョニング状態 | Microsoft Docs
 description: 自動ユーザー プロビジョニング用にアプリケーションを構成したら、検疫のプロビジョニング状態とクリアする方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 04/28/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154629"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593932"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>検疫状態のアプリケーションのプロビジョニング
 
@@ -33,11 +28,11 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 
 アプリケーションが検疫中かどうかを確認するには、次の 3 つの方法があります。
   
-- Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  > &lt; *[アプリケーション名]* &gt; >  **[プロビジョニング]** の順に移動し、下部にある進行状況バーにスクロールします。  
+- Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  > &lt;*アプリケーション名*&gt; >  **[プロビジョニング]** の順に移動し、検疫メッセージの進行状況バーを確認します。   
 
   ![検疫状態を示すプロビジョニング ステータス バー](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- Azure portal で **[Azure Active Directory]**  >  **[監査ログ]** に移動し、 **[アクティビティ: 検疫]** というフィルターを適用して検疫履歴を確認します。 プロビジョニングが現在検疫中であるかどうかは前述した進行状況バーのビューに表示され、アプリケーションの検疫履歴は監査ログで確認できます。 
+- Azure portal で **[Azure Active Directory]**  >  **[監査ログ]** の順に移動し、 **[アクティビティ: 検疫]** フィルターをオンにして、検疫履歴を確認します。 プロビジョニングが現在検疫中であるかどうかは前述した進行状況バーのビューに表示され、アプリケーションの検疫履歴は監査ログで確認できます。 
 
 - Microsoft Graph 要求の [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) を使用して、プロビジョニング ジョブの状態をプログラムで取得します。
 
@@ -51,7 +46,13 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 
 ## <a name="why-is-my-application-in-quarantine"></a>アプリケーションが検疫されているのはなぜですか。
 
-プロビジョニング ジョブの状態を取得するための Microsoft Graph 要求では、次の検疫理由が示されます。
+|説明|推奨される操作|
+|---|---|
+|**SCIM へのコンプライアンスの問題:** 予期される HTTP/200 OK 応答ではなく、HTTP/404 Not Found 応答が返されました。 この場合、Azure AD プロビジョニング サービスによってターゲット アプリケーションへの要求が行われ、予期しない応答を受け取りました。|管理者資格情報のセクションを調べて、アプリケーションでテナントの URL を指定する必要があるかどうか、および URL が正しいことを確認します。 問題が見つからない場合は、アプリケーションの開発者に連絡し、サービスが SCIM に準拠していることを確認してください。 [https://github.com/mysqljs/mysql/](https://tools.ietf.org/html/rfc7644#section-3.4.2 ) |
+|**無効な資格情報:** ターゲット アプリケーションへのアクセスの承認を試みたとき、指定された資格情報が無効であることを示す応答をターゲット アプリケーションから受け取りました。|プロビジョニング構成 UI の管理者資格情報のセクションに移動し、有効な資格情報で再度アクセスを承認してください。 アプリケーションがギャラリーにある場合は、アプリケーション構成のチュートリアルで必要な追加の手順を確認してください。|
+|**重複したロール:** Salesforce や Zendesk などの特定のアプリケーションからインポートされるロールは、一意である必要があります。 |Azure portal でアプリケーションの[マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に移動し、重複するロールを削除します。|
+
+ プロビジョニング ジョブの状態を取得するための Microsoft Graph 要求では、次の検疫理由が示されます。
 
 - `EncounteredQuarantineException` は、無効な資格情報が指定されたことを示します。 プロビジョニング サービスは、ソース システムとターゲット システム間の接続を確立できません。
 

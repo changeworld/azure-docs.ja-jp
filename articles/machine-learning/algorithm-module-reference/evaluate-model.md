@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/24/2020
-ms.openlocfilehash: c1bcbb6a368c9c80f968c48c1a6e0bc6c95133d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456406"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129840"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
@@ -33,36 +33,15 @@ ms.locfileid: "79456406"
 > モデルの評価に慣れていない場合は、EdX の[機械学習コース](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/)の一部である、Stephen Elston 博士によるビデオ シリーズをお勧めします。 
 
 
-**Evaluate Model (モデルの評価)** モジュールを使用するには、3 つの方法があります。
+## <a name="how-to-use-evaluate-model"></a>モデルの評価の使用方法
+1. [Score Model (モデルのスコア付け)](./score-model.md) の **Scored dataset\(スコア付けされたデータセット\)** 出力を **Evaluate Model (モデルの評価)** の左の入力ポートに接続します。 
 
-+ トレーニング データのスコアを生成し、これらのスコアに基づいてモデルを評価する
-+ モデルでスコアを生成するが、これらのスコアを予約済みのテスト セットでのスコアと比較する
-+ 同じデータ セットを使用して、2 つの異なるが関連するモデルのスコアを比較する
+2. [オプション] 2 つ目のモデルの[Score Model (モデルのスコア付け)](./score-model.md)モジュールの**Scored dataset\(スコア付けされたデータセット\)** 出力を **Evaluate Model (モデルの評価)** の**右側**の入力に接続します。 同じデータで 2 つの異なるモデルの結果を簡単に比較できます。 2 つの入力アルゴリズムは、同じアルゴリズムの種類である必要があります。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
 
-## <a name="use-the-training-data"></a>トレーニング データを使用する
+    > [!NOTE]
+    > アルゴリズムの種類は、"2 クラス分類"、"多クラス分類"、"回帰"、"機械学習アルゴリズム" の "クラスタリング" を指します。 
 
-モデルを評価するには、入力列とスコアのセットを含むデータセットを接続する必要があります。  他に使用できるデータがない場合は、ご自分の元のデータセットを使用できます。
-
-1. [Score Model (モデルのスコア付け)](./score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
-2. **Evaluate Model (モデルの評価)** モジュールをクリックして、パイプラインを実行して評価スコアを生成します。
-
-## <a name="use-testing-data"></a>テスト データを使用する
-
-機械学習における一般的なシナリオは、[Split (分割)](./split-data.md) モジュール、または [Partition and Sample (パーティションとサンプル)](./partition-and-sample.md) モジュールを使用して、元のデータ セットをトレーニングとテストのデータセットに分離することです。 
-
-1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
-2. テスト データを含むデータの分割モジュールの出力を、**Evaluate Model (モデルの評価)** の右側の入力に接続します。
-2. **Evaluate Model (モデルの評価)** モジュールをクリックして、 **[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
-
-## <a name="compare-scores-from-two-models"></a>2 つのモデルのスコアを比較する
-
-スコアの 2 番目のセットを **Evaluate Model (モデルの評価)** に接続することもできます。  スコアは、既知の結果または同じデータの異なるモデルからの一連の結果を使用する共有評価セットである場合があります。
-
-この機能は、同じデータで 2 つの異なるモデルの結果を簡単に比較できるので便利です。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
-
-1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
-2. 2 つ目のモデルのモデルのスコア付けモジュールの出力を **Evaluate Model (モデルの評価)** の右側の入力に接続します。
-3. パイプラインを送信します。
+3. パイプラインを送信して評価スコアを生成します。
 
 ## <a name="results"></a>結果
 
@@ -139,7 +118,7 @@ ms.locfileid: "79456406"
   
      クラスターに割り当てられたデータ ポイントの数が、使用可能なデータ ポイントの総数よりも少ない場合は、データ ポイントがクラスターに割り当てられなかったことを意味します。  
   
--   列 **Maximal Distance to Cluster Center (クラスターの中心までの最大距離)** のスコアは、各ポイントとそのポイントのクラスターの重心との距離の合計を表します。  
+-   **Maximal Distance to Cluster Center (クラスターの中心までの最大距離)** の列のスコアは、各ポイントとそのポイントのクラスターの重心との距離の合計を表します。  
   
      この数が大きい場合は、クラスターが広範囲に分散していることを意味する可能性があります。 クラスターの分散を特定するには、この統計を **Average Distance to Cluster Center (クラスターの中心への平均距離)** と共に確認する必要があります。   
 

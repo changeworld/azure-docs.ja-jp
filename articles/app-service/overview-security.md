@@ -5,12 +5,12 @@ keywords: azure app service, web アプリ, モバイル アプリ, api アプ�
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475376"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535657"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -31,14 +31,14 @@ Azure のインフラストラクチャとプラットフォームのセキュ�
 
 ## <a name="https-and-certificates"></a>HTTPS と証明書
 
-App Service を使用すると、[HTTPS](https://wikipedia.org/wiki/HTTPS) でアプリをセキュリティで保護できます。 アプリを作成すると、HTTPS を使用して既定のドメイン名 (\<app_name>.azurewebsites.net) にアクセスできます。 [アプリのカスタム ドメインを構成する](app-service-web-tutorial-custom-domain.md)場合は、クライアント ブラウザーがカスタム ドメインに対して安全な HTTPS 接続を実行できるように、[SSL 証明書を使用してセキュリティで保護する](configure-ssl-bindings.md)必要があります。 App Service では、いくつかの種類の証明書がサポートされています。
+App Service を使用すると、[HTTPS](https://wikipedia.org/wiki/HTTPS) でアプリをセキュリティで保護できます。 アプリを作成すると、HTTPS を使用して既定のドメイン名 (\<app_name>.azurewebsites.net) にアクセスできます。 [アプリのカスタム ドメインを構成する](app-service-web-tutorial-custom-domain.md)場合は、クライアント ブラウザーがカスタム ドメインに対して安全な HTTPS 接続を実行できるように、[TLS/SSL 証明書を使用してセキュリティで保護する](configure-ssl-bindings.md)必要があります。 App Service では、いくつかの種類の証明書がサポートされています。
 
 - Free App Service マネージド証明書
 - App Service 証明書
 - サードパーティの証明書
 - Azure Key Vault からインポートされた証明書
 
-詳細については、[Azure App Service への SSL 証明書の追加](configure-ssl-certificate.md)に関する記事をご覧ください。
+詳細については、[Azure App Service への TLS/SSL 証明書の追加](configure-ssl-certificate.md)に関する記事をご覧ください。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>セキュリティで保護されていないプロトコル (HTTP、TLS 1.0、FTP)
 
