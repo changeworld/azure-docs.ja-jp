@@ -13,12 +13,12 @@ ms.date: 04/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d59819c0ab614b0f6cc102c7ebe8c760fb851599
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084124"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81534314"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>パブリック クライアント アプリケーションと機密クライアント アプリケーション
 Microsoft Authentication Library (MSAL) には、2 種類のクライアントが定義されています。パブリック クライアントと機密クライアントです。 その 2 種類のクライアントは、認証サーバーを使用してセキュリティを確保した認証を行い、クライアント資格情報の機密性を維持する能力によって区別されます。 これに対し、Azure AD 認証ライブラリ (ADAL) では、"*認証コンテキスト*" (Azure AD への接続) と呼ばれるものが使用されます。
@@ -28,7 +28,7 @@ Microsoft Authentication Library (MSAL) には、2 種類のクライアント�
     機密クライアント アプリ: <BR>
     ![Web アプリ](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![デーモン/サービス](media/msal-client-applications/daemon-service.png)
 
-- **パブリック クライアント アプリケーション**は、デバイスまたはデスクトップ コンピューターあるいは Web ブラウザーで実行されるアプリです。 それらにはアプリケーション シークレットを安全に保持するという信頼がないため、ユーザーに代わって Web API にアクセスすることしかできません (パブリック クライアント フローのみがサポートされます)。パブリック クライアントは構成時のシークレットを保持できません。そのため、クライアント シークレットを備えていません。
+- **パブリック クライアント アプリケーション**は、デバイスまたはデスクトップ コンピューターあるいは Web ブラウザーで実行されるアプリです。 それらにはアプリケーション シークレットを安全に保持するという信頼がないため、ユーザーに代わって Web API にアクセスすることしかできません  (パブリック クライアント フローのみがサポートされます)。パブリック クライアントは構成時のシークレットを保持できません。そのため、クライアント シークレットを備えていません。
 
     パブリック クライアント アプリ: <BR>
     ![デスクトップ アプリ](media/msal-client-applications/desktop-app.png) ![ブラウザーレス API](media/msal-client-applications/browserless-app.png) ![モバイル アプリ](media/msal-client-applications/mobile-app.png)

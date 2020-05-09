@@ -25,6 +25,9 @@
       href: powershell-samples.md
     - name: マネージド アプリケーション ソリューション
       href: sample-projects.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ビュー定義アーティファクト
@@ -134,5 +137,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Resource Manager テンプレートのベスト プラクティス
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

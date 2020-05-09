@@ -29,8 +29,6 @@
       href: manage-farms-in-azure-farmbeats.md
     - name: センサー データの取得
       href: get-sensor-data-from-sensor-partner.md
-    - name: 気象データの取得
-      href: get-weather-data-from-weather-partner.md
     - name: マップの生成
       href: generate-maps-in-azure-farmbeats.md
     - name: ルールの構成とアラートの管理
