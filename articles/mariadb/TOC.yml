@@ -29,6 +29,9 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB とサーバー
@@ -218,7 +221,7 @@
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 機能をリクエストする
       href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'

@@ -4,6 +4,11 @@
   items:
     - name: Azure Resource Manager とは
       href: overview.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: サブスクリプションとサービスの制限
@@ -144,7 +149,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
     - name: 個人データを管理する
       href: resource-manager-personal-data.md
