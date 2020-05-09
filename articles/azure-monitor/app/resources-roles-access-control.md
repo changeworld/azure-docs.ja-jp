@@ -3,12 +3,12 @@ title: Azure Application Insights のリソース、ロール、アクセス制�
 description: 組織の insights の所有者、共同作成者、閲覧者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473134"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628239"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
@@ -40,11 +40,6 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a> リソース グループのコントロール制御
 
 アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはご利用の Application Insights リソースと同じ[リソース グループ](#resource-group)に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
-
-これらのリソースのアクセスを制御するには、次の処置が推奨されます。
-
-* **リソース グループまたはサブスクリプション** レベルでアクセスを制御します。
-* **Application Insights コンポーネントの共同作業者** ロールをユーザーに割り当てます。 この処置により、グループのその他のサービスのアクセス権を与えなくても、ユーザーは Web テスト、アラート、Application Insights リソースを編集できます。
 
 ## <a name="to-provide-access-to-another-user"></a>別のユーザーにアクセスを与えるには
 

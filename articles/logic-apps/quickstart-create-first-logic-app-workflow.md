@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3087b964ff5f9754d6552fc95625541ce94a6535
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77191293"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147996"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal
 
@@ -20,9 +20,10 @@ ms.locfileid: "77191293"
 
 ![ロジック アプリの大まかなワークフローの例](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-このシナリオでは、Office 365 Outlook、Outlook.com、Gmail など、Azure Logic Apps によってサポートされているサービスの電子メール アカウントが必要です。 サポートされているその他の電子メール サービスについては、[こちらでコネクタの一覧を確認](https://docs.microsoft.com/connectors/)してください。 この例のロジック アプリでは、Office 365 Outlook を使用します。 別の電子メール サービスを使用する場合、一般的な手順全体は同じですが、ユーザー インターフェイスはやや異なる可能性があります。
+このシナリオでは、Azure サブスクリプションまたは[無料 Azure アカウントへのサインアップ](https://azure.microsoft.com/free/)、Office 365 Outlook、Outlook.com、Gmail など、Azure Logic Apps によってサポートされているサービスの電子メール アカウントが必要です。 サポートされているその他の電子メール サービスについては、[こちらでコネクタの一覧を確認](https://docs.microsoft.com/connectors/)してください。 この例のロジック アプリでは、Office 365 Outlook アカウントを使用します。 別の電子メール サービスを使用する場合、一般的な手順全体は同じですが、ユーザー インターフェイスはやや異なる可能性があります。
 
-また、Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+> [!IMPORTANT]
+> Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -42,7 +43,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![新しいロジック アプリの詳細を入力する](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
@@ -77,7 +78,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **RSS フィードの URL** | `http://feeds.reuters.com/reuters/topNews` | 監視する RSS フィードのリンク |
    | **間隔** | 1 | チェックの間隔 (単位数) |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399475"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732373"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -178,7 +178,7 @@ Speech リソースを作成するには、以下の手順に従います。
 次の手順は、Azure へのエコー ボットのデプロイです。 ボットをデプロイするにはいくつかの方法がありますが、このチュートリアルでは、Visual Studio から直接発行する方法に重点を置いて説明します。
 
 > [!NOTE]
-> または、[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) と[デプロイ テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/DeploymentTemplates)を使用してボットをデプロイすることもできます。
+> または、[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) と[デプロイ テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates)を使用してボットをデプロイすることもできます。
 
 1. Visual Studio から、Direct Line Speech チャネルで使用するように構成されているエコー ボットを開きます。
 

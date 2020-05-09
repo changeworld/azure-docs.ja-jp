@@ -116,6 +116,9 @@
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
       href: samples-cli.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: マイクロサービスを理解する

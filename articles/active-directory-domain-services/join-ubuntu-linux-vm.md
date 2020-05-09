@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617563"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる
@@ -155,7 +155,7 @@ Successfully enrolled machine in realm
 
 VM のドメイン参加プロセスを正常に完了できない場合は、VM のネットワーク セキュリティ グループで、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットに対する TCP + UDP ポート 464 での送信 Kerberos トラフィックが許可されていることを確認します。
 
-"*Unspecified GSS failure. Minor code may provide more information (Server not found in Kerberos database) (未指定の GSS の障害。マイナー コードで詳細情報が提供されている可能性があります (Kerberos データベースでサーバーが見つかりません))* " というエラーを受け取ったら、 */etc/krb5.conf* ファイルを開き、`[libdefaults]` セクションに次のコードを追加して、もう一度実行してください。
+"*Unspecified GSS failure.Unspecified GSS failure. Minor code may provide more information (Server not found in Kerberos database) (未指定の GSS の障害。マイナー コードで詳細情報が提供されている可能性があります (Kerberos データベースでサーバーが見つかりません))* " というエラーを受け取ったら、 */etc/krb5.conf* ファイルを開き、`[libdefaults]` セクションに次のコードを追加して、もう一度実行してください。
 
 ```console
 rdns=false

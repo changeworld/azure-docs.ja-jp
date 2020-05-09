@@ -68,6 +68,9 @@
       href: sample-scripts-azure-cli.md
     - name: Java 接続プール
       href: sample-scripts-java-connection-pooling.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB とサーバー
