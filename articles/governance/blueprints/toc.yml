@@ -17,6 +17,9 @@
     - name: ブループリントの作成 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
+    - name: ブループリントの作成 - Resource Manager テンプレート
+      displayName: 'assign, compliance, resource manager'
+      href: ../../azure-resource-manager/templates/deploy-to-subscription.md??toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json
 - name: チュートリアル
   items:
     - name: ブループリントのサンプルからの作成
@@ -32,9 +35,20 @@
       href: ./samples/index.md
     - name: Azure セキュリティ ベンチマーク
       items:
+        - name: 概要
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/index.md
         - name: コントロール マッピング
           displayName: 'standards, azure, benchmark'
           href: ./samples/azure-security-benchmark/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/deploy.md
+    - name: Australian Government ISM PROTECTED
+      items:
+        - name: コントロール マッピング
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/control-mapping.md
     - name: カナダ連邦の PBMM
       items:
         - name: 概要
