@@ -2,17 +2,17 @@
 title: 一時的な接続エラー - Azure Database for MariaDB
 description: Azure Database for MariaDB の一時的な接続エラーに対処する方法を説明します。
 keywords: mysql 接続,接続文字列,接続の問題,一時的なエラー,接続エラー
-author: jan-eng
-ms.author: janeng
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 26a6ac4412f1dff450cc087382dc9b0fce443f0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e6c5c8b6c3f118f1b19c5e2b3455f1f66f7e70e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532197"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100806"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Azure Database for MariaDB の一時的な接続エラーに対処する
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec8d5b66c71c558e56f3d1f48cec96d7cc487552
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654123"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82113155"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -366,7 +366,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 独自の証明書を使用する場合は、Azure AD のサービス プリンシパルへの証明書の公開キーの関連付けなどを行う必要があります。
 
-スクリプトを使用するには、Azure Active Directory の管理者資格情報と、先ほどコピーした Azure Active Directory のテナント ID を拡張機能に提供します。 NPS 拡張機能がインストールされている各 NPS サーバーでスクリプトを実行します。
+スクリプトを使用するには、Azure Active Directory の管理者資格情報と、先ほどコピーした Azure Active Directory のテナント ID を拡張機能に提供します。 このアカウントは、拡張機能を有効にするのと同じ Azure AD テナントに存在する必要があります。 NPS 拡張機能がインストールされている各 NPS サーバーでスクリプトを実行します。
 
 1. Windows PowerShell を管理者として実行します。
 
@@ -376,6 +376,8 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
     ![AzureMfsNpsExtnConfigSetup.ps1 構成スクリプトの実行](./media/howto-mfa-nps-extension-vpn/image38.png)
 
+    TLS によってセキュリティ エラーが発生した場合は、PowerShell プロンプトから `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` コマンドを使用して TLS 1.2 を有効にします。
+    
     PowerShell モジュールのインストールの確認後、Azure Active Directory PowerShell モジュールのサインイン ウィンドウが表示されます。
 
 4. Azure AD の管理者の資格情報とパスワードを入力し、 **[次へ]** を選択します。

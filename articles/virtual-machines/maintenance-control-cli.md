@@ -1,53 +1,22 @@
 ---
-title: メンテナンス管理
-description: メンテナンス コントロールを使用して、ご利用の Azure VM にメンテナンスを適用するタイミングを制御する方法について説明します。
+title: CLI を使用した Azure 仮想マシンのメンテナンス コントロール
+description: メンテナンス コントロールと CLI を使用して、ご利用の Azure VM にメンテナンスを適用するタイミングを制御する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226763"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137503"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>プレビュー:メンテナンス コントロールと Azure CLI を使用して更新を制御する
+# <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する
 
-メンテナンス コントロールを使用して、再起動が不要なプラットフォームの更新を管理します。 Azure は、信頼性、パフォーマンス、セキュリティを改善し、新機能を導入する目的で、インフラストラクチャを頻繁に更新しています。 ほとんどの更新は、ユーザーからは透過的に行われます。 ゲーム、メディア ストリーミング、金融取引などの一部のセンシティブなワークロードでは、数秒間であっても、メンテナンスのために VM がフリーズしたり切断したりすることが許されません。 メンテナンス コントロールが提供するオプションを使用すると、プラットフォームの更新を待機し、35 日間のローリング期間内にそれらの更新を適用できます。 
-
-メンテナンス コントロールを使用すると、分離された VM や Azure Dedicated Host に更新プログラムを適用するタイミングをユーザーが決定できます。
-
-メンテナンス コントロールを使用すると、次のことができます。
-- 更新プログラムを 1 つの更新プログラム パッケージにまとめる。
-- 最大 35 日間待機して更新プログラムを適用する。 
-- Azure Functions を使用して、メンテナンス期間のプラットフォームの更新を自動化する。
-- メンテナンス構成が、複数のサブスクリプションやリソース グループ全体で機能するようにする。 
-
-> [!IMPORTANT]
-> メンテナンス コントロールは、現在パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-
-## <a name="limitations"></a>制限事項
-
-- VM は、[専用ホスト](./linux/dedicated-hosts.md)上にあるか、[分離された VM サイズ](./linux/isolation.md)を使用して作成される必要があります。
-- 35 日後に、更新プログラムが自動的に適用されます。
-- ユーザーは、**リソース共同作成者**のアクセス権を持っている必要があります。
-
-
-## <a name="install-the-maintenance-extension"></a>メンテナンス拡張機能をインストールする
-
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をローカルにインストールする場合は、バージョン 2.0.76 以降が必要です。
-
-`maintenance` プレビュー CLI 拡張機能を、ローカルまたは Cloud Shell にインストールします。 
-
-```azurecli-interactive
-az extension add -n maintenance
-```
-
+メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストに更新プログラムを適用するタイミングをユーザーが決定できます。 このトピックでは、メンテナンス コントロール用の Azure CLI オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)に関する記事を参照してください。
 
 ## <a name="create-a-maintenance-configuration"></a>メンテナンス構成を作成する
 
@@ -61,7 +30,7 @@ az maintenance configuration create \
    -g myMaintenanceRG \
    --name myConfig \
    --maintenanceScope host\
-   --location  eastus
+   --location eastus
 ```
 
 後で使用するために、出力から構成 ID をコピーします。

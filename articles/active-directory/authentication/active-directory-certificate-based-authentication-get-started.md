@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654350"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610651"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -45,7 +46,7 @@ ms.locfileid: "80654350"
 - クライアント認証用のクライアント証明書が、クライアントに対して発行されている必要があります。
 
 >[!IMPORTANT]
->正常にダウンロードしてキャッシュする Azure Active Directory の CRL の最大サイズは 20 MB であり、CRL のダウンロードに必要な時間は 10 秒以内である必要があります。  Azure Active Directory が CRL をダウンロードできない場合、対応する CA によって発行された証明書を使用する証明書ベースの認証は失敗します。 CRL ファイルがサイズ制限内に収まるようにするためのベスト プラクティスは、証明書の有効期間を妥当な制限内に保ち、期限切れの証明書をクリーンアップすることです。 
+>正常にダウンロードしてキャッシュする Azure Active Directory の CRL の最大サイズは 20 MB であり、CRL のダウンロードに必要な時間は 10 秒以内である必要があります。  Azure Active Directory が CRL をダウンロードできない場合、対応する CA によって発行された証明書を使用する証明書ベースの認証は失敗します。 CRL ファイルがサイズ制限内に収まるようにするためのベスト プラクティスは、証明書の有効期間を妥当な制限内に保ち、期限切れの証明書をクリーンアップすることです。
 
 ## <a name="step-1-select-your-device-platform"></a>手順 1:デバイス プラットフォームを選択する
 
