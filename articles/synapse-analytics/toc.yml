@@ -26,7 +26,11 @@
           href: quickstart-create-apache-spark-pool.md
         - name: SQL プールを作成する
           href: quickstart-create-sql-pool.md
-    - name: オンデマンドで SQL を使用する
+    - name: SQL プールを使用したデータの読み込み
+      items:
+        - name: COPY ステートメント
+          href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: SQL オンデマンドを使用する
       href: quickstart-sql-on-demand.md
 - name: チュートリアル
   items:

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 3a6162bb381f4e54114e3cabbf138f5b1c6aaae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80373027"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Azure Database for MySQL でのバックアップと復元
@@ -40,14 +40,14 @@ Azure Database for MySQL は、プロビジョニングされているサーバ�
 
 たとえば、サーバーを 250 GB でプロビジョニングした場合は、250 GB のバックアップ ストレージを追加料金なしで利用できます。 250 GB を超えたストレージ分についてのみ課金されます。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
 Azure Database for MySQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成され、そのサーバーに含まれているすべてのデータベースが復元されます。
 
 使用できる復元には 2 つの種類があります。
 
-- **ポイントインタイム リストア**は、いずれのバックアップ冗長オプションでも使用でき、完全およびトランザクション ログのバックアップの組み合わせを使用して、元のサーバーと同じリージョンに新しいサーバーを作成します。
-- **geo リストア**は、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、最新のバックアップを使用してサーバーを別のリージョンに復元できます。
+- **ポイントインタイム リストア**は、いずれのバックアップ冗長オプションでも使用でき、完全バックアップとトランザクション ログ バックアップの組み合わせを利用して、元のサーバーと同じリージョンに新しいサーバーを作成します。
+- **geo リストア**は、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、最も最近作成されたバックアップを利用してサーバーを別のリージョンに復元できます。
 
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
@@ -82,5 +82,5 @@ geo リストア中に変更できるサーバー構成は、コンピューテ�
 ## <a name="next-steps"></a>次のステップ
 
 - ビジネス継続性の詳細については、 [ビジネス継続性の概要](concepts-business-continuity.md)に関するページをご覧ください。
-- Azure portal を使用して特定の時点に復元する方法については、 [Azure portal を使用した特定の時点へのサーバーの復元](howto-restore-server-portal.md)に関するページをご覧ください。
-- Azure CLI を使用して特定の時点に復元する方法については、 [CLI を使用した特定の時点へのサーバーの復元](howto-restore-server-cli.md)に関するページをご覧ください。
+- Azure portal を使用して特定の時点に復元するには、 [Azure portal を使用した特定の時点へのサーバーの復元](howto-restore-server-portal.md)に関するページをご覧ください。
+- Azure CLI を使用して特定の時点に復元するには、 [CLI を使用した特定の時点へのサーバーの復元](howto-restore-server-cli.md)に関するページをご覧ください。

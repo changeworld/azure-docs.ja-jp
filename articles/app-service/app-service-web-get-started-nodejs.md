@@ -5,14 +5,12 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
-experimental: false
-experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: bcb0ae2457175e7511c3539187d72d48e80baa5b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: df1e0809c0122eae593543cd193a6477b03d0938
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047136"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690790"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する 
 
@@ -23,7 +21,7 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)。
 - [Node.js および npm](https://nodejs.org)。 `node --version` コマンドを実行して、Node.js がインストールされていることを確認します。
 - [Visual Studio Code](https://code.visualstudio.com/)。
-- Visual Studio Code 用の [Azure App Service 拡張機能](vscode:extension/ms-azuretools.vscode-azureappservice)。
+- Visual Studio Code 用の [Azure App Service 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。
 
 ## <a name="clone-and-run-a-local-nodejs-application"></a>ローカル Node.js アプリケーションを複製して実行する
 
@@ -45,7 +43,7 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
     npm start
     ```
     
-1. ブラウザーを開き、[http://localhost:1337](http://localhost:1337) に移動します。 ブラウザーに "Hello World!" と表示されます。
+1. ブラウザーを開き、`http://localhost:1337` に移動します。 ブラウザーに "Hello World!" と表示されます。
 
 1. ターミナルで **Ctrl** + **C** キーを押してサーバーを停止します。
 

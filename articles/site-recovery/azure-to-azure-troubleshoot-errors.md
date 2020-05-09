@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390386"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738118"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 
@@ -172,8 +172,6 @@ SUSE Linux ではシンボリック リンク (symlink) を使用して証明書
 ## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>送信 URL または IP 範囲 (エラー コード 151037 または 151072)
 
 Site Recovery レプリケーションを動作させるには、VM から特定の URL への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。 URL を介した送信アクセスについては引き続きサポートされていますが、IP 範囲の許可リストを使用することはサポートされなくなりました。
-
-### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>問題 1:Azure VM を Site Recovery に登録できませんでした (151195)
 
 #### <a name="possible-causes"></a>考えられる原因
 

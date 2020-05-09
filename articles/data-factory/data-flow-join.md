@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 5c388dd2b3e4f40fbf2ed75cf3f1b8ab31aee394
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606414"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233425"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>マッピング データ フローの結合変換
 
@@ -69,7 +69,9 @@ SSIS などのツールでのマージ結合とは異なり、結合変換は強
 
 ![結合変換の最適化](media/data-flow/joinoptimize.png "結合の最適化")
 
-いずれかまたは両方のデータ ストリームがワーカー ノードのメモリに収まるサイズである場合、[最適化] タブの **[ブロードキャスト]** を有効にすることでパフォーマンスをさらに最適化できます。また、結合操作で、データのパーティションをワーカーごとのメモリに収まりやすいように分割し直すこともお勧めします。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには、 **[固定]** を選択します。
+
+**[オフ]** オプションを使用してブロードキャストを無効にすることは、結合でタイムアウト エラーが発生する場合を除いて推奨されません。
 
 ## <a name="self-join"></a>自己結合
 
@@ -90,7 +92,7 @@ SSIS などのツールでのマージ結合とは異なり、結合変換は強
     join(
         <conditionalExpression>,
         joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <joinTransformationName>
 ```
 

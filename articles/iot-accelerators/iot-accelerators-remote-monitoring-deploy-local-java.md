@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73888809"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187213"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 
@@ -190,10 +190,10 @@ Web サービスごとにコマンド プロンプト ウィンドウと Web ブ
 
 サービスの状態にアクセスするには、次の URL に移動します。
 
-* IoT-Hub Manager: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* デバイス テレメトリ: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* config: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* storage-adapter: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* IoT-Hub Manager: `http://localhost:9002/v1/status`
+* デバイス テレメトリ: `http://localhost:9004/v1/status`
+* config: `http://localhost:9005/v1/status`
+* storage-adapter: `http://localhost:9022/v1/status`
 
 ### <a name="start-the-stream-analytics-job"></a>Stream Analytics ジョブの開始
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-**start** コマンドが完了すると、ブラウザーには、[http://localhost:3000/dashboard](http://localhost:3000/dashboard) というアドレスのページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
+**start** コマンドが完了すると、ブラウザーには、アドレス `http://localhost:3000/dashboard` のページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
 
 ### <a name="configure-and-run-nginx"></a>Nginx を構成および実行する
 
@@ -226,7 +226,7 @@ Nginx の実行の詳細については、「[nginx for Windows](https://nginx.o
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
-リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで http://localhost:9000 に移動します。
+リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで `http://localhost:9000` に移動します。
 
 ## <a name="clean-up"></a>クリーンアップ
 
