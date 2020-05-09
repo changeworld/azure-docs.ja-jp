@@ -24,6 +24,11 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Python Runbook を作成する
       href: learn/automation-tutorial-runbook-textual-python2.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Automation アカウントの認証の概要

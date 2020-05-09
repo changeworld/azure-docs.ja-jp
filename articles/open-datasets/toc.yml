@@ -9,9 +9,9 @@
 - name: チュートリアル
   items:
     - name: 自動機械学習による回帰
-      href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
     - name: 画像分類モデルをエンリッチする
-      href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: 操作方法ガイド
   items:
     - name: Azure Machine Learning のデータセット
@@ -38,8 +38,8 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
     - name: ユーザー フォーラム
       href: 'https://aka.ms/open-datasets-forum'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

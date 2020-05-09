@@ -2,7 +2,7 @@
 title: OAuth 2.0 暗黙的な許可のフロー - Microsoft ID プラットフォーム | Azure
 description: Microsoft ID プラットフォームの暗黙的なフローを使用してシングルページ アプリをセキュリティで保護します。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0a884850d57418e9daafba980d0a08dc86fc0974
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 944b4f7872a2784a65221afda17100e7ee8b663a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309386"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689710"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
 
@@ -32,9 +32,6 @@ Microsoft ID プラットフォーム エンドポイントを使ったシング
 この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
 シングル ページ アプリケーションでライブラリを使用せずに、自分でプロトコル メッセージを送信する場合は、次の一般的な手順を実行してください。
-
-> [!NOTE]
-> Microsoft ID プラットフォーム エンドポイントでは、Azure Active Directory (Azure AD) のすべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](active-directory-v2-limitations.md)に関するページを参照してください。
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 の暗黙的な許可の適切なシナリオ
 
@@ -120,7 +117,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 `response_mode=fragment` と `response_type=id_token+token` を使用した成功応答は、次のようになります (読みやすいように改行してあります)。
 
-```
+```HTTP
 GET https://localhost/myapp/#
 &token_type=Bearer
 &expires_in=3599
@@ -141,7 +138,7 @@ GET https://localhost/myapp/#
 
 アプリ側でエラーを適切に処理できるよう、 `redirect_uri` にはエラー応答も送信されます。
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -187,7 +184,7 @@ URL のクエリ パラメーターの詳細については、「[サインイ�
 
 `response_mode=fragment` を使用した場合の正常な応答は次のようになります。
 
-```
+```HTTP
 GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
@@ -209,7 +206,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 アプリ側で適切に処理できるように、 `redirect_uri` にエラーの応答が送信される場合もあります。 `prompt=none`の場合、予期されるエラーは次のようになります。
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently

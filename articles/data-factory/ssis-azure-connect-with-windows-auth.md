@@ -10,14 +10,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 0c4cdc3481fb58efd8eaa4cd83e1d6167f203a4e
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759962"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629390"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Azure の SSIS パッケージから Windows 認証を使用してデータ ストアとファイル共有にアクセスする
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory (ADF) 内の Azure-SSIS Integration Runtime (IR) で実行されている SSIS パッケージから、Windows 認証を使用して、SQL Server、ファイル共有、Azure Files などのデータ ストアにアクセスできます。 データ ストアは、オンプレミスであっても、Azure 仮想マシン (VM) でホストされていても、マネージド サービスとして Azure で実行されていてもかまいません。 オンプレミスの場合は、オンプレミス ネットワークに接続されている仮想ネットワーク (Microsoft Azure Virtual Network) に、Azure-SSIS IR を参加させる必要があります。[Azure-SSIS IR を Microsoft Azure Virtual Network に参加させる方法](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)に関する記事をご覧ください。 Azure-SSIS IR で実行されている SSIS パッケージから Windows 認証でデータ ストアにアクセスするには、4 つの方法があります。
 

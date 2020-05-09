@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108395"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202776"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>ロジック アプリを API としてインポート
 
@@ -33,19 +33,19 @@ ms.locfileid: "74108395"
 
 ## <a name="prerequisites"></a>前提条件
 
--   [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
+-   次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 -   HTTP エンドポイントが公開されるサブスクリプションにロジック アプリがあることを確認します。 詳しくは、[HTTP エンドポイントでのワークフローのトリガー](../logic-apps/logic-apps-http-endpoint.md)に関する記事をご覧ください
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
-1. **[API Management]** で **[API]** を選びます。
+1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[ロジック アプリ]** を選択します。
 
     ![ロジック アプリ](./media/import-logic-app-as-api/logic-app-api.png)
 
-3. **[参照]** を押して、サブスクリプション内の、HTTP トリガーを持つロジック アプリの一覧を表示します (HTTP トリガーを持たないロジック アプリは一覧に表示されないことに注意してください)。
+3. **[参照]** を押して、サブスクリプション内の、HTTP トリガーを持つロジック アプリの一覧を表示します  (HTTP トリガーを持たないロジック アプリは一覧に表示されないことに注意してください)。
 4. アプリを選びます。 API Management では、選択したアプリに関連付けられている Swagger が検索されてフェッチされ、インポートされます。
 5. API URL サフィックスを追加します。 サフィックスは、この API Management インスタンスでこの特定の API を識別する名前です。 この API Management インスタンス内で一意である必要があります。
 6. API を成果物に関連付けることで API を公開します。 この場合、"_無制限_" の成果物が使用されます。 API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
@@ -57,7 +57,8 @@ ms.locfileid: "74108395"
     - **スターター**
     - **無制限**
 
-7. **作成** を選択します。
+7. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+8. **［作成］** を選択します
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Azure Portal での API のテスト
 

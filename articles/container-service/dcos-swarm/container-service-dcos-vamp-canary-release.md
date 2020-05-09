@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77189095"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734826"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
@@ -129,7 +129,7 @@ Vamp が稼働状態になったので、ブループリントからサービス
 
 最も単純な形式では、[Vamp ブループリント](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments)は、デプロイするエンドポイント (ゲートウェイ)、クラスター、およびサービスを説明します。 Vamp はクラスターを使用して、カナリア リリースまたは A/B テスト用に同じサービスのさまざまなバリアントを論理グループにグループ化します。  
 
-このシナリオでは、[**sava**](https://github.com/magneticio/sava) と呼ばれるサンプルのモノリシック アプリケーション (バージョン 1.0) を使用します。 モノリシックは、Docker コンテナーにパッケージ化されます。このコンテナーは magneticio/sava:1.0.0 の下のDocker Hub にあります。 通常、アプリケーションはポート 8080 で実行されますが、ここではポート 9050 に公開します。 シンプルなブループリントを使用して、Vamp を使ってアプリをデプロイします。
+このシナリオでは、[**sava**](https://github.com/magneticio/sava-product) と呼ばれるサンプルのモノリシック アプリケーション (バージョン 1.0) を使用します。 モノリシックは、Docker コンテナーにパッケージ化されます。このコンテナーは magneticio/sava:1.0.0 の下のDocker Hub にあります。 通常、アプリケーションはポート 8080 で実行されますが、ここではポート 9050 に公開します。 シンプルなブループリントを使用して、Vamp を使ってアプリをデプロイします。
 
 1. **[デプロイ]** に移動します。
 
