@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 04/20/2020
 ms.author: curtand
-ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fd22f3b9d365bfee543712f680d504bb134f24d7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062457"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625699"
 ---
 # <a name="what-is-the-my-account-portal"></a>マイ アカウント ポータルとは
 
 **マイ アカウント** ポータルでは、職場または学校アカウントを管理するために、セキュリティ情報の設定と管理や、接続されている組織とデバイスの管理を行うことができるほか、所属する組織で自分のデータがどのように使用されているかを確認することができます。
 
-**マイ アカウント** ポータル (https://myprofile.microsoft.com) ) には、次のブラウザーの最新バージョンからアクセスできます。
+**マイ アカウント** ポータル (https://myaccount.microsoft.com) ) には、次のブラウザーの最新バージョンからアクセスできます。
 
 - Chrome
 - Microsoft Edge

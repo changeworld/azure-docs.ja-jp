@@ -4,18 +4,22 @@ description: Azure CLI を使用してブロックチェーン コンソーシ�
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 1561f485917ecbb64d51ffbe045ab4120fbf58ad
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529616"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116810"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する
 
 このクイックスタートでは、Azure CLI を使用して Azure Blockchain Service 内にブロックチェーンの新しいメンバーとコンソーシアムをデプロイします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>前提条件
+
+[なし] :
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 

@@ -5,24 +5,18 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 12/18/2019
-ms.openlocfilehash: 934acf06a779c1c3b0b13e74b196b174dd944e66
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886672"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208008"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
 Azure Kubernetes Service (AKS) では、Windows Server をゲスト OS としてノード上で実行するノード プールを作成することができます。 これらのノードは、.NET Framework 上に構築されたものなど、ネイティブの Windows コンテナー アプリケーションを実行できます。 Linux と Windows OS がコンテナー サポートを提供する方法に大きな相違点があるため、いくつかの一般的な Kubernetes と Pod 関連の機能は Windows ノード プールで現在使用できません。
 
-この記事では、AKS 内の Windows Server ノードの制限事項および OS の概念について説明します。 Windows Server 用のノード プールは現在プレビューの段階です。
-
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー][aks-support-policies]
-> * [Azure サポートに関する FAQ][aks-faq]
+この記事では、AKS 内の Windows Server ノードの制限事項および OS の概念について説明します。
 
 ## <a name="which-windows-operating-systems-are-supported"></a>どの Windows オペレーティング システムがサポートされていますか?
 
@@ -66,7 +60,7 @@ Windows ノード プールの AKS クラスターでは、Azure CNI (高度) �
 
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Windows ノード プールのサービス プリンシパルはどのようにローテーションするのですか?
 
-プレビュー期間中、Windows ノード プールでは、プレビューの制限としてサービス プリンシパルのローテーションはサポートされません。 サービス プリンシパルを更新するには、新しい Windows ノード プールを作成し、ポッドを古いプールから新しいプールに移行します。 この処理が完了したら、古いノード プールを削除します。
+Windows ノード プールは、サービス プリンシパルのローテーションをサポートしていません。 サービス プリンシパルを更新するには、新しい Windows ノード プールを作成し、ポッドを古いプールから新しいプールに移行します。 この処理が完了したら、古いノード プールを削除します。
 
 ## <a name="how-many-node-pools-can-i-create"></a>ノード プールはいくつ作成できますか?
 
@@ -120,6 +114,5 @@ AKS で Windows Server コンテナーの使用を開始するには、[AKS で 
 [aks-faq]: faq.md
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
-[preview-support]: support-policies.md#preview-features-or-feature-flags
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node

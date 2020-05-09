@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c1b5b9ac5d7c3f04dd3ae2e843425a5ead0d4c07
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 059e77c063d00ef850a171507ca2e06422ade426
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419806"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82191772"
 ---
 # <a name="azure-synapse-analytics-preview-release-notes"></a>Azure Synapse Analytics (プレビュー) のリリース ノート
 
@@ -29,7 +29,8 @@ ms.locfileid: "81419806"
 - 問題およびユーザーへの影響:SDK によって作成されたワークスペースから、Synapse Studio を起動できません。
 
 - 対処法:次の手順を実行します。 
-  1.    `az synapse workspace create`2 を実行してワークスペースを作成します。    `$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")` を実行してマネージド ID を抽出します。
+  1.    `az synapse workspace create` を実行してワークスペースを作成します。
+  2.    `$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")` を実行してマネージド ID を抽出します。
   3.    ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}` を実行して、ストレージ アカウントにロールとしてワークスペースを追加します。
   4.    ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 ` を実行して、ファイアウォール規則を追加します。
 

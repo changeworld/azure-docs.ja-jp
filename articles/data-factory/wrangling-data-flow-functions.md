@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417659"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626685"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>ラングリング データ フローの変換関数
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory のラングリング データ フローを使用すると、コードなしのアジャイルなデータ準備とラングリングをクラウド規模で実行できます。 ラングリング データ フローは [Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) と統合されており、Spark 実行を通して Power Query M 関数をデータ ラングリングに対して使用可能にします。 
 
