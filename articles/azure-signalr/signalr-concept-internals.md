@@ -6,20 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74157598"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82105762"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service の内部
 
-Azure SignalR Service は、ASP.NET Core SignalR フレームワーク上に構築されています。 ASP.NET SignalR もプレビュー機能としてサポートしています。
+Azure SignalR Service は、ASP.NET Core SignalR フレームワーク上に構築されています。 また、ASP.NET Core フレームワーク上に ASP.NET SignalR のデータ プロトコルを再実装することで、ASP.NET SignalR がサポートされます。
 
-> ASP.NET SignalR をサポートするために、Azure SignalR Service は ASP.NET Core フレームワーク上に ASP.NET SignalR のデータ プロトコルを再実装しています
-
-コードを数行変更するだけで、ローカルの ASP.NET Core SignalR アプリケーションを簡単に移行して、SignalR Service と連携させることができます。
+コードを数行変更するだけで、ローカルの ASP.NET Core SignalR アプリケーションまたは ASP.NET SignalR アプリケーションを簡単に移行して、SignalR Service と連携させることができます。
 
 以下の図には、アプリケーション サーバーと SignalR Service を使用する場合の一般的なアーキテクチャが示されています。
 

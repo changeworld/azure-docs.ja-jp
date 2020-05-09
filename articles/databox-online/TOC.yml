@@ -45,10 +45,10 @@
               href: data-box-gateway-connect-powershell-interface.md
         - name: モニター
           href: data-box-gateway-monitor.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           href: data-box-gateway-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
     - name: リリース ノート
       items:
         - name: 1911 - 最新
@@ -64,59 +64,59 @@
     - name: 概要
       items:
         - name: Azure Stack Edge とは
-          href: data-box-edge-overview.md
+          href: azure-stack-edge-overview.md
     - name: チュートリアル
       items:
         - name: 1 - 準備
-          href: data-box-edge-deploy-prep.md
+          href: azure-stack-edge-deploy-prep.md
         - name: 2 - インストール
-          href: data-box-edge-deploy-install.md
+          href: azure-stack-edge-deploy-install.md
         - name: 3 - 接続、セットアップ、アクティブ化
-          href: data-box-edge-deploy-connect-setup-activate.md
+          href: azure-stack-edge-deploy-connect-setup-activate.md
         - name: 4 - 追加、共有への接続
-          href: data-box-edge-deploy-add-shares.md
+          href: azure-stack-edge-deploy-add-shares.md
         - name: 5A - コンピューティングの構成 (簡易)
-          href: data-box-edge-deploy-configure-compute.md
+          href: azure-stack-edge-deploy-configure-compute.md
         - name: 5B - コンピューティングの構成 (詳細)
-          href: data-box-edge-deploy-configure-compute-advanced.md
+          href: azure-stack-edge-deploy-configure-compute-advanced.md
     - name: 概念
       items:
         - name: 要件を確認する
-          href: data-box-edge-system-requirements.md
+          href: azure-stack-edge-system-requirements.md
         - name: 制限を理解する
-          href: data-box-edge-limits.md
+          href: azure-stack-edge-limits.md
         - name: セキュリティの概要
-          href: data-box-edge-security.md
+          href: azure-stack-edge-security.md
         - name: 仕様の確認
-          href: data-box-edge-technical-specifications-compliance.md
+          href: azure-stack-edge-technical-specifications-compliance.md
     - name: 方法
       items:
         - name: 'C# モジュールの開発'
-          href: data-box-edge-create-iot-edge-module.md
+          href: azure-stack-edge-create-iot-edge-module.md
         - name: 管理する
           items:
             - name: Edge コンピューティング
-              href: data-box-edge-manage-compute.md
+              href: azure-stack-edge-manage-compute.md
             - name: Edge コンピューティングのネットワーク
-              href: data-box-edge-extend-compute-access-modules.md
+              href: azure-stack-edge-extend-compute-access-modules.md
             - name: 共有
-              href: data-box-edge-manage-shares.md
+              href: azure-stack-edge-manage-shares.md
             - name: ユーザー
-              href: data-box-edge-manage-users.md
+              href: azure-stack-edge-manage-users.md
             - name: 帯域幅のスケジュール
-              href: data-box-edge-manage-bandwidth-schedules.md
+              href: azure-stack-edge-manage-bandwidth-schedules.md
             - name: 電源、アクセス、接続
-              href: data-box-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell から
-              href: data-box-edge-connect-powershell-interface.md
-        - name: トラブルシューティング
-          href: data-box-edge-troubleshoot.md
+              href: azure-stack-edge-connect-powershell-interface.md
+        - name: '[トラブルシューティング]'
+          href: azure-stack-edge-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
         - name: モニター
-          href: data-box-edge-monitor.md
+          href: azure-stack-edge-monitor.md
         - name: デバイスの返却または交換
-          href: data-box-edge-return-device.md
+          href: azure-stack-edge-return-device.md
     - name: リリース ノート
       items:
         - name: 1911 - 最新
