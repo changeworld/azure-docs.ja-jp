@@ -1,27 +1,22 @@
 ---
 title: チュートリアル - Azure portal で Windows 仮想マシンをバックアップする
 description: このチュートリアルでは、Azure portal を使用して Azure Backup により Windows 仮想マシンを保護する方法を説明します。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: recovery
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1fa85dc63bc23760888192f2118158e73320a86
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456109"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100432"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>チュートリアル:Azure 内の Windows 仮想マシンのファイルをバックアップおよび復元する
+# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>チュートリアル: Azure 内の Windows 仮想マシンのファイルをバックアップおよび復元する
 
 データは、定期的にバックアップすることで保護することができます。 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体を復元するか、特定のファイルを復元することができます。 この記事では、VM が稼働する Windows サーバーおよび IIS に 1 つのファイルを復元する方法を説明します。 使用する VM をまだ作成していない場合は、[Windows クイック スタート](quick-create-portal.md)を使用して作成できます｡ このチュートリアルで学習する内容は次のとおりです。
 
@@ -41,7 +36,7 @@ Windows VM のスナップショットを取るとき、Backup サービスは V
 ## <a name="create-a-backup"></a>バックアップの作成
 Recovery Services コンテナーに対するバックアップを 1 日 1 回の単純なスケジュールで作成します。 
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 1. 左側のメニューから **[仮想マシン]** を選択します。 
 1. バックアップする VM を一覧から選択します。
 1. その VM のブレードの **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
@@ -76,15 +71,15 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 1. 左側のメニューで **[仮想マシン]** を選択し､一覧から VM を選択します。
 1. その VM のブレードの **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップ]** ブレードが開きます。 
 1. ブレード上部のメニューで **[ファイルの回復]** を選択します。 **[ファイルの回復]** ブレードが開きます。
-1. **[ステップ 1:回復ポイントを選択する]** で、ドロップダウンから復旧ポイントを選択します。
-1. **[ステップ 2:ファイルを参照および回復するためのスクリプトをダウンロードする]** の **[実行可能ファイルのダウンロード]** をクリックします。 ファイルのパスワードをコピーし、安全な場所に保存します。
+1. **[ステップ 1: 回復ポイントを選択する]** で、ドロップダウンから復旧ポイントを選択します。
+1. **[ステップ 2: ファイルを参照および回復するためのスクリプトをダウンロードする]** の **[実行可能ファイルのダウンロード]** ボタンをクリックします。 ファイルのパスワードをコピーし、安全な場所に保存します。
 1. ローカル コンピュータで **ファイル エクスプローラー**を開き､**ダウンロード** フォルダに移動して､ダウンロードした .exe ファイルをコピーします｡ ファイル名には､プリフィックスとして VM 名が付けられます｡ 
 1. VM (RDP 接続使用) のデスクトップに .exe ファイルを貼り付けます。 
 1. VM のデスクトップに移動し､.exe ファイルをダブルクリックします｡ コマンド プロンプトが開始されます。 プログラムが復旧ポイントに、アクセス可能なファイル共有としてマウントします。 共有の作成が完了したら､**q** を入力してコマンド プロンプトを閉じます｡
 1. VM で**ファイル エクスプローラー**を開き､ファイル共有に使用したドライ文字に移動します｡
 1. \inetpub\wwwroot に移動し､ファイル共有から **iisstart.png** をコピーして､\inetpub\wwwroot に貼り付けます｡ たとえば､F:\inetpub\wwwroot\iisstart.png をコピーし､c:\inetpub\wwwroot に貼り付けることでファイルを回復できます｡
 1. ローカル コンピューターで、既定の IIS ページを表示する VM の IP アドレスに接続したブラウザー タブを開きます。 Ctrl キーを押しながら F5 キーを押して、ブラウザー ページを最新の情報に更新します。 これで､イメージが復元されたことを確認できます｡
-1. ローカル コンピューターで Azure portal のブラウザー タブに戻り、 **[ステップ 3:回復後にディスクのマウントを解除する]** の **[ディスクのマウント解除]** をクリックします。 この手順を実行するのを忘れた場合、12 時間後にマウント ポイントへの接続が自動的に解除されます。 12 時間が経過した後、新しいマウント ポイントを作成するには、新しいスクリプトをダウンロードする必要があります。
+1. ローカル コンピューターで Azure Portal のブラウザー タブに移動し、 **[ステップ 3: 回復後にディスクのマウントを解除する]** の **[ディスクのマウント解除]** ボタンをクリックします。 この手順を実行するのを忘れた場合、12 時間後にマウント ポイントへの接続が自動的に解除されます。 12 時間が経過した後、新しいマウント ポイントを作成するには、新しいスクリプトをダウンロードする必要があります。
 
 
 

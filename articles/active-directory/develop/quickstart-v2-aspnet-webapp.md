@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991145"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853961"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する
 このクイックスタートでは、ASP.NET Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。  (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
@@ -43,7 +43,7 @@ ms.locfileid: "80991145"
 > 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 >      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `ASPNET-Quickstart`)。
->      - **[リダイレクト URI]** に `http://localhost:44368/` を追加して、 **[登録]** をクリックします。
+>      - **[リダイレクト URI]** に `https://localhost:44368/` を追加して、 **[登録]** をクリックします。
 >      - 左側のナビゲーション ウィンドウの [管理] セクションから、 **[認証]** を選択します。
 >          - **[暗黙の付与]** サブセクションで、 **[ID トークン]** を選択します。
 >          - その後、 **[保存]** を選択します。

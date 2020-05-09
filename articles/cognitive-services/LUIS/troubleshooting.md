@@ -4,12 +4,12 @@ description: この記事では、Language Understanding (LUIS) についてよ�
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 59d9b1f21e1936b7d03293ec3d338677380a7c99
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81530234"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101112"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -152,7 +152,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="working-within-luis-limits"></a>LUIS 制限内での作業
 
 ### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>LUIS アプリがサポートできる意図とエンティティの最大数はどれくらいですか?
-[境界](luis-boundaries.md)に関するページをご覧ください。
+[境界](luis-limits.md)に関するページをご覧ください。
 
 ### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>作成したい LUIS アプリが意図の最大数を超えます。 どうすればよいですか。
 
@@ -163,10 +163,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 [エンティティのベスト プラクティス](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)に関するページをご覧ください。
 
 ### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>フレーズ リストの数とサイズにはどのような制限がありますか?
-[フレーズ リスト](./luis-concept-feature.md)の最大長については、[境界](luis-boundaries.md)に関するページをご覧ください。
+[フレーズ リスト](./luis-concept-feature.md)の最大長については、[境界](luis-limits.md)に関するページをご覧ください。
 
 ### <a name="what-are-the-limits-on-example-utterances"></a>発話の例にはどのような制限がありますか?
-[境界](luis-boundaries.md)に関するページをご覧ください。
+[境界](luis-limits.md)に関するページをご覧ください。
 
 ## <a name="testing-and-training"></a>テストとトレーニング
 
