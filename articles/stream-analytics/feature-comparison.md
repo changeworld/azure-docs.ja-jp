@@ -6,16 +6,19 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cdae6a3b7319aefa9d4f19b5d613d1afb8b6804a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235323"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133495"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
 
 Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、[Visual Studio Code](quick-create-vs-code.md) を使用して、クラウドおよび IoT Edge でストリーミング ソリューションを作成できます。 この記事の表は、両方のジョブの種類について、各プラットフォームでサポートされている機能を示しています。
+
+> [!NOTE]
+> Visual Studio と Visual Studio Code のツールでは、中国東部、中国北部、ドイツ中部、ドイツ北東部のリージョンでのジョブはサポートされていません。
 
 ## <a name="cloud-job-features"></a>クラウド ジョブの機能
 
@@ -36,7 +39,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |ジョブの送信、開始、停止     |はい         |はい         |はい         |
 |ジョブ メトリックとジョブ ダイアグラムの表示     |はい         |はい         |ポータルで開く         |
 |ジョブの実行時エラーの表示     |はい         |はい         |いいえ         |
-|診断ログ     |はい         |いいえ         |いいえ         |
+|リソース ログ     |はい         |いいえ         |いいえ         |
 |カスタム メッセージ プロパティ     |はい         |はい         |いいえ       |
 |C# カスタム コード関数とデシリアライザー|読み取り専用モード|はい|いいえ|
 |JavaScript UDF および UDA     |はい         |はい         |Windows のみ         |

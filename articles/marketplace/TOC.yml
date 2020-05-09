@@ -199,19 +199,7 @@
             - name: 既存のオファーの更新
               href: ./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md
         - name: コンサルティング サービス
-          href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
-          items:
-            - name: 前提条件
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
-            - name: コンサルティング サービス オファーの作成
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
-              items:
-                - name: '[プランの設定] タブ'
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md
-                - name: '[ネットショップの詳細] タブ'
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md
-            - name: コンサルティング サービス プランの発行
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md
+          href: ./cloud-partner-portal/consulting-services/consulting-services-offer.md
         - name: Containers のオファー
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:

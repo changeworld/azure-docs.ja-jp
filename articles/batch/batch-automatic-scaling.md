@@ -1,25 +1,16 @@
 ---
-title: Azure Batch プール内の計算ノードの自動スケール | Microsoft Docs
+title: Azure Batch プール内のコンピューティング ノードの自動スケール
 description: クラウド プールで自動スケールを有効にして、プール内のコンピューティング ノードの数を動的に調整します。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 398b6d9c3fc05a6cf164b4003f57b94ecd6c1972
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054011"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82113563"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -34,7 +25,7 @@ Azure Batch は定義したパラメーターに基づいてプールを自動�
 > [!IMPORTANT]
 > Batch アカウントを作成する際に、[アカウント構成](batch-api-basics.md#account)を指定できます。アカウント構成は、プールが Batch Service サブスクリプションに割り当てられる (既定) か、ユーザー サブスクリプションに割り当てられるかを決定します。 Batch Service の既定の構成で Batch アカウントを作成した場合、アカウントは処理に使用できるコアの最大数に制限されます。 そのコア数が、Batch サービスでスケール可能な計算ノードの最大数になります。 このことにより、Batch サービスが自動スケールの数式によって指定された目標数に到達しない場合があります。 アカウントのクォータを表示する方法および増やす方法については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md) 」を参照してください。
 >
->ユーザー サブスクリプションの構成でアカウントを作成した場合、アカウントはそのサブスクリプションのコア クォータで共有します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」の「[Virtual Machines の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits)」をご覧ください。
+>ユーザー サブスクリプションの構成でアカウントを作成した場合、アカウントはそのサブスクリプションのコア クォータで共有します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits)」の「[Virtual Machines の制限](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 >
 >
 
@@ -89,7 +80,7 @@ $NodeDeallocationOption = taskcompletion;
 
 この例では、25 個の優先順位の低いノードから始まるプールを作成します。 優先順位の低いノードが割り込まれるたびに、専用のノードに置き換えられます。 最初の例と同様に、`maxNumberofVMs` 変数は、プールが 25 台の VM を超過することを防ぎます。 この例は、優先順位の低い VM を活用する場合に役立ちます。また、プールの有効期間中、割り込みが一定数に留まるようにします。
 
-## <a name="variables"></a>変数
+## <a name="variables"></a>変数:
 
 自動スケールの数式には、**サービス定義**の変数と**ユーザー定義**の変数の両方を使用できます。 サービス定義の変数は Batch サービスに組み込まれています。 サービス定義の変数には、読み取り/書き込み可能な変数と読み取り専用の変数があります。 ユーザー定義の変数は、ユーザーが定義する変数です。 前のセクションで示した例の数式では、`$TargetDedicatedNodes` と`$PendingTasks` がサービス定義の変数です。 `startingNumberOfVMs` と `maxNumberofVMs` がユーザー定義の変数です。
 
@@ -109,7 +100,7 @@ $NodeDeallocationOption = taskcompletion;
 | $NodeDeallocationOption |コンピューティング ノードがプールから削除されるときに発生するアクション。 次のいずれかの値になります。<ul><li>**requeue** -- 既定値。 すぐにタスクを終了し、再スケジュールされるようにジョブ キューに戻します。 これにより、ノードの目標数には可能な限り早く到達するようになりますが、実行中のタスクを中断して再起動する必要があり、既に完了している作業が無駄になるため、効率が低下する可能性があります。 <li>**terminate** – すぐにタスクを終了し、ジョブ キューから削除します。<li>**taskcompletion** – 現在実行中のタスクの完了を待ち、プールからノードを削除します。 タスクが中断されてキューに再登録されないようにして、タスクで行われた作業が無駄にならないようにするには、このオプションを使用します。 <li>**retaineddata** - ノードでローカル タスクによって保持されているすべてのデータがクリーンアップされるまで待機してから、ノードをプールから削除します。</ul> |
 
 > [!NOTE]
-> 別名 `$TargetDedicated` を使用して、`$TargetDedicatedNodes` 変数を指定することもできます。 同様に、別名 `$TargetLowPriority` を使用して、`$TargetLowPriorityNodes` 変数を指定できます。 完全な名前の変数とその別名の両方が数式によって設定されている場合は、完全な名前の変数に割り当てられた値が優先されます。
+> 別名 `$TargetDedicatedNodes` を使用して、`$TargetDedicated` 変数を指定することもできます。 同様に、別名 `$TargetLowPriorityNodes` を使用して、`$TargetLowPriority` 変数を指定できます。 完全な名前の変数とその別名の両方が数式によって設定されている場合は、完全な名前の変数に割り当てられた値が優先されます。
 >
 >
 
@@ -176,7 +167,7 @@ $NodeDeallocationOption = taskcompletion;
 
 前のセクションに列挙されている型に対して、次の演算を実行できます。
 
-| Operation | サポートされている演算子 | 結果の種類 |
+| 操作 | サポートされている演算子 | 結果の種類 |
 | --- | --- | --- |
 | double *&lt;演算子&gt;* double |+, -, *, / |double |
 | double *&lt;演算子&gt;* timeinterval |* |timeinterval |
@@ -200,7 +191,7 @@ $NodeDeallocationOption = taskcompletion;
 ## <a name="functions"></a>関数
 次の定義済みの **関数** は、自動スケールの数式の定義に使用できます。
 
-| 機能 | の戻り値の型 : | 説明 |
+| Function | の戻り値の型 :  | 説明 |
 | --- | --- | --- |
 | avg(doubleVecList) |double |doubleVecList のすべての値の平均値を返します。 |
 | len(doubleVecList) |double |doubleVecList から作成されたベクター長を返します。 |
@@ -236,13 +227,13 @@ $NodeDeallocationOption = taskcompletion;
 $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ```
 
-| Method | 説明 |
+| 方法 | 説明 |
 | --- | --- |
 | GetSample() |`GetSample()` メソッドは、データ サンプルのベクターを返します。<br/><br/>サンプルは、30 秒相当のメトリック データです。 つまり、30 秒ごとにサンプルが取得されます。 ただし、この後も説明しますが、サンプルが収集されてから、それが数式に使用できるようになるまでには時間差があります。 そのため、特定の期間に取得されたすべてのサンプルを数式の評価に使用できない可能性があります。<ul><li>`doubleVec GetSample(double count)`<br/>最新の収集済みサンプルから取得するサンプル数を指定します。<br/><br/>`GetSample(1)` は、使用できる最新のサンプルを返します。 ただし、`$CPUPercent` などのメトリックの場合、サンプルが収集された "*時間*" がわからないので、GetSample を使用できません。 最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。 このような場合は、次のように期間を使用することをお勧めします。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>サンプル データを収集する期間を指定します。 指定した期間内に必要となるサンプルの割合をオプションで指定できます。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` は、過去 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、20 個のサンプルを返します。 ただし、過去 1 分間の履歴を使用できない場合は、18 個のサンプルのみが返されます。 この場合、次のようになります。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` は、サンプルの 90% しか使用できないため、失敗します。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` は成功します。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>開始時刻と終了時刻の両方を使用して、データを収集する期間を指定します。<br/><br/>前述のように、サンプルが収集される時間と、数式に使用できるようになる時間には遅延があります。 `GetSample` メソッドを使用する際にはこの遅延を考慮します。 後述の `GetSamplePercent` をご覧ください。 |
 | GetSamplePeriod() |履歴のサンプル データ セットで受け取ったサンプルの期間を返します。 |
 | Count() |メトリック履歴のサンプルの合計数を返します。 |
 | HistoryBeginTime() |使用可能な最も古いメトリックのデータ サンプルのタイムスタンプを返します。 |
-| GetSamplePercent() |特定の時間間隔で利用できるサンプルの割合を返します。 次に例を示します。<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>返されたサンプルの割合が指定した `samplePercent` 未満の場合、`GetSample` メソッドは失敗するので、まず `GetSamplePercent` メソッドを使用して確認します。 その後、十分なサンプルが存在しない場合は、自動スケール評価を停止せずに代替の操作を実行します。 |
+| GetSamplePercent() |特定の時間間隔で利用できるサンプルの割合を返します。 次に例を示します。<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>返されたサンプルの割合が指定した `GetSample` 未満の場合、`samplePercent` メソッドは失敗するので、まず `GetSamplePercent` メソッドを使用して確認します。 その後、十分なサンプルが存在しない場合は、自動スケール評価を停止せずに代替の操作を実行します。 |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>サンプル、サンプルの割合、 *GetSample()* メソッド
 タスクおよびリソースのメトリック データを取得し、そのデータに基づいてプールのサイズを調整することが、自動スケールの数式の主要な動作となります。 そのため、自動スケールの数式とメトリック データ (サンプル) とがどのように関与するのかをしっかりと把握しておくことが重要です。
@@ -284,7 +275,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 サンプルの使用可用性には遅延があるため、時間範囲を指定する際には、常に、開始時間を 1 分より長く遡って指定することが重要です。 サンプルがシステムを介して伝達されるまで約 1 分かかるため、`(0 * TimeInterval_Second, 60 * TimeInterval_Second)` の範囲内のサンプルは使用できない場合があります。 ここでも、 `GetSample()` の割合パラメーターを使用することで、サンプルの割合に関する特定の要件を適用できます。
 
 > [!IMPORTANT]
-> **自動スケールの数式では " *`GetSample(1)` にのみ依存する*" ことは避ける**ことを**強くお勧め**します。 理由は、`GetSample(1)` は基本的には "どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。 `GetSample(1)`を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
+> **自動スケールの数式では "** **にのみ依存する *" ことは避ける*ことを`GetSample(1)`強くお勧め**します。 理由は、`GetSample(1)` は基本的には "どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。 `GetSample(1)`を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
 >
 >
 
@@ -408,7 +399,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> 自動スケール対応のプールを作成する際には、**CreatePool** の呼び出しに _targetDedicatedNodes_ パラメーターや _targetLowPriorityNodes_ パラメーターを指定しないでください。 代わりに、プールの **AutoScaleEnabled** プロパティと **AutoScaleFormula** プロパティを指定します。 これらのプロパティの値は各種類のノードの目標数を決定します。 また、自動スケール対応のプールのサイズを手動で変更する場合 ([BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync] など)、最初にプールで自動スケールを**無効**にしてから、プールのサイズを変更する必要があります。
+> 自動スケール対応のプールを作成する際には、_CreatePool_ の呼び出しに _targetDedicatedNodes_ パラメーターや **targetLowPriorityNodes** パラメーターを指定しないでください。 代わりに、プールの **AutoScaleEnabled** プロパティと **AutoScaleFormula** プロパティを指定します。 これらのプロパティの値は各種類のノードの目標数を決定します。 また、自動スケール対応のプールのサイズを手動で変更する場合 ([BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync] など)、最初にプールで自動スケールを**無効**にしてから、プールのサイズを変更する必要があります。
 >
 >
 
@@ -486,7 +477,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
   * 自動スケールの数式と評価の間隔のいずれかを省略すると、引き続き Batch サービスではその設定の現在の値が使用されます。
 
 > [!NOTE]
-> .NET でプールを作成したときに **CreatePool** メソッドの *targetDedicatedNodes* パラメーターと *targetLowPriorityNodes* パラメーターの値を指定した、または別の言語の同等のパラメーターを指定した場合、自動スケールの数式が評価されるときにそれらの値は無視されます。
+> .NET でプールを作成したときに *CreatePool* メソッドの *targetDedicatedNodes* パラメーターと **targetLowPriorityNodes** パラメーターの値を指定した、または別の言語の同等のパラメーターを指定した場合、自動スケールの数式が評価されるときにそれらの値は無視されます。
 >
 >
 
@@ -654,7 +645,7 @@ Error:
 
 さまざまな方法でプールのコンピューティング リソースの量を調整する、いくつかの数式を見ていきます。
 
-### <a name="example-1-time-based-adjustment"></a>例 1:時間ベースの調整
+### <a name="example-1-time-based-adjustment"></a>例 1: 時間ベースの調整
 
 曜日や時間帯でプール サイズを調整する必要があるとします。 この例では、状況に応じてプールのノード数を増減させる方法を示します。
 
@@ -668,9 +659,9 @@ $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
-`$curTime` は、`TimeZoneInterval_Hour` と UTC オフセットの積に `time()` を追加することで、ローカル タイム ゾーンを反映するように調整できます。 たとえば、山地夏時間 (MDT) には `$curTime = time() + (-6 * TimeInterval_Hour);` を使用します。 オフセットは、夏時間の開始時と終了時に調整する必要があることに注意してください (該当する場合)。
+`$curTime` は、`time()` と UTC オフセットの積に `TimeZoneInterval_Hour` を追加することで、ローカル タイム ゾーンを反映するように調整できます。 たとえば、山地夏時間 (MDT) には `$curTime = time() + (-6 * TimeInterval_Hour);` を使用します。 オフセットは、夏時間の開始時と終了時に調整する必要があることに注意してください (該当する場合)。
 
-### <a name="example-2-task-based-adjustment"></a>例 2:タスクベースの調整
+### <a name="example-2-task-based-adjustment"></a>例 2: 時間ベースの調整
 
 この例では、プールのサイズはキューのタスク数に基づいて調整されます。 数式の文字列にはコメントと改行の両方を使用できます。
 

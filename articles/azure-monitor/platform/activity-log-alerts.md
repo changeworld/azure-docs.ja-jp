@@ -4,12 +4,12 @@ description: アクティビティ ログで特定のイベントが発生した
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669015"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137707"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
@@ -41,7 +41,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 - **[リソース グループ]** :既定では、アラート ルールは、[スコープ] での定義対象となっているのと同じリソース グループに保存されます。 ユーザーは、アラート ルールを格納するリソース グループを定義することもできます。
 - **[リソースの種類]** :アラートの対象として、Resource Manager で定義されている名前空間。
 - **[操作名]** : ロールベースのアクセス制御に使用される [Azure Resource Manager の操作](../../role-based-access-control/resource-provider-operations.md)名。 Azure Resource Manager に登録されていない操作は、アクティビティ ログ アラート ルールでは使用できません。
-- **レベル**:イベントの重大度レベル ([詳細]、[情報]、[警告]、[エラー]、[重大])。
+- **レベル**:イベントの重大度レベル (情報、警告、エラー、重大)。
 - **状態**: イベントの状態 (通常は [開始]、[失敗]、または [成功])。
 - **イベント開始者**: "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。
 

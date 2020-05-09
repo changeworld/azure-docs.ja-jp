@@ -7,15 +7,15 @@ metadata:
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: landing-page
-  author: MaggiePucciEvans
-  ms.author: evansma
+  author: marleva
+  ms.author: maevan
   ms.date: 04/02/2020
-  ms.openlocfilehash: 26e42d557449706b640115732fb695842f106dff
-  ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+  ms.openlocfilehash: 330dd34e19189dbcd641549f1cd42bf5c5cbaacb
+  ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/04/2020
-  ms.locfileid: "82778432"
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82983892"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -35,8 +35,8 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: SaaS アプリケーションのオファー発行ガイド
-      url: ./marketplace-saas-applications-technical-publishing-guide.md
+    - text: 新しい SaaS オファーを作成する
+      url: ./partner-center-portal/create-new-saas-offer.md
     - text: マーケティングのベスト プラクティス
       url: ./gtm-marketing-best-practices.md
     - text: クラウド ソリューション プロバイダー

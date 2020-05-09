@@ -1,7 +1,6 @@
 ---
-title: R の概要
-titleSuffix: ML Studio (classic) - Azure
-description: この R プログラミング チュートリアルは、Azure Machine Learning Studio (クラシック) と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を習得できるように作成されています。
+title: ML Studio (classic) での R の使用 - Azure
+description: この R プログラミング チュートリアルは、R での Azure Machine Learning Studio (classic) を使用した予測ソリューションの作成に必要な基本的な事柄を習得できるように作成されています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,21 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1b347707b3c656bd692a29f0fd748c1503be4fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218007"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209504"
 ---
-# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で R プログラミング言語の使用を開始する
+# <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-
-## <a name="introduction"></a>はじめに
-
 このチュートリアルは、R プログラミング言語を使用した Azure Machine Learning Studio (クラシック) の拡張を開始するのに役立ちます。 この R プログラミング チュートリアルに従って作業することで、Studio (クラシック) 内で R コードを作成、テスト、実行することができます。 チュートリアルでは、Studio (クラシック) で R 言語を使用し、包括的な予測ソリューションを作成します。  
 
 Azure Machine Learning Studio (クラシック) には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。 強力な R 言語は、分析の共通言語という特徴があります。 幸いにも Studio (クラシック) の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Studio (クラシック) のデプロイのスケーラビリティを容易に高めることができます。
@@ -1315,7 +1311,7 @@ RStudio はドキュメントが非常に整っているため、 ここでは�
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio (クラシック) で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
 * Emmanuel Paradis による『[R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)』は入門書として適しています。  
-* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables 他による ) では、もう少し詳しく説明されています。
+* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables  他による ) では、もう少し詳しく説明されています。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 

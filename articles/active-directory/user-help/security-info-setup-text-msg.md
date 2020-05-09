@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0525ee6d0ac5df61113e5a97c9812394323ffb3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32ec35094740f05a2c2a6f17ab5dafa29d30a0f1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062355"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628812"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>テキスト メッセージを検証方法として設定する
 
@@ -38,7 +38,7 @@ ms.locfileid: "77062355"
 
 ### <a name="to-set-up-text-messages"></a>テキスト メッセージを設定するには
 
-1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。
 
     ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 

@@ -38,6 +38,8 @@
           href: relay-authentication-and-authorization.md
         - name: 組み込みのセキュリティ制御
           href: service-bus-relay-security-controls.md
+        - name: ネットワークのセキュリティ
+          href: network-security.md
     - name: ハイブリッド接続のプロトコル
       href: relay-hybrid-connections-protocol.md
 - name: 操作方法
@@ -59,6 +61,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: セキュリティで保護
+      items:
+        - name: IP ファイアウォールの構成 (プレビュー)
+          href: ip-firewall-virtual-networks.md
+        - name: プライベート エンドポイントの構成 (プレビュー)
+          href: private-link-service.md
     - name: 管理および監視
       items:
         - name: Azure 監視による Azure Relay の監視

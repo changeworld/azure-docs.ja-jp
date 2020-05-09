@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024995"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187479"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple のセキュリティの概要
 
@@ -49,7 +49,7 @@ CloudSimple サービスの一環として、CloudSimple を利用するすべ�
 
 ### <a name="data-protection-for-data-that-is-required-to-move-through-public-networks"></a>公衆ネットワークを経由する必要のあるデータの保護
 
-公衆ネットワークを経由するデータは、プライベート クラウドに IPsec と SSL VPN トンネルを作成することで保護できます。 128 バイト AES や 256 バイト AES を含む一般的な暗号化方法がサポートされています。 転送中のデータ (認証、管理アクセス、顧客データを含む) は、標準の暗号化メカニズム (SSH、TLS 1.2、Secure RDP) で暗号化されます。 秘匿性の高い情報を転送する通信には、標準の暗号化メカニズムが使用されます。
+公衆ネットワークを経由するデータを保護するには、プライベート クラウド用の IPsec および TLS VPN トンネルを作成できます。 128 バイト AES や 256 バイト AES を含む一般的な暗号化方法がサポートされています。 転送中のデータ (認証、管理アクセス、顧客データを含む) は、標準の暗号化メカニズム (SSH、TLS 1.2、Secure RDP) で暗号化されます。 秘匿性の高い情報を転送する通信には、標準の暗号化メカニズムが使用されます。
 
 ### <a name="secure-disposal"></a>安全な廃棄
 
