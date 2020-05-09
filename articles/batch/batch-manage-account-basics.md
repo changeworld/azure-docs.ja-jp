@@ -1,25 +1,15 @@
 ---
-title: アカウントの管理 - Azure Batch | Microsoft Docs
+title: アカウントの管理
 description: Azure Batch アカウントを構成するものについて説明します
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ce0c612e3434249c0c7d078949b10e0b9f6b1f10
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397259"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116011"
 ---
 # <a name="manage-your-batch-account"></a>Batch アカウントの管理
 

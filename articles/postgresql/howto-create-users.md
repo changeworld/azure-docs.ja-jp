@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384349"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でユーザーを作成する
@@ -31,7 +31,7 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
 
 サーバーの管理者ユーザーは、azure_pg_admin ロールのメンバーです。 ただし、サーバー管理者アカウントは azure_superuser ロールの一部ではありません。 このサービスは管理対象の PaaS サービスなので、Microsoft だけがスーパー ユーザー ロールの一部になります。
 
-[PostgreSQL 製品のドキュメント](https://www.postgresql.org/docs/current/static/sql-createrole.html)で説明されているように、PostgreSQL エンジンは特権を使ってデータベース オブジェクトへのアクセスを制御します。 Azure Database for PostgreSQL でサーバー管理者ユーザーが付与される特権は、LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、NOREPLICATION です
+[PostgreSQL 製品のドキュメント](https://www.postgresql.org/docs/current/static/sql-createrole.html)で説明されているように、PostgreSQL エンジンは特権を使ってデータベース オブジェクトへのアクセスを制御します。 Azure Database for PostgreSQL では、サーバー管理者ユーザーには LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、NOREPLICATION の各特権が付与されます。
 
 サーバー管理者ユーザー アカウントを使うと、他のユーザーを作成して、azure_pg_admin ロールをそれらのユーザーに付与できます。 また、サーバー管理者アカウントを使って、個々のデータベースとスキーマに対するアクセス権を持つ特権の少ないユーザーとロールを作成することもできます。
 
@@ -84,6 +84,6 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
 
 ## <a name="next-steps"></a>次のステップ
 
-新しいユーザーのマシンの IP アドレスについてファイアウォールを開き、接続できるようにします。[Azure portal](howto-manage-firewall-using-portal.md) または [Azure CLI](howto-manage-firewall-using-cli.md) を使用して、Azure Database for PostgreSQL ファイアウォール規則の作成と管理を行います。
+新しいユーザーのマシンの IP アドレスに対してファイアウォールを開き、接続できるようにします。[Azure CLI](howto-manage-firewall-using-portal.md) または [Azure Portal を使って Azure Database for PostgreSQL のファイアウォール規則を作成して管理](howto-manage-firewall-using-cli.md)します。
 
 ユーザー アカウントの管理について詳しくは、[データベース ロールと特権](https://www.postgresql.org/docs/current/static/user-manag.html)、[GRANT の構文](https://www.postgresql.org/docs/current/static/sql-grant.html)、および[特権](https://www.postgresql.org/docs/current/static/ddl-priv.html)に関する PostgreSQL 製品ドキュメントをご覧ください。

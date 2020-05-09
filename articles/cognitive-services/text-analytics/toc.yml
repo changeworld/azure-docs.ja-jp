@@ -52,6 +52,8 @@
       href: language-support.md
     - name: テキスト オフセット
       href: concepts/text-offsets.md
+    - name: データ制限
+      href: concepts/data-limits.md
 - name: 操作方法ガイド
   items:
     - name: Text Analytics API を呼び出す
@@ -122,7 +124,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 試してみる
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

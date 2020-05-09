@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 4b8f91d7d9fc414ed0ae6387c25f71b1601e0b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e3e37347c8c23ccc9746bbb98ef6a822743848b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76043413"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790288"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Azure CLI を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "76043413"
      --public-ip-address-allocation static
    ```
 
-   パブリック IP アドレスが Standard SKU である必要がある場合は、上記のコマンドに `--public-ip-sku Standard` を追加します。 [パブリック IP アドレスの SKU](virtual-network-ip-addresses-overview-arm.md#sku) の詳細を確認してください。 パブリック Azure Load Balancer のバックエンド プールに仮想マシンを追加する場合は、仮想マシンのパブリック IP アドレスの SKU がロード バランサーのパブリック IP アドレスの SKU と一致する必要があります。 詳細については、[Azure Load Balancer](../load-balancer/concepts-limitations.md#skus) に関する記事を参照してください。
+   パブリック IP アドレスが Standard SKU である必要がある場合は、上記のコマンドに `--public-ip-sku Standard` を追加します。 [パブリック IP アドレスの SKU](virtual-network-ip-addresses-overview-arm.md#sku) の詳細を確認してください。 パブリック Azure Load Balancer のバックエンド プールに仮想マシンを追加する場合は、仮想マシンのパブリック IP アドレスの SKU がロード バランサーのパブリック IP アドレスの SKU と一致する必要があります。 詳細については、[Azure Load Balancer](../load-balancer/skus.md) に関する記事を参照してください。
 
 4. [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用して、割り当てられたパブリック IP アドレスを表示し、それが静的な Basic SKU アドレスとして作成されたことを確認します。
 

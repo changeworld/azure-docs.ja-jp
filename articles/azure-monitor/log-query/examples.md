@@ -7,14 +7,14 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480285"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
-この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
+この記事には、[Kusto クエリ言語](log-query-overview.md)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](/azure/kusto/query/)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
 
 これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Azure Monitor を使用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)を行ってください。
 
@@ -229,7 +229,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>アクティビティ ID ごとのセキュリティ イベントのカウント
 
 
-次の例は、**Activity** 列(\<ID\>-\<Name\>) の固定された構造に依存します。
+次の例は、**Activity** 列 (\<ID\>-\<Name\>) の固定された構造に依存します。
 これは、**Activity** 値を解析して 2 つの新しい列にし、それぞれの **activityID** の発生回数をカウントします。
 
 ```Kusto
@@ -241,7 +241,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>アクセス許可に関連するセキュリティ イベントのカウント
-次の例は、**Activity** 列に用語 _Permissions_ が完全に含まれる **securityEvent** レコードの数を表示します。 クエリは、過去 30 分以内に作成されたレコードに適用されます。
+次の例は、**Activity** 列に用語 **Permissions** が完全に含まれる _securityEvent_ レコードの数を表示します。 クエリは、過去 30 分以内に作成されたレコードに適用されます。
 
 ```Kusto
 SecurityEvent
@@ -270,7 +270,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>アクティビティ名と ID の解析
-以下の 2 つの例は、**Activity** 列(\<ID\>-\<Name\>) の固定された構造に依存します。 最初の例では、2 つの新しい列 **activityID** と **activityDesc** に値を割り当てるために、**parse** 演算子を使用します。
+以下の 2 つの例は、**Activity** 列 (\<ID\>-\<Name\>) の固定された構造に依存します。 最初の例では、2 つの新しい列 **activityID** と **activityDesc** に値を割り当てるために、**parse** 演算子を使用します。
 
 ```Kusto
 SecurityEvent
