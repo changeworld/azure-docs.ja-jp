@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81264951"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607284"
 ---
 # <a name="create-an-fslogix-profile-container-with-azure-files"></a>Azure Files を使用して FSLogix プロファイル コンテナーを作成する
 
@@ -219,7 +219,7 @@ FSLogix プロファイル コンテナーを構成するには以下の手順�
 
 プロファイルを確認するには以下の手順に従ってください。
 
-1. ブラウザーを開き、[Windows Virtual Desktop の Web クライアント](https://rdweb.wvd.microsoft.com/webclient/index.html)に移動します。
+1. ブラウザーを開き、[Windows Virtual Desktop の Web クライアント](https://rdweb.wvd.microsoft.com/arm/webclient)に移動します。
 
 2. リモート デスクトップ グループに割り当てられたユーザー アカウントを使用してサインインします。
 

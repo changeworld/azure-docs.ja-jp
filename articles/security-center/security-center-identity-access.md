@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
 ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481961"
 ---
 # <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
@@ -60,7 +60,7 @@ MFA を有効にするには、[Azure Active Directory (AD) テナントのア�
 
 - AD の Premium Edition を使用している場合は、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を使用して MFA を有効にします。
 
-- AD Free Edition のユーザーは、[AD のドキュメント](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)に記載されているように、Azure Active Directory 内で**セキュリティの既定値群**を有効にできますが、MFA を有効にするための Security Center 推奨事項は引き続き表示されます。
+- AD Free Edition のユーザーは、**AD のドキュメント**に記載されているように、Azure Active Directory 内で[セキュリティの既定値群](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)を有効にできますが、MFA を有効にするための Security Center 推奨事項は引き続き表示されます。
 
 
 ## <a name="next-steps"></a>次のステップ

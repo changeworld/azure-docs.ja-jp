@@ -4,18 +4,18 @@ description: Azure Kubernetes Service (AKS) クラスターをアップグレー
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 183e0a85f65d24dc7133307391931bea754a456d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 7e9a47b7bda4cdb0ff6f1983bc884f7441a26d9b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632604"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207974"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
 AKS クラスターのライフサイクルの一環として、最新の Kubernetes バージョンへのアップグレードが必要になることはよくあります。 最新の Kubernetes セキュリティ リリースを適用するか、アップグレードして最新の機能を入手することが重要です。 この記事では、AKS クラスター内のマスター コンポーネントまたは 1 つの既定のノード プールをアップグレードする方法について説明します。
 
-複数のノード プールまたは Windows Server ノード (現在 AKS でプレビュー段階) を使用する AKS クラスターについては、[AKS 内のノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
+複数のノード プールを使用する AKS クラスターについては、[AKS でノード プールをアップグレードする][nodepool-upgrade]方法に関するセクションを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
