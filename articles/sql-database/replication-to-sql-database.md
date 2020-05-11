@@ -23,7 +23,7 @@ ms.locfileid: "82231647"
 Azure SQL Database の [SQL Database サーバー](sql-database-servers.md)で単一またはプールされたデータベースに対して SQL Server レプリケーションを構成できます。  
 
 > [!NOTE]
-> この記事では、Azure SQL Database での[のトランザクション レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のデータベースの完全な読み取り可能レプリカを作成するための Azure SQL Database の機能である、[アクティブ geo レプリケーション](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)とは無関係です。
+> この記事では、Azure SQL Database での[トランザクション レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のデータベースの完全な読み取り可能レプリカを作成するための Azure SQL Database の機能である、[アクティブ geo レプリケーション](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)とは無関係です。
 
 ## <a name="supported-configurations"></a>サポートされている構成
   
@@ -42,7 +42,7 @@ Azure SQL Database の [SQL Database サーバー](sql-database-servers.md)で�
 - SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) または [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
 
 > [!NOTE]
-> サポートされていないバージョンを使用してレプリケーションを構成しようとすると、エラー番号 MSSQL_REPL20084 (プロセスはサブスクライバーに接続できませんでした) および MSSQL_REPL40532 (ログインによって要求されたサーバー \<name > を開くことができません。 ログインに失敗しました) のエラーが発生する可能性があります。  
+> サポートされていないバージョンを使用してレプリケーションを構成しようとすると、エラー番号 MSSQL_REPL20084 (プロセスはサブスクライバーに接続できませんでした) および MSSQL_REPL40532 (ログインによって要求されたサーバー \<name> を開くことができません。 ログインに失敗しました) のエラーが発生する可能性があります。  
 
 Azure SQL Database のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用する必要があります。  
 
