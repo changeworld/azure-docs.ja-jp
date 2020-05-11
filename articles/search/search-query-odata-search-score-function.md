@@ -32,7 +32,7 @@ ms.locfileid: "74113143"
 
 ## <a name="syntax"></a>構文
 
-**$orderby** の `search.score` の構文は `search.score()` です。 関数 `search.score` には、いかなるパラメーターも取得されません。 これは、 **$orderby** パラメーター内の他の句と同様に、ascまたはdescの並べ替え並べ替え順序指定子と一緒に使用できます。 これは並べ替え条件のリスト内の任意の場所に配置できます。
+**$orderby** の `search.score` の構文は `search.score()` です。 関数 `search.score` には、いかなるパラメーターも取得されません。 これは、 **$orderby** パラメーター内の他の句と同様に、`asc` または `desc`の並べ替え順序指定子と一緒に使用できます。 これは並べ替え条件のリスト内の任意の場所に配置できます。
 
 ## <a name="example"></a>例
 
