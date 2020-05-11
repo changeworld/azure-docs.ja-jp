@@ -68,7 +68,7 @@
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: ディレクトリの管理
       items:
-        - name: ディレクトリの管理
+        - name: Azure AD 組織
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: ドメイン名を管理する
           href: domains-manage.md
@@ -84,7 +84,7 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: グループの管理
       items:
-        - name: Azure AD グループを使用したアクセスの管理
+        - name: グループでのアクセスの管理
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: グループの作成 (Azure portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -134,6 +134,8 @@
           href: groups-assign-sensitivity-labels.md
     - name: ライセンスを割り当てる
       items:
+        - name: ユーザーへのライセンスの割り当て
+          href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: グループへのライセンスの割り当て
           href: licensing-groups-assign.md
         - name: グループ ライセンスの問題の解決

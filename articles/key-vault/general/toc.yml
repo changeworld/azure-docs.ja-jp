@@ -14,8 +14,13 @@
           href: tutorial-net-windows-virtual-machine.md
         - name: Python で Windows 仮想マシンを使用して Azure Key Vault を使用する
           href: tutorial-python-windows-virtual-machine.md
-    - name: .NET で Azure Web アプリを使用して Azure Key Vault を使用する
+    - name: マネージ ID と .NET を使用した Web アプリへの Key Vault の接続
       href: tutorial-net-create-vault-azure-web-app.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 基本的な概念

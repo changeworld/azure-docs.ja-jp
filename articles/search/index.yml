@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 02/25/2020
-  ms.openlocfilehash: fbfa0b08fbe8230253c9b1d8fca835538f2884ca
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ab3352dbd6631c0c86656764dac748eac10fa79b
+  ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78205961"
+  ms.lasthandoff: 05/07/2020
+  ms.locfileid: "82890088"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -30,8 +30,8 @@ landingContent:
       url: search-indexer-overview.md
   - linkListType: video
     links:
-    - text: Cognitive Search とは (1 分 27 秒)
-      url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+    - text: 検索ソリューションで AI を使用する
+      url: https://youtu.be/M4Rf1s0WcWQ?t=19
 - title: Azure データのインデックス作成
   linkLists:
   - linkListType: how-to-guide

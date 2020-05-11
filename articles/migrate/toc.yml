@@ -92,6 +92,8 @@
       href: create-manage-projects.md
     - name: ツールの初回追加
       href: how-to-add-tool-first-time.md
+    - name: ISV ツール/Movere を使用するための準備
+      href: prepare-isv-movere.md
     - name: 評価ツールの追加
       href: how-to-assess.md
     - name: Azure Migrate アプライアンスのデプロイ

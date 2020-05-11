@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: asudbring
   ms.author: allensu
-  ms.date: 12/05/2019
-  ms.openlocfilehash: 46afc139f240b46b9512360e79411a5bc8b03ec4
-  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+  ms.date: 05/07/2020
+  ms.openlocfilehash: 73d36c795ca4be905ac6e9bab31cfe00374bfa13
+  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/03/2020
-  ms.locfileid: "82732990"
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82930626"
 landingContent:
 - title: Load Balancer について
   linkLists:
@@ -28,11 +28,13 @@ landingContent:
       url: concepts.md
     - text: Load Balancer のコンポーネント
       url: components.md
+    - text: Load Balancer の SKU
+      url: skus.md
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: VM の負荷を分散する Standard Load Balancer を作成する
+    - text: VM の負荷を分散する Load Balancer を作成する
       url: quickstart-load-balancer-standard-public-portal.md
   - linkListType: tutorial
     links:
@@ -54,25 +56,27 @@ landingContent:
       url: load-balancer-multivip-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
+    - text: Load Balancer の負荷分散とアウトバウンドの規則を構成する (Azure CLI)
       url: configure-load-balancer-outbound-cli.md
-    - text: PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーを作成する
+    - text: IPv6 を使用してインターネットに接続するロード バランサーを作成する (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: 分散モードを構成する
       url: load-balancer-distribution-mode.md
+    - text: Basic から Standard へのアップグレード
+      url: upgrade-basic-standard.md
 - title: 配置
   linkLists:
   - linkListType: concept
     links:
     - text: Standard Load Balancer と可用性ゾーン
       url: load-balancer-standard-availability-zones.md
-    - text: アイドル時に TCP リセットを使用するロード バランサー (パブリック プレビュー)
+    - text: アイドル時に TCP リセットを使用するロード バランサー
       url: load-balancer-tcp-reset.md
   - linkListType: how-to-guide
     links:
-    - text: ゾーン冗長フロントエンドを使用して Standard ロード バランサーを作成する
+    - text: ゾーン冗長フロントエンドを使用して Load Balancer を作成する
       url: load-balancer-get-started-internet-az-portal.md
-    - text: ゾーン フロントエンドを使用して Standard ロード バランサーを作成する
+    - text: ゾーンのフロントエンドを使用して Load Balancer を作成する
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: 複数の IP 構成での負荷分散
       url: load-balancer-multiple-ip.md
@@ -94,3 +98,7 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+    - text: ARM テンプレート
+      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+    - text: よく寄せられる Load Balancer の質問
+      url: load-balancer-faqs.md

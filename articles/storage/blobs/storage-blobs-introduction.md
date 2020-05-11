@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f28b660a2afc97cf9faf0f601e247a97e99098cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176671"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853367"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -65,7 +65,7 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 
 既存のデータを Blob Storage に移行するためのソリューションは多数存在します。
 
-- **AzCopy** は Windows と Linux 用の使いやすいコマンド ライン ツールであり、Blob Storage 間、コンテナー間、またはストレージ アカウント間でデータをコピーします。 AzCopy の詳細については、「[AzCopy v10 (プレビュー) を使用してデータを転送する](../common/storage-use-azcopy-v10.md)」をご覧ください。
+- **AzCopy** は Windows と Linux 用の使いやすいコマンド ライン ツールであり、Blob Storage 間、コンテナー間、またはストレージ アカウント間でデータをコピーします。 AzCopy の詳細については、「[AzCopy v10 を使用してデータを転送する](../common/storage-use-azcopy-v10.md)」をご覧ください。
 - **Azure Storage Data Movement Library** は、Azure Storage サービス間でデータを移動するための .NET ライブラリです。 AzCopy ユーティリティは、Data Movement Library を使用して構築されています。 詳細については、Data Movement Library の[参照ドキュメント](/dotnet/api/microsoft.azure.storage.datamovement)をご覧ください。
 - **Azure Data Factory** では、Azure リソースのアカウント キー、Shared Access Signature、サービス プリンシパル、またはマネージド ID を使用した BLOB Storage 間のデータのコピーをサポートしています。 詳しくは、「[Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 - **blobfuse** は Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Linux ファイル システムでは、blobfuse を使用して、お客様のストレージ アカウント内の既存のブロック BLOB データにアクセスできます。 詳しくは、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)」をご覧ください。

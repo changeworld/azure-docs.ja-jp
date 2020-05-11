@@ -27,10 +27,13 @@
   items:
     - name: Azure Cache for Redis のサンプル
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Security
@@ -63,7 +66,7 @@
           href: cache-migrate-to-redis.md
     - name: 自動化
       items:
-        - name: Azure PowerShell でデプロイして管理する
+        - name: Azure PowerShell を使用したデプロイと管理
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Azure CLI でデプロイして管理する
           href: cli-samples.md
@@ -130,7 +133,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis クライアント
       href: 'https://redis.io/clients'
     - name: Redis コマンド

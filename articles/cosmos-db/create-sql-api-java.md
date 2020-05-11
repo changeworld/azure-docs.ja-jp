@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 489f241453436190213b99cb4e7be0688a8b6237
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214940"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858144"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "79214940"
 
 ## <a name="introductory-notes"></a>概要
 
-"*Cosmos DB アカウントの構造:* " API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
+"*Cosmos DB アカウントの構造:* "  API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
 
 ![Azure Cosmos アカウントのエンティティ](./media/databases-containers-items/cosmos-entities.png)
 
@@ -81,6 +81,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[アプリの実行](#run-the-app)」に進んでください。 
 
+
+# <a name="sync-api"></a>[同期 API](#tab/sync)
+
 ### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>同期 API を使用してデータベース リソースを管理する
 
 * `CosmosClient` の初期化。 `CosmosClient` は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
@@ -106,6 +109,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 * `queryItems` メソッドを使用して JSON に対する SQL クエリを実行します。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+# <a name="async-api"></a>[非同期 API](#tab/async)
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>非同期 API を使用してデータベース リソースを管理する
 
@@ -134,6 +139,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 * 同期 API と同様、JSON に対する SQL クエリは、`queryItems` メソッドを使用して実行されます。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
+
+---
 
 ## <a name="run-the-app"></a>アプリを実行する
 

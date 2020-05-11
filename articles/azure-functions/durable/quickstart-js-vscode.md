@@ -3,20 +3,18 @@ title: JavaScript を使用して Azure で最初の Durable Functions を作成
 description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
 author: anthonychu
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80257650"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889666"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる [Azure Functions](../functions-overview.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 この記事では、Visual Studio Code Azure Functions 拡張機能を使用して、"hello world" Durable Functions をローカルで作成してテストする方法について説明します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。
 
@@ -50,7 +48,7 @@ ms.locfileid: "80257650"
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | Value | 説明 |
+    | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
     | Select a language for your function app project (関数アプリ プロジェクトの言語を選択してください) | JavaScript | ローカル Node.js 関数プロジェクトを作成します。 |
     | Select a version (バージョンを選択してください) | Azure Functions v3 | このオプションが表示されるのは、Core Tools がまだインストールされていない場合だけです。 その場合、アプリの初回実行時に Core Tools がインストールされます。 |
@@ -61,7 +59,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
 また、ルート フォルダーには、package.json ファイルが作成されます。
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Azure Functions V2 互換モードを有効にする
+### <a name="enable-compatibility-mode"></a>互換モードを有効にする
 
 現時点では、JavaScript Durable Functions で Azure Functions V2 互換モードを有効にする必要があります。
 
@@ -104,7 +102,7 @@ Node.js 関数アプリで Durable Functions を使用して作業するには�
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | Value | 説明 |
+    | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
     | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions オーケストレーター | Durable Functions オーケストレーションを作成します |
     | Provide a function name (関数名を指定してください) | HelloOrchestrator | 持続的な関数の名前 |
@@ -119,7 +117,7 @@ Node.js 関数アプリで Durable Functions を使用して作業するには�
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | Value | 説明 |
+    | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
     | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions のアクティビティ | アクティビティ関数を作成する |
     | Provide a function name (関数名を指定してください) | こんにちは | アクティビティ関数の名前 |
@@ -134,7 +132,7 @@ Node.js 関数アプリで Durable Functions を使用して作業するには�
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | Value | 説明 |
+    | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
     | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions HTTP スターター | HTTP スターター関数を作成する |
     | Provide a function name (関数名を指定してください) | DurableFunctionsHttpStart | アクティビティ関数の名前 |
@@ -159,7 +157,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 1. プロンプトに従って次の情報を入力し、Azure で新しいストレージ アカウントを作成します。
 
-    | Prompt | Value | 説明 |
+    | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
     | サブスクリプションの選択 | *<お使いのサブスクリプションの名前>* | Azure サブスクリプションを選択します。 |
     | Select a storage account (ストレージ アカウントを選択する) | 新しいストレージ アカウントの作成 |  |
@@ -204,7 +202,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Azure Functions V2 互換モードを有効にする
+### <a name="enable-compatibility-mode"></a>互換モードを有効にする
 
 ローカルで有効にしたのと同じ Azure Functions V2 互換性が Azure のアプリで有効になっている必要があります。
 

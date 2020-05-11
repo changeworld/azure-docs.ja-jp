@@ -1,23 +1,23 @@
 ---
-title: Azure Application Insights とは何か | Microsoft Docs
+title: Azure Application Insights とは何か  | Microsoft Docs
 description: ライブ Web アプリケーションのアプリケーション パフォーマンス管理と使用状況を追跡します。  問題の検出、トリアージ、診断を行い、ユーザーがアプリをどのように使用しているかを理解します。
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 2dbebf13b8674ba4aa0c578e1138a5e279b54355
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536932"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891740"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
-Application Insights は [Azure Monitor](../overview.md) の機能であり、開発者や DevOps プロフェッショナル向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中のアプリケーションを監視することができます。 パフォーマンスの異常を自動的に検出し、組み込まれている強力な分析ツールを使用して、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
+Application Insights は [Azure Monitor](../overview.md) の機能であり、開発者や DevOps プロフェッショナル向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中のアプリケーションを監視することができます。 パフォーマンスの異常を自動的に検出し、組み込まれている強力な分析ツールを使用して、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java、Python などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
 
 ## <a name="how-does-application-insights-work"></a>Application Insights のしくみ
-小さなインストルメンテーション パッケージをアプリケーションにインストールし、Application Insights リソースを Microsoft Azure ポータルに設定します。 このインストルメンテーションがアプリを監視し、テレメトリ データを Azure Monitor に送信します (アプリケーションの実行場所は問いません。Azure でホストされている必要はありません)。
+アプリケーションに小規模なインストルメンテーション パッケージ (SDK) をインストールするか、[サポートされている](../../azure-monitor/app/platforms.md)場合は Application Insights をコードレスで有効にします。 インストルメンテーションによってアプリが監視され、インストルメンテーション キーと呼ばれる一意の GUID を使用して、テレメトリ データが Azure Application Insights リソースに転送されます。
 
-Web サービス アプリケーションだけでなく、バックグラウンド コンポーネントや Web ページ内の JavaScript 自体もインストルメント化することができます。 
+Web サービス アプリケーションだけでなく、バックグラウンド コンポーネントや Web ページ内の JavaScript 自体もインストルメント化することができます。 アプリケーションおよびそのコンポーネントの実行場所は問いません。Azure でホストされている必要はありません。
 
 ![アプリ内の Application Insights のインストルメンテーションが Application Insights のリソースにテレメトリを送信します。](./media/app-insights-overview/diagram.png)
 
@@ -62,7 +62,7 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 | [**スナップショット デバッガー**](../../azure-monitor/app/snapshot-debugger.md)<br/>ライブの操作からサンプリングされたスナップショットをパラメーター値でデバッグします。|![Visual studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>使用状況のメトリックをその他のビジネス インテリジェンスと統合します。| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>メトリックと生データのクエリを実行するコードを記述します。| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**連続エクスポート**](../../azure-monitor/app/export-telemetry.md)<br/>生データが届いたらすぐにストレージに一括エクスポートします。 |![[エクスポート]](./media/app-insights-overview/export-tn.png) |
+| [**連続エクスポート**](../../azure-monitor/app/export-telemetry.md)<br/>生データが届いたらすぐにストレージに一括エクスポートします。 |![エクスポート](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Application Insights の使用方法
 
@@ -131,7 +131,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * ご提案:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
-* ブログ:
+* ブログ: 
   * [Application Insights のブログ](https://azure.microsoft.com/blog/tag/application-insights)
 
 <!--Link references-->

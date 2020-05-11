@@ -3,12 +3,12 @@ title: CAF の基本ブループリント サンプルの概要
 description: Cloud Adoption Framework for Azure (CAF) 基盤ブループリント サンプルの概要とアーキテクチャ。
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 1f14b4d4811b9bdcb64f3860b2cf25b82825d5c4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458473"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901298"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルの概要
 
@@ -31,7 +31,7 @@ CAF 基盤ブループリント サンプルは、クラウド資産を管理す
   - リソースとリソース グループに許可されている Azure リージョン
   - 許可されている Storage アカウントの SKU (デプロイ時に選択)
   - 許可されている Azure VM SKU (デプロイ時に選択)
-  - Network Watch のデプロイを要求する 
+  - Network Watcher のデプロイを要求する 
   - Azure Storage アカウントのセキュリティで保護された転送の暗号化を要求する
   - リソースを種類ごとに拒否する (デプロイ時に選択)  
 - イニシアティブ

@@ -127,6 +127,8 @@
               items:
                 - name: 脆弱性評価
                   href: sql-vulnerability-assessment.md
+                - name: 脆弱性評価のルール
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: ファイアウォールと VNet の内側に VA スキャンを格納する
                   href: sql-database-vulnerability-assessment-storage.md
             - name: 高度な脅威保護

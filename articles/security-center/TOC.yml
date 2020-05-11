@@ -37,6 +37,11 @@
       href: tutorial-security-incident.md
     - name: 規制に対するコンプライアンスの向上
       href: security-center-compliance-dashboard.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: セキュリティ スコア
@@ -107,7 +112,7 @@
           href: custom-security-policies.md
         - name: Azure Policy REST API を使用したポリシーの管理
           href: configure-security-policy-azure-policy.md
-    - name: 動的コンプライアンス パッケージの追加
+    - name: コンプライアンス ダッシュボードの標準を選択する
       href: update-regulatory-compliance-packages.md
     - name: 情報の保護ポリシーをカスタマイズする
       href: security-center-info-protection-policy.md

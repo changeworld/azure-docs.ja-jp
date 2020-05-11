@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:PowerShell を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と PowerShell を使用して、成果物を作成、定義、デプロイします。
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676587"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864115"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!NOTE]
 > PowerShell を使用するときは、最初に "_ブループリント_" オブジェクトを作成します。 追加する各 "_成果物_" でパラメーターを持つものについては、最初の "_ブループリント_" でパラメーターを事前に定義する必要があります。
 
-1. 初期 "_ブループリント_" オブジェクトを作成します。 **BlueprintFile** パラメーターは、JSON ファイルを引数として受け取ります。ブループリントに関するプロパティ、作成するリソース グループ、ブループリント レベルのすべてのパラメーターがこの JSON ファイルに含まれています。 これらのパラメーターは、割り当ての間に設定されて、後のステップで追加される成果物によって使用されます。
+1. 初期 "_ブループリント_" オブジェクトを作成します。 **BlueprintFile** パラメーターは、ブループリントに関するプロパティ、作成するリソース グループ、ブループリント レベルのすべてのパラメーターが含まれている JSON ファイルを受け取ります。 これらのパラメーターは、割り当ての間に設定されて、後のステップで追加される成果物によって使用されます。
 
    - JSON ファイル - blueprint.json
 

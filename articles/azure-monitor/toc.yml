@@ -62,6 +62,9 @@
   items:
     - name: Azure PowerShell
       href: platform/powershell-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 何を監視できるか
@@ -109,8 +112,6 @@
           href: platform/alerts-unified-log.md
         - name: アクティビティ ログ アラート
           href: platform/activity-log-alerts.md
-        - name: 変更の分析
-          href: app/change-analysis.md
     - name: データの視覚化
       href: visualizations.md
     - name: パートナー統合
@@ -442,8 +443,6 @@
               href: app/custom-data-correlation.md
             - name: Connection strings
               href: app/sdk-connection-string.md
-            - name: Connection strings
-              href: app/sdk-connection-string.md
             - name: GetMetric
               displayname: 'get metric, custom metrics, metrics, TrackMetric'
               href: app/get-metric.md
@@ -527,6 +526,8 @@
               href: platform/resource-logs-blob-format.md
         - name: Event Hubs へのデータのストリーム配信
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: 変更の分析
+          href: app/change-analysis.md
     - name: VM とゲスト OS の監視
       items:
         - name: Azure 仮想マシンの監視
@@ -750,8 +751,6 @@
           href: insights/containers.md
     - name: その他のリソースの監視
       items:
-        - name: Key Vault
-          href: insights/key-vault-insights-overview.md
         - name: ストレージ
           items:
             - name: Azure Monitor for Storage
@@ -927,6 +926,10 @@
               href: platform/workbooks-data-sources.md
             - name: Azure Resource Manager を使用したデプロイ
               href: platform/workbooks-automate.md
+            - name: グループ
+              href: platform/workbooks-groups.md
+            - name: JSONPath を使用して JSON データを変換する
+              href: platform/workbooks-jsonpath.md
             - name: 構成
               items:
                 - name: アクセス制御

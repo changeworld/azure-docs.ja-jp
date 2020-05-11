@@ -130,11 +130,13 @@
       href: reference-powershell-module.md
 - name: リソース
   items:
+    - name: Azure Lab Services のブログ
+      href: 'https://aka.ms/azlabs-blog'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/lab-services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
     - name: よく寄せられる質問
       href: classroom-labs-faq.md
