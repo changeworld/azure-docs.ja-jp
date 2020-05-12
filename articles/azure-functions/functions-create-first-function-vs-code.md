@@ -3,26 +3,44 @@ title: Visual Studio Code を使用して Azure で初めての関数を作成�
 description: Visual Studio Code で Azure Functions 拡張機能を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seo
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 08575164334db965a9e5592b761a06205208de9e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 64c2e813743a772692efcb1d966c8ab7b52cc66d
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732769"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628182"
 ---
-# <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して Azure Functions プロジェクトを作成する
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して Azure で関数を作成する
 
-この記事では、HTTP 要求に応答する関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。 
-
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-また、この記事の [CLI ベースのバージョン](functions-create-first-azure-function-azure-cli.md)もあります。
+::: zone pivot="programming-language-csharp"  
+この記事では、Visual Studio Code を使用して、HTTP 要求に応答する C# クラス ライブラリベースの関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 
 ::: zone-end  
+::: zone pivot="programming-language-javascript"
+この記事では、HTTP 要求に応答する JavaScript 関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 
+::: zone-end
+::: zone pivot="programming-language-typescript"
+この記事では、HTTP 要求に応答する TypeScript 関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+この記事では、HTTP 要求に応答する PowerShell 関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 
+::: zone-end  
+::: zone pivot="programming-language-python" 
+この記事では、HTTP 要求に応答する Python 関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 
+::: zone-end  
+::: zone pivot="programming-language-java" 
+この記事では、HTTP 要求に応答する Java 関数を、Visual Studio Code を使用して作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 
+::: zone-end
 
+このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。 
+
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+また、この記事の [CLI ベースのバージョン](functions-create-first-azure-function-azure-cli.md)もあります。
+::: zone-end
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> VS Code が好みの開発ツールでない場合は、[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、[Gradle](/azure/azure-functions/functions-create-first-java-gradle)、および [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) を使用する Java 開発者向けの同様のチュートリアルを確認してください。
+> Visual Studio Code が好みの開発ツールでない場合は、[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、[Gradle](/azure/azure-functions/functions-create-first-java-gradle)、および [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) を使用する Java 開発者向けの同様のチュートリアルを確認してください。
 ::: zone-end  
 
 ## <a name="configure-your-environment"></a>環境を構成する

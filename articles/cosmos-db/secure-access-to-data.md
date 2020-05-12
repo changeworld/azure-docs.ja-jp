@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227267"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208722"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 
@@ -43,7 +43,15 @@ Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つ�
 
 ![Azure Portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティ](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-マスター キーのローテーション プロセスは単純です。 Azure Portal に移動し、セカンダリ キーを取得します。次に、アプリケーションでプライマリ キーをセカンダリ キーに置き換えます。その後、Azure Portal でプライマリ キーをローテーションします。
+### <a name="key-rotation"></a>キーのローテーション<a id="key-rotation"></a>
+
+マスター キーのローテーション プロセスは単純です。 
+
+1. Azure portal に移動してセカンダリ キーを取得します。
+2. アプリケーションで、プライマリ キーをセカンダリ キーに置き換えます。 全デプロイにわたるすべての Cosmos DB クライアントが直ちに再起動され、更新されたキーの使用が開始されることを確認します。
+3. Azure portal でプライマリ キーをローテーションします。
+4. 新しいプライマリ キーがすべてのリソースに対して動作することを検証します。 キーのローテーション プロセスには、Cosmos DB アカウントのサイズに応じて、1 分未満から数時間かかる場合があります。
+5. セカンダリ キーを新しいプライマリ キーに置き換えます。
 
 ![Azure Portal でのマスター キーのローテーション - NoSQL データベースのセキュリティ](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
@@ -113,8 +121,8 @@ User user = await database.CreateUserAsync("User 1");
 
 アクセス許可リソースはユーザーに関連付けられ、コンテナーおよびパーティション キー レベルで割り当てられます。 各ユーザーには、0 個以上のアクセス許可を含めることができます。 アクセス許可リソースによって、ユーザーが特定のパーティション キー内の特定のコンテナーまたはデータにアクセスするときに必要なセキュリティ トークンへのアクセスが提供されます。 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
-- All: ユーザーはリソースに対して完全なアクセス許可を持ちます。
-- Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
+- All:ユーザーはリソースに対して完全なアクセス許可を持ちます。
+- Read:ユーザーは、リソースの内容の読み取りのみを行えますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 > [!NOTE]
 > ストアド プロシージャを実行するには、ストアド プロシージャを実行するコンテナーの All 権限を持つ必要があります。

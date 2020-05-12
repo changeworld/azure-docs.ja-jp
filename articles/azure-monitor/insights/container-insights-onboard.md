@@ -2,13 +2,13 @@
 title: Azure Monitor for containers を有効にする方法 | Microsoft Docs
 description: この記事では、コンテナーがどのように動作し、パフォーマンスに関してどのような問題が特定されているかを把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234495"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185933"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
@@ -20,7 +20,9 @@ ms.locfileid: "79234495"
 
 - [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) またはオンプレミスでホストされた自己管理の Kubernetes クラスター。
 
-- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3.x と 4.x
+
+- [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4.x
 
 次のサポートされている方法を使用して、新規または 1 つ以上の既存の Kubernetes のデプロイに対してコンテナー用の Azure Monitor 有効にできます。
 
@@ -62,8 +64,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 |エージェントのリソース|Port |
 |--------------|------|
 | *.ods.opinsights.azure.com | 443 |  
-| *.oms.opinsights.azure.com | 443 | 
-| *.blob.core.windows.net | 443 |
+| *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
 | *.microsoftonline.com | 443 |
 | *.monitoring.azure.com | 443 |
@@ -75,7 +76,6 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 |--------------|------|-------------|
 | *.ods.opinsights.azure.cn | 443 | データ インジェスト |
 | *.oms.opinsights.azure.cn | 443 | OMS のオンボード |
-| *.blob.core.windows.net | 443 | 送信接続の監視に使用されます。 |
 | microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
 | dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用したエージェント テレメトリの場合。 |
 
@@ -85,7 +85,6 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | データ インジェスト |
 | *.oms.opinsights.azure.us | 443 | OMS のオンボード |
-| *.blob.core.windows.net | 443 | 送信接続の監視に使用されます。 |
 | microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
 | dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用したエージェント テレメトリの場合。 |
 

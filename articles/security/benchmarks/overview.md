@@ -7,13 +7,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
-ms.custom: security-baselines
-ms.openlocfilehash: 2f4b034948605b0a53a0320863608d284719a96d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587534"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606876"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Azure セキュリティ ベンチマークの概要
 
@@ -46,10 +46,10 @@ Azure セキュリティ ベンチマークでは、次のコントロールが�
 - **責任**: お客様またはサービス プロバイダー (またはその両方) が、この推奨事項の実装に責任があるかどうか。 セキュリティ責任は、パブリック クラウドで共有されます。 一部のセキュリティ コントロールはクラウド サービス プロバイダーのみが使用できるため、プロバイダーはそれらに対処する必要があります。 これらは一般的な見解です。個々のサービスによっては、責任が Azure セキュリティ ベンチマークに記載されているものと異なることがあります。 これらの違いについては、個々のサービスのベースラインの推奨事項で説明されています。 
 - **[詳細]** :推奨事項の根拠と、その実装方法に関するガイダンスへのリンク。 推奨事項が Azure Security Center によってサポートされている場合は、その情報も一覧表示されます。
 
-Azure セキュリティ ベンチマークの取り組みに関するフィードバックと積極的な参加をお待ちしております。 ベンチマーク チームに直接情報を提供したい場合は、[https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) のフォームに入力してください。
+Azure セキュリティ ベンチマークの取り組みに関するフィードバックと積極的な参加をお待ちしております。 Azure セキュリティ ベンチマーク チームに直接情報を提供したい場合は、[https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) のフォームに入力してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- 最初セキュリティ コントロールを参照してください。[ネットワークのセキュリティ](security-control-network-security.md)
+- 最初のセキュリティ コントロール: [ネットワーク セキュリティ](security-control-network-security.md)に関するページを参照する
 - 「[Azure セキュリティ ベンチマークの概要](introduction.md)」を読む
 - [Azure セキュリティ ベンチマーク v1 の Excel スプレッドシート](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)をダウンロードする

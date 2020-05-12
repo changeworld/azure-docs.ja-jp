@@ -32,6 +32,11 @@
               href: container-registry-tutorial-deploy-app.md
             - name: 3 - Web アプリを更新する
               href: container-registry-tutorial-deploy-update.md
+    - name: サンプル
+      items:
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./policy-samples.md
     - name: 概念
       expanded: false
       items:
@@ -39,7 +44,7 @@
           items:
             - name: セキュリティ ベースライン
               href: security-baseline.md
-        - name: Container Registry の SKU と制限
+        - name: コンテナー レジストリのサービス レベルと制限
           href: container-registry-skus.md
         - name: レジストリ、リポジトリ、イメージ
           href: container-registry-concepts.md
@@ -68,6 +73,8 @@
               href: container-registry-repositories.md
             - name: コンテナー イメージのインポート
               href: container-registry-import-images.md
+            - name: 成果物の転送 (プレビュー)
+              href: container-registry-transfer-images.md
             - name: コンテナー イメージのロック
               href: container-registry-image-lock.md
             - name: コンテナー イメージの削除
@@ -82,10 +89,14 @@
               href: container-registry-webhook.md
         - name: セキュリティと認証
           items:
-            - name: 仮想ネットワークでのアクセスの制限 (プレビュー)
-              href: container-registry-vnet.md
-            - name: Azure Private Link との統合 (プレビュー)
+            - name: プライベート エンドポイントを使用したアクセスの制限
               href: container-registry-private-link.md
+            - name: サービス ファイアウォール規則の構成
+              href: container-registry-access-selected-networks.md
+            - name: サービス エンドポイントを使用したアクセスの制限 (プレビュー)
+              href: container-registry-vnet.md
+            - name: カスタマー マネージド キーによる暗号化
+              href: container-registry-customer-managed-keys.md
             - name: ファイアウォールの内側にアクセスする
               href: container-registry-firewall-access-rules.md
             - name: 認証
@@ -102,16 +113,14 @@
                   href: container-registry-auth-kubernetes.md
                 - name: Azure Kubernetes Service (AKS) からの認証
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+                - name: リポジトリスコープ トークンによる認証 (プレビュー)
+                  href: container-registry-repository-scoped-permissions.md
             - name: ロールベースのアクセス制御
               href: container-registry-roles.md
-            - name: リポジトリが範囲指定されたアクセス許可 (プレビュー)
-              href: container-registry-repository-scoped-permissions.md
             - name: コンテンツの信頼
               href: container-registry-content-trust.md
             - name: Security Center を使用したイメージのスキャン
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-            - name: レジストリ データの暗号化 (プレビュー)
-              href: container-registry-customer-managed-keys.md
         - name: レジストリと他の Azure サービス
           expanded: false
           items:

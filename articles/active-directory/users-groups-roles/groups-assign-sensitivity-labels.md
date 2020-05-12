@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78329734"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582941"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Azure Active Directory で Office 365 グループに秘密度ラベルを割り当てる (プレビュー)
 
@@ -112,10 +112,10 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 
 [秘密度ラベル] オプションは、次のすべての条件が満たされている場合にのみ、グループに対して表示されます。
 
-1. Microsoft 365 コンプライアンス センターでこのテナントに対してラベルが公開されている。
+1. ラベルは、この Azure AD 組織の Microsoft 365 コンプライアンス センターで公開されています。
 1. 機能が有効になっており、PowerShell で EnableMIPLabels が True に設定されている。
 1. そのグループが Office 365 グループである。
-1. そのテナントに、アクティブな Azure Active Directory Premium P1 ライセンスがある。
+1. 組織に、アクティブな Azure Active Directory Premium P1 ライセンスがある。
 1. 現在サインインしているユーザーに、ラベルを割り当てるための十分な権限がある。 そのユーザーは、全体管理者、グループ管理者、またはグループの所有者のいずれかである必要があります。
 
 ラベルをグループに割り当てるには、上記のすべての条件が満たされていることを確認してください。

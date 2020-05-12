@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: 24fe11610d2a91fcdb0f09b8e45ea6ff4b81bd70
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606380"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594323"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
@@ -33,7 +33,7 @@ ms.locfileid: "81606380"
 
 **[Match multiple rows]\(複数の行の一致\):** 有効にすると、プライマリ ストリームに複数の一致がある行で、複数の行が返されます。 それ以外の場合は、[Match on]\(一致対象\) 条件に基づいて 1 行だけが返されます。
 
-**[Match on]\(一致対象\):** [Match multiple rows]\(複数の行の一致\) が有効になっている場合にのみ表示されます。 任意の行、最初の一致、または最後の一致のいずれと一致するかを選択します。 実行が最も速いので、任意の行をお勧めします。 最初の行または最後の行を選択する場合は、並べ替え条件を指定する必要があります。
+**[Match on]\(一致対象\):** [Match multiple rows]\(複数の行の一致\) が選択されていない場合にのみ表示されます。 任意の行、最初の一致、または最後の一致のいずれと一致するかを選択します。 実行が最も速いので、任意の行をお勧めします。 最初の行または最後の行を選択する場合は、並べ替え条件を指定する必要があります。
 
 **[Lookup conditions]\(参照条件\):** 一致対象の列を選択します。 等値条件が満たされた場合、行は一致と見なされます。 [データ フロー式言語](data-flow-expression-functions.md)を使用して値を抽出するには、ポイントして [Computed column]\(計算列\) を選択します。
 
@@ -55,11 +55,11 @@ ms.locfileid: "81606380"
 
 ## <a name="broadcast-optimization"></a>ブロードキャストの最適化
 
-Azure Data Factory では、マッピング データ フローはスケールアウト Spark 環境で実行されます。 データセットがワーカー ノードのメモリ領域に収まる場合、ブロードキャストを有効にすることにより、参照のパフォーマンスを最適化できます。
-
 ![ブロードキャスト結合](media/data-flow/broadcast.png "ブロードキャスト結合")
 
-ブロードキャストを有効にすると、データセット全体がメモリにプッシュされます。 数千行しか含まれない小さなデータセットの場合、ブロードキャストを使用すると、参照のパフォーマンスを大幅に向上させることができます。 大きいデータセットでは、このオプションを使用すると、メモリ不足の例外が発生する可能性があります。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには、 **[固定]** を選択します。
+
+**[オフ]** オプションを使用してブロードキャストを無効にすることは、結合でタイムアウト エラーが発生する場合を除いて推奨されません。
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 
@@ -72,7 +72,7 @@ Azure Data Factory では、マッピング データ フローはスケール�
         multiple: { true | false },
         pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
         { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <lookupTransformationName>
 ```
 ### <a name="example"></a>例
@@ -86,7 +86,7 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
     multiple: false,
     pickup: 'first',
     asc(ProductKey, true),
-    broadcast: 'none')~> LookupKeys
+    broadcast: 'auto')~> LookupKeys
 ```
 ## 
 次のステップ

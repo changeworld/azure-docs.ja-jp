@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115071"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580636"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 
@@ -36,6 +36,9 @@ Azure Logic Apps とファイル システム コネクタを使用すると、�
 * 使用するファイル システムが存在するコンピューターへのアクセス権。 たとえば、ご使用のファイル システムと同じコンピューターにデータ ゲートウェイをインストールする場合は、そのコンピューター用のアカウントの資格情報が必要です。
 
 * Logic Apps によってサポートされているプロバイダー (Office 365 Outlook、Outlook.com、Gmail など) の電子メール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。 このロジック アプリでは、Office 365 Outlook アカウントを使います。 別のメール アカウントをお使いの場合でも、全体的な手順は同じですが、UI がやや異なる場合があります。
+
+  > [!IMPORTANT]
+  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識。 この例では、空のロジック アプリが必要となります。
 
@@ -70,7 +73,7 @@ Azure Logic Apps とファイル システム コネクタを使用すると、�
    | **Connection Name** | はい | <*connection-name*> | 接続に付ける名前 |
    | **ルート フォルダー** | はい | <*root-folder-name*> | ファイル システムのルート フォルダー。たとえば、オンプレミスのデータ ゲートウェイをインストールしている場合は、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダーや、コンピューターがアクセス可能なネットワーク共有のフォルダー。 <p>例: `\\PublicShare\\DropboxFiles` <p>ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 |
    | **認証の種類** | いいえ | <*auth-type*> | ファイル システムで使用される認証の種類:**Windows** |
-   | **ユーザー名** | はい | <*domain*>\\<*username*> | ファイル システムが存在するコンピューターでのユーザー名 |
+   | **ユーザー名** | はい | <*domain*>\\<*username*> <p>または <p><*local-computer*>\\<*username*> | ファイル システム フォルダーが存在するコンピューターでのユーザー名。 <p>ファイル システム フォルダーがオンプレミス データ ゲートウェイと同じコンピューター上にある場合は、<*local-computer*>\\<*username*> を使用できます。 |
    | **パスワード** | はい | <*your-password*> | ファイル システムが存在するコンピューターでのパスワード |
    | **gateway** | はい | <*installed-gateway-name*> | あらかじめインストールしておいたゲートウェイの名前 |
    |||||

@@ -10,16 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80371617"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780914"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK
 
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
+
+## <a name="speech-devices-sdk-1110"></a>Speech Devices SDK 1.11.0:
+
+- [任意のマイク配列ジオメトリ](how-to-devices-microphone-array-configuration.md)と、[構成ファイル](https://aka.ms/sdsdk-micarray-json)を使用した動作する角度の設定のサポート。
+- [Urbetter DDK](http://www.urbetter.com/products_56/278.html) のサポート。
+- [音声アシスタント サンプル](https://aka.ms/sdsdk-speaker)で使用されている [GGEC Speaker](https://aka.ms/sdsdk-download-speaker) のバイナリがリリースされました。
+- [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) と Raspberry Pi および同様のデバイス用の [Linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64) がリリースされました。
+- [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.11.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
 
 ## <a name="speech-devices-sdk-190"></a>Speech Devices SDK 1.9.0:
 

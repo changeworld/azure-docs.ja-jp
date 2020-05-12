@@ -1,5 +1,5 @@
 ---
-title: Azure AD パススルー認証 - クイック スタート | Microsoft Docs
+title: Azure AD パススルー認証 - クイックスタート | Microsoft Docs
 description: この記事では、Azure Active Directory (Azure AD) パススルー認証を使用する方法について説明します。
 services: active-directory
 keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331414"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229818"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証:クイック スタート
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory パススルー認証:クイック スタート
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Azure AD パススルー認証をデプロイする
 
@@ -32,11 +32,17 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 >[!IMPORTANT]
 >AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行する場合は、[こちら](https://aka.ms/adfstoPTADPDownload)に公開されている詳細なデプロイ ガイドに従うよう強くお勧めします。
 
+>[!NOTE]
+>Azure Government クラウドでパススルー認証をデプロイする場合は、「[Azure Government のハイブリッド ID に関する考慮事項](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)」を参照してください。
+
 テナントでパススルー認証をデプロイするには、次の手順を実行します。
 
 ## <a name="step-1-check-the-prerequisites"></a>手順 1:前提条件を確認する
 
 次の前提条件が満たされていることを確認します。
+
+>[!IMPORTANT]
+>セキュリティの観点から、管理者は PTA エージェントを実行しているサーバーをドメイン コントローラーとして扱う必要があります。  PTA エージェント サーバーは、「[攻撃に対してドメイン コントローラーをセキュリティで保護する](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)」で説明されている内容に沿って強化する必要があります。
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センター
 
@@ -61,14 +67,19 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
      | ポート番号 | 用途 |
      | --- | --- |
-     | **80** | TLS/SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
+     | **80** | TLS/SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードします |
      | **443** | サービスを使用したすべての送信方向の通信を処理する |
      | **8080** (省略可能) | ポート 443 が使用できない場合、認証エージェントは、ポート 8080 経由で 10 分ごとにその状態を報告します。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには _使用されません_。 |
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
-   - ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、 **\*.msappproxy.net** と **\*.servicebus.windows.net** への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
+   - ファイアウォールまたはプロキシで DNS ホワイトリストが許可されている場合は、 **\*.msappproxy.net** と **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
    - 証明書の検証のために、URL **mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80**、**www\.microsoft.com:80** のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
+
+### <a name="azure-government-cloud-prerequisite"></a>Azure Government クラウドの前提条件
+手順 2 に従って Azure AD Connect を使用したパススルー認証を有効にする前に、Azure portal から PTA エージェントの最新リリースをダウンロードしてください。  エージェントを確実にバージョン **1.5.1742.0** 以降にする必要があります。 以降。  エージェントを確認するには、[認証エージェントのアップグレード](how-to-connect-pta-upgrade-preview-authentication-agents.md)に関する記事を参照してください。
+
+エージェントの最新リリースをダウンロードしたら、次の手順に進んで Azure AD Connect を使用したパススルー認証を構成します。
 
 ## <a name="step-2-enable-the-feature"></a>手順 2:機能を有効にする
 
@@ -114,8 +125,8 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 複数のパススルー認証エージェントをインストールすると高可用性が確保されますが、認証エージェント間の確定的な負荷分散は提供されません。 テナントに必要な認証エージェントの数を決定するには、テナントで発生することが予想されるサインイン要求のピーク時と平均の負荷を検討します。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300 - 400 の認証を処理できます。
 
 ネットワーク トラフィックを見積もるには、サイズ設定に関する次のガイダンスに従ってください。
-- 各要求のペイロード サイズは、(0.5K + 1K * num_of_agents) バイトで、これは Azure AD から認証エージェントへのデータ量に相当します。 ここで "num_of_agents" は、テナントに登録されている認証エージェントの数を示します。
-- 各応答のペイロード サイズは 1K バイトで、これは認証エージェントから Azure AD へのデータ量に相当します。
+- 各要求のペイロード サイズは、(0.5K + 1K * num_of_agents) バイトです。つまり、Azure AD から認証エージェントへのデータ量に相当します。 ここで "num_of_agents" は、テナントに登録されている認証エージェントの数を示します。
+- 各応答のペイロード サイズは 1K バイトです。つまり、認証エージェントから Azure AD へのデータ量に相当します。
 
 ほとんどのお客様の場合、高可用性と大容量を確保するには、合計 3 つの認証エージェントがあれば十分です。 サインインの待機時間を向上させるために、認証エージェントは、ドメイン コントローラーの近くにインストールする必要があります。
 

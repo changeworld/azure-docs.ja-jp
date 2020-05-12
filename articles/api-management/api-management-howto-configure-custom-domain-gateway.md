@@ -9,21 +9,18 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 1f2184c7c62887a98a76877528b167d173c3d75b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335946"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203185"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
 [Azure API Management セルフホステッド ゲートウェイ](self-hosted-gateway-overview.md)をプロビジョニングする場合、ホスト名が割り当てられていないため、その IP アドレスで参照する必要があります。 この記事では、既存のカスタム DNS 名 (ホスト名とも呼ばれます) をセルフホステッド ゲートウェイにマップする方法について説明します。
-
-> [!NOTE]
-> セルフホステッド ゲートウェイ機能はプレビュー段階です。 プレビュー期間中、セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみ追加料金なしで利用できます。 Developer レベルは、1 つのセルフホステッド ゲートウェイのデプロイに制限されます。
 
 ## <a name="prerequisites"></a>前提条件
 

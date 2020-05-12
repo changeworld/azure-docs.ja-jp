@@ -2,41 +2,46 @@
 title: チュートリアル - Azure CLI を使用してスケール セットでカスタム VM イメージを使用する
 description: Azure CLI を使用して仮想マシン スケール セットをデプロイするためのカスタム VM イメージを作成する方法について説明します
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: akjosh
+ms.openlocfilehash: 22f3fd44fbeb3d951d4add7b90a0e9aebd863ebf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80062715"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792838"
 ---
-# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
+# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * VM の作成とカスタマイズ
-> * VM のプロビジョニング解除と汎用化
-> * カスタム VM イメージの作成
-> * カスタム VM イメージを使用するスケール セットのデプロイ
+> * Shared Image Gallery を作成する
+> * 特殊化されたイメージ定義を作成する
+> * イメージ バージョンを作成する
+> * 特殊化されたイメージからスケール セットを作成する
+> * イメージ ギャラリーを共有する
+
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.4.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
+## <a name="overview"></a>概要
+
+[共有イメージ ギャラリー](shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
+
+共有イメージ ギャラリーを使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
 
 ## <a name="create-and-configure-a-source-vm"></a>ソース VM の作成と構成
 
->[!NOTE]
-> このチュートリアルでは、汎用化された VM イメージを作成および使用する手順について説明します。 特殊化された VM イメージからスケール セットを作成することはできません。
-
-最初に [az group create](/cli/azure/group) を使用してリソース グループを作成し、次に [az vm create](/cli/azure/vm) を使用して VM を作成します。 この VM は、カスタム VM イメージのソースとして使用されます。 次の例では、*myResourceGroup* という名前のリソース グループに *myVM* という名前の VM を作成します。
+最初に [az group create](/cli/azure/group) を使用してリソース グループを作成し、次に [az vm create](/cli/azure/vm) を使用して VM を作成します。 この VM は、イメージのソースとして使用されます。 次の例では、*myResourceGroup* という名前のリソース グループに *myVM* という名前の VM を作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -49,7 +54,10 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM のパブリック IP アドレスは、[az vm create](/cli/azure/vm) コマンドの出力に示されます。 次に示すように、VM のパブリック IP アドレスに SSH 接続します。
+> [!IMPORTANT]
+> VM の **ID** は、[az vm create](/cli/azure/vm) コマンドの出力に示されます。 このチュートリアルの後半で使用できるように、これを安全な場所にコピーします。
+
+VM のパブリック IP アドレスも、[az vm create](/cli/azure/vm) コマンドの出力に示されます。 次に示すように、VM のパブリック IP アドレスに SSH 接続します。
 
 ```console
 ssh azureuser@<publicIpAddress>
@@ -61,56 +69,96 @@ VM をカスタマイズするために、基本的な Web サーバーをイン
 sudo apt-get install -y nginx
 ```
 
-カスタム イメージとして使用する VM を準備するための最後の手順は、VM をプロビジョニング解除することです。 この手順では、マシンに固有の情報を VM から削除して、1 つのイメージから多数の VM をデプロイできるようにします。 VM をプロビジョニング解除すると、ホスト名は *localhost.localdomain* にリセットされます。 SSH ホスト キー、ネームサーバー構成、ルート パスワード、およびキャッシュされた DHCP リースも削除されます。
+終了したら、「`exit`」と入力して SSH 接続を切断します。
 
-VM をプロビジョニング解除するには、Azure VM エージェント (*waagent*) を使用します。 Azure VM エージェントはすべての VM にインストールされ、Azure プラットフォームとの通信に使用されます。 `-force` パラメーターは、マシン固有の情報をリセットするためのプロンプトを受け入れるようにエージェントに指示します。
+## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
 
-```bash
-sudo waagent -deprovision+user -force
-```
+イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 
 
-VM への SSH 接続を閉じます。
+ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。   ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-```bash
-exit
-```
-
-
-## <a name="create-a-custom-vm-image-from-the-source-vm"></a>ソース VM からのカスタム VM イメージの作成
-これで Nginx Web サーバーがインストールされ、ソース VM がカスタマイズされました。 次に、スケール セットで使用するカスタム VM イメージを作成しましょう。
-
-イメージを作成するには、VM の割り当てを解除する必要があります。 [az vm deallocate](/cli//azure/vm) で VM の割り当てを解除します。 次に、[az vm generalize](/cli//azure/vm) を使用して VM の状態を汎用化済みとして設定します。これにより、Azure プラットフォームは、カスタム イメージを使用するための VM の準備が整ったことを認識します。 イメージを作成できるのは、汎用化された VM からのみです。
-
+[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
 
 ```azurecli-interactive
-az vm deallocate --resource-group myResourceGroup --name myVM
-az vm generalize --resource-group myResourceGroup --name myVM
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-VM を割り当て解除して汎用化するには数分かかることがあります。
+## <a name="create-an-image-definition"></a>イメージ定義を作成する
 
-次に、[az image create](/cli//azure/image) を使用して VM のイメージを作成します。 次の例では、VM から *myImage* という名前のイメージを作成します。
+イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 
 
-> [注] リソース グループと仮想マシンの場所が異なる場合は、以下のコマンドに `--location` パラメーターを追加することで、イメージの作成に使用するソース VM の場所を指定できます。 
+イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 
 
-```azurecli-interactive
-az image create \
-  --resource-group myResourceGroup \
-  --name myImage \
-  --source myVM
+イメージ定義の種類が適切であることを確認します。 (Windows の場合は Sysprep、Linux の場合は waagent -deprovision を使用して) VM を一般化している場合は、`--os-state generalized` を使用して、一般化されたイメージ定義を作成する必要があります。 既存のユーザー アカウントを削除せずに VM を使用する場合は、`--os-state specialized` を使用して、特殊化されたイメージ定義を作成します。
+
+イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)に関するページを参照してください。
+
+[az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
+
+この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
+
+```azurecli-interactive 
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
+> [!IMPORTANT]
+> イメージ定義の **ID** は、コマンドの出力に示されます。 このチュートリアルの後半で使用できるように、これを安全な場所にコピーします。
 
-## <a name="create-a-scale-set-from-the-custom-vm-image"></a>カスタム VM イメージからのスケール セットの作成
-[az vmss create](/cli/azure/vmss#az-vmss-create) を使用して、スケール セットを作成します。 *UbuntuLTS* や *CentOS* などのプラットフォーム イメージの代わりに、カスタム VM イメージの名前を指定します。 次の例では、前の手順の *myImage* という名前のカスタム イメージを使用する、*myScaleSet* という名前のスケール セットを作成します。
 
-```azurecli-interactive
+## <a name="create-the-image-version"></a>イメージ バージョンの作成
+
+[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージのバージョンを作成します。  
+
+イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
+
+この例では、イメージのバージョンは *1.0.0* であり、"*米国中南部*" リージョンに 1 個のレプリカ、および "*米国東部 2*" リージョンに 1 個のレプリカを作成しています。 レプリケーション リージョンには、ソース VM が配置されているリージョンが含まれている必要があります。
+
+この例の `--managed-image` の値を、前の手順の VM の ID に置き換えます。
+
+```azurecli-interactive 
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "southcentralus=1" "eastus=1" \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+```
+
+> [!NOTE]
+> 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
+>
+> また、イメージ バージョンを作成するときに、`--storage-account-type  premium_lrs` を追加してイメージを Premium ストレージに格納することも、`--storage-account-type  standard_zrs` を追加して[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+>
+
+
+
+
+## <a name="create-a-scale-set-from-the-image"></a>イメージからスケール セットを作成する
+[`az vmss create`](/cli/azure/vmss#az-vmss-create) を使用して、特殊化されたイメージからスケール セットを作成します。 
+
+イメージが特殊化されたイメージであることを示す --specialized パラメーターを使用した [`az vmss create`](/cli/azure/vmss#az-vmss-create) を使用して、スケール セットを作成します。 
+
+`--image` にイメージ定義 ID を使用して、使用可能なイメージの最新バージョンからスケール セット インスタンスを作成します。 また、`--image` にイメージ バージョン ID を指定して、特定のバージョンからスケール セット インスタンスを作成することもできます。 
+
+前に作成した *myImageDefinition* イメージの最新バージョンから *myScaleSet* という名前のスケール セットを作成します。
+
+```azurecli
+az group create --name myResourceGroup --location eastus
 az vmss create \
-  --resource-group myResourceGroup \
-  --name myScaleSet \
-  --image myImage \
-  --admin-username azureuser \
-  --generate-ssh-keys
+   --resource-group myResourceGroup \
+   --name myScaleSet \
+   --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+   --specialized
 ```
 
 すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
@@ -146,6 +194,32 @@ az network public-ip show \
 ![カスタム VM イメージから実行されている Nginx](media/tutorial-use-custom-image-cli/default-nginx-website.png)
 
 
+
+## <a name="share-the-gallery"></a>ギャラリーを共有する
+
+ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション全体でイメージを共有できます。 イメージは、ギャラリー、イメージ定義、またはイメージ バージョンで共有できます。 イメージ バージョンへの読み取りアクセス許可があるユーザーは、サブスクリプション間でも、そのイメージ バージョンを使用して VM をデプロイできます。
+
+他のユーザーとは、ギャラリー レベルで共有することをお勧めします。 ギャラリーのオブジェクト ID を取得するには、[az sig show](/cli/azure/sig#az-sig-show) を使用します。
+
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
+```
+
+電子メール アドレスおよび [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) と共に、オブジェクト ID をスコープとして使用して、ユーザーに共有イメージ ギャラリーへのアクセスを付与します。 `<email-address>` と `<gallery iD>` は、実際の情報に置き換えてください。
+
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
+```
+
+RBAC を使用してリソースを共有する方法の詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)」を参照してください。
+
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 スケール セットと追加のリソースを削除するには、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
@@ -158,10 +232,11 @@ az group delete --name myResourceGroup --no-wait --yes
 このチュートリアルでは、Azure CLI を使用してスケール セットにカスタム VM イメージを作成して使用する方法について学習しました。
 
 > [!div class="checklist"]
-> * VM の作成とカスタマイズ
-> * VM のプロビジョニング解除と汎用化
-> * カスタム VM イメージの作成
-> * カスタム VM イメージを使用するスケール セットのデプロイ
+> * Shared Image Gallery を作成する
+> * 特殊化されたイメージ定義を作成する
+> * イメージ バージョンを作成する
+> * 特殊化されたイメージからスケール セットを作成する
+> * イメージ ギャラリーを共有する
 
 次のチュートリアルに進み、アプリケーションをスケール セットにデプロイする方法を学習してください。
 

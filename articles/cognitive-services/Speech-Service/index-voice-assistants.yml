@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: cbef289ebc79e20b928db684af01a4eaeb1c0ce8
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81401460"
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82106204"
 landingContent:
 - title: 音声アシスタントについて
   linkLists:
@@ -34,6 +34,10 @@ landingContent:
       url: faq-voice-assistants.md
     - text: 音声アシスタントの価格
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+  - linkListType: get-started
+    links:
+    - text: サンプル音声アシスタントをビルドして Azure サブスクリプションにデプロイする (GitHub)
+      url: https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant
 - title: カスタム コマンドを使用して開発する
   linkLists:
   - linkListType: quickstart

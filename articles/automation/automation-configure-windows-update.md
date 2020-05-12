@@ -3,14 +3,14 @@ title: Azure Update Management と連携するように Windows Update の設定
 description: この記事では、Azure Update Management と連携するように構成する Windows Update の設定について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 03/02/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235639"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779452"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Update Management 用に Windows Update の設定を構成する
 
@@ -22,6 +22,8 @@ Azure Update Management では、Windows の更新プログラムのダウンロ
 - レジストリの直接編集
 
 Update Management では Windows Update クライアントを制御するために指定される多くの設定が尊重されます。 Windows 以外の更新プログラムを有効にする設定を使用している場合、Update Management では、それらの更新プログラムも管理されます。 更新プログラムの展開が行われる前の更新プログラムのダウンロードを有効にすると、更新プログラムの展開がより速く効率的になり、メンテナンス期間を超過する可能性が低くなります。
+
+Azure サブスクリプションで WSUS を設定し、Windows 仮想マシンを安全に最新の状態に保つ方法に関するその他の推奨事項については、[WSUS を使用して Azure で Windows 仮想マシンを更新するためのデプロイを計画する](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/)方法に関する記事を確認してください。
 
 ## <a name="pre-download-updates"></a>更新プログラムの事前ダウンロード
 

@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085758"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609784"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Python (Django) Web アプリを Azure App Service にデプロイする
 
@@ -133,7 +133,7 @@ az postgres up --resource-group myResourceGroup --location westus2 --server-name
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> Postgres サーバーの場所を指定するには、引数 `--location <location-name>` を追加してください。`<location_name>` には、いずれかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)を指定します。 ご利用のサブスクリプションから使用できるリージョンは、[`az account list-locations`](/cli/azure/account#az-account-list-locations) コマンドを使用して取得できます。
+> `--location <location-name>` は、いずれかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に設定することができます。 ご利用のサブスクリプションから使用できるリージョンは、[`az account list-locations`](/cli/azure/account#az-account-list-locations) コマンドを使用して取得できます。 運用アプリの場合は、データベースとアプリを同じ場所に配置してください。
 
 ## <a name="deploy-the-app-service-app"></a>App Service アプリをデプロイする
 
@@ -149,7 +149,7 @@ az postgres up --resource-group myResourceGroup --location westus2 --server-name
 以下の例のように、[`az webapp up`](/cli/azure/webapp#az-webapp-up) コマンドを使用して App Service アプリを作成します。 *\<app-name>* は、"*一意*" の名前に置き換えてください (サーバー エンドポイントは *https://\<app-name>.azurewebsites.net*)。 *\<app-name>* に使用できる文字は `A`-`Z`、`0`-`9`、`-` です。
 
 ```azurecli
-az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
 ```
 <!-- !!! without --sku creates PremiumV2 plan!! -->
 
@@ -183,10 +183,10 @@ az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
 *\<app-resource-group>* の値をコピーしてください。 後でアプリを構成する際に必要となります。 
 
 > [!TIP]
-> 後で変更があれば同じコマンドを使用してデプロイし、直ちに診断ログを有効にすることができます。
+> 関連する設定は、リポジトリ内の *.azure* という隠しディレクトリに保存されます。 後で変更があれば簡単なコマンドを使用して再デプロイし、直ちに診断ログを有効にすることができます。
 > 
 > ```azurecli
-> az webapp up --name <app-name>
+> az webapp up
 > ```
 
 これでサンプル コードはデプロイされましたが、Azure 内の Postgres データベースにはまだアプリが接続されていません。 その作業を次に行います。
@@ -219,8 +219,6 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
-# Install requirements in environment
-pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -358,7 +356,7 @@ python manage.py runserver
 変更を再デプロイするには、リポジトリのルートから次のコマンドを実行します。
 
 ```azurecli
-az webapp up --name <app-name>
+az webapp up
 ```
 
 App Service がアプリの存在を検出して、単にコードをデプロイします。

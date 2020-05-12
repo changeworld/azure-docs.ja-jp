@@ -1,24 +1,24 @@
 ---
 title: Azure Analysis Services の診断ログ | Microsoft Docs
-description: Azure のリソース診断ログを設定し、Azure Analysis Services を監視する方法について説明します。
+description: ログを設定して Azure Analysis Services サーバーを監視する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231687"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128929"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースのログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 Azure Analysis Services は Azure Monitor と統合されています。 [Azure Monitor のリソース ログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
 
-![Storage、Event Hubs、または Azure Monitor ログに対する診断ログ記録](./media/analysis-services-logging/aas-logging-overview.png)
+![Storage、Event Hubs、または Azure Monitor ログへのリソースのログ記録](./media/analysis-services-logging/aas-logging-overview.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -72,9 +72,9 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) > サーバーで、左のナビゲーションから、 **[診断ログ]** をクリックし、 **[診断をオンにする]** をクリックします。
+1. [Azure portal](https://portal.azure.com) > サーバーで、左のナビゲーションにある **[診断設定]** をクリックし、 **[診断をオンにする]** をクリックします。
 
-    ![Azure Portal で Azure Cosmos DB の診断ログを有効にする](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
+    ![Azure portal で Azure Cosmos DB のリソースのログ記録を有効にする](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
 2. **[診断設定]** で、次のオプションを指定します。 
 
@@ -84,23 +84,23 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 詳細については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
     * **Azure Monitor (Log Analytics ワークスペース) に送信します**。 このオプションを使用するには、既存のワークスペースを使用するか、またはポータルで[新しいワークスペース リソースを作成](../azure-monitor/learn/quick-create-workspace.md)します。 ログを表示する方法について詳しくは、この記事の「[Log Analytics ワークスペースでログを表示する](#view-logs-in-log-analytics-workspace)」をご覧ください。
 
-    * **エンジン**。 xEvents をログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **サービス**。 サービス レベル イベントをログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **メトリック**。 [メトリック](analysis-services-monitor.md#server-metrics)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **エンジン**。 xEvents をログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、リソース ログの保持期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **サービス**。 サービス レベル イベントをログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、リソース ログの保持期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **メトリック**。 [メトリック](analysis-services-monitor.md#server-metrics)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、リソース ログの保持期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
 3. **[保存]** をクリックします。
 
     "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure Diagnostics のトラブルシューティング](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
 
-    今後、診断ログを保存する方法を変更する場合は、このページに戻って設定を変更できます。
+    今後、リソース ログを保存する方法を変更する場合は、このページに戻って設定を変更できます。
 
 ### <a name="powershell"></a>PowerShell
 
 興味を引く基本的なコマンドを次に示します。 PowerShell を使用してストレージ アカウントにログ記録をセットアップする詳細な手順が必要な場合は、この記事で後述するチュートリアルを参照してください。
 
-PowerShell を使用してメトリックと診断のロギングを有効にするには、次のコマンドを使用します。
+PowerShell を使用してメトリックとリソースのログ記録を有効にするには、次のコマンドを使用します。
 
-- ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
+- ストレージ アカウントでのリソース ログの保存を有効にするには、次のコマンドを使います。
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -108,7 +108,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 
    ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
 
-- Event Hubs への診断ログのストリーミングを有効にするには、次のコマンドを使用します。
+- イベント ハブへのリソース ログのストリーミングを有効にするには、次のコマンドを使います。
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
@@ -120,7 +120,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
+- Log Analytics ワークスペースへのリソース ログの送信を有効にするには、次のコマンドを使用します。
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -326,6 +326,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure リソースの診断ログ](../azure-monitor/platform/platform-logs-overview.md)についてさらに詳しく学習します。
+[Azure Monitor のリソースのログ記録](../azure-monitor/platform/platform-logs-overview.md)の詳細について確認します。
 
 PowerShell ヘルプの「[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)」を参照してください。

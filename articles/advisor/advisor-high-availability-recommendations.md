@@ -3,12 +3,12 @@ title: Azure Advisor によるアプリケーションの高可用性の向上
 description: Azure Advisor を使用して、Azure のデプロイの高可用性を向上させます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443103"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788027"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Advisor によるアプリケーションの高可用性の向上
 
@@ -28,6 +28,10 @@ Azure Advisor を使用して、ビジネスに不可欠なアプリケーショ
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>データの信頼性を改善するために Managed Disks を使用する
 
 ストレージ アカウントまたはストレージ スケール ユニットを共有するディスクが含まれる、可用性セット内の仮想マシンは、停止時の単一ストレージ スケール ユニット障害に対する回復性がありません。 Advisor では、これらの可用性セットを識別し、Azure Managed Disks への移行を推奨します。 そうすることで、単一障害点を避けるために、可用性セット内の異なる仮想マシンのディスクが十分に分離されるようにすることができます。 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Check Point ネットワーク仮想アプライアンスのイメージ バージョンの既知の問題
+
+Advisor では、プラットフォームのサービス操作が発生したときにネットワーク接続が失われることがわかっているバージョンの Check Point イメージを仮想マシンが実行しているかどうかを特定できます。 Advisor の推奨事項は、この問題に対処する新しいバージョンのイメージにアップグレードするのに役立ちます。 これにより、より安定したネットワーク接続によってビジネスの継続性が確保されます。
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>アプリケーション ゲートウェイのフォールト トレランスを確保する
 
@@ -83,7 +87,7 @@ Azure Advisor は、.NET SDK の古いバージョンを使用している Azure
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Azure Cosmos DB Java SDK を Maven からの最新バージョンにアップグレードする
 
-Azure Advisor は、Java SDK の古いバージョンを使用している Azure Cosmos DB アカウントを識別し、最新の修正プログラム、パフォーマンス向上、および新機能のために Maven からの最新バージョンにアップグレードすることを推奨します。 [Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet) の詳細を確認してください。
+Azure Advisor は、Java SDK の古いバージョンを使用している Azure Cosmos DB アカウントを識別し、最新の修正プログラム、パフォーマンス向上、および新機能のために Maven からの最新バージョンにアップグレードすることを推奨します。 [Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java) の詳細を確認してください。
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Azure Cosmos DB Spark コネクタを Maven からの最新バージョンにアップグレードする
 

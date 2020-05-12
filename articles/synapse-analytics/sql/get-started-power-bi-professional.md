@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0ce8f3a447f1896ae6d96d343782f8cdb44d4c6f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425331"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692387"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional で Synapse SQL に接続する
 
@@ -57,10 +57,10 @@ ms.locfileid: "81425331"
 
 ### <a name="create-database"></a>データベースの作成
 
-デモ環境を使用するため、デモ用に独自のデータベースを作成する必要があります。 内部にビューを作成するためのデータベースが必要です。 このデータベースは、このドキュメントの一部のサンプル クエリで使用します。
+この入門記事では、デモとして使用する独自のデータベースを作成する必要があります。 データベースは、ビューを作成するために必要です。 このデータベースは、このドキュメントの一部のサンプル クエリで使用します。
 
 > [!NOTE]
-> このデータベースは、実際のデータではなくビューのメタデータに対してのみ使用されることに注意してください。
+> データベースは、実際のデータではなくメタデータを表示するためにのみ使用されます。
 >
 > 使用するデータベース名を書き留めておきます。後で必要になります。
 
@@ -73,7 +73,7 @@ DROP DATABASE IF EXISTS demo;
 クエリを実行する前に、資格情報を作成する必要があります。 この資格情報は、SQL オンデマンド サービスがストレージ内のファイルにアクセスするために使用されます。
 
 > [!NOTE]
-> ストレージ アカウントにアクセスするために資格情報を作成する必要があることに注意してください。 SQL オンデマンドは異なるリージョンからストレージにアクセスできますが、ストレージと Azure Synapse ワークスペースを同じリージョンにするとパフォーマンスが向上します。
+> ストレージ アカウントにアクセスするための資格情報を作成する必要があります。 SQL オンデマンドは異なるリージョンからストレージにアクセスできますが、ストレージと Azure Synapse ワークスペースを同じリージョンにすると、パフォーマンスが向上します。
 
 **国勢調査データ コンテナーの資格情報を作成する方法についてのコード スニペット**:
 
@@ -92,12 +92,13 @@ GO
 
 ## <a name="creating-power-bi-desktop-report"></a>Power BI Desktop レポートの作成
 
-Power BI Desktop アプリケーションを開き、[データの取得] オプションを選択します。
+Power BI Desktop アプリケーションを開き、 **[データの取得]** オプションを選択します。
+
 ![Power BI Desktop アプリケーションを開き、[データの取得] を選択する。](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>ステップ 1 - データ ソースの選択
 
-メニューから [Azure] を選択し、次に [Azure SQL Database] を選択します。
+メニューから **[Azure]** を選択し、次に **[Azure SQL Database]** を選択します。
 ![データ ソースを選択する。](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>ステップ 2 - データベースの選択

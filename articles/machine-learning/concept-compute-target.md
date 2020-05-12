@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398177"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780115"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
 
@@ -68,7 +68,33 @@ Azure Machine Learning コンピューティング クラスターをトレー�
 * 自動でのクラスター管理とジョブ スケジューリング 
 * CPU と GPU の両方のリソースをサポートします
 
+### <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
 
+Azure Machine Learning でマネージド コンピューティング リソースのノード サイズを選択すると、Azure で使用可能な VM サイズの中から選択できます。 Azure では、さまざまなワークロードに対応する Linux および Windows の幅広いサイズが提供されています。 さまざまな [VM の種類とサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)の詳細については、こちらを参照してください。
+
+VM サイズを選択する際には次のような例外と制限事項があります。
+* 一部の VM シリーズは、Azure Machine Learning でサポートされていません。
+* 一部の VM シリーズは制限されています。 制限付きシリーズを使用するには、サポートに連絡し、そのシリーズのクォータの引き上げを依頼してください。 サポートへのお問い合わせについては、[Azure のサポート オプション](https://azure.microsoft.com/support/options/)に関するページを参照してください。
+
+サポートされているシリーズと制限の詳細については、次の表を参照してください。 
+
+| **サポートされている VM シリーズ**  | **制限事項** |
+|------------|------------|
+| D | なし |
+| Dv2 | なし |  
+| DSv2 | なし |  
+| FSv2 | なし |  
+| M | 承認が必要 |
+| NC | なし |    
+| NCsv2 | 承認が必要 |
+| NCsv3 | 承認が必要 |  
+| NDs | 承認が必要 |
+| NDv2 | 承認が必要 |
+| NV | なし |
+| NVv3 | 承認が必要 | 
+
+
+これらの VM シリーズは Azure Machine Learning でサポートされていますが、すべての Azure リージョンで使用できるとは限りません。 VM シリーズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)」を参照してください。
 
 ## <a name="unmanaged-compute"></a>アンマネージド コンピューティング
 

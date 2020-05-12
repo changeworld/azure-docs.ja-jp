@@ -3,12 +3,12 @@ title: 新しいサブスクリプションまたはリソース グループへ
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: df34268b7741f76621c290e9979cf24d828ddc09
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478670"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744634"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -29,19 +29,22 @@ ms.locfileid: "80478670"
 
 Azure Backup で構成された仮想マシンを移動するには、その復元ポイントをコンテナーから削除する必要があります。
 
-仮想マシンに対して[論理的な削除](../../../backup/backup-azure-security-feature-cloud.md)が有効になっている場合は、その復元ポイントが保持されている間は仮想マシンを移動することはできません。 [論理的な削除を無効にする](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)か、復元ポイントの削除後、14 日間経過するまで待ってください。
+仮想マシンに対して[論理的な削除](../../../backup/backup-azure-security-feature-cloud.md)が有効になっている場合は、その復元ポイントが保持されている間は仮想マシンを移動することはできません。 [論理的な削除を無効にする](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)か、復元ポイントの削除後、14 日間経過するまで待ってください。
 
 ### <a name="portal"></a>ポータル
 
-1. バックアップ用に構成されている仮想マシンを選択します。
+1. バックアップを一時的に停止し、バックアップ データを保持します。
+2. Azure Backup で構成された仮想マシンを移動するには、次の手順を実行します。
 
-1. 左側のウィンドウで、 **[バックアップ]** を選択します。
+   1. 仮想マシンの場所を探します。
+   2. 名前付けパターン `AzureBackupRG_<location of your VM>_1` を持つリソース グループを探します。 たとえば、*AzureBackupRG_westus2_1* となります
+   3. Azure portal で、 **[非表示の型の表示]** をオンにします。
+   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
+   5. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+   6. 削除操作が完了したら、仮想マシンを移動できます。
 
-1. **[バックアップの停止]** を選択する
-
-1. **[バックアップ データの削除]** を選択します。
-
-1. 削除が完了した後に、コンテナーと仮想マシンをターゲット サブスクリプションに移動できます。 移動した後、バックアップを続行できます。
+3. VM をターゲット リソース グループに移動します。
+4. バックアップを再開します。
 
 ### <a name="powershell"></a>PowerShell
 

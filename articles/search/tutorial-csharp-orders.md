@@ -1,21 +1,21 @@
 ---
 title: 結果の並べ替えに関する C# チュートリアル
 titleSuffix: Azure Cognitive Search
-description: このチュートリアルでは、検索結果を並び替える方法について説明します。 これは、プライマリ プロパティ、セカンダリ プロパティで並び替える前のホテル プロジェクトに基づいて作成されており、引き上げ基準を追加するためのスコアリング プロファイルが含まれています。
+description: この C# チュートリアルでは、検索結果を並べ替える方法について説明します。 これは、前のホテル プロジェクトに基づいています。プライマリ プロパティとセカンダリ プロパティによる並べ替えが追加され、引き上げ基準を追加するためのスコアリング プロファイルが含まれています。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121552"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780608"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# のチュートリアル: 結果の並べ替え - Azure Cognitive Search
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して検索結果を並べ替える
 
 これまでのチュートリアルでは、結果は既定の順序で返され、表示されてきました。 これはデータの配置順である場合もあれば、並べ替えパラメーターが指定されていないときに使用される既定の _スコアリング プロファイル_ が定義されている場合もあります。 このチュートリアルでは、プライマリ プロパティに基づいて結果を並べ替える方法について、次に、結果のプライマリ プロパティが同じである場合にセカンダリ プロパティでその選択を並べ替える方法について説明します。 最後の例では、数値に基づいた並べ替えの代わりに、カスタム スコアリング プロファイルに基づいて並べ替える方法を示しています。 _複合型_ の表示についても少し踏み込んで説明します。
 

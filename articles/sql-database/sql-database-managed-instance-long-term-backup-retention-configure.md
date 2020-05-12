@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/19/2020
-ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/29/2020
+ms.openlocfilehash: fba1dcdb8c4e5cfaa8071ae58ad75432b526c887
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677102"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509705"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Database マネージド インスタンスの長期的なバックアップ保有期間を管理する (PowerShell)
 
 Azure SQL Database マネージド インスタンスでは、[長期的なバックアップ保有期間](sql-database-long-term-retention.md#managed-instance-support)ポリシー (LTR) を、限定されたパブリック プレビュー機能として構成できます。 これにより、データベースのバックアップを個別の Azure BLOB ストレージ コンテナーに最大 10 年間自動的に保持できます。 そして、PowerShell でこれらのバックアップを使用して、データベースを復旧できます。
 
    > [!IMPORTANT]
-   > 現在、マネージド インスタンスの LTR は限定プレビュー段階にあり、個々のケースに応じて EA および CSP サブスクリプションで使用できます。 登録を要求するには、サポート トピック **[Backup, Restore, and Business Continuity/Long-term backup retention]\(バックアップ、復元、およびビジネス継続性/長期的なバックアップ保有期間\)** の下で [Azure サポート チケット](https://azure.microsoft.com/support/create-ticket/)を作成してください。 
-
+   > 現在、マネージド インスタンスの LTR は限定プレビュー段階にあり、個々のケースに応じて EA および CSP サブスクリプションで使用できます。 登録を要求するには、[Azure サポート チケット](https://azure.microsoft.com/support/create-ticket/)を作成してください。 [問題の種類] については [技術的な問題] を選択し、[サービス] には [SQL Database Managed Instance] を選択し、[問題の種類] には **[Backup, Restore, and Business Continuity/Long-term backup retention]\(バックアップ、復元、およびビジネス継続性/長期的なバックアップ保有期間\)** を選択します。 要求に、マネージド インスタンスの LTR の限定パブリック プレビューに登録したい旨を明記してください。
 
 以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure SQL ストレージ内のバックアップを表示し、Azure SQL ストレージ内のバックアップから復元する方法について説明します。
 

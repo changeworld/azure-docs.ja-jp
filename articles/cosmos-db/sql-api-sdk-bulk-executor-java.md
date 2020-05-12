@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB:Bulk Executor Java API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Bulk Executor Java SDK の各バージョン間の変更など、Bulk Executor Java API と SDK に関するあらゆる詳細を提供します。
-author: tknandu
+author: milismsft
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
-ms.author: ramkris
-ms.openlocfilehash: 1a5de2647df5b8092fdcf8e6233f1fddc1690b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: adrianmi
+ms.openlocfilehash: 0030f974a36dc80dc8c4112000aa5934126a2482
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981326"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836446"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報
 
@@ -39,4 +39,27 @@ ms.locfileid: "80981326"
 | **API ドキュメント**| [Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**開始するには**|[Bulk Executor ライブラリ Java SDK の概要](bulk-executor-java.md)|
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
+
+## <a name="release-notes"></a>リリース ノート
+
+### <a name="2100"></a><a name="2.10.0"/>2.10.0
+
+* JSON から入れ子になったパーティション キー値を正しく抽出するように DocumentAnalyzer.java を修正します。
+
+### <a name="294"></a><a name="2.9.4"/>2.9.4
+
+* 特定のエラーに対して再試行する機能を BulkDelete 操作に追加し、再試行可能なエラーの一覧をユーザーに返します。
+
+### <a name="293"></a><a name="2.9.3"/>2.9.3
+
+* Cosmos SDK バージョン 2.4.7 の更新プログラム。
+
+### <a name="292"></a><a name="2.9.2"/>2.9.2
+
+* 'id' とパーティション キーの値の後に配置されているすべての修正済みドキュメント プロパティが更新された項目の一覧に追加されるように、'mergeAll' が 'id' とパーティション キーの値で続行するように修正します。
+
+### <a name="291"></a><a name="2.9.1"/>2.9.1
+
+* コンカレンシーの開始次数を 1 に更新し、minibatch のデバッグ ログを追加します。
+
 

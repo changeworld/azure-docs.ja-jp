@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Windows ML で ONNX モデルを使用する - Custom Vision Service
+title: Windows ML で ONNX モデルを使用する - Custom Vision Service
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services からエクスポートされた ONNX モデルを使用する Windows UWP アプリの作成方法について説明します。
 services: cognitive-services
@@ -7,73 +7,56 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: tutorial
-ms.date: 04/14/2020
+ms.topic: conceptual
+ms.date: 04/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 0b59321bf04a8230342be706b88cd208c19d76ea
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404171"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594297"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>チュートリアル:Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
+# <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
 
 Custom Vision Service からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する方法について説明します。
 
-このドキュメントでは、Custom Vision Service からエクスポートされた ONNX ファイルを Windows ML で 使用する方法について例を挙げて説明します。 サンプルとして Windows UWP アプリケーションが用意されています。 このサンプルには、認識できるトレーニング済みモデルが含まれています。 また、自分で用意したモデルをこのサンプルで使用するための手順も記載されています。
-
-> [!div class="checklist"]
-> * サンプル アプリについて
-> * サンプル コードを入手する
-> * 例を実行する
-> * 自分で用意したモデルを使用する
+このガイドでは、Custom Vision Service からエクスポートされた ONNX ファイルを Windows ML で使用する方法について説明します。 トレーニングされた独自の画像分類器で、サンプルの UWP アプリケーションを使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Windows 10 バージョン 1809 以降
-
 * ビルド 17763 以降の Windows SDK
-
 * Visual Studio 2017 バージョン 15.7 以降がインストールされ、 __ユニバーサル Windows プラットフォーム開発__ ワークロードが有効にされている。
-
-* 開発者モードが有効にされている。 詳細については、ドキュメント「[デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)」を参照してください。
+* PC の開発者モードが有効にされている。 詳細については、「[デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)」を参照してください。
 
 ## <a name="about-the-example-app"></a>サンプル アプリについて
 
-このアプリケーションは汎用 Windows UWP アプリケーションです。 使用しているコンピューターのイメージを選択することができます。その後、このイメージがモデルに送信されます。 モデルから返されたタグとスコアは、イメージの横に表示されます。
+含まれているアプリケーションは汎用 Windows UWP アプリケーションです。 これにより、コンピューターから画像を選択し、ローカルに保存された分類モデルで処理できるようになります。 モデルから返されたタグとスコアは、イメージの横に表示されます。
 
 ## <a name="get-the-example-code"></a>サンプル コードを入手する
 
-サンプル アプリケーションは [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample) で入手できます。
+このサンプル アプリケーションは、GitHub の [Cognitive Services ONNX Custom Vision サンプル](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample) リポジトリで入手できます。 それをローカル コンピューターに複製し、Visual Studio で *SampleOnnxEvaluationApp.sln* を開きます。
 
-## <a name="run-the-example"></a>例を実行する
+## <a name="test-the-application"></a>アプリケーションをテストする
 
-1. Visual Studio で `F5` キーを押すと、アプリケーションが起動します。 開発者モードを有効にするよう求めるメッセージが表示される場合があります。 詳細については、ドキュメント「[デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)」を参照してください。
-
-1. アプリケーションの起動時に、ボタンを使用してスコア付け用のイメージを選択します。
+1. Visual Studio で `F5` キーを押すと、アプリケーションが起動します。 開発者モードを有効にするよう求めるメッセージが表示される場合があります。
+1. アプリケーションの起動時に、ボタンを使用してスコア付け用のイメージを選択します。 既定の ONNX モデルは、さまざまな種類のプランクトンを分類するようトレーニングされています。
 
 ## <a name="use-your-own-model"></a>自分で用意したモデルを使用する
 
-自分で用意したモデルを使用するには、次の手順を実行します。
+独自の画像分類モデルを使用するには、次の手順を実行します。
 
-1. Custom Vision Service を使用して分類器を[作成およびトレーニング](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)します。 モデルをエクスポートするには、 **[General (compact)]\(全般 (コンパクト)\)** など、__コンパクト__ なドメインを選択します。 既存の分類器をエクスポートするには、右上にある歯車アイコンを選択して、ドメインをコンパクトに変換します。 __[設定]__ でコンパクト モデルを選択し、保存してからプロジェクトをトレーニングします。  
-
-1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングの反復を選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
-
-1. ONNX ファイルをプロジェクトの __[Assets]__ フォルダーにドロップします。 
-
-1. ソリューション エクスプローラーで [Assets] フォルダーを右クリックし、 __[既存項目の追加]__ を選択します。 ONNX ファイルを選択します。
-
-1. ソリューション エクスプローラーで、[Assets] フォルダーの ONNX ファイルを選択します。 ファイルの以下のプロパティを変更します。
-
-    * __[ビルド アクション]__  ->  __[コンテンツ]__
-    * __[出力ディレクトリにコピー]__  ->  __[新しい場合はコピーする]__
-
-1. `_onnxFileNames` 変数を ONNX ファイルの名前に変更します。 `ClassLabel` も、モデルに含まれているラベルの数に変更します。
-
-1. ビルドして実行します。
-
+1. Custom Vision Service を使用して分類器を作成してトレーニングします。 この方法の手順については、[分類器を作成してトレーニングする](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)方法に関する記事を参照してください。 **[全般 (コンパクト)]** などの**コンパクト** ドメインのいずれかを使用します。 
+   * 別のドメインを使用する分類器が既に存在する場合は、プロジェクト設定で**コンパクト**に変換できます。 次に、プロジェクトを再トレーニングしてから続行します。
+1. モデルをエクスポートします。 [パフォーマンス] タブに切り替えて、**コンパクト** ドメインでトレーニングされたイテレーションを選択します。 表示される **[エクスポート]** ボタンを選択します。 次に、 **[ONNX]** を選択してから **[エクスポート]** を選択します。 ファイルの準備ができたら、 **[ダウンロード]** ボタンを選択します。 エクスポート オプションの詳細については、[モデルのエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)に関する記事を参照してください。
+1. ダウンロードした *.zip* ファイルを開き、そこから *model.onnx* ファイルを抽出します。 このファイルには、独自の分類モデルが含まれています。
+1. Visual Studio のソリューション エクスプローラーで、 **[Assets]** フォルダーを右クリックし、 __[既存項目の追加]__ を選択します。 ONNX ファイルを選択します。
+1. ソリューション エクスプローラーで、ONNX ファイルを右クリックし、 **[プロパティ]** を選択します。 ファイルの以下のプロパティを変更します。
+   * __[ビルド アクション]__  ->  __[コンテンツ]__
+   * __[出力ディレクトリにコピー]__  ->  __[新しい場合はコピーする]__
+1. 次に、_MainPage.xaml.cs_ を開き、`_ourOnnxFileName` の値を ONNX ファイルの名前に変更します。
+1. プロジェクトをビルドして実行するには、`F5` を使用します。
 1. ボタンをクリックして、評価するイメージを選択します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -85,4 +68,4 @@ Custom Vision モデルをエクスポートして使用する別の方法につ
 * [エクスポートされた CoreML モデルを Swift iOS アプリケーションで使用する](https://go.microsoft.com/fwlink/?linkid=857726)
 * [エクスポートされた CoreML モデルを Xamarin を使って iOS アプリケーションで使用する](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-Windows ML で ONNX モデルを使用する方法については、ドキュメント「[Windows ML でモデルをアプリに統合する](/windows/ai/windows-ml/integrate-model)」を参照してください。
+Windows ML で ONNX モデルを使用する方法については、「[Windows ML でモデルをアプリに統合する](/windows/ai/windows-ml/integrate-model)」を参照してください。

@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 92ec0cd0c39a515b15da88bb7c638edba2f57714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: caba2cd99a29cab43e0bffb84243f45ccdcdfaba
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181619"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561836"
 ---
 |    URL パターン                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    コンポーネントまたは機能                                                                           |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Edge サービス<br>Azure Service Bus<br>認証サービス                           |
+|    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Azure Stack Edge または Data Box Gateway サービス<br>Azure Service Bus<br>認証サービス                           |
 |    http://\*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                                |    デバイスのアクティブ化                                                                                    |
 |    http:\//crl.microsoft.com/pki/\*<br>http:\//www.microsoft.com/pki/\*                                                                                                                                                                                                                                                                                                                                                                                                  |    証明書の失効                                                                               |
 |    https://\*.core.windows.net/\*<br>https://\*.data.microsoft.com<br>http://\*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Azure ストレージ アカウントと監視                                                                |

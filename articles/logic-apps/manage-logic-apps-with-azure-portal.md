@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: lauradolan
 ms.author: ladolan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/13/2020
-ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/29/2020
+ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415977"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598166"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portal でロジック アプリを管理する
 
@@ -145,6 +145,10 @@ Azure portal で、[1 つのロジック アプリを削除する](#delete-singl
 * 進行中および保留中のすべての実行は完了するまで引き続き実行されます。 実行の数により、このプロセスには時間がかかる場合があります。
 
 * Logic Apps エンジンでは、新しいワークフロー インスタンスが作成または実行されません。
+
+> [!NOTE]
+> 子ロジック アプリを削除して再作成する場合は、親ロジック アプリを再保存する必要があります。 再作成された子アプリのメタデータは異なります。
+> 子を再作成した後に親ロジック アプリを再保存しないと、子ロジック アプリへの呼び出しは失敗し、"未承認" というエラーが表示されます。 この動作は、統合アカウントのアーティファクトを使用する親子ロジック アプリや、Azure Functions を呼び出す親子ロジック アプリに当てはまります。
 
 <a name="delete-single-logic-app"></a>
 

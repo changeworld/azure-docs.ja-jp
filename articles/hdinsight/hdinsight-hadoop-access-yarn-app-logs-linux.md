@@ -6,24 +6,24 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/23/2020
-ms.openlocfilehash: 2a7d71c6d751d4a48ec93f020e657a4d43114cfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76764376"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192503"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする
 
-Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターで [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
+Azure HDInsight の Apache Hadoop クラスターで [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
 
 ## <a name="what-is-apache-yarn"></a>Apache YARN とは
 
-YARN はアプリケーションのスケジュール設定/監視からリソース管理を切り離すことで、複数のプログラミング モデル ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) はそのうちの 1 つ) をサポートします。 YARN は、グローバルな *リソース マネージャー* (RM)、ワーカー ノードごとの*ノード マネージャー* (NM)、アプリケーションごとの*アプリケーション マスター* (AM) を使用します。 アプリケーションごとの AM は、アプリケーションを実行するためのリソース (CPU、メモリ、ディスク、ネットワーク) を RM と調整します。 RM は NM と連携して、これらのリソースに *コンテナー*としての許可を付与します。 AM は、RM によって自身に割り当てられたコンテナーの進行状況を追跡します。 アプリケーションはその性質によって、多くのコンテナーを必要とする場合があります。
+YARN はアプリケーションのスケジュール設定/監視からリソース管理を切り離すことで、複数のプログラミング モデル (Apache Hadoop MapReduce はそのうちの 1 つ) をサポートします。 YARN は、グローバル *`ResourceManager`* (RM)、ワーカーノードごとの *NodeManager* (NM)、およびアプリケーションごとの *ApplicationMaster* (AM) を使用します。 アプリケーションごとの AM は、アプリケーションを実行するためのリソース (CPU、メモリ、ディスク、ネットワーク) を RM と調整します。 RM は NM と連携して、これらのリソースに *コンテナー*としての許可を付与します。 AM は、RM によって自身に割り当てられたコンテナーの進行状況を追跡します。 アプリケーションはその性質によって、多くのコンテナーを必要とする場合があります。
 
-各アプリケーションが、複数の "*アプリケーション試行*" で構成されていることがあります。 アプリケーションが失敗した場合、新しい試行として再試行される場合があります。 各試行は、コンテナーで実行されます。 ある意味、コンテナーは YARN アプリケーションによって実行される作業の基本単位に対して、コンテキストを提供します。 コンテナーのコンテキストで行われる作業はすべて、コンテナーが割り当てられた 1 つのワーカー ノードで実行されます。 「[Hadoop:YARN アプリケーションの作成](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)」または「[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)」を参照してください。
+各アプリケーションが、複数の "*アプリケーション試行*" で構成されていることがあります。 アプリケーションが失敗した場合、新しい試行として再試行される場合があります。 各試行は、コンテナーで実行されます。 ある意味で、コンテナーは、YARN アプリケーションによって実行される基本的作業単位のコンテキストを提供します。 コンテナーのコンテキストで行われる作業はすべて、コンテナーが割り当てられた 1 つのワーカー ノードで実行されます。 「[Hadoop:YARN アプリケーションの作成](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)」または「[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)」を参照してください。
 
 より多くの処理スループットをサポートするようにクラスターをスケーリングするには、[自動スケール](hdinsight-autoscale-clusters.md)を使用するか、[いくつかの異なる言語を使用してクラスターを手動でスケーリングします](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)。
 
@@ -40,11 +40,9 @@ YARN タイムライン サーバーには、次の種類のデータが含ま�
 
 ## <a name="yarn-applications-and-logs"></a>YARN アプリケーションとログ
 
-YARN はアプリケーションのスケジュール設定/監視からリソース管理を切り離すことで、複数のプログラミング モデル ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) はそのうちの 1 つ) をサポートします。 YARN は、グローバルな *リソース マネージャー* (RM)、ワーカー ノードごとの*ノード マネージャー* (NM)、アプリケーションごとの*アプリケーション マスター* (AM) を使用します。 アプリケーションごとの AM は、アプリケーションを実行するためのリソース (CPU、メモリ、ディスク、ネットワーク) を RM と調整します。 RM は NM と連携して、これらのリソースに *コンテナー*としての許可を付与します。 AM は、RM によって自身に割り当てられたコンテナーの進行状況を追跡します。 アプリケーションはその性質によって、多くのコンテナーを必要とする場合があります。
+アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。 YARN は、[ログの集計](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)を使用してアプリケーションのログを収集、集計、格納するための優れたフレームワークを提供します。
 
-各アプリケーションが、複数の "*アプリケーション試行*" で構成されていることがあります。 アプリケーションが失敗した場合、新しい試行として再試行される場合があります。 各試行は、コンテナーで実行されます。 ある意味、コンテナーは YARN アプリケーションによって実行される作業の基本単位に対して、コンテキストを提供します。 コンテナーのコンテキストで行われる作業はすべて、コンテナーが割り当てられた 1 つのワーカー ノードで実行されます。 詳細については、「[Apache Hadoop YARN の概念](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)」をご覧ください。
-
-アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。 YARN は、[ログの集計](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。 ログの集計機能により、アプリケーション ログへのアクセスがさらに確実になります。 この機能により、ワーカー ノード上のすべてのコンテナーのログが集計され、ワーカー ノードごとに 1 つの集計ログとして保存されます。 ログは、アプリケーションの完了後に既定のファイル システムに保存されます。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。 したがって、アプリケーションで使用するワーカー ノードごとに存在するログは 1 つのみです。 ログの集計は、既定で HDInsight クラスター バージョン 3.0 以降で有効になります。 集計されたログは、クラスターの既定のストレージに配置されます。 次のパスは、ログへの HDFS パスです。
+ログの集計機能により、アプリケーション ログへのアクセスがさらに確実になります。 この機能により、ワーカー ノード上のすべてのコンテナーのログが集計され、ワーカー ノードごとに 1 つの集計ログとして保存されます。 ログは、アプリケーションの完了後に既定のファイル システムに保存されます。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。 したがって、アプリケーションで使用するワーカー ノードごとに存在するログは 1 つのみです。 ログの集計は、既定で HDInsight クラスター バージョン 3.0 以降で有効になります。 集計されたログは、クラスターの既定のストレージに配置されます。 次のパスは、ログへの HDFS パスです。
 
 ```
 /app-logs/<user>/logs/<applicationId>
@@ -52,7 +50,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 このパスで、`user` はアプリケーションを開始したユーザーの名前です。 `applicationId` は、YARN RM からアプリケーションに割り当てられた一意の識別子です。
 
-集計されたログは、コンテナーによってインデックスが作成される[バイナリ形式](https://issues.apache.org/jira/browse/HADOOP-3315)の [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf) で書かれているため、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
+集計されたログは、コンテナーによってインデックスが作成されるバイナリ形式の TFile で書かれているため、直接読み取ることはできません。 YARN `ResourceManager` ログまたは CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
 
 ## <a name="yarn-logs-in-an-esp-cluster"></a>ESP クラスターの Yarn ログ
 
@@ -119,7 +117,7 @@ Ambari のカスタム `mapred-site` に 2 つの構成を追加する必要が�
 
 ### <a name="other-sample-commands"></a>その他のサンプル コマンド
 
-1. すべてのアプリケーション マスターの Yarn コンテナー ログをダウンロードするには、次のコマンドを使います。 これにより、`amlogs.txt` という名前のテキスト形式のログ ファイルが作成されます。
+1. すべてのアプリケーション マスターの Yarn コンテナー ログをダウンロードするには、次のコマンドを使います。 この手順により、`amlogs.txt` という名前のテキスト形式のログ ファイルが作成されます。
 
     ```bash
     yarn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -149,9 +147,9 @@ Ambari のカスタム `mapred-site` に 2 つの構成を追加する必要が�
     yarn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
+## <a name="yarn-resourcemanager-ui"></a>YARN `ResourceManager` UI
 
-YARN ResourceManager UI はクラスターのヘッド ノードで実行されます。 Ambari Web UI を使ってアクセスします。 YARN ログを表示するには、次の手順を使用します。
+YARN `ResourceManager` UI はクラスターのヘッド ノードで実行されます。 Ambari Web UI を使ってアクセスします。 YARN ログを表示するには、次の手順を使用します。
 
 1. ご利用の Web ブラウザーで、 `https://CLUSTERNAME.azurehdinsight.net` に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 
@@ -159,8 +157,13 @@ YARN ResourceManager UI はクラスターのヘッド ノードで実行され�
 
     ![選択された Apache Ambari Yarn サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. **[クイック リンク]** ボックスの一覧で、クラスター ヘッドノードのいずれかを選択し、 **[ResourceManager Log]** を選択します。
+3. **[クイック リンク]** ドロップダウンから、クラスター ヘッド ノードのいずれかを選択し、 **`ResourceManager Log`** を選択します。
 
     ![Apache Ambari Yarn のクイック リンク](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     YARN のログへのリンクの一覧が表示されます。
+
+## <a name="next-steps"></a>次のステップ
+
+* [HDInsight の Apache Hadoop アーキテクチャ](hdinsight-hadoop-architecture.md)
+* [Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング](hdinsight-troubleshoot-yarn.md)

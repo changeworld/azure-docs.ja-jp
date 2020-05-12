@@ -1,18 +1,17 @@
 ---
-title: ポッド セキュリティのベスト プラクティス
-titleSuffix: Azure Kubernetes Service
+title: 開発者のベスト プラクティス - Azure Kubernetes Service (AKS) でのポッドのセキュリティ
 description: Azure Kubernetes Service (AKS) でポッドをセキュリティで保護する方法に関する、開発者のベスト プラクティスについて説明します
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804386"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779071"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのポッドのセキュリティに関するベスト プラクティス
 
@@ -75,7 +74,7 @@ spec:
 次の[関連付けられた AKS オープン ソース プロジェクト][aks-associated-projects]を使用すると、ポッドを自動的に認証するか、デジタル資格情報コンテナーから資格情報とキーを要求することができます。
 
 * Azure リソースのマネージド ID
-* Azure Key Vault FlexVol ドライバー
+* [シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
 
 関連付けられた AKS オープン ソース プロジェクトは Azure テクニカル サポートではサポートされません。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらのプロジェクトを運用環境で使用することはお勧めできません。
 
@@ -89,28 +88,28 @@ Azure リソースのマネージド ID を使用すると、ポッドは、Stor
 
 ポッドの ID の詳細については、[お使いのアプリケーションでポッドのマネージド ID を使用するよう AKS クラスターを構成する方法][aad-pod-identity]に関するページを参照してください
 
-### <a name="use-azure-key-vault-with-flexvol"></a>FlexVol と共に Azure Key Vault を使用する
+### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>シークレット ストア CSI ドライバーで Azure Key Vault を使用する
 
-ポッドのマネージド ID は、サポートされる Azure サービスに対する認証において的確に動作します。 Azure リソースのマネージド ID を使用しない独自のサービスまたはアプリケーションでは、引き続き資格情報またはキーを使用して使用して認証を行います。 これらの資格情報を格納するには、デジタル資格情報コンテナーを使用できます。
+ポッド ID プロジェクトを使用すると、サポートされる Azure サービスに対する認証が有効になります。 Azure リソースのマネージド ID を使用しない独自のサービスまたはアプリケーションでは、引き続き資格情報またはキーを使用して使用して認証を行うことができます。 これらの機密コンテンツを格納するには、デジタル資格情報コンテナーを使用できます。
 
-アプリケーションが資格情報を必要とする場合は、デジタル資格情報コンテナーと通信し、最新の資格情報を取得してから、必要なサービスに接続します。 Azure Key Vault は、このデジタル資格情報コンテナーとして使用できます。 次の図に、ポッドのマネージド ID を使用して Azure Key Vault から資格情報を取得する際の簡略化されたワークフローを示します。
+アプリケーションで資格情報が必要な場合は、デジタル資格情報コンテナーと通信し、最新の機密コンテンツを取得してから、必要なサービスに接続します。 Azure Key Vault は、このデジタル資格情報コンテナーとして使用できます。 次の図に、ポッドのマネージド ID を使用して Azure Key Vault から資格情報を取得する際の簡略化されたワークフローを示します。
 
-![ポッドのマネージド ID を使用して Key Vault から資格情報を取得する際の簡略化されたワークフロー](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![ポッドのマネージド ID を使用して Key Vault から資格情報を取得する際の簡略化されたワークフロー](media/developer-best-practices-pod-security/basic-key-vault.png)
 
-Key Vault では、資格情報、ストレージ アカウント キー、証明書などのシークレットを格納し、定期的にローテーションします。 FlexVolume を使用して、Azure Key Vault を AKS クラスターと統合できます。 FlexVolume ドライバーを使用すると、AKS クラスターは、Key Vault からネイティブに資格情報を取得し、要求元のポッドにのみ安全に提供することができます。 クラスター オペレーターと連携して、AKS ノードに Key Vault FlexVol ドライバーをデプロイしてください。 ポッドのマネージド ID を使用して、Key Vault へのアクセスを要求し、FlexVolume ドライバーを介して必要な資格情報を取得することができます。
+Key Vault では、資格情報、ストレージ アカウント キー、証明書などのシークレットを格納し、定期的にローテーションします。 [シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)を使用して、Azure Key Vault を AKS クラスターと統合できます。 シークレット ストア CSI ドライバーを使用すると、AKS クラスターで Key Vault から機密コンテンツをネイティブに取得し、要求されているポッドだけに安全に提供できます。 クラスター オペレーターと連携して、シークレット ストア CSI ドライバーを AKS worker ノードにデプロイします。 ポッドのマネージド ID を使用して Key Vault へのアクセスを要求したり、シークレット ストア CSI ドライバーを使用して必要な機密コンテンツを取得したりすることができます。
 
-Flex Vol を備えた Azure Key Vault は、Linux のポッドおよびノードで実行されているアプリケーションとサービスでの使用を目的としています。
+Kubernetes バージョン 1.16 以上が必要な Linux ノードおよびポッドでは、シークレット ストア CSI ドライバーを使用した Azure Key Vault を使用できます。 Windows ノードおよびポッドの場合は、バージョン 1.18 以上の Kubernetes が必要です。
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、ポッドをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 
 * [AKS で Azure リソースのマネージド ID を使用する][aad-pod-identity]
-* [Azure Key Vault を AKS と統合する][aks-keyvault-flexvol]
+* [Azure Key Vault を AKS と統合する][aks-keyvault-csi-driver]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
-[aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects

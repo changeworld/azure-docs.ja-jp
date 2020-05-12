@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984539"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793093"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。
@@ -130,7 +130,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * "_最小インスタンス数_" は、スケーリングの下限を定義します。 サービスのパーティション数がこの制限に達すると、負荷に関係なくサービスはスケールインされなくなります。
 
 > [!WARNING] 
-> AddRemoveIncrementalNamedPartitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric によって、**通知や警告なしで**パーティションの追加または削除が行われます。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケール アップ操作では、新しいパーティションは空になり、スケール ダウン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
+> AddRemoveIncrementalNamedPartitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric によって、**通知や警告なしで**パーティションの追加または削除が行われます。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケールアウト操作では、新しいパーティションは空になり、スケールイン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
 
 ## <a name="setting-auto-scaling-policy"></a>自動スケーリング ポリシーの設定
 

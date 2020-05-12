@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 95864f932fe255d561eaeb2d803b5fcc79cb2802
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547535"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184097"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Container Registry 用の Azure セキュリティ ベースライン
 
@@ -520,7 +520,7 @@ https://docs.microsoft.com/azure/firewall/threat-intel
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure での顧客データの保護について:  https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -574,7 +574,7 @@ Azure Container Registry のロールとアクセス許可:  https://docs.micros
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure での顧客データの保護について:  https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
 **Azure Security Center の監視**: 適用なし
@@ -686,7 +686,7 @@ Azure Resource Graph を使用してクエリを作成する方法:  https://doc
 
 Azure サブスクリプションを表示する方法:  https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0 
 
-Azure RBAC の概要:  https://docs.microsoft.com/azure/role-based-access-control/overview
+Azure RBAC について:  https://docs.microsoft.com/azure/role-based-access-control/overview
 
 
 
@@ -873,7 +873,7 @@ Azure Security Center の推奨事項を修復する方法:  https://docs.micros
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
+**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査:  https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
@@ -897,7 +897,7 @@ Azure Policy の効果の概要:  https://docs.microsoft.com/azure/governance/po
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: カスタム Azure ポリシー定義を使用する場合は、Azure Repos を使用してコードを安全に格納して管理します。
+**ガイダンス**: カスタム Azure Policy 定義を使用する場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
 Azure DevOps でコードを格納する方法:  https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 

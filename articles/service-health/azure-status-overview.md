@@ -3,12 +3,12 @@ title: Azure の状態の概要 | Microsoft Docs
 description: Azure サービスの正常性をグローバルに確認できるビュー
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78898340"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732552"
 ---
 # <a name="azure-status-overview"></a>Azure の状態の概要
 
@@ -24,9 +24,7 @@ Azure の状態のページは、Azure サービスの正常性が変化する�
 
 ## <a name="azure-status-history"></a>Azure の状態の履歴
 
-Azure の状態のページには常に最新の正常性情報が表示されますが、[Azure の状態の履歴ページ](https://status.azure.com/status/history/)を使用して古いイベントを表示できます。
-
-2019 年 11 月に発行されたイベントからは、状態の履歴ページに、Azure についての予備的な根本原因、軽減策、次の手順を含め、最大で過去 365 日間のイベントを表示できます。
+Azure の状態のページには常に最新の正常性情報が表示されますが、[Azure の状態の履歴ページ](https://status.azure.com/status/history/)を使用して古いイベントを表示できます。 この履歴ページには、2019 年 11 月 20 日以降に発生したインシデントの RCA がすべて含まれており、その日付から 5 年間の RCA 履歴が提供されます。 2019 年 11 月 20 日より前の RCA は利用できません。
 
 ## <a name="rss-feed"></a>RSS フィード
 

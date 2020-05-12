@@ -1,20 +1,15 @@
 ---
-title: Azure レンダリング - 参照アーキテクチャ - Azure Batch
+title: Azure レンダリングの参照アーキテクチャ
 description: クラウドにバーストすることで Azure Batch およびその他の Azure サービスを使用してオンプレミス レンダー ファームを拡張するためのアーキテクチャ
-services: batch
-ms.service: batch
-author: davefellows
-manager: evansma
-ms.author: labrenne
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: 20442a6618ca9357bb3be95879b68bffca45a40d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbdb5eb39805ac87bf90216e5fbeedae91b423f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022955"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115773"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure レンダリング向け参照アーキテクチャ
 

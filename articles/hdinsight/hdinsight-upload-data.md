@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdiseo17may2017
-ms.date: 04/07/2020
-ms.openlocfilehash: c862633245e75613f9e4f9956486f872b96239f8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.custom: hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: e73a8a420c7591a45a62ba38123c6b3368e0f738
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875012"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190641"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -23,7 +23,7 @@ HDInsight では、Azure Storage および Azure Data Lake Storage 上で Hadoop
 
 開始する前に、次の要件にご注意ください。
 
-* Azure HDInsight クラスター。 手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)または [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+* Azure HDInsight クラスター。 手順については、[Azure HDInsight のクイックスタート](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 * 次の記事に関する知識
     * [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)
     * [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)
@@ -31,7 +31,7 @@ HDInsight では、Azure Storage および Azure Data Lake Storage 上で Hadoop
 
 ## <a name="upload-data-to-azure-storage"></a>Azure Storage へのデータのアップロード
 
-## <a name="utilities"></a>Utilities
+### <a name="utilities"></a>Utilities
 
 Microsoft では、Azure Storage を操作する次のユーティリティを提供しています。
 
@@ -46,7 +46,7 @@ Microsoft では、Azure Storage を操作する次のユーティリティを�
 > [!NOTE]  
 > Hadoop コマンドは、HDInsight クラスター上でのみ使用できます。 このコマンドでは、ローカル ファイル システムのデータを Azure Storage 内に読み込むことのみが可能です。  
 
-## <a name="hadoop-command-line"></a>Hadoop コマンド ライン
+### <a name="hadoop-command-line"></a>Hadoop コマンド ライン
 
 Hadoop コマンド ラインは、クラスターのヘッド ノードに既にデータが存在している場合に、Azure Storage BLOB にデータを格納する際にのみ役立ちます。
 
@@ -71,9 +71,9 @@ or
 ファイルに使用するその他の Hadoop コマンドの一覧は、[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html) をご覧ください。
 
 > [!WARNING]  
-> Apache HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳細については、この記事の「[BLOB への書き込みに関するストレージ例外](#storage-exception-for-write-on-blob)」セクションをご覧ください。
+> Apache HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳しくは、[BLOB への書き込みに関するストレージ例外](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob)についての記事をご覧ください。
 
-## <a name="graphical-clients"></a>グラフィカル クライアント
+### <a name="graphical-clients"></a>グラフィカル クライアント
 
 Azure Storage を操作するためのグラフィカル インターフェイスを提供するアプリケーションもいくつかあります。 これらのアプリケーションの一部を次の一覧表に示します。
 
@@ -121,51 +121,6 @@ Azure Storage には、次のプログラミング言語で Azure SDK を使用�
 
 Azure SDK のインストールの詳細については、 [Azure のダウンロード](https://azure.microsoft.com/downloads/)
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-### <a name="storage-exception-for-write-on-blob"></a>BLOB への書き込みに関するストレージ例外
-
-**現象**:`hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで 12 GB 以上のファイルを書き込むと、次のエラーが発生する可能性があります。
-
-    ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
-    copyFromLocal: java.io.IOException
-            at com.microsoft.azure.storage.core.Utility.initIOException(Utility.java:661)
-            at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:366)
-            at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:350)
-            at java.util.concurrent.FutureTask.run(FutureTask.java:262)
-            at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
-            at java.util.concurrent.FutureTask.run(FutureTask.java:262)
-            at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
-            at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
-            at java.lang.Thread.run(Thread.java:745)
-    Caused by: com.microsoft.azure.storage.StorageException: The request body is too large and exceeds the maximum permissible limit.
-            at com.microsoft.azure.storage.StorageException.translateException(StorageException.java:89)
-            at com.microsoft.azure.storage.core.StorageRequest.materializeException(StorageRequest.java:307)
-            at com.microsoft.azure.storage.core.ExecutionEngine.executeWithRetry(ExecutionEngine.java:182)
-            at com.microsoft.azure.storage.blob.CloudBlockBlob.uploadBlockInternal(CloudBlockBlob.java:816)
-            at com.microsoft.azure.storage.blob.CloudBlockBlob.uploadBlock(CloudBlockBlob.java:788)
-            at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:354)
-            ... 7 more
-
-**原因**:HDInsight クラスター上の HBase では、Azure Storage に書き込むときに既定のブロック サイズは 256 KB です。 HBase API または REST API では問題ありませんが、`hadoop` または `hdfs dfs` コマンドライン ユーティリティを使うとエラーになります。
-
-**解決方法**:`fs.azure.write.request.size` を使ってさらに大きいブロック サイズを指定します。 この変更は、`-D` パラメーターを使うことで、利用状況に応じて指定できます。 `hadoop` コマンドでこのパラメーターを使う例を次に示します。
-
-```bash
-hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
-```
-
-Apache Ambari を使うことで、`fs.azure.write.request.size` の値をグローバルに増やすこともできます。 Ambari Web UI で値を変更するには、次の手順を使えます。
-
-1. ブラウザーで、クラスターの Ambari Web UI に移動します。 URL は `https://CLUSTERNAME.azurehdinsight.net` です。`CLUSTERNAME` はクラスターの名前です。 プロンプトが表示されたら、クラスターの管理者名とパスワードを入力します。
-2. 画面の左側にある **[HDFS]** を選び、 **[Configs (構成)]** を選びます。
-3. **[Filter... (フィルター...)]** フィールドに「`fs.azure.write.request.size`」と入力します。
-4. 値を 262144 (256 KB) から新しい値に変更します。 たとえば、4194304 (4 MB) に変更します。
-
-    ![Ambari Web UI で値を変更する画像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
-
-Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
-
 ## <a name="next-steps"></a>次のステップ
 
 ここでは、HDInsight にデータを取り込む方法を説明しました。次の記事でデータの分析について学習してください。
@@ -173,4 +128,3 @@ Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用し
 * [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [プログラムによる Apache Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](./use-pig.md)

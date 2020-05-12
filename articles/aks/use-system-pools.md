@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) でシステム ノード プールを使�
 description: Azure Kubernetes Service (AKS) でシステム ノード プールを作成および管理する方法について学習します
 services: container-service
 ms.topic: article
-ms.date: 04/06/2020
-ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/28/2020
+ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259070"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790560"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でシステム ノード プールを管理する
 
@@ -29,6 +29,8 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プ�
 * 「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性][quotas-skus-regions]」を参照してください。
 * AKS クラスターは、VM の種類として仮想マシン スケール セットを使用して構築する必要があります。
 * ノード プールの名前は、小文字の英数字のみを含めることができ、小文字で始める必要があります。 Linux のノード プールの長さは、1 から 12 文字の範囲内である必要があります。 Windows のノード プールの長さは、1 から 6 文字の範囲内である必要があります。
+* ノード プール モードを設定するには、2020-03-01 以上の API バージョンを使用する必要があります。
+* ノード プールのモードは必須プロパティであり、ARM テンプレートまたは API 呼び出しを直接行う場合は、明示的に設定する必要があります。
 
 ## <a name="system-and-user-node-pools"></a>システムおよびユーザー ノード プール
 
@@ -175,4 +177,4 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

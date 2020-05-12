@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの概要
 description: Recovery Services コンテナーの概要と Azure Backup コンテナーとの比較。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436957"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597954"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -79,6 +79,14 @@ VM にバックアップが構成されていない場合、バックアップ�
 ### <a name="secure-the-vault"></a>コンテナーのセキュリティ保護
 
 - [Recovery Services コンテナー内のクラウド バックアップ データのセキュリティ保護](backup-azure-security-feature.md)
+
+## <a name="azure-advisor"></a>Azure Advisor
+
+[Azure Advisor](https://docs.microsoft.com/azure/advisor/) は、Azure の使用を最適化するのに役立つ、カスタマイズされたクラウド コンサルタントです。 Azure の使用状況を分析し、デプロイを最適化してセキュリティで保護するためのタイムリーな推奨事項を提供します。 提供される推奨事項には、高可用性、セキュリティ、パフォーマンス、コストの 4 つのカテゴリがあります。
+
+Azure Advisor では、バックアップされていない VM についての[推奨事項](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)が 1 時間ごとに提供されるため、もう重要な VM のバックアップを忘れることはありません。 また、再通知を使用して推奨事項を制御することができます。  推奨事項をクリックすると、コンテナー (バックアップが格納される場所) とバックアップ ポリシー (バックアップのスケジュールとバックアップ コピーの保持期間) を指定することによって、インラインで VM のバックアップを有効にすることができます。
+
+![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="next-steps"></a>次のステップ
 

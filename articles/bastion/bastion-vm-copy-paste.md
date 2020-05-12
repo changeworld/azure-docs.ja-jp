@@ -5,20 +5,24 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: 0af0fdfa1b0bcbb06d9424390e7ca8c8f406bcb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8580b7e28c8a4860739efa0763ebb7c20a80585e
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619302"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780285"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>仮想マシンとの間のコピーと貼り付け:Azure Bastion
 
 この記事は、Azure Bastion を使用している場合に、仮想マシンとの間でテキストのコピーと貼り付けを行う際に役立ちます。 VM を操作する前に、[Azure Bastion ホストを作成する](bastion-create-host-portal.md)手順を実行済みであることを確認してください。 その後、[RDP](bastion-connect-vm-rdp.md) または [SSH](bastion-connect-vm-ssh.md) のいずれかを使用して、操作する VM に接続します。
 
 高度な Clipboard API アクセスをサポートするブラウザーでは、ローカル デバイス上のアプリケーション間でテキストをコピーして貼り付けるのと同じ方法で、ローカル デバイスとリモート セッションとの間でテキストをコピーして貼り付けることができます。 他のブラウザーでは、Azure Bastion クリップボード アクセス ツール パレットを使用することができます。
+
+>[!NOTE]
+>現在、テキストのコピー/貼り付けのみがサポートされています。
+>
 
    ![クリップボードの許可](./media/bastion-vm-manage/allow.png)
 

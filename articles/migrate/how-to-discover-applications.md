@@ -3,12 +3,12 @@ title: Azure Migrate を使用したオンプレミス サーバーでのアプ�
 description: Azure Migrate Server Assessment を使用して、オンプレミス サーバー上のアプリ、ロール、および機能を検出する方法について説明します。
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9f5489b513cd1405e6b093d7537e4cbcead041
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79453584"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744625"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>マシンのアプリ、ロール、および機能を検出する
 
@@ -30,17 +30,47 @@ Azure Migrate を使用したアプリ検出:Server Assessment はエージェ�
 5. Azure Migrate アプライアンスを展開するための[要件](migrate-appliance.md)を確認します。
 6. アプリケーションの検出の[サポートと要件を検証](migrate-support-matrix-vmware.md#application-discovery)します。
 
-## <a name="prepare-for-app-discovery"></a>アプリ検出の準備
 
-1. [アプライアンスの展開を準備します](tutorial-prepare-vmware.md)。 準備には、アプライアンス設定の確認と、アプライアンスで vCenter Server へのアクセスに使用されるアカウントの設定が含まれます。
-2. アプリ、ロール、および機能を検出するマシンに対して、管理者アクセス許可を持つユーザー アカウント (Windows サーバーと Linux サーバーに 1 つずつ) があることを確認します。
-3. [Azure Migrate アプライアンスを展開](how-to-set-up-appliance-vmware.md)して検出を開始します。 アプライアンスを展開するには、OVA テンプレートをダウンロードして VMware にインポートし、アプライアンスを VMware VM として作成します。 アプライアンスを構成し、Azure Migrate に登録します。
-2. アプライアンスを展開するときに、継続的な検出を開始するには、以下を指定します。
+
+## <a name="deploy-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスをデプロイする
+
+1. Azure Migrate アプライアンスを展開するための要件を[確認](migrate-appliance.md#appliance---vmware)します。
+2. アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government クラウド](migrate-appliance.md#government-cloud-urls)でアクセスする必要がある Azure の URL について確認します。
+3. 検出および評価中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---vmware)します。
+4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-vmware.md#port-access)します。
+5. [Azure Migrate アプライアンスを展開](how-to-set-up-appliance-vmware.md)して検出を開始します。 アプライアンスを展開するには、OVA テンプレートをダウンロードして VMware にインポートし、アプライアンスを VMware VM として作成します。 アプライアンスを構成し、Azure Migrate に登録します。
+6. アプライアンスを展開するときに、継続的な検出を開始するには、以下を指定します。
     - 接続先の vCenter Server の名前。
     - アプライアンスから vCenter Server に接続するために作成した資格情報。
     - アプライアンスから Windows/Linux VM に接続するために作成したアカウントの資格情報。
 
 アプライアンスを展開し、資格情報を指定すると、アプリ、機能、およびロールの検出と共に、VM メタデータとパフォーマンス データの継続的な検出がアプライアンスで開始されます。  アプリ検出の期間は、所有している VM の数によって変わります。 通常、500 台の VM のアプリ検出には 1 時間かかります。
+
+## <a name="prepare-a-user-account"></a>ユーザー アカウントを準備する
+
+検出用のアカウントを作成し、アプライアンスに追加します。
+
+### <a name="create-a-user-account-for-discovery"></a>検出用のユーザー アカウントを作成する
+
+サーバー評価で検出のために VM にアクセスできるように、ユーザー アカウントを設定します。 アカウントの要件を[確認](migrate-support-matrix-vmware.md#application-discovery)します。
+
+
+### <a name="add-the-user-account-to-the-appliance"></a>アプライアンスにユーザー アカウントを追加する
+
+アプライアンスにユーザー アカウントを追加します。
+
+1. アプライアンス管理アプリを開きます。 
+2. **[Provide vCenter details]\(vCenter の詳細\)** パネルに移動します。
+3. **[VM でのアプリケーションと依存関係の検出]** で、 **[資格情報の追加]** をクリックします。
+3. **[オペレーティング システム]** を選択し、アカウントのフレンドリ名と、 **[ユーザー名]** / **[パスワード]** を入力します
+6. **[保存]** をクリックします。
+7. **[保存して検出を開始]** をクリックします。
+
+    ![VM ユーザー アカウントを追加する](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
+
+
+
+
 
 ## <a name="review-and-export-the-inventory"></a>インベントリの確認とエクスポート
 

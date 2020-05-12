@@ -3,17 +3,17 @@ title: Azure IoT Central でルールに対する Webhook を作成する | Micr
 description: Azure IoT Central でルールが作動したときに他のアプリケーションに自動的に通知する Webhook を作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 12/02/2019
+ms.date: 04/03/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: d97bd7a3c6de92f22a9880040f407960d5257f6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb80b54c75d637842c5f50d9336629dedf758fa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158097"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100126"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central でルールに対する Webhook アクションを作成する
 
@@ -42,6 +42,78 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
 ## <a name="payload"></a>ペイロード
 
 ルールがトリガーされると、テレメトリ、デバイス、ルール、アプリケーションの詳細に関する JSON ペイロードを含む HTTP POST 要求が、コールバック URL に対して行われます。 ペイロードは次のようになります。
+
+```json
+{
+    "timestamp": "2020-04-06T00:20:15.06Z",
+    "action": {
+        "id": "<id>",
+        "type": "WebhookAction",
+        "rules": [
+            "<rule_id>"
+        ],
+        "displayName": "Webhook 1",
+        "url": "<callback_url>"
+    },
+    "application": {
+        "id": "<application_id>",
+        "displayName": "Contoso",
+        "subdomain": "contoso",
+        "host": "contoso.azureiotcentral.com"
+    },
+    "device": {
+        "id": "<device_id>",
+        "etag": "<etag>",
+        "displayName": "MXChip IoT DevKit - 1yl6vvhax6c",
+        "instanceOf": "<device_template_id>",
+        "simulated": true,
+        "provisioned": true,
+        "approved": true,
+        "cloudProperties": {
+            "City": {
+                "value": "Seattle"
+            }
+        },
+        "properties": {
+            "deviceinfo": {
+                "firmwareVersion": {
+                    "value": "1.0.0"
+                }
+            }
+        },
+        "telemetry": {
+            "<interface_instance_name>": {
+                "humidity": {
+                    "value": 47.33228889360127
+                }
+            }
+        }
+    },
+    "rule": {
+        "id": "<rule_id>",
+        "displayName": "Humidity monitor"
+    }
+}
+```
+ルールによって一定期間にわたって集計テレメトリが監視される場合、ペイロードには異なるテレメトリ セクションが含まれます。
+
+```json
+{
+    "telemetry": {
+        "<interface_instance_name>": {
+            "Humidity": {
+                "avg": 39.5
+            }
+        }
+    }
+}
+```
+
+## <a name="data-format-change-notice"></a>データ形式の変更に関する通知
+
+**2020 年 4 月 3 日**より前に作成および保存された Webhook が 1 つ以上ある場合、その Webhook を削除して新しい Webhook を作成する必要があります。 これは、古い Webhook では、今後非推奨となる古いペイロード形式が使用されているためです。
+
+### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook ペイロード (2020 年 4 月 3 日時点で非推奨となった形式)
 
 ```json
 {

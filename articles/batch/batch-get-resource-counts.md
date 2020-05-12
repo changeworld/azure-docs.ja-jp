@@ -1,20 +1,15 @@
 ---
-title: タスクとノードの状態をカウントする - Azure Batch | Microsoft Docs
+title: タスクとノードの状態をカウントする
 description: Azure Batch タスクと計算ノードの状態をカウントし、Batch ソリューションを容易に管理および監視できるようにします。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.topic: article
 ms.date: 09/07/2018
-ms.author: labrenne
+ms.topic: article
 ms.custom: seodec18
-ms.openlocfilehash: a7b58e96918d26851812aa96c18043121c081e94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023924"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116096"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>タスクとノードを状態別にカウントして、Batch ソリューションを監視する
 
@@ -34,10 +29,10 @@ ms.locfileid: "77023924"
 
 [Get Task Counts]\(タスク数の取得\) 操作では、タスクが次の状態別にカウントされます。
 
-- **アクティブ (Active)** - キューに入っており、実行可能であるが、現在、計算ノードに割り当てられていないタスクです。 まだ完了していない`active`親タスクに依存[しているタスクも ](batch-task-dependencies.md) です。 
-- **実行中 (Running)** - 計算ノードに割り当てられているが、まだ完了していないタスクです。 `running`[Get information about a task]\(タスクに関する情報の取得\)`preparing` 操作で示された状態が `running` または [ のタスクは、][rest_get_task] としてカウントされます。
+- **アクティブ (Active)** - キューに入っており、実行可能であるが、現在、計算ノードに割り当てられていないタスクです。 まだ完了していない[親タスクに依存](batch-task-dependencies.md)しているタスクも `active` です。 
+- **実行中 (Running)** - 計算ノードに割り当てられているが、まだ完了していないタスクです。 [[Get information about a task]\(タスクに関する情報の取得\)][rest_get_task] 操作で示された状態が `preparing` または `running` のタスクは、`running` としてカウントされます。
 - **完了 (Completed)** - 正常に完了したためもう実行できないタスク、または正常に完了しなかったが再試行制限に達したため実行できないタスクです。 
-- **成功 (Succeeded)** - タスク実行の結果が `success` であるタスクです。 Batch は、`TaskExecutionResult`executionInfo[ プロパティの ][rest_get_exec_info] プロパティを調べることで、タスクが成功したか失敗したかを判断します。
+- **成功 (Succeeded)** - タスク実行の結果が `success` であるタスクです。 Batch は、[executionInfo][rest_get_exec_info] プロパティの `TaskExecutionResult` プロパティを調べることで、タスクが成功したか失敗したかを判断します。
 - **失敗 (Failed)** - タスク実行の結果が `failure` であるタスクです。
 
 次の .NET コード サンプルは、状態別のタスクの数を取得する方法を示しています。 

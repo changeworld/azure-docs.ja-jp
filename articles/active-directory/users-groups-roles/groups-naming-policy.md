@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79497882"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582871"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory での Office 365 グループに対する名前付けポリシーの強制
 
-ユーザーが作成または編集した Office 365 グループに一貫した名前付け規則を強制するには、Azure Active Directory (Azure AD) でテナントのグループ名前付けポリシーを設定します。 たとえば、名前付けポリシーを使用して、グループ、メンバーシップ、地理的地域の機能やグループ作成者の職務を伝えることができます。 また、名前付けポリシーを使用して、アドレス帳でグループを分類することもできます。 このポリシーを使用して、グループ名やグループ エイリアスで特定の単語の使用を禁止できます。
+ユーザーが作成または編集した Office 365 グループに一貫した名前付け規則を強制するには、Azure Active Directory (Azure AD) で組織のグループ名前付けポリシーを設定します。 たとえば、名前付けポリシーを使用して、グループ、メンバーシップ、地理的地域の機能やグループ作成者の職務を伝えることができます。 また、名前付けポリシーを使用して、アドレス帳でグループを分類することもできます。 このポリシーを使用して、グループ名やグループ エイリアスで特定の単語の使用を禁止できます。
 
 > [!IMPORTANT]
 > Office 365 グループに対して Azure AD 名前付けポリシーを使用するには、1 つ以上の Office 365 グループのメンバーである一意のユーザーごとに Azure Active Directory Premium P1 ライセンスまたは Azure AD Basic EDU ライセンスを持っている必要がありますが、必ずしも割り当てる必要はありません。
@@ -42,7 +42,7 @@ ms.locfileid: "79497882"
 
 ### <a name="prefix-suffix-naming-policy"></a>プレフィックス/サフィックス名前付けポリシー
 
-名前付け規則の一般的な構造は、"Prefix[GroupName]Suffix" です。 複数のプレフィックスとサフィックスを定義できますが、設定で使用できる [GroupName] のインスタンスは 1 つに限られます。 プレフィックスまたはサフィックスには、固定文字列またはユーザー属性 (\[Department\] など) のいずれかを指定できます。ユーザー属性は、グループを作成しているユーザーに基づいて置き換えられます。 プレフィックス文字列とサフィックス文字列の組み合わせに使用できる合計文字数は 53 文字です。 
+名前付け規則の一般的な構造は、"Prefix[GroupName]Suffix" です。 複数のプレフィックスとサフィックスを定義できますが、設定で使用できる [GroupName] のインスタンスは 1 つに限られます。 プレフィックスまたはサフィックスには、固定文字列またはユーザー属性 (\[Department\] など) のいずれかを指定できます。ユーザー属性は、グループを作成しているユーザーに基づいて置き換えられます。 プレフィックスとサフィックスの文字列に許可される文字の総数は、グループ名を含めて 53 文字です。 
 
 プレフィックスとサフィックスには、グループ名とグループ エイリアスでサポートされている特殊文字を含めることができます。 グループ エイリアスでサポートされていないプレフィックスまたはサフィックスの文字はグループ名には適用されますが、グループ エイリアスからは削除されます。 この制限により、グループ名に適用されるプレフィックスとサフィックスは、グループ エイリアスに適用されるものとは異なる場合があります。 
 
@@ -138,7 +138,7 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 
    表示された **[アカウントにサインイン]** 画面で、管理者アカウントとパスワードを入力してサービスに接続し、 **[サインイン]** を選択します。
 
-1. 「[グループの設定を構成するための Azure Active Directory コマンドレット](groups-settings-cmdlets.md)」の手順に従って、このテナントのグループ設定を作成します。
+1. 「[グループの設定を構成するための Azure Active Directory コマンドレット](groups-settings-cmdlets.md)」の手順に従って、この組織のグループ設定を作成します。
 
 ### <a name="view-the-current-settings"></a>現在の設定を表示する
 

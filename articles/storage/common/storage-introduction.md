@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456347"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133792"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>コア Azure Storage サービスの概要
 
@@ -77,7 +77,7 @@ Azure Files と企業のファイル共有上のファイルとの違いの 1 �
 
 - 構成ファイルをファイル共有に格納して、複数の VM からアクセスできます。 グループ内の複数の開発者によって使用されるツールやユーティリティをファイル共有に格納できるため、だれでもそれらを見つけ、同じバージョンを使用することができます。
 
-- ファイル共有に書き込んだ後で処理または分析できるデータの例として、診断ログ、メトリック、およびクラッシュ ダンプの 3 つが挙げられます。
+- ファイル共有に書き込んだ後で処理または分析できるデータの例として、リソース ログ、メトリック、およびクラッシュ ダンプの 3 つが挙げられます。
 
 Azure Files の詳細については、「[Azure Files の概要](../files/storage-files-introduction.md)」を参照してください。
 

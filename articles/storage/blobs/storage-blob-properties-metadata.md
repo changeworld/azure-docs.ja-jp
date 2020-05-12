@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137664"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692464"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理
 
@@ -24,6 +24,11 @@ BLOB コンテナーは、そこに含まれているデータに加えて、シ
 - **システムのプロパティ**:システム プロパティは、各 BLOB ストレージ リソース上に存在します。 このようなプロパティには、読み取りまたは設定可能なものもありますが、読み取り専用のものもあります。 実際には、システムのプロパティの一部は、特定の標準 HTTP ヘッダーに対応しています。 .NET 用 Azure Storage クライアント ライブラリは、これらのプロパティをユーザーに代わって保持します。
 
 - **ユーザー定義のメタデータ**: ユーザー定義メタデータは、BLOB ストレージ リソースに対して指定された 1 つ以上の名前と値のペアで構成されます。 メタデータを使用すると、リソースに関する追加の値を格納できます。 メタデータ値は独自の目的にのみ使用され、リソースの動作には影響しません。
+
+> [!NOTE]
+> また、BLOB インデックス タグを使用して、ユーザー定義の任意のキー/値属性を BLOB ストレージ リソースと共に格納することもできます。 メタデータに似ていますが、BLOB インデックス タグにのみ自動的にインデックスが付けられて、ネイティブの BLOB サービスによってクエリ可能になります。 Azure Search などの別のサービスを使用する場合を除き、メタデータにネイティブでインデックスを付けてクエリを実行することはできません。
+>
+> この機能の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
 BLOB ストレージ リソースのメタデータとプロパティの値の取得は、2 つの手順から成るプロセスです。 これらの値を読み取るには、`FetchAttributes` または `FetchAttributesAsync` メソッドを呼び出して値を明示的に取得しておく必要があります。 この規則の例外は、`Exists` および `ExistsAsync` メソッドが、内部で適切な `FetchAttributes` メソッドを呼び出すことです。 これらのメソッドのいずれかを呼び出す場合、`FetchAttributes` は呼び出す必要がありません。
 

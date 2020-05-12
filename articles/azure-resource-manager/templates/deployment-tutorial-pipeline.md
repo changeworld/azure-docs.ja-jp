@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを継続的にビルド�
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084330"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731936"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -57,7 +57,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
 1. 緑色の **[New]** ボタンを選択します。
 1. **[Repository name]** にリポジトリ名を入力します。  たとえば、**AzureRmPipeline-repo** とします。 忘れずにそれぞれの **AzureRmPipeline** をプロジェクト名で置き換えてください。 このチュートリアルを **[Public]** または **[Private]** のどちらにするかを選択できます。 続いて、 **[Create repository]** を選択します。
-1. URL を書き留めます。 リポジトリの URL は **https://github.com/ [YourAccountName]/[YourRepositoryName]** 形式をとります。
+1. URL を書き留めます。 リポジトリの URL は、 **`https://github.com/[YourAccountName]/[YourRepositoryName]`** 形式です。
 
 このリポジトリは、*リモート リポジトリ*と呼ばれます。 同じプロジェクトの開発者は、自分の*ローカル リポジトリ*を複製して変更をリモート リポジトリにマージできます。
 
@@ -104,7 +104,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
     ```
 
     LF に関する警告が表示されることがあります。 この警告は無視できます。 **master** は master ブランチです。  通常は、更新ごとにブランチを作成します。 簡略化のため、このチュートリアルでは直接 master ブランチを使用します。
-1. ブラウザーから GitHub リポジトリに移動します。  URL は、 **https://github.com/ [YourAccountName]/[YourGitHubRepository]** です。 **CreateWebApp** フォルダーがあって、その中に 3 つのファイルが格納されているはずです。
+1. ブラウザーから GitHub リポジトリに移動します。  URL は **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** です。 **CreateWebApp** フォルダーがあって、その中に 3 つのファイルが格納されているはずです。
 1. **linkedStorageAccount.json** を選択してテンプレートを開きます。
 1. **[Raw]\(未加工\)** ボタンを選択します。 URL は **raw.githubusercontent.com** で始まります。
 1. URL のコピーを作成します。  後でこのチュートリアルの中でパイプラインを構成する際に、この値を指定する必要があります。

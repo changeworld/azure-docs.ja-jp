@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 75363212684bb09e84a4bc4881af26e6d2a8e7e3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585285"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559534"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Monitor 経由で Media Services のメトリックと診断ログを監視する
 
@@ -63,7 +63,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 |メトリックの名前|Display name|説明|
 |---|---|---|
 |Requests|Requests|ストリーミング エンドポイントで処理された HTTP 要求の合計数を提供します。|
-|エグレス|エグレス|エグレス バイト数の合計。 ストリーミング エンドポイントによってストリーミングされるバイト数など。|
+|エグレス|エグレス|ストリーミング エンドポイントあたりの合計エグレス バイト/分。|
 |SuccessE2ELatency|成功したエンド ツー エンドの待機時間|ストリーミング エンドポイントが要求を受信してから応答の最後のバイトが送信されるまでの期間。|
 
 ### <a name="why-would-i-want-to-use-metrics"></a>メトリックを使用する理由

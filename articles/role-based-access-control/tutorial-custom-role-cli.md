@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する
-description: このチュートリアルで、Azure CLI を使用して Azure リソースのカスタム ロールを作成してみましょう。
+title: チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する - Azure RBAC
+description: このチュートリアルでは、Azure CLI と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure カスタム ロールを作成します。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3efe9670d03a754cc90689c4b66d0843de4e275f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224069"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735506"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する
+# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションの管理プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションの管理プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ReaderSupportRole.json をエディターで開き、次の JSON を追加します。
 
-    各種のプロパティについては、「[Azure リソースのカスタム ロール](custom-roles.md)」を参照してください。
+    各種のプロパティについては、[Azure カスタム ロール](custom-roles.md)に関するページを参照してください。
 
     ```json
     {
@@ -269,4 +269,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure CLI を使用して Azure リソースのカスタム ロールを作成する](custom-roles-cli.md)
+> [Azure CLI を使用して Azure カスタム ロールを作成または更新する](custom-roles-cli.md)

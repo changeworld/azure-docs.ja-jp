@@ -4,14 +4,14 @@ description: Azure Cosmos DB を使用して空間データのインデックス
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137905"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839209"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB を使用して地理空間データのインデックスを付ける
 
@@ -28,11 +28,17 @@ Azure Cosmos DB のデータベース エンジンは、本当にスキーマに
 
 ## <a name="modifying-geospatial-data-type"></a>地理空間データ型の変更
 
-コンテナーでは、`geospatialConfig` によって、地理空間データのインデックスの作成方法が指定されます。 コンテナーごとに 1 つの `geospatialConfig` (geography または geometry) を指定する必要があります。 指定しない場合、`geospatialConfig` は既定で geography データ型になります。 `geospatialConfig` を変更すると、コンテナー内のすべての既存の地理空間データのインデックスが再作成されます。
+コンテナーでは、**地理空間構成**によって、空間データのインデックスの作成方法が指定されます。 コンテナーごとに 1 つの**地理空間構成** (geography または geometry) を指定します。
 
-> [!NOTE]
-> Azure Cosmos DB では、現時点では .NET SDK バージョン 3.6 以降のみの geospatialConfig への変更がサポートされています。
->
+Azure portal で、**geography** と **geometry** の間で空間型を切り替えることができます。 geometry 空間型に切り替える前に、[境界ボックスを使用した有効な空間 geometry インデックス作成ポリシー](#geometry-data-indexing-examples)を作成することが重要です。
+
+Azure portal 内の **Data Explorer** で**地理空間構成**を設定する方法を次に示します。
+
+![地理空間構成の設定](./media/sql-query-geospatial-index/geospatial-configuration.png)
+
+.NET SDK で `geospatialConfig` を変更して、**地理空間構成**を調整することもできます。
+
+指定しない場合、`geospatialConfig` は既定で geography データ型になります。 `geospatialConfig` を変更すると、コンテナー内のすべての既存の地理空間データのインデックスが再作成されます。
 
 次の例では、`geospatialConfig` プロパティを設定し、**boundingBox** を追加することで、地理空間データ型を `geometry` に変更しています。
 
@@ -112,7 +118,7 @@ Azure CLI、PowerShell、または任意の SDK を使用して、[インデッ�
 
 幾何データで用いられる平面は無限に広がっている可能性があるため、境界ボックスが必要です。 ただし、空間インデックスでは、有限の空間が必要です。 **geography** データ型では、地球が境界であり、境界ボックスを設定する必要はありません。
 
-データのすべて (またはほとんど) を含む境界ボックスを作成する必要があります。 空間インデックスを利用できるのは、完全に境界ボックスの内側にあるオブジェクトに対する計算を行う操作だけです。 クエリのパフォーマンスに悪影響を与えるため、境界ボックスは、必要以上に大きくしないようにする必要があります。
+データのすべて (またはほとんど) を含む境界ボックスを作成します。 空間インデックスを利用できるのは、完全に境界ボックスの内側にあるオブジェクトに対する計算を行う操作だけです。 境界ボックスを必要以上に大きくすると、クエリのパフォーマンスが低下します。
 
 次に示すのは、**geospatialConfig** を `geometry` に設定して、**幾何**データのインデックスを作成するインデックス作成ポリシーの例です。
 

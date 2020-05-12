@@ -1,28 +1,27 @@
 ---
 title: IP ファイアウォール規則
-description: SQL Database または SQL Data Warehouse のファイアウォールにサーバー レベルの IP ファイアウォール規則を構成します。 1 つまたはプールされたデータベースに対して、アクセスを管理し、データベース レベルの IP ファイアウォール規則を構成します。
+description: SQL Database または Azure Synapse Analytics のファイアウォールにサーバー レベルの IP ファイアウォール規則を構成します。 1 つまたはプールされたデータベースに対して、アクセスを管理し、データベース レベルの IP ファイアウォール規則を構成します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
-ms.custom: ''
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 2fe0881a7e6c624ea1104d1ebace307e6cf4e337
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606090"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629237"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
+# <a name="azure-sql-database-and-azure-synapse-analytics-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse Analytics の IP ファイアウォール規則
 
 > [!NOTE]
-> この記事は Azure SQL サーバーのほか、Azure SQL サーバー上の Azure SQL Database と Azure SQL Data Warehouse データベースの両方に適用されます。 簡潔にするため、*SQL Database* という言葉を使用して、SQL Database と SQL Data Warehouse の両方を言い表します。
+> この記事は Azure SQL サーバーのほか、Azure SQL サーバー上の Azure SQL Database と Azure Synapse Analytics データベースの両方に適用されます。 わかりやすいように、*SQL Database* という言葉で SQL Database と Azure Synapse の両方を言い表します。
 
 > [!IMPORTANT]
 > この記事は、*Azure SQL Database Managed Instance* には "*適用されません*"。 ネットワーク構成については、「[Azure SQL Database Managed Instance にアプリケーションを接続する](sql-database-managed-instance-connect-app.md)」を参照してください。
@@ -30,7 +29,7 @@ ms.locfileid: "81606090"
 たとえば、*mysqlserver* という名前の新しい Azure SQL サーバーを作成すると、SQL Database ファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。
 
 > [!IMPORTANT]
-> SQL Data Warehouse では、サーバー レベルの IP ファイアウォール規則のみがサポートされます。 データベース レベルの IP ファイアウォール規則はサポートされていません。
+> Azure Synapse では、サーバー レベルの IP ファイアウォール規則のみがサポートされます。 データベース レベルの IP ファイアウォール規則はサポートされていません。
 
 ## <a name="how-the-firewall-works"></a>ファイアウォールのしくみ
 インターネットおよび Azure からの接続の試行は、次の図に示すように、SQL サーバーまたは SQL データベースに到達する前にファイアウォールを通過する必要があります。
@@ -253,7 +252,7 @@ SQL Database サービスに期待どおりにアクセスできない場合は�
 
 - **ログインが許可されない、または正しくないパスワードが使用された:**
 
-  ログインでの SQL Database サーバーに対するアクセス許可がないか、パスワードが正しくない場合、サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、サーバーへの接続を試行する "*機会*" をクライアントに提供するだけです。 クライアントには、必要なセキュリティ資格情報の提供が依然として必要です。 ログインの準備の詳細については、「[SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可](sql-database-manage-logins.md)」を参照してください。
+  ログインでの SQL Database サーバーに対するアクセス許可がないか、パスワードが正しくない場合、サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、サーバーへの接続を試行する "*機会*" をクライアントに提供するだけです。 クライアントには、必要なセキュリティ資格情報の提供が依然として必要です。 ログインの準備の詳細については、[SQL Database と Azure Synapse へのデータベース アクセスの制御と許可](sql-database-manage-logins.md)に関する記事を参照してください。
 
 - **動的 IP アドレス:**
 

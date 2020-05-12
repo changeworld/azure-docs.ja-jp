@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/12/2020
-ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233703"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598500"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -200,9 +200,9 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 クラスター内のすべてのノードでパスワードが変更されます。
 
-### <a name="change-the-ssh-user-password"></a>SSH ユーザーのパスワードの変更
+### <a name="change-the-ssh-user-password-or-public-key"></a>SSH ユーザーのパスワードまたは公開キーを変更する
 
-1. テキスト エディターを使用して、次のテキストを **changepassword.sh** という名前のファイルに保存します。
+1. テキスト エディターを使用して、次のテキストを **changecredentials.sh** という名前のファイルに保存します。
 
     > [!IMPORTANT]  
     > 行の終わりとして LF を使用するエディターを使用する必要があります。 エディターで CRLF が使用される場合、スクリプトは動作しません。
@@ -219,16 +219,22 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 4. **[スクリプト アクション]** ページで、 **[新規で送信]** を選択します。
 5. **[スクリプト アクションの送信]** ページで、次の情報を入力します。
 
+> [!NOTE]
+> SSH パスワードでは次の文字は使用できません。
+> ```
+> " ' ` / \ < % ~ | $ & ! 
+> ```
+
    | フィールド | 値 |
    | --- | --- |
    | スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
-   | 名前 |"SSH パスワードの変更" |
-   | Bash スクリプト URI |changepassword.sh ファイルへの URI |
+   | 名前 |"SSH 資格情報の変更" |
+   | Bash スクリプト URI |changecredentials.sh ファイルへの URI |
    | ノードの種類:(ヘッド、ワーカー、Nimbus、スーパーバイザー、または Zookeeper) |表示するすべてのノード型に ✓ |
    | パラメーター |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |
    | このスクリプト アクションを保持する… |このフィールドはオフのままにします。 |
 
-6. **[作成]** を選択してスクリプトを適用します。 スクリプトの完了後は、新しいパスワードで SSH を使用して、クラスターに接続することができます。
+6. **[作成]** を選択してスクリプトを適用します。 スクリプトの完了後は、新しい資格情報で SSH を使用して、クラスターに接続できます。
 
 ## <a name="find-the-subscription-id"></a>サブスクリプション ID の検索
 

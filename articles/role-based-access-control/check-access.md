@@ -1,6 +1,6 @@
 ---
-title: クイックスタート - Azure リソースに対するユーザーのアクセス権を表示する
-description: このクイックスタートでは、ロールベースのアクセス制御 (RBAC) と Azure portal を使用して、ユーザーまたは他のセキュリティ プリンシパルが Azure リソースに対して持っているアクセス権を表示する方法について説明します。
+title: クイックスタート - Azure リソースに対するユーザーのアクセス権を表示する - Azure RBAC
+description: このクイックスタートでは、ユーザーまたは他のセキュリティ プリンシパルが Azure リソースに対して持っているアクセス権を、Azure portal と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して表示する方法について説明します。
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74419608"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734163"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>クイック スタート:Azure リソースに対するユーザーのアクセス権を表示する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) の **[アクセス制御 (IAM)]** ブレードを使用して、ユーザーまたは別のセキュリティ プリンシパルが Azure リソースに対して持っているアクセス権を表示できます。 ただし、1 人のユーザーまたは別のセキュリティ プリンシパルのアクセス権をすばやく表示することだけが必要な場合があります。 これを行う最も簡単な方法は、Azure portal の **[アクセスの確認]** 機能を使うことです。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) の **[アクセス制御 (IAM)]** ブレードを使用して、ユーザーまたは別のセキュリティ プリンシパルが Azure リソースに対して持っているアクセス権を表示できます。 ただし、1 人のユーザーまたは別のセキュリティ プリンシパルのアクセス権をすばやく表示することだけが必要な場合があります。 これを行う最も簡単な方法は、Azure portal の **[アクセスの確認]** 機能を使うことです。
 
 ## <a name="view-role-assignments"></a>ロールの割り当てを表示する
 
@@ -54,4 +54,4 @@ ms.locfileid: "74419608"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
+> [チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)

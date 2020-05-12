@@ -1,23 +1,23 @@
 ---
 title: クエリを監視する
 titleSuffix: Azure Cognitive Search
-description: パフォーマンスとスループットに対するクエリ メトリックを監視します。 診断ログにクエリ文字列の入力を収集して分析します。
+description: パフォーマンスとスループットに対するクエリ メトリックを監視します。 リソース ログにクエリ文字列の入力を収集して分析します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462525"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127691"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリ要求を監視する
 
-この記事では、メトリックと診断ログを使用してクエリのパフォーマンスと量を測定する方法について説明します。 また、クエリで使用される入力用語を収集する方法についても説明します。これは、検索コーパスの有用性と有効性を評価する必要がある場合に欠かせない情報です。
+この記事では、メトリックとリソース ログを使用してクエリのパフォーマンスと量を測定する方法について説明します。 また、クエリで使用される入力用語を収集する方法についても説明します。これは、検索コーパスの有用性と有効性を評価する必要がある場合に欠かせない情報です。
 
 メトリックにフィードされる履歴データは、30 日間保存されます。 保持期間を延長する場合、またはオペレーショナル データとクエリ文字列についてレポートする場合は、ログに記録されたイベントとメトリックを保持するためのストレージ オプションを指定する[診断設定](search-monitor-logs.md)を必ず有効にしてください。
 
@@ -76,7 +76,7 @@ ms.locfileid: "77462525"
 
 クライアントに応じて、スロットルされた要求は次の方法で示されます。
 
-+ サービスから "You are sending too many requests. 後でもう一度やり直してください。" というエラー メッセージが表示されることがあります。 
++ サービスから "You are sending too many requests.  後でもう一度やり直してください。" というエラー メッセージが表示されることがあります。 
 + サービスから、現在サービスが利用できないことを示す 503 エラー コードが返されます。 
 + ポータル (Search エクスプローラーなど) を使用している場合、クエリは通知なしで削除されるため、再度 [検索] をクリックする必要があります。
 
@@ -118,7 +118,7 @@ ms.locfileid: "77462525"
 
 ## <a name="identify-strings-used-in-queries"></a>クエリで使用されている文字列を特定する
 
-診断ログを有効にすると、システムによってクエリ要求が **AzureDiagnostics** テーブルにキャプチャされます。 前提条件として、Log Analytics ワークスペースまたは別のストレージ オプションを指定して既に[診断ログ](search-monitor-logs.md)を有効にしていることが必要です。
+リソース ログを有効にすると、システムによってクエリ要求が **AzureDiagnostics** テーブルにキャプチャされます。 前提条件として、Log Analytics ワークスペースまたは別のストレージ オプションを指定して既に[リソース ログ](search-monitor-logs.md)を有効にしていることが必要です。
 
 1. [監視] セクションで **[ログ]** を選択し、Log Analytics で空のクエリ ウィンドウを開きます。
 

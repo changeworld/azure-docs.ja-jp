@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e85c8c0990a2659dba1f254a8f1aa7c7be7852eb
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380755"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508090"
 ---
 # <a name="azure-sql-database-long-term-retention"></a>Azure SQL Database の長期保有
 
@@ -84,8 +84,7 @@ Azure SQL Database マネージド インスタンスを使用して長期的な
 - **限定パブリック プレビュー** - このプレビューは EA および CSP サブスクリプションでのみ利用可能で、使用が制限されています。  
 - [**PowerShell のみ**](sql-database-managed-instance-long-term-backup-retention-configure.md) - 現在 Azure portal はサポートされていません。 PowerShell を使用して LTR を有効にする必要があります。 
 
-登録を要求するには、サポート トピック **[Backup, Restore, and Business Continuity/Long-term backup retention]\(バックアップ、復元、および事業継続/バックアップ長期保有\)** の下で [Azure サポート チケット](https://azure.microsoft.com/support/create-ticket/)を作成してください。
-
+登録を要求するには、[Azure サポート チケット](https://azure.microsoft.com/support/create-ticket/)を作成します。 [問題の種類] については [技術的な問題] を選択し、[サービス] には [SQL Database Managed Instance] を選択し、[問題の種類] には **[Backup, Restore, and Business continuity / Long-term backup retention]\(バックアップ、復元、およびビジネス継続性 / 長期のバックアップ リテンション期間\)** を選択します。 要求に、マネージド インスタンスの LTR の限定パブリック プレビューに登録したい旨を明記してください。
 
 ## <a name="configure-long-term-backup-retention"></a>長期のバックアップ リテンション期間の構成
 
@@ -93,7 +92,7 @@ Azure Portal または PowerShell を使用して長期のリテンション期�
 
 ## <a name="restore-database-from-ltr-backup"></a>LTR バックアップからデータベースを復元する
 
-LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。 データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 Azure portal または PowerShell を使用して LTR バックアップからデータベースを復元する方法については、「[Azure SQL Database の長期的なバックアップ保有期間を管理する](sql-database-long-term-backup-retention-configure.md)」を参照してください。
+LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。 データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 Azure portal または PowerShell を使用して LTR バックアップからデータベースを復元する方法については、「[Azure SQL Database の長期的なバックアップ保有期間を管理する](sql-database-long-term-backup-retention-configure.md)」を参照してください。 要求に、マネージド インスタンスの LTR の限定パブリック プレビューに登録したい旨を明記してください。
 
 ## <a name="next-steps"></a>次のステップ
 

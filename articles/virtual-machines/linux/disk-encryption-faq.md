@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985407"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786990"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux VM に対する Azure Disk Encryption に関する FAQ
 
@@ -21,7 +21,7 @@ ms.locfileid: "80985407"
 
 ## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption とはなんですか。
 
-Linux VM に対する Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、OS ディスク* とデータ ディスクの完全なディスク暗号化を提供します。 また、[EncryptFormatAll 機能](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)を使用すると、一時的なリソース ディスクの暗号化を行うことができます。 コンテンツは、暗号化された VM からストレージ バックエンドにフローします。 これにより、カスタマー マネージド キーを使用してエンド ツー エンドの暗号化を行うことができます。
+Linux VM に対する Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、OS ディスク* とデータ ディスクの完全なディスク暗号化を提供します。 また、[EncryptFormatAll 機能](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)を使用すると、一時的なディスクの暗号化を行うことができます。 コンテンツは、暗号化された VM からストレージ バックエンドにフローします。 これにより、カスタマー マネージド キーを使用してエンド ツー エンドの暗号化を行うことができます。
  
 「[サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)」を参照してください。
 
@@ -61,7 +61,7 @@ Storage のサーバー側の暗号化では、Azure Storage で Azure Managed D
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure Disk Encryption とカスタマー マネージド キーを使用したStorage のサーバー側の暗号化の違いはなんですか。また、これらのソリューションはどのようなときに使用すべきでしょうか。
 
-Azure Disk Encryption は、カスタマー マネージド キーを使用して、OS ディスク、データ ディスク、および一時的なリソース ディスクをエンド ツー エンドで暗号化します。
+Azure Disk Encryption は、カスタマー マネージド キーを使用して、OS ディスク、データ ディスク、および一時的なディスクをエンド ツー エンドで暗号化します。
 - 上記とエンド ツー エンドの暗号化をすべて暗号化する必要がある場合は、Azure Disk Encryption を使用します。 
 - カスタマー マネージド キーを使用して保存データのみを暗号化する必要がある場合は、[カスタマー マネージド キーを使用したサーバー側の暗号化](disk-encryption.md)を使用します。 カスタマー マネージド キーを使用して、Azure Disk Encryption と、Storage のサーバー側の暗号化の両方でディスクを暗号化することはできません。 
 - Linux ディストリビューションが [Azure Disk Encryption でサポートされているオペレーティング システム](disk-encryption-overview.md#supported-operating-systems)に記載されていない場合、または [Windows でサポートされていないシナリオ](disk-encryption-linux.md#unsupported-scenarios)で説明されているシナリオを使用している場合は、[カスタマー マネージド キーを使用したサーバー側の暗号化](disk-encryption.md)を使用することを検討してください。
@@ -148,7 +148,9 @@ Azure Disk Encryption では、暗号化解除の既定値である 256 ビッ�
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 詳細については、「[EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)」を参照してください。        
 
 ## <a name="is-xfs-filesystem-supported"></a>XFS ファイルシステムはサポートされていますか。
-XFS ボリュームは、EncryptFormatAll を使用したデータ ディスクの暗号化でのみサポートされています。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)」を参照してください。
+XFS OS ディスクの暗号化がサポートされています。
+
+XFS データ ディスクの暗号化は、EncryptFormatAll パラメーターが使用されている場合にのみサポートされます。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)」を参照してください。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>暗号化された VM をバックアップおよび復元することはできますか。 
 

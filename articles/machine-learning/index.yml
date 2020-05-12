@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 04/30/2020
-  ms.openlocfilehash: b1df2d4420e25027a545b8a708cda31cf0ff152f
-  ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+  ms.openlocfilehash: d1e93ac4efb366f09b425be74be6eb8aeda9a713
+  ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/01/2020
-  ms.locfileid: "82690945"
+  ms.lasthandoff: 05/10/2020
+  ms.locfileid: "83005973"
 landingContent:
 - title: 機械学習の概要
   linkLists:
@@ -67,6 +67,8 @@ landingContent:
     links:
     - text: 環境の設定方法
       url: how-to-configure-environment.md
+    - text: モデルの解釈と説明
+      url: how-to-machine-learning-interpretability.md
     - text: ディープ ラーニングと ML
       url: concept-deep-learning-vs-machine-learning.md
     - text: Scikit-learn を使ってトレーニングする
@@ -79,7 +81,7 @@ landingContent:
       url: how-to-train-keras.md
     - text: ML パイプラインとは
       url: concept-ml-pipelines.md
-- title: モデルの展開と管理
+- title: モデルの展開と管理 (MLOps)
   linkLists:
   - linkListType: how-to-guide
     links:

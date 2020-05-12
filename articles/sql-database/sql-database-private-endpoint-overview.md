@@ -3,24 +3,24 @@ title: Private Link
 description: プライベート エンドポイント機能の概要
 author: rohitnayakmsft
 ms.author: rohitna
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd717d653e57fbb8c540e4ef023011c64778a3b0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78945371"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628999"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse の Private Link
+# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対するプライベート リンク
 
 Private Link を使用すると、**プライベート エンドポイント**を経由して Azure 内のさまざまな PaaS サービスに接続できます。 Private Link 機能をサポートしている PaaS サービスの一覧については、「[Private Link のドキュメント](../private-link/index.yml)」ページを参照してください。 プライベート エンドポイントは、特定の [VNet](../virtual-network/virtual-networks-overview.md) およびサブネット内のプライベート IP アドレスです。 
 
 > [!IMPORTANT]
-> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 この記事は、Azure SQL Database の**マネージド インスタンス**のデプロイには適用*されません*。
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーで作成される SQL Database と Azure Synapse Analytics データベースの両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と Azure Synapse Analytics の両方を言い表します。 この記事は、Azure SQL Database の**マネージド インスタンス**のデプロイには適用*されません*。
 
 ## <a name="data-exfiltration-prevention"></a>データの流出防止
 
@@ -28,7 +28,7 @@ Azure SQL Database におけるデータの流出とは、データベース管�
 
 SQL Database に接続している Azure VM 内で SQL Server Management Studio (SSMS) を実行しているユーザーのシナリオについて考えてみましょう。 この SQL Database は、米国西部のデータ センターにあります。 次の例では、ネットワーク アクセス制御を使用して SQL Database のパブリック エンドポイントでアクセスを制限する方法を示します。
 
-1. [Allow Azure Services]\(Azure サービスを許可する\) を **[オフ]** に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 サーバーおよびデータベース レベルのファイアウォール規則で IP アドレスが許可されていないことを確認してください。 詳細については、「[Azure SQL Database および Data Warehouse のネットワーク アクセスの制御](sql-database-networkaccess-overview.md)」を参照してください。
+1. [Allow Azure Services]\(Azure サービスを許可する\) を **[オフ]** に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 サーバーおよびデータベース レベルのファイアウォール規則で IP アドレスが許可されていないことを確認してください。 詳細については、[Azure SQL Database および Azure Synapse Analytics のネットワーク アクセスの制御](sql-database-networkaccess-overview.md)に関するページを参照してください。
 1. VM のプライベート IP アドレスを使用して SQL Database へのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)と [VNet ファイアウォール規則](sql-database-firewall-configure.md)に関する記事を参照してください。
 1. Azure VM で、次のように[ネットワーク セキュリティ グループ (NSG)](../virtual-network/manage-network-security-group.md) とサービス タグを使用して、送信接続の範囲を絞り込みます。
     - 米国西部にある SQL Database への接続のみを許可するように、サービス タグへのトラフィックを許可する NSG ルールを指定します (Service Tag = SQL.WestUs)
@@ -142,7 +142,6 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 結果には、1 つの IP アドレスが稼働していることが示されます。これは、プライベート エンドポイントの IP アドレスに対応します。
 
-
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して接続を確認する
 > [!NOTE]
 > クライアントの接続文字列で、サーバーの**完全修飾ドメイン名 (FQDN)** を使用します。 IP アドレスに対して直接行われたログイン試行は、すべて失敗します。 これは意図的な動作です。トラフィックは、プライベート エンドポイントによってリージョン内の SQL Gateway にルーティングされ、ログインに成功するためには FQDN を指定する必要があるためです。
@@ -174,11 +173,9 @@ where session_id=@@SPID
 - [ExpressRoute 回線](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Polybase を使用した Azure SQL Data Warehouse から Azure Storage への接続
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Polybase を使用した Azure Synapse Analytics から Azure Storage への接続
 
-PolyBase は、Azure ストレージ アカウントから Azure SQL Data Warehouse にデータを読み込むときによく使用されます。 データの読み込み元の Azure Storage アカウントで、プライベート エンドポイント、サービス エンドポイント、または IP ベースのファイアウォールを介した一連の VNet サブネットだけにアクセスを制限している場合、PolyBase からそのアカウントへの接続が切断されます。 VNet に結び付けられた Azure Storage に接続する Azure SQL Data Warehouse で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、[ここ](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)に示された手順に従います。 
-
-
+PolyBase は、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むときによく使用されます。 データの読み込み元の Azure Storage アカウントで、プライベート エンドポイント、サービス エンドポイント、または IP ベースのファイアウォールを介した一連の VNet サブネットだけにアクセスを制限している場合、PolyBase からそのアカウントへの接続が切断されます。 VNet に結び付けられた Azure Storage に接続する Azure Synapse Analytics で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、[ここ](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)に示された手順に従います。 
 
 ## <a name="next-steps"></a>次のステップ
 

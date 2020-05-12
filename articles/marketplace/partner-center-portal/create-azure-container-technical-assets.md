@@ -1,29 +1,29 @@
 ---
-title: Azure VM の技術資産を作成する
-description: この記事では、Azure Marketplace 用のコンテナー プランを構成するための手順と要件について説明します。
+title: Azure Container オファーの技術的概念 - Microsoft コマーシャル マーケットプレース
+description: Azure Marketplace でコンテナー オファーを構成するのに役立つ技術リソースとガイドライン。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730641"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791886"
 ---
-# <a name="create-an-azure-vm-technical-asset"></a>Azure VM の技術資産を作成する
+# <a name="create-an-azure-container-offer"></a>Azure Container オファーを作成する
 
 > [!IMPORTANT]
-> Azure Container プランの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 プランが移行されるまでは、Cloud パートナー ポータル向けの「[コンテナーの技術資産を準備する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets)」の手順に従ってプランを管理してください。
+> 現在、Azure Container オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 プランが移行されるまでは、Cloud パートナー ポータル向けの「[コンテナーの技術資産を準備する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets)」の手順に従ってプランを管理してください。
 
-この記事では、Azure Marketplace 用のコンテナー プランを構成するための手順と要件について説明します。
+この記事では、Azure Marketplace でコンテナー オファーを作成するのに役立つ技術リソースと推奨事項を示します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-クイックスタート、チュートリアル、サンプルについては、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances) に関する記事をご覧ください。
+クイックスタート、チュートリアル、サンプルについては、[Azure Container Instances のドキュメント](https://docs.microsoft.com/azure/container-instances)をご覧ください。
 
 ## <a name="fundamental-technical-knowledge"></a>技術的な知識の基礎
 
@@ -61,6 +61,6 @@ ms.locfileid: "81730641"
 - [チュートリアル:Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
 - [チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)。
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 - [コンテナー オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)。

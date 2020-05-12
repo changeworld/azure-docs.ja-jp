@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921413"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628284"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -82,13 +82,13 @@ Enterprise Dev/Test オファーに基づいてサブスクリプションを作
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Windows N シリーズ VM のドライバーが見つかりません
 
-Windows ベースの VM 用のドライバーは、[ここ](../windows/n-series-driver-setup.md)にあります。
+Windows ベースの VM 用のドライバーのインストール手順については、[こちら](../sizes-gpu.md#supported-operating-systems-and-drivers)を参照してください。
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>N シリーズ VM 内で GPU インスタンスが見つかりません
 
-Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に各 VM に NVIDIA グラフィック ドライバーをインストールする必要があります。 [Windows VM](../windows/n-series-driver-setup.md) 用と [Linux VM](../linux/n-series-driver-setup.md) 用のドライバー セットアップ情報を利用できます。
+Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に各 VM にグラフィック ドライバーをインストールする必要があります。 ドライバーの設定情報については[こちら](../sizes-gpu.md#supported-operating-systems-and-drivers)を参照してください。
 
-## <a name="is-n-series-vms-available-in-my-region"></a>自分のリージョンで N シリーズ VM を使用できますか?
+## <a name="are-n-series-vms-available-in-my-region"></a>自分のリージョンで N シリーズ VM を使用できますか?
 
 [リージョンごとの使用可能な製品の表](https://azure.microsoft.com/regions/services)で、使用できるかどうかを確認できます。価格については、[こちら](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)を参照してください。
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でエグレス トラフィック�
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2cd7aeea272d22615d3ba3d3db6acc2c84d22cca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080180"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207175"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -165,19 +165,15 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 | *.gk.\<location\>.azmk8s.io | HTTPS: 443    | マスター サーバーで実行されている Gatekeeper 監査エンドポイントと通信して、監査結果を取得する Azure Policy アドオン。 |
 | dc.services.visualstudio.com | HTTPS: 443 | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Windows Server ベースのノード (パブリック プレビュー) が有効な場合に必要
+## <a name="required-by-windows-server-based-nodes-enabled"></a>Windows Server ベースのノードが有効な場合に必要
 
-> [!CAUTION]
-> 以下の一部の機能はプレビュー段階です。  この記事の推奨事項は、機能がパブリック プレビューおよび将来のリリース段階に移行するときに、変更される可能性があります。
-
-次の FQDN/アプリケーション規則は Windows Server ベースの AKS クラスターの場合に必要です。
+次の FQDN またはアプリケーション規則が、Windows Server ベースのノード プールを使用する場合に必要です。
 
 | FQDN                                    | Port      | 用途      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net、winlayers.blob.core.windows.net、winlayers.cdn.mscr.io、go.microsoft.com | HTTPS: 443 | Windows 関連のバイナリをインストールするため |
 | mp.microsoft.com、www<span></span>.msftconnecttest.com、ctldl.windowsupdate.com | HTTP: 80 | Windows 関連のバイナリをインストールするため |
 | kms.core.windows.net | TCP: 1688 | Windows 関連のバイナリをインストールするため |
-
 
 ## <a name="next-steps"></a>次のステップ
 

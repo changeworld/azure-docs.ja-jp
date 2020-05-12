@@ -7,21 +7,31 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228283"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176092"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
-[Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
+
+:::row:::
+    :::column:::
+        [![Azure File Sync を紹介するインタビューとデモ- クリックして再生](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
+    :::column-end:::
+    :::column:::
+        Azure File Sync は、オンプレミスの Windows Server またはクラウド VM に多数の Azure ファイル共有をキャッシュできるサービスです。 
+        
+        この記事では、Azure File Sync の概念と機能を紹介します。 Azure File Sync について理解したら、[Azure File Sync デプロイ ガイド](storage-sync-files-deployment-guide.md)に従って、このサービスを試してみることを検討してください。        
+    :::column-end:::
+:::row-end:::
+
+ファイルは [Azure ファイル共有](storage-files-introduction.md)のクラウドに格納されます。 Azure ファイル共有は 2 つの方法で使用できます。これらのサーバーレスの Azure ファイル共有 (SMB) を直接マウントするか、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュします。選択するデプロイ オプションによって、デプロイを計画するときに考慮する必要がある側面が変わります。 
 
 - **Azure ファイル共有を直接マウントする**:Azure Files では SMB アクセスが提供されるため、Windows、macOS、および Linux で使用可能な標準的な SMB クライアントを使用して、オンプレミスまたはクラウドで Azure ファイル共有をマウントすることができます。 Azure ファイル共有はサーバーレスであるため、運用環境でデプロイするシナリオでは、ファイル サーバーや NAS デバイスを管理する必要ありません。 つまり、ソフトウェアの修正プログラムを適用したり、物理ディスクを交換したりする必要はありません。 
 
-- **Azure File Sync を使用したオンプレミスでの Azure ファイル共有のキャッシュ**:Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持しながら、Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、オンプレミス (またはクラウド) の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 
-
-この記事では、主に Azure File Sync のデプロイに関する考慮事項について説明します。オンプレミスまたはクラウド クライアントによって直接マウントされる Azure ファイル共有のデプロイを計画するには、「[Azure Files のデプロイの計画](storage-files-planning.md)」を参照してください。
+- **Azure File Sync を使用したオンプレミスでの Azure ファイル共有のキャッシュ**:Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持しながら、Azure Files で組織のファイル共有を一元化できます。 Azure File Sync によって、オンプレミス (またはクラウド) の Windows Server が Azure ファイル共有の高速キャッシュに変換されます。 
 
 ## <a name="management-concepts"></a>管理の概念
 Azure File Sync のデプロイには、次の 3 つの基本的な管理オブジェクトがあります。
@@ -50,7 +60,7 @@ Azure File Sync をデプロイする場合は、次のことをお勧めしま�
 - Azure ファイル共有をデプロイする際には、ストレージ アカウントの IOPS 制限に注意してください。 ファイル共有をストレージ アカウントに 1:1 でマップするのが理想的ですが、これは、組織と Azure の両方からのさまざまな制限や制約により、実現できない場合もあります。 1 つのストレージ アカウントに 1 つのファイル共有のみをデプロイすることができない場合は、使用頻度が高い共有と低い共有を考慮し、最もホットなファイル共有が同じストレージ アカウントに一緒に配置されないようにしてください。
 
 ## <a name="windows-file-server-considerations"></a>Windows ファイル サーバーに関する考慮事項
-Windows Server で同期機能を有効にするには、Azure File Sync のダウンロード可能なエージェントをインストールする必要があります。 Azure File Sync エージェントには、2 つの主な構成要素があります。`FileSyncSvc.exe` は、サーバー エンドポイントの変更の監視と同期セッションの開始を担当するバックグラウンド Windows サービスであり、`StorageSync.sys` はクラウドを使った階層化と迅速なディザスター リカバリーを可能にするファイル システム フィルターです。  
+Windows Server で同期機能を有効にするには、Azure File Sync のダウンロード可能なエージェントをインストールする必要があります。 Azure File Sync エージェントには、2 つの主な構成要素があります。`FileSyncSvc.exe` は、サーバー エンドポイントの変更の監視と同期セッションの開始を担当するバックグラウンド Windows サービスであり、`StorageSync.sys` はクラウドの階層化と迅速なディザスター リカバリーを可能にするファイル システム フィルターです。  
 
 ### <a name="operating-system-requirements"></a>オペレーティング システムの要件
 Azure File Sync は、次のバージョンの Windows Server でサポートされています。
@@ -227,7 +237,7 @@ Azure File Sync エージェントがインストールされているサーバ�
 その他の HSM ソリューションを Azure File Sync で使用することはできません。
 
 ## <a name="identity"></a>ID
-Azure File Sync は、同期のセットアップ以外に特別な設定を行わなくても、標準の AD ベースの ID で動作します。Azure File Sync を使用する場合に一般的に想定されるのは、ほとんどのアクセスが Azure ファイル共有ではなく、Azure File Sync キャッシュ サーバーを経由することです。 サーバー エンドポイントは Windows Server 上にあり、Windows Server では AD と Windows スタイルの ACL が非常に長い間サポートされてきたため、ストレージ同期サービスに登録されている Windows ファイル サーバーがドメインに参加していることを確認する以外は必要はありません。 Azure File Sync では、Azure ファイル共有内のファイルに ACL が格納され、それらはすべてのサーバー エンドポイントにレプリケートされます。
+Azure File Sync は、同期のセットアップ以外に特別な設定を行わなくても、標準の AD ベースの ID で動作します。Azure File Sync を使用する場合に一般的に想定されるのは、ほとんどのアクセスが Azure ファイル共有ではなく、Azure File Sync キャッシュ サーバーを経由することです。 サーバー エンドポイントは Windows Server 上にあり、Windows Server では AD と Windows スタイルの ACL が長い間サポートされてきたため、ストレージ同期サービスに登録されている Windows ファイル サーバーがドメインに参加していることを確認する以外は何も必要ありません。 Azure File Sync では、Azure ファイル共有内のファイルに ACL が格納され、それらはすべてのサーバー エンドポイントにレプリケートされます。
 
 Azure ファイル共有に直接加えられた変更は、同期グループ内のサーバー エンドポイントに同期するのに時間がかかる場合がありますが、ファイル共有に対する AD アクセス許可をクラウドで直接適用できることも確認する必要があります。 これを行うには、Windows ファイル サーバーがドメイン参加しているのと同じように、ストレージ アカウントをオンプレミスの AD にドメイン参加させる必要があります。 お客様が所有する Active Directory へのストレージ アカウントのドメイン参加について詳しくは、[Azure Files Active Directory の概要](storage-files-active-directory-overview.md)に関するページを参照してください。
 
@@ -256,13 +266,17 @@ Azure File Sync を使用する場合、Windows Server のストレージの保�
 
 そのファイル システムにおける暗号化機能を提供するために、Windows Server は BitLocker 受信トレイを提供します。 BitLocker は Azure File Sync に対して完全に透過的です。BitLocker などの暗号化メカニズムを使用する主な理由は、ディスクの盗難によるオンプレミスのデータセンターからの物理的なデータの流出を防ぎ、権限のない OS によってデータへの不正読み取り、または不正書き込みが行われるのを防ぐためです。 BitLocker の詳細については、「[BitLocker の概要](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)」を参照してください。
 
-NTFS ボリューム下に配置されるという点で BitLocker と同様に機能するサード パーティ製品は、Azure File Sync と同様に完全に透過的に機能する必要があります。 
+NTFS ボリューム下に配置されるという点で BitLocker と同様に機能するサード パーティ製品は、Azure File Sync で同様に完全に透過的に機能するはずです。 
 
 データを暗号化するもう 1 つの主な方法は、アプリケーションがファイルを保存するときにファイルのデータ ストリームを暗号化することです。 アプリケーションによっては、これがネイティブに実行されることもありますが、一般的にはそうではありません。 ファイルのデータ ストリームを暗号化する方法の例としては、Azure Information Protection (AIP)/Azure Rights Management Services (Azure RMS)/Active Directory RMS があります。 AIP/RMS などの暗号化メカニズムを使用する主な理由は、ファイル共有のデータを、誰かがフラッシュ ドライブなどの別の場所にコピーしたり、承認されていないユーザーに電子メールで送信したりすることによって、データがファイル共有から流出することを防ぐためです。 ファイルのデータ ストリームがファイル形式の一部として暗号化されている場合、このファイルは引き続き Azure ファイル共有で暗号化されます。 
 
 Azure File Sync は、ファイル システムより上に位置し、ファイルのデータ ストリームの下にある NTFS 暗号化ファイル システム (NTFS EFS) やサード パーティの暗号化ソリューションと相互運用できません。 
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
+
+> [!NOTE]
+> Azure File Sync サービスは、2020 年 8 月に TLS 1.0 と 1.1 のサポートを削除します。 サポートされているすべての Azure File Sync エージェントのバージョンは、既に TLS 1.2 を既定で使用しています。 TLS 1.2 がサーバーで無効になっているか、プロキシが使用されている場合は、以前のバージョンの TLS が使用される可能性があります。 プロキシを使用している場合は、プロキシの構成を確認することをお勧めします。 2020 年 5 月 1 日より後に追加された Azure File Sync サービスのリージョンでは TLS 1.2 のみがサポートされます。TLS 1.0 と 1.1 のサポートは、2020 年 8 月に既存のリージョンから削除されます。  詳細については、[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)を参照してください。
+
 Azure File Sync エージェントは、Azure File Sync REST プロトコルと FileREST プロトコルを使用して、ストレージ同期サービスと Azure ファイル共有と通信します。どちらも、常にポート443 経由で HTTPS を使用します。 Azure File Sync では、暗号化されていない要求が HTTP 経由で送信されることはありません。 
 
 Azure ストレージ アカウントには、転送中の暗号化を要求するスイッチが含まれています。これは既定で有効になっています。 ストレージ アカウント レベルでスイッチが無効になっており、Azure ファイル共有への暗号化されていない接続が可能な場合でも、Azure File Sync は暗号化されたチャネルのみを使用してファイル共有にアクセスします。
@@ -295,8 +309,8 @@ Azure File Sync は、次のリージョンで利用できます。
 | パブリック | オーストラリア | オーストラリア東部 | `australiaeast` |
 | パブリック | オーストラリア | オーストラリア南東部 | `australiasoutheast` |
 | パブリック | ブラジル | ブラジル南部 | `brazilsouth` |
-| パブリック | カナダ | カナダ中部 | `canadacentral` |
-| パブリック | カナダ | カナダ東部 | `canadaeast` |
+| パブリック | Canada | カナダ中部 | `canadacentral` |
+| パブリック | Canada | カナダ東部 | `canadaeast` |
 | パブリック | ヨーロッパ | 北ヨーロッパ | `northeurope` |
 | パブリック | ヨーロッパ | 西ヨーロッパ | `westeurope` |
 | パブリック | フランス | フランス中部 | `francecentral` |

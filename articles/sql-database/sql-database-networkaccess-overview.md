@@ -1,10 +1,10 @@
 ---
 title: ネットワーク アクセス制御
-description: アクセスを管理し、単一データベースまたはプールされたデータベースを構成するための、Azure SQL Database および Data Warehouse のネットワーク アクセスの制御の概要。
+description: アクセスを管理し、単一データベースまたはプールされたデータベースを構成するための、Azure SQL Database および Azure Synapse Analytics のネットワーク アクセスの制御の概要。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fdeb8ee3fbb01ea007205e02eb247925fb3baea1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414410"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629577"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database および Data Warehouse のネットワーク アクセスの制御
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御
 
 > [!NOTE]
-> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーで作成される SQL Database と Azure Synapse Analytics データベースの両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と Azure Synapse Analytics の両方を言い表します。
 
 > [!IMPORTANT]
 > この記事は、**Azure SQL Database Managed Instance** には "*適用されません*"。 ネットワーク構成の詳細については、[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)に関するページを参照してください。

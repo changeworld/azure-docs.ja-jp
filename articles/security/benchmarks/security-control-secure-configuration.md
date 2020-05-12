@@ -1,19 +1,18 @@
 ---
 title: Azure のセキュリティ コントロール - セキュリティで保護された構成
-description: セキュリティ コントロールのセキュリティで保護された構成
+description: Azure セキュリティ コントロールのセキュリティで保護された構成
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934295"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193107"
 ---
 # <a name="security-control-secure-configuration"></a>セキュリティ コントロールセキュリティで保護された構成
 
@@ -25,11 +24,19 @@ ms.locfileid: "75934295"
 |--|--|--|
 | 7.1 | 5.1 | Customer |
 
-Azure Policy または Azure Security Center を使用して、すべての Azure リソースのセキュリティ構成を維持します。
+ご利用の Azure リソースの構成を監査または適用するには、Azure Policy エイリアスを使用してカスタム ポリシーを作成します。 組み込みの Azure Policy 定義を使用することもできます。
 
-Azure Policy を構成して管理する方法:
+また、Azure Resource Manager には、テンプレートを JavaScript Object Notation (JSON) でエクスポートする機能があり、構成が確実に組織のセキュリティ要件を満たすかそれを超えるように確認する必要があります。
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
+
+- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+
+- [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+
+- [Azure portal のテンプレートへの単一および複数リソースのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+
+- [セキュリティの推奨事項 - リファレンス ガイド](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7.2:セキュリティで保護されたオペレーティング システムの構成を確立する
 
@@ -37,15 +44,17 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 |--|--|--|
 | 7.2 | 5.1 | Customer |
 
-Azure Security Center の推奨事項 &quot;Remediate Vulnerabilities in Security Configurations on your Virtual Machines&quot; (仮想マシンのセキュリティ構成の脆弱性を修復する) を使用して、すべてのコンピューティング リソースのセキュリティ構成を維持します。
+すべてのコンピューティング リソースのセキュリティ構成を維持するには、Azure Security Center の推奨事項を使用します。  さらに、カスタム オペレーティング システム イメージまたは Azure Automation State Configuration を使用して、組織に必要なオペレーティング システムのセキュリティ構成を確立できます。
 
-Azure Security Center の推奨事項を監視する方法:
+- [Azure Security Center の推奨事項を監視する方法](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
 
-https://docs.microsoft.com/azure/security-center/security-center-recommendations
+- [セキュリティの推奨事項 - リファレンス ガイド](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
-Azure Security Center の推奨事項を修復する方法:
+- [Azure Automation State Configuration の概要](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
 
-https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+- [VHD をアップロードし、それを使用して Azure で新しい Windows VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+
+- [Azure CLI を使用してカスタム ディスクから Linux VM を作成する](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
 
 ## <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
@@ -53,15 +62,13 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 |--|--|--|
 | 7.3 | 5.2 | Customer |
 
-Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
+お使いの Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。  さらに、Azure Resource Manager テンプレートを使用して、組織に必要な Azure リソースのセキュリティ構成を維持できます。 
 
-Azure Policy を構成して管理する方法:
+- [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [コンプライアンスを強制するポリシーの作成と管理](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-Azure Policy の効果を理解する:
-
-https://docs.microsoft.com/azure/governance/policy/concepts/effects
+- [Azure Resource Manager テンプレートの概要](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
 
 ## <a name="74-maintain-secure-operating-system-configurations"></a>7.4:セキュリティで保護されたオペレーティング システムの構成を維持する
 
@@ -69,17 +76,21 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 |--|--|--|
 | 7.4 | 5.2 | 共有 |
 
-基本オペレーティング システム イメージは、Microsoft によって管理および保守されます。
+Azure コンピューティング リソースに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。  さらに、Azure Resource Manager テンプレート、カスタム オペレーティング システム イメージ、または Azure Automation State Configuration を使用して、組織に必要なオペレーティング システムのセキュリティ構成を維持できます。   Microsoft 仮想マシン テンプレートと Azure Automation Desired State Configuration を組み合わせると、セキュリティ要件を満たし、それを維持するために役立ちます。 
 
-ただし、Azure Resource Manager テンプレートや Desired State Configuration を使用して、組織に必要なセキュリティ設定を適用できます。
+また、Microsoft によって公開された Azure Marketplace の仮想マシン イメージが Microsoft によって管理および維持されることにも注意してください。 
 
-Azure Resource Manager テンプレートから Azure の仮想マシンを作成する方法:
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
-https://docs.microsoft.com/azure/virtual-machines/windows/ps-template
+- [Azure Resource Manager テンプレートから Azure 仮想マシンを作成する方法](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
 
-Azure Virtual Machines の Desired State Configuration を理解する:
+- [Azure Automation State Configuration の概要](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
 
-https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
+- [Azure portal で Windows 仮想マシンを作成する](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+
+- [VM テンプレートをダウンロードする方法に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+
+- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
@@ -87,15 +98,11 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7.5 | 5.3 | Customer |
 
-カスタム Azure ポリシー定義を使用する場合は、Azure DevOps または Azure Repos を使ってコードを安全に格納して管理します。
+カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-Azure DevOps にコードを格納する方法:
+- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-Azure Repos のドキュメント:
-
-https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+- [Azure DevOps でのアクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
 ## <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
@@ -103,69 +110,59 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 |--|--|--|
 | 7.6 | 5.3 | Customer |
 
-カスタム イメージを使用する場合は、RBAC を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+カスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 共有イメージ ギャラリーを使用すると、組織内のさまざまなユーザー、サービス プリンシパル、AD グループに対してイメージを共有できます。  コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。  
 
-Azure での RBAC を理解する:
+- [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+- [コンテナー レジストリの RBAC を理解する](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-Container Registry の RBAC を理解する:
+- [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
-https://docs.microsoft.com/azure/container-registry/container-registry-roles
+- [共有イメージ ギャラリーの概要](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
-Azure で RBAC を構成する方法:
-
-https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
-
-## <a name="77-deploy-system-configuration-management-tools"></a>7.7:システム構成管理ツールをデプロイする
+## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
 | Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 7.7 | 5.4 | Customer |
 
-Azure Policy を使用して、システム構成をアラート、監査、および適用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
+Azure Policy を使用して、Azure リソースの標準的なセキュリティ構成を定義して実装します。 ご利用の Azure リソースのネットワーク構成を監査または適用するには、Azure Policy エイリアスを使用してカスタム ポリシーを作成します。 また、特定のリソースに関連する組み込みのポリシー定義を使用することもできます。  さらに、Azure Automation を使用して、構成の変更をデプロイすることもできます。
 
-Azure Policy を構成して管理する方法:
+- [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
-## <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
+## <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用の構成管理ツールをデプロイする
 
 | Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 7.8 | 5.4 | Customer |
 
-Windows コンピューティング用の PowerShell Desired State Configuration や Linux 用の Linux Chef 拡張機能などの Azure コンピューティング拡張機能を使用します。
+Azure Automation State Configuration は、あらゆるクラウドまたはオンプレミスのデータセンターにある Desired State Configuration (DSC) ノードの管理構成サービスです。 マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。 
 
-Azure に仮想マシン拡張機能をインストールする方法:
+- [Azure Automation State Configuration による管理のためのマシンのオンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
-https://docs.microsoft.com/azure/virtual-machines/extensions/overview#how-can-i-install-an-extension
-
-## <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:Azure サービスの自動構成監視を実装する
+## <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
 | Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 7.9 | 5.5 | Customer |
 
-Azure Security Center を使用して、Azure リソースのベースライン スキャンを実行する
+Azure Security Center を使用して、ご利用の Azure リソースのベースライン スキャンを実行します。  さらに、Azure Policy を使用して Azure リソース構成をアラート送信および監査します。
 
-Azure Security Center の推奨事項を修復する方法
-
-https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+- [Azure Security Center の推奨事項を修復する方法](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
 
 ## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
 
 | Azure ID | CIS IDs | 担当 |
 |--|--|--|
-| 7.1 | 5.5 | Customer |
+| 7.10 | 5.5 | Customer |
 
 Azure Security Center を使用して、コンテナーの OS と Docker の設定のベースライン スキャンを実行します。
 
-Azure Security Center のコンテナーの推奨事項を理解する:
+- [Azure Security Center のコンテナーの推奨事項を理解する](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
 
-https://docs.microsoft.com/azure/security-center/security-center-container-recommendations
-
-## <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する 
+## <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
 | Azure ID | CIS IDs | 担当 |
 |--|--|--|
@@ -173,17 +170,11 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 マネージド サービス ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。
 
-Azure マネージド ID と統合する方法:
+- [Azure マネージド ID と統合する方法](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-キー コンテナーを作成する方法:
-
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
-
-マネージド ID で Key Vault の認証を提供する方法:
-
-https://docs.microsoft.com/azure/key-vault/managed-identity
+- [マネージド ID で Key Vault の認証を提供する方法](https://docs.microsoft.com/azure/key-vault/managed-identity)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
@@ -193,22 +184,19 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
-マネージド ID を構成する方法:
-
-https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+- [マネージド ID を構成する方法](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7.13:意図しない資格情報の公開を排除する
 
 | Azure ID | CIS IDs | 担当 |
 |--|--|--|
-| 7.13 | 13.3 | Customer |
+| 7.13 | 18.1、18.7 | Customer |
 
 コード内で資格情報を特定する資格情報スキャナーを実装します。 また、資格情報スキャナーを使うと、検出された資格情報を、Azure Key Vault などのより安全な場所に移動しやすくなります。 
 
-資格情報スキャナーを設定する方法:
+- [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>次のステップ
 
-次のセキュリティ コントロールを参照してください。[マルウェアからの防御](security-control-malware-defense.md)
+- 次のセキュリティ コントロールを参照してください。[マルウェアからの防御](security-control-malware-defense.md)

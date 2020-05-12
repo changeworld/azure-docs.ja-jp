@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990907"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583091"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -95,6 +95,10 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 
 コネクタ サーバーと Web アプリケーション サービス アカウントが異なるドメインにある場合は、リソース ベースの委任が使用されます。 委任されたアクセス許可は、ターゲット Web サーバーと Web アプリケーション サービス アカウントで構成されます。 この制約付き委任方法は、比較的新しいものです。 この方法は、リソース (Web サービス) 所有者が、委任できるコンピューターとサービス アカウントを制御できるようにすることで、ドメイン間の委任に対応した Windows Server 2012 で導入されました。 この構成に使用できる UI はないため、PowerShell を使用する必要があります。
 詳細については、「[アプリケーション プロキシを使った Kerberos の制約付き委任](https://aka.ms/kcdpaper)」に関するホワイトペーパーを参照してください。
+
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM 認証は Azure AD アプリケーション プロキシと連携していますか。
+
+NTLM 認証は、事前認証またはシングル サインオンの方法としては使用できません。 NTLM 認証は、クライアントと発行された Web アプリケーションの間で直接ネゴシエートできる場合にのみ使用できます。 NTLM 認証を使用すると、通常、ブラウザーにサインイン プロンプトが表示されます。
 
 ## <a name="pass-through-authentication"></a>パススルー認証
 

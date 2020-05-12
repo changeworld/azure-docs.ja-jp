@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227771"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583130"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -100,11 +100,13 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 
 ## <a name="sso-for-non-windows-apps"></a>Windows 以外のアプリの SSO
 
-Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。 要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。 このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。 次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。 
+Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。 要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。 このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。 
 
-このような要求を送信する方法を定義するプロトコルはいくつかあります。 ほとんどの非 Windows サーバーは、SPNEGO でのネゴシエートを予期します。 このプロトコルは Azure AD アプリケーション プロキシでサポートされていますが、既定で無効になっています。 サーバーは、SPNEGO または標準 KCD のどちらかに構成できますが、両方に構成することはできません。
+次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。 
 
-SPNEGO 用にコネクタ マシンを構成する場合は、そのコネクタ グループ内の他のすべてのコネクタも SPNEGO で構成されていることを確認してください。 標準 KCD を使用するアプリケーションは、SPNEGO 用に構成されていない他のコネクタを介してルーティングする必要があります。
+このような要求で Kerberos チケットを送信する方法を定義するメカニズムはいくつかあります。 Windows 以外のほとんどのサーバーでは、SPNEGO トークンの形式でそれを受け取ることが想定されています。 このメカニズムは Azure AD アプリケーション プロキシでサポートされていますが、既定で無効になっています。 SPNEGO と標準の Kerberos トークンの両方ではなくいずれかに対してコネクタを構成することができます。
+
+SPNEGO 用にコネクタ マシンを構成する場合は、そのコネクタ グループ内の他のすべてのコネクタも SPNEGO で構成されていることを確認してください。 標準 Kerberos トークンを使用するアプリケーションは、SPNEGO 用に構成されていない他のコネクタを介してルーティングする必要があります。
  
 
 SPNEGO を有効にするには:

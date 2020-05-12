@@ -4,12 +4,12 @@ description: Azure のバックアップから Windows Server のシステム状
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602458"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610787"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -124,7 +124,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
 2. 再起動後に、Windows Server バックアップ スナップインを開きます。 スナップインがインストールされている場所がわからない場合は、コンピューターまたはサーバーで **Windows Server バックアップ**を検索します。
 
-    デスクトップ アプリが検索結果に表示されます。
+    デスクトップ アプリが検索結果に表示されます。 表示されない場合、またはアプリケーションを開くときにエラーが発生した場合は、 **[サーバー マネージャー]** の **[機能の追加ウィザード]** から **[Windows Server バックアップ機能]** と、その依存コンポーネントをインストールする必要があります。
 
 3. スナップインで **[ローカル バックアップ]** を選択します。
 

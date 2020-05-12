@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725892"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692254"
 ---
 # <a name="known-issues"></a>既知の問題 #
 
@@ -46,9 +46,10 @@ ms.locfileid: "81725892"
 
 - ライブ コンテンツの DVR ウィンドウで、コンテンツが完了しても、その領域までシークするか、プレゼンテーションの最後に到達するまで、タイムラインが拡大し続けます。
 - MSE を有効にした Firefox でのライブ プレゼンテーションには、いくつかの問題があります。
-- オーディオまたはビデオのみの資産は、AzureHtml5JS テクノロジで再生されません。
-  - オーディオまたはビデオのない資産を再生したい場合は、[Azure Media Services Explorer ツール](https://aka.ms/amse)を使用して、空のオーディオまたはビデオを挿入してください。
-    - サイレント オーディオを挿入する手順は、[こちら](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)でご覧いただけます。
+
+- オーディオのみの資産は、AzureHtml5JS テクノロジで再生されません。
+  - オーディオのない資産を再生したい場合は、[Azure Media Services Explorer ツール](https://aka.ms/amse)を使用して、空のオーディオを挿入してください。
+  - サイレント オーディオを挿入する手順は、[こちら](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)でご覧いただけます。
 
 ## <a name="flash"></a>点滅 ##
 

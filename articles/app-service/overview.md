@@ -3,14 +3,14 @@ title: 概要
 description: Azure App Service が Web アプリケーションの開発およびホストにどのように役立つかについて説明します
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
-ms.date: 01/04/2017
+ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7db55a420a9789ef15a5296a6b0200d6b8910ec6
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535640"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597860"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -25,6 +25,7 @@ App Service では、使用した Azure コンピューティング リソース
 App Service の主な機能として、次のようなものがあります。
 
 * **複数の言語とフレームワーク** - App Service では、ASP.NET、ASP.NET Core、Java、Ruby、Node.js、PHP、および Python が最高レベルでサポートされています。 また、[PowerShell などのスクリプトや実行可能ファイル](webjobs-create.md)をバックグラウンド サービスとして実行することもできます。
+* **マネージド運用環境** - App Service が自動的に[パッチを適用し、OS と言語フレームワークを管理](overview-patch-os-runtime.md)します。 高品質なアプリの作成に専念し、プラットフォームにまつわる問題は Azure に任せましょう。
 * **DevOps の最適化** - [継続的インテグレーションと継続的デプロイ](deploy-continuous-deployment.md)を、Azure DevOps、GitHub、BitBucket、Docker Hub、または Azure Container Registry で設定できます。 [テスト環境やステージング環境](deploy-staging-slots.md)を介して更新を反映できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。
 * **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](manage-scale-up.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP など)、SaaS サービス (Salesforce など)、インターネット サービス (Facebook など) 向けに用意された 50 を超える[コネクタ](../connectors/apis-list.md)から選択できます。 また、[ハイブリッド接続](app-service-hybrid-connections.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。

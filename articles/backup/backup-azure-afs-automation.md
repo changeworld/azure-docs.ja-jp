@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure Files をバックアップする
 description: この記事では、Azure Backup サービスと PowerShell を使用して Azure Files をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 865cfc6daa7568236b0306ba591b42a9f7704dd4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233951"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101180"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップする
 
@@ -26,7 +26,6 @@ ms.locfileid: "79233951"
 ## <a name="before-you-start"></a>開始する前に
 
 * Recovery Services コンテナーについての[詳細情報](backup-azure-recovery-services-vault-overview.md)を確認します。
-* [Azure ファイル共有のバックアップ](backup-afs.md)に関するプレビュー機能を確認します。
 * Recovery Services の PowerShell オブジェクト階層を確認します。
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services オブジェクトの階層
@@ -45,12 +44,12 @@ PowerShell を次のように設定します。
 
 1. [最新バージョンの Az PowerShell をダウンロードします](/powershell/azure/install-az-ps)。 必要な最小バージョンは 1.0.0 です。
 
-> [!WARNING]
-> プレビューに必要な PS の最小バージョンは "Az 1.0.0" でした。 GA に向けた今後の変更により、必要とされる PS の最小バージョンは "Az.RecoveryServices 2.6.0" になります。 すべての既存の PS バージョンをこのバージョンにアップグレードすることが非常に重要です。 そうしないと、既存のスクリプトは GA 後に中断されます。 次の PS コマンドを使用して最小バージョンをインストールします。
+    > [!WARNING]
+    > Azure ファイル共有のバックアップに必要な最小 PS バージョンは **Az.RecoveryServices 2.6.0** です。 既存のスクリプトの問題を回避するために、バージョンをアップグレードしてください。 次の PS コマンドを使用して最小バージョンをインストールします。
 
-```powershell
-Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
-```
+    ```powershell
+    Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+    ```
 
 2. 次のコマンドを使用して、Azure Backup PowerShell コマンドレットを検索します。
 
@@ -287,14 +286,12 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 バックアップ作成時には Azure ファイル共有のスナップショットが使用されるため、通常は、コマンドからこの出力が返されるまでにジョブが完了します。
 
-### <a name="using-on-demand-backups-to-extend-retention"></a>オンデマンド バックアップを使用して保持期間を延長する
+### <a name="using-a-runbook-to-schedule-backups"></a>Runbook を使用したバックアップのスケジュール
 
-オンデマンド バックアップを使用すると、スナップショットを 10 年間保持することができます。 スケジューラを使い、保持期間を選択して PowerShell スクリプトをオンデマンドで実行することで、スナップショットを定期的 (週次、月次、年次) に作成することも可能です。 定期的なスナップショットの取得については、Azure Backup を使用した[オンデマンド バックアップの制限](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)に関するページを参照してください。
+サンプル スクリプトを探している場合は、Azure Automation Runbook を使用して [GitHub のサンプル スクリプト](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)を参照できます。
 
-サンプル スクリプトをお探しの場合は、バックアップを定期的にスケジュールし、それを最大 10 年間保持することが可能な Azure Automation Runbook を使用した GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) 上のサンプル スクリプトを参照できます。
-
-> [!WARNING]
-> お使いの Automation の Runbook で、PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 以前の "AzureRM" モジュールを "Az" モジュールに置き換える必要があります。 このバージョンでは、```Get-AzRecoveryServicesBackupItem``` コマンドで "friendlyName" フィルターを使用できます。 Azure ファイル共有名を friendlyName パラメーターに渡します。 Azure ファイル共有名を "Name" パラメーターに渡すと、このバージョンでは、このフレンドリ名をフレンドリ名パラメーターに渡すための警告がスローされます。
+>[!NOTE]
+> Azure ファイル共有のバックアップ ポリシーでは、日単位/週単位/月単位/年単位のリテンション期間でのバックアップの構成がサポートされるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 
