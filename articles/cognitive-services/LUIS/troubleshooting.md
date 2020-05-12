@@ -43,7 +43,7 @@ Language Understanding (LUIS) の詳細については、[こちら](whats-new.m
 [Bing Spell Check API V7](luis-tutorial-bing-spellcheck.md) のチュートリアルをご覧ください。 LUIS は、Bing Spell Check API V7 による制限を強制します。
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>プログラムで LUIS アプリを編集するにはどうすればよいですか?
-LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-concept-keys.md#azure-resources-for-luis)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-concept-keys.md)に関するページをご覧ください。
+LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および [Node.js を使用したプログラムによる LUIS アプリの作成](./luis-tutorial-node-import-utterances-csv.md) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-concept-keys.md#azure-resources-for-luis)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-concept-keys.md)に関するページをご覧ください。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>正規表現のマッチングを提供していたパターン機能はどこにありますか?
 以前の**パターン機能**は現在は非推奨になっており、 **[パターン](luis-concept-patterns.md)** に置き換えられています。
