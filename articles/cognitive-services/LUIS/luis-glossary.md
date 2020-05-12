@@ -154,7 +154,7 @@ LUIS クォータとは、[Azure サブスクリプション レベル](https://
 
 ## <a name="subscription-key"></a><a name="subscription-key"></a>サブスクリプション キー
 
-サブスクリプション キーは、**Azure で作成した** LUIS サービスに関連付けられた[予測エンドポイント](luis-how-to-azure-subscription.md) キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS**Web サイトの**](luis-how-to-azure-subscription.md)[Keys and endpoints]\(キーとエンドポイント\)[ ページ](luis-reference-regions.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。
+サブスクリプション キーは、**Azure で作成した** LUIS サービスに関連付けられた[予測エンドポイント](luis-how-to-azure-subscription.md) キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-how-to-azure-subscription.md) [**Web サイト**](luis-how-to-azure-subscription.md)の [Keys and endpoints \(キーとエンドポイント\)](luis-reference-regions.md) ページの下部にあるエンドポイント URL で確認できます。 これは、**subscription-key** の名前と値のペアの値です。
 
 ## <a name="test"></a><a name="test"></a>テスト
 
