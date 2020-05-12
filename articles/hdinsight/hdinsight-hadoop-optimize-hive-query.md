@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390295"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791495"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
@@ -198,5 +198,6 @@ set hive.vectorized.execution.enabled = true;
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、以下の記事をお読みください。
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [Apache Hive の最適化](./optimize-hive-ambari.md)
 * [HDInsight の対話型クエリを使用したフライトの遅延データの分析](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [HDInsight での Apache Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data-linux.md)

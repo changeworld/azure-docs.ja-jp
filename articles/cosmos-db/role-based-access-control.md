@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e028e7a5e7e7b8f747d7a1cfb36c553a8113544
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445098"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583726"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB のロールベースのアクセス制御
 
@@ -61,6 +61,12 @@ Cosmos リソース プロバイダーをロック ダウンして、Cosmos ア�
         }
     }
 }
+```
+既存の Resource Manager テンプレートをエクスポートしてこのプロパティで更新すると、テンプレートの機能を完全に置き換えることができます。 そのため、すべての値が含まれていない場合は既定値にリセットされます。 キーベースのメタデータの書き込みアクセスを無効にするもう 1 つの方法は、次のコマンドに示すように、Azure CLI を使用することです。
+
+```cli
+az cosmosdb update  --name CosmosDBAccountName --resource-group ResourceGroupName  --disable-key-based-metadata-write-access true
+
 ```
 
 ## <a name="next-steps"></a>次のステップ

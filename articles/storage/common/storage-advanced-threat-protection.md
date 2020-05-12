@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 195f4b5057c0e2d644ab44cc4c32e97c8662d36d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422791"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127541"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage を構成する
 
@@ -23,10 +23,14 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 
 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
-> [!NOTE]
-> Advanced Threat Protection for Azure Storage は、現時点では BLOB ストレージでのみ使用できます。 このサービスは米国政府のクラウドで利用できますが、他のソブリンや Azure Government のクラウド リージョンでは使用できません。 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+このサービスでは、脅威の検出のために、BLOB ストレージに対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Advanced Threat Protection からのアラートを調査するために、Storage Analytics Logging を使用して関連するストレージのアクティビティを確認することができます。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「**ログの構成**」を参照してください。
 
-Advanced Threat Protection for Azure Storage では、脅威の検出のため、BLOB ストレージに対する読み取り要求、書き込み要求、削除要求の診断ログが取り込まれます。 Advanced Threat Protection からのアラートを調査するために、Storage Analytics Logging を使用して関連するストレージのアクティビティを確認することができます。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「**ログの構成**」を参照してください。
+## <a name="availability"></a>可用性
+
+Advanced Threat Protection for Azure Storage は、現時点では [BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)でのみ使用できます。 高度な脅威保護をサポートするアカウントの種類には、汎用 v2、ブロック BLOB、BLOB ストレージ アカウントなどがあります。 Advanced Threat Protection は、すべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウドや Azure Government クラウドのリージョンでは使用できません。
+
+30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+
 
 ## <a name="set-up-advanced-threat-protection"></a>Advanced Threat Protection の設定
 

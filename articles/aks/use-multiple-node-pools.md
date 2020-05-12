@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259087"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610923"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -722,22 +722,65 @@ az group deployment create \
 
 Resource Manager テンプレートで定義するノード プール設定および操作に応じて、AKS クラスターの更新には数分かかる場合があります。
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>ノード プールのノードごとにパブリック IP を割り当てる (プレビュー)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>ノード プールのノードごとにパブリック IP を割り当てる (プレビュー)
 
 > [!WARNING]
-> ノードごとにパブリック IP を割り当てるとき、プレビュー中、その IP は *AKS の Standard Load Balancer* で使用できません。ロード バランサーの規則と VM プロビジョニングが競合する可能性があるためです。 この制限のため、このプレビュー機能では Windows エージェント プールはサポートされていません。 プレビューの間、ノードごとにパブリック IP を割り当てる必要がある場合は、*Basic Load Balancer SKU* を使用する必要があります。
+> ノードごとにパブリック IP を割り当てる機能を使用するには、CLI プレビュー版拡張機能 0.4.43 以上をインストールする必要があります。
 
 AKS ノードは、通信用に独自のパブリック IP アドレスを必要としません。 ただし、シナリオでは、ノード プール内のノードが専用のパブリック IP アドレスを受け取ることが必要な場合があります。 一般的なシナリオとしては、ゲームのワークロードがあります。この場合、ホップを最小限に抑えるために、コンソールをクラウド仮想マシンに直接接続する必要があります。 このシナリオは、プレビュー機能であるノード パブリック IP (プレビュー) を登録することにより、AKS で実現することができます。
 
-ノード パブリック IP 機能を登録するには、次の Azure CLI コマンドを発行します。
+最新の aks-preview 拡張機能をインストールして更新するには、次の Azure CLI コマンドを使用します。
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+ノード パブリック IP 機能を登録するには、次の Azure CLI コマンドを使用します。
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
+機能の登録には数分かかる場合があります。  状態を確認するには、次のコマンドを使用します。
 
-登録が正常に完了したら、[上記](#manage-node-pools-using-a-resource-manager-template)と同じ手順に従って Azure Resource Manager テンプレートをデプロイし、ブール値プロパティ `enableNodePublicIP` を agentPoolProfiles に追加します。 指定しない場合は、既定で `false` として設定されるため、これを `true` に設定します。 
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
 
-このプロパティは作成時限定のプロパティであり、2019-06-01 の最小 API バージョンが必要です。 これは、Linux と Windows のどちらのノード プールにも適用できます。
+登録が正常に完了したら、新しいリソース グループを作成します。
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+新しい AKS クラスターを作成し、ノードのパブリック IP を接続します。 ノード プール内の各ノードは、一意のパブリック IP を受け取ります。 これを確認するには、仮想マシン スケール セットのインスタンスを参照します。
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+既存の AKS クラスターの場合は、新しいノード プールを追加し、ノードのパブリック IP を接続することもできます。
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> プレビュー期間中、Azure Instance Metadata Service は、現在 Standard レベルの VM SKU のパブリック IP アドレスの取得をサポートしていません。 この制限のため、kubectl コマンドを使用して、ノードに割り当てられているパブリック IP アドレスを表示することはできません。 ただし、IP は割り当てられ、意図したとおりに機能します。 ノードのパブリック IP は、仮想マシン スケール セット内のインスタンスに接続されます。
+
+ノードのパブリック IP は、さまざまな方法で見つけることができます。
+
+* Azure CLI コマンド [az vmss list-instance-public-ips][az-list-ips] を使用
+* [PowerShell または Bash コマンド][vmss-commands]を使用。 
+* 仮想マシン スケール セット内のインスタンスを表示して、Azure portal 内のパブリック IP を表示することも可能です。
+
+> [!Important]
+> [ノード リソース グループ][node-resource-group]には、ノードとそのパブリック IP が含まれています。 ノードのパブリック IP を検索するコマンドを実行するときは、ノード リソース グループを使用します。
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -753,6 +796,12 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpu
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
+```
+
+また、ノード プールのパブリック IP のシナリオで作成した追加のクラスターを削除することもできます。
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -795,3 +844,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips

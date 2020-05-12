@@ -3,12 +3,12 @@ title: Azure Advisor を使用して Azure アプリケーションのパフォ�
 description: Advisor を使用して、Azure のデプロイのパフォーマンスを最適化します。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443054"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787942"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -28,6 +28,10 @@ Advisor は、すべての Azure リソースに関する推奨事項を、一�
 > 推奨事項を取得するには、データベースを約 1 週間使用し、その週の間に、何らかの一貫性のあるアクティビティが行われている必要があります。 SQL Database Advisor は、ランダムでむらのあるアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。
 
 SQL Database Advisor の詳細については「[SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)」を参照してください。
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>信頼性とパフォーマンスを向上させるために、ストレージ クライアント ライブラリを最新バージョンにアップグレードする
+
+ストレージ クライアント ライブラリ/SDK の最新バージョンには、お客様から報告された問題に対する修正と、QA プロセスを通じて事前に明らかになった問題の修正が含まれています。 また、最新バージョンには、Azure Storage の使用に関する全体的なエクスペリエンスを向上させる新機能に加えて、信頼性とパフォーマンスの最適化も含まれています。 Advisor では、古いバージョンの SDK を最新バージョンにアップグレードするための推奨事項と手順が提供されます。 推奨事項は、サポートされている言語である C++ および .Net 用です。
 
 ## <a name="improve-app-service-performance-and-reliability"></a>App Service のパフォーマンスと信頼性の向上
 
@@ -73,6 +77,26 @@ Advisor では、レプリケートされたテーブルではないが、変換
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>サブスクリプションの上限に到達しないようにストレージ アカウントを設計する
 
 Azure リージョンでは、サブスクリプションごとに最大 250 個のストレージ アカウントをサポートできます。 制限に達した場合、そのリージョン/サブスクリプションの組み合わせでは、それ以上ストレージ アカウントを作成することはできません。 Advisor は、サブスクリプションを確認して、上限に近づいている場合はストレージ アカウント数を減らして設計するように勧告します。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>高 P2S 使用率に対処するために VNet Gateway SKU のサイズを大きくすることを検討する
+
+各ゲートウェイの SKU は、指定された数の同時 P2S 接続にのみ対応します。 接続数がゲートウェイの上限に迫っていると、追加の接続試行が失敗する可能性があります。 ゲートウェイのサイズを大きくすると、より多くの同時 P2S ユーザー数に対応できるようになります。Advisor では、このための推奨事項と手順が提供されています。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>高 CPU 使用率に対処するために VNet Gateway SKU のサイズを大きくすることを検討する
+
+トラフィックの負荷が高い状況下では、CPU の使用率が高いと VPN ゲートウェイでパケットが破棄されることがあります。 VPN は常に実行されているため、VPN Gateway SKU をアップグレードすることを検討してください。VPN ゲートウェイのサイズを大きくすることで、CPU の使用率が高いことが原因で接続が切断されないようにします。 Advisor では、この問題に事前に対処するための推奨事項が提供されています。 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>読み込み時のバッチ サイズを増加して、読み込みスループット、データ圧縮、クエリ パフォーマンスを最大化する
+
+Advisor では、データベースに読み込む際にバッチ サイズを増加することで、読み込みのパフォーマンスとスループットを向上できることを検出できます。 COPY ステートメントの使用を検討する必要があります。 COPY ステートメントを使用できない場合は、SQLBulkCopy API や BCP などの読み込みユーティリティを使用する際にバッチ サイズを増加することを検討してください。一般的には、10 万行から 100 万行のバッチ サイズが適切です。 これにより、負荷のスループット、データ圧縮、およびクエリ パフォーマンスが向上します。
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>読み込み時の待機時間を最小限に抑えるために、ストレージ アカウントを同じリージョン内に配置する
+
+Advisor では、SQL プールとは異なるリージョンから読み込んでいることを検出できます。 データを読み込むときの待機時間を最小限に抑えるには、SQL プールと同じリージョン内にあるストレージ アカウントから読み込むことを検討する必要があります。 これにより、待機時間を最小限に抑え、読み込みパフォーマンスを向上させることができます。
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>サポートされていない Kubernetes バージョンが検出されます
+
+Advisor では、サポートされていない Kubernetes バージョンが検出されたかどうかを検出できます。 推奨事項は、Kubernetes クラスターがサポートされているバージョンで実行されることを確認するのに役立ちます。
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Azure MySQL、Azure PostgreSQL、および Azure MariaDB サーバーのパフォーマンスを最適化する 
 

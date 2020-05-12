@@ -1,25 +1,15 @@
 ---
-title: コンピューティング ノードへのアプリケーション パッケージのインストール - Azure Batch | Microsoft Docs
+title: コンピューティング ノードへのアプリケーション パッケージのインストール
 description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/26/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086230"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115620"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -42,7 +32,7 @@ Azure Batch では、" *アプリケーション* " という用語は、プー�
 
 ![High-level diagram of applications and application packages][1]
 
-### <a name="applications"></a>[アプリケーション]
+### <a name="applications"></a>アプリケーション
 Batch 内のアプリケーションは、1 つ以上のアプリケーション パッケージを含んでおり、アプリケーションの構成オプションを指定します。 たとえば、アプリケーションは、コンピューティング ノードにインストールする既定のアプリケーション パッケージのバージョンや、そのパッケージを更新または削除できるかどうかを指定します。
 
 ### <a name="application-packages"></a>アプリケーション パッケージ
@@ -128,7 +118,7 @@ Batch アカウントに含まれているアプリケーションを表示す�
 
 * **[更新を許可する]** : アプリケーション パッケージを更新または削除できるかどうかを指定します。 この記事の後半にある「アプリケーション パッケージの更新または削除」を参照してください。
 * **[既定のバージョン]** : コンピューティング ノードにデプロイする既定のアプリケーション パッケージを指定します。
-* **[表示名]** : Batch を介して顧客に提供するサービスの UI など、アプリケーションの情報を表示するときに Batch ソリューションが使用できるわかりやすい名前を指定します。
+* **表示名**:たとえば、Batch ソリューションがアプリケーションの情報を表示するときに、Batch を介して顧客に提供するサービスの UI に使用できるわかりやすい名前を指定します。
 
 ### <a name="add-a-new-application"></a>新しいアプリケーションの追加
 新しいアプリケーションを作成するには、アプリケーション パッケージを追加し、新しい一意のアプリケーション ID を指定します。 新しいアプリケーション ID を使って最初のアプリケーション パッケージを追加すると、新しいアプリケーションも作成されます。
@@ -148,7 +138,7 @@ Batch アカウントに含まれているアプリケーションを表示す�
 * Batch アカウント内で一意にする必要がある。
 * 大文字と小文字が維持され、区別はされない。
 
-**バージョン**
+**Version**
 
 このフィールドでは、アップロードするアプリケーション パッケージのバージョンを指定します。 バージョン文字列は以下の検証ルールに従うようにします。
 
@@ -295,7 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> コンピューティング ノードの環境設定の詳細については、[Batch 機能の概要](batch-api-basics.md#environment-settings-for-tasks)に関するページの「[タスクの環境設定](batch-api-basics.md)」を参照してください。
+> コンピューティング ノードの環境設定の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページの「[タスクの環境設定](batch-api-basics.md#environment-settings-for-tasks)」を参照してください。
 > 
 > 
 
@@ -306,7 +296,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 * パッケージへの参照を更新したときに、既にプールに参加していたコンピューティング ノードに対し、新しいアプリケーション パッケージが自動でインストールされることはありません。 新しいパッケージを受け取るには、これらのコンピューティング ノードを再起動または再イメージ化する必要があります。
 * 新しいパッケージがデプロイされると、作成された環境変数に新しいアプリケーション パッケージ参照が反映されます。
 
-この例では、既存のプールに、*CloudPool*.[ApplicationPackageReferences][net_cloudpool] の 1 つとして [blender][net_cloudpool_pkgref] アプリケーションのバージョン 2.7 が構成されています。 プールのノードをバージョン 2.76b で更新するには、新しいバージョンで新しい [ApplicationPackageReference][net_pkgref] を指定し、変更をコミットします。
+この例では、既存のプールに、[CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] の 1 つとして *blender* アプリケーションのバージョン 2.7 が構成されています。 プールのノードをバージョン 2.76b で更新するには、新しいバージョンで新しい [ApplicationPackageReference][net_pkgref] を指定し、変更をコミットします。
 
 ```csharp
 string newVersion = "2.76b";
@@ -343,7 +333,7 @@ foreach (ApplicationSummary app in applications)
 アプリケーション パッケージを使用すると、顧客がジョブ用のアプリケーションを選択するのを支援したり、Batch を有効にしたサービスでジョブを処理する場合の正確なバージョン指定を行ったりすることができます。 さらに、顧客がサービスに自前のアプリケーションをアップロードし、トラッキングするための環境も用意できます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Batch REST API][api_rest] も、アプリケーション パッケージの運用をサポートしています。 たとえば、REST API を使用したインストール パッケージの指定方法については、[アカウントへのプールの追加][rest_add_pool_with_packages]に関する記事の [applicationPackageReferences][rest_add_pool] 要素を参照してください。 Batch REST API を使用したアプリケーション情報の取得方法の詳細については、「[アプリケーション][rest_applications]」をご覧ください。
+* [Batch REST API][api_rest] も、アプリケーション パッケージの運用をサポートしています。 たとえば、REST API を使用したインストール パッケージの指定方法については、[アカウントへのプールの追加][rest_add_pool]に関する記事の [applicationPackageReferences][rest_add_pool_with_packages] 要素を参照してください。 Batch REST API を使用したアプリケーション情報の取得方法の詳細については、「[アプリケーション][rest_applications]」をご覧ください。
 * [Batch Management .NET でプログラムを使用して Azure Batch アカウントとクォータを管理する](batch-management-dotnet.md)方法を学習してください。 [Batch Management .NET][api_net_mgmt] ライブラリで、Batch アプリケーションやサービス用のアカウント作成機能と削除機能を有効にできます。
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet

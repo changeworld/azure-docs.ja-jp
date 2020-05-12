@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca9bb3853698b831fe87f48de346183e4bcd0976
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659494"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731714"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -29,16 +29,17 @@ ms.locfileid: "77659494"
 ```
 
 ## <a name="workspace-move-considerations"></a>ワークスペースの移動に関する考慮事項
-ワークスペースにインストールされているマネージド ソリューションは、Log Analytics ワークスペースの移動操作によって移動されます。 接続されたエージェントは接続されたままで、送信済みデータは移動後も引き続きワークスペースに保持されます。 移動操作では、ワークスペースから任意の自動アカウントへのリンクがあってはならないため、そのリンクに依存するソリューションは削除する必要があります。
+ワークスペースにインストールされているマネージド ソリューションは、Log Analytics ワークスペースの移動操作によって移動されます。 接続されたエージェントは接続されたままで、送信済みデータは移動後も引き続きワークスペースに保持されます。 移動操作では、ワークスペースからリンクされたサービスがあってはならないため、ワークスペースの移動を可能にするには、そのリンクに依存するソリューションを削除する必要があります。
 
 自動アカウントのリンクを解除する前に削除する必要があるソリューションには、次のものがあります。
 
 - 更新管理
 - 変更の追跡
 - 勤務時間外に VM を起動/停止する
+- Azure Security Center
 
 
-### <a name="delete-in-azure-portal"></a>Azure Portal での削除
+### <a name="delete-solutions-in-azure-portal"></a>Azure portal でソリューションを削除する
 Azure portal を使用してソリューションを削除するには、次の手順を実行してください。
 
 1. ソリューションがインストールされているリソース グループのメニューを開きます。
@@ -57,8 +58,8 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-### <a name="remove-alert-rules"></a>アラート ルール を削除する
-**[Start/Stop VMs]** (VM の開始/停止) ソリューションの場合、ソリューションによって作成されたアラート ルールを削除する必要もあります。 これらのルールを削除するには、Azure portal で次の手順を使用します。
+### <a name="remove-alert-rules-for-startstop-vms-solution"></a>Start/Stop VMs ソリューションのアラート ルールを削除する
+**Start/Stop VMs** ソリューションを削除するには、このソリューションによって作成されたアラート ルールも削除する必要があります。 これらのルールを削除するには、Azure portal で次の手順を使用します。
 
 1. **[監視]** メニューを開き、 **[アラート]** を選択します。
 2. **[アラート ルールの管理]** をクリックします。
@@ -98,8 +99,6 @@ PowerShell を使用してワークスペースを移動するには、次の例
 ``` PowerShell
 Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup01/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace" -DestinationSubscriptionId "00000000-0000-0000-0000-000000000000" -DestinationResourceGroupName "MyResourceGroup02"
 ```
-
-
 
 > [!IMPORTANT]
 > 移動操作後、削除されたソリューションと Automation アカウントのリンクを再構成して、ワークスペースを前の状態に戻す必要があります。

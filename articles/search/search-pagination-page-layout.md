@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641617"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801775"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
@@ -92,9 +92,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 ## <a name="hit-highlighting"></a>検索結果の強調表示
 
-検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関する記事で説明しています。 検索エンジンは、一致する用語をタグ `highlightPreTag` と `highlightPostTag` で囲み、ユーザーのコードがその応答を処理します (太字のフォントの適用など)。
+検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関する記事で説明しています。 
 
-書式設定は、語句全体のクエリに適用されます。 次の例では、[説明] フィールド内で見つかった用語 "sandy"、"sand"、"beaches"、"beach" に強調表示のタグが付けられます。 エンジンのクエリ拡張をトリガーするクエリ (あいまい検索やワイルドカード検索など) では、検索結果の強調表示のサポートが制限されています。
+ヒットの強調表示を有効にするには、`highlight=[comma-delimited list of string fields]` を追加して、強調表示を使用するフィールドを指定します。 強調表示は、説明フィールドなど、一致が一目ではわかりにくい、長いコンテンツ フィールドに対して便利です。 **検索可能**として属性付けされたフィールド定義だけが、ヒットの強調表示に使用できます。
+
+既定では、Azure Cognitive Search によって、フィールドごとに最大 5 つの強調表示が返されます。 この数値を調整するには、フィールドに、ダッシュに続く整数を追加します。 たとえば、`highlight=Description-10` とすると、[説明] フィールドの一致するコンテンツに対して最大 10 個の強調表示が返されます。
+
+書式設定は、語句全体のクエリに適用されます。 書式設定の種類は、タグ `highlightPreTag` および `highlightPostTag` によって決定され、コードでは応答を処理します (たとえば、太字のフォントや黄色の背景を適用するなど)。
+
+次の例では、[説明] フィールド内で見つかった用語 "sandy"、"sand"、"beaches"、"beach" に強調表示のタグが付けられます。 エンジンのクエリ拡張をトリガーするクエリ (あいまい検索やワイルドカード検索など) では、検索結果の強調表示のサポートが制限されています。
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 462326fb16663a6f25ff4b51ea11791201086fd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528730"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792039"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 
@@ -81,7 +81,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 ### <a name="requirements-for-configuring-tde-protector"></a>TDE 保護機能を構成するための要件
 
-- TDE 保護機能に使用できるのは、非対称キー、RSA 2048 キー、または RSA HSM 2048 キーだけです。
+- TDE 保護機能には、非対称、RSA、または RSA HSM の各キーのみを指定できます。 サポートされているキーの長さは 2048 バイトと 3072 バイトです。
 
 - キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限の日時 (設定する場合) は、将来の日付と時刻にする必要があります。
 
@@ -93,7 +93,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 ### <a name="recommendations-when-configuring-akv"></a>AKV を構成する際の推奨事項
 
-- サーバーがキー コンテナー内の TDE 保護機能にアクセスする際の高可用性を確保するために、1 つのサブスクリプションで 1 つのキー コンテナーに最大 500 の General Purpose データベースまたは 200 の Business Critical データベースを関連付けます。 これらの数字は経験に基づいており、[キー コンテナー サービスの制限](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)に記載されています。 ここでの目的は、サーバーのフェールオーバー後の問題を回避することです。これは、フェールオーバーによってそのサーバー内のデータベースと同じ数のキー操作がコンテナーに対してトリガーされるためです。
+- サーバーがキー コンテナー内の TDE 保護機能にアクセスする際の高可用性を確保するために、1 つのサブスクリプションで 1 つのキー コンテナーに最大 500 の General Purpose データベースまたは 200 の Business Critical データベースを関連付けます。 これらの数字は経験に基づいており、[キー コンテナー サービスの制限](https://docs.microsoft.com/azure/key-vault/general/service-limits)に記載されています。 ここでの目的は、サーバーのフェールオーバー後の問題を回避することです。これは、フェールオーバーによってそのサーバー内のデータベースと同じ数のキー操作がコンテナーに対してトリガーされるためです。
 
 - キー コンテナーにリソース ロックを設定して、この重要なリソースを削除できるユーザーを制御し、誤削除や許可されていない削除を防ぎます。 リソース ロックの詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)をご覧ください。
 

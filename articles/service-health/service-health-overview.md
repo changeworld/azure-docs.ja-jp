@@ -3,12 +3,12 @@ title: Service Health の概要 | Microsoft Docs
 description: お使いの Azure アプリが現在および将来の Azure サービスの問題やメンテナンスの影響をどのように受けるかに関するカスタマイズした情報。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898435"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82146908"
 ---
 # <a name="service-health-overview"></a>Service Health の概要
 
@@ -20,7 +20,7 @@ Service Health はお使いのリソースに影響を及ぼす可能性のあ�
 
 1. **サービスの問題** - ユーザーに今すぐ影響を及ぼす Azure サービスの問題。 
 2. **定期的なメンテナンス** - お使いのサービスの可用性に将来影響を及ぼす可能性のある今後のメンテナンス。  
-3. **正常性に関する勧告** - ユーザーが注目する必要のある Azure サービスの変化。 Azure の機能が非推奨となるタイミングや、使用量のクォータを超えた場合に関する例も含まれます。
+3. **正常性に関する勧告** - ユーザーが注目する必要のある Azure サービスの変化。 例としては、Azure の機能が非推奨となることやアップグレードの要件 (サポートされている PHP フレームワークへのアップグレードなど) が挙げられます。
 4. **セキュリティに関する勧告 (プレビュー)** - Azure サービスの可用性に影響する可能性があるセキュリティ関連の通知。
 
 > [!NOTE]
@@ -41,6 +41,12 @@ Service Health ダッシュボードを起動するには、ポータルのダ�
 問題の影響を受けている可能性のある具体的なリソースの一覧を確認するには、 **[可能性のある影響]** タブを選択します。 これらのリソースの CSV 一覧をダウンロードしてチームと共有できます。
 
 ![サービスの問題を管理する - 影響](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>サービスに影響を与える可能性がある新しい問題を確認する
+
+対象となる通知を、影響を受けるお客様に送信する前に、広範囲にわたるサービスの問題が [[Azure の状態] ページ](https://status.azure.com)に投稿される場合があります。 お客様に影響を与える可能性がある問題の包括的なビューを Azure Service Health で提供できるように、アクティブな [Azure の状態] ページの問題は、"*新しい問題*" として Service Health に表示されます。 [Azure の状態] ページでイベントがアクティブになると、新しい問題のバナーが Service Health に表示されます。 そのバナーをクリックすると、問題の詳細が表示されます。
+
+![新しいサービスの問題](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>リンクやダウンロード可能な説明を取得する 
 

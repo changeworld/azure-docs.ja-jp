@@ -7,20 +7,20 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
-ms.openlocfilehash: e1bc3b58f425b374e4cae1da6e9800579e503f0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d6b984fd451a835afaa51482f0158e9f315f8fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73511440"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82130913"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる
 
-Application Gateway の WAF が動作するようになったら、ログを有効にして、各要求で起きていることを調べることができます。 ファイアウォールのログでは、WAF で評価、照合、ブロックされていることについての分析情報が提供されます。 Log Analytics では、ファイアウォール ログ内のデータを調べて、さらに多くの分析情報を得ることができます。 Log Analytics ワークスペースの作成について詳しくは、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)」をご覧ください。 ログ クエリについて詳しくは、「[Azure Monitor のログ クエリの概要](../../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
+Application Gateway の WAF が動作するようになったら、ログを有効にして、各要求で起きていることを調べることができます。 ファイアウォールのログでは、WAF で評価、照合、ブロックされていることについての分析情報が提供されます。 Azure Monitor Log Analytics では、ファイアウォール ログ内のデータを調べて、さらに多くの分析情報を得ることができます。 Log Analytics ワークスペースの作成について詳しくは、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)」をご覧ください。 ログ クエリについて詳しくは、「[Azure Monitor のログ クエリの概要](../../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
 
 ## <a name="import-waf-logs"></a>WAF のログをインポートする
 
-ファイアウォールのログを Log Analytics にインポートするには、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)」をご覧ください。 Log Analytics ワークスペース内にファイアウォールのログを取得したら、データの表示、クエリの記述、視覚エフェクトの作成、ポータルのダッシュボードへの追加を行うことができます。
+ファイアウォールのログを Log Analytics にインポートするには、[Application Gateway のバックエンドの正常性、リソース ログ、およびメトリック](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)に関する記事をご覧ください。 Log Analytics ワークスペース内にファイアウォールのログを取得したら、データの表示、クエリの記述、視覚エフェクトの作成、ポータルのダッシュボードへの追加を行うことができます。
 
 ## <a name="explore-data-with-examples"></a>例でデータを調べる
 
@@ -83,4 +83,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>次のステップ
 
-[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](../../application-gateway/application-gateway-diagnostics.md)
+[Application Gateway のバックエンドの正常性、リソース ログ、およびメトリック](../../application-gateway/application-gateway-diagnostics.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78271801"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778262"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -82,7 +82,7 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 
 Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
 
-詳細については、「[ネットワーク トラフィックのコントロール](hdinsight-plan-virtual-network-deployment.md#networktraffic)」のセクションをご覧ください。
+詳細については、[ネットワーク トラフィックのコントロール](./control-network-traffic.md)に関する記事を参照してください。
 
 ユーザー定義ルート (UDR) を使用する場合は、次ホップが "インターネット" に設定されている上記 IP へのルートを指定し、仮想ネットワークからそれらの IP への送信トラフィックを許可してください。
 

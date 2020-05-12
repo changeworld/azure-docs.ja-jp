@@ -3,12 +3,12 @@ title: 変数の複数のインスタンスを定義する
 description: 変数を作成するときに、Azure Resource Manager テンプレートで copy 操作を使用して、複数回、反復処理を行います。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153303"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583374"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM テンプレートでの変数の反復処理
 
@@ -16,7 +16,7 @@ ms.locfileid: "80153303"
 
 [リソース](copy-resources.md)、[リソース内のプロパティ](copy-properties.md)、および[出力](copy-outputs.md)でもコピーを使用できます。
 
-## <a name="variable-iteration"></a>変数の反復処理
+## <a name="syntax"></a>構文
 
 この copy 要素には、次の一般的な形式があります。
 
@@ -33,6 +33,21 @@ ms.locfileid: "80153303"
 **name** プロパティは、ループを識別する任意の値です。 **count** プロパティは、変数に必要な反復回数を指定します。
 
 **input** プロパティは、繰り返すプロパティを指定します。 **input** プロパティの値から構築される要素の配列を作成します。 それは、1 つのプロパティ (文字列など) にすることも、複数のプロパティを持つオブジェクトにすることもできます。
+
+## <a name="copy-limits"></a>コピー制限
+
+count は 800 を超えることはできません。
+
+count は負の数値にすることはできません。 Azure CLI、PowerShell、または REST API の最新バージョンを使用してテンプレートをデプロイする場合、ゼロを指定できます。 具体的には、次のものを使用する必要があります。
+
+* Azure PowerShell **2.6** 以降
+* Azure CLI **2.0.74** 以降
+* REST API バージョン **2019-05-10** 以降
+* [[Linked deployments]\(リンクされたデプロイ\)](linked-templates.md) には、デプロイ リソースの種類に API バージョン **2019-05-10** 以降を使用する必要があります
+
+以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
+
+## <a name="variable-iteration"></a>変数の反復処理
 
 次の例では、文字列値の配列を作成する方法を示します。
 
@@ -294,12 +309,6 @@ ms.locfileid: "80153303"
   }
 }
 ```
-
-## <a name="copy-limits"></a>コピー制限
-
-count は 800 を超えることはできません。
-
-count は負の数値にすることはできません。 Azure PowerShell 2.6 以降、Azure CLI 2.0.74 以降、または REST API バージョン **2019-05-10** 以降を使用してテンプレートをデプロイする場合は、count を 0 に設定できます。 以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
 
 ## <a name="example-templates"></a>サンプル テンプレート
 

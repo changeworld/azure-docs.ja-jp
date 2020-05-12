@@ -3,12 +3,12 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 8d49adb0ab741903ccb2989cfeb4ceaef2e8a38d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408618"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183332"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -171,27 +171,25 @@ VM は、インターネット接続の問題により、Azure Backup サービ�
 
 再登録操作をトリガーする前に、次の兆候が 1 つ以上ないか確認してください。
 
-* VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
-* バックアップ項目の **[バックアップ状態]** 領域に **[到達できません]** が表示されている場合は、同じ状態になる可能性のある他のすべての原因を除外します。
+- VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
+- バックアップ項目の **[バックアップ状態]** 領域に **[到達できません]** が表示されている場合は、同じ状態になる可能性のある他のすべての原因を除外します。
 
-  * VM でバックアップ関連の操作を実行する権限がない。
-  * VM のシャット ダウン。そのため、バックアップが実行できない。
-  * ネットワークの問題。
+  - VM でバックアップ関連の操作を実行する権限がない。
+  - VM のシャット ダウン。そのため、バックアップが実行できない。
+  - ネットワークの問題。
 
    ![VM の再登録](./media/backup-azure-sql-database/re-register-vm.png)
 
-
-
-* Always On 可用性グループの場合、バックアップ設定を変更した後、またはフェールオーバーの後、バックアップが失敗するようになった。
+- Always On 可用性グループの場合、バックアップ設定を変更した後、またはフェールオーバーの後、バックアップが失敗するようになった。
 
 これらの兆候は、次の 1 つ以上の理由によって発生する可能性があります。
 
-* 拡張機能がポータルから削除またはアンインストールされた。
-* VM の **[コントロール パネル]** の **[プログラムのアンインストールと変更]** で拡張機能がアンインストールされた。
-* VM がインプレース ディスク復元を使用して時間内に復元された。
-* VM が長期間シャットダウンされたため、その拡張機能構成の期限が切れた。
-* VM が削除され、削除された VM と同じ名前で同じリソース グループに別の VM が作成された。
-* 可用性グループ ノードのいずれかが、完全なバックアップ構成を受信しなかった。 これは、可用性グループがコンテナーに登録されるか、新しいノードが追加されると発生する場合があります。
+- 拡張機能がポータルから削除またはアンインストールされた。
+- VM の **[コントロール パネル]** の **[プログラムのアンインストールと変更]** で拡張機能がアンインストールされた。
+- VM がインプレース ディスク復元を使用して時間内に復元された。
+- VM が長期間シャットダウンされたため、その拡張機能構成の期限が切れた。
+- VM が削除され、削除された VM と同じ名前で同じリソース グループに別の VM が作成された。
+- 可用性グループ ノードのいずれかが、完全なバックアップ構成を受信しなかった。 これは、可用性グループがコンテナーに登録されるか、新しいノードが追加されると発生する場合があります。
 
 前のシナリオにおいて、VM で再登録操作をトリガーすることをお勧めします。 PowerShell でこのタスクを実行する方法については、[こちら](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup)をご覧ください。
 
@@ -221,7 +219,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 ### <a name="override-the-default-target-restore-file-path"></a>ターゲットの復元ファイルの既定のパスのオーバーライド
 
-復元操作時に、データベース ファイルと、ターゲット復元のパスとのマッピングが含まれる JSON ファイルを配置することで、ターゲット復元ファイルのパスをオーバーライドできます。 `database_name.json` ファイルを作成し、*C:\Program Files\Azure Workload Backup\bin\plugins\SQL* の場所に配置します。
+復元操作時に、データベース ファイルと、ターゲット復元のパスとのマッピングが含まれる JSON ファイルを配置することで、ターゲット復元ファイルのパスをオーバーライドできます。 `database_name.json` ファイルを作成し、`C:\Program Files\Azure Workload Backup\bin\plugins\SQL*` の場所に配置します。
 
 このファイルの内容は、次の形式である必要があります。
 

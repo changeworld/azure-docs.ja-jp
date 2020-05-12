@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 396e5bc31723768ada334dd5043bca724af5e84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c1180acec726d0863e11a3fe0825ffc7c48e3f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595860"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232532"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -46,7 +46,7 @@ AKS でポッドの水平オートスケーラーを開始するには、「[ポ
 
 ポッドの水平オートスケーラーは、30 秒ごとにメトリックの API をチェックするので、前のスケーリング イベントが正しく完了していないうちに、別のチェックが行われる可能性があります。 この動作のため、前のスケーリング イベントでアプリケーションのワークロードとリソースの需要を受け取ってそれに応じて調整できるようになる前に、ポッドの水平オートスケーラーによってレプリカの数が変更される可能性があります。
 
-これらの競合イベントを最小限に抑えるために、クールダウンまたは遅延値が設定されます。 これらの値は、ポッドの水平オートスケーラーがスケーリング イベント後、別のスケーリング イベントをトリガーできるまで待機する必要のある時間を定義します。 この動作により、新しいレプリカ数が有効になり、メトリックの API で配分されたワークロードを反映できるようになります。 既定では、スケールアップ イベントの遅延は 3 分で、スケールダウン イベントの遅延は 5 分です
+競合イベントを最小限に抑えるために、遅延値が設定されます。 この値は、ポッドの水平オートスケーラーがスケーリング イベント後に別のスケーリング イベントをトリガーできるまで待機する必要のある時間を定義します。 この動作により、新しいレプリカ数が有効になり、メトリックの API で配分されたワークロードを反映できるようになります。 [Kubernetes 1.12 時点でスケールアップ イベントの遅延はありません](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-cooldown-delay)が、スケールダウン イベントの遅延は既定で 5 分に設定されています。
 
 現時点では、これらのクールダウン値を既定値から調整することはできません。
 

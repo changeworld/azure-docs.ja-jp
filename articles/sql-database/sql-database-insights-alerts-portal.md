@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: 37eabd4b2f61a82388b1c8d0aaf4aef2320f008e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79209536"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801809"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Azure portal を使用して Azure SQL Database と Azure Synapse Analytics データベースのアラートを作成します
 
@@ -24,8 +24,8 @@ ms.locfileid: "79209536"
 
 この記事では、Azure portal を使用して Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) の単一データベース、プールされたデータベース、およびデータ ウェアハウス データベースのアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。 この記事では、アラート期間を設定するベスト プラクティスも紹介します。
 
-> [!IMPORTANT]
-> この機能は、Managed Instance ではまだ使用できません。 別の方法として、SQL エージェントを使用して、[動的管理ビュー](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)に基づいてあるメトリックに関する電子メール アラートを送信できます。
+> [!NOTE]
+> SQL マネージ インスタンス固有の手順については、[Azure SQL マネージド インスタンスのアラートを作成する](sql-database-managed-instance-alerts.md)方法に関するページを参照してください。
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 

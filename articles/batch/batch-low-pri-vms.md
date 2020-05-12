@@ -1,22 +1,16 @@
 ---
-title: コスト効率が高く優先順位の低い VM でワークロードを実行する - Azure Batch | Microsoft Docs
+title: コスト効率が高く優先順位の低い VM でワークロードを実行する
 description: 優先順位の低い VM をプロビジョニングして Azure Batch ワークロードのコストを減らす方法について説明します。
-services: batch
 author: mscurrell
-manager: evansma
-ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
-ms.service: batch
 ms.topic: article
-ms.workload: na
 ms.date: 03/19/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 9f4b9ed9254eaf950311dd27d5716c4681707614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec75dac7e5615cddf942ff7939ea7e95315f8699
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053911"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116045"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 

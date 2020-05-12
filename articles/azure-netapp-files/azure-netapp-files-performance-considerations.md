@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67454662"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691311"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンスに関する考慮事項
 
@@ -34,8 +34,6 @@ ms.locfileid: "67454662"
 テストで観測された最大の実験的スループットは、4,500 MiB/秒 です。  Premium ストレージ レベルでは、70.31 TiB のボリューム クォータにより、このパフォーマンス レベルを達成するのに十分高いスループット制限がプロビジョニングされます。  
 
 70.31 TiB を超えるボリューム クォータ量の割り当てを検討している場合は、追加データを格納するために追加のクォータをボリュームに割り当てることができます。 ただし、追加されたクォータによって、実際のスループットがさらに増加することはありません。  
-
-追加情報については、「[Azure NetApp Files のパフォーマンス ベンチマーク](azure-netapp-files-performance-benchmarks.md)」を参照してください。
 
 ## <a name="overprovisioning-the-volume-quota"></a>ボリューム クォータのオーバープロビジョニング
 
@@ -64,4 +62,4 @@ ms.locfileid: "67454662"
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
-- [Azure NetApp Files のパフォーマンス ベンチマーク](azure-netapp-files-performance-benchmarks.md)
+- [Linux のパフォーマンス ベンチマーク](performance-benchmarks-linux.md)

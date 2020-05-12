@@ -6,52 +6,48 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988177"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791733"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 
 NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB ソリューションをサポートする多くの経験豊かなシステム インテグレーター パートナーおよびツールから選択できます。 
 
-## <a name="migration-tools"></a>移行ツール
-
-|**パートナー**  |**対応分野と強み**  |**サポートされている国/地域**  |**連絡先**  |
-|---------|---------|---------|---------|
-|![Striim][2]    |  さまざまなデータ ソースから、[Azure Cosmos DB にリアルタイムでデータを移動](https://www.striim.com/striim-for-azure-cosmos-db/)します。 <br/> Striim は、企業のドキュメントやリレーショナル データベース、センサー、ログ ファイルなどのさまざまなオンプレミスのデータ ソースからデータをリアルタイムに収集して Azure Cosmos DB へ移動するプロセスをシンプルにします。 |   米国   |  [Web サイト](https://www.striim.com/)       |
-
 ## <a name="systems-integrator-partners"></a>システム インテグレーター パートナー
 
-|**パートナー**  |**対応分野と強み**  |**サポートされている国/地域**  |**連絡先**  |
-|---------|---------|---------|---------|
-| ![10thMagnitude][13] | NoSQL の移行、新しいアプリの開発 | 米国 | [Web サイト](https://www.10thmagnitude.com/)|
-|![Altoros Development LLC][3]    |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |   米国、ノルウェー、フィンランド、ベラルーシ、アルゼンチン |  [Web サイト](https://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発      |    米国     |  [Web サイト](https://www.attunix.com/)       |
-| ![Avanade][26] | 新しいアプリの開発、 <br/> アプリの刷新 (既存のアプリ) | オーストリア、ドイツ、スイス、イタリア、ノルウェー、スペイン、英国 | [Web サイト](https://www.avanade.com/)
-|![Bluemetal Architects][5]     |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    北米、アジア太平洋     |  [Web サイト](https://www.bluemetal.com/)       |
-|![Capax Global LLC][6]     |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    米国     |  [Web サイト](https://www.capaxglobal.com/)       |
-| ![Capgemini][14] | NoSQL の移行、アプリの刷新 (既存のアプリ)、新しいアプリの開発 | 米国、フランス、英国、オランダ、フィンランド  | [Web サイト](https://www.capgemini.com/) | 
-|![Coeo][7]     |   アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |    英国     |  [Web サイト](https://www.coeo.com/)       |
-| ![Cognizant][15] | NoSQL の移行 |米国、カナダ、英国、デンマーク、オランダ、スイス、オーストラリア、日本 | [Web サイト](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL の移行       |    グローバル     |  [Web サイト](https://www.infosys.com/)       |
-| ![Lagash][16] | NoSQL の移行、 <br/> 新しいアプリの開発 | アルゼンチン、チリ、コロンビア、メキシコ| [Web サイト](https://www.lagash.com/)|
-| ![Lambda3 Informatics][17] | NoSQL の移行、 <br/> 新しいアプリの開発 | ブラジル| [Web サイト](https://www.lambda3.com.br/)|
-|![Neal Analytics][9]     |     アプリ開発 (新しいアプリ)    |    米国     |  [Web サイト](https://www.nealanalytics.com/)       |
-|![Pragmatic Works Software Inc][10]    |   NoSQL の移行      |   米国      |  [Web サイト](https://www.pragmaticworks.com/)       |
-| ![Ricoh Global][18] | NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)| 英国  | [Web サイト](https://www.ricoh.com/)|
-| ![SNP Technologies][19] | NoSQL の移行| US | [Web サイト](https://www.snp.com/)|
-| ![Solidsoft Reply][20] | NoSQL の移行 | クロアチア、スウェーデン、デンマーク、アイルランド、ブルガリア、スロベニア、キプロス、マルタ、リトアニア、チェコ共和国、アイスランド、スイス、リヒテンシュタイン| [Web サイト](https://www.reply.com/solidsoft-reply/)|
-| ![Spanish Point Technologies][21] | NoSQL の移行| アイルランド| [Web サイト](https://www.spanishpoint.ie/)|
-| ![Syone][22] | NoSQL の移行| ポルトガル| [Web サイト](https://www.syone.com/)|
-|![Tallan][11]    |  NoSQL の移行、 <br/> アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発       |    米国     |  [Web サイト](https://www.tallan.com/)       |
-| ![TCS][23] | アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 | 米国、英国、フランス、マレーシア、デンマーク、ノルウェー、スウェーデン| [Web サイト](https://www.tcs.com/)|
-|![VTeamLabs][12]    | NoSQL の移行       |  米国      | [Web サイト](https://www.vteamlabs.com/)       |
-| ![White Duck][24] |NoSQL の移行、 <br/> 新しいアプリの開発 | ドイツ | [Web サイト](https://whiteducksoftware.com/)|
-| ![Xpand IT][25] | 新しいアプリの開発 | ポルトガル、英国| [Web サイト](https://www.xpand-it.com/)|
-
+|**パートナー**  |**対応分野と強み**  |**サポートされている国/地域**  |
+|---------|---------|---------|
+|[Striim](https://www.striim.com/)    |  継続的、リアルタイム データ移動、データ移行|   米国   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT、小売り (在庫目録)、運用分析 (Spark)、サーバーレス アーキテクチャ、アプリ開発 | 米国 |
+|[Altoros Development LLC](https://www.altoros.com/)  |  IoT、パーソナル化小売り (在庫目録)、サーバーレス アーキテクチャ NoSQL 移行、アプリ開発|   米国 |
+|[Avanade](https://www.avanade.com/) | IoT、小売り (在庫目録)、サーバーレス アーキテクチャ、アプリ開発 | オーストリア、ドイツ、スイス、イタリア、ノルウェー、スペイン、英国、カナダ |
+|[Accenture](https://www.accenture.com/) | IoT、小売り (在庫目録)、サーバーレス アーキテクチャ、アプリ開発 |グローバル|
+|[Bluemetal](https://www.bluemetal.com/)     |  IoT、パーソナル化小売り (在庫目録)、企業と SMC 向けの運用分析、AI イメージ注釈、資産管理、NoSQL 移行、アプリ開発     |    北米、アジア太平洋     |
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT、パーソナル化、小売り (在庫目録)、運用分析 (Spark)、サーバーレス アーキテクチャ、アプリ開発|    米国     |  
+| [Capgemini](https://www.capgemini.com/) | 小売り (在庫目録)、IoT、運用分析 (Spark)、アプリ開発 | 米国、フランス、英国、オランダ、フィンランド  |
+| [Cognizant](https://www.cognizant.com/) | IoT、パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発 |米国、カナダ、英国、デンマーク、オランダ、スイス、オーストラリア、日本 |
+|[Infosys](https://www.infosys.com/)     | アプリケーション開発      |    米国    |  
+| [Lagash Systems](https://www.lagash.com/) | IoT、サーバーレス アーキテクチャ、アプリ開発 | アルゼンチン、チリ、コロンビア、メキシコ|
+| [Lambda3 Informatics](https://www.lambda3.com.br/) | リアルタイム パーソナル化、小売在庫目録、アプリ開発 | ブラジル|
+|[Neal Analytics](https://www.nealanalytics.com/)    |     パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発  |    米国     |  
+|[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL の移行      |   米国      |
+| [Ricoh Digital Services](https://www.ricoh.com/) | IoT、リアルタイム パーソナル化、小売在庫目録、NoSQL 移行 | 英国  |
+|[SNP Technologies](https://www.snp.com/) | NoSQL の移行| 米国 |
+| [Solidsoft Reply](https://www.reply.com/solidsoft-reply/) | NoSQL の移行 | クロアチア、スウェーデン、デンマーク、アイルランド、ブルガリア、スロベニア、キプロス、マルタ、リトアニア、チェコ共和国、アイスランド、スイス、リヒテンシュタイン|
+| [Spanish Point Technologies](https://www.spanishpoint.ie/) | NoSQL の移行| アイルランド|
+| [Syone](https://www.syone.com/) | NoSQL の移行| ポルトガル|
+|[Tallan](https://www.tallan.com/)    |  アプリケーション開発      |    米国     |
+| [TCS](https://www.tcs.com/) | アプリケーション開発 | 米国、英国、フランス、マレーシア、デンマーク、ノルウェー、スウェーデン|
+|[VTeamLabs](https://www.vteamlabs.com/)    | パーソナル化、小売り (在庫目録)、IoT、ゲーミング、運用分析 (Spark)、サーバーレス アーキテクチャ、NoSQL 移行、アプリ開発       |  米国      |  
+| [White Duck GmbH](https://whiteducksoftware.com/) |新しいアプリ開発、アプリ バックエンド、ドキュメントベース データのストレージ| ドイツ |
+| [Xpand IT](https://www.xpand-it.com/) | 新しいアプリの開発 | ポルトガル、英国|
+| [Hanu](https://hanu.com/) | IoT、アプリ開発 | 米国|
+| [Incycle Software](https://www.incyclesoftware.com/) | NoSQL 移行、IoT、サーバーレス アーキテクチャ、アプリ開発| 米国|
+| [Orion](https://www.orioninc.com/) | パーソナル化、小売り (在庫目録)、運用分析 (Spark)、IoT、アプリ開発| 米国、カナダ|
 
 ## <a name="next-steps"></a>次のステップ
 

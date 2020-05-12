@@ -1,22 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 で Azure Active Directory を使用して認証する方法について説明します
-services: data-lake-store
-documentationcenter: ''
+title: 認証 ‐ Data Lake Storage Gen1 で Azure AD を使用する
+description: Azure Data Lake Storage Gen1 で Azure Active Directory を使用して認証する方法について説明します。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60193596"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692282"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証
 

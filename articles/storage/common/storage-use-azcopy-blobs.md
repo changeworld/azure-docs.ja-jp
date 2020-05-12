@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263439"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137197"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
@@ -64,9 +64,8 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > |---|---|
 > |追加 BLOB またはページ BLOB としてファイルをアップロードします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
 > |特定のアクセス層 (アーカイブ層など) にアップロードします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
-> |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
 > 
-> 完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。
+> 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする
 
@@ -159,7 +158,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 >
 > |シナリオ|フラグ|
 > |---|---|
-> |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
+> |自動的にファイルを圧縮解除します。|**--decompress**|
 > |コピーに関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 > |コピー先で競合するファイルと BLOB を上書きするかどうか、どのように上書きするのかを指定します。|**--overwrite**=\[true\|false\|ifSourceNewer\|prompt\]|
 > 

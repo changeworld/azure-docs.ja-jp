@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273003"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779011"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>チュートリアル:Python SDK で初めての ML 実験を作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,11 +47,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 このチュートリアルでは、インストール不要であらかじめ構成されているエクスペリエンスを実現するために、お使いのワークスペースでクラウド ノートブック サーバーを使用します。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](how-to-configure-environment.md#local)を使用してください。
 
-次のビデオに従って、または後で示す詳細な手順を使用して、ワークスペースでチュートリアルを複製して実行します。 
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
-
-
+ 後で示す詳細な手順を使用して、ワークスペースでチュートリアルを複製して実行します。 
 
 ### <a name="clone-a-notebook-folder"></a>ノートブック フォルダーを複製する
 
@@ -63,7 +59,7 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 1. 左側にある **[ノートブック]** を選択します。
 
-1. **Samples** フォルダーを開きます。
+1. 上部にある **[サンプル]** タブを選択します。
 
 1. **Python** フォルダーを開きます。
 
@@ -71,26 +67,33 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 1. **tutorials** フォルダーの右側にある **[...]** を選択し、 **[Clone]\(複製\)** を選択します。
 
-    ![フォルダーを複製する](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="tutorials フォルダーを複製する":::
 
 1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。  自分のフォルダーを選択して **tutorials** フォルダーをそこに複製します。
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">複製されたノートブックを開く
+### <a name="open-the-cloned-notebook"></a><a name="open"></a>複製されたノートブックを開く
 
-1. **[User Files]\(ユーザー ファイル\)** の下の自分のフォルダーを開き、複製された **tutorials** フォルダーを開きます。
-
-    ![tutorials フォルダーを開く](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+1. **[User Files]\(ユーザー ファイル\)** セクションに複製された **tutorials** フォルダーを開きます。
 
     > [!IMPORTANT]
     > **samples** フォルダー内のノートブックを表示できますが、そこからノートブックを実行することはできません。  ノートブックを実行するには、必ず **[User Files]\(ユーザー ファイル\)** セクションにあるノートブックの複製バージョンを開いてください。
     
 1. **tutorials/create-first-ml-experiment** フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** ファイルを選択します。
 
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="tutorials フォルダーを開く":::
+
+
 1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。 これらの VM には、[Azure Machine Learning を実行するために必要なすべてのもの](concept-compute-instance.md#contents)があらかじめ構成されています。 
 
 1. VM が見つからない場合は、 **[追加]** を選択してコンピューティング インスタンス VM を作成します。 
 
-    1. VM を作成するときは名前を指定します。  名前は 2 文字から 16 文字にする必要があります。 有効な文字は、英字、数字、および - 文字です。また、名前は、Azure サブスクリプション全体で一意である必要があります。
+    1. VM を作成する場合は、以下のルールに従います。  
+        + 名前は必須であり、空にすることはできません。
+        + 名前は、ワークスペースまたはコンピューティング インスタンスの Azure リージョン内のすべての既存のコンピューティング インスタンス全体で一意である必要があります (大文字小文字は区別されません)。 選択した名前が一意でない場合は、アラートが表示されます。
+        + 有効な文字は、大文字、小文字、数字 (0 から 9)、およびダッシュ (-) です。
+        + 名前の長さは 3 から 24 文字の間でなければなりません。
+        + 名前の先頭は文字である必要があります (数字やダッシュは使用できません)。
+        + ダッシュが使用されている場合は、その後に少なくとも 1 文字を続ける必要があります。 例:Test-、test-0、test-01 は無効であり、test-a0、test-0a は有効な例です。
 
     1.  利用可能な選択肢から仮想マシンのサイズを選択します。
 

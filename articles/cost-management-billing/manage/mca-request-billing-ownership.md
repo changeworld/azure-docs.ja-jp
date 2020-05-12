@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/01/2020
 ms.author: banders
-ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200729"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692321"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
 
@@ -72,7 +72,7 @@ ms.locfileid: "77200729"
 
 ## <a name="check-the-transfer-request-status"></a>譲渡要求の状態を確認する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -109,7 +109,7 @@ ms.locfileid: "77200729"
    |---------|---------|
    |進行中|ユーザーは譲渡要求を承諾していません|
    |処理中|ユーザーは譲渡要求を承諾しました。 ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
-   |[完了]| ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
+   |完了| ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
    |エラーで終了|要求が完了しましたが、ユーザーが選択した一部のサブスクリプションの課金を移せませんでした|
    |有効期限切れ|ユーザーは予定どおりには要求を受諾せず、期限切れになりました|
    |Canceled|譲渡要求へのアクセス権を持つユーザーが要求を取り消しました|
@@ -177,7 +177,7 @@ Azure Marketplace 製品は、それぞれのサブスクリプションとと�
 
 ### <a name="azure-reservations-transfer"></a>Azure 予約の譲渡
 
-Azure 予約は、自動的にはサブスクリプションとともに移動しません。 予約を移動するように [Azure サポートに連絡](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)してください。
+マイクロソフト エンタープライズ契約 (EA) サブスクリプションを譲渡する場合でも、Azure 予約は、自動的にはサブスクリプションと共に移動しません。 予約を移動するように [Azure サポートに連絡](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)してください。
 
 ### <a name="access-to-azure-services"></a>Azure サービスへのアクセス
 

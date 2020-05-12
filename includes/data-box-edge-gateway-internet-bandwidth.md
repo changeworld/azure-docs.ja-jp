@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a95e4b8d1294d76a932bedbaf902fe42d42fc77
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181623"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561810"
 ---
 デバイスは、インターネット接続が遅かったり、中断されたときにも引き続き動作するように設計されています。 通常の動作条件では、以下のように使用することお勧めします。 
 

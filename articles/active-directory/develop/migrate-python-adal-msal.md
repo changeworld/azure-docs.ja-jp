@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: fe9dc6c04fe033fd518218d1b5ea971e573405fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696559"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128044"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -43,6 +43,10 @@ ADAL は、Azure Active Directory (Azure AD) v1.0 エンドポイントで動作
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
 ADAL Python ではリソースのトークンが取得されますが、MSAL Python ではスコープのトークンが取得されます。 MSAL Python の API サーフェスには、リソース パラメーターがなくなりました。 要求される必要なアクセス許可とリソースを宣言する文字列のリストとして、スコープを指定する必要があります。 スコープの例については、[Microsoft Graph のスコープ](https://docs.microsoft.com/graph/permissions-reference)に関するページを参照してください。
+
+`/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
+
+さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関する記事および「[v1.0 トークンを受け入れる Web API のスコープ](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)」の記事を参照してください。
 
 ### <a name="error-handling"></a>エラー処理
 

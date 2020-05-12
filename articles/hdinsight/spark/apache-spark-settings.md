@@ -6,20 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: e13390067f8767e8c07b9c189264444e6d999a7a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411295"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188159"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
-HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/) ライブラリのインストールが含まれています。  各 HDInsight クラスターには、Spark も含め、インストールされるすべてのサービスの既定の構成パラメーターが含まれています。  HDInsight Apache Hadoop クラスターの管理の重要な側面は、Spark ジョブを含むワークロードを監視することです。 Spark ジョブを最高の状態で実行するには、クラスターの論理構成を決定するときに、物理クラスターの構成を検討します。
+HDInsight Spark クラスターには、Apache Spark ライブラリのインストールが含まれています。  各 HDInsight クラスターには、Spark も含め、インストールされるすべてのサービスの既定の構成パラメーターが含まれています。  HDInsight Apache Hadoop クラスターの管理の重要な側面は、Spark ジョブを含むワークロードを監視することです。 Spark ジョブを最高の状態で実行するには、クラスターの論理構成を決定するときに、物理クラスターの構成を検討します。
 
-既定の HDInsight Apache Spark クラスターには、3 つの [Apache ZooKeeper](https://zookeeper.apache.org/) ノード、2 つのヘッド ノード、および 1 つ以上のワーカー ノードが含まれています。
+既定の HDInsight Apache Spark クラスターには、3 つの Apache ZooKeeper ノード、2 つのヘッド ノード、および 1 つ以上のワーカー ノードが含まれています。
 
 ![Spark HDInsight のアーキテクチャ](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
@@ -102,7 +102,7 @@ Spark のワークロードによっては、既定以外の Spark 構成のほ�
 |---|---|
 |--num-executors|Executor の数を設定します。|
 |--executor-cores|各 Executor のコア数を設定します。 他のプロセスが使用可能なメモリの一部を消費するため、中規模の Executor を使うことをお勧めします。|
-|--executor-memory|[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 上の各 Executor のメモリ サイズ (ヒープ サイズ) を制御するため、実行オーバーヘッド用にある程度のメモリを残しておく必要があります。|
+|--executor-memory|Apache Hadoop YARN 上の各 Executor のメモリ サイズ (ヒープ サイズ) を制御するため、実行オーバーヘッド用にある程度のメモリを残しておく必要があります。|
 
 構成値が異なる 2 つのワーカー ノードの例を次に示します。
 
@@ -129,8 +129,8 @@ HDInsight の Spark クラスターには、既定で複数のコンポーネン
 |---|---|
 |Spark Core|Spark Core、Spark SQL、Spark ストリーミング API、GraphX、Apache Spark MLlib。|
 |Anaconda|Python パッケージ マネージャー。|
-|[Apache Livy](https://livy.incubator.apache.org/)|Apache Spark REST API (HDInsight Spark クラスターへのリモート ジョブの送信に使われます)。|
-|[Jupyter](https://jupyter.org/) および [Apache Zeppelin](https://zeppelin.apache.org/) Notebook|Spark クラスターを操作するためのブラウザー ベースの対話型 UI。|
+|Apache Livy|Apache Spark REST API (HDInsight Spark クラスターへのリモート ジョブの送信に使われます)。|
+|Jupyter ノートブックと Apache Zeppelin ノートブック|Spark クラスターを操作するためのブラウザー ベースの対話型 UI。|
 |ODBC ドライバー|HDInsight の Spark クラスターを、Microsoft Power BI や Tableau などのビジネス インテリジェンス (BI) ツールに接続します。|
 
 Jupyter Notebook で実行するアプリケーションについては、`%%configure` コマンドを使って、Notebook 自体の内部から構成を変更できます。 これらの構成変更は、お使いの Notebook インスタンスから実行された Spark ジョブに適用されます。 そのような変更は、最初のコード セルを実行する前、アプリケーションの冒頭で行います。 変更された構成は、Livy セッションの作成時に適用されます。
@@ -153,6 +153,5 @@ Spark ジョブの実行が予測可能で高いパフォーマンスを発揮�
 
 * [HDInsight で使用可能な Apache Hadoop コンポーネントおよびバージョン](../hdinsight-component-versioning.md)
 * [HDInsight 上の Apache Spark クラスターのリソースを管理する](apache-spark-resource-manager.md)
-* [Apache Hadoop、Apache Spark、Apache Kafka などを使用して HDInsight でクラスターを設定する](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Apache Spark の構成](https://spark.apache.org/docs/latest/configuration.html)
 * [Apache Hadoop YARN 上での Apache Spark の実行](https://spark.apache.org/docs/latest/running-on-yarn.html)

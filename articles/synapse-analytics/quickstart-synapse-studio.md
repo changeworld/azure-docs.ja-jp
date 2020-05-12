@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096335"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692421"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>クイック スタート:Synapse Studio (プレビュー) の使用
 
@@ -64,7 +64,7 @@ Synapse Studio を開いたら、 **[データ]** を参照し、 **[ストレ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可を割り当てる](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)ことにより、Azure AD ユーザーがファイルに対してクエリを実行できるようにする
+- [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)を割り当てることにより、Azure AD ユーザーがファイルに対してクエリを実行できるようにする
 - [SQL オンデマンドを使用して、Azure Storage 上のファイルに対してクエリを実行する](sql/on-demand-workspace-overview.md)
-- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
+- [Azure portal を使用して Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
 - [Azure Storage に格納されているファイルについて Power BI レポートを作成する](sql/tutorial-connect-power-bi-desktop.md)

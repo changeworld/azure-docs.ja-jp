@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 5e1f61641eed0584ecb5bb33f1a510c7df6e60e3
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270827"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839081"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -52,6 +52,10 @@ ms.locfileid: "81270827"
 1. **Azure portal に表示されない SQL Server の古いイメージをデプロイすることはできますか?**
 
    はい、PowerShell を使用します。 PowerShell を使用して SQL Server VM をデプロイする方法の詳細については、「[Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法](virtual-machines-windows-ps-sql-create.md)」をご覧ください。
+   
+1. **SQL Server VM の一般化された Azure SQL Server Marketplace イメージを作成し、それを使用して VM をデプロイできますか?**
+
+   はい。ただし、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](virtual-machines-windows-sql-register-with-resource-provider.md)必要があります。 リソース プロバイダーに登録するとき、各 SQL Server VM のライセンスの種類も指定する必要があります。
 
 1. **Azure VM で SQL Server を一般化し、それを使用して新しい VM をデプロイするにはどうすればよいですか?**
 
@@ -63,7 +67,7 @@ ms.locfileid: "81270827"
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > カスタムの一般化されたイメージからデプロイされたものを含め、すべての SQL Server Azure VM を [SQL VM リソース プロバイダーに登録](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash)して、コンプライアンス要件を満たし、自動パッチや自動バックアップなどのオプション機能を利用することをお勧めします。 また、各 SQL Server VM の[ライセンスの種類を指定する](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal)こともできます。
+   > カスタムの一般化されたイメージからデプロイされたものを含め、Azure VM 上の SQL Server を [SQL VM リソース プロバイダーに登録](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash)してコンプライアンス要件を満たし、自動パッチや自動バックアップなどのオプション機能を利用します。 リソースプロバイダーでは、各 SQL Server VM の[ライセンスの種類を指定する](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal)こともできます。
 
 1. **独自の VHD を使用して SQL Server VM をデプロイできますか?**
 
@@ -92,7 +96,7 @@ ms.locfileid: "81270827"
 
 1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
-   はい。 [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)を有効にすることによって、従量課金制 (PAYG) のギャラリー イメージをライセンス持ち込み (BYOL) に簡単に切り替えることができます。  詳細については、[SQL Server VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 現時点では、この機能は、パブリック クラウドのお客様だけが利用できます。
+   はい。 [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)を有効にすることによって、従量課金制 (PAYG) のギャラリー イメージをライセンス持ち込み (BYOL) に簡単に切り替えることができます。  詳細については、[SQL Server VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 現在のところ、この機能はパブリック クラウドと Azure Government クラウドのお客様のみが利用できます。
 
 1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
 
@@ -154,10 +158,7 @@ ms.locfileid: "81270827"
 
 1. **自己デプロイされた SQL Server VM を SQL Server VM リソース プロバイダーに登録することはできますか?**
 
-    はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。 ただし、自己デプロイされた SQL Server VM を従量課金制に変換することはできません。
-
-
-   
+    はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。    
 
 
 ## <a name="administration"></a>管理

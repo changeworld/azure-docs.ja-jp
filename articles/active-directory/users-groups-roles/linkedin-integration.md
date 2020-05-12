@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755108"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582636"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory で LinkedIn アカウント接続を統合します。
 
@@ -30,8 +30,8 @@ ms.locfileid: "80755108"
 > 例外:
 >
 > * 設定は、米国政府機関用 Microsoft Cloud、Microsoft Cloud Germany、または中国の 21 vianet によって運用される Azure および Office 365 を使用しているお客様はご利用いただけません。
-> * 設定は、ドイツでプロビジョニングされたテナントの既定によりオフになります。 Microsoft Cloud Germany を使用しているお客様は設定を使用できませんのでご注意ください。
-> * 設定は、フランスでプロビジョニングされたテナントの既定によりオフになります。
+> * ドイツにプロビジョニングされた Azure AD 組織の場合、この設定は既定でオフです。 Microsoft Cloud Germany を使用しているお客様は設定を使用できませんのでご注意ください。
+> * フランスにプロビジョニングされた組織の場合、この設定は既定でオフです。
 >
 > 組織で LinkedIn アカウント接続が有効になると、アプリがユーザーに代わって会社のデータにアクセスすることにユーザーが同意した後にアカウント接続が機能します。 ユーザーの同意設定については、「[アプリケーションへのユーザー アクセスの削除方法](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)」を参照してください。
 

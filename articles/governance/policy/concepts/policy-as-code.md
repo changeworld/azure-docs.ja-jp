@@ -3,12 +3,12 @@ title: コードとしてのポリシー ワークフローの設計
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74267275"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187734"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
 
@@ -25,7 +25,7 @@ ms.locfileid: "74267275"
 
 コードとしてのポリシーの推奨される一般的なワークフローは、次の図のようになります。
 
-![コードとしてのポリシー ワークフローの概要](../media/policy-as-code/policy-as-code-workflow.png)
+:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="コードとしてのポリシー ワークフローの概要" border="false":::
 
 ### <a name="create-and-update-policy-definitions"></a>ポリシー定義を作成および更新する
 
@@ -92,7 +92,7 @@ ms.locfileid: "74267275"
 > [!NOTE]
 > 強制モードは便利ですが、これはさまざまな条件下でポリシー定義を完全にテストすることの代替手段ではありません。 ポリシー定義は、`PUT` および `PATCH` REST API 呼び出し、準拠リソースおよび非準拠リソース、およびリソースに不足しているプロパティなどのエッジ ケースを使用してテストする必要があります。
 
-割り当てがデプロイされたら、ポリシー SDK を使用して、新しい割り当ての[コンプライアンス データ](../how-to/get-compliance-data.md)を取得します。 ポリシーおよび割り当てのテストに使用する環境には、準拠リソースと非準拠リソースの両方が必要です。 コードの適切な単体テストと同様に、リソースが想定どおりであること、および偽陽性や偽陰性がないことをテストする必要があります。 期待したもののみにテストおよび検証を行った場合、予期しないまたは未確認の影響をポリシーから受ける可能性があります。 詳細については、「[新しい Azure ポリシーの影響を評価する](./evaluate-impact.md)」を参照してください。
+割り当てがデプロイされたら、ポリシー SDK を使用して、新しい割り当ての[コンプライアンス データ](../how-to/get-compliance-data.md)を取得します。 ポリシーおよび割り当てのテストに使用する環境には、準拠リソースと非準拠リソースの両方が必要です。 コードの適切な単体テストと同様に、リソースが想定どおりであること、および偽陽性や偽陰性がないことをテストする必要があります。 期待したもののみにテストおよび検証を行った場合、予期しないまたは未確認の影響をポリシーから受ける可能性があります。 詳細については、「[新しい Azure ポリシー定義の影響を評価する](./evaluate-impact.md)」を参照してください。
 
 ### <a name="enable-remediation-tasks"></a>修復タスクを有効にする
 

@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: c456e486217886510a1fd2ef1aeabae47d35b53c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1ce6da555bc8777bdb9671df1567f06227b74b6c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417204"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192801"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 
@@ -267,7 +267,7 @@ ms.locfileid: "81417204"
 | [dayOfMonth](control-flow-expression-language-functions.md#dayOfMonth) | タイムスタンプから月コンポーネントの日付を返します。 |
 | [dayOfWeek](control-flow-expression-language-functions.md#dayOfWeek) | タイムスタンプから曜日を返します。 |
 | [dayOfYear](control-flow-expression-language-functions.md#dayOfYear) | タイムスタンプから年の何日目かを返します。 |
-| [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | タイムスタンプから日付を返します。 |
+| [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | 任意の形式でタイムスタンプを文字列として返します。 |
 | [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) | 現在のタイムスタンプに指定した時刻単位を加えて返します。 [addToTime](control-flow-expression-language-functions.md#addToTime) もご覧ください。 |
 | [getPastTime](control-flow-expression-language-functions.md#getPastTime) | 現在のタイムスタンプから指定した時刻単位を引いて返します。 [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) もご覧ください。 |
 | [startOfDay](control-flow-expression-language-functions.md#startOfDay) | タイムスタンプの日の開始日時を返します。 |

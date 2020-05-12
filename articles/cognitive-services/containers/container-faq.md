@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876508"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690820"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 
@@ -76,7 +76,11 @@ Cognitive Services コンテナーのリソース構成はお客様が管理し�
 
 **Q:Cognitive Services コンテナーを IoT デバイスで実行するにはどうすればよいでしょうか?**
 
-信頼できるインターネット接続がありませんか。それとも、帯域幅コストで節約したいですか。 あるいは、短い待ち時間が求められていますか。オンサイトで分析しなければならない機密データを扱っていますか。[Azure IoT Edge と Cognitive Services コンテナー](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/)を使用すれば、クラウドによる一貫性が与えられます。
+**A:** 信頼できるインターネット接続がありませんか。それとも、帯域幅コストで節約したいですか。 あるいは、短い待ち時間が求められていますか。オンサイトで分析しなければならない機密データを扱っていますか。[Azure IoT Edge と Cognitive Services コンテナー](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/)を使用すれば、クラウドによる一貫性が与えられます。
+
+**Q:これらのコンテナーは OpenShift と互換性がありますか。** 
+
+OpenShift を使用してコンテナーをテストすることはありませんが、通常、Cognitive Services コンテナーは Docker イメージをサポートするすべてのプラットフォームで実行できるはずです。 OpenShift を使用している場合は、`root-user` としてコンテナーを実行することをお勧めします。
 
 **Q:製品フィードバックや機能推奨はどのような方法で提供しますか?**
 
@@ -94,7 +98,7 @@ Cognitive Services コンテナーのリソース構成はお客様が管理し�
 
 疑問に答え、問題解決に役立てるための [Azure Knowledge Center](https://azure.microsoft.com/resources/knowledge-center/) をお客様は自由に閲覧できます。
 
-### <a name="stack-overflow"></a>スタック オーバーフロー
+### <a name="stack-overflow"></a>Stack Overflow
 
 > [スタック オーバーフロー](https://en.wikipedia.org/wiki/Stack_Overflow)は、プログラミングのプロフェッショナルや愛好家のための質疑応答サイトです。
 

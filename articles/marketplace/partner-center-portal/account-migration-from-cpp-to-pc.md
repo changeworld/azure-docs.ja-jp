@@ -1,20 +1,20 @@
 ---
-title: Cloud パートナー ポータルからパートナー センターへのアカウントの移行 - Azure 用商業マーケットプレース
-description: アカウントを CPP からパートナー センターに移行する方法 - Azure のコマーシャル マーケットプレース
+title: Cloud パートナー ポータルから Microsoft コマーシャル マーケットプレースにアカウントを移行する
+description: ご自分のアカウントを、Cloud パートナー ポータルから Azure 用の Microsoft コマーシャル マーケットプレースのパートナー センターに移行する方法について説明します
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024423"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743527"
 ---
-# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへのアカウントの移行
+# <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターにアカウントを移行する方法
 
 既存の Cloud パートナー ポータル (CPP) アカウントがある場合は、アカウント設定をパートナー センターに移行する必要があります。
 

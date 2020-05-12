@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 196d941c5c3b18b737f7a11c25ebbb9eab91be1e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885040"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181734"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API を呼び出す Web アプリ:アプリのトークンを取得する
 
 クライアント アプリケーション オブジェクトは構築済みです。 次はこれを使って Web API を呼び出すトークンを取得します。 ASP.NET または ASP.NET Core では、Web API の呼び出しはコントローラーで実行されます。
 
-- トークン キャッシュを使用して Web API のトークンを取得します。 このトークンを取得するには、`AcquireTokenSilent` メソッドを呼び出します。
+- トークン キャッシュを使用して Web API のトークンを取得します。 このトークンを取得するには、MSAL `AcquireTokenSilent` メソッド (あるいは Microsoft.Identity.Web における同等のメソッド) を呼び出します。
 - 保護された API を呼び出して、アクセス トークンをパラメーターとして渡します。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -54,7 +54,7 @@ public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
  string[] scopes = new string[]{"user.read"};
- string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
  // Use the access token to call a protected web API.
  HttpClient client = new HttpClient();
@@ -160,6 +160,8 @@ def graphcall():
         ).json()
     return render_template('display.html', result=graph_data)
 ```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75431650"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611893"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics ジョブ監視とクエリの監視方法の概要
 
@@ -37,7 +37,7 @@ Azure portal は、クエリとジョブ パフォーマンスの監視とトラ
 | 関数の要求      | Azure Machine Learning 関数に対する呼び出しの数 (存在する場合)。 |
 | 逆シリアル化の入力エラー       | 逆シリアル化できなかった入力イベントの数。  |
 | 入力イベントのバイト数      | Stream Analytics ジョブが受信したデータの量 (バイト単位)。 イベントが入力ソースに送信されることを検証するために使用できます。 |
-| 入力イベント           | 入力イベントから逆シリアル化されたレコードの数。 この数には、逆シリアル化エラーが発生する受信イベントは含みません。 |
+| 入力イベント           | 入力イベントから逆シリアル化されたレコードの数。 この数には、逆シリアル化エラーが発生する受信イベントは含みません。 内部回復や自己結合などのシナリオでは、Stream Analytics によって同じイベントを複数回取り込むことができます。 そのため、ジョブにシンプルな "パススルー" クエリが含まれている場合は、入力イベントと出力イベントのメトリックが一致すると想定しないことをお勧めします。 |
 | 受信した入力ソース       | ジョブが受信したメッセージ数。 Event Hub の場合、メッセージは 1 つの EventData です。 BLOB の場合、メッセージは 1 つの BLOB です。 なお、入力ソースは逆シリアル化前にカウントされます。 逆シリアル化エラーが発生した場合、入力ソースは入力イベントよりも大きくなる場合があります。 それ以外の場合、各メッセージには複数のイベントが含まれる場合があるので、入力イベント以下になります。 |
 | 遅延入力イベント      | 構成済みの到着遅延許容期間より後に到着したイベント。 詳細については [Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)を確認してください。 |
 | 異常イベント    | イベント順序ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。 誤順序の許容期間の設定の構成により、影響を受けることがあります。 |

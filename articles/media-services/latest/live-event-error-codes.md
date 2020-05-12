@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services ライブ イベントのエラーコード | Microsoft Docs
 description: このアーティクルでは、ライブ イベントのエラーコードをリストにします。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/4/2020
+ms.author: inhenkel
+ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654581"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791053"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services ライブ イベント エラー コード
 
@@ -40,6 +40,7 @@ ms.locfileid: "77654581"
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | RTMP エンコーダーからのビデオまたはオーディオ FLVTag のタイムスタンプが無効です。 |
 | MPE_INGEST_FRAMERATE_EXCEEDED | 受信エンコーダーが、ライブ イベント/チャンネルをエンコードするために許容される上限の 30fps を超えるフレームレートでストリームを取り込みました。|
 | MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | 受信エンコーダーが、次の許容される解像度を超えるストリームを取り込みました。ライブ イベント/チャンネルのエンコード: 1920x1088、パススルー ライブ イベント/チャンネル: 4096 x 2160|
+| MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV | ライブ イベントで一度に大量の音声データまたは動画データを受け取りましたが、キー フレームがありません。 正しいデータで再試行できるよう、エンコーダーを切断しました。 |
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 

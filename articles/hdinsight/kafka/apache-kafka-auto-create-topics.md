@@ -1,23 +1,23 @@
 ---
 title: Apache Kafka での自動トピック作成を有効にする - Azure HDInsight
-description: トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法を説明します。 Ambari を使用して、あるいは PowerShell または Resource Manager テンプレートでクラスターを作成するときに、auto.create.topics.enable を true に設定することによって、Kafka を構成できます。
+description: トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法を説明します。 Ambari を使用して `auto.create.topics.enable` を true に設定することにより、Kafka を構成できます。 または、クラスターの作成中に PowerShell または Resource Manager テンプレートを使用します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 7ec7d15806927306b12624962facbafddf2ce08b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 88dc3e4d761f9b4df63dfa07a24298398f7b0187
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242361"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231273"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
 
-既定では、HDInsight 上の [Apache Kafka](https://kafka.apache.org/) では、自動的にトピックは作成されません。 [Apache Ambari](https://ambari.apache.org/) を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
+既定では、HDInsight 上の Apache Kafka では、自動的にトピックを作成できません。 Apache Ambari を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
 
 ## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
@@ -29,7 +29,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
     ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。 または、`https://CLUSTERNAME.azurehdinsight.net/` から直接 Amabri に接続することもできます。その際、`CLUSTERNAME` はご自身の Kafka クラスターの名前になります。
+    認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。 代わりに、`https://CLUSTERNAME.azurehdinsight.net/` から直接 Amabri に接続することもできます。その際、`CLUSTERNAME` はご自身の Kafka クラスターの名前になります。
 
 1. ページの左側にある一覧で Kafka サービスを選びます。
 
@@ -43,7 +43,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
     ![Apache Ambari の検索フィルター フィールド](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
+    プロパティの一覧にこの設定フィルターが適用されて、`auto.create.topics.enable` 設定が表示されます。
 
 1. `auto.create.topics.enable` の値を `true` に変更して、 **[保存]** を選択します。 ノートを追加して、もう一度 **[保存]** を選択します。
 

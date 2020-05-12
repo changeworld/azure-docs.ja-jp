@@ -59,6 +59,8 @@
               href: storage-quickstart-blobs-php.md
             - name: Ruby
               href: storage-quickstart-blobs-ruby.md
+            - name: Xamarin
+              href: storage-quickstart-blobs-xamarin.md
     - name: チュートリアル
       items:
         - name: 画像をアップロードして処理する
@@ -700,8 +702,10 @@
       items:
         - name: 作成
           items:
-            - name: 汎用 v2 ストレージ アカウントの作成
+            - name: ストレージ アカウントを作成する (汎用 v2)
               href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: ストレージ アカウントを作成する (ブロック BLOB)
+              href: storage-blob-create-account-block-blob.md
         - name: 移行
           items:
             - name: Data Lake Storage Gen1 から移行する

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d543abc88c1e45f2c1f5503473d8e92566fc582
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457384"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692166"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>クイック スタート:SQL オンデマンドの使用
 
@@ -41,19 +41,18 @@ Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置�
 
 ## <a name="first-time-setup"></a>初回セットアップ
 
-サンプルを使用する前に、次のことを行います。
+サンプルを使用する前に、次の作業を行います。
 
 - ビューのデータベースを作成します (ビューを使用する場合)
 - SQL オンデマンドがストレージ内のファイルにアクセスするために使用する資格情報を作成します
 
 ### <a name="create-database"></a>データベースの作成
 
-独自のデモ用データベースを作成します。 このデータベースにビューを作成します。 この記事のサンプル クエリで、このデータベースを使用します。
+独自のデモ用データベースを作成します。 このデータベースは、ビューの作成に使用するほか、この記事のサンプル クエリでも使用します。
 
 > [!NOTE]
 > このデータベースは、実際のデータではなくビューのメタデータに対してのみ使用されます。
->
-> クイックスタートで後で使用するデータベース名を書き留めておきます。
+>クイックスタートで後で使用するデータベース名を書き留めておきます。
 
 次のクエリを使用します。`mydbname` は任意の名前に変更します。
 
@@ -66,9 +65,15 @@ CREATE DATABASE mydbname
 SQL オンデマンドを使用してクエリを実行するには、SQL オンデマンドがストレージ内のファイルにアクセスするために使用する資格情報を作成します。
 
 > [!NOTE]
-> ストレージ アカウントにアクセスするために資格情報を作成する必要があることに注意してください。 SQL オンデマンドは異なるリージョンからストレージにアクセスできますが、ストレージと Azure Synapse ワークスペースを同じリージョンにするとパフォーマンスが向上します。
+> このセクションのサンプルを正常に実行するには、SAS トークンを使用する必要があります。
+>
+> SAS トークンの使用を開始するには、この[記事](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)に説明されている UserIdentity を削除する必要があります。
+>
+> SQL オンデマンドでは、既定で常に AAD パススルーが使用されます。
 
-次のコード スニペットを変更して、CSV、JSON、および Parquet のコンテナーの資格情報を作成します。
+ストレージ アクセスの制御を管理する方法について詳しくは、[SQL オンデマンドのストレージ アカウント アクセスを制御する方法](sql/develop-storage-files-storage-access-control.md)に関する記事を参照してください。
+
+このセクションのサンプルで使用する資格情報を作成するには、次のコード スニペットを実行します。
 
 ```sql
 -- create credentials for containers in our demo storage account
@@ -88,7 +93,7 @@ GO
 
 次の図は、クエリを実行するファイルのプレビューです。
 
-![ヘッダーのない CSV ファイルの最初の 10 行 (Windows スタイルの改行)。](./sql/media/query-single-csv-file/population.png)
+![ヘッダーがなく、Windows スタイルの改行を含む CSV ファイルの最初の 10 行。](./sql/media/query-single-csv-file/population.png)
 
 次のクエリは、ヘッダー行を含まず、Windows スタイルの改行があり、コンマ区切りの列が存在する CSV ファイルを読み取る方法を示しています。
 
@@ -177,11 +182,11 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> ここでは、JSON ファイル全体を単一の行/列として読み取ることで、FIELDTERMINATOR、FIELDQUOTE、および ROWTERMINATOR が 0x0b に設定されます。これは、ファイル内で見つかることが期待できないためです。
+> ここでは、JSON ファイル全体を単一の行と列として読み取ります。 そのため、FIELDTERMINATOR、FIELDQUOTE、ROWTERMINATOR は、ファイル内に存在しないと考えられる 0x0b に設定しています。
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、次のクイックスタート記事を開始する準備ができました。
+これで、次の記事に進む準備ができました。
 
 - [単一の CSV ファイルに対してクエリを実行する](sql/query-single-csv-file.md)
 - [フォルダーと複数の CSV ファイルに対してクエリを実行する](sql/query-folders-multiple-csv-files.md)
@@ -192,7 +197,4 @@ WHERE
 - [ビューの作成と使用](sql/create-use-views.md)
 - [外部テーブルの作成と使用](sql/create-use-external-tables.md)
 - [クエリ結果を Azure ストレージに保持する](sql/create-external-table-as-select.md)
-
-次の記事に進んで、単一の CSV ファイルに対してクエリを実行する方法を学習してください。
-> [!div class="nextstepaction"]
-> [単一の CSV ファイルに対してクエリを実行する](sql/query-single-csv-file.md)
+- [単一の CSV ファイルに対してクエリを実行する](sql/query-single-csv-file.md)

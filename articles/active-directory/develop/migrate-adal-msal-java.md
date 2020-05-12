@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 2929b94a2cb624b96649292714fe93dea09a2085
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886502"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128003"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java 用 ADAL から MSAL への移行ガイド
 
@@ -42,6 +42,10 @@ MSAL for Java は、Microsoft ID プラットフォームで使用すること�
 ## <a name="scopes-not-resources"></a>リソースではなくスコープ
 
 ADAL4J はリソースのトークンを取得しますが、MSAL for Java はスコープのトークンを取得します。 多くの MSAL for Java クラスには、スコープ パラメーターが必要です。 このパラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 スコープの例については、「[Microsoft Graph のスコープ](https://docs.microsoft.com/graph/permissions-reference)」に関するページを参照してください。
+
+`/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
+
+さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関する記事および記事「[v1.0 トークンを受け入れる Web API のスコープ](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)」を参照してください。
 
 ## <a name="core-classes"></a>コア クラス
 
@@ -76,13 +80,13 @@ MSAL for Java は、可能な場合に自動的に有効期限切れのトーク
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の Azure Active Directory (AAD) アカウントで (任意の組織に対して) サインインできます。
 
-V2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の AAD 組織、または Microsoft の個人アカウント (MSA) を使用してサインインできます。 MSAL for Java で、ログインを任意の AAD アカウントに制限したい場合は、`https://login.microsoftonline.com/organizations` 機関 (これは ADAL4J と同じ動作です) を使用する必要があります。 機関を指定するには、`authority` クラスを作成するときに、[PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) メソッドの `PublicClientApplication` パラメーターを設定します。
+V2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の AAD 組織、または Microsoft の個人アカウント (MSA) を使用してサインインできます。 MSAL for Java で、ログインを任意の AAD アカウントに制限したい場合は、`https://login.microsoftonline.com/organizations` 機関 (これは ADAL4J と同じ動作です) を使用する必要があります。 機関を指定するには、`PublicClientApplication` クラスを作成するときに、[PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) メソッドの `authority` パラメーターを設定します。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 トークンと v2.0 トークン
 
 v1.0 エンドポイント (ADAL で使用) では、v1.0 トークンのみが出力されます。
 
-V2.0 エンドポイント (MSAL で使用) では、v1.0 と v2.0 のトークンを出力できます。 Web API のアプリケーション マニフェストのプロパティでは、開発者は、受け入れられるトークンのバージョンを選択することができます。 `accessTokenAcceptedVersion`アプリケーション マニフェスト[に関するリファレンス ドキュメントの ](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) についての記事を参照してください。
+V2.0 エンドポイント (MSAL で使用) では、v1.0 と v2.0 のトークンを出力できます。 Web API のアプリケーション マニフェストのプロパティでは、開発者は、受け入れられるトークンのバージョンを選択することができます。 [アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に関するリファレンス ドキュメントの `accessTokenAcceptedVersion` についての記事を参照してください。
 
 v1.0 トークンと v2.0 トークンの詳細については、[Azure Active Directory アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)に関するページを参照してください。
 
@@ -109,7 +113,8 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-この `IAuthenticationResult` は、新しい更新トークンがキャッシュに格納されている間、アクセス トークンと ID トークンを返します。 アプリケーションには、IAccount も含まれるようになりました。
+この `IAuthenticationResult` は、新しい更新トークンがキャッシュに格納されている間、アクセス トークンと ID トークンを返します。
+アプリケーションには、IAccount も含まれるようになりました。
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
@@ -118,6 +123,6 @@ Set<IAccount> accounts =  app.getAccounts().join();
 現在キャッシュ内にあるトークンを使用するには、次のように呼び出します。
 
 ```java
-SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 
+SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();
 IAuthenticationResult result = app.acquireToken(parameters);
 ```

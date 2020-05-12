@@ -2,7 +2,7 @@
 title: アクセス レビューでグループおよびアプリに対する自分のアクセスをレビューする - Azure AD
 description: グループまたはアプリケーションに対する自分のアクセスを Azure Active Directory アクセス レビューでレビューする方法を学習します。
 services: active-directory
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
-ms.author: ajburnle
+ms.date: 04/30/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d75d7ffe28fa126ee5e359cba19e66e3c0f36e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75422395"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611097"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
@@ -28,9 +28,12 @@ ms.locfileid: "75422395"
 
 この記事では、グループまたはアプリケーションに対する自分のアクセスをレビューする方法を説明します。
 
-## <a name="open-the-access-review"></a>アクセス レビューを開く
+## <a name="review-your-access-using-my-apps"></a>マイ アプリを使用して自分のアクセスを確認する
 
 アクセス レビューを実行する最初の手順は、アクセス レビューを見つけて開くことです。
+
+>[!IMPORTANT]
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対する自分のアクセスをレビューするように求めるメールの例を次に示します。
 
@@ -40,9 +43,9 @@ ms.locfileid: "75422395"
 
 メールが届いていない場合は、次の手順に従って、保留中のアクセス レビューを見つけることができます。
 
-1. [https://myapps.microsoft.com](https://myapps.microsoft.com) から、MyApps ポータルにサインインします。
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) から、マイ アプリ ポータルにサインインします。
 
-    ![アクセス許可があるアプリの一覧を示す MyApps ポータル](./media/review-your-access/myapps-access-panel.png)
+    ![アクセス許可があるアプリの一覧を示すマイ アプリ ポータル](./media/review-your-access/myapps-access-panel.png)
 
 1. ページの右上隅にあるユーザー アイコンをクリックすると、ユーザーの名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
 
@@ -54,7 +57,7 @@ ms.locfileid: "75422395"
 
 1. 実行するアクセス レビューの **[レビューの開始]** リンクをクリックします。
 
-## <a name="perform-the-access-review"></a>アクセス レビューを実行する
+### <a name="perform-the-access-review"></a>アクセス レビューを実行する
 
 アクセス レビューを開いたら、自分のアクセスを確認できます。
 
@@ -72,9 +75,90 @@ ms.locfileid: "75422395"
 
 1. **[送信]** をクリックします。
 
-    選択内容が送信され、MyApps ポータルに戻ります。
+    ご自分の選択内容が送信され、マイ アプリ ポータルに戻ります。
 
-    応答内容を変更する場合は、アクセス レビュー ページをもう一度開き、応答内容を更新します。 応答内容は、アクセス レビューが終了するまでいつでも変更できます。
+    ご自分の応答内容を変更する場合は、アクセス レビュー ページをもう一度開き、ご自分の応答内容を更新します。 応答内容は、アクセス レビューが終了するまでいつでも変更できます。
+
+    > [!NOTE]
+    > アクセスが不要になったことを指定した場合、すぐには削除されません。 レビューが終了されたか、管理者がレビューを停止したときに削除されます。
+
+## <a name="review-your-own-access-using-my-access-new"></a>マイ アクセスを使用して自分のアクセス権をレビューする (新機能)
+
+マイ アクセスの更新されたユーザー インターフェイスでの新しいエクスペリエンスは、以下のいくつかの方法でお試しいただけます。
+
+### <a name="my-apps-portal"></a>マイ アプリ ポータル
+
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) から、マイ アプリ ポータルにサインインします。
+
+    ![アクセス許可があるアプリの一覧を示すマイ アプリ ポータル](./media/review-your-access/myapps-access-panel.png)
+
+2. **[アクセス レビュー]** タイルをクリックすると、保留中のアクセス レビューの一覧が表示されます。
+
+    > [!NOTE]
+    > **[アクセス レビュー]** タイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
+
+3. **[試してみる]** をクリックします。 これはページ上部のバナーにあります。クリックすると新しいマイ アクセス エクスペリエンスに移ります。
+
+    ![プレビュー期間中に表示される、新しいエクスペリエンスが利用可能であることを示すバナーと、アプリとグループに対して保留中になっているアクセス レビューの一覧](./media/review-your-access/banner-your-access.png)
+
+4. 次は「**アクセス レビューを実行する**」のセクションに移ります。
+
+### <a name="email"></a>Email
+
+>[!IMPORTANT]
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
+
+1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 電子メール メッセージの例は次のとおりです。
+
+ ![グループに対するアクセスをレビューするための Microsoft からのメールの例](./media/review-your-access/access-review-email-preview.png)
+
+2. **[アクセスのレビュー]** リンクをクリックして、アクセス レビューを開きます。
+
+3. 次は「**アクセス レビューを実行する**」のセクションに移ります。
+
+>[!NOTE]
+>[レビューの開始] をクリックすると、**マイ アプリ**に移動する場合は、前述の「**マイ アプリ ポータル**」というタイトルのセクションに記載されている手順に従ってください。
+
+### <a name="directly-at-my-access"></a>マイ アクセスから直接
+
+お使いのブラウザーを使用してマイ アクセスを開くと、保留中のご自分のアクセス レビューを表示することもできます。
+
+1. https://myaccess.microsoft.com/ からマイ アクセスにサインインします。
+
+2. 左側のバーのメニューから **[アクセス レビュー]** を選択すると、割り当てられている保留中のアクセス レビューの一覧が表示されます。
+
+   ![メニューの [アクセス レビュー]](./media/review-your-access/access-review-menu.png)
+
+### <a name="perform-the-access-review"></a>アクセス レビューを実行する
+
+1. [グループとアプリ] の下に次が表示されます。
+    
+    - **[名前]** : アクセス レビューの名前。
+    - **[期限]** : レビューの期限。 この日付を過ぎると、拒否されたユーザーはレビュー対象のグループまたはアプリから削除される可能性があります。
+    - **[リソース]** : レビュー中のリソースの名前。
+    - **[進行状況]** : このアクセス レビューに関わるユーザーの合計数に対する、レビューされたユーザー数。
+    
+2. 開始するには、アクセス レビューの名前をクリックします。
+
+   ![アプリとグループについての保留中のアクセス レビューの一覧](./media/review-your-access/access-reviews-list-preview.png)
+
+3. 自分のアクセスをレビューし、アクセスが引き続き必要かどうかを判断します。
+
+    他のユーザーのアクセスをレビューするように要求した場合は、ページの外観が異なります。 詳細については、[グループまたはアプリケーションに対するアクセスのレビュー](perform-access-review.md)に関するページを参照してください。
+
+    ![グループへのアクセスが引き続き必要かどうかを確認する、開かれたアクセス レビュー](./media/review-your-access/review-access-preview.png)
+
+1. **[はい]** を選択してご自分のアクセスを維持するか、 **[いいえ]** を選択してご自分のアクセスを削除します。
+
+1. **[はい]** をクリックする場合は、 **[理由]** ボックスに正当性を指定する必要がある場合があります。
+
+    ![グループへのアクセスが引き続き必要かどうかを確認する、完了したアクセス レビュー](./media/review-your-access/review-access-yes-preview.png)
+
+1. **[送信]** をクリックします。
+
+    ご自分の選択内容が送信され、マイ アクセス ページに戻ります。
+
+    ご自分の応答内容を変更する場合は、アクセス レビュー ページをもう一度開き、ご自分の応答内容を更新します。 応答内容は、アクセス レビューが終了するまでいつでも変更できます。
 
     > [!NOTE]
     > アクセスが不要になったことを指定した場合、すぐには削除されません。 レビューが終了されたか、管理者がレビューを停止したときに削除されます。

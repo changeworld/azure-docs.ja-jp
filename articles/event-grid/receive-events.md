@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60803745"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629594"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
 
-この記事では、イベント サブスクリプションからイベントを受信する [HTTP エンドポイントを検証](security-authentication.md#webhook-event-delivery)した後、イベントを逆シリアル化する方法を説明します。 この記事では、デモンストレーション用に Azure 関数を使用しますが、アプリケーションがどこでホストされている場合でも、同じ概念を適用できます。
+この記事では、イベント サブスクリプションからイベントを受信する [HTTP エンドポイントを検証](webhook-event-delivery.md)した後、イベントを逆シリアル化する方法を説明します。 この記事では、デモンストレーション用に Azure 関数を使用しますが、アプリケーションがどこでホストされている場合でも、同じ概念を適用できます。
 
 > [!NOTE]
 > Event Grid で Azure 関数をトリガーするときは、[Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用することを**強く**お勧めします。 ここでの汎用 WebHook トリガーの使用はデモンストレーションが目的です。
@@ -28,7 +28,7 @@ HTTP によってトリガーされる関数を含む関数アプリが必要で
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
-.NET で開発する場合は、`Microsoft.Azure.EventGrid`[Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)の関数に[依存関係を追加します](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 この記事の例では、バージョン 1.4.0 以降が必要です。
+.NET で開発する場合は、`Microsoft.Azure.EventGrid` [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)の関数に[依存関係を追加します](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 この記事の例では、バージョン 1.4.0 以降が必要です。
 
 他の言語用の SDK は、[発行 SDK](./sdk-overview.md#data-plane-sdks) リファレンスを介して利用できます。 これらのパッケージには、`EventGridEvent``StorageBlobCreatedEventData`、`EventHubCaptureFileCreatedEventData` などのネイティブなイベントの種類用のモデルが含まれています。
 
@@ -50,7 +50,7 @@ Azure 関数 (Azure functions ポータルの右端のウィンドウ) の [フ�
 
 ## <a name="endpoint-validation"></a>エンドポイントの検証
 
-最初に実行することは、`Microsoft.EventGrid.SubscriptionValidationEvent` イベントの処理です。 だれかがイベントにサブスクライブするたびに、Event Grid は、データ ペイロード内に `validationCode` を含む検証イベントをエンドポイントに送信します。 エンドポイントは、これを応答本文にエコー バックして、[エンドポイントが有効であり、ユーザーによって所有されていることを証明する](security-authentication.md#webhook-event-delivery)必要があります。 WebHook によってトリガーされる関数ではなく [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用している場合、エンドポイントの検証は自動的に処理されます。 サード パーティ製 API サービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、検証コードをプログラムでエコーできないことがあります。 このようなサービスの場合は、サブスクリプション検証イベントで送信される検証 URL を使用すると、サブスクリプションを手動で検証できます。 その URL を `validationUrl` プロパティにコピーし、REST クライアントまたは Web ブラウザーのいずれかを使って GET 要求を送信します。
+最初に実行することは、`Microsoft.EventGrid.SubscriptionValidationEvent` イベントの処理です。 だれかがイベントにサブスクライブするたびに、Event Grid は、データ ペイロード内に `validationCode` を含む検証イベントをエンドポイントに送信します。 エンドポイントは、これを応答本文にエコー バックして、[エンドポイントが有効であり、ユーザーによって所有されていることを証明する](webhook-event-delivery.md)必要があります。 WebHook によってトリガーされる関数ではなく [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用している場合、エンドポイントの検証は自動的に処理されます。 サード パーティ製 API サービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、検証コードをプログラムでエコーできないことがあります。 このようなサービスの場合は、サブスクリプション検証イベントで送信される検証 URL を使用すると、サブスクリプションを手動で検証できます。 その URL を `validationUrl` プロパティにコピーし、REST クライアントまたは Web ブラウザーのいずれかを使って GET 要求を送信します。
 
 C# では、`DeserializeEventGridEvents()`関数が Event Grid のイベントを逆シリアル化します。 これは、イベント データを StorageBlobCreatedEventData など、適切な型に逆シリアル化します。 `Microsoft.Azure.EventGrid.EventTypes`クラスを使用してサポートされているイベントの種類と名前を取得します。
 

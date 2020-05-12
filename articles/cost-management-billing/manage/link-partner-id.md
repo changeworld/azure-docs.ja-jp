@@ -4,15 +4,15 @@ description: Azure の顧客のリソースを管理する際に使用するユ�
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204802"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778823"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -159,4 +159,5 @@ C:\ az managementpartner delete --partner-id 12345
 
 **会社で [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) を使用して顧客のリソースにアクセスする場合、どのようにすればパートナー ID をリンクできますか。**
 
-[マネージド サービス プランを Azure Marketplace に発行する](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。 [Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)場合は、Microsoft Partner Network (MPN) ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 サービス プロバイダー テナントでこれを行う必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。
+[マネージド サービス プランを Azure Marketplace に発行する](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。 [Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)場合は、Microsoft Partner Network (MPN) ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 サービス プロバイダー テナントでこれを行う必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。 この例では、RBAC 閲覧者ロールが使用されています。これは、パートナー獲得クレジットの対象とならないロールの 1 つです。 ロールの詳細については、[パートナー獲得クレジットのロールとアクセス許可](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2)に関するページを参照してください。
+

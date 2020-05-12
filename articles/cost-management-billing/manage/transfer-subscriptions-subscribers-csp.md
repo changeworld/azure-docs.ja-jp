@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200522"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791155"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
@@ -50,6 +50,7 @@ ms.locfileid: "77200522"
 
 1. ターゲットの Azure サブスクリプションを作成します。
 1. 移行元サブスクリプションと移行先サブスクリプションが同じ Azure Active Directory (Azure AD) テナントにあることを確認します。 Azure AD テナントの変更について詳しくは、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+    変更ディレクトリは CSP サブスクリプションではないことに注意してください。 たとえば、CSP から従量課金制のサブスクリプションに譲渡するとします。 従量課金制のサブスクリプションのディレクトリを変更して、そのディレクトリに一致させる必要があります。
 
     > [!IMPORTANT]
     >  - サブスクリプションを別のディレクトリに関連付けると、[RBAC](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。

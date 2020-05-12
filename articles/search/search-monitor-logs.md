@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 86e869bc08552ea11728c508486a4784eccf4042
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 192591dedb0b5519fdcecde8c8683be87237c828
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462364"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127828"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Cognitive Search 用のログ データを収集して分析する
 
@@ -66,7 +66,7 @@ Blob Storage の場合は、コンテナーが Blob Storage に表示される�
 
 ## <a name="query-log-information"></a>ログ情報のクエリを実行する
 
-診断ログでは、次の 2 つのテーブルに Azure Cognitive Search 用のログとメトリックが格納されています: **AzureDiagnostics** と **AzureMetrics**。
+次の 2 つのテーブルに Azure Cognitive Search 用のログとメトリックが格納されています: **AzureDiagnostics** と **AzureMetrics**。
 
 1. **[監視]** で **[ログ]** を選択します。
 
@@ -97,7 +97,7 @@ Azure Cognitive Search のログ データが格納されるデータ構造は�
 
 Blob Storage の場合、各 BLOB には、ログ オブジェクトの配列が含まれる、**レコード**と呼ばれるルート オブジェクトが 1 つあります。 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
-次の表では、診断ログに共通するフィールドの一部を示します。
+次の表では、リソース ログに共通するフィールドの一部を示します。
 
 | 名前 | Type | 例 | Notes |
 | --- | --- | --- | --- |

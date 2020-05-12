@@ -8,14 +8,20 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b74b7f0b79ad4064d7133a19316d6aec6bd5ba3a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79365391"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611570"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する
+
+>[!IMPORTANT]
+>このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)を参照してください。
+>
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ホスト プールは、Windows Virtual Desktop テナント環境内にある 1 つまたは複数の同一の仮想マシンをコレクションとしてまとめたものです。 ホスト プールを運用環境にデプロイする前に、検証ホスト プールを作成することを強くお勧めします。 更新プログラムは最初に検証ホスト プールに適用されるので、運用環境に展開する前にサービスの更新プログラムを監視できます。 検証ホスト プールがない場合、運用環境でユーザーにダウンタイムをもたらす可能性のあるエラーを招く変更を検出できないことがあります。
 
@@ -26,53 +32,51 @@ ms.locfileid: "79365391"
 >[!NOTE]
 > 将来のすべての更新プログラムをテストするために、検証ホスト プールを所定の場所に置いておくことをお勧めします。
 
-作業を開始する前に、[Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだの場合のみ)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
+>[!IMPORTANT]
+>Windows Virtual Desktop Spring 2020 リリースは現在、検証環境の有効化と無効化に問題があります。 問題が解決された時点でこの記事は更新される予定です。
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+## <a name="prerequisites"></a>前提条件
+
+作業を開始する前に、[Windows Virtual Desktop PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って、PowerShell モジュールを設定し、Azure にサインインしてください。
 
 ## <a name="create-your-host-pool"></a>ホスト プールを作成する
 
 ホスト プールは、これらのいずれかの記事の手順に従って作成できます。
 - [チュートリアル:](create-host-pools-azure-marketplace.md)Azure Marketplace を使用してホスト プールを作成する
-- [Azure Resource Manager テンプレートを使用してホスト プールを作成する](create-host-pools-arm-template.md)
 - [PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)
 
 ## <a name="define-your-host-pool-as-a-validation-host-pool"></a>検証ホスト プールとしてホスト プールを定義する
 
-次の PowerShell コマンドレットを実行して、新しいホスト プールを検証ホスト プールとして定義します。 引用符で囲まれた値を、セッションに関連する値に置き換えます。
+次の PowerShell コマンドレットを実行して、新しいホスト プールを検証ホスト プールとして定義します。 角かっこで囲まれた値を、セッションに関連する値に置き換えます。
 
 ```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool" -ValidationEnv $true
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -ValidationEnvironment:$true
 ```
 
-次の PowerShell コマンドレットを実行して、検証プロパティが設定されていることを確認します。 引用符で囲まれた値を、セッションに関連する値に置き換えます。
+次の PowerShell コマンドレットを実行して、検証プロパティが設定されていることを確認します。 角かっこで囲まれた値を、セッションに関連する値に置き換えます。
 
 ```powershell
-Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | Format-List
 ```
 
 コマンドレットの結果は、次の出力のようになります。
 
-```
-    TenantName          : contoso 
-    TenantGroupName     : Default Tenant Group
-    HostPoolName        : contosoHostPool
+```powershell
+    HostPoolName        : hostpoolname
     FriendlyName        :
     Description         :
     Persistent          : False 
-    CustomRdpProperty    : use multimon:i:0;
+    CustomRdpProperty   : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
-    ValidationEnv       : True
-    Ring                :
+    ValidationEnvironment : True
 ```
 
 ## <a name="update-schedule"></a>更新スケジュール
 
 サービスの更新は毎月行われます。 大きな問題がある場合は、より頻繁なペースで重要な更新プログラムが提供されます。
+
+サービスの更新がある場合は、環境を検証するために、多少なりともサインインするユーザーを毎日確保してください。 [TechCommunity サイト](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true)には定期的にアクセスすることをお勧めします。WVDUPdate に関する投稿に注目して、サービスの更新に関する最新情報を把握してください。
 
 ## <a name="next-steps"></a>次のステップ
 

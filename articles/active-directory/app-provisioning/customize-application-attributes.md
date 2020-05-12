@@ -2,24 +2,20 @@
 title: Azure AD 属性マッピングのカスタマイズ | Microsoft Docs
 description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4abfdd94c57064c86e533234d78f774c45ba8e4a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231043"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593864"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -73,7 +69,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 - **対象の属性** - ターゲット システムのユーザー属性 (例:できます。
 - **null の場合の既定値 (オプション)** - ソース属性が null の場合にターゲット システムに渡される値。 この値は、ユーザーを作成するときにのみプロビジョニングされます。 既存のユーザーを更新したときは、"null の場合の既定値" はプロビジョニングされません。 たとえば、ターゲット システムのすべての既存ユーザーを特定の役職でプロビジョニングする必要がある場合は (ソース システムでは null の場合)、次の[式](../app-provisioning/functions-for-customizing-application-data.md)を使用できます。Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]) "DefaultValue" は、ソース システムで null の場合にプロビジョニングする値に置き換えてください。 
 - **この属性を使用してオブジェクトを照合する** - このマッピングを使用して、ソースとターゲットのシステム間でユーザーを一意に識別するかどうかを示します。 通常、これは Azure AD の userPrincipalName または mail 属性で設定され、一般的にターゲット アプリケーションのユーザー名フィールドにマップされます。
-- **照合の優先順位** - 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
+- **照合の優先順位** - 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。 一致する属性はいくつでも設定できますが、一致する属性として使用する属性が本当に一意であり、一致する属性に設定する必要があるかどうかを検討してください。 通常、お客様の構成には 1 つまたは 2 つの一致する属性があります。 
 - **このマッピングを適用する**
   - **常に** - このマッピングをユーザーの作成と更新の両方のアクションに適用します。
   - **作成中のみ** - このマッピングをユーザーの作成アクションのみに適用します。
@@ -133,7 +129,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - **[Multi-value?]\(複数値\)** - 属性が複数値をサポートするかどうか。
 - **[Exact case?]\(大文字小文字の区別\)** - 大文字と小文字を区別して属性値を評価するかどうか。
 - **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り、使用しないでください。
-- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
+- **[Referenced Object Attribute] **(参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCIM 準拠アプリケーションへカスタム拡張属性をプロビジョニングする
 SCIM RFC ではコア ユーザーとグループ スキーマが定義されているだけでなく、スキーマの拡張をアプリケーションのニーズに合わせて使用することもできます。 カスタム属性を SCIM アプリケーションに追加するには、次の手順に従います。
@@ -143,7 +139,10 @@ SCIM RFC ではコア ユーザーとグループ スキーマが定義されて
    4. **[Edit attribute list for AppName]\(AppName の属性リストの編集\)** を選択します。
    5. 属性の一覧の下部にあるフィールドに、カスタム属性に関する情報を入力します。 **[属性の追加]** を選択します。
 
-SCIM アプリケーションの場合は、次の例に示すパターンに従って属性名を指定する必要があります。 "CustomExtensionName" と "CustomAttribute" は、アプリケーションの要件に応じてカスタマイズできます。例: urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  or  urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
+SCIM アプリケーションの場合は、次の例に示すパターンに従って属性名を指定する必要があります。 "CustomExtensionName" と "CustomAttribute" は、アプリケーションの要件に応じてカスタマイズできます。次に例を示します。  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
+ * urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
 
 これらの手順は、SCIM 対応アプリケーションにのみ適用されます。 ServiceNow や Salesforce などのアプリケーションは、SCIM を使用する Azure AD と統合されていないため、カスタム属性を追加するときにこの特定の名前空間は必要ありません。
 
@@ -313,8 +312,10 @@ phoneNumbers や emails のように、一部の属性は複数の値を持ち�
 - 属性マッピングの更新は、同期サイクルのパフォーマンスに影響を与えます。 属性マッピングの構成を更新するには、すべての管理オブジェクトを再評価する必要があります。
 - 推奨されるベスト プラクティスとして、属性マッピングに対する連続的な変更の回数は最小限に抑えてください。
 - 写真を同期する形式は指定できないので、プロビジョニングする写真属性のアプリへの追加は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで機能の要求をお送りください
-- IsSoftDeleted 属性は、多くの場合、アプリケーションの既定のマッピングに含まれます。 IsSoftDeleted は 4 つのシナリオ (アプリケーションから割り当てられていないためユーザーがスコープ外になっている、スコープ フィルターを満たしていないためユーザーがスコープ外になっている、Azure AD でユーザーが論理的に削除されている、AccountEnabled プロパティがユーザーに対して false に設定されている) のいずれかで true にすることができます。 
-- Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません
+- IsSoftDeleted 属性は、多くの場合、アプリケーションの既定のマッピングに含まれます。 IsSoftDeleted は 4 つのシナリオ (アプリケーションから割り当てられていないためユーザーがスコープ外になっている、スコープ フィルターを満たしていないためユーザーがスコープ外になっている、Azure AD でユーザーが論理的に削除されている、AccountEnabled プロパティがユーザーに対して false に設定されている) のいずれかで true にすることができます。 IsSoftDeleted 属性を属性マッピングから削除することはお勧めしません。
+- Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません。
+- これらの主キー (通常は "ID") は、属性マッピングのターゲット属性として含めないでください。 
+- 通常、role 属性は、直接マッピングではなく、式を使用してマッピングする必要があります。 ロールのマッピングの詳細については、上記のセクションを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

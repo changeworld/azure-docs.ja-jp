@@ -10,17 +10,23 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05d658c052c5bc12f49d957bb29ad085c269c57b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081847"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137368"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルをトレーニングする方法について説明します。 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 次の例では、以下の方法について説明します。
+この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+
+予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 
+
+たとえば、将来の予測をどこまで行うか (予測期間) の他に、ラグなども[構成](#config)できます。 自動化された ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
+
+次の例では、以下の方法について説明します。
 
 * 時系列モデリング用のデータを準備する
 * [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトで特定の時系列パラメーターを構成する
@@ -28,21 +34,12 @@ ms.locfileid: "79081847"
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-自動化された ML を使用してテクニックとアプローチを組み合わせて、推奨される高品質な時系列予測を得ることができます。 自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。
+従来の時系列メソッドとは異なり、自動 ML では過去の時系列値が "ピボット" され、他の予測子と共にリグレッサーの追加のディメンションになります。 このアプローチでは、トレーニング中に複数のコンテキスト変数とそれらの相互関係を組み込みます。 複数の要因が予測に影響を与える可能性があるため、この方法は実際の予測シナリオに適しています。 たとえば、売上の予測では、履歴による傾向とのインタラクション、為替レート、および価格のすべてが、売上の結果に貢献します。 
 
-このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるという利点があります。 現実の予測アプリケーションでは、複数の要因が予測に影響を与える可能性があります。 たとえば、売上の予測では、履歴による傾向とのインタラクション、為替レート、および価格のすべてが、売上の結果に貢献します。 さらなるメリットは、回帰モデルのすべての最新の革新が予測にすぐに適用されることです。
-
-将来の予測をどこまで行うか (予測期間) の他に、ラグなども[構成](#config)できます。 自動化された ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
-
-トレーニング データから抽出されたフィーチャーが重要な役割を果たします。 さらに、自動化された ML では、標準的な前処理手順が実行され、追加の時系列フィーチャーが生成されて季節的影響がキャプチャされ、予測の精度が最大化されます。
+トレーニング データから抽出されたフィーチャーが重要な役割を果たします。 さらに、自動化された ML では、標準的な前処理手順が実行され、追加の時系列の特徴が生成されて季節的影響がキャプチャされ、予測の精度が最大化されます
 
 ## <a name="time-series-and-deep-learning-models"></a>時系列モデルとディープ ラーニング モデル
 
-
-自動 ML では、レコメンデーション システムの一部として、ネイティブな時系列モデルとディープ ラーニング モデルの両方をユーザーに提供します。 これらの学習器には、以下が含まれます。
-+ Prophet
-+ 自動 ARIMA
-+ ForecastTCN
 
 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
 
@@ -51,11 +48,16 @@ ms.locfileid: "79081847"
 1. 複数の入力と出力をサポートする
 1. 長いシーケンスにまたがる入力データのパターンを自動的に抽出できる
 
-大きなデータを指定すると、Microsoft の ForecastTCN などのディープ ラーニング モデルは、結果として得られるモデルのスコアを向上させることができます。 
+大きなデータを指定すると、Microsoft の ForecastTCN などのディープ ラーニング モデルは、結果として得られるモデルのスコアを向上させることができます。 [ディープ ラーニングの実験を構成する](#configure-a-dnn-enable-forecasting-experiment)方法について説明します。
 
-ネイティブな時系列の学習器も、自動 ML の一部として提供されます。 Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 Prophet は、正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。 
+自動 ML では、レコメンデーション システムの一部として、ネイティブな時系列モデルとディープ ラーニング モデルの両方をユーザーに提供します。 
 
-自己回帰和分移動平均 (ARIMA) は、時系列予測に使用される一般的な統計手法です。 この予測手法は、データによってサイクルなどの傾向の証拠が示される短期予測シナリオでよく使用されます。これは予測不可能でモデル化や予測が困難な場合があります。 自動 ARIMA は、一貫性のある信頼性の高い結果を得るために、データを定常データに変換します。
+
+モデル| 説明 | メリット
+----|----|---
+Prophet (プレビュー)|Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 | 正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。
+自動 ARIMA (プレビュー)|自己回帰和分移動平均 (ARIMA) は、データが静的な場合に最適です。 これは、平均や分散などの統計的特性がセット全体で一定であることを意味します。 たとえば、コインを投げた場合、今日、明日、来年のいつ投げても、表が出る確率は 50% です。| 過去の値は将来の値を予測するために使用されるため、単変量系列に最適です。
+ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測タスクに対応するように設計されたニューラル ネットワーク モデルであり、データ内の非線形のローカル傾向とグローバル傾向と、時系列間の関係がキャプチャされます。|データの複雑な傾向を活用し、最大のデータセットに合わせて簡単にスケーリングできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -101,6 +103,25 @@ test_labels = test_data.pop(label).values
 > 将来の値を予測するためにモデルをトレーニングするときは、目的のトレーニングで使用されるすべての機能が、意図した期間の予測を実行するときに使用できることを確認してください。 たとえば、需要の予測を作成するときに、現在の株価の機能を含めれば、トレーニングの精度を大幅に高めることができます。 ただし、長期間にわたり予測する予定の場合、将来の時系列ポイントに応じた将来の株価を正確に予測できない可能性があり、モデルの精度が低下することがあります。
 
 <a name="config"></a>
+
+## <a name="train-and-validation-data"></a>データをトレーニングして検証する
+`AutoMLConfig` コンストラクターでは、個別のトレーニングおよび検証セットを直接指定できます。
+
+### <a name="rolling-origin-cross-validation"></a>ローリング オリジン クロス検証
+時系列予測では、ローリング オリジン クロス検証 (ROCV) を使用し、時間的に一貫した方法で時系列を分割します。 ROCV を使用すると、起点の時点を使用して系列をトレーニング データと検証データに分割することができます。 時間内の原点をスライドすると、クロス検証のフォールドが生成されます。  
+
+![alt text](./media/how-to-auto-train-forecast/ROCV.svg)
+
+この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。 `n_cross_validations` を使用してトレーニング データと検証データを一緒に渡し、クロス検証フォールドの数を設定することで、ROCV が予測タスクに自動的に使用されます。 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             n_cross_validations=3,
+                             ...
+                             **time_series_settings)
+```
+[AutoMLConfig](#configure-and-run-experiment) の詳細について参照してください。
+
 ## <a name="configure-and-run-experiment"></a>実験を構成および実行する
 
 予測タスクの場合は、自動化された機械学習は、時系列データに固有の前処理および推定手順を使用します。 次の前処理手順が実行されます。
@@ -124,7 +145,7 @@ test_labels = test_data.pop(label).values
 
 詳しくは、[リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)をご覧ください。
 
-ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の `grain_column_names`2 つの個別の時系列グループ**がデータに対して作成されるように**  パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。 `max_horizon`、`target_rolling_window_size`、および `target_lags` は "auto" に設定することをお勧めします。これにより、これらの値が自動的に検出されます。 次の例では、これらのパラメーターに "auto" 設定が使用されています。 
+ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の **2 つの個別の時系列グループ**がデータに対して作成されるように `grain_column_names` パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。 `max_horizon`、`target_rolling_window_size`、および `target_lags` は "auto" に設定することをお勧めします。これにより、これらの値が自動的に検出されます。 次の例では、これらのパラメーターに "auto" 設定が使用されています。 
 
 ```python
 time_series_settings = {
@@ -182,10 +203,32 @@ best_run, fitted_model = local_run.get_output()
 
 DNN を活用して予測を行うためには、AutoMLConfig の `enable_dnn` パラメーターを true に設定する必要があります。 
 
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+[AutoMLConfig](#configure-and-run-experiment) の詳細について参照してください。
+
+または、Studio で `Enable deep learning` オプションを選択することもできます。
+![代替テキスト](./media/how-to-auto-train-forecast/enable_dnn.png)
+
 GPU SKU の AML コンピューティング クラスターと少なくとも 2 つのノードをコンピューティング ターゲットとして使用することをお勧めします。 DNN トレーニングが完了するのに十分な時間を確保するために、実験のタイムアウトを最短でも数時間に設定することをお勧めします。
 GPU を含む AML コンピューティングと VM サイズの詳細については、「 [AML のコンピューティングに関するドキュメント](how-to-set-up-training-targets.md#amlcompute) 」と「 [GPU 最適化仮想マシンのサイズに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」をご参照ください。
 
 DNN を利用した詳細なコード例については、[飲料生産予測 ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) をご参照ください。
+
+### <a name="target-rolling-window-aggregation"></a>ターゲットのローリング ウィンドウ集計
+多くの場合、予測器が持つことができる最高の情報はターゲットの最近の値です。 ターゲットの累積統計を作成すると、予測の精度が向上する場合があります。 ターゲットのローリング ウィンドウ集計を使用すると、データ値のローリング集計を特徴として追加できます。 ターゲットのローリング ウィンドウを有効にするには、`target_rolling_window_size` を目的の整数のウィンドウ サイズに設定します。 
+
+この例は、エネルギー需要を予測するときに見られます。 3 日間のローリング ウィンドウの特徴を追加して、暖房が入っている空間の熱変化を考慮することもできます。 次の例では、`AutoMLConfig` コンストラクターで `target_rolling_window_size=3` を設定することで、このサイズ 3 のウィンドウを作成しました。 この表は、ウィンドウ集計が適用されたときに発生する特徴エンジニアリングを示しています。 最小値、最大値、合計値の列は、定義された設定に基づいて、3 のスライディング ウィンドウで生成されます。 各行には新しい計算済みの特徴があります。2017 年 9 月 8 日の午前 4:00 のタイムスタンプの場合、最大値、最小値、および合計値は、2017 年 9 月 8 日午前 1:00 から午前 3:00 までの需要値を使用して計算されます。 この 3 のウィンドウは、残りの行のデータを設定するためにシフトされます。
+
+![alt text](./media/how-to-auto-train-forecast/target-roll.svg)
+
+これらの追加の特徴を追加のコンテキスト データとして生成および使用すると、トレーニング モデルの精度が向上します。
+
+[ターゲットのローリング ウィンドウ集計の特徴](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を利用した Python コードの例を参照してください。
 
 ### <a name="view-feature-engineering-summary"></a>特徴エンジニアリングの概要を確認する
 
@@ -205,14 +248,9 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 最適モデルのイテレーションを使用して、テスト データ セットの値を予測します。
 
-```python
-predict_labels = fitted_model.predict(test_data)
-actual_labels = test_labels.flatten()
-```
+`predict()` の代わりに `forecast()` 関数を使用する必要があります。そうすることで、いつ予測を開始するかを指定できるようになります。 次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 `predict()` を使用すると通常そうなるように、このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
 
-または、`forecast()` ではなく `predict()` 関数を使用することもできます。これにより、いつ予測を開始するかを指定できます。 次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 `predict()` を使用すると通常そうなるように、このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
-
-`forecast_destination` 関数の `forecast()` パラメーターを使用して、指定した日付までの値を予測することもできます。
+`forecast()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
 
 ```python
 label_query = test_labels.copy().astype(np.float)

@@ -2,13 +2,13 @@
 title: リソースの複数のインスタンスをデプロイする
 description: Azure Resource Manager テンプレートで copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153320"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583391"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM テンプレートでのリソースの反復処理
 
@@ -18,9 +18,9 @@ ms.locfileid: "80153320"
 
 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](conditional-resource-deployment.md)に関する記述を参照してください。
 
-## <a name="resource-iteration"></a>リソースの反復
+## <a name="syntax"></a>構文
 
-このコピー要素には、次の一般的な形式があります。
+この copy 要素には、次の一般的な形式があります。
 
 ```json
 "copy": {
@@ -34,6 +34,23 @@ ms.locfileid: "80153320"
 **name** プロパティは、ループを識別する任意の値です。 **count** プロパティは、リソースの種類に対して必要な反復の数を指定します。
 
 **mode** と **batchSize** プロパティを使用して、リソースを並列または順番に配置するかどうかを指定します。 これらのプロパティについては [シリアルまたは並列](#serial-or-parallel)で説明します。
+
+## <a name="copy-limits"></a>コピー制限
+
+count は 800 を超えることはできません。
+
+count は負の数値にすることはできません。 Azure CLI、PowerShell、または REST API の最新バージョンを使用してテンプレートをデプロイする場合、ゼロを指定できます。 具体的には、次のものを使用する必要があります。
+
+* Azure PowerShell **2.6** 以降
+* Azure CLI **2.0.74** 以降
+* REST API バージョン **2019-05-10** 以降
+* [[Linked deployments]\(リンクされたデプロイ\)](linked-templates.md) には、デプロイ リソースの種類に API バージョン **2019-05-10** 以降を使用する必要があります
+
+以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
+
+コピーで[完全モード デプロイ](deployment-modes.md)を使用する際は注意してください。 完全モードでリソース グループに再デプロイする場合、コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
+
+## <a name="resource-iteration"></a>リソースの反復
 
 次の例では、**storageCount** パラメーターで指定されているストレージ アカウントの数を作成します。
 
@@ -258,14 +275,6 @@ mode プロパティでも **parallel** が既定値として使用されます�
 }]
 ```
 
-## <a name="copy-limits"></a>コピー制限
-
-count は 800 を超えることはできません。
-
-count は負の数値にすることはできません。 Azure PowerShell 2.6 以降、Azure CLI 2.0.74 以降、または REST API バージョン **2019-05-10** 以降を使用してテンプレートをデプロイする場合は、count を 0 に設定できます。 以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
-
-コピーで[完全モード デプロイ](deployment-modes.md)を使用する際は注意してください。 完全モードでリソース グループに再デプロイする場合、コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
-
 ## <a name="example-templates"></a>サンプル テンプレート
 
 次の例は、リソースまたはプロパティの複数のインスタンスを作成するための一般的なシナリオを示しています。
@@ -280,7 +289,7 @@ count は負の数値にすることはできません。 Azure PowerShell 2.6 �
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルを実行するには、「[チュートリアル: ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
+* チュートリアルを実行するには、[チュートリアル: ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)に関するページを参照してください。
 * copy 要素のその他の使用方法については、以下を参照してください。
   * [ARM テンプレートでのプロパティの反復処理](copy-properties.md)
   * [ARM テンプレートでの変数の反復処理](copy-variables.md)

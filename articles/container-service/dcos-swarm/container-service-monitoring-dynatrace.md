@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: a82481c5cb3d12b11179b41999f73e67583ec43b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab6bb116c93aad8501da21dc5688d7e39f4195fe
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277742"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166191"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>(非推奨) Dynatrace SaaS/Managed を使用した Azure Container Service DC/OS クラスターの監視
 
@@ -33,7 +33,7 @@ Azure Container Service によって構成されたクラスターに[デプロ�
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Marathon を使用した Dynatrace デプロイメントの構成
 以下の手順は、Marathon を使用して Dynatrace アプリケーションを構成し、クラスターにデプロイする方法を示しています。
 
-1. [http://localhost:80/](http://localhost:80/) で DC/OS の UI にアクセスします。 DC/OS の UI を開いたら、 **[Universe (ユニバース)]** タブに移動して、**Dynatrace** を検索します。
+1. `http://localhost:80/` で DC/OS の UI にアクセスします。 DC/OS の UI を開いたら、 **[Universe (ユニバース)]** タブに移動して、**Dynatrace** を検索します。
 
     ![Dynatrace in DC/OS Universe](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: dbf75262440474c5cb50a6d733ac7cba212b5f3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649567"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508133"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>マネージド ID を持つ Azure マネージド アプリケーション
 
@@ -54,7 +54,7 @@ ms.locfileid: "75649567"
 
 ```json
 "outputs": {
-    "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
+    "managedIdentity": { "Type": "SystemAssigned" }
 }
 ```
 
@@ -66,71 +66,65 @@ ms.locfileid: "75649567"
 - マネージド ID には複雑なコンシューマー入力が必要です。
 - マネージド アプリケーションの作成ではマネージド ID が必要です。
 
-#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
+#### <a name="managed-identity-createuidefinition-control"></a>マネージド ID CreateUIDefinition コントロール
 
-マネージド アプリケーションの SystemAssigned ID を有効にする基本的な CreateUIDefinition。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-  "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-        ],
-        "outputs": {
-            "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
-        }
-    }
-}
-```
-
-#### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
-
-入力として**ユーザー割り当て ID** リソースを受け取り、マネージド アプリケーションの UserAssigned ID を有効にする基本的な CreateUIDefinition。
+CreateUIDefinition では、組み込みの[マネージド ID コントロール](./microsoft-managedidentity-identityselector.md)がサポートされています。
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
   "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-            {
-                "name": "manageIdentity",
-                "label": "Identity",
-                "subLabel": {
-                    "preValidation": "Manage Identities",
-                    "postValidation": "Done"
-                },
-                "bladeTitle": "Identity",
-                "elements": [
-                    {
-                        "name": "userAssignedText",
-                        "type": "Microsoft.Common.TextBox",
-                        "label": "User assigned managed identity",
-                        "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userassignedidentites/myuserassignedidentity",
-                        "visible": true
-                    }
-                ]
-            }
-        ],
-        "outputs": {
-            "managedIdentity": "[parse(concat('{\"Type\":\"UserAssigned\",\"UserAssignedIdentities\":{',string(steps('manageIdentity').userAssignedText),':{}}}'))]"
-        }
+  "version": "0.0.1-preview",
+  "parameters": {
+    "basics": [],
+    "steps": [
+      {
+        "name": "applicationSettings",
+        "label": "Application Settings",
+        "subLabel": {
+          "preValidation": "Configure your application settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Application Settings",
+        "elements": [
+          {
+            "name": "appName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Managed application Name",
+            "toolTip": "Managed application instance name",
+            "visible": true
+          },
+          {
+            "name": "appIdentity",
+            "type": "Microsoft.ManagedIdentity.IdentitySelector",
+            "label": "Managed Identity Configuration",
+            "toolTip": {
+              "systemAssignedIdentity": "Enable system assigned identity to grant the managed application access to additional existing resources.",
+              "userAssignedIdentity": "Add user assigned identities to grant the managed application access to additional existing resources."
+            },
+            "defaultValue": {
+              "systemAssignedIdentity": "Off"
+            },
+            "options": {
+              "hideSystemAssignedIdentity": false,
+              "hideUserAssignedIdentity": false,
+              "readOnlySystemAssignedIdentity": false
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "applicationResourceName": "[steps('applicationSettings').appName]",
+      "location": "[location()]",
+      "managedIdentity": "[steps('applicationSettings').appIdentity]"
     }
+  }
 }
 ```
 
-上の CreateUIDefinition.json では、コンシューマーが**ユーザー割り当て ID** Azure リソース ID を入力するためのテキスト ボックスを含むユーザーの作成エクスペリエンスが生成されます。 生成されたエクスペリエンスは次のようになります。
-
-![サンプルのユーザー割り当て ID CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
+![マネージド ID CreateUIDefinition](./media/publish-managed-identity/msi-cuid.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 
@@ -203,7 +197,7 @@ ms.locfileid: "75649567"
 
 ## <a name="granting-access-to-azure-resources"></a>Azure リソースへのアクセスの付与
 
-マネージド アプリケーションに ID が付与されたら、それに既存の azure リソースへのアクセスを付与できます。 このプロセスは、Azure Portal のアクセス制御 (IAM) インターフェイス経由で実行できます。 ロールの割り当てを追加するために、マネージド アプリケーションの名前または**ユーザー割り当て ID** を検索できます。
+マネージド アプリケーションに ID が付与されると、それに既存の Azure リソースへのアクセスを付与できます。 このプロセスは、Azure Portal のアクセス制御 (IAM) インターフェイス経由で実行できます。 ロールの割り当てを追加するために、マネージド アプリケーションの名前または**ユーザー割り当て ID** を検索できます。
 
 ![マネージド アプリケーションへのロールの割り当てを追加する](./media/publish-managed-identity/identity-role-assignment.png)
 
@@ -218,7 +212,7 @@ ms.locfileid: "75649567"
 
 マネージド アプリケーションのデプロイを既存のリソースにリンクする場合は、既存の Azure リソースと、そのリソースに対する適用可能なロールの割り当てを持つ**ユーザー割り当て ID** の両方を指定する必要があります。
 
- ネットワーク インターフェイス リソース ID とユーザー割り当て ID リソース ID の 2 つの入力が必要なサンプルの CreateUIDefinition。
+ サンプルの CreateUIDefinition では、ネットワーク インターフェイス リソース ID とユーザー割り当て ID リソース ID の 2 つの入力が必要です。
 
 ```json
 {

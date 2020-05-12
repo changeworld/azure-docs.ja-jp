@@ -3,17 +3,17 @@ title: Azure Storage のライフサイクルの管理
 description: 古いデータをホット層からクール層およびアーカイブ層へ移行するためのライフサイクル ポリシー ルールの作成方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598308"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692142"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "77598308"
 - パフォーマンスとコストを最適化するために、BLOB をよりクールなストレージ層に移行する (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ)
 - ライフサイクルの最後に BLOB を削除する
 - ストレージ アカウント レベルで 1 日に 1 回実行されるようにルールを定義する
-- コンテナーまたは BLOB のサブセットにルールを適用する (プレフィックスをフィルターとして使用)
+- コンテナーまたは BLOB のサブセットにルールを適用する (名前のプレフィックスまたは [ インデックス タグ](storage-manage-find-blobs.md)をフィルターとして使用)
 
 次のようなシナリオについて考えてみましょう。データがライフサイクルの初期段階には頻繁にアクセスされるものの、2 週間後にはたまにしか必要とされなくなります。 1 か月を超えると、そのデータ セットにはほとんどアクセスされなくなります。 このシナリオの初期段階ではホット ストレージが最適です。 ときどきアクセスされるデータにはクール ストレージが適しています。 1 か月以上が経過したデータに最も適しているのは、アーカイブ ストレージです。 データの古さを考慮してストレージ層を調整することで、ニーズに合った最も低コストのストレージ オプションを設計できます。 この移行を実現するために、ライフサイクル管理ポリシー ルールを使用して、古いデータをよりクールな層に移動することができます。
 
@@ -67,7 +67,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 #### <a name="azure-portal-list-view"></a>Azure portal リスト ビュー
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal で、自分のストレージ アカウントを検索して選択します。 
 
@@ -88,7 +88,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 9. **[追加]** を選択して新しいポリシーを追加します。
 
 #### <a name="azure-portal-code-view"></a>Azure portal コード ビュー
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal で、自分のストレージ アカウントを検索して選択します。
 
@@ -128,7 +128,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 6. この JSON の例の詳細については、「[ポリシー](#policy)」セクションおよび「[ルール](#rules)」セクションを参照してください。
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の PowerShell スクリプトを使用すると、お使いのストレージ アカウントにポリシーを追加できます。 `$rgname` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。
 
@@ -226,13 +226,13 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ポリシーはルールのコレクションです。
 
-| パラメーター名 | パラメーターのタイプ | メモ |
+| パラメーター名 | パラメーターのタイプ | Notes |
 |----------------|----------------|-------|
 | `rules`        | ルール オブジェクトの配列 | ポリシーには少なくとも 1 つのルールが必要です。 ポリシーでは最大 100 のルールを定義できます。|
 
 ポリシー内の各ルールには、次のいくつかのパラメーターがあります。
 
-| パラメーター名 | パラメーターのタイプ | メモ | 必須 |
+| パラメーター名 | パラメーターのタイプ | Notes | 必須 |
 |----------------|----------------|-------|----------|
 | `name`         | String |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。  名前は、ポリシー内で一意にする必要があります。 | True |
 | `enabled`      | Boolean | ルールを一時的に無効にすることを許可する省略可能なブール値。 設定されていない場合、既定値は true です。 | False | 
@@ -289,10 +289,14 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 フィルターには次のものが含まれます。
 
-| フィルター名 | フィルターの種類 | メモ | 必須 |
+| フィルター名 | フィルターの種類 | Notes | 必須 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 定義済みの列挙型の値の配列。 | 現在のリリースでは `blockBlob` をサポートしています。 | はい |
 | prefixMatch | プレフィックスを照合する文字列の配列。 各ルールで最大 10 個のプレフィックスを定義できます。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、`https://myaccount.blob.core.windows.net/container1/foo/...` の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は `container1/foo` です。 | prefixMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。  | いいえ |
+| blobIndexMatch | 照合する BLOB インデックス タグ キーと値条件で構成されるディクショナリ値の配列。 各ルールには、最大 10 個の BLOB インデックス タグ条件を定義できます。 たとえば、ルールとして `https://myaccount.blob.core.windows.net/` の下にあるすべての BLOB を `Project = Contoso` に一致させたい場合、blobIndexMatch は `{"name": "Project","op": "==","value": "Contoso"}` になります。 | blobIndexMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。 | いいえ |
+
+> [!NOTE]
+> BLOB インデックスはパブリック プレビュー中であり、**フランス中部**と、**フランス南部**リージョンで使用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
 ### <a name="rule-actions"></a>ルールのアクション
 
@@ -405,6 +409,42 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 }
 ```
 
+### <a name="delete-data-with-blob-index-tags"></a>BLOB インデックス タグを使用したデータを削除する
+一部のデータは、削除対象として明示的にマークされている場合のみ有効期限切れになる必要があります。 期限切れにするには、データに BLOB インデックスのキー/値属性でタグ付けして、ライフサイクル管理ポリシーを構成します。 次の例は、`Project = Contoso` でタグ付けされたすべてのブロック BLOB を削除するポリシーを示しています。 BLOB インデックスの詳細については、[BLOB インデックスを使用した Azure Blob Storage でのデータの管理および検索 (プレビュー)](storage-manage-find-blobs.md) に関するページを参照してください。
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="delete-old-snapshots"></a>古いスナップショットを削除する
 
 保存期間中に定期的に変更およびアクセスされるデータの場合、データの古いバージョンを追跡するためにスナップショットが使用されることがよくあります。 スナップショットの古さに基づいて古いスナップショットを削除するポリシーを作成できます。 スナップショットの古さは、スナップショットの作成時刻を評価することによって決定されます。 このポリシー ルールでは、スナップショットの作成時点から 90 日以上前の、コンテナー `activedata` 内のブロック BLOB のスナップショットを削除します。
@@ -448,3 +488,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 誤って削除したデータを回復する方法を学習します。
 
 - [Azure Storage Blob の論理的な削除](../blobs/storage-blob-soft-delete.md)
+
+BLOB インデックスを使用してデータを管理および検索する方法について説明します。
+
+- [BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する](storage-manage-find-blobs.md)

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870216"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611400"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -45,11 +45,13 @@ VM イメージを作成しキャプチャしてから、それをスケール �
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Scale Sets 容量を 20 から 15 に減らすと、どの VM が削除されますか?
 
-可用性を最大限に高めるために、仮想マシンは、すべての更新ドメインと障害ドメインのスケール セットから均等に削除されます。 ID が最大の VM が最初に削除されます。
+既定では、仮想マシンは、可用性ゾーン (スケール セットがゾーン構成でデプロイされている場合) および障害ドメイン間で均等にスケール セットから削除され、可用性が最大化されます。 ID が最大の VM が最初に削除されます。
+
+スケール セットの[スケールイン ポリシー](virtual-machine-scale-sets-scale-in-policy.md)を指定することで、仮想マシンの削除の順序を変更できます。
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>その後、容量を 15 から 18 に増やすとどうなりますか。
 
-容量を 18 に増やすと、3 つの新しい VM が作成されます。 VM が作成されるたびに、VM インスタンス ID は前の最大値に増分された値となります (例: 20、21、22)。 VM は障害ドメインと更新ドメインに分散されます。
+容量を 18 に増やすと、3 つの新しい VM が作成されます。 VM が作成されるたびに、VM インスタンス ID は前の最大値に増分された値となります (例: 20、21、22)。 VM は障害ドメイン間で分散されます。
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Scale Sets で複数の拡張機能を使用する場合、実行順序を強制できますか?
 
@@ -335,13 +337,13 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 はい。 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) および [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 用の Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。
 
-## <a name="deleting"></a>削除中 
+## <a name="deleting"></a>削除中
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>インスタンスを削除するときに、仮想マシン スケール セットのインスタンスに対して設定されたロックは維持されますか?
 
-Azure Portal では、個々のインスタンスを削除するか、複数のインスタンスを選択して一括で削除できます。 ロックが設定されている単一のインスタンスを削除しようとした場合は、ロックが維持され、インスタンスを削除することはできません。 ただし、複数のインスタンスを一括選択したときに、いずれかのインスタンスにロックが設定されている場合は、ロックは維持されず、選択されたすべてのインスタンスが削除されます。 
- 
-Azure CLI では、個々のインスタンスのみを削除できます。 ロックが設定されている単一のインスタンスを削除しようとした場合は、ロックが維持され、インスタンスを削除することはできません。 
+Azure Portal では、個々のインスタンスを削除するか、複数のインスタンスを選択して一括で削除できます。 ロックが設定されている単一のインスタンスを削除しようとした場合は、ロックが維持され、インスタンスを削除することはできません。 ただし、複数のインスタンスを一括選択したときに、いずれかのインスタンスにロックが設定されている場合は、ロックは維持されず、選択されたすべてのインスタンスが削除されます。
+
+Azure CLI では、個々のインスタンスのみを削除できます。 ロックが設定されている単一のインスタンスを削除しようとした場合は、ロックが維持され、インスタンスを削除することはできません。
 
 ## <a name="extensions"></a>拡張機能
 
@@ -369,7 +371,7 @@ Azure Monitor ログと統合する仮想マシン スケール セット テン
 
 更新ポリシーが**手動**に設定されている場合は、まず拡張機能を更新したうえで、VM のすべてのインスタンスを手動で更新する必要があります。
 
-### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>既存の仮想マシン スケール セットに関連付けられている拡張機能を更新した場合、既存の VM に影響はありますか 
+### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>既存の仮想マシン スケール セットに関連付けられている拡張機能を更新した場合、既存の VM に影響はありますか
 
 仮想マシン スケール セット モデル内の拡張機能の定義を更新した場合、upgradePolicy プロパティが**自動**に設定されていれば VM が更新されます。 upgradePolicy プロパティが**手動**に設定されている場合は、拡張機能がモデルと一致しないことを示すフラグが設定されます。
 
@@ -634,7 +636,7 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
 
 仮想マシン スケール セットを新しいイメージに更新し、パッチの適用を管理する方法については、「[仮想マシン スケール セットのアップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)」を参照してください。
 
-### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか  (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
+### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
 
 はい。イメージを変更せずに、再イメージ化操作を使用して VM をリセットできます。 ただし、`version = latest` が指定されたプラットフォーム イメージを仮想マシン スケール セットが参照している場合、`reimage` を呼び出すと、VM が新しい OS イメージに更新される可能性があります。
 
@@ -689,7 +691,7 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
 
 いいえ。仮想マシン スケール セットの VM にそれぞれ異なる拡張機能の引数を渡すことはできません。 ただし、拡張機能は、それが実行される VM の一意のプロパティ (マシン名など) に基づいて動作することができます。 また、拡張機能から http://169.254.169.254 でインスタンスのメタデータを照会して、VM についての詳細情報を取得することもできます。
 
-### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか  次に例を示します。0、1、3...
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか 次に例を示します。0、1、3...
 
 仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの**過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成されます。 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。
 

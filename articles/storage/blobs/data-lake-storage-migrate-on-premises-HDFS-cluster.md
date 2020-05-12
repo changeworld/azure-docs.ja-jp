@@ -8,22 +8,22 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302002"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232378"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 
-Data Box デバイスを使用することにより、Hadoop クラスターのオンプレミス HDFS ストアから Azure Storage (Blob ストレージまたは Data Lake Storage Gen2) にデータを移行できます。 80 TB の Data Box または 770 TB の Data Box Heavy から選択できます。
+Data Box デバイスを使用することにより、Hadoop クラスターのオンプレミス HDFS ストアから Azure Storage (Blob ストレージまたは Data Lake Storage Gen2) にデータを移行できます。 Data Box Disk、80 TB の Data Box、または 770 TB の Data Box Heavy から選択できます。
 
 この記事は、次のタスクを完了する上で役立ちます。
 
 > [!div class="checklist"]
 > * データの移行を準備します。
-> * データを Data Box または Data Box Heavy デバイスにコピーします。
+> * データを Data Box Disk、Data Box または Data Box Heavy デバイスにコピーします。
 > * Microsoft にデバイスを返送します。
 > * ファイルとディレクトリにアクセス許可を適用します (Data Lake Storage Gen2 のみ)
 

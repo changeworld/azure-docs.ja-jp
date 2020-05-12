@@ -1,20 +1,20 @@
 ---
-title: コマーシャル マーケットプレースでの Azure アプリ向けオンボード用 API
-description: Microsoft パートナー センター上のコマーシャル マーケットプレースにおける Azure アプリ向け API の前提条件。
+title: Microsoft コマーシャル マーケットプレースで Azure アプリをオンボードするためのパートナー センター申請 API
+description: Microsoft パートナー センターのコマーシャル マーケットプレースで Azure アプリ用のパートナー センター申請 API を使用するための前提条件について説明します。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279761"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744891"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>パートナー センターで Azure アプリをオンボードするための API
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>パートナー センターで Azure アプリをオンボードするためのパートナー センター申請 API
 
 *パートナー センター申請 API* を使用して、プログラムにより Azure プランをクエリし、申請を作成し、公開します。  この API は、お使いのアカウントで多くのプランを管理していて、これらのプランの申請プロセスを自動化および最適化したい場合に役立ちます。
 
@@ -70,3 +70,8 @@ grant_type=client_credentials
 Azure AD アクセス トークンを取得したら、パートナー センター申請 API でメソッドを呼び出すことができます。 申請を作成または更新するには、通常はパートナー センター申請 API 内で複数のメソッドを特定の順序で呼び出します。 それぞれのシナリオと各メソッドの構文については、Ingestion API Swagger を参照してください。
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>次のステップ
+
+* [Azure VM 技術資産を作成する](create-azure-container-technical-assets.md)方法について学習します
+* [Azure Container オファー](create-azure-container-offer.md)の作成方法について学習します

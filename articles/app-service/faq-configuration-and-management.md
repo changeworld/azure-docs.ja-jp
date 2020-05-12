@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 810219bca5c75e3ee7e65c6b7302531bca89788d
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869961"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160002"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -125,7 +125,7 @@ Standard および Premium App Service プランでは、Web アプリを App Se
 
 Web ジョブのログを確認するには、次の手順を実行します。
 
-1. [Kudu の Web サイト](https://*yourwebsitename*.scm.azurewebsites.net)にサインインします。
+1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
 2. [Web ジョブ] を選択します。
 3. **[出力の切り替え]** ボタンを選択します。
 4. 出力ファイルをダウンロードするには、**ダウンロード** リンクを選択します。

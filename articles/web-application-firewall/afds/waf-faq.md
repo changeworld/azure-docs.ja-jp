@@ -1,23 +1,23 @@
 ---
-title: Azure Web アプリケーション ファイアウォール - よく寄せられる質問
+title: Azure Front Door Service の Azure Web アプリケーション ファイアウォール - よく寄せられる質問
 description: この記事では、Azure Front Door の Web アプリケーション ファイアウォールに関してよく寄せられる質問の回答を示します
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314317"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837636"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
-この記事では、Azure Web アプリケーション ファイアウォール (WAF) の機能に関する一般的な質問に回答します。 
+この記事では、Azure Front Door Service の Azure Web アプリケーション ファイアウォール (WAF) 機能に関する一般的な質問に回答します。 
 
 ## <a name="what-is-azure-waf"></a>Azure WAF とは何ですか?
 

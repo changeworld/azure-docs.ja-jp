@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025697"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582698"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="duplicate-proxy-addresses"></a>プロキシ アドレスの重複
 
-Exchange Online を使用する場合は、テナント内の一部のユーザーが、同じプロキシ アドレスの値で間違って構成されている可能性があります。 グループ ベースのライセンスによってこのようなユーザーにライセンス割り当てを試みると、失敗し、"プロキシ アドレスは既に使用されています" と表示されます。
+Exchange Online を使用する場合は、組織内の一部のユーザーが、同じプロキシ アドレスの値で間違って構成されている可能性があります。 グループ ベースのライセンスによってこのようなユーザーにライセンス割り当てを試みると、失敗し、"プロキシ アドレスは既に使用されています" と表示されます。
 
 > [!TIP]
 > 重複したプロキシ アドレスの有無を確認するには、次の PowerShell コマンドレットを Exchange Online に対して実行します。

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8f32f574a4ff7be0cc3cc7915b8203b53824c63
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76279152"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792328"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー
 
@@ -32,3 +32,32 @@ Azure Spring Cloud アプリケーションは、特定のリージョンで実�
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) には、DNS ベースのトラフィックの負荷分散機能があるため、複数のリージョンにわたってネットワーク トラフィックを分散させることができます。  Azure Traffic Manager を使用して、顧客を最も近い Azure Spring Cloud サービス インスタンスに転送します。  最適なパフォーマンスと冗長性を実現するには、Azure Spring Cloud サービスに送信する前に、すべてのアプリケーション トラフィックを Azure Traffic Manager 経由で送信します。
 
 複数のリージョンに Azure Spring Cloud アプリケーションがある場合は、Azure Traffic Manager を使用して、各リージョンでのアプリケーションへのトラフィック フローを制御します。  サービス IP を使用して、サービスごとに Azure Traffic Manager エンドポイントを定義します。 顧客は、Azure Spring Cloud サービスを指す Azure Traffic Manager の DNS 名に接続する必要があります。  Azure Traffic Manager では、定義されたエンドポイント間でトラフィックの負荷が分散されます。  データ センターが災害に遭った場合、Azure Traffic Manager により、そのリージョンからそのペアにトラフィックが転送され、サービスの継続性が確保されます。
+
+## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Azure Spring Cloud 用の Azure Traffic Manager を作成する
+
+1. 2 つの異なるリージョンで Azure Spring Cloud を作成します。
+2 つの異なるリージョン (米国東部と西ヨーロッパ) にデプロイされた Azure Spring Cloud の 2 つのサービス インスタンスが必要になります。 Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動し、2 つのサービス インスタンスを作成します。 それぞれが Traffic のプライマリとフェールオーバーのエンドポイントとして機能します。 
+
+**2 つのサービスインスタンスの情報:**
+
+| サービス名 | 場所 | Application |
+|--|--|--|
+| service-sample-a | 米国東部 | gateway / auth-service / account-service |
+| service-sample-b | 西ヨーロッパ | gateway / auth-service / account-service |
+
+2. サービスのカスタム ドメインを設定します。[カスタム ドメインに関する資料](spring-cloud-tutorial-custom-domain.md)に従って、これら 2 つの既存のサービス インスタンスのカスタム ドメインを設定します。 設定が正常に完了すると、両方のサービス インスタンスがカスタム ドメインの bcdr-test.contoso.com にバインドされます。
+
+3. Traffic Manager と 2 つのエンドポイントを作成します。[Azure portal を使用して Traffic Manager プロファイルを作成します](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile)。
+
+Traffic Manager プロファイルは次のとおりです。
+* Traffic Manager の DNS 名: http://asc-bcdr.trafficmanager.net
+* エンドポイント プロファイル: 
+
+| プロファイル | Type | 移行先 | Priority | カスタム ヘッダーの設定 |
+|--|--|--|--|--|
+| エンドポイント A のプロファイル | 外部エンドポイント | service-sample-a.asc-test.net | 1 | host: bcdr-test.contoso.com |
+| エンドポイント B のプロファイル | 外部エンドポイント | service-sample-b.asc-test.net | 2 | host: bcdr-test.contoso.com |
+
+4. DNS ゾーンに CNAME レコードを作成します: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net 
+
+5. これで、環境は完全に設定されました。 お客様は、bcdr-test.contoso.com を介してアプリにアクセスすることができます。

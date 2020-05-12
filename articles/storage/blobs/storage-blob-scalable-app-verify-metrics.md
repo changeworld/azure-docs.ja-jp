@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68698986"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692441"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>ストレージ アカウントのスループットと待機時間のメトリックの確認
 
@@ -24,7 +24,7 @@ ms.locfileid: "68698986"
 > * Azure ポータルでのグラフの構成
 > * スループットと待機時間のメトリックの確認
 
-[Azure Storage のメトリック](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Azure Monitor を使用して、ストレージ アカウントのパフォーマンスと可用性に関する統合ビューを提供します。
+[Azure Storage のメトリック](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Azure Monitor を使用して、ストレージ アカウントのパフォーマンスと可用性に関する統合ビューを提供します。
 
 ## <a name="configure-metrics"></a>メトリックを構成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "68698986"
 
 ## <a name="dimensions"></a>Dimensions
 
-[ディメンション](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)は、グラフをさらに詳しく調べて詳細な情報を得るために使用します。 メトリックごとにさまざまなディメンションがあります。 利用可能なディメンションの 1 つに、 **[API 名]** ディメンションがあります。 このディメンションは、グラフを各 API 呼び出しごとに分割します。 下の 1 番目の図は、ストレージ アカウントの合計トランザクション数のグラフの例を示しています。 2 番目の図も同じグラフですが、[API 名] ディメンションを選択した場合を示しています。 ご覧のとおり、各トランザクションが一覧表示され、API 名ごとの呼び出し回数を詳細に把握できます。
+[ディメンション](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)は、グラフをさらに詳しく調べて詳細な情報を得るために使用します。 メトリックごとにさまざまなディメンションがあります。 利用可能なディメンションの 1 つに、 **[API 名]** ディメンションがあります。 このディメンションは、グラフを各 API 呼び出しごとに分割します。 下の 1 番目の図は、ストレージ アカウントの合計トランザクション数のグラフの例を示しています。 2 番目の図も同じグラフですが、[API 名] ディメンションを選択した場合を示しています。 ご覧のとおり、各トランザクションが一覧表示され、API 名ごとの呼び出し回数を詳細に把握できます。
 
 ![ストレージ アカウントのメトリック - ディメンションを指定しない場合のトランザクション数](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 
