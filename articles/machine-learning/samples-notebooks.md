@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeced8c4108760fc3e10dbf891a469792c210707
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78673607"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780064"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
 
@@ -55,7 +55,13 @@ ms.locfileid: "78673607"
 
 ## <a name="next-steps"></a>次のステップ
 
-[サンプル ノートブック](https://aka.ms/aml-notebooks)を探索して、Azure Machine Learning で実行できることを把握します。または、次のチュートリアルをお試しください。
+[サンプル ノートブック](https://aka.ms/aml-notebooks)を探索して、Azure Machine Learning で実行できることを把握します。
+
+他の GitHub サンプル プロジェクトと例については、次のサンプル リポジトリを参照してください。
++ [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
++ [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
+
+以下のチュートリアルを試します:
 
 - [MNIST を使用した画像分類モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)
 

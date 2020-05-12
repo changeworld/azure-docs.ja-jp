@@ -1,24 +1,21 @@
 ---
 title: Visual Studio から Azure VM に Web アプリを発行する | Microsoft Docs
 description: Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
-services: virtual-machines-windows
 author: ghogen
 manager: jillfra
-tags: azure-service-management
-ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 6e5db9b4e46019aa386057d51d956ff11d90f498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71970876"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583351"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 
@@ -27,7 +24,7 @@ ms.locfileid: "71970876"
 ## <a name="prerequisites"></a>前提条件
 Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を使用するために VM を正しくセットアップする必要があります。
 
-- コンピューターは、ASP.NET Web アプリケーションを実行するよう構成し、WebDeploy をインストールする必要があります。
+- マシンは、ASP.NET Web アプリケーションを実行するよう構成し、WebDeploy をインストールする必要があります。 詳細については、[WebDeploy を使用した ASP.NET VM の作成](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)に関するページを参照してください。
 
 - VM に DNS 名が構成されている必要があります。 詳細については、「[Azure Portal で Windows VM の完全修飾ドメイン名を作成する](portal-create-fqdn.md)」を参照してください。
 

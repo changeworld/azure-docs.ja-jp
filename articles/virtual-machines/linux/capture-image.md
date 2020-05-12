@@ -1,21 +1,25 @@
 ---
-title: Azure CLI を使用して Linux VM のイメージをキャプチャする
-description: Azure CLI を使用し、Azure VM のイメージをキャプチャし、一括デプロイに利用します。
+title: Azure CLI を使用して Linux VM のマネージド イメージをキャプチャする
+description: Azure CLI を使用して Azure VM のマネージド イメージをキャプチャし、一括デプロイに利用します。
 author: cynthn
-ms.service: virtual-machines-linux
-ms.topic: article
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: legacy
+ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226831"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792685"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
+# <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
-仮想マシン (VM) のコピーを複数作成し、Azure で使用するには、VM または OS VHD のイメージをキャプチャします。 デプロイ用のイメージを作成するには、個人のアカウント情報を削除する必要があります。 次の手順で既存の VM のプロビジョニングと割り当てを解除し、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。
+仮想マシン (VM) のコピーを複数作成し、Azure で開発およびテストに使用するには、VM または OS VHD のマネージド イメージをキャプチャします。 イメージを大規模に作成、保存、共有する方法については、「[共有イメージ ギャラリー](../shared-images-cli.md)」を参照してください。
+
+マネージド イメージを作成するには、個人のアカウント情報を削除する必要があります。 次の手順で既存の VM のプロビジョニングと割り当てを解除し、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。
 
 バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から特別な Linux VHD をアップロードする方法については、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](upload-vhd.md)」を参照してください。  
 
@@ -131,11 +135,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>次のステップ
-ソース VM イメージから複数の VM を作成できます。 イメージを変更するには: 
-
-- イメージから VM を作成します。
-- 必要な更新または構成の変更を行います。
-- 再度本記事の手順に従って、イメージのプロビジョニングの解除、割り当ての解除、一般化、作成を行います。
-- 今後のデプロイには、この新しいイメージを使用します。 元のイメージを削除することもできます。
-
-CLI を使用して VM を管理する方法の詳細については、[Azure CLI](/cli/azure) に関するページをご覧ください。
+イメージを大規模に作成、保存、共有する方法については、「[共有イメージ ギャラリー](shared-images.md)」を参照してください。

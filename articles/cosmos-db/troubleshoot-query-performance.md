@@ -4,22 +4,22 @@ description: Azure Cosmos DB の SQL クエリに関する問題を特定、診�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3c6926f17e8378fd3b53bfd59a7c5ea8141adb4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131379"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097236"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 
 この記事では、Azure Cosmos DB のクエリのトラブルシューティングに関する一般的な推奨アプローチについて説明します。 この記事で説明されている手順により、クエリで発生する可能性がある問題を完全に防ぐことができると考えてはいけませんが、パフォーマンスに関する最も一般的なヒントを示してあります。 この記事は、Azure Cosmos DB Core (SQL) API の低速クエリまたはコストの高いクエリのトラブルシューティングのための出発点として使用してください。 また、[診断ログ](cosmosdb-monitor-resource-logs.md)を使用して、遅いクエリやスループットの消費量が多いクエリを特定することもできます。
 
-Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類できます。 
+Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類できます。
 
 - クエリの要求ユニット (RU) 使用量を削減する最適化
 - クエリの待機時間を短縮するだけの最適化
@@ -28,29 +28,30 @@ Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類で�
 
 この記事では、[栄養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)データセットを使用して再作成できる例を示します。
 
-## <a name="important"></a>重要
+## <a name="common-sdk-issues"></a>SDK に関する一般的な問題
 
-- 最適なパフォーマンスが得られるように、[パフォーマンスに関するヒント](performance-tips.md)に従ってください。
+このガイドを読む前に、クエリ エンジンに関連しない一般的な SDK の問題について検討することをお勧めします。
+
+- 最適なパフォーマンスを得るためには、これらの[パフォーマンスに関するヒント](performance-tips.md)に従ってください。
     > [!NOTE]
     > パフォーマンス向上のため、Windows 64 ビットのホスト処理をお勧めします。 SQL SDK には、ローカル環境でクエリを解析して最適化するためのネイティブ ServiceInterop.dll が含まれています。 ServiceInterop.dll は、Windows x64 プラットフォームでのみサポートされています。 Linux および ServiceInterop.dll を使用できない他のサポート対象外プラットフォームでは、最適化されたクエリを取得するために、ゲートウェイに対して追加のネットワーク呼び出しが行われます。
-- Azure Cosmos DB のクエリでは、最小項目数はサポートされていません。
-    - 0 から最大項目数までのすべてのページ サイズを、コードで処理する必要があります。
-    - 1 ページの項目数は、予告なしで変更される可能性があります。
-- クエリに対して空のページが想定されており、常に表示される可能性があります。
-    - SDK で空のページが公開されるのは、それによりクエリを取り消す機会を増やせるためです。 また、SDK で複数のネットワーク呼び出しが行われていることが明確になります。
-    - Azure Cosmos DB では物理パーティションが分割されているため、既存のワークロードで空のページが表示されることがあります。 最初のパーティションは結果が 0 であるため、空のページになります。
-    - バックエンドでクエリが優先されると、空のページになります。これは、クエリでは、バックエンドでのドキュメントの取得に一定の時間以上かかるためです。 Azure Cosmos DB でクエリが先取されると、継続トークンが返されます。これにより、クエリを続行することができます。
-- 必ず、クエリを完全にドレインするようにしてください。 SDK のサンプルを参照し、`FeedIterator.HasMoreResults` で `while` ループを使用して、クエリ全体をドレインします。
+- SDK では、クエリの `MaxItemCount` を設定できますが、最小項目数は指定できません。
+    - コードで、0 から `MaxItemCount` までのすべてのページ サイズを処理する必要があります。
+    - ページ内の項目数は、常に、指定された `MaxItemCount` 以下になります。 ただし、`MaxItemCount` は厳密に最大値であり、結果の数はこの量よりも少なくなる可能性があります。
+- 将来のページには結果がある場合でも、クエリで空のページを受け取ることがあります。 これには、次のような理由が考えられます。
+    - SDK が複数のネットワーク呼び出しを実行している可能性があります。
+    - クエリでドキュメントを取得するのに時間がかかっている可能性があります。
+- すべてのクエリには、クエリの続行を許可する継続トークンがあります。 必ず、クエリを完全にドレインするようにしてください。 SDK のサンプルを参照し、`FeedIterator.HasMoreResults` で `while` ループを使用して、クエリ全体をドレインします。
 
 ## <a name="get-query-metrics"></a>クエリのメトリックを取得する
 
-Azure Cosmos DB でクエリを最適化する場合、最初の手順は常にクエリの[クエリ メトリックを取得する](profile-sql-api-query.md)ことです。 これらのメトリックは、Azure portal でも入手できます。
+Azure Cosmos DB でクエリを最適化する場合、最初の手順は常にクエリの[クエリ メトリックを取得する](profile-sql-api-query.md)ことです。 これらのメトリックは、Azure portal からも入手できます。 Data Explorer でクエリを実行すると、 **[結果]** タブの横にクエリ メトリックが表示されます。
 
 [ ![クエリ メトリックの取得](./media/troubleshoot-query-performance/obtain-query-metrics.png) ](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
-クエリ メトリックを取得した後、クエリに対する [Retrieved Document Count]\(取得したドキュメント数) と [Output Document Count]\(出力したドキュメント数\) を比較します。 この比較により、この記事で確認する関連セクションを特定します。
+クエリ メトリックを取得した後、クエリの **[取得したドキュメント数]** と **[出力したドキュメント数]** を比較します。 この比較により、この記事で確認する関連セクションを特定します。
 
-取得したドキュメント数は、クエリで読み込む必要があるドキュメントの数です。 出力したドキュメント数は、クエリの結果に必要なドキュメントの数です。 取得したドキュメント数が出力したドキュメント数より大幅に多い場合は、クエリの少なくとも 1 つの部分でインデックスを使用できず、スキャンを実行する必要がありました。
+**[取得したドキュメント数]** は、クエリ エンジンが読み込む必要があったドキュメントの数です。 **[出力したドキュメント数]** は、クエリの結果に必要だったドキュメントの数です。 **[取得したドキュメント数]** が **[出力したドキュメント数]** より大幅に多い場合は、クエリの少なくとも 1 つの部分でインデックスを使用できず、スキャンを実行する必要がありました。
 
 シナリオに関連するクエリの最適化について理解するには、以下のセクションを参照してください。
 
@@ -62,7 +63,9 @@ Azure Cosmos DB でクエリを最適化する場合、最初の手順は常に�
 
 - [インデックスを使用するシステム関数について理解する。](#understand-which-system-functions-use-the-index)
 
-- [フィルターと ORDER BY 句の両方を使用するクエリを修正する。](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
+- [インデックスを使用する集計クエリについて理解する。](#understand-which-aggregate-queries-use-the-index)
+
+- [フィルターと ORDER BY 句の両方を使用するクエリを最適化する。](#optimize-queries-that-have-both-a-filter-and-an-order-by-clause)
 
 - [サブクエリを使用して JOIN 式を最適化する。](#optimize-join-expressions-by-using-a-subquery)
 
@@ -70,11 +73,11 @@ Azure Cosmos DB でクエリを最適化する場合、最初の手順は常に�
 
 #### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>取得したドキュメント数が出力したドキュメント数とほぼ等しい
 
-- [クロス パーティション クエリを回避する。](#avoid-cross-partition-queries)
+- [クロス パーティション クエリを最小化する。](#minimize-cross-partition-queries)
 
 - [複数のプロパティに対するフィルターがあるクエリを最適化する。](#optimize-queries-that-have-filters-on-multiple-properties)
 
-- [フィルターと ORDER BY 句の両方を使用するクエリを修正する。](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
+- [フィルターと ORDER BY 句の両方を使用するクエリを最適化する。](#optimize-queries-that-have-both-a-filter-and-an-order-by-clause)
 
 <br>
 
@@ -90,7 +93,7 @@ Azure Cosmos DB でクエリを最適化する場合、最初の手順は常に�
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>取得したドキュメント数が出力したドキュメント数を超えるクエリ
 
- 取得したドキュメント数は、クエリで読み込む必要があるドキュメントの数です。 出力したドキュメント数は、クエリの結果に必要なドキュメントの数です。 取得したドキュメント数が出力したドキュメント数より大幅に多い場合は、クエリの少なくとも 1 つの部分でインデックスを使用できず、スキャンを実行する必要がありました。
+ **[取得したドキュメント数]** は、クエリ エンジンが読み込む必要があったドキュメントの数です。 **[出力したドキュメント数]** は、クエリによって返されたドキュメントの数です。 **[取得したドキュメント数]** が **[出力したドキュメント数]** より大幅に多い場合は、クエリの少なくとも 1 つの部分でインデックスを使用できず、スキャンを実行する必要がありました。
 
 インデックスによって完全には処理されなかったスキャン クエリの例を次に示します。
 
@@ -128,20 +131,25 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-取得したドキュメント数 (60,951) は出力したドキュメント数 (7) を大幅に上回っているため、このクエリではスキャンを実行する必要がありました。 この場合、システム関数 [UPPER()](sql-query-upper.md) ではインデックスは使用されません。
+**[取得したドキュメント数]** (60,951) は、 **[出力したドキュメント数]** (7) を大幅に上回っており、このクエリの結果としてドキュメントのスキャンが行われたことを示しています。 この場合、システム関数 [UPPER()](sql-query-upper.md) ではインデックスは使用されません。
 
 ### <a name="include-necessary-paths-in-the-indexing-policy"></a>インデックス作成ポリシーに必要なパスを含める
 
-インデックス作成ポリシーでは、`WHERE` 句、`ORDER BY` 句、`JOIN`、およびほとんどのシステム関数に含まれるすべてのプロパティがカバーされている必要があります。 インデックス ポリシーで指定されたパスは、JSON ドキュメントのプロパティと一致する必要があります (大文字と小文字は区別されます)。
+インデックス作成ポリシーでは、`WHERE` 句、`ORDER BY` 句、`JOIN`、およびほとんどのシステム関数に含まれるすべてのプロパティがカバーされている必要があります。 インデックス ポリシーに指定された必要なパスは、JSON ドキュメント内のプロパティと一致している必要があります。
 
-[栄養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)データセットに対して単純なクエリを実行した場合、`WHERE` 句のプロパティのインデックスが作成されるときに、RU 使用量が他よりはるかに低くなります。
+> [!NOTE]
+> Azure Cosmos DB のインデックス作成ポリシーのプロパティでは、大文字と小文字が区別されます。
+
+[栄養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)データセットに対して次の単純なクエリを実行する場合、`WHERE` 句のプロパティのインデックスが作成されると RU 料金がはるかに低くなります。
 
 #### <a name="original"></a>変更元
 
 クエリ:
 
 ```sql
-SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
+SELECT *
+FROM c
+WHERE c.description = "Malabar spinach, cooked"
 ```
 
 インデックス作成ポリシー:
@@ -190,7 +198,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 
 式を文字列値の範囲に変換できる場合、インデックスを使用できます。 そうでない場合は使用できません。
 
-インデックスを使用できる文字列関数の一覧を次に示します。
+インデックスを使用できるいくつかの一般的な文字列関数の一覧を次に示します。
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
@@ -208,7 +216,64 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 
 システム関数では行われていない場合でも、クエリの他の部分でインデックスが使用されている可能性があります。
 
-### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>フィルターと ORDER BY 句の両方を使用するクエリを修正する
+### <a name="understand-which-aggregate-queries-use-the-index"></a>インデックスを使用する集計クエリについて理解する
+
+ほとんどの場合、Azure Cosmos DB の集計システム関数ではインデックスが使用されます。 ただし、集計クエリのフィルターや追加の句によっては、クエリ エンジンで大量のドキュメントを読み込みことが必要になる場合があります。 通常、クエリ エンジンでは、等値および範囲フィルターが最初に適用されます。 これらのフィルターを適用した後で、クエリ エンジンは追加のフィルターを評価し、必要に応じて残りのドキュメントを読み込んで集計を計算できます。
+
+たとえば、次の 2 つのサンプル クエリの場合、等値と `CONTAINS` システム関数フィルターの両方を含むクエリは、通常、`CONTAINS` システム関数フィルターだけを含むクエリよりも効率的です。 これは、より負荷の高い `CONTAINS` フィルターのためにドキュメントの読み込みが必要になる前に、等値フィルターが最初に適用され、インデックスが使用されるためです。
+
+`CONTAINS` フィルターのみを含むクエリ - RU 料金が高くなる:
+
+```sql
+SELECT COUNT(1)
+FROM c
+WHERE CONTAINS(c.description, "spinach")
+```
+
+等値フィルターと `CONTAINS` フィルターを含むクエリ - RU 料金が低くなる:
+
+```sql
+SELECT AVG(c._ts)
+FROM c
+WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+```
+
+次に、インデックスを完全には使用しない集計クエリのその他の例を示します。
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>インデックスを使用しないシステム関数を含むクエリ
+
+インデックスを使用するかどうかを確認するには、関連する[システム関数のページ](sql-query-system-functions.md)を参照する必要があります。
+
+```sql
+SELECT MAX(c._ts)
+FROM c
+WHERE CONTAINS(c.description, "spinach")
+```
+
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>ユーザー定義関数 (UDF) を含む集計クエリ
+
+```sql
+SELECT AVG(c._ts)
+FROM c
+WHERE udf.MyUDF("Sausages and Luncheon Meats")
+```
+
+#### <a name="queries-with-group-by"></a>ORDER BY を含むクエリ
+
+`GROUP BY` 句内のプロパティのカーディナリティが増えると、`GROUP BY` を含むクエリの RU 料金が増加します。 たとえば、次のクエリでは、一意の説明の数が増えるにつれて、クエリの RU 料金が増加します。
+
+`GROUP BY` 句を含む集計関数の RU 料金は、集計関数だけの RU 料金よりも高くなります。 この例では、クエリ エンジンは `c.foodGroup = "Sausages and Luncheon Meats"` フィルターに一致するすべてのドキュメントを読み込む必要があるため、RU 料金が高くなることが予想されます。
+
+```sql
+SELECT COUNT(1)
+FROM c
+WHERE c.foodGroup = "Sausages and Luncheon Meats"
+GROUP BY c.description
+```
+
+同じ集計クエリを頻繁に実行する予定がある場合は、個々のクエリを実行するのではなく、[Azure Cosmos DB の変更フィード](change-feed.md)を使用して、リアルタイムの具体化されたビューを作成する方が効率的です。
+
+### <a name="optimize-queries-that-have-both-a-filter-and-an-order-by-clause"></a>フィルターと ORDER BY 句の両方を使用するクエリを最適化する
 
 通常、フィルターと `ORDER BY` 句を使用するクエリでは範囲インデックスが使用されますが、複合インデックスから提供できる場合は、効率が向上します。 インデックス作成ポリシーを変更するだけでなく、複合インデックス内のすべてのプロパティを `ORDER BY` 句に追加する必要があります。 このようにクエリを変更すると、複合インデックスが使用されます。  [栄養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)データセットに対してクエリを実行することで、影響を観察できます。
 
@@ -217,7 +282,10 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 クエリ:
 
 ```sql
-SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
+SELECT *
+FROM c
+WHERE c.foodGroup = "Soups, Sauces, and Gravies"
+ORDER BY c._ts ASC
 ```
 
 インデックス作成ポリシー:
@@ -243,7 +311,8 @@ SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts 
 更新されたクエリ (`ORDER BY` 句の両方のプロパティが含まれます):
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies"
 ORDER BY c.foodGroup, c._ts ASC
 ```
@@ -279,6 +348,7 @@ ORDER BY c.foodGroup, c._ts ASC
 **RU 使用量:** 8.86 RU
 
 ### <a name="optimize-join-expressions-by-using-a-subquery"></a>サブクエリを使用して JOIN 式を最適化する
+
 複数値サブクエリは、`WHERE` 句内のすべてのクロス結合の後ではなく、それぞれの select-many 式の後に述語をプッシュすることによって `JOIN` 式を最適化できます。
 
 次のクエリについて考えてみます。
@@ -295,7 +365,7 @@ AND n.nutritionValue < 10) AND s.amount > 1
 
 **RU 使用量:** 167.62 RU
 
-このクエリでは、インデックスは、"infant formula"(乳児用調製粉乳) という名前のタグを持ち、nutritionValue が 0 より大きく、処理量が 1 より大きい任意のドキュメントに一致します。 ここでの `JOIN` 式は、一致するドキュメントごとに、タグ、栄養素、1 回分の各配列の全項目の外積を、フィルターが適用される前に実行します。 `WHERE` 句はその後、`<c, t, n, s>` タプルごとにフィルター述語を適用します。
+このクエリの場合、インデックスは、`infant formula` という名前のタグを持ち、`nutritionValue` が 0 より大きく、`amount` が 1 より大きいすべてのドキュメントに一致します。 ここでの `JOIN` 式は、一致するドキュメントごとに、タグ、栄養素、1 回分の各配列の全項目の外積を、フィルターが適用される前に実行します。 `WHERE` 句はその後、`<c, t, n, s>` タプルごとにフィルター述語を適用します。
 
 たとえば、一致するドキュメントで、3 つの配列のそれぞれに 10 個の項目があるとした場合、1 x 10 x 10 x 10 (つまり、1,000) タプルに展開されます。 ここでサブクエリを使用すると、次の式と結合する前に、結合された配列項目をフィルターで除外するために役立ちます。
 
@@ -315,9 +385,9 @@ tags 配列の 1 つの項目のみがフィルターに一致し、nutrients �
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>取得したドキュメント数が出力したドキュメント数と等しいクエリ
 
-取得したドキュメント数が出力したドキュメント数とほぼ同じ場合は、クエリで多くの不要なドキュメントをスキャンする必要はありませんでした。 TOP キーワードを使用するクエリなど、多くのクエリでは、取得したドキュメント数が出力したドキュメント数が 1 つ多い可能性があります。 これについて心配する必要はありません。
+**[取得したドキュメント数]** が **[出力したドキュメント数]** とほぼ同じ場合、クエリ エンジンは多くの不要なドキュメントをスキャンする必要がありませんでした。 `TOP` キーワードを使用するクエリのように、多くのクエリで、 **[取得したドキュメント数]** は **[出力したドキュメント数]** より 1 つ多い可能性があります。 これについて心配する必要はありません。
 
-### <a name="avoid-cross-partition-queries"></a>クロス パーティション クエリを回避する
+### <a name="minimize-cross-partition-queries"></a>クロス パーティション クエリを最小化する
 
 Azure Cosmos DB では[パーティション分割](partitioning-overview.md)を使用して、要求ユニットとデータ ストレージのニーズの増加に応じて個々のコンテナーをスケーリングします。 各物理パーティションには、区切られて独立したインデックスがあります。 クエリにコンテナーのパーティション キーと一致する等値フィルターがある場合、確認する必要があるのは関連するパーティションのインデックスのみです。 この最適化により、クエリが必要とする RU の合計数が減少します。
 
@@ -326,26 +396,30 @@ Azure Cosmos DB では[パーティション分割](partitioning-overview.md)を
 たとえば、foodGroup というパーティション キーを持つコンテナーを作成する場合、次のクエリでは 1 つの物理パーティションのみを確認する必要があります。
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-クエリにパーティション キーを追加することで、これらのクエリを最適化することもできます。
+パーティション キーに `IN` フィルターがあるクエリでは、関連する物理パーティションだけがチェックされ、"ファンアウト" は行われません。
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
-パーティション キーに対して範囲フィルターが設定されているか、パーティション キーにフィルターがない場合、クエリではすべての物理パーティションのインデックスの結果を確認する必要があります。
+パーティション キーに対して範囲フィルターが設定されているか、パーティション キーにフィルターがないクエリは、"ファンアウト" して、すべての物理パーティションのインデックスの結果を確認する必要があります。
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.description = "Mushroom, oyster, raw"
 ```
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
@@ -356,12 +430,14 @@ WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, 
 複合インデックスを使用して最適化できるクエリの例をいくつか次に示します。
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts = 1575503264
 ```
 
 ```sql
-SELECT * FROM c
+SELECT *
+FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 ```
 

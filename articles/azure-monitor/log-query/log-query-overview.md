@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670119"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591654"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor のログ クエリの概要
 ログ クエリは、[Azure Monitor ログ](../platform/data-platform-logs.md)内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。
@@ -81,7 +81,7 @@ Log Analytics は、Azure portal 内で、ログ クエリを作成したり、�
 Log Analytics は、Azure portal 内の複数の場所から起動できます。 Log Analytics で使用できるデータのスコープは、起動方法によって決まります。 詳しくは、「[クエリ スコープ](scope.md)」を参照してください。
 
 - **[Azure Monitor]** メニューまたは **[Log Analytics ワークスペース]** メニューの **[ログ]** を選択します。
-- Application Insights アプリケーションの **[概要]** ページから **[分析]** を選択します。
+- Application Insights アプリケーションの **[概要]** ページから **[ログ]** を選択します。
 - Azure リソースのメニューから **[ログ]** を選択します。
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)

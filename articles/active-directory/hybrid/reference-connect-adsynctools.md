@@ -5,20 +5,36 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11c9d66f891e8f5d53fc2a965e75f095417d20d4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60454661"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184012"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:ADSyncTools PowerShell リファレンス
 次のドキュメントでは、Azure AD Connect に含まれる ADSyncTools.psm1 PowerShell モジュールの参照情報を示します。
+
+## <a name="install-the-adsynctools-powershell-module"></a>ADSyncTools PowerShell モジュールをインストールする
+ADSyncTools PowerShell モジュールをインストールするには、次の手順を実行します。
+
+1.  管理者特権で Windows PowerShell を開きます。
+2.  次を入力するか、コピーして貼り付けます。 
+    ``` powershell
+    Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools"
+    ```
+3.  Enter キーを押します。
+4.  モジュールがインストールされたことを確認するには、次のように入力するか、コピーして貼り付けます。
+    ```powershell
+    Get-module AdSyncTools
+    ```
+5.  モジュールに関する情報が表示されます。
+
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 

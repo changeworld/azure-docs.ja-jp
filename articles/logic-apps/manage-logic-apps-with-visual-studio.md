@@ -3,16 +3,16 @@ title: Visual Studio と Cloud Explorer を使用してロジック アプリを
 description: Visual Studio と Cloud Explorer を使用して、ロジック アプリの編集、更新、管理、ソース管理への追加、デプロイを行います
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 10/29/2019
-ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/29/2020
+ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803192"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598438"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -259,7 +259,11 @@ Azure Portal からロジック アプリを削除するには、Cloud Explorer 
 ![Azure portal からロジック アプリを削除する](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
-> ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。 
+> ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
+
+> [!NOTE]
+> 子ロジック アプリを削除して再作成する場合は、親ロジック アプリを再保存する必要があります。 再作成された子アプリのメタデータは異なります。
+> 子を再作成した後に親ロジック アプリを再保存しないと、子ロジック アプリへの呼び出しは失敗し、"未承認" というエラーが表示されます。 この動作は、統合アカウントのアーティファクトを使用する親子ロジック アプリや、Azure Functions を呼び出す親子ロジック アプリに当てはまります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

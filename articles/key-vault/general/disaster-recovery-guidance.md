@@ -2,19 +2,19 @@
 title: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 96929dcbe3d51589b0c3c0df89671dadb20e37cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/04/2020
+ms.author: sudbalas
+ms.openlocfilehash: 4796e6c555ca67794409fb1476f3c4fd0d760719
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425881"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780455"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
@@ -34,6 +34,8 @@ Azure リージョン全体が使用できない場合がまれにあります�
 * フェールオーバーが完了すると、Key Vault は読み取り専用モードになります。 このモードでサポートされる要求は次のとおりです。
   * Key Vault のリスト
   * Key Vault のプロパティの取得
+   * 証明書の一覧の取得
+  * 証明書を取得する
   * シークレットのリスト
   * シークレットの取得
   * キーのリスト

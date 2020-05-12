@@ -6,30 +6,30 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 11/20/2019
-ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 0ccb87017f962650f099d506e1d200ab408316d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74406291"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195147"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark ストリーミングの概要
 
-[Apache Spark](https://spark.apache.org/) ストリーミングは、ノード障害が発生した場合でも、すべての入力イベントが正確に 1 回処理されることが保証された HDInsight Spark クラスター上でのデータ ストリーム処理を提供します。 Spark Stream は、Azure Event Hubs、Azure IoT Hub、[Apache Kafka](https://kafka.apache.org/)、[Apache Flume](https://flume.apache.org/)、Twitter、[ZeroMQ](http://zeromq.org/)、生の TCP ソケットを含むさまざまなソース、または [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ファイル システムの監視から入力データを受信する実行時間の長いジョブです。 1 つのイベント ドリブン プロセスとは異なり、Spark Stream は入力データを 2 秒スライスなどの時間枠にバッチ処理し、マップ、リデュース、結合、抽出操作を使用してデータの各バッチを変換します。 Spark Stream は、次に、変換されたデータをファイルシステム、データベース、ダッシュボード、およびコンソールに書き出します。
+[Apache Spark](https://spark.apache.org/) Streaming では、HDInsight Spark クラスターのデータ ストリームを処理します。 ノード障害が発生しても、すべての入力イベントは厳密に 1 回処理されることが保証されています。 Spark Stream は、Azure Event Hubs を含むさまざまなソースから入力データを受け取る、長時間実行されるジョブです。 また、次の点にも注目してください。Azure IoT Hub、Apache Kafka、Apache Flume、Twitter、`ZeroMQ`、未加工の TCP ソケット、Apache Hadoop YARN ファイルシステムの監視。 Spark Stream では、単なるイベント ドリブンのプロセスとは異なり、入力データが時間枠にバッチ処理されます。 たとえば、2 秒に短く切り、map、reduce、join、および extract 操作を使用して、各バッチ データが変換されます。 Spark Stream は、次に、変換されたデータをファイルシステム、データベース、ダッシュボード、およびコンソールに書き出します。
 
 ![HDInsight および Spark ストリーミングを使用したストリーム処理](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Spark ストリーミング アプリケーションは、処理用にそのバッチを送信する前に、イベントの各*マイクロ バッチ*を収集するために一瞬だけ待機する必要があります。 これに対し、イベント ドリブンのアプリケーションは各イベントをすぐに処理します。 通常、Spark ストリーミングの待機時間は数秒以内です。 マイクロ バッチのアプローチの利点は、データ処理と集計計算の合理化です。
+Spark Streaming アプリケーションでは、イベントの各 `micro-batch` を処理のために送信する前に、一瞬待機してそのバッチを収集する必要があります。 これに対し、イベント ドリブンのアプリケーションは各イベントをすぐに処理します。 通常、Spark ストリーミングの待機時間は数秒以内です。 マイクロ バッチのアプローチの利点は、データ処理と集計計算の合理化です。
 
 ## <a name="introducing-the-dstream"></a>DStream の概要
 
-Spark ストリーミングは、DStream と呼ばれる*分離されたストリーム*を使用して受信データの継続的なストリームを表します。 DStream は、Event Hubs または Kafka などの入力ソースから作成するか、別の DStream に変換を適用して作成することができます。
+Spark ストリーミングは、DStream と呼ばれる*分離されたストリーム*を使用して受信データの継続的なストリームを表します。 DStream は、Event Hubs や Kafka などの入力ソースから作成できます。 または、別の DStream を変換することによっても作成できます。
 
 DStream には、生イベント データの上に抽象化の層を備えています。
 
-1 つのイベント、たとえば、接続されたサーモスタットからの温度の読み取りから開始するとします。 このイベントが Spark ストリーミング アプリケーションに到達すると、イベントは確実な方法 (複数のノードにレプリケートされる) で格納されます。 このフォールト トレランスにより、単一ノードに障害が発生しても、イベントを損失することはありません。 Spark コアは、クラスター内の複数のノードにデータを分散するデータ構造を使用します。ここでは通常、パフォーマンスを最大限高めるため、各ノードがその独自のデータをメモリ内に保持します。 このデータ構造は、*Resilient Distributed Dataset* (RDD) と呼ばれます。
+1 つのイベント、たとえば、接続されたサーモスタットからの温度の読み取りから開始するとします。 このイベントが Spark ストリーミング アプリケーションに到達すると、イベントは確実な方法 (複数のノードにレプリケートされる) で格納されます。 このフォールト トレランスにより、単一ノードに障害が発生しても、イベントを損失することはありません。 Spark コアでは、クラスター内の複数のノードにデータを分散するデータ構造を使用しています。 このとき、一般に各ノードは独自のデータをメモリに保持してパフォーマンスを最適化します。 このデータ構造は、*Resilient Distributed Dataset* (RDD) と呼ばれます。
 
 各 RDD は、*バッチ間隔*と呼ばれるユーザー定義の期間の経過とともに収集されるイベントを表します。 各バッチ間隔の経過に伴って、その間隔のすべてのデータを含む新しい RDD が生成されます。 この継続的な一連の RDD が DStream に収集されます。 たとえば、バッチ間隔が 1 秒の場合、DStream はその 1 秒間に取り込まれるすべてのデータを含む 1 つの RDD を含む 1 つのバッチを毎秒出力します。 DStream の処理時に、温度のイベントがこれらのバッチのいずれかに出現します。 Spark ストリーミング アプリケーションはイベントを含むバッチを処理し、最終的に各 RDD に格納されているデータを処理します。
 
@@ -37,7 +37,7 @@ DStream には、生イベント データの上に抽象化の層を備えて�
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Spark ストリーミング アプリケーションの構造
 
-Spark ストリーミング アプリケーションは、取り込みソースからデータを受信する実行時間の長いアプリケーションで、変換を適用してデータを処理した後、1 つ以上の変換先にデータをプッシュします。 Spark ストリーミング アプリケーションは、静的な部分と動的な部分から構成されます。 静的な部分は、データの取得元、データに対して実行する処理、結果の宛先を定義します。 動的な部分はアプリケーションを無期限に実行して、停止信号を待機します。
+Spark Streaming アプリケーションは、取り込みソースからデータを受け取る、実行時間の長いアプリケーションです。 データを変換して処理し、そのデータを 1 つ以上の宛先にプッシュします。 Spark ストリーミング アプリケーションは、静的な部分と動的な部分から構成されます。 静的な部分では、データの取得元、およびそのデータに対して実行する処理、 結果の宛先を定義します。 動的な部分はアプリケーションを無期限に実行して、停止信号を待機します。
 
 たとえば、次の単純なアプリケーションは、TCP ソケットを介した 1 行のテキストを受信して、各単語が表示される回数をカウントします。
 
@@ -65,7 +65,7 @@ val ssc = new StreamingContext(sc, Seconds(1))
 
 #### <a name="create-a-dstream"></a>DStream の作成
 
-StreamingContext インスタンスを使用して、入力ソース用の入力 DStream を作成します。 ここでは、アプリケーションは、HDInsight クラスターに接続されている既定の記憶域内の新しいファイルの出現に注意します。
+StreamingContext インスタンスを使用して、入力ソース用の入力 DStream を作成します。 この場合、アプリケーションは、接続された既定のストレージに新しいファイルが出現するのを待っています。
 
 ```
 val lines = ssc.textFileStream("/uploads/Test/")
@@ -73,7 +73,7 @@ val lines = ssc.textFileStream("/uploads/Test/")
 
 #### <a name="apply-transformations"></a>変換の適用
 
-変換を DStream に適用して、処理を実装します。 このアプリケーションはファイルから一度に 1 行のテキストを受信し、各行をいくつかの語に分割した後、map-reduce パターンを使用して各単語が出現する回数をカウントします。
+変換を DStream に適用して、処理を実装します。 このアプリケーションは、ファイルから一度にテキストを 1 行受信し、各行を単語に分割します。 次に、map-reduce パターンを使用して、各単語が出現する回数をカウントします。
 
 ```
 val words = lines.flatMap(_.split(" "))
@@ -98,9 +98,9 @@ ssc.start()
 ssc.awaitTermination()
 ```
 
-Spark Stream API と、それがサポートするイベント ソース、変換、および出力操作の詳細については、[Apache Spark ストリーミング プログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)を参照してください。
+Spark Stream の API の詳細については、[Apache Spark Streaming プログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)を参照してください。
 
-次のサンプル アプリケーションは自己完結型なので、[Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md) で実行できます。 この例では、カウンターの値と 5 秒おきに現在の時刻 (ミリ秒) を出力するクラス DummySource にモック データ ソースを作成します。 新しい StreamingContext オブジェクトのバッチ間隔は 30 秒です。 これは、バッチが作成されるたびに、ストリーミング アプリケーションが、生成された RDD を調べて Spark DataFrame に変換し、DataFrame から一時テーブルを作成します。
+次のサンプル アプリケーションは自己完結型なので、[Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md) で実行できます。 この例では、カウンターの値と 5 秒おきに現在の時刻 (ミリ秒) を出力するクラス DummySource にモック データ ソースを作成します。 新しい StreamingContext オブジェクトのバッチ間隔は 30 秒です。 バッチが作成されるたびに、ストリーミング アプリケーションでは生成された RDD を調べます。 その後、RDD を Spark DataFrame に変換し、そのデータフレームで一時テーブルを作成します。
 
 ```
 class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
@@ -167,9 +167,9 @@ DummySource は 5 秒ごとに 1 つの値を作成し、アプリケーショ�
 
 ## <a name="sliding-windows"></a>スライディング ウィンドウ
 
-一定の期間にわたって DStream で集計計算を実行するには (最後の 2 秒間の平均温度を取得する場合など)、Spark ストリーミングに付属の "*スライディング ウィンドウ*" 操作を使用できます。 スライディング ウィンドウには、期間 (ウィンドウの長さ) と、ウィンドウのコンテンツが評価される間隔 (スライド間隔) があります。
+お使いの DStream で一定期間の集計計算を実行するには (最後の 2 秒間の平均温度を取得する場合など)、Spark Streaming に付属する `sliding window` 操作を使用します。 スライディング ウィンドウには、期間 (ウィンドウの長さ) と、ウィンドウのコンテンツが評価される間隔 (スライド間隔) があります。
 
-スライディング ウィンドウは重複が可能です。たとえば、長さが 2 秒で 1 秒ごとにスライドするウィンドウを定義することができます。 つまり、集計計算を実行するたびに、前のウィンドウの最後の 1 秒のデータと、次の 1 秒の新しいデータがウィンドウに含まれます。
+スライディング ウィンドウは重複が可能です。たとえば、長さが 2 秒で 1 秒ごとにスライドするウィンドウを定義することができます。 この操作は、集計計算を実行するたびに、前のウィンドウの最後の 1 秒のデータがそのウィンドウに含まれることを意味します。 また、次の 1 秒の新しいデータも含まれます。
 
 ![初期ウィンドウと温度イベントの例](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
 
@@ -241,18 +241,18 @@ Spark Streaming API で使用できるスライディング ウィンドウ関�
 
 ## <a name="checkpointing"></a>チェックポイント機能
 
-回復性とフォールト トレランスを実現するために、Spark ストリーミングはチェックポイント機能に依存して、ノード障害が発生した場合でも中断なくストリーム処理を続行できるようにします。 HDInsight では、Spark は持続性のあるストレージ (Azure Storage または Data Lake Storage) にチェックポイントを作成します。 これらのチェックポイントには、ストリーミング アプリケーションに関するメタデータ (構成、アプリケーションが定義した操作、キューに登録済みだが未処理のバッチなど) が格納されます。 In some cases, the checkpoints will also include saving the data in the RDDs to sh場合によっては、チェックポイントには RDD 内のデータも保存されます。これは、Spark が管理する RDD 内に存在するものからデータの状態を迅速にリビルドするためです。
+回復性とフォールト トレランスを実現するために、Spark ストリーミングはチェックポイント機能に依存して、ノード障害が発生した場合でも中断なくストリーム処理を続行できるようにします。 Spark は持続性のあるストレージ (Azure Storage または Data Lake Storage) にチェックポイントを作成します。 これらのチェックポイントには、構成などのストリーミング アプリケーションのメタデータと、そのアプリケーションで定義されている操作が格納されます。 また、まだ処理されていないキューに登録されているバッチも格納されます。 チェックポイントには RDD 内のデータが格納されることもあります。これは、Spark が管理する RDD 内に存在するものからデータの状態を迅速に再構築できるようにするためです。
 
 ## <a name="deploying-spark-streaming-applications"></a>Spark ストリーミング アプリケーションのデプロイ
 
-通常、Spark Streaming アプリケーションは JAR ファイルにローカルに構築した後、その JAR ファイルを HDInsight クラスターに接続された既定のストレージにコピーすることによって HDInsight 上の Spark にデプロイします。 そのアプリケーションは、POST 操作を使用してクラスターから使用可能な LIVY REST API を使用して起動できます。 POST の本文には、JAR へのパス、メイン メソッドがストリーミング アプリケーションを定義して実行するクラスの名前、オプションでジョブのリソース要件 (実行プログラム、メモリ、コアの数など)、およびアプリケーション コードに必要なすべての構成設定を指定する JSON ドキュメントが含まれています。
+Spark Streaming アプリケーションは通常、ローカルの JAR ファイルに構築します。 その後、その JAR ファイルを接続されている既定のストレージにコピーして、HDInsight の Spark にデプロイします。 そのアプリケーションは、POST 操作を使用してクラスターから使用可能な LIVY REST API を使用して起動できます。 POST の本文には、ご自分の JAR へのパスが示された JSON ドキュメントが含まれます。 また、ストリーミング アプリケーションを定義して実行する main メソッドのクラス名も含まれます。また、必要に応じてジョブで必要なリソース (Executor、メモリ、コアの数など) も含まれます。 また、お使いのアプリケーションのコードで必要な構成設定も含まれます。
 
 ![Spark ストリーミング アプリケーションのデプロイ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行することによって、実行中のアプリケーションを終了できます。 LIVY API の詳細については、[Apache LIVY を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)に関するページを参照してください
+GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行して、実行中のアプリケーションを終了できます。 LIVY API の詳細については、[Apache LIVY を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)に関するページを参照してください
 
 ## <a name="next-steps"></a>次のステップ
 
 * [HDInsight での Apache Spark クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)
 * [Apache Spark ストリーミング プログラミング ガイド](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [Apache LIVY を使用してリモートで Apache Spark ジョブを起動する](apache-spark-livy-rest-interface.md)
+* [Apache Spark Structured Streaming の概要](apache-spark-structured-streaming-overview.md)

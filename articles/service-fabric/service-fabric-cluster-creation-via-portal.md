@@ -3,12 +3,12 @@ title: Azure portal で Service Fabric クラスターを作成する
 description: Azure portal と Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458319"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792481"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 2. プライマリ ノード タイプの最小 VM **サイズ**は、クラスターに選択した**耐久性レベル**によって決まります。 既定の耐久性レベルはブロンズです。 耐久性の詳細については、[Service Fabric クラスターの耐久性の選択方法に関する記事][service-fabric-cluster-durability]を参照してください。
 3. **仮想マシンのサイズ**を選択します。 D シリーズ VM には SSD ドライブが備わっており、ステートフルなアプリケーションに最適です。 部分的なコアを持つ VM SKU や使用可能なディスク容量が 10 GB 未満の VM SKU は使用しないでください。 VM サイズの選択については、[Service Fabric クラスターの計画に関する考慮事項][service-fabric-cluster-capacity]のドキュメントを参照してください。
 4.  **1 つのノード クラスターと 3 つのノード クラスター**は、テストでの使用のみを目的としています。 運用ワークロードの実行では、サポートされません。
-5. ノード タイプに対する**最初の VM スケール セットの容量**を選択します。 後でノード タイプの VM 数を増減できますが、プライマリ ノード タイプの場合は、運用ワークロード用に 5 つ以上の VM が必要です。 他のノード タイプには、VM 数に最小値の 1 を設定できます。 プライマリ ノード タイプの最小 VM **数**によって、クラスターの**信頼性**が決まります。  
+5. ノード タイプに対する**最初の VM スケール セットの容量**を選択します。 後でノード タイプの VM 数をスケールインまたはスケールアウトできますが、プライマリ ノード タイプの場合は、運用ワークロード用に 5 つ以上の VM が必要です。 他のノード タイプには、VM 数に最小値の 1 を設定できます。 プライマリ ノード タイプの最小 VM **数**によって、クラスターの**信頼性**が決まります。  
 6. **カスタム エンドポイント**を構成します。 このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。 たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。 エンドポイントの詳細については、[アプリケーションとの通信][service-fabric-connect-and-communicate-with-services]に関する記事を参照してください。
 7. **リバース プロキシを有効にします**。  [Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)は、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
 8. **[クラスター構成]** ブレードに戻り、 **[+ オプションの設定を表示する]** で、クラスターの**診断**を構成します。 既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。 診断を無効にするには、 **[ステータス]** を **[オフ]** に切り替えます。 診断をオフにすることは **推奨されません** 。 Application Insights プロジェクトが既に作成されている場合は、キーを付与し、アプリケーション トレースがそのプロジェクトにルーティングされるようにします。

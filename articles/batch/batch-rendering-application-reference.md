@@ -1,18 +1,16 @@
 ---
-title: レンダリング アプリケーションを使用する - Azure Batch
+title: レンダリング アプリケーションを使用する
 description: Azure Batch でレンダリング アプリケーションを使用する方法。 この記事は各レンダリング アプリケーションを実行するための簡単な説明を提供します。
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75390476"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115807"
 ---
 # <a name="rendering-applications"></a>アプリケーションをレンダリングする
 

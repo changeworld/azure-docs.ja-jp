@@ -3,12 +3,12 @@ title: プロパティの複数のインスタンスを定義する
 description: Azure Resource Manager テンプレートで copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391332"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583415"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM テンプレートでのプロパティの反復処理
 
@@ -16,7 +16,7 @@ ms.locfileid: "81391332"
 
 [リソース](copy-resources.md)、[変数](copy-variables.md)、および [出力](copy-outputs.md)でもコピーを使用できます。
 
-## <a name="property-iteration"></a>プロパティの反復処理
+## <a name="syntax"></a>構文
 
 この copy 要素には、次の一般的な形式があります。
 
@@ -35,6 +35,21 @@ ms.locfileid: "81391332"
 **count** プロパティは、プロパティに対して必要な反復の数を指定します。
 
 **input** プロパティは、繰り返すプロパティを指定します。 **input** プロパティの値から構築された要素の配列を作成します。
+
+## <a name="copy-limits"></a>コピー制限
+
+count は 800 を超えることはできません。
+
+count は負の数値にすることはできません。 Azure CLI、PowerShell、または REST API の最新バージョンを使用してテンプレートをデプロイする場合、ゼロを指定できます。 具体的には、次のものを使用する必要があります。
+
+* Azure PowerShell **2.6** 以降
+* Azure CLI **2.0.74** 以降
+* REST API バージョン **2019-05-10** 以降
+* [[Linked deployments]\(リンクされたデプロイ\)](linked-templates.md) には、デプロイ リソースの種類に API バージョン **2019-05-10** 以降を使用する必要があります
+
+以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
+
+## <a name="property-iteration"></a>プロパティの反復処理
 
 次の例は、仮想マシンで dataDisks プロパティに `copy` を適用する方法を示しています。
 
@@ -232,12 +247,6 @@ copy 要素は配列であるため、リソースの複数のプロパティを
   }
 }
 ```
-
-## <a name="copy-limits"></a>コピー制限
-
-count は 800 を超えることはできません。
-
-count は負の数値にすることはできません。 Azure PowerShell 2.6 以降、Azure CLI 2.0.74 以降、または REST API バージョン **2019-05-10** 以降を使用してテンプレートをデプロイする場合は、count を 0 に設定できます。 以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
 
 ## <a name="example-templates"></a>サンプル テンプレート
 

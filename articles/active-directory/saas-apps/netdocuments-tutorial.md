@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79038152dd40b213b92a379c4b50ddd840eb8e6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72035709"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NetDocuments の統合
 
@@ -137,49 +137,48 @@ NetDocuments での Azure AD SSO を構成してテストするには、次の�
 
 1. 別の Web ブラウザーのウィンドウで、管理者として NetDocuments 企業サイトにサインインします。
 
-2. **[Admin]** に移動します。
+2. 右上隅から自分の名前を選択し、 **[Admin]\(管理者\)** を選択します。
 
-3. **[ユーザーとグループの追加と削除]** をクリックします。
+3. **[セキュリティ センター]** を選択します。
    
-    ![リポジトリ](./media/netdocuments-tutorial/ic795047.png "リポジトリ")
+    ![リポジトリ](./media/netdocuments-tutorial/security-center.png "Security Center")
 
-4. **[認証オプションの詳細な構成]** をクリックします。
+4. **[Advanced Authentication]\(高度な認証\)** を選択します。
     
-    ![[Configure advanced authentication options]\(認証オプションの詳細な構成\)](./media/netdocuments-tutorial/ic795048.png "[認証オプションの詳細な構成]")
+    ![[Configure advanced authentication options]\(認証オプションの詳細な構成\)](./media/netdocuments-tutorial/advance-authentication.png "[認証オプションの詳細な構成]")
 
-5. **[フェデレーション ID]** ダイアログで、次の手順に従います。
+5.  **[フェデレーション ID]** タブで次の手順に従います。   
    
-    ![フェデレーション ID](./media/netdocuments-tutorial/ic795049.png "フェデレーション ID")
+    ![フェデレーション ID](./media/netdocuments-tutorial/federated-id.png "フェデレーション ID")
    
     a. **[フェデレーション ID のサーバーの種類]** として、 **[Active Directory フェデレーション サービス]** を選びます。
-   
-    b. **[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
-   
-    c. **[OK]** をクリックします。
+    
+    b.  **[ファイルの選択]** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
+    
+    c.  **[SAVE]\(保存\)** を選択します。
 
 ### <a name="create-netdocuments-test-user"></a>NetDocuments のテスト ユーザーの作成
 
-Azure AD ユーザーが NetDocuments にサインインできるようにするには、そのユーザーを NetDocuments にプロビジョニングする必要があります。  
-NetDocuments の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが NetDocuments にサインインできるようにするには、そのユーザーを NetDocuments にプロビジョニングする必要があります。 NetDocuments の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **NetDocuments** 企業サイトに管理者としてサインオンします。
 
-2. 上部のメニューで **[Admin]** をクリックします。
+2. 右上隅から自分の名前を選択し、 **[Admin]\(管理者\)** を選択します。
    
-    ![管理者](./media/netdocuments-tutorial/ic795051.png "[Admin]")
+    ![管理者](./media/netdocuments-tutorial/user-admin.png "[Admin]")
 
-3. **[ユーザーとグループの追加と削除]** をクリックします。
+3. **[ユーザーとグループ]** を選択します。
    
-    ![リポジトリ](./media/netdocuments-tutorial/ic795047.png "リポジトリ")
+    ![リポジトリ](./media/netdocuments-tutorial/users-groups.png "リポジトリ")
 
 4. **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力して、 **[ユーザーの追加]** をクリックします。
    
-    ![メール アドレス](./media/netdocuments-tutorial/ic795053.png "電子メール アドレス")
+    ![メール アドレス](./media/netdocuments-tutorial/user-mail.png "電子メール アドレス")
    
-    >[!NOTE]
-    >Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。 他の NetDocuments ユーザー アカウントの作成ツールまたは NetDocuments から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
+    > [!NOTE]
+    > Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。 他の NetDocuments ユーザー アカウントの作成ツールまたは NetDocuments から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -196,4 +195,3 @@ NetDocuments の場合、プロビジョニングは手動で行います。
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で NetDocuments を試す](https://aad.portal.azure.com/)
-

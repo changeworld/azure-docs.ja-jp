@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f508de35470043cc71bfc8607367f28c04440b57
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408313"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193124"
 ---
 # <a name="security-control-network-security"></a>セキュリティ コントロールネットワークのセキュリティ
 
@@ -118,7 +118,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 |--|--|--|
 | 1.7 | 12.9、12.10 | Customer |
 
-信頼できる証明書に対して HTTPS/SSL を有効にした Web アプリケーションの Azure Application Gateway をデプロイします。
+信頼できる証明書に対して HTTPS/TLS が有効な Web アプリケーションに、Azure Application Gateway をデプロイします。
 
 - [Application Gateway をデプロイする方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 
@@ -164,7 +164,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、R
 
 ネットワークのセキュリティおよびトラフィック フローに関連する NSG およびその他のリソースにタグを使用します。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可する規則のビジネス ニーズや期間 (など) を指定します。
 
-すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ([タグとその値が必要] など) を使用します。
+すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ("タグとその値が必要" など) を使用します。
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 

@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585829"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743650"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -16,9 +16,9 @@ ms.locfileid: "80585829"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>ID とユーザー アクセスの管理と制御
 
-Azure Backup では、[Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) を使用してアクセス権をきめ細かく管理できます。 RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
+Recovery Services コンテナーによって使用されるストレージ アカウントは分離されており、悪意のある目的でユーザーがアクセスすることはできません。 アクセスが許可されるのは、復元などの Azure Backup 管理操作だけです。 Azure Backup では、[Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault) を使用して、マネージド運用をきめ細かく管理できます。 RBAC を使用すると、チーム内で職務を分離し、職務を実行するために必要なアクセス権のみをユーザーに付与することができます。
 
-Azure Backup では、バックアップの管理操作を制御する 3 つの組み込みロールが提供されます。
+Azure Backup では、バックアップの管理操作を制御する 3 つの[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)が提供されます。
 
 * バックアップ共同作成者 - Recovery Services コンテナーの削除と他のユーザーへのアクセス権の付与を除き、バックアップの作成と管理を行います
 * バックアップ オペレーター - バックアップの削除とバックアップ ポリシーの管理を除き、共同作成者が行うすべての操作を行います
@@ -47,13 +47,13 @@ Azure VM のバックアップを行うには、お使いの仮想マシンの�
 
 暗号化によりお使いのデータが保護され、組織のセキュリティとコンプライアンスのコミットメントを満たすのに役立ちます。 Azure 内では、Azure ストレージとコンテナー間を転送中のデータは HTTPS によって保護されます。 このデータは、Azure バックボーン ネットワークにとどまります。
 
-* バックアップ データは、Microsoft マネージド キーを使用して自動的に暗号化されます。 また、Azure Key Vault に格納されている[カスタマー マネージド キー](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)を使用して、Recovery Services コンテナー内のバックアップされたマネージド ディスク VM を暗号化することもできます。 この暗号化を有効にするために明示的な操作を行う必要はありません。 これは、Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。
+* バックアップ データは、Microsoft マネージド キーを使用して自動的に暗号化されます。 また、Azure Key Vault に格納されている[カスタマー マネージド キー](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)を使用して、Recovery Services コンテナー内のバックアップされたマネージド ディスク VM を暗号化することもできます。 この暗号化を有効にするために明示的な操作を行う必要はありません。 これは、Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。
 
 * Azure Backup では、OS またはデータ ディスクを Azure Disk Encryption (ADE) で暗号化している Azure VM のバックアップと復元をサポートしています。 [暗号化された Azure VM および Azure Backup の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>意図しない削除からのバックアップ データの保護
 
-Azure Backup には、削除後もバックアップ データを保護するためのセキュリティ機能が用意されています。 論理的な削除では、ユーザーが VM のバックアップを削除した場合、バックアップ データは追加で 14 日間保持されるので、データを失うことなくそのバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 [論理的な削除の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)。
+Azure Backup には、削除後もバックアップ データを保護するためのセキュリティ機能が用意されています。 論理的な削除では、ユーザーが VM のバックアップを削除した場合、バックアップ データは追加で 14 日間保持されるので、データを失うことなくそのバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 [論理的な削除の詳細については、こちらを参照してください](backup-azure-security-feature-cloud.md)。
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>疑わしいアクティビティの監視とアラート
 

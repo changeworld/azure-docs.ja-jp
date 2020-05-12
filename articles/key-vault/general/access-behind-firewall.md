@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: e24684063e73b8f8b659304987f46632f3601e8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426121"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732327"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの向こう側にある Azure Key Vault へのアクセス
 
@@ -25,7 +25,7 @@ ms.locfileid: "81426121"
 
 * Azure Active Directory (Azure AD) 経由の認証。
 * Azure Key Vault の管理。 これには、Azure Resource Manager を使用した作成、読み取り、更新、削除、アクセス ポリシーの設定が含まれます。
-* Key Vault 自体に格納されているオブジェクト (キーとシークレット) へのアクセスと管理は、Key Vault 固有のエンドポイントを経由して行われます (例: [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net))。  
+* Key Vault 自体に格納されているオブジェクト (キーとシークレット) へのアクセスと管理は、Key Vault 固有のエンドポイントを経由して行われます (例: `https://yourvaultname.vault.azure.net`)。  
 
 実際の構成と環境に応じて、いくつかのバリエーションがあります。
 
@@ -64,7 +64,13 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 
 ## <a name="ip-address-ranges"></a>IP アドレス範囲
 
-Key Vault サービスでは、PaaS インフラストラクチャなどの他の Azure リソースを使用します。 そのため、Key Vault サービス エンドポイントが常に持つことになる、特定の範囲の IP アドレスは提供されません。 ファイアウォールで IP アドレス範囲のみがサポートされている場合は、「[Microsoft Azure Datacenter IP Ranges (Microsoft Azure データセンターの IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」のドキュメントを参照してください。 認証と ID (Azure Active Directory) はグローバル サービスであり、予告なしに他のリージョンにフェールオーバーしたり、トラフィックを移動したりする可能性があります。 このシナリオでは、[認証と ID の IP アドレス](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)に関する記事に記載されているすべての IP 範囲を、ファイアウォールに追加する必要があります。
+Key Vault サービスでは、PaaS インフラストラクチャなどの他の Azure リソースを使用します。 そのため、Key Vault サービス エンドポイントが常に持つことになる、特定の範囲の IP アドレスは提供されません。 ファイアウォールで IP アドレス範囲のみがサポートされている場合は、以下に示す Microsoft Azure データセンターの IP 範囲のドキュメントを参照してください。
+* [パブリック](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
+* [US Gov ](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
+* [ドイツ](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
+* [中国](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+
+認証と ID (Azure Active Directory) はグローバル サービスであり、予告なしに他のリージョンにフェールオーバーしたり、トラフィックを移動したりする可能性があります。 このシナリオでは、[認証と ID の IP アドレス](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)に関する記事に記載されているすべての IP 範囲を、ファイアウォールに追加する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

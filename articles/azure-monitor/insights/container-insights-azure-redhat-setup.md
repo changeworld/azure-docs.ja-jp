@@ -1,18 +1,18 @@
 ---
-title: Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する | Microsoft Docs
-description: この記事では、Azure Red Hat OpenShift でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
+title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v3.x を構成する | Microsoft Docs
+description: この記事では、Azure Red Hat OpenShift バージョン 3 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234559"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204136"
 ---
-# <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する
 
-Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エンジン クラスター用の監視エクスペリエンスを提供するものです。 この記事では、[Azure Red Hat OpenShift](../../openshift/intro-openshift.md) でホストしている Kubernetes クラスターの監視を有効にし、Azure と同等の監視エクスペリエンスを実現する方法について説明します。
+Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エンジン クラスター用の監視エクスペリエンスを提供するものです。 この記事では、[Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 3 およびバージョン 3 のサポートされている最新バージョンでホストされている Kubernetes クラスターの監視を有効にし、類似した監視エクスペリエンスを実現する方法について説明します。
 
 >[!NOTE]
 >現時点では、Azure Red Hat OpenShift のサポートはパブリック プレビューの機能です。
@@ -38,7 +38,7 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用している新しいクラスターで有効にする
 
-監視が有効になっている Azure Red Hat OpenShift クラスターをデプロイするには、次の手順を実行します。 先に進む前に、チュートリアル「[Azure Red Hat OpenShift クラスターを作成する](../../openshift/tutorial-create-cluster.md#prerequisites)」を参照して、環境が正しく設定されるよう、構成する必要がある依存関係を理解してください。
+監視が有効になっている Azure Red Hat OpenShift クラスターをデプロイするには、次の手順を実行します。 先に進む前に、チュートリアル「[Azure Red Hat OpenShift クラスターを作成する](../../openshift/tutorial-create-cluster.md)」を参照して、環境が正しく設定されるよう、構成する必要がある依存関係を理解してください。
 
 この方法には、2 つの JSON テンプレートが含まれます。 1 つのテンプレートでは監視が有効になっているクラスターをデプロイする構成が指定され、もう 1 つのテンプレートには、次を指定するために構成するパラメーター値が含まれています。
 
@@ -204,5 +204,9 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 ## <a name="next-steps"></a>次のステップ
 
 - RedHat OpenShift クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、Azure Monitor for containers を[使用する方法](container-insights-analyze.md)について学習します。
+
+- 既定では、コンテナー化されたエージェントによって、kube-system を除くすべての名前空間で実行されているすべてのコンテナーの stdout および stderr コンテナー ログが収集されます。 特定の名前空間に固有のコンテナー ログ収集を構成するには、「[コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する](container-insights-agent-config.md)」を参照して、ConfigMap 構成ファイルに必要なデータ収集設定を構成します。
+
+- クラスターから Prometheus メトリックをスクレイピングして分析するには、「[Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する](container-insights-prometheus-integration.md)」を参照してください。
 
 - Azure Monitor for containers でクラスターの監視を停止する方法については、「[お使いの Azure Red Hat OpenShift クラスターの監視を停止する方法](container-insights-optout-openshift.md)」を参照してください。

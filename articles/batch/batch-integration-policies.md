@@ -1,25 +1,15 @@
 ---
-title: Azure ポリシーとの統合 - Azure Batch | Microsoft Docs
-description: ''
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: Azure Policy との統合
+description: Azure Policy は、リソースにルールを適用するポリシーを作成、割り当て、管理するために使用する Azure のサービスです。
 ms.topic: article
 ms.date: 02/24/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 9a306457f838fc79d12be3217d96cc8fb25c9c1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a160de1277afea026a16f470c8f76cdc2ec1733f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617867"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184267"
 ---
 # <a name="integration-with-azure-policy"></a>Azure Policy との統合
 
@@ -36,7 +26,7 @@ Azure Batch には、ポリシー コンプライアンスを管理するため�
 
 Batch で必要なリソースには、アカウント、計算ノード、プール、ジョブ、タスクなどがあります。 そのため、プロパティの別名を使用して、これらのリソースの特定のプロパティにアクセスします。 [エイリアス](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)の詳細について学習します
 
-現在のエイリアスを把握し、リソースとポリシーを確認するには、 Visual Studio Code 用の Azure policy extension を使用します。 Visual Studio Code でサポートされているすべてのプラットフォームにインストールできます。 このサポートには、Windows、Linux、macOS が含まれます。 [インストール ガイドライン](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode)をご覧ください。
+現在のエイリアスを把握し、リソースとポリシーを確認するには、Visual Studio Code 用の Azure Policy 拡張機能を使用します。 Visual Studio Code でサポートされているすべてのプラットフォームにインストールできます。 このサポートには、Windows、Linux、macOS が含まれます。 [インストール ガイドライン](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode)をご覧ください。
 
 
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681851"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792617"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -98,6 +98,10 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 ### <a name="common-client-side-issues"></a>クライアント側の一般的な問題
 
+**モデルで選択されている VM の制限、具体的には、ポリゴンの最大数を超えている:**
+
+特定の [VM サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
+
 **モデルがビューの視錐台の内側にない:**
 
 多くの場合、そのモデルは正しく表示されますが、カメラの視錐台の外側にあります。 一般的な理由の 1 つは、そのモデルが中心から外れた遠くのピボットを使用してエクスポートされたために、カメラの遠クリップ面で切り取られてしまうことです。 これは、モデルの境界ボックスに対してプログラムでクエリを実行し、Unity でそのボックスを線のボックスとして視覚化したり、その値をデバッグ ログに出力したりするのに役立ちます。
@@ -139,8 +143,20 @@ Azure Remote Rendering では、動画を使用してフレーム合成を行っ
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Remote Rendering API を使用する Unity コードがコンパイルされない
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>Unity エディター用にコンパイルするときにデバッグを使用する
+
 Unity ソリューションの*ビルドの種類*を **[デバッグ]** に切り替えます。 Unity エディターで ARR をテストする場合、`UNITY_EDITOR` の定義は 'デバッグ' ビルドでのみ使用できます。 これは、[デプロイされたアプリケーション](../quickstarts/deploy-to-hololens.md)に使用されるビルドの種類とは関係がないので注意してください。デプロイされたアプリケーションでは、'リリース' ビルドが推奨されます。
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>HoloLens 2 用の Unity サンプルをコンパイルするときにコンパイル エラーが発生する
+
+HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパイルしようとすると、偽のエラーが発生することがあります。 Visual Studio には、ファイルが存在するにもかかわらず、ファイルがコピーできないという警告が表示されます。 この問題が発生した場合は、次を行います。
+* すべての一時 Unity ファイルをプロジェクトから削除してから、やり直してください。
+* このコピー手順の問題はファイル名が長い場合に発生することがあるため、比較的パスが短いディスク上のディレクトリにプロジェクトが格納されていることを確認してください。
+* それでも問題が解決しない場合は、MS Sense によりコピー手順が妨げられている可能性があります。 例外を設定するには、コマンド ラインから次のレジストリ コマンドを実行します (管理者権限が必要です)。
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>ホログラムが不安定である
 
 レンダリングされたオブジェクトが頭部の動きに連動して動くように見える場合は、*Late Stage Reprojection* (LSR) に関する問題が発生している可能性があります。 このような状況への対処方法のガイダンスについては、[Late Stage Reprojection](../overview/features/late-stage-reprojection.md) に関するセクションをご覧ください。
