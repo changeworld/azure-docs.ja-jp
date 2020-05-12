@@ -10,14 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416022"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690918"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) とは
+
+> [!NOTE] 
+> [Azure Synapse (ワークスペース プレビュー) へのアクセスを申請](https://aka.ms/synapsepreview)して、ワークスペース、Spark、SQL オンデマンド、統合 Synapse Studio エクスペリエンスなど、Azure Synapse の最新の機能をお試しください。 
+>
+>詳細については、[Azure Synapse (ワークスペース プレビュー) のドキュメント](../overview-what-is.md)を参照してください。
 
 Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。
 
@@ -30,10 +35,7 @@ Azure Synapse には、次の 4 つのコンポーネントがあります。
 - Synapse パイプライン:ハイブリッド データ統合 (プレビュー)
 - Studio:統一ユーザー エクスペリエンス  (プレビュー)
 
-> [!NOTE]
-> Azure Synapse のプレビュー機能にアクセスするには、[こちら](https://aka.ms/synapsepreview)からアクセス権を要求してください。 Microsoft は、すべての要求をトリアージし、できるだけ早く対応します。
->
-> [Azure Synapse プレビューのドキュメント](../overview-what-is.md)をご覧ください。
+
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure Synapse の Synapse SQL プール
 

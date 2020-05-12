@@ -6,30 +6,28 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 31ac43ec796d305b8a8f4b62ea09481e262b6b3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: 5bae53c04867233138929867c4895e7f6a2f2149
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256982"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838775"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
 前提条件として、「[ストリーミング ユニットを効率的に使用できるようにジョブを最適化する](stream-analytics-streaming-unit-consumption.md)」で説明されているストリーミング ユニットの概念について理解しておく必要があります。
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Stream Analytics ジョブの構成について教えてください。
-Stream Analytics のジョブ定義は、入力、クエリ、および出力で構成されます。 入力は、ジョブがデータ ストリームを読み取る場所です。 クエリは、データ入力ストリームを変換するために使用されます。出力は、ジョブ結果の送信先です。
+Stream Analytics のジョブ定義には少なくとも、入力、クエリ、出力が含まれています。 入力は、ジョブがデータ ストリームを読み取る場所です。 クエリは、データ入力ストリームを変換するために使用されます。出力は、ジョブ結果の送信先です。
 
-ジョブにはデータ ストリーミング用に少なくとも 1 つの入力ソースが必要です。 データ ストリームの入力ソースは、Azure イベント ハブまたは Azure Blob Storage に格納できます。 詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」および「[Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)」をご覧ください。
-
-## <a name="partitions-in-sources-and-sinks"></a>ソースとシンク内のパーティション
-Stream Analytics ジョブのスケーリングでは、入力または出力でパーティションを利用します。 パーティション分割すると、パーティション キーに基づいてデータをサブセットに分割できます。 データを使用するプロセス (Streaming Analytics ジョブなど) では、さまざまなパーティションを同時に使用し、書き込みを実行できるので、スループットが向上します。 
+## <a name="partitions-in-inputs-and-outputs"></a>入力と出力のパーティション
+パーティション分割すると、[パーティション キー](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#partitions)に基づいてデータをサブセットに分割できます。 入力 (たとえば、Event Hubs) がキーによってパーティション分割されている場合、Stream Analytics ジョブに入力を追加するとき、このパーティション キーを指定することを強くお勧めします。 Stream Analytics ジョブのスケーリングでは、入力と出力でパーティションを利用します。 Stream Analytics ジョブでは、さまざまなパーティションを同時に使用し、書き込みを実行できるので、スループットが向上します。 
 
 ### <a name="inputs"></a>入力
 Azure Stream Analytics のすべての入力では、パーティション分割を利用できます。
--   EventHub (PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
--   IoT Hub (PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
+-   EventHub (互換性レベルが 1.1 以上の場合、PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
+-   IoT Hub (互換性レベルが 1.1 以上の場合、PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
 -   BLOB ストレージ
 
 ### <a name="outputs"></a>出力
@@ -56,11 +54,11 @@ Power BI では、パーティション分割がサポートされていませ�
 ## <a name="embarrassingly-parallel-jobs"></a>驚異的並列ジョブ
 *驚異的並列*ジョブは、Azure Stream Analytics において最もスケーラブルなシナリオです。 入力の 1 つのパーティションを、出力の 1 つのパーティションに対するクエリの 1 つのインスタンスに接続します。 この並列処理には次の要件があります。
 
-1. クエリ ロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送信されるようにする必要があります。 Event Hubs または IoT Hub の場合、イベント データに **PartitionKey** 値が設定されている必要があります。 代わりに、パーティション分割された送信元を使用することもできます。 Blob Storage の場合、イベントが同じパーティション フォルダーに送信される必要があります。 クエリ ロジックで、同じクエリ インスタンスによって処理される同じキーが不要の場合は、この要件を無視してかまいません。 このロジックの例として、単純な select-project-filter クエリがあります。  
+1. クエリ ロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送信されるようにする必要があります。 Event Hubs または IoT Hub の場合、イベント データに **PartitionKey** 値が設定されている必要があります。 代わりに、パーティション分割された送信元を使用することもできます。 Blob Storage の場合、イベントが同じパーティション フォルダーに送信される必要があります。 たとえば、クエリ インスタンスで userID 別にデータを集計するとき、パーティション キーとして userID を使用し、入力イベント ハブがパーティション分割されます。 ただし、クエリ ロジックで、同じクエリ インスタンスによって処理される同じキーが不要の場合は、この要件を無視してかまいません。 このロジックの例として、単純な select-project-filter クエリがあります。  
 
-2. データが入力側でレイアウトされている場合、クエリがパーティション分割されている必要があります。 そのためには、すべてのステップで **PARTITION BY** を使用する必要があります。 複数のステップが許可されますが、すべてのステップが同じキーでパーティション分割されている必要があります。 互換性レベル 1.0 および 1.1 では、完全な並列ジョブにするために、パーティション キーを **PartitionId** に設定する必要があります。 互換性レベル 1.2 以降のジョブの場合、入力設定でカスタム列をパーティション キーとして指定でき、ジョブは PARTITION BY 句がなくても自動的に並列化されます。 イベント ハブの出力では、[パーティション キー列] プロパティを "PartitionId" を使用するように設定する必要があります。
+2. 次の手順は、クエリをパーティション分割することです。 互換性レベル 1.2 以上 (推奨) のジョブの場合、入力設定でカスタム列をパーティション キーとして指定でき、ジョブは PARTITION BY 句がなくても自動的に並列化されます。 互換性レベル 1.0 または 1.1 のジョブでは、クエリのあらゆる手順で **PartitionId 別のパーティション**を使用する必要があります。 複数のステップが許可されますが、すべてのステップが同じキーでパーティション分割されている必要があります。 
 
-3. ほとんどの出力でパーティション分割を利用できますが、ジョブのパーティション分割をサポートしない出力の種類を使用する場合、ジョブは完全には並列になりません。 イベント ハブの出力については、**パーティション キー列**がクエリ パーティション キーと同じに設定されていることを確認してください。 詳しくは、「[出力](#outputs)」セクションをご覧ください。
+3. Stream Analytics でサポートされている出力のほとんどでは、パーティション分割が活用されます。 パーティション分割をサポートしていない種類の出力を使用する場合、ジョブは "*驚異的並列*" になりません。 イベント ハブの出力については、**パーティション キー列**がクエリで使用されているパーティション キーと同じに設定されていることを確認してください。 詳しくは、「[出力](#outputs)」セクションをご覧ください。
 
 4. 入力パーティションの数が出力パーティションの数と同じである必要があります。 Blob Storage 出力では、パーティションをサポートでき、アップストリーム クエリのパーティション構成を継承します。 Blob Storage のパーティション キーを指定すると、データが入力パーティションごとにパーティション分割されるため、結果も完全に並列になります。 完全な並列ジョブを可能にするパーティション値の例を次に示します。
 
@@ -80,8 +78,14 @@ Power BI では、パーティション分割がサポートされていませ�
 クエリ:
 
 ```SQL
+    --Using compatibility level 1.2 or above
     SELECT TollBoothId
-    FROM Input1 Partition By PartitionId
+    FROM Input1
+    WHERE TollBoothId > 100
+    
+    --Using compatibility level 1.0 or 1.1
+    SELECT TollBoothId
+    FROM Input1 PARTITION BY PartitionId
     WHERE TollBoothId > 100
 ```
 
@@ -95,6 +99,12 @@ Power BI では、パーティション分割がサポートされていませ�
 クエリ:
 
 ```SQL
+    --Using compatibility level 1.2 or above
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+    
+    --Using compatibility level 1.0 or 1.1
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
@@ -110,7 +120,7 @@ Power BI では、パーティション分割がサポートされていませ�
 * 次の内容を入力します。8 個のパーティションがあるイベント ハブ
 * 出力:32 個のパーティションがあるイベント ハブ
 
-この場合、クエリの内容は問題ではありません。 入力パーティション数と出力パーティション数が一致しない場合、トポロジは驚異的並列ではありません。ただし、一部のレベルまたは並列処理は利用できます。
+入力パーティション数と出力パーティション数が一致しない場合、クエリに関係なく、トポロジは驚異的並列ではありません。 ただし、一部のレベルまたは並列処理を得ることもできます。
 
 ### <a name="query-using-non-partitioned-output"></a>パーティション分割されていない出力を使用したクエリ
 * 次の内容を入力します。8 個のパーティションがあるイベント ハブ
@@ -121,6 +131,7 @@ Power BI では、パーティション分割がサポートされていませ�
 ### <a name="multi-step-query-with-different-partition-by-values"></a>PARTITION BY 値が異なる複数ステップのクエリ
 * 次の内容を入力します。8 個のパーティションがあるイベント ハブ
 * 出力:8 個のパーティションがあるイベント ハブ
+* 互換性レベル:1.0 または 1.1
 
 クエリ:
 
@@ -138,11 +149,10 @@ Power BI では、パーティション分割がサポートされていませ�
 
 ご覧のように、2 番目のステップは **TollBoothId** をパーティション キーとして使用しています。 このステップは最初のステップと異なるので、シャッフルを実行する必要があります。 
 
-上記の各例では、驚異的並列トポロジに準拠する (または準拠していない) Stream Analytics ジョブを紹介しました。 驚異的並列トポロジに準拠するジョブは、最大スケールを実現できる可能性があります。 これらのどのプロファイルにも適合しないジョブについては、今後の更新でスケーリング ガイダンスを提供する予定です。 現時点では、以下のセクションに示す一般的なガイダンスを使用してください。
-
-### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>互換性レベル 1.2 - PARTITION BY 値が異なる複数ステップのクエリ 
+### <a name="multi-step-query-with-different-partition-by-values"></a>PARTITION BY 値が異なる複数ステップのクエリ
 * 次の内容を入力します。8 個のパーティションがあるイベント ハブ
 * 出力:8 個のパーティションがあるイベント ハブ ([パーティション キー列] は "TollBoothId" を使用するように設定する必要があります)
+* 互換性レベル - 1.2 以上
 
 クエリ:
 
@@ -158,7 +168,7 @@ Power BI では、パーティション分割がサポートされていませ�
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-互換性レベル 1.2 では、既定で並列クエリの実行が可能です。 たとえば、前のセクションのクエリは、"TollBoothId" 列が入力パーティション キーとして設定されている限りパーティション分割されます。 PARTITION BY PartitionId 句は不要です。
+互換性レベル 1.2 以上では、既定で並列クエリの実行が可能です。 たとえば、前のセクションのクエリは、"TollBoothId" 列が入力パーティション キーとして設定されている限りパーティション分割されます。 PARTITION BY PartitionId 句は不要です。
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>ジョブのストリーミング ユニットの最大数を計算する
 Stream Analytics ジョブで使用できるストリーミング ユニットの合計数は、ジョブに定義されたクエリのステップ数と各ステップのパーティション数によって異なります。

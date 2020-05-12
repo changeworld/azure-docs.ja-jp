@@ -4,14 +4,14 @@ description: NFS ストレージ ターゲットの作成時にエラーを引�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651957"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186619"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング
 
@@ -40,7 +40,7 @@ Azure HPC Cache では、バックエンド NAS ストレージ システム上�
 | TCP/UDP  | 4046  | mountd   |
 | TCP/UDP  | 4047  | status   |
 
-ご利用のシステムに必要な特定のポートを調べるには、次の ``rpcinfo`` コマンドを使用します。 次のコマンドを使用すると、ポートが一覧表示され、表内の関連する結果が書式設定されます ( *<storage_IP>* という表現の部分にはシステムの IP アドレスを使用してください)。
+ご利用のシステムに必要な特定のポートを調べるには、次の ``rpcinfo`` コマンドを使用します。 次のコマンドを使用すると、ポートが一覧表示され、表内の関連する結果が書式設定されます  ( *<storage_IP>* という表現の部分にはシステムの IP アドレスを使用してください)。
 
 このコマンドは、NFS インフラストラクチャがインストールされている任意の Linux クライアントから発行できます。 クラスター サブネット内のクライアントを使用する場合は、サブネットとストレージ システム間の接続を検証するためにも役立ちます。
 
@@ -58,10 +58,13 @@ rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+t
 
 各種のストレージ システムでは、それぞれ異なる方法を使用してこのアクセスが有効にされます。
 
-* Linux サーバーでは、通常、``no_root_squash`` 内のエクスポートされたパスに ``/etc/exports`` が追加されます。
+* Linux サーバーでは、通常、``/etc/exports`` 内のエクスポートされたパスに ``no_root_squash`` が追加されます。
 * NetApp および EMC システムでは、通常、特定の IP アドレスまたはネットワークに関連付けられたエクスポート ルールを使用してアクセスが制御されます。
 
 エクスポート ルールを使用する場合は、キャッシュではキャッシュ サブネットからの複数の異なる IP アドレスを使用できることに注意してください。 すべての使用可能なサブネット IP アドレスからのアクセスを許可します。
+
+> [!NOTE]
+> 既定では、Azure HPC Cache はルート アクセスを許可します。 詳細については、[追加のキャッシュ設定の構成](configuration.md#configure-root-squash)に関する記事を参照してください。
 
 NAS ストレージ ベンダーと協力して、適切なレベルのアクセスをキャッシュに対して有効にしてください。
 
@@ -78,7 +81,7 @@ NAS ストレージ ベンダーと協力して、適切なレベルのアクセ
 
 エクスポート ``/ifs/accounting/payroll`` は ``/ifs/accounting`` の子であり、``/ifs/accounting`` 自体は ``/ifs`` の子です。
 
-``payroll`` エクスポートを HPC キャッシュ ストレージ ターゲットとして追加した場合、キャッシュでは実際には ``/ifs/`` がマウントされ、そこから payroll ディレクトリへのアクセスが行われます。 よって、Azure HPC Cache では、``/ifs`` エクスポートにアクセスするために、``/ifs/accounting/payroll`` へのルート アクセスが必要です。
+``payroll`` エクスポートを HPC キャッシュ ストレージ ターゲットとして追加した場合、キャッシュでは実際には ``/ifs/`` がマウントされ、そこから payroll ディレクトリへのアクセスが行われます。 よって、Azure HPC Cache では、``/ifs/accounting/payroll`` エクスポートにアクセスするために、``/ifs`` へのルート アクセスが必要です。
 
 この要件は、ストレージ システムから提供されるファイル ハンドルを使用して、キャッシュでファイルにインデックスを付け、ファイルの競合を回避する方法に関連しています。
 
@@ -100,7 +103,7 @@ NAS では、そのエクスポートが Azure HPC Cache によってクエリ�
 このコマンドを実行してもエクスポートが表示されない場合、そのキャッシュではご利用のストレージ システムへの接続時に問題が発生しています。 NAS ベンダーと協力して、エクスポートの一覧表示を有効にしてください。
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>VPN パケット サイズの制限を調整する
-<!-- link in prereqs article -->
+<!-- link in prereqs article and configuration article -->
 
 キャッシュとご利用の NAS デバイスとの間に VPN がある場合、その VPN によって、フルサイズの 1500 バイト イーサネット パケットがブロックされる可能性があります。 NAS と Azure HPC Cache インスタンスの間で大規模なやりとりはが完了しないが、より小さな更新プログラムは想定どおりに動作する場合、この問題が発生する可能性があります。
 
@@ -109,7 +112,7 @@ VPN 構成の詳細がわからなければ、ご利用のシステムにこの�
 * VPN の両側でパケット スニッファを使用して、正常に転送されるパケットを検出します。
 * ご利用の VPN で ping コマンドが許可されている場合は、フルサイズのパケットの送信をテストできます。
 
-  これらのオプションを使用して、VPN 経由で NAS に対して ping コマンドを実行します ( *<storage_IP>* 値の部分にはご利用のストレージ システムの IP アドレスを使用します)。
+  これらのオプションを使用して、VPN 経由で NAS に対して ping コマンドを実行します  ( *<storage_IP>* 値の部分にはご利用のストレージ システムの IP アドレスを使用します)。
 
    ```bash
    ping -M do -s 1472 -c 1 <storage_IP>
@@ -128,7 +131,11 @@ VPN 構成の詳細がわからなければ、ご利用のシステムにこの�
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  ping が 1472 バイトで失敗した場合、リモート システムで最大フレーム サイズが正しく検出されるように、VPN に MSS クランプを構成することが必要になる場合があります。 詳細については、[VPN Gateway IPsec/IKE パラメーターのドキュメント](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)を参照してください。
+  ping が 1472 バイトで失敗した場合、パケット サイズに問題がある可能性があります。
+
+この問題を修正するには、リモート システムで最大フレーム サイズが正しく検出されるように、VPN に MSS クランプを構成することが必要になる場合があります。 詳細については、[VPN Gateway IPsec/IKE パラメーターのドキュメント](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)を参照してください。
+
+場合によっては、Azure HPC Cache の MTU 設定を 1400 に変更すると役立つことがあります。 ただし、キャッシュの MTU を制限する場合は、キャッシュと対話するクライアントとバックエンド ストレージ システムの MTU 設定も制限する必要があります。 詳細については、「[Azure HPC Cache の追加設定を構成する](configuration.md#adjust-mtu-value)」を参照してください。
 
 ## <a name="check-for-acl-security-style"></a>ACL セキュリティス タイルを確認する
 
