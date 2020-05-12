@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199718"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787135"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 
@@ -26,7 +26,7 @@ Service Fabric ランタイムは、*Microsoft.Azure.ServiceFabric* 仮想マシ
 
 前の図に示されているように、スケール セットのインスタンスはインスタンス 0 で始まり、1 つずつ増えていきます。 番号はノード名に反映されます。 たとえば、ノード BackEnd_0 は、BackEnd スケール セットのインスタンス 0 です。 この特定のスケール セットには、BackEnd_0、BackEnd_1、BackEnd_2、BackEnd_3、BackEnd_4 という名前の 5 つのインスタンスがあります。
 
-スケール セットをスケールアップすると、新しいインスタンスが作成されます。 通常、新しいスケール セットのインスタンス名は、スケール セットの名前に次のインスタンス番号を付加したものになります。 この例では、BackEnd_5 です。
+スケール セットをスケールアウトすると、新しいインスタンスが作成されます。 通常、新しいスケール セットのインスタンス名は、スケール セットの名前に次のインスタンス番号を付加したものになります。 この例では、BackEnd_5 です。
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>スケール セットのロード バランサーをノードの種類とスケール セットにマップする
 

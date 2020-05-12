@@ -3,19 +3,19 @@ title: 最初のアプリを作成する C# チュートリアル
 titleSuffix: Azure Cognitive Search
 description: 最初の C# 検索アプリを作成する手順について説明します。 このチュートリアルでは、GitHub で公開されている動作するアプリへのリンクと、ゼロからアプリを構築する完全なプロセスの両方を提供します。 Azure Cognitive Search の重要なコンポーネントについて説明します。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121592"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780625"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# のチュートリアル: 最初のアプリを作成する - Azure Cognitive Search
+# <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して最初の検索アプリを作成する
 
 Azure Cognitive Search を使用してクエリを実行し、インデックスから検索結果を表示する Web インターフェイスを作成する方法について説明します。 このチュートリアルは、検索ページの構築に集中することができるように、ホストされている既存のインデックスを使用して始めます。 インデックスには、架空のホテルのデータが含まれています。 基本的なページができた後は、以降のレッスンでページング、ファセット、および入力候補を提示する機能を追加し、ページを強化できます。
 

@@ -1,22 +1,17 @@
 ---
-title: 'サービス間認証: Azure Active Directory での Azure Data Lake Storage Gen1 の認証 | Microsoft Docs'
-description: Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
-services: data-lake-store
-documentationcenter: ''
+title: サービス間認証 - Data Lake Storage Gen1 - Azure
+description: Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66241368"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688196"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
 > [!div class="op_single_selector"]

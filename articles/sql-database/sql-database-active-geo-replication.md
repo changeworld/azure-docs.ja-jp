@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/06/2020
-ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.date: 04/28/2020
+ms.openlocfilehash: 5c55c8076e41f2c4ae19bce5f75600b5872722f6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887352"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232004"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 
@@ -25,7 +25,12 @@ ms.locfileid: "80887352"
 > [!NOTE]
 > アクティブ geo レプリケーションは、マネージド インスタンスではサポートされていません。 マネージド インスタンスの地理的なフェールオーバーについては、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用します。
 
-アクティブ geo レプリケーションはビジネス継続性ソリューションとして設計されています。このソリューションを使用すれば、地域災害または大規模な機能停止が発生した場合にディザスター リカバリーをアプリケーションで迅速に実行することができます。 geo レプリケーションを有効にすると、アプリケーションは別の Azure リージョンにあるセカンダリ データベースへのフェールオーバーを開始できます。 同じリージョン内または異なるリージョン内で最大 4 つのセカンダリがサポートされています。また、セカンダリを使用して読み取り専用アクセスのクエリを行うこともできます。 フェールオーバーはアプリケーションまたはユーザーによって手動で開始される必要があります。 フェールオーバー後、新しいプライマリには別の接続エンドポイントが設定されます。 次の図に、アクティブ geo レプリケーションを使用して行われる geo 冗長クラウド アプリケーションの一般的な構成を示します。
+アクティブ geo レプリケーションはビジネス継続性ソリューションとして設計されています。このソリューションを使用すれば、地域災害または大規模な機能停止が発生した場合にディザスター リカバリーをアプリケーションで迅速に実行することができます。 geo レプリケーションを有効にすると、アプリケーションは別の Azure リージョンにあるセカンダリ データベースへのフェールオーバーを開始できます。 同じリージョン内または異なるリージョン内で最大 4 つのセカンダリがサポートされています。また、セカンダリを使用して読み取り専用アクセスのクエリを行うこともできます。 フェールオーバーはアプリケーションまたはユーザーによって手動で開始される必要があります。 フェールオーバー後、新しいプライマリには別の接続エンドポイントが設定されます。 
+
+> [!NOTE]
+> アクティブ geo レプリケーションでは、ストリーミング データベース トランザクション ログによって変更がレプリケートされます。 これは、DML (INSERT、UPDATE、DELETE) コマンドを実行して変更をレプリケートする[トランザクション レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)とは無関係です。
+
+次の図に、アクティブ geo レプリケーションを使用して行われる geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
 ![アクティブ geo レプリケーション](./media/sql-database-active-geo-replication/geo-replication.png )
 

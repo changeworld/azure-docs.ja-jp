@@ -3,12 +3,12 @@ title: Azure Advisor を使用して Azure サブスクリプションのオペ�
 description: Advisor を使用して、Azure サブスクリプションのオペレーショナル エクセレンスを最適化し、成熟させます
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4133fbe40c0fc1bdaf9c3f734bc19f94437c9acb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443073"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187418"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Azure Advisor でオペレーショナル エクセレンスを実現する
 
@@ -36,7 +36,7 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用する 
 1. Azure Policy を使用してタグを管理する: このポリシーは、任意のリソースが作成または更新されたときに、指定されたタグと値を追加または置換します。 修復タスクをトリガーすることで、既存のリソースを修復できます。 また、これによりリソース グループのタグが変更されることはありません。
 2. Azure Policy を使用して geo コンプライアンス要件を適用する: ポリシーでは、リソースをデプロイするときに組織が指定できる場所を制限できます。 
 3. デプロイに対して許可される仮想マシンの SKU を指定する: このポリシーを使用して、組織でデプロイできる仮想マシン SKU のセットを指定できます。
-4. Azure Policy を使用して、"マネージド ディスクを使用していない VM を監査する" ポリシーを適用する
+4. Azure Policy を使用して、"マネージド ディスクを使用しない VM を監査する" ポリシーを適用する
 5. Azure Policy を使用して、"リソース グループからタグを継承する" を使用する: このポリシーでは、任意のリソースが作成または更新されるときに、親リソース グループのタグと値が追加または置換されます。 修復タスクをトリガーすることで、既存のリソースを修復できます。
 
 ## <a name="next-steps"></a>次のステップ

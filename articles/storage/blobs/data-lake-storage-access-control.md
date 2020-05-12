@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992217"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793127"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -287,7 +287,7 @@ HNS がオフになっている場合、Azure RBAC の承認規則が引き続�
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>ACL を適用する最善の方法
 
-ACL で割り当て済みのプリンシパルとして常に Azure AD セキュリティ グループを使用します。 個々のユーザーまたはサービス プリンシパルを直接割り当てることを抑止します。 この構造体を使用すると、ユーザーまたはサービス プリンシパルを追加したり削除したりすることができます。ACL をディレクトリ構造全体に再適用する必要はありません。 ) 代わりに、適切な Azure AD セキュリティ グループからユーザーまたはサービス プリンシパルを追加または削除するだけです。 ACL は継承されないため、ACL の再適用には、すべてのファイルとサブディレクトリで ACL を更新する必要があることに注意してください。 
+ACL で割り当て済みのプリンシパルとして常に Azure AD セキュリティ グループを使用します。 個々のユーザーまたはサービス プリンシパルを直接割り当てることを抑止します。 この構造体を使用すると、ユーザーまたはサービス プリンシパルを追加したり削除したりすることができます。ACL をディレクトリ構造全体に再適用する必要はありません。 代わりに、適切な Azure AD セキュリティ グループからユーザーまたはサービス プリンシパルを追加または削除するだけです。 ACL は継承されないため、ACL の再適用には、すべてのファイルとサブディレクトリで ACL を更新する必要があることに注意してください。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>ディレクトリとその内容を再帰的に削除するのに必要なアクセス許可を教えてください
 

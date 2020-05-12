@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 3c1369e813ba6518f6cd4b27082020ae36a24c82
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811207"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195096"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 
-HDInsight Spark クラスターには、[Apache Zeppelin](https://zeppelin.apache.org/) Notebook が含まれています。 Notebook を使用して、[Apache Spark](https://spark.apache.org/) ジョブを実行します。 この記事では、HDInsight クラスターで Zeppelin Notebook を使用する方法について説明します。
+HDInsight Spark クラスターには、[Apache Zeppelin](https://zeppelin.apache.org/) Notebook が含まれています。 Notebook を使用して、Apache Spark ジョブを実行します。 この記事では、HDInsight クラスターで Zeppelin Notebook を使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -224,29 +224,6 @@ Ambari からサービスを検証するには、`https://CLUSTERNAME.azurehdins
 
 ## <a name="next-steps"></a>次のステップ
 
-[概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
-
-### <a name="scenarios"></a>シナリオ
-
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
-
-* [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
-* [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>ツールと拡張機能
-
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark Scala アプリケーションを作成および送信する](apache-spark-intellij-tool-plugin.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>リソースの管理
-
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
-* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)

@@ -3,14 +3,14 @@ title: ステージング環境を設定する
 description: 非運用スロットにアプリをデプロイし、運用環境に autoswap をデプロイする方法について説明します。 信頼性を向上させ、デプロイからのアプリのダウンタイムを排除します。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300873"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597920"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ ms.locfileid: "78300873"
    
     ![デプロイ スロットのタイトル](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    ステージング スロットには、他の App Service アプリと同様に管理ページがあります。 スロットの構成を変更することができます。 デプロイ スロットが表示されていることを通知するためにスロットの名前がページの上部に表示されます。
+    ステージング スロットには、他の App Service アプリと同様に管理ページがあります。 スロットの構成を変更することができます。 デプロイ スロットを表示していることを知らせるため、アプリ名は **\<app-name>/\<slot-name>** と表示され、アプリの種類は **App Service (スロット)** です。 また、同じ指定先を使用して、リソース グループ内の別のアプリとしてスロットを表示することもできます。
 
 6. スロットのリソース ページで、アプリの URL を選択します。 デプロイ スロットは独自のホスト名を持ち、ライブ アプリでもあります。 デプロイ スロットへのパブリック アクセスを制限するには、[Azure App Service の IP 制限](app-service-ip-restrictions.md)に関するページをご覧ください。
 
-別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](app-service-deploy-local-git.md)ことができます。 スロットには、異なるリポジトリ分岐、または異なるリポジトリからデプロイできます。 
+別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](app-service-deploy-local-git.md)ことができます。 スロットには、異なるリポジトリ分岐、または異なるリポジトリからデプロイできます。
 
 <a name="AboutConfiguration"></a>
 
@@ -272,7 +272,7 @@ App Service では、トラフィックの自動ルーティングだけでな�
 
 ## <a name="delete-a-slot"></a>スロットを削除する
 
-アプリを検索して選択します。 **[デプロイ スロット]**  > \<*削除するスロット>*  >  **[概要]** の順に選択します。 コマンド バーの **[削除]** を選択します。  
+アプリを検索して選択します。 **[デプロイ スロット]**  > \<*削除するスロット>*  >  **[概要]** の順に選択します。 アプリの種類は **App Service (スロット)** として表示され、デプロイ スロットが表示されていることを知らせます。 コマンド バーの **[削除]** を選択します。  
 
 ![デプロイ スロットの削除](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

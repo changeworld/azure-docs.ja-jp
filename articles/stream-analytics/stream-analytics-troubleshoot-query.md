@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: f049dc6d1261a8201cf79d1779e522b30d13c4b0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409434"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82133306"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
 この記事では、Stream Analytics のクエリの開発に関する一般的な問題と、そのトラブルシューティングの方法について説明します。
 
-この記事では、Azure Stream Analytics クエリの開発に関する一般的な問題、クエリの問題のトラブルシューティングの方法、および問題を修正する方法について説明します。 多くのトラブルシューティングの手順では、Stream Analytics ジョブに対して診断ログを有効にする必要があります。 診断ログが有効になっていない場合は、「[診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)」を参照してください。
+この記事では、Azure Stream Analytics クエリの開発に関する一般的な問題、クエリの問題のトラブルシューティングの方法、および問題を修正する方法について説明します。 多くのトラブルシューティングの手順では、Stream Analytics ジョブに対してリソース ログを有効にする必要があります。 リソース ログが有効になっていない場合は、「[リソース ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)」を参照してください。
 
 ## <a name="query-is-not-producing-expected-output"></a>クエリが予想される出力を生成しない
 
@@ -43,9 +43,9 @@ ms.locfileid: "80409434"
 
 5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
 
-6. 監査ログと診断ログを使用してデバッグする。
-    - [監査ログ](../azure-resource-manager/resource-group-audit.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
-    - [ジョブの診断ログ](stream-analytics-job-diagnostic-logs.md)を使用してエラーを特定し、デバッグします。
+6. アクティビティとリソース ログを使用したデバッグ: 
+    - [アクティビティ ログ](../azure-resource-manager/resource-group-audit.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
+    - [ジョブのリソース ログ](stream-analytics-job-diagnostic-logs.md)を使用してエラーを特定し、デバッグします。
 
 ## <a name="resource-utilization-is-high"></a>リソース使用率が高い
 

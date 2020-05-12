@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) で複数の同時実行ポッドで
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 59b773cd4608187fedb24358eac57715e1c271ea
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803536"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207685"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -105,7 +105,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>永続ボリュームの使用
 
-次の YAML は、永続ボリューム要求 *azurefile* を使って、 */mnt/azure* パスに Azure ファイル共有をマウントするポッドを作成します。 Windows Server コンテナー (AKS では現在プレビュー段階) の場合、 *'D:'* などの Windows パス規則を使用して、*mountPath* を指定します。
+次の YAML は、永続ボリューム要求 *azurefile* を使って、 */mnt/azure* パスに Azure ファイル共有をマウントするポッドを作成します。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
 `azure-pvc-files.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 *claimName* が最後の手順で作成したPVC と一致していることを確認します。
 
