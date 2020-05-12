@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 757367e2b9773908b81ad35615a23b1b5c67aa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117208"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82784114"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>地理的リージョン内の Azure リージョン
 
-サイト間ベースの VPN 接続と仮想 WAN アーキテクチャは、次のリージョンで利用できます。
+Virtual WAN は、以下のリージョンで使用できます。
 
 |地理的リージョン | Azure Azure リージョン|
 |---|---|
@@ -37,10 +37,10 @@ ms.locfileid: "80117208"
 
 ### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>各国のクラウドの Azure リージョンと地理的境界
 
-サイト間ベースの VPN 接続と仮想 WAN アーキテクチャは、次のリージョンで利用できます。
+Virtual WAN は、以下のリージョンで使用できます。
 
 |地理的リージョン | Azure Azure リージョン|
 |---|---|
 | 米国政府のクラウド | 米国政府アリゾナ、US Gov アイオワ、米国政府テキサス、米国政府バージニア、US DoD 中部、US DoD 東部 |
-| 中国東部 | 中国東部、中国東部 2|
-| 中国北部 | 中国北部、中国北部 2 |
+| 中国東部 | 中国東部 2|
+| 中国北部 | 中国北部 2 |

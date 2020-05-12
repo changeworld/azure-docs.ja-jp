@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC と Azure PowerShell を使用してロールの割り当てを一覧表示する
-description: Azure ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセスを決定する方法について説明します。
+title: Azure PowerShell を使用して Azure でのロールの割り当てを一覧表示する - Azure RBAC
+description: Azure PowerShell と Azure ロールベースのアクセス制御 (RBAC) を使用して、リソース ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセスを決定する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bdf703ac29ce11749de70fa0ef5972ee284401b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931150"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735710"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC と Azure PowerShell を使用してロールの割り当てを一覧表示する
+# <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure でのロールの割り当てを一覧表示する
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure PowerShell を使用してロールの割り当てを一覧表示する方法を説明します。
 
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC と Azure PowerShell を使用してロールの割り当てを追加または削除する](role-assignments-powershell.md)
+- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](role-assignments-powershell.md)

@@ -2,13 +2,13 @@
 title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.date: 04/28/2020
+ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758839"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690902"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -24,6 +24,8 @@ ms.locfileid: "81758839"
 その他の関数アプリの構成オプションは、[アプリ設定](functions-app-settings.md) (デプロイされているアプリの場合) または [local.settings.json](functions-run-local.md#local-settings-file) ファイル (ローカル開発の場合) で管理されます。
 
 バインドに関連する host.json 内の構成は、関数アプリの各関数に均等に適用されます。 
+
+また、アプリケーション設定を使用して、[環境ごとに設定をオーバーライドまたは適用する](#override-hostjson-values)こともできます。
 
 ## <a name="sample-hostjson-file"></a>サンプル host.json ファイル
 
@@ -386,6 +388,23 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="override-hostjson-values"></a>host.json 値をオーバーライドする
+
+host.json ファイル自体を変更せずに、特定の環境用に host.json ファイル内の特定の設定を構成または変更することが必要な場合があります。  特定の host.json 値をオーバーライドするには、等価の値をアプリケーション設定として作成します。 ランタイムは、`AzureFunctionsJobHost__path__to__setting` 形式のアプリケーション設定を検出すると、JSON の `path.to.setting` にある等価の host.json 設定をオーバーライドします。 アプリケーション設定として表現した場合、JSON 階層を示すために使用されるドット (`.`) は 2 つのアンダースコア (`__`) に置き換えられます。 
+
+たとえば、ローカルで実行しているときに Application Insight のサンプリングを無効にするとします。 ローカルの host.json ファイルを変更して Application Insights を無効にした場合、この変更がデプロイ中に運用アプリにプッシュされる可能性があります。 これをより安全に行うには、代わりに `local.settings.json` ファイル内にアプリケーション設定を `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` として作成します。 これは、次の `local.settings.json` ファイルで確認できます。このファイルは発行されません。
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "{storage-account-connection-string}",
+        "FUNCTIONS_WORKER_RUNTIME": "{language-runtime}",
+        "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"
+    }
 }
 ```
 

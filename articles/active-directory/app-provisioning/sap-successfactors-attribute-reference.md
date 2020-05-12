@@ -1,33 +1,37 @@
 ---
-title: SAP SuccessFactors 属性のリファレンス | Microsoft Docs
+title: SAP SuccessFactors 属性のリファレンス
 description: SuccessFactors-HR ドリブン プロビジョニングによってサポートされる SuccessFactors の属性について説明します。
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77522358"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593186"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性のリファレンス
 
+この記事では、次の情報を取り上げます。
+
+- [サポートされている SuccessFactors エンティティと属性](#supported-successfactors-entities-and-attributes)
+- [既定の属性マッピング](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>サポートされている SuccessFactors エンティティと属性
 
-以下の表は、次の 2 つのプロビジョニング アプリによってサポートされる SuccessFactors 属性の一覧を示しています。 
-* [Active Directory ユーザー プロビジョニングに対する SuccessFactors](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [Azure AD ユーザー プロビジョニングに対する SuccessFactors](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+以下の表は、次の 2 つのプロビジョニング アプリによってサポートされる SuccessFactors 属性の一覧を示しています。
+
+- [Active Directory ユーザー プロビジョニングに対する SuccessFactors](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [Azure AD ユーザー プロビジョニングに対する SuccessFactors](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | SuccessFactors エンティティ                  | SuccessFactors 属性     | 操作の種類 |
 |----|----------------------------------------|------------------------------|----------------|
@@ -111,7 +115,6 @@ ms.locfileid: "77522358"
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Read           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | Read           |
 
-
 ## <a name="default-attribute-mapping"></a>既定の属性マッピング
 
 次の表は、上に示した SuccessFactors 属性と AD/Azure AD 属性の間の既定の属性マッピングを示しています。 Azure AD プロビジョニング アプリの [マッピング] ブレードでは、この既定のマッピングを変更して、上記の一覧の属性を含めることができます。 
@@ -138,4 +141,3 @@ ms.locfileid: "77522358"
 | 18 | EmpJob\.Location                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
 | 19 | EmpJob\.Location                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | activeEmploymentsCount=0 の場合、account\ を無効にします。                                           |
-

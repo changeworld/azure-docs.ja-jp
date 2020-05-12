@@ -5,17 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e27550ecc5b42c2bf0d947690da09e13d88ea4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16b4fca475f91a8cb5b7f9a20ea5aa74b6b674a3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128037"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612862"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows Virtual Desktop における委任されたアクセス
+
+>[!IMPORTANT]
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトを含まない Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)を参照してください。
+>
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Windows Virtual Desktop には委任されたアクセス モデルが用意され、これにより特定のユーザーにロールを割り当てることで、それらのユーザーが持つことのできるアクセス数を定義できます。 ロールの割り当てには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つのコンポーネントがあります。 Windows Virtual Desktop の委任されたアクセス モデルは、Azure RBAC モデルに基づいています。 特定のロールの割り当てとそのコンポーネントの詳細については、「[Azure ロールベースのアクセス制御の概要](../role-based-access-control/built-in-roles.md)」を参照してください。
 
@@ -23,48 +29,38 @@ Windows Virtual Desktop の委任されたアクセスでは、ロール割り�
 
 * セキュリティ プリンシパル
     * ユーザー
+    * ユーザー グループ
     * サービス プリンシパル
 * ロール定義
     * 組み込みのロール
-* スコープ
-    * テナント グループ
-    * テナント
+    * カスタム ロール
+* Scope
     * ホスト プール
     * アプリ グループ
-
-## <a name="built-in-roles"></a>組み込みのロール
-
-Windows Virtual Desktop の委任されたアクセスには、ユーザーおよびサービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。
-
-* RDS 所有者は、リソースへのアクセスを含め、すべてを管理できます。
-* RDS 共同作業者は、リソースへのアクセス以外のすべてを管理できます。
-* RDS 閲覧者は、すべてを閲覧できますが、変更を加えることはできません。
-* RDS オペレーターは、診断アクティビティを表示できます。
+    * Workspaces
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>ロール割り当てを目的とした PowerShell のコマンドレット
 
-次のコマンドレットを実行して、ロールの割り当てを作成、表示、削除できます。
+開始する前に、[PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って、Windows Virtual Desktop PowerShell モジュールを設定してください (まだ設定していない場合)。
 
-* **Get-RdsRoleAssignment** はロール割り当ての一覧を表示します。
-* **New-RdsRoleAssignment** は新しいロール割り当てを作成します。
-* **Remove-RdsRoleAssignment** はロールの割り当てを削除します。
+Windows Virtual Desktop では、アプリ グループをユーザーまたはユーザー グループに公開するときに、Azure のロールベースのアクセス制御 (RBAC) を使用します。 デスクトップ仮想化ユーザー ロールがユーザーまたはユーザー グループに割り当てられます。そのスコープはアプリ グループになります。 このロールは、アプリ グループに対する特別なデータ アクセスをユーザーに付与します。  
 
-### <a name="accepted-parameters"></a>使用できるパラメーター
+次のコマンドレットを実行して、Azure Active Directory ユーザーをアプリ グループに追加します。
 
-基本的な 3 つのコマンドレットを次のパラメーターで変更できます。
+```powershell
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+```
 
-* **AadTenantId**: サービス プリンシパルがメンバーとなる Azure Active Directory テナント ID を指定します。
-* **AppGroupName**: リモート デスクトップのアプリ グループの名前です。
-* **Diagnostics**: 診断のスコープを示します (**Infrastructure** または **Tenant** パラメーターのいずれかと組み合わせる必要があります)。
-* **HostPoolName**: リモート デスクトップのホスト プールの名前です。
-* **Infrastructure**: インフラストラクチャのスコープを示します。
-* **RoleDefinitionName**: ユーザー、グループ、またはアプリに割り当てられているリモート デスクトップ サービスのロールベース アクセス制御のロールの名前 (リモート デスクトップ サービスの所有者、リモート デスクトップ サービスの閲覧者など)。
-* **ServerPrincipleName**: Azure Active Directory アプリケーションの名前。
-* **SignInName**: ユーザーの電子メール アドレスまたはユーザー プリンシパル名。
-* **TenantName**: リモート デスクトップ テナントの名前。
+次のコマンドレットを実行して、Azure Active Directory ユーザー グループをアプリ グループに追加します。
+
+```powershell
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+```
 
 ## <a name="next-steps"></a>次のステップ
 
 各ロールで使用できる PowerShell コマンドレットのより詳細な一覧については、「[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)」を参照してください。
+
+Azure RBAC でサポートされているロールの完全な一覧については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
 Windows Virtual Desktop 環境を設定する方法のガイドについては、「[Windows Virtual Desktop 環境](environment-setup.md)」を参照してください。

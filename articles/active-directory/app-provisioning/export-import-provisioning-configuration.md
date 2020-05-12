@@ -1,50 +1,54 @@
 ---
-title: ディザスター リカバリーのためにプロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする | Microsoft Docs
+title: ディザスター リカバリーのためにプロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
 description: ディザスター リカバリーのためにプロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする方法について説明します。
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.subservice: app-provisioning
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92a40a5fe3067cf96d3c742102c9ca66078cd5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051306"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593762"
 ---
-# <a name="export-your-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
+# <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>方法: プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
+
+この記事では、次の方法について学習します。
+
+- Azure portal からプロビジョニング構成をエクスポートしてインポートする
+- Microsoft Graph API を使用して、プロビジョニング構成をエクスポートし、インポートする
 
 ## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>Azure portal からプロビジョニング構成をエクスポートしてインポートする
 
-### <a name="how-can-i-export-my-provisioning-configuration"></a>プロビジョニング構成をエクスポートする方法
+### <a name="export-your-provisioning-configuration"></a>プロビジョニング構成をエクスポートする
+
 構成をエクスポートするには:
+
 1. [Azure portal](https://portal.azure.com/) の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
-2. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択し、ご使用のアプリケーションを選択します。
-3. 左側のナビゲーション ウィンドウで **[プロビジョニング]** を選択します。 プロビジョニング構成ページで、 **[属性マッピング]** をクリックし、次に **[詳細オプションの表示]** をクリックし、最後に **[スキーマを確認する]** をクリックします。 これにより、スキーマ エディターが表示されます。 
-5. ページの上部にあるコマンド バーで [ダウンロード] をクリックしてスキーマをダウンロードします。
+1. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択し、ご使用のアプリケーションを選択します。
+1. 左側のナビゲーション ウィンドウで **[プロビジョニング]** を選択します。 プロビジョニング構成ページで、 **[属性マッピング]** をクリックし、次に **[詳細オプションの表示]** をクリックし、最後に **[スキーマを確認する]** をクリックします。 これにより、スキーマ エディターが表示されます。
+1. ページの上部にあるコマンド バーで [ダウンロード] をクリックしてスキーマをダウンロードします。
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>ディザスター リカバリー - 既知の良好な状態にロールバックする
-構成をエクスポートして保存すると、以前のバージョンの構成にロールバックできます。 属性マッピングまたはスコープ フィルターを変更するときにいつでも使用できるように、プロビジョニング構成をエクスポートして保存することをお勧めします。 必要な作業は、スキーマ エディターで、前の手順でダウンロードした JSON ファイルを開き、JSON ファイルの内容全体をコピーし、JSON ペイロードの内容全体を置き換え、保存するだけです。 アクティブなプロビジョニング サイクルがある場合、そのサイクルは完了し、次のサイクルで更新されたスキーマが使用されます。 また、次のサイクルは、新しい構成に基づいてすべてのユーザーとグループを再評価する初期サイクルになります。 前の構成にロールバックする場合、次の点を考慮してください。
-* ユーザーをスコープに含める必要があるかどうかを判断するために、ユーザーはもう一度評価されます。 スコープ フィルターが変更されている場合、ユーザーはそれ以上スコープに含まれなくなり、それらのフィルターは無効になります。 ほとんどの場合、これは望ましい動作ですが、これを回避することが望ましい場合には[スコープ外の削除のスキップ](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions)機能を使用できます。 
-* プロビジョニング構成を変更すると、サービスが再起動され、[初回サイクル](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)がトリガーされます。
 
+構成をエクスポートして保存すると、以前のバージョンの構成にロールバックできます。 属性マッピングまたはスコープ フィルターを変更するときにいつでも使用できるように、プロビジョニング構成をエクスポートして保存することをお勧めします。 必要な作業は、スキーマ エディターで、前の手順でダウンロードした JSON ファイルを開き、JSON ファイルの内容全体をコピーし、JSON ペイロードの内容全体を置き換え、保存するだけです。 アクティブなプロビジョニング サイクルがある場合、そのサイクルは完了し、次のサイクルで更新されたスキーマが使用されます。 また、次のサイクルは、新しい構成に基づいてすべてのユーザーとグループを再評価する初期サイクルになります。 前の構成にロールバックする場合、次の点を考慮してください。
+
+- ユーザーをスコープに含める必要があるかどうかを判断するために、ユーザーはもう一度評価されます。 スコープ フィルターが変更されている場合、ユーザーはそれ以上スコープに含まれなくなり、それらのフィルターは無効になります。 ほとんどの場合、これは望ましい動作ですが、これを回避することが望ましい場合には[スコープ外の削除のスキップ](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions)機能を使用できます。 
+- プロビジョニング構成を変更すると、サービスが再起動され、[初回サイクル](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)がトリガーされます。
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API を使用して、プロビジョニング構成をエクスポートし、インポートする
-Microsoft Graph API と Microsoft Graph Explorer を使用すると、ご自分のユーザー プロビジョニングの属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートし直すことができます。 ここでキャプチャした手順を使用して、プロビジョニング構成のバックアップを作成することもできます。 
+
+Microsoft Graph API と Microsoft Graph Explorer を使用すると、ご自分のユーザー プロビジョニングの属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートし直すことができます。 ここでキャプチャした手順を使用して、プロビジョニング構成のバックアップを作成することもできます。
 
 ### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>手順 1:プロビジョニング アプリのサービス プリンシパル ID (オブジェクト ID) を取得します
 
-1. [Azure portal](https://portal.azure.com) を起動し、プロビジョニング アプリケーションの [プロパティ] セクションに移動します。 たとえば、"*Workday to AD User Provisioning アプリケーション*" のマッピングをエクスポートする場合は、そのアプリの [プロパティ] セクションに移動します。 
+1. [Azure portal](https://portal.azure.com) を起動し、プロビジョニング アプリケーションの [プロパティ] セクションに移動します。 たとえば、"*Workday to AD User Provisioning アプリケーション*" のマッピングをエクスポートする場合は、そのアプリの [プロパティ] セクションに移動します。
 1. プロビジョニング アプリの [プロパティ] セクションで、"*オブジェクト ID*" フィールドに関連付けられている GUID 値をコピーします。 この値はお使いのアプリの **ServicePrincipalId** とも呼ばれ、Microsoft Graph Explorer の操作で使用されます。
 
    ![Workday アプリのサービス プリンシパル ID](./media/export-import-provisioning-configuration/wd_export_01.png)
@@ -99,4 +103,4 @@ Microsoft Graph Explorer で、[servicePrincipalId] と [ProvisioningJobId] を�
 
    [![要求ヘッダー](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
 
-[Run Query]\(クエリの実行\) ボタンをクリックして新しいスキーマをインポートします。
+**[クエリの実行]** を選択して新しいスキーマをインポートします。

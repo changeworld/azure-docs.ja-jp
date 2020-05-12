@@ -1,5 +1,5 @@
 ---
-title: データ インジェスト オプション
+title: データのインジェストと自動化
 titleSuffix: Azure Machine Learning
 description: 機械学習モデルをトレーニングするためのデータ インジェスト オプションについて説明します。
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086880"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789863"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning のデータ インジェスト
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning ワークフローのデータ インジェスト オプション
 
-この記事では、Azure Machine Learning で使用できる次のデータ インジェスト オプションの長所と短所について説明します。 
+この記事では、Azure Machine Learning で使用できるデータ インジェスト オプションの長所と短所について説明します。 
 
-1. [Azure Data Factory](#use-azure-data-factory) のパイプライン
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+次の中から選択します。
++ データの抽出、読み込み、および変換を目的として構築された [Azure Data Factory](#azure-data-factory) パイプライン
+
++ 基本的なデータ インジェスト タスク用のカスタム コード ソリューションを提供する [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk)。
+
++ 両方の組み合わせ
 
 データ インジェストは、構造化されていないデータを 1 つまたは複数のソースから抽出し、機械学習モデルのトレーニング用に準備するプロセスです。 また、特に手動で行う場合や、複数のソースに大量のデータがある場合は、時間がかかります。 この作業を自動化することで、リソースが解放され、お使いのモデルで最新の適用可能なデータが確実に使用されるようになります。
 
-Azure Data Factory (ADF) は、データの抽出、読み込み、および変換を行うために特別に構築されていますが、Python SDK を使用すると、基本的なデータ インジェスト タスク用のカスタム コード ソリューションを開発できます。 どちらも完全にはニーズを満たさない場合、ADF と Python SDK を一緒に使用して、ニーズを満たすデータ インジェスト ワークフロー全体を作成することもできます。 
-
-## <a name="use-azure-data-factory"></a>Azure Data Factory を使用する
+## <a name="azure-data-factory"></a>Azure Data Factory
 
 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) では、データ ソース監視のネイティブ サポートとデータ インジェスト パイプラインのトリガーが提供されています。  
 
@@ -55,7 +57,7 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
     
 [Azure Data Factory](how-to-data-ingest-adf.md) を使用して、機械学習のデータ インジェスト パイプラインを作成する方法について説明します。
 
-## <a name="use-the-python-sdk"></a>Python SDK の使用 
+## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml) を使用して、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)の手順にデータ インジェスト タスクを組み込むことができます。
 
@@ -73,5 +75,7 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Data Factory](how-to-data-ingest-adf.md) を使用して、機械学習のデータ インジェスト パイプラインを作成する方法について説明します。
-* [Azure Pipelines](how-to-cicd-data-ingestion.md) を使用して、データ インジェスト パイプラインの開発ライフ サイクルを自動化および管理する方法について説明します。
+以下のハウツー記事に従ってください。
+* [Azure Data Factory を使用してデータ インジェスト パイプラインを作成する](how-to-data-ingest-adf.md)
+
+* [Azure Pipelines を使用して、データ インジェスト パイプラインを自動化および管理する](how-to-cicd-data-ingestion.md)

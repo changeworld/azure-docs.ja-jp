@@ -1,44 +1,41 @@
 ---
-title: パートナー センターのコマーシャル マーケットプレース分析の [評価とレビュー] ダッシュボード
-description: Azure Marketplace と AppSource でのオファーに関する顧客フィードバックの統合ビューにアクセスする方法について説明します。
+title: パートナー センターの評価とレビューの分析ダッシュボード
+description: Microsoft AppSource および Azure Marketplace でのオファーに関する顧客フィードバックの統合ビューにアクセスする方法について説明します。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262419"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792923"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [評価とレビュー] ダッシュボード
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>パートナー センターの評価とレビューの分析ダッシュボード
 
-この記事では、パートナー センターの [評価とレビュー] ダッシュボードについて説明します。 このダッシュボードには、Azure Marketplace と AppSource でのオファーに関する顧客フィードバックの統合ビューが表示されます。
-
-パートナー センター分析ツールの **[評価とレビュー] ダッシュボード**にアクセスするには、コマーシャル マーケットプレースの **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ダッシュボードを開きます。
-
->[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。
-
-## <a name="ratings--reviews"></a>評価とレビュー
-
-顧客は、両方のマーケットプレースでオファーを参照、検索、および購入する際に、入手したオファーの評価やレビューを書き残すことができます。
+この記事では、パートナー センターの [評価とレビュー] ダッシュボードについて説明します。 このダッシュボードには、Microsoft AppSource および Azure Marketplace でのオファーに関する顧客フィードバックの統合ビューが表示されます。 顧客は、両方のマーケットプレースでオファーを参照、検索、および購入する際に、入手したオファーの評価やレビューを書き残すことができます。
 
 - 顧客は、新しい評価やレビューを送信したり、送信した既存の評価やレビューを更新または削除したりすることができます。 顧客は、自分が所有する評価とレビューにのみ変更を加えることができます。  
 - レビューは、Azure Marketplace または AppSource のオファーの製品表示ページにある [レビュー] タブに投稿されます。 顧客は、自分の名前を含めることも、匿名で投稿することもできます。  
 
-**[評価とレビュー] ダッシュボード**には、顧客によるこのアクティビティの傾向と分析情報が表示されます。 次の項目のグラフィカル表示を見ることができます。
+>[!NOTE]
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。
+
+## <a name="access-the-dashboard"></a>ダッシュボードにアクセスする
+
+パートナー センターの[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** セクションを展開し、 **[評価とレビュー]** を選択します。
+
+ダッシュボードには、以下のカスタム アクティビティがグラフィカルに表示されます。
 
 - 評価とレビュー  
 - レビュー コメント
 
-**Marketplace のネットショップのタブ**を使用することで、公開元は AppSource と Azure Marketplace のタブで別々にオファーのメトリックを表示できます。 特定のオファーのメトリックを表示するには、ドロップダウン リストからそのオファーを選択します。
+**Marketplace のネットショップ**のタブを使用して、Microsoft AppSource と Azure Marketplace でのオファーのメトリックを個別に表示します。 特定のオファーのメトリックを表示するには、ドロップダウン リストからそのオファーを選択します。
 
-
-### <a name="ratings-and-reviews-summary"></a>評価とレビューの概要
+### <a name="ratings--reviews-summary"></a>評価とレビューの概要
 
 評価とレビューの概要セクションには、選択した日付範囲について以下のメトリックが表示されます。
 

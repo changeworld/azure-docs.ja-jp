@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7f6b623cc5f864106dc2f119308370e80014a4c2
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67204534"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611026"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Azure AD コネクタ アカウント パスワードの変更
 Azure AD コネクタ アカウントは、無料のサービスであると想定されています。 その資格情報をリセットする必要がある場合、このトピックが役立ちます。 たとえば、グローバル管理者が PowerShell を使用してアカウントのパスワードを誤ってリセットしてしまった場合などです。
@@ -30,7 +31,7 @@ Azure AD コネクタ アカウントは、無料のサービスであると想�
 Azure AD コネクタのアカウントが認証の問題のために Azure AD に接続できない場合、パスワードをリセットすることができます。
 
 1. Azure AD Connect 同期サーバーにサインインし、PowerShell を起動します。
-2. `Add-ADSyncAADServiceAccount` を実行します。  
+2. `Add-ADSyncAADServiceAccount` を実行します。
    ![PowerShell コマンドレット addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
 3. Azure AD グローバル管理者の資格情報を指定します。
 
@@ -40,18 +41,13 @@ Azure AD コネクタのアカウントが認証の問題のために Azure AD �
 このセクションでは、ユーザーから報告された、Azure AD コネクタ アカウントの資格情報をリセットすることで修正されたエラーの一覧を示します。
 
 ---
-イベント 6900  
-The server encountered an unexpected error while processing a password change notification (パスワード変更通知の処理中に、サーバーで予期しないエラーが発生しました):  
-AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS50054: Old password is used for authentication. (古いパスワードが認証に使用されています。)
+Event 6900 The server encountered an unexpected error while processing a password change notification (イベント 6900 パスワード変更通知の処理中に、サーバーで予期しないエラーが発生しました):AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS50054: 認証に古いパスワードが使用されました。
 
 ---
-イベント 659  
-Error while retrieving password policy sync configuration. (パスワード ポリシーの同期構成を取得しているときにエラーが発生しました。) Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
-AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS50054: Old password is used for authentication. (古いパスワードが認証に使用されています。)
+イベント 659 Error while retrieving password policy sync configuration. (パスワード ポリシーの同期構成を取得しているときにエラーが発生しました。) Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS50054: 認証に古いパスワードが使用されました。
 
 ## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
-

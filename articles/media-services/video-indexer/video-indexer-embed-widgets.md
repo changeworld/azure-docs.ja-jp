@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262912"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594850"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>お使いのアプリに Video Indexer ウィジェットを埋め込む
 
 この記事では、お使いのアプリに Video Indexer ウィジェットを埋め込む方法について説明します。 Video Indexer では、次の 3 種類のウィジェットのお使いのアプリへの埋め込みがサポートされています: *コグニティブな分析情報*、*プレーヤー*、*エディター*。
 
-バージョン 2 以降、ウィジェットのベース URL には、指定されたアカウントのリージョンが含まれています。 たとえば、米国西部リージョンのアカウントでは、`https://wus2.videoindexer.ai/embed/insights/...` が生成されます。
+バージョン 2 以降、ウィジェットのベース URL には、指定されたアカウントのリージョンが含まれています。 たとえば、米国西部リージョンのアカウントでは、`https://www.videoindexer.ai/embed/insights/.../?location=westus2` が生成されます。
 
 ## <a name="widget-types"></a>ウィジェットの種類
 
@@ -36,6 +36,7 @@ ms.locfileid: "81262912"
 |`language`|省略形の言語コード（言語名）|分析情報言語を制御します。<br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>または `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 省略形の言語コード | UI の言語を制御します。 既定値は `en` です。 <br/>例: `locale=de`.|
 |`tab` | 既定で選択されるタブ | 既定でレンダリングされる **[分析情報]** タブを制御します。 <br/>例: `tab=timeline` の場合、選択した **[タイムライン]** タブで分析情報がレンダリングされます。|
+|`location` ||埋め込みリンクには、`location` パラメーターを含める必要があります。[リージョンの名前を取得する方法](regions.md)に関するページを参照してください。 ご利用のアカウントがプレビューである場合は、location の値に `trial` を使用する必要があります。 `trial` は、`location` パラメーターの既定値です。| 
 
 ### <a name="player-widget"></a>プレーヤー ウィジェット
 
@@ -49,6 +50,7 @@ ms.locfileid: "81262912"
 |`type`| | オーディオ プレーヤーのスキンをアクティブにします (ビデオ部分は削除されます)。<br/> 例: `type=audio`. |
 |`autoplay` | ブール値 | プレーヤーがビデオの読み込み時に、その再生を開始する必要があるかどうかを示します。 既定値は `true` です。<br/> 例: `autoplay=false`. |
 |`language`/`locale` | 言語コード | プレーヤーの言語を制御します。 既定値は `en-US` です。<br/>例: `language=de-DE`.|
+|`location` ||埋め込みリンクには、`location` パラメーターを含める必要があります。[リージョンの名前を取得する方法](regions.md)に関するページを参照してください。 ご利用のアカウントがプレビューである場合は、location の値に `trial` を使用する必要があります。 `trial` は、`location` パラメーターの既定値です。| 
 
 ### <a name="editor-widget"></a>エディター ウィジェット
 
@@ -59,24 +61,29 @@ ms.locfileid: "81262912"
 |`accessToken`<sup>*</sup> | String | ウィジェットの埋め込みに使用されているアカウント内にのみ存在するビデオへのアクセスが提供されます。<br> エディター ウィジェットには `accessToken` パラメーターが必要です。 |
 |`language` | 言語コード | プレーヤーの言語を制御します。 既定値は `en-US` です。<br/>例: `language=de-DE`. |
 |`locale` | 省略形の言語コード | 分析情報言語を制御します。 既定値は `en` です。<br/>例: `language=de`. |
+|`location` ||埋め込みリンクには、`location` パラメーターを含める必要があります。[リージョンの名前を取得する方法](regions.md)に関するページを参照してください。 ご利用のアカウントがプレビューである場合は、location の値に `trial` を使用する必要があります。 `trial` は、`location` パラメーターの既定値です。| 
 
 <sup>*</sup>所有者は、注意して `accessToken` を提供する必要があります。
 
-## <a name="embedding-public-content"></a>パブリック コンテンツの埋め込み
+## <a name="embedding-videos"></a>ビデオの埋め込み
+
+このセクションでは、アプリへのパブリック コンテンツとプライベート コンテンツの埋め込みについて説明します。
+
+埋め込みリンクには、`location` パラメーターを含める必要があります。[リージョンの名前を取得する方法](regions.md)に関するページを参照してください。 ご利用のアカウントがプレビューである場合は、location の値に `trial` を使用する必要があります。 `trial` は、`location` パラメーターの既定値です。 (例: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`)。
+
+> [!IMPORTANT]
+> **プレーヤー** ウィジェットまたは**分析情報**ウィジェットのリンクを共有すると、アクセス トークンが追加され、読み取り専用アクセス許可がアカウントに付与されます。
+
+### <a name="public-content"></a>パブリック コンテンツ
 
 1. [Video Indexer](https://www.videoindexer.ai/) の Web サイトにサインインします。
-2. 作業するビデオを選択します。
-3. ビデオの下に表示される埋め込みボタン（ **</>** ）を選択 します。
-
-    **[埋め込み]** ボタンを選択すると、お使いのアプリに埋め込むウィジェットを選択できます。
-4. 目的のウィジェットの種類 (**コグニティブな分析情報**、**プレーヤー**、または**エディター**) を選択します。
+1. 作業するビデオを選択し、 **[再生]** を押します。
+1. 目的のウィジェットの種類 (**コグニティブな分析情報**、**プレーヤー**、または**エディター**) を選択します。
+1. **[&lt;/&gt; 埋め込み]** をクリックします。
 5. 埋め込みコードをコピーします ( **に表示されます。埋め込みコード** を、**共有 & 埋め込み** ダイアログにコピーします)。
 6. コードをお使いのアプリに追加します。
 
-> [!NOTE]
-> ビデオの URL の共有に問題がある場合は、リンクに `location` パラメーターを追加します。 このパラメーターは、[Video Indexer が存在する Azure リージョン](regions.md)に設定する必要があります。 (例: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`)。
-
-## <a name="embedding-private-content"></a>プライベート コンテンツの埋め込み
+### <a name="private-content"></a>プライベート コンテンツ
 
 プライベート ビデオを埋め込むには、iframe の `src` 属性にアクセス トークンを渡す必要があります。
 

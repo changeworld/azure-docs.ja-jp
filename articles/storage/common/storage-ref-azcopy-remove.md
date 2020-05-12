@@ -4,16 +4,16 @@ description: この記事では、azcopy remove コマンドに関する参照�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033990"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780727"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -89,11 +89,15 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Options
 
-**--exclude-path string**      削除する際にこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: myFolder;myFolder/subDirName/file.pdf。
+**--delete-snapshots** string   既定では、BLOB にスナップショットがある場合、削除操作は失敗します。 ルート BLOB とそのすべてのスナップショットを削除するには、"include" を指定します。逆に、スナップショットだけを削除し、ルート BLOB は保持するには、"only" を指定します。
+
+**--exclude-path** string      削除時にこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: myFolder;myFolder/subDirName/file.pdf。
 
 **--exclude-pattern** string   名前がパターンの一覧と一致するファイルを除外します。 例: *.jpg;* .pdf;exactName
 
-**-h, --help**                remove のヘルプ コンテンツを表示します
+**--force-if-read-only**    Azure Files のファイルまたはフォルダーを削除するときに、既存のオブジェクトで読み取り専用属性が設定されている場合でも、削除の実行を強制します
+
+**-h、--help**   remove のヘルプ
 
 **--include-path**string      削除する際にこれらのパスのみを含めます。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: myFolder;myFolder/subDirName/file.pdf
 
@@ -111,6 +115,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |---|---|
 |--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
+|--trusted-microsoft-suffixes string   | Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。|
 
 ## <a name="see-also"></a>関連項目
 

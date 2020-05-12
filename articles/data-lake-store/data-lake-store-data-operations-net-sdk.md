@@ -1,17 +1,17 @@
 ---
-title: .NET SDK:Azure Data Lake Storage Gen1 に対するファイルシステム操作
+title: .NET SDK - Data Lake Storage Gen1 に対するファイルシステム操作 - Azure
 description: ファイルシステム操作のための Azure Data Lake Storage Gen1 .NET SDK を使用して、Data Lake Storage Gen1 に対してフォルダーの作成などを実行します。
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75638903"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690962"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>.NET SDK を使用した Data Lake Storage Gen1 に対するファイルシステム操作
 

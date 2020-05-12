@@ -5,23 +5,25 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127908"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612369"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
 
+>[!IMPORTANT]
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトを含まない Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/environment-setup-2019.md)を参照してください。
+>
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 Windows Virtual Desktop は、仮想デスクトップと RemoteApp への簡単で安全なアクセスをユーザーに提供するサービスです。 このトピックでは、Windows Virtual Desktop 環境の一般構造について少し詳しく説明します。
-
-## <a name="tenants"></a>テナント
-
-Windows Virtual Desktop テナントは、Windows Virtual Desktop 環境を管理するためのプライマリ インターフェイスです。 各 Windows Virtual Desktop テナントは、環境にサインインするユーザーを含む Azure Active Directory に関連付ける必要があります。 Windows Virtual Desktop テナントから、ユーザーのワークロードを実行するホスト プールの作成を開始できます。
 
 ## <a name="host-pools"></a>ホスト プール
 
@@ -45,12 +47,12 @@ Windows Virtual Desktop テナントは、Windows Virtual Desktop 環境を管�
 
 ユーザーにリソースを公開するには、それらをアプリ グループに割り当てる必要があります。 ユーザーをアプリ グループに割り当てるときは、以下の事項を検討してください。
 
-- 同じホスト プール内のデスクトップ アプリ グループと RemoteApp アプリ グループの両方にユーザーを割り当てることはできません。
+- 1 人のユーザーを同じホスト プール内のデスクトップ アプリ グループと RemoteApp アプリ グループの両方に割り当てることができます。 ただし、ユーザーは、セッションごとに 1 種類のアプリ グループしか起動できません。 ユーザーは、1 つのセッションで両方の種類のアプリ グループを同時に起動することはできません。
 - ユーザーは、同じホスト プール内の複数のアプリ グループに割り当てることができ、そのフィードは両方のアプリ グループの累積になります。
 
-## <a name="tenant-groups"></a>テナント グループ
+## <a name="workspaces"></a>Workspaces
 
-Windows Virtual Desktop では、Windows Virtual Desktop テナントはほとんどのセットアップと構成が行われる場所です。 Windows Virtual Desktop テナントには、ホスト プール、アプリ グループ、およびアプリ グループのユーザー割り当てが含まれています。 ただし、クラウド サービス プロバイダー (CSP) またはホスティング パートナーである場合には特に、特定の状況で一度に複数の Windows Virtual Desktop テナントを管理する必要があります。 このような場合は、カスタム Windows Virtual Desktop テナント グループを使用して、各顧客の Windows Virtual Desktop テナントを配置し、アクセスを一元的に管理できます。 ただし、1 つの Windows Virtual Desktop テナントのみを管理している場合、テナント グループの概念は適用されず、既定のテナント グループに存在するテナントの操作と管理を続行できます。
+ワークスペースは、Windows Virtual Desktop 内のアプリケーション グループを論理的にグループ化したものです。 ユーザーに公開されたリモート アプリとデスクトップがそのユーザーに表示されるようにするには、各 Windows Virtual Desktop アプリケーション グループがワークスペースに関連付けられている必要があります。  
 
 ## <a name="end-users"></a>エンド ユーザー
 
@@ -60,9 +62,12 @@ Windows Virtual Desktop では、Windows Virtual Desktop テナントはほと�
 
 委任されたアクセスとユーザーにロールを割り当てる方法について詳しくは、「[Delegated Access in Windows Virtual Desktop Preview (Windows Virtual Desktop での委任されたアクセス)](delegated-access-virtual-desktop.md)」をご覧ください。
 
-Windows Virtual Desktop テナントを設定する方法については、「[Create a tenant in Windows Virtual Desktop Preview (Windows Virtual Desktop にテナントを作成する)](tenant-setup-azure-active-directory.md)」をご覧ください。
+Windows Virtual Desktop ホスト プールを設定する方法については、「[Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
 
 Windows Virtual Desktop に接続する方法については、次のいずれかの記事をご覧ください。
 
-- [Windows 10 または Windows 7 から接続する](connect-windows-7-and-10.md)
-- [Web ブラウザーから接続する](connect-web.md)
+- [Windows 10 または Windows 7 を使用して接続する](connect-windows-7-and-10.md)
+- [Web ブラウザーを使用して接続する](connect-web.md)
+- [Android クライアントに接続する](connect-android.md)
+- [macOS クライアントに接続する](connect-macos.md)
+- [iOS クライアントに接続する](connect-ios.md)

@@ -1,29 +1,25 @@
 ---
-title: 'エンドユーザー認証: Azure Active Directory での Azure Data Lake Storage Gen1 の認証 | Microsoft Docs'
+title: エンド ユーザー認証 - Data Lake Storage Gen1 で Azure AD を使用する
 description: Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66234052"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688248"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
 > * [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [サービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)
-> 
-> 
+>
+>
 
 Azure Data Lake Storage Gen1 では、認証するために Azure Active Directory を使用します。 Data Lake Storage Gen1 または Azure Data Lake Analytics と組み合わせて動作するアプリケーションを作成する前に、Azure Active Directory (Azure AD) でアプリケーションを認証する方法を決めておく必要があります。 2 種類のオプションを使用できます。
 
@@ -38,11 +34,11 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 * サブスクリプション ID。 これは Azure Portal から取得できます。 たとえば、[Data Lake Storage Gen1 アカウント] ブレードから入手できます。
-  
+
     ![サブスクリプション ID の取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Azure AD ドメイン名。 Azure Portal の右上隅にマウスを置くことで取得できます。 次のスクリーンショットでは、ドメイン名は **contoso.onmicrosoft.com** であり、丸かっこ内の GUID はテナント ID です。 
-  
+* Azure AD ドメイン名。 Azure Portal の右上隅にマウスを置くことで取得できます。 次のスクリーンショットでは、ドメイン名は **contoso.onmicrosoft.com** であり、丸かっこ内の GUID はテナント ID です。
+
     ![AAD ドメインの取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 * Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」を参照してください。
@@ -53,12 +49,12 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 エンドユーザーがサインインすると、アプリケーションにアクセス トークンと更新トークンが付与されます。 アクセス トークンは Data Lake Storage Gen1 または Data Lake Analytics に対する各要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、既定では最大 2 週間有効です。 エンド ユーザーのサインインには、2 つの異なる方法を使用できます。
 
 ### <a name="using-the-oauth-20-pop-up"></a>OAuth 2.0 ポップアップの使用
-アプリケーションで、エンド ユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の 2 要素認証 (2FA) プロセスでも機能します。 
+アプリケーションで、エンド ユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の 2 要素認証 (2FA) プロセスでも機能します。
 
 > [!NOTE]
 > この方法は、Python または Java 用の Azure AD Authentication Library (ADAL) ではまだサポートされていません。
-> 
-> 
+>
+>
 
 ### <a name="directly-passing-in-user-credentials"></a>ユーザーの資格情報を直接渡す
 アプリケーションで、ユーザーの資格情報を Azure AD に直接提供できます。 この方法は、組織 ID ユーザー アカウントのみで機能します。@outlook.com や @live.com で終わるアカウントを含む個人や "live ID" のユーザー アカウントには対応しません。 さらに、この方法は、Azure AD の 2 要素認証 (2FA) を必要とするユーザー アカウントには対応しません。
@@ -106,7 +102,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 3. **[API アクセスの追加]** ブレードで、 **[API を選択します]** をクリックします。 **[Azure Data Lake]** をクリックし、 **[選択]** をクリックします。
 
     ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
- 
+
 4.  **[API アクセスの追加]** ブレードで、 **[アクセス許可の選択]** をクリックします。 **[Full access to Data Lake Store (Data Lake Store にフル アクセス許可を与える)]** チェック ボックスをオンにし、 **[選択]** をクリックします。
 
     ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
@@ -114,7 +110,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
     **[Done]** をクリックします。
 
 5. 最後の 2 つの手順を繰り返して、**Windows Azure Service Management API** にも、アクセス許可を与えます。
-   
+
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure AD ネイティブ アプリケーションを作成し、.NET SDK、Java SDK、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Storage Gen1 による認証を行ってからストアに対して他の操作を実行する方法について説明しています。
 
@@ -122,4 +118,3 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 * [Data Lake Storage Gen1 による .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)
 * [Data Lake Storage Gen1 による Python を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-python.md)
 * [Data Lake Storage Gen1 による REST API を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-rest-api.md)
-

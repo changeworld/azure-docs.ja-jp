@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/20/2020
+ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546353"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598472"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -28,10 +28,10 @@ ms.locfileid: "80546353"
 
 | Role                                  | 以前                                                                                       | 今後の予定       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Reader                                | - シークレットを含む読み取りアクセス                                                                   | - シークレットを**除く**読み取りアクセス |           |   |   |
+| Reader                                | - シークレットを含む読み取りアクセス。                                                                   | - シークレットを**除く**読み取りアクセス |           |   |   |
 | HDInsight クラスター オペレーター<br>(新しいロール) | 該当なし                                                                                              | - シークレットを含む読み取り/書き込みアクセス         |   |   |
-| Contributor                           | - シークレットを含む読み取り/書き込みアクセス<br>- すべての種類の Azure リソースを作成および管理します。     | 変更なし |
-| 所有者                                 | - シークレットを含む読み取り/書き込みアクセス<br>- すべてのリソースへのフル アクセス<br>- アクセスを他のユーザーに委任する | 変更なし |
+| Contributor                           | - シークレットを含む読み取り/書き込みアクセス。<br>- すべての種類の Azure リソースを作成および管理します。<br>- スクリプト アクションの実行。     | 変更なし |
+| 所有者                                 | - シークレットを含む読み取り/書き込みアクセス。<br>- すべてのリソースへのフル アクセス<br>- アクセスを他のユーザーに委任する。<br>- スクリプト アクションの実行。 | 変更なし |
 
 HDInsight クラスター オペレーター ロールの割り当てを特定のユーザーに追加することで、そのユーザーにクラスター シークレットへの読み取り/書き込みアクセスを付与する方法の詳細については、後のセクション「[HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加する](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)」を参照してください。
 

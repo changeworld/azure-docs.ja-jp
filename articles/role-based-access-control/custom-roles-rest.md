@@ -1,6 +1,6 @@
 ---
-title: REST API を使用して Azure リソースのカスタム ロールを作成またはアップデートする
-description: REST API を使用して、Azure リソースのロールベースのアクセス制御（RBAC）でカスタムロールを一覧表示、作成、更新、または削除する方法を学習します。
+title: REST API を使用して Azure カスタム ロールを作成または更新する - Azure RBAC
+description: REST API と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure カスタム ロールを一覧表示、作成、更新、または削除する方法を学習します。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062189"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734095"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>REST API を使用して Azure リソースのカスタム ロールを作成またはアップデートする
+# <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>REST API を使用して Azure カスタム ロールを作成または更新する
 
 > [!IMPORTANT]
 > `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、REST API を使用してカスタムロールを一覧表示、作成、更新、または削除する方法について説明します。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、REST API を使用してカスタムロールを一覧表示、作成、更新、または削除する方法について説明します。
 
 ## <a name="list-custom-roles"></a>カスタム ロールの一覧表示
 
@@ -189,7 +189,7 @@ ms.locfileid: "80062189"
 
 1. `notActions` プロパティに、許可された `actions` から除外される操作を追加します。
 
-1. `roleName` および `description` プロパティに、一意なロール名と説明を指定します。 プロパティの詳細については、「[カスタム ロール](custom-roles.md)」を参照してください。
+1. `roleName` および `description` プロパティに、一意なロール名と説明を指定します。 プロパティの詳細については、[Azure カスタム ロール](custom-roles.md)に関するページを参照してください。
 
     要求本文の例を次に示します。
 
@@ -340,6 +340,6 @@ ms.locfileid: "80062189"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure リソースのカスタム ロール](custom-roles.md)
-- [RBAC と REST API を使用して Azure リソースへのアクセスを管理する](role-assignments-rest.md)
+- [Azure カスタム ロール](custom-roles.md)
+- [REST API を使用して Azure のロールの割り当てを追加または削除する](role-assignments-rest.md)
 - [Azure REST API リファレンス](/rest/api/azure/)

@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7e1f91cd4b647472e1899c3485d038f25b5b24
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414392"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651814"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
-*仮想ネットワーク規則*は 1 つのファイアウォール セキュリティ機能であり、Azure [SQL Database](sql-database-technical-overview.md) 内の単一データベースおよびエラスティック プール用、または [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のデータベース サーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database と SQL Data Warehouse への通信を安全に許可するための最適な選択肢となる理由を説明します。
+"*仮想ネットワーク規則*" は 1 つのファイアウォール セキュリティ機能であり、Azure [SQL Database](sql-database-technical-overview.md) 内の単一データベースおよびエラスティック プール用、または [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のデータベース サーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database と Azure Synapse Analytics への通信を安全に許可するための最適な選択肢となる理由を説明します。
 
 > [!IMPORTANT]
-> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 関連付けられているサービス エンドポイントがないため、この記事は Azure SQL Database の**マネージド インスタンス** デプロイには*適用されません*。
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーで作成される SQL Database と Azure Synapse Analytics データベースの両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と Azure Synapse Analytics の両方を言い表します。 関連付けられているサービス エンドポイントがないため、この記事は Azure SQL Database の**マネージド インスタンス** デプロイには*適用されません*。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
 
@@ -105,11 +105,11 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Azure Storage で VNet サービス エンドポイントを使用した場合の影響
 
-Azure Storage は、Azure ストレージ アカウントへの接続を制限できる同じ機能を実装しています。 Azure SQL Server で使用されている Azure ストレージ アカウントでこの機能を使用することにした場合は、問題が発生する可能性があります。 次に、この影響を受ける Azure SQL Database と Azure SQL Data Warehouse の機能の一覧と説明を示します。
+Azure Storage は、Azure ストレージ アカウントへの接続を制限できる同じ機能を実装しています。 Azure SQL Server で使用されている Azure ストレージ アカウントでこの機能を使用することにした場合は、問題が発生する可能性があります。 次に、この影響を受ける Azure SQL Database と Azure Synapse Analytics の機能の一覧と説明を示します。
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse の PolyBase
+### <a name="azure-synapse-analytics-polybase"></a>Azure Synapse Analytics PolyBase
 
-PolyBase は、Azure ストレージ アカウントから Azure SQL Data Warehouse にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 VNet に結び付けられた Azure Storage に接続する Azure SQL Data Warehouse で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、次に示す手順に従います。
+PolyBase は、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 VNet に結び付けられた Azure Storage に接続する Azure Synapse Analytics で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、次に示す手順に従います。
 
 #### <a name="prerequisites"></a>前提条件
 
@@ -122,7 +122,7 @@ PolyBase は、Azure ストレージ アカウントから Azure SQL Data Wareho
 
 #### <a name="steps"></a>手順
 
-1. PowerShell で、Azure SQL Data Warehouse インスタンスをホストする **Azure SQL Server を Azure Active Directory (AAD) に登録します**。
+1. PowerShell で、Azure Synapse Analytics インスタンスをホストする **Azure SQL Server を Azure Active Directory (AAD) に登録します**。
 
    ```powershell
    Connect-AzAccount
@@ -135,11 +135,11 @@ PolyBase は、Azure ストレージ アカウントから Azure SQL Data Wareho
    > [!NOTE]
    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
-
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** をクリックします。 手順 1 で Azure Active Directory (AAD) に登録した Azure SQL Data Warehouse をホストする Azure SQL Server に、**ストレージ BLOB データ共同作成者** RBAC ロールを割り当てます。
+    
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 ドロップダウンから、 **[ストレージ BLOB データ共同作成者]** RBAC ロールを選択します。 **[アクセスの割り当て先]** で、 **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。 **[選択]** で、手順 1 で Azure Active Directory (AAD) に登録した Azure SQL Server (Azure Synapse Analytics データ ウェアハウスの論理サーバー) のサーバー名を入力します。 完全修飾 DNS 名ではなくサーバー名のみを使用します (.database.windows.net なしの **servername**)
 
    > [!NOTE]
-   > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
+   > ストレージ アカウントの所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
   
 1. **Azure ストレージ アカウントへの Polybase 接続:**
 
