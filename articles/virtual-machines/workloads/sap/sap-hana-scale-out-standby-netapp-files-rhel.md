@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/06/2020
+ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 78f60cbd20e7801f4af26372884275d7d6782777
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 4c86d7c84ba5d7692e010ad95f258b67aa7dcfac
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754156"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147634"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -141,7 +141,7 @@ Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登�
 
 5. 「[Azure NetApp Files の NFS ボリュームを作成する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。  
 
-   ボリュームをデプロイするときは、**NFSv4.1** バージョンを必ず選択してください。 指定された Azure NetApp Files の[サブネット](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 
+   ボリュームをデプロイするときは、**NFSv4.1** バージョンを必ず選択してください。 指定された Azure NetApp Files の[サブネット](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp ボリュームの IP アドレスは、自動的に割り当てられます。 
    
    Azure NetApp Files のリソースと Azure VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内に配置する必要があることに注意してください。 たとえば、**HN1**-data-mnt00001、**HN1**-log-mnt00001 などはボリューム名で、nfs://10.9.0.4/**HN1**-data-mnt00001、nfs://10.9.0.4/**HN1**-log-mnt00001 などは Azure NetApp Files ボリュームのファイル パスです。  
 
@@ -402,7 +402,10 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     <pre><code>
     # Create a temporary directory to mount <b>HN1</b>-shared
     mkdir /mnt/tmp
+    # if using NFSv3 for this volume, mount with the following command
     mount <b>10.9.0.4</b>:/<b>HN1</b>-shared /mnt/tmp
+    # if using NFSv4.1 for this volume, mount with the following command
+    mount -t nfs -o sec=sys,vers=4.1 <b>10.9.0.4</b>:/<b>HN1</b>-shared /mnt/tmp
     cd /mnt/tmp
     mkdir shared usr-sap-<b>hanadb1</b> usr-sap-<b>hanadb2</b> usr-sap-<b>hanadb3</b>
     # unmount /hana/shared
@@ -562,7 +565,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
      * **[Root User Name]\(ルート ユーザー名\)** [root]\: Enter キーを押して既定値をそのまま使用します
      * [roles for host hanadb2]\(host hanadb2 のロール\)\: 「**1**」と入力します (ワーカーの場合)
      * ホスト hanadb2 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
-     * ホスト hanadb2 の **[Storage Partition Number]\(ストレージ パーティション番号\)** [<<assign automatically>>]: Enter キーを押して既定値をそのまま使用します
+     * ホスト hanadb2 の **[Storage Partition Number]\(ストレージ パーティション番号\)** [<<assign automatically>>]\: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Worker Group]\(ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb3 の **[Select roles]\(ロールの選択\)** : 「**2**」と入力します (スタンバイ)
      * ホスト hanadb3 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
@@ -570,7 +573,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
      * **[SAP HANA System ID]\(SAP HANA システム ID\)** : 「**HN1**」と入力します
      * **[Instance number]\(インスタンス番号\)** [00]: 「**03**」と入力します
      * **[Local Host Worker Group]\(ローカル ホスト ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
-     * **[Select System Usage / Enter index [4]]\(システム用途の選択/インデックスを入力 [4]\)** : 「**4**」と入力します (カスタム)
+     * **[Select System Usage / Enter index [4]\(システム用途の選択/インデックスを入力 [4]\)** \: 「**4**」と入力します (カスタム)
      * **[Location of Data Volumes]\(データ ボリュームの場所\)** [/hana/data/HN1]: Enter キーを押して既定値をそのまま使用します
      * **[Location of Log Volumes]\(ログ ボリュームの場所\)** [/hana/log/HN1]: Enter キーを押して既定値をそのまま使用します
      * **[Restrict maximum memory allocation?]\(メモリの最大割り当てを制限しますか?\)** [n]: 「**n**」と入力します

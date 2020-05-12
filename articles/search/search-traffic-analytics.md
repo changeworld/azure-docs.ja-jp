@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: db8c1781061f038cc90310fcd00c220fa6f5d1a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c843b45b5a398aaaa1aab66f80961560477cf18
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258211"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128109"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>検索トラフィック分析用のテレメトリ データを収集する
 
@@ -22,7 +22,7 @@ ms.locfileid: "80258211"
 このパターンでは、[Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) ([Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) の 1 つの機能) 上で依存関係を取得して、ユーザー データを収集します。 それには、この記事で説明されているように、クライアント コードにインストルメンテーションを追加する必要があります。 最後に、データを分析するためのレポート メカニズムが必要になります。 Power BI が推奨されますが、アプリケーション ダッシュボードや、Application Insights に接続される任意のツールを使用できます。
 
 > [!NOTE]
-> この記事で説明するパターンは、高度なシナリオと、クライアントに追加するコードによって生成されるクリックストリーム データを対象としています。 その一方、サービス ログは設定が簡単で、さまざまなメトリックを提供できます。また、ポータルで実行可能で、コードは必要ありません。 診断ログは、すべてのシナリオに対して有効にすることが推奨されます。 詳細については、[ログ データの収集と分析](search-monitor-logs.md)に関するページを参照してください。
+> この記事で説明するパターンは、高度なシナリオと、クライアントに追加するコードによって生成されるクリックストリーム データを対象としています。 その一方、サービス ログは設定が簡単で、さまざまなメトリックを提供できます。また、ポータルで実行可能で、コードは必要ありません。 すべてのシナリオでログ記録を有効にすることをお勧めします。 詳細については、[ログ データの収集と分析](search-monitor-logs.md)に関するページを参照してください。
 
 ## <a name="identify-relevant-search-data"></a>関連する検索データを識別する
 

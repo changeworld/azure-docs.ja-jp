@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 602553637e21b17aa4f9bc7402753af024c697c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477563"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137457"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
 この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
@@ -127,9 +127,19 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 10. **[Random number seed]\(乱数シード\)** には、必要に応じて、モデルによって使用される乱数ジェネレーターにシードを設定する値を入力できます。 同じパイプラインにおけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。
 
 
-12. ラベル付けされたデータセットと、トレーニング モジュールの 1 つを追加します。
+12. モデルをトレーニングします。
 
-    統合パラメーターの一括処理を使用していない場合、[Train Model (モデルのトレーニング)](train-model.md) モジュールを使用します。
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
+  
+    > [!NOTE]
+    > 
+    > パラメーター範囲を [[モデルのトレーニング]](train-model.md) に渡すと、単一のパラメーター リストの既定値のみが使用されます。  
+    > 
+    > [[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。  
+    > 
+    > **[Parameter Range]\(パラメーター範囲\)** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一の値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。
 
 13. パイプラインを送信します。
 

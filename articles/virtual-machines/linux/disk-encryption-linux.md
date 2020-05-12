@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313625"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792583"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
 
-Linux 仮想マシン (VM) に対する Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、OS ディスクとデータ ディスクの完全なディスク暗号化を提供します。 また、EncryptFormatAll 機能を使用すると、一時的なリソース ディスクの暗号化を行うことができます。
+Linux 仮想マシン (VM) に対する Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、OS ディスクとデータ ディスクの完全なディスク暗号化を提供します。 また、EncryptFormatAll 機能を使用すると、一時的なディスクの暗号化を行うことができます。
 
 Azure Disk Encryption は、ディスクの暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](disk-encryption-key-vault.md) と統合されています。 サービスの概要については、「[Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)」を参照してください。
 
@@ -209,9 +209,9 @@ Linux VM ディスク暗号化テンプレートの構成の詳細について�
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Linux VM 上のデータ ディスクに対して EncryptFormatAll 機能を使用する
 
-**EncryptFormatAll** パラメーターを使用すると、Linux データ ディスクを暗号化する時間が短縮されます。 特定の条件を満たしているパーティションは、(現在のファイル システムを使用して) フォーマットされた後、コマンドの実行前の場所に再度マウントされます。 条件を満たすデータ ディスクを除外する場合は、コマンドの実行前にそのディスクをマウント解除できます。
+**EncryptFormatAll** パラメーターを使用すると、Linux データ ディスクを暗号化する時間が短縮されます。 特定の条件を満たしているパーティションが現行のファイル システムと共にフォーマットされた後、コマンドの実行前の場所に再度マウントされます。 条件を満たすデータ ディスクを除外する場合は、コマンドの実行前にそのディスクをマウント解除できます。
 
- このコマンドを実行すると、以前にマウントされたドライブがフォーマットされ、現在空になったドライブ上で暗号化レイヤーが開始されます。 このオプションを選択すると、VM に接続されている一時的なリソース ディスクも暗号化されます。 リセットされた一時的なドライブは、次の機会に Azure Disk Encryption ソリューションによって、VM 用に再フォーマットおよび再暗号化されます。 リソース ディスクを暗号化すると、[Microsoft Azure Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)ではリソース ディスクの管理やスワップ ファイルの有効化を行うことができなくなりますが、スワップ ファイルは手動で構成できます。
+ このコマンドを実行すると、以前にマウントされたドライブがフォーマットされ、現在空になったドライブ上で暗号化レイヤーが開始されます。 このオプションを選択すると、VM に接続されている一時的なディスクも暗号化されます。 リセットされた一時的なディスクは、次の機会に Azure Disk Encryption ソリューションによって、VM 用に再フォーマットおよび再暗号化されます。 リソース ディスクを暗号化すると、[Microsoft Azure Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)ではリソース ディスクの管理やスワップ ファイルの有効化を行うことができなくなりますが、スワップ ファイルは手動で構成できます。
 
 >[!WARNING]
 > VM のデータ ボリュームに必要なデータがある場合は、EncryptFormatAll を使用しないでください。 ディスクをマウント解除することで、そのディスクを暗号化の対象から除外できます。 運用環境の VM で EncryptFormatAll を使用する前に、EncryptFormatAll をテスト用 VM で試し、機能パラメーターとその意味について理解しておく必要があります。 EncryptFormatAll オプションはデータ ディスクをフォーマットするため、ディスク上のデータはすべて失われます。 手順を進める前に、除外するディスクが適切にマウント解除されていることを確認してください。 </br></br>
@@ -335,7 +335,7 @@ PowerShell 構文とは異なり、CLI では暗号化を有効にする際に�
      ```
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>Azure PowerShell を使用して新しく追加されたディスクで暗号化を有効にする
- Powershell を使用して Linux 用の新しいディスクを暗号化する場合は、新しいシーケンス バージョンを指定する必要があります。 シーケンス バージョンは一意である必要があります。 次のスクリプトでは、シーケンス バージョン用の GUID が生成されます。 ディスクを暗号化する前に、[スナップショット](snapshot-copy-managed-disk.md)の作成または [Azure Backup](../../backup/backup-azure-vms-encryption.md) で VM のバックアップの作成、あるいはその両方を行います。 新しく追加されたデータ ディスクを暗号化するために、PowerShell スクリプトで -skipVmBackup パラメーターが既に指定されています。
+ PowerShell を使用して Linux 用の新しいディスクを暗号化する場合は、新しいシーケンス バージョンを指定する必要があります。 シーケンス バージョンは一意である必要があります。 次のスクリプトでは、シーケンス バージョン用の GUID が生成されます。 ディスクを暗号化する前に、[スナップショット](snapshot-copy-managed-disk.md)の作成または [Azure Backup](../../backup/backup-azure-vms-encryption.md) で VM のバックアップの作成、あるいはその両方を行います。 新しく追加されたデータ ディスクを暗号化するために、PowerShell スクリプトで -skipVmBackup パラメーターが既に指定されています。
  
 
 -  **実行中の VM のデータ ボリュームを暗号化する:** 以下のスクリプトでは変数を初期化し、Set-AzVMDiskEncryptionExtension コマンドレットを実行します。 前提条件として、リソース グループ、VM、およびキー コンテナーが既に作成されている必要があります。 MyVirtualMachineResourceGroup、MySecureVM、MySecureVault を実際の値に置き換えます。 -VolumeType パラメーターに使用できる値は、All、OS、Data です。 VM が以前にボリュームの種類 "OS" または "All" で暗号化された場合は、-VolumeType パラメーターを "All" に変更して、OS と新しいデータ ディスクの両方が含まれるようにする必要があります。
@@ -408,9 +408,10 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - 次のもの (ただし、限定されない) の共有/分散ファイル システムの暗号化:DFS、GFS、DRDB、CephFS。
 - 暗号化された VM を別のサブスクリプションに移動する。
 - カーネル クラッシュ ダンプ (kdump)。
-- Oracle ACFS (ASM クラスター ファイル システム)
-- Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)
-- Lsv2 シリーズ VM (「[Lsv2 シリーズ](../lsv2-series.md)」を参照)
+- Oracle ACFS (ASM クラスター ファイル システム)。
+- Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)。
+- Lsv2 シリーズ VM ([LSv2 シリーズ](../lsv2-series.md))。
+- "マウント ポイントが入れ子になっている"、つまり、1 つのパスに複数のマウント ポイントがある ("/1stmountpoint/data/2stmountpoint" など) VM。
 
 ## <a name="next-steps"></a>次のステップ
 

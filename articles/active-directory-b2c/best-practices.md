@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b16c60130836cf0e3b38092b894129f503ee6e83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136161"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82141682"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 
@@ -43,7 +43,7 @@ ms.locfileid: "79136161"
 | 移行計画を作成する |事前に計画を作成することによって、移行を円滑に進めることができます。 [ユーザー移行](user-migration.md)の詳細について確認してください。|
 | 使いやすさとセキュリティ | ソリューションでは、アプリケーションの使いやすさと組織におけるリスクの許容レベルとの間で適切なバランスを取る必要があります。 |
 | オンプレミスの依存関係をクラウドに移行する | ソリューションの回復性を確保できるようにするために、クラウドへの既存のアプリケーションの依存関係の移行を検討してください。 |
-| 既存のアプリを b2clogin.com に移行する | login.microsoftonline.com の廃止は、2020 年 12 月 4 日にすべての Azure AD B2C テナントに対して有効になります。 詳細については、[こちら](b2clogin.md)をご覧ください。 |
+| 既存のアプリを b2clogin.com に移行する | login.microsoftonline.com の廃止は、2020 年 12 月 4 日にすべての Azure AD B2C テナントに対して有効になります。 [詳細については、こちらを参照してください](b2clogin.md)。 |
 
 ## <a name="implementation"></a>実装
 
@@ -68,7 +68,7 @@ ms.locfileid: "79136161"
 | A/B テスト | ご利用の母集団全体にロール アウトする前に、少量のランダムなユーザー セットを使用して新機能をフライト化します。 Azure AD B2C で JavaScript を有効にすると、Optimizely や Clarity などの A/B テスト ツールと統合できます。 |
 | ロード テスト | Azure AD B2C はスケーリングすることができます。しかし、ご利用のアプリケーションのスケーリングは、その依存関係のすべてをスケーリングできる場合にのみ可能です。 ご利用の API と CDN のロード テストを行います。 |
 | Throttling |  短時間に同じソースから送信される要求が多すぎる場合、Azure AD B2C によってトラフィックが調整されます。 ロード テスト中にいくつかのトラフィック ソースを使用し、ご利用のアプリケーション内で `AADB2C90229` エラー コードを適切に処理します。 |
-| Automation | 継続的インテグレーションと配信 (CI/CD) パイプラインを使用して、テストとデプロイを自動化します ([Azure DevOps](deploy-custom-policies-devops.md) など)。 |
+| オートメーション | 継続的インテグレーションと配信 (CI/CD) パイプラインを使用して、テストとデプロイを自動化します ([Azure DevOps](deploy-custom-policies-devops.md) など)。 |
 
 ## <a name="operations"></a>操作
 

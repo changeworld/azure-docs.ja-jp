@@ -4,12 +4,12 @@ description: MARS エージェントでサポートされるバックアップ �
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673288"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611485"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントについて
 
@@ -39,19 +39,21 @@ MARS エージェントでは、次の復元シナリオがサポートされて
 
 ## <a name="backup-process"></a>バックアップ プロセス
 
-1. Azure portal から [Recovery Service コンテナー](install-mars-agent.md#create-a-recovery-services-vault)を作成し、[Backup goals]\(バックアップの目標\) からファイル、フォルダー、およびシステム状態を選択します。
+1. Azure portal から [Recovery Service コンテナー](install-mars-agent.md#create-a-recovery-services-vault)を作成し、 **[Backup goals]\(バックアップの目標\)** からファイル、フォルダー、システム状態を選択します。
 2. オンプレミスのマシンに [Recovery Service コンテナーの資格情報とエージェント インストーラーをダウンロードします](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)。
 
-    オンプレミスのマシンを保護するために [バックアップ] オプションを選択し、ファイル、フォルダー、およびシステム状態を選択して、MARS エージェントをダウンロードします。
-
-3. インフラストラクチャを準備します。
-
-    a. インストーラーを実行して、[エージェントをインストールします](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)。
-
-    b. ダウンロードしたコンテナーの資格情報を使用して、マシンを Recovery Services コンテナーに登録します。
-4. クライアントのエージェント コンソールから、[バックアップを構成します](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)。 バックアップ データの保持ポリシーを指定して、保護を開始します。
+3. [エージェントをインストール](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)して、ダウンロードしたコンテナーの資格情報を使用し、マシンを Recovery Services コンテナーに登録します。
+4. クライアントのエージェント コンソールから[バックアップを構成](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)して、バックアップの対象、バックアップのタイミング (スケジュール)、Azure にバックアップを保持する期間 (保持ポリシー) を指定し、保護を開始します。
 
 ![Azure Backup エージェントの図](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>関連情報
+
+- **初期バックアップ** (最初のバックアップ) は、バックアップ設定に従って実行されます。  MARS エージェントでは、VSS を使用して、バックアップ用に選択されたボリュームの特定の時点のスナップショットを取得します。 エージェントでは Windows システム ライターの操作のみを使用して、スナップショットをキャプチャします。 アプリケーションの VSS ライターは使用されないため、アプリ整合性スナップショットはキャプチャされません。 VSS を使用してスナップショットを取得した後、MARS エージェントでは、バックアップの構成時に指定したキャッシュ フォルダーに仮想ハード ディスク (VHD) が作成されます。 エージェントでは、各データ ブロックのチェックサムも格納されます。
+
+- **増分バックアップ** (後続バックアップ) は、指定したスケジュールに従って実行されます。 増分バックアップ中は、変更されたファイルが識別され、新しい VHD が作成されます。 VHD は圧縮および暗号化されて、コンテナーに送信されます。 増分バックアップが完了した後、新しい VHD は初期レプリケーション後に作成された VHD にマージされます。 このマージされた VHD では、進行中のバックアップの比較に使用される最新の状態が提供されます。
+
+- MARS エージェントからは、USN (更新シーケンス番号) の変更ジャーナルを使用して**最適化されたモード**でバックアップ ジョブを実行できます。また、ボリューム全体をスキャンすることによってディレクトリまたはファイルの変更を確認すると、**最適化されていないモード**で実行されます。 エージェントでは、ボリューム上のそれぞれのファイルをスキャンし、メタデータと比較して変更されたファイルを判断する必要があるため、最適化されていないモードはより遅くなります。  **初期バックアップ**は、常に最適化されていないモードで実行されます。 前のバックアップが失敗した場合、次のスケジュールされたバックアップ ジョブは最適化されていないモードで実行されます。
 
 ### <a name="additional-scenarios"></a>その他のシナリオ
 

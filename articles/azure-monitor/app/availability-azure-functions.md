@@ -2,15 +2,15 @@
 title: Azure Functions を使用してカスタム可用性テストを作成して実行する
 description: このドキュメントでは、TimerTrigger 関数で指定された構成に従って定期的に実行される Azure 関数を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンで利用できない場合に可用性テストを作成したりすることができます。
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665801"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791113"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Functions を使用してカスタム可用性テストを作成して実行する
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 すべてが動作していることを確認するには、Application Insights リソースの [可用性] タブでグラフを確認します。
 
 > [!NOTE]
-> runAvailabilityTest.csx で独自のビジネス ロジックを実装した場合は、次のスクリーンショットのように、成功した結果が表示されます。そうしなかった場合は、失敗した結果が表示されます。
+> runAvailabilityTest.csx で独自のビジネス ロジックを実装した場合は、次のスクリーンショットのように、成功した結果が表示されます。そうしなかった場合は、失敗した結果が表示されます。 `TrackAvailability()` で作成されたテスト名の横には、 **[CUSTOM]** と表示されます。
 
 >[!div class="mx-imgBorder"]
->![成功した結果が表示された [可用性] タブ](media/availability-azure-functions/availtab.png)
-
-Azure Functions を使用してテストを設定した場合、[可用性] タブの **[テストの追加]** を使用した場合とは異なり、テストの名前は表示されず、テストと対話できないことがわかります。 結果は視覚化されますが、ポータルを使用して可用性テストを作成したときと同じ詳細ビューではなく、概要ビューが表示されます。
+>![成功した結果が表示された [可用性] タブ](media/availability-azure-functions/availability-custom.png)
 
 エンドツーエンドのトランザクションの詳細を表示するには、[詳細の表示] で **[成功]** または **[失敗]** を選択してから、サンプルを選択します。 グラフでデータ ポイントを選択することにより、エンドツーエンドのトランザクションの詳細も取得できます。
 

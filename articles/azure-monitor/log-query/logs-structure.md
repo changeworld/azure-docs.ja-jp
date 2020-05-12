@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662078"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738084"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor Logs の構造
 [ログ クエリ](log-query-overview.md)を使用して迅速にデータの分析情報が得られるのは、Azure Monitor の強力な機能です。 効率的で便利なクエリを作成するには、目的のデータがどこにあり、どのように構造化されているかなど、いくつかの基本概念を理解する必要があります。 この記事では、作業を始めるために必要な基本概念を提供します。
@@ -54,16 +54,17 @@ Log Analytics ワークスペースと異なり、Application Insights アプリ
 
 | テーブル | 説明 | 
 |:---|:---|
-| availabilityResults | 可用性テストの要約データ。 |
-| browserTimings      | 受信データの処理にかかった時間などのクライアントのパフォーマンスに関するデータ。 |
-| customEvents        | アプリケーションで作成されたカスタム イベント。 |
-| customMetrics       | アプリケーションで作成されたカスタム メトリック。 |
-| dependencies        | アプリケーションからの外部コンポーネントの呼び出し。 |
-| exceptions          | アプリケーション ランタイムによってスローされた例外。 |
-| pageViews           | 各 Web サイトのビューに関するデータとブラウザー情報。 |
-| performanceCounters | アプリケーションを支えるコンピューティング リソースのパフォーマンス測定結果。 |
-| requests            | 各アプリケーション要求の詳細。  |
-| traces              | 分散トレースからの結果。 |
+| availabilityResults   | 可用性テストの要約データ。
+| browserTimings      |     受信データの処理にかかった時間などのクライアントのパフォーマンスに関するデータ。
+| customEvents        | アプリケーションで作成されたカスタム イベント。
+| customMetrics       | アプリケーションで作成されたカスタム メトリック。
+| dependencies        | TrackDependency () を使用して記録された他のコンポーネント (外部コンポーネントを含む) へのアプリケーションからの呼び出し (REST API、データベース、またはファイル システムへの呼び出しなど)。 
+| exceptions            | アプリケーションのランタイムからスローされた例外。サーバー側とクライアント側 (ブラウザー) の両方の例外がキャプチャされます。
+| pageViews           | 各 Web サイトのビューに関するデータとブラウザー情報。
+| performanceCounters   | Windows のパフォーマンス カウンターなど、アプリケーションをサポートするコンピューティング リソースのパフォーマンス測定結果。
+| requests            | お使いのアプリケーションで受信された要求。 たとえば、お使いの Web アプリが受信する HTTP 要求ごとに、個別の要求レコードがログ記録されます。 
+| traces                | TrackTrace () を使用して記録された、アプリケーション コード/ログ記録フレームワークによって出力された詳細なログ (トレース)。
+
 
 各テーブルのスキーマは、アプリケーションの Log Analytics の **[スキーマ]** タブで確認できます。
 

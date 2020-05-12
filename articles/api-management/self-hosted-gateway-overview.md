@@ -1,30 +1,25 @@
 ---
-title: セルフホステッド Azure API Management ゲートウェイの概要 | Microsoft Docs
-description: 組織がハイブリッド環境やマルチクラウド環境で API を管理するのに、セルフホステッド Azure API Management ゲートウェイがどのように役立つかを説明します。
+title: セルフホステッド ゲートウェイの概要| Microsoft Docs
+description: 組織がハイブリッド環境やマルチクラウド環境で API を管理するのに、Azure API Management のセルフホステッド ゲートウェイ機能がどのように役立つかを説明します。
 services: api-management
 documentationcenter: ''
 author: vlvinogr
 manager: gwallace
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73510556"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232974"
 ---
-# <a name="self-hosted-api-management-gateway-overview"></a>セルフホステッド Azure API Management ゲートウェイの概要
+# <a name="self-hosted-gateway-overview"></a>セルフホステッド ゲートウェイの概要
 
-この記事では、セルフホステッド ゲートウェイ機能によってハイブリッドおよびマルチクラウドの API 管理を実現する方法について説明します。また、アーキテクチャの概要を紹介し、基本的な機能を取り上げます。
-
-> [!NOTE]
-> セルフホステッド ゲートウェイ機能はプレビュー段階です。 プレビュー期間中、セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみ追加料金なしで利用できます。 Developer レベルは、1 つのセルフホステッド ゲートウェイのデプロイに制限されます。
+この記事では、Azure API Management のセルフホステッド ゲートウェイ機能を使ってハイブリッドおよびマルチクラウドの API 管理を実現する方法について説明します。また、そのアーキテクチャの概要を紹介し、機能を取り上げます。
 
 ## <a name="hybrid-and-multi-cloud-api-management"></a>ハイブリッドおよびマルチクラウドでの API 管理
 
@@ -42,16 +37,23 @@ ms.locfileid: "73510556"
 
 ![セルフホステッド ゲートウェイを使用しない場合の API トラフィック フロー](media/self-hosted-gateway-overview/without-gateways.png)
 
-セルフホステッド ゲートウェイをバックエンド API 実装と同じ環境に配置し、それらを API Management サービスに追加することで、API トラフィックをバックエンド API に直接流すことができます。それにより、待機時間が短縮され、データ転送コストが最適化されて、実装がホストされている場所に関係なく、組織内のすべての API を 1 か所で管理および検出するというメリットを維持しながらコンプライアンスを実現できます。
+セルフホステッド ゲートウェイをバックエンド API 実装がホストされているのと同じ環境にデプロイすると、API トラフィックがバックエンド API に直接流れることができます。これにより、待機時間が短縮されて、データ転送コストが最適化され、コンプライアンスを実現でき、同時に、実装がホストされている場所に関係なく、組織内のすべての API を 1 か所で管理、監視、検出するというメリットも維持されます。
 
 ![セルフホステッド ゲートウェイを使用する場合の API トラフィック フロー](media/self-hosted-gateway-overview/with-gateways.png)
 
 ## <a name="packaging-and-features"></a>パッケージと機能
 
-セルフホステッド ゲートウェイは、すべての API Management サービスの一部として Azure にデプロイされるマネージド ゲートウェイと機能的に同等の、コンテナー化されたバージョンです。 セルフホステッド ゲートウェイは、Microsoft Container Registry から Linux ベースの Docker コンテナーとして入手できます。 これは、デスクトップ、サーバー クラスター、またはクラウド インフラストラクチャで実行されている Docker、Kubernetes、またはその他任意のコンテナー オーケストレーション ソリューションに配置できます。
+セルフホステッド ゲートウェイは、すべての API Management サービスの一部として Azure にデプロイされるマネージド ゲートウェイと機能的に同等の、コンテナー化されたバージョンです。 セルフホステッド ゲートウェイは、Microsoft Container Registry から Linux ベースの Docker [コンテナー](https://aka.ms/apim/sputnik/dhub)として入手できます。 オンプレミスのサーバー クラスターで実行されている Docker、Kubernetes などのコンテナー オーケストレーション ソリューション、クラウド インフラストラクチャ、または評価と開発が目的の場合はパーソナル コンピューター上にデプロイできます。
 
-> [!IMPORTANT]
-> マネージド ゲートウェイで使用できる機能の一部は、プレビューではまだ利用できません。 特に重要なものは、イベント ハブ ポリシーへのログ記録、Service Fabric の統合、ダウンストリーム HTTP/2 です。 セルフホステッド ゲートウェイで組み込みのキャッシュを使用できるようにする計画はありません。
+マネージ ゲートウェイにある次の機能は、セルフホステッド ゲートウェイでは**使用できません**。
+
+- Azure Monitor ログ
+- アップストリーム (バックエンド側) の TLS バージョンと暗号管理
+- API Management サービスにアップロードされた [CA ルート証明書](api-management-howto-ca-certificates.md)を使用した、サーバーとクライアントの証明書の検証。 カスタム CA のサポートを追加するには、CA のルート証明書をインストールするレイヤーをセルフホステッド ゲートウェイ コンテナー イメージに追加します。
+- [Service Fabric](../service-fabric/service-fabric-api-management-overview.md) との統合
+- TLS セッションの再開
+- クライアント証明書の再ネゴシエーション。 これは、[クライアント証明書の認証](api-management-howto-mutual-certificates-for-clients.md)が動作するには、API コンシューマーが初期 TLS ハンドシェイクの一部として証明書を提示する必要があることを意味します。 これを保証するには、セルフホステッド ゲートウェイのカスタム ホスト名を構成するときに、クライアント証明書のネゴシエート設定を有効にします。
+- ビルトイン キャッシュ。 セルフホステッド ゲートウェイで外部キャッシュを使用する方法については、こちらの[ドキュメント](api-management-howto-cache-external.md)を参照してください。
 
 ## <a name="connectivity-to-azure"></a>Azure への接続性
 
@@ -64,22 +66,22 @@ ms.locfileid: "73510556"
 
 Azure への接続性が失われると、セルフホステッド ゲートウェイは構成の更新の受信、状態の報告、テレメトリのアップロードができなくなります。
 
-セルフホステッド ゲートウェイは、"静的に失敗する" ように設計されており、Azure への接続が一時的に失われても問題は生じません。 これは、ローカル構成のバックアップが有効になっていてもいなくても展開できます。 前者の場合、セルフホステッド ゲートウェイは定期的に、コンテナーまたはポッドに接続された永続的ボリュームに構成のバックアップ コピーを保存します。
+セルフホステッド ゲートウェイは、"静的に失敗する" ように設計されており、Azure への接続が一時的に失われても問題は生じません。 これは、ローカル構成のバックアップの有無にかかわらずデプロイできます。 前者の場合、セルフホステッド ゲートウェイでは定期的に、コンテナーまたはポッドに接続された永続的ボリュームに最新のダウンロードされた構成のバックアップ コピーが保存されます。
 
 構成のバックアップがオフになっていて、Azure への接続が断たれると、以下のようになります。
 
--   実行中のセルフホステッド ゲートウェイは、構成のメモリ内コピーを使用して機能し続けます
+-   セルフホステッド ゲートウェイの実行は、構成のメモリ内コピーを使用して機能し続けます
 -   停止されていたセルフホステッド ゲートウェイは起動できなくなります
 
 構成のバックアップがオンになっていて、Azure への接続が断たれると、以下のようになります。
 
--   実行中のセルフホステッド ゲートウェイは、構成のメモリ内コピーを使用して機能し続けます
--   停止されていたセルフホステッド ゲートウェイは、構成のバックアップ コピーの使用を開始します
+-   セルフホステッド ゲートウェイの実行は、構成のメモリ内コピーを使用して機能し続けます
+-   停止されていたセルフホステッド ゲートウェイは、構成のバックアップ コピーの使用を開始できるようになります
 
 接続が復元されると、停止の影響を受けた各セルフホステッド ゲートウェイは、関連付けられている API Management サービスに自動的に再接続し、ゲートウェイが "オフライン" になっていた間に発生したすべての構成の更新をダウンロードします。
 
 ## <a name="next-steps"></a>次のステップ
 
 -   [このトピックの追加の背景情報についてのホワイトペーパーを読む](https://aka.ms/hybrid-and-multi-cloud-api-management)
--   [Docker にセルフホステッド ゲートウェイをデプロイする](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
--   [Kubernetes にセルフホステッド ゲートウェイをデプロイする](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+-   [Docker にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-docker.md)
+-   [Kubernetes にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-kubernetes.md)

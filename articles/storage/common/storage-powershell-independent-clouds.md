@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74895237"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176211"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
@@ -152,7 +152,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="after-setting-the-environment"></a>環境をセットアップした後
 
-以降は、ストレージ アカウントを管理するために使用している PowerShell で、「[Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)」に説明されているように、データ プレーンにアクセスできます。
+これで PowerShell を使用し、ストレージ アカウントを管理し、BLOB、キュー、ファイル、テーブル データにアクセスできるようになりました。 詳細については、「[Az.Storage](/powershell/module/az.storage)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

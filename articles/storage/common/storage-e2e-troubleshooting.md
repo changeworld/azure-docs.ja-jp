@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314761"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610974"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 
@@ -161,7 +161,7 @@ Message Analyzer には、サーバー、クライアント、およびネット
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Message Analyzer と Azure Storage アセットをダウンロードしてインストールする
 
-1. [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) を Microsoft ダウンロード センターからダウンロードし、インストーラーを実行します。
+1. [Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) をダウンロードします。
 2. Message Analyzer を起動します。
 3. **[ツール]** メニューの **[資産マネージャー]** を選択します。 **[資産マネージャー]** ダイアログで、 **[ダウンロード]** を選択し、**Azure Storage** をフィルター処理します。 以下の画像のように、Azure Storage アセットが表示されます。
 4. **[Sync All Displayed Items]** をクリックして、Azure Storage アセットをインストールします。 以下に利用できるアセットを挙げます。

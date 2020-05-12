@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate Server Assessment を使用した Hyper-V の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538173"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744602"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -54,7 +54,7 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 - Hyper-V の[アプライアンスの要件](migrate-appliance.md#appliance---hyper-v)を確認する。
 - アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government](migrate-appliance.md#government-cloud-urls) クラウドでアクセスする必要がある URL について確認します。
-- Azure Government では、スクリプトを使用してアプライアンスをデプロイする必要があります。
+- Azure Government では、[スクリプトを使用して](deploy-appliance-script-government.md)アプライアンスをデプロイする必要があります。
 
 ## <a name="port-access"></a>ポート アクセス
 

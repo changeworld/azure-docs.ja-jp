@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086421"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691218"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>解釈可能性: 自動機械学習のモデルの説明
 
@@ -85,20 +85,21 @@ AutoML モデルの説明を生成するには、`MimicWrapper` クラスを使�
 
 - 説明セットアップ オブジェクト
 - ワークスペース
-- `fitted_model` 自動 ML モデルの代理として機能する LightGBM モデル
+- `fitted_model` 自動 ML モデルを説明する代理モデル
 
 また、MimicWrapper は、エンジニアリングされた説明のアップロード先となる `automl_run` オブジェクトを受け取ります。
 
 ```python
-from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
 from azureml.explain.model.mimic_wrapper import MimicWrapper
 
 # Initialize the Mimic Explainer
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
+                         explainable_model=automl_explainer_setup_obj.surrogate_model, 
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
                          features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],
-                         classes=automl_explainer_setup_obj.classes)
+                         classes=automl_explainer_setup_obj.classes,
+                         explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params)
 ```
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>MimicExplainer を使用してエンジニアリングされた特徴量の重要度を計算および視覚化する

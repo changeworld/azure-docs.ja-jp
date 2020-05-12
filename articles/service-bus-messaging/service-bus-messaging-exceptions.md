@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880790"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739349"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
 この記事では、.NET Framework API によって生成される .NET 例外を一覧表示します。 
@@ -46,8 +46,6 @@ ms.locfileid: "80880790"
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |特定のシーケンス番号を持つメッセージを受信しようとしました。 このメッセージが見つかりません。 |メッセージがまだ受信されていないことを確認します。 配信不能キューを確認し、メッセージが配信不能になっているかどうかを確かめます。 |再試行は役に立ちません。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |クライアントは Service Bus への接続を確立できません。 |指定されたホスト名が正しく、ホストが到達可能なことを確認してください。 |断続的な接続の問題がある場合は、再試行によって解決することがあります。 |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |この時点では、このサービスで要求を処理できません。 |クライアントは、しばらく待機してから操作をやり直すことができます。 |クライアントは、一定の間隔をおいてから再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |メッセージに関連付けられているロック トークンが期限切れになったか、ロック トークンが見つかりません。 |メッセージを破棄してください。 |再試行は役に立ちません。 |
-| [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |このセッションに関連付けられているロックが失われました。 |[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトを中止してください。 |再試行は役に立ちません。 |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |次の場合にスローされる可能性がある一般なメッセージング例外です。<p>異なるエンティティの種類 (たとえば、トピック) に属する名前またはパスを使用して、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) を作成しようとした場合。</p><p>256 KB を超えるメッセージを送信しようとした場合。 </p>サーバーまたはサービスで要求の処理中にエラーが発生しました。 詳細については、例外メッセージを参照してください。 これは通常、一時的な例外です。</p><p>エンティティが調整されているため、要求は終了されました。 エラー コード:50001、50002、50008。 </p> | コードを確認し、メッセージ本文にシリアル化可能なオブジェクトのみを使用していることを確かめます (または、カスタム シリアライザーを使用します)。 <p>サポートされているプロパティ値の型をドキュメントで確認し、サポートされている型だけを使用します。</p><p> [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) プロパティを確認します。 それが **true** である場合は、操作を再試行できます。 </p>| 制限のために例外が発生した場合は、数秒待ってから、操作を再試行してください。 再試行動作は未定義であり、他のシナリオには役に立たない可能性があります。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |そのサービスの名前空間で別のエンティティによって既に使用されている名前を持つエンティティを作成しようとしました。 |既存のエンティティを削除するか、作成するエンティティに別の名前を選択します。 |再試行は役に立ちません。 |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |メッセージング エンティティが最大許容サイズに達したか、名前空間への最大接続数を超えました。 |エンティティまたはそのサブキューからメッセージを受信して、エンティティ内に領域を作成します。 「 [QuotaExceededException](#quotaexceededexception)」を参照してください。 |メッセージがそれまでに削除されている場合は、再試行によって解決することがあります。 |
@@ -102,6 +100,96 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 ### <a name="queues-and-topics"></a>キューとトピック
 キューとトピックでは、タイムアウトは [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) プロパティで接続文字列の一部として、または [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) を通じて指定されます。 エラー メッセージ自体はさまざまですが、これには常に現在の操作に指定されたタイムアウト値が含まれます。 
+
+## <a name="messagelocklostexception"></a>MessageLockLostException
+
+### <a name="cause"></a>原因
+
+**MessageLockLostException** は、[PeekLock](message-transfers-locks-settlement.md#peeklock) 受信モードを使用してメッセージを受信し、クライアントによって保持されているロックがサービス側で期限切れになったときにスローされます。
+
+メッセージのロックは、さまざまな理由により期限切れになる場合があります。 
+
+  * ロック タイマーが、クライアント アプリケーションによって更新される前に期限切れになっている。
+  * クライアント アプリケーションがロックを取得し、永続ストアにそれを保存してから再起動した。 再起動後、クライアント アプリケーションが、配信中のメッセージを調べて、これらを完了しようとした。
+
+### <a name="resolution"></a>解像度
+
+**MessageLockLostException** が発生した場合、クライアント アプリケーションはメッセージを処理できなくなります。 クライアント アプリケーションでは、必要に応じて、分析のために例外をログに記録することもできますが、クライアントはメッセージを破棄する "*必要があります*"。
+
+メッセージのロックの有効期限が切れたため、キュー (またはサブスクリプション) に戻り、receive を呼び出す次のクライアント アプリケーションで処理できるようになります。
+
+**MaxDeliveryCount** を超えた場合、メッセージは **DeadLetterQueue** に移動される可能性があります。
+
+## <a name="sessionlocklostexception"></a>SessionLockLostException
+
+### <a name="cause"></a>原因
+
+**SessionLockLostException** は、セッションが受け入れられ、クライアントによって保持されているロックがサービス側で期限切れになったときにスローされます。
+
+セッションのロックは、さまざまな理由により期限切れになる場合があります。 
+
+  * ロック タイマーが、クライアント アプリケーションによって更新される前に期限切れになっている。
+  * クライアント アプリケーションがロックを取得し、永続ストアにそれを保存してから再起動した。 再起動後、クライアント アプリケーションが、転送中のセッションを調べて、これらのセッション内のメッセージを処理しようとした。
+
+### <a name="resolution"></a>解像度
+
+**SessionLockLostException** が発生した場合、クライアント アプリケーションがセッションでメッセージを処理できなくなります。 クライアント アプリケーションでは、分析のために例外をログに記録することもできますが、クライアントはメッセージを破棄する "*必要があります*"。
+
+セッションのロックの有効期限が切れたため、キュー (またはサブスクリプション) を破棄して、セッションを受け入れる次のクライアント アプリケーションでロックできるようになります。 セッション ロックは、特定の時点で 1 つのクライアント アプリケーションによって保持されるため、順番どおりの処理が保証されます。
+
+## <a name="socketexception"></a>SocketException
+
+### <a name="cause"></a>原因
+
+次の場合には、**SocketException** がスローされます。
+   * 指定された時間が経過してもホストが適切に応答しなかったために接続試行が失敗した場合 (TCP エラー コード 10060)。
+   * 接続されたホストが応答できなかったため、確立された接続が失敗した場合。
+   * メッセージの処理中にエラーが発生したか、リモート ホストがタイムアウトを超えた場合。
+   * 基になるネットワーク リソースの問題。
+
+### <a name="resolution"></a>解像度
+
+**SocketException** エラーは、アプリケーションをホストしている VM が名前 `<mynamespace>.servicebus.windows.net` を対応する IP アドレスに変換できないことを示します。 
+
+IP アドレスへのマッピングで、次のコマンドが成功するかどうかを確認してください。
+
+```Powershell
+PS C:\> nslookup <mynamespace>.servicebus.windows.net
+```
+
+出力は次のようになるはずです
+
+```bash
+Name:    <cloudappinstance>.cloudapp.net
+Address:  XX.XX.XXX.240
+Aliases:  <mynamespace>.servicebus.windows.net
+```
+
+上記の名前が、IP と名前空間のエイリアスに**解決されない**場合は、どのネットワーク管理者がさらに調査するかを確認します。 名前解決は、通常、顧客ネットワークのリソースである DNS サーバーを介して行われます。 DNS 解決が Azure DNS によって行われる場合は、Azure サポートにお問い合わせください。
+
+名前解決が**期待したとおりに機能している**場合は、[ここで](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues) Azure Service Bus への接続が許可されているかどうかを確認してください
+
+
+## <a name="messagingexception"></a>MessagingException
+
+### <a name="cause"></a>原因
+
+**MessagingException** は、さまざまな理由でスローされる可能性がある一般的な例外です。 その理由の一部を以下に示します。
+
+   * **トピック**または**サブスクリプション**に **QueueClient** を作成しようとした。
+   * 送信されたメッセージのサイズが、指定されたレベルの制限を超えている。 Service Bus のクォータと制限の詳細については、[こちら](service-bus-quotas.md)をお読みください。
+   * 調整により、特定のデータ プレーン要求 (送信、受信、完了、破棄) が終了した。
+   * サービスのアップグレードと再起動によって一時的な問題が発生した。
+
+> [!NOTE]
+> 上記の例外の一覧はすべてを網羅しているわけではありません。
+
+### <a name="resolution"></a>解像度
+
+解決手順は、**MessagingException** がスローされる原因によって異なります。
+
+   * **一時的な問題** (***isTransient*** が ***true*** に設定されている) または**調整の問題**の場合は、操作を再試行することによって解決される場合があります。 これには、SDK の既定の再試行ポリシーを利用できます。
+   * その他の問題については、例外の詳細に問題が示され、解決手順を推測することができます。
 
 ## <a name="next-steps"></a>次のステップ
 Service Bus の詳細な .NET API リファレンスについては、「[Azure .NET API reference](/dotnet/api/overview/azure/service-bus)」(Azure .NET API リファレンス) を参照してください。

@@ -4,21 +4,22 @@ titlesuffix: Azure Virtual Network
 description: Azure でのパブリックおよびプライベート IP アドレスについて説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2019
-ms.author: kumud
-ms.openlocfilehash: 9de94dab7000cee90f4448aa6d81196d3865e021
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/27/2020
+ms.author: allensu
+ms.openlocfilehash: a698d0cc4653a7a9f938b8f013352d9b51e2e18c
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474415"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203728"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -58,6 +59,22 @@ Azure リソース マネージャーで、 [パブリック IP](virtual-network
 >[!IMPORTANT]
 > ロード バランサー リソースとパブリック IP リソースには一致する SKU を使用する必要があります。 Basic SKU リソースと Standard SKU リソースを組み合わせることはできません。 スタンドアロン仮想マシン、可用性セット リソース内の仮想マシン、または仮想マシン スケール セット リソースを、両方の SKU に同時にアタッチすることはできません。  新しい設計では、Standard SKU リソースの使用を検討する必要があります。  詳しくは、[Standard ロード バランサー](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 
+#### <a name="standard"></a>Standard
+
+Standard SKU のパブリック IP アドレスは次のとおりです。
+
+- 必ず静的割り当て方法を使用してください。
+- インバウンドから発生するフローの調整可能なアイドル タイムアウトとして4分から30 分 (既定値は 4 分) が、またアウトバウンドから発生するフローの固定アイドル タイムアウトとして 4 分が割り当てられます。
+- 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、許可された受信トラフィックを明示的なホワイト リストに登録する必要があります。
+- ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
+- ゾーン冗長、またはゾーンにすることができます (ゾーンとして作成でき、特定の可用性ゾーンで保証できます)。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+ 
+> [!NOTE]
+> [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を作成して関連付け、目的のインバウンド トラフィックを明示的に許可するまで、Standard SKU リソースとのインバウンド通信は失敗します。
+
+> [!NOTE]
+> [インスタンス メタデータ サービス (IMDS)](../virtual-machines/windows/instance-metadata-service.md) を使用している場合は、Basic SKU のパブリック IP アドレスのみを使用できます。 Standard SKU はサポートされていません。
+
 #### <a name="basic"></a>Basic
 
 SKU の導入前に作成されたすべてのパブリック IP アドレスは、Basic SKU のパブリック IP アドレスです。 SKU を導入すると、どの SKU をパブリック IP アドレスにするかを設定できます。 Basic SKU のアドレスは次のとおりです。
@@ -67,22 +84,6 @@ SKU の導入前に作成されたすべてのパブリック IP アドレスは
 - 既定で開いています。  ネットワーク セキュリティ グループは推奨されますが、受信または送信トラフィックを制限する場合は省略可能です。
 - ネットワーク インターフェイス、VPN ゲートウェイ、アプリケーション ゲートウェイ、およびインターネットに接続するロード バランサーなどのパブリック IP アドレスを割り当てることができる Azure のリソースに割り当てられます。
 - 可用性ゾーンのシナリオはサポートしません。  可用性ゾーンのシナリオには、Standard SKU のパブリック IP を使用する必要があります。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
-
-#### <a name="standard"></a>Standard
-
-Standard SKU のパブリック IP アドレスは次のとおりです。
-
-- 必ず静的割り当て方法を使用してください。
-- インバウンドから発生するフローの調整可能なアイドル タイムアウトとして4分から30 分 (既定値は 4 分) が、またアウトバウンドから発生するフローの固定アイドル タイムアウトとして 4 分が割り当てられます。
-- 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、許可された受信トラフィックを明示的なホワイト リストに登録する必要があります。
-- ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
-- 既定ではゾーン冗長ですが、必要に応じてゾーンのパブリック IP にすることができます (ゾーンのパブリック IP アドレスとして作成でき、特定の可用性ゾーンで保証できます)。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
- 
-> [!NOTE]
-> [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を作成して関連付け、目的のインバウンド トラフィックを明示的に許可するまで、Standard SKU リソースとのインバウンド通信は失敗します。
-
-> [!NOTE]
-> [インスタンス メタデータ サービス (IMDS)](../virtual-machines/windows/instance-metadata-service.md) を使用している場合は、Basic SKU のパブリック IP アドレスのみを使用できます。 Standard SKU はサポートされていません。
 
 ### <a name="allocation-method"></a>割り当て方法
 
@@ -136,7 +137,7 @@ Basic SKU のパブリック IP アドレスは、*動的*割り当て方法も�
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |ネットワーク インターフェイス |はい |はい |
+| 仮想マシン | ネットワーク インターフェイス |はい |はい |
 | インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
 | VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
 | Application gateway |フロント エンド構成 |はい (V1 のみ) |はい (V2 のみ) |
@@ -180,7 +181,7 @@ Azure で管理される DNS サーバーで構成されている仮想マシン
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |ネットワーク インターフェイス |はい |はい |
+| 仮想マシン | ネットワーク インターフェイス |はい |はい |
 | Load Balancer |フロント エンド構成 |はい |はい |
 | Application gateway |フロント エンド構成 |はい |はい |
 

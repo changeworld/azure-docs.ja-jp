@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 20580edb84a8c983c2342e6a5904c75a0986a3d7
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521879"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801571"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=457b3ba7-7ac5-93be-981c-677553ad39dd" target='_blank'>開始</a></span><span class="has-padding-small">仮想エージェントを利用して <b> 自動化診断を実行し、問題を短時間で解決します。</b></span><span class="has-padding-small"><a href="https://privacy.microsoft.com/privacystatement" target='_blank'><div align="right"><sub>プライバシーに関する声明</sub></div></a></span></p>
 
-このトラブルシューティング ガイドでは、ほとんどの[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)の問題の解決に役立つ手順を提供します。
+このトラブルシューティング ガイドでは、ほとんどの[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)の問題の解決に役立つ手順を提供します。
 
 ![仮想ネットワーク ピアリングの図](./media/virtual-network-troubleshoot-peering-issues/4489538_en_1.png)
 

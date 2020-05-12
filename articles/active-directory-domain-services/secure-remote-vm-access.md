@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8bc36dfdf3010b2bde485228f6ee110b0b826d31
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654751"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82105728"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想マシンへのリモートアクセスをセキュリティで保護する
 
@@ -61,6 +61,7 @@ RD 環境をデプロイするには、いくつかの手順が必要です。 �
 
 1. *contosoadmin* などの *Azure AD DC 管理者*グループの一部であるアカウントを使用して、RD 環境用に作成された VM にサインインします。
 1. RDS を作成および構成するには、既存の[リモート デスクトップ環境のデプロイ ガイド][deploy-remote-desktop]を参照してください。 必要に応じて、Azure VM 全体に RD サーバー コンポーネントを配布します。
+    * Azure AD DS に固有 - RD ライセンスを構成するときは、導入ガイドに記載されているように、 **[ユーザー単位]** ではなく、 **[Per Device]\(デバイス単位\)** モードに設定します。
 1. Web ブラウザーを使用してアクセスを提供する場合は、[ユーザーのリモート デスクトップ Web クライアントを設定します][rd-web-client]。
 
 RD を Azure AD DS マネージド ドメインにデプロイすると、オンプレミスの AD DS ドメインの場合と同様に、サービスを管理および使用できます。

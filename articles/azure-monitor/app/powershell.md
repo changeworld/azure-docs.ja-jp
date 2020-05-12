@@ -2,13 +2,13 @@
 title: PowerShell での Azure Application Insights の自動化 | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成および管理を自動化します。
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/02/2020
+ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234671"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780489"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "79234671"
 スクリプトを実行するコンピューターに Azure PowerShell モジュールをインストールします。
 
 1. [Microsoft Web Platform Installer (v5 以上)](https://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
-2. このインストーラーを使用して Microsoft Azure PowerShell をインストールします。
+2. これを使用して Microsoft Azure PowerShell をインストールします。
 
 Resource Manager テンプレートの使用に加えて、[Application Insights PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)の豊富なセットが用意されています。これにより、Application Insights リソースをプログラムによって簡単に構成できます。 コマンドレットによって有効になる機能は次のとおりです。
 
@@ -229,7 +229,21 @@ Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Forma
 
 これらのコマンドレットのパラメーターについては、[詳細なドキュメント](https://docs.microsoft.com/powershell/module/az.applicationinsights)を参照してください。  
 
-## <a name="set-the-data-retention"></a>データ保有期間を設定する 
+## <a name="set-the-data-retention"></a>データ保有期間を設定する
+
+プログラムによって Application Insights リソースのデータ保有期間を設定する 3 つの方法を次に示します。
+
+### <a name="setting-data-retention-using-a-powershell-commands"></a>PowerShell コマンドを使用したデータ保有期間の設定
+
+Application Insights リソースのデータ保有期間を設定する一連の簡単な PowerShell コマンドを次に示します。
+
+```PS
+$Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
+$Resource.Properties.RetentionInDays = 365
+$Resource | Set-AzResource -Force
+```
+
+### <a name="setting-data-retention-using-rest"></a>REST を使用したデータ保有期間の設定
 
 Application Insights リソースの現在のデータ保有期間を取得するには、OSS ツール [ARMClient](https://github.com/projectkudu/ARMClient) を使用します。  (ARMClient の詳細については、[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) および [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) による記事を参照してください。)`ARMClient` を使用して現在の保有期間を取得する例を次に示します。
 
@@ -251,6 +265,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -retentionInDays 365 `
        -appName myApp
 ```
+
+### <a name="setting-data-retention-using-a-powershell-script"></a>PowerShell スクリプトを使用したデータ保有期間の設定
 
 次のスクリプトは、保有期間の変更にも使用できます。 `Set-ApplicationInsightsRetention.ps1` として保存するには、このスクリプトをコピーします。
 

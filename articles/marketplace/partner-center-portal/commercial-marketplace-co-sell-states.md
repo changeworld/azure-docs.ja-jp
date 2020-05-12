@@ -1,22 +1,22 @@
 ---
-title: 共同販売の州コード | Azure Marketplace
-description: オファーの [共同販売] ページに連絡先情報を指定するときに、これらの州コードを使用します。
+title: Azure Marketplace での共同販売の州コード
+description: Azure Marketplace でオファーの [共同販売] ページに連絡先情報を指定するときに、使用可能な州コードを取得します。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619352"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744704"
 ---
-# <a name="co-sell-state-and-province-codes"></a>共同販売の州コード
+# <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace での共同販売の州コード
 
-該当する場合は、次のコードを使用して、[オファーの [共同販売] ページに連絡先情報を指定する](commercial-marketplace-co-sell.md#contacts)ときに [State/Province]\(州/都道府県\) 情報を入力します。
+この記事では、オファーの [共同販売] ページに連絡先情報を指定するときに使用できる州コードを示します。 該当する場合は、次のコードを使用して、[オファーの [共同販売] ページに連絡先情報を指定する](commercial-marketplace-co-sell.md#contacts)ときに [State/Province]\(州/都道府県\) 情報を入力します。
 
 ## <a name="us-states-and-territories"></a>米国の州と準州
 

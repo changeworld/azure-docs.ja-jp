@@ -5,12 +5,12 @@ author: nipavlo
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
-ms.openlocfilehash: 23782a86d31251cb1a3474e0395df716a2e832df
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427267"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183120"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>サブクラスター化されたメトリックの均衡化
 
@@ -24,11 +24,11 @@ ms.locfileid: "81427267"
 
 たとえば、4 つのサービスがあり、これらすべてが以下のようにメトリック Metric1 の負荷をレポートしているとします。
 
-* サービス A - 配置の制約 "NodeType==Type1" があり、10 の負荷をレポートします
-* サービス B - 配置の制約 "NodeType==Type1" があり、10 の負荷をレポートします
-* サービス C - 配置の制約 "NodeType==Type2" があり、100 の負荷をレポートします
-* サービス D - 配置の制約 "NodeType==Type2" があり、100 の負荷をレポートします
-* また、4 つのノードがあります。 そのうちの 2 つは NodeType が "Type1" に設定されていて、残りの 2 つは "Type2" になっています
+* サービス A - 配置の制約 "NodeType==Frontend" があり、10 の負荷をレポートします
+* サービス B - 配置の制約 "NodeType==Frontend" があり、10 の負荷をレポートします
+* サービス C - 配置の制約 "NodeType==Backend" があり、100 の負荷をレポートします
+* サービス D - 配置の制約 "NodeType==Backend" があり、100 の負荷をレポートします
+* また、4 つのノードがあります。 そのうちの 2 つは NodeType が "Frontend" に設定されていて、残りの 2 つは "Backend" になっています
 
 また、配置は次のようになっています。
 
@@ -60,8 +60,8 @@ Resource Manager がサブクラスター化されたメトリックを最適に
 例:
 
 * サービス A: 配置の制約なし
-* サービス B: 配置の制約 "NodeType==Type1"
-* サービス C: 配置の制約 "NodeType==Type2"
+* サービス B: 配置の制約 "NodeType==Frontend"
+* サービス C: 配置の制約 "NodeType==Backend"
 
 この構成では、さまざまなサービスのノード グループ間にサブセットとスーパーセットの関係が作成されます。
 
@@ -72,7 +72,7 @@ Resource Manager がサブクラスター化されたメトリックを最適に
 
 このような状況では、最適なバランスが得られない可能性があります。
 
-この状況は Resource Manager により認識され、サービス A を、Type1 ノードに配置できるサービス A1 と、Type2 ノードに配置できるサービス A2 の 2 つのサービスに分割することを勧める正常性レポートが生成されます。 これにより、最適なバランスを取ることができる最初のカテゴリの状況に戻ります。
+この状況は Resource Manager により認識され、サービス A を、Frontend ノードに配置できるサービス A1 と、Backend ノードに配置できるサービス A2 の 2 つのサービスに分割することを勧める正常性レポートが生成されます。 これにより、最適なバランスを取ることができる最初のカテゴリの状況に戻ります。
 
 ### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>3 番目のカテゴリ - ノード セット間で部分的に重複するサブクラスター化
 

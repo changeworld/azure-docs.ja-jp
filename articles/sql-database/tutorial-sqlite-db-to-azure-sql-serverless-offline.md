@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780755"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629203"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite データベースを Azure SQL Database サーバーレスに移行する
-SQLite は、多くのユーザーにとって初めて触れるデータベース、および SQL プログラミングです。 多くのオペレーティング システムや一般的なアプリケーションに組み込まれている SQLite は、世界中で最も広く導入され使用されているデータベース エンジンとなっています。 また、これは多くのユーザー初めて使用するデータベース エンジンである可能性が高いため、多くの場合、プロジェクトやアプリケーションの中心部となることがあります。 プロジェクトやアプリケーションの規模が初期の SQLite 実装を超えた場合、開発者はデータを信頼性の高い一元化されたデータ ストアに移行することが必要になる場合があります。
+SQLite は、多くのユーザーにとって初めて触れるデータベース、および SQL プログラミングです。 多くのオペレーティング システムや一般的なアプリケーションに組み込まれている SQLite は、世界中で最も広く導入され使用されているデータベース エンジンとなっています。 また、これは多くのユーザーが初めて使用するデータベース エンジンである可能性が高いため、多くの場合、プロジェクトやアプリケーションの中心部となることがあります。 プロジェクトやアプリケーションの規模が初期の SQLite 実装を超えた場合、開発者はデータを信頼性の高い一元化されたデータ ストアに移行することが必要になる場合があります。
 
 Azure SQL Database サーバーレスは、ワークロードの需要に基づいてコンピューティングが自動的にスケーリングされ、1 秒あたりのコンピューティング使用量に対して請求されるコンピューティング レベルです。 またサーバーレス コンピューティング レベルでは、アイドル期間にデータベースを自動的に一時停止します。このときはストレージのみに課金され、再びアクティブになると自動的にデータベースが再開されます。
 

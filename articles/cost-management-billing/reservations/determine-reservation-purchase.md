@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135557"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628607"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>購入する予約を判断する
 
 Azure Databricks を除くすべての予約は、1 時間単位で適用されます。 基準となる一定の使用量に基づいて予約を購入する必要があります。 購入するものを判断する方法は複数あります。この記事は、購入すべき予約を判断するのに役立ちます。
 
-過去の使用量を超える容量を購入しても、予約を十分に活用できません。 十分に活用されない状態は、可能な限り避ける必要があります。 時間内に使用されなかった予約容量が次の時間に引き継がれることはありません。  予約済みの量を超える使用に対しては、より高額な従量課金制料金が適用されます。
+過去の使用量を超える容量を購入しても、予約を十分に活用できません。 十分に活用されない状態は、可能な限り避ける必要があります。 時間内に使用されなかった予約容量が次の時間に引き継がれることはありません。 予約済みの量を超える使用に対しては、より高額な従量課金制料金が適用されます。
 
 ## <a name="analyze-usage-data"></a>使用量データを分析する
 
@@ -40,11 +40,11 @@ Promo シリーズの VM は予約割引が適用されないので、分析対�
 
 インスタンス サイズ ファミリー レベルで分析したい場合は、インスタンス サイズの柔軟性の値を [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) から取得できます。 その値とご自身のデータとを結合して分析を行ってください。 インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>SQL Database 予約インスタンスを購入するにあたって使用量を分析する
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Azure Synapse Analytics 予約インスタンスを購入するにあたって使用量を分析する
 
-予約容量は、SQL Database の仮想コアのコンピューティング価格に適用されます。 DTU ベースの価格や SQL ライセンス コストなど、コンピューティング以外のコストには適用されません。
+予約容量は、Azure Synapse Analytics DWU 価格に適用されます。 Azure Synapse Analytics ライセンス コストなど、コンピューティング以外のコストには適用されません。
 
-候補となる SQL の使用量を絞り込むには、使用量データに次のフィルターを適用します。
+候補となる使用量を絞り込むには、使用量データに次のフィルターを適用します。
 
 
 - **MeterCategory** から **SQL Database** をフィルターで抽出します。
@@ -60,22 +60,22 @@ Promo シリーズの VM は予約割引が適用されないので、分析対�
 - 世代 (例: Gen 5)。
 - リソースの場所
 
-### <a name="analysis-for-sql-data-warehouse"></a>SQL Data Warehouse の分析
+### <a name="analysis-for-azure-synapse-analytics"></a>Azure Synapse Analytics の分析
 
-予約容量は、SQL Data Warehouse の DWU の使用量に適用され、購入は 100 DWU 単位となります。 候補となる SQL の使用量を絞り込むには、使用量データに次のフィルターを適用します。
+予約容量は、Azure Synapse Analytics の DWU の使用量に適用され、購入は 100 DWU 単位となります。 候補となる使用量を絞り込むには、使用量データに次のフィルターを適用します。
 
 - **MeterName** から **100 DWU** をフィルターで抽出します。
 - **Meter Sub-Category** から **Compute Optimized Gen2** をフィルターで抽出します。
 
-**Resource Location** フィールドを使用して、リージョンにおける SQL DW の使用量を特定します。
+**Resource Location** フィールドを使用して、リージョンにおける Azure Synapse Analytics の使用量を特定します。
 
-SQL Data Warehouse の使用量は、一日を通してスケールアップしたりスケールダウンしたりする可能性があります。 SQL Data Warehouse インスタンスを管理していたチームと話し合って、基準となる使用量を把握してください。
+Azure Synapse Analytics の使用量は、一日を通してスケールアップしたりスケールダウンしたりする可能性があります。 Azure Synapse Analytics インスタンスを管理していたチームと話し合って、基準となる使用量を把握してください。
 
-Azure portal の [予約] に移動し、100 DWU の倍数単位で SQL Data Warehouse の予約容量を購入します。
+Azure portal の [予約] に移動し、100 DWU の倍数単位で Azure Synapse Analytics の予約容量を購入します。
 
 ## <a name="reservation-purchase-recommendations"></a>予約購入の推奨量
 
-予約購入の推奨量は、過去 7 日、30 日、60 日にわたる時間単位の使用量データを分析することで計算されます。 予約を使用していた場合のコストが Azure によって計算され、当該期間に発生した実際の従量課金制のコストと比較されます。 この計算は、当該期間に使用された各数量について実行されます。 コスト削減効果が最大となる数量が提案されます。 
+予約購入の推奨量は、過去 7 日、30 日、60 日にわたる時間単位の使用量データを分析することで計算されます。 予約を使用していた場合のコストが Azure によって計算され、当該期間に発生した実際の従量課金制のコストと比較されます。 この計算は、当該期間に使用された各数量について実行されます。 コスト削減効果が最大となる数量が提案されます。
 
 たとえば、使用する VM の数が大半の時間は 500 台であるものの、状況によっては 700 台にまで急増することがあるとします。 このケースでは、500 台と 700 台の両方の VM 数についてコスト削減効果が計算されます。 700 台の VM が使用される状況は散発的にしか生じないため、推奨量の計算では、500 台を予約購入したときにコスト削減効果が最大になると判断され、数量 500 台についての推奨量が提示されます。
 

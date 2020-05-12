@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: terrylan
-ms.openlocfilehash: 4fe612db65d985be2f1f1c81d03c3ee735c03889
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ab3697824ff4a47e7b8f281b531cae610ffdc3b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69992391"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187581"
 ---
 # <a name="develop-a-secure-infrastructure-for-a-pci-app"></a>PCI アプリのセキュリティで保護されたインフラストラクチャを開発する
 
@@ -51,7 +51,7 @@ Payment Card Industry (PCI) アプリ用のこのセキュリティで保護さ�
 - フロントエンド ファイアウォール アクセスで分離された専用の App Service 環境で、Azure Web アプリをデプロイする。
 - [OWASP 上位 10 のルール セット](https://coreruleset.org/)を使用するファイアウォールを使用して、Azure Application Gateway インスタンスを作成して構成する。
 - Azure サービスを使用して、転送中および保存時のデータの暗号化を有効にする。
-- Azure ポリシーとブルー プリントを設定してコンプライアンスを評価する
+- Azure Policy と Azure Blueprints を設定してコンプライアンスを評価する
 
 このアプリを開発してデプロイすると、次のサンプル Web アプリと、説明されている構成およびセキュリティ対策が設定されます。
 

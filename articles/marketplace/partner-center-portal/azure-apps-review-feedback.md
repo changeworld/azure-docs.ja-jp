@@ -1,20 +1,20 @@
 ---
-title: 商業マーケットプレースで Azure アプリ オファーのレビュー フィードバックを処理する
-description: Microsoft パートナー センターの商業マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために Azure アプリ オファーのレビュー フィードバックを処理する方法。
+title: Microsoft コマーシャル マーケットプレースで Azure アプリ オファーのレビュー フィードバックを処理する
+description: Microsoft パートナー センターのコマーシャル マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために Azure アプリ オファーのレビュー フィードバックを処理する方法。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279795"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744879"
 ---
-# <a name="handling-review-feedback"></a>レビュー フィードバックの処理
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>Azure Marketplace で公開する前に Azure アプリ オファーのレビュー フィードバックを処理する
 
 この記事では、Microsoft Azure Marketplace レビュー チームが使用する Azure DevOps 環境にアクセスする方法について説明します。 **Microsoft のレビュー** ステップで Azure アプリケーション オファーに重大な問題が見つかった場合は、このシステムにサインインして、それらの問題に関する詳細な情報 (レビュー フィードバック) を表示できます。 これらの問題をすべて修正した後、Azure Marketplace に引き続きオファーを発行するには、オファーを再送信する必要があります。 次の図は、このフィードバック プロセスと発行プロセスの関係を示しています。
 

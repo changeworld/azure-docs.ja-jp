@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367620"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129250"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
@@ -46,7 +46,7 @@ Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホー�
 
 - **コンテナー レベルの構成:** ユーザーは、時間ベースのリテンション ポリシーと訴訟ホールド タグをコンテナー レベルで構成できます。 ユーザーは、コンテナー レベルのシンプルな設定を使用して、時間ベースのリテンション ポリシーの作成とロック、保持間隔の延長、訴訟ホールドの設定とクリアなどを行うことができます。 これらのポリシーは、コンテナー内の既存および新規のすべての BLOB に適用されます。
 
-- **監査ログのサポート**:各コンテナーには、ポリシー監査ログが含まれています。 ロックされている時間ベースのリテンション ポリシーに対して最大 7 つの時間ベースのリテンション コマンドが表示されます。また、ユーザー ID、コマンドの種類、タイム スタンプ、保持間隔が含まれています。 訴訟ホールドの場合、ログにはユーザー ID、コマンドの種類、タイム スタンプ、訴訟ホールド タグが含まれます。 このログは、SEC 17a-4(f) 規制ガイドラインに従い、ポリシーの有効期間の間、保持されます。 コントロール プレーンのすべてのアクティビティのより包括的なログは、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)に表示されます。有効になっているときは [Azure 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)が保持され、データ プレーン操作が表示されます。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
+- **監査ログのサポート**:各コンテナーには、ポリシー監査ログが含まれています。 ロックされている時間ベースのリテンション ポリシーに対して最大 7 つの時間ベースのリテンション コマンドが表示されます。また、ユーザー ID、コマンドの種類、タイム スタンプ、保持間隔が含まれています。 訴訟ホールドの場合、ログにはユーザー ID、コマンドの種類、タイム スタンプ、訴訟ホールド タグが含まれます。 このログは、SEC 17a-4(f) 規制ガイドラインに従い、ポリシーの有効期間の間、保持されます。 コントロール プレーンのすべてのアクティビティに関するより包括的なログは、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)に表示されます。有効になっているときは [Azure リソース ログ](../../azure-monitor/platform/platform-logs-overview.md)が保持され、データ プレーン操作が表示されます。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
 
 ## <a name="how-it-works"></a>しくみ
 

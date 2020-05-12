@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
-description: このチュートリアルで、PowerShell を使用して Azure リソースのカスタム ロールを作成してみましょう。
+title: チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する - Azure RBAC
+description: このチュートリアルでは、Azure PowerShell と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure カスタム ロールを作成します。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77138277"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735591"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
+# <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure PowerShell を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションの管理プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure PowerShell を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションの管理プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -73,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. エディターで **ReaderSupportRole.json** ファイルを開きます。
 
-    この JSON 出力を次に示します。 各種のプロパティについては、「[カスタム ロール](custom-roles.md)」を参照してください。
+    この JSON 出力を次に示します。 各種のプロパティについては、[Azure カスタム ロール](custom-roles.md)に関するページを参照してください。
 
     ```json
     {
@@ -277,4 +277,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](custom-roles-powershell.md)
+> [Azure PowerShell を使用して Azure カスタム ロールを作成または更新する](custom-roles-powershell.md)

@@ -1,5 +1,5 @@
 ---
-title: Power BI アプリの作成の概要 - Azure Marketplace
+title: Power BI アプリの作成の概要 - Microsoft AppSource
 description: この記事では、Power BI アプリを Microsoft AppSource に公開するためのおおまかな手順について説明します。 商用マーケットプレースに公開するために Power BI アプリで満たす必要がある技術的およびビジネス要件も記載されています。
 author: anbene
 ms.author: mingshen
@@ -7,23 +7,20 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732672"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837840"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI アプリの作成の概要
-
-> [!IMPORTANT]
-> Power BI アプリ オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、Cloud パートナー ポータル向けの「[Power BI アプリ オファー](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer)」の手順に従って、オファーを管理してください。
 
 この記事では、Power BI アプリを Microsoft [AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。 Power BI アプリでは、データセット、レポート、およびダッシュボードを含むカスタマイズ可能なコンテンツがパッケージ化されます。 その後、AppSource を使ってアプリを他の Power BI プラットフォームで使用し、開発者によって許可されている調整とカスタマイズを実行し、それをご自身のデータに接続できます。
 
 ## <a name="publishing-benefits"></a>公開の利点
 
-商用マーケットプレースに公開する利点:
+コマーシャル マーケットプレースに公開する利点:
 
 - Microsoft のブランドを使用して、会社の宣伝ができる。
 - AppSource 上で 1 億を超える Office 365 および Dynamics 365 ユーザーに、さらに Azure Marketplace を通じて 20 万を超える組織にリーチできる可能性がある。
@@ -39,7 +36,7 @@ ms.locfileid: "81732672"
 1. Power BI でアプリケーションを作成します。 パッケージのインストール リンクを受け取ります。これは、オファーの主な技術資産です。 パートナー センターでオファーを作成する前に、テスト パッケージを運用前環境に送信します。 詳細については、[Power BI アプリ](https://docs.microsoft.com/power-bi/service-template-apps-overview)に関するページを参照してください。
 2. 公式名、説明、ロゴなどのマーケティング資料を追加します。
 3. 使用条件、プライバシー ポリシー、サポート ポリシー、ユーザー ヘルプなど、オファーの法的およびサポート ドキュメントを含めます。
-4. オファーを作成します。パートナー センターを使用して、オファーの説明、マーケティング資料、法的情報、サポート情報、資産の仕様などの詳細を編集します。
+4. オファーを作成する - パートナー センターを使用して、オファーの説明、マーケティング資料、法的情報、サポート情報、資産の仕様などの詳細を編集します。
 5. それを公開するために送信します。
 6. AppSource オンボーディング チームによって、アプリのテスト、検証、および認定が行われる、パートナー センターでプロセスを監視します。
 7. 認定された後、アプリをそのテスト環境で確認してからリリースします。 これで、AppSource に一覧表示されます ("一般公開" される)。
@@ -79,6 +76,6 @@ Power BI でアプリが作成され、テストされた後、アプリケー�
 - AppSource にオファーが掲載されるための条件を満たすコンテンツを提供します。 詳細については、[AppSource にアプリを掲載する方法](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)に関するページをご覧ください。
 - [Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)に同意して従います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-step"></a>次のステップ
 
 - [パートナー センターで Power BI アプリ オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

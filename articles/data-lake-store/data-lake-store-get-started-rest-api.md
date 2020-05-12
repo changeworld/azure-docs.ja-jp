@@ -1,23 +1,17 @@
 ---
-title: REST API:Azure Data Lake Storage Gen1 に対するアカウント管理操作 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 と WebHDFS REST API を使用し、Data Lake Storage Gen1 でアカウント管理操作を実行します
-services: data-lake-store
-documentationcenter: ''
+title: REST を使用した Azure Data Lake Storage Gen1 アカウントの管理
+description: WebHDFS REST API を使用し、Azure Data Lake Storage Gen1 でアカウント管理操作を実行します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a106b55fb90f320b90c81216a205dd10a9bf934
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60877108"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692091"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]

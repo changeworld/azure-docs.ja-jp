@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2019
+ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230723"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161726"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -26,6 +26,8 @@ ms.locfileid: "79230723"
 ## <a name="access-token"></a>アクセス トークン
 
 [承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、[保護されたリソース サーバー](#resource-server)にアクセスする目的で使用します。 要求されたレベルのアクセスに関して、[リソース所有者](#resource-owner)がクライアントに付与しているアクセス権限を通常 [JSON Web トークン (JWT)][JWT] の形式で 1 つにまとめたものがこのトークンです。 このトークンは、認証対象に関して当てはまる[要求](#claim)をすべて含んでおり、クライアント アプリケーションが特定のリソースにアクセスする際に一種の資格情報として使用することができます。 また、これを使用すると、リソース所有者がクライアントに資格情報を開示する必要がなくなります。
+
+アクセス トークンは短時間のみ有効で、取り消すことはできません。 承認サーバーは、アクセス トークンが発行されたときに[更新トークン](#refresh-token)を発行することもあります。 更新トークンは、通常、confidential クライアント アプリケーションにのみ提供されます。
 
 表現の対象となる資格情報によっては、アクセス トークンを "User+App" や "App-Only" と呼ぶこともあります。 たとえばクライアント アプリケーションが使用する承認付与には、次のようなタイプがあります。
 
@@ -138,6 +140,12 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 アクセス許可要求の構成は、[Azure portal][AZURE-portal] のアプリケーション用の **[API アクセス許可]** ページで、目的の "委任されたアクセス許可" と "アプリケーションのアクセス許可" (後者には全体管理者ロールのメンバーシップが必要) を選択することによって行います。 [public クライアント](#client-application)は、資格情報を安全に維持できないため、要求できるのは委任されたアクセス許可のみです。一方 [confidential クライアント](#client-application)は、委任されたアクセス許可とアプリケーションのアクセス許可のどちらでも要求することができます。 クライアントの[アプリケーション オブジェクト](#application-object)は、宣言された権限をその [requiredResourceAccess プロパティ][Graph-App-Resource]に格納します。
 
+## <a name="refresh-token"></a>更新トークン
+
+[承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、アクセス トークンの有効期限が切れる前に、新しい[アクセス トークン](#access-token)を要求する目的で使用します。 通常、[JSON Web トークン (JWT)][JWT] の形式です。
+
+アクセス トークンとは異なり、更新トークンは取り消すことができます。 クライアント アプリケーションから取り消された更新トークンを使用して新しいアクセス トークンを要求しようとすると、承認サーバーによって要求が拒否され、クライアント アプリケーションが[リソース所有者](#resource-owner)の代わりに[リソース サーバー](#resource-server)にアクセスするためのアクセス許可はなくなります。
+
 ## <a name="resource-owner"></a>リソース所有者
 
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースへのアクセス権を付与することのできるエンティティをいいます。 リソース所有者が人である場合は、"エンド ユーザー" と呼ばれます。 たとえば[クライアント アプリケーション](#client-application)は、[Microsoft Graph API][Microsoft-Graph] を介してユーザーのメールボックスにアクセスする必要があるとき、そのメールボックスのリソース所有者に権限を要求する必要があります。
@@ -146,7 +154,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースのホストとして、[アクセス トークン](#access-token)を提示する[クライアント アプリケーション](#client-application)からのリソース要求 (保護されたリソースに対する要求) を受理し、応答する機能を備えたサーバーをいいます。 保護されたリソース サーバーまたはリソース アプリケーションと呼ばれることもあります。
 
-リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する [Microsoft Graph API][Microsoft-Graph] や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。 
+リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する [Microsoft Graph API][Microsoft-Graph] や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。
 
 リソース アプリケーションの ID 構成は、クライアント アプリケーションと同様、Azure AD テナントへの [登録](#application-registration) を通じて確立され、アプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方が得られます。 Microsoft Graph API など、Microsoft が提供している一部の API には、あらかじめ登録されているサービス プリンシパルが存在し、プロビジョニング時にすべてのテナントで利用できるようになっています。
 
@@ -168,7 +176,7 @@ Microsoft Graph API によって公開されているアプリケーション �
 
 ## <a name="security-token"></a>セキュリティ トークン
 
-要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。 OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2) と [ID トークン](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)がセキュリティ トークンの種類になります。どちらも [JSON Web トークン (JWT)][JWT] として実装されます。
+要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。 OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2)、[更新トークン](#refresh-token)、[ID トークン](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)がセキュリティ トークンの種類になります。いずれも [JSON Web トークン (JWT)][JWT] として実装されます。
 
 ## <a name="service-principal-object"></a>サービス プリンシパル オブジェクト
 

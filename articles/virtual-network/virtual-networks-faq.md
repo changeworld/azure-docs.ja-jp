@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225111"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791988"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -88,7 +88,7 @@ VNet を使用して次のことが行えます。
 いいえ。 マルチキャストとブロードキャストはサポートされていません。
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>VNet 内はどのようなプロトコルを使用できますか。
-VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用することができます。 ユニキャストは VNet 内でサポートされますが、ユニキャスト (ソース ポート UDP/68 / 宛先ポート UDP/67) を経由した動的ホスト構成プロトコル (DHCP) は例外です。 マルチキャスト、ブロードキャスト、IP-in-IP のカプセル化されたパケット、Generic Routing Encapsulation (GRE) のパケットは、VNet 内でブロックされます。 
+VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用することができます。 ユニキャストは VNet 内でサポートされますが、ユニキャスト (ソース ポート UDP/68 / 宛先ポート UDP/67) を経由した動的ホスト構成プロトコル (DHCP) とホストに予約されている UDP ポート 65330 は例外です。 マルチキャスト、ブロードキャスト、IP-in-IP のカプセル化されたパケット、Generic Routing Encapsulation (GRE) のパケットは、VNet 内でブロックされます。 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>VNet 内には、既定ルーターを ping できるでしょうか。
 いいえ。

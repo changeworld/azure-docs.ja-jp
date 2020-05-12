@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 5/4/2020
+ms.openlocfilehash: cb82b3223d50c66b4d6c176a274d5ccf8d510911
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767888"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792107"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -56,7 +56,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
     
 * 一方向のペア:一部の Azure リージョンは一方向にのみペアになっています。 これらのリージョンには、インド西部、ブラジル南部、および US Gov バージニアが含まれます。 
    これは、インド西部のマスター サーバーでインド南部のレプリカを作成できることを意味します。 ただし、インド南部のマスター サーバーでインド西部のレプリカを作成することはできません。 この理由は、インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド西部ではないためです。
-
 
 ## <a name="create-a-replica"></a>レプリカの作成
 
@@ -146,6 +145,8 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) パラメーターは、レプリカ サーバーでロックされます。 
+
+マスター サーバーで上記のパラメーターのいずれかを更新するには、レプリカ サーバーを削除し、マスターでパラメータ値を更新してから、レプリカを再作成してください。
 
 ### <a name="other"></a>その他
 

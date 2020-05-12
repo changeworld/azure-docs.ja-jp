@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/14/2020
-ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/30/2020
+ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80395785"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731902"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復旧
 
@@ -59,14 +59,13 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-Log Analytics ワークスペースを削除するには、「Log Analytics 共同作成者」アクセス許可が必要です。<br>
-ワークスペースの作成時に「*このワークスペース名は既に使用されています*」というエラーメッセージが表示された場合は、次の原因が考えられます。
+ワークスペースを削除するには、少なくとも "*Log Analytics の共同作成者*" のアクセス許可が必要です。<br>
+ワークスペースの作成時に "*このワークスペース名は既に使用されています*" または "*競合*" というエラー メッセージが表示される場合は、次の原因が考えられます。
 * ワークスペース名を使用できず、組織内の誰か、または他の顧客によって使用されている。
-* ワークスペースが過去 14 日以内に削除されており、その名前は論理的な削除期間にわたって予約されている。 論理的な削除をオーバーライドし、すぐにワークスペースを削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。<br>
+* ワークスペースが過去 14 日以内に削除されており、その名前は論理的な削除期間にわたって予約されている。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。<br>
    1. ワークスペースを[回復](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)します。
    2. ワークスペースを[完全に削除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)します。
    3. 同じワークスペース名を使用して新しいワークスペースを作成します。
-
 
 ## <a name="permanent-workspace-delete"></a>ワークスペースの完全削除
 開発やテストなどの一部のシナリオでは、同じ設定とワークスペース名を使用してデプロイを繰り返す必要があるため、論理的な削除方法は適さない場合があります。 このような場合は、ワークスペースを完全に削除し、論理的な削除期間を "オーバーライド" できます。 ワークスペースの完全削除を行うと、そのワークスペース名は解放され、同じ名前を使用して新しいワークスペースを作成できるようになります。
@@ -96,12 +95,7 @@ Log Analytics ワークスペースを削除するには、「Log Analytics 共�
 
 論理的な削除操作の前にワークスペースが関連付けられていたサブスクリプションとリソース グループに対する共同作成者のアクセス許可を持っているユーザーは、論理的な削除の期間中であれば、データと構成、接続されているエージェントを含め、ワークスペースを回復させることができます。 論理的な削除の期間が過ぎると、ワークスペースは回復不能となり、完全な削除の対象に割り当てられます。 論理的な削除期間中は、削除されたワークスペースの名前が維持されるため、新しいワークスペースを作成しようとするときにその名前を使用することはできません。  
 
-以下のワークスペースの作成方法を使用して、ワークスペースを再作成することにより、復旧できます。使用するのは、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) または [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) です。ただし、以下のプロパティに、削除したワークスペースの詳細情報を設定する必要があります。
-
-* サブスクリプション ID
-* リソース グループ名
-* ワークスペース名
-* リージョン
+ご自分のワークスペースを復元するには、削除したワークスペースの詳細 ("*サブスクリプション ID*"、"*リソース グループ名*"、"*ワークスペース名*"、"*領域*") を使用してワークスペースを作成します。 お使いのリソース グループも削除してしまい存在しない場合は、削除前に使用していた同じ名前でリソース グループを作成してから、次のいずれかの方法でワークスペースを作成します。[Azure portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace)、または [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)。
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

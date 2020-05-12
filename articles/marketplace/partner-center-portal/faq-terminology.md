@@ -1,26 +1,24 @@
 ---
-title: パートナー センターのコマーシャル マーケットプレース分析に関するよく寄せられる質問と用語
-description: コマーシャル マーケットプレース分析に関してよく寄せられる質問に対処する方法について説明します。 分析用語のデータ辞書も含まれています。
+title: コマーシャル マーケットプレース分析のよく寄せられる質問と用語集 - パートナー センター
+description: パートナー センターでコマーシャル マーケットプレース分析に関してよく寄せられる質問の答えが得られます。 この記事には、分析用語のデータ辞書も含まれています。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251828"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791478"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語
+# <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>コマーシャル マーケットプレース分析の用語とよく寄せられる質問
 
 この記事では、パートナー センターの分析メッセージに関してよく寄せられる質問について説明します。分析用語の辞書も提供します。
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-このセクションでは、パートナー センターの **[No Analytics Available Yet]\(分析をまだ利用できません\)** メッセージに関してよく寄せられる質問に対する回答を提供します。
+## <a name="common-questions"></a>一般的な質問
 
 **パートナー センターで分析データを表示できません。ページにアクセスすると、下のメッセージが表示されます。なぜですか?**
 

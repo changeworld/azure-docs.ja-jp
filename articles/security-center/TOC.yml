@@ -74,6 +74,8 @@
           href: alerts-schemas.md
         - name: セキュリティ アラートの管理
           href: security-center-managing-and-responding-alerts.md
+        - name: セキュリティ アラートの抑制規則
+          href: alerts-suppression-rules.md
         - name: セキュリティ インシデントを管理する
           href: security-center-incident.md
         - name: クラウドのスマート アラートの関連付け (インシデント)

@@ -1,24 +1,24 @@
 ---
-title: Go-To-Market Services - 商用マーケットプレースのベネフィット | Azure
+title: Go-To-Market Services - 商用マーケットプレースのベネフィット | Azure Marketplace
 description: Go-To-Market Services - このセクションでは、公開元が使用できる Microsoft リソースについて説明します。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/08/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286236"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190335"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
 マーケットプレースに発行した後は、オファーが成功していることを確認する必要があります。 オファーの成長を加速させるために必要なセールス、技術、マーケティングのベネフィットが用意されています。
 
-オファーが発行されると、利用できるベネフィットについての Marketplace 報酬チームによるサポートが始まります。 Marketplace 報酬ベネフィットは、商用マーケットプレースでのエンゲージメントと売上に基づいて提供されます。 エンゲージメントが多いほど、見返りも多くなります。
+オファーが Azure Marketplace または AppSource で有効になったら、[パートナー センター](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace)に進み、資格のあるマーケティング、セールス、技術のベネフィットにアクセスし、アクティベートします。 Marketplace 報酬ベネフィットは、商用マーケットプレースでのエンゲージメントと売上に基づいて提供されます。 エンゲージメントが多いほど、見返りも多くなります。
 
 ## <a name="marketplace-rewards"></a>Marketplace 報酬
 
@@ -32,19 +32,31 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 トランザクション パートナーの場合は、マーケットプレース プラットフォームを通じて請求売上が拡大すると、レベルごとにさらに多くのベネフィットを得られます。 
 
-ネットショップで発行する最小要件は MPNID であるため、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのマーケットプレースを通じてビジネスを強化できます。 
+ネットショップで発行する最小要件は MPNID であるため、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのマーケットプレースを通じてビジネスを強化できます。
 
-パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。 
+パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 
-プログラムのすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
+プログラムのすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)をご覧ください。
 
 始める手順は簡単です。
 
 1. Microsoft AppSource または Azure Marketplace でオファーを発行します。
-2. チームが、マーケットプレース オファーごとに "所有者" または "主連絡先" にご連絡します。 定期的にチェックする個人またはエイリアスを入力することをお勧めしますinfo@company.com のようなエイリアスに送信されるメッセージは、失われることがよくあります。
+2. パートナー センター [ダッシュボード](https://partner.microsoft.com/dashboard/directory)に移動し、[Marketplace Rewards] ページの **[Sales and Marketing benefits]\(営業とマーケティングのベネフィット\)** タブを選択し、ベネフィットの一覧を表示します。
+3. 営業とマーケティングのベネフィットを有効にするには、最初に会社のマーケティングの連絡先を割り当てる必要があります。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
+4. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
+
+    1. 一覧からユーザーを選択します。 割り当てるユーザーが一覧にない場合は、 **[アカウント設定]** で新しいユーザーを追加できます。
+    1. 会社のパートナー センター アカウントに関連付けられているメール アドレスとは異なるユーザーのメール アドレスを入力します。 指定されたマーケティングの連絡先のメール アドレスには、Marketplace Rewards のベネフィットを使用するための手順がメールで送信されます。
+    1. このマーケティングの連絡先の窓口となる電話番号と使用する言語を入力します。 この情報の入力が完了したら、 **[ユーザーの割り当て]** を選択します。
+    1. マーケティングの連絡先を更新した後、使用を開始するベネフィットに対して **[アクティブにする]** を選択します。 ベネフィットをアクティブにすると、1 週間以内に Rewards チームのメンバーからマーケティングの連絡先に連絡を差し上げます。
+
+**技術上のベネフィット**
+
+1. 技術上のベネフィットを使用すると、クラウドおよびハイブリッド ソリューションのプリセールス、設計、導入、アプリ開発の各段階で技術的なサポートを依頼できます。 サポートを依頼するには、依頼フォームに入力して、 **[要求の送信]** を選択します。
+2. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
 
 >[!Note]
->オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、Cloud パートナー ポータルまたはパートナーセンターで、当該オファーの組織内での所有者を確認してください。 その人が通信と次の手順を受け取っているはずです。 <br> <br> 所有者がわからない場合、または所有者が退職した場合は、 https://aka.ms/marketplacepublishersupport でサポート チケットを提出できます。
+>オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。 <br> <br> 所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)でサポート チケットを提出できます。
 
 マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 リストのすべての項目が、リソースとベスト プラクティスに関するセルフサービスのメールの一部として、基本レベルの最適化に関する推奨事項とプロモーションを受け取ります。
 
@@ -56,7 +68,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 ![Go-To-Market ベネフィット](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
+これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)をご覧ください。
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>トランザクション パートナーに対する Marketplace 報酬
 
@@ -77,7 +89,7 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 
 \* チケットの収益のしきい値は Microsoft 365 アプリのみ (Microsoft Teams、Office、Outlook、または SharePoint と統合された SaaS アプリケーション) に適用されます。また、ベネフィットは 2020 年 6 月 30 日までに完了する必要があります。
 
-これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
+これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)をご覧ください。
 
 報酬ベネフィットに加えて、Microsoft AppSource に発行された Dynamics オファーのビジネス アプリケーション パートナーは、[ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) を通じて補助プログラムを利用できます。 これには、ビジネス アプリケーション パートナーのニーズに特化した技術、マーケティング、および販売サポートが含まれます。
 
@@ -85,7 +97,7 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 
 ### <a name="publisher-agreement"></a>発行元契約
 
-このページで説明されているすべてのアクティビティは、[マーケットプレース発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
+このページで説明されているすべてのアクティビティは、[マーケットプレース発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
 
 ### <a name="cancellation-policy"></a>キャンセルに関するポリシー
 
@@ -96,19 +108,17 @@ Microsoft は、次のような発行元に対する Marketplace 報酬ベネフ
 * マーケットプレース リストを使用して違法なアクティビティに関わっている。
 * 商用マーケットプレースから除外された。 
 * オファーを使用して、著作権または商標法に違反するマーケティング コンテンツやその他のコンテンツを公開している。
-* [Azure スポンサー プラン プログラム](https://azure.microsoft.com/offers/ms-azr-0036p/)のポリシーに違反した。これには、独自の内部運用やビットコイン マイニングに Azure スポンサー プランを使用することが含まれますが、それだけではありません。 
+* [Azure スポンサー プラン プログラム](https://azure.microsoft.com/offers/ms-azr-0036p/)のポリシーに違反した。これには、独自の内部運用やビットコイン マイニングに Azure スポンサー プランを使用することが含まれますが、それだけではありません。
 
 ### <a name="offer-availability"></a>オファーの利用可能性
 
 このプランは、Azure Marketplace または Microsoft AppSource でオファーを発行しているすべてのパートナーに対して英語で実施されます。
 
-不正であることが証明されたトランザクションは、発行元の[請求売上プログラム レベル](https://aka.ms/marketplacepublisherrewards)にカウントされません。[リスト、試用版、コンサルティング](#list-trial-and-consulting-benefits)に関するセクション、[トランザクション パートナーの報酬](#marketplace-rewards-for-transact-partners)に関するセクション、[詳細なプログラム デッキ](https://aka.ms/marketplacepublisherrewards)に説明されています。 Microsoft は、不正行為が除去された後、実際に請求された売上に基づいてパートナーを適格レベルに割り当てます。 
+不正であることが証明されたトランザクションは、発行元の請求売上プログラム レベルにカウントされません。[リスト、試用版、コンサルティング](#list-trial-and-consulting-benefits)に関するセクション、[トランザクション パートナーの報酬](#marketplace-rewards-for-transact-partners)に関するセクションに説明されています。 Microsoft は、不正行為が除去された後、実際に請求された売上に基づいてパートナーを適格レベルに割り当てます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Cloud パートナー ポータル](https://cloudpartner.azure.com)でオファーを作成した場合は、サインインしてオファーを作成または構成します。
-
-[パートナー センター](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)でオファーを作成した場合は、サインインしてオファーを作成または構成します。
+[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)でオファーを作成した場合は、サインインしてオファーを作成または構成します。
 
 [利用可能なセルフサービス リソース](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)を確認します。
 

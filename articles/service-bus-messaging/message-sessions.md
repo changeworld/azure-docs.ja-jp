@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a4bc2dcfd1826623516a40be0aff7688d0b6168c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314054"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116691"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
 Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、先入れ先出し (FIFO) および要求 - 応答のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
@@ -64,7 +64,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 上の図には、3 つの同時セッション受信プロセスが示されています。 `SessionId` = 4 の 1 つのセッションには有効な所有クライアントがなく、メッセージはこの特定のセッションから配信されません。 セッションは、サブ キューなどのさまざまな方法で機能します。
 
-セッション受信プロセスによって保持されるセッション ロックは、*peek-lock* 解決モデルによって使用されるメッセージ ロックの傘です。 受信プロセスは 2 つのメッセージを同時に処理できず、メッセージは順番に処理する必要があります。 新しいメッセージは、以前のメッセージが完了または配信不能に移動されたときにのみ取得できます。 メッセージを破棄すると、同じメッセージが、次の受信操作で再利用されます。
+セッション受信プロセスによって保持されるセッション ロックは、*peek-lock* 解決モデルによって使用されるメッセージ ロックの傘です。 セッションに対してロックを保持できるのは、1 つの受信プロセスだけです。 受信プロセスは多数のインフライト メッセージを受け取る可能性がありますが、メッセージは順番に受信されます。 メッセージを破棄すると、同じメッセージが、次の受信操作で再利用されます。
 
 ### <a name="message-session-state"></a>メッセージ セッションの状態
 

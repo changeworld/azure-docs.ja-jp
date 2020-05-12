@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391501"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609359"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>クイック スタート:マネージド アプリケーション定義を作成して発行する
 
@@ -290,7 +290,7 @@ az managedapp definition create \
 
 * **リソース グループ**: マネージド アプリケーション定義が作成されるリソース グループの名前。
 * **ロック レベル**: 管理対象リソース グループに対して設定されるロックの種類。 これによって、このリソース グループに対して問題となるような操作を顧客が実行できないようにします。 現在サポートされているロック レベルは ReadOnly だけです。 ReadOnly が指定されている場合、マネージド リソース グループに存在するリソースの読み取りしか顧客は実行できません。 マネージド リソース グループへのアクセス権が付与されている発行元 ID は、ロックの対象外となります。
-* **authorizations**:管理対象リソース グループへのアクセス許可を付与する際に使うプリンシパル ID とロール定義 ID を記述します。 `<principalId>:<roleDefinitionId>` の形式で指定します。 複数の値が必要な場合は、`<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` という形式で指定します。 このとき値は、スペースで区切って指定します。
+* **authorizations**:管理対象リソース グループへのアクセス許可を付与する際に使うプリンシパル ID とロール定義 ID を記述します。 `<principalId>:<roleDefinitionId>` の形式で指定します。 複数の値が必要な場合は、`<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>` という形式で指定します。 このとき値は、コンマで区切って指定します。
 * **パッケージ ファイルの URI**: 必要なファイルが含まれた .zip パッケージの場所。
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>マネージド アプリケーション定義用に独自のストレージを使用する

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7167cbb26e69941cade01ab8c0b8d9dc633f0d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2a950037aed2a8ded4d4e55920721285cbfc05c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72168382"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204468"
 ---
 カスタム IPsec ポリシーを操作する場合は、次の要件に注意してください。
 
@@ -28,9 +28,9 @@ ms.locfileid: "72168382"
 
 | 設定 | パラメーター |
 |--- |--- |
-| IKE 暗号化 | AES256、AES192、AES128 |
-| IKE 整合性 | SHA384、SHA256、SHA1 |
-| DH グループ | DHGroup24、ECP384、ECP256、DHGroup14、DHGroup2048、DHGroup2 |
-| IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128 |
-| IPsec 整合性 | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1 |
-| PFS グループ | PFS24、ECP384、ECP256、PFS2048、PFS2 |
+| IKE 暗号化 | GCMAES256、GCMAES128、AES256、AES128 |
+| IKE 整合性 | SHA384、SHA256 |
+| DH グループ | ECP384、ECP256、DHGroup24、DHGroup14 |
+| IPsec 暗号化 | GCMAES256、GCMAES128、AES256、AES128、なし |
+| IPsec 整合性 | GCMAES256、GCMAES128、SHA256 |
+| PFS グループ | ECP384、ECP256、PFS24、PFS14、なし |

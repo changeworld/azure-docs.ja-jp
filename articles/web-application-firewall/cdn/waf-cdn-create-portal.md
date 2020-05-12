@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 738be1361bfbd944575abceb08781b241336f6e8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472544"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608815"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure CDN の WAF ポリシーを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "79472544"
 
 > [!div class="checklist"]
 > * WAF ポリシーを作成する
-> * CDN エンドポイントに関連付ける
+> * CDN エンドポイントに関連付ける。 WAF ポリシーを関連付けることができるのは、**Azure CDN Standard from Microsoft** SKU でホストされたエンドポイントだけです。
 > * WAF 規則を構成する
 
 ## <a name="prerequisites"></a>前提条件
@@ -36,7 +36,7 @@ ms.locfileid: "79472544"
 1. 画面の左上で **[リソースの作成]** を選択し、**WAF** を検索して、 **[Web アプリケーション ファイアウォール]** を選択して、 **[作成]** を選択します。
 2. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | 次に対するポリシー            |[Azure CDN (プレビュー)] を選択します。|
     | サブスクリプション            |Front Door のサブスクリプションの名前を選択します。|
@@ -47,7 +47,7 @@ ms.locfileid: "79472544"
 
 3. **[WAF ポリシーを作成する]** ページの **[関連付け]** タブで、 **[CDN エンドポイントの追加]** を選択し、次の設定を入力して、 **[追加]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | CDN プロファイル              | 実際の CDN プロファイル名を選択します。|
     | エンドポイント           | 実際のエンドポイントの名前を選択し、 **[追加]** を選択します。|

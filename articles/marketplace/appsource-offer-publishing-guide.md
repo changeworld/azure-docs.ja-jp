@@ -1,58 +1,42 @@
 ---
-title: AppSource ストアフロント用の AppSource オファー発行ガイド | Azure Marketplace
-description: Office 365、Dynamics 365、Power BI、Power Apps の AppSource ストアフロントにアプリを発行するためのステップ バイ ステップ ガイドおよび発行チェックリスト
-services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
+title: Microsoft AppSource のオファーの公開ガイド
+description: Office 365、Dynamics 365、Power Apps、Power BI で Microsoft AppSource にアプリを公開するためのステップ バイ ステップ ガイドおよび公開チェックリスト
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 82b1d096b1641915fc2dc58e000c40c18731c28c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60fb95e47831363353e553d8e55c56e812127bfd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286644"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186188"
 ---
-# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365、Dynamics 365、Power BI、Power Apps 用のオファー発行ガイド
+# <a name="offer-publishing-guide-for-office-365-dynamics-365-power-apps-and-power-bi"></a>Office 365、Dynamics 365、Power Apps、Power BI のオファーの公開ガイド
 
-AppSource ストアフロントには、Dynamics 365、Office 365、Power BI、Power Apps 上でビルドされるまたはそれらを拡張するオファーが含まれます。 これらの製品にはそれぞれ発行プロセスをガイドするドキュメントが用意されています。 各オファーの種類について詳しくは、以下のリンクをご覧ください。 
+Microsoft AppSource には、Office 365、Dynamics 365、Power Apps、Power BI 上でビルドされる、またはそれらを拡張するオファーが含まれます。 これらの製品にはそれぞれ、公開プロセスをガイドする固有のドキュメントが用意されています。 
 
-AppSource には有料オファー、リスト オファーと試用版オファーがあり、行動喚起は、"今すぐ入手"、"お問い合わせ"、"今すぐ試す" です。 
+AppSource には有料オファー、一覧オファー、試用版オファーがあり、行動喚起は "*今すぐ入手*"、"*お問い合わせ*"、"*今すぐ試す*" です。
 
 ## <a name="product-specific-guides"></a>製品固有のガイド
 
-### <a name="office-365"></a>Office 365
+各オファーの種類の公開プロセスとガイドラインへのリンクについては、下の表を参照してください。
 
-[公開プロセスとガイドライン](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)を確認します。
+| Product    | 公開ガイダンス  |
+| :------------------- | :-------------------|
+| Office 365 | [公開プロセスとガイドライン](/office/dev/store/submit-to-appsource-via-partner-center)を確認します。 |
+| Dynamics 365 Business Central | パートナー センターでオファーを公開するには、「[新しい Dynamics 365 Business Central オファーの作成](./partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
+| Dynamics 365 for Finance and Operations | Enterprise Edition 向けに開発している場合は、[公開プロセスとガイドライン](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。<br/>パートナー センターでオファーを公開するには、「[新しい Dynamics 365 for Operations オファーを作成する](./partner-center-portal/create-new-operations-offer.md)」を参照してください。  |
+| Dynamics 365 for Customer Engagement | [公開プロセスとガイドライン](/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。<br/>パートナー ポータルでオファーを公開するには、「[新しい Dynamics 365 for Customer Engagement & Power Apps オファーの作成](./partner-center-portal/create-new-customer-engagement-offer.md)」を参照してください。  |
+| Power Apps | [顧客が AppSource 上でアプリの体験版を使用する](https://powerapps.microsoft.com/blog/appsource-test-drive/)方法について学習します。 |
+| Power BI | [公開プロセスとガイドライン](/power-bi/developer/office-store)を確認します。 |
 
-### <a name="power-apps"></a>Power Apps
-
-顧客が [AppSource 上でアプリの体験版を使用する](https://powerapps.microsoft.com/blog/appsource-test-drive/)方法について学習します。
-
-### <a name="power-bi"></a>Power BI
-
-[公開プロセスとガイドライン](https://docs.microsoft.com/power-bi/developer/office-store)を確認します。
-
-### <a name="dynamics-365"></a>Dynamics 365
-
-#### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
-Enterprise Edition 向けに開発する場合は、[公開プロセスとガイドライン](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。
-
-Cloud パートナー ポータルでオファーを公開する方法については、「[Dynamics 365 for Finance and Operations プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)」を参照してください。
-
-### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement
-[公開プロセスとガイドライン](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。
-
-Cloud パートナー ポータルでオファーを公開する方法については、「[Dynamics 365 for Customer Engagement プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer)」を参照してください。
+---
 
 ## <a name="next-steps"></a>次のステップ
 
-まだ行っていない場合は、 
+まだ行っていない場合は、[Azure Marketplace を使用してクラウド ビジネスを拡大する](https://azuremarketplace.microsoft.com/sell)方法について学習します。
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
-
-Cloud パートナー ポータルに登録済みかつ Cloud パートナー ポータルで作業している場合は、 
-
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
+新しいオファーを作成するか、既存のオファーを完成させるには、[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)に進みます。
