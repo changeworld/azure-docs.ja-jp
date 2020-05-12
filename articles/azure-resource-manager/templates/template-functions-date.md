@@ -2,13 +2,13 @@
 title: テンプレート関数 - 日付
 description: Azure Resource Manager テンプレートで、日付の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 75234a142b9f2fbe61c337bfeb378b47534bac79
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/27/2020
+ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986208"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192299"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM テンプレート用の日付関数
 
@@ -21,7 +21,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
 
 `dateTimeAdd(base, duration, [format])`
 
-ベースの datetime 値に期間を加算します。
+ベースの値に期間を加算します。 ISO 8601 形式である必要があります。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -242,3 +242,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
     }
 }
 ```
+
+## <a name="next-steps"></a>次のステップ
+
+* Azure Resource Manager テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。

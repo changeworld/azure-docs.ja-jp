@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127573"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692242"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -82,6 +82,16 @@ ControlUp を Windows Virtual Desktop で使用すると、Windows Virtual Deskt
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)
 - [パートナーの Web サイトにアクセスする。](https://www.controlup.com/solutions/ms_wvd/)
 
+## <a name="dell"></a>Dell
+
+![Dell のロゴ](./media/partners/dell.png)
+
+Dell Technologies のシン クライアントは、Microsoft Azure および Windows Virtual Desktop サービスにアクセスするために最適化されています。 Wyse シン クライアントは、協調的なナレッジ ワーカーからグラフィックを多用するパワー ユーザーまで、さまざまなニーズを満たすことができます。高品質なコンピューティング エクスペリエンスにより、増え続けるアプリやコンテンツを最大限に活用できます。 Wyse シン クライアントはスペースに余裕のない環境に最適で、汎用性の高いフォーム ファクターと多様なマウント オプションにより、ユーザーの作業方法に適応します。
+
+Wyse シン クライアントはセキュリティを念頭に置いて設計されており、攻撃対象領域の限定、セキュリティ コンプライアンス標準のサポート、高度な多要素認証ソリューションを実現しています。 セキュリティで高度に保護されたシン クライアントを Dell 独自の Wyse ThinOS と共にデプロイするか、商用として実証済みの設計により強化された Wyse ThinLinux、および Dell が追加したセキュリティ機能を実装する Windows 10 IoT Enterprise のクラウド アプリケーションと仮想ワークスペースに安全にアクセスします。 Wyse Management Suite では、HTTPS ベースの安全な通信とロール ベース管理のための Active Directory 認証により、Wyse エンドポイントが常に最新の状態に保たれます。また、WMS Pro のモバイル アプリにより、IT 担当者は重要なアラートを確認し、1 回のタップでリアルタイム コマンドをいつでも送信できます。
+
+- [パートナーの Web サイトにアクセスする。](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf)
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![deviceTRUST ロゴ](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ IGEL は、Microsoft Azure および Windows Virtual Desktop サービスの承�
  
 IGEL OS は、Citrix、Microsoft、VMware のすべての一般的な仮想アプリ、デスクトップ、およびクラウド ワークスペース クライアントのプロトコルをサポートしています。 これには、周辺機器、インターフェイス、およびプロトコルの 85 件のパートナーからの統合テクノロジが含まれており、組織が Windows Virtual Desktop サービスを独自の独自のユーザー環境にすばやく導入するのに役立ちます。 IGEL OS は、読み取り専用のモジュール型エンドポイント OS であり、改ざんからの保護に役立ちます。 また、エンドポイント ハードウェア (一部の選択されたモデル) または UEFI プロセスから Azure クラウドおよび Windows Virtual Desktop サービスに至るまで、エンドポイントで実行されるすべての重要な主要プロセスの整合性を検証する完全な "信頼チェーン" も含まれるようになりました。 IGEL OS を使用すると、企業は、ユーザーのエンドポイント デバイスの整合性、セキュリティ、および管理性を完全に信頼して、Azure クラウドから Windows Virtual Desktop にサブスクライブすることができます。
 
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO)
 - [パートナーの Web サイトにアクセスする。](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
@@ -191,6 +202,7 @@ PolicyPak Software は、アプリケーション、デスクトップ、ブラ�
 
 PolicyPak の主なユース ケースは、ローカル管理者権限の削除と UAC プロンプトの対処、ランサムウェアのブロック、複数のブラウザーの管理、Internet Explorer のエンタープライズ モードと互換性モードの管理、GPO 数の削減、Windows 10 ファイルの関連付けの管理、Windows 10 スタート メニューとタスク バーの管理、および Windows 10 機能とオプション機能の管理です。  
 
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN)
 - [パートナーの Web サイトにアクセスする。](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ Printix は、オフィスの印刷リソースへのユーザー接続を自動
 
 印刷は、ほぼすべてのオフィスおよび小規模なビジネス環境での基本的なタスクです。 Windows Virtual Desktop を最大限に活用し、優れたユーザー エクスペリエンスを提供するには、ユーザーが最小限の労力と最大の信頼性でプリンターに確実に接続できるようにすることが不可欠です。 Printix を使用すると、シングル サインオン (SSO)、サイレント構成、定期更新、および印刷環境の継続的な監視によって Windows Virtual Desktop を最大限に活用できます。
 
-- [共同ソリューションの概要を参照する](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [パートナーの Web サイトにアクセスする](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [パートナーの Web サイトにアクセスする。](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ RDPSoft は、強力で安価な監視、管理、およびレポートのソリ
  
 RDPSoft の Remote Desktop Commander ソリューションにより、Windows Virtual Desktop の管理機能が強化されます。 Premium Management 機能を利用すると、リモート アシスタンス、ユーザー セッション、プロセス管理を実現することで、デスク スタッフをサポートするための Windows Virtual Desktop 管理タスクの委任が簡略化されます。 同時に、Remote Desktop Commander Suite は、ユーザーごとのパフォーマンスと負荷、ユーザーのアクティビティと監査、Windows Virtual Desktop の接続品質 (待機時間と帯域幅)、ライセンス、およびセキュリティに関する豊富なメトリックを、確認用の中央の Azure SQL データベース インスタンス内に収集します。 RDPSoft を使用すれば、豊富な履歴レポートと包括的なダッシュボードをクリックするだけで済みます。
 
-- [パートナーの Web サイトにアクセスする](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [パートナーの Web サイトにアクセスする。](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ sepago は、ケルン在住の 4 人の仲間によって 2002 年に設立さ�
 
 sepago のイノベーションおよび開発ラボでは、ビッグ データと AI テクノロジを使用してスマート ソリューションを構築しています。 これらのソリューションは、Windows Virtual Desktop などのパートナー製品のビジネス、ユーザー エクスペリエンス、および管理の向上に焦点を当てています。
 
-- [パートナーの Web サイトにアクセスする](https://www.sepago.de/wvd-value-add-tools/)
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)
+- [パートナーの Web サイトにアクセスする。](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -263,7 +276,18 @@ uberAgent を開発した vast limits 社は、Windows Virtual Desktop のデプ
 
 uberAgent は、エンド ユーザー コンピューティング向けに設計された監視および分析製品であり、データを収集するだけでなく、重要な情報を顧客に提供します。 uberAgent には独自のメトリックがあり、ユーザー エクスペリエンス、アプリケーションのパフォーマンス、エンドポイントのセキュリティの主要な側面がカバーされており、システムのユーザー密度に影響を与えることなく、Windows Virtual Desktop VM について知る必要があるすべてのことを教えてくれます。 uberAgent を使用すると、トラブルシューティングが簡単になり、サイズ変更に役立ち、情報セキュリティに不可欠な豊富な情報が提供されます。
 
-- [パートナーの Web サイトにアクセスする](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [パートナーの Web サイトにアクセスする。](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+
+## <a name="workspace-365"></a>Workspace 365
+
+![Workspace 365 のロゴ](./media/partners/workspace-365.png)
+
+Workspace 365 はすべての情報 (ビジネス データ、文書、通信、マイクロ アプリ) を統合し、任意のローカル、Web、またはホストされるアプリケーションへのアクセスを 1 つのワークスペースで提供します。 ユーザーのロール、場所、デバイス、ブラウザーなどに自動的に適応し、パーソナライズされたワークスペースを提供します。 基盤としてどのようなテクノロジを使用していても、ユーザーは簡素化された一貫性のあるエクスペリエンスを得られます。 RDP、Citrix、レガシ アプリケーションなどの現在のソリューションを統合し、同じユーザー エクスペリエンスを維持しながら Windows Virtual Desktop にそれらを移動できます。 さらに、SharePoint、OneDrive、Teams、ファイル サーバーなど、すべてのファイルの場所を 1 つのドキュメント管理アプリに統合できます。
+
+Workspace 365 により、IT 管理者は、アクセス許可に基づいて Windows Virtual Desktop 対応アプリケーションをユーザーが使用できるようにします。 その後、管理者は、それらのアプリケーションを共有アプリケーション グループに追加できます。 Windows Virtual Desktop アプリケーションが Workspace 365 に表示されると、ユーザーは再度サインインせずに、ワークスペースからそれを開くことができます。 
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh)
+- [パートナーの Web サイトにアクセスする。](https://workspace365.net/product-tour/hybrid-workspace-365/)
 
 ## <a name="workspot"></a>Workspot
 
@@ -279,4 +303,4 @@ Workspot により、クラウド デスクトップ インフラストラクチ
 ## <a name="next-steps"></a>次のステップ
 
 - [Windows Virtual Desktop について詳細を確認する。](overview.md)
-- [Windows Virtual Desktop でテナントを作成する。](tenant-setup-azure-active-directory.md)
+- [Windows Virtual Desktop でテナントを作成する。](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)

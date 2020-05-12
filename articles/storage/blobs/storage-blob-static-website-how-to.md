@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 056e23f0f0cf1a3a1c70042cef3c92dd41f14f82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247012"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839166"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -159,8 +159,11 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 この例では、Azure Cloud Shell セッションからコマンドを実行していることを前提としています。
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
 ```
+
+> [!NOTE] 
+> ブラウザーが内容を表示せずに、ファイルのダウンロードをユーザーに要求する場合は、コマンドに `--content-type 'text/html; charset=utf-8'` を追加します。 
 
 * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
@@ -178,11 +181,13 @@ az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-a
 ```powershell
 # upload a file
 set-AzStorageblobcontent -File "<path-to-file>" `
--Properties @{ ContentType = "text/html; charset=utf-8";} `
 -Container `$web `
 -Blob "<blob-name>" `
 -Context $ctx
 ```
+
+> [!NOTE] 
+> ブラウザーが内容を表示せずに、ファイルのダウンロードをユーザーに要求する場合は、コマンドに `-Properties @{ ContentType = "text/html; charset=utf-8";}` を追加します。
 
 * `<path-to-file>` プレースホルダーの値を、アップロードするファイルへの完全修飾パス (例: `C:\temp\index.html`) に置き換えます。
 

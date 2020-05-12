@@ -8,10 +8,10 @@ ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685984"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
@@ -101,7 +101,7 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 
 * ツールによって、ソースとターゲットの場所でサポートされている必要なファイルの忠実性が保持されるか。
 
-    場合によっては、ターゲット ストレージで、ソースと同じ忠実性がサポートされていないことがありますが、 ターゲット ストレージがニーズを十分に満たすものである場合、ツールはターゲットのファイル忠実性の機能にのみ適合する必要があります。
+    場合によっては、ターゲット ストレージで、ソースと同じ忠実性がサポートされていないことがありますが、 ターゲット ストレージが必要性を十分に満たすものである場合、ツールはターゲットのファイル忠実性の機能にのみ適合する必要があります。
 
 * ツールには、移行戦略にツールを適合させるための機能があるか。
 

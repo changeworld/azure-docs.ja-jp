@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a860b005457c6e02187423a3ffbbc63fe7c758b1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314065"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187530"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
@@ -31,7 +31,7 @@ Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作
 
 ## <a name="use-unoptimized-microsoft-teams"></a>最適化されていない Microsoft Teams を使用する
 
-Windows Virtual Desktop 環境で最適化されていない Microsoft Teams を使用して、Microsoft Teams の完全なチャット機能とコラボレーション機能、および音声通話を活用できます。 最適化されていない通話では、ホスト CPU の使用量が多いため、通話の音声品質はホストの構成によって変わります。
+Windows Virtual Desktop 環境で Microsoft Teams を使用して、Microsoft Teams のチャット機能とコラボレーション機能を活用できます。 Windows Virtual Desktop では、VDI オーディオとビデオ (AV) 最適化で Teams がサポートされません。 通話と会議はサポートされていません。 組織のポリシーによって許可される場合、音声で通話したり、音声で会議に参加したりできますが、通話の音声品質は最適化されておらず、ホスト構成次第であり、安定していないことがあります。 詳細については、「[VDI 上の Teams のパフォーマンスに関する考慮事項](https://docs.microsoft.com/microsoftteams/teams-for-vdi#teams-on-vdi-performance-considerations)」を参照してください。
 
 ### <a name="prepare-your-image-for-teams"></a>Teams 用のイメージを準備する
 
@@ -66,8 +66,8 @@ Teams をコンピューター別にインストールするには、ホスト�
       ```
 
       > [!NOTE]
-      > MSI 設定 ALLUSER=1 を使用して Teams をインストールすると、自動更新は無効になります。 少なくとも 1 か月に 1 回、Teams を更新することをお勧めします。
-      
-### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル プロパティをカスタマイズする
+      > MSI 設定 ALLUSER=1 を使用して Teams をインストールすると、自動更新は無効になります。 少なくとも 1 か月に 1 回、Teams を更新することをお勧めします。 Teams デスクトップ アプリのデプロイの詳細については、「[Teams デスクトップ アプリを VM に展開する](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm)」を参照してください。
+
+## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル プロパティをカスタマイズする
 マルチ モニター エクスペリエンス、マイクの有効化、オーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 **Set-RdsHostPool** コマンドレットの **-CustomRdpProperty** パラメーターを使用して、Windows Virtual Desktop の RDP プロパティをカスタマイズできます。
 サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)」を参照してください。

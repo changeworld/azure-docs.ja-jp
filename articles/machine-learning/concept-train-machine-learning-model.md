@@ -1,5 +1,5 @@
 ---
-title: モデルのトレーニング方法
+title: モデルを構築し、トレーニングする
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用してモデルをトレーニングするために使用できるさまざまな方法について説明します。 Estimator では、Scikit-learn、TensorFlow、Keras、PyTorch、Chainer などの広く使われているフレームワークを簡単に操作する方法が提供されます。 Machine Learning パイプラインを使用すると、無人実行のスケジュール設定、異種コンピューティング環境の使用、ワークフローの一部再利用が簡単になります。 また、実行構成では、トレーニング プロセスを実行するコンピューティング先をきめ細かく制御できます。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79129774"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792345"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 

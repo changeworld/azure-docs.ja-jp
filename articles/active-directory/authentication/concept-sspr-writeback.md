@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 787c15c11c995c7eb30662131302658175c7f877
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393019"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127838"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -130,6 +130,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
    * 管理者による強制的なパスワード変更 (パスワードの期限切れなど)。
    * 管理者により[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行された管理者によるセルフサービス パスワード リセット。
    * [Azure portal](https://portal.azure.com) から管理者が開始したエンドユーザーのパスワードのリセット。
+   * [Microsoft Graph API ベータ版](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)から管理者が開始したエンドユーザーのパスワードのリセット。
 
 ## <a name="unsupported-writeback-operations"></a>サポートされないライトバック操作
 
@@ -138,7 +139,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 * **サポートされないエンドユーザーの操作**
    * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API を使った、エンド ユーザーによるパスワードのリセット。
 * **サポートされない管理者の操作**
-   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API から管理者が開始したエンド ユーザーのパスワードのリセット。
+   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API ベータ版](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
    * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット。
 
 > [!WARNING]
