@@ -1,42 +1,50 @@
 ---
 title: チュートリアル - Azure PowerShell を使用してカスタム VM イメージを作成する
-description: このチュートリアルでは、Azure PowerShell を使って Azure にカスタム仮想マシン イメージを作成する方法について説明します
-documentationcenter: virtual-machines
+description: このチュートリアルでは、Azure PowerShell を使用して、Azure 共有イメージ ギャラリーに格納される Windows カスタム仮想マシン イメージを作成する方法を学習します。
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/30/2018
+ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7360798f2f95184145a856babf501e3080cbaaf4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76274201"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791580"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
+# <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
 
-カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージを使用してデプロイのブートストラップを実行し、複数の VM で一貫性を確保することができます。 このチュートリアルでは、PowerShell を使用して Azure 仮想マシンの独自のカスタム イメージを作成します。 学習内容は次のとおりです。
+イメージを使用してデプロイのブートストラップを実行し、複数の VM で一貫性を確保することができます。 このチュートリアルでは、PowerShell を使用して Azure 仮想マシンの独自の特殊化されたイメージを作成し、共有イメージ ギャラリーに格納します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * VM を sysprep して汎用化する
-> * カスタム イメージを作成する
-> * カスタム イメージから VM を作成する
-> * サブスクリプション内のすべてのイメージを一覧表示する
-> * イメージを削除する
+> * Shared Image Gallery を作成する
+> * イメージ定義を作成する
+> * イメージ バージョンを作成する
+> * イメージから VM を作成する 
+> * イメージ ギャラリーを共有する
 
-パブリック プレビューでは、[Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) サービスが含まれています。 テンプレートにカスタマイズを記述するだけで、この記事のイメージ作成手順が処理されます。 [Azure Image Builder (プレビュー) をお試しください](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder)。
+
 
 ## <a name="before-you-begin"></a>開始する前に
 
-以下の手順では、既存の VM を取得し、新しい VM インスタンスの作成に使用できる再利用可能なカスタム イメージに変換する方法について詳しく説明します。
+以下の手順では、既存の VM を取得し、新しい VM の作成に使用できる再利用可能なカスタム イメージに変換する方法について詳しく説明します。
 
-このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、この[サンプル スクリプト](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)で仮想マシンを作成できます。 このチュートリアルを実行するときは、リソース グループと VM の名前を適宜置き換えてください。
+このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、[PowerShell クイックスタート](quick-create-powershell.md)を参照して、このチュートリアルで使用する VM を作成できます。 このチュートリアルを実行するときは、リソース名を適宜置き換えてください。
+
+## <a name="overview"></a>概要
+
+[共有イメージ ギャラリー](shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
+
+共有イメージ ギャラリーを使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
+
+共有イメージ ギャラリー機能には、次のような複数のリソースの種類があります。
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -44,124 +52,173 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
-## <a name="prepare-vm"></a>VM の準備
+## <a name="get-the-vm"></a>VM を取得する
 
-仮想マシンのイメージを作成するには、ソース VM を一般化して割り当てを解除し、Azure で一般化済みとマークすることにより、ソース VM を準備する必要があります。
-
-### <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
-
-特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
-
-
-1. 仮想マシンへの接続
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを *%windir%\system32\sysprep* に変更し、`sysprep.exe` を実行します。
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
-4. **[シャットダウン オプション]** の **[シャットダウン]** を選択し、 **[OK]** をクリックします。
-5. Sysprep は完了時に仮想マシンをシャットダウンします。 **VM は再起動しないでください**。
-
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>VM の割り当てを解除して VM を汎用としてマークする
-
-イメージを作成するには、VM の割り当てを解除し、Azure で VM を一般化済みとしてマークする必要があります。
-
-[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用して VM の割り当てを解除します。
+リソース グループで利用できる VM は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して一覧表示できます。 VM の名前とリソース グループがわかったら、もう一度 `Get-AzVM` を使用して VM オブジェクトを取得し、後で使用できるよう変数に格納することができます。 この例では、*sourceVM* という名前の VM を "myResourceGroup" リソース グループから取得し、変数 *$vm* に割り当てています。 
 
 ```azurepowershell-interactive
-Stop-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Force
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
+   -ResourceGroupName myResourceGroup
 ```
 
-`-Generalized`Set-AzVm[ を使用して、仮想マシンの状態を ](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) に設定します。 
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。
+
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myGalleryRG* という名前のリソース グループが *EastUS* リージョンに作成されます。
+
+```azurepowershell-interactive
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'EastUS'
+```
+
+## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
+
+イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。 ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
+
+イメージ ギャラリーは、[New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) を使用して作成します。 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
+
+```azurepowershell-interactive
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
+```
+
+
+## <a name="create-an-image-definition"></a>イメージ定義を作成する 
+
+イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)に関するページを参照してください。
+
+イメージの定義は、[New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、ギャラリー イメージは *myGalleryImage* という名前で、特殊化されたイメージ用に作成されています。 
+
+```azurepowershell-interactive
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
+```
+
+
+## <a name="create-an-image-version"></a>イメージ バージョンを作成する
+
+[New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用して、VM からイメージ バージョンを作成します。 
+
+イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
+
+この例のイメージ バージョンは *1.0.0* で、"*米国東部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。 レプリケーションのターゲット リージョンを選択するときは、レプリケーションのターゲットとして "*ソース*" リージョンを含める必要があります。
+
+VM からイメージ バージョンを作成するには、`-Source` に `$vm.Id.ToString()` を使用します。
+
+```azurepowershell-interactive
+   $region1 = @{Name='South Central US';ReplicaCount=1}
+   $region2 = @{Name='East US';ReplicaCount=2}
+   $targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $vm.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
+```
+
+イメージをすべてのターゲット リージョンにレプリケートするにはしばらく時間がかかる場合があります。
+
+
+## <a name="create-a-vm"></a>VM の作成 
+
+特殊化されたイメージが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットの使用。 このイメージを使用するには、Set-AzVMSourceImage を使用し、-Id をイメージ定義 ID (この場合は $galleryImage.Id) に設定して、常に最新のイメージ バージョンを使用するようにします。 
+
+必要に応じて、この例のリソース名を置き換えてください。 
+
+```azurepowershell-interactive
+# Create some variables for the new VM.
+$resourceGroup = "myResourceGroup"
+$location = "South Central US"
+$vmName = "mySpecializedVM"
+
+# Create a resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Create the network resources.
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name $vmName -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using $imageVersion.Id to specify the image version.
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMSourceImage -Id $galleryImage.Id | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+```
+
+
+## <a name="share-the-gallery"></a>ギャラリーを共有する
+
+イメージ ギャラリー レベルでアクセスを共有することをお勧めします。 電子メール アドレスと [Get-AzADUser](/powershell/module/az.resources/get-azaduser) コマンドレットを使用して、ユーザーのオブジェクト ID を取得し、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用して、ギャラリーへのアクセス権を付与します。 この例のサンプル電子メール alinne_montes@contoso.com を独自の情報に置き換えます。
+
+```azurepowershell-interactive
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
+```
    
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループおよびすべての関連リソースを削除できます。
+
 ```azurepowershell-interactive
-Set-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Generalized
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the VM
+Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
+## <a name="azure-image-builder"></a>Azure Image Builder
 
-## <a name="create-the-image"></a>イメージの作成
-
-[New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) と [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage) を使用して、VM のイメージを作成できるようになりました。 次の例では、*myVM* という名前の VM から *myImage* という名前のイメージを作成します。
-
-仮想マシンを取得します。 
-
-```azurepowershell-interactive
-$vm = Get-AzVM `
-   -Name myVM `
-   -ResourceGroupName myResourceGroup
-```
-
-イメージの設定を作成します。
-
-```azurepowershell-interactive
-$image = New-AzImageConfig `
-   -Location EastUS `
-   -SourceVirtualMachineId $vm.ID 
-```
-
-イメージを作成します。
-
-```azurepowershell-interactive
-New-AzImage `
-   -Image $image `
-   -ImageName myImage `
-   -ResourceGroupName myResourceGroup
-``` 
-
- 
-## <a name="create-vms-from-the-image"></a>イメージからの VM の作成
-
-イメージが用意できたので、イメージから新しい VM を 1 つ以上作成できます。 カスタム イメージからの VM の作成は、Marketplace イメージを使用した VM の作成に似ています。 Marketplace イメージを使うときは、イメージ、イメージ プロバイダー、プラン、SKU、バージョンに関する情報を提供する必要があります。 リソース グループが同じであれば、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットに設定されている簡易パラメーターを利用し、カスタム イメージの名前を指定する必要があります。 
-
-この例では、*myResourceGroup* で *myImage* イメージから *myVMfromImage* という名前の VM を作成します。
-
-
-```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVMfromImage" `
-    -ImageName "myImage" `
-    -Location "East US" `
-    -VirtualNetworkName "myImageVnet" `
-    -SubnetName "myImageSubnet" `
-    -SecurityGroupName "myImageNSG" `
-    -PublicIpAddressName "myImagePIP" `
-    -OpenPorts 3389
-```
-
-1 つのイメージからの同時デプロイ数は 20 VM を上限とするようお勧めします。 同じカスタム イメージからの 20 VM を超える大規模な同時デプロイを予定している場合は、複数のイメージ レプリカを含んだ [Shared Image Gallery](shared-image-galleries.md) を使用してください。 
-
-
-## <a name="image-management"></a>イメージの管理 
-
-ここでは、一般的なマネージド イメージ タスクと PowerShell を使用してそれらを完了する方法の例をいくつか示します。
-
-すべてのイメージの名前を一覧表示します。
-
-```azurepowershell-interactive
-$images = Get-AzResource -ResourceType Microsoft.Compute/images 
-$images.name
-```
-
-イメージを削除します。 この例では、*myImage* という名前のイメージを *myResourceGroup* から削除します。
-
-```azurepowershell-interactive
-Remove-AzImage `
-    -ImageName myImage `
-    -ResourceGroupName myResourceGroup
-```
+Azure では、Packer 上に構築された [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) サービスも提供しています。 テンプレートにカスタマイズを記述するだけで、イメージの作成が処理されます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、カスタム VM イメージを作成しました。 以下の方法を学習しました。
+このチュートリアルでは、特殊化された VM イメージを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
-> * VM を sysprep して汎用化する
-> * カスタム イメージを作成する
-> * カスタム イメージから VM を作成する
-> * サブスクリプション内のすべてのイメージを一覧表示する
-> * イメージを削除する
+> * Shared Image Gallery を作成する
+> * イメージ定義を作成する
+> * イメージ バージョンを作成する
+> * イメージから VM を作成する 
+> * イメージ ギャラリーを共有する
 
 次のチュートリアルに進み、高可用性仮想マシンを作成する方法について学習してください。
 
