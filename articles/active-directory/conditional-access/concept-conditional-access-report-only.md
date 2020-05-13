@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd41e79a1e08c57e806f6ada32faccfa5fdf5792
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c5643b0ce9d93c28372b30e6fc114816cafbce6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295283"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690463"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>条件付きアクセスのレポート専用モードとは
 
@@ -26,7 +26,7 @@ ms.locfileid: "80295283"
 
 - 条件付きアクセス ポリシーをレポート専用モードで有効にできます。
 - サインイン中に、レポート専用モードになっているポリシーが評価されますが、強制はされません。
-- 結果は、サインイン ログの詳細にある **[条件付きアクセス]** および **[レポート専用 (プレビュー)]** タブに記録されます。
+- 結果は、サインイン ログの詳細にある **[条件付きアクセス]** および **[レポート専用]** タブに記録されます。
 - Azure Monitor サブスクリプションをお持ちのお客様は、条件付きアクセスに関する分析情報のブックを使用して、条件付きアクセス ポリシーの影響を監視できます。
 
 > [!WARNING]

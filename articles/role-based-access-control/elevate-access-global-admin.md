@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/03/2019
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137458"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733663"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる。
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
 Azure Active Directory (Azure AD) の全体管理者には、自分のディレクトリにおいて、すべてのサブスクリプションと管理グループにアクセスする権限が与えられていない場合があります。 この記事では、すべてのサブスクリプションと管理グループにアクセスできるよう、権限を昇格させる方法について説明します。
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) の全体管理者には、自分のディレ�
 
 ## <a name="why-would-you-need-to-elevate-your-access"></a>アクセス権を昇格が必要な理由
 
-全体管理者であれば、次のような作業を行う場合が考えられます。
+全体管理者であれば、次のような操作を行う場合が考えられます。
 
 - ユーザーが Azure のサブスクリプションか管理グループにアクセスできなくなったとき、アクセス権を回復する
 - 別のユーザーまたは自分に Azure のサブスクリプションまたは管理グループへのアクセス権を付与する
@@ -55,9 +55,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)に全体管理者としてサインインします。
 
-1. **Azure Active Directory** を検索して選択します。
-
-   ![[Azure Active Directory] を選択する - スクリーンショット](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+1. **Azure Active Directory** を開きます。
 
 1. **[管理]** の下で、 **[プロパティ]** を選択します。
 
@@ -86,7 +84,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当て方法については、「[RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)」を参照してください。 Azure AD Privileged Identity Management (PIM) を使用している場合、「[PIM で管理する Azure リソースを検出する](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)」または「[PIM で Azure リソース ロールを割り当てる](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)」を参照してください。
+    ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)」をご覧ください。 Azure AD Privileged Identity Management (PIM) を使用している場合、「[PIM で管理する Azure リソースを検出する](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)」または「[PIM で Azure リソース ロールを割り当てる](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)」を参照してください。
 
 ### <a name="remove-elevated-access"></a>昇格されたアクセス権を削除する
 
@@ -98,7 +96,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
 1. **[Azure リソースのアクセス管理]** を **[いいえ]** に戻します。 これはユーザー別の設定であるため、アクセスの昇格に使用したユーザーでサインインする必要があります。
 
-    [アクセス制御 (IAM)] ウィンドウでユーザー アクセス管理者ロールの割り当てを削除しようとすると、次のメッセージが表示されます。 ロールの割り当てを削除するには、 **[いいえ]** に戻すか、Azure PowerShell、Azure CLI、または REST API を使用します。
+    [アクセス制御 (IAM)] ウィンドウでユーザー アクセス管理者ロールの割り当てを削除しようとすると、次のメッセージが表示されます。 ロールの割り当てを削除するには、トグルの設定を **[いいえ]** に戻すか、Azure PowerShell、Azure CLI、または REST API を使用します。
 
     ![ルート スコープのロールの割り当てを削除する](./media/elevate-access-global-admin/iam-root-remove.png)
 
@@ -323,5 +321,5 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
-- [RBAC と REST API を使用して Azure リソースへのアクセスを管理する](role-assignments-rest.md)
+- [各種ロールについて](rbac-and-directory-admin-roles.md)
+- [REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)

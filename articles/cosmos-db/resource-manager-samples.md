@@ -4,52 +4,55 @@ description: Azure Resource Manager テンプレートを使用して、Azure Co
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1c4f1a1920d98052231eaa3a7d5c0454441c88ee
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 501065875cafc035d491e606c016f3ad4dbfc5d4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390876"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791631"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure Resource Manager テンプレート
 
 次の表は、Azure Cosmos DB 用の Azure Resource Manager テンプレートのリンク一覧です。
 
-## <a name="sql-core-api"></a>SQL (Core) API
+## <a name="core-sql-api"></a>コア (SQL) API
 
 |**テンプレート**|**説明**|
 |---|---|
-|[Azure Cosmos アカウント、データベース、コンテナーを作成する](manage-sql-with-resource-manager.md#create-resource) | このテンプレートでは、共有データベースのスループットを使用する 2 つのコンテナーと専用スループットを使用する 1 つのコンテナーのある 2 つのリージョンに、SQL (Core) API アカウントを作成します。 スループットは、スループットのプロパティ値が更新されたテンプレートを再送信することで更新できます。 |
-|[ストアド プロシージャ、トリガー、および UDF を使用して Azure Cosmos アカウント、データベース、およびコンテナーを作成する](manage-sql-with-resource-manager.md#create-sproc) | このテンプレートは、コンテナーのストアド プロシージャ、トリガー、および UDF を使用して、2 つのリージョンに SQL (Core) API アカウントを作成します。 |
-|[既存の Azure Cosmos アカウントに対するプライベート エンドポイントを作成する](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  このテンプレートは、既存の仮想ネットワークにある既存の Azure Cosmos SQL API アカウントのプライベート エンドポイントを作成します。 |
+|[自動スケーリングのスループットで Azure Cosmos アカウント、データベース、コンテナーを作成する](manage-sql-with-resource-manager.md#create-autoscale) | このテンプレートは、データベースとコンテナーの 2 つのリージョンに、自動スケーリングのスループットでコア (SQL) API アカウントを作成します。 |
+|[標準 (手動) のスループットで Azure Cosmos アカウント、データベース、コンテナーを作成する](manage-sql-with-resource-manager.md#create-manual) | このテンプレートは、データベースとコンテナーの 2 つのリージョンに、標準のスループットでコア (SQL) API アカウントを作成します。 |
+|[ストアド プロシージャ、トリガー、および UDF を使用して Azure Cosmos アカウント、データベース、およびコンテナーを作成する](manage-sql-with-resource-manager.md#create-sproc) | このテンプレートは、コンテナーのストアド プロシージャ、トリガー、および UDF を使用して、2 つのリージョンに コア (SQL) API アカウントを作成します。 |
+|[既存の Azure Cosmos アカウントに対するプライベート エンドポイントを作成する](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  このテンプレートは、既存の仮想ネットワークにある既存の Azure Cosmos Core (SQL) API アカウントのプライベート エンドポイントを作成します。 |
+|[Free レベルの Azure Cosmos アカウントを作成する](manage-sql-with-resource-manager.md#free-tier) |  このテンプレートは、free レベルで Azure Cosmos DB Core (SQL) API アカウントを作成します。 |
 
 ## <a name="mongodb-api"></a>MongoDB API
 
 |**テンプレート**|**説明**|
 |---| ---|
-|[Azure Cosmos アカウント、データベース、コレクションを作成する](manage-mongodb-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで MongoDB 用 Azure Cosmos DB の API を使用してアカウントを作成します。 Azure Cosmos アカウントには、データベース レベルのスループットを共有する 2 つのコンテナーがあります。 |
+|[自動スケーリングのスループットで Azure Cosmos アカウント、データベース、コレクションを作成する](manage-mongodb-with-resource-manager.md#create-autoscale) | このテンプレートは、データベースレベルの自動スケーリングのスループットを共有する 2 つのコンテナーを持つ 2 つのリージョンで MongoDB 用 Azure Cosmos DB の API を使用してアカウントを作成します。 |
+|[標準 (手動) のスループットで Azure Cosmos アカウント、データベース、コレクションを作成する](manage-mongodb-with-resource-manager.md#create-manual) | このテンプレートは、データベースレベルの標準のスループットを共有する 2 つのコンテナーを持つ 2 つのリージョンで MongoDB 用 Azure Cosmos DB の API を使用してアカウントを作成します。 |
 
 ## <a name="cassandra-api"></a>Cassandra API
 
 |**テンプレート**|**説明**|
 |---| ---|
-|[Azure Cosmos アカウント、キースペース、テーブルを作成する](manage-cassandra-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで Cassandra API アカウントを作成します。 Azure Cosmos アカウントには、データベース レベルのスループットを共有する 2 つのテーブルがあります。 |
+|[自動スケーリングのスループットで Azure Cosmos アカウント、キースペース、テーブルを作成する](manage-cassandra-with-resource-manager.md#create-autoscale) | このテンプレートは、キースペースとテーブルの 2 つのリージョンに、自動スケーリングのスループットで Cassandra API アカウントを作成します。 |
+|[標準 (手動) のスループットで Azure Cosmos アカウント、キースペース、テーブルを作成する](manage-cassandra-with-resource-manager.md#create-manual) | このテンプレートは、キースペースとテーブルの 2 つのリージョンに、手動のスループットで Cassandra API アカウントを作成します。 |
 
 ## <a name="gremlin-api"></a>Gremlin API
 
 |**テンプレート**|**説明**|
 |---| ---|
-|[Azure Cosmos アカウント、データベース、グラフを作成する](manage-gremlin-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで Gremlin API アカウントを作成します。 Azure Cosmos アカウントには、データベース レベルのスループットを共有する 2 つのグラフがあります。 |
+|[自動スケーリングのスループットで Azure Cosmos アカウント、データベース、グラフを作成する](manage-gremlin-with-resource-manager.md#create-autoscale) | このテンプレートは、データベースとグラフの 2 つのリージョンに、自動スケーリングのスループットで Gremlin API アカウントを作成します。 |
+|[標準 (手動) のスループットで Azure Cosmos アカウント、データベース、グラフを作成する](manage-gremlin-with-resource-manager.md#create-manual) | このテンプレートは、データベースとグラフの 2 つのリージョンに、標準のスループットで Gremlin API アカウントを作成します。 |
 
 ## <a name="table-api"></a>テーブル API
 
 |**テンプレート**|**説明**|
 |---| ---|
-|[Azure Cosmos アカウント、テーブルを作成する](manage-table-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで Table API アカウントを作成します。 Azure Cosmos アカウントには 1 つのテーブルが作成されます。 |
-
-> [!TIP]
-> Table API を使用する際に共有スループットを有効にするには、Azure portal でアカウント レベルのスループットを有効にします。
+|[自動スケーリングのスループットで Azure Cosmos アカウント、テーブルを作成する](manage-table-with-resource-manager.md#create-autoscale) | このテンプレートは、2 つのリージョンおよび 1 つのテーブルに、自動スケーリングのスループットで Table API アカウントを作成します。 |
+|[標準 (手動) のスループットで Azure Cosmos アカウント、テーブルを作成する](manage-table-with-resource-manager.md#create-manual) | このテンプレートは、2 つのリージョンおよび 1 つのテーブルに、標準のスループットで Table API アカウントを作成します。 |
 
 リファレンス ドキュメントについては、[Azure Cosmos DB 用 Azure Resource Manager リファレンス](/azure/templates/microsoft.documentdb/allversions)のページを参照してください。

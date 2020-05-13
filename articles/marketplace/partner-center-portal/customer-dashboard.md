@@ -1,5 +1,5 @@
 ---
-title: パートナー センターのコマーシャル マーケットプレース分析の [顧客] ダッシュボード
+title: パートナー センターの Microsoft コマーシャル マーケットプレース分析にある [顧客] ダッシュボード
 description: コマーシャル マーケットプレース分析の [顧客] ダッシュボードを使用して、成長傾向などの顧客に関する情報にアクセスする方法について説明します。
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a8379ed883311d219bb6eeb56bd4424dfb470bc9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4d9dc0315a5c87ed67390e8edb23d44ee55f242b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251641"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732769"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [顧客] ダッシュボード
 

@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 と他の Azure サービスを統合する | Microsoft Docs
-description: Azure Data Lake Storage Gen1 が他の Azure サービスと統合されるしくみを理解します
-documentationcenter: ''
-services: data-lake-store
+title: Data Lake Storage Gen1 とその他の Azure サービスの統合
+description: Azure Data Lake Storage Gen1 を他の Azure サービスと統合する方法を理解します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 43024b63a355646f607adbb6623cc6c349374ea8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae27aba9fb6dc1421d224dab0c36373753acd5a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535597"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690543"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 と他の Azure サービスを統合する
 Azure Data Lake Storage Gen1 を他の Azure サービスと連携させれば、さまざまなシナリオが可能になります。 次の記事では、Data Lake Storage Gen1 と統合できるサービスについてまとめてあります。
@@ -65,7 +59,7 @@ PolyBase を使用して、Data Lake Storage Gen1 から SQL Data Warehouse に�
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Data Lake Storage Gen1 を Azure Event Hubs と共に使用する
 Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs によって受信されたデータをアーカイブしてキャプチャできます。 詳しくは、[Azure Event Hubs での Data Lake Storage Gen1 の使用](data-lake-store-archive-eventhub-capture.md)に関する記事をご覧ください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [ポータルを使用して Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)
 * [PowerShell を使用して Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-powershell.md)  

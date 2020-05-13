@@ -1,23 +1,26 @@
 ---
-title: Azure Monitor のカスタム メトリック
+title: Azure Monitor のカスタム メトリック (プレビュー)
 description: Azure Monitor のカスタム メトリックと、それらのモデリング方法について説明します。
 author: ancav
+ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.author: ancav
+ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270708"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837313"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
-Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。
-これらの**カスタム** メトリックは、アプリケーション テレメトリ、Azure リソース上で実行されるエージェント、またはアウトサイドイン型の監視システムによって収集し、Azure Monitor に直接送信することができます。 Azure のリソースおよびアプリケーションのカスタム メトリックが Azure Monitor に発行されたら、Azure によって出力された標準メトリックと共に、それらのメトリックを参照、クエリしたり、メトリックに基づいたアラートを設定したりできます。
+Azure でリソースやアプリケーションをデプロイするとき、それらのパフォーマンスや正常性についての洞察を得るために、テレメトリの収集を開始することができます。 Azure には、すぐに利用できるいくつかのメトリックがあります。 これらのメトリックは[標準またはプラットフォーム](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)と呼ばれます。 ただし、これらの用途はあくまで限定的なものです。 
+
+より詳細な洞察を得るために、いくつかのカスタム パフォーマンス指標またはビジネス固有のメトリックを収集することができます。 これらの**カスタム** メトリックは、アプリケーション テレメトリ、Azure リソース上で実行されるエージェント、またはアウトサイドイン型の監視システムによって収集し、Azure Monitor に直接送信することができます。 Azure のリソースおよびアプリケーションのカスタム メトリックが Azure Monitor に発行されたら、Azure によって出力された標準メトリックと共に、それらのメトリックを参照、クエリしたり、メトリックに基づいたアラートを設定したりできます。
+
+Azure Monitor のカスタム メトリックは現在、パブリック プレビューの段階にあります。 
 
 ## <a name="methods-to-send-custom-metrics"></a>カスタム メトリックを送信する方法
 
@@ -27,19 +30,15 @@ Azure でリソースやアプリケーションをデプロイするとき、�
 - [InfluxData Telegraf エージェント](collect-custom-metrics-linux-telegraf.md)を Azure Linux VM にインストールし、Azure Monitor 出力プラグインを使用してメトリックを送信する。
 - [Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
 
-## <a name="pricing-model"></a>価格モデル
+## <a name="pricing-model-and-rentention"></a>価格モデルと保持期間
 
-標準メトリック (プラットフォーム メトリック) を Azure Monitor メトリック ストアに取り込むためにコストはかかりません。 Azure Monitor メトリック ストアに取り込まれたカスタム メトリックは、書き込まれた各カスタム メトリック データ ポイントのサイズは 8 バイトと見なされ、MByte ごとに課金されます。 すべての取り込まれたメトリックは 90 日間保持されます。
+カスタム メトリックとメトリック クエリに対する課金を有効にする場合の詳細については、[「Azure Monitor の価格」ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 カスタム メトリックやメトリック クエリを含むすべてのメトリックの具体的な価格の詳細は、このページに記載されています。 要約すると、標準メトリック (プラットフォーム メトリック) を Azure Monitor メトリック ストアに取り込むコストは発生しませんが、カスタム メトリックは一般提供されると、コストが発生します。 メトリック API クエリには、コストが発生します。
 
-メトリック クエリは、標準 API の呼び出し数に基づいて課金されます。 標準 API 呼び出しとは、1,440 データ ポイントを分析する呼び出しです (1,440 は、1 日あたりのメトリックごとに保存できるデータ ポイントの合計数でもあります)。 API 呼び出しで 1,440 を超えるデータ ポイントを分析する場合、複数回の標準 API 呼び出しとしてカウントされます。 API 呼び出しで 1,440 未満のデータ ポイントを分析する場合、1 回以下の API 呼び出しとしてカウントされます。 標準 API 呼び出しの数は、1 日に分析されるデータ ポイントの合計数を 1,440 で割った値として毎日計算されます。
-
-カスタム メトリックとメトリック クエリの具体的な価格の詳細については、[「Azure Monitor の価格」ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
+カスタム メトリックは、[プラットフォーム メトリックと同じ時間](data-platform-metrics.md#retention-of-metrics)保持されます。 
 
 > [!NOTE]  
-> Application Insights SDK を介して Azure Monitor に送信されたメトリックは、取り込まれたログ データとして課金されます。また、[カスタム メトリック ディメンションに対してアラートを有効にする](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) Application Insights の機能が選択されている場合にのみ、追加のメトリック料金が発生します。 詳細については、[Application Insights の価格モデル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)と、[お客様のリージョンでの価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。
+> Application Insights SDK を介して Azure Monitor に送信されたメトリックは、取り込まれたログ データとして課金されます。 追加のメトリック料金が発生するのは、Application Insights 機能の [[カスタム メトリック ディメンションに関するアラートを有効にします]](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) が選択されている場合のみです。 このチェックボックスにより、カスタム メトリック API を使用して Azure Monitor メトリック データベースにデータが送信され、より複雑なアラートが実行可能になります。  詳細については、[Application Insights の価格モデル](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)と、[お客様のリージョンでの価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。
 
-> [!NOTE]  
-> カスタム メトリックとメトリック クエリに対する課金を有効にする場合の詳細については、[「Azure Monitor の価格」ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 
 
 ## <a name="how-to-send-custom-metrics"></a>カスタム メトリックを送信する方法
 
@@ -212,6 +211,11 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |東アジア | https:\//eastasia.monitoring.azure.com
 |韓国中部   | https:\//koreacentral.monitoring.azure.com
 
+## <a name="latency-and-storage-retention"></a>待機時間とストレージのリテンション期間
+
+新しいメトリックを追加した場合、またはメトリックに新しいディメンションが追加された場合、表示されるまでに最大 2 分から 3 分かかる場合があります。 システムに追加されたデータは、ほぼ間違いなく 30 秒未満で表示されます。 
+
+メトリックを削除するかディメンションを削除した場合、変更が反映されてシステムから削除されるまでに 1 週間から 1 か月かかることがあります。
 
 ## <a name="quotas-and-limits"></a>クォータと制限
 Azure Monitor では、カスタム メトリックの使用に次の制限があります。

@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: d8e7b2f8f6483d462f781d95011ef7b972e83b87
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672449"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801792"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -75,9 +75,9 @@ Windows Server 2008 R2 SP1 以降。 | サポートされています。<br/><br
 Windows Server 2008 SP2 以降 (64 ビット/32 ビット) |  移行についてのみサポートされています。 [詳細については、こちらを参照してください](migrate-tutorial-windows-server-2008.md)。<br/><br/> モビリティ サービス エージェントのバージョン [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 2008 SP2 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4493730) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。 ISHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)でご確認ください。
 Windows 10、Windows 8.1、Windows 8 | サポートされています。
 Windows 7 SP1 64 ビット | [更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。 </br></br> モビリティ サービス エージェントの [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 7 SP1 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)でご確認ください。
-Linux | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません。<br/><br/>すべての Linux サーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。 テスト フェールオーバー/フェールオーバー後に Azure でサーバーを起動するために必要です。 LIS コンポーネントがない場合、Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。 <br/><br/> Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。
-Linux Red Hat Enterprise | 5.2 から 5.11</b><br/> 6.1 から 6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、[8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1 <br/> Red Hat Enterprise Linux 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
-Linux: CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.6<br/> <br/> 8.0 から 8.1<br/><br/> CentOS 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
+Linux | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません。<br/><br/>すべての Linux サーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。 テスト フェールオーバー/フェールオーバー後に Azure でサーバーを起動するために必要です。 組み込みの LIS コンポーネントがない場合は、Azure で起動するマシンのレプリケーションを有効にする前に、確実に[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。 <br/><br/> Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。
+Linux Red Hat Enterprise | 5.2 から 5.11</b><br/> 6.1 から 6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、[8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1 <br/> Red Hat Enterprise Linux 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーの古いカーネルには、[Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていないものがいくつかあります。 組み込みの LIS コンポーネントがない場合は、Azure で起動するマシンのレプリケーションを有効にする前に、確実に[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
+Linux: CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.6<br/> <br/> 8.0 から 8.1<br/><br/> CentOS 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーの古いカーネルには、[Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていないものがいくつかあります。 組み込みの LIS コンポーネントがない場合は、Azure で起動するマシンのレプリケーションを有効にする前に、確実に[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
 Ubuntu | Ubuntu 14.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(サポートされるカーネルのバージョンを確認してください)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [(サポートされるカーネルのバージョンを確認してください)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [(サポートされているカーネル バージョンの確認)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3 または SUSE Linux Enterprise Server 11 SP4<br/> レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、レプリケーションを無効にし、アップグレードの後に再び有効にします。
@@ -128,13 +128,16 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.25][9.25 UR] | SP1 
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 および 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | すべての [SUSE 15 および 15 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)がサポートされます。 </br></br> 4.12.14-5.5-azure から 4.12.14-8.22-azure
+SUSE Linux Enterprise Server 15 および 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 既定では、すべての [SUSE 15 および 15 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。 </br></br> 4.12.14-5.5-azure から 4.12.14-8.22-azure
+
+
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux ファイル システム/ゲストのストレージ
 
 **コンポーネント** | **サポートされています**
 --- | ---
 ファイル システム | ext3、ext4、XFS、BTRFS (このテーブルごとに条件が適用されます)
+論理ボリューム管理 (LVM) のプロビジョニング| シック プロビジョニング - はい <br></br> シン プロビジョニング - いいえ
 ボリューム マネージャー | - LVM はサポートされています。<br/> - LVM での/boot は [更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/) (モビリティ サービスのバージョン 9.20) 以降でサポートされています。 モビリティ サービスの以前のバージョンではサポートされていません。<br/> - 複数の OS ディスクはサポートされていません。
 準仮想化ストレージ デバイス | 準仮想化ドライバーによってエクスポートされたデバイスはサポートされません。
 マルチ キュー ブロック IO デバイス | サポートされていません。
@@ -204,7 +207,8 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー ディスク > 1 TB | はい。ディスクは 1,024 MB 以上である必要があります。<br/><br/>マネージド ディスクにレプリケートする場合は最大 8,192 GB (9.26 バージョン以降)<br></br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB
 4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | いいえ
 4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | いいえ
-ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br/><br/>論理ボリューム管理 (LVM)| はい
+ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB | はい
+論理ボリューム管理 (LVM)| シック プロビジョニング - はい <br></br> シン プロビジョニング - いいえ
 ゲスト/サーバー - 記憶域スペース | いいえ
 ゲスト/サーバー ディスクのホット アド/削除 | いいえ
 ゲスト/サーバー - ディスクの除外 | はい

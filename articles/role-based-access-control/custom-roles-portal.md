@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用して Azure カスタム ロールを作成または更新する (プレビュー) - Azure RBAC
-description: Azure portal を使用して、Azure のロールベースのアクセス制御 (Azure RBAC) の Azure カスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
+title: Azure portal を使用して Azure カスタム ロールを作成または更新する - Azure RBAC
+description: Azure portal と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure カスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,23 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77674701"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734181"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する (プレビュー)
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する
 
-> [!IMPORTANT]
-> Azure portal を使用した Azure カスタム ロールは、現在パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のAzure カスタム ロールを作成することができます。 組み込みロールと同様に、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプションおよびリソース グループのスコープで割り当てることができます。 カスタム ロールは Azure Active Directory (Azure AD) ディレクトリに保存され、サブスクリプション間で共有することができます。 各ディレクトリは、最大 5,000 個のカスタム ロールを持つことができます カスタム ロールは、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。 この記事では、Azure portal を使用したカスタム ロールの作成 (現在プレビュー段階) の方法について説明します。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のAzure カスタム ロールを作成することができます。 組み込みロールと同様に、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプションおよびリソース グループのスコープで割り当てることができます。 カスタム ロールは Azure Active Directory (Azure AD) ディレクトリに保存され、サブスクリプション間で共有することができます。 各ディレクトリは、最大 5,000 個のカスタム ロールを持つことができます カスタム ロールは、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。 この記事では、Azure portal を使用してカスタム ロールを作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,7 +72,7 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
 1. Azure portal で、カスタム ロールを割り当て可能にするサブスクリプションまたはリソース グループを開き、 **[アクセス制御 (IAM)]** を開きます。
 
-1. **[追加]** をクリックし、 **[カスタム ロールの追加 (プレビュー)]** をクリックします。
+1. **[追加]** をクリックし、 **[カスタム ロールの追加]** をクリックします。
 
     ![[カスタム ロールの追加] メニュー](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -109,7 +104,7 @@ Azure には、カスタム ロールに含めることができる何千もの�
     }
     ```
 
-1. JSON ファイルで、さまざまなプロパティの値を指定します。 いくつかの値が追加された例を次に示します。 各種のプロパティについては、[ロール定義](role-definitions.md)に関する記事をご覧ください。
+1. JSON ファイルで、さまざまなプロパティの値を指定します。 いくつかの値が追加された例を次に示します。 各種のプロパティについては、「[Azure ロールの定義について](role-definitions.md)」をご覧ください。
 
     ```json
     {
@@ -141,7 +136,7 @@ Azure には、カスタム ロールに含めることができる何千もの�
     
 1. Azure portal で、 **[アクセス制御 (IAM)]** ページを開きます。
 
-1. **[追加]** をクリックし、 **[カスタム ロールの追加 (プレビュー)]** をクリックします。
+1. **[追加]** をクリックし、 **[カスタム ロールの追加]** をクリックします。
 
     ![[カスタム ロールの追加] メニュー](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -260,7 +255,7 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="step-5-assignable-scopes"></a>手順 5:割り当て可能なスコープ
 
-**[Assignable scopes]\(割り当て可能なスコープ\)** タブで、サブスクリプションやリソース グループなど、カスタム ロールを割り当て可能な場所を指定します。 選択した開始方法によっては、[アクセス制御 (IAM)] ページを開いたスコープがこのタブに表示される場合があります。 割り当て可能なスコープをルート スコープ ("/") に設定することはサポートされていません。 このプレビューでは、割り当て可能なスコープとして管理グループを追加することはできません。
+**[Assignable scopes]\(割り当て可能なスコープ\)** タブで、サブスクリプションやリソース グループなど、カスタム ロールを割り当て可能な場所を指定します。 選択した開始方法によっては、[アクセス制御 (IAM)] ページを開いたスコープがこのタブに表示される場合があります。 割り当て可能なスコープをルート スコープ ("/") に設定することはサポートされていません。 現時点では、割り当て可能なスコープとして管理グループを追加することはできません。
 
 1. **[割り当て可能なスコープの追加]** をクリック て、[割り当て可能なスコープの追加] ペインを開きます。
 
@@ -352,6 +347,6 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)
-- [Azure のカスタム ロール](custom-roles.md)
+- [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
+- [Azure カスタム ロール](custom-roles.md)
 - [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)

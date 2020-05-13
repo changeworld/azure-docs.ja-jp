@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でカスタム エグレス ルー�
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676505"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733500"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする (プレビュー)
 
@@ -73,7 +73,7 @@ AKS クラスターは、種類がロード バランサーまたはユーザー
 
 `userDefinedRouting` を設定しても、エグレス パスは AKS によって自動的に構成されません。 **ユーザー**が以下の操作を行うことが想定されています。
 
-構成済みのサブネットがある既存の仮想ネットワークにクラスターをデプロイする必要があります。 送信接続が有効なサブネット上に、有効なユーザー定義ルート (UDR) が存在する必要があります。
+AKS クラスターは、構成済みのサブネットがある既存の仮想ネットワークにデプロイする必要があります。 Standard ロード バランサー (SLB) アーキテクチャを使用する場合は、明示的なエグレスを確立する必要があります。 そのためには、ファイアウォール、ゲートウェイ、オンプレミスなどのアプライアンスにエグレスの要求を送信するか、Standard ロード バランサーまたは特定のノードに割り当てられたパブリック IP でエグレスを実行できるようにする必要があります。
 
 AKS リソース プロバイダーによって Standard ロード バランサー (SLB) がデプロイされます。 このロード バランサーには規則が構成されておらず、[規則が構成されるまで料金はかかりません](https://azure.microsoft.com/pricing/details/load-balancer/)。 SLB フロントエンドのパブリック IP アドレスは、AKS によって自動的にプロビジョニング**されません**。 ロード バランサーのバックエンド プールは、AKS によって自動的に構成**されません**。
 

@@ -14,76 +14,77 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fb5da965a9b13667b8a128e83a5a4cd2c2b28d7
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162312"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691854"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
 Azure Event Hubs の 2 種類のログを表示できます。
 
-* **[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)** : これらのログには、ジョブで実行される操作に関する情報が含まれます。 このログは常に有効になっています。
-* **[診断ログ](../azure-monitor/platform/platform-logs-overview.md)** : 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+* **[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)** : これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。 アクティビティ ログ エントリを確認するには、Azure portal のイベント ハブ名前空間の左側のウィンドウで **[アクティビティ ログ]** を選択します。 次に例を示します。"名前空間の作成または更新"、"イベント ハブの作成または更新"。
+
+    ![Event Hubs 名前空間のアクティビティ ログ](./media/event-hubs-diagnostic-logs/activity-log.png)
+* **[診断ログ](../azure-monitor/platform/platform-logs-overview.md)** : 診断ログでは、API を使用して、または言語 SDK 上の管理クライアントを使用して、名前空間に対して実行された操作とアクションに関する詳細な情報が提供されます。 
+    
+    次のセクションでは、Event Hubs 名前空間の診断ログを有効にする方法について説明します。
 
 ## <a name="enable-diagnostic-logs"></a>Traffic Manager で診断ログを有効にする
-
 既定では、診断ログは無効になっています。 診断ログを有効にするには、次の手順を実行します。
 
-1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、 **[診断ログ]** をクリックします。
+1.  [Azure portal](https://portal.azure.com) で Event Hubs 名前空間に移動します。 
+2. 左側のウィンドウで **[監視]** の下にある **[診断設定]** を選択してから、 **[+ 診断設定の追加]** を選択します。 
 
-    ![ウィンドウで診断ログに移動する](./media/event-hubs-diagnostic-logs/image1.png)
+    ![[診断設定] ページ - 診断設定の追加](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
+4. **[Category details] (カテゴリの詳細)** セクションで、有効にする**診断ログの種類**を選択します。 これらのカテゴリの詳細については、この記事の後半で説明します。 
+5. **[Destination details] (送信先の詳細)** セクションで、アーカイブ ターゲット (送信先) を設定します (例: ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース)。
 
-2.  監視するリソースをクリックします。
+    ![診断設定の追加ページ](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
+6.  ツール バーの **[保存]** を選択して診断設定を保存します。
 
-3.  **[診断を有効にする]** をクリックします。
+    新しい設定は、10 分ほどで有効になります。 その後、構成されたアーカイブ ターゲットのログが **[診断ログ]** ウィンドウに表示されます。
 
-    ![診断ログを有効にする](./media/event-hubs-diagnostic-logs/image2.png)
-
-4.  **[状態]** で、 **[オン]** をクリックします。
-
-    ![診断ログの状態を変更する](./media/event-hubs-diagnostic-logs/image3.png)
-
-5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Monitor ログなど)。
-
-6.  新しい診断設定を保存します。
-
-新しい設定は、10 分ほどで有効になります。 その後、構成されたアーカイブ ターゲットのログが **[診断ログ]** ウィンドウに表示されます。
-
-診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
+    診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
 
-Event Hubs では、2 つのカテゴリの診断ログをキャプチャします。
+Event Hubs では、次のカテゴリの診断ログをキャプチャします。
 
-* **アーカイブ ログ**: Event Hubs のアーカイブに関連するログ (特に、アーカイブ エラーに関連するログ)。
-* **操作ログ**: Event Hubs の操作中に発生したことに関する情報 (特に、イベント ハブの作成などの操作の種類、使用されたリソース、操作の状態)。
+| カテゴリ | 説明 | 
+| -------- | ----------- | 
+| アーカイブ ログ | [Event Hubs Capture](event-hubs-capture-overview.md) 操作、特にログ関連のキャプチャ エラーに関する情報をキャプチャします。 |
+| 操作ログ | Azure Event Hubs 名前空間上で実行されるすべての管理操作がキャプチャされます。 Azure Event Hubs 上では大量のデータ操作が実行されるため、データ操作はキャプチャされません。 |
+| 自動スケール ログ | Event Hubs 名前空間で実行される自動拡張操作をキャプチャします。 |
+| Kafka コーディネーター ログ | Event Hubs に関連する Kafka コーディネーター操作をキャプチャします。 |
+| Kafka ユーザー エラー ログ | Event Hubs で呼び出される Kafka API に関する情報をキャプチャします。 |
+| Event Hubs 仮想ネットワーク (VNet) 接続イベント | Event Hubs にトラフィックを送信する IP アドレスと仮想ネットワークに関する情報をキャプチャします。 |
+| カスタマー マネージド キーのユーザー ログ | カスタマー マネージド キーに関連する操作をキャプチャします。 |
 
-## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
 
 すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下のセクションで説明している形式を使用する文字列フィールドがあります。
 
-### <a name="archive-logs-schema"></a>アーカイブ ログ スキーマ
+## <a name="archive-logs-schema"></a>アーカイブ ログ スキーマ
 
 アーカイブ ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | 説明
+名前 | 説明
 ------- | -------
-TaskName | 失敗したタスクの説明。
-ActivityId | 内部 ID。追跡目的で使用されます。
-trackingId | 内部 ID。追跡目的で使用されます。
-resourceId | Azure Resource Manager リソース ID。
-eventHub | イベント ハブの完全名 (名前空間の名前を含みます)。
-partitionId | 書き込み先のイベント ハブ パーティション。
-archiveStep | ArchiveFlushWriter
-startTime | 障害開始時刻。
-failures | 障害が発生した回数。
-durationInSeconds | 障害の時間。
-message | エラー メッセージ。
+TaskName | 失敗したタスクの説明
+ActivityId | 内部 ID。追跡目的で使用されます
+trackingId | 内部 ID。追跡目的で使用されます
+resourceId | Azure Resource Manager リソース ID
+eventHub | イベント ハブの完全名 (名前空間の名前を含みます)
+partitionId | 書き込み先のイベント ハブ パーティション
+archiveStep | 使用可能な値:ArchiveFlushWriter、DestinationInit
+startTime | 障害開始時刻
+failures | 障害が発生した回数
+durationInSeconds | 障害の時間
+message | エラー メッセージ
 category | ArchiveLogs
 
 次のコードは、アーカイブ ログの JSON 文字列の例です。
@@ -91,10 +92,10 @@ category | ArchiveLogs
 ```json
 {
    "TaskName": "EventHubArchiveUserError",
-   "ActivityId": "21b89a0b-8095-471a-9db8-d151d74ecf26",
-   "trackingId": "21b89a0b-8095-471a-9db8-d151d74ecf26_B7",
-   "resourceId": "/SUBSCRIPTIONS/854D368F-1828-428F-8F3C-F2AFFA9B2F7D/RESOURCEGROUPS/DEFAULT-EVENTHUB-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/FBETTATI-OPERA-EVENTHUB",
-   "eventHub": "fbettati-opera-eventhub:eventhub:eh123~32766",
+   "ActivityId": "000000000-0000-0000-0000-0000000000000",
+   "trackingId": "0000000-0000-0000-0000-00000000000000000",
+   "resourceId": "/SUBSCRIPTIONS/000000000-0000-0000-0000-0000000000000/RESOURCEGROUPS/<Resource Group Name>/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/<Event Hubs Namespace Name>",
+   "eventHub": "<Event Hub full name>",
    "partitionId": "1",
    "archiveStep": "ArchiveFlushWriter",
    "startTime": "9/22/2016 5:11:21 AM",
@@ -105,38 +106,134 @@ category | ArchiveLogs
 }
 ```
 
-### <a name="operational-logs-schema"></a>操作ログのスキーマ
+## <a name="operational-logs-schema"></a>操作ログのスキーマ
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | 説明
+名前 | 説明
 ------- | -------
-ActivityId | 内部 ID。追跡目的で使用されます。
-EventName | 操作の名前。  
-resourceId | Azure Resource Manager リソース ID。
-SubscriptionId | [サブスクリプション ID] が表示されます。
-EventTimeString | 操作時間。
-EventProperties | 操作プロパティ。
-Status | 操作の状態。
-Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)。
-category | OperationalLogs
+ActivityId | 内部 ID。追跡目的で使用されます |
+EventName | 操作の名前 |
+resourceId | Azure Resource Manager リソース ID |
+SubscriptionId | サブスクリプション ID |
+EventTimeString | 操作時間 |
+EventProperties | 操作プロパティ |
+Status | 操作の状態 |
+Caller | 操作の呼び出し元 (Azure Portal または管理クライアント) |
+カテゴリ | OperationalLogs |
 
 次のコードは、操作ログの JSON 文字列の例です。
 
 ```json
 Example:
 {
-   "ActivityId": "6aa994ac-b56e-4292-8448-0767a5657cc7",
+   "ActivityId": "00000000-0000-0000-0000-00000000000000",
    "EventName": "Create EventHub",
-   "resourceId": "/SUBSCRIPTIONS/1A2109E3-9DA0-455B-B937-E35E36C1163C/RESOURCEGROUPS/DEFAULT-SERVICEBUS-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/SHOEBOXEHNS-CY4001",
-   "SubscriptionId": "1a2109e3-9da0-455b-b937-e35e36c1163c",
+   "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-0000000000000/RESOURCEGROUPS/<Resource Group Name>/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/<Event Hubs namespace name>",
+   "SubscriptionId": "000000000-0000-0000-0000-000000000000",
    "EventTimeString": "9/28/2016 8:40:06 PM +00:00",
-   "EventProperties": "{\"SubscriptionId\":\"1a2109e3-9da0-455b-b937-e35e36c1163c\",\"Namespace\":\"shoeboxehns-cy4001\",\"Via\":\"https://shoeboxehns-cy4001.servicebus.windows.net/f8096791adb448579ee83d30e006a13e/?api-version=2016-07\",\"TrackingId\":\"5ee74c9e-72b5-4e98-97c4-08a62e56e221_G1\"}",
+   "EventProperties": "{\"SubscriptionId\":\"0000000000-0000-0000-0000-000000000000\",\"Namespace\":\"<Namespace Name>\",\"Via\":\"https://<Namespace Name>.servicebus.windows.net/f8096791adb448579ee83d30e006a13e/?api-version=2016-07\",\"TrackingId\":\"5ee74c9e-72b5-4e98-97c4-08a62e56e221_G1\"}",
    "Status": "Succeeded",
    "Caller": "ServiceBus Client",
    "category": "OperationalLogs"
 }
 ```
+
+## <a name="autoscale-logs-schema"></a>自動スケール ログのスキーマ
+自動スケール ログの JSON には、次の表に示す要素が含まれます。
+
+| 名前 | 説明 |
+| ---- | ----------- | 
+| TrackingId | 内部 ID。トレース目的で使用されます |
+| ResourceId | Azure Resource Manager リソース ID。 |
+| Message | 情報メッセージ。自動インフレ アクションに関する詳細情報を提供します。 このメッセージには、特定の名前空間のスループット ユニットの以前の値と現在の値、および TU のインフレをもたらした要因が含まれます。 |
+
+## <a name="kafka-coordinator-logs-schema"></a>Kafka コーディネーター ログのスキーマ
+Kafka コーディネーター ログの JSON には、次の表に示す要素が含まれます。
+
+| 名前 | 説明 |
+| ---- | ----------- | 
+| RequestId | 要求 ID。トレース目的で使用されます |
+| ResourceId | Azure Resource Manager リソース ID |
+| Operation | グループの調整中に実行された操作の名前 |
+| ClientId | クライアント ID |
+| NamespaceName | 名前空間名 | 
+| SubscriptionId | Azure サブスクリプション ID |
+| Message | 情報または警告メッセージ。グループの調整中に実行されたアクションに関する詳細情報を提供します。 |
+
+### <a name="example"></a>例
+
+```json
+{
+    "RequestId": "FE01001A89E30B020000000304620E2A_KafkaExampleConsumer#0",
+    "Operation": "Join.Start",
+    "ClientId": "KafkaExampleConsumer#0",
+    "Message": "Start join group for new member namespace-name:c:$default:I:KafkaExampleConsumer#0-cc40856f7f3c4607915a571efe994e82, current group size: 0, API version: 2, session timeout: 10000ms, rebalance timeout: 300000ms.",
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "KafkaCoordinatorLogs"
+}
+```
+
+## <a name="kafka-user-error-logs-schema"></a>Kafka ユーザー エラー ログのスキーマ
+Kafka ユーザー エラー ログの JSON には、次の表に示す要素が含まれます。
+
+| 名前 | 説明 |
+| ---- | ----------- |
+| TrackingId | 追跡 ID。トレース目的で使用されます。 |
+| NamespaceName | 名前空間名 |
+| Eventhub | イベント ハブ名 |
+| PartitionId | Partition ID |
+| GroupId | グループ ID |
+| ClientId | クライアント ID |
+| ResourceId | Azure Resource Manager リソース ID。 |
+| Message | 情報メッセージ。エラーに関する詳細情報を提供します |
+
+## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs 仮想ネットワーク接続イベントのスキーマ
+
+Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、次の表に示す要素が含まれます。
+
+| 名前 | 説明 |
+| ---  | ----------- | 
+| SubscriptionId | Azure サブスクリプション ID |
+| NamespaceName | 名前空間名 |
+| IPAddress | Event Hubs サービスに接続しているクライアントの IP アドレス |
+| アクション | 接続要求を評価するときに Event Hubs サービスによって実行されたアクション。 サポートされているアクションは、**接続の受け入れ**と**接続の拒否**です。 |
+| 理由 | アクションが実行された理由を提供します |
+| Count | 指定されたアクションの発生回数 |
+| ResourceId | Azure Resource Manager リソース ID。 |
+
+### <a name="example"></a>例
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
+
+## <a name="customer-managed-key-user-logs"></a>カスタマー マネージド キーのユーザー ログ
+カスタマー マネージド キーのユーザー ログの JSON には、次の表に示す要素が含まれます。
+
+| 名前 | 説明 |
+| ---- | ----------- | 
+| カテゴリ | メッセージのカテゴリの種類。 **error** と **info** のどちらかの値です |
+| ResourceId | 内部リソース ID。Azure サブスクリプション ID と名前空間名が含まれます |
+| KeyVault | Key Vault リソースの名前 |
+| Key | Key Vault キーの名前。 |
+| Version | Key Vault キーのバージョン |
+| Operation | 要求を処理するために実行された操作の名前 |
+| コード | status code |
+| Message | メッセージ。エラーまたは情報メッセージに関する詳細情報を提供します |
+
+
 
 ## <a name="next-steps"></a>次のステップ
 - [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

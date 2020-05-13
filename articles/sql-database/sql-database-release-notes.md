@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383370"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838486"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -49,7 +49,7 @@ ms.locfileid: "81383370"
 | <a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> ステートメントを使って、サーバーレベルのログインを作成します。 |
 | [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md) | テーブルからの変更をマネージド インスタンス、単一データベース、または SQL Server インスタンスに配置された他のデータベースにレプリケートするか、他のマネージド インスタンスまたは SQL Server インスタンス内で一部の行が変更されたときにテーブルを更新します。 詳しくは、「[Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する](replication-with-sql-database-managed-instance.md)」をご覧ください。 |
 | 脅威の検出 |詳しくは、「[Azure SQL Database Managed Instance で脅威検出を構成する](sql-database-managed-instance-threat-detection.md)」をご覧ください。|
-| 長期のバックアップ リテンション期間 | 詳細については、[Azure SQL Database マネージド インスタンスでの長期のバックアップ リテンション期間の構成](sql-database-managed-instance-long-term-backup-retention-configure.md)に関するページを参照してください。 | 
+| 長期のバックアップ リテンション期間 | 詳細については、現在は制限付きパブリック プレビュー段階である [Azure SQL Database Managed Instance での長期のバックアップ リテンション期間の構成](sql-database-managed-instance-long-term-backup-retention-configure.md)に関するページを参照してください。 | 
 
 ---
 
@@ -69,7 +69,7 @@ ms.locfileid: "81383370"
   - <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016、SharePoint 2019</a>、および <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a> のサポート
   - 選択した<a href="https://aka.ms/managed-instance-collation">サーバーレベルの照合順序</a>と<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">タイム ゾーン</a>を使用して、インスタンスを作成します。
   - マネージド インスタンスは現在、<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">組み込みのファイアウォール</a>によって保護されています。
-  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 vCores</a> またはポイント イン タイム リストアのための<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日間のバックアップ保有期間の構成</a>を得るために、[パブリック エンドポイント](sql-database-managed-instance-public-endpoint-configure.md)と [Proxy Override](sql-database-connectivity-architecture.md#connection-policy) 接続を使用するように、インスタンスを構成します。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないので、代わりに、<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できます。
+  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 vCores</a> またはポイント イン タイム リストアのための<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日間のバックアップ保有期間の構成</a>を得るために、[パブリック エンドポイント](sql-database-managed-instance-public-endpoint-configure.md)と [Proxy Override](sql-database-connectivity-architecture.md#connection-policy) 接続を使用するように、インスタンスを構成します。 [長期のバックアップ リテンション期間](sql-database-long-term-retention.md#managed-instance-support) (最長 10 年間) は、現在、制限付きパブリック プレビュー段階です。  
   - 新しい機能を利用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用してお使いのデータベースを別のデータ センターに geo リストアして</a>、[データベース名を変更し](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[仮想クラスターを削除する](sql-database-managed-instance-delete-virtual-cluster.md)ことができます。
   - 新しい組み込みの[インスタンス共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)を使用すると、セキュリティ原則による職務の分離 (SoD) のコンプライアンスとエンタープライズ標準によるコンプライアンスを有効にできます。
   - マネージド インスタンスは、中国北部 2 および中国東部 2 と、GA (US Gov テキサス、US Gov アリゾナ) の Azure Government リージョン内で利用できます。 また、次のパブリック リージョンでも利用できます。オーストラリア中部、オーストラリア中部 2、ブラジル南部、フランス南部、アラブ首長国連邦中部、アラブ首長国連邦北部、南アフリカ北部、南アフリカ西部です。
@@ -78,30 +78,35 @@ ms.locfileid: "81383370"
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
-|[リソース グループに対するアクセス許可が Managed Instance に適用されない](#permissions-on-resource-group-not-applied-to-managed-instance)|2020 年 2 月|回避策あり||
-|[ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|回避策あり||
-|[SQL Agent ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|回避策あり||
-|[エージェント プロセスを再起動すると、SQL Agent ジョブが中断されることがある](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|回避策なし|2020 年 3 月|
-|[SSDT 内では AAD のログインとユーザーがサポートされない](#aad-logins-and-users-are-not-supported-in-ssdt)|2019 年 11 月|回避策なし||
-|[インメモリ OLTP のメモリ制限が適用されない](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 10 月|回避策あり||
-|[空ではないファイルを削除しようとしたときに誤ったエラーが返される](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019 年 10 月|回避策あり||
-|[サービス レベルの変更とインスタンスの作成操作が、進行中のデータベースの復元によってブロックされる](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|2019 年 9 月|回避策あり||
-|[Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|2019 年 9 月|回避策あり||
-|[サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要があります](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|2019 年 8 月|回避策あり||
-|[Azure AD ログイン タイプの偽装はサポートされない](#impersonification-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|回避策なし||
-|[sp_send_db_mail の @query パラメーターはサポートされない](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|回避策なし||
-|[geo フェールオーバー後、トランザクション レプリケーションを再構成する必要がある](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|回避策なし||
-|[一時的なデータベースが RESTORE 操作中に使用される](#temporary-database-is-used-during-restore-operation)||回避策あり||
-|[TEMPDB の構造と内容は再作成される](#tempdb-structure-and-content-is-re-created)||回避策なし||
-|[小さなデータベース ファイルによる記憶域の超過](#exceeding-storage-space-with-small-database-files)||回避策あり||
-|[データベース名の代わりに GUID 値が表示される](#guid-values-shown-instead-of-database-names)||回避策あり||
-|[エラー ログが非永続的である](#error-logs-arent-persisted)||回避策なし||
-|[同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||回避策あり||
-|[CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||回避策あり||
-|Azure Blob Storage からデータベースを復元した後、DBCC CHECKDB を使用してデータベースの整合性が検証されません。||解決済み|2019 年 11 月|
-|ソース データベースにインメモリ OLTP オブジェクトが含まれている場合、Business Critical レベルから General Purpose レベルへの組み込みのポイントインタイム データベース復元は成功しません。||解決済み|2019 年 10 月|
-|セキュリティで保護された接続を使用する (Azure 以外の) 外部メール サーバーのデータベース メール機能||解決済み|2019 年 10 月|
-|包含データベースは、マネージド インスタンス内でサポートされています||解決済み|2019 年 8 月|
+|[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|自動的に軽減済み| |
+|[リソース グループに対するアクセス許可が Managed Instance に適用されない](#permissions-on-resource-group-not-applied-to-managed-instance)|2020 年 2 月|回避策あり| |
+|[ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|回避策あり| |
+|[SQL Agent ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|回避策あり| |
+|[エージェント プロセスを再起動すると、SQL Agent ジョブが中断されることがある](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|解決済み|2020 年 3 月|
+|[SSDT 内では AAD のログインとユーザーがサポートされない](#aad-logins-and-users-are-not-supported-in-ssdt)|2019 年 11 月|回避策なし| |
+|[インメモリ OLTP のメモリ制限が適用されない](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 10 月|回避策あり| |
+|[空ではないファイルを削除しようとしたときに誤ったエラーが返される](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019 年 10 月|回避策あり| |
+|[サービス レベルの変更とインスタンスの作成操作が、進行中のデータベースの復元によってブロックされる](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|2019 年 9 月|回避策あり| |
+|[Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|2019 年 9 月|回避策あり| |
+|[サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要があります](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|2019 年 8 月|回避策あり| |
+|[Azure AD ログイン タイプの偽装はサポートされない](#impersonification-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|回避策なし| |
+|[sp_send_db_mail の @query パラメーターはサポートされない](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|回避策なし| |
+|[geo フェールオーバー後、トランザクション レプリケーションを再構成する必要がある](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|回避策なし| |
+|[一時的なデータベースが RESTORE 操作中に使用される](#temporary-database-is-used-during-restore-operation)||回避策あり| |
+|[TEMPDB の構造と内容は再作成される](#tempdb-structure-and-content-is-re-created)| |回避策なし| |
+|[小さなデータベース ファイルによる記憶域の超過](#exceeding-storage-space-with-small-database-files)| |回避策あり| |
+|[データベース名の代わりに GUID 値が表示される](#guid-values-shown-instead-of-database-names) ||回避策あり| |
+|[エラー ログが非永続的である](#error-logs-arent-persisted)||回避策なし| |
+|[CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |回避策あり| |
+|[同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |解決済み|2020 年 3 月|
+|Azure Blob Storage からデータベースを復元した後、DBCC CHECKDB を使用してデータベースの整合性が検証されません。| |解決済み|2019 年 11 月|
+|ソース データベースにインメモリ OLTP オブジェクトが含まれている場合、Business Critical レベルから General Purpose レベルへの組み込みのポイントインタイム データベース復元は成功しません。| |解決済み|2019 年 10 月|
+|セキュリティで保護された接続を使用する (Azure 以外の) 外部メール サーバーのデータベース メール機能| |解決済み|2019 年 10 月|
+|包含データベースは、マネージド インスタンス内でサポートされています| |解決済み|2019 年 8 月|
+
+### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる
+
+状況によっては、既存のジョブを変更したり、無効にしたり、有効にしたりすると、エージェントが応答しなくなることがあります。 この問題は、検出されるとエージェント プロセスが再起動され、自動的に軽減されます。
 
 ### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>リソース グループに対するアクセス許可が Managed Instance に適用されない
 
@@ -133,7 +138,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>エージェント プロセスを再起動すると、SQL エージェント ジョブが中断されることがある
 
-SQL エージェントでは、ジョブが開始されるたびに新しいセッションが作成され、メモリ消費量が徐々に増加します。 内部メモリの制限に達してスケジュールされたジョブの実行がブロックされることのないように、エージェント プロセスのメモリ使用量がしきい値に達すると、エージェント プロセスが再起動されます。 これにより、再起動の時点で実行中のジョブの実行が中断される可能性があります。
+**(2020 年 3 月に解決済み)** SQL Agent では、ジョブが開始されるたびに新しいセッションが作成され、メモリ消費量が徐々に増加します。 内部メモリの制限に達してスケジュールされたジョブの実行がブロックされることのないように、エージェント プロセスのメモリ使用量がしきい値に達すると、エージェント プロセスが再起動されます。 これにより、再起動の時点で実行中のジョブの実行が中断される可能性があります。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>インメモリ OLTP のメモリ制限が適用されない
 
@@ -228,7 +233,7 @@ WHERE database_id > 4
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
 
-`TransactionScope` クラス (.NET) は、同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合に機能しません。
+**(2020 年 3 月に解決済み)** `TransactionScope` クラス (.NET) は、同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合に機能しません。
 
 ```csharp
 using (var scope = new TransactionScope())
@@ -253,9 +258,7 @@ using (var scope = new TransactionScope())
 
 ```
 
-このコードは同一インスタンス内でデータを操作しますが、MSDTC を必要とします。
-
-**対処法:** 2 つの接続を使用する代わりに [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) を使って、接続コンテキスト内で他のデータベースを使用します。
+**回避策 (2020 年 3 月以降は不要):** 2 つの接続を使用する代わりに [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) を使って、接続コンテキスト内で他のデータベースを使用します。
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある
 

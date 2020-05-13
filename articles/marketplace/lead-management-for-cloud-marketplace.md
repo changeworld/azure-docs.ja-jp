@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 09b02d043e970c68cdff0e3dc4f97328c9d74c84
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383774"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789846"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>コマーシャル マーケットプレースのリード管理
 
-
 優れたビジネスの中心は顧客です。 今日の製品入手の変革において、マーケティング担当者は顧客と直接つながり、関係を築くことに注力する必要があります。 これが、良質の潜在顧客を創出することが販売サイクルにとって重要なツールである理由です。 [パートナー センター](https://partner.microsoft.com/)でオファーを一覧表示した後、顧客がマーケットプレース内の製品に関心を示すか、またはその製品をデプロイしたらすぐに、その顧客の連絡先情報をプログラムで受信できるようになるツールがあります。 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>マーケットプレースのリードとは?
 
 リードとは、Marketplace の製品に関心を示したり、それらの製品をデプロイしようとしている顧客から送られるものです。 製品が Azure Marketplace または AppSource に一覧表示されているかどうかにかかわらず、それが CRM からパートナー センターの一覧に正しく設定されていれば、顧客からリードを受信できるようになります。 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>CRM システムをパートナー センターに接続する方法
 
@@ -48,7 +44,7 @@ ms.locfileid: "81383774"
 
 技術的な設定が完了したら、これらのリードを現在の販売/マーケティング戦略と運用プロセスに組み込む必要があります。 Microsoft は、パートナーの販売プロセス全体について理解を深めることに関心を持っており、パートナーを成功に導くために、パートナーと緊密に連携して質の高いリードと十分なデータを提供していきたいと考えてます。 顧客を成功に導く上で役立つ追加情報と共に送信されるリードを最適化し、強化する方法についてフィードバックをお待ちしています。 Marketplace Leads によって販売チームがより大きな成果を挙げることができるようにするためのフィードバックや提案に関心がある場合は、ぜひお知らせください。
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>パートナー センターでの公開中の一般的なリード構成エラー
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> パートナー センターでの公開中の一般的なリード構成エラー
 
 **Could not save the lead to Dynamics CRM. \(リードを Dynamics CRM に保存できませんでした。\)Check the Dynamics CRM account settings. \(Dynamics CRM のアカウント設定を確認してください。\)LastCRMError:Unable to sign in to Dynamics CRM, LastCRMException: (LastCRMError: Dynamics CRM LastCRMException にサインインできません:)** 
 
@@ -90,7 +86,7 @@ ms.locfileid: "81383774"
 
 **リードの送信先の設定方法に関するヘルプはどこで入手できますか?** 
 
-こちらのドキュメントをご覧ください:「[潜在顧客の獲得](./partner-center-portal/commercial-marketplace-get-customer-leads.md)」。または、aka.ms/marketplacepublishersupport からオファーの種類とリード管理を選択し、サポート チケットを送信してください。 
+ドキュメントは、[潜在顧客の獲得](./partner-center-portal/commercial-marketplace-get-customer-leads.md)で見つけることができます。または[ヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)でサポート チケットを送信します。 オファーの種類とリード管理を選択します。 
 
 **Marketplace でオファーを公開するには、リードの送信先を構成する必要がありますか?**
 
@@ -187,7 +183,7 @@ title = MSFT_TEST_636573304831318844
 
 **Marketplace からの電子メールを受信したのですが、CRM でリードを確認できないのはなぜですか?**  
 
-エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由から、個人を特定できるデータを .edu ドメインから渡すことはしていません。 [サポート チケット](https://aka.ms/marketplacepublishersupport)を送信してください。
+エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由から、個人を特定できるデータを .edu ドメインから渡すことはしていません。 [ヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)でサポート チケットを送信します。
 
 **リードの送信先として Azure Table/Azure BLOB を構成したのですが、リードを表示するにはどうすればよいですか?** 
 

@@ -1,22 +1,17 @@
 ---
-title: 'エンドユーザー認証: .NET SDK から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+title: エンドユーザー認証 - .NET と Data Lake Storage Gen1 - Azure
 description: Azure Active Directory を .NET SDK と共に使用した Data Lake Storage Gen1 でエンドユーザー認証を行う方法について説明します
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66243721"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688154"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 での .NET SDK を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -50,7 +45,7 @@ ms.locfileid: "66243721"
       * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v2.1.3-preview を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.12 を使用します。
 
-        ![NuGet ソースの追加](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake Store アカウントの作成")
+        ![NuGet ソースを追加する](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
    4. **NuGet パッケージ マネージャー**を閉じます。
 
 5. **Program.cs** を開きます。

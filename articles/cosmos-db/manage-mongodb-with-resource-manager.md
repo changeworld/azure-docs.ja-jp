@@ -1,65 +1,57 @@
 ---
 title: MongoDB 用 Azure Cosmos DB API の Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して、MongoDB 用 Azure Cosmos DB API を作成および構成します。
-author: TheovanKraay
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.author: thvankra
-ms.openlocfilehash: 531f122679c463b11c84eba2fca9f30b09e0935f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/30/2020
+ms.author: mjbrown
+ms.openlocfilehash: d6f916002f949f78e4854903940f342261a109ff
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063633"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791223"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB MongoDB API リソースを管理する
 
-この記事では、Azure Resource Manager テンプレートを使用して Azure Cosmos DB のアカウント、データベース、コンテナーの管理を自動化するさまざまな操作の実行方法について説明します。 この記事に含まれているのは、MongoDB 用の Azure Cosmos DB の API の例のみです。他の種類の API アカウントでの例については、[Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md)、[Table](manage-table-with-resource-manager.md) 用の Azure Cosmos DB の API での Azure Resource Manager テンプレートの使用に関する記事を参照してください。
+この記事では、ご利用の MongoDB API の Azure Cosmos DB アカウント、データベース、およびコレクションのデプロイと管理に役立つ Azure Resource Manager テンプレートの使用方法について説明します。
 
-## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>MongoDB アカウント、データベース、コレクション用の Azure Cosmos DB API を作成する <a id="create-resource"></a>
+この記事に含まれているのは、MongoDB 用の Azure Cosmos DB の API の例のみです。他の種類の API アカウントでの例については、[Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md)、[Table](manage-table-with-resource-manager.md) 用の Azure Cosmos DB の API での Azure Resource Manager テンプレートの使用に関する記事を参照してください。
 
-Azure Resource Manager テンプレートを使用して Azure Cosmos DB リソースを作成します。 このテンプレートは、データベース レベルで 400 RU/秒のスループットを共有する 2 つのコレクションを含む MongoDB API の Azure Cosmos アカウントを作成します。 テンプレートをコピーして次に示すようにデプロイするか、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/)にアクセスして Azure portal からデプロイします。 テンプレートをローカル コンピューターにダウンロードするか、新しいテンプレートを作成して、`--template-file` パラメーターでローカル パスを指定することもできます。
-
-> [!NOTE]
-> アカウント名は小文字とし、44 文字以下にする必要があります。
-> RU/秒を更新するには、スループットのプロパティ値が更新されたテンプレートを再送信します。
+> [!IMPORTANT]
 >
-> 現在、PowerShell および CLI を使用して、MongoDB アカウント用の Azure Cosmos DB の API の 3.2 バージョン (つまり、`*.documents.azure.com` 形式のエンドポイントを使用するアカウント) のみを作成できます。 3\.6 バージョンのアカウントを作成する場合は、Resource Manager テンプレート (下記) または Azure portal を使用してください。
+> * アカウント名は、44 文字 (すべて小文字) に制限されています。
+> * スループットの値を変更するには、RU/秒を更新してテンプレートを再配置します。
+> * Azure Cosmos アカウントに対して場所の追加または削除を行う場合、他のプロパティを同時に変更することはできません。 これらの操作は個別に行う必要があります。
+
+以下の Azure Cosmos DB リソースを作成するには、次のサンプル テンプレートを新しい json ファイルにコピーします。 必要に応じて、異なる名前と値を持つ同じリソースの複数のインスタンスをデプロイするときに使用するパラメーター json ファイルを作成することもできます。 Azure Resource Manager テンプレートをデプロイするには、[Azure portal](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、[GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md) など、さまざまな方法があります。
+
+<a id="create-autoscale"></a>
+
+## <a name="azure-cosmos-account-for-mongodb-with-autoscale-provisioned-throughput"></a>自動スケーリングでプロビジョニングされたスループットを使用した MongoDB 用の Azure Cosmos アカウント
+
+このテンプレートは、データベース レベルで自動スケーリングのスループットを共有する 2 つのコレクションを含む MongoDB API (3.2 または 3.6) の Azure Cosmos アカウントを作成します。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
+
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb-autoscale/azuredeploy.json":::
+
+<a id="create-manual"></a>
+
+## <a name="azure-cosmos-account-for-mongodb-with-standard-provisioned-throughput"></a>標準でプロビジョニングされたスループットを使用した MongoDB 用の Azure Cosmos アカウント
+
+このテンプレートは、データベース レベルで 400 RU/秒の標準 (手動) スループットを共有する 2 つのコレクションを含む MongoDB API (3.2 または3.6) の Azure Cosmos アカウントを作成します。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
+
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
-
-### <a name="deploy-via-the-azure-cli"></a>Azure CLI によるデプロイ
-
-Azure CLI を使用して Azure Resource Manager テンプレートをデプロイするには、スクリプトの **[コピー]** を実行し、 **[試してみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
-
-```azurecli-interactive
-
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the first collection name: ' collection1Name
-read -p 'Enter the second collection name: ' collection2Name
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-  --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-mongodb/azuredeploy.json \
-  --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion \
-  databaseName=$databaseName collection1Name=$collection1Name collection2Name=$collection2Name
-
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
-
-`az cosmosdb show` コマンドは、新しく作成された Azure Cosmos アカウントをそのプロビジョニング後に表示します。 Cloud Shell を使用せずに、Azure CLI のローカルでインストールされたバージョンを使用する場合、[Azure CLI](/cli/azure/) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 次にその他のリソースを示します。
 
-- [Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)
-- [Azure Cosmos DB リソース プロバイダー スキーマ](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Azure Resource Manager デプロイの一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)
+* [Azure Cosmos DB リソース プロバイダー スキーマ](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Azure Resource Manager デプロイの一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)

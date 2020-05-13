@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d97fbe6ac515a2559340474105d73b7c9b9c6ee4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979469"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731919"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -33,7 +33,7 @@ Azure Portal で**仮想マシン**に移動します。
 コマンド バーから **[サービス]** をクリックし、 **[Change Tracking]** 、 **[Inventory]** 、または **[Update Management]** のいずれかを選択します。
 
 > [!NOTE]
-> **[変更追跡]** と **[インベントリ]** は、同じソリューションを使用します。一方が有効であれば、もう一方も有効です。
+> 変更の追跡とインベントリは、同じソリューションを使用します。 1 つを有効にすると、もう一方も有効になります。
 
 次のイメージは Update Management です。 Change Tracking と Inventory のレイアウトおよび動作は同じです。
 
@@ -107,7 +107,7 @@ Automation アカウントの自分のワークスペースを Log Analytics ワ
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-複数のマシンを使用準備する場合、 **[有効にできません]** と表示されるマシンが存在する場合があります。 有効にできないマシンが存在する理由はさまざまです。 次の各セクションでは、使用準備しようとするときに VM が**有効にできない**状態になる考え得る理由を示します。
+複数のマシンを使用準備する場合、`Cannot enable` と表示されるマシンが存在する場合があります。 有効にできないマシンが存在する理由はさまざまです。 次の各セクションでは、使用準備しようとするときに VM が `Cannot enable` 状態になる考え得る理由を示します。
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM reports to a different workspace: '\<workspaceName\>' (VM のレポート先が異なるワークスペース <ワークスペース名> である)。  Change configuration to use it for enabling (これを使用するように構成を変更して有効化できるようにしてください)
 
@@ -129,7 +129,7 @@ Automation アカウントの自分のワークスペースを Log Analytics ワ
 
 **原因:** このソリューションは、すべての Linux ディストリビューションまたはすべてのバージョンの Windows に対してサポートされているわけではありません。
 
-**解決方法:** [サポート対象クライアントの一覧](automation-update-management.md#clients)を参照して解決してください。
+**解決方法:** [サポートされているクライアントの一覧](automation-update-management.md#supported-client-types)を参照してください。
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Classic VMs cannot be enabled (クラシック VM を有効にできない)
 
@@ -148,7 +148,7 @@ Automation アカウントの自分のワークスペースを Log Analytics ワ
 Update Management から VM を削除するには:
 
 * Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
-* [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
+* [Windows 用の Log Analytics エージェント](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

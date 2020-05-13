@@ -4,16 +4,19 @@ description: Azure IoT Edge ソリューションを開発環境から運用環�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/09/2019
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5320c9d7f1ea5ae882c67ee631f5bbafbf97b039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530871"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780744"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -104,7 +107,7 @@ IoT Edge ハブは既定でパフォーマンスが最適化されているた�
 
 **OptimizeForPerformance** が **true** に設定されている場合、MQTT プロトコル ヘッドで PooledByteBufferAllocator が使用されます。この場合、パフォーマンスは向上しますが、より多くのメモリが割り当てられます。 アロケーターは、32 ビット オペレーティング システムまたはメモリが不足しているデバイスでは適切に機能しません。 また、パフォーマンスを最適化する場合、RocksDb は、そのローカル ストレージ プロバイダーとしての役割に、より多くのメモリを割り当てます。
 
-詳細については、「[リソースに制約があるデバイスでの安定性の問題](troubleshoot.md#stability-issues-on-resource-constrained-devices)」を参照してください。
+詳細については、「[小型のデバイスでの安定性の問題](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)」を参照してください。
 
 #### <a name="disable-unused-protocols"></a>未使用のプロトコルを無効にする
 
@@ -133,12 +136,31 @@ timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。
 * **重要**
   * コンテナー レジストリへのアクセスを管理する
   * タグを使用してバージョンを管理する
+* **有用**
+  * プライベート レジストリにランタイム コンテナーを格納する
 
 ### <a name="manage-access-to-your-container-registry"></a>コンテナー レジストリへのアクセスを管理する
 
 運用環境の IoT Edge デバイスにモジュールをデプロイする前に、部外者がコンテナー イメージにアクセスしたり、変更を加えたりできないように、コンテナー レジストリへのアクセスを制御していることを確認してください。 コンテナー イメージを管理するには、パブリックではなく、プライベート コンテナー レジストリを使用します。
 
-チュートリアルやその他のドキュメントでは、開発コンピューターで使用するものと同じコンテナー レジストリの資格情報を IoT Edge デバイスでも使用するように指示しています。 これらの指示は、単にテストおよび開発環境をより簡単に設定できるようにするためのものです。運用環境シナリオではこれらの指示に従わないでください。 Azure Container Registry では、IoT Edge デバイスの場合と同様に、自動的にまたはそれ以外の無人の方法でアプリケーションまたはサービスでコンテナー イメージがプルされるときに、[サービス プリンシパルによる認証](../container-registry/container-registry-auth-service-principal.md)が推奨されます。 コンテナー レジストリへの読み取り専用アクセス権を持つサービス プリンシパルを作成し、デプロイ マニフェストでそのユーザー名とパスワードを指定します。
+チュートリアルやその他のドキュメントでは、開発コンピューターで使用するものと同じコンテナー レジストリの資格情報を IoT Edge デバイスでも使用するように指示しています。 これらの指示は、単にテストおよび開発環境をより簡単に設定できるようにするためのものです。運用環境シナリオではこれらの指示に従わないでください。
+
+レジストリへのセキュリティで保護されたアクセスのために、[認証オプション](../container-registry/container-registry-authentication.md)を選択できます。 一般的で推奨される認証は、Active Directory サービス プリンシパルを使用することです。これは、IoT Edge デバイスと同様に、自動的にまたは無人方式でコンテナー イメージをプルするアプリケーションやサービスによく適しています。
+
+サービス プリンシパルを作成するには、「[サービス プリンシパルの作成](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)」の説明に従って、2 つのスクリプトを実行します。 これらのスクリプトは次のタスクを実行します。
+
+* 最初のスクリプトでは、サービス プリンシパルが作成されます。 ここでは、サービス プリンシパル ID とサービス プリンシパル パスワードが出力されます。 これらの値は、安全に書き留めておきます。
+
+* 2 番目のスクリプトは、サービス プリンシパルに付与するロールの割り当てを作成します。これは、必要に応じて後で実行できます。 `role` パラメーターに **acrPull** ユーザー ロールを適用することをお勧めします。 ロールの一覧については、「[Azure Container Registry のロールとアクセス許可](../container-registry/container-registry-roles.md)」をご覧ください。
+
+サービス プリンシパルを使用して認証するには、最初のスクリプトで取得したサービス プリンシパル ID とパスワードを指定します。 デプロイ マニフェストにこれらの資格情報を指定します。
+
+* ユーザー名またはクライアント ID には、サービス プリンシパル ID を指定します。
+
+* パスワードまたはクライアント シークレットには、サービス プリンシパルのパスワードを指定します。
+
+> [!NOTE]
+> 強化されたセキュリティ認証を実装した後、**管理者ユーザー** 設定を無効にして、既定のユーザー名とパスワードにアクセスできないようにします。 Azure portal のコンテナー レジストリで、左側のウィンドウ メニューの **[設定]** の下にある **[アクセスキー]** を選択します。
 
 ### <a name="use-tags-to-manage-versions"></a>タグを使用してバージョンを管理する
 
@@ -147,6 +169,27 @@ timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。
 また、タグは、IoT Edge デバイスに更新プログラムを適用するのに役立ちます。 更新バージョンのモジュールをコンテナー レジストリにプッシュするときに、タグを増分します。 次に、増分されたタグでデバイスに新しいデプロイをプッシュします。 コンテナー エンジンでは、増分されたタグが新しいバージョンとして認識され、最新バージョンのモジュールがご利用のデバイスにプルダウンされます。
 
 タグ規則の例については、[IoT Edge ランタイムの更新](how-to-update-iot-edge.md#understand-iot-edge-tags)に関する記述を参照してください。そこでは、IoT Edge でローリング タグと特定のタグを使用して、バージョンを追跡する方法について説明されています。
+
+### <a name="store-runtime-containers-in-your-private-registry"></a>プライベート レジストリにランタイム コンテナーを格納する
+
+あなたはカスタム コード モジュールのコンテナー イメージをプライベート Azure レジストリに格納する方法は理解していますが、それを使用して、edgeAgent や edgHub ランタイム モジュールなどのパブリック コンテナー イメージを格納することもできます。 このような処理が必要になるのは、これらのランタイム コンテナーが Microsoft Container Registry (MCR) に格納されているため、ファイアウォールの制限が非常に厳しい場合です。
+
+docker pull コマンドを使用してイメージを取得し、プライベート レジストリに配置します。 IoT Edge ランタイムの新しいリリースごとにイメージを更新する必要があることに注意してください。
+
+| IoT Edge ランタイム コンテナー | docker pull コマンド |
+| --- | --- |
+| [Azure IoT Edge エージェント](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
+| [Azure IoT Edge ハブ](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+次に、edgeAgent および edgeHub システム モジュールの deployment.template.json ファイル内のイメージ参照を必ず更新します。 `mcr.microsoft.com` を、両方のモジュールのレジストリ名とサーバーに置き換えます。
+
+* edgeAgent:
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* edgeHub:
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>ネットワーク
 
@@ -157,7 +200,7 @@ timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。
 
 ### <a name="review-outboundinbound-configuration"></a>アウトバウンド/インバウンド構成を確認する
 
-Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウトバウンドに構成されます。 ほとんどの IoT Edge シナリオでは、3 つの接続のみが必要になります。 コンテナー エンジンは、モジュール イメージを保持するコンテナー レジストリと接続する必要があります。 IoT Edge ランタイムは、デバイス構成情報を取得する場合、またメッセージとテレメトリを送信する場合に IoT Hub と接続する必要があります。 また、自動プロビジョニングを使用する場合、IoT Edge デーモンはデバイス プロビジョニング サービスに接続する必要があります。 詳細については、[ファイアウォールとポート構成ルール](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)に関する記述を参照してください。
+Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウトバウンドに構成されます。 ほとんどの IoT Edge シナリオでは、3 つの接続のみが必要になります。 コンテナー エンジンは、モジュール イメージを保持するコンテナー レジストリと接続する必要があります。 IoT Edge ランタイムは、デバイス構成情報を取得する場合、またメッセージとテレメトリを送信する場合に IoT Hub と接続する必要があります。 また、自動プロビジョニングを使用する場合、IoT Edge デーモンはデバイス プロビジョニング サービスに接続する必要があります。 詳細については、[ファイアウォールとポート構成ルール](troubleshoot.md#check-your-firewall-and-port-configuration-rules)に関する記述を参照してください。
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge デバイスからの接続を許可する
 
@@ -183,6 +226,8 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
    | \*.docker.io  | 443 | Docker Hub でのアクセス (任意指定) |
 
 これらのファイアウォール規則の一部は Azure Container Registry から継承されます。 詳細については、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](../container-registry/container-registry-firewall-access-rules.md)」を参照してください。
+
+パブリック コンテナー レジストリへのアクセスを許可するようにファイアウォールを構成しない場合は、「[プライベート レジストリにランタイム コンテナーを格納する](#store-runtime-containers-in-your-private-registry)」で説明されているように、イメージをプライベート コンテナー レジストリに格納することができます。
 
 ### <a name="configure-communication-through-a-proxy"></a>プロキシを介した通信を構成する
 

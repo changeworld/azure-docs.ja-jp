@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC と Azure CLI を使用してロールの割り当てを一覧表示する
-description: Azure ロールベースのアクセス制御 (RBAC) と Azure CLI を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセスを決定する方法について説明します。
+title: Azure CLI を使用して Azure ロールの割り当てを一覧表示する - Azure RBAC
+description: Azure CLI と Azure ロールベースのアクセス制御 (RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID がアクセスできるリソースを決定する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5716e7bb89d017866bd1575256e2d119bb7acbe5
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: f4b635d6867c36b8b0f385320e3720bea41b54d1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385063"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735744"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Azure RBAC と Azure CLI を使用してロールの割り当てを一覧表示する
+# <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure ロールの割り当てを一覧表示する
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure CLI を使用してロールの割り当てを一覧表示する方法を説明します。
 
@@ -144,4 +144,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する](role-assignments-cli.md)
+- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)

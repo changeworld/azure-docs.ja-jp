@@ -6,18 +6,18 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3d88123b3dd79e5707c5c19cbbae13c30cbdeb84
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409414"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628744"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
-この記事では、Azure Stream Analytics の入力接続に関する一般的な問題、入力の問題のトラブルシューティングの方法、および問題を修正する方法について説明します。 多くのトラブルシューティングの手順では、Stream Analytics ジョブに対して診断ログを有効にする必要があります。 診断ログが有効になっていない場合は、「[診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)」を参照してください。
+この記事では、Azure Stream Analytics の入力接続に関する一般的な問題、入力の問題のトラブルシューティングの方法、および問題を修正する方法について説明します。 多くのトラブルシューティングの手順では、Stream Analytics ジョブに対してリソース ログを有効にする必要があります。 リソース ログが有効になっていない場合は、「[診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)」を参照してください。
 
 ## <a name="input-events-not-received-by-job"></a>ジョブによって受信されない入力イベント 
 
@@ -41,7 +41,7 @@ Stream Analytics ジョブは、入力から間違った形式のメッセージ
 
 ![Azure Stream Analytics の入力タイル](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-診断ログを有効にして、エラーの詳細と、エラーの原因となったメッセージ (ペイロード) を表示します。 逆シリアル化エラーが発生する理由は複数あります。 特定の逆シリアル化エラーの詳細については、「[入力データ エラー](data-errors.md#input-data-errors)」を参照してください。 診断ログが有効になっていない場合は、Azure portal で簡単な通知を受け取ることができます。
+リソース ログを有効にして、エラーの詳細と、エラーの原因となったメッセージ (ペイロード) を表示します。 逆シリアル化エラーが発生する理由は複数あります。 特定の逆シリアル化エラーの詳細については、「[入力データ エラー](data-errors.md#input-data-errors)」を参照してください。 リソース ログが有効になっていない場合は、Azure portal で簡単な通知を利用できます。
 
 ![入力の詳細の警告通知](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
@@ -51,9 +51,18 @@ Stream Analytics ジョブは、入力から間違った形式のメッセージ
 
 Event Hubs を使用する際のベスト プラクティスは、ジョブの拡張性のために複数のコンシューマー グループを使用することです。 特定の入力に関する Stream Analytics ジョブのリーダーの数は、1 つのコンシューマー グループ内のリーダーの数に影響します。 レシーバーの正確な数は、スケールアウト トポロジ ロジックの内部実装の詳細に基づいて決まり、外部には公開されません。 リーダーの数は、ジョブの開始時またはジョブのアップグレード中に変更される可能性があります。
 
-レシーバー数が最大数を超えると、次のエラーが表示されます｡
+レシーバー数が最大数を超えると、次のエラー メッセージが表示されます。 エラー メッセージには、コンシューマー グループのイベント ハブに対して行われた既存の接続の一覧が含まれています。 タグ `AzureStreamAnalytics` は、接続が Azure ストリーミング サービスからのものであることを示します。
 
-`The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+```
+The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.
+
+The following information may be helpful in identifying the connected receivers: Exceeded the maximum number of allowed receivers per partition in a consumer group which is 5. List of connected receivers – 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
+```
 
 > [!NOTE]
 > ジョブのアップグレード中にリーダーの数が変更されると、一時的な警告が監査ログに書き込まれます。 Stream Analytics ジョブは、これらの一時的な問題から自動的に回復します。

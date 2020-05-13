@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415710"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791767"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -138,9 +138,9 @@ Cosmos DB は HMAC を承認のために使用します。 コンテナー、パ
 
 Cosmos DB は、書き込み中のトリガーの実行をサポートしています。 このサービスでは、書き込み操作あたり最大 1 つのプリトリガーと 1 つのポストトリガーがサポートされます。 
 
-## <a name="autopilot-mode-limits"></a>オートパイロット モードの制限
+## <a name="limits-for-autoscale-provisioned-throughput"></a>自動スケーリングでプロビジョニングされたスループットの制限
 
-オートパイロット モードでのスループットとストレージの制限については、[オートパイロット](provision-throughput-autopilot.md#autopilot-limits)に関する記事をご覧ください。
+自動スケーリングでのスループットとストレージの制限については、[自動スケーリング](provision-throughput-autoscale.md#autoscale-limits)に関する記事をご覧ください。
 
 ## <a name="sql-query-limits"></a>SQL クエリの制限
 

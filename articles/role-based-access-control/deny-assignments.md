@@ -1,6 +1,6 @@
 ---
-title: Azure リソースの拒否割り当ての概要
-description: Azure リソースに対するロールベースのアクセス制御 (RBAC) の拒否割り当てについて説明します。
+title: Azure 拒否割り当てについて - Azure RBAC
+description: Azure ロールベースのアクセス制御 (Azure RBAC) の Azure 拒否割り当てについて説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372485"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733774"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Azure リソースの拒否割り当ての概要
+# <a name="understand-azure-deny-assignments"></a>Azure 拒否割り当てについて
 
 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、またはサービス プリンシパルに一連の拒否アクションがアタッチされます。 拒否割り当てを使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。
 
@@ -90,4 +90,4 @@ All Principals は `ExcludePrincipals` と組み合わせて、一部のユー�
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)
-* [Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-portal.md)
+* [Azure portal を使用して Azure 拒否割り当てを一覧表示する](deny-assignments-portal.md)
