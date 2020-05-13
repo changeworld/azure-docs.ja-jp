@@ -200,6 +200,8 @@
           href: web-sites-monitor.md
         - name: ログの有効化
           href: troubleshoot-diagnostic-logs.md
+        - name: リソース イベントの取得
+          href: get-resource-events.md
     - name: アプリの管理
       items:
         - name: ホスティング プランの管理

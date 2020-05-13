@@ -1,10 +1,11 @@
 ---
-title: チュートリアル:LucidChart のユーザー プロビジョニング - Azure AD
-description: Azure Active Directory を構成して、ユーザー アカウントを LucidChart に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
+title: チュートリアル:Lucidchart を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+description: Azure AD から Lucidchart に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: ArvindHarinder1
-manager: CelesteDG
+author: zchia
+writer: zchia
+manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -12,88 +13,161 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
-ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d946c6e257c7676178f9bc3c234f66ba6fe622
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 01/13/2020
+ms.author: Zhchia
+ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057330"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690595"
 ---
-# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:LucidChart を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:Lucidchart を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルでは、Azure AD から LucidChart にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで LucidChart と Azure AD で実行する必要がある手順について説明します。 
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Lucidchart と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD では、Azure AD プロビジョニング サービスを使用して、[Lucidchart](https://www.lucidchart.com/user/117598685#/subscriptionLevel) に対するユーザーとグループのプロビジョニングおよびプロビジョニング解除が自動的に行われます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
+
+
+## <a name="capabilities-supported"></a>サポートされる機能
+> [!div class="checklist"]
+> * Lucidchart でユーザーを作成する
+> * アクセスが不要になった場合に Lucidchart のユーザーを削除する
+> * Azure AD と Lucidchart の間でユーザー属性の同期を維持する
+> * Lucidchart でグループとグループ メンバーシップをプロビジョニングする
+> * Lucidchart への[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/lucidchart-tutorial) (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* Azure Active Directory テナント
-* [Enterprise プラン](https://www.lucidchart.com/user/117598685#/subscriptionLevel)以上の有効な LucidChart テナント
-* Admin アクセス許可がある LucidChart のユーザー アカウント
+* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
+* [Enterprise プラン](https://www.lucidchart.com/user/117598685#/subscriptionLevel)以上の有効な LucidChart テナント。
+* Admin アクセス許可がある LucidChart のユーザー アカウント。
 
-## <a name="assigning-users-to-lucidchart"></a>LucidChart へのユーザーの割り当て
+## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
+1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
+2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
+3. [Azure AD と Lucidchart の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
+## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Lucidchart を構成する
 
-プロビジョニング サービスを構成して有効にする前に、LucidChart アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを LucidChart アプリに割り当てることができます。
+1. [Lucidchart 管理コンソール](https://www.lucidchart.com)にログインします。 **[Team] (チーム) > [App Integration] (アプリの統合)** に移動します。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
+      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/team1.png)
 
-### <a name="important-tips-for-assigning-users-to-lucidchart"></a>ユーザーを LucidChart に割り当てる際の重要なヒント
+2. **[SCIM]** に移動します。
 
-* 単一の Azure AD ユーザーを LucidChart に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/scim.png)
 
-* LucidChart にユーザーを割り当てるときは、**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
+3. 下にスクロールして **[Bearer token] (ベアラー トークン)** と **[Lucidchart Base URL] (Lucidchart ベース URL)** を表示します。 **[Bearer token] (ベアラー トークン)** をコピーして保存します。 この値を、Azure portal の LucidChart アプリケーションの [プロビジョニング] タブの **[シークレット トークン]** * フィールドに入力します。 
 
-## <a name="configuring-user-provisioning-to-lucidchart"></a>LucidChart へのユーザー プロビジョニングの構成
+      ![Lucidchart トークン](./media/lucidchart-provisioning-tutorial/token.png)
 
-このセクションでは、Azure AD を LucidChart のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みユーザーのアカウントを LucidChart で作成、更新、無効化する手順を説明します。
+## <a name="step-3-add-lucidchart-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Lucidchart を追加する
 
-> [!TIP]
-> LucidChart では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+Azure AD アプリケーション ギャラリーから Lucidchart を追加して、Lucidchart へのプロビジョニングの管理を開始します。 SSO のために Lucidchart を以前に設定している場合は、その同じアプリケーションを使用することができます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
 
-### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Azure AD で LucidChart への自動ユーザー アカウント プロビジョニングを構成する
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
 
-2. シングル サインオンのために LucidChart を既に構成している場合は、検索フィールドで LucidChart のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **LucidChart** を検索します。 検索結果から LucidChart を選択してアプリケーションの一覧に追加します。
+* Lucidchart にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
 
-3. LucidChart のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
+
+
+## <a name="step-5-configure-automatic-user-provisioning-to-lucidchart"></a>手順 5. Lucidchart への自動ユーザー プロビジョニングを構成する 
+
+このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、TestApp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
+
+### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>Azure AD で Lucidchart の自動ユーザー プロビジョニングを構成するには:
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
+2. アプリケーションの一覧で **[Lucidchart]** を選択します。
+
+    ![アプリケーションの一覧の [Lucidchart] リンク](common/all-applications.png)
+
+3. **[プロビジョニング]** タブを選択します。
+
+    ![[プロビジョニング] タブ](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![LucidChart のプロビジョニング](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
+    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションで、LucidChart のアカウントによって生成された **[シークレット トークン]** を入力します (トークンは、LucidChart アカウントの **[チーム]**  >  **[アプリの統合]**  >  **[SCIM]** で確認できます)。
+5. **[管理者資格情報]** セクションで、以前に取得した **[Bearer token] (ベアラー トークン)** の値を **[シークレット トークン]** フィールドに入力します。 **[接続テスト]** をクリックして、Azure AD から Lucidchart に接続できることを確認します。 接続できない場合は、使用中の Lucidchart アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![LucidChart のプロビジョニング](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
+      ![プロビジョニング](./media/Lucidchart-provisioning-tutorial/lucidchart1.png)
 
-6. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が LucidChart アプリに接続できることを確認します。 接続できない場合は、使用中の LucidChart アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
+6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
+    ![通知用メール](common/provisioning-notification-email.png)
 
-8. **[保存]** をクリックします。
+7. **[保存]** を選択します。
 
-9. [マッピング] セクションの **[Synchronize Azure Active Directory Users to LucidChart]\(Azure Active Directory ユーザーを LucidChart に同期する\)** を選びます。
+8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Lucidchart]\(Azure Active Directory ユーザーを Lucidchart に同期する\)** を選びます。
 
-10. **[属性マッピング]** セクションで、Azure AD から LucidChart に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で LucidChart のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
+9. **[属性マッピング]** セクションで、Azure AD から Lucidchart に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Lucidchart のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Lucidchart API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-11. LucidChart に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+   |属性|Type|
+   |---|---|
+   |userName|String|
+   |emails[type eq "work"].value|String|
+   |active|Boolean|
+   |name.givenName|String|
+   |name.familyName|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
+   |urn:ietf:params:scim:schemas:extension:lucidchart:1.0:User:canEdit|Boolean|
 
-12. **[保存]** をクリックします。
+10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Lucidchart] (Azure Active Directory グループを Lucidchart に同期する)** を選択します。
 
-これにより、[ユーザーとグループ] セクションで LucidChart に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって実行されたすべてのアクションが記載されています。
+11. **[属性マッピング]** セクションで、Azure AD から Lucidchart に同期されるグループ属性を確認します。 **[Matching] (照合)** プロパティとして選択されている属性は、更新処理で Lucidchart のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
+      |属性|Type|
+      |---|---|
+      |displayName|String|
+      |members|リファレンス|
+
+12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+
+13. Lucidchart に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+
+    ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
+
+14. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Lucidchart にプロビジョニングするユーザーやグループを定義します。
+
+    ![プロビジョニングのスコープ](common/provisioning-scope.png)
+
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+
+    ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
+
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
+
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
+
+1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
+
+## <a name="change-log"></a>ログの変更
+
+* 2020 年 4 月 30 日 - エンタープライズ拡張属性とユーザーのカスタム属性 "CanEdit" のサポートを追加しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)

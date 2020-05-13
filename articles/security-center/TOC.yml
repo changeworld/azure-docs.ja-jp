@@ -12,6 +12,8 @@
           href: security-center-services.md
         - name: Azure PaaS リソースを対象とする機能
           href: features-paas.md
+    - name: Security Center の最新情報
+      href: release-notes.md
     - name: セキュリティに関する推奨事項
       href: recommendations-reference.md
     - name: セキュリティ アラートと意図のキル チェーン
@@ -188,7 +190,9 @@
           href: faq-vms.md
         - name: Azure Log Analytics の既存のユーザー
           href: faq-azure-monitor-logs.md
-    - name: リリース ノート
+    - name: Security Center の最新情報のアーカイブ
+      href: release-notes-archive.md
+    - name: Azure ロードマップのブログ
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 機能と API の廃止 (2019 年 7 月)
       href: security-center-features-retirement-july2019.md

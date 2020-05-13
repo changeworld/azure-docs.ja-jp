@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: b29d66e8bb213fbbb162c3249f022e0783f9f62f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115669"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598370"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics でのユーザー定義関数
 
@@ -43,10 +43,13 @@ Azure Stream Analytics では、次の 4 種類の関数がサポートされて
 
 Azure Stream Analytics では、すべての関数の呼び出しと返された結果のレコードは保持されません。 再現性を保証する (たとえば古いタイムスタンプからジョブを再実行すると、同じ結果が再び返される) 場合は、`Date.GetData()` や `Math.random()` などの関数を使用しないでください。これらの関数では毎回の呼び出しで同じ結果が返されることはないためです。  
 
-## <a name="diagnostic-logs"></a>診断ログ
+## <a name="resource-logs"></a>リソース ログ
 
-ランタイム エラーは致命的とみなされ、アクティビティ ログと診断ログに表示されます。 関数ですべての例外とエラーを処理し、クエリに有効な結果を返すことをお勧めします。 これにより、ジョブが[エラー状態](job-states.md)になるのを防ぐことができます。  
+ランタイム エラーは致命的とみなされ、アクティビティ ログとリソース ログに表示されます。 関数ですべての例外とエラーを処理し、クエリに有効な結果を返すことをお勧めします。 これにより、ジョブが[エラー状態](job-states.md)になるのを防ぐことができます。  
 
+## <a name="exception-handling"></a>例外処理
+
+データ処理中の例外はすべて、Azure Stream Analytics でのデータ使用時には重大なエラーであると見なされます。 ユーザー定義関数は、例外をスローして処理を停止させる可能性が高いものです。 この問題を回避するには、JavaScript または C# で *try-catch* ブロックを使用して、コード実行時に例外をキャッチします。 キャッチされた例外は、システム障害を発生させずに、ログに記録して処理することができます。 処理エンジンに対して予期しない例外がスローされるのを防ぐために、カスタム コードは常に *try-catch* ブロック内にラップすることが推奨されます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -54,4 +57,3 @@ Azure Stream Analytics では、すべての関数の呼び出しと返された
 * [Azure Stream Analytics の JavaScript ユーザー定義集計](stream-analytics-javascript-user-defined-aggregates.md)
 * [Azure Stream Analytics ジョブ用の .NET Standard ユーザー定義関数を開発する](stream-analytics-edge-csharp-udf-methods.md)
 * [Azure Stream Analytics と Azure Machine Learning を統合する](machine-learning-udf.md)
-

@@ -18,6 +18,8 @@
       href: quickstart-create-workspace.md
     - name: Azure Synapse Studio を使用する
       href: quickstart-synapse-studio.md
+    - name: Power BI ワークスペースをリンクする
+      href: quickstart-power-bi.md
     - name: プールを作成する
       items:
         - name: Web ツールを使用して Apache Spark ノートブックを作成する
@@ -30,6 +32,8 @@
       items:
         - name: COPY ステートメント
           href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Studio
+          href: quickstart-load-studio-sql-pool.md
     - name: SQL オンデマンドを使用する
       href: quickstart-sql-on-demand.md
 - name: チュートリアル
@@ -188,6 +192,8 @@
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Apache Spark のパフォーマンス
               href: ./spark/apache-spark-performance.md
+            - name: Apache Spark の自動スケール動作
+              href: ./spark/apache-spark-autoscale.md
         - name: 開発
           items:
             - name: Azure Synapse Studio ノートブック
@@ -492,7 +498,7 @@
               href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Cosmos DB の MongoDB 用 API
               href: ../data-factory/connector-azure-cosmos-db-mongodb-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: "\_Azure Data Explorer"
+            - name: Azure Data Explorer
               href: ../data-factory/connector-azure-data-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Data Lake Storage Gen1
               href: ../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

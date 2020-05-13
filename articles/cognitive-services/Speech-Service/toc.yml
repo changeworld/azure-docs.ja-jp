@@ -557,6 +557,20 @@
       items:
         - name: Speech Devices SDK のリリース ノート
           href: devices-sdk-release-notes.md
+- name: ツール
+  items:
+    - name: SPX
+      items:
+        - name: Spark とは
+          href: spx-overview.md
+        - name: SPX の基本
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Speech Studio とは
+          href: 'https://speech.microsoft.com'
+        - name: Speech Studio を使用してカスタム コマンド アプリを作成する
+          href: quickstart-custom-speech-commands-create-new.md
 - name: 移行
   items:
     - name: Bing Speech から

@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 と Azure Storage Blob の比較 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 と Azure Storage Blob の比較
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1 と Blob Storage の比較
+description: Azure Data Lake Storage Gen1 と Azure Blob Storage の違いの概要を示します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438716"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691720"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 と Azure Blob Storage の比較
 
@@ -40,7 +34,7 @@ ms.locfileid: "75438716"
 | データ操作 - 監査 |使用可能。 詳細については、 [こちら](data-lake-store-diagnostic-logs.md) をご覧ください。 |利用可能 |
 | 保存データの暗号化 |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用</li></ul></ul> |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用 (プレビュー)</li></ul><li>クライアント側暗号化</li></ul> |
 | 管理操作 (アカウントの作成など) |[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) |[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) |
-| Developer SDK |.NET、Java、Python、Node.js |.Net、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS |
+| Developer SDK |.NET、Java、Python、Node.js |.NET、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS |
 | 分析ワークロードのパフォーマンス |並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 |並列分析ワークロードに最適化されたパフォーマンス。 |
 | サイズ制限 |アカウント サイズ、ファイル サイズ、ファイル数に制限はありません。 |特定の制限事項については、[Standard ストレージ アカウントのスケーラビリティ ターゲット](../storage/common/scalability-targets-standard-account.md)に関する記事と「[BLOB ストレージのスケーラビリティとパフォーマンス ターゲット](../storage/blobs/scalability-targets.md)」を参照してください。 より大きなアカウント制限については [Azure サポート](https://azure.microsoft.com/support/faq/)への問い合わせで入手可能 |
 | geo 冗長 |ローカル冗長 (1 つの Azure リージョンにデータの複数のコピー) |ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (GRS)、読み取りアクセス geo 冗長 (RA-GRS)。 詳細については、 [こちら](../storage/common/storage-redundancy.md) をご覧ください。 |

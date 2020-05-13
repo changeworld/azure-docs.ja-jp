@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605475"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838588"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure で利用可能な Red Hat Enterprise Linux (RHEL) イメージ
 Azure では、さまざまなユース ケースに対応する多様な RHEL イメージを提供しています。
@@ -27,6 +27,9 @@ Azure では、さまざまなユース ケースに対応する多様な RHEL �
 
 ## <a name="list-of-rhel-images"></a>RHEL イメージの一覧
 これは、Azure で利用可能な RHEL イメージの一覧です。 特に明記されていない限り、すべてのイメージは LVM パーティションに分割され、(EUS、E4S ではなく) 標準の RHEL リポジトリに接続されています。 現在、次のイメージが一般に利用できます。
+
+> [!NOTE]
+> LVM パーティション分割されたイメージを優先するために、未加工のイメージが生成されなくなりました。 LVM では、以前の未加工の (LVM でない) パーティション分割構成と比べて、より柔軟なパーティション サイズ変更オプションを含めていくつかの利点があります。
 
 プラン| SKU | パーティション分割 | プロビジョニング | Notes
 :----|:----|:-------------|:-------------|:-----
@@ -47,6 +50,9 @@ RHEL          | 6.7      | RAW    | Linux エージェント |
 |             | 7.6      | RAW    | Linux エージェント | 2019 年 5 月現在、既定で EUS リポジトリに接続されています。
 |             | 76-gen2  | RAW    | Linux エージェント | 既定では EUS リポジトリに接続されています。
 |             | 7.7      | LVM    | Linux エージェント | 既定では EUS リポジトリに接続されています。
+|             | 77-gen2  | LVM    | Linux エージェント | 既定では EUS リポジトリに接続されています。
+|             | 7.8      | LVM    | Linux エージェント | 標準リポジトリに接続されています (RHEL 7.8 では EUS は使用できません)。
+|             | 78-gen2  | LVM    | Linux エージェント | 標準リポジトリに接続されています (RHEL 7.8 では EUS は使用できません)。
 |             | 8-LVM    | LVM    | Linux エージェント | RHEL 8.x イメージ ファミリ。 通常のリポジトリに接続されています。
 |             | 8-lvm-gen2| LVM    | Linux エージェント | Hyper-V Generation 2 - RHEL 8.x イメージ ファミリ。 通常のリポジトリに接続されています。
 |             | 8        | LVM    | Linux エージェント | RHEL 8.0 イメージ

@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049726"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610447"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 接続性のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -31,7 +32,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 この記事では、Fabrikam がプロキシを介して Azure AD に接続する方法について説明します。 プロキシ サーバーは fabrikamproxy という名前で、ポート 8080 を使用しています。
 
-まず、 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) が正しく構成されていることを確認する必要があります。  
+まず、 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) が正しく構成されていることを確認する必要があります。
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -58,25 +59,24 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 インストール ウィザードで発生する最も一般的な問題を次に示します。
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>インストール ウィザードが正しく構成されていない
-このエラーは、ウィザード自体がプロキシに接続できない場合に表示されます。  
+このエラーは、ウィザード自体がプロキシに接続できない場合に表示されます。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * このエラーが表示された場合は、[machine.config](how-to-connect-install-prerequisites.md#connectivity) が正しく構成されていることを確認します。
 * 正しいようであれば、「 [プロキシ接続を検証する](#verify-proxy-connectivity) 」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
 ### <a name="a-microsoft-account-is-used"></a>Microsoft アカウントが使用されている
-**学校または組織**のアカウントではなく **Microsoft アカウント**を使用すると、一般的なエラーが表示されます。  
+**学校または組織**のアカウントではなく **Microsoft アカウント**を使用すると、一般的なエラーが表示されます。
 ![Microsoft アカウントが使用されている](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>MFA エンドポイントに到達できない
-このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、全体の管理者が MFA を有効にしている場合に表示されます。  
+このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、全体の管理者が MFA を有効にしている場合に表示されます。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * このエラーが表示された場合は、エンドポイント **secure.aadcdn.microsoftonline-p.com** がプロキシに追加されていることを確認します。
 
 ### <a name="the-password-cannot-be-verified"></a>パスワードを確認できない
-インストール ウィザードによる Azure AD への接続は成功したものの、パスワード自体を確認できない場合に、このエラーが表示されます。  
-![間違ったパスワード。](./media/tshoot-connect-connectivity/badpassword.png)
+インストール ウィザードによる Azure AD への接続は成功したものの、パスワード自体を確認できない場合に、このエラーが表示されます。![間違ったパスワード。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * そのパスワードは一時パスワードで、変更が必要ではないでしょうか。 また、本当に正しいパスワードでしょうか。 Azure AD Connect サーバーとは別のコンピューターで `https://login.microsoftonline.com` へのサインインを試し、アカウントが使用可能であることを確認してください。
 
@@ -186,7 +186,7 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Azure AD Global Admin Role Needed (Azure AD の全体管理者ロールが必要です)
-ユーザーは正常に認証されました。 ただし、ユーザーに全体管理者ロールが割り当てられていません。 ユーザーに[全体管理者ロールを割り当てる方法](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。 
+ユーザーは正常に認証されました。 ただし、ユーザーに全体管理者ロールが割り当てられていません。 ユーザーに[全体管理者ロールを割り当てる方法](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。
 
 <div id="privileged-identity-management">
 <!--
@@ -224,7 +224,7 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 ## <a name="troubleshooting-steps-for-previous-releases"></a>以前のリリース用のトラブルシューティング手順です。
 ビルド番号 1.1.105.0 (2016 年 2 月リリース) 以降のリリースでは、サインイン アシスタントが提供されなくなりました。 このセクションと構成は必要がなくなりますが、参照用に残されています。
 
-シングル サインイン アシスタントを機能させるには、winhttp を構成する必要があります。 この構成には [**netsh**](how-to-connect-install-prerequisites.md#connectivity) を使用します。  
+シングル サインイン アシスタントを機能させるには、winhttp を構成する必要があります。 この構成には [**netsh**](how-to-connect-install-prerequisites.md#connectivity) を使用します。
 ![netsh](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>サインイン アシスタントが正しく構成されていない

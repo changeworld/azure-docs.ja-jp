@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: c77849b2285283a34e6adf84dc3845a4076407af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597944"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82615995"
 ---
 ## <a name="attack-scenario"></a>攻撃シナリオ
 
@@ -29,9 +29,16 @@ Just-In-Time が有効になっている場合、Security Center では NSG ル�
  > Azure Firewall の背後にある VM への JIT アクセス要求が承認されると、Security Center は NSG とファイアウォールの両方のポリシー規則を自動的に変更します。 この規則によって、選択したポートおよび要求されたソース IP アドレスまたは範囲への受信トラフィックが指定された時間だけ許可されます。 指定された期間が経過すると、Security Center は ファイアウォールと NSG の規則を以前の状態に復元します。
 
 
+## <a name="roles-that-can-read-jit-policies"></a>JIT ポリシーを読み取ることができるロール
+
+**閲覧者**ロールと **SecurityReader** ロールは両方ともポリシーを読み取ることができます。
+
 ## <a name="permissions-needed-to-configure-and-use-jit"></a>JIT を構成および使用するために必要なアクセス許可
+
+JIT で動作するカスタム ロールを作成する場合は、次の詳細情報が必要になります。
 
 | ユーザーを有効にする目的: | 設定するアクセス許可|
 | --- | --- |
 | VM の JIT ポリシーを構成または編集する | *これらのアクションをロールに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> VM のサブスクリプションまたはリソース グループの範囲: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |VM への JIT アクセスを要求する | *これらのアクションをユーザーに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  VM のサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  VM のサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
+|JIT ポリシーの読み取り| *これらのアクションをユーザーに割り当てます。*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|

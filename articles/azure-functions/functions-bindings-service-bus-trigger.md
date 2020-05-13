@@ -6,16 +6,16 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273559"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690699"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions の Azure Service Bus トリガー
 
-Service Bus トリガーを使用して、Service Bus キューまたはトピックからのメッセージに応答します。
+Service Bus トリガーを使用して、Service Bus キューまたはトピックからのメッセージに応答します。 拡張機能バージョン 3.1.0 以降では、セッションが有効なキューまたはトピックでトリガーを実行できます。
 
 セットアップと構成の詳細については、[概要](functions-bindings-service-bus-output.md)に関するページをご覧ください。
 
@@ -222,7 +222,7 @@ Service Bus トピックにメッセージが追加されたときに、Java 関
   }
   ```
 
-  次の例で示すように、`Connection` プロパティを設定して、使用する Service Bus 接続文字列を含むアプリ設定の名前を指定できます。
+  `Connection` プロパティは定義されていないため、関数は `AzureWebJobsServiceBus` という名前のアプリ設定を探します。これは Service Bus 接続文字列の既定の名前です。 また、次の例で示すように、`Connection` プロパティを設定して、使用する Service Bus 接続文字列を含むアプリケーション設定の名前を指定することもできます。
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -354,21 +354,24 @@ Functions ランタイムは、メッセージを [PeekLock モード](../servic
 
 ## <a name="message-metadata"></a>メッセージのメタデータ
 
-Service Bus トリガーには、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのメンバーです。
+Service Bus トリガーには、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) クラスのメンバーです。
 
 |プロパティ|Type|説明|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|配信回数。|
-|`DeadLetterSource`|`string`|配信不能のソース。|
-|`ExpiresAtUtc`|`DateTime`|有効期限 (UTC)。|
-|`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|
-|`MessageId`|`string`|有効になっている場合に、重複するメッセージを識別するために Service Bus が使用できるユーザー定義の値|
 |`ContentType`|`string`|アプリケーション固有のロジックのために送信者と受信者が利用するコンテンツ タイプ識別子。|
-|`ReplyTo`|`string`|キュー アドレスへの返信。|
-|`SequenceNumber`|`Int64`|Service Bus によってメッセージに割り当てられる一意の番号。|
-|`To`|`string`|送信先アドレス。|
-|`Label`|`string`|アプリケーション固有のラベル。|
 |`CorrelationId`|`string`|関連付け ID。|
+|`DeadLetterSource`|`string`|配信不能のソース。|
+|`DeliveryCount`|`Int32`|配信回数。|
+|`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|
+|`ExpiresAtUtc`|`DateTime`|有効期限 (UTC)。|
+|`Label`|`string`|アプリケーション固有のラベル。|
+|`MessageId`|`string`|有効になっている場合に、重複するメッセージを識別するために Service Bus が使用できるユーザー定義の値|
+|`MessageReceiver`|`MessageReceiver`|Service Bus メッセージ受信者。 使用すると、メッセージの破棄、完了、または配信不能とすることができます。|
+|`MessageSession`|`MessageSession`|セッションが有効なキューとトピック専用のメッセージ受信者。|
+|`ReplyTo`|`string`|キュー アドレスへの返信。|
+|`SequenceNumber`|`long`|Service Bus によってメッセージに割り当てられる一意の番号。|
+|`To`|`string`|送信先アドレス。|
+|`UserProperties`|`IDictionary<string, object>`|送信者によって設定されたプロパティ。|
 
 この記事の前半でこれらのプロパティを使用している[コード例](#example)を参照してください。
 

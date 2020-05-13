@@ -4,12 +4,12 @@ description: Azure Application Insights .NET SDK でカスタム操作を追跡�
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234739"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690859"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -38,7 +38,7 @@ Application Insights Web SDK は、IIS パイプラインで実行される ASP.
 簡潔に言うと、このタスクとは、`RequestTelemetry` を作成して既知のプロパティを設定することです。 操作が完了したら、このテレメトリを追跡します。 次の例は、このタスクを示しています。
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Owin 自己ホスト型アプリにおける HTTP 要求
-この例では、トレース コンテキストは、[関連付け用の HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に従って反映されます。 ここに記載されているヘッダーが受信されることを予期してください。
+この例では、トレース コンテキストは、[関連付け用の HTTP プロトコル](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に従って反映されます。 ここに記載されているヘッダーが受信されることを予期してください。
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -117,7 +117,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 この関連付け用の HTTP プロトコルも、`Correlation-Context` ヘッダーを宣言しますが、 ここでは、簡潔にするために省略されています。
 
 ## <a name="queue-instrumentation"></a>キューのインストルメンテーション
-[W3C トレース コンテキスト](https://www.w3.org/TR/trace-context/)と関連付けの詳細を HTTP 要求で渡す[関連付け用の HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)はありますが、各キュー プロトコルで、同じ詳細をキュー メッセージに沿って渡す方法を定義する必要があります。 一部のキュー プロトコル (AMQP など) は、追加のメタデータを渡すことを許可しています。また、コンテキストをメッセージ ペイロードにエンコードする必要があるキュー プロトコルもあります (Azure Storage Queue など)。
+[W3C トレース コンテキスト](https://www.w3.org/TR/trace-context/)と関連付けの詳細を HTTP 要求で渡す[関連付け用の HTTP プロトコル](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)はありますが、各キュー プロトコルで、同じ詳細をキュー メッセージに沿って渡す方法を定義する必要があります。 一部のキュー プロトコル (AMQP など) は、追加のメタデータを渡すことを許可しています。また、コンテキストをメッセージ ペイロードにエンコードする必要があるキュー プロトコルもあります (Azure Storage Queue など)。
 
 > [!NOTE]
 > * **クロスコンポーネントのトレースはキューではまだサポートされていません**。HTTP を使用すると、プロデューサーとコンシューマーが、異なる Application Insights リソースにテレメトリを送信する場合、トランザクションの診断エクスペリエンスとアプリケーション マップでトランザクションが表示され、エンドツーエンドでマップされます。 キューの場合、これはまだサポートされていません。 
@@ -482,4 +482,4 @@ public async Task RunAllTasks()
 - Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
 - カスタムの[イベントとメトリック](../../azure-monitor/app/api-custom-events-metrics.md)を Application Insights にレポートします。
 - コンテキスト プロパティ コレクションの標準的な[構成](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。
-- テレメトリを相互に関連付ける方法を [System.Diagnostics.Activity ユーザー ガイド](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)で確認します。
+- テレメトリを相互に関連付ける方法を [System.Diagnostics.Activity ユーザー ガイド](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)で確認します。

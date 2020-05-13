@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672298"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788877"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -176,7 +176,7 @@ Azure AD デバイスが Windows Autopilot オブジェクトに関連付けら�
 
 Azure AD への認証にデバイスが使用されているすべての認証は拒否されます。 一般的な例を次に示します。
 
-- **ハイブリッド Azure AD 参加済みデバイス** - ユーザーはデバイスを使用してオンプレミス ドメインにサインインできます。 ただし、Office 365 などの Azure AD リソースにはアクセスできません。
+- **Hybrid Azure AD 参加済みデバイス** - ユーザーはデバイスを使用してオンプレミス ドメインにサインインできます。 ただし、Office 365 などの Azure AD リソースにはアクセスできません。
 - **Azure AD 参加済みデバイス** - ユーザーはデバイスを使用してサインインできません。 
 - **モバイル デバイス** - ユーザーは Office 365 などの Azure AD リソースにアクセスできません。 
 

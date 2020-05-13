@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366321"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608917"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -165,7 +165,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 | WUOperationTimeOutInMinutes | int <br>(既定値:*90*)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | WURescheduleCount     | int <br> (既定値:*5*)                  | 操作が繰り返し失敗する場合に、サービスで Windows 更新プログラムの再スケジュールを行う最大回数。          |
 | WURescheduleTimeInMinutes | int <br>(既定値:*30*) | 問題が解決しない場合に、サービスで Windows 更新プログラムの再スケジュールを行う間隔。 |
-| WUFrequency           | コンマ区切りの文字列 (既定値:*Weekly, Wednesday, 7:00:00*)     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>&nbsp;&nbsp;- Monthly:DD, HH:MM:SS (たとえば、*Monthly, 5,12:22:32*)<br>DD (日) フィールドに使用できる値は、1 から 28 の数字と "last" です。 <br> &nbsp;&nbsp;- Weekly, DAY, HH:MM:SS (たとえば、*Weekly, Tuesday, 12:22:32*)  <br> &nbsp;&nbsp;- Daily, HH:MM:SS (たとえば、*Daily, 12:22:32*)  <br> &nbsp;&nbsp;-  *None* は、Windows 更新プログラムが実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
+| WUFrequency           | コンマ区切りの文字列 (既定値:*Weekly, Wednesday, 7:00:00*)     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>- Monthly, DD, HH:MM:SS (例:*Monthly, 5, 12:22:32*)。 _DD_ (日) フィールドに使用できる値は、1 から 28 の数字と _last_ です。 <br>- Weekly, Day, HH:MM:SS (例:*Weekly, Tuesday, 12:22:32*)  <br>- Daily, HH:MM:SS (例:*Daily, 12:22:32*)  <br>- Week, Day, HH:MM:SS (例:*2, Friday, 21:00:00* は、毎月第 2 週の金曜日の午後 9:00 UTC を示します) <br>- *None* は、Windows 更新プログラムが実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
 | AcceptWindowsUpdateEula | Boolean <br>(既定値: *true*) | このフラグを設定すると、コンピューターの所有者に代わって、アプリケーションが Windows Update の使用許諾契約に同意します。              |
 
 > [!TIP]

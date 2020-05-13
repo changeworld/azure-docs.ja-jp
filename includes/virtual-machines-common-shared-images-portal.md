@@ -8,37 +8,31 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903664"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788998"
 ---
-## <a name="sign-in-to-azure"></a>Azure へのサインイン 
-
-Azure Portal ( https://portal.azure.com ) にサインインします。
-
-> [!NOTE]
-> プレビュー期間中に共有イメージ ギャラリーを使用するために登録した場合は、`Microsoft.Compute` プロバイダーの再登録が必要になる可能性があります。 [Cloud Shell](https://shell.azure.com/bash) を開き、「`az provider register -n Microsoft.Compute`」と入力します。
-
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する
 
 イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。  ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
+1. Azure Portal ( https://portal.azure.com ) にサインインします。
 1. 検索ボックスで**共有イメージ ギャラリー**という種類を使用して、結果で **[共有イメージ ギャラリー]** を選択します。
-1. **[共有イメージ ギャラリー]** ページで、 **[作成]** をクリックします。
-1. 適切なサブスクリプションを選択します。
+1. **[共有イメージ ギャラリー]** ページで、 **[追加]** をクリックします。
+1. **[Shared Image Gallery の作成]** ページで、適切なサブスクリプションを選択します。
 1. **[リソース グループ]** で、 **[新規作成]** を選択し、名前として「*myGalleryRG*」を入力します。
 1. **[名前]** に、ギャラリー名として「*myGallery*」と入力します。
 1. **[リージョン]** は既定値のままにしておきます。
 1. 「*テスト用の自分のイメージ ギャラリー*」など、ギャラリーの簡単な説明を入力し、 **[確認および作成]** をクリックすることができます。
 1. 検証に合格した後、 **[作成]** を選択します。
 1. デプロイが完了したら、 **[リソースに移動]** を選択します。
-   
+
+
 ## <a name="create-an-image-definition"></a>イメージ定義を作成する 
 
 イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)に関するページを参照してください。
@@ -46,8 +40,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ギャラリー内でギャラリー イメージ定義を作成します。 この例では、ギャラリー イメージが *myImageDefinition* という名前になっています。
 
 1. 新しいイメージ ギャラリーのページで、ページの上部から **[Add a new image definition]\(新しいイメージ定義の追加\)** を選択します。 
+1. **[共有イメージ ギャラリーに新しいイメージ定義を追加]** の **[リージョン]** で *[米国東部]* を選択します。
 1. **[イメージの定義名]** で、「*myImageDefinition*」と入力します。
-1. **[オペレーティング システム]** では、ソース VM に基づいて適切なオプションを選択します。
+1. **[オペレーティング システム]** では、ソース VM に基づいて適切なオプションを選択します。  
 1. **[VM の生成]** では、ソース VM に基づいてオプションを選択します。 ほとんどの場合、これは *[Gen 1]* になります。 詳細については、[第 2 世代 VM に対するサポート](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)に関するページを参照してください。
 1. **[オペレーティング システムの状態]** では、ソース VM に基づいて適切なオプションを選択します。 詳細については、[一般化と特殊化](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)に関するページを参照してください。
 1. **[発行元]** では、「*myPublisher*」と入力します。 

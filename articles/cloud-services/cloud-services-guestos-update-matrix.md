@@ -3,21 +3,21 @@ title: 最新の Azure ゲスト OS のリリースについて | Microsoft Docs
 description: Azure Cloud Services のゲスト OS の最新のリリース情報と SDK との互換性について説明します。
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/2/2020
-ms.author: raiye
-ms.openlocfilehash: 95c27cd906717d52a232b5ed85eba2b93bc6569d
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.date: 5/4/2020
+ms.author: yohaddad
+ms.openlocfilehash: 19a442126fe2f090851236eb41cb6995df857c77
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618292"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791546"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 ロールを構成して、「 *Azure ゲスト OS の更新設定* 」に説明されているゲスト OS の [自動][Azure Guest OS Update Settings]更新を使用する場合、このページを読むことは必須ではありません。
@@ -41,6 +41,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS の更新方法については、 [こちら][cloud updates]を確認してください。
 
 ## <a name="news-updates"></a>最新情報
+
+###### <a name="may-4-2020"></a>**2020 年 5 月 4 日**
+4 月のゲスト OS がリリースされました。 
 
 ###### <a name="april-2-2020"></a>**2020 年 4 月 2 日**
 3 月のゲスト OS がリリースされました。 
@@ -125,8 +128,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.18_202004-01  |  2020 年 5 月 4 日  |  Post 6.20  |  
 |  WA-GUEST-OS-6.17_202003-01  |  2020 年 4 月 2 日  |  Post 6.19  |  
-|  WA-GUEST-OS-6.16_202002-01  |  2020 年 3 月 5 日  |  Post 6.18  |  
+|~~WA-GUEST-OS-6.16_202002-01~~|  2020 年 3 月 5 日  |  2020 年 5 月 4 日  |  
 |~~WA-GUEST-OS-6.15_202001-01~~|  2020 年 1 月 24 日  |  2020 年 4 月 2 日  |  
 |~~WA-GUEST-OS-6.14_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-6.13_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -146,7 +150,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
 **Windows Server 2016**
 
-インストールされている .NET Framework:3.5、4.6
+インストールされている .NET Framework:3.5、4.6.2
 
 > [!NOTE]
 > OS ファミリ 5 用の RDP パスワードは、10 文字以上にする必要があります。
@@ -155,8 +159,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.42_202004-01  |  2020 年 5 月 4 日  |  Post 5.44  |  
 |  WA-GUEST-OS-5.41_202003-01  |  2020 年 4 月 2 日  |  Post 5.43  |  
-|  WA-GUEST-OS-5.40_202002-01  |  2020 年 3 月 5 日  |  Post 5.42  |  
+|~~WA-GUEST-OS-5.40_202002-01~~|  2020 年 3 月 5 日  |  2020 年 5 月 4 日  |  
 |~~WA-GUEST-OS-5.39_202001-01~~|  2020 年 1 月 24 日  |  2020 年 4 月 2 日  |  
 |~~WA-GUEST-OS-5.38_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-5.37_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -182,8 +187,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.77_202004-01  |  2020 年 5 月 4 日  |  Post 4.79  |  
 |  WA-GUEST-OS-4.76_202003-01  |  2020 年 4 月 2 日  |  Post 4.78  |  
-|  WA-GUEST-OS-4.75_202002-01  |  2020 年 3 月 5 日  |  Post 4.77  |  
+|~~WA-GUEST-OS-4.75_202002-01~~|  2020 年 3 月 5 日  |  2020 年 5 月 4 日  |  
 |~~WA-GUEST-OS-4.74_202001-01~~|  2020 年 1 月 24 日  |  2020 年 4 月 2 日  |  
 |~~WA-GUEST-OS-4.73_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-4.72_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -209,8 +215,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.84_202004-01  |  2020 年 5 月 4 日  |  Post 3.86  |  
 |  WA-GUEST-OS-3.83_202003-01  |  2020 年 4 月 2 日  |  Post 3.85  |  
-|  WA-GUEST-OS-3.82_202002-01  |  2020 年 3 月 5 日  |  Post 3.84  |  
+|~~WA-GUEST-OS-3.82_202002-01~~|  2020 年 3 月 5 日  |  2020 年 5 月 4 日  |  
 |~~WA-GUEST-OS-3.81_202001-01~~|  2020 年 1 月 24 日  |  2020 年 4 月 2 日  |  
 |~~WA-GUEST-OS-3.80_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-3.79_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -236,8 +243,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.97_202004-01  |  2020 年 5 月 4 日  |  Post 2.99  |  
 |  WA-GUEST-OS-2.96_202003-01  |  2020 年 4 月 2 日  |  Post 2.98  |  
-|  WA-GUEST-OS-2.95_202002-01  |  2020 年 3 月 5 日  |  Post 2.97  |  
+|~~WA-GUEST-OS-2.95_202002-01~~|  2020 年 3 月 5 日  |  2020 年 5 月 4 日  |  
 |~~WA-GUEST-OS-2.94_202001-01~~|  2020 年 1 月 24 日  |  2020 年 4 月 2 日  |  
 |~~WA-GUEST-OS-2.93_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-2.92_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  

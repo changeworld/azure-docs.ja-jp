@@ -8,14 +8,20 @@ ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 57d5198cb54dc096fb09bb52d76539b1e4bbc1f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127448"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612641"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
+
+>[!IMPORTANT]
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトを含まない Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)を参照してください。
+>
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Windows Virtual Desktop クライアントの接続に関する問題を解決するには、この記事を使います。
 
@@ -30,10 +36,10 @@ Windows Virtual Desktop クライアントの接続に関する問題を解決�
 次のコマンド ラインを使用し、問題を報告しているユーザーがアプリケーション グループに割り当てられていることを確認します。
 
 ```PowerShell
-Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
+Get-AzRoleAssignment -SignInName <userupn>
 ```
 
-ユーザーが正しい資格情報でログインしていることを確認します。
+ユーザーが正しい資格情報でサインインしていることを確認します。
 
 Web クライアントを使っている場合は、キャッシュされた資格情報の問題がないことを確認します。
 
@@ -44,19 +50,21 @@ Web クライアントを使っている場合は、キャッシュされた資�
 ホストの状態を確認するには、次のコマンドレットを実行します：
 
 ```powershell
-Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
+Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
 ```
 
 ホストの状態が `NoHeartBeat` の場合、VM が応答しておらず、エージェントが Windows Virtual Desktop サービスと通信できないことを意味します。
 
 ```powershell
-SessionHostName          LastHeartBeat     AllowNewSession    Status 
----------------          -------------     ---------------    ------ 
-WVDHost1.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost2.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost3.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
+Name            : 0301HP/win10pd-0.contoso.com 
+LastHeartBeat   : 4/8/2020 1:48:35 AM 
+AllowNewSession : True 
+Status          : Available 
+
+Name            : 0301HP/win10pd-1.contoso.com 
+LastHeartBeat   : 4/8/2020 1:45:44 AM 
+AllowNewSession : True 
+Status          : NoHeartBeat
 ```
 
 NoHeartBeat ビートの状態を修正するには、いくつかの操作を実行できます。
@@ -65,21 +73,10 @@ NoHeartBeat ビートの状態を修正するには、いくつかの操作を�
 
 FSLogix が最新ではない場合 (特に、バージョン 2.9.7205.27375 が frxdrvvt.sys の場合)、デッドロックが発生する可能性があります。 [FSLogix を最新バージョンに更新](https://go.microsoft.com/fwlink/?linkid=2084562) しているか確認してください。
 
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>BgTaskRegistrationMaintenanceTask を無効にする
-
-FSLogix の更新が機能しない場合、この問題は、毎週のメンテナンスタスクで BiSrv コンポーネントがシステムリソースを消費していることによる可能性があります。 次の2つの方法のいずれかで、BgTaskRegistrationMaintenanceTask を無効にして、メンテナンスタスクを一時的に無効にします：
-
-- [スタート] メニューにアクセスして、**タスク スケジューラ** を検索します。 **タスク スケジューラ ライブラリ** > **Microsoft** > **Windows** > **BrokerInfrastructure**に移動します。 **BgTaskRegistrationMaintenanceTask** という名前のタスクを探します。 見つかったら、右クリックして、ドロップダウン メニューから **[無効にする]** を選択します。
-- 管理者としてコマンド ライン メニューを開き、次のコマンドを実行します：
-    
-    ```cmd
-    schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
-    ```
-
 ## <a name="next-steps"></a>次のステップ
 
 - Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop 環境でテナント/ホスト プールを作成しているときに発生した問題を解決するには、「[Tenant and host pool creation](troubleshoot-set-up-issues.md)」 (テナントとホスト プールの作成) を参照してください。
+- Windows Virtual Desktop 環境を作成しているときや、Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。

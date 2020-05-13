@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: 変更フィード プロセッサ ライブラリからの移行
           href: how-to-migrate-from-change-feed-library.md
-        - name: 変更フィードを使用した Java SQL アプリケーションの作成
+        - name: 変更フィード - Async Java のサンプル
           href: create-sql-api-java-changefeed.md
     - name: Apache Spark による組み込みの分析
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: 要求ユニットの使用状況を監視する
               href: monitor-request-unit-usage.md
+            - name: 正規化された要求ユニットの使用状況の監視
+              href: monitor-normalized-request-units.md
         - name: Azure モニター ログを使用する
           items:
             - name: 診断ログを使用して監視する

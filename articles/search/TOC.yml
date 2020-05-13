@@ -315,6 +315,8 @@
           href: search-security-overview.md
         - name: プライベート エンドポイントの作成
           href: service-create-private-endpoint.md
+        - name: IP ファイアウォールの構成
+          href: service-configure-firewall.md
         - name: サービス キーの管理
           href: search-security-api-keys.md
         - name: ロール ベースの管理者アクセス

@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure PowerShell を使用してロールの割り当てを追加または削除する
-description: Azure のロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
+title: Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する - Azure RBAC
+description: Azure PowerShell と Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 68a73f622dc69b70870ddc1db16edcf406b63800
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236927"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735659"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC と Azure PowerShell を使用してロールの割り当てを追加または削除する
+# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、Azure PowerShell を使用してロールを割り当てる方法について説明します。
 
@@ -67,7 +67,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 
 ## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
 
-RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
+Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
 
 ### <a name="user-at-a-resource-group-scope"></a>リソース グループをスコープとするユーザー
 
@@ -112,7 +112,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-次の例では、*pharma-sales* リソース グループで、*alain\@example.com* ユーザーに[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを付与します。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
+次の例では、*pharma-sales* リソース グループで、*alain\@example.com* ユーザーに[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを付与します。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -205,7 +205,7 @@ CanDelegate        : False
 
 ## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
 
-RBAC でアクセス権を削除するには、[Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) を使用してロールの割り当てを削除します。
+Azure RBAC でアクセス権を削除するには、[Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) を使用してロールの割り当てを削除します。
 
 次の例では、*pharma-sales* リソース グループの *alain\@example.com* ユーザーから、"*仮想マシンの共同作成者*" ロールの割り当てを削除します。
 
@@ -225,11 +225,11 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません) というエラー メッセージが表示された場合、`-Scope` または `-ResourceGroupName` パラメーターも指定してください。 詳細については、「[Azure リソースの RBAC のトラブルシューティング](troubleshooting.md#role-assignments-with-unknown-security-principal)」を参照してください。
+"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません) というエラー メッセージが表示された場合、`-Scope` または `-ResourceGroupName` パラメーターも指定してください。 詳細については、「[Azure RBAC のトラブルシューティング](troubleshooting.md#role-assignments-with-identity-not-found)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC と Azure PowerShell を使用してロールの割り当てを一覧表示する](role-assignments-list-powershell.md)
-- [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する](tutorial-role-assignments-group-powershell.md)
-- [チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)
+- [Azure PowerShell を使用して Azure でのロールの割り当てを一覧表示する](role-assignments-list-powershell.md)
+- [チュートリアル:Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する](tutorial-role-assignments-group-powershell.md)
+- [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure PowerShell でリソースを管理する](../azure-resource-manager/management/manage-resources-powershell.md)

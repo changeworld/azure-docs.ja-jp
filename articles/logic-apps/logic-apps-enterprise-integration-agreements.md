@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74790743"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612335"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps で取引先契約を作成して管理する
 
@@ -68,6 +68,14 @@ Azure のメイン メニューで、 **[すべてのサービス]** を選び�
    | **受信設定** | 場合により異なる | 場合により異なる | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーからすべての受信メッセージを受信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
    | **送信の設定** | 場合により異なる | 場合により異なる | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーにすべての送信メッセージを送信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
    |||||
+
+   > [!IMPORTANT]
+   > 契約の決議は、パートナーに定義されている次の項目の一致状況と受信メッセージに応じて異なります。
+   >
+   > * 送信者の修飾子と識別子
+   > * 受信者の修飾子と識別子
+   >
+   > パートナー用のこれらの値を変更すると、必ず契約も更新されます。
 
 1. 契約の作成が終了したら、 **[追加]** ページで、 **[OK]** を選択してご自分の統合アカウントに戻ります。
 

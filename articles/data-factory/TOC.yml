@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: データ ファクトリの作成 - Resource Manager テンプレート
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
+      href: quickstart-enable-customer-managed-key.md
     - name: データ フローの作成
       href: data-flow-create.md
 - name: チュートリアル
@@ -222,7 +224,7 @@
           href: connector-azure-cosmos-db.md
         - name: Azure Cosmos DB の MongoDB 用 API
           href: connector-azure-cosmos-db-mongodb-api.md
-        - name: "\_Azure Data Explorer"
+        - name: Azure Data Explorer
           href: connector-azure-data-explorer.md
         - name: Azure Data Lake Storage Gen1
           href: connector-azure-data-lake-store.md

@@ -239,9 +239,11 @@
             - name: Azure Functions
               displayname: 'functions, monitor functions, automation'
               href: ../azure-functions/functions-monitoring.md
-            - name: Kubernetes アプリケーション
-              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-              href: app/kubernetes.md
+            - name: Azure Kubernetes Service
+              items:
+                - name: Kubernetes (非推奨)
+                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
+                  href: app/kubernetes.md
             - name: スタンドアロン - 任意の環境
               items:
                 - name: Java (プレビュー)
@@ -272,8 +274,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
-        - name: リソースの作成
+        - name: リソースの作成 (クラシック)
           href: app/create-new-resource.md
+        - name: リソースの作成 (ワークスペースベース)
+          href: app/create-workspace-resource.md
         - name: アプリケーション ダッシュボード
           displayname: 'dashboard, Application Insights dashboard'
           href: app/overview-dashboard.md
@@ -282,7 +286,7 @@
           href: app/app-map.md
         - name: トランザクションの診断
           href: app/transaction-diagnostics.md
-          displayname: 'e2e, end-to-end, component, dependency, cross-compoent transaction, operation ID, dependencies'
+          displayname: 'e2e, end-to-end, component, dependency, cross-component transaction, operation ID, dependencies'
         - name: 可用性
           items:
             - name: URL テスト
@@ -526,8 +530,12 @@
               href: platform/resource-logs-blob-format.md
         - name: Event Hubs へのデータのストリーム配信
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: キー コンテナーの監視
+          href: insights/key-vaults-insights-overview.md
         - name: 変更の分析
           href: app/change-analysis.md
+        - name: Azure Cache for Redis (プレビュー)
+          href: insights/redis-cache-insights-overview.md
     - name: VM とゲスト OS の監視
       items:
         - name: Azure 仮想マシンの監視
@@ -1204,6 +1212,8 @@
               href: app/data-model-context.md
             - name: Azure Functions との統合
               href: app/azure-functions-supported-features.md
+            - name: ワークスペースベースのスキーマ
+              href: app/apm-tables.md
     - name: メトリック
       items:
         - name: サポートされるメトリック

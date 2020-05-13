@@ -1,23 +1,17 @@
 ---
-title: .NET SDK:Azure Data Lake Storage Gen1 に対するアカウント管理操作 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 .NET SDK を使用して、Data Lake Storage Gen1 に対するアカウント管理操作を実行します
-services: data-lake-store
-documentationcenter: ''
+title: .NET を使用した Azure Data Lake Storage Gen1 アカウントの管理
+description: .NET SDK を使用して Azure Data Lake Storage Gen1 に対するアカウント管理操作を行う方法について説明します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8da40aa04381542c8c750c8d7e33c9a29879371d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ea2b7fffc4edff6cae895e08b955d2e21ff5f2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65900880"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692117"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]

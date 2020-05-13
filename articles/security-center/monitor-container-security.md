@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919534"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744739"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>コンテナーのセキュリティを監視する
 
@@ -131,7 +131,9 @@ Security Center では、Docker ホストの構成を常に監視し、業界標
 
     [![Log Analytics のアクション](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. ホストの準備が整っていることを確認したら、クエリ パラメータ―を調整して **[実行]** を選択します。 
+1. 必要に応じて、クエリ パラメーターを調整します。
+
+1. コマンドが適切であり、ホストの準備ができていることを確認したら、 **[実行]** を選択します。
 
 
 

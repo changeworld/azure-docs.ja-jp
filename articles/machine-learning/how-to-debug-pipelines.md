@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257217"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594630"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) でのデバッグとトラブルシューティング
 
-このセクションでは、デザイナーでパイプラインをトラブルシューティングする方法の概要について説明します。
-デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページに**ログ ファイル**があります。
+このセクションでは、デザイナーでパイプラインをトラブルシューティングする方法の概要について説明します。 デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページで、**70_driver_log** ファイルが確認できます。
 
-### <a name="access-logs-from-the-authoring-page"></a>作成ページからログにアクセスする
+### <a name="get-logs-from-the-authoring-page"></a>作成ページからログを取得する
 
-パイプラインの実行を送信し、作成ページを表示したままにした場合、モジュールごとに生成されたログ ファイルを確認できます。
+パイプラインの実行を送信し、作成ページを表示したままにしておくと、各モジュールの実行が終了した時点で、モジュールごとに生成されたログ ファイルを確認できます。
 
-1. 作成キャンバスで任意のモジュールを選択します。
+1. 作成キャンバスでの実行が終了したモジュールを選択します。
 1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
-1. ログ ファイル `70_driver_log.txt` を選択します。
+1. 右ペインを展開して **70_driver_log.txt** を選択し、ブラウザーにファイルを表示します。 また、ログをローカルにダウンロードすることもできます。
 
-    ![作成ページのモジュールのログ](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![デザイナー上に展開された出力ペイン](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>パイプラインの実行からログにアクセスする
+### <a name="get-logs-from-pipeline-runs"></a>パイプラインの実行からログを取得する
 
-パイプラインの実行の詳細ページの **[パイプライン]** または **[Experiments]\(実験\)** セクションにも特定の実行のログ ファイルがあります。
+パイプラインの実行の詳細ページで特定の実行のためのログ ファイルを見つけることもできます。Studio の **[パイプライン]** または **[実験]** セクションどちらかで確認できます。
 
 1. デザイナーで作成されたパイプラインの実行を選択します。
-    ![パイプラインの実行ページ](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. プレビュー ペインで任意のモジュールを選択します。
+
+    ![パイプラインの実行ページ](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. プレビュー ペインでモジュールを選択します。
 1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
-1. ログ ファイル `70_driver_log.txt` を選択します。
+1. 右側のペインを展開して、ブラウザーで **70_driver_log.txt** ファイルを表示するか、またはログをローカルにダウンロードするファイルを選択します。
+
+> [!IMPORTANT]
+> パイプラインの実行の詳細ページからパイプラインを更新するには、新しいパイプライン ドラフトにパイプラインの実行を**複製する**必要があります。 パイプラインの実行は、パイプラインのスナップショットです。 ログ ファイルに似ており、変更することはできません。 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights のデバッグとトラブルシューティング
 この方法で OpenCensus Python ライブラリを使用する方法の詳細については、次のガイドを参照してください。[Application Insights での機械学習パイプラインのデバッグとトラブルシューティング](how-to-debug-pipelines-application-insights.md)

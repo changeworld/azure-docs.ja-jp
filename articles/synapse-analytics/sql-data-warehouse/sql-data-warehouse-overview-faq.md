@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416069"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791461"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
 
@@ -23,11 +23,11 @@ ms.locfileid: "81416069"
 
 Q. Azure Synapse とは
 
-A. Azure Synapse は、データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら、大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
+A. Azure Synapse は、データ ウェアハウスとビッグ データ分析がまとめられた分析サービスです。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習のニーズに対応できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
 Q. Azure SQL Data Warehouse はどうなりましたか
 
-A. Azure Synapse は、Azure SQL Data Warehouse (SQL DW) の進化版です。 業界をリードする同じデータ ウェアハウスに、まったく新しいレベルのパフォーマンスと機能を搭載しました。 Azure Synapse を使用すると、運用環境で既存のデータ ウェアハウスのワークロードを引き続き実行でき、プレビュー段階にある新機能の利点を自動的に利用できるようになります。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
+A. Azure Synapse は、Azure SQL Data Warehouse (SQL DW) の進化版です。 業界をリードする同じデータ ウェアハウスに、まったく新しいレベルのパフォーマンスと機能を搭載しました。 Azure Synapse を使用すると、運用環境で既存のデータ ウェアハウスのワークロードを引き続き実行できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
 Q. Synapse SQL プールとはなんですか。
 
@@ -43,8 +43,7 @@ A. Azure Synapse は、TDE や監査など、データを保護するための�
 
 Q. Azure Synapse が準拠している法律またはビジネスに関する標準は、どこで確認できますか。
 
-A. SOC や ISO などの製品によって提供されるさまざまなコンプライアンスについては、[Microsoft のコンプライアンスに関するページ](https://www.microsoft.com/trustcenter/compliance/complianceofferings)をご覧ください。
-まず、コンプライアンスのタイトルを選びます。 次に、ページ右側の [Microsoft in-scope cloud services] (Microsoft 対象クラウド サービス) セクションで Azure を展開して、Azure Synapse が準拠しているサービスを確認します。
+A. SOC や ISO などの製品によって提供されるさまざまなコンプライアンスについては、[Microsoft のコンプライアンスに関するページ](https://www.microsoft.com/trustcenter/compliance/complianceofferings)をご覧ください。 まず、コンプライアンスのタイトルを選びます。 次に、ページ右側の [Microsoft in-scope cloud services] (Microsoft 対象クラウド サービス) セクションで Azure を展開して、Azure Synapse が準拠しているサービスを確認します。
 
 Q. Power BI は接続できますか
 

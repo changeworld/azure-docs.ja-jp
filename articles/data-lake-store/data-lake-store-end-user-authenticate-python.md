@@ -1,22 +1,18 @@
 ---
-title: 'エンドユーザー認証: Azure Active Directory を使用した Python と Azure Data Lake Storage Gen1 | Microsoft Docs'
+title: エンドユーザー認証 - Python と Data Lake Storage Gen1 - Azure
 description: Python と Azure Active Directory を使用した Azure Data Lake Storage Gen1 によるエンドユーザー認証を行う方法について説明します
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c69f6c1f587285c5c52280c4c49008764d5b20d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231507"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691788"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 による Python を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79231507"
 > * [.NET SDK の使用](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python の使用](data-lake-store-end-user-authenticate-python.md)
 > * [REST API の使用](data-lake-store-end-user-authenticate-rest-api.md)
-> 
-> 
+>
+>
 
 この記事では、Python SDK を使用して、Azure Data Lake Storage Gen1 に対するエンドユーザー認証を行う方法について説明します。 エンドユーザー認証は、2 つのカテゴリに分割できます。
 
@@ -98,7 +94,7 @@ Data Lake Storage Gen1 アカウントに対するアカウント管理操作の
     client_id = 'FILL-IN-HERE'
     redirect = 'urn:ietf:wg:oauth:2.0:oob'
     RESOURCE = 'https://management.core.windows.net/'
-    
+
     context = adal.AuthenticationContext(authority_url)
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
@@ -114,10 +110,9 @@ Data Lake Storage Gen1 アカウントに対するファイルシステム操作
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>多要素認証なしのエンドユーザー認証
 
 これは非推奨です。 詳細については、[Python SDK を使用した Azure 認証](/azure/python/python-sdk-azure-authenticate)に関するページを参照してください。
-   
+
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Data Lake Storage Gen1 に対し、Python からエンドユーザー認証を使って認証を行う方法について説明しました。 これで、Python を使用して Azure Data Lake Storage Gen1 を使用する方法について説明した次の記事に進めるようになりました。
 
 * [Python を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-python.md)
 * [Python を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-data-operations-python.md)
-

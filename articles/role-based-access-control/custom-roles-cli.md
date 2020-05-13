@@ -1,6 +1,6 @@
 ---
-title: Azure CLIを使用してAzureリソースのカスタムロールを作成または更新する| Microsoft Docs
-description: Azure CLIを使用して、Azureリソースのロールベースのアクセス制御（RBAC）でカスタムロールを一覧表示、作成、更新、または削除する方法を学習します。
+title: Azure CLI を使用して Azure カスタム ロールを作成または更新する - Azure RBAC
+description: Azure CLI と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure カスタム ロールを一覧表示、作成、更新、または削除する方法を学習します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44676f7b92c2bcd30612295840054ab2f0c0cf12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062224"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734843"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Azure CLIを使用してAzureリソースのカスタムロールを作成または更新する
+# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Azure CLI を使用して Azure カスタム ロールを作成または更新する
 
 > [!IMPORTANT]
 > `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure CLIを使用してカスタムロールを一覧表示、作成、更新、または削除する方法について説明します
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure CLIを使用してカスタムロールを一覧表示、作成、更新、または削除する方法について説明します
 
-カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
+カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -244,6 +244,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-cli.md)
-- [Azure リソースのカスタム ロール](custom-roles.md)
+- [チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する](tutorial-custom-role-cli.md)
+- [Azure カスタム ロール](custom-roles.md)
 - [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)

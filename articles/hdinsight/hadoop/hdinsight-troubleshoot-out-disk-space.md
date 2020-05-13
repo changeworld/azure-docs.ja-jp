@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 内でのクラスター ノードのディスク領域の不足
 description: Azure HDInsight での Apache Hadoop クラスター ノードのディスク領域に関する問題のトラブルシューティング。
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 04/30/2020
+ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75894122"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628539"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>シナリオ:Azure HDInsight 内でのクラスター ノードのディスク領域の不足
 
@@ -36,7 +36,17 @@ Apache Yarn アプリケーション キャッシュによって、使用可能�
 
 1. この問題を軽減するには、アプリケーションを強制終了します。これにより、そのアプリケーションによって使用されているディスク領域が解放されます。
 
-1. 最終的にこの問題を解決するには、アプリケーションを最適化します。
+1. ワーカー ノードで問題が頻繁に発生する場合は、クラスターの YARN ローカル キャッシュ設定を調整できます。
+
+    Ambari UI を開き、[YARN] --> [Configs] (構成) --> [Advanced] (詳細) の順に選択します。  
+    次の 2 つのプロパティをカスタム yarn-site.xml セクションに追加して保存します。
+
+    ```
+    yarn.nodemanager.localizer.cache.target-size-mb=2048
+    yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
+    ```
+
+1. 上記の手順で問題が完全に解決されない場合は、アプリケーションを最適化します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164034"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594340"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -27,6 +27,8 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 
 ACU: 150 から 175
 
+バースト:サポートされています
+
 Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされていません
@@ -35,14 +37,14 @@ Premium Storage キャッシュ:サポートされていません
 
 メモリ保持更新: サポートされていません
 
-| サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時の最大データ ディスク スループット (IOPs/MBps)<sup>4</sup> | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
-|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2/3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4/6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5M/8000    | 32000/640  | 32 | 8/12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2M/14000   | 48000/960  | 32 | 8/16000+ |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9M/16000   | 64000/1280 | 32 | 8/16000+ |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8M/20000 | 80000/1400 | 32 | 8/16000+ |
+| サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時のデータ ディスク スループット (IOPs/MBps)<sup>4</sup> | キャッシュ不使用時の最大バースト データ ディスク スループット (IOPs/MBps)<sup>5</sup>| 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2/3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4/6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5M/8000    | 32000/640  | 32000/1280 | 32 | 8/12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2M/14000   | 48000/960  | 48000/2000 | 32 | 8/16000+ |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9M/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000+ |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8M/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000+ |
 
 <sup>1</sup> Lsv2 シリーズの VM には、OS ページング/スワップ ファイル用の標準 SCSI ベースの一時リソース ディスクがあります (Windows の場合は D:、Linux の場合は /dev/sdb)。 このディスクは、8 vCPU ごとに 80 GiB のストレージ、4,000 IOPS、および 80 MBps の転送速度を提供します (たとえば、Standard_L80s_v2 は、40,000 IOPS および 800 MBPS で 800 GiB を提供します)。 これにより、NVMe ドライブを確実にアプリケーション専用にすることができます。 このディスクはエフェメラルであり、すべてのデータは停止/割り当て解除時に失われます。
 
@@ -52,7 +54,9 @@ Premium Storage キャッシュ:サポートされていません
 
 <sup>4</sup> Lsv2 ワークロードに役立たないため、Lsv2 シリーズの VM ではデータ ディスク用のホスト キャッシュを提供しません。  ただし、Lsv2 VM は、Azure のエフェメラル VM OS ディスク オプション (最大 30 GiB) に対応できます。
 
-<sup>5</sup> vCPU が 64 個を超える VM には、次のサポートされているゲスト オペレーティング システムのいずれかが必要です。
+<sup>5</sup> Lsv2 シリーズの VM では、一度に最大 30 分間、ディスク パフォーマンスを[バースト](linux/disk-bursting.md)できます。 
+
+<sup>6</sup> vCPU が 64 個を超える VM には、次のサポートされているゲスト オペレーティング システムのいずれかが必要です。
 
 - Windows Server 2016 以降
 - Azure 用にチューニングされたカーネル (4.15 カーネル以降) を含む Ubuntu 16.04 LTS 以降

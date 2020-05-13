@@ -22,6 +22,8 @@
   items:
     - name: クラスルーム ラボの概念
       href: classroom-labs-concepts.md
+    - name: クラスルーム ラボのアーキテクチャの基礎
+      href: classroom-labs-fundamentals.md
     - name: シナリオ
       items:
         - name: クラスを実施するためのラボの使用
@@ -136,7 +138,7 @@
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/lab-services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: テクニカル コミュニティ フォーラム
+      href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: よく寄せられる質問
       href: classroom-labs-faq.md

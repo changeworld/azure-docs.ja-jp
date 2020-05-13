@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure Resource Manager テンプレートを使用してロールの割り当てを追加する
-description: Azure のロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
+title: Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する - Azure RBAC
+description: Azure Resource Manager テンプレートと Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77138302"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735625"
 ---
-# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Azure RBAC と Azure Resource Manager テンプレートを使用してロールの割り当てを追加する
+# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Azure PowerShell または Azure CLI を使う以外に、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)を使ってロールを割り当てることもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、テンプレートを使用してロールを割り当てる方法について説明します。
 
@@ -40,7 +40,7 @@ $objectid = (Get-AzADUser -DisplayName "{name}").id
 objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 ```
 
-### <a name="group"></a>Group
+### <a name="group"></a>グループ
 
 グループの ID を取得するには、[Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) または [az ad group show](/cli/azure/ad/group#az-ad-group-show) コマンドを使用します。
 
@@ -66,7 +66,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
 
-RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
+Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
 
 ### <a name="resource-group-without-parameters"></a>リソース グループ (パラメーターなし)
 

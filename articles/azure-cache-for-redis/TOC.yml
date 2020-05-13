@@ -7,18 +7,26 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: ASP.NET アプリ
-      href: cache-web-app-howto.md
-    - name: .NET Core アプリ
-      href: cache-dotnet-core-quickstart.md
-    - name: .NET アプリ
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Java アプリ
-      href: cache-java-get-started.md
-    - name: Node.js アプリ
-      href: cache-nodejs-get-started.md
-    - name: Python アプリ
-      href: cache-python-get-started.md
+    - name: キャッシュの作成
+      items:
+        - name: Basic、Standard、および Premium サービス レベル
+          href: quickstart-create-redis.md
+        - name: Enterprise サービス レベル
+          href: quickstart-create-redis-enterprise.md
+    - name: キャッシュの使用
+      items:
+        - name: ASP.NET アプリ
+          href: cache-web-app-howto.md
+        - name: .NET Core アプリ
+          href: cache-dotnet-core-quickstart.md
+        - name: .NET アプリ
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: Java アプリ
+          href: cache-java-get-started.md
+        - name: Node.js アプリ
+          href: cache-nodejs-get-started.md
+        - name: Python アプリ
+          href: cache-python-get-started.md
 - name: チュートリアル
   items:
     - name: ランキングに基づくキャッシュを使用する

@@ -15,7 +15,7 @@
       href: tutorial-enable-sspr-writeback.md
     - name: カスタムの禁止パスワード リストを構成する
       href: tutorial-configure-custom-password-protection.md
-    - name: Azure Identity Protection を統合する
+    - name: リスクベースのサインイン保護を有効にする
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
   expanded: true
@@ -229,7 +229,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

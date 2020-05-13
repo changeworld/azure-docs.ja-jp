@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313766"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594136"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -91,7 +91,7 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 - 使用するバックエンドが、Azure Front Door のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスからのトラフィックのみを受け入れるように IP ACL 処理を構成します。 バックエンドに対する ACL については、以下の IP の詳細を参照してください。
  
-    - Front Door の IPv4 バックエンド IP アドレスの範囲については、「[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)」の「*AzureFrontDoor.Backend*」セクションを参照してください。[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)または [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
+    - Front Door の IPv4 バックエンド IP アドレスの範囲については、「[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)」の「*AzureFrontDoor.Backend*」セクションを参照してください。または、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
     - サービス タグでカバーされている Front Door の **IPv6** バックエンド IP 空間は、Azure IP 範囲の JSON ファイルには記載されていません。 明示的な IPv6 アドレス範囲を探している場合、現在は `2a01:111:2050::/44` に制限されています
     - 仮想化されたホスト IP アドレスを通した Azure の[基本的なインフラストラクチャ サービス](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations): `168.63.129.16` および `169.254.169.254`
 

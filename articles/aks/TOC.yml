@@ -129,6 +129,8 @@
           href: scale-cluster.md
         - name: AKS クラスターのアップグレード
           href: upgrade-cluster.md
+        - name: アップタイム SLA を使用する
+          href: uptime-sla.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
         - name: AKS クラスターの構成
@@ -231,7 +233,7 @@
         - name: Azure Active Directory の統合の有効化
           items:
             - name: Azure AD の統合 (プレビュー)
-              href: azure-ad-v2.md
+              href: managed-aad.md
             - name: Azure CLI の使用
               href: azure-ad-integration-cli.md
             - name: Azure ポータルの使用

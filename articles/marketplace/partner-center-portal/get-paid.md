@@ -1,19 +1,20 @@
 ---
-title: コマーシャル マーケットプレース内の支払いを受ける | Azure Marketplace
-description: コマーシャル マーケットプレースにおける収益の支払いを受ける方法について説明します。
+title: Microsoft コマーシャル マーケットプレースでの支払いの受け取り
+description: Microsoft コマーシャル マーケットプレースで収益の支払いを受け取る方法について説明します。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275834"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780499"
 ---
-# <a name="getting-paid"></a>支払いを受ける
+# <a name="getting-paid-in-commercial-marketplace"></a>コマーシャル マーケットプレースでの支払いの受け取り
+
 ここでは、オファー、アドオン、広告の収益の支払いの受け取りに関する重要な情報を示します。
 
 > [!IMPORTANT]
@@ -40,18 +41,17 @@ Microsoft Store 料金は、アドオンを含む、コマーシャル マーケ
 
 また、特定の市場の現地通貨で選択した自由形式の価格を入力するオプションもあります。 この場合、新しい価格で更新を送信しない限り、(換算レートが変動しても) 価格は調整されません。 
 
-選択した価格によっては、顧客が売上税または付加価値税を支払わなければならない場合があることに注意してください。 詳細については、[支払われたオファーの税の詳細](tax-details-paid-transactions.md)に関する記事を参照してください。
+選択した価格によっては、顧客が売上税または付加価値税を支払わなければならない場合があることに注意してください。 詳細については、[有料オファーの税の詳細](tax-details-paid-transactions.md)に関するページを参照してください。
 
 
 ## <a name="payout-reporting"></a>支払いレポート
 
-**パートナー センター**の[支払いの概要](https://partner.microsoft.com/dashboard)で、支払い情報に関する詳細にアクセスし、レポートをダウンロードすることができます。 ここに表示される情報と、収益を分類する方法の詳細については、[支払いの概要](payout-summary.md)に関するページを参照してください。
+[パートナー センター](https://partner.microsoft.com/dashboard)の**支払いの概要**で、支払い情報に関する詳細にアクセスし、レポートをダウンロードすることができます。 ここに記載されている情報と、収益金の分類方法の詳細については、「[支払いの概要の概説](payout-summary-overview.md)」を参照してください。
 
 
-## <a name="payout-timeframe"></a>支払い期間
+## <a name="payout-time-frame"></a>支払いの時間枠
 
-支払いは月単位で行われます (該当する支払いしきい値が満たされており、以下で説明するように支払いが保留になっていない場合)。 通常、その月の 15 日までに、所定の月の支払額を送信します。 支払いがお客様の受取りアカウントに届くまでは、通常、3 - 10 営業日かかることに注意してください。 詳細については、「[支払しきい値、方法、期間](payment-thresholds-methods-timeframes.md)」を参照してください。
-
+支払いは月単位で行われます (該当する支払いしきい値が満たされており、以下で説明するように支払いが保留になっていない場合)。 通常、その月の 15 日までに、所定の月の支払額を送信します。 支払いがお客様の受取りアカウントに届くまでは、通常、3 - 10 営業日かかることに注意してください。 詳細については、「[支払いのしきい値、方法、期間](payment-thresholds-methods-timeframes.md)」を参照してください。
 
 ##  <a name="payout-hold-status"></a>支払い保留状態
 
@@ -63,12 +63,3 @@ Microsoft Store 料金は、アドオンを含む、コマーシャル マーケ
 
 > [!NOTE]
 > **[支払い保留ステータス]** は各プログラム (Microsoft Store、広告、Azure Marketplace など) に個別に適用されます。 すべてのプログラムの支払いを保留にする場合は、各プログラムで個別に支払いを保留にする必要があります。
-
-
- 
-
- 
-
-
-
-

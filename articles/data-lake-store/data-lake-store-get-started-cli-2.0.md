@@ -1,23 +1,19 @@
 ---
-title: Azure CLI で Azure Data Lake Storage Gen1 の使用を開始する | Microsoft Docs
-description: Azure CLI を使用して、Data Lake Storage Gen1 アカウントを作成し、基本的な操作を実行する
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1 アカウントの管理 - Azure CLI
+description: Azure CLI を使用して、Data Lake Storage Gen1 アカウントを作成し、基本的な操作を実行します。
 author: twooley
-manager: mtillman
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e278981ce7647a53d2e80c5b835c8ed666db541
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60885348"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688169"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure CLI を使用して Azure Data Lake Store の使用を開始する
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Azure CLI を使用して Azure Data Lake Storage Gen1 の使用を開始する
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 

@@ -94,11 +94,11 @@
                   items:
                     - name: Check Point
                       href: connect-checkpoint.md
-                    - name: Cisco
+                    - name: Cisco ASA
                       href: connect-cisco.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
-                    - name: F5
+                    - name: F5 ASM
                       href: connect-f5.md
                     - name: Forcepoint 製品
                       href: connect-forcepoint-casb-ngfw.md
@@ -118,8 +118,10 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
           href: connect-azure-stack.md
-    - name: 複数のテナント (MSSP)
+    - name: 複数のテナントの操作 (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: 複数のワークスペースでインシデントを操作する
+      href: multiple-workspace-view.md
     - name: カスタマー マネージド キー (CMK) の設定
       href: customer-managed-keys.md
     - name: アラートからのインシデントの作成
@@ -145,3 +147,5 @@
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'
