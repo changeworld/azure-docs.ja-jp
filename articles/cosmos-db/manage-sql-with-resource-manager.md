@@ -1,202 +1,71 @@
 ---
 title: Resource Manager テンプレートを使用して Azure Cosmos DB を作成および管理する
-description: Azure Resource Manager テンプレートを使用して SQL (コア) 用 Azure Cosmos DB API を作成および構成する
+description: Azure Resource Manager テンプレートを使用してコア (SQL) 用 Azure Cosmos DB API を作成および構成する
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3514b3e77781010fd56b43229f87854ea2d591e8
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 577bc34e5e4b01a234460e5e175c23fd8215743f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390901"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791206"
 ---
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB SQL (コア) API リソースを管理する
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB コア (SQL) API リソースを管理する
 
-この記事では、ご利用の Azure Cosmos DB アカウント、データベース、およびコンテナーの管理を自動化するのに役立つ Azure Resource Manager テンプレートの使用方法について説明します。
+この記事では、ご利用の Azure Cosmos DB アカウント、データベース、およびコンテナーのデプロイと管理に役立つ Azure Resource Manager テンプレートの使用方法について説明します。
 
-この記事では、SQL API アカウント用の Azure Resource Manager テンプレートの例のみを示します。 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[Table](manage-table-with-resource-manager.md) の API の例もあります。
-
-<a id="create-resource"></a>
-
-## <a name="create-an-azure-cosmos-account-database-and-container"></a>Azure Cosmos アカウント、データベース、コンテナーを作成する
-
-以下の Azure Resource Manager テンプレートでは、次のものを使用して Azure Cosmos アカウントを作成します。
-
-* 1 秒あたりの要求ユニット (RU/秒) が 400 のスループットをデータベース レベルで共有する 2 つのコンテナー。
-* 400 RU/秒の専用スループットを持つ 1 つのコンテナー。
-
-Azure Cosmos DB リソースを作成するには、次のテンプレート例をコピーし、それを説明に従って [PowerShell](#deploy-via-powershell) または [Azure CLI](#deploy-via-azure-cli) を介してデプロイします。
-
-* 必要に応じて、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)にアクセスし、Azure portal からテンプレートをデプロイできます。
-* テンプレートをローカル コンピューターにダウンロードするか、新しいテンプレートを作成して、`--template-file` パラメーターでローカル パスを指定することもできます。
+この記事では、コア (SQL) API アカウント用の Azure Resource Manager テンプレートの例のみを示します。 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[Table](manage-table-with-resource-manager.md) の API の例もあります。
 
 > [!IMPORTANT]
 >
-> * Azure Cosmos アカウントに対して場所の追加または削除を行う場合、他のプロパティを同時に変更することはできません。 これらの操作は個別に行う必要があります。
 > * アカウント名は、44 文字 (すべて小文字) に制限されています。
-> * スループットの値を変更するには、RU/秒を更新したテンプレートを再送信します。
+> * スループットの値を変更するには、RU/秒を更新してテンプレートを再配置します。
+> * Azure Cosmos アカウントに対して場所の追加または削除を行う場合、他のプロパティを同時に変更することはできません。 これらの操作は個別に行う必要があります。
+
+以下の Azure Cosmos DB リソースを作成するには、次のテンプレート例を新しい json ファイルにコピーします。 必要に応じて、異なる名前と値を持つ同じリソースの複数のインスタンスをデプロイするときに使用するパラメーター json ファイルを作成することもできます。 Azure Resource Manager テンプレートをデプロイするには、[Azure portal](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、および [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md) を含むさまざまな方法があります。
+
+<a id="create-autoscale"></a>
+
+## <a name="azure-cosmos-account-with-autoscale-throughput"></a>自動スケーリング スループットを備える Azure Cosmos アカウント
+
+このテンプレートでは、一貫性とフェールオーバーのためのオプションを備えた 2 つのリージョンで Azure Cosmos アカウントを作成します。データベースとコンテナーは、ほとんどのポリシー オプションが有効になっている自動スケーリング スループット用に構成されています。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
+
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-autoscale/azuredeploy.json":::
+
+<a id="create-manual"></a>
+
+## <a name="azure-cosmos-account-with-standard-manual-throughput"></a>標準 (手動) のスループットを備える Azure Cosmos アカウント
+
+このテンプレートでは、一貫性とフェールオーバーのためのオプションを備えた 2 つのリージョンで Azure Cosmos アカウントを作成します。データベースとコンテナーは、ほとんどのポリシー オプションが有効になっている標準スループット用に構成されています。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
+
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
-> [!NOTE]
-> 大きいパーティション キーを持つコンテナーを作成するには、前のテンプレートを変更して、`"version":2` オブジェクト内に `partitionKey` プロパティを含めます。
-
-### <a name="deploy-via-powershell"></a>PowerShell 経由でのデプロイ
-
-PowerShell を使用して Azure Resource Manager テンプレートをデプロイするには、次のようにします。
-
-1. スクリプトを**コピー**します。
-2. **[試してみる]** を選択して、Azure Cloud Shell を開きます。
-3. Azure Cloud Shell ウィンドウ内を右クリックしてから、 **[貼り付け]** を選択します。
-
-```azurepowershell-interactive
-
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$location = Read-Host -Prompt "Enter the location (i.e. westus2)"
-$primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. westus2)"
-$secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. eastus2)"
-$databaseName = Read-Host -Prompt "Enter the database name"
-$sharedThroughput = Read-Host -Prompt "Enter the shared database throughput (i.e. 400)"
-$sharedContainer1Name = Read-Host -Prompt "Enter the first shared container name"
-$sharedContainer2Name = Read-Host -Prompt "Enter the second shared container name"
-$dedicatedContainer1Name = Read-Host -Prompt "Enter the dedicated container name"
-$dedicatedThroughput = Read-Host -Prompt "Enter the dedicated container throughput (i.e. 400)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json" `
-    -accountName $accountName `
-    -location $location `
-    -primaryRegion $primaryRegion `
-    -secondaryRegion $secondaryRegion `
-    -databaseName $databaseName `
-    -sharedThroughput $ $sharedThroughput `
-    -sharedContainer1Name $sharedContainer1Name `
-    -sharedContainer2Name $sharedContainer2Name `
-    -dedicatedContainer1Name $dedicatedContainer1Name `
-    -dedicatedThroughput $dedicatedThroughput
-
- (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
-```
-
-Azure Cloud Shell ではなく、ローカルにインストールされたバージョンの PowerShell を使用してテンプレートをデプロイすることも選択できます。 [Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps)する必要があります。 `Get-Module -ListAvailable Az` を実行して、必要なバージョンを見つけます。
-
-### <a name="deploy-via-azure-cli"></a>Azure CLI によるデプロイ
-
-Azure CLI を使用して Azure Resource Manager テンプレートをデプロイするには、次のようにします。
-
-1. スクリプトを**コピー**します。
-2. **[試してみる]** を選択して、Azure Cloud Shell を開きます。
-3. Azure Cloud Shell ウィンドウ内を右クリックしてから、 **[貼り付け]** を選択します。
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the shared database throughput: sharedThroughput
-read -p 'Enter the first shared container name: ' sharedContainer1Name
-read -p 'Enter the second shared container name: ' sharedContainer2Name
-read -p 'Enter the dedicated container name: ' dedicatedContainer1Name
-read -p 'Enter the dedicated container throughput: dedicatedThroughput
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json \
-   --parameters accountName=$accountName \
-   primaryRegion=$primaryRegion \
-   secondaryRegion=$secondaryRegion \
-   databaseName=$databaseName \
-   sharedThroughput=$sharedThroughput \
-   sharedContainer1Name=$sharedContainer1Name \
-   sharedContainer2Name=$sharedContainer2Name \
-   dedicatedContainer1Name=$dedicatedContainer1Name \
-   dedicatedThroughput=$dedicatedThroughput
-
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
-
-`az cosmosdb show` コマンドを使用すると、新しく作成した Azure Cosmos アカウントを、それがプロビジョニングされた後に表示できます。 Azure Cloud Shell ではなく、ローカルにインストールされたバージョンの Azure CLI を使用してテンプレートをデプロイすることも選択できます。 詳細については、記事「[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/)」を参照してください。
-
 <a id="create-sproc"></a>
 
-## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>サーバー側機能を使用して Azure Cosmos DB コンテナーを作成する
+## <a name="azure-cosmos-db-container-with-server-side-functionality"></a>サーバー側機能を備える Azure Cosmos DB コンテナー
 
-Azure Resource Manager テンプレートを使用することで、ストアド プロシージャ、トリガー、ユーザー定義関数を含む Azure Cosmos DB コンテナーを作成することができます。
+このテンプレートでは、Azure Cosmos アカウント、データベース、およびストアド プロシージャ、トリガー、ユーザー定義関数を含むコンテナーを作成します。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
 
-次のテンプレート例をコピーし、それを説明に従って [PowerShell](#deploy-with-powershell) または [Azure CLI](#deploy-with-azure-cli) を使用してデプロイします。
-
-* 必要に応じて、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/)にアクセスし、Azure portal からテンプレートをデプロイできます。
-* テンプレートをローカル コンピューターにダウンロードするか、新しいテンプレートを作成して、`--template-file` パラメーターでローカル パスを指定することもできます。
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
-### <a name="deploy-with-powershell"></a>PowerShell でデプロイする
+<a id="free-tier"></a>
 
-PowerShell を使用して Azure Resource Manager テンプレートをデプロイするには、次のようにします。
+## <a name="free-tier-azure-cosmos-db-account"></a>Free レベルの Azure Cosmos DB アカウント
 
-1. スクリプトを**コピー**します。
-1. **[試してみる]** を選択して、Azure Cloud Shell を開きます。
-1. [Azure Cloud Shell] ウィンドウを右クリックして、 **[貼り付け]** を選択します。
+このテンプレートでは、Free レベルの Azure Cosmos アカウントと、最大 25 個のコンテナーで共有できる共有スループットを備えるデータベースを作成します。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
 
-```azurepowershell-interactive
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-free%2Fazuredeploy.json)
 
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$location = Read-Host -Prompt "Enter the location (i.e. westus2)"
-$primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. westus2)"
-$secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. eastus2)"
-$databaseName = Read-Host -Prompt "Enter the database name"
-$containerName = Read-Host -Prompt "Enter the container name"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-sprocs/azuredeploy.json" `
-    -accountName $accountName `
-    -location $location `
-    -primaryRegion $primaryRegion `
-    -secondaryRegion $secondaryRegion `
-    -databaseName $databaseName `
-    -containerName $containerName
-
- (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
-```
-
-Azure Cloud Shell ではなく、ローカルにインストールされたバージョンの PowerShell を使用してテンプレートをデプロイすることも選択できます。 [Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps)する必要があります。 `Get-Module -ListAvailable Az` を実行して、必要なバージョンを見つけます。
-
-### <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
-
-Azure CLI を使用して Azure Resource Manager テンプレートをデプロイするには、次のようにします。
-
-1. スクリプトを**コピー**します。
-2. **[試してみる]** を選択して、Azure Cloud Shell を開きます。
-3. Azure Cloud Shell ウィンドウ内を右クリックしてから、 **[貼り付け]** を選択します。
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the container name: ' containerName
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-sprocs/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion databaseName=$databaseName \
-   containerName=$containerName
-
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-free/azuredeploy.json":::
 
 ## <a name="next-steps"></a>次のステップ
 
