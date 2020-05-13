@@ -181,7 +181,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>LUIS アプリを開く
-スクリプトが完了したら、[LUIS](luis-reference-regions.md) にサインインし、作成した LUIS アプリを **[マイ アプリ]** で確認できます。 **TurnOn**、**TurnOff**、**None** の各意図で、追加した発話を確認できます。
+スクリプトが完了したら、[LUIS](luis-reference-regions.md) にサインインし、作成した LUIS アプリを **[My apps]\(マイ アプリ\)** で確認できます。 **TurnOn**、**TurnOff**、**None** の各意図で、追加した発話を確認できます。
 
 ![意図 TurnOn](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
