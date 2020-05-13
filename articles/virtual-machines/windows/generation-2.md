@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 239e339d1870060d95d6c7e7b602be7d61af5f77
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869639"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838826"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -28,7 +28,7 @@ ms.locfileid: "81869639"
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC シリーズ](../dcv2-series.md)
+* [DCsv2 シリーズ](../dcv2-series.md)
 * [DSv2 シリーズ](../dv2-dsv2-series.md)および[Dsv3 シリーズ](../dv3-dsv3-series.md)
 * [Dasv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Esv3 シリーズ](../ev3-esv3-series.md)
@@ -38,13 +38,13 @@ ms.locfileid: "81869639"
 * [HB シリーズ](../hb-series.md)
 * [HC シリーズ](../hc-series.md)
 * [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](../lsv2-series.md)
-* [Mv2 シリーズ](../mv2-series.md)
+* [M シリーズ](../m-series.md)
+* [Mv2 シリーズ](../mv2-series.md)<sup>1</sup>
 * [NCv2 シリーズ](../ncv2-series.md)と [NCv3 シリーズ](../ncv3-series.md)
 * [ND シリーズ](../nd-series.md)
 * [NVv3 シリーズ](../nvv3-series.md)
 
-> [!NOTE]
-> Mv2 シリーズは第 2 世代の VM イメージのみで動作するため、Mv2 シリーズ VM に対する第 2 世代 VM イメージの使用は一般提供されています。 第 1 世代の VM イメージは、Mv2 シリーズの VM ではサポートされていません。 
+<sup>1</sup> Mv2 シリーズは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](https://docs.microsoft.com/azure/virtual-machines/mv2-series)を参照してください。
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 
@@ -58,6 +58,9 @@ ms.locfileid: "81869639"
 * RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7.0
 * Cent OS 8.1、8.0、7.7、7.6、7.5、7.4
 * Oracle Linux 7.7、7.7-CI
+
+> [!NOTE]
+> Mv2 シリーズのような特定の仮想マシンのサイズでは、これらのイメージのサブセットのみがサポートされている場合があります。詳細については、関連する仮想マシンのサイズに関するドキュメントを参照してください。
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 

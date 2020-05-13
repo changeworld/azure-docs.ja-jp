@@ -3,12 +3,12 @@ title: Azure Functions の Python 開発者向けリファレンス
 description: Python を使用して関数を開発する方法について説明します
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea128fc7c68b49fc14d796e9a3b91a9dbddd9b26
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234919"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780047"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -22,7 +22,7 @@ Azure Functions では、関数は入力を処理して出力を生成する Pyt
 
 トリガーとバインディングからのデータをメソッド属性を介して関数にバインドするには、*function.json* ファイル内で定義されている `name` プロパティを使用します。 たとえば、次の _function.json_ には、`req` という名前の HTTP 要求によってトリガーされるシンプルな関数が記述されています。
 
-:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
+:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
 この定義に基づき、関数コードを含む `__init__.py` ファイルは次の例のようになります。
 
@@ -77,6 +77,7 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
  | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
+ | - Dockerfile
  tests
 ```
 メイン プロジェクト フォルダー (\_\_app\_\_) には、次のファイルを含めることができます。
@@ -86,6 +87,7 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
 * *host.json*:関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
 * *.funcignore*:(省略可能) Azure に発行しないファイルを宣言します。
 * *.gitignore*:(省略可能) git リポジトリから除外されるファイル (local.settings.json など) を宣言します。
+* *Dockerfile*:(省略可能) [カスタム コンテナー](functions-create-function-linux-custom-image.md)でプロジェクトを発行するときに使用されます。
 
 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。 
 
@@ -629,42 +631,15 @@ from os import listdir
 
 テストは、プロジェクト フォルダーとは別のフォルダーに保存することをお勧めします。 これにより、アプリでテスト コードをデプロイすることを防ぐことができます。 
 
+## <a name="cross-origin-resource-sharing"></a>クロス オリジン リソース共有
+
+Azure Functions では、クロス オリジン リソース共有 (CORS) がサポートされています。 CORS は[ポータル内で](functions-how-to-use-azure-function-app-settings.md#cors)、[Azure CLI](/cli/azure/functionapp/cors) によって構成されます。 CORS の許可配信元一覧は、関数アプリ レベルで適用されます。 CORS を有効にすると、応答に `Access-Control-Allow-Origin` ヘッダーが含まれます。 詳細については、「 [クロス オリジン リソース共有](functions-how-to-use-azure-function-app-settings.md#cors)」を参照してください。 
+
+CORS は、Python 関数アプリでは完全にサポートされています。
+
 ## <a name="known-issues-and-faq"></a>既知の問題とよくあるご質問
 
 既知の問題と機能に関する要望はすべて、[GitHub issues](https://github.com/Azure/azure-functions-python-worker/issues) リストを使用して追跡されます。 問題が発生してその問題が GitHub で見つからない場合は、新しい Issue を開き、その問題の詳細な説明を記載してお知らせください。
-
-### <a name="cross-origin-resource-sharing"></a>クロス オリジン リソース共有
-
-Azure Functions では、クロス オリジン リソース共有 (CORS) がサポートされています。 CORS は[ポータル内で](functions-how-to-use-azure-function-app-settings.md#cors)、[Azure CLI](/cli/azure/functionapp/cors) によって構成されます。 CORS の許可配信元一覧は、関数アプリ レベルで適用されます。 CORS を有効にすると、応答に `Access-Control-Allow-Origin` ヘッダーが含まれます。 詳細については、「 [クロス オリジン リソース共有](functions-how-to-use-azure-function-app-settings.md#cors)」を参照してください。
-
-許可配信元一覧は、Python 関数アプリでは[現在サポートされていません](https://github.com/Azure/azure-functions-python-worker/issues/444)。 この制限のため、次の例に示すように、HTTP 関数で `Access-Control-Allow-Origin` ヘッダーを明示的に設定する必要があります。
-
-```python
-def main(req: func.HttpRequest) -> func.HttpResponse:
-
-    # Define the allow origin headers.
-    headers = {"Access-Control-Allow-Origin": "https://contoso.com"}
-
-    # Set the headers in the response.
-    return func.HttpResponse(
-            f"Allowed origin '{headers}'.",
-            headers=headers, status_code=200
-    )
-``` 
-
-OPTIONS HTTP メソッドをサポートするように、function.json も更新してください。
-
-```json
-    ...
-      "methods": [
-        "get",
-        "post",
-        "options"
-      ]
-    ...
-```
-
-この HTTP メソッドは、許可配信元一覧をネゴシエートするために Web ブラウザーによって使用されます。 
 
 ## <a name="next-steps"></a>次のステップ
 
