@@ -89,5 +89,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: custom-vision-encryption-of-data-at-rest.md
     - name: リリース ノート
       href: release-notes.md

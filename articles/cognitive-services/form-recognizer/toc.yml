@@ -74,7 +74,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
@@ -84,3 +84,5 @@
       href: language-support.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: form-recognizer-encryption-of-data-at-rest.md

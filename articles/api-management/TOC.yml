@@ -227,8 +227,6 @@
           href: how-to-configure-cloud-metrics-logs.md
         - name: セルフホステッド ゲートウェイにローカル メトリックとログを構成する
           href: how-to-configure-local-metrics-logs.md
-        - name: Azure Application Insights でログを要求する
-          href: api-management-howto-app-insights.md
         - name: バックアップ/復元を使用して DR を設定する
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: ユーザー アカウントを管理する

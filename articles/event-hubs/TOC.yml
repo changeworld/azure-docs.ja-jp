@@ -212,6 +212,8 @@
     - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド
+          href: troubleshooting-guide.md
+        - name: .NET の例外
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager の例外
           href: resource-manager-exceptions.md

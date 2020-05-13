@@ -133,7 +133,7 @@
     - name: Azure Databricks
       tocHref: /azure/azure-databricks/
       topicHref: /azure/azure-databricks/
-    - name: "\_Azure Data Explorer"
+    - name: Azure Data Explorer
       tocHref: /azure/data-explorer/
       topicHref: /azure/data-explorer/
     - name: Azure Digital Twins
@@ -605,7 +605,7 @@
         - name: Service Bus メッセージング
           tocHref: /azure/service-bus-messaging/
           topicHref: /azure/service-bus-messaging/
-        - name: Service Bus Relay
+        - name: Azure Relay
           tocHref: /azure/service-bus-relay/
           topicHref: /azure/service-bus-relay/
     - name: 移行

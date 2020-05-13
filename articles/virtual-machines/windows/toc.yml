@@ -392,6 +392,101 @@
           href: migration-classic-resource-manager-community-tools.md
         - name: よく寄せられる質問
           href: migration-classic-resource-manager-faq.md
+    - name: イメージの使用
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: イメージの作成と共有
+          items:
+            - name: PowerShell
+              items:
+                - name: ギャラリーの作成
+                  href: ../shared-images-powershell.md
+                - name: イメージを作成する
+                  items:
+                    - name: VM から
+                      href: ../image-version-vm-powershell.md
+                    - name: マネージド イメージから移行する
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 別のギャラリーからコピーする
+                      href: ../image-version-another-gallery-powershell.md
+                - name: VM の作成
+                  items:
+                    - name: 一般化されたイメージ
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 専用イメージ
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: イメージ リソースを更新する
+                  href: ../update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: ギャラリーの作成
+                  href: ../linux/shared-images.md
+                - name: イメージを作成する
+                  items:
+                    - name: VM から
+                      href: ../image-version-vm-cli.md
+                    - name: マネージド イメージから移行する
+                      href: ../image-version-managed-image-cli.md
+                    - name: 別のギャラリーからコピーする
+                      href: ../image-version-another-gallery-cli.md
+                    - name: 別のギャラリーからコピーする
+                      href: ../image-version-another-gallery-cli.md
+                - name: VM の作成
+                  items:
+                    - name: 一般化されたイメージ
+                      href: ../vm-generalized-image-version-cli.md
+                - name: イメージ リソースを更新する
+                  href: ../update-image-resources-cli.md
+            - name: ポータル
+              items:
+                - name: ギャラリー、イメージ、VM の作成
+                  href: shared-images-portal.md
+            - name: リソース マネージャーのテンプレート
+              items:
+                - name: Shared Image Gallery を作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Shared Image Gallery にイメージ定義を作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Shared Image Gallery にイメージのバージョンを作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: イメージ バージョンから VM を作成する
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: 共有イメージのトラブルシューティングを行う
+              href: troubleshooting-shared-images.md
+            - name: カスタマー マネージド キーの使用
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: Image Builder (プレビュー)
+          items:
+            - name: 概要
+              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Azure CLI の使用
+              href: image-builder.md
+            - name: イメージ ギャラリー用のビルド
+              href: image-builder-gallery.md
+            - name: 既存のイメージの更新
+              href: image-builder-gallery-update-image-version.md
+            - name: スクリプトの格納
+              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Resource Manager テンプレート リファレンス
+              displayName: Azure Resource Manager
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: トラブルシューティング
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+        - name: イメージを検索および使用する
+          href: cli-ps-findimage.md
+        - name: アップロード用に VM を準備する
+          href: prepare-for-upload-vhd-image.md
+        - name: VM をイメージにキャプチャする
+          href: capture-image-resource.md
+        - name: 一般化されたイメージを使用する
+          href: create-vm-generalized-managed.md
+        - name: Packer でイメージを作成する
+          href: build-image-with-packer.md
+        - name: Windows クライアント イメージを使用する
+          href: client-images.md
+        - name: 既存のディスクをダウンロードする
+          href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
         - name: Recommendations
@@ -528,98 +623,6 @@
           href: ../../azure-monitor/platform/alerts-log.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: REST による使用状況メトリックの取得
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: イメージの使用
-      displayName: 'SIG, AMI, image'
-      items:
-        - name: イメージの作成と共有
-          items:
-            - name: PowerShell
-              items:
-                - name: ギャラリーの作成
-                  href: ../shared-images-powershell.md
-                - name: イメージを作成する
-                  items:
-                    - name: VM から
-                      href: ../image-version-vm-powershell.md
-                    - name: マネージド イメージから移行する
-                      href: ../image-version-managed-image-powershell.md
-                    - name: 別のギャラリーからコピーする
-                      href: ../image-version-another-gallery-powershell.md
-                - name: VM の作成
-                  items:
-                    - name: 一般化されたイメージ
-                      href: ../vm-generalized-image-version-powershell.md
-                    - name: 専用イメージ
-                      href: ../vm-specialized-image-version-powershell.md
-                - name: イメージ リソースを更新する
-                  href: ../update-image-resources-powershell.md
-            - name: CLI
-              items:
-                - name: ギャラリーの作成
-                  href: ../linux/shared-images.md
-                - name: イメージを作成する
-                  items:
-                    - name: VM から
-                      href: ../image-version-vm-cli.md
-                    - name: マネージド イメージから移行する
-                      href: ../image-version-managed-image-cli.md
-                    - name: 別のギャラリーからコピーする
-                      href: ../image-version-another-gallery-cli.md
-                    - name: 別のギャラリーからコピーする
-                      href: ../image-version-another-gallery-cli.md
-                - name: VM の作成
-                  items:
-                    - name: 一般化されたイメージ
-                      href: ../vm-generalized-image-version-cli.md
-                - name: イメージ リソースを更新する
-                  href: ../update-image-resources-cli.md
-            - name: ポータル
-              items:
-                - name: ギャラリー、イメージ、VM の作成
-                  href: shared-images-portal.md
-            - name: リソース マネージャーのテンプレート
-              items:
-                - name: Shared Image Gallery を作成する
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
-                - name: Shared Image Gallery にイメージ定義を作成する
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
-                - name: Shared Image Gallery にイメージのバージョンを作成する
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
-                - name: イメージ バージョンから VM を作成する
-                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
-            - name: 共有イメージのトラブルシューティングを行う
-              href: troubleshooting-shared-images.md
-        - name: Image Builder (プレビュー)
-          items:
-            - name: 概要
-              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Azure CLI の使用
-              href: image-builder.md
-            - name: イメージ ギャラリー用のビルド
-              href: image-builder-gallery.md
-            - name: 既存のイメージの更新
-              href: image-builder-gallery-update-image-version.md
-            - name: スクリプトの格納
-              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Resource Manager テンプレート リファレンス
-              displayName: Azure Resource Manager
-              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: トラブルシューティング
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
-        - name: イメージを検索および使用する
-          href: cli-ps-findimage.md
-        - name: アップロード用に VM を準備する
-          href: prepare-for-upload-vhd-image.md
-        - name: VM をイメージにキャプチャする
-          href: capture-image-resource.md
-        - name: 一般化されたイメージを使用する
-          href: create-vm-generalized-managed.md
-        - name: Packer でイメージを作成する
-          href: build-image-with-packer.md
-        - name: Windows クライアント イメージを使用する
-          href: client-images.md
-        - name: 既存のディスクをダウンロードする
-          href: download-vhd.md
     - name: 可用性とスケール
       items:
         - name: Virtual Machine Scale Sets

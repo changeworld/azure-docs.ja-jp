@@ -234,6 +234,11 @@
                       href: instance-generalized-image-version-cli.md
                 - name: イメージ リソースを更新する
                   href: ../virtual-machines/update-image-resources-cli.md
+            - name: 共有イメージのトラブルシューティングを行う
+              href: ../virtual-machines/troubleshooting-shared-images.md
+            - name: カスタマー マネージド キーの使用
+              displayName: 'SSE, CMK, encrypt'
+              href: ../virtual-machines/image-version-encryption.md
     - name: テンプレートの作成
       items:
         - name: スケール セット テンプレートを確認する
