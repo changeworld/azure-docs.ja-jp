@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 04/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 681723ee9370f889ef86e6eae0878b148c17606b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232355"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176364"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -25,11 +25,9 @@ ms.locfileid: "79232355"
 * Azure のストレージ アカウントにアクセスする。
 * Shared Access Signature (SAS) を介して Azure の特定のリソースにアクセスする。
 
+アカウント アクセス キーを表示し、接続文字列をコピーする方法については、「[ストレージ アカウント アクセス キーを管理する](storage-account-keys-manage.md)」を参照してください。
+
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
-
-## <a name="view-and-copy-a-connection-string"></a>接続文字列を表示およびコピーする
-
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ## <a name="store-a-connection-string"></a>接続文字列を保存する
 
@@ -113,7 +111,7 @@ AccountKey=<account-key>
 カスタム ドメインにストレージ エンドポイントをマッピングし、そのエンドポイントを接続文字列に指定しなかった場合、コードからその接続文字列を使用して、サービスのデータにアクセスすることはできません。
 
 > [!IMPORTANT]
-> 接続文字列のサービス エンドポイントの値は、`https://`(推奨) や `http://` など、整形式の URI である必要があります。 Azure Storage はカスタム ドメインに対して HTTPS をサポートしていないため、カスタム ドメインを指すすべてのエンドポイント URI に  *を指定する "* 必要があります`http://`"。
+> 接続文字列のサービス エンドポイントの値は、`https://`(推奨) や `http://` など、整形式の URI である必要があります。 Azure Storage はカスタム ドメインに対して HTTPS をサポートしていないため、カスタム ドメインを指すすべてのエンドポイント URI に `http://` を指定する "*必要があります*"。
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>エンドポイント サフィックスを含む接続文字列を作成する

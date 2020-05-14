@@ -4,22 +4,22 @@ description: Azure Application Insights データを利用して 日/週/月 1 �
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655125"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161501"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
 定期レポートは､ビジネスに重要なサービスの実施状況についてチームが常に情報を入手するのに役立ちます｡ 開発者や DevOps/SRE チーム､彼らのマネージャーは､誰もポータルにサインインしなくても､自動化されたレポートによって信頼できる形で知見が提供されることで生産的であることができます。 そうしたレポートによって､アラート ルールをトリガーすることのない待ち時間や負荷､故障発生率の漸増を発見することもできます｡
 
-エンタープライズはそれぞれに次のような独自のレポート ニーズがあります｡ 
+エンタープライズはそれぞれに次のような独自のレポート ニーズがあります｡
 
 * メトリックの特定の百分率集計またはカスタム メトリックのレポート
 * 報告対象者に応じたデータの 日､ 週､および月 1 回のロールアップ レポート
-* リージョンや環境などのカスタム 属性別に区分けしたレポート 
+* リージョンや環境などのカスタム 属性別に区分けしたレポート
 * いくつかの AI リソースを 1 つのグループにまとめたレポート (リソースの属するサブスクリプションあるいはリソース グループが異なっていてもよい)
 * 報告対象者別の送信した重要なメトリックからなるレポート
 * ポータル リソースへのアクセス権を持たない利害関係者向けレポート
@@ -38,7 +38,7 @@ ms.locfileid: "77655125"
     ![Azure 関数テンプレート](./media/automate-custom-reports/azure-function-template.png)
 
 ## <a name="sample-query-for-a-weekly-digest-email"></a>月 1 回のレポート用のクエリ例
-次のクエリは、レポートのような月 1 回のダイジェスト電子メール用に複数のデータセットにまたがって結合を行う例です。 必要に応じてカスタマイズし、上記のオプションと組み合わせることで週 1 回のレポートを自動化することができます。   
+次のクエリは、レポートのような月 1 回のダイジェスト電子メール用に複数のデータセットにまたがって結合を行う例です。 必要に応じてカスタマイズし、上記のオプションと組み合わせることで週 1 回のレポートを自動化することができます。
 
 ```AIQL
 let period=7d;
@@ -70,40 +70,34 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights スケジュールされたダイジェスト レポート
 
-1. Azure Portal から、 **[リソースの作成]**  >  **[コンピューティング]**  >  **[Function App]** の順に選択します。
+1. Azure Function App を作成します。(Application Insights で新しい Function App を監視する必要がある場合にのみ、Application Insights を _[オン]_ にする必要があります)
 
-   ![Azure リソース Function App を作成する画面のスクリーンショット](./media/automate-custom-reports/function-app-01.png)
+   [関数アプリの作成](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)方法については、Azure Functions のドキュメントを参照してください。
 
-2. アプリに関する適切な情報を入力し、 _[作成]_ を選択します。 ([Application Insights] は、新しい Function App を Application Insights で監視する必要がある場合にのみ、 _[オン]_ にします)
+2. 新しい Function App のデプロイが完了したら、 **[リソースに移動]** を選択します。
 
-   ![Azure リソース Function App の設定を作成する画面のスクリーンショット](./media/automate-custom-reports/function-app-02.png)
+3. **[新しい関数]** を選択します。
 
-3. 新しい Function App のデプロイが完了したら、 **[リソースに移動]** を選択します。
+   ![新しい関数を作成する画面のスクリーンショット](./media/automate-custom-reports/new-function.png)
 
-4. **[新しい関数]** を選択します。
-
-   ![新しい関数を作成する画面のスクリーンショット](./media/automate-custom-reports/function-app-03.png)
-
-5. **_Application Insights スケジュールされたダイジェスト テンプレート_** を選択します。
+4. **_Application Insights スケジュールされたダイジェスト テンプレート_** を選択します。
 
      > [!NOTE]
-     > 既定では、関数アプリはランタイム バージョン 2.x で作成されます。 Application Insights のスケジュール済みダイジェスト テンプレートを使用するには、[Azure Functions ランタイム バージョン **1.x** をターゲットにする](https://docs.microsoft.com/azure/azure-functions/set-runtime-version)必要があります。  ![ランタイムのスクリーンショット](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
-
-
+     > 既定では、関数アプリはランタイム バージョン 3.x で作成されます。 Application Insights のスケジュール済みダイジェスト テンプレートを使用するには、[Azure Functions ランタイム バージョン **1.x** をターゲットにする](https://docs.microsoft.com/azure/azure-functions/set-runtime-version)必要があります。 [構成]、[関数のランタイム設定] の順に移動して、ランタイム バージョンを変更します。 ![ランタイムのスクリーンショット](./media/automate-custom-reports/change-runtime-v.png)
 
    ![新しい関数の Application Insights テンプレートのスクリーン ショット](./media/automate-custom-reports/function-app-04.png)
 
-6. レポートの適切な受信者の電子メール アドレスを入力し、 **[作成]** を選択します。
+5. レポートの適切な受信者の電子メール アドレスを入力し、 **[作成]** を選択します。
 
-   ![関数の設定のスクリーンショット](./media/automate-custom-reports/function-app-05.png)
+   ![関数の設定のスクリーンショット](./media/automate-custom-reports/scheduled-digest.png)
 
-7. 作成した **Function App** >  **[プラットフォーム機能]**  >  **[アプリケーション設定]** を選択します。
+6. 自分の **Function App** >  **[プラットフォーム機能]**  >  **[構成]** を選択します。
 
-    ![Azure 関数のアプリケーション設定のスクリーンショット](./media/automate-custom-reports/function-app-07.png)
+    ![Azure 関数のアプリケーション設定のスクリーンショット](./media/automate-custom-reports/config.png)
 
-8. 適切な値 (``AI_APP_ID``、 ``AI_APP_KEY``、および ``SendGridAPI``) を使用して、3 つの新しいアプリケーション設定を作成します。 **[保存]** を選択します。
+7. 適切な値 (``AI_APP_ID``、 ``AI_APP_KEY``、および ``SendGridAPI``) を使用して、3 つの新しいアプリケーション設定を作成します。 **[保存]** を選択します。
 
-     ![関数の統合インターフェイスのスクリーンショット](./media/automate-custom-reports/function-app-08.png)
+     ![関数の統合インターフェイスのスクリーンショット](./media/automate-custom-reports/app-settings.png)
     
     (AI_ の値は、レポート対象となる Application Insights リソースの [API アクセス] で確認できます。 Application Insights API キーがない場合は、 **[API キーの作成]** を使って作成できます。)
     
@@ -114,19 +108,19 @@ availabilityResults
      > [!NOTE]
      > SendGrid アカウントがない場合は、 作成できます。 Azure Functions での SendGrid の使用に関するドキュメントは、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)で参照できます。 SendGrid の設定方法と API キーの生成方法に関する簡単な説明は、この記事の最後に記載されています。 
 
-9. **[統合]** を選択し、[出力] の下で **[SendGrid ($return)]** をクリックします。
+8. **[統合]** を選択し、[出力] の下で **[SendGrid ($return)]** をクリックします。
 
-     ![出力のスクリーンショット](./media/automate-custom-reports/function-app-09.png)
+     ![出力のスクリーンショット](./media/automate-custom-reports/integrate.png)
 
-10. **[SendGrid API キーのアプリ設定]** で、**SendGridAPI** 用に新しく作成したアプリ設定を選択します。
+9. **[SendGrid API キーのアプリ設定]** で、**SendGridAPI** 用に新しく作成したアプリ設定を選択します。
 
-     ![Function App を実行する画面のスクリーンショット](./media/automate-custom-reports/function-app-010.png)
+     ![Function App を実行する画面のスクリーンショット](./media/automate-custom-reports/sendgrid-output.png)
 
-11. Function App を実行し、テストします。
+10. Function App を実行し、テストします。
 
      ![テストのスクリーンショット](./media/automate-custom-reports/function-app-11.png)
 
-12. 電子メールをチェックして、メッセージが正常に送受信されたことを確認します。
+11. 電子メールをチェックして、メッセージが正常に送受信されたことを確認します。
 
      ![電子メールの件名行のスクリーンショット](./media/automate-custom-reports/function-app-12.png)
 
@@ -134,19 +128,19 @@ availabilityResults
 
 以下の手順は、SendGrid アカウントをまだ構成していない場合にのみ行います。
 
-1. Azure Portalから **[Create a resource]\(リソースの作成\)** を選択し、 **[SendGrid Email Delivery]\(SendGrid 電子メール配信\)** を検索して **[作成]** をクリックし、SendGrid 固有の作成指示を入力します。 
+1. Azure portal から **[リソースの作成]** を選択し、**SendGrid Email Delivery** を検索して **[作成]** をクリックし、SendGrid 固有の作成指示を入力します。
 
-     ![SendGrid リソースを作成する画面のスクリーンショット](./media/automate-custom-reports/function-app-13.png)
+     ![SendGrid リソースを作成する画面のスクリーンショット](./media/automate-custom-reports/sendgrid.png)
 
 2. 作成されたら、[SendGrid アカウント] で **[管理]** を選択します。
 
-     ![API キーを設定する画面のスクリーンショット](./media/automate-custom-reports/function-app-14.png)
+     ![API キーを設定する画面のスクリーンショット](./media/automate-custom-reports/sendgrid-manage.png)
 
 3. これにより、SendGrid のサイトが起動します。 **[設定]**  >  **[API キー]** を選択します。
 
      ![API キー アプリを作成して表示する画面のスクリーンショット](./media/automate-custom-reports/function-app-15.png)
 
-4. API キーを作成し、 **[Create & View]\(作成して表示\)** を選択します (SendGrid のドキュメントでアクセス制限に関する説明を参照し、API キーに対してどのレベルのアクセス許可が適切かを確認してください。 ここでは、あくまでも例としてフル アクセスを選択しています。)
+4. API キーを作成し、 **[Create & View]\(作成して表示\)** を選択します。 (SendGrid のドキュメントでアクセス制限について確認し、API キーに対してどのレベルのアクセス許可が適切かを判断してください。 ここでは、あくまでも例としてフル アクセスを選択しています。)
 
    ![フル アクセスのスクリーンショット](./media/automate-custom-reports/function-app-16.png)
 

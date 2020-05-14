@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 98febe9f91cb4b71d546300d4e65ade073d19e67
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ea4d2830fb9db9f95ba8ab87626a79d94aaecb8a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461771"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187938"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -103,7 +103,7 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 ## <a name="provide-permissions"></a>アクセス許可を付与する
 
-Azure VM では、キーとシークレット、および関連付けられた VM がバックアップするために、読み取り専用のアクセス権が必要です。
+Azure Backup では、キーとシークレット、および関連付けられた VM がバックアップするために、読み取り専用のアクセス権が必要です。
 
 - ご利用の Key Vault は、Azure サブスクリプションの Azure AD テナントに関連付けられます。 **メンバー ユーザー**の場合は、さらに操作しなくても、Azure Backup によって Key Vault へのアクセス権が取得されます。
 - **ゲスト ユーザー**の場合は、キー コンテナーにアクセスするために、Azure Backup にアクセス許可を提供する必要があります。

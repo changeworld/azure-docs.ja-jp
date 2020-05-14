@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:Azure Monitor Application Insights を使用して Web サイトを監視する
-description: このクイックスタートでは、Azure Monitor Application Insights を使用したクライアント (ブラウザー) 側の Web サイト監視をセットアップする手順を説明します
+description: このクイックスタートでは、Azure Monitor Application Insights を使用したクライアント (ブラウザー) 側の Web サイト監視を設定する方法について説明します。
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 495c40ca8e383dd5a3cf3ba9e5bd42e2936ea015
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132361"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801639"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>クイック スタート:Azure Monitor Application Insights を使って Web サイトの監視を開始する
 
@@ -24,28 +24,26 @@ Azure Monitor Application Insights を使用すると、Web サイトの可用�
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
-Application Insights は、オンプレミスまたはクラウドで実行されている、インターネットに接続された任意のアプリケーションからテレメトリ データを収集できます。 このデータの表示を開始するには、次の手順を実行します。
+Application Insights は、オンプレミスまたはクラウドで実行されている、インターネットに接続された任意のアプリケーションからテレメトリ データを収集できます。 このデータを表示するには、次の手順を使用します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **[リソースの作成]**  >  **[管理ツール]**  >  **[Application Insights]** の順に選択します。
+1. **[リソースの作成]**  >  **[管理ツール]**  >  **[Application Insights]** の順に選択します。
 
    > [!NOTE]
-   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」の記事にアクセスして詳細を学習できます。
+   >Application Insights リソースの作成が初めての場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」を参照してください。
+1. 構成ボックスが表示されたら、次の表を使用して入力フィールドを完成させます。
 
-   構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
-
-    | 設定        | Value           | 説明  |
+    | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
-
-3. **Create** をクリックしてください。
+   | **場所** | 米国東部 | お近くの場所か、アプリがホストされている場所の近くを選択します。 |
+1. **［作成］** を選択します
 
 ## <a name="create-an-html-file"></a>HTML ファイルを作成する
 
-1. ローカル コンピューターで、``hello_world.html`` という名前のファイルを作成します。 この例では、``C:\hello_world.html`` のように、ファイルを C: ドライブのルートに配置します。
-2. 以下のスクリプトを ``hello_world.html`` にコピーします。
+1. ローカル コンピューターで、``hello_world.html`` という名前のファイルを作成します。 この例では、C ドライブのルートにファイルを作成するので、``C:\hello_world.html`` のようになります。
+1. 次のスクリプトをコピーして ``hello_world.html`` に貼り付けます。
 
     ```html
     <!DOCTYPE html>
@@ -55,18 +53,18 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
     </head>
     <body>
     <h1>Azure Monitor Application Insights Hello World!</h1>
-    <p>You can use the Application Insights JavaScript SDK to perform client/browser-side monitoring of your website. To learn about more advanced JavaScript SDK configurations visit the <a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md" title="API Reference">API reference</a>.</p>
+    <p>You can use the Application Insights JavaScript SDK to perform client/browser-side monitoring of your website. To learn about more advanced JavaScript SDK configurations, visit the <a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md" title="API Reference">API reference</a>.</p>
     </body>
     </html>
     ```
 
 ## <a name="configure-application-insights-sdk"></a>Application Insights SDK を構成する
 
-1. **[概要]**  >  **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
+1. **[概要]**  >  **[基本]** の順に選択し、ご自分のアプリケーションの**インストルメンテーション キー**をコピーします。
 
    ![新しい Application Insights リソースのフォーム](media/website-monitoring/instrumentation-key-001.png)
 
-2. ``hello_world.html`` の閉じる ``</head>`` タグの前に、次のスクリプトを追加します。
+1. ``hello_world.html`` ファイルの閉じる ``</head>`` タグの前に、次のスクリプトを追加します。
 
    ```javascript
    <script type="text/javascript">
@@ -78,15 +76,17 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
    </script>
    ```
 
-3. ``hello_world.html`` を編集し、インストルメンテーション キーを追加します。
+1. ``hello_world.html`` を編集し、インストルメンテーション キーを追加します。
 
-4. ローカル ブラウザー セッションで、``hello_world.html`` を開きます。 この操作によって、単一のページビューが作成されます。 ブラウザーを最新の情報に更新して、複数のテスト ページビューを生成することができます。
+1. ローカル ブラウザー セッションで、``hello_world.html`` を開きます。 この操作によって、単一のページ ビューが作成されます。 ブラウザーを最新の情報に更新して、複数のテスト ページ ビューを生成することができます。
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure Portal で監視を開始する
+## <a name="monitor-your-website-in-the-azure-portal"></a>Azure portal で Web サイトを監視する
 
-1. Azure portal で Application Insights の **[概要]** ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。 **[概要]** ページは、インストルメンテーション キーを取得した場所です。 概要ページの 4 つの既定のグラフでは、サーバー側のアプリケーション データが対象になっています。 ここではクライアント (ブラウザー) 側の JavaScript SDK との対話をインストルメント化しているため、この特定のビューは、サーバー側の SDK もインストールされない限り、適用されません。
+1. Azure portal で Application Insights の **[概要]** ページを再度開き、現在実行中のアプリケーションの詳細情報を表示できます。 **[概要]** ページは、インストルメンテーション キーを取得した場所です。
 
-2. ![アプリケーション マップ アイコン](media/website-monitoring/006.png) ( **[分析]** ) をクリックします。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Analytics** が開きます。 クライアント側のブラウザー要求に関連しているデータを表示するには、次のクエリを実行します。
+   概要ページの 4 つの既定のグラフでは、サーバー側のアプリケーション データが対象になっています。 ここではクライアント (ブラウザー) 側の JavaScript SDK との対話をインストルメント化しているため、この特定のビューは、サーバー側の SDK もインストールされない限り、適用されません。
+
+1. **[Analytics]** ![アプリケーション マップ アイコン](media/website-monitoring/006.png) を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Analytics** が開きます。 クライアント側のブラウザー要求に関連しているデータを表示するには、次のクエリを実行します。
 
     ```kusto
     // average pageView duration by name
@@ -105,15 +105,15 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/website-monitoring/analytics-query.png)
 
-3. **[概要]** ページに戻ります。 **[調査]** ヘッダーの下の **[ブラウザー]** をクリックし、 **[パフォーマンス]** を選択します。ここに、Web サイトのパフォーマンスに関連するメトリックが表示されます。 Web サイトのエラーと例外を分析するためのビューもあります。 **[サンプル]** をクリックすると、個々のトランザクションの詳細にドリルダウンすることができます。 ここから、[エンド ツー エンドのトランザクションの詳細](../../azure-monitor/app/transaction-diagnostics.md)のエクスペリエンスにアクセスすることができます。
+1. **[概要]** ページに戻ります。 **[調査]** ヘッダーで、 **[ブラウザー]** を選択し、 **[パフォーマンス]** を選択します。  Web サイトのパフォーマンスに関するメトリックが表示されます。 Web サイトのエラーと例外を分析するための対応するビューがあります。 **[サンプル]** を選択して、[エンドツーエンドのトランザクションの詳細](../../azure-monitor/app/transaction-diagnostics.md)にアクセスできます。
 
    ![サーバー メトリックのグラフ](./media/website-monitoring/browser-performance.png)
 
-4. [ユーザー動作分析ツール](../../azure-monitor/app/usage-overview.md)の調査を始めるには、Application Insights のメイン メニューで、 **[使用状況]** ヘッダーの下の [ **[ユーザー]** ](../../azure-monitor/app/usage-segmentation.md) を選択します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布は次のようになります。
+1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]** ](../../azure-monitor/app/usage-segmentation.md) を選択し、[ユーザー動作分析ツール](../../azure-monitor/app/usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
 
      ![ユーザーのグラフ](./media/website-monitoring/usage-users.png)
 
-5. 複数のページを持つより複雑な Web サイトをインストルメント化した場合、もう 1 つの便利なツールは [**User Flows**](../../azure-monitor/app/usage-flows.md) です。 **User Flows** を使用すると、Web サイトのさまざまな部分を通じて訪問者がたどった経路を追跡することができます。
+1. 複数のページがある、より複雑な Web サイトでは、[**User Flows**](../../azure-monitor/app/usage-flows.md) ツールを使用して、Web サイトのさまざまな部分を辿る訪問者の経路を追跡できます。
 
    ![User Flows の視覚化](./media/website-monitoring/user-flows.png)
 
@@ -121,13 +121,13 @@ Web サイトを監視するためのより高度な構成については、[Jav
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-引き続き他のクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、次の手順に従って、このクイックスタートで作成したすべてのリソースを Azure portal で削除してください。
+引き続き他のクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 そうでなければ、以下の手順に従い、このクイックスタートで作成したすべてのリソースを Azure portal で削除します。
 
 > [!NOTE]
-> 既存のリソース グループを使用した場合、以下の手順ではうまくいきません。個々の Application Insights リソースを削除する必要があります。 リソース グループを削除すると、そのグループに属している内在するリソースがすべて削除されるので注意してください。
+> 既存のリソース グループを使用した場合は、次の手順を使用できません。 代わりに、個々の Application Insights リソースを削除するだけで済みます。 リソース グループを削除すると、そのグループに属している基になるリソースがすべて削除されるので注意してください。
 
-1. Azure portal の左側のメニューで **[リソース グループ]** をクリックし、**myResourceGroup** またはお使いの一時リソース グループの名前をクリックします。
-2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
+1. Azure portal の左側のメニューで **[リソース グループ]** を選択し、**myResourceGroup** またはお使いの一時リソース グループの名前を選択します。
+1. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: c56db99b056d4b1e9b7dd75bc2f21bf582ee2ab7
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d039a7e21ac1ef6415cc363201c9754b47503add
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756839"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627774"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)。
 
@@ -27,8 +27,9 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-| Question | 解決策 |
-| -------- | -------- |
+| Question | Answer |
+| -------- | ------ |
+| デバイスを登録することは、会社またはサービスに自分のデバイスへのアクセスを許可することに同意することになりますか? | デバイスを登録すると、ご自身のデバイスから組織のサービスにアクセスできるようになります。また、組織からご自身のデバイスへのアクセスは許可されません。 |
 | Android 用の Microsoft Authenticator で OTP コードのスクリーンショットを撮ることはできますか? | Android リリース 6.2003.1704 の Microsoft Authenticator の時点で、既定では、Authenticator のスクリーンショットが撮られると、ユーザーの保護を強化するためにすべての OTP コードが非表示になります。 ユーザーが自分の OTP コードをスクリーンショットに表示したり、他のアプリが Authenticator の画面をキャプチャできるようにしたりしたい場合は、Authenticator アプリで [画面の取り込み] 設定を有効にしてアプリを再起動することで実行できます。 |
 | Authenticator でユーザーについてどのようなデータが格納されますか? また、どうすれば削除できますか? | Microsoft Authenticator アプリは、次の 3 種類の情報を収集します。<ul><li>アカウントを追加したときに入力したアカウント情報。 このデータは、アカウントを削除することで削除できます。</li><li>診断ログ データ。アプリの **[ヘルプ]** メニューから **[ログの送信]** を選択して Microsoft にログを送信するまで、アプリ内にのみ存在します。 これらのログファイルには、メール アドレス (alain@contoso.com など)、サーバー/IP アドレス、デバイス データ (デバイス名やオペレーティング システムのバージョンなど) のような個人データが含まれます。この個人データは、アプリの問題解決に必要な情報に制限されています。 これらのログ ファイルはいつでもアプリで表示し、収集されている情報を確認できます。 ユーザーがログ ファイルを送信すると、認証アプリ エンジニアはその情報を利用して報告された問題を解決できます。</li><li>"アカウントの追加フローが開始されました/アカウントが正常に追加されました"、"通知が承認されました" など、個人を特定できない使用データ。"アカウントの追加フローが開始されました/アカウントが正常に追加されました"、"通知が承認されました" など、個人を特定できない使用データ。 このデータは、エンジニアリングの判断に重要な部分を占め、ユーザーにとって重要な機能やアプリの更新プログラムの形式で改善が必要な機能を判断するために役立ちます。 アプリ ユーザーには、アプリの最初の起動時にこのデータ収集の通知が表示され、アプリの **[設定]** ページでオフに切り替えられることが通知されます。 この設定はいつでも有効または無効にすることができます。</li></ul> |
 | アプリのコードの目的は何ですか。 | Microsoft Authenticator アプリを開くと、追加されたアカウントがタイルとして表示されます。<li>iOS デバイス上では、お使いの職場または学校アカウントと個人用 Microsoft アカウントに対し、(アカウント タイルをタップしてアクセスする) アカウントの全画面ビューに 6 桁または 8 桁の数字が表示されます。<br><br>![アプリの [アカウント] 画面](./media/user-help-auth-app-faq/auth-app-accounts.png)<li>iOS デバイス上の他のアカウントと Android デバイス上のすべてのアカウントについては、アプリの [アカウント] ページに 6 桁または 8 桁の数字が表示されます。 ユーザーは、これらのコードを、本人確認の目的で使用します。 ユーザー名とパスワードを使用してサインインした後、そのアカウントに関連付けられている確認コードを入力します。 たとえば、お使いの Contoso アカウントに Katy でサインインしていて、iOS デバイスを使用している場合は、アカウント タイルをタップした後、確認コードを使用して本人確認を行います。 お使いの Outlook アカウントに Katy でサインインしている場合は、同じ手順に従います。<br><br>![アプリのアカウント タイルをタップした後](./media/user-help-auth-app-faq/katy-signin.png)<br><br>Katy は、Contoso アカウント タイルをタップした後、全画面ビューで確認コードを確認し、895823 を入力してサインインを完了します。<br><br>![アプリの確認コード画面](./media/user-help-auth-app-faq/verification-code.png) |

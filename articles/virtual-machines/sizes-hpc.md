@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: df22c857571e51bb886ff1d25db185a306999540
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420864"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839064"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -39,7 +39,7 @@ Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC �
 
 ## <a name="rdma-capable-instances"></a>RDMA 対応のインスタンス
 
-ほとんどの HPC VM サイズ (HBv2、HB、HC、H16r、H16mr、A8 および A9) には、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 NC24rs 構成 (NC24rs_v3、NC24rs_v2、および NC24r) など、'r' で指定された、選択された [N シリーズ] (https://docs.microsoft.com/azure/virtual-machines/nc-series) サイズも RDMA に対応します。 このインターフェイスは、標準の Azure ネットワーク インターフェイスに加えて、他の VM サイズでも利用可能です。
+ほとんどの HPC VM サイズ (HBv2、HB、HC、H16r、H16mr、A8 および A9) には、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 NC24rs 構成 (NC24rs_v3、NC24rs_v2、および NC24r) など、'r' で指定された、選択された [[N シリーズ]](https://docs.microsoft.com/azure/virtual-machines/nc-series) サイズも RDMA に対応します。 このインターフェイスは、標準の Azure ネットワーク インターフェイスに加えて、他の VM サイズでも利用可能です。
 
 このインターフェイスにより、RDMA 対応インスタンスは InfiniBand (IB) ネットワークを介して通信することができ、HBv2 では HDR のレートで、HB、HC では EDR のレートで、H16r、H16mr、および RDMA 対応 N シリーズの仮想マシンでは FDR のレートで、A8 と A9 の VM では QDR のレートで動作します。 これらの RDMA 機能により、特定の Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。 速度の詳細については、このページの表の詳細情報を参照してください。
 
@@ -92,7 +92,7 @@ Azure では、次のような、RDMA ネットワークを使用して通信で
 
 - **仮想マシン** - 同じスケール セットまたは可用性セット内に RDMA 対応の HPC VM をデプロイします (Azure Resource Manager デプロイ モデルを使用する場合)。 クラシック デプロイ モデルを使用する場合は、同じクラウド サービス内に VM をデプロイします。
 
-- **Virtual Machine Scale Sets** - 仮想マシン スケール セットで、単一の配置グループにデプロイを制限するようにします。 たとえば、Resource Manager テンプレートでは、`singlePlacementGroup` プロパティを `true` に設定します。 `singlePlacementGroup` プロパティを `true` にして起動できる VMSS の最大サイズは、既定で 100 VM に制限されることに注意してください。 HPC ジョブ スケールのニーズが、1 つの VMSS テナントでの 100 VM よりも大きい場合は、増加を要求できます。[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
+- **Virtual Machine Scale Sets** - 仮想マシン スケール セットで、VMSS 内の InfiniBand 通信に対して単一の配置グループにデプロイを制限するようにします。 たとえば、Resource Manager テンプレートでは、`singlePlacementGroup` プロパティを `true` に設定します。 `singlePlacementGroup` プロパティを `true` にして起動できる VMSS の最大サイズは、既定で 100 VM に制限されることに注意してください。 HPC ジョブ スケールのニーズが、1 つの VMSS テナントでの 100 VM よりも大きい場合は、増加を要求できます。[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。 1 つの VMSS の VM 数の上限は 300 まで増やすことができます。 可用性セットを利用して VM をデプロイするとき、上限は可用性セットあたり 200 VM です。
 
 - **仮想マシン間の MPI** - 仮想マシン (VM) 間で RDMA (MPI 通信の使用など) が必要な場合は、VM が同じ仮想マシン スケール セットまたは可用性セットに含まれていることを確認します。
 
@@ -129,6 +129,6 @@ Azure では、次のような、RDMA ネットワークを使用して通信で
 
 ## <a name="next-steps"></a>次のステップ
 
-- [HPC ワークロード] で Azure 用に HPC アプリケーションを最適化することに関する詳細といくつかの例を確認する (https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
+- [[HPC ワークロード]](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) で Azure 用に HPC アプリケーションを最適化することに関する詳細といくつかの例を確認する 
 
 - [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

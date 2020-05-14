@@ -1,25 +1,25 @@
 ---
-title: Azure 仮想マシン オファーを作成する - Azure Marketplace
-description: コマーシャル マーケットプレースで仮想マシン オファーを作成する方法について説明します。
+title: Azure Marketplace で Azure 仮想マシン オファーを作成する
+description: 必要な SKU を使用して、Azure Marketplace で仮想マシン オファーを作成する方法について説明します。
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.date: 05/01/2020
+ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869055"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745006"
 ---
-# <a name="create-an-azure-virtual-machine-offer"></a>Azure 仮想マシン オファーを作成する
+# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Azure Marketplace で Azure 仮想マシン オファーを作成する
 
 > [!IMPORTANT]
-> Azure VM オファーの管理は、Cloud パートナー ポータルからパートナー センターに移行されています。 オファーが移行されるまでは、引き続き「[仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer)」の手順に従って、Cloud パートナー ポータルでオファーを管理してください。
+> 現在、Azure VM オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、引き続き「[仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer)」の手順に従って、Cloud パートナー ポータルでオファーを管理してください。
 
-この記事では、Azure 仮想マシン オファーを作成して [Azure Marketplace](https://azuremarketplace.microsoft.com/) に発行する方法について説明します。 オペレーティング システム、仮想ハード ディスク (VHD)、最大 16 個のデータ ディスクが含まれる Windows ベースと Linux ベースの両方の仮想マシンに対応しています。
+この記事では、Azure 仮想マシン オファーを作成して [Azure Marketplace](https://azuremarketplace.microsoft.com/) に発行する方法について説明します。 オペレーティング システム、仮想ハード ディスク (VHD)、最大 16 個のデータ ディスクが含まれる Windows ベースと Linux ベースの両方の仮想マシンに対応しています。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="introduction"></a>はじめに
 
@@ -58,17 +58,18 @@ Azure Marketplace への発行には、次の利点があります。
 - [Azure アプリケーションそのものとそのアーキテクチャを](https://azure.microsoft.com/solutions/architecture/)設計する方法
 - [Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)、[Azure ストレージ](https://azure.microsoft.com/services/?filter=storage#storage)､[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking#networking)に関する実用的な知識
 
-## <a name="create-an-azure-virtual-machine-offer"></a>Azure 仮想マシン オファーを作成する
+## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
-Azure 仮想マシン オファーを作成する前に、パートナー センターにコマーシャル マーケットプレース アカウントが必要です。 まだ作成していない場合、「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)」を参照してください。
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
+3. [概要] ページで、 **[+ 新しいオファー]**  >  **[Azure 仮想マシン]** の順に選択します。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインし、上部のメニューから **[ダッシュボード]** を選択します。
-2. 左側のナビゲーション バーで **[商業マーケットプレース]** を選択して、 **[概要]** を選択します。
-3. **[概要]** ページで、 **[+ 新しいオファー]** 、 **[Azure 仮想マシン]** の順に選択します。 **[新しいオファー]** ダイアログ ボックスが表示されます。
+    ![左側のナビゲーション メニューの画像。](./media/new-offer-azure-vm.png)
 
-    ![[新しいオファー] ボタンと Azure 仮想マシン オファーが選択されているパートナー センターの [概要] ページの図。](media/avm-create7.png)
+> [!NOTE]
+> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
 
-## <a name="offer-id-and-alias"></a>オファーの ID と別名
+## <a name="new-offer"></a>新しいプラン
 
 **[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
@@ -76,7 +77,9 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、ここに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 - **[作成]** を選択した後で、オファー ID を変更することはできません。
 
-**[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。 この名前はマーケットプレースでは使用されず、顧客に表示されるオファー名やその他の値とは異なります。
+**[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
+
+- この名前はマーケットプレースでは使用されず、顧客に表示されるオファー名やその他の値とは異なります。
 
 **[作成]** を選択してオファーを生成し、続行します。
 
@@ -84,15 +87,15 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 
 ### <a name="test-drive"></a>体験版
 
-購入前に顧客がオファーを試すことができるデモ (体験版) を設定します。 顧客が一定期間オファーを試すことができるデモ環境を作成するには、[コマーシャル マーケットプレースでのオファーの体験版](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)に関する記事をご覧ください。
+体験版は、"購入前に試用する" オプションを提供することで潜在顧客へのオファーを紹介し、その結果、コンバージョンが増加し、見込みの高いリードが生成される優れた方法です。 [体験版の詳細についてはこちらを参照してください](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
 
-体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。
+一定期間、体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。
 
 体験版に関するその他のリソース:
 
 - [技術的なベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [マーケティングのベスト プラクティス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [体験版の概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)に関する PDF (ポップアップ ブロックがオフになっていることを確認してください)。
+- [体験版の概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (ポップアップ ブロックがオフになっていることを確認してください)
 
 ### <a name="lead-management"></a>リードの管理
 
@@ -213,9 +216,13 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 - 特徴や機能に頼ってオファーを販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
 - 業界固有または特典ベースの表現を使用します。
 
-オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して説明を書式設定してください。 リッチ テキスト エディターを使用すると、数字、箇条書き、太字、斜体、およびインデントを追加して、説明を読みやすくすることができます。
+オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
 
-![[新しいオファー] ボタンとコンサルティング サービス オファーが選択されているパートナー センターの [概要] ページの図。](media/power-bi-rich-text-editor.png)
+![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
+
+| <center>テキスト形式を変更します | <center>箇条書きの黒丸または段落番号を追加します | <center>テキスト インデントを追加するか削除します |
+| --- | --- | --- |
+| <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用してリストを追加する](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用したインデントの設定](./media/text-editor5.png) |
 
 #### <a name="privacy-policy-link"></a>プライバシー ポリシーのリンク
 
@@ -256,7 +263,7 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 画像がぼやけていると、送信が拒否されます。
 
 >[!Note]
->ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
+>ファイルのアップロードで問題が発生した場合は、確実に、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされないようにしてください。
 
 #### <a name="marketplace-logos"></a>Marketplace のロゴ
 
@@ -271,11 +278,11 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 
-オファーがどのように動作するかを示すスクリーンショットを最大 5 つ追加します。 各スクリーンショットは、サイズが 1280 x 720 ピクセルの PNG 形式にする必要があります。 スクリーンショットを説明するキャプションを追加する必要もあります。
+オファーがどのように動作するかを示すスクリーンショットを最大 5 つ追加します。 各スクリーンショットは、サイズが 1280 x 720 ピクセルの PNG 形式にする必要があります。 各スクリーンショットにはキャプションが含まれている必要があります。
 
 #### <a name="videos"></a>ビデオ
 
-オファーをデモンストレーションするビデオを最大 5 つ追加します。 これらは、外部のビデオ サービスでホストされている必要があります。 各ビデオの名前、Web アドレス、ビデオのサムネイルの PNG 画像 (1280 x 720 ピクセルのサイズ) を入力します。
+オファーをデモンストレーションするビデオを最大 5 つ追加します。 これらは、外部のビデオ サービスでホストされている必要があります。 各ビデオの名前、Web アドレス、ビデオのサムネイルの PNG 画像 (1280 x 720 ピクセル) を入力します。
 
 マーケットプレースの登録情報に関するその他のリソースについては、[マーケットプレース オファーの登録情報のベスト プラクティス](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)に関する記事をご覧ください。
 
@@ -331,7 +338,7 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 
 プランの種類に対する高レベルの構成、別のプランの技術的構成を再利用するかどうか、およびプランを使用可能にする必要のある Azure リージョンを設定します。 ここでの選択により、同じプランの他のタブに表示されるフィールドが決まります。
 
-#### <a name="reuse-technical-configuration"></a>技術的構成を再利用する
+#### <a name="re-use-technical-configuration"></a>技術的な構成を再利用する
 
 同じ種類のプランが複数あり、それらの間でパッケージが同一である場合は、 **[this plan reuses technical configuration from another plan]\(このプランで別のプランの技術的構成を再利用する\)** を選択できます。 このオプションを使用すると、このオファーに対して同じ種類の他のプランのいずれかを選択し、その技術的構成を再利用できます。
 
@@ -342,7 +349,7 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 
 プランは、少なくとも 1 つの Azure リージョンで利用できる必要があります。
 
-コマーシャル マーケットプレースが統合されているすべてのパブリック Azure リージョンの顧客がプランを使用できるようにするには、 **[Azure Global]\(Azure グローバル\)** オプションを選択します。 詳細については、「[利用可能な地域と通貨サポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」を参照してください。
+商業マーケットプレースが統合されているすべての Azure グローバル リージョンの顧客がプランを使用できるようにするには、 **[Azure Global]\(Azure グローバル\)** オプションを選択します。 詳細については、「[利用可能な地域と通貨サポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」を参照してください。
 
 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) リージョンでプランを使用できるようにするには、 **[Azure Government]** オプションを選択しします。 このリージョンは、アメリカの連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーに、制御されたアクセスを提供します。 発行元は、コンプライアンス管理、セキュリティ対策、ベスト プラクティスについて責任を持ちます。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。
 
@@ -353,7 +360,7 @@ Azure 仮想マシン オファーを作成する前に、パートナー セン
 
 #### <a name="azure-government-certifications"></a>Azure Government の認定資格
 
-このオプションが表示されるのは、 **[Azure リージョン]** で **[Azure Government]** を選択した場合のみです。
+このオプションが表示されるのは、 **[Azure Government]** を選択した場合のみです。
 
 Azure Government サービスでは、特定の政府の規制および要件の対象となるデータが処理されます。 FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4、CJIS などです。 これらのプログラムの認定資格を認識させるため、認定資格について説明するリンクを 100 個まで提供することができます。 これらでは、プログラムでの一覧に直接リンクすることも、独自の Web サイトでのそれらについてのコンプライアンスに関する説明にリンクすることもできます。 これらのリンクは、Azure Government の顧客にのみ表示されます。
 
@@ -361,7 +368,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 ### <a name="plan-listing"></a>プランのリスト登録
 
-ここでは、プランの登録情報の詳細を構成します。 このタブには、同じオファーのプラン間で異なる可能性がある特定の情報が表示されます。
+ここでは、プランの一覧の詳細を構成します。 このタブには、同じオファーのプラン間で異なる可能性がある特定の情報が表示されます。
 
 #### <a name="plan-name"></a>プラン名
 
@@ -488,9 +495,9 @@ Azure Marketplace に表示する、最大 6 個の推奨される仮想マシ�
 
 体験版に関するその他のリソース:
 
-- 技術的なベスト プラクティス
-- マーケティングのベスト プラクティス
-- 体験版の概要 (PDF、ポップアップ ブロックがオフになっていることを確認してください)。
+- [マーケティングのベスト プラクティス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [技術的なベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
 
 続行する前に、 **[下書きの保存]** を選択します。
 

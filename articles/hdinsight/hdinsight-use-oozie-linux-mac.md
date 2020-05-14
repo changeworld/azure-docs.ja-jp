@@ -6,13 +6,14 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75744912"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204119"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -26,7 +27,7 @@ Azure HDInsight で Apache Oozie と Apache Hadoop を使用する方法を説�
 Oozie を使って、Java プログラムやシェル スクリプトなどの、システムに固有のジョブをスケジュールすることもできます。
 
 > [!NOTE]  
-> HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、[Data Factory での Apache Pig と Apache Hive の使用][azure-data-factory-pig-hive]に関するページを参照してください。 Enterprise セキュリティ パッケージを使用したクラスターで Oozie を使用するには、「[Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)」を参照してください。
+> HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、[Data Factory での Apache Pig と Apache Hive の使用](../data-factory/transform-data.md)に関するページを参照してください。 Enterprise セキュリティ パッケージを使用したクラスターで Oozie を使用するには、「[Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +37,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 * **Azure SQL Database**。  [Azure portal での Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、**oozietest** という名前のデータベースを使用します。
 
-* クラスターのプライマリ ストレージの [URI スキーム](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
+* クラスターのプライマリ ストレージの URI スキーム。 Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は `abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 ## <a name="example-workflow"></a>ワークフローの例
 
@@ -52,12 +53,12 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
     このドキュメントで使う Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
-    Hive の詳細については、[HDInsight での Apache Hive の使用][hdinsight-use-hive]に関するページを参照してください。
+    Hive の詳細については、[HDInsight での Hive の使用]\(hdinsight-use-hive) に関するページをご覧ください。
 
-2. Sqoop アクションは、新しい Hive テーブルの内容を Azure SQL Database で作成されたテーブルにエクスポートします。 Sqoop の詳細については、[HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]に関するページを参照してください。
+2. Sqoop アクションは、新しい Hive テーブルの内容を Azure SQL Database で作成されたテーブルにエクスポートします。 Sqoop の詳細については、[HDInsight での Apache Sqoop の使用](hadoop/apache-hadoop-use-sqoop-mac-linux.md)に関するページを参照してください。
 
 > [!NOTE]  
-> HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
+> HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 
 ## <a name="create-the-working-directory"></a>作業ディレクトリの作成
 
@@ -89,7 +90,7 @@ Oozie では、ジョブに必要なすべてのリソースを同じディレ�
 
 ## <a name="add-a-database-driver"></a>データベース ドライバーの追加
 
-このワークフローでは、Sqoop を使ってデータを SQL データベースにエクスポートするため、SQL データベースとの対話に使う JDBC ドライバーのコピーを提供する必要があります。 JDBC ドライバーを作業ディレクトリにコピーするには、SSH セッションから次のコマンドを使用します。
+このワークフローでは、Sqoop を使用して SQL データベースにデータをエクスポートします。 そのため、SQL データベースとの対話に使用する JDBC ドライバーのコピーを提供する必要があります。 JDBC ドライバーを作業ディレクトリにコピーするには、SSH セッションから次のコマンドを使用します。
 
 ```bash
 hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozie/
@@ -274,7 +275,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
 ## <a name="create-the-job-definition"></a>ジョブ定義の作成
 
-ジョブ定義には、workflow.xml の検索場所を記述します。 ワークフローで使われる他のファイル (`useooziewf.hql` など) の検索場所についても記述します。 さらに、ワークフローおよび関連するファイル内で使われるプロパティの値も定義します。
+ジョブ定義には、workflow.xml の検索場所を記述します。 ワークフローで使われる他のファイル (`useooziewf.hql` など) の検索場所についても記述します。 また、ワークフローおよび関連するファイル内で使われるプロパティの値も定義します。
 
 1. 既定のストレージの完全なアドレスを取得するには、次のコマンドを使います。 このアドレスは、次のステップで作成する構成ファイルで使います。
 
@@ -405,7 +406,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-3. ジョブを送信するには、次のコマンドを使います。
+3. ジョブを送信するには、次のコードを使用します。
 
     ```bash
     oozie job -config job.xml -submit
@@ -526,7 +527,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
    * **[Job DAG]\(ジョブの DAG)** :DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
 
-       ![HDInsight Apache Oozie ジョブの DAG](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       ![`HDInsight Apache Oozie ジョブの DAG`](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. **[Job Info]\(ジョブの情報\)** タブでアクションのいずれかを選択すると、そのアクションの情報が表示されます。 たとえば、**RunHiveScript** アクションを選びます。
 
@@ -643,78 +644,11 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
     ![OOzie web コンソールの [ジョブ情報] タブ](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-Oozie UI では、Oozie のログを見ることができます。 また、Oozie UI には、ワークフローによって開始された MapReduce タスクの JobTracker ログへのリンクも含まれます。 トラブルシューティングのパターンは次のようになります。
-
-   1. Oozie Web UI でジョブを表示します。
-
-   2. 特定のアクションでエラーまたは障害が発生した場合は、そのアクションを選択して、 **[Error Message]** フィールドにエラーの詳細情報が示されているかどうかを確認します。
-
-   3. 可能な場合は、アクションから URL を使って、アクションの詳細 (JobTracker ログなど) を表示します。
-
-発生する可能性のあるエラーとその解決方法を以下に示します。
-
-### <a name="ja009-cannot-initialize-cluster"></a>JA009:Cannot initialize cluster (クラスターを初期化できません)
-
-**現象**:ジョブの状態が **SUSPENDED** に変更されます。 ジョブの詳細に、`RunHiveScript` の状態が **START_MANUAL** と示されます。 アクションを選択すると、次のエラー メッセージが表示されます。
-
-    JA009: Cannot initialize Cluster. Please check your configuration for map
-
-**原因**:**job.xml** ファイルで使われている Azure Blob Storage アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 Blob Storage アドレスは、`wasbs://containername@storageaccountname.blob.core.windows.net` という形式にする必要があります。
-
-**解決方法**:ジョブが使う Blob Storage アドレスを変更します。
-
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002:Oozie is not allowed to impersonate &lt;USER&gt; (Oozie は &lt;USER&gt; の偽装を許可されていません)
-
-**現象**:ジョブの状態が **SUSPENDED** に変更されます。 ジョブの詳細に、`RunHiveScript` の状態が **START_MANUAL** と示されます。 アクションを選ぶと、次のエラー メッセージが表示されます。
-
-    JA002: User: oozie is not allowed to impersonate <USER>
-
-**原因**:現在のアクセス許可設定で、Oozie が指定されたユーザー アカウントを偽装することを許可していません。
-
-**解決方法**:Oozie は **users** グループのユーザーを偽装できます。 `groups USERNAME` を使用して、ユーザー アカウントがメンバーとして属するグループを確認します。 ユーザーが **users** グループのメンバーでない場合は、次のコマンドを使用して、ユーザーをグループに追加します。
-
-    sudo adduser USERNAME users
-
-> [!NOTE]  
-> ユーザーがグループに追加されたことを HDInsight が認識するまで数分かかる場合があります。
-
-### <a name="launcher-error-sqoop"></a>Launcher ERROR (ランチャー エラー) (Sqoop)
-
-**現象**:ジョブの状態が **KILLED** に変更されます。 ジョブの詳細に、`RunSqoopExport` の状態が **ERROR** と示されます。 アクションを選ぶと、次のエラー メッセージが表示されます。
-
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
-
-**原因**:Sqoop が、データベースにアクセスするために必要なデータベース ドライバーを読み込むことができません。
-
-**解決方法**:Oozie ジョブから Sqoop を使うときは、ジョブが使う他のリソース (workflow.xml など) とともにデータベース ドライバーを含める必要があります。 また、workflow.xml の `<sqoop>...</sqoop>` セクションから、データベース ドライバーが格納されたアーカイブを参照します。
-
-たとえば、このドキュメントのジョブの場合、次の手順に従います。
-
-1. `mssql-jdbc-7.0.0.jre8.jar` ファイルを **/tutorials/useoozie** ディレクトリにコピーします。
-
-    ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
-    ```
-
-2. `workflow.xml` を変更して、`</sqoop>` の上の新しい行に次の XML を追加します。
-
-    ```xml
-    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
-    ```
-
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、Oozie ワークフローを定義する方法と Oozie ジョブを実行する方法について説明しました。 HDInsight の使用方法について詳しくは、次の記事をご覧ください。
 
-* [HDInsight で Apache Hadoop ジョブのデータをアップロードする][hdinsight-upload-data]
-* [HDInsight 上の Apache Hadoop で Apache Sqoop を使用する][hdinsight-use-sqoop]
-* [HDInsight 上の Apache Hadoop で Apache Hive を使用する][hdinsight-use-hive]
-* [HDInsight 用 Java MapReduce プログラムの開発](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-[azure-data-factory-pig-hive]: ../data-factory/transform-data.md
-[hdinsight-versions]:  hdinsight-component-versioning.md
-[hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
+* [HDInsight で Apache Hadoop ジョブのデータをアップロードする](hdinsight-upload-data.md)
+* [HDInsight 上の Apache Hadoop で Apache Sqoop を使用する](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hadoop/hdinsight-use-hive.md)
+* [Apache Oozie のトラブルシューティング](./troubleshoot-oozie.md)

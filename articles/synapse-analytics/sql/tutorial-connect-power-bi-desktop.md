@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769475"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692403"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>チュートリアル:SQL オンデマンド (プレビュー) を Power BI Desktop に接続してレポートを作成する
+# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>チュートリアル:SQL オンデマンド (プレビュー) を Power BI Desktop で使用してレポートを作成する
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -24,7 +24,7 @@ ms.locfileid: "81769475"
 >
 > - デモ データベースの作成
 > - レポートに使用するビューの作成
-> - Power BI Desktop への接続
+> - SQL オンデマンドへの Power BI Desktop の接続
 > - ビューに基づくレポートの作成
 
 ## <a name="prerequisites"></a>前提条件
@@ -130,11 +130,11 @@ FROM
 
     - AAD の例 
   
-    ![[サインイン] をクリックする。](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
+        ![[サインイン] をクリックする。](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
     - SQL ログインの例 - ユーザー名とパスワードを入力します。
 
-    ![SQL ログインを使用する。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
+        ![SQL ログインを使用する。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
 5. ビュー `usPopulationView` を選択し、 **[読み込み]** を選択します。 

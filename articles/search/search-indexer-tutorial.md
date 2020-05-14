@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル:Azure SQL データベースから抽出したデータのインデックスを C# で作成する '
+title: Azure SQL データにインデックスを付ける C# チュートリアル
 titleSuffix: Azure Cognitive Search
 description: この C# チュートリアルでは、Azure SQL データベースに接続して検索可能なデータを抽出し、Azure Cognitive Search インデックスにそれを読み込みます。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78193970"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780761"
 ---
-# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>チュートリアル:C# を使用して SQL データベースから抽出したデータのインデックスを Azure Cognitive Search に作成する
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure SQL データにインデックスを付ける
 
 Azure SQL データベースから検索可能なデータを抽出し、それを Azure Cognitive Search の検索インデックスに送信するように[インデクサー](search-indexer-overview.md)を構成します。 
 

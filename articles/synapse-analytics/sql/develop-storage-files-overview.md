@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676686"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691873"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+最適なパフォーマンスが得られる[適切な推定データ型](best-practices-sql-on-demand.md#check-inferred-data-types)が使用されていることを確認してください。 
+
 ### <a name="filename-function"></a>filename 関数
 
-この関数は、行の生成元のファイル名を返します。
+この関数は、行の生成元のファイル名を返します。 
 
 特定のファイルに対してクエリを実行するには、[特定のファイルに対するクエリの実行](query-specific-files.md#filename)に関する記事の「Filename」セクションをお読みください。
+
+戻り値のデータ型は nvarchar(1024) です。 最適なパフォーマンスを確保するために、filename 関数の結果は必ず適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さが使用されていることを確認します。
 
 ### <a name="filepath-function"></a>filepath 関数
 
@@ -138,11 +142,13 @@ BULK N'path_to_file(s)', FORMAT='PARQUET');
 
 追加情報については、[特定のファイルに対するクエリの実行](query-specific-files.md#filepath)に関する記事の「Filepath」セクションをお読みください。
 
+戻り値のデータ型は nvarchar(1024) です。 最適なパフォーマンスを確保するために、filepath 関数の結果は必ず適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さが使用されていることを確認します。
+
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>複合型と入れ子または繰り返しのデータ構造を操作する
 
 入れ子または繰り返しのデータ型 ([Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) ファイルなど) に格納されているデータを操作する際のスムーズな実行を可能にするために、SQL オンデマンドで次の拡張機能が追加されています。
 
-#### <a name="project-nested-or-repeated-data"></a>入れ子または繰り返しのデータを射影する
+#### <a name="project-nested-or-repeated-data"></a>入れ子にされたデータまたは繰り返しのデータを射影する
 
 データを射影するには、入れ子にされたデータ型の列を含む Parquet ファイルに対して SELECT ステートメントを実行します。 出力時、入れ子にされた値は JSON にシリアル化され、varchar(8000) SQL データ型として返されます。
 

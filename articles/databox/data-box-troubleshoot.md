@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77560067"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628897"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
@@ -92,6 +92,17 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
     - 無効な名前の例: `my-folder_1`、`my`、`--myfolder`、`myfolder--`、`myfolder!`
 
     詳細については、[コンテナー名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**エラーの説明**: ディレクトリまたはコンテナーの名前に無効な文字が含まれています。
+
+**推奨される解決方法**: コピーしたディレクトリまたはコンテナーの名前に、サポートされていない文字が含まれています。
+
+- ローカル Web UI の [接続とコピー] ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。 
+- ディレクトリまたはコンテナーの名前を変更して、Azure の名前付け規則に準拠していることを確認します。
+
+詳細については、 [ディレクトリ](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) と[コンテナー](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)の Azure の名前付け規則に関する記事を参照してください。
 
 ## <a name="container-or-share-size-limit-errors"></a>コンテナーまたは共有のサイズ制限のエラー
 

@@ -3,12 +3,12 @@ title: Visual Studio Code 用の Azure Policy 拡張機能
 description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Resource Manager エイリアスを検索する方法について説明します。
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231223"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182567"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
@@ -52,7 +52,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
 1. 一覧から国内のクラウドを選択します。
 
-   ![Visual Studio Code の既定の Azure クラウド サインインを設定する](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
+   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Visual Studio Code の既定の Azure クラウド サインインを設定する" border="false":::
 
 ## <a name="connect-to-an-azure-account"></a>Azure アカウントに接続する
 
@@ -64,13 +64,13 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
      Azure Policy 拡張機能から、 **[Azure にサインイン]** を選択します。
 
-     ![Azure Policy 拡張機能からの Visual Studio Code の Azure クラウド サインイン](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Azure Policy 拡張機能からの Visual Studio Code の Azure クラウド サインイン" border="false":::
 
    - コマンド パレット
 
      メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
 
-     ![コマンド パレットからの Visual Studio Code の Azure クラウド サインイン](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="コマンド パレットからの Visual Studio Code の Azure クラウド サインイン" border="false":::
 
 1. サインインの手順に従って Azure にサインインします。 接続すると、Visual Studio Code ウィンドウの下部にあるステータス バーに Azure アカウント名が表示されます。
 
@@ -121,11 +121,11 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
 ## <a name="discover-aliases-for-resource-properties"></a>リソース プロパティのエイリアスを検出する
 
-リソースを選択すると、検索インターフェイスを使用するか、ツリービューで選択することによって、リソースとそのリソース マネージャーのすべてのプロパティ値を表す JSON ファイルが Azure Policy 拡張機能によって開かれます。
+リソースを選択すると、検索インターフェイスを使用したか、ツリー ビューで選択したかに関係なく、リソースとその Resource Manager のプロパティ値のすべてを表す JSON ファイルが Azure Policy 拡張機能によって開かれます。
 
 リソースが開いたら、リソース マネージャーのプロパティ名または値の上にカーソルを合わせると、Azure Policy エイリアスが表示されます (存在する場合)。 この例では、リソースの種類は `Microsoft.Compute/virtualMachines` リソースであり、**properties.storageProfile.imageReference.offer** プロパティの上にカーソルが合わせられています。 カーソルを合わせると、一致するエイリアスが表示されます。
 
-![Azure Policy 拡張機能でカーソルを合わせてリソース マネージャーのプロパティのエイリアスを表示する](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy 拡張機能でカーソルを合わせてリソース マネージャーのプロパティのエイリアスを表示する" border="false":::
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>ポリシーと割り当てを検索して表示する
 

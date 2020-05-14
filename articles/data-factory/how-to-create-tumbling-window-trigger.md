@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414430"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592079"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -109,6 +109,9 @@ ms.locfileid: "81414430"
 | **dependsOn: type** | TumblingWindowTriggerReference の種類。 依存関係が設定されている場合は必須です。 | String |  "TumblingWindowTriggerDependencyReference"、"SelfDependencyTumblingWindowTriggerReference" | いいえ |
 | **dependsOn: size** | 依存関係のタンブリング ウィンドウのサイズ。 | Timespan<br/>(hh:mm:ss)  | 正の timespan 値。既定値は子トリガーのウィンド ウサイズです。  | いいえ |
 | **dependsOn: offset** | 依存関係トリガーのオフセット。 | Timespan<br/>(hh:mm:ss) |  自己依存関係内の負の値を指定する必要がある timespan 値。 値が指定されていない場合、ウィンドウはトリガーそのものと同じになります。 | 自己依存関係:はい<br/>その他:いいえ  |
+
+> [!NOTE]
+> タンブリング ウィンドウ トリガーの発行後に **interval** と **frequency** を編集することはできません。
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart および WindowEnd システム変数
 

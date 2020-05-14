@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189366"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592062"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -74,27 +74,38 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 
 * Apache Storm
 
-    Storm の実行中にデータ ノードをシームレスに追加または削除できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
-
-    バランス再調整は、次の 2 つの方法で実行できます。
+    Storm の実行中にデータ ノードをシームレスに追加または削除できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。 これにより、トポロジがクラスター内のノードの新しい数に基づいて[並列処理の設定](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を再調整できます。 実行中のトポロジを再調整するには、次のオプションのいずれかを使用します。
 
   * Storm Web UI
+
+    次の手順により、Storm UI を使用してトポロジを再調整します。
+
+    1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/stormui` を開きます。ここで、`CLUSTERNAME` は実行中の Storm クラスターの名前です。 メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
+
+    1. 再調整するトポロジを選択し、 **[Rebalance]** \(再調整) ボタンをクリックします。 再調整の操作が実行されるまでの待ち時間を入力します。
+
+        ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
   * コマンド ライン インターフェイス (CLI) ツール
 
-    詳細については、[Apache Storm のドキュメント](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
+    サーバーに接続し、次のコマンドを使用してトポロジを再調整します。
 
-    Storm Web UI は、HDInsight クラスターで使用できます。
+    ```bash
+     storm rebalance TOPOLOGYNAME
+    ```
 
-    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    また、トポロジによって最初に提供された並列処理のヒントをオーバーライドするパラメーターも指定できます。 たとえば、以下のコードは、`mytopology` トポロジを再構成して、5 個の worker プロセス、blue-spout コンポーネント用の 3 個の実行プログラム、yellow-bolt コンポーネント用の 10 個の実行プログラムにします。
 
-    Storm トポロジのバランスを再調整する CLI コマンドの例を次に示します。
-
-    ```console
+    ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
+
+* Kafka
+
+    スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 詳しくは、「[HDInsight 上の Apache Kafka によるデータの高可用性](./kafka/apache-kafka-high-availability.md)」をご覧ください。
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>クラスターを安全にスケールする方法
 
@@ -252,3 +263,8 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight クラスターを自動的にスケーリングする](hdinsight-autoscale-clusters.md)
+
+HDInsight クラスターのスケーリングに関する具体的な情報については、以下を参照してください。
+
+* [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Azure CLI を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-command-line.md#scale-clusters)

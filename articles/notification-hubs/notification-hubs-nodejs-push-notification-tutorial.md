@@ -13,16 +13,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71213195"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592011"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -73,13 +73,13 @@ var azure = require('azure-sb');
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>Azure Notification Hub の接続を設定する
 
-`NotificationHubService` オブジェクトを使用すると、通知ハブを操作できます。 次のコードは、`NotificationHubService` という名前の通知ハブ用の `hubname` オブジェクトを作成します。 `server.js` ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
+`NotificationHubService` オブジェクトを使用すると、通知ハブを操作できます。 次のコードは、`hubname` という名前の通知ハブ用の `NotificationHubService` オブジェクトを作成します。 `server.js` ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
 
 ```javascript
 var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 ```
 
-次の手順を行い、`connectionstring`Azure portal[Azure Portal] の値を取得します。
+次の手順を行い、[Azure portal] から接続 `connectionstring` の値を取得します。
 
 1. 左のナビゲーション ウィンドウで、 **[参照]** をクリックします。
 2. **[Notification Hubs]** を選択し、サンプルとして使用するハブを見つけます。 新しい通知ハブの作成については、[Windows ストアの使用に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)を参照することができます。
@@ -89,18 +89,18 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 ![Azure Portal - Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> また、**Azure PowerShell** に用意されている [Get-AzureSbNamespace](/powershell/azureps-cmdlets-docs) コマンドレット、または **Azure コマンド ライン インターフェイス (Azure CLI)** で [azure sb namespace show](../cli-install-nodejs.md) コマンドを使用して、接続文字列を取得することもできます。
+> また、[Azure PowerShell](/powershell/azureps-cmdlets-docs) に用意されている **Get-AzureSbNamespace** コマンドレット、または [Azure コマンド ライン インターフェイス (Azure CLI)](../cli-install-nodejs.md) で **azure sb namespace show** コマンドを使用して、接続文字列を取得することもできます。
 
 ## <a name="general-architecture"></a>全般的なアーキテクチャ
 
 `NotificationHubService` オブジェクトは、特定のデバイスやアプリケーションにプッシュ通知を送信するために、次のオブジェクト インスタンスを公開します。
 
-- **Android** - `GcmService` で使用できる `notificationHubService.gcm` オブジェクトを使用します
-- **iOS** - `ApnsService` でアクセスできる `notificationHubService.apns` オブジェクトを使用します
-- **Windows Phone** - `MpnsService` で使用できる `notificationHubService.mpns` オブジェクトを使用します
-- **ユニバーサル Windows プラットフォーム** - `WnsService` で使用できる `notificationHubService.wns` オブジェクトを使用します
+- **Android** - `notificationHubService.gcm` で使用できる `GcmService` オブジェクトを使用します
+- **iOS** - `notificationHubService.apns` でアクセスできる `ApnsService` オブジェクトを使用します
+- **Windows Phone** - `notificationHubService.mpns` で使用できる `MpnsService` オブジェクトを使用します
+- **ユニバーサル Windows プラットフォーム** - `notificationHubService.wns` で使用できる `WnsService` オブジェクトを使用します
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>方法: Android アプリケーションにプッシュ通知を送信する
+### <a name="how-to-send-push-notifications-to-android-applications"></a>方法:Android アプリケーションにプッシュ通知を送信する
 
 `GcmService` オブジェクトには、Android アプリケーションにプッシュ通知を送信するために使用できる `send` メソッドが用意されています。 `send` メソッドは、次のパラメーターを受け取ります。
 
@@ -110,7 +110,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 ペイロード形式の詳細については、[ペイロードに関するドキュメント](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)を参照してください。
 
-次のコードは、`GcmService` によって公開されている `NotificationHubService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
+次のコードは、`NotificationHubService` によって公開されている `GcmService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
 
 ```javascript
 var payload = {
@@ -125,7 +125,7 @@ notificationHubService.gcm.send(null, payload, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-ios-applications"></a>How to: iOS アプリケーションにプッシュ通知を送信する
+### <a name="how-to-send-push-notifications-to-ios-applications"></a>方法:iOS アプリケーションにプッシュ通知を送信する
 
 上で説明した Android アプリケーションと同様に、`ApnsService` オブジェクトには、iOS アプリケーションにプッシュ通知を送信するために使用できる `send` メソッドが用意されています。 `send` メソッドは、次のパラメーターを受け取ります。
 
@@ -133,9 +133,9 @@ notificationHubService.gcm.send(null, payload, function(error){
 - **Payload** - メッセージの JSON または文字列ペイロード。
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、「 **Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)** 」ドキュメントの「 [Notification Payload (通知ペイロード)](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) 」のセクションを参照してください。
+ペイロード形式の詳細については、[UserNotifications ガイド](https://developer.apple.com/documentation/usernotifications)の「**通知の内容**」セクションを参照してください。
 
-次のコードは、`ApnsService` によって公開されている `NotificationHubService` インスタンスを使用して、すべてのクライアントにアラート メッセージを送信します。
+次のコードは、`NotificationHubService` によって公開されている `ApnsService` インスタンスを使用して、すべてのクライアントにアラート メッセージを送信します。
 
 ```javascript
 var payload={
@@ -148,7 +148,7 @@ notificationHubService.apns.send(null, payload, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>方法: Windows Phone アプリケーションにプッシュ通知を送信する
+### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>方法:Windows Phone アプリケーションにプッシュ通知を送信する
 
 `MpnsService` オブジェクトには、Windows Phone アプリにプッシュ通知を送信するために使用できる `send` メソッドが用意されています。 `send` メソッドは、次のパラメーターを受け取ります。
 
@@ -161,7 +161,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 有効な `TargetName`、`NotificationClass`、ヘッダー オプションについては、[サーバーからのプッシュ通知](https://msdn.microsoft.com/library/hh221551.aspx)に関するページを参照してください。
 
-次のサンプル コードは、`MpnsService` によって公開されている `NotificationHubService` インスタンスを使用して、トースト プッシュ通知を送信します。
+次のサンプル コードは、`NotificationHubService` によって公開されている `MpnsService` インスタンスを使用して、トースト プッシュ通知を送信します。
 
 ```javascript
 var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
@@ -172,7 +172,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>How to: ユニバーサル Windows プラットフォーム (UWP) アプリケーションにプッシュ通知を送信する
+### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>方法:ユニバーサル Windows プラットフォーム (UWP) アプリケーションにプッシュ通知を送信する
 
 `WnsService` オブジェクトには、ユニバーサル Windows プラットフォーム アプリにプッシュ通知を送信するために使用できる `send` メソッドが用意されています。  `send` メソッドは、次のパラメーターを受け取ります。
 
@@ -184,7 +184,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 
 有効なタイプと要求ヘッダーの一覧については、「 [プッシュ通知サービスの要求ヘッダーと応答ヘッダー](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)」を参照してください。
 
-次のコードは、`WnsService` によって公開されている `NotificationHubService` インスタンスを使用して、トースト プッシュ通知を UWP アプリに送信します。
+次のコードは、`NotificationHubService` によって公開されている `WnsService` インスタンスを使用して、トースト プッシュ通知を UWP アプリに送信します。
 
 ```javascript
 var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
