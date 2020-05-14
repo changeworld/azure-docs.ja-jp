@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230447"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734741"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 
@@ -37,7 +37,7 @@ ms.locfileid: "79230447"
 >[!IMPORTANT]
 >テナントを作成する人が、自動的にそのテナントの全体管理者となります。 全体管理者は、テナントに他の管理者を追加できます。
 
-サブスクリプション ロールについて詳しくは、「[Azure RBAC ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)」を参照してください。
+サブスクリプション ロールの詳細については、[Azure ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)に関するページを参照してください。
 
 >[!TIP]
 > オンプレミスの Windows Server AD を Azure AD とフェデレーションする予定の場合は、ディレクトリを同期するために Azure AD Connect ツールを実行する際に **[このドメインを構成して、ローカル Active Directory にシングル サインオンします]** を選択する必要があります。

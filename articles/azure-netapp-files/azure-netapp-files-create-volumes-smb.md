@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: b-juche
-ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668002"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625541"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -222,6 +222,23 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
     作成したボリュームは [ボリューム] ページに表示されます。 
  
     ボリュームは、その容量プールから、サブスクリプション、リソース グループ、場所の各属性を継承します。 ボリュームのデプロイ状態を監視するには、[通知] タブを使用してください。
+
+## <a name="control-access-to-an-smb-volume"></a>SMB ボリュームへのアクセスを制御する  
+
+SMB ボリュームへのアクセスはアクセス許可によって管理されます。  
+
+### <a name="share-permissions"></a>共有アクセス許可  
+
+既定では、新しいボリュームには **Everyone でフル コントロール**の共有アクセス許可が与えられます。 ドメイン管理者グループのメンバーは、Azure NetApp Files ボリュームに使用されているコンピューター アカウントで Computer Management を利用し、共有アクセス許可を変更できます。
+
+![SMB マウント パス](../media/azure-netapp-files/smb-mount-path.png) 
+![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png) 
+
+### <a name="ntfs-file-and-folder-permissions"></a>NTFS ファイルおよびフォルダーの権限  
+
+Windows SMB クライアントで、オブジェクトのプロパティの **[セキュリティ]** タブを利用し、ファイルまたはフォルダーのアクセス許可を設定できます。
+ 
+![ファイルとフォルダーの権限を設定する](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>次のステップ  
 

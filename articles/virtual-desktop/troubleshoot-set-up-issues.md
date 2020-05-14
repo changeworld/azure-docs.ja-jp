@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop テナントのホスト プールの作成 - Azure
-description: Windows Virtual Desktop テナント環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
+title: Windows Virtual Desktop 環境のホスト プールの作成 - Azure
+description: Windows Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,20 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371598"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612579"
 ---
-# <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
+# <a name="host-pool-creation"></a>ホスト プールの作成
+
+>[!IMPORTANT]
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)を参照してください。
+>
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Windows Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
 
@@ -25,92 +31,27 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise マルチセッションのイメージの入手
 
-Windows 10 Enterprise マルチセッションのイメージを使用するには、Azure Marketplace にアクセスし、 **[Get Started]\(開始する\)**  >  **[Microsoft Windows 10]** 、[[Windows 10 Enterprise for Virtual Desktops, Version 1809]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) を選択します。
+Windows 10 Enterprise マルチセッションのイメージを使用するには、Azure Marketplace にアクセスし、 **[開始する]**  >  **[Microsoft Windows 10]** 、[[Windows 10 Enterprise multi-session, Version 1809]\(Windows 10 Enterprise マルチセッション、バージョン 1809\)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) を選択します。
 
-![Windows 10 Enterprise for Virtual Desktops, Version 1809 を選択するスクリーンショット。](media/AzureMarketPlace.png)
+## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>Azure portal を使用してホスト プールを作成する場合の問題
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Windows Virtual Desktop テナントの作成
+### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>エラー:サービスにアクセスすると、[無料アカウントの作成] が表示される
 
-このセクションでは、Windows Virtual Desktop テナントを作成するときの潜在的な問題について説明します。
+!["無料アカウントの作成" メッセージが表示された Azure portal を示す画像](media/create-new-account.png)
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>エラー:管理サービスに問い合わせる許可がユーザーに与えられていません
+**原因**:Azure にサインインしたアカウントにアクティブなサブスクリプションがないか、アカウントにサブスクリプションを表示するアクセス許可がありません。 
 
-![ユーザーが管理サービスのクエリを承認されていない PowerShell ウィンドウのスクリーンショット。](media/UserNotAuthorizedNewTenant.png)
+**解決策**:少なくとも共同作成者レベルのアクセス権を持つアカウントを使用して、セッション ホスト仮想マシン (VM) をデプロイするサブスクリプションにサインインします。
 
-未処理エラーの例:
+### <a name="error-exceeding-quota-limit"></a>エラー:"クォータ制限を超過しています"
 
-```Error
-   New-RdsTenant : User isn't authorized to query the management service.
-   ActivityId: ad604c3a-85c6-4b41-9b81-5138162e5559
-   Powershell commands to diagnose the failure:
-   Get-RdsDiagnosticActivities -ActivityId ad604c3a-85c6-4b41-9b81-5138162e5559
-   At line:1 char:1
-   + New-RdsTenant -Name "testDesktopTenant" -AadTenantId "01234567-89ab-c ...
-   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-       + CategoryInfo          : FromStdErr: (Microsoft.RDInf...nt.NewRdsTenant:NewRdsTenant) [New-RdsTenant], RdsPowerSh
-      ellException
-       + FullyQualifiedErrorId : UnauthorizedAccess,Microsoft.RDInfra.RDPowershell.Tenant.NewRdsTenant
-```
+操作がクォータ制限を超えた場合は、次のいずれかの方法を実行できます。 
 
-**原因:** サインインしているユーザーに、Azure Active Directory の TenantCreator ロールが割り当てられていません。
+- 同じパラメーターで、ただし VM数と VM コア数を減らして、新しいホスト プールを作成します。
 
-**解決策:** [Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)の指示に従います。 指示に従った後、ユーザーを TenantCreator ロールに割り当てます。
+- ブラウザーで statusMessage フィールドに表示されているリンクを開き、指定した VM SKU の Azure サブスクリプションのクォータを増やす要求を送信します。
 
-![TenantCreator ロールを割り当てたスクリーンショット。](media/TenantCreatorRoleAssigned.png)
-
-## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows Virtual Desktop セッション ホスト VM の作成
-
-セッションホスト VM はいくつかの方法で作成できますが、Windows Virtual Desktop チームでサポートするのは、[Azure Marketplace](https://azuremarketplace.microsoft.com/) オファリングに関連する VM プロビジョニングの問題のみです。 詳細については、「[Azure Marketplace の "Windows Virtual Desktop – Provision a host pool" オファリング使用時の問題](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)」 を参照してください。
-
-## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Azure Marketplace の "Windows Virtual Desktop – Provision a host pool" オファリング使用時の問題
-
-"Windows Virtual Desktop – Provision a host pool" テンプレートは、Azure Marketplace から入手できます。
-
-### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>エラー:GitHub からのリンクを使用すると "無料アカウントの作成" メッセージが表示される
-
-![無料アカウントを作成するスクリーンショット。](media/be615904ace9832754f0669de28abd94.png)
-
-**原因 1:** Azure へのサインインに使用されたアカウントにアクティブなサブスクリプションがないか、使用されたアカウントにサブスクリプションを表示するアクセス許可がありません。
-
-**解決策 1:** セッション ホスト VM がデプロイされる予定のサブスクリプションに対して、共同作成者 (以上) のアクセス権を持つアカウントでサインインします。
-
-**原因 2:** 使用されているサブスクリプションが、Microsoft クラウド サービス プロバイダー (CSP) テナントの一部です。
-
-**解決策 2:** GitHub の場所に移動して、**新しい Windows Virtual Desktop ホスト プールを作成およびプロビジョニング**し、次の手順に従います。
-
-1. **[Azure に配置する]** を右クリックして **[リンク アドレスをコピー]** を選択します。
-2. **メモ帳**を開き、リンクを貼り付けます。
-3. # 文字の前に、CSP エンド カスタマー テナント名を挿入します。
-4. ブラウザーで新しいリンクを開くと、Azure portal でテンプレートが読み込まれます。
-
-    ```Example
-    Example: https://portal.azure.com/<CSP end customer tenant name>
-    #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
-    2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
-    ```
-
-### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>エラー:"テンプレートのデプロイが有効ではありません"というエラーが表示される
-
-!["テンプレートのデプロイ... が有効ではありません"というエラーのスクリーンショットが表示される](media/troubleshooting-marketplace-validation-error-generic.png)
-
-特定のアクションを実行する前に、アクティビティ ログを確認して、失敗したデプロイの検証に関する詳細なエラーを確認する必要があります。
-
-アクティビティ ログのエラーを表示するには、次のようにします:
-
-1. 現在の Azure Marketplace デプロイ オファリングを終了します。
-2. 上部の検索バーで、**アクティビティ ログ** を検索して選択します。
-3. **[デプロイの検証]** という名前で状態が **[失敗]** のアクティビティを見つけて、そのアクティビティを選択します。
-   ![ **失敗** 状態での各々の "デプロイの検証" 操作スクリーンショット](media/troubleshooting-marketplace-validation-error-activity-summary.png)
-
-4. [JSON] を選択し、"statusMessage" フィールドが表示されるまで、画面の一番下までスクロールします。
-   ![失敗したアクティビティのスクリーンショット。JSON テキストの statusMessage メッセージプロパティを囲む赤いボックスがあります。](media/troubleshooting-marketplace-validation-error-json-boxed.png)
-
-操作テンプレートがクォータ制限を超えた場合は、次のいずれかの方法で修正できます:
-
- - 最初に使用したパラメーターで Azure Marketplace を実行しますが、今回は、使用する VM と VM コアの数を減らすことができます。
- - ブラウザーで **[statusMessage]** フィールドに表示されているリンクを開き、指定した VM SKU の Azure サブスクリプションのクォータを増やす要求を送信します。
-
-## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure Resource Manager テンプレートと PowerShell Desired State Configuration (DSC) エラー
+## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager テンプレート エラー
 
 Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失敗をトラブルシューティングするには、次の手順に従います。
 
@@ -121,7 +62,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<ホスト名>/joindomain
 
-![デプロイ失敗のスクリーンショット。](media/e72df4d5c05d390620e07f0d7328d50f.png)
+![デプロイ失敗のスクリーンショット。](media/failure-joindomain.png)
 
 未処理エラーの例:
 
@@ -145,7 +86,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 これを解決するには、次の操作を実行します。
 
-1. Azure Portal を開き、 **[仮想ネットワーク]** タブに移動します。
+1. Azure portal を開いて、 **[仮想ネットワーク]** タブに移動します。
 2. お使いの VNET を見つけて、 **[DNS サーバー]** を選択します。
 3. 画面の右側に DNS サーバーのメニューが表示されます。 そのメニューで、 **[カスタム]** を選択します。
 4. [カスタム] の下に表示されている DNS サーバーが、ドメイン コントローラーまたは Active Directory ドメインと一致していることを確認します。 お使いの DNS サーバーが表示されない場合は、 **[DNS サーバーの追加]** フィールドに値を入力して追加できます。
@@ -162,7 +103,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vmextensionprovisioningerror"></a>エラー:VMExtensionProvisioningError
 
-![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](media/7aaf15615309c18a984673be73ac969a.png)
+![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](media/failure-vmextensionprovisioning.png)
 
 **原因 1:** Windows Virtual Desktop 環境の一時的なエラーです。
 
@@ -172,17 +113,15 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>エラー:指定した管理者のユーザー名は許可されません
 
-![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](media/f2b3d3700e9517463ef88fa41875bac9.png)
+![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](media/failure-username.png)
 
 未処理エラーの例:
 
 ```Error
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostDesktop/providers/Microsoft.
-  Resources/deployments/vmCreation-linkedTemplate/operations/EXAMPLE", "operationId": "EXAMPLE", "properties": { "provisioningOperation":
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
- "The Admin Username specified is not allowed.", "target": "adminUsername" } }, "targetResource": { "id": "/subscriptions/EXAMPLE
- /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
+ { …{ "provisioningOperation": 
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
 **原因:** 指定されたパスワードに、禁止された部分文字列 (admin、administrator、root) が含まれています。
@@ -191,24 +130,17 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>エラー:拡張機能を処理しているときに VM がエラーを報告しました
 
-![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](media/49c4a1836a55d91cd65125cf227f411f.png)
+![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](media/failure-processing.png)
 
 未処理エラーの例:
 
 ```Error
-{ "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.Resources/deployments/
- rds.wvd-provision-host-pool-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
- { "provisioningOperation": "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T21:43:05.1416423Z",
- "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
- "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+{ … "code": "ResourceDeploymentFailure", "message":
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
- Compute/virtualMachines/desktop-1/extensions/dscextension",
- "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
 **原因:** PowerShell DSC 拡張機能が、VM 上で管理者アクセス権を取得できませんでした。
@@ -217,7 +149,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>エラー:DeploymentFailed – PowerShell DSC 構成 'FirstSessionHost' がエラーで完了しました
 
-![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](media/64870370bcbe1286906f34cf0a8646ab.png)
+![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](media/failure-dsc.png)
 
 未処理エラーの例:
 
@@ -319,58 +251,6 @@ the VM.\\\"
 **原因:** このエラーの原因は、Azure Resource Manager テンプレートに関連付けられている zip ファイルのダウンロードが、静的ルート、ファイアウォール規則、または NSG によってブロックされていることです。
 
 **解決策:** ブロックしている静的ルート、ファイアウォール規則、または NSG を削除します。 必要に応じて、Azure Resource Manager テンプレートの json ファイルをテキスト エディターで開き、zip ファイルへのリンクを実行し、許可されている場所にリソースをダウンロードします。
-
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>エラー:管理サービスに問い合わせる許可がユーザーに与えられていません
-
-未処理エラーの例:
-
-```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
-Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
- functionality with error message: User is not authorized to query the management service.
-\nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
-The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
-```
-
-**原因:** 指定された Windows Virtual Desktop テナント管理者に、有効なロールの割り当てがありません。
-
-**解決策:** Windows Virtual Desktop テナントを作成したユーザーが、Windows Virtual Desktop PowerShell にサインインして、試行されたユーザーにロールの割り当てを割り当てる必要があります。 GitHub の Azure Resource Manager テンプレートのパラメーターを実行している場合、PowerShell コマンドを使用して次の手順に従います。
-
-```PowerShell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
-```
-
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>エラー:ユーザーが Azure 多要素認証 (MFA) を要求する
-
-![多要素認証 (MFA) の欠如によるデプロイ失敗のスクリーンショット](media/MFARequiredError.png)
-
-未処理エラーの例:
-
-```Error
-"message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
-```
-
-**原因:** 指定された Windows Virtual Desktop テナント管理者が、サインインするために Azure 多要素認証 (MFA) を必要としています。
-
-**解決策:** 次の手順に従って、サービス プリンシパルを作成し、それに Windows Virtual Desktop のロールを割り当てます: [チュートリアル: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](create-service-principal-role-powershell.md)。 サービス プリンシパルを使用して Windows Virtual Desktop にサインインできることを確認した後、使用している方法に応じて、Azure Marketplace オファリングまたは GitHub の Azure Resource Manager テンプレートを再実行します。 次の指示に従って、方法に応じた正しいパラメーターを入力します。
-
-Azure Marketplace オファリングを実行している場合、Windows Virtual Desktop に正しく認証されるよう、次のパラメーターの値を指定します。
-
-- Windows Virtual Desktop テナント RDS 所有者:サービス プリンシパル
-- アプリケーション ID:作成した新しいサービス プリンシパルのアプリケーション ID
-- パスワード/パスワードの確認:サービス プリンシパル用に生成したパスワードのシークレット
-- Azure AD テナント ID:作成したサービス プリンシパルの Azure AD テナント ID
-
-GitHub の Azure Resource Manager テンプレートを実行している場合、Windows Virtual Desktop に正しく認証されるように、次のパラメーターの値を指定します。
-
-- テナント管理者のユーザー プリンシパル名 (UPN) またはアプリケーション ID:作成した新しいサービス プリンシパルのアプリケーション ID
-- テナント管理パスワード:サービス プリンシパル用に生成したパスワードのシークレット
-- IsServicePrincipal: **true**
-- AadTenantId:作成したサービス プリンシパルの Azure AD テナント ID
 
 ## <a name="next-steps"></a>次のステップ
 

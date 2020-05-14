@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804369"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778976"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -79,7 +79,7 @@ API を呼び出すすべてのクライアント アプリケーションも、
     - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *client-app*)。 
     - **[サポートされているアカウントの種類]** で、 **[任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]** を選択します。 
 
-1. **[リダイレクト URI]** セクションで、`Web` を選択し、URL `https://contoso5.portal.azure-api.net/signin` を入力します。
+1. **[リダイレクト URI]** セクションで、[`Web`] を選択し、[URL] フィールドは今は空のままにします。
 
 1. **[登録]** を選択して、アプリケーションを作成します。 
 
@@ -149,9 +149,9 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 1. **［作成］** を選択します
 
-1. クライアント アプリに戻り、 **[認証]** を選択します。
+1. Azure Active Directory でクライアントアプリの登録に戻り、 **[認証]** を選択します。
 
-1. **[リダイレクト URI]** で、種類を **[Web]** として選択し、 **[リダイレクト URI]** で **redirect_url** を貼り付け、保存します。
+1. **[プラットフォーム構成]** で、 **[プラットフォームを追加]** をクリックし、種類に **[Web]** を選択し、 **[リダイレクト URI]** の下に **redirect_url** を貼り付けてから、 **[構成]** ボタンをクリックして保存します。
 
 OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure AD からアクセス トークンを取得できるようになりました。 
 

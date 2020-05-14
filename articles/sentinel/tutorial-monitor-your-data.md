@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel で Azure Monitor ブックに基づくダッシュボードを使用してデータを視覚化する | Microsoft Docs
-description: このチュートリアルでは、Azure Sentinel でブックに基づくダッシュボードを使用してデータを視覚化する方法について説明します。
+title: Azure Sentinel で Azure Monitor ブックを使用してデータを視覚化する | Microsoft Docs
+description: このチュートリアルでは、Azure Sentinel でブックを使用してデータを視覚化する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/01/2020
+ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f145b75ba351121bf750f90dbc0a7df382ca04b1
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77585222"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739162"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>チュートリアル: データの視覚化と監視
 
 
 
-Azure Sentinel に [データ ソースを接続](quickstart-onboard.md) した後、Azure Sentinel による Azure Monitor ブックの適用を使用して、データを視覚化および監視できます。これにより、多用途のカスタム ダッシュボードを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/app/usage-workbooks.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
+Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した後、Azure Sentinel による Azure Monitor ブックの適用を使用して、データを視覚化および監視できます。これにより、多用途のカスタム ダッシュボードを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/app/usage-workbooks.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
 
 
 このチュートリアルは、Azure Sentinel でデータを視覚化するのに役立ちます。

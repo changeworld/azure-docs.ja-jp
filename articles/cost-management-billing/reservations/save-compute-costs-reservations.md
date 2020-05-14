@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 4baa06ad0011b06da50fd7a83aaa3e87db62c6ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417522"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626959"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -86,11 +86,11 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 ## <a name="charges-covered-by-reservation"></a>予約の対象となる料金
 
-- **予約仮想マシン インスタンス** - 予約の対象は仮想マシンのコンピューティング コストのみです。 その他のソフトウェア、Windows、ネットワーク、ストレージの料金は含まれません。
+- **予約仮想マシン インスタンス** - 予約の対象は仮想マシンとクラウド サービスのコンピューティング コストのみです。 その他のソフトウェア、Windows、ネットワーク、ストレージの料金は含まれません。
 - **Azure Storage の予約容量** - 予約の対象となるのは、BLOB ストレージまたは Azure Data Lake Gen2 ストレージの標準ストレージ アカウントのストレージ容量です。 帯域幅またはトランザクション レートは予約の対象外です。
 - **Azure Cosmos DB の予約容量** - 予約は、リソース用にプロビジョニングされたスループットが対象になります。 ストレージとネットワーク料金は対象外です。
 - **SQL Database の予約された仮想コア** - 予約にはコンピューティング コストのみが含まれます。 SQL ライセンスの料金は別途請求されます。
-- **SQL Data Warehouse** - 予約には cDWU の使用が含まれます。 SQL Data Warehouse の使用に関連するストレージまたはネットワークの料金は含まれません。
+- **Azure Synapse Analytics** - 予約には cDWU の使用が含まれます。 Azure Synapse Analytics の使用に関連するストレージまたはネットワークの料金は含まれません。
 - **Azure Databricks** - 予約の対象となるのは、DBU の使用のみです。 コンピューティング、ストレージ、およびネットワーキングなどの他の料金は別途適用されます。
 - **App Service スタンプ料金** - 予約にはスタンプの使用が含まれます。 worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。
 - **Azure Database for MySQL** - 予約にはコンピューティング コストのみが含まれます。 予約には、MySQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。

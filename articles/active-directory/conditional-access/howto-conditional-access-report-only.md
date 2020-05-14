@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295113"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690367"
 ---
-# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>レポートのみモードで条件付きアクセス ポリシーを構成する (プレビュー)
+# <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>レポートのみモードで条件付きアクセス ポリシーを構成する
 
 レポートのみモードで条件付きアクセス ポリシーを構成するには:
 
@@ -42,7 +42,7 @@ ms.locfileid: "80295113"
 1. **Azure portal** に、レポート閲覧者、セキュリティ閲覧者、セキュリティ管理者、またはグローバル管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[サインイン]** の順に移動します。
 1. 1 つのサインインを選択するか、フィルターを追加して結果を絞り込みます。
-1. **[詳細]** ドロワーで、 **[レポート専用 (プレビュー)]** タブを選択して、サインイン中に評価されたポリシーを表示します。
+1. **[詳細]** ドロワーで、 **[レポート専用]** タブを選択して、サインイン中に評価されたポリシーを表示します。
 
 > [!NOTE]
 > サインイン ログをダウンロードする場合は、条件付きアクセスの レポート専用の結果データを含めるための JSON 形式を選択します。
@@ -62,7 +62,7 @@ Azure AD ログと Azure Monitor を統合したら、分析情報への条件�
 
 1. セキュリティ管理者またはグローバル管理者として、**Azure portal** にサインインします。
 1. **[Azure Active Directory]**  >  **[ブック]** の順に移動します。
-1. **[Conditional Access Insights (Preview)]\(分析情報への条件付きアクセス (プレビュー)\)** を選択します。
+1. **[分析情報への条件付きアクセス]** を選択します。
 1. **[条件付きアクセス ポリシー]** ドロップダウンから、1 つまたは複数のポリシーを選択します。 既定では、有効になっているすべてのポリシーが選択されています。
 1. 時間の範囲を選択します (時間の範囲が、利用可能なデータセットを超過した場合、レポートには利用可能なすべてのデータが表示されます)。 **[条件付きアクセス ポリシー]** と **[時間の範囲]** パラメータ―を設定したら、レポートが読み込まれます。
    1. 必要に応じて、個々の **[ユーザー]** または **[アプリ]** を検索して、レポートの範囲を絞り込みます。

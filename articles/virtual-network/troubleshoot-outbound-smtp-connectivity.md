@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: b8acb50978c5932fe6e6838be86b65c12a0984ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5a878c8108706c4a3a175c920708beeeaa4aa12
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058933"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801752"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=027fa865-2329-23de-3740-cfbe35359302" target='_blank'>開始</a></span><span class="has-padding-small">仮想エージェントを利用して <b> 自動化診断を実行し、問題を短時間で解決します。</b></span><span class="has-padding-small"><a href="https://privacy.microsoft.com/privacystatement" target='_blank'><div align="right"><sub>プライバシーに関する声明</sub></div></a></span></p>
 2017 年 11 月 15 日以降、外部ドメイン (outlook.com や gmail.com など) に直接送信される仮想マシン (VM) からのアウトバウンド メール メッセージは、Microsoft Azure の特定のサブスクリプションの種類でのみ使用できます。 TCP ポート 25 を使用するアウトバウンド SMTP 接続はブロックされました (ポート 25 は主に、認証されていないメール配信で使用されます)。
 
 この動作の変更は、2017 年 11 月 15 日以降の新しいサブスクリプションと新しいデプロイにのみ適用されます。

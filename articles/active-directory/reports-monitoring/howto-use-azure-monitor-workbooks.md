@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74014374"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690630"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "74014374"
 
 - サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートに関するより深い分析情報を取得したいですか。
 
-- こうした疑問の解決を支援するために、Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
+- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
 
 
 
@@ -58,7 +58,7 @@ ms.locfileid: "74014374"
 
 Monitor ブックを使用するためには、次のものが必要となります。
 
-- プレミアム (P1 または P2) ライセンスがある Active Directory テナント。 Premium ライセンスの取得方法については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)をご覧ください。
+- プレミアム (P1 または P2) ライセンスがある Azure Active Directory テナント。 Premium ライセンスの取得方法については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)をご覧ください。
 
 - [Log Analytics ワークスペース。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 

@@ -5,22 +5,19 @@ services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: aae3f8b1cfe224f0a948eb16bd6ee5120b19dde1
+ms.openlocfilehash: cf602a858d74e4038cddc463b159f100afe2263f
 ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612080"
+ms.locfileid: "82614132"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトと Spring 2020 更新プログラムの組み合わせに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../configure-vm-gpu.md)を参照してください。
 
 Windows Virtual Desktop では、アプリのパフォーマンスとスケーラビリティを向上させるために、GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。 GPU アクセラレーションは、グラフィックを多用するアプリケーションの場合に特に重要です。
 
@@ -32,7 +29,7 @@ Azure では、複数の [GPU 最適化済み仮想マシン サイズ](/azure/v
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>ホスト プールを作成し、仮想マシンをプロビジョニングして、アプリ グループを構成する
 
-選択したサイズの VM を使って、新しいホスト プールを作成します。 手順については、「[チュートリアル:Azure portal を使用してホスト プールを作成する](/azure/virtual-desktop/create-host-pools-azure-marketplace)」を参照してください。
+選択したサイズの VM を使って、新しいホスト プールを作成します。 手順については、「[チュートリアル:Azure Marketplace を使用してホスト プールを作成する](/azure/virtual-desktop/create-host-pools-azure-marketplace)」をご覧ください。
 
 Windows Virtual Desktop では、次のオペレーティング システムで GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。
 
@@ -96,5 +93,5 @@ Windows Virtual Desktop でサポートされているのは、Azure によっ�
 
 これらの手順により、1 つのセッション ホスト (1 つの VM) で GPU アクセラレーションが稼働状態になるはずです。 さらに大きなホスト プールで GPU アクセラレーションを有効にするには、いくつか追加の考慮事項があります。
 
-* 多数の VM でのドライバーのインストールと更新を簡素化するには、[VM 拡張機能](/azure/virtual-machines/extensions/overview)を使用することを検討してください。 NVIDIA GPU が搭載された VM には [NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使用し、AMD GPU が搭載された VM には AMD GPU ドライバー拡張機能 (近日公開予定) を使用します。
+* 多数の VM でのドライバーのインストールと更新を簡素化するには、[VM 拡張機能](/azure/virtual-machines/extensions/overview)を使用することを検討してください。 NVIDIA GPU が搭載された VM には [NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使用し、AMD GPU が搭載された VM には AMD GPU ドライバー拡張機能を使用します。
 * 多数の VM でのグループ ポリシーの構成を簡素化するには、Active Directory グループ ポリシーを使うことを検討します。 Active Directory ドメインでのグループ ポリシーのデプロイについては、「[Working with Group Policy Objects (グループ ポリシー オブジェクトの操作)](https://go.microsoft.com/fwlink/p/?LinkId=620889)」をご覧ください。

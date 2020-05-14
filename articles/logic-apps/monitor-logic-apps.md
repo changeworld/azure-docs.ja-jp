@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 495877f1c839de2cf3583a37180054c91bd9f139
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907222"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732004"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps での実行状態の監視、トリガー履歴の確認、アラートの設定
 
@@ -19,7 +19,8 @@ ms.locfileid: "76907222"
 
 リアルタイムでのイベントの監視と高度なデバッグを行うには、[Azure Monitor ログ](../azure-monitor/overview.md)を使用してロジック アプリの診断ログを設定します。 この Azure サービスを使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 これにより、トリガー イベント、実行イベント、アクション イベントなどのイベントを検索して表示できます。 この情報を [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)に格納することで、この情報の検索と分析に役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。 この診断データは、Azure Storage や Azure Event Hubs などの他の Azure サービスで使用することもできます。 詳細については、「[Azure Monitor を使用してロジック アプリを監視する](../logic-apps/monitor-logic-apps-log-analytics.md)」を参照してください。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> [内部アクセス エンドポイント](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)を使用するように作成された[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリを実行する場合、*仮想ネットワーク内からのみ*、ロジック アプリの実行履歴の入力と出力を表示してアクセスできます。 プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内、または ISE の仮想ネットワークに接続されている仮想ネットワーク内に配置できます (たとえば、ピアリングや仮想プライベート ネットワークを使用します)。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 
 
 <a name="review-runs-history"></a>
 

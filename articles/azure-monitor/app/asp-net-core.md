@@ -2,19 +2,19 @@
 title: ASP.NET Core アプリケーション用の Azure Application Insights | Microsoft Docs
 description: ASP.NET Core Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145257"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652781"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
 この記事では、[ASP.NET Core](https://docs.microsoft.com/aspnet/core) アプリケーションで Application Insights を有効にする方法について説明します。 この記事の手順を完了すると、Application Insights で、ASP.NET Core アプリケーションから要求、依存関係、例外、パフォーマンス カウンター、ハートビート、ログが収集されます。
 
-ここで使用する例は、`netcoreapp2.2` を対象とする [MVC アプリケーション](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)です。 これらの手順は、すべての ASP.NET Core アプリケーションに適用できます。
+ここで使用する例は、`netcoreapp3.0` を対象とする [MVC アプリケーション](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)です。 これらの手順は、すべての ASP.NET Core アプリケーションに適用できます。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -28,7 +28,7 @@ ms.locfileid: "82145257"
 * **IDE**: Visual Studio、VS Code、コマンド ライン。
 
 > [!NOTE]
-> Application Insights と共に ASP.NET Core 3.X を使用している場合は、[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) バージョン以降を使用してください。 これは、ASP.NET Core 3.X をサポートする唯一のバージョンです。
+> ASP.NET Core 3.X では [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 以降が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -109,7 +109,9 @@ ms.locfileid: "82145257"
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    通常、`APPINSIGHTS_INSTRUMENTATIONKEY` では Azure Web Apps にデプロイされるアプリケーションのインストルメンテーション キーを指定します。
+    * `APPINSIGHTS_INSTRUMENTATIONKEY` は通常、[Azure Web Apps](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net) で使用されますが、この SDK がサポートされているすべての場所で使用することもできます (コード不要の Web アプリの監視を行う際に接続文字列を使用しない場合はこの形式が必要です)。
+
+    インストルメンテーション キーを設定する代わりに、[接続文字列](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)も使用できるようになりました。
 
     > [!NOTE]
     > コードで指定されたインストルメンテーション キーは、他のオプションより優先される環境変数 `APPINSIGHTS_INSTRUMENTATIONKEY` より優先されます。
@@ -209,7 +211,7 @@ public void ConfigureServices(IServiceCollection services)
 |EnableAzureInstanceMetadataTelemetryModule   |  `AzureInstanceMetadataTelemetryModule` を有効または無効にします | true
 |EnableQuickPulseMetricStream | LiveMetrics 機能を有効または無効にします | true
 |EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
-|EnableHeartbeat | ハートビート機能を有効または無効にします。この機能は、"HeartBeatState" という名前のカスタム メトリックを、.NET バージョン、Azure 環境情報 (該当する場合) などのランタイムに関する情報と共に定期的に (既定では 15 分) 送信します。 | true
+|EnableHeartbeat | ハートビート機能を有効または無効にします。この機能は、"HeartbeatState" という名前のカスタム メトリックを、.NET バージョン、Azure 環境情報 (該当する場合) などのランタイムに関する情報と共に定期的に (既定では 15 分) 送信します。 | true
 |AddAutoCollectedMetricExtractor | AutoCollectedMetrics エクストラクターを有効または無効にします。これは、サンプリングが行われる前に要求/依存関係に関する事前に集計されたメトリックを送信する TelemetryProcessor です。 | true
 |RequestCollectionOptions.TrackExceptions | 要求収集モジュールによる未処理の例外の追跡についてのレポートを有効または無効にします。 | NETSTANDARD 2.0 では false (例外は ApplicationInsightsLoggerProvider で追跡されるため) で、それ以外の場合は true です。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Automation 管理ソリューションのオンボードに関するトラブルシューティング
-description: ソリューションのオンボード エラーをトラブルシューティングする方法について説明します。
+description: Azure Automation ソリューションのオンボード エラーをトラブルシューティングする方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679230"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836531"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>ソリューションのオンボードに関するトラブルシューティング
 
-Update Management ソリューションをオンボードするとき、または Change Tracking および Inventory ソリューションをオンボードするとき、エラーが表示される場合があります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
+Azure Automation Update Management ソリューションをオンボードするとき、または Change Tracking および Inventory ソリューションをオンボードするとき、エラー メッセージが表示される場合があります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -35,7 +35,7 @@ Update Management ソリューションをオンボードするとき、また�
 
 Azure Automation State Configuration からノードの登録を解除し、再度登録してください。 それより前にサービスに発行されたレポートは、使用できなくなります。
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>シナリオ:https プロキシ経由の証明書の再署名がサポートされていません
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>シナリオ:HTTPS プロキシ経由の証明書の再署名がサポートされていません
 
 #### <a name="issue"></a>問題
 
@@ -51,7 +51,7 @@ Azure Automation では、トラフィックの暗号化に使用される証明
 
 ## <a name="general-errors"></a>一般エラー
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>シナリオ:オンボードが失敗し、ソリューションを有効にできませんというメッセージが表示されます
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>シナリオ:オンボードが失敗し、"ソリューションを有効にできません" というメッセージが表示されます
 
 #### <a name="issue"></a>問題
 
@@ -71,9 +71,9 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解像度
 
-[マシンをオンボードするために必要な正しいアクセス許可](../automation-role-based-access-control.md#onboarding-permissions)があることを確認してから、再度ソリューションをオンボードしてみてください。 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` というエラーが発生する場合は、ワークスペースに VM がオンボードされているかどうかを調べることができる `Microsoft.OperationalInsights/workspaces/read` アクセス許可があることを確認してください。
+[マシンをオンボードするために必要な正しいアクセス許可](../automation-role-based-access-control.md#onboarding-permissions)があることを確認してから、再度ソリューションをオンボードしてみてください。 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` というエラー メッセージが発生する場合は、ワークスペースに VM がオンボードされているかどうかを調べることができる `Microsoft.OperationalInsights/workspaces/read` アクセス許可があることを確認してください。
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>シナリオ:オンボードが失敗し、次のメッセージが表示されます。診断ログのオートメーション アカウントを構成できませんでした。
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>シナリオ:オンボードが失敗し、"診断ログのオートメーション アカウントを構成できませんでした" というメッセージが表示されます
 
 #### <a name="issue"></a>問題
 
@@ -85,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 「[Azure Monitor での使用量と推定コストの監視](https://aka.ms/PricingTierWarning)」を参照してください。
+このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](https://aka.ms/PricingTierWarning)」を参照してください。
 
 #### <a name="resolution"></a>解像度
 
@@ -130,7 +130,7 @@ Azure portal の右上にある通知を確認するか、Automation アカウ�
 
 #### <a name="issue"></a>問題
 
-ワークスペースのリンクを解除しようとすると、次のエラーが発生します。
+ワークスペースのリンクを解除しようとすると、次のエラー メッセージが届きます。
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -148,10 +148,10 @@ The link cannot be updated or deleted because it is linked to Update Management 
 * 変更履歴とインベントリ
 * 勤務時間外に VM を起動/停止する
 
-ソリューションを削除すると、ワークスペースのリンクを解除できます。 ご利用のワークスペースおよび Automation アカウントから、これらのソリューションの既存の成果物をクリーンアップすることが重要です。 
+ソリューションを削除すると、ワークスペースのリンクを解除できます。 ご利用のワークスペースおよび Automation アカウントから、これらのソリューションの既存の成果物をクリーンアップすることが重要です。
 
-* Update Management の場合は、Automation アカウントから、更新プログラムのデプロイ (スケジュール) を削除します。
-* Start/Stop VMs during off-hours の場合、 **[設定]**  >  **[ロック]** で、Automation アカウントのソリューション コンポーネントに対するロックを解除します。 [Start/Stop VMs during off-hours ソリューションの削除](../automation-solution-vm-management.md#remove-the-solution)に関するページを参照してください。
+* Update Management の場合は、Automation アカウントから、**更新プログラムのデプロイ (スケジュール)** を削除します。
+* Start/Stop VMs during off-hours の場合、 **[設定]**  >  **[ロック]** で、Automation アカウントのソリューション コンポーネントに対するロックを解除します。 詳細については、[Start/Stop VMs during off-hours ソリューションの削除](../automation-solution-vm-management.md#remove-the-solution)に関するページを参照してください。
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows 拡張機能用の Log Analytics のエラー
 
@@ -189,7 +189,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 適切なポートとアドレスが通信のために開いていることを確認します。 ポートとアドレスの一覧は、[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>シナリオ:環境の一時的な問題のためにインストールが失敗した
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>シナリオ:環境の一時的な問題のためにインストールが失敗した
 
 Windows 拡張機能用の Log Analytics のインストールは、デプロイ時に別のインストールまたは操作によって妨げられるため、失敗しました。
 
@@ -242,8 +242,8 @@ VM の負荷が小さい場合に、Windows 拡張機能用の Log Analytics エ
 
 ## <a name="next-steps"></a>次のステップ
 
-自分の問題が上記にない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
+該当する問題がここにない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
 
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
-* [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
-* Azure サポート インシデントを送信する。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
+* [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure サポートにより、Azure コミュニティの回答、サポート、エキスパートと結び付けられます。
+* Azure サポート インシデントを送信する。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートを受ける]** を選択します。

@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する '
-description: このチュートリアルでは、Azure portal でロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
+title: チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する - Azure RBAC
+description: このチュートリアルでは、Azure portal と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77138085"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735846"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 このチュートリアルでは、ユーザーに対してリソース グループ内で仮想マシンを作成および管理するアクセス許可を付与します。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 このチュートリアルでは、ユーザーに対してリソース グループ内で仮想マシンを作成および管理するアクセス許可を付与します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -58,7 +58,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="grant-access"></a>アクセス権の付与
 
-RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
+Azure RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
 
 1. **[リソース グループ]** の一覧で、新しい **rbac-resource-group** リソース グループをクリックします。
 
@@ -88,7 +88,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 
 ## <a name="remove-access"></a>アクセス権の削除
 
-RBAC では、アクセス権を削除するにはロールの割り当てを削除する必要があります。
+Azure RBAC でアクセス権を削除するには、ロールの割り当てを削除します。
 
 1. ロールの割り当ての一覧で、仮想マシン共同作成者ロールを持つユーザーの横にチェック マークを追加します。
 
@@ -115,4 +115,4 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)
+> [チュートリアル:Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)

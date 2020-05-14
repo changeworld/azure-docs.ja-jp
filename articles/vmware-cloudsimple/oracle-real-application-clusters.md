@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868069"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793042"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC をインストールするために CloudSimple プライベート クラウドを最適化する
 
@@ -244,7 +244,7 @@ Oracle のデータ、ログ、および REDO ログ ファイルに必要なす
 VM とホスト間のアフィニティ ルールにより、VM が目的のホストで実行されていることが確認されます。  vCenter でルールを定義し、Oracle VM が確実に適切なリソースがあるホスト上で実行され、特定のライセンス要件が満たされるようにします。
 
 1. CloudSimple ポータルで、cloudowner ユーザーの[特権のエスカレート](escalate-private-cloud-privileges.md)を実行します。
-2. プライベート クラウドの [vSphere クライアントにログイン](https://docs.azure.cloudsimple.com/vsphere-access)します。
+2. プライベート クラウドの vSphere クライアントにログインします。
 3. Vsphere クライアントで、Oracle VM がデプロイされているクラスターを選択し、 **[Configure]\(構成\)** をクリックします。
 4. [Configure]\(構成\) で、 **[VM/Host Groups]\(VM/ホスト グループ\)** を選択します。
 5. ページの下部にある **+** 」の説明に従って、アプリケーションにシングル サインオンできるようになります。

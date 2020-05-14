@@ -11,14 +11,15 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: has-adal-ref
+ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331781"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611315"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
 この記事の内容は、Windows 10 または Windows Server 2016 を実行しているデバイスに適用されます。
 
@@ -30,13 +31,13 @@ ms.locfileid: "80331781"
 - [設定のエンタープライズ ローミング](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
 
-このドキュメントでは、潜在的な問題を解決するためのトラブルシューティング ガイダンスを示します。 
+このドキュメントでは、潜在的な問題を解決するためのトラブルシューティング ガイダンスを示します。
 
 Windows 10 および Windows Server 2016 でハイブリッド Azure Active Directory 参加がサポートされるのは、Windows 10 November 2015 Update 以降となります。
 
 ## <a name="troubleshoot-join-failures"></a>参加エラーのトラブルシューティング
 
-### <a name="step-1-retrieve-the-join-status"></a>手順 1:参加状態を取得する 
+### <a name="step-1-retrieve-the-join-status"></a>手順 1:参加状態を取得する
 
 **参加状態を取得するには:**
 
@@ -88,22 +89,22 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>手順 2:参加状態を評価する 
+### <a name="step-2-evaluate-the-join-status"></a>手順 2:参加状態を評価する
 
 以下のフィールドを確認し、必要な値が設定されていることを確認します。
 
-#### <a name="domainjoined--yes"></a>DomainJoined :YES  
+#### <a name="domainjoined--yes"></a>DomainJoined :YES
 
-このフィールドは、デバイスがオンプレミス Active Directory に参加しているかどうかを示します。 この値が **NO** である場合、デバイスはハイブリッド Azure AD 参加を実行できません。  
+このフィールドは、デバイスがオンプレミス Active Directory に参加しているかどうかを示します。 この値が **NO** である場合、デバイスはハイブリッド Azure AD 参加を実行できません。
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined :NO  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined :NO
 
 このフィールドは、デバイスが ("*ワークプレースに参加済み*" としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 このケースで Anniversary Update バージョンの Windows 10 (1607) を使用すると、そのアカウントは無視されます。
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined :YES  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined :YES
 
 このフィールドは、デバイスが参加しているかどうかを示します。 デバイスが Azure AD 参加済みデバイスであるか、ハイブリッド Azure AD 参加済みデバイスである場合、この値は **YES** になります。
-この値が **NO** である場合、Azure AD への参加は済んでいません。 
+この値が **NO** である場合、Azure AD への参加は済んでいません。
 
 詳細なトラブルシューティングを行うには、次の手順に進みます。
 
@@ -155,7 +156,7 @@ WamDefaultAuthority: organizations
    - デバイスが属している AD フォレストに、Azure AD 内の検証済みドメイン名を指す有効な SCP オブジェクトが必要です。
    - 詳細については、[サービス接続ポイントの構成](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)に関するセクションを参照してください。
 - 検出エンドポイントから検出メタデータに接続してフェッチできません。
-   - 登録と承認のエンドポイントを検出するには、デバイスがシステム コンテキストで `https://enterpriseregistration.windows.net` にアクセスできる必要があります。 
+   - 登録と承認のエンドポイントを検出するには、デバイスがシステム コンテキストで `https://enterpriseregistration.windows.net` にアクセスできる必要があります。
    - オンプレミス環境に送信プロキシが必要である場合は、デバイスのコンピューター アカウントが送信プロキシに対する検出とサイレント認証を実行できることを IT 管理者が確認する必要があります。
 - ユーザー領域エンドポイントに接続して領域の検出を実行できません。 (Windows 10 バージョン 1809 以降のみ)
    - 検証済みドメインの領域検出を実行してドメインの種類 (管理対象/フェデレーション) を判別するには、デバイスがシステム コンテキストで `https://login.microsoftonline.com` にアクセスできる必要があります。
@@ -173,7 +174,7 @@ WamDefaultAuthority: organizations
    - 理由:検出の実行中に操作がタイムアウトになりました。
    - 解決策:システム コンテキストで `https://enterpriseregistration.windows.net` にアクセスできることを確認します。 詳細については、[ネットワーク接続の要件](hybrid-azuread-join-managed-domains.md#prerequisites)に関するセクションを参照してください。
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - 理由:一般的な領域検出エラー。 STS からドメインの種類 (管理対象/フェデレーション) を判別できませんでした。 
+   - 理由:一般的な領域検出エラー。 STS からドメインの種類 (管理対象/フェデレーション) を判別できませんでした。
    - 解決策:この後のサブエラーを確認して詳細を調べます。
 
 **一般的なサブエラー コード:**
@@ -260,7 +261,7 @@ WamDefaultAuthority: organizations
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - 理由:認証プロトコルが WS-Trust ではありません。
-   - 解決策:オンプレミスの ID プロバイダーが WS-Trust をサポートしている必要があります。 
+   - 解決策:オンプレミスの ID プロバイダーが WS-Trust をサポートしている必要があります。
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - 理由:オンプレミスのフェデレーション サービスから XML 応答が返されませんでした。
    - 解決策:MEX エンドポイントから有効な XML が返されることを確認します。 プロキシが妨害を行ったり XML 以外の応答を返したりしていないことを確認します。
@@ -278,7 +279,7 @@ WamDefaultAuthority: organizations
    - 解決策:しばらくしてからやり直すか、または別の安定したネットワークの場所から参加を試みます。
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
    - 理由:以前は SSL (Secure Sockets Layer) として知られていた、サーバーによって送信されたトランスポート層セキュリティ (TLS) 証明書を検証できませんでした。
-   - 解決策:クライアント時間のずれを確認します。 しばらくしてからやり直すか、または別の安定したネットワークの場所から参加を試みます。 
+   - 解決策:クライアント時間のずれを確認します。 しばらくしてからやり直すか、または別の安定したネットワークの場所から参加を試みます。
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - 理由:`https://login.microsoftonline.com` への接続に失敗しました。
    - 解決策:`https://login.microsoftonline.com` とのネットワーク接続を確認します。
@@ -293,11 +294,11 @@ WamDefaultAuthority: organizations
    - 解決策:フェデレーション サーバーの設定を確認します。 認証ログでサーバー エラー コードを探します。
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
    - 理由:トークン エンドポイントからアクセス トークンを取得するときにエラーが発生しました。
-   - 解決策:ADAL ログで根本的なエラーを探します。 
+   - 解決策:ADAL ログで根本的なエラーを探します。
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
    - 理由:一般的な ADAL エラー
    - 解決策:認証ログで、サブエラー コードまたはサーバー エラー コードを探します。
-    
+
 #### <a name="join-phase"></a>参加フェーズ
 
 エラーの原因:
@@ -337,7 +338,7 @@ WamDefaultAuthority: organizations
    - 理由:DRS から次のエラー コードのエラー応答を受け取りました。"DirectoryError"
    - 解決策:考えられる原因と解決策については、サーバー エラー コードを参照してください。
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - 理由:DRS から次のエラー コードのエラー応答を受け取りました。"AuthenticationError" (エラー サブコードは "DeviceNotFound" 以外) 
+   - 理由:DRS から次のエラー コードのエラー応答を受け取りました。"AuthenticationError" (エラー サブコードは "DeviceNotFound" 以外)
    - 解決策:考えられる原因と解決策については、サーバー エラー コードを参照してください。
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
    - 理由:DRS から次のエラー コードのエラー応答を受け取りました。"DirectoryError"
@@ -349,7 +350,7 @@ WamDefaultAuthority: organizations
    - 理由:TPM 操作が失敗したか、または無効でした。
    - 解決策:無効な sysprep イメージが原因と考えられます。 sysprep イメージの作成元であるマシンが、Azure AD に参加していない、ハイブリッド Azure AD に参加していない、あるいは Azure AD に登録されていないことを確認します。
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
-   - 理由:一般的な TPM エラー。 
+   - 理由:一般的な TPM エラー。
    - 解決策:このエラーが発生したデバイスで TPM を無効にします。 Windows 10 バージョン1809 以降では、TPM エラーが自動的に検知され、TPM を使用することなくハイブリッド Azure AD への参加が完了します。
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
    - 理由:FIPS モードの TPM は現在サポートされていません。
@@ -386,28 +387,32 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>手順 5:ログを収集して Microsoft サポートに問い合わせる
 
-次の場所で公開スクリプトを取得します: [https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH) から Auth.zip ファイルをダウンロードします。
 
-1. 管理者のコマンド プロンプトを開き、`start_ngc_tracing_public.cmd` を実行します。
-2. 問題を再現する手順を実行します。
-3. `stop_ngc_tracing_public.cmd` を実行して、ログ スクリプトの実行を停止します。
-4. 分析のために `%SYSTEMDRIVE%\TraceDJPP\*` の下のログを圧縮して送信します。
+1. ファイルを解凍し、インクルード ファイルの **start-auth.txt** と **stop-auth.txt** という名前を **start-auth.cmd** と **stop-auth.cmd** に変更します。
+1. 管理者特権でのコマンド プロンプトから、**start-auth.cmd** を実行します。
+1. アカウントの切り替えを使用して、問題のあるユーザーとの別のセッションに切り替えます。
+1. 問題を再現します。
+1. アカウントの切り替えを使用して、トレースを実行している管理者セッションに戻ります。
+1. 管理者特権でのコマンド プロンプトから、**stop-auth.cmd** を実行します。
+1. スクリプトが実行されたフォルダーから **Authlogs** フォルダーを Zip 形式で送信します。
 
 ## <a name="troubleshoot-post-join-issues"></a>参加後の問題のトラブルシューティング
 
-### <a name="retrieve-the-join-status"></a>参加状態を取得する 
+### <a name="retrieve-the-join-status"></a>参加状態を取得する
 
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet:YES および AzureADPrt:YES
-  
-これらのフィールドは、ユーザーがデバイスへのサインイン時に Azure AD に対して正常に認証されたことを示します。 これらの値が **NO** である場合、次のことが原因として考えられます。
+
+これらのフィールドは、ユーザーがデバイスへのサインイン時に Azure AD に対して正常に認証されたことを示します。
+これらの値が **NO** である場合、次のことが原因として考えられます。
 
 - 登録時にデバイスに関連する TPM のストレージ キーに問題がある (管理者特権での実行時に KeySignTest を確認)
 - 代替ログイン ID
 - HTTP プロキシが見つからない
 
 ## <a name="known-issues"></a>既知の問題
-- [設定] -> [アカウント] -> [職場または学校にアクセスする] で、Hybrid Azure AD 参加済みデバイスには、モバイル ホットスポットまたは外部 WiFi ネットワークに接続されているときに、Azure AD 用に 1 つとオンプレミス AD 用に 1 つという 2 つの異なるアカウントが表示される場合があります。 これは UI のみの問題であり、機能には影響しません。 
- 
+- [設定] -> [アカウント] -> [職場または学校にアクセスする] で、Hybrid Azure AD 参加済みデバイスには、モバイル ホットスポットまたは外部 WiFi ネットワークに接続されているときに、Azure AD 用に 1 つとオンプレミス AD 用に 1 つという 2 つの異なるアカウントが表示される場合があります。 これは UI のみの問題であり、機能には影響しません。
+
 ## <a name="next-steps"></a>次のステップ
 
 [dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)に進みます。

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/29/2020
+ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233619"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594099"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -95,21 +95,21 @@ Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあり�
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS、Azure Storage、および Data Lake Storage
 
-ほとんどの Hadoop ディストリビューションでは、データは HDFS に格納されています。この HDFS は、クラスター内のコンピューターのローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
+ほとんどの Hadoop ディストリビューションでは、データは HDFS に格納されます。 HDFS は、クラスター内のコンピューター上にあるローカル ストレージによって支えられています。 ローカル ストレージの使用コストは、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションでは高くなる場合があります。
 
-HDInsight を使用する場合、データ ファイルは、Azure Blob Storage、および必要に応じて Azure Data Lake Storage を使用して、回復性があるスケーラブルな方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
+HDInsight を使用する場合、データ ファイルは、Azure Blob Storage と必要に応じて Azure Data Lake Storage を使用して、適用性および回復性がある方法でクラウドに格納されます。 これらのサービスには次のような利点があります。
 
 * 低コストの長期ストレージ。
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
-* 大きなファイル容量とスケーラブルな大容量ストレージ。
+* 大きなファイル容量と適用性の高い大容量ストレージ。
 
 詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) に関するページを参照してください。
 
-Azure Storage または Data Lake Storage を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドは、`/example/data` フォルダーの保存場所 (Azure Storage または Data Lake Storage) に関係なく、そのフォルダー内のファイルの一覧を表示します。
+Azure Storage または Data Lake Storage を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドでは、Azure Storage 上または Data Lake Storage 上のどちらに格納されている場合でも、`/example/data` フォルダー内のファイルを一覧表示します。
 
     hdfs dfs -ls /example/data
 
-HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Storage) は、コンピューティング リソースから切り離されています。 したがって、必要なコンピューティング処理を実行するために HDInsight クラスターを作成し、作業完了時にそのクラスターを削除できます。一方で、お使いのデータ ファイルは、必要なだけクラウド ストレージに安全に保持し続けることができます。
+HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Storage) は、コンピューティング リソースから切り離されています。 必要に応じて計算を実行するために HDInsight クラスターを作成し、作業が完了したら後でそのクラスターを削除することができます。 一方で、データ ファイルは、必要である間中、クラウド ストレージ内に安全に保持されます。
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI およびスキーム
 
@@ -210,46 +210,11 @@ __Azure Data Lake Storage__ を使用している場合は、次のリンクを�
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>クラスターのスケーリング
 
-クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を動的に変更できます。 クラスターで他のジョブまたはプロセスを実行している間にスケーリング操作を実行できます。  「[Scale HDInsight clusters](./hdinsight-scaling-best-practices.md)」 (HDInsight クラスターをスケールする) も参照してください
-
-別のクラスターの種類は、次のようにスケーリングすることによって影響を受けます。
-
-* **Hadoop**:クラスター内のノードの数をスケール ダウンすると、クラスター内のサービスの一部が再起動されます。 スケーリング操作の完了時に、実行中および保留中のジョブが失敗する可能性があります。 ただし、操作が完了した時点で、ジョブを再送信できます。
-* **HBase**:リージョンのサーバーは、スケーリング操作の完了から数分以内に自動的に調整されます。 リージョンのサーバーを手動で調整するには、次の手順を使用します。
-
-    1. SSH を使用して HDInsight クラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-    2. HBase シェルを開始するには、次のコマンドを使用します。
-
-            hbase shell
-
-    3. HBase シェルが読み込まれたら、次のコマンドを使用してリージョンのサーバーを手動で調整します。
-
-            balancer
-
-* **Storm**:スケーリング操作が実行された後に、実行中の Storm トポロジをすべて再調整する必要があります。 これにより、トポロジがクラスター内のノードの新しい数に基づいて並列処理の設定を再調整できます。 実行中のトポロジを再調整するには、次のオプションのいずれかを使用します。
-
-    * **SSH**:サーバーに接続し、次のコマンドを使用してトポロジを再調整します。
-
-            storm rebalance TOPOLOGYNAME
-
-        また、トポロジによって最初に提供された並列処理のヒントをオーバーライドするパラメーターも指定できます。 たとえば、`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` は、トポロジを再構成して、5 個の worker プロセス、blue-spout コンポーネント用の 3 個の実行プログラム、yellow-bolt コンポーネント用の 10 個の実行プログラムにします。
-
-    * **Storm UI**:次の手順により、Storm UI を使用してトポロジを再調整します。
-
-        1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/stormui` を開きます。ここで、`CLUSTERNAME` は実行中の Storm クラスターの名前です。 メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
-        2. 再調整するトポロジを選択し、 **[Rebalance]** \(再調整) ボタンをクリックします。 再調整の操作が実行されるまでの待ち時間を入力します。
-
-* **Kafka**:スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 詳しくは、「[HDInsight 上の Apache Kafka によるデータの高可用性](./kafka/apache-kafka-high-availability.md)」をご覧ください。
-
-HDInsight クラスターのスケーリングに関する具体的な情報については、以下を参照してください。
-
-* [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Azure CLI を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-command-line.md#scale-clusters)
+クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を動的に変更できます。 クラスターで他のジョブまたはプロセスを実行している間に、スケーリング操作を実行できます。  「[Scale HDInsight clusters (HDInsight クラスターをスケールする)](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hue (またはその他の Hadoop コンポーネント) のインストール方法
 
-HDInsight は管理されたサービスです。 Azure によってクラスターに関する問題が検出された場合、障害の発生したノードが削除され、新たに作成されたノードで置き換えられる可能性があります。 クラスターに何かを手動でインストールした場合、この操作の実行後は維持されません。 代わりに、[HDInsight スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を使用してください。 次の変更は、スクリプト アクションで行うことができます。
+HDInsight は管理されたサービスです。 Azure によってクラスターに関する問題が検出された場合、障害の発生したノードが削除され、新たに作成されたノードで置き換えられる可能性があります。 クラスターに何かを手動でインストールした場合、この操作の実行後、それらは維持されません。 代わりに、[HDInsight スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を使用してください。 次の変更は、スクリプト アクションで行うことができます。
 
 * サービスや Web サイトをインストールして構成する。
 * クラスターの複数のノードで構成変更を必要とするコンポーネントをインストールして構成する。
@@ -258,7 +223,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 
 ### <a name="jar-files"></a>Jar ファイル
 
-一部の Hadoop 技術は自己完結型の jar ファイルで提供されます。このファイルには MapReduce ジョブの一環として、あるいは Pig または Hive 内から使用される関数が含まれています。 これらは多くの場合、セットアップを必要とせず、作成後にクラスターにアップロードして直接使用することができます。 クラスターの再イメージ化の後もコンポーネントが残っていることを確認するには、クラスターの既定のストレージ (WASB または ADL) に jar ファイルを保存します。
+一部の Hadoop テクノロジでは、自己完結型の jar ファイルが提供されています。 これらのファイルには、MapReduce ジョブの一部として、あるいは Pig または Hive 内から使用される関数が含まれています。 これらは多くの場合、セットアップを必要とせず、作成後にクラスターにアップロードして直接使用することができます。 クラスターの再イメージ化の後もコンポーネントが残っていることを確認したい場合は、クラスターの既定のストレージに jar ファイルを格納します。
 
 たとえば、最新版の [Apache DataFu](https://datafu.incubator.apache.org/) を使用する場合、プロジェクトを含む jar をダウンロードし、それを HDInsight クラスターにアップロードできます。 その後、Pig や Hive からそれを使用する方法については、DataFu のドキュメントに従います。
 

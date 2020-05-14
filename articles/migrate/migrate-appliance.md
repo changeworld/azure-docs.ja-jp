@@ -2,13 +2,13 @@
 title: Azure Migrate アプライアンス
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 05/04/2020
+ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437585"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780336"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -25,12 +25,24 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **Hyper-V VM の評価** | Azure Migrate:Server Assessment | Hyper-V VM を検出する<br/><br/> 評価のためにマシン メタデータとパフォーマンス メタデータを収集する。
 **物理マシンの評価** |  Azure Migrate:Server Assessment |  物理サーバー (または物理サーバーとして扱う VM) を検出します。<br/><br/> 評価のためにマシン メタデータとパフォーマンス メタデータを収集する。
 
+## <a name="deployment-methods"></a>デプロイ方法
+
+このアプライアンスは、次のいくつかの方法を使用してデプロイできます。
+
+- アプライアンスは、VMware VM と Hyper-V VM 用のテンプレート (VMware の場合は OVA テンプレート、Hyper-V の場合は VHD) を使用してデプロイできます。
+- テンプレートを使用しない場合は、PowerShell スクリプトを使用して VMware または Hyper-V 用のアプライアンスをデプロイできます。
+- Azure Government では、スクリプトを使用してアプライアンスをデプロイする必要があります。
+- 物理サーバーの場合は、必ずスクリプトを使用してアプライアンスをデプロイします。
+- ダウンロード リンクは、以下の表にあります。
+
+
 ## <a name="appliance---vmware"></a>アプライアンス - VMware 
 
 次の表は、VMware の Azure Migrate アプライアンス要件をまとめたものです。
 
 **要件** | **VMware** 
 --- | ---
+**アクセス許可** | アプライアンス Web アプリにローカルまたはリモートでアクセスするには、ドメイン管理者であるか、またはアプライアンス マシンのローカル管理者である必要があります。
 **アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。<br/><br/> - **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **評価エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。<br/>- **DRA エージェント**:VM のレプリケーションを調整し、レプリケートされたマシンと Azure 間の通信を調整します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。<br/>- **ゲートウェイ**:レプリケートされたデータを Azure に送信します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。
 **サポートされるデプロイ** | OVA テンプレートを使用して VMware VM としてデプロイする。<br/><br/> PowerShell インストール スクリプトを使用して、VMware VM または物理マシンとしてデプロイする。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
@@ -50,6 +62,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 **要件** | **Hyper-V** 
 --- | ---
+**アクセス許可** | アプライアンス Web アプリにローカルまたはリモートでアクセスするには、ドメイン管理者であるか、またはアプライアンス マシンのローカル管理者である必要があります。
 **アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。<br/><br/>- **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **評価エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。
 **サポートされるデプロイ** | VHD テンプレートを使用して Hyper-V VM としてデプロイする。<br/><br/> PowerShell インストール スクリプトを使用して、Hyper-V VM または物理マシンとしてデプロイする。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
@@ -66,20 +79,24 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 **要件** | **物理** 
 --- | ---
+**アクセス許可** | アプライアンス Web アプリにローカルまたはリモートでアクセスするには、ドメイン管理者であるか、またはアプライアンス マシンのローカル管理者である必要があります。
 **アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。 <br/><br/> - **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **評価エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。
-**サポートされるデプロイ** | PowerShell インストール スクリプトを使用して、専用物理マシンまたは VM としてデプロイする。
+**サポートされるデプロイ** | PowerShell インストール スクリプトを使用して、専用物理マシンまたは VM としてデプロイする。 スクリプトはポータルからダウンロードできます。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出の制限** | 1 つのアプライアンスで最大 250 台の物理サーバーを検出できます。
 **PowerShell スクリプト** | ポータルから zip 形式のフォルダーでスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-assess-physical.md#set-up-the-appliance)。 または、[直接ダウンロード](https://go.microsoft.com/fwlink/?linkid=2105112)します。<br/><br/> ダウンロード サイズは 59.7 MB です。
-**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
+**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/> Windows Server 2019 を搭載したコンピューターでのアプライアンスの実行はサポートされていません。
 **ハッシュ値** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
 
 ## <a name="url-access"></a>URL アクセス
 
 Azure Migrate アプライアンスには、インターネットへの接続が必要です。
 
-- アプライアンスをデプロイすると、下の表にまとめた URL への接続チェックが Azure Migrate によって実行されます。
-- URL ベースのプロキシを使用してインターネットに接続している場合は、それらの URL へのアクセスを許可して、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにする必要があります。
+- アプライアンスをデプロイすると、必要な URL への接続チェックが Azure Migrate によって行われます。
+- リスト内のすべての URL へのアクセスを許可する必要があります。 評価のみ行う場合は、VMware エージェントレスの移行でのみ必須とマークされている URL をスキップできます。
+-  URL ベースのプロキシを使用してインターネットに接続している場合は、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにします。
+
+### <a name="public-cloud-urls"></a>パブリック クラウドの URL
 
 **URL** | **詳細**  
 --- | --- |
@@ -87,7 +104,7 @@ Azure Migrate アプライアンスには、インターネットへの接続が
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure サブスクリプションにサインインします。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
 management.azure.com | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
-dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
+*.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
 *.vault.azure.net | Azure Key Vault でシークレットを管理します。
 aka.ms/* | aka リンクへのアクセスを許可します。 Azure Migrate アプライアンスの更新に使用されます。
 download.microsoft.com/download | Microsoft ダウンロードからのダウンロードを許可します。
@@ -95,6 +112,25 @@ download.microsoft.com/download | Microsoft ダウンロードからのダウン
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Azure Migrate サービスの URL に接続します。
 *.hypervrecoverymanager.windowsazure.com | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
 *.blob.core.windows.net |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
+
+### <a name="government-cloud-urls"></a>Government クラウドの URL
+
+**URL** | **詳細**  
+--- | --- |
+*.portal.azure.us  | Azure Portal に移動します。
+graph.windows.net | Azure サブスクリプションにサインインします。
+login.microsoftonline.us  | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
+management.usgovcloudapi.net | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
+dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
+*.vault.usgovcloudapi.net | Azure Key Vault でシークレットを管理します。
+aka.ms/* | aka リンクへのアクセスを許可します。 Azure Migrate アプライアンスの更新に使用されます。
+download.microsoft.com/download | Microsoft ダウンロードからのダウンロードを許可します。
+*.servicebus.usgovcloudapi.net  | アプライアンスと Azure Migrate サービスの間の通信。
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Azure Migrate サービスの URL に接続します。
+*.hypervrecoverymanager.windowsazure.us | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
+*.blob.core.usgovcloudapi.net  |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
+*.applicationinsights.us | 内部監視に使用するアプリ ログをアップロードします。
+
 
 
 
@@ -225,7 +261,7 @@ Azure Migrate アプライアンスによって検出されたメタデータは
 
 アプライアンスが収集して Azure に送信する Hyper-V VM のメタデータの全一覧を次に示します。
 
-**データ* | **WMI クラス** | **WMI クラスのプロパティ**
+**データ** | **WMI クラス** | **WMI クラスのプロパティ**
 --- | --- | ---
 **マシンの詳細** | 
 BIOS _ Msvm_BIOSElement のシリアル番号 | BIOSSerialNumber
@@ -267,14 +303,158 @@ Hyper-V の仮想ネットワーク アダプター | 送信バイト数/秒 | V
 - メモリ使用率は、(現在の負荷 * ゲストの可視物理メモリ) / 100 です。
 - ディスクとネットワークの使用率の値は、一覧にある Hyper-V パフォーマンス カウンターから収集されます。
 
+
+## <a name="collected-data---physical"></a>収集されるデータ - 物理
+
+アプライアンスでは、メタ―データ、パフォーマンス データ、依存関係分析データ (エージェントレスの[依存関係分析](concepts-dependency-visualization.md)が使用されている場合) が収集されます。
+
+### <a name="windows-metadata"></a>Windows メタデータ
+
+Azure Migrate アプライアンスによって検出されたメタデータは、コンピューターとアプリを Azure に移行する準備ができているかどうかを判断し、コンピューターとアプリを適切にサイズ設定して、コストを計画し、アプリケーションの依存関係を分析するために役立ちます。 Microsoft では、ライセンスのコンプライアンス監査でこのデータを使用しません。
+
+アプライアンスが収集して Azure に送信する Windows サーバーのメタデータの全一覧を次に示します。
+
+**データ** | **WMI クラス** | **WMI クラスのプロパティ**
+--- | --- | ---
+FQDN | Win32_ComputerSystem | Domain、Name、PartOfDomain
+プロセッサ コア数 | Win32_PRocessor | NumberOfCores
+割り当てられたメモリ | Win32_ComputerSystem | TotalPhysicalMemory
+BIOS のシリアル番号 | Win32_ComputerSystemProduct | IdentifyingNumber
+BIOS の GUID | Win32_ComputerSystemProduct | UUID
+ブートの種類 | Win32_DiskPartition | EFI/BIOS について Type = **GPT:System** のパーティションを確認します
+OS 名 | Win32_OperatingSystem | Caption
+OS バージョン |Win32_OperatingSystem | Version
+OS アーキテクチャ | Win32_OperatingSystem | OSArchitecture
+ディスク数 | Win32_DiskDrive | Model、Size、DeviceID、MediaType、Name
+ディスク サイズ | Win32_DiskDrive | サイズ
+NIC の一覧 | Win32_NetworkAdapterConfiguration | Description、Index
+NIC の IP アドレス | Win32_NetworkAdapterConfiguration | IPAddress
+NIC の MAC アドレス | Win32_NetworkAdapterConfiguration | MACAddress
+
+### <a name="linux-metadata"></a>Linux メタデータ
+
+アプライアンスが収集して Azure に送信する Linux サーバーのメタデータの全一覧を次に示します。
+
+**データ** | **LINUX** 
+--- | --- 
+FQDN | cat /proc/sys/kernel/hostname, hostname -f
+プロセッサ コア数 |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
+割り当てられたメモリ | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
+BIOS のシリアル番号 | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}’
+BIOS の GUID | cat /sys/class/dmi/id/product_uuid
+ブートの種類 | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
+OS の名前/バージョン | OS のバージョンと名前について、以下のファイルにアクセスします。<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
+OS アーキテクチャ | Uname -m
+ディスク数 | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
+ブート ディスク | df /boot \| sed -n 2p \| awk '{print $1}'
+ディスク サイズ | fdisk -l \| egrep 'Disk.*bytes' \| egrep $disk: \| awk '{print $5}'
+NIC の一覧 | ip -o -4 addr show \| awk '{print $2}'
+NIC の IP アドレス | ip addr show $nic \| grep inet \| awk '{print $2}' \| cut -f1 -d "/" 
+NIC の MAC アドレス | ip addr show $nic \| grep ether  \| awk '{print $2}'
+
+### <a name="windows-performance-data"></a>Windows パフォーマンス データ
+
+アプライアンスが収集して Azure に送信する Windows サーバーのパフォーマンス データを次に示します。
+
+**データ** | **WMI クラス** | **WMI クラスのプロパティ**
+--- | --- | ---
+CPU 使用率 | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
+メモリ使用量 | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
+NIC 数 | Win32_PerfFormattedData_Tcpip_NetworkInterface | ネットワーク デバイス数を取得します。
+NIC ごとに受信したデータ | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
+NIC ごとに送信したデータ | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BytesSentPersec
+ディスク数 | BWin32_PerfFormattedData_PerfDisk_PhysicalDisk | ディスク数
+ディスクの詳細 | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec、Diskwritespersec、DiskReadsPerSec、Diskwritespersec。
+
+### <a name="linux-performance-data"></a>Linux のパフォーマンス データ
+
+アプライアンスが収集して Azure に送信する Linux サーバーのパフォーマンス データを次に示します。
+
+**データ** | **Linux** 
+--- | --- 
+CPU 使用率 | cat /proc/stat/| grep 'cpu' /proc/stat
+メモリ使用量 | free \| grep Mem \| awk '{print $3/$2 * 100.0}'
+NIC 数 | lshw -class network \| grep eth[0-60] \| wc -l
+NIC ごとに受信したデータ | cat /sys/class/net/eth$nic/statistics/rx_bytes
+NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_bytes
+ディスク数 | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
+ディスクの詳細 | cat /proc/diskstats
+
+
 ## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
 
-アプライアンスで実行されている Azure Migrate エージェントが更新されると、アプライアンスがアップグレードされます。 アプライアンスでは既定で自動更新が有効になっているため、これは自動的に行われます。 エージェントを手動で更新するために、この既定の設定を変更できます。
+アプライアンスで実行されている Azure Migrate エージェントが更新されると、アプライアンスがアップグレードされます。 アプライアンスでは既定で自動更新が有効になっているため、これは自動的に行われます。 アプライアンス サービスを手動で更新するために、この既定の設定を変更できます。
 
-- **自動更新をオフにする**:レジストリで自動更新をオフにするには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance の "AutoUpdate" キーを 0 (ダブルワード) に設定します。 手動更新を使用する場合は、アプライアンスの古いエージェントごとに **[更新]** ボタンを使用して、アプライアンスのすべてのエージェントを同時に更新することが重要です。
-- **手動で更新する**:手動で更新する場合は、アプライアンスの古いエージェントごとに **[更新]** ボタンを使用して、アプライアンスのすべてのエージェントを更新してください。 更新設定は、いつでも自動更新に戻すことができます。
+### <a name="turn-off-auto-update"></a>自動更新をオフにする
 
-![アプライアンスを自動的に更新する](./media/migrate-appliance/autoupdate.png)
+1. アプライアンスを実行しているマシンで、レジストリ エディターを開きます。
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** に移動します。
+3. 自動更新をオフにするには、DWORD 値が 0 のレジストリ キー **AutoUpdate** キーを作成します。
+
+    ![レジストリ キーを設定する](./media/migrate-appliance/registry-key.png)
+
+
+### <a name="turn-on-auto-update"></a>自動更新を有効にする
+
+自動更新を有効にするには、次のいずれかの方法を使用します。
+
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance から AutoUpdate レジストリ キーを削除することによって。
+- 検出の完了後、Appliance Configuration Manager で。
+
+レジストリ キーを削除するには、次の手順を実行します。
+
+1. アプライアンスを実行しているマシンで、レジストリ エディターを開きます。
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** に移動します。
+3. 自動更新を無効にするために作成したレジストリ キー **AutoUpdate** を削除します。
+
+検出の完了後、Appliance Configuration Manager で有効にするには、以下を行います。
+
+1. アプライアンス マシンで、Appliance Configuration Manager を開きます。
+2. **[アプライアンス サービス]**  >  **[Automatic update of Azure Migrate components is turned off] (Azure Migrate コンポーネントの自動更新がオフ)** でクリックして自動更新をオンにします。
+
+    ![自動更新をオンにする](./media/migrate-appliance/turn-on.png)
+
+### <a name="check-the-appliance-services-version"></a>アプライアンス サービスのバージョンを確認する
+
+次のいずれかの方法を使用して、アプライアンス サービスのバージョンを確認できます。
+
+- 検出の完了後、Appliance Configuration Manager で。
+- アプライアンス マシンの **[コントロールパネル]**  >  **[プログラムと機能]** で。
+
+Appliance Configuration Manager で確認するには以下を行います。
+
+1. 検出の完了後、Appliance Configuration Manager を開きます (アプライアンス Web アプリで)。
+2. **[アプライアンス サービス]** で、アプライアンス サービスのバージョンを確認します。
+
+    ![バージョンの確認](./media/migrate-appliance/version.png)
+
+コントロール パネルで確認するには以下を行います。
+
+1. アプライアンスで、 **[開始]**  >  **[コントロール パネル]**  >  **[プログラムと機能]** をクリックします
+2. リストのアプライアンス サービスのバージョンを確認します。
+
+    ![コントロール パネルでバージョンを確認する](./media/migrate-appliance/programs-features.png)
+
+### <a name="manually-update-an-older-version"></a>古いバージョンを手動で更新する
+
+いずれかのコンポーネントに対して古いバージョンを実行している場合は、サービスをアンインストールし、最新バージョンに手動で更新する必要があります。
+
+1. 最新のアプライアンス サービス バージョンを確認するには、LatestComponents.json ファイルを[ダウンロード](https://aka.ms/latestapplianceservices)します。
+2.  ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
+3. ファイル内の最新のサービス バージョンとそのファイルのダウンロード リンクを探します。 次に例を示します。
+
+    "Name":"ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version":"6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+
+4.  ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
+5. ダウンロードした後、管理者コマンド ウィンドウで次のコマンドを実行して、ダウンロードした MSI の整合性を確認します。
+
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```次に例を示します。C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+
+5. コマンドの出力が、ファイル内のサービスのハッシュ値のエントリ (上記の MD5 ハッシュ値など) と一致することを確認します。
+6. 次に MSI を実行して、サービスをインストールします。 これはサイレント インストールであり、完了後にインストール ウィンドウが閉じます。
+7. インストールが完了したら、 **[コントロール パネル]**  >  **[プログラムと機能]** でサービスのバージョンを確認します。 これで、サービスのバージョンが json ファイルに示されている最新のバージョンにアップグレードされているはずです。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

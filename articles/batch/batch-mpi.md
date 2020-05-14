@@ -1,24 +1,15 @@
 ---
-title: マルチインスタンス タスクを使用した MPI アプリケーションの実行 - Azure Batch | Microsoft Docs
+title: マルチインスタンス タスクを使用した MPI アプリケーションの実行
 description: Azure Batch でマルチインスタンス タスクを使用して、Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1896fea3c401299b4f77235ab3c02d85708b7041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4502fc9632c2cb05d757459d07bcfe17ae96aea2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023669"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735268"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
@@ -190,9 +181,7 @@ Batch サービスによって、マルチインスタンス タスクで使用�
 これらの変数とその他の Batch コンピューティング ノードの環境変数のコンテンツと可視性を含む詳細については、[コンピューティング ノードの環境変数][msdn_env_var]に関する記事をご覧ください。
 
 > [!TIP]
-> Batch Linux MPI コード サンプルには、さまざまな環境変数をどのように使用できるかの例が含まれています。 [coordination-cmd][coord_cmd_example] Bash スクリプトは、共通アプリケーションと入力ファイルを Azure Storage からダウンロードし、Network File System (NFS) 共有をマスター ノード上で有効にし、マルチインスタンス タスクに割り当てられているその他のノードを NFS クライアントとして構成します。
->
->
+> Batch Linux MPI コード サンプルには、さまざまな環境変数をどのように使用できるかの例が含まれています。
 
 ## <a name="resource-files"></a>リソース ファイル
 マルチインスタンス タスクには、考慮すべきリソース ファイルのセットが 2 つあります。"*すべてのタスク*" (プライマリ タスクとサブタスクの両方) でダウンロードされる**共通リソース ファイル**と、マルチインスタンス タスク自体に指定され、"*プライマリ タスクでのみ*" ダウンロードされる**リソース ファイル**です。
@@ -338,7 +327,7 @@ Sample complete, hit ENTER to exit...
 [batch_labs]: https://azure.github.io/BatchExplorer/
 [blog_mpi_linux]: https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/
 [cmd_start]: https://technet.microsoft.com/library/cc770297.aspx
-[coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/linux/openfoam/coordination-cmd
+[coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/coordination-cmd
 [github_mpi]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip

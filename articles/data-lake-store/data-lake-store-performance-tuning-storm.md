@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 の Storm パフォーマンス チューニング ガイドライン | Microsoft Docs
-description: Azure Data Lake Storage Gen1 の Storm パフォーマンス チューニング ガイドライン
-services: data-lake-store
-documentationcenter: ''
+title: パフォーマンス チューニング - Storm と Azure Data Lake Storage Gen1
+description: Azure Data Lake Storage Gen1 上の Storm クラスターのパフォーマンス チューニング ガイドラインについて説明します。
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61436479"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691639"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight と Azure Data Lake Storage Gen1 上の Storm に対するパフォーマンス チューニング ガイダンス
 
@@ -104,14 +98,14 @@ Data Lake Storage Gen1 のパフォーマンスを最大化するには、ボル
 * ボルトの数を減らすことによって、バッファーの数を減らす。
 * 時間ベースまたはカウント ベースのポリシーを設定する。このポリシーでは x 回目のフラッシュごとまたは y ミリ秒ごとに hflush() がトリガーされ、これまで蓄積されたタプルについては受信確認が送信されます。
 
-この場合のスループットは比較的低いものの、イベント レートの低下とスループットの最大化は最大の目的ではないことに注意してください。 上記の対応策により、タプルがストアに流れるまでの合計時間を短縮することができます。 これは、イベント レートが低下するとしてもリアルタイム パイプラインを希望する場合に重要になります。 また、着信タプル レートが低い場合は、タプルがバッファー処理または処理されている間にタイムアウトしないように topology.message.timeout_secs パラメーターを調整する必要があることに注意してください。
+この場合のスループットは比較的低いものの、イベントのレートが低いため、スループットの最大化は最大の目的ではありません。 上記の対応策により、タプルがストアに流れるまでの合計時間を短縮することができます。 これは、イベント レートが低下するとしてもリアルタイム パイプラインを希望する場合に重要になります。 また、着信タプル レートが低い場合は、タプルがバッファー処理または処理されている間にタイムアウトしないように topology.message.timeout_secs パラメーターを調整する必要があることに注意してください。
 
 ## <a name="monitor-your-topology-in-storm"></a>Storm でのトポロジの監視  
 実行中のトポロジは、Storm ユーザー インターフェイスで監視することができます。 確認する必要がある主なパラメーターは次のとおりです。
 
 * **プロセスの実行における待ち時間の合計。** 1 つのタプルがスパウトによって出力され、ボルトによって処理されて、受信確認されるまでの平均時間です。
 
-* **ボルト プロセスの待ち時間の合計。** ボルトがタプルの受信確認を受信するまでの平均時間です。
+* **ボルト プロセスの待ち時間の合計。** ボルトのタプルが受信確認を受信するまでの平均時間です。
 
 * **ボルトの execute の待ち時間の合計。** ボルトの execute メソッドにかかった平均時間です。
 

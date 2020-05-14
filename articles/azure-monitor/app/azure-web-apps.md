@@ -3,13 +3,12 @@ title: Azure App Services のパフォーマンスを監視する | Microsoft Do
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729806"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733452"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -71,7 +70,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
     * たとえば、最初のサンプリング率を変更するには、`MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` と `100` の値の [アプリケーション設定] を作成できます。
 
-    * サポートされるアダプティブ サンプリング テレメトリ プロセッサ設定の一覧については、[コード](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)と[関連ドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sampling)を参照してください。
+    * サポートされるアダプティブ サンプリング テレメトリ プロセッサ設定の一覧については、[コード](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)と[関連ドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sampling)を参照してください。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -399,7 +398,11 @@ Application Insights エージェント/拡張機能の最新情報について�
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP および WordPress はサポートされていない
 
-PHP および WordPress サイトはサポートされていません。 現時点では、これらのワークロードをサーバー側で監視するために正式にサポートされている SDK/エージェントはありません。 ただし、クライアント側の JavaScript を Web ページに追加することで PHP または WordPress サイトでクライアント側のトランザクションを手動でインストルメント化するのは、[JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript) を使用することで実行できます。 
+PHP および WordPress サイトはサポートされていません。 現時点では、これらのワークロードをサーバー側で監視するために正式にサポートされている SDK/エージェントはありません。 ただし、クライアント側の JavaScript を Web ページに追加することで PHP または WordPress サイトでクライアント側のトランザクションを手動でインストルメント化するのは、[JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript) を使用することで実行できます。
+
+### <a name="connection-string-and-instrumentation-key"></a>接続文字列とインストルメンテーション キー
+
+コード不要の監視を使用している場合は、接続文字列のみが必要です。 ただし、手動のインストルメンテーションを実行する場合は、SDK の以前のバージョンとの下位互換性を維持するためにインストルメンテーション キーを設定することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 * [実行中のアプリに対してプロファイラーを実行](../app/profiler.md)します。

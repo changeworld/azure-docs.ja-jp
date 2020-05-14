@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7feb6282f3a3551e08d1bb8db2cf6ad2fcd754a8
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461397"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626158"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -30,7 +30,7 @@ Microsoft Azure SQL Database では、クラウドおよびエンタープライ
 
 ### <a name="ip-firewall-rules"></a>IP ファイアウォール規則
 
-IP ファイアウォール規則では、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。 詳細については、[Azure SQL Database および SQL Data Warehouse ファイアウォール規則の概要](sql-database-firewall-configure.md)に関するページを参照してください。
+IP ファイアウォール規則では、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。 詳細については、[Azure SQL Database と Azure Synapse Analytics のファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。
 
 ### <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォールの規則
 
@@ -56,7 +56,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 - **Azure Active Directory 認証**:
 
-    Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証では、管理者は、データベース ユーザーの ID とアクセス許可を他の Microsoft サービスと共に一元管理できます。 これにはパスワード ストレージの最小化が含まれます。また、これにより一元化されたパスワードのローテーション ポリシーが有効になります。
+    Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure SQL Database](sql-database-technical-overview.md) と [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証では、管理者は、データベース ユーザーの ID とアクセス許可を他の Microsoft サービスと共に一元管理できます。 これにはパスワード ストレージの最小化が含まれます。また、これにより一元化されたパスワードのローテーション ポリシーが有効になります。
 
      SQL Database で Azure AD 認証を使用するには、**Active Directory 管理者**と呼ばれるサーバー管理者を作成する必要があります。 詳細については、[Azure Active Directory 認証を使用した SQL Database への接続](sql-database-aad-authentication.md)に関するページを参照してください。 Azure AD 認証では、マネージド アカウントとフェデレーション アカウントの両方がサポートされます。 フェデレーション アカウントでは、Azure AD とフェデレーションされた顧客ドメインの Windows ユーザーとグループがサポートされます。
 
@@ -97,7 +97,7 @@ Advanced Threat Protection では、SQL Server ログを分析し、通常とは
 
 SQL Database では、[トランスポート層セキュリティ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
 
-SQL Server では、すべての接続に対して常に暗号化 (SSL/TLS) が適用されます。 これにより、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく、すべてのデータがクライアントとサーバー間の "移動中" に暗号化されることが保証されます。
+SQL Server では、すべての接続に対して常に暗号化 (TLS) が適用されます。 これにより、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく、すべてのデータがクライアントとサーバー間の "移動中" に暗号化されることが保証されます。
 
 ベスト プラクティスとして、アプリケーションの接続文字列に、暗号化接続を指定し、サーバー証明書を信頼 _**しない**_ ことをお勧めします。 これにより、アプリケーションはサーバー証明書を強制的に検証するため、アプリケーションの man in the middle 攻撃に対する脆弱性を防ぎます。
 

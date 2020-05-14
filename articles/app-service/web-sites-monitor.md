@@ -4,15 +4,15 @@ description: Azure portal を使用して Azure App Service のアプリを監�
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d84340730391abd7dba4d13202503d37941c09b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500424"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738101"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
@@ -49,7 +49,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 
 ![403 エラー メッセージ][http403]
 
-アプリのメモリ クォータを超えた場合は、アプリが再起動されます。
+アプリのメモリ クォータを超えた場合は、アプリが一時的に停止されます。
 
 ファイルシステム クォータを超えた場合は、すべての書き込み操作が失敗します。 書き込み操作の失敗には、ログへの書き込みも含まれます。
 
@@ -131,11 +131,7 @@ CPU の使用状況を反映するメトリックには、次の 2 つがあり�
 **CPU の割合**:Basic、Standard、および Premium プランでホストされるアプリで使用します。これらはスケール アウトが可能だからです。CPU 使用率は、すべてのインスタンスにわたる使用率の有効な指標になります。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>メトリックの粒度と保持ポリシー
-アプリと App Service プランのメトリックがサービスによってログに記録され、集計される際には、次の粒度と保持ポリシーが適用されます。
-
-* 粒度が**分**のメトリックは 30 時間保持されます。
-* 粒度が**時間**のメトリックは 30 日間保持されます。
-* 粒度が**日**のメトリックは 30 日間保持されます。
+アプリと App Service プランのメトリックは、サービスによってログに記録され、集計され、[これらの規則に従って保持されます](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure portal でのクォータとメトリックの監視
 アプリに影響するさまざまなクォータとメトリックの状態を確認するには、[Azure portal](https://portal.azure.com) にアクセスします。

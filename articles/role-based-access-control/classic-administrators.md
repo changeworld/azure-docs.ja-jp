@@ -1,5 +1,5 @@
 ---
-title: Azure の従来のサブスクリプション管理者 | Microsoft Docs
+title: Azure の従来のサブスクリプション管理者
 description: Azure の共同管理者ロールとサービス管理者ロールを追加または変更する方法、およびアカウント管理者を表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224703"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734860"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
-ロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセスを管理することをお勧めします。 ただし、クラシック デプロイ モデルをまだ使用している場合は、次の従来のサブスクリプション管理者ロールを使用する必要があります:サービス管理者および共同管理者。 詳しくは、[Azure Resource Manager とクラシック デプロイ](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを管理することをお勧めします。 ただし、クラシック デプロイ モデルをまだ使用している場合は、次の従来のサブスクリプション管理者ロールを使用する必要があります:サービス管理者および共同管理者。 詳しくは、[Azure Resource Manager とクラシック デプロイ](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
 この記事では、共同管理者ロールとサービス管理者ロールを追加または変更する方法、およびアカウント管理者を表示する方法について説明します。
 
@@ -71,9 +71,9 @@ ms.locfileid: "79224703"
 
 想定とは異なり、ユーザー B はすべてを管理できるわけではありません。 この違いの理由は、Microsoft アカウントはメンバー ユーザーとしてではなく、ゲスト ユーザーとしてサブスクリプションに追加されるためです。 Azure AD でゲスト ユーザーに割り当てられる既定のアクセス許可は、メンバー ユーザーとは異なります。 たとえば、メンバー ユーザーは Azure AD の他のユーザーを読み取ることができますが、ゲスト ユーザーには他のユーザーの読み取りは許可されていません。 メンバー ユーザーは新しいサービス プリンシパルを Azure AD に登録できますが、ゲスト ユーザーにはサービス プリンシパルの登録は許可されていません。
 
-ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD 管理者ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。 ゲスト ユーザーにアクセス権を付与する方法の詳細については、「[RBAC を使用して外部ゲスト ユーザーの Azure リソースへのアクセスを管理する](role-assignments-external-users.md)」を参照してください。
+ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。 ゲスト ユーザーにアクセス権を付与する方法の詳細については、「[Azure portal を使用して外部ゲスト ユーザーの Azure ロール割り当てを追加または削除する](role-assignments-external-users.md)」を参照してください。
 
-[Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md)は、[Azure AD 管理者ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md)とは異なることに注意してください。 組み込みロールは Azure AD に対するアクセス許可を一切付与しません。 詳細については、「[各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」をご覧ください。
+[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)は [Azure AD ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md)とは異なることに注意してください。 組み込みロールは Azure AD に対するアクセス許可を一切付与しません。 詳細については、「[各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」をご覧ください。
 
 メンバー ユーザーとゲスト ユーザーの比較情報については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」を参照してください。
 
@@ -150,6 +150,6 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-portal.md)
+* [各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)
 * [Azure サブスクリプション管理者を追加または変更する](../cost-management-billing/manage/add-change-subscription-administrator.md)

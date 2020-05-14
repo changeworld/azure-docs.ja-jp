@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406972"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611332"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -72,9 +72,9 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | `temporarily_unavailable` | サーバーが一時的にビジー状態であるため、要求を処理できません。 | 要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明する場合があります。 |
 
 ## <a name="lookup-current-error-code-information"></a>現在のエラー コード情報の参照
-エラー コードとメッセージは変更される可能性があります。  最新の情報については、`https://login.microsoftonline.com/error` ページを参照して、AADSTS のエラーの説明、修正、およびいくつかの推奨される回避策を確認してください。  
+エラー コードとメッセージは変更される可能性があります。  最新の情報については、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) ページを参照して、AADSTS のエラーの説明、修正、およびいくつかの推奨される回避策を確認してください。  
 
-返されたエラー コードの数値部分を検索します。  たとえば、"AADSTS16000" というエラー コードを受け取った場合は、`https://login.microsoftonline.com/error` で "16000" を検索します。  次のように URL にエラー コード番号を追加して、特定のエラーに直接リンクすることもできます。`https://login.microsoftonline.com/error?code=16000`
+返されたエラー コードの数値部分を検索します。  たとえば、"AADSTS16000" というエラー コードを受け取った場合は、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) で "16000" を検索します。  次のように URL にエラー コード番号を追加して、特定のエラーに直接リンクすることもできます。[https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000)
 
 ## <a name="aadsts-error-codes"></a>AADSTS エラー コード
 
@@ -189,6 +189,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS65001 | DelegationDoesNotExist - X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。このユーザーとリソースのインタラクティブな承認要求を送信してください。 |
 | AADSTS65004 | UserDeclinedConsent - ユーザーはアプリへのアクセスの同意を拒否しました。 ユーザーに、再度サインインしてアプリに同意させてください|
 | AADSTS65005 | MisconfiguredApplication - アプリの必須リソース アクセス リストに、リソースによって検出可能なアプリが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリを構成している可能性があります。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) を参照し、SAML に対して示されている解決策を試してください |
+| AADSTS650052 | このアプリには、組織 `\"{organization}\"` がサブスクライブしていないか有効にしていない `(\"{name}\")` サービスへのアクセスが必要です。 サービス サブスクリプションの構成を確認するには、IT 管理者にお問い合わせください。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 認証に失敗しました。 更新トークンが無効です。 次のいずれかの理由がエラーの原因の可能性があります。<ul><li>トークンのバインド ヘッダーが空</li><li>トークンのバインド ハッシュが一致しない</li></ul> |
 | AADSTS70001 | UnauthorizedClient - アプリケーションが無効です。 |
@@ -206,6 +207,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS75001 | BindingSerializationError - SAML メッセージ バインド中にエラーが発生しました。 |
 | AADSTS75003 | UnsupportedBindingError - アプリが、サポートされていないバインドに関連するエラーを返しました (SAML プロトコルの応答は、HTTP POST 以外のバインド経由では送信できません)。 |
 | AADSTS75005 | Saml2MessageInvalid - Azure AD は、SSO 用のアプリによって送信された SAML 要求をサポートしていません。 |
+| AADSTS7500514 | サポートされている SAML 応答の種類が見つかりませんでした。 サポートされている応答の種類は "Response" (XML 名前空間 "urn:oasis:names:tc:SAML:2.0:protocol") または "Assertion" (XML 名前空間 "urn:oasis:names:tc:SAML:2.0:assertion") です。 アプリケーション エラー - 開発者がこのエラーを処理します。|
 | AADSTS75008 | RequestDeniedError - SAML 要求に予期しない宛先が設定されているため、アプリからの要求は拒否されました。 |
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims - サービスでのユーザーの認証に使用された認証方法が、要求された認証方法と一致しません。 |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy - SAML2 認証要求の NameIdPolicy が無効です。 |
@@ -311,6 +313,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS700020 | InteractionRequired - アクセス許可には操作が必要です。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 入力パラメーターのスコープに指定された値に複数のリソースが含まれているため無効です。 |
 | AADSTS700023 | InvalidResourcelessScope - アクセス トークンを要求するときに、入力パラメーターのスコープに指定された値が無効です。 |
+| AADSTS7000215 | 無効なクライアント シークレットが指定されています。 開発者エラー - アプリは、必要な認証パラメーターまたは正しい認証パラメーターを使用せずにサインインしようとしています。|
 | AADSTS7000222| InvalidClientSecretExpiredKeysProvided - 指定されたクライアント秘密鍵の有効期限が切れています。 Azure portal にアクセスしてアプリの新しいキーを作成するか、またはセキュリティを強化するために証明書資格情報を使用することを検討してください (https://aka.ms/certCreds )。 |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 指定された承認コードは、他のテナントに対して使用することを目的にしているため、拒否されました。 OAuth2 承認コードは、それが取得されたときの同じテナント (必要に応じて /common または /{tenant-ID}) に対して引き換える必要があります。 |
 | AADSTS1000000 | UserNotBoundError - Bind API では Azure AD ユーザーも外部 IDP による認証が必要ですが、まだ行われていません。 |

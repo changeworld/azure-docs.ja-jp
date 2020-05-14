@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364162"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598489"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -94,7 +94,13 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 これは、新しいマネージド インスタンスがバックグラウンドでプロビジョニングされ、データベースがプロセスの最後の迅速なフェールオーバーによって古いインスタンスと新しいインスタンスの間で自動的に転送されるため、時間のかかる操作です。 
 
+**ハードウェアの両方の世代が同じリージョンでサポートされていない場合はどうなりますか?**
+
 ハードウェアの両方の世代が同じリージョンでサポートされていない場合、ハードウェアの世代を変更することはできますが、手動で行う必要があります。 その場合は、必要なハードウェアの世代が使用可能になっているリージョンに新しいインスタンスをプロビジョニングし、古いインスタンスと新しいインスタンスの間でデータのバックアップと復元を手動で行う必要があります。
+
+**更新操作を実行できるだけの十分な IP アドレスが存在しない場合はどうなりますか?**
+
+マネージド インスタンスのプロビジョニング先となるサブネットに十分な IP アドレスが存在しない場合は、新しいサブネットを作成したうえで、その中に新しいマネージド インスタンスを作成する必要があります。 また、新しいサブネットを作成するにあたっては、将来の更新操作で同様の問題が生じないよう、より多くの IP アドレスを確保することをお勧めします。適切なサブネット サイズについては、[VNet のサブネット サイズを決める方法](sql-database-managed-instance-determine-size-vnet-subnet.md)に関するページを参照してください。 新しいインスタンスのプロビジョニング後、古いインスタンスと新しいインスタンスとの間で、データのバックアップと復元を手動で行うことができるほか、インスタンス間の[ポイントインタイム リストア](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell)を実行することができます。 
 
 
 ## <a name="tune-performance"></a>パフォーマンスの調整

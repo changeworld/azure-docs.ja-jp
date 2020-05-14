@@ -1,78 +1,93 @@
 ---
-title: Marketo でリード管理を構成する | Azure Marketplace
-description: Azure Marketplace のお客様向けに Marketo でリード管理を構成します。
+title: Marketo でのリード管理 - Microsoft コマーシャル マーケットプレース
+description: Marketo CRM システムを使用して、Microsoft AppSource および Azure Marketplace からリードを管理する方法について説明します。
 author: qianw211
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: dsindona
-ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281512"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789880"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Marketo でリード管理を構成する
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Marketo を使用してコマーシャル マーケットプレースのリードを管理する
 
-この記事では、マーケットプレース オファーからリードを処理するように Marketo CRM システムをセットアップする方法について説明します。
+この記事では、Microsoft AppSource および Azure Marketplace のオファーからリードを処理するように Marketo CRM システムを設定する方法について説明します。
 
 ## <a name="set-up-your-marketo-crm-system"></a>Marketo CRM システムを設定する
 
 1. Marketo にサインインします。
-2. **[Design Studio]** を選択します。
+
+1. **[Design Studio]** を選択します。
+
     ![Marketo の Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
-3.  **[New Form]\(新しいフォーム\)** を選択します。
-    ![Marketo の [New Form]\(新しいフォーム\)](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+1.  **[New Form]\(新しいフォーム\)** を選択します。
 
-4.  [New Form]\(新しいフォーム\) の必須フィールドを入力して、 **[Create]\(作成\)** を選択します。
+    ![Marketo の新しいフォーム](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+
+1.  **[新しいフォーム]** ダイアログ ボックスの必須フィールドを入力して、 **[作成]** を選択します。
+
     ![Marketo の新しいフォームの作成](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
-5.  [Field Details]\(フィールドの詳細\) で、 **[Finish]\(完了\)** を選択します。
+1.  **[フィールドの詳細]** で、 **[完了]** を選択します。
+
     ![Marketo の完了フォーム](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
-6.  承認して閉じます。
+1.  承認して閉じます。
 
-7. *[MarketplaceLeadBacked]* タブで、 **[埋め込みコード]** を選択します。 
+1. **[MarketplaceLeadBackend]** タブで、 **[埋め込みコード]** を選択します。 
 
-    ![埋め込みコード](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
+    ![Marketo 埋め込みコード](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
-8. Marketo の [Embed Code]\(埋め込みコード\) では、次の例のようなコードが表示されます。
+1. Marketo の [Embed Code]\(埋め込みコード\) では、次の例のようなコードが表示されます。
 
-    ```
+    ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
 
-9. [埋め込みコード] フォームに表示されている以下のフィールドの値をコピーします。 これらの値を使用して、次の手順でリードを受け取るようにオファーを構成します。 Marketo の [Embed Code]\(埋め込みコード\) の例から必要な ID を取得するには、次の例をガイドとして使用します。
+1. [埋め込みコード] フォームに表示されている以下のフィールドの値をコピーします。 これらの値を使用して、次の手順でリードを受け取るようにオファーを構成します。 Marketo の埋め込みコードの例から必要な ID を取得するには、次の例をガイドとして使用します。
 
     - Server ID = **ys12**
     - Munchkin ID = **123-PQR-789**
     - Form ID = **1179**
 
-    **これらの値を把握する別の方法**
+    これらの値を把握する別の方法を次に示します。
 
-    - サーバー ID は、Marketo インスタンスの URL ("`serverID.marketo.com`" など) にあります。
-    - [Munchkin アカウント ID] フィールドで [管理者] > [Munchkin] メニューに移動するか、Marketo REST API ホスト サブドメインの最初の部分 (`https://{Munchkin ID}.mktorest.com`) から、サブスクリプションの Munching ID を取得します。
-    - フォーム ID は、マーケットプレースから リード をルーティングするために手順 7. で作成した [埋め込みコード] フォームの ID です。
+    - サーバー ID は、Marketo インスタンスの URL (`serverID.marketo.com` など) にあります。
+    - **[Munchkin アカウント ID]** フィールドで **[管理者]**  >  **[Munchkin]** メニューの順に移動するか、Marketo REST API ホスト サブドメインの最初の部分 (`https://{Munchkin ID}.mktorest.com`) から、ご利用のサブスクリプションの Munchkin ID を取得します。
+    - フォーム ID は、マーケットプレースからリードをルーティングするために手順 7 で作成した [埋め込みコード] フォームの ID です。
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>リードを Marketo に送信するようにオファーを構成する
 
-発行ポータル内でオファーのリード管理情報を構成する準備ができたら、次の手順に従います。 
+発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、これらの手順に従います。 
 
-1. オファーの **[オファーのセットアップ]** ページに移動します。
-1. [リード管理] セクションで **[接続]** を選択します。 
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 
-    ![[リード管理] - [接続]](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 
-1. [接続の詳細] ポップアップ ウィンドウで、[リードのターゲット] として **[Marketo]** を選択します。
+1. **[リード管理]** セクションで **[接続]** を選択します。 
+
+    ![[リード管理] セクションの [接続] ボタン](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+
+1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** として **[Marketo]** を選択します。
 
     ![リードのターゲットを選択する](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-4. **[サーバー ID]** 、 **[Munching アカウント ID]** および **[フォーム ID]** を指定します。
+1. **[サーバー ID]** 、 **[Munchkin アカウント ID]** および **[フォーム ID]** を指定します。
 
-    >[!Note]
-    >オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。 
+    > [!NOTE]
+    > オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。 
 
+1. **[連絡先の電子メール]** で、新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーのメール アドレスを入力します。 セミコロンで区切ると、複数のメール アドレスを指定できます。
+
+1. **[OK]** を選択します。
+
+   リードのターゲットに正常に接続されたことを確認するには、 **[検証]** を選択します。 成功した場合は、リードのターゲットにテスト リードが表示されます。
+
+   ![[接続の詳細] ポップアップ ウィンドウ](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

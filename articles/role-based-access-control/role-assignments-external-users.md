@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure portal を使用して外部ユーザーのロールの割り当てを追加または削除する
-description: Azure ロールベースのアクセス制御 (RBAC) を使用して、組織外のユーザーに Azure リソースへのアクセス権を付与する方法について説明します。
+title: Azure portal を使用して外部ユーザーの Azure ロール割り当てを追加または削除する - Azure RBAC
+description: Azure portal と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、組織外のユーザーに Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225367"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735761"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用して外部ゲスト ユーザーにロールの割り当てを追加または削除する
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal を使用して外部ゲスト ユーザーの Azure ロール割り当てを追加または削除する
 
-[Azure ロールベースのアクセス制御 (RBAC)](overview.md) を使用すると、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や中小企業向けの、優れたセキュリティ管理を実現できます。 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) の機能を使用して外部ゲスト ユーザーと共同作業を行うことができます。また、RBAC を使用して、自分の環境でゲスト ユーザーに必要なアクセス許可のみを付与することができます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) を使用すると、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や中小企業向けの、優れたセキュリティ管理を実現できます。 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) の機能を使用して外部ゲスト ユーザーと共同作業を行うことができます。また、Azure RBAC を使用して、自分の環境でゲスト ユーザーに必要なアクセス許可のみを付与することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,7 +69,7 @@ Azure Active Directory ページを使用してディレクトリにゲスト �
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>ゲスト ユーザーにロールの割り当てを追加する
 
-RBAC でアクセス権を付与するには、ロールを割り当てます。 ゲスト ユーザーにロールの割り当てを追加するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。 次の手順に従って、さまざまなスコープでゲスト ユーザーにロールの割り当てを追加します。
+Azure RBAC でアクセス権を付与するには、ロールを割り当てます。 ゲスト ユーザーにロールの割り当てを追加するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。 次の手順に従って、さまざまなスコープでゲスト ユーザーにロールの割り当てを追加します。
 
 1. Azure Portal で、 **[すべてのサービス]** をクリックします。
 
@@ -91,7 +91,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
     ![[追加] メニュー](./media/role-assignments-external-users/add-menu.png)
 
-1. **[ロール]** ボックスの一覧で、 **[仮想マシン共同作成者]** などのロールを選択します。
+1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
 
 1. **[選択]** 一覧で、ゲスト ユーザーを選択します。 一覧にユーザーが表示されない場合には、 **[選択]** ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
 
@@ -121,7 +121,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
     ![[追加] メニュー](./media/role-assignments-external-users/add-menu.png)
 
-1. **[ロール]** ボックスの一覧で、 **[仮想マシン共同作成者]** などのロールを選択します。
+1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
 
 1. **[選択]** 一覧に、招待する相手のメール アドレスを入力し、その人物を選択します。
 
@@ -159,7 +159,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
    ![ロールの割り当ての削除メッセージ](./media/role-assignments-external-users/remove-role-assignment.png)
 
-1. 表示されるロールの割り当ての削除メッセージで、 **[はい]** をクリックします。
+1. ロールの割り当ての削除メッセージが表示されたら、 **[はい]** をクリックします。
 
 1. 左側のナビゲーション バーで、 **[Azure Active Directory]**  >  **[ユーザー]** をクリックします。
 
@@ -171,7 +171,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
 1. 表示される削除メッセージで、 **[はい]** をクリックします。
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 ### <a name="guest-user-cannot-browse-the-directory"></a>ゲスト ユーザーがディレクトリを参照できません
 

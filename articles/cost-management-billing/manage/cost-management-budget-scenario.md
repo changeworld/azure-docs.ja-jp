@@ -6,14 +6,14 @@ ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: a9e1d838e7d3322ddf218c5cbec40b652709b5d7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 633ca5cd16b8e730225900c30c575e74a0956ada
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586380"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791682"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -273,7 +273,7 @@ Cost Management の[予算機能](../costs/tutorial-acm-create-budgets.md)を使
 1. **[Value]** には、前のセクションの最後に ArmClient を使用して作成したトークンを指定します。
 1. Postman の **[Body]** タブを選択します。
 1. **[raw]** オプション ボタンを選択します。
-1. テキスト ボックスに、下記のサンプル予算定義を貼り付けます。ただし、**subscriptionID**、**budgetname**、および **actiongroupname** の各パラメーターを、自分のサブスクリプション ID、予算の一意の名前、および作成したアクション グループ名で置き換えてください (URL と要求の本文の両方)。
+1. テキスト ボックスに、下記のサンプル予算定義を貼り付けます。ただし、`subscriptionID`、`resourcegroupname`、および `actiongroupname` の各パラメーターを、自分のサブスクリプション ID、リソース グループの一意の名前、および作成したアクション グループ名で置き換えてください (URL と要求の本文の両方)。
 
     ```
         {

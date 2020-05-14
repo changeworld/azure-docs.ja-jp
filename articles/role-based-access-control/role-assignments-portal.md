@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure portal を使用してロールの割り当てを追加または削除する
-description: Azure のロールベースのアクセス制御 (RBAC) と Azure portal を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
+title: Azure portal を使用して Azure ロールの割り当てを追加または削除する - Azure RBAC
+description: Azure portal と Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225587"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735693"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する
+# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure ロールの割り当てを追加または削除する
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、Azure portal を使用してロールを割り当てる方法について説明します。
 
@@ -143,7 +143,7 @@ Azure RBAC では、Azure リソースからアクセス権を削除するため
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する](role-assignments-list-portal.md)
-- [チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
-- [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)
+- [Azure portal を使用して Azure でのロールの割り当てを一覧表示する](role-assignments-list-portal.md)
+- [チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
+- [Azure RBAC のトラブルシューティング](troubleshooting.md)
 - [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)

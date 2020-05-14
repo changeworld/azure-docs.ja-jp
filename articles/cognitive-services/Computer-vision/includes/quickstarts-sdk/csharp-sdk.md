@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 522adc0f07f4ab21e391b952284dff97b089dccc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 5a2de6cb4c7de6f789041d8df7ca562e97ee0863
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791656"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595267"
 ---
 <a name="HOLTop"></a>
 
@@ -23,7 +23,7 @@ ms.locfileid: "81791656"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
-* 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* 最新バージョンの [.NET Core SDK](https://dotnet.microsoft.com/download/)。
 
 ## <a name="setting-up"></a>設定
 
@@ -42,13 +42,13 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 
 コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`computer-vision-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。*ComputerVisionQuickstart.cs*。
 
-```console
+```dotnetcli
 dotnet new console -n computer-vision-quickstart
 ```
 
 新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -74,7 +74,7 @@ Build succeeded.
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Computer Vision クライアント ライブラリをインストールします。
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
 ```
 
@@ -253,7 +253,7 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
 
-```dotnet
+```dotnetcli
 dotnet run
 ```
 

@@ -3,15 +3,15 @@ title: Azure Logic Apps のコネクタ
 description: Azure Logic Apps のコネクタ (組み込み、マネージド、オンプレミス、統合アカウント、ISE、エンタープライズ コネクタなど) を使用してワークフローを自動化する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/05/2020
-ms.openlocfilehash: 3010f3c99a5b214c2503f890321cbb73427e3c20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: f2a2ee7a2806a753ffd159c91ed782634e74c704
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225887"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838669"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -56,6 +56,9 @@ Logic Apps には[数百のコネクタ](https://docs.microsoft.com/connectors)�
   | [**オンプレミス コネクタ**](#on-premises-connectors) | [オンプレミス データ ゲートウェイ][gateway-doc]をインストールして設定した後、これらのコネクタを使用すると、ロジック アプリは、SQL Server、SharePoint Server、Oracle DB、ファイル共有などのオンプレミス システムにアクセスできます。 |
   | [**統合アカウント コネクタ**](#integration-account-connectors) | 統合アカウントを作成して料金を支払うと使用可能になります。これらのコネクタは、XML を変換および検証したり、フラット ファイルをエンコードおよびデコードしたり、AS2、EDIFACT、および X12 プロトコルを使用して企業間 (B2B) メッセージを処理したりします。 |
   |||
+
+  > [!IMPORTANT]
+  > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
 
 <a name="integration-service-environment"></a>
 
@@ -189,10 +192,11 @@ Logic Apps では、SAP や IBM MQ などのエンタープライズ システ�
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-[![API アイコン][as2-icon]<br>**AS2**][as2-doc] | [![API アイコン][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | [![API アイコン][azure-cosmos-db-icon]<br>**Azure Cosmos <br>DB**][azure-cosmos-db-doc] | [![API アイコン][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc] | [![API アイコン][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc] |
-| [![API アイコン][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc] | [![API アイコン][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc] | [![API アイコン][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc] | [![API アイコン][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc] | [![API アイコン][edifact-icon]<br>**EDIFACT**][edifact-doc] |
-| [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc] | [![API アイコン][ftp-icon]<br>**FTP**][ftp-doc] | [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] |
-| [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc] | [![API アイコン][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | [![API アイコン][smtp-icon]<br>**SMTP**][smtp-doc] | [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API アイコン][x12-icon]<br>**X12**][x12-doc] |
+[![API アイコン][as2-icon]<br>**AS2**][as2-doc] | [![API アイコン][azure-automation-icon]<br>**Azure <br>Automation**][azure-automation-doc] | [![API アイコン][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | [![API アイコン][azure-cosmos-db-icon]<br>**Azure Cosmos <br>DB**][azure-cosmos-db-doc] | [![API アイコン][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc] |
+[![API アイコン][azure-event-grid-icon]<br>**Azure Event <br>Grid**][azure-event-grid-doc] | [![API アイコン][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc] | [![API アイコン][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc] | [![API アイコン][azure-monitor-logs-icon]<br>**Azure Monitor <br>ログ**][azure-monitor-logs-doc] | [![API アイコン][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc] |
+| [![API アイコン][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc] | [![API アイコン][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc] | [![API アイコン][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc] | [![API アイコン][edifact-icon]<br>**EDIFACT**][edifact-doc] | [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc] |
+| [![API アイコン][ftp-icon]<br>**FTP**][ftp-doc] | [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] | [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc] |
+| [![API アイコン][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | [![API アイコン][smtp-icon]<br>**SMTP**][smtp-doc] | [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API アイコン][x12-icon]<br>**X12**][x12-doc] |
 ||||||
 
 詳細については、以下のトピックを参照してください。
@@ -247,106 +251,6 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 * [ロジック アプリのカスタム コネクタを作成する](https://docs.microsoft.com/connectors/custom-connectors/)
 * [ロジック アプリ用のカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
 
-<!--Misc doc links-->
-[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータに接続する"
-
-<!--Built-in doc links-->
-[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "API を管理および発行するための Azure API Management サービス インスタンスを作成します。"
-[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "App Service API Apps を使用してロジック アプリを統合します。"
-[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Azure Functions を使用してロジック アプリを統合します。"
-[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "グループ、またはバッチとしてメッセージを処理します。"
-[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。"
-[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "配列内のすべての項目に対して同じアクションを実行します。"
-[http-doc]: ./connectors-native-http.md "ロジック アプリから HTTP または HTTPS エンドポイントを呼び出す"
-[http-request-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求を受信する"
-[http-response-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求に応答する"
-[http-swagger-doc]: ./connectors-native-http-swagger.md "ロジック アプリから REST エンドポイントを呼び出す"
-[http-webhook-doc]: ./connectors-native-webhook.md "HTTP または HTTPS エンドポイントからの特定のイベントを待機する"
-[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "入れ子になったワークフローを使用してロジック アプリを統合します。"
-[query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "クエリ アクションで、配列の選択とフィルター処理を行います。"
-[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "スケジュールに基づいてロジック アプリを実行する"
-[schedule-delay-doc]: ./connectors-native-delay.md "次のアクションの実行を遅らせる"
-[schedule-delay-until-doc]: ./connectors-native-delay.md "次のアクションの実行を遅らせる"
-[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "定期的なスケジュールでロジック アプリを実行する"
-[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "連続したチャンク内のデータを処理する必要があるロジック アプリを実行する"
-[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "アクションをグループに編成します。グループ内のアクションの実行が完了すると、グループ独自のステータスが取得されます。"
-[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "アクションをケースに編成します。ケースには、一意の値が割り当てられます。値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。一致が存在しない場合は、既定のケースを実行します。"
-[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "アクティブに実行中のロジック アプリのワークフローを停止またはキャンセルします。"
-[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。"
-[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "配列のフィルター処理や CSV と HTML のテーブルの作成などのデータ操作を実行します。"
-[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "変数に対する操作を実行します。たとえば、文字列または配列の変数に対する初期化、設定、増分、減分、追加などです。"
-
-<!--Managed connector doc links-->
-[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Azure Blob Storage コネクタを使用して BLOB コンテナーのファイルを管理します。"
-[azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "Azure Cosmos DB に接続して、ドキュメントとストアド プロシージャにアクセスできるようにします"
-[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "Azure やサードパーティのリソースが変更されたときなど、Event Grid により発行されるイベントを監視します"
-[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Azure Event Hubs に接続して、ロジック アプリと Event Hubs 間でイベントを送受信できるようにします"
-[azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "Azure Storage アカウントに接続して、ファイルを作成、更新、取得、削除できるようにします"
-[azure-queues-doc]: https://docs.microsoft.com/connectors/azurequeues/ "Azure Storage アカウントに接続して、キューとメッセージの作成と管理ができるようにします"
-[azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりします。"
-[azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "Azure SQL Data Warehouse に接続して、データを表示できるようにします"
-[azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "Azure Storage アカウントに接続して、テーブルなどの作成、更新、クエリ実行ができるようにします"
-[biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "BizTalk Server に接続して、BizTalk ベースのアプリケーションを Azure Logic Apps と並行して実行できるようにします"
-[box-doc]: ./connectors-create-api-box.md "Box に接続します。ファイルのアップロード、取得、削除、一覧表示などを実行します。"
-[dropbox-doc]: ./connectors-create-api-dropbox.md "Dropbox に接続します。ファイルのアップロード、取得、削除、一覧表示などを実行します。"
-[dynamics-365-doc]: ./connectors-create-api-crmonline.md "Dynamics CRM Online に接続して、CRM Online データを操作できるようにします"
-[facebook-doc]: ./connectors-create-api-facebook.md "Facebook に接続します。タイムラインへの投稿、ページ フィードの取得などを行います。"
-[file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "オンプレミスのファイル システムに接続します。"
-[ftp-doc]: ./connectors-create-api-ftp.md "FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などの FTP タスクを実行できます。"
-[github-doc]: ./connectors-create-api-github.md "GitHub に接続して、問題を追跡できます。"
-[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "Google カレンダーに接続してカレンダーを管理できます"
-[google-drive-doc]: ./connectors-create-api-googledrive.md "GoogleDrive に接続して、データを操作できるようにします"
-[google-sheets-doc]: ./connectors-create-api-googlesheet.md "Google スプレッドシートに接続して、シートを変更できるようにします"
-[google-tasks-doc]: ./connectors-create-api-googletasks.md "Google タスクに接続して、タスクを管理できるようにします"
-[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "IBM メインフレーム上の 3270 アプリに接続する"
-[ibm-db2-doc]: ./connectors-create-api-db2.md "クラウドまたはオンプレミスの IBM DB2 に接続します。行の更新、テーブルの取得などを行います。"
-[ibm-informix-doc]: ./connectors-create-api-informix.md "クラウドまたはオンプレミスの Informix に接続します。行の読み取り、テーブルの一覧表示などを実行します。"
-[ibm-mq-doc]: ./connectors-create-api-mq.md "オンプレミスまたは Azure 内の IBM MQ に接続し、メッセージを送受信します。"
-[instagram-doc]: ./connectors-create-api-instagram.md "Instagram に接続します。イベントをトリガーしたり、イベントに対するアクションを実行したりします。"
-[mailchimp-doc]: ./connectors-create-api-mailchimp.md "MailChimp アカウントに接続します。メールの管理と自動化を行います。"
-[mandrill-doc]: ./connectors-create-api-mandrill.md "通信のために Mandrill に接続します。"
-[mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "オンプレミスの MySQL データベースに接続して、データの読み取りと書き込みができるようにします"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Office 365 アカウントに接続して、電子メールの送受信、予定表と連絡先の管理などができるようにします"
-[office-365-users-doc]: ./connectors-create-api-office365-users.md
-[onedrive-doc]: ./connectors-create-api-onedrive.md "個人用の Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧表示などができるようにします"
-[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "ビジネス向けの Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧表示などができるようにします"
-[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Oracle データベースに接続して、行の追加、挿入、削除などができるようにします"
-[outlook.com-doc]: ./connectors-create-api-outlook.md "Outlook メールボックスに接続して、電子メール、予定表、連絡先などを管理できるようにします"
-[postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "PostgreSQL データベースに接続して、テーブルからデータを読み取ることができるようにします"
-[project-online-doc]: ./connectors-create-api-projectonline.md "Microsoft Project Online に接続して、プロジェクト、タスク、リソースなどを管理できるようにします"
-[rss-doc]: ./connectors-create-api-rss.md "フィード アイテムを発行および取得したり、RSS フィードに新しいアイテムが発行されたときに操作をトリガーしたりします"
-[salesforce-doc]: ./connectors-create-api-salesforce.md "Salesforce アカウントに接続します。アカウント、潜在顧客、営業案件などを管理します。"
-[sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "オンプレミスの SAP システムに接続します。"
-[sendgrid-doc]: ./connectors-create-api-sendgrid.md "SendGrid に接続します。メールの送信と受信者リストの管理を行います。"
-[sftp-ssh-doc]: ./connectors-sftp-ssh.md "SSH を使用して SFTP アカウントに接続します。ファイルのアップロード、取得、削除などを実行します。"
-[sharepoint-server-doc]: ./connectors-create-api-sharepointserver.md "SharePoint オンプレミス サーバーに接続します。ドキュメント、リスト アイテムなどを管理します。"
-[sharepoint-online-doc]: ./connectors-create-api-sharepointonline.md "SharePoint Online に接続します。ドキュメント、リスト アイテムなどを管理します。"
-[slack-doc]: ./connectors-create-api-slack.md "Slack に接続し、Slack チャンネルにメッセージを投稿します。"
-[smtp-doc]: ./connectors-create-api-smtp.md "SMTP サーバーに接続し、添付ファイルを含むメールを送信します。"
-[sparkpost-doc]: ./connectors-create-api-sparkpost.md "通信のために SparkPost に接続します。"
-[sql-server-doc]: ./connectors-create-api-sqlazure.md "Azure SQL Database または SQL Server に接続します。SQL データベース テーブルのエントリを作成、更新、取得、削除します"
-[teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "Teradata データベースに接続して、テーブルからデータを読み取ります"
-[trello-doc]: ./connectors-create-api-trello.md "Trello に接続します。プロジェクトを管理し、どのようなものでも整理してだれとでも共有できます。"
-[twilio-doc]: ./connectors-create-api-twilio.md "Twilio に接続します。メッセージの送信と取得、利用可能な番号の取得、着信電話番号の管理などを実行します。"
-[twitter-doc]: ./connectors-create-api-twitter.md "Twitter に接続します。タイムラインの取得やツイートの投稿などを実行します。"
-[yammer-doc]: ./connectors-create-api-yammer.md "Yammer に接続します。メッセージの投稿、新しいメッセージの取得などを実行します。"
-[youtube-doc]: ./connectors-create-api-youtube.md "YouTube に接続します。ビデオとチャンネルを管理します。"
-
-<!--Enterprise Intregation Pack doc links-->
-[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "AS2 プロトコルを使用するメッセージをエンコードおよびデコードします"
-[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "EDIFACT プロトコルを使用するメッセージをエンコードおよびデコードします"
-[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "EDIFACT プロトコルを使用するメッセージをデコードします"
-[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "EDIFACT プロトコルを使用するメッセージをエンコードします"
-[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
-[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
-[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウント アーティファクトのメタデータを管理します"
-[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Liquid テンプレートを使用して JSON を変換します"
-[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "X12 プロトコルを使用するメッセージをエンコードおよびデコードします"
-[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "X12 プロトコルを使用するメッセージをデコードします"
-[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 プロトコルを使用するメッセージをエンコードします"
-[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML メッセージ変換します"
-[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML メッセージを検証します"
-
 <!-- Built-ins icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
 [azure-app-services-icon]: ./media/apis-list/azure-app-services.png
@@ -383,7 +287,9 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png
 [azure-event-hubs-icon]: ./media/apis-list/azure-event-hubs.png
 [azure-file-storage-icon]: ./media/apis-list/azure-file-storage.png
+[azure-key-vault-icon]: ./media/apis-list/azure-key-vault.png
 [azure-ml-icon]: ./media/apis-list/azure-ml.png
+[azure-monitor-logs-icon]: ./media/apis-list/azure-monitor-logs.png
 [azure-queues-icon]: ./media/apis-list/azure-queues.png
 [azure-resource-manager-icon]: ./media/apis-list/azure-resource-manager.png
 [azure-service-bus-icon]: ./media/apis-list/azure-service-bus.png
@@ -466,3 +372,107 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 [x12-icon]: ./media/apis-list/x12.png
 [xml-validate-icon]: ./media/apis-list/xml-validation.png
 [xml-transform-icon]: ./media/apis-list/xsl-transform.png
+
+<!--Other doc links-->
+[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータに接続する"
+
+<!--Built-in doc links-->
+[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "API を管理および発行するための Azure API Management サービス インスタンスを作成します。"
+[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "App Service API Apps を使用してロジック アプリを統合します。"
+[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Azure Functions を使用してロジック アプリを統合します。"
+[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "グループ、またはバッチとしてメッセージを処理します。"
+[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。"
+[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "配列内のすべての項目に対して同じアクションを実行します。"
+[http-doc]: ./connectors-native-http.md "ロジック アプリから HTTP または HTTPS エンドポイントを呼び出す"
+[http-request-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求を受信する"
+[http-response-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求に応答する"
+[http-swagger-doc]: ./connectors-native-http-swagger.md "ロジック アプリから REST エンドポイントを呼び出す"
+[http-webhook-doc]: ./connectors-native-webhook.md "HTTP または HTTPS エンドポイントからの特定のイベントを待機する"
+[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "入れ子になったワークフローを使用してロジック アプリを統合します。"
+[query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "クエリ アクションで、配列の選択とフィルター処理を行います。"
+[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "スケジュールに基づいてロジック アプリを実行する"
+[schedule-delay-doc]: ./connectors-native-delay.md "次のアクションの実行を遅らせる"
+[schedule-delay-until-doc]: ./connectors-native-delay.md "次のアクションの実行を遅らせる"
+[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "定期的なスケジュールでロジック アプリを実行する"
+[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "連続したチャンク内のデータを処理する必要があるロジック アプリを実行する"
+[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "アクションをグループに編成します。グループ内のアクションの実行が完了すると、グループ独自のステータスが取得されます。"
+[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "アクションをケースに編成します。ケースには、一意の値が割り当てられます。値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。一致が存在しない場合は、既定のケースを実行します。"
+[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "アクティブに実行中のロジック アプリのワークフローを停止またはキャンセルします。"
+[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "配列のフィルター処理や CSV と HTML のテーブルの作成などのデータ操作を実行します。"
+[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "変数に対する操作を実行します。たとえば、文字列または配列の変数に対する初期化、設定、増分、減分、追加などです。"
+
+<!--Managed connector doc links-->
+[azure-automation-doc]: https://docs.microsoft.com/connectors/azureautomation/ "クラウドおよびオンプレミス インフラストラクチャ用のオートメーション ジョブを作成して管理します"
+[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Azure Blob Storage コネクタを使用して BLOB コンテナーのファイルを管理します。"
+[azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "Azure Cosmos DB に接続して、ドキュメントとストアド プロシージャにアクセスできるようにします"
+[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "Azure やサードパーティのリソースが変更されたときなど、Event Grid により発行されるイベントを監視します"
+[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Azure Event Hubs に接続して、ロジック アプリと Event Hubs 間でイベントを送受信できるようにします"
+[azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "Azure Storage アカウントに接続して、ファイルを作成、更新、取得、削除できるようにします"
+[azure-key-vault-doc]: https://docs.microsoft.com/connectors/keyvault/ "シークレットとキーを管理できるように Azure Key Vault に接続します"
+[azure-monitor-logs-doc]: https://docs.microsoft.com/connectors/azuremonitorlogs/ "Log Analytics ワークスペースと Application Insights コンポーネントの全体にわたって、Azure Monitor ログに対するクエリを実行します"
+[azure-queues-doc]: https://docs.microsoft.com/connectors/azurequeues/ "Azure Storage アカウントに接続して、キューとメッセージの作成と管理ができるようにします"
+[azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりします。"
+[azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "Azure SQL Data Warehouse に接続して、データを表示できるようにします"
+[azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "Azure Storage アカウントに接続して、テーブルなどの作成、更新、クエリ実行ができるようにします"
+[biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "BizTalk Server に接続して、BizTalk ベースのアプリケーションを Azure Logic Apps と並行して実行できるようにします"
+[box-doc]: ./connectors-create-api-box.md "Box に接続します。ファイルのアップロード、取得、削除、一覧表示などを実行します。"
+[dropbox-doc]: ./connectors-create-api-dropbox.md "Dropbox に接続します。ファイルのアップロード、取得、削除、一覧表示などを実行します。"
+[dynamics-365-doc]: ./connectors-create-api-crmonline.md "Dynamics CRM Online に接続して、CRM Online データを操作できるようにします"
+[facebook-doc]: ./connectors-create-api-facebook.md "Facebook に接続します。タイムラインへの投稿、ページ フィードの取得などを行います。"
+[file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "オンプレミスのファイル システムに接続します。"
+[ftp-doc]: ./connectors-create-api-ftp.md "FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などの FTP タスクを実行できます。"
+[github-doc]: ./connectors-create-api-github.md "GitHub に接続して、問題を追跡できます。"
+[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "Google カレンダーに接続してカレンダーを管理できます"
+[google-drive-doc]: ./connectors-create-api-googledrive.md "GoogleDrive に接続して、データを操作できるようにします"
+[google-sheets-doc]: ./connectors-create-api-googlesheet.md "Google スプレッドシートに接続して、シートを変更できるようにします"
+[google-tasks-doc]: ./connectors-create-api-googletasks.md "Google タスクに接続して、タスクを管理できるようにします"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "IBM メインフレーム上の 3270 アプリに接続する"
+[ibm-db2-doc]: ./connectors-create-api-db2.md "クラウドまたはオンプレミスの IBM DB2 に接続します。行の更新、テーブルの取得などを行います。"
+[ibm-informix-doc]: ./connectors-create-api-informix.md "クラウドまたはオンプレミスの Informix に接続します。行の読み取り、テーブルの一覧表示などを実行します。"
+[ibm-mq-doc]: ./connectors-create-api-mq.md "オンプレミスまたは Azure 内の IBM MQ に接続し、メッセージを送受信します。"
+[instagram-doc]: ./connectors-create-api-instagram.md "Instagram に接続します。イベントをトリガーしたり、イベントに対するアクションを実行したりします。"
+[mailchimp-doc]: ./connectors-create-api-mailchimp.md "MailChimp アカウントに接続します。メールの管理と自動化を行います。"
+[mandrill-doc]: ./connectors-create-api-mandrill.md "通信のために Mandrill に接続します。"
+[mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "オンプレミスの MySQL データベースに接続して、データの読み取りと書き込みができるようにします"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Office 365 アカウントに接続して、電子メールの送受信、予定表と連絡先の管理などができるようにします"
+[office-365-users-doc]: ./connectors-create-api-office365-users.md
+[onedrive-doc]: ./connectors-create-api-onedrive.md "個人用の Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧表示などができるようにします"
+[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "ビジネス向けの Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧表示などができるようにします"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Oracle データベースに接続して、行の追加、挿入、削除などができるようにします"
+[outlook.com-doc]: ./connectors-create-api-outlook.md "Outlook メールボックスに接続して、電子メール、予定表、連絡先などを管理できるようにします"
+[postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "PostgreSQL データベースに接続して、テーブルからデータを読み取ることができるようにします"
+[project-online-doc]: ./connectors-create-api-projectonline.md "Microsoft Project Online に接続して、プロジェクト、タスク、リソースなどを管理できるようにします"
+[rss-doc]: ./connectors-create-api-rss.md "フィード アイテムを発行および取得したり、RSS フィードに新しいアイテムが発行されたときに操作をトリガーしたりします"
+[salesforce-doc]: ./connectors-create-api-salesforce.md "Salesforce アカウントに接続します。アカウント、潜在顧客、営業案件などを管理します。"
+[sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "オンプレミスの SAP システムに接続します。"
+[sendgrid-doc]: ./connectors-create-api-sendgrid.md "SendGrid に接続します。メールの送信と受信者リストの管理を行います。"
+[sftp-ssh-doc]: ./connectors-sftp-ssh.md "SSH を使用して SFTP アカウントに接続します。ファイルのアップロード、取得、削除などを実行します。"
+[sharepoint-server-doc]: ./connectors-create-api-sharepointserver.md "SharePoint オンプレミス サーバーに接続します。ドキュメント、リスト アイテムなどを管理します。"
+[sharepoint-online-doc]: ./connectors-create-api-sharepointonline.md "SharePoint Online に接続します。ドキュメント、リスト アイテムなどを管理します。"
+[slack-doc]: ./connectors-create-api-slack.md "Slack に接続し、Slack チャンネルにメッセージを投稿します。"
+[smtp-doc]: ./connectors-create-api-smtp.md "SMTP サーバーに接続し、添付ファイルを含むメールを送信します。"
+[sparkpost-doc]: ./connectors-create-api-sparkpost.md "通信のために SparkPost に接続します。"
+[sql-server-doc]: ./connectors-create-api-sqlazure.md "Azure SQL Database または SQL Server に接続します。SQL データベース テーブルのエントリを作成、更新、取得、削除します"
+[teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "Teradata データベースに接続して、テーブルからデータを読み取ります"
+[trello-doc]: ./connectors-create-api-trello.md "Trello に接続します。プロジェクトを管理し、どのようなものでも整理してだれとでも共有できます。"
+[twilio-doc]: ./connectors-create-api-twilio.md "Twilio に接続します。メッセージの送信と取得、利用可能な番号の取得、着信電話番号の管理などを実行します。"
+[twitter-doc]: ./connectors-create-api-twitter.md "Twitter に接続します。タイムラインの取得やツイートの投稿などを実行します。"
+[yammer-doc]: ./connectors-create-api-yammer.md "Yammer に接続します。メッセージの投稿、新しいメッセージの取得などを実行します。"
+[youtube-doc]: ./connectors-create-api-youtube.md "YouTube に接続します。ビデオとチャンネルを管理します。"
+
+<!--Enterprise Intregation Pack doc links-->
+[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "AS2 プロトコルを使用するメッセージをエンコードおよびデコードします"
+[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "EDIFACT プロトコルを使用するメッセージをエンコードおよびデコードします"
+[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "EDIFACT プロトコルを使用するメッセージをデコードします"
+[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "EDIFACT プロトコルを使用するメッセージをエンコードします"
+[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
+[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
+[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウント アーティファクトのメタデータを管理します"
+[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Liquid テンプレートを使用して JSON を変換します"
+[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "X12 プロトコルを使用するメッセージをエンコードおよびデコードします"
+[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "X12 プロトコルを使用するメッセージをデコードします"
+[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 プロトコルを使用するメッセージをエンコードします"
+[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML メッセージ変換します"
+[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML メッセージを検証します"
+

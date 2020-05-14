@@ -4,12 +4,12 @@ description: WebJobs SDK を使用して、Durable Function を WebJobs で実�
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74232736"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733415"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -19,7 +19,7 @@ ms.locfileid: "74232736"
 
 WebJobs SDK のバージョン 3.x では、このホストは `IHost` の実装であり、バージョン 2.x では `JobHost` オブジェクトを使用します。
 
-Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージョンで提供されています。[Durable Functions リポジトリ](https://github.com/azure/azure-functions-durable-extension/)をダウンロードまたは複製し、*samples\\webjobssdk\\chaining* フォルダーに移動してください。
+Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージョンで提供されています。[Durable Functions リポジトリ](https://github.com/azure/azure-functions-durable-extension/)をダウンロードまたは複製し、*v1* ブランチをチェックアウトして、*samples\\webjobssdk\\chaining* フォルダーに移動してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +31,7 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 
 この記事の手順を完了するには、次のことが条件となります。
 
-* [Azure 開発](https://docs.microsoft.com/visualstudio/install/)ワークロードと共に **Visual Studio 2019 をインストール**します。
+* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](https://docs.microsoft.com/visualstudio/install/)します。
 
   Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール]**  >  **[ツールと機能の取得]** の順に選択してワークロードを追加してください。
 
@@ -78,7 +78,7 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 コンソール アプリを作成し、必要な NuGet パッケージをインストールしたので、Durable Functions を使用する準備ができました。 そのためには、JobHost コードを使用します。
 
-Durable Functions 拡張機能を使用するには、`UseDurableTask` メソッド内の `JobHostConfiguration` オブジェクトで `Main` を呼び出します。
+Durable Functions 拡張機能を使用するには、`Main` メソッド内の `JobHostConfiguration` オブジェクトで `UseDurableTask` を呼び出します。
 
 ```cs
 var config = new JobHostConfiguration();
@@ -184,7 +184,7 @@ while (true)
 
 WebJob として実行されるように設定された Durable Functions を取得できたので、これが、Durable Functions をスタンドアロン Azure Functions として実行する場合とどのように異なるのかを理解します。 この時点で、それがサンプル内で動作するのを確認することをお勧めします。
 
-このセクションでは、[サンプル プロジェクト](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)の実行方法について概説します。 WebJobs SDK プロジェクトをローカルで実行し、それを Azure WebJob にデプロイする方法について詳しくは、「[WebJobs SDK の概要](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)」をご覧ください。
+このセクションでは、[サンプル プロジェクト](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining)の実行方法について概説します。 WebJobs SDK プロジェクトをローカルで実行し、それを Azure WebJob にデプロイする方法について詳しくは、「[WebJobs SDK の概要](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)」をご覧ください。
 
 ### <a name="run-locally"></a>ローカルで実行する
 

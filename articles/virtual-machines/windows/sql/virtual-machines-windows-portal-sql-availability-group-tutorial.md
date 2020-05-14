@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5494b1a7590e87bac9f8ffeaeef8f1da791fd6e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060189"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791138"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>チュートリアル:Azure SQL Server VM での可用性グループの手動構成
 
@@ -348,7 +348,7 @@ Repeat these steps on the second SQL Server.
 
 Azure Virtual Machines では、SQL Server 可用性グループにはロード バランサーが必要です。 ロード バランサーは、可用性グループ リスナーと Windows Server フェールオーバー クラスターの IP アドレスを保持しています。 このセクションでは、Azure Portal でロード バランサーを作成する方法の概要を説明します。
 
-Azure Load Balancer には、Standard Load Balancer または Basic Load Balancer のいずれかを使用できます。 Standard Load Balancer には、Basic Load Balancer よりも多くの機能があります。 可用性グループで、(可用性セットではなく) 可用性ゾーンを使用する場合は、Standard Load Balancer が必要です。 ロード バランサーの種類の違いについては、「[Load Balancer の SKU の比較](../../../load-balancer/concepts-limitations.md#skus)」を参照してください。
+Azure Load Balancer には、Standard Load Balancer または Basic Load Balancer のいずれかを使用できます。 Standard Load Balancer には、Basic Load Balancer よりも多くの機能があります。 可用性グループで、(可用性セットではなく) 可用性ゾーンを使用する場合は、Standard Load Balancer が必要です。 ロード バランサーの SKU の違いについては、「[Load Balancer の SKU の比較](../../../load-balancer/skus.md)」を参照してください。
 
 1. Azure Portal で、SQL Server が存在するリソース グループに移動し、 **[+ 追加]** をクリックします。
 1. 「**ロード バランサー**」を検索します。 Microsoft が公開しているロード バランサーを選びます。
