@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083291"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203881"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
-[Apache Storm](https://storm.apache.org/) の Java ベースのトポロジを作成する方法について説明します。 ここでは、文字カウント アプリケーションを実装する Storm トポロジを作成します。 [Apache Maven](https://maven.apache.org/) を使用して、プロジェクトを構築およびパッケージ化します。 次に、[Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html) フレームワークを使用してトポロジを定義する方法を説明します。
+Apache Storm の Java ベース トポロジを作成する方法を説明します。 ワード カウント アプリケーションを実装する Storm トポロジを作成します。 Apache Maven を使用して、プロジェクトを構築およびパッケージ化します。 次に、Apache Storm Flux フレームワークを使用してトポロジを定義する方法を説明します。
 
 このドキュメントの手順を完了したら、HDInsight で Apache Storm にトポロジをデプロイできます。
 
@@ -197,7 +197,7 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
 
 * **Apache Maven Compiler プラグイン**
 
-    別の役立つプラグインとして [Apache Maven Compiler プラグイン](https://maven.apache.org/plugins/maven-compiler-plugin/)があり、コンパイル オプションを変更するために使用します。 Maven によってアプリケーションのソースとターゲットに使用される Java バージョンを変更します。
+    もう 1 つの役立つプラグインは [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) です。コンパイル オプションを変更するために使用します。 Maven によってアプリケーションのソースとターゲットに使用される Java バージョンを変更します。
 
   * HDInsight __3.4 以前__ の場合は、ソースとターゲットの Java バージョンを __1.7__ に設定します。
 
@@ -239,13 +239,13 @@ Java ベースの Apache Storm トポロジは、作成か依存関係として�
 
 * **スパウト**:外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
 
-* **ボルト**:スパウトや他のボルトから出力されたストリームの処理を実行し、1 つ以上のストリームを出力します。
+* **ボルト**:スパウトや他のボルトから出力されたストリームの処理を行い、1 つ以上のストリームを出力します。
 
 * **トポロジ**:スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
 
 ### <a name="create-the-spout"></a>スパウトを作成する
 
-外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。 これは、[Storm-Starter のサンプル](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)で提供されているスパウトを変更したバージョンです。  このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
+外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。 これは、[Storm-Starter のサンプル](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)で提供されているスパウトを変更したバージョンです。  このトポロジでは 1 つのスパウトを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
 
 以下のコマンドを入力して、新しいファイル `RandomSentenceSpout.java` を作成して開きます。
 
@@ -481,7 +481,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>トポロジの定義
 
-トポロジは、コンポーネント間のデータのフローを定義するグラフにスパウトとボルトを結びつけます。 また、クラスター内にコンポーネントのインスタンスを作成するときに Storm が使用する並列処理のヒントも提供します。
+このトポロジでは、スパウトとボルトを 1 つのグラフに結合します。 グラフで、コンポーネント間のデータ フローが定義されます。 また、クラスター内にコンポーネントのインスタンスを作成するときに Storm が使用する並列処理のヒントも提供します。
 
 次の図は、このトポロジのコンポーネントの基本的なグラフを示しています。
 
@@ -613,15 +613,15 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-この例のログは、単語 and が 113 回出力されたことを示しています。 スパウトから同じセンテンスが継続的に出力されるため、トポロジが実行される限り、カウントは上がり続けます。
+この例のログは、単語 and が 113 回出力されたことを示しています。 トポロジが実行されている限り、カウントは増え続けます。 この増加は、スパウトで同じセンテンスが出力され続けるためです。
 
 単語とカウントは 5 秒間隔で出力されます。 **WordCount** コンポーネントは、tick タプルを受信したときにのみ情報を出力するように構成されており、 これらのタプルが 5 秒ごとにしか配信されないことを要求します。
 
 ## <a name="convert-the-topology-to-flux"></a>トポロジを Flux に変換する
 
-[Flux](https://storm.apache.org/releases/2.0.0/flux.html) は、構成と実装を分離するために使用できる、Storm 0.10.0 以降で使用可能な新しいフレームワークです。 コンポーネントは現在も Java で定義しますが、トポロジは YAML ファイルを使用して定義します。 プロジェクトと共に既定のトポロジ定義をパッケージ化したり、トポロジの送信時にスタンドアロンのファイルを使用したりすることができます。 トポロジを Storm に送信するときに、環境変数または構成ファイルを使用して、YAML トポロジの定義に値を設定できます。
+[Flux](https://storm.apache.org/releases/2.0.0/flux.html) は、Storm 0.10.0 以降で利用できる新しいフレームワークです。 Flux を使用すると、構成を実装から分離できます。 コンポーネントは現在も Java で定義しますが、トポロジは YAML ファイルを使用して定義します。 プロジェクトと共に既定のトポロジ定義をパッケージ化したり、トポロジの送信時にスタンドアロンのファイルを使用したりすることができます。 トポロジを Storm に送信するときに、環境変数または構成ファイルを使用して、YAML トポロジの定義値を設定します。
 
-YAML ファイルは、トポロジと、これらの間のデータ フローに使用するコンポーネントを定義します。 jar ファイルの一部として YAML ファイルを含めることも、外部 YAML ファイルを使用することもできます。
+YAML ファイルは、トポロジと、これらの間のデータ フローに使用するコンポーネントを定義します。 jar ファイルの中に YAML ファイルを含めることができます。 または、外部の YAML ファイルを使用することもできます。
 
 Flux の詳細については、「[Flux フレームワーク (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html)」に関するセクションを参照してください。
 
@@ -818,7 +818,7 @@ Flux フレームワークのその他の機能の詳細については、 [Flux
 
 ## <a name="trident"></a>Trident
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) は、Storm によって提供される高レベルの抽象化です。 ステートフルな処理をサポートします。 Trident の主なメリットは、トポロジが受けるすべてのメッセージが一度しか処理されないよう保証できることです。 Trident を使用しないと、トポロジで保証されるのは、メッセージが少なくとも一度は処理されることのみです。 他にも、ボルトを作成する代わりに使える組み込みのコンポーネントがあるなどの違いがあります。 実際には、ボルトはフィルター、プロジェクション、関数などの汎用性の低いコンポーネントに置き換えられます。
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) は、Storm によって提供される高レベルの抽象化です。 ステートフルな処理をサポートします。 Trident の主なメリットは、トポロジが受けるすべてのメッセージが 1 回のみ処理されるように保証されることです。 Trident を使用しないと、トポロジで保証されるのは、メッセージが少なくとも一度は処理されることのみです。 他にも、ボルトを作成する代わりに使える組み込みのコンポーネントがあるなどの違いがあります。 ボルトは、フィルター、プロジェクション、関数などの汎用性の低いコンポーネントに置き換えられます。
 
 Trident アプリケーションは Maven プロジェクトを使用して作成できます。 この記事で前述した同じ基本の手順の、コードのみを変更して作成できます。 Trident も (現在は) Flux フレームワークでは使用できません。
 
@@ -830,6 +830,6 @@ Java を使用して Apache Storm トポロジを作成する方法を学習し�
 
 * [HDInsight での Apache Storm トポロジのデプロイと管理](apache-storm-deploy-monitor-topology-linux.md)
 
-* [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Python を使用してトポロジを開発する](apache-storm-develop-python-topology.md)
 
 「[HDInsight での Apache Storm のトポロジ例](apache-storm-example-topology.md)」を参照することによって、その他の Apache Storm トポロジの例を見つけることができます。

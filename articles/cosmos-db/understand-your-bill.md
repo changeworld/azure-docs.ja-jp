@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5954c8eda370c0734985c47cfff6d073f5d76d17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b62ee971c2cff84f60bad1be4304631513fed22
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258024"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186324"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 
@@ -121,7 +121,7 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 
 *また、米国東部、北ヨーロッパ、および東アジアにデータをレプリケートするために、毎月 100 GB のデータを米国西部のコンテナーからエグレスするとします。エグレスに対しては、データ転送料金に従って課金されます。*
 
-### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>課金の例:マルチマスターを使用する Azure Cosmos アカウント、データベース レベルのスループットに一部のコンテナーの専用スループット モードを含む
+### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>課金の例\:マルチマスターを使用する Azure Cosmos アカウント、データベース レベルのスループットに一部のコンテナーの専用スループット モードを含む
 
 すべてのリージョンが書き込み可能な (マルチマスター構成) 複数リージョンの Azure Cosmos アカウントがある場合の次の例を考えてみます。 わかりやすくするために、ストレージのサイズは一定で変わらないと仮定し、ここでは例をよりシンプルなものにするためにそれを省略します。 1 か月のプロビジョニングされたスループットは、次のように変わります (30 日、つまり、720 時間と仮定)。 
 
@@ -200,7 +200,7 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 || |**総月額料金**  | |**$38,688**   |
 
 ## <a name="billing-examples-with-free-tier-accounts"></a>Free レベル アカウントでの課金の例
-Azure Cosmos DB の Free レベルでは、アカウント レベルに適用されている最初の 400 RU/秒と 5 GB のストレージを、お使いのアカウントで無料でご利用いただけます。 400 RU/秒 と 5 GB を超える RU/秒 とストレージには、価格ページの通常の価格レートで課金されます。 請求書には、無料の 400 RU/秒と 5 GB の料金や品目は表示されません。Free レベルの対象を超えた RU/秒 とストレージのみが表示されます。 400 RU/秒は、どのタイプの RU/秒 (プロビジョニングされたスループット、オートパイロット (プレビュー)、およびマルチマスター) にも適用されます。  
+Azure Cosmos DB の Free レベルでは、アカウント レベルに適用されている最初の 400 RU/秒と 5 GB のストレージを、お使いのアカウントで無料でご利用いただけます。 400 RU/秒 と 5 GB を超える RU/秒 とストレージには、価格ページの通常の価格レートで課金されます。 請求書には、無料の 400 RU/秒と 5 GB の料金や品目は表示されません。Free レベルの対象を超えた RU/秒 とストレージのみが表示されます。 秒あたり 400 RU は、どのタイプの秒あたり RU (プロビジョニングされたスループット、自動スケーリング、マルチマスター) にも適用されます。  
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>課金の例 - プロビジョニングされたスループットでのコンテナーまたはデータベース
 - Free レベルのアカウントで 400 RU/秒と 5 GB のストレージを使用してデータベースまたはコンテナーを作成したとします。
@@ -208,8 +208,8 @@ Azure Cosmos DB の Free レベルでは、アカウント レベルに適用さ
 - 次に、同じアカウントで、1000 RU/秒と 10 GB のストレージを備えた別のデータベースまたはコンテナーを追加するとします。
 - 請求書には、1000 RU/秒と 10 GB のストレージの料金が表示されます。 
 
-### <a name="billing-example---container-or-database-with-autopilot-throughput-preview"></a>課金の例 - オートパイロット スループット (プレビュー) でのコンテナーまたはデータベース
-- Free レベルのアカウントで、最大 RU/秒を 4000 RU/秒としてオートパイロットが有効になっているデータベースまたはコンテナーを作成します。 このリソースは、400 RU/秒から 4000 RU/秒の間で、自動的にスケーリングされます。 
+### <a name="billing-example---container-or-database-with-autoscale-throughput"></a>課金の例 - コンテナーまたはデータベースと自動スケーリング スループット
+- Free レベルのアカウントで、最大 RU/秒を 4000 RU/秒として自動スケーリングが有効になっているデータベースまたはコンテナーを作成します。 このリソースは、400 RU/秒から 4000 RU/秒の間で、自動的にスケーリングされます。 
 - 1 時間から 10 時間の期間では、リソースが下限の 400 RU/秒になっているとします。 11 時間目の期間中に、リソースが 1000 RU/秒にスケールアップされてから、その時間内に 400 RU/秒に戻ります。
 - 400 RU/秒は Free レベルの対象になったため、1 時間から 10 時間の期間では、スループットの課金が 0 ドルになっています。 
 - 11 時間目では、有効な 1000 RU/秒 - 400 RU/秒 = 600 RU/秒がその時間では最高の RU/秒なので、これに対して課金されます。 これは、その時間での 100 RU/秒が 6 ユニットになるので、その時間の合計スループット コストは、6 ユニット * 0.012 ドル = 0.072 ドルになります。 
