@@ -1,31 +1,31 @@
 ---
-title: パートナー センターでコンサルティング サービス オファーを作成する - Azure Marketplace
-description: パートナー センターを使用して、コンサルティング サービス オファーを Azure Marketplace または AppSource に公開する方法について説明します。
+title: コンサルティング サービス オファーを作成する - Microsoft コマーシャル マーケットプレース
+description: パートナー センターを使用して、コンサルティング サービス オファーを Microsoft AppSource または Azure Marketplace に公開する方法について説明します。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869793"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791903"
 ---
-# <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーを作成する
+# <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
 
 > [!IMPORTANT]
 > コンサルティング サービス オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、Cloud パートナー ポータル向けの「[Azure と Dynamics 365 のコンサルティング サービス プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)」の手順に従ってオファーを管理してください。
 
-この記事では、[Azure Marketplace](https://azuremarketplace.microsoft.com/) または [AppSource](https://appsource.microsoft.com/) のいずれかにコンサルティング サービス オファーを公開する方法について説明します。 AppSource 上で Microsoft [Dynamics 365](https://dynamics.microsoft.com/) および Power Platform に基づくコンサルティング サービス オファーを一覧表示します。 Azure Marketplace 上で Microsoft Azure に基づくコンサルティング サービス オファーを一覧表示します。
+この記事では、[Microsoft AppSource](https://appsource.microsoft.com/) または [Azure Marketplace](https://azuremarketplace.microsoft.com/) のいずれかにコンサルティング サービス オファーを公開する方法について説明します。 AppSource 上で Microsoft [Dynamics 365](https://dynamics.microsoft.com/) および Power Platform に基づくコンサルティング サービス オファーを一覧表示します。 Azure Marketplace 上で Microsoft Azure に基づくコンサルティング サービス オファーを一覧表示します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 ご自分のアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
-Azure Marketplace または AppSource コンサルティング サービスでコンサルティング サービス オファーを作成するには、最初に[パートナー センターに公開元アカウントを用意](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)し、ご利用のアカウントをコマーシャル マーケットプレース プログラムに登録する必要があります。 オファーを作成する前に、「[コンサルティング サービスの前提条件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)」にある前提条件を確認してください。
+オファーを作成する前に、「[コンサルティング サービスの前提条件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)」にある前提条件を確認してください。
 
 ## <a name="publishing-benefits"></a>公開の利点
 
-コマーシャル マーケットプレースに公開する利点: 
+コマーシャル マーケットプレースに公開する利点:
 
 - Microsoft のブランドを使用して、会社の宣伝ができる。
 - AppSource 上で 1 億を超える Office 365 および Dynamics 365 ユーザーに、さらに Azure Marketplace を通じて 20 万を超える組織にリーチできる可能性がある。
@@ -34,33 +34,31 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
-前述の要件を満たした後、次の手順に従ってコンサルティング サービス オファーを作成します。
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+2. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]** 、 >  **[概要]** の順に選択します。
+3. [概要] ページで、 **[+ 新しいオファー]** 、 >  **[コンサルティング サービス]** の順に選択します。
 
-1. [パートナー センター](https://partner.microsoft.com)にログインし、次に上部のメニューから **[ダッシュボード]** を選択します。
-2. 左側のナビゲーション バーで **[商業マーケットプレース]** を選択して、 **[概要]** を選択します。
+    ![左側のナビゲーション メニューの画像。](./media/new-offer-consulting-service.png)
 
-    :::image type="content" source="media/cs-menu-overview.png" alt-text="コマーシャル マーケットプレースのメニューを示します":::
+>[!NOTE]
+>オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
 
-3. **[+ 新しいオファー]** を選択してから、 **[コンサルティング サービス]** を選択します。
+## <a name="new-offer"></a>新しいプラン
 
-    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="新しいオファーを作成するためのボタンを示します。":::
+**[オファー ID]** を入力します。 自分のアカウント内の各オファーに対する一意の識別子です。
 
-4. **オファー ID** を入力します。 自分のアカウント内の各オファーに対する一意の識別子です。
+- この ID は、マーケットプレース オファーの Web アドレスで顧客に表示されます。
+- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+- **[作成]** を選択した後で、オファー ID を変更することはできません。
 
-    - この ID は、マーケットプレース オファーの Web アドレスで顧客に表示されます。
-    - 小文字、数字、ダッシュ、およびアンダースコアのみを使用してください。スペースは使用できません。 長さは 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの URL は `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
-    - **[作成]** を選択した後で、オファー ID を変更することはできません。
+**[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
 
-5. **オファーの別名**を入力します。 これは、パートナー センター内でオファーを参照するために使用する名前です。
+- この名前はマーケットプレースでは使用されず、顧客に表示されるオファー名やその他の値とは異なります。
+- **[作成]** を選択した後で、オファーの別名を変更することはできません。
 
-    - この名前はマーケットプレースでは使用されません。 これは、顧客に表示されるオファー名やその他の値とは異なります。 このフィールドを使用すると、オファーを内部で識別するのにより役立つ名前をオファーに割り当てることができます。これは顧客には表示されません。
-    - **[作成]** を選択した後で、オファーの別名を変更することはできません。
-
-この 2 つの値を入力したら、 **[作成]** を選択して、 **[オファーのセットアップ]** ページに進みます。
+**[作成]** を選択してオファーを生成し、続行します。
 
 ## <a name="offer-setup"></a>オファーのセットアップ
-
-オファー ID とオファーの別名を入力すると、パートナー センターにオファーの下書きが作成され、 **[オファーのセットアップ]** ページが表示されます。 オファーを設定するには、次の手順に従います。
 
 ### <a name="connect-lead-management"></a>リード管理の接続
 
@@ -75,18 +73,18 @@ Azure Marketplace または AppSource コンサルティング サービスで�
     > [!NOTE]
     > ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
 
-2. パートナー センターで公開する際は、オファーを潜在顧客の宛先に接続します。
-3. 潜在顧客の宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開したら、接続が検証され、潜在顧客のテストが送信されてきます。 オファーの公開前に行うプレビュー中には、プレビュー環境でオファーを自分で購入してみることで、潜在顧客の接続をテストすることもできます。
-4. 潜在顧客を失わないように、潜在顧客への接続が最新の状態に保たれていることを確認します。
+2. パートナー センターで公開する際は、オファーをリードの宛先に接続します。
+3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
+4. リードが失われないように、リードの宛先への接続が確実に最新の状態に保たれているようにします。
 
-その他の潜在顧客管理リソースをいくつか次に示します。
+その他のリード管理リソースをいくつか次に示します。
 
-- [潜在顧客管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [リード管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [潜在顧客管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
+- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
 
-**[下書きの保存]** を選択してから、次のセクション「Properties」に進みます。
+続行する前に、 **[下書きの保存]** を選択します。
 
 ### <a name="properties"></a>Properties
 
@@ -95,25 +93,25 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 1. ドロップダウン リストから **[主要な製品]** を選択します。
 2. ドロップダウン リストから **[コンサルティングサービスの種類]** を選択します。
 
-    - **評価**: 顧客の環境を評価してソリューションの適用性を確認し、コストとタイミングの見積りを提供します。
-    - **ブリーフィング**: ソリューションまたはコンサルティング サービスの概要を紹介し、フレームワーク、デモ、顧客事例を使って顧客の関心を引きます。
-    - **実装**: 完全に機能するソリューションを生成する完全なインストール。 2 週間以内に実装できるソリューションに限定します。
-    - **概念実証**: ソリューションがお客様の要件を満たすかどうかを判断するために、限られた範囲の実装を行います。
-    - **ワークショップ**: 顧客の施設内で実施される対話形式のエンゲージメント。 これには、トレーニング、ブリーフィング、評価、または顧客のデータまたは環境に対して構築されたデモを含めることができます。
+    - **評価**:お客様の環境を評価し、ソリューションの適用性を確認して、コストとタイミングの見積りを提供します。
+    - **ブリーフィング**:ソリューションまたはコンサルティング サービスの概要を紹介し、フレームワーク、デモ、顧客事例を使って顧客の関心を引きます。
+    - **実装**:完全に機能するソリューションを生成する完全なインストール。 2 週間以内に実装できるソリューションに限定します。
+    - **概念実証**:ソリューションがお客様の要件を満たすかどうかを判断するために、限られた範囲の実装を行います。
+    - **ワークショップ**:顧客の施設内で実施される対話形式のエンゲージメント。 これには、トレーニング、ブリーフィング、評価、または顧客のデータまたは環境に対して構築されたデモを含めることができます。
 
 1. **Azure** の主要な製品を選択した場合は、**ソリューションの分野**を最大 3 つ選択します。 これにより、Azure Marketplace の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 Azure を選択しなかった場合は、この手順をスキップします。
 2. Azure _以外の_主要製品を選択した場合は、**適用対象の製品**を最大 3 つ選択します。 これにより、AppSource の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 詳細については、「[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)」 (PDF) を参照してください。
 3. 貴社のオファーが適用される最大 6 つの **業界**を選択します。 これにより、顧客は貴社のオファーをさらに容易に見つけられるようになります。
 4. コンサルティング サービス オファーのリストに表示するために獲得した**コンピテンシー** を 3 つまで追加できます。 Azure Expert MSP および Azure Networking MSP を除き、少なくとも 1 つのコンピテンシーが必要です。
 
-**[下書きの保存]** を選択してから、次のセクション「オファーのリスト登録」に進みます。
+続行する前に、 **[下書きの保存]** を選択します。
 
 ## <a name="offer-listing"></a>オファーのリスト登録
 
-ここでは、マーケットプレースに表示されるオファーの詳細を定義します。 これには、オファー名、説明、画像などが含まれます。 このオファーを構成するときには、[Microsoft のポリシーに関するページ](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)に詳述されているポリシーに必ず従ってください。
+ここでは、マーケットプレースに表示されるオファーの詳細を定義します。 これには、オファーの名前、説明、画像などが含まれます。 このオファーを構成するとき、[コマーシャル マーケットプレース認定ポリシー ページ](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)に記載されているポリシーに従ってください。
 
 > [!NOTE]
-> オファーの詳細が「&quot;このアプリケーションは、[英語以外の言語] でのみ利用可能です&quot;」という文言で始まっていれば英語である必要はありません。また、オファー コンテンツへの役に立つリンクを、オファーのリスト登録の詳細説明で使用されている言語とは異なる言語で提供することもできます。
+> オファーの説明が「&quot;このアプリケーションは、[英語以外の言語] でのみ利用可能です&quot;」という文言で始まっている場合、オファーの詳細は英語である必要はありません。また、オファー コンテンツへの役に立つリンクを、オファーのリスト登録の詳細説明で使用されているものとは異なる言語で提供することもできます。
 
 ### <a name="name"></a>名前
 
@@ -147,12 +145,16 @@ Azure Marketplace または AppSource コンサルティング サービスで�
   - オファーから利益を得るユーザーの種類。
   - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
 - 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される値に焦点を当ててください。
+- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
 - 業界固有の語彙または利益に基づく表現を使用するようにしてください。
 
-説明をより魅力的なものにするには、リッチ テキスト エディターを使用して説明を書式設定してください。 リッチ テキスト エディターを使用すると、数字、箇条書き、太字、斜体、およびインデントを追加して、説明を読みやすくすることができます。
+オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
 
-:::image type="content" source="media/cs-rich-text-editor.png" alt-text="オファーの説明を記述するリッチ テキスト エディターを示します。" border="false":::
+![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
+
+| <center>テキスト形式を変更します | <center>箇条書きの黒丸または段落番号を追加します | <center>テキスト インデントを追加するか削除します |
+| --- | --- | --- |
+| <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用したリストの追加](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用したインデントの設定](./media/text-editor5.png) |
 
 ### <a name="keywords"></a>Keywords
 
@@ -164,7 +166,7 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 
 ### <a name="contact-information"></a>連絡先情報
 
-**第 1** および**第 2** の連絡先として名前、電子メール アドレス、および電話番号を入力する必要があります。 この情報はお客様には表示されません。 これは Microsoft に提供されます。さらにクラウド ソリューション プロバイダー (CSP) パートナーに提供される場合があります。
+**第 1** および**第 2** の連絡先として名前、電子メール アドレス、および電話番号を入力する必要があります。 この情報は顧客には表示されません。 これは Microsoft で利用することができ、クラウド ソリューション プロバイダー (CSP) パートナーに提供される場合があります。
 
 ### <a name="supporting-documents"></a>サポート ドキュメント
 
@@ -179,7 +181,7 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴの .png ファイルを次の各ピクセル サイズで提供します。
+オファーのロゴの PNG ファイルを次の各ピクセル サイズで提供します。
 
 - **小 (48 x 48)**
 - **大 (216 x 216)**
@@ -188,13 +190,13 @@ Azure Marketplace または AppSource コンサルティング サービスで�
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
-オファーがどのように動作するかを示すスクリーンショットを最大 5 つ追加します。 それぞれを 1280 x 720 ピクセルのサイズおよび .png 形式とする必要があります。
+オファーがどのように動作するかを示すスクリーンショットを最大 5 つ追加します。 それぞれが 1280 x 720 ピクセルのサイズで PNG 形式である必要があります。
 
 #### <a name="videos-optional"></a>ビデオ (省略可能)
 
-オファーをデモンストレーションするビデオを最大 4 つ追加します。 ビデオの名前、Web アドレス (URL)、およびビデオのサムネイル .png 画像 (1280 x 720 ピクセルのサイズ)。
+オファーをデモンストレーションするビデオを最大 4 つ追加します。 ビデオの名前、Web アドレス (URL)、およびビデオのサムネイル PNG 画像 (1280 x 720 ピクセルのサイズ)。
 
-**[下書きの保存]** を選択してから、次のセクション「価格と可用性」に進みます。
+続行する前に、 **[下書きの保存]** を選択します。
 
 ## <a name="pricing-and-availability"></a>価格と可用性
 
@@ -209,9 +211,9 @@ Azure Marketplace または AppSource コンサルティング サービスで�
     > コンサルティング サービス オファーは、登録情報のみを対象としています。 トランザクションは、コマーシャル マーケットプレースの外部で直接行われます。
 
 4. 有料オファーの場合は、**価格と通貨**を指定すると共に、価格が**固定**であるか**見積もり**であるかを指定します。 見積もりの場合は、価格に影響を与える要因を説明に指定する必要があります。
-5. **[下書きの保存]** を選択します。
+5. 続行する前に、 **[下書きの保存]** を選択します。
 
-## <a name="review-and-publish"></a>[レビューと公開]
+## <a name="review-and-publish"></a>レビューと発行
 
 オファーの必須セクションをすべて完了したら、レビューおよび公開のためにそのオファーを送信することができます。
 
