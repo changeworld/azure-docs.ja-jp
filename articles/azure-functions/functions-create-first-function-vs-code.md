@@ -134,13 +134,13 @@ ms.locfileid: "82628182"
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください)** : [`HTTP trigger`] を選択します。
     
-    + **Provide a function name (関数名を指定してください):** 「`HttpExample`.
+    + **Provide a function name (関数名を指定してください)** : [`HttpExample`] を入力します。
     ::: zone-end  
     ::: zone pivot="programming-language-csharp"
-    + **Provide a namespace (名前空間を指定してください)** : 「`My.Functions`. 
+    + **Provide a namespace (名前空間を指定してください)** : [`My.Functions`] を入力します。
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **承認レベル**: `Anonymous` を選択します。この場合、すべてのユーザーが関数のエンドポイントを呼び出すことができます。 承認レベルについては、「[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。
+    + **承認レベル**: [`Anonymous`] を選択します。この場合、すべてのユーザーが関数のエンドポイントを呼び出すことができます。 承認レベルについては、「[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。
     ::: zone-end  
     + **Select how you would like to open your project (プロジェクトを開く方法を選択してください)** : [`Add to workspace`] を選択します。
 
