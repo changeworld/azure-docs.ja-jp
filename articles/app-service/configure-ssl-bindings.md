@@ -3,15 +3,15 @@ title: TLS/SSL バインドを使用してカスタム DNS をセキュリティ
 description: 証明書を使用して TLS/SSL バインディングを作成することによって、カスタム ドメインに対する HTTPS アクセスのセキュリティを確保します。 HTTPS または TLS 1.2 を強制して Web サイトのセキュリティを強化しましょう。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811749"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597897"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -83,7 +83,7 @@ ms.locfileid: "80811749"
 |-|-|
 | カスタム ドメイン | TLS/SSL バインドを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |
-| TLS/SSL の種類 | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - 複数の SNI SSL バインディングを追加できます。 このオプションでは、複数の TLS/SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (詳細については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP SSL** - IP SSL バインディングを 1 つだけ追加できます。 このオプションでは、TLS/SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後は、「[IP SSL の A レコードの再マップ](#remap-a-record-for-ip-ssl)」の手順に従います。<br/>IP SSL は、Production レベルまたは Isolated レベルでのみサポートされます。 </li></ul> |
+| TLS/SSL の種類 | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - 複数の SNI SSL バインディングを追加できます。 このオプションでは、複数の TLS/SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (詳細については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP SSL** - IP SSL バインディングを 1 つだけ追加できます。 このオプションでは、TLS/SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後は、[IP SSL のレコードの再マッピング](#remap-records-for-ip-ssl)の手順に従います。<br/>IP SSL は、**Standard** レベル以上でのみサポートされます。 </li></ul> |
 
 操作が完了すると、カスタム ドメインの TLS/SSL 状態が**セキュリティで保護された**状態に変わります。
 
@@ -92,15 +92,17 @@ ms.locfileid: "80811749"
 > [!NOTE]
 > **[カスタム ドメイン]** での **[Secure]\(セキュリティ保護\)** 状態とは、それが証明書を使用してセキュリティで保護されているが、App Service はその証明書が自己署名されたものか有効期限が切れているかをチェックしないことを意味します。たとえば、それによって、ブラウザーにエラーや警告が表示されることもあります。
 
-## <a name="remap-a-record-for-ip-ssl"></a>IP SSL の A レコードの再マップ
+## <a name="remap-records-for-ip-ssl"></a>IP SSL のレコードの再マップ
 
 アプリで IP SSL を使用していない場合、[カスタム ドメインの HTTPS のテスト](#test-https)に関するセクションにスキップしてください。
 
-既定では、アプリは、共有のパブリック IP アドレスを使用します。 IP SSL で証明書をバインドすると、アプリ用の新規の専用 IP アドレスが App Service によって作成されます。
+行うべき変更は 2 つ考えられます。
 
-アプリに A レコードをマップした場合は、この新規の専用 IP アドレスでドメイン レジストリを更新します。
+- 既定では、アプリは、共有のパブリック IP アドレスを使用します。 IP SSL で証明書をバインドすると、アプリ用の新規の専用 IP アドレスが App Service によって作成されます。 アプリに A レコードをマップした場合は、この新規の専用 IP アドレスでドメイン レジストリを更新します。
 
-アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#map-an-a-record)します。
+    アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#map-an-a-record)します。
+
+- `<app-name>.azurewebsites.net` への SNI SSL バインディングがある場合は、`sni.<app-name>.azurewebsites.net` を指すように [CNAME マッピングを再マップ](app-service-web-tutorial-custom-domain.md#map-a-cname-record)します (`sni` プレフィックスを追加)。
 
 ## <a name="test-https"></a>HTTPS のテスト
 

@@ -4,13 +4,13 @@ description: App Service または Azure Functions アプリの ID プロバイ�
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392556"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609903"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
@@ -27,10 +27,13 @@ ms.locfileid: "81392556"
 - それぞれの App Service アプリを独自の登録で構成します。
 - デプロイ スロットごとに個別のアプリ登録を使用することで、環境間でアクセス許可を共有することを回避します。 新しいコードをテストするとき、このプラクティスは、問題が運用アプリに影響を与えることを回避する上で役立つことがあります。
 
+> [!NOTE]
+> この機能は現在のところ、Azure Functions の Linux Consumption プランでは利用できません
+
 ## <a name="configure-with-express-settings"></a><a name="express"> </a>簡単設定を構成する
 
 > [!NOTE]
-> **[Express]\(簡易\)** オプションは、政府機関向けクラウドでは使用できません。 
+> **[Express]\(簡易\)** オプションは、政府機関向けクラウドでは使用できません。
 
 1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。
 2. 左側のナビゲーションから、 **[認証/承認]**  >  **[On]\(オン\)** を選択します。
@@ -42,9 +45,9 @@ ms.locfileid: "81392556"
    2. 既存のアプリ登録を選択して **[OK]** をクリックします。
 
 3. **[OK]** を選択して、Azure Active Directory に App Service アプリを登録します。 新しいアプリ登録が作成されます。
-   
+
     ![Azure Active Directory での簡易設定](./media/configure-authentication-provider-aad/express-settings.png)
-   
+
 4. (省略可能) App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。 Azure Active Directory で認証されたユーザーのみにアプリ アクセスを限定するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていないものはすべて、Azure Active Directory に認証のためにリダイレクトされます。
 
     > [!CAUTION]
@@ -72,7 +75,7 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 1. [Azure portal] にサインインし、 **[App Services]** を探して選択してから、アプリを選択します。 アプリの **URL** をメモしておきます。 Azure Active Directory アプリの登録を構成するときにそれを使用します。
 1. **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
-1. **[リダイレクト URI]** で、 **[Web]** を選択し、「`<app-url>/.auth/login/aad/callback`」と入力します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 
+1. **[リダイレクト URI]** で、 **[Web]** を選択し、「`<app-url>/.auth/login/aad/callback`」と入力します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。
 1. **［作成］** を選択します
 1. アプリの登録が作成されたら、後のために **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** をコピーします。
 1. **[認証]** を選択します。 **[暗黙的な許可]** で **[ID トークン]** を有効にして、App Service からの OpenID Connect ユーザーのサインインを許可します。
@@ -84,14 +87,14 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 
 1. **[Scope の追加]** を選択します。
    1. **[スコープ名]** に、「*user_impersonation*」と入力します。
-   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「*Access my app*」と入力します。 
+   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「*Access my app*」と入力します。
    1. **[スコープの追加]** を選択します。
 1. (省略可能) クライアント シークレットを作成するには、 **[Certificates & secrets]\(証明書とシークレット)**  >  **[New client secret]\(新しいクライアント シークレット)**  >  **[追加]** を選択します。 ページに表示されるクライアント シークレットの値をコピーします。 二度と表示されることはありません。
 1. (省略可能) 複数の**応答 URL** を追加するには、 **[認証]** を選択します。
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>App Service アプリで Azure Active Directory を有効にする
 
-1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。 
+1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。
 1. 左側のウィンドウの **[設定]** で、 **[認証/承認]**  >  **[On]\(オン\)** を選択します。
 1. (省略可能) 既定では、App Service 認証によってアプリへの認証されていないアクセスが許可されます。 ユーザー認証を強制するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。
 1. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
@@ -100,7 +103,7 @@ App Service アプリを構成するとき、次の情報が必要になりま�
     |フィールド|説明|
     |-|-|
     |クライアント ID| アプリの登録の**アプリケーション (クライアント) ID** を使用します。 |
-    |発行者の URL| `https://login.microsoftonline.com/<tenant-id>/v2.0` を使用し、 *\<tenant-id>* をアプリの登録の**ディレクトリ (テナント) ID** に置き換えます。 この値は、ユーザーを正しい Azure AD テナントにリダイレクトするため、および適切なメタデータをダウンロードして、適切なトークン署名キーやトークン発行者のクレーム値などを特定するために使用されます。 AAD v1 を使用しているアプリケーションの場合は `/v2.0` のセクションを省略できます。 |
+    |発行者の URL| `<authentication-endpoint>/<tenant-id>/v2.0` を使用し、 *\<authentication-endpoint>* を[クラウド環境の認証エンドポイント](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (たとえば、グローバル Azure の場合、"https://login.microsoft.com ") に置き換え、さらに、 *\< tenant-id>* を、アプリ登録が作成された**ディレクトリ (テナント) ID** に置き換えます。 この値は、ユーザーを正しい Azure AD テナントにリダイレクトするため、および適切なメタデータをダウンロードして、適切なトークン署名キーやトークン発行者のクレーム値などを特定するために使用されます。 AAD v1 を使用しているアプリケーションの場合は `/v2.0` のセクションを省略できます。 |
     |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。|
     |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの**アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、*常に*、許可された対象ユーザーであると暗黙的に見なされます。 |
 
