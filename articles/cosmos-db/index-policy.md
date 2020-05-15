@@ -4,14 +4,14 @@ description: Azure Cosmos DB でのインデックス作成の自動化とパフ
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292052"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869941"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -27,7 +27,7 @@ Azure Cosmos DB では、すべてのコンテナーに、コンテナーの項�
 Azure Cosmos DB では 2 つのインデックス作成モードがサポートされます。
 
 - **同期**: 項目を作成、更新、削除すると、それに同期してインデックスが更新されます。 つまり、読み取りクエリの一貫性は、[アカウント用に構成された整合性](consistency-levels.md)になります。
-- **なし**: コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) を利用して監視できます。
+- **なし**: コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) を利用して監視できます。
 
 > [!NOTE]
 > Azure Cosmos DB では、Lazy インデックス作成モードもサポートされます。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に**一貫性がなくなったり、不完全になったり**します。 Cosmos コンテナーに対してクエリを実行する場合は、Lazy インデックス作成を選択しないでください。
@@ -97,6 +97,26 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 
 パスを含めたり除外したりするためのインデックス作成ポリシーの例については、[こちらのセクション](how-to-manage-indexing-policy.md#indexing-policy-examples)を参照してください。
 
+## <a name="includeexclude-precedence"></a>優先順位を含める、または除外する
+
+含まれるパスと除外されるパスに競合がある場合は、より正確なパスが優先されます。
+
+次に例を示します。
+
+**含まれるパス**: `/food/ingredients/nutrition/*`
+
+**除外されるパス**: `/food/ingredients/*`
+
+この場合、含まれるパスはより正確であるため、除外されるパスよりも優先されます。 これらのパスに基づいて、`food/ingredients` パス内または入れ子になっているすべてのデータは、インデックスから除外されます。 例外は、含まれるパス `/food/ingredients/nutrition/*` 内のデータで、インデックスが作成されます。
+
+Azure Cosmos DB の含まれるパスと除外されるパスの優先順位に関するいくつかの規則を次に示します。
+
+- より深いパスは、浅いパスよりも正確です。 たとえば、`/a/b/?` は `/a/?` よりも正確です。
+
+- `/?` は `/*` よりも正確です。 たとえば `/a/?` は `/a/*` よりも正確であるため、`/a/?` が優先されます。
+
+- パス `/*` には、含まれるパスまたは除外されるパスを指定する必要があります。
+
 ## <a name="spatial-indexes"></a>空間インデックス
 
 インデックス作成ポリシーで空間パスを定義する場合は、そのパスに適用するインデックスの ```type``` を定義する必要があります。 空間インデックスには、次のような種類があります。
@@ -114,6 +134,8 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 ## <a name="composite-indexes"></a>複合インデックス
 
 2 つ以上のプロパティを使用する `ORDER BY` 句が含まれるクエリには、複合インデックスが必要です。 また、複合インデックスを定義して、多くの等値クエリと範囲クエリのパフォーマンスを向上させることもできます。 既定では、複合インデックスは定義されないため、必要に応じて[複合インデックスを追加する](how-to-manage-indexing-policy.md#composite-indexing-policy-examples)必要があります。
+
+含まれるパスまたは除外されるパスとは異なり、`/*` ワイルドカードを使用してパスを作成することはできません。 すべての複合パスには、指定する必要のないパスの末尾に暗黙的な `/?` があります。 複合パスはスカラー値になります。これは、複合インデックスに含まれる唯一の値です。
 
 複合インデックスを定義する場合は、次のものを指定します。
 

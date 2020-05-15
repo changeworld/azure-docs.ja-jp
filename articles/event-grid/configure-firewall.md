@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b195872ca1002970fa96ae133d5eb47a9267796d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0db6c2c346a6eb6ef016340fcfc2974c85958e6c
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79300510"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858098"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Azure Event Grid のトピックまたはドメインに対して IP ファイアウォールを構成する (プレビュー)
 既定では、要求が有効な認証と承認を受けている限り、トピックおよびドメインにはインターネットからアクセスできます。 IP ファイアウォールを使用すると、[CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみにアクセスを制限できます。 他の IP アドレスから発信するパブリッシャーは拒否され、403 (禁止) の応答が返されます。 Event Grid でサポートされるネットワーク セキュリティ機能の詳細については、[Event Grid のネットワーク セキュリティ](network-security.md)に関する記事を参照してください。
@@ -39,55 +39,134 @@ ms.locfileid: "79300510"
 このセクションでは、Azure CLI コマンドを使用して受信 IP 規則を含むトピックを作成する方法について説明します。 このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**の受信 IP 規則を作成できます。 
 
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>既存のトピックに対してパブリック ネットワーク アクセスを有効にする
-既定では、トピックとドメインに対してパブリック ネットワーク アクセスが有効になっています。 受信 IP ファイアウォール規則を構成することで、トラフィックを制限できます。 
+### <a name="prerequisites"></a>前提条件
+次のコマンドを実行することで、CLI の Azure Event Grid 拡張機能を更新します。 
 
 ```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Enabled\""}}"
+az extension update -n eventgrid
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>既存のトピックに対してパブリック ネットワーク アクセスを無効にする
-トピックまたはドメインに対してパブリック ネットワーク アクセスが無効になっている場合、パブリック インターネット経由のトラフィックは許可されません。 プライベート エンドポイント接続のみが、これらのリソースへのアクセスを許可されます。 
+拡張機能がインストールされていない場合は、次のコマンドを実行してインストールします。 
 
 ```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Disabled\""}}"
+az extension add -n eventgrid
 ```
 
-### <a name="create-topic-with-inbound-ip-rules"></a>受信 IP 規則を含むトピックを作成する
-次の CLI コマンド例では、1 ステップで受信 IP 規則を含むイベント グリッド トピックを作成します。 
+### <a name="enable-or-disable-public-network-access"></a>パブリック ネットワーク アクセスを有効または無効にする
+既定では、トピックとドメインに対してパブリック ネットワーク アクセスが有効になっています。 また、明示的に有効にすることも、無効にすることもできます。 受信 IP ファイアウォール規則を構成することで、トラフィックを制限できます。 
+
+#### <a name="enable-public-network-access-while-creating-a-topic"></a>トピックの作成中にパブリック ネットワーク アクセスを有効にする
 
 ```azurecli-interactive
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"",\""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled
 ```
 
-### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>まずトピックを作成し、次に受信 IP 規則を追加する
+
+#### <a name="disable-public-network-access-while-creating-a-topic"></a>トピックの作成中にパブリック ネットワーク アクセスを無効にする
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access disabled
+```
+
+> [!NOTE]
+> トピックまたはドメインに対してパブリック ネットワーク アクセスが無効になっている場合、パブリック インターネット経由のトラフィックは許可されません。 プライベート エンドポイント接続のみが、これらのリソースへのアクセスを許可されます。 
+
+
+#### <a name="enable-public-network-access-for-an-existing-topic"></a>既存のトピックに対してパブリック ネットワーク アクセスを有効にする
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled 
+```
+
+#### <a name="disable-public-network-access-for-an-existing-topic"></a>既存のトピックに対してパブリック ネットワーク アクセスを無効にする 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access disabled
+```
+
+### <a name="create-a-topic-with-single-inbound-ip-rule"></a>単一の受信 ip 規則を含むトピックを作成する
+次の CLI コマンド例では、受信 IP 規則を含むイベント グリッド トピックを作成します。 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow 
+```
+
+### <a name="create-a-topic-with-multiple-inbound-ip-rules"></a>複数の受信 ip 規則を含むトピックを作成する
+
+次の CLI コマンド例では、2 つの受信 IP 規則を含むイベント グリッド トピックを 1 ステップで作成します。 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="update-an-existing-topic-to-add-inbound-ip-rules"></a>既存のトピックを更新して受信 IP 規則を追加する
 この例では、まずイベント グリッド トピックを作成し、次に別のコマンドでそのトピックの受信 IP 規則を追加します。 また、2 番目のコマンドで設定された受信 IP 規則も更新されます。 
 
 ```azurecli-interactive
 
 # create the event grid topic first
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\""}
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location
 
-# add inbound IP rules
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# add inbound IP rules to an existing topic
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow
 
-# later, update topic with additional ip rules or remove them. 
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""}, {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# later, update topic with additional ip rules
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="remove-an-inbound-ip-rule"></a>受信 IP 規則を削除する
+次のコマンドでは、設定を更新する際に 1 番目の規則のみを指定することで、前の手順で作成した 2 番目の規則を削除します。 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow
 ```
 
 
 ## <a name="use-powershell"></a>PowerShell の使用
 このセクションでは、Azure PowerShell コマンドを使用して、受信 IP ファイアウォール規則を含む Azure Event Grid トピックを作成する方法について説明します。 このセクションで示す手順は、トピックに関するものです。 同様の手順を使用して、**ドメイン**の受信 IP 規則を作成できます。 
 
-### <a name="prerequisite"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」の手順に従って、Azure Active Directory アプリケーションを作成し、以下の値を書き留めます。
 
 - ディレクトリ (テナント) ID
@@ -144,7 +223,7 @@ Invoke-RestMethod -Method 'Patch' `
 ```azurepowershell-interactive
 
 # prepare the body for the REST PUT method. Notice that inbound IP rules are included. 
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # create the event grid topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
@@ -179,8 +258,8 @@ Invoke-RestMethod -Method 'Get' `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 
-# prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature available in both basic and premium tiers.
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"}, @{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+# prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature is available in both basic and premium tiers.
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"}, @{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # update the topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `

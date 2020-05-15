@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 9ac6927df63d51830a58773e32ad0968920c0867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061757"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198571"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -61,6 +61,8 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップが自動的に作成され、ポイントインタイム リストア (PITR) のセルフサービスがサポートされています。 データベースの完全バックアップは毎週作成され、データベースの差分バックアップは一般的に 12 時間ごとに作成されます。 トランザクション ログ バックアップは、通常、5 から 10 分ごとに作成されます。 トランザクション ログ バックアップの頻度は、コンピューティング サイズとデータベース アクティビティの量に基づいて決まります。 
 
 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常このバックアップは 30 分以内に終了しますが、データベースが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 バックアップ ジョブを変更または無効化することはできません。
+
+### <a name="default-backup-retention-period"></a>既定のバックアップの保有期間
 
 PITR バックアップは、geo 冗長ストレージで保護されています。 詳細については、「[Azure Storage の冗長性](../storage/common/storage-redundancy.md)」をご覧ください。
 

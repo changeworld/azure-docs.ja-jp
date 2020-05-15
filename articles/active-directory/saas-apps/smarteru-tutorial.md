@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SmarterU の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SmarterU の統合 | Microsoft Docs
 description: Azure Active Directory と SmarterU の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e44aecc5015986079afb3190101cdaabc4a6874
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76549293"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981954"
 ---
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>チュートリアル:Azure Active Directory と SmarterU の統合
+
 > [!NOTE]
 > SmarterU を Azure Active Directory に統合するプロセスは、[SmarterU のヘルプ システム](https://help.smarteru.com/ID2053086)でも文書化され、整備されています。
-
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>チュートリアル: Azure Active Directory と SmarterU の統合
 
 このチュートリアルでは、SmarterU と Azure Active Directory (Azure AD) を統合する方法について説明します。
 SmarterU と Azure AD の統合には、次の利点があります。
@@ -217,7 +217,7 @@ Azure AD ユーザーが SmarterU にサインインできるようにするに�
 
     a. **[+User]** をクリックします。
 
-    b. 次のテキスト ボックスに、Azure AD のユーザー アカウントの関連する属性の値を入力します。 **[Primary Email]** 、 **[Employee ID]** 、 **[Password]** 、 **[Verify Password]** 、 **[Given Name]** 、 **[Surname]** 。
+    b. Azure AD のユーザー アカウントに関連する属性の値を次のテキスト ボックスに入力します。 **[Primary Email]** 、 **[Employee ID]** 、 **[Password]** 、 **[Verify Password]** 、 **[Given Name]** 、 **[Surname]** 。
 
     c. **[Active]** をクリックします。
 

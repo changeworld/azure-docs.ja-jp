@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 03/02/2020
-ms.openlocfilehash: d9b64785dbd82842479eb3f313b8394f9f25b40b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/24/2020
+ms.openlocfilehash: f1bce0a95b672bb23767fce3d5d092221ccd8321
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370000"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858342"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight 上の Microsoft Power BI で ODBC を使用して Apache Hive データを視覚化する
 
@@ -74,9 +74,6 @@ ODBC を使用して Microsoft Power BI Desktop を Azure HDInsight に接続し
 
 この記事では、Power BI を使用して HDInsight からデータを視覚化する方法について学習しました。  詳細については、以下の記事をお読みください。
 
-* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](./apache-hadoop-connect-excel-hive-odbc-driver.md)。
 * [Power Query を使用して Excel を Apache Hadoop に接続する](apache-hadoop-connect-excel-power-query.md)。
-* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する](apache-hadoop-visual-studio-tools-get-started.md)。
-* [Azure HDInsight Tool for Visual Studio Code の使用](../hdinsight-for-vscode.md)。
-* [HDInsight にデータをアップロードする](./../hdinsight-upload-data.md)。
+* [直接クエリを使用して Microsoft Power BI で対話型クエリの Apache Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)

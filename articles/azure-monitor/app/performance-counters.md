@@ -3,12 +3,12 @@ title: Application Insights のパフォーマンス カウンター | Microsoft
 description: Application Insights でシステムとカスタムの .NET パフォーマンス カウンターを監視します。
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 94d2520c17867f6d70caffd002a76365a425986f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 201338d3a904030ea961aede094b9877bfee3e36
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669881"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855116"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -63,7 +63,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 
 形式は `\Category(instance)\Counter"` です。インスタンスが存在しないカテゴリの場合は、単に `\Category\Counter` です。
 
-`ReportAs` に一致しないカウンター名の場合、つまり英字、丸かっこ、スラッシュ、ハイフン、アンダースコア、スペース、ドット (.) 以外の文字が含まれる場合は、`[a-zA-Z()/-_ \.]+` が必要です。
+`[a-zA-Z()/-_ \.]+` に一致しないカウンター名の場合、つまり英字、丸かっこ、スラッシュ、ハイフン、アンダースコア、スペース、ドット (.) 以外の文字が含まれる場合は、`ReportAs` が必要です。
 
 インスタンスを指定した場合は、報告されるメトリックの "CounterInstanceName" ディメンションとして収集されます。
 
@@ -74,7 +74,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 ```csharp
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
-      @"\Process([replace-with-application-process-name])\Page Faults/sec", "PageFaultsPerfSec")));
+      @"\Process([replace-with-application-process-name])\Page Faults/sec", "PageFaultsPerfSec"));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
 
@@ -89,7 +89,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>ASP.NET Core Web アプリケーションについてコードでパフォーマンス カウンターを収集する
 
-以下の `ConfigureServices` クラスの `Startup.cs` メソッドを変更します。
+以下の `Startup.cs` クラスの `ConfigureServices` メソッドを変更します。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;

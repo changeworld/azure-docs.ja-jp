@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879023"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856413"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
 コンテナーを使用すると、独自の環境で一部の Speech サービス API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Speech コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 4 つの異なるコンテナーを利用できます。 2 つの標準コンテナーは、**音声テキスト変換**と**テキスト読み上げ**です。 2 つのカスタム コンテナーは、**カスタム音声変換**と**カスタム テキスト読み上げ**です。
+Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 4 つの異なるコンテナーを利用できます。 2 つの標準コンテナーは、**音声テキスト変換**と**テキスト読み上げ**です。 2 つのカスタム コンテナーは、**カスタム音声変換**と**カスタム テキスト読み上げ**です。 Speech コンテナーの[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)は、クラウド ベースの Azure Speech サービスと同じです。
 
 > [!IMPORTANT]
 > 現在のところ、音声コンテナーはすべて、[パブリック "ゲート付き" プレビュー](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)の一部として提供されています。 音声コンテナーが一般公開 (GA) になるときは告知があります。
 
 | 機能 | 特徴 | 最新 |
 |--|--|--|
-| 音声テキスト変換 | 連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.1.1 |
-| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.1.1 |
+| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.2.0 |
+| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.2.0 |
 | テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.3.0 |
 | カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.3.0 |
 
@@ -164,7 +164,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 次のタグは、この形式の例です。
 
 ```
-2.1.1-amd64-en-us-preview
+2.2.0-amd64-en-us-preview
 ```
 
 **音声テキスト変換**コンテナーのサポートされている全ロケールについては、「[音声テキスト変換イメージ タグ](../containers/container-image-tags.md#speech-to-text)」を参照してください。
@@ -258,6 +258,33 @@ ApiKey={API_KEY}
 * 4 つの CPU コアと 4 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
+
+#### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>音声テキスト変換の出力のセンチメントを分析する 
+
+音声テキスト変換コンテナーの v2.2.0 から、出力に対して[センチメント分析 v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) を呼び出すことができるようになりました。 センチメント分析を呼び出すには、Text Analytics API リソース エンドポイントが必要です。 次に例を示します。 
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
+* `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
+
+クラウドでテキスト分析エンドポイントにアクセスしている場合は、キーが必要になります。 Text Analytics をローカルで実行している場合は、これを指定する必要はありません。
+
+キーとエンドポイントは、次の例のように、引数として Speech コンテナーに渡されます。
+
+```bash
+docker run -it --rm -p 5000:5000 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+CloudAI:SentimentAnalysisSettings:TextAnalyticsHost={TEXT_ANALYTICS_HOST} \
+CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
+```
+
+このコマンドは、次の操作を行います。
+
+* 上のコマンドと同じ手順を実行します。
+* センチメント分析の要求を送信するための Text Analytics API エンドポイントとキーが格納されています。 
+
 
 # <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
@@ -380,6 +407,9 @@ ApiKey={API_KEY}
 
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
+> [!NOTE]
+> 複数のコンテナーを実行している場合は、一意のポート番号を使用します。
+
 | Containers | SDK ホスト URL | Protocol |
 |--|--|--|
 | 音声変換およびカスタム音声変換 | `ws://localhost:5000` | WS |
@@ -388,6 +418,121 @@ ApiKey={API_KEY}
 WSS プロトコルと HTTPS プロトコルを使用する方法については、[コンテナー セキュリティ](../cognitive-services-container-support.md#azure-cognitive-services-container-security)に関するセクションを参照してください。
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
+
+#### <a name="analyze-sentiment"></a>感情を分析する
+
+Text Analytics API 資格情報[をコンテナーに指定した](#analyze-sentiment-on-the-speech-to-text-output)場合は、Speech SDK を使用して、センチメント分析で音声認識要求を送信できます。 *シンプル*な形式または*詳細*な形式のいずれかを使用するよう、API 応答を構成できます。
+
+# <a name="simple-format"></a>[シンプルな形式](#tab/simple-format)
+
+音声クライアントでシンプルな形式を使用するように構成するには、`Simple.Extensions` の値として `"Sentiment"` を追加します。 特定の Text Analytics モデルのバージョンを選択する場合は、`speechcontext-phraseDetection.sentimentAnalysis.modelversion` プロパティの構成で `'latest'` を置き換えます。
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Simple.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Simple.Extensions` は、応答のルート レイヤーでセンチメントの結果を返します。
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6098574b79434bd4849fee7e0a50f22e",
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+# <a name="detailed-format"></a>[詳細な形式](#tab/detailed-format)
+
+Speech クライアントで詳細な形式を使用するように構成するには、`Detailed.Extensions`、`Detailed.Options`、またはその両方の値として `"Sentiment"` を追加します。 特定の Text Analytics モデルのバージョンを選択する場合は、`speechcontext-phraseDetection.sentimentAnalysis.modelversion` プロパティの構成で `'latest'` を置き換えます。
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Options',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Detailed.Extensions` は、応答のルート レイヤーでセンチメントの結果を渡します。 `Detailed.Options` は、応答の `NBest` レイヤーで結果を渡します。 これらは、個別、または組み合わせて使用できます。
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6a2aac009b9743d8a47794f3e81f7963",
+   "NBest":[
+      {
+         "Confidence":0.973695,
+         "Display":"What's the weather like?",
+         "ITN":"what's the weather like",
+         "Lexical":"what's the weather like",
+         "MaskedITN":"What's the weather like",
+         "Sentiment":{
+            "Negative":0.03,
+            "Neutral":0.79,
+            "Positive":0.18
+         }
+      },
+      {
+         "Confidence":0.9164971,
+         "Display":"What is the weather like?",
+         "ITN":"what is the weather like",
+         "Lexical":"what is the weather like",
+         "MaskedITN":"What is the weather like",
+         "Sentiment":{
+            "Negative":0.02,
+            "Neutral":0.88,
+            "Positive":0.1
+         }
+      }
+   ],
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+---
+
+センチメント分析を完全に無効にする場合は、`sentimentanalysis.enabled` に `false` 値を追加します。
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentanalysis.enabled',
+    value='false',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
 
 ### <a name="text-to-speech-or-custom-text-to-speech"></a>テキスト読み上げまたはカスタム テキスト読み上げ
 

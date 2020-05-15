@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces とコマンド ラインを使用し、Azure Kubernetes Service 上で既存の Helm チャートを使用するアプリケーションを開発する方法について説明します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e767b1ade2a80882ee33ff1fdd718c691dcefcf3
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: c37ea0b04e99cf1bba555e098bdf33b8a8558cfa
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025287"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996679"
 ---
 # <a name="quickstart-develop-an-application-with-an-existing-helm-chart-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes で既存の Helm チャートを使用するアプリケーションを開発する - Azure Dev Spaces
 このガイドでは、以下の方法について説明します。
@@ -68,7 +68,7 @@ azds prep --enable-ingress --chart webfrontend/
 `prep`dev-spaces/samples/python/getting-started/webfrontend* ディレクトリから * コマンドを実行し、`--chart` を使用して Helm チャートの場所を指定する必要があります。
 
 > [!NOTE]
-> 次のような警告が表示されることがあります: *警告: Dockerfile could not be generated due to unsupported language (サポートされていない言語が原因で Dockerfile を生成できませんでした)*" `azds prep` の実行時。 `azds prep` コマンドを実行すると、対象のプロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works-prep.md#prepare-your-code)の生成が試行されますが、既存の Dockerfile または Helm チャートは上書きされません。
+> 次のような警告が表示されることがあります: *警告: Dockerfile could not be generated due to unsupported language (サポートされていない言語が原因で Dockerfile を生成できませんでした)* " `azds prep` の実行時。 `azds prep` コマンドを実行すると、対象のプロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works-prep.md#prepare-your-code)の生成が試行されますが、既存の Dockerfile または Helm チャートは上書きされません。
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes でコードをビルドして実行する
 
@@ -96,7 +96,7 @@ Press Ctrl+C to detach
 ...
 ```
 
-`azds up` コマンドの出力に表示されるパブリック URL を開いて、サービスが稼働していることを確認できます。 この例では、パブリック URL は *http://dev.service.1234567890abcdef1234.eus.azds.io/* です。
+`azds up` コマンドの出力に表示されるパブリック URL を開いて、サービスが稼働していることを確認できます。 この例のパブリック URL は `http://dev.service.1234567890abcdef1234.eus.azds.io/` です。
 
 > [!NOTE]
 > `azds up` の実行中にサービスに移動すると、`azds up` コマンドの出力に HTTP 要求のトレースも表示されます。 それらのトレースを、サービスのトラブルシューティングやデバッグに活かすことができます。 トレースは、`azds up` の実行時に `--disable-http-traces` を使用して無効にできます。

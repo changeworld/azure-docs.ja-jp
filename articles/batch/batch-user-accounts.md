@@ -4,20 +4,20 @@ description: タスクを実行するユーザー アカウントを構成でき
 ms.topic: article
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111744"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980288"
 ---
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
+
 > [!NOTE] 
 > この記事で説明するユーザー アカウントは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) で使用されているユーザー アカウントとは異なります。 
 >
 > SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには「[リモート デスクトップを使用した Azure の Linux VM への接続](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)に関するページをご覧ください。 RDP を使用して Windows を実行しているノードに接続するには、[Windows Server VM への接続](../virtual-machines/windows/connect-logon.md)に関するページをご覧ください。<br /><br />
 > RDP を使用してクラウド サービスの構成を実行しているノードに接続するには、「[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)」をご覧ください。
-
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
 Azure Batch のタスクは、常にユーザー アカウントのもとで実行されます。 既定では、管理者権限のない標準ユーザー アカウントでタスクが実行されます。 通常は、既定のユーザー アカウントの設定で十分です。 ただし、タスクを実行するために、特別にユーザー アカウントを構成したほうが良い場合もあります。 この記事では、ユーザー アカウントの種類、および自分の用途に合わせてユーザー アカウントを構成する方法について説明します。
 

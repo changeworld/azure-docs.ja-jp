@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408404"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854170"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory (パブリック プレビュー) を使ってアプリケーションに対するグループ要求を構成する
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory を使ってアプリケーションに対するグループ要求を構成する
 
 Azure Active Directory では、アプリケーション内で使用するユーザー グループのメンバーシップ情報をトークンで提供できます。  主なパターンとして、次の 2 つがサポートされています。
 
-- Azure Active Directory オブジェクト識別子 (OID) 属性によって識別されるグループ (一般公開)
-- Active Directory (AD) の同期グループおよびユーザーに対応する sAMAccountName または GroupSID 属性によって識別されるグループ (パブリック プレビュー)
+- Azure Active Directory オブジェクト識別子 (OID) 属性によって識別されるグループ
+- Active Directory (AD) の同期グループおよびユーザーに対応する sAMAccountName または GroupSID 属性によって識別されるグループ
 
 > [!IMPORTANT]
-> このプレビュー機能については、留意すべき注意事項が複数あります。
+> この機能については、留意すべき注意事項が複数あります。
 >
 >- オンプレミスから同期される sAMAccountName およびセキュリティ識別子 (SID) の属性の使用に関するサポートは、AD FS およびその他の ID プロバイダーからの既存のアプリケーションの移動を有効にするように設計されています。 Azure AD 内で管理されるグループには、これらの要求を発行するために必要な属性は含まれていません。
 >- 大規模な組織では、ユーザーがメンバーになっているグループ数が、Azure Active Directory によってトークンに追加される制限を超える可能性があります。 SAML トークンの場合は 150 グループ、JWT の場合は 200 グループです。 これは、予期しない結果につながります。 ユーザーが多数のグループ メンバーシップを保有している場合は、オプションを使用して、要求で出力されるグループをアプリケーションの関連するグループに制限することをお勧めします。  

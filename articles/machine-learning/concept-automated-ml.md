@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f592a7f5a4af38988bcf433f0adc89d9be7579cb
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082011"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983467"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -130,11 +130,72 @@ ms.locfileid: "82082011"
 
 + Python SDK:[`AutoMLConfig` クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) に `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` を指定します。 
 
+
+
+## <a name="ensemble-models"></a><a name="ensemble"></a> アンサンブル モデル
+
+自動化された機械学習では、既定で有効になっているアンサンブル モデルがサポートされています。 アンサンブル学習では、1 つのモデルを使用するのではなく、複数のモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 アンサンブル イテレーションは、実行の最終イテレーションとして表示されます。 自動化された機械学習では、モデルの結合に投票とスタッキングの両方のアンサンブル方法を使用します。
+
+* **投票**: 予測されたクラス確率 (分類タスクの場合) または予測された回帰ターゲット (回帰タスクの場合) の加重平均に基づいて予測します。
+* **スタッキング**: スタッキングは異種のモデルを結合し、個々のモデルの出力に基づいてメタモデルをトレーニングします。 現在の既定のメタモデルは、分類タスクの場合は LogisticRegression、回帰/予測タスクの場合は ElasticNet です。
+
+初期アンサンブルが並べ替えられた [Caruana のアンサンブル選択アルゴリズム](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)を使用して、アンサンブル内で使用するモデルを決定します。 大まかに言えば、このアルゴリズムでは、最適な個別スコアを持つ最大 5 つのモデルを使用してアンサンブルを初期化し、これらのモデルが最適なスコアの 5% のしきい値内にあることを確認して、不適切な初期アンサンブルを回避します。 その後、各アンサンブルの繰り返しに対して、新しいモデルが既存のエンティティに追加され、結果のスコアが計算されます。 新しいモデルによって既存のアンサンブル スコアが向上した場合、アンサンブルはその新しいモデルを含むように変更されます。
+
+自動化された機械学習の既定のアンサンブル設定を変更する方法については、[ハウツー](how-to-configure-auto-train.md#ensemble)を参照してください。
+
+## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>ローカルおよびリモートで管理されている ML のコンピューティング先に関するガイダンス
+
+自動 ML 用の Web インターフェイスでは、常にリモートの[コンピューティング先](concept-compute-target.md)が使用されます。  ただし、Python SDK を使用する場合は、自動 ML のトレーニング用にローカルのコンピューティング先またはリモートのコンピューティング先のどちらかを選択します。
+
+* **ローカル コンピューティング**:ローカルのノート PC または VM のコンピューティング上でトレーニングが行われます。 
+* **リモート コンピューティング**:Machine Learning コンピューティング クラスター上でトレーニングが行われます。  
+
+### <a name="choose-compute-target"></a>コンピューティング先の選択
+使用するコンピューティング先を選択するときに、次の要素を考慮してください。
+
+ * **ローカル コンピューティングを選択する**:小規模のデータと短いトレーニング (つまり、子実行あたり数秒または数分) を使用する、初期探索またはデモのためのシナリオの場合は、ローカル コンピューター上でのトレーニングが適している場合があります。  セットアップ時間はかからず、インフラストラクチャ リソース (お使いの PC または VM) を直接使用できます。
+ * **リモート ML コンピューティング クラスターを選択する**:より長いトレーニングが必要なモデルを作成する運用環境でのトレーニングのように、より大きなデータセットを使用してトレーニングを行う場合、リモート コンピューティングを選択するとエンド ツー エンドの時間のパフォーマンスが大幅に向上します。`AutoML` によってクラスターのノード間でトレーニングが並列化されるためです。 リモート コンピューティングでは、内部インフラストラクチャの起動時間によって子実行あたり約 1.5 分が加算され、VM がまだ稼働していない場合はクラスター インフラストラクチャ用にさらに数分がかかります。
+
+### <a name="pros-and-cons"></a>長所と短所
+ローカルとリモートのどちらを使用するかを選択する場合は、以下の長所と短所を考慮してください。
+
+|  | 長所 (利点)  |短所 (欠点)  |
+|---------|---------|---------|---------|
+|**ローカル コンピューティング先** |  <li> 環境の起動時間がかからない   | <li>  機能のサブセット<li>  実行を並列化できない <li> 大規模なデータには適さない。 <li>トレーニング中のデータ ストリーミングがない <li>  DNN ベースの特徴量化がない <li> Python SDK のみ |
+|**リモート ML コンピューティング クラスター**|  <li> 機能の完全なセット <li> 子実行の並列化 <li>   大規模なデータのサポート<li>  DNN ベースの特徴量化 <li>  必要に応じたコンピューティング クラスターの動的スケーラビリティ <li> コードなしのエクスペリエンス (Web UI) も使用可能  |  <li> クラスター ノードの起動時間 <li> 子実行ごとの起動時間    |
+
+### <a name="feature-availability"></a>使用可能な機能 
+
+ 次の表に示すように、リモート コンピューティングを使用するとより多くの機能を使用できます。 これらの機能の一部は、Enterprise ワークスペースでのみ使用できます。
+
+| 機能                                                    | Remote | ローカル | 必要 <br>Enterprise ワークスペース |
+|------------------------------------------------------------|--------|-------|-------------------------------|
+| データ ストリーミング (大規模なデータのサポート、最大 100 GB)          | ✓      |       | ✓                             |
+| DNN-BERT ベースのテキストの特徴量化とトレーニング             | ✓      |       | ✓                             |
+| すぐに使用できる GPU サポート (トレーニングと推論)        | ✓      |       | ✓                             |
+| 画像の分類とラベル付けのサポート                  | ✓      |       | ✓                             |
+| 予測のための自動 ARIMA、Prophet、および ForecastTCN モデル | ✓      |       | ✓                             |
+| 並列での複数の実行/反復                       | ✓      |       | ✓                             |
+| AutoML スタジオ Web エクスペリエンス UI で解釈可能なモデルを作成する      | ✓      |       | ✓                             |
+| スタジオ Web エクスペリエンス UI での特徴エンジニアリングのカスタマイズ                        | ✓      |       | ✓                              |
+| Azure ML ハイパーパラメーターの調整                             | ✓      |       |                               |
+| Azure ML パイプライン ワークフローのサポート                         | ✓      |       |                               |
+| 実行の継続                                             | ✓      |       |                               |
+| 予測                                                | ✓      | ✓     | ✓                             |
+| ノートブックで実験を作成して実行する                    | ✓      | ✓     |                               |
+| UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |                               |
+| データ ガードレール                                            | ✓      | ✓     |                               |
+
+
+## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning の自動 ML
+
+Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
+
+* コードの経験がある場合は、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関する記事を参照してください 
+
+* コードの経験があまりない、またはない場合は、Azure Machine Learning Studio ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  
+
 <a name="parity"></a>
-
-## <a name="the-studio-vs-sdk"></a>Studio と SDK
-
-Python SDK と Azure Machine Learning Studio で利用できる高度な自動 ML 機能の同等性と相違について学習します。 
 
 ### <a name="experiment-settings"></a>実験の設定 
 
@@ -181,17 +242,6 @@ Azure Databricks クラスターでのトレーニングをサポートする| �
 |ガードレールを取得する| ✓|✓|
 |実行を一時停止および再開する| ✓| |
 
-## <a name="ensemble-models"></a><a name="ensemble"></a> アンサンブル モデル
-
-自動化された機械学習では、既定で有効になっているアンサンブル モデルがサポートされています。 アンサンブル学習では、1 つのモデルを使用するのではなく、複数のモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 アンサンブル イテレーションは、実行の最終イテレーションとして表示されます。 自動化された機械学習では、モデルの結合に投票とスタッキングの両方のアンサンブル方法を使用します。
-
-* **投票**: 予測されたクラス確率 (分類タスクの場合) または予測された回帰ターゲット (回帰タスクの場合) の加重平均に基づいて予測します。
-* **スタッキング**: スタッキングは異種のモデルを結合し、個々のモデルの出力に基づいてメタモデルをトレーニングします。 現在の既定のメタモデルは、分類タスクの場合は LogisticRegression、回帰/予測タスクの場合は ElasticNet です。
-
-初期アンサンブルが並べ替えられた [Caruana のアンサンブル選択アルゴリズム](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)を使用して、アンサンブル内で使用するモデルを決定します。 大まかに言えば、このアルゴリズムでは、最適な個別スコアを持つ最大 5 つのモデルを使用してアンサンブルを初期化し、これらのモデルが最適なスコアの 5% のしきい値内にあることを確認して、不適切な初期アンサンブルを回避します。 その後、各アンサンブルの繰り返しに対して、新しいモデルが既存のエンティティに追加され、結果のスコアが計算されます。 新しいモデルによって既存のアンサンブル スコアが向上した場合、アンサンブルはその新しいモデルを含むように変更されます。
-
-自動化された機械学習の既定のアンサンブル設定を変更する方法については、[ハウツー](how-to-configure-auto-train.md#ensemble)を参照してください。
-
 <a name="use-with-onnx"></a>
 
 ## <a name="automl--onnx"></a>AutoML & ONNX
@@ -202,20 +252,19 @@ ONNX 形式に変換する方法については、[この Jupyter ノートブ�
 
 ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ONNX ランタイム C# API での ONNX モデルの推論](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)に関する詳細をご覧ください。 
 
-
-
 ## <a name="next-steps"></a>次のステップ
 
 例を参照して、自動化された機械学習を使用してモデルを構築する方法を学習してください。
-
-+ 次のチュートリアルを修了してください。[チュートリアル:Azure Machine Learning で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)
 
 + 自動トレーニング実験の設定を構成してください。
   + Azure Machine Learning Studio で、[こちらの手順](how-to-use-automated-ml-for-ml-models.md)を使用します。
   + Python SDK で、[こちらの手順](how-to-configure-auto-train.md)を使用します。
 
++ [リモート コンピューティング先](how-to-auto-train-remote.md)の使用方法を学習します
+
++ 次のチュートリアルを修了してください。[チュートリアル:Azure Machine Learning で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md) 
+
 + [こちらの手順](how-to-auto-train-forecast.md)を使用し、時系列データを使用して自動トレーニングする方法について学習してください。
 
 + [自動化された機械学習の Jupyter Notebook のサンプル](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)をお試しください。
-
 * 自動 ML は、[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)、[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) などの他の Microsoft ソリューションでも使用できます

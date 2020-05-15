@@ -5,15 +5,15 @@ services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/11/2020
 ms.author: egeaney
 ms.custom: include
-ms.openlocfilehash: a4b8fcaab93144bb73c1a118d266dd871728a6c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 409f8d602432f0ed0363e45790c47497450c5e6c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79372020"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202023"
 ---
 ### <a name="regional-availability"></a>リージョン別の提供状況
 
@@ -22,3 +22,5 @@ ms.locfileid: "79372020"
 * 米国中南部
 * 米国西部 2
 * 米国東部
+* US Gov バージニア州
+* US Gov アリゾナ

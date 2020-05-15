@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2cf1ab2b9ec7e1094a0afa34973db3441c22ee5b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608032"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982770"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Storage Explorer を使ってデータを操作する
 
@@ -273,7 +273,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS プロキシの問題
 
-ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azure Cosmos DB ノードを一覧表示できません。 これは既知の問題であり、次のリリースで修正される予定です。 現時点では、Azure Portal の Azure Cosmos DB データ エクスプローラーを回避策として使用できます。
+ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azure Cosmos DB ノードを一覧表示できません。 現時点では、Azure Portal の Azure Cosmos DB データ エクスプローラーを回避策として使用できます。
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>"ローカルで接続済み" ノードの下の "開発" ノードに関する問題
 

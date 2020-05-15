@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: bb4b654bd0b3591ebaa1bd217020095319a4938c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 928e0cec1cad5d6fe8b70b728cd86a41577ce797
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381914"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195355"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -40,12 +40,12 @@ Azure Firewall は、デプロイ時に、可用性を高めるために複数�
 
 Availability Zones にデプロイされるファイアウォールについては追加のコストは発生しません。 ただし、Availability Zones に関連する受信および送信データ転送については追加のコストが発生します。 詳細については、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
 
-Azure Firewall Availability Zones は、Availability Zones をサポートするリージョンで利用できます。 詳しくは、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md#services-support-by-region)」をご覧ください。
+Azure Firewall Availability Zones は、Availability Zones をサポートするリージョンで利用できます。 詳細については、「[Azure で Availability Zones がサポートされるリージョン](../availability-zones/az-region.md)」を参照してください
 
 > [!NOTE]
 > Availability Zones は、デプロイ時にのみ構成できます。 既存のファイアウォールを構成して Availability Zones を含めることはできません。
 
-Availability Zones の詳細については、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md)」をご覧ください。
+Availability Zones の詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」を参照してください
 
 ## <a name="unrestricted-cloud-scalability"></a>クラウドによる無制限のスケーラビリティ
 
@@ -83,16 +83,20 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 
 ## <a name="multiple-public-ip-addresses"></a>複数のパブリック IP アドレス
 
-複数のパブリック IP アドレス (最大 100) をファイアウォールに関連付けることができます。
+複数のパブリック IP アドレス (最大 250) をファイアウォールに関連付けることができます。
 
 これにより、次のシナリオが実現します。
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
-- **SNAT** -送信 SNAT 接続に追加のポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。
+- **SNAT** -送信 SNAT 接続に追加のポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
 すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。
+
+## <a name="forced-tunneling"></a>強制トンネリング
+
+インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングするように、Azure Firewall を構成することができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
 
 ## <a name="certifications"></a>認定
 
@@ -111,7 +115,7 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません|ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません。|この機能は今後サポートされる予定です。 ファイアウォールを別のリソース グループまたはサブスクリプションに移動するには、現在のインスタンスを削除して、新しいリソース グループまたはサブスクリプション内に再作成する必要があります。|
 |脅威インテリジェンス アラートがマスクされることがある|アラートのみのモードに構成されている場合、送信フィルター処理用の宛先 80/443 のネットワーク ルールによって脅威インテリジェンス アラートがマスクされます。|アプリケーション ルールを使用して 80/443 の送信フィルター処理を作成します。 または、脅威インテリジェンス モードを **[Alert and Deny]\(アラートと拒否\)** に変更します。|
 |Azure Firewall では名前解決に Azure DNS のみが使用される|Azure Firewall では、Azure DNS のみを使用して FQDN が解決されます。 カスタム DNS サーバーはサポートされていません。 他のサブネット上の DNS 解決への影響はありません。|現在、この制限を緩和するように取り組んでいます。|
-|Azure Firewall SNAT/DNAT がプライベート IP 送信先で機能しない|Azure Firewall SNAT/DNAT のサポートは、インターネット エグレスまたはイングレスに制限されています。 現在、SNAT/DNAT はプライベート IP 送信先で機能しません。 たとえば、スポークからスポークです。|これは現在の制限です。|
+|Azure Firewall DNAT がプライベート IP 送信先で機能しない|Azure Firewall DNAT のサポートは、インターネット エグレスまたはイングレスに制限されています。 現在、DNAT はプライベート IP 送信先で機能しません。 たとえば、スポークからスポークです。|これは現在の制限です。|
 |最初のパブリック IP の構成を削除できない|Azure Firewall の各パブリック IP アドレスは、"*IP 構成*" に割り当てられています。  最初の IP 構成はファイアウォールのデプロイ中に割り当てられ、通常、それにはファイアウォールのサブネットへの参照も含まれます (テンプレートのデプロイによって別に明示的に構成されていない場合)。 この IP 構成を削除するとファイアウォールの割り当てが解除されるため、削除できません。 ただし、ファイアウォールで使用できるパブリック IP アドレスが他に 1 つ以上ある場合は、この IP 構成に関連付けられているパブリック IP アドレスを変更または削除できます。|これは仕様です。|
 |Availability Zones は、デプロイ時にのみ構成できます。|Availability Zones は、デプロイ時にのみ構成できます。 ファイアウォールがデプロイされた後、Availability Zones を構成することはできません。|これは仕様です。|
 |受信接続での SNAT|DNAT に加えて、ファイアウォールのパブリック IP アドレスを使用した (受信) 接続は SNAT によっていずれかのファイアウォールのプライベート IP に変換されます。 対称的なルーティングを実現するために、現在このような要件が (アクティブ/アクティブ NVA に対しても) 適用されます。|HTTP/S の元の送信元を保持するには、[XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) ヘッダーを使用することを検討します。 たとえば、ファイアウォールの直前に [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) や [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) などのサービスを使用します。 Azure Front Door とチェーンの一部としてファイアウォールに WAF を追加することもできます。
@@ -122,6 +126,7 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |強制トンネリングが有効になっている場合、DNAT はサポートされない|強制トンネリングが有効になった状態でデプロイされているファイアウォールは、非対称ルーティングのため、インターネットからの受信アクセスをサポートできません。|これは、非対称ルーティングのための仕様です。 受信接続のリターン パスは、確立された接続が検出されていないオンプレミスのファイアウォールを経由します。
 |送信パッシブ FTP は、複数のパブリック IP アドレスを持つファイアウォールでは機能しません。|パッシブ FTP は、コントロールとデータのチャネルに対して異なる接続を確立します。 複数のパブリック IP アドレスを持つファイアウォールは、送信データを送信するときに、ソース IP アドレスとしてパブリック IP アドレスの 1 つをランダムに選択します。 データとコントロールのチャネルで異なるソース IP アドレスが使用されていると、FTP は失敗します。|明示的な SNAT 構成が計画されています。 現時点では、このような場合は、1 つの IP アドレスを使用することを検討してください。|
 |NetworkRuleHit メトリックにプロトコル ディメンションがない|ApplicationRuleHit メトリックでは、プロトコルに基づいたフィルター処理が許可されていますが、対応する NetworkRuleHit メトリックにこの機能がありません。|解決策を調査中です。|
+|64000 から 65535 の範囲のポートを使用した NAT ルールはサポートされません。|Azure Firewall では、ネットワーク ルールとアプリケーション ルールで 1 から 65535 の範囲の任意のポートを使用できますが、NAT ルールでサポートされるのは、1 から 63999 の範囲のポートのみです。|これは現在の制限です。
 |構成の更新には、平均で 5 分かかる可能性があります。|Azure Firewall 構成の更新は平均で 3 から 5 分かかる場合があり、並列更新はサポートされていません。|解決策を調査中です。
 
 ## <a name="next-steps"></a>次のステップ

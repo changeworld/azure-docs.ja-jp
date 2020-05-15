@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルのコントロール
 description: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルと Azure Policy の推奨事項のマッピング。
-ms.date: 11/04/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656962"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863962"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの推奨事項のマッピング
 
@@ -37,9 +37,9 @@ ms.locfileid: "80656962"
 
 このブループリントでは、削除が必要になる可能性のあるゲスト アカウントの監視に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
+- 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1.23 カスタム サブスクリプションの所有者ロールが作成されていないことを確認する
 
@@ -51,7 +51,7 @@ ms.locfileid: "80656962"
 
 このブループリントでは、Security Center Standard レベルが有効になっていないネットワークと仮想マシンの監視に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
- - Security Center の Standard 価格レベルを選択する必要がある
+- Security Center の Standard 価格レベルを選択する必要がある
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2.2 [監視エージェントの自動プロビジョニング] が [オン] に設定されていることを確認する
 
@@ -87,20 +87,14 @@ ms.locfileid: "80656962"
 
 このブループリントでは、インターネットに接続する仮想マシンの保護に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- インターネットに接続している仮想マシン用のネットワーク セキュリティ グループ ルールは、強化する必要がある
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2.8 ASC の既定のポリシー設定 [Web アプリケーション ファイアウォールの監視] が [無効] になっていないことを確認する
-
-このブループリントでは、Web アプリケーションを実行している仮想マシンの保護に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
-
-- IaaS 上の Web アプリケーションに対する NSG 規則を強化する必要がある
+- アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2.9 ASC の既定のポリシー設定 [次世代のファイアウォール (NGFW) 監視を有効にする] が [無効] になっていないことを確認する
 
 このブループリントでは、アクセスを制限してサブネットと仮想マシンを脅威から保護するのに役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。 この CIS Microsoft Azure Foundations Benchmark の推奨事項で参照されている Security Center ポリシーは、2 つの新しい推奨事項に置き換えられています。 次に示すポリシーは、新しい推奨事項に対応しています。
 
 - サブネットはネットワーク セキュリティ グループに関連付けられている必要がある
-- 仮想マシンはネットワーク セキュリティ グループに関連付けられている必要がある
+- インターネットに接続する仮想マシンは、ネットワーク セキュリティ グループを使用して保護する必要がある
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2.10 ASC の既定のポリシー設定 [脆弱性評価を監視する] が [無効] になっていないことを確認する
 
@@ -128,7 +122,7 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 このブループリントでは、SQL サーバー監査が有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
+- SQL Server の監査を有効にする必要があります
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2.15 ASC の既定のポリシー設定 [SQL 暗号化の監視] が [無効] になっていないことを確認する
 
@@ -182,7 +176,7 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 このブループリントでは、SQL サーバー監査が有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。 
 
-- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
+- SQL Server の監査を有効にする必要があります
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4.2 SQL Server の "監査" ポリシーの "AuditActionGroups" が適切に設定されていることを確認する
 
@@ -200,8 +194,8 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 このブループリントでは、SQL サーバーと SQL マネージド インスタンスで Advanced Data Security が有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5 [脅威検出の種類] が [すべて] に設定されていることを確認する
 
@@ -214,15 +208,15 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 このブループリントでは、Advanced Data Security 通知が適切に有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- SQL マネージド インスタンスの高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
 - SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- SQL マネージド インスタンスの高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4.7 [サービスの管理者/共同管理者に電子メールを送信] が [有効] になっていることを確認する
 
 このブループリントでは、Advanced Data Security 通知が適切に有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
 - SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4.8 Azure Active Directory 管理者が構成されていることを確認する
 
@@ -240,8 +234,8 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 このブループリントでは、SQL サーバーと SQL マネージド インスタンス用の透過的なデータ暗号化保護機能が自分のキーを使用して暗号化されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- SQL マネージド インスタンスの TDE 保護機能を自分のキーを使用して暗号化する必要がある
 - SQL Server の TDE 保護機能を自分のキーを使用して暗号化する必要がある
+- SQL マネージド インスタンスの TDE 保護機能を自分のキーを使用して暗号化する必要がある
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 MySQL データベース サーバーで [SSL 接続を強制する] が [有効] に設定されていることを確認する
 
@@ -315,11 +309,83 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 - Azure Monitor ですべてのリージョンからアクティビティ ログを収集する必要がある
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>5.1.6 アクティビティ ログがあるコンテナーを含むストレージ アカウントが BYOK (独自のキーの使用) を使用して暗号化されていることを確認する
+
+このブループリントは、アクティビティ ログを含むストレージ アカウントが BYOK で暗号化されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- アクティビティ ログがあるコンテナーを含むストレージ アカウントは、BYOK を使用して暗号化する必要がある
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 Azure KeyVault のログ記録が [有効] になっていることを確認する
 
 このブループリントでは、キー コンテナーに対して診断ログが有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - Key Vault で診断ログを有効にする必要がある
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 "ポリシー割り当ての作成" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定のポリシー操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 "ネットワーク セキュリティ グループの作成または更新" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定の管理操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 "ネットワーク セキュリティ グループの削除" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定の管理操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>5.2.4 "ネットワーク セキュリティ グループ規則の作成または更新" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定の管理操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>5.2.5 "ネットワーク セキュリティ グループ規則の削除" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定の管理操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>5.2.6 "セキュリティ ソリューションの作成または更新" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定のセキュリティ操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>5.2.7 "セキュリティ ソリューションの削除" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定のセキュリティ操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 "SQL Server ファイアウォール規則の作成、更新、削除" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定の管理操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>5.2.9 "セキュリティ ポリシーの更新" のアクティビティ ログ アラートが存在することを確認する
+
+このブループリントは、特定のアクティビティ ログ アラートが存在することの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- 特定のセキュリティ操作のアクティビティ ログ アラートが存在する必要がある
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6.1 インターネットからの RDP アクセスが制限されていることを確認する
+
+このブループリントは、RDP アクセスが制限されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- インターネットからの RDP アクセスをブロックする必要がある
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6.2 インターネットからの SSH アクセスが制限されていることを確認する
+
+このブループリントは、SSH アクセスが制限されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- インターネットからの SSH アクセスをブロックする必要がある
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6.5 Network Watcher が [有効] になっていることを確認する
 
@@ -349,7 +415,7 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 このブループリントでは、承認済みの仮想マシン拡張機能のみがインストールされていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。 このポリシーでは、承認済みのすべての仮想マシン拡張機能を指定するパラメーター配列が必須です。 このポリシーのイニシアティブ定義には、顧客が検証する必要のある、推奨される既定値が含まれています。 
 
- - 承認済みの VM 拡張機能のみがインストールされている必要がある
+- 承認済みの VM 拡張機能のみがインストールされている必要がある
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7.5 すべての仮想マシンの最新の OS 修正プログラムが適用されていることを確認する
 
@@ -373,7 +439,15 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 このブループリントでは、Kubernetes サービス クラスター内でのアクセス許可を管理するためにロールベースのアクセス制御が使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
-- \[プレビュー\]:Kubernetes サービスでロールベースのアクセス制御 (RBAC) を使用する必要がある
+- Kubernetes サービスでロールベースのアクセス制御 (RBAC) を使用する必要がある
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9.1 Azure App Service に App Service 認証が設定されていることを確認する
+
+このブループリントは、App Service アプリへの要求が認証されることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリで認証が有効になっている必要がある
+- 関数アプリで認証が有効になっている必要がある
+- Web アプリで認証が有効になっている必要がある
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9.2 Web アプリがすべての HTTP トラフィックを Azure App Service の HTTPS にリダイレクトすることを確認する
 
@@ -444,7 +518,6 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 - API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
-
 
 ## <a name="next-steps"></a>次のステップ
 

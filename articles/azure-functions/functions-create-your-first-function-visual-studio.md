@@ -1,22 +1,22 @@
 ---
 title: クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
-description: このクイック スタートでは、Visual Studio を使用して、HTTP によってトリガーされる Azure Function を作成して発行する方法について学習します。
+description: このクイックスタートでは、Visual Studio を使用して、HTTP によってトリガーされる Azure Function を作成して発行する方法について学習します。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81308927"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122750"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
 
 Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。
 
-このクイック スタートでは、Visual Studio 2019 を使用して、"hello world" の HTTP によってトリガーされる C# 関数アプリをローカルで作成およびテストしてから、Azure に発行する方法を学習します。 
+このクイックスタートでは、Visual Studio 2019 を使用して、"hello world" の HTTP によってトリガーされる C# 関数アプリをローカルで作成およびテストしてから、Azure に発行する方法を学習します。 
 
 ![ブラウザーでの関数 localhost の応答](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -38,7 +38,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 メソッドに適切な属性を適用することによって、入力バインディングと出力バインディングを使用して関数の機能を拡張します。 詳細については、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)の「[トリガーとバインド](functions-dotnet-class-library.md#triggers-and-bindings)」のセクションを参照してください。
 
-関数プロジェクトと、HTTP によってトリガーされる関数を作成できたので、この関数をローカル コンピューターでテストすることができます。
+関数プロジェクトと、HTTP トリガー関数を作成できたので、この関数をローカル コンピューターでテストすることができます。
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
@@ -58,7 +58,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 1. **[発行]** プロファイル ページから関数アプリのベース URL をコピーします。 関数をローカルでテストするために使用した URL の `localhost:port` 部分を新しいベース URL に置き換えます。 この URL にクエリ文字列 `?name=<YOUR_NAME>` を追加して、要求を実行します。
 
-    HTTP によってトリガーされる関数を呼び出す URL は、次の形式になります。
+    HTTP トリガー関数を呼び出す URL は、次の形式になります。
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Visual Studio を使用して、HTTP によってトリガーされるシンプルな関数を含む C# 関数アプリを作成し、Azure に発行しました。 
+このクイックスタートでは、Visual Studio を使用して、シンプルな HTTP トリガー関数を含む C# 関数アプリを作成し、Azure に発行しました。 
 
 次の記事に進み、Azure Storage キュー バインドを関数に追加する方法を学習してください。
 > [!div class="nextstepaction"]

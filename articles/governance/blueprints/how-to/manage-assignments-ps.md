@@ -1,14 +1,14 @@
 ---
 title: PowerShell を使用した割り当ての管理方法
 description: 公式の Azure Blueprints PowerShell モジュールである Az.Blueprint でブループリント割り当てを管理する方法について説明します。
-ms.date: 09/30/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fa0f89df79c4ae1c5b66998089f04575bd53ea37
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677425"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863979"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell を使用した割り当ての管理方法
 
@@ -205,8 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>例 2:JSON 割り当て定義ファイルを使用する
 
-以下の例では、[例 1](#example-1-provide-parameters) とほぼ同じ割り当てを作成します。
-パラメーターをコマンドレットに渡す代わりに、この例では、JSON 割り当て定義ファイルと **AssignmentFile** パラメーターの使用について示します。 さらに、**excludedPrincipals** プロパティを **locks** の一部として構成します。 **excludedPrincipals** に対応する PowerShell パラメーターは存在せず、このプロパティは JSON 割り当て定義ファイルを通じて設定することによってのみ構成できます。
+以下の例では、[例 1](#example-1-provide-parameters) とほぼ同じ割り当てを作成します。 パラメーターをコマンドレットに渡す代わりに、この例では、JSON 割り当て定義ファイルと **AssignmentFile** パラメーターの使用について示します。 さらに、**excludedPrincipals** プロパティを **locks** の一部として構成します。 **excludedPrincipals** に対応する PowerShell パラメーターは存在せず、このプロパティは JSON 割り当て定義ファイルを通じて設定することによってのみ構成できます。
 
 ```json
 {
@@ -335,7 +334,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>エンド ツー エンドのコード例
+## <a name="code-example"></a>コードの例
 
 次の例ではすべての手順をまとめ、ブループリント定義を取得し、`{subId}` と表される特定のサブスクリプションでブループリント割り当てを作成、更新、および削除します。
 

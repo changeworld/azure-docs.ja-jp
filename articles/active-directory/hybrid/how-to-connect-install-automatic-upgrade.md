@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: 自動アップグレード | Microsoft Docs'
+title: Azure AD Connect:自動アップグレード | Microsoft Docs
 description: このトピックでは、Azure AD Connect Sync の組み込みの自動アップグレード機能について説明します。
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2019
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60349846"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926478"
 ---
-# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
+# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md#111050)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
 
 ## <a name="overview"></a>概要
@@ -39,11 +39,11 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 
 | State | 解説 |
 | --- | --- |
-| 有効 |自動アップグレードが有効です。 |
+| Enabled |自動アップグレードが有効です。 |
 | Suspended |システムによる設定だけが可能です。 システムは、自動アップグレードを**現在受け付けることができません**。 |
 | 無効 |自動アップグレードが無効です。 |
 
-**を使用して、** 有効**と**無効`Set-ADSyncAutoUpgrade`を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。  1\.1.750.0 より前は、自動アップグレードの状態が一時停止に設定されている場合に、Set-ADSyncAutoUpgrade コマンドレットによって Autoupgrade がブロックされていました。 この機能は変更されたため、AutoUpgrade はブロックされません。
+`Set-ADSyncAutoUpgrade` を使用して、**有効**と**無効**を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。  1\.1.750.0 より前は、自動アップグレードの状態が一時停止に設定されている場合に、Set-ADSyncAutoUpgrade コマンドレットによって Autoupgrade がブロックされていました。 この機能は変更されたため、AutoUpgrade はブロックされません。
 
 自動アップグレードでは、アップグレード インフラストラクチャに Azure AD Connect Health を使用しています。 自動アップグレードを動作させるには、「 **Office 365 URL および IP アドレス範囲** 」に記載されているように、 [Azure AD Connect Health](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)用にプロキシ サーバーで URL を開いておく必要があります。
 
@@ -99,7 +99,6 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB データベースが使用されていません。 |
 | UpgradeNotSupportedNonMsolAccount |[AD DS Connector アカウント](reference-connect-accounts-permissions.md#ad-ds-connector-account)は、既定の MSOL_ アカウントではなくなりました。 |
 | UpgradeNotSupportedNotConfiguredSignInMethod | AAD Connect を設定する場合は、サインオン方法の選択時に *[構成しない]* を選択します。 |
-| UpgradeNotSupportedPtaSignInMethod | ユーザーがサインイン方法として [パススルー認証] を選択しました。 |
 | UpgradeNotSupportedStagingModeEnabled |サーバーが [ステージング モード](how-to-connect-sync-staging-server.md)に設定されています。 |
 | UpgradeNotSupportedUserWritebackEnabled |ユーザーが [ユーザーの書き戻し](how-to-connect-preview.md#user-writeback) 機能を有効にしました。 |
 

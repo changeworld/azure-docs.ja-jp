@@ -1,26 +1,15 @@
 ---
-title: PowerShell の使用 - Azure Batch | Microsoft Docs
+title: PowerShell の使用を開始する
 description: Batch リソースの管理に使用できる Azure PowerShell コマンドレットの簡単な紹介。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: powershell
-ms.workload: big-compute
 ms.date: 01/15/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 26691ca6b9d078ef18ac852c67fa2ac88dff2722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b768fac7fa6fe0f4821a4fbaf5fa11414b10f81d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023006"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995315"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>PowerShell コマンドレットで Batch リソースを管理する
 
@@ -308,4 +297,4 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 * コマンドレットの詳しい構文と例については、 [Azure Batch コマンドレットのリファレンス](/powershell/module/az.batch)を参照してください。
 * Batch におけるアプリケーションとアプリケーション パッケージについて詳しくは、「[Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
 
-[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
+[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1

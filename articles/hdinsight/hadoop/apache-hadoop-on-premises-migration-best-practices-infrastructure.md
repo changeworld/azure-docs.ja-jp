@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8407aafdb9b9dadcbc8e220ac42e5d7856116959
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74951515"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996777"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -76,7 +76,7 @@ HDInsight の各バージョンは、一連の Hadoop エコシステム コン�
 |Palantir|IaaS 
 |Sailpoint|IaaS 
 
-詳細については、[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)を参照してください
+詳細については、[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)を参照してください
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使って HDInsight をカスタマイズする
 
@@ -109,7 +109,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>ブートストラップを使って HDInsight 構成をカスタマイズする
 
-`core-site.xml`、`hive-site.xml`、`oozie-env.xml` などの構成ファイルの構成の変更は、ブートス トラップを使って実行できます。 次のスクリプトは、Powershell の [AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) コマンドレットである [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) を使用している例です。
+`core-site.xml`、`hive-site.xml`、`oozie-env.xml` などの構成ファイルの構成の変更は、ブートス トラップを使って実行できます。 次のスクリプトは、PowerShell の [AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) コマンドレットである [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) を使用している例です。
 
 ```powershell
 # hive-site.xml configuration
@@ -167,7 +167,7 @@ HDInsight で Azure Virtual Network を使用すると、次のシナリオが�
 - HDInsight を Azure Virtual Network 内のデータ ストアに接続する。
 - インターネット公開されていない Hadoop サービスに直接アクセスする。 たとえば、Kafka API や HBase Java API にアクセスできます。
 
-HDInsight は、新規または既存の Azure Virtual Network に追加できます。 HDInsight を既存の仮想ネットワークに追加する場合は、既存のネットワーク セキュリティ グループとユーザー定義のルートを更新して、Azure データ センター内の[いくつかの IP アドレス](../hdinsight-management-ip-addresses.md)に無制限にアクセスできるようにする必要があります。 また、HDInsight サービスによって使用中の[ポート](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)へのトラフィックをブロックしないようにしてください。
+HDInsight は、新規または既存の Azure Virtual Network に追加できます。 HDInsight を既存の仮想ネットワークに追加する場合は、既存のネットワーク セキュリティ グループとユーザー定義のルートを更新して、Azure データ センター内の[いくつかの IP アドレス](../hdinsight-management-ip-addresses.md)に無制限にアクセスできるようにする必要があります。 また、HDInsight サービスによって使用中の[ポート](../control-network-traffic.md#required-ports)へのトラフィックをブロックしないようにしてください。
 
 > [!Note]  
 > HDInsight は強制トンネリングを現在サポートしていません。 強制トンネリングとは、ログ記録と検査を目的として、送信インターネット トラフィックをデバイスに強制的に向かわせるサブネット設定です。 HDInsight をサブネットにインストールする前に強制トンネリングを削除するか、HDInsight 用の新しいサブネットを作成してください。 また、HDInsight は発信ネットワーク接続を制限できません。

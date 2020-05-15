@@ -11,19 +11,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76935330"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858769"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
-
->[!IMPORTANT]
->Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer の詳細については、「[Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。Azure Monitor での多次元メトリックによるテレメトリが公開されています。
 
 Azure の各種ログを使用して、Basic Load Balancer の管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 ログは、イベント ハブまたは Log Analytics ワークスペースにストリーム配信できます。 どのログも Azure Blob Storage から抽出し、Excel や Power BI などのさまざまなツールで表示できます。  各種ログの詳細については、以下の一覧を参照してください。
 

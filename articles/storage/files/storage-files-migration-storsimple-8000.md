@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755030"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858714"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -23,7 +23,7 @@ StorSimple 8000 シリーズは 2022 年 12 月に[提供終了](https://support
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 > [!IMPORTANT]
-> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFilesMigration@microsoft .com にメールをお送りください。
+> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFiles@microsoft.com にメールをお送りください。
 
 Azure File Sync は、次の 2 つの主要なコンポーネントに基づく Microsoft のクラウド サービスです。
 

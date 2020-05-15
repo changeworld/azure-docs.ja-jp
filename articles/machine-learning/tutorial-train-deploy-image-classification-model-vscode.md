@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Visual Studio Code 拡張機能を使用してモデルをトレーニングおよびデプロイする
+title: 'チュートリアル:モデルのトレーニングとデプロイ: VS Code'
 titleSuffix: Azure Machine Learning
 description: TensorFlow と Azure Machine Learning Visual Studio Code 拡張機能を使用して、画像分類モデルをトレーニングおよびデプロイする方法について説明します
 services: machine-learning
@@ -9,12 +9,13 @@ ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 04/13/2020
-ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.custom: contperfq4
+ms.openlocfilehash: 05857641df22e03362eeee1590fef62fa3a45530
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272813"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857714"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code 拡張機能を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
 

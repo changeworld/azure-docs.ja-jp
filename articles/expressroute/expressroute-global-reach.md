@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f574576044b7e4ddd34289b5cc45fe5ca353f180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e98f4a401a9fcab12bd7a276c47df67c7936b1d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538506"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853414"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure や Office 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用できます。 ただし、ブランチ オフィスは相互にデータを直接交換することはできません。 言い換えれば、10.0.1.0/24 はデータを、10.0.3.0/24 と 10.0.4.0/24 には送信できますが、10.0.2.0/24 には送信できません。
@@ -32,7 +32,7 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 現在、ExpressRoute Global Reach は以下の場所でサポートされています。
 
 * オーストラリア
-* カナダ
+* Canada
 * フランス
 * ドイツ
 * 香港特別行政区
@@ -41,17 +41,18 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 * 韓国
 * オランダ
 * ニュージーランド
+* ノルウェー
 * シンガポール
 * スイス
 * イギリス
-* アメリカ
+* United States
 
 ExpressRoute 回線は、上記の国または地域の [ExpressRoute ピアリング拠点](expressroute-locations.md)に作成する必要があります。 [異なる地政学的地域](expressroute-locations.md)間で ExpressRoute Global Reach を有効にするには、Premium SKU の回線を使用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-1. [ExpressRoute Global Reach について詳しく学習する](expressroute-faqs.md)
-2. [ExpressRoute Global Reach を有効する方法](expressroute-howto-set-global-reach.md)
-3. [ExpressRoute 回線を Azure 仮想ネットワークにリンクする](expressroute-howto-linkvnet-arm.md)
+1. [Global Reach の FAQ を表示する](expressroute-faqs.md#globalreach)
+2. [Global Reach を有効にする方法を学習する](expressroute-howto-set-global-reach.md)
+3. [ExpressRoute 回線を仮想ネットワークにリンクする方法を学習する](expressroute-howto-linkvnet-arm.md)
 
 
 <!--Image References-->

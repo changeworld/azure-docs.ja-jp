@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730698"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856734"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
-
-> [!IMPORTANT]
-> 現在、IoT Edge モジュール オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、 Cloud パートナー ポータル向けの「[IoT Edge モジュールの技術アセットの準備](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)」の手順に従ってオファーを管理してください。
 
 この記事では、Azure Marketplace で公開する前にモノのインターネット (IoT) Edge モジュールの技術アセットが満たす必要のある要件について説明します。
 

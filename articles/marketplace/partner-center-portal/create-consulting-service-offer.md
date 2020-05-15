@@ -6,18 +6,15 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/08/2020
+ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791903"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994347"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
-
-> [!IMPORTANT]
-> コンサルティング サービス オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、Cloud パートナー ポータル向けの「[Azure と Dynamics 365 のコンサルティング サービス プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)」の手順に従ってオファーを管理してください。
 
 この記事では、[Microsoft AppSource](https://appsource.microsoft.com/) または [Azure Marketplace](https://azuremarketplace.microsoft.com/) のいずれかにコンサルティング サービス オファーを公開する方法について説明します。 AppSource 上で Microsoft [Dynamics 365](https://dynamics.microsoft.com/) および Power Platform に基づくコンサルティング サービス オファーを一覧表示します。 Azure Marketplace 上で Microsoft Azure に基づくコンサルティング サービス オファーを一覧表示します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 ご自分のアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
@@ -99,10 +96,10 @@ ms.locfileid: "82791903"
     - **概念実証**:ソリューションがお客様の要件を満たすかどうかを判断するために、限られた範囲の実装を行います。
     - **ワークショップ**:顧客の施設内で実施される対話形式のエンゲージメント。 これには、トレーニング、ブリーフィング、評価、または顧客のデータまたは環境に対して構築されたデモを含めることができます。
 
-1. **Azure** の主要な製品を選択した場合は、**ソリューションの分野**を最大 3 つ選択します。 これにより、Azure Marketplace の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 Azure を選択しなかった場合は、この手順をスキップします。
-2. Azure _以外の_主要製品を選択した場合は、**適用対象の製品**を最大 3 つ選択します。 これにより、AppSource の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 詳細については、「[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)」 (PDF) を参照してください。
-3. 貴社のオファーが適用される最大 6 つの **業界**を選択します。 これにより、顧客は貴社のオファーをさらに容易に見つけられるようになります。
-4. コンサルティング サービス オファーのリストに表示するために獲得した**コンピテンシー** を 3 つまで追加できます。 Azure Expert MSP および Azure Networking MSP を除き、少なくとも 1 つのコンピテンシーが必要です。
+3. **Azure** の主要な製品を選択した場合は、**ソリューションの分野**を最大 3 つ選択します。 これにより、Azure Marketplace の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 Azure を選択しなかった場合は、この手順をスキップします。
+4. Azure _以外の_主要製品を選択した場合は、**適用対象の製品**を最大 3 つ選択します。 これにより、AppSource の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 詳細については、「[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)」 (PDF) を参照してください。
+5. 貴社のオファーが適用される最大 6 つの **業界**を選択します。 これにより、顧客は貴社のオファーをさらに容易に見つけられるようになります。
+6. コンサルティング サービス オファーのリストに表示するために獲得した**コンピテンシー** を 3 つまで追加できます。 Azure Expert MSP および Azure Networking MSP を除き、少なくとも 1 つのコンピテンシーが必要です。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -152,7 +149,7 @@ ms.locfileid: "82791903"
 
 ![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
 
-| <center>テキスト形式を変更します | <center>箇条書きの黒丸または段落番号を追加します | <center>テキスト インデントを追加するか削除します |
+| <center>テキストの形式を変更する | <center>箇条書きまたは段落番号を追加します | <center>テキスト インデントを追加または削除する |
 | --- | --- | --- |
 | <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用したリストの追加](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用したインデントの設定](./media/text-editor5.png) |
 

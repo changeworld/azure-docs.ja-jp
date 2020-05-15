@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658406"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982141"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
 
-リソース所有者は、Resource Manager テンプレートを使用して、プログラムでブックを作成および管理することができます。 
+リソース所有者は、Resource Manager テンプレートを使用して、プログラムでブックを作成および管理することができます。
 
 これは、次のようなシナリオで役に立ちます。
 * リソースのデプロイと共に、組織またはドメインに固有の分析レポートをデプロイする。 たとえば、組織に固有のパフォーマンスおよび障害ブックを新しいアプリまたは仮想マシン用にデプロイできます。
@@ -26,10 +26,101 @@ ms.locfileid: "77658406"
 
 ブックは、Resource Manager テンプレートで指定されたコンテンツと共に、ご希望の (サブ) リソース グループに作成されます。
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>ブックをデプロイするための Azure Resource Manager テンプレート
+プログラムで管理できるブック リソースには、次の 2 種類があります。
+* [ブック テンプレート](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [ブック インスタンス](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>ブック テンプレートをデプロイするための Azure Resource Manager テンプレート
+
 1. プログラムでデプロイするブックを開きます。
 2. _[編集]_ ツール バー項目をクリックして、ブックを編集モードに切り替えます。
-3. ツール バーの _[_ ] _ボタンを使用して "</>詳細エディター_" を開きます。
+3. ツール バーの _[</>]_ ボタンを使用して "_詳細エディター_" を開きます。
+4. _[ギャラリー テンプレート]_ タブが確実に表示されている状態にします。
+
+    ![[ギャラリー テンプレート] タブ](./media/workbooks-automate/gallery-template.png)
+1. ギャラリー テンプレート内の JSON をクリップボードにコピーします。
+2. Azure Monitor ブック ギャラリーにブック テンプレートをデプロイするサンプル Azure Resource Manager テンプレートを以下に示します。 `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>` の代わりにコピーした JSON を貼り付けます。 ブック テンプレートを作成するリファレンス Azure Resource Manager テンプレートについては、[こちら](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)にあります。
+
+    ```json
+    {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. `galleries` オブジェクトで、`name` および `category` キーに、使用する値を入力します。 [パラメーター](#parameters)の詳細については、次のセクションを参照してください。
+2. この Azure Resource Manager テンプレートは、[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)、[コマンド ライン インターフェイス](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell) などを使用してデプロイします。
+3. Azure portal を開き、Azure Resource Manager テンプレートで選択したブック ギャラリーに移動します。 テンプレートの例で、Azure Monitor ブック ギャラリーに移動します。
+    1. Azure portal を開き、Azure Monitor に移動します。
+    2. 目次から `Workbooks` を開く
+    3. ギャラリー内のカテゴリ `Deployed Templates` (紫色の項目の中の 1 つ) で使用するテンプレートを検索します。
+
+### <a name="parameters"></a>パラメーター
+
+|パラメーター                |説明                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | Azure Resource Manager 内のブック テンプレート リソースの名前。                                  |
+|`type`                    | 常に microsoft.insights/workbooktemplates                                                            |
+| `location`               | ブックが作成される Azure の場所。                                               |
+| `apiVersion`             | 2019-10-17 プレビュー                                                                                     |
+| `type`                   | 常に microsoft.insights/workbooktemplates                                                            |
+| `galleries`              | このブック テンプレートが表示されるギャラリー セット。                                                |
+| `gallery.name`           | ギャラリー内のブック テンプレートのフレンドリ名。                                             |
+| `gallery.category`       | テンプレートを配置するギャラリー内のグループ。                                                     |
+| `gallery.order`          | ギャラリー内のカテゴリにおいてテンプレートの表示順序を決定する数値。 順位が低いほど優先順位が高くなります。 |
+| `gallery.resourceType`   | ギャラリーに対応するリソースの種類。 これは、通常、リソースに対応するリソースの種類の文字列です (例: microsoft.operationalinsights/workspaces)。 |
+|`gallery.type`            | ブックの種類と呼ばれます。これは、リソースの種類においてギャラリーを区別する一意のキーです。 たとえば、Application Insights には、さまざまなブック ギャラリーに対応する種類として `workbook` と `tsg` があります。 |
+
+### <a name="galleries"></a>ギャラリー
+
+| [ギャラリー]                                        | リソースの種類                                      | ブックの種類 |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Azure Monitor での Workbooks                     | `Azure Monitor`                                    | `workbook`    |
+| Azure Monitor での VM Insights                   | `Azure Monitor`                                    | `vm-insights` |
+| Log Analytics ワークスペースでの Workbooks           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Application Insights での Workbooks              | `microsoft.insights/component`                     | `workbook`    |
+| Application Insights のトラブルシューティング ガイド | `microsoft.insights/component`                     | `tsg`         |
+| Application Insights の使用                  | `microsoft.insights/component`                     | `usage`       |
+| Kubernetes サービスでの Workbooks                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| リソース グループでの Workbooks                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Azure Active Directory での Workbooks            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| Virtual Machines での VM Insights                | `microsoft.compute/virtualmachines`                | `insights`    |
+| 仮想マシン スケール セット内の VM Insights      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>ブック インスタンスをデプロイするための Azure Resource Manager テンプレート
+
+1. プログラムでデプロイするブックを開きます。
+2. _[編集]_ ツール バー項目をクリックして、ブックを編集モードに切り替えます。
+3. ツール バーの _[</>]_ ボタンを使用して "_詳細エディター_" を開きます。
 4. エディターで、 _[テンプレートの種類]_ を _[Resource Manager テンプレート]_ に切り替えます。
 5. 作成用の Resource Manager テンプレートがエディターに表示されます。 内容をコピーしてそのまま使用するか、ターゲット リソースもデプロイする、より大きなテンプレートとマージします。
 
@@ -112,7 +203,7 @@ ms.locfileid: "77658406"
 ### <a name="workbook-types"></a>ブックの種類
 ブックの種類では、新しいブック インスタンスが表示されるブック ギャラリーの種類を指定します。 次のオプションがあります。
 
-| 種類 | ギャラリーの場所 |
+| Type | ギャラリーの場所 |
 | :------------- |:-------------|
 | `workbook` | Application Insights、Azure Monitor などのブック ギャラリーを含む、ほとんどのレポートで使用される既定値です。  |
 | `tsg` | Application Insights の [トラブルシューティング ガイド] ギャラリー |
@@ -124,4 +215,3 @@ ms.locfileid: "77658406"
 ## <a name="next-steps"></a>次のステップ
 
 新しい [Azure Monitor for Storage エクスペリエンス](../insights/storage-insights-overview.md)を強化するためにブックがどのように使用されているかを確認してください。
-

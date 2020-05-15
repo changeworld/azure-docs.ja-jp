@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 95a1734a3e7fd65fc87f4825ae71ee3006616bc3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629373"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871481"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -119,7 +119,7 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 実行を送信するときに、Azure Machine Learning によって、スクリプトが含まれているディレクトリが zip ファイルとして圧縮され、コンピューティング先に送られます。 その後、zip ファイルが抽出され、そこでスクリプトが実行されます。 Azure Machine Learning では、zip ファイルもスナップショットとして実行レコード内に格納されます。 ワークスペースにアクセスできるすべてのユーザーは、実行レコードを参照し、スナップショットをダウンできます。
 
 > [!NOTE]
-> 不要なファイルがスナップショットに含まれないようにするため、無視ファイル (.gitignore または .amlignore) を作成します。 このファイルをスナップショット ディレクトリに配置し、無視するファイルの名前をその中に追加します。 .amlignore ファイルには、[.gitignore ファイルと同じ構文とパターン](https://git-scm.com/docs/gitignore)が使用されます。 両方のファイルが存在する場合、.amlignore ファイルが優先されます。
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
 ### <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
 

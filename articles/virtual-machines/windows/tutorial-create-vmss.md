@@ -1,19 +1,20 @@
 ---
 title: チュートリアル:Windows 仮想マシン スケール セットを作成する
 description: Azure PowerShell で仮想マシン スケール セットを使用して、Windows VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
-author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: windows
 ms.date: 11/30/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: aba5df346d8df9b9f2ad130ded336e45576dbd89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 14777b85fdc531b96c61882d5f244ca40ed28fa6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100398"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197983"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>チュートリアル:Azure PowerShell で仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM 数は、手動でスケーリングすることができます。 また、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義することもできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。次の方法について説明します。

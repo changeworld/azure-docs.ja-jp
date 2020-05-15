@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 05/12/2020
+ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80517938"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201445"
 ---
 # <a name="co-sell-option-in-partner-center"></a>パートナー センターの [共同販売] オプション
 
@@ -22,11 +22,11 @@ ms.locfileid: "80517938"
 
 | **オファリング タイプ** | **パートナー センターで利用可能な共同販売ページ** |
 |    -----------------------    |    -----------------------------  |
-| サービスとしてのソフトウェア (SaaS) |     一般提供 2020 年 4 月      |
+| サービスとしてのソフトウェア (SaaS) |      現在利用可能      |
 | Dynamics 365 for Customer Engagement および PowerApps      |     現在利用可能      |
 | Dynamics 365 for Operations     |     現在利用可能       |
-| Dynamics 365 Business Central      |  一般提供 2020 年 4 月     |
-| Azure Application     |     一般提供 2020 年 4 月     |
+| Dynamics 365 Business Central      |   現在利用可能     |
+| Azure Application     |      現在利用可能     |
 | Azure Virtual Machine      |     後日発表       |
 | Azure Container     |     後日発表       |
 | コンサルティング サービス      |     後日発表       |

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77167324"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982243"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions のウォームアップ トリガー
 
@@ -132,7 +132,6 @@ JavaScript コードを次に示します。
 ```javascript
 module.exports = async function (context, warmupContext) {
     context.log('Function App instance is warm 🌞🌞🌞');
-    context.done();
 };
 ```
 
@@ -240,7 +239,7 @@ public void run( ExecutionContext context) {
 ## <a name="trigger---limits"></a>トリガー - 制限
 
 * ウォームアップ トリガーは、[Premium プラン](./functions-premium-plan.md)で実行されているアプリでのみ使用できます。
-* ウォームアップ トリガーはスケールアップ操作中にのみ呼び出され、再起動やその他の非スケール スタートアップ中には呼び出されません。 ロジックで、ウォームアップ トリガーを使用せずに、すべての必要な依存関係を読み込めることを確認する必要があります。 これを実現するには、遅延読み込みがお勧めのパターンです。
+* ウォームアップ トリガーはスケールアウト操作中にのみ呼び出され、再起動やその他の非スケール スタートアップ中には呼び出されません。 ロジックで、ウォームアップ トリガーを使用せずに、すべての必要な依存関係を読み込めることを確認する必要があります。 これを実現するには、遅延読み込みがお勧めのパターンです。
 * インスタンスが既に実行中の場合、ウォームアップ トリガーを呼び出すことはできません。
 * 関数アプリごとに使用できるウォームアップ トリガー関数は 1 つのみです。
 

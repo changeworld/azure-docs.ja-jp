@@ -16,13 +16,111 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598478"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982957"
 ---
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
+
+> ![Windows][Logo_Windows] Windows
+>
+
+Windows Server フェールオーバー クラスタリングは、Windows での高可用性の SAP ASCS/SCS インストールと DBMS の基盤です。
+
+フェールオーバー クラスターとは、アプリケーションとサービスの可用性を高めるために連携する、1 + n 台の独立したサーバー (ノード) の 1 つのグループです。 ノード障害が発生した場合、Windows Server フェールオーバー クラスタリングは、アプリケーションとサービスを提供するクラスターを正常な状態で維持するうえで許容できるエラーの数を計算します。 フェールオーバー クラスタリングを実現するために、さまざまなクォーラム モードを選択できます。
+
+## <a name="prerequisites"></a>前提条件
+この記事のタスクを始める前に、次の記事を確認してください。
+
+* [SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ][sap-high-availability-architecture-scenarios]
+
+
+## <a name="windows-server-failover-clustering-in-azure"></a>Azure での Windows Server フェールオーバー クラスタリング
+
+ベア メタル デプロイやプライベート クラウド デプロイと比較すると、Azure Virtual Machines では Windows Server フェールオーバー クラスタリングを構成するための追加手順が必要となります。 クラスターを構築するときは、SAP ASCS/SCS インスタンスに複数の IP アドレスと仮想ホスト名を設定する必要があります。
+
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure での名前解決とクラスターの仮想ホスト名
+
+Azure クラウド プラットフォームには、フローティング IP アドレスのような仮想 IP アドレスを構成するオプションは用意されていません。 クラウド内のクラスター リソースに到達するために仮想 IP アドレスを設定する別のソリューションが必要となります。 
+
+Azure Load Balancer サービスは、Azure に "*内部ロード バランサー*" を提供します。 内部ロード バランサーでは、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 
+
+クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイします。 その後、内部ロード バランサーのプローブ ポートを使って、必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使って接続できます。 DNS サーバーがクラスター IP アドレスを解決し、内部ロード バランサーがクラスターのアクティブ ノードへのポート フォワーディングを処理します。
+
+![図 1: 共有ディスクを使わない Azure の Windows フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
+
+_**図 1:** 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成_
+
+### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>クラスター共有ディスクを使う SAP ASCS/SCS HA
+Windows では、SAP ASCS/SCS インスタンスには、SAP セントラル サービス、SAP メッセージ サーバー、エンキュー サーバー プロセス、および SAP グローバル ホスト ファイルが含まれます。 SAP グローバル ホスト ファイルは、SAP システム全体のセントラル ファイルを格納します。
+
+SAP ASCS/SCS インスタンスには、次のコンポーネントがあります。
+
+* SAP セントラル サービス:
+    * メッセージとエンキュー サーバーの 2 つのプロセス、およびこれら 2 つのプロセスへのアクセスに使われる \<ASCS/SCS 仮想ホスト名>。
+    * ファイル構造: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<インスタンス番号\>
+
+
+* SAP グローバル ホスト ファイル:
+  * ファイル構造: S:\usr\sap\\&lt;SID&gt;\SYS\..
+  * 次の UNC パスを使ってこれらのグローバルな S:\usr\sap\\&lt;SID&gt;\SYS\... ファイルにアクセスできるようにする sapmnt ファイル共有。
+
+    \\\\&lt;ASCS/SCS 仮想ホスト名\>\sapmnt\\&lt;SID&gt;\SYS\..
+
+
+![図 2:プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有][sap-ha-guide-figure-8001]
+
+_**図 2:** プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有_
+
+高可用性の設定では、SAP ASCS/SCS インスタンスをクラスター化します。 "*クラスター化された共有ディスク*" (この例ではドライブ S) を使って、SAP ASCS/SCS ファイルと SAP グローバル ホスト ファイルを配置します。
+
+![図 3:共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8002]
+
+_**図 3:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
+
+> [!IMPORTANT]
+> これら 2 つのコンポーネントは、同じ SAP ASCS/SCS インスタンスの下で実行されます。
+>* 同じ \<ASCS/SCS 仮想ホスト名> が、SAP メッセージ プロセスとエンキュー サーバー プロセスへのアクセス、および sapmnt ファイル共有経由での SAP グローバル ホスト ファイルへのアクセスに使われます。
+>* 同じクラスター共有ディスク ドライブ S が、これらの間で共有されます。
+>
+
+
+![図 4:共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8003]
+
+_**図 4:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
+
+### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>SIOS DataKeeper を使う Azure の共有ディスク
+
+高可用性の SAP ASCS/SCS インスタンスには共有記憶域をクラスター化する必要があります。
+
+代わりに、サード パーティ製ソフトウェアの SIOS DataKeeper Cluster Edition を使用して、クラスター共有記憶域をシミュレートするミラー化された記憶域を作成できます。 SIOS ソリューションは、リアルタイムの同期データ レプリケーションを実現します。
+
+クラスターの共有ディスク リソースを作成するには:
+
+1. Windows クラスター構成内の各仮想マシンに追加ディスクを接続します。
+2. 両方の仮想マシン ノードで、SIOS DataKeeper Cluster Edition を実行します。
+3. ソース仮想マシンの追加ディスク接続ボリュームの内容をターゲット仮想マシンの追加ディスク接続ボリュームにミラー化するように SIOS DataKeeper Cluster Edition を構成します。 SIOS DataKeeper は、ソースとターゲットのローカル ボリュームを抽象化し、1 つの共有ディスクとして Windows フェールオーバー クラスタリングに提示します。
+
+詳細については、[SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/) を参照してください。
+
+![図 5:SIOS DataKeeper を使用する Azure での Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1002]
+
+_**図 5:** SIOS DataKeeper を使用する Azure での Windows フェールオーバー クラスタリング構成_
+
+> [!NOTE]
+> SQL Server のような一部の DBMS 製品では、高可用性のために共有ディスクは必要ありません。 SQL Server Always On は、DBMS のデータとログ ファイルを、クラスター ノードのローカル ディスクから別のクラスター ノードのローカル ディスクにレプリケートします。 その場合、Windows クラスター構成に共有ディスクは不要です。
+>
+
+## <a name="next-steps"></a>次のステップ
+
+* [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する][sap-high-availability-infrastructure-wsfc-shared-disk]
+
+* [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクに SAP NetWeaver HA をインストールする][sap-high-availability-installation-wsfc-shared-disk]
+
+
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -181,100 +279,3 @@ ms.locfileid: "77598478"
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
-
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
-
-> ![Windows][Logo_Windows] Windows
->
-
-Windows Server フェールオーバー クラスタリングは、Windows での高可用性の SAP ASCS/SCS インストールと DBMS の基盤です。
-
-フェールオーバー クラスターとは、アプリケーションとサービスの可用性を高めるために連携する、1 + n 台の独立したサーバー (ノード) の 1 つのグループです。 ノード障害が発生した場合、Windows Server フェールオーバー クラスタリングは、アプリケーションとサービスを提供するクラスターを正常な状態で維持するうえで許容できるエラーの数を計算します。 フェールオーバー クラスタリングを実現するために、さまざまなクォーラム モードを選択できます。
-
-## <a name="prerequisites"></a>前提条件
-この記事のタスクを始める前に、次の記事を確認してください。
-
-* [SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ][sap-high-availability-architecture-scenarios]
-
-
-## <a name="windows-server-failover-clustering-in-azure"></a>Azure での Windows Server フェールオーバー クラスタリング
-
-ベア メタル デプロイやプライベート クラウド デプロイと比較すると、Azure Virtual Machines では Windows Server フェールオーバー クラスタリングを構成するための追加手順が必要となります。 クラスターを構築するときは、SAP ASCS/SCS インスタンスに複数の IP アドレスと仮想ホスト名を設定する必要があります。
-
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure での名前解決とクラスターの仮想ホスト名
-
-Azure クラウド プラットフォームには、フローティング IP アドレスのような仮想 IP アドレスを構成するオプションは用意されていません。 クラウド内のクラスター リソースに到達するために仮想 IP アドレスを設定する別のソリューションが必要となります。 
-
-Azure Load Balancer サービスは、Azure に "*内部ロード バランサー*" を提供します。 内部ロード バランサーでは、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 
-
-クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイします。 その後、内部ロード バランサーのプローブ ポートを使って、必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使って接続できます。 DNS サーバーがクラスター IP アドレスを解決し、内部ロード バランサーがクラスターのアクティブ ノードへのポート フォワーディングを処理します。
-
-![図 1: 共有ディスクを使わない Azure の Windows フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
-
-_**図 1:** 共有ディスクを使わない Azure の Windows Server フェールオーバー クラスタリング構成_
-
-### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>クラスター共有ディスクを使う SAP ASCS/SCS HA
-Windows では、SAP ASCS/SCS インスタンスには、SAP セントラル サービス、SAP メッセージ サーバー、エンキュー サーバー プロセス、および SAP グローバル ホスト ファイルが含まれます。 SAP グローバル ホスト ファイルは、SAP システム全体のセントラル ファイルを格納します。
-
-SAP ASCS/SCS インスタンスには、次のコンポーネントがあります。
-
-* SAP セントラル サービス:
-    * メッセージとエンキュー サーバーの 2 つのプロセス、およびこれら 2 つのプロセスへのアクセスに使われる \<ASCS/SCS 仮想ホスト名>。
-    * ファイル構造: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<インスタンス番号\>
-
-
-* SAP グローバル ホスト ファイル:
-  * ファイル構造: S:\usr\sap\\&lt;SID&gt;\SYS\..
-  * 次の UNC パスを使ってこれらのグローバルな S:\usr\sap\\&lt;SID&gt;\SYS\... ファイルにアクセスできるようにする sapmnt ファイル共有。
-
-    \\\\&lt;ASCS/SCS 仮想ホスト名\>\sapmnt\\&lt;SID&gt;\SYS\..
-
-
-![図 2: プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有][sap-ha-guide-figure-8001]
-
-_**図 2:** プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有_
-
-高可用性の設定では、SAP ASCS/SCS インスタンスをクラスター化します。 "*クラスター化された共有ディスク*" (この例ではドライブ S) を使って、SAP ASCS/SCS ファイルと SAP グローバル ホスト ファイルを配置します。
-
-![図 3: 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8002]
-
-_**図 3:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
-
-> [!IMPORTANT]
-> これら 2 つのコンポーネントは、同じ SAP ASCS/SCS インスタンスの下で実行されます。
->* 同じ \<ASCS/SCS 仮想ホスト名> が、SAP メッセージ プロセスとエンキュー サーバー プロセスへのアクセス、および sapmnt ファイル共有経由での SAP グローバル ホスト ファイルへのアクセスに使われます。
->* 同じクラスター共有ディスク ドライブ S が、これらの間で共有されます。
->
-
-
-![図 4: 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8003]
-
-_**図 4:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
-
-### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>SIOS DataKeeper を使う Azure の共有ディスク
-
-高可用性の SAP ASCS/SCS インスタンスには共有記憶域をクラスター化する必要があります。
-
-代わりに、サード パーティ製ソフトウェアの SIOS DataKeeper Cluster Edition を使用して、クラスター共有記憶域をシミュレートするミラー化された記憶域を作成できます。 SIOS ソリューションは、リアルタイムの同期データ レプリケーションを実現します。
-
-クラスターの共有ディスク リソースを作成するには:
-
-1. Windows クラスター構成内の各仮想マシンに追加ディスクを接続します。
-2. 両方の仮想マシン ノードで、SIOS DataKeeper Cluster Edition を実行します。
-3. ソース仮想マシンの追加ディスク接続ボリュームの内容をターゲット仮想マシンの追加ディスク接続ボリュームにミラー化するように SIOS DataKeeper Cluster Edition を構成します。 SIOS DataKeeper は、ソースとターゲットのローカル ボリュームを抽象化し、1 つの共有ディスクとして Windows フェールオーバー クラスタリングに提示します。
-
-詳細については、[SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/) を参照してください。
-
-![図 5: SIOS DataKeeper を使う Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1002]
-
-_**図 5:** SIOS DataKeeper を使う Azure の Windows フェールオーバー クラスタリング構成_
-
-> [!NOTE]
-> SQL Server のような一部の DBMS 製品では、高可用性のために共有ディスクは必要ありません。 SQL Server Always On は、DBMS のデータとログ ファイルを、クラスター ノードのローカル ディスクから別のクラスター ノードのローカル ディスクにレプリケートします。 その場合、Windows クラスター構成に共有ディスクは不要です。
->
-
-## <a name="next-steps"></a>次のステップ
-
-* [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する][sap-high-availability-infrastructure-wsfc-shared-disk]
-
-* [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクに SAP NetWeaver HA をインストールする][sap-high-availability-installation-wsfc-shared-disk]

@@ -5,19 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21dc14362fed2abf80c2c5ecf57f688541c9c639
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367365"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994785"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation での子 Runbook
 
 Azure Automation では、他の Runbook によって呼び出される個別の関数を使用して、再利用可能なモジュール型 Runbook を記述する手法が推奨されます。 多くの場合、必要な機能を実行する 1 つまたは複数の子 Runbook が親 Runbook によって呼び出されます。 子 Runbook を呼び出すには 2 つの方法があります。それぞれの特徴的な相違点を理解しておくと、ご自分のシナリオでどちらが適しているかを判断できるようになります。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>インライン実行で子 Runbook を呼び出す
 

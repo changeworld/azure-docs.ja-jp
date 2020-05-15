@@ -1,7 +1,7 @@
 ---
-title: ML パイプラインでのデータの入力と出力
+title: ML パイプラインでのデータの移動
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning パイプラインでデータを準備、使用、および生成する
+description: Azure Machine Learning パイプラインでのデータの入出力について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 3dd1a82bf7fad1f201f5c0f52af944ef44a3fdf9
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.custom: contperfq4
+ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879664"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858458"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-データは機械学習パイプラインの中心となるものです。 この記事では、Azure Machine Learning パイプラインのステップ間でデータをインポート、変換、および移動するためのコードを示します。 Azure Machine Learning でデータがどのように動作するかの概要については、[Azure ストレージ サービスのデータへのアクセス](how-to-access-data.md)に関する記事を参照してください。 Azure Machine Learning パイプラインの利点と構造については、「[Azure Machine Learning パイプラインとは](concept-ml-pipelines.md)」を参照してください。
+この記事では、Azure Machine Learning パイプラインのステップ間でデータをインポート、変換、および移動するためのコードを示します。 Azure Machine Learning でデータがどのように動作するかの概要については、[Azure ストレージ サービスのデータへのアクセス](how-to-access-data.md)に関する記事を参照してください。 Azure Machine Learning パイプラインの利点と構造については、「[Azure Machine Learning パイプラインとは](concept-ml-pipelines.md)」を参照してください。
 
 この記事では、次の操作方法について説明します。
 

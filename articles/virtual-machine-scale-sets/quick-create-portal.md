@@ -2,20 +2,19 @@
 title: クイックスタート - Azure portal で仮想マシン スケール セットを作成する
 description: Azure portal を使用して仮想マシン スケール セットをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: quickstart
-ms.custom: mvc, H1Hack27Feb2017
-ms.date: 10/23/2019
 ms.author: jushiman
-ms.openlocfilehash: 5855c53a73ac94985f34f229fbe5ab77067ef17d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: ''
+ms.date: 10/23/2019
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 582bf5c6424b9dc13b354a92e75b3a7ee2cdca6f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81680417"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197641"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 

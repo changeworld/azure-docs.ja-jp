@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 850d7b9732ad547d502b042e7eaad5d3b471030e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878767"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926002"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services コンテナー イメージ タグ
 
@@ -29,7 +29,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -41,7 +41,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.011580001-amd64-preview` |       |
@@ -54,7 +54,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -72,7 +72,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -85,7 +85,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -103,9 +103,10 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ            | メモ |
+| イメージ タグ            | Notes |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.2.0-amd64-preview` |       |
 | `2.1.1-amd64-preview` |       |
 | `2.1.0-amd64-preview` |       |
 | `2.0.2-amd64-preview` |       |
@@ -117,7 +118,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ            | メモ |
+| イメージ タグ            | Notes |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.3.0-amd64-preview` |       |
@@ -128,9 +129,49 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                  | メモ                                    |
+| イメージ タグ                  | Notes                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | `en-US` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ar-ae-preview` | `ar-AE` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ar-eg-preview` | `ar-EG` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ar-kw-preview` | `ar-KW` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ar-qa-preview` | `ar-QA` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ar-sa-preview` | `ar-SA` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ca-es-preview` | `ca-ES` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-da-dk-preview` | `da-DK` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-de-de-preview` | `de-DE` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-en-au-preview` | `en-AU` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-en-ca-preview` | `en-CA` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-en-gb-preview` | `en-GB` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-en-in-preview` | `en-IN` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-en-nz-preview` | `en-NZ` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-en-us-preview` | `en-US` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-es-es-preview` | `es-ES` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-es-mx-preview` | `es-MX` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-fi-fi-preview` | `fi-FI` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-fr-ca-preview` | `fr-CA` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-fr-fr-preview` | `fr-FR` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-gu-in-preview` | `gu-IN` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-hi-in-preview` | `hi-IN` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-it-it-preview` | `it-IT` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ja-jp-preview` | `ja-JP` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ko-kr-preview` | `ko-KR` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-mr-in-preview` | `mr-IN` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-nb-no-preview` | `nb-NO` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-nl-nl-preview` | `nl-NL` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-pl-pl-preview` | `pl-PL` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-pt-br-preview` | `pt-BR` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-pt-pt-preview` | `pt-PT` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ru-ru-preview` | `ru-RU` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-sv-se-preview` | `sv-SE` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-ta-in-preview` | `ta-IN` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-te-in-preview` | `te-IN` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-th-th-preview` | `th-TH` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-tr-tr-preview` | `tr-TR` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-zh-cn-preview` | `zh-CN` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-zh-hk-preview` | `zh-HK` ロケールのコンテナー イメージ。 |
+| `2.2.0-amd64-zh-tw-preview` | `zh-TW` ロケールのコンテナー イメージ。 |
+| `2.1.1-amd64-en-us-preview` | `en-US` ロケールのコンテナー イメージ。 |
 | `2.1.1-amd64-ar-ae-preview` | `ar-AE` ロケールのコンテナー イメージ。 |
 | `2.1.1-amd64-ar-eg-preview` | `ar-EG` ロケールのコンテナー イメージ。 |
 | `2.1.1-amd64-ar-kw-preview` | `ar-KW` ロケールのコンテナー イメージ。 |
@@ -410,7 +451,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                                  | メモ                                                                      |
+| イメージ タグ                                  | Notes                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | `en-US` ロケールと `en-US-JessaRUS` 音声のコンテナー イメージ。        |
 | `1.3.0-amd64-ar-eg-hoda-preview`            | `ar-EG` ロケールと `ar-EG-Hoda` 音声のコンテナー イメージ。            |
@@ -586,7 +627,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -601,7 +642,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -616,7 +657,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 このコンテナー イメージでは、次のタグを利用できます。
 
-| イメージ タグ                    | メモ |
+| イメージ タグ                    | Notes |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |

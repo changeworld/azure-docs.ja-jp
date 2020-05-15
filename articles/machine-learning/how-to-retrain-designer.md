@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810359"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981903"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,19 +32,13 @@ ms.locfileid: "80810359"
 ## <a name="prerequisites"></a>前提条件
 
 * Enterprise SKU の Azure Machine Learning ワークスペース。
-* デザイナーからアクセスできるデータセット。 これは次のいずれかです。
-   * Azure Machine Learning の登録済みデータセット
-    
-     **- または -**
-   * Azure Machine Learning データストアに格納されているデータ ファイル。
-   
-デザイナーを使用したデータ アクセスの詳細については、[デザイナーへのデータのインポート方法](how-to-designer-import-data.md)に関するページを参照してください。
+* この操作方法シリーズのパート 1、[デザイナーでのデータの変換](how-to-designer-transform-data.md)に関する記事を完了してください。
 
 また、この記事は、デザイナーでパイプラインを構築することの基本的知識を持っていることも前提としています。 ガイド付きの概要については、[チュートリアル](tutorial-designer-automobile-price-train-score.md)を完了してください。 
 
 ### <a name="sample-pipeline"></a>サンプル パイプライン
 
-この記事で使用されているパイプラインは、[サンプル 3: 収入予測](samples-designer.md#classification-samples)で取り上げたパイプラインの変更されたバージョンです。 サンプル データセットではなく[データのインポート](algorithm-module-reference/import-data.md) モジュールをパイプラインに使用して、独自のデータを利用してモデルをトレーニングする方法を示します。
+この記事で使用されているパイプラインは、[サンプル 3: 収入予測](samples-designer.md#classification)で取り上げたパイプラインの変更されたバージョンです。 サンプル データセットではなく[データのインポート](algorithm-module-reference/import-data.md) モジュールをパイプラインに使用して、独自のデータを利用してモデルをトレーニングする方法を示します。
 
 ![データのインポート モジュールが強調表示されている、変更されたサンプル パイプラインを示すスクリーンショット](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 

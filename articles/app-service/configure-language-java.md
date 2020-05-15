@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733023"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891463"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -24,7 +24,7 @@ Azure App Service を使用すると、Java 開発者は、完全に管理され
 
 ## <a name="deploying-your-app"></a>アプリのデプロイ
 
-[Maven 用 Azure Web アプリ プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を使用して、.war ファイルをデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) または [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) でもサポートされています。
+[Maven 用 Azure Web アプリ プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を使用して、.war ファイルをデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) または [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) でもサポートされています。
 
 それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
 

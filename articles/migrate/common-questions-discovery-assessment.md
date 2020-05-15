@@ -3,12 +3,12 @@ title: Azure Migrate での検出、評価、および依存関係分析に関�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 9374330044bcd0c0c5f2be44688c2b35760d4418
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681914"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996752"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -108,6 +108,11 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 グラフ | 1 つのサーバーの依存関係マップを、1 時間から 30 日までの範囲で表示できます。 | 1 つのサーバーの依存関係マップ。<br/><br/> マップは 1 時間についてのみ表示できます。<br/><br/> サーバーのグループの依存関係マップ。<br/><br/> マップ ビューからグループのサーバーを追加および削除します。
 データのエクスポート | 現在、表形式でダウンロードすることはできません。 | データは Log Analytics で照会できます。
 
+
+## <a name="do-i-need-to-deploy-the-appliance-for-agentless-dependency-analysis"></a>エージェントレスの依存関係分析用にアプライアンスをデプロイする必要はありますか。
+
+はい。[Azure Migrate アプライアンス](migrate-appliance.md)をデプロイする必要があります。
+
 ## <a name="do-i-pay-for-dependency-visualization"></a>依存関係の視覚化への支払いはありますか？
 
 いいえ。 [Azure Migrate の価格](https://azure.microsoft.com/pricing/details/azure-migrate/)について、詳しくはこちらを参照してください。
@@ -136,7 +141,7 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 
 - [依存関係エージェントをインストールするスクリプト](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)を使用してください。
 - MMA の場合は、[コマンドラインまたはオートメーションを使用](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)するか、[スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
-- スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
+- スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と [Intigua](https://www.intigua.com/intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA ではどのようなオペレーティング システムがサポートされていますか?
 

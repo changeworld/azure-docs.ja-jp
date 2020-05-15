@@ -5,17 +5,17 @@ description: Azure Machine Learning 用に収集され、かつ Azure Monitor �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 03/06/2020
-ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927557"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856024"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning 監視データのリファレンス
 
@@ -163,6 +163,22 @@ ms.locfileid: "78927557"
 | クラスター名 | すべてのクォータ メトリック | コンピューティング インスタンスの名前。 |
 | VM ファミリ名 | クォータ使用率 | クラスターによって使用される VM ファミリの名前。 |
 | VM 優先度 | クォータ使用率 | VM の優先度。
+
+**リソース**
+
+| メトリック | ユニット | 説明 |
+| ----- | ----- | ----- |
+| CpuUtilization | Percent | 実行/ジョブ中に特定のノードで使用された CPU の割合。 このメトリックは、ジョブがノード上で実行されている場合にのみ発行されます。 1 つのジョブで 1 つ以上のノードを使用できます。 このメトリックはノードごとに発行されます。 |
+| GpuUtilization | Percent | 実行/ジョブ中に特定のノードで使用された GPU の割合。 1 つのノードが 1 つ以上の GPU を持つことができます。 このメトリックは、ノードごと、GPU ごとに発行されます。 |
+
+リソース メトリックのフィルター処理に使用できるディメンションを次に示します。
+
+| Dimension | 説明 |
+| ----- | ----- |
+| CreatedTime | |
+| deviceId | デバイスの ID (GPU)。 GpuUtilization でのみ使用できます。 |
+| NodeId | ジョブが実行されている場所で作成されたノードの ID。 |
+| RunId | 実行/ジョブの ID。 |
 
 **[実行]**
 

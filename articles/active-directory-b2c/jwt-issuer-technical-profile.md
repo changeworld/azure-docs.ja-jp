@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/06/2020
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbadfb63b9f575053feca87bda2c3ad2e64e91eb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671806"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926036"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -33,9 +33,18 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 ```XML
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
-  <Protocol Name="None" />
+  <Protocol Name="OpenIdConnect" />
   <OutputTokenFormat>JWT</OutputTokenFormat>
-  ...
+  <Metadata>
+    <Item Key="client_id">{service:te}</Item>
+    <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item>
+    <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+    <Key Id="issuer_refresh_token_key" StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+  </CryptographicKeys>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
 </TechnicalProfile>
 ```
 
@@ -64,8 +73,12 @@ CryptographicKeys 要素には次の属性が存在します。
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| issuer_secret | はい | JWT トークンを署名するために使用する X509 証明書 (RSA キー セット)。 これは、「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で構成した `B2C_1A_TokenSigningKeyContainer` キーです。 |
+| issuer_secret | はい | JWT トークンを署名するために使用する X509 証明書 (RSA キー セット)。 これは、「[カスタム ポリシーの概要](custom-policy-get-started.md)」で構成した `B2C_1A_TokenSigningKeyContainer` キーです。 |
 | issuer_refresh_token_key | はい | 更新トークンを暗号化するために使用する X509 証明書 (RSA キー セット)。 「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で `B2C_1A_TokenEncryptionKeyContainer` キーを構成しました。 |
+
+## <a name="session-management"></a>セッションの管理
+
+Azure AD B2C と証明書利用者アプリケーションの間の Azure AD B2C セッションを構成するには、`UseTechnicalProfileForSessionManagement` 要素の属性で、[OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider) SSO セッションへの参照を追加します。
 
 
 

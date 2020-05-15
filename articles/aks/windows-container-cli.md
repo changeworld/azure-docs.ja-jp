@@ -1,21 +1,19 @@
 ---
-title: Azure Kubernetes Service クラスターで Windows Server コンテナーを実行する
+title: Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 description: 迅速に Kubernetes クラスターを作成し、Azure CLI を使用して Azure Kubernetes Service (AKS) で Windows Server コンテナーにアプリケーションをデプロイする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 01/27/2020
-ms.openlocfilehash: 2aecebcc45cb24c9ab3a594aa4d74b1584c7ffa7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 05/06/2020
+ms.openlocfilehash: 28925961ea3b99f939ac650d54b5dcece2551f59
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392655"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926614"
 ---
-# <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>プレビュー - Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
+# <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
 Azure Kubernetes Service (AKS) は、クラスターをすばやくデプロイおよび管理することができる、マネージド Kubernetes サービスです。 この記事では、Azure CLI を使用して AKS クラスターをデプロイします。 また、Windows Server コンテナー内の ASP.NET サンプル アプリケーションをクラスターにデプロイします。
-
-現在、この機能はプレビュー段階にあります。
 
 ![ASP.NET サンプル アプリケーションを参照している画像](media/windows-container/asp-net-sample-app.png)
 
@@ -25,63 +23,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.61 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
-
-## <a name="before-you-begin"></a>開始する前に
-
-Windows Server コンテナーを実行できるクラスターを作成したら、さらにノード プールを追加する必要があります。 ノード プールをさらに追加する手順については後述しますが、まず、いくつかのプレビュー機能を有効にする必要があります。
-
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー][aks-support-policies]
-> * [Azure サポートに関する FAQ][aks-faq]
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-Windows Server コンテナーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.12 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-windows-preview-feature"></a>Windows のプレビュー機能を登録する
-
-複数のノード プールを使用して Windows Server コンテナーを実行できる AKS クラスターを作成するには、まず、ご利用のサブスクリプションで *WindowsPreview* 機能フラグを有効にします。 *WindowsPreview*機能ではまた、複数ノード プール クラスターと仮想マシン スケール セットを使用して、Kubernetes ノードのデプロイおよび構成が管理されます。 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、*WindowsPreview* 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --name WindowsPreview --namespace Microsoft.ContainerService
-```
-
-> [!NOTE]
-> *WindowsPreview* 機能フラグが正常に登録された後で作成するすべての AKS クラスターでは、このプレビュー クラスター エクスペリエンスが使用されます。 完全にサポートされた通常のクラスターを引き続き作成するには、運用サブスクリプションでプレビュー機能を有効にしないでください。 プレビュー機能のテストには、別のテストまたは開発用 Azure サブスクリプションを使用します。
-
-登録が完了するまでに数分かかります。 [az feature list][az-feature-list] コマンドを使用して、登録状態を確認します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
-```
-
-登録状態が `Registered` の場合、Ctrl + C キーを押して状態の監視を停止します。  次に、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
 ### <a name="limitations"></a>制限事項
 
 複数のノード プールをサポートする AKS クラスターを作成および管理する場合には、次の制限があります。
 
 * 最初のノード プールは削除できません。
 
-この機能がプレビュー段階にある間は、追加で次の制限もあります。
+次の追加の制限事項は Windows Server ノード プールに該当します。
 
-* AKS クラスターは、最大で 8 つノード プールを持つことができます。
-* AKS クラスターは、この 8 つのノード プール全体で最大 400 のノードを持つことができます。
+* AKS クラスターでは、最大で 10 のノード プールを作成できます。
+* AKS クラスターでは、最大で 100 のノードを各ノード プールで作成できます。
 * Windows Server ノード プール名は 6 文字に制限されています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -116,45 +67,30 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
-Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 *myAKSCluster* という名前の AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 このコマンドでは、必要なネットワーク リソースが存在しない場合、それらが作成されます。
-  * クラスターは 2 つのノードで構成されています
-  * クラスター上に作成された Windows Server コンテナーの管理者資格情報が、*windows-admin-password* パラメーターと *windows-admin-username* パラメーターによって設定されます。
+Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 *myAKSCluster* という名前の AKS クラスターを作成するには、下の [az aks create][az-aks-create] コマンドを使用します。 このコマンドでは、必要なネットワーク リソースが存在しない場合、それらが作成されます。
 
 > [!NOTE]
 > クラスターが確実に動作するようにするには、既定のノード プールで少なくとも 2 つのノードを実行する必要があります。
 
-独自の安全な *PASSWORD_WIN* を指定します (この記事のコマンドは BASH シェルに入力するということに注意してください)。
-
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
-
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.15.7 \
+    --kubernetes-version 1.16.7 \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
-    --vm-set-type VirtualMachineScaleSets \
-    --load-balancer-sku standard \
     --network-plugin azure
 ```
 
 > [!Note]
-> パスワード検証エラーが発生した場合は、別のリージョンでリソース グループを作成してください。
-> その後、新しいリソース グループを使用してクラスターを作成してください。
-
-> [!Note]
 > このリージョンでバージョンがサポートされていないために AKS クラスターを作成できない場合は、[az aks get-versions --location eastus] コマンドを使用して、このリージョンでサポートされているバージョンの一覧を確認することができます。
 
-
-数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。 場合によっては、クラスターのプロビジョニングに数分以上かかることがあります。 このような場合は、最大 10 分と考えてください。 
+数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。 場合によっては、クラスターのプロビジョニングに数分以上かかることがあります。 このような場合は、最大 10 分と考えてください。
 
 ## <a name="add-a-windows-server-node-pool"></a>Windows Server ノード プールを追加する
 
-既定では、Linux コンテナーを実行できるノード プールを使用して、AKS クラスターが作成されます。 Windows Server コンテナーを実行できるノード プールをさらに追加するには、`az aks nodepool add` コマンドを使用します。
+既定では、Linux コンテナーを実行できるノード プールを使用して、AKS クラスターが作成されます。 Windows Server コンテナーを Linux ノード プールと共に実行できるノード プールをさらに追加するには、`az aks nodepool add` コマンドを使用します。
 
 ```azurecli
 az aks nodepool add \
@@ -163,7 +99,7 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.15.7
+    --kubernetes-version 1.16.7
 ```
 
 上記のコマンドでは、*npwin* という名前の新しいノード プールが作成され、それが *myAKSCluster* に追加されます。 Windows Server コンテナーを実行するノード プールを作成する場合、*node-vm-size* の既定値は *Standard_D2s_v3* となります。 *node-vm-size* パラメーターを設定することを選択した場合は、[制限された VM サイズ][restricted-vm-sizes]の一覧を確認してください。 推奨される最小サイズは、*Standard_D2s_v3* です。 上記のコマンドではまた、`az aks create` の実行時に作成された既定の VNET 内の既定のサブネットが使用されます。
@@ -192,8 +128,8 @@ kubectl get nodes
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.15.7
-aksnpwin987654                      Ready    agent   108s   v1.15.7
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
+aksnpwin987654                      Ready    agent   108s   v1.16.7
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
@@ -343,7 +279,7 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubernetes-service]: concepts-network.md#services
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
-[use-advanced-networking]: configure-advanced-networking.md
+[use-advanced-networking]: configure-azure-cni.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add

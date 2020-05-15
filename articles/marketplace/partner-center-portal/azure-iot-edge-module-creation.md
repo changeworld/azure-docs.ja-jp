@@ -1,39 +1,33 @@
 ---
-title: パートナー センターで Azure IoT Edge モジュールのオファーを作成する - Azure Marketplace
-description: パートナーセンターを使用し、Azure Marketplace で IoT Edge モジュール オファーを作成する方法について説明します
+title: パートナー センターを使用して Azure Marketplace で Azure IoT Edge モジュールのオファーを作成する
+description: パートナー センターを使用して、Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する方法について説明します
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869144"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857655"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する
 
-> [!IMPORTANT]
-> IoT Edge モジュール オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、Cloud パートナー ポータル向けの「[IoT Edge モジュール オファー発行の概要](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts)」の手順に従ってオファーを管理してください。
-
-この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。
-
-IoT Edge モジュール オファーを作成する前に、パートナー センターに商業マーケットプレース アカウントが必要です。 まだ作成していない場合、「[商業マーケットプレース アカウントをパートナー センターに作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)」を参照してください。
+この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
-1. パートナー センターにサインインします。
-2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+2. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
+3. [概要] ページで、 **[+ 新しいオファー]**  >  **[IoT Edge モジュール]** の順に選択します。
 
-    ![左側のナビゲーション メニューの画像。](./media/cs-menu-overview.png)
-
-3. **[+ 新しいオファー]** 、 **[IoT Edge モジュール]** の順に選択します。 **[新しいオファー]** ダイアログ ボックスが表示されます。
+    ![左側のナビゲーション メニューの画像。](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> オファーの発行後にパートナー センターでオファーを編集した場合、編集内容はオファーの再発行後にのみネットショップに表示されます。 変更後は必ず再発行してください。
+> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
@@ -41,14 +35,14 @@ IoT Edge モジュール オファーを作成する前に、パートナー セ
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
 - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
-- [作成] を選択した後で、オファー ID を変更することはできません。
+- **[作成]** を選択した後で、オファー ID を変更することはできません。
 
-**オファーの別名**を入力します。 これは、パートナー センター内でオファーを参照するために使用される名前です。
+**[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
 
 - この名前はマーケットプレースでは使用されず、顧客に表示されるオファー名やその他の値とは異なります。
 - **[作成]** の選択後にこれを変更することはできません。
 
-この 2 つの値を入力したら、 **[作成]** を選択し、それから次のページ「オファーの概要」に進みます。
+**[作成]** を選択してオファーを生成し、続行します。
 
 ## <a name="offer-overview"></a>オファーの概要
 
@@ -76,20 +70,20 @@ IoT Edge モジュール オファーを作成する前に、パートナー セ
     - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して顧客リードのデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
+    > ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
 
 2. パートナー センターで公開する際は、オファーをリードの宛先に接続します。
-3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リード接続をテストすることもできます。
+3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
 4. リードが失われないように、リードの宛先への接続が確実に最新の状態に保たれているようにします。
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [潜在顧客管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [リード管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
 
-**[下書きの保存]** を選択してから、次の「Properties」セクションに進みます。
+続行する前に、 **[下書きの保存]** を選択します。
 
 ### <a name="properties"></a>Properties
 
@@ -115,7 +109,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 標準契約を使用するには、 **[Microsoft 商業マーケットプレース向け標準契約を使用する]** チェックボックスを選択し、 **[承諾]** をクリックします。
 
 > [!NOTE]
-> Microsoft 商業マーケットプレースの標準契約を使用してオファーを発行した後に、独自のカスタムの使用条件を使用することはできません。 ソリューションは、標準契約または独自の使用条件の下で提供します。
+> Microsoft 商業マーケットプレースの標準契約を使用してオファーを公開した後に、独自のカスタムの使用条件を使用することはできません。 ソリューションは、標準契約または独自の使用条件の下で提供します。
 
 ![[Microsoft 商業マーケットプレース向け標準契約を使用する] チェックボックス使用の画像。](./media/iot-edge-module-creation/iot-edge-module-standard-contract-checkbox.png)
 
@@ -123,7 +117,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 独自のカスタムの使用条件を指定するには、 **[使用条件]** ボックスにそれを入力します。 このボックスに入力できるテキスト文字数は無制限です。 顧客は、オファーを試す前にこれらの条件に同意する必要があります。
 
-**[下書きの保存]** を選択してから、次の「オファーのリスト登録」セクションに進みます。
+**[下書きの保存]** を選択してから、次のセクション「オファーのリスト登録」に進みます。
 
 ## <a name="offer-listing"></a>オファーのリスト登録
 
@@ -172,7 +166,7 @@ IoT Edge モジュールのオファーには、説明の一番下に最小ハ�
     - オファーから利益を得るユーザーの種類。
     - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
 - 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される値に焦点を当てます。
+- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
 - 業界固有の語彙または利益に基づく表現を使用してください。
 
 プランの**説明**をより魅力的なものにするには、リッチ テキスト エディターを使用して説明を書式設定してください。 リッチ テキスト エディターを使用すると、数字、箇条書き、太字、斜体、およびインデントを追加して、説明を読みやすくすることができます。
@@ -193,7 +187,7 @@ IoT Edge モジュールのオファーには、説明の一番下に最小ハ�
 
 #### <a name="privacy-policy-url"></a>[プライバシー ポリシーの URL]
 
-組織のプライバシー ポリシーの Web アドレスを入力します。 オファーが確実にプライバシーに関する法律や規則に準拠しているようにする責任があります。 また、Web サイトに有効なプライバシー ポリシーを投稿する責任もあります。
+組織のプライバシー ポリシーの Web アドレスを入力します。 ご自身でオファーが確実にプライバシーに関する法律や規則に準拠するようにしていただく必要があります。 また、Web サイトに有効なプライバシー ポリシーを投稿する責任もあります。
 
 #### <a name="useful-links"></a>便利なリンク
 
@@ -358,7 +352,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 #### <a name="plan-examples"></a>プランの例
 
-次の例では、プランの登録情報フィールドがさまざまなビューでどのように表示されるかがわかります。
+次の例は、プランのリスト登録フィールドが、さまざまなビューでどのように表示されるかを示しています。
 
 以下はプラン詳細を閲覧するときの Azure Marketplace のフィールドです。
 
@@ -376,8 +370,8 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 - 別のアプリケーションを経由して参照されるとき、オファーが間接的にのみ使用される。
 - オファーは個別に購入できない。
-- プランは最初にテストに使用されており、現在は関連性がない。
-- プランは一時的または季節的に提供されてあり、現在は提供できない。
+- プランは最初のテストに使用されたが、無関係となった。
+- プランは一時的または季節的なオファーに使用されたが、提供されなくなった。
 
 ## <a name="technical-configuration"></a>技術的な構成
 
@@ -411,7 +405,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>新しいバージョンのオファーのイメージ タグ
 
-更新プログラムを公開したとき、顧客は Azure Marketplace から更新プログラムを自動的に取得できなければなりません。 更新しない場合、特定のバージョンのイメージを維持できなければなりません。 これはイメージを更新するたびに新しいイメージ タグを追加することで行います。
+更新プログラムを公開したとき、顧客は Azure Marketplace から更新プログラムを自動的に取得できなければなりません。 彼らが更新しない場合、特定のバージョンのイメージを維持できなければなりません。 これはイメージを更新するたびに新しいイメージ タグを追加することで行います。
 
 **イメージ タグ**。 サポートされているすべてのプラットフォームで、最新版のイメージを指す**最新**のタグをこのフィールドに含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://github.com/estesp/manifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。 マニフェスト タグ (最新のタグを除く) はすべて X.Y- か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、最新のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)」を参照してください。
 
@@ -466,7 +460,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 オファーを送信して公開するには、 **[公開]** を選択します。
 
-オファーのプレビュー バージョンが確認して承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。 オファーを一般に (プライベート オファーの場合は、プライベート対象ユーザーに) 公開するには、パートナー センターに移動して、 **[一般公開する]** を選択します。
+オファーのプレビュー バージョンが確認および承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。 オファーを一般に (プライベート オファーの場合は、プライベート対象ユーザーに) 公開するには、パートナー センターに移動して、 **[一般公開する]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

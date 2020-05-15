@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231787"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199387"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -71,13 +71,7 @@ ms.locfileid: "79231787"
 
 **Q:Azure portal でのアクティビティ ログ (監査およびサインイン) のデータ保持期間はどのぐらいですか。** 
 
-**A:** 次の表に、アクティビティ ログのデータ保持期間を示します。 詳細については、[Azure AD レポートのデータ保持ポリシー](reference-reports-data-retention.md)に関するページを参照してください。
-
-| レポート                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| 監査ログ             | 7 日        | 30 日             | 30 日             |
-| サインイン               | 該当なし           | 30 日             | 30 日             |
-| Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
+**A:** 詳細については、[Azure AD レポートのデータ保持ポリシー](reference-reports-data-retention.md)に関するページを参照してください。
 
 ---
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230863"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199524"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
@@ -42,9 +42,6 @@ B2B コラボレーション ユーザーをディレクトリに追加するに
 
    ![UI 内の新しいゲスト ユーザーの場所を示す](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-   > [!NOTE]
-   > **[新しいゲスト ユーザー]** オプションは **[組織の関係]** ページでも使用できます。 **Azure Active Directory** で、 **[管理]** にある **[組織の関係]** を選択します。
-
 5. **[新しいユーザー]** ページで **[ユーザーの招待]** を選択し、ゲスト ユーザーの情報を追加します。 
 
     > [!NOTE]

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082596"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901279"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
 
@@ -21,7 +21,7 @@ ms.locfileid: "82082596"
 
 ## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption とは何ですか。
 
-Windows VM 用の Azure Disk Encryption では、Windows の Bitlocker 機能を使用して、OS ディスク とデータ ディスクの完全なディスク暗号化を提供します。 また、[VolumeType パラメーターが ALL](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk) の場合、一時的なリソース ディスクの暗号化を行うことができます。  コンテンツは、暗号化されて VM からストレージ バックエンドにフローします。 これにより、カスタマー マネージド キーを使用してエンド ツー エンドの暗号化を行うことができます。
+Windows VM 用の Azure Disk Encryption では、Windows の BitLocker 機能を使用して、OS ディスク とデータ ディスクの完全なディスク暗号化を提供します。 また、[VolumeType パラメーターが ALL](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk) の場合、一時的なディスクの暗号化を行うことができます。  コンテンツは、暗号化された VM からストレージ バックエンドにフローします。 これにより、カスタマー マネージド キーを使用してエンド ツー エンドの暗号化を行うことができます。
  
 「[サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)」を参照してください。
  
@@ -59,9 +59,9 @@ OS ボリュームを暗号化した後で OS ボリュームの暗号化を無�
 
 Storage のサーバー側の暗号化では、Azure Storage で Azure Managed Disks が暗号化されます。 マネージド ディスクは既定で、プラットフォーム マネージド キーを使用したサーバー側の暗号化 (2017 年6 月 10 日以降) で暗号化されます。 カスタマー マネージド キーを指定することによって、独自のキーを使用してマネージド ディスクの暗号化を管理できます。 詳細については、「[Azure Managed Disks のサーバー側暗号化](disk-encryption.md)」を参照してください。
  
-## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure Disk Encryption と、カスタマー マネージド キーを使用したStorage サーバー側暗号化の違いは何ですか。また、それぞれのソリューションはどのようなときに使用すべきですか。
+## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure Disk Encryption とカスタマー マネージド キーを使用したStorage のサーバー側の暗号化の違いはなんですか。また、これらのソリューションはどのようなときに使用すべきでしょうか。
 
-Azure Disk Encryption は、カスタマー マネージド キーを使用して、OS ディスク、データ ディスク、および一時的なリソース ディスクをエンド ツー エンドで暗号化します。
+Azure Disk Encryption は、カスタマー マネージド キーを使用して、OS ディスク、データ ディスク、および一時的なディスクをエンド ツー エンドで暗号化します。
 
 - 上記とエンド ツー エンドの暗号化をすべて暗号化する必要がある場合は、Azure Disk Encryption を使用します。 
 - カスタマー マネージド キーを使用して保存データのみを暗号化することが要件に含まれている場合は、[カスタマー マネージド キーを使用したサーバー側の暗号化](disk-encryption.md)を使用します。 Azure Disk Encryption と、カスタマー マネージド キーを使用したStorage サーバー側暗号化の両方でディスクを暗号化することはできません。
@@ -129,9 +129,6 @@ Azure Disk Encryption は、次の BitLocker での暗号化方法を Windows �
 \* ディフューザー付き AES 256 ビットは、Windows 2012 以降ではサポートされていません。
 
 Windows OS のバージョンを確認するには、お使いの仮想マシンで "winver" ツールを実行します。
-
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>EncryptFormatAll を使用して、すべてのボリュームの種類を指定した場合、既に暗号化したデータ ドライブ上のデータは消去されますか。
-いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>暗号化された VM をバックアップおよび復元することはできますか。 
 

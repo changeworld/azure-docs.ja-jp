@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/06/2020
+ms.openlocfilehash: 24f5a671076a44db382ac37e2f6532e5f0f2a3ae
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73606167"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930388"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Azure Open Datasets とその使用方法
 
@@ -24,6 +24,8 @@ ms.locfileid: "73606167"
 
 ## <a name="curated-prepared-datasets"></a>選別されて準備されたデータセット
 Azure オープン データセット内の選別されたオープン パブリック データセットは、機械学習ワークフロー内で使用するために最適化されています。 
+
+使用可能なすべてのデータセットを確認するには、[Azure Open Datasets カタログ](https://azure.microsoft.com/services/open-datasets/catalog/)にアクセスします。
 
 データ サイエンティストは、多くの場合、高度な分析のためのデータのクリーニングと準備に時間の大半を費やしています。 オープン データセットは、ユーザーの時間を節約するために Azure クラウドにコピーされ、前処理されます。 データは、米国海洋大気庁 (NOAA) への FTP 接続などによってソースから定期的な間隔でプルされます。 その後、構造化形式に解析されてから、郵便番号や最寄りの測候所の場所などの特徴によって適宜エンリッチメントされます。
 
@@ -57,5 +59,5 @@ Open Datasets は、Azure Machine Learning UI と SDK を通じて利用でき�
 
 ## <a name="next-steps"></a>次のステップ
 * [サンプル ノートブック](samples.md)
-* [チュートリアル:ニューヨークのタクシー データでの回帰モデリング](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
+* [チュートリアル:ニューヨークのタクシー データでの回帰モデリング](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [オープン データセット用 Python SDK](/python/api/azureml-opendatasets/?view=azure-ml-py)
