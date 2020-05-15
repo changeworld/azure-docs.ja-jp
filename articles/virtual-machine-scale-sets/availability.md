@@ -1,19 +1,20 @@
 ---
 title: Azure 仮想マシン スケール セットの可用性オプション
 description: Azure で Windows 仮想マシン スケール セットを実行するための可用性機能について学習します
-author: ju-shim
-ms.author: jushiman
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 11/05/2019
-ms.openlocfilehash: 24b1bafaa14f674113e270f64b02d36bee579709
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 5a0d020e8efdd64a06616d0acfe458148d22de50
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011040"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198463"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure の仮想マシンの可用性オプション
 

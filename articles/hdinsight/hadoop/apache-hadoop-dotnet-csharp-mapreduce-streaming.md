@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: c8c4e35fb14d834721a29037c9ac12d8160507d9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 28817489af535ee45a6cc06cc5fe9d4fde9da8eb
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209096"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996830"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -23,7 +23,7 @@ Apache Hadoop ストリーミングでは、スクリプトまたは実行可能
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
-HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に含まれる Mono のバージョンについて詳しくは、「[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)」を参照してください。
+HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に含まれる Mono のバージョンについて詳しくは、「[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)」を参照してください。
 
 .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 

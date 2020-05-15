@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770393"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858416"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続が必要
-[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。
+[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。
 
 アップグレードには、次の 4 つの段階があります。
 

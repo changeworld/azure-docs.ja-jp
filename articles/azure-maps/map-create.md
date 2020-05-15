@@ -1,20 +1,20 @@
 ---
 title: Azure Maps を使用してマップを作成する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して、Web ページにマップをレンダリングする方法について説明します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c85d6078fce7fc8e5a5b5d8485517a8b262044a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97eb1ebb61e5ff78ed918fded8107f5775b533c2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802333"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124025"
 ---
 # <a name="create-a-map"></a>マップを作成する
 

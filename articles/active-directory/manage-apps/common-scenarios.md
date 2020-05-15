@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261042"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115610"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD を使用したアプリケーション管理の一元化
 
@@ -53,7 +53,7 @@ ms.locfileid: "81261042"
 
 |機能  |説明|推奨 |
 |---------|---------|---------|
-|SCIM でのプロビジョニング|[SCIM](https://aka.ms/SICMOverview) は、ユーザーのプロビジョニングを自動化する業界のベスト プラクティスです。 Azure AD には、SCIM に準拠しているすべてのアプリケーションを統合できます。 CSV ファイル、カスタム スクリプト、またはオンプレミス ソリューションを維持する必要なく、ユーザー アカウントを自動的に作成、更新、削除できます。|Azure AD アプリケーション ギャラリーの増え続ける[事前に統合されている](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)アプリの一覧を確認してください。|
+|SCIM でのプロビジョニング|[SCIM](https://aka.ms/SCIMOverview) は、ユーザーのプロビジョニングを自動化する業界のベスト プラクティスです。 Azure AD には、SCIM に準拠しているすべてのアプリケーションを統合できます。 CSV ファイル、カスタム スクリプト、またはオンプレミス ソリューションを維持する必要なく、ユーザー アカウントを自動的に作成、更新、削除できます。|Azure AD アプリケーション ギャラリーの増え続ける[事前に統合されている](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)アプリの一覧を確認してください。|
 |Microsoft Graph|Azure AD のデータの底深さと幅広さを利用して、お使いのアプリケーションに必要なデータを充実させることができます。|Microsoft のエコシステム全体からデータを取得するには、[Microsoft Graph](https://developer.microsoft.com/graph/) を使用します。 |
 
 

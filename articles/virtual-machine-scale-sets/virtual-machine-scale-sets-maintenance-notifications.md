@@ -1,19 +1,20 @@
 ---
 title: Azure での仮想マシン スケール セットのメンテナンス通知
 description: Azure 内の仮想マシン スケール セットに関するメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。
-author: shants123
-tags: azure-service-management,azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 08/20/2019
-ms.author: shants
-ms.openlocfilehash: 53ebb7c4710c5455ef90701dc7e94f1b846a874a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062701"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200102"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 

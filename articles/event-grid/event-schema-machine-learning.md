@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393276"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928875"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid のソースとしての Azure Machine Learning
 
@@ -267,5 +267,5 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、「[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)」を参照してください。
-* Azure Machine Learning での Azure Event Grid の使用方法の概要については、「[Azure Machine Learning イベントを使用する](/azure/machine-learning/service/concept-event-grid-integration)」を参照してください。
-* Azure Machine Learning で Azure Event Grid を使用する例については、[イベント ドリブン Machine Learning ワークフローの作成](/azure/machine-learning/service/how-to-use-event-grid)に関する記事を参照してください。
+* Azure Machine Learning での Azure Event Grid の使用方法の概要については、「[Azure Machine Learning イベントを使用する](/azure/machine-learning/concept-event-grid-integration)」を参照してください。
+* Azure Machine Learning で Azure Event Grid を使用する例については、[イベント ドリブン Machine Learning ワークフローの作成](/azure/machine-learning/how-to-use-event-grid)に関する記事を参照してください。

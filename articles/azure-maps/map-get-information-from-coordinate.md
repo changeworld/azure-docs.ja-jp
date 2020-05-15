@@ -1,20 +1,20 @@
 ---
 title: マップの座標に関する情報を表示する | Microsoft Azure Maps
 description: ユーザーが座標を選択したときにマップ上の住所に関する情報を表示する方法について説明します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 174bdc496e52a6ac8f2a2d631db92e0f21a819be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371436"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123991"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 

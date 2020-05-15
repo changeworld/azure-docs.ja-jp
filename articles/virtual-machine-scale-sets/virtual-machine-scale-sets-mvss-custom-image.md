@@ -1,19 +1,20 @@
 ---
 title: Azure スケール セット テンプレートでのカスタム イメージの参照
 description: カスタム イメージを既存の Azure Virtual Machine Scale Set テンプレートに追加する方法について説明します。
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: cynthn
+ms.author: cynthn
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: imaging
 ms.date: 04/26/2018
-ms.author: mimckitt
-ms.openlocfilehash: 3965090239949b5e1116ceebe427728e49ffafe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5ed9ee79dde73e738417031b928a675ea913179c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273700"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124909"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Azure スケール セット テンプレートにカスタム イメージを追加する
 

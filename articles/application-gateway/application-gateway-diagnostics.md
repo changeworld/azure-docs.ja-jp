@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: b458537c7cf8a254cd188c565ab1925afa202369
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312651"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889697"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -368,7 +368,7 @@ Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)を使用して、カウンターとイベント ログを視覚化します。
-* [Power BI を使用した Azure アクティビティ ログの視覚化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ
+* [Power BI を使用した Azure アクティビティ ログの視覚化](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)に関するブログ
 * [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

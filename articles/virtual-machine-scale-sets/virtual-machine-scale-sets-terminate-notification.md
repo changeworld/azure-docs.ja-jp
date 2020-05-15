@@ -2,17 +2,19 @@
 title: Azure 仮想マシン スケール セット インスタンスの通知を終了する
 description: Azure 仮想マシン スケール セット インスタンスの終了通知を有効にする方法について説明します
 author: avirishuv
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 02/26/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226939"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125181"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する
 スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。

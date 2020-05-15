@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399683"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929249"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
 
@@ -24,12 +24,12 @@ Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure
 
 Azure Machine Learning にモデルをデプロイすると、システムによって多数のタスクが実行されます。
 
-モデル デプロイで推奨される最新の方法は、[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)オブジェクトを入力パラメーターとして使用して、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API を経由することです。 この場合、サービスによって、デプロイ段階で基本的な docker イメージが自動的に作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
+モデル デプロイで推奨される最新の方法は、[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして使用して、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API を経由することです。 この場合、サービスによって、デプロイ段階で基本的な docker イメージが自動的に作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
 
 1. ワークスペース モデル レジストリにモデルを登録します。
 
 2. 推論構成を定義する:
-    1. 環境 yaml ファイルで指定した依存関係に基づいて、[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)オブジェクトを作成するか、調達された環境のいずれかを使用します。
+    1. 環境 yaml ファイルで指定した依存関係に基づいて、[環境](how-to-use-environments.md)オブジェクトを作成するか、調達された環境のいずれかを使用します。
     2. 環境とスコアリング スクリプトに基づいて、推論構成 (InferenceConfig オブジェクト) を作成します。
 
 3. モデルを Azure コンテナー インスタンス (ACI) サービスまたは Azure Kubernetes Service (AKS) にデプロイします。
@@ -50,7 +50,7 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
 
 問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。
 
-[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)オブジェクトを入力パラメーターとして指定し、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 経由で新しいまたは推奨されるデプロイ方法を使用していると仮定した場合、コードは次の 3 つの主な手順に分けることができます。
+[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして指定し、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 経由で新しいまたは推奨されるデプロイ方法を使用していると仮定した場合、コードは次の 3 つの主な手順に分けることができます。
 
 1. モデルを登録します。 サンプル コードをいくつか以下に示します。
 

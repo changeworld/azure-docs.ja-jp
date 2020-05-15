@@ -1,21 +1,20 @@
 ---
 title: Visual Studio を利用して仮想マシン スケールをデプロイする
 description: Visual Studio とリソース マネージャーのテンプレートを利用して仮想マシン スケール セットをデプロイする
-ms.custom: vs-azure, H1Hack27Feb2017
-ms.workload: azure-vs
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: visual-studio
 ms.date: 09/09/2019
-ms.author: mimckitt
-ms.openlocfilehash: adc91d5f4f79be8a85dfed7d10a882493f6427b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273343"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124365"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
 

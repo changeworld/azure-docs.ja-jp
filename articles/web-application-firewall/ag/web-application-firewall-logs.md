@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 4bc2aa055c40fb33edade8f7815311e392633885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bca41effc4e9834f8c76308556facb0681717cd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133879"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888892"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールのリソース ログ
 
@@ -305,7 +305,7 @@ Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログ](../../azure-monitor/insights/azure-networking-analytics.md)を使用して、カウンターとイベント ログを視覚化します。
-* [Power BI を使用した Azure アクティビティ ログの視覚化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ
+* [Power BI を使用した Azure アクティビティ ログの視覚化](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)に関するブログ
 * [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ
 
 [1]: ../media/web-application-firewall-logs/figure1.png

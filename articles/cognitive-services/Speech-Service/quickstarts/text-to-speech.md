@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e624c6c291dcd3ac17571cd93d67ac909d04f3d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+zone_pivot_groups: programming-languages-set-two-with-js
+ms.openlocfilehash: 67457b071fd3c1a953e493305a449913b70adc84
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400388"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82979458"
 ---
 # <a name="quickstart-synthesize-speech-to-a-speaker"></a>クイック スタート:スピーカーに音声を合成する
 
@@ -42,6 +42,12 @@ ms.locfileid: "81400388"
 [!INCLUDE [Header](../includes/quickstarts/tts/header.md)]
 [!INCLUDE [Header](../includes/quickstarts/tts/python/header.md)]
 [!INCLUDE [python](../includes/quickstarts/tts/python/python.md)]
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Header](../includes/quickstarts/tts/header.md)]
+[!INCLUDE [Header](../includes/quickstarts/tts/javascript/header.md)]
+[!INCLUDE [javascript](../includes/quickstarts/tts/javascript/javascript.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-more"

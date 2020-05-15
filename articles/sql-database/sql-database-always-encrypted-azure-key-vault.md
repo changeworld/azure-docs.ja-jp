@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c171c1bab99e4e3748267308745ee66631ed08d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451671"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888975"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Azure Key Vault 内で機密データを保護し、暗号化キーを格納する
 
@@ -621,4 +621,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [透過的なデータ暗号化](https://msdn.microsoft.com/library/bb934049.aspx)
 - [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
-- [Always Encrypted 関連のブログ](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [Always Encrypted 関連のブログ](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

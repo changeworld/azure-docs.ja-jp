@@ -8,12 +8,13 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e8f17f54f52aef6f552b7c211aa8f0e498b94df
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: has-adal-ref
+ms.openlocfilehash: a1f6548a83736cfb0e519559fd22e16d4527ae0b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421326"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197658"
 ---
 # <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Synapse SQL で多要素 AAD 認証を使用する (MFA の SSMS サポート)
 

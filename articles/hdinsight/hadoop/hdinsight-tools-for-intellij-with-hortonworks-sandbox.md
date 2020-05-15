@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 986c2783f3d130114da93406bfaf70d5c038d5ed
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647834"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856150"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -32,7 +32,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
 
 - [Java Developer Kit (JDK) バージョン 1.8 以降](https://aka.ms/azure-jdks)。 Azure Toolkit for IntelliJ には JDK が必要です。
 
-- [IntelliJ IDEA コミュニティ エディション](https://www.jetbrains.com/idea/download)と、[Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) プラグインおよび [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) プラグイン。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 
+- [IntelliJ IDEA コミュニティ エディション](https://www.jetbrains.com/idea/download)と、[Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) プラグインおよび [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) プラグイン。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。
 
 プラグインをインストールするには、次の手順に従います。
 

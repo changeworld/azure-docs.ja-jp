@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 7e16eabc4f9572591eabd37b93258fcd783cce7e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f68221666f370f87af7539d9302aaa3ed472d5e8
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351143"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883143"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>fstab エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
@@ -242,4 +242,3 @@ Give root password for maintenance
 
 * [Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
 * [Azure portal で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
-

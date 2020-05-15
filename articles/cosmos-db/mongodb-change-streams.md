@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114161"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872149"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API での変更ストリーム
 
@@ -45,7 +45,7 @@ Azure Cosmos DB の SQL API での変更フィードとは異なり、変更ス�
 
 次の例では、コレクション内のすべての項目で変更ストリームを取得する方法を示します。 この例では、項目の挿入、更新、置換を監視するためのカーソルを作成します。 変更ストリームを取得するには、`$match` ステージ、`$project` ステージ、および `fullDocument` オプションが必要です。 変更ストリームを使用した削除操作の監視は、現在はサポートされていません。 回避策として、削除される項目にソフト マーカーを追加できます。 たとえば、"deleted" という名前の項目に属性を追加できます。 項目を削除するときは、"deleted" を `true` に設定し、項目で TTL を設定します。 "deleted" の `true` への更新が更新されるまで、この変更は変更ストリームに表示されます。
 
-### <a name="javascript"></a>JavaScript:
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 var cursor = db.coll.watch(
@@ -61,8 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
-
-### <a name="c"></a>C#:
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()

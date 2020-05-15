@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280356"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124705"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>テーブル ストレージでの潜在顧客管理の手順
 
@@ -98,7 +98,7 @@ ms.locfileid: "80280356"
 
    - **[フィルター クエリ]** : このフィールドを選択すると、ポップアップ ウィンドウに **[過去の時間を取得]** アイコンが表示されます。 **[過去の時間]** を選択し、この値をクエリのフィルター処理のタイムスタンプとして使います。 または、フィールドに次の関数を貼り付けてもかまいません。
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![フィルター クエリ関数を設定する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

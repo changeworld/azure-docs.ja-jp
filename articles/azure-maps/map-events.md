@@ -1,20 +1,20 @@
 ---
 title: マップ イベントを処理する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ イベントを含む対話型の Web SDK マップを作成する方法について説明します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b97371d1b63ad4abfe1635e426df1449ab5f3f14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534900"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124008"
 ---
 # <a name="interact-with-the-map"></a>マップの操作
 

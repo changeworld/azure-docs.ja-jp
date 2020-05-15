@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769803"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983637"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する
 
@@ -238,10 +238,10 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 * リモート実行では、`ExplanationClient` を使用して解釈可能性のコンテキストをアップロードします。
 * ローカル環境では、後でコンテキストをダウンロードします。
 
-1. `azureml-interpret` パッケージと `azureml-interpret-contrib` パッケージをインストールします。
+1. `azureml-interpret` パッケージと `azureml-contrib-interpret` パッケージをインストールします。
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 1. ローカルの Jupyter Notebook でトレーニング スクリプトを作成します。 たとえば、「 `train_explain.py` 」のように入力します。
 

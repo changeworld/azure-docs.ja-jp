@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB ストアド プロシージャとトリガーで JavaScript 統合クエリ API を操作する
 description: この記事では、Azure Cosmos DB でストアド プロシージャとトリガーを作成するための JavaScript 言語統合クエリ API の概念について説明します。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 05/07/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 785c430347bc62a00eee80c977f2d6ce440c08db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76901826"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982277"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB の JavaScript クエリ API
 

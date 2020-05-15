@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209487"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856902"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -84,7 +84,7 @@ Azure ストレージ アカウントでの転送中の暗号化を無効にす�
     - Premium ファイル共有は、プロビジョニングされた課金モデルを使用して課金されます。これは、実際に要求するストレージの量ではなく、プロビジョニングするストレージの量に対して料金を支払うことを意味します。 
     - Standard ファイル共有は従量課金制モデルを使用して課金されます。これには、実際に消費しているストレージの量に対するストレージの基本コストと、共有の使用方法に基づく追加のトランザクション コストが含まれます。 Standard ファイル共有では、Azure ファイル共有の使用 (読み取り、書き込み、マウント) 量が増えると、課金が増加します。
 - **冗長オプション**
-    - Premium ファイル共有は、ローカル冗長 (LRS) およびゾーン冗長 (ZRS) ストレージでのみ使用できます。 
+    - Premium ファイル共有は、ローカル冗長 (LRS) およびゾーン冗長 (ZRS) ストレージでのみ使用できます。
     - Standard ファイル共有は、ローカル冗長、ゾーン冗長、geo 冗長 (GRS)、および geo ゾーン冗長 (GZRS) ストレージで使用できます。
 - **ファイル共有の最大サイズ**
     - Premium ファイル共有の場合、追加作業なしで最大 100 TiB のプロビジョニングが可能です。

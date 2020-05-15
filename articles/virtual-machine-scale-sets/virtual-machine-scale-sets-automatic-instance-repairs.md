@@ -2,20 +2,19 @@
 title: Azure Virtual Machine Scale Sets による自動インスタンス修復
 description: スケール セット内の VM インスタンスの自動修復ポリシーを構成する方法について説明します
 author: avirishuv
-manager: vashan
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
-ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
+ms.date: 02/28/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603677"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197033"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets の自動インスタンス修復
 
@@ -154,7 +153,7 @@ az vmss create \
   --generate-ssh-keys \
   --load-balancer <existingLoadBalancer> \
   --health-probe <existingHealthProbeUnderLoaderBalancer> \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 上の例では、既存のロード バランサーと正常性プローブを使用して、インスタンスのアプリケーションの正常性状態を監視します。 代わりに、アプリケーションの正常性拡張機能を使用して監視する場合は、スケール セットを作成し、アプリケーションの正常性拡張機能を構成してから、次のセクションで説明されているように *az vmss update* を使用して自動インスタンス修復ポリシーを有効にすることができます。
@@ -217,7 +216,7 @@ az vmss update \
   --resource-group <myResourceGroup> \
   --name <myVMScaleSet> \
   --enable-automatic-repairs true \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 ## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>自動インスタンス修復ポリシーのサービス状態の表示と更新

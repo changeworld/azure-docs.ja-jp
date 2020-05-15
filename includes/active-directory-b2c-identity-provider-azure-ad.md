@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 31a6d116ae1afce9afdd3786747490980963d823
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678038"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82925445"
 ---
 ## <a name="register-an-azure-ad-app"></a>Azure AD アプリの登録
 
@@ -36,7 +36,7 @@ ms.locfileid: "81678038"
 
 ### <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
-Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](/active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
+Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](/azure/active-directory/develop/active-directory-optional-claims)に関するページを参照してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
 1. **[管理]** セクションで、 **[アプリの登録]** を選択します。

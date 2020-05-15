@@ -9,17 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7ccb30cdd77e511572147a0b0f7287f931a45df2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 260c88142d93b8b79782b219f902c63a16b9218b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82186840"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197000"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>sqlcmd を使用して Synapse SQL に接続する
 
 > [!div class="op_single_selector"]
->
 > * [Azure Data Studio (プレビュー)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

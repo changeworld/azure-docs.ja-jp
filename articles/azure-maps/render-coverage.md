@@ -1,19 +1,19 @@
 ---
 title: レンダリング範囲 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps のレンダリング範囲となるリージョンと、レンダリングの詳細レベルについて説明します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536753"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123940"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 

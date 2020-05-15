@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766995"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123855"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics のデータの検出と分類
 
@@ -152,18 +152,6 @@ T-SQL を使用した分類の詳細については、次のリファレンス�
 - 1 つ以上の列の分類を削除するには:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - データベースのすべての分類を表示するには: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>REST API を使用する
-
-REST API を使用して、分類および推奨事項をプログラムで管理できます。 公開された REST API では、次の操作がサポートされます。
-
-- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate):指定された列の機密ラベルを作成または更新します。
-- [[削除]](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete):指定された列の機密ラベルを削除します。
-- [推奨の無効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation):指定された列の機密度の推奨を無効にします。
-- [推奨の有効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation):指定された列の機密度の推奨を有効にします。 (推奨は、すべての列に対して既定で有効になっています。)
-- [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get):指定された列の機密ラベルを取得します。
-- [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
-- [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
-
 ### <a name="use-powershell-cmdlets"></a>PowerShell コマンドレットの使用
 PowerShell を使用して、Azure SQL Database とマネージド インスタンスの分類および推奨事項を管理できます。
 
@@ -185,6 +173,17 @@ PowerShell を使用して、Azure SQL Database とマネージド インスタ�
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>REST API を使用する
+
+REST API を使用して、分類および推奨事項をプログラムで管理できます。 公開された REST API では、次の操作がサポートされます。
+
+- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate):指定された列の機密ラベルを作成または更新します。
+- [[削除]](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete):指定された列の機密ラベルを削除します。
+- [推奨の無効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation):指定された列の機密度の推奨を無効にします。
+- [推奨の有効化](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation):指定された列の機密度の推奨を有効にします。 (推奨は、すべての列に対して既定で有効になっています。)
+- [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get):指定された列の機密ラベルを取得します。
+- [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
+- [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
 
 ## <a name="next-steps"></a><a id="next-steps"></a>次のステップ
 

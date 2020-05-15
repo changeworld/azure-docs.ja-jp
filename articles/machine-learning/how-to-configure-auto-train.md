@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186931"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993709"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ automl_config = AutoMLConfig(task = "classification")
 * 静的ファイルまたは URL ソースからワークスペースにデータを簡単に転送する
 * クラウド コンピューティング リソースでの実行時にデータをトレーニング スクリプトで使用できるようにする
 
-`Dataset` クラスを使用してコンピューティング ターゲットにデータをマウントする例については、[方法](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)の記事を参照してください。
+`Dataset` クラスを使用してコンピューティング ターゲットにデータをマウントする例については、[方法](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)の記事を参照してください。
 
 ## <a name="train-and-validation-data"></a>データをトレーニングして検証する
 

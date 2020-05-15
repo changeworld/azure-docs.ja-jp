@@ -3,19 +3,19 @@ title: Azure Virtual Machine Scale Sets の設計上の考慮事項
 description: Azure Virtual Machine Scale Sets の設計上の考慮事項について説明します。 スケール セットの機能を VM の機能と比較します。
 keywords: Linux 仮想マシン,仮想マシン スケール セット
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
-ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: vm-linux
-ms.topic: conceptual
-ms.date: 06/01/2017
 ms.author: mimckitt
-ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/01/2017
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273768"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200192"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。

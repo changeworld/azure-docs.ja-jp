@@ -10,12 +10,12 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414078"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858014"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,10 +59,10 @@ Azure Data Factory UI を使用して Azure IR を作成するには、次の手
 1. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
 
 1. 次のページで、Azure IR を作成する **[Azure]** を選択してから、 **[続行]** を選択します。
-   ![統合ランタイムを作成する](media/create-azure-integration-runtime/new-azure-ir.png)
+   ![統合ランタイムを作成する](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
 1. Azure IR の名前を入力し、 **[作成]** を選択します。
-   ![Azure IR を作成する](media/create-azure-integration-runtime/create-azure-ir.png)
+   ![Azure IR を作成する](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. 作成が完了すると、ポップアップ通知が表示されます。 **[統合ランタイム]** ページで、新しく作成された IR が一覧に表示されていることを確認します。
 

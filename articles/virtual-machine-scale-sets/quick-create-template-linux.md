@@ -2,18 +2,19 @@
 title: クイックスタート - Azure Resource Manager テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 description: サンプル アプリのデプロイと自動スケール ルールの構成を行う Azure Resource Manager テンプレートを使用して Linux 仮想マシン スケール セットをすばやく作成する方法について説明します
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
-ms.custom: mvc,subject-armqs
-ms.date: 03/27/2020
 ms.author: jushiman
-ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: linux
+ms.date: 03/27/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: f51bfa012c62e7acdd0aa2cd16279ec68702a72c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010462"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117330"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 

@@ -1,20 +1,20 @@
 ---
 title: マップ上にトラフィックを表示する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ上にトラフィック データを表示する方法を示します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9bd5ae462013924a46a3da8400719e83abae3424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534816"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123923"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 

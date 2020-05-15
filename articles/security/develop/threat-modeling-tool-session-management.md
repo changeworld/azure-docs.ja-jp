@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203864"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198878"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | [アーティクル] |

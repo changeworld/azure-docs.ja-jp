@@ -1,19 +1,20 @@
 ---
 title: Azure 仮想マシン スケール セットのネットワーク
 description: Azure 仮想マシンスケールセットに対して、より高度なネットワークプロパティを構成する方法。
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: networking
 ms.date: 07/17/2017
-ms.author: mimckitt
-ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 46a12006274ca8516c936e37189c9233dde9b410
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461355"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125198"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 

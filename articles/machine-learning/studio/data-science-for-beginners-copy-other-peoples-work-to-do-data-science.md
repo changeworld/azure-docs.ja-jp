@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 3a99ad12af7f6eecb74f6c0d52a269770fd5ed7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91f1f69db7f3faa9e1bbdae7966716c974a4dfa5
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73837818"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930286"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
@@ -92,4 +92,4 @@ Microsoft Azure Machine Learning Studio (クラシック) の "初心者向け�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)

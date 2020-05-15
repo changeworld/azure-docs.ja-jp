@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 6ad9c7912eee6c3f5ec55b9cd7ab340bc79c9db7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac9f4262d614b1e413f4283d3c459e60fc6634e2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73837770"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930235"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
 ## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4: 初心者向けデータ サイエンス シリーズ
@@ -128,4 +128,4 @@ Microsoft Azure Machine Learning Studio (クラシック) の "初心者向け�
 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)

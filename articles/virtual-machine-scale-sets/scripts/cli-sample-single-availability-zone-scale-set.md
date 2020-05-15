@@ -1,20 +1,20 @@
 ---
 title: Azure CLI サンプル - 単一ゾーン スケール セット
 description: このスクリプトでは、単一の可用性ゾーンで Ubuntu を実行する Azure 仮想マシン スケール セットを作成します。
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 03/27/2018
-ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: cd41f21c5390ca0d2c62c1989d46f3d4c0ec36f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: dc98085ca017f7249e225e8c1c009b3d255f1719
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011006"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195801"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用して単一ゾーン仮想マシン スケール セットを作成する
 このスクリプトでは、単一可用性ゾーンで Ubuntu を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。

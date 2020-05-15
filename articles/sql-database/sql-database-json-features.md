@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 968da0154f5a2587531e7594956a069f11c110d2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687752"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890955"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL Database の JSON 機能の概要
 Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。 Azure SQL Database では次の JSON のシナリオを使用できます。
@@ -192,5 +192,5 @@ JSON 配列として書式設定され、ストアド プロシージャにパ�
 * [MSDN のドキュメント](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Channel 9 のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-JSON をアプリケーションに統合するためのさまざまなシナリオの詳細については、この [Channel 9 のビデオ](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)のデモを参照するか、[JSON のブログの投稿](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)でお客様のユース ケースに一致するシナリオを見つけてください。
+JSON をアプリケーションに統合するためのさまざまなシナリオの詳細については、この [Channel 9 のビデオ](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)のデモを参照するか、[JSON のブログの投稿](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)でお客様のユース ケースに一致するシナリオを見つけてください。
 

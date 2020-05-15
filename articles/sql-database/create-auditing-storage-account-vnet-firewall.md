@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/19/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6345d210e26747f921595039a2a3c8e11be11fda
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 4f26fa00f78b8564e08b6352d4da31640b13f47f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387633"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402674"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet とファイアウォールの背後にあるストレージ アカウントに対して監査を書き込む
 
@@ -54,7 +54,7 @@ VNet の概念やベスト プラクティスなどの詳細については、�
   > [!NOTE]
   > 選択したストレージ アカウントが VNet の背後にある場合は、次のメッセージが表示されます。
   >
-  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage: requires an Active Directory admin on the server; enables 'Allow trusted Microsoft services to access this storage account' on the storage account; and creates a server managed identity with 'storage blob data contributor' RBAC.`
+  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage requires to enable 'Allow trusted Microsoft services to access this storage account' on the storage account and creates a server managed identity with 'storage blob data contributor' RBAC.`
   >
   >このメッセージが表示されない場合、ストレージ アカウントは VNet の背後にはありません。
 

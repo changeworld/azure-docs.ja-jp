@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461720"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857160"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -222,11 +222,11 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 アプリケーションがそのアクセス パターン全体を通して[最小特権](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)を適用するようにしてください。
 
 > [!NOTE]
->  最小特権のルールは、ソフトウェアとソフトウェアを作成するユーザーに適用する必要があります。 アクセス権を過剰に付与されたソフトウェア開発者は、IT セキュリティに対するリスクが莫大になる可能性があります。 開発者に悪意のある意図がある場合や、過剰なアクセス権が付与されている場合、結果は深刻になる可能性があります。 開発ライフサイクル全体を通して、開発者に最小特権のルールを適用することをお勧めします。
+> 最小特権のルールは、ソフトウェアとソフトウェアを作成するユーザーに適用する必要があります。 アクセス権を過剰に付与されたソフトウェア開発者は、IT セキュリティに対するリスクが莫大になる可能性があります。 開発者に悪意のある意図がある場合や、過剰なアクセス権が付与されている場合、結果は深刻になる可能性があります。 開発ライフサイクル全体を通して、開発者に最小特権のルールを適用することをお勧めします。
 
 #### <a name="implement-just-in-time-access"></a>Just-In-Time アクセスを実装する
 
-*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) を使用します。
+*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) を使用します。
 
 - ユーザーに JIT のみを必要とするアクセス許可を付与します。
 - 権限が自動的に取り消される、短縮された期間のロールを割り当てます。

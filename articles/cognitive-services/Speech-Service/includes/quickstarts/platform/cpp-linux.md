@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 973a50833d92fd9b68aae084fc6b4cbb3afe7160
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383817"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980156"
 ---
 このガイドでは、Linux 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します
 
@@ -58,42 +58,7 @@ Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8)
 > [!NOTE]
 > RHEL または CentOS 8 の場合、[Linux 用 OpenSSL の構成方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
 
-## <a name="install-speech-sdk"></a>Speech SDK をインストールする
-
-Linux 用 Speech SDK は、64 ビット アプリケーションと 32 ビット アプリケーションのどちらの構築にも使用できます。 必要なライブラリとヘッダー ファイルは、 https://aka.ms/csspeech/linuxbinary から tar ファイルとしてダウンロードできます。
-
-SDK を次のようにダウンロードしてインストールします。
-
-1. Speech SDK のファイル抽出先にする必要があるディレクトリを選択し、そのディレクトリを指すように `SPEECHSDK_ROOT` 環境変数を設定します。 この変数によって、後のコマンドでこのディレクトリを参照することが容易になります。 たとえば、ホーム ディレクトリで `speechsdk` ディレクトリを使用する場合、次のようなコマンドを使用します。
-
-   ```sh
-   export SPEECHSDK_ROOT="$HOME/speechsdk"
-   ```
-
-1. このディレクトリがまだ存在しない場合は作成します。
-
-   ```sh
-   mkdir -p "$SPEECHSDK_ROOT"
-   ```
-
-1. Speech SDK バイナリを含む `.tar.gz` アーカイブをダウンロードして抽出します。
-
-   ```sh
-   wget -O SpeechSDK-Linux.tar.gz https://aka.ms/csspeech/linuxbinary
-   tar --strip 1 -xzf SpeechSDK-Linux.tar.gz -C "$SPEECHSDK_ROOT"
-   ```
-
-1. 展開されたパッケージの最上位ディレクトリの内容を検証します。
-
-   ```sh
-   ls -l "$SPEECHSDK_ROOT"
-   ```
-
-   ディレクトリの一覧には、サード パーティの通知やライセンスのファイルと、ヘッダー (`.h`) ファイルを格納している `include` ディレクトリおよびライブラリを格納している `lib` ディレクトリが含まれているはずです。
-
-   [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
-
-これで、下記の「[次の手順](#next-steps)」に進むことができます。
+[!INCLUDE [linux-install-sdk](linux-install-sdk.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

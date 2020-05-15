@@ -1,20 +1,20 @@
 ---
 title: Desired State Configuration と仮想マシン スケール セットの使用
 description: 仮想マシン スケール セットと Azure Desired State Configuration Extension を使用し、仮想マシンを構成します。
-author: zjalexander
-tags: azure-service-management,azure-resource-manager
-ms.assetid: c8f047b5-0e6c-4ef3-8a47-f1b284d32942
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
+ms.subservice: extensions
 ms.date: 04/05/2017
-ms.author: zachal
-ms.openlocfilehash: a93a8a9c27be5a1736a50e6c4c4b830980b7d974
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 4a972cab0559ff8a4bb22588c712515daa2fab16
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278072"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124843"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>仮想マシン スケール セットと Azure DSC 拡張機能の使用
 [仮想マシン スケール セット](virtual-machine-scale-sets-overview.md) は、[Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能ハンドラーとともに使用できます。 仮想マシン スケール セットは、多数の仮想マシンをデプロイおよび管理する手段であり、負荷に応じて柔軟にスケールインおよびスケールアウトができます。 DSC は、オンラインで運用ソフトウェアを実行できるように VM を構成するときに使用されます。

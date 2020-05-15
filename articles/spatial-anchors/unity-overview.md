@@ -8,16 +8,17 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: df28fc6b5e3a1ddd9813919c8afbf21f65d731b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d76207d9991d496c36fa8f9db3911a62d003fafe
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471088"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006144"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Unity での Azure Spatial Anchors を使用した構築
 
-開発者は、Azure Spatial Anchors を使用する複合現実アプリケーションの作成およびデプロイ用に Unity を選択できます。 次のプラットフォームがサポートされています。
+開発者は、Azure Spatial Anchors を使用する複合現実アプリケーションの作成およびデプロイ用に Unity を選択できます。
+次のプラットフォームがサポートされています。
 
 **HoloLens 用の Unity**
 

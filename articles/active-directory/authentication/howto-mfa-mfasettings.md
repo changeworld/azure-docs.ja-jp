@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105660"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116290"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -36,7 +36,7 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 | [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | 特定のユーザーが Multi-Factor Authentication 要求を受信できないようにするために使用されます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 |
 | [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求をレポートできるかどうかに関する設定を構成します |
 | [通知](#notifications) | MFA サーバーからのイベントの通知を有効にします。 |
-| [OATH トークン](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
+| [OATH トークン](concept-authentication-methods.md#oath-hardware-tokens) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
 | [電話の設定](#phone-call-settings) | クラウド環境とオンプレミス環境の電話と案内メッセージに関連する設定を構成します。 |
 | プロバイダー | アカウントに関連付けた可能性がある既存の認証プロバイダーを表示します。 2018 年 9 月 1 日時点では、新しい認証プロバイダーは作成できません |
 

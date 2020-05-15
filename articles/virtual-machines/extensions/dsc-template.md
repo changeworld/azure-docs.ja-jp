@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547797"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891657"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -185,8 +185,8 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 | settings.configuration.function |string |DSC 構成の名前を指定します。 名前が指定された構成は、**settings.configuration.script** によって定義されたスクリプト内に含まれている必要があります。 **settings.configuration.url** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
 | settings.configurationArguments |コレクション |DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されません。 |
 | settings.configurationData.url |string |DSC 構成の入力として使用する構成データ (.psd1) ファイルのダウンロード元の URL を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationDataUrlSasToken** プロパティに SAS トークンの値を設定します。 |
-| settings.privacy.dataCollection |string |テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、**Enable**、**Disable**、 **''** 、または **$null** のみです。 このプロパティを空または null にした場合は、テレメトリが有効になります。 既定値は **''** です。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。 |
-| settings.advancedOptions.downloadMappings |コレクション |WMF のダウンロード元になる別の場所を定義します。 詳しくは、「[Azure DSC extension 2.8 and how to map downloads of the extension dependencies to your own location (Azure DSC 拡張機能 2.8 と、拡張機能の依存関係のダウンロードを独自の場所にマップする方法)](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)」をご覧ください。 |
+| settings.privacy.dataCollection |string |テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、**Enable**、**Disable**、 **''** 、または **$null** のみです。 このプロパティを空または null にした場合は、テレメトリが有効になります。 既定値は **''** です。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/)」をご覧ください。 |
+| settings.advancedOptions.downloadMappings |コレクション |WMF のダウンロード元になる別の場所を定義します。 詳しくは、「[Azure DSC extension 2.8 and how to map downloads of the extension dependencies to your own location (Azure DSC 拡張機能 2.8 と、拡張機能の依存関係のダウンロードを独自の場所にマップする方法)](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/)」をご覧ください。 |
 | protectedSettings.configurationArguments |コレクション |DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます。 |
 | protectedSettings.configurationUrlSasToken |string |**settings.configuration.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
 | protectedSettings.configurationDataUrlSasToken |string |**settings.configurationData.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |

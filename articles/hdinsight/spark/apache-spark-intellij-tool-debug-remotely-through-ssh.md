@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: a012c3ce8f7c9e105a42d8383a502f3608c84070
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: c032e900cd2f58581517b08905d5b0660ed8bbda
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732907"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857815"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Apache Spark アプリケーションをデバッグする
 
-この記事では、[Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) の HDInsight Tools を使用して HDInsight クラスターでアプリケーションをリモートでデバッグする方法に関する詳細な手順について説明します。 プロジェクトをデバッグするために、「[Debug HDInsight Spark applications with Azure Toolkit for IntelliJ (Azure Toolkit for IntelliJ を使用して HDInsight Spark アプリケーションをデバッグする)](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)」ビデオを参照することもできます。
+この記事では、[Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して HDInsight クラスターでアプリケーションをリモートでデバッグする方法に関する詳細な手順について説明します。 プロジェクトをデバッグするために、「[Debug HDInsight Spark applications with Azure Toolkit for IntelliJ (Azure Toolkit for IntelliJ を使用して HDInsight Spark アプリケーションをデバッグする)](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)」ビデオを参照することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -1,19 +1,19 @@
 ---
 title: ルーティングの対象範囲 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps のルーティングの対象範囲となるリージョンについて説明します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b59816abf0cd03450c9fc4ebb8417c62df7e3288
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529393"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123889"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 

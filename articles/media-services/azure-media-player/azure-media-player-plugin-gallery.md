@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 206200f3ba0757cd738439b58c8b94874cf5a938
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: ee29d1c45896583ef5aa5837e8383159db855d52
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727499"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124620"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player プラグイン ギャラリー #
 
@@ -26,7 +26,7 @@ ms.locfileid: "81727499"
 | Frame rate and Timecode calculator | [デモ](http://mconvertitest001.blob.core.windows.net/public/example.html)                        | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | このプラグインは、最初の MPEG-DASH ビデオ フラグメントの `tfhd`/`trun` MP4 ボックスに基づいてビデオのフレーム レートを計算し、MPEG-DASH クライアント マニフェストからタイム スケール値を解析します。また、プレーヤーから特定の絶対時間のタイムコードを生成する手段を備え、また、そのタイムコードからプレーヤーの絶対時間を得ることもできます。 |
 | <strike>Playback Speed</strike>                      | [デモ](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | 閲覧者は、このプラグインを使用してビデオの速度を制御できます。 *バージョン v2.0.0 以上の AMP では、そのままでこの機能が利用できますが、既定では無効になっていることに注意してください。* 有効にする方法については、[こちら](https://github.com/Azure-Samples/azure-media-player-samples)のサンプルを参照してください。 |
 | Hover Time Tip                      | [デモ](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | 時間に正確なシークを実現するために、進行状況バーにマウス ポインターを合わせたときにタイム ヒントを表示します。 *注意事項: このプラグインは既に AMP に統合されています。* どのようにプログラムされているのか興味がある方はご覧ください。                                                                                                                       |
-| Title Overlay                       | [デモ](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin/")                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | ビデオ タイトル (構成可能) を画面にオーバーレイします。 |
+| Title Overlay                       | [デモ](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | ビデオ タイトル (構成可能) を画面にオーバーレイします。 |
 | Timeline Markers                    | [デモ](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timelinemarkers/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-timeline-markers-plugin)                     | 時間の配列を受け取って、進行状況バー上の対応する時間位置に小さなマーカーをオーバーレイします。 |
 | Analytics                           | | | |
 | Application Insights                | [ブログ記事](https://azure.microsoft.com/blog/player-analytics-azure-media-player-plugin/)                   | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin)                     | プレーヤーのメトリックを追跡し、それを Power BI に転送することで、閲覧者のプレーヤー エクスペリエンスを直感的かつグラフィカルに表現するプラグイン。 |

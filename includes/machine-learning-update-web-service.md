@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6a7ee8ed497c87c08f13e09a0022b0835c952cc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477257"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82975065"
 ---
 Web サービスを更新するには、`update` メソッドを使用します。 推論の構成で指定できる新しいモデル、新しいエントリ スクリプト、または新しい依存関係を使用するように Web サービスを更新することができます。 詳細については、[Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-) のドキュメントを参照してください。
 
@@ -63,6 +63,6 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > この例では、JSON ドキュメントを使用して、登録コマンドから更新コマンドにモデル情報を渡します。
 >
-> 新しいエントリ スクリプトまたは環境を使用するようにサービスを更新するには、[推論構成ファイル](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema)を作成し、それを `ic` パラメーターで指定します。
+> 新しいエントリ スクリプトまたは環境を使用するようにサービスを更新するには、[推論構成ファイル](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema)を作成し、それを `ic` パラメーターで指定します。
 
 詳細については、[az ml service update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) のドキュメントを参照してください。

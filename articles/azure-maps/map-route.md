@@ -1,20 +1,20 @@
 ---
 title: マップにルート方向を表示する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップに 2 地点間の方向を表示する方法について説明します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: dde9264d0cb65726b624b918982cfa01985b63ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cde1aaa7c9dba3e28407439a46b0e0a3326e4fc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371408"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123974"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する
 

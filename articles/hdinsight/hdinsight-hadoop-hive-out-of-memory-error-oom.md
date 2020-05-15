@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687760"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891090"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Apache Hive メモリ不足エラーの解決
 
@@ -101,7 +101,7 @@ hive-site.xml ファイルの **hive.auto.convert.join.noconditionaltask** が *
 </property>
 ```
 
-Java ヒープ領域のメモリ不足エラーの原因は、おそらく Map Join にあると考えられます。 [HDInsight の Hadoop Yarn メモリ設定](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)に関するブログの投稿で説明したように、Tez 実行エンジンを使用すると、使用されるヒープ領域は、実際には Tez コンテナーに属します。 Tez コンテナー メモリについて説明した次の図を参照してください。
+Java ヒープ領域のメモリ不足エラーの原因は、おそらく Map Join にあると考えられます。 [HDInsight の Hadoop Yarn メモリ設定](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)に関するブログの投稿で説明したように、Tez 実行エンジンを使用すると、使用されるヒープ領域は、実際には Tez コンテナーに属します。 Tez コンテナー メモリについて説明した次の図を参照してください。
 
 ![Tez コンテナー メモリ図: Hive のメモリ不足エラー](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

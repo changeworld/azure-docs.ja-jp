@@ -3,12 +3,12 @@ title: クイック スタート:Python 用 QnA Maker クライアント ライ�
 description: このクイックスタートでは、Python 用 QnA Maker クライアント ライブラリの使用を開始する方法について説明します。
 ms.topic: include
 ms.date: 04/27/2020
-ms.openlocfilehash: ccd046ad8e511517abd9f45072781e736f0e79b9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8a180096e21203dd45d806ceca14794c985d664a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204028"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82876002"
 ---
 Python 用 QnA Maker クライアント ライブラリは、次の目的で使用することができます。
 
@@ -53,7 +53,7 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 クライアントが作成されたら、[ナレッジ ベース](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations?view=azure-python)を使用して、ナレッジ ベースを作成、管理、および公開します。
 
-即時操作の場合は、通常、状態を示す JSON オブジェクトがメソッドから返されます。 実行時間の長い操作の場合、応答は操作 ID になります。 [client.Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) メソッドを操作 ID と共に呼び出して、[要求の状態](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python)を確認します。
+即時操作の場合は、通常、状態を示す JSON オブジェクトがメソッドから返されます。 実行時間の長い操作の場合、応答は操作 ID になります。 [client.Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) メソッドを操作 ID と共に呼び出して、[要求の状態](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python)を確認します。
 
 
 ## <a name="code-examples"></a>コード例
@@ -84,7 +84,7 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-次に、キーを使用して CognitiveServicesCredentials オブジェクトを作成し、それをエンドポイントと共に使用して、[QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-python) オブジェクトを作成します。
+次に、キーを使用して CognitiveServicesCredentials オブジェクトを作成し、それをエンドポイントと共に使用して、[QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.qnamakerclient?view=azure-python) オブジェクトを作成します。
 
 
 [!code-python[Authorization to resource key](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=authorization)]

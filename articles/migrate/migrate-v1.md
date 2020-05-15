@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77914383"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993808"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -216,7 +216,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 4. ワークスペース ID とキーをコピーします。 これらは、MMA をオンプレミスのマシンにインストールするときに必要になります。
 
 > [!NOTE]
-> エージェントのインストールを自動化するには、Configuration Manager などのデプロイ ツールを使用するか、Azure Migrate 用エージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) など) を使用します。
+> エージェントのインストールを自動化するには、Configuration Manager などのデプロイ ツールを使用するか、Azure Migrate 用エージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/intigua-for-azure-migration) など) を使用します。
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Windows マシンに MMA エージェントをインストールする

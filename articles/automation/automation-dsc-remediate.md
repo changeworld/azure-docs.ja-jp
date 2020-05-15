@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f871b406793e455c857ca14c83434c9ed3e004df
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406083"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993834"
 ---
 # <a name="remediate-noncompliant-dsc-servers"></a>非準拠の DSC サーバーを修復する
 
@@ -37,8 +37,7 @@ Update-DscConfiguration -Wait -Verbose
 
 同様の機能は、Linux サーバーでは現在使用できません。
 唯一のオプションは、登録プロセスを繰り返すことです。
-
-Azure ノードの場合は、Azure portal から、または Az モジュール コマンドレットを使用して、ドリフトを補正することができます。 このプロセスの詳細は、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal)」に記載されています。
+Azure ノードの場合は、Azure portal から、または Az モジュール コマンドレットを使用して、ドリフトを補正することができます。 このプロセスの詳細は、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md#enable-a-vm-using-azure-portal)」に記載されています。
 ハイブリッド ノードの場合は、含まれている Python スクリプトを使用して、ドリフトを補正できます。
 [Linux 用の Powershell DSC リポジトリ](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer)を参照してください。
 

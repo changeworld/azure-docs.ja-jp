@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629594"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116970"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
 
@@ -50,7 +50,7 @@ Azure 関数 (Azure functions ポータルの右端のウィンドウ) の [フ�
 
 ## <a name="endpoint-validation"></a>エンドポイントの検証
 
-最初に実行することは、`Microsoft.EventGrid.SubscriptionValidationEvent` イベントの処理です。 だれかがイベントにサブスクライブするたびに、Event Grid は、データ ペイロード内に `validationCode` を含む検証イベントをエンドポイントに送信します。 エンドポイントは、これを応答本文にエコー バックして、[エンドポイントが有効であり、ユーザーによって所有されていることを証明する](webhook-event-delivery.md)必要があります。 WebHook によってトリガーされる関数ではなく [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用している場合、エンドポイントの検証は自動的に処理されます。 サード パーティ製 API サービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、検証コードをプログラムでエコーできないことがあります。 このようなサービスの場合は、サブスクリプション検証イベントで送信される検証 URL を使用すると、サブスクリプションを手動で検証できます。 その URL を `validationUrl` プロパティにコピーし、REST クライアントまたは Web ブラウザーのいずれかを使って GET 要求を送信します。
+最初に実行することは、`Microsoft.EventGrid.SubscriptionValidationEvent` イベントの処理です。 だれかがイベントにサブスクライブするたびに、Event Grid は、データ ペイロード内に `validationCode` を含む検証イベントをエンドポイントに送信します。 エンドポイントは、これを応答本文にエコー バックして、[エンドポイントが有効であり、ユーザーによって所有されていることを証明する](webhook-event-delivery.md)必要があります。 WebHook によってトリガーされる関数ではなく [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用している場合、エンドポイントの検証は自動的に処理されます。 サード パーティ製 API サービス ([Zapier](https://zapier.com/home) や [IFTTT](https://ifttt.com/) など) を使用する場合は、検証コードをプログラムでエコーできないことがあります。 このようなサービスの場合は、サブスクリプション検証イベントで送信される検証 URL を使用すると、サブスクリプションを手動で検証できます。 その URL を `validationUrl` プロパティにコピーし、REST クライアントまたは Web ブラウザーのいずれかを使って GET 要求を送信します。
 
 C# では、`DeserializeEventGridEvents()`関数が Event Grid のイベントを逆シリアル化します。 これは、イベント データを StorageBlobCreatedEventData など、適切な型に逆シリアル化します。 `Microsoft.Azure.EventGrid.EventTypes`クラスを使用してサポートされているイベントの種類と名前を取得します。
 

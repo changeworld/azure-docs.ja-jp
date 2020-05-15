@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
-ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e41d00a31a0065e2923259cbb0bb36986cbb2ec8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144485"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995065"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -73,7 +73,7 @@ Azure Machine Learning データセットは、ストレージ サービス内�
 2 種類のデータセットがサポートされています。 
 + [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 TabularDataset を Pandas または Spark DataFrame に読み込んで、さらに操作とクレンジングを行うことができます。 TabularDatasets を作成できるデータ形式の完全な一覧については、[TabularDatasetFactory クラス](https://aka.ms/tabulardataset-api-reference)に関するページをご覧ください。
 
-+ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)できます。
++ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)できます。
 
 追加のデータセット機能については、次のドキュメントを参照してください。
 

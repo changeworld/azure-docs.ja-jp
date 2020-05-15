@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: accc4766f25f5d58ba2f31c153fe1c5d23413170
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399077"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890973"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーの機械学習アルゴリズム チート シート
 

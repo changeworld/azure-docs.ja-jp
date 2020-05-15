@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411195"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891362"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning ワークスペースの Azure Private Link を構成する (プレビュー)
 
@@ -118,7 +118,7 @@ VPN ゲートウェイの詳細については、「[VPN ゲートウェイと�
 
 ワークスペースで使用されている Azure Key Vault をセキュリティで保護するには、それを仮想ネットワーク内に配置するか、それに対して Private Link を有効にすることができます。
 
-仮想ネットワークにキー コンテナーを配置する方法については、「[ワークスペース内でキー コンテナー インスタンスを使用する](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)」を参照してください。
+仮想ネットワークにキー コンテナーを配置する方法については、「[ワークスペース内でキー コンテナー インスタンスを使用する](how-to-enable-virtual-network.md#key-vault-instance)」を参照してください。
 
 キー コンテナーの Private Link を有効にする方法については、「[Key Vault を Azure Private Link と統合する](/azure/key-vault/private-link-service)」を参照してください。
 
@@ -131,7 +131,7 @@ VPN ゲートウェイの詳細については、「[VPN ゲートウェイと�
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-仮想ネットワーク内の Azure Container Registry のセキュリティ保護については、「[Azure Container Registry を使用する](how-to-enable-virtual-network.md#use-azure-container-registry)」を参照してください。
+仮想ネットワーク内の Azure Container Registry のセキュリティ保護については、「[Azure Container Registry を使用する](how-to-enable-virtual-network.md#azure-container-registry)」を参照してください。
 
 > [!IMPORTANT]
 > お使いの Azure Machine Learning ワークスペースに対して Private Link を使用しているときに、ワークスペースの Azure Container Registry を仮想ネットワークに配置する場合は、次の Azure Resource Manager テンプレートも適用する必要があります。 このテンプレートによって、お使いのワークスペースで Private Link を使用して ACR と通信できるようになります。

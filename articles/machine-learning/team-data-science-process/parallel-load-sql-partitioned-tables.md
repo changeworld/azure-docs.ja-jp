@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721338"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891681"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化
 
@@ -99,7 +99,7 @@ ms.locfileid: "76721338"
 * [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「[1 時間未満で 1 TB を読み込む](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
+* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「[1 時間未満で 1 TB を読み込む](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)」を参照してください。
 
 次の PowerShell スクリプトは、BCP を使用した並行データ読み込みの例を示しています。
 

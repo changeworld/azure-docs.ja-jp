@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76142838d1ec138b75fb6c594414b2ff5d8cd939
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137922"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883296"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 

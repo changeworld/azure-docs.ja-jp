@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73494590"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857417"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
 
-この記事では、[Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
+この記事では、[Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "73494590"
   
 * IntelliJ IDEA。 この記事では、[IntelliJ IDEA Community Version 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows) を使用します。
   
-* Azure Toolkit for IntelliJ。 「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)」を参照してください。
+* Azure Toolkit for IntelliJ。 「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)」を参照してください。
 
 * HDInsight クラスターに接続します。 [HDInsight クラスターへの接続](apache-spark-intellij-tool-plugin.md)に関するページを参照してください。
 

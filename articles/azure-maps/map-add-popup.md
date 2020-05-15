@@ -1,20 +1,20 @@
 ---
 title: マップ上のポイントにポップアップを追加する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して、ポイントにポップアップを追加する方法について説明します。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cf6424d2a6cbcfb7c5052201b5a9190c81fddaff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ca2f07e4568257baf72f2f298631b86f776c2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80055949"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119270"
 ---
 # <a name="add-a-popup-to-the-map"></a>マップにポップアップを追加する
 
