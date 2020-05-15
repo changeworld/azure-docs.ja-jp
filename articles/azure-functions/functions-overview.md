@@ -49,17 +49,17 @@ Functions は、一括データの処理、システムの統合、モノのイ�
 
 主なシナリオに対応した一連のテンプレートが用意されています。その例を次に示します。
 
-- **HTTP**:[HTTP 要求](functions-create-first-azure-function.md)に基づいてコードを実行します。
+- **HTTP**: [HTTP 要求](functions-create-first-azure-function.md)に基づいてコードを実行します。
 
 - **Timer**: [あらかじめ定義した時刻に実行](./functions-create-scheduled-function.md)するようコードをスケジュールします。
 
-- **Azure Cosmos DB**:[Azure Cosmos DB の新規ドキュメントと変更ドキュメント](./functions-create-cosmos-db-triggered-function.md)を処理します。
+- **Azure Cosmos DB**: [Azure Cosmos DB の新規ドキュメントと変更ドキュメント](./functions-create-cosmos-db-triggered-function.md)を処理します。
 
 - **Blob Storage**: [Azure Storage Blob の新規ドキュメントと変更ドキュメント](./functions-create-storage-blob-triggered-function.md)を処理します。
 
 - **Queue storage**: [Azure Storage キュー メッセージ](./functions-create-storage-queue-triggered-function.md)に応答します。
 
-- **Event Grid**:[サブスクリプションとフィルターを介して Azure Event Grid イベント](../event-grid/resize-images-on-storage-blob-upload-event.md)に応答します。
+- **Event Grid**: [サブスクリプションとフィルターを介して Azure Event Grid イベント](../event-grid/resize-images-on-storage-blob-upload-event.md)に応答します。
 
 - **イベント ハブ**: [大量の Azure Event Hubs イベント](./functions-bindings-event-hubs.md)に応答します。
 
