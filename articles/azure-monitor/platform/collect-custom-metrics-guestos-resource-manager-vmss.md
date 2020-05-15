@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fe550bb4f5e63761bb645c9904816048584b1bca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733247"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125776"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -252,7 +252,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
    ```
 
    > [!NOTE]  
-   > 必ず、カスタム メトリックに対して有効になっている Azure リージョンを使用してください。 必ず、[カスタム メトリックに対して有効になっている Azure リージョン](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/platform/metrics-custom-overview.md#supported-regions)を使用してください。
+   > 必ず、カスタム メトリックに対して有効になっている Azure リージョンを使用してください。 必ず、[カスタム メトリックに対して有効になっている Azure リージョン](./metrics-custom-overview.md#supported-regions)を使用してください。
  
 1. 次のコマンドを実行して、VM をデプロイします。  
 

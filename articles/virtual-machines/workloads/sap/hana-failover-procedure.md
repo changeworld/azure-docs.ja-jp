@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617136"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117209"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 
@@ -34,7 +34,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 >[!NOTE]
 >以下の手順は、DR ユニットを表す HANA L インスタンス ユニットに対して実行する必要があります。 
  
-レプリケートされた最新のストレージ スナップショットに復元するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)の「Perform full DR failover - azure_hana_dr_failover (フル DR フェールオーバーの実行 - azure_hana_dr_failover)」の手順に従います。 
+レプリケートされた最新のストレージ スナップショットに復元するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)の「Perform full DR failover - azure_hana_dr_failover (フル DR フェールオーバーの実行 - azure_hana_dr_failover)」の手順に従います。 
 
 複数の SAP HANA インスタンスをフェールオーバーする場合は、azure_hana_dr_failover コマンドを複数回実行する必要があります。 要求されたら、フェールオーバーして復元する SAP HANA の SID を入力します。 
 

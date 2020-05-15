@@ -1,14 +1,14 @@
 ---
 title: デプロイ シーケンス順序について
 description: ブループリントの割り当て中にブループリント アーティファクトがデプロイされる既定の順序と、デプロイ順序をカスタマイズする方法について説明します。
-ms.date: 08/22/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677558"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864523"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
@@ -47,8 +47,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 このプロパティは、リソース グループ用のブループリント定義、および成果物オブジェクトによってサポートされています。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
 
 > [!NOTE]
-> ブループリント オブジェクトが作成されるとき、各成果物のリソースは、[PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact) を使用している場合は、ファイル名から名前を取得し、[REST API](/rest/api/blueprints/artifacts/createorupdate) を使用している場合は、URL エンドポイントから取得します。
-> 成果物内の _resourceGroup_ の参照は、ブループリント定義内のそれと一致している必要があります。
+> ブループリント オブジェクトが作成されるとき、各成果物のリソースは、[PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact) を使用している場合は、ファイル名から名前を取得し、[REST API](/rest/api/blueprints/artifacts/createorupdate) を使用している場合は、URL エンドポイントから取得します。 成果物内の _resourceGroup_ の参照は、ブループリント定義内のそれと一致している必要があります。
 
 ### <a name="example---ordered-resource-group"></a>例 - 順序指定されたリソース グループ
 
@@ -137,7 +136,8 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 作成プロセスでは、トポロジカル ソートを使用して、ブループリント成果物の依存関係グラフが作成されます。 この確認により、リソース グループと成果物の各レベルの依存関係がサポートされます。
 
-成果物の依存関係が既定の順序を変更しないと宣言されている場合、変更は加えられません。 たとえば、サブスクリプション レベルのポリシーに依存するリソース グループです。 もう 1 つの例は、リソース グループ 'standard rg' 子ロールの割り当てに依存しているリソース グループ ' standard rg' 子ポリシーの割り当てです。 どちらの場合も、`dependsOn` によって既定のシーケンス順序が変更されることはなく、何の変更も加えられません。
+成果物の依存関係が既定の順序を変更しないと宣言されている場合、変更は加えられません。
+たとえば、サブスクリプション レベルのポリシーに依存するリソース グループです。 もう 1 つの例は、リソース グループ 'standard rg' 子ロールの割り当てに依存しているリソース グループ ' standard rg' 子ポリシーの割り当てです。 どちらの場合も、`dependsOn` によって既定のシーケンス順序が変更されることはなく、何の変更も加えられません。
 
 ## <a name="next-steps"></a>次のステップ
 

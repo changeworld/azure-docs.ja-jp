@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679507"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855351"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Automation でのソース管理の統合 - 従来
 
@@ -102,7 +102,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
    > [!NOTE]
    > ソース管理 Runbook は、特別な Automation Runbook であり、表示または編集することはできません。 これらは Runbook の一覧に表示されませんが、ジョブの一覧には同期ジョブが表示されます。
 
-5. 変更された Runbook の名前は、入力パラメーターとしてチェックイン Runbook に送信されます。 [リポジトリの同期] ページで Runbook を展開すると、[ジョブの詳細を表示](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)できます。  
+5. 変更された Runbook の名前は、入力パラメーターとしてチェックイン Runbook に送信されます。 [リポジトリの同期] ページで Runbook を展開すると、[ジョブの詳細を表示](automation-runbook-execution.md#job-statuses)できます。  
 
     ![同期ジョブの入力を表示するウィンドウ](media/source-control-integration-legacy/automation-CheckinInput.png)
 6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。  リポジトリにコミットすると、"**Updated *Runbook Name* in Azure Automation** (Azure Automation で <Runbook 名> が更新されました)" というコミット メッセージが表示されます。  

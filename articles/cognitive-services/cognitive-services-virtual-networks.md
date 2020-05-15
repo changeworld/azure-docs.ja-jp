@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371224"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202068"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -55,7 +55,7 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 
 以下に記載されている Cognitive Services の仮想ネットワークのサポートは、*米国中部 EUAP*、*米国中南部*、*米国東部*、*米国西部 2*、*グローバル*、*米国政府バージニア州*の 各 Azure リージョンに限定されています。
 > [!div class="checklist"]
-> * [Translator Text](./translator/index.yml)
+> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>サービス タグ
 上記のサービス用の仮想ネットワーク サービス エンドポイントのサポートに加え、Cognitive Services では、送信ネットワーク ルール構成用のサービス タグもサポートされています。 CognitiveServicesManagement サービス タグには、次のサービスが含まれています。

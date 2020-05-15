@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066999"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929045"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 
@@ -58,7 +58,7 @@ Stream Analytics ジョブの待機時間の "*許容範囲*" を決定します
 
 Machine Learning Web サービスで、"最大同時呼び出し数" を構成することもできます。 このパラメーターを最大値 (現在は 200) に設定することをお勧めします。
 
-この設定の詳細については、[Machine Learning Web サービスのスケーリング](../machine-learning/studio/scaling-webservice.md)に関する記事を参照してください。
+この設定の詳細については、[Machine Learning Web サービスのスケーリング](../machine-learning/studio/create-endpoint.md)に関する記事を参照してください。
 
 ## <a name="example--sentiment-analysis"></a>例 – センチメント分析
 次の例には、「 [チュートリアル: Stream Analytics と Machine Learning を使用したセンチメント分析の実行](stream-analytics-machine-learning-integration-tutorial.md)」で説明しているセンチメント分析 Machine Learning 関数を使用した Stream Analytics ジョブが含まれています。

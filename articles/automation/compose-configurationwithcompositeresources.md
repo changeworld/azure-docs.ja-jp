@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682923"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993774"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>Azure Automation State Configuration で複合リソースを使用して DSC 構成を作成する
 
@@ -34,9 +34,9 @@ Azure portal で複合リソースから作成された構成を割り当てる�
 1. **[パラメーター]** ステップでは、値を指定できるように、各複合リソースのパラメーターが公開されます。 パラメーターに説明がある場合は、パラメーター フィールドの横に表示されます。 パラメーターが `PSCredential` の種類の場合、ドロップダウンには現在の Automation アカウントの **Credential** オブジェクトの一覧が表示されます。 **[+ 資格情報の追加]** オプションも使用できます。 すべての必須パラメーターを指定したら、 **[Save and compile]\(保存してコンパイル\)** をクリックします。
    ![[構成の作成] ページの [パラメーター] ステップのスクリーンショット](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-新しい構成が保存されると、その構成がコンパイルのために送信されます。 コンパイル ジョブの状態は、他のインポートされた構成と同じように表示できます。 詳細については、「[コンパイル ジョブを表示する](automation-dsc-getting-started.md#viewing-a-compilation-job)」を参照してください。
+新しい構成が保存されると、その構成がコンパイルのために送信されます。 コンパイル ジョブの状態は、他のインポートされた構成と同じように表示できます。 詳細については、「[コンパイル ジョブを表示する](automation-dsc-getting-started.md#view-a-compilation-job)」を参照してください。
 
-コンパイルが正常に完了すると、新しい構成が **[コンパイル済み構成]** タブに表示されます。その後、「[別のノード構成にノードを再割り当てする](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)」の手順を使って、その構成をマネージド ノードに割り当てることができます。
+コンパイルが正常に完了すると、新しい構成が **[コンパイル済み構成]** タブに表示されます。その後、「[別のノード構成にノードを再割り当てする](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration)」の手順を使って、その構成をマネージド ノードに割り当てることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

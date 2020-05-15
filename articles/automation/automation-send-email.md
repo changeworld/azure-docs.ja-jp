@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: d4b35458c76da82b33dfcb530cfdc71ee3da3bb6
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 4d825dee469497cbb56a91c913ff3ac51963058b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604780"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855690"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>チュートリアル:Azure Automation Runbook からメールを送信する
 
@@ -150,7 +150,7 @@ Runbook 内で Azure Key Vault を使用するには、Automation アカウン�
 
 7. **[発行]** を選択して Runbook を保存し、発行します。
 
-Runbook が正常に実行されることを確認するには、「[Runbook をテストする](manage-runbooks.md#testing-a-runbook)」または [Runbook の開始](start-runbooks.md)に関するページの手順に従います。
+Runbook が正常に実行されることを確認するには、「[Runbook をテストする](manage-runbooks.md#test-a-runbook)」または [Runbook の開始](start-runbooks.md)に関するページの手順に従います。
 最初にテスト用のメールが表示されない場合は、**迷惑メール**および**スパム**のフォルダーを確認してください。
 
 ## <a name="clean-up"></a>クリーンアップする

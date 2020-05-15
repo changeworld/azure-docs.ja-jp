@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80292480"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871496"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -170,8 +170,8 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
    1. **[キー暗号化キー コンテナー]** :既定では、Site Recovery によってターゲット リージョンに新しいキー コンテナーが作成されます。 名前は `asr` サフィックスを含み、ソース VM キー暗号化キーに基づきます。 Site Recovery によって作成されたキー コンテナーが既に存在する場合は、それが再利用されます。
 1. **[カスタマイズ]** を選択して独自のキー コンテナーを選択します。
 
-> [!NOTE]
-> 現在、Azure Site Recovery では、Windows オペレーティング システムを実行していて、[Azure AD アプリでの暗号化が有効にされている](https://aka.ms/ade-aad-app) Azure VM のみがサポートされています。
+>[!NOTE]
+> Site Recovery は現在、Windows オペレーティング システムを実行している VM について、Azure Active Directory (AAD) がある場合とない場合の両方の ADE をサポートしています。 Linux オペレーティング システムでは、AAD なしの ADE のみがサポートされます。 さらに、ADE 1.1 (AAD なし) を実行しているマシンでは、VM によってマネージド ディスクが使用されている必要があります。 アンマネージド ディスクを使用する VM はサポートされません。 ADE 0.1 (AAD あり) から 1.1 に切り替える場合は、レプリケーションを無効にし、1.1 を有効にした後で、VM のレプリケーションを有効にする必要があります。
 
 ### <a name="track-replication-status"></a>レプリケーションの状態を追跡する
 

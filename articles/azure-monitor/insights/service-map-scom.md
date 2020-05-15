@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: ef5e5f0b81eb1cff81d66eef356ba3bbeda5f9d7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732021"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928008"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能を統合する
 
@@ -108,8 +108,8 @@ Service Map フォルダーには 4 つのノードがあります。
 
 構成済みワークスペースは、 **[サービス マップ概要]** ウィンドウ ( **[管理]** ウィンドウ > **[Operations Management Suite]**  >  **[サービス]** ) で編集または削除できます。
 
->[!NOTE]
->[Operations Management Suite はサービスのコレクション](https://docs.microsoft.com/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)であり Log Analytics に含まれていました。現在は、[Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/overview.md) の一部になっています。
+> [!NOTE]
+> [Operations Management Suite はサービスのコレクション](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)であり Log Analytics に含まれていました。現在は、[Azure Monitor](../overview.md) の一部になっています。
 
 現在のこのリリースで構成できる Log Analytics ワークスペースは 1 つのみです。
 

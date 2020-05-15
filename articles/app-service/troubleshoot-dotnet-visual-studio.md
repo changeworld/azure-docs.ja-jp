@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235955"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926852"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -614,7 +614,7 @@ App Service アプリで作成されたログは Visual Studio を使って簡�
 Azure App Service のアプリのトラブルシューティングの詳細については、以下のリソースを参照してください。
 
 * [How to monitor apps (アプリの監視方法)](web-sites-monitor.md)
-* [Investigating Memory Leaks in Azure App Service with Visual Studio 2013 (Visual Studio 2013 を使用した Azure App Service でのメモリ リークの調査)](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージド メモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
+* [Investigating Memory Leaks in Azure App Service with Visual Studio 2013 (Visual Studio 2013 を使用した Azure App Service でのメモリ リークの調査)](https://devblogs.microsoft.com/devops/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013/)。 マネージド メモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
 * [Azure App Service online tools you should know about (知っておくべき Azure App Service のオンライン ツール)](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple によるブログの投稿です。
 
 具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。
@@ -634,7 +634,7 @@ App Service アプリと WebJobs のリモート デバッグの詳細につい�
 * [Introduction to Remote Debugging on Azure App Service part 3 - Multi-Instance environment and GIT (Azure App Service のリモート デバッグの概要 3 - マルチインスタンス環境と GIT)](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [WebJobs Debugging (Web ジョブのデバッグ) (ビデオ)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-アプリで Azure Web API または Mobile Services バックエンドを使用し、デバッグを実行する必要がある場合は、[Visual Studio での .NET のデバッグ](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)に関するページを参照してください。
+アプリで Azure Web API または Mobile Services バックエンドを使用し、デバッグを実行する必要がある場合は、[Visual Studio での .NET のデバッグ](/archive/blogs/azuremobile/debugging-net-backend-in-visual-studio)に関するページを参照してください。
 
 ### <a name="tracing-in-aspnet-applications"></a>ASP.NET アプリケーションでのトレース
 ASP.NET トレースに関しては、最新かつ必要な情報をすべて網羅した解説がインターネットには存在しません。 そのため、過去に作成された入門者向けの資料を参考にするのが最善の方法となります。MVC がまだ存在していなかったために Web フォームを想定して書かれていますが、具体的な問題については、最新のブログで情報を補うことができます。 たとえば、以下のリソースが参考になります。
@@ -647,7 +647,7 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
   トレース リスナーについて書かれていますが、[WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener) には触れていません。
 * [チュートリアル:Integrating ASP.NET Tracing with System.Diagnostics Tracing (ASP.NET トレースと System.Diagnostics トレースの統合)](/previous-versions/b0ectfxd(v=vs.140))<br/>
   この記事も古い情報ですが、入門記事では扱っていないような詳しい情報が記載されています。
-* [ASP.NET MVC Razor ビューでのトレース](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+* [ASP.NET MVC Razor ビューでのトレース](https://devblogs.microsoft.com/aspnet/tracing-in-asp-net-mvc-razor-views/)<br/>
   Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。 Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](/previous-versions/bb397417(v=vs.140))」で紹介されている Global.asax サンプルを参照してください。 MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
 
     ```csharp
@@ -678,7 +678,7 @@ Web サーバーのログの分析の詳細については、次のリソース�
   Web サーバーのログ ( *.log* ファイル) に記録されているデータを表示するためのツールです。
 * [IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。
-* [LogParser の使用に関して Robert McMurray が執筆したブログ記事](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [LogParser の使用に関して Robert McMurray が執筆したブログ記事](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP 状態コード](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>失敗した要求トレース ログの分析

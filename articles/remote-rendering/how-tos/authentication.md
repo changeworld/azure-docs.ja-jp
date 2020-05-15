@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2019
 ms.topic: how-to
-ms.openlocfilehash: fbc27f2fa3b7517151c4bcdbec5b146e83dd868e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.custom: has-adal-ref
+ms.openlocfilehash: 34874e01b526a4d88ff4402edb0c3771c75a3726
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679337"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195299"
 ---
 # <a name="configure-authentication"></a>認証を構成する。
 

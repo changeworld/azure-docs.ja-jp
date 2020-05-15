@@ -3,19 +3,19 @@ title: PowerShell を使用して Azure ファイル共有のバックアップ�
 description: PowerShell を使用して、Azure Backup サービスによってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083168"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201969"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>PowerShell を使用して Azure ファイル共有のバックアップを管理する
 
 この記事では、Azure PowerShell を使用して、Azure Backup サービスによってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 
 > [!WARNING]
-> PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 詳細については、この変更の要件の概要が記載されている[こちらのセクション](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)を参照してください。
+> PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 詳細については、この変更の要件の概要が記載されている[こちらのセクション](backup-azure-afs-automation.md#important-notice-backup-item-identification)を参照してください。
 
 ## <a name="modify-the-protection-policy"></a>保護ポリシーを変更する
 

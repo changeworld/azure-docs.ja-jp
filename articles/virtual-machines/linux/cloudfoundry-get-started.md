@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: ba0b4a636d8f785f1c169e4066c9cf6d25ba81db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8645afac5734cdbffb8df6f341529e688ca526d7
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970047"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891639"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure での Cloud Foundry
 
@@ -57,5 +57,5 @@ Cloud Foundry は、継続的インテグレーション (CI) や継続的デリ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Marketplace から Pivotal Cloud Foundry をデプロイする](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [Azure Marketplace から Pivotal Cloud Foundry をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
 - [アプリを Azure の Cloud Foundry にデプロイする](./cloudfoundry-deploy-your-first-app.md)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/14/2020
+ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b3282dd88b62a6811031e95672638d67702215a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b025d98c230bc82b86a736785fb8e6581ec4519c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048461"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864455"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合
 
@@ -140,8 +140,8 @@ Google Cloud (G Suite) Connector で Azure AD の SSO を構成してテスト�
 
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
 
 1. **[基本的な SAML 構成]** セクションで、**Google Cloud Platform** を構成する場合は次の手順で行います。
@@ -161,8 +161,8 @@ Google Cloud (G Suite) Connector で Azure AD の SSO を構成してテスト�
     
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 Google Cloud (G Suite) Connector ではシングル サインオン構成のエンティティ ID も識別子の値も提供されないため、 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオフにすると、識別子の値は `google.com` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンにすると、値は `google.com/a/<yourdomainname.com>` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンまたはオフにするには、以降のチュートリアルで説明する「**Google Cloud (G Suite) Connector SSO の構成**」セクションに移動する必要があります。 詳細については、[Google Cloud (G Suite) Connector クライアント サポート チーム](https://www.google.com/contact/)にお問い合わせください。

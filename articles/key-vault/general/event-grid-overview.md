@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 854a489f6381514f80f16665f89042a0e8ed7470
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427655"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995757"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Event Grid での Key Vault の監視 (プレビュー)
 
@@ -30,8 +30,6 @@ Event Grid は、[イベント サブスクリプション](../../event-grid/con
 
 > [!WARNING]
 > 通知イベントは、新しいバージョンのシークレット、キー、証明書でのみトリガーされます。それらの通知を受け取るには、まずキー コンテナーのイベントをサブスクライブする必要があります。
-> 
-> 証明書の通知イベントが送信されるのは、特定の証明書の指定したポリシーに従って証明書が自動的に更新されたときのみです。
 
 ## <a name="practices-for-consuming-events"></a>イベントの使用に関する手法
 

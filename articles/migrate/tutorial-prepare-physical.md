@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて物理サ�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535283"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901423"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -105,10 +105,9 @@ Server Migration を使用して物理サーバーを移行する準備を Azure
 ### <a name="assign-azure-account-permissions"></a>Azure アカウントのアクセス許可を割り当てる
 
 仮想マシン共同作成者ロールを Azure アカウントに割り当てます。 これで、次の作業を行うためのアクセス許可が得られます。
-
-    - 選択したリソース グループ内に VM を作成する。
-    - 選択した仮想ネットワーク内に VM を作成する。
-    - Azure マネージド ディスクに書き込む。 
+  - 選択したリソース グループ内に VM を作成する。
+  - 選択した仮想ネットワーク内に VM を作成する。
+  - Azure マネージド ディスクに書き込む。 
 
 ### <a name="create-an-azure-network"></a>Azure ネットワークを作成する
 

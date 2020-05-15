@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686191"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857088"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -272,7 +272,7 @@ Azure CLI を使って、使用するアカウントがあるものに既定の�
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>未承認のアクセス、アクセスの拒否、禁止、または同様のエラー
 
-使用されているプリンシパルに、アクセスしようとしているリソースへのアクセス権がありません。 ユーザー アカウントまたは App Service の MSI に、リソースへの "共同作成者" アクセス権を付与します。 これは、サンプルをローカル コンピューターで実行しているか、Azure の App Service にデプロイしたかによって異なります。 キー コンテナーなどの一部のリソースには、ユーザー、アプリ、グループなどのプリンシパルへのアクセス権の付与に使用する独自の[アクセス ポリシー](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies)もあります。
+使用されているプリンシパルに、アクセスしようとしているリソースへのアクセス権がありません。 ユーザー アカウントまたは App Service の MSI に、リソースへの "共同作成者" アクセス権を付与します。 これは、サンプルをローカル コンピューターで実行しているか、Azure の App Service にデプロイしたかによって異なります。 キー コンテナーなどの一部のリソースには、ユーザー、アプリ、グループなどのプリンシパルへのアクセス権の付与に使用する独自の[アクセス ポリシー](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies)もあります。
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Azure App Service にデプロイするときの一般的な問題
 

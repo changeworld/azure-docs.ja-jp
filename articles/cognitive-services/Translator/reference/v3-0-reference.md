@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/2/2020
+ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619159"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857299"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -147,7 +147,7 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>仮想ネットワークのサポート
 
-限られたリージョン (`WestUS2`、`EastUS`、`SouthCentralUS`、`WestUS`、`Central US EUAP`、`global`) で Virtual Network の機能を使用してトランスレータ― サービスを利用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)」を参照してください。 
+限られたリージョン (`WestUS2`、`EastUS`、`SouthCentralUS`、`WestUS`、`CentralUSEUAP`、`global`) で Virtual Network の機能を使用してトランスレータ― サービスを利用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)」を参照してください。 
 
 この機能を有効にした後、カスタム エンドポイントを使用して Translator API を呼び出す必要があります。 グローバル トランスレーター エンドポイント ("api.cognitive.microsofttranslator.com") は使用できず、アクセス トークンで認証することはできません。
 

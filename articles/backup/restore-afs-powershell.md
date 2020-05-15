@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure Files を復元する
 description: この記事では、Azure Backup サービスと PowerShell を使用して Azure Files を復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: bcd85635dbacceb7d1c125bb550feedbdb57e04a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097644"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201978"
 ---
 # <a name="restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files を復元する
 
@@ -17,7 +17,7 @@ ms.locfileid: "82097644"
 ファイル共有全体を復元することも、共有上の特定のファイルを復元することもできます。 元の場所に復元することも、代わりの場所に復元することもできます。
 
 > [!WARNING]
-> PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 詳細については、この変更の要件の概要が記載されている[このセクション](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)を参照してください。
+> PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 詳細については、この変更の要件の概要が記載されている[このセクション](backup-azure-afs-automation.md#important-notice-backup-item-identification)を参照してください。
 
 >[!NOTE]
 >Azure Backup では、PowerShell を使用して、元の場所または別の場所への複数のファイルやフォルダーの復元をサポートするようになりました。 方法については、ドキュメントの[このセクション](#restore-multiple-files-or-folders-to-original-or-alternate-location)を参照してください。

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725860"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857414"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Azure Media Player のプラグインの作成 #
 
@@ -87,7 +87,7 @@ ms.locfileid: "81725860"
 
 ### <a name="plugin-gallery"></a>プラグイン ギャラリー ###
 
-[プラグイン ギャラリー](http//:aka.ms/ampplugins)には、タイムライン マーカー、ズーム、分析などの機能についてコミュニティが既に提供しているいくつかのプラグインがあります。 このページでは、プラグインへのアクセス、プラグインを設定するための手順、およびプラグインの動作を示すデモが提供されます。 このギャラリーに含めるべき優れたプラグインを作成された場合は、Microsoft で確認できるように遠慮なく送信してください。
+[プラグイン ギャラリー](https://aka.ms/ampplugins)には、タイムライン マーカー、ズーム、分析などの機能についてコミュニティが既に提供しているいくつかのプラグインがあります。 このページでは、プラグインへのアクセス、プラグインを設定するための手順、およびプラグインの動作を示すデモが提供されます。 このギャラリーに含めるべき優れたプラグインを作成された場合は、Microsoft で確認できるように遠慮なく送信してください。
 
 ## <a name="next-steps"></a>次のステップ ##
 
