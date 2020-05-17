@@ -3,12 +3,12 @@ title: PowerShell を使用して Windows Server を Azure にバックアップ
 description: この記事では、PowerShell を使用して Windows Server または Windows クライアント上に Azure Backup を設定したり、バックアップと回復を管理したりする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde81aba5a2b74ce25c8f3cd70dc24df6f566420
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673187"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597979"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -78,7 +78,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 ## <a name="installing-the-azure-backup-agent"></a>Microsoft Azure Backup エージェントのインストール
 
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。 最新バージョンのインストーラーは、 [Microsoft ダウンロード センター](https://aka.ms/azurebackup_agent) または Recovery Services コンテナーの [ダッシュボード] ページから入手することができます。 インストーラーを、*C:\Downloads\* などの、簡単にアクセスできる場所に保存します。
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。 最新バージョンのインストーラーは、 [Microsoft ダウンロード センター](https://aka.ms/azurebackup_agent) または Recovery Services コンテナーの [ダッシュボード] ページから入手することができます。 インストーラーを、`C:\Downloads\*` などの、簡単にアクセスできる場所に保存します。
 
 または、PowerShell を使用して、ダウンローダーを取得します。
 
@@ -209,7 +209,12 @@ Server properties updated successfully.
 
 データの機密性を保護するために、Microsoft Azure Backup に送信されるバックアップ データは暗号化されます。 暗号化パスフレーズは、復元時にデータの暗号化を解除するための "パスワード" になります。
 
-Azure portal の **[Recovery Services コンテナー]** セクションにある **[設定]**  >  **[プロパティ]**  >  **[セキュリティ PIN]** 下の **[生成]** を選択して、セキュリティ PIN を生成する必要があります。 その後、コマンド内で `generatedPIN` としてこれを使用します。
+Azure portal の **[Recovery Services コンテナー]** セクションにある **[設定]**  >  **[プロパティ]**  >  **[セキュリティ PIN]** 下の **[生成]** を選択して、セキュリティ PIN を生成する必要があります。 
+
+>[!NOTE]
+> セキュリティ PIN は、Azure portal でのみ生成できます。
+
+その後、コマンド内で `generatedPIN` としてこれを使用します。
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

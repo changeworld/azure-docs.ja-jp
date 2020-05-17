@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263456"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606893"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Security Center での脅威の防止
 
@@ -31,6 +31,12 @@ Azure Security Center の脅威の防止によって、お使いの環境が包�
 
 アラートは、Security Center によって生成されたか、別のセキュリティ製品の Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel (またはサードパーティの SIEM) あるいはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。 
 
+> [!TIP]
+> Security Center の脅威保護機能を有効にするには、Standard 価格レベルを、適用可能なワークロードを含むサブスクリプションに適用する必要があります。
+>
+> **Azure Storage アカウント**の脅威保護は、サブスクリプション レベルまたはリソース レベルで有効にできます。
+> **Azure SQL Database SQL サーバー**の脅威保護は、サブスクリプション レベルまたはリソース レベルで有効にできます。
+> **Azure Database for MariaDB/MySQL/PostgreSQL** の脅威保護は、リソース レベルでのみ有効にできます。
 
 
 
@@ -165,7 +171,7 @@ Advanced Threat Protection for Storage では、ストレージ アカウント�
 
 Advanced Threat Protection for Azure Storage は、現時点では [BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)でのみ使用できます。 
 
-このサービスはあらゆるパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリンや Azure Government のクラウド リージョンでは使用できません。
+このサービスはすべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウドと Azure Government クラウドのリージョンでは使用できません。
 
 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 

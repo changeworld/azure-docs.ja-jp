@@ -1,79 +1,39 @@
 ---
-title: Azure Automation で変更を追跡する
-description: Change Tracking ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。
+title: Azure Automation の変更履歴とインベントリの概要
+description: 変更履歴とインベントリを使用すると、環境で発生するソフトウェアや Microsoft サービスの変更を特定できます。
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: d84566c7680081561f60d4825f25a9ce19e02b24
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682976"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787177"
 ---
-# <a name="track-environment-changes-with-change-tracking"></a>Change Tracking による環境内の変更の追跡
+# <a name="overview-of-change-tracking-and-inventory"></a>変更履歴とインベントリの概要
 
-この記事では、Change Tracking ソリューションを使用して、ユーザーの環境内の変更箇所を簡単に識別する方法を説明します。 このソリューションでは、運用上の問題を特定できるように、次の構成の変更を追跡します。
+この記事では、Azure Automation の変更履歴とインベントリを紹介します。 この機能は、仮想マシンとサーバー インフラストラクチャの変更を追跡することで、配布パッケージ マネージャーによって管理されているソフトウェアの運用上の問題と環境上の問題を特定するのに役立ちます。 変更履歴とインベントリによって追跡される項目には次のものがあります。 
 
 - Windows ソフトウェア
 - Linux ソフトウェア (パッケージ)
-    >[!NOTE]
-    >Change Tracking では、配布のパッケージ マネージャーを使用して管理されているソフトウェアのみを追跡します。
-
 - Windows ファイルと Linux ファイル
 - Windows レジストリ キー
-- Windows サービス
+- Microsoft サービス
 - Linux デーモン
 
-ソリューションを有効にした後、監視対象コンピューターの変更の概要を表示するには、Automation アカウントの **[構成管理]** で **[Change Tracking]\(変更の追跡\)** を選択します。
+> [!NOTE]
+> Azure Resource Manager のプロパティの変更を追跡するには、Azure Resource Graph の[変更履歴](../governance/resource-graph/how-to/get-resource-changes.md)を参照してください。
+
+変更履歴とインベントリでは、Azure Monitor からデータが取得されます。 Log Analytics ワークスペースに接続されている仮想マシンでは、Log Analytics エージェントを使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、およびすべての Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントによって Azure Monitor に送信されます。 Azure Monitor では、受信したデータにロジックが適用され、それが記録されて使用可能になります。 
+
+変更履歴とインベントリ機能を使用すると、Azure Automation の変更履歴とインベントリという機能領域の両方が有効になります。 両方の領域で同じ Log Analytics エージェントが使用されるため、VM を追加するプロセスは、どちらの機能領域でも同じです。 
 
 > [!NOTE]
-> Azure Automation Change Tracking では、仮想マシンでの変更が追跡されます。 Azure Resource Manager のプロパティの変更を追跡するには、Azure Resource Graph の[変更履歴](../governance/resource-graph/how-to/get-resource-changes.md)を参照してください。
+> 変更履歴とインベントリ機能を使用するには、すべての VM を Automation アカウントと同じサブスクリプションとリージョン内に配置する必要があります。
 
-コンピューターに対する変更を表示し、各イベントの詳細を確認することができます。 グラフ上部にあるドロップ ダウンを使用すると、変更の種類および時間の範囲に基づいて、グラフと詳細情報を制限できます。 グラフ上をクリックしてドラッグすることで、カスタムの時間の範囲を選択することもできます。 **変更の種類**は、**Events**、**Daemons**、**Files**、**Registry**、**Software**、**Windows Services** のいずれかの値になります。 カテゴリは変更の種類を示し、**Added**、**Modified**、または **Removed** になります。
-
-![[変更の追跡] ダッシュボードの画像](./media/change-tracking/change-tracking-dash01.png)
-
-変更またはイベントをクリックすると、その変更に関する詳細情報が表示されます。 例に示すように、サービスの起動の種類が手動から自動に変更されました。
-
-![変更追跡の詳細の画像](./media/change-tracking/change-tracking-details.png)
-
-監視対象サーバーにインストールされているソフトウェア、Windows サービス、Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Azure Monitor サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
-
-## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-
-### <a name="windows-operating-systems"></a>Windows オペレーティング システム
-
-Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
-
-* Windows Server 2008 R2 以降
-
-### <a name="linux-operating-systems"></a>Linux オペレーティング システム
-
-次の Linux ディストリビューションは公式にサポートされています。 ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。 記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。
-
-#### <a name="64-bit"></a>64 ビット
-
-* CentOS 6 および 7
-* Amazon Linux 2017.09
-* Oracle Linux 6 および 7
-* Red Hat Enterprise Linux Server 6 および 7
-* Debian GNU/Linux 8 および 9
-* Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit"></a>32 ビット
-
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 および 9
-* Ubuntu Linux 14.04 LTS および 16.04 LTS
-
-## <a name="limitations"></a>制限事項
-
-現在、Change Tracking ソリューションでは以下の項目に対応していません。
+現在、変更履歴とインベントリでは、次の項目がサポートされていません。
 
 * Windows レジストリ追跡用の再帰
 * ネットワーク ファイル システム
@@ -83,243 +43,158 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 その他の制限事項:
 
 * **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
-* 30 分間の収集サイクルで収集するファイル数が 2500 を超えると、ソリューションのパフォーマンスが低下する可能性があります。
+* 30 分間の収集サイクルで収集するファイル数が 2,500 を超えると、変更履歴とインベントリのパフォーマンスが低下する可能性があります。
 * ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最大 6 時間かかることがあります。
 * コンピューターのシャットダウン中に構成を変更した場合、そのコンピューターから前の構成に対応する変更が送信される可能性があります。
 
-## <a name="known-issues"></a>既知の問題
-
-現在、Change Tracking ソリューションでは、以下の問題が発生しています。
+現在、変更履歴とインベントリでは、次の問題が発生しています。
 
 * Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されていません。
-* Linux デーモンは、変更がなかった場合でも、変更された状態を表示する可能性があります。 これは、`SvcRunLevels` フィールドのキャプチャ方法が原因です。
+* Linux デーモンでは、変更が発生していなくても、変更された状態が表示される場合があります。 この問題は、Azure Monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) ログの `SvcRunLevels` データがキャプチャされる方法が原因で発生します。
+
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+
+変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 正式にサポートされる Windows オペレーティング システムのバージョンは、Windows Server 2008 SP1 以降と Windows 7 SP1 以降です。 多数の Linux オペレーティング システムもサポートされます。 「[Log Analytics エージェントの概要](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)」を参照してください。 
 
 ## <a name="network-requirements"></a>ネットワークの要件
 
-Change Tracking に必要な具体的なアドレスは次のとおりです。 これらのアドレスへの通信には、ポート 443 が使用されます。
+変更履歴とインベントリには、次の表に示すネットワーク アドレスが特に必要です。 これらのアドレスへの通信には、ポート 443 が使用されます。
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
+|*.azure-automation.net | *.azure-automation.us|
 
-## <a name="wildcard-recursion-and-environment-settings"></a>ワイルドカード、再帰、環境設定
+## <a name="change-tracking-and-inventory-user-interface"></a>変更履歴とインベントリのユーザー インターフェイス
 
-再帰を使用すると、ワイルドカードを指定することで、複数のディレクトリを対象とした追跡を簡単に行うことができます。また、環境変数を指定すれば、複数のドライブ名や動的なドライブ名を使って、複数の環境を対象にファイルを追跡できます。 次の一覧に、再帰を構成するときに知っておくべき基本的な情報を示します。
+Azure portal の変更履歴とインベントリを使用して、監視対象のコンピューターの変更の概要を表示します。 この機能を使用するには、お使いの Automation アカウント用の **[構成管理]** の下の **[変更履歴]** または **[インベントリ]** で、いずれかの VM 追加オプションを選択します。  
+
+![[変更履歴] ダッシュボード](./media/change-tracking/change-tracking-dash01.png)
+
+ダッシュボード上部にあるドロップ ダウンを使用すると、変更の種類および時間の範囲に基づいて、変更履歴グラフと詳細情報を制限できます。 グラフ上をクリックしてドラッグすることで、カスタムの時間の範囲を選択することもできます。 
+
+変更またはイベントをクリックすると、その詳細が表示されます。 使用できる変更の種類は次のとおりです。
+
+* events
+* デーモン
+* ファイル
+* レジストリ
+* ソフトウェア
+* Microsoft サービス
+
+各変更を追加、変更、または削除することができます。 次の例では、サービスの起動の種類が手動から自動に変更されていることがわかります。
+
+![変更履歴の詳細](./media/change-tracking/change-tracking-details.png)
+
+## <a name="tracking-of-file-changes"></a>ファイルの変更履歴
+
+Windows と Linux の両方でファイルの変更を追跡する場合、変更履歴とインベントリでは、ファイルの MD5 ハッシュが使用されます。 この機能では、ハッシュを使用して、前回のインベントリ以降に変更が加えられたかどうかが検出されます。
+
+## <a name="tracking-of-file-content-changes"></a>ファイル コンテンツの変更履歴
+
+変更履歴とインベントリを使用すると、ファイルの変更前後に Windows または Linux のファイルのコンテンツを表示できます。 ファイルを変更するたびに、変更履歴とインベントリによって、[Azure Storage アカウント](../storage/common/storage-create-storage-account.md)にファイルのコンテンツが格納されます。 ファイルを追跡しているとき、変更の前後にその内容を表示できます。 コンテンツは、インラインで、または並べて表示できます。 
+
+![ファイル内の変更を表示する](./media/change-tracking/view-file-changes.png)
+
+## <a name="tracking-of-registry-keys"></a>レジストリ キーの追跡
+
+変更履歴とインベントリを使用すると、レジストリ キーへの変更を監視できます。 監視により、サード パーティのコードやマルウェアでアクティブ化できる拡張性のポイントを正確に特定できます。 次の表に、事前に構成された (有効ではない) レジストリ キーの一覧を示します。 これらのキーを追跡するには、それぞれを有効にする必要があります。
+
+> [!div class="mx-tdBreakAll"]
+> |レジストリ キー | 目的 |
+> | --- | --- |
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Windows エクスプローラーに直接フックされ、通常は **explorer.exe** でインプロセスで実行される共通自動開始エントリを監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | スタートアップ時に実行されるスクリプトを監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | シャットアップ時に実行されるスクリプトを監視します。
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | ユーザーが Windows アカウントにサインインする前に読み込まれるキーを監視します。 このキーは、64 ビット コンピューターで実行される 32 ビット アプリケーションに使用されます。
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | アプリケーションの設定の変更を監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Windows エクスプローラーに直接フックされ、通常は **explorer.exe** でインプロセスで実行される共通自動開始エントリを監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Windows エクスプローラーに直接フックされ、通常は **explorer.exe** でインプロセスで実行される共通自動開始エントリを監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | アイコン オーバーレイ ハンドラーの登録を監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 64 ビット コンピューターで実行される 32 ビット アプリケーションのアイコン オーバーレイ ハンドラーの登録を監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、ナビゲーションを制御するときに使用されます。
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、64 ビットコンピューターで実行される 32 ビット アプリケーションのナビゲーションを制御するときに使用されます。
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | カスタム ツール メニューやカスタム ツール バー ボタンなどの新しい Internet Explorer の拡張機能を監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | 64 ビットコンピューターで実行される 32 ビット アプリケーションのカスタム ツールのメニューやカスタム ツール バー ボタンなどの新しい Internet Explorer の拡張機能を監視します。
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | wavemapper、wave1、wave2、msacm.imaadpcm、.msadpcm、.msgsm610、および vidc に関連付けられている 32 ビット ドライバーを監視します。 **system.ini** ファイルの [drivers] セクションに似ています。
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | 64 ビットコンピューターで実行される 32 ビット アプリケーションの wavemapper、wave1、wave2、msacm.imaadpcm、.msadpcm、.msgsm610、および vidc に関連付けられている 32 ビット ドライバーを監視します。 **system.ini** ファイルの [drivers] セクションに似ています。
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | 既知のまたは一般的に使用されるシステムの DLL の一覧を監視します。 このシステムでは、システム DLL のトロイの木馬バージョンを削除することで、弱いアプリケーション ディレクトリのアクセス許可が悪用されることを防止します。
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Windows の対話型ログオン サポート モデルである **winlogon.exe** からイベント通知を受信できるパッケージの一覧を監視します。
+
+## <a name="support-for-file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視のサポート
+
+変更履歴とインベントリでは、[Azure Security Center のファイルの整合性の監視 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) が使用されます。 FIM ではファイルとレジストリのみが監視されますが、変更履歴とインベントリの完全な機能には次の追跡も含まれます。
+
+- ソフトウェアの変更
+- Microsoft サービス
+- Linux デーモン
+
+## <a name="recursion-support"></a>再帰のサポート
+
+変更履歴とインベントリでは再帰がサポートされているので、ワイルドカードを指定して、ディレクトリ全体の追跡を簡略化できます。 また、再帰では環境変数も提供されています。これにより、複数のドライブ名またはダイナミック ドライブ名を持つ環境間でファイルを追跡できます。 次の一覧に、再帰を構成するときに知っておくべき基本的な情報を示します。
 
 * 複数のファイルを追跡するにはワイルドカードが必要です。
-* ワイルドカードを使用できるのは、c:\folder\\file* や、/etc/*.conf など、パスの最後のセグメントでのみです。
-* 環境変数に無効なパスが存在する場合、検証は成功しますが、インベントリの実行時にそのパスはエラーになります。
-* パスを設定するときは、漠然としたパスは避けてください。このような設定により、走査対象のフォルダー数が膨大になるためです。
+* ワイルドカードを使用できるのは、**c:\folder\\file*** や **/etc/*.conf** など、パスの最後のセグメントでのみです。
+* 環境変数に無効なパスが存在する場合、検証は成功しますが、実行時にそのパスはエラーになります。
+* パスを設定するときは、漠然としたパス名は避けてください。そのような設定により、走査対象のフォルダー数が膨大になるためです。
 
-## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
+## <a name="change-tracking-and-inventory-data-collection"></a>変更履歴とインベントリのデータ収集
 
-次の表は、変更の種類ごとにデータ収集の頻度を示したものです。 すべての種類について、現在の状態のデータ スナップショットも、少なくとも 24 時間ごとに更新されます。
+次の表は、変更履歴とインベントリでサポートされている変更の種類に対するデータ収集の頻度を示しています。 すべての種類について、現在の状態のデータ スナップショットも、少なくとも 24 時間ごとに更新されます。
 
-| **変更の種類** | **頻度** |
+| **[変更の種類]** | **頻度** |
 | --- | --- |
 | Windows レジストリ | 50 分 |
 | Windows ファイル | 30 分 |
 | Linux ファイル | 約 15 分 |
-| Windows サービス | 10 秒から 30 分</br> 既定値は30 分 |
+| Microsoft サービス | 10 秒から 30 分</br> 既定値は30 分 |
 | Linux デーモン | 5 分 |
 | Windows ソフトウェア | 30 分 |
 | Linux ソフトウェア | 5 分 |
 
-次の表は、Change Tracking でのマシンごとの追跡項目制限を示します。
+次の表は、変更履歴とインベントリでのマシンごとの追跡項目制限を示しています。
 
-| **リソース** | **制限**| **メモ** |
+| **リソース** | **制限** |
 |---|---|---|
-|ファイル|500||
-|レジストリ|250||
-|Windows ソフトウェア|250|ソフトウェア修正プログラムは含まれません|
-|Linux パッケージ|1250||
-|サービス|250||
-|デーモン|250||
+|ファイル|500|
+|レジストリ|250|
+|Windows ソフトウェア (修正プログラムを含まない) |250|
+|Linux パッケージ|1250|
+|サービス|250|
+|デーモン|250|
 
-Change Tracking を使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です。 この値は概数にすぎず、環境によって異なる可能性があります。 お使いの環境を監視し、実際に必要な正確な使用量を確認することをお勧めします。
+変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、変更履歴とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、請求にどのように影響しているかを判断できます。 「[ご自分の使用量を理解してコストを見積もる](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)」を参照してください。  
 
-### <a name="windows-service-tracking"></a>Windows サービスの追跡
+### <a name="microsoft-service-data"></a>Microsoft サービス データ
 
-Windows サービスに対する既定の収集の頻度は 30 分です。 この頻度を構成するには、 **[変更の追跡]** に移動します。 **[Windows サービス]** タブの **[設定の編集]** には、Windows サービスに対する収集の頻度を 10 秒から 30 分まで変更できるスライダーがあります。 このスライダーを必要な頻度に移動すると、その頻度が自動的に保存されます。
+Microsoft サービスに対する既定の収集の頻度は 30 分です。 **[設定の編集]** にある **[Microsoft サービス]** タブのスライダーを使用して、頻度を構成できます。 
 
-![Windows サービスのスライダー](./media/change-tracking/windowservices.png)
+![Microsoft サービス スライダー](./media/change-tracking/windowservices.png)
 
-エージェントは変更のみを追跡します。これにより、エージェントのパフォーマンスが最適化されます。 大きいしきい値を設定すると、サービスがその元の状態に戻した場合に変更が検出されない可能性があります。 頻度を小さな値に設定すると、そうしないと検出されなかった可能性がある変更を捕まえることができます。
-
-> [!NOTE]
-> エージェントは変更を 10 秒の間隔まで追跡できますが、データがポータルに表示されるにはまだ数分かかります。 ポータルに表示される期間中の変更も引き続き追跡され、ログに記録されます。
-
-### <a name="registry-key-change-tracking"></a>レジストリ キーの変更追跡
-
-レジストリ キーへの変更を監視する目的は、サード パーティのコードやマルウェアがアクティブ化できる拡張性のポイントを正確に特定することです。 次の一覧は、事前構成されたレジストリ キーを示しています。 これらのキーは構成されていますが、有効にはなっていません。 これらのレジストリ キーを追跡するには、それぞれを有効にする必要があります。
-
-> [!div class="mx-tdBreakAll"]
-> |レジストリ キー | 目的 |
-> |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Windows Explorer に直接フックされ、通常は Explorer.exe でインプロセスで実行される共通自動開始エントリを監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | スタートアップ時に実行されるスクリプトを監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | シャットアップ時に実行されるスクリプトを監視します。
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | ユーザーが Windows アカウントにサインインする前に読み込まれるキーを監視します。 このキーは、64 ビット コンピューターで実行される 32 ビット プログラムに使用されます。
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | アプリケーションの設定の変更を監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Windows Explorer に直接フックされ、通常は Explorer.exe でインプロセスで実行される共通自動開始エントリを監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Windows Explorer に直接フックされ、通常は Explorer.exe でインプロセスで実行される共通自動開始エントリを監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | アイコン オーバーレイ ハンドラーの登録を監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 64 ビット コンピューターで実行される 32 ビット プログラムのアイコン オーバーレイ ハンドラーの登録を監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、ナビゲーションを制御するときに使用されます。
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer の新しいブラウザー ヘルパー オブジェクト プラグインを監視します。 現在のページのドキュメント オブジェクト モデル (DOM) にアクセスし、64 ビットコンピューターで実行される 32 ビット プログラムのナビゲーションを制御するときに使用されます。
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | カスタム ツール メニューやカスタム ツール バー ボタンなどの新しい Internet Explorer の拡張機能を監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | 64 ビットコンピューターで実行される 32 ビット プログラムのカスタム ツールのメニューや 64 ビット コンピューター上で実行する 32 ビット プログラムのカスタム ツール バー ボタンなどの新しい Internet Explorer の拡張機能を監視します。
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | wavemapper、wave1、wave2、msacm.imaadpcm、.msadpcm、.msgsm610、および vidc に関連付けられている 32 ビット ドライバーを監視します。 SYSTEM.INI ファイルの [drivers] セクションに似ています。
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | 64 ビットコンピューターで実行される 32 ビット プログラムの wavemapper、wave1、wave2、msacm.imaadpcm、.msadpcm、.msgsm610、および vidc に関連付けられている 32 ビット ドライバーを監視します。 SYSTEM.INI ファイルの [drivers] セクションに似ています。
-> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | 既知のまたは一般的に使用されるシステムの DLL の一覧を監視します。このシステムは、システム DLL のトロイの木馬バージョンを削除することで、弱いアプリケーション ディレクトリのアクセス許可が悪用されることを防止します。
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Windows オペレーティング システムの対話型ログオン サポート モデルである Winlogon からイベント通知を受信できるパッケージの一覧を監視します。
-
-## <a name="enable-change-tracking"></a><a name="onboard"></a>Change Tracking を有効化
-
-変更の追跡を開始するには、Change Tracking ソリューションを有効にする必要があります。 Change Tracking にマシンをオンボーディングする方法は多数あります。 以下に、推奨およびサポートされている、ソリューションにオンボードする方法を示します。
-
-* [仮想マシンから](automation-onboard-solutions-from-vm.md)
-* [複数のマシンを参照することから](automation-onboard-solutions-from-browse.md)
-* [お使いの Automation アカウントから](automation-onboard-solutions-from-automation-account.md)
-* [Azure Automation Runbook によって](automation-onboard-solutions.md)
-
-## <a name="configure-change-tracking"></a>Change Tracking を構成する
-
-コンピューターをソリューションに追加する方法については、[Automation ソリューションの配布準備](automation-onboard-solutions-from-automation-account.md)に関するページをご覧ください。 Change Tracking ソリューションでのマシンのオンボードが完了したら、追跡する項目を構成できます。新しいファイルまたはレジストリ キーの追跡を有効にすると、Change Tracking に対して有効になります。
-
-Windows と Linux の両方でファイルの変更を追跡する場合、ファイルの MD5 ハッシュが使用されます。 これらのハッシュは、前回のインベントリから変更が加えられたかどうかを検出するために使用されます。
-
-## <a name="enable-file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視の有効化
-
-Azure Security Center は、Azure Change Tracking 上に構築されたファイルの整合性の監視 (FIM) を追加しました。 FIM はファイルとレジストリのみを監視しますが、完全な Change Tracking ソリューションには次のものも含まれます。
-
-- ソフトウェアの変更
-- Windows サービス
-- Linux デーモン
-
-FIM が既に有効になっていて、完全な Change Tracking ソリューションを試したい場合は、次の手順を実行する必要があります。 お使いの設定はこの処理によって削除されません。
+パフォーマンスを最適化するために、Log Analytics エージェントでは変更の追跡のみが行われます。 大きいしきい値を設定すると、サービスがその元の状態に戻った場合に変更が検出されない可能性があります。 頻度を小さな値に設定すると、そうしないと検出されなかった可能性がある変更をキャッチすることができます。
 
 > [!NOTE]
-> 完全な Change Tracking ソリューションを有効にすると、追加料金が発生することがあります。詳細については、「[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
+> エージェントは変更を 10 秒の間隔まで追跡できますが、データが Azure portal に表示されるにはまだ数分かかります。 ポータルに表示される期間中に行われた変更も引き続き追跡され、ログに記録されます。
 
-1. ワークスペースに移動し、[インストールされている監視ソリューションの一覧](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)から監視ソリューションを見つけて削除します。
-2. 「[監視ソリューションを削除する](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)」で説明されているように、ソリューション名をクリックして [概要] ページを開き、 [削除] をクリックします。
-3. Automation アカウントに移動し、 **[構成管理]** から **[Change Tracking]\(変更の追跡\)** を選択して、ソリューションを再度有効にします。
-4. ワークスペースの設定の詳細を確認し、 **[Enable]\(有効にする\)** をクリックします。
+## <a name="support-for-alerts-on-configuration-state"></a>構成状態のアラートのサポート
 
-## <a name="configure-file-content-change-tracking"></a>ファイル コンテンツの変更追跡の構成
-
-ファイル コンテンツの変更追跡を使用して、ファイル変更の前後のコンテンツを表示できます。 この機能は、Windows および Linux ファイルで使用できます。 ファイルに変更があるたびに、ファイルの内容はストレージ アカウントに格納されます。 ファイルは、変更の前後にインラインまたは左右に並べて表示されます。 詳細については、[追跡されたファイルのコンテンツの表示](change-tracking-file-contents.md)に関するページを参照してください。
-
-![ファイル内の変更を表示する](./media/change-tracking-file-contents/view-file-changes.png)
-
-## <a name="configure-windows-registry-keys-to-track"></a>追跡する Windows レジストリ キーを構成する
-
-次の手順を使用して、Windows コンピューターでのレジストリ キー追跡を構成します。
-
-1. Automation アカウントで、 **[構成管理]** の **[Change Tracking]\(変更の追跡\)** を選択します。 **[設定の編集]** (歯車アイコン) をクリックします。
-2. [Change Tracking]\(変更の追跡\) ページで、 **[Windows レジストリ]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
-3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、 **[保存]** をクリックします。
-
-|プロパティ  |説明  |
-|---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するレジストリ キーのフレンドリ名。        |
-|グループ     | レジストリ キーを論理的にグループ化するためのグループ名。        |
-|Windows レジストリ キー   | レジストリ キーを確認するためのパス。 次に例を示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
-
-## <a name="configure-file-tracking-on-windows"></a>Windows でファイル追跡を構成する
-
-次の手順を使用して、Windows コンピューターでのファイル追跡を構成します。
-
-1. Automation アカウントで、 **[構成管理]** の **[Change Tracking]\(変更の追跡\)** を選択します。 **[設定の編集]** (歯車アイコン) をクリックします。
-2. [Change Tracking]\(変更の追跡\) ページで、 **[Windows ファイル]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
-3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、 **[保存]** をクリックします。
-
-|プロパティ  |説明  |
-|---------|---------|
-|Enabled     | 設定が適用される場合は True、それ以外の場合は False。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス (例: "**c:\temp\\\*.txt**")<br>`%winDir%\System32\\\*.*` などの環境変数も使用できます。       |
-|再帰     | 追跡する項目を検索するときに、再帰を使用する場合は True、そうでない場合は False。        |
-|すべての設定のファイル コンテンツをアップロードする| 追跡された変更についてのファイル内容をアップロードする場合は True、それ以外の場合は False。|
-
-## <a name="configure-file-tracking-on-linux"></a>Linux でファイル追跡を構成する
-
-次の手順を使用して、Linux コンピューターでのファイル追跡を構成します。
-
-1. Automation アカウントで、 **[構成管理]** の **[Change Tracking]\(変更の追跡\)** を選択します。 **[設定の編集]** (歯車アイコン) をクリックします。
-2. [変更の追跡] ページで、 **[Linux ファイル]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
-3. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、 **[保存]** をクリックします。
-
-|プロパティ  |説明  |
-|---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス。 例: "/etc/*.conf"       |
-|パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
-|再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
-|sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
-|リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクに従います。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクに従います。また、返却された内容の変更を許可します。     |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
-
-> [!NOTE]
-> "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。
-
-## <a name="search-logs"></a>検索ログ
-
-変更レコードのログに対してさまざまな検索を実行できます。 [Change Tracking]\(変更の追跡\) ページを開いた状態で、 **[Log Analytics]** をクリックします。これにより、[ログ] ページが開きます。 次の表は、このソリューションによって収集された変更レコードを探すログ検索の例です。
+変更履歴とインベントリの主な機能は、ハイブリッド環境の構成状態への変更に関するアラートを生成することです。 アラートに応答して、多くの便利なアクションをトリガーできます。たとえば、Azure Functions、Automation Runbook、Webhook などのアクションがあります。 マシンの **C:\windows\system32\drivers\etc\hosts** ファイルへの変更に関するアラートは、変更履歴とインベントリのデータに関するアラートを適切に適用した一例です。 次の表で定義されているクエリのシナリオなど、警告のシナリオは他にも多数あります。 
 
 |クエリ  |説明  |
 |---------|---------|
-|ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
-|ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|
-
-## <a name="alert-on-changes"></a>変更に関するアラート
-
-Change Tracking の重要な機能は、構成の状態と、ハイブリッド環境の構成の状態に対する変更のアラートを生成する機能です。 次の例は、ファイル **C:\windows\system32\drivers\etc\hosts** がコンピューター上で変更されていることを示しています。 このファイルは、Windows がホスト名を IP アドレスに解決するために使用するため、重要です。 この操作は DNS よりも優先され、接続の問題や悪意のある Web サイトへのトラフィックのリダイレクトが発生する可能性があります。
-
-![hosts ファイルの変更を示すグラフ](./media/change-tracking/changes.png)
-
-この変更をさらに分析するには、 **[Log Analytics]** をクリックしてログ検索に移動します。 ログ検索で、クエリ `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` を使って Hosts ファイルに対するコンテンツの変更を検索します。 このクエリは、完全修飾パスに "hosts" という単語が含まれているファイルのうち、ファイル コンテンツの変更が含まれている変更を検索します。 パスの部分を完全修飾された形式 (`FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` など) に変更することで、特定のファイルを確認することもできます。
-
-クエリが目的の結果を返したら、ログ検索で **[新しいアラート ルール]** をクリックしてアラート作成ページを開きます。 このエクスペリエンスには Azure portal の **Azure Monitor** から移動することもできます。 
-
-もう一度クエリを確認し、警告ロジックを変更してください。 この場合は、環境内のすべてのマシンで 1 つでも変更が検出されたら、アラートがトリガーされるようにします。
-
-![hosts ファイルに対する変更を追跡するための変更クエリを示すイメージ](./media/change-tracking/change-query.png)
-
-条件ロジックを設定した後、トリガーされるアラートに対応するアクションを実行するアクション グループを割り当てます。 この場合は、電子メールの送信と ITSM チケットの作成を設定しています。  Azure 関数、Automation Runbook、Webhook、ロジック アプリのトリガーなど、役に立つその他の多くのアクションも実行できます。
-
-![変更に関するアラートに対するアクション グループの構成のイメージ](./media/change-tracking/action-groups.png)
-
-すべてのパラメーターとロジックを設定した後、アラートを環境に適用できます。
-
-### <a name="alert-suggestions"></a>アラートに関する推奨事項
-
-hosts ファイルへの変更に関するアラートは、Change Tracking や Inventory のデータに関するアラートの 1 つの適切な利用ですが、以下のセクションでクエリの例と共に定義されているケースを含み、アラートにはその他多くのシナリオがあります。
-
-|クエリ  |説明  |
-|---------|---------|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます|
-|ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|システムの重要なサービスに対する変更を追跡するのに役立ちます|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState != "Running"|システムの重要なサービスに対する変更を追跡するのに役立ちます|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|ロックダウンされたソフトウェア構成が必要な環境で役立ちます|
-|ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion != "8.0.11081.0"|古いソフトウェア バージョンや非準拠のソフトウェア バージョンがインストールされているマシンを確認するのに役立ちます。 変更ではなく、最後に報告された構成の状態を報告します。|
-|ConfigurationChange <br>&#124; where RegistryKey == @"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| 重要なウイルス対策キーに対する変更を追跡するのに役立ちます|
-|ConfigurationChange <br>&#124; where RegistryKey contains @"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| ファイアウォール設定に対する変更を追跡するのに役立ちます|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます。|
+|ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます。|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Microsoft services" and SvcName contains "w3svc" and SvcState == "Stopped"|システムに不可欠なサービスに対する変更を追跡するのに役立ちます。|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState!= "Running"|システムに不可欠なサービスに対する変更を追跡するのに役立ちます。|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|ロックダウンされたソフトウェア構成が必要な環境で役立ちます。|
+|ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion!= "8.0.11081.0"|古いソフトウェア バージョンや非準拠のソフトウェア バージョンがインストールされているマシンを確認するのに役立ちます。 このクエリでは、変更は報告されず、最後に報告された構成の状態が報告されます。|
+|ConfigurationChange <br>&#124; where RegistryKey == @"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| 重要なウイルス対策キーに対する変更を追跡するのに役立ちます。|
+|ConfigurationChange <br>&#124; where RegistryKey contains @"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| ファイアウォール設定に対する変更を追跡するのに役立ちます。|
 
 ## <a name="next-steps"></a>次のステップ
 
-ソリューションの使用方法の詳細については、Change Tracking のチュートリアルを参照してください。
-
-> [!div class="nextstepaction"]
-> [環境の変更に関する問題を解決する](automation-tutorial-troubleshoot-changes.md)
-
+* Runbook で変更履歴とインベントリを操作するには、「[変更履歴とインベントリを管理する](change-tracking-file-contents.md)」を参照してください。
+* 変更履歴とインベントリでのエラーを解決するには、[変更履歴とインベントリのトラブルシューティング](automation-tutorial-troubleshoot-changes.md)に関する記事を参照してください。
 * [Azure Monitor ログのログ検索](../log-analytics/log-analytics-log-searches.md)を使用して、詳細な変更追跡データを確認します。

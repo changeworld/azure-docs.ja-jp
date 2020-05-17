@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7e1e0d488844a94bd0be2b91398678e620295729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d36ba05d2138a06ebb2ef4e49aadb6032b62b92
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77913584"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627043"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最適化済み仮想マシンのサイズ
 
-GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。 この記事では、GPU、vCPU、データ ディスク、NIC の数と種類についての情報を提供します。 このグループ内の各サイズのストレージのスループットおよびネットワーク帯域幅も含まれています。
+GPU 最適化済み VM サイズは、単一の GPU、複数の GPU、またはフラクショナル GPU で使用できる特化された仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。 この記事では、GPU、vCPU、データ ディスク、NIC の数と種類についての情報を提供します。 このグループ内の各サイズのストレージのスループットおよびネットワーク帯域幅も含まれています。
 
 - [NC シリーズ](nc-series.md)、[NCv2 シリーズ](ncv2-series.md)、[NCv3 シリーズ](ncv3-series.md)の各サイズは、コンピューティング集中型やネットワーク集中型のアプリケーションおよびアルゴリズム向けに最適化されています。 例としては、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどが挙げられます。 NCv3 シリーズは、NVIDIA の Tesla V100 GPU を搭載したハイ パフォーマンス コンピューティング ワークロードにフォーカスしています。 NC シリーズは Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) プロセッサを使用し、NCv2 シリーズおよび NCv3 シリーズ VM は Intel Xeon E5-2690 v4 (Broadwell) プロセッサを使用しています。
 
@@ -35,11 +35,13 @@ GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備�
 
 ## <a name="supported-operating-systems-and-drivers"></a>サポートされているオペレーティング システムとドライバー
 
-Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA GPU ドライバーをインストールする必要があります。
+Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA または AMD GPU ドライバーをインストールする必要があります。
 
-[NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)は、N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure PowerShell や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるオペレーティング システムおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を参照してください。 VM 拡張機能の一般情報については、「[Azure 仮想マシンの拡張機能と機能](/azure/virtual-machines/extensions/overview)」をご覧ください。
+- NVIDIA GPU によってバックアップされる VM では、[NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)によって、適切な NVIDIA CUDA または GRID ドライバーがインストールされます。 この拡張機能は、Azure Portal または Azure PowerShell や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるオペレーティング システムおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を参照してください。 VM 拡張機能の一般情報については、「[Azure 仮想マシンの拡張機能と機能](/azure/virtual-machines/extensions/overview)」をご覧ください。
 
-NVIDIA GPU ドライバーを手動でインストールすることを選択した場合、サポートされるオペレーティング システム、ドライバー、インストール、および検証の手順について、[Windows 用 N シリーズ GPU ドライバーのセットアップ](/azure/virtual-machines/windows/n-series-driver-setup)または [Linux 用 N シリーズ GPU ドライバーのセットアップ](/azure/virtual-machines/linux/n-series-driver-setup)に関する記事を参照してください。
+   または、NVIDIA GPU ドライバーを手動でインストールできます。 サポートされているオペレーティング システム、ドライバー、インストール手順、および検証手順については、「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](/azure/virtual-machines/windows/n-series-driver-setup)」または「[Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](/azure/virtual-machines/linux/n-series-driver-setup)」を参照してください。
+
+- AMD GPU によってバックアップされる VM のサポートされているオペレーティング システム、ドライバー、インストール手順、および確認手順については、「[Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする](/azure/virtual-machines/windows/n-series-amd-driver-setup)」を参照してください。
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 

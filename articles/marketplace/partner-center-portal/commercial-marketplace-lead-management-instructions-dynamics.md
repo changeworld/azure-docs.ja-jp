@@ -1,201 +1,202 @@
 ---
-title: Dynamics 365 for Customer Engagement リード管理 | Azure Marketplace
-description: Dynamics 365 for Customer Engagement のリード管理を構成します。
+title: Dynamics 365 Customer Engagement のリード管理 - Microsoft 商用マーケットプレース
+description: Microsoft AppSource および Azure Marketplace からのリードを管理するように Dynamics 365 Customer Engagement を設定する方法について説明します。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252784"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791002"
 ---
-# <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement のリード管理の構成
+# <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 Customer Engagement のリード管理を構成する
 
-この記事では、Dynamics 365 for Customer Engagement (以前の Dynamics CRM Online) を設定する方法について説明します。マーケットプレース オファーからのリードを処理するには、[こちら](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)で変更の詳細をご覧ください。 
+この記事では、Dynamics 365 Customer Engagement (旧称は Dynamics CRM Online) を設定する方法について説明します。 コマーシャル マーケットプレース オファーのセールス リードを処理するには、「[Customer Engagement と SharePoint Online でのサーバーベース認証の構成](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)」の変更の詳細を参照してください。
 
->[!Note]
->これらの手順は、Microsoft ホステッド クラウドの Dynamics 365 for Customer Engagement 環境に固有です。 Dynamics オンプレミス環境への直接接続は現在サポートされていません。リードを受け取るように [https エンドポイント](./commercial-marketplace-lead-management-instructions-https.md)や [Azure テーブル](./commercial-marketplace-lead-management-instructions-azure-table.md)を構成するなど、リードを受け取るためのオプションが他にもあります。
+>[!NOTE]
+>これらの手順は、Dynamics 365 Customer Engagement 向け Microsoft ホステッド クラウド環境に固有です。 Dynamics オンプレミス環境への直接接続は、現在サポートされていません。 [HTTPS エンドポイント](./commercial-marketplace-lead-management-instructions-https.md)や [Azure テーブル](./commercial-marketplace-lead-management-instructions-azure-table.md)の構成など、他にもリードを受信するためのオプションがあります。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を実行するには、次のユーザーのアクセス許可が必要です。
+この記事の手順を行うには、次のユーザーのアクセス許可が必要です。
 
-* ソリューションをインストールしてこれらの手順に従うには、Dynamics 365 for Customer Engagement インスタンスの管理者である必要があります。
-* マーケットプレース オファーからリードを送信するために使用するリード サービス用の新しいサービス アカウントを作成するには、テナント管理者である必要があります。
-* Office 365 管理ポータルにアクセスできる必要があります。
-* Azure portal にアクセスできる必要があります。
+* ソリューションをインストールできるようにするための Dynamics 365 Customer Engagement インスタンスに対する管理者権限。
+* 商用マーケットプレースのオファーからリードを送信するために使用されるリード サービス用の新しいサービス アカウントを作成するためのテナント管理者権限。
+* Office 365 管理ポータルへのアクセス。
+* Azure portal へのアクセス。
 
 ## <a name="install-the-solution"></a>ソリューションをインストールする
 
-1.  [Microsoft Marketplace Lead Writer ソリューション](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)をダウンロードし、コンピューターにローカルに保存します。
+1. [Microsoft Marketplace Lead Writer ソリューション](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)をダウンロードし、コンピューターにローカルに保存します。
 
-2.  Dynamics インスタンスの URL (`https://tenant.crm.dynamics.com` など) に移動して、Dynamics 365 for Customer Engagement を開きます。
+1. Dynamics インスタンスの URL (`https://tenant.crm.dynamics.com` など) に移動して、Dynamics 365 Customer Engagement を開きます。
 
-3.  上部のナビゲーション バーで歯車アイコンと **[詳細設定]** を選択して、[設定] にアクセスします。
+1. 上部のバーにある歯車アイコンを選択し、 **[詳細設定]** を選択します。
  
-    ![Dynamics - [詳細設定]](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
+    ![Dynamics 365 の [詳細設定] メニュー項目](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
 
-4.  [設定] ページが表示されたら、上部のナビゲーション バーから [設定] メニューにアクセスし、 **[ソリューション]** を選択します。
+1. **[設定]** ページで、上部のバーにある **[設定]** メニューを開き、 **[ソリューション]** を選択します。
 
-    >[!Note]
-    >次の画面キャプチャに示されているオプションが見つからない場合は、先に進むために必要なアクセス許可を持っていません。 Dynamics 365 for Customer Engagement インスタンス上で管理者に連絡してください。
+    >[!NOTE]
+    >次の画面に示されているオプションが表示されない場合は、先に進むために必要なアクセス許可を持っていません。 Dynamics 365 Customer Engagement インスタンスの管理者にお問い合わせください。
 
-    ![Dynamics 365 - [ソリューション]](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
+    ![Dynamics 365 の [ソリューション] オプション](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
 
-5. [ソリューション] ページで、 **[インポート]** を選択し、手順 1. でダウンロードした "*Microsoft Marketplace Lead Writer*" ソリューションを保存した場所に移動します。
+1. **[ソリューション]** ページで、 **[インポート]** を選択し、手順 1 でダウンロードした **Microsoft Marketplace Lead Writer** ソリューションを保存した場所に移動します。
 
-    ![Dynamics 365 for Customer Engagement - [インポート]](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
+    ![[インポート] ボタン](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
 
-6. ソリューションのインポート ウィザードに従って、ソリューションのインポートを完了します。
+1. ソリューションのインポート ウィザードに従って、ソリューションのインポートを完了します。
 
 ## <a name="configure-user-permissions"></a>ユーザーのアクセス許可を構成する
 
-リードを Dynamics 365 for Customer Engagement インスタンスに書き込むには、サービス アカウントをマイクロソフトと共有し、アカウントのアクセス許可を構成する必要があります。
+リードを Dynamics 365 Customer Engagement インスタンスに書き込むには、サービス アカウントを Microsoft と共有し、アカウントのアクセス許可を構成する必要があります。
 
-次の手順を使用して、サービス アカウントを作成し、アクセス許可を割り当てます。 **Azure Active Directory** または **Office 365** を使用できます。
+次の手順を使用して、サービス アカウントを作成し、アクセス許可を割り当てます。 Azure Active Directory または Office 365 を使用できます。
 
->[!Note]
->選択した認証オプションに応じて、選択した内容に基づいて対応する指示に進むことができます。 「[Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory)」または「[Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365)」をご覧ください。
+>[!NOTE]
+>選択した認証オプションに応じて、対応する手順に進みます。 「[Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory)」または「[Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365)」をご覧ください。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-ユーザー名/パスワードの更新なしでリードの取得を続行できるというメリットが追加されるため、このオプションをお勧めします。 Azure Active Directory オプションを使用するには、Active Directory アプリケーションのアプリ ID、アプリケーション キー、およびディレクトリ ID を指定します。
+リードの獲得を継続するためにユーザー名またはパスワードを更新する必要がないため、このオプションをお勧めします。 Azure Active Directory オプションを使用するには、Active Directory アプリケーションのアプリ ID、アプリケーション キー、およびディレクトリ ID を指定します。
 
-次の手順を使用して、Dynamics 365 for Customer Engagement 向けの Azure Active Directory を構成します。
+Dynamics 365 Customer Engagement 向けに Azure Active Directory を構成するには、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインし、左側のナビゲーションから [Azure Active Directory サービス] を選択します。
+1. [Azure portal](https://portal.azure.com/) にサインインします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 
-2. Azure Active Directory の左側のナビゲーションで **[プロパティ]** を選択し、そのページ上の **[ディレクトリ ID]** の値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*ディレクトリ ID*" 値です。
+1. **[プロパティ]** を選択し、 **[ディレクトリのプロパティ]** ページの **[ディレクトリ ID]** の値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要があります。
 
-    ![Azure Active Directory - [プロパティ]](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
+    ![Azure Active Directory の [プロパティ] メニュー項目](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
 
-3. Azure Active Directory の左側のナビゲーションで、 **[アプリの登録]** を選択し、そのページで **[新規登録]** を選択します。
-4. アプリケーションの名前を入力します。 わかりやすいアプリケーション名を指定します。
-5. [サポートされているアカウントの種類] で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
-6. [リダイレクト URI] で、 **[Web]** を選択し、URI (`https://contosoapp1/auth` など) を指定します。 
-7. **[登録]** を選択します。
+1. Azure Active Directory の左側のペインで、 **[アプリの登録]** を選択し、そのページで **[新規登録]** を選択します。
+1. アプリケーション名としてわかりやすい名前を入力します。
+1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
+1. **[リダイレクト URI (省略可能)]** で、 **[Web]** を選択し、URL (例: `https://contosoapp1/auth`) を入力します。 
+1. **[登録]** を選択します。
 
-    ![アプリケーションを登録する](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
+    ![[アプリケーションの登録] ページ](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
-8. アプリケーションが登録されたので、アプリケーションの [概要] ページにアクセスし、そのページにある **[アプリケーション (クライアント) ID]** の値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータルと Dynamics 内で提供する必要がある "*アプリケーション (クライアント) ID*" 値です。
+1. アプリケーションが登録されたので、アプリケーションの [概要] ページにアクセスします。 そのページの **[アプリケーション (クライアント) ID]** の値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータルと Dynamics 365 内で提供する必要があります。
 
-    ![アプリケーション (クライアント) ID](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
+    ![[アプリケーション (クライアント) ID] ボックス](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
 
-9. アプリの左側のナビゲーションで **[証明書とシークレット]** を選択し、そのページで **[新しいクライアント シークレット]** を選択します。 クライアント シークレットのわかりやすい説明を入力し、[有効期限] の下で **[なし]** オプションを選択します。 **[追加]** を選択して、クライアント シークレットを作成します。
+1. アプリの左側のペインで **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** ボタンを選択します。 クライアント シークレットのわかりやすい説明を入力し、 **[有効期限]** の下で **[なし]** オプションを選択します。 **[追加]** を選択して、クライアント シークレットを作成します。
 
-    ![アプリケーション - 証明書とシークレット](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
+    ![[証明書とシークレット] メニュー項目](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
 
-10. クライアント シークレットが正常に作成されたらすぐに、**クライアント シークレットの値をコピー**します。 ページから移動した後は値を取得できなくなります。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*クライアント シークレット*" 値です。 
-11. アプリの左側のナビゲーションで **[API のアクセス許可]** を選択し、 **[アクセス許可の追加]** を選択します。
-12. [Microsoft API] を選択してから、API として **[Dynamics CRM]** を選択します。
-13. " *[アプリケーションに必要なアクセス許可の種類]* " で、 **[委任されたアクセス許可]** が選択されていることを確認します。 [**user_impersonation** *Access Common Data Service as organization users*]\(user_impersonation 組織ユーザーとして Common Data Service にアクセス\) のアクセス許可を確認します。 **[アクセス許可の追加]** を選択します.
+1. クライアント シークレットが正常に作成されたらすぐに、 **[クライアント シークレット]** の値をコピーします。 ページから移動した後は値を取得できなくなります。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要があります。 
+1. アプリの左側のペインで **[API のアクセス許可]** を選択し、 **[+ アクセス許可の追加]** を選択します。
+1. **[Microsoft API]** を選択し、API として **[Dynamics CRM]** を選択します。
+1. **[アプリケーションに必要なアクセス許可の種類]** で、 **[委任されたアクセス許可]** が選択されていることを確認します。 
+1. **[アクセス許可]** で、 **[Access Common Data Service as organization users]\(組織ユーザーとして Common Data Service にアクセスする\)** の **[user_impersonation]** チェックボックスをオンにします。 **[アクセス許可の追加]** を選択します。
 
-    ![Add permissions](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
+    ![[アクセス許可の追加] ボタン](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Azure portal 上で手順 1-13 を完了したら、URL (`https://tenant.crm.dynamics.com` など) に移動して、Dynamics 365 for Customer Engagement インスタンスに移動します。
-15. 上部のナビゲーション バーで歯車アイコンと **[詳細設定]** を選択して、[設定] にアクセスします。
-16. [設定] ページが表示されたら、上部のナビゲーション バーから [設定] メニューにアクセスし、 **[セキュリティ]** を選択します。
-17. [セキュリティ] ページで、 **[ユーザー]** を選択します。  [ユーザー] ページで、[有効になっているユーザー] ドロップダウンを選択し、 **[アプリケーション ユーザー]** に切り替えます。
-18. **[新規]** を選択して新しいユーザーを作成します。 
+1. Azure portal で手順 1 から 14 までを完了したら、URL (たとえば、`https://tenant.crm.dynamics.com`) にアクセスして、Dynamics 365 Customer Engagement インスタンに移動します。
+1. 上部のバーにある歯車アイコンを選択し、 **[詳細設定]** を選択します。
+1. **[設定]** ページで、上部のバーにある **[設定]** メニューを開き、 **[セキュリティ]** を選択します。
+1. **[セキュリティ]** ページで、 **[ユーザー]** を選択します。 **[ユーザー]** ページで、 **[有効なユーザー]** ドロップダウンを選択し、 **[アプリケーション ユーザー]** を選択します。
+1. **[新規]** を選択して新しいユーザーを作成します。 
 
     ![新しいユーザーを作成する](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. **[新しいユーザー]** で、[ユーザー:アプリケーション ユーザー] が選択されていることを確認します。 この接続で使用するユーザーのユーザー名、フル ネーム、メール アドレスを指定します。 また、手順 8. で Azure portal 内で作成したアプリの**アプリケーション ID** を貼り付けます。 **[保存して閉じる]** を選択して、ユーザーの追加を完了します。
+1. **[新規ユーザー]** ペインで、 **[ユーザー: アプリケーション ユーザー]** が選択されていることを確認します。 この接続で使用するユーザーのユーザー名、フル ネーム、メール アドレスを指定します。 また、手順 8. で Azure portal 内で作成したアプリの**アプリケーション ID** を貼り付けます。 **[保存して閉じる]** を選択して、ユーザーの追加を完了します。
 
-    ![新しいユーザー](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
+    ![[新規ユーザー] ペイン](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
-20. この記事の「セキュリティの設定」に移動して、このユーザー用の接続の構成を完了します。
+1. この記事の「セキュリティの設定」に移動して、このユーザー用の接続の構成を完了します。
 
 ### <a name="office-365"></a>Office 365
 
-Azure Active Directory を使用したくない場合は、*Microsoft 365 管理センター*で新しいユーザーを登録できます。 潜在顧客を取得し続けるには、90 日ごとにユーザー名/パスワードを更新する必要があります。
+Azure Active Directory を使用しない場合は、Microsoft 365 管理センターで新しいユーザーを登録できます。 リードを取得し続けるには、90 日ごとにユーザー名とパスワードを更新する必要があります。
 
-次の手順を使用して、Dynamics 365 for Customer Engagement 向けの Office 365 を構成します。
+Dynamics 365 Customer Engagement 向けに Office 365 を構成するには、次の手順を行います。
 
 1. [Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。
 
-2. **[ユーザーの追加]** を選択します。
+1. **[ユーザーの追加]** を選択します。
 
-    ![Microsoft 365 管理センター - ユーザーの追加](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
+    ![Microsoft 365 管理センターの [ユーザーの追加] オプション](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
-4. 潜在顧客ライター サービス用の新しいユーザーを作成します。 次の設定を構成します。
+1. 潜在顧客ライター サービス用の新しいユーザーを作成します。 次の設定を構成します。
 
-    * ユーザー名を指定します
-    * パスワードを指定し、[Make this user change their password when they first sign in]\(このユーザーが最初にサインインしたときに自分のパスワードを変更するようにする\) オプションをオフにします。
-    * ユーザーのロールとして [ユーザー (管理者のアクセスなし)] を選択します。
-    * 次の画面キャプチャに示されているように、製品ライセンスとして "Dynamics 365 Customer Engagement plan" を選択します。 選択したライセンスに対して課金されます。 
+    * ユーザー名を入力します。
+    * パスワードを入力し、 **[ユーザーが初回サインイン時にパスワードを変更する]** オプションをオフにします。
+    * ユーザーのロールとして **[ユーザー (管理者のアクセスなし)]** を選択します。
+    * 次の画面に示すように、製品ライセンスとして **[Dynamics 365 Customer Engagement プラン]** を選択します。 選択したライセンスに対して課金されます。 
 
-これらの値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*ユーザー名とパスワード*" です。
+これらの値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある **[ユーザー名]** と **[パスワード]** の値です。
 
-![[Microsoft 365 管理センター] - [新しいユーザー]](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
+![Microsoft 365 管理センターの[新しいユーザー] ペイン](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
 
 ## <a name="security-settings"></a>セキュリティの設定
 
-最後の手順は、潜在顧客を書き込むために作成したユーザーを有効にすることです。
+最後の手順は、リードを書き込むために作成したユーザーを有効にすることです。
 
-1. Dynamics インスタンスの URL (`https://tenant.crm.dynamics.com` など) に移動して、Dynamics 365 for Customer Engagement を開きます。
-2. 上部のナビゲーション バーで歯車アイコンと **[詳細設定]** を選択して、[設定] にアクセスします。
-3. [設定] ページが表示されたら、上部のナビゲーション バーから [設定] メニューにアクセスし、 **[セキュリティ]** を選択します。
-4. [セキュリティ] ページで、 **[ユーザー]** を選択し、このドキュメントの「ユーザーのアクセス許可を構成する」セクションで作成したユーザーを選択してから、 **[ロールの管理]** を選択します。 
+1. Dynamics インスタンスの URL (`https://tenant.crm.dynamics.com` など) に移動して、Dynamics 365 Customer Engagement を開きます。
+1. 上部のバーにある歯車アイコンを選択し、 **[詳細設定]** を選択します。
+1. **[設定]** ページで、上部のバーにある **[設定]** メニューを開き、 **[セキュリティ]** を選択します。
+1. **[セキュリティ]** ページで、 **[ユーザー]** を選択し、このドキュメントの「ユーザーのアクセス許可を構成する」セクションで作成したユーザーを選択します。 次に、 **[ロールの管理]** を選択します。 
 
-    ![ロールの管理](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
+    ![[ロールの管理] タブ](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
 
-5. ロール名 "Microsoft Marketplace Lead Writer" を検索し、それを選択してユーザーにロールを割り当てます。
+1. ロール名 **Microsoft Marketplace Lead Writer** を検索し、それを選択してユーザーにロールを割り当てます。
 
-    ![ユーザー ロールの管理](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
+    ![[ユーザー ロールの管理] ペイン](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
-    >[!Note]
+    >[!NOTE]
     >このロールは、インポートしたソリューションによって作成され、潜在顧客を書き込み、互換性確保のためにソリューションのバージョンを追跡するためだけのアクセス許可を持っています。
 
-6. [セキュリティ] ページに戻り、 **[セキュリティ ロール]** を選択します。 ロール "Microsoft Marketplace Lead Writer" を検索し、それを選択します。
+1. **[セキュリティ]** ページに移動し、 **[セキュリティ ロール]** を選択します。 ロール **Microsoft Marketplace Lead Writer** を検索し、それを選択します。
 
-    ![セキュリティ ロール](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
+    ![[セキュリティ ロール] ペイン](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. セキュリティ ロールに入った後で、 **[コア レコード]** タブを選択します。"ユーザー エンティティの UI 設定" エンティティを検索し、対応する各円を 1 回クリックして、そのエンティティのユーザー (黄色い 1/4 の円) に対して作成、読み取り、書き込みのアクセス許可を有効にします。
+1. [セキュリティ ロール] で、 **[コア レコード]** タブを選択します。 **[ユーザー エンティティの UI 設定]** 項目を検索します。 対応する各円を 1 回クリックして、そのエンティティのユーザー (黄色い 1/4 の円) に対して作成、読み取り、書き込みのアクセス許可を有効にします。
 
-    ![Microsoft Marketplace Lead Writer - [コア レコード]](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
+    ![Microsoft Marketplace Lead Writer の [コア レコード] タブ](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. 次に、 **[カスタマイズ]** タブに移動します。"システム ジョブ" エンティティを検索し、対応する各円を 4 回クリックして、そのエンティティの組織 (緑の塗りつぶし) に対して読み取り、書き込み、AppnedTo のアクセス許可を有効にします。
+1. **[カスタマイズ]** タブで、 **[システム ジョブ]** 項目を検索します。 対応する各円を 4 回クリックして、そのエンティティの組織 (緑の塗りつぶし円) に対して読み取り、書き込み、AppendTo のアクセス許可を有効にします。
 
-    ![Microsoft Marketplace Lead Writer - [カスタマイズ]](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
+    ![Microsoft Marketplace Lead Writer の [カスタマイズ] タブ](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
-9. **保存して閉じます**。
+1. **[保存して閉じる]** を選択します。
 
-## <a name="configure-your-offer-to-send-leads-to-dynamics-365-for-customer-engagement"></a>Dynamics 365 For Customer Engagement にリードを送信するようにオファーを構成する
+## <a name="configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement"></a>Dynamics 365 Customer Engagement にリードを送信するようにオファーを構成する 
 
-発行ポータル内でオファーのリード管理情報を構成する準備ができたら、次の手順に従います。
+発行ポータルでオファーのリード管理情報を構成するには、次の手順を行います。
 
 1. オファーの **[オファーのセットアップ]** ページに移動します。
-2. [リード管理] セクションで **[接続]** を選択します。
+1. **[リード管理]** セクションで **[接続]** を選択します。
 
-    ![リード管理への接続](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    ![[リード管理] セクションの [接続] ボタン](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
 
-3. [接続の詳細] ポップアップ ウィンドウで、[リードのターゲット] として **[Dynamics 365 for Customer Engagement]** を選択します
+1. [接続の詳細] ポップアップ ウィンドウで、[リードのターゲット] として **[Dynamics 365 Customer Engagement]** を選択します。
 
-    ![[接続の詳細] - [リードのターゲット]](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
+    ![[リードのターゲット] ボックス](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-4. `https://contoso.crm4.dynamics.com` などの **[Dynamics 365 インスタンス URL]** を指定します。
+1. Dynamics 365 インスタンスの **URL**(例: `https://contoso.crm4.dynamics.com`) を入力します。
 
-5. **[認証]** の方法として、[Azure Active Directory] または [Office 365] を選択します。 
-6. [Azure Active Directory] を選択した場合は、 **[アプリケーション (クライアント) ID]** (例: `23456052-aaaa-bbbb-8662-1234df56788f`)、 **[ディレクトリ ID]** (例: `12345678-8af1-4asf-1234-12234d01db47`)、 **[クライアント シークレット]** (例: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`) を指定します。
+1. **[認証]** の方法として、[Azure Active Directory] または [Office 365] を選択します。 
+1. **[Azure Active Directory]** を選択した場合は、 **[アプリケーション (クライアント) ID]** (例: `23456052-aaaa-bbbb-8662-1234df56788f`)、 **[ディレクトリ ID]** (例: `12345678-8af1-4asf-1234-12234d01db47`)、 **[クライアント シークレット]** (例: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`) を入力します。
 
-    ![接続の詳細 - Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
+    ![Azure Active Directory による認証を選択](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-7. Office 365 を選択した場合は、 **[ユーザー名]** (例: `contoso@contoso.onmicrosoft.com`) と [パスワード] (例:`P@ssw0rd`) を指定します。
+1. **[Office 365]** を選択した場合は、 **[ユーザー名]** (例: `contoso@contoso.onmicrosoft.com`) と **[パスワード]** (例: `P@ssw0rd`) を入力します。
 
-    ![[接続の詳細] - [ユーザー名]](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+    ![Office 365 の [ユーザー名] ボックス](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
-8. **連絡先の電子メール** - 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切ることで、複数の電子メールを指定できます。
-9. **[OK]** を選択します。
+1. **[連絡先の電子メール]** で、新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーのメール アドレスを入力します。 セミコロンで区切ると、複数のメール アドレスを指定できます。
+1. **[OK]** を選択します。
 
-リードの宛先に正常に接続したことを確認するには、[検証] ボタンをクリックします。 成功した場合は、リードの宛先にテスト リードが表示されます。
+リードのターゲットに正常に接続されたことを確認するには、 **[検証]** ボタンを選択します。 成功した場合は、リードのターゲットにテスト リードが表示されます。
 
-![[リード管理] - [接続の詳細] のストレージ アカウント](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
+![[連絡先の電子メール] ボックス](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
->[!Note]
+>[!NOTE]
 >オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。

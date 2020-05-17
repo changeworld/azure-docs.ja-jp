@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845263"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612063"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 
@@ -33,7 +33,7 @@ ms.locfileid: "76845263"
 
 次のコード スニペットは、ストリーミング データに対する逆シリアル化です。 
 
-スキップ可能なエラーは、`IStreamingDiagnostics` の Initialize メソッドを通して渡される `UserDefinedOperator` を使用して出力する必要があります。 すべての例外はエラーとして扱われ、逆シリアライザーが再作成されます。 特定の数のエラーが発生すると、ジョブは失敗状態になります。
+スキップ可能なエラーは、`UserDefinedOperator` の Initialize メソッドを通して渡される `IStreamingDiagnostics` を使用して出力する必要があります。 すべての例外はエラーとして扱われ、逆シリアライザーが再作成されます。 特定の数のエラーが発生すると、ジョブは失敗状態になります。
 
 `StreamDeserializer<T>` により、ストリームは `T` 型のオブジェクトに逆シリアル化されます。 次の条件を満たす必要があります。
 
@@ -65,11 +65,11 @@ ms.locfileid: "76845263"
 
 `StreamingDiagnostics` は、シリアライザー、逆シリアライザー、ユーザー定義関数などのユーザー定義演算子に対する診断です。
 
-`WriteError` を使うと、診断ログにエラー メッセージを書き込み、診断にエラーを送信することができます。
+`WriteError` を使うと、リソース ログにエラー メッセージを書き込み、診断にエラーを送信することができます。
 
 `briefMessage` は、簡単なエラー メッセージです。 このメッセージは診断に表示され、製品チームによってデバッグのために使用されます。 機密情報を含めないでください。また、メッセージが 200 文字以上にならないようにします
 
-`detailedMessage` は、ストレージの診断ログにのみ追加される詳細なエラー メッセージです。 このメッセージは、2000 文字未満でなければなりません。
+`detailedMessage` は、ストレージのリソース ログにのみ追加される詳細なエラー メッセージです。 このメッセージは、2000 文字未満でなければなりません。
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-`protoc.exe`Google.Protobuf.Tools**NuGet から** を実行すると、定義を含む .cs ファイルが生成されます。 生成されたファイルは、ここには記載されていません。
+**Google.Protobuf.Tools** NuGet から `protoc.exe` を実行すると、定義を含む .cs ファイルが生成されます。 生成されたファイルは、ここには記載されていません。
 
 次のコード スニペットは、生成されたファイルがプロジェクトに含まれていることを想定した逆シリアライザーの実装です。 この実装は、生成されたファイルに対するシン ラッパーにすぎません。
 
@@ -247,6 +247,10 @@ Stream Analytics のすべての入力には、**シリアル化形式**があ�
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>他のユーザーが利用できるように、逆シリアライザーの実装をコミュニティと共有できますか?
 
 逆シリアライザーを実装した後は、コミュニティと共有することにより、他のユーザーに役立てることができます。 コードを [Azure Stream Analytics GitHub リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)に送信してください。
+
+### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics でカスタム デシリアライザーの使用について、他にどのような制限がありますか?
+
+入力が MapField 型を含むスキーマの Protobuf 形式の場合、カスタム デシリアライザーを実装することはできません。 Microsoft では、今後この型に対するサポートを提供できるように取り組んでいます。
 
 ## <a name="next-steps"></a>次の手順
 

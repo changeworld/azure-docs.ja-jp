@@ -1,14 +1,14 @@
 ---
-title: Azure Migrate Server Migration の FAQ
+title: Azure Migrate Server Migration についてよく寄せられる質問
 description: Azure Migrate Server Migration を使用したマシンの移行についてよく寄せられる質問の回答を示します。
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127802"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744338"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -18,6 +18,10 @@ ms.locfileid: "80127802"
 - [Azure Migrate アプライアンス](common-questions-appliance.md)に関する一般的な質問
 - [検出、評価、依存関係の視覚化](common-questions-discovery-assessment.md) に関する質問
 - [Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)で質問の回答を示します。
+
+## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Azure Migrate を使用した移行はどの地域でサポートされていますか?
+
+[パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>エージェントレス VMware レプリケーションどのようなしくみになっていますか?
 
@@ -61,7 +65,7 @@ VMware のエージェントレス レプリケーション方式では、VMware
 
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>レプリケーション時に Azure Migrate で使用されるトランスポート プロトコルは何ですか?
 
-Azure Migrate では、SSL 暗号化に Network Block Device (NBD) プロトコルが使用されます。
+Azure Migrate では、TLS 暗号化に Network Block Device (NBD) プロトコルが使用されます。
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>移行に必要な最低限の vCenter Server バージョンは何ですか?
 
@@ -83,6 +87,10 @@ NetQosPolicy で使用する AppNamePrefix は "GatewayWindowsService.exe" で�
  
 New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
 
+## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>既に Azure にレプリケートされている VM を移行できますか? 
+
+VM が他の方法で既に Azure にレプリケートされている場合は、それらのマシンを Azure Migrate Server 移行を使用して VM として移行することはできません。 回避策として、VM を物理サーバーとして扱い、[サポートされている物理サーバーの移行](migrate-support-matrix-physical-migration.md)に従ってそれらを移行できます。
+
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>マシンを物理サーバーとして Azure に移行するのはいつですか?
 
 マシンを物理サーバーとして扱うことによって移行することは、さまざまなシナリオで役立ちます。
@@ -92,6 +100,10 @@ New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "Gateway
 - Hyper-V または VMware VM を移行するには (なんらかの理由で、[Hyper-V](tutorial-migrate-hyper-v.md) の標準移行プロセスや [VMware ](server-migrate-overview.md) 移行を使用できない場合)。 たとえば、VMware vCenter を実行しておらず、ESXi ホストのみを使用している場合です。
 - プライベート クラウドで現在実行されている VM を Azure に移行するには
 - アマゾン ウェブ サービス (AWS) や Google Cloud Platform (GCP) などのパブリック クラウドで実行されている VM を移行する場合。
+
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>VCenter Server 内の VM を検出するために、2 つ (またはそれ以上) のアプライアンスをデプロイしました。 しかし、VM を移行しようとすると、いずれかのアプライアンスに対応する VM のみが表示されます。
+
+これは適切なユース ケースですが、現時点ではサポートされていません。 2 つ (またはそれ以上) のアプライアンスをデプロイして同じ一式の VM を検出すると、サービスの問題が発生し、2 つのアプライアンス間で VM の所有権が切り替えられます。 このため、VM が表示されたり消えたりします。 このような場合、問題を解決するには、1 つのアプライアンスを削除して、ハード更新を行う必要があります。
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Vmware VM を移行するには VMware vCenter が必要ですか?
 Vmware エージェントベースまたはエージェントレス移行を使用して [VMware Vm](server-migrate-overview.md) を移行するには、VM が配置されている ESXi ホストを vCenter Server で管理する必要があります。 VCenter Server がない場合は、物理サーバーとして移行することで VMware VM を移行できます。 [詳細については、こちらを参照してください](migrate-support-matrix-physical-migration.md)。

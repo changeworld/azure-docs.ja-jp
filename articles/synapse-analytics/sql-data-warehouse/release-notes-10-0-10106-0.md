@@ -5,19 +5,19 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 3/26/2020
+ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a60591fb33c8f14a65b406073cf3194fca882d12
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313606"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837381"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
 
@@ -25,12 +25,13 @@ ms.locfileid: "81313606"
 
 ## <a name="check-your-azure-synapse-version"></a>お使いの Azure Synapse バージョンの確認
 
-新機能がすべてのリージョンにロールアウトされるのに伴い、機能の可用性について、ご使用のインスタンスにデプロイされているバージョン、および最新のリリース ノートを確認してください。 バージョンを確認するには、SQL Server Management Studio (SSMS) を介してお使いの SQL プールに接続して `SELECT @@VERSION;` を実行し、現在のバージョンを返します。
+新機能がすべてのリージョンにロールアウトされるのに伴い、機能の可用性について、ご使用のインスタンスにデプロイされているバージョン、および最新のリリース ノートを確認してください。 バージョンを確認するには、SQL Server Management Studio (SSMS) を介してお使いの SQL プールに接続して `SELECT @@VERSION;` を実行し、現在のバージョンを返します。 このバージョンで、お使いの SQL プールに適用されているリリースを確認してください。 出力の日付によって、SQL プールに適用されるリリースの月が識別されます。 これは、サービスレベルの機能強化にのみ適用されます。 
 
-識別されたバージョンで、お使いの SQL プールに適用されているリリースを確認してください。 出力の日付によって、SQL プールに適用されるリリースの月が識別されます。
+ツールの機能強化については、リリース ノートに適切なバージョンがインストールされていることを確認してください。 
+
 
 > [!NOTE]
-> SELECT @@VERSION によって返される製品名は、Microsoft Azure SQL Data Warehouse から Azure Synapse Analytics に変更されます。 変更を行う前に、Microsoft から詳細な通知を送信します。 この変更は、使用しているアプリケーション コード内の SELECT @@VERSION の結果から製品名を解析する顧客に関連しています。 製品のブランド変更が原因でアプリケーション コードが変更されるのを回避するには、次のコマンドを使用して、データベースの製品名とバージョンを SERVERPROPERTY に照会してください。バージョン番号 XX.X.XXXXX.X (製品名なし) を返すには、次のコマンドを使用します。
+> SELECT @@VERSION によって返される製品名は、Microsoft Azure SQL Data Warehouse から Microsoft Azure Synapse Analytics に変更されます。 変更を行う前に、Microsoft から詳細な通知を送信します。 この変更は、使用しているアプリケーション コード内の SELECT @@VERSION の結果から製品名を解析する顧客に関連しています。 製品のブランド変更が原因でアプリケーション コードが変更されるのを回避するには、次のコマンドを使用して、データベースの製品名とバージョンを SERVERPROPERTY に照会してください。バージョン番号 XX.X.XXXXX.X (製品名なし) を返すには、次のコマンドを使用します。
 >
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
@@ -40,13 +41,24 @@ ms.locfileid: "81313606"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+
+
 ## <a name="april-2020"></a>2020 年 4 月
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 |**データベース互換性レベル (プレビュー)**| ユーザーはこのリリースで、Synapse SQL エンジンの特定のバージョンの Transact-SQL 言語とクエリ処理の動作を使用できるよう、データベースの互換性レベルを設定できるようになりました。 詳細については、「[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」と「[データベース スコープ構成の変更](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。|
-|**Sp_describe_undeclared_parameters**| ユーザーが Transact-SQL バッチの宣言されていないパラメーターのメタデータを表示できるようになります。 詳細については、「[sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。|
-|**[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) - SQL Server Data Tools (SSDT)** | このリリースには、SSDT に対する次の機能強化と修正が含まれています。 </br> </br> - 具体化されたビュー (MV) によって参照されるテーブルを変更すると、MV でサポートされていない ALTER VIEW ステートメントが生成される問題を解決しました。<br/><br/> - データベースまたはプロジェクトに行レベルのセキュリティ オブジェクトが存在する場合に、Schema Compare 操作が失敗しないことを確実にするための変更を実装しました。 行レベルのセキュリティ オブジェクトは現在、SSDT ではサポートされていません。  <br/><br/> - データベース内の多数のオブジェクトを一覧表示するときにタイムアウトが発生しないように、SQL Server オブジェクト エクスプローラーのタイムアウトのしきい値を増加しました。<br/><br/> - SQL Server オブジェクト エクスプローラーでデータベース オブジェクトの一覧を取得して、オブジェクト エクスプローラーの設定時の不安定な状態を低減し、パフォーマンスを向上させる方法を最適化しました。 |
+|**Sp_describe_undeclared_parameters**| ユーザーが Transact-SQL バッチの宣言されていないパラメーターのメタデータを表示できるようになります。 詳細については、「[sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。| <br/><br/><br/>
+
+| ツールの機能強化                                         | 詳細                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16.6 Preview 5](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) - SQL Server Data Tools (SSDT)** | このリリースには、SSDT に対する次の機能強化と修正が含まれています。 </br> </br> - データの検出と分類<br/> - COPY ステートメント <br/> - UNIQUE 制約付きのテーブル<br/> - 順序付けされたクラスター化列ストア インデックス付きのテーブル<br/> <br/>このリリースには、SSDT に対する以下の修正が行われています。 </br></br>  - ディストリビューション列のデータ型を変更すると、SSDT によって生成される更新スクリプトでは、テーブルを削除して再作成する代わりに、CTAS と RENAME 操作が実行されます。 </br> |
+
+## <a name="march-2020"></a>2020 年 3 月
+
+| ツールの機能強化                                         | 詳細                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16.6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | このリリースには、SSDT に対する次の機能強化と修正が含まれています。 </br> </br> - 具体化されたビュー (MV) によって参照されるテーブルを変更すると、MV でサポートされていない ALTER VIEW ステートメントが生成される問題を解決しました。<br/><br/> - データベースまたはプロジェクトに行レベルのセキュリティ オブジェクトが存在する場合に、Schema Compare 操作が失敗しないことを確実にするための変更を実装しました。 行レベルのセキュリティ オブジェクトは現在、SSDT ではサポートされていません。  <br/><br/> - データベース内の多数のオブジェクトを一覧表示するときにタイムアウトが発生しないように、SQL Server オブジェクト エクスプローラーのタイムアウトのしきい値を増加しました。<br/><br/> - SQL Server オブジェクト エクスプローラーでデータベース オブジェクトの一覧を取得して、オブジェクト エクスプローラーの設定時の不安定な状態を低減し、パフォーマンスを向上させる方法を最適化しました。 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -159,7 +171,7 @@ ms.locfileid: "81313606"
 |**高度なアドバイザー**|データ ウェアハウスのレコメンデーションとメトリックの追加により、Azure Synapse の Synapse SQL を簡単に高度にチューニングできるようになりました。 任意に活用できる Azure Advisor からの以下の高度なパフォーマンス レコメンデーションが追加されています。<br/><br/>1.アダプティブ キャッシュ – キャッシュ使用率の最適化のために拡大縮小するタイミングに関するアドバイスを得られます。<br/>2.テーブルの分散 – データ移動を減らしてワークロードのパフォーマンスを向上させるために、テーブルをレプリケートするタイミングを判別します。<br/>3.Tempdb – Tempdb 競合を減らすために、リソース クラスを拡大縮小したり構成したりするタイミングを把握します。<br/><br/>概要ブレードでのほぼリアルタイムのメトリックに関する拡張されたカスタマイズ可能な監視グラフなど、[Azure Monitor](https://azure.microsoft.com/blog/enhanced-capabilities-to-monitor-manage-and-integrate-sql-data-warehouse-in-the-azure-portal/) によるデータ ウェアハウス メトリックのより深い統合が提供されています。 使用状況の監視や、データ ウェアハウス レコメンデーションの検証や適用の際、Azure Monitor メトリックにアクセスするためにデータ ウェアハウスの概要ブレードを移動しなくてもよくなりました。 さらに、パフォーマンス レコメンデーションを補完する、新しいメトリック (Tempdb やアダプティブ キャッシュ使用率など) を使用できるようになりました。|
 |**統合されたアドバイザーによる高度なチューニング**|データ ウェアハウスの推奨事項とメトリックの追加、および Azure Advisor と Azure Monitor が統合されたポータル概要ブレードのデザイン変更により、Azure Synapse を簡単に高度にチューニングできるようになりました。|
 |**高速データベース復旧 (ADR)**|Azure Synapse の高速データベース復旧 (ADR) がパブリック プレビューになりました。 ADR は、現在の復旧プロセスを一から再設計することで、特に実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL Server エンジンです。 ADR の主な利点は、高速かつ一貫性のあるデータベースの復旧と、瞬時のトランザクション ロールバックです。|
-|**Azure Monitor 診断ログ**|Azure Synapse では、Azure Monitor の診断ログを直接統合し、分析ワークロードのより高度な分析情報を利用できるようになりました。 この新しい機能により、開発者は長期間にわたってワークロード ビヘイビアーを分析し、クエリの最適化や容量の管理に関して十分に情報を得たうえで決定を下すことができます。 データ ウェアハウスのワークロードに対する追加の分析情報を提供する [Azure Monitor 診断ログ](../../azure-monitor/platform/data-platform.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#logs)により、外部ログ プロセスを導入しました。 ボタンを 1 回クリックすることで、[Log Analytics](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) を使用して履歴クエリのパフォーマンスをトラブルシューティングするための診断ログを構成できます。 Azure Monitor 診断ログでは、監査目的でログをストレージ アカウントに保存することによって、カスタマイズ可能な保有期間をサポートしています。また、ほぼリアルタイムでのテレメトリの分析情報を入手するためにログをイベント ハブにストリームしたり、ログ クエリで Log Analytics を使用することによってログを分析したりすることが可能です。 診断ログは、お使いのデータ ウェアハウスのテレメトリ ビューで構成されています。これは、よく使用される Azure Synapse の SQL Analytics でのパフォーマンス トラブルシューティングの DMV に相当します。 この最初のリリースでは、以下のシステム動的管理ビューが有効になっています。<br/><br/>&bull; &nbsp; [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
+|**Azure Monitor リソース ログ**|Azure Synapse では、Azure Monitor リソース ログを直接統合し、分析ワークロードのより高度な分析情報を利用できるようになりました。 この新しい機能により、開発者は長期間にわたってワークロード ビヘイビアーを分析し、クエリの最適化や容量の管理に関して十分に情報を得たうえで決定を下すことができます。 データ ウェアハウスのワークロードに対する追加の分析情報を提供する [Azure Monitor リソース ログ](../../azure-monitor/platform/data-platform.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#logs)により、外部ログ プロセスを導入しました。 ボタンを 1 回クリックすることで、[Log Analytics](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) を使用して履歴クエリのパフォーマンスをトラブルシューティングするためのリソース ログを構成できます。 Azure Monitor リソース ログでは、監査目的でログをストレージ アカウントに保存することによって、カスタマイズ可能な保有期間をサポートしています。また、ほぼリアルタイムでのテレメトリの分析情報を入手するためにログをイベント ハブにストリームしたり、ログ クエリで Log Analytics を使用することによってログを分析したりすることが可能です。 リソース ログは、お使いのデータ ウェアハウスのテレメトリ ビューで構成されています。これは、よく使用される Azure Synapse の SQL Analytics でのパフォーマンス トラブルシューティングの DMV に相当します。 この最初のリリースでは、以下のシステム動的管理ビューが有効になっています。<br/><br/>&bull; &nbsp; [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**列ストアのメモリ管理**|圧縮された列ストア行グループの数が増えると、その行グループ内の列セグメント メタデータを管理するために必要なメモリも増えます。  その結果、一部の列ストア動的管理ビュー (DMV) に対して実行されるクエリのパフォーマンスとクエリが低下する可能性があります。  このリリースでは、このようなケースの内部メタデータのサイズを最適化する改善が加えられ、こうしたクエリのエクスペリエンスとパフォーマンスが向上しました。|
 |**Azure Data Lake Storage Gen2 の統合 (GA)**|Synapse Analytics が、Azure Data Lake Storage Gen2 とネイティブに統合されるようになりました。 お客様は、外部テーブルを使用して ABFS から Synapse SQL プールにデータを読み込むことができるようになりました。 この機能を使用することにより、Data Lake Storage Gen2 内のデータ レイクと統合できます。|
 |**重要なバグ**|DW2000 以降のデータ ウェアハウスでの小さいリソース クラスにおける Parquet に対する CETAS のエラー - この修正により、Create External Table As 内での Parquet コード パスに対する null 参照が正しく識別されます。<br/><br/>一部の CTAS 操作で ID 列の値が失われることがある - 別のテーブルへの CTAS を行うと、ID 列の値が維持されない場合があります。 [ブログ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)で報告。<br/><br/>クエリがまだ実行している間にセッションが終了されたときに発生する場合がある内部エラー - この修正では、クエリがまだ実行している間にセッションが終了されると、InvalidOperationException がトリガーされます。<br/><br/>(2018 年 11 月に配置) 顧客が Polybase を使用して複数の小さなファイルを ADLS (Gen1) からの読み込もうとしたときに、パフォーマンスは十分に最適ではありませんでした。 - AAD セキュリティ トークンの検証中のシステムのパフォーマンスがボトルネックでした。 セキュリティ トークンのキャッシュを有効にすると、パフォーマンスの問題は軽減されました。 |

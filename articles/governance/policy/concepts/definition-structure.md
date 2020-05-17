@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: f396f46fa77f75452ac8ac3cd98bccd58fe0dfe4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461006"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613304"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -73,14 +73,14 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
-- `all`: リソース グループとすべてのリソースの種類を評価します
+- `all`: リソース グループ、サブスクリプション、およびすべてのリソースの種類を評価します
 - `indexed`: タグと場所をサポートするリソースの種類のみを評価します
 
 たとえば、リソース `Microsoft.Network/routeTables` では、タグと場所がサポートされ、両方のモードで評価されます。 ただし、リソース `Microsoft.Network/routeTables/routes` は、タグ付けできず、`Indexed` モードでは評価されません。
 
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
-タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/management/tag-support.md)」を参照してください。
+タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**と**サブスクリプション**です。 リソース グループまたはサブスクリプションに対して場所またはタグを適用するポリシーでは、**mode**を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型または `Microsoft.Resources/subscriptions` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/management/tag-support.md)」を参照してください。
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />リソース プロバイダーのモード (プレビュー)
 
@@ -412,7 +412,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="count"></a>Count
 
-条件式を満たすリソース ペイロード内の配列のメンバー数をカウントする条件は、**count** 式を使用して作成することができます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** では、ある条件式の各 [\[\*\] alias](#understanding-the--alias) 配列メンバーを評価して _true_ の結果を合計し、式の演算子と比較します。
+条件式を満たすリソース ペイロード内の配列のメンバー数をカウントする条件は、**count** 式を使用して作成することができます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** では、ある条件式の各 [\[\*\] alias](#understanding-the--alias) 配列メンバーを評価して _true_ の結果を合計し、式の演算子と比較します。 **count** 式は 1 つの **policyRule** 定義に最大 3 回まで追加できます。
 
 **count** 式の構造は次の通りです。
 
@@ -629,7 +629,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 
   [Visual Studio Code 用の Azure Policy 拡張機能](../how-to/extension-for-vscode.md)を使用してリソース プロパティのエイリアスの表示と検出を行う方法について説明します。
 
-  ![Visual Studio Code 用の Azure Policy 拡張機能](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 用の Azure Policy 拡張機能" border="false":::
 
 - Azure Resource Graph
 
