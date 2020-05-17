@@ -60,7 +60,7 @@ MFA を有効にするには、[Azure Active Directory (AD) テナントのア�
 
 - AD の Premium Edition を使用している場合は、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を使用して MFA を有効にします。
 
-- AD Free Edition のユーザーは、**AD のドキュメント**に記載されているように、Azure Active Directory 内で[セキュリティの既定値群](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)を有効にできますが、MFA を有効にするための Security Center 推奨事項は引き続き表示されます。
+- AD Free Edition のユーザーは、[AD のドキュメント](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)に記載されているように、Azure Active Directory 内で**セキュリティの既定値群**を有効にできますが、MFA を有効にするための Security Center 推奨事項は引き続き表示されます。
 
 
 ## <a name="next-steps"></a>次のステップ

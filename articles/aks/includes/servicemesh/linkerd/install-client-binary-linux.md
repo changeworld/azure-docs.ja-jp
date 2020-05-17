@@ -21,7 +21,7 @@ LINKERD_VERSION=stable-2.6.0
 curl -sLO "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-linux"
 ```
 
-`linkerd` クライアント バイナリはクライアント コンピューターで実行されます。このバイナリによって、Linkerd サービス メッシュの対話型操作が可能になります。 Linux または `linkerd`Windows Subsystem for Linux[ で bash ベースのシェルで Linkerd ][install-wsl] クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、`linkerd` の標準ユーザー プログラムの場所に `PATH` クライアント バイナリがコピーされます。
+`linkerd` クライアント バイナリはクライアント コンピューターで実行されます。このバイナリによって、Linkerd サービス メッシュの対話型操作が可能になります。 Linux または [Windows Subsystem for Linux][install-wsl] で bash ベースのシェルで Linkerd `linkerd` クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、`linkerd` の標準ユーザー プログラムの場所に `PATH` クライアント バイナリがコピーされます。
 
 ```bash
 sudo cp ./linkerd2-cli-$LINKERD_VERSION-linux /usr/local/bin/linkerd

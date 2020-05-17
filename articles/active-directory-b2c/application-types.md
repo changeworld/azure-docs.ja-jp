@@ -22,7 +22,7 @@ ms.locfileid: "78190145"
 
 Azure Active Directory B2C (Azure AD B2C) では、さまざまな最新アプリケーション アーキテクチャの認証がサポートされています。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](protocols-overview.md) または [OpenID Connect](protocols-overview.md) に基づいています。 この記事では、選択する言語またはプラットフォームには関係なく、構築できるアプリケーションの種類について説明します。 また、アプリケーションの構築を始める前にシナリオの概要を理解することもできます。
 
-Azure AD B2C を使用しているすべてのアプリケーションは、[Azure portal](tutorial-create-tenant.md) を使用して [Azure AD B2C テナント](https://portal.azure.com/)に登録する必要があります。 アプリケーション登録プロセスでは、次のような値が収集されて割り当てられます。
+Azure AD B2C を使用しているすべてのアプリケーションは、[Azure portal](https://portal.azure.com/) を使用して [Azure AD B2C テナント](tutorial-create-tenant.md)に登録する必要があります。 アプリケーション登録プロセスでは、次のような値が収集されて割り当てられます。
 
 * アプリケーションを一意に識別する **アプリケーション ID**。
 * 応答をアプリケーションにリダイレクトして戻すために使用できる**応答 URL**。
@@ -109,7 +109,7 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 モバイル アプリケーションやデスクトップ アプリケーションなどのデバイスにインストールされているアプリケーションは、多くの場合、ユーザーの代わりにバックエンド サービスや Web API にアクセスする必要があります。 カスタマイズされた ID 管理エクスペリエンスをネイティブ アプリケーションに追加し、Azure AD B2C と [OAuth 2.0 の承認コード フロー](authorization-code-flow.md)を使用して、バックエンド サービスを安全に呼び出すことができます。
 
-このフローでは、アプリケーションが[ポリシー](user-flow-overview.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から `authorization_code` を受け取ります。 `authorization_code` は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリケーションのアクセス許可を表します。 これにより、アプリケーションはバックグラウンドで `authorization_code` を `access_token` および `refresh_token` と交換できます。  アプリケーションは `access_token` を使用し、HTTP 要求でバックエンド Web API への認証を行うことができます。 また、古い `refresh_token` の有効期限が切れたときは、`access_token` を使用して新しいものを取得できます。
+このフローでは、アプリケーションが[ポリシー](user-flow-overview.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から `authorization_code` を受け取ります。 `authorization_code` は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリケーションのアクセス許可を表します。 これにより、アプリケーションはバックグラウンドで `authorization_code` を `access_token` および `refresh_token` と交換できます。  アプリケーションは `access_token` を使用し、HTTP 要求でバックエンド Web API への認証を行うことができます。 また、古い `access_token` の有効期限が切れたときは、`refresh_token` を使用して新しいものを取得できます。
 
 ## <a name="current-limitations"></a>現在の制限
 

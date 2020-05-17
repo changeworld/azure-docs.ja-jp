@@ -147,7 +147,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-仮想 NIC は、[az network nic create](/cli/azure/network/nic) を使用して作成します。 以下の例では、3 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
+仮想 NIC は、[az network nic create](/cli/azure/network/nic) を使用して作成します。 以下の例では、3 つの仮想 NIC を作成します (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
 
 ```azurecli
 for i in `seq 1 3`; do

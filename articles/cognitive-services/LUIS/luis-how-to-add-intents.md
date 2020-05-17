@@ -20,16 +20,16 @@ ms.locfileid: "73904314"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
-[Intents]\(意図\)(luis-concept-intent.md)を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。 
+[意図](luis-concept-intent.md)を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。 
 
-インテントを管理するには、上部のナビゲーション バーの **[Build]\(ビルド\)** セクションに移動し、左側のパネルの **[Intents]\(意図\)** を選択します。 
+インテントを管理するには、上部のナビゲーション バーの **[ビルド]** セクションに移動し、左側のパネルの **[Intents]\(意図\)** を選択します。 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-intent"></a>意図を追加する
 
-1. [LUIS プレビュー ポータル](https://preview.luis.ai)で **[Build]\(ビルド\)** を選択して意図を表示します。 
-1. **[Intents]\(意図\)** ページで、 **[+ Create]\(+ 作成\)** を選択します。
+1. [LUIS プレビュー ポータル](https://preview.luis.ai)で **[ビルド]** を選択して意図を表示します。 
+1. **[意図]** ページで、 **[+ 作成]** を選択します。
 1. **[Create new intent]\(意図の新規作成\)** ダイアログ ボックスで、意図の名前 (例: `ModifyOrder`) を入力し、 **[完了]** を選択します。
 
     > [!div class="mx-imgBorder"]
@@ -54,7 +54,7 @@ ms.locfileid: "73904314"
 
 意図に含まれている発話の例では、発話の例が現在含まれている意図とトレーニング中に決定された意図の間に意図予測のエラーが存在することがあります。 
 
-発話予測のエラーを見つけて修正するには、 **[Filter]\(フィルター\)** オプションの [Incorrect] \(正しくない\) および [Unclear] \(不明\) を **[Detailed view]\(詳細ビュー\)** の **[View]\(表示\)** オプションと組み合わせて使用します。 
+発話予測のエラーを見つけて修正するには、 **[フィルター]** オプションの [Incorrect] (正しくない) および [Unclear] (不明) を **[詳細ビュー]** の **[表示]** オプションと組み合わせて使用します。 
 
 ![発話予測のエラーを見つけて修正するには、[フィルター] オプションを使用します。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 

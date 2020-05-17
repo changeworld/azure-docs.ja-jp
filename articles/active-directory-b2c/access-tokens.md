@@ -33,7 +33,7 @@ ms.locfileid: "79229715"
 
 ## <a name="scopes"></a>スコープ
 
-スコープを使用すると、保護されたリソースへのアクセス許可を管理できます。 アクセス トークンが要求されると、クライアント アプリケーションでは、必要なアクセス許可を要求の **scope** パラメーターに指定する必要があります。 たとえば、**の**[アプリケーション ID/URI]`read` を備える API に**スコープ値**`https://contoso.onmicrosoft.com/api` を指定する場合、スコープは `https://contoso.onmicrosoft.com/api/read` になります。
+スコープを使用すると、保護されたリソースへのアクセス許可を管理できます。 アクセス トークンが要求されると、クライアント アプリケーションでは、必要なアクセス許可を要求の **scope** パラメーターに指定する必要があります。 たとえば、`https://contoso.onmicrosoft.com/api` の **[アプリケーション ID/URI]** を備える API に**スコープ値**`read` を指定する場合、スコープは `https://contoso.onmicrosoft.com/api/read` になります。
 
 スコープは、スコープベースのアクセス制御を実装するために Web API によって使用されます。 たとえば Web API のユーザーが、読み取りと書き込みの両方のアクセス権限を持つ場合もあれば、読み取りアクセス権限しか持たない場合もあります。 同じ要求で複数のアクセス許可を取得するには、スペースで区切って複数のエントリを要求の 1 つの **scope** パラメーターに追加します。
 
@@ -54,7 +54,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - **openid** - ID トークンを要求します。
 - **offline_access** - [認証コード フロー](authorization-code-flow.md)を使用して更新トークンを要求します。
 
-**要求の**response_type`/authorize` パラメーターに `token` が含まれる場合、**scope** パラメーターには、付与されるリソース スコープを `openid` と `offline_access` 以外に少なくとも 1 つ含める必要があります。 そうしないと、`/authorize` 要求は失敗します。
+`/authorize` 要求の **response_type** パラメーターに `token` が含まれる場合、**scope** パラメーターには、付与されるリソース スコープを `openid` と `offline_access` 以外に少なくとも 1 つ含める必要があります。 そうしないと、`/authorize` 要求は失敗します。
 
 ## <a name="request-a-token"></a>トークンの要求
 

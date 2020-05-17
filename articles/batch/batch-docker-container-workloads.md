@@ -87,7 +87,7 @@ Docker を実行している VM から、Batch と互換性のある Linux デ�
 
 ## <a name="container-configuration-for-batch-pool"></a>Batch プール用のコンテナー構成
 
-Batch プールでコンテナー ワークロードを実行するには、プールの [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) オブジェクトに [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 設定を指定する必要があります。 (この記事では、Batch .NET API 参照へのリンクを提供しています。 対応する設定は、[Batch Python](/python/api/overview/azure/batch) API にあります。)
+Batch プールでコンテナー ワークロードを実行するには、プールの [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトに [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 設定を指定する必要があります。 (この記事では、Batch .NET API 参照へのリンクを提供しています。 対応する設定は、[Batch Python](/python/api/overview/azure/batch) API にあります。)
 
 次の例のように、プリフェッチされたコンテナー イメージを使用して、または使用しないでコンテナー対応プールを作成できます。 プル (プリフェッチ) プロセスにより、インターネット上の別のコンテナー レジストリまたは Docker Hub のいずれかから、コンテナー イメージを事前に読み込むことができます。 最も高いパフォーマンスを得るには、Batch アカウントと同じリージョンにある [Azure コンテナー レジストリ](../container-registry/container-registry-intro.md)を使用します。
 
@@ -245,7 +245,7 @@ Batch タスクのコンテナー イメージが [ENTRYPOINT](https://docs.dock
 
 ### <a name="container-task-working-directory"></a>コンテナー タスクの作業ディレクトリ
 
-Batch コンテナー タスクは、コンテナー内の作業ディレクトリで実行されます。これは、通常の (コンテナーでない) タスク用に Batch が設定するディレクトリによく似ています。 この作業ディレクトリは、イメージ内に構成されている場合、または既定のコンテナーの作業ディレクトリ (Windows コンテナー上の [、または Linux コンテナー上の ](https://docs.docker.com/engine/reference/builder/#workdir)) 内に構成されている場合、`C:\`WORKDIR`/` とは異なることに注意してください。
+Batch コンテナー タスクは、コンテナー内の作業ディレクトリで実行されます。これは、通常の (コンテナーでない) タスク用に Batch が設定するディレクトリによく似ています。 この作業ディレクトリは、イメージ内に構成されている場合、または既定のコンテナーの作業ディレクトリ (Windows コンテナー上の `C:\`、または Linux コンテナー上の `/`) 内に構成されている場合、[WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) とは異なることに注意してください。
 
 Batch コンテナー タスクの場合:
 
@@ -302,7 +302,7 @@ CloudTask containerTask = new CloudTask (
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Shipyard レシピ](https://github.com/Azure/batch-shipyard)を使用して Azure Batch でコンテナー ワークロードを簡単にデプロイする方法については、[Batch Shipyard](https://github.com/Azure/batch-shipyard/tree/master/recipes) ツールキットも参照してください。
+* [Shipyard レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes)を使用して Azure Batch でコンテナー ワークロードを簡単にデプロイする方法については、[Batch Shipyard](https://github.com/Azure/batch-shipyard) ツールキットも参照してください。
 
 * Linux での Docker CE のインストールおよび使用の詳細については、[Docker](https://docs.docker.com/engine/installation/) ドキュメントをご覧ください。
 

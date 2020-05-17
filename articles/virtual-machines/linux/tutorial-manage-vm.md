@@ -196,7 +196,7 @@ az vm list-sizes --location eastus --output table
 
 ### <a name="create-vm-with-specific-size"></a>サイズを指定して VM を作成する
 
-上記の VM 作成の例ではサイズを指定しなかったため、サイズは既定のものになっています。 VM のサイズは、作成時に [ 引数を付けて ](/cli/azure/vm)az vm create`--size` を使用することで指定できます。 
+上記の VM 作成の例ではサイズを指定しなかったため、サイズは既定のものになっています。 VM のサイズは、作成時に `--size` 引数を付けて [az vm create](/cli/azure/vm) を使用することで指定できます。 
 
 ```azurecli-interactive
 az vm create \

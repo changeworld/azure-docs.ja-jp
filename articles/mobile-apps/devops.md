@@ -17,7 +17,7 @@ ms.locfileid: "80240891"
 # <a name="what-is-devops"></a>DevOps とは
 "DevOps" という単語は、"Development (開発)" と "Operations (運用)" が組み合わされたものです。 DevOps では、ソフトウェアの展開とインフラストラクチャの変更が自動化される一方で、ソフトウェア開発者と運用環境の IT プロフェッショナルの間のコミュニケーションとコラボレーションの重要性が重視されています。 DevOps では、アジャイルとリーンの手法の導入と、反復的なタスクの自動化に焦点が当てられています。 DevOps の目的は、アプリケーションをタイムリーかつ適切にリリースすることです。
 
-Microsoft は、[Azure DevOps](https://azure.microsoft.com/solutions/devops/) (クラウド) と [Visual Studio App Center](https://azure.microsoft.com/services/devops/) を通じて、[DevOps ソリューション](https://azure.microsoft.com/services/app-center/)の包括的なセットを提供しています。 これらの製品により、チーム メンバーがソフトウェアの構築、テスト、および展開を迅速かつ頻繁に、確実に実行できる作業環境が作成されます。 新しい機能の展開、セキュリティ更新プログラム、およびバグの修正にかかる時間が短縮されるため、組織は目標をより迅速に達成できます。
+Microsoft は、[Azure DevOps](https://azure.microsoft.com/services/devops/) (クラウド) と [Visual Studio App Center](https://azure.microsoft.com/services/app-center/) を通じて、[DevOps ソリューション](https://azure.microsoft.com/solutions/devops/)の包括的なセットを提供しています。 これらの製品により、チーム メンバーがソフトウェアの構築、テスト、および展開を迅速かつ頻繁に、確実に実行できる作業環境が作成されます。 新しい機能の展開、セキュリティ更新プログラム、およびバグの修正にかかる時間が短縮されるため、組織は目標をより迅速に達成できます。
 
 **DevOps の重要性**
 - コードのコミットから運用環境への展開まで、ソフトウェアのライフサイクル全体が高速化されます。

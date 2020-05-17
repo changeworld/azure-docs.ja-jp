@@ -75,7 +75,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 Text Analytics クライアントは、キーを使用して Azure に対して認証を行う `TextAnalyticsClient` オブジェクトです。 このクライアントには、テキストをバッチとして分析するためのメソッドがいくつか備わっています。 
 
-バッチ処理時に、テキストは、`documents` (使用したメソッドに応じて `dictionary`、`id`、および `text` の各属性の組み合わせを保持する `language` オブジェクト) の一覧として API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
+バッチ処理時に、テキストは、`documents` (使用したメソッドに応じて `id`、`text`、および `language` の各属性の組み合わせを保持する `dictionary` オブジェクト) の一覧として API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
 
 応答オブジェクトは、各ドキュメントの分析情報を格納するリストです。 
 
@@ -83,7 +83,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 Text Analytics クライアントは、ご利用のキーを使用して Azure に対して認証を行う [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) オブジェクトです。 このクライアントには、テキストを単一の文字列として、またはバッチとして分析するためのメソッドがいくつか備わっています。 
 
-テキストは、`documents` (使用したメソッドに応じて `dictionary`、`id`、`text` の各属性の組み合わせを保持する `language` オブジェクト) のリストとして API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
+テキストは、`documents` (使用したメソッドに応じて `id`、`text`、`language` の各属性の組み合わせを保持する `dictionary` オブジェクト) のリストとして API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
 
 ---
 
@@ -102,7 +102,7 @@ Text Analytics クライアントは、ご利用のキーを使用して Azure �
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-上で作成した `TextAnalyticsClient` と `key` を使用して `endpoint` オブジェクトをインスタンス化する関数を作成します。 次に、新しいクライアントを作成します。 
+上で作成した `key` と `endpoint` を使用して `TextAnalyticsClient` オブジェクトをインスタンス化する関数を作成します。 次に、新しいクライアントを作成します。 
 
 ```python
 from azure.ai.textanalytics import TextAnalyticsClient
@@ -121,7 +121,7 @@ client = authenticate_client()
 
 [!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-上で作成した `TextAnalyticsClient` と `key` を使用して `endpoint` オブジェクトをインスタンス化する関数を作成します。 次に、新しいクライアントを作成します。 
+上で作成した `key` と `endpoint` を使用して `TextAnalyticsClient` オブジェクトをインスタンス化する関数を作成します。 次に、新しいクライアントを作成します。 
 
 [!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 
@@ -131,7 +131,7 @@ client = authenticate_client()
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-クライアントを引数として受け取り、`sentiment_analysis_example()` 関数を呼び出す、`analyze_sentiment()` という名前の新しい関数を作成します。 返される応答オブジェクトには、入力ドキュメント全体のセンチメント ラベルとスコアが含まれます。また、各文の感情分析も含まれます。
+クライアントを引数として受け取り、`analyze_sentiment()` 関数を呼び出す、`sentiment_analysis_example()` という名前の新しい関数を作成します。 返される応答オブジェクトには、入力ドキュメント全体のセンチメント ラベルとスコアが含まれます。また、各文の感情分析も含まれます。
 
 
 ```python
@@ -199,7 +199,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-クライアントを引数として受け取り、`language_detection_example()` 関数を呼び出す、`detect_language()` という名前の新しい関数を作成します。 返される応答オブジェクトには、成功した場合は検出された言語が `primary_language` に含まれ、そうでない場合は `error` が含まれます。
+クライアントを引数として受け取り、`detect_language()` 関数を呼び出す、`language_detection_example()` という名前の新しい関数を作成します。 返される応答オブジェクトには、成功した場合は検出された言語が `primary_language` に含まれ、そうでない場合は `error` が含まれます。
 
 > [!Tip]
 > 場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `country_hint` パラメーターを使用して、2 文字の国番号を指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列に設定して (`country_hint : ""`)、このパラメーターをリセットします。 
@@ -245,10 +245,10 @@ Document ID: 3 , Language: Chinese_Simplified
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 > [!NOTE]
-> バージョン `3.0-preview`:  
+> バージョン `3.0-preview`: 
 > * エンティティ リンク設定は、NER から切り離された要求です。
 
-クライアントを引数として受け取り、`entity_recognition_example` 関数を呼び出して、結果を反復処理する、`recognize_entities()` という名前の新しい関数を作成します。 返される応答オブジェクトには、成功した場合は検出されたエンティティの一覧が `entity` に含まれ、そうでない場合は `error` が含まれます。 検出されたエンティティごとに、カテゴリとサブカテゴリ (ある場合) を出力します。
+クライアントを引数として受け取り、`recognize_entities()` 関数を呼び出して、結果を反復処理する、`entity_recognition_example` という名前の新しい関数を作成します。 返される応答オブジェクトには、成功した場合は検出されたエンティティの一覧が `entity` に含まれ、そうでない場合は `error` が含まれます。 検出されたエンティティごとに、カテゴリとサブカテゴリ (ある場合) を出力します。
 
 ```python
 def entity_recognition_example(client):
@@ -281,7 +281,7 @@ Named Entities:
 
 ## <a name="entity-linking"></a>Entity Linking
 
-クライアントを引数として受け取り、`entity_linking_example()` 関数を呼び出して、結果を反復処理する、`recognize_linked_entities()` という名前の新しい関数を作成します。 返される応答オブジェクトには、成功した場合は検出されたエンティティの一覧が `entities` に含まれ、そうでない場合は `error` が含まれます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`entity` オブジェクトの一覧として `match` オブジェクトの下にグループ化されます。
+クライアントを引数として受け取り、`recognize_linked_entities()` 関数を呼び出して、結果を反復処理する、`entity_linking_example()` という名前の新しい関数を作成します。 返される応答オブジェクトには、成功した場合は検出されたエンティティの一覧が `entities` に含まれ、そうでない場合は `error` が含まれます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`match` オブジェクトの一覧として `entity` オブジェクトの下にグループ化されます。
 
 ```python
 def entity_linking_example(client):
@@ -411,7 +411,7 @@ Document ID: 2
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-クライアントを引数として受け取り、`key_phrase_extraction_example()` 関数を呼び出す、`extract_key_phrases()` という名前の新しい関数を作成します。 成功した場合は `key_phrases` 内で検出されたキー フレーズのリストが結果に含まれ、失敗した場合は `error` が含まれます。 検出されたキー フレーズを出力します。
+クライアントを引数として受け取り、`extract_key_phrases()` 関数を呼び出す、`key_phrase_extraction_example()` という名前の新しい関数を作成します。 成功した場合は `key_phrases` 内で検出されたキー フレーズのリストが結果に含まれ、失敗した場合は `error` が含まれます。 検出されたキー フレーズを出力します。
 
 ```python
 def key_phrase_extraction_example(client):

@@ -46,7 +46,7 @@ ms.locfileid: "82116820"
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure portal を使用して、Service Bus 名前空間の IP ファイアウォール規則を作成する方法について説明します。 
 
-1. **Azure portal** で、ご利用の [Service Bus 名前空間](https://portal.azure.com)に移動します。
+1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間**に移動します。
 2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 既定では、 **[すべてのネットワーク]** オプションが選択されています。 Service Bus 名前空間では、すべての IP アドレスからの接続を受け入れます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
     ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)

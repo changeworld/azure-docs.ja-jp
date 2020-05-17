@@ -39,7 +39,7 @@ Windows Server をバックアップするには、まず、保存するバッ�
 
 3. **[Recovery Services コンテナー]** メニューで、
 
-    * *[名前]* に「**myRecoveryServicesVault**」と入力します。
+    * **[名前]** に「*myRecoveryServicesVault*」と入力します。
     * 現在のサブスクリプション ID が **[サブスクリプション]** に表示されます。
     * **[リソース グループ]** で **[既存のものを使用]** を選択し、 *[myResourceGroup]* を選択します。 *[myResourceGroup]* が存在しない場合は、 **[新規作成]** を選択し、「*myResourceGroup*」と入力します。
     * **[場所]** ドロップダウン メニューから *[西ヨーロッパ]* を選択します。

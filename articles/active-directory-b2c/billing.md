@@ -93,7 +93,7 @@ Azure AD B2C テナントにリンクされているサブスクリプション�
 
 1. [Azure portal](https://portal.azure.com) にサインインする
 1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C テナントを含むディレクトリ "*ではなく*") 使用する Azure サブスクリプションを含むディレクトリを選択します。
-1. **[リソースの作成]** を選択し、`Active Directory B2C`[Marketplace を検索] **フィールドに「** 」と入力し、 **[Azure Active Directory B2C]** を選択します。
+1. **[リソースの作成]** を選択し、 **[Marketplace を検索]** フィールドに「`Active Directory B2C`」と入力し、 **[Azure Active Directory B2C]** を選択します。
 1. **[作成]**
 1. **[Link an existing Azure AD B2C Tenant to my Azure subscription]\(既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする\)** を選択します。
 1. ドロップダウンから **[Azure AD B2C テナント]** を選択します。 自分がグローバル管理者であり、サブスクリプションにまだリンクされていないテナントのみが表示されます。 **[Azure AD B2C リソース名]** フィールドには、選択した Azure AD B2C テナントのドメイン名が入力されます。

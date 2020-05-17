@@ -109,7 +109,7 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 
 ## <a name="deny-public-access-for-azure-database-for-mysql"></a>Azure Database for MySQL のパブリック アクセスの拒否
 
-Azure Database for MySQL にアクセスする方法をプライベート エンドポイントのみに依存する場合、データベース サーバーで [[パブリック ネットワーク アクセスの拒否]](concepts-firewall-rules.md) 構成を設定し、すべてのパブリック エンドポイント設定 (すなわち、[ファイアウォール規則](concepts-data-access-and-security-vnet.md)や **VNet サービス エンドポイント**) を無効にできます。 
+Azure Database for MySQL にアクセスする方法をプライベート エンドポイントのみに依存する場合、データベース サーバーで **[パブリック ネットワーク アクセスの拒否]** 構成を設定し、すべてのパブリック エンドポイント設定 (すなわち、[ファイアウォール規則](concepts-firewall-rules.md)や [VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)) を無効にできます。 
 
 この設定が *[はい]* に設定されている場合、Azure Database for MySQL にはプライベート エンドポイント経由の接続のみが許可されます。 この設定が *[いいえ]* に設定されている場合、ファイアウォール設定または VNet サービス エンドポイント設定に基づいてクライアントは Azure Database for MySQL に接続できます。 また、プライベート ネットワーク アクセスの値が設定されると、既存のファイアウォール規則や VNet サービス エンドポイント規則は追加も更新もできなくなります。
 

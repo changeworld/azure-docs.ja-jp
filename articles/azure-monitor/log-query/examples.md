@@ -14,7 +14,7 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480285"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
-この記事には、[Kusto クエリ言語](log-query-overview.md)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](/azure/kusto/query/)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
+この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
 
 これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Azure Monitor を使用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)を行ってください。
 
@@ -241,7 +241,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>アクセス許可に関連するセキュリティ イベントのカウント
-次の例は、**Activity** 列に用語 **Permissions** が完全に含まれる _securityEvent_ レコードの数を表示します。 クエリは、過去 30 分以内に作成されたレコードに適用されます。
+次の例は、**Activity** 列に用語 _Permissions_ が完全に含まれる **securityEvent** レコードの数を表示します。 クエリは、過去 30 分以内に作成されたレコードに適用されます。
 
 ```Kusto
 SecurityEvent

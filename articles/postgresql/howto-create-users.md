@@ -84,6 +84,6 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
 
 ## <a name="next-steps"></a>次のステップ
 
-新しいユーザーのマシンの IP アドレスに対してファイアウォールを開き、接続できるようにします。[Azure CLI](howto-manage-firewall-using-portal.md) または [Azure Portal を使って Azure Database for PostgreSQL のファイアウォール規則を作成して管理](howto-manage-firewall-using-cli.md)します。
+新しいユーザーのマシンの IP アドレスに対してファイアウォールを開き、接続できるようにします。[Azure CLI](howto-manage-firewall-using-cli.md) または [Azure Portal を使って Azure Database for PostgreSQL のファイアウォール規則を作成して管理](howto-manage-firewall-using-portal.md)します。
 
 ユーザー アカウントの管理について詳しくは、[データベース ロールと特権](https://www.postgresql.org/docs/current/static/user-manag.html)、[GRANT の構文](https://www.postgresql.org/docs/current/static/sql-grant.html)、および[特権](https://www.postgresql.org/docs/current/static/ddl-priv.html)に関する PostgreSQL 製品ドキュメントをご覧ください。

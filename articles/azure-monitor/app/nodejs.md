@@ -38,7 +38,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 1. [Azure portal][portal] にサインインする
 2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。 このリソースには、テレメトリ データを受信するためのエンドポイント、そのデータのストレージ、保存済みのレポートとダッシュボード、ルールとアラートの構成などが含まれています。
 
-3. リソース作成ページの **[アプリケーションの種類]** ボックスで **[Node.js アプリケーション]** を選択します。 アプリの種類によって、作成される既定のダッシュボードとレポートが決まります  (どの Application Insights リソースでも、あらゆる言語およびプラットフォームからデータを収集できます)。
+3. リソース作成ページの **[アプリケーションの種類]** ボックスで **[Node.js アプリケーション]** を選択します。 アプリの種類によって、作成される既定のダッシュボードとレポートが決まります (どの Application Insights リソースでも、あらゆる言語およびプラットフォームからデータを収集できます)。
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK の設定
 
@@ -64,7 +64,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
    appInsights.start();
    ```
    
-   ikey は、\_ または `setup()` に手動で渡す代わりに、APPINSIGHTS`new appInsights.TelemetryClient()`INSTRUMENTATIONKEY 環境変数を使用して渡すこともできます。 この方法では、コミットされたソース コードに ikey を含めず、異なる環境に合わせて異なる ikey を指定できます。
+   ikey は、`setup()` または `new appInsights.TelemetryClient()` に手動で渡す代わりに、APPINSIGHTS\_INSTRUMENTATIONKEY 環境変数を使用して渡すこともできます。 この方法では、コミットされたソース コードに ikey を含めず、異なる環境に合わせて異なる ikey を指定できます。
 
    その他の構成方法については、以降のセクションを参照してください。
 

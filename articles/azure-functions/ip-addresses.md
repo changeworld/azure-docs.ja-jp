@@ -78,7 +78,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 }
 ```
 
- このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、 **[ダウンロード センター] ページ**の[[詳細]](https://www.microsoft.com/en-us/download/details.aspx?id=56519) セクションを展開してください。
+ このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、[[ダウンロード センター] ページ](https://www.microsoft.com/en-us/download/details.aspx?id=56519)の **[詳細]** セクションを展開してください。
 
 ## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
 

@@ -54,7 +54,7 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 ト
 
 ### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-このプロジェクトの画像を追加します。 これらは、**Program.cs** の _LoadImagesFromDisk_ メソッドで参照します。 1 回のバッチで最大 64 個の画像をアップロードできます。
+このプロジェクトの画像を追加します。 これらは、_Program.cs_ の **LoadImagesFromDisk** メソッドで参照します。 1 回のバッチで最大 64 個の画像をアップロードできます。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 

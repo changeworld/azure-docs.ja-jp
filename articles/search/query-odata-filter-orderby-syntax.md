@@ -28,7 +28,7 @@ ms.locfileid: "77153878"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure Cognitive Search での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
 
-Azure Cognitive Search では、 **$filter** 式、**$orderby** 式、および **$select** 式で OData 式の構文のサブセットがサポートされています。 filter 式はクエリの構文解析中に評価され、検索が特定のフィールドに制約されるか、インデックス スキャン中に使用される一致条件が追加されます。 order-by 式は、返されたドキュメントを並べ替えるために、結果セットに対する後処理手順として適用されます。 select 式は、ドキュメントのどのフィールドが結果セットに含まれるかを決定します。 これらの式の構文は、**search** パラメーターで使用される[単純な](query-simple-syntax.md)または[完全な](query-lucene-syntax.md)クエリ構文とは異なりますが、参照フィールドの構文には多少の重複があります。
+Azure Cognitive Search では、 **$filter** 式、 **$orderby** 式、および **$select** 式で OData 式の構文のサブセットがサポートされています。 filter 式はクエリの構文解析中に評価され、検索が特定のフィールドに制約されるか、インデックス スキャン中に使用される一致条件が追加されます。 order-by 式は、返されたドキュメントを並べ替えるために、結果セットに対する後処理手順として適用されます。 select 式は、ドキュメントのどのフィールドが結果セットに含まれるかを決定します。 これらの式の構文は、**search** パラメーターで使用される[単純な](query-simple-syntax.md)または[完全な](query-lucene-syntax.md)クエリ構文とは異なりますが、参照フィールドの構文には多少の重複があります。
 
 この記事では、filter 式、order-by 式、および select 式で使用される OData 式の言語の概要を示します。 この言語は "ボトムアップ" で提示され、最も基本的な要素から始まり、その上に構築されていきます。 各パラメーターの最上位レベルの構文は、別の記事で説明しています。
 
@@ -42,7 +42,7 @@ OData 式は単純なものから複雑なものまで幅がありますが、�
 - **定数**: 特定のデータ型のリテラル値です。
 
 > [!NOTE]
-> Azure Cognitive Search の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure Cognitive Search で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure Cognitive Search での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Cognitive Search の用語が使用されます。
+> Azure Cognitive Search の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure Cognitive Search で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure コグニティブ検索での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Cognitive Search の用語が使用されます。
 
 ## <a name="field-paths"></a>フィールド パス
 
@@ -79,7 +79,7 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 | `room/Type` | `room` 範囲変数の `Type` サブフィールドを参照します。例として、フィルター式内の `Rooms/any(room: room/Type eq 'deluxe')` があります。 |
 | `store/Address/Country` | `store` 範囲変数の `Address` サブフィールドの `Country` サブフィールドを参照します。例として、フィルター式内の `Stores/any(store: store/Address/Country eq 'Canada')` があります。 |
 
-フィールド パスの意味はコンテキストによって異なります。 フィルターでは、フィールド パスは、現在のドキュメント内の 1 つのフィールドの "*単一のインスタンス*" の値を参照します。 **$orderby**、**$select**、[完全な Lucene 構文でのフィールド検索](query-lucene-syntax.md#bkmk_fields)などの他のコンテキストでは、フィールド パスはフィールドそのものを参照します。 これらの違いは、フィルターでのフィールド パスの使用方法に多少の影響を与えます。
+フィールド パスの意味はコンテキストによって異なります。 フィルターでは、フィールド パスは、現在のドキュメント内の 1 つのフィールドの "*単一のインスタンス*" の値を参照します。 **$orderby**、 **$select**、[完全な Lucene 構文でのフィールド検索](query-lucene-syntax.md#bkmk_fields)などの他のコンテキストでは、フィールド パスはフィールドそのものを参照します。 これらの違いは、フィルターでのフィールド パスの使用方法に多少の影響を与えます。
 
 `Address/City` というフィールド パスを検討します。 フィルターでは、これは現在のドキュメントの単一の都市、たとえば "San Francisco" (サンフランシスコ) を参照します。 一方、`Rooms/Type` は、多数の客室の `Type` サブフィールド (第 1 室は "標準"、第 2 室は "デラックス"、以下同様) を参照します。 `Rooms/Type` では、`Type` サブフィールドの "*単一のインスタンス*" は参照されないため、フィルター内で直接使用することはできません。 代わりに、客室の種類でフィルター処理するには、次のように[ラムダ式](search-query-odata-collection-operators.md)と範囲変数を使用します。
 
@@ -205,11 +205,11 @@ boolean_literal ::= 'true' | 'false'
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>フィールド パスと定数からの式の構築
 
-フィールド パスと定数は OData 式の最も基本的なパーツですが、それら自体が既に完全な式です。 実際、Azure Cognitive Search での **$select** パラメーターは単なるフィールド パスのコンマ区切りの一覧であり、**$orderby** が **$select** よりもはるかに複雑ということはありません。 インデックスに `Edm.Boolean` 型のフィールドが含まれている場合でも、そのフィールドのパスにすぎないフィルターを記述できます。 同様に、`true` 定数と `false` 定数も有効なフィルターです。
+フィールド パスと定数は OData 式の最も基本的なパーツですが、それら自体が既に完全な式です。 実際、Azure Cognitive Search での **$select** パラメーターは単なるフィールド パスのコンマ区切りの一覧であり、 **$orderby** が **$select** よりもはるかに複雑ということはありません。 インデックスに `Edm.Boolean` 型のフィールドが含まれている場合でも、そのフィールドのパスにすぎないフィルターを記述できます。 同様に、`true` 定数と `false` 定数も有効なフィルターです。
 
 ただし、ほとんどの場合、複数のフィールドと定数を参照するより複雑な式が必要になります。 これらの式は、パラメーターに応じてさまざまな方法で構築されます。
 
-次の EBNF ([拡張バッカスナウア記法](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) によって、**$filter**、**$orderby**、および **$select** の各パラメーターの文法が定義されます。 これらは、フィールド パスと定数を参照する単純な式から構築されています。
+次の EBNF ([拡張バッカスナウア記法](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) によって、 **$filter**、 **$orderby**、および **$select** の各パラメーターの文法が定義されます。 これらは、フィールド パスと定数を参照する単純な式から構築されています。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -231,7 +231,7 @@ select_expression ::= '*' | field_path(',' field_path)*
 
 **$orderby** パラメーターと **$select** パラメーターは、どちらも単純な式のコンマ区切りの一覧です。 **$filter** パラメーターは、単純なサブ式で構成されるブール式です。 これらのサブ式が、[`and`、`or`、`not`](search-query-odata-logical-operators.md) などの論理演算子、[`eq`、`lt`、`gt` など](search-query-odata-comparison-operators.md)の比較演算子、[`any` や `all`](search-query-odata-collection-operators.md) などのコレクション演算子を使用して結合されます。
 
-**$filter**、**$orderby**、および **$select** の各パラメーターの詳細を、次の記事で確認できます。
+**$filter**、 **$orderby**、および **$select** の各パラメーターの詳細を、次の記事で確認できます。
 
 - [Azure Cognitive Search での OData $filter 構文](search-query-odata-filter.md)
 - [Azure Cognitive Search での OData $orderby 構文](search-query-odata-orderby.md)

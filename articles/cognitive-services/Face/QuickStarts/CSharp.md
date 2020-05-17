@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="include-namespaces"></a>名前空間を含める
 
-`using`Program.cs*ファイルの先頭に次の* ステートメントを追加します。
+*Program.cs* ファイルの先頭に次の `using` ステートメントを追加します。
 
 ```csharp
 using System;

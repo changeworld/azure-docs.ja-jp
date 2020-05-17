@@ -42,7 +42,7 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (廃止)|Translator Speech は、機械翻訳サービスです。|
 
 > [!NOTE]
-> [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか?  一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
+> [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか? 一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
 
 
 ## <a name="language-apis"></a>言語 API
@@ -102,7 +102,7 @@ Cognitive Services の API は、Microsoft マネージド データ センタ�
 
 ## <a name="securing-resources"></a>リソースのセキュリティ
 
-Azure Cognitive Services には、[Azure Virtual Networks](authentication.md)、有効なリソース キー、Azure Active Directory の資格情報を使用した[認証](cognitive-services-virtual-networks.md)を含む多層型のセキュリティ モデルが採用されています。
+Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-virtual-networks.md)、有効なリソース キー、Azure Active Directory の資格情報を使用した[認証](authentication.md)を含む多層型のセキュリティ モデルが採用されています。
 
 ## <a name="container-support"></a>コンテナー サポート
 

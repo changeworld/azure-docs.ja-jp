@@ -65,7 +65,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-*New-AzVirtualNetworkSubnetConfig* を使用して [myFrontendSubnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) という名前のサブネット構成を作成します。
+[New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して *myFrontendSubnet* という名前のサブネット構成を作成します。
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Create virtual network
 
-*New-AzVirtualNetwork* を使用して、*myFrontendSubnet* と *myBackendSubnet* を使用する [myVNet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) という名前の VNET を作成します。
+[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) を使用して、*myFrontendSubnet* と *myBackendSubnet* を使用する *myVNet* という名前の VNET を作成します。
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -102,7 +102,7 @@ Azure リソースにインターネットからアクセスするためには�
 
 割り当て方法を "静的" に設定することで、VM に割り当てた IP アドレスを確実に維持し、割り当てが解除された状態でも変更されないようにすることができます。 静的 IP アドレスを使用している場合、IP アドレス自体を指定することはできません。 それは、利用可能なアドレスのプールから割り当てられます。
 
-*New-AzPublicIpAddress* を使用して [myPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) という名前のパブリック IP アドレスを作成します。
+[New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) を使用して *myPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -163,7 +163,7 @@ NSG ルールは、トラフィックが許可または拒否されるネット�
 
 ### <a name="create-network-security-groups"></a>ネットワーク セキュリティ グループの作成
 
-*New-AzNetworkSecurityRuleConfig* を使用して、*myFrontendVM* 上で受信 Web トラフィックを許可する [myFrontendNSGRule](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) という名前のインバウンド規則を作成します。
+[New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、*myFrontendVM* 上で受信 Web トラフィックを許可する *myFrontendNSGRule* という名前のインバウンド規則を作成します。
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -193,7 +193,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-*New-AzNetworkSecurityGroup* を使用して、[myFrontendNSG](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) という名前のネットワーク セキュリティ グループを追加します。
+[New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、*myFrontendNSG* という名前のネットワーク セキュリティ グループを追加します。
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `

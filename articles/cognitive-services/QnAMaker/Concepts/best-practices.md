@@ -39,7 +39,7 @@ QnA Maker サービスは継続的に、コンテンツから QnA を抽出す�
 
 ### <a name="good-answers"></a>優れた回答
 
-最善の回答はシンプルな回答ですが、シンプルすぎてはいけません。 `yes` や `no` などの回答は使用してはいけません。 回答を他のソースにリンクしたり、メディアとリンクを使用してリッチ エクスペリエンスを提供したりする必要がある場合は、[メタデータ タグ付け](../how-to/edit-knowledge-base.md#add-metadata)を使用して回答を識別した後、[ プロパティにそのメタデータ タグを含む](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)クエリを送信`strictFilters`して、正しい回答のバージョンを取得します。
+最善の回答はシンプルな回答ですが、シンプルすぎてはいけません。 `yes` や `no` などの回答は使用してはいけません。 回答を他のソースにリンクしたり、メディアとリンクを使用してリッチ エクスペリエンスを提供したりする必要がある場合は、[メタデータ タグ付け](../how-to/edit-knowledge-base.md#add-metadata)を使用して回答を識別した後、`strictFilters` プロパティにそのメタデータ タグを含む[クエリを送信](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)して、正しい回答のバージョンを取得します。
 
 |Answer|フォローアップ プロンプト|
 |--|--|

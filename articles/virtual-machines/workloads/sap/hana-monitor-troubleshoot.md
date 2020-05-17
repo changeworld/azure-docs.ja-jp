@@ -93,10 +93,10 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 [SAP Note #2081065 – SAP HANA ネットワークのトラブルシューティング](https://launchpad.support.sap.com/#/notes/2081065)のページを参照して、この SAP Note に記載されているネットワークに関するトラブルシューティングの手順を実行してください。
 
 1. サーバーとクライアント間のラウンド トリップ時間を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) __ を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) を実行します。
   
 2. ノード間通信を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) __ を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) を実行します。
 
 3. Linux コマンド **ifconfig** を実行します (出力は、パケット損失が発生しているかどうかを示します)。
 4. Linux コマンド **tcpdump** を実行します。
