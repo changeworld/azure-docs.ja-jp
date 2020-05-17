@@ -72,7 +72,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 Azure Machine Learning ビューが表示されます。
 1. ご利用のサブスクリプションのノードを展開します。
 1. **TeamWorkspace** ノードを展開します。 
-1. **[実験]** ノードを右クリックします。
+1. **[Experiment]\(実験\)** ノードを右クリックします。
 1. コンテキスト メニューから **[Create Experiment]\(実験の作成\)** を選択します。
 
     > [!div class="mx-imgBorder"]
@@ -293,7 +293,7 @@ Azure Machine Learning 実験を実行するには:
 
 1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 Azure Machine Learning ビューが表示されます。 
 1. ご利用のサブスクリプションのノードを展開します。 
-1. **[TeamWorkspace]、[実験]** ノードの順に展開します。 
+1. **[TeamWorkspace]、[Experiment]** ノードの順に展開します。 
 1. **MNIST** 実験を右クリックします。
 1. **[Run Experiment]\(実験を実行する)** を選択します。
 
