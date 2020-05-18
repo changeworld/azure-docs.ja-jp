@@ -1,479 +1,344 @@
 ---
-title: Microsoft Commercial Marketplace の FAQ
+title: Microsoft コマーシャル マーケットプレースの発行元に関してよくあるご質問
 description: Azure Marketplace と Microsoft AppSource についての一般的な質問への回答
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c05d452966f0b694067ffc2211d668d413e62d54
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288463"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839183"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace の FAQ
+# <a name="microsoft-commercial-marketplace-publisher-frequently-asked-questions"></a>Microsoft コマーシャル マーケットプレースの発行元に関してよくあるご質問
 
-Azure Marketplace と Microsoft AppSource についての一般的な質問への回答。
+コマーシャル マーケットプレースについての一般的な質問への回答。
 
-## <a name="faq-for-customers"></a>お客様向けの FAQ
+## <a name="general"></a>全般
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketplace と Microsoft AppSource について知っておくべきこと
+### <a name="what-is-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
-**Azure Marketplace とは何ですか?**
+コマーシャル マーケットプレースは、企業や政府機関をパートナーによって構築されたソリューションと結び付けるものです。 パートナーは、パートナー センターでオファーを作成して管理します。お客様は、Microsoft AppSource、Azure Marketplace、クラウド ソリューション プロバイダー プログラムの再販業者、共同販売プログラムでの販売チームなど、製品内のエクスペリエンスを通じて、ソリューションを探して購入することができます。
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) は、Microsoft およびそのパートナーから入手できるソリューションやサービスに関するアクセスと情報を提供します。 お客様は Azure にある、または Azure 向けのクラウド ソフトウェア ソリューションを見つけ、試し、購入することができます。 当社の 8,000 を超える一覧から成るカタログは、Virtual Machines (VM)、API、Azure アプリ、ソリューション テンプレートとマネージド アプリケーション、SaaS アプリ、コンテナー、コンサルティング サービスなどの Azure の構成要素を提供します。
+詳しくは、「[Microsoft コマーシャル マーケットプレース ハブ](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)」をご覧ください。
 
-**Azure Marketplace の対象顧客は?**
+### <a name="whats-the-difference-between-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource と Azure Marketplace の違いは何ですか?
 
-Azure Marketplace は、商用の IT ソフトウェアおよびサービスに関心がある IT プロフェッショナルおよびクラウド開発者向けに設計されています。
+AppSource には、Microsoft 365、Dynamics 365、Power Platform の各サービスに統合されるアプリなど、ビジネス ソリューションや業界ソリューションが含まれます。
 
-**現在 Azure Marketplace で利用できるのはどのような製品ですか?**
+Azure Marketplace には、Azure 上に構築されたものや、Azure サブスクリプション自体内で使用されるものなど、IT 向けや開発者向けのソリューションが含まれます。
 
-Azure Marketplace では、Azure の製品やサービスを拡張するために Microsoft やパートナー様によって構築された技術的なソリューションやサービスを取り扱っています。 ソリューション カタログのカテゴリには次のようなものがあります。
+詳細については、[購入者ガイド](https://aka.ms/MarketplaceBuyerGuide)をご覧ください。
 
-* ベース オペレーティング システム
-* databases
-* security
-* identity
-* networking
-* ブロックチェーン
-* 開発者ツール
+### <a name="why-should-i-make-my-software-or-services-available-in-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースでソフトウェアまたはサービスを利用できるようにする必要があるのはなぜですか?
 
-### <a name="azure-marketplace-for-customers"></a>Azure Marketplace のお客様向け情報
+コマーシャル マーケットプレースは、販売チャネルと Marketplace 報酬による市場開拓の共同作業と実現のための出発点です。 Web サイトと製品内のエクスペリエンスにより、パートナーの製品が、ソリューションを探している Microsoft の何百万もの顧客の目に留まりやすくなります。 コマース機能を構築したり購入したりする必要さえありません。 141 のリージョンで利用できます (プランごと)。 多くの国では Microsoft が税金の支払いを管理し、Microsoft のリセラーのグローバル チャネル ネットワークへのアクセスが提供されます。 パートナーは、顧客の Microsoft 顧客契約またはエンタープライズ契約を使用して、新しい購入関係を築くことなく組織に販売できます。
 
-**Azure Marketplace を利用するにはまずどうすればよいですか?**
+詳細については、次のビデオをご覧ください: [Marketplace で販売する理由](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace)。
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) にアクセスすることにより、Azure 上での実行が認定され、そのために最適化された幅広いエンタープライズ アプリケーションおよびソリューションを見つけることができます。 Azure Marketplace には、[Azure portal] で[**リソースを作成する**](https://portal.azure.com/#create/hub)ときにアクセスすることもできます。
+### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースには登録料がかかりますか?
 
-**Azure Marketplace の主なメリットは何ですか?**
+いいえ、コマーシャル マーケットプレースでオファーを発行する場合、料金はかかりません。 取引手数料として、売上のごく一部をいただきます。 これは、Marketplace 報酬プログラム、プラットフォームの刷新、コマーシャル マーケットプレースの運用に充てられます。
 
-Azure Marketplace を使用すると、お客様は Azure 向けに、または Azure 上に構築されたテクニカル アプリケーションを見つけることができます。 Microsoft Azure のソリューションやサービスの市場が 1 つの統合プラットフォームに結合されており、数回クリックするだけでソリューションを見つけ、試し、購入またはデプロイすることができます。
+### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの発行元としてサインアップするにはどうすればよいですか?
 
-**Azure Marketplace から製品を購入するにはどうすればよいですか?**
+コマーシャル マーケットプレースでオファーを作成するには、Microsoft Partner Agreement に同意し、発行元契約を承認することにより、Microsoft パートナーになる必要があります。
 
-Azure Marketplace のオファーは、次の場所から購入できます。
+コマーシャル マーケットプレース発行元として[サインアップ](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)してください。
 
-* [Web ベースのネットショップ](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure portal][Azure portal]
-* [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/?view=azure-cli-latest)
+### <a name="how-can-customers-engage-with-offers-in-the-commercial-marketplace"></a>顧客はコマーシャル マーケットプレースでオファーをどのように利用するのですか?
 
->[!Note]
->プリペイド クレジットやその他の形式の年額コミットメントは、ソフトウェア ライセンス料の支払いには使用できませんが、関連する Azure 使用料金の支払いには使用できます。 例外は、[Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)に関するページに一覧表示されています。
+顧客がコマーシャル マーケットプレースのオファーを使用する方法は、オファーの作成方法によって異なります。
 
-**Azure Marketplace で購入したものをデプロイする Azure リージョンを選択できますか?**
+- 自動的に提供される回答の場合、有料、ライセンス持ち込み (BYOL)、無料のいずれであっても、顧客は "今すぐ入手" を勧められます。
+- 体験版 (デモ) がサポートされているオファーでは、顧客は "体験版" を使用するよう求められます。 
+- コマーシャル マーケットプレースの外部で試用版が提供されているサービスとしてのソフトウェア (SaaS) オファーでは、"無料試用版" と表示されます。
+- 簡易登録では、顧客に "連絡してください" と要求することができます。
 
-お客様は、自分が有効にする任意の Azure データ センター リージョンにデプロイできます。 パフォーマンスを最適化し、予算を制御するために、使用しているサービスに最も近いデータ センターの場所を選択することをお勧めします。
+### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けのオファーを作成するにはどうすればよいですか?
 
-**Azure Marketplace での購入物を誤って削除した場合、その操作を "*元に戻す*" ことはできますか?**
+サインアップし、発行元契約に同意すると、パートナー センターのコマーシャル マーケットプレースのページにアクセスできるようになります。 ここで、オファーの作成と管理、および分析レポートの表示を行います。 Microsoft 365 アプリの場合は、パートナー センター内で Office ストア プログラムをアクティブ化する必要もあります。
 
-いいえ、削除は元に戻せません。 サブスクリプションが誤って削除された場合は、そのサブスクリプションを再購入できます。 未使用の機能や前払いサービスはすべて失われます。
+詳しくは、「[コマーシャル マーケットプレースにようこそ](https://docs.microsoft.com/azure/marketplace/)」と「[Microsoft Commercial Marketplace を通して Office 365 アドインを収益化する](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)」をご覧ください。
 
-**いずれかのアプリケーションで使用されている Azure Marketplace での購入物を削除しようとした場合は、警告されますか?**
+### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースに関するサポートを受けるにはどうすればよいですか?
 
-いいえ。ユーザーが購入物を削除するとき、それが現在使用されていたり、アプリケーションがそれに依存していたりしても Azure は警告を表示しません。
+パートナー センター内からサポート チケットを送信し、マーケットプレース発行元サポート チームに問い合わせることができます。 また、活発なコミュニティもあり、そこでベスト プラクティスや情報共有を見つけることができるます。
 
-**Azure Marketplace での購入物に Azure Web サイトなどの他の資産への何らかの依存関係がある場合、それらを自分で管理する必要がありますか?**
+発行元サポート チームに[サポート チケットを送信する](https://partner.microsoft.com/support/v2/?stage=1)か、[コミュニティ フォーラム](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)に参加してください。
 
-Azure Marketplace のオファリングに対する依存関係は自動的には管理されません。 Azure Marketplace での購入物を使用する前にその説明を慎重に確認して、ソリューションをデプロイする前に、何らかの依存関係が必要かどうかを判定してください。
+### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、自分の組織に関するどのような分析を利用できますか?
 
-**Azure Marketplace のソリューションを Azure Cloud Solution Provider から購入できますか?**
+コマーシャル マーケットプレース内のオファーに関するレポートが提供されます。 パートナー センター ([Commercial Marketplace]\(コマーシャル マーケットプレース\) 領域の [Analytics]\(分析\) の下) を使用して、顧客、注文、ストア エンゲージメントなどについてのデータにアクセスできます。
 
-発行元がクラウド ソリューション プロバイダー (CSP) チャネルを通じて利用できるようにオファリングを構成している場合、クラウド ソリューション プロバイダー パートナーはソリューションを再販できます。
+詳しくは、「[パートナー センターでのコマーシャル マーケットプレース向け分析](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)」をご覧ください。
 
-**Azure Marketplace 経由で販売またはプロビジョニングされるアプリケーションやサービスを購入するために、どの国/地域がサポートされていますか?**
+### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft とパートナーの顧客の間にはどのような関係がありますか?
 
-Azure Marketplace は、[参加ポリシー](/legal/marketplace/participation-policy)の一覧に記載されている国/地域の Azure のお客様が利用できます。
+コマーシャル マーケットプレースは、エージェンシー モデルを使用して運営されています。 顧客は、Microsoft と購入契約を結びます。その契約では、Microsoft Cloud 契約 (MCA) または Enterprise Agreement (EA) が使用されます。 Microsoft は、請求、徴収、該当するリージョンでの税金の支払い、および発行元の支払いを行います。 発行元は、価格と使用条件を設定し、テクニカル サポートを提供します。
 
-**Azure Marketplace ではどのような通貨がサポートされていますか?**
+### <a name="what-terms-of-use-options-are-available-with-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、どのような使用条件オプションを利用できますか?
 
-次の 17 の通貨で取引を行うことができます: AUD、BRL、CAD、CHF、DKK、EUR、GBP、INR、JPY、KRW、NOK、NZD、RUB、SEK、TWD、USD、RMB。
+発行元はソフトウェア ソリューションの使用条件を設定し、顧客は購入フローの中でそれに同意する必要があります。 手順を簡素化してスピードアップするために、標準契約 (SC) が用意されており、パートナーは使用条件にそれを含めることができます。 これにより、顧客は SC を 1 回確認し、法務チームや購入チームからの承認を受ければ、後は各オファーの修正に専念することができます。
 
-### <a name="deploying-a-solution-from-azure-marketplace"></a>Azure Marketplace からのソリューションのデプロイ
+パートナーは、すべての顧客に適用される変更を作成したり、選択した特定の顧客に固有の変更にしたりできます。 また、使用条件を完全にカスタマイズすることもでき、テキスト ボックスに入力するか、Web サイトでホストすることができます。その場合は、Web アドレスとして表示されます。
 
-**Azure Marketplace の仮想マシン (VM) を既にサブスクリプションにデプロイしており、次にそのサブスクリプションをある Azure アカウントから別のアカウントに移行したいと考えています。これは現在サポートされていますか?**
+詳しくは、「[Microsoft 商業マーケットプレースの標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)」をご覧ください。
 
-Azure サブスクリプション (Azure Marketplace の VM やサービスを含む) を移行するには、新しい Azure アカウントに関連付ける前に、以前の Azure サブスクリプションをすべて削除するか、またはキャンセルします。 移行が完了すると、最終的な使用料金は、新しい登録されたアカウントの支払い方法を使用して課金されます。
+### <a name="is-azure-marketplace-available-in-azure-government"></a>Azure Marketplace は Azure Government で利用できますか?
 
-**Azure Marketplace の仮想マシン (VM) サブスクリプションを Enterprise Agreement に移行したいと考えています。これは現在サポートされていますか?**
+はい。Azure Government Marketplace は Azure Government リージョンで利用でき、Azure 仮想マシンと Azure アプリケーションのオファーがサポートされています。 標準発行プロセスの中に、Azure Government Marketplace で使用できるようにするためのチェック ボックス オプションがあります。
 
-Azure Marketplace の仮想マシン (VM) サブスクリプションを Enterprise Agreement に移行するには、移行の前に以前のサブスクリプションをすべて停止するか、またはキャンセルします。 Azure アカウントおよび関連付けられているサブスクリプションの移行が完了すると、Azure Marketplace の VM またはサービスを再購入できます。  最終的な使用料金は、ご利用の Enterprise Agreement に基づいて四半期ごとに課金されます。
+### <a name="what-permissions-do-i-need-in-partner-center-to-manage-my-offers"></a>パートナー センターでオファーを管理するにはどのようなアクセス許可が必要ですか?
 
-### <a name="pricing-and-payment"></a>価格と支払い
+パートナー センターでのアクセスの制御に関連する 4 つのロールがあります。
 
-**Azure Marketplace サブスクリプションの価格はどのようになっていますか?**
+- マネージャー: ディレクトリ内のパートナー センター ユーザーの管理と、オファーの作成と更新のためのアクセス許可が提供されます。
+- Developer:ユーザーはオファーを作成および更新できます。
+- 財務共同作成者: 支払いレポートを表示するアクセス許可が提供されます。
+- 所有者: 支払いアカウントと税プロファイルを設定できます。 発行元契約に同意したユーザーは、既定で "所有者" になります。
 
-価格は、製品の種類や発行元の仕様によって異なります。 ソフトウェア ライセンス料と Azure 使用料は、Azure サブスクリプションから個別に請求されます。
+新しいユーザー アカウントを作成するか、基になるディレクトリにゲスト アカウントを招待するには、Azure Active Directory (AAD) グローバル管理者のアクセス許可が必要です。 パートナー センターでは ID モデルに AAD が利用され、多くの場合、組織の AAD インスタンスは IT チームまたはセキュリティ チームによって管理および制御されます。
 
-*バンドル解除されている:*
+詳しくは、「[ユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)」をご覧ください。
 
-+ "*ライセンス持ち込み (BYOL) モデル*": ソフトウェア ライセンスを発行元またはリセラーから直接取得した場合、ソフトウェア関連の追加料金は発生しません。
+### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>顧客には Microsoft Azure Cloud Services のサブスクリプションが必要ですか?
 
-*バンドルされている:*
+パートナーの製品のデリバリー モデルによっては、Azure Cloud Services のサブスクリプションが必要になる場合があります。 Azure サブスクリプション、Microsoft 365 アプリケーション、または Dynamics 365 アプリケーションで直接使用されるソリューションでは、顧客が既存のサブスクリプションを持っている必要があります。 Azure Marketplace で購入されるオファーには、請求メカニズムとして使用されるため、Azure サブスクリプションが必要です
 
-Azure サブスクリプションは、発行元の独立系ソフトウェア ベンダー (ISV) ソリューションの価格に含まれています。
+### <a name="whos-responsible-for-supporting-customers"></a>顧客をサポートする責任はどちらにありますか?
 
-*請求される:*
+コマーシャル マーケットプレースの発行元にはソフトウェアをサポートする責任があり、Microsoft には購入、請求、支払い、サブスクリプションの管理エクスペリエンスをサポートする責任があります。
 
-+ *無料:* 無料の SKU。 ソフトウェア ライセンス料またはオファリングの使用に料金は適用されません。
+### <a name="whats-the-process-to-validate-the-end-to-end-purchase-and-provisioning-flow"></a>購入とプロビジョニングのエンド ツー エンドのフローを検証するプロセスはどのようなものですか?
 
-+ "*無料試用版ソフトウェア*": 限定された期間だけ無料であるオファー。 試用期間中の使用には、発行元のソフトウェア ライセンス料に対する料金は発生しません。 試用期間が過ぎると、発行元によって発行された標準料金に基づいて、有料のオファーに自動的に変換されます。
+発行プロセスの間に、パートナーにはオファーのプレビューへのアクセスが提供されます。 アクセスできるのは [プレビュー] タブで指定されているユーザーだけであり、これは他のユーザーは見ることができないオファーです。 これを購入して、プロセスをテストできます。ただし、オファーの設定に応じて全額料金が請求されます。
 
-+ *使用量ベース:* 料金は、オファリングの使用程度に基づいて請求または課金されます。 Virtual Machines イメージの場合は、時間単位の料金で請求されます。 開発者サービスと API の場合は、オファリングによって定義された測定単位ごとに請求されます。
+購入を非常に低価格で行うため、Microsoft は、テストのコストとして受け入れることのできる価格で設定したプライベート プランを自分自身に発行することを提案します。 $0 もサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されないため、$1 をお勧めします。
 
-+ "*定額料金:* ": SaaS サブスクリプションは、毎月または毎年請求される定額料金として価格設定できます。 これには、使用量に応じて課金される追加の請求ディメンション (帯域幅、電子メール、チケットなど) を含めることもできます。 
+### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>コマーシャル マーケットプレースからのリードはどのようなもので、そのリードに対して何を行う必要がありますか?
 
-+ "*ユーザーごと*": SaaS サブスクリプションは、毎月または毎年請求されるユーザーごとの料金として価格設定できます。 
+顧客が Microsoft AppSource や Azure Marketplace のネットショップでオファーを使用すると、情報が収集されます。 十分な関心があることを顧客が示すと、リードが作成され、パートナーが選択したシステムに営業案件が送信されます。 コマーシャル マーケットプレースで成功している発行元は、多くの場合、リードを追跡し、関係を築いて、関心を取引に結び付けています。
 
-オファー固有の価格設定の詳細については、[https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) のソリューションの詳細ページまたは [Azure portal] 内で確認できます。
+詳しくは、「[コマーシャル マーケットプレース オファーからの顧客リード](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)」をご覧ください。
 
-> [!Note]
-> 月額料金を除く Azure 使用料金は、特に記載のない限り、すべての価格モデルに適用されます。
+### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>Microsoft AppSource または Azure Marketplace のオファーに変更が反映されないのはなぜですか?
 
-**BYOL マーケットプレース ソリューションに対してソフトウェア ライセンス キーをどのように指定したらよいですか? また、Azure Marketplace はどのような役割を果たしますか?**
+パートナー センター内で行われた変更は、オファーを再発行した後でのみ、システムおよびマーケットプレースで更新されます。 変更後に発行のためオファーを送信したことを確認してください。
 
-BYOL ソリューションに対するライセンス資格情報の取得と適用は発行元の責任です。 仮想マシンのオファーの場合、ライセンス キーの取得は通常、アプリケーションが起動した後に発行元のアプリケーションで実行されます。 Azure アプリケーション ソリューション テンプレートを使用してデプロイされた仮想マシンのオファーを使用している場合は、Resource Manager テンプレートを構成して、ユーザーにライセンス資格情報を含む入力の範囲を入力するよう求めることができます。
+## <a name="channels"></a>チャンネル
 
-オファーの種類ごとに最も一般的なオプションを次に示します。
+### <a name="where-can-customers-find-my-commercial-marketplace-offers"></a>顧客は、コマーシャル マーケットプレースのオファーをどこで検索できますか?
 
-*仮想マシンのオファー:*
+オファーは、パートナーによる構成方法と、顧客の行動のコンテキストに基づいて、製品内のエクスペリエンス、Web サイト、リセラー、および Microsoft の営業チームを通じて、顧客に提供されます。 ソフトウェアが Azure、Microsoft 365、Dynamics 365、または Power Platform のサービスで直接使用されている場合、顧客は製品内でソフトウェアを見つけることができます。 Microsoft AppSource と Azure Marketplace は、オファーの種類と対象ユーザー別に分割されており、リセラーはクラウド ソリューション プロバイダー プログラムに参加している場合にのみ、オファーにアクセスできます。
 
-+ *オプション 1:* ライセンス キーの取得は通常、アプリケーションが起動した後に発行元のアプリケーションで実行されます。
+### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource と Azure Marketplace の両方にオファーを表示できますか?
 
-+ *オプション 2:* ライセンス キーは、選択されたサブスクリプションでの VM のオファーのデプロイの後、エンド ユーザーが (オファーによって提供されるコマンド ライン/Web インターフェイス経由で) 入力します。 このライセンスには、発行元によって決定されたキーまたはファイル、あるいはその両方を指定できます。
+Microsoft AppSource はビジネス ソリューションと業界ソリューションが提供される場所であり、Azure Marketplace は IT および開発者向けソリューション用に設計されています。 オファーは、オファーの作成時に選択されたカテゴリと業種に基づいて各ネットショップで利用できるようになり、まれに両方のネットショップのユーザーに関連する場合は、両方に表示されることがあります。
 
-*Azure アプリ (ソリューション テンプレートとマネージド アプリ):*
+### <a name="what-is-the-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラムとはどのようなものですか?
 
-+ *オプション 1:* Resource Manager テンプレートを構成して、ユーザーにライセンス資格情報を含む入力の範囲を入力するよう求めることができます。 これは、エンド ユーザーのサブスクリプションでのオファーのデプロイの前に、ライセンス ファイル (ファイルのアップロード) またはキー (テキスト ボックスの入力) として実行できます。
+Microsoft のリセラーのグローバル ネットワークには、クラウド ソリューション プロバイダー (CSP) プログラムに参加している数万の組織が含まれます。 CSP プログラムでは、それらの組織に、コマーシャル マーケットプレースから製品やオファーを再販する機能と、それを問題なく行うためのツールが提供されています。
 
-+ *オプション 2:* オファーによって提供されるコマンド ライン/Web インターフェイス経由でライセンス キーを入力できます。  これは、選択されたサブスクリプションでの Azure アプリ オファーのデプロイの後に実行されます。 このライセンスには、発行元によって決定されたキーまたはファイル、あるいはその両方を指定できます。
+詳しくは、「[クラウド ソリューション プロバイダー](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)」をご覧ください。
 
-**どのような種類の試用版がサポートされていますか?**
+### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>リセラーを見つけてパートナーシップを確立するにはどうすればよいですか?
 
-発行元は、有料 SaaS オファーの場合は 1 か月間、VM イメージの場合は 1 か月または 3 か月間の無料使用分を追加できます。 無料試用版オファーは、試用版を開始するための参照情報が含まれるリストです。 これにより、お客様は発行元によって定義された試用版エクスペリエンスを設定するために Web サイトに移動します。 試用版は、最初の月が無料の有料オファリングに追加することもできます。 
+[ソリューション プロバイダー ディレクトリ](https://www.microsoft.com/solution-providers/home)を使用すると、場所、製品、サービス、スキル、業種、組織名などに基づいて、パートナーを検索できます。
 
-**Free レベルまたはライセンス持ち込み (BYOL) オファリングをデプロイするには、ファイル上に支払い方法 (クレジット カードなど) を指定する必要がありますか?**
+### <a name="can-i-limit-the-resellers-allowed-to-sell-my-offer"></a>オファーの販売を許可するリセラーを制限できますか?
 
-いいえ。 Free レベルまたは BYOL オファリングをデプロイするために支払い方法は必要ありません。 ただし、無料試用版オファリングには支払い方法が必要です。 **[今すぐ入手する]** または **[Free software trial] (無料試用版ソフトウェア)** ボタンを含む一覧が、選択された Azure サブスクリプションにデプロイされます。  これらの一覧は、選択されたアカウントの登録された支払い方法を使用して課金されます。 Azure 使用料金は、ソフトウェア ライセンス料とは別に課金されます。
+はい、クラウド ソリューション プロバイダー プログラムでは、すべてのリセラーが利用できるように、または指定したリセラーだけが利用できるように、オファーを設定できます。
 
-**Azure Marketplace で販売されるオファーの価格について質問がある場合、Enterprise Agreement (EA) インダイレクト カスタマーはだれに問い合わせればよいですか?**
+詳しくは、「[クラウド ソリューション プロバイダー](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)」をご覧ください。
 
-Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marketplace の価格に関するすべての質問について、担当のライセンス ソリューション プロバイダー (LSP) に問い合わせる必要があります。
+### <a name="how-can-i-pay-margin-to-resellers"></a>リセラーにマージンを支払うにはどうすればよいですか?
 
-**従業員の Azure Marketplace へのアクセスや購入特権を制御できますか?**
+コマーシャル マーケットプレースには、リセラーに対するマージンを指定したり、リセラーに直接、自動的にマージンを支払う機能はありません。 ただし、コマーシャル マーケットプレース システムの外部で、契約、販売コンテスト、またはマージンを作成することはできます。
 
-はい。Enterprise Agreement (EA) のお客様の場合、登録管理者は登録に関するすべてのアカウントの購入特権を無効にした後、購入を行うための十分に長い期間それを再び有効にすることができます。
+### <a name="how-does-geographic-availability-work-with-resellers"></a>リセラーの利用可能な地域はどのように処理されますか?
 
-**商業マーケットプレースでの購入では、どのような支払い方法がサポートされていますか?**
+オファーとプランを利用できるかどうかは、顧客の請求場所によって定義されます。 そのため、リセラーはまず、販売先の顧客を選択してから、オファーを選択します。 顧客がサポートされていない場所にいる場合、顧客はオファーを使用できません。
 
-お客様は、クレジット カードを使用して Azure Marketplace と Microsoft AppSource からオファリングを購入できます。 既存の Azure サブスクリプションをお持ちの場合、Azure Marketplace からの購入では、アカウントに構成されている支払い方法が使用され、個別の品目として同じ請求書に表示されます。 一部のオファーでは Azure の年額コミットメントが使用されますが、商業マーケットプレースでのほとんどの購入では、Azure インフラストラクチャの消費とは異なり、Enterprise Agreement コミットメントは使用されません。
+## <a name="billing-capabilities"></a>課金機能
 
-**Azure Marketplace のオファーに対して、自分のアカウントの Azure サブスクリプション クレジットまたは年額コミットメント資金を適用できますか?**
+### <a name="whats-the-difference-between-transaction-and-monetization"></a>取引と収益化の違いは何ですか?
 
-特定の Azure Marketplace のオファーは、Azure サブスクリプション クレジットまたは年額コミットメント資金を使用できます。 このプログラムに参加している製品の完全な一覧については、[Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)に関するページを参照してください。 これらのオファーには、BYOL または BYOS オプションは含まれません。 その他のすべての Azure Marketplace のオファーは、Azure サブスクリプション クレジットや年額コミットメントを使用できません。これには、1 か月の無料試用版のクレジット、月単位の MSDN クレジット、Azure プロモーションからのクレジット、年額コミットメントの残高、および Azure から提供されるその他のすべての無料クレジットが含まれます。
+- 取引は、商品と代金の交換です。オファーに価格があり、Microsoft の請求と徴収によって顧客による支払いが行われる場合、オファーはコマーシャル マーケットプレースで取引可能と見なされます。 
+- 収益化は、知的財産 (IP) に対する費用を請求する機能であり、コマース プラットフォームの内部または外部で発生する可能性があります。 たとえば、パートナーのライセンス持ち込み (BYOL) Teams アプリを、取引可能な SaaS ライセンス サービスで収益化することができます。
 
-**Azure Marketplace での購入物にボリューム ライセンス割引は適用されますか?**
+### <a name="what-offer-types-are-transacted-through-microsoft"></a>Microsoft ではどのような種類のオファーが取引されますか?
 
-いいえ。 Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
+一部のデリバリー モデルについては、Microsoft を通じて "今すぐ入手" オファーを処理できます。 これは現在、次のデリバリー モデルでサポートされています。
 
-**Azure Marketplace サブスクリプションの詳細や課金情報はどこで表示できますか?**
+- VM イメージ
+- Azure アプリ (マネージド アプリ)
+- SaaS
 
-MOSP - [マイクロソフト オンライン サブスクリプション プログラム ](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web ダイレクト) のお客様は、[Azure portal] の [コストの管理と請求] セクションの [請求書] タブで Marketplace の購入の詳細を確認できます。
+### <a name="what-billing-models-are-supported-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、どのような課金モデルがサポートされていますか?
 
-マイクロソフト エンタープライズ契約 (EA) のお客様は、[Azure portal] の [コストの管理と請求] セクションの [請求書] タブで Marketplace の購入の詳細を確認できます。
+- VM イメージは 1 時間あたりの使用量に基づいて課金され、1 時間単位で価格が設定されます。
+- マネージド アプリは、オプションの月額固定料金と、従量制課金およびアプリで使用された VM イメージで課金されます。
+- SaaS アプリは、月単位または年単位で、固定料金、ユーザー単位の従量制、またはカスタム従量制により課金されます。
 
-クラウド ソリューション プロバイダー (CSP) パートナーは、[顧客] ビューで会社を選択した後、パートナー センター内の [注文履歴] タブで顧客ごとに Marketplace の購入の詳細を確認できます。
+### <a name="can-i-monetize-offer-types-that-are-not-transactable"></a>取引可能ではない種類のオファーを収益化できますか?
 
-**Azure VM への Azure Marketplace アドオンをキャンセルするにはどうすればよいですか?**
+取引可能ではないオファーの種類もありますが、それでも数百万の顧客に対し、IP を収益化することができます。 ソリューションにライセンス チェックを追加することで、ライセンスの支払いを徴収できます。 ライセンスの販売は、Microsoft を通して、または別途、行うことができます。
 
-このアドオンは Azure 仮想マシン (VM) に関連付けられているため、Azure Marketplace での購入物をキャンセルするには、まず VM を削除することによって VM を停止します。 それにより、Azure Marketplace での購入物に関するサブスクリプションのすべての使用量および料金が停止されます。
+### <a name="can-i-offer-a-software-trial-through-the-commercial-marketplace"></a>コマーシャル マーケットプレースを通じて、ソフトウェアの試用版を提供できますか?
 
-**Azure Marketplace での購入物に対してどれくらいの頻度で課金されますか?**
+はい、複数の方法で無料試用版を提供できます。
 
-年額コミットメントから差し引かれないすべての Azure Marketplace のオファーは、後で月単位に課金されます。 SaaS の年間サブスクリプションは、1 年間のサービスに対して 1 回課金されます。
+- お勧めの方法は、有料の SaaS オファー (1 か月) および VM イメージ オファー (1 か月、3 か月) の開始時に、無料期間を追加することです。 顧客が受け取る請求は $0 になり、試用期間が終了すると、サブスクリプションは自動的に有料に変わります。 契約期間はその時点から始まります。
+- SaaS オファー一覧を作成し、パートナーが選択した Web アドレスに顧客を誘導して、コマーシャル マーケットプレースの外部で試用版を開始することができます。 一部のオファーの種類では、顧客にデモを提供できる体験版がサポートされています。
 
-MOSP - [マイクロソフト オンライン サブスクリプション プログラム](https://azure.microsoft.com/support/legal/subscription-agreement/) (Web ダイレクト) のお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して月単位で請求されます。 SaaS の年間サブスクリプションは、1 年間のサービスに対して 1 回課金されます。
+### <a name="who-pays-for-the-underlying-azure-consumption"></a>基になる Azure の消費に対して支払うのはだれですか?
 
-**Azure Marketplace での購入物を MOSP サブスクリプションからダイレクト Enterprise Agreement (EA) サブスクリプションに移動するにはどうすればよいですか?**
+ソリューションが顧客の Azure サブスクリプションで直接使用されている場合は、顧客が Azure のコストを支払う責任があります。 SaaS の場合など、ソリューションがパートナーの Azure サブスクリプションで使用されている場合は、パートナーが Azure のコストについて責任を負い、顧客の SaaS サブスクリプションのコストでそれを考慮する必要があります。
 
-ほとんどの Microsoft サブスクリプションは Enterprise Agreement に容易に変換できますが、それらのサブスクリプション内の Azure Marketplace での購入物はそれができません。
+### <a name="can-i-sell-professional-services-through-the-commercial-marketplace"></a>コマーシャル マーケットプレースを通じてプロフェッショナル サービスを販売することはできますか?
 
-Azure Marketplace から購入された他のサービスを EA サブスクリプションに移行するには、まず既存の MOSP サブスクリプション内からアプリケーションをキャンセルし、EA サブスクリプション内でこれらのアプリケーションを再購入します。 それを行うことにより、Marketplace サービス サブスクリプション間で重複する可能性のある月の分の返金を求めるクレジット要求を送信できます。[サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を作成します。
+Microsoft のクラウド サービスを基にして、またはクラウド サービス用に構築されているソフトウェアは、コマーシャル マーケットプレースで取引できます。 プロフェッショナル サービスはまだ取引可能ではありません。
 
-**Azure Marketplace での仮想マシン オファーのコスト構造における "*価格*"、"*ソフトウェア価格*"、"*合計額*" の違いは何ですか?**
+## <a name="purchasing"></a>購入
 
-"*価格*" は、ソフトウェアを実行する Azure 仮想マシンのコストを指します。 "*ソフトウェア価格*" は、Azure 仮想マシン上で実行されている Marketplace 発行元のソフトウェアのコストを指します。 "*合計額*" は、Azure 仮想マシンと Azure 仮想マシン上で実行されている Marketplace 発行元のソフトウェアを合わせた総コストを指します。
+### <a name="whats-required-to-purchase-solutions-from-microsoft-appsource-or-azure-marketplace"></a>Microsoft AppSource または Azure Marketplace からソリューションを購入するには何が必要ですか?
 
-**Azure Marketplace での購入物のうちのどれだけを使用したかを確認するにはどうすればよいですか?**
+Azure Marketplace を利用するには、顧客は、Azure Active Directory ID とアクティブな Azure サブスクリプションを持っている必要があります。 どちらか一方または両方がない場合、ユーザーは購入フローでそれらを作成するように求められます。
 
-推定使用量の情報は、[Azure portal] で確認できます。 このような概算の使用状況情報は最近のアクティビティを含まず、過去の消費から導き出された予測に基づいている可能性があります。 パブリック プレビューの間、この機能は一部の購入には使用できない可能性があり、また製品の種類によって異なることがあります。
+Microsoft AppSource を利用するには、顧客は Azure Active Directory ID を持っている必要があります。 ない場合、ユーザーは購入フローでそれを作成するように求められます。
 
-### <a name="customer-support"></a>カスタマー サポート
+### <a name="what-payment-methods-are-supported-with-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、どのような支払い方法がサポートされていますか?
 
-**Azure Marketplace に関する一般的なサポートの問題については、だれに問い合わせればよいですか?**
+Microsoft AppSource では、クレジット カードによる支払いがサポートされています。 Azure Marketplace では、クレジット カードまたは請求書がサポートされています。 Azure Marketplace で購入されたオファーは、顧客の Azure の請求に自動的に追加され、サブスクリプションに関連付けられている支払い方法に従って請求されます。
 
-使用法やトラブルシューティングに関する一般的なアプリケーション サポートについては、アプリケーションの発行元に直接問い合わせてください。
+### <a name="can-customers-apply-azure-credits-or-sponsorship-towards-purchases"></a>顧客は、購入に Azure クレジットやスポンサー プランを適用できますか?
 
-Azure Marketplace での購入物に関する課金やサブスクリプションの問題については、[Azure サポート](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)に問い合わせてください。
+いいえ、前払いまたはスポンサーによる Azure の支出は、Azure Marketplace からのパートナー ソリューションの購入には使用できません。
 
-**Azure Marketplace で購入したソリューションの技術サポートについては、だれに問い合わせればよいですか?**
+### <a name="what-azure-subscription-permissions-are-required-to-complete-a-purchase"></a>購入を完了するために必要な Azure サブスクリプションのアクセス許可は何ですか?
 
-すべての技術的な製品サポートについては、発行元のプロバイダーに問い合わせてください。 発行元の連絡先情報やサポート Web サイトへのリンクは、Azure Marketplace のそれぞれのソリューションの詳細ページで確認できます。
+ユーザー アカウントには、Azure サブスクリプションでの所有者または共同作成者のアクセス許可が必要です。
 
-**Marketplace から購入されたサードパーティのソリューションに関する課金のサポートや質問については、だれに問い合わせればよいですか?**
+### <a name="in-what-countries-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>顧客はどの国で Microsoft AppSource および Azure Marketplace から購入できますか?
 
-Microsoft サポートの [Azure サポート](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)に問い合わせてください。
+顧客は、世界中の 141 の場所でコマーシャル マーケットプレースからソリューションを入手できます。
 
-**Azure Marketplace で販売されるパートナー ソリューションの価格または支払い条件について質問がある場合は、だれに問い合わせればよいですか?**
+完全な一覧については、「[コマーシャル マーケットプレース発行元向けの税の詳細](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)」をご覧ください。
 
-すべての技術的な製品サポートについては、発行元のプロバイダーに問い合わせてください。 発行元の連絡先情報やサポート Web サイトへのリンクは、Azure Marketplace のそれぞれのソリューションの詳細ページで確認できます。
+### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、どのような通貨がサポートされていますか?
 
-**購入物に満足していない場合は、返品できますか?**
+次の 17 の通貨で取引を行うことができます。
+- AUD
+- BRL
+- CAD
+- CHF
+- DKK
+- EUR
+- GBP
+- INR
+- JPY
+- KRW
+- NOK
+- NZD
+- RMB
+- RUB
+- SEK
+- TWD
+- USD
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/) からの購入物を返品することはできませんが、キャンセルまたは削除は可能です。 使用量ベースのプランは、使用量に応じて課金されるため、使用を停止すると課金も停止されます。 現行の請求期間を過ぎると、サブスクリプションは取り消され課金は行われません。 購入後間もなくしてサブスクリプションが取り消された場合 (月単位の場合は 24 時間、年単位の場合は 14 日間)、全額が返金されます。
+「[コマーシャル マーケットプレースで利用可能な地域と通貨のサポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」の一覧をご確認ください。
 
-Marketplace サービスまたは購入に関する技術的な問題がある場合、お客様は発行元に直接問い合わせる必要があります。 発行元の連絡先情報やサポート Web サイトへのリンクは、Azure Marketplace のそれぞれのソリューションの詳細ページで確認できます。
+### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>顧客は、契約期間中にサブスクリプションまたはライセンスのボリュームを変更できますか?
 
-**ライセンスの追加は、期間中に増やした場合にどのように処理されますか?**
+顧客は、ユーザーごとの SaaS サブスクリプションのユーザー数をいつでも増減できます。 ボリュームまたはプランのアップグレードに関係なく、ライセンス サブスクリプションの条件は変わりません。 アプリケーション プログラミング インターフェイス (API) を使用して、既存のサブスクリプションのプランを変更することもサポートされています。 発行元は API 呼び出しを使用して、顧客のサブスクリプション プランを変更できます。 独立系ソフトウェア ベンダー (ISV) には、アップグレードやダウングレードの状況において、SaaS ソリューション内の顧客のユーザー エクスペリエンスを考慮することをお勧めします。
 
-既存のサブスクリプションに追加されたライセンスは、残りのサブスクリプション期間に対して評価されます。
+既存のサブスクリプションのプランが変更された場合、その期間は変更されず、料金は残りの期間に従って日割りで計算されます。
 
-**期間中のライセンスの削除はどのように処理されますか?**
+### <a name="what-could-block-a-customer-from-completing-a-purchase"></a>何によって、顧客の購入の完了が妨げられる可能性がありますか?
 
-取り消されたライセンスは、この FAQ に記載されている返金ポリシーの対象となります。  取り消されたすべてのライセンスはアカウントから直ちに削除され、使用できなくなります。
+Microsoft AppSource の場合、顧客は Azure Active Directory (AAD) のインスタンスと同じ国に請求先住所があるクレジット カードを持っている必要があり、顧客の AAD 管理者は、Microsoft AppSource に対する認証がシステムによって妨げられないことを確認する必要があります。
 
-**使用量ベースのオファーでは、返金はサポートされていますか?**
+Azure Marketplace の場合、顧客は、アクティブな Azure サブスクリプションと、そのサブスクリプションに対する所有者または共同作成者のアクセス許可があるユーザー アカウントを持っている必要があります。 顧客の Azure 管理者は、使用されているオファーが Azure ポリシーと競合しないこと、および Azure Marketplace を無効にするように Cost Management を設定できないことを、確認する必要があります。
 
-使用量に基づく料金 (時間単位 VM かカスタム測定かにかかわらず) は、キャンセルによる払い戻しはできません。 消費が発生すると、Microsoft のコマース プラットフォームによって料金が処理され、返金が要求されたサービス品質紛争は、Microsoft システムの外部で発行元と顧客の間で直接処理されます。 定額価格と従量制課金制をサポートするオファーでは、標準の返金ポリシーに従って定額料金が請求されます。
+## <a name="collection-and-payouts"></a>徴収と支払い
 
-**期間中にプランを変更することはできますか?**
+### <a name="when-are-customers-billed-for-their-purchases-in-the-commercial-marketplace"></a>顧客は、コマーシャル マーケットプレースでの購入に対していつ請求されますか?
 
-いいえ、月単位と年単位の間で移行することはできません。
+通常、顧客は、前の請求サイクルでの購入に対して、月単位で請求されます。 VM イメージや SaaS などの消費ベースのオファーと、従量制課金プランのマネージド アプリについては、使用後に課金されます。 サブスクリプション ベースのプランは、期間の開始時に課金されます。
 
-**同じオファーから 2 つのプランを購入することはできますか?**
+### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの販売に対する支払いを受け取る頻度はどれくらいですか?
 
-はい、同じオファーから 2 つのプランを同時に所有することができます。
+支払いは毎月発生します。 前の月に処理された徴収は一度に支払われ、合算値が $50 以上である必要があります。
 
-**返金とプラン変更のポリシーはネットショップごとに異なりますか?**
+クレジット カードでのサブスクリプションと購入は月単位で請求され、Microsoft 顧客契約または Enterprise Agreement に対する請求は頻度が少なくなる場合があります。 顧客は、請求の時点から 30 日以内に支払う必要があります。 顧客から支払いを受けた後、クレジット カード取引は 30 日のエスクロー期間に入ります。
 
-いいえ、ビジネス ポリシーは、Azure Marketplace と Microsoft AppSource の間で一貫しています。 クラウド ソリューション プロバイダー プログラムのパートナーによって再販が行われた場合、パートナーは顧客に対して別のポリシーを適用できます。
+詳しくは、「[支払いのしきい値、方法、期間](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes)」をご覧ください。
 
+### <a name="in-what-countries-are-taxes-managed-on-my-behalf"></a>税金の管理が肩代わりされるのはどの国ですか?
 
-## <a name="faq-for-publishers"></a>発行元向けの FAQ
+顧客は世界中のコマーシャル マーケットプレースでソリューションを探すことができ、多くの場所で Microsoft が税金を管理しています。 
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketplace と Microsoft AppSource について知っておくべきこと
+完全な一覧については、「[コマーシャル マーケットプレース発行元向けの税の詳細](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)」をご覧ください。
 
-**Azure Marketplace とは何ですか?**
+### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの支払いレポートはどこで入手できますか?
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) は、アプリケーションとサービスのオンライン マーケットプレースです。 お客様 (主に IT プロフェッショナルや開発者) は、Azure を使用して、または Azure 向けに構築されたクラウド ソフトウェア ソリューションを見つけて購入することができます。 そのカタログには、Virtual Machines (VM)、API、ソリューション テンプレート、SaaS アプリケーション、コンサルティング サービス オファーなどの Azure の構成要素の 8,000 を超える一覧が含まれています。
+所有者または財務共同作成者のアクセス許可を持つユーザーは、パートナー センター内で支払いレポートを見ることができます。 レポートには、右上隅にある請求書を持っている手のアイコンからアクセスできます。
 
-Azure Marketplace は、すべての Microsoft Go-To-Market 共同アクティビティの開始点です。  当社は、パートナー様がより多くのお客様に会えるよう支援することに重点を置いています。 新しい一覧を発行したり、Azure Marketplace を使用してプロモーションおよび需要創出キャンペーンや、Microsoft との販売/マーケティング共同アクティビティを実行したりすることもできます。
+詳しくは、「[支払いレポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary)」をご覧ください。
 
-**Azure Marketplace の対象顧客は?**
+### <a name="how-do-i-configure-my-payout-method-and-destination"></a>支払い方法と支払い先はどのようにして構成できますか?
 
-Azure Marketplace は、商用の IT ソフトウェアおよびサービスに関心がある IT プロフェッショナルやクラウド開発者向けに設計されています。
+所有者アクセス許可を持つユーザーは、パートナー センターで支払いアカウントと税フォームを設定できます。 これは、右上隅にある歯車アイコンから開く設定ペインで行います。
 
-### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace の発行元向け情報
+詳しくは、「[支払いアカウントと税フォームを設定する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms)」をご覧ください。
 
-**Azure Marketplace でアプリケーションを発行した方がよいのはなぜですか? それにはどのようなメリットがありますか?**
+### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、返品と返金はサポートされていますか?
 
-Azure Marketplace は、マイクロソフト パートナーが Azure のお客様に製品やサービスをアピールして販売するための市場を提供します。 発行元は、140 のグローバル市場、300,000 を超えるマイクロソフト パートナー、および Azure のエンタープライズ顧客のネットワークに直ちにアクセスできます。  このマーケットプレースには Fortune 500 企業の 90% 超、および世界有数の開発者の多くが含まれています。 Azure Marketplace の新しいパートナーには、Azure のマーケットプレースでのそのオファーの認知度を向上させるのに役立つ、一連の[無料の Go-To-Market 特典](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits)が自動的に提供されます。
+顧客は、指定された期間内であればサブスクリプションをキャンセルして、返金を受け取ることができます。 ソリューションの使用後に使用量に基づいて課金されるオファーンは、返金の対象になりません。
 
-**Azure Marketplace と AppSource の間の差別化要因は何ですか?**
+月単位または年単位のサブスクリプションとして請求されるオファーは、月単位プランの場合は 24 時間以内、年単位プランの場合は 14 日以内にキャンセルでき、顧客には全額返金されます。 猶予期間が終了した後は、マーケットプレース発行元サポートに対するサポート チケットを通じて、顧客に返金を提供できます。
 
-マイクロソフト パートナーは、その対象ユーザーに基づいて、発行する場所を選択できます。
+## <a name="resources"></a>リソース
 
-Microsoft は、2 つの個別のクラウド マーケットプレース ネットショップである Azure Marketplace と AppSource を提供しています。 これらのネットショップを使用すると、お客様はクラウド アプリケーションやサービスを見つけ、試し、購入することができます。 各ネットショップは固有の顧客ニーズに対応し、マイクロソフト パートナーが対象ユーザーに基づいて、そのソリューションまたはサービスをターゲットにできるようにします。
+### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>コマーシャル マーケットプレースに関する詳細情報は、どこで確認できますか?
 
-IT プロフェッショナルや開発者、またはテクニカル ユーザーをターゲットにするには、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) を選択します。
+利用を開始するときに役立つリソースを次に示します。
 
-基幹業務の意思決定者とビジネス オーナーをターゲットにするには、[AppSource](https://appsource.microsoft.com/) を選択します。
+- [Microsoft コマーシャル マーケットプレースの概要](https://docs.microsoft.com/learn/commercial-marketplace/intro-commercial-marketplace/intro-commercial-marketplace/)
+- [Microsoft コマーシャル マーケットプレース パートナー ハブ](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
+- [コマーシャル マーケットプレースにようこそ](https://docs.microsoft.com/azure/marketplace/)
 
-Azure Marketplace と AppSource の詳細および利点については、[発行元ガイド](marketplace-publishers-guide.md)を確認してください。
+### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Microsoft や他のパートナーと協力するにはどうすればよいですか?
 
-**Azure Marketplace にアプリケーションやサービスを一覧表示するには、Microsoft Partner Network (MPN) のメンバーである必要がありますか?**
+次のリソースをお勧めします。
 
-はい。Azure Marketplace で発行するには MPN が必要です。 開始するには、[Microsoft Partner Network](https://partner.microsoft.com/membership) にアクセスしてください。
+- Microsoft パートナー コミュニティに参加するには、「[Microsoft AppSource と Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)」をご覧ください。
+- [Microsoft コマーシャル マーケットプレース インサイダー プログラム](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders)について理解し、ご参加ください
 
-**Azure Marketplace でソリューションを発行するための基準はどのようなものですか?**
+### <a name="where-can-i-learn-more-about-partner-center"></a>パートナー センターの詳細については、どこで学習できますか?
 
-Azure Marketplace で発行するには、パートナーはそのアプリケーションが Azure 上で動作するか、または Azure を拡張することを示す必要があります。 発行元は、お客様に[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)、[プライバシー ポリシー](https://privacy.microsoft.com/privacystatement)、電話およびオンライン サポートを提供する必要があります。 さまざまなワークロードに追加の要件があります。 さらに詳しいガイダンスについては、[Azure Marketplace 参加ポリシー](./marketplace-participation-policy.md)および[発行元ガイド](marketplace-publishers-guide.md)を確認してください。
+- [パートナー センターのドキュメント](https://docs.microsoft.com/partner-center/)。
+- [コマーシャル マーケットプレースにようこそ](https://docs.microsoft.com/azure/marketplace/)
 
-**Azure Marketplace で発行するために料金は発生しますか?**
+### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Microsoft 管理センターの詳細については、どこで確認できますか?
 
-Azure Marketplace 経由で一覧、試用版、または BYOL (ライセンス持ち込み) ソリューションをアップロードする場合、発行料金は発生しません。
+「[組織のサードパーティ製アプリのサブスクリプションを管理する](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide)」をご覧ください。
 
-**Azure Marketplace 経由の購入に取引手数料は発生しますか?**
+### <a name="where-can-i-learn-more-about-azure-billing"></a>Azure の請求に関する詳細は、どこで学習できますか?
 
-Azure Marketplace 経由でソリューションのライセンスが購入されると、ソフトウェア ライセンスの収益は発行元と Microsoft の間で分割されます。  これは、[Marketplace 発行者契約](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)にある使用条件に従って実行されます。 さらに、BYOL (ライセンス持ち込み) 発行元のソリューションに取引手数料は発生しません。
+- [Azure Cost Management および Billing のドキュメント](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Azure の請求での Azure Marketplace の料金について](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
+- [Azure サブスクリプションを請求書支払いに切り替える](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
 
-**標準的な契約とはどのようなものですか?**
+### <a name="where-can-i-learn-more-about-azure-government-and-the-azure-government-marketplace"></a>Azure Government と Azure Government Marketplace の詳細については、どこで確認できますか?
 
-Microsoft が提示する標準的な契約条件を発行元は活用することができ、結果、顧客が行う調達プロセスおよび法的調査のプロセスは簡略化されます。
-
-**アプリケーションを Azure Active Directory (AAD) と統合するためのガイドラインはどこにありますか?**
-
-Microsoft は、すべての Marketplace ユーザーを AAD で認証します。  追加のサインイン手順は必要なく、ユーザーを試用版に直接プロビジョニングできます。  たとえば、認証されたユーザーは Marketplace の試用版の一覧をクリックして、評価環境にリダイレクトされます。
-
-詳細について、および AAD での試用版の有効化を開始するには、[発行元ガイドの Azure Active Directory のセクション](enable-appsource-marketplace-using-azure-ad.md)を参照してください。
-
-**デベロッパー センターの登録を開始するにはどうすればよいですか?**
-
-開始するには、発行元は[デベロッパー センター アカウント](deprecated/register-dev-center.md)がまだ登録されていないことを確認する必要があります (重複を避けるため)。 確認したら、次の手順として、Microsoft アカウントで[サインイン](https://account.microsoft.com/account/)することによって登録します。このアカウントは、後で開発者アカウントに関連付けられます。
-
-Microsoft アカウントをまだ持っていない場合は、[アカウントを作成](https://signup.live.com/)できます (contoso_marketplace@live.com など)。
-
-**デベロッパー センター アカウントが必要なのはなぜですか?**
-
-デベロッパー センター アカウントは、登録リストの種類に対して Microsoft が発行元に代わってお客様に課金できるようにするために必要です。 デベロッパー センター アカウントの登録により、Microsoft は法律、税金、および銀行に関する情報を検証できるようになります。 詳細については、[デベロッパー センターでの登録](./partner-center-portal/create-account.md)に関するページを参照してください。
-
-**リードとは何であり、それが Marketplace での発行元にとって重要なのはなぜですか?**
-
-リードとは、Marketplace から製品をデプロイしょうとしている顧客のことです。 製品が [Azure Marketplace](https://azuremarketplace.microsoft.com) または [AppSource](https://appsource.microsoft.com) のどちらに一覧表示されているかにかかわらず、その製品に関心があるお客様からリードを受信できます。  オファーに対するリードの宛先を設定できます。 詳細については、「[クラウド マーケットプレース パブリッシャーになる](./partner-center-portal/create-account.md)」を参照してください。
-
-**リードの送信先の設定方法に関するヘルプはどこで入手できますか?**
-
-[パートナー センター - 潜在顧客の獲得](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)に関するドキュメントで詳細を確認するか、またはオファーの種類とリード管理を選択することによって [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) 経由でサポート チケットを送信します。
-
-**Marketplace でオファーを発行するには、リードの宛先を構成する必要がありますか?**
-
-はい。 **[お問い合わせ]** 、 **[SaaS アプリ]** 、または **[コンサルティング サービス]** オファーを発行する場合は、リードの宛先を構成する必要があります。
-
-**リード構成が正しいことを確認するにはどうすればよいですか?**
-
-オファーを完了し、リードの宛先を設定した後、[パートナー センター](https://cloudpartner.azure.com/)で一覧を正常に発行できます。 一覧の運用が開始される前に、リード構成が正しく機能しているかどうかを検証できます。  オファーで構成されたリードの宛先にテスト リードを送信します。
-
-**Azure Marketplace で発行元が販売できるのはどの国/地域ですか?**
-
-現在、次の国/地域に拠点を置く発行元が Azure Marketplace で販売できます。アフガニスタン、アルバニア、アルジェリア、アンゴラ、アンティグア・バーブーダ、アルゼンチン、アルメニア、オーストラリア、オーストリア、アゼルバイジャン、バーレーン、バングラデシュ、ベラルーシ、ベルギー、ベナン、ボリビア、ボスニア・ヘルツェゴビナ、ボツワナ、ブラジル、ブルガリア、ブルキナ・ファソ、ブルンジ、カンボジア、カメルーン、カナダ、中央アフリカ共和国、チャド、チリ、コロンビア、コモロ、コンゴ共和国、コンゴ民主共和国、コスタリカ、コートジボワール、クロアチア、キプロス、チェコ共和国、デンマーク、ドミニカ、ドミニカ共和国、エクアドル、エジプト、エルサルバドル、エリトリア、エストニア、エチオピア、フィジー諸島、フィンランド、フランス、ジョージア、ドイツ、ガーナ、ギリシャ、グアテマラ、ギニア、ハイチ、ホンジュラス、香港特別行政区、ハンガリー、アイスランド、インド、インドネシア、イラク、アイルランド、イスラエル、イタリア、ジャマイカ、日本、ヨルダン、カザフスタン、ケニア、韓国、クウェート、ラオス、ラトビア、レバノン、リベリア、リヒテンシュタイン、リトアニア、ルクセンブルク、マダガスカル、マラウィ、マレーシア、マリ、マルタ、モーリシャス、メキシコ、モナコ、モンゴル、モンテネグロ、モロッコ、モザンビーク、ネパール、オランダ、ニュージーランド、ニカラグア、ニジェール、ナイジェリア、ノルウェー、オマーン、パキスタン、パナマ、パラグアイ、ペルー、フィリピン、ポーランド、ポルトガル、カタール、ルーマニア、ロシア、ルワンダ、サウジアラビア、セネガル、セルビア、シエラレオネ、シンガポール、スロバキア、スロベニア、ソマリア、南アフリカ、スペイン、スリランカ、スウェーデン、スイス、タジキスタン、タンザニア、タイ、ティモール・レステ、トーゴ、トンガ、トリニダード・トバゴ、チュニジア、トルコ、トルクメニスタン、ウガンダ、ウクライナ、アラブ首長国連邦、イギリス、米国、ウルグアイ、ウズベキスタン、ベネズエラ、ベトナム、ザンビア、ジンバブエ。
-
-**Azure Marketplace から一覧を削除するにはどうすればよいですか?**
-
-"*仮想マシンおよび Azure アプリ*":
-
-1. [パートナー センター](https://cloudpartner.azure.com/)にサインインします。
-1. **[All Offers]\(すべてのオファー\)** タブからオファーを選択します。
-1. 画面の左側にあるウィンドウで、 **[SKU]** タブをクリックします。
-1. 削除のための SKU を選択し、その SKU の **[削除]** ボタンをクリックします。
-1. Azure Marketplace のプランを[再発行](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)します。
-
-詳細については、[オファーの削除](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)に関するページを参照してください。
-
-"*Web Apps (SaaS アプリ、アドオン) およびコンサルティング サービス*":
-
-1. パートナー センターで、疑問符アイコンを選択して **[サポート]** をクリックします。
-1. <https://go.microsoft.com/fwlink/?linkid=844975> にアクセスします。
-1. サポート ページで、オファーの種類を選択します。
-1. 発行されたオファーの **[削除]** を選択します。
-1. インシデント チケットを作成します。
-1. 送信します。
-
-"*O365 アプリ*":
-
-1.  ご自分の開発者アカウントで <https://sellerdashboard.microsoft.com> にサインインします。
-1.  アドインを取り消します。
-
-    > [!NOTE]
-    > アプリは 90 日後に既存の一覧に表示されなくなります。
-
-**変更がオファーに反映されないのはなぜですか?**
-
-パートナー センター内で行われた変更は、オファーを再発行した後でのみ、システムおよびネットショップで更新されます。 変更後に発行のためオファーを送信したことを確認してください。
-
-### <a name="benefits-and-go-to-market-gtm-resources"></a>特典と Go-To-Market (GTM) リソース
-
-**Azure Marketplace に記載されている発行元に提供される Go-To-Market 特典にはどのようなものがありますか?**
-
-Azure Marketplace は、Microsoft との Go-To-Market 共同アクティビティの開始点であり、Co-Sell Ready パートナーシップへの出入口です。 Azure Marketplace のすべての新しい一覧には、Microsoft のお客様へのオファーの認知度を向上させるのに役立つ、一連の[無料の Go-To-Market 特典](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf)が自動的に提供されます。 オファーが発行されると、Microsoft GTM チームはその発行元に連絡を取り、特典の提供を開始します。
-
-GTM 特典およびマーケットプレースでビジネスを成長させる方法の詳細については、[Microsoft GTM サービス](https://partner.microsoft.com/reach-customers/gtm)に関するページを参照してください。
-
-**Azure Marketplace のソリューションは Microsoft の Web プロパティ内のどこで販売促進されていますか?**
-
-Azure Marketplace のソリューションは、Microsoft [Azure portal] および [Azure Marketplace Web サイト](https://azuremarketplace.microsoft.com/marketplace/)で入手できます。 Azure を使用しているクラウド開発者と IT プロフェッショナルは、サインインするたびにパートナー ソリューションが目に入ります。 また、パートナー ソリューションのサブセットも展示され、[Azure Marketplace のホームページ](https://azuremarketplace.microsoft.com/marketplace)および [Azure ソリューション ページ](https://azure.microsoft.com/solutions/)でローテーションされます。
-
-### <a name="billing-and-payments"></a>課金と支払い
-
-**Azure Marketplace の売上の支払いを受け取るにはどうすればよいですか?**
-
-Microsoft からのすべての支払いは、PayPal または電子決済 (EFT) を使用して月単位に処理されます。 支払いは、お客様がサービスを使用した日付から 2 か月以内に行われますが、正確なタイミングはお客様の支払い方法によって異なります。 クレジット カードのお客様には 45 日のエスクロー期間が適用されます。
-
-**使用量ベースの課金で購入された仮想マシン ベースのソリューションの場合、お客様が基になる仮想マシンのサイズを拡大または縮小すると、ソフトウェア ライセンスの価格もそれに従いますか?**
-
-はい。直ちに新しい価格が課金されます。  価格の変更は、お客様が仮想マシン サイズを変更し、価格表の (仮想マシン サイズに基づく) 別の価格を指定したときに発生します。
-
-**Azure Marketplace でノード単位の課金は使用できますか?**
-
-Azure Marketplace では現在、Virtual Machines でのノード単位の課金をサポートしていません。 発行元は引き続き、Microsoft VM の課金レートを使用してノード単位の課金レートを決定できます。  この計算は、使用された時間数と時間あたりの料金で VM の数を決定するために行われます。
-
-**課金またはオファーの管理に関する質問については、だれに問い合わせればよいですか?**
-
-[Microsoft サポート](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635) チケットを記録してください。
-
-### <a name="publisher-support"></a>発行元のサポート
-
-**Azure Marketplace に関する一般的なサポートの問題については、だれに問い合わせればよいですか?**
-
-操作性やトラブルシューティングに関する一般的なアプリケーション サポートについては、[パートナー センター サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)に問い合わせてください。
-
-Azure Marketplace での購入物に関する課金やサブスクリプションの問題については、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に問い合わせてください。
-
-**発行やオファーの管理に関する質問については、だれに問い合わせればよいですか?**
-
-よく寄せられる質問に関する最新のリソースおよびドキュメントについては、[Azure Marketplace 発行元ガイド](marketplace-publishers-guide.md)に関するページを参照してください。 さらに、[パートナー センターで Microsoft サポート](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953) チケットを記録できます。
-
-### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace の発行元向け情報
-
-**さまざまな国/地域での販売を可能にするには、利用可能な地域どのように定義すればよいですか?**
-
-1.  パートナー センターで、新しい国/地域の追加先とする SKU に移動します。  **[SKU Details]\(SKU の詳細\)** 内で、 **[Country/Region availability]\(利用可能な国/リージョン\)** に移動し、 **[Select regions]\(リージョンの選択\)** をクリックします。
-
-    ![リージョンの選択](media/marketplace-publishers-guide/FAQ-choose-geo.png)
-
-1.  販売できるすべての国/地域が掲載された一覧がポップアップ表示されます。  この SKU を使用できるようにしたい各国/地域の横にあるチェック ボックスをクリックします。 **[OK]** をクリックします。
-
-    ![国/地域の選択](media/marketplace-publishers-guide/FAQ-select-countries.png)
-
-1.  最後に、ご利用のライブ プランに変更を適用する場合は、 **[発行]** をクリックします。  
-
-    > [!Note]
-    > 変更が有効になるまで、24 時間かかります。
-
-<!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
-
-**パブリッシャーは既存のプランの利用可能な地域をどのように変更できますか?**
-
-パブリッシャーは、既存のプランを編集し、新規の国/地域を選択し、スプレッドシートのダウンロード/アップロード関数を使用して価格を設定することができます。
-
-**顧客はどの国/地域で Azure Marketplace オファリングを購入できますか?**
-
-Azure Marketplace では、お客様の請求先住所で定義されている 141 の購入元地域がサポートされています。 国/地域の一覧については、[参加ポリシー](/legal/marketplace/participation-policy)に関するページを参照してください。
-
-**Azure Marketplace ではどのような通貨がサポートされていますか?**
-
-次の 17 の通貨で取引を行うことができます: AUD、BRL、CAD、CHF、DKK、EUR、GBP、INR、JPY、KRW、NOK、NZD、RUB、SEK、TWD、USD。
-
-### <a name="pricing-and-payment"></a>価格と支払い
-
-**Free レベルと無料試用版ソフトウェアの違いは何ですか?**
-
-Free レベルのサブスクリプションのオファリングは永続的に無料です。  無料試用版ソフトウェア (今すぐ試す) オファリングは、限定された期間だけ無料の有料サブスクリプションです。
-
-**エンドツーエンドの購入とプロビジョニングのフローを検証するプロセスはどのようなものですか?**
-
-発行プロセスの間に、オファーのプレビューへのアクセスが提供されます。 アクセスできるのは [プレビュー] タブで指定されているユーザーだけであり、これは他のユーザーには表示されないライブ オファーです。 これを購入して、プロセスをテストできます。ただし、オファーの構成に応じて全額料金が請求されます。
-
-購入を非常に低価格で行うため、Microsoft は、テストのコストとして受け入れることのできる価格で設定したプライベート プランを自分自身に発行することを提案します。 ゼロもサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されません。
-
-**標準ポリシー以外での返金は提供されますか?**
-
-はい。サポート チケットを通じて要求すると、適切であると思われる場合、Microsoft はお客様に対するクレジットを処理します。
-
-## <a name="next-steps"></a>次のステップ
-
-「[Azure Marketplace と AppSource の公開ガイド](/azure/marketplace/marketplace-publishers-guide)」ページを参照してください。
-
-
-[Azure Portal]: https://portal.azure.com
+- [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
+- [Microsoft セキュリティ センター](https://www.microsoft.com/trust-center)
+- [Azure Government のドキュメント](https://docs.microsoft.com/azure/azure-government/)
+- [Azure Government Marketplace](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
+- [Azure Government のコンプライアンス](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)。

@@ -2,13 +2,13 @@
 title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: c4bb4328af5df7f729967c7b249847b2ab098770
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: adcc135c713c6db49c5a1e53f41b6d6c13f6bac2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79497753"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787891"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -18,21 +18,20 @@ ms.locfileid: "79497753"
 
 利用可能なリージョンの完全な一覧については、[AKS の利用可能なリージョン][aks-regions]に関するページを参照してください。
 
-## <a name="does-aks-support-node-autoscaling"></a>AKS はノードの自動スケールをサポートしていますか?
+## <a name="can-i-spread-an-aks-cluster-across-regions"></a>AKS クラスターを複数のリージョンに広げることはできますか?
 
-はい、AKS でエージェント ノードを自動的に水平方向にスケーリングする機能は、現在プレビューで利用できます。 手順については、[AKS でアプリケーションの需要を満たすためのクラスターの自動スケーリング][aks-cluster-autoscaler]に関するページを参照してください。 AKS の自動スケーリングは、[Kubernetes autoscaler][auto-scaler] に基づきます。
+いいえ。 AKS クラスターはリージョン リソースであり、複数のリージョンに広げることはできません。 複数のリージョンを含むアーキテクチャを作成する方法については、[ビジネス継続性とディザスター リカバリーのベストプラクティス][bcdr-bestpractices]に関する記事を参照してください。
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>既存の仮想ネットワークに AKS をデプロイできますか?
+## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>AKS クラスターを複数の可用性ゾーンに広げることはできますか?
 
-はい、[高度なネットワーク機能][aks-advanced-networking]を使用して、既存の仮想ネットワークに AKS クラスターをデプロイできます。
+はい。 [可用性ゾーンをサポートしているリージョン][az-regions]内の 1 つ以上の[可用性ゾーン][availability-zones]に AKS クラスターをデプロイできます。
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API サーバーにアクセスできるユーザーを制限できますか?
 
-はい。[[API Server Authorized IP Ranges]\(API サーバーの許可された IP 範囲\)][api-server-authorized-ip-ranges] を使用して Kubernetes API サーバーへのアクセスを制限できます。
+はい。 API サーバーへのアクセスを制限するためのオプションは 2 つあります。
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kubernetes API サーバーを仮想ネットワーク内でのみアクセスできるようにできますか?
-
-現時点ではできませんが、計画されています。 進捗状況は、[AKS GitHub リポジトリ][private-clusters-github-issue]で追跡できます。
+- API サーバーのパブリック エンドポイントを維持するが、信頼できる IP 範囲へのアクセスを制限する場合は、[API サーバーの承認済み IP 範囲][api-server-authorized-ip-ranges]を使用します。
+- API サーバーへのアクセスを仮想ネットワーク内から "*のみ*" に制限する場合は、[プライベート クラスター][private-clusters]を使用します。
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>1 つのクラスター内で、異なる VM サイズを設定できますか?
 
@@ -50,7 +49,7 @@ Kured の使用の詳細については、[AKS 上のノードへのセキュリ
 
 ### <a name="windows-server-nodes"></a>Windows Server ノード
 
-Windows Server ノードでは (現在、AKS ではプレビュー中)、Windows Update が自動的に実行されたり、最新の更新プログラムが適用されたりすることはありません。 Windows Update のリリース サイクルと独自の検証プロセス前後の定期的スケジュールで、AKS クラスター内のクラスターと Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
+Windows Server ノードでは、Windows Update が自動的に実行され、最新の更新プログラムが適用されることはありません。 Windows Update のリリース サイクルと独自の検証プロセス前後の定期的スケジュールで、AKS クラスター内のクラスターと Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
@@ -97,13 +96,32 @@ AKS では、以下の[アドミッション コントローラー][admission-co
 
 現在は、AKS でアドミッション コントローラーの一覧を変更することはできません。
 
+## <a name="can-i-use-admission-controller-webhooks-on-aks"></a>AKS でアドミッション コントローラー Webhook を使用できますか?
+
+はい、AKS でアドミッション コントローラー Webhook を使用できます。 **control-plane ラベル**でマークされた内部 AKS 名前空間を除外することをお勧めします。 たとえば、以下を Webhook 構成に追加します。
+
+```
+namespaceSelector:
+    matchExpressions:
+    - key: control-plane
+      operator: DoesNotExist
+```
+
+## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>アドミッション コントローラー Webhook は kube-system と内部 AKS 名前空間に影響しますか?
+
+システムの安定性を保護し、カスタムのアドミッション コントローラーが kube-system の内部サービスに影響を与えないようにするために、名前空間 AKS には **Admissions Enforcer** があります。これにより、kube-system と AKS の内部名前空間が自動的に除外されます。 このサービスにより、カスタムのアドミッション コントローラーは、kube-system で実行されているサービスに影響しなくなります。
+
+カスタムのアドミッション webhook の対象にする必要のある kube-system (推奨されません) に、何かをデプロイするための重要なユースケースがある場合は、次のラベルまたは注釈を追加して、Admissions Enforcer によってそれが無視されるようにすることができます。
+
+ラベル: ```"admissions.enforcer/disabled": "true"``` または注釈: ```"admissions.enforcer/disabled": true```
+
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS には Azure Key Vault が統合されているのですか?
 
 AKS は現在、Azure Key Vault とネイティブに統合されていません。 ただし、[Kubernetes プロジェクト用の Azure Key Vault FlexVolume][keyvault-flexvolume] を使用して、Kubernetes ポッドから Key Vault のシークレットに直接統合することはできます。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
-はい、Windows Server コンテナーはプレビューでご利用になれます。 AKS で Windows Server コンテナーを実行するには、Windows Server をゲスト OS として実行するノード プールを作成します。 Windows Server コンテナーでは、Windows Server 2019 のみを使用できます。 開始するには、[Windows Server ノード プールでの AKS クラスターの作成][aks-windows-cli]に関するページを参照してください。
+はい、Windows Server コンテナーは AKS で利用できます。 AKS で Windows Server コンテナーを実行するには、Windows Server をゲスト OS として実行するノード プールを作成します。 Windows Server コンテナーでは、Windows Server 2019 のみを使用できます。 開始するには、[Windows Server ノード プールでの AKS クラスターの作成][aks-windows-cli]に関するページを参照してください。
 
 Windows Server によるノード プールのサポートには、Kubernetes プロジェクトの上流の Windows Server の一部であるいくつかの制限が含まれます。 これらの制限の詳細については、[AKS での Windows Server コンテナーの制限事項][aks-windows-limitations]に関するページを参照してください。
 
@@ -112,19 +130,6 @@ Windows Server によるノード プールのサポートには、Kubernetes �
 サービス レベル アグリーメント (SLA) では、プロバイダーは、公開されたサービス レベルが満たされない場合に、サービスの費用を顧客に払い戻すことに同意します。 AKS は無料であり、払い戻す費用がないため、AKS には正式な SLA はありません。 ただし、AKS では、Kubernetes API サーバーの 99.5 パーセント以上の可用性を維持できるようにしています。
 
 Kubernetes コントロール プレーンのアップタイムを意味する AKS サービスの可用性と、Azure Virtual Machines 上で実行されている特定のワークロードの可用性の違いを把握することが重要です。 コントロール プレーンの準備ができていない場合はコントロール プレーンを使用できない場合がありますが、Azure VM 上で実行されているクラスターのワークロードは引き続き機能します。 すべての Azure VM は、財務 SLA でサポートされる有料リソースです。 Azure VM の SLA と、[可用性ゾーン][availability-zones]などの機能を使用して可用性を向上させる方法の[詳細についてはこちら](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)を参照してください。
-
-## <a name="why-cant-i-set-maxpods-below-30"></a>maxPods を 30 未満に設定できないのはなぜですか?
-
-AKS では、Azure CLI および Azure Resource Manager テンプレートを使ってクラスターを作成するときに、`maxPods` の値を設定することができます。 ただし、Kubenet と Azure CNI の両方で、"*最小限の値*" が必要です(作成時に検証されます)。
-
-| ネットワーク | 最小値 | 最大値 |
-| -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
-| Kubenet | 30 | 110 |
-
-AKS はマネージド サービスであるため、クラスターの一部としてアドオンとポッドをデプロイして管理します。 以前は、ユーザーはマネージド ポッドが実行するために必要な値より小さい値に `maxPods` を定義できました (たとえば 30)。 現在は、AKS では "((maxPods または (maxPods * vm_count)) > マネージド アドオン ポッドの最小値" という式を使って、ポッドの最小数が計算されるようになりました。
-
-ユーザーは、最小の `maxPods` の検証をオーバーライドできません。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>自分の AKS エージェント ノードに Azure の予約割引を適用できますか?
 
@@ -162,7 +167,7 @@ Azure サブスクリプション間での AKS クラスターおよびそれに
 
 サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)と [AKS の資格情報の更新](https://docs.microsoft.com/azure/aks/update-credentials)に関するページを参照してください。
 
-## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>クラスターは動作していましたが、突然、LoadBalancers のプロビジョニングや PVC のマウントなどができなくなりました。 
+## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>クラスターは動作していましたが、突然、LoadBalancers のプロビジョニングや PVC のマウントなどができなくなりました。 
 
 サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)と [AKS の資格情報の更新](https://docs.microsoft.com/azure/aks/update-credentials)に関するページを参照してください。
 
@@ -200,6 +205,10 @@ AKS には、このような構成に耐え、そこから復旧するための�
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
 [availability-zones]: ./availability-zones.md
+[private-clusters]: ./private-clusters.md
+[bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
+[availability-zones]: ./availability-zones.md
+[az-regions]: ../availability-zones/az-region.md
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
