@@ -78,7 +78,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
 
 次の手順では、Visual Studio Code と Azure IoT Tools を使用して好きな開発言語 (C# で記述されている Azure Functions を含む) で IoT Edge モジュールを作成する方法を説明します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。
 
-1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
+1. **[表示]**  >  **[コマンド パレット]** を選択します。
 
 1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。
 
@@ -167,7 +167,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `Program.cs` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (.NET Core)]\(<モジュール名> のローカル デバッグ (.NET Core)\)** を選択します。
+     - **[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (.NET Core)]\(<モジュール名> のローカル デバッグ (.NET Core)\)** を選択します。
 
         > [!NOTE]
         > .NET Core `TargetFramework` が `launch.json` 内のプログラム パスと一致しない場合は、Visual Studio Code がこのプログラムを正常に起動できるように .csproj ファイル内の `TargetFramework` に合わせて `launch.json` 内のプログラム パスを手動で更新する必要があります。
@@ -181,11 +181,11 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `app.js` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Node.js)]\(<モジュール名> のローカル デバッグ (Node.js)\)** を選択します。
+     - **[表示] > [デバッグ コンソール]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Node.js)]\(<モジュール名> のローカル デバッグ (Node.js)\)** を選択します。
    - **Java**
      - `App.java` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
+     - **[表示] > [デバッグ コンソール]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
 
 1. **[デバッグの開始]** をクリックするか **F5** キーを押して、デバッグ セッションを開始します。
 
