@@ -80,7 +80,7 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 
 キューまたはサブスクリプションに存在するすべてのセッションは、Java API の **SessionBrowser** メソッドを使用して、.NET Framework クライアントでは [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) および [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) の [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) を使って列挙できます。
 
-キューに保持されたセッション状態またはサブスクリプション数は、そのエンティティのストレージ クォータがいっぱいになるまで計算されます。 このため、セッションで、アプリケーションが終了したら、外部管理コストを回避するために、アプリケーションで保持された状態をクリーンアップすることをを推奨します。
+キューに保持されたセッション状態またはサブスクリプション数は、そのエンティティのストレージ クォータがいっぱいになるまで計算されます。 このため、セッションで、アプリケーションが終了したら、外部管理コストを回避するために、アプリケーションで保持された状態をクリーンアップすることを推奨します。
 
 ### <a name="impact-of-delivery-count"></a>配信数の影響
 
