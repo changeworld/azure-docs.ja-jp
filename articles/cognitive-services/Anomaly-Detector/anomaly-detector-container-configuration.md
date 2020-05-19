@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 569499002c5e047d7030575342790e9a074b9404
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 29e790959e941abc133f95297dc09c951152a503
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875182"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593309"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector コンテナーを構成する
 
@@ -121,7 +121,7 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -131,7 +131,7 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
