@@ -153,7 +153,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
    
 ## <a name="run-the-app"></a>アプリを実行する
 
-1. Visual Studio Code で、 **[表示]** > **[コマンド パレット]** の順に選択します。 
+1. Visual Studio Code で、**[表示]** > **[コマンド パレット]** の順に選択します。  
 
 2. プロンプトで「**Python: Select Interpreter**」と入力し、使用する Python のバージョンを選択します。
 
