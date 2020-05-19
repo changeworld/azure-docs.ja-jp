@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 03/17/2020
-  ms.openlocfilehash: 734c95524088bf9b4f92e7e1981aabe3f1b963f2
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 3c68051c0df1cb2d15a1ef2bac6ea74fbf671f77
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529859"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83591796"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -83,7 +83,7 @@ conceptualContent:
       text: Text Analytics
     - url: ./translator/index.yml
       itemType: overview
-      text: Translator Text
+      text: '[変換者]'
   - title: 音声
     summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
     links:

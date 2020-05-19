@@ -2,13 +2,13 @@
 title: Language Understanding (LUIS) とは
 description: Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
 ms.topic: overview
-ms.date: 02/23/2020
-ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/05/2020
+ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053344"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592816"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -55,9 +55,9 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
 
 |ユーザーの発話例|Intent|抽出された日付|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight|Seattle|
-|`When does your store __open__?`|StoreHoursAndLocation|オープン|
-|`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
+|`Book a flight to Seattle?`|BookFlight|Seattle|
+|`When does your store open?`|StoreHoursAndLocation|オープン|
+|`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
 ## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行
 
