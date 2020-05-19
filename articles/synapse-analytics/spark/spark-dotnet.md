@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6943be033653d88b272817d2dcf58042aaaab616
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427227"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587801"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure Synapse Analytics で .NET for Apache Spark を使用する
 
 [.NET for Apache Spark](https://dot.net/spark) は、無料のオープンソースであり、クロスプラットフォームの Spark 用 .NET サポートです。 .NET for Apache Spark には、C# および F# を介して Spark API にアクセスできるようにする Spark 用 .NET バインディングが用意されています。 .NET for Apache Spark では、Spark 用のユーザー定義関数を .NET を使用して記述し実行することができます。 Spark 用の .NET API を使用すると、Spark SQL や構造化ストリーミングなど、ご利用のデータの分析に役立つ Spark のあらゆる側面にアクセスすることができます。
 
-.NET for Apache Spark を、Spark バッチ ジョブ定義を介して使用するか、またはインタラクティブな Azure Synapse Analytics ノートブックで使用することで、データを分析することができます。 この記事では、両方の手法を使用して、Azure Synapse で .NET for Apache Spark を使用する方法について説明します。 
+.NET for Apache Spark を、Spark バッチ ジョブ定義を介して使用するか、またはインタラクティブな Azure Synapse Analytics ノートブックで使用することで、データを分析することができます。 この記事では、両方の手法を使用して、Azure Synapse で .NET for Apache Spark を使用する方法について説明します。
 
 ## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Spark ジョブ定義を使用してバッチ ジョブを送信する
 
@@ -52,9 +52,9 @@ Azure Synapse Analytics を使用して [Synapse Spark プールの Apache Spark
 
 ### <a name="how-to-use-notebooks"></a>ノートブックの使用方法
 
-新しいノートブックを作成する場合は、使用するビジネス ロジックを表現する言語カーネルを選択します。 C# など、いくつかの言語のカーネル サポートがあります。 
+新しいノートブックを作成する場合は、使用するビジネス ロジックを表現する言語カーネルを選択します。 C# など、いくつかの言語のカーネル サポートがあります。
 
-ご利用の Azure Synapse Analytics ノートブック内で .NET for Apache Spark を使用するには、カーネルとして **.NET Spark (C#)** を選択し、ノートブックを既存の Spark プールにアタッチします。 
+ご利用の Azure Synapse Analytics ノートブック内で .NET for Apache Spark を使用するには、カーネルとして **.NET Spark (C#)** を選択し、ノートブックを既存の Spark プールにアタッチします。
 
 .Net Spark ノートブックは .NET インタラクティブ エクスペリエンスに基づいており、Spark セッション変数 `spark` があらかじめ定義された状態で、すぐに利用できる .NET for Spark を使用する機能を備えたインタラクティブ C# エクスペリエンスを備えています。
 
