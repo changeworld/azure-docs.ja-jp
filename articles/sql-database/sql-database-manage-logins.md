@@ -111,7 +111,7 @@ ms.locfileid: "82106442"
   ユーザーがアクセスする必要のあるデータベース内にユーザー アカウントを作成します ([包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)とも呼ばれます)。
 
   - 単一またはプールされたデータベースでは、この種類のユーザー アカウントをいつでも作成できます。
-  - [Azure AD サーバー プリンシパル](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をサポートしていないマネージド インスタンス データベースでは、この種類のユーザー アカウントは[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)内にのみ作成できます。 マネージド インスタンスがサポートしている [Azure AD サーバー プリンシパル](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)を使用すると、マネージド インスタンスに対して認証を行うユーザー アカウントを作成できます。包含データベースのユーザーとして、データベース ユーザーを作成する必要はありません。
+  - [Azure AD サーバー プリンシパル](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をサポートしていないマネージド インスタンス データベースでは、この種類のユーザー アカウントは[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)内にのみ作成できます。 [Azure AD サーバー プリンシパル](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をサポートしているマネージド インスタンスを使用すると、マネージド インスタンスに対して認証を行うユーザー アカウントを作成できます。包含データベースのユーザーとして、データベース ユーザーを作成する必要はありません。
 
   この方法では、ユーザー認証情報は各データベースに格納され、geo レプリケートされたデータベースに自動的にレプリケートされます。 ただし、同じアカウントが複数のデータベースに存在していて、SQL 認証を使用している場合は、パスワードの同期を手動で維持する必要があります。 さらに、ユーザーが異なるデータベースに、パスワードが異なるアカウントを持っている場合は、それらのパスワードを覚えておくことが問題になる可能性があります。
 
