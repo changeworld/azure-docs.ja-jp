@@ -237,7 +237,7 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
     
-3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、**位置**の位置座標が含まれています。 最初の結果の `lat`position`lon` の下の **と** をコピーします。
+3. 応答を注意深く見ると、スペース ニードルの検索結果に複数の場所が含まれています。 各結果には、**位置**の位置座標が含まれています。 最初の結果の **position** の下の `lat` と `lon` をコピーします。
     
    ```JSON
    {
@@ -343,7 +343,7 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
 
     `modeType` と `transitType` のパラメーターを指定することによって、バスについての公共輸送機関のルートを要求します。 要求 URL には、前のセクションで取得した場所が含まれています。 `originType` には、**stopId** があります。 そして、`destionationType` には **position** があります。
 
-    [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters) への要求で使用できる [URI パラメーターの一覧](https://aka.ms/AzureMapsMobilityTransitRoute)を参照してください。 
+    [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) への要求で使用できる [URI パラメーターの一覧](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters)を参照してください。 
   
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/route/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&originType=stopId&origin=522---2060603&destionationType=position&destination=47.62039,-122.34928&modeType=publicTransit&transitType=bus
@@ -498,7 +498,7 @@ Azure Maps [Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute
 
 ## <a name="request-fastest-route-itinerary"></a>最も速いルートの移動プランを要求する
 
-Azure Maps の [Get Transit Itinerary](https://aka.ms/AzureMapsMobilityTransitItinerary) サービスでは、**Get Transit Routes API** サービスによって返されるルートの [itinerary ID](https://aka.ms/AzureMapsMobilityTransitRoute) を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
+Azure Maps の [Get Transit Itinerary](https://aka.ms/AzureMapsMobilityTransitItinerary) サービスでは、[Get Transit Routes API](https://aka.ms/AzureMapsMobilityTransitRoute) サービスによって返されるルートの **itinerary ID** を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
 
 1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Transit info**」 (輸送情報の取得) という名前を付けます。
 

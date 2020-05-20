@@ -320,7 +320,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
     | YOUR_SECONDARY_KEY | 認証に使用されるセカンダリ接続文字列 |
     | YOUR_EVENT_HUB_NAME | イベント ハブの名前 |
 
-- Event Hubs イベントの種類へのルート **DeviceMessage**。 `EntityPath`connectionString**に** を含めることが必須です。
+- Event Hubs イベントの種類へのルート **DeviceMessage**。 **connectionString** に `EntityPath` を含めることが必須です。
 
   ```JSON
   {

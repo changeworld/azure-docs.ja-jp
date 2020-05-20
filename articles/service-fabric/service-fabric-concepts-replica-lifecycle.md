@@ -37,7 +37,7 @@ ms.locfileid: "79229343"
 ドロップ (Dropped) 状態では、既にインスタンスはノード上で実行されていません。 この時点では、Service Fabric はこのインスタンスに関するメタデータを保持していますが、最終的にはそれも削除されます。
 
 > [!NOTE]
-> **で**ForceRemove`Remove-ServiceFabricReplica` オプションを使用して、いずれかの状態からドロップ状態に遷移することが可能です。
+> `Remove-ServiceFabricReplica` で **ForceRemove** オプションを使用して、いずれかの状態からドロップ状態に遷移することが可能です。
 >
 
 ## <a name="replicas-of-stateful-services"></a>ステートフル サービスのレプリカ
@@ -101,7 +101,7 @@ Service Fabric がレプリカをバックアップに戻す必要がある場�
 >
 
 > [!NOTE]
-> **で**ForceRemove`Remove-ServiceFabricReplica` オプションを使用して、いずれかの状態からドロップ状態に遷移することが可能です。
+> `Remove-ServiceFabricReplica` で **ForceRemove** オプションを使用して、いずれかの状態からドロップ状態に遷移することが可能です。
 >
 
 ## <a name="replica-role"></a>レプリカのロール 

@@ -35,7 +35,7 @@ Azure Search .NET SDK のバージョン 5 には、以前のバージョンか�
 Azure Search .NET SDK のバージョン 5 は、Azure Search REST API の最新の一般公開バージョン (2017-11-11) を対象としています。 これにより、次のような Azure Search の新機能を .NET アプリケーションから使用することが可能になります。
 
 * [シノニム](search-synonyms.md)。
-* インデクサーの実行履歴内の警告に、プログラムからアクセスできるようになりました (詳細については、`Warning`.NET リファレンス`IndexerExecutionResult`で、[ の ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) プロパティをご覧ください)。
+* インデクサーの実行履歴内の警告に、プログラムからアクセスできるようになりました (詳細については、[.NET リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)で、`IndexerExecutionResult` の `Warning` プロパティをご覧ください)。
 * .NET Core 2 のサポート。
 * 新しいパッケージ構造により、SDK の必要な一部のみを使用できるようになっています (詳細については、「[バージョン 5 における重大な変更](#ListOfChanges)」をご覧ください)。
 
@@ -77,7 +77,7 @@ Azure Search .NET SDK のパッケージにおける変更のため、バージ�
 
 ### <a name="change-to-suggesters"></a>サジェスターに対する変更点 
 
-`Suggester` コンストラクターで、`enum` に対する `SuggesterSearchMode` パラメーターはなくなりました。 この列挙型の値は 1 つだけであり、そのため冗長でした。 この結果としてビルド エラーが発生する場合は、単純に `SuggesterSearchMode` パラメーターの参照を削除してください。
+`Suggester` コンストラクターで、`SuggesterSearchMode` に対する `enum` パラメーターはなくなりました。 この列挙型の値は 1 つだけであり、そのため冗長でした。 この結果としてビルド エラーが発生する場合は、単純に `SuggesterSearchMode` パラメーターの参照を削除してください。
 
 ### <a name="removed-obsolete-members"></a>古い形式のメンバーの削除
 

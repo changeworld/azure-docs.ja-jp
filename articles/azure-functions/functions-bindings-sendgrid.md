@@ -260,7 +260,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
 
 # <a name="java"></a>[Java](#tab/java)
 
-次の例では、SendGrid 出力バインディングを使用してメールを送信するために、`@SendGridOutput`Java 関数ランタイム ライブラリ[の ](/java/api/overview/azure/functions/runtime) 注釈を使用しています。
+次の例では、SendGrid 出力バインディングを使用してメールを送信するために、[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)の `@SendGridOutput` 注釈を使用しています。
 
 ```java
 package com.function;

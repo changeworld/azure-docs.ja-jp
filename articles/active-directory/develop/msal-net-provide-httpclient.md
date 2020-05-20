@@ -35,4 +35,4 @@ var pca = PublicClientApplicationBuilder.Create(MsalTestConstants.ClientId)
 ```
 
 ## <a name="httpclient-and-xamarin-ios"></a>HttpClient および Xamarin iOS
-Xamarin iOS を使用する場合は、明示的に iOS 7 以降用の `HttpClient` ベースのハンドラー を使用する `NSURLSession` を作成することをお勧めします。 MSAL.NET は、iOS 7 以降用の `HttpClient` を使用する `NSURLSessionHandler` を自動的に作成します。 詳細については、[HttpClient 用の Xamarin iOS ドキュメント](/xamarin/cross-platform/macios/http-stack)に関するページを参照してください。
+Xamarin iOS を使用する場合は、明示的に iOS 7 以降用の `NSURLSession` ベースのハンドラー を使用する `HttpClient` を作成することをお勧めします。 MSAL.NET は、iOS 7 以降用の `NSURLSessionHandler` を使用する `HttpClient` を自動的に作成します。 詳細については、[HttpClient 用の Xamarin iOS ドキュメント](/xamarin/cross-platform/macios/http-stack)に関するページを参照してください。

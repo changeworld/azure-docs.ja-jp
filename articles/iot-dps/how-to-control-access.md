@@ -84,7 +84,7 @@ Device Provisioning Service では、サービスの認証にセキュリティ 
 
 **プレフィックスに関する注意事項**: URI プレフィックスは、文字単位ではなくセグメント単位で計算されます。 たとえば、`/a/b` は `/a/b/c` のプレフィックスであり、`/a/bc` のプレフィックスではありません。
 
-次の Node.js スニペットは、**の入力からトークンを計算する**generateSasToken`resourceUri, signingKey, policyName, expiresInMins` という名前の関数を示しています。 以降のセクションでは、さまざまなトークンの使用例の各種入力を初期化する方法について詳しく説明します。
+次の Node.js スニペットは、`resourceUri, signingKey, policyName, expiresInMins` の入力からトークンを計算する **generateSasToken** という名前の関数を示しています。 以降のセクションでは、さまざまなトークンの使用例の各種入力を初期化する方法について詳しく説明します。
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {

@@ -59,7 +59,7 @@ Syslog は、Linux に共通のイベント ログ プロトコルです。 ア�
 
 5. **[詳細設定]** ブレードで、 **[データ]**  >  **[Syslog]** の順に選択します。 次に、収集するコネクタのファシリティを追加します。
     
-    Syslog アプライアンスがそのログ ヘッダーに含めるファシリティを追加します。 この構成は、Syslog アプライアンスの **フォルダーにある** Syslog-d`/etc/rsyslog.d/security-config-omsagent.conf`と、 **にある** r-Syslog`/etc/syslog-ng/security-config-omsagent.conf` で確認できます。
+    Syslog アプライアンスがそのログ ヘッダーに含めるファシリティを追加します。 この構成は、Syslog アプライアンスの `/etc/rsyslog.d/security-config-omsagent.conf`フォルダーにある **Syslog-d**と、 `/etc/syslog-ng/security-config-omsagent.conf`にある **r-Syslog** で確認できます。
     
     収集するデータで異常な SSH ログイン検出を使用する場合は、 **[auth]** と **[authpriv]** を追加します。 追加情報については、[次のセクション](#configure-the-syslog-connector-for-anomalous-ssh-login-detection)を参照してください。
 

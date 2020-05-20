@@ -23,7 +23,7 @@ ms.locfileid: "77586276"
 
 ## <a name="reading-from-a-previous-date-and-time"></a>以前の日時からの読み取り
 
-**のインスタンスを** ビルダー拡張機能に渡すことで、`DateTime`特定の日時`WithStartTime`以降の変更を読み取るよう変更フィード プロセッサを初期化することができます。
+`DateTime` のインスタンスを `WithStartTime` ビルダー拡張機能に渡すことで、**特定の日時**以降の変更を読み取るよう変更フィード プロセッサを初期化することができます。
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 

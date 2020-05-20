@@ -51,7 +51,7 @@ Azure AD は、フェデレーション メタデータを `https://login.micros
 ### <a name="entity-id"></a>エンティティ ID
 `EntityDescriptor` 要素は `EntityID` 属性を含みます。 `EntityID` 属性の値は発行者、つまり、トークンを発行した Security Token Service (STS) を表します。 トークンを受信したときに、発行者を検証することが重要です。
 
-次のメタデータは、`EntityDescriptor` 要素を含む、サンプルのテナント固有の `EntityID` 要素を示しています。
+次のメタデータは、`EntityID` 要素を含む、サンプルのテナント固有の `EntityDescriptor` 要素を示しています。
 
 ```
 <EntityDescriptor
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 `KeyDescriptor` 要素は、フェデレーション メタデータ ドキュメントでは、WS-Federation 固有のセクションと SAML 固有のセクションという 2 つの場所にあります。 両方のセクションで発行された証明書は同じになります。
 
-WS-Federation 固有のセクションで、WS-Federation メタデータ リーダーは、`RoleDescriptor` 型を含む `SecurityTokenServiceType` 要素から証明書を読み取ります。
+WS-Federation 固有のセクションで、WS-Federation メタデータ リーダーは、`SecurityTokenServiceType` 型を含む `RoleDescriptor` 要素から証明書を読み取ります。
 
 `RoleDescriptor` 要素の例を次に示します。
 

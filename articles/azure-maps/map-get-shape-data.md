@@ -17,7 +17,7 @@ ms.locfileid: "80334411"
 ---
 # <a name="get-shape-data"></a>図形データを取得する
 
-この記事では、マップに描画された図形のデータを取得する方法について説明します。 **描画マネージャー**内で [drawingManager.getSource()](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) 関数を使用します。 描画された図形の geojson データを抽出し、他の場所で使用することが必要になるさまざまなシナリオがあります。  
+この記事では、マップに描画された図形のデータを取得する方法について説明します。 [描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)内で **drawingManager.getSource()** 関数を使用します。 描画された図形の geojson データを抽出し、他の場所で使用することが必要になるさまざまなシナリオがあります。  
 
 
 ## <a name="get-data-from-drawn-shape"></a>描画された図形からデータを取得する
@@ -36,7 +36,7 @@ function getDrawnShapes() {
 
 <br/>
 
-<iframe height="686" title="図形データを取得する" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Get shape data</a>」Pen を参照してください。
+<iframe height="686" title="図形データを取得する" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Get shape data</a>」Pen を参照してください。
 </iframe>
 
 

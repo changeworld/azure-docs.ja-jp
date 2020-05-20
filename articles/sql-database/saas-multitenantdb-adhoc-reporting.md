@@ -72,7 +72,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 
 この演習では、*adhocreporting* データベースをデプロイします。 これは、すべてのテナント データベースに対してクエリを実行する場合に使用されるスキーマが含まれるヘッド データベースです。 このデータベースは既存のカタログ サーバーにデプロイされます。サンプル アプリのすべての管理関連データベースに使用されるサーバーです。
 
-1. \\PowerShell ISE\\で ...\\Learning Modules\\Operational Analytics*Adhoc Reporting* *Demo-AdhocReporting.ps1* を開き、次の値を設定します。
+1. *PowerShell ISE*で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* を開き、次の値を設定します。
    * **$DemoScenario** = 2、**アドホック分析データベースをデプロイする**。
 
 2. **F5** キーを押してスクリプトを実行し、*adhocreporting* データベースを作成します。

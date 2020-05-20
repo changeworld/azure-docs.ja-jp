@@ -66,7 +66,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 この要求に対して、検索エンジンは次のことを実行します。
 
 1. 価格が $60 以上 $300 未満の文書を抽出します。
-2. クエリを実行します。 この例では、検索クエリが `"Spacious, air-condition* +\"Ocean view\""` という語句で構成されています (通常はユーザーが句読点を入力することはありませんが、この例では、アナライザーによる処理を説明するためにあえて含めています)。 このクエリの場合、検索エンジンは、`searchFields` に指定された description フィールドと title フィールドをスキャンし、"Ocean view" を "spacious" という語か、"air-condition" で始まる語に接する形で含んでいる文書を探します。 明示的に必須指定 (`searchMode`) されていない語句に関して、マッチング対象を任意 (既定) とするか、すべてとするかが、`+` パラメーターで指定されています。
+2. クエリを実行します。 この例では、検索クエリが `"Spacious, air-condition* +\"Ocean view\""` という語句で構成されています (通常はユーザーが句読点を入力することはありませんが、この例では、アナライザーによる処理を説明するためにあえて含めています)。 このクエリの場合、検索エンジンは、`searchFields` に指定された description フィールドと title フィールドをスキャンし、"Ocean view" を "spacious" という語か、"air-condition" で始まる語に接する形で含んでいる文書を探します。 明示的に必須指定 (`+`) されていない語句に関して、マッチング対象を任意 (既定) とするか、すべてとするかが、`searchMode` パラメーターで指定されています。
 3. 検索結果として得られた一連のホテルは、特定の地理的位置に近い順に並べ替えられて、呼び出し元のアプリケーションに返されます。 
 
 この記事では主に、"*検索クエリ*" (`"Spacious, air-condition* +\"Ocean view\""`) の処理について取り上げています。 フィルター処理と並べ替えについては取り上げません。 詳細については、[Search API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/searchservice/search-documents)を参照してください。
@@ -108,7 +108,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-ブール クエリの構造において、明示的な演算子 (`+` の `+"Ocean view"` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)* " です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view *と* spacious *と* air-condition の "すべて" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
+ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)*" です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view *と* spacious *と* air-condition の "すべて" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
 
 既定 (`searchMode=any`) では、検索エンジンはより広く解釈することを想定します。 どちらか一方のフィールドが一致していればよい (*should*) の意味、つまり "or" のセマンティクスで解釈されます。 先ほど例に挙げた、2 つの "should" 演算を含んだクエリ ツリーは既定の動作を示しています。  
 
@@ -123,7 +123,7 @@ Spacious,||air-condition*+"Ocean view"
  ![ブール クエリ searchMode は all][3]
 
 > [!Note] 
-> `searchMode=any` より `searchMode=all` を選ぶ場合は、代表的なクエリを実行したうえで判断することをお勧めします。 普段から演算子を指定するユーザー (ドキュメント ストアを検索するときなど) は、`searchMode=all` で得られるブール クエリの構造の方が直感的にわかりやすいかもしれません。 `searchMode` と演算子の相互作用について詳しくは、[Simple クエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)に関するページをご覧ください。
+> `searchMode=all` より `searchMode=any` を選ぶ場合は、代表的なクエリを実行したうえで判断することをお勧めします。 普段から演算子を指定するユーザー (ドキュメント ストアを検索するときなど) は、`searchMode=all` で得られるブール クエリの構造の方が直感的にわかりやすいかもしれません。 `searchMode` と演算子の相互作用について詳しくは、[Simple クエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)に関するページをご覧ください。
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>第 2 段階: 字句解析 

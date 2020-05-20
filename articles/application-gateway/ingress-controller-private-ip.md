@@ -51,7 +51,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 
 
 ## <a name="assign-globally"></a>グローバルに割り当てる
-念のため、プライベート IP で公開されるすべてのイングレスを制限することを要件にして、`appgw.usePrivateIP: true` の構成で `helm` を使用します。
+念のため、プライベート IP で公開されるすべてのイングレスを制限することを要件にして、`helm` の構成で `appgw.usePrivateIP: true` を使用します。
 
 ### <a name="usage"></a>使用法
 ```yaml

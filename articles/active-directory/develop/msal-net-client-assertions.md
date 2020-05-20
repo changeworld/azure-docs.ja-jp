@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 渡したディクショナリ内の要求の 1 つが必須の要求の 1 つと同じである場合は、追加の要求の値が考慮されます。 これによって、MSAL.NET で計算された要求がオーバーライドされます。
 
-Azure AD で想定される必須の要求を含め、独自の要求を指定する場合は、`false` パラメーターに `mergeWithDefaultClaims` を渡します。
+Azure AD で想定される必須の要求を含め、独自の要求を指定する場合は、`mergeWithDefaultClaims` パラメーターに `false` を渡します。

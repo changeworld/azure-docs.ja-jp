@@ -102,7 +102,7 @@ API へのアクセスは、セルフプロビジョナー クラスター ロ�
 ## <a name="manage-default-templates-and-imagestreams"></a>既定のテンプレートと imageStreams の管理
 
 Azure Red Hat OpenShift では、`openshift` 名前空間内の既定のテンプレートとイメージ ストリームの更新を無効にすることができます。
-`Templates` 名前空間のすべての `ImageStreams` および `openshift` に対する更新を無効にするには、次のようにします。
+`openshift` 名前空間のすべての `Templates` および `ImageStreams` に対する更新を無効にするには、次のようにします。
 
 1. `customer-admin` 特権を持つユーザーとしてログインします。
 
@@ -112,7 +112,7 @@ Azure Red Hat OpenShift では、`openshift` 名前空間内の既定のテン�
    oc edit namespace openshift
    ```
 
-3. 注釈 `openshift` を追加して、ARO の更新プロセスから `openshift.io/reconcile-protect: "true"` 名前空間を削除します。
+3. 注釈 `openshift.io/reconcile-protect: "true"` を追加して、ARO の更新プロセスから `openshift` 名前空間を削除します。
 
    ```
    ...

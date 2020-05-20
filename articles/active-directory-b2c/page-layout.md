@@ -33,7 +33,7 @@ ms.locfileid: "78183977"
 
 - すべてのページ
   - アクセシビリティの修正
-  - [HTML タグに](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) `data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できるようになりました。
+  - [HTML タグに](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content)`data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できるようになりました。
     - HTML テンプレートと同時にリンクされた CSS ファイルを読み込みます。これにより、ファイルの読み込みの間に "ちらつき" が発生しなくなります。
     - ページの読み込み前に `script` タグをフェッチして実行する順序を制御します。
   - メール フィールドは `type=email` になり、モバイル キーボードで正しい候補が提供されるようになりました

@@ -30,7 +30,7 @@ Azure CLI の場合は、[Event Grid 拡張機能](/cli/azure/azure-cli-extensio
 
 1. [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。 `az --version` を使って確認し、最新バージョンがあることを確認します。
 1. `az extension remove -n eventgrid` で以前のバージョンの拡張機能をアンインストールします。
-1. `eventgrid` で `az extension add -n eventgrid` 拡張機能をインストールします
+1. `az extension add -n eventgrid` で `eventgrid` 拡張機能をインストールします
 
 ### <a name="install-module-for-powershell"></a>PowerShell 用のモジュールのインストール
 

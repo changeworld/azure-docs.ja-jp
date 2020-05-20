@@ -30,7 +30,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 * **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は wasbs:// になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
-* **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 [ を使用している場合は、「](#storage-configuration)ストレージの構成`BlobStorage`」を参照してください。
+* **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
 * 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
 
 > [!NOTE]  
@@ -38,7 +38,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 
 ## <a name="storage-configuration"></a>ストレージの構成
 
-使用しているストレージ アカウントの種類が `Storage (general purpose v1)` または `StorageV2 (general purpose v2)` の場合、アクションは必要ありません。  この記事のプロセスにより、少なくとも `/tezstaging` に対する出力が生成されます。  既定の Hadoop 構成では、サービス `/tezstaging` の `fs.azure.page.blob.dir` 内の `core-site.xml` 構成変数に `HDFS` が含まれます。  この構成により、ディレクトリに対する出力がページ BLOB となります。これは、ストレージ アカウントの種類 `BlobStorage` ではサポートされていません。  この記事で `BlobStorage` を使用するには、`/tezstaging` を `fs.azure.page.blob.dir` 構成変数から削除します。  構成は [Ambari UI](../hdinsight-hadoop-manage-ambari.md) からアクセスすることができます。  そうしないと、`Page blob is not supported for this account type.` というエラー メッセージが表示されます。
+使用しているストレージ アカウントの種類が `Storage (general purpose v1)` または `StorageV2 (general purpose v2)` の場合、アクションは必要ありません。  この記事のプロセスにより、少なくとも `/tezstaging` に対する出力が生成されます。  既定の Hadoop 構成では、サービス `HDFS` の `core-site.xml` 内の `fs.azure.page.blob.dir` 構成変数に `/tezstaging` が含まれます。  この構成により、ディレクトリに対する出力がページ BLOB となります。これは、ストレージ アカウントの種類 `BlobStorage` ではサポートされていません。  この記事で `BlobStorage` を使用するには、`/tezstaging` を `fs.azure.page.blob.dir` 構成変数から削除します。  構成は [Ambari UI](../hdinsight-hadoop-manage-ambari.md) からアクセスすることができます。  そうしないと、`Page blob is not supported for this account type.` というエラー メッセージが表示されます。
 
 > [!WARNING]  
 > このドキュメントの手順では、次のことが前提条件となっています。  
@@ -101,7 +101,7 @@ while True:
 2. `string.strip(line, "\n ")` を使用することで、末尾の改行文字が削除されます。
 3. ストリームの処理中は、すべての値が 1 つの行に含まれ、値と値の間はタブ文字で区切られます。 それにより、 `string.split(line, "\t")` を使用してタブごとに入力を分割し、フィールドのみを返すことができます。
 4. 処理の完了時には、フィールド間がタブで区切られた単一の行として、STDOUT に出力が書き出される必要があります。 たとえば、「 `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 」のように入力します。
-5. `while` が読み込まれなくなるまで、`line` ループが繰り返されます。
+5. `line` が読み込まれなくなるまで、`while` ループが繰り返されます。
 
 スクリプトの出力は、`devicemake` と `devicemodel` の入力値を連結したものであり、連結後の値のハッシュです。
 
@@ -315,7 +315,7 @@ DUMP DETAILS;
 
 1. 最初の行は、サンプルのデータ ファイル `sample.log` を `LOGS` に読み込みます。 また、各レコードを `chararray` として定義します。
 2. 次の行はすべての null 値を除去し、操作の結果を `LOG`に格納します。
-3. 次に、`LOG` のレコードを反復処理し、`GENERATE` を使って、`create_structure` として読み込まれた Python/Jython スクリプトに含まれる `myfuncs` メソッドを呼び出します。 `LINE` を使って、現在のレコードを関数に渡します。
+3. 次に、`LOG` のレコードを反復処理し、`GENERATE` を使って、`myfuncs` として読み込まれた Python/Jython スクリプトに含まれる `create_structure` メソッドを呼び出します。 `LINE` を使って、現在のレコードを関数に渡します。
 4. 最後に、`DUMP` コマンドを使って出力が STDOUT にダンプされます。 このコマンドは、操作完了後に結果を表示します。
 
 ### <a name="create-file"></a>[ファイルの作成]

@@ -47,7 +47,7 @@ DNS ゾーンは、 `New-AzureRmDnsZone` コマンドレットを使用して作
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-次の例では、[project = demo](dns-zones-records.md#tags) と *env = test* の 2 つ *Azure Resource Manager タグ*を含む DNS ゾーンの作成方法を示します。
+次の例では、*project = demo* と *env = test* の 2 つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンの作成方法を示します。
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -140,7 +140,7 @@ Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>$zone オブジェクトを使用してゾーンを指定する
 
-削除するゾーンを指定するには、`$zone` によって返された `Get-AzureRmDnsZone` オブジェクトを使用します。
+削除するゾーンを指定するには、`Get-AzureRmDnsZone` によって返された `$zone` オブジェクトを使用します。
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup

@@ -92,7 +92,7 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>ブート診断を確認して有効にする
 
-次の例では、``myVMDeployed`` という名前のリソース グループの ``myResourceGroup`` という名前の VM で診断拡張機能を有効にします。
+次の例では、``myResourceGroup`` という名前のリソース グループの ``myVMDeployed`` という名前の VM で診断拡張機能を有効にします。
 
 Azure CLI
 

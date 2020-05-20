@@ -20,9 +20,9 @@ ms.locfileid: "77669949"
 
 ## <a name="tracking-django-applications"></a>Django アプリケーションの追跡
 
-1. `opencensus-ext-django`PyPI[ から ](https://pypi.org/project/opencensus-ext-django/) をダウンロードしてインストールし、`django` ミドルウェアでアプリケーションをインストルメント化します。 `django` アプリケーションに送信された受信要求が追跡されます。
+1. [PyPI](https://pypi.org/project/opencensus-ext-django/) から `opencensus-ext-django` をダウンロードしてインストールし、`django` ミドルウェアでアプリケーションをインストルメント化します。 `django` アプリケーションに送信された受信要求が追跡されます。
 
-2. `opencensus.ext.django.middleware.OpencensusMiddleware` ファイルの `settings.py` に `MIDDLEWARE` を含めます。
+2. `settings.py` ファイルの `MIDDLEWARE` に `opencensus.ext.django.middleware.OpencensusMiddleware` を含めます。
 
     ```python
     MIDDLEWARE = (
@@ -61,7 +61,7 @@ ms.locfileid: "77669949"
 
 ## <a name="tracking-flask-applications"></a>Flask アプリケーションの追跡
 
-1. `opencensus-ext-flask`PyPI[ から ](https://pypi.org/project/opencensus-ext-flask/) をダウンロードしてインストールし、`flask` ミドルウェアでアプリケーションをインストルメント化します。 `flask` アプリケーションに送信された受信要求が追跡されます。
+1. [PyPI](https://pypi.org/project/opencensus-ext-flask/) から `opencensus-ext-flask` をダウンロードしてインストールし、`flask` ミドルウェアでアプリケーションをインストルメント化します。 `flask` アプリケーションに送信された受信要求が追跡されます。
 
     ```python
     
@@ -102,7 +102,7 @@ ms.locfileid: "77669949"
 
 ## <a name="tracking-pyramid-applications"></a>Pyramid アプリケーションの追跡
 
-1. `opencensus-ext-django`PyPI[ から ](https://pypi.org/project/opencensus-ext-pyramid/) をダウンロードしてインストールし、`pyramid` tween でアプリケーションをインストルメント化します。 `pyramid` アプリケーションに送信された受信要求が追跡されます。
+1. [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) から `opencensus-ext-django` をダウンロードしてインストールし、`pyramid` tween でアプリケーションをインストルメント化します。 `pyramid` アプリケーションに送信された受信要求が追跡されます。
 
     ```python
     def main(global_config, **settings):

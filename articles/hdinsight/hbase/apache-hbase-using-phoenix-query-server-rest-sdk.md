@@ -31,7 +31,7 @@ Apache Phoenix Query Server 用の Microsoft .NET ドライバーは NuGet パ�
 
 ## <a name="instantiate-new-phoenixclient-object"></a>新しい PhoenixClient オブジェクトのインスタンス化
 
-ライブラリの使用を開始するには、クラスターへの `PhoenixClient` およびクラスターの Apache Hadoop ユーザー名とパスワードを含む `ClusterCredentials` を渡して、新しい `Uri` オブジェクトをインスタンス化します。
+ライブラリの使用を開始するには、クラスターへの `Uri` およびクラスターの Apache Hadoop ユーザー名とパスワードを含む `ClusterCredentials` を渡して、新しい `PhoenixClient` オブジェクトをインスタンス化します。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -94,7 +94,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 他の RDBMS と同じように、HBase はテーブルにデータを格納します。 Phoenix では、標準の SQL クエリを使って新しいテーブルを作成し、プライマリ キーと列の型を定義します。
 
-この例および以降のすべての例では、「`PhoenixClient`新しい PhoenixClient オブジェクトのインスタンス化[」での定義に従ってインスタンス化された ](#instantiate-new-phoenixclient-object) オブジェクトを使います。
+この例および以降のすべての例では、「[新しい PhoenixClient オブジェクトのインスタンス化](#instantiate-new-phoenixclient-object)」での定義に従ってインスタンス化された `PhoenixClient` オブジェクトを使います。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -160,7 +160,7 @@ finally
 }
 ```
 
-上の例では、`Customers` オプションを使って `IF NOT EXISTS` という名前の新しいテーブルを作成しています。 `CreateStatementRequestAsync` を呼び出して、Avitica (PQS) サーバーで新しいステートメントを作成します。 `finally` ブロックは、返された `CreateStatementResponse` オブジェクトと `OpenConnectionResponse` オブジェクトを閉じます。
+上の例では、`IF NOT EXISTS` オプションを使って `Customers` という名前の新しいテーブルを作成しています。 `CreateStatementRequestAsync` を呼び出して、Avitica (PQS) サーバーで新しいステートメントを作成します。 `finally` ブロックは、返された `CreateStatementResponse` オブジェクトと `OpenConnectionResponse` オブジェクトを閉じます。
 
 ## <a name="insert-data-individually"></a>データの個別挿入
 
@@ -281,7 +281,7 @@ finally
 
 ## <a name="batch-insert-data"></a>データのバッチ挿入
 
-次のコードは、データを個別に挿入するコードとほぼ同じです。 この例では、準備されたステートメントで `UpdateBatch` を繰り返し呼び出すのではなく、`ExecuteBatchRequestAsync` の呼び出しで `ExecuteRequestAsync` オブジェクトを使います。
+次のコードは、データを個別に挿入するコードとほぼ同じです。 この例では、準備されたステートメントで `ExecuteRequestAsync` を繰り返し呼び出すのではなく、`ExecuteBatchRequestAsync` の呼び出しで `UpdateBatch` オブジェクトを使います。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();

@@ -31,7 +31,7 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 ## <a name="what-is-prevent-accidental-deletes"></a>誤って削除されないように保護する機能
 たとえば、次のような大量の削除を行う状況でこの機能が作用します。
 
-* [OU](how-to-connect-sync-configure-filtering.md) 全体または[ドメイン](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)全体を除外していた[フィルター処理](how-to-connect-sync-configure-filtering.md#domain-based-filtering)に変更を加えた場合。
+* [OU](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) 全体または[ドメイン](how-to-connect-sync-configure-filtering.md#domain-based-filtering)全体を除外していた[フィルター処理](how-to-connect-sync-configure-filtering.md)に変更を加えた場合。
 * OU 内のすべてのオブジェクトを削除した場合。
 * OU の名前を変更したことでその OU 内のすべてのオブジェクトが同期の対象外と見なされる場合。
 
@@ -45,7 +45,7 @@ Azure AD にエクスポートするようにステージングされた削除�
 >
 > 
 
-また、`stopped-deletion-threshold-exceeded`Synchronization Service Manager**UI でエクスポート プロファイルのステータスが** となっていることを確認できます。
+また、**Synchronization Service Manager** UI でエクスポート プロファイルのステータスが `stopped-deletion-threshold-exceeded` となっていることを確認できます。
 ![誤って削除されないように保護する Sync Service Manager UI](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
 これを予想していなかった場合は、調査し、修正のアクションを実行します。 削除されようとしているオブジェクトを表示するには、次の操作を行います。

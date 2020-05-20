@@ -100,7 +100,7 @@ DnsSettings              : {
             },*/
     ```
 
-2. 既存のサブネットを使用し、手順 1 でこの変数を無効にしているため、`nicPrefixOverride` の `Microsoft.Compute/virtualMachineScaleSets` 属性をコメント アウトします。
+2. 既存のサブネットを使用し、手順 1 でこの変数を無効にしているため、`Microsoft.Compute/virtualMachineScaleSets` の `nicPrefixOverride` 属性をコメント アウトします。
 
     ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
@@ -143,7 +143,7 @@ DnsSettings              : {
     },*/
     ```
 
-5. 新しい仮想ネットワークの作成に依存しないように、`dependsOn` の `Microsoft.Compute/virtualMachineScaleSets` 属性から仮想ネットワークをコメント アウトします。
+5. 新しい仮想ネットワークの作成に依存しないように、`Microsoft.Compute/virtualMachineScaleSets` の `dependsOn` 属性から仮想ネットワークをコメント アウトします。
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -229,7 +229,7 @@ DnsSettings              : {
     }, */
     ```
 
-5. 新しい IP アドレスの作成に依存しないように、`dependsOn` の `Microsoft.Network/loadBalancers` 属性から IP アドレスをコメント アウトします。
+5. 新しい IP アドレスの作成に依存しないように、`Microsoft.Network/loadBalancers` の `dependsOn` 属性から IP アドレスをコメント アウトします。
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -243,7 +243,7 @@ DnsSettings              : {
     "properties": {
     ```
 
-6. `Microsoft.Network/loadBalancers` リソースで、`publicIPAddress` の `frontendIPConfigurations` 要素を変更して、新しく作成された IP アドレスではなく、既存の静的 IP アドレスを参照します。
+6. `Microsoft.Network/loadBalancers` リソースで、`frontendIPConfigurations` の `publicIPAddress` 要素を変更して、新しく作成された IP アドレスではなく、既存の静的 IP アドレスを参照します。
 
     ```json
                 "frontendIPConfigurations": [
@@ -327,7 +327,7 @@ DnsSettings              : {
     }, */
     ```
 
-4. 新しい IP アドレスの作成に依存しないように、`dependsOn` の、IP アドレスの `Microsoft.Network/loadBalancers` 属性を削除します。 現在、ロード バランサーは仮想ネットワークのサブネットに依存しているため、仮想ネットワークの `dependsOn` 属性を追加します。
+4. 新しい IP アドレスの作成に依存しないように、`Microsoft.Network/loadBalancers` の、IP アドレスの `dependsOn` 属性を削除します。 現在、ロード バランサーは仮想ネットワークのサブネットに依存しているため、仮想ネットワークの `dependsOn` 属性を追加します。
 
     ```json
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -340,7 +340,7 @@ DnsSettings              : {
                 ],
     ```
 
-5. `frontendIPConfigurations` を使用するのではなく、サブネットと `publicIPAddress` を使用するように、ロード バランサーの `privateIPAddress` 設定を変更します。 `privateIPAddress` では、定義済みの静的内部 IP アドレスを使用します。 動的 IP アドレスを使用するには、`privateIPAddress` 要素を削除し、`privateIPAllocationMethod` を **Dynamic** に変更します。
+5. `publicIPAddress` を使用するのではなく、サブネットと `privateIPAddress` を使用するように、ロード バランサーの `frontendIPConfigurations` 設定を変更します。 `privateIPAddress` では、定義済みの静的内部 IP アドレスを使用します。 動的 IP アドレスを使用するには、`privateIPAddress` 要素を削除し、`privateIPAllocationMethod` を **Dynamic** に変更します。
 
     ```json
                 "frontendIPConfigurations": [
@@ -572,7 +572,7 @@ DnsSettings              : {
             },
     ```
 
-6. `networkProfile` リソースの `Microsoft.Compute/virtualMachineScaleSets` で、内部バックエンド アドレス プールを追加します。
+6. `Microsoft.Compute/virtualMachineScaleSets` リソースの `networkProfile` で、内部バックエンド アドレス プールを追加します。
 
     ```json
     "loadBalancerBackendAddressPools": [

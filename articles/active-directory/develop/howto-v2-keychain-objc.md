@@ -32,7 +32,7 @@ ms.locfileid: "77085850"
 
 iOS 上の MSAL では、`com.microsoft.adalcache` アクセス グループが既定で使用されます。 これは、MSAL と Azure AD Authentication Library (ADAL) SDK の両方で使用される共有アクセス グループであり、発行元が同じである複数のアプリ間での最適なシングル サインオン (SSO) エクスペリエンスが保証されます。
 
-iOS では、XCode の **[Project settings]\(プロジェクト設定\)**  >  **[Capabilities]\(機能\)**  >  **[Keychain sharing]\(キーチェーン共有\)** で、`com.microsoft.adalcache` キーチェーン グループをアプリのエンタイトルメントに追加します。
+iOS では、XCode の **[Project settings]\(プロジェクト設定\)** > **[Capabilities]\(機能\)** > **[Keychain sharing]\(キーチェーン共有\)** で、`com.microsoft.adalcache` キーチェーン グループをアプリのエンタイトルメントに追加します。
 
 ### <a name="macos"></a>macOS
 

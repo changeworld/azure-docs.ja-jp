@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "78191055"
 ---
-`msg` の `context.bindings` 出力バインド オブジェクトを使用してキュー メッセージを作成するコードを追加します。 このコードを `context.res` ステートメントの前に追加します。
+`context.bindings` の `msg` 出力バインド オブジェクトを使用してキュー メッセージを作成するコードを追加します。 このコードを `context.res` ステートメントの前に追加します。
 
 :::code language="javascript" range="7" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/index.js":::
 

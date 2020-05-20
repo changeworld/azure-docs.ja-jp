@@ -64,7 +64,7 @@ az acr login --name myregistry
 echo "Here is an artifact!" > artifact.txt
 ```
 
-`oras push` コマンドを使用して、このテキスト ファイルをレジストリにプッシュします。 次の例では、サンプルのテキスト ファイルを `samples/artifact` リポジトリにプッシュします。 レジストリは、レジストリの完全修飾名 "*myregistry.azurecr.io*" (すべて小文字) で識別されます。 成果物にはタグ `1.0` が付けられます。 成果物の型は既定では未定義で、ファイル名  *に続く "* メディアの種類`artifact.txt`" の文字列によって識別されます。 追加の型については、「[OCI Artifacts](https://github.com/opencontainers/artifacts)」 (OCI 成果物) を参照してください。 
+`oras push` コマンドを使用して、このテキスト ファイルをレジストリにプッシュします。 次の例では、サンプルのテキスト ファイルを `samples/artifact` リポジトリにプッシュします。 レジストリは、レジストリの完全修飾名 "*myregistry.azurecr.io*" (すべて小文字) で識別されます。 成果物にはタグ `1.0` が付けられます。 成果物の型は既定では未定義で、ファイル名 `artifact.txt` に続く "*メディアの種類*" の文字列によって識別されます。 追加の型については、「[OCI Artifacts](https://github.com/opencontainers/artifacts)」 (OCI 成果物) を参照してください。 
 
 **Linux**
 

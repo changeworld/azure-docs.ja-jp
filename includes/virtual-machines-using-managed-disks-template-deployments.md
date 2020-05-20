@@ -88,7 +88,7 @@ ms.locfileid: "76037590"
 Azure Managed Disks を使用した場合、そのディスクが最上位のリソースとなり、ユーザーによって作成されるストレージ アカウントは不要となります。 マネージド ディスクは、最初 `2016-04-30-preview` の API バージョンで公開され、その後のすべての API バージョンで使用でき、既定のディスク タイプになりました。 以降のセクションでは、既定の設定とディスクのカスタマイズ方法について詳しく見ていきます。
 
 > [!NOTE]
-> `2016-04-30-preview` と `2016-04-30-preview` の間で大きな変更があったため、`2017-03-30` 以降の API バージョンを使うことをお勧めします。
+> `2016-04-30-preview` と `2017-03-30` の間で大きな変更があったため、`2016-04-30-preview` 以降の API バージョンを使うことをお勧めします。
 >
 >
 
@@ -232,7 +232,7 @@ VM オブジェクト内で、アタッチするディスク オブジェクト�
 Resource Manager テンプレートで Standard SSD ディスクを作成するには、次のパラメーターが必要です。
 
 * Microsoft.Compute の *apiVersion* を `2018-04-01` (またはそれ以降) として設定する必要があります。
-* *として*managedDisk.storageAccountType`StandardSSD_LRS` を指定します。
+* `StandardSSD_LRS` として *managedDisk.storageAccountType* を指定します。
 
 次の例は、Standard SSD ディスクを使用する VM の *properties.storageProfile.osDisk* セクションを示したものです。
 

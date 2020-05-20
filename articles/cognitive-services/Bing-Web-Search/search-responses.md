@@ -224,7 +224,7 @@ news 回答と newsarticle について詳しくは、[News Search API](../bing-
 
 単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)* " や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)* " といったクエリが考えられます。
 
-次に示したのは、"`computation`How many feet in 10 meters? (10 メートルは何フィート?) *" に対する*  回答です。
+次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)*" に対する `computation` 回答です。
 
 ```json
 "computation": {

@@ -28,7 +28,7 @@ ms.locfileid: "77201972"
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup>`direction`function.json*には "inout" バインド*、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
+<sup>1</sup>*function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
 
 Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 

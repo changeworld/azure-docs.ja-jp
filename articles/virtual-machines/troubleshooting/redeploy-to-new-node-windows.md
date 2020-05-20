@@ -30,7 +30,7 @@ Windows ベースの Azure 仮想マシン (VM) へのリモート デスクト�
 ## <a name="using-azure-powershell"></a>Azure PowerShell の使用
 マシンに最新の Azure PowerShell 1.x がインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
-次の例では、`myVM` という名前のリソース グループ内にある `myResourceGroup` という名前の VM をデプロイします。
+次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM をデプロイします。
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"

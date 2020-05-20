@@ -32,7 +32,7 @@ PowerShell を使用してユーザー委任 SAS を作成するには、バー�
 1. Azure PowerShell の以前のインストールがある場合はアンインストールします。
 
     - **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールを削除します。
-    - **からすべての**Azure`%Program Files%\WindowsPowerShell\Modules` モジュールを削除します。
+    - `%Program Files%\WindowsPowerShell\Modules` からすべての **Azure** モジュールを削除します。
 
 1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
 
@@ -76,7 +76,7 @@ PowerShell を使用したサインインの詳細については、「[Azure Po
 
 ## <a name="assign-permissions-with-rbac"></a>RBAC を使用してアクセス許可を割り当てる
 
-Azure PowerShell からユーザー委任 SAS を作成するには、PowerShell へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「**Create a user delegation SAS**」 (ユーザー委任 SAS の作成) の「[Assign permissions with RBAC](/rest/api/storageservices/create-user-delegation-sas)」 (RBAC によるアクセス許可の割り当て) セクションを参照してください。
+Azure PowerShell からユーザー委任 SAS を作成するには、PowerShell へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「[Create a user delegation SAS](/rest/api/storageservices/create-user-delegation-sas)」 (ユーザー委任 SAS の作成) の「**Assign permissions with RBAC**」 (RBAC によるアクセス許可の割り当て) セクションを参照してください。
 
 Azure AD セキュリティ プリンシパルに RBAC ロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者に依頼して、必要なアクセス許可を割り当ててもらう必要がある場合があります。
 

@@ -45,7 +45,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 ## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1. Azure アカウントにログインする
 
 1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 `Connect-AzAccount` コマンドレットを実行すると、アカウントの資格情報の入力を求める Web ページが表示されます。
-   - または、`Connect-AzAccount`Credential **パラメーターを使用して、** コマンドレットにパラメーターとしてアカウント資格情報を組み込むこともできます。
+   - または、**Credential** パラメーターを使用して、`Connect-AzAccount` コマンドレットにパラメーターとしてアカウント資格情報を組み込むこともできます。
    - CSP パートナーがテナントの代理として活動している場合は、tenantID またはテナントのプライマリ ドメイン名を使用して顧客をテナントとして指定します。 例: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 
@@ -242,7 +242,7 @@ Hyper-V コア サーバーを実行している場合は、セットアップ �
 > 1. VM のプロパティを更新して、マネージド ディスクへのフェールオーバーを有効にします
 > 1. `Get-AzRecoveryServicesAsrReplicationProtectedItem` コマンドレットを使用して、保護された項目の各ディスクのディスク ID を取得します
 > 1. `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` コマンドレットを使用して、ディスク暗号化セットに対するディスク ID のマッピングを含めるディクショナリ オブジェクトを作成します。 これらのディスク暗号化セットは、ターゲット リージョンで事前に作成されている必要があります。
-> 1. ディクショナリ オブジェクトを `Set-AzRecoveryServicesAsrReplicationProtectedItem`DiskIdToDiskEncryptionSetMap **パラメーターで渡すことにより、** コマンドレットを使用して VM のプロパティを更新します。
+> 1. ディクショナリ オブジェクトを **DiskIdToDiskEncryptionSetMap** パラメーターで渡すことにより、`Set-AzRecoveryServicesAsrReplicationProtectedItem` コマンドレットを使用して VM のプロパティを更新します。
 
 ## <a name="step-8-run-a-test-failover"></a>ステップ 8: テスト フェールオーバーを実行する
 

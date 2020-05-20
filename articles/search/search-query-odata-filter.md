@@ -174,11 +174,11 @@ Azure Cognitive Search に送信できるフィルター式のサイズと複雑
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは [ を指定した](https://docs.microsoft.com/rest/api/searchservice/search-documents)検索要求`search=waterfront`と同じになります。
+"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは `search=waterfront` を指定した[検索要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)と同じになります。
 
     $filter=search.ismatchscoring('waterfront')
 
-"hostel" という言葉を含み、評価が 4 以上のドキュメントを探すか、"motel" という言葉を含み、評価が 5 のドキュメントを探します。 この要求は、`search.ismatchscoring` を使用してフルテキスト検索とフィルター操作を組み合わせたものであるため、`or` 関数なしでは表現できませんでした。
+"hostel" という言葉を含み、評価が 4 以上のドキュメントを探すか、"motel" という言葉を含み、評価が 5 のドキュメントを探します。 この要求は、`or` を使用してフルテキスト検索とフィルター操作を組み合わせたものであるため、`search.ismatchscoring` 関数なしでは表現できませんでした。
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 

@@ -144,7 +144,7 @@ Zoho One で Azure AD シングル サインオンを構成するには、次の
 
 1. 別の Web ブラウザー ウィンドウで、Zoho One 企業サイトに管理者としてサインインします。
 
-2. **[Organization]\(組織\)** タブで、 **[SAML Authentication]\(SAML 認証\)** の **[Setup]\(設定\)** をクリックします。
+2. **[Organization]\(組織\)** タブで、**[SAML Authentication]\(SAML 認証\)** の **[Setup]\(設定\)** をクリックします。
 
     ![Zoho One、組織](./media/zohoone-tutorial/tutorial_zohoone_setup.png)
 
@@ -160,7 +160,7 @@ Zoho One で Azure AD シングル サインオンを構成するには、次の
 
     d. **[保存]** をクリックします。
 
-4. SAML 認証設定を保存した後、 **[SAML-Identifier]\(SAML 識別子\)** の値をコピーし、 **を置き換える形で**応答 URL`<saml-identifier>` に追加します (例: `https://accounts.zoho.com/samlresponse/one.zoho.com`)。こうして得られた値を **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けてください。
+4. SAML 認証設定を保存した後、**[SAML-Identifier]\(SAML 識別子\)** の値をコピーし、`<saml-identifier>` を置き換える形で**応答 URL** に追加します (例: `https://accounts.zoho.com/samlresponse/one.zoho.com`)。こうして得られた値を **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けてください。
 
     ![Zoho One、SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
@@ -219,7 +219,7 @@ Zoho One で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 

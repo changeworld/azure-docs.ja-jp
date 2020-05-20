@@ -95,7 +95,7 @@ RBPEX で実行された読み取りと、他のすべてのデータ ファイ�
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>リソース使用率の統計でのデータ IO
 
-ハイパースケール以外のデータベースでは、データファイルに対する合計読み取り/書き込み IOPS は、[リソース ガバナンス](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) データの IOPS 制限を基準として、[ 列の ](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)dm_db_resource_stats[ および ](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)sys.resource_stats`avg_data_io_percent` ビューで報告されます。 ポータルでは、同じ値が _データ IO の割合_ として報告されます。 
+ハイパースケール以外のデータベースでは、データファイルに対する合計読み取り/書き込み IOPS は、[リソース ガバナンス](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) データの IOPS 制限を基準として、`avg_data_io_percent` 列の [dm_db_resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ビューで報告されます。 ポータルでは、同じ値が _データ IO の割合_ として報告されます。 
 
 Hyperscale データベースでは、この列は、データ IOPS の使用率を、コンピューティング レプリカのみのローカル ストレージの制限 (特に RBPEX および `tempdb` に対する IO) を基準として報告します。 この列の100% 値は、リソース ガバナンスがローカル ストレージの IOPS を制限していることを示します。 これがパフォーマンスの問題に関連付けられている場合は、負荷の少ない IO を生成するようにワークロードを調整するか、データベースサービスの目標値を増やして、リソース ガバナンス _最大データ IOPS_ [制限](sql-database-vcore-resource-limits-single-databases.md) を増やします。 RBPEX の読み取りと書き込みのリソースガバナンスでは、システムは、SQL Server エンジンによって発行される可能性のある、より大きな IO ではなく、個々の 8 KB の IO をカウントします。 
 

@@ -63,7 +63,7 @@ ms.locfileid: "74932061"
 
 ### <a name="upload-the-input-file"></a>入力ファイルをアップロードする
 1. **minecraftstory.txt** という名前のファイルを作成し、任意のテキストを入力しておきます。 このテキストの単語数が Spark プログラムによってカウントされます。 
-2. BLOB コンテナーの `inputfiles` フォルダーに、`spark` という名前のサブフォルダーを作成します。 
+2. BLOB コンテナーの `spark` フォルダーに、`inputfiles` という名前のサブフォルダーを作成します。 
 3. `minecraftstory.txt` を `inputfiles` サブフォルダーにアップロードします。 
 
 ## <a name="sample-script"></a>サンプル スクリプト

@@ -12,7 +12,7 @@ ms.locfileid: "79225855"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
 
-Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 これは、`--env` に対する `docker run` コマンドライン引数に似ています。 
+Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 これは、`docker run` に対する `--env` コマンドライン引数に似ています。 
 
 コンテナーで環境変数を設定するには、コンテナー インスタンスを作成するときに指定します。 この記事では、[Azure CLI](#azure-cli-example)、[Azure PowerShell](#azure-powershell-example)、および [Azure portal](#azure-portal-example) を使用してコンテナーを開始する際の環境変数の設定の例を示します。 
 
@@ -85,7 +85,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 PowerShell での環境変数の設定は CLI と似ていますが、`-EnvironmentVariable` コマンド ライン引数を使用します。
 
-まず、この [New-AzContainerGroup][aci-wordcount] コマンドを使用して、既定の構成で [aci-wordcount][new-Azcontainergroup] コンテナーを起動します。
+まず、この [New-AzContainerGroup][new-Azcontainergroup] コマンドを使用して、既定の構成で [aci-wordcount][aci-wordcount] コンテナーを起動します。
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-ここで、次の [New-AzContainerGroup][new-Azcontainergroup] コマンドを実行します。 これは、配列変数 *の設定後に、環境変数の*NumWords*と*MinLength`envVars` を指定しています。
+ここで、次の [New-AzContainerGroup][new-Azcontainergroup] コマンドを実行します。 これは、配列変数 `envVars` の設定後に、環境変数の *NumWords* と *MinLength* を指定しています。
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -144,7 +144,7 @@ Azure:\
 Azure portal においてコンテナー開始時の環境変数を設定するには、コンテナーを作成するときに **[構成]** ページで指定します。
 
 1. **[詳細]** ページ上で、 **[再起動ポリシー]** を *[エラー時]* に設定します。
-2. **[環境変数]** 下で、最初の変数には値 `NumWords` を指定して `5` を入力し、2 番目の変数には値 `MinLength` を指定して `8` を入力します。 
+2. **[環境変数]** 下で、最初の変数には値 `5` を指定して `NumWords` を入力し、2 番目の変数には値 `8` を指定して `MinLength` を入力します。 
 1. **[確認と作成]** を選択して確定してから、コンテナーをデプロイします。
 
 ![環境変数の有効化ボタンとテキスト ボックスを表示しているポータル ページ][portal-env-vars-01]
@@ -159,7 +159,7 @@ Azure portal においてコンテナー開始時の環境変数を設定する�
 
 セキュリティで保護された値を含んだ環境変数は、コンテナーのプロパティに表示されないため、その値はコンテナー内からのみアクセスできます。 たとえば Azure portal や Azure CLI からコンテナーのプロパティを表示すると、セキュリティで保護された変数の名前だけが表示され、その値は表示されません。
 
-セキュリティで保護された環境変数は、変数の型に通常の `secureValue` の代わりに `value` プロパティを指定することで設定します。 次の YAML で定義されている 2 つの変数は、2 つの変数の型を示します。
+セキュリティで保護された環境変数は、変数の型に通常の `value` の代わりに `secureValue` プロパティを指定することで設定します。 次の YAML で定義されている 2 つの変数は、2 つの変数の型を示します。
 
 ### <a name="yaml-deployment"></a>YAML のデプロイ
 

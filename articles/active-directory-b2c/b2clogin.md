@@ -46,11 +46,11 @@ login.microsoftonline.com の廃止は、Azure Active Directory のテナント�
 
 * ID プロバイダーのアプリケーション内のリダイレクト URL を、*b2clogin.com* を参照するように変更します。
 * お使いの Azure AD B2C アプリケーションのユーザー フロー参照とトークン エンドポイントの参照で、*b2clogin.com* を使用するように更新します。
-* **ユーザー インターフェイスのカスタマイズ**用に CORS の設定に定義されている[許可されたオリジン](custom-policy-ui-customization.md)を変更します。
+* [ユーザー インターフェイスのカスタマイズ](custom-policy-ui-customization.md)用に CORS の設定に定義されている**許可されたオリジン**を変更します。
 
 ## <a name="change-identity-provider-redirect-urls"></a>ID プロバイダーのリダイレクト URL を変更する
 
-アプリケーションを作成した各 ID プロバイダーの Web サイトで、すべての信頼された URL を `your-tenant-name.b2clogin.com`login.microsoftonline.com*ではなく* にリダイレクトするように変更します。
+アプリケーションを作成した各 ID プロバイダーの Web サイトで、すべての信頼された URL を *login.microsoftonline.com* ではなく `your-tenant-name.b2clogin.com` にリダイレクトするように変更します。
 
 b2clogin.com リダイレクト URL には、2 つの形式を使用できます。 1 つ目には、テナント ドメイン名の代わりにテナント ID (GUID) を使用することで、URL のどこにも "Microsoft" が表示されなくなるという利点があります。
 
@@ -85,13 +85,13 @@ https://contosob2c.b2clogin.com/00000000-0000-0000-0000-000000000000/B2C_1_signu
 
 OWIN ベースの Web アプリケーションを b2clogin.com に移行する方法の詳細については、「[OWIN ベースの Web API を b2clogin.com に移行する](multiple-token-endpoints.md)」を参照してください。
 
-Azure AD B2C によって保護されている Azure API Management API を移行する方法については、「[Azure AD B2C を使用して Azure API をセキュリティで保護する](secure-api-management.md#migrate-to-b2clogincom)」の「[b2clogin.com への移行](secure-api-management.md)」セクションを参照してください。
+Azure AD B2C によって保護されている Azure API Management API を移行する方法については、「[Azure AD B2C を使用して Azure API をセキュリティで保護する](secure-api-management.md)」の「[b2clogin.com への移行](secure-api-management.md#migrate-to-b2clogincom)」セクションを参照してください。
 
 ## <a name="microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL)
 
 ### <a name="validateauthority-property"></a>ValidateAuthority プロパティ
 
-[MSAL.NET][msal-dotnet] v2 以前を使用している場合、**b2clogin.com** へのリダイレクトを可能にするには、クライアント インスタンス化の `false`ValidateAuthority*プロパティを* に設定します。 この設定は、MSAL.NET v3 以降では必要ありません。
+[MSAL.NET][msal-dotnet] v2 以前を使用している場合、*b2clogin.com* へのリダイレクトを可能にするには、クライアント インスタンス化の **ValidateAuthority** プロパティを `false` に設定します。 この設定は、MSAL.NET v3 以降では必要ありません。
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
@@ -115,7 +115,7 @@ this.clientApplication = new UserAgentApplication(
 
 OWIN ベースの Web アプリケーションを b2clogin.com に移行する方法の詳細については、「[OWIN ベースの Web API を b2clogin.com に移行する](multiple-token-endpoints.md)」を参照してください。
 
-Azure AD B2C によって保護されている Azure API Management API を移行する方法については、「[Azure AD B2C を使用して Azure API をセキュリティで保護する](secure-api-management.md#migrate-to-b2clogincom)」の「[b2clogin.com への移行](secure-api-management.md)」セクションを参照してください。
+Azure AD B2C によって保護されている Azure API Management API を移行する方法については、「[Azure AD B2C を使用して Azure API をセキュリティで保護する](secure-api-management.md)」の「[b2clogin.com への移行](secure-api-management.md#migrate-to-b2clogincom)」セクションを参照してください。
 
 <!-- LINKS - External -->
 [msal-dotnet]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet

@@ -152,7 +152,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 * 逆に、コア インターフェイスでは、必要がある場合に HTTP レベルでの詳細な制御を提供するメソッドが公開されるようになっています。 要求に含めるカスタム HTTP ヘッダーを渡すことができ、`AzureOperationResponse<T>` 型の戻り値を使用すると操作の `HttpRequestMessage` および `HttpResponseMessage` に直接アクセスできます。 `AzureOperationResponse` は `Microsoft.Rest.Azure` 名前空間に定義され、`Hyak.Common.OperationResponse` を置き換えます。
 
 ### <a name="scoringparameters-changes"></a>ScoringParameters の変更
-最新の SDK に `ScoringParameter` という新しいクラスが追加され、検索クエリでスコアリング プロファイルにパラメーターを簡単に指定できるようになりました。 これまで、`ScoringProfiles` クラスの `SearchParameters` プロパティは `IList<string>` と型指定されていました。このプロパティが `IList<ScoringParameter>` と型指定されるようになりました。
+最新の SDK に `ScoringParameter` という新しいクラスが追加され、検索クエリでスコアリング プロファイルにパラメーターを簡単に指定できるようになりました。 これまで、`SearchParameters` クラスの `ScoringProfiles` プロパティは `IList<string>` と型指定されていました。このプロパティが `IList<ScoringParameter>` と型指定されるようになりました。
 
 #### <a name="example"></a>例
 次のようなコードがあるものとします。
@@ -178,7 +178,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 * `IndexDefinitionResponse` は `AzureOperationResponse<Index>` によって置き換えられました
 * `DocumentSearchResponse` の名前が `DocumentSearchResult` に変更されました
 * `IndexResult` の名前が `IndexingResult` に変更されました
-* `Documents.Count()` は、`long` ではなく、ドキュメントの数を含む `DocumentCountResponse` を返すようになりました
+* `Documents.Count()` は、`DocumentCountResponse` ではなく、ドキュメントの数を含む `long` を返すようになりました
 * `IndexGetStatisticsResponse` の名前が `IndexGetStatisticsResult` に変更されました
 * `IndexListResponse` の名前が `IndexListResult` に変更されました
 
@@ -265,13 +265,13 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         };
     }
 
-開発者自身がコード内でこのようなケースを探す必要があります。**は** 型であるため、`JsonResult.Data`コンパイラは警告を生成しません`object`。
+開発者自身がコード内でこのようなケースを探す必要があります。`JsonResult.Data` は `object` 型であるため、**コンパイラは警告を生成しません**。
 
 ### <a name="cloudexception-changes"></a>CloudException の変更
 `CloudException` クラスは、`Hyak.Common` 名前空間から `Microsoft.Rest.Azure` 名前空間に移動されました。 また、その `Error` プロパティの名前が `Body` に変更されています。
 
 ### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient と SearchIndexClient の変更
-`Credentials` プロパティの型が、`SearchCredentials` からその基本クラス `ServiceClientCredentials` に変更されました。 `SearchCredentials` または `SearchIndexClient` の `SearchServiceClient` にアクセスする必要がある場合は、新しい `SearchCredentials` プロパティを使用してください。
+`Credentials` プロパティの型が、`SearchCredentials` からその基本クラス `ServiceClientCredentials` に変更されました。 `SearchIndexClient` または `SearchServiceClient` の `SearchCredentials` にアクセスする必要がある場合は、新しい `SearchCredentials` プロパティを使用してください。
 
 古いバージョンの SDK では、`SearchServiceClient` および `SearchIndexClient` に `HttpClient` パラメーターを受け取るコンストラクターがありました。 これらは、`HttpClientHandler` と、`DelegatingHandler` オブジェクトの配列を受け取るコンストラクターに置き換えられました。 これにより、必要な場合に前処理 HTTP 要求にカスタム ハンドラーをインストールするのが容易になります。
 
@@ -292,7 +292,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 また、資格情報パラメーターの型が `ServiceClientCredentials`に変更されたことにも注意してください。 `SearchCredentials` は `ServiceClientCredentials` から派生しているので、コードへの影響はないものと思われます。
 
 ### <a name="passing-a-request-id"></a>要求 ID の受け渡し
-古いバージョンの SDK では、要求 ID は `SearchServiceClient` または `SearchIndexClient` で設定でき、REST API へのすべての要求に組み込まれていました。 これは、サポートに連絡する必要がある場合、Search サービスに関する問題のトラブルシューティングに役立ちました。 しかし、すべての操作に同じ ID を使用するのではなく、操作ごとに一意の要求 ID を設定する方が便利です。 このため、`SetClientRequestId` および `SearchServiceClient` の `SearchIndexClient` メソッドは削除されました。 代わりに、省略可能な `SearchRequestOptions` パラメーターを使用して、各操作メソッドに要求 ID を渡すことができます。
+古いバージョンの SDK では、要求 ID は `SearchServiceClient` または `SearchIndexClient` で設定でき、REST API へのすべての要求に組み込まれていました。 これは、サポートに連絡する必要がある場合、Search サービスに関する問題のトラブルシューティングに役立ちました。 しかし、すべての操作に同じ ID を使用するのではなく、操作ごとに一意の要求 ID を設定する方が便利です。 このため、`SearchServiceClient` および `SearchIndexClient` の `SetClientRequestId` メソッドは削除されました。 代わりに、省略可能な `SearchRequestOptions` パラメーターを使用して、各操作メソッドに要求 ID を渡すことができます。
 
 > [!NOTE]
 > SDK の今後のリリースでは、他の Azure SDK で使用されている方法と整合性があるように、クライアント オブジェクトでグローバルに要求 ID を設定する新しいメカニズムが追加されます。
@@ -326,9 +326,9 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 古いバージョンの Azure Search .NET SDK には、カスタム モデル クラスのシリアル化に関するバグがありました。 このバグは、null 非許容値型のプロパティを使用してカスタム モデル クラスを作成した場合に発生する可能性がありました。
 
 ### <a name="steps-to-reproduce"></a>再現手順
-null 非許容値型のプロパティを使用してカスタム モデル クラスを作成します。 たとえば、`UnitCount` ではなく `int` 型のパブリック `int?` プロパティを追加します。
+null 非許容値型のプロパティを使用してカスタム モデル クラスを作成します。 たとえば、`int?` ではなく `int` 型のパブリック `UnitCount` プロパティを追加します。
 
-その型の既定値 (たとえば、 `int`の場合は 0) でドキュメントのインデックスを設定した場合、フィールドは Azure Search では null になります。 その後、そのドキュメントを検索した場合、`Search` の呼び出しで、`JsonSerializationException` を `null` に変換できないことを示す `int` がスローされます。
+その型の既定値 (たとえば、 `int`の場合は 0) でドキュメントのインデックスを設定した場合、フィールドは Azure Search では null になります。 その後、そのドキュメントを検索した場合、`Search` の呼び出しで、`null` を `int` に変換できないことを示す `JsonSerializationException` がスローされます。
 
 また、意図した値ではなく null がインデックスに書き込まれるため、フィルターは期待どおりに機能しません。
 

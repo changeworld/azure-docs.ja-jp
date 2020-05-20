@@ -236,7 +236,7 @@ Azure Portal でテナント データベースを表示しても、共有デー
 - テナント名はテナント テーブルに格納されます。
 - データベース名はシャード管理テーブルに格納されます。
 
-1. SQL Server Management Studio (SSMS) で、[ログイン] = **developer\<、[パスワード] = \>P**ssword1 **を使用して、** catalog-mt.**USER\@.database.windows.net** にあるテナント サーバーに接続します。
+1. SQL Server Management Studio (SSMS) で、[ログイン] = **developer**、[パスワード] = **P\@ssword1** を使用して、**catalog-mt.\<USER\>.database.windows.net** にあるテナント サーバーに接続します。
 
     ![SSMS 接続ダイアログ](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

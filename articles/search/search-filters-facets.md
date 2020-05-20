@@ -77,7 +77,7 @@ REST API を使用してインデックスを作成すると、ファセット �
 ```
 
 > [!Note]
-> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `filterable`、`facetable`、`category`、`tags`、および `parkingIncluded` フィールドに `smokingAllowed` および `rating` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
+> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
@@ -98,7 +98,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>クリック イベントでフィルター処理された結果を返す
 
-エンド ユーザーがファセット値をクリックすると、クリック イベントのハンドラーはフィルター式を使用してユーザーの意図を実現します。 `category` ファセットの場合、"motel" というカテゴリのクリックは、この種類の宿泊施設を選択する `$filter` 式によって実装されます。 ユーザーが "motel" をクリックしてモーテルだけを表示するように指示すると、アプリケーションが送信する次のクエリに `$filter=category eq 'motel'` が含まれます。
+エンド ユーザーがファセット値をクリックすると、クリック イベントのハンドラーはフィルター式を使用してユーザーの意図を実現します。 `$filter` ファセットの場合、"motel" というカテゴリのクリックは、この種類の宿泊施設を選択する `category` 式によって実装されます。 ユーザーが "motel" をクリックしてモーテルだけを表示するように指示すると、アプリケーションが送信する次のクエリに `$filter=category eq 'motel'` が含まれます。
 
 次のコード スニペットでは、ユーザーがカテゴリ ファセットから値を選択した場合に、カテゴリをフィルターに追加します。
 

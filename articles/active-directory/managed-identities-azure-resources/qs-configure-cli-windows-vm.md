@@ -61,13 +61,13 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az login
    ```
 
-2. [az group create](../../azure-resource-manager/management/overview.md#terminology) を使用して、VM とその関連リソースの管理およびデプロイ用に[リソース グループ](/cli/azure/group/#az-group-create)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
+2. [az group create](/cli/azure/group/#az-group-create) を使用して、VM とその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. [az vm create](/cli/azure/vm/#az-vm-create) を使用して VM を作成します。 次の例では、*パラメーターの要求どおりに、システム割り当てマネージド ID を持つ*myVM`--assign-identity` という名前の VM を作成します。 `--admin-username` および `--admin-password` パラメーターは、仮想マシンのサインイン用の管理ユーザー名とパスワードを指定します。 これらの値は、お使いの環境に合わせて更新してください。 
+3. [az vm create](/cli/azure/vm/#az-vm-create) を使用して VM を作成します。 次の例では、`--assign-identity` パラメーターの要求どおりに、システム割り当てマネージド ID を持つ *myVM* という名前の VM を作成します。 `--admin-username` および `--admin-password` パラメーターは、仮想マシンのサインイン用の管理ユーザー名とパスワードを指定します。 これらの値は、お使いの環境に合わせて更新してください。 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -117,7 +117,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 
 ユーザー割り当て ID を作成中の VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールと[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
-1. 使用するリソース グループが既にある場合は、この手順をスキップできます。 [az group create](~/articles/azure-resource-manager/management/overview.md#terminology) を使用して、ユーザー割り当てマネージド ID の格納と配置を行う[リソース グループ](/cli/azure/group/#az-group-create)を作成します。 `<RESOURCE GROUP>` と `<LOCATION>` のパラメーターの値は、必ず実際の値に置き換えてください。 :
+1. 使用するリソース グループが既にある場合は、この手順をスキップできます。 [az group create](/cli/azure/group/#az-group-create) を使用して、ユーザー割り当てマネージド ID の格納と配置を行う[リソース グループ](~/articles/azure-resource-manager/management/overview.md#terminology)を作成します。 `<RESOURCE GROUP>` と `<LOCATION>` のパラメーターの値は、必ず実際の値に置き換えてください。 :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

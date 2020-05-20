@@ -51,7 +51,7 @@ ms.locfileid: "80335607"
     </FrameLayout>
     ```
 
-2. 次のコード スニペットを **クラスの**onCreate()`MainActivity.java` メソッドにコピーします。
+2. 次のコード スニペットを `MainActivity.java` クラスの **onCreate()** メソッドにコピーします。
 
     ```Java
     mapControl.onReady(map -> {

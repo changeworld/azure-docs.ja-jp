@@ -93,7 +93,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-各クエリの実行ページは、`POST` ヘッダーと本文 SQL クエリを使用する REST API `Accept: application/query+json` に対応します。 クエリごとにサーバーへ 1 つまたは複数のラウンド トリップが実行され、実行を再開するために、クライアントとサーバー間で `x-ms-continuation` トークンがエコーされます。 FeedOptions の構成オプションは、要求ヘッダーの形式でサーバーに渡されます。 たとえば、`MaxItemCount` は `x-ms-max-item-count` に対応します。 
+各クエリの実行ページは、`Accept: application/query+json` ヘッダーと本文 SQL クエリを使用する REST API `POST` に対応します。 クエリごとにサーバーへ 1 つまたは複数のラウンド トリップが実行され、実行を再開するために、クライアントとサーバー間で `x-ms-continuation` トークンがエコーされます。 FeedOptions の構成オプションは、要求ヘッダーの形式でサーバーに渡されます。 たとえば、`MaxItemCount` は `x-ms-max-item-count` に対応します。 
 
 この要求は、(読みやすくするために切り捨てられます) 次の応答を返します。
 
@@ -266,7 +266,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | `/N/?` に対するインデックス参照であるため、IndexLookupTime のキー参照に約 0.9 ミリ秒かかっています。 | 
 | `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | `/N/?` に対するインデックス参照であるため、範囲スキャンの IndexLookupTime では、これより少し長い 1.7 ミリ秒かかっています。 | 
 | `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | `DocumentLoadTime` では前のクエリと同じ時間がかかっていますが、プロジェクションさているプロパティが 1 つのみのため、より短い `WriteOutputTime` になっています。 | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | 各値が `UserDefinedFunctionExecutionTime` の UDF を実行するために、`c.N` で約 213 ミリ秒かかっています。 |
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | 各値が `c.N` の UDF を実行するために、`UserDefinedFunctionExecutionTime` で約 213 ミリ秒かかっています。 |
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | `IndexLookupTime` の `/Name/?` では約 0.6 ミリ秒かかっています。 `SystemFunctionExecutionTime` でのほとんどのクエリの実行時間 は最大 7 ミリ秒です。 |
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | `LOWER` を使用しているため、クエリはスキャンとして実行され、2491 の取得ドキュメント中、500 ドキュメントが返されました。 |
 

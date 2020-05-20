@@ -59,7 +59,7 @@ Azure AD Connect を使用してオンプレミス AD DS 環境から同期す�
     * [アカウントのパスワードを変更して][enable-user-accounts]必要なパスワード ハッシュを生成してから 15 分待ち、それから再びサインインをお試しください。
     * Azure AD DS を無効にし、再び有効にした場合、各アカウントで手順をもう一度実行してパスワードを変更し、必要なパスワード ハッシュを生成する必要があります。
 * **はい。パスワードは変更されています。**
-    * *のような*SAMAccountName`driley@aaddscontoso.com` 形式ではなく、*のように*UPN`AADDSCONTOSO\deeriley` 形式を利用してサインインをお試しください。
+    * `AADDSCONTOSO\deeriley` のような *SAMAccountName* 形式ではなく、`driley@aaddscontoso.com` のように *UPN* 形式を利用してサインインをお試しください。
     * UPN プレフィックスが極端に長いか、マネージド ドメイン上の別のユーザーと同じであるユーザーに対して *SAMAccountName* を自動的に生成できます。 *UPN* 形式の場合、Azure AD テナント内で確実に一意になります。
 
 ## <a name="the-account-is-locked-out"></a>アカウントがロックアウトされています

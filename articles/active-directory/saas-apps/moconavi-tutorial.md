@@ -173,7 +173,7 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -197,7 +197,7 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
     ![シングル サインオンのテスト](./media/moconavi-tutorial/testing1.png)
 
-4. `https://mcs-admin.moconavi.biz/gateway`[Connect to URL]\(URL への接続\) **ボックスに「** 」と入力し、 **[Done]\(完了\)** をクリックします。
+4. **[Connect to URL]\(URL への接続\)** ボックスに「`https://mcs-admin.moconavi.biz/gateway`」と入力し、**[Done]\(完了\)** をクリックします。
 
     ![シングル サインオンのテスト](./media/moconavi-tutorial/testing2.png)
 
@@ -205,9 +205,9 @@ moconavi で Azure AD シングル サインオンを構成するには、次の
 
     ![シングル サインオンのテスト](./media/moconavi-tutorial/testing3.png)
 
-    a. **[Input Authentication Key]\(認証キーを入力\)** : `azureAD`[Input Authentication Key]\(認証キーを入力\) **ボックスに「** 」と入力します。
+    a. **[Input Authentication Key]\(認証キーを入力\)**: **[Input Authentication Key]\(認証キーを入力\)** ボックスに「`azureAD`」と入力します。
 
-    b. **[Input User ID]\(ユーザー ID を入力\)** : `your ad account`[Input User ID]\(ユーザー ID を入力\)**ボックスに** を入力します。
+    b. **[Input User ID]\(ユーザー ID を入力\)**: **[Input User ID]\(ユーザー ID を入力\)** ボックスに `your ad account` を入力します。
 
     c. **[LOGIN]\(ログイン\)** をクリックします。
 

@@ -125,7 +125,7 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
     c. ログアウト URL
 
     >[!NOTE]
-    >Azure portal の `<Azure AD Identifier>`[基本的な SAML 構成]**セクションの** の代わりに、サインオン URL を含むコピーした Azure AD 識別子を追加します。
+    >Azure portal の **[基本的な SAML 構成]** セクションの `<Azure AD Identifier>` の代わりに、サインオン URL を含むコピーした Azure AD 識別子を追加します。
 
 ### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>My Award Points Top Sub/Top Team のシングル サインオンを構成する
 
@@ -172,7 +172,7 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 

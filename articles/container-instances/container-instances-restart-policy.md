@@ -30,7 +30,7 @@ Azure Container Instances で[コンテナー グループ](container-instances-
 
 ## <a name="specify-a-restart-policy"></a>再起動ポリシーの指定
 
-再起動ポリシーを指定する方法は、Azure CLI や Azure PowerShell コマンドレット、または Azure Portal を使うなどのコンテナー インスタンスを作成する方法によって異なります。 Azure CLI では、`--restart-policy`az container create[ を呼び出すときに、][az-container-create] パラメーターを指定します。
+再起動ポリシーを指定する方法は、Azure CLI や Azure PowerShell コマンドレット、または Azure Portal を使うなどのコンテナー インスタンスを作成する方法によって異なります。 Azure CLI では、[az container create][az-container-create] を呼び出すときに、`--restart-policy` パラメーターを指定します。
 
 ```azurecli-interactive
 az container create \

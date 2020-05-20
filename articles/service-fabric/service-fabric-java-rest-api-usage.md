@@ -39,10 +39,10 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     npm install -g autorest
     ```
 
-3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークしてクローンし、お使いのコンピューターのターミナルからクローンした場所に移動します。
+3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークして複製し、お使いのコンピューターの端末から複製した場所に移動します。
 
 
-4. クローンしたリポジトリで下記の場所に移動します。
+4. 複製したリポジトリで下記の場所に移動します。
     ```bash
     cd specification\servicefabric\data-plane\Microsoft.ServiceFabric\stable\6.0
     ```
@@ -62,7 +62,7 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   次のコマンドは、``servicefabric.json`` 仕様ファイルを入力として受け取り、``java-rest-api-     code`` フォルダーに Java クライアント コードを生成して、コードを ``servicefabricrest`` 名前空間に配置します。 この手順の後、2 つのフォルダー ``models`` と ``implementation``、および ``ServiceFabricClientAPIs.java`` フォルダーに生成された 2 つのファイル ``package-info.java`` と ``java-rest-api-code`` を検索します。
+   次のコマンドは、``servicefabric.json`` 仕様ファイルを入力として受け取り、``java-rest-api-     code`` フォルダーに Java クライアント コードを生成して、コードを ``servicefabricrest`` 名前空間に配置します。 この手順の後、2 つのフォルダー ``models`` と ``implementation``、および ``java-rest-api-code`` フォルダーに生成された 2 つのファイル ``ServiceFabricClientAPIs.java`` と ``package-info.java`` を検索します。
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>生成されたクライアントをプロジェクトに組み込んで使用する

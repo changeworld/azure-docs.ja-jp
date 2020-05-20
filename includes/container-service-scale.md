@@ -32,16 +32,16 @@ DC/OS、Docker Swarm、または Kubernetes クラスター内のエージェン
 [Azure CLI をインストール](/cli/azure/install-azure-cli)し、`az login` で Azure アカウントにサインインします。
 
 ### <a name="see-the-current-agent-count"></a>現在のエージェント数の表示
-クラスターの現在のエージェント数を表示するには、`az acs show` コマンドを実行します。 クラスター構成が表示されます。 たとえば、次のコマンドは、リソース グループ `containerservice-myACSName` 内の `myResourceGroup` という名前のコンテナー サービスの構成を表示します。
+クラスターの現在のエージェント数を表示するには、`az acs show` コマンドを実行します。 クラスター構成が表示されます。 たとえば、次のコマンドは、リソース グループ `myResourceGroup` 内の `containerservice-myACSName` という名前のコンテナー サービスの構成を表示します。
 
 ```azurecli
 az acs show -g myResourceGroup -n containerservice-myACSName
 ```
 
-このコマンドは、`Count` の `AgentPoolProfiles` 値に、エージェント数を返します。
+このコマンドは、`AgentPoolProfiles` の `Count` 値に、エージェント数を返します。
 
 ### <a name="use-the-az-acs-scale-command"></a>az acs scale コマンドの使用
-エージェントノードの数を変更するには、`az acs scale`リソース グループ **、** コンテナー サービス名 **、および必要な**新しいエージェント数**を指定して、** コマンドを実行します。 数を増やしてスケールアップを、数を減らしてスケールダウンを実行できます。
+エージェントノードの数を変更するには、**リソース グループ**、**コンテナー サービス名**、および必要な**新しいエージェント数**を指定して、`az acs scale` コマンドを実行します。 数を増やしてスケールアップを、数を減らしてスケールダウンを実行できます。
 
 たとえば、前のクラスターのエージェント数を 10 に変更するには、次のコマンドを入力します。
 

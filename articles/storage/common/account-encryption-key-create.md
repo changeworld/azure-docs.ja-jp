@@ -226,7 +226,7 @@ az storage account create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `KeyType` プロパティ内で各サービスの `Encryption` フィールドを探し、`Account` に設定されていることを確認します。
+ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `Encryption` プロパティ内で各サービスの `KeyType` フィールドを探し、`Account` に設定されていることを確認します。
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `

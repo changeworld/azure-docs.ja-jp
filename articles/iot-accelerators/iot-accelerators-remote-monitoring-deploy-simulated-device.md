@@ -40,7 +40,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 このハウツー ガイドに従うには、次のものが必要です。
 
 - [リモート監視ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2)のデプロイ済みインスタンス。
-- **および** コマンドを実行するローカルの `ssh`bash`scp` シェル。 Windows の場合、**git** をインストールするには、[bash](https://git-scm.com/download/win) をインストールする方法が簡単です。
+- `ssh` および `scp` コマンドを実行するローカルの **bash** シェル。 Windows の場合、[git](https://git-scm.com/download/win) をインストールするには、**bash** をインストールする方法が簡単です。
 - カスタム デバイス モデル ファイル (「[Create and test a new simulated device](iot-accelerators-remote-monitoring-create-simulated-device.md)」(新しいシミュレーションされたデバイスの作成とテスト) で説明されているファイルなど)。
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]

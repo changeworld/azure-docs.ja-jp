@@ -40,7 +40,7 @@ Speech SDK は、一連の相互運用性レイヤーを通じて複数のプロ
 
 警告しきい値を作成するオプションがあり、そのしきい値を超えた場合 (ログ記録が有効になっていることを前提として)、警告メッセージがログに記録されます。 警告メッセージには、存在するすべてのオブジェクトのダンプがカウントと共に含まれます。 この情報を使用して、問題の理解を深めることができます。 
 
-警告しきい値を有効にするには、それを `SpeechConfig` オブジェクトに指定する必要があります。 このオブジェクトは、新しいレコグナイザーが作成されるときにチェックされます。 次の例では、`SpeechConfig` と呼ばれる `config` のインスタンスが作成されていることを前提としています。
+警告しきい値を有効にするには、それを `SpeechConfig` オブジェクトに指定する必要があります。 このオブジェクトは、新しいレコグナイザーが作成されるときにチェックされます。 次の例では、`config` と呼ばれる `SpeechConfig` のインスタンスが作成されていることを前提としています。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -102,7 +102,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-エラーしきい値を有効にするには、それを `SpeechConfig` オブジェクトに指定する必要があります。 このオブジェクトは、新しいレコグナイザーが作成されるときにチェックされます。 次の例では、`SpeechConfig` と呼ばれる `config` のインスタンスが作成されていることを前提としています。
+エラーしきい値を有効にするには、それを `SpeechConfig` オブジェクトに指定する必要があります。 このオブジェクトは、新しいレコグナイザーが作成されるときにチェックされます。 次の例では、`config` と呼ばれる `SpeechConfig` のインスタンスが作成されていることを前提としています。
 
 ::: zone pivot="programming-language-csharp"
 

@@ -21,7 +21,7 @@ ms.locfileid: "67181762"
 
 ### <a name="write-some-code-to-send-messages"></a>メッセージを送信するコードを記述する
 
-1. `constants` ファイルの先頭に次の `sender.js` を追加します。
+1. `sender.js` ファイルの先頭に次の `constants` を追加します。
    
     ```js
     const WebSocket = require('hyco-ws');

@@ -119,7 +119,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  `search.ismatchscoring` の代わりに `and` を指定して、`or` によるフルテキスト検索とフィルターを結合することもできますが、これは検索要求で `search` パラメーターと `$filter` パラメーターを使用することと機能的に同じです。 たとえば、次の 2 つのクエリでは同じ結果が生成されます。
+  `or` の代わりに `and` を指定して、`search.ismatchscoring` によるフルテキスト検索とフィルターを結合することもできますが、これは検索要求で `search` パラメーターと `$filter` パラメーターを使用することと機能的に同じです。 たとえば、次の 2 つのクエリでは同じ結果が生成されます。
 
   ```
   $filter=search.ismatchscoring('pool') and Rating ge 4
@@ -137,7 +137,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
 
-.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) オブジェクトの [IsFilterable プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
+.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) オブジェクトの [IsFilterable プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]

@@ -136,7 +136,7 @@ VM ネットワークでスパイクを使用したり、高い使用率の期�
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
 2. ソース VM から宛先 VM に対して **PsPing** または **Nmap** を使用します (例: `PsPing 10.0.0.4:80` または `Nmap -p 80 10.0.0.4`)。
-3. [ネットワーク モニター](https://www.microsoft.com/download/details.aspx?id=4865)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 **または** (Linux) など、**PsPing** または `IPv4.address==10.0.0.4 (Windows netmon)`Nmap`tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` を実行したソース VM の IP に表示フィルターを適用します。
+3. [ネットワーク モニター](https://www.microsoft.com/download/details.aspx?id=4865)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、**PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
 
 ### <a name="analyze-traces"></a>トレースの分析
 

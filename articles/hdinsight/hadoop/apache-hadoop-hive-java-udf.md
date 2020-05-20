@@ -23,7 +23,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
-* Apache に従って適切に[インストール](https://maven.apache.org/download.cgi)された [Apache Maven](https://maven.apache.org/install.html)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
+* Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 * テキスト エディターまたは Java IDE
@@ -86,7 +86,7 @@ cd C:\HDI
 
     これらのエントリは、HDInsight 3.6 に含まれる Hadoop と Hive のバージョンを指定します。 HDInsight に含まれる Hadoop と Hive のバージョンの情報は、 [HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md) に関するドキュメントで確認できます。
 
-    ファイルの最後の `<build>` 行の前に `</project>` セクションを追加します。 このセクションには、次の XML が含まれる必要があります。
+    ファイルの最後の `</project>` 行の前に `<build>` セクションを追加します。 このセクションには、次の XML が含まれる必要があります。
 
     ```xml
     <build>

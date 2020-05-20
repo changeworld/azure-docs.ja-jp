@@ -108,7 +108,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. PySpark カーネルを使用しているため、**マジックを使用して、作成した一時テーブル**hvac`%%sql` に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Apache Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
+6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Apache Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"

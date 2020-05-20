@@ -156,7 +156,7 @@ Java Server Page (JSP) ソース ファイルの場合:
 **Message.creator** メソッドに渡されるパラメーターの詳細については、[https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] を参照してください。
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallCreator.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 上の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 (TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の **&lt; Response&gt;** 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] をクリックすると、 **&lt; Say&gt;** 要素を含む **&lt; Response&gt;** 要素が表示されます。)
+アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallCreator.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 上の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 (TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の **&lt;Response&gt;** 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] をクリックすると、**&lt;Say&gt;** 要素を含む **&lt;Response&gt;** 要素が表示されます。)
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。 HTTP 応答を返すサイトは任意の言語で作成できます。このトピックでは、JSP ページで URL をホストするとします。
 

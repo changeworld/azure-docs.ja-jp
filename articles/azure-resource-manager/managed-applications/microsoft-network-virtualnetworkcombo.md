@@ -110,7 +110,7 @@ ms.locfileid: "75649663"
 - `constraints.minAddressPrefixSize` を指定する必要があります。 アドレス空間が指定した値よりも小さい既存の仮想ネットワークは選択できません。
 - `subnets` を指定する必要があるほか、サブネットごとに `constraints.minAddressPrefixSize` を指定する必要があります。
 - 新しい仮想ネットワークを作成するときは、その仮想ネットワークのアドレス プレフィックスと各 `addressPrefixSize` に基づいて、各サブネットのアドレス プレフィックスが自動的に計算されます。
-- 既存の仮想ネットワークを使用するときは、各 `constraints.minAddressPrefixSize` よりも小さいサブネットは選択できません。 さらに、`minAddressCount` を指定した場合、少なくともその個数の使用可能なアドレスが含まれないサブネットは選択できません。 既定値は **0** です。 使用可能なアドレスを連続させるには、**に**true`requireContiguousAddresses` を設定します。 既定値は **true** です。
+- 既存の仮想ネットワークを使用するときは、各 `constraints.minAddressPrefixSize` よりも小さいサブネットは選択できません。 さらに、`minAddressCount` を指定した場合、少なくともその個数の使用可能なアドレスが含まれないサブネットは選択できません。 既定値は **0** です。 使用可能なアドレスを連続させるには、`requireContiguousAddresses` に **true** を設定します。 既定値は **true** です。
 - 既存の仮想ネットワークでのサブネットの作成はサポートされていません。
 - `options.hideExisting` が **true** である場合、ユーザーは既存の仮想ネットワークを選択できません。 既定値は **false** です。
 

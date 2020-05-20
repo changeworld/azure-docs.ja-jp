@@ -36,7 +36,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 * アプリケーションの負荷分散とパーティション分割。
 * 高可用性の追加。
 
-クラスターは、[GitHub](../hdinsight-hadoop-customize-cluster-linux.md) の[スクリプト アクション](https://github.com/Azure/hbase-utils/tree/master/replication)のスクリプトを使用してレプリケートできます。
+クラスターは、[GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) の[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)のスクリプトを使用してレプリケートできます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事を開始する前に、Azure サブスクリプションが必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
@@ -326,7 +326,7 @@ sudo service bind9 status
 |-rpm, -replicate-phoenix-meta | Phoenix システム テーブルのレプリケーションを有効にします。 <br><br>*このオプションは慎重に使用してください。* このスクリプトを使用する前に、レプリカ クラスターで Phoenix テーブルを再作成しておくことをお勧めします。 |
 |-h, --help | 使用方法に関する情報を表示します。 |
 
-`print_usage()`スクリプト[ の ](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) セクションに、パラメーターの詳細な説明が用意されています。
+[スクリプト](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) の `print_usage()` セクションに、パラメーターの詳細な説明が用意されています。
 
 スクリプト アクションが正常に実行された後、SSH を使用してデスティネーション HBase クラスターに接続して、データがレプリケートされたことを確認できます。
 
@@ -362,7 +362,7 @@ sudo service bind9 status
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-`print_usage()`スクリプト[ の ](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) セクションに、パラメーターの詳細な説明が用意されています。
+[スクリプト](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) の `print_usage()` セクションに、パラメーターの詳細な説明が用意されています。
 
 ### <a name="scenarios"></a>シナリオ
 
@@ -385,7 +385,7 @@ sudo service bind9 status
 
     -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-`print_usage()`スクリプト[ の ](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) セクションに、パラメーターの詳細な説明が用意されています。
+[スクリプト](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) の `print_usage()` セクションに、パラメーターの詳細な説明が用意されています。
 
 ### <a name="scenarios"></a>シナリオ
 

@@ -66,7 +66,7 @@ RDP リスナーの構成が正しくありません。
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>手順 1:Serial console で CMD インスタンスを開く
 
-1. **[サポートとトラブルシューティング]**  >  **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
+1. **[サポートとトラブルシューティング]** > **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
 
 2. CMD インスタンス用の新しいチャネルを作成します。 **CMD** と入力してチャネルを開始し、チャネル名を取得します。
 

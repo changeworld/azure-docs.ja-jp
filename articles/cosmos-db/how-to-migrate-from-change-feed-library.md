@@ -23,7 +23,7 @@ ms.locfileid: "77588885"
 
 1. `DocumentCollectionInfo` インスタンスを、監視されているコンテナーおよびリース コンテナーに対する `Container` 参照に変換します。
 1. `WithProcessorOptions` を使用しているカスタマイズについては、間隔に `WithLeaseConfiguration` と `WithPollInterval` を使用し、`WithStartTime`開始時刻[に ](how-to-configure-change-feed-start-time.md) を使用し、最大項目数を定義するために `WithMaxItems` を使用するように更新する必要があります。
-1. `processorName` 上の `GetChangeFeedProcessorBuilder` については `ChangeFeedProcessorOptions.LeasePrefix` 上で構成されている値と一致するように設定します。それ以外の場合は `string.Empty` を使用します。
+1. `GetChangeFeedProcessorBuilder` 上の `processorName` については `ChangeFeedProcessorOptions.LeasePrefix` 上で構成されている値と一致するように設定します。それ以外の場合は `string.Empty` を使用します。
 1. 変更は `IReadOnlyList<Document>` として配信されなくなりました。代わりに、それは `IReadOnlyCollection<T>` となります。ここで、`T` は定義する必要のある型です。基本項目クラスはもうありません。
 1. 変更を処理する場合、実装は不要になりました。その代わりに、[デリゲートを定義](change-feed-processor.md#implementing-the-change-feed-processor)する必要があります。 デリゲートは静的関数とすることができます。実行中に状態を維持する必要がある場合は、独自のクラスを作成して、インスタンス メソッドをデリゲートとして渡すこともできます。
 

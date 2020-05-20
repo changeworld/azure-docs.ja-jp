@@ -30,7 +30,7 @@ ms.locfileid: "78668304"
 
 ### <a name="how-to-get-an-access-token"></a>アクセス トークンを取得する方法
 
-アクセス トークンを取得するには、`issueToken` とサブスクリプション キーを使用して、`Ocp-Apim-Subscription-Key` エンドポイントに対して要求を実行する必要があります。
+アクセス トークンを取得するには、`Ocp-Apim-Subscription-Key` とサブスクリプション キーを使用して、`issueToken` エンドポイントに対して要求を実行する必要があります。
 
 `issueToken` エンドポイントの形式は次のとおりです。
 

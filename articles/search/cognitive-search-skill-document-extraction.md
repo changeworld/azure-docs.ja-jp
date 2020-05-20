@@ -36,7 +36,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 | 入力            | 使用できる値 | 説明 |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | テキストだけ、または JSON だけではないファイルからドキュメントを抽出する場合は、`default` に設定します。 プレーン テキスト ファイルでパフォーマンスを向上させるには、`text` に設定します。 JSON ファイルから構造化コンテンツを抽出するには、`json` に設定します。 `parsingMode` が明示的に定義されていない場合は、`default` に設定されます。 |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 各ファイルからすべてのメタデータとテキスト コンテンツを抽出するには、`contentAndMetadata` に設定します。 `allMetadata`コンテンツの種類に固有のメタデータ[のみを抽出するには、](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) に設定します (たとえば、.png ファイルだけに固有のメタデータ)。 `dataToExtract` が明示的に定義されていない場合は、`contentAndMetadata` に設定されます。 |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 各ファイルからすべてのメタデータとテキスト コンテンツを抽出するには、`contentAndMetadata` に設定します。 [コンテンツの種類に固有のメタデータ](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata)のみを抽出するには、`allMetadata` に設定します (たとえば、.png ファイルだけに固有のメタデータ)。 `dataToExtract` が明示的に定義されていない場合は、`contentAndMetadata` に設定されます。 |
 | `configuration` | 以下を参照してください。 | ドキュメント抽出の実行方法を調整する省略可能なパラメーターのディクショナリ。 サポートされている構成プロパティの説明については、以下の表を参照してください。 |
 
 | 構成パラメーター   | 使用できる値 | 説明 |

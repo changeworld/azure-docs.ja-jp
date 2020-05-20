@@ -203,7 +203,7 @@ $snapshot = $share.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>共有スナップショットの参照
-スナップショットの参照 (`$snapshot`) を `-Share` コマンドレットの `Get-AzStorageFile` パラメーターに渡すことで、共有スナップショットの内容を参照できます。
+スナップショットの参照 (`$snapshot`) を `Get-AzStorageFile` コマンドレットの `-Share` パラメーターに渡すことで、共有スナップショットの内容を参照できます。
 
 ```azurepowershell-interactive
 Get-AzStorageFile -Share $snapshot
@@ -238,7 +238,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
-[ 参照を ](/powershell/module/az.storage/Remove-AzStorageShare) パラメーターに含めた変数で `$snapshot`Remove-AzStorageShare`-Share` コマンドレットを使用すると、共有スナップショットを削除できます。
+`$snapshot` 参照を `-Share` パラメーターに含めた変数で [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) コマンドレットを使用すると、共有スナップショットを削除できます。
 
 ```azurepowershell-interactive
 Remove-AzStorageShare `

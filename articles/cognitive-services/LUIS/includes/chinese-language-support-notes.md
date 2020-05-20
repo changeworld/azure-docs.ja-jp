@@ -18,5 +18,5 @@ ms.locfileid: "73500200"
 
  - `zh-CN` カルチャで LUIS に必要なのは、繁体中国語ではなく簡体中国語の文字セットです。
  - 意図、エンティティ、機能、および正規表現の名前には、中国語の文字またはローマ字を使用できます。
- - [ カルチャでサポートされているあらかじめ構築されたドメインについては、](../luis-reference-prebuilt-domains.md)あらかじめ構築されたドメインのリファレンス`zh-CN`を参照してください。
+ - `zh-CN` カルチャでサポートされているあらかじめ構築されたドメインについては、[あらかじめ構築されたドメインのリファレンス](../luis-reference-prebuilt-domains.md)を参照してください。
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->

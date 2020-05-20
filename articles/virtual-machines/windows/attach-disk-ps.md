@@ -49,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>可用性ゾーンでマネージド ディスクを使用する場合
 
-可用性ゾーンにディスクを作成するには、[ パラメーターを指定して ](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig)New-AzDiskConfig`-Zone` を使用します。 次の例では、ゾーン *1* にディスクを作成します。
+可用性ゾーンにディスクを作成するには、`-Zone` パラメーターを指定して [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) を使用します。 次の例では、ゾーン *1* にディスクを作成します。
 
 ```powershell
 $rgName = 'myResourceGroup'

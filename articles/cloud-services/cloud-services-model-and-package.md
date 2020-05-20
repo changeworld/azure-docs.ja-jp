@@ -221,7 +221,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 
 Azure のクラウド サービスとしてアプリケーションをデプロイするには、まず適切な形式でアプリケーションをパッケージ化する必要があります。 **CSPack** コマンドライン ツール ( [Azure SDK](https://azure.microsoft.com/downloads/)にインストール済み) を使用して、Visual Studio に代わる方法として、パッケージ ファイルを作成できます。
 
-**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。 **CSPack** は、 [Azure ポータル](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)を使用して Azure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。 既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、`/out`CSPack**の** オプションを使用して別の名前を指定することもできます。
+**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。 **CSPack** は、 [Azure ポータル](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)を使用して Azure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。 既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、**CSPack** の `/out` オプションを使用して別の名前を指定することもできます。
 
 **CSPack** は次の場所にあります  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`

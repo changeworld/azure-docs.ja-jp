@@ -85,7 +85,7 @@ output_storage_account_key:       <storage access key to "myaccount">
 output_storage_account_container: outputs
 ```
 
-`config.txt` という呼び出しを使って、`msgen submit -f config.txt` ファイルを送信します。
+`msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
 
 
 ## <a name="multiple-paired-fastq-files"></a>複数の FASTQ ファイルのペア
@@ -153,7 +153,7 @@ output_storage_account_key:       <storage access key to "myaccount">
 output_storage_account_container: outputs
 ```
 
-`config.txt` という呼び出しを使って、`msgen submit -f config.txt` ファイルを送信します。
+`msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、複数の BAM ファイルまたは FASTQ ファイルのペアを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページをご覧ください。 

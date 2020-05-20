@@ -207,7 +207,7 @@ function process(telemetry, executionContext) {
    目的のロール ID を保持します。 これは、下で JSON 本文属性 **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) として渡されます。
 
 1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) は先ほど作成したユーザー定義関数 ID になります。
-1. **を使用して空間に対してクエリを実行して、** path`YOUR_ACCESS_CONTROL_PATH` (`fullpath`) の値を見つけます。
+1. `fullpath` を使用して空間に対してクエリを実行して、**path** (`YOUR_ACCESS_CONTROL_PATH`) の値を見つけます。
 1. 返された `spacePaths` 値をコピーします。 次のように使用します。 以下に対して認証済みの HTTP GET 要求を実行します。
 
     ```URL

@@ -178,7 +178,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Last Name Attribute]\(姓属性\)** ボックスにユーザー "**Simon**" の**姓**を入力します。
 
-    d. **[Email Attribute]\(電子メール属性\)** ボックスにユーザー  **の**メール アドレス`BrittaSimon@contoso.com`を入力します。
+    d. **[Email Attribute]\(電子メール属性\)** ボックスにユーザー `BrittaSimon@contoso.com` の**メール アドレス**を入力します。
 
     e. **[変更を保存]** をクリックします。
 
@@ -230,7 +230,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 

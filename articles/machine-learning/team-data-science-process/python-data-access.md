@@ -80,7 +80,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 開発者がワークスペース ID と認証トークンを取得したら、ロールに関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 
-認証トークンは、 **[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
+認証トークンは、**[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
 
 ### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
 1. Machine Learning Studio (クラシック) で、左側のナビゲーション バーの **[データセット]** をクリックします。
@@ -312,7 +312,7 @@ Python クライアント ライブラリは、pandas DataFrame を次の形式�
 
 `data_type_id`、`name`、`description` のパラメーターはすべて省略可能で、前の値に対する既定値になります。 `dataframe` パラメーターは常に必要です。
 
-ご利用のデータが既にシリアル化されている場合、`update_from_raw_data` の代わりに `update_from_dataframe` を使用します。 `raw_data` の代わりに `dataframe` を渡すだけで、同様に動作します。
+ご利用のデータが既にシリアル化されている場合、`update_from_dataframe` の代わりに `update_from_raw_data` を使用します。 `dataframe` の代わりに `raw_data` を渡すだけで、同様に動作します。
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

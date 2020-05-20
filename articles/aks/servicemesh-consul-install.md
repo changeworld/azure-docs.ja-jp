@@ -100,7 +100,7 @@ Helm とダウンロードした `consul-helm` チャートを使用して Consu
 
 ## <a name="validate-the-consul-installation"></a>Consul インストールを検証する
 
-リソースが正常に作成されたことを確認します。 [kubectl get svc][kubectl-get] コマンドと [kubectl get pod][kubectl-get] コマンドを使用して、`consul` コマンドによって Consul コンポーネントがインストールされた `helm install` 名前空間のクエリを実行します。
+リソースが正常に作成されたことを確認します。 [kubectl get svc][kubectl-get] コマンドと [kubectl get pod][kubectl-get] コマンドを使用して、`helm install` コマンドによって Consul コンポーネントがインストールされた `consul` 名前空間のクエリを実行します。
 
 ```console
 kubectl get svc --namespace consul --output wide

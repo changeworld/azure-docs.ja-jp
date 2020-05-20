@@ -60,7 +60,7 @@ Bing の検索候補を含める場合、Bing から返されたくない検索�
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>ホステッド UI で Autosuggest を有効にする
 
-ホステッド UI でクエリ文字列の検索候補を有効にするには、 **[Hosted UI]\(ホステッド UI\)** をクリックします。 **[Additional Configuration]\(追加構成\)** セクションまで下にスクロールします。 **[Web search]\(Web 検索\)** で、 **[Enable autosuggest]\(Autosuggest を有効にする\)** を **[オン]** にします。 Autosuggest を有効にするには、検索ボックスを含むレイアウトを選択する必要があります。
+ホステッド UI でクエリ文字列の検索候補を有効にするには、 **[Hosted UI]\(ホステッド UI\)** をクリックします。 **[Additional Configuration]\(追加構成\)** セクションまで下にスクロールします。 **[Web search]\(Web 検索\)** で、**[Enable autosuggest]\(Autosuggest を有効にする\)** を **[オン]** にします。 Autosuggest を有効にするには、検索ボックスを含むレイアウトを選択する必要があります。
 
 
 ## <a name="calling-the-autosuggest-api"></a>Autosuggest API を呼び出す
@@ -83,7 +83,7 @@ GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 
 それぞれの候補には、`displayText` フィールドと `query` フィールドが含まれています。 `displayText` フィールドには、検索ボックスのドロップダウン リストの設定に使用する検索候補のクエリ文字列が含まれています。
 
-ユーザーがドロップダウン リストから検索候補のクエリ文字列を選択する場合は、`query`Bing Custom Search API[ を呼び出すときに ](overview.md) フィールドのクエリ文字列を使用します。
+ユーザーがドロップダウン リストから検索候補のクエリ文字列を選択する場合は、[Bing Custom Search API](overview.md) を呼び出すときに `query` フィールドのクエリ文字列を使用します。
 
 
 ## <a name="next-steps"></a>次のステップ

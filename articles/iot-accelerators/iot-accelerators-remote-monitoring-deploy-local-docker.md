@@ -70,7 +70,7 @@ docker-compose up
 ```
 
 > [!NOTE] 
-> [ を実行する前に、Docker と](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)ローカル ドライブを共有している`docker-compose up`ことを確認します。
+> `docker-compose up` を実行する前に、Docker と[ローカル ドライブを共有している](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)ことを確認します。
 
 このコマンドを初めて実行すると、Docker は Docker ハブからマイクロサービス イメージをダウンロードして、コンテナーをローカルに構築します。 以降の実行では、Docker はコンテナーを直ちに実行します。
 

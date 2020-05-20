@@ -122,7 +122,7 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
 この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Twitter ID プロバイダーも含まれるようにそれを変更します。
 
 1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-2. **を含む**UserJourney`Id="SignUpOrSignIn"` 要素を見つけ、その内容全体をコピーします。
+2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
 3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
 4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
 5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInTwitter` 」のように入力します。
@@ -131,7 +131,7 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
 
 **ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 Twitter アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
 
-1. 作成したユーザー体験内で、**を含む**OrchestrationStep`Order="1"` 要素を見つけます。
+1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`TwitterExchange` など) に設定します。
 
     ```XML
@@ -142,7 +142,7 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
 
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 ここでのアクションは、Azure AD B2C が Twitter アカウントと通信してトークンを受信するためのアクションです。
 
-1. ユーザー体験内で、**を含む**OrchestrationStep`Order="2"` を見つけます。
+1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
 2. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
 
     ```XML

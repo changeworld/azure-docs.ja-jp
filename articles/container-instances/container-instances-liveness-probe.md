@@ -65,7 +65,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 デプロイには、コンテナーの初回の実行開始時に実行される開始コマンドを定義する `command` プロパティが含まれています。 このプロパティは、文字列の配列を受け入れます。 このコマンドでは、異常な状態に移行しているコンテナーがシミュレートされます。
 
-最初に、bash セッションが開始され、`healthy` ディレクトリ内に `/tmp` という名前のファイルが作成されます。 その後、30 秒間スリープ状態になり、ファイルを削除してから 10 分間スリープ状態になります。
+最初に、bash セッションが開始され、`/tmp` ディレクトリ内に `healthy` という名前のファイルが作成されます。 その後、30 秒間スリープ状態になり、ファイルを削除してから 10 分間スリープ状態になります。
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
@@ -73,7 +73,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="liveness-command"></a>Liveness コマンド
 
-このデプロイは、liveness 検査として動作する `livenessProbe` liveness コマンドをサポートする `exec` を定義します。 このコマンドがゼロ以外の値で終了すると、コンテナーが強制終了されて再起動し、`healthy` ファイルが見つからなかったことが通知されます。 このコマンドが終了コード 0 で正常終了した場合、アクションは何も行われません。
+このデプロイは、liveness 検査として動作する `exec` liveness コマンドをサポートする `livenessProbe` を定義します。 このコマンドがゼロ以外の値で終了すると、コンテナーが強制終了されて再起動し、`healthy` ファイルが見つからなかったことが通知されます。 このコマンドが終了コード 0 で正常終了した場合、アクションは何も行われません。
 
 `periodSeconds` プロパティは、liveness コマンドを 5 秒ごとに実行することを指定します。
 

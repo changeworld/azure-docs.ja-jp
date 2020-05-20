@@ -53,7 +53,7 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 
 * AMQP: SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、`{policyName}@sas.root.{iothubName}`。デバイス スコープのトークンの場合、`{deviceId}`)。
 
-* MQTT: CONNECT パケットでは、`{deviceId}`、`{ClientId}`[ユーザー名]`{IoThubhostname}/{deviceId}` フィールドの **、および** [パスワード]**フィールドの SAS トークンとして** が使用されます。
+* MQTT: CONNECT パケットでは、`{ClientId}`、**[ユーザー名]** フィールドの `{IoThubhostname}/{deviceId}`、および **[パスワード]** フィールドの SAS トークンとして `{deviceId}` が使用されます。
 
 * HTTP: 有効なトークンは、承認要求ヘッダーにあります。
 
@@ -91,7 +91,7 @@ Azure IoT Hub ではセキュリティ キーごとに[アクセス制御ポリ�
 
 * **DeviceConnect**。 デバイス向けのエンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。 このアクセス許可はデバイスによって使用されます。
 
-IoT Hub と**セキュリティ トークン**を使用して [DeviceConnect](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app) アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 とおりがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
+IoT Hub と[セキュリティ トークン](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)を使用して **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 とおりがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
 [サービス コンポーネントでは、適切なアクセス許可を付与する共有アクセス ポリシーを使用した場合にのみセキュリティ トークンを生成できます](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)。
 

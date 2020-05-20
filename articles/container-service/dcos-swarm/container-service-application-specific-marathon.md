@@ -45,7 +45,7 @@ dcos package install --options=marathon-alice.json marathon
 これで、実行されている `marathon-alice` サービスが、DC/OS UI のサービス タブに表示されます。 直接アクセスする場合、UI は `http://<hostname>/service/marathon-alice/` です。
 
 ## <a name="set-the-dcos-cli-to-access-the-service"></a>サービスにアクセスするための DC/OS CLI の設定
-必要に応じて、この新しいサービスにアクセスするように DC/OS CLI を構成することができます。そのためには、次のように、`marathon.url` インスタンスを指すように `marathon-alice` プロパティを設定します。
+必要に応じて、この新しいサービスにアクセスするように DC/OS CLI を構成することができます。そのためには、次のように、`marathon-alice` インスタンスを指すように `marathon.url` プロパティを設定します。
 
 ```bash
 dcos config set marathon.url http://<hostname>/service/marathon-alice/

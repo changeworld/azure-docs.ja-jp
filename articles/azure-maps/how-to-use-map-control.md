@@ -67,7 +67,7 @@ ms.locfileid: "80335245"
     </style>
    ```
 
-4. ページの本文で、`<div>` 要素を追加して `id`myMap**の** を指定します。
+4. ページの本文で、`<div>` 要素を追加して **myMap** の `id` を指定します。
 
    ```HTML
     <body>
@@ -75,7 +75,7 @@ ms.locfileid: "80335245"
     </body>
    ```
 
-5. マップ コントロールを初期化するには、html 本文で新しいスクリプト タグを定義します。 `id` クラスのインスタンスを作成するときに、最初のパラメーターとしてマップ `<div>` の `HTMLElement` または `document.getElementById('myMap')` (`Map` など) を渡します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 
+5. マップ コントロールを初期化するには、html 本文で新しいスクリプト タグを定義します。 `Map` クラスのインスタンスを作成するときに、最初のパラメーターとしてマップ `<div>` の `id` または `HTMLElement` (`document.getElementById('myMap')` など) を渡します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 
 
    アカウントを作成するか、キーを見つける必要がある場合、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順と[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)手順に従ってください。 
 

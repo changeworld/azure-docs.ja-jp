@@ -233,7 +233,7 @@ namespace XamarinApp.WinPhone
 
 これで、このアプリケーションを、Android または Windows Phone エミュレーターで実行できます。 iOS エミュレーターで、このアプリケーションを実行することもできますが、それには Mac が必要です。 これを行う具体的な手順については、 [Mac への Visual Studio の接続](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-アプリケーションを実行すると、コンテナー `mycontainer` がストレージ アカウントに作成されます。 これには、テキスト `myblob` が示された BLOB `Hello, world!` が含まれています。 これを確認するには、 [Microsoft Azure ストレージ エクスプ ローラー](https://storageexplorer.com/)を使用します。
+アプリケーションを実行すると、コンテナー `mycontainer` がストレージ アカウントに作成されます。 これには、テキスト `Hello, world!` が示された BLOB `myblob` が含まれています。 これを確認するには、 [Microsoft Azure ストレージ エクスプ ローラー](https://storageexplorer.com/)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

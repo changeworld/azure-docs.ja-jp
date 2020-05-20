@@ -21,7 +21,7 @@ ISTIO_VERSION=1.4.0
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-linux.tar.gz" | tar xz
 ```
 
-`istioctl` クライアント バイナリはクライアント コンピューターで実行されます。このバイナリによって、Istio サービス メッシュの対話型操作が可能になります。 Linux または `istioctl`Windows Subsystem for Linux[ で bash ベースのシェルで Istio ][install-wsl] クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、`istioctl` の標準ユーザー プログラムの場所に `PATH` クライアント バイナリがコピーされます。
+`istioctl` クライアント バイナリはクライアント コンピューターで実行されます。このバイナリによって、Istio サービス メッシュの対話型操作が可能になります。 Linux または [Windows Subsystem for Linux][install-wsl] で bash ベースのシェルで Istio `istioctl` クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、`istioctl` の標準ユーザー プログラムの場所に `PATH` クライアント バイナリがコピーされます。
 
 ```bash
 cd istio-$ISTIO_VERSION

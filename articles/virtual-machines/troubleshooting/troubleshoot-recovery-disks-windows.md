@@ -51,7 +51,7 @@ Connect-AzAccount
 以下の例では、パラメーター名を独自の値に置き換えてください。 
 
 ## <a name="determine-boot-issues"></a>起動の問題を特定する
-起動の問題のトラブルシューティングに役立つ VM のスクリーンショットを Azure で表示できます。 このスクリーンショットは、VM が起動に失敗した理由の特定に役立ちます。 次の例では、`myVM` という名前のリソース グループの `myResourceGroup` という名前の Windows VM からスクリーンショットを取得します。
+起動の問題のトラブルシューティングに役立つ VM のスクリーンショットを Azure で表示できます。 このスクリーンショットは、VM が起動に失敗した理由の特定に役立ちます。 次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の Windows VM からスクリーンショットを取得します。
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
@@ -62,7 +62,7 @@ Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
 
 ## <a name="stop-the-vm"></a>VM を停止する
 
-次の例では、`myVM` という名前のリソース グループから `myResourceGroup` という名前の VM を停止します。
+次の例では、`myResourceGroup` という名前のリソース グループから `myVM` という名前の VM を停止します。
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -103,7 +103,7 @@ New-AzSnapshot `
 
 ## <a name="create-a-disk-from-the-snapshot"></a>スナップショットからディスクを作成する
 
-このスクリプトは、`newOSDisk` という名前のスナップショットから `mysnapshot` という名前のマネージド ディスクを作成します。  
+このスクリプトは、`mysnapshot` という名前のスナップショットから `newOSDisk` という名前のマネージド ディスクを作成します。  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -165,7 +165,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>復旧 VM に接続してアタッチされたディスクの問題を修正する
 
-1. 適切な資格情報を使用して、復旧 VM に RDP 接続します。 次の例では、`RecoveryVM` という名前のリソース グループの `myResourceGroup` という名前の VM の RDP 接続ファイルを `C:\Users\ops\Documents` にダウンロードします。
+1. 適切な資格情報を使用して、復旧 VM に RDP 接続します。 次の例では、`myResourceGroup` という名前のリソース グループの `RecoveryVM` という名前の VM の RDP 接続ファイルを `C:\Users\ops\Documents` にダウンロードします。
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
@@ -247,7 +247,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>ブート診断を確認して有効にする
 
-次の例では、`myVMDeployed` という名前のリソース グループの `myResourceGroup` という名前の VM で診断拡張機能を有効にします。
+次の例では、`myResourceGroup` という名前のリソース グループの `myVMDeployed` という名前の VM で診断拡張機能を有効にします。
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"

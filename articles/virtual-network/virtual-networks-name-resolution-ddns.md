@@ -63,7 +63,7 @@ fi
 
 `nsupdate` コマンドを利用し、セキュリティ保護された DDNS 更新を実行することもできます。 たとえば、Bind DNS サーバーを利用するとき、公開鍵/秘密鍵のペアが [生成されます](http://linux.yyz.us/nsupdate/)。 要求の署名を検証できるように、DNS サーバーは鍵の公開部分で[構成されます](http://linux.yyz.us/dns/ddns-server.html)。 キー ペアを `nsupdate` に提供するには、署名対象の DDNS 更新要求に対して `-k` オプションを使います。
 
-Windows DNS サーバーを利用しているときは、`-g` の `nsupdate` パラメーターで Kerberos 認証を使用できますが、Windows 版の `nsupdate` では利用できません。 Kerberos を使用するには、`kinit` を使って資格情報を読み込んでください。 たとえば、[keytab ファイル](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)から資格情報を読み込むことができ、その後 `nsupdate -g` はキャッシュから資格情報を取得します。
+Windows DNS サーバーを利用しているときは、`nsupdate` の `-g` パラメーターで Kerberos 認証を使用できますが、Windows 版の `nsupdate` では利用できません。 Kerberos を使用するには、`kinit` を使って資格情報を読み込んでください。 たとえば、[keytab ファイル](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)から資格情報を読み込むことができ、その後 `nsupdate -g` はキャッシュから資格情報を取得します。
 
 必要に応じて、DNS 検索サフィックスを VM に追加できます。 DNS サフィックスは、 */etc/resolv.conf* ファイルに指定します。 ほとんどの Linux ディストリビューションはこのファイルの内容を自動的に管理するため、通常は編集できません。 ただし、HCP クライアントの `supersede` コマンドを利用し、サフィックスをオーバーライドできます。 サフィックスをオーバーライドするには、次の行を */etc/dhcp/dhclient.conf* ファイルに追加します。
 

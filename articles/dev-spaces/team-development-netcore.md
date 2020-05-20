@@ -87,7 +87,7 @@ _mywebapi_ の独自のバージョンを _dev_ 以外の空間で実行する�
 azds space select --name scott
 ```
 
-メッセージが表示されたら、_親開発空間_として **dev** を選択します。 これは、新しい _dev/scott_ 空間が _dev_ 空間から派生することを意味します。 これがテストでどのように役立つかは、すぐわかります。
+メッセージが表示されたら、**親開発空間**として _dev_ を選択します。 これは、新しい _dev/scott_ 空間が _dev_ 空間から派生することを意味します。 これがテストでどのように役立つかは、すぐわかります。
 
 ここでは入門用の仮定に合わせて、新しい空間には _scott_ という名前を使用しました。これは、だれが作業しているのかが同僚にわかるようにするためです。 しかし、これには任意の名前を付けることができ、_sprint4_、_demo_ のように柔軟な意味を持たせることができます。 いずれにしても、_dev_ は、このアプリケーションの一部を使用するすべての開発者にとってのベースラインとなります。
 
@@ -98,7 +98,7 @@ azds space select --name scott
 実際の動作を見てみましょう。
 
 ### <a name="make-a-code-change"></a>コードに変更を加える
-`mywebapi` の VS Code ウィンドウに移動し、`string Get(int id)` の `Controllers/ValuesController.cs` メソッドのコードを編集します。次に例を示します。
+`mywebapi` の VS Code ウィンドウに移動し、`Controllers/ValuesController.cs` の `string Get(int id)` メソッドのコードを編集します。次に例を示します。
 
 ```csharp
 [HttpGet("{id}")]
@@ -133,7 +133,7 @@ http://localhost:53831 => mywebapi.scott:80                                Tunne
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 
-*webfrontend* のパブリック アクセス ポイント URL に、*scott.s* というプレフィックスが付いていることがわかります。 この URL は _dev/scott_ 空間に固有のものです。 この URL プレフィックスによって、_dev/scott_ バージョンのサービスに要求をルーティングするようイングレス コントローラーに命令が伝えられます。 この URL を使った要求が Dev Spaces によって処理されるとき、イングレス コントローラーはまず、その要求を *dev/scott* 空間の _webfrontend_ サービスにルーティングするよう試みます。 それに失敗した場合は、フォールバックとして、*dev* 空間の _webfrontend_ サービスに要求がルーティングされます。 また、localhost URL が存在することにも注目してください。Kubernetes の "*ポート フォワーディング*" 機能を使用して localhost でサービスにアクセスするためのものです。 Azure Dev Spaces における URL とルーティングの詳細については、「[How Azure Dev Spaces works and is configured (Azure Dev Spaces のしくみと構成方法)](how-dev-spaces-works.md)」を参照してください。
+*webfrontend* のパブリック アクセス ポイント URL に、*scott.s* というプレフィックスが付いていることがわかります。 この URL は _dev/scott_ 空間に固有のものです。 この URL プレフィックスによって、_dev/scott_ バージョンのサービスに要求をルーティングするようイングレス コントローラーに命令が伝えられます。 この URL を使った要求が Dev Spaces によって処理されるとき、イングレス コントローラーはまず、その要求を _dev/scott_ 空間の *webfrontend* サービスにルーティングするよう試みます。 それに失敗した場合は、フォールバックとして、_dev_ 空間の *webfrontend* サービスに要求がルーティングされます。 また、localhost URL が存在することにも注目してください。Kubernetes の "*ポート フォワーディング*" 機能を使用して localhost でサービスにアクセスするためのものです。 Azure Dev Spaces における URL とルーティングの詳細については、「[How Azure Dev Spaces works and is configured (Azure Dev Spaces のしくみと構成方法)](how-dev-spaces-works.md)」を参照してください。
 
 ![空間のルーティング](media/common/Space-Routing.png)
 
@@ -142,7 +142,7 @@ Azure Dev Spaces のこの組み込み機能を使用すれば、共有空間内
 ### <a name="test-code-in-a-space"></a>空間内でコードをテストする
 *mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL を開き、About ページに移動します。 すると、新しいメッセージが表示されます。
 
-ここで、URL の "scott.s" の部分を削除し、 ブラウザーをリフレッシュします。 (*dev* で実行されている _mywebapi_ バージョンによる) 以前の動作が表示されます。
+ここで、URL の "scott.s" の部分を削除し、 ブラウザーをリフレッシュします。 (_dev_ で実行されている *mywebapi* バージョンによる) 以前の動作が表示されます。
 
 最新の変更を常に含む _dev_ 空間があり、このチュートリアルのセクションで説明されているようにアプリケーションが DevSpace の空間ベースのルーティングを利用するように設計されていると仮定した場合、大規模なアプリケーションのコンテキスト内で新機能をテストする際に Dev Spaces がいかに役立つかは容易に想像できます。 "_すべての_" サービスをプライベート空間にデプロイする代わりに、_dev_ から派生するプライベート空間を作成し、実際に作業しているサービスのみを "アップ" することができます。 Dev Spaces ルーティング インフラストラクチャでは、_dev_ 空間で実行されている最新バージョンを既定で使用する一方で、プライベート空間で検出できる限りのサービスを利用して、残りの処理が行われます。 さらにすばらしいことに、"_複数の_" 開発者が互いに影響を与えることなく、自分の空間で同時に、異なるサービスをアクティブに開発することができます。
 

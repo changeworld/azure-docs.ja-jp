@@ -69,7 +69,7 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
         Console.WriteLine(await response.Content.ReadAsStringAsync());        Console.ReadLine();
     }
     ```
-4. `Main` クラスの `Program` メソッドに次のコード行を追加します。
+4. `Program` クラスの `Main` メソッドに次のコード行を追加します。
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();

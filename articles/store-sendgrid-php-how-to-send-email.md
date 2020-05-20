@@ -239,7 +239,7 @@ SMTP API を使用して添付ファイルを送信するには、この例の�
  $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 ```
 
-このコード行では、`Swift\_Message` オブジェクトの attach メソッドを呼び出し、`fromPath` クラスの静的メソッド `Swift\_Attachment` を使用してファイルを取得し、それをメッセージに添付します。
+このコード行では、`Swift\_Message` オブジェクトの attach メソッドを呼び出し、`Swift\_Attachment` クラスの静的メソッド `fromPath` を使用してファイルを取得し、それをメッセージに添付します。
 
 ### <a name="web-api"></a>Web API
 

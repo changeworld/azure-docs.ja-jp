@@ -222,7 +222,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -269,7 +269,7 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
     ![[Only Allow SSO Login]\(SSO ログインのみを許可する\) の切り替え](./media/absorblms-tutorial/save.png)
 
     > [!NOTE]
-    > 既定では、ユーザー プロビジョニングは SSO では有効になりません。 顧客がこの機能を有効にすることを望む場合は、[こちら](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)のドキュメントで説明されているように設定する必要があります。 また、ユーザー プロビジョニングは ACS URL が **の**Absorb 5 - New Learner Experience`https://company.myabsorb.com/api/rest/v2/authentication/saml` でのみ使用できることに注意してください。
+    > 既定では、ユーザー プロビジョニングは SSO では有効になりません。 顧客がこの機能を有効にすることを望む場合は、[こちら](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)のドキュメントで説明されているように設定する必要があります。 また、ユーザー プロビジョニングは ACS URL が `https://company.myabsorb.com/api/rest/v2/authentication/saml` の **Absorb 5 - New Learner Experience** でのみ使用できることに注意してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

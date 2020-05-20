@@ -61,7 +61,7 @@ JSON.net では、API によって返される JSON 応答を使用すること�
 
 ## <a name="add-some-necessary-using-statements"></a>複数の必要な using ステートメントを追加する
 
-このチュートリアルのコードでは、3 つの追加 using ステートメントが必要です。 `using`Program.cs**の上部にある既存の** ステートメントの下に、これらのステートメントを追加します。
+このチュートリアルのコードでは、3 つの追加 using ステートメントが必要です。 **Program.cs** の上部にある既存の `using` ステートメントの下に、これらのステートメントを追加します。
 
 ```csharp
 using System.Web;

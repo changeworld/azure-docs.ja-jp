@@ -95,7 +95,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 ## <a name="sign-out-of-a-session"></a>セッションからサインアウトする
 
-ユーザーは、アプリの `GET` エンドポイントに `/.auth/logout` 要求を送信することでサインアウトを開始できます。 `GET` 要求は次の処理を行います。
+ユーザーは、アプリの `/.auth/logout` エンドポイントに `GET` 要求を送信することでサインアウトを開始できます。 `GET` 要求は次の処理を行います。
 
 - 現在のセッションから認証 Cookie をクリアします。
 - トークン ストアから現在のユーザーのトークンを削除します。
@@ -113,7 +113,7 @@ Web ページの簡単なサインアウト リンクを次に示します。
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-[ の値を](https://wikipedia.org/wiki/Percent-encoding)エンコード`post_logout_redirect_uri`することをお勧めします。
+`post_logout_redirect_uri` の値を[エンコード](https://wikipedia.org/wiki/Percent-encoding)することをお勧めします。
 
 完全修飾 URL を使用している場合、URL は同じドメインでホストされているか、アプリの許可された外部リダイレクト URL として構成されている必要があります。 次の例では、同じドメインにホストされていない `https://myexternalurl.com` にリダイレクトします。
 
@@ -168,7 +168,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 ## <a name="refresh-identity-provider-tokens"></a>ID プロバイダー トークンの更新
 
-プロバイダーのアクセス トークン ([セッション トークン](#extend-session-token-expiration-grace-period)ではなく) が期限切れになった場合は、そのトークンを再度使用する前に、ユーザーを再認証する必要があります。 アプリケーションの `GET` エンドポイントに `/.auth/refresh` 呼び出しを行って、トークンの期限切れを回避することができます。 呼び出されると、App Service は認証されたユーザーのトークン ストア内のアクセス トークンを自動的に更新します。 アプリ コードによる後続のトークン要求で、更新トークンを取得します。 ただし、トークンの更新が動作するためには、トークン ストアにプロバイダーの[更新トークン](https://auth0.com/learn/refresh-tokens/)が含まれている必要があります。 更新トークンの取得方法は各プロバイダーによって文書化されていますが、次の一覧に概要を示します。
+プロバイダーのアクセス トークン ([セッション トークン](#extend-session-token-expiration-grace-period)ではなく) が期限切れになった場合は、そのトークンを再度使用する前に、ユーザーを再認証する必要があります。 アプリケーションの `/.auth/refresh` エンドポイントに `GET` 呼び出しを行って、トークンの期限切れを回避することができます。 呼び出されると、App Service は認証されたユーザーのトークン ストア内のアクセス トークンを自動的に更新します。 アプリ コードによる後続のトークン要求で、更新トークンを取得します。 ただし、トークンの更新が動作するためには、トークン ストアにプロバイダーの[更新トークン](https://auth0.com/learn/refresh-tokens/)が含まれている必要があります。 更新トークンの取得方法は各プロバイダーによって文書化されていますが、次の一覧に概要を示します。
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。

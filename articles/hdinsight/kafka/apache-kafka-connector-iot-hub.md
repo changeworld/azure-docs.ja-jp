@@ -51,7 +51,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
     sbt assembly
     ```
 
-    このビルドは完了までに数分かかります。 このコマンドにより、プロジェクトの `kafka-connect-iothub-assembly_2.11-0.7.0.jar` ディレクトリに `toketi-kafka-connect-iothub-master\target\scala-2.11` というファイルが作成されます。
+    このビルドは完了までに数分かかります。 このコマンドにより、プロジェクトの `toketi-kafka-connect-iothub-master\target\scala-2.11` ディレクトリに `kafka-connect-iothub-assembly_2.11-0.7.0.jar` というファイルが作成されます。
 
 ## <a name="install-the-connector"></a>コネクタをインストールする
 
@@ -206,7 +206,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
 IoT ハブを使用するようにソースを構成するには、エッジ ノードへの SSH 接続から次のアクションを実行します。
 
-1. `connect-iot-source.properties` ディレクトリに `/usr/hdp/current/kafka-broker/config/` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
+1. `/usr/hdp/current/kafka-broker/config/` ディレクトリに `connect-iot-source.properties` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-source.properties
@@ -241,7 +241,7 @@ IoT ハブを使用するようにソースを構成するには、エッジ ノ
 
 IoT ハブを使用するようにシンク接続を構成するには、エッジ ノードへの SSH 接続から次のアクションを実行します。
 
-1. `connect-iothub-sink.properties` ディレクトリに `/usr/hdp/current/kafka-broker/config/` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
+1. `/usr/hdp/current/kafka-broker/config/` ディレクトリに `connect-iothub-sink.properties` ファイルのコピーを作成します。 toketi-kafka-connect-iothub プロジェクトからファイルをダウンロードするには、次のコマンドを使用します。
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-sink.properties

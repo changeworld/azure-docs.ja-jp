@@ -66,7 +66,7 @@ NodeManagers は、アプリケーションを構成するタスクを実行し�
 
 ## <a name="trash-purging"></a>ごみ箱の消去
 
-ローカル ファイル システムにはデータを格納できないため、 **[HDFS]**  >  **[Advanced core-site]\(高度なコアサイト\)** の `fs.trash.interval` プロパティは既定値の `0` のままにしておく必要があります。 この値はリモート ストレージ アカウント (WASB、ADLS GEN1、ABFS) には影響しません
+ローカル ファイル システムにはデータを格納できないため、**[HDFS]** > **[Advanced core-site]\(高度なコアサイト\)** の `fs.trash.interval` プロパティは既定値の `0` のままにしておく必要があります。 この値はリモート ストレージ アカウント (WASB、ADLS GEN1、ABFS) には影響しません
 
 ## <a name="next-steps"></a>次のステップ
 

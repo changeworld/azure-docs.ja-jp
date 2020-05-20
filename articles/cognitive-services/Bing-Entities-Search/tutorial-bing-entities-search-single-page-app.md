@@ -90,7 +90,7 @@ HTML には、検索結果が表示される区分 (HTML `<div>` タグ) も含�
 
 コードに Bing Search と Bing Maps API のサブスクリプション キーを含めずに済むように、ブラウザーの永続的ストレージを使用してキーを格納します。 いずれのキーも保存されていない場合は、保存するように促し、後で使用するために保存します。 後でキーが API によって拒否された場合、格納されたキーは無効になり、ユーザーは次回の検索時にキーを求められます。
 
-`storeValue` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `retrieveValue` 関数と `localStorage` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+`localStorage` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
 ```javascript
 // cookie names for data we store
@@ -124,7 +124,7 @@ function getSearchSubscriptionKey() {
 }
 ```
 
-HTML `<body>` タグには、ページの読み込みが完了したときに `onload` と `getSearchSubscriptionKey()` を呼び出す `getMapsSubscriptionKey()` 属性が含まれます。 これらの呼び出しは、ユーザーがキーをまだ入力していない場合に、キーの使用をすぐに要求するために機能します。
+HTML `<body>` タグには、ページの読み込みが完了したときに `getSearchSubscriptionKey()` と `getMapsSubscriptionKey()` を呼び出す `onload` 属性が含まれます。 これらの呼び出しは、ユーザーがキーをまだ入力していない場合に、キーの使用をすぐに要求するために機能します。
 
 ```html
 <body onload="document.forms.bing.query.focus(); getSearchSubscriptionKey(); getMapsSubscriptionKey();">
@@ -408,7 +408,7 @@ Bing Entity Search API では、[指定した順序で結果を表示する必�
 
 | | |
 |-|-|
-|`id`|`id` は URL に似ていますが、リンクには使用できません。 `id` 型のランキング結果は、応答コレクション内の検索結果項目、"`id`または *" 応答コレクション全体 (* など) のいずれかの `Entities` と一致します。
+|`id`|`id` は URL に似ていますが、リンクには使用できません。 `id` 型のランキング結果は、応答コレクション内の検索結果項目、"*または*" 応答コレクション全体 (`Entities` など) のいずれかの `id` と一致します。
 |`answerType`<br>`resultIndex`|`answerType` は、結果を含む最上位の応答コレクション (`Entities` など) を参照します。 `resultIndex` は、そのコレクション内の結果のインデックスを参照します。 `resultIndex` を省略すると、ランキング結果はコレクション全体を参照したものとなります。
 
 > [!NOTE]

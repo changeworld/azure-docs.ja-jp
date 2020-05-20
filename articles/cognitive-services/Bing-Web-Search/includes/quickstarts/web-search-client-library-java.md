@@ -141,7 +141,7 @@ public class BingWebSearchSample {
 
 ## <a name="construct-a-request"></a>要求の構築
 
-`runSample` クラスに存在する `BingWebSearchSample` メソッドは、要求を構築します。 次のコードをアプリケーションにコピーします。
+`BingWebSearchSample` クラスに存在する `runSample` メソッドは、要求を構築します。 次のコードをアプリケーションにコピーします。
 
 ```java
 public static boolean runSample(BingWebSearchAPI client) {

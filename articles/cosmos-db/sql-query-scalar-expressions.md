@@ -54,7 +54,7 @@ ms.locfileid: "74870736"
   
 - `input_alias`  
   
-   `input_alias` 句によって導入された `FROM` で定義された値を表します。  
+   `FROM` 句によって導入された `input_alias` で定義された値を表します。  
   この値は、**undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
   
 - `<scalar_expression>.property_name`  

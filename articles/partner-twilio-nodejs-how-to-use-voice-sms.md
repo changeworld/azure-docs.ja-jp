@@ -67,7 +67,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 これらの変数を構成したら、Azure コンソールでアプリケーションを再起動します。
 
 ### <a name="declaring-the-twilio-module-in-packagejson"></a>package.json での Twilio モジュールの宣言
-次に、package.json を作成して、 [npm]を通じてノード モジュールの依存関係を管理する必要があります。 `server.js`Azure/node.js*のチュートリアルで作成した* ファイルと同じレベルで、`package.json` という名前のファイルを作成します。  このファイル内に、次のコードを追加します。
+次に、package.json を作成して、 [npm]を通じてノード モジュールの依存関係を管理する必要があります。 *Azure/node.js* のチュートリアルで作成した `server.js` ファイルと同じレベルで、`package.json` という名前のファイルを作成します。  このファイル内に、次のコードを追加します。
 
 ```json
 {

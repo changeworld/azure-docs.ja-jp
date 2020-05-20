@@ -41,7 +41,7 @@ ms.locfileid: "68883427"
 }],
 ```
 
-次に、Image Details エンドポイントを呼び出し、[ のトークンに ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken)insightsToken`imageInsightsToken` クエリ パラメーターを設定します。  
+次に、Image Details エンドポイントを呼び出し、`imageInsightsToken` のトークンに [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを設定します。  
 
 取得する分析情報を指定するには、`modules` クエリ パラメーターを設定します。 すべての分析情報を取得するには、`modules` を `All` に設定します。 キャプションとコレクションの分析情報のみを取得するには、`modules` を `Caption%2CCollection` に設定します。 使用可能な分析情報の完全なリストについては、「[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)」を参照してください。 すべてのイメージについて、すべての分析情報を使用できるわけではありません。 応答には要求したすべての分析情報 (使用可能な場合) が含まれます。
 
@@ -59,7 +59,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-insights-of-a-known-image"></a>既知のイメージの分析情報の取得
 
-分析情報を取得するイメージへの URL がある場合は、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) パラメーターではなく、[imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを使用してイメージを指定します。 または、イメージ ファイルがある場合は、POST 要求の本文でイメージのバイナリを送信できます。 POST 要求を使用する場合は、`Content-Type` ヘッダーを `multipart/data-form` に設定する必要があります。 いずれのオプションの場合でも、イメージのサイズが 1 MB を超えることはできません。  
+分析情報を取得するイメージへの URL がある場合は、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) パラメーターではなく、[imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) クエリ パラメーターを使用してイメージを指定します。 または、イメージ ファイルがある場合は、POST 要求の本文でイメージのバイナリを送信できます。 POST 要求を使用する場合は、`Content-Type` ヘッダーを `multipart/data-form` に設定する必要があります。 いずれのオプションの場合でも、イメージのサイズが 1 MB を超えることはできません。  
 
 イメージへの URL がある場合に、イメージの分析情報を要求する方法の例を以下に示します。
 
@@ -87,7 +87,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-最上位レベルのオブジェクトは、[Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) オブジェクトではなく、[ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトです。  
+最上位レベルのオブジェクトは、[Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトではなく、[ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) オブジェクトです。  
 
 ```json
 {

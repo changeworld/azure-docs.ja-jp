@@ -36,7 +36,7 @@ ms.locfileid: "77604970"
 
 `connectionMode` には目的の接続モード (Direct または Gateway)、`protocol` には目的の接続プロトコル (Tcp または Https) が設定されている必要があります。 
 
-自分の Azure Functions プロジェクトで Azure Functions V1 ランタイムを使用している場合、構成の名前はわずかに異なり、`documentDB` ではなく `cosmosDB` を使用する必要があります。
+自分の Azure Functions プロジェクトで Azure Functions V1 ランタイムを使用している場合、構成の名前はわずかに異なり、`cosmosDB` ではなく `documentDB` を使用する必要があります。
 
 ```js
 {

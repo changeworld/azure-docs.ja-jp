@@ -111,7 +111,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイし、結果の `.env` ファイルを取得した。 結果の `hub name` ファイル内の `PCS_IOTHUBREACT_HUB_NAME` 変数のデプロイ済み `.env` をメモします。
+1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイし、結果の `.env` ファイルを取得した。 結果の `.env` ファイル内の `PCS_IOTHUBREACT_HUB_NAME` 変数のデプロイ済み `hub name` をメモします。
 
 2. [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) または [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge ゲートウェイを登録して起動し、その `device id` をメモします。
 
@@ -178,7 +178,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [こちら](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)から [Azure コマンド ライン インターフェイス (AZ)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) の最新バージョンをインストールします。
+1. [こちら](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)から [Azure コマンド ライン インターフェイス (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) の最新バージョンをインストールします。
 
 ### <a name="quickstart"></a>クイック スタート
 

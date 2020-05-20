@@ -91,9 +91,9 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>Dev Spaces 向けに Windows サービスを更新
 
-コンテナーが既に実行されている既存の名前空間で Dev Spaces を有効にすると、既定では Dev Spaces がその名前空間で実行される新しいコンテナーをすべてインストルメント化しようとします。 また Dev Spaces は、名前空間で既に実行されているサービス用に作成された新しいコンテナーもすべてインストルメント化しようとします。 名前空間で実行されているコンテナーが Dev Spaces によってインストルメント化されないようにするには、*に*no-proxy`deployment.yaml` ヘッダーを追加します。
+コンテナーが既に実行されている既存の名前空間で Dev Spaces を有効にすると、既定では Dev Spaces がその名前空間で実行される新しいコンテナーをすべてインストルメント化しようとします。 また Dev Spaces は、名前空間で既に実行されているサービス用に作成された新しいコンテナーもすべてインストルメント化しようとします。 名前空間で実行されているコンテナーが Dev Spaces によってインストルメント化されないようにするには、`deployment.yaml` に *no-proxy* ヘッダーを追加します。
 
-`azds.io/no-proxy: "true"` ファイルに `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` を追加します。
+`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` ファイルに `azds.io/no-proxy: "true"` を追加します。
 
 ```yaml
 apiVersion: apps/v1

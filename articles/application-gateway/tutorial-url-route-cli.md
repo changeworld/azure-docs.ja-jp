@@ -51,7 +51,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-*を使用して、* myVNet*という名前の仮想ネットワークと*myAGSubnet`az network vnet create` という名前のサブネットを作成します。 次に、*を使用して、バックエンド サーバーに必要な*myBackendSubnet`az network vnet subnet create` という名前のサブネットを追加します。 *を使用して、* myAGPublicIPAddress`az network public-ip create` という名前のパブリック IP アドレスを作成します。
+`az network vnet create` を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、`az network vnet subnet create` を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加します。 `az network public-ip create` を使用して、*myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -130,7 +130,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-a-backend-listener"></a>バックエンド リスナーの追加
 
-*を使用して、トラフィックのルーティングに必要な*backendListener`az network application-gateway http-listener create` という名前のバックエンド リスナーを追加します。
+`az network application-gateway http-listener create` を使用して、トラフィックのルーティングに必要な *backendListener* という名前のバックエンド リスナーを追加します。
 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-a-url-path-map"></a>URL パス マップの追加
 
-URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 *および* を使用して、*imagePathRule* および `az network application-gateway url-path-map create`videoPathRule`az network application-gateway url-path-map rule create` という名前の URL パス マップを作成します。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 `az network application-gateway url-path-map create` および `az network application-gateway url-path-map rule create` を使用して、*imagePathRule* および *videoPathRule* という名前の URL パス マップを作成します。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -169,7 +169,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-a-routing-rule"></a>ルーティングの規則を追加する
 
-ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 *を使用して、* rule2`az network application-gateway rule create` という名前の規則を追加します。
+ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 `az network application-gateway rule create` を使用して、*rule2* という名前の規則を追加します。
 
 ```azurecli-interactive
 az network application-gateway rule create \

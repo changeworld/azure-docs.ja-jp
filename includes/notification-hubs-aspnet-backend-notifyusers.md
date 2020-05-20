@@ -141,7 +141,7 @@ ms.locfileid: "77192590"
 
     > [!NOTE]
     > セキュリティに関する注意: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。 基本認証を模倣するためだけに使用されるため、安全ではありません。 実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。
-5. メッセージ ハンドラーを登録するには、`Register`App_Start/WebApiConfig.cs**クラスの** メソッドの末尾に次のコードを追加します。
+5. メッセージ ハンドラーを登録するには、**App_Start/WebApiConfig.cs** クラスの `Register` メソッドの末尾に次のコードを追加します。
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());
@@ -154,7 +154,7 @@ ms.locfileid: "77192590"
 
 1. ソリューション エクスプローラーで **AppBackend** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-2. 左側のウィンドウにある **[オンライン]** を選択し、 **[検索]** ボックスに「**Microsoft.Azure.NotificationHubs**」と入力します。
+2. 左側のウィンドウにある **[オンライン]** を選択し、**[検索]** ボックスに「**Microsoft.Azure.NotificationHubs**」と入力します。
 
 3. 結果の一覧で、 **[Microsoft Azure Notification Hubs]** を選択してから、 **[インストール]** を選択します。 インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
 

@@ -70,7 +70,7 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `contractualRules` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `contractualRules` フィールドには、従う必要があるルールのリストが含まれています (たとえば、記事の属性)。 `contractualRules` を使用するのではなく、`provider` に指定されている属性を適用する必要があります。 この記事には、`contractualRules`Web Search API[ 応答に News の回答が含まれている場合にのみ ](../bing-web-search/search-the-web.md)が含まれます。
+- `contractualRules` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `contractualRules` フィールドには、従う必要があるルールのリストが含まれています (たとえば、記事の属性)。 `provider` を使用するのではなく、`contractualRules` に指定されている属性を適用する必要があります。 この記事には、[Web Search API](../bing-web-search/search-the-web.md) 応答に News の回答が含まれている場合にのみ `contractualRules`が含まれます。
 
 ## <a name="non-breaking-changes"></a>非破壊的変更
 

@@ -206,9 +206,9 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、[health_status](service-fabric-visualizing-your-cluster.md) が "*正常*" のときに、*Service Fabric Explorer* に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
 
-v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、**health_status** が*正常*の場合、*OK* 正常性レポートが表示され、**health_status** が*異常*の場合、*ERROR* が表示されます。
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が*正常*の場合、**OK** 正常性レポートが表示され、*health_status* が*異常*の場合、**ERROR** が表示されます。
 
 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
@@ -236,7 +236,7 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 
 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
 
-*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの **health_status** が*異常*のとき、*ERROR* 正常性レポートが表示されます。
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が*異常*のとき、**ERROR** 正常性レポートが表示されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
@@ -369,7 +369,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 yeoman を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。
 
-1. ディレクトリを既存アプリケーションのルートに変更します。 たとえば、Yeoman で作成したアプリケーションが `cd ~/YeomanSamples/MyApplication` の場合は、`MyApplication` です。
+1. ディレクトリを既存アプリケーションのルートに変更します。 たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfcontainer:AddService` を実行します。
 
 <a id="manually"></a>

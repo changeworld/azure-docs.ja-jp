@@ -30,12 +30,12 @@ ms.locfileid: "77201968"
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup>`direction`function.json*には "in" バインド*、C# クラス ライブラリには `FileAccess.Read` が必要です。 ただし、コンテナーへの BLOB のアップロードなどの書き込み操作をおこなうためにランタイムが提供するコンテナー オブジェクトを使うことができます。
+<sup>1</sup>*function.json* には "in" バインド `direction`、C# クラス ライブラリには `FileAccess.Read` が必要です。 ただし、コンテナーへの BLOB のアップロードなどの書き込み操作をおこなうためにランタイムが提供するコンテナー オブジェクトを使うことができます。
 
-<sup>2</sup>`direction`function.json*には "inout" バインド*、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
+<sup>2</sup>*function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
 
 Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-非同期関数では、`IAsyncCollector` パラメーターの代わりに戻り値または `out` を使用します。
+非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
 
 `string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[コンカレンシーとメモリ使用量](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage)」セクションをご覧ください。

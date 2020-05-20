@@ -34,4 +34,4 @@ ms.locfileid: "67181546"
 1. Web アプリケーションの別のインスタンスを、別のブラウザー ウィンドウで開きます。 送信したメッセージがアプリケーションのすべてのインスタンスで表示されることを確認します。
 
 > [!IMPORTANT]
-> HTML ページは HTTPS を使用して返されますが、ローカルの Azure Functions Runtime には HTTP が既定で使用されます。そのため、お使いのブラウザー (Firefox など) によって矛盾したコンテンツ ポリシーが強制され、Web ページから関数への要求がブロックされることがあります。 これを解決するためには、この制限がないブラウザーを使用するか、またはローカル HTTP サーバー ([/docs/demo/chat-v2](https://www.npmjs.com/package/http-server) ディレクトリの *http-server* など) を起動します。 `CORS`local.settings.json*の* 設定にオリジンが追加されていることを確認してください。
+> HTML ページは HTTPS を使用して返されますが、ローカルの Azure Functions Runtime には HTTP が既定で使用されます。そのため、お使いのブラウザー (Firefox など) によって矛盾したコンテンツ ポリシーが強制され、Web ページから関数への要求がブロックされることがあります。 これを解決するためには、この制限がないブラウザーを使用するか、またはローカル HTTP サーバー (*/docs/demo/chat-v2* ディレクトリの [http-server](https://www.npmjs.com/package/http-server) など) を起動します。 *local.settings.json* の `CORS` 設定にオリジンが追加されていることを確認してください。

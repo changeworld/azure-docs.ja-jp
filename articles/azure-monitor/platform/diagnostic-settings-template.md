@@ -30,7 +30,7 @@ Resource Manager テンプレートをデプロイするには、PowerShell や 
 
 
 ## <a name="resource-logs"></a>リソース ログ
-リソース ログの場合は、`<resource namespace>/providers/diagnosticSettings` 型のリソースをテンプレートに追加します。 プロパティ セクションでは、「[Diagnostic Settings - Create Or Update](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)」 (診断設定 - 作成または更新) に記載の形式に従います。 収集するリソースに対して有効な各カテゴリの `category` セクションに `logs` を指定します。 `metrics`リソースでメトリックがサポートされている[場合は、](metrics-supported.md) プロパティを追加して、リソースのメトリックを同じ送信先に収集します。
+リソース ログの場合は、`<resource namespace>/providers/diagnosticSettings` 型のリソースをテンプレートに追加します。 プロパティ セクションでは、「[Diagnostic Settings - Create Or Update](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)」 (診断設定 - 作成または更新) に記載の形式に従います。 収集するリソースに対して有効な各カテゴリの `logs` セクションに `category` を指定します。 [リソースでメトリックがサポートされている](metrics-supported.md)場合は、`metrics` プロパティを追加して、リソースのメトリックを同じ送信先に収集します。
 
 次に示すのは、特定のリソースのリソース ログ カテゴリを、Log Analytics ワークスペース、ストレージ アカウント、およびイベント ハブに収集するテンプレートです。
 

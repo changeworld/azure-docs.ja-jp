@@ -56,9 +56,9 @@ sortable_function ::= geo_distance_call | 'search.score()'
 
 複数の並べ替え基準を指定できます。 式の順序によって最終的な並べ替え順序が決められます。 たとえば、スコア別に降順で並べ替えた後、評価で並べ替える場合、構文は `$orderby=search.score() desc,Rating desc` のようになります。
 
-`geo.distance`$orderby**の** の構文は **$filter** の場合と同じになります。 `geo.distance`$orderby**で** を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また `sortable` である必要があります。
+**$orderby** の `geo.distance` の構文は **$filter** の場合と同じになります。 **$orderby** で `geo.distance` を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また `sortable` である必要があります。
 
-`search.score`$orderby**の** の構文は `search.score()` です。 関数 `search.score` には、いかなるパラメーターも取得されません。
+**$orderby** の `search.score` の構文は `search.score()` です。 関数 `search.score` には、いかなるパラメーターも取得されません。
 
 ## <a name="examples"></a>例
 

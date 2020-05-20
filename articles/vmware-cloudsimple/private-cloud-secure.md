@@ -37,7 +37,7 @@ RBAC の詳細については、「[Azure リソースのロールベースの�
 
 ### <a name="add-new-users-to-vcenter"></a>vCenter に新しいユーザーを追加する
 
-1. プライベート クラウドの [CloudOwner](escalate-private-cloud-privileges.md)cloudsimple.local **ユーザーの\@権限をエスカレート**します。
+1. プライベート クラウドの **CloudOwner\@cloudsimple.local** ユーザーの[権限をエスカレート](escalate-private-cloud-privileges.md)します。
 2. **CloudOwner\@cloudsimple.local** を使用して vCenter にサインインします
 3. [vCenter シングル サインオン ユーザーを追加](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)します。
 4. [vCenter シングル サインオン グループ](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)にユーザーを追加します。
@@ -51,7 +51,7 @@ RBAC の詳細については、「[Azure リソースのロールベースの�
 * プライベート クラウドの vCenter の [ID プロバイダーとして Active Directory を使用](set-vcenter-identity.md)する。
 * プライベート クラウドの vCenter の [ID プロバイダーとして Azure AD を使用](azure-ad.md)する。
 
-1. プライベート クラウドの [CloudOwner](escalate-private-cloud-privileges.md)cloudsimple.local **ユーザーの\@権限をエスカレート**します。
+1. プライベート クラウドの **CloudOwner\@cloudsimple.local** ユーザーの[権限をエスカレート](escalate-private-cloud-privileges.md)します。
 2. **CloudOwner\@cloudsimple.local** を使用して vCenter にサインインします
 3. ID プロバイダーから [vCenter シングル サインオン グループ](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)にユーザーを追加します。
 

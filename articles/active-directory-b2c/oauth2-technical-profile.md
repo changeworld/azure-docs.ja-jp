@@ -37,7 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 
 ## <a name="input-claims"></a>入力クレーム
 
-**InputClaims** と **InputClaimsTransformations** の要素は不要です。 ただし、追加のパラメーターを ID プロバイダーに送信する場合があります。 次の例では、値が **である**domain_hint`contoso.com` クエリ文字列パラメーターを認可要求に追加しています。
+**InputClaims** と **InputClaimsTransformations** の要素は不要です。 ただし、追加のパラメーターを ID プロバイダーに送信する場合があります。 次の例では、値が `contoso.com` である **domain_hint** クエリ文字列パラメーターを認可要求に追加しています。
 
 ```XML
 <InputClaims>
@@ -87,8 +87,8 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 | AccessTokenResponseFormat | いいえ | アクセス トークン エンドポイント呼び出しの形式。 たとえば、Facebook では HTTP GET メソッドが必要ですが、アクセス トークン応答は JSON 形式です。 |
 | AdditionalRequestQueryParameters | いいえ | 追加要求クエリ パラメーター。 たとえば、追加のパラメーターを ID プロバイダーに送信する場合があります。 コンマ区切り記号を使用して、複数のパラメーターを列挙できます。 |
 | ClaimsEndpointAccessTokenName | いいえ | アクセス トークンのクエリ文字列パラメーターの名前。 一部の ID プロバイダーの要求エンドポイントでは、GET HTTP 要求をサポートしています。 この場合は、ベアラー トークンは、authorization ヘッダーの代わりに、クエリ文字列パラメーターを使用して送信されます。 |
-| ClaimsEndpointFormatName | いいえ | 形式のクエリ文字列パラメーターの名前。 たとえば、LinkedIn 要求エンドポイント `format` では、名前を `https://api.linkedin.com/v1/people/~?format=json` として設定できます。 |
-| ClaimsEndpointFormat | いいえ | 形式のクエリ文字列パラメーターの値。 たとえば、LinkedIn 要求エンドポイント `json` では、値を `https://api.linkedin.com/v1/people/~?format=json` として設定できます。 |
+| ClaimsEndpointFormatName | いいえ | 形式のクエリ文字列パラメーターの名前。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、名前を `format` として設定できます。 |
+| ClaimsEndpointFormat | いいえ | 形式のクエリ文字列パラメーターの値。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、値を `json` として設定できます。 |
 | ProviderName | いいえ | ID プロバイダーの名前。 |
 | response_mode | いいえ | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
 | scope | いいえ | OAuth2 ID プロバイダーの仕様に従って定義される要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |

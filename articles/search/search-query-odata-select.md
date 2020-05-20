@@ -57,11 +57,11 @@ field_path ::= identifier('/'identifier)*
 
 2 つ目の形式を使用するときは、一覧の取得できるフィールドのみを指定できます。
 
-サブフィールドを明示的に指定せずに複合フィールドを列挙すると、取得できるすべてのサブフィールドがクエリ結果セットに含まれます。 たとえば、インデックスに、`Address`、`Street`、および `City` というサブフィールドがある `Country` フィールドがあり、いずれも取得できるとします。 `Address`$select**に** を指定した場合、クエリ結果には 3 つのサブフィールドすべてが含まれます。
+サブフィールドを明示的に指定せずに複合フィールドを列挙すると、取得できるすべてのサブフィールドがクエリ結果セットに含まれます。 たとえば、インデックスに、`Street`、`City`、および `Country` というサブフィールドがある `Address` フィールドがあり、いずれも取得できるとします。 **$select** に `Address` を指定した場合、クエリ結果には 3 つのサブフィールドすべてが含まれます。
 
 ## <a name="examples"></a>例
 
-結果に `HotelId`、`HotelName`、および `Rating` の最上位フィールドを含め、`City` の `Address` サブフィールドを含めます。
+結果に `HotelId`、`HotelName`、および `Rating` の最上位フィールドを含め、`Address` の `City` サブフィールドを含めます。
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-結果に `HotelName` 最上位フィールドを含め、`Address` コレクションに `Type` のすべてのサブフィールドと各オブジェクトの `BaseRate` および `Rooms` のサブフィールドを含めます。
+結果に `HotelName` 最上位フィールドを含め、`Rooms` コレクションに `Address` のすべてのサブフィールドと各オブジェクトの `Type` および `BaseRate` のサブフィールドを含めます。
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

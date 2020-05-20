@@ -133,8 +133,8 @@ datadrift_contribution|誤差に寄与するフィーチャーの重要度。|
 誤差のメトリックを表示する方法は複数あります。
 
 * `RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する。
-* 任意の [ 実行オブジェクト上で `get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)`datadrift` 関数を使用する。
-* **Azure Machine Learning Studio** で、ワークスペースの [[モデル]](https://ml.azure.com) セクションから、メトリックを表示します。
+* 任意の `datadrift` 実行オブジェクト上で [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) 関数を使用する。
+* [Azure Machine Learning Studio](https://ml.azure.com) で、ワークスペースの **[モデル]** セクションから、メトリックを表示します。
 
 次の Python の例は、関連するデータの誤差のメトリックをプロットする方法を示しています。 返されたメトリックを使用して、カスタムの視覚化を作成できます。
 
@@ -159,7 +159,7 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-データの誤差の検出機能の構成は、**Azure Machine Learning Studio** で、 **[モデル]** の下のワークスペースの [[詳細]](https://ml.azure.com) タブに表示されます。
+データの誤差の検出機能の構成は、[Azure Machine Learning Studio](https://ml.azure.com) で、**[モデル]** の下のワークスペースの **[詳細]** タブに表示されます。
 
 [![Azure Machine Learning Studio のデータの誤差](./media/how-to-monitor-data-drift/drift-config.png)](media/how-to-monitor-data-drift/drift-config-expanded.png)
 

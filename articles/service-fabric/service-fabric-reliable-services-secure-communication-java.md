@@ -23,7 +23,7 @@ ms.locfileid: "75609640"
 
 Java サービスでリモート処理を使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
 
-1. サービスのリモート プロシージャ コールで使用できるメソッドを定義するインターフェイス ( `HelloWorldStateless`) を作成します。 実際のサービスでは、`FabricTransportServiceRemotingListener` パッケージに宣言されている `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` を使用します。 これは、リモート処理機能を提供する `CommunicationListener` の実装です。
+1. サービスのリモート プロシージャ コールで使用できるメソッドを定義するインターフェイス ( `HelloWorldStateless`) を作成します。 実際のサービスでは、`microsoft.serviceFabric.services.remoting.fabricTransport.runtime` パッケージに宣言されている `FabricTransportServiceRemotingListener` を使用します。 これは、リモート処理機能を提供する `CommunicationListener` の実装です。
 
     ```java
     public interface HelloWorldStateless extends Service {

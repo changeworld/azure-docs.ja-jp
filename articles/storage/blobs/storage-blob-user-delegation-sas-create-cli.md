@@ -60,7 +60,7 @@ Azure CLI を使用してユーザー委任 SAS を作成すると、SAS への�
 
 ユーザー委任キーが有効な最大間隔は開始日から 7 日であるため、SAS の有効期限を開始時刻から 7 日以内で指定する必要があります。 ユーザー委任キーの有効期限が切れると SAS は無効になるため、有効期限が 7 日を超える SAS でも、7 日間だけ有効になります。
 
-ユーザー委任 SAS を作成する場合は、`--auth-mode login` と `--as-user parameters` が必要です。 Azure Storage に対して行われた要求が Azure AD の資格情報で承認されるように、 *パラメーターに*ログイン`--auth-mode`を指定します。 `--as-user` パラメーターを指定して、返される SAS がユーザー委任 SAS である必要があることを示します。
+ユーザー委任 SAS を作成する場合は、`--auth-mode login` と `--as-user parameters` が必要です。 Azure Storage に対して行われた要求が Azure AD の資格情報で承認されるように、`--auth-mode` パラメーターに*ログイン*を指定します。 `--as-user` パラメーターを指定して、返される SAS がユーザー委任 SAS である必要があることを示します。
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>コンテナー用にユーザー委任 SAS を作成する
 

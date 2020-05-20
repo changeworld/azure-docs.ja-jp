@@ -54,13 +54,13 @@ MSAL.NET では、`IAccount` インターフェイスでアカウントの概念
 
 | プロパティ | 説明 |
 |----------|-------------|
-| `Username` | UserPrincipalName (UPN) 形式の表示可能な値の文字列 (例: john.doe@contoso.com)。 null にすることができない HomeAccountId と HomeAccountId.Identifier とは異なり、この文字列は null にできます。 このプロパティは、MSAL.NET の以前のバージョンの `DisplayableId` の `IUser` プロパティを置き換えます。 |
+| `Username` | UserPrincipalName (UPN) 形式の表示可能な値の文字列 (例: john.doe@contoso.com)。 null にすることができない HomeAccountId と HomeAccountId.Identifier とは異なり、この文字列は null にできます。 このプロパティは、MSAL.NET の以前のバージョンの `IUser` の `DisplayableId` プロパティを置き換えます。 |
 | `Environment` | このアカウントの ID プロバイダーを含む文字列 (例: `login.microsoftonline.com`)。 `IdentityProvider` には、クラウド環境に加えテナントに関する情報もありますが、それを除き、このプロパティは、`IUser` の `IdentityProvider` プロパティと置き換えることができます。 ここでは値はホストのみです。 |
 | `HomeAccountId` | ユーザーのホーム アカウントのアカウント ID。 このプロパティは、Azure AD テナント全体でユーザーを一意に識別します。 |
 
 ### <a name="use-the-token-to-call-a-protected-api"></a>トークンを使用して保護された API を呼び出す
 
-MSAL によって `AuthenticationResult` に `result` が返された後、保護された Web API にアクセスする呼び出しを行う前に、これを HTTP Authorization ヘッダーに追加します。
+MSAL によって `result` に `AuthenticationResult` が返された後、保護された Web API にアクセスする呼び出しを行う前に、これを HTTP Authorization ヘッダーに追加します。
 
 ```csharp
 httpClient = new HttpClient();

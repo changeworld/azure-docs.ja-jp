@@ -60,7 +60,7 @@ SSH ユーザーに指定する値は、クラスターの SSH ユーザーの�
 
 ## <a name="create-cluster-configuration-object"></a>クラスターの作成: 構成オブジェクト
 
-HDInsight の構成オブジェクトは、[`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) コマンドレットを使用して作成することもできます。 作成後に、クラスターの追加の構成オプションを有効にするように、この構成オブジェクトを変更できます。 最後に、`-Config`[`New-AzHDInsightCluster` コマンドレットの ](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) パラメーターを使用して構成を使用します。
+HDInsight の構成オブジェクトは、[`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) コマンドレットを使用して作成することもできます。 作成後に、クラスターの追加の構成オプションを有効にするように、この構成オブジェクトを変更できます。 最後に、[`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `-Config` パラメーターを使用して構成を使用します。
 
 次のスクリプトでは、HDInsight クラスター タイプで R Server を構成する構成オブジェクトを作成します。 この構成は、エッジ ノード、RStudio、および追加のストレージ アカウントを有効にします。
 

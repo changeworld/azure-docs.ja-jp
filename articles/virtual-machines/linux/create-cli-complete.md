@@ -94,7 +94,7 @@ az network vnet create \
 
 
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-次に、[az network public-ip create](/cli/azure/network/public-ip) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` パラメーターを指定して名前付きの DNS エントリを作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します DNS 名は一意である必要があるので、独自の DNS 名を指定します。
+次に、[az network public-ip create](/cli/azure/network/public-ip) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` パラメーターを指定して名前付きの DNS エントリを作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  DNS 名は一意である必要があるので、独自の DNS 名を指定します。
 
 ```azurecli
 az network public-ip create \
@@ -469,7 +469,7 @@ az vm availability-set create \
 
 
 ## <a name="create-a-vm"></a>VM の作成
-これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この例では、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](/cli/azure/vm/image) に関する記事で説明されているように、[az vm image list](cli-ps-findimage.md) を使用すると他のイメージを検索できます。
+これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この例では、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](cli-ps-findimage.md) に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image) を使用すると他のイメージを検索できます。
 
 認証に使用する SSH キーを指定します。 SSH 公開キーのペアが無い場合は、[自分で作成する](mac-create-ssh-keys.md)か、`--generate-ssh-keys` パラメーターを使用して自動で作成できます。 このパラメーターでは、キーのペアが既にある場合は `~/.ssh` にある既存のキーが使用されます。
 
@@ -556,7 +556,7 @@ sudo apt-get install -y nginx
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `--include-parameter-default-value` コマンドに `az group export` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
+このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `az group export` コマンドに `--include-parameter-default-value` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
 
 テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment) を使います。
 

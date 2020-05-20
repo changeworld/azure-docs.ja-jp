@@ -54,7 +54,7 @@ Android 用 MSAL では、B2C ポリシー (ユーザー体験) は個々の機�
 }
 ```
 
-`redirect_uri` は、アプリ構成で登録する必要があります。さらに、`AndroidManifest.xml`承認コード付与フロー[中にリダイレクトをサポートするために、](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code) に登録する必要があります。
+`redirect_uri` は、アプリ構成で登録する必要があります。さらに、[承認コード付与フロー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)中にリダイレクトをサポートするために、`AndroidManifest.xml` に登録する必要があります。
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication を初期化する
 
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>ポリシーを指定する
 
-B2C のポリシーは個別の機関として表されるため、既定値以外のポリシー呼び出しを実現するには、`fromAuthority` または `acquireToken` パラメーターを構築するときに `acquireTokenSilent` 句を指定します。  次に例を示します。
+B2C のポリシーは個別の機関として表されるため、既定値以外のポリシー呼び出しを実現するには、`acquireToken` または `acquireTokenSilent` パラメーターを構築するときに `fromAuthority` 句を指定します。  次に例を示します。
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

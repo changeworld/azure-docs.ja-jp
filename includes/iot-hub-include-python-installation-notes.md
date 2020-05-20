@@ -19,6 +19,6 @@ ms.locfileid: "70999507"
 
 * [Python 2.x または 3.x](https://www.python.org/downloads/)。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用している場合は、[*pip* (Python パッケージ管理システム) のインストールまたはアップグレード](https://pip.pypa.io/en/stable/installing/)が必要な場合があります。
 
-* 必要な場合、[ コマンドを使用して ](https://pypi.org/project/azure-iot-device/)azure-iot-device`pip install azure-iot-device` パッケージをインストールします
+* 必要な場合、`pip install azure-iot-device` コマンドを使用して [azure-iot-device](https://pypi.org/project/azure-iot-device/) パッケージをインストールします
 
-* 必要な場合、[ コマンドを使用して ](https://pypi.org/project/azure-iothub-service-client/)azure-iothub-service-client`pip install azure-iothub-service-client` パッケージをインストールします
+* 必要な場合、`pip install azure-iothub-service-client` コマンドを使用して [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) パッケージをインストールします

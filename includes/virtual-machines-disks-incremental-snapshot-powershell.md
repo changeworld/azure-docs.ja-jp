@@ -34,7 +34,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 インストールが完了したら、`az login` を使用して PowerShell セッションにログインします。
 
-Azure PowerShell を利用して増分スナップショットを作成するには、構成を [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) と `-Incremental` パラメーターで設定し、[ パラメーターを介してそれを ](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0)New-AzSnapshot`-Snapshot` に変数として渡します。
+Azure PowerShell を利用して増分スナップショットを作成するには、構成を [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) と `-Incremental` パラメーターで設定し、`-Snapshot` パラメーターを介してそれを [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) に変数として渡します。
 
 `<yourDiskNameHere>`、`<yourResourceGroupNameHere>`、および `<yourDesiredSnapShotNameHere>` を実際の値に置き換えて、次のスクリプトを使用して増分スナップショットを作成できます。
 

@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-`words` および `features` トランスフォーマーによって追加された新しい `Tokenizer` および `HashingTF` 列や、`LogisticRegression` エスティメーターのサンプルを表示するには、元のデータフレーム上で `PipelineModel.transform()` メソッドを実行します。 運用コードでは、トレーニングを検証するテスト データフレームに合格するために次の手順が必要になります。
+`Tokenizer` および `HashingTF` トランスフォーマーによって追加された新しい `words` および `features` 列や、`LogisticRegression` エスティメーターのサンプルを表示するには、元のデータフレーム上で `PipelineModel.transform()` メソッドを実行します。 運用コードでは、トレーニングを検証するテスト データフレームに合格するために次の手順が必要になります。
 
 ```python
 peek = model.transform(training)

@@ -86,7 +86,7 @@ Runbook をインポート、発行、実行してジョブ定義をトリガー
 
 2. **[Runbook の追加]** で、 **[既存の Runbook のインポート]** をクリックします。
 
-3. `Trigger-DataTransformation-Job.ps1`[Runbook ファイル]**で、Azure PowerShell スクリプト ファイル**を参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
+3. **[Runbook ファイル]** で、Azure PowerShell スクリプト ファイル `Trigger-DataTransformation-Job.ps1`を参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
 
     ![Runbook の追加 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

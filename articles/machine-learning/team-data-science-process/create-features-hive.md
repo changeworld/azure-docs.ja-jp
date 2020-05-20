@@ -23,7 +23,7 @@ ms.locfileid: "76721780"
 
 特徴を作成するために必要な操作は、メモリの消費が激しい場合があります。 そのようなケースでは、Hive クエリのパフォーマンスが特に重要となります。Hive クエリのパフォーマンスは、特定のパラメーターをチューニングすることで高めることが可能です。 これらのパラメーターのチューニングについては最後のセクションで取り上げます。
 
-また、[GitHub リポジトリ](https://chriswhong.com/open-data/foil_nyc_taxi/)にも、[NYC タクシー乗車データ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)のシナリオに固有のクエリの例が用意されています。 これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。 最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについても説明します。
+また、[GitHub リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)にも、[NYC タクシー乗車データ](https://chriswhong.com/open-data/foil_nyc_taxi/)のシナリオに固有のクエリの例が用意されています。 これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。 最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについても説明します。
 
 このタスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
@@ -130,11 +130,11 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
         and dropoff_latitude between 30 and 90
         limit 10;
 
-2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。 この Javascript で、関数 `toRad()` は単に *lat_or_lon*pi/180 であり、これは、角度をラジアンに変換します。 ここで、 *lat_or_lon* は緯度または経度です。 Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は `atan`Wikipedia<a href="https://en.wikipedia.org/wiki/Atan2" target="_blank"> に記載された定義を使用して、</a> 関数により実装されています。
+2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。 この Javascript で、関数 `toRad()` は単に *lat_or_lon*pi/180 であり、これは、角度をラジアンに変換します。 ここで、 *lat_or_lon* は緯度または経度です。 Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
 
 ![ワークスペースの作成](./media/create-features-hive/atan2new.png)
 
-Hive の組み込み UDF のリストは、**Apache Hive Wiki** の<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">組み込み関数</a>のセクションにあります。  
+Hive の組み込み UDF のリストは、<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive Wiki</a> の**組み込み関数**のセクションにあります。  
 
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> 高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
 Hive クラスターの既定のパラメーター設定は、Hive クエリおよびクエリが処理するデータに適していないことがあります。 このセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターのいくつかについて説明します。 ユーザーは、データ処理のクエリの前に、パラメーター調整クエリを追加する必要があります。

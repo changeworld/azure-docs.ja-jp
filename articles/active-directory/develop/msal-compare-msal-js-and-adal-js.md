@@ -48,7 +48,7 @@ v1.0 エンドポイント (および ADAL.js) を既に使い慣れている場
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD アカウント (任意の組織用) でサインインできるようになります。
 
-v2.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD 組織アカウントや Microsoft の個人用アカウント (MSA) でサインインできるようになります。 サインインを Azure AD アカウント (ADAL.js の場合と同じ動作) だけに制限するには、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、`authority`MSAL.js を使用した初期化[に関するページの ](msal-js-initializing-client-applications.md) config オプションを参照してください。
+v2.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD 組織アカウントや Microsoft の個人用アカウント (MSA) でサインインできるようになります。 サインインを Azure AD アカウント (ADAL.js の場合と同じ動作) だけに制限するには、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、[MSAL.js を使用した初期化](msal-js-initializing-client-applications.md)に関するページの `authority` config オプションを参照してください。
 
 ### <a name="scopes-for-acquiring-tokens"></a>トークンを取得するためのスコープ
 * トークンを取得するための認証要求におけるリソース パラメーターに代わるスコープ

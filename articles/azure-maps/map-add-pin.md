@@ -65,11 +65,11 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ピンの場所の切り替え' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Switch pin location</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='ピンの場所の切り替え' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>Switch pin location</a>」Pen を表示します。
 </iframe>
 
 > [!TIP]
-> 既定では、重なっているシンボルがシンボル レイヤーによって非表示になることで、シンボルのレンダリングが最適化されます。 拡大すると、非表示のシンボルが表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`allowOverlap` オプションの `iconOptions` プロパティを `true` に設定します。
+> 既定では、重なっているシンボルがシンボル レイヤーによって非表示になることで、シンボルのレンダリングが最適化されます。 拡大すると、非表示のシンボルが表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`iconOptions` オプションの `allowOverlap` プロパティを `true` に設定します。
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>シンボル レイヤーにカスタム アイコンを追加する
 
@@ -77,7 +77,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='500' scrolling='no' title='カスタム シンボル画像アイコン' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Custom Symbol Image Icon (カスタム シンボル画像アイコン)</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='カスタム シンボル画像アイコン' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Custom Symbol Image Icon (カスタム シンボル画像アイコン)</a>」Pen を表示します。
 </iframe>
 
 > [!TIP]
@@ -89,7 +89,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='700' scrolling='no' title='シンボル レイヤーのオプション' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/PxVXje/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Symbol Layer Options (シンボル レイヤーのオプション)</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='シンボル レイヤーのオプション' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/PxVXje/'>Symbol Layer Options (シンボル レイヤーのオプション)</a>」Pen を表示します。
 </iframe>
 
 > [!TIP]

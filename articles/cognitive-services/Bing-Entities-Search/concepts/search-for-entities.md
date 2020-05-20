@@ -42,7 +42,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 > [!NOTE]
 > エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
-`entities` フィールドは、[Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトのリストを含む [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity)オブジェクトです (`value` フィールドを参照)。 リストには、1 つの主要なエンティティ、複数のあいまいさ排除エンティティ、またはその両方が含まれている場合があります。 
+`entities` フィールドは、[Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) オブジェクトのリストを含む [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)オブジェクトです (`value` フィールドを参照)。 リストには、1 つの主要なエンティティ、複数のあいまいさ排除エンティティ、またはその両方が含まれている場合があります。 
 
 主要なエンティティは、要求を満たす唯一のエンティティだと Bing が認識したときに返されます (どのエンティティが要求を満たすかに関するあいまいさはありません)。 複数のエンティティが要求を満たす可能性がある場合は、リストには複数のあいまいさ排除エンティティが含まれます。 たとえば、要求で映画シリーズの一般的なタイトルを使用している場合、リストにはあいまいさ排除エンティティが含まれる可能性が高くなります。 しかし、要求でシリーズの特定のタイトルを指定した場合、リストには 1 つの主要なエンティティが含まれる可能性が高くなります。
 
@@ -174,7 +174,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 
 ## <a name="find-places"></a>場所を探す
 
-`places` フィールドは、[Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトのリストを含む [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) オブジェクトです (詳しくは、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
+`places` フィールドは、[Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) オブジェクトのリストを含む [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトです (詳しくは、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
 
 場所には、レストラン、ホテル、または地元企業が含まれます。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) フィールドには、ローカル エンティティの型を識別するためのヒントが含まれています。 リストには、Place、LocalBusiness、Restaurant などのヒントのリストが含まれています。 配列内の連続する各ヒントにより、エンティティの型が絞り込まれます。 可能な型のリストについては、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)のセクションを参照してください。
 
@@ -189,7 +189,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 > [!NOTE]
 > エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
-*近くのレストラン*などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、`askUserForLocation`QueryContext[ の ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) フィールドが **true** に設定されます。 
+*近くのレストラン*などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、[QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) の `askUserForLocation` フィールドが **true** に設定されます。 
 
 ```json
 {

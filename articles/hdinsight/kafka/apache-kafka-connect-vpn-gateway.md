@@ -254,7 +254,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
     ![Apache Ambari サービスの構成](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. __kafka-env__ 構成を検索するには、右上の `kafka-env`[Filter (フィルター)]__フィールドに「__ 」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,7 +268,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Kafka がリッスンするインターフェイスを構成するには、右上の `listeners`[Filter (フィルター)] __フィールドに「__ 」と入力します。
+6. Kafka がリッスンするインターフェイスを構成するには、右上の __[Filter (フィルター)]__ フィールドに「`listeners`」と入力します。
 
 7. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成するには、 __[listeners (リスナー)]__ フィールドの値を `PLAINTEXT://0.0.0.0:9092`に変更します。
 
@@ -288,7 +288,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 ### <a name="connect-to-the-vpn-gateway"></a>VPN ゲートウェイに接続する
 
-VPN ゲートウェイに接続するには、__ポイント対サイト接続の構成__に関するドキュメントの「[Azure への接続](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)」セクションに従います。
+VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)に関するドキュメントの「__Azure への接続__」セクションに従います。
 
 ## <a name="example-python-client"></a><a id="python-client"></a>例: Python クライアント
 

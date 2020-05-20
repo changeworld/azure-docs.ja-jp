@@ -124,7 +124,7 @@ ms.locfileid: "71211873"
     これにより、要求のデバイス トークンが設定されます。
 
    > [!NOTE]
-   > この時点では、このメソッドに他のコードは存在しません。 `registerNativeWithDeviceToken`Notification Hubs の使用の開始[に関するチュートリアルを完了したときに追加された ](notification-hubs-ios-apple-push-notification-apns-get-started.md) メソッドへの呼び出しが既にある場合は、その呼び出しをコメント解除するか、削除する必要があります。
+   > この時点では、このメソッドに他のコードは存在しません。 [Notification Hubs の使用の開始](notification-hubs-ios-apple-push-notification-apns-get-started.md)に関するチュートリアルを完了したときに追加された `registerNativeWithDeviceToken` メソッドへの呼び出しが既にある場合は、その呼び出しをコメント解除するか、削除する必要があります。
 
 8. `PushToUserAppDelegate.m` ファイルに次のハンドラー メソッドを追加します。
 
@@ -151,7 +151,7 @@ ms.locfileid: "71211873"
     }
     ```
 
-10. `viewDidLoad` ファイルの `PushToUserViewController.m`メソッドで、次のように `installationId` ラベルを初期化します。
+10. `PushToUserViewController.m` ファイルの `viewDidLoad`メソッドで、次のように `installationId` ラベルを初期化します。
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];

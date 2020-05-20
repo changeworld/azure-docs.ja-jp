@@ -69,7 +69,7 @@ Perf
 ![基準線](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>複数のディメンション
-`by` の`summarize` 句にある複数の式により、結果に複数の行が作成されます。値の組み合わせごとに 1 行ずつです。
+`summarize` の`by` 句にある複数の式により、結果に複数の行が作成されます。値の組み合わせごとに 1 行ずつです。
 
 ```Kusto
 SecurityEvent

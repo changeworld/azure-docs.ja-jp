@@ -245,7 +245,7 @@ Az モジュール スクリプトを使用している場合は、テンプレ�
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-前の例では `'/',`parameters('_artifactsLocation')**と**parameters('ExampleAppPackageFolder')**の間に** がないことに注意してください。
+前の例では **parameters('_artifactsLocation')** と **parameters('ExampleAppPackageFolder')** の間に `'/',` がないことに注意してください。
 
 プロジェクトをリビルドします。 プロジェクトをビルドすると、デプロイする必要があるファイルがステージング フォルダーに追加されます。
 

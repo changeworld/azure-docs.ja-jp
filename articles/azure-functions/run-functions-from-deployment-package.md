@@ -52,7 +52,7 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 
 ## <a name="integration-with-zip-deployment"></a>zip デプロイとの統合
 
-[Zip デプロイ][Zip deployment for Azure Functions]は、関数アプリ プロジェクトを `wwwroot` ディレクトリに配置することを可能にする Azure App Service の機能です。 プロジェクトは、.zip デプロイ ファイルとしてパッケージ化されます。 同じ API を使用して、パッケージを `d:\home\data\SitePackages` フォルダーに配置できます。 `WEBSITE_RUN_FROM_PACKAGE` アプリ設定が値 `1` の場合、zip デプロイ API は、ファイルを `d:\home\data\SitePackages` 抽出する代わりに、パッケージを `d:\home\site\wwwroot` フォルダーにコピーします。 それは、`packagename.txt` ファイルも作成します。 再起動後、パッケージは読み取り専用のファイルシステムとして `wwwroot` にマウントされます。 zip デプロイの詳細については、[Azure Functions の zip デプロイ](deployment-zip-push.md)に関する記事を参照してください。
+[Zip デプロイ][Zip deployment for Azure Functions]は、関数アプリ プロジェクトを `wwwroot` ディレクトリに配置することを可能にする Azure App Service の機能です。 プロジェクトは、.zip デプロイ ファイルとしてパッケージ化されます。 同じ API を使用して、パッケージを `d:\home\data\SitePackages` フォルダーに配置できます。 `WEBSITE_RUN_FROM_PACKAGE` アプリ設定が値 `1` の場合、zip デプロイ API は、ファイルを `d:\home\site\wwwroot` 抽出する代わりに、パッケージを `d:\home\data\SitePackages` フォルダーにコピーします。 それは、`packagename.txt` ファイルも作成します。 再起動後、パッケージは読み取り専用のファイルシステムとして `wwwroot` にマウントされます。 zip デプロイの詳細については、[Azure Functions の zip デプロイ](deployment-zip-push.md)に関する記事を参照してください。
 
 ## <a name="adding-the-website_run_from_package-setting"></a>WEBSITE_RUN_FROM_PACKAGE 設定の追加
 

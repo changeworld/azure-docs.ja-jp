@@ -74,7 +74,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 - **ON DATABASE** 句も [ALTER EVENT SESSION](https://msdn.microsoft.com/library/bb630368.aspx) および [DROP EVENT SESSION Transact-SQL](https://msdn.microsoft.com/library/bb630257.aspx) コマンドに適用されます。
 
 
-- **CREATE EVENT SESSION** または **ALTER EVENT SESSION** ステートメントで **STARTUP_STATE = ON** のイベント セッション オプションを含ませるベスト プラクティス。
+- **CREATE EVENT SESSION** または **ALTER EVENT SESSION** ステートメントで **STARTUP_STATE = ON** のイベント セッション オプションを含ませるのがベスト プラクティスです。
     - **= ON** 値は、フェールオーバーに伴う論理データベース再構成の後の自動再起動をサポートします。
 
 ## <a name="new-catalog-views"></a>新しいカタログ ビュー
@@ -89,7 +89,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 | **sys.database_event_session_targets** |イベント セッションのイベント ターゲットごとに 1 行のデータを返します。 |
 | **sys.database_event_sessions** |SQL Database のデータベース内のイベント セッションごとに行を返します。 |
 
-Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、 *.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
+Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、*.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
 
 ## <a name="new-dynamic-management-views-dmvs"></a>新しい動的管理ビュー [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 

@@ -243,7 +243,7 @@ Premium キャッシュを作成する場合は、P1 (6 GB ～ 60 GB)、P2 (13 G
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-`RedisConfiguration` の値を指定する場合は、`{}` のように、キー/値のペアとして値を `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` で囲みます。 次の例では、`allkeys-random` に設定された maxmemory ポリシーと `KEA` に設定されたキースペース通知を使用して、Standard の 1 GB のキャッシュを作成しています。 詳細については、「[キースペース通知 (詳細設定)](cache-configure.md#keyspace-notifications-advanced-settings)」および「[メモリ ポリシー](cache-configure.md#memory-policies)」をご覧ください。
+`RedisConfiguration` の値を指定する場合は、`@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` のように、キー/値のペアとして値を `{}` で囲みます。 次の例では、`allkeys-random` に設定された maxmemory ポリシーと `KEA` に設定されたキースペース通知を使用して、Standard の 1 GB のキャッシュを作成しています。 詳細については、「[キースペース通知 (詳細設定)](cache-configure.md#keyspace-notifications-advanced-settings)」および「[メモリ ポリシー](cache-configure.md#memory-policies)」をご覧ください。
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
@@ -322,7 +322,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Azure Cache for Redis をスケーリングするには
-`Set-AzRedisCache`、`Size`、または `Sku` のプロパティが変更されたときに、`ShardCount` を使用して、Azure Cache for Redis インスタンスをスケーリングできます。 
+`Size`、`Sku`、または `ShardCount` のプロパティが変更されたときに、`Set-AzRedisCache` を使用して、Azure Cache for Redis インスタンスをスケーリングできます。 
 
 > [!NOTE]
 > PowerShell を使用してキャッシュをスケールする場合、Azure ポータルからキャッシュをスケールする場合と同じ制限とガイドラインが適用されます。 別の価格レベルにスケーリングできますが、次のような制約があります。
@@ -421,11 +421,11 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 
     Get-AzRedisCache
 
-特定のリソース グループのすべてのキャッシュに関する情報を取得するには、`Get-AzRedisCache` パラメーターを指定して `ResourceGroupName` を実行します。
+特定のリソース グループのすべてのキャッシュに関する情報を取得するには、`ResourceGroupName` パラメーターを指定して `Get-AzRedisCache` を実行します。
 
     Get-AzRedisCache -ResourceGroupName myGroup
 
-特定のキャッシュに関する情報を取得するには、キャッシュの名前を `Get-AzRedisCache` パラメーターに設定し、そのキャッシュが含まれているリソース グループを `Name` パラメーターに設定して、`ResourceGroupName` を実行します。
+特定のキャッシュに関する情報を取得するには、キャッシュの名前を `Name` パラメーターに設定し、そのキャッシュが含まれているリソース グループを `ResourceGroupName` パラメーターに設定して、`Get-AzRedisCache` を実行します。
 
     PS C:\> Get-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
@@ -529,7 +529,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-キャッシュのプライマリ キーまたはセカンダリ キーを再生成するには、`New-AzRedisCacheKey` コマンドレットを呼び出し、名前とリソース グループを渡して、`Primary` パラメーターに `Secondary` または `KeyType` を指定します。 次の例では、キャッシュのセカンダリ アクセス キーが再生成されます。
+キャッシュのプライマリ キーまたはセカンダリ キーを再生成するには、`New-AzRedisCacheKey` コマンドレットを呼び出し、名前とリソース グループを渡して、`KeyType` パラメーターに `Primary` または `Secondary` を指定します。 次の例では、キャッシュのセカンダリ アクセス キーが再生成されます。
 
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 

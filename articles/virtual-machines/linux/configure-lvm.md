@@ -149,7 +149,7 @@ LVM を使用して、複数の物理ディスクを 1 つの記憶域ボリュ�
 
 Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
-- 次のように、`discard` で `/etc/fstab` マウント オプションを使用します。
+- 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2

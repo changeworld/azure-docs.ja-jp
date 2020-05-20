@@ -106,7 +106,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 [SAS セキュリティ トークンを作成する](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)方法については、Azure ドキュメントを参照してください。
 
-現在の要求の URI と接続文字列から抽出された資格情報に基づいてトークンを作成するには、`generateSasToken` クラスに `NotificationHub` メソッドを追加します。
+現在の要求の URI と接続文字列から抽出された資格情報に基づいてトークンを作成するには、`NotificationHub` クラスに `generateSasToken` メソッドを追加します。
 
     ```php
     private function generateSasToken($uri) {

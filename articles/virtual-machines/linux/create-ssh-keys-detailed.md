@@ -176,7 +176,7 @@ SSH サインインのたびに秘密キー ファイルのパスフレーズを
 eval "$(ssh-agent -s)"
 ```
 
-ここで、`ssh-agent` コマンドを使用して、`ssh-add` に秘密キーを追加します。
+ここで、`ssh-add` コマンドを使用して、`ssh-agent` に秘密キーを追加します。
 
 ```bash
 ssh-add ~/.ssh/id_rsa

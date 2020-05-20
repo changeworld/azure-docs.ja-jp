@@ -21,7 +21,7 @@ ms.locfileid: "80288905"
 
 ## <a name="example-page"></a>ページの例
 
-次の画像は、文字列 **でフィルター処理した**[監査履歴]`contoso` ページを示しています。
+次の画像は、文字列 `contoso` でフィルター処理した **[監査履歴]** ページを示しています。
 
 ![[監査履歴] ページ](./media/audit-history-page1.png)
 

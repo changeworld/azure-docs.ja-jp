@@ -53,7 +53,7 @@ Oozie では、パイプラインは "*アクション*"、"*ワークフロー*
 
 1. Azure SQL Database を作成します。 [Azure portal での Azure SQL Database の作成](../sql-database/sql-database-single-database-get-started.md)に関するページを参照してください。
 
-1. HDInsight クラスターが接続された Azure SQL Database にアクセスできるようにするには、Azure のサービスとリソースがサーバーにアクセスできるように Azure SQL Database ファイアウォール規則を構成します。 このオプションを Azure portal で有効にするには、**サーバー ファイアウォールの設定]** [ を選択し、Azure SQL Database サーバーまたはデータベースについての ] **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する** の下にある **[ON]** を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
+1. HDInsight クラスターが接続された Azure SQL Database にアクセスできるようにするには、Azure のサービスとリソースがサーバーにアクセスできるように Azure SQL Database ファイアウォール規則を構成します。 このオプションを Azure portal で有効にするには、**[サーバー ファイアウォールの設定]** を選択し、Azure SQL Database サーバーまたはデータベースについての **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の下にある [**ON**] を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
 
 1. [クエリ エディター](../sql-database/sql-database-single-database-get-started.md#query-the-database)を使用して次の SQL ステートメントを実行し、パイプラインの各実行から集計されたデータを格納する `dailyflights` テーブルを作成します。
 
@@ -499,13 +499,13 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
 見るとわかるように、コーディネーターの処理の大部分は、ワークフロー インスタンスに構成情報を渡すだけです。 ただし、注意する必要のある重要な項目がいくつかあります。
 
-* ポイント 1: `start` 要素自体の `end` 属性と `coordinator-app` 属性は、コーディネーターを実行する期間を制御します。
+* ポイント 1: `coordinator-app` 要素自体の `start` 属性と `end` 属性は、コーディネーターを実行する期間を制御します。
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    コーディネーターは、`start` 属性で指定された間隔に従って、`end` と `frequency` の日付範囲内でアクションをスケジュールします。 スケジュールされた各アクションは、構成に従ってワークフローを実行します。 上記のように定義されたコーディネーターは、2017 年 1 月 1 日から 2017 年 1 月 5 日までアクションを実行するように構成されます。 頻度は、[Oozie 式言語](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)の頻度式 `${coord:days(1)}` によって 1 日に設定されています。 これにより、コーディネーターはアクション (したがってワークフロー) を 1 日に 1 回実行するようにスケジュールします。 この例のように、過去の日付範囲の場合は、アクションは遅延なしで実行するようにスケジュールされます。 アクションの実行がスケジュールされる日付の開始時刻は、"*標準時刻*" と呼ばれます。 たとえば、2017 年 1 月 1 日のデータを処理する場合、コーディネーターは標準時刻 2017-01-01T00:00:00 GMT でアクションをスケジュールします。
+    コーディネーターは、`frequency` 属性で指定された間隔に従って、`start` と `end` の日付範囲内でアクションをスケジュールします。 スケジュールされた各アクションは、構成に従ってワークフローを実行します。 上記のように定義されたコーディネーターは、2017 年 1 月 1 日から 2017 年 1 月 5 日までアクションを実行するように構成されます。 頻度は、[Oozie 式言語](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)の頻度式 `${coord:days(1)}` によって 1 日に設定されています。 これにより、コーディネーターはアクション (したがってワークフロー) を 1 日に 1 回実行するようにスケジュールします。 この例のように、過去の日付範囲の場合は、アクションは遅延なしで実行するようにスケジュールされます。 アクションの実行がスケジュールされる日付の開始時刻は、"*標準時刻*" と呼ばれます。 たとえば、2017 年 1 月 1 日のデータを処理する場合、コーディネーターは標準時刻 2017-01-01T00:00:00 GMT でアクションをスケジュールします。
 
 * ポイント 2: ワークフローの日付範囲内で、`dataset` 要素は特定の日付範囲のデータを HDFS で検索する場所を指定し、データを処理にまだ使用できるかどうかを Oozie が判断する方法を構成します。
 

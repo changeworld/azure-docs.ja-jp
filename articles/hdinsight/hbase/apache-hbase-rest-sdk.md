@@ -29,7 +29,7 @@ HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio �
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>新しい HBaseClient オブジェクトのインスタンス化
 
-SDK を使用するには、`HBaseClient` で構成される `ClusterCredentials` をクラスターに渡す新しい `Uri` オブジェクト、Hadoop ユーザー名、およびパスワードをインスタンス化します。
+SDK を使用するには、`Uri` で構成される `ClusterCredentials` をクラスターに渡す新しい `HBaseClient` オブジェクト、Hadoop ユーザー名、およびパスワードをインスタンス化します。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-ここでは、一意キーに対して 1 つの行しか存在しないため、コードは最初の一致行のみを返します。 戻り値は、`string` 配列から `byte[]` 形式に変更されます。 映画のリリース日を示す整数型など、他の型に値を変換することもできます。
+ここでは、一意キーに対して 1 つの行しか存在しないため、コードは最初の一致行のみを返します。 戻り値は、`byte[]` 配列から `string` 形式に変更されます。 映画のリリース日を示す整数型など、他の型に値を変換することもできます。
 
 ```csharp
 var releaseDateField = cells.rows[0].values

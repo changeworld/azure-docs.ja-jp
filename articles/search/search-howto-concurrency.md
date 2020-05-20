@@ -31,7 +31,7 @@ ms.locfileid: "72792211"
 + REST API では、要求ヘッダーで [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) を使用します。
 + .NET SDK では、accessCondition オブジェクトを通じて ETag を設定し、リソースの [If-Match | If-Match-None ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)を設定します。 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) を継承するすべてのオブジェクトは、accessCondition オブジェクトを持ちます。
 
-リソースを更新するたびに、その ETag が自動的に変化します。 コンカレンシー管理を実装するときに行うのは、リモート リソースの ETag が、クライアントで変更したリソースのコピーの ETag と同じであることを要求する前提条件を更新要求に課すことだけです。 同時実行プロセスがリモート リソースを既に変更している場合、ETag は前提条件に一致せず、要求は HTTP 412 で失敗します。 .NET SDK を使用している場合、これは (`CloudException` 拡張メソッドが true を返す) `IsAccessConditionFailed()` として明示されます。
+リソースを更新するたびに、その ETag が自動的に変化します。 コンカレンシー管理を実装するときに行うのは、リモート リソースの ETag が、クライアントで変更したリソースのコピーの ETag と同じであることを要求する前提条件を更新要求に課すことだけです。 同時実行プロセスがリモート リソースを既に変更している場合、ETag は前提条件に一致せず、要求は HTTP 412 で失敗します。 .NET SDK を使用している場合、これは (`IsAccessConditionFailed()` 拡張メソッドが true を返す) `CloudException` として明示されます。
 
 > [!Note]
 > コンカレンシーのメカニズムは 1 つしかありません。 どの API がリソース更新に使用されるかによらず、常にそのメカニズムが使用されます。

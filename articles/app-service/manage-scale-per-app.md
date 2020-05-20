@@ -32,7 +32,7 @@ App Service プラン レベルで*アプリごとのスケーリング*を有�
 
 ## <a name="per-app-scaling-using-powershell"></a>PowerShell を使用したアプリごとのスケーリング
 
-プランの作成時にアプリごとのスケーリングを有効にする場合には、```-PerSiteScaling $true``` コマンドレットに ```New-AzAppServicePlan``` パラメーターを渡します。
+プランの作成時にアプリごとのスケーリングを有効にする場合には、```New-AzAppServicePlan``` コマンドレットに ```-PerSiteScaling $true``` パラメーターを渡します。
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -41,7 +41,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-`-PerSiteScaling $true`コマンドレットに ```Set-AzAppServicePlan``` パラメーターを渡すことで、既存の App Service プランによるアプリごとのスケーリングを有効にします。
+```Set-AzAppServicePlan```コマンドレットに `-PerSiteScaling $true` パラメーターを渡すことで、既存の App Service プランによるアプリごとのスケーリングを有効にします。
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.

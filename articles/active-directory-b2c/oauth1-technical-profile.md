@@ -54,7 +54,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。
 
 - ID プロバイダーの名前を保持する **identityProvider** 要求。
-- 既定値の **である**authenticationSource`socialIdpAuthentication` 要求。
+- 既定値の `socialIdpAuthentication` である **authenticationSource** 要求。
 
 ```xml
 <OutputClaims>

@@ -65,7 +65,7 @@ ms.locfileid: "76759630"
   
 ## <a name="arguments"></a>引数  
   
--   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `user` が指定されていない場合、`<scope>` スコープが既定のスコープです。  
+-   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
   
 ### <a name="remarks"></a>解説  
 
@@ -92,9 +92,9 @@ ms.locfileid: "76759630"
   
  これは、文字で始まり、その後に 1 つ以上のアンダースコア/文字/数字が続くことを意味します。  
   
- `[:IsLetter:]` は、Unicode の文字として分類される任意の Unicode 文字を表します。 `System.Char.IsLetter(c)` が Unicode の文字の場合、`true` は `c` を返します。  
+ `[:IsLetter:]` は、Unicode の文字として分類される任意の Unicode 文字を表します。 `c` が Unicode の文字の場合、`System.Char.IsLetter(c)` は `true` を返します。  
   
- `[:IsDigit:]` は、10 進数として分類される任意の Unicode 文字を表します。 `System.Char.IsDigit(c)` が Unicode の数字の場合、`true` は `c` を返します。  
+ `[:IsDigit:]` は、10 進数として分類される任意の Unicode 文字を表します。 `c` が Unicode の数字の場合、`System.Char.IsDigit(c)` は `true` を返します。  
   
  `<regular_identifier>` に予約済みのキーワードを指定することはできません。  
   
@@ -138,7 +138,7 @@ ms.locfileid: "76759630"
   
  `<escape_char>` は、長さ 1 の文字列として評価される式である必要があります。 これは、LIKE 演算子のエスケープ文字として使用されます。  
   
- たとえば、`property LIKE 'ABC\%' ESCAPE '\'` は、`ABC%` で始まる文字列ではなく、`ABC` と一致します。  
+ たとえば、`property LIKE 'ABC\%' ESCAPE '\'` は、`ABC` で始まる文字列ではなく、`ABC%` と一致します。  
   
 ## <a name="constant"></a>定数 (constant)  
   
@@ -160,7 +160,7 @@ ms.locfileid: "76759630"
   
 -   `<decimal_constant>` は、引用符で囲まれておらず、小数点が含まれた数値の文字列です。 値は内部的に `System.Double` として格納され、同じ範囲/有効桁数に従います。  
   
-     今後のバージョンでは、この数値は正確な数値セマンティクスをサポートする別のデータ型で格納される可能性があります。そのため、`System.Double` の基になるデータ型が `<decimal_constant>` であることに依存しないでください。  
+     今後のバージョンでは、この数値は正確な数値セマンティクスをサポートする別のデータ型で格納される可能性があります。そのため、`<decimal_constant>` の基になるデータ型が `System.Double` であることに依存しないでください。  
   
      10 進定数の例を次に示します。  
   
@@ -207,7 +207,7 @@ ms.locfileid: "76759630"
   
 ### <a name="remarks"></a>解説  
 
-`newid()` 関数は、**メソッドによって生成された**System.Guid`System.Guid.NewGuid()` を返します。  
+`newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された **System.Guid** を返します。  
   
 `property(name)` 関数は、`name` によって参照されるプロパティの値を返します。 `name` 値には、文字列値を返す任意の有効な式を指定できます。  
   

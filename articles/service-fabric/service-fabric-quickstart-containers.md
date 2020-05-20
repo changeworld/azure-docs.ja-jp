@@ -132,7 +132,7 @@ Thumbprint                                Subject
 
 ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、 **[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-前に **コマンドを実行したときの PowerShell ウィンドウで**CN=`Import-PfxCertificate` に続く内容をコピーし、それにポート `19000` を追加します。 たとえば、「 `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 」のように入力します。 それを **[接続のエンドポイント]** フィールドにコピーします。 この値は、後の手順で必要になるため、覚えておいてください。
+前に `Import-PfxCertificate` コマンドを実行したときの PowerShell ウィンドウで **CN=** に続く内容をコピーし、それにポート `19000` を追加します。 たとえば、「 `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 」のように入力します。 それを **[接続のエンドポイント]** フィールドにコピーします。 この値は、後の手順で必要になるため、覚えておいてください。
 
 **[詳細な接続パラメーター]** をクリックし、接続パラメーターの情報を確認します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順で `Import-PfxCertificate` を実行したときにインストールされた証明書の拇印に一致する必要があります。
 

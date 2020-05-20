@@ -44,7 +44,7 @@ Python ノートブックのソース コードと Azure Data Factory のソー�
 
 ### <a name="python-notebook-source-code"></a>Python ノートブックのソース コード
 
-データ エンジニアは、IDE (たとえば、[Visual Studio Code](https://code.visualstudio.com)) 内のローカルで、または Databricks ワークスペースで、Python ノートブックのソース コードを編集します。 後者では、開発環境でコードをデバッグできます。 どのような場合でも、分岐ポリシーに従ってコードはリポジトリにマージされます。 `.py` Jupyter Notebook 形式ではなく `.ipynb` ファイルにコードを保存することを強くお勧めします。 こうすることで、コードが読みやすくなり、CI プロセスでの自動コード品質チェックが可能になります。
+データ エンジニアは、IDE (たとえば、[Visual Studio Code](https://code.visualstudio.com)) 内のローカルで、または Databricks ワークスペースで、Python ノートブックのソース コードを編集します。 後者では、開発環境でコードをデバッグできます。 どのような場合でも、分岐ポリシーに従ってコードはリポジトリにマージされます。 `.ipynb` Jupyter Notebook 形式ではなく `.py` ファイルにコードを保存することを強くお勧めします。 こうすることで、コードが読みやすくなり、CI プロセスでの自動コード品質チェックが可能になります。
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory ソース コード
 

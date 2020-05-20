@@ -43,7 +43,7 @@ ms.locfileid: "76270720"
 .NET を使用してデータ変換ジョブを開始する手順を次に示します。
 
 1. 構成パラメーターを取得するには、次の手順を実行します。
-    1. `Get-ConfigurationParams.ps1` の GitHub リポジトリ スクリプトから `C:\DataTransformation` をダウンロードします。
+    1. `C:\DataTransformation` の GitHub リポジトリ スクリプトから `Get-ConfigurationParams.ps1` をダウンロードします。
     1. GitHub リポジトリから `Get-ConfigurationParams.ps1` スクリプトを実行します。 次のコマンドを入力します。
 
         ```

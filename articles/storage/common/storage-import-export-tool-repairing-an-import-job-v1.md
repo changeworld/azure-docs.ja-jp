@@ -68,7 +68,7 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 </DriveLog>  
 ```
   
-このコピー ログが Azure Import/Export ツールに渡されると、ツールは、欠損コンテンツをネットワーク経由でコピーすることでこのファイルのインポートを完了させようとします。 上の例の後、ツールは `\animals\koala.jpg` と `C:\Users\bob\Pictures` の 2 つのディレクト内で元のファイル `X:\BobBackup\photos` を検索します。 ファイル `C:\Users\bob\Pictures\animals\koala.jpg` が存在する場合、Azure Import/Export ツールはデータの欠損範囲を対応する BLOB にコピーします`http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`。  
+このコピー ログが Azure Import/Export ツールに渡されると、ツールは、欠損コンテンツをネットワーク経由でコピーすることでこのファイルのインポートを完了させようとします。 上の例の後、ツールは `C:\Users\bob\Pictures` と `X:\BobBackup\photos` の 2 つのディレクト内で元のファイル `\animals\koala.jpg` を検索します。 ファイル `C:\Users\bob\Pictures\animals\koala.jpg` が存在する場合、Azure Import/Export ツールはデータの欠損範囲を対応する BLOB にコピーします`http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`。  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>RepairImport を使用する際の競合の解決  
 ツールが必要なファイルを検出できない、または開けない場合があります。これには、ファイルが検索できない、ファイルにアクセスできない、ファイル名があいまい、ファイルのコンテンツが正しくない、のいずれかが原因として考えられます。  

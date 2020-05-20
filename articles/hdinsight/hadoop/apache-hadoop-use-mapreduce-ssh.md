@@ -42,7 +42,7 @@ HDInsight の Apache Hadoop クラスター。 [Azure portal を使用した Apa
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    このコマンドは、`wordcount` ファイルに含まれている `hadoop-mapreduce-examples.jar` クラスを起動します。 入力として `/example/data/gutenberg/davinci.txt` ドキュメントを使用し、出力を `/example/data/WordCountOutput` に格納します。
+    このコマンドは、`hadoop-mapreduce-examples.jar` ファイルに含まれている `wordcount` クラスを起動します。 入力として `/example/data/gutenberg/davinci.txt` ドキュメントを使用し、出力を `/example/data/WordCountOutput` に格納します。
 
     > [!NOTE]
     > この MapReduce ジョブとサンプル データの詳細については、「[HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)」をご覧ください。

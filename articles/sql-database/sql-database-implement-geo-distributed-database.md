@@ -150,7 +150,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
    </dependency>
    ```
 
-1. `properties` セクションの後に `dependencies` セクションを追加して Java バージョンを指定します。
+1. `dependencies` セクションの後に `properties` セクションを追加して Java バージョンを指定します。
 
    ```xml
    <properties>
@@ -159,7 +159,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
    </properties>
    ```
 
-1. `build` セクションの後に `properties` セクションを追加してマニフェスト ファイルをサポートします。
+1. `properties` セクションの後に `build` セクションを追加してマニフェスト ファイルをサポートします。
 
    ```xml
    <build>

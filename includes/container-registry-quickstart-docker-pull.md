@@ -17,7 +17,7 @@ ms.locfileid: "67181730"
 ---
 ## <a name="run-image-from-registry"></a>レジストリからイメージを実行する
 
-ここで、`hello-world:v1`docker run[ を使用して、コンテナー レジストリから ][docker-run] コンテナー イメージをプルして実行できます。
+ここで、[docker run][docker-run] を使用して、コンテナー レジストリから `hello-world:v1` コンテナー イメージをプルして実行できます。
 
 ```
 docker run <acrLoginServer>/hello-world:v1  

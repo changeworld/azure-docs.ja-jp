@@ -43,7 +43,7 @@ ms.locfileid: "78248274"
 
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
-- Azure Portal から、または各コード ブロックの右上隅にある [[試してみる]](~/articles/cloud-shell/overview.md) ボタンを使用して、**Azure Cloud Shell** を使用します。
+- Azure Portal から、または各コード ブロックの右上隅にある **[試してみる]** ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
 - ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
@@ -88,7 +88,7 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
 
 Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていません。 ただし、マネージド ID を使用して Resource Manager から Cosmos DB のアクセス キーを取得し、そのキーを使用して Cosmos DB にアクセスできます。 この手順では、システム割り当てマネージド ID に Cosmos DB アカウントのキーへのアクセス権を付与します。
 
-Azure Resource Manager で Azure CLI を使用してシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 `<MI PRINCIPALID>` は、Linux VM の MI の principalID の取得で `principalId` コマンドによって返された `az resource show` プロパティに置き換えます。  Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。
+Azure Resource Manager で Azure CLI を使用してシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 `<MI PRINCIPALID>` は、Linux VM の MI の principalID の取得で `az resource show` コマンドによって返された `principalId` プロパティに置き換えます。  Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。
 
 ```azurecli-interactive
 az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
@@ -157,7 +157,7 @@ CURL 応答では、キーのリストが返されます。  たとえば、読�
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
 
-これで Cosmos DB アカウントのアクセス キーが取得できました。これを Cosmos DB SDK に渡して、アカウントにアクセスするための呼び出しを行うことができます。  簡単な例として、アクセス キーを Azure CLI に渡す場合があります。  Azure Portal の Cosmos DB アカウント ブレードの `<COSMOS DB CONNECTION URL>`[概要]**タブから** を取得できます。  `<ACCESS KEY>` を前述の手順で取得した値に置き換えます。
+これで Cosmos DB アカウントのアクセス キーが取得できました。これを Cosmos DB SDK に渡して、アカウントにアクセスするための呼び出しを行うことができます。  簡単な例として、アクセス キーを Azure CLI に渡す場合があります。  Azure Portal の Cosmos DB アカウント ブレードの **[概要]** タブから `<COSMOS DB CONNECTION URL>` を取得できます。  `<ACCESS KEY>` を前述の手順で取得した値に置き換えます。
 
 ```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

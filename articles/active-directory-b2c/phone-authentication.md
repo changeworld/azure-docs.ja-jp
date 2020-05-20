@@ -50,7 +50,7 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 1. 各ファイル内で、文字列 `yourtenant` を、使用している Azure AD B2C テナントの名前に置き換えます。 たとえば、B2C テナントの名前が *contosob2c* であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosob2c.onmicrosoft.com` になります。
 
-1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション (*IdentityExperienceFramework* と *ProxyIdentityExperienceFramework*) の**アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/` **`Phone_Email_Base.xml`** を更新します。
+1. 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の「[カスタム ポリシーにアプリケーション ID を追加します](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)」の手順を完了します。 この場合は、前提条件を完了したときに登録した 2 つのアプリケーション (*IdentityExperienceFramework* と *ProxyIdentityExperienceFramework*) の**アプリケーション (クライアント) ID** を使用して、`/phone-number-passwordless/`**`Phone_Email_Base.xml`** を更新します。
 
 ## <a name="upload-the-policy-files"></a>ポリシー ファイルをアップロードする
 

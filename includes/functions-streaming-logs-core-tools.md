@@ -21,7 +21,7 @@ func azure functionapp logstream <FunctionAppName>
 
 #### <a name="live-metrics-stream"></a>ライブ メトリック ストリーム
 
-また、次の例に示すように、[ オプションを含めることによって、関数アプリの ](../articles/azure-monitor/app/live-stream.md)Live Metrics Stream`--browser` を新しいブラウザー ウィンドウに表示することもできます。
+また、次の例に示すように、`--browser` オプションを含めることによって、関数アプリの [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) を新しいブラウザー ウィンドウに表示することもできます。
 
 ```bash
 func azure functionapp logstream <FunctionAppName> --browser

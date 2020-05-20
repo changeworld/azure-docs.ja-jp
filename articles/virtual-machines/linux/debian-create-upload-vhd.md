@@ -25,7 +25,7 @@ ms.locfileid: "80066712"
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、「[Linux のインストールに関する一般的な注記](create-upload-generic.md#general-linux-installation-notes)」に関する記事を参照してください。
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage を使用した Debian VHD の作成
-[credativ](https://github.com/credativ/azure-manage) の [azure-manage](https://www.credativ.com/) スクリプトなど、Azure 用に Debian VHD を生成するために使用できるツールがあります。 これは、最初からイメージを作成するよりもお勧めの方法です。 たとえば、Debian 8 VHD を作成するには、次のコマンドを実行して `azure-manage` ユーティリティ (および依存関係ファイル) をダウンロードし、`azure_build_image` スクリプトを実行します。
+[credativ](https://www.credativ.com/) の [azure-manage](https://github.com/credativ/azure-manage) スクリプトなど、Azure 用に Debian VHD を生成するために使用できるツールがあります。 これは、最初からイメージを作成するよりもお勧めの方法です。 たとえば、Debian 8 VHD を作成するには、次のコマンドを実行して `azure-manage` ユーティリティ (および依存関係ファイル) をダウンロードし、`azure_build_image` スクリプトを実行します。
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -42,7 +42,7 @@ ms.locfileid: "80066712"
 ## <a name="manually-prepare-a-debian-vhd"></a>手動での Debian VHD の準備
 1. Hyper-V マネージャーで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
-3. ISO を使用して OS をインストールした場合は、`deb cdrom` 内の "`/etc/apt/source.list`" に関連するすべての行をコメント化します。
+3. ISO を使用して OS をインストールした場合は、`/etc/apt/source.list` 内の "`deb cdrom`" に関連するすべての行をコメント化します。
 
 4. `/etc/default/grub` ファイルを編集し、**GRUB_CMDLINE_LINUX** パラメーターを次のように変更して、Azure の追加のカーネル パラメーターを含めます。
    

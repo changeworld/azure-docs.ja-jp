@@ -25,7 +25,7 @@ ms.locfileid: "79233803"
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>ロールを開始する前に環境変数を定義する
-特定のタスク向けの環境変数を定義する必要がある場合は、[Environment] 要素内の [Environment] 要素を使用します。
+特定のタスク向けの環境変数を定義する必要がある場合は、[Task] 要素内の [Environment] 要素を使用します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -60,7 +60,7 @@ ms.locfileid: "79233803"
 * *AppCmd.exe* アクションは、複数回実行されるとエラーが発生することがあります。 たとえば、*Web.config* にセクションを 2 回追加しようとするとエラーが発生する可能性があります。
 * ゼロ以外の終了コードや **errorlevel**が返されると、スタートアップ タスクが失敗します。 たとえば、*AppCmd.exe* でエラーが発生した場合です。
 
-**AppCmd.exe** を呼び出した後、*errorlevel* を確認することをお勧めします。これは、*AppCmd.exe* への呼び出しを *.cmd* ファイルでラップすると簡単に実行できます。 既知の **errorlevel** 応答が検出された場合は無視するか、その応答を返すことができます。
+*AppCmd.exe* を呼び出した後、**errorlevel** を確認することをお勧めします。これは、*AppCmd.exe* への呼び出しを *.cmd* ファイルでラップすると簡単に実行できます。 既知の **errorlevel** 応答が検出された場合は無視するか、その応答を返すことができます。
 
 *AppCmd.exe* によって返される errorlevel は winerror.h ファイルに一覧表示されています。[MSDN](/windows/desktop/Debug/system-error-codes--0-499-) で確認することもできます。
 
@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>ファイアウォール規則を追加する
-Azure では、実質的に 2 つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [ServiceDefinition.csdef] ファイルの [ServiceDefinition.csdef] 要素によって制御されます。
+Azure では、実質的に 2 つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [ServiceDefinition.csdef] ファイルの [EndPoints] 要素によって制御されます。
 
 2 つ目のファイアウォールは、仮想マシンとその仮想マシン内の処理との間の接続を制御します。 このファイアウォールは、`netsh advfirewall firewall` コマンド ライン ツールを使用して制御できます。
 
 Azure はお使いのロール内で開始されるプロセス用のファイアウォール規則を作成します。 たとえば、サービスやプログラムを開始すると、Azure はそのサービスがインターネットと通信するのに必要なファイアウォール規則を自動的に作成します。 ただし、お使いのロール外のプロセスによって開始されるサービス (COM + サービスや Windows によってスケジュール設定されるタスクなど) を作成する場合は、そのサービスへのアクセスを許可するファイアウォール規則を手動で作成する必要があります。 これらのファイアウォール規則はスタートアップ タスクを使用して作成できます。
 
-ファイアウォール規則を作成するスタートアップ タスクには、[elevated] の [executionContext]**Task** が必要です。 次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
+ファイアウォール規則を作成するスタートアップ タスクには、**elevated** の [executionContext][Task] が必要です。 次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -244,7 +244,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>スタートアップ タスクからのファイルをローカル ストレージに作成する
 スタートアップ タスクによって作成されたファイルをローカル ストレージ リソースに格納し、後でお使いのアプリケーションからアクセスできます。
 
-ローカル ストレージ リソースを作成するには、[LocalResources] ファイルに [ServiceDefinition.csdef] セクションを追加した後で [LocalStorage] 子要素を追加します。 ローカル ストレージ リソースに一意の名前を付与し、お使いのスタートアップ タスク用に適切なサイズを設定します。
+ローカル ストレージ リソースを作成するには、[ServiceDefinition.csdef] ファイルに [LocalResources] セクションを追加した後で [LocalStorage] 子要素を追加します。 ローカル ストレージ リソースに一意の名前を付与し、お使いのスタートアップ タスク用に適切なサイズを設定します。
 
 スタートアップ タスクにローカル ストレージ リソースを使用するには、ローカル ストレージ リソースの場所を参照する環境変数を作成する必要があります。 これにより、スタートアップ タスクとアプリケーションがローカル ストレージ リソースのファイルを読み書きできます。
 

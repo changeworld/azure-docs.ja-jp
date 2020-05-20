@@ -46,7 +46,7 @@ ms.locfileid: "79218757"
 
 ### <a name="version-settings-api-use-of-usealltrainingdata"></a>バージョン設定 API の UseAllTrainingData の使用
 
-[ を true に設定してこの機能を無効にし、](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)バージョン設定 API`UseAllTrainingData` を使用します。 
+`UseAllTrainingData` を true に設定してこの機能を無効にし、[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用します。 
 
 ## <a name="unnecessary-training"></a>不要なトレーニング
 

@@ -31,7 +31,7 @@ ms.locfileid: "65872355"
 4. [Azure Files にファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md)アーティクル内の手順に従い、Azure storage 内にファイル共有を作成します。 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>ローカル コンピューターにファイル共有をマウントする
-1. ローカル コンピューター上で、[Windows で Azure ファイル共有を使用する](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows)アーティクルの[Windows で Azure ファイル共有の資格情報を保持する](../storage/files/storage-how-to-use-files-windows.md)セクションのスクリプトを使用します。 
+1. ローカル コンピューター上で、[Windows で Azure ファイル共有を使用する](../storage/files/storage-how-to-use-files-windows.md)アーティクルの[Windows で Azure ファイル共有の資格情報を保持する](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows)セクションのスクリプトを使用します。 
 2. 次に、`net use`コマンドを使用して、コンピューターにファイル共有をマウントします。 サンプル コマンドを次に示します: コマンドを実行する前に、Azure Storage の名前とファイル共有名を指定します。 
 
     `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`

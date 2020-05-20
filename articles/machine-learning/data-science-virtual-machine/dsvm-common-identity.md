@@ -70,7 +70,7 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
 1. たとえば、/data/workspace に Azure Files 共有をマウントしたものとします。 次に、共有内に各ユーザーのディレクトリを作成します (/data/workspace/user1、/data/workspace/user2 など)。 各ユーザーのワークスペースに、`notebooks` ディレクトリを作成します。 
-1. `notebooks` に `$HOME/userx/notebooks/remote` のシンボリック リンクを作成します。   
+1. `$HOME/userx/notebooks/remote` に `notebooks` のシンボリック リンクを作成します。   
 
 これで、Azure でホストされている Active Directory インスタンスでユーザーが設定されるようになります。 ユーザーは、Active Directory の資格情報を使って、Azure AD DS に参加している任意の DSVM (SSH または JupyterHub) にサインインできます。 ユーザー ワークスペースが Azure ファイル共有上にあるため、ユーザーは、JupyterHub の使用時に、任意の DSVM から自分のノートブックやその他の作業にアクセスできます。
 

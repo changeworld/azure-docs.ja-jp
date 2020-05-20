@@ -34,7 +34,7 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
 1. [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) をインストールします。 インストール時に、使用する Visual Studio のバージョンを選択します。
 
-2. Visual Studio 2015 以降では、 __[Analyze] \(分析)__  >  __[Portability Analyzer Settings] \(移植性アナライザー設定)__ を選択し、 __[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
+2. Visual Studio 2015 以降では、__[Analyze] \(分析)__ > __[Portability Analyzer Settings] \(移植性アナライザー設定)__ を選択し、__[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
 
     ![Analyzer 設定の [Mono] セクションで [4.5] がチェックされた状態](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 

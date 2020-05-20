@@ -61,7 +61,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="多角形を描画する" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Draw a polygon</a>」Pen を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>Draw a polygon</a>」Pen を参照してください。
 </iframe>
 
 
@@ -88,7 +88,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="フリーハンドの描画" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Free-hand drawing</a>」Pen を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a>」Pen を参照してください。
 </iframe>
 
 
@@ -98,7 +98,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 
 <br/>
 
-<iframe height="685" title="描画マネージャーをカスタマイズする" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Get shape data</a>」Pen を参照してください。
+<iframe height="685" title="描画マネージャーをカスタマイズする" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Get shape data</a>」Pen を参照してください。
 </iframe>
 
 

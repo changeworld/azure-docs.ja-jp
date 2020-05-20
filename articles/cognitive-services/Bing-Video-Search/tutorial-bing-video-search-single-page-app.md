@@ -51,7 +51,7 @@ Bing Video Search API を使うと、Web を検索して、検索クエリに関
 > * CSS - ページの外観を定義します
 > * JavaScript - ページの動作を定義します
 
-ほとんどの HTML と CSS は決まりきったものなので、このチュートリアルでは説明しません。 HTML には検索フォームが含まれ、ユーザーはこれにクエリを入力して検索オプションを選択します。 フォームは、`onsubmit` タグの `<form>` 属性を使って検索を行う JavaScript に接続されています。
+ほとんどの HTML と CSS は決まりきったものなので、このチュートリアルでは説明しません。 HTML には検索フォームが含まれ、ユーザーはこれにクエリを入力して検索オプションを選択します。 フォームは、`<form>` タグの `onsubmit` 属性を使って検索を行う JavaScript に接続されています。
 
 ```html
 <form name="bing" onsubmit="return bingWebSearch(this)">
@@ -64,7 +64,7 @@ HTML には、検索結果が表示される区分 (HTML `<div>` タグ) も含�
 
 コードに Bing Search API サブスクリプション キーを含めなくてもよいように、ブラウザーの永続的ストレージを使用してキーを格納します。 キーを格納する前に、ユーザーにキーの入力を求めます。 後でキーが API によって拒否された場合は、格納されたキーを無効にし、ユーザーに再度操作を求めます。
 
-`storeValue` オブジェクト (サポートしていないブラウザーもあります) または Cookie のいずれかを使用する `retrieveValue` 関数と `localStorage` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。
+`localStorage` オブジェクト (サポートしていないブラウザーもあります) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。
 
 ``` javascript
 // Cookie names for data we store

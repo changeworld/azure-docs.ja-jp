@@ -86,7 +86,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
         return basicAuthHeader;
     }
     ```
-3. `import` ファイルの先頭に、次の `MainActivity` ステートメントを追加します。
+3. `MainActivity` ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```java
     import android.content.SharedPreferences;

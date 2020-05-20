@@ -60,7 +60,7 @@ ASP.NET Core アプリケーションの構成は、*appsettings.json* ファイ
 
 MSAL.NET v3.x 以降では、構成ファイルから機密クライアント アプリケーションを構成できます。
 
-アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言する必要があります。  `IConfigurationRoot.Bind()`Microsoft.Extensions.Configuration.Binder NuGet パッケージ[の ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) メソッドを使って、ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
+アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言する必要があります。  [Microsoft.Extensions.Configuration.Binder NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)の `IConfigurationRoot.Bind()` メソッドを使って、ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
 
 ```csharp
 using Microsoft.Identity.Client;

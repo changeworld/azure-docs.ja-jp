@@ -118,7 +118,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. Azure Machine Learning service でさまざまなアクションを実行するために必要なアクセス許可はどのようなものですか。
 
-次の表は、Azure Machine Learning アクティビティの概要と、それらを最小のスコープで実行するために必要なアクセス許可をまとめたものです。 たとえば、ワークスペース スコープ (列 4) を使用してアクティビティを実行できる場合は、そのアクセス許可を持つそれより高いすべてのスコープも自動的に機能します。 この表内のすべてのパスは、 **に対する**相対パス`Microsoft.MachineLearningServices/`です。
+次の表は、Azure Machine Learning アクティビティの概要と、それらを最小のスコープで実行するために必要なアクセス許可をまとめたものです。 たとえば、ワークスペース スコープ (列 4) を使用してアクティビティを実行できる場合は、そのアクセス許可を持つそれより高いすべてのスコープも自動的に機能します。 この表内のすべてのパスは、`Microsoft.MachineLearningServices/` に対する**相対パス**です。
 
 | アクティビティ | サブスクリプション レベルのスコープ | リソース グループレベルのスコープ | ワークスペースレベルのスコープ |
 |---|---|---|---|

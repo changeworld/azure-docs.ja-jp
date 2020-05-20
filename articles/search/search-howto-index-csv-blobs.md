@@ -30,7 +30,7 @@ ms.locfileid: "76122323"
 > 1 つの Azure BLOB から複数の検索ドキュメントを出力するには、[一対多のインデックス作成](search-howto-index-one-to-many-blobs.md)に関するページにあるインデクサー構成の推奨事項に従ってください。
 
 ## <a name="setting-up-csv-indexing"></a>CSV インデックス作成の設定
-CSV BLOB のインデックスを作成するには、`delimitedText`インデクサーの作成[要求で ](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 解析モードを使用してインデクサーの定義を作成または更新します。
+CSV BLOB のインデックスを作成するには、[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)要求で `delimitedText` 解析モードを使用してインデクサーの定義を作成または更新します。
 
     {
       "name" : "my-csv-indexer",

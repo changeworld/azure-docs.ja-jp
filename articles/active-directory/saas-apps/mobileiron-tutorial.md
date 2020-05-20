@@ -110,7 +110,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     b. **[応答 URL]** ボックスに、`https://<host>.mobileiron.com/saml/SSO/alias/<key>` のパターンを使用して URL を入力します
 
-    c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+    c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[MobileIron のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -127,7 +127,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
 1. 別の Web ブラウザー ウィンドウで、MobileIron 企業サイトに管理者としてログインします。
 
-2. **[Admin]\(管理\)**  >  **[Identity]\(ID\)** に移動し、 **[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドの **[AAD]** オプションを選択します。
+2. **[Admin]\(管理\)** > **[Identity]\(ID\)** に移動し、**[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドの **[AAD]** オプションを選択します。
 
     ![[シングル サインオン管理者の構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -180,7 +180,7 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 

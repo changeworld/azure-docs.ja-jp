@@ -22,7 +22,7 @@ ms.locfileid: "70998361"
 
 [DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) のすべてのオーバーロードで、省略可能な [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) パラメーターが使用されます。 このオプションは、クエリの実行で何をチューニングでき、何をパラメーター化できるかを指示します。 
 
-SQL クエリの実行メトリックを収集するには、[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) の [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) パラメーターを `true` に設定する必要があります。 `PopulateQueryMetrics` を true に設定すると、関連する `FeedResponse` が `QueryMetrics` に格納されます。 
+SQL クエリの実行メトリックを収集するには、[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) の [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) パラメーターを `true` に設定する必要があります。 `PopulateQueryMetrics` を true に設定すると、関連する `QueryMetrics` が `FeedResponse` に格納されます。 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>AsDocumentQuery() を使用してクエリのメトリックを取得する
 次のコード例では、[AsDocumentQuery()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) メソッドを使用したメトリックの取得方法を示します。
@@ -62,7 +62,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>QueryMetrics の集計
 
-前のセクションでは、[ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) メソッドへの呼び出しが複数回あったことに注目してください。 各呼び出しで `FeedResponse` のディクショナリを持つ `QueryMetrics` オブジェクトが返されました (クエリの継続ごとに 1 つ)。 次の例では、これらの `QueryMetrics` を LINQ を使用して集計する方法を示します。
+前のセクションでは、[ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) メソッドへの呼び出しが複数回あったことに注目してください。 各呼び出しで `QueryMetrics` のディクショナリを持つ `FeedResponse` オブジェクトが返されました (クエリの継続ごとに 1 つ)。 次の例では、これらの `QueryMetrics` を LINQ を使用して集計する方法を示します。
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -115,7 +115,7 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 
 ## <a name="linq-on-documentquery"></a>DocumentQuery の LINQ
 
-`FeedResponse` メソッドを使用して、LINQ クエリから `AsDocumentQuery()` を取得することもできます。
+`AsDocumentQuery()` メソッドを使用して、LINQ クエリから `FeedResponse` を取得することもできます。
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -129,7 +129,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>コストの高いクエリ
 
-各クエリで使用された要求単位をキャプチャして、コストの高いクエリや高スループットを消費するクエリを調査することができます。 [ で ](https://msdn.microsoft.com/library/azure/dn948712.aspx)RequestCharge`FeedResponse` プロパティを使用することで、要求の使用量を取得できます。 Azure portal と各種の SDK を使用して要求の使用量を取得する方法の詳細については、[要求ユニット使用量の検出](find-request-unit-charge.md)に関する記事を参照してください。
+各クエリで使用された要求単位をキャプチャして、コストの高いクエリや高スループットを消費するクエリを調査することができます。 `FeedResponse` で [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) プロパティを使用することで、要求の使用量を取得できます。 Azure portal と各種の SDK を使用して要求の使用量を取得する方法の詳細については、[要求ユニット使用量の検出](find-request-unit-charge.md)に関する記事を参照してください。
 
 ```csharp
 string query = "SELECT * FROM c";

@@ -51,7 +51,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Response
 
-次の応答は、以前の例からのものです。  この応答で、`ConnectionStatus` は **Unreachable** (到達不能) です。 送信されたすべてのプローブが失敗したことがわかります。 接続は、ポート 80 の受信トラフィックをブロックするように構成された、`NetworkSecurityRule`UserRule_Port80**というユーザーが構成した** のために、仮想アプライアンスで失敗しています。 この情報は、接続の問題を調査するために使用できます。
+次の応答は、以前の例からのものです。  この応答で、`ConnectionStatus` は **Unreachable** (到達不能) です。 送信されたすべてのプローブが失敗したことがわかります。 接続は、ポート 80 の受信トラフィックをブロックするように構成された、**UserRule_Port80** というユーザーが構成した `NetworkSecurityRule` のために、仮想アプライアンスで失敗しています。 この情報は、接続の問題を調査するために使用できます。
 
 ```json
 {
@@ -132,7 +132,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Response
 
-次の例では、`connectionStatus` は **Unreachable** (到達不能) として示されます。 `hops` の詳細では、トラフィックが `issues` のためにブロックされた、`UserDefinedRoute` で確認できます。
+次の例では、`connectionStatus` は **Unreachable** (到達不能) として示されます。 `hops` の詳細では、トラフィックが `UserDefinedRoute` のためにブロックされた、`issues` で確認できます。
 
 ```json
 {

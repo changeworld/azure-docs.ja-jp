@@ -123,9 +123,9 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 Web API で両方の URI がサポートされるようになったので、今度は b2clogin.com エンドポイントからトークンを取得するように、Web アプリケーションを更新する必要があります。
 
-たとえば、`ida:AadInstance`TaskWebApp *プロジェクトの \\TaskWebApp***Web.config**.**ファイルで** の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
+たとえば、**TaskWebApp** プロジェクトの *TaskWebApp\\**Web.config**.* ファイルで `ida:AadInstance` の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
 
-TaskWebApp の `ida:AadInstance`Web.config*の* の値を、`{your-b2c-tenant-name}.b2clogin.com` ではなく `login.microsoftonline.com` を参照するように変更します。
+TaskWebApp の *Web.config* の `ida:AadInstance` の値を、`login.microsoftonline.com` ではなく `{your-b2c-tenant-name}.b2clogin.com` を参照するように変更します。
 
 次の処理の前
 

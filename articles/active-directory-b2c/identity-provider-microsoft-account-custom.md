@@ -148,7 +148,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Microsoft アカウント ID プロバイダーも含まれるようにそれを変更します。
 
 1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-1. **を含む**UserJourney`Id="SignUpOrSignIn"` 要素を見つけ、その内容全体をコピーします。
+1. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
 1. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
 1. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
 1. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInMSA` 」のように入力します。
@@ -157,7 +157,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 **ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 Microsoft アカウント用の **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
 
-1. *TrustFrameworkExtensions.xml* ファイルで、作成したユーザー体験内に **を含む**OrchestrationStep`Order="1"` 要素を見つけます。
+1. *TrustFrameworkExtensions.xml* ファイルで、作成したユーザー体験内に `Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 1. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`MicrosoftAccountExchange` など) に設定します。
 
     ```XML
@@ -168,14 +168,14 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Microsoft アカウントと通信してトークンを受信します。
 
-1. ユーザー体験内で、**を含む**OrchestrationStep`Order="2"` を見つけます。
+1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
 1. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
 
     ```xml
     <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
     ```
 
-    **TechnicalProfileReferenceId** の値を、先ほど追加したクレーム プロバイダーの `Id`TechnicalProfile**要素内の** 値と一致するように更新します。 たとえば、「 `MSA-OIDC` 」のように入力します。
+    **TechnicalProfileReferenceId** の値を、先ほど追加したクレーム プロバイダーの **TechnicalProfile** 要素内の `Id` 値と一致するように更新します。 たとえば、「 `MSA-OIDC` 」のように入力します。
 
 1. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 

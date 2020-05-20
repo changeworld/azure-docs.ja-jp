@@ -57,7 +57,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- 次の例は、`ToString` などの他の文字列関数と共に `CONCAT` を使用する方法を示しています。   
+ 次の例は、`CONCAT` などの他の文字列関数と共に `ToString` を使用する方法を示しています。   
  
 ```sql
 SELECT 
@@ -78,7 +78,7 @@ FROM p in c.Products
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-次の例は、`ToString` などの他の文字列関数と共に `REPLACE` を使用する方法を示しています。   
+次の例は、`REPLACE` などの他の文字列関数と共に `ToString` を使用する方法を示しています。   
 ```sql
 SELECT 
     n.id AS nutrientID,

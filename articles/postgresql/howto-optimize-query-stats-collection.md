@@ -35,7 +35,7 @@ ms.locfileid: "74770171"
 Azure Database for PostgreSQL の[クエリ ストア](concepts-query-store.md)機能では、クエリ統計を追跡するより効果的な方法が提供されます。 *pg_stats_statements* を使用する代わりに、この機能を使用することをお勧めします。 
 
 ## <a name="next-steps"></a>次のステップ
-`pg_stat_statements.track = NONE`Azure Portal[ または ](howto-configure-server-parameters-using-portal.md)Azure CLI[ を使用して、](howto-configure-server-parameters-using-cli.md) を設定することを検討します。
+[Azure Portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用して、`pg_stat_statements.track = NONE` を設定することを検討します。
 
 詳細については、次を参照してください。 
 - [クエリ ストアの使用シナリオ](concepts-query-store-scenarios.md) 

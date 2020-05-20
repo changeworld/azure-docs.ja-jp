@@ -94,7 +94,7 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>Compose によるコンテナーの起動
-*docker-compose.yml* ファイルと同じディレクトリで、次のコマンドを実行します (環境によっては、`docker-compose` を実行するのに `sudo` が必要な場合があります)。
+*docker-compose.yml* ファイルと同じディレクトリで、次のコマンドを実行します (環境によっては、`sudo` を実行するのに `docker-compose` が必要な場合があります)。
 
 ```bash
 sudo docker-compose up -d

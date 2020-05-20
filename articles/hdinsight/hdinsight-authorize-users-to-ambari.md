@@ -28,7 +28,7 @@ Active Directory ユーザーは、自分のドメイン資格情報を使用し
 
 ## <a name="access-the-ambari-management-page"></a>Ambari 管理ページにアクセスする
 
-**Apache Ambari Web UI** の [Ambari 管理ページ](hdinsight-hadoop-manage-ambari.md)にアクセスするには、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 クラスターの作成時に定義したクラスタ アドミニストレーターのユーザー名とパスワードを入力します。 次に、Ambari のダッシュボードで **[admin]\(管理\)** メニューの **[Manage Ambari]\(Ambari の管理\)** を選択します。
+[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) の **Ambari 管理ページ**にアクセスするには、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 クラスターの作成時に定義したクラスタ アドミニストレーターのユーザー名とパスワードを入力します。 次に、Ambari のダッシュボードで **[admin]\(管理\)** メニューの **[Manage Ambari]\(Ambari の管理\)** を選択します。
 
 ![Apache Ambari のダッシュボードの管理](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -206,7 +206,7 @@ Ambari には、[Apache Hive](https://hive.apache.org/) や [Apache TEZ](https:/
 
 ## <a name="grant-permissions-to-apache-tez-views"></a>Apache TEZ ビューへのアクセス許可を付与する
 
-[Apache Hive](https://tez.apache.org/) クエリや [Apache Pig](https://hive.apache.org/) スクリプトによって送信されたすべての Tez ジョブは、[Apache TEZ](https://pig.apache.org/) ビューのインスタンスを使用して監視したりデバッグしたりすることができます。 クラスターのプロビジョニング時に、既定の Tez ビュー インスタンスが 1 つ作成されます。
+[Apache Hive](https://hive.apache.org/) クエリや [Apache Pig](https://pig.apache.org/) スクリプトによって送信されたすべての Tez ジョブは、[Apache TEZ](https://tez.apache.org/) ビューのインスタンスを使用して監視したりデバッグしたりすることができます。 クラスターのプロビジョニング時に、既定の Tez ビュー インスタンスが 1 つ作成されます。
 
 Tez ビュー インスタンスにユーザーとグループを割り当てるには、前述したように、[Views]\(ビュー\) ページの **TEZ** 行を展開します。
 
@@ -224,7 +224,7 @@ Tez ビュー インスタンスにユーザーとグループを割り当てる
 * サービス オペレーター
 * クラスター ユーザー
 
-ロールを管理するには、**Ambari 管理ページ**に移動し、左側の **[Clusters]\(クラスター\)** メニュー グループにある *[Roles]\(ロール\)* リンクを選択します。
+ロールを管理するには、**Ambari 管理ページ**に移動し、左側の *[Clusters]\(クラスター\)* メニュー グループにある **[Roles]\(ロール\)** リンクを選択します。
 
 ![Apache Ambari のロールのメニュー リンク](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 

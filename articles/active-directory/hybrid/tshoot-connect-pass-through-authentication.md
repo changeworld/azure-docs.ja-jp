@@ -58,7 +58,7 @@ ms.locfileid: "60456181"
 
 ![Azure Active Directory 管理センター - サインイン レポート](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]**  ->  **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
+[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
 |サインイン エラー コード|サインインが失敗した理由|解像度
 | --- | --- | ---

@@ -101,7 +101,7 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
         await relayConnection.CloseAsync(CancellationToken.None);
     }
     ```
-4. `Main` クラスの `Program` メソッドに次のコード行を追加します。
+4. `Program` クラスの `Main` メソッドに次のコード行を追加します。
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();

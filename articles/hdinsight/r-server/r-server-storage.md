@@ -100,7 +100,7 @@ inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 
 ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasbs://container2@storage2.blob.core.windows.net` を指しています。 これは、先ほど指定した**名前ノード**です。
 
-次のように、`/user/RevoShare/<SSH username>`storage2**で** ディレクトリを構成します。
+次のように、**storage2** で `/user/RevoShare/<SSH username>` ディレクトリを構成します。
 
 ```bash
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
@@ -118,7 +118,7 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 
 HDInsight クラスターに関連付けられている Azure Active Directory (Azure AD) サービス プリンシパルを使用して、Data Lake Storage にアクセスします。
 
-1. HDInsight クラスターを作成するときに、 **[データ ソース]** タブの **[クラスター AAD ID]** を選択します。
+1. HDInsight クラスターを作成するときに、**[データ ソース]** タブの **[クラスター AAD ID]** を選択します。
 
 2. **[クラスター AAD ID]** ダイアログ ボックスの **[AD サービス プリンシパルの選択]** で、 **[新規作成]** を選択します。
 

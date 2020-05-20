@@ -61,7 +61,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-必要な情報は、次の例に示す応答の "type" ( **) の下の** id`Microsoft.Compute/virtualMachines` です。
+必要な情報は、次の例に示す応答の "type" (`Microsoft.Compute/virtualMachines`) の下の **id** です。
 
 ```json
 ...,

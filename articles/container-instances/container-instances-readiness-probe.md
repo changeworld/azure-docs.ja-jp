@@ -65,7 +65,7 @@ type: Microsoft.ContainerInstance/containerGroups
 
 デプロイには、コンテナーの初回の実行開始時に実行される開始コマンドを定義する `command` プロパティが含まれています。 このプロパティは、文字列の配列を受け入れます。 このコマンドは、Web アプリが実行されているがコンテナーの準備ができていない時間をシミュレートします。 
 
-まず、シェル セッションを開始し、`node` コマンドを実行して Web アプリを起動します。 また、240 秒間スリープするコマンドを開始します。その後、`ready` ディレクトリ内に `/tmp` という名前のファイルを作成します。
+まず、シェル セッションを開始し、`node` コマンドを実行して Web アプリを起動します。 また、240 秒間スリープするコマンドを開始します。その後、`/tmp` ディレクトリ内に `ready` という名前のファイルを作成します。
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -73,7 +73,7 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>readiness コマンド
 
-この YAML ファイルは、readiness チェックとして機能する `readinessProbe` readiness コマンドをサポートする `exec` を定義します。 この例の readiness コマンドでは、`ready` ディレクトリに `/tmp` ファイルがあるかどうかをテストします。
+この YAML ファイルは、readiness チェックとして機能する `exec` readiness コマンドをサポートする `readinessProbe` を定義します。 この例の readiness コマンドでは、`/tmp` ディレクトリに `ready` ファイルがあるかどうかをテストします。
 
 `ready` ファイルが存在しない場合、readiness コマンドは 0 以外の値で終了します。コンテナーは実行を続行しますが、アクセスすることはできません。 コマンドが終了コード 0 で正常に終了すると、コンテナーにアクセスできるようになります。 
 

@@ -40,7 +40,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で管理�
 - PowerShell をローカルで実行している場合は、次の操作を行う必要もあります。 
     - `Connect-AzAccount` を実行して、Azure との接続を作成します。
     - [PowerShellGet の最新バージョン](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)をインストールします。
-    - `Install-Module -Name PowerShellGet -AllowPrerelease` を実行して `PowerShellGet` モジュールのプレリリース バージョンを取得します (`Exit` モジュールをインストールするには、このコマンドを実行した後に現在の PowerShell セッションから `Az.ManagedServiceIdentity` することが必要になる場合があります)。
+    - `Install-Module -Name PowerShellGet -AllowPrerelease` を実行して `PowerShellGet` モジュールのプレリリース バージョンを取得します (`Az.ManagedServiceIdentity` モジュールをインストールするには、このコマンドを実行した後に現在の PowerShell セッションから `Exit` することが必要になる場合があります)。
     - `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` を実行して `Az.ManagedServiceIdentity` モジュールのプレリリース バージョンをインストールして、この記事のユーザー割り当てマネージド ID 操作を実行します。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
@@ -63,7 +63,7 @@ New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGN
 ```azurepowershell-interactive
 Get-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 ```
-応答内のユーザー割り当てマネージド ID には、キー `"Microsoft.ManagedIdentity/userAssignedIdentities"` に対して返された `Type` の値が含まれます。
+応答内のユーザー割り当てマネージド ID には、キー `Type` に対して返された `"Microsoft.ManagedIdentity/userAssignedIdentities"` の値が含まれます。
 
 `Type :Microsoft.ManagedIdentity/userAssignedIdentities`
 

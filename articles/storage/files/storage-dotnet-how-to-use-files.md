@@ -49,7 +49,7 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 1. **[新しいプロジェクトの作成]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 1. **[新しいプロジェクトの構成]** で、アプリの名前を入力し、 **[作成]** を選択します。
 
-このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Main()` ファイルの `Program.cs` メソッドに追加できます。
+このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Program.cs` ファイルの `Main()` メソッドに追加できます。
 
 Azure Storage クライアント ライブラリは、すべての種類の .NET アプリケーションで使用できます。 Azure クラウド サービスまたは Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなどの種類があります。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
@@ -428,14 +428,14 @@ Azure ストレージ分析で Azure Files のメトリックがサポートさ�
 
 次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、Azure Files のメトリックを有効にする方法を示します。
 
-まず、`using` ファイルで、先ほど追加したディレクティブと共に、次の `Program.cs` ディレクティブを追加します。
+まず、`Program.cs` ファイルで、先ほど追加したディレクティブと共に、次の `using` ディレクティブを追加します。
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Azure BLOB、Azure テーブル、Azure キューでは `ServiceProperties` 名前空間の共有 `Microsoft.Azure.Storage.Shared.Protocol` 型が使用されますが、Azure Files ではその独自の型である、`FileServiceProperties` 名前空間の `Microsoft.Azure.Storage.File.Protocol` 型が使用されます。 ただし、次のコードをコンパイルするためには、ご自身のコードから両方の名前空間を参照する必要があります。
+Azure BLOB、Azure テーブル、Azure キューでは `Microsoft.Azure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型が使用されますが、Azure Files ではその独自の型である、`Microsoft.Azure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型が使用されます。 ただし、次のコードをコンパイルするためには、ご自身のコードから両方の名前空間を参照する必要があります。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.

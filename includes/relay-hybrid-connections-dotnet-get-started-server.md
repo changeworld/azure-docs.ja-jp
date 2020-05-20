@@ -143,7 +143,7 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
         await listener.CloseAsync(cts.Token);
     }
     ```
-5. `Main` クラスの `Program` メソッドに次のコード行を追加します。
+5. `Program` クラスの `Main` メソッドに次のコード行を追加します。
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();

@@ -195,7 +195,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 ### <a name="restore-file-permissions-from-acl-file"></a>ACL ファイルからファイルのアクセス許可を復元する
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-`/restore` を使用する際のパスには、`/save` を使用する際に指定したフォルダーの親フォルダーを指定する必要があります。 この例では、上記の `\RSA` の例で指定した `\MachineKeys` フォルダーの親は、`/save` です。
+`/restore` を使用する際のパスには、`/save` を使用する際に指定したフォルダーの親フォルダーを指定する必要があります。 この例では、上記の `/save` の例で指定した `\MachineKeys` フォルダーの親は、`\RSA` です。
 ### <a name="take-ntfs-ownership-of-a-folder"></a>フォルダーの NTFS 所有権を取得する
 `takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>再帰的にフォルダーに NTFS アクセス許可を付与する

@@ -79,7 +79,7 @@ output_storage_account_key:       <storage access key to "myaccount">
 output_storage_account_container: outputs
 ```
 
-`config.txt` という呼び出しを使って、`msgen submit -f config.txt` ファイルを送信します。
+`msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、一組の FASTQ ファイルを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細については、[FAQ](frequently-asked-questions-genomics.md) に関するページを参照してください。 

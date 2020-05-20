@@ -17,7 +17,7 @@ ms.locfileid: "75932101"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理
 
-[Apache Spark](https://ambari.apache.org/) クラスターに関連付けられた [Apache Ambari](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、[Apache Hadoop YARN](./apache-azure-spark-history-server.md) UI、[Spark History Server](https://spark.apache.org/) などのインターフェイスにアクセスする方法、および最適なパフォーマンスが得られるようにクラスター構成を調整する方法について説明します。
+[Apache Spark](https://spark.apache.org/) クラスターに関連付けられた [Apache Ambari](https://ambari.apache.org/) UI、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、[Spark History Server](./apache-azure-spark-history-server.md) などのインターフェイスにアクセスする方法、および最適なパフォーマンスが得られるようにクラスター構成を調整する方法について説明します。
 
 ## <a name="open-the-spark-history-server"></a>Spark History Server を開く
 
@@ -85,11 +85,11 @@ Spark Thrift サーバーを使用すると、Spark クラスターに JDBC/ODBC
 
 Spark Thrift サーバーでは、Spark の Dynamic Executor Allocation が使用されるため、`spark.executor.instances` は使用されません。 代わりに、Executor 数の指定に `spark.dynamicAllocation.maxExecutors` と `spark.dynamicAllocation.minExecutors` が使用されます。 Executor のサイズ変更には、構成パラメーターとして `spark.executor.cores` と `spark.executor.memory` が使用されます。 次の手順に示すように、これらのパラメーターは変更できます。
 
-* **、** の各パラメーターを更新するには、`spark.dynamicAllocation.maxExecutors`Advanced spark2-thrift-sparkconf`spark.dynamicAllocation.minExecutors` カテゴリを展開します。
+* `spark.dynamicAllocation.maxExecutors`、`spark.dynamicAllocation.minExecutors` の各パラメーターを更新するには、**Advanced spark2-thrift-sparkconf** カテゴリを展開します。
 
     ![Spark Thrift サーバーの構成](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Configure Spark thrift server")
 
-* パラメーター **および** を更新するには、`spark.executor.cores`Custom spark2-thrift-sparkconf`spark.executor.memory` カテゴリを展開します。
+* パラメーター `spark.executor.cores` および `spark.executor.memory` を更新するには、**Custom spark2-thrift-sparkconf** カテゴリを展開します。
 
     ![Spark Thrift サーバーのパラメーターの構成](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Spark Thrift サーバーのパラメーターの構成")
 

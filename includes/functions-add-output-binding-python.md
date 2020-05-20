@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "78191051"
 ---
-次のコードに合わせて *HttpExample\\\_\_init\_\_.py* を更新します。関数の定義に `msg` パラメーターを、`msg.set(name)` ステートメントの下に `if name:` を追加してください。
+次のコードに合わせて *HttpExample\\\_\_init\_\_.py* を更新します。関数の定義に `msg` パラメーターを、`if name:` ステートメントの下に `msg.set(name)` を追加してください。
 
 :::code language="python" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 

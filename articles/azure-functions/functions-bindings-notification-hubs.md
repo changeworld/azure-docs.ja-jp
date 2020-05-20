@@ -48,7 +48,7 @@ Notification Hubs バインディングは [Microsoft.Azure.WebJobs.Extensions.N
 
 ### <a name="c-script-template-example---out-parameter"></a>C# スクリプト テンプレートの例 - out パラメーター
 
-次の例では、テンプレートに [ プレースホルダーを含む](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)テンプレート登録`message`の通知を送信します。
+次の例では、テンプレートに `message` プレースホルダーを含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```cs
 using System;
@@ -96,7 +96,7 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 
 ### <a name="c-script-template-example---json"></a>C# スクリプト テンプレートの例 - JSON
 
-次の例では、有効な JSON 文字列を使用して、テンプレートに [ プレースホルダーを含む](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)テンプレート登録`message`の通知を送信します。
+次の例では、有効な JSON 文字列を使用して、テンプレートに `message` プレースホルダーを含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```cs
 using System;
@@ -135,7 +135,7 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ### <a name="f-template-example"></a>F# テンプレートの例
 
-次の例では、[ と ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) を含む`location`テンプレート登録`message`の通知を送信します。
+次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
@@ -144,7 +144,7 @@ let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
 
 ### <a name="javascript-template-example"></a>JavaScript テンプレートの例
 
-次の例では、[ と ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) を含む`location`テンプレート登録`message`の通知を送信します。
+次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 ```javascript
 module.exports = function (context, myTimer) {

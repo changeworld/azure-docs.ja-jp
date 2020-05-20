@@ -22,7 +22,7 @@ ms.locfileid: "78183756"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、ソーシャル アカウント ID は、`userIdentities`alternativeSecurityIdCollection**要求の種類の** 属性に格納されます。 **alternativeSecurityIdCollection** の各項目では、発行者 (ID プロバイダー名、facebook.com など) や `issuerUserId` (発行者の一意のユーザー識別子) を指定します。
+Azure Active Directory B2C (Azure AD B2C) では、ソーシャル アカウント ID は、**alternativeSecurityIdCollection** 要求の種類の `userIdentities` 属性に格納されます。 **alternativeSecurityIdCollection** の各項目では、発行者 (ID プロバイダー名、facebook.com など) や `issuerUserId` (発行者の一意のユーザー識別子) を指定します。
 
 ```JSON
 "userIdentities": [{

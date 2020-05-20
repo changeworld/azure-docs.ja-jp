@@ -184,7 +184,7 @@ Azure Blueprint 関数は、ブループリント パラメーターでのみ動
 }
 ```
 
-次に、ブループリント アーティファクトの _に対する引数として_principalIds`parameters()` を使います。
+次に、ブループリント アーティファクトの `parameters()` に対する引数として _principalIds_ を使います。
 
 ```json
 {

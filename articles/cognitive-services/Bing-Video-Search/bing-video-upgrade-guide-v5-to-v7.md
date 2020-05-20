@@ -75,7 +75,7 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `nextOffsetAddCount`Videos[ の ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) フィールドの名前が `nextOffset` に変更されました。 オフセットの使用方法も変更されています。 以前は、[オフセット](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) クエリ パラメーターを値 `nextOffset` と、前のオフセット値と、結果のビデオの数に設定していました。 現在は、`offset` クエリ パラメーターを値 `nextOffset` に設定するだけです。  
+- [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) の `nextOffsetAddCount` フィールドの名前が `nextOffset` に変更されました。 オフセットの使用方法も変更されています。 以前は、[オフセット](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) クエリ パラメーターを値 `nextOffset` と、前のオフセット値と、結果のビデオの数に設定していました。 現在は、`offset` クエリ パラメーターを値 `nextOffset` に設定するだけです。  
   
 - `relatedVideos` フィールドのデータ型を `Video[]` から [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) に変更しました ([VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) を参照)。
 

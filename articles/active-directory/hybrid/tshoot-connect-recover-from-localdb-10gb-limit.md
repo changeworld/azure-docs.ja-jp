@@ -66,13 +66,13 @@ Azure AD Connect 用に作成されるデータベースの名前は、**ADSync*
 * Azure AD Connect Synchronization Service の操作コンテキストとして使用される Sync Service アカウント。
 * インストール中に作成されたローカル グループ ADSyncAdmins。
 
-1. **にある**ADSync.mdf**ファイルと**ADSync_log.ldf`%ProgramFiles%\Microsoft Azure AD Sync\Data` ファイルを安全な場所にコピーして、データベースをバックアップします。
+1. `%ProgramFiles%\Microsoft Azure AD Sync\Data` にある **ADSync.mdf** ファイルと **ADSync_log.ldf** ファイルを安全な場所にコピーして、データベースをバックアップします。
 
 2. 新しい PowerShell セッションを開始します。
 
 3. `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn` フォルダーに移動します。
 
-4. sysadmin またはデータベースの DBO の資格情報を使用してコマンド  **を実行することで、** sqlcmd`./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` ユーティリティを起動します。
+4. sysadmin またはデータベースの DBO の資格情報を使用してコマンド `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` を実行することで、**sqlcmd** ユーティリティを起動します。
 
 5. データベースを縮小するには、sqlcmd プロンプト (1>) で「`DBCC Shrinkdatabase(ADSync,1);`」と入力し、次の行に「`GO`」と入力します。
 

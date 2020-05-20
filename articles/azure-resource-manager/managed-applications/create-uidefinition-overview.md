@@ -42,7 +42,7 @@ handler は常に `Microsoft.Azure.CreateUIDef` とする必要があります�
 
 parameters プロパティのスキーマは、指定した handler と version の組み合わせによって異なります。 マネージド アプリケーションでサポートされているプロパティは `basics`、`steps`、`outputs` です。 basics プロパティと steps プロパティには、Azure Portal に表示される "[要素](create-uidefinition-elements.md)" (テキスト ボックス、ドロップダウンなど) が指定されます。 outputs プロパティは、指定された要素の出力値を Azure Resource Manager デプロイ テンプレートのパラメーターに対してマッピングする目的で使われます。
 
-`$schema` は、指定することが推奨されますが、必須ではありません。 指定する場合は、`version` の URI 内のバージョンと `$schema` の値とを一致させる必要があります。
+`$schema` は、指定することが推奨されますが、必須ではありません。 指定する場合は、`$schema` の URI 内のバージョンと `version` の値とを一致させる必要があります。
 
 JSON エディターを使用して createUiDefinition 定義を作成した後、[createUiDefinition 定義サンドボックス](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)でテストしてそれをプレビューできます。 このサンドボックスの詳細については、[Azure Managed Applications のポータル インターフェイスのテスト](test-createuidefinition.md)に関するページを参照してください。
 

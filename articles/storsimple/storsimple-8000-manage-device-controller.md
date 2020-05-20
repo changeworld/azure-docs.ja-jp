@@ -117,7 +117,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
    
     `Reset-HcsFactoryDefault`
    
-    代わりに、1 つのコントローラーだけをリセットするには、[ パラメーターを指定して ](https://technet.microsoft.com/library/dn688132.aspx)Reset-HcsFactoryDefault`-scope` コマンドレットを使用します。
+    代わりに、1 つのコントローラーだけをリセットするには、`-scope` パラメーターを指定して [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) コマンドレットを使用します。
    
     システムが何度か再起動されます。 リセットが正常に完了すると、その旨通知されます。 このプロセスの所要時間はシステムのモデルによって異なります。8100 デバイスの場合は 45 ～ 60 分、8600 の場合は 60 ～ 90 分かかります。
    

@@ -238,7 +238,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-上記の例は、種類が "A" の既存のレコード セットに "A" レコードを追加する方法を示しています。 同様の操作は、他の種類のレコード セットにレコードを追加するときにも使用されます。そのときは、`-Ipv4Address` の `Add-AzDnsRecordConfig` パラメーターをレコードの種類それぞれに固有の他のパラメーターに置き換えます。 レコードの種類それぞれに対応したパラメーターは、上記のその他のレコードの種類の例に関するセクションに示したとおり、`New-AzDnsRecordConfig` コマンドレットと同じです。
+上記の例は、種類が "A" の既存のレコード セットに "A" レコードを追加する方法を示しています。 同様の操作は、他の種類のレコード セットにレコードを追加するときにも使用されます。そのときは、`Add-AzDnsRecordConfig` の `-Ipv4Address` パラメーターをレコードの種類それぞれに固有の他のパラメーターに置き換えます。 レコードの種類それぞれに対応したパラメーターは、上記のその他のレコードの種類の例に関するセクションに示したとおり、`New-AzDnsRecordConfig` コマンドレットと同じです。
 
 種類が "CNAME" または "SOA" のレコード セットに複数のレコードを含めることはできません。 この制約は DNS 標準によるものです。 Azure DNS の制限ではありません。
 
@@ -258,7 +258,7 @@ Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyR
     Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Azure DNS サービスに変更をコミットバックします。 同時変更の `-Overwrite`ETag チェック[を抑制するには、オプションの ](dns-zones-records.md#etags) スイッチを使用します。
+3. Azure DNS サービスに変更をコミットバックします。 同時変更の [ETag チェック](dns-zones-records.md#etags)を抑制するには、オプションの `-Overwrite` スイッチを使用します。
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $Rs

@@ -23,7 +23,7 @@ CLI をローカルにインストールして使用することを選択した�
 ## <a name="sample-script"></a>サンプル スクリプト
 
 > [!NOTE]
-> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API に対して使用するには、お使いの API 固有のスクリプトの `ip-range-filter` コマンドに対して、次のスクリプトの `az cosmosdb account create` パラメーターを適用します。
+> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API に対して使用するには、お使いの API 固有のスクリプトの `az cosmosdb account create` コマンドに対して、次のスクリプトの `ip-range-filter` パラメーターを適用します。
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/ipfirewall.sh "Create an Azure Cosmos account with ip firewall.")]
 

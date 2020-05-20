@@ -43,7 +43,7 @@ Bing には、マーカーとして Unicode 文字または HTML タグのいず
 
 ## <a name="additional-text-decorations"></a>その他の文字の装飾
 
-Bing はいくつかの異なる文字装飾を返すことができます。 たとえば、`Computation` の結果には、`log(2)` フィールド内の検索語 `expression` の下付き文字マーカーを含めることができます。
+Bing はいくつかの異なる文字装飾を返すことができます。 たとえば、`Computation` の結果には、`expression` フィールド内の検索語 `log(2)` の下付き文字マーカーを含めることができます。
 
 ![計算のマーカー](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
 

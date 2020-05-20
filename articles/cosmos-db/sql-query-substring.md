@@ -54,7 +54,7 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>解説
 
-開始位置が [ の場合、このシステム関数は、](index-policy.md#includeexclude-strategy)範囲インデックス`0`の恩恵を受けます。
+開始位置が `0` の場合、このシステム関数は、[範囲インデックス](index-policy.md#includeexclude-strategy)の恩恵を受けます。
 
 ## <a name="next-steps"></a>次のステップ
 

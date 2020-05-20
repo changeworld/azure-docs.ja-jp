@@ -172,7 +172,7 @@ Python 用 Twilio ライブラリをインストールしたら、Python ファ�
                                      body=message)
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 上の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Response>` 要素を含む `<Say>` 要素が表示されます。)
+アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 上の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を含む `<Response>` 要素が表示されます。)
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自のサイトを作成できます。 XML 応答を返すサイトは任意の言語で作成できます。このトピックでは、Python を使用して TwiML を作成するとします。
 

@@ -34,7 +34,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
 4. お使いのコンピューターに [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) をインストールします。 ML Server により、[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 関数と `RxSpark` 関数が提供されます。
 
-5. ローカル クライアントから HDInsight クラスターに対して [ 関数を実行するための計算コンテキストを提供する、](https://www.putty.org/)PuTTY`RevoScaleR` をインストールします。
+5. ローカル クライアントから HDInsight クラスターに対して `RevoScaleR` 関数を実行するための計算コンテキストを提供する、[PuTTY](https://www.putty.org/) をインストールします。
 
 6. Visual Studio 環境にデータ サイエンスの設定を適用して、R Tools のワークスペースに新しいレイアウトを提供するオプションがあります。
    1. 現在の Visual Studio 設定を保存するには、 **[ツール] > [設定のインポートとエクスポート]** コマンドを使用し、 **[選択された環境設定をエクスポート]** を選択してファイル名を指定します。 それらの設定を復元するには、同じコマンドを使用し、 **[選択された環境設定をインポート]** を選択します。
@@ -52,7 +52,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 2. [RTVS 拡張機能](https://docs.microsoft.com/visualstudio/rtvs/installation)をインストールします。
 3. [サンプル zip ファイル](https://github.com/Microsoft/RTVS-docs/archive/master.zip)をダウンロードします。
 4. `examples/Examples.sln` を開いて、Visual Studio でソリューションを起動します。
-5. `1-Getting Started with R.R` ソリューション フォルダー内の `A first look at R` ファイルを開きます。
+5. `A first look at R` ソリューション フォルダー内の `1-Getting Started with R.R` ファイルを開きます。
 6. ファイルの先頭から、R Ctrl + Enter キーを押して、1 回に 1 行ずつを R インタラクティブ ウィンドウに送信します。 一部の行では、パッケージをインストールするために時間がかかる場合があります。
     * または、Ctrl + A キー を押して R ファイルのすべての行を選択した後で、Ctrl + Enter キー を押してすべて実行するか、ツール バーで [Execute Interactive]\(対話型で実行\) アイコンを選択します。
 
@@ -121,7 +121,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
 
         ![Azure HDInsight のストレージ コンテナー](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. クラスターのコンテナー名を選択し、 **[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、 *[RevoShare]* 、 **[newUser]** の順に選択します。 `people.json` フォルダーに `newUser` ファイルが表示されます。
+    4. クラスターのコンテナー名を選択し、 **[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、 *[RevoShare]* 、 **[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
 
         ![HDInsight のコピーされたファイル フォルダーの場所](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

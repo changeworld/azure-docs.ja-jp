@@ -35,7 +35,7 @@ ms.locfileid: "68883850"
 
     ![Azure IoT Hub .NET service SDK の現在のバージョンをインストールする](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
    ```csharp
    using Microsoft.Azure.Devices;

@@ -89,7 +89,7 @@ AdminSDHolder コンテナーに対するアクセス許可を変更しない場
 
 また、パラメーター `-ADobjectDN` に続いて、アクセス許可を設定するターゲット オブジェクトの DN を使用して、特定の OU または AD DS オブジェクトにアクセス許可を設定することもできます。 ターゲット ADobjectDN を使用する場合、このコマンドレットはこのオブジェクトにのみアクセス許可を設定し、ドメインのルートまたは AdminSDHolder コンテナーには設定しません。 このパラメーターは、アクセス許可の継承が無効になっている特定の OU または AD DS オブジェクトがある場合に便利です (「アクセス許可の継承が無効になっているオブジェクトの検索」を参照) 
 
-これらの一般的なパラメーターの例外は、AD DS コネクタ アカウント自体に対するアクセス許可の設定に使用する `Set-ADSyncRestrictedPermissions` コマンドレットと、パスワード ハッシュ同期に必要な権限がそのドメインのルートにのみ設定され、そのために `Set-ADSyncPasswordHashSyncPermissions` パラメーターまたは `-ObjectDN` パラメーターが含まれない、`-SkipAdminSdHolders` コマンドレットです。
+これらの一般的なパラメーターの例外は、AD DS コネクタ アカウント自体に対するアクセス許可の設定に使用する `Set-ADSyncRestrictedPermissions` コマンドレットと、パスワード ハッシュ同期に必要な権限がそのドメインのルートにのみ設定され、そのために `-ObjectDN` パラメーターまたは `-SkipAdminSdHolders` パラメーターが含まれない、`Set-ADSyncPasswordHashSyncPermissions` コマンドレットです。
 
 ### <a name="determine-your-ad-ds-connector-account"></a>AD DS コネクタ アカウントの確認 
 Azure AD Connect が既にインストールされていて、Azure AD Connect で現在使用中の AD DS コネクタ アカウントを確認したい場合は、次のコマンドレットを実行できます。 

@@ -260,7 +260,7 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
 既定では、Jupyter Notebook から実行するコード スニペットの出力は、ワーカー ノードで永続化されるセッションのコンテキスト内で使用できます。 計算を実行するたびに乗車データをワーカー ノードに保存する場合や、計算に必要なすべてのデータが Jupyter サーバー ノード (ヘッド ノード) でローカルで使用可能な場合は、 `%%local` マジックを使用して Jupyter サーバー上でコード スニペットを実行できます。
 
 * **SQL マジック** (`%%sql`): HDInsight Spark カーネルは、SQLContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (`-o VARIABLE_NAME`) を指定すると、SQL クエリの出力結果が Pandas データ フレームとして Jupyter サーバー上に永続化されます。 この設定は、出力をローカル モードで使用できることを意味します。
-* `%%local` **マジック**。 `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。 通常、`%%local` マジックは、`%%sql` パラメーターを指定した `-o` マジックと組み合わせて使用します。 SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
+* `%%local` **マジック**。 `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。 通常、`%%local` マジックは、`-o` パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
 
 ### <a name="query-the-data-by-using-sql"></a>SQL を使用してデータを照会する
 このクエリでは、タクシーの営業について、料金、乗客数、チップの金額を取得します。
@@ -372,7 +372,7 @@ MLlib のモデリング関数と予測関数では、特徴のカテゴリ入�
 
 ここでは、例を示すために文字列である 4 つの変数だけを変換します。 数値で表される他の変数 (weekday など) で、カテゴリ変数としてインデックスを作成することもできます。
 
-インデックス作成には MLlib の `StringIndexer()` 関数を使用し、ワンホット エンコードには `OneHotEncoder()` 関数を使用します。 カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
+インデックス作成には MLlib の `OneHotEncoder()` 関数を使用し、ワンホット エンコードには `StringIndexer()` 関数を使用します。 カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
 
     # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
 
@@ -535,9 +535,9 @@ Spark ML を使用して、ツリーベースのモデリング関数で使用�
 ## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二項分類モデル: チップが支払われるかどうかを予測する
 このセクションでは、チップが支払われるかどうかを予測する、次の 3 種類の二項分類モデルを作成します。
 
-* Spark ML の  **関数を使用した**ロジスティック回帰モデル`LogisticRegression()`
-* Spark ML の  **関数を使用した**ランダム フォレスト分類モデル`RandomForestClassifier()`
-* MLlib の  **関数を使用した**勾配ブースティング ツリー分類モデル`GradientBoostedTrees()`
+* Spark ML の `LogisticRegression()` 関数を使用した**ロジスティック回帰モデル**
+* Spark ML の `RandomForestClassifier()` 関数を使用した**ランダム フォレスト分類モデル**
+* MLlib の `GradientBoostedTrees()` 関数を使用した**勾配ブースティング ツリー分類モデル**
 
 ### <a name="create-a-logistic-regression-model"></a>ロジスティック回帰モデルを作成する
 次に、Spark ML の `LogisticRegression()` 関数を使用してロジスティック回帰モデルを作成します。 次の一連の手順で、このモデルの構築コードを作成します。
@@ -728,8 +728,8 @@ ROC 曲線下面積: 0.9846895479241554
 ## <a name="regression-model-predict-tip-amount"></a>回帰モデル: チップの金額を予測する
 このセクションでは、チップの金額を予測する、次の 2 種類の回帰モデルを作成します。
 
-* Spark ML の  **関数を使用した**正規化線形回帰モデル`LinearRegression()`。 このモデルは保存して、テスト データで評価します。
-* Spark ML の  **関数を使用した**勾配ブースティング ツリー回帰モデル`GBTRegressor()`。
+* Spark ML の `LinearRegression()` 関数を使用した**正規化線形回帰モデル**。 このモデルは保存して、テスト データで評価します。
+* Spark ML の `GBTRegressor()` 関数を使用した**勾配ブースティング ツリー回帰モデル**。
 
 ### <a name="create-a-regularized-linear-regression-model"></a>正規化線形回帰を作成する
     # RECORD THE START TIME

@@ -26,7 +26,7 @@ NFSv4 では、認証ドメインの概念が導入されています。 Azure N
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>ユーザー/グループ マッピングの既定の動作
 
-NFSv4 ドメインは `nobody` に設定されているため、ルート マッピングの既定値は `localdomain` ユーザーになります。 Azure NetApp Files NFSv4.1 ボリュームをルートとしてマウントすると、次のようなファイルのアクセス許可が表示されます。  
+NFSv4 ドメインは `localdomain` に設定されているため、ルート マッピングの既定値は `nobody` ユーザーになります。 Azure NetApp Files NFSv4.1 ボリュームをルートとしてマウントすると、次のようなファイルのアクセス許可が表示されます。  
 
 ![NFSv4.1 のユーザー/グループ マッピングの既定の動作](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 

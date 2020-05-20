@@ -363,7 +363,7 @@ U-SQL データベース プロジェクトのビルド出力は、名前に `.u
 
 Azure Pipelines でデータベース デプロイ タスクを設定するには、次の手順を実行します。
 
-1. ビルドまたはリリース パイプラインで PowerShell Script タスクを追加し、次の PowerShell スクリプトを実行します。 このタスクは、`PackageDeploymentTool.exe` と `PackageDeploymentTool.exe` の Azure SDK 依存関係を取得するのに役立ちます。 **-AzureSDK** および **-DBDeploymentTool** パラメーターを設定すると、依存関係とデプロイ ツールを特定のフォルダーに読み込むことができます。 **-AzureSDK** パスを手順 2 の `PackageDeploymentTool.exe`-AzureSDKPath**パラメーターとして** に渡します。 
+1. ビルドまたはリリース パイプラインで PowerShell Script タスクを追加し、次の PowerShell スクリプトを実行します。 このタスクは、`PackageDeploymentTool.exe` と `PackageDeploymentTool.exe` の Azure SDK 依存関係を取得するのに役立ちます。 **-AzureSDK** および **-DBDeploymentTool** パラメーターを設定すると、依存関係とデプロイ ツールを特定のフォルダーに読み込むことができます。 **-AzureSDK** パスを手順 2 の **-AzureSDKPath** パラメーターとして `PackageDeploymentTool.exe` に渡します。 
 
     ```powershell
     <#

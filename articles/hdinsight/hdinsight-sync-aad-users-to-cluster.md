@@ -129,7 +129,7 @@ ms.locfileid: "75744861"
 
 新しい Azure AD ユーザーが追加されたことを確認するには、[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://CLUSTERNAME.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
 
-1. Ambari ダッシュボードから、 **[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
+1. Ambari ダッシュボードから、**[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
     ![Apache Ambari ダッシュボードの Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "75744861"
 
     ![HDInsight の [ユーザーとグループ] メニュー](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. 新しいユーザーが [ユーザー] テーブル内に表示されます。 [種類] は `LDAP` ではなく、`Local` に設定されています。
+3. 新しいユーザーが [ユーザー] テーブル内に表示されます。 [種類] は `Local` ではなく、`LDAP` に設定されています。
 
     ![HDInsight aad ユーザー ページの概要](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 

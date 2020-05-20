@@ -36,7 +36,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソールアプリでは、この記事で後述する`Flush()`完全な例`Sleep`に示すように、アプリが終了する前に [ と ](#full-example) が完了しない限り、テレメトリが送信されない場合があります。
+> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソールアプリでは、この記事で後述する[完全な例](#full-example)に示すように、アプリが終了する前に `Flush()` と `Sleep` が完了しない限り、テレメトリが送信されない場合があります。
 
 
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) パッケージの最新バージョンをインストールします。このパッケージにより、HTTP、SQL、またはその他の外部の依存関係呼び出しが自動的に追跡されます。
@@ -48,7 +48,7 @@ telemetryClient.TrackTrace("Hello World!");
 
 ### <a name="using-config-file"></a>構成ファイルを使用する
 
-既定では、`ApplicationInsights.config` が作成されると、Application Insights SDK は作業ディレクトリで `TelemetryConfiguration` ファイルを検索します。
+既定では、`TelemetryConfiguration` が作成されると、Application Insights SDK は作業ディレクトリで `ApplicationInsights.config` ファイルを検索します。
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -125,7 +125,7 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-プレーンな `TelemetryConfiguration()` コンストラクターを使用して構成を作成した場合は、さらに相関関係のサポートを有効にする必要があります。 ファイルから構成を読み取り、**または** を使用した場合は、`TelemetryConfiguration.CreateDefault()`不要です`TelemetryConfiguration.Active`。
+プレーンな `TelemetryConfiguration()` コンストラクターを使用して構成を作成した場合は、さらに相関関係のサポートを有効にする必要があります。 ファイルから構成を読み取り、`TelemetryConfiguration.CreateDefault()` または `TelemetryConfiguration.Active` を使用した場合は、**不要です**。
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());

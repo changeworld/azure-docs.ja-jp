@@ -57,7 +57,7 @@ ms.locfileid: "75434750"
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Azure Cloud Shell で **az iot hub create** コマンドを使用して、[eastus](/cli/azure/iot/hub#az-iot-hub-create) リージョンに IoT ハブを作成します。 その IoT ハブは、*contoso-us-resource-group* に追加されます。
+2. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**eastus** リージョンに IoT ハブを作成します。 その IoT ハブは、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-east-hub* という名前の IoT ハブを場所 *eastus* に作成します。 **contoso-east-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
 
@@ -67,7 +67,7 @@ ms.locfileid: "75434750"
     
     このコマンドが完了するまでに数分かかる場合があります。
 
-3. Azure Cloud Shell で **az iot hub create** コマンドを使用して、[westus](/cli/azure/iot/hub#az-iot-hub-create) リージョンに IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
+3. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**westus** リージョンに IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-west-hub* という名前の IoT ハブを場所 *westus* に作成します。 **contoso-west-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
 
@@ -327,7 +327,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. `prov_dev_set_symmetric_key_info()`prov**dev\_client\_sample.c\_ で、コメントになっている**  の呼び出しを両方の VM で探します。
+1. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを両方の VM で探します。
 
     ```c
     // Set the symmetric key if using they auth type

@@ -19,10 +19,10 @@ Azure Spring Cloud では Azure CLI のログ ストリーミングを使って�
 ## <a name="prerequisites"></a>前提条件
 
 * Spring Cloud (最小バージョン 0.2.0) 用の [Azure CLI 拡張機能](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension)のインストール。
-* **Spring Cloud アプリ**などのアプリケーションを実行する [Azure Spring Cloud](./spring-cloud-quickstart-launch-app-cli.md) のインスタンス。
+* [Spring Cloud アプリ](./spring-cloud-quickstart-launch-app-cli.md)などのアプリケーションを実行する **Azure Spring Cloud** のインスタンス。
 
 > [!NOTE]
->  ASC CLI 拡張機能はバージョン 0.2.0 から 0.2.1 に更新されました。 この変更によってログ ストリーミングのコマンドの構文が影響を受けます。`az spring-cloud app log tail` が `az spring-cloud app logs` に取って代わります。 コマンド: `az spring-cloud app log tail` は今後のリリースで非推奨になります。 バージョン 0.2.0 を使用している場合、0.2.1 にアップグレードできます。 まず、コマンド `az extension remove -n spring-cloud` を使用して古いバージョンを削除します。  次に、コマンド `az extension add -n spring-cloud` で 0.2.1 をインストールします。
+>  ASC CLI 拡張機能はバージョン 0.2.0 から 0.2.1 に更新されました。 この変更によってログ ストリーミングのコマンドの構文が影響を受けます。`az spring-cloud app logs` が `az spring-cloud app log tail` に取って代わります。 コマンド: `az spring-cloud app log tail` は今後のリリースで非推奨になります。 バージョン 0.2.0 を使用している場合、0.2.1 にアップグレードできます。 まず、コマンド `az extension remove -n spring-cloud` を使用して古いバージョンを削除します。  次に、コマンド `az extension add -n spring-cloud` で 0.2.1 をインストールします。
 
 ## <a name="use-cli-to-tail-logs"></a>ログ末尾に CLI を使用する
 

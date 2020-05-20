@@ -27,8 +27,8 @@ ms.locfileid: "75438398"
 時間を節約するために、GitHub リポジトリからサンプル コードをダウンロードしましょう。 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces ) に移動し、 **[Clone or download]** をクリックして GitHub リポジトリをダウンロードします。 このセクションのコードは、`samples/dotnetcore/getting-started/mywebapi` にあります。
 
 ### <a name="run-mywebapi"></a>*mywebapi* を実行する
-1. "`mywebapi`別の Visual Studio ウィンドウ *" で*  プロジェクトを開きます。
-1. 前に **プロジェクトで行ったように、起動設定ドロップダウンから**[Azure Dev Spaces]`webfrontend` を選択します。 今回は新しい AKS クラスターを作成するのではなく、作成済みのものを選択します。 前述のように、[スペース] は既定の `default` のままにし、 **[OK]** をクリックします。 [出力] ウィンドウを見ると、デバッグを開始したときの作業速度を上げるために、Visual Studio によって開発空間でこの新しいサービスの "ウォーム アップ" が開始されたことがわかります。
+1. "*別の Visual Studio ウィンドウ*" で `mywebapi` プロジェクトを開きます。
+1. 前に `webfrontend` プロジェクトで行ったように、起動設定ドロップダウンから **[Azure Dev Spaces]** を選択します。 今回は新しい AKS クラスターを作成するのではなく、作成済みのものを選択します。 前述のように、[スペース] は既定の `default` のままにし、 **[OK]** をクリックします。 [出力] ウィンドウを見ると、デバッグを開始したときの作業速度を上げるために、Visual Studio によって開発空間でこの新しいサービスの "ウォーム アップ" が開始されたことがわかります。
 1. F5 キーを押し、サービスがビルドされ、展開されるまで待ちます。 準備ができると、Visual Studio のステータス バーがオレンジ色に変わります。
 1. **[出力]** ウィンドウの **[Azure Dev Spaces for AKS]** ウィンドウに表示されるエンドポイント URL を書き留めます。 これは、`http://localhost:<portnumber>` のように表示されます。 コンテナーはローカルで実行されているように見えますが、実際には Azure の開発空間で実行されています。
 2. `mywebapi` の準備ができたら、ブラウザーで localhost アドレスを開き、URL に `/api/values` を追加して `ValuesController` の既定の GET API を呼び出します。 
@@ -37,7 +37,7 @@ ms.locfileid: "75438398"
     ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend* から *mywebapi* に対して要求を行う
-次に、`webfrontend` に対して要求を行う `mywebapi` のコードを記述しましょう。 `webfrontend` プロジェクトがある Visual Studio ウィンドウに切り替えます。 `HomeController.cs` ファイルで、About メソッドのコードを次のコードに "*置き換えます*"。
+次に、`mywebapi` に対して要求を行う `webfrontend` のコードを記述しましょう。 `webfrontend` プロジェクトがある Visual Studio ウィンドウに切り替えます。 `HomeController.cs` ファイルで、About メソッドのコードを次のコードに "*置き換えます*"。
 
    ```csharp
    public async Task<IActionResult> About()
@@ -66,7 +66,7 @@ ms.locfileid: "75438398"
 
 ### <a name="debug-across-multiple-services"></a>複数のサービスでデバッグする
 1. この時点で、`mywebapi` は引き続きデバッガーがアタッチされた状態で実行されています。 そうでない場合は、`mywebapi` プロジェクトで F5 キーを押します。
-1. `Get(int id)` の GET 要求を処理する、`Controllers/ValuesController.cs` ファイルの `api/values/{id}` メソッドにブレークポイントを設定します。
+1. `api/values/{id}` の GET 要求を処理する、`Controllers/ValuesController.cs` ファイルの `Get(int id)` メソッドにブレークポイントを設定します。
 1. 上記のコードを貼り付けた `webfrontend` プロジェクトで、GET 要求を `mywebapi/api/values` に送信する直前にブレークポイントを設定します。
 1. `webfrontend` プロジェクトで F5 キーを押します。 Visual Studio はブラウザーで適切な localhost ポートを再度開き、Web アプリが表示されます。
 1. ページの上部にある **[About]** リンクをクリックすると、`webfrontend` プロジェクトのブレークポイントがトリガーされます。 

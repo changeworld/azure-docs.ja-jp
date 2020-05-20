@@ -40,7 +40,7 @@ ms.locfileid: "74113123"
 > `search.in` を使用すると、より簡潔で読みやすくなるだけでなく、[パフォーマンス上の利点](#bkmk_performance)も得られます。また、フィルターに含める値が数百または数千になる場合に、[フィルターの特定のサイズ制限](search-query-odata-filter.md#bkmk_limits)を回避することもできます。 そのため、等値式のより複雑な論理和演算ではなく、`search.in` を使用することを強くお勧めします。
 
 > [!NOTE]
-> OData 標準のバージョン 4.01 では、Azure Cognitive Search の [ 関数と同様に動作する `in`](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230) 演算子`search.in`が最近導入されました。 しかし、Azure Cognitive Search では、この演算子はサポートされていないので、代わりに `search.in` 関数を使用する必要があります。
+> OData 標準のバージョン 4.01 では、Azure Cognitive Search の `search.in` 関数と同様に動作する [`in` 演算子](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)が最近導入されました。 しかし、Azure Cognitive Search では、この演算子はサポートされていないので、代わりに `search.in` 関数を使用する必要があります。
 
 ## <a name="syntax"></a>構文
 
@@ -61,7 +61,7 @@ search_in_call ::=
 > [!NOTE]
 > 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
-`search.in` 関数では、指定された文字列フィールドまたは範囲変数が、指定されたリストの値のいずれかと等しいかどうかをテストします。 変数とリストの各値が等しいかどうかは、`eq` 演算子の場合と同様に、大文字と小文字を区別して判断されます。 そのため、`search.in(myfield, 'a, b, c')` のような式は、`myfield eq 'a' or myfield eq 'b' or myfield eq 'c'` の方がパフォーマンスが良いという点を除き、`search.in` に等しくなります。
+`search.in` 関数では、指定された文字列フィールドまたは範囲変数が、指定されたリストの値のいずれかと等しいかどうかをテストします。 変数とリストの各値が等しいかどうかは、`eq` 演算子の場合と同様に、大文字と小文字を区別して判断されます。 そのため、`search.in(myfield, 'a, b, c')` のような式は、`search.in` の方がパフォーマンスが良いという点を除き、`myfield eq 'a' or myfield eq 'b' or myfield eq 'c'` に等しくなります。
 
 `search.in` 関数には、次の 2 つのオーバーロードがあります。
 

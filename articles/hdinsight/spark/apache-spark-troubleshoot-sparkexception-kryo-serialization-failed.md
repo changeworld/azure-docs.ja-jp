@@ -33,7 +33,7 @@ Buffer overflow. Available: 0, required: 36518. To avoid this, increase spark.kr
 
 ## <a name="resolution"></a>解決策
 
-バッファー値 `Kryoserializer` を増やします。 `spark.kryoserializer.buffer.max` という名前のキーを追加して、`2048` の下の spark2 構成の `Custom spark2-thrift-sparkconf` に設定します。
+バッファー値 `Kryoserializer` を増やします。 `spark.kryoserializer.buffer.max` という名前のキーを追加して、`Custom spark2-thrift-sparkconf` の下の spark2 構成の `2048` に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

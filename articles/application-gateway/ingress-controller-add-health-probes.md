@@ -55,7 +55,7 @@ Kubernetes API リファレンス:
 > * `HttpHeaders`、`InitialDelaySeconds`、`SuccessThreshold` はサポートされていません。
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>`readinessProbe` または `livenessProbe` を使用しない
-上記のプローブが指定されなかった場合、イングレス コントローラーでは、`Path` 注釈に対して指定された `backend-path-prefix` またはサービスの `path` 定義内に指定された `ingress` にサービスが到達できることを想定します。
+上記のプローブが指定されなかった場合、イングレス コントローラーでは、`backend-path-prefix` 注釈に対して指定された `Path` またはサービスの `ingress` 定義内に指定された `path` にサービスが到達できることを想定します。
 
 ## <a name="default-values-for-health-probe"></a>正常性プローブの既定値
 readiness/liveness probe によって推定できないプロパティにはすべて、既定値が設定されます。

@@ -50,7 +50,7 @@ ms.locfileid: "78189788"
 
 ## <a name="output-claims-transformations"></a>出力要求変換
 
-**OutputClaimsTransformations** 要素には、要求を修正したり新しい要求を生成したりするために使用される **OutputClaimsTransformation** 要素のコレクションが存在する場合があります。 次の技術プロファイルは、**RemoveAlternativeSecurityIdByIdentityProvider** 要求変換を呼び出します。 この要求変換は、**AlternativeSecurityIds**  のコレクションからソーシャル ID を削除します。 この技術プロファイルの出力要求は、**に設定されている**identityProvider2`facebook.com`、および facebook.com ID の削除後にこのユーザーに関連付けられたソーシャル ID のリストが存在する **AlternativeSecurityIds** です。
+**OutputClaimsTransformations** 要素には、要求を修正したり新しい要求を生成したりするために使用される **OutputClaimsTransformation** 要素のコレクションが存在する場合があります。 次の技術プロファイルは、**RemoveAlternativeSecurityIdByIdentityProvider** 要求変換を呼び出します。 この要求変換は、**AlternativeSecurityIds**  のコレクションからソーシャル ID を削除します。 この技術プロファイルの出力要求は、`facebook.com` に設定されている **identityProvider2**、および facebook.com ID の削除後にこのユーザーに関連付けられたソーシャル ID のリストが存在する **AlternativeSecurityIds** です。
 
 ```XML
 <ClaimsTransformations>
@@ -108,7 +108,7 @@ TransformationClaimType="collection" />
 
 ## <a name="use-a-validation-technical-profile"></a>検証技術プロファイルの使用
 
-要求変換技術プロファイルを使用すれば、情報を検証できます。 次の例では、[LocalAccountSignUpWithLogonEmail](self-asserted-technical-profile.md) という名前の**自己宣言された技術プロファイル**が、ユーザーにメールを 2 回入力するように依頼してから、[Validate-Email](validation-technical-profile.md) という名前の**検証技術プロファイル**を呼び出して、メールを検証しています。 **Validate-Email** 技術プロファイルは、要求変換 **AssertEmailAreEqual** を呼び出して、**email** と **emailRepeat** の 2 つの要求を比較し、指定された比較により等しくない場合は、例外をスローします。
+要求変換技術プロファイルを使用すれば、情報を検証できます。 次の例では、**LocalAccountSignUpWithLogonEmail** という名前の[自己宣言された技術プロファイル](self-asserted-technical-profile.md)が、ユーザーにメールを 2 回入力するように依頼してから、**Validate-Email** という名前の[検証技術プロファイル](validation-technical-profile.md)を呼び出して、メールを検証しています。 **Validate-Email** 技術プロファイルは、要求変換 **AssertEmailAreEqual** を呼び出して、**email** と **emailRepeat** の 2 つの要求を比較し、指定された比較により等しくない場合は、例外をスローします。
 
 ```XML
 <ClaimsTransformations>

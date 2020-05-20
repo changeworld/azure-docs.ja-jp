@@ -319,7 +319,7 @@ public static CreateMessageOptions Run(
 
 # <a name="java"></a>[Java](#tab/java)
 
-[ が ](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)、[、`OutputBinding<T>`、POJO 型などのネイティブ Java 型である場合は、](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding)`T``int`パラメーターに `String`TwilioSmsOutput`byte[]` 注釈を配置します。
+`T` が `int`、`String`、`byte[]`、POJO 型などのネイティブ Java 型である場合は、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding)パラメーターに [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を配置します。
 
 ---
 

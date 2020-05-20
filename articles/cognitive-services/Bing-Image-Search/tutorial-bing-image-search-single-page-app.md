@@ -43,7 +43,7 @@ Bing Image Search API を使用すると、Web 上で高品質で関連性の高
 このアプリケーションは、Web ブラウザーの固定ストレージを使用して API サブスクリプション キーを格納します。 格納されているキーがない場合、この Web ページでは、後で使用できるようにキーの入力と格納をユーザーに求めます。 API によって後でキーが拒否された場合、そのキーはアプリでストレージから削除されます。 このサンプルでは、グローバル エンドポイントを使用しています。 または、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することもできます。
 
 
-`storeValue` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `retrieveValue` 関数と `localStorage` 関数を定義します。
+`localStorage` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。
 
 ```javascript
 // Cookie names for data being stored
@@ -104,7 +104,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ## <a name="send-search-requests"></a>検索要求を送信する
 
-このアプリケーションは、HTML `<form>` を使用し、`onsubmit` を呼び出す `newBingImageSearch()` 属性を使用して、まずユーザー検索要求を送信します。
+このアプリケーションは、HTML `<form>` を使用し、`newBingImageSearch()` を呼び出す `onsubmit` 属性を使用して、まずユーザー検索要求を送信します。
 
 ```html
 <form name="bing" onsubmit="return newBingImageSearch(this)">

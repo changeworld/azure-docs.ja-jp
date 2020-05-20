@@ -31,7 +31,7 @@ Azure コンテナー レジストリでの認証には複数の方法があり�
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD での個々のログイン
 
-開発ワークステーションとの間でのイメージのプッシュやプルなど、レジストリを直接操作するときは、[Azure CLI](/cli/azure/acr?view=azure-cli-latest#az-acr-login) で [az acr login](/cli/azure/install-azure-cli) コマンドを使用して認証します。
+開発ワークステーションとの間でのイメージのプッシュやプルなど、レジストリを直接操作するときは、[Azure CLI](/cli/azure/install-azure-cli) で [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) コマンドを使用して認証します。
 
 ```azurecli
 az acr login --name <acrName>
@@ -40,7 +40,7 @@ az acr login --name <acrName>
 `az acr login` を使用してログインすると、CLI では [az login](/cli/azure/reference-index#az-login) の実行時に作成されたトークンを使用して、レジストリとのセッションがシームレスに認証されます。 認証フローを完了するには、お使いの環境に Docker をインストールして実行する必要があります。 `az acr login` では、Docker クライアントを使用して、`docker.config` ファイル内に Azure Active Directory トークンが設定されます。 この方法でログインすると、資格情報がキャッシュされるので、セッションの以降の `docker` コマンドではユーザー名やパスワードが不要になります。
 
 > [!TIP]
-> また、`az acr login`OCI 成果物[など、Docker イメージ以外の成果物をレジストリに対してプッシュまたはプルする場合は、](container-registry-oci-artifacts.md) を使用して個々の ID を認証します。  
+> また、[OCI 成果物](container-registry-oci-artifacts.md)など、Docker イメージ以外の成果物をレジストリに対してプッシュまたはプルする場合は、`az acr login` を使用して個々の ID を認証します。  
 
 
 レジストリのアクセスでは、`az acr login` で使用されるトークンは **3 時間**有効なため、`docker` コマンドを実行する前に常にレジストリにログインすることをお勧めします。 トークンの有効期限が切れた場合は、`az acr login` コマンドを再度使用して再認証することで、トークンを更新できます。 
@@ -79,7 +79,7 @@ docker login myregistry.azurecr.io
 
 ログイン資格情報の管理のベスト プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
 
-既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で `--admin-enabled`az acr update[ コマンドの ](/cli/azure/acr?view=azure-cli-latest#az-acr-update) パラメーターを使用します。
+既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) コマンドの `--admin-enabled` パラメーターを使用します。
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

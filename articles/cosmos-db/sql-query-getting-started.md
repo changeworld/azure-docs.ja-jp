@@ -52,7 +52,7 @@ SQL API Cosmos DB アカウントで、`Families` というコンテナーを作
 }
 ```
 
-2 つ目の項目は、`givenName` と `familyName` の代わりに `firstName` と `lastName` を使用します。
+2 つ目の項目は、`firstName` と `lastName` の代わりに `givenName` と `familyName` を使用します。
 
 ```json
 {
@@ -118,7 +118,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
     }]
 ```
 
-次のクエリは、JSON 出力を異なる形式に変更します。 このクエリは、住所の都市が州と同じ場合に、2 つの選択したフィールド (`Family` と `Name`) を持つ JSON `City` オブジェクトをプロジェクションします。 "NY, NY" はこのケースに一致します。
+次のクエリは、JSON 出力を異なる形式に変更します。 このクエリは、住所の都市が州と同じ場合に、2 つの選択したフィールド (`Name` と `City`) を持つ JSON `Family` オブジェクトをプロジェクションします。 "NY, NY" はこのケースに一致します。
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family

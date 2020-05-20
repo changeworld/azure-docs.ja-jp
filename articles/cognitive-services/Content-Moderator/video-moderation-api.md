@@ -66,7 +66,7 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 
 ### <a name="update-the-programs-using-statements"></a>プログラムの using ステートメントを更新する
 
-`using`Program.cs_ファイルの先頭に次の_ ステートメントを追加します。
+_Program.cs_ ファイルの先頭に次の `using` ステートメントを追加します。
 
 ```csharp
 using System;
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>リソース参照を設定する
 
-次の静的フィールドを **Program.cs** 内の _Program_ クラスに追加します。 これらのフィールドには、AMS サブスクリプションに接続するために必要な情報が保持されます。 上記の手順で取得した値を使用して、これらのフィールドに入力します。 `CLIENT_ID` はご使用の Azure AD アプリの**アプリケーション ID** 値で、`CLIENT_SECRET` はそのアプリ用に作成した "VideoModKey" の値です。
+次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらのフィールドには、AMS サブスクリプションに接続するために必要な情報が保持されます。 上記の手順で取得した値を使用して、これらのフィールドに入力します。 `CLIENT_ID` はご使用の Azure AD アプリの**アプリケーション ID** 値で、`CLIENT_SECRET` はそのアプリ用に作成した "VideoModKey" の値です。
 
 ```csharp
 // declare constants and globals

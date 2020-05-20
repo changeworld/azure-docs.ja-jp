@@ -22,7 +22,7 @@ Event Grid サブスクリプションを作成するには、 Create Event サ�
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-たとえば、`examplestorage` という名前のリソース グループに、`examplegroup` という名前のストレージ アカウントのイベント サブスクリプションを作成するには、次の形式を使用します。
+たとえば、`examplegroup` という名前のリソース グループに、`examplestorage` という名前のストレージ アカウントのイベント サブスクリプションを作成するには、次の形式を使用します。
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01

@@ -27,7 +27,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 
 1. ローカル コンピューターにリポジトリを複製します。 テンプレート フォルダーの `/ocean_blue` または `/slate_gray` を選択します。
 1. 前のセクションの説明に従い、テンプレート フォルダーと `/assets` フォルダーの下にあるすべてのファイルを Blob Storage にアップロードします。
-1. 次に、`\*.html` または `/ocean_blue` のルートにある各 `/slate_gray` ファイルを開き、相対 URL のすべての出現箇所を、手順 2 でアップロードした css、images、および fonts ファイルの URL に置き換えます。 次に例を示します。
+1. 次に、`/ocean_blue` または `/slate_gray` のルートにある各 `\*.html` ファイルを開き、相対 URL のすべての出現箇所を、手順 2 でアップロードした css、images、および fonts ファイルの URL に置き換えます。 次に例を示します。
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```

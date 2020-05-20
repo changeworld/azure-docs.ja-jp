@@ -107,7 +107,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     ```
 8.  また、必要に応じて、 **\<resource-group-name>.json** ファイル内の次のような他のパラメーターも変更できます。これらは、要件に基づくオプションです。
 
-    * **アドレス空間** - VNET のアドレス空間は、保存する前に変更できます。変更は、 **\<resource-group-name>.json** ファイルの **resources** > **addressSpace** セクションにある **addressPrefixes** プロパティで行います。
+    * **アドレス空間** - VNET のアドレス空間は、保存する前に変更できます。変更は、**\<resource-group-name>.json** ファイルの **resources** > **addressSpace** セクションにある **addressPrefixes** プロパティで行います。
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
         ```
 
-    * **サブネット** - サブネットの名前とサブネットのアドレス空間は、変更または追加できます。その操作は、 **\<resource-group-name>.json** ファイルの **subnets** セクションで行います。 サブネットの名前を変更するには、**name** プロパティを変更します。 サブネット アドレス空間を変更するには、 **\<resource-group-name>.json** ファイルの **addressPrefix** プロパティを変更します。
+    * **サブネット** - サブネットの名前とサブネットのアドレス空間は、変更または追加できます。その操作は、**\<resource-group-name>.json** ファイルの **subnets** セクションで行います。 サブネットの名前を変更するには、**name** プロパティを変更します。 サブネット アドレス空間を変更するには、**\<resource-group-name>.json** ファイルの **addressPrefix** プロパティを変更します。
 
         ```json
                 "subnets": [
@@ -291,7 +291,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
              }
     ```
 
-8. 内部ロード バランサー構成を移動するターゲット リージョンを編集するには、 **\<resource-group-name>.json** ファイルで **resources** の下の **location** プロパティを変更します。
+8. 内部ロード バランサー構成を移動するターゲット リージョンを編集するには、**\<resource-group-name>.json** ファイルで **resources** の下の **location** プロパティを変更します。
 
     ```json
         "resources": [
@@ -315,7 +315,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     ```
 12. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
     
-    * **SKU** - 構成内の内部ロード バランサーの SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、 **\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
+    * **SKU** - 構成内の内部ロード バランサーの SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、**\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
 
         ```json
         "resources": [
@@ -331,7 +331,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
         ```
       Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。
 
-    * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
+    * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、**\<resource-group-name>.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
         ```
        負荷分散規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
 
-    * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **probes** セクションでエントリを追加または削除します。
+    * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、**\<resource-group-name>.json** ファイルの **probes** セクションでエントリを追加または削除します。
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
         ```
        Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
 
-    * **インバウンド NAT 規則** - ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
+    * **インバウンド NAT 規則** - ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、**\<resource-group-name>.json** ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                     }
                 ]
         ```
-        インバウンド NAT 規則の追加または削除を完了するには、 **\<resource-group-name>.json** ファイルの末尾で **type** プロパティとして、規則が存在するか削除されている必要があります。
+        インバウンド NAT 規則の追加または削除を完了するには、**\<resource-group-name>.json** ファイルの末尾で **type** プロパティとして、規則が存在するか削除されている必要があります。
 
         ```json
         {

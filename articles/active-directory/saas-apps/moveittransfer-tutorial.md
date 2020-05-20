@@ -163,7 +163,7 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
     ![SAML ID プロバイダー](./media/moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-7. **[Edit Federated Identity Provider Settings (フェデレーション ID プロバイダーの設定の編集)]** ページの **[Enabled (有効)]** で **[Yes (はい)]** を選択し、 **[Save (保存)]** をクリックします。
+7. **[Edit Federated Identity Provider Settings (フェデレーション ID プロバイダーの設定の編集)]** ページの **[Enabled (有効)]** で **[Yes (はい)]** を選択し、**[Save (保存)]** をクリックします。
 
     ![フェデレーション ID プロバイダーの設定](./media/moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
@@ -173,9 +173,9 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
     
     a. **[Login name (ログイン名)]** として **[SAML NameID]** を選択します。
     
-    b. **[Full name]\(フル ネーム\)** として **[Other]\(その他\)** を選び、 **[Attribute name]\(属性名\)** ボックスに値「`http://schemas.microsoft.com/identity/claims/displayname`」を入力します。
+    b. **[Full name]\(フル ネーム\)** として **[Other]\(その他\)** を選び、**[Attribute name]\(属性名\)** ボックスに値「`http://schemas.microsoft.com/identity/claims/displayname`」を入力します。
     
-    c. **[Email]\(電子メール\)** として **[Other]\(その他\)** を選び、 **[Attribute name]\(属性名\)** ボックスに値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
+    c. **[Email]\(電子メール\)** として **[Other]\(その他\)** を選び、**[Attribute name]\(属性名\)** ボックスに値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
     
     d. **[Auto-create account on signon (サインオン時にアカウントを自動作成する)]** で **[Yes (はい)]** を選択します。
     
@@ -222,7 +222,7 @@ MOVEit Transfer - Azure AD integration で Azure AD シングル サインオン
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 

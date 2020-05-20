@@ -59,7 +59,7 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
     ![詳細](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. **[アラートの設定]** を選択して、 **[アラートの条件]** セクションで **[Whenever the Custom log search]\(次の場合に、カスタム ログ検索を行う: \) に &lt;ロジックが定義されていません&gt;** を選択します。 サインイン エラーが発生するたびにアラートを生成したいので、既定のアラート ロジックの **[しきい値]** に **1** を設定してから、 **[完了]** を選択します。 
+4. **[アラートの設定]** を選択して、**[アラートの条件]** セクションで **[Whenever the Custom log search]\(次の場合に、カスタム ログ検索を行う: \) に &lt;ロジックが定義されていません&gt;** を選択します。 サインイン エラーが発生するたびにアラートを生成したいので、既定のアラート ロジックの **[しきい値]** に **1** を設定してから、 **[完了]** を選択します。 
 
     ![シグナル ロジックの構成](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 

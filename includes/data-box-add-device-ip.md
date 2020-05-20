@@ -27,7 +27,7 @@ ms.locfileid: "67181840"
 
     ![Data Box ダッシュボード](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 
-5. **メモ帳**を管理者として起動し、**にある**hosts`C:\Windows\System32\Drivers\etc` ファイルを開きます。
+5. **メモ帳**を管理者として起動し、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
 6. **hosts** ファイルに `<device IP address> <Blob service endpoint>` というエントリを追加します。
 7. 次の図を参考にしてください。 **hosts** ファイルを保存します。
 

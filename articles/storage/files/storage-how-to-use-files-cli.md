@@ -275,7 +275,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
-[`az storage share delete`](/cli/azure/storage/share) コマンドを使用して、共有スナップショットを削除できます。 `$SNAPSHOT` パラメーターへの `--snapshot` 参照を含む変数を使用します。
+[`az storage share delete`](/cli/azure/storage/share) コマンドを使用して、共有スナップショットを削除できます。 `--snapshot` パラメーターへの `$SNAPSHOT` 参照を含む変数を使用します。
 
 ```azurecli-interactive
 az storage share delete \

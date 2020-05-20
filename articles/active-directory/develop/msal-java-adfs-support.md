@@ -32,7 +32,7 @@ MSAL for Java が Azure AD に接続されると、Azure AD で管理されて�
 
 ## <a name="acquire-a-token-interactively-for-a-federated-user"></a>フェデレーション ユーザーのトークンを対話形式で取得する
 
-`ConfidentialClientApplication.AcquireToken()` または `PublicClientApplication.AcquireToken()` で `AuthorizationCodeParameters` または `DeviceCodeParameters` を呼び出すときのユーザー エクスペリエンスは通常、次のようになります。
+`AuthorizationCodeParameters` または `DeviceCodeParameters` で `ConfidentialClientApplication.AcquireToken()` または `PublicClientApplication.AcquireToken()` を呼び出すときのユーザー エクスペリエンスは通常、次のようになります。
 
 1. ユーザーは自分のアカウント ID を入力します。
 2. Azure AD に "組織のページに移動します" と短い時間だけ表示された後、ユーザーは ID プロバイダーのサインイン ページにリダイレクトされます。 サインイン ページは、通常、組織のロゴでカスタマイズされます。
@@ -44,7 +44,7 @@ MSAL for Java が Azure AD に接続されると、Azure AD で管理されて�
 
 ## <a name="acquire-a-token-via-username-and-password"></a>ユーザー名とパスワードを使用してトークンを取得する
 
-`ConfidentialClientApplication.AcquireToken()` または `PublicClientApplication.AcquireToken()` と共に `IntegratedWindowsAuthenticationParameters` または `UsernamePasswordParameters` を使用してトークンを取得するとき、MSAL for Java では、ユーザー名に基づいて ID プロバイダーと通信します。 MSAL for Java では、ID プロバイダーから [SAML 1.1 トークン](reference-saml-tokens.md) が取得されます。このトークンはその後、Azure AD に与えられ、JSON Web トークン (JWT) が返されます。
+`IntegratedWindowsAuthenticationParameters` または `UsernamePasswordParameters` と共に `ConfidentialClientApplication.AcquireToken()` または `PublicClientApplication.AcquireToken()` を使用してトークンを取得するとき、MSAL for Java では、ユーザー名に基づいて ID プロバイダーと通信します。 MSAL for Java では、ID プロバイダーから [SAML 1.1 トークン](reference-saml-tokens.md) が取得されます。このトークンはその後、Azure AD に与えられ、JSON Web トークン (JWT) が返されます。
 
 ## <a name="next-steps"></a>次のステップ
 

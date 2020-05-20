@@ -88,7 +88,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>AllResources ビュー
 
-`dir` ディレクトリで「`AllResources`」と入力して、Azure リソースを表示します。
+`AllResources` ディレクトリで「`dir`」と入力して、Azure リソースを表示します。
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources

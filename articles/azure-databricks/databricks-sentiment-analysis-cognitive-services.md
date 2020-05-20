@@ -123,7 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Twitter アプリケーションの詳細](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "Twitter アプリケーションの詳細")
 
-3. アプリケーションのページで **[Keys and Tokens]\(キーとトークン\)** タブを選択し、 **[Consumer API Key]\(コンシューマー API キー\)** と **[Consumer API Secret Key]\(コンシューマー API シークレット キー\)** の値をコピーします。 さらに、 **[Access Token and Access Token Secret]\(アクセス トークンとアクセス トークン シークレット\)** の下の **[Create]\(作成\)** を選択して、アクセス トークンを生成します。 **[Access Token]\(アクセス トークン\)** と **[Access Token Secret]\(アクセス トークン シークレット\)** の値をコピーします。
+3. アプリケーションのページで **[Keys and Tokens]\(キーとトークン\)** タブを選択し、 **[Consumer API Key]\(コンシューマー API キー\)** と **[Consumer API Secret Key]\(コンシューマー API シークレット キー\)** の値をコピーします。 さらに、**[Access Token and Access Token Secret]\(アクセス トークンとアクセス トークン シークレット\)** の下の **[Create]\(作成\)** を選択して、アクセス トークンを生成します。 **[Access Token]\(アクセス トークン\)** と **[Access Token Secret]\(アクセス トークン シークレット\)** の値をコピーします。
 
     ![Twitter アプリケーションの詳細](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter アプリケーションの詳細")
 
@@ -216,7 +216,7 @@ Twitter アプリケーションについて取得した値を保存します。
 **SendTweetsToEventHub** ノートブックで次のコードを貼り付けて、プレースホルダーを、先ほど作成した Event Hubs 名前空間と Twitter アプリケーションの値に置き換えます。 このノートブックによって、キーワード "Azure" が含まれたツイートがリアルタイムで Event Hubs にストリーム配信されます。
 
 > [!NOTE]
-> Twitter API には、特定の要求の制限と[クォータ](https://developer.twitter.com/en/docs/basics/rate-limiting.html)があります。 Twitter API の標準のレート制限では不足の場合、この例では Twitter API を使用せずにテキスト コンテンツを生成できます。 そうするには、変数 **dataSource** を `test` ではなく `twitter` に設定し、リスト **testSource** に適切なテスト入力を設定します。
+> Twitter API には、特定の要求の制限と[クォータ](https://developer.twitter.com/en/docs/basics/rate-limiting.html)があります。 Twitter API の標準のレート制限では不足の場合、この例では Twitter API を使用せずにテキスト コンテンツを生成できます。 そうするには、変数 **dataSource** を `twitter` ではなく `test` に設定し、リスト **testSource** に適切なテスト入力を設定します。
 
 ```scala
     import scala.collection.JavaConverters._

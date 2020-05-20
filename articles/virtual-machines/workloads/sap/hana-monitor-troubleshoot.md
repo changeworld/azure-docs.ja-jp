@@ -129,7 +129,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、 *
 
 ローカルに保存されている SQL Statements.zip ファイルを選択すると、対応する SQL ステートメントが含まれているフォルダーがインポートされます。 この時点で、これらの SQL ステートメントを使用して、さまざまな診断チェックを実行できます。
 
-たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで **[Replication: Bandwidth (レプリケーション: 帯域幅)] の下の **Bandwidth** ステートメントを右クリックし、** SQL コンソールの **[開く]** を選択します。
+たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで **[Replication: Bandwidth (レプリケーション: 帯域幅)]** の下の **Bandwidth** ステートメントを右クリックし、**[Open (開く)]** を選択します。
 
 完全な SQL ステートメントが開かれるので、入力パラメーター (変更セクション) を変更し、実行することができます。
 
@@ -143,7 +143,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、 *
 
 ![その結果、トラブルシューティングに役立つ情報が表示される](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-HANA\_Configuration\_Minichecks でも同じことを実行し、 _[C]_ (重大度) 列の _X_ マークを確認します。
+HANA\_Configuration\_Minichecks でも同じことを実行し、_[C]_ (重大度) 列の _X_ マークを確認します。
 
 サンプル出力:
 

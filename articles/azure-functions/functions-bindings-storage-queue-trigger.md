@@ -27,7 +27,7 @@ Azure Functions で想定されているのは *base64* でエンコードされ
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-次の例は、キュー項目が処理されるたびに [ キューをポーリングし、ログを書き込む ](functions-dotnet-class-library.md)C# 関数`myqueue-items`を示しています。
+次の例は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込む [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```csharp
 public static class QueueFunctions
@@ -95,7 +95,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-function.json の [ プロパティで名前が指定された ](#usage) については、「`myQueueItem`使用方法`name`」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#message-metadata)」セクションを参照してください。
+function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#message-metadata)」セクションを参照してください。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -140,7 +140,7 @@ module.exports = async function (context, message) {
 };
 ```
 
-function.json の [ プロパティで名前が指定された ](#usage) については、「`myQueueItem`使用方法`name`」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#message-metadata)」セクションを参照してください。
+function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#message-metadata)」セクションを参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -261,7 +261,7 @@ def main(msg: func.QueueMessage):
 使用するストレージ アカウントは、次の順序で決定されます。
 
 * `QueueTrigger` 属性の `Connection` プロパティ。
-* `StorageAccount` 属性と同じパラメーターに適用された `QueueTrigger` 属性。
+* `QueueTrigger` 属性と同じパラメーターに適用された `StorageAccount` 属性。
 * 関数に適用される `StorageAccount` 属性。
 * クラスに適用される `StorageAccount` 属性。
 * "AzureWebJobsStorage" アプリ設定。
@@ -336,7 +336,7 @@ public class QueueTriggerDemo {
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-`string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 `paramName` は `name`function.json*の* プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+`string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 `paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
 
 * オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。 
 * `string`
@@ -365,7 +365,7 @@ public class QueueTriggerDemo {
 
 |プロパティ|種類|説明|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、`name`function.json*の* プロパティで指定された変数と同じ値になります。|
+|`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、*function.json* の `name` プロパティで指定された変数と同じ値になります。|
 |`DequeueCount`|`int`|このメッセージがデキューされた回数。|
 |`ExpirationTime`|`DateTimeOffset`|メッセージが期限切れになる時刻。|
 |`Id`|`string`|キュー メッセージ ID。|
@@ -388,7 +388,7 @@ public class QueueTriggerDemo {
 - メッセージが見つかると、ランタイムは 2 秒間待機してから、別のメッセージを確認します
 - メッセージが見つからない場合は、約 4 秒間待機してから再試行します。
 - 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。
-- 最大待ち時間は、`maxPollingInterval`host.json ファイル[内の ](functions-host-json.md#queues) プロパティで構成できます。
+- 最大待ち時間は、[host.json ファイル](functions-host-json.md#queues)内の `maxPollingInterval` プロパティで構成できます。
 
 ローカル開発の場合、最大ポーリング間隔は既定で 2 秒に設定されます。
 

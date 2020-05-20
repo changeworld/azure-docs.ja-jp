@@ -107,7 +107,7 @@ ms.locfileid: "79473559"
 -   **ポリシー スコープ:** すべてのスコープ  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> マネージド ID による認証  
- `authentication-managed-identity` ポリシーを使用して、API Management サービスのマネージド ID を利用したバックエンド サービスによる認証を行います。 このポリシーでは、指定されたリソースにアクセスするためのアクセス トークンを Azure Active Directory から取得するために、基本的にマネージド ID を利用します。 トークンが正常に取得されると、ポリシーは、`Authorization` スキームを使用してトークンの値を `Bearer` ヘッダーに設定します。
+ `authentication-managed-identity` ポリシーを使用して、API Management サービスのマネージド ID を利用したバックエンド サービスによる認証を行います。 このポリシーでは、指定されたリソースにアクセスするためのアクセス トークンを Azure Active Directory から取得するために、基本的にマネージド ID を利用します。 トークンが正常に取得されると、ポリシーは、`Bearer` スキームを使用してトークンの値を `Authorization` ヘッダーに設定します。
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   

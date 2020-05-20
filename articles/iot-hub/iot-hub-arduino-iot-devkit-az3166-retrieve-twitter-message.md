@@ -56,7 +56,7 @@ ms.locfileid: "60779837"
 
 ## <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
-ソリューション ウィンドウで、「`Ctrl+P`」と入力し、`Cmd+P` キー (macOS: `task cloud-provision` キー) を使用してタスクを実行します。
+ソリューション ウィンドウで、「`task cloud-provision`」と入力し、`Ctrl+P` キー (macOS: `Cmd+P` キー) を使用してタスクを実行します。
 
 VS Code ターミナルでは、対話型コマンド ラインを使用して、必要な Azure サービスをプロビジョニングできます。
 
@@ -171,7 +171,7 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
    ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
-5. 独自のトークンを使用して、`run.csx`[関数] > [shakeshake-cs]**内で** のコードを更新します。
+5. 独自のトークンを使用して、**[関数] > [shakeshake-cs]** 内で `run.csx` のコードを更新します。
 
    ```csharp
    string authHeader = "Bearer " + "[your own token]";

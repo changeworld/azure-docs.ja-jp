@@ -71,7 +71,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 バージョン 3 には、アプリケーションのリビルドだけでなく、コードの変更が必要な場合がある重大な変更が少し含まれています。
 
 ### <a name="indexesgetclient-return-type"></a>Indexes.GetClient の戻り型
-`Indexes.GetClient` メソッドには新しい戻り型があります。 以前は `SearchIndexClient` が返されていましたが、これはバージョン 2.0-preview で `ISearchIndexClient` に変更され、この変更がバージョン 3 にも引き継がれています。 これは、単体テストで `GetClient` の模擬実装を返すことによって `ISearchIndexClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
+`Indexes.GetClient` メソッドには新しい戻り型があります。 以前は `SearchIndexClient` が返されていましたが、これはバージョン 2.0-preview で `ISearchIndexClient` に変更され、この変更がバージョン 3 にも引き継がれています。 これは、単体テストで `ISearchIndexClient` の模擬実装を返すことによって `GetClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
 
 #### <a name="example"></a>例
 次のようなコードがあるものとします。

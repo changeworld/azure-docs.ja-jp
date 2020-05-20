@@ -69,7 +69,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    Connect-AzAccount
    ```
 
-2. 最初に、`Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 システム割り当てマネージド ID を有効にするには、`-AssignIdentity`Update-AzVM[ コマンドレットで ](/powershell/module/az.compute/update-azvm) スイッチを使用します。
+2. 最初に、`Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 システム割り当てマネージド ID を有効にするには、[Update-AzVM](/powershell/module/az.compute/update-azvm) コマンドレットで `-AssignIdentity` スイッチを使用します。
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -173,10 +173,10 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
    ```
-3. `Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 次に、ユーザー割り当てマネージド ID を Azure VM に割り当てるため、`-IdentityType`Update-AzVM`-IdentityID` コマンドレットで [ および ](/powershell/module/az.compute/update-azvm) スイッチを使用します。  `-IdentityId` パラメーターの値は、前の手順で書き留めた `Id` です。  `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、および `<USER ASSIGNED IDENTITY NAME>` を独自の値に置き換えます。
+3. `Get-AzVM` コマンドレットを使用して VM プロパティを取得します。 次に、ユーザー割り当てマネージド ID を Azure VM に割り当てるため、[Update-AzVM](/powershell/module/az.compute/update-azvm) コマンドレットで `-IdentityType` および `-IdentityID` スイッチを使用します。  `-IdentityId` パラメーターの値は、前の手順で書き留めた `Id` です。  `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、および `<USER ASSIGNED IDENTITY NAME>` を独自の値に置き換えます。
 
    > [!WARNING]
-   > 以前のユーザー割り当てマネージド ID を VM に割り当てておくには、VM オブジェクト (たとえば `Identity`) の `$vm.Identity` プロパティのクエリを実行します。  ユーザー割り当てマネージド ID が返された場合、VM に割り当てる新しいユーザー割り当てマネージド ID とともにこれらを次のコマンドに含めます。
+   > 以前のユーザー割り当てマネージド ID を VM に割り当てておくには、VM オブジェクト (たとえば `$vm.Identity`) の `Identity` プロパティのクエリを実行します。  ユーザー割り当てマネージド ID が返された場合、VM に割り当てる新しいユーザー割り当てマネージド ID とともにこれらを次のコマンドに含めます。
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>

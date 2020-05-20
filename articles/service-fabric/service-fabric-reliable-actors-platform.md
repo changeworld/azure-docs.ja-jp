@@ -28,7 +28,7 @@ ms.locfileid: "79236647"
 
 上記の図は、Service Fabric アプリケーション フレームワークとユーザー コードの関係を示しています。 青色の要素は Reliable Services アプリケーション フレームワークを表しています。また、オレンジ色の要素は Reliable Actors フレームワークを表し、緑色の要素はユーザー コードを表しています。
 
-Reliable Services では、サービスは `StatefulService` クラスを継承します。 このクラス自体は、`StatefulServiceBase` (ステートレス サービスの場合は `StatelessService`) から派生します。 Reliable Actors では、アクター サービスを使用します。 アクター サービスは、アクターが実行されるアクター パターンを実装する `StatefulServiceBase` クラスの別の実装です。 アクター サービス自体は `StatefulServiceBase` の実装にすぎないため、`ActorService` を継承したときと同様に、`StatefulService` から派生した独自のサービスを記述し、サービスレベルの機能を実装できます。次にその例を示します。
+Reliable Services では、サービスは `StatefulService` クラスを継承します。 このクラス自体は、`StatefulServiceBase` (ステートレス サービスの場合は `StatelessService`) から派生します。 Reliable Actors では、アクター サービスを使用します。 アクター サービスは、アクターが実行されるアクター パターンを実装する `StatefulServiceBase` クラスの別の実装です。 アクター サービス自体は `StatefulServiceBase` の実装にすぎないため、`StatefulService` を継承したときと同様に、`ActorService` から派生した独自のサービスを記述し、サービスレベルの機能を実装できます。次にその例を示します。
 
 * サービスのバックアップと復元。
 * すべてのアクターで共有される機能 (サーキット ブレーカーなど)。

@@ -39,7 +39,7 @@ ms.locfileid: "67181412"
 
 3. 次のコードを `listener.js` ファイルに追加します。 :
 
-    ご覧のとおり、コードは通常の `createRelayedServer` 関数に代わって `createServer` を使用しているという点を除き、Node.js の初心者向けチュートリアルで示したシンプルな HTTP サーバーの例と大きく変わりません。
+    ご覧のとおり、コードは通常の `createServer` 関数に代わって `createRelayedServer` を使用しているという点を除き、Node.js の初心者向けチュートリアルで示したシンプルな HTTP サーバーの例と大きく変わりません。
 
     ```js
     var uri = https.createRelayListenUri(ns, path);

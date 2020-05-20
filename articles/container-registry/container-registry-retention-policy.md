@@ -59,7 +59,7 @@ az acr config retention update --registry myregistry --status enabled --days 0 -
 保有期間が 0 日の上記のポリシーを有効にすると、タグなしマニフェストが削除されることをすぐに確認できます。
 
 1. テスト イメージ `hello-world:latest` をレジストリにプッシュするか、別のテストイメージを選択して置き換えます。
-1. `hello-world:latest`az acr repository untag[ コマンドを使用して、例えば ][az-acr-repository-untag] イメージのタグを削除します。 タグなしマニフェストはレジストリに残ります。
+1. [az acr repository untag][az-acr-repository-untag] コマンドを使用して、例えば `hello-world:latest` イメージのタグを削除します。 タグなしマニフェストはレジストリに残ります。
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```

@@ -33,7 +33,7 @@ Azure Search .NET Management SDK のバージョン 2 のターゲットは、�
 
 * `Services.CreateOrUpdate` とその非同期バージョンは、`SearchService` のプロビジョニングを自動的にポーリングし、サービスのプロビジョニングが完了するまで戻ることはなくなりました。 これにより、そのようなポーリング コードを自分で記述する必要がなくなります。
 * サービスのプロビジョニング を手動でポーリングする場合は、新しい `Services.BeginCreateOrUpdate` メソッドまたはその非同期バージョンのいずれかを使用できます。
-* 新しいメソッド `Services.Update` とその非同期バージョンが SDK に追加されています。 これらのメソッドでは、HTTP PATCH を使用して、サービスの増分更新をサポートします。 たとえば、目的の `SearchService` プロパティと `partitionCount` プロパティのみを含むこれらのメソッドに `replicaCount` インスタンスを渡すことで、サービスをスケーリングできるようになりました。 `Services.Get` を呼び出し、返された `SearchService` を変更して `Services.CreateOrUpdate` に渡すという古い方法は、引き続きサポートされますが、必要ではなくなりました。 
+* 新しいメソッド `Services.Update` とその非同期バージョンが SDK に追加されています。 これらのメソッドでは、HTTP PATCH を使用して、サービスの増分更新をサポートします。 たとえば、目的の `partitionCount` プロパティと `replicaCount` プロパティのみを含むこれらのメソッドに `SearchService` インスタンスを渡すことで、サービスをスケーリングできるようになりました。 `Services.Get` を呼び出し、返された `SearchService` を変更して `Services.CreateOrUpdate` に渡すという古い方法は、引き続きサポートされますが、必要ではなくなりました。 
 
 <a name="UpgradeSteps"></a>
 

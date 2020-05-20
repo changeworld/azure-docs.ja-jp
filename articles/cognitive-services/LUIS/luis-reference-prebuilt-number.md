@@ -38,7 +38,7 @@ number は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS が返す JSON 応答の  **フィールドには、`builtin.number`** `resolution` エンティティの認識された値が含まれます。
+LUIS が返す JSON 応答の `resolution` フィールドには、**`builtin.number`** エンティティの認識された値が含まれます。
 
 ## <a name="resolution-for-prebuilt-number"></a>作成済みの number の解決
 

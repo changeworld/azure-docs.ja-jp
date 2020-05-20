@@ -56,11 +56,11 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 | --- | --- | --- |
 | grant_type |required |要求されている付与の種類を指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。 |
 | client_id |required |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、[Azure Portal](https://portal.azure.com) で **[Azure Active Directory]** をクリックし、 **[アプリの登録]** をクリックしてからアプリケーションをクリックします。 client_id は "*アプリケーション ID*" です |
-| client_secret |required |呼び出し元の Web サービスまたは デーモン アプリケーションに対して Azure AD に登録されているキーを入力します。 キーを作成するには、Azure Portal で **[Azure Active Directory]** をクリックし、 **[アプリの登録]** をクリックしてからアプリケーションをクリックします。次に、 **[設定]** 、 **[キー]** の順にクリックして、キーを追加します。  このシークレットは、それを提供するときに URL エンコードします。 |
-| resource |required |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックして、サービス アプリケーションをクリックします。次に、 **[設定]** 、 **[プロパティ]** の順にクリックします |
+| client_secret |required |呼び出し元の Web サービスまたは デーモン アプリケーションに対して Azure AD に登録されているキーを入力します。 キーを作成するには、Azure Portal で **[Azure Active Directory]** をクリックし、**[アプリの登録]** をクリックしてからアプリケーションをクリックします。次に、**[設定]**、**[キー]** の順にクリックして、キーを追加します。  このシークレットは、それを提供するときに URL エンコードします。 |
+| resource |required |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、サービス アプリケーションをクリックします。次に、**[設定]**、**[プロパティ]** の順にクリックします |
 
 #### <a name="example"></a>例
-次の HTTP POST では、[ Web サービス用の](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)アクセス トークン`https://service.contoso.com/`を要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
+次の HTTP POST では、`https://service.contoso.com/` Web サービス用の[アクセス トークン](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)を要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -79,7 +79,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 | client_id |required |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、[Azure Portal](https://portal.azure.com) で **[Azure Active Directory]** をクリックし、 **[アプリの登録]** をクリックしてからアプリケーションをクリックします。 client_id は "*アプリケーション ID*" です |
 | client_assertion_type |required |値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります |
 | client_assertion |required | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)に関する記事を参照してください。|
-| resource | required |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックして、サービス アプリケーションをクリックします。次に、 **[設定]** 、 **[プロパティ]** の順にクリックします |
+| resource | required |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、サービス アプリケーションをクリックします。次に、**[設定]**、**[プロパティ]** の順にクリックします |
 
 パラメーターは、共有シークレットによる要求のパラメーターとほぼ同じであることに注意してください。唯一異なるのは、client_secret パラメーターが、client_assertion_type と client_assertion の 2 つのパラメーターに置き換えられている点です。
 

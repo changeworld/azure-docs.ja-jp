@@ -52,7 +52,7 @@ SignalR Service では、アプリケーション サーバーからのハート
 
 ## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>ASP.NET Core SignalR SDK から Azure SignalR Service SDK に切り替えると、カスタムの `IUserIdProvider` が例外をスローするのはなぜですか?
 
-ASP.NET Core SignalR SDK と Azure SignalR Service SDK では、`HubConnectionContext context` を呼び出すときのパラメーター `IUserIdProvider` が異なります。
+ASP.NET Core SignalR SDK と Azure SignalR Service SDK では、`IUserIdProvider` を呼び出すときのパラメーター `HubConnectionContext context` が異なります。
 
 ASP.NET Core SignalR の場合、`HubConnectionContext context` はすべてのプロパティに有効な値が指定された物理クライアント接続からのコンテキストです。
 

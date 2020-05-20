@@ -37,7 +37,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 ### <a name="reset-the-local-administrator-account-password"></a>**ローカル管理者アカウント パスワードのリセット**
 
-1. Windows VM を選択して、 **[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。
+1. Windows VM を選択して、**[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。
 
 2. **[パスワードのリセット]** を選択し、ユーザー名とパスワードを入力して、 **[更新]** を選択します。 
 
@@ -47,7 +47,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 このプロセスでは、VM 上でリモート デスクトップ サービスを有効にし、既定の RDP ポート 3389 のファイアウォール規則を作成します。
 
-1. Windows VM を選択して、 **[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。 
+1. Windows VM を選択して、**[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。 
 
 2. **[構成のみのリセット]** を選択して **[更新]** を選択します。 
 
@@ -77,7 +77,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**リモート デスクトップ サービスの構成のリセット**
 
-1. [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myVMAccess` リソース グループの `myVM` という名前の VM で、`myResourceGroup` という名前のアクセス拡張機能をリセットします。
+1. [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myResourceGroup` リソース グループの `myVM` という名前の VM で、`myVMAccess` という名前のアクセス拡張機能をリセットします。
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun

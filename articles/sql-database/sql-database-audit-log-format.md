@@ -26,7 +26,7 @@ ms.locfileid: "76722086"
 
 BLOB ストレージに格納されている監査ログは、Azure Storage アカウント内の `sqldbauditlogs` と呼ばれるコンテナーに格納されています。 コンテナー内のディレクトリ階層は、`<ServerName>/<DatabaseName>/<AuditName>/<Date>/` という形式になります。 BLOB ファイル名の形式は `<CreationTime>_<FileNumberInSession>.xel` です。ここで `CreationTime` は UTC `hh_mm_ss_ms` 形式で、`FileNumberInSession` はセッション ログが複数の BLOB ファイルにまたがる場合、実行中のインデックスになります。
 
-たとえば、`Database1` にあるデータベース `Server1` の場合、選択可能な有効なパスは以下のようになります：
+たとえば、`Server1` にあるデータベース `Database1` の場合、選択可能な有効なパスは以下のようになります：
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 

@@ -80,7 +80,7 @@ HBase では行レベルのトランザクションが提供されますが、Ph
 
 Phoenix のトランザクションを有効にする方法については、[Apache Phoenix トランザクションのドキュメント](https://phoenix.apache.org/transactions.html)をご覧ください。
 
-トランザクションが有効な新しいテーブルを作成するには、`TRANSACTIONAL` ステートメントで `true` プロパティを `CREATE` に設定します。
+トランザクションが有効な新しいテーブルを作成するには、`CREATE` ステートメントで `TRANSACTIONAL` プロパティを `true` に設定します。
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;

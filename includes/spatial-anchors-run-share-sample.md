@@ -50,7 +50,7 @@ samples フォルダー内の `AccountDetails.cs` ファイルを開きます。
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-**[Project]\(プロジェクト\)** ウィンドウで `Assets\AzureSpatialAnchors.Examples\Resources` に移動します。 [`SpatialAnchorSamplesConfig`] を選択します。 さらに、 **[Inspector]\(インスペクター\)** ウィンドウで、`Base Sharing Url` の値として (ASP.NET Web アプリの Azure デプロイにある) `Sharing Anchors Service url` を入力し、`index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
+**[Project]\(プロジェクト\)** ウィンドウで `Assets\AzureSpatialAnchors.Examples\Resources` に移動します。 [`SpatialAnchorSamplesConfig`] を選択します。 さらに、**[Inspector]\(インスペクター\)** ウィンドウで、`Base Sharing Url` の値として (ASP.NET Web アプリの Azure デプロイにある) `Sharing Anchors Service url` を入力し、`index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
 
 **[File]\(ファイル\)**  >  **[Save]\(保存\)** の順に選択してシーンを保存します。
 
@@ -60,7 +60,7 @@ samples フォルダー内の `AccountDetails.cs` ファイルを開きます。
 
 Android デバイスにサインインし、USB ケーブルを使用してコンピューターに接続します。
 
-**[ファイル]**  >  **[ビルド設定]** を選択して、 **[ビルド設定]** を開きます。
+**[ファイル]** > **[ビルド設定]** を選択して、**[ビルド設定]** を開きます。
 
 **[Scenes In Build]\(ビルド内のシーン\)** で、すべてのシーンの横にチェック マークが付いていることを確認します。
 
@@ -70,7 +70,7 @@ Android デバイスにサインインし、USB ケーブルを使用してコ�
 
 ### <a name="deploy-to-an-ios-device"></a>iOS デバイスにデプロイする
 
-**[ファイル]**  >  **[ビルド設定]** を選択して、 **[ビルド設定]** を開きます。
+**[ファイル]** > **[ビルド設定]** を選択して、**[ビルド設定]** を開きます。
 
 **[Scenes In Build]\(ビルド内のシーン\)** で、すべてのシーンの横にチェック マークが付いていることを確認します。
 

@@ -75,11 +75,11 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 1. Visual Studio の **[表示]** メニューで、 **[Cloud Explorer]** を選択します。
 
-1. **Cloud Explorer** で、Azure サブスクリプションと**ストレージ アカウント**を展開してから、関数で使用されているストレージ アカウントを展開します。 ストレージ アカウント名を思い出せない場合は、`AzureWebJobsStorage`local.settings.json*ファイルの* 接続文字列設定を確認してください。  
+1. **Cloud Explorer** で、Azure サブスクリプションと**ストレージ アカウント**を展開してから、関数で使用されているストレージ アカウントを展開します。 ストレージ アカウント名を思い出せない場合は、*local.settings.json* ファイルの `AzureWebJobsStorage` 接続文字列設定を確認してください。  
 
 1. **[キュー]** ノードを展開し、**outqueue** という名前のキューをダブルクリックして、Visual Studio でキューの内容を表示します。 
 
-   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 `name`Azure*の既定の* 値で関数を呼び出した場合、キュー メッセージは *Name passed to the function: Azure* です。
+   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 *Azure* の既定の `name` 値で関数を呼び出した場合、キュー メッセージは *Name passed to the function: Azure* です。
 
     ![Azure Storage Explorer に表示されたキュー メッセージ](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

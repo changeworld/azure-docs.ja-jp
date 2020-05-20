@@ -27,7 +27,7 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 
 結果に満足するまで、このテストと更新の短いループが続きます。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
 
-大規模な KB には、[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) と、公開されているナレッジ ベースではなく `isTest` ナレッジ ベースを照会する本文のプロパティ `test` を利用して、自動化されたテストを使用します。
+大規模な KB には、[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) と、公開されているナレッジ ベースではなく `test` ナレッジ ベースを照会する本文のプロパティ `isTest` を利用して、自動化されたテストを使用します。
 
 ```json
 {

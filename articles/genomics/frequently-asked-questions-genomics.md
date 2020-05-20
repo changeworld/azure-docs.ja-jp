@@ -25,7 +25,7 @@ ms.locfileid: "76986038"
 Microsoft Genomics サービスの config.txt ファイルで、process_name を `gatk4` に指定します。 通常の課金レートで課金されることに注意してください。
 
 ## <a name="how-do-i-enable-output-compression"></a>出力の圧縮を有効にするには、どうすればよいですか。
-出力の圧縮にオプションの引数を使用して、出力 vcf または gvcf を圧縮することができます。 これは、`-bgzip` (bgzip output) および `-tabix` (tabix output) ファイルを生成するために、vcf または gvcf 出力に対して `.gz` の後に`.tbi` を実行することと同等です。 `bgzip` では vcf または gvcf ファイルを圧縮し、`tabix` では圧縮されたファイル用のインデックスを作成します。 引数はブール値であり、vcf 出力の場合は既定で `false` に設定され、gcvf 出力の場合は既定で `true` に設定されます。 コマンド ライン上で使用するには、`-bz` または `--bgzip-output` を `true` (bgzip および tabix を実行) または `false` として指定します。 この引数を config.txt ファイル内で使用するには、ファイルに `bgzip_output: true` または `bgzip_output: false` を追加します。
+出力の圧縮にオプションの引数を使用して、出力 vcf または gvcf を圧縮することができます。 これは、`.gz` (bgzip output) および `.tbi` (tabix output) ファイルを生成するために、vcf または gvcf 出力に対して `-bgzip` の後に`-tabix` を実行することと同等です。 `bgzip` では vcf または gvcf ファイルを圧縮し、`tabix` では圧縮されたファイル用のインデックスを作成します。 引数はブール値であり、vcf 出力の場合は既定で `false` に設定され、gcvf 出力の場合は既定で `true` に設定されます。 コマンド ライン上で使用するには、`-bz` または `--bgzip-output` を `true` (bgzip および tabix を実行) または `false` として指定します。 この引数を config.txt ファイル内で使用するには、ファイルに `bgzip_output: true` または `bgzip_output: false` を追加します。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Microsoft Genomics の SLA はどうなっていますか。
 マイクロソフトは、ワークフロー API 要求を受信するために 99.9% の時間において Microsoft Genomics サービスを利用できることを保証します。 詳細については、[SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/) のページを参照してください。

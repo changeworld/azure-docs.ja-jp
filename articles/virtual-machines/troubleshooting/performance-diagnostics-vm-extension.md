@@ -233,7 +233,7 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
 
 ## <a name="view-and-share-the-results"></a>結果を表示および共有する
 
-拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、*C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics***version>\\ フォルダー以下の \<zipfilename**_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
+拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** フォルダー以下の *zipfilename*_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
 
 サポート チケットの作業を行うサポート エンジニアを支援するために、Microsoft がこの SAS リンクを使って診断データをダウンロードする場合があります。
 

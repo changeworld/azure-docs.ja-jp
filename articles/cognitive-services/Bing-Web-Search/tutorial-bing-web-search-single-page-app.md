@@ -66,7 +66,7 @@ npm install
 
 ## <a name="html-form"></a>HTML フォーム
 
-`index.html` には、ユーザーが検索オプションを検索して選択できるフォームが含まれています。 フォームが送信され、`onsubmit` に定義されている `bingWebSearch()` メソッドが呼び出されると、`scripts.js` 属性が呼び出されます。 このスクリプトは次の 3 つの引数を受け取ります。
+`index.html` には、ユーザーが検索オプションを検索して選択できるフォームが含まれています。 フォームが送信され、`scripts.js` に定義されている `bingWebSearch()` メソッドが呼び出されると、`onsubmit` 属性が呼び出されます。 このスクリプトは次の 3 つの引数を受け取ります。
 
 * Search query (検索クエリ)
 * 選択されるオプション
@@ -331,7 +331,7 @@ function renderSearchResults(results) {
 }
 ```
 
-`renderResultsItems()` 関数は各 `RankingResponse` コレクション内の項目を反復処理し、`answerType` および `resultIndex` 値を使用して各ランキング結果を検索結果にマッピングします。さらに、適切なレンダリング関数を呼び出して、HTML を生成します。 項目に `resultIndex` が指定されていない場合は、`renderResultsItems()` がその種類の結果すべてを反復処理し、各項目でレンダリング関数を呼び出します。 結果の HTML は、`<div>` 内の適切な `index.html` 要素に挿入されます。
+`renderResultsItems()` 関数は各 `RankingResponse` コレクション内の項目を反復処理し、`answerType` および `resultIndex` 値を使用して各ランキング結果を検索結果にマッピングします。さらに、適切なレンダリング関数を呼び出して、HTML を生成します。 項目に `resultIndex` が指定されていない場合は、`renderResultsItems()` がその種類の結果すべてを反復処理し、各項目でレンダリング関数を呼び出します。 結果の HTML は、`index.html` 内の適切な `<div>` 要素に挿入されます。
 
 ```javascript
 // Render search results from the RankingResponse object per rank response and

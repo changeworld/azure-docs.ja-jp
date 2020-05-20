@@ -83,7 +83,7 @@ $vm | Update-AzVM
 
 このコードを実行すると、資格情報の入力を求められます。 提供された資格情報は、短期間メモリに格納されます。 **Set-AzVMDscExtension** コマンドレットを使用して資格情報が公開されると、資格情報は HTTPS 経由で VM に送信されます。 VM では、Azure がローカル VM 証明書を使用して、暗号化された資格情報をディスクに格納します。 資格情報はメモリ内で一時的に復号化された後、再暗号化されてから DSC に渡されます。
 
-このプロセスは、[拡張機能ハンドラーがない、セキュリティで保護された構成を使用する場合](/powershell/scripting/dsc/pull-server/securemof)とは異なります。 Azure 環境には、証明書を使用して構成データを安全に送信する機能が用意されています。 そのため、DSC 拡張機能ハンドラーを使用する場合、**ConfigurationData** に **$CertificatePath** または **$CertificateID**/  **$Thumbprint** エントリを指定する必要はありません。
+このプロセスは、[拡張機能ハンドラーがない、セキュリティで保護された構成を使用する場合](/powershell/scripting/dsc/pull-server/securemof)とは異なります。 Azure 環境には、証明書を使用して構成データを安全に送信する機能が用意されています。 そのため、DSC 拡張機能ハンドラーを使用する場合、**ConfigurationData** に **$CertificatePath** または **$CertificateID**/ **$Thumbprint** エントリを指定する必要はありません。
 
 ## <a name="next-steps"></a>次のステップ
 

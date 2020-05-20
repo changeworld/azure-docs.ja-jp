@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-バインド式とパターンを使用するのと同じ機能がクラス ライブラリの属性に適用されます。 次の例では、属性コンストラクター パラメーターは前の `path`function.json*の例と同じ* 値です。 
+バインド式とパターンを使用するのと同じ機能がクラス ライブラリの属性に適用されます。 次の例では、属性コンストラクター パラメーターは前の *function.json* の例と同じ `path` 値です。 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -159,7 +159,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-これらのメタデータ値は、*function.json* ファイルのプロパティでアクセスできます。 たとえば、キュー トリガーを使用していて、読み取る BLOB の名前がキュー メッセージに含まれているとします。 次の例に示すように、*function.json* ファイルで、BLOB `queueTrigger` プロパティの `path` メタデータ プロパティを使用できます。
+これらのメタデータ値は、*function.json* ファイルのプロパティでアクセスできます。 たとえば、キュー トリガーを使用していて、読み取る BLOB の名前がキュー メッセージに含まれているとします。 次の例に示すように、*function.json* ファイルで、BLOB `path` プロパティの `queueTrigger` メタデータ プロパティを使用できます。
 
 ```json
   "bindings": [

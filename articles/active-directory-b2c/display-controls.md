@@ -32,7 +32,7 @@ ms.locfileid: "78188734"
 
 ## <a name="prerequisites"></a>前提条件
 
- [セルフアサート技術プロファイル](self-asserted-technical-profile.md#metadata)の [Metadata](self-asserted-technical-profile.md) セクションで参照された [ContentDefinition](contentdefinitions.md) の `DataUri` をページ コントラクトのバージョン 2.0.0 以上に設定する必要があります。 次に例を示します。
+ [セルフアサート技術プロファイル](self-asserted-technical-profile.md)の [Metadata](self-asserted-technical-profile.md#metadata) セクションで参照された [ContentDefinition](contentdefinitions.md) の `DataUri` をページ コントラクトのバージョン 2.0.0 以上に設定する必要があります。 次に例を示します。
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -78,7 +78,7 @@ ms.locfileid: "78188734"
 
 各種類の表示コントロールには、クレーム表示、[クレーム出力](#output-claims)、および実行される[アクション](#display-control-actions)の異なるセットが必要です。
 
-**セルフアサート技術プロファイル**で定義されている[クレーム表示](self-asserted-technical-profile.md#display-claims)と同様に、このクレーム表示では、表示コントロール内でユーザーから収集されるクレームを表します。 参照される **ClaimType** 要素では、**UserInputType** 要素として、`TextBox` または `DropdownSingleSelect` など Azure AD B2C がサポートするユーザー入力タイプを指定する必要があります。 **Action** にクレーム表示の値が必要な場合は、**Required** 属性を `true` に設定して、ユーザーが特定のクレーム表示の値を指定しなければならないようにします。
+[セルフアサート技術プロファイル](self-asserted-technical-profile.md#display-claims)で定義されている**クレーム表示**と同様に、このクレーム表示では、表示コントロール内でユーザーから収集されるクレームを表します。 参照される **ClaimType** 要素では、**UserInputType** 要素として、`TextBox` または `DropdownSingleSelect` など Azure AD B2C がサポートするユーザー入力タイプを指定する必要があります。 **Action** にクレーム表示の値が必要な場合は、**Required** 属性を `true` に設定して、ユーザーが特定のクレーム表示の値を指定しなければならないようにします。
 
 特定の種類の表示コントロールには、特定のクレーム表示が必要です。 たとえば、種類が **VerificationControl** の表示コントロールには、**VerificationCode** が必要です。 属性 **ControlClaimType** を使用して、その必須のクレームに対して指定される DisplayClaim を指定します。 次に例を示します。
 
@@ -96,7 +96,7 @@ ms.locfileid: "78188734"
 
 表示コントロールの**アクション**は、ユーザーがクライアント側 (ブラウザー) で特定のアクションを実行したときに Azure AD B2C バックエンドで発生するプロシージャです。 たとえば、ユーザーがページのボタンを選択したときに実行する検証です。
 
-アクションは、**検証技術プロファイル**の一覧を定義します。 これらは、表示コントロールのクレーム表示の一部またはすべてを検証するために使用されます。 検証技術プロファイルは、ユーザー入力を検証し、ユーザーにエラーを返す場合があります。 セルフアサート技術プロファイルで**検証技術プロファイル**に使用される方法と同様に、**ContinueOnError**、**ContinueOnSuccess**、および [Preconditions](validation-technical-profile.md) 表示コントロールのアクションで使用することができます。
+アクションは、**検証技術プロファイル**の一覧を定義します。 これらは、表示コントロールのクレーム表示の一部またはすべてを検証するために使用されます。 検証技術プロファイルは、ユーザー入力を検証し、ユーザーにエラーを返す場合があります。 セルフアサート技術プロファイルで[検証技術プロファイル](validation-technical-profile.md)に使用される方法と同様に、**ContinueOnError**、**ContinueOnSuccess**、および **Preconditions** 表示コントロールのアクションで使用することができます。
 
 次の例では、ユーザーが選択した **mfaType** クレームに基づいてメールまたは SMS でコードを送信します。
 
@@ -127,7 +127,7 @@ ms.locfileid: "78188734"
 
 ## <a name="referencing-display-controls"></a>表示コントロールの参照
 
-表示コントロールは、[セルフアサート技術プロファイル](self-asserted-technical-profile.md#display-claims)の[クレーム表示](self-asserted-technical-profile.md)で参照されます。
+表示コントロールは、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)の[クレーム表示](self-asserted-technical-profile.md#display-claims)で参照されます。
 
 次に例を示します。
 

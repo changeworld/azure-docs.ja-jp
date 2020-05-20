@@ -122,7 +122,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  `walinuxagent` パッケージおよび `NetworkManager` パッケージがインストールされている場合、`NetworkManager-gnome` パッケージによってこれらのパッケージが削除されます。
+   >  `NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージによってこれらのパッケージが削除されます。
 
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。

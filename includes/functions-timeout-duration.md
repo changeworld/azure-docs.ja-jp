@@ -17,7 +17,7 @@ ms.locfileid: "77198328"
 ---
 ## <a name="function-app-timeout-duration"></a><a name="timeout"></a>Function App タイムアウト期間 
 
-関数アプリのタイムアウト期間は、`functionTimeout`host.json[ プロジェクト ファイルの ](../articles/azure-functions/functions-host-json.md#functiontimeout) プロパティによって定義されます。 次の表は、両方のプランと各種ランタイム バージョンでの既定と最大値 (分単位) を示します。
+関数アプリのタイムアウト期間は、[host.json](../articles/azure-functions/functions-host-json.md#functiontimeout) プロジェクト ファイルの `functionTimeout` プロパティによって定義されます。 次の表は、両方のプランと各種ランタイム バージョンでの既定と最大値 (分単位) を示します。
 
 | プラン | ランタイム バージョン | Default | 最大値 |
 |------|---------|---------|---------|

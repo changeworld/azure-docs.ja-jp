@@ -35,7 +35,7 @@ Azure Spring Cloud インスタンスをデプロイしていない場合は、[
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. `spring.redis.*` ファイルからすべての `application.properties` プロパティを削除します
+1. `application.properties` ファイルからすべての `spring.redis.*` プロパティを削除します
 
 1. `az spring-cloud app update` を使用して現在のデプロイを更新するか、`az spring-cloud app deployment create` を使用して新しいデプロイを作成します。
 

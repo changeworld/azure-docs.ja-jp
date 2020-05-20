@@ -56,7 +56,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 システム割り当てマネージド ID を有効にして仮想マシン スケール セットを作成する場合:
 
-1. システム割り当てマネージド ID を持つ仮想マシン スケール セットの作成については、*New-AzVmssConfig* コマンドレット リファレンス記事の "[例 1](/powershell/module/az.compute/new-azvmssconfig)" を参照してください。  パラメーター `-IdentityType SystemAssigned` を `New-AzVmssConfig` コマンドレットに追加します。
+1. システム割り当てマネージド ID を持つ仮想マシン スケール セットの作成については、[New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) コマンドレット リファレンス記事の "*例 1*" を参照してください。  パラメーター `-IdentityType SystemAssigned` を `New-AzVmssConfig` コマンドレットに追加します。
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
@@ -74,7 +74,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    Connect-AzAccount
    ```
 
-2. まず、[`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) コマンドレットを使用して、仮想マシン スケール セットのプロパティを取得します。 システム割り当てマネージド ID を有効にするには、`-IdentityType`Update-AzVmss[ コマンドレットで ](/powershell/module/az.compute/update-azvmss) スイッチを使用します。
+2. まず、[`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) コマンドレットを使用して、仮想マシン スケール セットのプロパティを取得します。 システム割り当てマネージド ID を有効にするには、[Update-AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットで `-IdentityType` スイッチを使用します。
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
@@ -118,7 +118,7 @@ Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
    Connect-AzAccount
    ```
 
-2. まず、`Get-AzVM` コマンドレットを使用して、仮想マシン スケール セットのプロパティを取得します。 次に、ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てるため、`-IdentityType`Update-AzVmss`-IdentityID` コマンドレットで [ スイッチと ](/powershell/module/az.compute/update-azvmss) スイッチを使用します。 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、`<USER ASSIGNED ID1>`、`USER ASSIGNED ID2` を、実際の値に置き換えます。
+2. まず、`Get-AzVM` コマンドレットを使用して、仮想マシン スケール セットのプロパティを取得します。 次に、ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てるため、[Update-AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットで `-IdentityType` スイッチと `-IdentityID` スイッチを使用します。 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、`<USER ASSIGNED ID1>`、`USER ASSIGNED ID2` を、実際の値に置き換えます。
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

@@ -188,7 +188,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>重要なセクション (Durable Functions 2.x、現在 .NET のみ)
 
-オーケストレーションのインスタンスはシングルスレッドであるため、オーケストレーションの "*内部*" の競合状態について考慮する必要はありません。 ただし、オーケストレーションから外部システムとやりとりする場合、競合状態が発生する可能性があります。 外部システムと相互作用するときの競合状態を軽減するため、オーケストレーター関数では .NET の  *メソッドを使用して "* クリティカル セクション`LockAsync`" を定義できます。
+オーケストレーションのインスタンスはシングルスレッドであるため、オーケストレーションの "*内部*" の競合状態について考慮する必要はありません。 ただし、オーケストレーションから外部システムとやりとりする場合、競合状態が発生する可能性があります。 外部システムと相互作用するときの競合状態を軽減するため、オーケストレーター関数では .NET の `LockAsync` メソッドを使用して "*クリティカル セクション*" を定義できます。
 
 次のサンプル コードで示すオーケストレーター関数では、クリティカル セクションが定義されています。 クリティカル セクションに入るには、`LockAsync` メソッドを使用します。 このメソッドでは、持続的にロック状態を管理する[持続エンティティ](durable-functions-entities.md)への 1 つ以上の参照を渡す必要があります。 クリティカル セクション内のコードを実行できるこのオーケストレーションのインスタンスは、一度に 1 つだけです。
 
@@ -267,7 +267,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-.NET では、[ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) の新機能を使用しています。
+.NET では、[ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) の新機能を使用しています。
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

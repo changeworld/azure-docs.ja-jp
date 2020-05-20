@@ -98,7 +98,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/contosoTopics/T1` または `http://contoso.servicebus.windows.net` となります。
 
-SAS トークンは、`<resourceURI>` で使われている `signature-string` がプレフィックスになっているすべてのリソースで有効です。
+SAS トークンは、`signature-string` で使われている `<resourceURI>` がプレフィックスになっているすべてのリソースで有効です。
 
 ## <a name="regenerating-keys"></a>キーの再生成
 
@@ -114,7 +114,7 @@ SAS トークンは、`<resourceURI>` で使われている `signature-string` �
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>エンティティの共有アクセス承認規則へのアクセス
 
-Service Bus .NET Framework ライブラリでは、Service Bus のキューまたはトピックに構成された [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトに、対応する [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) または [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) の [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.topicdescription) コレクションを介してアクセスできます。
+Service Bus .NET Framework ライブラリでは、Service Bus のキューまたはトピックに構成された [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトに、対応する [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) または [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) の [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) コレクションを介してアクセスできます。
 
 次のコードでは、キューの承認規則を追加する方法を示します。
 
@@ -168,7 +168,7 @@ sendClient.Send(helloMessage);
 
 接続文字列には、規則名 (*SharedAccessKeyName*) と規則キー (*SharedAccessKey*) または以前に発行されたトークン (*SharedAccessSignature*) を含めることができます。 接続文字列を受け付けるコンストラクターまたはファクトリ メソッドに渡される接続文字列にこれらが存在する場合、SAS トークン プロバイダーが自動的に作成されて設定されます。
 
-Service Bus リレーで SAS 承認を使用するには、Service Bus 名前空間に構成されている SAS キーを使用できます。 名前空間 ([RelayDescription](/dotnet/api/microsoft.servicebus.namespacemanager) を指定した [NamespaceManager](/dotnet/api/microsoft.servicebus.messaging.relaydescription)) のオブジェクトにリレーを明示的に作成する場合は、そのリレーに SAS 規則を設定するだけです。 Service Bus サブスクリプションで SAS 承認を使用するには、Service Bus 名前空間またはトピックに構成されている SAS キーを使用できます。
+Service Bus リレーで SAS 承認を使用するには、Service Bus 名前空間に構成されている SAS キーを使用できます。 名前空間 ([RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription) を指定した [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)) のオブジェクトにリレーを明示的に作成する場合は、そのリレーに SAS 規則を設定するだけです。 Service Bus サブスクリプションで SAS 承認を使用するには、Service Bus 名前空間またはトピックに構成されている SAS キーを使用できます。
 
 ## <a name="use-the-shared-access-signature-at-http-level"></a>Shared Access Signature の使用 (HTTP レベル)
 

@@ -164,7 +164,7 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 ### <a name="tracking-store-settings"></a>追跡ストアの設定
 
-各関数アプリでは、個別のスケジュール キュー (可能な場合は異なるストレージ アカウントの) を使用する必要があります。 アプリケーションのすべてのバージョンですべてのオーケストレーション インスタンスのクエリを実行したい場合は、関数アプリ間でインスタンス テーブルと履歴テーブルを共有できます。 `trackingStoreConnectionStringName`host.json settings`trackingStoreNamePrefix` ファイルで [ と ](durable-functions-bindings.md#host-json) の設定を構成し、すべてのテーブルで同じ値が使用されるようにすることで、テーブルを共有できます。
+各関数アプリでは、個別のスケジュール キュー (可能な場合は異なるストレージ アカウントの) を使用する必要があります。 アプリケーションのすべてのバージョンですべてのオーケストレーション インスタンスのクエリを実行したい場合は、関数アプリ間でインスタンス テーブルと履歴テーブルを共有できます。 [host.json settings](durable-functions-bindings.md#host-json) ファイルで `trackingStoreConnectionStringName` と `trackingStoreNamePrefix` の設定を構成し、すべてのテーブルで同じ値が使用されるようにすることで、テーブルを共有できます。
 
 詳細については、「[Azure における Durable Functions でのインスタンスの管理](durable-functions-instance-management.md)」を参照してください。
 

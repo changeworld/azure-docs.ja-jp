@@ -76,7 +76,7 @@ PowerShell での手順については、「[To reboot an Azure Cache for Redis]
 
 メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
 
-更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure portal からは構成できませんが、PowerShell で `MaintenanceWindow`New-AzRedisCacheScheduleEntry[ コマンドレットの ](/powershell/module/az.rediscache/new-azrediscachescheduleentry) パラメーターを使用して構成できます。 詳細については、「Can I manage scheduled updates using PowerShell, CLI, or other management tools? (PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか)」を参照してください。
+更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure portal からは構成できませんが、PowerShell で [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳細については、「Can I manage scheduled updates using PowerShell, CLI, or other management tools? (PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか)」を参照してください。
 
 ## <a name="schedule-updates-faq"></a>更新のスケジュールに関する FAQ
 * [更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

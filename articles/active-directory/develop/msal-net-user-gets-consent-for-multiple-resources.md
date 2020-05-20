@@ -31,7 +31,7 @@ Microsoft ID プラットフォーム エンドポイントは、ユーザーが
 - https:\//mytenant.onmicrosoft.com/customerapi (2 つのスコープ: `customer.read` と `customer.write`)
 - https:\//mytenant.onmicrosoft.com/vendorapi (2 つのスコープ: `vendor.read` と `vendor.write`)
 
-次の例に示すように、`.WithExtraScopeToConsent`extraScopesToConsent*パラメーターを指定した* 修飾子を使用する必要があります。
+次の例に示すように、*extraScopesToConsent* パラメーターを指定した `.WithExtraScopeToConsent` 修飾子を使用する必要があります。
 
 ```csharp
 string[] scopesForCustomerApi = new string[]

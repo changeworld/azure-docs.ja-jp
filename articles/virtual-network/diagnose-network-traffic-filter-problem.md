@@ -36,7 +36,7 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 
 ## <a name="diagnose-using-azure-portal"></a>Azure portal を使用して診断する
 
-1. [必要なアクセス許可](https://portal.azure.com)を持つアカウントで Azure [portal](virtual-network-network-interface.md#permissions) にログインします。
+1. [必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで Azure [portal](https://portal.azure.com) にログインします。
 2. Azure portal の上部の検索ボックスに、VM の名前を入力します。 検索結果に VM の名前が表示されたら、それを選択します。
 3. 次の図に示すように、 **[設定]** で **[ネットワーク]** を選択します。
 
@@ -47,9 +47,9 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
    - **mySubnetNSG**: ネットワーク インターフェイスが含まれるサブネットに関連付けられています。
    - **myVMNSG**: **myVMVMNic** という名前の VM 内のネットワーク インターフェイスに関連付けられています。
 
-   **DenyAllInBound** という名前のルールが、「[シナリオ](#scenario)」で説明したように、ポート 80 経由でのインターネットから VM への受信通信を妨げています。 規則の *[ソース]* には **0.0.0.0/0** と表示されており、これにはインターネットが含まれます。 優先順位がそれより高くて (小さい値) ポート 80 での受信を許可する規則は他にありません。 インターネットから VM へのポート 80 での受信を許可する方法については、「[問題を解決する](#resolve-a-problem)」をご覧ください。 セキュリティ規則および Azure によるその適用方法について詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md)」をご覧ください。
+   **DenyAllInBound** という名前のルールが、「[シナリオ](#scenario)」で説明したように、ポート 80 経由でのインターネットから VM への受信通信を妨げています。 規則の **[ソース]** には *0.0.0.0/0* と表示されており、これにはインターネットが含まれます。 優先順位がそれより高くて (小さい値) ポート 80 での受信を許可する規則は他にありません。 インターネットから VM へのポート 80 での受信を許可する方法については、「[問題を解決する](#resolve-a-problem)」をご覧ください。 セキュリティ規則および Azure によるその適用方法について詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md)」をご覧ください。
 
-   図の下部には、 **[送信ポートの規則]** も示されています。 そこには、ネットワーク インターフェイスの送信ポート規則が表示されます。 図で各 NSG に表示されている受信規則は 4 つだけですが、もっと多くの規則がある場合もあります。 図では、 **[ソース]** と **[ターゲット]** に **VirtualNetwork** と、また **[ソース]** に **AzureLoadBalancer** と表示されています。 **VirtualNetwork** と **AzureLoadBalancer** は [サービス タグ](security-overview.md#service-tags)です。 サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。
+   図の下部には、 **[送信ポートの規則]** も示されています。 そこには、ネットワーク インターフェイスの送信ポート規則が表示されます。 図で各 NSG に表示されている受信規則は 4 つだけですが、もっと多くの規則がある場合もあります。 図では、**[ソース]** と **[ターゲット]** に **VirtualNetwork** と、また **[ソース]** に **AzureLoadBalancer** と表示されています。 **VirtualNetwork** と **AzureLoadBalancer** は [サービス タグ](security-overview.md#service-tags)です。 サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。
 
 4. VM が実行状態であることを確認した後、前の図のように **[有効なセキュリティ規則]** を選択して、次の図のように有効なセキュリティ規則を表示します。
 
@@ -79,7 +79,7 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール、バージョン 1.0.0 以降が必要です。 コンピューターで `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount`必要なアクセス許可[を持つアカウントで ](virtual-network-network-interface.md#permissions) を実行して Azure にログインする必要もあります。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール、バージョン 1.0.0 以降が必要です。 コンピューターで `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Connect-AzAccount` を実行して Azure にログインする必要もあります。
 
 ネットワーク インターフェイスの有効なセキュリティ規則を取得するには、[Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup) を使います。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* という名前のネットワーク インターフェイスの有効なセキュリティ規則を取得します。
 
@@ -113,7 +113,7 @@ NetworkInterfaces
 
 ## <a name="diagnose-using-azure-cli"></a>Azure CLI を使用して診断する
 
-Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login`必要なアクセス許可[を持つアカウントで ](virtual-network-network-interface.md#permissions) を実行して Azure にログインする必要もあります。
+Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にログインする必要もあります。
 
 [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) を使用して、ネットワーク インターフェイスに対して有効なセキュリティ規則を取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* という名前のネットワーク インターフェイスの有効なセキュリティ規則を取得します。
 
@@ -158,7 +158,7 @@ az vm show \
 
 - **NetworkSecurityGroup**: ネットワーク セキュリティ グループの ID です。
 - **Association**: ネットワーク セキュリティ グループが *NetworkInterface* または *Subnet* のどちらに関連付けられているかを示します。 NSG が両方に関連付けられている場合、出力は各 NSG の **NetworkSecurityGroup**、**Association**、および **EffectiveSecurityRules** で返されます。 このコマンドを実行して有効なセキュリティ規則を表示する直前に、NSG リソースを関連付けたり、関連付けを解除したりした場合は、コマンドの出力にその変更が反映されるまで数秒間待たなければならないことがあります。
-- **EffectiveSecurityRules**: 各プロパティの説明について詳しくは、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 名前の前に *defaultSecurityRules/* が付いている規則は、すべての NSG に存在する既定のセキュリティ規則です。 名前の前に *securityRules/* が付いている規則は、ユーザーが作成した規則です。 [destinationAddressPrefix](security-overview.md#service-tags) または **sourceAddressPrefix** プロパティに対して **Internet**、**VirtualNetwork**、**AzureLoadBalancer** などの**サービス タグ**が指定されている規則は、**expandedDestinationAddressPrefix** プロパティにも値があります。 **expandedDestinationAddressPrefix** プロパティには、サービス タグによって表されるすべてのアドレス プレフィックスが一覧表示されます。
+- **EffectiveSecurityRules**: 各プロパティの説明について詳しくは、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 名前の前に *defaultSecurityRules/* が付いている規則は、すべての NSG に存在する既定のセキュリティ規則です。 名前の前に *securityRules/* が付いている規則は、ユーザーが作成した規則です。 **destinationAddressPrefix** または **sourceAddressPrefix** プロパティに対して **Internet**、**VirtualNetwork**、**AzureLoadBalancer** などの[サービス タグ](security-overview.md#service-tags)が指定されている規則は、**expandedDestinationAddressPrefix** プロパティにも値があります。 **expandedDestinationAddressPrefix** プロパティには、サービス タグによって表されるすべてのアドレス プレフィックスが一覧表示されます。
 
 出力に重複して規則が表示される場合は、NSG がネットワーク インターフェイスとサブネットの両方に関連付けられているためです。 既定の規則はどちらの NSG も同じであり、両方の NSG で同じ独自のルールが作成されている場合は、他にも重複する規則が存在することがあります。
 
@@ -166,7 +166,7 @@ az vm show \
 
 ## <a name="resolve-a-problem"></a>問題を解決する
 
-この記事の「[シナリオ](#diagnose-using-azure-portal)」で示されている問題の診断に Azure [portal](#diagnose-using-powershell)、[PowerShell](#diagnose-using-azure-cli)、[Azure CLI](#scenario) のどれを使用した場合でも、解決するには、以下のプロパティを含むネットワーク セキュリティ規則を作成します。
+この記事の「[シナリオ](#scenario)」で示されている問題の診断に Azure [portal](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell)、[Azure CLI](#diagnose-using-azure-cli) のどれを使用した場合でも、解決するには、以下のプロパティを含むネットワーク セキュリティ規則を作成します。
 
 | プロパティ                | 値                                                                              |
 |---------                |---------                                                                           |

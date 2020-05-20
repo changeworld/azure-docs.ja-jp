@@ -360,7 +360,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> 下の監視の例では、`ExtensionClient` という名前の `extClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
+> 下の監視の例では、`extClient` という名前の `ExtensionClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
 
 ### <a name="enable-oms-monitoring"></a>OMS 監視の有効化
 
@@ -413,7 +413,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> 下のスクリプト アクションの例では、`ScriptActionsClient` という名前の `scriptActionsClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
+> 下のスクリプト アクションの例では、`scriptActionsClient` という名前の `ScriptActionsClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
 
 ### <a name="delete-script-action"></a>スクリプト アクションの削除
 
@@ -453,7 +453,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>スクリプトの全実行履歴の一覧表示
 
-この操作のためには、管理に使用するために `ScriptExecutionHistoryClient` を作成したときと同様に `ClusterClient` を作成する必要があります。 上記の [認証] セクションを完了すると、次のように `ScriptActionsClient` を作成できます。
+この操作のためには、管理に使用するために `ClusterClient` を作成したときと同様に `ScriptExecutionHistoryClient` を作成する必要があります。 上記の [認証] セクションを完了すると、次のように `ScriptActionsClient` を作成できます。
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -461,7 +461,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> 以下では、`ScriptExecutionHistoryClient` という名前の `scriptExecutionHistoryClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
+> 以下では、`scriptExecutionHistoryClient` という名前の `ScriptExecutionHistoryClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
 
 指定したクラスターに対するスクリプトの実行履歴をすべて一覧表示するには:
 
