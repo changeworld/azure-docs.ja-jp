@@ -38,7 +38,7 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 
 1. [Azure Portal](https://portal.azure.com) にログインします。 
 
-2. 左上隅の **[リソースの作成]** を選択します。
+2. 左上隅の **[Create a resource]\(リソースの作成\)** を選択します。
 
 3. 検索ボックスに「 `Bing Spell Check API V7`」と入力します。
 
@@ -46,17 +46,17 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 
 4. サービスを選択します。 
 
-5. 右側に情報パネルが表示され、法的通知などの情報が示されます。 **[作成]** を選択して、サブスクリプション作成プロセスを開始します。 
+5. 右側に情報パネルが表示され、法的通知などの情報が示されます。 **[Create]\(作成\)** を選択して、サブスクリプション作成プロセスを開始します。 
 
 6. 次のパネルで、サービス設定を入力します。 サービス作成プロセスが完了するまで待ちます。
 
     ![サービス設定の入力](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. 左側のナビゲーションの **[お気に入り]** の下で、 **[すべてのリソース]** を選択します。
+7. 左側のナビゲーションの **[Favorites]\(お気に入り\)** の下で、 **[All resources]\(すべてのリソース\)** を選択します。
 
-8. 新しいサービスを選択します。 種類は **[Cognitive Services]** で、場所は **[グローバル]** です。 
+8. 新しいサービスを選択します。 種類は **[Cognitive Services]** で、場所は **[global]\(グローバル\)** です。 
 
-9. メイン パネルで **[キー]** を選択して、新しいキーを確認します。
+9. メイン パネルで **[Keys]\(キー\)** を選択して、新しいキーを確認します。
 
     ![キーの取得](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
@@ -104,7 +104,7 @@ Bing Spell Check API v7 サービスを使用したくない場合は、正し�
 * さまざまなバリエーションの単語を含んだ語句一覧を作成する。 この解決策では、発話の例に含まれる単語のバリエーションにラベルを付ける必要はありません。 
 
 ## <a name="publishing-page"></a>ページの公開
-[公開](luis-how-to-publish-app.md)ページには、 **[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 
+[publishing](luis-how-to-publish-app.md) ページには、 **[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 
 
 > [!div class="nextstepaction"]
 > [発話の例の詳細](luis-how-to-add-example-utterances.md)
