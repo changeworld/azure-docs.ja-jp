@@ -26,7 +26,7 @@ ms.locfileid: "73821044"
 
 - 仮想コア サービス レベル
 
-  **仮想コアベースの購入モデル**の **General Purpose** サービス レベルと [Business Critical](sql-database-service-tiers-vcore.md) サービス レベル。 これらの 2 つのサービス レベルは一般提供中です。 仮想コアベースの購入モデルでは、最大でデータベースあたり 100 TB の自動スケーリングによってお客様のワークロードのニーズにオンデマンドで適応する**ハイパースケール** サービス レベルも提供されています。 ハイパースケール サービス レベルでは、Premium RS サービス レベルにより近い価格で、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)の Premium サービス レベルに相当する IO パフォーマンスが提供されます。
+  [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の **General Purpose** サービス レベルと **Business Critical** サービス レベル。 これらの 2 つのサービス レベルは一般提供中です。 仮想コアベースの購入モデルでは、最大でデータベースあたり 100 TB の自動スケーリングによってお客様のワークロードのニーズにオンデマンドで適応する**ハイパースケール** サービス レベルも提供されています。 ハイパースケール サービス レベルでは、Premium RS サービス レベルにより近い価格で、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)の Premium サービス レベルに相当する IO パフォーマンスが提供されます。
 - Dev/Test 価格
 
   [Dev/Test 価格](https://azure.microsoft.com/pricing/dev-test/)では、お客様の Visual Studio サブスクリプションによって、ライセンス込みの価格と比較して最大 55% の割引が提供されます。

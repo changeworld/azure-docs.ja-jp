@@ -39,6 +39,8 @@
         - name: 学習ポリシー
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: 見習いモード
+          href: concept-apprentice-mode.md
         - name: アクティブなイベントと非アクティブなイベント
           href: concept-active-inactive-events.md
         - name: 報酬
@@ -62,9 +64,11 @@
   items:
     - name: Personalizer リソースの作成
       href: how-to-create-resource.md
-    - name: 学習ループの構成
+    - name: Personalizer を構成する
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: 見習いモードを使用する
+      href: how-to-learning-behavior.md
     - name: モデルと学習設定の管理
       href: how-to-manage-model.md
     - name: オフライン評価による分析
@@ -113,7 +117,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 価格
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/personalizer'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

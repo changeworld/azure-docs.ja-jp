@@ -18,7 +18,7 @@ ms.locfileid: "74159116"
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
 
-[Site Recovery](tutorial-migrate-on-premises-to-azure.md) サービスを使用して[オンプレミス マシンを Azure VM に移行](site-recovery-overview.md)し、VM にセカンダリ Azure リージョンへのディザスター リカバリーをセットアップさせる場合、この記事の手順に従ってください。 この記事では、Azure VM エージェントが移行済みの VM に インストールされていることを確認する方法と、移行後に不要になった Site Recovery モビリティ サービスを削除する方法について説明します。
+[Site Recovery](site-recovery-overview.md) サービスを使用して[オンプレミス マシンを Azure VM に移行](tutorial-migrate-on-premises-to-azure.md)し、VM にセカンダリ Azure リージョンへのディザスター リカバリーをセットアップさせる場合、この記事の手順に従ってください。 この記事では、Azure VM エージェントが移行済みの VM に インストールされていることを確認する方法と、移行後に不要になった Site Recovery モビリティ サービスを削除する方法について説明します。
 
 
 

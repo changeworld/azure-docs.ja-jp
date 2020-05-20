@@ -58,6 +58,7 @@
       items:
         - name: 出力の概要
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Cosmos DB に出力する
           href: stream-analytics-documentdb-output.md
         - name: Azure SQL DB に出力する
@@ -127,14 +128,22 @@
           href: copy-job.md
         - name: ジョブをペアリングして信頼性を高める
           href: stream-analytics-job-reliability.md
-        - name: マネージド ID による認証 - ADLS Gen 1 の出力
-          href: stream-analytics-managed-identities-adls.md
         - name: SQL リファレンス データを使用する
           href: sql-reference-data.md
-        - name: マネージド ID による認証 - BLOB の出力
-          href: blob-output-managed-identity.md
-        - name: マネージド ID による認証 - Power BI
-          href: powerbi-output-managed-identity.md
+        - name: マネージド ID による認証
+          items:
+            - name: ADLS Gen 1
+              href: stream-analytics-managed-identities-adls.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: BLOB ストレージ
+              href: blob-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Power BI
+              href: powerbi-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Azure SQL DB
+              href: sql-database-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
         - name: データを暗号化する
           href: data-protection.md
     - name: ソリューションを構築する
@@ -226,7 +235,19 @@
           href: stream-analytics-job-diagnostic-logs.md
         - name: データ エラー
           href: data-errors.md
-    - name: Machine Learning との統合
+        - name: エラー コード
+          items:
+            - name: 構成エラー
+              href: configuration-error-codes.md
+            - name: データ エラー
+              href: data-error-codes.md
+            - name: 外部可用性エラー
+              href: external-availability-error-codes.md
+            - name: 外部エラー
+              href: external-error-codes.md
+            - name: 内部エラー
+              href: internal-error-codes.md
+    - name: 機械学習との統合
       items:
         - name: ML モデルを利用したセンチメント分析
           href: stream-analytics-machine-learning-integration-tutorial.md

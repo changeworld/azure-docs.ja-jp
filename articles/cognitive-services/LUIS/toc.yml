@@ -41,21 +41,9 @@
           href: tutorial-intents-only.md
         - name: 2. ユーザー データの抽出
           href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
         - name: 3. ユーザーの発話からセンチメントを取得する
           href: tutorial-publish-settings.md
-    - name: エンティティの作成と使用
-      items:
-        - name: 正規表現エンティティ
-          href: tutorial-regex-entity.md
-        - name: リスト エンティティ
-          href: tutorial-list-entity.md
-        - name: エンティティのロール
-          href: tutorial-entity-roles.md
-          displayName: 'roles, geographyV2, context'
-        - name: 複合エンティティを使用して関連データをグループ化して抽出する
-          href: luis-tutorial-composite-entity.md
-          displayName: roles
     - name: アプリの改善
       items:
         - name: 不明な予測を修正する
@@ -79,17 +67,19 @@
     - name: アプリの計画
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
+    - name: データ コレクション
+      href: data-collection.md
     - name: アプリ モデル
       items:
         - name: 型
           href: luis-concept-model.md
-        - name: 意図
+        - name: 意図分類発話
           href: luis-concept-intent.md
-        - name: 発話
-          href: luis-concept-utterance.md
-        - name: エンティティ
+        - name: データを抽出するエンティティ
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: 発話の例
+          href: luis-concept-utterance.md
         - name: 事前構築済みのモデル
           href: luis-concept-prebuilt-model.md
         - name: パターン
@@ -97,7 +87,7 @@
           displayName: roles
         - name: 特徴
           href: luis-concept-feature.md
-          displayName: 'descriptor, phrase list'
+          displayName: 'descriptor, phrase list, feature'
         - name: 実行時のアプリの拡張
           href: schema-change-prediction-runtime.md
     - name: 予測スコア
@@ -153,15 +143,13 @@
           href: howto-add-prebuilt-models.md
         - name: 発話内のエンティティにラベルを付ける
           href: label-entity-example-utterance.md
-        - name: 記述子の追加
-          displayName: 'synonym, interchange, phrase list, descriptor'
+        - name: 機能の追加
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
         - name: REST API を使用
           items:
             - name: Node.js を使ってプログラムによりアプリをビルドする
               href: luis-tutorial-node-import-utterances-csv.md
-            - name: リスト エンティティを使って正確に一致するテキストを特定する (Node.js)
-              href: luis-tutorial-list-entity.md
     - name: 統合
       items:
         - name: Bing Spell Check v7 との統合
@@ -193,11 +181,25 @@
       href: luis-how-to-publish-app.md
     - name: クエリ予測ランタイム
       href: luis-get-started-get-intent-from-browser.md
+    - name: 移行
+      items:
+        - name: 複合エンティティからの移行
+          href: migrate-from-composite-entity.md
+        - name: 作成リソースへの移行
+          items:
+            - name: 概要
+              href: luis-migration-authoring.md
+            - name: 移行方法
+              href: luis-migration-authoring-steps.md
+        - name: V3 API への移行
+          href: luis-migration-api-v3.md
     - name: アプリの管理
       items:
         - name: Azure リソース
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
+        - name: アプリとバージョンの設定
+          href: how-to-application-settings-portal.md
         - name: 作成リソースへの移行
           items:
             - name: 概要
@@ -216,6 +218,8 @@
       items:
         - name: 開発者向け
           href: developer-reference-resource.md
+        - name: アプリ スキーマ
+          href: app-schema-definition.md
         - name: V3 Authoring API に移行する
           href: luis-migration-authoring-entities.md
         - name: V3 Prediction API に移行する
@@ -259,6 +263,8 @@
         - name: 概要
           href: developer-reference-resource.md
           displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
+        - name: アプリ スキーマ
+          href: app-schema-definition.md
         - name: Azure CLI
           href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
         - name: Azure RM PowerShell
@@ -329,7 +335,7 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: 制限
       href: luis-limits.md
-    - name: アプリケーションの設定
+    - name: アプリとバージョンの設定
       href: luis-reference-application-settings.md
     - name: 事前構築済みのエンティティのリファレンス
       items:
@@ -387,7 +393,7 @@
           href: reference-entity-simple.md
     - name: パターンの構文
       href: reference-pattern-syntax.md
-    - name: センチメント
+    - name: センチメント リファレンス
       href: luis-reference-prebuilt-sentiment.md
 - name: リソース
   items:

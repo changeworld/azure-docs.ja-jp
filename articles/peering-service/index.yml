@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Peering Service プレビュー
+title: Azure Peering Service
 summary: Azure Bot Service について説明します。
 metadata:
-  title: Azure Peering Service プレビューのドキュメント
+  title: Azure Peering Service のドキュメント
   description: Peering Service の接続を管理およびデプロイする方法について説明します
   services: peering-service
   ms.service: peering-service
@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: ypitsch
   ms.author: ypitsch
-  ms.date: 11/04/2019
-  ms.openlocfilehash: edebc54be0a4ac96d7230e93d0c3bb20bc502cad
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 05/18/2020
+  ms.openlocfilehash: 182f9dbb72f39a0489bb908d8ab315bdecaec7ec
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76721236"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83586067"
 landingContent:
 - title: Peering Service について
   linkLists:

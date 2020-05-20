@@ -134,7 +134,7 @@ ms.locfileid: "74008208"
 
 ### <a name="detected-risk-detections"></a>検出されたリスク検出
 
-**Azure portal** では、 **[Azure Active Directory]** ブレードの [[セキュリティ]](https://portal.azure.com) セクションで、検出されたリスク検出に関するレポートにアクセスできます。 検出されたリスク検出は、次のレポートで追跡されます。   
+[Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク検出に関するレポートにアクセスできます。 検出されたリスク検出は、次のレポートで追跡されます。   
 
 - [危険な状態のユーザー](concept-user-at-risk.md)
 - [リスクの高いサインイン](concept-risky-sign-ins.md)

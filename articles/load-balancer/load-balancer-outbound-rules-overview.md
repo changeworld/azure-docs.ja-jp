@@ -36,7 +36,7 @@ Azure Load Balancer は、アウトバウンドだけでなく、仮想ネット
 - アウトバウンド接続のアイドル タイムアウトの時間 (4 ～ 120 分)。
 - アイドル タイムアウト時に TCP リセットを送信するかどうか。
 
-アウトバウンド規則により、[アウトバウンド接続](load-balancer-outbound-connections.md#lb)に関する記事に記載されている[シナリオ 2](load-balancer-outbound-connections.md) がスケーリングされます。シナリオの優先順位はそのままです。
+アウトバウンド規則により、[アウトバウンド接続](load-balancer-outbound-connections.md)に関する記事に記載されている[シナリオ 2](load-balancer-outbound-connections.md#lb) がスケーリングされます。シナリオの優先順位はそのままです。
 
 ## <a name="outbound-rule"></a>送信規則
 

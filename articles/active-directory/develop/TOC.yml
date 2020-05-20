@@ -433,6 +433,8 @@
           href: supported-accounts-validation.md
         - name: 単一テナント アプリとマルチテナント アプリ
           href: single-and-multi-tenant-apps.md
+        - name: 発行者の確認 (プレビュー)
+          href: publisher-verification-overview.md
     - name: アクセス許可と同意
       displayName: Scopes
       items:
@@ -503,6 +505,12 @@
           href: howto-configure-publisher-domain.md
         - name: サービス使用条件とプライバシーに関する声明の構成
           href: howto-add-terms-of-service-privacy-statement.md
+        - name: アプリの発行者の確認を構成する
+          items:
+            - name: アプリを発行者確認済みとしてマークする (プレビュー)
+              href: mark-app-as-publisher-verified.md
+            - name: 発行者確認のトラブルシューティング (プレビュー)
+              href: troubleshoot-publisher-verification.md
     - name: Microsoft Authentication Library の使用
       displayName: MSAL
       items:

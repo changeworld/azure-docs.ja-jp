@@ -1,10 +1,10 @@
 ### YamlMime:Landing
-title: Translator Text のドキュメント
-summary: Translator Text はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 この API では、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator Text API の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator Text API または Microsoft Speech Service を使ってテキストを翻訳できます。
+title: Translator のドキュメント
+summary: Translator はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 このサービスでは、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator または Microsoft 音声サービスを使ってテキストを翻訳できます。
 metadata:
-  title: Translator Text のドキュメント - クイックスタート、チュートリアル、API リファレンス
+  title: Translator のドキュメント - クイックスタート、チュートリアル、API リファレンス
   titleSuffix: Azure Cognitive Services
-  description: Translator Text はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 この API では、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator Text API の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator Text API または Microsoft Speech Service を使ってテキストを翻訳できます。
+  description: Translator はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 このサービスでは、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator または Microsoft 音声サービスを使ってテキストを翻訳できます。
   services: cognitive-services
   author: erhopf
   manager: nitinme
@@ -13,18 +13,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 47944b573cdc2a8121c525c7750aa868d4a4e696
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529801"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83592748"
 landingContent:
 - title: '[変換者]'
   linkLists:
   - linkListType: overview
     links:
-    - text: Translator Text API
+    - text: '[変換者]'
       url: translator-info-overview.md
     - text: Custom Translator
       url: translator-info-overview.md
@@ -36,7 +36,7 @@ landingContent:
       url: translator-text-how-to-signup.md
     - text: よく寄せられる質問
       url: https://www.microsoft.com/translator/faq.aspx
-- title: Translator Text API
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -60,7 +60,7 @@ landingContent:
       url: tutorial-build-flask-app-translation-synthesis.md
   - linkListType: reference
     links:
-    - text: Translator Text API のリファレンス (v3)
+    - text: Translator リファレンス (v3)
       url: reference/v3-0-reference.md
     - text: 要求の制限
       url: request-limits.md
@@ -104,5 +104,5 @@ landingContent:
     links:
     - text: GitHub のサンプル
       url: https://aka.ms/TranslatorGitHub
-    - text: スタック オーバーフロー
+    - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator

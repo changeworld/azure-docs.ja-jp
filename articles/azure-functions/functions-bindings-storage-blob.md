@@ -14,7 +14,7 @@ ms.locfileid: "79235087"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Blob Storage のバインドの概要
 
-Azure Functions は[トリガーとバインド](https://docs.microsoft.com/azure/storage/)を使用して [Azure Storage](./functions-triggers-bindings.md) と統合されます。 Blob Storage との統合により、BLOB データの変更に対応し、値の読み取りと書き込も行う関数を作成することができます。
+Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [Azure Storage](https://docs.microsoft.com/azure/storage/) と統合されます。 Blob Storage との統合により、BLOB データの変更に対応し、値の読み取りと書き込も行う関数を作成することができます。
 
 | アクション | 種類 |
 |---------|---------|

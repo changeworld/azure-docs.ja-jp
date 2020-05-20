@@ -21,7 +21,7 @@ ms.locfileid: "79529341"
 ![関連するデータを検索する](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
 
-上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)からの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/jj554200.aspx)の使用があります。  
+上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](https://msdn.microsoft.com/library/azure/jj554200.aspx)からの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
 異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。 コピー間の更新の一貫性は、EGT を使用して保つことができます。  
@@ -914,7 +914,7 @@ Table service とは、*スキーマのない* テーブル ストアであり�
 
 最初のオプションでは、エンティティ型を **RowKey**の先頭に着けると、異なる種類の 2 つのエンティティが同じキー値にある可能性がある場合に便利です。 この方法なら、パーティションに同じ種類のエンティティのグループ化もできます。  
 
-このセクションで説明した手法は、特に、本ガイドに前述の[リレーションシップのモデル化](table-storage-design-modeling.md#inheritance-relationships)に関する記事内の[継承リレーションシップ](table-storage-design-modeling.md)で説明した内容と関連があります。  
+このセクションで説明した手法は、特に、本ガイドに前述の[リレーションシップのモデル化](table-storage-design-modeling.md)に関する記事内の[継承リレーションシップ](table-storage-design-modeling.md#inheritance-relationships)で説明した内容と関連があります。  
 
 > [!NOTE]
 > エンティティの種類の値にバージョン番号を追加して、クライアント アプリケーションで POCO オブジェクトを発展させ、さまざまなバージョンを操作できるようにすることを検討してください。  

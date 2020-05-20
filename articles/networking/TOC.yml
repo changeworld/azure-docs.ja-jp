@@ -47,6 +47,8 @@
           items:
             - name: Azure のネットワーク待ち時間
               href: azure-network-latency.md
+            - name: Azure でのインターネット ルーティング設定
+              href: ../virtual-network/routing-preference-overview.md
         - name: 仮想ネットワーク
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: ネットワークの負荷分散
@@ -149,7 +151,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=virtual-network'

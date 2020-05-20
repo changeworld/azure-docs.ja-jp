@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 2cc8369c59905e1d1e1b794b8cbdefce1ede0a67
-  ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+  ms.openlocfilehash: 21319a3de2bcd38cd5373ac68fc1c9733ab64ee4
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/04/2020
-  ms.locfileid: "82739427"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593199"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -272,7 +272,7 @@ productDirectory:
     azureCategories:
     - analytics
     url: analysis-services/index.yml
-  - title: " Azure Data Explorer"
+  - title: Azure Data Explorer
     summary: スケーラビリティに優れた高速データ探索サービス
     imageSrc: https://static.docs.com/ui/media/product/azure/data-explorer.svg
     azureCategories:
@@ -495,6 +495,13 @@ productDirectory:
     - compute
     - databases
     url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
+  - title: 静的 Web アプリ
+    summary: 完全なスタック Web アプリをビルドして GitHub リポジトリから Azure にデプロイする
+    imageSrc: ./media/index/static-apps.svg
+    azureCategories:
+    - compute
+    - web
+    url: static-web-apps/index.yml
   - title: Virtual Machine Scale Sets
     summary: 数千個の Linux および Windows 仮想マシンを管理およびスケールアップ可能
     imageSrc: https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg
@@ -599,13 +606,13 @@ productDirectory:
     - databases
     - hybrid
     url: sql-database/index.yml
-  - title: Azure SQL Database Edge (プレビュー)
+  - title: Azure SQL Edge (プレビュー)
     summary: 占有領域が少なく、エッジに対して最適化され、AI が組み込まれたデータ エンジン
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:
     - databases
     - iot
-    url: sql-database-edge/index.yml
+    url: azure-sql-edge/index.yml
   - title: Table Storage
     summary: 半構造化データセットを使用した NoSQL キー値の格納
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg

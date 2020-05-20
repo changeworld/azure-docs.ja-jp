@@ -22,7 +22,7 @@ ms.locfileid: "80281325"
 
 従量制課金を使用するには、SaaS オファーが次の条件を満たすことが必要です。
 
-* [SaaS オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)に関する記事に記載されているように、[Microsoft オファーを通じた販売](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)のためのすべてのオファー要件を満たしていること。
+* [SaaS オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)に関する記事に記載されているように、[Microsoft オファーを通じた販売](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)のためのすべてのオファー要件を満たしていること。
 * お客様がプロビジョニングしてオファーに接続するための [SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) と統合していること。  
 * サービスに対するお客様への課金について、**定額**料金モデルが構成されていること。  ディメンションは、定額料金モデルに対するオプションの拡張機能です。 
 * 課金対象のイベントを Microsoft に通知するために [Marketplace の測定サービス API](./marketplace-metering-service-apis.md) と統合されていること。

@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) はクラウドの ID サービスです。開
 
 ## <a name="get-started"></a>はじめに
 
-v1.0 のクイック スタートおよびチュートリアルでは、Azure AD Authentication Library (ADAL) SDK を使って好みのプラットフォームでアプリを構築する方法がわかりやすく説明されています。 作業を開始するには、「**Microsoft ID プラットフォーム (開発者向け Azure Active Directory)** 」の **v1.0 のクイック スタート**と [v1.0 のチュートリアル](index.yml)に関するセクションを参照してください。
+v1.0 のクイック スタートおよびチュートリアルでは、Azure AD Authentication Library (ADAL) SDK を使って好みのプラットフォームでアプリを構築する方法がわかりやすく説明されています。 作業を開始するには、「[Microsoft ID プラットフォーム (開発者向け Azure Active Directory)](index.yml)」の **v1.0 のクイック スタート**と **v1.0 のチュートリアル**に関するセクションを参照してください。
 
 ## <a name="how-to-guides"></a>操作方法ガイド
 

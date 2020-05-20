@@ -12,7 +12,7 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672210"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
-[Azure Monitor データ ソース プラグイン](https://grafana.com/)を使用して [Grafana](https://grafana.com/plugins/grafana-azure-monitor-datasource) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
+[Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
 
 Grafana サーバーをセットアップし、Azure Monitor のメトリックとログ用のダッシュボードを構築するには、次の手順を使用します。
 

@@ -1,0 +1,75 @@
+- name: SQL Edge のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: SQL Edge とは
+      href: overview.md
+    - name: サポートされるエディションと機能
+      href: features.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: SQL Edge をデプロイする
+      href: deploy-portal.md
+    - name: SQL Edge に ONNX モデルをデプロイする
+      href: deploy-onnx.md
+- name: チュートリアル
+  items:
+    - name: Azure Data Factory を使用したデータの同期
+      href: tutorial-sync-data-factory.md
+    - name: SQL データ同期を使用したデータの同期
+      href: tutorial-sync-data-sync.md
+    - name: SQL Edge を使用したエンドツーエンドの IoT ソリューションの構築
+      items:
+        - name: Azure リソースの設定
+          href: tutorial-deploy-azure-resources.md
+        - name: IoT Edge モジュールの設定
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: SQL Edge へのモデルのデプロイ
+          href: tutorial-run-ml-model-on-sql-edge.md
+- name: 方法
+  items:
+    - name: DAC パッケージと Stream Analytics ジョブ
+      href: stream-analytics.md
+    - name: レプリケーションの設定
+      href: configure-replication.md
+    - name: データ変更の追跡
+      href: track-data-changes.md
+    - name: T-SQL ストリーミング ジョブの管理
+      href: create-stream-analytics-job.md
+    - name: SQL Edge に接続する
+      href: connect.md
+    - name: SQL Edge の構成
+      href: configure.md
+    - name: DAC パッケージをデプロイする
+      href: deploy-dacpac.md
+- name: 概念
+  items:
+    - name: ONNX を使用した機械学習と AI
+      href: onnx-overview.md
+    - name: バックアップと復元
+      href: backup-restore.md
+    - name: SQL Edge でのデータ ストリーミング
+      items:
+        - name: データをストリーム配信する
+          href: stream-data.md
+        - name: 外部ストリームを作成する (Transact-SQL)
+          href: create-external-stream-transact-sql.md
+        - name: 外部ストリームを変更する (Transact-SQL)
+          href: alter-external-stream-transact-sql.md
+        - name: 外部ストリームをドロップする (Transact-SQL)
+          href: drop-external-stream-transact-sql.md
+        - name: ストリーミング ビューと DMV
+          items:
+            - name: ストリーミング ビューと DMV
+              href: streaming-catalog-views.md
+            - name: sys.external_job_streams (Transact-SQL)
+              href: sys-external-job-streams.md
+            - name: sys.external-streaming_jobs (Transact-SQL)
+              href: sys-external-streaming-jobs.md
+            - name: sys.external_streams (Transact-SQL)
+              href: sys-external-streams.md
+    - name: 時系列データの処理
+      items:
+        - name: Date_Bucket (Transact-SQL)
+          href: date-bucket-tsql.md

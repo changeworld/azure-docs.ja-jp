@@ -15,7 +15,7 @@ ms.locfileid: "79235143"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
-Azure Functions は[トリガーとバインド](https://azure.microsoft.com/services/service-bus)を使用して [Azure Service Bus](./functions-triggers-bindings.md) と統合されます。 Service Bus と統合すると、キューまたはトピック メッセージに応答して送信する関数を構築できます。
+Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [Azure Service Bus](https://azure.microsoft.com/services/service-bus) と統合されます。 Service Bus と統合すると、キューまたはトピック メッセージに応答して送信する関数を構築できます。
 
 | アクション | 種類 |
 |---------|---------|

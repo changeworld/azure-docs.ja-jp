@@ -1,10 +1,10 @@
-- name: Translator Text のドキュメント
+- name: Translator のドキュメント
   href: index.yml
-- name: Translator Text API
+- name: '[変換者]'
   items:
     - name: 概要
       items:
-        - name: Translator Text API とは
+        - name: Translator とは
           href: translator-info-overview.md
     - name: クイックスタート
       items:
@@ -22,7 +22,7 @@
           href: quickstart-sentences.md
     - name: チュートリアル
       items:
-        - name: 'Translator Text の WPF アプリの作成 (C#)'
+        - name: 'Translator の WPF アプリの作成 (C#)'
           href: tutorial-wpf-translation-csharp.md
         - name: Flask 翻訳アプリの作成 (Python)
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -34,7 +34,7 @@
           href: character-counts.md
     - name: 操作方法ガイド
       items:
-        - name: Translator Text API にサインアップする
+        - name: Translator にサインアップする
           href: translator-text-how-to-signup.md
         - name: V3 Text API に移行する
           href: migrate-to-v3.md
@@ -66,7 +66,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: リファレンス
       items:
-        - name: v3 Translator Text API のリファレンス
+        - name: v3 Translator リファレンス
           href: reference/v3-0-reference.md
           items:
             - name: Languages
@@ -83,7 +83,7 @@
               href: reference/v3-0-dictionary-lookup.md
             - name: 辞書の例
               href: reference/v3-0-dictionary-examples.md
-        - name: v2 Translator Text API のリファレンス (非推奨)
+        - name: v2 Translator リファレンス (非推奨)
           href: reference/v2-0-reference.md
           items:
             - name: テキストの変換
@@ -108,7 +108,7 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 要求の制限
           href: request-limits.md
-        - name: スタック オーバーフロー
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
   items:
@@ -174,5 +174,5 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 暗号化
           href: translator-encryption-of-data-at-rest.md
-        - name: スタック オーバーフロー
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

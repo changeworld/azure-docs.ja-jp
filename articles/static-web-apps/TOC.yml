@@ -1,0 +1,61 @@
+- name: Azure Static Web Apps のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Static Web Apps について
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: 最初の静的な Web アプリを構築する
+      href: getting-started.md
+- name: 概念
+  items:
+    - name: Azure Functions での API サポート
+      href: apis.md
+    - name: ルート
+      href: routes.md
+    - name: 認証と権限承認
+      href: authentication-authorization.md
+    - name: ユーザー情報にアクセスする
+      href: user-information.md
+    - name: 運用前環境でプル要求を確認する
+      href: review-publish-pull-requests.md
+    - name: カスタム ドメイン
+      href: custom-domain.md
+    - name: ビルドとワークフロー構成
+      href: github-actions-workflow.md
+- name: 操作方法ガイド
+  items:
+    - name: ローカル開発の設定
+      href: local-development.md
+    - name: API の追加
+      href: add-api.md
+    - name: アプリケーションの設定の構成
+      href: application-settings.md
+- name: チュートリアル
+  items:
+    - name: 静的サイト ジェネレーターからの発行
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+    - name: フレームワークからのデプロイ
+      items:
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: リソース
+  items:
+    - name: Microsoft Learn でスキルを身に付ける
+      items:
+        - name: Angular、React、Svelte、または Vue JavaScript アプリと API を公開する
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Gatsby を使用して静的な Web アプリを作成および発行する
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - name: Quotas (クォータ)
+      href: quotas.md

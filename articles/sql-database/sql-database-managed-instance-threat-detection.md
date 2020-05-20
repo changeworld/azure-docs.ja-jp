@@ -20,7 +20,7 @@ ms.locfileid: "73822560"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスで Advanced Threat Protection を構成する
 
-[マネージド インスタンス](sql-database-threat-detection-overview.md)の [Advanced Threat Protection](sql-database-managed-instance-index.yml) では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。 Advanced Threat Protection によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃**を特定できます。詳細については、[Advanced Threat Protectionアラート](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)に関する記事を参照してください。
+[マネージド インスタンス](sql-database-managed-instance-index.yml)の [Advanced Threat Protection](sql-database-threat-detection-overview.md) では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。 Advanced Threat Protection によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃**を特定できます。詳細については、[Advanced Threat Protectionアラート](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)に関する記事を参照してください。
 
 検出された脅威に関する通知は、[電子メールの通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)または [Azure portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal) で受け取ることができます。
 

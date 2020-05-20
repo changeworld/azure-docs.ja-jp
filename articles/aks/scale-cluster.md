@@ -19,7 +19,7 @@ ms.locfileid: "79368419"
 
 ## <a name="scale-the-cluster-nodes"></a>クラスター ノードのスケーリング
 
-最初に、*az aks show* コマンドを使用してノード プールの[名前][az-aks-show]を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノード プール名を取得します。
+最初に、[az aks show][az-aks-show] コマンドを使用してノード プールの*名前*を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノード プール名を取得します。
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles

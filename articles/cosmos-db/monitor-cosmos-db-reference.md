@@ -21,7 +21,7 @@ ms.locfileid: "77588724"
 
 
 ## <a name="resource-logs"></a>リソース ログ
-次の表に、Azure Monitor ログまたは Azure Storage で Azure Cosmos DB リソース ログが収集される場合のそれらのプロパティを示します。 Azure Monitor ログでは、**ResourceProvider** 値が **MICROSOFT.DOCUMENTDB** の *AzureDiagnostics* テーブルで収集されます。 
+次の表に、Azure Monitor ログまたは Azure Storage で Azure Cosmos DB リソース ログが収集される場合のそれらのプロパティを示します。 Azure Monitor ログでは、**ResourceProvider** 値が *MICROSOFT.DOCUMENTDB* の **AzureDiagnostics** テーブルで収集されます。 
 
 | Azure Storage のフィールドまたはプロパティ | Azure Monitor ログのプロパティ | 説明 |
 | --- | --- | --- |

@@ -19,7 +19,7 @@ ms.locfileid: "80288973"
 [Business Applications ISV コネクト プログラム](https://partner.microsoft.com/solutions/business-applications/isv-overview)の目的は、"*Dynamics 365 Customer Engagement and PowerApps*" ("Dynamics CE オファー") または "*Dynamics 365 Finance and Operations*" ("Dynamics Ops オファー") を使用して最新のクラウドベースの基幹業務 (LOB) ソリューションを構築する独立系ソフトウェアベンダー (ISV) の成長と全体的な成功を促進することです。 ここではそれに参加する方法を示します。
 
 > [!IMPORTANT]
-> *Dynamics 365 Customer Engagement*、*Dynamics 365 for Finance and Operations*、および *PowerApps* アプリケーションを使用する既存の ISV パートナーは、**Microsoft AppSource** から既存のオファーが削除されないように、[2019 年 10 月 15 日](https://appsource.microsoft.com)より前に、以下のすべてのオンボード手順を完了する必要があります。
+> *Dynamics 365 Customer Engagement*、*Dynamics 365 for Finance and Operations*、および *PowerApps* アプリケーションを使用する既存の ISV パートナーは、[Microsoft AppSource](https://appsource.microsoft.com) から既存のオファーが削除されないように、**2019 年 10 月 15 日**より前に、以下のすべてのオンボード手順を完了する必要があります。
 
 Business Applications ISV コネクト プログラムのすべての[技術、マーケティング、販売に関する有効化ベネフィット](https://partner.microsoft.com/solutions/business-applications/isv-overview)に登録して利用するため、既存の ISV パートナー ("*Dynamics CE*" オファーと "*Ops*" オファーを使用) には以下の手順を完了することをお願いします。
 
@@ -40,7 +40,7 @@ Business Applications ISV コネクト プログラムのすべての[技術、�
 
 Dynamics CE オファーまたは Dynamics Ops オファーを既に発行している場合は、通常、Cloud パートナー ポータル (CPP) アカウントはパートナー センターに既に移行されてアクティブ化されています。 そうではない場合は、CPP 発行元プロファイルからパートナー センター アカウントを手動でアクティブ化することができます。
 
-1. **Cloud パートナー ポータル**で、[発行元プロファイル](https://cloudpartner.azure.com/)のページにサインインします。
+1. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)で、**発行元プロファイル**のページにサインインします。
 2. アカウント設定がパートナー センターに移行済みであることを示すバナーが表示される場合は、次のセクションに進みます。 それ以外の場合は、パートナー センター アカウントのアクティブ化を求めるバナーを選択します。
 
 詳細については、「[Cloud パートナー ポータルからパートナー センターへのアカウントの移行](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)」をご覧ください。

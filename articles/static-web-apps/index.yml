@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Azure Static Web Apps のドキュメント
+summary: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される JavaScript Web アプリケーションを構築できます。
+metadata:
+  title: Azure Static Web Apps のドキュメント
+  description: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される JavaScript Web アプリケーションを構築できます。
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593071"
+landingContent:
+- title: Static Web Apps について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Static Web Apps とは
+      url: overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 最初の Angular アプリを作成する
+      url: /azure/static-web-apps/getting-started?tabs=angular
+    - text: 最初の React アプリを作成する
+      url: /azure/static-web-apps/getting-started?tabs=react
+    - text: 最初の Vue アプリを作成する
+      url: /azure/static-web-apps/getting-started?tabs=vue
+    - text: 最初のアプリを作成する (フレームワークなし)
+      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: Angular、React、Svelte、または Vue JavaScript アプリと API を公開する
+      url: /learn/modules/publish-app-service-static-web-app-api
+- title: 主要な概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ルート
+      url: routes.md
+    - text: パブリック API
+      url: apis.md
+    - text: ステージング
+      url: review-publish-pull-requests.md
+    - text: アクセスを制限する
+      url: authentication-authorization.md
+- title: 発行シナリオ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Gatsby から発行する
+      url: publish-gatsby.md
+    - text: Hugo から発行する
+      url: publish-hugo.md
+    - text: VuePress から発行する
+      url: publish-vuepress.md
+    - text: Next.js からデプロイする
+      url: deploy-nextjs.md
+    - text: Nuxt.js からデプロイする
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: Gatsby を使用して静的な Web アプリを発行する
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service

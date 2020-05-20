@@ -52,7 +52,7 @@ Azure Digital Twins でソリューションを構築する開発者は、単一
   - **CUSTOMER** の Azure Active Directory テナント管理者は、[従量課金制の Azure サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)を取得する必要があります。
   - その後、**CUSTOMER** の Azure Active Directory テナント管理者は、[テナントを新しいサブスクリプションとリンクする](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)必要があります。
 
-- [CUSTOMER](https://portal.azure.com) の Azure Active Directory テナント管理者は、**Azure portal** で以下の手順を実行します。
+- **CUSTOMER** の Azure Active Directory テナント管理者は、[Azure portal](https://portal.azure.com) で以下の手順を実行します。
 
   1. 上部の Azure の検索フィールドで **[サブスクリプション]** を検索します。 **[サブスクリプション]** を選択します。
   1. **DEVELOPER** のアプリケーションで使用する Azure Active Directory テナントがあるサブスクリプションを選択します。

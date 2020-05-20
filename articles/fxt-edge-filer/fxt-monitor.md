@@ -19,7 +19,7 @@ Azure FXT Edge Filer ハイブリッド ストレージ キャッシュ シス�
 
 ## <a name="system-health-status"></a>システムの正常性状態
 
-より高いレベルでキャッシュ操作を監視するには、**コントロール パネル ダッシュボード ガイド**の説明に従って、ソフトウェアのコントロール パネルの [[Dashboard]\(ダッシュボード\)](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) ページを使用します。
+より高いレベルでキャッシュ操作を監視するには、[コントロール パネル ダッシュボード ガイド](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)の説明に従って、ソフトウェアのコントロール パネルの **[Dashboard]\(ダッシュボード\)** ページを使用します。
 
 ## <a name="hardware-status-leds"></a>ハードウェアの状態 LED
 

@@ -59,7 +59,7 @@ ms.locfileid: "80286457"
 
 公開されているオファーの削除には、手続き、ビジネス、法律に関してさまざまな側面があります。 公開されているオファーの Azure Marketplace からの削除については、次の手順に従ってサポート チームからガイダンスを入手してください。
 
-1.  「[Create an incident](https://go.microsoft.com/fwlink/?linkid=844975)」(インシデントの作成) ページを使用してサポート チケットを提出するか、または **Cloud パートナー ポータル**の右上隅にある [[Support]\(サポート\)](https://cloudpartner.azure.com/) をクリックします。
+1.  「[Create an incident](https://go.microsoft.com/fwlink/?linkid=844975)」(インシデントの作成) ページを使用してサポート チケットを提出するか、または [Cloud パートナー ポータル](https://cloudpartner.azure.com/)の右上隅にある **[Support]\(サポート\)** をクリックします。
 
 2.  **[Problem type]\(問題の種類\)** の一覧で特定のオファーの種類を選択し、 **[Category]\(カテゴリ\)** の一覧で **[Remove a published offer]\(公開したオファーの削除\)** を選択します。
 

@@ -23,7 +23,7 @@ ms.locfileid: "73823470"
 
 **サンプル コード**: [エラスティック データベースツール for Azure SQL Database - Dapper integration (Azure SQL Database のエラスティック データベース ツール - Dapper の統合)](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
 
-**Dapper** と **DapperExtensions** を Azure SQL Database の Elastic Database クライアント ライブラリに統合することは容易です。 アプリケーションではデータ依存ルーティングを使用できます。そのためには、[クライアント ライブラリ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)の [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](https://msdn.microsoft.com/library/azure/dn765902.aspx) オブジェクトを作成する操作と開く操作を変更します。 これにより、アプリケーションの変更が、新しい接続を作成して開く場所だけに制限されます。 
+**Dapper** と **DapperExtensions** を Azure SQL Database の Elastic Database クライアント ライブラリに統合することは容易です。 アプリケーションではデータ依存ルーティングを使用できます。そのためには、[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn765902.aspx)の [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更します。 これにより、アプリケーションの変更が、新しい接続を作成して開く場所だけに制限されます。 
 
 ## <a name="dapper-overview"></a>Dapper の概要
 **Dapper** はオブジェクト リレーショナル マッパーです。 Dapper は、アプリケーションの .NET オブジェクトをリレーショナル データベースに (またはその逆に) マップします。 サンプル コードの最初の部分は、エラスティック データベース クライアント ライブラリと Dapper ベースのアプリケーションを統合する方法を示します。 サンプル コードの 2 番目の部分は、Dapper と DapperExtensions の両方を使用する場合の統合方法を示します。  
@@ -159,7 +159,7 @@ Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Ap
 * 要求を受け取った場合、要求によって提供されたシャーディング キーで識別される 1 つのシャード内にそのすべてのデータベース処理が含まれると見なします。 ただし、この仮定が常に正しいとは限りません。たとえば、シャーディング キーを使用可能にできないことがあります。 これに対処するために、[MultiShardQuery クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx)が Elastic Database クライアント ライブラリに含まれています。 このクラスは、複数のシャードに対してクエリを実行するための接続の抽象化を実装します。 Dapper と組み合わせた MultiShardQuery の使用方法については、このドキュメントの範囲を超えているため省略します。
 
 ## <a name="conclusion"></a>まとめ
-Dapper と DapperExtensions を使用するアプリケーションは、Azure SQL Database のエラスティック データベース ツールのメリットを簡単に活用できます。 このドキュメントで説明した手順に従って、Elastic Database クライアント ライブラリの [OpenConnectionForKey](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) の呼び出しを使用するように新しい [SqlConnection](https://msdn.microsoft.com/library/azure/dn807226.aspx) オブジェクトを作成する操作と開く操作を変更することにより、これらのアプリケーションでツールの機能をデータ依存ルーティングに利用できるようになります。 これにより、アプリケーションに対して必要な変更が、新しい接続を作成して開く場所だけに制限されます。 
+Dapper と DapperExtensions を使用するアプリケーションは、Azure SQL Database のエラスティック データベース ツールのメリットを簡単に活用できます。 このドキュメントで説明した手順に従って、Elastic Database クライアント ライブラリの [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更することにより、これらのアプリケーションでツールの機能をデータ依存ルーティングに利用できるようになります。 これにより、アプリケーションに対して必要な変更が、新しい接続を作成して開く場所だけに制限されます。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

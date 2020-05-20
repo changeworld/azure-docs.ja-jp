@@ -19,7 +19,7 @@ ms.locfileid: "74113873"
 
 この記事では、さまざまなシナリオを説明する例を使用して、スキル定義で注釈を参照する方法を学習します。 ドキュメントの内容がスキルのセットを通過するにつれて、注釈が豊富になっていきます。 注釈は、ダウンストリームをさらに豊富にするための入力として使用することも、インデックスの出力フィールドにマッピングすることもできます。 
  
-この記事の例は、*Azure Blob インデクサー*によってドキュメント クラッキング フェーズの一部として自動的に生成される [content](search-howto-indexing-azure-blob-storage.md) フィールドに基づいています。 BLOB コンテナーのドキュメントを参照するときは、`"/document/content"` などの書式を使用します。ここで、*content* フィールドは *document* の一部です。 
+この記事の例は、[Azure Blob インデクサー](search-howto-indexing-azure-blob-storage.md)によってドキュメント クラッキング フェーズの一部として自動的に生成される *content* フィールドに基づいています。 BLOB コンテナーのドキュメントを参照するときは、`"/document/content"` などの書式を使用します。ここで、*content* フィールドは *document* の一部です。 
 
 ## <a name="background-concepts"></a>バックグラウンドの概念
 

@@ -47,7 +47,7 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
 次の手順では、ソリューション アクセラレータに接続する C アプリケーションを構築するために、Raspberry Pi を準備する方法を示しています。
 
-1. **ssh** を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)の [SSH (Secure Shell)](https://www.raspberrypi.org/) のセクションを参照してください。
+1. **ssh** を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/)の [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) のセクションを参照してください。
 
 1. 次のコマンドを使用して Raspberry Pi を更新します。
 

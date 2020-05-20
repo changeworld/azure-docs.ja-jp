@@ -16,7 +16,7 @@ ms.locfileid: "74173716"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える
 
-[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](rewrite-http-headers.md) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)を構成できます
+[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](rewrite-http-headers.md)を構成できます
 
 この記事では、次のことについて説明します。
 

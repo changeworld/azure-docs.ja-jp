@@ -35,7 +35,7 @@ ms.locfileid: "73827010"
   | [構成] | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
   |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
   |データの読み込み|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub](sql-database-import.md) の [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) ファイルから Adventure Works を復元またはインポートする|
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
   |||
 
   > [!IMPORTANT]

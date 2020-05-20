@@ -103,7 +103,7 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
 ![洞察](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>メトリック
-Azure portal でメトリックを分析するには、ほとんどのサービスの [[メトリック]](../platform/metrics-getting-started.md) メニュー項目から使用できる**メトリックスエクス プローラー**を使用します。 このツールを使用すると、個々のメトリックまたは複数の組み合わせを使用して、相関関係や傾向を特定することができます。 
+Azure portal でメトリックを分析するには、ほとんどのサービスの **[メトリック]** メニュー項目から使用できる[メトリックスエクス プローラー](../platform/metrics-getting-started.md)を使用します。 このツールを使用すると、個々のメトリックまたは複数の組み合わせを使用して、相関関係や傾向を特定することができます。 
 
 - メトリックス エクスプローラーの使用について詳しくは、「[Azure メトリックス エクスプローラーの概要](../platform/metrics-getting-started.md)」を参照してください。
 - 複数のメトリックの使用や、フィルターや分割の適用など、メトリックス エクスプローラーの高度な機能については、「[Azure メトリックス エクスプローラーの高度な機能](../platform/metrics-charts.md)」を参照してください。
@@ -122,7 +122,7 @@ Azure portal でアクティビティ ログのエントリを表示します。
 ### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 Azure Monitor ログを使用すると、複数のサービスや他のデータ ソースからのログとメトリックが統合され、強力なクエリ ツールで分析することができます。 前に説明したように、Azure Monitor の Log Analytics ワークスペースにプラットフォーム メトリック、アクティビティ ログ、リソース ログを収集するには、診断設定を作成します。
 
-[Log Analytics](../log-query/get-started-portal.md) では[ログ クエリ](../log-query/log-query-overview.md)を使用できます。これは、すべての機能を備えたクエリ言語を使用してログ データの高度な分析を実行できる、Azure Monitor の強力な機能です。 **クエリ スコープ**としてリソースを使用してログ クエリを操作するには、Azure リソースの **[監視]** メニューの [[ログ]](../log-query/scope.md#query-scope) から Log Analytics を開きます。 これにより、そのリソースだけについて複数のテーブルのデータを分析できます。 すべてのリソースのログにアクセスするには、Azure Monitor のメニューから **[ログ]** を使用します。 
+[Log Analytics](../log-query/get-started-portal.md) では[ログ クエリ](../log-query/log-query-overview.md)を使用できます。これは、すべての機能を備えたクエリ言語を使用してログ データの高度な分析を実行できる、Azure Monitor の強力な機能です。 [クエリ スコープ](../log-query/scope.md#query-scope)としてリソースを使用してログ クエリを操作するには、Azure リソースの **[監視]** メニューの **[ログ]** から Log Analytics を開きます。 これにより、そのリソースだけについて複数のテーブルのデータを分析できます。 すべてのリソースのログにアクセスするには、Azure Monitor のメニューから **[ログ]** を使用します。 
 
 - ログ クエリの記述に使用されるクエリ言語の使用に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../log-query/get-started-queries.md)」を参照してください。
 - Azure Monitor ログでのリソース ログの収集方法と、クエリでそれらにアクセスする方法の詳細については、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](../platform/resource-logs-collect-workspace.md)」を参照してください。

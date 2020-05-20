@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-*az network vnet subnet update* で、*myRouteTablePublic* ルート テーブルを[パブリック](/cli/azure/network/vnet/subnet) サブネットに関連付けます。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet) で、*myRouteTablePublic* ルート テーブルを*パブリック* サブネットに関連付けます。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 NVA は、ルーティング、ファイアウォール、WAN 最適化などのネットワーク機能を実行する VM です。
 
-*az vm create* を使用して、[DMZ](/cli/azure/vm) サブネットに NVA を作成します。 VM を作成すると、既定では、Azure はパブリック IP アドレスを作成し、その VM に割り当てます。 この VM にはインターネットから接続する必要がないため、`--public-ip-address ""` パラメーターは Azure に、パブリック IP アドレスを作成して VM に割り当てることのないよう指示します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
+[az vm create](/cli/azure/vm) を使用して、*DMZ* サブネットに NVA を作成します。 VM を作成すると、既定では、Azure はパブリック IP アドレスを作成し、その VM に割り当てます。 この VM にはインターネットから接続する必要がないため、`--public-ip-address ""` パラメーターは Azure に、パブリック IP アドレスを作成して VM に割り当てることのないよう指示します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
 ```azurecli-interactive
 az vm create \
@@ -162,7 +162,7 @@ az vm extension set \
 
 後の手順で、*パブリック* サブネットからのトラフィックが NVA 経由で*プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。 
 
-*az vm create* を使用して、[パブリック](/cli/azure/vm) サブネット内に VM を作成します。 `--no-wait` パラメーターを使用すると、Azure はバックグラウンドでコマンドを実行できるので、次のコマンドに進むことができます。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
+[az vm create](/cli/azure/vm) を使用して、*パブリック* サブネット内に VM を作成します。 `--no-wait` パラメーターを使用すると、Azure はバックグラウンドでコマンドを実行できるので、次のコマンドに進むことができます。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"

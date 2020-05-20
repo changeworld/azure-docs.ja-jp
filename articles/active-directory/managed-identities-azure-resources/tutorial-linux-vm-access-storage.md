@@ -43,7 +43,7 @@ ms.locfileid: "75971929"
 
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
-- Azure Portal から、または各コード ブロックの右上隅にある [[試してみる]](~/articles/cloud-shell/overview.md) ボタンを使用して、**Azure Cloud Shell** を使用します。
+- Azure Portal から、または各コード ブロックの右上隅にある **[試してみる]** ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
 - ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 

@@ -24,7 +24,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)」の「[テスト環境のセットアップ](./hdinsight-use-sqoop.md)」が完了していること。
+* 「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の「[テスト環境のセットアップ](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)」が完了していること。
 
 * Azure SQL Database のクエリを実行するクライアント。 [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) または [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md) の使用を検討してください。
 

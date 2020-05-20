@@ -53,7 +53,7 @@ DevTest Labs リソース プロバイダーがラボ ユーザーに代わっ�
 [ラボの仮想ネットワークへの環境の接続](connect-environment-lab-virtual-network.md)に関する記事では、`$(LabSubnetId)` トークンを使用するよう Resource Manager テンプレートを変更する方法が説明されています。 環境の作成時、`$(LabSubnetId)` トークンは、 **[仮想マシンの作成時に使用]** オプションが **true** に設定されている最初のサブネット マークに置き換えられます。 これにより、以前に作成されたネットワークを環境で使用できるようになります。 ステージングや運用と同じ Resource Manager テンプレートをテストの環境で使用する場合は、Resource Manager テンプレート パラメーターの既定の値として `$(LabSubnetId)` を使用します。 
 
 #### <a name="environment-storage-account"></a>環境のストレージ アカウント
-DevTest Labs は、[入れ子になった Resource Manager テンプレート](../azure-resource-manager/templates/linked-templates.md)の使用をサポートしています。 [[テスト環境用に入れ子になった Azure Resource Manager テンプレートを展開する方法](deploy-nested-template-environments.md)に関する記事では、`_artifactsLocation` および `_artifactsLocationSasToken` トークンを使用して、Resource Manager テンプレートへの URI をメイン テンプレートと同じフォルダー内または入れ子になったフォルダー内に作成する方法が説明されています。 この 2 つのトークンの詳細については、**Azure Resource Manager のベスト プラクティス ガイド**の[デプロイの成果物](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)に関するセクションを参照してください。
+DevTest Labs は、[入れ子になった Resource Manager テンプレート](../azure-resource-manager/templates/linked-templates.md)の使用をサポートしています。 [[テスト環境用に入れ子になった Azure Resource Manager テンプレートを展開する方法](deploy-nested-template-environments.md)に関する記事では、`_artifactsLocation` および `_artifactsLocationSasToken` トークンを使用して、Resource Manager テンプレートへの URI をメイン テンプレートと同じフォルダー内または入れ子になったフォルダー内に作成する方法が説明されています。 この 2 つのトークンの詳細については、[Azure Resource Manager のベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)の**デプロイの成果物**に関するセクションを参照してください。
 
 ## <a name="user-experience"></a>ユーザー エクスペリエンス
 

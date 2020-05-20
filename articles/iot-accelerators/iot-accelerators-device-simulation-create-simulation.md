@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
 
-次に、**クイック スタート**でデプロイしたデバイス シミュレーションのタイル上で [[起動]](quickstart-device-simulation-deploy.md) をクリックします。
+次に、[クイック スタート](quickstart-device-simulation-deploy.md)でデプロイしたデバイス シミュレーションのタイル上で **[起動]** をクリックします。
 
 ## <a name="view-simulations"></a>シミュレーションを表示する
 

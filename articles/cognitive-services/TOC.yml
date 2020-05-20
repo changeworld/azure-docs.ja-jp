@@ -9,6 +9,8 @@
       href: cognitive-services-and-machine-learning.md
     - name: Cognitive Services のカスタム サブドメイン
       href: cognitive-services-custom-subdomains.md
+    - name: Cognitive Services のゲート プロセス
+      href: cognitive-services-gating-process.md
     - name: 言語のサポート
       href: language-support.md
 - name: クイックスタート

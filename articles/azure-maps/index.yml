@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: 852a01416b52c6a7b98c3b4883210749bf3cc509
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: b3e986c67c55af467ea6534dd7484a307ec08227
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80132445"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83589263"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -56,6 +56,36 @@ landingContent:
       url: how-to-manage-pricing-tier.md
     - text: Azure Maps API の使用状況メトリックを表示する
       url: how-to-view-api-usage.md
+- title: Creator を使用した開発
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 屋内マップの概念
+      url: creator-indoor-maps.md
+  - linkListType: tutorial
+    links:
+    - text: Creator を使用して屋内マップ データを作成する
+      url: tutorial-creator-indoor-maps.md
+  - linkListType: how-to-guide
+    links:
+    - text: Creator 屋内マップの管理
+      url: how-to-manage-creator.md
+    - text: 屋内マップの動的スタイルを実装する
+      url: indoor-map-dynamic-styling.md
+    - text: Azure Maps 描画エラー ビジュアライザーを使用する
+      url: drawing-error-visualizer.md
+    - text: 屋内マップ モジュールを使用する
+      url: how-to-use-indoor-module.md
+  - linkListType: reference
+    links:
+    - text: 変換サービス
+      url: https://docs.microsoft.com/rest/api/maps/conversion
+    - text: データセット サービス
+      url: https://docs.microsoft.com/rest/api/maps/dataset
+    - text: タイルセット サービス
+      url: https://docs.microsoft.com/rest/api/maps/tileset
+    - text: 機能の状態セット サービス
+      url: https://docs.microsoft.com/rest/api/maps/featurestate
 - title: Web SDK を使用した開発
   linkLists:
   - linkListType: concept

@@ -25,4 +25,4 @@ ms.locfileid: "67181605"
 
 リモート監視ソリューション ダッシュボードをブラウザーに表示するには、最初に [[Microsoft Azure IoT Solution Accelerators]\(Microsoft Azure IoT ソリューション アクセラレーター\)](https://www.azureiotsolutions.com/Accelerators#dashboard) に移動します。 Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
 
-次に、**クイック スタート**でデプロイしたリモート監視ソリューション アクセラレーターのタイル上で [[起動]](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) をクリックします。
+次に、[クイック スタート](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)でデプロイしたリモート監視ソリューション アクセラレーターのタイル上で **[起動]** をクリックします。

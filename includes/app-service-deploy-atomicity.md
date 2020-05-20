@@ -21,4 +21,4 @@ ms.locfileid: "75945140"
 
 - [ZIP パッケージから展開せずに直接アプリを実行](../articles/app-service/deploy-run-package.md)します。
 - デプロイ中に、アプリを停止するか、またはアプリのオフライン モードを有効にします。 詳細については、「[Dealing with locked files during deployment](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment)」 (デプロイ中にロックされているファイルに対処する) を参照してください。
-- [自動スワップ](../articles/app-service/deploy-staging-slots.md)を有効にした状態で[ステージング スロット](../articles/app-service/deploy-staging-slots.md#configure-auto-swap)にデプロイします。 
+- [自動スワップ](../articles/app-service/deploy-staging-slots.md#configure-auto-swap)を有効にした状態で[ステージング スロット](../articles/app-service/deploy-staging-slots.md)にデプロイします。 

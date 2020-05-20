@@ -98,7 +98,7 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 
 詳しくは、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」をご覧ください。
 
-また、Azure Dedicated Host[の](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)予約インスタンスを使用してコストを節約することもできます。
+また、[Azure Dedicated Host](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)の予約インスタンスを使用してコストを節約することもできます。
  
 ## <a name="sizes-and-hardware-generations"></a>サイズとハードウェアの世代
 

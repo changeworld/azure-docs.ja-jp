@@ -63,6 +63,8 @@
           href: howto-set-up-template.md
         - name: MXChip IoT DevKit を準備して接続する
           href: howto-connect-devkit.md
+        - name: Azure Sphere DevKit を準備して接続する
+          href: howto-connect-sphere.md
         - name: RuuviTag デバイスを準備して接続する
           href: howto-connect-ruuvi.md
         - name: Rigado Cascade 500 を準備して接続する

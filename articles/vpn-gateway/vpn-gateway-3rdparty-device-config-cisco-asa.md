@@ -32,7 +32,7 @@ ms.locfileid: "75778084"
 |                        |                                   |
 
 > [!NOTE]
-> このサンプル構成では、Cisco ASA デバイスが Azure の**ルートベース**の VPN ゲートウェイに接続されます。 この接続では、**こちらの記事**で説明したカスタム IPsec/IKE ポリシーと [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) オプションが使用されます。
+> このサンプル構成では、Cisco ASA デバイスが Azure の**ルートベース**の VPN ゲートウェイに接続されます。 この接続では、[こちらの記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)で説明したカスタム IPsec/IKE ポリシーと **UsePolicyBasedTrafficSelectors** オプションが使用されます。
 >
 > このサンプルで使用する ASA デバイスの **IKEv2** ポリシーは、VTI ベースではなくアクセスリストベースの構成であることが必要です。 オンプレミスの VPN デバイスで IKEv2 ポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。
 
