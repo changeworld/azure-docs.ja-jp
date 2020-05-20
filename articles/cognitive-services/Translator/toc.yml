@@ -1,6 +1,6 @@
 - name: Translator のドキュメント
   href: index.yml
-- name: '[変換者]'
+- name: Translator
   items:
     - name: 概要
       items:

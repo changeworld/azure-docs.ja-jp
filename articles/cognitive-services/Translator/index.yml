@@ -20,11 +20,11 @@ metadata:
   ms.lasthandoff: 05/19/2020
   ms.locfileid: "83592748"
 landingContent:
-- title: '[変換者]'
+- title: Translator
   linkLists:
   - linkListType: overview
     links:
-    - text: '[変換者]'
+    - text: Translator
       url: translator-info-overview.md
     - text: Custom Translator
       url: translator-info-overview.md
