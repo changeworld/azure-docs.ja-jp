@@ -62,7 +62,7 @@ ms.locfileid: "74979004"
 * [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) プロパティと [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) プロパティを CopyActivity に追加しました。 機能の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」を参照してください。
 
 ### <a name="bug-fix"></a>バグの修正
-* [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/mt767915.aspx) インスタンスを受け取る [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) メソッドのオーバーロードを導入しました。
+* [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) インスタンスを受け取る [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) メソッドのオーバーロードを導入しました。
 * CopySink で [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) と [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) が、省略可能としてマークされました。
 
 ## <a name="version-480"></a>バージョン 4.8.0

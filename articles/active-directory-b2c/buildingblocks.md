@@ -22,7 +22,7 @@ ms.locfileid: "78189873"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**TrustFrameworkPolicy**要素内に [BuildingBlocks](trustframeworkpolicy.md) 要素が追加されます。
+[TrustFrameworkPolicy](trustframeworkpolicy.md)要素内に **BuildingBlocks** 要素が追加されます。
 
 ```XML
 <TrustFrameworkPolicy

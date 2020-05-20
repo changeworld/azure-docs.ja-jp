@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間の作成を作成する
 
-このクイック スタートでは、[Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)から[既存の Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
+このクイック スタートでは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)から[既存の Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)を使用します。
 
 [!code-json[create-azure-service-bus-namespace](~/quickstart-templates/101-servicebus-create-namespace/azuredeploy.json)]
 

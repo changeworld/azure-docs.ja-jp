@@ -23,6 +23,8 @@
           href: tutorial-create-store-locator.md
     - name: REST API のチュートリアル
       items:
+        - name: 屋内マップの作成
+          href: tutorial-creator-indoor-maps.md
         - name: ジオフェンスを設定する
           href: tutorial-geofence.md
         - name: 空間分析
@@ -49,6 +51,12 @@
       href: azure-maps-event-grid-integration.md
     - name: 適切な価格レベルの選択
       href: choose-pricing-tier.md
+    - name: 屋内マップ用の Creator
+      items:
+        - name: 屋内マップの概念
+          href: creator-indoor-maps.md
+        - name: 変換エラーと警告の描画
+          href: drawing-conversion-error-codes.md
     - name: 対象範囲
       items:
         - name: ジオコーディングの対象範囲
@@ -83,6 +91,8 @@
           href: how-to-manage-authentication.md
         - name: 価格レベルを管理する
           href: how-to-manage-pricing-tier.md
+        - name: Creator の管理
+          href: how-to-manage-creator.md
         - name: 使用状況メトリックを表示する
           href: how-to-view-api-usage.md
     - name: REST API からマップ データを取得する
@@ -91,7 +101,7 @@
           href: how-to-search-for-address.md
         - name: Search Service の使用に関するベスト プラクティス
           href: how-to-use-best-practices-for-search.md
-        - name: Route Service の使用に関するベストプラクティス
+        - name: Route Service の使用に関するベスト プラクティス
           href: how-to-use-best-practices-for-routing.md
         - name: 静的マップ上にカスタム データをレンダリングする
           href: how-to-render-custom-data.md
@@ -201,12 +211,22 @@
           href: how-to-add-tile-layer-android-map.md
         - name: トラフィック データを表示する
           href: how-to-show-traffic-android.md
+    - name: Creator の屋内マップを使用した開発
+      items:
+        - name: 屋内マップ モジュール
+          href: how-to-use-indoor-module.md
+        - name: 屋内マップの動的スタイル
+          href: indoor-map-dynamic-styling.md
+        - name: 描画エラー ビジュアライザー
+          href: drawing-error-visualizer.md
     - name: データのフィードバックを提供する
       href: how-to-use-feedback-tool.md
 - name: リファレンス
   items:
     - name: API とパラメーターの拡張子
       items:
+        - name: 描画パッケージの要件
+          href: drawing-requirements.md
         - name: 車両消費モデル
           href: consumption-model.md
         - name: GeoJSON 形式の拡張
@@ -251,6 +271,8 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
         - name: 空間 IO モジュール
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+        - name: 屋内モジュール
+          href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.maps/accounts
 - name: リソース
@@ -287,7 +309,7 @@
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-maps'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'

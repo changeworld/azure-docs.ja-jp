@@ -88,6 +88,8 @@
           href: ipv6-overview.md
         - name: パブリック IPv6 アドレスのプレフィックス
           href: ipv6-public-ip-address-prefix.md
+        - name: ルーティング設定
+          href: routing-preference-overview.md
     - name: Security
       items:
         - name: ネットワーク セキュリティ グループ
@@ -222,6 +224,24 @@
               href: manage-public-ip-address-prefix.md
             - name: NIC の IP アドレスの追加または削除
               href: virtual-network-network-interface-addresses.md
+            - name: ルーティング設定
+              items:
+                - name: パブリック IP アドレスの作成
+                  items:
+                    - name: Azure portal
+                      href: routing-preference-portal.md
+                    - name: Azure PowerShell
+                      href: routing-preference-powershell.md
+                    - name: Azure CLI
+                      href: routing-preference-cli.md
+                - name: インターネット ルーティング設定を使用して VM を構成する
+                  items:
+                    - name: Azure portal
+                      href: tutorial-routing-preference-virtual-machine-portal.md
+                    - name: Azure PowerShell
+                      href: configure-routing-preference-virtual-machine-powershell.md
+                    - name: Azure CLI
+                      href: configure-routing-preference-virtual-machine-cli.md
     - name: Security
       items:
         - name: ネットワーク トラフィックのフィルター処理

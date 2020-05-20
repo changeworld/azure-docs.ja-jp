@@ -119,8 +119,6 @@
           href: global-dist-under-the-hood.md
         - name: リージョン プレゼンス
           href: regional-presence.md
-        - name: トランザクションと分析のストレージ
-          href: globally-distributed-transactional-analytical-storage.md
     - name: パーティション分割
       items:
         - name: パーティション分割の概要
@@ -494,14 +492,16 @@
           href: change-feed-functions.md
         - name: 変更フィードのプル モデル
           href: change-feed-pull-model.md
-    - name: グローバル分散分析と AI
+    - name: Synapse Link を使用した分析
       items:
-        - name: 分析のユース ケース
-          href: analytics-usecases.md
-        - name: Analytics - ソリューション アーキテクチャ
-          href: analytics-solution-architectures.md
-        - name: ラムダ アーキテクチャ
-          href: lambda-architecture.md
+        - name: Azure Cosmos DB の Synapse Link
+          href: synapse-link.md
+        - name: 分析ストア - 概要
+          href: analytical-store-introduction.md
+        - name: Synapse Link に関する FAQ
+          href: synapse-link-frequently-asked-questions.md
+        - name: Synapse Link のユース ケース
+          href: synapse-link-use-cases.md
     - name: 組み込み Jupyter ノートブック
       items:
         - name: Jupyter ノートブックの概要
@@ -1020,6 +1020,10 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: 変更フィード - Async Java のサンプル
           href: create-sql-api-java-changefeed.md
+    - name: Synapse Link を使用した分析
+      items:
+        - name: Synapse Link の構成
+          href: configure-synapse-link.md
     - name: Apache Spark による組み込みの分析
       items:
         - name: Azure Databricks の Spark コネクタ

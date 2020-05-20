@@ -86,7 +86,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-*az network vnet peering create* を使用して、*myVirtualNetwork1* から [myVirtualNetwork2](/cli/azure/network/vnet/peering) へのピアリングを作成します。 `--allow-vnet-access` パラメーターが指定されていない場合、ピアリングは確立されますが、通信を行うことはできません。
+[az network vnet peering create](/cli/azure/network/vnet/peering) を使用して、*myVirtualNetwork1* から *myVirtualNetwork2* へのピアリングを作成します。 `--allow-vnet-access` パラメーターが指定されていない場合、ピアリングは確立されますが、通信を行うことはできません。
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -108,7 +108,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-前のコマンドの実行後に返された出力では、**peeringState** が *Connected* です。 Azure によって、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態も *Connected* に変更されました。 *az network vnet peering show* を使用して、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態が [Connected](/cli/azure/network/vnet/peering) に変更されたことを確認します。
+前のコマンドの実行後に返された出力では、**peeringState** が *Connected* です。 Azure によって、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態も *Connected* に変更されました。 [az network vnet peering show](/cli/azure/network/vnet/peering) を使用して、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態が *Connected* に変更されたことを確認します。
 
 ```azurecli-interactive
 az network vnet peering show \

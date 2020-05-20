@@ -20,4 +20,4 @@ ms.locfileid: "80276055"
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい Dynamics 365 Business Central オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、[[概要]](https://partner.microsoft.com/dashboard/directory) ページを選択した状態で**商業マーケットプレース ダッシュボード**を開いてください。 「[新しい Dynamics 365 Business Central オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)」の手順に従って、オファーを作成します。
+新しい Dynamics 365 Business Central オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 Business Central オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)」の手順に従って、オファーを作成します。

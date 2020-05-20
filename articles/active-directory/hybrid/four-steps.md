@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のハイブリッド ID ソリューション
 
 ### <a name="make-apps-available-to-your-users-seamlessly"></a>ユーザーがアプリをシームレスに使用できるようにする
 
-Azure AD を使用すると、管理者は [Azure portal](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](https://portal.azure.com/)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウドベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
+Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウドベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
 
 アプリケーションが Azure AD ギャラリーに追加されると、ユーザーは自分に割り当てられたアプリを表示し、必要に応じて他のアプリを検索して要求することができます。 Azure AD には、ユーザーが自分のアプリにアクセスするための[いくつかの方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)が用意されています。
 
@@ -121,7 +121,7 @@ PHS または PTA のどちらを選択する場合も、[シームレス シン
 
 ### <a name="enable-automatic-deprovisioning-of-accounts"></a>アカウントの自動プロビジョニング解除を有効にする
 
-アプリケーションへの自動プロビジョニングとプロビジョニング解除を有効にすることは、複数のシステムにわたって ID のライフサイクルを管理するための最良の戦略です。 Azure AD では、[SCIM 2.0 プロトコル](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)を実装する ServiceNow や Salesforce などの人気のあるさまざまな SaaS アプリケーションやその他のアプリケーションに対するユーザー アカウントの[自動化されたポリシー ベースのプロビジョニングとプロビジョニング解除](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)をサポートしています。 カスタム コードや CSV ファイルの手動アップロードを必要とする従来のプロビジョニング ソリューションとは異なり、プロビジョニング サービスはクラウドでホストされ、Azure portal を使ってセットアップおよび管理できる事前統合されたコネクターを使用します。 自動プロビジョニング解除の主な利点は、ユーザーが組織を離れるときに、主要な SaaS アプリからその ID を即座に削除することにより、組織の安全を確保できることです。
+アプリケーションへの自動プロビジョニングとプロビジョニング解除を有効にすることは、複数のシステムにわたって ID のライフサイクルを管理するための最良の戦略です。 Azure AD では、[SCIM 2.0 プロトコル](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)を実装する ServiceNow や Salesforce などの人気のあるさまざまな SaaS アプリケーションやその他のアプリケーションに対するユーザー アカウントの[自動化されたポリシー ベースのプロビジョニングとプロビジョニング解除](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)をサポートしています。 カスタム コードや CSV ファイルの手動アップロードを必要とする従来のプロビジョニング ソリューションとは異なり、プロビジョニング サービスはクラウドでホストされ、Azure portal を使ってセットアップおよび管理できる事前統合されたコネクターを使用します。 自動プロビジョニング解除の主な利点は、ユーザーが組織を離れるときに、主要な SaaS アプリからその ID を即座に削除することにより、組織の安全を確保できることです。
 
 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)」を参照してください。
 

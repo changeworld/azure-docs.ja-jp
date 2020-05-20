@@ -172,7 +172,7 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 
 テスト システムからの **corosync.conf** の内容は、一例です。
 
-**クラスターのインストール**に関するセクションの手順 11 で説明されているように、最初のセクションは [totem](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation) です。 **mcastaddr** の値は無視できます。 既存のエントリを保持します。 **token** と **consensus** のエントリは、[Microsoft Azure SAP HANA のドキュメント][sles-pacemaker-ha-guide]に従って設定する必要があります。
+[クラスターのインストール](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)に関するセクションの手順 11 で説明されているように、最初のセクションは **totem** です。 **mcastaddr** の値は無視できます。 既存のエントリを保持します。 **token** と **consensus** のエントリは、[Microsoft Azure SAP HANA のドキュメント][sles-pacemaker-ha-guide]に従って設定する必要があります。
 
 <pre><code>
 totem {

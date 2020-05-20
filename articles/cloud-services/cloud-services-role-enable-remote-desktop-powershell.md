@@ -96,7 +96,7 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 > [!NOTE]
 > 拡張機能の構成を完全に削除するには、 *UninstallConfiguration* パラメーターを使用して **Remove** コマンドレットを呼び出す必要があります。
 >
-> **UninstallConfiguration** パラメーターを使用すると、サービスに適用されている拡張機能の構成がアンインストールされます。 拡張機能の構成は、いずれもサービスの構成に関連付けられています。 *UninstallConfiguration* を使用せずに **Remove** コマンドレットを呼び出すと、拡張機能の構成から<mark>デプロイ</mark>との関連付けが解除されるため、実質的には拡張機能が削除されることになります。 ただし、拡張機能の構成は、サービスに関連付けられたままになります。
+> **UninstallConfiguration** パラメーターを使用すると、サービスに適用されている拡張機能の構成がアンインストールされます。 拡張機能の構成は、いずれもサービスの構成に関連付けられています。 **UninstallConfiguration** を使用せずに *Remove* コマンドレットを呼び出すと、拡張機能の構成から<mark>デプロイ</mark>との関連付けが解除されるため、実質的には拡張機能が削除されることになります。 ただし、拡張機能の構成は、サービスに関連付けられたままになります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

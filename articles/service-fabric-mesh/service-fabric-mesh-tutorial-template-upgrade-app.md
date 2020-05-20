@@ -68,7 +68,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 変更内容をパラメーター ファイルに保存します。  
 
-*frontEndCpu* パラメーターは、*mesh_rp.windows.json デプロイ テンプレート*の [parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) セクションで宣言されています。
+*frontEndCpu* パラメーターは、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)の *parameters* セクションで宣言されています。
 
 ```json
 "frontEndCpu": {

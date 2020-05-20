@@ -1,28 +1,30 @@
 ### YamlMime:Landing
-title: Azure Active Directory B2B のドキュメント
-summary: Azure AD の企業間 (B2B) コラボレーションを使用して、独自の社内データに対するコントロールを維持した状態で、会社のアプリケーションとサービスをゲスト ユーザーや任意の組織の外部パートナーと安全に共有する方法について説明します。
+title: External Identities のドキュメント
+summary: External Identities は、組織が顧客やパートナーなどの外部ユーザーをセキュリティで保護して管理できるようにする一連の機能です。 B2B コラボレーションを基盤とする External Identities は、組織外のユーザーとやり取りして接続するための追加機能を提供します。
 metadata:
-  title: アプリケーション管理のドキュメント
-  description: Azure AD の企業間 (B2B) コラボレーションを使用して、独自の社内データに対するコントロールを維持した状態で、会社のアプリケーションとサービスをゲスト ユーザーや任意の組織の外部パートナーと安全に共有する方法について説明します。
+  title: External Identities のドキュメント
+  description: External Identities は、組織が顧客やパートナーなどの外部ユーザーをセキュリティで保護して管理できるようにする一連の機能です。 B2B コラボレーションを基盤とする External Identities は、組織外のユーザーとやり取りして接続するための追加機能を提供します。
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/27/2019
+  ms.date: 05/19/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74272697"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83587478"
 landingContent:
-- title: Azure B2B コラボレーション
+- title: External Identities について
   linkLists:
   - linkListType: overview
     links:
+    - text: External Identities ソリューションの比較
+      url: compare-with-b2c.md
     - text: B2B ゲスト ユーザー アクセスとは
       url: what-is-b2b.md
 - title: B2B ゲスト ユーザーの招待

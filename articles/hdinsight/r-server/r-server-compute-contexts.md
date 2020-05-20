@@ -75,7 +75,7 @@ RevoScaleR コンピューティング コンテキストの詳細と例につ�
 
     > ?rxSetComputeContext
 
-「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/)」にも関連情報があります。
+「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
 
 ## <a name="next-steps"></a>次のステップ
 

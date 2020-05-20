@@ -99,7 +99,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |Resource group | **[既存のものを使用]** を選択し、 *[myResourceGroup]* を選択します。|
     |Location| **[米国東部]** を選択します。 |
 
-4. ネットワーク セキュリティ グループが作成された後、ポータルの上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに「**myNsgPrivate**」と入力します。 検索結果に **myNsgPrivate** が表示されたら、それを選びます。
+4. ネットワーク セキュリティ グループが作成された後、ポータルの上部にある **[リソース、サービス、ドキュメントの検索]** ボックスに「*myNsgPrivate*」と入力します。 検索結果に **myNsgPrivate** が表示されたら、それを選びます。
 5. **[設定]** で **[送信セキュリティ規則]** を選びます。
 6. **[+ 追加]** を選択します。
 7. Azure Storage サービスへの送信方向の通信を許可するルールを作成します。 次の情報を入力または選択し、 **[追加]** を選択します。
@@ -177,7 +177,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
    ![ストレージ アカウント](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
 
 3. **[+ ファイル共有]** を選択します。
-4. *[名前]* に「**my-file-share**」と入力し、 **[OK]** を選びます。
+4. **[名前]** に「*my-file-share*」と入力し、 **[OK]** を選びます。
 5. **[File サービス]** ボックスを閉じます。
 
 ### <a name="restrict-network-access-to-a-subnet"></a>サブネットへのネットワーク アクセスを制限する
@@ -300,9 +300,9 @@ VM のデプロイには数分かかります。 作成が完了して設定が�
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
 
-1. ポータル上部の *[検索]* ボックスに「**myResourceGroup**」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
+1. ポータル上部の **[検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. *[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)* に「**myResourceGroup**」と入力し、 **[削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

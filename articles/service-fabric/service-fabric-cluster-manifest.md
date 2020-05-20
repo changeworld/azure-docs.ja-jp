@@ -139,7 +139,7 @@ nodeTypes セクションでは、クラスターに含まれるノードのタ�
 }]
 ```
 
-name は、この特定のノード タイプのフレンドリ名です。 このノード タイプのノードを作成するには、[前述](#nodes-on-the-cluster)のとおり、そのフレンドリ名をそのノードの nodeTypeRef 変数に指定します。 ノード タイプごとに、使用する接続エンドポイントを定義します。 このクラスター内の他のエンドポイントと競合しない限り、これらの接続エンドポイントには任意のポート番号を選択することができます。 マルチノード クラスターでは、*reliabilityLevel* に応じて、1 つまたは複数のプライマリ ノードが存在します (つまり、isPrimary が [true](#reliability) に設定されています)。 プライマリ ノード タイプと非プライマリ ノード タイプの詳細については、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」で nodeTypes と reliabilityLevel の情報を参照してください。 
+name は、この特定のノード タイプのフレンドリ名です。 このノード タイプのノードを作成するには、[前述](#nodes-on-the-cluster)のとおり、そのフレンドリ名をそのノードの nodeTypeRef 変数に指定します。 ノード タイプごとに、使用する接続エンドポイントを定義します。 このクラスター内の他のエンドポイントと競合しない限り、これらの接続エンドポイントには任意のポート番号を選択することができます。 マルチノード クラスターでは、[reliabilityLevel](#reliability) に応じて、1 つまたは複数のプライマリ ノードが存在します (つまり、isPrimary が *true* に設定されています)。 プライマリ ノード タイプと非プライマリ ノード タイプの詳細については、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」で nodeTypes と reliabilityLevel の情報を参照してください。 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>ノード タイプの構成に使用するエンドポイント
 * clientConnectionEndpointPort は、クライアント API の使用時にクライアントがクラスターへの接続に使用するポートです。 

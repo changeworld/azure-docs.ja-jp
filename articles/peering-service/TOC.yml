@@ -4,6 +4,14 @@
   items:
     - name: Peering Service について
       href: about.md
+- name: チュートリアル
+  items:
+    - name: Peering Service 接続を登録する
+      href: azure-portal.md
+    - name: Peering Service 接続を作成する
+      href: create-connection.md
+    - name: Peering Service 接続テレメトリを測定する
+      href: measure-connection-telemetry.md
 - name: 概念
   items:
     - name: 場所とパートナー
@@ -18,14 +26,10 @@
   items:
     - name: Peering Service の登録
       items:
-        - name: Azure portal
-          href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
-    - name: 接続テレメトリの計測
-      href: measure-connection-telemetry.md
 - name: References
   items:
     - name: Azure PowerShell

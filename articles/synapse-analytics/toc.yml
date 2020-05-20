@@ -36,6 +36,8 @@
           href: quickstart-load-studio-sql-pool.md
     - name: SQL オンデマンドを使用する
       href: quickstart-sql-on-demand.md
+    - name: Cosmos DB の Synapse Link に接続する
+      href: quickstart-connect-synapse-link-cosmos-db.md
 - name: チュートリアル
   items:
     - name: Spark プールに対して Apache Spark アプリケーションを実行する
@@ -324,6 +326,10 @@
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: リソース クラス
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Synapse Link
+      items:
+        - name: Synapse Link でサポートされる機能
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
     - name: ツール統合 (AI、ETL、BI)
       items:
         - name: Synapse Analytics Studio のトラブルシューティング
@@ -406,6 +412,12 @@
               href: data-integration/data-integration-data-lake.md
     - name: データの変換と分析
       items:
+        - name: Synapse Link
+          items:
+            - name: Cosmos DB の Azure Synapse Link に接続する
+              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+            - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
+              href: ./synapse-link/how-to-query-analytical-store-spark.md
         - name: Synapse SQL
           items:
             - name: ストレージ内のデータのクエリ

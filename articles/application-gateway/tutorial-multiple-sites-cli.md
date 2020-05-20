@@ -18,7 +18,7 @@ ms.locfileid: "74047355"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLI を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](multiple-site-overview.md)を作成するときに、Azure CLI を使用して[複数の Web サイトのホスティングを構成](overview.md)できます。 この記事では、仮想マシン スケール セットを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 この記事では、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.fabrikam.com* の例を使用します。
+[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure CLI を使用して[複数の Web サイトのホスティングを構成](multiple-site-overview.md)できます。 この記事では、仮想マシン スケール セットを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 この記事では、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.fabrikam.com* の例を使用します。
 
 この記事では、次のことについて説明します。
 
@@ -52,7 +52,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-*az network vnet create* を使用して、仮想ネットワークと [myAGSubnet](/cli/azure/network/vnet) という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要なサブネットを追加できます。 *az network public-ip create* を使用して [myAGPublicIPAddress](/cli/azure/network/public-ip) という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要なサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \

@@ -82,7 +82,7 @@ yo コマンドを実行するときの入力と出力を次に示します。
 
 Yeoman を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。
 
-1. **./TestContainer** のように、ディレクトリのレベルを *TestContainer* ディレクトリに変更します。
+1. *./TestContainer* のように、ディレクトリのレベルを **TestContainer** ディレクトリに変更します。
 2. `yo azuresfcontainer:AddService` を実行します。
 3. サービスに 'aazurevoteback'a という名前を付けます。
 4. Redis のコンテナー イメージ パス ('alpine:redis') を指定します。

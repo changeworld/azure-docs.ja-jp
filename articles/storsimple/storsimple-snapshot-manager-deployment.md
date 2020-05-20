@@ -42,7 +42,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
 次の手順では、StorSimple Snapshot Manager をインストールする前に完了する必要がある構成タスクの概要を説明します。 システム要件や詳細な手順の説明など、Microsoft Azure StorSimple の構成とセットアップに関する完全な情報については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」をご覧ください。
 
 > [!IMPORTANT]
-> 開始する前に、[「オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)」にある「[デプロイメント チェックリスト](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites)」と「[デプロイメントの前提条件](storsimple-8000-deployment-walkthrough-u2.md)」をご確認ください。
+> 開始する前に、[「オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」にある「[デプロイメント チェックリスト](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites)」をご確認ください。
 > <br>
 > 
 > 
@@ -66,7 +66,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
    * ミラー化された動的ボリューム (RAID 1)
    * クラスターの共有ボリューム
      
-     StorSimple デバイスまたは StorSimple 仮想デバイスにボリュームを作成する方法については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)」の「[手順 6: ボリュームを作成する](storsimple-8000-deployment-walkthrough-u2.md)」をご確認ください。
+     StorSimple デバイスまたは StorSimple 仮想デバイスにボリュームを作成する方法については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」の「[手順 6: ボリュームを作成する](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)」をご確認ください。
 
 ## <a name="install-a-new-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager の新規インストール
 StorSimple Snapshot Manager をインストールする前に、StorSimple デバイスまたは StorSimple 仮想デバイスに作成したボリュームが、「 [構成の前提条件](#configure-prerequisites)」に説明されているようにマウント、初期化、およびフォーマットされていることを確認します。

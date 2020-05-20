@@ -44,7 +44,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ![ビデオ デモのサムネイル](images/ams-video-demo-view.PNG)
 
-- マニフェスト URL にはこの **Azure Media Services デモ** ページの [URL](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) をコピーします。
+- マニフェスト URL にはこの [Azure Media Services デモ](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) ページの **URL** をコピーします。
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 

@@ -118,9 +118,9 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 
 1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties)型のリンクされたサービス。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
-3. [RelationalTable](data-factory-create-datasets.md) 型の入力[データセット](data-factory-onprem-postgresql-connector.md#dataset-properties)。
-4. [AzureBlob](data-factory-create-datasets.md) 型の出力[データセット](data-factory-azure-blob-connector.md#dataset-properties)。
-5. [RelationalSource](data-factory-create-pipelines.md) と [BlobSink](data-factory-onprem-postgresql-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-azure-blob-connector.md#copy-activity-properties)。
+3. [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+5. [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは PostgreSQL データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 

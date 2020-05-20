@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="resource-group"></a>Resource group
 
-作成するその他のリソースを格納するため、[IoTCentralAnalysis](https://portal.azure.com/#create/Microsoft.ResourceGroup) という **リソース グループを Azure portal で作成**します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
+作成するその他のリソースを格納するため、**IoTCentralAnalysis** という [リソース グループを Azure portal で作成](https://portal.azure.com/#create/Microsoft.ResourceGroup)します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
 
 ### <a name="event-hubs-namespace"></a>Event Hubs 名前空間
 

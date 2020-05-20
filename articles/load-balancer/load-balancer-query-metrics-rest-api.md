@@ -19,7 +19,7 @@ ms.locfileid: "74225252"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>REST API を使用して Load Balancer の使用状況メトリックを取得する
 
-[Azure REST API](/azure/load-balancer/load-balancer-standard-overview) を使用して、ある期間に [Standard Load Balancer](/rest/api/azure/) によって処理されたバイト数を収集します。
+[Azure REST API](/rest/api/azure/) を使用して、ある期間に [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) によって処理されたバイト数を収集します。
 
 完全なリファレンス ドキュメントと REST API の他の例は、[Azure Monitor REST リファレンス](/rest/api/monitor)で確認できます。 
 

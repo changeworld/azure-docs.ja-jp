@@ -35,7 +35,7 @@ ms.locfileid: "77069457"
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>データ依存ルーティング アプリケーションでの ShardMapManager の使用
 
-アプリケーションは、ファクトリ呼び出し **GetSQLShardMapManager** (**Java**、[.NET](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)) を使用して、初期化中に [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) をインスタンス化する必要があります。 この例では、**ShardMapManager** と、これが含んでいる特定の **ShardMap** の両方が初期化されます。 また、GetSqlShardMapManager メソッドと GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) メソッドを使用しています。
+アプリケーションは、ファクトリ呼び出し **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) を使用して、初期化中に **ShardMapManager** をインスタンス化する必要があります。 この例では、**ShardMapManager** と、これが含んでいる特定の **ShardMap** の両方が初期化されます。 また、GetSqlShardMapManager メソッドと GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) メソッドを使用しています。
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);

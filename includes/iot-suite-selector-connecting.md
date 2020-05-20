@@ -23,7 +23,7 @@ ms.locfileid: "67181611"
 > * [Raspberry Pi の Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
-このチュートリアルでは、次のテレメトリを、リモート監視の**ソリューション アクセラレータ**に送信する [Chiller](../articles/iot-accelerators/about-iot-accelerators.md) デバイスを実装します。
+このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-accelerators/about-iot-accelerators.md)に送信する **Chiller** デバイスを実装します。
 
 * 気温
 * 圧力
