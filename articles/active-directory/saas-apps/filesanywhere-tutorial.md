@@ -123,7 +123,7 @@ FilesAnywhere で Azure AD シングル サインオンを構成するには、�
 
     ![image](common/edit-attribute.png)
 
-    ユーザーが FilesAnywhere にサインアップすると、**FilesAnywhere チーム**から [clientid](mailto:support@FilesAnywhere.com) 属性の値を取得します。 "クライアント Id" 属性を FilesAnywhere によって提供される一意の値で追加する必要があります。
+    ユーザーが FilesAnywhere にサインアップすると、[FilesAnywhere チーム](mailto:support@FilesAnywhere.com)から **clientid** 属性の値を取得します。 "クライアント Id" 属性を FilesAnywhere によって提供される一意の値で追加する必要があります。
 
 7. その他に、FilesAnywhere アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 

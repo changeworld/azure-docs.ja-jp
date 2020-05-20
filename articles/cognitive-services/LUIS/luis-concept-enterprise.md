@@ -37,7 +37,7 @@ LUIS には、Azure リソースの価格レベルに基づいて、月間クォ
 
 これらの兄弟アプリをトレーニングするときは、必ず[すべてのデータを使用してトレーニング](luis-how-to-train.md#train-with-all-data)してください。
 
-1 つのアプリをマスターとして指定します。 確認用として推奨される発話をマスター アプリに追加してから、その他のすべてのアプリに移動する必要があります。 これは、アプリを完全にエクスポートするか、ラベル付き発話をマスターから子に読み込むことで行います。 読み込みは、[単一の発話](luis-reference-regions.md)または[バッチ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08)に対して、[LUIS](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) Web サイトまたはオーサリング API のどちらからでも実行できます。 
+1 つのアプリをマスターとして指定します。 確認用として推奨される発話をマスター アプリに追加してから、その他のすべてのアプリに移動する必要があります。 これは、アプリを完全にエクスポートするか、ラベル付き発話をマスターから子に読み込むことで行います。 読み込みは、[単一の発話](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08)または[バッチ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)に対して、[LUIS](luis-reference-regions.md) Web サイトまたはオーサリング API のどちらからでも実行できます。 
 
 アクティブ ラーニングのために定期的な (2 週間ごとなど) [エンドポイントの発話](luis-how-to-review-endpoint-utterances.md)の確認をスケジュール設定し、再トレーニングして再公開します。 
 
@@ -56,7 +56,7 @@ LUIS アプリで、1 つのキーのクォータで許可されているより�
 ボットに応答する必要がある LUIS アプリと QnA Maker アプリが複数ある場合、[ディスパッチ モデル](#dispatch-tool-and-model)を使用してトップ レベルのアプリを構築します。  [ディスパッチ モデルのチュートリアル](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)で示されているように、カスケード型の呼び出しを使用するようにボットを変更します。 
 
 ## <a name="dispatch-tool-and-model"></a>ディスパッチ ツールとモデル
-[BotBuilder ツール][dispatch-tool]内にある[ディスパッチ](https://github.com/Microsoft/botbuilder-tools) コマンドライン ツールを使用して、複数の LUIS アプリや QnA Maker アプリを親 LUIS アプリに結合します。 この方法を使用すると、すべてのサブジェクトを含む親ドメインと、さまざまな子サブジェクト ドメインを、別々のアプリに指定できます。 
+[BotBuilder ツール](https://github.com/Microsoft/botbuilder-tools)内にある[ディスパッチ][dispatch-tool] コマンドライン ツールを使用して、複数の LUIS アプリや QnA Maker アプリを親 LUIS アプリに結合します。 この方法を使用すると、すべてのサブジェクトを含む親ドメインと、さまざまな子サブジェクト ドメインを、別々のアプリに指定できます。 
 
 ![ディスパッチ アーキテクチャの概念図](./media/luis-concept-enterprise/dispatch-architecture.png)
 

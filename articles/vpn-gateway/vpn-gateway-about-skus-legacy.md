@@ -22,7 +22,7 @@ ms.locfileid: "79235751"
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-レガシ ゲートウェイの価格は、**ExpressRoute の価格ページ**にある「[仮想ネットワーク ゲートウェイ](https://azure.microsoft.com/pricing/details/expressroute)」セクションで表示できます。
+レガシ ゲートウェイの価格は、[ExpressRoute の価格ページ](https://azure.microsoft.com/pricing/details/expressroute)にある「**仮想ネットワーク ゲートウェイ**」セクションで表示できます。
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a><a name="agg"></a>SKU の予測される合計スループット
 

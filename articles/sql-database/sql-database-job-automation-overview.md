@@ -205,7 +205,7 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 "*ジョブ データベース*" となるデータベースは新しいものでなくてもかまいませんが、データが入っておらず、サービス目標が S0 以上であることが条件となります。 "*ジョブ データベース*" で推奨されるサービス目標は S1 以上ですが、最適な選択はジョブのパフォーマンスに関するニーズ (ジョブ ステップの数、ジョブ ターゲットの数、ジョブの実行頻度) に依存します。 たとえば、10 個未満のデータベースをターゲットとして、1 時間に 2、3 回ジョブを実行するジョブ エージェントであれば、S0 データベースでも十分でしょう。しかし、ジョブを毎分実行するのであれば、S0 データベースでは速度が十分でない可能性があるため、より上のサービス レベルの方が望ましいと考えられます。
 
-ジョブ データベースに対する操作が予想よりも遅い場合は、Azure portal または [sys.dm_db_resource_stats](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) DMV を使用して、パフォーマンスが低下している期間に、データベースのパフォーマンスと、ジョブ データベースのリソース使用率を[監視](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)します。 CPU、データ IO、ログ書き込みなどのリソースの使用率が100% に近づいており、パフォーマンス低下の期間と相関している場合は、ジョブ データベースのパフォーマンスが十分に向上するまで、([DTU モデル](sql-database-service-tiers-dtu.md)または[仮想コア モデル](sql-database-service-tiers-vcore.md)) でデータベースをより高いサービス目標に段階的にスケーリングすることを検討してください。
+ジョブ データベースに対する操作が予想よりも遅い場合は、Azure portal または [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV を使用して、パフォーマンスが低下している期間に、データベースのパフォーマンスと、ジョブ データベースのリソース使用率を[監視](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring)します。 CPU、データ IO、ログ書き込みなどのリソースの使用率が100% に近づいており、パフォーマンス低下の期間と相関している場合は、ジョブ データベースのパフォーマンスが十分に向上するまで、([DTU モデル](sql-database-service-tiers-dtu.md)または[仮想コア モデル](sql-database-service-tiers-vcore.md)) でデータベースをより高いサービス目標に段階的にスケーリングすることを検討してください。
 
 ##### <a name="job-database-permissions"></a>ジョブ データベースのアクセス許可
 
@@ -267,7 +267,7 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 #### <a name="job-history"></a>ジョブ履歴
 
-ジョブの実行履歴は "*ジョブ データベース*" に格納されます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"**ジョブ データベース**" で*sp_purge_history* ストアド プロシージャを呼び出してください。
+ジョブの実行履歴は "*ジョブ データベース*" に格納されます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"*ジョブ データベース*" で**sp_purge_history** ストアド プロシージャを呼び出してください。
 
 ### <a name="agent-performance-capacity-and-limitations"></a>エージェントのパフォーマンス、容量、および制約
 

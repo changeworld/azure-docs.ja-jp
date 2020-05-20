@@ -89,7 +89,7 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 管理者アクセス制御も、前述の操作にアクセスできます。
 
 ## <a name="changing-default-settings-for-client-roles"></a>クライアント ロールの既定の設定の変更
-クラスター マニフェスト ファイルでは、必要であれば、クライアントに管理者機能を提供できます。 既定の設定を変更するには、**クラスターの作成**中に [[Fabric の設定]](service-fabric-cluster-creation-via-portal.md) オプションに移動し、**name**、**admin**、**user**、**value** の各フィールドに前述の設定を入力します。
+クラスター マニフェスト ファイルでは、必要であれば、クライアントに管理者機能を提供できます。 既定の設定を変更するには、[クラスターの作成](service-fabric-cluster-creation-via-portal.md)中に **[Fabric の設定]** オプションに移動し、**name**、**admin**、**user**、**value** の各フィールドに前述の設定を入力します。
 
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)

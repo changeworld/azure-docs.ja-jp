@@ -33,7 +33,7 @@ ms.locfileid: "79214472"
 
 ## <a name="create-run-and-manage-jobs"></a>ジョブの作成、実行、および管理
 
-1. *PowerShell* または [T-SQL](elastic-jobs-powershell.md) を使用して、"[ジョブ データベース](elastic-jobs-tsql.md#create-a-credential-for-job-execution)" にジョブ実行のための資格情報を作成します。
+1. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) を使用して、"*ジョブ データベース*" にジョブ実行のための資格情報を作成します。
 2. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) を使用して、ターゲット グループ (ジョブの実行の対象とするデータベース) を定義します。
 3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](sql-database-manage-logins.md) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell.md)を参照してください。
 4. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブを作成します。

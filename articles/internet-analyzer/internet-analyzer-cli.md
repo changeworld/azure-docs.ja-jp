@@ -36,7 +36,7 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 * **時系列** - 時系列には、一定期間におけるメトリックの変化が表示されます。
 
 ## <a name="profile-and-test-creation"></a>プロファイルとテストの作成
-1. **Azure Internet Analyzer の FAQ** に記載されている「[プレビューに参加するにはどうすればよいですか?](internet-analyzer-faq.md)」の指示に従って、Internet Analyzer プレビュー版へのアクセスを取得します。
+1. [Azure Internet Analyzer の FAQ](internet-analyzer-faq.md) に記載されている「**プレビューに参加するにはどうすればよいですか?** 」の指示に従って、Internet Analyzer プレビュー版へのアクセスを取得します。
 2. [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)を実行します。
 3. `login` コマンドを実行して CLI セッションを開始します。
     ```azurecli-interactive

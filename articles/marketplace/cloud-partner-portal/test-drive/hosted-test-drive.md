@@ -38,7 +38,7 @@ ms.locfileid: "80278265"
 
 [Technical Configuration]\(技術的構成\) セクションで次のフィールドを指定します。
 
-- **[Type of Test Drive]\(体験版の種類\)** :[Microsoft Hosted (example Dynamics 365 for Customer Engagement)]\(Microsoft でホスト \(例: Dynamics 365 for Customer Engagement\)\) オプションを選択します。 これは、体験版ユーザーのプロビジョニングとプロビジョニング解除を行うサービスを Microsoft がホストして管理することを示します。
+- **[Type of Test Drive]\(体験版の種類\)** : [Microsoft Hosted (example Dynamics 365 for Customer Engagement)]\(Microsoft でホスト \(例: Dynamics 365 for Customer Engagement\)\) オプションを選択します。 これは、体験版ユーザーのプロビジョニングとプロビジョニング解除を行うサービスを Microsoft がホストして管理することを示します。
 - **[Max Concurrent Test Drives]\(同時実行する体験版の最大数\)** :このフィールドでは、任意の時点で体験版を同時にアクティブにできるユーザーの数を設定します。 体験版がアクティブになっている間、各ユーザーは Dynamics のライセンスを消費するので、少なくともここで指定する数の Dynamics ライセンスを体験版ユーザーに使用できることを確認する必要があります。 推奨値は 3 ～ 5 です。
 - **[Test Drive Duration (hours)]\(体験版の期間 (時間)\)** :このフィールドには、ユーザーの体験版がアクティブになる時間数を設定します。 この時間が経過すると、ユーザーはテナントからプロビジョニング解除されます。 アプリの複雑さに応じて、推奨値は 2 ～ 24 時間です。 この時間が経過した後でユーザーが再び体験版にアクセスしたい場合、ユーザーはいつでも別の体験版を要求できます。
 - **[Instance URL]\(インスタンス URL\)** :体験版のユーザーが体験版を開始したときに最初に誘導される URL を指定します。 通常これは、アプリとサンプル データがインストールされている Dynamics 365 インスタンスの URL です。 値の例: https:\//testdrive.crm.dynamics.com

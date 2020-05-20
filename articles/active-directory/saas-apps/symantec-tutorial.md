@@ -114,7 +114,7 @@ Symantec Web Security Service (WSS) で Azure AD シングル サインオンを
     b. **[応答 URL]** ボックスに、`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost` という URL を入力します。
 
     > [!NOTE]
-    > [ID](https://www.symantec.com/contact-us) と**応答 URL** の値がなんらかの理由で有効でない場合には、**Symantec Web Security Service (WSS) クライアント サポート チーム**に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > **ID** と**応答 URL** の値がなんらかの理由で有効でない場合には、[Symantec Web Security Service (WSS) クライアント サポート チーム](https://www.symantec.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

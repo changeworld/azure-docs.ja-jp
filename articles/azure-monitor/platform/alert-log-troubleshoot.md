@@ -83,7 +83,7 @@ ms.locfileid: "79226411"
 
 ## <a name="log-alert-fired-unnecessarily"></a>ログ アラートが不必要に作動する
 
-[Azure アラート](../platform/alerts-log.md)で表示したとき、構成した [Azure Monitor のログ アラート ルール](../platform/alerts-managing-alert-states.md)が予期せずトリガーされる場合があります。 以下のセクションでは、よくある原因をいくつか説明します。
+[Azure アラート](../platform/alerts-managing-alert-states.md)で表示したとき、構成した [Azure Monitor のログ アラート ルール](../platform/alerts-log.md)が予期せずトリガーされる場合があります。 以下のセクションでは、よくある原因をいくつか説明します。
 
 ### <a name="alert-triggered-by-partial-data"></a>一部のデータによってアラートがトリガーされる
 

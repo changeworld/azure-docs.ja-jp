@@ -182,7 +182,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
    ![作業の開始](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. 新しい入力を開始するには、 *[Select input]\(入力の選択\)* ドロップダウンで **[GELF UDP]** を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
+3. 新しい入力を開始するには、 **[Select input]\(入力の選択\)** ドロップダウンで *[GELF UDP]* を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
 
    Graylog サーバーが構成されている IP に入力をバインドする必要があります。 IP アドレスは、Logstash 構成ファイルの UDP 出力の **host** フィールドと一致する必要があります。 既定のポートは *12201* です。 ポートが、Logstash 構成ファイルで指定されている UDP 出力の **port** フィールドと一致することを確認します。
 

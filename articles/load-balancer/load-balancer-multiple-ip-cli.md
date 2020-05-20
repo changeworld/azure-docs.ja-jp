@@ -31,7 +31,7 @@ ms.locfileid: "74225305"
 この記事で紹介するシナリオを実現するには、次の手順に従います。
 
 1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)し、Azure アカウントにログインします。
-2. 次のように [contosofabrikam](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) という名前の*リソース グループを作成*します。
+2. 次のように *contosofabrikam* という名前の[リソース グループを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group)します。
 
     ```azurecli
     az group create contosofabrikam westcentralus
@@ -43,14 +43,14 @@ ms.locfileid: "74225305"
     az vm availability-set create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
     ```
 
-4. [myVNet](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) という名前の*仮想ネットワークを作成*し、*mySubnet* という名前のサブネットを作成します。
+4. *myVNet* という名前の[仮想ネットワークを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet)し、*mySubnet* という名前のサブネットを作成します。
 
     ```azurecli
     az network vnet create --resource-group contosofabrikam --name myVnet --address-prefixes 10.0.0.0/16  --location westcentralus --subnet-name MySubnet --subnet-prefix 10.0.0.0/24
 
     ```
 
-5. [mylb](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) という名前の*ロード バランサーを作成*します。
+5. *mylb* という名前の[ロード バランサーを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb

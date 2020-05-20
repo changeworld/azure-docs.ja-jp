@@ -158,7 +158,7 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-最初に、[.pfx](/azure/key-vault/key-vault-manage-with-cli2) ファイルを使用して *Azure Key Vault をセットアップ*する必要があります。
+最初に、 *.pfx* ファイルを使用して [Azure Key Vault をセットアップ](/azure/key-vault/key-vault-manage-with-cli2)する必要があります。
 
 1. PowerShell で準備手順を開始します。
 

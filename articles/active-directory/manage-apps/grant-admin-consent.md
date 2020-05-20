@@ -43,7 +43,7 @@ ms.locfileid: "75475273"
 
 **[エンタープライズ アプリケーション]** に一覧表示されているアプリにテナント全体の管理者の同意を付与するには:
 
-1. [グローバル管理者](https://portal.azure.com)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)として、[Azure portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) にサインインします。
+1. [グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]** を選択し、 **[エンタープライズ アプリケーション]** を選択します。
 3. テナント全体の管理者の同意を付与するアプリケーションを選択します。
 4. **[アクセス許可]** を選択し、 **[管理者の同意の付与]** をクリックします。
@@ -56,7 +56,7 @@ ms.locfileid: "75475273"
 
 **[アプリの登録]** からテナント全体の管理者の同意を付与するには:
 
-1. [グローバル管理者](https://portal.azure.com)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)として、[Azure portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) にサインインします。
+1. [グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。
 3. テナント全体の管理者の同意を付与するアプリケーションを選択します。
 4. **[API のアクセス許可]** を選択し、 **[管理者の同意を与える]** をクリックします。

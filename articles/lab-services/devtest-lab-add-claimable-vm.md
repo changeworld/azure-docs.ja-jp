@@ -22,7 +22,7 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "79233107"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs でのクレーム可能 VM の作成と管理
-要求可能な VM をラボに追加する方法は、"[ベース](devtest-lab-add-vm.md)" (*カスタム イメージ*、[数式](devtest-lab-create-template.md)、[Marketplace イメージ](devtest-lab-manage-formulas.md)のいずれか) から[標準の VM を追加](devtest-lab-configure-marketplace-images.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。
+要求可能な VM をラボに追加する方法は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)、[数式](devtest-lab-manage-formulas.md)、[Marketplace イメージ](devtest-lab-configure-marketplace-images.md)のいずれか) から[標準の VM を追加](devtest-lab-add-vm.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で要求可能 VM をラボに追加する手順
 1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする

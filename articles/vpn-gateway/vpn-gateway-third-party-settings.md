@@ -31,9 +31,9 @@ ms.locfileid: "75862715"
 |Cisco ASA  |[Azure VPN で使う Cisco ASA に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[Azure VPN で使う Cisco ISR に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[Azure VPN で使う Cisco ASR に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
-|Sonicwall |**Sonicwall のサイト**で「[Azure VPN](https://www.sonicwall.com/en-us/support)」を検索してください。 |
-| Checkpoint    |**Checkpoint のサイト**で「[Azure VPN](https://supportcenter.checkpoint.com/supportcenter/portal)」を検索してください。 |
-|Juniper |**Juniper のサイト**で「[Azure VPN]( https://www.juniper.net/search/public/)」を検索してください。|
+|Sonicwall |[Sonicwall のサイト](https://www.sonicwall.com/en-us/support)で「**Azure VPN**」を検索してください。 |
+| Checkpoint    |[Checkpoint のサイト](https://supportcenter.checkpoint.com/supportcenter/portal)で「**Azure VPN**」を検索してください。 |
+|Juniper |[Juniper のサイト]( https://www.juniper.net/search/public/)で「**Azure VPN**」を検索してください。|
 |Barracuda  |[Azure VPN で使う Barracuda に関してコミュニティで推奨されるソリューション](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Azure VPN で使う F5 に関してコミュニティで推奨されるソリューション](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
 |Palo       |[Azure VPN で使う Palo に関してコミュニティで推奨されるソリューション](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |

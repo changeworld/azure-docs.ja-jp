@@ -30,15 +30,15 @@ ms.locfileid: "76768653"
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  「**macOS で SQL Server を使用して Java アプリを作成する**」の手順 **1.2** と [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) を使用して、Homebrew と Java をインストールした後、Maven をインストールします。
+  「[macOS で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)」の手順 **1.2** と **1.3** を使用して、Homebrew と Java をインストールした後、Maven をインストールします。
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  「**Ubuntu で SQL Server を使用して Java アプリを作成する**」の手順 **1.2**、**1.3**、および [1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) を使用して、Java と Java Development Kit をインストールした後、Maven をインストールします。
+  「[Ubuntu で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)」の手順 **1.2**、**1.3**、および **1.4** を使用して、Java と Java Development Kit をインストールした後、Maven をインストールします。
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
-  「**Windows で SQL Server を使用して Java アプリを作成する**」の手順 **1.2** と [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) を使用して、Java をインストールした後、Maven をインストールします。
+  「[Windows で SQL Server を使用して Java アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)」の手順 **1.2** と **1.3** を使用して、Java をインストールした後、Maven をインストールします。
 
   ---
 
@@ -50,7 +50,7 @@ ms.locfileid: "76768653"
 >
 > 作成して構成するには、[Azure portal](sql-database-managed-instance-get-started.md)、[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)、または [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) を使用して、[オンサイト](sql-database-managed-instance-configure-p2s.md)または [VM](sql-database-managed-instance-configure-vm.md) 接続を設定します。
 >
-> データを読み込む方法については、[Adventure Works](sql-database-import.md) ファイルの [BACPAC を使用した復元](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)に関するページを参照するか、[Wide World Importers データベースの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。
+> データを読み込む方法については、[Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) ファイルの [BACPAC を使用した復元](sql-database-import.md)に関するページを参照するか、[Wide World Importers データベースの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 

@@ -38,7 +38,7 @@ az --version
 
 新しいインストールまたはアップグレードが必要な場合、[Azure CLI をインストールする手順はこちらにあります](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-別の方法として、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 Azure Cloud Shell の使用時、**Azure Red Hat OpenShift クラスターの作成と管理**のチュートリアル シリーズに従って進める予定の場合は、必ず [Bash](tutorial-create-cluster.md) 環境を選択してください。
+別の方法として、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 Azure Cloud Shell の使用時、[Azure Red Hat OpenShift クラスターの作成と管理](tutorial-create-cluster.md)のチュートリアル シリーズに従って進める予定の場合は、必ず **Bash** 環境を選択してください。
 
 ## <a name="register-providers-and-features"></a>プロバイダーと機能の登録
 

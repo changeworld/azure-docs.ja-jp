@@ -209,8 +209,8 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 このセクションでは、Traffic Manager によって特定のサブネットからのユーザー トラフィックが特定のエンドポイントにどのようにルーティングされるかをテストします。 動作中の Traffic Manager を表示するには、次の手順を完了します。
 1. Traffic Manager プロファイルの DNS 名を判別します。
 2. 次のように、動作中の Traffic Manager を表示します。
-    - *米国東部*リージョン内のテスト VM (**myVMEastUS**) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
-    - *西ヨーロッパ*リージョン内のテスト VM (**myVMEastUS**) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
+    - **米国東部**リージョン内のテスト VM (*myVMEastUS*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
+    - **西ヨーロッパ**リージョン内のテスト VM (*myVMEastUS*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Traffic Manager プロファイルの DNS 名を判別する
 このチュートリアルでは、わかりやすくするために、Traffic Manager プロファイルの DNS 名を使用して Web サイトにアクセスします。
@@ -235,7 +235,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
    ![Traffic Manager プロファイルのテスト](./media/traffic-manager-subnet-routing-method/test-traffic-manager.png)
 
-2. 次に、手順 1 から 5 を使用して*西ヨーロッパ*にある VM **myVMWestEurope** に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *myVMWestEurope* の IP アドレスはエンドポイント *myIISVMEastUS* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *myIISVMWEurope* が起動されます。
+2. 次に、手順 1 から 5 を使用して**西ヨーロッパ**にある VM *myVMWestEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *myVMWestEurope* の IP アドレスはエンドポイント *myIISVMEastUS* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *myIISVMWEurope* が起動されます。
 
 ## <a name="delete-the-traffic-manager-profile"></a>Traffic Manager プロファイルの削除
 不要になったら、リソース グループ (**ResourceGroupTM1** と **ResourceGroupTM2**) を削除します。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、 **[削除]** を選択します。

@@ -19,7 +19,7 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270529"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの keyPhrase 作成済みエンティティ
-keyPhrase エンティティは、発話からさまざまなキー フレーズを抽出します。 keyPhrase が含まれている発話例をアプリケーションに追加する必要はありません。 keyPhrase エンティティは、[テキスト分析](luis-language-support.md#languages-supported)フィーチャーの一環として[多くのカルチャ](../text-analytics/overview.md)でサポートされています。
+keyPhrase エンティティは、発話からさまざまなキー フレーズを抽出します。 keyPhrase が含まれている発話例をアプリケーションに追加する必要はありません。 keyPhrase エンティティは、[テキスト分析](../text-analytics/overview.md)フィーチャーの一環として[多くのカルチャ](luis-language-support.md#languages-supported)でサポートされています。
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>作成済み keyPhrase エンティティの解決
 

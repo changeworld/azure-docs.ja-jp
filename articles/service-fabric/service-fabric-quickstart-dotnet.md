@@ -34,7 +34,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 このクイック スタートを完了するには、以下が必要です。
 
-1. [Azure 開発](https://www.visualstudio.com/)および **ASP.NET と Web 開発**ワークロードと共に **Visual Studio 2019 をインストール**する
+1. **Azure 開発**および **ASP.NET と Web 開発**ワークロードと共に [Visual Studio 2019 をインストール](https://www.visualstudio.com/)する
 2. [Git をインストールする](https://git-scm.com/)
 3. [Microsoft Azure Service Fabric SDK をインストールする](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. 次のコマンドを実行して Visual Studio からローカル Service Fabric クラスターへのデプロイを有効にする

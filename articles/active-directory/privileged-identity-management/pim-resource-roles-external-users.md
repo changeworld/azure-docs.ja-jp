@@ -67,7 +67,7 @@ B2B コラボレーションを使用する場合は、外部ユーザーをゲ�
 
 Privileged Identity Management を使用すると、ゲストを招待し、Azure リソース ロールの資格を付与することができます。
 
-1. [特権ロール管理者](https://portal.azure.com/)または[ユーザー管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) にサインインします。
+1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)または[ユーザー管理者](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 

@@ -46,7 +46,7 @@ ASP.NET Core はオープンソースのクロスプラットフォーム フレ
 
 ## <a name="reliable-actors"></a>Reliable Actor
 
-Reliable Actors フレームワークは Reliable Services 上に構築され、計算[アクター モデル](https://research.microsoft.com/en-us/projects/orleans/)に基づいて、[Virtual Actor](https://en.wikipedia.org/wiki/Actor_model) パターンを実装するアプリケーション フレームワークです。 Reliable Actors フレームワークは、独立したコンピューティングのユニットと、*アクター*という単一スレッドの実行を含む状態を使用します。 Reliable Actors フレームワークには、アクターとプリセットされた状態の永続性とスケールアウト構成に対応する組み込みの通信が用意されています。
+Reliable Actors フレームワークは Reliable Services 上に構築され、計算[アクター モデル](https://en.wikipedia.org/wiki/Actor_model)に基づいて、[Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) パターンを実装するアプリケーション フレームワークです。 Reliable Actors フレームワークは、独立したコンピューティングのユニットと、*アクター*という単一スレッドの実行を含む状態を使用します。 Reliable Actors フレームワークには、アクターとプリセットされた状態の永続性とスケールアウト構成に対応する組み込みの通信が用意されています。
 
 Reliable Actors は、Reliable Services 上に構築されたアプリケーション フレームワークであるため、Service Fabric プラットフォームと完全に統合されており、プラットフォームによって用意される機能をすべて利用できます。
 

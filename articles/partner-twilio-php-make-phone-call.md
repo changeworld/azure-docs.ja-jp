@@ -67,7 +67,7 @@ ms.locfileid: "69637319"
 ```
 
 ## <a name="create-the-code-to-make-the-call"></a>通話用のコードの作成
-次のコードでは、**callform.html** によって表示されるフォームをユーザーが送信すると呼び出される、**makecall.php** を作成する方法を示しています。 次のコードによって通話メッセージが作成され、通話が生成されます また、このコードで [$sid][twilio_console] と **$token** に設定しているプレースホルダー値は、**Twilio Console** の Twilio アカウントと認証トークンに置き換えてください。
+次のコードでは、**callform.html** によって表示されるフォームをユーザーが送信すると呼び出される、**makecall.php** を作成する方法を示しています。 次のコードによって通話メッセージが作成され、通話が生成されます また、このコードで **$sid** と **$token** に設定しているプレースホルダー値は、[Twilio Console][twilio_console] の Twilio アカウントと認証トークンに置き換えてください。
 
 ```html
 <html>

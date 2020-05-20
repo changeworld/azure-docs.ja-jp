@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
 ユーザーを Azure リソース ロールの候補にするには、次の手順を実行します。
 
-1. [特権ロール管理者](https://portal.azure.com/)ロールのメンバー ユーザーで [Azure portal](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) にサインインします。
+1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
     Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
 

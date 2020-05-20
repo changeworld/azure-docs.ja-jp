@@ -32,7 +32,7 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 
 ## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Azure Automation を Azure SQL データベースの管理に役立てる方法
 
-[Azure PowerShell ツール](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql)で利用可能な [Azure SQL Database PowerShell コマンドレット](/powershell/azure/overview)を使用することにより、Azure Automation で Azure SQL データベースを管理できます。 Azure Automation には、このような Azure SQL Database PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての SQL DB 管理タスクを実行することができます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure PowerShell ツール](/powershell/azure/overview)で利用可能な [Azure SQL Database PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql)を使用することにより、Azure Automation で Azure SQL データベースを管理できます。 Azure Automation には、このような Azure SQL Database PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての SQL DB 管理タスクを実行することができます。 Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
 さらに、Azure Automation には、PowerShell を使用して SQL コマンドを発行することにより、SQL サーバーと直接通信する機能もあります。
 

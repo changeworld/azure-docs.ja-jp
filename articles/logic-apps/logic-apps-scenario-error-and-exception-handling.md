@@ -39,7 +39,7 @@ ms.locfileid: "76902705"
 
 ここでは、ログおよびエラー レコードのリポジトリとして [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") を選択しました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には、レコードまたはコレクションごとに [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") 値を設定できる **Time to Live** (TTL) と呼ばれるプロパティがあります。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
+もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には、レコードまたはコレクションごとに **Time to Live** 値を設定できる [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) と呼ばれるプロパティがあります。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
 
 > [!IMPORTANT]
 > このチュートリアルの作業を行うためには、Cosmos DB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。

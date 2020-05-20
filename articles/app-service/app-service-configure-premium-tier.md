@@ -87,7 +87,7 @@ App Service アプリ ページの左側のナビゲーションで、 **[スケ
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
-**Azure CLI** または [Azure PowerShell](/cli/azure/install-azure-cli) を使用すると、[PremiumV2](/powershell/azure/overview) レベルでのアプリ作成をスクリプトで自動化することができます。
+[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、**PremiumV2** レベルでのアプリ作成をスクリプトで自動化することができます。
 
 ### <a name="azure-cli"></a>Azure CLI
 

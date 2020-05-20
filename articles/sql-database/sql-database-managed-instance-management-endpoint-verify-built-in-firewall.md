@@ -20,7 +20,7 @@ ms.locfileid: "73821814"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Managed Instance のビルトイン ファイアウォールを検証する
 
-Managed Instance を保護するネットワーク セキュリティ グループ (NSG) は、[すべての発信元](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules)に対し、管理ポート 9000、9003、1438、1440、1452 を開放することが Managed Instance の**必須のインバウンド セキュリティ規則**によって義務付けられています。 これらのポートは NSG レベルでは開放されますが、ネットワーク レベルではビルトインのファイアウォールによって保護されます。
+Managed Instance を保護するネットワーク セキュリティ グループ (NSG) は、**すべての発信元**に対し、管理ポート 9000、9003、1438、1440、1452 を開放することが Managed Instance の[必須のインバウンド セキュリティ規則](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules)によって義務付けられています。 これらのポートは NSG レベルでは開放されますが、ネットワーク レベルではビルトインのファイアウォールによって保護されます。
 
 ## <a name="verify-firewall"></a>ファイアウォールを検証する
 

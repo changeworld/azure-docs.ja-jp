@@ -59,7 +59,7 @@ ms.locfileid: "79226427"
 Log Analytics エージェントは、次のような場合に使用します。
 
 * Azure の外部の仮想または物理マシンからログとパフォーマンス データを収集する。 
-* データを Log Analytics ワークスペースに送信して、[ログ クエリ](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)など、[Azure Monitor ログ](../log-query/log-query-overview.md)でサポートされている機能を活用する。
+* データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)でサポートされている機能を活用する。
 * 仮想マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる [Azure Monitor for VMs](../insights/vminsights-overview.md) を使用する。  
 * [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。
 * [Azure Automation Update Management](../../automation/automation-update-management.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking.md) を使用して、Azure VM の包括的な管理を提供する

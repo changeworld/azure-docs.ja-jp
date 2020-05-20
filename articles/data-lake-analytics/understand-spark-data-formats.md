@@ -25,7 +25,7 @@ ms.locfileid: "73648168"
 
 ファイルに格納されているデータは、さまざまな方法で移動できます。
 
-- [Azure Data Lake Storage Gen1](../data-factory/introduction.md) アカウントから [Azure Data Lake Storage Gen2](../data-lake-store/data-lake-store-overview.md) アカウントにデータをコピーする [Azure Data Factory](../storage/blobs/data-lake-storage-introduction.md) パイプラインを作成します。
+- [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) アカウントから [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) アカウントにデータをコピーする [Azure Data Factory](../data-factory/introduction.md) パイプラインを作成します。
 - [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) アカウントからデータを読み取り [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) アカウントに書き込む Spark ジョブを作成します。 元のファイル形式を保持する必要がない場合は、使用状況に応じて、Parquet などの別の形式で記述することをお勧めします。
 
 「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)」の記事を確認することをお勧めします。

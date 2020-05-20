@@ -607,7 +607,7 @@ Python を使用して機械学習モデルを構築およびデプロイする�
 Azure Machine Learning Studio では、Azure Data Lake Storage から直接データを読み取り、モデルを作成してデプロイするために使用できます。 このアプローチでは、Azure Data Lake Storage を指す Hive テーブルを使用します。 Hive テーブル 用に個別の Azure HDInsight クラスターをプロビジョニングする必要があります。 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターを作成する
-[Azure Portal](https://portal.azure.com) で HDInsight クラスター (Linux) を作成します。 詳細については、**Azure portal での Data Lake Store を使用する HDInsight クラスターの作成**に関するページの[Azure Data Lake Storage にアクセスできる HDInsight クラスターの作成](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するセクションをご覧ください。
+[Azure Portal](https://portal.azure.com) で HDInsight クラスター (Linux) を作成します。 詳細については、[Azure portal での Data Lake Store を使用する HDInsight クラスターの作成](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページの**Azure Data Lake Storage にアクセスできる HDInsight クラスターの作成**に関するセクションをご覧ください。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 

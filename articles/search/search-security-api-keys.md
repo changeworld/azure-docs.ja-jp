@@ -17,7 +17,7 @@ ms.locfileid: "72794380"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの管理者 API キーを作成する
 
-Search サービスへのすべての HTTP 要求には、対象のサービス用に生成された読み取り専用の API キーが必要です。 この API キーは、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムであり、すべての要求に含まれる必要があります。 [REST ソリューション](search-get-started-postman.md)では、通常、API キーは要求のヘッダーで指定されます。 [.NET ソリューション](search-howto-dotnet-sdk.md#core-scenarios)では、多くの場合、キーは構成の設定として指定され、[SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 上の [Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (管理者キー) または [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) (クエリ キー) として渡されます。
+Search サービスへのすべての HTTP 要求には、対象のサービス用に生成された読み取り専用の API キーが必要です。 この API キーは、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムであり、すべての要求に含まれる必要があります。 [REST ソリューション](search-get-started-postman.md)では、通常、API キーは要求のヘッダーで指定されます。 [.NET ソリューション](search-howto-dotnet-sdk.md#core-scenarios)では、多くの場合、キーは構成の設定として指定され、[SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) 上の [Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (管理者キー) または [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (クエリ キー) として渡されます。
 
 キーは、サービスのプロビジョニング中に検索サービスで作成されます。 [Azure portal](https://portal.azure.com) でキーの値を表示および取得することができます。
 

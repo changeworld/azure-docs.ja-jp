@@ -79,7 +79,7 @@ $vm.Properties.canApplyArtifacts
 4. スクリプトに望ましくない動作があるかどうかを判断します。 その場合は、成果物の更新を要求します (パブリックリポジトリからのものである場合)。または、自分で修正してください (プライベートリポジトリからのものである場合)。
 
 > [!TIP]
-> [パブリックリポジトリ](https://github.com/Azure/azure-devtestlab) でホストされている成果物の問題を修正し、レビューと承認のために変更を送信することができます。 **README.md** ドキュメントの「[コントリビューション](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md)」のセクションを参照してください。
+> [パブリックリポジトリ](https://github.com/Azure/azure-devtestlab) でホストされている成果物の問題を修正し、レビューと承認のために変更を送信することができます。 [README.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md) ドキュメントの「**コントリビューション**」のセクションを参照してください。
 > 
 > 独自の成果物の作成の詳細については、[AUTHORING.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) ドキュメントを参照してください。
 

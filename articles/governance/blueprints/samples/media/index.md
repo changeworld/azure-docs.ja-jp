@@ -12,7 +12,7 @@ ms.locfileid: "78201508"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルの概要
 
-メディア ブループリント サンプルには、[メディア](../../../policy/overview.md)構成証明に役立つ、[Azure Policy](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) を使用した一連のガバナンスのガードレールが用意されています。 
+メディア ブループリント サンプルには、[メディア](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)構成証明に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンスのガードレールが用意されています。 
 
 ## <a name="blueprint-sample"></a>ブループリント サンプル
 

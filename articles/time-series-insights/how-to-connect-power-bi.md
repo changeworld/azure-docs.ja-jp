@@ -35,7 +35,7 @@ Azure Time Series Insights は、クラウド内の時系列データを格納�
 * [Azure Time Series Insights プレビュー インスタンス](time-series-insights-update-how-to-manage.md)を備えるまたは作成する
 
 > [!IMPORTANT]
-> Power BI コネクタは、現在、*Warm ストア*用に構成された Time Series Insights プレビュー**従量課金制** 環境でサポートされています。
+> Power BI コネクタは、現在、**Warm ストア**用に構成された Time Series Insights プレビュー*従量課金制* 環境でサポートされています。
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Time Series Insights から Power BI へのデータの接続
 

@@ -20,7 +20,7 @@ ms.locfileid: "80158148"
 
 
 
-この攻略ガイドでは、ソリューション開発者が、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://docs.microsoft.com/azure/azure-functions/) を使用して通知メールを送信するために、[Azure Functions](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用します。
+この攻略ガイドでは、ソリューション開発者が、カスタム ルールと通知を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、デバイスがテレメトリの送信を停止したときのオペレーターへの通知の送信を示します。 このソリューションでは、[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) クエリを使用して、デバイスが利用統計情報の送信をいつ停止したかを検出します。 Stream Analytics ジョブは、[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) を使用して通知メールを送信するために、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/) を使用します。
 
 この攻略ガイドでは、既に組み込みのルールとアクションを使用して実行できることを超えて IoT Central を拡張する方法を示します。
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="resource-group"></a>Resource group
 
-作成するその他のリソースを格納するため、[DetectStoppedDevices](https://portal.azure.com/#create/Microsoft.ResourceGroup) という **リソース グループを Azure portal で作成**します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
+作成するその他のリソースを格納するため、**DetectStoppedDevices** という [リソース グループを Azure portal で作成](https://portal.azure.com/#create/Microsoft.ResourceGroup)します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
 
 ### <a name="event-hubs-namespace"></a>Event Hubs 名前空間
 

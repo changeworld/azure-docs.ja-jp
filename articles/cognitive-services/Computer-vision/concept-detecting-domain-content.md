@@ -57,7 +57,7 @@ ms.locfileid: "68946341"
 
 ### <a name="enhanced-categorization-analysis"></a>拡張カテゴリ化解析
 
-ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](concept-categorizing-images.md) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)の一部として行います。
+ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。
 
 この場合、最初に 86 のカテゴリ分類の分類子が呼び出されます。 検出されたカテゴリのいずれかに、一致するドメイン固有のモデルがあった場合、イメージはそのモデルもパススルーし、結果が追加されます。
 

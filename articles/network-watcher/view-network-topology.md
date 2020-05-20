@@ -28,7 +28,7 @@ ms.locfileid: "76840572"
 
 ## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>トポロジを表示する - Azure Portal
 
-1. 必要な[アクセス許可](https://portal.azure.com)を持つアカウントで [Azure Portal](required-rbac-permissions.md) にログインします。
+1. 必要な[アクセス許可](required-rbac-permissions.md)を持つアカウントで [Azure Portal](https://portal.azure.com) にログインします。
 2. ポータルの左上にある **[すべてのサービス]** を選択します。
 3. **[すべてのサービス]** フィルター ボックスに、「*Network Watcher*」と入力します。 結果に **[Network Watcher]** が表示されたら、それを選択します。
 4. **[トポロジ]** を選択します。 トポロジを生成するには、トポロジを生成する仮想ネットワークが存在する領域と同じ領域にネットワーク ウォッチャーが必要です。 トポロジを生成する仮想ネットワークがあるリージョンでネットワーク ウォッチャーが有効ではない場合は、すべてのリージョンでネットワーク ウォッチャーが自動的に作成されます。 ネットワーク ウォッチャーは **NetworkWatcherRG** という名前のリソース グループに作成されます。

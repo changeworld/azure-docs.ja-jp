@@ -36,7 +36,7 @@ MemStore がフラッシュされる前に **RegionServer** がクラッシュ�
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight の HBase 用書き込みアクセラレータを有効にする方法
 
-書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、[手順 3 の「ストレージ」](../hdinsight-hadoop-provision-linux-clusters.md)に達するまで、**HDInsight のクラスターの設定**手順に従ってください。 **[メタストアの設定]** で、 **[HBase 高速書き込みを有効にする]** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
+書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、**手順 3 の「ストレージ」** に達するまで、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[メタストアの設定]** で、 **[HBase 高速書き込みを有効にする]** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
 
 ![HDInsight の Apache HBase 用書き込みアクセラレータ オプションを有効にする](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 

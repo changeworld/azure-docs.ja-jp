@@ -64,7 +64,7 @@ az network traffic-manager endpoint update \
 
 ```
 
-IP アドレス範囲を削除するには、[--remove](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) オプションを指定して **az network traffic-manager endpoint update** を実行します。
+IP アドレス範囲を削除するには、 **--remove** オプションを指定して [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) を実行します。
 
 ```azurecli
 

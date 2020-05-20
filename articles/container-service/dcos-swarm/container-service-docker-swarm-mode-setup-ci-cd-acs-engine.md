@@ -54,7 +54,7 @@ ms.locfileid: "76277927"
 - [GitHub アカウントに GitHub リポジトリをフォークする](https://github.com/jcorioland/MyShop/tree/docker-linux)
 
 >[!NOTE]
-> Azure Container Service の Docker Swarm オーケストレーターは、従来のスタンドアロンの Swarm を使用します。 現時点では、(Docker 1.12 以降の) 統合された [Swarm モード](https://docs.docker.com/engine/swarm/)は、Azure Container Service でサポートされているオーケストレーターではありません。 このため、コミュニティに投稿されている[クイックスタート テンプレート](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md)である [ACS エンジン](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)または [Azure Marketplace](https://azuremarketplace.microsoft.com) の Docker ソリューションを使用します。
+> Azure Container Service の Docker Swarm オーケストレーターは、従来のスタンドアロンの Swarm を使用します。 現時点では、(Docker 1.12 以降の) 統合された [Swarm モード](https://docs.docker.com/engine/swarm/)は、Azure Container Service でサポートされているオーケストレーターではありません。 このため、コミュニティに投稿されている[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)である [ACS エンジン](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md)または [Azure Marketplace](https://azuremarketplace.microsoft.com) の Docker ソリューションを使用します。
 >
 
 ## <a name="step-1-configure-your-azure-devops-organization"></a>手順 1: Azure DevOps 組織の構成 
@@ -109,7 +109,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
     ![Azure DevOps - ビルド変数の構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
-5. **[ビルド定義]** ページで、 **[トリガー]** タブを開き、前提条件で作成した MyShop プロジェクトのフォークを使用するように、継続的インテグレーションで使用するビルドを構成します。 次に、 **[バッチ変更]** を選択します。 *[ブランチ仕様]* として "**docker-linux**" が選択されていることを確認します。
+5. **[ビルド定義]** ページで、 **[トリガー]** タブを開き、前提条件で作成した MyShop プロジェクトのフォークを使用するように、継続的インテグレーションで使用するビルドを構成します。 次に、 **[バッチ変更]** を選択します。 **[ブランチ仕様]** として "*docker-linux*" が選択されていることを確認します。
 
     ![Azure DevOps - ビルド リポジトリの構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github-repo-conf.PNG)
 

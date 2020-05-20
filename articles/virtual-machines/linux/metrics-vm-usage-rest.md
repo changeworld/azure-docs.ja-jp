@@ -17,7 +17,7 @@ ms.locfileid: "78944746"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 
-この例では、[Azure REST API](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) を使用して、[Linux 仮想マシン](/rest/api/azure/)の CPU 使用率を取得する方法を示します。
+この例では、[Azure REST API](/rest/api/azure/) を使用して、[Linux 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/linux/monitor)の CPU 使用率を取得する方法を示します。
 
 完全なリファレンス ドキュメントと REST API の他の例は、[Azure Monitor REST リファレンス](/rest/api/monitor)で確認できます。 
 

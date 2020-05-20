@@ -22,7 +22,7 @@ ms.locfileid: "73823897"
 
 パフォーマンス カウンターを使用して、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)操作のパフォーマンスを追跡します。 これらのカウンターは、パフォーマンス モニターの [エラスティック データベース: シャード管理] カテゴリでアクセスできます。
 
-特に[データ依存ルーティング](sql-database-elastic-scale-shard-map-management.md)を使用するときに、[シャード マップ マネージャー](sql-database-elastic-scale-data-dependent-routing.md)のパフォーマンスをキャプチャできます。 カウンターは、Microsoft.Azure.SqlDatabase.ElasticScale.Client クラスのメソッドを使用して作成されます。  
+特に[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を使用するときに、[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)のパフォーマンスをキャプチャできます。 カウンターは、Microsoft.Azure.SqlDatabase.ElasticScale.Client クラスのメソッドを使用して作成されます。  
 
 
 **最新バージョン:** [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)に移動します。 「 [最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード](sql-database-elastic-scale-upgrade-client-library.md)」も参照してください。

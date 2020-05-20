@@ -46,7 +46,7 @@ SQL Database では、データ損失からビジネスを守るために、デ�
 
 - [テンポラル テーブル](sql-database-temporal-tables.md)では、任意の時点から行バージョンを復元することができます。
 - [組み込み自動バックアップ](sql-database-automated-backups.md)と[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)を使用すると、構成された保有期間 (最大 35 日間) 内の特定の時点にデータベース全体を復元できます。
-- [SQL Database サーバーが削除されていない](sql-database-recovery-using-backups.md#deleted-database-restore)場合は、**削除されたデータベースを削除された時点に戻す**ことができます。
+- **SQL Database サーバーが削除されていない**場合は、[削除されたデータベースを削除された時点に戻す](sql-database-recovery-using-backups.md#deleted-database-restore)ことができます。
 - [長期的なバックアップ保有期間](sql-database-long-term-retention.md)では、バックアップを 10 年間保持することができます。
 - データ センターの停止またはアプリケーションのアップグレードが発生した場合に、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使って、読み取り可能レプリカを作成し、手動で任意のレプリカにフェールオーバーできます。
 - [自動フェールオーバー グループ](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)を使用すると、データ センターの機能停止が発生した場合に、アプリケーションを自動的に復旧することができます。

@@ -69,7 +69,7 @@ Azure Digital Twins は、[Azure Active Directory](https://docs.microsoft.com/az
 > * トークンに対するアクセスの OAuth 2.0 スコープを制限します。
 > * トークンが有効である期間と、トークンが有効のままになっているかどうかを確認します。
 > * トークンが有効である期間を適切な期間に設定します。 期限切れのトークンを更新します。
-> * **ロールベースのアクセス制御のベスト プラクティス**に従い、未使用の[リダイレクト URI](#role-based-access-control-best-practices) とアクセス許可を削除します。
+> * [ロールベースのアクセス制御のベスト プラクティス](#role-based-access-control-best-practices)に従い、未使用の**リダイレクト URI** とアクセス許可を削除します。
 
 ## <a name="role-based-access-control-best-practices"></a>ロールベースのアクセス制御のベスト プラクティス
 

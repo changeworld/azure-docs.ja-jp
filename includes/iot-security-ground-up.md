@@ -43,7 +43,7 @@ Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入�
 
 ソリューションアクセラレータは、SDLや OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。
 
-[IoT ソリューションアクセラレータ](../articles/iot-hub/about-iot-hub.md) 内の [Azure IoT Hub](../articles/iot-fundamentals/iot-introduction.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
+[IoT ソリューションアクセラレータ](../articles/iot-fundamentals/iot-introduction.md) 内の [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
 
 Azure IoT ソリューションアクセラレータに組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、この記事では Suite を 3 つの主なセキュリティ領域に分割しています。
 

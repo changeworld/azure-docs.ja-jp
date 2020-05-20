@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-*az network vnet create* を使用して、*myVnet* という名前の仮想ネットワークを作成します。*myResourceGroup* に、[mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) という名前のサブネットを含めます。
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) を使用して、*myVnet* という名前の仮想ネットワークを作成します。*myResourceGroup* に、*mySubnet* という名前のサブネットを含めます。
 
 ```azurecli-interactive
   az network vnet create \
@@ -90,7 +90,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
 
-ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 *az network lb rule create* を使用してロード バランサー規則 [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
+ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してロード バランサー規則 *myHTTPRule* を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
 
 ```azurecli-interactive
   az network lb rule create \

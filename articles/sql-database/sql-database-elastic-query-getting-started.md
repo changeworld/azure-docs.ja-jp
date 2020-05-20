@@ -33,7 +33,7 @@ ms.locfileid: "73823784"
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>サンプル アプリケーションを使用してシャード マップ マネージャーを作成する
 ここでは、シャード マップ マネージャーといくつかのシャードを作成し、シャードにデータを挿入します。 シャードがすでにセットアップされ、シャード データが取り込まれている場合は、以下の手順を省略して、次のセクションに進むことができます。
 
-1. 「**サンプル アプリケーションのダウンロードと実行**」セクションの手順に従って、「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
+1. 「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)」セクションの手順に従って、「**Elastic Database ツールの概要**」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
 
     ![コマンド プロンプト (command prompt)][1]
 2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
@@ -68,7 +68,7 @@ ms.locfileid: "73823784"
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    "username" と "password" は、記事「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)」の「**サンプル アプリケーションのダウンロードと実行**」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
+    "username" と "password" は、記事「**Elastic Database ツールの概要**」の「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
 
 ### <a name="external-data-sources"></a>外部データ ソース
 外部データ ソースを作成するには、ElasticDBQuery データベースで、次のコマンドを実行します。

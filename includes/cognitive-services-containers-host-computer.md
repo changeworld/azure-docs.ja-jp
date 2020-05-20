@@ -15,5 +15,5 @@ ms.locfileid: "67704193"
 
 * [Azure Kubernetes Service](../articles/aks/index.yml)。
 * [Azure Container Instances](../articles/container-instances/index.yml)。
-* [Azure Stack](https://kubernetes.io/) にデプロイされた [Kubernetes](/azure-stack/operator) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
+* [Azure Stack](/azure-stack/operator) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
 

@@ -90,7 +90,7 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
 
 Workspot Control で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. **Azure portal** の [Workspot Control](https://portal.azure.com/) アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Workspot Control** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 

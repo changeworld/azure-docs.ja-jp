@@ -24,7 +24,7 @@ Azure Cognitive Search インデックスの作成に使われる外部データ
 
 Azure Cognitive Search は、複合型とコレクションをネイティブでサポートしています。 これらの型を使うと、Azure Cognitive Search インデックス内のほとんどすべての JSON 構造をモデル化できます。 Azure Cognitive Search API の以前のバージョンでは、フラット化された行セットのみをインポートできました。 最新のバージョンでは、インデックスはソース データにより密接に調和できるようになりました。 つまり、ソース データに複合型がある場合、インデックスも複合型を持つことができます。
 
-Azure portal の[データのインポート](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) ウィザードで読み込むことができる **Hotels データ セット**から始めることをお勧めします。 ウィザードでは、ソース内の複合型が検出され、検出された構造に基づいてインデックス スキーマが提案されます。
+Azure portal の**データのインポート** ウィザードで読み込むことができる [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)から始めることをお勧めします。 ウィザードでは、ソース内の複合型が検出され、検出された構造に基づいてインデックス スキーマが提案されます。
 
 > [!Note]
 > 複合型のサポートは、`api-version=2019-05-06` で一般提供されています。 
@@ -153,7 +153,7 @@ Azure portal の[データのインポート](https://github.com/Azure-Samples/a
 
 ## <a name="next-steps"></a>次のステップ
 
-[データのインポート](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) ウィザードで **Hotels データ セット**を試してください。 データにアクセスするには、readme に記載されている Cosmos DB 接続情報が必要です。
+**データのインポート** ウィザードで [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)を試してください。 データにアクセスするには、readme に記載されている Cosmos DB 接続情報が必要です。
 
 その情報を入手したら、ウィザードの最初の手順は新しい Azure Cosmos DB データ ソースを作成することです。 ウィザードの手順を進め、ターゲットのインデックス ページに移動すると、複合型のインデックスが表示されます。 このインデックスを作成して読み込み、クエリを実行して新しい構造を理解してください。
 

@@ -46,7 +46,7 @@ ms.locfileid: "67509097"
 1. リストから **[アクセス ポリシー]** を選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらは、後でプッシュ通知を処理するために必要になります。
 
       >[!IMPORTANT]
-      >*DefaultFullSharedAccessSignature* ポリシーはアプリケーションで使用 "**しない**" でください。 これの使用が意図されているのはバックエンドだけです。
+      >**DefaultFullSharedAccessSignature** ポリシーはアプリケーションで使用 "*しない*" でください。 これの使用が意図されているのはバックエンドだけです。
       >
 
       ![Azure Portal - 通知ハブの接続文字列](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

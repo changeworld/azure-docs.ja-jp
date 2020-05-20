@@ -34,7 +34,7 @@ SQL Server のエディションが内部で SQL Server VM に変更された後
 SQL Server のエディションのインプレース変更を行うには、以下のものが必要です。 
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- [SQL VM リソース プロバイダー](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)に登録された [Windows 上の SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md)。
+- [SQL VM リソース プロバイダー](virtual-machines-windows-sql-register-with-resource-provider.md)に登録された [Windows 上の SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
 - SQL Server の**目的のエディション**が収められたセットアップ メディア。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディション (通常、`C:\SQLServerFull` にある) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。 
 
 

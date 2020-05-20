@@ -283,7 +283,7 @@ Azure AD には、多要素認証、デバイスの登録、セルフサービ�
 
 Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。 [Azure Active Directory 監査レポート](../../active-directory/active-directory-reporting-azure-portal.md)を利用すると、Azure Active Directory で発生した特権アクションを識別できます。 特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。
 
-レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。 [監査ログの表示](https://portal.azure.com/)に関するページに説明されているように、[Azure Portal](../../active-directory/reports-monitoring/overview-reports.md) を使用して Azure Active Directory に対する監査イベントのリストを取得できます。 含まれているレポートの一覧を次に示します。
+レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。 [監査ログの表示](../../active-directory/reports-monitoring/overview-reports.md)に関するページに説明されているように、[Azure Portal](https://portal.azure.com/) を使用して Azure Active Directory に対する監査イベントのリストを取得できます。 含まれているレポートの一覧を次に示します。
 
 | セキュリティ レポート  | アクティビティ レポート| 監査レポート |
 | :------------- | :-------------| :-------------|

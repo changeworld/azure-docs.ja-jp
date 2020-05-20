@@ -38,7 +38,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 *az group create* を使用して [myResourceGroupAG](/cli/azure/group#az-group-create) という名前の Azure リソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#az-group-create) を使用して *myResourceGroupAG* という名前の Azure リソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus

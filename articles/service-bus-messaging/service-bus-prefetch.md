@@ -28,7 +28,7 @@ ms.locfileid: "76760659"
 
 ## <a name="enable-prefetch"></a>プリフェッチの有効化
 
-.NET では、[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount)、**QueueClient** または **SubscriptionClient** の **PrefetchCount** のプロパティを 0 より大きい数値に設定することでプリフェッチ機能を有効化します。 値を 0 に設定すると、プリフェッチが解除されます。
+.NET では、**MessageReceiver**、**QueueClient** または **SubscriptionClient** の [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) のプロパティを 0 より大きい数値に設定することでプリフェッチ機能を有効化します。 値を 0 に設定すると、プリフェッチが解除されます。
 
 この設定は、[QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) または [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) サンプルの設定の受信側に簡単に追加することができ、これらのコンテキストでの効果を確認できます。
 

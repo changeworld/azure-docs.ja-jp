@@ -47,7 +47,7 @@ Azure ID クライアント ライブラリの利点は、アプリケーショ�
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>データにアクセスするためのロールベースのアクセス制御 (RBAC) ロールを割り当てる
 
-Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob またはキュー データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「**Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します**」にある「[アクセス権に RBAC ロールを割り当てる](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」というタイトルのセクションを参照してください。
+Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob またはキュー データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」にある「**アクセス権に RBAC ロールを割り当てる**」というタイトルのセクションを参照してください。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>開発環境でユーザーを認証する
 

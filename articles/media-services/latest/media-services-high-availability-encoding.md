@@ -45,7 +45,7 @@ Azure Media Services エンコード サービスは、リージョンのバッ�
 * [ジョブ](transforms-jobs-concept.md)を作成する場合:
 
     * 現在使用しているアカウントの一覧からアカウントをランダムに選択します (通常、この一覧には両方のアカウントが含まれますが、問題が検出された場合は、アカウントを 1 つだけ含めることができます)。 一覧が空の場合は、オペレーターが調査できるようにアラートを生成します。
-    * 一般的なガイダンスとしては、[JobOutput](media-reserved-units-cli-how-to.md) ごとに[メディア占有ユニット](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset)が 1 つ必要になります (JobOutput ごとに 3 つのメディア占有ユニットが推奨される [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) を使用している場合を除く)。
+    * 一般的なガイダンスとしては、[JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) ごとに[メディア占有ユニット](media-reserved-units-cli-how-to.md)が 1 つ必要になります (JobOutput ごとに 3 つのメディア占有ユニットが推奨される [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) を使用している場合を除く)。
     * 選択したアカウントのメディア占有ユニット (MRU) の数を取得します。 現在の**メディア占有ユニット**の数がまだ最大値に達していない場合は、ジョブに必要な数の MRU を追加し、サービスを更新します。 ジョブの送信レートが高く、最大に達していることを確認するために MRU に対して頻繁にクエリを実行している場合は、その値に分散キャッシュを使用し、適切なタイムアウトを設定します。
     * 実行中のジョブ数のカウントを保持します。
 

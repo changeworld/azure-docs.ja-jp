@@ -24,7 +24,7 @@ ms.locfileid: "76721270"
 
 以下の記事では、Data Science Process で一般的に使用される 3 つの異なるストレージ環境のデータを探索する方法が説明されています。
 
-* [Pandas](explore-data-blob.md) Python パッケージを使用して、[Azure BLOB コンテナー](https://pandas.pydata.org/)のデータを探索します。
+* [Pandas](https://pandas.pydata.org/) Python パッケージを使用して、[Azure BLOB コンテナー](explore-data-blob.md)のデータを探索します。
 * SQL と、Python などのプログラミング言語を使用して、[SQL Server](explore-data-sql-server.md) のデータを探索します。
 * Hive クエリを使用して、[Hive テーブル](explore-data-hive-tables.md)のデータを探索します。
 

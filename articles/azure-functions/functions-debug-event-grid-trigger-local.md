@@ -54,7 +54,7 @@ ngrok http -host-header=localhost 7071
 
 ![ngrok を起動する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
-**ngrok** が実行されたときに生成される *HTTPS* URL をコピーします。 この値は、Event Grid イベント エンドポイントを構成するときに使用されます。
+*ngrok* が実行されたときに生成される **HTTPS** URL をコピーします。 この値は、Event Grid イベント エンドポイントを構成するときに使用されます。
 
 ## <a name="add-a-storage-event"></a>ストレージ イベントを追加する
 

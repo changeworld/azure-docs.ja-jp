@@ -77,7 +77,7 @@ Azure Monitor には、Windows または Linux ゲスト オペレーティン�
 
 ## <a name="azure-data-explorer-preview"></a>Azure Data Explorer (プレビュー)
 
-強力な [Kusto](https://docs.microsoft.com/azure/data-explorer/) クエリ言語を使用できる [Azure Data Explorer](https://docs.microsoft.com/azure/kusto/query/index) クラスターからのクエリがブックでサポートされるようになりました。   
+強力な [Kusto](https://docs.microsoft.com/azure/kusto/query/index) クエリ言語を使用できる [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) クラスターからのクエリがブックでサポートされるようになりました。   
 
 ![Kusto クエリ ウィンドウのスクリーンショット](./media/workbooks-overview/data-explorer.png)
 

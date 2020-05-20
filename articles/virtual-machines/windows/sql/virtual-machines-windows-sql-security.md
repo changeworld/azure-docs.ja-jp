@@ -69,7 +69,7 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 プロビジョニングした後に、これを構成するには、次の 2 つのオプションがあります。
 
-- Resource Manager VM の場合、**SQL 仮想マシン リソース**から [[セキュリティ]](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) を選択できます。 ここには、ポートを変更するオプションがあります。
+- Resource Manager VM の場合、[SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
 
   ![ポータルの TCP ポートの変更](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 

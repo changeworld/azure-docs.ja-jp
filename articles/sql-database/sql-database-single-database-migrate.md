@@ -40,7 +40,7 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 
   ![VSSSDT の移行ダイアグラム](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) の最新バージョンを使用して、データベースの互換性を[評価](https://www.microsoft.com/download/details.aspx?id=53595)します。
+1. [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) の最新バージョンを使用して、データベースの互換性を[評価](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)します。
 2. 必要な修正を Transact-SQL スクリプトとして準備します。
 3. 移行するソース データベースについて、トランザクション上一貫性のあるコピーを作成するか、または移行の実行中にソース データベースで新規トランザクションが発生しないようにします。 後者のオプションを実行するには、クライアント接続を無効にする方法と、[データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成する方法があります。 移行が完了した後、トランザクション レプリケーションを使用して、移行したデータベースを更新すると、移行のカットオフ後に発生した変更を反映させることができます。 [トランザクション移行を使用した移行に関するセクション](sql-database-single-database-migrate.md#method-2-use-transactional-replication)を参照してください。  
 4. Transact-SQL スクリプトをデプロイして、データベースのコピーに修正を適用します。

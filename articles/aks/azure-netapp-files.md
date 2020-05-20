@@ -59,7 +59,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-**az netappfiles account create** を使用して、その[ノード][az-netappfiles-account-create] リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、*MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
+[az netappfiles account create][az-netappfiles-account-create] を使用して、その**ノード** リソース グループ (AKS クラスターと同じリージョン) に Azure NetApp Files アカウントを作成します。 次の例では、*MC_myResourceGroup_myAKSCluster_eastus* リソース グループと *eastus* リージョンに *myaccount1* という名前のアカウントを作成します。
 
 ```azurecli
 az netappfiles account create \
@@ -80,7 +80,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-[az network vnet subnet create][anf-delegate-subnet] を使用して、[Azure NetApp Files に委任][az-network-vnet-subnet-create]するサブネットを作成します。 *このサブネットは、AKS クラスターと同じ仮想ネットワーク内に存在する必要があります。*
+[az network vnet subnet create][az-network-vnet-subnet-create] を使用して、[Azure NetApp Files に委任][anf-delegate-subnet]するサブネットを作成します。 *このサブネットは、AKS クラスターと同じ仮想ネットワーク内に存在する必要があります。*
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -172,7 +172,7 @@ spec:
 kubectl apply -f pv-nfs.yaml
 ```
 
-*kubectl describe* コマンドを使用して、PersistentVolume の "*状態*" が "[使用可能][kubectl-describe]" であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolume の "*状態*" が "*使用可能*" であることを確認します。
 
 ```console
 kubectl describe pv pv-nfs
@@ -202,7 +202,7 @@ spec:
 kubectl apply -f pvc-nfs.yaml
 ```
 
-*kubectl describe* コマンドを使用して、PersistentVolumeClaim の "*状態*" が "[使用可能][kubectl-describe]" であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、PersistentVolumeClaim の "*状態*" が "*使用可能*" であることを確認します。
 
 ```console
 kubectl describe pvc pvc-nfs
@@ -240,7 +240,7 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
-*kubectl describe* コマンドを使用して、ポッドが "[実行中][kubectl-describe]" であることを確認します。
+[kubectl describe][kubectl-describe] コマンドを使用して、ポッドが "*実行中*" であることを確認します。
 
 ```console
 kubectl describe pod nginx-nfs

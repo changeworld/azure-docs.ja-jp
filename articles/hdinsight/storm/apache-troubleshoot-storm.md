@@ -18,7 +18,7 @@ ms.locfileid: "79233455"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 
-[Apache Ambari](https://storm.apache.org/) で [Apache Storm](https://ambari.apache.org/) ペイロードを操作するときに発生する主な問題とその解決策について説明します。
+[Apache Ambari](https://ambari.apache.org/) で [Apache Storm](https://storm.apache.org/) ペイロードを操作するときに発生する主な問題とその解決策について説明します。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>クラスターの Storm UI にアクセスする方法
 

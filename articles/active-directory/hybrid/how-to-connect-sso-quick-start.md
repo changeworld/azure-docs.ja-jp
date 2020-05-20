@@ -211,7 +211,7 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 特定のユーザーについてこの機能をテストするには、次の条件がすべて満たされていることを確認してください。
   - ユーザーが会社のデバイスでサインインしている。
-  - デバイスが Active Directory ドメインに参加している。 デバイスは、_Azure AD 参加済み_である必要は [ありません](../active-directory-azureadjoin-overview.md)。
+  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は _ありません_。
   - デバイスが、企業のワイヤードまたはワイヤレス ネットワーク上や、VPN 接続などのリモート アクセス接続を介してドメイン コントローラー (DC) に直接接続している。
   - グループ ポリシーを使用して、このユーザーに[機能がロールアウト](#step-3-roll-out-the-feature)されている。
 

@@ -48,7 +48,7 @@ import com.microsoft.azure.storage.queue.*;
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
 
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。[AccountName](https://portal.azure.com) と *AccountKey* の値には、*Azure ポータル*に表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure ポータル](https://portal.azure.com)に表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 ```java
 // Define the connection-string with your values.
@@ -69,7 +69,7 @@ String storageConnectionString =
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
 ## <a name="how-to-create-a-queue"></a>方法: キューを作成する
-**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。 次のコードでは、**CloudQueueClient** オブジェクトを作成します。 (注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳しくは、**Azure ストレージ クライアント SDK リファレンス**の [Azure ストレージ クライアント SDK リファレンス] をご覧ください)。
+**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。 次のコードでは、**CloudQueueClient** オブジェクトを作成します。 (注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳しくは、[Azure ストレージ クライアント SDK リファレンス]の **CloudStorageAccount** をご覧ください)。
 
 **CloudQueueClient** オブジェクトを使用して、使用するキューへの参照を取得します。 キューが存在しない場合は作成できます。
 
