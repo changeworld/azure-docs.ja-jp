@@ -386,7 +386,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 関数をローカルでテストするには、[Functions ホストを起動](#start)し、HTTP 要求を使用してローカル サーバーでエンドポイントを呼び出します。 呼び出すエンドポイントは、関数の種類によって異なります。
 
 >[!NOTE]
-> このトピックの例では、cURL ツールを使用して端末またはコマンド プロンプトから HTTP 要求を送信します。 お好みのツールを使用して HTTP 要求をローカル サーバーに送信できます。 Linux ベースのシステムと Windows 10 ビルド 17063 以降では既定で cURL ツールを使用できます。 以前の Windows では、最初に [cURL ツール](https://curl.haxx.se/)をダウンロードし、インストールする必要があります。
+> このトピックの例では、cURL ツールを使用してターミナルまたはコマンド プロンプトから HTTP 要求を送信します。 お好みのツールを使用して HTTP 要求をローカル サーバーに送信できます。 Linux ベースのシステムと Windows 10 ビルド 17063 以降では既定で cURL ツールを使用できます。 以前の Windows では、最初に [cURL ツール](https://curl.haxx.se/)をダウンロードし、インストールする必要があります。
 
 関数のテストの全般的な情報については、「[Azure Functions のコードをテストするための戦略](functions-test-a-function.md)」を参照してください。
 
