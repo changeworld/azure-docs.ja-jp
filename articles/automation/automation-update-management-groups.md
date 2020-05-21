@@ -5,20 +5,30 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29a72eb1fe7b8be18cd2160fc63160e408378585
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: bf4c156d2bf9c205bd7545a96b5314dd43b2d02c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617438"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690771"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Update Management を利用して動的グループを使用する
 
-Update Management を使用すると、Azure または Azure 以外の VM の動的グループを更新プログラムの展開の対象にすることができます。 クエリで定義されたこれらのグループは展開時に評価されるため、マシンを追加するために展開を編集する必要はありません。
+Update Management を使用すると、Azure または Azure 以外の VM の動的グループを更新プログラムの展開の対象にすることができます。 Using a dynamic group keeps you from having to edit your deployment to update machines.
 
-## <a name="azure-machines"></a>Azure マシン
+> [!NOTE]
+> 動的なグループは、クラシック VM では動作しません。
 
-動的なグループは、クラシック VM では動作しません。 クエリを定義するときに、次の項目をまとめて使用して動的グループを設定できます。
+You can define dynamic groups for Azure or non-Azure machines from **Update management** in the Azure portal. 複数の Azure 仮想マシンの更新を管理する | Microsoft Docs
+
+A dynamic group is defined by a query that Azure Automation evaluates at deployment time. Even if a dynamic group query retrieves a large number of machines, Azure Automation can process only a maximum of 1000 machines at a time. 「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management)」をご覧ください。 
+
+> [!NOTE]
+> If you expect to update more than 1000 machines, we recommend that you split up the updates among multiple update schedules. 
+
+## <a name="define-dynamic-groups-for-azure-machines"></a>Define dynamic groups for Azure machines
+
+When defining a dynamic group query for Azure machines, you can use the following items to populate the dynamic group:
 
 * サブスクリプション
 * リソース グループ
@@ -31,9 +41,9 @@ Update Management を使用すると、Azure または Azure 以外の VM の動
 
 ![グループをプレビューする](./media/automation-update-management/preview-groups.png)
 
-## <a name="non-azure-machines"></a>Azure 以外のマシン
+## <a name="define-dynamic-groups-for-non-azure-machines"></a>Define dynamic groups for non-Azure machines
 
-Azure 以外のマシンの場合、保存された検索 (コンピューター グループとも呼ばれます) が動的グループの作成に使用されます。 保存された検索の作成方法については、「[コンピューター グループの作成](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)」を参照してください。 グループを作成したら、保存された検索の一覧からそれを選択できます。 **[プレビュー]** をクリックすると、保存された検索でのその時点でのコンピューターをプレビューできます。
+A dynamic group for non-Azure machines uses saved searches, also called computer groups. 保存された検索の作成方法については、「[コンピューター グループの作成](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)」を参照してください。 Once your saved search is created, you can select it from the list of saved searches in **Update management** in the Azure portal. **[プレビュー]** をクリックすると、保存された検索でのその時点でのコンピューターをプレビューできます。
 
 ![グループを選択する](./media/automation-update-management/select-groups-2.png)
 
