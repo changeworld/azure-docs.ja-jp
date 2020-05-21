@@ -1026,7 +1026,7 @@
               href: /azure/databricks/security/access-control/pool-acl
               maintainContext: true
             - name: ジョブのアクセス制御
-              href: /azure/databricks/security/access-control/job-acl
+              href: /azure/databricks/security/access-control/jobs-acl
               maintainContext: true
             - name: テーブルのアクセス制御
               items:
@@ -1632,7 +1632,7 @@
                     - name: Azure AD アクセス トークンのトラブルシューティング
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                   maintainContext: true
-                - name: Azure Active Directory (Azure AD) トークン
+                - name: Azure Active Directory トークン
                   items:
                     - name: Azure AD トークン認証の概要
                       href: /azure/databricks/dev-tools/api/latest/aad/index
@@ -1676,7 +1676,7 @@
                 - name: SCIM API (ユーザー)
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-users
                 - name: SCIM API (グループ)
-                  href: /azure/databricks/dev-tools/api/latest/scim/scim-group
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-groups
               maintainContext: true
             - name: シークレット
               href: /azure/databricks/dev-tools/api/latest/secrets
@@ -1864,20 +1864,23 @@
                 - name: ランタイム リリース
                   href: /azure/databricks/release-notes/runtime/releases
                   maintainContext: true
-                - name: Databricks Runtime 7.0 Genomics (ベータ版)
-                  href: /azure/databricks/release-notes/runtime/7.0genomics
+                - name: Databricks Runtime 7.0 (ベータ版)
+                  href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
                 - name: Databricks Runtime 7.0 ML (ベータ版)
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
-                - name: Databricks Runtime 7.0 (ベータ版)
-                  href: /azure/databricks/release-notes/runtime/7.0
-                  maintainContext: true
-                - name: Databricks Runtime 6.6 Genomics (ベータ版)
-                  href: /azure/databricks/release-notes/runtime/6.6genomics
+                - name: Databricks Runtime 7.0 Genomics (ベータ版)
+                  href: /azure/databricks/release-notes/runtime/7.0genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.6 (ベータ版)
                   href: /azure/databricks/release-notes/runtime/6.6
+                  maintainContext: true
+                - name: Databricks Runtime 6.6 ML (ベータ版)
+                  href: /azure/databricks/release-notes/runtime/6.6ml
+                  maintainContext: true
+                - name: Databricks Runtime 6.6 Genomics (ベータ版)
+                  href: /azure/databricks/release-notes/runtime/6.6genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.5
                   href: /azure/databricks/release-notes/runtime/6.5

@@ -16,7 +16,7 @@
   expanded: true
   items:
     - name: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
-      href: create-private-cluster.md
+      href: howto-create-private-cluster-4x.md
     - name: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
       href: dns-forwarding.md
     - name: Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する
@@ -48,7 +48,7 @@
         - name: Azure Red Hat OpenShift 3.11 クラスター内でプロジェクトを管理する
           href: howto-manage-projects.md
         - name: プライベート Azure Red Hat OpenShift 3.11 クラスターを作成する
-          href: howto-create-private-cluster.md
+          href: howto-create-private-cluster-3x.md
         - name: Azure Red Hat OpenShift 3.11 の監視とログ記録
           items:
             - name: Azure Red Hat OpenShift 3.11 における Azure Monitor for containers (プレビュー)

@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker のドキュメント
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジにある Q&A から回答となる可能性が最も高いものが提示されます。
-  ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 189782ca4e8d9c6a098f6080a62be4da0f2be853
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "76844111"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83651160"
 landingContent:
 - title: QnA Maker について
   linkLists:
@@ -96,8 +96,6 @@ landingContent:
     links:
     - text: 'ポータル: QnA ボットの作成'
       url: tutorials/create-qna-bot.md
-    - text: .Net:QnA Maker と Language Understanding でボットを作成する
-      url: tutorials/integrate-qnamaker-luis.md
     - text: その他のボットのサンプル
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: リファレンス

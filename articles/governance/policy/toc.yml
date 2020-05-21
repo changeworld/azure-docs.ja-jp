@@ -50,6 +50,8 @@
           href: ./samples/pattern-parameters.md
         - name: 効果の詳細
           href: ./samples/pattern-effect-details.md
+        - name: Tags
+          href: ./samples/pattern-tags.md
         - name: 値の演算子
           href: ./samples/pattern-value-operator.md
         - name: count 演算子
@@ -76,13 +78,8 @@
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes 用の Azure Policy
-      items:
-        - name: AKS のポリシー
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/rego-for-aks.md
-        - name: AKS エンジンのポリシー
-          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/aks-engine.md
+      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+      href: ./concepts/policy-for-kubernetes.md
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
