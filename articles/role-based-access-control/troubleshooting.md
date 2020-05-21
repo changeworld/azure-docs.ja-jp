@@ -41,7 +41,7 @@ Azure では、サブスクリプションあたり最大 **2,000** 個のロー
 - Azure AD Premium P2 を使用している場合は、ロールを永続的に割り当てるのではなく、[Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) で割り当てます。 
 - 追加のサブスクリプションを追加します。 
 
-ロールの割り当ての数を取得するには、Azure portal の [アクセス制御 (IAM) ページのグラフを](role-assignments-list-portal.md#list-number-of-role-assignments)を表示します。 また、次の Azure PowerShell コマンドを使用することもできます。
+ロールの割り当ての数を取得するには、Azure portal の [アクセス制御 (IAM) ページのグラフ](role-assignments-list-portal.md#list-number-of-role-assignments)を表示します。 また、次の Azure PowerShell コマンドを使用することもできます。
 
 ```azurepowershell
 $scope = "/subscriptions/<subscriptionId>"
