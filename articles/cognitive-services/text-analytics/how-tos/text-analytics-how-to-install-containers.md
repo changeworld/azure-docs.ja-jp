@@ -9,18 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 2d44df1bb828140e662b06ffbe5fb14f207f68e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d22dcf221bef40edb8bb2bd346dd5964000a4a68
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877087"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588402"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
-コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 エンティティ リンク設定は現在コンテナーでサポートされていません。
+> [!NOTE]
+> * 感情分析 v3 用のコンテナーが一般公開されました。 [制限なしのパブリック プレビュー](../../cognitive-services-gating-process.md)として、キー フレーズ抽出コンテナーと言語検出コンテナーを使用できます。
+> * 現時点では、エンティティのリンクと NER をコンテナーとして使用することはできません。
+
+コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -49,60 +53,32 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
-次の表に、各 Text Analytics コンテナーに割り当てる CPU コア (2.6 GHz (ギガヘルツ) 以上) とメモリ (GB 単位) の最小値と推奨値を示します。
+次の表に、Text Analytics コンテナーの最小仕様と推奨仕様を説明します。 少なくとも 2 ギガバイト (GB) のメモリが必要であり、各 CPU コアは 2.6 ギガヘルツ (GHz) 以上である必要があります。 秒あたりの許可されるトランザクション数 (TPS) も示されます。
 
-# <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/keyphrase)
+|  | 最小ホスト仕様 | 推奨されるホスト仕様 | 最小 TPS | 最大 TPS|
+|---|---------|-------------|--|--|
+| **言語検出、キー フレーズ抽出**   | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15 | 30|
+| **感情分析 v3**   | 1 コア、2 GB メモリ | 4 コア、8 GB メモリ |15 | 30|
 
-[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
-
-# <a name="language-detection"></a>[言語検出](#tab/language)
-
-[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
-
-# <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
-
-[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
-
-***
-
-* 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
-* TPS - 1 秒あたりのトランザクション数
-
-コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
+CPU コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
-Text Analytics のコンテナー イメージは Microsoft コンテナー レジストリで入手できます。
-
-# <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/keyphrase)
-
-[!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
-
-# <a name="language-detection"></a>[言語検出](#tab/language)
-
-[!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
-
-# <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
-
-[!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
-
-***
-
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-text-analytics-containers"></a>Text Analytics コンテナーの Docker プル
+Text Analytics のコンテナー イメージは Microsoft コンテナー レジストリで入手できます。
 
-# <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/keyphrase)
+# <a name="sentiment-analysis-v3"></a>[感情分析 v3](#tab/sentiment)
+
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+
+# <a name="key-phrase-extraction-preview"></a>[キー フレーズ抽出 (プレビュー)](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detection"></a>[言語検出](#tab/language)
+# <a name="language-detection-preview"></a>[言語検出 (プレビュー)](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
-
-# <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
-
-[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
 ***
 
@@ -110,31 +86,38 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 
 コンテナーを[ホスト コンピューター](#the-host-computer)上に用意できたら、次の手順を使用してコンテナーを操作します。
 
-1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](../text-analytics-resource-container-config.md#example-docker-run-commands)もご覧いただけます。
+1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。
 1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
-3 つのコンテナーのいずれかを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法について詳しくは、[必要なパラメーターの収集](#gathering-required-parameters)に関するページを参照してください。
+コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 コンテナーは一度実行すると、お客様が停止するまで動作し続けます。
 
-`docker run` コマンドの[例](../text-analytics-resource-container-config.md#example-docker-run-commands)を利用できます。
+次のプレースホルダーを実際の値に置き換えてください。
 
-# <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/keyphrase)
+| プレースホルダー | 値 | 形式または例 |
+|-------------|-------|---|
+| **{API_KEY}** | 自分の Text Analytics リソースのキー。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** ページで見つけることができます。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Text Analytics API にアクセスするためのエンドポイント。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** ページで見つけることができます。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
-[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
+> [!IMPORTANT]
+> * 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
+> * コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
+> * 感情分析 v3 コンテナーが一般公開されました。これにより、応答で[センチメント ラベル](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)が返されます。 キー フレーズ抽出コンテナーと言語検出コンテナーでは API の v2 が使用されます。それらはプレビュー段階にあります。
 
-# <a name="language-detection"></a>[言語検出](#tab/language)
-
-[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
-
-# <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
+# <a name="sentiment-analysis-v3"></a>[感情分析 v3](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
-***
+# <a name="key-phrase-extraction-preview"></a>[キー フレーズ抽出 (プレビュー)](#tab/keyphrase)
 
-> [!IMPORTANT]
-> コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
+
+# <a name="language-detection-preview"></a>[言語検出 (プレビュー)](#tab/language)
+
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+***
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -175,16 +158,17 @@ Text Analytics コンテナーは、Azure アカウントの _Text Analytics_ �
 この記事では、Text Analytics コンテナーの概念とそのダウンロード、インストール、および実行のワークフローについて説明しました。 要約すると:
 
 * Text Analytics は、Docker 用に 3 つの Linux コンテナーを提供し、さまざまな機能をカプセル化します。
-   * *キー フレーズ抽出*
-   * *言語検出*
    * *感情分析*
+   * *キー フレーズ抽出 (プレビュー)* 
+   * *言語検出 (プレビュー)*
+   
 * コンテナー イメージは、Azure の Microsoft Container Registry (MCR) からダウンロードされます。
 * コンテナー イメージを Docker で実行します。
 * REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Text Analytics コンテナーの操作を呼び出すことができます。
 * コンテナーをインスタンス化するときは、課金情報を指定する必要があります。
 
 > [!IMPORTANT]
-> Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。
+> Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 お客様のデータ (解析対象のテキストなど) が Cognitive Services コンテナーによって Microsoft に送信することはありません。
 
 ## <a name="next-steps"></a>次のステップ
 

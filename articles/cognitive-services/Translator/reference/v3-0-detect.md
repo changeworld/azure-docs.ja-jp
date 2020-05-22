@@ -1,7 +1,7 @@
 ---
-title: Translator Text API の Detect メソッド
+title: Translator Detect メソッド
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Translator Text API Detect メソッドを利用し、一節のテキストの言語を特定します。
+description: Azure Cognitive Services Translator Detect メソッドを利用し、一節のテキストの言語を特定します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73837294"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592289"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
+# <a name="translator-30-detect"></a>Translator 3.0:Detect
 
 テキストの一部の言語を識別します。
 
@@ -85,15 +85,15 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 正常な応答は、入力配列内の文字列ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `language`: 検出された言語のコードです。
+  * `language`:検出された言語のコードです。
 
-  * `score`: 結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
+  * `score`:結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
 
-  * `isTranslationSupported`: 検出された言語がテキスト翻訳でサポートされている言語の 1 つである場合に true になるブール値。
+  * `isTranslationSupported`:検出された言語がテキスト翻訳でサポートされている言語の 1 つである場合に true になるブール値です。
 
-  * `isTransliterationSupported`: 検出された言語が音訳でサポートされている言語の 1 つである場合に true になるブール値。
+  * `isTransliterationSupported`:検出された言語が音訳でサポートされている言語の 1 つである場合に true になるブール値です。
   
-  * `alternatives`: 利用可能な他の言語の配列。 配列の各要素は、上記にリストしたのと同じプロパティ (`language`、`score`、`isTranslationSupported`、`isTransliterationSupported`) を持つ別のオブジェクトです。
+  * `alternatives`:利用可能な他の言語の配列です。 配列の各要素は、上記にリストしたのと同じプロパティ (`language`、`score`、`isTranslationSupported`、`isTransliterationSupported`) を持つ別のオブジェクトです。
 
 JSON 応答の例を次に示します。
 
@@ -170,7 +170,7 @@ JSON 応答の例を次に示します。
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
 
 ## <a name="examples"></a>例
 

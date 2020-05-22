@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4395e0a14819021bd1e4ae32c89ffb0cf8e07d00
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 7801040811844640639195a3493b792a8e1ee645
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906461"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586533"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ const uuidv4 = require('uuid/v4');
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>サブスクリプション キーとエンドポイントの設定
 
-このサンプルは、Translator Text のサブスクリプション キーとエンドポイントを環境変数 `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` および `TRANSLATOR_TEXT_ENDPOINT` から読み取ることを試みます。 環境変数を使い慣れていない場合は、`subscriptionKey` と `endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+このサンプルは、Translator のサブスクリプション キーとエンドポイントを環境変数 `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` および `TRANSLATOR_TEXT_ENDPOINT` から読み取ることを試みます。 環境変数を使い慣れていない場合は、`subscriptionKey` と `endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
 
 このコードをプロジェクトにコピーします。
 
@@ -53,7 +53,7 @@ var endpoint = process.env[endpoint_var];
 要求モジュールに用意されている `request()` メソッドには、HTTP メソッド、URL、要求パラメーター、ヘッダー、JSON 本文を `options` オブジェクトとして渡すことができます。 このコード スニペットで、実際の要求を構成してみましょう。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」をご覧ください。
 
 ```javascript
 let options = {
@@ -99,7 +99,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
+これで、Translator を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
 
 ```console
 node transliterate-text.js
@@ -124,7 +124,7 @@ node transliterate-text.js
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

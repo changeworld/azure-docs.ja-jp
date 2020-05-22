@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 86ef8f3730fe7ae3ab3428956aaafb86331c5cf5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1e9c3ccac9205e38c8df341a6f7ca286811d759b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906478"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586534"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > これらのモジュールを使用していない場合は、プログラムを実行する前にこれらをインストールする必要があります。 これらのパッケージをインストールするには、`pip install requests uuid` を実行します。
 
-最初のコメントでは、UTF-8 エンコードを使用するように Python インタープリターに指示しています。 次に、必要なモジュールをインポートして、環境変数からのサブスクリプション キーの読み取り、HTTP 要求の作成、一意識別子の作成、Translator Text API から返された JSON 応答の処理を行っています。
+最初のコメントでは、UTF-8 エンコードを使用するように Python インタープリターに指示しています。 次に、必要なモジュールをインポートして、環境変数からのサブスクリプション キーの読み取り、HTTP 要求の作成、一意識別子の作成、Translator から返された JSON 応答の処理を行っています。
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>サブスクリプション キー、エンドポイント、パスの設定
 
-このサンプルでは、Translator Text のサブスクリプション キーとエンドポイントを環境変数 `TRANSLATOR_TEXT_KEY` および `TRANSLATOR_TEXT_ENDPOINT` から読み取ることを試みます。 環境変数を使い慣れていない場合は、`subscription_key` および `endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+このサンプルは、Translator のサブスクリプション キーとエンドポイントを環境変数 `TRANSLATOR_TEXT_KEY` および `TRANSLATOR_TEXT_ENDPOINT` から読み取ることを試みます。 環境変数を使い慣れていない場合は、`subscription_key` および `endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
 
 このコードをプロジェクトにコピーします。
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Translator Text のグローバル エンドポイントは、`endpoint` として設定されます。 `path` によって、`transliterate` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator のグローバル エンドポイントは、`endpoint` として設定されます。 `path` によって、`transliterate` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 入力言語、入力スクリプト、出力スクリプトは、`params` を使用して設定します。 このサンプルでは、日本語からラテン アルファベットへの表記変換を実行します。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」をご覧ください。
 
 ```python
 path = '/transliterate?api-version=3.0'
@@ -106,7 +106,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
+これで、Translator を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
 
 ```console
 python transliterate-text.py
@@ -131,7 +131,7 @@ python transliterate-text.py
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

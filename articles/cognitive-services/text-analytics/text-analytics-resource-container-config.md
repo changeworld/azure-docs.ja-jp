@@ -11,16 +11,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: f062fb2f3a653bc1b2845b92e373fdb67ba583d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878678"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590556"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics の docker コンテナーの構成
 
-Text Analytics ではコンテナーごとに一般的な構成フレームワークが提供されているので、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して、管理できます。
+Text Analytics ではコンテナーごとに一般的な構成フレームワークが提供されているので、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して、管理できます。 いくつかの [Docker 実行コマンドの例](how-tos/text-analytics-how-to-install-containers.md#run-the-container-with-docker-run)も利用できます。
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -53,7 +53,7 @@ Text Analytics ではコンテナーごとに一般的な構成フレームワ�
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
-## <a name="eula-setting"></a>Eula 設定
+## <a name="eula-setting"></a>Eula の設定
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
@@ -81,38 +81,6 @@ Text Analytics コンテナーでは、トレーニングやサービスのデ�
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Text Analytics コンテナーでは、これは使用されません。|
 |省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
-
-## <a name="example-docker-run-commands"></a>docker run コマンドの例 
-
-以下の例では、`docker run` コマンドの記述方法と使用方法を示す構成設定が使用されています。  コンテナーは一度実行すると、お客様が[停止](how-tos/text-analytics-how-to-install-containers.md#stop-the-container)するまで動作し続けます。
-
-* **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
-* **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
-
-{ _<引数名>_ } はお客様独自の値に置き換えてください。
-
-| プレースホルダー | 値 | 形式または例 |
-|-------------|-------|---|
-| **{API_KEY}** | Azure `Text Analytics` の [キー] ページで使用可能な `Text Analytics` リソースのエンドポイント キー。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Text Analytics` の [概要] ページで確認できます。| 明示的な例が必要であれば、[必須パラメーターの収集](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)に関するページを参照してください。 |
-
-> [!IMPORTANT]
-> コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](how-tos/text-analytics-how-to-install-containers.md#billing)」を参照してください。
-> ApiKey の値は、Azure `Text Analytics` リソース キー ページにある**キー**です。 
-
-#### <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/keyphrase)
-
-[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
-
-#### <a name="language-detection"></a>[言語検出](#tab/language)
-
-[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
-
-#### <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
-
-[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
-
-***
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,5 +1,5 @@
 ---
-title: 翻訳のカスタマイズ - Translator Text API
+title: 翻訳のカスタマイズ - Translator
 titleSuffix: Azure Cognitive Services
 description: Microsoft Translator Hub を利用し、適切な用語とスタイルを使用して、独自の機械翻訳システムを構築します。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71257622"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588651"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
-Microsoft Translator サービスの機能である Microsoft カスタム トランスレーターを使用すると、ユーザーは Translator Text API (バージョン 3 のみ) を使用してテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズすることができます。
+カスタム翻訳ツールは、Translator サービスの機能です。ユーザーは、これを使用して、Translator (バージョン 3 のみ) でテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズできます。
 
 この機能を [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) と組み合わせて使用し、音声の翻訳をカスタマイズすることもできます。
 
@@ -33,7 +33,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 システムは、ドキュメント レベルでは並列化されているが、センテンス レベルではまだ揃っていないデータも受け付けます。 ユーザーが同じコンテンツの複数言語による個別ドキュメントのバージョンにアクセスできる場合、Custom Translator はドキュメント間でセンテンスを自動的に一致させることができます。  また、システムは、一方または両方の言語で単一言語データを使用し、並列トレーニング データを補完して翻訳を向上させることもできます。
 
-カスタマイズされたシステムは、カテゴリ パラメーターを使用する Microsoft Translator Text API の通常の呼び出しで利用できます。
+その後、カテゴリ パラメーターを使用する Translator の通常の呼び出しで、カスタマイズされたシステムを使用できます。
 
 適切な種類と量のトレーニング データがあれば、Custom Translator を使用することで、5 から 10 の間あるいはそれ以上の BLEU ポイントの翻訳品質を期待できることも珍しくありません。
 
@@ -59,7 +59,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 ## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
 
 > [!NOTE]
-> 2018 年 2 月 1 日の時点で、AddTranslation() と AddTranslationArray() は Translator Text API V2.0 では使用できなくなっています。 これらのメソッドは失敗し、何も書き込まれません。 Translator Text API V3.0 はこれらのメソッドをサポートしません。
+> 2018 年 2 月 1 日の時点で、AddTranslation() と AddTranslationArray() は Translator v2.0 では使用できなくなっています。 これらのメソッドは失敗し、何も書き込まれません。 Translator v3.0 では、これらのメソッドはサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

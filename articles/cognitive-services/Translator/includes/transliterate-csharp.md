@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 81fb599ca4987adccdb91baa7a74c33ae3af48d4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4573224a77b080e0ba6cefe5069164466e7df5b9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906508"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586531"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>JSON 応答用のクラスを作成する
 
-次は、Translator Text API から返された JSON 応答を逆シリアル化するときに使用されるクラスを作成します。
+次は、Translator から返された JSON 応答を逆シリアル化するときに使用されるクラスを作成します。
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class TransliterationResult
 {
@@ -171,7 +171,7 @@ Cognitive Services のマルチサービス サブスクリプションを使用
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順は、`TransliterateTextRequest()` 関数での `Main` の呼び出しです。 このサンプルでは、日本語からラテン スクリプトへの表記変換を実行します。 `static void Main(string[] args)` を探してこのコードに置き換えます。
+最後の手順は、`Main` 関数での `TransliterateTextRequest()` の呼び出しです。 このサンプルでは、日本語からラテン スクリプトへの表記変換を実行します。 `static void Main(string[] args)` を探してこのコードに置き換えます。
 
 ```csharp
 static async Task Main(string[] args)
@@ -223,7 +223,7 @@ Transliterated to latn script: Kon\'nichiwa
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

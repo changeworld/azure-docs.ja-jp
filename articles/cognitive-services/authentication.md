@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74423931"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587682"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -38,12 +38,12 @@ Azure Cognitive Services で使用できる認証ヘッダーについて簡単�
 | ヘッダー | 説明 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 特定のサービスのサブスクリプション キーまたはマルチサービスのサブスクリプション キーを使用して認証するには、このヘッダーを使用します。 |
-| Ocp-Apim-Subscription-Region | このヘッダーは、[Translator Text API](./Translator/reference/v3-0-reference.md) と共にマルチサービスのサブスクリプション キーを使用する場合にのみ必要です。 このヘッダーを使用して、サブスクリプション リージョンを指定します。 |
+| Ocp-Apim-Subscription-Region | このヘッダーは、[Translator サービス](./Translator/reference/v3-0-reference.md)と共にマルチサービスのサブスクリプション キーを使用する場合にのみ必要です。 このヘッダーを使用して、サブスクリプション リージョンを指定します。 |
 | 承認 | お客様が認証トークンを使用している場合は、このヘッダーを使用します。 トークンの交換を実行する手順については、以降のセクションで詳しく説明されています。 値は `Bearer <TOKEN>` 形式で指定します。 |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>単一サービスのサブスクリプション キーによる認証
 
-1 つ目の方法では、Translator Text などの特定のサービスに対してサブスクリプション キーを使用して要求を認証します。 お客様が作成したそれぞれのリソースについて、Azure portal でキーを取得できます。 サブスクリプション キーを使用して要求を認証するには、それを `Ocp-Apim-Subscription-Key` ヘッダーとして渡す必要があります。
+1 つ目の方法では、Translator などの特定のサービスに対してサブスクリプション キーを使用して要求を認証します。 お客様が作成したそれぞれのリソースについて、Azure portal でキーを取得できます。 サブスクリプション キーを使用して要求を認証するには、それを `Ocp-Apim-Subscription-Key` ヘッダーとして渡す必要があります。
 
 以下のサンプル要求は、`Ocp-Apim-Subscription-Key` ヘッダーの使用方法を示しています。 このサンプルを使用する際は有効なサブスクリプション キーを含める必要があることに注意してください。
 
@@ -53,7 +53,7 @@ curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pem
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-これは、Translator Text API 呼び出しのサンプルです。
+これは、Translator サービスの呼び出しの例です。
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -78,7 +78,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 マルチサービスのサブスクリプション キーを使用して `api.cognitive.microsoft.com` に対する要求を実行するときは、URL にリージョンを含める必要があります。 (例: `westus.api.cognitive.microsoft.com`)。
 
-Translator Text API と共にマルチサービスのサブスクリプション キーを使用する場合は、`Ocp-Apim-Subscription-Region` ヘッダーを使用してサブスクリプション リージョンを指定する必要があります。
+Translator サービスと共にマルチサービスのサブスクリプション キーを使用する場合は、`Ocp-Apim-Subscription-Region` ヘッダーを使用してサブスクリプション リージョンを指定する必要があります。
 
 マルチサービス認証は、以下のリージョンでサポートされています。
 
@@ -100,7 +100,7 @@ curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-これは、Translator Text API 呼び出しのサンプルです。
+これは、Translator サービスの呼び出しの例です。
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -150,7 +150,7 @@ curl -v -X POST \
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-認証トークンを取得したら、各要求内でそれを `Authorization` ヘッダーとして渡す必要があります。 これは、Translator Text API 呼び出しのサンプルです。
+認証トークンを取得したら、各要求内でそれを `Authorization` ヘッダーとして渡す必要があります。 これは、Translator サービスの呼び出しの例です。
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \

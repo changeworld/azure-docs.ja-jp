@@ -2,13 +2,13 @@
 title: チュートリアル:パターン - LUIS
 description: このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善すると共に、与える発話の例を減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例として与えられます。
 ms.topic: tutorial
-ms.date: 04/14/2020
-ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/07/2020
+ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380781"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592918"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加して予測を改善する
 
@@ -41,7 +41,8 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
 
 1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)をダウンロードして保存します。
 
-1. その JSON を、[プレビュー LUIS ポータル](https://preview.luis.ai)で新しいアプリにインポートします。 **[マイ アプリ]** ページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、 **[Import as JSON]\(JSON としてインポート\)** を選択します。 前の手順でダウンロードしたファイルを選択します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)で、その JSON を新しいアプリにインポートします。 **[マイ アプリ]** ページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、 **[Import as JSON]\(JSON としてインポート\)** を選択します。 前の手順でダウンロードしたファイルを選択します。
 
 1. **[管理]** セクションの **[バージョン]** タブでアクティブなバージョンを選択し、 **[複製]** を選択します。 複製したバージョンに `patterns` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
 
@@ -468,33 +469,7 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 ## <a name="using-patternany-entity"></a>Pattern.any エンティティを使用する
 
-pattern.any エンティティは、エンティティの表現が原因で発話の残りの部分からエンティティの終わりを判別するのが難しい自由形式データを見つけるために使用できます。
-
-この人事アプリは、従業員が会社のフォームを見つける際に役立ちます。
-
-|発話|
-|--|
-|**HRF-123456** はどこにありますか?|
-|誰が **HRF-123234** を作成しましたか?|
-|**HRF-456098** はフランス語で発行されますか?|
-
-ただし、各フォームには、前の表で使用されているフォーマット済みの名前と、`Request relocation from employee new to the company 2018 version 5` のようなわかりやすい名前の両方があります。
-
-わかりやすいフォーム名を持つ発話は次のようになります。
-
-|発話|
-|--|
-|**会社の新しい従業員からの配置換えリクエスト 2018 バージョン 5** はどこにありますか?|
-|誰が **"会社の新しい従業員からの配置換えリクエスト 2018 バージョン 5"** を作成しましたか?|
-|**会社の新しい従業員からの配置換えリクエスト 2018 バージョン 5** はフランス語で発行されますか?|
-
-さまざまな長さには、エンティティの末尾がどこであるかについて LUIS を混乱させる可能性のある単語が含まれています。 パターンで Pattern.any エンティティを使用すると、フォーム名の先頭と末尾を指定できるため、LUIS はフォーム名を正しく抽出できます。
-
-|テンプレート発話の例|
-|--|
-|{FormName} はどこですか[?]|
-|誰が {FormName} を作成しましたか[?]|
-|{FormName} はフランス語で発行されますか[?]|
+[!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
 ### <a name="add-example-utterances-with-patternany"></a>Pattern.any を使用して発話の例を追加する
 

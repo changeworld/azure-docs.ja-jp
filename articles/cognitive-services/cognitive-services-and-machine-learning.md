@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75531481"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584622"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -89,7 +89,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 次のデータは、各サービスが許可または要求するデータの種類でサービスを分類したものです。
 
-|Cognitive Services|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
+|Cognitive Service|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
 |--|--|--|--|
 |[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Search |x|||
@@ -108,8 +108,8 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[Speech の音声テキスト変換 (STT)](speech-service/speech-to-text.md)|x|x||
 |[音声翻訳](speech-service/speech-translation.md)|x|||
 |[Text Analytics](./text-analytics/overview.md)|x|||
-|[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text - カスタム翻訳ツール](./translator/custom-translator/overview.md)||x||
+|[Translator](./translator/translator-info-overview.md)|x|||
+|[Translator - Custom Translator](./translator/custom-translator/overview.md)||x||
 
 *Personalizer は、(リアルタイムで動作するため) サービスが収集したトレーニング データだけでユーザーのポリシーとデータを評価します。 Personalizer の事前トレーニングやバッチ トレーニングには、大量の履歴データセットが必要ありません。 
 
@@ -127,7 +127,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 他の機械学習ツールにモデルをエクスポートできる Cognitive Services:
 
-|Cognitive Services|モデル情報|
+|Cognitive Service|モデル情報|
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./Custom-Vision-Service/export-model-python.md)|
 

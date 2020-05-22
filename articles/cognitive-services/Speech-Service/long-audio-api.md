@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: b7cca314ec59e46cf17751b1aec28b5c3ea029ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401072"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587342"
 ---
 # <a name="long-audio-api-preview"></a>Long Audio API (プレビュー)
 
-Long Audio API は、長い形式のテキスト読み上げ (オーディオ ブックなど) の非同期合成のために設計されています。 この API は、合成された音声をリアルタイムで返しません。代わりに、応答をポーリングし、サービスから提供されている出力を使用することを想定しています。 Speech SDK によって使用されるテキスト読み上げ API とは異なり、Long Audio API は、10 分よりも長い合成された音声を作成できるため、パブリッシャーと音声コンテンツ プラットフォームには最適です。
+Long Audio API は、長い形式のテキスト読み上げ (オーディオ ブック、ニュース記事、ドキュメントなど) の非同期合成のために設計されています。 この API は、合成された音声をリアルタイムで返しません。代わりに、応答をポーリングし、サービスから提供されている出力を使用することを想定しています。 Speech SDK によって使用されるテキスト読み上げ API とは異なり、Long Audio API は、10 分よりも長い合成された音声を作成できるため、パブリッシャーと音声コンテンツ プラットフォームには最適です。
 
 Long Audio API のその他の利点は次のとおりです。
 
-* サービスによって返される合成音声は、再現性の高い音声出力を保証するニューラル音声を使用します。
-* リアルタイム応答はサポートされていないため、音声エンドポイントをデプロイする必要はありません。
+* サービスによって返される合成音声では、最適なニューラル音声が使用されます。
+* リアルタイム バッチ モードによる音声合成は行われないため、音声エンドポイントをデプロイする必要はありません。
 
 > [!NOTE]
-> 現在、Long Audio API では、[カスタム ニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)のみをサポートしています。
+> Long Audio API で、[パブリック ニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)と[カスタム ニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)の両方がサポートされるようになりました。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -52,14 +52,47 @@ Long Audio API のその他の利点は次のとおりです。
 
 ## <a name="submit-synthesis-requests"></a>合成要求の送信
 
-入力コンテンツを準備した後、[長い形式のオーディオ合成のクイック スタート](https://aka.ms/long-audio-python)に関する記事に従って、要求を送信します。 複数の入力ファイルがある場合は、複数の要求を送信する必要があります。 次のような注意すべきいくつかの制限事項があります。 
-* クライアントは、各 Azure サブスクリプション アカウントに対して 1 秒あたり最大 5 個の要求をサーバーに送信できます。 制限を超えると、クライアントはエラー コード 429 (要求が多すぎます) を受け取ります。 1 秒あたりの要求の数を減らしてください
-* サーバーは、各 Azure サブスクリプション アカウントに対して最大 120 個の要求を実行およびキューに登録できます。 制限を超えた場合、サーバーはエラー コード 429 (要求が多すぎます) を返します。 いくつかの要求が完了するまで、新しい要求を送信しないでお待ちください
-* サーバーは、各 Azure サブスクリプション アカウントごとに最大 2 万個の要求を保持します。 制限を超えた場合は、新しい要求を送信する前に、いくつかの要求を削除してください
+入力コンテンツを準備した後、[長い形式のオーディオ合成のクイック スタート](https://aka.ms/long-audio-python)に関する記事に従って、要求を送信します。 複数の入力ファイルがある場合は、複数の要求を送信する必要があります。 
+
+**HTTP 状態**コードによって、一般的なエラーが示されます。
+
+| API | HTTP 状態コード | 説明 | 提案 |
+|-----|------------------|-------------|----------|
+| 作成 | 400 | 音声合成はこのリージョンでは有効になっていません。 | 音声サブスクリプション キーをサポートされているリージョンに変更してください。 |
+|        | 400 | このリージョンでは **Standard** 音声サブスクリプションのみが有効です。 | 音声サブスクリプション キーを "Standard" 価格レベルに変更してください。 |
+|        | 400 | Azure アカウントの要求数の上限である 20,000 個を超えています。 新しい要求を送信する前に、いくつかの要求を削除してください。 | サーバーでは、Azure アカウントごとに最大 20,000 個の要求が保持されます。 新しい要求を送信する前に、いくつかの要求を削除してください。 |
+|        | 400 | 音声合成ではこのモデルを使用することはできません : {modelID}。 | {modelID} の状態が正しいことを確認してください。 |
+|        | 400 | 要求のリージョンがこのモデルのリージョンと一致しません: {modelID}。 | {modelID} のリージョンが要求のリージョンと一致することを確認してください。 |
+|        | 400 | 音声合成では、バイト順マーカー付きのUTF-8 エンコードのテキスト ファイルのみがサポートされます。 | 入力ファイルが、バイト順マーカー付きの UTF-8 エンコードになっていることを確認します。 |
+|        | 400 | 音声合成要求では、有効な SSML 入力のみが許可されます。 | 入力 SSML 式が正しいことを確認してください。 |
+|        | 400 | 入力ファイル内に音声名 {voiceName} が見つかりません。 | 入力 SSML の音声名がモデル ID と一致しません。 |
+|        | 400 | 入力ファイル内の段落の量は、10,000 未満である必要があります。 | ファイル内の段落が 10,000 未満であることを確認してください。 |
+|        | 400 | 入力ファイルの文字数は 400 文字を越えている必要があります。 | 入力ファイルが 400 文字を超えていることを確認してください。 |
+|        | 404 | 音声合成定義内に宣言されたモデルが見つかりません: {modelID}。 | {modelID} が正しいことを確認してください。 |
+|        | 429 | アクティブな音声合成の制限を超えています。 いくつかの要求が完了するまでお待ちください。 | サーバーでは、Azure アカウントごとに最大 120 個の要求を実行およびキューに登録できます。 いくつかの要求が完了するまで、新しい要求を送信しないでお待ちください。 |
+| All       | 429 | 要求が多すぎます。 | クライアントでは、Azure アカウントごとに 1 秒あたり最大 5 個の要求をサーバーに送信することが許可されています。 1 秒あたりの要求の数を減らしてください |
+| 削除    | 400 | その音声合成タスクはまだ使用中です。 | 削除できるのは、**完了した**要求、または**失敗した要求**のみです。 |
+| GetByID   | 404 | 指定されたエンティティが見つかりません。 | 合成 ID が正しいことを確認してください。 |
+
+## <a name="regions-and-endpoints"></a>リージョンとエンドポイント
+
+Long Audio API は、一意のエンドポイントを持つ複数のリージョンで使用できます。
+
+| リージョン | エンドポイント |
+|--------|----------|
+| オーストラリア東部 | `https://australiaeast.customvoice.api.speech.microsoft.com` |
+| カナダ中部 | `https://canadacentral.customvoice.api.speech.microsoft.com` |
+| 米国東部 | `https://eastus.customvoice.api.speech.microsoft.com` |
+| インド中部 | `https://centralindia.customvoice.api.speech.microsoft.com` |
+| 米国中南部 | `https://southcentralus.customvoice.api.speech.microsoft.com` |
+| 東南アジア | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| 英国南部 | `https://uksouth.customvoice.api.speech.microsoft.com` |
+| 西ヨーロッパ | `https://westeurope.customvoice.api.speech.microsoft.com` |
+| 米国西部 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
 
 ## <a name="audio-output-formats"></a>音声出力形式
 
-柔軟なオーディオ出力形式をサポートしています。 段落ごとにオーディオ出力を生成したり、'concatenateResult' パラメーターを設定して複数のオーディオを 1 つの出力に連結したりすることができます。 Long Audio API では、次の音声出力形式がサポートされています。
+柔軟なオーディオ出力形式をサポートしています。 段落ごとにオーディオ出力を生成したり、'concatenateResult' パラメーターを設定して複数のオーディオ出力を単一の出力に連結したりできます。 Long Audio API では、次の音声出力形式がサポートされています。
 
 > [!NOTE]
 > 既定の音声形式は、riff-16khz-16bit-mono-pcm です。

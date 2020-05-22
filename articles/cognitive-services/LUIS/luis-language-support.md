@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: e859ac18276d10960a5a8488a6051252d90e0fcd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744150"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591048"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -24,7 +24,7 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 ## <a name="multi-language-luis-apps"></a>複数言語の LUIS アプリ
 
-チャットボットなどの多言語 LUIS クライアント アプリケーションが必要な場合は、オプションがいくつかあります。 LUIS によってすべての言語がサポートされている場合は、言語ごとに LUIS アプリを開発します。 各 LUIS アプリに一意のアプリ ID と、エンドポイント ログがあります。 LUIS でサポートされていない言語に対して、言語の解釈を提供する必要がある場合は、[Microsoft Translator API](../Translator/translator-info-overview.md) を使用して、サポートされている言語に発話を翻訳し、LUIS エンドポイントに送信して、結果スコアを受け取ることができます。
+チャットボットなどの多言語 LUIS クライアント アプリケーションが必要な場合は、オプションがいくつかあります。 LUIS によってすべての言語がサポートされている場合は、言語ごとに LUIS アプリを開発します。 各 LUIS アプリに一意のアプリ ID と、エンドポイント ログがあります。 LUIS でサポートされていない言語に対して、言語の解釈を提供する必要がある場合は、[Translator サービス](../Translator/translator-info-overview.md)を使用して、サポートされている言語に発話を翻訳し、LUIS エンドポイントに送信して、結果スコアを受け取ることができます。
 
 ## <a name="languages-supported"></a>サポートされている言語
 
@@ -35,22 +35,22 @@ LUIS が理解する発話の言語を次に示します。
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|-|-|-|-|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Dutch |`nl-NL` |✔|-|-|✔|
+| オランダ語 |`nl-NL` |✔|-|-|✔|
 | フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
 | フランス語 (カナダ) |`fr-CA` |-|-|-|✔|
-| German |`de-DE` |✔| ✔ |✔ |✔|
+| ドイツ語 |`de-DE` |✔| ✔ |✔ |✔|
 | グジャラート語 | `gu-IN`|-|-|-|-|
 | ヒンディー語 | `hi-IN`|-|✔|-|-|
-| Italian |`it-IT` |✔| ✔ |✔|✔|
+| イタリア語 |`it-IT` |✔| ✔ |✔|✔|
 | *[日本語](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|キー フレーズのみ|
-| Korean |`ko-KR` |✔|-|-|キー フレーズのみ|
+| 韓国語 |`ko-KR` |✔|-|-|キー フレーズのみ|
 | マラーティー語 | `mr-IN`|-|-|-|-|
 | ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
 | スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | スペイン語 (メキシコ)|`es-MX` |-|-|✔|✔|
 | タミル語 | `ta-IN`|-|-|-|-|
 | テルグ語 | `te-IN`|-|-|-|-|
-| Turkish | `tr-TR` |✔|✔|-|センチメントのみ|
+| トルコ語 | `tr-TR` |✔|✔|-|センチメントのみ|
 
 
 
@@ -88,23 +88,23 @@ Speech ディクテーション モードの言語については、Speech の�
 |--|:--:|:--:|:--:|
 |アラビア語|✔|||
 |Chinese||✔||
-|Dutch|✔||✔|
+|オランダ語|✔||✔|
 |英語 (en-us)|✔ |||
 |フランス語 (fr-FR)|✔|||
 |フランス語 (fr-CA)|✔|||
-|German|✔||✔|
+|ドイツ語|✔||✔|
 |グジャラート語|✔|||
 |ヒンディー語|✔|||
-|Italian|✔|||
-|Japanese|||✔
-|Korean||✔||
+|イタリア語|✔|||
+|日本語|||✔
+|韓国語||✔||
 |マラーティー語|✔|||
 |ポルトガル語 (ブラジル)|✔|||
 |スペイン語 (es-ES)|✔|||
 |スペイン語 (es-MX)|✔|||
 |タミル語|✔|||
 |テルグ語|✔|||
-|Turkish|✔|||
+|トルコ語|✔|||
 
 
 ### <a name="custom-tokenizer-versions"></a>カスタム トークナイザーのバージョン
@@ -113,10 +113,10 @@ Speech ディクテーション モードの言語については、Speech の�
 
 |カルチャ|Version|目的|
 |--|--|--|
-|German<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
-|German<br>`de-de`|1.0.2|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1つのトークンとして保持されます。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |
-|Dutch<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは `Ik ga naar de kleuter school` に変換されます。 `kleuter` と `school` を別のエンティティとして独立にマークすることが可能になります。|
-|Dutch<br>`de-de`|1.0.1|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは 1つのトークンとして保持されます。 そのため、`kleuterschool` は 1 つのエンティティとしてマークされます。 |
+|ドイツ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
+|ドイツ語<br>`de-de`|1.0.2|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1つのトークンとして保持されます。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |
+|オランダ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは `Ik ga naar de kleuter school` に変換されます。 `kleuter` と `school` を別のエンティティとして独立にマークすることが可能になります。|
+|オランダ語<br>`de-de`|1.0.1|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは 1つのトークンとして保持されます。 そのため、`kleuterschool` は 1 つのエンティティとしてマークされます。 |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>トークナイザーのバージョン間の移行

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eee2271b6d1fb51ff4b27c0d612306b1f7f8747a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68595605"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584724"
 ---
 # <a name="view-system-test-results"></a>システムのテスト結果の表示
 
@@ -102,6 +102,6 @@ ms.locfileid: "68595605"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
 - [設定を管理](how-to-manage-settings.md)してワークスペースを共有し、サブスクリプション キーを管理する方法について説明します。
 - [Microsoft Translator Hub](https://hub.microsofttranslator.com) から[ワークスペースとプロジェクトを移行する方法](how-to-migrate.md)について説明します。

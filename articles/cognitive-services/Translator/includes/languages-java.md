@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 34ff0e792fc388f3083e2d490b2658822793988f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ab8474833ce791f5715369cb25e95f34170f457b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906977"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586877"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -121,7 +121,7 @@ public String Get() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>応答を解析するための関数を作成する
 
-このシンプルな関数は、Translator Text サービスからの JSON 応答を解析し、整形するものです。
+このシンプルな関数は、Translator サービスからの JSON 応答を解析し、整形するものです。
 
 ```java
 // This function prettifies the json response.
@@ -255,7 +255,7 @@ gradle run
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

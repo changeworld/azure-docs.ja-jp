@@ -3,18 +3,18 @@ author: IEvangelist
 ms.author: dapine
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
-ms.openlocfilehash: 993b0e8cc5b1ec482b2f6041dfc970dc7e7409dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/04/2020
+ms.openlocfilehash: 88d83676de1e7fa18c4c1dcbf347da8d685ba2fa
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68229291"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593335"
 ---
-[Cognitive Services Vision Containers Request フォーム](https://aka.ms/VisionContainersPreview)に入力して送信し、コンテナーへのアクセスを要求する必要があります。 このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、Azure Cognitive Services チームがそれをレビューして、プライベート コンテナー レジストリにアクセスするための条件を満たしていることを確認します。
+コンテナーへのアクセスを要求するには、[Cognitive Services コンテナー要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、Azure Cognitive Services チームがそれをレビューして、プライベート コンテナー レジストリにアクセスするための条件を満たしていることを確認します。
 
 > [!IMPORTANT]
-> フォームでは、Microsoft アカウント (MSA) または Azure Active Directory (Azure AD) アカウントに関連付けられた電子メール アドレスを使用する必要があります。
+> フォームでは、Microsoft アカウント (MSA) または Azure Active Directory (Azure AD) アカウントに関連付けられた電子メール アドレスを使用する必要があります。 受け入れ基準の詳細については、「[Cognitive Services - ゲート プロセス](../articles/cognitive-services/cognitive-services-gating-process.md)」を参照してください。
 
 要求が承認されると、資格情報を取得してプライベート コンテナー レジストリにアクセスする方法を説明する手順が記載された電子メールを受け取ります。
 

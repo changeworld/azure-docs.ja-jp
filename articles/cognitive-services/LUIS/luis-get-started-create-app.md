@@ -2,13 +2,13 @@
 title: 'クイックスタート: アプリの作成 - LUIS'
 description: このクイックスタートでは、照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成する方法について説明します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/05/2020
+ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80287800"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589150"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート:事前構築済みの Home Automation アプリを使用する
 
@@ -21,11 +21,15 @@ ms.locfileid: "80287800"
 ## <a name="create-a-new-app"></a>新しいアプリの作成
 アプリケーションは、 **[My Apps]** で作成および管理できます。
 
-1. [マイアプリ] の一覧で、 **[+ New app for conversation]** \(+ 会話用の新しいアプリ\) を選択します。
+1. [マイ アプリ] リストで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、オプションのリストで再び **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択します。
 
-1. ダイアログ ボックスで、お使いのアプリケーションに `Home Automation` という名前を付けます。 カルチャとして **[英語]** を選択します。 説明は省略可能です。作成や予測には使用されません。 LUIS アプリを作成するときには、予測リソースも省略可能です。 **[Done]** を選択します。
+1. ダイアログ ボックスで、お使いのアプリケーションに `Home Automation` という名前を付けます。
+1. カルチャとして **[英語]** を選択します。
+1. 必要に応じて説明を入力します。
+1. リソースをまだ作成していない場合は、予測リソースを選択しないでください。 アプリの予測エンドポイント (ステージングまたは運用) を使用するには、予測リソースを割り当てる必要があります。
+1. **[Done]** を選択します。
 
-    LUIS によってアプリが作成されます。 運用環境にアプリを公開するときは、アプリが多くの要求を処理できるよう予測のリソースを割り当てる必要があります。
+    LUIS によってアプリが作成されます。
 
     ![ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付ける](./media/create-new-app-details.png)
 
@@ -34,24 +38,27 @@ ms.locfileid: "80287800"
 
 ## <a name="add-prebuilt-domain"></a>事前構築済みのドメインの追加
 
-**[Prebuilt domains]** を選択し、 **[HomeAutomation]** を検索します。 [HomeAutomation] カードで、 **[Add domain]** を選択します。
+1. 左側のナビゲーションで **[Prebuilt Domains]\(事前構築済みドメイン\)** を選択します。
+1. **HomeAutomation** を検索します。
+1. [HomeAutomation] カードで、 **[Add domain]** を選択します。
 
-![[Prebuilt domains] を選択し、[HomeAutomation] を検索します。 [HomeAutomation] カードで、[Add domain] を選択します。](media/luis-quickstart-new-app/home-automation.png)
+    ![[Prebuilt domains] を選択し、[HomeAutomation] を検索します。 [HomeAutomation] カードで、[Add domain] を選択します。](media/luis-quickstart-new-app/home-automation.png)
 
-ドメインが正常に追加されると、事前構築済みドメインのボックスに、 **[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
+    ドメインが正常に追加されると、事前構築済みドメインのボックスに、 **[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
 
 ## <a name="intents-and-entities"></a>意図とエンティティ
 
-HomeAutomation ドメインの意図を確認するには、 **[Intents]** を選択します。 事前構築済みドメインの意図にはサンプル発話があります。
+1. HomeAutomation ドメインの意図を確認するには、 **[Intents]** を選択します。 事前構築済みドメインの意図には発話例があります。
 
-![HomeAutomation の意図の一覧のスクリーンショット](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation の意図の一覧のスクリーンショット")
+    ![HomeAutomation の意図の一覧のスクリーンショット](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation の意図の一覧のスクリーンショット")
 
-> [!NOTE]
-> **[None]\(なし\)** は、すべての LUIS アプリに用意されている意図です。 これは自分のアプリの機能に対応しない発話を処理する目的で使用されます。
+    > [!NOTE]
+    > **[None]\(なし\)** は、すべての LUIS アプリに用意されている意図です。 これは自分のアプリの機能に対応しない発話を処理する目的で使用されます。
 
-**[HomeAutomation.TurnOff]** 意図を選択します。 意図には、エンティティでラベル付けされている発話の一覧が含まれていることがわかります。
+1. **[HomeAutomation.TurnOff]** 意図を選択します。 意図には、エンティティでラベル付けされている発話例の一覧が含まれています。
 
-[![HomeAutomation.TurnOff 意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff 意図のスクリーンショット")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+    > [!div class="mx-imgBorder"]
+    > [![HomeAutomation.TurnOff 意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff 意図のスクリーンショット")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 
@@ -60,21 +67,22 @@ HomeAutomation ドメインの意図を確認するには、 **[Intents]** を�
 ## <a name="test-your-app"></a>アプリをテストする
 アプリのトレーニング後、そのテストを行うことができます。
 
-1. 右上のナビゲーションから **[テスト]** を選択します。 1. 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
+1. 右上のナビゲーションから **[テスト]** を選択します。
+
+1. 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
 
     ```
     Turn off the lights
     ```
 
-    それぞれのテスト発話について、最もスコアの高い意図が、想定された意図と対応していることを確認します。
-
     この例では、**HomeAutomation.TurnOff** に対する最もスコアの高い意図として `Turn off the lights` が正しく識別されています。
 
     ![発話が強調表示されたテスト パネルのスクリーンショット](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-1. **[検査]** を選択して、その予測の詳細を確認します。
+1. **[検査]** を選択して、その予測の詳細を表示します。
 
-    ![検査情報を含むテスト パネルのスクリーンショット](media/luis-quickstart-new-app/test.png)
+    > [!div class="mx-imgBorder"]
+    > ![検査情報を含むテスト パネルのスクリーンショット](media/luis-quickstart-new-app/test.png)
 
 1. テスト ウィンドウを閉じます。
 

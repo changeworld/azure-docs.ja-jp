@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f14a12d5de64206f64e8c7205beb2c59c4f1f2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a491249e21db433d878a59cad19f59f8987b638b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906965"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586878"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > これらのモジュールを使用していない場合は、プログラムを実行する前にこれらをインストールする必要があります。 これらのパッケージをインストールするには、`pip install requests uuid` を実行します。
 
-最初のコメントでは、UTF-8 エンコードを使用するように Python インタープリターに指示しています。 次に、必要なモジュールをインポートして、環境変数からのサブスクリプション キーの読み取り、HTTP 要求の作成、一意識別子の作成、Translator Text API から返された JSON 応答の処理を行っています。
+最初のコメントでは、UTF-8 エンコードを使用するように Python インタープリターに指示しています。 次に、必要なモジュールをインポートして、環境変数からのサブスクリプション キーの読み取り、HTTP 要求の作成、一意識別子の作成、Translator から返された JSON 応答の処理を行っています。
 
 ## <a name="set-the-endpoint-and-path"></a>エンドポイントとパスを設定する
 
-このサンプルは、環境変数 `TRANSLATOR_TEXT_ENDPOINT` から Translator Text のエンドポイントを読み取ることを試みます。 環境変数を使い慣れていない場合は、`endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+このサンプルは、環境変数 `TRANSLATOR_TEXT_ENDPOINT` から Translator のエンドポイントを読み取ることを試みます。 環境変数を使い慣れていない場合は、`endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
 
 ```python
 endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
@@ -40,10 +40,10 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Translator Text のグローバル エンドポイントは、`endpoint` として設定されます。 `path` によって、`languages` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator のグローバル エンドポイントは、`endpoint` として設定されます。 `path` によって、`languages` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
 
 ```python
 path = '/languages?api-version=3.0'
@@ -85,7 +85,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
+これで、Translator を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
 
 ```console
 python get-languages.py
@@ -189,7 +189,7 @@ python get-languages.py
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

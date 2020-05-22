@@ -2,13 +2,13 @@
 title: クイック スタート:LUIS ポータルを使用してアプリをデプロイする
 description: このクイックスタートでは、予測エンドポイント リソースを作成し、リソースを割り当て、アプリをトレーニング、公開することによって、アプリをデプロイする方法について説明します。
 ms.topic: quickstart
-ms.date: 04/06/2020
-ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/06/2020
+ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756290"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585084"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -30,7 +30,7 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
 LUIS 向けの新しい作成リソースまたはクエリ予測リソースを作成するたびに、LUIS アプリにそのリソースを割り当てる必要があります。 割り当てた後は、新しいリソースを作成しない限り、この手順をもう一度実行する必要はありません。 ご自分のアプリのリージョンを拡張したり、より多くの予測クエリをサポートしたりする場合に、新しいリソースを作成します。
 
-1. [プレビュー LUIS ポータル](https://preview.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
 
 1. 右上のメニューの **[管理]** を選択し、 **[Azure リソース]** を選択します。
 
@@ -59,7 +59,7 @@ LUIS 向けの新しい作成リソースまたはクエリ予測リソースを
 
 ## <a name="prediction-endpoint-request"></a>予測エンドポイントの要求
 
-プレビュー ポータルでは、URL の末尾の `query=` は、GET 要求に対してユーザーの発話を追加する場所です。 `query=` の後に、前のクイック スタートの最後に使用したのと同じユーザーの発話を入力します。
+ポータルでは、URL の末尾の `query=` は、GET 要求に対してユーザーの発話を追加する場所です。 `query=` の後に、前のクイック スタートの最後に使用したのと同じユーザーの発話を入力します。
 
 ```Is there a form named hrf-234098```
 

@@ -2,19 +2,17 @@
 title: LUIS ポータルでアプリをテストする
 description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: ba7e23a72cd308dd4393bf9a581571e2bc9f5fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/07/2020
+ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218741"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591864"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 
 アプリの[テスト](luis-concept-test.md)は反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -24,13 +22,16 @@ ms.locfileid: "79218741"
 
 ## <a name="train-before-testing"></a>テストの前にトレーニングする
 
-アクティブなアプリの最新バージョンに対してテストを行うには、テストの前に、上部のメニューから **[トレーニング]** を選択します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. アクティブなアプリの最新バージョンに対してテストを行うには、テストの前に、上部のメニューから **[トレーニング]** を選択します。
 
 ## <a name="test-an-utterance"></a>発話のテスト
 
 テストの発話は、アプリでの発話の例とまったく同じにすることはできません。 テストの発話には、ユーザーが使用すると予想される単語の選択、語句の長さ、エンティティの使用法を含める必要があります。
 
-1. **[My Apps]\(マイ アプリ\)** ページでご自身のアプリの名前を選択して、アプリにアクセスします。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 
 1. スライド式の **[Test]\(テスト\)** パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。
 

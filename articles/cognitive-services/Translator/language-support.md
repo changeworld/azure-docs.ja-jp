@@ -1,7 +1,7 @@
 ---
-title: 言語サポート - Translator Text API
+title: 言語のサポート - Translator
 titleSuffix: Azure Cognitive Services
-description: Translator Text API では、Neural Machine Translation (NMT) を利用したテキスト対テキストの翻訳で、以下の言語をサポートしています。
+description: Cognitive Services Translator では、Neural Machine Translation (NMT) を利用したテキスト対テキストの翻訳で、以下の言語をサポートしています。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684826"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592731"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
+# <a name="language-and-region-support-for-translator"></a>Translator の言語とリージョンのサポート
 
-Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。
+Translator では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
 
 [機械翻訳の詳細](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>翻訳
 
-**V2 Translator API**
+**V2 Translator**
 
 > [!NOTE]
 > V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。
@@ -35,7 +35,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 * ニューラルが既定: ニューラルが既定の翻訳システムです。 Microsoft Translator Hub 用の統計システムにアクセスするには、パラメーター `category=smt` を使用します。
 * ニューラルのみ: 利用できるのはニューラル翻訳のみです。
 
-**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。
+**V3 Translator** V3 Translator は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。
 
 > [!NOTE]
 > 現在、ニューラル言語のサブセットはカスタム翻訳ツールで利用することができ、Mcrosoft では、段階的に内容を追加しています。 [カスタム翻訳ツールで現在利用できる言語をご確認ください](#customization)。
@@ -100,7 +100,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |セルビア語 (キリル)|    `sr-Cyrl`|  統計|
 |セルビア語 (ラテン)|   `sr-Latn`       |統計|
 |スロバキア語|    `sk`    |   ニューラル|
-|スロベニア語 | `sl`    |   ニューラル|
+|スロベニア語| `sl`    |   ニューラル|
 |スペイン語|   `es`    |   ニューラル|
 |スウェーデン語|   `sv`    |ニューラル|
 |タヒチ語|  `ty`    |統計|
@@ -191,7 +191,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | ロシア語      | `ru`          |
 | セルビア語 (ラテン)      | `sr-Latn`          |
 | スロバキア語     | `sk`          |
-| スロベニア語       | `sl`          |
+| スロベニア語      | `sl`          |
 | スペイン語      | `es`          |
 | スウェーデン語      | `sv`          |
 | タミル語      | `ta`          |
@@ -204,12 +204,12 @@ Translator Text API では、テキスト対テキストの翻訳について、
 
 ## <a name="detect"></a>Detect
 
-Translator Text API では、翻訳および音訳に使用できるすべての言語が検出されます。
+Translator では、翻訳および音訳に使用できるすべての言語が検出されます。
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Translator Text API の言語一覧にプログラムでアクセスする
+## <a name="access-the-translator-language-list-programmatically"></a>Translator の言語一覧にプログラムでアクセスする
 
-Languages メソッドを使用して、Translator Text API v3.0 でサポートされている言語の一覧を取得することができます。 機能、言語コード、英語またはサポートされている言語での言語名を条件にリストを表示できます。 リストは、新しい言語が使用できるようになると、Microsoft Translator サービスによって自動的に更新されます。
+Languages メソッドを使用して、Translator v3.0 でサポートされている言語の一覧を取得することができます。 機能、言語コード、英語またはサポートされている言語での言語名を条件にリストを表示できます。 リストは、新しい言語が使用できるようになると、Microsoft Translator サービスによって自動的に更新されます。
 
 [Languages 操作の参照ドキュメント](reference/v3-0-languages.md)
 
@@ -258,7 +258,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | サモア語|   `sm`    |
 | セルビア語 (ラテン)      | `sr-Latn`          |
 | スロバキア語     | `sk`          |
-| スロベニア語       | `sl`          |
+| スロベニア語      | `sl`          |
 | スペイン語      | `es`          |
 | スウェーデン語      | `sv`          |
 | タイ語      | `th`          |
@@ -269,6 +269,6 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web サイトのリストにアクセスする
 
-Microsoft Translator Web サイトでは、Translator Text および Speech API でサポートされているすべての言語を簡単に検索できます。 このリストには、言語コードなどの開発者向け情報は含まれていません。
+Microsoft Translator Web サイトでは、Translator および Speech API でサポートされているすべての言語を簡単に検索できます。 このリストには、言語コードなどの開発者向け情報は含まれていません。
 
 [言語リストを見る](https://www.microsoft.com/translator/languages.aspx)

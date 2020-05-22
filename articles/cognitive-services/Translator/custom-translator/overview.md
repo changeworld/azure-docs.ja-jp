@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982683"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592765"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 
@@ -24,7 +24,7 @@ ms.locfileid: "75982683"
 
 Custom Translator は、36 を超える言語をサポートし、NMT で利用可能な言語に直接マップされています。 完全な一覧については、[Microsoft Translator の言語](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)に関するページを参照してください。
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>特徴
 
 Custom Translator は、カスタム翻訳システムを構築し、その後そのシステムにアクセスするための各種機能を提供します。
 
@@ -34,7 +34,7 @@ Custom Translator は、カスタム翻訳システムを構築し、その後�
 |[ビジネス用語を理解するシステムを構築](what-are-parallel-documents.md)     |  お客様のビジネスや業界で使用されている用語が反映されている対訳ドキュメントを使用して、翻訳システムをカスタマイズおよび構築します。       |
 |[辞書を使用してモデルを構築](what-is-dictionary.md)     |   トレーニング データ セットがない場合は、辞書データのみを使用してモデルをトレーニングすることができます。       |
 |[他の人と共同作業を行う](how-to-manage-settings.md#share-your-workspace)     |   他の人と作業を共有して、チームと共同作業を行います。     |
-|[カスタム翻訳モデルにアクセス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Microsoft Translator Text API V3 を介して、既存のアプリケーション/プログラムからいつでもカスタム翻訳モデルにアクセスできます。       |
+|[カスタム翻訳モデルにアクセス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Translator V3 を介して、既存のアプリケーション/プログラムからいつでもカスタム翻訳モデルにアクセスできます。       |
 
 ## <a name="get-better-translations"></a>より良い翻訳を得る
 
@@ -54,11 +54,11 @@ Custom Translator では、データの収集と準備をより効果的に行�
 
 [Custom Translator](https://portal.customtranslator.azure.ai) は、プログラムを使って、(現在プレビュー段階の) [専用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/) を介してアクセスすることもできます。 ユーザーは、この API を使用して、自分のアプリや Web サービスを通じて定期的なトレーニングの作成と更新を管理できます。
 
-カスタム モデルを使用してコンテンツを翻訳するコストは、ユーザーの Translator Text API の価格レベルに基づきます。 価格レベルの詳細については、Cognitive Services の [Translator Text API の価格に関する Web ページ](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)を参照してください。
+カスタム モデルを使用してコンテンツを翻訳するコストは、ユーザーの Translator の価格レベルに基づきます。 価格レベルの詳細については、Cognitive Services の [Translator の価格に関する Web ページ](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)を参照してください。
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>あらゆるアプリとサービスでいつでもどこでも安全に翻訳する
 
-標準の REST テクノロジを使用して、Microsoft Translator Text API を経由すれば、カスタム システムにシームレスにアクセスできるほか、それをあらゆるデバイス上のすべての製品またはビジネス ワークフローに統合できます。
+標準の REST テクノロジを使用して、Translator を経由すれば、カスタム システムにシームレスにアクセスできるほか、それをあらゆるデバイス上のすべての製品またはビジネス ワークフローに統合できます。
 
 ## <a name="next-steps"></a>次のステップ
 

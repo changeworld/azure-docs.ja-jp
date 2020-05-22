@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3dc58b68270707eb5e92214def85ec8cf9cb3f5b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69907034"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587033"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -158,7 +158,7 @@ Cognitive Services のマルチサービス サブスクリプションを使用
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順は、`AltTranslation()` 関数での `Main` の呼び出しです。 `static void Main(string[] args)` を探して、次の行を追加してください。
+最後の手順は、`Main` 関数での `AltTranslation()` の呼び出しです。 `static void Main(string[] args)` を探して、次の行を追加してください。
 
 ```csharp
 AltTranslation();
@@ -208,7 +208,7 @@ dotnet run
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

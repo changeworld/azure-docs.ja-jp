@@ -2,14 +2,14 @@
 title: LUIS アプリをビルドするためのベスト プラクティス
 description: LUIS アプリのモデルから最良の結果を得るためのベスト プラクティスについて学習します。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382387"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589807"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Language Understanding (LUIS) アプリをビルドするためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。
@@ -31,11 +31,11 @@ LUIS アプリのベスト プラクティスを次に示します。
 
 |次のことを行います|次のことは行わないでください|
 |--|--|
-|[意図を個別に定義する](#do-define-distinct-intents)<br>[意図に記述子を追加する](#do-add-descriptors-to-intents) |[多数の発話の例を意図に追加する](#dont-add-many-example-utterances-to-intents)<br>[少数または単純なエンティティを使用する](#dont-use-few-or-simple-entities) |
+|[意図を個別に定義する](#do-define-distinct-intents)<br>[意図に特徴を追加する](#do-add-features-to-intents) |[多数の発話の例を意図に追加する](#dont-add-many-example-utterances-to-intents)<br>[少数または単純なエンティティを使用する](#dont-use-few-or-simple-entities) |
 |[意図の汎用性と専用性のスイート スポットを見つける](#do-find-sweet-spot-for-intents)|[LUIS をトレーニング プラットフォームとして使用する](#dont-use-luis-as-a-training-platform)|
 |[バージョンを使用してアプリを反復的にビルドする](#do-build-your-app-iteratively-with-versions)<br>[モデル分解のためのエンティティをビルドする](#do-build-for-model-decomposition)|[同じ形式の発話の例を多数追加して、他の形式を無視する](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[後のイテレーションでパターンを追加する](#do-add-patterns-in-later-iterations)|[意図とエンティティの定義を一緒にする](#dont-mix-the-definition-of-intents-and-entities)|
-|None 意図を除く[すべての意図の間で発話のバランスを取る](#balance-your-utterances-across-all-intents)。<br>[発話の例を None 意図に追加する](#do-add-example-utterances-to-none-intent)|[指定できるすべての値で記述子を作成する](#dont-create-descriptors-with-all-the-possible-values)|
+|None 意図を除く[すべての意図の間で発話のバランスを取る](#balance-your-utterances-across-all-intents)。<br>[発話の例を None 意図に追加する](#do-add-example-utterances-to-none-intent)|[指定できるすべての値でフレーズ リストを作成する](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[アクティブ ラーニングの提案機能を活用する](#do-leverage-the-suggest-feature-for-active-learning)|[非常に多くのパターン追加する](#dont-add-many-patterns)|
 |[バッチ テストによりアプリのパフォーマンスを監視する](#do-monitor-the-performance-of-your-app)|[追加されたすべての発話の例でトレーニングして公開する](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -53,9 +53,9 @@ LUIS アプリのベスト プラクティスを次に示します。
 
 `Book a flight` と `Book a hotel` は、`book a ` という同じ語彙を使用します。 この形式は同じであるため、`flight` と `hotel` という異なる単語を抽出されたエンティティとして含む同じ意図として定義する必要があります。
 
-## <a name="do-add-descriptors-to-intents"></a>すべきこと: 意図に記述子を追加する
+## <a name="do-add-features-to-intents"></a>意図に特徴を追加する
 
-記述子は、意図の機能を説明するのに役立ちます。 記述子には、その意図にとって重要な語句リストや、その意図にとって重要なエンティティを指定できます。
+特徴は、意図の概念を説明するものです。 意図には、その意図にとって重要な語句リストや、その意図にとって重要なエンティティを指定できます。
 
 ## <a name="do-find-sweet-spot-for-intents"></a>すべきこと: 意図のスイート スポットを見つける
 LUIS の予測データを使用して、意図が重複していないかどうかを判断します。 意図が重複していると LUIS が混乱します。 その結果、上位スコアの意図と他の意図が非常に近くなります。 LUIS では、トレーニング用のデータから毎回同じパスを使用するわけではないため、重複している意図は、トレーニングで 1 位または 2 位になる可能性があります。 各意図の発話のスコアは、このフリップフロップが発生しないように、それぞれ差をつける必要があります。 意図が適切に区別されていれば、最上位の意図は毎回最上位にくるはずです。
@@ -73,17 +73,22 @@ LUIS の予測データを使用して、意図が重複していないかどう
 * クライアント アプリのユーザーの意図に基づいて**意図**を作成する
 * 実際のユーザー入力に基づいて 15 個から 30 個のサンプル発話を追加する
 * 発話の例の最上位レベルのデータの概念にラベルを付ける
-* データの概念をサブコンポーネントに分割する
-* サブコンポーネントに記述子 (機能) を追加する
-* 意図に記述子 (機能) を追加する
+* データの概念をサブエンティティに分割する
+* サブエンティティに特徴を追加する
+* 意図に特徴を追加する
 
 意図を作成して発話の例を追加したところで、次の例でエンティティの分解について説明します。
 
-まず、発話を使用して抽出する完全なデータの概念を特定します。 これは、指定した機械学習エンティティです。 次に、そのフレーズをパーツに分解します。 これには、サブコンポーネントを (エンティティとして) 識別子や制約と共に識別することが含まれます。
+まず、発話を使用して抽出する完全なデータの概念を特定します。 これは、指定した機械学習エンティティです。 次に、そのフレーズをパーツに分解します。 これには、サブエンティティの識別と特徴が含まれます。
 
-たとえば、住所を抽出する場合の最上位の機械学習エンティティは、`Address` と呼ばれることがあります。 住所の作成時に、番地、市区町村、都道府県、郵便番号などのサブコンポーネントを特定します。
+たとえば、住所を抽出する場合の最上位の機械学習エンティティは、`Address` と呼ばれることがあります。 住所の作成時に、番地、市区町村、都道府県、郵便番号などのサブエンティティを特定します。
 
-郵便番号を正規表現に**制約**することで、引き続きそれらの要素を分解します。 住所を (あらかじめ構築された番号を使用して) 番地、通りの名前、通りの種類のパーツに分解します。 通りの種類は、avenue、circle、road、lane など、**記述子**一覧から記述できます。
+これらの要素の分解を次のように続けます。
+* 正規表現エンティティとして郵便番号の必要な特徴を追加します。
+* 住所を次のように複数のパーツに分解します。
+    * 番号の事前構築済みのエンティティに必要な特徴を備えた**番地の番号**。
+    * **通りの名前**。
+    * 通り、広場、道、レーンなどの単語を含むリスト エンティティに必要な特徴を備えた**通りの種類**。
 
 V3 オーサリング API がモデルの分解を可能にします。
 
@@ -145,9 +150,9 @@ LUIS では、意図の発話にバリエーションが必要です。 発話�
 
 飛行機のフライトを予約するボットについては、**BookFlight** 意図を作成します。 すべての航空会社、またはすべての目的地に対して、意図を作成しないでください。 これらのデータ部分を[エンティティ](luis-concept-entity-types.md)として使用し、発話の例でマークします。
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>やってはいけないこと: 指定できるすべての値で記述子を作成する
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>やってはいけないこと: 指定できるすべての値でフレーズ リストを作成する
 
-記述子の[フレーズ リスト](luis-concept-feature.md)には、少数のサンプルを指定します。すべての単語は指定しないでください。 LUIS で汎用化が行われ、コンテキストが考慮されます。
+[フレーズ リスト](luis-concept-feature.md)には数個の例を提供します。すべての単語またはフレーズではありません。 LUIS で汎用化が行われ、コンテキストが考慮されます。
 
 ## <a name="dont-add-many-patterns"></a>やってはいけないこと: 多数のパターンを追加する
 

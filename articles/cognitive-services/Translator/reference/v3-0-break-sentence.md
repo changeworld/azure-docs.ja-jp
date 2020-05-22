@@ -1,7 +1,7 @@
 ---
-title: Translator Text API の BreakSentence メソッド
+title: Translator の BreakSentence メソッド
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の BreakSentence メソッドでは、文章内で文の境界の位置が識別されます。
+description: Translator の BreakSentence メソッドでは、文章内で文の境界の位置が識別されます。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76548120"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588634"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
+# <a name="translator-30-breaksentence"></a>Translator 3.0:BreakSentence
 
 文章内で文の境界の位置を識別します。
 
@@ -69,13 +69,13 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 正常な応答は、入力配列内の文字列ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `sentLen`: テキスト要素内の文の長さを表す整数の配列です。 配列の長さは文の数であり、値は各文の長さです。 
+  * `sentLen`:テキスト要素内の文の長さを表す整数の配列です。 配列の長さは文の数であり、値は各文の長さです。 
 
-  * `detectedLanguage`: 次のプロパティによって、検出された言語を説明するオブジェクトです。
+  * `detectedLanguage`:次のプロパティによって、検出された言語を説明するオブジェクトです。
 
-     * `language`: 検出された言語のコードです。
+     * `language`:検出された言語のコードです。
 
-     * `score`: 結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
+     * `score`:結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
      
     `detectedLanguage` プロパティは、言語の自動検出が要求された場合に限り、結果オブジェクト内に存在することに注意してください。
 
@@ -141,7 +141,7 @@ JSON 応答の例を次に示します。
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で、一般的なエラー コードを確認できます。 
 
 ## <a name="examples"></a>例
 

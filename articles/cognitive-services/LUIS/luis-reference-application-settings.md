@@ -2,34 +2,29 @@
 title: アプリケーションの設定 - LUIS
 description: Azure Cognitive Services の言語を理解するアプリのアプリケーション設定は、アプリとポータルに格納されています。
 ms.topic: reference
-ms.date: 04/14/2020
-ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/04/2020
+ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382205"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590989"
 ---
-# <a name="application-settings"></a>アプリケーションの設定
+# <a name="app-and-version-settings"></a>アプリとバージョンの設定
 
-これらのアプリケーション設定は、REST API を使用して [exported](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) アプリと [updated](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) に格納されます。 アプリのバージョン設定を変更すると、アプリのトレーニング状態がトレーニングなしにリセットされます。
+これらの設定は[エクスポートされた](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)アプリに格納され、REST API または LUIS ポータルを使用して更新されます。
 
-分音記号と句読点の[概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)について説明します。
+アプリのバージョン設定を変更すると、アプリのトレーニング状態がトレーニングなしにリセットされます。
 
-|設定|既定値|Notes|
-|--|--|--|
-|NormalizePunctuation|True|句読点を削除します。|
-|NormalizeDiacritics|True|分音文字を削除します。|
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+
+
+テキストのリファレンスと例を次に示します。
+
+* [句読点](#punctuation-normalization)
+* [分音記号](#diacritics-normalization)
 
 ## <a name="diacritics-normalization"></a>分音文字の正規化
-
-LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化をオンにするには、`settings` パラメーターを使用します。
-
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
 
 次の発話は、分音記号の正規化が発話に与える影響を示しています。
 
@@ -133,16 +128,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>句読点の正規化
-
-LUIS JSON アプリ ファイルに対して、句読点の発話の正規化をオンにするには、`settings` パラメーターを使用します。
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-]
-```
 
 次の発話は、句読点が発話に与える影響を示しています。
 

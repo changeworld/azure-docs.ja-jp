@@ -1,7 +1,7 @@
 ---
-title: 文字数カウント - Translator Text API
+title: 文字数カウント - Translator
 titleSuffix: Azure Cognitive Services
-description: この記事では、コンテンツの取り込み方法が理解できるように、Azure Cognitive Services Translator Text API で文字数をカウントする方法について説明します。
+description: この記事では、コンテンツの取り込み方法を理解できるように、Azure Cognitive Services の Translator で文字数をカウントする方法について説明します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0219940a4ac60e4a6187d13802c36e8bff1925b3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73888153"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587325"
 ---
-# <a name="how-the-translator-text-api-counts-characters"></a>Translator Text API の文字数のカウント方法
+# <a name="how-the-translator-counts-characters"></a>Translator での文字数のカウント方法
 
-Translator Text API は、入力テキストのすべての Unicode コード ポイントを文字としてカウントします。 テキストの言語への各翻訳は、複数の言語に翻訳する 1 つの API 呼び出し要求されたものであっても、個別の翻訳としてカウントされます。 応答の長さは関係ありません。
+Translator では、入力テキストのすべての Unicode コード ポイントを文字としてカウントします。 テキストの言語への各翻訳は、複数の言語に翻訳する 1 つの API 呼び出し要求されたものであっても、個別の翻訳としてカウントされます。 応答の長さは関係ありません。
 
 カウントされるもの:
 
-* 要求の本文内の Translator Text API に渡されるテキスト
+* 要求の本文内の Translator に渡されるテキスト
    * Translate、Transliterate、Dictionary Lookup の各メソッドを使用する場合の `Text`
    * Dictionary Examples メソッドを使用する場合の `Text` と `Translation`
 * すべてのマークアップ:要求本文のテキスト フィールド内の HTML タグ、XML タグなど。 要求のビルドに使用される JSON 表記 ("Text:" など) はカウントされません。
@@ -33,11 +33,10 @@ Translator Text API は、入力テキストのすべての Unicode コード �
 * Unicode で定義されているすべてのコード ポイント
 * 以前に同じテキストを翻訳した場合でも、繰り返しの翻訳
 
-中国語や日本語の漢字などの表意文字に基づくスクリプトの場合、Translator Text API では Unicode コード ポイントの数 (表意文字につき 1 文字) が引き続きカウントされます。 例外:Unicode サロゲートは 2 文字としてカウントされます。
+中国語や日本語の漢字などの表意文字に基づくスクリプトでも、Translatorでは Unicode コード ポイントの数 (表意文字につき 1 文字) が引き続きカウントされます。 例外:Unicode サロゲートは 2 文字としてカウントされます。
 
 要求、単語、バイト、または文章の数は、文字数とは関係ありません。
 
 Detect メソッドと BreakSentence メソッドへの呼び出しは、文字消費においてカウントされません。 ただし、Detect メソッドと BreakSentence メソッドへの呼び出しは、カウントされる他の関数の使用に対して妥当な割合となっていることが求められます。 Detect または BreakSentence の呼び出しの数が、他のカウントされるメソッドの 100 倍を超えた場合に、Microsoft は Detect メソッドと BreakSentence メソッドの使用を制限する権利を留保します。
 
-
-文字数のカウントの詳細については、[Microsoft Translator に関する FAQ](https://www.microsoft.com/en-us/translator/faq.aspx) を参照してください。
+文字数のカウントの詳細については、「[Translator に関する FAQ](https://www.microsoft.com/en-us/translator/faq.aspx)」を参照してください。

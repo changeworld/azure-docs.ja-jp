@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:サポートされている言語の一覧を取得する - Translator Text API
+title: クイック スタート:サポートされている言語の一覧を取得する - Translator
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
+description: このクイック スタートでは、Translator を使った翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: d992fcec6071ea9883f2db61d6c54f41a9615867
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: bfb8b9d81496d10601bf6e6cfeb26d18b57e3eca
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525143"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586882"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>クイック スタート:Translator Text API を使用してサポートされている言語の一覧を取得する
+# <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>クイック スタート:Translator を使用してサポートされている言語の一覧を取得する
 
-このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
+このクイック スタートでは、Translator を使った翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/languages-csharp.md)]

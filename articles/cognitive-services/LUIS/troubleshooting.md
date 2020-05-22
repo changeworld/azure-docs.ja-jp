@@ -2,14 +2,14 @@
 title: よく寄せられる質問 (FAQ) - LUIS
 description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101112"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592850"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -66,7 +66,7 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>発話の例では、自分のカスタム エンティティではなく事前構築済みのエンティティにタグ付けされています。 これをどのように修正すればよいですか?
 
-LUIS ポータルでは、抽出するエンティティのテキストにラベルを付けることができます。 LUIS ポータルに正しいエンティティ予測が表示されない場合は、さらに発話を追加し、テキスト内でそのエンティティにラベルを付けるか、記述子 (機能など) を追加する必要があることがあります。
+LUIS ポータルでは、抽出するエンティティのテキストにラベルを付けることができます。 LUIS ポータルに正しいエンティティ予測が表示されない場合は、必要に応じて、さらに発話を追加し、テキスト内でそのエンティティにラベルを付けるか、特徴を追加します。
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>アプリまたはバージョン ファイルをインポートしようとしましたが、エラーが発生しました。なぜでしょうか?
 

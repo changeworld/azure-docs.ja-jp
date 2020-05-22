@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:文の長さを取得する - Translator Text API
+title: クイック スタート:文の長さを取得する - Translator
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Translator Text API を使用して文の長さを調べる方法について説明します。
+description: このクイック スタートでは、Translator を使用して文の長さを調べる方法について説明します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: b2569859a039739f2804a180be44e621421f0cd2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ca468993798c02c02380eeac7f68e4d3504ec1d8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525116"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586746"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>クイック スタート:Translator Text API を使用して文の長さを調べる
+# <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>クイック スタート:Translator を使用して文の長さを調べる
 
-このクイック スタートでは、Translator Text API を使用して文の長さを調べる方法について説明します。
+このクイック スタートでは、Translator を使用して文の長さを調べる方法について説明します。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/sentences-csharp.md)]

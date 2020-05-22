@@ -2,13 +2,13 @@
 title: チュートリアル:問題を見つけるためのバッチ テスト - LUIS
 description: このチュートリアルでは、バッチ テストを使用して、Language Understanding (LUIS) アプリの品質を検証する方法について説明します。
 ms.topic: tutorial
-ms.date: 03/02/2020
-ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/07/2020
+ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78250550"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592595"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>チュートリアル:バッチ テスト用のデータセット
 
@@ -41,7 +41,9 @@ ms.locfileid: "78250550"
 
 1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true)をダウンロードして保存します。
 
-1. [プレビューの LUIS ポータル](https://preview.luis.ai/)を使用して、新しいアプリに JSON をインポートし、`Pizza app` という名前を付けます。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. JSON を新しいアプリにインポートし、アプリに `Pizza app` という名前を付けます。
+
 
 1. ナビゲーションの右上隅にある **[Train]\(トレーニング\)** を選択して、アプリのトレーニングを行います。
 

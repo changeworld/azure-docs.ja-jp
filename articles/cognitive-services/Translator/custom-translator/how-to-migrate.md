@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446779"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587001"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -80,9 +80,9 @@ ms.locfileid: "75446779"
 
 4. 次のページで、以下の 2 つのオプションのいずれかを選択します。
 
-    a. Deployed Trainings only (デプロイされたトレーニングのみ): このオプションを選択すると、デプロイされたシステムと関連するドキュメントのみが移行されます。
+    a. Deployed Trainings only (デプロイされたトレーニングのみ): このオプションを選択すると、お客様のデプロイされたシステムと関連するドキュメントのみが移行されます。
 
-    b. All Successful Trainings (成功したすべてのトレーニング): このオプションを選択すると、すべての成功したトレーニングと関連するドキュメントが移行されます。
+    b. All Successful Trainings (成功したすべてのトレーニング): このオプションを選択すると、成功したすべてのトレーニングと関連するドキュメントが移行されます。
 
     c. Custom Translator の移行先のワークスペース ID を入力します。
 
@@ -108,7 +108,7 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 
 2. Migrated On (移行日): 移行の日付とタイム スタンプ
 
-3. プロジェクト: 移行が要求されたプロジェクトの数と、正常に移行されたプロジェクトの数。
+3. プロジェクト:移行が要求されたプロジェクトの数と、正常に移行されたプロジェクトの数。
 
 4. トレーニング: 移行が要求されたトレーニングの数と、正常に移行されたトレーニングの数。
 
@@ -146,4 +146,4 @@ Microsoft Translator 用の新しい言語システムの作成に取り組ん�
 ## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングします](how-to-train-model.md)。
-- [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。

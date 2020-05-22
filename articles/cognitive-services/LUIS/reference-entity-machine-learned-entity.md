@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75552000"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585591"
 ---
 # <a name="machine-learned-entity"></a>機械学習エンティティ
 
@@ -38,7 +38,7 @@ ms.locfileid: "75552000"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
-機械学習エンティティには、制約や記述子を持つ多数のサブコンポーネントを含めることができるため、これは一例にすぎません。 エンティティによって返される内容のガイドと考えてください。
+機械学習エンティティには、必須特徴量を持つ多数のサブエンティティを含めることができるため、これは一例にすぎません。 エンティティによって返される内容のガイドと考えてください。
 
 次のクエリを考えてみます。
 

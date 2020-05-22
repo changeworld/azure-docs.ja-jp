@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0413c15c025e554ab8465736dfdb5607149c5ed2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836594"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588685"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>カスタム翻訳ツールに関してよく寄せられる質問
 
@@ -41,7 +41,7 @@ ms.locfileid: "73836594"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>デプロイされたシステムにアクセスする方法を教えてください。
 
-デプロイされたシステムには、Microsoft Translator Text API V3 を介して CategoryID を指定することでアクセスできます。 Translator Text API の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
+デプロイされたシステムには、Microsoft Translator V3 を介して CategoryID を指定することでアクセスできます。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>データに文が既にアラインされている場合に、アラインと文の分割をスキップする方法を教えてください。
 

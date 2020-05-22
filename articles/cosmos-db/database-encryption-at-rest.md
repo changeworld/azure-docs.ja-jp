@@ -5,20 +5,20 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: db20388b5277e000ffe7055e9840742d6af7788e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062598"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592136"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの暗号化 
 
 保存時の暗号化という語句は、一般的にはソリッド ステート ドライブ (SSD) やハード ディスク (HDD) などの不揮発性メモリ デバイスでデータを暗号化することを意味します。 Cosmos DB では、プライマリ データベースを SSD に保存します。 そのメディア添付ファイルとバックアップは Azure Blob ストレージに保存され、このストレージは通常 HDD でバックアップされます。 Cosmos DB の保存時の暗号化のリリースにより、すべてのデータベース、メディア添付ファイル、バックアップが暗号化されます。 データの転送中 (ネットワーク経由) と保存時 (非揮発性メモリ) にデータが暗号化されることで、エンド ツー エンドの暗号化が実現しました。
 
-PaaS サービスである Cosmos DB は、非常に簡単に使用できます。 Cosmos DB に保存されているすべてのユーザー データは、保存時と転送時に暗号化されているため、操作は何も必要ありません。 つまり、保存時の暗号化機能は、既定で "オン" になっています。 オンまたはオフにするコントロールはありません。 Azure Cosmos DB では、アカウントが実行されているすべてのリージョンで AES 256 暗号化が使われます。 [可用性とパフォーマンスの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) を引き続き満たしながら、この機能を提供します。
+PaaS サービスである Azure Cosmos DB は使用方法がとても簡単です。 Azure Cosmos DB に保存されているすべてのユーザー データは、保存時と転送時に暗号化されているため、操作は何も必要ありません。 つまり、保存時の暗号化機能は、既定で "オン" になっています。 オンまたはオフにするコントロールはありません。 Azure Cosmos DB では、アカウントが実行されているすべてのリージョンで AES 256 暗号化が使われます。 [可用性とパフォーマンスの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) を引き続き満たしながら、この機能を提供します。 Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (サービス マネージド キー) を使用して自動的かつシームレスに暗号化されます。 必要に応じて、[カスタマー マネージド キー](how-to-setup-cmk.md)の記事で説明されているように、独自のキーを使用して 2 つ目の暗号化レイヤーを追加することもできます。
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Azure Cosmos DB に保存時の暗号化の実装
 
@@ -59,5 +59,6 @@ A:エミュレーターは、スタンドアロンの開発/テスト ツール�
 
 ## <a name="next-steps"></a>次のステップ
 
-Cosmos DB のセキュリティと最新の機能強化の概要については、[Azure Cosmos データベースのセキュリティ](database-security.md)に関するページを参照してください。
-マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+* 独自のキーを使用して 2 つ目の暗号化レイヤーを追加することもできます。詳細については、[カスタマー マネージド キー](how-to-setup-cmk.md)の記事を参照してください。
+* Cosmos DB のセキュリティと最新の機能強化の概要については、[Azure Cosmos データベースのセキュリティ](database-security.md)に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。

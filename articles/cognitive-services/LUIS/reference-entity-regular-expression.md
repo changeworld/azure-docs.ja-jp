@@ -1,21 +1,14 @@
 ---
 title: 正規表現エンティティ型 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 生の発話テキストには正規表現をお勧めします。 大文字小文字とカルチャのバリアントは無視されます。  正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74841219"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585608"
 ---
 # <a name="regular-expression-entity"></a>正規表現エンティティ
 
@@ -106,4 +99,7 @@ ms.locfileid: "74841219"
 
 ## <a name="next-steps"></a>次のステップ
 
-この[チュートリアル](tutorial-regex-entity.md)では、**正規表現**エンティティを使用して、発話から一貫した形式のデータを抽出するアプリを作成します。
+エンティティの詳細を確認します。
+
+* [概念](luis-concept-entity-types.md)
+* [作成方法](luis-how-to-add-entities.md)

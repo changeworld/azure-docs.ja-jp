@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:2 か国語辞書で単語を検索する - Translator Text API
+title: クイック スタート:2 か国語辞書で単語を検索する - Translator
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
+description: このクイックスタートでは、Translator を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: fe2f4f2bea52650c2baa2ac3380b5b92f01c15eb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525160"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587030"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>クイック スタート:2 か国語辞書で単語を検索する
 
-このクイックスタートでは、Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
+このクイックスタートでは、Translator を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/dictionary-csharp.md)]

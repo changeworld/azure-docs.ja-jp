@@ -1,5 +1,5 @@
 ---
-title: 記述子 - LUIS
+title: フィーチャー - LUIS
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) を使用して、カテゴリやパターンがある意図およびエンティティの検出または予測を改善できるアプリ フィーチャーを追加します
 services: cognitive-services
@@ -9,53 +9,49 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 7560fdcbfc77ea2655e8af641794478ead4c11c7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631456"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592306"
 ---
-# <a name="use-descriptors-to-boost-signal-of-word-list"></a>記述子を使用して単語リストのシグナルをブーストする
+# <a name="use-features-to-boost-signal-of-word-list"></a>特徴を使用して単語リストのシグナルをブーストする
 
 LUIS アプリにフィーチャーを追加して、その精度を向上させることができます。 フィーチャーは、特定の単語やフレーズがアプリ領域のボキャブラリの一部であるというヒントを提供することで、LUIS を助けます。
 
-[記述子](luis-concept-feature.md)には、同じように処理する必要がある、同じクラスに属している値 (単語またはフレーズ) のグループが含まれています (都市名、製品名など)。 LUIS がそのうちの 1 つについて学習した内容が、他のすべてに自動的に適用されます。 このリストは、一致した単語の[リスト エンティティ](reference-entity-list.md) (テキストの完全一致) と同じものではありません。
+特徴を使用するタイミングと理由を理解するために、[概念](luis-concept-feature.md)を確認してください。
 
-記述子は、それらの単語に関する LUIS に対する 2 番目のシグナルとして、アプリ ドメインのボキャブラリを増強します。
+## <a name="add-phrase-list-as-a-feature"></a>フレーズ リストを特徴として追加する
 
-[機能の概念](luis-concept-feature.md)を確認して、どのような場合に、どのような理由で記述子を使用するかを理解します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. **[ビルド]** を選択し、アプリの左側のパネルで **[特徴]** を選択します。
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+1. **[特徴]** ページで **[+ 作成]** を選択します。
 
-## <a name="add-descriptor"></a>Descriptors\(記述子\)の追加
-
-1. **[My Apps]\(マイ アプリ\)** ページでアプリの名前をクリックしてアプリを開き、 **[Build]\(ビルド\)** をクリックし、アプリの左パネルで **[Descriptors]\(記述子\)** をクリックします。
-
-1. **[Descriptors]\(記述子\)** ページで、 **[+ Add Descriptor]\(+ 記述子の追加\)** をクリックします。
-
-1. **[Create new phrase list descriptor]\(新しいフレーズ リスト記述子の作成\)** ダイアログ ボックスで、記述子の名前を入力します (`Cities` など)。 **[Value]\(値\)** ボックスに記述子の値を入力します (`Seattle` など)。 値は一度に 1 つずつ入力することも、コンマで区切った値のセットを入力することもできます。入力したら **Enter** キーを押します。
+1. **[Create new phrase list feature]\(新しいフレーズ リストの特徴の作成\)** ダイアログ ボックスで、`Cities` などの名前を入力します。 **[値]** ボックスに、`Seattle` などの市区町村の例を入力します。 値は一度に 1 つずつ入力することも、コンマで区切った値のセットを入力することもできます。入力したら **Enter** キーを押します。
 
     > [!div class="mx-imgBorder"]
-    > ![記述子 Cities の追加](./media/luis-add-features/add-phrase-list-cities.png)
+    > ![特徴 (フレーズ リスト) の市区町村を追加するスクリーンショット](./media/luis-add-features/add-phrase-list-cities.png)
 
-    LUIS に十分な値を入力すると、提案が表示されます。 提案されたすべての値を **[+ Add all]\(すべて追加\)** で追加するか、個々の用語を選択することができます。
+    LUIS に十分な値を入力すると、提案が表示されます。 提案されたすべての値を **[+ すべて追加]** で追加するか、個々の用語を選択することができます。
 
-1. 追加される Descriptors\(記述子\) の値が、入れ替えて使用できる代替値である場合、 **[These values are interchangeable]\(これらの値は交換可能です\)** をオンのままにします。
+1. フレーズを交換して使用できる場合は、 **[これらの値はどれを使っても問題ありません]** をオンのままにします。
 
-1. 語句リストは **グローバル**設定を使用してアプリ全体に適用したり、特定のモデル (意図またはエンティティ) に適用したりできます。 インテントまたはエンティティからの _Descriptors\(記述子\)_ として語句リストを作成した場合、トグルは [グローバルではない] に設定されます。 この場合、トグルは、Descriptors\(記述子\) がそのモデルのみの機能であることを意味するため、アプリケーションに対しては _グローバルではない_ ということになります。
+1. 語句リストは **グローバル**設定を使用してアプリ全体に適用したり、特定のモデル (意図またはエンティティ) に適用したりできます。 フレーズ リストを作成する場合、意図またはエンティティの "_特徴_" として、トグルはグローバルに設定されません。 この場合、トグルの意味は、特徴がそのモデルに対してのみローカルであり、そのため、アプリケーションに対しては "_グローバルではない_" ということです。
 
-1. **[Done]** を選択します。 新しい記述子が **[Descriptors]\(記述子\)** ページに追加されます。
+1. **[Done]** を選択します。 新しい特徴は **[ML の特徴]** ページに追加されます。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Descriptors\(記述子\) の削除や非アクティブ化は、 **[Descriptors]\(記述子\)** ページのコンテキスト ツール バーから行うことができます。
+> 語句一覧の削除や非アクティブ化は､ **[ML の特徴]** ページのコンテキスト ツールバーから行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-記述子を追加、編集、削除、または非アクティブ化した後、もう一度[アプリのトレーニングとテスト](luis-interactive-test.md)を行って、パフォーマンスが改善するかどうかを確認します。
+特徴を追加、編集、削除、または非アクティブ化した後、もう一度[アプリのトレーニングとテスト](luis-interactive-test.md)を行って、パフォーマンスが改善するかどうかを確認します。

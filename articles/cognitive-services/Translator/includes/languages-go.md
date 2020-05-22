@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: edde734409d064f1bff0212a1cbaecf136206772
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906963"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586879"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -34,9 +34,9 @@ import (
 
 ## <a name="create-the-main-function"></a>main 関数を作成する
 
-アプリケーションの main 関数を作成しましょう。 コードが 1 行だけであることがわかります。 これは、Translator Text 用にサポートされている言語の一覧を取得して印刷するための 1 つの関数を作成しているためです。
+アプリケーションの main 関数を作成しましょう。 コードが 1 行だけであることがわかります。 これは、Translator 用にサポートされている言語の一覧を取得して印刷するための 1 つの関数を作成しているためです。
 
-このサンプルは、環境変数 `TRANSLATOR_TEXT_ENDPOINT` から Translator Text のエンドポイントを読み取ることを試みます。 環境変数を使い慣れていない場合は、`endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+このサンプルは、環境変数 `TRANSLATOR_TEXT_ENDPOINT` から Translator のエンドポイントを読み取ることを試みます。 環境変数を使い慣れていない場合は、`endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
 
 このコードをプロジェクトにコピーします。
 
@@ -76,11 +76,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
 
 ## <a name="build-the-request"></a>要求を作成する
 
-要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator Text API を呼び出すことができます。
+要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator を呼び出すことができます。
 
 ```go
 // Build the HTTP GET request
@@ -91,7 +91,7 @@ if err != nil {
 // Add required headers
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -117,7 +117,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
+これで、Translator を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
 
 ```console
 go run get-languages.go
@@ -217,7 +217,7 @@ go run get-languages.go
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a263e7e17cda64a8519bab215f97fdf26e88d9d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402240"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589654"
 ---
-# <a name="improve-synthesis-with-audio-content-creation"></a>Audio Content Creation を使用して合成を向上させる
+# <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
 [Audio Content Creation](https://aka.ms/audiocontentcreation) は、Microsoft のテキスト読み上げ出力をご使用のアプリやと製品に合わせてカスタマイズしたり微調整したりするためのオンライン ツールです。 このツールを使用すると、パブリックの音声やカスタム音声をより正確で自然な表現にするために微調整したり、クラウドでの出力を管理したりすることができます。
 
@@ -25,28 +25,26 @@ Audio Content Creation ツールは、[音声合成マークアップ言語 (SSM
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
-以下の図は、カスタマイズされた音声テキスト変換の出力をチューニングおよびエクスポートするために必要な手順を示しています。 それぞれのステップの詳細については、下のリンクを使用してください。
+次の図に、テキスト読み上げの出力を微調整するための手順を示します。 それぞれのステップの詳細については、下のリンクを使用してください。
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. 最初の手順は、[Azure アカウントの作成、Speech リソースの登録、サブスクリプション キーの取得](#create-a-speech-resource)です。 サブスクリプション キーを取得したら、それを使用して Speech サービスを呼び出したり、[Audio Content Creation](https://aka.ms/audiocontentcreation) にアクセスしたりすることができます。
-2. プレーンテキストまたは SSML を使用して[音声チューニング ファイルを作成](#create-an-audio-tuning-file)します。
-3. チューニングする音声と言語を選択します。 Audio Content Creation には、すべての [Microsoft テキスト読み上げ音声](language-support.md#text-to-speech)が含まれています。 標準、ニューラル、または独自のカスタム音声を使用できます。
+1. 開始するには、[Azure アカウントと音声リソースを設定](#set-up-your-azure-account-and-speech-resource)します。
+2. プレーン テキストまたは SSML スクリプトを使用して、[音声チューニング ファイルを作成](#create-an-audio-tuning-file)します。
+3. スクリプトの内容の音声と言語を選択します。 Audio Content Creation には、すべての [Microsoft テキスト読み上げ音声](language-support.md#text-to-speech)が含まれています。 標準、ニューラル、または独自のカスタム音声を使用できます。
    >[!NOTE]
    > カスタム ニューラル音声には、ゲート アクセスを使用できます。これにより、自然な音声と同じような高品位の音声を作成できます。 詳細については、[ゲート プロセス](https://aka.ms/ignite2019/speech/ethics)に関するページを参照してください。
 
-4. 既定の結果を確認します。 次に、チューニング ツールを使用して、発音、ピッチ、レート、イントネーション、音声スタイルなどを調整します。 オプションの完全な一覧については、「[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md)」を参照してください。
+4. 既定の合成出力を確認します。 次に、発音、切れ目、高低、速さ、抑揚、音声スタイルなどを調整して、出力を改善します。 オプションの完全な一覧については、「[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md)」を参照してください。 次の[ビデオ](https://youtu.be/mUvf2NbfuYU)で、Audio Content Creation を使用して音声出力を微調整する方法を示します。 
 5. [チューニングした音声を保存してエクスポートします](#export-tuned-audio)。 チューニング トラックをシステムに保存すると、作業を続行して出力を反復処理することができます。 出力に問題がなければ、エクスポート機能を使用して音声作成タスクを作成できます。 エクスポート タスクの状態を監視し、ご使用のアプリや製品で使用するための出力をダウンロードすることができます。
-6. 最後の手順では、ご使用のアプリや製品でカスタムのチューニングされた音声を使用します。
 
-## <a name="create-a-speech-resource"></a>Speech リソースを作成する
+## <a name="set-up-your-azure-account-and-speech-resource"></a>Azure アカウントと音声リソースを設定する
 
-Speech リソースを作成して Speech Studio に接続するには、次の手順に従います。
-
-1. 次の手順に従って、[Azure アカウントにサインアップ](get-started.md#new-resource)し、[Speech リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource)します。 価格レベルが **S0** に設定されていることを確認します。 ニューラル音声のいずれかを使用している場合は、必ず[サポートされているリージョン](regions.md#standard-and-neural-voices)でリソースを作成してください。
-2. [Audio Content Creation](https://aka.ms/audiocontentcreation) にサインインします。
-3. 既存のプロジェクトを選択するか、 **[新規作成]** をクリックします。
-4. 上部のナビゲーションにある **[設定]** オプションを使用すると、いつでもサブスクリプションを変更できます。
+1. Audio Content Creation を操作するには、Azure アカウントが必要です。 Microsoft アカウントを使用して Azure アカウントを作成できます。 次の手順に従って、[Azure アカウントを設定](get-started.md#new-resource)します。 
+2. Azure アカウントに対して[音声リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource)します。 価格レベルが **S0** に設定されていることを確認します。 ニューラル音声のいずれかを使用している場合は、必ず[サポートされているリージョン](regions.md#standard-and-neural-voices)でリソースを作成してください。
+2. Azure アカウントと音声リソースを取得した後、音声サービスを使用して [Audio Content Creation](https://aka.ms/audiocontentcreation) にアクセスできます。
+3. 作業する必要がある音声リソースを選択します。 この時点で新しい音声リソースを作成することもできます。 
+4. 上部のナビゲーションにある **[設定]** オプションを使用して、いつでも音声リソースを変更できます。
 
 ## <a name="create-an-audio-tuning-file"></a>音声チューニング ファイルを作成する
 
@@ -54,21 +52,22 @@ Audio Content Creation ツールにコンテンツを取り込むには、2 つ�
 
 **オプション 1:**
 
-1. [Audio Content Creation](https://aka.ms/audiocontentcreation) にサインインした後、 **[Audio Tuning]\(音声チューニング\)** をクリックして、新しい音声チューニング ファイルを作成します。
-2. 編集ウィンドウが表示されたら、最大 10,000 文字まで入力できます。
+1. 新しい音声チューニング ファイルを作成するには、 **[新しいファイル]** をクリックします。
+2. 編集ウィンドウに内容を入力するか貼り付けます。 各ファイルの文字数は最大 20,000 文字です。 スクリプトが 20,000 文字を超えている場合は、オプション 2 を使用して、内容を複数のファイルに自動的に分割できます。 
 3. 忘れずに保存してください。
 
 **オプション 2:**
 
-1. [Audio Content Creation](https://aka.ms/audiocontentcreation) にサインインした後、 **[アップロード]** をクリックして、1 つまたは複数のテキスト ファイルをインポートします。 プレーンテキストと SSML の両方がサポートされています。
-2. テキスト ファイルをアップロードするときは、コンテンツが以下の要件を満たしていることを確認してください。
+1. 1 つまたは複数のテキスト ファイルをインポートするには、 **[アップロード]** をクリックします。 プレーンテキストと SSML の両方がサポートされています。
+2. スクリプト ファイルが 20,000 文字を超えている場合は、段落、文字、または正規表現によってファイルを分割してください。 
+3. テキスト ファイルをアップロードするときは、ファイルが以下の要件を満たしていることを確認してください。
 
    | プロパティ | 値/備考 |
    |----------|---------------|
    | ファイル形式 | プレーン テキスト (.txt)<br/> SSML テキスト (.txt)<br/> ZIP ファイルはサポートされていません |
    | エンコード形式 | UTF-8 |
    | ファイル名 | 各ファイルには一意の名前が必要です。 重複はサポートされていません。 |
-   | テキストの長さ | テキスト ファイルは 10,000 文字を超えないようにしてください。 |
+   | テキストの長さ | テキスト ファイルは 20,000 文字を超えないようにしてください。 |
    | SSML の制限 | 各 SSML ファイルには、単一の SSML のみを含めることができます。 |
 
 ### <a name="plain-text-example"></a>プレーン テキストの例
@@ -91,7 +90,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 音声出力を確認し、チューニングと調整に問題がなければ、音声をエクスポートできます。
 
-1. 音声作成タスクを作成するには、[Audio Content Creation](https://aka.ms/audiocontentcreation) ツールで **[エクスポート]** をクリックします。
+1. 音声作成タスクを作成するには、 **[エクスポート]** をクリックします。 長時間のオーディオ出力と完全なオーディオ出力エクスペリエンスがサポートされているため、**オーディオ ライブラリにエクスポートする**ことをお勧めします。 ローカル ディスクに音声を直接ダウンロードすることもできますが、使用できるのは最初の 10 分のみです。 
 2. チューニングした音声の出力形式を選択します。 サポートされている形式とサンプル レートの一覧については、以下を参照してください。
 3. タスクの状態は **[Export task]\(エクスポート タスク\)** タブで確認できます。タスクが失敗した場合は、詳細情報のページで詳細なレポートを確認してください。
 4. タスクが完了すると、 **[Audio Library]\(音声ライブラリ\)** タブから音声をダウンロードできるようになります。

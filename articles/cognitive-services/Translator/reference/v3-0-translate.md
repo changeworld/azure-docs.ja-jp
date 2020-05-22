@@ -1,23 +1,23 @@
 ---
-title: Translator Text API の Translate メソッド
+title: Translator の Translate メソッド
 titleSuffix: Azure Cognitive Services
-description: テキストを翻訳するための Azure Cognitive Services Translator Text API の Translate メソッドのパラメーター、ヘッダー、および本文のメッセージについて説明します。
+description: Azure Cognitive Services のテキストを翻訳するための Translator の Translate メソッド用のパラメーター、ヘッダー、および本文のメッセージを理解します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80052393"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584639"
 ---
-# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
+# <a name="translator-30-translate"></a>Translator 3.0:Translate
 
 テキストを翻訳します。
 
@@ -234,7 +234,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で、一般的なエラー コードを確認できます。 
 
 ## <a name="examples"></a>例
 
@@ -454,6 +454,14 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="obtain-alignment-information"></a>アラインメント情報を取得する
 
+アライメントは、ソースのすべての単語について、次の形式の文字列値として返されます。 各単語の情報は、中国語のようなスペースで区切られない言語 (書記法) の場合を含め、スペースで区切られます。
+
+[[SourceTextStartIndex]\:[SourceTextEndIndex]–[TgtTextStartIndex]\:[TgtTextEndIndex]] *
+
+アラインメント文字列は、たとえば、"0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21" のようになります。
+
+言い換えると、コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 つの単語が他の言語では 0 個、1 個、または複数個の単語にアライメントされる場合があり、アライメントされた単語が連続していない場合もあります。 アライメント情報を使用できない場合は、Alignment 要素が空になります。 このメソッドは、その場合にエラーを返しません。
+
 アライメント情報を受信するには、クエリ文字列上で `includeAlignment=true` を指定します。
 
 ```curl
@@ -483,9 +491,10 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 * HTML 形式のテキスト、つまり textType=html の場合、配置は使用できません。
 * アライメントは言語ペアのサブセットに対してのみ返されます。
-  - 英語から他の任意の言語へ
-  - 他の任意の言語から英語へ。ただし、繁体字中国語、繁体字中国語、およびラトビア語から英語については除く
+  - 英語から他の言語へ (繁体字中国語、広東語 (繁体字)、またはセルビア語 (キリル) 以外)、またはその逆。
   - 日本語から韓国語へ、または韓国語から日本語へ
+  - 日本語から簡体字中国語へ、または簡体字中国語から日本語へ。 
+  - 簡体字中国語から繁体字中国語へ、または繁体字中国語から簡体字中国語へ。 
 * 文があらかじめ用意された翻訳である場合、アラインメントは返されません。 あらかじめ用意された翻訳には、"This is a test" や "I love you" など高い頻度で出現する文があります。
 * [こちら](../prevent-translation.md)で説明されているように、翻訳を禁止するためのいずれかのアプローチを適用する場合、アラインメントは使用できません
 
@@ -515,7 +524,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-with-dynamic-dictionary"></a>動的ディクショナリを使用して翻訳する
 
-単語や語句に適用する翻訳があらかじめわかっている場合は、それを要求内でマークアップとして指定することができます。 動的ディクショナリは、固有名詞や製品名のような複合名詞に対してのみ安全に使用できます。
+単語や語句に適用する翻訳があらかじめわかっている場合は、それを要求内でマークアップとして指定することができます。 動的ディクショナリは、人名や製品名などの固有名詞に対してのみ安全に使用できます。
 
 指定するマークアップでは、次の構文を使用します。
 

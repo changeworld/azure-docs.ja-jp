@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c263ed1f18ceaa2db976632ea31b9fe1eb47a93
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 513de6d990884f9abf2378ea208ec1dbe556d397
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69907159"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587166"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>JSON 応答用のクラスを作成する
 
-次は、Translator Text API から返された JSON 応答を逆シリアル化するときに使用されるクラスを作成します。
+次は、Translator から返された JSON 応答を逆シリアル化するときに使用されるクラスを作成します。
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class DetectResult
 {
@@ -191,7 +191,7 @@ Cognitive Services のマルチサービス サブスクリプションを使用
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順は、`DetectTextRequest()` 関数での `Main` の呼び出しです。 `static void Main(string[] args)` を探してこのコードに置き換えます。
+最後の手順は、`Main` 関数での `DetectTextRequest()` の呼び出しです。 `static void Main(string[] args)` を探してこのコードに置き換えます。
 
 ```csharp
 static async Task Main(string[] args)
@@ -270,7 +270,7 @@ Transliteration supported: False.
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

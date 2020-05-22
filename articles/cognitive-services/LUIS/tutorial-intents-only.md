@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:意図の予測 - LUIS
-description: このチュートリアルでは、ユーザーの意図を予測するカスタム アプリを作成します。 このアプリは、メール アドレスや日付などの発話テキストからさまざまなデータ要素を抽出しないため、最も単純な種類の LUIS アプリです。
+description: このチュートリアルでは、発話 (テキスト) に基づいてユーザーの意図を予測するカスタム アプリを作成します。
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/05/2020
+ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80286746"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588952"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -37,7 +37,7 @@ ms.locfileid: "80286746"
 |`ModifyOrder`|ユーザーのピザの注文を決定します。|
 |`Greeting`|ボットの会話を開始します。|
 |`ConfirmOrder`|ピザの注文を確定します。|
-|`None`|アプリによって回答が想定されていないことをユーザーが質問しているかどうかを判定します。 この意図はアプリの作成の一部として指定され (指定した場合)、削除することはできません。 |
+|`None`|LUIS アプリによって回答が想定されていないことをユーザーが質問しているかどうかを判定します。 この意図はアプリの作成の一部として提供され、削除することはできません。 |
 
 ## <a name="create-a-new-app"></a>新しいアプリの作成
 
@@ -64,9 +64,10 @@ ms.locfileid: "80286746"
     |`i need 2 large cheese pizzas 6 large pepperoni pizzas and 1 large supreme pizza`|
     |`Order a pizza for me`|
 
-    ![発話の例を追加する](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
+    > [!div class="mx-imgBorder"]
+    > ![ LUIS ポータルの [Intents]\(意図\) ページに発話例を追加しているスクリーンショット](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    _発話例_を指定することで、この意図に予測される種類の発話を、LUIS にトレーニングできます。
+    _発話例_を指定することで、この意図に予測される種類の発話を、LUIS にトレーニングできます。 これらは、陽性の例です。 他のすべての意図の発話は、この意図にとっては陰性として扱われます。
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -178,6 +179,8 @@ ms.locfileid: "80286746"
 
 ## <a name="client-application-next-steps"></a>クライアント アプリケーションの次の手順
 
+このチュートリアルでは、LUIS アプリを作成し、意図を作成して、各意図に発話例を追加しました。また、None 意図への発話例の追加、トレーニング、発行、およびエンドポイントでのテストを行いました。 これらが、LUIS モデルを構築する基本的な手順です。
+
 LUIS は、JSON 応答を返した後は、この要求の処理を終えています。 LUIS は、ユーザーの発話に対する回答は提供しません。自然言語で、どのような種類の情報が質問されているかを識別するだけです。 会話のフォローアップは、Azure ボットなどのクライアント アプリケーションによって提供されます。
 
 
@@ -193,8 +196,6 @@ LUIS は、JSON 応答を返した後は、この要求の処理を終えてい�
 
 
 ## <a name="next-steps"></a>次のステップ
-
-このチュートリアルでは、LUIS アプリを作成し、意図を作成して、各意図に発話例を追加しました。また、None 意図への発話例の追加、トレーニング、発行、およびエンドポイントでのテストを行いました。 これらが、LUIS モデルを構築する基本的な手順です。
 
 > [!div class="nextstepaction"]
 > [このアプリに分解可能なエンティティを追加する](tutorial-machine-learned-entity.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73647685"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590640"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services のカスタム サブドメイン名
 
@@ -43,7 +43,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 
 リージョン エンドポイントとカスタム サブドメイン名は両方サポートされており、どちらを使用しても変わりはありません。 ただし、完全なエンドポイントが必要です。
 
-リージョン情報は、**Azure portal** のご利用のリソースの [[概要]](https://portal.azure.com) ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
+リージョン情報は、[Azure portal](https://portal.azure.com) のご利用のリソースの **[概要]** ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
 
 ## <a name="are-custom-subdomain-names-regional"></a>カスタム サブドメイン名はリージョン単位ですか?
 
@@ -66,17 +66,17 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 はい。 これは、Azure Cognitive Services リソースで使用できるリージョン エンドポイントの一覧です。
 
 > [!NOTE]
-> Translator Text API と Bing Search API では、グローバル エンドポイントが使用されます。
+> Translator サービスと Bing Search API にはグローバル エンドポイントが使用されます。
 
 | エンドポイントの種類 | リージョン | エンドポイント |
 |---------------|--------|----------|
-| パブリック | グローバル (Translator Text と Bing) | `https://api.cognitive.microsoft.com` |
+| パブリック | グローバル (Translator と Bing) | `https://api.cognitive.microsoft.com` |
 | | オーストラリア東部 | `https://australiaeast.api.cognitive.microsoft.com` |
 | | ブラジル南部 | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | カナダ中部 | `https://canadacentral.api.cognitive.microsoft.com` |
 | | 米国中部 | `https://centralus.api.cognitive.microsoft.com` |
 | | 東アジア | `https://eastasia.api.cognitive.microsoft.com` |
-| | East US | `https://eastus.api.cognitive.microsoft.com` |
+| | 米国東部 | `https://eastus.api.cognitive.microsoft.com` |
 | | 米国東部 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | フランス中部 | `https://francecentral.api.cognitive.microsoft.com` |
 | | インド中部 | `https://centralindia.api.cognitive.microsoft.com` |
@@ -96,7 +96,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 | 中国 | 中国東部 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | 中国北部 | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure Cognitive Services とは](Welcome.md)
 * [認証](authentication.md)

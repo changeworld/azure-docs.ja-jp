@@ -4,20 +4,16 @@ description: Azure Key Vault で Azure Cosmos DB アカウントのカスタマ�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/19/2020
 ms.author: thweiss
-ROBOTS: noindex, nofollow
-ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5629ddfe496ef1abd071ab579c885cbe1adeb344
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450034"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592103"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
-
-> [!NOTE]
-> 現時点では、この機能を使用するにはアクセスを要求する必要があります。 それを行うには、[azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) にお問い合わせください。
 
 Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (**サービス マネージド キー**) を使用して自動的かつシームレスに暗号化されます。 自分で管理するキー (**カスタマー マネージド キー**) を使用する暗号化の 2 番目のレイヤーを追加することもできます。
 
@@ -40,9 +36,13 @@ Azure Cosmos アカウントに格納されているデータは、Microsoft が
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Azure Key Vault インスタンスを構成する
 
-Azure Cosmos DB でカスタマー マネージド キーを使用するには、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスで 2 つのプロパティを設定する必要があります。 これらのプロパティには、 **[論理的な削除]** と **[消去しない]** が含まれます。 これらのプロパティは、既定では有効になっていません。 これらは、PowerShell または Azure CLI のいずれかを使用して有効にします。
+Azure Cosmos DB でカスタマー マネージド キーを使用するには、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスで 2 つのプロパティを設定する必要があります。**論理的な削除**と**消去保護**です。
 
-既存の Azure Key Vault インスタンスでこれらのプロパティを有効にする方法については、次のいずれかの記事の「論理的な削除を有効にする」と「消去保護を有効にする」のセクションを参照してください。
+新しい Azure Key Vault インスタンスを作成する場合は、作成時にこれらのプロパティを有効にします。
+
+![新しい Azure Key Vault インスタンスの論理的な削除と消去保護を有効にする](./media/how-to-setup-cmk/portal-akv-prop.png)
+
+既存の Azure Key Vault インスタンスを使用している場合は、Azure portal の **[プロパティ]** セクションを見て、これらのプロパティが有効であることを確認できます。 これらのプロパティのいずれかが有効になっていない場合は、次のいずれかの記事の「消去保護を有効にする」と「論理的な削除を有効にする」のセクションを参照してください。
 
 - [PowerShell で論理的な削除を使用する方法](../key-vault/general/soft-delete-powershell.md)
 - [Azure CLI で論理的な削除を使用する方法](../key-vault/general/soft-delete-cli.md)
@@ -89,16 +89,16 @@ Azure portal から新しい Azure Cosmos DB アカウントを作成する場�
 
 ![Azure portal での CMK パラメーターの設定](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
-### <a name="using-azure-powershell"></a>Azure PowerShell の使用
+### <a name="using-azure-powershell"></a><a id="using-powershell"></a> Azure PowerShell の使用
 
 PowerShell で新しい Azure Cosmos DB アカウントを作成する場合、次を実行します。
 
 - 前に **PropertyObject** の **keyVaultKeyUri** プロパティでコピーした Azure Key Vault キーの URI を渡します。
 
-- API バージョンとして **2019-12-12** を使用します。
+- API バージョンとして **2019-12-12** 以降を使用します。
 
 > [!IMPORTANT]
-> アカウントがカスタマー マネージド キーで正常に作成されるようにするには、`Location` パラメーターを明示的に設定する必要があります。
+> アカウントがカスタマー マネージド キーで正常に作成されるようにするには、`locations` プロパティを明示的に設定する必要があります。
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -120,16 +120,25 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Location $accountLocation -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
+アカウントが作成されたら、Azure Key Vault キーの URI をフェッチすることで、カスタマー マネージド キーが有効であることを確認できます。
+
+```powershell
+Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    | Select-Object -ExpandProperty Properties `
+    | Select-Object -ExpandProperty keyVaultKeyUri
+```
+
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
 Azure Resource Manager テンプレートを使用して新しい Azure Cosmos アカウントを作成する場合、次を実行します。
 
 - 前に **properties** オブジェクトの **keyVaultKeyUri** プロパティでコピーした Azure Key Vault キーの URI を渡します。
 
-- API バージョンとして **2019-12-12** を使用します。
+- API バージョンとして **2019-12-12** 以降を使用します。
 
 > [!IMPORTANT]
-> アカウントがカスタマー マネージド キーで正常に作成されるようにするには、`Location` パラメーターを明示的に設定する必要があります。
+> アカウントがカスタマー マネージド キーで正常に作成されるようにするには、`locations` プロパティを明示的に設定する必要があります。
 
 ```json
 {
@@ -168,7 +177,6 @@ Azure Resource Manager テンプレートを使用して新しい Azure Cosmos �
         }
     ]
 }
-
 ```
 
 次の PowerShell スクリプトを使用してテンプレートをデプロイします。
@@ -187,9 +195,9 @@ New-AzResourceGroupDeployment `
     -keyVaultKeyUri $keyVaultKeyUri
 ```
 
-### <a name="using-the-azure-cli"></a>Azure CLI の使用
+### <a name="using-the-azure-cli"></a><a id="using-azure-cli"></a> Azure CLI の使用
 
-Azure CLI を使用して新しい Azure Cosmos アカウントを作成する場合は、先に **--key-uri** パラメーターでコピーした Azure Key Vault キーの URI を渡します。
+Azure CLI を使用して新しい Azure Cosmos アカウントを作成する場合は、先に `--key-uri` パラメーターでコピーした Azure Key Vault キーの URI を渡します。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -203,11 +211,30 @@ az cosmosdb create \
     --key-uri $keyVaultKeyUri
 ```
 
+アカウントが作成されたら、Azure Key Vault キーの URI をフェッチすることで、カスタマー マネージド キーが有効であることを確認できます。
+
+```azurecli-interactive
+az cosmosdb show \
+    -n $accountName \
+    -g $resourceGroupName \
+    --query keyVaultKeyUri
+```
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>カスタマー マネージド キーを使用する場合、何からの追加料金は発生しますか?
+### <a name="is-there-an-additional-charge-to-enable-customer-managed-keys"></a>カスタマー マネージド キーを有効にするために追加料金は発生しますか?
 
-はい。 カスタマー マネージド キーでのデータの暗号化と暗号化の解除の管理で増えるコンピューティング負荷に対応するために、Azure Cosmos アカウントに対して実行されるすべての操作に対し 25% 多く[要求ユニット](./request-units.md)が消費されます。
+いいえ、この機能を有効にするためにかかる料金はありません。
+
+### <a name="how-do-customer-managed-keys-impact-capacity-planning"></a>カスタマー マネージド キーは容量計画にどのような影響がありますか?
+
+カスタマー マネージド キーを使用する場合、データベース操作によって使用される[要求ユニット](./request-units.md)は、データの暗号化と復号化を実行するために必要な追加の処理を反映して増加します。 これにより、プロビジョニングされた容量の使用率が若干高くなる可能性があります。 次の表を参考にしてください。
+
+| 操作の種類 | 要求ユニットの増加 |
+|---|---|
+| ポイント読み取り (ID による項目のフェッチ) | + 5%/操作 |
+| 任意の書き込み操作 | + 6%/操作<br/>約 + 0.06 RU/インデックス プロパティ |
+| クエリ、変更フィードの読み取り、または競合フィード | + 15%/操作 |
 
 ### <a name="what-data-gets-encrypted-with-the-customer-managed-keys"></a>カスタマー マネージド キーでどのようなデータが暗号化されますか?
 
@@ -229,9 +256,21 @@ az cosmosdb create \
 
 現時点ではありませんが、コンテナー レベルのキーが検討されています。
 
+### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>Azure Cosmos アカウントでカスタマー マネージド キーが有効かどうかを確認するにはどうすればよいですか?
+
+プログラムで Azure Cosmos アカウントの詳細をフェッチして、`keyVaultKeyUri` プロパティの存在を確認できます。 [PowerShell で](#using-powershell)、また [Azure CLI を使用して](#using-azure-cli)これを行う方法については、上記を参照してください。
+
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>カスタマー マネージド キーはバックアップにどのように影響しますか?
 
 Azure Cosmos DB は、アカウントに格納されているデータの[定期的な自動バックアップ](./online-backup-and-restore.md)を取得します。 この操作では、暗号化されたデータがバックアップされます。 復元されたバックアップを使用するには、バックアップの時点で使用していた暗号化キーが必要です。 つまり、失効されておらず、バックアップの時点で使用していたキーのバージョンが依然有効になっている必要があります。
+
+### <a name="how-do-i-rotate-an-encryption-key"></a>暗号化キーをローテーションするにはどうすればよいですか?
+
+キーのローテーションを実行するには、Azure Key Vault で新しいバージョンのキーを作成します。
+
+![新しいキー バージョンを作成する](./media/how-to-setup-cmk/portal-akv-rot.png)
+
+前のバージョンは、24 時間後、または [Azure Key Vault 監査ログ](../key-vault/general/logging.md)に Azure Cosmos DB からそのバージョンに対するアクティビティが出現しなくなった後に無効にすることができます。
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>暗号化キーを失効させるにはどうすればよいですか?
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:WPF (C#) を使って翻訳アプリを作成する - Translator Text API
+title: チュートリアル:WPF (C#) を使って翻訳アプリを作成する - Translator
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、単一のサブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックを実行するための WPF アプリを作成します。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0d500a7c24538adb139a42924134f784973f496b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118607"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588555"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
-このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Azure Cognitive Service API を利用する [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) アプリを作成します。 具体的には、アプリから Translator Text と [Bing Spell Check](https://azure.microsoft.com/services/cognitive-services/spell-check/) の API を呼び出します。
+このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Azure Cognitive Service API を利用する [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) アプリを作成します。 具体的には、アプリから Translator と [Bing Spell Check](https://azure.microsoft.com/services/cognitive-services/spell-check/) の API を呼び出します。
 
 WPF とは デスクトップ クライアント アプリを作成する UI フレームワークです。 WPF 開発プラットフォームでは、アプリ モデル、リソース、コントロール、グラフィックス、レイアウト、データ バインディング、ドキュメント、セキュリティなど、広範なアプリ開発機能がサポートされています。 .NET Framework のサブセットなので、以前に ASP.NET または Windows フォームを使って .NET Framework でアプリを作成したことがある場合、そのプログラミングの経験を活かすことができます。 WPF では、Extensible Application Markup Language (XAML) を使って、アプリ プログラミングの宣言型モデルを提供します。これについては、後のセクションで確認します。
 
@@ -29,7 +29,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 > * Visual Studio で WPF プロジェクトを作成する
 > * アセンブリと NuGet パッケージをプロジェクトに追加する
 > * XAML を使用してアプリの UI を作成する
-> * Translator Text API を使用して、言語の取得、テキストの翻訳、ソース言語の検出を行う
+> * Translator を使用して、言語の取得、テキストの翻訳、ソース言語の検出を行う
 > * Bing Spell Check API を使用して、入力の検証、翻訳精度の向上を行う
 > * WPF アプリを実行する
 
@@ -39,9 +39,9 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 | サービス | 機能 | 説明 |
 |---------|---------|-------------|
-| Translator Text | [言語の取得](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | テキスト翻訳がサポートされている言語の完全な一覧を取得します。 |
-| Translator Text | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 60 を超す言語にテキストを翻訳できます。 |
-| Translator Text | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 入力テキストの言語を検出します。 検出の信頼度スコアが含まれます。 |
+| [変換者] | [言語の取得](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | テキスト翻訳がサポートされている言語の完全な一覧を取得します。 |
+| [変換者] | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 60 を超す言語にテキストを翻訳できます。 |
+| [変換者] | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 入力テキストの言語を検出します。 検出の信頼度スコアが含まれます。 |
 | Bing Spell Check | [スペル チェック](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | スペル ミスを修正して、翻訳精度を向上させます。 |
 
 ## <a name="prerequisites"></a>前提条件
@@ -61,11 +61,11 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 1. Visual Studio を開きます。 **[新しいプロジェクトの作成]** を選択します。
 1. **[新しいプロジェクトの作成]** で、 **[WPF アプリ (.NET Framework)]** を見つけて選択します。 **[言語]** から [C#] を選択して、オプションを絞り込むことができます。
-1. **[次へ]** を選択し、プロジェクトに `MSTranslatorTextDemo` という名前を付けます。
+1. **[次へ]** を選択し、プロジェクトに `MSTranslatorDemo` という名前を付けます。
 1. フレームワークのバージョンを **.NET Framework 4.7.2** 以降に設定し、 **[作成]** を選択します。
    ![Visual Studio で名前とフレームワークのバージョンを入力する](media/name-wpf-project-visual-studio.png)
 
-プロジェクトが作成されます。 2 つのタブに `MainWindow.xaml` と `MainWindow.xaml.cs` が開いていることに注目してください。 このチュートリアルでは、これら 2 つのファイルにコードを追加していきます。 ここでは、アプリのユーザー インターフェイス用の `MainWindow.xaml` を変更します。 Translator Text と Bing Spell Check の呼び出し用に `MainWindow.xaml.cs` を変更します。
+プロジェクトが作成されます。 2 つのタブに `MainWindow.xaml` と `MainWindow.xaml.cs` が開いていることに注目してください。 このチュートリアルでは、これら 2 つのファイルにコードを追加していきます。 ここでは、アプリのユーザー インターフェイス用の `MainWindow.xaml` を変更します。 Translator と Bing Spell Check の呼び出し用に `MainWindow.xaml.cs` を変更します。
    ![環境を確認する](media/blank-wpf-project.png)
 
 次のセクションでは、JSON 解析などの追加機能のために、アセンブリと NuGet パッケージをプロジェクトに追加します。
@@ -131,12 +131,12 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 1. Visual Studio で、`MainWindow.xaml` のタブを選択します。
 1. このコードをプロジェクトにコピーし、 **[ファイル] > [Save MainWindow.xaml]\(MainWindow.xaml を上書き保存\)** を選択して、変更を保存します。
    ```xaml
-   <Window x:Class="MSTranslatorTextDemo.MainWindow"
+   <Window x:Class="MSTranslatorDemo.MainWindow"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-           xmlns:local="clr-namespace:MSTranslatorTextDemo"
+           xmlns:local="clr-namespace:MSTranslatorDemo"
            mc:Ignorable="d"
            Title="Microsoft Translator" Height="400" Width="700" BorderThickness="0">
        <Grid>
@@ -173,15 +173,15 @@ Visual Studio に、アプリのユーザー インターフェイスのプレ�
 
 ## <a name="create-your-app"></a>アプリを作成する
 
-`MainWindow.xaml.cs` には、アプリを制御するコードが含まれています。 この後のセクションでは、ドロップダウン メニューを設定するコード、および Translator Text と Bing Spell Check によって公開されるいくつかの API を呼び出すコードを追加します。
+`MainWindow.xaml.cs` には、アプリを制御するコードが含まれています。 この後のセクションでは、ドロップダウン メニューを設定するコード、および Translator と Bing Spell Check によって公開されるいくつかの API を呼び出すコードを追加します。
 
-* このプログラムが開始され、`MainWindow` がインスタンス化されると、Translator Text API の `Languages` メソッドが呼び出されて、言語が取得され、言語選択ドロップダウンが設定されます。 これは、各セッションの開始時に 1 回行われます。
+* このプログラムが開始され、`MainWindow` がインスタンス化されると、Translator の `Languages` メソッドが呼び出されて、言語が取得され、言語選択ドロップダウンが設定されます。 これは、各セッションの開始時に 1 回行われます。
 * **[Translate]** ボタンがクリックされると、ユーザーの言語選択とテキストが取得され、入力に対してスペル チェックが実行され、翻訳と検出された言語がユーザーに表示されます。
-  * Translator Text API の `Translate` メソッドが呼び出されて、`TextToTranslate` のテキストが翻訳されます。 この呼び出しには、ドロップダウン メニューを使用して選択された `to` と `from` の言語も含まれます。
-  * Translator Text API の `Detect` メソッドが呼び出されて、`TextToTranslate` のテキスト言語が判断されます。
+  * Translator の `Translate` メソッドが呼び出されて、`TextToTranslate` のテキストが翻訳されます。 この呼び出しには、ドロップダウン メニューを使用して選択された `to` と `from` の言語も含まれます。
+  * Translator の `Detect` メソッドが呼び出されて、`TextToTranslate` のテキスト言語が判断されます。
   * Bing Spell Check を使用して、`TextToTranslate` が検証され、スペル ミスが修正されます。
 
-このプロジェクトのすべては、`MainWindow : Window` クラスにカプセル化されます。 まず、サブスクリプション キーを設定し、Translator Text と Bing Spell Check のエンドポイントを宣言して、アプリを初期化するコードを追加します。
+このプロジェクトのすべては、`MainWindow : Window` クラスにカプセル化されます。 まず、サブスクリプション キーを設定し、Translator と Bing Spell Check のエンドポイントを宣言して、アプリを初期化するコードを追加します。
 
 1. Visual Studio で、`MainWindow.xaml.cs` のタブを選択します。
 1. 事前に設定された `using` ステートメントを次に置き換えます。  
@@ -202,7 +202,7 @@ Visual Studio に、アプリのユーザー インターフェイスのプレ�
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
-       // Endpoints for Translator Text and Bing Spell Check
+       // Endpoints for Translator and Bing Spell Check
        public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
@@ -263,7 +263,7 @@ Visual Studio に、アプリのユーザー インターフェイスのプレ�
 
 ## <a name="get-supported-languages"></a>サポートされている言語を取得する
 
-Translator Text API では、現在、60 を超える言語がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator Text によって公開される Languages リソースを呼び出すことをお勧めします。
+Translator では、現在、60 を超える言語がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator によって公開される Languages リソースを呼び出すことをお勧めします。
 
 このセクションでは、翻訳可能な言語の一覧が必要であることを指定した、Languages リソースへの `GET` 要求を作成します。
 
@@ -362,7 +362,7 @@ JSON 応答が解析され、ディクショナリに変換されます。 次�
 
 ## <a name="detect-language-of-source-text"></a>ソース テキストの言語を検出する
 
-Translator Text API を使用して、ソース テキスト (テキスト領域に入力されたテキスト) の言語を検出するメソッドを作成します。 この要求によって返される値は、後で翻訳要求で使用します。
+Translator を使用して、ソース テキスト (テキスト領域に入力されたテキスト) の言語を検出するメソッドを作成します。 この要求によって返される値は、後で翻訳要求で使用します。
 
 1. Visual Studio で、`MainWindow.xaml.cs` のタブを開きます。
 2. 次のコードをプロジェクト内の `PopulateLanguageMenus()` メソッドの下に追加します。
@@ -372,7 +372,7 @@ Translator Text API を使用して、ソース テキスト (テキスト領域
    {
        string detectUri = string.Format(TEXT_TRANSLATION_API_ENDPOINT ,"detect");
 
-       // Create request to Detect languages with Translator Text
+       // Create request to Detect languages with Translator
        HttpWebRequest detectLanguageWebRequest = (HttpWebRequest)WebRequest.Create(detectUri);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
@@ -418,7 +418,7 @@ Translator Text API を使用して、ソース テキスト (テキスト領域
 
 ## <a name="spell-check-the-source-text"></a>ソース テキストのスペル チェックを実行する
 
-Bing Spell Check API を使用して、ソース テキストのスペル チェックを実行するメソッドを作成します。 スペル チェックを行うことにより、Translator Text API から正確な翻訳が返されることが保証されます。 **[Translate]** ボタンをクリックすると、翻訳要求でソース テキストへの修正が渡されます。
+Bing Spell Check API を使用して、ソース テキストのスペル チェックを実行するメソッドを作成します。 スペル チェックを行うことにより、Translator から正確な翻訳が返されることが保証されます。 **[Translate]** ボタンをクリックすると、翻訳要求でソース テキストへの修正が渡されます。
 
 1. Visual Studio で、`MainWindow.xaml.cs` のタブを開きます。
 2. 次のコードをプロジェクト内の `DetectLanguage()` メソッドの下に追加します。
@@ -559,7 +559,7 @@ private string CorrectSpelling(string text)
    }
    ```
 
-最初の手順では、"翻訳元" と "翻訳先" の言語およびユーザーがフォームに入力したテキストを取得します。 ソース言語が **[Detect]** に設定されている場合、`DetectLanguage()` が呼び出され、ソース テキストの言語が判断されます。 テキストの言語が Translator API でサポートされていない場合があります。 その場合は、ユーザーに通知するメッセージが表示され、テキストを翻訳せずに戻ります。
+最初の手順では、"翻訳元" と "翻訳先" の言語およびユーザーがフォームに入力したテキストを取得します。 ソース言語が **[Detect]** に設定されている場合、`DetectLanguage()` が呼び出され、ソース テキストの言語が判断されます。 テキストの言語が Translator でサポートされていない場合があります。 その場合は、ユーザーに通知するメッセージが表示され、テキストを翻訳せずに戻ります。
 
 ソース言語が英語の場合 (指定または検出)、`CorrectSpelling()` でテキストのスペルを確認し、修正を適用します。 修正されたテキストがテキスト領域に追加され、ユーザーは修正が行われたことがわかります。
 
@@ -580,4 +580,4 @@ WPF を使用して、動作する翻訳アプリを作成しました。 この
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Microsoft Translator Text API のリファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Microsoft Translator のリファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

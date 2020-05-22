@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 44bb223dbc944be1b8769aa2572f1b88b916528b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79372040"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590895"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Translator による保存データの暗号化
 
@@ -41,7 +41,7 @@ Microsoft マネージド暗号化キーのみをサポートするサブスク�
 
 Translator 用のカスタマー マネージド キーを有効にするには、次の手順のようにします。
 
-1. Translator Text または Cognitive Services の新しいリージョン リソースを作成します。 これはグローバル リソースでは機能しません。
+1. Translator または Cognitive Services の新しいリージョン リソースを作成します。 これはグローバル リソースでは機能しません。
 2. Azure portal でマネージド ID を有効にし、カスタマー マネージド キーの情報を追加します。
 3. カスタム翻訳ツールで新しいワークスペースを作成し、このサブスクリプション情報を関連付けます。
 

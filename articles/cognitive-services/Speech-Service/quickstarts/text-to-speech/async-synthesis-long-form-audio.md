@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: dcdc942999e45eb779e54cd5f92432c54d65fc6a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 62236b472aa5c4812cd62af44a15b805b5326271
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561983"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592561"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>クイック スタート:Python の長い形式の音声の非同期合成 (プレビュー)
 
 このクイックスタートでは、Long Audio API を使用し、テキストを音声に非同期で変換し、サービスにより提供される URI からオーディオ出力を取得します。 この REST API は、5,000 文字 (または長さ 10 分) を超えるテキストから音声を合成する必要のあるコンテンツ プロバイダーに最適です。 詳細については、「[Long Audio API](../../long-audio-api.md)」を参照してください。
 
-> [!NOTE]
-> 長い形式のオーディオの非同期合成は、[カスタム ニューラル音声](../../how-to-custom-voice.md#custom-neural-voices)でのみ使用できます。
+長い形式の音声の非同期合成は、[パブリック ニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)と[カスタム ニューラル音声](../../how-to-custom-voice.md#custom-neural-voices)で使用できます。これらは、それぞれ特定の言語と方言をサポートしています。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +55,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ## <a name="get-a-list-of-supported-voices"></a>サポートされている音声の一覧を取得する
 
-このコードからは、テキスト読み上げの変換に利用できる音声の一覧が取得されます。 このコードを `voice_synthesis_client.py` に追加してください。
+このコードを使用すると、使用できる特定のリージョンまたはエンドポイントの音声の完全な一覧を取得できます。 [サポートされているリージョンまたはエンドポイント](../../long-audio-api.md)に関するページを参照してください。 このコードを `voice_synthesis_client.py` に追加してください。
 
 ```python
 parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
@@ -99,6 +98,8 @@ There are xx voices available:
 Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xxx , Id: xxx, Locale: en-US, Gender: Male, PublicVoice: xxx, Created: 2019-07-22T09:38:14Z
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
+
+**PublicVoice** パラメーターが **True** の場合、音声はパブリック ニューラル音声です。 それ以外の場合は、カスタム ニューラル音声です。 
 
 ## <a name="prepare-input-files"></a>入力ファイルを準備する
 

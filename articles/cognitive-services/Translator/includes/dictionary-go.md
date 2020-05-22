@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b646f1994c83dba18b246dc3738729058ce6922d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1802a8d68030dbc882b4687cae28668f5a1e7a29
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69907046"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587031"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>main 関数を作成する
 
-このサンプルは、Translator Text のサブスクリプション キーとエンドポイントを環境変数 `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` および `TRANSLATOR_TEXT_ENDPOINT` から読み取ることを試みます。 環境変数を使い慣れていない場合は、`subscriptionKey` と `endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+このサンプルは、Translator のサブスクリプション キーとエンドポイントを環境変数 `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` および `TRANSLATOR_TEXT_ENDPOINT` から読み取ることを試みます。 環境変数を使い慣れていない場合は、`subscriptionKey` と `endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
 
 このコードをプロジェクトにコピーします。
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-get-alternate-translations"></a>翻訳の代替候補を取得するための関数を作成する
 
-翻訳の代替候補を取得する関数を作成しましょう。 この関数では、単一の引数である Translator Text サブスクリプション キーを使用します。
+翻訳の代替候補を取得する関数を作成しましょう。 この関数では、単一の引数である Translator サブスクリプション キーを使用します。
 
 ```go
 func dictionaryLookup(subscriptionKey string, uri string) {
@@ -92,7 +92,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Dictionary Lookup](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator 3.0: 辞書検索](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」をご覧ください。
 
 ## <a name="create-a-struct-for-your-request-body"></a>要求本文の構造体を作成する
 
@@ -110,7 +110,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>要求を作成する
 
-要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator Text API を呼び出すことができます。
+要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator を呼び出すことができます。
 
 ```go
 // Build the HTTP POST request
@@ -122,7 +122,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -148,7 +148,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
+これで、Translator を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
 
 ```console
 go run dictionaryLookup.go
@@ -219,7 +219,7 @@ go run dictionaryLookup.go
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

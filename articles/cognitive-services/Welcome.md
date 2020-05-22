@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169089"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588294"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
-Azure Cognitive Services は、開発者が直接的な AI またはデータ サイエンスのスキルや知識がなくてもインテリジェントなアプリケーションを構築するために使用できる API、SDK、およびサービスです。 Azure Cognitive Services によって、開発者は簡単にアプリケーションにコグニティブ機能を追加できます。 Azure Cognitive Services の目標は、開発者が、聞いたり、話したり、理解したり、推論し始めたりできるアプリケーションの作成を支援することです。 Azure Cognitive Services 内のサービス カタログは、5 つの主要な柱として、視覚、音声、言語、Web 検索、および意思決定に分類できます。
+Azure Cognitive Services は、開発者が直接的な AI またはデータ サイエンスのスキルや知識がなくてもインテリジェントなアプリケーションを構築するために使用できる API、SDK、およびサービスです。 Azure Cognitive Services によって、開発者は簡単にアプリケーションに Cognitive 機能を追加できます。 Azure Cognitive Services の目標は、開発者が、聞いたり、話したり、理解したり、推論し始めたりできるアプリケーションの作成を支援することです。 Azure Cognitive Services 内のサービス カタログは、5 つの主要な柱として、視覚、音声、言語、Web 検索、および意思決定に分類できます。
 
 ## <a name="vision-apis"></a>Vision API
 
@@ -45,14 +45,14 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 > [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか? 一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
 
 
-## <a name="language-apis"></a>言語 API
+## <a name="language-apis"></a>Language API
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
 |[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。|
 |[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Text Analytics")|Text Analytics は、未加工のテキストに、センチメント分析、キー フレーズ抽出、および言語検出のための自然言語処理を提供します。|
-|[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Translator Text は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
+|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "[変換者]")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
 
 
 ## <a name="search-apis"></a>Search API

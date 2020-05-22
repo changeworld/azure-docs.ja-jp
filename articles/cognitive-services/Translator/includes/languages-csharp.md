@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4dbf9dddd46e38ae9b8cec3288bdacccb1ef1c78
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906898"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586880"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -132,7 +132,7 @@ static string PrettyPrint(string s)
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順は、`GetLanguages()` 関数での `Main` の呼び出しです。 `static void Main(string[] args)` を探して、次の行を追加してください。
+最後の手順は、`Main` 関数での `GetLanguages()` の呼び出しです。 `static void Main(string[] args)` を探して、次の行を追加してください。
 
 ```csharp
 GetLanguages();
@@ -241,7 +241,7 @@ dotnet run
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 252759139de7f53cd7875efeb7f477219092aa0b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73837446"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584699"
 ---
 # <a name="unsupported-language-deployments"></a>サポートされていない言語の展開
 
@@ -57,4 +57,4 @@ ms.locfileid: "73837446"
 ## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングします](how-to-train-model.md)。
-- [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。

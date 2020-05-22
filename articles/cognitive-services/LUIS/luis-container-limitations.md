@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879243"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592901"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) コンテナーの制限
 
@@ -23,7 +23,7 @@ LUIS コンテナーには、いくつかの注目すべき制限があります
 
 ## <a name="supported-dependencies-for-latest-container"></a>`latest` コンテナーでサポートされる依存関係
 
-[//build/ 2019](https://news.microsoft.com/build2019/) でリリースされた最新の LUIS コンテナーは、以下をサポートします。
+最新の LUIS コンテナーは次をサポートします。
 
 * [新しい事前構築済みドメイン](luis-reference-prebuilt-domains.md): 企業向けのこれらのドメインには、エンティティ、発話の例、およびパターンが含まれます。 これらのドメインを独自の用途で拡張します。
 
@@ -46,20 +46,20 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 
 LUIS コンテナーは、LUIS によって適切に[サポートされる言語](luis-language-support.md#languages-supported)のサブセットをサポートしています。 LUIS コンテナーは、次の言語の発話を理解することができます。
 
-| 言語 | Locale | 事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
+| Language | Locale | 事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | フランス語 (フランス) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | フランス語 (カナダ) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
-| German |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
+| ドイツ語 |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | ヒンディー語 | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
-| Italian |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| Korean |`ko-KR` | ✔️ | ❌ | ❌ | *キー フレーズ*のみ |
+| イタリア語 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
+| 韓国語 |`ko-KR` | ✔️ | ❌ | ❌ | *キー フレーズ*のみ |
 | ポルトガル語 (ブラジル) |`pt-BR` | ✔️ | ✔️ | ✔️ | 一部のサブカルチャのみ |
 | スペイン語 (スペイン) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | スペイン語 (メキシコ)|`es-MX` | ❌ | ❌ |✔️|✔️|
-| Turkish | `tr-TR` |✔️| ❌ | ❌ | *センチメント*のみ |
+| トルコ語 | `tr-TR` |✔️| ❌ | ❌ | *センチメント*のみ |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

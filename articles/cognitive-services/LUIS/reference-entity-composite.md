@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71695166"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588906"
 ---
-# <a name="composite-entity"></a>複合エンティティ 
+# <a name="composite-entity"></a>複合エンティティ
 
-複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
+複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。
+
+> [!CAUTION]
+> このエンティティは**非推奨**です。 [機械学習エンティティ](reference-entity-machine-learned-entity.md)に移行してください。
 
 **このエンティティは、次のようなデータに最適です。**
 
-* 相互に関連している。 
+* 相互に関連している。
 * 発話のコンテキストで相互に関連する。
 * さまざまなエンティティ型を使用する。
 * クライアント アプリケーションによって情報の単位としてグループ化され、処理される必要がある。
@@ -87,7 +90,7 @@ number の `2` と ToLocation `cairo` の間には、どのエンティティに
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
@@ -169,7 +172,7 @@ number の `2` と ToLocation `cairo` の間には、どのエンティティに
 }
 ```
 
-* * * 
+* * *
 
 
 |データ オブジェクト|エンティティ名|値|
@@ -179,4 +182,7 @@ number の `2` と ToLocation `cairo` の間には、どのエンティティに
 
 ## <a name="next-steps"></a>次のステップ
 
-この[チュートリアル](luis-tutorial-composite-entity.md)では、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための**複合エンティティ**を追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
+エンティティの詳細を確認します。
+
+* [概念](luis-concept-entity-types.md)
+* [作成方法](luis-how-to-add-entities.md)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 13d7e0bfd3c7061d9dec68a1d14ff2a5e2c05fcd
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791257"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586186"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントをエラスティックにスケーリングする
 
@@ -63,6 +63,22 @@ Azure Cosmos DB の Cassandra 用 API には、さまざまなコントロール
 標準 (手動) またはプログラムによるスループットのプロビジョニングの方法に加えて、自動スケーリングでプロビジョニングされたスループットでも Azure Cosmos のコンテナーを構成することができます。 自動スケーリングでは、SLA を損なうことなく、消費ニーズに合わせて、指定された RU 範囲内で自動的かつ即座にスケールが行われます。 詳細については、[自動スケーリングで Azure Cosmos のコンテナーとデータベースを作成する](provision-throughput-autoscale.md)方法に関する記事を参照してください。
 
 この方法の利点は、これがシステムのスケーリング ニーズを管理する最も簡単な方法だということです。 これによりレート制限が**構成された RU 範囲内**に適用されないことが保証されます。 欠点は、システムのスケーリング ニーズが予測可能な場合、自動スケーリングは、スケーリング ニーズを処理する方法としては、前述のカスタムのコントロール プレーンまたは SDK レベルのアプローチを使用するよりもコスト効率に劣る可能性があることです。
+
+CQL を使用して自動スケーリングの最大スループット (RU) を設定または変更するには、次を使用します (キースペース/テーブル名を適宜置き換えてください)。
+
+```Bash
+# to set max throughput (RUs) for autoscale at keyspace level:
+create keyspace <keyspace name> WITH cosmosdb_autoscale_max_throughput=5000;
+
+# to alter max throughput (RUs) for autoscale at keyspace level:
+alter keyspace <keyspace name> WITH cosmosdb_autoscale_max_throughput=4000;
+
+# to set max throughput (RUs) for autoscale at table level:
+create table <keyspace name>.<table name> (pk int PRIMARY KEY, ck int) WITH cosmosdb_autoscale_max_throughput=5000;
+
+# to alter max throughput (RUs) for autoscale at table level:
+alter table <keyspace name>.<table name> WITH cosmosdb_autoscale_max_throughput=4000;
+```
 
 ## <a name="next-steps"></a>次のステップ
 

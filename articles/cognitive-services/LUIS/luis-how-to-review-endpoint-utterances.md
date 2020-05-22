@@ -9,28 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c976d3b74badc4eeb5978af352fe425089f2fbfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218753"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584969"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>エンドポイントの発話を見直し、LUIS アプリを改善する方法
 
 正しく予測するためにエンドポイントの発話を見直すプロセスは[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)と呼ばれています。 アクティブ ラーニングでは、エンドポイント クエリがキャプチャされ、ユーザーの不確かなエンドポイントの発話が選択されます。 これらの発話をレビューして、意図を選択し、文字にされた発話に対応するエンティティをマークすることになります。 それらの変更を承認して発話の例に追加したら、トレーニングして公開します。 そうすることで、LUIS による発話の識別の精度が向上していきます。
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
 ## <a name="enable-active-learning"></a>アクティブ ラーニングを有効にする
 
-アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、[ という querystring パラメーターと値を指定し、](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)エンドポイント クエリ`log=true`を呼び出します。
+アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、`log=true` という querystring パラメーターと値を指定し、[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)を呼び出します。
 
 LUIS ポータルを使用して、正しいエンドポイント クエリを作成します。
 
-1. [プレビューの LUIS ポータル](https://preview.luis.ai/)で、アプリの一覧からアプリを選択します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. **[Manage]\(管理\)** セクションに移動し、 **[Azure resources]\(Azure リソース\)** を選択します。
 1. 割り当てられた予測リソースについて、 **[Change query parameters]\(クエリ パラメーターの変更\)** を選択します。
 
@@ -64,7 +63,7 @@ LUIS ポータルを使用して、正しいエンドポイント クエリを�
 
 ## <a name="disable-active-learning"></a>アクティブ ラーニングを無効にする
 
-アクティブ ラーニングを無効にするには、ユーザーのクエリがログされないようにします。 これを行うには、[ querystring パラメーターと値を指定して](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)エンドポイント クエリ`log=false`を設定します。既定値が false のため、querystring 値は使用しません。
+アクティブ ラーニングを無効にするには、ユーザーのクエリがログされないようにします。 これを行うには、`log=false` querystring パラメーターと値を指定して[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)を設定します。既定値が false のため、querystring 値は使用しません。
 
 ## <a name="next-steps"></a>次のステップ
 

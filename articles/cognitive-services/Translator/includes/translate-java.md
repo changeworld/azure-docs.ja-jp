@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a362d2610e6feb85de730c086070636f3afa2b9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1030afe802eebb385b4d0d662e8fd233790a445f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906682"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586644"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -87,7 +87,7 @@ public class Translate {
 }
 ```
 
-次の行を `Translate` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `api-version` には、`url` と共に別途 2 つのパラメーターが追加されていることがわかります。 翻訳の出力は、これらのパラメーターを使用して設定します。 このサンプルでは、ドイツ語 (`de`) とイタリア語 (`it`) に設定しています。 
+次の行を `Translate` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `url` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 翻訳の出力は、これらのパラメーターを使用して設定します。 このサンプルでは、ドイツ語 (`de`) とイタリア語 (`it`) に設定しています。 
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>応答を解析するための関数を作成する
 
-このシンプルな関数は、Translator Text サービスからの JSON 応答を解析し、整形するものです。
+このシンプルな関数は、Translator サービスからの JSON 応答を解析し、整形するものです。
 
 ```java
 // This function prettifies the json response.
@@ -192,7 +192,7 @@ gradle run
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

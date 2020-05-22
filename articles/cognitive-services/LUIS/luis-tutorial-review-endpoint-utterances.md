@@ -4,12 +4,12 @@ description: このチュートリアルでは、LUIS HTTP エンドポイント
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548723"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592578"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。
@@ -33,11 +33,11 @@ ms.locfileid: "80548723"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>サンプル アプリをインポートする
+## <a name="download-json-file-for-app"></a>アプリの JSON ファイルをダウンロードする
 
-アプリをインポートするには、次の手順に従います。
+[アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)をダウンロードして保存します。
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)をダウンロードして保存します。
+## <a name="import-json-file-for-app"></a>アプリの JSON ファイルをインポートする
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

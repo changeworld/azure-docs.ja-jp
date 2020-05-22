@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:テキストの翻訳、音声合成、分析を行う Flask アプリを作成する - Translator Text API
+title: チュートリアル:テキストの翻訳、音声合成、分析を行う Flask アプリを作成する - Translator
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、テキストの翻訳、感情分析、翻訳済みテキストの音声合成を行う Flask ベースの Web アプリを作成します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5034dafa015054e9e9d0804088f345929815b974
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 955476eefc7575edb90634ce305bbebdf62e2371
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397948"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592357"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "80397948"
 > * Azure サブスクリプション キーを取得する
 > * 開発環境をセットアップして依存関係をインストールする
 > * Flask アプリを作成する
-> * Translator Text API を使用してテキストを翻訳する
+> * Translator を使用してテキストを翻訳する
 > * Text Analytics を使用して、入力されたテキストと翻訳の肯定的/否定的感情を分析する
 > * Speech Services を使用して、翻訳済みのテキストを合成音声に変換する
 > * Flask アプリをローカルで実行する
@@ -52,14 +52,14 @@ Flask は、Web アプリケーションを作成するためのマイクロフ�
 * [Git ツール](https://git-scm.com/downloads)
 * IDE またはテキスト エディター ([Visual Studio Code](https://code.visualstudio.com/)、[Atom](https://atom.io/) など)  
 * [Chrome](https://www.google.com/chrome/browser/) または [Firefox](https://www.mozilla.org/firefox)
-* **Translator Text** のサブスクリプション キー (リージョンの選択は不要)
+* **Translator** のサブスクリプション キー (リージョンの選択は不要)
 * **Text Analytics** のサブスクリプション キー (**米国西部**リージョン)。
 * **Speech Services** のサブスクリプション キー (**米国西部**リージョン)。
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>アカウントを作成してリソースをサブスクライブする
 
 前述のように、このチュートリアルには 3 つのサブスクリプション キーが必要となります。 つまり、次の目的に使用するリソースをご自分の Azure アカウント内に作成する必要があります。
-* Translator Text
+* [変換者]
 * Text Analytics
 * Speech Services
 
@@ -103,7 +103,7 @@ Flask Web アプリを作成する前に、プロジェクトの作業ディレ�
 
 2. 仮想環境をアクティブ化するコマンドは、プラットフォーム/シェルによって異なります。   
 
-   | プラットフォーム | Shell | command |
+   | プラットフォーム | Shell | コマンド |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | Bash | `source venv/Scripts/activate` |
@@ -245,14 +245,14 @@ def about():
 
 ここまでは、シンプルな Flask アプリの動作を確認しました。今度は、次のことを試してみましょう。
 
-* Translator Text API を呼び出して応答を返す Python を記述する
+* Translator を呼び出して応答を返す Python を記述する
 * その Python コードを呼び出す Flask ルートを作成する
 * テキスト入力と翻訳のための領域、言語セレクター、翻訳ボタンを HTML に追加する
 * ユーザーが HTML から Flask アプリを対話的に操作できる JavaScript を記述する
 
-### <a name="call-the-translator-text-api"></a>Translator Text API を呼び出す
+### <a name="call-the-translator"></a>Translator Text API を呼び出す
 
-最初に、Translator Text API を呼び出す関数を記述する必要があります。 この関数は、`text_input` と `language_output` の 2 つの引数を受け取ります。 ユーザーがアプリで翻訳ボタンを押すたびに、この関数が呼び出されます。 HTML 内のテキスト領域が `text_input` として送信され、HTML で選択された言語の値が `language_output` として送信されます。
+最初に、Translator を呼び出す関数を記述する必要があります。 この関数は、`text_input` と `language_output` の 2 つの引数を受け取ります。 ユーザーがアプリで翻訳ボタンを押すたびに、この関数が呼び出されます。 HTML 内のテキスト領域が `text_input` として送信され、HTML で選択された言語の値が `language_output` として送信されます。
 
 1. まず、作業ディレクトリのルートに `translate.py` というファイルを作成します。
 2. さらに、次のコードを `translate.py` に追加します。 この関数は、`text_input` と `language_output` の 2 つの引数を受け取ります。
@@ -288,7 +288,7 @@ def about():
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Translator Text のサブスクリプション キーを追加して保存します。
+3. Translator のサブスクリプション キーを追加して保存します。
 
 ### <a name="add-a-route-to-apppy"></a>`app.py` にルートを追加する
 
@@ -961,6 +961,6 @@ flask run
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Translator Text API のリファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Translator リファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

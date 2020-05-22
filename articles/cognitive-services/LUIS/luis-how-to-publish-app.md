@@ -9,24 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053431"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585659"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
-アクティブな LUIS アプリの構築、トレーニングおよびテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+アクティブな LUIS アプリの構築、トレーニングおよびテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。
 
 ## <a name="publishing"></a>発行
-
-1. エンドポイントを発行するには、右パネル上部の **[Publish]\(発行)** を選択します。 
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. エンドポイントを発行するには、右パネル上部の **[Publish]\(発行)** を選択します。
 
     ![右上のナビゲーション バーの [発行] ボタン](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -36,21 +35,21 @@ ms.locfileid: "80053431"
 
 ### <a name="publishing-slots"></a>発行スロット
 
-ポップアップ ウィンドウが表示されたら、適切なスロットを選択します。 
+ポップアップ ウィンドウが表示されたら、適切なスロットを選択します。
 
 * ステージング
-* Production 
+* Production
 
-両方の発行スロットを使用することで、2 つの異なるバージョンのアプリを発行されたエンドポイントで使用できるようになります。また、2 つの異なるエンドポイントで同じバージョンを使用することもできます。 
+両方の発行スロットを使用することで、2 つの異なるバージョンのアプリを発行されたエンドポイントで使用できるようになります。また、2 つの異なるエンドポイントで同じバージョンを使用することもできます。
 
 ### <a name="publishing-regions"></a>公開リージョン
 
-このアプリは、 **[管理]**  ->  **[[Azure リソース]](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** ページの LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。 
+このアプリは、 **[管理]**  ->  **[[Azure リソース]](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** ページの LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。
 
 たとえば、[www.luis.ai](https://www.luis.ai) で作成されたアプリの場合、**westus** と **eastus** の 2 つのリージョンで LUIS リソースを作成し、それらをリソースとしてアプリに追加すると、アプリは両方のリージョンに発行されます。 LUIS のリージョンの詳細については、[リージョン](luis-reference-regions.md)に関するページを参照してください。
 
 > [!TIP]
-> オーサリング リージョンは 3 つあります。 発行先のリージョンで作成する必要があります。 すべてのリージョンに発行する必要がある場合は、3 のオーサリング リージョンすべてで、作成プロセスおよび結果として得られるトレーニング済みモデルを管理する必要があります。 
+> オーサリング リージョンは 3 つあります。 発行先のリージョンで作成する必要があります。 すべてのリージョンに発行する必要がある場合は、3 のオーサリング リージョンすべてで、作成プロセスおよび結果として得られるトレーニング済みモデルを管理する必要があります。
 
 
 ## <a name="configuring-publish-settings"></a>発行の設定を構成する
@@ -59,25 +58,25 @@ ms.locfileid: "80053431"
 
 * センチメント分析
 * スペル修正 - v2 予測エンドポイントのみ
-* 音声認識の準備 
+* 音声認識の準備
 
-発行後、これらの設定は **[管理]** セクションの **[Publish settings]\(発行の設定\)** ページで確認できます。 発行ごとに設定を変更できます。 発行を取り消すと、発行中に加えた変更も取り消されます。 
+発行後、これらの設定は **[管理]** セクションの **[Publish settings]\(発行の設定\)** ページで確認できます。 発行ごとに設定を変更できます。 発行を取り消すと、発行中に加えた変更も取り消されます。
 
 ### <a name="when-your-app-is-published"></a>アプリが発行されたとき
 
-アプリが正常に発行されると、ブラウザーの上部に成功通知が表示されます。 通知には、エンドポイントへのリンクも含まれています。 
+アプリが正常に発行されると、ブラウザーの上部に成功通知が表示されます。 通知には、エンドポイントへのリンクも含まれています。
 
-エンドポイント URL が必要な場合は、リンクを選択します。 エンドポイント URL には、上部のメニューの **[管理]** を選択し、左側のメニューの **[Azure リソース]** を選択してもアクセスできます。 
+エンドポイント URL が必要な場合は、リンクを選択します。 エンドポイント URL には、上部のメニューの **[管理]** を選択し、左側のメニューの **[Azure リソース]** を選択してもアクセスできます。
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
 <a name="enable-sentiment-analysis"></a>
 
-感情分析を使用すると、LUIS を [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) と統合して、感情分析とキーフレーズ分析を提供できます。 
+感情分析を使用すると、LUIS を [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) と統合して、感情分析とキーフレーズ分析を提供できます。
 
-Text Analytics キーを指定する必要はなく、Azure アカウントに対するこのサービスの課金はありません。 
+Text Analytics キーを指定する必要はなく、Azure アカウントに対するこのサービスの課金はありません。
 
-センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。 
+センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。
 
 感情分析での JSON エンドポイントの応答の詳細については、「[Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)」(感情分析) をご覧ください。
 

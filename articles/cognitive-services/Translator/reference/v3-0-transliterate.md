@@ -1,7 +1,7 @@
 ---
-title: Translator Text API の Transliterate メソッド
+title: Translator Transliterate メソッド
 titleSuffix: Azure Cognitive Services
-description: Translator Text API Transliterate メソッドを利用し、ある言語のテキストをあるスクリプトから別のスクリプトに変換します。
+description: Translator Transliterate メソッドを利用し、ある言語のテキストをあるスクリプトから別のスクリプトに変換します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b811c57eb163931c39a311418ac9f1513e9393a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73837272"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592255"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
+# <a name="translator-30-transliterate"></a>Translator 3.0:Transliterate
 
 ある言語のテキストを、あるスクリプトから別のスクリプトに変換します。
 
@@ -42,15 +42,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>language</td>
-    <td>"*必須のパラメーター*"。<br/>スクリプト間の変換を行うテキストの言語を指定します。 指定可能な言語は、`transliteration`サポートされている言語[をサービスに照会することによって得られる ](./v3-0-languages.md) スコープにリストされます。</td>
+    <td>"*必須のパラメーター*"。<br/>スクリプト間の変換を行うテキストの言語を指定します。 指定可能な言語は、[サポートされている言語](./v3-0-languages.md)をサービスに照会することによって得られる `transliteration` スコープにリストされます。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>"*必須のパラメーター*"。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、[スコープを使用して](./v3-0-languages.md)サポートされている言語`transliteration`を検索します。</td>
+    <td>"*必須のパラメーター*"。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、`transliteration`スコープを使用して[サポートされている言語](./v3-0-languages.md)を検索します。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>"*必須のパラメーター*"。<br/>出力スクリプトを指定します。 選択した、入力言語と入力スクリプトの組み合わせに対して使用可能な出力スクリプトを確認するには、[ スコープを使用して ](./v3-0-languages.md)サポートされている言語`transliteration`を検索します。</td>
+    <td>"*必須のパラメーター*"。<br/>出力スクリプトを指定します。 選択した、入力言語と入力スクリプトの組み合わせに対して使用可能な出力スクリプトを確認するには、`transliteration` スコープを使用して [サポートされている言語](./v3-0-languages.md)を検索します。</td>
   </tr>
 </table> 
 
@@ -98,9 +98,9 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 正常な応答は、入力配列内の要素ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `text`: 入力文字列を出力スクリプトに変換した結果である文字列。
+  * `text`:入力文字列を出力スクリプトに変換した結果である文字列。
   
-  * `script`: 出力で使用されるスクリプトを指定する文字列。
+  * `script`:出力で使用されるスクリプトを指定する文字列。
 
 JSON 応答の例を次に示します。
 
@@ -159,7 +159,7 @@ JSON 応答の例を次に示します。
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合、要求から JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
 
 ## <a name="examples"></a>例
 

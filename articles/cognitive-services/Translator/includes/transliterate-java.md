@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: ad5c51b3d373947e8a09762b0cb27afff990e6da
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 82766e969f62f35f39f6545eb4c2c6bdda29c11b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906546"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586535"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -88,7 +88,7 @@ public class Transliterate {
 }
 ```
 
-次の行を `Transliterate` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `api-version` には、`url` と共に別途 2 つのパラメーターが追加されていることがわかります。 これらのパラメーターを使用して、入力言語を設定し、表記変換のスクリプトを設定しています。 このサンプルでは、日本語 (`jpan`) とラテン語 (`latn`) に設定しています。 
+次の行を `Transliterate` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `url` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 これらのパラメーターを使用して、入力言語を設定し、表記変換のスクリプトを設定しています。 このサンプルでは、日本語 (`jpan`) とラテン語 (`latn`) に設定しています。 
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>応答を解析するための関数を作成する
 
-このシンプルな関数は、Translator Text サービスからの JSON 応答を解析し、整形するものです。
+このシンプルな関数は、Translator サービスからの JSON 応答を解析し、整形するものです。
 
 ```java
 // This function prettifies the json response.
@@ -180,7 +180,7 @@ gradle run
 
 ## <a name="next-steps"></a>次のステップ
 
-API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+API のリファレンスを見て、Translator でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
 > [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

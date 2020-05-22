@@ -1,5 +1,5 @@
 ---
-title: コラボレーション翻訳フレームワーク (CTF) レポート - Translator Text API
+title: コラボレーション翻訳フレームワーク (CTF) レポート - Translator
 titleSuffix: Azure Cognitive Services
 description: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法。
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 0c099584642de1939df5e1e7d9785006e8d25235
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732344"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584673"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
 > [!NOTE]
-> このメソッドは非推奨とされます。 これは Translator Text API の V3.0 では使用できません。
+> このメソッドは非推奨とされます。 Translator の V3.0 では利用できません。
 > 
-> コラボレーション翻訳フレームワーク (CTF) は、以前 Translator Text API の V2.0 で利用可能でしたが、2018 年 2 月 1 日をもって廃止されました。 AddTranslation と AddTranslationArray 関数により、ユーザーは、コラボレーション翻訳フレームワークによる修正を有効にできます。 2018 年 1 月 31 日以降、これら 2 つの関数は、新しい文の送信を受け付けなくなり、ユーザーにはエラー メッセージが表示されます。 これらの関数は廃止されており、置き換えられることはありません。
+> コラボレーション翻訳フレームワーク (CTF) は Translator の V2.0 では利用可能でしたが、2018 年 2 月 1 日をもって非推奨になりました。 AddTranslation と AddTranslationArray 関数により、ユーザーは、コラボレーション翻訳フレームワークによる修正を有効にできます。 2018 年 1 月 31 日以降、これら 2 つの関数は、新しい文の送信を受け付けなくなり、ユーザーにはエラー メッセージが表示されます。 これらの関数は廃止されており、置き換えられることはありません。
 
 コラボレーション翻訳フレームワーク (CTF) レポート API は、CTF ストア内の統計情報と実際のコンテンツを返します。 この API は、次の理由により、GetTranslations() メソッドと異なります。
 * ユーザーのアカウント (appId または Azure Marketplace アカウント) からのみ、翻訳されたコンテンツとその合計数を返します。
@@ -32,9 +32,8 @@ ms.locfileid: "82732344"
 ## <a name="endpoint"></a>エンドポイント
 CTF Reporting API のエンドポイントは https://api.microsofttranslator.com/v2/beta/ctfreporting.svc です。
 
-
 ## <a name="methods"></a>メソッド
-| 名前 |    説明|
+| 名前 | 説明|
 |:---|:---|
 | GetUserTranslationCounts メソッド | ユーザーによって作成される翻訳の数を取得します。 |
 | GetUserTranslations メソッド | ユーザーによって作成される翻訳を取得します。 |
@@ -108,7 +107,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | 例外 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | パラメーター '**maxDateUtc**' は、'**minDateUtc**' 以上にする必要があります。| パラメーター **maxDateUtc** の値は、パラメーター **minDateUtc** の値より小さいです。|
-| TranslateApiException | IP がクォータを超えています。| <ul><li>1 分あたりの要求の数の上限に達しました。</li><li>要求のサイズは 10000 文字に制限されたままです。</li><li>時間単位および日単位のクォータは、Microsoft Translator API が許容する文字数を制限します。</li></ul>|
+| TranslateApiException | IP がクォータを超えています。| <ul><li>1 分あたりの要求の数の上限に達しました。</li><li>要求のサイズは 10000 文字に制限されたままです。</li><li>時間単位および日単位のクォータによって、Translator で許容される文字数が制限されます。</li></ul>|
 | TranslateApiException | Appid がクォータを超えています。| アプリケーション ID は、時間単位または日単位のクォータを超えました。|
 
 > [!NOTE]
@@ -181,7 +180,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | 例外 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | パラメーター '**maxDateUtc**' は、'**minDateUtc**' 以上にする必要があります。| パラメーター **maxDateUtc** の値は、パラメーター **minDateUtc** の値より小さいです。|
-| TranslateApiException | IP がクォータを超えています。| <ul><li>1 分あたりの要求の数の上限に達しました。</li><li>要求のサイズは 10000 文字に制限されたままです。</li><li>時間単位および日単位のクォータは、Microsoft Translator API が許容する文字数を制限します。</li></ul>|
+| TranslateApiException | IP がクォータを超えています。| <ul><li>1 分あたりの要求の数の上限に達しました。</li><li>要求のサイズは 10000 文字に制限されたままです。</li><li>時間単位および日単位のクォータによって、Translator で許容される文字数が制限されます。</li></ul>|
 | TranslateApiException | Appid がクォータを超えています。| アプリケーション ID は、時間単位または日単位のクォータを超えました。|
 
 > [!NOTE]

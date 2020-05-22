@@ -2,13 +2,13 @@
 title: リスト エンティティ型 - LUIS
 description: リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、[Recommend] (推奨) 機能を使用します。
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097576"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588889"
 ---
 # <a name="list-entity"></a>リスト エンティティ
 
@@ -132,4 +132,7 @@ ms.locfileid: "82097576"
 
 ## <a name="next-steps"></a>次のステップ
 
-この[チュートリアル](tutorial-list-entity.md)では、**リスト エンティティ**を使用して既知の項目の一覧からテキストの完全一致を抽出する方法について説明します。
+エンティティの詳細を確認します。
+
+* [概念](luis-concept-entity-types.md)
+* [作成方法](luis-how-to-add-entities.md)

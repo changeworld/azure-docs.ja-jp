@@ -1,7 +1,7 @@
 ---
-title: Translator Text API v2.0
+title: Translator v2.0
 titleSuffix: Azure Cognitive Services
-description: Translator Text API v2.0 のリファレンス ドキュメント。
+description: Translator v2.0 のリファレンス ドキュメント。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: f111169558118a80602bcb2136bc63ce54c9e0d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72242496"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588617"
 ---
-# <a name="translator-text-api-v20"></a>Translator Text API v2.0
+# <a name="translator-v20"></a>Translator v2.0
 
 > [!IMPORTANT]
-> Translator Text API のこのバージョンは非推奨になっています。 [Translator Text API バージョン 3 のドキュメントをご覧ください](v3-0-reference.md)。
+> Translator のこのバージョンは非推奨になっています。 [Translator のバージョン 3 のドキュメントをご覧ください](v3-0-reference.md)。
 
-Translator Text API バージョン 2 は、アプリ、Web サイト、ツール、またはその他のソリューションにシームレスに統合して、多言語ユーザー エクスペリエンスを提供することができます。 任意のハードウェア プラットフォーム上で使用でき、また任意のオペレーティング システムによって言語の翻訳のほか、テキストの言語検出やテキスト読み上げなど、その他の言語に関連したタスクを業界標準に従って実行できます。 詳細については、[Translator Text API](../translator-info-overview.md) に関するページを参照してください。
+アプリ、Web サイト、ツール、またはその他のソリューションに Translator のバージョン 2 をシームレスに統合して、多言語ユーザー エクスペリエンスを提供できます。 任意のハードウェア プラットフォーム上で使用でき、また任意のオペレーティング システムによって言語の翻訳のほか、テキストの言語検出やテキスト読み上げなど、その他の言語に関連したタスクを業界標準に従って実行できます。 詳細については、「[Translator](../translator-info-overview.md)」を参照してください。
 
 ## <a name="getting-started"></a>作業の開始
-Translator Text API にアクセスするには、[Microsoft Azure にサインアップする](../translator-text-how-to-signup.md)必要があります。
+Translator にアクセスするには、[Microsoft Azure にサインアップする](../translator-text-how-to-signup.md)必要があります。
 
 ## <a name="authentication"></a>認証 
-Translator Text API への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 この API では、3 つの認証方法がサポートされています。
+Translator への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 この API では、3 つの認証方法がサポートされています。
 
 - アクセス トークン。 サブスクリプション キーを使用し、認証サービスに POST 要求を行うことで、アクセス トークンを作成します。 詳細については、トークン サービスに関するドキュメントを参照してください。 `Authorization` ヘッダーまたは `access_token` クエリ パラメーターを使用して、アクセス トークンを Translator サービスに渡します。 アクセス トークンは 10 分間有効です。 10 分ごとに新しいアクセス トークンを取得し、その 10 分間に繰り返される要求に対して同じアクセス トークンを使い続けます。
-- 直接使用されるサブスクリプション キー。 サブスクリプション キーを、Translator Text API への要求に含まれる `Ocp-Apim-Subscription-Key` ヘッダー内の値として渡します。 サブスクリプション キーを直接使用する場合、トークン認証サービスを呼び出してアクセス トークンを作成する必要はありません。
+- 直接使用されるサブスクリプション キー。 サブスクリプション キーを、Translator への要求に含まれる `Ocp-Apim-Subscription-Key` ヘッダー内の値として渡します。 サブスクリプション キーを直接使用する場合、トークン認証サービスを呼び出してアクセス トークンを作成する必要はありません。
 - [Azure Cognitive Services のマルチサービスのサブスクリプション](https://azure.microsoft.com/pricing/details/cognitive-services/)。 この方法では、単一の秘密鍵を使用して複数のサービスに対する要求を認証することができます。
 マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーを要求に含める必要があります。 最初のヘッダーで、秘密鍵を渡します。 2 つ目のヘッダーでは、サブスクリプションに関連付けられているリージョンを指定します。
    - `Ocp-Apim-Subscription-Key`
@@ -803,6 +803,6 @@ string
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Translator Text API v3 への移行](../migrate-to-v3.md)
+> [Translator v3 への移行](../migrate-to-v3.md)
 
 
