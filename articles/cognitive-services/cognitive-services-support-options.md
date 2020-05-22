@@ -132,7 +132,7 @@ Reddit はコミュニティ主導のディスカッション Web サイトで�
 | Speech Services               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | Text Analytics                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| [変換者]               | https://cognitive.uservoice.com/forums/558796-translator |
+| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>バグの報告
