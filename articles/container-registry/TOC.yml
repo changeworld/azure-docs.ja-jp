@@ -91,7 +91,7 @@
           items:
             - name: プライベート エンドポイントを使用したアクセスの制限
               href: container-registry-private-link.md
-            - name: サービス ファイアウォール規則の構成
+            - name: パブリック レジストリ アクセスの構成
               href: container-registry-access-selected-networks.md
             - name: サービス エンドポイントを使用したアクセスの制限 (プレビュー)
               href: container-registry-vnet.md

@@ -17,13 +17,13 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: IP グループを使用したデプロイ
+    - name: IP グループを使用したデプロイ - ARM テンプレート
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
-    - name: 複数のアドレスを使用したデプロイ
+    - name: 複数のアドレスを使用したデプロイ - ARM テンプレート
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
-    - name: Availability Zones を使用したデプロイ
+    - name: Availability Zones を使用したデプロイ - ARM テンプレート
       displayName: Resource Manager
       href: deploy-template.md
 - name: サンプル

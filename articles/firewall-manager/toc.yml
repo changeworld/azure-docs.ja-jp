@@ -4,8 +4,13 @@
   items:
     - name: Azure Firewall Manager とは
       href: overview.md
-- name: チュートリアル
+- name: クイックスタート
   expanded: true
+  items:
+    - name: 仮想ハブのセキュリティ保護
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: チュートリアル
   items:
     - name: 仮想 WAN のセキュリティ保護 - ポータル
       href: secure-cloud-network.md

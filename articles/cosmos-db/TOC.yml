@@ -71,10 +71,8 @@
       href: sql-api-dotnet-samples.md
     - name: .NET V3 SDK のサンプル
       href: sql-api-dotnet-v3sdk-samples.md
-    - name: Java のサンプル
-      href: sql-api-java-samples.md
-    - name: Async Java のサンプル
-      href: sql-api-async-java-samples.md
+    - name: Java SDK v4 のサンプル
+      href: sql-api-java-sdk-samples.md
     - name: Node.js のサンプル
       href: sql-api-nodejs-samples.md
     - name: Python のサンプル
@@ -132,11 +130,13 @@
         - name: 要求ユニット
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: コンテナーとデータベースのスループットのプロビジョニング
+        - name: プロビジョニングされたスループットの概要
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: スループットのプロビジョニング - 自動スケーリング
+        - name: 自動スケーリングのスループットをプロビジョニングする
           href: provision-throughput-autoscale.md
+        - name: 自動スケーリングと標準 (手動) のスループットのいずれかを選択
+          href: how-to-choose-offer.md
         - name: 自動スケーリングに関する FAQ
           href: autoscale-faq.md
     - name: SQL クエリ (SQL query)
@@ -492,12 +492,14 @@
           href: change-feed-functions.md
         - name: 変更フィードのプル モデル
           href: change-feed-pull-model.md
-    - name: Synapse Link を使用した分析
+    - name: Azure Synapse Link を使用した分析
       items:
-        - name: Azure Cosmos DB の Synapse Link
+        - name: Cosmos DB の Azure Synapse Link
           href: synapse-link.md
         - name: 分析ストア - 概要
           href: analytical-store-introduction.md
+        - name: Synapse Link でサポートされる機能
+          href: ../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Synapse Link に関する FAQ
           href: synapse-link-frequently-asked-questions.md
         - name: Synapse Link のユース ケース
@@ -568,6 +570,8 @@
           href: online-backup-and-restore.md
         - name: コンプライアンス
           href: compliance.md
+        - name: Azure Policy のサポート
+          href: policy.md
     - name: サービス クォータ
       href: concepts-limits.md
 - name: Cassandra、MongoDB、およびその他の API
@@ -664,8 +668,6 @@
             - name: Xamarin
               href: create-mongodb-xamarin.md
             - name: Golang
-              href: create-mongodb-golang.md
-            - name: Go
               href: create-mongodb-go.md
         - name: チュートリアル
           items:
@@ -922,12 +924,15 @@
           href: how-to-convert-session-token.md
     - name: プロビジョニング スループット
       items:
-        - name: コンテナーのスループットをプロビジョニングする
+        - name: コンテナーでの標準 (手動) スループットをプロビジョニングする
           displayName: 'request units, RUs, RU, collection level'
           href: how-to-provision-container-throughput.md
-        - name: データベースのスループットをプロビジョニングする
+        - name: データベースでの標準 (手動) スループットをプロビジョニングする
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: データベースまたはコンテナーでの自動スケーリングのスループットをプロビジョニングする
+          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+          href: how-to-provision-autoscale-throughput.md
         - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
           displayName: 'request units, RUs, RU, capacity'
           href: estimate-ru-with-capacity-planner.md
@@ -1020,10 +1025,14 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: 変更フィード - Async Java のサンプル
           href: create-sql-api-java-changefeed.md
-    - name: Synapse Link を使用した分析
+    - name: Azure Synapse Link を使用した分析
       items:
-        - name: Synapse Link の構成
+        - name: Azure Synapse Link を構成する
           href: configure-synapse-link.md
+        - name: Azure Synapse Link に接続する
+          href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Azure Synapse Spark を使用してクエリを実行する
+          href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Apache Spark による組み込みの分析
       items:
         - name: Azure Databricks の Spark コネクタ
@@ -1034,8 +1043,12 @@
       items:
         - name: ノートブックの有効化
           href: enable-notebooks.md
-        - name: 組み込みのノートブック コマンドの使用
-          href: use-notebook-features-and-commands.md
+        - name: GitHub からノートブックをインポートする
+          href: import-github-notebooks.md
+        - name: 組み込みの Python ノートブック コマンドを使用する
+          href: use-python-notebook-features-and-commands.md
+        - name: '組み込みの C# ノートブック コマンドを使用する'
+          href: use-csharp-notebook-features-and-commands.md
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF の記述
@@ -1160,6 +1173,8 @@
           href: migrate-relational-to-cosmos-db-sql-api.md
         - name: 移行 - Couchbase から SQL API へ
           href: couchbase-cosmos-migration.md
+        - name: 移行 - DynamoDB から SQL API へ
+          href: dynamo-to-cosmos.md
     - name: Bulk Executor ライブラリ
       items:
         - name: Bulk Executor ライブラリについて
@@ -1182,12 +1197,16 @@
       href: sql-api-sdk-dotnet-changefeed.md
     - name: .NET Bulk Executor ライブラリ
       href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java
-      href: sql-api-sdk-java.md
     - name: Java Bulk Executor ライブラリ
       href: sql-api-sdk-bulk-executor-java.md
-    - name: Async Java
-      href: sql-api-sdk-async-java.md
+    - name: Core 用 Java SDK v4
+      href: sql-api-sdk-java-v4.md
+    - name: 以前の Core 用 Java SDK
+      items:
+        - name: 非同期の Java SDK v2
+          href: sql-api-sdk-async-java.md
+        - name: 同期の Java SDK v2
+          href: sql-api-sdk-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python

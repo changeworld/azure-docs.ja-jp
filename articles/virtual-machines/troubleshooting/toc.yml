@@ -77,6 +77,10 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: 重要なサービスが失敗しました
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: ブート エラーのトラブルシューティング - ステータスが見つかりません
+          href: boot-error-status-not-found.md
+        - name: Windows Update のインストール容量のトラブルシューティング
+          href: windows-update-installation-capacity.md
         - name: ローカル ユーザーとグループ ポリシーの適用時に VM が応答しない
           href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: 起動可能なディスクではありません

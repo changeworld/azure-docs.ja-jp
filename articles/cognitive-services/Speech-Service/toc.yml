@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blob Storage に格納された音声を認識する
           href: quickstarts/from-blob.md
+        - name: 参照入力による発音評価
+          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: 操作方法ガイド
       items:
         - name: 音声認識モードを選択する
@@ -61,6 +63,8 @@
           href: how-to-custom-speech-inspect-data.md
         - name: カスタム音声の正確性を評価する
           href: how-to-custom-speech-evaluate-data.md
+        - name: カスタム音声の正確性を向上させる
+          href: how-to-custom-speech-improve-accuracy.md
         - name: Custom Speech 用のモデルをトレーニングする
           href: how-to-custom-speech-train-model.md
         - name: カスタム モデルをデプロイする

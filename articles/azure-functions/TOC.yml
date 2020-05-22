@@ -127,6 +127,9 @@
           href: 'functions-reference-node.md#typescript'
     - name: Security
       items:
+        - name: セキュリティの概要
+          href: security-concepts.md
+          displayName: 'secure, ssl'
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: 診断
@@ -332,6 +335,8 @@
       items:
         - name: ストレージのトラブルシューティング
           href: functions-recover-storage-account.md
+        - name: Python 依存関係のトラブルシューティング
+          href: recover-module-not-found.md
 - name: リファレンス
   items:
     - name: API リファレンス
@@ -347,12 +352,16 @@
         - name: BLOB ストレージ
           items:
             - name: 概要
+              displayName: Blob storage
               href: functions-bindings-storage-blob.md
             - name: トリガー
+              displayName: Blob storage
               href: functions-bindings-storage-blob-trigger.md
             - name: 入力
+              displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
             - name: 出力
+              displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
@@ -378,10 +387,13 @@
           items:
             - name: 概要
               href: functions-bindings-event-grid.md
+              displayName: Event Grid
             - name: トリガー
               href: functions-bindings-event-grid-trigger.md
+              displayName: Event Grid
             - name: 出力
               href: functions-bindings-event-grid-output.md
+              displayName: Event Grid
         - name: Event Hubs
           items:
             - name: 概要
@@ -408,10 +420,13 @@
           items:
             - name: 概要
               href: functions-bindings-http-webhook.md
+              displayName: HTTP
             - name: トリガー
               href: functions-bindings-http-webhook-trigger.md
+              displayName: HTTP
             - name: 出力
               href: functions-bindings-http-webhook-output.md
+              displayName: HTTP
         - name: Microsoft Graph
           href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
@@ -422,20 +437,26 @@
           items:
             - name: 概要
               href: functions-bindings-storage-queue.md
+              displayName: Queue storage
             - name: トリガー
               href: functions-bindings-storage-queue-trigger.md
+              displayName: Queue storage
             - name: 出力
               href: functions-bindings-storage-queue-output.md
+              displayName: Queue storage
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus
           items:
             - name: 概要
               href: functions-bindings-service-bus.md
+              displayName: Service Bus
             - name: トリガー
               href: functions-bindings-service-bus-trigger.md
+              displayName: Service Bus
             - name: 出力
               href: functions-bindings-service-bus-output.md
+              displayName: Service Bus
         - name: SignalR Service
           items:
             - name: 概要

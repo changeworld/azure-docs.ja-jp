@@ -407,8 +407,8 @@
       href: compliance-offerings.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
+    - name: Microsoft Q&A - Azure Backup
+      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報

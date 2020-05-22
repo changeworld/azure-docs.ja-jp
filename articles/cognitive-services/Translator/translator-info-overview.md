@@ -1,7 +1,7 @@
 ---
-title: Translator Text API とは - Translator Text API
+title: Translator とは - Translator
 titlesuffix: Azure Cognitive Services
-description: Translator Text API をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供できます。
+description: Translator をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供できます。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e4a1f2d778fb2b811d4c38dd26956e2eab51258a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78331044"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592663"
 ---
-# <a name="what-is-the-translator-text-api"></a>Translator Text API とは
+# <a name="what-is-the-translator"></a>Translator とは
 
-Translator Text API は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 [60 か国語](languages.md)を超える多言語のユーザー エクスペリエンスを追加し、使用しているハードウェア プラットフォームやオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
+Translator は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 [60 か国語](languages.md)を超える多言語のユーザー エクスペリエンスを追加し、使用しているハードウェア プラットフォームやオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
 
-Translator Text API は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
+Translator は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
 
-Microsoft Translator は、クラウドベースの機械翻訳サービスです。 その核となるサービス Translator Text API は、Microsoft のさまざまな製品やサービスに活かされているほか、世界中の膨大な数の企業がそのアプリケーションとワークフローに使用し、コンテンツを世界中のユーザーに届けることに成功しています。
+Translator は、クラウドベースの機械翻訳サービスです。 その核となるサービス Translator は、Microsoft のさまざまな製品やサービスに活かされているほか、世界中の膨大な数の企業がそのアプリケーションとワークフローに使用し、コンテンツを世界中のユーザーに届けることに成功しています。
 
-Translator Text API によって支えられた音声翻訳は、[Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) を通じて利用することもできます。 Translator Speech API と Custom Speech Service の機能が融合され、一元化された完全にカスタマイズ可能なサービスとなっています。 Speech Service は、Translator Speech API (2019 年 10 月 15 日に使用停止となる予定) の後継です。
+Translator によって支えられた音声翻訳は、[Microsoft Speech サービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/)を通じて利用することもできます。 Translator Speech API と Custom Speech Service の機能が融合され、一元化された完全にカスタマイズ可能なサービスとなっています。 Speech Service は、Translator Speech API (2019 年 10 月 15 日に使用停止となる予定) の後継です。
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -46,9 +46,9 @@ NMT の動作方法の詳細については、[こちら](https://www.microsoft.
 
 ## <a name="language-customization"></a>言語のカスタマイズ
 
-コア Microsoft Translator サービスの拡張機能である Custom Translator は、Translator Text API と組み合わせて使用することで、ニューラル翻訳システムをカスタマイズし、特定の用語やスタイルの翻訳を改善することができます。
+コア Microsoft Translator サービスの拡張機能であるカスタム翻訳ツールは、Translator と組み合わせて使用することで、ニューラル翻訳システムをカスタマイズし、特定の用語やスタイルの翻訳を改善することができます。
 
-Custom Translator を使用すると、独自のビジネスや業界で使用される用語を処理するニューラル翻訳システムを構築できます。 カスタマイズされた翻訳システムは、通常の Microsoft Translator Text API でカテゴリ パラメーターを使用して、複数の種類のデバイス全体で既存のアプリケーション、ワークフロー、および Web サイトに簡単に統合できます。
+Custom Translator を使用すると、独自のビジネスや業界で使用される用語を処理するニューラル翻訳システムを構築できます。 カスタマイズされた翻訳システムは、通常の Translator でカテゴリ パラメーターを使用して、複数の種類のデバイス全体で既存のアプリケーション、ワークフロー、および Web サイトに簡単に統合できます。
 
 [言語カスタマイズ](customization.md)の詳細
 

@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: Azure EA Portal の管理
           href: ea-portal-administration.md
+        - name: パートナー向けの Azure EA ポータル管理
+          href: ea-partner-portal-administration.md
+        - name: Azure エンタープライズ転送
+          href: ea-transfers.md
         - name: Microsoft 顧客契約における EA タスク
           href: mca-enterprise-operations.md
         - name: Azure EA 契約と修正
           href: ea-portal-agreements.md
         - name: エンタープライズ加入契約請求書
           href: ea-portal-enrollment-invoices.md
+        - name: Azure EA の価格
+          href: ea-pricing-overview.md
         - name: Azure Enterprise REST API
           href: ea-portal-rest-apis.md
         - name: Azure EA VM 予約インスタンス
           href: ea-portal-vm-reservations.md
         - name: Azure EA Portal のアクセスのトラブルシューティング
           href: ea-portal-troubleshoot.md
+        - name: Azure Marketplace
+          href: ea-azure-marketplace.md
 - name: トラブルシューティング
   items:
     - name: サブスクリプションが見つからない

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690820"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592187"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 
@@ -22,16 +22,7 @@ ms.locfileid: "82690820"
 
 **Q:何を利用できますか。**
 
-**A:** [Azure Cognitive Services でのコンテナーのサポート](../cognitive-services-container-support.md)を使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の[利点](../cognitive-services-container-support.md#features-and-benefits)があります。 コンテナー サポートは現在、以下を含む Azure Cognitive Services のサブセットにおいて、プレビューで使用できます。
-
-> [!div class="checklist"]
-> * [Anomaly Detector][ad-containers]
-> * [Computer Vision][cv-containers]
-> * [Face][fa-containers]
-> * [Form Recognizer][fr-containers]
-> * [Language Understanding (LUIS)][lu-containers]
-> * [Speech Service API][sp-containers]
-> * [Text Analytics][ta-containers]
+**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の[利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、[ゲート プレビュー](../cognitive-services-gating-process.md)として使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 
 
 **Q:Cognitive Services のクラウドとコンテナーには違いがありますか。**
 

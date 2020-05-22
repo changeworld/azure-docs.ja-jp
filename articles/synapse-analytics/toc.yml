@@ -25,9 +25,13 @@
         - name: Web ツールを使用して Apache Spark ノートブックを作成する
           href: quickstart-apache-spark-notebook.md
         - name: Azure portal を使用して Apache Spark プールを作成する
-          href: quickstart-create-apache-spark-pool.md
-        - name: SQL プールを作成する
-          href: quickstart-create-sql-pool.md
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Synapse Studio を使用して Apache Spark プールを作成する
+          href: quickstart-create-apache-spark-pool-studio.md
+        - name: Azure portal を使用して SQL プールを作成する
+          href: quickstart-create-sql-pool-portal.md
+        - name: Synapse Studio を使用して SQL プールを作成する
+          href: quickstart-create-sql-pool-studio.md
     - name: SQL プールを使用したデータの読み込み
       items:
         - name: COPY ステートメント
@@ -308,7 +312,7 @@
                   href: sql/develop-storage-files-overview.md
                 - name: ストレージ アクセス制御
                   href: sql/develop-storage-files-storage-access-control.md
-                - name: Spark テーブル
+                - name: Azure Synapse 外部テーブルの Apache Spark
                   href: sql/develop-storage-files-spark-tables.md
         - name: ワークロードの管理
           items:
@@ -328,8 +332,16 @@
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Synapse Link
       items:
+        - name: Azure Cosmos DB の Synapse Link
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: 分析ストアの概要
+          href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Link でサポートされる機能
           href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+        - name: Synapse Link に関する FAQ
+          href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Link のユース ケース
+          href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: ツール統合 (AI、ETL、BI)
       items:
         - name: Synapse Analytics Studio のトラブルシューティング
@@ -414,6 +426,8 @@
       items:
         - name: Synapse Link
           items:
+            - name: Synapse Link の構成
+              href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Cosmos DB の Azure Synapse Link に接続する
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
@@ -860,14 +874,16 @@
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 機能のリクエスト
+      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/synapse-analytics/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 機能のリクエスト
-      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
+    - name: 質問と回答
+      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

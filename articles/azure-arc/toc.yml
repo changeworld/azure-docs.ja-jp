@@ -4,15 +4,12 @@
   items:
     - name: サーバー向け Azure Arc とは
       href: ./servers/overview.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./servers/policy-samples.md
 - name: 操作方法ガイド
   items:
     - name: Azure Arc への接続
       items:
+        - name: Connected Machine エージェントの概要
+          href: ./servers/agent-overview.md
         - name: Azure portal から Azure Arc へのマシンの接続
           href: ./servers/onboard-portal.md
         - name: サービス プリンシパルを使用したマシンの大規模な接続
@@ -23,3 +20,8 @@
       items:
         - name: エージェントの管理
           href: ./servers/manage-agent.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md

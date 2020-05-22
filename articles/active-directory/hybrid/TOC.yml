@@ -278,6 +278,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: 同期規則の作成とカスタマイズ
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Azure AD Connect 同期 V2 エンドポイント API
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Azure AD Connect 同期サービス マネージャー
           items:
             - name: 'サービス マネージャーの [操作] タブの管理'

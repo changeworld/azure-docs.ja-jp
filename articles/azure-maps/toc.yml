@@ -259,6 +259,20 @@
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: 天気サービス
           href: 'https://docs.microsoft.com/rest/api/maps/weather'
+        - name: Maps Creator サービス
+          items:
+            - name: エイリアス サービス
+              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+            - name: 変換サービス
+              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+            - name: データセット サービス
+              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+            - name: 機能の状態サービス
+              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+            - name: タイルセット サービス
+              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+            - name: WFS サービス
+              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
         - name: Maps アカウント管理
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

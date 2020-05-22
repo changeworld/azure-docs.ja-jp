@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583226"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592782"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -191,11 +191,14 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > ニューラル音声でのみ、話し方を調整できます。
 
-既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声では、話し方を調整して、`<mstts:express-as>` 要素を使用して陽気さ、共感、または感情を表現することができます。 これは、Speech Service に固有の省略可能な要素です。
+既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、<mstts:express-as> 要素を使用してカスタム サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
+* `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
 
 変更は文章レベルで適用され、スタイルは音声によって異なります。 スタイルがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。
 
@@ -220,10 +223,15 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
 |                         | `style="empathetic"`      | 思いやりと理解を示します               |
+|   `pt-BR-FranciscaNeural`| `style="calm"`      | 落ち着いた語調を表します               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
-|                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |
+|                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |   
+| `zh-CN-YunyangNeural`  | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
+| `zh-CN-YunyeNeural`  | `style="calm"`      | 落ち着いた語調を表します               |  
+|                         | `style="sad"`       | 不満で不機嫌な語調を表します    |
+|                         | `style="serious"`         | 深刻で厳しい語調を表します        |   
 
 **例**
 
@@ -359,7 +367,10 @@ speechConfig!.setPropertyTo(
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>カスタム辞書を使用して発音を改善する
 
-TTS では、会社や外国の名前などの単語を正確に発音できない場合があります。 開発者は、SSML で `phoneme` および `sub` タグを使用してこのようなエンティティの読み取りを定義するか、`lexicon` タグを使用してカスタム辞書ファイルを参照することで複数のエンティティの読み取りを定義することができます。
+テキスト読み上げサービスでは、単語を正確に発音できない場合があります。 たとえば、会社名や医学用語などです。 開発者は、`phoneme` および `sub` タグを使用して、SSML で 1 つのエンティティの読み方を定義できます。 一方、複数のエンティティの読み方を定義する必要がある場合は、`lexicon` タグを使用してカスタム辞書を作成できます。
+
+> [!NOTE]
+> 現在、カスタム辞書では UTF-8 エンコードがサポートされています。 
 
 **構文**
 
@@ -375,14 +386,10 @@ TTS では、会社や外国の名前などの単語を正確に発音できな�
 
 **使用方法**
 
-手順 1:カスタム辞書を定義する 
-
-.xml または .pls ファイルとして保存されたカスタム辞書項目の一覧によって、エンティティの読み取りを定義できます。
-
-**例**
+複数のエンティティの読み方を定義するには、.xml ファイルまたは .pls ファイルとして保存されるカスタム辞書を作成します。 次に、サンプルの .xml ファイルを示します。
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,26 +407,46 @@ TTS では、会社や外国の名前などの単語を正確に発音できな�
 </lexicon>
 ```
 
-各 `lexeme` 要素は辞書項目です。 `grapheme` には、`lexeme` の正書法を説明するテキストが含まれています。 読み上げフォームは `alias` として指定できます。 音素文字列は `phoneme` 要素で指定できます。
+`lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alias`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。
 
-`lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alais`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。
+カスタム辞書を使用して単語の発音を直接設定することはできない点に注意してください。 発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
 
-カスタム辞書ファイルの詳細については、W3C Web サイトの「[Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)」 (発音辞書仕様 (PLS) バージョン 1.0) を参照してください。
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-手順 2:手順 1 で作成したカスタム辞書ファイルをオンラインでアップロードします。任意の場所に保存できます。たとえば、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) のように、Microsoft Azure に保存することをお勧めします。
+> [!IMPORTANT]
+> IPA を使用する場合、`phoneme` 要素に空白を含めることはできません。
 
-手順 3:SSML でカスタム辞書ファイルを参照する
+カスタム辞書ファイルの詳細については、「[Pronunciation Lexicon Specification (PLS) Version 1.0 (発音辞書仕様 (PLS) バージョン 1.0)](https://www.w3.org/TR/pronunciation-lexicon/)」を参照してください。
+
+次に、カスタム辞書ファイルを発行します。 このファイルの格納場所に関する制限はありませんが、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) を使用することをお勧めします。
+
+カスタム辞書を発行した後は、SSML から参照できます。
+
+> [!NOTE]
+> `lexicon` 要素は `voice` 要素内に指定する必要があります。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-"BTW" は "By the way" と読みます。 "Benigni" は、IPA の指定により、"bɛˈniːnji" と読みます。  
+
+このカスタム辞書を使用すると、"BTW" は "By the way" と読まれます。 "Benigni" は、IPA の指定により、"bɛˈniːnji" と読まれます。  
 
 **制限事項**
 - ファイル サイズ: カスタム辞書ファイル サイズの上限は 100 KB です。このサイズを超えると、合成要求は失敗します。
@@ -427,12 +454,14 @@ Could you help leave a message to Robert Benigni for me?
 
 **Speech サービス発音設定**
 
-上記のサンプルでは、国際音標アルファベット(IPA 音素セットとも呼ばれます) を使用しています。 IPA は国際標準であるため、開発者は IPA を使用することをお勧めします。 IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`、`zh-TW`) の発音セットが定義されています。
+上記のサンプルでは、国際音標アルファベット(IPA 音素セットとも呼ばれます) を使用しています。 IPA は国際標準であるため、開発者は IPA を使用することをお勧めします。 一部の IPA 文字には、Unicode で表現したときに "事前構成される" バージョンと "分解される" バージョンがあります。 カスタム辞書では、分解される unicode のみがサポートされます。
+
+IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`、`zh-TW`) の発音セットが定義されています。
 
 次に示すように、カスタム辞書では `alphabet` 属性の谷として `sapi` を使用できます。
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

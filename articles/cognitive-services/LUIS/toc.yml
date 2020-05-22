@@ -42,8 +42,6 @@
         - name: 2. ユーザー データの抽出
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. ユーザーの発話からセンチメントを取得する
-          href: tutorial-publish-settings.md
     - name: アプリの改善
       items:
         - name: 不明な予測を修正する

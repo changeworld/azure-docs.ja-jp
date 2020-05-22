@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: c065f3d12f98be85f45ed6233593d9ccab1cefa1
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 50252d0a308c4232b84bffddd905d8a84e1be0d8
+  ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201649"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83707974"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -47,7 +47,7 @@ conceptualContent:
       text: 音声認識の基礎
       url: speech-to-text-basics.md
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-speech-to-text.yml
   - title: テキスト読み上げ
     links:
@@ -61,7 +61,7 @@ conceptualContent:
       text: 音声合成の基本
       url: text-to-speech-basics.md
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-text-to-speech.yml
   - title: 音声翻訳
     links:
@@ -75,7 +75,7 @@ conceptualContent:
       text: 音声翻訳の基本
       url: speech-translation-basics.md
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-speech-translation.yml
   - title: 意図認識
     links:
@@ -89,7 +89,7 @@ conceptualContent:
       text: Language Understanding (LUIS) ポータル
       url: https://www.luis.ai
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-intent-recognition.yml
   - title: 会話のシナリオ
     links:
@@ -103,7 +103,7 @@ conceptualContent:
       text: コール センターの文字起こし
       url: call-center-transcription.md
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-conversation-scenarios.yml
   - title: 音声アシスタント
     links:
@@ -117,8 +117,16 @@ conceptualContent:
       text: Bot Framework を使用して音声アシスタントを作成する
       url: direct-line-speech.md
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-voice-assistants.yml
+  - title: Speaker Recognition
+    links:
+    - itemType: how-to-guide
+      text: Speaker Recognition について
+      url: ../Speaker-recognition/Home.md
+    - itemType: how-to-guide
+      text: Speaker Recognition API リファレンス
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
   - title: ツール
     links:
     - itemType: overview
@@ -142,7 +150,7 @@ conceptualContent:
       text: Azure Container Instances 上の音声サービス コンテナー
       url: deploy-speech-on-container-instances.md
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-hosting.yml
   - title: デバイス
     links:
@@ -156,7 +164,7 @@ conceptualContent:
       text: Speech Devices SDK を使用する
       url: speech-devices-sdk-quickstart.md
     footerLink:
-      text: 詳細情報
+      text: 詳細
       url: index-devices.yml
   - title: 移行
     links:

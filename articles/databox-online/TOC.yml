@@ -45,7 +45,7 @@
               href: data-box-gateway-connect-powershell-interface.md
         - name: モニター
           href: data-box-gateway-monitor.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           href: data-box-gateway-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
           href: azure-stack-edge-contact-microsoft-support.md
@@ -88,7 +88,11 @@
         - name: セキュリティの概要
           href: azure-stack-edge-security.md
         - name: 仕様の確認
-          href: azure-stack-edge-technical-specifications-compliance.md
+          items:
+            - name: デバイスの仕様
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: 電源コードの仕様
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: 方法
       items:
         - name: 'C# モジュールの開発'
@@ -109,7 +113,7 @@
               href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: azure-stack-edge-connect-powershell-interface.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           href: azure-stack-edge-troubleshoot.md
         - name: Microsoft サポートに問い合わせる
           href: azure-stack-edge-contact-microsoft-support.md

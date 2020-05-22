@@ -6,7 +6,6 @@
     - name: Azure の予約とは
       href: save-compute-costs-reservations.md
 - name: 操作方法ガイド
-  expanded: true
   items:
     - name: 購入内容の決定
       items:
@@ -56,12 +55,17 @@
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: 予約の交換と返金
           href: exchange-and-refund-azure-reservations.md
+    - name: コストの報告
+      items:
+        - name: 予約トランザクションの表示
+          href: view-purchase-refunds.md
+        - name: 予約コストのチャージバック
+          href: charge-back-usage.md
     - name: 予約の更新
       items:
         - name: 予約の更新
           href: reservation-renew.md
 - name: 概念
-  expanded: true
   items:
     - name: 予約の推奨事項を作成する方法
       href: reserved-instance-purchase-recommendations.md

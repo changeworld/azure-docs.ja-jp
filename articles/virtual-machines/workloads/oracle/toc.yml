@@ -4,6 +4,8 @@
       href: oracle-overview.md
     - name: Azure VM 上のソリューション
       href: oracle-vm-solutions.md
+    - name: WebLogic Server Azure アプリケーション
+      href: oracle-weblogic.md
     - name: OCI を使用したソリューション
       href: oracle-oci-overview.md
 - name: クイックスタート

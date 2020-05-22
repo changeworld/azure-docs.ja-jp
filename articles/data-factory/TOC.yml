@@ -25,8 +25,6 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: データ ファクトリの作成 - Resource Manager テンプレート
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
-      href: quickstart-enable-customer-managed-key.md
     - name: データ フローの作成
       href: data-flow-create.md
 - name: チュートリアル
@@ -188,8 +186,6 @@
               href: wrangling-data-flow-functions.md
     - name: ロールとアクセス許可
       href: concepts-roles-permissions.md
-    - name: 価格について
-      href: pricing-concepts.md
     - name: 名前付け規則
       href: naming-rules.md
 - name: 操作方法ガイド
@@ -370,6 +366,8 @@
           href: connector-servicenow.md
         - name: SFTP
           href: connector-sftp.md
+        - name: SharePoint Online リスト
+          href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
         - name: Spark
@@ -416,6 +414,8 @@
           href: copy-activity-schema-and-type-mapping.md
         - name: フォールト トレランス
           href: copy-activity-fault-tolerance.md
+        - name: データ整合性の検証
+          href: copy-activity-data-consistency.md
         - name: フォーマットと圧縮のサポート (レガシ)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: データを変換する
@@ -553,8 +553,12 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Data Factory のマネージド ID
           href: data-factory-service-identity.md
+        - name: カスタマー マネージド キーの暗号化
+          href: quickstart-enable-customer-managed-key.md
     - name: 監視と管理
       items:
+        - name: 視覚的な監視
+          href: monitor-visually.md
         - name: Azure Monitor による監視
           href: monitor-using-azure-monitor.md
         - name: SDK を使用した監視
@@ -577,6 +581,8 @@
           href: create-azure-ssis-integration-runtime.md
         - name: 共有のセルフホステッド統合ランタイム
           href: create-shared-self-hosted-integration-runtime-powershell.md
+        - name: セルフホステッド統合ランタイムのオートメーション スクリプト
+          href: self-hosted-integration-runtime-automation-scripts.md
     - name: Azure での SSIS パッケージの実行
       items:
         - name: SSDT からの Azure での SSIS パッケージの実行
@@ -597,12 +603,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure-SSIS IR の Azure AD 認証の有効化
           href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Windows 認証でのデータへの接続
-          href: ssis-azure-connect-with-windows-auth.md
-        - name: ファイルの保存とファイル共有への接続
-          href: ssis-azure-files-file-shares.md
         - name: Azure-SSIS IR の Enterprise Edition のプロビジョニング
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Azure-SSIS IR の組み込みおよびプレインストール コンポーネント
+          href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: Azure-SSIS IR の設定のカスタマイズ
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Azure-SSIS IR のライセンス付きコンポーネントのインストール
@@ -613,6 +617,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Elastic Database ジョブで SSISDB のログをクリーンアップする
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Azure-SSIS IR で Azure SQL Managed Instance を使用する
+          href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSMS を使用した SSIS ジョブの移行
           href: how-to-migrate-ssis-job-ssms.md
     - name: トリガーの作成
@@ -645,6 +651,12 @@
           href: solution-template-move-files.md
         - name: Azure Databricks による変換
           href: solution-template-databricks-notebook.md
+    - name: 価格について
+      items:
+        - name: コストの計画と管理
+          href: plan-manage-costs.md
+        - name: 価格の例
+          href: pricing-concepts.md
     - name: トラブルシューティング ガイド
       items:
         - name: Activities

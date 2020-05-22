@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 03/17/2020
-  ms.openlocfilehash: 5745c6c9a7f380d7e9b1d8d59d56a81581c66e14
-  ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+  ms.openlocfilehash: 99b15e3b311a033e346cb8994bb9109401d90a20
+  ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/26/2020
-  ms.locfileid: "80294311"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83715770"
 highlightedContent:
   items:
   - title: Azure ネットワークとは
@@ -32,9 +32,9 @@ highlightedContent:
   - title: Azure のハブスポーク ネットワーク トポロジ
     itemType: architecture
     url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: SQL データベース サーバーへのプライベート アクセス
-    itemType: tutorial
-    url: ../private-link/create-private-endpoint-portal.md
+  - title: ルーティング設定とは
+    itemType: concept
+    url: ../virtual-network/routing-preference-overview.md
   - title: Azure サービスを使用したリモートでの作業
     itemType: concept
     url: working-remotely-support.md

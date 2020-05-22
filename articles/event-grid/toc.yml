@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Azure サブスクリプション
               href: event-schema-subscriptions.md
+    - name: パートナー トピック
+      items:
+        - name: パートナー トピックの概要
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: Event Grid パートナーになる
+          href: partner-onboarding-overview.md
     - name: イベント ドメイン
       href: event-domains.md
     - name: イベント スキーマの形式
@@ -186,6 +194,8 @@
   items:
     - name: カスタム トピックへの投稿
       href: post-to-custom-topic.md
+    - name: Auth0 イベントをサブスクライブする
+      href: auth0-how-to.md
     - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md
     - name: 配信不能と再試行
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: Webhook を AAD で保護する
           href: secure-webhook-delivery.md
+        - name: マネージド ID を使用したイベント配信
+          href: managed-service-identity.md
     - name: トラブルシューティング
       items:
         - name: Traffic Manager で診断ログを有効にする

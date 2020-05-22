@@ -200,6 +200,8 @@
               href: howto-create-users.md
             - name: Azure AD の統合の構成
               href: howto-configure-sign-in-aad-authentication.md
+            - name: マネージド ID を使用して接続する
+              href: howto-connect-with-managed-identity.md
         - name: 最適化
           items:
             - name: 一括挿入

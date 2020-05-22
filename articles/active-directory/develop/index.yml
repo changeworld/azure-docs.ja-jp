@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: f5b1594993a1d4361746847439374dd2b7122510
-  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.openlocfilehash: 71f591f04e8762761c449ca4924db5edb4de3f6c
+  ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/31/2020
-  ms.locfileid: "80420095"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83681768"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -30,16 +30,14 @@ landingContent:
     links:
     - text: 認証の基本
       url: authentication-scenarios.md
-    - text: 基本的な概念についてのビデオ
-      url: identity-videos.md
     - text: 認証フローとアプリ シナリオ
       url: authentication-flows-app-scenarios.md
     - text: ベスト プラクティスと推奨事項
       url: identity-platform-integration-checklist.md
-  - linkListType: learn
+  - linkListType: video
     links:
-    - text: One Dev Minute - Microsoft ID プラットフォーム
-      url: https://youtu.be/y_fgJAatVhk
+    - text: 系列:開発者向け ID プラットフォーム
+      url: identity-videos.md
 - title: シングルページ アプリの構築
   linkLists:
   - linkListType: get-started
@@ -48,13 +46,17 @@ landingContent:
       url: scenario-spa-overview.md
   - linkListType: quickstart
     links:
-    - text: JavaScript
+    - text: JavaScript - 認証コード
+      url: quickstart-v2-javascript-auth-code.md
+    - text: JavaScript - 暗黙的
       url: quickstart-v2-javascript.md
     - text: Angular
       url: quickstart-v2-angular.md
   - linkListType: tutorial
     links:
-    - text: JavaScript
+    - text: JavaScript - 認証コード
+      url: tutorial-v2-javascript-auth-code.md
+    - text: JavaScript - 暗黙的
       url: tutorial-v2-javascript-spa.md
   - linkListType: download
     links:

@@ -276,6 +276,8 @@
       items:
         - name: Azure AD の統合の構成
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: マネージド ID を使用して接続する
+          href: howto-connect-with-managed-identity.md
     - name: パブリック ネットワーク アクセスの拒否
       items:
         - name: Azure portal

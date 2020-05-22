@@ -366,7 +366,7 @@
         - name: ダッシュボードとレポートのビルド
           items:
             - name: Power BI による視覚化
-              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect.md
+              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
     - name: トラブルシューティング
       items:
         - name: 接続
@@ -417,3 +417,5 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: データ管理
           href: sql-data-warehouse-partner-data-management.md
+        - name: パブリック プレビュー パートナー
+          href: sql-data-warehouse-partner-launch.md

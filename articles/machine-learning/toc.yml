@@ -79,9 +79,8 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: デザイナーのデータセット
-      href: sample-designer-datasets.md
-    - name: デザイナーのサンプル パイプライン
+    - name: デザイナーの例とデータセット
+      displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
@@ -261,6 +260,9 @@
             - name: データセットのバージョン管理と追跡
               displayName: 'data, data set'
               href: how-to-version-track-datasets.md
+            - name: データのプライバシーを維持する
+              displayName: 'data,privacy,differential privacy'
+              href: how-to-differential-privacy.md
     - name: モデルをトレーニングする
       items:
         - name: ML に Estimator を使用する
@@ -376,6 +378,9 @@
               href: how-to-monitor-data-drift.md
             - name: Application Insights での監視
               href: how-to-enable-app-insights.md
+        - name: 暗号化された推論サービスをデプロイする
+          displayName: 'homomorhic,encryption,deployment'
+          href: how-to-homomorphic-encryption-seal.md
     - name: ML パイプラインの作成と使用
       displayName: pipelines
       items:
@@ -393,9 +398,6 @@
         - name: Application Insights でパイプラインをデバッグする
           displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
-        - name: CI/CD 用の Azure Pipelines
-          displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
         - name: デザイナーによるデータの変換
           displayName: pipeline
           href: how-to-designer-transform-data.md
@@ -417,6 +419,9 @@
         - name: 機械学習パイプラインの反復処理と進化
           displayName: modularizing testing
           href: concept-pipeline-practices-tips.md
+    - name: CI/CD 用の Azure Pipelines
+      displayName: 'continuous, integration, delivery'
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md

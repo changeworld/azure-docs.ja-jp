@@ -59,6 +59,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: クラスターの容量計画
           href: ./hdinsight-capacity-planning.md
+        - name: CPU コア クォータの引き上げを要求する
+          href: ./quota-increase-request.md
         - name: クラスター管理のベスト プラクティス
           href: ./cluster-management-best-practices.md
         - name: 高可用性と信頼性
@@ -243,6 +245,8 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Apache Oozie のトラブルシューティング
               href: ./troubleshoot-oozie.md
+            - name: WebHCat エラーの説明と解決策
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: リファレンス
       items:
         - name: Azure PowerShell
@@ -285,8 +289,6 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Apache Hadoop サービスのヒープ ダンプの有効化
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: WebHCat エラーの説明と解決策
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
         - name: フォーラムで質問する
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
         - name: 料金計算ツール
@@ -330,6 +332,8 @@
           href: ./spark/apache-spark-settings.md
         - name: Apache Spark ジョブを最適化する
           href: ./spark/apache-spark-perf.md
+        - name: Spark 2.3 または 2.4 に移行する
+          href: ./spark/migrate-versions.md
     - name: 方法
       items:
         - name: ツールの使用
@@ -736,6 +740,8 @@
       items:
         - name: ゲートウェイのベスト プラクティス
           href: ./interactive-query/gateway-best-practices.md
+        - name: サイズ変更のガイドライン
+          href: ./interactive-query/sizing-guidelines.md
     - name: 方法
       items:
         - name: 開発
@@ -780,6 +786,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Apache Tez アプリケーションがハングする
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Apache Hive LLAP のサイズ変更のガイドライン
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Apache Hive LLAP クエリのパフォーマンス
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: レジューサーの速度が遅い

@@ -15,6 +15,9 @@
       href: quick-run-dotnet.md
     - name: Batch ジョブの実行 - Python
       href: quick-run-python.md
+    - name: Batch アカウントを作成する - ARM テンプレート
+      href: quick-create-template.md
+      displayName: Resource Manager
 - name: チュートリアル
   items:
     - name: ファイルの並列処理 - .NET
@@ -169,32 +172,32 @@
               href: batch-cli-templates.md
     - name: Batch Node.js SDK の使用
       href: batch-nodejs-get-started.md
-- name: ワークロードの実行
-  items:
-    - name: MPI ジョブ
-      href: batch-mpi.md
-    - name: コンテナー ワークロード
-      href: batch-docker-container-workloads.md
-    - name: 表示
+    - name: ワークロードの実行
       items:
-        - name: Azure を使用したレンダリング
-          href: batch-rendering-service.md
-        - name: VM イメージのレンダリング
-          href: batch-rendering-applications.md
-        - name: Batch レンダリングの機能
-          href: batch-rendering-functionality.md
-        - name: Batch レンダリングの使用
-          href: batch-rendering-using.md
-        - name: レンダー マネージャーの使用
-          href: batch-rendering-render-managers.md
-        - name: レンダリング アプリケーション参照
-          href: batch-rendering-application-reference.md
-        - name: ストレージとデータの移動
-          href: batch-rendering-storage-data-movement.md
-        - name: レンダリング アーキテクチャ
-          href: batch-rendering-architectures.md
-    - name: Batch と Data Factory を使用したデータ処理
-      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
+        - name: MPI ジョブ
+          href: batch-mpi.md
+        - name: コンテナー ワークロード
+          href: batch-docker-container-workloads.md
+        - name: 表示
+          items:
+            - name: Azure を使用したレンダリング
+              href: batch-rendering-service.md
+            - name: VM イメージのレンダリング
+              href: batch-rendering-applications.md
+            - name: Batch レンダリングの機能
+              href: batch-rendering-functionality.md
+            - name: Batch レンダリングの使用
+              href: batch-rendering-using.md
+            - name: レンダー マネージャーの使用
+              href: batch-rendering-render-managers.md
+            - name: レンダリング アプリケーション参照
+              href: batch-rendering-application-reference.md
+            - name: ストレージとデータの移動
+              href: batch-rendering-storage-data-movement.md
+            - name: レンダリング アーキテクチャ
+              href: batch-rendering-architectures.md
+        - name: Batch と Data Factory を使用したデータ処理
+          href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: リファレンス
   items:
     - name: Azure CLI

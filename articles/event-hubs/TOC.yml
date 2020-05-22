@@ -133,6 +133,8 @@
   items:
     - name: リージョン間で移動する
       href: move-across-regions.md
+    - name: パーティションを動的に追加する
+      href: dynamically-add-partitions.md
     - name: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
@@ -205,7 +207,7 @@
           href: event-hubs-ip-filtering.md
         - name: 仮想ネットワーク サービス エンドポイントの構成
           href: event-hubs-service-endpoints.md
-        - name: プライベート エンドポイントの構成 (プレビュー)
+        - name: プライベート エンドポイントの構成
           href: private-link-service.md
         - name: 顧客管理キーの構成
           href: configure-customer-managed-key.md

@@ -1,20 +1,33 @@
 ---
 title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
-ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: overview
+ms.date: 05/08/2020
+ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097729"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592799"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="may-2020---build"></a>2020 年 5 月 - //Build
+
+* **一般提供** (GA)としてリリース済み:
+    * [Language Understanding コンテナー](luis-container-howto.md)
+    * プレビュー ポータルが[現在のポータル](https://www.luis.ai)に昇格 ([以前の](https://previous.luis.ai)ポータルはまだ使用可能)
+    * 新しい機械学習エンティティの作成とラベル付けエクスペリエンス
+    * 複合エンティティや単純エンティティから機械学習エンティティへの[アップグレード プロセス](migrate-from-composite-entity.md)
+    * 単語バリアントを正規化する[設定](how-to-application-settings-portal.md)のサポート
+* プレビュー オーサリング API の変更点
+    * 入れ子の機械学習エンティティのためのアプリ スキーマ 7.x
+    * [必須特徴量への移行](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+
 
 ### <a name="march-2020"></a>2020 年 3 月
 
@@ -26,7 +39,7 @@ ms.locfileid: "82097729"
 
 * 開発者の生産性の向上
     * [予測エンドポイント V3](luis-migration-api-v3.md) の一般提供。
-    * .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 形式のアプリをインポートおよびエクスポートする機能。 これにより、有効な CI/CD プロセスが可能になります。
+    * `.lu` ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 形式のアプリをインポートおよびエクスポートする機能。 これにより、有効な CI/CD プロセスが可能になります。
 * 言語の増加
     * [アラビア語とヒンディー語](luis-language-support.md) (パブリック プレビュー)。
 * 事前構築済みのモデル

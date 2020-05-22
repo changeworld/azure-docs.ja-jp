@@ -6,8 +6,14 @@
       href: overview-iot-central.md
     - name: UI について
       href: overview-iot-central-tour.md
+    - name: デバイスの開発
+      href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
+        - name: 2020 年 4 月の新機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: 2020 年 4 月の更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
         - name: 2020 年 3 月
           href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
 - name: クイックスタート
@@ -81,6 +87,8 @@
           href: howto-manage-devices.md
         - name: ルールを構成する
           href: howto-configure-rules.md
+        - name: ワークフローを使用して他のサービスと統合する
+          href: howto-configure-rules-advanced.md
         - name: デバイス データを分析する
           href: howto-create-analytics.md
         - name: ダッシュボードへのタイルの追加

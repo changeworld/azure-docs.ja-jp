@@ -1,7 +1,7 @@
 - name: コマーシャル マーケットプレースのドキュメント
   href: index.yml
   items:
-    - name: コマーシャル マーケットプレースのロードマップ
+    - name: コマーシャル マーケットプレースの更新
       href: ./marketplace-roadmap.md
     - name: 商業マーケットプレースのポリシーと利用規約
       href: ./policies-terms.md
@@ -76,10 +76,6 @@
 - name: クラウド パートナー ポータル
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
-    - name: クラウド パートナー ポータルのパートナー センターへの移行
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
-    - name: 移行に関する FAQ
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: ポータル ツアー
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -134,8 +130,6 @@
           items:
             - name: 作業の開始
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: 新機能
-              href: ./cloud-partner-portal-orig/si-changes.md
             - name: Web 分析
               href: ./cloud-partner-portal-orig/web-analytics.md
             - name: 定義
@@ -264,67 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 仮想マシンのオファー
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: 前提条件
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: VM オファーの作成
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: '[プランの設定] タブ'
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: '[SKU] タブ'
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: '[体験版] タブ'
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: '[Marketplace] タブ'
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: '[サポート] タブ'
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: VM の技術資産の作成
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: VHD の作成
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: VHD の作成に関する一般的な問題
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: VM への接続
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: VM の構成
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Windows リモート管理
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: VM の作成後に WinRM を構成する
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: VM のデプロイ
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: ユーザー VM イメージの作成
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: キー コンテナー証明書の作成
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: キー コンテナー デプロイ テンプレート
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: ユーザー VHD からの VM のデプロイ
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: VHD デプロイ テンプレート
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: マーケットプレースからの VM のデプロイ
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: VM イメージの認定
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: VM の自己テスト クライアント
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: SAS URI の取得
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: SAS URL に関する一般的な問題
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: VM オファーの発行
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: 既存のオファーの更新
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
     - name: API リファレンス
       items:
         - name: 概要
@@ -361,6 +294,8 @@
   items:
     - name: コマーシャル マーケットプレースの概要
       href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: 移行に関する FAQ
+      href: ./cloud-partner-portal-migration-faq.md
     - name: アカウント管理
       items:
         - name: 新しいパートナー センター アカウントを作成する

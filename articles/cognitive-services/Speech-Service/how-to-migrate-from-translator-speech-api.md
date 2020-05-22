@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77560900"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593173"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Speech API から Speech Service に移行する
 
@@ -37,7 +37,7 @@ ms.locfileid: "77560900"
 | 1 つの要求での複数言語への翻訳 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | SDK が使用可能                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 使用できる SDK については､[Speech Service のドキュメント](index.yml)をご覧ください。                                                                                                                                                    |
 | WebSocket 接続                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 言語 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Speech Service は、[Translator API の言語リファレンス](../translator-speech/languages-reference.md)記事に記載された同じ言語範囲をサポートしています。 |
+| 言語 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Speech サービスは、[Translator の言語リファレンス](../translator-speech/languages-reference.md)記事に記載された同じ言語範囲をサポートしています。 |
 | 不適切な表現のフィルターとマーカー                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 入力として .WAV/PCM                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 入力としてその他のファイルの種類                         | :heavy_minus_sign:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -55,7 +55,7 @@ Translator Speech API を使用しているアプリケーションを開発中�
 
 * アプリケーションが長時間維持される接続を使用していて、利用可能な SDK を使用できない場合は、WebSocket 接続を使用できます。 適切なタイミングで再接続して、10 分のタイムアウト制限を管理してください。
 
-* アプリケーションで Translator Text API と Translator Speech API を使用してカスタム変換を有効にしている場合は、Speech Service を使用して直接カテゴリ ID を追加することができます。
+* アプリケーションで Translator サービスと Translator Speech API を使用してカスタム変換を有効にしている場合は、Speech Service を使用して直接カテゴリ ID を追加することができます。
 
 * Translator Speech API とは異なり、Speech Service では、1 つの要求で複数の言語への翻訳を完了できます。
 
@@ -64,7 +64,7 @@ Translator Speech API を使用しているアプリケーションを開発中�
 * [Speech Service を無料で試す](get-started.md)
 * [クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Speech Service とは](overview.md)
 * [Speech Service と Speech SDK のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

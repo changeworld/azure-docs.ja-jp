@@ -240,10 +240,7 @@
               displayname: 'functions, monitor functions, automation'
               href: ../azure-functions/functions-monitoring.md
             - name: Azure Kubernetes Service
-              items:
-                - name: Kubernetes (非推奨)
-                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-                  href: app/kubernetes.md
+              href: app/kubernetes-codeless.md
             - name: スタンドアロン - 任意の環境
               items:
                 - name: Java (プレビュー)
@@ -1000,8 +997,6 @@
           items:
             - name: 可用性
               href: app/monitor-web-app-availability.md
-            - name: メトリック アラート
-              href: app/alerts.md
         - name: メトリック アラート ルール
           items:
             - name: メトリック アラートの管理
@@ -1268,6 +1263,8 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights コネクタ
           href: platform/app-insights-connector.md
+        - name: AKS コードレスのための Application Insights
+          href: app/kubernetes.md
         - name: Docker アプリケーションの監視
           href: app/docker.md
         - name: OMS ポータルの廃止

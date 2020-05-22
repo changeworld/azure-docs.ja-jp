@@ -118,10 +118,12 @@
       items:
         - name: クラスルーム ラボへのアクセス
           href: how-to-use-classroom-lab.md
-        - name: Linux VM にリモート デスクトップ接続を使用する
+        - name: Linux VM への接続
           href: how-to-use-remote-desktop-linux-student.md
         - name: RDP を使用して Mac から VM に接続する
-          href: connect-virtual-machine-mac-rdp.md
+          href: connect-virtual-machine-mac-remote-desktop.md
+        - name: RDP を使用して Chromebook から VM に接続する
+          href: connect-virtual-machine-chromebook-remote-desktop.md
         - name: 仮想マシンのパスワードを設定またはリセットする
           href: how-to-set-virtual-machine-passwords-student.md
         - name: サポート情報の表示 (学生)

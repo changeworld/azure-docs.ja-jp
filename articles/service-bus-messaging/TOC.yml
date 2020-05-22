@@ -184,6 +184,8 @@
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: 管理する
       items:
+        - name: メッセージング ユニットを自動的に更新する
+          href: automate-update-messaging-units.md
         - name: Azure PowerShell を使用したエンティティのプロビジョニング
           href: service-bus-manage-with-ps.md
         - name: Azure Monitor による Service Bus の監視
@@ -209,7 +211,7 @@
           href: service-bus-ip-filtering.md
         - name: 仮想ネットワーク サービス エンドポイントの構成
           href: service-bus-service-endpoints.md
-        - name: プライベート エンドポイントの構成 (プレビュー)
+        - name: プライベート エンドポイントの構成
           href: private-link-service.md
         - name: 顧客管理キーの構成
           href: configure-customer-managed-key.md
