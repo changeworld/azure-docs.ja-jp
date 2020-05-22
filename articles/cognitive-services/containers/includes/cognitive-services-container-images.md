@@ -6,40 +6,66 @@ manager: nitinme
 description: Cognitive Service のすべてのオファリングにおけるコンテナーのレジストリ、リポジトリ、イメージ名を表す 2 つの表を示します。
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: a854a090af908da691e9b26f5b0714c6560fc0ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876832"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590667"
 ---
 ### <a name="container-repositories-and-images"></a>コンテナーのリポジトリとイメージ
 
-次の表は、Azure Cognitive Services によって提供される使用可能なコンテナー イメージの一覧です。 利用できるコンテナー イメージ名とその利用できるタグの完全一覧が必要であれば、[Cognitive Services コンテナー イメージ タグ](../container-image-tags.md)に関するページを参照してください。 現在、一般提供 (GA) されている Cognitive Services コンテナーはありません。 差し当たり、新たな発表があるまでは、"*パブリックのゲートなし*" または "*パブリックのゲート付きプレビュー*" としてコンテナーが提供されます。
+次の表は、Azure Cognitive Services によって提供される使用可能なコンテナー イメージの一覧です。 利用できるコンテナー イメージ名とその利用できるタグの完全一覧が必要であれば、[Cognitive Services コンテナー イメージ タグ](../container-image-tags.md)に関するページを参照してください。 
 
- - "*パブリックのゲートなし*": コンテナーは、ゲート メカニズムなしでパブリックに提供されます。
- - "*パブリックのゲート付きプレビュー*": コンテナーはパブリックに提供されますが、コンテナー レジストリにアクセスするための正式なリクエストが最初に必要となります。
+#### <a name="generally-available"></a>一般公開 
 
-#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>パブリックで "ゲートされていない" (コンテナー レジストリ: `mcr.microsoft.com`)
+Microsoft コンテナー レジストリ (MCR) からは、Cognitive Services 用に一般提供されているすべてのコンテナーが配信されています。 コンテナーは、[Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) から直接入手することもできます。
 
-Microsoft Container Registry (MCR) では、Cognitive Services 向けに一般公開されている "ゲートなし" コンテナーをすべて配信しています。 コンテナーは、[Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) から直接入手することもできます。
+#### <a name="luis"></a>[LUIS](#tab/luis)
+
+| LUIS コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
+|--|--|
+| LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+
+詳細については、[LUIS コンテナーの実行およびインストール方法](../../LUIS/luis-container-howto.md)に関するページを参照してください。
+
+#### <a name="text-analytics"></a>[Text Analytics](#tab/text-analytics)
+
+| Text Analytics コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
+|--|--|
+| 感情分析 v3 (英語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en` |
+| 感情分析 v3 (スペイン語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-es` |
+| 感情分析 v3 (フランス語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-fr` |
+| 感情分析 v3 (イタリア語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-it` |
+| 感情分析 v3 (ドイツ語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-de` |
+| 感情分析 v3 (簡体字中国語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zh` |
+| 感情分析 v3 (繁体字中国語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zht` |
+| 感情分析 v3 (日本語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-ja` |
+| 感情分析 v3 (ポルトガル語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-pt` |
+| 感情分析 v3 (オランダ語) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-nl` |
+
+詳細については、[Text Analytics コンテナーの実行およびインストール方法](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md)に関するページを参照してください。
+
+---
+
+#### <a name="public-ungated-preview-container-registry-mcrmicrosoftcom"></a>パブリックの "ゲートなし" プレビュー (コンテナー レジストリ: `mcr.microsoft.com`)
+
+次のプレビュー コンテナーは、一般公開されています。 Microsoft コンテナー レジストリ (MCR) では、Cognitive Services 向けに一般提供されているゲートなしコンテナーをすべて配信しています。 コンテナーは、[Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) から直接入手することもできます。
 
 | サービス | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cogni'ive-services/luis` |
 | [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | キー フレーズ抽出 | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 | [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 言語検出 | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 感情分析 | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+| [Anomaly Detector](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>パブリックの "ゲート付き" プレビュー (コンテナー レジストリ: `containerpreview.azurecr.io`)
 
-Container プレビューのレジストリでは、Cognitive Services 向けに一般公開されている "ゲート付き" コンテナーをすべてホストしています。 これらのコンテナーについては、コンテナー レジストリ経由でアクセスするための正式なリクエストが必要となります。
+次のゲート付きプレビュー コンテナーはコンテナー プレビュー レジストリでホストされており、アクセスするにはアプリケーションが必要です。 詳細については、[Cognitive Services のゲート プロセス](../../cognitive-services-gating-process.md)に関するページを参照してください。
 
 | サービス | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |--|--|--|
-| [Anomaly Detector](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
 | [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Read | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [Face](../../face/face-how-to-install-containers.md) | Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Form recognizer](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
