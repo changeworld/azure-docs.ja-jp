@@ -1623,20 +1623,6 @@
                     - name: Azure AD トークン認証の概要
                       href: /azure/databricks/dev-tools/api/latest/aad/index
                       maintainContext: true
-                    - name: Azure AD 認証ライブラリを使用した Azure AD トークンの取得
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: サービス プリンシパルを使用した Azure AD トークンの取得
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: Azure AD アクセス トークンのトラブルシューティング
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Azure Active Directory トークン
-                  items:
-                    - name: Azure AD トークン認証の概要
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
                     - name: AAD 認証ライブラリを使用した Azure AD トークンの取得
                       href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
                       maintainContext: true
