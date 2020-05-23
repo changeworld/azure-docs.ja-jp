@@ -35,12 +35,12 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
 
 1. アーティファクトまたは Resource Manager テンプレートの定義を含む GitHub リポジトリのホーム ページに移動します。
-2. **[複製またはダウンロード]** を選択します。
+2. **[Clone or download]\(複製またはダウンロード\)** を選択します。
 3. **[HTTPS clone URL]** ボタンをクリックして、URL をクリップボードにコピーします。 後で使用するために URL を保存します。
 4. GitHub の右上隅にあるプロファイル画像を選択し、 **[Settings]** を選択します。
-5. 左側にある **[個人設定]** メニューで、 **[開発者向け設定]** を選択します。
-6. 左側のメニューで **[個人用アクセス トークン]** を選択します。
-7. **[新しいトークンの生成]** を選択します。
+5. 左側にある **[Personal settings]\(個人設定\)** メニューで、 **[Developer Settings]\(開発者向け設定\)** を選択します。
+6. 左側のメニューで **[Personal access tokens]\(個人用アクセス トークン\)** を選択します。
+7. **[Generate new token]\(新しいトークンの生成\)** を選択します。
 8. **[New personal access token]** ページで、 **[Token description]** に説明を入力します。 **[Select scopes]** の既定の項目をそのまま使用し、 **[Generate Token]** を選択します。
 9. 生成されたトークンを保存します。 後でこのトークンを使用します。
 10. GitHub を閉じます。   
