@@ -81,7 +81,7 @@ az extension add --name azure-iot
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされたテレメトリの送信
 
-1. GitHub のサンプル Android プロジェクトを Android Studio で開きます。 このプロジェクトは、複製またはダウンロードした [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリのコピーの次のディレクトリにあります。
+1. GitHub のサンプル Android プロジェクトを Android Studio で開きます。 このプロジェクトは、クローンまたはダウンロードした [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリのコピーの次のディレクトリにあります。
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
