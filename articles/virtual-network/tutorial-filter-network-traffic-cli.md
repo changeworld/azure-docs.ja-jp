@@ -224,7 +224,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-*myVmWeb* VM は、インターネットに送信して nginx を取得することを許可されます。なぜなら、既定のセキュリティ規則では、インターネットへの送信トラフィックがすべて許可されるためです。 *myVmWeb* SSH セッションを終了すると、`username@myVmMgmt:~$`myVmMgmt*VM の* プロンプトに戻ります。 *myVmWeb* VM から nginx のようこそ画面を取得するには、次のコマンドを入力します。
+*myVmWeb* VM は、インターネットに送信して nginx を取得することを許可されます。なぜなら、既定のセキュリティ規則では、インターネットへの送信トラフィックがすべて許可されるためです。 *myVmWeb* SSH セッションを終了すると、*myVmMgmt*VM の`username@myVmMgmt:~$` プロンプトに戻ります。 *myVmWeb* VM から nginx のようこそ画面を取得するには、次のコマンドを入力します。
 
 ```bash
 curl myVmWeb

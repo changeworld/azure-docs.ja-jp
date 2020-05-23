@@ -16,7 +16,7 @@ Azure Container Instances は、実行中のコンテナーでのコマンドの
 
 ## <a name="run-a-command-with-azure-cli"></a>Azure CLI でコマンドを実行する
 
-[Azure CLI][az-container-exec] で [az container exec][azure-cli] を使用して、実行中のコンテナーでコマンドを実行します。
+[Azure CLI][azure-cli] で [az container exec][az-container-exec] を使用して、実行中のコンテナーでコマンドを実行します。
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"

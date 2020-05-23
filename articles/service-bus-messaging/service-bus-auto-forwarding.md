@@ -27,7 +27,7 @@ Service Bus の*自動転送*機能を使用すると、キューまたはサブ
 
 ## <a name="using-autoforwarding"></a>自動転送の利用
 
-自動転送は､以下の例のように､ソースの [QueueDescription][QueueDescription.ForwardTo] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription.ForwardTo] オブジェクトの [QueueDescription.ForwardTo][QueueDescription] または [SubscriptionDescription.ForwardTo][SubscriptionDescription] プロパティを、次の例のように設定することで有効にできます。
+自動転送は､以下の例のように､ソースの [QueueDescription][QueueDescription] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription] オブジェクトの [QueueDescription.ForwardTo][QueueDescription.ForwardTo] または [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] プロパティを、次の例のように設定することで有効にできます。
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);

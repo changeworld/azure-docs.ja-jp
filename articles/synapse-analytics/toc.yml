@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: チュートリアル
   items:
+    - name: はじめに
+      href: get-started.md
     - name: Spark プールに対して Apache Spark アプリケーションを実行する
       href: ./spark/intellij-tool-synapse.md
     - name: Spark ジョブ定義

@@ -14,12 +14,12 @@
           href: use-gitops-connected-cluster.md
         - name: Helm で GitOps を使用する
           href: use-gitops-with-helm.md
+        - name: Azure Policy を使用する
+          href: use-azure-policy.md
         - name: コンテナーに対する Azure Monitor
           href: deploy-azure-monitor-for-containers.md
         - name: Azure Policy アドオンをインストールする
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: Azure Policy を使用する
-          href: use-azure-policy.md
         - name: IoT ワークロードをデプロイする
           href: deploy-azure-iot-edge-workloads.md
         - name: サービス プリンシパルのオンボード

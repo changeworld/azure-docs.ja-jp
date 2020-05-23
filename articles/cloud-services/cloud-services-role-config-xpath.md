@@ -22,7 +22,7 @@ ms.locfileid: "75386087"
 ## <a name="app-running-in-emulator"></a>エミュレーターで実行中のアプリ
 アプリがエミュレーターで実行されていることを示します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
 | コード |var x = RoleEnvironment.IsEmulated; |
@@ -30,7 +30,7 @@ ms.locfileid: "75386087"
 ## <a name="deployment-id"></a>デプロイ ID
 インスタンスのデプロイ ID を取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | コード |var deploymentId = RoleEnvironment.DeploymentId; |
@@ -38,7 +38,7 @@ ms.locfileid: "75386087"
 ## <a name="role-id"></a>ロール ID
 インスタンスの現在のロール ID を取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
 | コード |var id = RoleEnvironment.CurrentRoleInstance.Id; |
@@ -46,7 +46,7 @@ ms.locfileid: "75386087"
 ## <a name="update-domain"></a>ドメインの更新
 インスタンスの更新ドメインを取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
 | コード |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
@@ -54,7 +54,7 @@ ms.locfileid: "75386087"
 ## <a name="fault-domain"></a>障害ドメイン
 インスタンスの障害ドメインを取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
 | コード |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
@@ -62,7 +62,7 @@ ms.locfileid: "75386087"
 ## <a name="role-name"></a>ロール名
 インスタンスのロール名を取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
 | コード |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
@@ -70,7 +70,7 @@ ms.locfileid: "75386087"
 ## <a name="config-setting"></a>構成設定
 指定した構成設定の値を取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
 | コード |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
@@ -78,7 +78,7 @@ ms.locfileid: "75386087"
 ## <a name="local-storage-path"></a>ローカル ストレージ パス
 インスタンスのローカル ストレージ パスを取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@path" |
 | コード |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1").RootPath; |
@@ -86,7 +86,7 @@ ms.locfileid: "75386087"
 ## <a name="local-storage-size"></a>ローカル ストレージ サイズ
 インスタンスのローカル ストレージのサイズを取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@sizeInMB" |
 | コード |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1").MaximumSizeInMegabytes; |
@@ -94,7 +94,7 @@ ms.locfileid: "75386087"
 ## <a name="endpoint-protocol"></a>エンドポイント プロトコル
 インスタンスのエンドポイント プロトコルを取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@protocol" |
 | コード |var prot = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].Protocol; |
@@ -102,7 +102,7 @@ ms.locfileid: "75386087"
 ## <a name="endpoint-ip"></a>エンドポイント IP
 指定したエンドポイントの IP アドレスを取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@address" |
 | コード |var address = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Address |
@@ -110,13 +110,13 @@ ms.locfileid: "75386087"
 ## <a name="endpoint-port"></a>エンドポイント ポート
 インスタンスのエンドポイント ポートを取得します。
 
-| 種類 | 例 |
+| Type | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@port" |
 | コード |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |
 
 ## <a name="example"></a>例
-`TestIsEmulated`[ xpath 値@emulatedに設定された ](#app-running-in-emulator) という環境変数でスタートアップ タスクを作成する worker ロールの例を次に示します。 
+[@emulated xpath 値](#app-running-in-emulator)に設定された `TestIsEmulated` という環境変数でスタートアップ タスクを作成する worker ロールの例を次に示します。 
 
 ```xml
 <WorkerRole name="Role1">
