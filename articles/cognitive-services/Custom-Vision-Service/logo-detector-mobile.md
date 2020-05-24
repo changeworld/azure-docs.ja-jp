@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="get-the-source-code"></a>ソース コードを入手する
 
-提供されている Web アプリを使用する場合は、GitHub 上の [AI Visual Provision](https://github.com/Microsoft/AIVisualProvision) リポジトリからアプリのソース コードを複製またはダウンロードします。 Visual Studio で *Source/VisualProvision.sln* ファイルを開きます。 後で、アプリを実行できるように、一部のプロジェクト ファイルを編集します。
+提供されている Web アプリを使用する場合は、GitHub 上の [AI Visual Provision](https://github.com/Microsoft/AIVisualProvision) リポジトリからアプリのソース コードをクローンまたはダウンロードします。 Visual Studio で *Source/VisualProvision.sln* ファイルを開きます。 後で、アプリを実行できるように、一部のプロジェクト ファイルを編集します。
 
 ## <a name="create-an-object-detector"></a>オブジェクト検出器を作成する
 
