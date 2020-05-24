@@ -208,7 +208,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 ### <a name="to-use-the-code-sample"></a>サンプル コードを使用するには
 
-1.    リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
+1.    リポジトリをクローンまたはダウンロードします。 RestApiSample ソリューションを開きます。
 2.    「**client.BaseAddress = …** 」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
 
 このコード例では、[サービス プリンシパル](#service-principal)の認証を使用しています。
