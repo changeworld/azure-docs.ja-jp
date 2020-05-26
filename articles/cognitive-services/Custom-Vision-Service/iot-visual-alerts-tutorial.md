@@ -68,7 +68,7 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
 
 次のステップに従って、お使いの PC または IoT デバイスで実行されている IoT Visual Alerts アプリを取得します。
 
-1. GitHub で [IoTVisualAlerts サンプル](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)を複製またはダウンロードします。
+1. GitHub で [IoTVisualAlerts サンプル](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)をクローンまたはダウンロードします。
 1. Visual Studio で、ソリューション _IoTVisualAlerts.sln_ を開きます
 1. Custom Vision プロジェクトを次のように統合します。
     1. _CustomVision\CustomVisionServiceWrapper.cs_ スクリプトで、トレーニング キーを使用して `ApiKey` 変数を更新します。
