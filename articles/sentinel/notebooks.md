@@ -56,7 +56,7 @@ Azure Sentinel ノートブックでは、pandas、matplotlib、bokeh など、�
 > [!div class="mx-imgBorder"]
 >![[Azure Notebooks にサインアップ] オプション](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
 
-Azure Sentinel から直接ノートブックを実行することも、すべての Azure Sentinel ノートブックを新しい Azure Notebooks プロジェクトに複製することもできます。
+Azure Sentinel から直接ノートブックを実行することも、すべての Azure Sentinel ノートブックを新しい Azure Notebooks プロジェクトにクローンすることもできます。
 
 ## <a name="run-a-notebook-from-azure-sentinel"></a>Azure Sentinel からノートブックを実行する
  
