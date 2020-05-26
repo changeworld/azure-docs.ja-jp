@@ -241,7 +241,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>完全なサンプルを表示して実行する
 
-サンプル アプリケーションを実行するには、最初に [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal) から複製またはダウンロードします。 その後、以下のセクションで説明するようにアプリケーションを更新します。
+サンプル アプリケーションを実行するには、最初に [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal) からクローンまたはダウンロードします。 その後、以下のセクションで説明するようにアプリケーションを更新します。
 
 ### <a name="provide-values-in-the-settings-file"></a>設定ファイルで値を提供する
 
