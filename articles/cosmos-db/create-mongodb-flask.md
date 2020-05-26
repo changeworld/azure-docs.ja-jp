@@ -34,9 +34,9 @@ ms.locfileid: "77061745"
 - [Python 3.6 以降](https://www.python.org/downloads/)
 - [Visual Studio Code](https://code.visualstudio.com/Download) と [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)。
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-それでは、GitHub から Flask-MongoDB アプリを複製し、接続文字列を設定して実行しましょう。 プログラムでデータを処理することが非常に簡単であることがわかります。
+それでは、GitHub から Flask-MongoDB アプリをクローンし、接続文字列を設定して実行しましょう。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -50,7 +50,7 @@ ms.locfileid: "77061745"
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git
