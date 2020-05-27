@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b8fad566b54ab645660011ad3188394b6f8190b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728069"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650086"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム: 例外管理 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -223,7 +223,7 @@ ASP.NET Web API での例外処理とモデルの検証の詳細については�
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [安全な失敗](https://www.owasp.org/index.php/Fail_securely) |
+| **参照**              | [安全な失敗](https://owasp.org/www-community/Fail_securely) |
 | **手順** | アプリケーションは安全に失敗する必要があります。 特定の意思決定に基づいてブール値を返すすべてのメソッドでは、例外ブロックを慎重に作成する必要があります。 十分に検討せずに例外ブロックを記述すると、セキュリティの問題が潜在する多くの論理エラーが発生します。|
 
 ### <a name="example"></a>例

@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: fcae1ed9064d38457ede73c675afb75ce4872fe6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611784"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651929"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル
 
@@ -134,7 +134,7 @@ Table storage では、表形式を使用してデータを格納します。 �
 
 Table storage では、個々のノードが 1 つ以上の完全なパーティションを提供し、サービスのスケーリングはノード間でパーティションの負荷を動的に分散させることで行われます。 ノードに負荷がかかっている場合、Table storage は、そのノードによって処理されるパーティションの範囲を別のノードに分割できます。 トラフィックが減少したら、Table storage は、複数の低負荷ノードから 1 つのノードにパーティション範囲をマージできます。  
 
-Table storage の内部詳細、特に、パーティションの管理方法については、[Microsoft Azure Storage: 強力な一貫性を備えた高可用性クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)に関する記事を参照してください。  
+Table storage の内部詳細、特に、パーティションの管理方法については、[Microsoft Azure Storage: 強力な一貫性を備えた高可用性クラウド ストレージ サービス](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)に関する記事を参照してください。  
 
 ### <a name="entity-group-transactions"></a>エンティティ グループ トランザクション
 エンティティ グループ トランザクション (EGT) は、Table storage で複数のエンティティ間でアトミックな更新を行うための唯一の組み込みのメカニズムです。 EGT は*バッチ トランザクション*とも呼ばれています。 EGT では、同じパーティションに格納されたエンティティしか処理できないため (特定のテーブルで同じパーティション キーを共有)、複数のエンティティにまたがるアトミックなトランザクション動作が必要な場合は、それらのエンティティを同じパーティションに格納してください。 これが、異なる種類のエンティティに複数のテーブルを使わずに、異なる種類のエンティティを同じテーブル (とパーティション) に格納する主な理由です。 単一の EGT で最大 100 個のエンティティを処理できます。  複数の並行処理 EGT を送信する場合は、それらの EGT が EGT 間の共通であるエンティティには動作しないことを確認することが重要です。 そのようにしないと、処理が遅延するおそれがあります。

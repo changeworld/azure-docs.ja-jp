@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 712a0707826f97f29b015a2c5892f8d20577e41b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e597fb9208430b8da447768608c48edef049d83
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687892"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653112"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>セキュリティ フレーム:入力の検証 | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -71,7 +71,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
+| **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
 | **手順** | <p>ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、`X-Content-Type-Options:nosniff` HTTP ヘッダーを使用する必要があります。 この要件に従うときは、ユーザーが制御可能なコンテンツが含まれている可能性のあるページだけを対象に、この必須のヘッダーをページごとに設定することも、アプリケーションのすべてのページにグローバルに設定することもできます。</p><p>Web サーバーから提供されるファイルの各種類には、コンテンツの性質 (画像、テキスト、アプリケーションなど) を示す [MIME の種類](https://en.wikipedia.org/wiki/Mime_type) ("*コンテンツ タイプ*" とも呼ばれます) が関連付けられています。</p><p>X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 このヘッダーのサポートは、Internet Explorer 8 (IE8) で追加されました。</p><p>Internet Explorer 8 (IE8) のユーザーだけが、X-Content-Type-Options のメリットを享受できます。 現在、以前のバージョンの Internet Explorer では、X-Content-Type-Options ヘッダーは考慮されません。</p><p>Internet Explorer 8 (以降) は、MIME スニッフィングのオプトアウト機能を実装する唯一の主要ブラウザーです。 他の主要ブラウザー (Firefox、Safari、Chrome) が同様の機能を実装したら、この推奨事項を更新して、それらのブラウザー用の構文も含める予定です。</p>|
 
 ### <a name="example"></a>例
@@ -213,7 +213,7 @@ MSXML6 では、ProhibitDTD は既定で true (DTD 処理の無効化) に設定
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [無制限のファイル アップロード](https://www.owasp.org/index.php/Unrestricted_File_Upload)、[ファイル シグネチャ テーブル](https://www.garykessler.net/library/file_sigs.html) |
+| **参照**              | [無制限のファイル アップロード](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)、[ファイル シグネチャ テーブル](https://www.garykessler.net/library/file_sigs.html) |
 | **手順** | <p>アップロードされたファイルは、アプリケーションにとって重大なリスクとなります。</p><p>多くの攻撃の第一段階は、攻撃対象のシステムに対するコードを取得することです。 コードを取得したら、攻撃に必要なのはそのコードを実行する方法を見つけることだけです。 ファイル アップロードを使用すると、攻撃者が第一段階を達成しやすくなります。 ファイル アップロードが制限されていない場合、システムの完全な乗っ取り、ファイル システムやデータベースの過負荷、バックエンド システムへの攻撃の転送、単純な改ざんなど、さまざな結果を招きます。</p><p>これは、アップロードされたファイルでアプリケーションが実行する内容と、特にファイルの保存場所に左右されます。 ファイル アップロードのサーバー側の検証はありません。 ファイル アップロード機能に次のセキュリティ制御を実装する必要があります。</p><ul><li>ファイル拡張子をチェックする (許可されているファイルの種類の有効なセットだけを受け入れます)。</li><li>最大ファイル サイズを制限する。</li><li>ファイルを Webroot にアップロードしないようにし、アップロードの場所をシステム ドライブ以外のドライブ上のディレクトリにする。</li><li>ファイルが上書きされないように、名前付け規則 (アップロードするファイルの名前にランダム性を持たせるなど) に従う。</li><li>ファイルをディスクに書き込む前に、ウイルス対策スキャンを実行する。</li><li>ファイル名とその他のメタデータ (ファイル パスなど) に悪意のある文字が含まれていないかどうかを必ず検証する。</li><li>ユーザーが偽装ファイルをアップロードできないように (拡張子を txt に変更して exe ファイルをアップロードするなど)、ファイル形式のシグネチャをチェックする。</li></ul>| 
 
 ### <a name="example"></a>例

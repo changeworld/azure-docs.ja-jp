@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77581839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652032"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter のノートブックを使用してセキュリティの脅威を検出する
 
@@ -56,7 +56,7 @@ Azure Sentinel ノートブックでは、pandas、matplotlib、bokeh など、�
 > [!div class="mx-imgBorder"]
 >![[Azure Notebooks にサインアップ] オプション](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
 
-Azure Sentinel から直接ノートブックを実行することも、すべての Azure Sentinel ノートブックを新しい Azure Notebooks プロジェクトにクローンすることもできます。
+Azure Sentinel から直接ノートブックを実行することも、すべての Azure Sentinel ノートブックを新しい Azure Notebooks プロジェクトに複製することもできます。
 
 ## <a name="run-a-notebook-from-azure-sentinel"></a>Azure Sentinel からノートブックを実行する
  
@@ -125,7 +125,7 @@ Azure Sentinel から直接ノートブックを実行することも、すべ�
 
 推奨事項:
 
-- Azure Sentinel でのデータのクエリに関する簡単な説明を確認するには、メインの **Notebooks** フォルダー内にある [[GetStarted]\(はじめに\)](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) ノートブックを参照してください。 
+- Azure Sentinel でのデータのクエリに関する簡単な説明を確認するには、メインの **Notebooks** フォルダー内にある [[GetStarted]\(はじめに\)](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/345cf9f7c8f6137f5af4593a3f9d7568acd6cbc2/DeprecatedNotebooks/Get%20Started.ipynb) ノートブックを参照してください。 
 
 - **Sample-Notebooks** サブフォルダー内には、別のサンプルのノートブックが用意されています。 これらのサンプルのノートブックは、データと共に保存されているため、所定の出力を簡単に確認できます。 これらのノートブックは、[nbviewer](https://nbviewer.jupyter.org/) で閲覧することをお勧めします。 
 

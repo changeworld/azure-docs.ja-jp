@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721882"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656547"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 
@@ -24,7 +24,7 @@ ms.locfileid: "76721882"
 > この項目はメンテナンス中です。 Azure Cognitive Services の Machine Learning アルゴリズムのギャラリーを利用する [Anomaly Detector API サービス](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/)を使用して、ビジネス、運用、および IoT のメトリックから異常を検出することをお勧めします。
 
 ## <a name="overview"></a>概要
-[異常検出 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
+[異常検出 API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
 
 この API で時系列データから検出できる異常パターンのタイプは次のとおりです。
 
@@ -39,20 +39,20 @@ ms.locfileid: "76721882"
 * たとえば目的のデータに関して異常検出 API から得られた結果は、 [Web アプリケーション](https://anomalydetection-aml.azurewebsites.net/) を使用して評価し、視覚化することができます。
 
 > [!NOTE]
-> [この API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) を利用した **IT Anomaly Insights ソリューション**をお試しください
+> [この API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) を利用した **IT Anomaly Insights ソリューション**をお試しください
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
 ## <a name="api-deployment"></a>API のデプロイ
-API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出を含む異常検出と季節性検出を含まない異常検出という、2 つの Azure Machine Learning Studio (クラシック) Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[Azure Machine Learning Studio (クラシック) Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
+API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出を含む異常検出と季節性検出を含まない異常検出という、2 つの Azure Machine Learning Studio (クラシック) Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[Azure Machine Learning Studio (クラシック) Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](/azure/machine-learning/studio/manage-new-webservice)を参照してください。
 
 ## <a name="scaling-the-api"></a>API のスケーリング
 既定では、デプロイは、1,000 件のトランザクション/月と 2 時間のコンピューティング時間/月が含まれる Dev/Test 料金プランで実行されます。  ニーズに応じて別のプランにアップグレードできます。  さまざまなプランの料金の詳細については、[こちらの](https://azure.microsoft.com/pricing/details/machine-learning/)「実稼働 Web API の価格」を参照してください。
 
 ## <a name="managing-aml-plans"></a>AML プランの管理
-課金プランは、[こちら](https://services.azureml.net/plans/)で管理できます。  プラン名は、API のデプロイ時に選択したリソース グループ名とサブスクリプションに固有の文字列に基づきます。  プランをアップグレードする手順については、[こちらの](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)「課金プランの管理」セクションを参照してください。
+課金プランは、[こちら](https://services.azureml.net/plans/)で管理できます。  プラン名は、API のデプロイ時に選択したリソース グループ名とサブスクリプションに固有の文字列に基づきます。  プランをアップグレードする手順については、[こちらの](/azure/machine-learning/studio/manage-new-webservice)「課金プランの管理」セクションを参照してください。
 
 ## <a name="api-definition"></a>API の定義
 この Web サービスは、REST ベースの API を HTTPS 経由で提供しますが、これは Web アプリケーションやモバイル アプリケーション、R、Python、Excel などを含むさまざまな方法で使用できます。時系列データを REST API 呼び出しによってこのサービスに送信することができ、後述する 3 つの異常の種類の組み合わせを実行します。

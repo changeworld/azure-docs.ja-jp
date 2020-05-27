@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 092b548e73330fe80ef10b2e25d9ab7883b256ac
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ce867d60c53b9befe5b4480693b54d2c9eba018
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595201"
+ms.locfileid: "83650058"
 ---
 # <a name="azure-stream-analytics-external-availability-error-codes"></a>Azure Stream Analytics の外部可用性エラー コード
 
@@ -20,11 +20,7 @@ ms.locfileid: "83595201"
 ## <a name="externalserviceunavailable"></a>ExternalServiceUnavailable
 
 * **原因**:サービスが一時的に利用できません。
-* **推奨事項**:Stream Analytics は引き続きサービスへの接続を試みます。 
-
-## <a name="kafkaservernotavailable"></a>KafkaServerNotAvailable
-
-* **原因**:Kafka サーバーを利用できません。
+* **推奨事項**:Stream Analytics は引き続きサービスへの接続を試みます。
 
 ## <a name="eventhubmessagingerror"></a>EventHubMessagingError
 

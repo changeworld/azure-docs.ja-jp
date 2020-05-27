@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2547a0fdbfbcc143ff822de333b41198f469375c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683266"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649322"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位にグループを追加して管理する
 
@@ -75,7 +75,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 ポータルで、**Azure AD > [管理単位]** の順にアクセスします。 ユーザーを一覧表示する管理単位を選択します。 既定では、左側のパネルで **[すべてのユーザー]** が既に選択されています。 **[すべての グループ]** を選択すると、選択した管理単位のメンバーであるグループの一覧が右側に表示されます。
 
-![削除する管理単位を選択する](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![管理単位のグループを一覧表示する](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

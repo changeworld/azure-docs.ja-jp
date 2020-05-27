@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: d703ea38c39ed556102271ac0cf9a609ce449bc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db310cb7ea5c3a89eb727262a7a7ed63ce55b5db
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195920"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650893"
 ---
 # <a name="using-custom-security-policies"></a>カスタム セキュリティ ポリシーの使用
 
@@ -100,8 +100,8 @@ Azure Security Center で提供される組み込みの推奨事項には、重�
     "metadata": {
         "securityCenter": {
             "remediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
-            "severity": "High",
-        },
+            "severity": "High"
+        }
     },
     "parameters": {
         "expressRouteLockLevel": {

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e199b0d6cf2be7dc956267843f4dabe521d87428
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897808"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647629"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AwardSpring の統合
 
@@ -157,7 +157,7 @@ AwardSpring で Azure AD SSO を構成してテストするには、次の構成
 このセクションでは、B.Simon というユーザーを AwardSpring に作成します。 AwardSpring では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 AwardSpring にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、[AwardSpring サポート チーム](maito:support@awardspring.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[AwardSpring サポート チーム](mailto:support@awardspring.com)にお問い合わせください。
 
 ## <a name="test-sso"></a>SSO のテスト
 

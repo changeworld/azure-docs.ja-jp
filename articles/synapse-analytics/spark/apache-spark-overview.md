@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b6af42f09351df60beb2aa449f8fcd2ff6a554e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116657"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644667"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Apache Spark とは
 
@@ -35,7 +35,7 @@ Azure Synapse の Spark プールでは、フル マネージドの Spark サー
 | 機能 | 説明 |
 | --- | --- |
 | スピードと効率 |Spark インスタンスの起動時間は、60 ノード未満の場合で約 2 分、それより多いの場合には約 5 分となります。 インスタンスの既定のシャットダウン時間は、ノートブック接続によって生存状態になっている場合を除き、最後のジョブが実行されてから 5 分です。 |
-| 作成のしやすさ |Azure Synapse には、Azure portal、Azure PowerShell、Synapse Analytics .NET SDK のいずれかを使用して新しい Spark プールを数分で作成できます。 [Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool.md)に関するページを参照してください。 |
+| 作成のしやすさ |Azure Synapse には、Azure portal、Azure PowerShell、Synapse Analytics .NET SDK のいずれかを使用して新しい Spark プールを数分で作成できます。 [Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool-studio.md)に関するページを参照してください。 |
 | 使いやすさ |Synapse Analytics には、[Nteract](https://nteract.io/) から派生したカスタム ノートブックが含まれています。 対話型のデータ処理と視覚化にこれらの Notebook を使用できます。|
 | REST API |Synapse Analytics の Spark には、ジョブの送信と監視をリモートで実行する REST API ベースの Spark ジョブ サーバーである [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) が含まれています。 |
 | Azure Data Lake Storage Generation 2 のサポート| Azure Synapse の Spark プールは、Blob Storage に加え、Azure Data Lake Storage Generation 2 も使用できます。 Data Lake Store の詳細については、「[Azure Data Lake Store の概要](../../data-lake-store/data-lake-store-overview.md)」を参照してください。 |
@@ -78,7 +78,7 @@ Apache Spark には、Spark を基に作成された機械学習ライブラリ�
 
 Synapse Analytics の Apache Spark の詳細については、次の記事を参照してください。
 
-- [クイック スタート: Azure Synapse の Spark プールを作成する](../quickstart-create-apache-spark-pool.md)
+- [クイック スタート: Azure Synapse の Spark プールを作成する](../quickstart-create-apache-spark-pool-portal.md)
 - [クイック スタート: Apache Spark ノートブックを作成する](../quickstart-apache-spark-notebook.md)
 - [チュートリアル:Apache Spark を使用した機械学習](./apache-spark-machine-learning-mllib-notebook.md)
 - [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/latest/)
@@ -90,4 +90,4 @@ Synapse Analytics の Apache Spark の詳細については、次の記事を参
 
 この概要では、Azure Synapse Analytics の Apache Spark の基本について理解します。 次の記事に進んで、Azure Synapse Analytics の Spark プールの作成方法を学習してください。
 
-- [Azure Synapse の Spark プールを作成する](../quickstart-create-apache-spark-pool.md)
+- [Azure Synapse の Spark プールを作成する](../quickstart-create-apache-spark-pool-portal.md)

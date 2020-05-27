@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d353aad9f0ecf871410dd94b0081381a0b1304c6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71129722"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647336"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apptio の統合
 
@@ -129,11 +129,11 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-apptio-sso"></a>Apptio の SSO の構成
 
-**Apptio** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Apptio サポート チーム](https://www.apptio.com/about/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Apptio** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Apptio サポート チーム](https://www.apptio.com/resources/customer-support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-apptio-test-user"></a>Apptio テスト ユーザーの作成
 
-このセクションでは、Apptio で B.Simon というユーザーを作成します。  [Apptio サポート チーム](https://www.apptio.com/about/contact)と協力して、Apptio プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Apptio で B.Simon というユーザーを作成します。  [Apptio サポート チーム](https://www.apptio.com/resources/customer-support/)と協力して、Apptio プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

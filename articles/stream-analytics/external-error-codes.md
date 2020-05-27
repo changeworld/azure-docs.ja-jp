@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: e7ef1adea72ed69dc11f0ea8c7e3ce0db3e6ab7c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fad0794a3628e6a89d1c2b2c80bb27d70937db95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594081"
+ms.locfileid: "83650039"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure Stream Analytics の外部エラー コード
 
@@ -24,10 +24,6 @@ ms.locfileid: "83594081"
 ## <a name="adapterfailedtowriteevents"></a>AdapterFailedToWriteEvents
 
 * **原因**:アダプターへのデータの書き込み中にエラーが発生しました。
-
-## <a name="kafkaservererror"></a>KafkaServerError
-
-* **原因**:Kafka サーバーからエラーが返されました:
 
 ## <a name="azurefunctionhttperror"></a>AzureFunctionHttpError
 

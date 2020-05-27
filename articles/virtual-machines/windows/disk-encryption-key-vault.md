@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1317989434cca9375c612c8af0525323c6dda3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081661"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656696"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
 
@@ -31,7 +31,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 これらの手順は、次のクイックスタートで説明されています。
 
 - [Azure CLI を使用して Windows VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
-- [Azure PowerShell を使用して Windows VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
+- [Azure PowerShell を使用して Windows VM を作成、暗号化する](disk-encryption-powershell-quickstart.md)
 
 また、必要に応じて、キー暗号化キー (KEK) を生成またはインポートすることもできます。
 

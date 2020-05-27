@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6214c7f0d7728d39e36a7b555f503e130b405e81
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743273"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653058"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure Synapse Analytics のリソース クラスを使用したワークロード管理
 
@@ -592,4 +592,4 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-データベース ユーザーの管理とセキュリティの詳細については、[SQL Analytics でのデータベース保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用してクラスター化列ストア インデックスの品質を向上させる方法については、[列ストアを圧縮するためのメモリの最適化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事を参照してください。
+データベース ユーザーの管理とセキュリティの詳細については、[Synapse SQL でのデータベース保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用してクラスター化列ストア インデックスの品質を向上させる方法については、[列ストアを圧縮するためのメモリの最適化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事を参照してください。
