@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67090572"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル: Azure Active Directory と Skillport の統合
 
@@ -139,7 +139,7 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-skillport-single-sign-on"></a>Skillport シングル サインオンの構成
 
-**Skillport** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Skillport サポート チーム](https://www.skillsoft.com/contact.asp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Skillport** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Skillport サポート チーム](https://www.skillsoft.com/about/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -194,7 +194,7 @@ Skillport で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-skillport-test-user"></a>Skillport のテスト ユーザーの作成
 
-エンド ユーザーの要件に応じた複数のビジネス シナリオがあるため、Skillport テスト ユーザーを作成するには、[Skillport サポート チーム](https://www.skillsoft.com/contact.asp)に連絡する必要があります。 ユーザーと話し合った後、Skillport サポート チームが構成します。
+エンド ユーザーの要件に応じた複数のビジネス シナリオがあるため、Skillport テスト ユーザーを作成するには、[Skillport サポート チーム](https://www.skillsoft.com/about/contact-us)に連絡する必要があります。 ユーザーと話し合った後、Skillport サポート チームが構成します。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229665"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679253"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -69,7 +69,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [OAuth2 暗黙的フロー](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 リソース所有者のパスワード資格情報](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |
-| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST とリダイレクトのバインディング。 |
+| [SAML2](connect-with-saml-service-providers.md)  |  |  |X  | POST とリダイレクトのバインディング。 |
 | OAuth1 |  |  |  | サポートされていません。 |
 | WSFED | X |  |  |  |
 

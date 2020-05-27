@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bcdfc3eb09b6c5ed4f8dde4d48a34bee8746e1e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7971681c3f0c99a11567e6a30e61167c5d42348c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593446"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680510"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>チュートリアル:SQL データ同期を使用して SQL Edge と Azure SQL Database のデータを同期する
 
@@ -32,7 +32,7 @@ SQL Edge は最新バージョンの [SQL Server データベース エンジン
 
 * Azure SQL Database のデプロイ内に、テーブルおよびその他の必要なオブジェクトを作成します。
 
-* Azure SQL Edge のデプロイ内に、必要なテーブルとオブジェクトを作成します。 詳細については、[SQL Edge での SQL Database DAC パッケージの使用](stream-analytics.md)に関するページを参照してください。
+* Azure SQL Edge のデプロイ内に、必要なテーブルとオブジェクトを作成します。 詳細については、[SQL Edge での SQL Database DAC パッケージの使用](deploy-dacpac.md)に関するページを参照してください。
 
 * Azure SQL Edge インスタンスを Azure SQL データ同期用の Data Sync Agent に登録します。詳細については、[オンプレミスの SQL Server データベースの追加](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem)に関するページを参照してください。
 

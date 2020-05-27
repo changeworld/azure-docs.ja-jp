@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 34a1495d1a14e35bc5a94bfc01f4034c6fd6de72
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596061"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677798"
 ---
 # <a name="creator-for-indoor-maps"></a>屋内マップ用の Creator
 
@@ -35,7 +35,7 @@ Drawing パッケージをアップロードするには、[Azure Maps Data Uplo
 
 ## <a name="convert-a-drawing-package"></a>Drawing パッケージを変換する
 
-[Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/data/conversion)では、アップロードした Drawing パッケージが屋内マップ データに変換されます。 Conversion サービスでは、パッケージの検証も行われます。 検証の問題は、エラーと警告の 2 種類に分類されます。 エラーが検出されると、変換処理は失敗します。 警告が検出された場合は、変換は成功します。 ただし、すべての警告を確認して解決することをお勧めします。 警告は、変換の一部が無視されたか、自動的に修正されたことを意味します。 警告を解決しないと、後のプロセスでエラーが発生する可能性があります。 詳細については、[Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)に関するページを参照してください。
+[Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/conversion)では、アップロードした Drawing パッケージが屋内マップ データに変換されます。 Conversion サービスでは、パッケージの検証も行われます。 検証の問題は、エラーと警告の 2 種類に分類されます。 エラーが検出されると、変換処理は失敗します。 警告が検出された場合は、変換は成功します。 ただし、すべての警告を確認して解決することをお勧めします。 警告は、変換の一部が無視されたか、自動的に修正されたことを意味します。 警告を解決しないと、後のプロセスでエラーが発生する可能性があります。 詳細については、[Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)に関するページを参照してください。
 
 エラーが発生すると、Conversion サービスから、[Azure Maps Drawing Error Visualizer](drawing-error-visualizer.md) スタンドアロン Web アプリケーションへのリンクが提供されます。 Drawing Error Visualizer を使用すると、変換プロセスの間に発生した [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を調べることができます。 エラーを修正したら、パッケージのアップロードと変換を試みることができます。
 
