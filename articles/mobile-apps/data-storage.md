@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb76151a3f952f932cc533b771283b5d45382366
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240912"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873444"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>クラウドからモバイル アプリケーション データを格納、同期、照会する
 どのような種類のアプリケーションをビルドする場合でも、お客様はおそらくデータを生成して処理することになります。 お客様のアプリケーションのユーザーは高い期待を寄せています。 彼らはあらゆる状況でアプリケーションが迅速かつシームレスに動作することを望んでいます。 また、ほとんどのアプリケーションは、複数のデバイスで機能します。 お客様は自分のアプリケーションに、デスクトップまたはモバイル デバイスからアクセスできます。 複数のユーザーが同時にアプリケーションを使用し、瞬時にリアルタイムでデータにアクセスできることを期待してデータを共有する可能性があります。
@@ -22,21 +22,6 @@ ms.locfileid: "80240912"
 Microsoft では、サーバーをスピンアップしたり、データベースを選択したり、スケーリングやセキュリティについて心配したりすることなく、可能な限り豊富なエクスペリエンスを提供するためのさまざまなサービスを提供しています。 これらのサービスでは、SQL または NoSQL API を使用してクラウドにアプリケーション データを格納できる優れた開発者エクスペリエンスが実現されています。 また、すべてのデバイス上のデータを同期し、アプリケーションがネットワーク接続の有無に関係なく動作するようにすることで、スケーラブルで堅牢なアプリケーションを容易に構築することができます。
 
 次のサービスを使用して、モバイル アプリケーション データをクラウドで管理および格納します。
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Data](/appcenter/data/) はデータ管理サービスです。 これを使用すると、アプリケーションでは、オンラインとオフラインのシナリオにおいて、クラウド内のアプリケーション データをさまざまなデバイスおよびプラットフォーム間で管理、保持、および同期することができます。 App Center Data は、Azure Cosmos DB の上に構築されているので、ご利用のユーザー ベースやアプリケーション数の増加に合わせてスケーリングされます。 これにより、ご利用のデータのすべてについて、低待機時間、高可用性、高スケーラビリティが実現されます。
-
-**主な機能**
-- Visual Studio App Center ポータルから新しい Azure Cosmos DB データベースまたは既存の Azure Cosmos DB データベースへのプロビジョニングを簡単に行うことができます。
-- アプリケーション データを簡単に格納、同期、および照会するための NoSQL データベースのサポート。
-- Azure Cosmos DB の上に構築されているため、このサービスは Azure Cosmos DB によって提供される主な機能の大部分を継承し、ビジネス ニーズに合わせてグローバルにスケーリング可能です。
-- デバイス間でデータを同期させるオンラインとオフラインの同期機能。
-- モバイル クライアント SDK。これを使用することで、プライベート アプリケーション データを簡単に管理することができます。
-- プラットフォームのサポート。iOS、Android、Xamarin、React Native が対象です。
-
-**参照**
-- [Visual Studio App Center でのサインアップ](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [App Center データを使ってみる](/appcenter/data/getting-started)
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、グローバル分散型のマルチモデル データベース サービスです。 これを使用すれば、世界規模のアプリケーションを構築することができます。 Azure Cosmos DB では、世界中の任意の数の Azure リージョンにわたって、スループットとストレージをエラスティックかつ個別にスケーリングすることができます。 使い慣れた API サーフェイスを使用して、1 桁ミリ秒の高速なデータ アクセスを利用できます。 これらのサーフェスには、SQL、MongoDB、Cassandra、Tables、または Gremlin が含まれます。 Azure Cosmos DB では、スループット、待機時間、可用性、整合性に関する包括的なサービス レベル アグリーメント (SLA) が一意に提供されます。

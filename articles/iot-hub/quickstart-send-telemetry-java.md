@@ -13,13 +13,13 @@ ms.custom:
 - seo-java-august2019
 - seo-java-september2019
 - mqtt
-ms.date: 06/21/2019
-ms.openlocfilehash: 954fe6f92b68d011aaff0fff7925b3409ee628cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: 225b9407bff4294288bb4834cbb0d919698b78c6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769105"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873150"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>クイック スタート:Azure IoT Hub にテレメトリを送信して Java アプリケーションで読み取る
 
@@ -133,7 +133,7 @@ az extension add --name azure-iot
 
     次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
 
-    ![デバイスによって対象の IoT ハブに送信された利用統計情報からの出力](media/quickstart-send-telemetry-java/iot-hub-simulated-device.png)
+    ![デバイスによって対象の IoT ハブに送信された利用統計情報からの出力](media/quickstart-send-telemetry-java/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
@@ -145,9 +145,9 @@ az extension add --name azure-iot
 
     | 変数 | Value |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
-    | `eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
-    | `iotHubSasKey`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
+    | `EVENT_HUBS_COMPATIBLE_ENDPOINT` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
+    | `EVENT_HUBS_COMPATIBLE_PATH`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
+    | `IOT_HUB_SAS_KEY`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
 
 3. ローカル ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
 
@@ -163,7 +163,7 @@ az extension add --name azure-iot
 
     次のスクリーンショットは、シミュレートされたデバイスがハブに送信した利用統計情報をバックエンド アプリケーションが受信したときの出力を示しています。
 
-    ![IoT hub に送信された利用統計情報をバックエンド アプリケーションが受信したときの出力](media/quickstart-send-telemetry-java/iot-hub-read-device-to-cloud.png)
+    ![IoT hub に送信された利用統計情報をバックエンド アプリケーションが受信したときの出力](media/quickstart-send-telemetry-java/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

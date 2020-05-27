@@ -19,7 +19,7 @@
           href: quickstarts/local-quickstart.md
         - name: Java の使用
           href: quickstarts/local-search-java-quickstart.md
-        - name: Node の使用
+        - name: Node.js の使用
           href: quickstarts/local-search-node-quickstart.md
         - name: Python の使用
           href: quickstarts/local-search-python-quickstart.md

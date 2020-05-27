@@ -1079,6 +1079,8 @@
       displayName: ARM
 - name: リソース
   items:
+    - name: Q & A
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: Resource Manager テンプレートを作成する
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
