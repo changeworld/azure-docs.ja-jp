@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214260"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873934"
 ---
 ::: zone target="docs"
 
@@ -56,7 +56,7 @@ Windows クライアントでは、次のものもインストールする必要
 | --- | --- |
 | Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
-| Windows Management Framework |5.0|
+| Windows Management Framework |5.1|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>Linux クライアントに必要なその他のソフトウェア
@@ -79,10 +79,6 @@ Data Box Disk でサポートされるストレージの種類の一覧を次に
 | クラシック | Standard |
 | General Purpose  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
 | BLOB ストレージ アカウント | |
-
->[!NOTE]
-> Azure Data Lake Storage Gen 2 アカウントはサポートされていません。
-
 
 ## <a name="supported-storage-types-for-upload"></a>アップロード用にサポートされているストレージの種類
 

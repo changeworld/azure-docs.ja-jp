@@ -1,21 +1,14 @@
 ---
 title: クイック スタート:質問のバッチを使用したナレッジ ベースのテスト
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: QnA Maker バッチ テスト ツールを使用して、期待される回答、信頼度スコア、および複数ターンのプロンプトについて、実際の QnA Maker リソース内のナレッジ ベースをテストします。
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/26/2020
+ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756698"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873671"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>クイック スタート:質問のバッチと期待される回答を使用したナレッジ ベースのテスト
 

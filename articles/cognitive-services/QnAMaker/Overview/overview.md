@@ -1,21 +1,14 @@
 ---
 title: QnA Maker サービスとは
-titleSuffix: Azure Cognitive Services
 description: QnA Maker は、データに自然な会話レイヤーを簡単に作成するクラウドベースの NLP サービスです。 これは、特定の自然言語入力に対して、カスタム ナレッジ ベース (KB) の情報から最も適切な回答を見つけるのに使用できます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 02/21/2020
-ms.author: diberry
-ms.openlocfilehash: 2863a086343b0a5d3bc69ae319dbe93d557bcb4a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052922"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873723"
 ---
 # <a name="what-is-the-qna-maker-service"></a>QnA Maker サービスとは
 
