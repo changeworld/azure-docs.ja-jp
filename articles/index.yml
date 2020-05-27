@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e550bc73a40b2c313f9ee2b8a7e9384d51844c38
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: 9232082e845ef651d188adcc2ccd5cd3b96d90b4
+  ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701719"
+  ms.lasthandoff: 05/26/2020
+  ms.locfileid: "83849605"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -204,13 +204,6 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/luis/index.yml
-  - title: ML Studio (クラシック)
-    summary: 予測分析ソリューションを簡単に構築、デプロイ、管理
-    imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning-studio-service.svg
-    azureCategories:
-    - ai-machine-learning
-    - iot
-    url: machine-learning/studio/index.yml
   - title: Microsoft Genomics
     summary: ゲノム シーケンシングと研究の分析情報を強化
     imageSrc: https://static.docs.com/ui/media/product/azure/genomics.svg

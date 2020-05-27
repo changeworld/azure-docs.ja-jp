@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671037"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797901"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -85,5 +85,5 @@ _B_ = 選択する 2 つ目のページ ビュー/カスタム イベント (**�
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
     - [ユーザー フロー](usage-flows.md)
-    - [ブック](../../azure-monitor/app/usage-workbooks.md)
+    - [ブック](../../azure-monitor/platform/workbooks-overview.md)
     - [ユーザー コンテキストの追加](usage-send-user-context.md)

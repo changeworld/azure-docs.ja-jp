@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690630"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799366"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
@@ -42,13 +42,13 @@ ms.locfileid: "82690630"
 
 - サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートに関するより深い分析情報を取得したいですか。
 
-- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
+- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
 
 
 
 この記事の内容は次のとおりです。
 
-- [Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)方法に精通していることを前提としています。
+- [Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)方法に精通していることを前提としています。
 
 - Monitor ブックを使用して、条件付きアクセス ポリシーの影響を把握したり、サインイン エラーをトラブルシューティングしたり、レガシ認証を識別したりする方法について説明します。
  
@@ -302,4 +302,4 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)
+[Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)

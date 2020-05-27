@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: cfdd0beac7d257a424d327df71602b4612c3da3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbace6b93e07571693b221bb3d2a947010b1e476
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536855"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799997"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -23,7 +23,7 @@ Azure Monitor でできることの例を次に示します。
 - [Azure Monitor for VMs](insights/vminsights-overview.md) と [Azure Monitor for Containers](insights/container-insights-overview.md) を使用して、インフラストラクチャの問題を相関付けます。
 - トラブルシューティングや詳細な診断のために、[Log Analytics](log-query/log-query-overview.md) を使用して監視データをドリルダウンします。
 - [スマート アラート](platform/alerts-smartgroups-overview.md)や[自動化されたアクション](platform/alerts-action-rules.md)により、大規模な運用をサポートします。
-- Azure の[ダッシュボード](learn/tutorial-logs-dashboards.md)と[ブック](app/usage-workbooks.md)により視覚化を作成します。
+- Azure の[ダッシュボード](learn/tutorial-logs-dashboards.md)と[ブック](platform/workbooks-overview.md)により視覚化を作成します。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
 
@@ -54,11 +54,11 @@ Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ�
 
 Azure Monitor はさまざまなソースからデータを収集できます。 アプリケーションやそれが依存するオペレーティング システムやサービスから、プラットフォーム自体に至るまで、アプリケーションのさまざまな階層のデータ監視を検討することができます。 Azure Monitor は、以下のそれぞれの層からデータを収集します。
 
-- **アプリケーション監視データ:** プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
-- **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
-- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。
-- **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
-- **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
+- **アプリケーション監視データ**:プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
+- **ゲスト OS 監視データ**:アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
+- **Azure リソース監視データ**:Azure リソースの操作に関するデータ。
+- **Azure サブスクリプション監視データ**:Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
+- **Azure テナントの監視データ**:Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
 
 Azure サブスクリプションを作成して仮想マシンや Web アプリなどのリソースを追加すると、Azure Monitor は即座にデータの収集を開始します。  リソースが作成または変更されると、[アクティビティ ログ](platform/platform-logs-overview.md)が記録されます。 リソースの状況や消費しているリソースは、[メトリック](platform/data-platform.md)からわかります。 
 

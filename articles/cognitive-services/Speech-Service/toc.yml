@@ -32,8 +32,6 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blob Storage に格納された音声を認識する
           href: quickstarts/from-blob.md
-        - name: 参照入力による発音評価
-          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: 操作方法ガイド
       items:
         - name: 音声認識モードを選択する
@@ -563,11 +561,14 @@
           href: devices-sdk-release-notes.md
 - name: ツール
   items:
-    - name: SPX
+    - name: Speech CLI
+      displayName: SPX
       items:
-        - name: Spark とは
+        - name: Speech CLI とは
+          displayName: What is SPX?
           href: spx-overview.md
-        - name: SPX の基本
+        - name: Speech CLI の基本
+          displayName: SPX basics
           href: spx-basics.md
     - name: Speech Studio
       items:

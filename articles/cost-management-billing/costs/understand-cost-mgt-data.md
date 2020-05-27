@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477617"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844524"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -126,7 +126,6 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
     - Notification Hubs
     - Service Bus
     - Time Series Insights
-    - VPN Gateway
     
 タグを使用するためのいくつかのヒントを次に示します。
 

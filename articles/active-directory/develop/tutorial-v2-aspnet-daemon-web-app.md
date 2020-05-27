@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201756"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641103"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>チュートリアル:Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
 
@@ -235,8 +235,8 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 1. [Azure Portal](https://portal.azure.com) に戻ります。
 1. 左側のペインで、 **[Azure Active Directory]** サービス、 **[アプリの登録]** の順に選択します。
 1. **dotnet-web-daemon-v2** アプリケーションを選択します。
-1. アプリケーションの **[認証]** ページで、 **[ログアウト URL]** フィールドをサービスのアドレスに更新します。 たとえば、[https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net) を使用します。
-1. **[ブランド]** メニューで、 **[ホーム ページ URL]** をサービスのアドレスに更新します。 たとえば、[https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net) を使用します。
+1. アプリケーションの **[認証]** ページで、 **[ログアウト URL]** フィールドをサービスのアドレスに更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`を使用します。
+1. **[ブランド]** メニューで、 **[ホーム ページ URL]** をサービスのアドレスに更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`を使用します。
 1. 構成を保存します。
 1. 同じ URL を、 **[認証]**  >  **[リダイレクト URI]** メニューの値のリストに追加します。 複数のリダイレクト URL がある場合には、リダイレクト URL ごとにそのアプリ サービスの URI を使用している新しいエントリを用意する必要があります。
 

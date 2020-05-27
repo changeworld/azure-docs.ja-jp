@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 57081cd948bcee1261415eae31f91b3c61f08c9f
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3bc71e10167b21b65616dd20f8edb9a1d902527e
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842553"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798349"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Application Gateway の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -52,7 +52,7 @@ WAF で現在サポートされているのは、CRS [2.2.9](application-gateway
 * ボット、クローラー、スキャナーの防止
 * アプリケーションのよくある構成ミスの検出 (Apache、IIS など)
 
-詳細については、[OWASP の 10 の脆弱性](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)に関するページを参照してください。
+詳細については、[OWASP の 10 の脆弱性](https://owasp.org/www-project-top-ten/)に関するページを参照してください。
 
 ## <a name="does-waf-support-ddos-protection"></a>WAF は DDoS 保護をサポートしていますか?
 

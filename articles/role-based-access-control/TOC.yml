@@ -11,15 +11,15 @@
   items:
     - name: ユーザーのアクセス権の表示
       href: check-access.md
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
 - name: チュートリアル
   items:
     - name: ユーザーへのアクセス権の付与 - ポータル
       href: quickstart-assign-role-user-portal.md
     - name: ユーザーへのアクセス権の付与 - PowerShell
       href: tutorial-role-assignments-user-powershell.md
-    - name: ユーザーへのアクセス権の付与 - Resource Manager テンプレート
-      displayName: 'ARM, resource manager template'
-      href: tutorial-role-assignments-user-template.md
     - name: グループへのアクセス権の付与 - PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: カスタム ロールの作成 - PowerShell
@@ -67,7 +67,8 @@
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
-        - name: Template
+        - name: ARM テンプレート
+          displayName: Resource Manager
           href: role-assignments-template.md
     - name: 拒否割り当てを一覧表示する
       items:
@@ -113,8 +114,8 @@
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST API
       href: /rest/api/authorization/
-    - name: Resource Manager テンプレート
-      displayName: ARM
+    - name: ARM テンプレート
+      displayName: Resource Manager
       items:
         - name: ロールの割り当て
           href: /azure/templates/microsoft.authorization/roleassignments

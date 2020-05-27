@@ -341,8 +341,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-postgresql.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: ビデオ

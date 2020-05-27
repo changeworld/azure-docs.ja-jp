@@ -3,14 +3,14 @@ title: 'クイック スタート: PHP Web アプリの作成'
 description: Azure App Service に、初めての PHP の Hello World を数分でデプロイします。 デプロイには、App Service への数あるデプロイ方法の 1 つである Git を使用します。
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 05/25/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: de51df50995c47800a2084108973c3b009ae3462
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d9ee9ac3abd7dada8e87bdf5a4385185933fc4ae
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085966"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847866"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -70,14 +70,14 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
 
-次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行します。 
+次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行します。 
 
 
 ```azurecli-interactive
 # Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
 # PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
 ```
 > [!NOTE]
 > 解析停止記号 `(--%)` は、PowerShell のコマンドや式として入力が解釈されないようにするための命令で、PowerShell 3.0 で導入されました。 
@@ -86,7 +86,7 @@ az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --
 Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 
 <pre>
-Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git'
+Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -94,7 +94,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.s
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "&lt;app_name&gt;.azurewebsites.net",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
   "enabled": true,
   &lt; JSON data removed for brevity. &gt;
 }
@@ -103,7 +103,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.s
 Git デプロイが有効な、空の新しい Web アプリが作成されました。
 
 > [!NOTE]
-> Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
+> Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
 >
 
 新しく作成された Web アプリに移動します。 _&lt;app name>_ は、前の手順で作成された一意のアプリ名で置き換えます。
@@ -118,7 +118,7 @@ http://<app name>.azurewebsites.net
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
-```bash
+<pre>
 Counting objects: 2, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
@@ -139,16 +139,16 @@ remote: Ignoring: .git
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
    cc39b1e..25f1805  master -> master
-```
+</pre>
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
 Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。
 
 ```
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 PHP のサンプル コードは、Azure App Service の Web アプリで実行されています。
