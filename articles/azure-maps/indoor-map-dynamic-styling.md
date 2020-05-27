@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6edc114a2d69dfe8f1e6e5d3c0a2d4af26dbad67
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d31edaea109f2969cc68c566594dc436be203d7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596601"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743541"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator の屋内マップに動的スタイル設定を実装する
 
-Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate/featurestate)を使用すると、屋内マップ データ地物の動的プロパティに基づいてスタイルを適用できます。  たとえば、施設の会議室を特定の色でレンダリングして、占有状態を反映できます。 この記事では、[Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate/featurestate)と [Indoor Web モジュール](how-to-use-indoor-module.md)を使用して、屋内マップ地物を動的にレンダリングする方法について説明します。
+Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate)を使用すると、屋内マップ データ地物の動的プロパティに基づいてスタイルを適用できます。  たとえば、施設の会議室を特定の色でレンダリングして、占有状態を反映できます。 この記事では、[Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate)と [Indoor Web モジュール](how-to-use-indoor-module.md)を使用して、屋内マップ地物を動的にレンダリングする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

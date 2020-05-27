@@ -95,6 +95,8 @@
           href: troubleshoot-guide-windows-boot-manager-menu.md
         - name: 更新が原因で VM が応答しない
           href: unresponsive-vm-apply-windows-update.md
+        - name: グループ ポリシーの適用時に VM が応答しない
+          href: unresponsive-vm-apply-group-policy.md
 - name: VM に接続できない
   items:
     - name: RDP

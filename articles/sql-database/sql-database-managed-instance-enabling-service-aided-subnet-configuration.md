@@ -3,19 +3,19 @@ title: Azure SQL Database マネージド インスタンスのサービス支�
 description: Azure SQL Database マネージド インスタンスのサービス支援サブネット構成の有効化
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: efc2b8578651f68d052f227694f85348853e191f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f22c713af700225ffe6954460c36217abdea5eea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533268"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770161"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスのサービス支援サブネット構成の有効化
 サービス支援サブネット構成を使用すると、マネージ インスタンスをホストしているサブネットのネットワーク構成管理を自動化できます。 サービス支援サブネット構成では、ユーザーがデータへのアクセス (TDS トラフィック フロー) を完全に制御できる状態を維持しつつ、管理トラフィックが中断されないようにするための処理はマネージド インスタンスによって行われ、それによって SLA の履行が支援されます。

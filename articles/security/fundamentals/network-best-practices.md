@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548298"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757825"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -74,7 +74,7 @@ Azure 仮想ネットワークは、オンプレミス ネットワーク上の 
 ベスト プラクティスは次のとおりです。
 
 **ベスト プラクティス**: デバイス、ID、保証、ネットワークの場所などに基づいて、リソースへの条件付きアクセスを許可します。  
-**詳細**: [Azure AD の条件付きアクセス](/azure/active-directory/conditional-access/overview)を使用して、必要な条件に基づく自動的なアクセス制御の決定を実装することで、適切なアクセス制御を適用できます。 詳細については、「[条件付きアクセスを使用して Azure 管理へのアクセスを管理する](../../role-based-access-control/conditional-access-azure-management.md)」を参照してください。
+**詳細**: [Azure AD の条件付きアクセス](../../active-directory/conditional-access/overview.md)を使用して、必要な条件に基づく自動的なアクセス制御の決定を実装することで、適切なアクセス制御を適用できます。 詳細については、「[条件付きアクセスを使用して Azure 管理へのアクセスを管理する](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md)」を参照してください。
 
 **ベスト プラクティス**: ワークフローの承認後にのみ、ポートへのアクセスを有効にします。  
 **詳細**: [Azure Security Center の Just-In-Time VM アクセス](../../security-center/security-center-just-in-time.md)を使用して、Azure VM への受信トラフィックをロックダウンすることができ、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。

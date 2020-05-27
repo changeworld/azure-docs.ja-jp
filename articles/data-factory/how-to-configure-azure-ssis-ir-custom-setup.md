@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606219"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747517"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -123,7 +123,7 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
      * **[oh22's HEDDA.IO]\(oh22 の HEDDA.IO\)** コンポーネントを選択した場合は、サービスを購入した後、Azure-SSIS IR に oh22 の [HEDDA.IO](https://hedda.io/ssis-component/) データ品質またはクレンジング コンポーネントをインストールできます。 現在の統合バージョンは **1.0.13** です。
 
-     * **[oh22's SQLPhonetics.NET]\(oh22 の SQLPhonetics.NET\)** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) データ品質または照合コンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.43** です。
+     * **[oh22's SQLPhonetics.NET]\(oh22 の SQLPhonetics.NET\)** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) データ品質または照合コンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.43** です。
 
      * **[KingswaySoft's SSIS Integration Toolkit]** \(KingswaySoft の SSIS Integration Toolkit\) コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の KingswaySoft から、購入した製品ライセンス キーを **[ライセンス キー]** ボックスに入力して、Microsoft Dynamics、SharePoint、Project Server、Oracle、Salesforce Marketing Cloud などの CRM、ERP、マーケティング、コラボレーション アプリ用の [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **2019.2** です。
 

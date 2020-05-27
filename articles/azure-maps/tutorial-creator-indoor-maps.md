@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5a7f64ead6d2e19242950002feed1cd1491dbacc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596591"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745936"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Creator を使用して屋内マップを作成する
 
@@ -57,7 +57,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 4. **[Headers]\(ヘッダー\)** タブで、`Content-Type` キーの値を指定します。 Drawing パッケージは zip 形式圧縮されたフォルダーなので、`application/octet-stream` 値を使用します。 **[Body]\(本文\)** タブで、 **[binary]\(バイナリ\)** を選択します。 **[Select File]\(ファイルの選択\)** をクリックし、Drawing パッケージを選択します。
 
-     ![データ管理](./media/tutorial-creator-indoor-maps/enter-content-type.png)
+     ![データ管理](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
 5. 青色の **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Location** キーの値である `status URL` をコピーします。
 
@@ -215,7 +215,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. 応答本文は GeoJSON 形式で配信され、データセット内のすべてのコレクションが含まれます。 わかりやすくするために、この例では `unit` コレクションのみを示しています。 すべてのコレクションを含む例を参照するには、[WFS Describe Collections API](https://docs.microsoft.com/rest/api/maps/wfs/describecollectionspreview) に関するページを参照してください。 コレクションの詳細については、`link` 要素内の任意の URL をクリックしてください。
+3. 応答本文は GeoJSON 形式で配信され、データセット内のすべてのコレクションが含まれます。 わかりやすくするために、この例では `unit` コレクションのみを示しています。 すべてのコレクションを含む例を参照するには、[WFS Describe Collections API](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview) に関するページを参照してください。 コレクションの詳細については、`link` 要素内の任意の URL をクリックしてください。
 
     ```json
     {
@@ -285,7 +285,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 1. Postman アプリケーションで、 **[New]\(新規\)** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 **[Request name]\(要求名\)** を入力し、コレクションを選択します。 **[保存]**
 
-2. [Create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatepreview) に対して **POST** 要求を行います。 変更する状態を含むデータセットの `datasetId` を使用します。 要求は次の URL のようになります。
+2. [Create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview) に対して **POST** 要求を行います。 変更する状態を含むデータセットの `datasetId` を使用します。 要求は次の URL のようになります。
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}

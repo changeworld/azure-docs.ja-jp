@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186490"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757621"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のトークンの概要
 
@@ -37,8 +37,8 @@ Azure AD B2C では、[OAuth 2.0 および OpenID Connect プロトコル](proto
 
 [登録済みアプリケーション](tutorial-register-applications.md)はトークンを受け取り、以下のエンドポイントに要求を送信することによって Azure AD B2C と通信します。
 
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token`
 
 アプリケーションが Azure AD B2C から受け取るセキュリティ トークンは、`/authorize` または `/token` のエンドポイントから送信されてきます。 `/authorize` エンドポイントから ID トークンが取得される場合、[暗黙的フロー](implicit-flow-single-page-application.md)を使用して行われます。多くの場合、これはユーザーが JavaScript ベースの Web アプリケーションにサインインするために使われます。 `/token` エンドポイントから ID トークンが取得される場合、[承認コード フロー](openid-connect.md#get-a-token)を使用して行われます。これにより、ブラウザーからはトークンが非表示になります。
 
@@ -53,7 +53,7 @@ ID トークン内の要求は特定の順序では返されません。 新し�
 | 名前 | 要求 | 値の例 | 説明 |
 | ---- | ----- | ------------- | ----------- |
 | 対象ユーザー | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | トークンの受信者を示します。 Azure AD B2C では、対象ユーザーはアプリケーション ID です。 アプリケーションでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 対象ユーザーは、リソースと同義です。 |
-| 発行者 | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証されたディレクトリも識別します。 アプリケーションでは、発行者要求を検証し、トークンが適切なエンドポイントからのものであることを確認する必要があります。 |
+| 発行者 | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証されたディレクトリも識別します。 アプリケーションでは、発行者要求を検証し、トークンが適切なエンドポイントからのものであることを確認する必要があります。 |
 | 発行時刻 | `iat` | `1438535543` | トークンが発行された日時です。エポック時間で表されます。 |
 | 期限切れ日時 | `exp` | `1438539443` | トークンが無効になる日時です。エポック時間で表されます。 アプリケーションでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 |
 | 期間の開始時刻 | `nbf` | `1438535543` | トークンが有効になる日時です。エポック時間で表されます。 この日時は、通常、トークンが発行されたのと同じ日時です。 アプリケーションでは、この要求を使用してトークンの有効期間の有効性を確認する必要があります。 |
@@ -124,14 +124,14 @@ JWT には、"*ヘッダー*"、"*本文*"、および "*署名*" という 3 �
 Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあります。 このエンドポイントを使用すると、アプリケーションは実行時に Azure AD B2C に関する情報を要求できます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 Azure AD B2C テナントには、ポリシー別の JSON メタデータ ドキュメントが含まれています。 メタデータ ドキュメントは、いくつかの便利な情報が含まれている JSON オブジェクトです。 メタデータには、トークンの署名に使用される公開キーのセットの場所を示す **jwks_uri** が含まれます。 次に示すのがその場所ですが、メタデータ ドキュメントを使用して **jwks_uri** を解析することにより、その場所を動的にフェッチするのが最善の方法です。
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
 ```
 この URL にある JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれています。 アプリでは、JWT ヘッダーの `kid` 要求を使用して、特定のトークンの署名に使用される JSON ドキュメント内の公開キーを選択できます。 その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
 
 `contoso.onmicrosoft.com` テナントの `B2C_1_signupsignin1` ポリシーのメタデータ ドキュメントは、次の場所にあります。
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
 トークンを署名するために使用されたポリシー (およびメタデータを要求できる場所) を判断するには、2 つの方法があります。 最初の方法では、ポリシー名がトークンの `acr` 要求に含まれています。 本文を Base 64 でデコードし、結果の JSON 文字列を逆シリアル化することによって、JWT の本文から要求を解析できます。 `acr` 要求は、トークンの発行に使用されたポリシーの名前です。 もう 1 つの方法では、要求を発行するときに `state` パラメーターの値にポリシーをエンコードし、使用されたポリシーを判断するときにデコードします。 どちらの方法も有効です。

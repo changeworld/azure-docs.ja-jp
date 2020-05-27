@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 32ec35094740f05a2c2a6f17ab5dafa29d30a0f1
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628812"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747240"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>テキスト メッセージを検証方法として設定する
 

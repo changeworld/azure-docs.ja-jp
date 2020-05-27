@@ -3,7 +3,7 @@ title: 単一データベース:長期のバックアップ リテンション�
 description: Azure Portal と PowerShell を使用して、Azure storage に Azure SQL Database の単一またはプールされたデータベースの自動バックアップを (最大 10 年間) 格納および復元する方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 1fedf889fa8d39a926067eb227b895d4fe1e3c39
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 3b35a9995a391f2661d8b9c800dbe7193203999b
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509348"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771555"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 

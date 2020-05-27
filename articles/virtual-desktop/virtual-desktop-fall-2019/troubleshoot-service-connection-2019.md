@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/30/2020
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 01aff34839cc7385834468a08f30696efe84561f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 356506224a0273eeea65f0f901fbc79c338498d2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614068"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743597"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
 
@@ -39,45 +39,6 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ユーザーが正しい資格情報でログインしていることを確認します。
 
 Web クライアントを使っている場合は、キャッシュされた資格情報の問題がないことを確認します。
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 (Enterprise マルチセッション) 仮想マシンが応答しない
-
-仮想マシンが応答しておらず、RDP を使用してアクセスできない場合は、ホストの状態を確認し、診断機能でトラブルシューティングを行う必要があります。
-
-ホストの状態を確認するには、次のコマンドレットを実行します：
-
-```powershell
-Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
-```
-
-ホストの状態が `NoHeartBeat` の場合、VM が応答しておらず、エージェントが Windows Virtual Desktop サービスと通信できないことを意味します。
-
-```powershell
-SessionHostName          LastHeartBeat     AllowNewSession    Status 
----------------          -------------     ---------------    ------ 
-WVDHost1.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost2.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost3.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-```
-
-NoHeartBeat ビートの状態を修正するには、いくつかの操作を実行できます。
-
-### <a name="update-fslogix"></a>FSLogix の更新
-
-FSLogix が最新ではない場合 (特に、バージョン 2.9.7205.27375 が frxdrvvt.sys の場合)、デッドロックが発生する可能性があります。 [FSLogix を最新バージョンに更新](https://go.microsoft.com/fwlink/?linkid=2084562) しているか確認してください。
-
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>BgTaskRegistrationMaintenanceTask を無効にする
-
-FSLogix の更新が機能しない場合、この問題は、毎週のメンテナンスタスクで BiSrv コンポーネントがシステムリソースを消費していることによる可能性があります。 次の2つの方法のいずれかで、BgTaskRegistrationMaintenanceTask を無効にして、メンテナンスタスクを一時的に無効にします：
-
-- [スタート] メニューにアクセスして、**タスク スケジューラ** を検索します。 **タスク スケジューラ ライブラリ** > **Microsoft** > **Windows** > **BrokerInfrastructure**に移動します。 **BgTaskRegistrationMaintenanceTask** という名前のタスクを探します。 見つかったら、右クリックして、ドロップダウン メニューから **[無効にする]** を選択します。
-- 管理者としてコマンド ライン メニューを開き、次のコマンドを実行します：
-    
-    ```cmd
-    schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
-    ```
 
 ## <a name="next-steps"></a>次のステップ
 

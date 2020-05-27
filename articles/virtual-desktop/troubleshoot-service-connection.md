@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612641"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747694"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
 
@@ -42,36 +42,6 @@ Get-AzRoleAssignment -SignInName <userupn>
 ユーザーが正しい資格情報でサインインしていることを確認します。
 
 Web クライアントを使っている場合は、キャッシュされた資格情報の問題がないことを確認します。
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 (Enterprise マルチセッション) 仮想マシンが応答しない
-
-仮想マシンが応答しておらず、RDP を使用してアクセスできない場合は、ホストの状態を確認し、診断機能でトラブルシューティングを行う必要があります。
-
-ホストの状態を確認するには、次のコマンドレットを実行します：
-
-```powershell
-Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
-```
-
-ホストの状態が `NoHeartBeat` の場合、VM が応答しておらず、エージェントが Windows Virtual Desktop サービスと通信できないことを意味します。
-
-```powershell
-Name            : 0301HP/win10pd-0.contoso.com 
-LastHeartBeat   : 4/8/2020 1:48:35 AM 
-AllowNewSession : True 
-Status          : Available 
-
-Name            : 0301HP/win10pd-1.contoso.com 
-LastHeartBeat   : 4/8/2020 1:45:44 AM 
-AllowNewSession : True 
-Status          : NoHeartBeat
-```
-
-NoHeartBeat ビートの状態を修正するには、いくつかの操作を実行できます。
-
-### <a name="update-fslogix"></a>FSLogix の更新
-
-FSLogix が最新ではない場合 (特に、バージョン 2.9.7205.27375 が frxdrvvt.sys の場合)、デッドロックが発生する可能性があります。 [FSLogix を最新バージョンに更新](https://go.microsoft.com/fwlink/?linkid=2084562) しているか確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

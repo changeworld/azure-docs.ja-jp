@@ -9,15 +9,15 @@ ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/20/2020
 ms.author: curtand
-ms.openlocfilehash: 5949f04ecc28a88e340a9c2de530031793f193a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227707"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746744"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>2 要素検証方法と設定を変更する
 

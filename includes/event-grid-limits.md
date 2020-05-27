@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 05/22/2019
-ms.author: tomfitz
+ms.date: 05/18/2020
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e7a0424e4454639211c6494aab0700e75269361
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76845981"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721635"
 ---
 次の制限は、Azure Event Grid システムのトピックとカスタム トピックに適用されます。イベント ドメインには適用*されません*。
 
@@ -22,16 +22,11 @@ ms.locfileid: "76845981"
 | Azure サブスクリプションあたりのカスタム トピック数 | 100 |
 | トピックあたりのイベント サブスクリプション数 | 500 |
 | カスタム トピックの発行レート (イングレス) | 5,000 イベント/秒/トピック |
-| 発行要求数 | 1 秒あたり 250 |
-| イベント サイズ | 1 MB (複数の 64 KB イベントとして課金されます) |
-
-次の制限は、イベント ドメインにのみ適用されます。
-
-| リソース | 制限 |
-| --- | --- |
+| イベント サイズ | 1 MB。 ただし、操作は 64 KB 単位で課金されます。 そのため、64 KB を超えるイベントでは、複数のイベントが発生したかのように操作の料金が発生します。 たとえば、130 KB のイベントでは、3 つの独立したイベントとして操作が課金されます。  |
 | イベント ドメインあたりのトピック数 | 100,000 |
 | ドメイン内のトピックあたりのイベント サブスクリプション数 | 500 |
 | ドメイン スコープ イベント サブスクリプション数 | 50 |
 | イベント ドメインの発行率 (イングレス) | 1 秒あたり 5,000 イベント |
-| 発行要求数 | 1 秒あたり 250 |
 | Azure サブスクリプションあたりのイベント ドメイン数 | 100 |
+| トピックまたはドメインあたりのプライベート エンドポイント接続数 | 64 | 
+| トピックまたはドメインあたりとの IP ファイアウォール規則数 | 16 | 

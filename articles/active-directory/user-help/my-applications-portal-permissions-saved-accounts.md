@@ -8,16 +8,16 @@ ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4249f753181ea4b54d7e1e1f098717ef669bae4a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022411"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744024"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し
 
