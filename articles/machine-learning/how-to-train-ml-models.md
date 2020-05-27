@@ -11,19 +11,20 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c96ba3496f4542658878518207b2033342e33f5
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: c47bdc17041b2c388b01681dc1e65ddea29b0efb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628761"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584401"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning では、[RunConfiguration オブジェクト](how-to-set-up-training-targets.md#compute-targets-for-training)と [ScriptRunConfig オブジェクト](how-to-set-up-training-targets.md#whats-a-run-configuration)を使用して、トレーニング スクリプトを[さまざまなコンピューティング先](how-to-set-up-training-targets.md#submit)に簡単に送信できます。 このパターンを利用して、高い柔軟性と最大のコントロールを実現できます。
+Azure Machine Learning では、[RunConfiguration オブジェクト](how-to-set-up-training-targets.md#whats-a-run-configuration)と [ScriptRunConfig オブジェクト](how-to-set-up-training-targets.md#submit)を使用して、トレーニング スクリプトを[さまざまなコンピューティング先](how-to-set-up-training-targets.md#compute-targets-for-training)に簡単に送信できます。 このパターンを利用して、高い柔軟性と最大のコントロールを実現できます。
 
-ディープ ラーニング モデルのトレーニングを容易にするために、Azure Machine Learning の Python SDK には代替の高度な抽象化である Estimator クラスが用意されています。このクラスを利用すると、実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成して使用して、選択した任意のコンピューティング先 (ローカル マシン、Azure 内の単一の VM、Azure 内の GPU クラスターなど) で選択したラーニング フレームワーク (scikit-learn など) を使用してトレーニング スクリプトを送信することができます。 PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、それぞれに [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されており、これらのフレームワークを簡単に使用できます。
+
+この Estimator クラスによって、ディープ ラーニングと強化学習を使用して簡単にモデルをトレーニングできるようになります。 高レベルの抽象化が提供され、実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成して使用して、選択した任意のコンピューティング先 (ローカル マシン、Azure 内の単一の VM、Azure 内の GPU クラスターなど) で選択したラーニング フレームワーク (scikit-learn など) を使用してトレーニング スクリプトを送信することができます。 PyTorch、TensorFlow、Chainer、および強化学習タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)、および[強化学習](how-to-use-reinforcement-learning.md)の推定器が用意されています。
 
 ## <a name="train-with-an-estimator"></a>Estimator でトレーニングする
 
@@ -61,14 +62,14 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 パラメーター | 説明
 --|--
 `source_directory`| トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています。
-`script_params`| `entry_script` ペアの形式で、ご利用のトレーニング スクリプト `<command-line argument, value>` に渡すコマンドライン引数を指定するディクショナリ。 `script_params` で詳細フラグを指定するには、`<command-line argument, "">` を使用します。
+`script_params`| `<command-line argument, value>` ペアの形式で、ご利用のトレーニング スクリプト `entry_script` に渡すコマンドライン引数を指定するディクショナリ。 `script_params` で詳細フラグを指定するには、`<command-line argument, "">` を使用します。
 `compute_target`| トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター) (AmlCompute クラスターが共通して使用されているコンピューティング先であっても、Azure VM やローカル コンピューターなど、他のコンピューティング先の種類を選択することもできる点に注意してください)。
 `entry_script`| リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります。
 `conda_packages`| トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。  
 
 コンストラクターには `pip_packages` という名前の別のパラメーターもあり、必要な pip パッケージに対して使用します。
 
-ご自分の `Estimator` オブジェクトを作成すると、`submit`実験[オブジェクト ](concept-azure-machine-learning-architecture.md#experiments) で `experiment` 関数を呼び出すことで、リモート コンピューティングで実行するトレーニング ジョブを送信します。 
+ご自分の `Estimator` オブジェクトを作成すると、[実験](concept-azure-machine-learning-architecture.md#experiments)オブジェクト `experiment` で `submit` 関数を呼び出すことで、リモート コンピューティングで実行するトレーニング ジョブを送信します。 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -156,6 +157,7 @@ deep-learning-framework 固有の Estimator を使用してモデルをトレー
 * [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
 * [PyTorch モデルをトレーニングする](how-to-train-pytorch.md)
 * [TensorFlow モデルをトレーニングする](how-to-train-tensorflow.md)
+* [強化学習のディープ ニューラル ネットワークをトレーニングする](how-to-use-reinforcement-learning.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
 * [トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)

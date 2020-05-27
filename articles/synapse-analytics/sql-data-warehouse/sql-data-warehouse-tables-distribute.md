@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742873"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585353"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Synapse SQL プールでの分散テーブルの設計に関するガイダンス
 
@@ -92,11 +92,11 @@ WITH
 ;
 ```
 
-この列の値によって行の分散方法が決まるため、ディストリビューション列の選択は、設計上の重要な決定事項です。 最適な選択肢は複数の要因によって決まり、多くの場合、トレードオフが生じます。 ただし、最初に最適な列を選択しなかった場合は、[CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使って別のディストリビューション列でテーブルを再作成できます。
+ディストリビューション列に格納されているデータを更新できます。 ディストリビューション列のデータを更新すると、データ シャッフル操作が発生する可能性があります。
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>更新を必要としないディストリビューション列を選択する
+この列の値によって行の分散方法が決まるため、ディストリビューション列の選択は、設計上の重要な決定事項です。 最適な選択肢は複数の要因によって決まり、多くの場合、トレードオフが生じます。 ディストリビューション列を選択した後、その列を変更することはできません。  
 
-行を削除して、更新値を含む新しい行を挿入しない限り、ディストリビューション列を更新することはできません。 このため、静的な値を持つ列を選択します。
+最初に最適な列を選択しなかった場合は、[CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、別のディストリビューション列でテーブルを再作成できます。
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>均等に分散したデータを含むディストリビューション列を選択する
 

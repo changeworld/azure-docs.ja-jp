@@ -2,13 +2,13 @@
 title: 用語 - Personalizer
 description: Personalizer では、強化学習の用語を使用します。 これらの用語は、Azure portal と API で使用されます。
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624201"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586305"
 ---
 # <a name="terminology"></a>用語
 
@@ -19,6 +19,15 @@ Personalizer では、強化学習の用語を使用します。 これらの用
 * **学習ループ**: パーソナル化によってメリットが得られるアプリケーションのあらゆる部分に対して、"_学習ループ_" と呼ばれる Personalizer リソースを作成します。 パーソナル化するエクスペリエンスが複数ある場合は、それぞれにループを作成します。
 
 * **モデル**:Personalizer モデルは、ユーザーの動作に関して学習したすべてのデータを取得し、Rank と Reward の呼び出しに送信した引数と学習ポリシーで決定されたトレーニング動作の組み合わせからトレーニング データを取得します。
+
+* **オンライン モード**: Personalizer の既定の[学習動作](#learning-behavior)である "学習ループ" では、機械学習を使用して、コンテンツの**最上位のアクション**を予測するモデルが構築されます。
+
+* **見習いモード**:アプリケーションの結果とアクションに影響を与えることなく Personalizer モデルのトレーニングをウォームスタートできる[学習動作](#learning-behavior)です。
+
+## <a name="learning-behavior"></a>学習動作:
+
+* **オンライン モード**: 最適なアクションが返されます。 モデルでは、最適なアクションを使用して Rank 呼び出しに応答し、Reward 呼び出しを使用して学習し、時間の経過とともに選択内容が改善されていきます。
+* **[見習いモード](concept-apprentice-mode.md)** : 初心者として学習します。 モデルでは、既存のシステムの動作を観察することによる学習が行われます。 Rank 呼び出しでは、常にアプリケーションの**既定のアクション** (ベースライン) が返されます。
 
 ## <a name="personalizer-configuration"></a>Personalizer の構成
 
@@ -63,8 +72,21 @@ Personalizer は、[Azure portal](https://portal.azure.com) から構成しま�
 
 * **報酬**: Rank API の返された報酬アクション ID に対してユーザーがどのように応答したかを示すメジャー (0 から 1 のスコア)。 0 から 1 の値は、その選択がパーソナル化のビジネス目標の達成にどのように役立ったかに基づいて、ビジネス ロジックによって設定されます。 学習ループでは、この報酬は個々のユーザー履歴として格納されません。
 
-## <a name="offline-evaluations"></a>オフライン評価
+## <a name="evaluations"></a>評価
 
-* **評価**:オフライン評価では、ループのデータに基づいて、ループに最適な学習ポリシーを決定します。
+### <a name="offline-evaluations"></a>オフライン評価
+
+* **評価**:オフライン評価では、アプリケーションのデータに基づいて、ループに最適な学習ポリシーが決定されます。
 
 * **学習ポリシー**:Personalizer によるすべてのイベントに対するモデルのトレーニング方法は、機械学習アルゴリズムの動作方法に影響するいくつかのパラメーターによって決まります。 新しい学習ループは既定の**学習ポリシー**から始まります。これにより、適度なパフォーマンスが得られます。 [評価](concepts-offline-evaluation.md)を実行すると、Personalizer では、お使いのループのユース ケースに合わせて特別に最適化された新しい学習ポリシーが作成されます。 評価時に生成された特定のループごとに最適化されたポリシーを使用すると、Personalizer ははるかに優れたパフォーマンスを発揮します。 この学習ポリシーの名前は、Azure portal の Personalizer リソースに対する **[モデルと学習設定]** の "_学習設定_" です。
+
+### <a name="apprentice-mode-evaluations"></a>見習いモードでの評価
+
+見習いモードでは、次の**評価メトリック**が提供されます。
+* **ベースライン - 平均報酬**: アプリケーションの既定値 (ベースライン) の平均報酬。
+* **Personalizer - 平均報酬**: Personalizer で達成している可能性がある報酬合計の平均。
+* **平均ローリング報酬**: ベースライン報酬と Personalizer 報酬の比率 – 最新の 1000 件のイベントで正規化されます。
+
+## <a name="next-steps"></a>次のステップ
+
+* [倫理と責任ある使用](ethics-responsible-use.md)

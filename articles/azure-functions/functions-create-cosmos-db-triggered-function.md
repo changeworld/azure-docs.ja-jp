@@ -3,20 +3,20 @@ title: Azure Cosmos DB によってトリガーされる関数を作成する
 description: Azure Functions を使用して、データが Azure Cosmos DB のデータベースに追加されるときに呼び出されるサーバーレスの関数を作成します。
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
-ms.date: 10/02/2018
+ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 6045c61dc9837667bfaf01c685f687fcf5816e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80754198"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83123759"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
-Azure Cosmos DB にデータが追加される、または変更されるときにトリガーされる関数の作成方法を説明します。 Azure Cosmos DB の詳細については、「[Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング](../cosmos-db/serverless-computing-database.md)」をご覧ください。
+Azure Cosmos DB にデータが追加される、または変更されるときにトリガーされる関数の作成方法を説明します。 Azure Cosmos DB の詳細については、[Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング](../cosmos-db/serverless-computing-database.md)に関するページを参照してください。
 
-![ログ内のメッセージを表示します。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
+:::image type="content" source="./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png" alt-text="Azure Cosmos DB コード":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,6 +26,9 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
+
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
@@ -43,39 +46,37 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Azure Cosmos DB のトリガーの作成
 
-1. Function App を展開し、 **[関数]+ の横にある** [ **]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. 関数アプリで、左側のメニューから **[関数]** を選択し、上部のメニューから **[追加]** を選択します。 
 
-   ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
+1. **[新規関数]** ページで、検索フィールドに「`cosmos`」と入力し、 **[Azure Cosmos DB trigger]\(Azure Cosmos DB トリガー\)** テンプレートを選択します。
 
-1. **[その他のテンプレート]** 、 **[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure portal での関数のページ":::
 
-    ![Functions のクイック スタート: [その他のテンプレート] を選択する](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
 
-1. 検索フィールドに「`cosmos`」と入力し、**Azure Cosmos DB トリガー** テンプレートを選択します。
-
-1. プロンプトが表示されたら、 **[インストール]** を選択して Azure Cosmos DB 拡張機能を関数アプリにインストールします。 インストールが正常に完了したら、 **[続行]** を選択します。
-
-    ![バインディング拡張機能をインストールする](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
-
-1. 新しいトリガーは、次の画像の下の表に示したように設定します。
-
-    ![Azure Cosmos DB でトリガーされる関数の作成](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
+1. 新しいトリガーは、次の表に示すように設定します。
 
     | 設定      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **名前** | Default | テンプレートに示されている既定の関数名を使用します。|
-    | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、 **[選択]** の順に選択します。 これにより、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
-    | **コンテナー名** | アイテム | 監視するコンテナーの名前。 |
-    | **Create lease container if it doesn't exist (リース コンテナーが存在しない場合は作成する)** | オン | コンテナーはまだ存在していないため、作成します。 |
-    | **データベース名** | 処理手順 | 監視するコンテナーのデータベース名。 |
+    | **新規関数** | 既定名値を受け入れる | 関数の名前です。 |
+    | **Cosmos DB アカウント接続** | 既定の新しい名前を受け入れる | **[新規]** 、前に作成した**データベース アカウント**、 **[OK]** の順に選択します。 この操作により、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
+    | **データベース名** | タスク | 監視対象のコレクションが含まれているデータベースの名前。 |
+    | **[コレクション名]** | アイテム | 監視対象のコレクションの名前。 |
+    | **リースのコレクション名** | リース | リースを格納するコレクションの名前。 |
+    | **リースのコレクションが存在しない場合、作成します** | はい | リースのコレクションの存在をチェックし、自動的に作成します。 |
 
-1. **[作成]** をクリックして、Azure Cosmos DB でトリガーされる関数を作成します。 関数が作成されると、テンプレート ベースの関数コードが表示されます。  
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB でトリガーされる関数の作成":::
 
-    ![Cosmos DB の関数テンプレート (C#)](./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png)
+1. **[関数の作成]** を選択します。 
+
+    Azure によって Cosmos DB トリガー関数が作成されます。
+
+1. テンプレートベースの関数コードを表示するには、 **[Code + Test]\(コード + テスト\)** を選択します。
+
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Cosmos DB の関数テンプレート (C#)":::
 
     この関数テンプレートは、ドキュメント数と最初のドキュメント ID をログに書き込みます。
 
-次に、Azure Cosmos DB アカウントに接続し、`Items` データベースに `Tasks` コンテナーを作成します。
+次に、Azure Cosmos DB アカウントに接続し、`Tasks` データベースに `Items` コンテナーを作成します。
 
 ## <a name="create-the-items-container"></a>Items コンテナーの作成
 
@@ -97,7 +98,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
     | 設定|推奨値|説明 |
     | ---|---|--- |
-    | **[データベース ID]** | 処理手順 |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
+    | **データベース ID** | タスク |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
     | **コンテナー ID** | アイテム | 新しいコンテナーの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |
     | **[[パーティション キー]](../cosmos-db/partition-data.md)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコンテナーを作成するためには、正しいパーティション キーを選択することが大切です。 | 
     | **スループット** |400 RU| 既定値を使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。 |    
@@ -110,7 +111,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 1. データ エクスプローラーで新しい **Items** コンテナーを展開し、 **[Items]\(項目\)** を選択して、 **[New Item]\(新しい項目\)** を選択します。
 
-    ![Items コンテナーへの項目の作成](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Items コンテナーへの項目の作成":::
 
 1. 新しい項目の内容を次の内容に置き換えて、 **[保存]** を選択します。
 

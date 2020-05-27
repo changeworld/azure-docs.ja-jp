@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11cb0d995537b8979c3727bf508045c6e31fc208
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443501"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592612"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services のクラスルーム ラボ — よく寄せられる質問 (FAQ)
 Azure Lab Services のクラスルーム ラボについて特に多く寄せられる質問にお答えします。 
@@ -28,8 +28,8 @@ Azure Lab Services のクラスルーム ラボについて特に多く寄せら
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>クォータは、ユーザーごと、1 週間ごと、またはラボの全期間のいずれに対して指定されますか。 
 ラボに設定するクォータは、ラボの全期間について、各学生を対象としています。 また、[スケジュールされている VM の実行時間](how-to-create-schedules.md)は、ユーザーに割り当てられるクォータにカウントされません。 クォータは、学生が VM で消費することをスケジュールされている時間以外の時間です。  クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md#set-quotas-for-users)」を参照してください。
 
-### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>教授が学生の VM をオンにすると、学生のクォータに影響しますか？ 
-いいえ。 影響しません。 教授が学生の VM をオンにすると、学生に割り当てられたクォータには影響しません。 
+### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>教師が学生の VM をオンにすると、学生のクォータに影響しますか？ 
+いいえ。 影響しません。 教師が学生の VM をオンにしても、学生に割り当てられたクォータには影響しません。 
 
 ## <a name="schedules"></a>スケジュール
 
@@ -58,13 +58,16 @@ Azure Lab Services のクラスルーム ラボについて特に多く寄せら
 
 管理者がラボ アカウントにラボ作成者として追加すると、ラボを作成するためのアクセス許可が付与されます。 ただし、有効な仮想マシンイメージの一覧を含む、ラボ アカウント内の任意の設定を編集するアクセス許可がありません。 追加のイメージを有効にするには、ラボ アカウント管理者に連絡して追加のイメージを有効にしてもらうか、ラボ アカウントに共同作成者ロールとして追加するよう管理者に依頼してください。 共同作成者ロールによって、ラボ アカウントの仮想マシンイメージの一覧を編集するためのアクセス許可が付与されます。
 
+### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>仮想マシンに追加のディスクを接続することはできますか。
+いいえ。 クラスルーム ラボで VM に追加のディスクを接続することはできません。 
+
 ## <a name="users"></a>ユーザー
 
 ### <a name="how-many-users-can-be-in-a-classroom-lab"></a>クラスルーム ラボには、何人のユーザーを追加できますか。
 クラスルーム ラボには、最大 400 ユーザーを追加できます。 
 
 ## <a name="blog-post"></a>ブログ記事
-[Azure Lab Services ブログ](https://azure.microsoft.com/blog/tag/azure-lab-services/)に登録してください。
+[Azure Lab Services ブログ](https://aka.ms/azlabs-blog)に登録してください。
 
 ## <a name="update-notifications"></a>更新通知
 Lab Services の新機能について最新情報を入手するには、[Lab Services の更新情報](https://azure.microsoft.com/updates/?product=lab-services)に登録してください。
@@ -74,6 +77,6 @@ Lab Services の新機能について最新情報を入手するには、[Lab Se
 ご自分の質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
 - この FAQ の末尾で質問を投稿してください。 
-- さらに多くの人々と交流するには、[Azure Lab Services — Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-lab-services)に質問を投稿してください。 
+- さらに多くの人々と交流するには、[Azure Lab Services — Tech Community フォーラム](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)に質問を投稿してください。 
 - 機能を要求する場合は、要求とアイデアを [Azure Lab Services のユーザーの声](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)に送信してください。
 

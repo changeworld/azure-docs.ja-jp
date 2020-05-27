@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 528c3613549ee49009f99d45e5bd9c2cf1745d78
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779996"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588260"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid リソースへのアクセスの認証
 この記事では、次のシナリオについて説明します。  
@@ -28,12 +28,18 @@ ms.locfileid: "82779996"
 
 ### <a name="key-authentication"></a>キー認証
 
-キー認証は、最も単純な形式の認証です。 次の形式を使用します。`aeg-sas-key: <your key>`
+キー認証は、最も単純な形式の認証です。 メッセージ ヘッダーで、`aeg-sas-key: <your key>` という形式を使用します。
 
 たとえば、次のようにキーを渡します。
 
 ```
-aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
+aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
+```
+
+クエリ パラメーターとして `aeg-sas-key` を指定することもできます。 
+
+```
+https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 ```
 
 ### <a name="sas-tokens"></a>SAS トークン

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74109940"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584928"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Speech SDK のオーディオ入力ストリーム API について
 
@@ -25,14 +25,14 @@ Speech SDK の**オーディオ入力ストリーム** API では、マイクま
 
 - オーディオ ストリームの形式を識別します。 この形式は、Speech SDK と音声認識サービスでサポートされている必要があります。 現在、次の構成のみがサポートされています。
 
-  PCM 形式のオーディオ サンプル、1 つのチャンネル、16,000 サンプル/秒、32,000 バイト/秒、2 つのブロック配列 (1 つのサンプルのパディングを含む 16 ビット)、16 ビット/サンプル。
+  PCM 形式のオーディオ サンプル、1 つのチャンネル、16 ビット/サンプル、8,000 または 16,000 サンプル/秒 (16,000 または 32,000 バイト/秒)、2 つのブロック配列 (1 つのサンプルのパディングを含む 16 ビット)。
 
   オーディオ形式を作成するための SDK の対応するコードは次のようになります。
 
   ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
-  int samplesPerSecond = 16000;
+  int samplesPerSecond = 16000; // or 8000
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 

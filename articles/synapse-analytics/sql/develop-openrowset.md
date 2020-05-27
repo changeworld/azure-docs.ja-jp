@@ -6,30 +6,70 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 4ec6e18aa4fa741ba784e68ccf9b5f87ad654eba
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81680503"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591422"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
 
-OPENROWSET(BULK...) 関数を使用すると、Azure Storage 内のファイルにアクセスできます。 SQL オンデマンド (プレビュー) リソース内では、OPENROWSET 関数を呼び出し、BULK オプションを指定することによって、OPENROWSET BULK 行セット プロバイダーにアクセスします。  
+`OPENROWSET(BULK...)` 関数を使用すると、Azure Storage 内のファイルにアクセスできます。 `OPENROWSET` 関数は、リモート データ ソース (ファイルなど) の内容を読み取って行のセットとして返します。 SQL オンデマンド (プレビュー) リソース内では、OPENROWSET 関数を呼び出し、BULK オプションを指定することによって、OPENROWSET BULK 行セット プロバイダーにアクセスします。  
 
-OPENROWSET 関数は、テーブル名 OPENROWSET と同じように、クエリの FROM 句で参照できます。 組み込みの BULK プロバイダーによる一括操作がサポートされ、ファイルのデータを行セットとして読み取り、返すことができます。
+`OPENROWSET` 関数は、テーブル名 `OPENROWSET` であるかのように、クエリの `FROM` 句で参照できます。 組み込みの BULK プロバイダーによる一括操作がサポートされ、ファイルのデータを行セットとして読み取り、返すことができます。
 
-OPENROWSET は、現在 SQL プールではサポートされていません。
+## <a name="data-source"></a>データ ソース
+
+Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの内容を読み取ります。 データ ソースは Azure ストレージ アカウントであり、`OPENROWSET` 関数で明示的に参照することも、読み取ろうとするファイルの URL から動的に推論することもできます。
+`OPENROWSET` 関数には、必要に応じて、ファイルを含むデータ ソースを指定するための `DATA_SOURCE` パラメーターを含めることができます。
+- `DATA_SOURCE` を指定しない `OPENROWSET` を使用すると、`BULK` オプションに指定された URL の場所からファイルの内容を直接読み取ることができます。
+
+    ```sql
+    SELECT *
+    FROM OPENROWSET(BULK 'http://storage..../container/folder/*.parquet',
+                    TYPE = 'PARQUET') AS file
+    ```
+
+これは、事前に構成しなくても、ファイルの内容をすばやく簡単に読み取ることができる方法です。 この方法では、基本認証オプションを使用してストレージにアクセスできます (Azure AD ログインでは Azure AD パススルー、および SQL ログインでは SAS トークン)。 
+
+- `DATA_SOURCE` を指定した `OPENROWSET` を使用すると、指定したストレージ アカウントのファイルにアクセスできます。
+
+    ```sql
+    SELECT *
+    FROM OPENROWSET(BULK '/folder/*.parquet',
+                    DATA_SOURCE='storage', --> Root URL is in LOCATION of DATA SOURCE
+                    TYPE = 'PARQUET') AS file
+    ```
+
+    この方法では、データソースにストレージ アカウントの場所を構成し、ストレージへのアクセスに使用する認証方法を指定できます。 
+    
+    > [!IMPORTANT]
+    > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 たとえば、Azure AD プリンシパルがファイルにアクセスするには [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) を使用するしかなく、一般公開されているファイルにはアクセスできません。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
+
+## <a name="security"></a>Security
+
+データベース ユーザーが `OPENROWSET` 関数を使用するには `ADMINISTER BULK OPERATIONS` 権限が必要です。
+
+また、ストレージ管理者が、有効な SAS トークンを提供するか、 Azure AD プリンシパルでストレージ ファイルにアクセスできるようにして、ユーザーがファイルにアクセスできるようにする必要があります。 ストレージ アクセス制御の詳細については、[この記事](develop-storage-files-storage-access-control.md)を参照してください。
+
+`OPENROWSET` は、次の規則を使用してストレージへの認証方法を決定します。
+- `DATA_SOURCE` を指定した `OPENROWSET` では、認証メカニズムは呼び出し元の種類によって異なります。
+  - AAD ログインは、独自の [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) を使用しないとファイルにアクセスできません。これは、Azure Storage が基になるファイルへのアクセスを Azure AD ユーザーに許可している場合 (たとえば、呼び出し元がストレージに対するストレージ閲覧者権限を持っている場合)、および Synapse SQL サービス上での [Azure AD パススルー認証を有効に](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through)した場合です。
+  - SQL ログインは、`DATA_SOURCE` を指定しない `OPENROWSET` を使用して、一般公開されたファイル、または SAS トークンや Synapse ワークスペースのマネージド ID を使用して保護されたファイルアクセスすることもできます。 ストレージのファイルへのアクセスを許可するには、[サーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。 
+- `DATA_SOURCE` を指定した `OPENROWSET` では、参照先のデータ ソースに割り当てられるデータベーススコープ資格情報に認証メカニズムが定義されます。 この方法では、一般公開されているストレージへのアクセスや、SAS トークン、ワークスペースのマネージド ID、または[呼び出し元の Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#) (呼び出し元が Azure AD プリンシパルの場合) を使用しているストレージへのアクセスが行えます。 公開されていない Azure Storage を `DATA_SOURCE` が参照している場合は、[データベーススコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)して、それを `DATA SOURCE` で参照し、ストレージのファイルへのアクセスを許可する必要があります。
+
+呼び出し元が、ストレージへの認証に資格情報を使用するには資格情報に対する `REFERENCES` 権限が必要です。
 
 ## <a name="syntax"></a>構文
 
 ```syntaxsql
 --OPENROWSET syntax for reading Parquet files
 OPENROWSET  
-( { BULK 'unstructured_data_path' , 
+( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ]
     FORMAT='PARQUET' }  
 )  
 [WITH ( {'column_name' 'column_type' }) ]
@@ -37,7 +77,7 @@ OPENROWSET
 
 --OPENROWSET syntax for reading delimited text files
 OPENROWSET  
-( { BULK 'unstructured_data_path' , 
+( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ] 
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
@@ -48,8 +88,10 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDTERMINATOR = 'char' ]    
 [ , ROWTERMINATOR = 'char' ] 
 [ , ESCAPE_CHAR = 'char' ] 
-[ , FIRSTROW = 'first_row'  ]     
-[ , FIELDQUOTE = 'quote_characters']
+[ , FIRSTROW = 'first_row' ]     
+[ , FIELDQUOTE = 'quote_characters' ]
+[ , DATA_COMPRESSION = 'data_compression_method' ]
+[ , PARSER_VERSION = 'parser_version' ]
 ```
 
 ## <a name="arguments"></a>引数
@@ -62,11 +104,11 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 **'unstructured_data_path'**
 
-データへのパスを確立する unstructured_data_path は、次のように構成されます:  
-'\<prefix>://\<storage_account_path>/\<storage_path>'
- 
- 
- 以下に、特定の外部データ ソースにリンクする、関連するストレージ アカウント パスを示します。 
+データへのパスを確立する unstructured_data_path には、絶対パスまたは相対パスを指定できます。
+- '\<prefix>://\<storage_account_path>/\<storage_path>' という形式の絶対パスを使用すると、ユーザーがファイルを直接読み取ることができます。
+- '<storage_path>' という形式の相対パスは、`DATA_SOURCE` パラメーターと一緒に使用する必要があり、`EXTERNAL DATA SOURCE` に定義された<storage_account_path> の場所にあるファイル パターンを指定します。 
+
+ 以下に、特定の外部データ ソースにリンクする、関連する <storage account path> 値を示します。 
 
 | 外部データ ソース       | Prefix | ストレージ アカウント パス                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -78,7 +120,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 '\<storage_path>'
 
  読み取り対象のフォルダーまたはファイルを指す、ストレージ内のパスを指定します。 パスがコンテナーまたはフォルダーを指している場合は、その特定のコンテナーまたはフォルダーからすべてのファイルが読み取られます。 サブフォルダー内のファイルは含まれません。 
- 
+
  ワイルドカードを使用して、複数のファイルまたはフォルダーを対象にすることができます。 連続しない複数のワイルドカードを使用できます。
 次に示すのは、 */csv/population* で始まるすべてのフォルダーから、*population* で始まるすべての *csv* ファイルを読み取る例です。  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
@@ -98,8 +140,10 @@ WITH 句を使用すると、ファイルから読み取る列を指定できま
 
 - CSV データ ファイルの場合、すべての列を読み取るには、列名とそのデータ型を指定します。 列のサブセットが必要な場合は、序数を使用して、元のデータ ファイルから序数で列を選択します。 列は、序数の指定によってバインドされます。 
 
-> [!IMPORTANT]
-> CSV ファイルの場合、WITH 句は必須です。
+    > [!IMPORTANT]
+    > CSV ファイルの場合、WITH 句は必須です。
+    >
+    
 - Parquet データ ファイルの場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます。 WITH 句を省略すると、Parquet ファイルのすべての列が返されます。
 
 column_name = 出力列の名前。 指定した場合、この名前はソース ファイル内の列名をオーバーライドします。
@@ -125,7 +169,7 @@ FIELDTERMINATOR ='field_terminator'
 
 ROWTERMINATOR ='row_terminator'`
 
-使用する行ターミネータを指定します。 既定の行ターミネータは、\r\n などの改行文字です。
+使用する行ターミネータを指定します。 行ターミネータが指定されていない場合は、既定のターミネータの 1 つが使用されます。 PARSER_VERSION = '1.0' の既定のターミネータは、\r\n、\n、および \r です。 PARSER_VERSION = '2.0' の既定のターミネータは、\r\n および \n です。
 
 ESCAPE_CHAR = 'char'
 
@@ -141,22 +185,33 @@ FIELDQUOTE = 'field_quote'
 
 CSV ファイルで引用符文字として使用される文字を指定します。 指定しない場合、引用文字 (") が使用されます。 
 
+DATA_COMPRESSION = 'data_compression_method'
+
+圧縮方法を指定します。 次の圧縮方法がサポートされています。
+
+- org.apache.hadoop.io.compress.GzipCodec
+
+PARSER_VERSION = 'parser_version'
+
+ファイルの読み取り時に使用するパーサーのバージョンを指定します。 現在サポートされている CSV パーサーのバージョンは 1.0 および 2.0 です
+
+- PARSER_VERSION = '1.0'
+- PARSER_VERSION = '2.0'
+
+CSV パーサー バージョン 1.0 は既定で機能が豊富ですが、2.0 はパフォーマンスのために構築されており、すべてのオプションとエンコードがサポートされているわけではありません。 
+
+CSV パーサー バージョン 2.0 の詳細:
+
+- すべてのデータ型がサポートされているわけではありません。
+- 行の最大サイズの上限は 8 MB です。
+- 次のオプションはサポートされません:DATA_COMPRESSION
+- 引用符で囲まれた空の文字列 ("") は、空の文字列として解釈されます。
+
 ## <a name="examples"></a>例
 
 次の例では、population*.csv ファイルから序数 1 と 4 の 2 列だけが返されます。 ファイルにはヘッダー行がないため、最初の行から読み取りを開始します。
 
 ```sql
-/* make sure you have credentials for storage account access created
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-GO
-
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = ''
-GO
-*/
-
 SELECT * 
 FROM OPENROWSET(
         BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
@@ -169,22 +224,9 @@ WITH (
 ) AS [r]
 ```
 
-
-
 次の例では、列名とデータ型を指定せずに、census データ セットから最初の行のすべての列が Parquet 形式で返されます。 
 
 ```sql
-/* make sure you have credentials for storage account access created
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-GO
-
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = ''
-GO
-*/
-
 SELECT 
     TOP 1 *
 FROM  
@@ -194,8 +236,10 @@ FROM
     ) AS [r]
 ```
 
-
+ファイルが一覧表示されないというエラーが発生する場合は、オンデマンドで Synapse SQL のパブリック ストレージにアクセスできるようにする必要があります。
+- SQL ログインを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。
+- パブリック ストレージにアクセスするために Azure AD プリンシパルを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)し、[Azure AD パススルー認証](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)を無効にする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-その他のサンプルについては、[クイックスタート](query-data-storage.md)にアクセスするか、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存してください。
+その他のサンプルは[ストレージ内のデータのクエリに関するクイックスタート](query-data-storage.md)にあります。`OPENROWSET を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法を参照してください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。

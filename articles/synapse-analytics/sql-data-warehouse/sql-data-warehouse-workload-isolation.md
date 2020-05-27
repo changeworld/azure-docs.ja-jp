@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5d81dc1f4da6e952061496fa348d0f8e87b00b81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30429653c024c669d273c45d12236afa8cdbb83
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742975"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591507"
 ---
-# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Azure Synapse Analytics ワークロード グループ分離 (プレビュー)
+# <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure Synapse Analytics ワークロード グループ分離
 
 この記事では、ワークロード グループを使用してワークロードの分離を構成する方法、リソースを含める方法、およびクエリ実行のランタイム ルールを適用する方法について説明します。
 

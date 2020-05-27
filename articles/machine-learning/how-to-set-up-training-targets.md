@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24c0d9955a857e8bbc1e1c09e600031a7541026c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd49d11061a345b396d300c2356645a2acd5b4c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296961"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588124"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Azure Machine Learning では、異なるコンピューティング先に対し
 
 一般的なフレームワークを使用したモデルのトレーニングを容易にするために、Azure Machine Learning の Python SDK には、代替の高度な抽象化である Estimator クラスが用意されています。  このクラスを使用すると、実行構成を簡単に作成できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。 環境オブジェクトや RunConfiguration オブジェクトなどの埋め込みオブジェクトがお客様用に自動的に構成されるため、トレーニングには見積もりツールを使用することをお勧めします。 これらのオブジェクトの作成方法をさらに詳細に制御し、試験実行用にインストールするパッケージを指定する場合は、[次の手順](#amlcompute)に従って、Azure Machine Learning コンピューティング上で RunConfiguration オブジェクトを使用してトレーニング試験を送信します。
 
-PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、および [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されています。
+Azure Machine Learning には、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)、および [Ray RLlib](how-to-use-reinforcement-learning.md) のために固有の推定器が用意されています。
 
 詳細については、「[Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)」を参照してください。
 
@@ -64,7 +64,7 @@ PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning に�
 
 ML パイプラインを使用すると、シンプルさ、速度、移植性、再利用によってワークフローを最適化できます。 Azure Machine Learning を使用してパイプラインを構築すると、インフラストラクチャとオートメーションではなく、自分の専門知識と機械学習に焦点を絞ることができます。
 
-ML パイプラインは、パイプライン内の個別のコンピューティング単位である複数の**ステップ**から構成されます。 各ステップは個別に実行でき、分離されたコンピューティング リソースを使用できます。 これにより、複数のデータ サイエンティストが、コンピューティング リソースを過剰に使用することなく、同じパイプラインで同時に作業を行うことができます。また、各ステップに対して異なるコンピューティングの種類/サイズを簡単に使用できるようになります。
+ML パイプラインは、パイプライン内の個別のコンピューティング単位である複数の**ステップ**から構成されます。 各ステップは個別に実行でき、分離されたコンピューティング リソースを使用できます。 このアプローチにより、複数のデータ サイエンティストが、コンピューティング リソースを過剰に使用することなく、同じパイプラインで同時に作業を行うことができます。また、各ステップに対して異なるコンピューティングの種類/サイズを簡単に使用できるようになります。
 
 > [!TIP]
 > ML パイプラインでは、モデルのトレーニング時に実行構成または Estimator を使用できます。
@@ -99,26 +99,12 @@ Azure Machine Learning コンピューティングを使用して、クラウド
 
 Azure Machine Learning コンピューティングには、割り当て可能なコア数などの既定の制限があります。 詳細については、「[Azure リソースのクォータの管理と要求](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas)」を参照してください。
 
+> [!TIP]
+> 必要なコア数に十分に対応するクォータを備えている限り、クラスターは一般に、最大で 100 ノードまでスケールアップすることができます。 既定では、たとえば、MPI ジョブをサポートするために、クラスターは、そのノード間でノード間通信を有効にした状態でセットアップされます。 ただし、[サポート チケットを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)し、ご利用のサブスクリプション、ワークスペース、またはノード間通信を無効にする特定のクラスターをホワイトリストに登録することを要求するだけで、ご利用のクラスターを数千のノードにスケーリングすることができます。 
 
-Azure Machine Learning コンピューティング環境は、実行をスケジュールするときにオンデマンドで、または永続的なリソースとして作成できます。
+Azure Machine Learning コンピューティングは、複数回の実行で再利用できます。 コンピューティングは、ワークスペース内の他のユーザーと共有することができ、複数回の実行の間で保持されます。この場合、送信された実行の回数およびクラスター上で設定された max_nodes に基づいてノードは自動的にスケールアップまたはスケールダウンされます。 min_nodes 設定では、使用可能な最小ノード数が制御されます。
 
-#### <a name="run-based-creation"></a>実行ベースの作成
-
-実行時にコンピューティング先として Azure Machine Learning コンピューティングを作成できます。 実行用にコンピューティングが自動的に作成されます。 実行が完了すると、コンピューティングは自動的に削除されます。 
-
-> [!IMPORTANT]
-> Azure Machine Learning コンピューティングの実行ベースの作成は現在、プレビュー状態です。 自動化されたハイパーパラメーター チューニングまたは自動化された機械学習を使用する場合は、実行ベースの作成を使用しないでください。 ハイパーパラメーター チューニングまたは自動機械学習を使用するには、代わりに[永続的なコンピューティング](#persistent)先を作成します。
-
-1.  **作成、アタッチ、構成する**:実行ベースの作成により、実行構成に基づいて、コンピューティング先の作成、アタッチ、構成に必要なすべての手順が行われます。  
-
-  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute.py?name=run_temp_compute)]
-
-
-コンピューティングをアタッチし、実行を構成したので、次のステップでは[トレーニング実行を送信](#submit)します。
-
-#### <a name="persistent-compute"></a><a id="persistent"></a>永続的なコンピューティング
-
-永続的な Azure Machine Learning コンピューティングは、複数のジョブで再利用できます。 コンピューティングはワークスペース内の他のユーザーと共有でき、ジョブ間で保持されます。
+[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
 
 1. **作成してアタッチする**:Python で永続的な Azure Machine Learning コンピューティング リソースを作成するには、**vm_size** および **max_nodes** プロパティを指定します。 その後、Azure Machine Learning では他のプロパティに対してスマート既定値が使用されます。 コンピューティングは、使用されていないときは、0 ノードまで自動的にスケールダウンされます。   必要に応じて、ジョブ実行専用の VM が作成されます。
     
@@ -152,32 +138,19 @@ Azure Machine Learning では、独自のコンピューティング リソー�
     > [!WARNING]
     > Azure Machine Learning は、Ubuntu を実行する仮想マシンのみサポートします。 VM を作成するとき、または既存の VM を選択するときは、Ubuntu を使用する VM を選択する必要があります。
 
-1. **アタッチする**:コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンの完全修飾ドメイン名 (FQDN)、ユーザー名、およびパスワードを入力する必要があります。 例では、\<fqdn> を VM のパブリック FQDN、またはパブリック IP アドレスに置き換えます。 \<username> と \<password> を、VM の SSH ユーザー名とパスワードで置き換えます。
+1. **アタッチする**:コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンのリソース ID、ユーザー名、およびパスワードを入力する必要があります。 VM のリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、VM 名から作成できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
-    > [!IMPORTANT]
-    > 次の Azure リージョンでは、VM のパブリック IP アドレスを使用した仮想マシンの接続はサポートされていません。 代わりに、`resource_id` パラメーターを使用して VM の Azure Resource Manager ID を使用します。
-    >
-    > * 米国東部
-    > * 米国西部 2
-    > * 米国中南部
-    >
-    > VM のリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、および VM 名を使用して構築できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`。
-
-
+ 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
-                                                    ssh_port=22,
-                                                    username='<username>',
-                                                    password="<password>")
-   # If in US East, US West 2, or US South Central, use the following instead:
-   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
-   #                                                 ssh_port=22,
-   #                                                 username='<username>',
-   #                                                 password="<password>")
+   
+   attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+                                                   ssh_port=22,
+                                                   username='<username>',
+                                                   password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -211,16 +184,7 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
     
     クラスターが作成された後、ホスト名 \<clustername>-ssh.azurehdinsight.net でそれに接続します。\<clustername> は、ユーザーがクラスターに指定した名前です。 
 
-1. **アタッチする**:コンピューティング先として HDInsight クラスターをアタッチするには、HDInsight クラスターのホスト名、ユーザー名、およびパスワードを指定する必要があります。 次の例では、SDK を使用してクラスターをワークスペースに接続します。 例の \<clustername> は、実際のクラスターの名前に置き換えます。 \<username> と \<password> を、クラスターの SSH ユーザー名とパスワードで置き換えます。
-
-    > [!IMPORTANT]
-    > 次の Azure リージョンでは、クラスターのパブリック IP アドレスを使用した HDInsight クラスターの接続はサポートされていません。 代わりに、`resource_id` パラメーターを使用してクラスターの Azure Resource Manager ID を使用します。
-    >
-    > * 米国東部
-    > * 米国西部 2
-    > * 米国中南部
-    >
-    > クラスターのリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、およびクラスター名を使用して構築できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`。
+1. **アタッチする**:コンピューティング先として HDInsight クラスターをアタッチするには、HDInsight クラスターのリソース ID、ユーザー名、およびパスワードを指定する必要があります。 HDInsight クラスターのリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、HDInsight クラスター名から作成できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -228,15 +192,11 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
+
+    attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
-    # If you are in US East, US West 2, or US South Central, use the following instead:
-    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
-    #                                                      ssh_port=22, 
-    #                                                      username='<ssh-username>', 
-    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -406,7 +366,7 @@ Azure Machine Learning 用の [VS Code 拡張機能](tutorial-train-deploy-image
 > [!IMPORTANT]
 > トレーニングの実行を送信すると、トレーニング スクリプトが含まれるディレクトリのスナップショットが作成されて、コンピューティング先に送信されます。 スナップショットは、ご利用のワークスペースにも実験の一部として保存されます。 ファイルを変更して実行を再度送信すると、変更したファイルのみがアップロードされます。
 >
-> スナップショットにファイルが含まれないようにするには、[.gitignore](https://git-scm.com/docs/gitignore) または `.amlignore` ファイルをディレクトリに作成して、そこにそれらのファイルを追加してください。 `.amlignore` ファイルには、[.gitignore](https://git-scm.com/docs/gitignore) ファイルと同じ構文とパターンが使用されます。 両方のファイルが存在する場合、`.amlignore` ファイルが優先されます。
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 > 
 > 詳細については、「[スナップショット](concept-azure-machine-learning-architecture.md#snapshots)」を参照してください。
 
@@ -451,7 +411,7 @@ Azure Machine Learning 用の [VS Code 拡張機能](tutorial-train-deploy-image
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) と [Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)を使用して、実行構成を作成し、さまざまなコンピューティング先に実行を送信できます。 次の例は、既存の Azure Machine Learning ワークスペースがあること、および `az login` CLI コマンドを使用して Azure にログインしていることを前提としています。 
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 ### <a name="create-run-configuration"></a>実行構成の作成
 
@@ -524,7 +484,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 runconfig の *arguments* セクションと HyperDrive 構成の *parameter space* に注意してください。これらには、トレーニング スクリプトに渡されるコマンドライン引数が含まれています。 runconfig の値は繰り返しごとに変わりませんが、HyperDrive 構成の範囲は反復処理されます。 両方のファイルで同じ引数を指定しないでください。
 
-これらの ```az ml``` CLI コマンドとすべての引数の詳細については、[リファレンス ドキュメント](reference-azure-machine-learning-cli.md)を参照してください。
+これらの ```az ml``` CLI コマンドの詳細については、[リファレンス ドキュメント](reference-azure-machine-learning-cli.md)を参照してください。
 
 <a id="gitintegration"></a>
 

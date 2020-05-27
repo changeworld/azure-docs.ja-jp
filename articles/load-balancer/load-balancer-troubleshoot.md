@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26a4ae7d1a2ef253c0cb62f6bb53f83152676595
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76935477"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590266"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
-このページには、Basic および Standard Azure Load Balancer についてよく寄せられる質問のトラブルシューティング情報が示されています。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)に関するページをご覧ください。
+このページには、Basic および Standard Azure Load Balancer についてよく寄せられる質問のトラブルシューティング情報が示されています。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-diagnostics.md)に関するページをご覧ください。
 
 Load Balancer の接続が利用できない場合の最も一般的な症状を次に示します。 
 
@@ -98,7 +98,7 @@ VM がデータ トラフィックに応答しない場合、その原因とし�
 
 1. バックエンド VM にログインします。 
 2. コマンド プロンプトを開き、次のコマンドを実行して、データ ポートでリッスンしているアプリケーションが存在しているかどうかを検証します。  netstat -an 
-3. そのポートに "リッスン中" 状態が表示されていない場合は、適切なリスナー ポートを構成します 
+3. そのポートが "LISTENING" 状態で表示されていない場合は、適切なリスナー ポートを構成します 
 4. ポートが "リッスン中" としてマークされている場合は、そのポートのターゲット アプリケーションに問題がないかどうかを確認します。
 
 ### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>原因 2:ネットワーク セキュリティ グループが Load Balancer バックエンド プール VM 上のポートをブロックしている  
@@ -124,7 +124,7 @@ Load Balancer のバックエンド VM でホストされているアプリケ�
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4:参加している Load Balancer バックエンド プール VM から内部 Load Balancer フロントエンドにアクセスしている
 
-内部 Load Blancer が VNet 内で構成され、参加しているバックエンド VM の 1 つが内部 Load Balancer フロントエンドにアクセスしようとしている場合は、エラーが発生し、アクセス元の VM にフローがマップされます。 このシナリオはサポートされません。 詳しくは、「[制限事項](concepts-limitations.md#limitations)」をご覧ください。
+内部 Load Blancer が VNet 内で構成され、参加しているバックエンド VM の 1 つが内部 Load Balancer フロントエンドにアクセスしようとしている場合は、エラーが発生し、アクセス元の VM にフローがマップされます。 このシナリオはサポートされません。 詳しくは、「[制限事項](concepts.md#limitations)」をご覧ください。
 
 **解決策**: このシナリオをブロック解除するには、プロキシの使用などいくつかの方法があります。 Application Gateway または他のサードパーティ製プロキシ (nginx や haproxy など) を評価してください。 Application Gateway の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」を参照してください
 
@@ -132,11 +132,15 @@ Load Balancer のバックエンド VM でホストされているアプリケ�
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因:VM スケール セットによって参照されるロード バランサーに対する正常性プローブによって使用される負荷分散規則のバックエンド ポートを変更できません。
 **解決作:** ポートを変更するには、VM スケール セットを更新し、ポートを更新してから正常性プローブを再度構成することで、正常性プローブを削除できます。
 
+## <a name="symptom-small-traffic-is-still-going-through-load-balancer-after-removing-vms-from-backend-pool-of-the-load-balancer"></a>症状:ロード バランサーのバックエンド プールから VM を削除した後も、少量のトラフィックがロード バランサーを通過しています。 
+### <a name="cause--vms-removed-from-backend-pool-should-no-longer-receive-traffic-the-small-amount-of-network-traffic-could-be-related-to-storage-dns-and-other-functions-within-azure"></a>原因:バックエンド プールから削除された VM は、トラフィックを受信しなくなります。 少量のネットワーク トラフィックは、Azure 内のストレージ、DNS、およびその他の機能に関連している可能性があります。 
+確認するには、ネットワーク トレースを実行してください。 BLOB ストレージ アカウントに使用される FQDN は、各ストレージ アカウントのプロパティ内に一覧表示されます。  Azure サブスクリプション内の仮想マシンから nslookup を実行することで、そのストレージ アカウントに割り当てられている Azure IP を特定できます。
+
 ## <a name="additional-network-captures"></a>その他のネットワーク キャプチャ
 サポート ケースを開く場合は、迅速に解決できるように次の情報を収集します。 1 つのバックエンド VM を選択して、次のテストを実行してください。
 - VNet 内にあるバックエンド VM から Psping でプローブ ポートの応答をテストし (psping 10.0.0.4:3389 など)、結果を記録します。 
 - この ping テストで応答がなかった場合は、PsPing を実行しながら、バックエンド VM と VNet テスト VM で同時 Netsh トレースを実行し、その後、Netsh トレースを停止します。 
-  
+ 
 ## <a name="next-steps"></a>次のステップ
 
 前の手順で問題を解決できない場合は、 [サポート チケット](https://azure.microsoft.com/support/options/)を開きます。

@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878308"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83609003"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -21,6 +21,15 @@ ms.locfileid: "80878308"
 ## <a name="public-previews"></a>パブリック プレビュー
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
+
+### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>マネージド ID を使用して SQL Database の出力に対する認証を行う
+
+Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)がサポートされています。 マネージド ID を使用すると、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性など、ユーザー ベースの認証方法に伴う制限がなくなります。 手動による認証の必要がなくなると、Stream Analytics のデプロイを完全に自動化できます。
+
+### <a name="output-to-azure-synapse-analytics"></a>Azure Synapse Analytics に対する出力
+
+Azure Stream Analytics ジョブで、[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) 内の SQL プール テーブルに出力でき、最大 200 MB/秒のスループット レートを処理できます。これにより、レポートやダッシュボードなどのワークロードに対して、最も要求の厳しいリアルタイム分析とホットパス データ処理がサポートされます。  
+
 
 ### <a name="online-scaling"></a>オンライン スケーリング
 

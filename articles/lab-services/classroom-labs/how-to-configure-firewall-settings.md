@@ -3,15 +3,15 @@ title: Azure Lab Services のファイアウォール設定
 description: 情報をファイアウォール規則に追加できるように、ラボ内の仮想マシンのパブリック IP アドレスとポート番号の範囲を特定する方法について説明します。
 author: emaher
 ms.author: enewman
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcb8c0d5304f052dbe7f14386425ce67ae3b79a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443459"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589535"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure Lab Services のファイアウォール設定
 
@@ -24,7 +24,7 @@ ms.locfileid: "77443459"
 
 ## <a name="find-public-ip-for-a-lab"></a>ラボのパブリック IP を見つける
 
-各ラボのパブリック IP アドレスは、Lab Services のラボ アカウントの **[すべてのラボ]** ページに一覧表示されます。  **[すべてのラボ]** ページを検索する方法については、「[ラボ アカウントでラボを管理する方法](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account)」に関するページを参照してください。  
+各ラボのパブリック IP アドレスは、Lab Services のラボ アカウントの **[すべてのラボ]** ページに一覧表示されます。  **[すべてのラボ]** ページを検索する方法については、「[ラボ アカウント内のラボを表示する](manage-labs.md#view-labs-in-a-lab-account)」を参照してください。  
 
 > [!div class="mx-imgBorder"]
 > ![[すべてのラボ] ページ](../media/how-to-configure-firewall-settings/all-labs-properties.png)

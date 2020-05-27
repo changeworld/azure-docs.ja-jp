@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 27d79e28a986e929fb71dd77fc50b3c2cd32618f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2d40c007a06bad09748b14394da46c50c80dc19
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77134034"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589450"
 ---
-# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル: Azure Lab Services でクラスルーム ラボにアクセスする
+# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル:Azure Lab Services でクラスルーム ラボにアクセスする
 このチュートリアルでは、学生がクラスルーム ラボ内の仮想マシン (VM) にアクセスします。 
 
 このチュートリアルでは、次のアクションを実行します。
@@ -34,11 +34,15 @@ ms.locfileid: "77134034"
 ## <a name="register-to-the-lab"></a>ラボに登録する
 
 1. 教師から受け取った**登録 URL** に移動します。 登録完了後は、登録 URL を使用する必要はありません。 代わりに [https://labs.azure.com](https://labs.azure.com) という URL を使用します。 Internet Explorer 11 はまだサポートされていません。 
+
+    ![ラボに登録する](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. 学校アカウントを使ってサービスにサインインし、登録を完了します。 
 
     > [!NOTE]
     > Azure Lab Services を使用するためには Microsoft アカウントが必要です。 Yahoo アカウントや Google アカウントなど、Microsoft 以外のアカウントを使用してポータルへのサインインを試みる場合は、Microsoft 以外のアカウントにリンクする Microsoft アカウントの作成手順に従ってください。 そのうえで、登録プロセスの実施手順に従います。 
 1. 登録した後、アクセスできるラボの仮想マシンが表示されることを確認します。 
+
+    ![アクセス可能な VM](../media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. 仮想マシンの準備が完了するまで待ちます。 VM タイルで次のフィールドを確認します。
     1. タイルの上部に、**ラボの名前**が表示されます。
     1. その右側には、VM の**オペレーティング システム (OS)** を表すアイコンが表示されます。 この例では Windows OS です。 

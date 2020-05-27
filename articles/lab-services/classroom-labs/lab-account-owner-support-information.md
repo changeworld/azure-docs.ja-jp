@@ -3,18 +3,18 @@ title: Azure Lab Services - サポート情報を設定する (ラボ アカウ�
 description: ラボ アカウント所有者がサポートの連絡先情報を設定する方法について説明します。 ラボの作成者とラボのユーザーは、これを使用および表示して、支援を受けることができます。
 author: spelluru
 ms.author: spelluru
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: how-to
 ms.service: lab-services
-ms.openlocfilehash: f387e6b8832d8e7144b8338a3fc887b6b27db789
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07a37a4b87b7efe1fc3f3c08824da01e83cbb660
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80089107"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592408"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>サポート情報を設定する (Azure Lab Services のラボ アカウント所有者)
-この記事では、ラボの作成者 (インストラクター) およびラボのユーザー (学生) がラボ アカウントまたはラボの使用時に技術的な問題が発生した場合に支援を受けるために使用できるサポート情報を、ユーザー本人が (ラボ アカウント所有者として) 指定する方法について説明します。 
+この記事では、ラボの作成者 (教師) およびラボのユーザー (学生) が、ラボ アカウントまたはラボの使用時に技術的な問題に直面した場合に支援を受けるために使用できるサポート情報を、ラボ アカウント所有者が指定する方法について説明します。 
 
 サポート情報には、次のものが含まれます。
 

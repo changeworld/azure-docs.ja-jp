@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792345"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592391"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -26,7 +26,7 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
     | ----- | ----- |
     | [実行構成](#run-configuration) | **モデルをトレーニングするための汎用的な方法**は、トレーニング スクリプトと実行構成を使用することです。 実行構成では、モデルのトレーニングに使用されるトレーニング環境を構成するために必要な情報が提供されます。 実行構成、トレーニング スクリプト、コンピューティング先 (トレーニング環境) を取得し、トレーニング ジョブを実行できます。 |
     | [自動機械学習](#automated-machine-learning) | 自動機械学習を使用すると、**データ サイエンスやプログラミングに関する豊富な知識がなくてもモデルをトレーニング**することができます。 データ サイエンスとプログラミングの経験がある人に対しては、アルゴリズムの選択とハイパーパラメーターのチューニングを自動化することによって時間とリソースを節約する手段が提供されます。 自動機械学習を使用する場合、実行構成の定義について心配する必要はありません。 |
-    | [Estimator](#estimators) | Estimator クラスを使用すると、**広く使われている機械学習フレームワークに基づいてモデルのトレーニングを簡単に行う**ことができます。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer** 用の Estimator クラスがあります。 また、専用の Estimator クラスがまだないフレームワークで使用できる汎用 Estimator もあります。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。 |
+    | [Estimator](#estimators) | Estimator クラスを使用すると、**広く使われている機械学習フレームワークに基づいてモデルのトレーニングを簡単に行う**ことができます。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer**、および **Ray RLlib** 用の Estimator クラスがあります。 また、専用の Estimator クラスがまだないフレームワークで使用できる汎用 Estimator もあります。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。 |
     | [機械学習パイプライン](#machine-learning-pipeline) | パイプラインは別のトレーニング方法ではなく、**モジュール型の再利用可能な手順を使用してワークフローを定義する方法**であり、トレーニングをワークフローの一部として含めることができます。 機械学習パイプラインでは、自動機械学習、Estimator、および実行構成を使用したモデルのトレーニングがサポートされています。 パイプラインはトレーニングに明示的に重点を置いていないため、パイプラインを使用する理由は、他のトレーニング方法と大きく異なります。 一般に、以下の場合にパイプラインを使用できます。<br>* 実行時間の長いトレーニング ジョブやデータ準備など、**無人プロセスをスケジュール設定する**。<br>* 異種コンピューティング リソースとストレージの場所全体で調整された**複数の手順**を使用する。<br>* 再トレーニングやバッチ スコアリングなどの特定のシナリオ向けにパイプラインを**再利用可能なテンプレート**として使用する。<br>* ワークフローの**データソース、入力、出力を追跡してバージョン管理する**。<br>* ワークフローが、**特定の手順で個別に作業するさまざまなチームによって実装される**。 その後、手順をパイプラインに結合して、ワークフローを実装できます。 |
 
 + [Azure Machine Learning SDK for Python](#r-sdk):SDK では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
@@ -73,7 +73,7 @@ Azure Machine Learning の汎用トレーニング ジョブは、[RunConfigurat
 
 ### <a name="estimators"></a>Estimator
 
-Estimator を使用すると、広く使われている ML フレームワークを使用してモデルを簡単にトレーニングできます。 **Scikit-learn**、**PyTorch**、**TensorFlow**、または **Chainer** を使用している場合は、トレーニングに Estimator を使用することを検討してください。 また、専用の Estimator クラスがまだないフレームワークで使用できる汎用 Estimator もあります。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。
+Estimator を使用すると、広く使われている ML フレームワークを使用してモデルを簡単にトレーニングできます。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer**、または **Ray RLlib** を使用している場合は、トレーニングに Estimator を使用することを検討してください。 また、専用の Estimator クラスがまだないフレームワークで使用できる汎用 Estimator もあります。 Estimator を使用する場合、実行構成の定義について心配する必要はありません。
 
 * [Estimator とは](concept-azure-machine-learning-architecture.md#estimators)
 * [チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする](tutorial-train-models-with-aml.md)

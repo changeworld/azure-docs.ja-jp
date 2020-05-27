@@ -2,13 +2,13 @@
 title: Personalizer を構成する
 description: サービス構成には、サービスによる報酬の処理方法、サービスによる探索の頻度、モデルの再トレーニング頻度、格納するデータ量などがあります。
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218573"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584656"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Personalizer の学習ループを構成する
 
@@ -18,6 +18,23 @@ Azure portal で、その Personalizer リソースの **[構成]** ページで
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>構成の変更の計画
+
+構成の変更によっては[モデルのリセット](#settings-that-include-resetting-the-model)が行われるため、構成の変更を計画する必要があります。
+
+[見習いモード](concept-apprentice-mode.md)の使用を計画している場合は、見習いモードに切り替える前に、お使いの Personalizer の構成を確認してください。
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>モデルのリセットを含む設定
+
+次のアクションを実行すると、過去 2 日間の利用可能なデータを使用して、モデルの再トレーニングがトリガーされます。
+
+* 報酬
+* 探索
+
+すべてのデータを[クリア](how-to-manage-model.md)するには、 **[モデルと学習設定]** ページを使用します。
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>フィードバック ループの報酬を構成する
 
@@ -66,16 +83,7 @@ Azure portal で、その Personalizer リソースの **[構成]** ページで
 
 この値を変更した後は、必ず **[保存]** を選択してください。
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>モデルのリセットを含む設定
-
-次のアクションには、過去 2 日間のデータを使ったモデルの即時再トレーニングが含まれます。
-
-* 報酬
-* 探索
-
-すべてのデータを[クリア](how-to-manage-model.md)するには、**[モデルと学習設定]** ページを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

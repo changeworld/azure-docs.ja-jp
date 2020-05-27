@@ -1,6 +1,6 @@
 ---
-title: チュートリアル ‐ Azure Synapse Analytics:Synapse 用の Spark ジョブ定義
-description: チュートリアル - Azure Synapse Analytics を使用して Spark ジョブ定義を作成し、Synapse Spark プールに送信します。
+title: チュートリアル - Apache Spark for Azure Synapse Analytics:Synapse 用の Apache Spark ジョブ定義
+description: チュートリアル - Azure Synapse Analytics を使用して Spark ジョブ定義を作成し、Apache Spark for Azure Synapse Analytics のプールに送信します。
 author: hrasheed-msft
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: d5443a2db6f4fecbd84ef51166f44c3a6e920aee
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5fc9dffaa73d195c842381b6682a00e9834c0fe7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425911"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587937"
 ---
 # <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>チュートリアル:Azure Synapse Analytics を使用して Synapse Spark プールの Apache Spark ジョブ定義を作成する
 

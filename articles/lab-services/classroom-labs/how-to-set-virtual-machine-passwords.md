@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8479c00ed2129d5726421f576e1fffdb4506fb4b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933815"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592476"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -74,14 +74,14 @@ ms.locfileid: "78933815"
 
 
 ## <a name="set-password-for-vms"></a>VM のパスワードを設定する
-ラボ所有者 (教師) は、ラボの作成時 (ラボ作成ウィザード)、またはラボの作成後に **[Template]\(テンプレート\)** ページで VM のパスワードを設定/リセットすることができます。 
+ラボ所有者 (教師) は、ラボの作成時 (ラボ作成ウィザード)、またはラボの作成後に **[テンプレート]** ページで、VM のパスワードを設定またはリセットすることができます。 
 
 ### <a name="set-password-at-the-time-of-lab-creation"></a>ラボの作成時にパスワードを設定する
-ラボ所有者 (教師) は、ラボ作成ウィザードの **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページでラボ内の VM のパスワードを設定できます。
+ラボ所有者 (教師) は、ラボ作成ウィザードの **[仮想マシンの資格情報]** ページでラボ内の VM のパスワードを設定できます。
 
 ![新しいラボのウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
-このページの **[Use same password for all virtual machines]\(すべての仮想マシンに同じパスワードを使用する\)** オプションを有効/無効にすることで、教師はラボ内のすべての VM に同じパスワードを使用するか、学生が自分の VM にパスワードを設定できるようにします。 既定でこの設定は、Ubuntu を除くすべての Windows および Linux オペレーティング システム イメージで有効です。 この設定を無効にすると、学生が初めて VM に接続しようとしたときにパスワードを設定するように求められます。 
+このページの **[すべての仮想マシンに同じパスワードを使用する]** オプションを有効または無効にすることで、教師はラボ内のすべての VM に同じパスワードを使用するか、学生が自分の VM にパスワードを設定できるようにするかを選択できます。 既定でこの設定は、Ubuntu を除くすべての Windows および Linux オペレーティング システム イメージで有効です。 この設定を無効にすると、学生が初めて VM に接続しようとしたときにパスワードを設定するように求められます。 
 
 ### <a name="reset-password-later"></a>パスワードを後からリセットする
 
@@ -91,7 +91,7 @@ ms.locfileid: "78933815"
     ![[Set password]\(パスワードの設定\) ダイアログ ボックス](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
 ## <a name="connect-to-student-vms"></a>学生用 VM に接続する
-ラボ作成者 (講師/教授) は、次の条件が満たされている場合に学生用 VM に接続できます。 
+ラボ作成者 (教師) は、次の条件が満たされている場合に学生用 VM に接続できます。 
 
 - ラボの作成時に、 **[Use same password for all virtual machines]\(すべての仮想マシンに同じパスワードを使用する\)** オプションを選択した場合
 - VM が実行されている場合 
@@ -101,7 +101,7 @@ ms.locfileid: "78933815"
 ![学生用 VM への接続ボタン](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> 教授が VM を起動して接続すると、学生のクォータは影響を受けません。 
+> 教師が VM を起動して接続しても、学生のクォータは影響を受けません。 
 
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>CSV ファイルに仮想マシンのリストをエクスポートする
 

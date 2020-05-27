@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: c82b5d02ab3928eb0472f2a047cdca2238bf0b63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a67ba18b70f6b5b9eebb473e6cc2915bc937ce6b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237259"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588192"
 ---
-# <a name="manage-lab-accounts-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントを管理する 
+# <a name="create-and-manage-lab-accounts"></a>ラボ アカウントを作成および管理する
 Azure Lab Services では、ラボ アカウントは、クラスルーム ラボなどのマネージド ラボ型のコンテナーです。 管理者は、Azure Lab Services を使用してラボ アカウントを設定し、アカウントにラボを作成できるラボ所有者にアクセスを提供します。 この記事では、ラボ アカウントの作成、すべてのラボ アカウントの表示、またはラボ アカウントの削除を行う方法について説明します。
 
 ## <a name="create-a-lab-account"></a>ラボ アカウントを作成する
@@ -45,7 +45,10 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
     1. 既存の**共有イメージ ギャラリー**を選択するか、作成します。 他のユーザーによって再使用されるようにテンプレート VM を共有イメージ ギャラリーに保存することができます。 共有イメージ ギャラリーの詳細については、「[Azure Lab Services で共有イメージ ギャラリーを使用する](how-to-use-shared-image-gallery.md)」を参照してください。
     2. ユーザーが Windows 仮想マシンを切断した場合、**Windows 仮想マシンを自動的にシャットダウン**するかどうかを指定します。 VM が自動的にシャットダウンされる前にユーザーの再接続を待つ時間の長さを指定することもできます。 
     3. **[仮想ネットワークのピアリング]** には、ラボ ネットワークのピア仮想ネットワーク (VNet) を選択します。 このアカウントで作成したラボは、選択した VNet に接続され、そこにあるリソースにアクセスすることができます。 詳細については、「[ラボの仮想ネットワークとピア仮想ネットワークを接続する](how-to-connect-peer-virtual-network.md)」を参照してください。    
-    8. ラボ内の VM の**アドレスの範囲**を指定します。 アドレスの範囲は、Classless Inter-Domain Routing (CIDR) 表記で指定する必要があります (例: 10.20.0.0/23)。 ラボ内の仮想マシンはこのアドレスの範囲に作成されます。 詳細については、「[ラボ内の VM のアドレス範囲を指定する](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab)」を参照してください。  
+    8. ラボ内の VM の**アドレスの範囲**を指定します。 アドレスの範囲は、Classless Inter-Domain Routing (CIDR) 表記で指定する必要があります (例: 10.20.0.0/23)。 ラボ内の仮想マシンはこのアドレスの範囲に作成されます。 詳細については、「[ラボ内の VM のアドレス範囲を指定する](how-to-connect-peer-virtual-network.md#specify-an-address-range-for-vms-in-the-lab-account)」を参照してください。  
+
+        > [!NOTE]
+        > **アドレス範囲**プロパティは、ラボで**ピア仮想ネットワーク**が有効になっている場合にのみ適用されます。
 
         ![ラボアカウントの作成 -> 詳細](../media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
 6. **ページ下部のタグ**を**タブ**に切り替えます。ラボアカウントに関連付けるタグを追加します。 タグは名前と値のペアで、同じタグを複数のリソースやリソース グループに適用することでリソースを分類したり、統合した請求を表示したりできるようにします。 詳細については、[タグを使用した Azure リソースの整理](../../azure-resource-manager/management/tag-resources.md)に関するページを参照してください。
@@ -74,28 +77,6 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
 
     ![[すべてのリソース] -> [ラボ アカウント]](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
 
-## <a name="view-and-manage-labs-in-the-lab-account"></a>ラボ アカウント内のラボの表示と管理
-
-1. **[ラボ アカウント]** ページで、左側のメニューの **[すべてのラボ]** を選択します。
-
-    ![アカウント内のラボ](../media/how-to-manage-lab-accounts/labs-in-account.png)
-1. アカウント内の**ラボの一覧**に、次の情報が表示されます。 
-    1. ラボの名前。
-    2. ラボが作成された日付。 
-    3. ラボを作成したユーザーのメール アドレス。 
-    4. ラボ内で許可されるユーザーの最大数。 
-    5. ラボの状態。 
-    6. ロールの割り当て。 
-
-## <a name="delete-a-lab-in-the-lab-account"></a>ラボ アカウント内のラボを削除する
-前のセクションの手順に従って、ラボ アカウント内のラボの一覧を表示します。
-
-1. **... (省略記号)** を選択し、 **[削除]** を選択します。 
-
-    ![ラボを削除する - ボタン](../media/how-to-manage-lab-accounts/delete-lab-button.png)
-2. 警告メッセージで **[はい]** を選択します。 
-
-    ![ラボ削除の確認](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
 
 ## <a name="delete-a-lab-account"></a>ラボ アカウントを削除する
 前のセクションの指示に従って、一覧にラボ アカウントを表示します。 次の手順を使用して、ラボ アカウントを削除します。 
@@ -113,11 +94,4 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
 > Az.LabServices PowerShell モジュール (プレビュー) を使用して、ラボ アカウントを管理することもできます。 詳しくは、[GitHub の Az.LabServices ホーム ページ](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-次の記事をご覧ください。
-
-- [ラボ作成者にラボの場所の選択を許可する](allow-lab-creator-pick-lab-location.md)
-- [ラボのネットワークとピア仮想ネットワークを接続する](how-to-connect-peer-virtual-network.md)
-- [ラボに共有イメージ ギャラリーをアタッチする](how-to-attach-detach-shared-image-gallery.md)
-- [ユーザーをラボ所有者として追加する](how-to-add-user-lab-owner.md)
-- [ラボのファイアウォール設定の表示](how-to-configure-firewall-settings.md)
-- [ラボのその他の設定を構成する](how-to-configure-lab-accounts.md)
+目次の「**操作方法ガイド**」 -> 「**ラボ アカウントを作成および構成する (ラボ アカウント オーナー)** 」の他の記事を見る。 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230823"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585923"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>電子メール ワンタイム パスコード認証 (プレビュー)
 
@@ -56,7 +56,7 @@ ms.locfileid: "79230823"
 
 招待するとき、招待されるユーザーにワンタイム パスコード認証が使用されることは示されません。 ただし、ゲスト ユーザーがサインインするとき、他の認証方法を使用できない場合は、ワンタイム パスコード認証がフォールバック メソッドになります。 
 
-Azure portal の **[Azure Active Directory]**  >  **[組織の関係]**  >  **[他の組織からのユーザー]** で、ワンタイム パスコードを使用して認証しているゲスト ユーザーを確認できます。
+Azure portal の **[Azure Active Directory]**  >  **[ユーザー]** で、ワンタイム パスコードを使用して認証しているゲスト ユーザーを確認できます。
 
 ![[Source]\(ソース\) の値が OTP のワンタイム パスワード ユーザーを示すスクリーンショット](media/one-time-passcode/otp-users.png)
 
@@ -72,8 +72,7 @@ Azure portal の **[Azure Active Directory]**  >  **[組織の関係]**  >  **[�
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してオプトインするには
 1.  Azure AD の全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
 2.  ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
-3.  **[管理]** で **[組織の関係]** を選択します。
-4.  **[設定]** を選択します。
+3.  **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
 5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、 **[はい]** を選択します。
  
 ### <a name="to-opt-in-using-powershell"></a>PowerShell を使用してオプトインするには
@@ -139,8 +138,7 @@ $currentpolicy -ne $null
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してプレビューをオフにするには
 1.  Azure AD の全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
 2.  ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
-3.  **[管理]** で **[組織の関係]** を選択します。
-4.  **[設定]** を選択します。
+3.  **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
 5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、 **[いいえ]** を選択します。
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell を使用してプレビューをオフにするには

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692160"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592935"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) のベスト プラクティス
 
@@ -44,7 +44,7 @@ SQL オンデマンドを使用すると、Azure ストレージ アカウント
 
 可能であれば、ファイルを準備してパフォーマンスを向上させることができます。
 
-- CSV を Parquet に変換 - Parquet は列形式です。 圧縮されているため、同じデータを含む CSV ファイルよりもファイル サイズは小さくなります。 SQL オンデマンドで読み取るために必要な時間とストレージ要求も少なくなります。
+- CSV および JSON を Parquet に変換します。Parquet は列形式です。 それは圧縮されるため、同じデータを含む CSV または JSON ファイルよりもファイル サイズが小さくなります。 SQL オンデマンドで読み取るために必要な時間とストレージ要求も少なくなります。
 - クエリが 1 つの大きなファイルを対象としている場合は、複数の小さなファイルに分割すると効果があります。
 - CSV ファイルのサイズを 10 GB 未満にしてください。
 - 1 つの OPENROWSET パスまたは外部テーブル LOCATION に対して、ファイルのサイズを同じにすることをお勧めします。
@@ -118,7 +118,14 @@ FROM
 > [!TIP]
 > filepath 関数と fileinfo 関数の結果は、常に適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さが使用されていることを確認します。
 
+> [!NOTE]
+> 現在、パーティションの削除、filepath および fileinfo 用に使用される関数は、Apache Spark for Azure Synapse Analytics で作成された各テーブルに対して自動的に作成されたもの以外の外部テーブルに対してはサポートされていません。
+
 格納されたデータがパーティション分割されていない場合は、これらの関数を使用してファイルを対象とするクエリを最適化できるよう、データのパーティション分割を検討してください。 SQL オンデマンドから、[パーティション分割された Spark テーブルに対してクエリを実行](develop-storage-files-spark-tables.md)すると、必要なファイルのみが自動的にクエリの対象となります。
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>CSV ファイルに対してクエリを実行するために PARSER_VERSION 2.0 を使用する
+
+CSV ファイルに対してクエリを実行するときに、パフォーマンス最適化パーサーを使用できます。 詳細については、[PARSER_VERSION](develop-openrowset.md) に関する記事を参照してください。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS を使用してクエリのパフォーマンスと結合を強化する
 
@@ -127,6 +134,12 @@ FROM
 CETAS を使用して、結合された参照テーブルなど、クエリの頻繁に使用される部分を新しいファイル セットに格納できます。 次に、複数のクエリで共通の結合を繰り返す代わりに、この単一の外部テーブルに結合することができます。
 
 CETAS によって Parquet ファイルが生成されると、最初のクエリがこの外部テーブルを対象とするときに統計が自動的に作成され、結果としてパフォーマンスが向上します。
+
+## <a name="aad-pass-through-performance"></a>AAD パススルー パフォーマンス
+
+SQL オンデマンドを使用すると、AAD パススルーまたは SAS 資格情報を使用してストレージ内のファイルにアクセスできます。 AAD パススルーを使用する場合、SAS と比較してパフォーマンスが低下する可能性があります。 
+
+パフォーマンスを向上させる必要がある場合は、AAD パススルーのパフォーマンスが向上するまで、SAS 資格情報を使用したストレージへのアクセスをお試しください。
 
 ## <a name="next-steps"></a>次のステップ
 

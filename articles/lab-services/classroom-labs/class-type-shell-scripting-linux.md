@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443552"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589501"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux でのシェル スクリプト作成を教えるためのラボを設定する
 この記事では、Linux でのシェル スクリプトの作成を教えるためのラボを設定する方法について説明します。 スクリプトの作成は、管理者がタスクを繰り返さなくて済むようにできる、システム管理の役に立つ部分です。 このサンプル シナリオのクラスでは、従来の bash スクリプトと拡張スクリプトについて説明します。 拡張スクリプトは、bash コマンドと Ruby を組み合わせたスクリプトです。 このアプローチにより、Ruby でデータを渡すことができ、bash コマンドでシェルと対話することができます。 
@@ -32,19 +32,19 @@ ms.locfileid: "77443552"
 
 | ラボ アカウントの設定 | Instructions |
 | ----------- | ------------ |  
-| マーケットプレースの画像 | ラボ アカウント内で使用する [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) イメージを有効にします。 詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](specify-marketplace-images.md)」を参照してください | 
+| マーケットプレースの画像 | ラボ アカウント内で使用する Ubuntu Server 18.04 LTS イメージを有効にします。 詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](specify-marketplace-images.md)」を参照してください | 
 
 [このチュートリアル](tutorial-setup-classroom-lab.md)に従って、新しいラボを作成し、次の設定を適用します。
 
 | ラボの設定 | 値/説明 | 
 | ------------ | ------------------ |
 | 仮想マシン (VM) サイズ | Small  |
-| VM イメージ | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
+| VM イメージ | Ubuntu Server 18.04 LTS |
 | リモート デスクトップ接続を有効にする | [Enable]\(有効にする\)。 <p>この設定を有効にすると、教師と学生はリモート デスクトップ (RDP) を使用して VM に接続できます。 詳細については、「[Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)」を参照してください。 </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>デスクトップと xrdp をインストールする
-[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) イメージでは、リモート デスクトップ サーバーは既定ではインストールされません。 「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」記事の手順に従って、リモート デスクトップ プロトコルを使用して接続するためにテンプレート マシンで必要なパッケージをインストールします。
+Ubuntu Server 18.04 LTS イメージでは、リモート デスクトップ サーバーは既定ではインストールされません。 「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」記事の手順に従って、リモート デスクトップ プロトコルを使用して接続するためにテンプレート マシンで必要なパッケージをインストールします。
 
 ## <a name="install-ruby"></a>Ruby のインストール
 Ruby は、bash スクリプトと組み合わせることができるオープンソースの動的言語です。 このセクションでは、`apt-get` を使用して最新バージョンの [Ruby](https://www.ruby-lang.org/) をインストールする方法について説明します。

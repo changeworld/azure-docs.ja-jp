@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79229715"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635446"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
@@ -85,7 +85,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。
 
 ```HTTP
-POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
+POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

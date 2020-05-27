@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 02/12/2020
+ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167c7f7aa3dbf967575c0ee8905821fb9d3f77ce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050739"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585830"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
@@ -88,6 +88,19 @@ Azure AD B2B では、パートナーが各自の ID 管理ソリューション
 
 - [Azure AD のエンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)を使用して、[外部ユーザーのアクセスを管理するポリシー](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)を構成します。
 - [B2B コラボレーションの招待 API シリーズ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)を使用して、オンボード エクスペリエンスをカスタマイズします。
+
+## <a name="integrate-with-identity-providers"></a>ID プロバイダーと統合する
+
+Azure AD は、Facebook、Microsoft アカウント、Google、エンタープライズ ID プロバイダーなどの外部 ID プロバイダーをサポートしています。 ID プロバイダーとのフェデレーションを設定すると、外部ユーザーは既存のソーシャル アカウントまたはエンタープライズ アカウントを使用してサインインでき、アプリケーション専用の新しいアカウントを作成せずにすみます。 さらに外部 ID の ID プロバイダーについて説明します。
+
+![ID プロバイダーのページを示すスクリーンショット](media/what-is-b2b/identity-providers.png)
+
+
+## <a name="create-a-self-service-sign-up-user-flow-preview"></a>セルフサービス サインアップのユーザー フローを作成する (プレビュー)
+
+セルフサービス サインアップ ユーザー フローを使用すると、アプリにアクセスしようとする外部ユーザーのためにサインアップ エクスペリエンスを作成できます。 サインアップ フローの一部として、さまざまなソーシャル ID プロバイダーまたはエンタープライズ ID プロバイダーのオプションを提供したり、ユーザーに関する情報を収集したりすることができます。 セルフサービス サインアップとその設定方法について説明します。
+
+![ユーザー フロー ページを示すスクリーンショット](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 
 ## <a name="next-steps"></a>次のステップ
 

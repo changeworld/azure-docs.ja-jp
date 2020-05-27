@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2f1478391eccaabcc4dbcd150b54376494d3f56
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74273296"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587529"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B コラボレーション ユーザーの監査およびレポート
 ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 
 
 ## <a name="access-reviews"></a>アクセス レビュー
-アクセス レビューを使用すると、ゲスト ユーザーがリソースへのアクセスをまだ必要としているかどうかを定期的に確認できます。 **アクセス レビュー**機能は、**Azure Active Directory** では **[管理]**  >  **[組織の関係]** から利用できます。 (Azure portal で **[All services]\(すべてのサービス\)** から "access reviews" を検索することもできます。)アクセス レビューの使用方法については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
+アクセス レビューを使用すると、ゲスト ユーザーがリソースへのアクセスをまだ必要としているかどうかを定期的に確認できます。 **アクセス レビュー**機能は、**Azure Active Directory** では **[外部 ID]**  >  **[アクセス レビュー]** から利用できます。 Azure portal で **[すべてのサービス]** で「アクセス レビュー」を検索することもできます。 アクセス レビューの使用方法については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
 
 ## <a name="audit-logs"></a>監査ログ
 

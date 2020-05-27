@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Apache Spark ノートブックを作成する
+title: クイック スタート:Apache Spark for Azure Synapse Analytics ノートブックを作成する
 description: このクイックスタートでは、Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成し、Spark SQL クエリを実行する方法を示します。
 services: synapse-analytics
 author: euangMS
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786670"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592952"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成する
 
-このクイックスタートでは、Web ツールを使用して Azure Synapse で Apache Spark プール (プレビュー) を作成する方法について説明します。 次に、Apache Spark プールに接続し、ファイルとテーブルに対して Spark SQL クエリを実行する方法について説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 Azure Synapse の Spark については、[Azure Synapse の Apache Spark の概要](./spark/apache-spark-overview.md)に関するページを参照してください。
+このクイックスタートでは、Web ツールを使用して Azure Synapse で Apache Spark プール (プレビュー) を作成する方法について説明します。 次に、Apache Spark プールに接続し、ファイルとテーブルに対して Spark SQL クエリを実行する方法について説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 Azure Synapse の Spark については、[Azure Synapse 上の Apache Spark の概要に関するページ](./spark/apache-spark-overview.md)を参照してください。
 
 > [!IMPORTANT]
 > Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「**リソースのクリーンアップ**」をご覧ください。

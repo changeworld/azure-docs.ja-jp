@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337285"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636999"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合
 
@@ -162,7 +162,7 @@ RESTful 技術プロファイルでは、現在のセッションの言語/ロ�
 
 ## <a name="handling-error-messages"></a>エラー メッセージの処理
 
-REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は HTTP 409 エラー メッセージ (応答状態コードの競合) を返すことになります。 詳細については、「[RESTful 技術プロファイル](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message)」を参照してください。
+REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は HTTP 409 エラー メッセージ (応答状態コードの競合) を返すことになります。 詳細については、「[RESTful 技術プロファイル](restful-technical-profile.md#returning-error-message)」を参照してください。
 
 これは、検証技術プロファイルから REST API 技術プロファイルを呼び出すことによってのみ実現できます。 これにより、ユーザーはページのデータを修正して、ページの送信時に検証を再度実行できます。
 

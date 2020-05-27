@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74272897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591286"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する
 
@@ -36,11 +36,9 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 ### <a name="to-configure-external-collaboration-settings"></a>外部コラボレーションの設定を構成するには、次のようにします。
 
 1. テナント管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** の順に選択します。
-3. **[外部ユーザー]** で、 **[Manage external collaboration settings (外部コラボレーション設定の管理)]** を選択します。
-   > [!NOTE]
-   > **[外部コラボレーションの設定]** は、 **[組織の関係]** ページから利用することもできます。 Azure Active Directory の **[管理]** で、 **[組織の関係]**  >  **[設定]** の順に移動します。
-4. **[外部コラボレーションの設定]** ページで、有効にするポリシーを選択します。
+2. **[Azure Active Directory]** を選択します。
+3. **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
+6. **[外部コラボレーションの設定]** ページで、有効にするポリシーを選択します。
 
    ![外部コラボレーションの設定](./media/delegate-invitations/control-who-to-invite.png)
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050880"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591218"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 |     |
@@ -50,10 +50,13 @@ ms.locfileid: "80050880"
 
 ### <a name="authentication-url"></a>認証 URL
 直接フェデレーションをポリシーで使用できるのは、認証 URL のドメインがターゲット ドメインと一致する場合か、認証 URL がこれらの許可されている ID プロバイダーのうちの 1 つである場合のみです (この一覧は変更される場合があります)。
+
 -   accounts.google.com
 -   pingidentity.com
 -   login.pingone.com
 -   okta.com
+-   oktapreview.com
+-   okta-emea.com
 -   my.salesforce.com
 -   federation.exostar.com
 -   federation.exostartest.com
@@ -143,8 +146,8 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Azure AD ポータルで直接フェデレーションを構成するには
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
-2. **[組織の関係]** を選択します。
-3. **[ID プロバイダー]** を選択し、次に **[新しい SAML/WS-Fed IdP]** を選択します。
+2. **[外部 ID]**  >  **[すべての ID プロバイダー]** を選択します。
+3. 選択し、次に **[新しい SAML/WS-Fed IdP]** を選択します。
 
     ![新しい SAML または WS-Fed IdP を追加するためのボタンを示すスクリーンショット](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -191,8 +194,8 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>直接フェデレーション関係を編集する方法
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
-2. **[組織の関係]** を選択します。
-3. **[ID プロバイダー]** を選択します。
+2. **[外部 ID]** を選択します。
+3. **[すべての ID プロバイダー]** を選択します
 4. **SAML/WS-Fed ID プロバイダー** でプロバイダーを選択します。
 5. ID プロバイダーの詳細ウィンドウで、値を更新します。
 6. **[保存]** を選択します。
@@ -202,8 +205,8 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 直接フェデレーション設定を削除できます。 実行した場合、既に招待を利用済みの直接フェデレーションのゲスト ユーザーは、サインインできなくなります。 しかし、ディレクトリから削除し、再招待することで、リソースへのアクセス権をもう一度付与することができます。 Azure AD ポータルで ID プロバイダーとの直接フェデレーションを削除するには:
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
-2. **[組織の関係]** を選択します。
-3. **[Identity Providers]** を選択します。
+2. **[外部 ID]** を選択します。
+3. **[すべての ID プロバイダー]** を選択します。
 4. ID プロバイダーを選択し、 **[削除]** を選択します。 
 5. **[はい]** を選択して削除を確定します。 
 

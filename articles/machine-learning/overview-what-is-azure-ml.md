@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290470"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593020"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -23,7 +23,7 @@ Azure Machine Learning は、従来の ML からディープ ラーニング、�
 
 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 
 
-また、このサービスは、PyTorch、TensorFlow、scikit-learn などの一般的なオープン ソース ツールと連携します。
+また、このサービスは、PyTorch、TensorFlow、scikit-learn、Ray RLlib など、ディープ ラーニングや強化のための一般的なオープン ソース ツールと連携します。 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
@@ -51,6 +51,8 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 + [Machine Learning CLI](reference-azure-machine-learning-cli.md)
 
 + PyTorch、TensorFlow、scikit-learn などの、オープンソースのフレームワーク
+
++ Ray RLlib を使用した[強化学習](how-to-use-reinforcement-learning.md)
 
 [MLflow を使用してメトリックを追跡し、モデルをデプロイする](how-to-use-mlflow.md)ことや、Kubeflow を使用して[エンドツーエンドのワークフロー パイプラインを構築する](https://www.kubeflow.org/docs/azure/)こともできます。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: spelluru
-ms.openlocfilehash: dfd16d0977504e598492225238d29c83fcb7a028
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: a40575340fc5b1c202be6b001807085954439f03
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598064"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588158"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。

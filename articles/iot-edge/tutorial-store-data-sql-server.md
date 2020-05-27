@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d1b5ea9a9f78bc8a83159a34026d58d7a8cc89b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 96106882c1c43c322afbf6517209621557de9d25
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78944273"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592068"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -41,7 +41,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している AMD64 Linux デバイス](quickstart-linux.md)。
-  * Raspberry Pi などの ARM デバイスでは、SQL Server を実行できません。 ARM デバイスで SQL を使用する場合は、サインアップして [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/) (プレビュー) を試すことができます。
+  * Raspberry Pi などの ARM デバイスでは、SQL Server を実行できません。 ARM デバイスで SQL を使用する場合は、サインアップして [Azure SQL Edge](https://azure.microsoft.com/services/azure-sql-edge/) (プレビュー) を試すことができます。
 * コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
@@ -65,7 +65,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | **SqlSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
@@ -210,7 +210,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 2. コマンド パレットで、**Azure IoT Edge: Add IoT Edge module** コマンドを入力して実行します。 コマンド パレットで、次の情報を入力して新しいモジュールを追加します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | Select deployment template file (配置テンプレート ファイルの選択) | コマンド パレットで、現在のソリューション フォルダー内の deployment.template.json ファイルが強調表示されます。 そのファイルを選択します。  |
    | Select module template (モジュール テンプレートの選択) | **[Module from Azure Marketplace]\(Azure Marketplace のモジュール\)** を選択します。 |

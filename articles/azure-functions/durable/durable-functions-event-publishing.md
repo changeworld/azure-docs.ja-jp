@@ -2,13 +2,13 @@
 title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/25/2020
+ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535487"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83124272"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "81535487"
 
 ## <a name="create-a-custom-event-grid-topic"></a>カスタムの Event Grid トピックの作成
 
-Durable Functions からイベントを送信するための Event Grid トピックを作成します。 次の手順は、Azure CLI を使用してトピックを作成する方法を示しています。 これは、[PowerShell を使用して](../../event-grid/custom-event-quickstart-powershell.md)、または [Azure portal を使用して](../../event-grid/custom-event-quickstart-portal.md)も実行できます。
+Durable Functions からイベントを送信するための Event Grid トピックを作成します。 次の手順は、Azure CLI を使用してトピックを作成する方法を示しています。 トピックの作成は、[PowerShell を使用](../../event-grid/custom-event-quickstart-powershell.md)するか、[Azure portal を使用](../../event-grid/custom-event-quickstart-portal.md)しても行うことができます。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -101,7 +101,7 @@ Durable Functions プロジェクトで、`host.json` ファイルを検索し�
 }
 ```
 
-使用できる Azure Event Grid の構成プロパティについては、[host.json のドキュメント](../functions-host-json.md#durabletask)を参照してください。 `host.json` ファイルを構成すると、関数アプリから Event Grid トピックにライフサイクル イベントが送信されます。 これは、ローカルと Azure のどちらで関数アプリを実行する場合にも機能します。
+使用できる Azure Event Grid の構成プロパティについては、[host.json のドキュメント](../functions-host-json.md#durabletask)を参照してください。 `host.json` ファイルを構成すると、関数アプリから Event Grid トピックにライフサイクル イベントが送信されます。 ローカルと Azure のどちらで関数アプリを実行しても、この処理が開始されます。
 
 Function App と `local.settings.json` で、トピック キーのアプリ設定を設定します。 次の JSON は、ローカル デバッグ用の `local.settings.json` のサンプルです。 `<topic_key>` はトピック キーで置き換えます。  
 
@@ -126,52 +126,65 @@ Azure portal を使用して、ご使用の Durable Functions アプリによっ
 
 ### <a name="create-an-event-grid-trigger-function"></a>イベント グリッド トリガー関数の作成
 
-ライフサイクル イベントを受け取る関数を作成します。 **[カスタム関数]** を選択します。
+1. 関数アプリで、 **[関数]** を選択し、 **[+ 追加]** を選択します。 
 
-![カスタム関数の作成の選択。](./media/durable-functions-event-publishing/functions-portal.png)
+   :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="Azure portal で関数を追加します。" border="true":::
 
-[Event Grid トリガー] を選択し、言語を選択します。
+1. 「**Event Grid**」を検索し、 **[Azure Event Grid trigger]\(Azure Event Grid トリガー\)** テンプレートを選択します。 
 
-![イベント グリッド トリガーの選択。](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Azure portal で Event Grid トリガー テンプレートを選択します。" border="true":::
 
-関数の名前を入力し、[`Create`] を選択します。
+1. 新しいトリガーに名前を付け、 **[関数の作成]** を選択します。
 
-![イベント グリッド トリガーの作成。](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Azure portal で Event Grid トリガーの名前を付けます。" border="true":::
 
-次のコードを含む関数が作成されます。
 
-# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
+    次のコードを含む関数が作成されます。
 
-```csharp
-#r "Newtonsoft.Json"
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
+    # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-public static void Run(JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
+    ```csharp
+    #r "Newtonsoft.Json"
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Microsoft.Extensions.Logging;
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+    public static void Run(JObject eventGridEvent, ILogger log)
+    {
+        log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+    }
+    ```
 
-```javascript
-module.exports = async function(context, eventGridEvent) {
-    context.log(typeof eventGridEvent);
-    context.log(eventGridEvent);
-}
-```
+   # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+   ```javascript
+   module.exports = async function(context, eventGridEvent) {
+       context.log(typeof eventGridEvent);
+       context.log(eventGridEvent);
+   }
+   ```
 
 ---
 
-[`Add Event Grid Subscription`] を選択します。 この操作では、作成した Event Grid トピックの Event Grid サブスクリプションを追加します。 詳しくは、「[Azure Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)」をご覧ください
+### <a name="add-an-event-grid-subscription"></a>Event Grid のサブスクリプションを追加する
 
-![[イベント グリッド トリガー] リンクの選択。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+ここでは、作成した Event Grid トピックの Event Grid サブスクリプションを追加できます。 詳しくは、「[Azure Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)」をご覧ください。
 
-**[トピックの種類]** に [`Event Grid Topics`] を選択します。 Event Grid トピック用に作成したリソース グループを選択します。 次に、Event Grid トピックのインスタンスを選択します。 [`Create`] をクリックします。
+1. 新しい関数で、 **[統合]** を選択し、 **[イベント グリッド トリガー (eventGridEvent)]** を選択します。 
 
-![Event Grid のサブスクリプションを作成する。](./media/durable-functions-event-publishing/eventsubscription.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="[イベント グリッド トリガー] リンクの選択。" border="true":::
+
+1. **[Create Event Grid Description]\(Event Grid の説明の作成\)** を選択します。
+
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Event Grid のサブスクリプションを作成します。" border="true":::
+
+1. イベント サブスクリプションに名前を付け、トピックの種類として **[Event Grid トピック]** を選択します。 
+
+1. サブスクリプションを選択します。 Event Grid トピック用に作成したリソース グループとリソースを選択します。 
+
+1. **［作成］** を選択します
+
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid のサブスクリプションを作成します。" border="true":::
 
 これで、ライフサイクル イベントを受信する準備が整いました。
 
