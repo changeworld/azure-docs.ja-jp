@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fb776b4c1ff537401a23eb272526b3043fdb1e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ac6a38d99f588c9dbab7a40bc092aa01b27649a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235718"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726011"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge デバイスを登録する
 
@@ -122,7 +122,7 @@ IoT ハブに接続するすべてのデバイスは、Visual Studio Code エク
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Azure CLI を使用して IoT Edge デバイスを作成する
 
-[az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) コマンドを使用して、IoT ハブに新しいデバイス ID を作成します。 次に例を示します。
+[az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) コマンドを使用して、IoT ハブに新しいデバイス ID を作成します。 次に例を示します。
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -138,7 +138,7 @@ IoT ハブに接続するすべてのデバイスは、Visual Studio Code エク
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Azure CLI を使用して IoT Edge デバイスを表示する
 
-IoT ハブのすべてのデバイスを表示するには、[az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-list) コマンドを使用します。 次に例を示します。
+IoT ハブのすべてのデバイスを表示するには、[az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-list) コマンドを使用します。 次に例を示します。
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -148,7 +148,7 @@ IoT Edge デバイスとして登録されたすべてのデバイスのプロ�
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>Azure CLI を使用して接続文字列を取得する
 
-デバイスを設定する準備ができたら、物理デバイスを IoT ハブ内でのその ID にリンクする接続文字列が必要です。 [az iot hub device-identity show-connection-string](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) コマンドを使用すると、単一のデバイスの接続文字列が返されます。
+デバイスを設定する準備ができたら、物理デバイスを IoT ハブ内でのその ID にリンクする接続文字列が必要です。 [az iot hub device-identity show-connection-string](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) コマンドを使用すると、単一のデバイスの接続文字列が返されます。
 
    ```azurecli
    az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2aebccdf18aaba345beb344a8b6fc3b37754a4a1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793266"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725671"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Helm を使用して Kubernetes デプロイと統合する
 
@@ -169,7 +169,7 @@ metadata:
   name: mysecret
 type: Opaque
 data:
-  password: {{ .Values.secrets.password }}
+  password: {{ .Values.secrets.password | b64enc }}
 ```
 
 最後に、*values.yaml* ファイルを次の内容で更新して、*deployment.yaml* および *secrets.yaml* ファイルで参照される構成設定とシークレットの既定値をオプションで指定します。 実際の値は、App Configuration からプルされる構成によって上書きされます。

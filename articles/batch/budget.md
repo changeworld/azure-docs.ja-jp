@@ -1,14 +1,14 @@
 ---
 title: コスト分析と予算
 description: Batch ワークロードの実行に使用される、基になるコンピューティング リソースとソフトウェア ライセンスについて、コスト分析を取得して予算を設定する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: c3c3203882d003d7fbb5f9d5092a1c93886f313a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117490"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725773"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch のコスト分析と予算
 

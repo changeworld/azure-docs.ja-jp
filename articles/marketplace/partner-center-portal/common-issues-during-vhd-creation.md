@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: a47bece4df7263dbc29ec19510c3ea422bb3f4cf
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265103"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724719"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 作成における一般的な問題
-
-> [!NOTE]
-> 現在、Azure VM オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、引き続き、Cloud パートナー ポータルの「[VHD 作成における一般的な問題 (FAQ)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)」の手順に従って、オファーを管理してください。
 
 これらのよく寄せられる質問 (FAQ) では、Azure 仮想マシン オファーの仮想ハード ディスク (VHD) を作成するときに発生する可能性のある一般的な問題について説明します。
 

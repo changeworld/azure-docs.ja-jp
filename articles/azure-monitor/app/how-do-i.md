@@ -3,12 +3,12 @@ title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536864"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701949"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -16,7 +16,7 @@ ms.locfileid: "81536864"
 [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)を設定します。
 
 ### <a name="email-if-my-site-is-overloaded"></a>サイトが過負荷になっている場合の電子メール
-[サーバー応答時間](../../azure-monitor/app/alerts.md) の **アラート**を設定します。 1 ～ 2 秒の間のしきい値で機能する必要があります。
+[サーバー応答時間](../../azure-monitor/platform/alerts-log.md) の **アラート**を設定します。 1 ～ 2 秒の間のしきい値で機能する必要があります。
 
 ![](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ ms.locfileid: "81536864"
 
 ### <a name="email-on-exceptions"></a>例外での電子メール
 1. [例外の監視を設定します](../../azure-monitor/app/asp-net-exceptions.md)
-2. [アラートを設定](../../azure-monitor/app/alerts.md) します
+2. [アラートを設定](../../azure-monitor/platform/alerts-log.md) します
 
 ### <a name="email-on-an-event-in-my-app"></a>アプリのイベントでの電子メール
-特定のイベントが発生したときに電子メールを受け取りたいものとします。 Application Insights は直接この機能を提供しませんが、 [メトリックがしきい値を超えたときにアラートを送信](../../azure-monitor/app/alerts.md)できます。
+特定のイベントが発生したときに電子メールを受け取りたいものとします。 Application Insights は直接この機能を提供しませんが、 [メトリックがしきい値を超えたときにアラートを送信](../../azure-monitor/platform/alerts-log.md)できます。
 
 アラートは [カスタム メトリック](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)には設定できますが、カスタム イベントには設定できません。 イベントが発生したときにメトリックを増やすコードを記述します。
 
@@ -65,11 +65,11 @@ ms.locfileid: "81536864"
 * 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを 2 つの状態として考え直すことができます。 たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
 
 ### <a name="set-up-alerts-automatically"></a>アラートの自動設定
-[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](../../azure-monitor/app/alerts.md#automation)
+[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>PowerShell を使用した Application Insights の管理
 * [新しいリソースの作成に関するページ](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
-* [新しいアラートの作成に関するページ](../../azure-monitor/app/alerts.md#automation)
+* [新しいアラートの作成に関するページ](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>異なるバージョンのテレメトリを分離する
 

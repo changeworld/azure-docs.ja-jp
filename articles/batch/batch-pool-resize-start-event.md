@@ -1,15 +1,14 @@
 ---
 title: Azure Batch プール サイズ変更開始イベント
 description: Batch のプール サイズ変更開始イベントのリファレンスです。 次の例では、プールのサイズを 0 ノードから 2 ノードへ手動でサイズ変更する場合のプール サイズ変更開始イベントの本文を示します。
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: b4aa503c5dfbe00a77216277bdaf7e4c0dc3b1bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63576b04b06aad024211d0a50225907c88c138ce
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115875"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723733"
 ---
 # <a name="pool-resize-start-event"></a>プールのサイズ変更の開始イベント
 

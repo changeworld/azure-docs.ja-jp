@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc7c1fd1dff85908c96e2fd7b2276df3d833e37f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134023"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726045"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge デプロイの監視
 
@@ -67,7 +67,7 @@ IoT Hub サービスでは、このデータを Azure portal と Azure CLI で�
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Azure CLI でデプロイを監視する
 
-単一のデプロイの詳細を表示するには、[az IoT edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) コマンドを使用します。
+単一のデプロイの詳細を表示するには、[az IoT edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) コマンドを使用します。
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -85,7 +85,7 @@ deployment show コマンドは、次のパラメーターを受け取ります�
 * **reportedSuccessfulCount** - IoT Edge クライアント ランタイムから成功をレポートしているデプロイ内の IoT Edge デバイスの数を指定するデバイス メトリックです。
 * **reportedFailedCount** - IoT Edge クライアント ランタイムから失敗をレポートしているデプロイ内の IoT Edge デバイスの数を指定するデバイス メトリックです。
 
-[az IoT Edge deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) コマンドを使用して、各メトリックのデバイス ID またはオブジェクトの一覧を表示できます。
+[az IoT Edge deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) コマンドを使用して、各メトリックのデバイス ID またはオブジェクトの一覧を表示できます。
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

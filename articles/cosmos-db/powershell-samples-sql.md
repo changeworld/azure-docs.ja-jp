@@ -4,14 +4,14 @@ description: Azure Cosmos DB SQL API アカウントにおける各種の一般�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/26/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: efc0ff8e6c198071d3906a0e7e999510198f73bf
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 7cd14151d8cb0fbef7593d62eee050be7987ab18
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366179"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713541"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB 用 Azure PowerShell サンプル - SQL (Core) API
 
@@ -20,7 +20,7 @@ ms.locfileid: "80366179"
 その他の Cosmos DB SQL (Core) API 用 PowerShell サンプルとドキュメントについては、「[PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する](manage-with-powershell.md)」を参照してください。 その他、Cosmos DB の各種 API 向けの PowerShell サンプルについては、[Cassandra API](powershell-samples-cassandra.md)、[MongoDB API](powershell-samples-mongodb.md)、[Gremlin API](powershell-samples-gremlin.md)、[Table API](powershell-samples-table.md) を参照してください。
 
 > [!NOTE]
-> このサンプルでは、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 `Az.CosmosDB` のコマンドレットはまだプレビュー段階であり、リリースまでに変更される可能性があります。 `Az.CosmosDB` の更新プログラムを定期的にチェックしてください。
+> このサンプルでは、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 `Az.CosmosDB` の更新プログラムを定期的にチェックしてください。
 
 | | |
 |---|---|
