@@ -125,7 +125,7 @@
           href: diagnostics-extension-to-storage.md
         - name: 診断を使用したクラウド サービスのトレース
           href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: デバッグ
           items:
@@ -191,8 +191,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: ラーニング パス
       href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 料金計算ツール

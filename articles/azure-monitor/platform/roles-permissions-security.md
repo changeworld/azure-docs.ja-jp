@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658984"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836381"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
 
@@ -28,7 +28,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 
 * ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
 * [Azure アラート](alerts-overview.md)に定義されているアラート ルールを表示する。
-* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](powershell-quickstart-samples.md)、または[クロスプラットフォーム CLI](cli-samples.md) を使用して、メトリックにクエリを実行する。
+* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](powershell-quickstart-samples.md)、または[クロスプラットフォーム CLI](../samples/cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
 * リソースの [診断設定](diagnostic-settings.md) を表示する。
 * サブスクリプションの [ログ プロファイル](activity-log-export.md) を表示する。

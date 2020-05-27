@@ -219,8 +219,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 機能をリクエストする

@@ -33,7 +33,7 @@
       href: how-to-monitor.md
     - name: データセット マッピングの構成
       href: how-to-configure-mapping.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       href: data-share-troubleshoot.md
     - name: データセットの追加
       href: how-to-add-datasets.md
@@ -53,9 +53,9 @@
       href: /rest/api/datashare
 - name: リソース
   items:
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
-    - name: スタック オーバーフロー
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: ブログ
       href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'

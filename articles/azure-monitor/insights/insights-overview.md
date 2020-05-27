@@ -6,15 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657250"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836041"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor の Insights の概要
 Insights は、特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 [Azure Monitor データ プラットフォーム](../platform/data-platform.md)にデータを格納し、Azure Monitor のその他の機能を分析やアラートに使用しますが、追加のデータを収集したり、Azure portal で独自のユーザー エクスペリエンスを提供したりできます。 Azure portal で、Azure Monitor メニューの **[Insights]** セクションから分析情報にアクセスします。
+
 
 以下のセクションでは、Azure Monitor で現在利用可能な分析情報について簡単に説明します。 それぞれの詳細については、詳しいドキュメントを参照してください。
 

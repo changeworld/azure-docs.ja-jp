@@ -181,6 +181,8 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: 移行
       items:
+        - name: 概要
+          href: migration.md
         - name: 複合エンティティからの移行
           href: migrate-from-composite-entity.md
         - name: 作成リソースへの移行

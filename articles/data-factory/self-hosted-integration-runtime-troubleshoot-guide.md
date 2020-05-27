@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94e214c55a0109beb85cd08ce87303e5bd0f8016
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414890"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835429"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -135,7 +135,7 @@ For more help with troubleshooting, try the following resources:
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Microsoft Q&A question page](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Mapping data flows performance guide](concepts-data-flow-performance.md)

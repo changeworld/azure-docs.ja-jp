@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8af1acb67961de105e5bf5900d7b10c437cb30d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670374"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835871"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure Monitor のアラートを使用してイベントに応答する
 Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な情報を特定できます。 アラートは定期的にログ検索を自動的に実行するアラート ルールによって作成され、ログ検索の結果が特定の条件と一致している場合はアラート レコードが作成され、自動化された応答を実行するように構成できます。  このチュートリアルは、「[Log Analytics データのダッシュボードを作成して共有する](tutorial-logs-dashboards.md)」チュートリアルの続きです。   
@@ -23,7 +23,7 @@ Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な�
 > * アラート ルールを作成する
 > * 電子メール通知を送信するアクション グループを構成する
 
-このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](../../azure-monitor/learn/quick-collect-azurevm.md)既存の仮想マシンが必要です。  
+このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](quick-collect-azurevm.md)既存の仮想マシンが必要です。  
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
@@ -69,4 +69,4 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 あらかじめ用意されている Log Analytics のサンプル スクリプトを確認するには、次のリンクをクリックしてください。  
 
 > [!div class="nextstepaction"]
-> [Log Analytics のサンプル スクリプト](../../azure-monitor/platform/powershell-samples.md)
+> [Log Analytics のサンプル スクリプト](../samples/powershell-samples.md)

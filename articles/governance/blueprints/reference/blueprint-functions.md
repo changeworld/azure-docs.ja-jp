@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprints の関数
 description: Azure Blueprints の定義と割り当てに使用できる関数について説明します。
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236147"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834783"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure Blueprints で使用する関数
 

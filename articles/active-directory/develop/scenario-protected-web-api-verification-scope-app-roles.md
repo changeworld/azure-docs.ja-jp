@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 018e7f9bc389e3d148ff6860dae9fef88991e5c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ee2679da5065ab9e9b02d4ddb313fab75e78f7
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537170"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845137"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>保護された Web API: スコープとアプリのロールを検証する
 
@@ -149,7 +149,7 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-今回は、このコード スニペットは ASP.NET 用です。 ASP.NET Core の場合は、`ClaimsPrincipal.Current` を `HttpContext.User` に置き換え、要求の名前 `"roles"` を `"http://schemas.microsoft.com/identity/claims/roles"` に置き換えるだけです  この記事の前の方のコード スニペットも参照してください。
+今回は、このコード スニペットは ASP.NET 用です。 ASP.NET Core の場合は、`ClaimsPrincipal.Current` を `HttpContext.User` に置き換え、要求の名前 `"roles"` を `"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"` に置き換えるだけです  この記事の前の方のコード スニペットも参照してください。
 
 ### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Web API がデーモン アプリのみによって呼び出される必要がある場合のアプリ専用トークンの受け入れ
 

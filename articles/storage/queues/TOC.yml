@@ -282,7 +282,7 @@
         - name: ストレージ エクスプローラーのアクセシビリティ
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Azure Storage フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
     - name: Stack Overflow の Azure Storage
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Azure Storage の価格

@@ -201,8 +201,8 @@
       href: data-factory-customer-case-studies.md
     - name: ラーニング パス
       href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: 料金計算ツール
@@ -213,7 +213,7 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'

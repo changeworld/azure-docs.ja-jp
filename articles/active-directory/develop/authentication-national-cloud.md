@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230707"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845187"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -60,8 +60,8 @@ ms.locfileid: "79230707"
 
 適切なリージョン固有のベース URL を使用して、Azure AD 承認またはトークン エンドポイントへの要求を構成できます。 例として、Azure Germany の場合を示します。
 
-  - 承認共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/authorize` です。
-  - トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/token` です。
+  - 承認共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` です。
+  - トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/token` です。
 
 シングルテナント アプリケーションの場合は、前の URL にある "common" をテナント ID またはテナント名に置き換えます。 たとえば `https://login.microsoftonline.de/contoso.com` です。
 

@@ -892,8 +892,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 一般的な質問
       href: service-fabric-common-questions.md
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
     - name: Azure Resource Manager デプロイのガードレール
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: 価格

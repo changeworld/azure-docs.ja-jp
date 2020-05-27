@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e453723692e0e6c08c1bd03301318688082201c2
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564920"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652067"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>チュートリアル:Azure Stack Edge の配置を準備する  
 
@@ -25,12 +25,13 @@ ms.locfileid: "82564920"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 新しいリソースを作成
 > * アクティブ化キーの取得
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-### <a name="get-started"></a>はじめに
+## <a name="get-started"></a>はじめに
 
 Azure Stack Edge を配置するには、以下の順序どおりにチュートリアルを参照してください。
 
@@ -52,14 +53,15 @@ Azure Stack Edge を配置するには、以下の順序どおりにチュート
 
 開始する前に次の点を確認します。
 
-- ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 従量課金制のサブスクリプションには対応していません。
-- Azure Stack Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
+* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。
 
-    - Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
-    - IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
-    - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
-- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
-- アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
+* Azure Stack Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
+
+  * Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
+  * IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
+  * Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
+* Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
+* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-azure-stack-edge-device"></a>Azure Stack Edge デバイスの前提条件
 
@@ -70,7 +72,6 @@ Azure Stack Edge を配置するには、以下の順序どおりにチュート
 - デバイスを安全に置くことができる、平らで安定した水平の作業面が用意されていること。
 - デバイスをセットアップする予定の場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があること。
 - 物理デバイスにアクセスできること。
-
 
 ### <a name="for-the-datacenter-network"></a>データセンター ネットワークの前提条件
 
@@ -90,7 +91,7 @@ Azure Stack Edge を配置するには、以下の順序どおりにチュート
 Azure Stack Edge リソースを作成するには、Azure portal で次の手順を実行します。
 
 1. Microsoft Azure の資格情報を使用して、次のサイトにサインインします。 
-    
+
     - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
     - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
 
@@ -155,14 +156,16 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
     ![アクティブ化キーの取得](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - アクティブ化キーは生成後 3 日間で有効期限が切れます。
-> - キーの有効期限が切れた場合は、新しいキーを生成してください。 古いキーは無効です。
+>
+> * アクティブ化キーは生成後 3 日間で有効期限が切れます。
+> * キーの有効期限が切れた場合は、新しいキーを生成してください。 古いキーは無効です。
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Stack Edge に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+>
 > * 新しいリソースを作成
 > * アクティブ化キーの取得
 

@@ -164,14 +164,14 @@
           href: 'https://azure.microsoft.com/support/options/'
         - name: Azure IoT のサポートとヘルプのオプション
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: スタック オーバーフロー
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Q&A 質問ページ
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
     - name: フィードバックとフォーラム
       items:
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Q&A 質問ページ
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
         - name: 製品の要求と提案
           href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure のビデオ

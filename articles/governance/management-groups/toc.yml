@@ -14,6 +14,8 @@
       href: ./create.md
     - name: リソースの管理
       href: ./manage.md
+    - name: リソース階層の保護
+      href: ./how-to/protect-resource-hierarchy.md
 - name: リファレンス
   items:
     - name: Azure CLI

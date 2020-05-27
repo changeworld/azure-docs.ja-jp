@@ -500,8 +500,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ビデオ
       href: 'https://www.youtube.com/c/AzureFunctions'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter

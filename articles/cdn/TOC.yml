@@ -67,8 +67,6 @@
           href: cdn-restrict-access-by-country.md
         - name: ファイル圧縮によるパフォーマンスの向上
           href: cdn-improve-performance.md
-        - name: エンドポイントのマルチオリジン
-          href: endpoint-multiorigin.md
         - name: キャッシュ動作の制御
           items:
             - name: キャッシュ規則を使用してキャッシュ動作を制御する
@@ -185,8 +183,8 @@
       href: cdn-billing.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-cdn.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: 料金計算ツール
