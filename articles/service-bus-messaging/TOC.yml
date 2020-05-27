@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: メッセージ エンティティの一時停止と再アクティブ化
           href: entity-suspend.md
+        - name: Service Bus Explorer を使用して Service Bus に対するデータ操作を実行する
+          href: explorer.md
         - name: ARM テンプレートの使用
           href: service-bus-resource-manager-overview.md
           items:

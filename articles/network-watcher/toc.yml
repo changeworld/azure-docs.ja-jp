@@ -182,8 +182,8 @@
       href: frequently-asked-questions.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: サービスの更新情報

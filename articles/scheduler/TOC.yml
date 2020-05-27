@@ -48,9 +48,9 @@
       href: 'https://azure.microsoft.com/updates/?product=scheduler'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
-    - name: スタック オーバーフロー
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-scheduler.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/scheduler/'

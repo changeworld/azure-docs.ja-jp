@@ -48,6 +48,8 @@
       href: upgrade-virtual-wan.md
     - name: カスタム IPsec ポリシーを構成する
       href: virtual-wan-custom-ipsec-portal.md
+    - name: Azure Firewall をハブにデプロイする
+      href: howto-firewall.md
     - name: ExpressRoute
       items:
         - name: ExpressRoute 接続を作成する
@@ -84,6 +86,8 @@
           href: openvpn-azure-ad-client.md
         - name: マルチアプリケーション Azure AD 認証を構成する
           href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Azure Firewall をハブにデプロイする
+          href: howto-firewall.md
     - name: ルーティング
       items:
         - name: 仮想ハブから NVA にトラフィックをルーティングする
@@ -94,6 +98,10 @@
               href: virtual-wan-route-table.md
         - name: 仮想ハブの有効なルートを表示する
           href: effective-routes-virtual-hub.md
+    - name: Security
+      items:
+        - name: Azure Firewall をハブにデプロイする
+          href: howto-firewall.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

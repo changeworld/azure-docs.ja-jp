@@ -159,6 +159,8 @@
               href: manage-self-service-access.md
             - name: ホーム領域検出
               href: configure-authentication-for-federated-users-portal.md
+        - name: MS Graph の API を使用して SAML ベースのシングル サインオンを自動化する
+          href: application-saml-sso-configure-api.md
         - name: Azure AD へのアプリの移行
           items:
             - name: 移行リソース
@@ -339,13 +341,13 @@
       href: /azure/active-directory/develop/developer-support-help-options?context=azure/active-directory/manage-apps/context/manage-apps-context
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

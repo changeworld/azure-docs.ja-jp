@@ -1982,8 +1982,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/databricks/'
-    - name: 質問をする - MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabricks'
+    - name: 質問をする - Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-databricks.html'
     - name: 質問をする - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
     - name: 利用可能なリージョン

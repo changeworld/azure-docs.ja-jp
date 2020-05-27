@@ -117,7 +117,7 @@
       items:
         - name: プライベート DNS ゾーンとレコードを保護する
           href: dns-protect-private-zones-recordsets.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド
           href: dns-troubleshoot.md
@@ -163,8 +163,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 機能のリクエスト
       href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
     - name: ネットワークのブログ
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: 価格

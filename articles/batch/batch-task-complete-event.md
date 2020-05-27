@@ -1,14 +1,14 @@
 ---
 title: Azure Batch タスク完了イベント
 description: Batch のタスク完了イベントのリファレンスです。 タスクが完了すると、終了コードに関係なく、このイベントが発生します。
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 9e11eac04009def2bce4476ba2d77c798f25ca15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e3959a34b96ef4cebdbedadf736418d08cb2746
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116504"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726368"
 ---
 # <a name="task-complete-event"></a>タスク完了イベント
 

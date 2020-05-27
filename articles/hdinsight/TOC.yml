@@ -289,8 +289,8 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Apache Hadoop サービスのヒープ ダンプの有効化
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: フォーラムで質問する
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: Microsoft Q&A 質問ページのヘルプの表示
+          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
         - name: 料金計算ツール
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: HDInsight 用の Windows ツール
@@ -330,8 +330,18 @@
           href: ./spark/spark-best-practices.md
         - name: Apache Spark の設定を構成する
           href: ./spark/apache-spark-settings.md
-        - name: Apache Spark ジョブを最適化する
-          href: ./spark/apache-spark-perf.md
+        - name: Optimization
+          items:
+            - name: Apache Spark ジョブを最適化する
+              href: ./spark/apache-spark-perf.md
+            - name: データ処理を最適化する
+              href: ./spark/optimize-data-processing.md
+            - name: データ ストレージを最適化する
+              href: ./spark/optimize-data-storage.md
+            - name: メモリ使用量を最適化する
+              href: ./spark/optimize-memory-usage.md
+            - name: クラスターの構成を最適化する
+              href: ./spark/optimize-cluster-configuration.md
         - name: Spark 2.3 または 2.4 に移行する
           href: ./spark/migrate-versions.md
     - name: 方法
