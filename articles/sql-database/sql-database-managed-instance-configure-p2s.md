@@ -3,7 +3,7 @@ title: P2S の構成 - Managed instance
 description: SQL Server Management Studio を使用して Azure SQL Database Managed Instance に接続します。オンプレミスのクライアント コンピューターからポイント対サイト接続を行います。
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 434b3d46d19138b494c9e29add3affb2eecc9c45
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232519"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773744"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>クイック スタート: オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する
 

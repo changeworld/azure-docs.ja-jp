@@ -3,7 +3,7 @@ title: テンプレートの例 - Azure SQL Database にマネージド イン�
 description: この Azure PowerShell サンプル スクリプトを使用して、Azure SQL Database にマネージド インスタンスを作成します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: seo-dt-2019
 ms.devlang: PowerShell
 ms.topic: sample
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: e5be8c9441be5ca441a5c0f7c4444c2edbdc7a95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eccc3dcb2731183719833ae99f475eb27e6a05c1
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811220"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774518"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>PowerShell と Azure Resource Manager テンプレートを使用して Azure SQL Database にマネージド インスタンスを作成する
 

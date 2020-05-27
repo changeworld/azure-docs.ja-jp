@@ -3,7 +3,7 @@ title: クライアント VM の接続 - マネージド インスタンス
 description: SQL Server Management Studio を使用して、Azure 仮想マシンから Azure SQL Database Managed Instance に接続します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2787756da048de0a4354d88feb8445c03fb3ef74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528411"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773685"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する
 

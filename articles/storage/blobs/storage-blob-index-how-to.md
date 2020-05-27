@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 9ba151aa1ddc7f4b14d5f4ec7f1990e2fd760602
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cc82b6578b06323d8cf9a09644d50043dba8e554
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121237"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774322"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する
 
@@ -36,7 +36,7 @@ BLOB インデックスがパブリック プレビューであるため、.NET 
 
    詳細については、「[パッケージ ソース](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)」を参照してください。
 
-2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.5.0-dev.20200422.2** をプロジェクトにインストールします。 コマンド ```Install-Package Azure.Storage.Blobs -Version12.5.0-dev.20200422.2``` を実行することもできます
+2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.5.0-dev.20200422.2** をプロジェクトにインストールします。 コマンド ```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2``` を実行することもできます
 
    詳細については、「[パッケージを検索してインストールする](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)」を参照してください。
 

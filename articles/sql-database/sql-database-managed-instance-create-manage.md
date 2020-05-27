@@ -3,7 +3,7 @@ title: マネージド インスタンスの管理 API リファレンス
 description: Azure SQL Database Managed Instance の作成と管理について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12f9411b62ac218e99d0006a743805c50c63b39a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232511"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773575"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL Database Managed Instance のマネージド API リファレンス
 

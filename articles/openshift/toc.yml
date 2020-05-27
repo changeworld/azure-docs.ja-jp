@@ -1,10 +1,12 @@
 - name: Azure Red Hat OpenShift
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure Red Hat OpenShift について
       href: intro-openshift.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: 1 - Azure Red Hat OpenShift 4 クラスターを作成する
       href: tutorial-create-cluster.md
@@ -13,7 +15,6 @@
     - name: 3 - Azure Red Hat OpenShift 4 クラスターを削除する
       href: tutorial-delete-cluster.md
 - name: 操作方法ガイド
-  expanded: true
   items:
     - name: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
       href: howto-create-private-cluster-4x.md
@@ -37,7 +38,6 @@
       items:
         - name: Azure Red Hat OpenShift 3.11 向けに Azure Red Hat OpenShift 開発環境を設定する
           href: howto-setup-environment.md
-          expanded: true
           items:
             - name: Azure AD テナントを作成する
               href: howto-create-tenant.md
@@ -85,7 +85,9 @@
       href: support-policies-v4.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Red Hat OpenShift のドキュメント
-      href: 'https://docs.openshift.com/aro/welcome/index.html'
+    - name: Azure Red Hat OpenShift 4.3 のドキュメント
+      href: 'https://docs.openshift.com/aro/4/welcome/index.html'
+    - name: Azure Red Hat OpenShift 3.11 のドキュメント
+      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/15/2020
+ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 6e1ab30e8b4cf44f7d1f82fd94fb9bf854915557
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9788c4663908497b51fbaaf7f824125d857e7c81
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473896"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774408"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API にアクセスするための資格情報を取得する  
 

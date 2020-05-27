@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
-  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.openlocfilehash: e379515ea34206e21f80ceb23a465858d6d4da81
+  ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80678316"
+  ms.lasthandoff: 05/21/2020
+  ms.locfileid: "83773221"
 landingContent:
 - title: Azure Remote Rendering について
   linkLists:
@@ -58,9 +58,11 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Unity プロジェクトをゼロから設定する
+    - text: Unity:プロジェクトをゼロから設定する
       url: tutorials/unity/project-setup.md
-    - text: Unity でリモート エンティティを操作する
+    - text: Unity:リモート エンティティを操作する
       url: tutorials/unity/working-with-remote-entities.md
-    - text: 環境と素材を変更する
+    - text: Unity:環境と素材を変更する
       url: tutorials/unity/changing-environment-and-materials.md
+    - text: 'ネイティブ C++: Remote Rendering を HoloLens Holographic アプリに統合する'
+      url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md

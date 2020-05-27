@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 82bdb177cf4d9c400d1b13ba7178658089950557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c66f8b787d27b72216eb08b87352d8dbf272fb
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314333"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774361"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
 
@@ -116,7 +116,7 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 ```csharp
 var apiUrl = "https://api.videoindexer.ai";
 var accountId = "..."; 
-var location = "westus2";
+var location = "westus2"; // replace with the account's location, or with “trial” if this is a trial account
 var apiKey = "..."; 
 
 System.Net.ServicePointManager.SecurityProtocol = System.Net.ServicePointManager.SecurityProtocol | System.Net.SecurityProtocolType.Tls12;

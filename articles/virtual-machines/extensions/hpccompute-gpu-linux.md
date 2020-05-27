@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cfc48f7c152f0f38ca70713dc989029e4e64e8b
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415788"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773119"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -149,7 +149,7 @@ az vm extension set \
   --version 1.2 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85", \
+    "driverVersion": "9.1.85" \
   }'
 ```
 

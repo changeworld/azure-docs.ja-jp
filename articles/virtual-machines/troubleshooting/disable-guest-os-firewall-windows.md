@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422364"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774334"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にする
 
@@ -49,7 +49,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   ただし、ポリシーが再び適用されるとすぐに、リモート セッションからサインアウトされます。 この問題を根本的に修正するには、このコンピューターに適用されるポリシーを変更します。

@@ -3,7 +3,7 @@ title: マネージド インスタンスの既存の仮想ネットワークを
 description: この記事では、Azure SQL Database Managed Instance をデプロイできる既存の仮想ネットワークとサブネットの構成方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e678edad2c59205e76598991b36d296404a3163
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476951"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773635"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する
 

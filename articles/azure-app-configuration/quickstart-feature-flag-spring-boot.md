@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: cc040fe2c9e0686844c8609b9682d757595b9dbf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a0d3c23f8f53b8ddfbd3fbd1cb1744a47664ce08
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981070"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774018"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -178,7 +178,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta").block());
+            model.addAttribute("Beta", featureManager.isEnabledAsync("featureManagement.Beta").block());
             return "welcome";
         }
     }
