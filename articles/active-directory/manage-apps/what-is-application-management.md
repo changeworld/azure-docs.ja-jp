@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063324"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739755"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションの管理
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) は、クラウドおよびオンプレミス�
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>条件付きアクセス ポリシーによるリスクの管理
 
-[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)と Azure AD シングル サインオン (SSO) を組み合わせることで、アプリケーションにアクセスするための高度なセキュリティが提供されます。 セキュリティ機能には、クラウド規模の ID 保護、リスクベースのアクセス制御、ネイティブな多要素認証、および条件付きアクセス ポリシーが含まれます。 これらの機能では、さらに高度なセキュリティを必要とするアプリケーションまたはグループに基づいて、より詳細にポリシーを制御できます。
+[条件付きアクセス](../conditional-access/concept-conditional-access-cloud-apps.md)と Azure AD シングル サインオン (SSO) を組み合わせることで、アプリケーションにアクセスするための高度なセキュリティが提供されます。 セキュリティ機能には、クラウド規模の ID 保護、リスクベースのアクセス制御、ネイティブな多要素認証、および条件付きアクセス ポリシーが含まれます。 これらの機能では、さらに高度なセキュリティを必要とするアプリケーションまたはグループに基づいて、より詳細にポリシーを制御できます。
 
 ## <a name="improve-productivity-with-single-sign-on"></a>シングル サインオンによる生産性の向上
 

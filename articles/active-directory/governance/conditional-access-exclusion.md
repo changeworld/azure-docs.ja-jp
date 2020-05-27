@@ -16,12 +16,12 @@ ms.date: 04/24/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91bb5a342eea079b6e9abcf109ad472151d3c13d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab2974cf95726f44641b4ac220c7ee871890ca56
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144497"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736846"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
 
@@ -32,7 +32,7 @@ ms.locfileid: "82144497"
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>ポリシーからユーザーを除外する理由
 
-たとえば、管理者として [Azure AD Conditional Access](../conditional-access/overview.md) を使用して多要素認証 (MFA) を要求し、特定のネットワークまたはデバイスに対する認証要求を制限することを決定したとします。 展開の計画中に、すべてのユーザーがこれらの要件を満たせるわけではないことに気が付きます。 たとえば、社内ネットワークに含まれていない、リモート オフィスから作業しているユーザーがいる場合があります。 また、デバイスの交換を待機している間、サポートされていないデバイスを使用して接続するユーザーに対応する必要が生じる場合もあります。 つまり、その企業では、これらのユーザーがサインインしてジョブを実行する必要があるため、条件付きアクセス ポリシーから除外します。
+たとえば、管理者として [Azure AD Conditional Access](../conditional-access/concept-conditional-access-policy-common.md) を使用して多要素認証 (MFA) を要求し、特定のネットワークまたはデバイスに対する認証要求を制限することを決定したとします。 展開の計画中に、すべてのユーザーがこれらの要件を満たせるわけではないことに気が付きます。 たとえば、社内ネットワークに含まれていない、リモート オフィスから作業しているユーザーがいる場合があります。 また、デバイスの交換を待機している間、サポートされていないデバイスを使用して接続するユーザーに対応する必要が生じる場合もあります。 つまり、その企業では、これらのユーザーがサインインしてジョブを実行する必要があるため、条件付きアクセス ポリシーから除外します。
 
 もう 1 つの例として、条件付きアクセス内で[ネームド ロケーション](../conditional-access/location-condition.md)を使用して、ユーザーによるテナントへのアクセスを許可したくない一連の国や地域を指定することもできます。
 

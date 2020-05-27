@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409068"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739827"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 
@@ -78,7 +78,7 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 
 この場合、割り当てられたすべてのユーザーは、各グループに追加されるときに Salesforce に自動的にプロビジョニングされ、そのロール割り当ては Salesforce で更新されます。 ユーザーは、Microsoft アプリケーション アクセス パネル、Office Web クライアントを通じて、また組織の Salesforce ログイン ページに移動して、Salesforce を探してアクセスできます。 管理者は Azure AD レポート機能を使用して、使用量や割り当ての状態を簡単に確認できます。
 
-管理者は、 [Azure AD 条件付きアクセス](../active-directory-conditional-access-azure-portal.md) を使用して、特定のロールのアクセス ポリシーを設定できます。 これらのポリシーには、アクセスを企業環境の外で許可するかどうかや、Multi-Factor Authentication、またはデバイスの要件を含めて、さまざまな状況でのアクセスを実現できます。
+管理者は、 [Azure AD 条件付きアクセス](../conditional-access/concept-conditional-access-users-groups.md) を使用して、特定のロールのアクセス ポリシーを設定できます。 これらのポリシーには、アクセスを企業環境の外で許可するかどうかや、Multi-Factor Authentication、またはデバイスの要件を含めて、さまざまな状況でのアクセスを実現できます。
 
 ## <a name="access-to-microsoft-applications"></a>Microsoft アプリケーションへのアクセス
 
@@ -97,5 +97,5 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 企業アプリケーションと同様に、Azure portal から特定の Microsoft アプリケーションに[ユーザーを割り当てる](assign-user-or-group-access-portal.md)ことができます。あるいは、ポータルを利用できない場合、PowerShell を利用してユーザーを割り当てることができます。
 
 ## <a name="next-steps"></a>次のステップ
-* [条件付きアクセスを使用したアプリケーションの保護](../active-directory-conditional-access-azure-portal.md)
+* [条件付きアクセスを使用したアプリケーションの保護](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [セルフサービス グループの管理/SSAA](../users-groups-roles/groups-self-service-management.md)

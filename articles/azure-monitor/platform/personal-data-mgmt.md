@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226323"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740452"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -101,7 +101,7 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 
 #### <a name="log-data"></a>ログ データ
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します 
+* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します 
 * 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 次に例を示します。
 
     ```
