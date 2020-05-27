@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/12/2020
+ms.date: 05/18/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: bfeded391f582ab0ac6f3c15d2086789228f1494
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631527"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660589"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -100,7 +100,7 @@ ms.locfileid: "80631527"
 | **SqlManagement** | SQL 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **Storage** | Azure Storage です。 <br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 | 送信 | はい | はい |
 | **StorageSyncService** | ストレージ同期サービス。 | 両方 | いいえ | いいえ |
-| **WindowsVirtualDesktop** | Windows Virtual Desktop。 | 両方 | いいえ | いいえ |
+| **WindowsVirtualDesktop** | Windows Virtual Desktop。 | 両方 | いいえ | はい |
 | **VirtualNetwork** | 仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての IP アドレスの範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワーク、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)に接続された仮想ネットワーク、[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations)、および[ユーザーが定義したルート](virtual-networks-udr-overview.md)で使用されるアドレス プレフィックス。 このタグには、既定のルートも含まれる場合もあります。 | 両方 | いいえ | いいえ |
 
 >[!NOTE]

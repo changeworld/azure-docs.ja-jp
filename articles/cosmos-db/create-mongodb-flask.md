@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53d1010f501e59b99c3ba6bac675124cdc5f77a0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77061745"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659220"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする
 
@@ -23,7 +23,7 @@ ms.locfileid: "77061745"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 このクイックスタートでは、Azure Cosmos DB for Mongo DB API アカウントまたは Azure Cosmos DB Emulator を使用して、GitHub からクローンした Python Flask To-Do Web アプリを実行します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能を備えたドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
@@ -34,9 +34,9 @@ ms.locfileid: "77061745"
 - [Python 3.6 以降](https://www.python.org/downloads/)
 - [Visual Studio Code](https://code.visualstudio.com/Download) と [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)。
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-それでは、GitHub から Flask-MongoDB アプリをクローンし、接続文字列を設定して実行しましょう。 プログラムでデータを処理することが非常に簡単であることがわかります。
+それでは、GitHub から Flask-MongoDB アプリを複製し、接続文字列を設定して実行しましょう。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -50,7 +50,7 @@ ms.locfileid: "77061745"
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git

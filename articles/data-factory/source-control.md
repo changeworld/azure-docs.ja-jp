@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: f327844be57d7f8e177f3bf72b1e3b56c5147e00
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629339"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674595"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -181,7 +181,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 ### <a name="configure-publishing-settings"></a>発行の設定を構成する
 
-既定のデータ ファクトリでは、公開されたファクトリの Resource Manager テンプレートが生成され、`adf_public` という名前のブランチにそれが保存されます。 カスタムの公開ブランチを構成するには、コラボレーション ブランチのルート フォルダーに `publish_config.json` ファイルを追加します。 公開時、ADF ではこのファイルを読み込み、フィールド `publishBranch` を探し、Resource Manager テンプレートをすべて、指定の場所に保存します。 ブランチが存在しない場合は、データ ファクトリによって自動的に作成されます。 このファイルの例を次に示します。
+既定のデータ ファクトリでは、公開されたファクトリの Resource Manager テンプレートが生成され、`adf_publish` という名前のブランチにそれが保存されます。 カスタムの公開ブランチを構成するには、コラボレーション ブランチのルート フォルダーに `publish_config.json` ファイルを追加します。 公開時、ADF ではこのファイルを読み込み、フィールド `publishBranch` を探し、Resource Manager テンプレートをすべて、指定の場所に保存します。 ブランチが存在しない場合は、データ ファクトリによって自動的に作成されます。 このファイルの例を次に示します。
 
 ```json
 {

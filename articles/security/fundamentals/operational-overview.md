@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443880"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674230"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -60,7 +60,7 @@ Azure Backup には複数のコンポーネントが用意されており、お�
 
 -   ID とアクセスの管理 (IAM) をクラウド サービスとして提供します。
 -   一元的なアクセス管理、シングル サインオン (SSO)、およびレポート機能を提供します。
--   Azure Marketplaceで提供される[数千のアプリケーション](https://azure.microsoft.com/marketplace/active-directory/) (Salesforce、Google Apps、Box、Concur など) に対する、統合的なアクセス管理をサポートします。
+-   Azure Marketplaceで提供される[数千のアプリケーション](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) (Salesforce、Google Apps、Box、Concur など) に対する、統合的なアクセス管理をサポートします。
 
 Azure AD には、必要な [ID 管理機能](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)がすべて備わっています。これには、次の機能が含まれます。
 

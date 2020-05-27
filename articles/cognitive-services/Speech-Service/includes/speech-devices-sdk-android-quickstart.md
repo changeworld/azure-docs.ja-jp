@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 4a2d9f382045db2aeab80d9ecf5a05b031bcbc9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 57244c2022d06d8f1768dbe8bcc971aa59acd6a9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400113"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673137"
 ---
 このクイックスタートでは、Speech Devices SDK for Android を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription-service.md)デバイスとして使用する方法について説明します。
 
@@ -96,7 +96,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
     依存関係セクションに次の行を追加して、**build.gradle(Module:app)** を更新します。 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
     ```
     
 1. ソース コードに Speech サブスクリプション キーを追加します。 意図認識を試す場合は、[Language Understanding Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) のサブスクリプション キーとアプリケーション ID も追加します。

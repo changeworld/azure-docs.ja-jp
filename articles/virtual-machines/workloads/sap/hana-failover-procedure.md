@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117209"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660584"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 
@@ -39,7 +39,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 複数の SAP HANA インスタンスをフェールオーバーする場合は、azure_hana_dr_failover コマンドを複数回実行する必要があります。 要求されたら、フェールオーバーして復元する SAP HANA の SID を入力します。 
 
 
-実際のレプリケーション リレーションシップに影響を与えずに、DR フェールオーバーをテストすることもできます。 テスト フェールオーバーを実行するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)の「Perform a test DR failover - azure_hana_test_dr_failover (テスト DR フェールオーバーの実行 - azure_hana_test_dr_failover)」の手順に従います。 
+実際のレプリケーション リレーションシップに影響を与えずに、DR フェールオーバーをテストすることもできます。 テスト フェールオーバーを実行するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)の「Perform a test DR failover - azure_hana_test_dr_failover (テスト DR フェールオーバーの実行 - azure_hana_test_dr_failover)」の手順に従います。 
 
 >[!IMPORTANT]
 >*フェールオーバー テスト*のプロセスによって DR サイト内に作成したインスタンス上では、運用トランザクションは実行 "**しないでください**"。 azure_hana_test_dr_failover コマンドでは、プライマリ サイトへのリレーションシップを持たない一連のボリュームが作成されます。 そのため、プライマリ サイトに同期することは*できません*。 
@@ -117,7 +117,7 @@ DR サイトから実稼働サイトにフェールバックすることがで�
 
 ストレージ レプリケーションの進行状況の状態を監視するには、`azure_hana_replication_status` スクリプトを実行します。 このコマンドを正常に機能させるには、ディザスター リカバリーの場所で実行されているユニットからコマンドを実行する必要があります。 このコマンドは、レプリケーションがアクティブであるかどうかにかかわらず機能します。 ディザスター リカバリーの場所でテナントの各 HANA L インスタンス ユニットに対してコマンドを実行できます。 これを使用して、ブート ボリュームの詳細情報を取得することはできません。 
 
-コマンドとその出力の詳細については、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)の「Get DR replication status - azure_hana_replication_status (DR レプリケーション状態の取得 - azure_hana_replication_status)」を参照してください。
+コマンドとその出力の詳細については、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)の「Get DR replication status - azure_hana_replication_status (DR レプリケーション状態の取得 - azure_hana_replication_status)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

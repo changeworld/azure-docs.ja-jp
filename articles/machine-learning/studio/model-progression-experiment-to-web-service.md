@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: e6a8fe7771776a92b3c28a188bc352e3bb105313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1618e64eba32e857ccd0ba4b5a7a656f1d954bf8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217918"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659915"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (クラシック) モデルが実験から Web サービスになるまでの過程
 
@@ -34,7 +34,7 @@ Azure Machine Learning Studio (クラシック) によって提供される対�
 この記事では、Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程について、概要を説明します。
 
 > [!NOTE]
-> 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio (クラシック) を使用する方法に焦点を当てています。 たとえば、R を使用して従来の予測 Web サービスを作成する方法については、[RStudio と Azure Machine Learning Studio を使用した予測 Web Apps の開発とデプロイ](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
+> 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio (クラシック) を使用する方法に焦点を当てています。 たとえば、R を使用して従来の予測 Web サービスを作成する方法については、[RStudio と Azure Machine Learning Studio を使用した予測 Web Apps の開発とデプロイ](https://docs.microsoft.com/archive/blogs/machinelearning/build-deploy-predictive-web-apps-using-rstudio-and-azure-ml)に関するブログ記事を参照してください。
 >
 >
 

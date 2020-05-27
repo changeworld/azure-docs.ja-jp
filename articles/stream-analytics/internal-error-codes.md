@@ -6,24 +6,16 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: c8c792d548fc953cb5d059f322ad1f3139c91562
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2e101747322baac860cbde02aca341171aa0cc1d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595121"
+ms.locfileid: "83658355"
 ---
 # <a name="azure-stream-analytics-internal-error-codes"></a>Azure Stream Analytics の内部エラー コード
 
 アクティビティ ログとリソース ログを使用して、予期しない動作のデバッグを Azure Stream Analytics ジョブから行うことができます。 この記事では、すべての内部エラー コードについて説明します。 内部エラーは、エラーが内部の可用性エラーか、またはシステム内のバグかを Stream Analytics では識別できない場合に、Stream Analytics プラットフォーム内でスローされる一般的なエラーです。
-
-## <a name="kafkainvalidrequest"></a>KafkaInvalidRequest
-
-* **原因**:Kafka サーバーに送信された要求が無効です。
-
-## <a name="kafkainputerror"></a>KafkaInputError
-
-* **原因**:Kafka の入力で問題が発生しました。
 
 ## <a name="cosmosdboutputbatchsizetoolarge"></a>CosmosDBOutputBatchSizeTooLarge
 

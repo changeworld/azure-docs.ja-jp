@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール
 description: SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 09/24/2019
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1826e4820f06fc3a858ce6cd5f8906baaa9808cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10c46b11fc3c4243914c48629f082ad83db8d138
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74546525"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657076"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング
 
