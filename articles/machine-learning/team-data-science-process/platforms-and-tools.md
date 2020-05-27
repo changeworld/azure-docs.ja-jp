@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81256520"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682709"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -49,7 +49,7 @@ Microsoft が Windows と Linux の両方で提供するデータ サイエン�
 
 現在、DSVM は、**Windows** オペレーティング システムと **Linux CentOS** オペレーティング システムでご利用いただけます。 実行を計画しているデータ サイエンス プロジェクトのニーズに基づいて、DSVM のサイズ (CPU コアの数とメモリ容量) を選択します。 
 
-Windows エディションの DSVM の詳細については、Azure Marketplace の [Microsoft データ サイエンス仮想マシン](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)のページをご覧ください。 Linux エディションの DSVM については、[Linux データ サイエンス仮想マシン](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)のページをご覧ください。
+Windows エディションの DSVM の詳細については、Azure Marketplace の [Microsoft データ サイエンス仮想マシン](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)のページをご覧ください。 Linux エディションの DSVM については、[Linux データ サイエンス仮想マシン](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)のページをご覧ください。
 
 DSVM で一般的なデータ サイエンス タスクを効率的に実行する方法については、[データ サイエンス仮想マシンでできる 10 のこと](../data-science-virtual-machine/vm-do-ten-things.md)に関する記事をご覧ください
 

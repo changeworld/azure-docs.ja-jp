@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 67da2cb31d59838bb3ad2b964530d85d8be9be4c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782592"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681446"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,7 +62,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 
 例については、「[Tutorial:初めての ML 実験を作成する](tutorial-1st-experiment-sdk-setup.md#azure)」を参照してください。
 
-### <a name="a-nameterminal-use-files-from-git-and-version-my-files"></a><a name="terminal"> Git のファイルを使用し、ファイルのバージョン管理を行う
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Git のファイルを使用し、ファイルのバージョン管理を行う
 
 ターミナル ウィンドウを使用してすべての Git 操作にアクセスできます。 すべての Git ファイルとフォルダーは、ワークスペース ファイル システムに格納されます。
 

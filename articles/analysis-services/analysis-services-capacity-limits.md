@@ -4,15 +4,15 @@ description: この記事では、Azure Analysis Services サーバーのリソ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f309c9863eb2f3065251537380a2977839f990d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2caab4e449f4299d00fff14b697887ec00f35e6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73573212"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697494"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services のリソースとオブジェクトの制限
 

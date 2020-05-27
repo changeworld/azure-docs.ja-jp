@@ -3,12 +3,12 @@ title: Azure Application Insights を使用した ASP.NET の Web アプリ分�
 description: オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、およびユーザー動作の分析ツールを構成します。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: d3181c3d43f07c7cb920b9fe265a8420c1417a56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa4449a0229ba156dbeed37c10ed21f8b1b5f201
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145277"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698504"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -139,7 +139,7 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
 * [スマート診断](../../azure-monitor/app/proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
-* [メトリック アラート](../../azure-monitor/app/alerts.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
+* [メトリック アラート](../../azure-monitor/platform/alerts-log.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
 
 ### <a name="automation"></a>Automation
 

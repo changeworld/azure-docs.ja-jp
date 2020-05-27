@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257149"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682479"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -29,7 +29,7 @@ ms.locfileid: "81257149"
 Linux DSVM を使用する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
-* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
+* [**Linux Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
 * お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
 * スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細については、こちらを参照してください](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細については、こちらを参照してください](https://support.mozilla.org/questions/981140)。
 * **Azure Machine Learning アカウント**。 まだお持ちでない場合は、 [Azure Machine Learning のホームページ](https://azure.microsoft.com/free/services/machine-learning//)で新しいアカウントにサインアップしてください。

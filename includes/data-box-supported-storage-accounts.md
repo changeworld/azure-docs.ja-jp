@@ -5,12 +5,12 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: bc156b8c18f46cccf6fc775b82f76383b8c43861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f230fc247c6ad94bfdfb3cdbc0f897d66313b039
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "66242125"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696519"
 ---
 Data Box デバイスでサポートされるストレージ アカウントとストレージの種類の一覧を次に示します。 ストレージ アカウントのすべての種類とそれらの完全な機能のすべての一覧については、「[ストレージ アカウントの種類](/azure/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
 
@@ -24,6 +24,3 @@ Data Box デバイスでサポートされるストレージ アカウントと�
 | Blob ストレージ Standard |Y | | |ホットとクールの両方がサポートされます。 |
 
 \* *- ページ BLOB にアップロードされるデータは、VHD などの 512 バイトに揃えられている必要があります。*
-
->[!NOTE]
-> Azure Data Lake Storage Gen 2 アカウントはサポートされていません。

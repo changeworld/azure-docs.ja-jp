@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791886"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700984"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container オファーを作成する
-
-> [!IMPORTANT]
-> 現在、Azure Container オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 プランが移行されるまでは、Cloud パートナー ポータル向けの「[コンテナーの技術資産を準備する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets)」の手順に従ってプランを管理してください。
 
 この記事では、Azure Marketplace でコンテナー オファーを作成するのに役立つ技術リソースと推奨事項を示します。
 

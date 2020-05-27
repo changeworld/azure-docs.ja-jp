@@ -4,15 +4,15 @@ description: Azure portal を使用して、Azure Analysis Services サーバー
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75442835"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697471"
 ---
 # <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーを作成する - ポータル
 

@@ -3,12 +3,12 @@ title: Azure Application Insights のスマート検出 | Microsoft Docs
 description: Application Insights は、アプリのテレメトリの詳細な分析を自動的に実行し、潜在的なパフォーマンスの問題について警告します。
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536796"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700841"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
  スマート検出により、Web アプリケーションの潜在的なパフォーマンスの問題と失敗の異常について警告を自動的に受け取ることができます。 スマート検出では、アプリから [Application Insights](../../azure-monitor/app/app-insights-overview.md) に送信されるテレメトリがプロアクティブに分析されます。 障害発生率が急激に上昇したり、クライアントまたはサーバーのパフォーマンスに異常なパターンが発生したりした場合に、アラートが表示されます。 この機能には構成は不要です。 アプリケーションから適切なテレメトリが送信されていれば動作します。
@@ -59,6 +59,6 @@ _プレビュー_ とマークされているルールを除く、すべての�
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
-* [手動で構成するメトリックのアラート](../../azure-monitor/app/alerts.md)
+* [手動で構成するメトリックのアラート](../../azure-monitor/platform/alerts-log.md)
 * [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) 
 

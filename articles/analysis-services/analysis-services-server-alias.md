@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバー名エイリアスを作成す�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572285"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698989"
 ---
 # <a name="alias-server-names"></a>サーバー名のエイリアス
 

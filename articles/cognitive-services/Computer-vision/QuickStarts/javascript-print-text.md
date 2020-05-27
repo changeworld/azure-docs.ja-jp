@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2eac3f50dc6a973e496f8907534d5ab140355d89
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4e28196a4de6e487b7119a00dc9b10f5c97fc006
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404718"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685135"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>クイック スタート:Computer Vision の REST API と JavaScript を使用して印刷されたテキスト (OCR) を抽出する
 
@@ -60,7 +60,7 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
         var subscriptionKey = document.getElementById("subscriptionKey").value;
         var endpoint = document.getElementById("endpointUrl").value;
         
-        var uriBase = endpoint + "vision/v2.1/ocr";
+        var uriBase = endpoint + "vision/v3.0/ocr";
 
         // Request parameters.
         var params = {

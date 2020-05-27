@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596781"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681970"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Drawing Conversion のエラーと警告
 
-[Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/data/conversion)を使用すると、アップロードした Drawing パッケージをマップ データに変換できます。 Drawing パッケージは、[Drawing パッケージの要件](drawing-requirements.md)に従っている必要があります。 1 つ以上の要件が満たされていない場合、Conversion サービスからエラーまたは警告が返されます。 この記事では、変換のエラーと警告コードと、その解決方法の推奨事項を示します。 また、Conversion サービスからこれらのコードが返される可能性がある図面の例もいくつか示します。
+[Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/conversion)を使用すると、アップロードした Drawing パッケージをマップ データに変換できます。 Drawing パッケージは、[Drawing パッケージの要件](drawing-requirements.md)に従っている必要があります。 1 つ以上の要件が満たされていない場合、Conversion サービスからエラーまたは警告が返されます。 この記事では、変換のエラーと警告コードと、その解決方法の推奨事項を示します。 また、Conversion サービスからこれらのコードが返される可能性がある図面の例もいくつか示します。
 
 変換の警告が発生しても、Conversion サービスは成功します。 ただし、すべての警告を確認して解決することをお勧めします。 警告は、変換の一部が無視されたか、自動的に修正されたことを意味します。 警告を解決しないと、後のプロセスでエラーが発生する可能性があります。
 
@@ -73,7 +73,7 @@ Conversion サービスでは、無効なエンティティからマップ地物
 
 次の画像は、ラベル レイヤー上の複数行のテキスト オブジェクトとしてサポートされていないエンティティの種類を示しています。
   
-![ラベル レイヤー上の複数行テキスト オブジェクトの例](./media/drawing-conversion-error-codes/multiline.png)
+![ラベル レイヤー上の複数行テキスト オブジェクトの例](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>*unsupportedFeatureRepresentation を修正する方法*
 
@@ -494,7 +494,7 @@ JSON の形式または構文エラーのため、_manifest.json_file を読み�
 
 次の画像は、隣接するレベル上の複数の垂直貫入領域と重なる垂直貫入領域を示しています。
 
-![垂直貫入の例 2](./media/drawing-conversion-error-codes/vrt.png)
+![垂直貫入の例 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>verticalPenetrationError を修正する方法
 

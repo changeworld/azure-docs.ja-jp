@@ -4,15 +4,15 @@ description: ログを設定して Azure Analysis Services サーバーを監視
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128929"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701497"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 

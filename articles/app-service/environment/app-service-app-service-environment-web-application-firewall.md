@@ -7,19 +7,19 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804471"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684217"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要
 
 Web アプリケーション ファイアウォール (WAF) は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査することもできます。 App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。 Azure では、[Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) で WAF 機能が提供されます。  App Service Environment と Application Gateway を統合する方法については、[ILB ASE と Application Gateway の統合](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)に関するドキュメントを参照してください。
 
-Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.barracuda.com/programs/azure) のように [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) で入手できるマーケットプレース オプションがいくつかあります。 このドキュメントの残りの部分では、App Service Environment と Barracuda WAF デバイスを統合する方法について説明します。
+Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.barracuda.com/programs/azure) のように [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice) で入手できるマーケットプレース オプションがいくつかあります。 このドキュメントの残りの部分では、App Service Environment と Barracuda WAF デバイスを統合する方法について説明します。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 

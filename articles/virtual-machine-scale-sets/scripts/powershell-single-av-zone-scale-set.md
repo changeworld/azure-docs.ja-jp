@@ -1,23 +1,23 @@
 ---
-title: Azure PowerShell のサンプル - データ ディスクを接続して使用する
-description: このスクリプトでは、PowerShell を使用して Azure 仮想マシン スケール セットを作成し、データ ディスクを接続して準備します。
+title: Azure PowerShell のサンプル - 単一ゾーン スケール セット
+description: このスクリプトでは、単一可用性ゾーンで Windows Server 2016 を実行する仮想マシン スケール セットを作成します。
 author: mimckitt
 ms.author: mimckitt
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
-ms.subservice: disks
-ms.date: 03/27/2018
+ms.subservice: availability
+ms.date: 04/05/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 39c1c534a930dae2967d982f7c175fadb3222e83
+ms.openlocfilehash: 222b45e455f42264a5324f138c55b822d9d8e7a1
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700914"
+ms.locfileid: "83698609"
 ---
-# <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して、仮想マシン スケール セットがあるデータ ディスクを接続して使用する
-このスクリプトでは、仮想マシン スケール セットを作成し、データ ディスクを接続して準備します。
+# <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して単一ゾーン仮想マシン スケール セットを作成する
+このスクリプトでは、単一可用性ゾーンで Windows Server 2016 を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "83700914"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine-scale-sets/use-data-disks/use-data-disks.ps1 "Create a virtual machine scale set with data disks")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.ps1 "Create single-zone scale set")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 次のコマンドを実行して、リソース グループ、スケール セット、すべての関連リソースを削除します。
@@ -37,13 +37,15 @@ Remove-AzResourceGroup -Name myResourceGroup
 ## <a name="script-explanation"></a>スクリプトの説明
 このスクリプトでは、以下のコマンドを実行してデプロイを作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzVmss](/powershell/module/az.compute/new-azvmss) | 仮想マシン スケール セットと、仮想ネットワーク、ロード バランサー、NAT 規則などのすべてのサポート リソースを作成します。 |
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | 仮想マシン スケール セットに関する情報を取得します。 |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) | 基本的な Web アプリケーションをインストールするために、カスタム スクリプト用の VM 拡張機能を追加します。 |
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss) | VM 拡張機能を適用するために、仮想マシン スケール セット モデルを更新します。 |
+| [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) | ロード バランサーによって使用される、割り当てられたパブリック IP アドレスについての情報を取得します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+

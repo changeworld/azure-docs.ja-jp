@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 7c843b45b5a398aaaa1aab66f80961560477cf18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128109"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684710"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>検索トラフィック分析用のテレメトリ データを収集する
 
@@ -236,4 +236,4 @@ appInsights.trackEvent("Click", {
 
 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) では詳しい情報が見つかります。また、さまざまなサービス レベルについて詳しくは、[価格に関するページ](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。
 
-レポートの作成についての詳細。 「[Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)」を参照してください。
+レポートの作成についての詳細。 「[Power BI Desktop の概要](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)」を参照してください。

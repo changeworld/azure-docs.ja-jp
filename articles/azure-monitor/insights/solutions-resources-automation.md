@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b1b134afbc4a13d7888281a82609d444cee377
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663064"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682877"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "77663064"
 - [Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)方法
 
 ## <a name="automation-account"></a>Automation アカウント
-Azure Automation のリソースはすべて、[Automation アカウント](../../automation/automation-security-overview.md#automation-account-overview) に含まれています。  [Log Analytics ワークスペースと Automation アカウント]( solutions.md#log-analytics-workspace-and-automation-account)の説明にあるように、Automation アカウントは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
+Azure Automation のリソースはすべて、[Automation アカウント](../../automation/automation-security-overview.md) に含まれています。  [Log Analytics ワークスペースと Automation アカウント]( solutions.md#log-analytics-workspace-and-automation-account)の説明にあるように、Automation アカウントは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
 
 各 Automation リソースの名前には、Automation アカウントの名前を含めます。  これは、次の Runbook リソースの例で示すように **accountName** パラメーターをソリューションで指定することにより行います。
 

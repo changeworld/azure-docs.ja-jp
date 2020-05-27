@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: dcb3d12646f995304019e57fb2436b279fad3659
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b17eca87a3c63757656cebd3990a169ddb29ad89
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405104"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681195"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用したサムネイルを生成する
 
@@ -53,32 +53,20 @@ namespace CSHttpClientSample
 {
     static class Program
     {
-        // Add your Computer Vision subscription key and endpoint to your environment variables.
+        // Add your Computer Vision subscription key and base endpoint to your environment variables.
         static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
-
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
-        // the GenerateThumbnail method endpoint
-        static string uriBase = endpoint + "vision/v2.1/generateThumbnail";
+        // The GenerateThumbnail method endpoint
+        static string uriBase = endpoint + "vision/v3.0/generateThumbnail";
+        // Add an image to your bin/debug/netcoreappX.X folder, then add the image name (with extension), here
+        static string imageFilePath = @"my-image-name";
 
-        static async Task Main()
+        public static void Main()
         {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Thumbnail:");
-            Console.Write(
-                "Enter the path to the image you wish to use to create a thumbnail image: ");
-            string imageFilePath = Console.ReadLine();
 
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait a moment for the results to appear.\n");
-                await MakeThumbNailRequest(imageFilePath);
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
+            MakeThumbNailRequest(imageFilePath).Wait();
+
             Console.WriteLine("\nPress Enter to exit...");
             Console.ReadLine();
         }

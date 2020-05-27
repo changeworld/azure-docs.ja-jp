@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37935d229f62028e074f92bb6f8b70b9eebd87dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565504"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685207"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -62,13 +62,13 @@ Azure AD では、あらゆる種類のパスワード シングル サインオ
 * [アプリケーションの使用状況に関するダッシュボード/レポート](../active-directory-passwords-get-insights.md)
 * エンド ユーザー アクセス ポータル
 * [アプリケーション プロキシ](../manage-apps/application-proxy.md)
-* [Active Directory マーケットプレース](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Active Directory マーケットプレース](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>アカウントの共有
 
 Azure AD を使ってアカウントを共有するには、次の操作が必要です。
 
-* アプリケーションを[アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/)または[カスタム アプリケーション](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に追加する
+* アプリケーションを[アプリケーション ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)または[カスタム アプリケーション](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に追加する
 * パスワード シングル サインオン (SSO) に対応するようにアプリケーションを構成する
 * [グループ ベースの割り当て](groups-saasapps.md)を使い、共有資格情報を入力するオプションを選ぶ
 

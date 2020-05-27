@@ -3,12 +3,12 @@ title: Application Insights のイベント カウンター | Microsoft Docs
 description: Application Insights でシステムとカスタムの .NET/.NET Core EventCounter を監視します。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187097"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700436"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
@@ -124,7 +124,7 @@ customMetrics
 他のテレメトリと同様に、**customMetrics** にも、アプリを実行しているホスト サーバー インスタンスの ID を示す列 `cloud_RoleInstance` があります。 上記のクエリは、インスタンスごとのカウンター値を示しており、さまざまなサーバー インスタンスのパフォーマンスを比較するために使用できます。
 
 ## <a name="alerts"></a>警告
-他のメトリックと同様に、指定した制限をイベント カウンターが超えた場合に警告する[アラートを設定](../../azure-monitor/app/alerts.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
+他のメトリックと同様に、指定した制限をイベント カウンターが超えた場合に警告する[アラートを設定](../../azure-monitor/platform/alerts-log.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5b1c6561519bc25c2b7ac77f0a25eff89413a07a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256486"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684739"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>チュートリアル:R を使用して機械学習モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -338,7 +338,7 @@ inference_config <- inference_config(
 ```
 
 ### <a name="deploy-to-aci"></a>ACI にデプロイする
-このチュートリアルでは、サービスを ACI にデプロイします。 このコードでは、1 つのコンテナーをプロビジョニングして受信要求に応答します。これは、テストや負荷が軽い場合に適しています。 その他の構成可能なオプションについては、[`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html) を参照してください。 (運用規模のデプロイの場合は、[Azure Kubernetes Service にデプロイ](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks/deploy-to-aks.html)することもできます。)
+このチュートリアルでは、サービスを ACI にデプロイします。 このコードでは、1 つのコンテナーをプロビジョニングして受信要求に応答します。これは、テストや負荷が軽い場合に適しています。 その他の構成可能なオプションについては、[`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html) を参照してください。 (運用規模のデプロイの場合は、[Azure Kubernetes Service にデプロイ](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks.html)することもできます。)
 
 ``` R
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)

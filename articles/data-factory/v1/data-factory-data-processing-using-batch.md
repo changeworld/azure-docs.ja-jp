@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7a6540b5784a76acfc248fb15feb1aaf39420845
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546941"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684403"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -960,7 +960,7 @@ Data Factory および Batch の機能の詳細については、このサンプ
 データを処理した後、Power BI などのオンライン ツールで使用することができます。 Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
 * [Power BI でのデータセットの参照](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Power BI Desktop の概要](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)
 * [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure と Power BI:基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e1b5b16d5522285f2d028303f3295cc1fb740330
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596661"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681953"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure Maps Drawing Error Visualizer の使用
 
-Drawing Error Visualizer は、変換プロセス中に検出された [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を表示するスタンドアロンの Web アプリケーションです。 Error Visualizer Web アプリケーションは、インターネットに接続せずに使用できる静的ページで構成されています。  Error Visualizer を使用すると、[Drawing パッケージの要件](drawing-requirements.md)に従ってエラーと警告を修正できます。 [Azure Maps Conversion API](https://docs.microsoft.com/rest/api/maps/data/conversion) からは、エラーが検出された場合にのみ、Error Visualizer のリンクを含む応答が返されます。
+Drawing Error Visualizer は、変換プロセス中に検出された [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を表示するスタンドアロンの Web アプリケーションです。 Error Visualizer Web アプリケーションは、インターネットに接続せずに使用できる静的ページで構成されています。  Error Visualizer を使用すると、[Drawing パッケージの要件](drawing-requirements.md)に従ってエラーと警告を修正できます。 [Azure Maps Conversion API](https://docs.microsoft.com/rest/api/maps/conversion) からは、エラーが検出された場合にのみ、Error Visualizer のリンクを含む応答が返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -90,7 +90,7 @@ _ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawin
 
 ## <a name="next-steps"></a>次のステップ
 
-[Drawing パッケージが要件を満たしたら](drawing-requirements.md)、[Azure Maps Dataset サービス](https://docs.microsoft.com/rest/api/maps/data/conversion)を使用して、Drawing パッケージをデータセットに変換できます。 その後、屋内マップ Web モジュールを使用してアプリケーションを開発できます。 詳細については、次の記事を参照してください。
+[Drawing パッケージが要件を満たしたら](drawing-requirements.md)、[Azure Maps Dataset サービス](https://docs.microsoft.com/rest/api/maps/conversion)を使用して、Drawing パッケージをデータセットに変換できます。 その後、屋内マップ Web モジュールを使用してアプリケーションを開発できます。 詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Drawing Conversion のエラー コード](drawing-conversion-error-codes.md)

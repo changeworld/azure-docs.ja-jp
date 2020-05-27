@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 3c8488fa794e2bfa4de7833cb4cd4756b5394263
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201367"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700831"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 
@@ -255,8 +255,3 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 > * 自動スケール ルールを作成および使用する
 > * VM インスタンスのストレステストを行い、自動スケール ルールをトリガーする
 > * 需要の減少に合わせて元のサイズに自動的にスケーリングする
-
-実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure PowerShell サンプル スクリプトを参照してください。
-
-> [!div class="nextstepaction"]
-> [Azure PowerShell 用のスケール セット スクリプトのサンプル](powershell-samples.md)

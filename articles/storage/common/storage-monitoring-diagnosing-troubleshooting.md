@@ -8,12 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605066"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684662"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -359,7 +360,7 @@ Storage サービスが正常な要求に関して算出するのはメトリッ
 #### <a name="investigating-client-performance-issues"></a>クライアントのパフォーマンス上の問題に関する調査
 クライアントの応答が低下する理由として、使用可能な接続またはスレッドの数が制限されていること、または CPU、メモリ、ネットワーク帯域幅などのリソースが不足していることが考えられます。 この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
 
-Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳しくは、「[Nagle's Algorithm is Not Friendly towards Small Requests](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)」(小さな要求に不親切な Nagle アルゴリズム) の投稿をご覧ください。 Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。 この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。 以下の例は、worker ロールの **Application_Start** メソッドに関係する部分です。
+Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳しくは、「[Nagle's Algorithm is Not Friendly towards Small Requests](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)」(小さな要求に不親切な Nagle アルゴリズム) の投稿をご覧ください。 Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。 この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。 以下の例は、worker ロールの **Application_Start** メソッドに関係する部分です。
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);

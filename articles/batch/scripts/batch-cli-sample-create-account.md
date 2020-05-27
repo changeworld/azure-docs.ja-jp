@@ -1,25 +1,14 @@
 ---
 title: Azure CLI スクリプトの例 - Batch アカウントの作成 - Batch サービス
 description: このスクリプトは、Batch サービス モードで Azure Batch アカウントを作成し、アカウントのさまざまなプロパティを照会および更新する方法を示します。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 01/29/2018
-ms.author: labrenne
-ms.openlocfilehash: 2a11e3d7b8ba2b9f4a0d0d373367575a779eebc4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5fce745340c583b902c98716678a9b7afcfc002c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77017090"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681912"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI の例: Batch サービス モードでの Batch アカウントの作成
 

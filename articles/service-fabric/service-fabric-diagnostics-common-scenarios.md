@@ -3,12 +3,12 @@ title: Azure Service Fabric 診断の一般的なシナリオ
 description: Azure Service Fabric アプリケーション内の一般的な監視と診断のシナリオのトラブルシューティングについて説明します。
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76906947"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697688"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する
 
@@ -133,7 +133,7 @@ ms.locfileid: "76906947"
 ## <a name="next-steps"></a>次のステップ
 
 * [一般的なコード パッケージのアクティブ化エラーを参照する](./service-fabric-diagnostics-code-package-errors.md)
-* [AI のアラートを設定して](../azure-monitor/app/alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
+* [AI のアラートを設定して](/azure/azure-monitor/platform/alerts-log)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
 * 検出と診断に役立つ Azure Monitor ログの[アラート](../log-analytics/log-analytics-alerts.md)についてさらに学習します。
 * オンプレミス クラスター向けに、Azure Monitor ログでは、データを Azure Monitor ログに送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供されています。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って Azure Monitor ログに接続する](../azure-monitor/platform/gateway.md)」を参照してください

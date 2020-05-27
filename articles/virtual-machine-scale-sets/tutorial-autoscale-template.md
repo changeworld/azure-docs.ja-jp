@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 0d857a0066737cd7bdc14dff435e25add66f2cdd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 95baaaff0936d288b5a56efb8f6ce1ba87637d8a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201381"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700928"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル: Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -272,8 +272,3 @@ az group delete --name myResourceGroup --yes --no-wait
 > * 自動スケール ルールを作成および使用する
 > * VM インスタンスのストレステストを行い、自動スケール ルールをトリガーする
 > * 需要の減少に合わせて元のサイズに自動的にスケーリングする
-
-実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure CLI サンプル スクリプトを参照してください。
-
-> [!div class="nextstepaction"]
-> [Azure CLI 用のスケール セット スクリプトのサンプル](cli-samples.md)

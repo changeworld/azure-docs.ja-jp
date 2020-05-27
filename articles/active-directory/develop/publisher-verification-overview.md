@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d050efe1224e2783cdad52a12c842f7abe44b7af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595071"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682425"
 ---
 # <a name="publisher-verification-preview"></a>発行者の確認 (プレビュー)
 
-発行者の確認 (プレビュー) は、管理者とエンド ユーザーが、Microsoft ID プラットフォームと統合するアプリケーション開発者の信頼性を理解するのに役立ちます。 つまり、発行者は既知のソースか、それとも既知の発行者を偽っている悪意のあるアクターか、ということです。 アプリケーションが発行者確認済みとしてマークされている場合は、[Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントを使用する ID の[確認](/partner-center/verification-responses)プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。 
+発行者の確認 (プレビュー) は、管理者とエンド ユーザーが、Microsoft ID プラットフォームと統合するアプリケーション開発者の信頼性を理解するのに役立ちます。 アプリケーションが発行者確認済みとしてマークされている場合は、[Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントを使用する ID の[確認](/partner-center/verification-responses)プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。 
 
 Azure AD の同意プロンプトや他の画面に、青い "確認済み" バッジが表示されます。![同意プロンプト](./media/publisher-verification-overview/consent-prompt.png)
 

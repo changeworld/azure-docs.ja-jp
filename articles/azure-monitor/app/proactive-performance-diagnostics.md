@@ -4,12 +4,12 @@ description: Application Insights は、アプリのテレメトリの高度な�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687691"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697163"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -70,12 +70,12 @@ Application Insights は、アプリケーションのパフォーマンスの�
 * *独自の異常検出ルールを作成できますか。または既存のルールをカスタマイズできますか。*
 
   * 現時点ではできません。ただし、次のことができます。
-    * メトリックがしきい値を超えたときに通知する[アラートを設定](../../azure-monitor/app/alerts.md)する。
+    * メトリックがしきい値を超えたときに通知する[アラートを設定](/azure/azure-monitor/platform/alerts-log)する。
     * 自分で分析できるように、[データベース](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)または [Power BI](../../azure-monitor/app/export-power-bi.md ) に[テレメトリをエクスポート](../../azure-monitor/app/export-telemetry.md)する。
 * *どのくらいの頻度で分析は実行されますか。*
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
-* *これにより、[メトリック アラート](../../azure-monitor/app/alerts.md)が置き換えられるのですか。*
+* *これにより、[メトリック アラート](/azure/azure-monitor/platform/alerts-log)が置き換えられるのですか。*
   * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
@@ -180,5 +180,5 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
-* [手動で構成するメトリックのアラート](../../azure-monitor/app/alerts.md)
+* [手動で構成するメトリックのアラート](/azure/azure-monitor/platform/alerts-log)
 * [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)

@@ -4,16 +4,16 @@ description: Azure Analysis Services のサーバー管理者ロールに自動�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408644"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697520"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 

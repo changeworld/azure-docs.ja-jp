@@ -4,15 +4,15 @@ description: このクイック スタートでは、Azure portal を利用し�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 48618815519fad31bff5d6a8d2d2edc82535f437
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205158"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697900"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート:サーバーのファイアウォールの構成 - ポータル
 

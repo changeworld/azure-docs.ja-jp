@@ -3,9 +3,7 @@ title: TLS 1.2 をサポートしていないアプリケーションによっ�
 description: TLS 1.2 をサポートしていないアプリケーションによって発生するイシューのトラブルシューティング
 services: cloud-services
 documentationcenter: ''
-author: mimckitt
-manager: vashan
-editor: ''
+author: tanmaygore
 tags: top-support-issue
 ms.assetid: ''
 ms.service: cloud-services
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 6153b9d5e8ef11412b0dd53a15c565becfa1c8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053753"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683795"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1.2 をサポートしていないアプリケーションのトラブルシューティング
 この記事では、古い TLS プロトコル (TLS 1.0 および 1.1) を有効にする方法と、Windows Server 2019 クラウド サービスの Web ロールと worker ロールで追加のプロトコルをサポートするためのレガシの暗号スイートの適用方法について説明します。 

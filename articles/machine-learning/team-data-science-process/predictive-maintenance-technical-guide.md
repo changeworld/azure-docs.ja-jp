@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477172"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682719"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのためのソリューション テンプレートに関する技術ガイド
 
@@ -159,7 +159,7 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
 注: 
 1.    ソリューションをデプロイすると、3 時間以内に予測がデータベース内に現れます。 ジェネレーターのダウンロードに付属する pbix ファイルには、Power BI ダッシュボードをすぐに作成できるようにシード データが含まれています。 
-2.    この手順の前提条件は、無料のソフトウェア [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/) をダウンロードしてインストールしていることです。
+2.    この手順の前提条件は、無料のソフトウェア [Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop) をダウンロードしてインストールしていることです。
 
 次の手順は、視覚化するデータ (予測結果など) を含むソリューションのデプロイ時にスピンアップされた SQL Database に、pbix ファイルを接続する方法を示しています。
 

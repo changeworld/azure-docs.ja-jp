@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 74a6d1aecfc83ea68b9e30453056d231f4bf3e65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: daaa5e3a075eee19ab473818ae3bd84d4bd3b32b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416184"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683668"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 > [!div class="op_single_selector"]
@@ -132,4 +132,4 @@ FROM [dbo].[vTargetMail]
 [BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。 次に、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、Azure Synapse に結果を書き戻したりできます。
 
 ## <a name="next-steps"></a>次のステップ
-予測機械学習モデルの構築の詳細については、 [Azure での機械学習の概要](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/)に関するページを参照してください。
+予測機械学習モデルの構築の詳細については、 [Azure での機械学習の概要](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)に関するページを参照してください。

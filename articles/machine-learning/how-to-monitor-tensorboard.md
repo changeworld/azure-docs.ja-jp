@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
-ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3df37126281a6654a6113f31895ddee276784c1c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78195381"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681466"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -198,7 +198,7 @@ tb.stop()
 
 ```python
 from azureml.core import Workspace, Experiment
-import azuremml.core
+import azureml.core
 
 # set experiment name and run name
 ws = Workspace.from_config()
@@ -233,7 +233,7 @@ alphas = [.1, .2, .3, .4, .5, .6 , .7]
 # try a bunch of alpha values in a Linear Regression (aka Ridge regression) mode
 for alpha in tqdm(alphas):
   # create child runs and fit lines for the resulting models
-  with root_run.child_run("alpha" + str(alpha)) as run
+  with root_run.child_run("alpha" + str(alpha)) as run:
  
    reg = Ridge(alpha=alpha)
    reg.fit(data["train"]["x"], data["train"]["y"])    

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 729c489169d242fdaf3872186da1dc2763ae1ea2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bb9c15883dee4142d486ba64d71ddb76d0b970a6
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405018"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681085"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>クイック スタート:Computer Vision の REST API と Go を使用して印刷されたテキスト (OCR) を抽出する
 
@@ -51,28 +51,23 @@ import (
     "fmt"
     "io/ioutil"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
     // Add your Computer Vision subscription key and endpoint to your environment variables.
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
     subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
-    if (subscriptionKey == "") {
-        log.Fatal("\n\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n" +
-            "**Restart your shell or IDE for changes to take effect.**\n")
-
     endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
-    if ("" == endpoint) {
-        log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
-            "**Restart your shell or IDE for changes to take effect.**")
-    }
-    const uriBase = endpoint + "vision/v2.1/ocr"
+
+    uriBase := endpoint + "vision/v3.0/ocr"
     const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +
         "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
 
-    const params = "?language=unk&detectOrientation=true"
-    const uri = uriBase + params
+    params := "?language=unk&detectOrientation=true"
+    uri := uriBase + params
     const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 
     reader := strings.NewReader(imageUrlEnc)

@@ -4,15 +4,15 @@ description: この記事では、Azure Analysis Services で、ID 管理とユ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572767"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701051"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 

@@ -8,12 +8,13 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: monitoring
+ms.openlocfilehash: e9abb2ded5465d4b245f4c9bcfab921444d41fa2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118160"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684910"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure Storage 監視データのリファレンス
 

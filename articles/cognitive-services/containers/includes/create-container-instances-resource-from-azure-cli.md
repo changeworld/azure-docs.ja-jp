@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 9d1b72eff3ffac37d2d10cd74c345eac8289b651
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9fd597c7e6e369cfea36c882dfd2cb12e748a843
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585685"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696418"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLI から Azure コンテナー インスタンス リソースを作成する
 
@@ -24,11 +24,11 @@ ms.locfileid: "83585685"
 apiVersion: 2018-10-01
 location: # < Valid location >
 name: # < Container Group name >
-imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access.
+properties:
+  imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access.
   - server: containerpreview.azurecr.io
     username: # < The username for the preview container registry >
     password: # < The password for the preview container registry >
-properties:
   containers:
   - name: # < Container name >
     properties:

@@ -7,15 +7,15 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72755237"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685307"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
 

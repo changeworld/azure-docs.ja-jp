@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
-ms.openlocfilehash: 6da2c324872a86c2c0ce6f55801bc7b0ee8d713e
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 670cebe1c0f1c9002e33b729d0db9ee9f9a01283
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80611816"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682537"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Cognitive Search をデプロイする
 
@@ -30,9 +30,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure テンプレート](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchservices)からのものです
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)からのものです。
 
-:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50":::
+:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50,70-85":::
 
 このテンプレートで定義されている Azure リソースは次のとおりです。
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートは、Azure Cognitive Search リソースを作成するものです。
 
-[![Azure へのデプロイ](./media/search-get-started-arm/arm-deploybuttona.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
 ポータルには、パラメーター値を簡単に指定できるフォームが表示されます。 一部のパラメーターには、テンプレートの既定値があらかじめ入力されています。 サブスクリプション、リソース グループ、場所、サービス名を指定する必要があります。 Cognitive Services を [AI エンリッチメント](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) パイプラインで使用したい場合 (バイナリ画像ファイルのテキスト分析を行うなど)、Cognitive Search と Cognitive Services の両方が提供されている場所を選びます。 AI エンリッチメント ワークロードでは、その両方のサービスが同じリージョンに存在する必要があります。 フォームへの入力が済んだら、使用条件に同意し、購入ボタンを選択して、デプロイを完了する必要があります。
 

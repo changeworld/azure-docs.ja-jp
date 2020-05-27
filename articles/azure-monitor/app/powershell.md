@@ -3,18 +3,18 @@ title: PowerShell での Azure Application Insights の自動化 | Microsoft Doc
 description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成および管理を自動化します。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780489"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697923"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、Azure Resource 管理を使用して [Application Insights](../../azure-monitor/app/app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)の作成、[アラート](../../azure-monitor/app/alerts.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
+この記事では、Azure Resource 管理を使用して [Application Insights](../../azure-monitor/app/app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)の作成、[アラート](../../azure-monitor/platform/alerts-log.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
 
 これらのリソースを作成する際に重要となるのが、[Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md) の JSON テンプレートです。 基本的な手順は、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するといった手順になります。 いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。 パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
 

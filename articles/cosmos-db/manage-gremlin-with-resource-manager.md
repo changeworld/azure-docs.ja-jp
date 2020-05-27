@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートを使用して、Azure Co
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: defeec2317f47e9d79245cbde0ef81c8a3543bfb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0f807213d68e2731e784198f8ce968cdea9b3957
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791240"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684820"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB Gremlin API リソースを管理する
 
@@ -31,9 +31,7 @@ ms.locfileid: "82791240"
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-autoscale-provisioned-throughput"></a>自動スケーリングでプロビジョニングされたスループットを使用した Gremlin 用の Azure Cosmos DB アカウント
 
-このテンプレートは、自動スケーリングのスループットでデータベースとグラフを含む Gremlin API の Azure Cosmos アカウントを作成します。
-
-このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
+このテンプレートは、自動スケーリングのスループットでデータベースとグラフを含む Gremlin API の Azure Cosmos アカウントを作成します。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
 
 [![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin-autoscale%2Fazuredeploy.json)
 
@@ -43,9 +41,7 @@ ms.locfileid: "82791240"
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-standard-provisioned-throughput"></a>標準でプロビジョニングされたスループットを使用した Gremlin 用の Azure Cosmos DB アカウント
 
-このテンプレートは、標準 (手動) スループットでデータベースとグラフを含む Gremlin API の Azure Cosmos アカウントを作成します。
-
-このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
+このテンプレートは、標準 (手動) スループットでデータベースとグラフを含む Gremlin API の Azure Cosmos アカウントを作成します。 このテンプレートは、Azure クイックスタート テンプレート ギャラリーからのワンクリック デプロイでも使用できます。
 
 [![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin%2Fazuredeploy.json)
 
