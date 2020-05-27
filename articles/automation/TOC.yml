@@ -299,8 +299,8 @@
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-automation.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: 料金計算ツール

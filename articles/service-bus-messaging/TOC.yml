@@ -267,8 +267,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: ブログ
       href: 'https://blogs.msdn.microsoft.com/servicebus/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/home?forum=servbus'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-bus.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 料金計算ツール

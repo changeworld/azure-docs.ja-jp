@@ -10,7 +10,7 @@
       items:
         - name: コストの分析を開始する
           href: quick-acm-cost-analysis.md
-        - name: テンプレートを使用して予算を作成する
+        - name: 予算の作成 - Resource Manager テンプレート
           href: quick-create-budget-template.md
           displayName: 'ARM template, resource manager template'
     - name: チュートリアル
