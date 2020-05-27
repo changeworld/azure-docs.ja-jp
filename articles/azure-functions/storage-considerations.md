@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984165"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648800"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -53,9 +53,7 @@ Azure Functions では、関数アプリ インスタンスを作成するとき
 
 ## <a name="storage-data-encryption"></a>ストレージ データの暗号化
 
-Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 詳細については、「[保存データ向け Azure ストレージの暗号化](../storage/common/storage-service-encryption.md)」をご覧ください。
-
-規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するために、BLOB とファイル データの暗号化に使用する目的で、顧客が管理するキーを提供できます。 Functions からストレージ アカウントにアクセスできるように、これらのキーは Azure Key Vault 内に置かれている必要があります。 詳細については、「[Azure portal を使用して Azure Key Vault での顧客管理キーを構成する](../storage/common/storage-encryption-keys-portal.md)」を参照してください。  
+[!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
 ## <a name="mount-file-shares-linux"></a>ファイル共有をマウントする (Linux)
 

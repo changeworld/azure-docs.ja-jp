@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789846"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798588"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>コマーシャル マーケットプレースのリード管理
 
@@ -86,7 +86,7 @@ ms.locfileid: "82789846"
 
 **リードの送信先の設定方法に関するヘルプはどこで入手できますか?** 
 
-ドキュメントは、[潜在顧客の獲得](./partner-center-portal/commercial-marketplace-get-customer-leads.md)で見つけることができます。または[ヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)でサポート チケットを送信します。 オファーの種類とリード管理を選択します。 
+ドキュメントは、[潜在顧客の獲得](./partner-center-portal/commercial-marketplace-get-customer-leads.md)で見つけることができます。または[ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを送信します。 オファーの種類とリード管理を選択します。 
 
 **Marketplace でオファーを公開するには、リードの送信先を構成する必要がありますか?**
 
@@ -183,7 +183,7 @@ title = MSFT_TEST_636573304831318844
 
 **Marketplace からの電子メールを受信したのですが、CRM でリードを確認できないのはなぜですか?**  
 
-エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由から、個人を特定できるデータを .edu ドメインから渡すことはしていません。 [ヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)でサポート チケットを送信します。
+エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由から、個人を特定できるデータを .edu ドメインから渡すことはしていません。 [ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを送信します。
 
 **リードの送信先として Azure Table/Azure BLOB を構成したのですが、リードを表示するにはどうすればよいですか?** 
 
@@ -193,7 +193,7 @@ Azure portal から BLOB またはテーブルにアクセスするか、ある�
 
 はい。[こちら](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)のドキュメントの説明に従って、Azure Table と Azure Function を設定してください。 
 
-**リードの送信先として Salesforce を構成したのですが、リードが見つからないのはなぜですか?** 
+**リードの送信先として Salesforce を構成したのですが、リードが見つからないのはなぜですか?**
 
 Web-to-リード フォームが候補リストに基づく必須フィールドになっているかどうかを確認してください。 なっている場合は、フィールドを任意指定のテキスト フィールドに切り替えてください。  
  

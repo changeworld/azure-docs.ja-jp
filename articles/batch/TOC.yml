@@ -53,12 +53,26 @@
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
-    - name: 開発者向け機能
-      href: batch-api-basics.md
+    - name: Batch サービスのワークフローとリソース
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch アカウント
+          displayName: storage account
+          href: accounts.md
+        - name: ノードとプール
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: ジョブとタスク
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: ファイルとディレクトリ
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API とツール
       href: batch-apis-tools.md
-    - name: Batch サービス エラーの検出と処理
-      href: batch-retry-after-errors.md
+    - name: エラー処理と検出
+      href: error-handling.md
     - name: ベスト プラクティス
       href: best-practices.md
     - name: クォータと制限
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: Batch で Key Vault に安全にアクセスする
           href: credential-access-key-vault.md
+        - name: Batch での証明書の使用
+          href: batch-certificates.md
+    - name: アプリケーション パッケージの使用
+      href: batch-application-packages.md
     - name: ファイルとアプリケーションをプール ノードにコピーする
       items:
         - name: プール ノードへのアプリケーションとデータのコピー

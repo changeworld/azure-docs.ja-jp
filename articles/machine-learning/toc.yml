@@ -74,6 +74,8 @@
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow 画像分類モデルのトレーニングとデプロイ
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Resource Manager テンプレートを使用したワークスペースの作成
+      href: tutorial-resource-manager-workspace.md
 - name: サンプル
   items:
     - name: Jupyter Notebooks

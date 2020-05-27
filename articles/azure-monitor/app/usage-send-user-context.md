@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: beb5a0f7ad3733aaf12b0880af4fba23a705a7e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670935"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797678"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 
@@ -22,7 +22,7 @@ Application Insights を使用すると、次に示す一連の製品使用状�
 - [ユーザー、セッション、イベント](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [ファネル](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [リテンション期間](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)コーホート
-- [ブック](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 Application Insights で一定期間にわたってユーザーの行動を追跡するためには、ユーザーごと、またはセッションごとの ID が必要となります。 すべてのカスタム イベントまたはページ ビューに次の ID を追加します。
 
@@ -134,4 +134,4 @@ namespace MvcWebRole.Telemetry
     - [ユーザー、セッション、およびイベント](usage-segmentation.md)
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
-    - [ブック](../../azure-monitor/app/usage-workbooks.md)
+    - [ブック](../../azure-monitor/platform/workbooks-overview.md)

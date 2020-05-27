@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190335"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800513"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -36,7 +36,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 
-プログラムのすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)をご覧ください。
+プログラムのすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
 
 始める手順は簡単です。
 
@@ -56,7 +56,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 2. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
 
 >[!Note]
->オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。 <br> <br> 所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)でサポート チケットを提出できます。
+>オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。 <br> <br> 所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを提出できます。
 
 マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 リストのすべての項目が、リソースとベスト プラクティスに関するセルフサービスのメールの一部として、基本レベルの最適化に関する推奨事項とプロモーションを受け取ります。
 
@@ -68,7 +68,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 ![Go-To-Market ベネフィット](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)をご覧ください。
+これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>トランザクション パートナーに対する Marketplace 報酬
 
@@ -89,7 +89,7 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 
 \* チケットの収益のしきい値は Microsoft 365 アプリのみ (Microsoft Teams、Office、Outlook、または SharePoint と統合された SaaS アプリケーション) に適用されます。また、ベネフィットは 2020 年 6 月 30 日までに完了する必要があります。
 
-これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)をご覧ください。
+これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
 
 報酬ベネフィットに加えて、Microsoft AppSource に発行された Dynamics オファーのビジネス アプリケーション パートナーは、[ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) を通じて補助プログラムを利用できます。 これには、ビジネス アプリケーション パートナーのニーズに特化した技術、マーケティング、および販売サポートが含まれます。
 
@@ -97,7 +97,7 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 
 ### <a name="publisher-agreement"></a>発行元契約
 
-このページで説明されているすべてのアクティビティは、[マーケットプレース発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
+このページで説明されているすべてのアクティビティは、[マーケットプレース発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
 
 ### <a name="cancellation-policy"></a>キャンセルに関するポリシー
 
@@ -122,6 +122,6 @@ Microsoft は、次のような発行元に対する Marketplace 報酬ベネフ
 
 [利用可能なセルフサービス リソース](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)を確認します。
 
-[Microsoft AppSource および Azure Marketplace のコミュニティ フォーラム](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)にサインアップし、関連するトピックについて学習したり、ディスカッションに参加したりすることができます。
+[Microsoft AppSource および Azure Marketplace のコミュニティ フォーラム](https://aka.ms/MarketplaceCommunity)にサインアップし、関連するトピックについて学習したり、ディスカッションに参加したりすることができます。
 
 ---

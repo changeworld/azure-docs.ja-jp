@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4dd42c6eabf02bc7a4eb956b9cd5ab2aec28176b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186205"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800800"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -37,10 +37,10 @@ ms.locfileid: "82186205"
 
 ## <a name="create-guids"></a>GUID の作成
 
-GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 Azure Storage チームは、正しい形式の GUID を電子メールで送信し、さまざまなトラッキング システムで再利用できる [GUID ジェネレーター フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu)を作成しました。
+GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 Azure Storage チームは、正しい形式の GUID を電子メールで送信し、さまざまなトラッキング システムで再利用できる [GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を作成しました。
 
 > [!NOTE]
-> [Azure Storage の GUID ジェネレーター フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu)を使用して GUID を作成することを強くお勧めします。 詳細については、[FAQ](#faq) をご覧ください。
+> [Azure Storage の GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を使用して GUID を作成することを強くお勧めします。 詳細については、[FAQ](#faq) をご覧ください。
 
 各製品について、オファーと配布チャネルごとに一意の GUID を作成することをお勧めします。 レポートを分割したくない場合は、製品の複数配布チャネルに対して単一の GUID を使用することを選択できます。
 
@@ -61,7 +61,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
 
-1. [商業マーケットプレース パブリッシャー](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)としてサインアップします。
+1. [商業マーケットプレース パブリッシャー](https://aka.ms/JoinMarketplace)としてサインアップします。
 
    * パートナーは、[パートナー センターにプロファイルを持っている](https://docs.microsoft.com/azure/marketplace/become-publisher)必要があります。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
    * パートナーは複数の GUID を登録できます。
@@ -286,7 +286,7 @@ foreach ($deployment in $deployments){
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>技術コンサルティングの要求を送信する方法
 
-1. [パートナー テクニカル サービス](https://partner.microsoft.com/training/partner-technical-services)を参照してください。
+1. [パートナー テクニカル サービス](https://aka.ms/TechnicalJourney)を参照してください。
 1. [Cloud infrastructure and management]\(クラウド インフラストラクチャおよび管理\) を選択すると、技術的な説明を示す新しいページが開きます。
 1. [Deployment Services]\(デプロイ サービス\) の下にある [Submit a request]\(要求の送信\) ボタンをクリックします。
 1. MSA (MPN アカウント) または AAD (パートナー ダッシュボード アカウント) を使用して、サインインします。サインイン資格情報に基づいて、オンライン要求フォームが開きます。
@@ -295,7 +295,7 @@ foreach ($deployment in $deployments){
     * 問題のタイトルと説明を入力します (できる限り詳細に入力します)。
 1. [送信] をクリックします。
 
-スクリーンショット付きの詳細な手順については、[テクニカル プリセールスおよびデプロイ サービスを使用する](https://support.microsoft.com/help/3121537/using-technical-presales-and-deployment-services#request%20a%20technical%20consultation)方法に関する記事を参照してください。
+スクリーンショット付きの詳細な手順については、[テクニカル プリセールスおよびデプロイ サービスを使用する](https://aka.ms/TechConsultInstructions)方法に関する記事を参照してください。
 
 ### <a name="whats-next"></a>参照トピック
 

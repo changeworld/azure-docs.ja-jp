@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: bc06deafe3f589fce9a9178fefdb22388254929d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678973"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758811"
 ---
 # <a name="z-fighting-mitigation"></a>Z ファイティングの軽減
 
@@ -26,7 +26,7 @@ ms.locfileid: "80678973"
 
 次のコードでは、Z ファイティングの軽減を有効にしています。
 
-``` cs
+```cs
 void EnableZFightingMitigation(AzureSession session, bool highlight)
 {
     ZFightingMitigationSettings settings = session.Actions.ZFightingMitigationSettings;
@@ -38,6 +38,20 @@ void EnableZFightingMitigation(AzureSession session, bool highlight)
     settings.Highlighting = highlight;
 }
 ```
+
+```cpp
+void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
+{
+    ApiHandle<ZFightingMitigationSettings> settings = *session->Actions()->ZFightingMitigationSettings();
+
+    // enabling z-fighting mitigation
+    settings->Enabled(true);
+
+    // enabling checkerboard highlighting of z-fighting potential
+    settings->Highlighting(highlight);
+}
+```
+
 
 > [!NOTE]
 > Z ファイティングの軽減は、レンダリングされるすべてのメッシュに影響を与えるグローバル設定です。

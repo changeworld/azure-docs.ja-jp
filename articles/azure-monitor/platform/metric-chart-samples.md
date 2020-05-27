@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660872"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797446"
 ---
 # <a name="metric-chart-examples"></a>メトリック グラフの例 
 
@@ -52,5 +52,5 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Monitor [Workbooks](../../azure-monitor/app/usage-workbooks.md) について学習します
+* Azure Monitor [Workbooks](../../azure-monitor/platform/workbooks-overview.md) について学習します
 * [メトリックス エクスプローラー](metrics-charts.md)について学習します

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 8075d9cd4530bafb12a338830baf0fe22eb03bce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679149"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759083"
 ---
 # <a name="cut-planes"></a>切断面
 
@@ -42,6 +42,19 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
     cutPlane.FadeLength = 0.05f; // gradient width: 5cm
 }
 ```
+
+```cpp
+void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
+{
+    ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
+    cutPlane->Normal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
+    Color4Ub fadeColor;
+    fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
+    cutPlane->FadeColor(fadeColor);
+    cutPlane->FadeLength(0.05f); // gradient width: 5cm
+}
+```
+
 
 ### <a name="cutplanecomponent-properties"></a>CutPlaneComponent のプロパティ
 

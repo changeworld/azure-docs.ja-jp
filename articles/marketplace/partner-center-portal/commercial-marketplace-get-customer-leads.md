@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837330"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800927"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーからの顧客リード
 
@@ -96,7 +96,7 @@ ms.locfileid: "82837330"
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>リードの送信先の設定方法に関するヘルプはどこで入手できますか?
 
-「[CRM システムに接続する](#connect-to-your-crm-system)」セクションの手順に従います。または、[パートナー センターのヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)を通じてサポート チケットを送信します。 次に、 **[オファーの作成]**  >  **[オファーの種類]**  >  **[潜在顧客管理の構成]** を選択し します。
+「[CRM システムに接続する](#connect-to-your-crm-system)」セクションの手順に従います。または、[パートナー センターのヘルプとサポート](https://aka.ms/marketplacepublishersupport)を通じてサポート チケットを送信します。 次に、 **[オファーの作成]**  >  **[オファーの種類]**  >  **[潜在顧客管理の構成]** を選択し します。
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでオファーを公開するには、リードのターゲットを構成する必要がありますか?
 
@@ -133,7 +133,7 @@ Azure BLOB ストレージはリードのターゲットとしてサポートさ
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>コマーシャル マーケットプレースからの電子メールを受信したのですが、CRM でリードを確認できないのはなぜですか?
 
-エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由から、個人情報が .edu ドメインから渡されることはありません。 [パートナー センターのヘルプとサポート](https://partner.microsoft.com/support/v2/?stage=1)を通じてサポート チケットを送信します。
+エンドユーザーの電子メール ドメインが .edu である可能性があります。 プライバシー上の理由から、個人情報が .edu ドメインから渡されることはありません。 [パートナー センターのヘルプとサポート](https://aka.ms/marketplacepublishersupport)を通じてサポート チケットを送信します。
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Azure テーブルをリードのターゲットとして構成しました。 リードを表示するにはどうすればよいですか?
 

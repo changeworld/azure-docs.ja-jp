@@ -324,13 +324,13 @@
               href: ./partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Container オファーを作成する
               href: ./partner-center-portal/create-azure-container-offer.md
-        - name: 仮想マシン オファー
+        - name: 仮想マシンのオファー
           items:
             - name: Azure 仮想マシン オファーを作成する
               href: ./partner-center-portal/azure-vm-create-offer.md
-            - name: Azure VM 技術資産を作成する
+            - name: Azure VM の技術資産を作成する
               items:
-                - name: Azure VM 技術資産を作成する
+                - name: Azure VM の技術資産を作成する
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM 技術資産に関する FAQ
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md

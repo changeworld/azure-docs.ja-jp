@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e18c2b0f03f9ac2155c441580d62d6085581de12
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74706160"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779596"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>チュートリアル:Cosmos DB エンドポイントを使用して Azure Databricks を構築する
 
@@ -55,7 +55,7 @@ ms.locfileid: "74706160"
 
 2. **[基本]** タブの **[インスタンスの詳細]** に次の設定を入力します。
 
-   |設定|Value|
+   |設定|値|
    |-------|-----|
    |サブスクリプション|*該当するサブスクリプション*|
    |リソース グループ|<*該当するリソース グループ*>|
@@ -107,8 +107,6 @@ ms.locfileid: "74706160"
 ## <a name="create-a-cluster-and-add-library"></a>クラスターを作成してライブラリを追加する
 
 1. [Azure portal](https://portal.azure.com) で Azure Databricks サービスに移動し、 **[ワークスペースの起動]** を選択します。
-
-   ![Databricks ワークスペースの起動](./media/service-endpoint-cosmosdb/launch-workspace.png)
 
 2. 新しいクラスターを作成します。 クラスター名を選択し、それ以外は既定の設定のままにしてください。
 

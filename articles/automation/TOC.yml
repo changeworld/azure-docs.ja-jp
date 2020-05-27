@@ -57,6 +57,8 @@
           href: automation-create-account-template.md
         - name: アマゾン ウェブ サービスで認証を構成する
           href: automation-config-aws-account.md
+        - name: Azure AD による認証を構成する
+          href: automation-use-azure-ad.md
         - name: Automation 実行アカウントを管理する
           href: manage-runas-account.md
         - name: ロールのアクセス許可とセキュリティの管理

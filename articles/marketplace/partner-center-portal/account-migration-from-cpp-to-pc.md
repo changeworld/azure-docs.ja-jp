@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: fb6fe624248a9098f37b94773b7162052b94b5ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743527"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800412"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターにアカウントを移行する方法
 
@@ -85,7 +85,7 @@ Dynamics 365 Customer Engagement、PowerApps、Dynamics 365 Operations のオフ
 
 「[Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0)」で、フォーラムのエキスパートや同業者の協力を得ることができるほか、ブログやウェビナー、ビデオ、イベントなどをご覧いただけます。
 
-マーケットプレースのオファーの公開、認定、または管理に関するサポートが必要な場合は、[サポート チケットを提出](https://partner.microsoft.com/support/v2/?stage=1)してください。
+マーケットプレースのオファーの公開、認定、または管理に関するサポートが必要な場合は、[サポート チケットを提出](https://aka.ms/MarketplacePublisherSupport)してください。
 
 ## <a name="next-step"></a>次のステップ
 

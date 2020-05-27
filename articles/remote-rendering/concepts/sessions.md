@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679353"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758862"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering のセッション
 
@@ -82,7 +82,7 @@ ARR に[新しいセッションの作成](../how-tos/session-rest-api.md#create
 
 次のコードは、セッションを開始し、*ready* 状態を待機し、接続してからもう一度切断およびシャットダウンするという簡単な実装を示しています。
 
-``` cs
+```cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 // fill out RemoteRenderingInitialization parameters...
 

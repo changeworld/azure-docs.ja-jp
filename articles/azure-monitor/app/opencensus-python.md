@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537110"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815725"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -254,13 +254,13 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 
 既定では、メトリック エクスポーターは、一連の標準メトリックを Azure Monitor に送信します。 これを無効にするには、メトリックス エクスポーターのコンストラクターで `enable_standard_metrics` フラグを `False` に設定します。
 
-    ```python
-    ...
-    exporter = metrics_exporter.new_metrics_exporter(
-      enable_standard_metrics=False,
-      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
-    ...
-    ```
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
 現在送信されている標準メトリックの一覧を次に示します。
 
 - Available Memory (bytes) (使用可能なメモリ (バイト))
@@ -338,8 +338,8 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 
 4. エクスポーターはログ データを Azure Monitor に送信します。 データは `traces` で確認できます。 
 
-> [!NOTE]
-> このコンテキストでの `traces` は `Tracing` と同じではありません。 `traces` は、`AzureLogHandler` を利用するときに Azure Monitor に表示されるテレメトリの種類を表します。 `Tracing` は OpenCensus の概念を表し、[分散トレース](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)に関連します。
+    > [!NOTE]
+    > このコンテキストでの `traces` は `Tracing` と同じではありません。 `traces` は、`AzureLogHandler` を利用するときに Azure Monitor に表示されるテレメトリの種類を表します。 `Tracing` は OpenCensus の概念を表し、[分散トレース](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)に関連します。
 
 5. ログ メッセージの書式を設定するには、組み込みの Python [ログ API](https://docs.python.org/3/library/logging.html#formatter-objects) で `formatters` を使用します。
 
@@ -371,8 +371,8 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
     ```
 
 6. また、*extra* キーワード引数内の自分のログ メッセージに、custom_dimensions フィールドを使用してカスタム プロパティを追加することもできます。 これらは、Azure Monitor に `customDimensions` のキーと値のペアとして表示されます。
-> [!NOTE]
-> この機能が動作するためには、custom_dimensions フィールドにディクショナリを渡す必要があります。 他の型の引数を渡すと、それらはロガーによって無視されます。
+    > [!NOTE]
+    > この機能が動作するためには、custom_dimensions フィールドにディクショナリを渡す必要があります。 他の型の引数を渡すと、それらはロガーによって無視されます。
 
     ```python
     import logging
@@ -395,25 +395,25 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 
 OpenCensus Python では、`exception` テレメトリの追跡と送信が自動的には行われません。 これらは、Python ログ ライブラリ経由の例外を使用し、`AzureLogHandler` を通じて送信されます。 通常のログと同様、カスタム プロパティを追加することができます。
 
-    ```python
-    import logging
-    
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+```python
+import logging
 
-    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
-    # Use properties in exception logs
-    try:
-        result = 1 / 0  # generate a ZeroDivisionError
-    except Exception:
-        logger.exception('Captured an exception.', extra=properties)
-    ```
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
 例外は明示的にログする必要があるため、ハンドルされない例外をどのようにログするかはユーザーしだいです。 OpenCensus では、例外のテレメトリが明示的にログされている限り、それをユーザーがどのように行うかについて一切制限はありません。
 
 #### <a name="sampling"></a>サンプリング
@@ -461,4 +461,4 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
 * [スマート診断](../../azure-monitor/app/proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
-* [メトリック アラート](../../azure-monitor/app/alerts.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
+* [メトリック アラート](../../azure-monitor/platform/alerts-log.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。

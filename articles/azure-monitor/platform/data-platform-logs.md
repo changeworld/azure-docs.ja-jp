@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0b288bf6d987b9db682c8d1439879cf6b499f213
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae72454cd9c0b3cb7370873619595840b770ed3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457333"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799975"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 
@@ -42,7 +42,7 @@ Azure Monitor のログには、種類ごとに異なるプロパティ セッ�
 |  |  |
 |:---|:---|
 | 分析 | Azure portal で [Log Analytics](../log-query/get-started-portal.md) を使用して[ログ クエリ](../log-query/log-query-overview.md)を書き、強力なデータ エクスプローラー分析エンジンを使用してログ データを対話形式で分析します。<br>Azure portal で [Application Insights 分析コンソール](../app/analytics.md)を使用してログ クエリを記述し、Application Insights からログ データを対話形式で分析します。 |
-| 視覚化 | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](../app/usage-workbooks.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
+| 視覚化 | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](../platform/workbooks-overview.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用し、他のデータ ソースと結合します。|
 | アラート: | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](action-groups.md)を実行する、[ログ警告ルール](alerts-log.md)を構成します。<br>メトリックとして抽出された特定のログ データ ログに対して[メトリック警告ルール](alerts-metric-logs.md)を構成します。 |
 | 取得 | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
 | エクスポート | [Logic Apps](~/articles/logic-apps/index.yml) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |

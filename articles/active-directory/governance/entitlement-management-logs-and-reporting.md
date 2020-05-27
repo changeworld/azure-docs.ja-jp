@@ -16,12 +16,12 @@ ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 87bb08e08bca3a9f715590098cfaa22ce7da8017
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380190"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799505"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 
@@ -189,5 +189,5 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>次のステップ:
-- [Azure Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/app/usage-workbooks.md) 
+- [Azure Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/platform/workbooks-overview.md) 
 

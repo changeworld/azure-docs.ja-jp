@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 89440a6385bab5b917a866b686e8d2ba828c92e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671054"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797826"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているか把握する
 
@@ -46,7 +46,7 @@ ms.locfileid: "77671054"
   * [利用状況の概要](usage-overview.md)
   * [ユーザー、セッション、およびイベント](usage-segmentation.md)
   * [保持](usage-retention.md)
-  * [ブック](../../azure-monitor/app/usage-workbooks.md)
+  * [ブック](../../azure-monitor/platform/workbooks-overview.md)
   * [ユーザー コンテキストの追加](usage-send-user-context.md)
   * [Power BI へのエクスポート](../../azure-monitor/app/export-power-bi.md )
 

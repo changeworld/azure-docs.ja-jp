@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685749"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800286"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -38,7 +38,7 @@ ms.locfileid: "81685749"
 
 ### <a name="perform-static-code-analysis"></a>静的コード分析を実行する
 
-[静的コード分析](https://www.owasp.org/index.php/Static_Code_Analysis) ("*ソース コード分析*" とも呼ばれます) は、通常、コード レビューの一部として実行されます。 一般に、静的コード分析は、静的コード分析ツールを実行し、[テイント チェック](https://en.wikipedia.org/wiki/Taint_checking)や[データ フロー分析](https://en.wikipedia.org/wiki/Data-flow_analysis)などの手法を使用して、実行されていないコードの潜在的な脆弱性を見つけることを指します。
+[静的コード分析](https://owasp.org/www-community/controls/Static_Code_Analysis) ("*ソース コード分析*" とも呼ばれます) は、通常、コード レビューの一部として実行されます。 一般に、静的コード分析は、静的コード分析ツールを実行し、[テイント チェック](https://en.wikipedia.org/wiki/Taint_checking)や[データ フロー分析](https://en.wikipedia.org/wiki/Data-flow_analysis)などの手法を使用して、実行されていないコードの潜在的な脆弱性を見つけることを指します。
 
 Azure Marketplace では、静的コード分析を実行してコード レビューを支援する[開発者ツール](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review)が提供されています。
 
@@ -97,7 +97,7 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 
 ### <a name="validate-file-uploads"></a>ファイルのアップロードを検証する
 
-アプリケーションで[ファイルのアップロード](https://www.owasp.org/index.php/Unrestricted_File_Upload)を許可する場合は、この危険なアクティビティのために実行できる予防策を検討してください。 多くの攻撃において最初のステップになるのは、攻撃対象のシステムに悪意のあるコードを取り込むことです。 ファイル アップロードを使用すると、攻撃者がこれを達成しやすくなります。 OWASP では、ファイルを検証し、アップロードされているファイルが安全であることを確認するするためのソリューションが提供されます。
+アプリケーションで[ファイルのアップロード](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)を許可する場合は、この危険なアクティビティのために実行できる予防策を検討してください。 多くの攻撃において最初のステップになるのは、攻撃対象のシステムに悪意のあるコードを取り込むことです。 ファイル アップロードを使用すると、攻撃者がこれを達成しやすくなります。 OWASP では、ファイルを検証し、アップロードされているファイルが安全であることを確認するするためのソリューションが提供されます。
 
 マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) をインストールできます。
 
