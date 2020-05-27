@@ -1,14 +1,14 @@
 ---
 title: FedRAMP Moderate ブループリント サンプルのコントロール
 description: FedRAMP Moderate ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 10/31/2019
+ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: 3fd6762f4f0a76b560a37dd1ed4f727aa76385fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c95b47034fbf18f2588e2c4134729162c9bb7cc5
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77150480"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816269"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate ブループリント サンプルのコントロール マッピング
 

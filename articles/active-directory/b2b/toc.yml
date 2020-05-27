@@ -131,8 +131,8 @@
           href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
         - name: Azure のロードマップ
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+        - name: Microsoft Q&A 質問ページ
+          href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
         - name: 価格
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: 料金計算ツール
