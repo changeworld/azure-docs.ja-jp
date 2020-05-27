@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647443"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77058427"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>チュートリアル: Cornerstone OnDemand を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -39,7 +39,7 @@ ms.locfileid: "83647443"
 * 管理者アクセス許可がある Cornerstone OnDemand のユーザー アカウント
 
 > [!NOTE]
-> Azure AD プロビジョニング統合は、[Cornerstone OnDemand Web サービス](https://www.cornerstoneondemand.com/)に依存しています。 このサービスは Cornerstone OnDemand チームが使用できます。
+> Azure AD プロビジョニング統合は、[Cornerstone OnDemand Web サービス](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf)に依存しています。 このサービスは Cornerstone OnDemand チームが使用できます。
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Azure Marketplace から Cornerstone OnDemand を追加する
 

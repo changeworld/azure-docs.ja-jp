@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613094"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739534"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -319,8 +319,8 @@ HIPAA スキーマと 277 または 837 のメッセージ型を操作する場�
 | メッセージ型またはバリアント |  説明 | ドキュメント バージョン番号 (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | 医療保険情報の状態通知 | 005010X212 |
-| 837_I | 医療保険請求: 歯科 | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
-| 837_D | 健康保険請求: 機関 | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_I | 健康保険請求: 機関 | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | 医療保険請求: 歯科 | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
 | 837_P | 健康保険請求: 専門家 | 004010X098A1 <br>005010X222 <br>005010X222A1 |
 |||
 

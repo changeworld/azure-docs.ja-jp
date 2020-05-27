@@ -3,18 +3,18 @@ title: PowerShell を使用して Application Insights のアラートを設定�
 description: Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701833"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77669847"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Application Insights](../../azure-monitor/platform/alerts-log.md) では、[アラート](../../azure-monitor/app/app-insights-overview.md)の構成を自動化できます。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) では、[アラート](../../azure-monitor/app/alerts.md)の構成を自動化できます。
 
 さらに、[webhook を設定して、アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)することもできます。
 

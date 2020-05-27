@@ -8,13 +8,12 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232335"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -111,7 +110,7 @@ ms.locfileid: "83684681"
 
 ストレージ アカウントの Azure Storage メトリック グラフを、ポータルのダッシュボードに追加できます。
 
-1. **Azure Portal** にダッシュボードが表示されている間に、[[ダッシュボードの編集]](https://portal.azure.com) をクリックします。
+1. [Azure Portal](https://portal.azure.com) にダッシュボードが表示されている間に、 **[ダッシュボードの編集]** をクリックします。
 1. **[タイル ギャラリー]** で **[タイルの検索方法]**  >  **[種類]** の順に選択します。
 1. **[種類]**  >  **[ストレージ アカウント]** の順に選択します。
 1. **[リソース]** で、ダッシュボードに追加するメトリックのストレージ アカウントを選択します。

@@ -2,15 +2,15 @@
 title: ジョブとタスクのエラーを確認する
 description: 確認するエラーとジョブやタスクのトラブルシューティング
 author: mscurrell
-ms.topic: how-to
+ms.topic: article
 ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: 368b803ae3e62c0e27da9e52d9df9842037757ff
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0c58bdf50f3e69b2b7d18f750f94fecdb512af85
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726623"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116028"
 ---
 # <a name="job-and-task-error-checking"></a>ジョブとタスクのエラーの確認
 

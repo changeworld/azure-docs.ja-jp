@@ -5,27 +5,18 @@ keywords: azure app service, web アプリ, モバイル アプリ, api アプ�
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535657"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649026"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
 この記事では、[Azure App Service](overview.md) で Web アプリ、モバイル アプリ バック エンド、API アプリ、および[関数アプリ](/azure/azure-functions/)をセキュリティで保護する方法について説明します。 また、組み込みの App Service 機能を使用してアプリをさらに保護する方法についても説明します。
 
-Azure VM、ストレージ、ネットワーク接続、Web フレームワーク、管理、統合機能を含む App Service のプラットフォーム コンポーネントは、積極的に保護され、強化されています。 App Service は、徹底したコンプライアンス チェックを継続的に行い、以下の点を確認しています。
-
-- お客様のアプリのリソースが、他のお客様の Azure リソースから[セキュリティで保護](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)されていること。
-- 新たに発見された脆弱性に対応できるように、[VM インスタンスとランタイム ソフトウェアが定期的に更新されている](overview-patch-os-runtime.md)こと。 
-- アプリと他の Azure リソース ([SQL Database](https://azure.microsoft.com/services/sql-database/) など) 間のシークレット (接続文字列など) の通信が Azure 内にとどまり、ネットワーク境界を越えないこと。 保存時にシークレットが常に暗号化されていること。
-- [ハイブリッド接続](app-service-hybrid-connections.md)などの App Service 接続機能を介したすべての通信が暗号化されていること。 
-- Azure PowerShell、Azure CLI、Azure SDK、REST API などのリモート管理ツールとの接続がすべて暗号化されていること。
-- 24 時間体制の脅威管理によって、マルウェア、分散型サービス拒否 (DDoS)、man-in-the-middle (MITM) などの脅威からインフラストラクチャとプラットフォームが保護されていること。
-
-Azure のインフラストラクチャとプラットフォームのセキュリティの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/overview/trusted-cloud/)を参照してください。
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 以下のセクションでは、App Service アプリを脅威からさらに保護する方法について説明します。
 
