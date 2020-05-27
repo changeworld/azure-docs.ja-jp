@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 059e77c063d00ef850a171507ca2e06422ade426
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 514694dc2e3f06db2fb80f6b3ba0106343be11d8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191772"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658509"
 ---
 # <a name="azure-synapse-analytics-preview-release-notes"></a>Azure Synapse Analytics (プレビュー) のリリース ノート
 
@@ -38,6 +38,6 @@ ms.locfileid: "82191772"
 
 * [ワークスペースを作成する](quickstart-create-workspace.md)
 * [Synapse Studio を使用する](quickstart-synapse-studio.md)
-* [SQL プールを作成する](quickstart-create-sql-pool.md)
+* [SQL プールを作成する](quickstart-create-sql-pool-portal.md)
 * [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
-* [Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
+* [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs'
+title: Azure AD Connect:アカウントとアクセス許可 | Microsoft Docs
 description: このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227867"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681757"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Azure AD Connect に使用されるアカウント
 
@@ -133,7 +133,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 >[!IMPORTANT]
 >ADSyncConfig.psm1 という名前の新しい PowerShell モジュールがビルド **1.1.880.0** (2018 年 8 月にリリース) に導入されました。これには、Azure AD DS コネクタ アカウント用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。
 >
->詳しくは、「[Azure AD Connect: Configure AD DS Connector Account Permission](how-to-connect-configure-ad-ds-connector-account.md)」(Azure AD Connect: AD DS コネクタ アカウントのアクセス許可を構成する) をご覧ください
+>詳しくは、「[Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成](how-to-connect-configure-ad-ds-connector-account.md)」を参照してください。
 
 **[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使う **AD DS コネクタ アカウント**を作成できるオプションがあります。  
 
@@ -149,7 +149,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
 | パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/howto-sspr-writeback.md)」に記載された属性への書き込みアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
-| グループの書き戻し |**Office 365 グループ**を Exchange がインストールされているフォレストに書き戻すことができます。  詳しくは、「[グループの書き戻し](how-to-connect-preview.md#group-writeback)」をご覧ください。|
+| グループの書き戻し |**Office 365 グループ**を Exchange がインストールされているフォレストに書き戻すことができます。|
 
 ## <a name="upgrade"></a>アップグレード
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。

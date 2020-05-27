@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732623"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743614"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -89,14 +89,13 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
    ```powershell
    Install-Package Microsoft.Extensions.Logging.Console -version <3_X_VERSION>
    ```
+   このコマンドの `<3_X_VERSION>` は、サポートされている 3.x バージョンのパッケージに置き換えてください。
 
 1. *Program.cs* で、`using` ステートメントを追加します。
 
    ```cs
    using Microsoft.Extensions.Logging;
    ```
-
-    このコマンドの `<3_X_VERSION>` は、サポートされている 3.x バージョンのパッケージに置き換えてください。
 
 1. [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) で [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) メソッドを呼び出します。 [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) メソッドでは、構成にコンソールのログ記録が追加されます。
 
@@ -272,7 +271,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    ![キューの作成](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. **[メッセージの追加]** ダイアログで、「*Hello World!* 」を  **[メッセージ テキスト]** として入力し、 **[OK]** を選択します。 これでキューにメッセージが入りました。
+1. **[メッセージの追加]** ダイアログで、「*Hello World!* 」を **[メッセージ テキスト]** として入力し、 **[OK]** を選択します。 これでキューにメッセージが入りました。
 
    ![キューの作成](./media/webjobs-sdk-get-started/hello-world-text.png)
 
@@ -331,7 +330,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
    |---------|---------|------|
    |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|Custom|
 
-1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します  (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
+1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
    |名前  |値  |
    |---------|---------|
@@ -361,7 +360,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 * 既定の[フィルタリング](webjobs-sdk-how-to.md#log-filtering)で Application Insights ログ プロバイダーを追加します。 ローカルで実行しているときは、情報レベルとそれより高いレベルのログがすべて、コンソールと Application Insights の両方に出力されます。
 * ホストの終了時にログ出力がフラッシュされるように、[LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) オブジェクトを `using` ブロックに配置します。
 
-1. [NuGet パッケージ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) の最新の安定した 3.x バージョンをインストールします 
+1. [NuGet パッケージ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) の最新の安定した 3.x バージョンをインストールします
 
    **パッケージ マネージャー コンソール** コマンドを次に示します。
 
@@ -423,7 +422,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    ![[検索] の選択](./media/webjobs-sdk-get-started/select-search.png)
 
-1. "*Hello App Insights!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します  (Application Insights クライアントが処理するログをフラッシュするのに少し時間がかかるので、ログはすぐには表示されません)。
+1. "*Hello App Insights!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します (Application Insights クライアントが処理するログをフラッシュするのに少し時間がかかるので、ログはすぐには表示されません)。
 
    ![Application Insights のログ](./media/webjobs-sdk-get-started/logs-in-ai.png)
 
@@ -452,9 +451,9 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[検索]** を選択します。
 
-1. "*Hello Azure!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します 
+1. "*Hello Azure!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します
 
-   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* "  テキストが含まれます。
+   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* " テキストが含まれます。
 
 ## <a name="add-an-input-binding"></a>入力バインディングの追加
 
@@ -486,7 +485,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、 **[OK]** をクリックします。
 
-1. BLOB コンテナーに *Program.cs* ファイルをアップロードします  (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
+1. BLOB コンテナーに *Program.cs* ファイルをアップロードします (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
 
    a. **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
 

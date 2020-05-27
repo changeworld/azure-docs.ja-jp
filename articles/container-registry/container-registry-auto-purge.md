@@ -2,21 +2,21 @@
 title: タグとマニフェストを消去する
 description: 消去コマンドを使用すると、経過時間とタグ フィルターに基づいて Azure コンテナー レジストリから複数のタグとマニフェストを削除できるほか、必要に応じて消去操作をスケジュールすることができます。
 ms.topic: article
-ms.date: 08/14/2019
-ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/14/2020
+ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087325"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652634"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure コンテナー レジストリからイメージを自動的に消去する
 
 開発ワークフローの一部として Azure コンテナー レジストリを使用すると、レジストリは短時間で不要なイメージやその他の成果物によりすぐにいっぱいになる可能性があります。 特定の期間よりも前のタグをすべて削除することも、指定した名前フィルターに一致したタグをすべて削除することもできます。 複数の成果物をすばやく削除できるように、この記事では、オンデマンドまたは[スケジュールされた](container-registry-tasks-scheduled.md) ACR タスクとして実行できる `acr purge` コマンドを紹介します。 
 
-`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.1`) で配布されています。
+`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.2`) で配布されています。
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 それをローカルで使用する場合は、バージョン 2.0.69 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
+Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 これをローカルで使用したい場合は、バージョン 2.0.76 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
 
 > [!IMPORTANT]
 > 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330717"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636091"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
@@ -59,7 +59,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 要求は、Azure AD B2C ポリシーの実行時に、データの一時的なストレージとなります。 要求は、[claims schema](claimsschema.md) セクションで宣言できます。 
 
-1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
 1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
 1. 次の要求を **ClaimsSchema** 要素に追加します。  
@@ -77,7 +77,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 ## <a name="configure-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを構成する 
 
-[Restful 技術プロファイル](restful-technical-profile.md)では、お使いの独自の RESTful サービスとのインターフェイスをサポートしています。 Azure AD B2C は、`InputClaims` コレクションでデータを RESTful サービスに送信し、`OutputClaims` コレクションで返却データを受信します。 お使いの <em> **`TrustFrameworkExtensions.xml`** </em> ファイルで **ClaimsProviders** を見つけ、次のように新しい要求プロバイダーを追加します。
+[Restful 技術プロファイル](restful-technical-profile.md)では、お使いの独自の RESTful サービスとのインターフェイスをサポートしています。 Azure AD B2C は、`InputClaims` コレクションでデータを RESTful サービスに送信し、`OutputClaims` コレクションで返却データを受信します。 お使いの <em> **`TrustFrameworkExtensions.xml`**</em> ファイルで **ClaimsProviders** を見つけ、次のように新しい要求プロバイダーを追加します。
 
 ```xml
 <ClaimsProvider>
@@ -117,9 +117,9 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 [ユーザー体験](userjourneys.md)では、証明書利用者アプリケーションがユーザーの任意の要求を取得できるようにする、ポリシーの明示的なパスを指定します。 ユーザー体験は、トランザクションを成功させるために従う必要のあるオーケストレーション シーケンスとして表されます。 オーケストレーションのステップは追加または削除できます。 この場合は、ユーザーのサインアップまたはサインイン後に、REST API の呼び出しでアプリケーションに提供する、情報を拡張する新しいオーケストレーション ステップを追加します。
 
-1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>です。
+1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>です。
 1. `<UserJourneys>` 要素を検索します。 要素全体をコピーしてから、削除します。
-1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 1. `<ClaimsProviders>` 要素を閉じた後、拡張ファイルに `<UserJourneys>` を貼り付けます。
 1. `<UserJourney Id="SignUpOrSignIn">` を見つけて、最後のオーケストレーション ステップの前に次のオーケストレーション ステップを追加します。
 
@@ -148,7 +148,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 ## <a name="include-a-claim-in-the-token"></a>トークンに要求を含める 
 
-`balance` 要求を証明書利用者アプリケーションに返すには、出力要求を <em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> ファイルに追加します。 出力要求を追加すると、ユーザー体験が成功した後、その要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、`balance` を出力要求として追加します。
+`balance` 要求を証明書利用者アプリケーションに返すには、出力要求を <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> ファイルに追加します。 出力要求を追加すると、ユーザー体験が成功した後、その要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、`balance` を出力要求として追加します。
  
 ```xml
 <RelyingParty>
@@ -209,9 +209,6 @@ REST API エンドポイントの設定は、この記事では扱っていま�
   ...
 }
 ```
-
-## <a name="next-steps"></a>次のステップ
-
 
 ## <a name="next-steps"></a>次のステップ
 

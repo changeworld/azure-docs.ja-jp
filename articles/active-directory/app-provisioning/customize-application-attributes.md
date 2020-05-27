@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.openlocfilehash: 4abfdd94c57064c86e533234d78f774c45ba8e4a
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 9697bc2abd147a501466ba134f96512fe15173c0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593864"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639049"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -108,7 +108,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory ([Microsoft Graph REST API v1.0 リファレンス](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)とカスタム ディレクトリ拡張機能がサポートされる)
+- Azure Active Directory ([Azure AD Graph API の既定の属性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
 - [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ ([コア スキーマ](https://tools.ietf.org/html/rfc7643)に定義された属性を追加する必要がある)
 
 > [!NOTE]
@@ -129,7 +129,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - **[Multi-value?]\(複数値\)** - 属性が複数値をサポートするかどうか。
 - **[Exact case?]\(大文字小文字の区別\)** - 大文字と小文字を区別して属性値を評価するかどうか。
 - **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り、使用しないでください。
-- **[Referenced Object Attribute] **(参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
+- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCIM 準拠アプリケーションへカスタム拡張属性をプロビジョニングする
 SCIM RFC ではコア ユーザーとグループ スキーマが定義されているだけでなく、スキーマの拡張をアプリケーションのニーズに合わせて使用することもできます。 カスタム属性を SCIM アプリケーションに追加するには、次の手順に従います。

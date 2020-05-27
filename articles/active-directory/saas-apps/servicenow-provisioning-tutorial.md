@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78205106"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780507"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
@@ -141,7 +141,6 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * **InvalidLookupReference:** ServiceNow の Department や Location などの特定の属性をプロビジョニングする場合、値は ServiceNow の参照テーブルに既に存在している必要があります。 たとえば、ServiceNow の**テーブル名の挿入**テーブルに 2 つの場所 (シアトル、ロサンゼルス) と 3 つの部門 (営業、財務、マーケティング) があるとします。 部門が "営業" で場所が "シアトル" のユーザーをプロビジョニングしようとすると、ユーザーは正常にプロビジョニングされます。 部門 "営業" と場所 "LA" のユーザーをプロビジョニングしようとすると、ユーザーはプロビジョニングされません。 LA という場所を ServiceNow の参照テーブルに追加するか、ServiceNow の形式に合わせて Azure AD のユーザー属性を更新する必要があります。 
 * **EntryJoiningPropertyValueIsMissing:** [属性マッピング](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を確認して、一致する属性を特定します。 この値は、プロビジョニング対象のユーザーまたはグループに存在する必要があります。 
 * [ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) を確認して、要件や制限事項 (たとえば、ユーザーの国番号を指定するための形式) を理解してください。
-* ServiceNow のデプロイによっては、Azure AD プロビジョニング サービスの IP 範囲を許可する必要があります。 Azure AD プロビジョニング サービスに予約されている IP 範囲については、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)の「AzureActiveDirectoryDomainServices」を参照してください。
 * プロビジョニング要求は、既定では https://{your-instance-name}.service-now.com/{table-name} に送信されます。 カスタム テナント URL が必要な場合は、[インスタンス名] フィールドに URL 全体を指定できます。
 
 ## <a name="additional-resources"></a>その他のリソース

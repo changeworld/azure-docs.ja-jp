@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) で複数の同時実行ポッドで
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 447df96240891e30570f0c7a8174674e1f404efc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207685"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677900"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -33,7 +33,6 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 * *Standard_ZRS* - 標準のゾーン冗長ストレージ (ZRS)
 * *Standard_RAGRS* - 標準の読み取りアクセス geo 冗長ストレージ (RA-GRS)
 * *Premium_LRS* - Premium ローカル冗長ストレージ (LRS)
-* *Premium_ZRS* - プレミアム ゾーン冗長ストレージ (ZRS)
 
 > [!NOTE]
 > Azure Files では、Kubernetes 1.13 以降が実行される AKS クラスターでの Premium Storage がサポートされています。Premium ファイル共有の下限は 100GB です

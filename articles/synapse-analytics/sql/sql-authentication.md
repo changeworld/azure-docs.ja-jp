@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b80efa30ac7e04b9eb21dd6f8a39ab4ee90adf6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421226"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700317"
 ---
 # <a name="sql-authentication"></a>SQL 認証
 
@@ -50,7 +50,7 @@ AAD 承認は Azure Active Directory に基づくため、ユーザー管理を 
 - `dbmanager` ロールと `loginmanager` ロールに対して、メンバーの追加と削除を実行できます。
 - `sys.sql_logins` システム テーブルを表示できます。
 
-## <a name="sql-on-demand-preview"></a>SQL オンデマンド (プレビュー)
+## <a name="sql-on-demand-preview"></a>[SQL オンデマンド (プレビュー)](#tab/serverless)
 
 SQL オンデマンドへのアクセス権を持つユーザーを管理するには、次の手順を使用します。
 
@@ -72,7 +72,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ログインとユーザーを作成したら、通常の SQL Server 構文を使用して権限を付与できます。
 
-## <a name="sql-pool"></a>SQL プール
+## <a name="sql-pool"></a>[SQL プール](#tab/provisioned)
 
 ### <a name="administrator-access-path"></a>Administrator access path
 
@@ -127,6 +127,8 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ### <a name="login-managers"></a>ログイン マネージャー
 
 もう 1 つの管理者ロールは、ログイン マネージャー ロールです。 このロールのメンバーは、master データベースに新しいログインを作成することができます。 必要であれば、同じ手順を実行して (ログインとユーザーを作成し、ユーザーを **loginmanager** ロールに追加して)、ユーザーが master に新しいログインを作成できるようにすることができます。 通常、ログインは必要ありません。Microsoft は、ログインに基づくユーザーを使用する代わりに、データベース レベルで認証される包含データベース ユーザーを使用することを推奨しているからです。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+
+---
 
 ## <a name="non-administrator-users"></a>管理者以外のユーザー
 

@@ -5,20 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 53e5bf4f770ce986af2f3572bd6c1ef4cd9e3c2b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605242"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680561"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>クイック スタート:Azure Firewall と IP グループを作成する - Resource Manager テンプレート
 
-このクイックスタートでは、Resource Manager テンプレートを使用して、ネットワーク規則とアプリケーション規則で使用されるサンプル IP グループを使って Azure Firewall をデプロイします。
-
-IP グループは、1 つのオブジェクトに IP アドレス、範囲、およびサブネットを定義してグループ化することができる最上位リソースです。 これは Azure Firewall 規則で IP アドレスを管理する場合に便利です。 IP アドレスは手動で入力することも、ファイルからインポートすることもできます。
+このクイックスタートでは、Resource Manager テンプレートを使用して、ネットワーク規則とアプリケーション規則で使用されるサンプル IP グループを使って Azure Firewall をデプロイします。 IP グループは、1 つのオブジェクトに IP アドレス、範囲、およびサブネットを定義してグループ化することができる最上位リソースです。 これは Azure Firewall 規則で IP アドレスを管理する場合に便利です。 IP アドレスは手動で入力することも、ファイルからインポートすることもできます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -32,22 +31,21 @@ IP グループは、1 つのオブジェクトに IP アドレス、範囲、�
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json)からのものです
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
 - [**Microsoft.Network/ipGroups**](/azure/templates/microsoft.network/ipGroups)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
 

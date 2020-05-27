@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050238"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826861"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>クイック スタート:アプリケーションによってサポートされるアカウントを変更する
 
@@ -69,6 +69,8 @@ Microsoft ID プラットフォームにアプリケーションを登録する�
 
 ### <a name="to-enable-oauth-20-implicit-grant"></a>OAuth 2.0 Implicit Grant を有効にするには
 
+1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]** を選択します。
+1. 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** またはメイン登録ページが表示されます。
 1. アプリの **[概要]** ページで、 **[認証]** セクションを選択します。
 1. **[詳細設定]** の **[暗黙的な許可]** セクションを探します。
 1. **[ID トークン]** と **[アクセス トークン]** の両方またはどちらか一方を選択します。

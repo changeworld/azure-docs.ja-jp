@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 183fe1604cc363a9121d5eef3737751c54e9bdf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45878ea947803b04cd5cd6e471f701c21f2c26fa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229716"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826351"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
@@ -209,7 +209,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **ID** に更新します。 たとえば、「 `LinkedIn-OAUTH` 」のように入力します。
+    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **ID** に更新します。 たとえば、`salesforce` または `LinkedIn-OAUTH` です。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 

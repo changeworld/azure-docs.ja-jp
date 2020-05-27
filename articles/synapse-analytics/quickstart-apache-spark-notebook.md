@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592952"
+ms.locfileid: "83656195"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成する
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [Synapse Analytics ワークスペース](quickstart-create-workspace.md)
-- [Apache Spark プール](quickstart-create-apache-spark-pool.md)
+- [Apache Spark プール](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -133,7 +133,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure Synapse では Azure Data Lake Storage にデータが保存されます。 Spark インスタンスは、使用されていないときに安全にシャットダウンできます。 Azure Synapse Apache Spark プールは、使用されていない場合でも、実行されている限り課金されます。 プールの料金は、ストレージの料金の何倍にもなります。 そのため、Spark インスタンスを使用していないときにシャットダウンすることは、経済的に意味があります。
+Azure Synapse では Azure Data Lake Storage にデータが保存されます。 Spark インスタンスが使用されていない場合は、そのインスタンスを安全にシャットダウンできます。 Azure Synapse Apache Spark プールは、使用されていない場合でも、実行されている限り課金されます。 
+
+プールの料金はストレージの料金の何倍にもなるため、使用しない場合は Spark インスタンスをシャットダウンするのが経済的にも合理的です。
 
 Spark インスタンスがシャットダウンされるようにするには、接続されているセッション (ノートブック) を終了します。 プールは、Apache Spark プールに指定されている**アイドル時間**に達したときにシャットダウンされます。 また、ノートブックの下部にあるステータスバーから **[セッションの終了]** を選択することもできます。
 

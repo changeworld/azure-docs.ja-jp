@@ -6,22 +6,17 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74769916"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660186"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
 Microsoft Azure Active Directory (Azure AD) 認証は、Azure AD で定義された ID を使用して Azure Database for PostgreSQL に接続できるよう設計されています。
 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理でき、アクセス許可の管理が容易になります。
-
-> [!IMPORTANT]
-> Azure Database for PostgreSQL 向けの Azure AD 認証は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure AD を利用すると、以下のようなメリットがあります。
 

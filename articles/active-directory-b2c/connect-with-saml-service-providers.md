@@ -8,22 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 38c98a65ac0b0f95a9a6e111a79b5dede04912c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229750"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696951"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
 この記事では、アプリケーションに対して Security Assertion Markup Language (SAML) ID プロバイダー (IdP) として機能するように Azure Active Directory B2C (Azure AD B2C) を構成する方法について説明します。
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="scenario-overview"></a>シナリオの概要
 
@@ -115,7 +113,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 次に、[SAML トークン発行者](saml-issuer-technical-profile.md)と [SAML セッション プロバイダー](custom-policy-reference-sso.md#samlssosessionprovider)技術プロファイルを使用して、SAML トークンを発行するためのテナントの機能を追加します。
 
-カスタム ポリシー スターター パックの `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** を開きます。
+カスタム ポリシー スターター パックの `SocialAndLocalAccounts\`**`TrustFrameworkExtensions.xml`** を開きます。
 
 `<ClaimsProviders>` セクションを見つけて、次の XML スニペットを追加します。
 
@@ -371,7 +369,6 @@ SAML テスト アプリでテストに使用できる完全なサンプル ポ�
 * アプリケーションまたはサービス プリンシパル オブジェクト内のログアウト URL に対する複数のログアウト URL または POST バインド。
 * アプリケーションまたはサービス プリンシパル オブジェクト内に RP 要求を検証するための署名キーを指定します。
 * アプリケーションまたはサービス プリンシパル オブジェクト内にトークン暗号化キーを指定します。
-* ID プロバイダーによって開始されるログインは、現在、プレビュー リリースではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

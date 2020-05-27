@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73175818"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737641"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
@@ -37,7 +37,7 @@ What If ツールの使用を開始するために必要なのは**ユーザー*
 
 * クラウド アプリまたはアクション
 * IP アドレス 
-* Country
+* 国/リージョン
 * デバイスのプラットフォーム
 * クライアント アプリ (プレビュー)
 * デバイス状態 (プレビュー) 
@@ -78,4 +78,4 @@ What If ツールの使用を開始するために必要なのは**ユーザー*
 * [条件付きアクセスとは](overview.md)
 * [Azure Active Directory Identity Protection とは](../identity-protection/overview-v2.md)
 * [デバイス ID とは](../devices/overview.md)
-* [しくみ: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [動作のしくみ: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)」を参照してください。

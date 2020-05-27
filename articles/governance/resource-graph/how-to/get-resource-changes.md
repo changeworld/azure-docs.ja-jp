@@ -1,14 +1,14 @@
 ---
 title: リソースの変更の取得
 description: リソースがいつ変更されたかを見つけ、変更されたプロパティの一覧を取得し、それらの差分を評価する方法について説明します。
-ms.date: 10/09/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d53148f302d82a7563520036f327406ca4a86040
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873031"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681060"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -289,3 +289,4 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
 - [リソースを探索する](../concepts/explore-resources.md)方法について詳しく確認します。
+- 高頻度のクエリの操作に関するガイダンスについては、[スロットルされた要求に関するガイダンス](../concepts/guidance-for-throttled-requests.md)のページを参照してください。

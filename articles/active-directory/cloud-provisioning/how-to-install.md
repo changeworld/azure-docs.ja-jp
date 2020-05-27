@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764071eeaf368ecf78679632cffbd6964db40aa5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230815"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681036"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect クラウド プロビジョニング エージェントのインストール
 このドキュメントでは、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。
@@ -77,14 +77,7 @@ Azure AD Connect プロビジョニングのインストールと構成は、次
 
    ![[オンプレミスのプロビジョニング エージェント] 画面](media/how-to-install/verify1.png)</br>
 
-### <a name="verify-the-port"></a>ポートを確認する
-Azure がポート 443 でリッスンしていて、エージェントがそれと通信できることを確認するには、次の手順に従います。
 
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
-
-このテストでは、エージェントがポート 443 を介して Azure と通信できることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから前の URL に移動します。
-
-![ポートの到達可能性の確認](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>ローカル サーバーの場合
 エージェントが実行されていることを確認するには、次の手順に従います。

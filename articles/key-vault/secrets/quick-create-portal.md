@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7d659ca519e5bd7f26e4cca17707e0db397aae98
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421176"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652277"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -63,7 +63,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     - **[値]** : hVFkk965BuUv
     - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
 
-シークレットが正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 すると、いくつかのプロパティを確認できます。 現在のバージョンをクリックすると、前の手順で指定した値が表示されます。
+シークレットが正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 
+
+## <a name="retrieve-a-secret-from-key-vault"></a>Key Vault からシークレットを取得する
+
+現在のバージョンをクリックすると、前の手順で指定した値が表示されます。
 
 ![シークレットのプロパティ](../media/quick-create-portal/current-version-hidden.png)
 

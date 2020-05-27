@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b23c2b81d281f787914e32818d768d2d531537f4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983077"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682230"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 
@@ -62,7 +62,7 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。 |
 | パスワード ハッシュの同期 |[Azure AD Connect Sync によるパスワード ハッシュ同期の導入](how-to-connect-password-hash-synchronization.md) |
 |パススルー認証|[Azure Active Directory パススルー認証によるユーザー サインイン](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[プレビュー:グループの書き戻し](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |グループの書き戻し|
 | UserWriteback |現在はサポートされていません。 |
 
 ## <a name="duplicate-attribute-resiliency"></a>重複属性の回復性

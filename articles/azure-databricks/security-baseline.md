@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d417f412592d87dec751b9d98a26bf786c719e5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793919"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681698"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure Databricks 用の Azure セキュリティ ベースライン
 
@@ -146,7 +146,7 @@ Azure Databricks 用の Azure セキュリティ ベースラインには、ご�
 
 **ガイダンス**: Azure Databricks インスタンスに関連付けられているネットワーク セキュリティとトラフィック フローに関連する NSG とその他のリソースのタグを使用します。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可する規則のビジネス ニーズや期間 (など) を指定します。
 
-* [タグを作成して使用する方法](httphttps://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center の監視**: 適用なし
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3336869a5f91613849cdccb67f9d804205148608
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084279"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652518"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -35,13 +35,13 @@ ms.locfileid: "82084279"
 * [HB シリーズ](../hb-series.md)
 * [HC シリーズ](../hc-series.md)
 * [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](../lsv2-series.md)
-* [Mv2 シリーズ](../mv2-series.md)
+* [M シリーズ](../m-series.md)
+* [Mv2 シリーズ](../mv2-series.md)<sup>1</sup>
 * [NCv2 シリーズ](../ncv2-series.md)と [NCv3 シリーズ](../ncv3-series.md)
 * [ND シリーズ](../nd-series.md)
 * [NVv3 シリーズ](../nvv3-series.md)
 
-> [!NOTE]
-> Mv2 シリーズは第 2 世代の VM イメージのみで動作するため、Mv2 シリーズ VM に対する第 2 世代 VM イメージの使用は一般提供されています。 第 1 世代の VM イメージは、Mv2 シリーズの VM ではサポートされていません。 
+<sup>1</sup> Mv2 シリーズは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](https://docs.microsoft.com/azure/virtual-machines/mv2-series)を参照してください。
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 
@@ -122,12 +122,6 @@ PowerShell を使用し、第 1 世代または第 2 世代の SKU を直接参�
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
 
-または、Azure CLI を使用して、**Publisher** によって一覧表示される使用可能な第 2 世代のイメージを確認することもできます。
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
-```
-
 OS として Windows Server 2012 を使用して VM を作成している場合は、次のように、第 1 世代 (BIOS) または第 2 世代 (UEFI) の VM SKU を選択します。
 
 ```powershell
@@ -136,6 +130,14 @@ OS として Windows Server 2012 を使用して VM を作成している場合�
 ```
 
 サポートされている Marketplace イメージの現在の一覧については、「[特徴と機能](#features-and-capabilities)」のセクションを参照してください。
+
+#### <a name="azure-cli"></a>Azure CLI
+
+または、Azure CLI を使用して、**Publisher** によって一覧表示される使用可能な第 2 世代のイメージを確認することもできます。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>マネージド イメージまたはマネージド ディスク
 

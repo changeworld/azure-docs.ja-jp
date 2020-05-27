@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926478"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680223"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md#111050)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
@@ -92,7 +92,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeNotSupportedAdfsSignInMethod | ユーザーがサインイン方法として Adfs を選択しました。 |
 | UpgradeNotSupportedCustomizedSyncRules |ユーザーが構成に独自のカスタム ルールを追加しました。 |
 | UpgradeNotSupportedDeviceWritebackEnabled |ユーザーが [デバイスの書き戻し](how-to-connect-device-writeback.md) 機能を有効にしました。 |
-| UpgradeNotSupportedGroupWritebackEnabled |ユーザーが [グループの書き戻し](how-to-connect-preview.md#group-writeback) 機能を有効にしました。 |
+| UpgradeNotSupportedGroupWritebackEnabled |グループの書き戻し機能を有効にしました。 |
 | UpgradeNotSupportedInvalidPersistedState |インストールが簡単設定でも DirSync のアップグレードでもありません。 |
 | UpgradeNotSupportedMetaverseSizeExceeeded |メタバース内のオブジェクトが 100,000 を超えています。 |
 | UpgradeNotSupportedMultiForestSetup |現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。 |

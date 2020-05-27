@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API での変更ストリーム
 description: Azure Cosmos DB の MongoDB 用 API で変更ストリームを使用し、データに対して行われた変更を取得する方法について説明します。
-author: timsander1
+author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.author: tisande
-ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.date: 11/16/2019
+ms.author: srchi
+ms.openlocfilehash: cc6b74a56d2a538d35e324090832e6c7e03e609f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872149"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647293"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API での変更ストリーム
 
 Azure Cosmos DB の MongoDB 用 API での[変更フィード](change-feed.md)のサポートは、変更ストリーム API を使用することで利用できます。 アプリケーションで変更ストリーム API を使用すると、単一のシャード内のコレクションまたは項目に対して行われた変更を取得できます。 その後、結果に基づいてさらにアクションを実行できます。 コレクション内の項目に対する変更は、変更時刻の順序でキャプチャされ、並べ替え順序はシャード キーごとに保証されます。
 
-> [!NOTE]
-> 変更ストリームを使用するには、Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降を使用してアカウントを作成します。 変更ストリームの例を以前のバージョンに対して実行すると、エラー `Unrecognized pipeline stage name: $changeStream` が表示されることがあります。
+[!NOTE]
+変更ストリームを使用するには、Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降を使用してアカウントを作成します。 変更ストリームの例を以前のバージョンに対して実行すると、エラー `Unrecognized pipeline stage name: $changeStream` が表示されることがあります。
 
 ## <a name="current-limitations"></a>現在の制限
 
@@ -89,8 +89,8 @@ enumerator.Dispose();
 ```javascript
 var cursor = db.coll.watch(
     [
-        {
-            $match: {
+        { 
+            $match: { 
                 $and: [
                     { "fullDocument.a": 1 }, 
                     { "operationType": { $in: ["insert", "update", "replace"] } }
@@ -102,6 +102,23 @@ var cursor = db.coll.watch(
     { fullDocument: "updateLookup" });
 
 ```
+
+## <a name="current-limitations"></a>現在の制限
+
+変更ストリームを使用する場合、次の制限が適用されます。
+
+* `operationType` および `updateDescription` プロパティは、出力ドキュメントではまだサポートされていません。
+* `insert`、`update`、`replace` の操作の種類は、現在サポートされています。 削除操作またはその他のイベントは、まだサポートされていません。
+
+これらの制限により、前の例で示したように、$match ステージ、$project ステージ、および fullDocument オプションが必要になります。
+
+## <a name="error-handling"></a>エラー処理
+
+変更ストリームを使用するときは、次のエラー コードとメッセージがサポートされます。
+
+* **HTTP エラー コード 429** - 変更ストリームが調整されると、空のページが返されます。
+
+* **NamespaceNotFound (OperationType 無効化)** - 存在しないコレクションで変更ストリームを実行した場合、またはコレクションが削除された場合は、`NamespaceNotFound` エラーが返されます。 出力ドキュメントでは `operationType` プロパティを返すことができないため、`operationType Invalidate` エラーの代わりに、`NamespaceNotFound` エラーが返されます。
 
 ## <a name="next-steps"></a>次のステップ
 

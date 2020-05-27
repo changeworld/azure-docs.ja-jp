@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: dfd9c949767d3dc8e63e3f15ba12641f27d46b80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568620"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743632"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを返却または交換する
 
@@ -74,7 +74,7 @@ ms.locfileid: "82568620"
 5. Azure から受け取った出荷ラベルをパッケージに貼り付けます。
 6. リージョンの運送業者で集荷をスケジュールします。 米国でデバイスを返却する場合、UPS または FedEx の運送業者をご利用になれます。 UPS に集荷をスケジュールするには:
 
-    1. 最寄りの UPS (国固有のフリー ダイヤル) に連絡します。
+    1. 最寄りの UPS (国/地域固有のフリー ダイヤル) に連絡します。
     2. 電話で、印刷ラベルに表示されている返送追跡番号を伝えます。
     3. 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
 

@@ -5,26 +5,27 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 17ab693033b61c25ba2f5b5bd588ef52caf8c046
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597707"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683713"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - Resource Manager テンプレート
 
 このクイックスタートでは、Resource Manager テンプレートを使用して、3 つの可用性ゾーンに Azure Firewall をデプロイします。 
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 このテンプレートでは、ファイアウォールを使用したテスト ネットワーク環境を作成します。 ネットワークには、次の 3 つのサブネットを含む 1 つの仮想ネットワーク (VNet) があります。*AzureFirewallSubnet*、*ServersSubnet*、*JumpboxSubnet*。 *ServersSubnet* と *JumpboxSubnet* には、それぞれ 1 つの 2 コア Windows Server 仮想マシンがあります。
 
 ファイアウォールは、*AzureFirewallSubnet* サブネット内にあり、`www.microsoft.com` へのアクセスを許可する単一のルールを含むアプリケーション ルール コレクションを備えています。
 
 ユーザー定義のルートは、ファイアウォール規則が適用されるファイアウォールを経由する *ServersSubnet* サブネットからのネットワーク トラフィックを指します。
-
-[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Azure Firewall の詳細については、[Azure portal を使用した Azure Firewall のデプロイと構成](tutorial-firewall-deploy-portal.md)に関するページを参照してください。
 
@@ -38,20 +39,20 @@ Azure Firewall の詳細については、[Azure portal を使用した Azure Fi
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-azurefirewall-with-zones-sandbox/azuredeploy.json)からのものです。
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -82,10 +83,12 @@ Azure への Resource Manager テンプレートのデプロイ:
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
+
 引き続きファイアウォール監視チュートリアルに進む場合は、リソース グループとファイアウォールを削除しないでください。 
 
 ## <a name="next-steps"></a>次のステップ
 
 次に、Azure Firewall のログを監視することができます。
 
-[チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [!div class="nextstepaction"]
+> [チュートリアル:Azure Firewall のログを監視する](tutorial-diagnostics.md)

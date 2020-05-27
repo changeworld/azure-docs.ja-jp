@@ -5,25 +5,25 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78668742"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721017"
 ---
 >[!NOTE]
 >Microsoft は、対応リージョンを拡大するために鋭意努力しています。 リージョンを追加した場合は、このリストに追加する予定です。
 >
 
-**アメリカ合衆国**
+**南北アメリカ**
 * ブラジル南部
 * カナダ中部
 * 米国中部
-* East US
+* 米国東部
 * 米国東部 2
 * 米国中北部
 * 米国中南部
@@ -35,6 +35,8 @@ ms.locfileid: "78668742"
 * フランス中部
 * 北ヨーロッパ
 * ノルウェー東部
+* ノルウェー西部
+* スイス北部
 * 英国南部
 * 英国西部
 * 西ヨーロッパ
@@ -49,6 +51,7 @@ ms.locfileid: "78668742"
 * 韓国中部
 * 韓国南部
 * 東南アジア
+* インド中部
 * インド西部
 
 **中東およびアフリカ**
