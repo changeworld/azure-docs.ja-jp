@@ -96,16 +96,16 @@
           href: 'https://azure.microsoft.com/support/options/'
         - name: Azure IoT のサポートとヘルプのオプション
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: スタック オーバーフロー
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: Microsoft Q&A 質問ページ
+          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
         - name: Azure IoT のコード サンプル
           href: 'https://docs.microsoft.com/samples/browse/?term=iot'
     - name: フィードバックとフォーラム
       items:
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: Microsoft Q&A 質問ページ
+          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
         - name: 製品の要求と提案
           href: 'https://feedback.azure.com/forums/916621-azure-digital-twins'
     - name: 顧客事例

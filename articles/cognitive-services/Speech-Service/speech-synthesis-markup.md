@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592782"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714323"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -195,10 +195,8 @@ speechConfig!.setPropertyTo(
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`
-* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
-* `zh-CN-YunyeNeural`
 
 変更は文章レベルで適用され、スタイルは音声によって異なります。 スタイルがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。
 
@@ -223,15 +221,11 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
 |                         | `style="empathetic"`      | 思いやりと理解を示します               |
-|   `pt-BR-FranciscaNeural`| `style="calm"`      | 落ち着いた語調を表します               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
 |                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |   
-| `zh-CN-YunyangNeural`  | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
-| `zh-CN-YunyeNeural`  | `style="calm"`      | 落ち着いた語調を表します               |  
-|                         | `style="sad"`       | 不満で不機嫌な語調を表します    |
-|                         | `style="serious"`         | 深刻で厳しい語調を表します        |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  | 
 
 **例**
 

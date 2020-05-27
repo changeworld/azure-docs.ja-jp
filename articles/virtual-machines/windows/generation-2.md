@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838826"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659882"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -128,12 +128,6 @@ PowerShell を使用し、第 1 世代または第 2 世代の SKU を直接参�
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
 
-または、Azure CLI を使用して、**Publisher** によって一覧表示される使用可能な第 2 世代のイメージを確認することもできます。
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
-```
-
 OS として Windows Server 2012 を使用して VM を作成している場合は、次のように、第 1 世代 (BIOS) または第 2 世代 (UEFI) の VM SKU を選択します。
 
 ```powershell
@@ -142,6 +136,14 @@ OS として Windows Server 2012 を使用して VM を作成している場合�
 ```
 
 サポートされている Marketplace イメージの現在の一覧については、「[特徴と機能](#features-and-capabilities)」のセクションを参照してください。
+
+#### <a name="azure-cli"></a>Azure CLI
+
+または、Azure CLI を使用して、**Publisher** によって一覧表示される使用可能な第 2 世代のイメージを確認することもできます。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>マネージド イメージまたはマネージド ディスク
 

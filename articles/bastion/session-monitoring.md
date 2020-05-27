@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 05/21/2020
 ms.author: charwen
-ms.openlocfilehash: 6bf80be4868295145fa79ae29d5322181b6131d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 617ec30fc9b97e89b6ccd0de6255d65da94d7b63
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619188"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780443"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure Bastion のセッションの監視と管理
 
@@ -30,9 +30,6 @@ Bastion サービスをプロビジョニングし、仮想ネットワークに
 
    ![更新](./media/session-monitoring/refresh.png)
 
->[!IMPORTANT]
-> セッション監視を機能させるには、ゲートウェイ マネージャーからの受信トラフィックに対してポート 4443 を有効にします。
->
 
 ## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>実行中のリモート セッションを削除または強制切断する
 

@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 05/19/2020
+ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994347"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700955"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
 
@@ -126,32 +126,11 @@ ms.locfileid: "82994347"
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明には、次の 1 つまたは複数を含めます。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- オファーによってもたらされる価値と主なメリット
-- カテゴリまたは業界のアソシエーション、あるいはその両方
-- アプリ内購入の機会
-- 必要な開示
-
-説明を記述するためのいくつかのヒントを次に示します。
-
-- 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
-  - プランの説明。
-  - オファーから利益を得るユーザーの種類。
-  - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
-- 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-- 業界固有の語彙または利益に基づく表現を使用するようにしてください。
-
-オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
-
-![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
-
-| <center>テキストの形式を変更する | <center>箇条書きまたは段落番号を追加します | <center>テキスト インデントを追加または削除する |
-| --- | --- | --- |
-| <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用したリストの追加](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用したインデントの設定](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="keywords"></a>Keywords
 

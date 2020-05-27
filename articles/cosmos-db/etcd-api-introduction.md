@@ -4,23 +4,23 @@ description: この記事では、Azure Cosmos DB の etcd API の概要と主�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: acd87fac5ec2edc40d27d98f073e13c0acae8d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498601"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797354"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB の etcd API (プレビュー) の概要
 
 Azure Cosmos DB は、Microsoft のミッションクリティカル アプリケーション向けグローバル分散型マルチモデル データベース サービスです。 ターンキーのグローバル配布、スループットとストレージの柔軟なスケール、99 パーセンタイルの 1 桁ミリ秒の待機時間、高可用性の保証というすべての機能が業界最先端の SLA に裏付けられています。
 
-[etcd](https://github.com/etcd-io/etcd) は分散キー/値ストアです。 [Kubernetes](https://kubernetes.io/) では、etcd を使用して Kubernetes クラスターの状態と構成を保存します。 etcd の可用性、信頼性、パフォーマンスを確保することは、クラスター全体の正常性、スケーラビリティ、弾力性の可用性、Kubernetes クラスターのパフォーマンスにとって非常に重要です。 
+[etcd](https://github.com/etcd-io/etcd) は分散キー/値ストアです。 [Kubernetes](https://kubernetes.io/) では、etcd を使用して Kubernetes クラスターの状態と構成を保存します。 etcd の可用性、信頼性、パフォーマンスを確保することは、クラスター全体の正常性、スケーラビリティ、弾力性の可用性、Kubernetes クラスターのパフォーマンスにとって非常に重要です。
 
-Azure Cosmos DB の etcd API では、Azure Cosmos DB を [Azure Kubernetes](../aks/index.yml) のバックエンド ストアとして使用できます。 Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 Azure Cosmos DB は etcd ワイヤ プロトコルを実装しています。 Azure Cosmos DB の etcd API を使用すると、開発者は信頼性、[可用性](high-availability.md)が高く、[グローバルに分散されている](distribute-data-globally.md) Kubernetes を自動的に利用できるようになります。 この API により、開発者はフル マネージド クラウドのネイティブ PaaS サービス上で Kubernetes の状態管理をスケールできます。 
+Azure Cosmos DB の etcd API では、Azure Cosmos DB を Azure Kubernetes のバックエンド ストアとして使用できます。 Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 Azure Cosmos DB は etcd ワイヤ プロトコルを実装しています。 Azure Cosmos DB の etcd API を使用すると、開発者は信頼性、[可用性](high-availability.md)が高く、[グローバルに分散されている](distribute-data-globally.md) Kubernetes を自動的に利用できるようになります。 この API により、開発者はフル マネージド クラウドのネイティブ PaaS サービス上で Kubernetes の状態管理をスケールできます。 
 
 > [!NOTE]
 > Azure Cosmos DB の他の API とは異なり、Azure portal、CLI、または SDK を介して etcd API アカウントをプロビジョニングすることはできません。 etcd API アカウントをプロビジョニングするには、Resource Manager テンプレートのみをデプロイします。詳細な手順については、[Azure Cosmos DB を使用して Azure Kubernetes をプロビジョニングする方法](bootstrap-kubernetes-cluster.md)に関する記事を参照してください。 Azure Cosmos DB etcd API は現在、限定プレビュー段階です。 サインアップ フォームに入力することで、[プレビューにサインアップする](https://aka.ms/cosmosetcdapi-signup)ことができます。
@@ -50,7 +50,7 @@ Kubernetes クラスターが大きくなるにつれて、Azure Cosmos DB の e
 
 ### <a name="security--enterprise-readiness"></a>セキュリティとエンタープライズの準備
 
-etcd データが Azure Cosmos DB に格納されると、Kubernetes 開発者は、Azure Cosmos DB がサポートしている[保存時の組み込みの暗号化](database-encryption-at-rest.md)、[認定と準拠](compliance.md)、および[バックアップ機能と復元機能](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)を自動的に利用できるようになります。 
+etcd データが Azure Cosmos DB に格納されると、Kubernetes 開発者は、Azure Cosmos DB がサポートしている[保存時の組み込みの暗号化](database-encryption-at-rest.md)、[認定と準拠](compliance.md)、および[バックアップ機能と復元機能](online-backup-and-restore.md)を自動的に利用できるようになります。 
 
 ## <a name="next-steps"></a>次のステップ
 

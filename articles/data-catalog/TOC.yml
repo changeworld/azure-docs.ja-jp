@@ -50,7 +50,7 @@
       href: data-catalog-how-to-secure-catalog.md
     - name: 関連するデータ資産の表示
       href: data-catalog-how-to-view-related-data-assets.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       href: troubleshoot-policy-configuration.md
 - name: リファレンス
   items:
@@ -68,15 +68,15 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure Data Catalog 用のキーボード ショートカット
       href: data-catalog-keyboard-shortcuts.md
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-catalog'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-catalog'
     - name: 用語
       href: data-catalog-terminology.md

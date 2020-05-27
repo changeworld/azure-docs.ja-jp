@@ -585,7 +585,7 @@
             - name: ストレージ エクスプローラーのアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure Storage フォーラム
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Stack Overflow の Azure Storage
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: Blob Storage の価格
@@ -853,8 +853,8 @@
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ストレージ エクスプローラーのアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: フォーラム
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+        - name: Microsoft Q&A 質問ページ
+          href: 'https://docs.microsoft.com/answers/products/topics/azure-blob-storage.html'
         - name: Stack Overflow の Azure Storage
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: 価格

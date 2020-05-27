@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260923"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649201"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 
@@ -25,7 +25,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 それぞれの API Management サービスインスタンスには、サービスインスタンスに対してグローバルなキーと値のペアのコレクションがあり、これは名前付きの値と呼ばれます。 コレクション内の項目の数に制限はありません。 名前付きの値を利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各名前付きの値は、次の属性を持つことができます。
 
-| Attribute      | 種類            | 説明                                                                                                                            |
+| 属性      | Type            | 説明                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | string          | ポリシー内の名前付きの値を参照するために使用されます。 1 から 256 文字の文字列。 文字、数字、ドット、ダッシュのみを使用できます。 |
 | `Value`        | string          | 実際の値。 空にしたり、空白のみで構成したりすることはできません。 最大文字数は 4,096 文字です。                                        |
@@ -36,7 +36,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 名前付きの値には、リテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`Expression` の値は、現在の日時を含む文字列を返すポリシー式です。 名前付きの値 `Credential` はシークレットとしてマークされているので、既定では、その値は表示されません。
 
-| Name       | 値                      | Secret | Tags          |
+| 名前       | 値                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | 値      | 42                         | False  | vital-numbers |
 | 資格情報 | ••••••••••••••••••••••     | True   | security      |
@@ -59,16 +59,12 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 名前付きの値が作成されたら、それをクリックして編集できます。 名前付きの値の名前を変更すると、その名前付きの値を参照するすべてのポリシーが、その新しい名前を使用するように自動的に更新されます。
 
-REST API を利用し、名前付きの値を編集する方法については、[REST API を利用して名前付きの値を編集する](/rest/api/apimanagement/2019-12-01/property?patch)に関するページを参照してください。
-
 ## <a name="to-delete-a-named-value"></a>名前付きの値を削除するには
 
 名前付きの値を削除するには、削除する名前付きの値の横にある **[削除]** をクリックします。
 
 > [!IMPORTANT]
 > 名前付きの値がいずれかのポリシーで参照されている場合、その名前付きの値を使用しているすべてのポリシーからその値を削除するまで削除は完了しません。
-
-REST API を利用して名前付きの値を削除する方法については、[REST API を使用して名前付きの値を削除する](/rest/api/apimanagement/2019-12-01/property/delete)に関するページを参照してください。
 
 ## <a name="to-search-and-filter-named-values"></a>名前付きの値を検索し、フィルター処理するには
 

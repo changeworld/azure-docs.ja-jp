@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3d0bd5d6403264ae6c71b43468b61930bcf6b86c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef961fe37b9906d3b7be44a8ee99876394104455
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79504377"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651042"
 ---
 Premium SSD、Standard SSD、および Standard HDD の場合、現在カスタマー マネージド キーをサポートしているのは次のリージョンのみです。
 
@@ -23,3 +23,5 @@ Ultra Disks の場合、カスタマー マネージド キーを GA オファ�
 
 - 米国東部
 - 米国西部 2
+- 米国中南部 
+- US Gov バージニア州 

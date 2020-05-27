@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9c1cff53d5d0f0385d3d61938c7fb6309efb7b1
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 60c07fbf0f68897c0936cab13ebbe1505bc84079
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985390"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682587"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -51,11 +51,6 @@ Azure portal を介して SQL Server VM の Azure Marketplace イメージをデ
    ---
 
 SQL VM リソース プロバイダーを利用するには、最初に[サブスクリプションをリソース プロバイダーに登録する](#register-subscription-with-rp)必要があります。これにより、リソース プロバイダーは、その特定のサブスクリプション内にリソースを作成することができます。
-
-SQL VM リソース プロバイダーを使用する利点の詳細については、次の [Channel 9](https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure?WT.mc_id=dataexposed-c9-niner) のビデオをご覧ください。 
-
-<iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Azure で SQL Server を自己インストールするときの SQL VM リソース プロバイダーの利点 - Microsoft Channel 9 のビデオ"></iframe>
-
 
 ## <a name="prerequisites"></a>前提条件
 
