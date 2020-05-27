@@ -432,8 +432,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: ネットワークのブログ
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: ネットワークのフォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: ネットワークに関する Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: ネットワークに関するフィードバック
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: 価格

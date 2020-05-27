@@ -16,7 +16,7 @@
       href: automation-quickstart-dsc-configuration.md
 - name: チュートリアル
   items:
-    - name: グラフィック Runbook を作成する
+    - name: グラフィカル Runbook を作成する
       href: learn/automation-tutorial-runbook-graphical.md
     - name: PowerShell Runbook を作成する
       href: learn/automation-tutorial-runbook-textual-powershell.md
@@ -63,7 +63,7 @@
           href: automation-role-based-access-control.md
         - name: Automation アカウントを別のサブスクリプションに移動する
           href: how-to/move-account.md
-        - name: System Center Orchestrator からの移行
+        - name: Orchestrator から Azure Automation (ベータ版) に移行する
           href: automation-orchestrator-migration.md
     - name: 共有リソース
       items:
@@ -89,7 +89,7 @@
           href: troubleshoot/shared-resources.md
     - name: プロセスの自動化
       items:
-        - name: PowerShell ギャラリーで Runbook とモジュールを検索する
+        - name: PowerShell ギャラリーの Runbook とモジュールを使用する
           href: automation-runbook-gallery.md
         - name: PowerShell ワークフローの概要
           href: automation-powershell-workflow.md
@@ -123,11 +123,11 @@
               href: automation-runbook-graphical-error-handling.md
             - name: Azure Monitor ログにジョブ データを転送する
               href: automation-manage-send-joblogs-log-analytics.md
-        - name: トラブルシューティング
+        - name: Runbook のトラブルシューティング
           items:
-            - name: Runbook のトラブルシューティング
+            - name: Runbook の問題のトラブルシューティング
               href: troubleshoot/runbooks.md
-            - name: サポート ケースを開く前に収集するデータ
+            - name: Microsoft Azure Automation のケースを開くときに収集するデータ
               href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: Hybrid Runbook Worker の操作
           items:
@@ -137,61 +137,67 @@
               href: automation-linux-hrw-install.md
             - name: Hybrid Runbook Worker で Runbook を実行する
               href: automation-hrw-run-runbooks.md
-            - name: Hybrid Runbook Worker のトラブルシューティング
+            - name: Hybrid Runbook Worker の問題のトラブルシューティング
               href: troubleshoot/hybrid-runbook-worker.md
         - name: ソース管理の統合を使用する
           href: source-control-integration.md
     - name: 構成管理
       items:
-        - name: 状態の構成 (DSC)
+        - name: Azure Automation State Configuration
           items:
             - name: 概要
               href: automation-dsc-overview.md
-            - name: State Configuration の使用を開始する
+            - name: State Configuration の概要
               href: automation-dsc-getting-started.md
-            - name: 管理のためにマシンをオンボードする
+            - name: State Configuration を有効にする
               href: automation-dsc-onboarding.md
-            - name: 望ましい状態にサーバーを構成する
+            - name: 目的の状態にサーバーを構成して誤差を管理する
               href: tutorial-configure-servers-desired-state.md
-            - name: DSC 構成のコンパイル
-              href: automation-dsc-compile.md
-            - name: 構成のずれを修復する
-              href: automation-dsc-remediate.md
             - name: DSC 構成を作成する
               href: compose-configurationwithcompositeresources.md
-            - name: Chocolatey を使用した継続的配置の設定
+            - name: DSC 構成のコンパイル
+              href: automation-dsc-compile.md
+            - name: 非準拠の State Configuration サーバーを修復する
+              href: automation-dsc-remediate.md
+            - name: Chocolatey を使用して継続的配置を設定する
               href: automation-dsc-cd-chocolatey.md
             - name: Azure Monitor ログとの統合
               href: automation-dsc-diagnostics.md
-            - name: DSC による問題のトラブルシューティング
-              href: troubleshoot/desired-state-configuration.md
-            - name: Azure DSC 拡張機能のバージョン履歴
+            - name: State Configuration 拡張機能のバージョン履歴を使用する
               href: automation-dsc-extension-history.md
+            - name: State Configuration の問題のトラブルシューティング
+              href: troubleshoot/desired-state-configuration.md
         - name: 変更履歴とインベントリ
           items:
             - name: 概要
               href: change-tracking.md
             - name: リンクされた Log Analytics ワークスペースでサポートされるリージョン
               href: how-to/region-mappings.md
-            - name: Change Tracking と Inventory の有効化
+            - name: 有効化
               items:
-                - name: Azure Portal の使用
-                  href: automation-onboard-solutions-from-browse.md
-                - name: Azure VM から
-                  href: automation-onboard-solutions-from-vm.md
-                - name: Automation アカウントから
-                  href: automation-onboard-solutions-from-automation-account.md
-                - name: Automation Runbook から
-                  href: automation-onboard-solutions.md
+                - name: Azure portal で変更履歴とインベントリを有効にする
+                  href: automation-enable-changes-from-browse.md
+                - name: Azure VM で変更履歴とインベントリを有効にする
+                  href: automation-enable-changes-from-vm.md
+                - name: Automation アカウントで変更履歴とインベントリを有効にする
+                  href: automation-enable-changes-from-auto-acct.md
+                - name: Runbook で変更履歴とインベントリを有効にする
+                  href: automation-enable-changes-from-runbook.md
             - name: 変更の追跡とインベントリを管理する
               href: change-tracking-file-contents.md
             - name: VM からのインベントリ収集を管理する
               href: automation-vm-inventory.md
+            - name: スコープ構成を使用する
+              href: automation-scope-configurations-change-tracking.md
+            - name: Automation アカウントからワークスペースのリンクを解除する
+              href: automation-unlink-workspace-change-tracking.md
+            - name: 変更履歴とインベントリから VM を削除する
+              href: automation-remove-vms-from-change-tracking.md
             - name: トラブルシューティング
               items:
-                - name: オンボード
+                - name: 機能のデプロイに関する問題のトラブルシューティング
                   href: troubleshoot/onboarding.md
-                - name: 変更履歴とインベントリの使用
+                - name: Change Tracking と Inventory に関する問題のトラブルシューティング
                   href: troubleshoot/change-tracking.md
     - name: 勤務時間外に VM を起動/停止する
       items:
@@ -199,13 +205,13 @@
           href: automation-solution-vm-management.md
         - name: リンクされた Log Analytics ワークスペースでサポートされるリージョン
           href: how-to/region-mappings.md
-        - name: 有効化
+        - name: Start/Stop VMs during off-hours を有効にする
           href: automation-solution-vm-management-enable.md
-        - name: 構成
+        - name: Start/Stop VMs during off-hours を構成する
           href: automation-solution-vm-management-config.md
-        - name: ログ クエリによるデータの分析
+        - name: Start/Stop VMs during off-hours からログを照会する
           href: automation-solution-vm-management-logs.md
-        - name: トラブルシューティング
+        - name: Start/Stop VMs during off-hours のトラブルシューティング
           href: troubleshoot/start-stop-vm.md
     - name: 更新管理
       items:
@@ -215,21 +221,23 @@
           href: how-to/region-mappings.md
         - name: 有効化
           items:
-            - name: Resource Manager テンプレートを使用する
+            - name: Azure Resource Manager テンプレートを使用して Update Management を有効にする
               href: automation-update-management-deploy-template.md
-            - name: Azure Portal の使用
+            - name: Azure portal から Update Management を有効にする
               href: automation-onboard-solutions-from-browse.md
-            - name: Azure VM から
+            - name: Azure VM から Update Management を有効にする
               href: automation-onboard-solutions-from-vm.md
-            - name: Automation アカウントから
+            - name: Automation アカウントから Update Management を有効にする
               href: automation-onboard-solutions-from-automation-account.md
+            - name: Runbook から Update Management を有効にする
+              href: automation-onboard-solutions.md
         - name: Azure VM の更新プログラムの管理
           href: automation-tutorial-update-management.md
         - name: 複数の VM の更新プログラム管理
           href: manage-update-multi.md
         - name: 更新の評価を表示する
           href: automation-view-update-assessments.md
-        - name: 事前および事後スクリプトを管理する
+        - name: 事前スクリプトと事後スクリプトを管理する
           href: pre-post-scripts.md
         - name: Configuration Manager との統合
           href: updatemgmt-mecmintegration.md
@@ -239,15 +247,21 @@
           href: automation-update-management-groups.md
         - name: Update Management ログにクエリを実行する
           href: automation-update-management-query-logs.md
+        - name: スコープ構成を使用する
+          href: automation-scope-configurations-update-management.md
+        - name: Automation アカウントからワークスペースのリンクを解除する
+          href: automation-unlink-workspace-update-management.md
+        - name: Update Management から VM を削除する
+          href: automation-remove-vms-from-update-management.md
         - name: トラブルシューティング
           items:
-            - name: オンボード
+            - name: 機能のデプロイに関する問題のトラブルシューティング
               href: troubleshoot/onboarding.md
-            - name: Update Management の使用
+            - name: Update Management に関する問題のトラブルシューティング
               href: troubleshoot/update-management.md
-            - name: Windows Update エージェントの問題に関するトラブルシューティング
+            - name: Windows Update エージェントの問題をトラブルシューティングする
               href: troubleshoot/update-agent-issues.md
-            - name: Linux Update エージェントの問題に関するトラブルシューティング
+            - name: Linux Update エージェントに関する問題のトラブルシューティング
               href: troubleshoot/update-agent-issues-linux.md
     - name: コンポーネント間のシナリオ
       items:
@@ -269,7 +283,9 @@
           href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
 - name: リファレンス
   items:
-    - name: Azure PowerShell
+    - name: Azure PowerShell Az
+      href: /powershell/module/az.automation
+    - name: Azure PowerShell AzureRM
       href: /powershell/module/azurerm.automation
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation

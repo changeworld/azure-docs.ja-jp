@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a79e6fb2be717b5ecee243b26824039630e1a416
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 31533eefbfae63e0eb4049d2eabaf6b853340636
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744291"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590249"
 ---
-# <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics - ワークロード管理ポータル監視 (プレビュー)
+# <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics - ワークロード管理ポータル監視
 
 この記事では、[ワークロード グループ](sql-data-warehouse-workload-isolation.md#workload-groups)のリソース使用率とクエリ アクティビティを監視する方法について説明します。
 Azure メトリックス エクスプローラーの構成方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください。  システム リソースの消費を監視する方法の詳細については、Azure Synapse Analytics 監視に関するドキュメントの「[リソース使用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)」セクションを参照してください。

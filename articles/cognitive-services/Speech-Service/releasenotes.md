@@ -11,14 +11,55 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: c7caa6c2b329d7d24d6c9a3008d884b396fc99ce
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607416"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584911"
 ---
 # <a name="release-notes"></a>リリース ノート
+## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020-May リリース
+
+**SPX Azure Speech Services コマンド コンソール**
+- **SPX** は、コマンド ラインから認識、合成、翻訳、バッチ文字起こし、およびカスタム音声管理を実行するための新しいコマンド ライン ツールです。 これを使用して、Azure 音声サービスをテストしたり、実行する必要がある音声サービス タスクをスクリプト化したりできます。 ツールをダウンロードし、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)のドキュメントを参照してください。
+
+**新機能**
+
+- **Go**: [音声認識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go)と[カスタム音声アシスタント](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)のための新しい Go 言語サポート。 開発環境を[ここで](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-go)セットアップします。 サンプル コードについては、以下の「サンプル」セクションを参照してください。 
+- **JavaScript**:音声合成のためのブラウザー サポートを追加しました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file?pivots=programming-language-JavaScript)のドキュメントを参照してください。
+- **C++、C#、Java**:Windows、Android、Linux、および iOS プラットフォームでサポートされる、新しい KeywordRecognizer オブジェクトと API。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-overview)のドキュメントを参照してください。 サンプル コードについては、以下の「サンプル」セクションを参照してください。 
+- **Java**: 翻訳サポートを含むマルチデバイスの会話機能を追加しました。 [こちら](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription)の参照ドキュメントを参照してください。
+
+**強化および最適化**
+
+- **JavaScript**:ブラウザー マイクの実装を最適化し、音声認識の精度が向上しています。
+- **Java**: SWIG なしで直接 JNI 実装を使用するバインディングをリファクターしました。 Windows、Android、Linux、Mac で使用されるすべての Java パッケージのバインディング サイズが 10 分の 1 に縮小され、Speech SDK Java 実装のさらなる開発が容易になります。
+- **Linux**:最新の RHEL 7 固有の記載を含むようにサポート [ドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)を更新しました。
+- サービス エラーやネットワーク エラーが発生した場合に接続を複数回試行するための接続ロジックを改善しました。
+- [portal.azure.com](https://portal.azure.com) の音声機能のクイックスタート ページを更新しました。開発者は Azure の音声体験の次のステップに進むことができます。
+
+**バグの修正**
+
+- **C#、Java**:Linux ARM への SDK ライブラリの読み込みに関する[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587)を修正しました (32 ビットと 64 ビットの両方)。
+- **C#** : TranslationRecognizer、IntentRecognizer、および Connection オブジェクトのネイティブ ハンドルの明示的な破棄を修正しました。
+- **C#** : ConversationTranscriber オブジェクトのオーディオ入力の有効期間の管理を修正しました。
+- 単純な語句から意図を認識するときに IntentRecognizer 結果の理由が適切に設定されない問題を修正しました。
+- SpeechRecognitionEventArgs 結果のオフセットが正しく設定されない問題を修正しました。
+- WebSocket 接続を開く前に SDK がネットワーク メッセージを送信しようとする際の競合状態を修正しました。 参加者の追加中に TranslationRecognizer で再現されていました。
+- キーワード認識エンジンのメモリ リークを修正しました。
+
+**サンプル**
+
+- **Go**: [音声認識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go)と[カスタム音声アシスタント](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)のクイックスタートを追加しました。 サンプル コードは[こちら](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)を参照してください。 
+- **JavaScript**:[音声合成](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、[翻訳](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)、および[意図認識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)のクイックスタートを追加しました。
+- [C\#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) および [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) のキーワード認識サンプル。  
+
+**COVID-19 の影響によるテストの短縮:**
+
+過去数週間にわたってリモートにて作業を行っているため、通常ならば実施するはずの手動による検証テストを行うことができませんでした。 この例としては、Linux、iOS、macOS でのマイク入力とスピーカー出力のテストなどがあります。 これらのプラットフォームにおいては、問題発生の可能性が想定される変更はいっさい行っていません。また、自動テストはすべて成功しました。 しかし、もし仮に何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) にてお知らせください。<br>
+皆様の健康をお祈りします！
+
 ## <a name="speech-sdk-1110-2020-march-release"></a>Speech SDK 1.11.0:2020年 3月 リリース
 
 **新機能**
@@ -105,7 +146,7 @@ ms.locfileid: "80607416"
 - 上記の「重大な変更」にある `OpenSSL` の更新情報を参照してください。 Linux と Java の断続的なクラッシュとパフォーマンスの問題 (高負荷でのロックの競合) の両方を修正しました。 
 - Java:コンカレンシーの高いシナリオでのオブジェクト クロージャが改善されました。
 - NuGet パッケージを再構築しました。 lib フォルダーの下にある `Microsoft.CognitiveServices.Speech.core.dll` と `Microsoft.CognitiveServices.Speech.extension.kws.dll` の 3 つのコピーを削除し、NuGet パッケージを小さく、速くダウンロードできるようにし、いくつかの C++ ネイティブ アプリをコンパイルするために必要なヘッダーを追加しました。
-- [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)のクイック スタート サンプルを修正しました。 これらは、Linux、MacOS、Windows で「microphone not found」(マイクが見つかりません) という例外を表示せずに終了していました。
+- [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)のクイック スタート サンプルを修正しました。 これらは、Linux、macOS、Windows で「microphone not found」(マイクが見つかりません) という例外を表示せずに終了していました。
 - [こちらのサンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)のような特定のコード パスでの長い音声認識結果による SDK のクラッシュを修正しました。
 - [こちらのお客様の問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)に対処するために、Azure Web アプリ環境の SDK デプロイ エラーを修正しました。
 - [こちらのお客様の問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433)に対処するために、複数の `<voice>` タグまたは `<audio>` タグを使用したときの TTS エラーを修正しました。 

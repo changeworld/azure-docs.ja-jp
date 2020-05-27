@@ -388,6 +388,8 @@
               href: service-updates-how-to.md
             - name: コンテナーの削除
               href: delete-vault.md
+    - name: 近接配置グループの Site Recovery サポート
+      href: how-to-enable-replication-proximity-placement-groups.md
     - name: アプリのディザスター リカバリー
       items:
         - name: オンプレミス アプリのディザスター リカバリーについて
@@ -514,8 +516,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
-    - name: フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
     - name: ラーニング パス
       href: /learn/azure/
     - name: 価格

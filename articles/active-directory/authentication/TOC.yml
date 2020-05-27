@@ -138,6 +138,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: SMS ベースの認証の使用 (プレビュー)
       href: howto-authentication-sms-signin.md
+    - name: メール アドレスのサインインを使用する (プレビュー)
+      href: howto-authentication-use-email-signin.md
     - name: Azure AD スマート ロックアウト
       href: howto-password-smart-lockout.md
     - name: 証明書ベースの認証
@@ -223,8 +225,8 @@
   items:
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
