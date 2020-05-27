@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b9ce5110a03ec4d67b3e8af6d9b18e5ad6836af
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8c921b05dd98c55c8e7db8beac93d1b724de1cd7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426675"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869304"
 ---
 # <a name="using-transactions-in-sql-pool"></a>SQL プールでのトランザクションの使用
 
@@ -206,4 +206,4 @@ SQL プールには、トランザクションに関する他の制限事項が�
 
 ## <a name="next-steps"></a>次のステップ
 
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [SQL プール](best-practices-sql-pool.md)および [SQL オンデマンド (プレビュー)](on-demand-workspace-overview.md) 向けのベスト プラクティス ガイドも用意されています。
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [SQL プール](best-practices-sql-pool.md)および [SQL オンデマンド (プレビュー)](best-practices-sql-on-demand.md) 向けのベスト プラクティス ガイドも用意されています。
