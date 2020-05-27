@@ -37,11 +37,11 @@ ms.locfileid: "80297171"
 
     [![新しい Postman リダイレクト URI を構成する](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. 次に、**リダイレクト URI** を `https://www.getpostman.com/oauth2/callback` に追加します。
+1. 次に、**[Redirect URI]\(リダイレクト URI\)** を `https://www.getpostman.com/oauth2/callback` に追加します。
 
-1. **[暗黙の付与]** 、 **[アクセス トークン]** チェック ボックスの順に選択し、OAuth 2.0 の暗黙的な許可のフローを使用できるようにします。 **[構成]** 、 **[保存]** の順に選択します。
+1. **[Implicit grant]\(暗黙の付与\)** 、 **[Access tokens]\(アクセス トークン\)** チェック ボックスの順に選択し、OAuth 2.0 の暗黙的な許可のフローを使用できるようにします。 **[Configure]\(構成\)** 、 **[Save]\(保存\)** の順に選択します。
 
-1. Azure Active Directory アプリの **[クライアント ID]** をコピーします。
+1. Azure Active Directory アプリの **[Client ID]\(クライアント ID\)** をコピーします。
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2.0 トークンを取得する
 
@@ -49,7 +49,7 @@ ms.locfileid: "80297171"
 
 Postman をセットアップし、Azure Active Directory トークンを取得するように構成します。 その後、取得したトークンを使用し、Azure Digital Twins に対して認証済みの HTTP 要求を行います。
 
-1. **[承認 URL]** が正しいことを検証します。 次のような形式になっている必要があります。
+1. **[Authorization URL]\(承認 URL\)** が正しいことを検証します。 次のような形式になっている必要があります。
 
     ```plaintext
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
@@ -61,17 +61,17 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
 
 1. [www.getpostman.com](https://www.getpostman.com/) に移動してアプリをダウンロードします。
 
-1. GET 要求を作成します。 **[承認]** タブを選択し、[OAuth 2.0] を選択して **[Get New Access Token]\(新しいアクセス トークンの取得\)** を選択します。
+1. GET 要求を作成します。 **[Authorization]\(承認\)** タブを選択し、[OAuth 2.0] を選択して **[Get New Access Token]\(新しいアクセス トークンの取得\)** を選択します。
 
     | フィールド  | 値 |
     |---------|---------|
-    | 付与タイプ | `Implicit` |
-    | コールバック URL | `https://www.getpostman.com/oauth2/callback` |
-    | 認証 URL | **ステップ 1** の**承認 URL** を使用します |
-    | クライアント ID | 前のセクションで作成または再利用した Azure Active Directory アプリの**アプリケーション ID** を使用します |
+    | Grant Type | `Implicit` |
+    | Callback URL | `https://www.getpostman.com/oauth2/callback` |
+    | Auth URL | **ステップ 1** の **[Authorization URL]\(承認 URL\)** を使用します |
+    | Client ID | 前のセクションで作成または再利用した Azure Active Directory アプリの **[Application ID]\(アプリのアプリケーション ID\)** を使用します |
     | Scope | 空白 |
     | State | 空白 |
-    | クライアント認証 | `Send as Basic Auth header` |
+    | Client Authentication | `Send as Basic Auth header` |
 
 1. クライアントは次のようになります。
 
@@ -85,14 +85,14 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
 
 前の手順を完了したら、認証済み HTTP マルチパート POST 要求を行うように Postman を設定します。
 
-1. **[ヘッダー]** タブで、値が `multipart/mixed` の HTTP 要求ヘッダー キー **[Content-Type]** を追加します。
+1. **[Headers]\(ヘッダー\)** タブで、値が `multipart/mixed` の HTTP 要求ヘッダー キー **[Content-Type]** を追加します。
 
    [![コンテンツ タイプ multipart/mixed を指定する](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
 
 1. テキストではないデータをシリアル化し、ファイルを生成します。 JSON データは JSON ファイルとして保存されます。
 1. **[Body]\(本文\)** タブで、`form-data` を選択します。 
-1. **キー**名を割り当て、`File` を選択することによって、各ファイルを追加します。
-1. 次に、 **[ファイルの選択]** ボタンで各ファイルを選択します。
+1. **[key]\(キー\)** 名を割り当て、`File` を選択することによって、各ファイルを追加します。
+1. 次に、 **[Choose File]\(ファイルの選択\)** ボタンで各ファイルを選択します。
 
    [![Postman クライアント フォームの本文の例](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
 
