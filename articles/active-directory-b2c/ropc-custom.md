@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529186"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638575"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
@@ -246,9 +246,9 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 
 お気に入りの API 開発アプリケーションを使用して API 呼び出しを生成し、応答を確認して、ポリシーをデバッグします。 POST 要求の本文として以下の情報を使用し、次の例のような呼び出しを作成します。
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
+- `<tenant-name>`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
 | Key | 値 |
@@ -268,8 +268,8 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 実際の POST 要求は次の例のようになります。
 
 ```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -291,9 +291,9 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 ここで示すような POST 呼び出しを作成します。 要求の本文として、次の表の情報を使用します。
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
+- `<tenant-name>`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
 | Key | 値 |

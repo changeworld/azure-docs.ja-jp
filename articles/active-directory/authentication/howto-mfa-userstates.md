@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8ceaf13324864c7ec3df731c3e710815b0eba9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309783"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639622"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>ユーザーごとの Azure Multi-Factor Authentication を有効にしてサインイン イベントのセキュリティを確保する
 
@@ -185,4 +185,4 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートなどの Azure Multi-Factor Authentication 設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。 Azure Multi-Factor Authentication のユーザー設定を管理するには、「[Azure Multi-Factor Authentication によるユーザー設定の管理](howto-mfa-userdevicesettings.md)」を参照してください。
 
-MFA の実行を求めるメッセージがユーザーに表示された理由、または表示されない理由について理解するには、[Azure Multi-Factor Authentication レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)に関する記事を参照してください。
+MFA の実行を求めるメッセージがユーザーに表示された理由、または表示されない理由について理解するには、[Azure Multi-Factor Authentication レポート](howto-mfa-reporting.md)に関する記事を参照してください。

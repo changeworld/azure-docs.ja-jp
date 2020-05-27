@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4113328a5de02c36b7285c837bd5314d11e526b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690379"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641597"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件付きアクセスに関する分析情報とレポート
 
@@ -36,9 +36,6 @@ ms.locfileid: "82690379"
 
 ユーザーには、次のいずれかの Log Analytics ワークスペース ロールも必要です。  
 
-- Reader 
-- 監視閲覧者 
-- Log Analytics 閲覧者 
 - Contributor  
 - 所有者 
 
