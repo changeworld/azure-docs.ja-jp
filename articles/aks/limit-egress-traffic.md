@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でエグレス トラフィック�
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 194e799daf107220c28404001d223e521dceeb3f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207175"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870899"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -147,8 +147,8 @@ Azure Dev Spaces が有効になっている AKS クラスターの場合、次�
 | FQDN                                    | Port      | 用途      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS: 443 | このアドレスは、linux alpine やその他の Azure Dev Spaces イメージをプルするために使用されます。 |
-| gcr.io | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
-| storage.googleapis.com | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
+| gcr.io | HTTPS: 443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
+| storage.googleapis.com | HTTPS: 443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
 | azds-\<guid\>.\<location\>.azds.io | HTTPS: 443 | コントローラーのための Azure Dev Spaces のバックエンド サービスと通信します。 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" にあります |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Azure Policy (パブリック プレビュー) が有効な AKS クラスターに必要なアドレスとポート

@@ -7,38 +7,18 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 820005bca008ea3bdb59659c815da3ec36beb0d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a20ec1039dc8fc477410891495762395b408f2d6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241047"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870569"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>ご利用のモバイル アプリに認証を追加し、ユーザー ID を管理する
 
 ご利用のアプリケーション全体でのユーザーとその行動を把握することにより、開発者はユーザーに合わせたエクスペリエンスを作成してユーザーの関心を高めることができます。 組織内のユーザー向けにコラボレーション アプリケーションを構築しているアプリケーション開発者であっても、次のソーシャル ネットワーク プラットフォームを作成している場合であっても、ユーザーを認証し、ユーザー ID を管理する方法が必要になります。 ID 管理サービスは、モバイル バックエンド サービスの最も重要な機能の 1 つです。
 
 次のサービスを使用することで、ご利用のモバイル アプリ内でユーザー認証を有効にすることができます。
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Auth](/appcenter/auth/) はクラウドベースの ID 管理サービスです。開発者はこれを使用してユーザーを認証し、ユーザー ID を管理することができます。 App Center Auth は、Visual Studio App Center のその他の部分とも統合されます。 開発者は、ユーザー ID を使用して、他のサービスの[ユーザー データを表示したり](/appcenter/data/index)、個々のデバイスではなく[ユーザーにプッシュ通知を送信したり](/appcenter/push/push-to-user#setting-user-identity)することができます。 
-
-**主な機能**
-- Azure Active Directory B2C (Azure AD B2C) を利用。 
-    - エンタープライズ グレード。
-    - 高可用性。
-    - セキュリティで保護されたグローバルサービス。
-- ご自分が使用している ID を持ち込み、Auth0 や Firebase などのその他の一般的な ID およびアクセス管理プロバイダーを使用するオプション。
-- Azure Active Directory のサポート。
-    - 既存の Azure AD テナントに接続します。 
-    - 会社のドメインに対する認証を有効にします。
-    - 機密データへのアクセスを管理します。
-- シンプルなユーザー エクスペリエンスと Microsoft 認証ライブラリを Visual Studio App Center SDK. でラップすることによる魔法のような SDK エクスペリエンス。
-- プラットフォームのサポート。iOS、Android、Xamarin、React Native が対象です。
-
-**参照**
-- [Visual Studio App Center にサインアップする](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
-- [App Center Auth を使ってみる](/appcenter/auth/)
 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C
 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) は企業-消費者間 (B2C) の ID 管理サービスです。開発者はこれを使用して、自分の顧客を認証することができます。 このホワイトラベル サービスを使用することで、開発者はユーザーが自分の Web、デスクトップ、モバイル、またはシングルページ アプリケーションと安全に作用する方法をカスタマイズしたり制御したりできます。 Azure AD B2C を使用して、ユーザーは、サインアップ、サインイン、パスワードのリセット、およびプロファイルの編集を行うことができます。 Azure AD B2C では、OpenID Connect プロトコルと OAuth 2.0 プロトコルの一形式が実装されます。 
