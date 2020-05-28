@@ -762,8 +762,12 @@
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: Apache Hive と Apache Pig で Python を使用する
               href: ./hadoop/python-udf-hdinsight.md
-            - name: Apache Hive と Apache Spark
+            - name: Apache Spark および Apache Hive との HWC の統合
               href: ./interactive-query/apache-hive-warehouse-connector.md
+            - name: HWC と Apache Spark の操作
+              href: ./interactive-query/apache-hive-warehouse-connector-operations.md
+            - name: HWC と Apache Zeppelin の統合
+              href: ./interactive-query/apache-hive-warehouse-connector-zeppelin.md
             - name: Apache Hive と Hadoop
               href: ./hadoop/hdinsight-use-hive.md
             - name: Apache Hive ビューを使用する

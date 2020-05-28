@@ -113,8 +113,6 @@
           href: how-to/ingress-https-nginx.md
         - name: 開発用コンピューターを AKS クラスターに接続する (プレビュー)
           href: how-to/connect.md
-        - name: Helm 3 を使用するように Azure Dev Spaces クラスターを構成する (プレビュー)
-          href: how-to/helm-3.md
     - name: トラブルシューティング
       href: troubleshooting.md
     - name: よく寄せられる質問

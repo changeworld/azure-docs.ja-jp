@@ -34,7 +34,7 @@
   items:
     - name: Security Center
       href: 'https://azure.microsoft.com/services/security-center/'
-    - name: SQL DB Advisor
+    - name: '[SQL Database Advisor]'
       href: 'https://azure.microsoft.com/documentation/articles/sql-database-advisor/'
     - name: App Service
       href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'
@@ -58,7 +58,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=advisor'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=advisor'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure+advisor'
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=advisor'

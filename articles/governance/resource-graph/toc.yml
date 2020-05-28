@@ -17,6 +17,9 @@
     - name: 最初のクエリを実行する - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+    - name: 最初のクエリを実行する - Python
+      displayName: 'library, azure-mgmt, cli'
+      href: first-query-python.md
     - name: 共有クエリをデプロイする - ARM テンプレート
       displayName: 'resource manager, queries'
       href: shared-query-template.md
@@ -87,13 +90,13 @@
       href: ./reference/supported-tables-resources.md
 - name: リソース
   items:
+    - name: GitHub - ガバナンスのサンプル
+      href: 'https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph'
+    - name: ガバナンスに関する YouTube チャンネル
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: GitHub のサンプル リポジトリ
-      href: 'https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph'
     - name: UserVoice
       href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345061'
-    - name: ガバナンスに関する YouTube チャンネル
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

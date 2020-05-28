@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117109"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683414"
 ---
 | リソース | Basic | Standard | Premium |
 |---|---|---|---|
@@ -26,9 +26,9 @@ ms.locfileid: "79117109"
 | Webhooks | 2 | 10 | 500 |
 | geo レプリケーション | 該当なし | 該当なし | [サポートされています][geo-replication] |
 | コンテンツの信頼 | 該当なし | 該当なし | [サポートされています][content-trust] |
-| 仮想ネットワーク アクセス | 該当なし | 該当なし | [プレビュー][vnet] |
-| プライベート リンクの統合 | 該当なし | 該当なし | [プレビュー][plink] |
-| カスタマー マネージド キー | 該当なし | 該当なし | [プレビュー][cmk] |
+| プライベート エンドポイントがあるプライベート リンク | 該当なし | 該当なし | [サポートされています][plink] |
+| サービス エンドポイントの VNet アクセス | 該当なし | 該当なし | [プレビュー][vnet] |
+| カスタマー マネージド キー | 該当なし | 該当なし | [サポートされています][cmk] |
 | リポジトリがスコープ指定されたアクセス許可 | 該当なし | 該当なし | [プレビュー][token]|
 | &bull; トークン | 該当なし | 該当なし | 20,000 |
 | &bull; シェイプ マップ | 該当なし | 該当なし | 20,000 |
