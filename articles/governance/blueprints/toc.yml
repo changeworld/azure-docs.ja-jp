@@ -284,13 +284,15 @@
   items:
     - name: GitHub - Azure Blueprints サンプル
       href: 'https://github.com/Azure/azure-blueprints'
+    - name: Azure Blueprints 用の Microsoft Q&A
+      href: /answers/topics/azure-blueprints.html
+    - name: ガバナンスに関する YouTube チャンネル
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+    - name: Azure Friday - Azure Blueprints の概要
+      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance'
-    - name: ガバナンスに関する YouTube チャンネル
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: Azure Friday - Azure Blueprints の概要
-      href: 'https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints'
+      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345058'

@@ -95,6 +95,8 @@
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
 - name: リソース
   items:
+    - name: Azure Lighthouse 用の Microsoft Q&A
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-lighthouse.html'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール

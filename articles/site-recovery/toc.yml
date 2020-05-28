@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: コンテナーの削除
               href: delete-vault.md
-    - name: 近接配置グループの Site Recovery サポート
+    - name: 近接配置グループでの Site Recovery
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: アプリのディザスター リカバリー
       items:

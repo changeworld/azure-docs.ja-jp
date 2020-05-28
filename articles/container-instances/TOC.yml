@@ -52,8 +52,12 @@
       href: container-instances-region-availability.md
     - name: オーケストレーターとの関係
       href: container-instances-orchestrator-relationship.md
-    - name: セキュリティに関する考慮事項
-      href: container-instances-image-security.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: セキュリティに関する考慮事項
+          href: container-instances-image-security.md
     - name: 仮想ネットワーク
       href: container-instances-virtual-network-concepts.md
 - name: 操作方法ガイド

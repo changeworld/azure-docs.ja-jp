@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ba21dfc900145ceeacab6c363e5de84b830282b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82109627"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696522"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -97,13 +97,6 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 [スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)をサブスクライブすると、VM に影響する可能性のある将来のメンテナンス イベントについて VM に通知されます。 スケジュール化されたイベントを有効にすると、仮想マシンでメンテナンス アクティビティが実行されるまでの時間が最小限になります。 たとえば、VM に影響を与える可能性があるホスト OS の更新プログラムは、影響と、アクションが何も行われない場合にメンテナンスが実行される日時が指定されたイベントとして、キューに登録されます。 スケジュール化されたイベントは、VM に影響を与える可能性がある差し迫ったハードウェア障害が Azure で検出されたときも、キューに登録されます。これにより、復旧をいつ実行するかを決定できます。 お客様は、イベントを使用して、状態の保存やセカンダリへのフェールオーバーなどのタスクを、メンテナンスの前に実行できます。 メンテナンス イベントを適切に処理するロジックを完了した後、未処理のスケジュール化されたイベントを承認して、プラットフォームによるメンテナンスを続行させることができます。
 
-## <a name="configure-each-application-tier-into-separate-availability-zones-or-availability-sets"></a>各アプリケーション層に対して別々の可用性ゾーンまたは可用性セットを構成する
-仮想マシンがすべてほぼ同一で、アプリケーションに対する役割が同じである場合は、アプリケーションの各層に対して別々の可用性ゾーンまたは可用性セットを構成することをお勧めします。  同じ可用性ゾーンまたはセットの中に 2 つの異なる層を配置した場合、同じアプリケーション層内にあるすべての仮想マシンを一度に再起動できます。 各層に対する別々の可用性ゾーンまたはセット内に少なくとも 2 つの仮想マシンを構成することで、層あたり 1 つ以上の仮想マシンの可用性が確保されます。
-
-たとえば、IIS、Apache、および Nginx を実行しているアプリケーションのフロントエンド内のすべての仮想マシンを、1 つの可用性ゾーンまたはセットに配置します。 このとき、フロントエンド仮想マシンのみが同じ可用性ゾーンまたはセット内に配置されるようにします。 同様に、別の可用性ゾーンまたはセットには、レプリケートされた SQL Server 仮想マシンまたは MySQL 仮想マシンのように、データ層の仮想マシンのみが配置されるようにします。
-
-<!--Image reference-->
-   ![アプリケーション層](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>ロード バランサーと可用性ゾーンまたはセットを結合する
 [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) と可用性ゾーンまたはセットを結合することで、アプリケーションの回復性を最大化できます。 Azure Load Balanceは、複数の仮想マシンにトラフィックを振り分けます。 当社の標準層の仮想マシンには Azure Load Balanceが含まれています。 すべての仮想マシン層に Azure Load Balancer が含まれているわけではありません。 仮想マシンの負荷分散の詳細については、「 [仮想マシンの負荷分散](../articles/virtual-machines/virtual-machines-linux-load-balance.md)」を参照してください。
@@ -115,7 +108,6 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 <!-- Link references -->
 [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-zones-or-availability-sets
 [ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [可用性セット内の VM にマネージド ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set

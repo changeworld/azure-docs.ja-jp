@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/01/2019
-  ms.openlocfilehash: e98ffdd41547b9c1f7cbfeebfd8dad798c382fc8
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 05/20/2020
+  ms.openlocfilehash: 31363296d07c9e5181b4c6ab2781a455a4799dbc
+  ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "72821366"
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "83874113"
 landingContent:
 - title: Azure Resource Graph について
   linkLists:
@@ -41,6 +41,8 @@ landingContent:
       url: ./first-query-powershell.md
     - text: 初めてのクエリ (CLI)
       url: ./first-query-azurecli.md
+    - text: 初めてのクエリ (Python)
+      url: ./first-query-python.md
     - text: クエリの共有 (ポータル)
       url: ./tutorials/create-share-query.md
   - linkListType: concept
@@ -97,7 +99,7 @@ landingContent:
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
     - text: Java
       url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
-    - text: ノード
+    - text: Node
       url: /javascript/api/@azure/arm-resourcegraph
     - text: Python
       url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
