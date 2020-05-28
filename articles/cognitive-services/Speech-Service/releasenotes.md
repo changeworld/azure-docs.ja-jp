@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c7caa6c2b329d7d24d6c9a3008d884b396fc99ce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ecd1c650456bf506f22366ca1d59a3634751b9e0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584911"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800235"
 ---
 # <a name="release-notes"></a>リリース ノート
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020-May リリース
 
-**SPX Azure Speech Services コマンド コンソール**
+**The Azure Speech CLI**
 - **SPX** は、コマンド ラインから認識、合成、翻訳、バッチ文字起こし、およびカスタム音声管理を実行するための新しいコマンド ライン ツールです。 これを使用して、Azure 音声サービスをテストしたり、実行する必要がある音声サービス タスクをスクリプト化したりできます。 ツールをダウンロードし、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)のドキュメントを参照してください。
 
 **新機能**
