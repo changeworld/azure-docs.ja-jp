@@ -29,7 +29,7 @@
           href: tutorial-run-ml-model-on-sql-edge.md
 - name: 方法
   items:
-    - name: DAC パッケージと Stream Analytics ジョブ
+    - name: Stream Analytics ジョブをデプロイする
       href: stream-analytics.md
     - name: レプリケーションの設定
       href: configure-replication.md

@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/13/2020
+ms.date: 05/20/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6cd883289513091ff1a57a130b12e25e012c1160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72afa8ebea4cb9bf07cb3ce56583cbdf1849be9e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334600"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778202"
 ---
-次の表では、Azure 汎用 v1、v2、BLOB ストレージ、ブロック Blob ストレージ、および Data Lake Gen2 対応のストレージ アカウントの既定の制限について説明します。 "*受信*" 制限は、ストレージ アカウントに送信されるすべてのデータを指します。 *送信*制限は、ストレージ アカウントから受信するすべてのデータを指します。
+次の表では、Azure の汎用 v1、v2、BLOB ストレージ、ブロック BLOB ストレージのアカウントに対する既定の制限について説明します。 "*受信*" 制限は、ストレージ アカウントに送信されるすべてのデータを指します。 *送信*制限は、ストレージ アカウントから受信するすべてのデータを指します。
 
 | リソース | 制限 |
 | --- | --- |
-| Standard、Premium、Data Lake Gen2 対応のストレージ アカウントを含むサブスクリプションあたりの各リージョンのストレージ アカウント数。<sup>3</sup> | 250 |
+| サブスクリプションあたりの各リージョンのストレージ アカウント数 (Standard および Premium のストレージ アカウントを含む)。| 250 |
 | ストレージ アカウントの最大容量 | 5 PiB <sup>1</sup>|
 | ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数 | 制限なし |
 | ストレージ アカウントあたりの最大要求レート<sup>1</sup> | 1 秒あたり 20,000 要求 |
@@ -37,7 +37,7 @@ ms.locfileid: "80334600"
 
 [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
-<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) は、Azure Blob Storage をベースに構築された、ビッグ データ分析専用の一連の機能です。 Azure Storage と BLOB ストレージの制限は、Data Lake Storage Gen2 に適用されます。
+<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) は、Azure Blob Storage をベースに構築された、ビッグ データ分析専用の一連の機能です。
 
 > [!NOTE]
 > Microsoft では、ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または Azure BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。その際にダウンタイムは発生せず、データをコピーする必要はありません。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](../articles/storage/common/storage-account-upgrade.md)」を参照してください。

@@ -285,7 +285,7 @@
     - name: GitHub - Azure Blueprints サンプル
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Azure Blueprints 用の Microsoft Q&A
-      href: /answers/topics/azure-blueprints.html
+      href: /answers/topics/azure-blueprints.html.html
     - name: ガバナンスに関する YouTube チャンネル
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday - Azure Blueprints の概要
