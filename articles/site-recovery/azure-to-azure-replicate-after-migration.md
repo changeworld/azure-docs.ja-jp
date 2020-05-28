@@ -76,7 +76,7 @@ Windows のエージェントのインストールについては、[こちら](
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux の場合は、root ユーザーとしてサインインします。 端末で、 **/user/local/ASR** に移動して、次のコマンドを実行します。
+    - Linux の場合は、root ユーザーとしてサインインします。 ターミナルで、 **/user/local/ASR** に移動して、次のコマンドを実行します。
         ```
         ./uninstall.sh -Y
         ```
