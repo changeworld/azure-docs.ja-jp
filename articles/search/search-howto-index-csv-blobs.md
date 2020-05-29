@@ -84,6 +84,6 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure コグニティブ検索の品質向上にご協力ください
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Cognitive Search の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice](https://feedback.azure.com/forums/263029-azure-search/) までお寄せください。
 
