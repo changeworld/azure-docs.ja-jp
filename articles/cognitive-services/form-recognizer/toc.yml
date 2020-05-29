@@ -42,6 +42,8 @@
   items:
     - name: Logic Apps で Form Recognizer を使用する
       href: tutorial-form-recognizer-with-logic-apps.md
+    - name: Cognitive Search で Form Recognizer を使用する
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成
