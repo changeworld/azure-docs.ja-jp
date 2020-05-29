@@ -25,7 +25,7 @@ ms.locfileid: "80632762"
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトを複製する
+> * サンプル プロジェクトをクローンする
 > * Spark を実行する
 > * Kafka 用 Event Hubs から読み取る
 > * Kafka 用 Event Hubs に書き込む
@@ -45,8 +45,8 @@ ms.locfileid: "80632762"
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 
 
-## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
-Azure Event Hubs リポジトリを複製し、`tutorials/spark` サブフォルダーに移動します。
+## <a name="clone-the-example-project"></a>サンプル プロジェクトをクローンする
+Azure Event Hubs リポジトリをクローンし、`tutorials/spark` サブフォルダーに移動します。
 
 ```bash
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
