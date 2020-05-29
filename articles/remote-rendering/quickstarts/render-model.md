@@ -39,7 +39,7 @@ Azure Remote Rendering サービスにアクセスするには、まず[アカ�
     * **UWP** - ユニバーサル Windows プラットフォーム Build Support
     * **IL2CPP** - Windows Build Support (IL2CPP)
 
-## <a name="clone-the-sample-app"></a>サンプル アプリの複製
+## <a name="clone-the-sample-app"></a>サンプル アプリのクローン
 
 コマンド プロンプトを開き (Windows の [スタート] メニューで「`cmd`」と入力します)、ARR サンプル プロジェクトを格納するディレクトリに移動します。
 
