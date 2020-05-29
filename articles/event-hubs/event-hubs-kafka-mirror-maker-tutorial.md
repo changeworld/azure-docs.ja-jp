@@ -29,7 +29,7 @@ ms.locfileid: "80632781"
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトを複製する
+> * サンプル プロジェクトをクローンする
 > * Kafka クラスターを設定する
 > * Kafka MirrorMaker を構成する
 > * Kafka MirrorMaker を実行する
@@ -57,9 +57,9 @@ Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つ�
 
 Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 後で使うので、イベント ハブの接続文字列をコピーしておきます。
 
-## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
+## <a name="clone-the-example-project"></a>サンプル プロジェクトをクローンする
 
-Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリを複製し、`mirror-maker` サブフォルダーに移動します。
+Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリをクローンし、`mirror-maker` サブフォルダーに移動します。
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
