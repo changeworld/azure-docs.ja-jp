@@ -13,7 +13,7 @@
       href: create-notification-hub-portal.md
     - name: 通知ハブの作成 - Azure CLI
       href: create-notification-hub-azure-cli.md
-    - name: 通知ハブの作成 - Azure Resource Manager テンプレート
+    - name: 通知ハブの作成 - Resource Manager テンプレート
       href: create-notification-hub-template.md
     - name: 通知ハブを構成する
       href: configure-notification-hub-portal-pns-settings.md

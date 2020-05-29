@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: What If ツールを使用したトラブルシューティング
           href: troubleshoot-conditional-access-what-if.md
+        - name: よく寄せられる質問
+          href: faqs.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

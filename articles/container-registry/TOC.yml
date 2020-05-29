@@ -17,6 +17,9 @@
           href: container-registry-get-started-portal.md
         - name: コンテナー レジストリの作成 - PowerShell
           href: container-registry-get-started-powershell.md
+        - name: コンテナー レジストリの作成 - Resource Manager テンプレート
+          displayName: Resource Manager
+          href: container-registry-get-started-geo-replication-template.md
         - name: Event Grid へのイベントの送信 - CLI
           href: container-registry-event-grid-quickstart.md
         - name: Java イメージのビルドとプッシュ - CLI
@@ -107,6 +110,8 @@
                   href: container-registry-auth-service-principal.md
                 - name: マネージド ID による認証
                   href: container-registry-authentication-managed-identity.md
+                - name: トークンによる認証 (プレビュー)
+                  href: container-registry-repository-scoped-permissions.md
                 - name: Azure Container Instances からの認証
                   href: container-registry-auth-aci.md
                 - name: プル シークレットによる Kubernetes からの認証

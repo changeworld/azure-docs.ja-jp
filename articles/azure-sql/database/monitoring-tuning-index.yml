@@ -1,0 +1,121 @@
+### YamlMime:Landing
+title: Azure SQL Database と Azure SQL Managed Instance の監視とパフォーマンスのチューニング
+summary: Azure SQL Database と Azure SQL Managed Instance には、データベースを監視してそのパフォーマンスを向上させるためにメトリックと診断情報を収集するのに役立つツールが用意されています。
+metadata:
+  title: Azure SQL Database と Azure SQL Managed Instance の監視とチューニングのドキュメント
+  description: メトリックと診断の収集やデータベースのパフォーマンス向上に役立つ、Azure SQL Database の監視およびパフォーマンス チューニング ツールについて説明します。
+  ms.service: sql-database
+  ms.subservice: performance
+  ms.custom: sqldbrb=2
+  ms.topic: landing-page
+  ms.collection: performance
+  author: CarlRabeler
+  ms.author: carlrab
+  ms.date: 03/10/2020
+  ms.openlocfilehash: d25dfaa9dc51fd781c2b8640f34cc5221f7990ec
+  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84117877"
+landingContent:
+- title: 監視とパフォーマンスのチューニングの概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 監視とパフォーマンスのチューニング
+      url: monitor-tune-overview.md
+  - linkListType: learn
+    links:
+    - text: Microsoft Azure のデータベース監視に関するプレイブック
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+- title: Azure SQL Database のインテリジェントなパフォーマンスに関する推奨事項
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Database Advisor のチューニングに関する推奨事項
+      url: database-advisor-implement-performance-recommendations.md
+    - text: 自動チューニング
+      url: automatic-tuning-enable.md
+    - text: Query Performance Insight
+      url: query-performance-insight-use.md
+  - linkListType: video
+    links:
+    - text: 自動チューニング
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
+- title: Azure SQL Database と Azure SQL Managed Instance のリソース制限
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 単一データベースの仮想コア リソースの制限
+      url: resource-limits-vcore-single-databases.md
+    - text: 単一データベースの DTU リソースの制限
+      url: resource-limits-dtu-single-databases.md
+    - text: エラスティック プールの仮想コア リソースの制限
+      url: resource-limits-vcore-elastic-pools.md
+    - text: エラスティック プールの DTU リソースの制限
+      url: resource-limits-dtu-elastic-pools.md
+    - text: SQL Managed Instance のリソースの制限
+      url: ../managed-instance/resource-limits.md
+    - text: インスタンス プールのリソースの制限
+      url: ../managed-instance/instance-pools-overview.md#resource-limitations
+- title: Azure SQL Database と Azure SQL Managed Instance のインテリジェントなパフォーマンス分析
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: AI を使用した Intelligent Insights
+      url: intelligent-insights-overview.md
+  - linkListType: concept
+    links:
+    - text: メトリックと診断のロギング
+      url: metrics-diagnostic-telemetry-logging-streaming-export-configure.md
+    - text: パフォーマンス診断ログを理解する
+      url: intelligent-insights-use-diagnostics-log.md
+    - text: Azure の SQL 分析
+      url: ../../azure-monitor/insights/azure-sql.md
+    - text: 検出可能なパフォーマンス パターン
+      url: intelligent-insights-troubleshoot-performance.md
+    - text: インテリジェントなクエリの処理
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
+  - linkListType: video
+    links:
+    - text: Intelligent Insights
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
+- title: Azure SQL Database と Azure SQL Managed Instance の手動によるパフォーマンス チューニング
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: クエリ パフォーマンスの問題の特定
+      url: ../identify-query-performance-issues.md
+  - linkListType: concept
+    links:
+    - text: DMV を使用した監視
+      url: monitoring-with-dmvs.md
+    - text: アプリケーションとデータベースのチューニング
+      url: performance-guidance.md
+    - text: クエリ ストアの使用
+      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+    - text: 拡張イベントの使用
+      url: xevent-db-diff-from-svr.md
+    - text: Hyperscale パフォーマンス診断
+      url: hyperscale-performance-diagnostics.md
+- title: Azure SQL Database と Azure SQL Managed Instance のリソースのスケーリング
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: リソースの動的スケーリング
+      url: scale-resources.md
+  - linkListType: concept
+    links:
+    - text: 単一データベースのリソースのスケーリング
+      url: single-database-scale.md
+    - text: エラスティック プール リソースのスケーリング
+      url: elastic-pool-scale.md
+    - text: マネージド インスタンスのリソースのスケーリング
+      url: ../managed-instance/sql-managed-instance-paas-overview.md#management-operations
+    - text: 読み取りスケールアウト
+      url: read-scale-out.md
+  - linkListType: video
+    links:
+    - text: 動的スケーラビリティ
+      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player

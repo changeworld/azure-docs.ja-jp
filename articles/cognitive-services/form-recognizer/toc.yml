@@ -10,6 +10,8 @@
 - name: クイックスタート
   expaned: true
   items:
+    - name: クライアント ライブラリの使用
+      href: quickstarts/client-library.md
     - name: サンプル ラベル付けツールの使用
       items:
         - name: ラベルを使用してカスタム モデルをトレーニングする
@@ -36,8 +38,6 @@
           items:
             - name: Python
               href: quickstarts/python-layout.md
-    - name: .NET SDK の使用
-      href: quickstarts/dotnet-sdk.md
 - name: チュートリアル
   items:
     - name: Logic Apps で Form Recognizer を使用する
@@ -67,7 +67,13 @@
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview'
+        - name: JavaScript
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview'
 - name: リソース
   items:
     - name: 料金と制限

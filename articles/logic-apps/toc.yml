@@ -82,6 +82,8 @@
           href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: メッセージをバッチ処理する
           href: logic-apps-batch-process-send-receive-messages.md
+        - name: メッセージを順番に送信する - シーケンシャルなコンボイ
+          href: send-related-messages-sequential-convoy.md
         - name: JSON 定義の作成
           href: logic-apps-author-definitions.md
         - name: コンテンツ タイプを処理する
