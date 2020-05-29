@@ -355,6 +355,8 @@
               href: soft-delete-virtual-machines.md
             - name: Azure VM の SQL Server と SAP HANA の場合
               href: soft-delete-sql-saphana-in-azure-vm.md
+        - name: Azure ファイル共有の削除保護
+          href: soft-delete-azure-file-share.md
         - name: ハイブリッド バックアップのセキュリティ
           href: backup-azure-security-feature.md
         - name: プライベート エンドポイント

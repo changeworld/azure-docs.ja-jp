@@ -9,14 +9,18 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: ジョブの作成 - Azure Portal
-      href: stream-analytics-quick-create-portal.md
-    - name: ジョブの作成 - PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: ジョブの作成 - Visual Studio
-      href: stream-analytics-quick-create-vs.md
-    - name: ジョブの作成 - Visual Studio Code
-      href: quick-create-vs-code.md
+    - name: ジョブの作成
+      items:
+        - name: Azure portal
+          href: stream-analytics-quick-create-portal.md
+        - name: ARM テンプレート
+          href: quick-create-azure-resource-manager.md
+        - name: PowerShell
+          href: stream-analytics-quick-create-powershell.md
+        - name: "Visual\_Studio"
+          href: stream-analytics-quick-create-vs.md
+        - name: Visual Studio Code
+          href: quick-create-vs-code.md
 - name: チュートリアル
   items:
     - name: 1 - ジョブの作成/管理

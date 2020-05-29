@@ -44,7 +44,7 @@
           href: Concepts/knowledge-base.md
         - name: インポートされるコンテンツの種類
           href: Concepts/content-types.md
-        - name: 質問と回答のセット
+        - name: 質問と回答のペア
           href: Concepts/question-answer-set.md
     - name: ナレッジ ベースのライフサイクル
       items:

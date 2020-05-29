@@ -1,0 +1,123 @@
+### YamlMime:Landing
+title: Azure SQL Managed Instance のドキュメント
+summary: Microsoft SQL Server の安定した最新バージョンに基づく、Azure 内のマネージド インスタンスである Azure SQL Managed Instance に関するドキュメントをご覧ください。
+metadata:
+  title: Azure SQL Managed Instance のドキュメント
+  description: Microsoft SQL Server の安定した最新バージョンに基づく、Azure 内のマネージド インスタンスである Azure SQL Managed Instance に関するドキュメントをご覧ください。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 967bf5461a1f4e6cf8869bcea6a0e7c74204d1a1
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023621"
+landingContent:
+- title: Azure SQL Managed Instance
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: SQL マネージド インスタンスの作成
+      url: instance-create-quickstart.md
+  - linkListType: concept
+    links:
+    - text: 新機能
+      url: ../database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: SQL Managed Instance とは
+      url: sql-managed-instance-paas-overview.md
+    - text: 購入オプション
+      url: ../database/purchasing-models.md
+    - text: サービス階層
+      url: ../database/service-tiers-general-purpose-business-critical.md
+    - text: トランザクション レプリケーション
+      url: replication-transactional-overview.md
+    - text: SQL Server からの移行
+      url: migrate-to-instance-from-sql-server.md
+    - text: SQL Server の T-SQL との相違点
+      url: transact-sql-tsql-differences-sql-server.md
+- title: 高度なセキュリティ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティ機能
+      url: ../database/security-overview.md
+    - text: セキュリティの運用方法
+      url: ../database/security-best-practice.md
+    - text: ログイン、ユーザー アカウント、ロール、およびアクセス許可
+      url: ../database/logins-create-manage.md
+    - text: Azure Active Directory
+      url: ../database/authentication-aad-overview.md
+    - text: 監査
+      url: auditing-configure.md
+    - text: Transparent Data Encryption (TDE)
+      url: ../database/transparent-data-encryption-tde-overview.md
+    - text: 動的なデータ マスキング
+      url: ../database/dynamic-data-masking-overview.md
+    - text: パブリック エンドポイント
+      url: public-endpoint-overview.md
+- title: リファレンス
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 学習用 SQL リソース
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Resource Manager テンプレートのサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 移行ガイド
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: ビジネス継続性
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ビジネス継続性
+      url: ../database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: 高可用性
+      url: ../database/high-availability-sla.md
+    - text: 自動フェールオーバー グループ
+      url: ../database/auto-failover-group-overview.md
+    - text: 自動バックアップ
+      url: ../database/automated-backups-overview.md
+    - text: バックアップを使用して復旧する
+      url: ../database/recovery-using-backups.md
+    - text: 長期のバックアップ リテンション期間
+      url: ../database/long-term-retention-overview.md
+- title: インスタンス プール
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: インスタンス プールとは
+      url: instance-pools-overview.md
+    - text: 構成
+      url: instance-pools-configure.md

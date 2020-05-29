@@ -1,0 +1,145 @@
+### YamlMime:Landing
+title: Azure SQL Database のドキュメント
+summary: Azure SQL Database の単一およびプールされたデータベースの概要、クイックスタート、チュートリアル、サンプルを紹介します。
+metadata:
+  title: Azure SQL Database のドキュメント
+  description: Microsoft SQL Server の安定した最新バージョンに基づく、サービスとしてのプラットフォーム (PaaS) である Azure SQL Database に関するドキュメントをご覧ください。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 0faf1311e3a570028884f826b7d8b4ff3cd5e9e2
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023825"
+landingContent:
+- title: Azure SQL データベース
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: SQL Database を作成する
+      url: single-database-create-quickstart.md
+    - text: ファイアウォールの構成
+      url: firewall-create-server-level-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: 新機能
+      url: doc-changes-updates-release-notes.md?tabs=single-database
+    - text: SQL Database とは
+      url: sql-database-paas-overview.md
+    - text: 購入オプション
+      url: purchasing-models.md
+    - text: サービス階層
+      url: service-tiers-general-purpose-business-critical.md
+    - text: サーバーレス コンピューティング
+      url: serverless-tier-overview.md
+    - text: ハイパースケール サービス レベル
+      url: service-tier-hyperscale.md
+    - text: SQL Server からの移行
+      url: migrate-to-database-from-sql-server.md
+    - text: SQL Server の T-SQL との相違点
+      url: transact-sql-tsql-differences-sql-server.md
+- title: ビジネス継続性
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ビジネス継続性
+      url: business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: 高可用性
+      url: high-availability-sla.md
+    - text: アクティブ geo レプリケーション
+      url: active-geo-replication-overview.md
+    - text: 自動フェールオーバー グループ
+      url: auto-failover-group-overview.md
+    - text: 自動バックアップ
+      url: automated-backups-overview.md
+    - text: バックアップを使用して復旧する
+      url: recovery-using-backups.md
+    - text: 長期のバックアップ リテンション期間
+      url: long-term-retention-overview.md
+- title: 高度なセキュリティ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティ機能
+      url: security-overview.md
+    - text: セキュリティの運用方法
+      url: security-best-practice.md
+    - text: ログイン、ユーザー アカウント、ロール、およびアクセス許可
+      url: logins-create-manage.md
+    - text: Azure Active Directory
+      url: authentication-aad-overview.md
+    - text: 監査
+      url: auditing-overview.md
+    - text: Transparent Data Encryption (TDE)
+      url: transparent-data-encryption-tde-overview.md
+    - text: 動的なデータ マスキング
+      url: dynamic-data-masking-overview.md
+- title: エラスティック プール
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: エラスティック プールとは
+      url: elastic-pool-overview.md
+    - text: 管理する
+      url: elastic-pool-manage.md
+    - text: スケール
+      url: elastic-pool-scale.md
+    - text: リソース管理
+      url: elastic-pool-resource-management.md
+- title: リファレンス
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 学習用 SQL リソース
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Resource Manager テンプレートのサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 移行ガイド
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: スケーラビリティ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 動的なスケールアップまたはスケールダウン
+      url: scale-resources.md
+    - text: 読み取りスケールアウト
+      url: read-scale-out.md
+    - text: 複数データベース間のジョブ
+      url: elastic-jobs-overview.md
+    - text: エラスティック スケール
+      url: elastic-scale-introduction.md
+    - text: エラスティック クエリ
+      url: elastic-query-overview.md

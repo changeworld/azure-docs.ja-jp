@@ -311,11 +311,14 @@
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: ML タスクを定義する
-          displayName: 'machine learning, task type'
+          displayName: 'machine learning, task type, automl'
           href: how-to-define-task-type.md
         - name: 予測モデルを自動トレーニングする
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: 自動 ML での特徴量化 (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
         - name: ML パイプラインでの自動 ML の使用 (Python)
           displayName: machine learning automl
           href: how-to-use-automlstep-in-pipelines.md
@@ -449,8 +452,6 @@
     - name: デザイナー モジュール リファレンス
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
-    - name: 大規模な ML
-      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
     - name: データ参照を監視する
       href: monitor-resource-reference.md
     - name: 機械学習パイプライン YAML のリファレンス

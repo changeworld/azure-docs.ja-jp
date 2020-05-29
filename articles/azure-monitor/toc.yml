@@ -972,6 +972,8 @@
           href: insights/container-insights-update-metrics.md
         - name: 正常性の監視の構成
           href: insights/container-insights-health-monitors-config.md
+        - name: コストと使用量の管理
+          href: insights/container-insights-cost.md
         - name: 監視を無効にする
           items:
             - name: AKS の監視の無効化
@@ -991,7 +993,7 @@
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
         - name: Key Vault
-          href: insights/key-vault-insights-overview.md
+          href: insights/key-vaults-insights-overview.md
         - name: ネットワーク
           href: insights/network-insights-overview.md
         - name: ストレージ

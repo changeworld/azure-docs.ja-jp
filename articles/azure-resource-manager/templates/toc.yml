@@ -58,6 +58,8 @@
           href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: マネージド アプリケーション
           href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Notification Hubs
+          href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: ポリシー
           href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: リソース グラフ
@@ -156,6 +158,8 @@
       href: templates-cloud-consistency.md
     - name: デプロイ モード
       href: deployment-modes.md
+    - name: デプロイ履歴の削除
+      href: deployment-history-deletions.md
     - name: 完全モードの削除
       href: complete-mode-deletion.md
     - name: Deployment Manager

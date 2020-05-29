@@ -7,12 +7,15 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Databricks ワークスペースの作成 - ポータル
-      href: quickstart-create-databricks-workspace-portal.md
-    - name: Databricks ワークスペースの作成 - Resource Manager テンプレート
-      href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: Databricks ワークスペースの作成 - 仮想ネットワーク
-      href: quickstart-create-databricks-workspace-vnet-injection.md
+    - name: ワークスペースの作成
+      items:
+        - name: ポータル
+          href: quickstart-create-databricks-workspace-portal.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: quickstart-create-databricks-workspace-resource-manager-template.md
+        - name: 仮想ネットワーク
+          href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: チュートリアル
   items:
     - name: Docker コンテナーで稼働している SQL Server に対するクエリ

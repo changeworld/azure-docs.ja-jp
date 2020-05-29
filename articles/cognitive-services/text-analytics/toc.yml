@@ -54,6 +54,8 @@
       href: concepts/text-offsets.md
     - name: データ制限
       href: concepts/data-limits.md
+    - name: モデルのバージョン管理
+      href: concepts/model-versioning.md
 - name: 操作方法ガイド
   items:
     - name: Text Analytics API を呼び出す
@@ -76,6 +78,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes サービス (AKS) の使用
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+    - name: API のバージョン 3 への移行
+      href: migration-guide.md
 - name: リファレンス
   items:
     - name: CLI リファレンス
