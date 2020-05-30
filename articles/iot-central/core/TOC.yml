@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: ルールを構成する
           href: howto-configure-rules.md
-        - name: ワークフローを使用して他のサービスと統合する
-          href: howto-configure-rules-advanced.md
         - name: デバイス データを分析する
           href: howto-create-analytics.md
         - name: ダッシュボードへのタイルの追加
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: 規則に基づいて Webhook を作成する
           href: howto-create-webhooks.md
+        - name: ワークフローを使用して他のサービスと統合する
+          href: howto-configure-rules-advanced.md
         - name: 規則に基づいて Azure Monitor アクション グループを接続する
           href: howto-use-action-groups.md
         - name: カスタム規則の作成

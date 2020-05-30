@@ -310,8 +310,8 @@ groups:
     title: C#
   - id: programming-language-javascript
     title: JavaScript
-  - id: programming-language-more
-    title: その他の言語
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-eighteen
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -340,7 +340,7 @@ groups:
     title: その他の言語
 - id: programming-languages-set-two-with-js-spx
   title: プログラミング言語
-  prompt: プログラミング言語または CLI を選択する。
+  prompt: プログラミング言語または CLI を選択する
   pivots:
   - id: programmer-tool-spx
     title: CLI
@@ -455,9 +455,9 @@ groups:
   - id: programming-language-objectivec
     title: Objective-C
 metadata:
-  ms.openlocfilehash: 3888e33063df9251d2e53322e9372d79d15b4222
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: 8fa6182b392d4be61334c15fc9e25a551f57f07b
+  ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800458"
+  ms.lasthandoff: 05/30/2020
+  ms.locfileid: "84220259"

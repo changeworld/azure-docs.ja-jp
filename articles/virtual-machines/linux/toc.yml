@@ -422,6 +422,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: VM の作成
                   items:
+                    - name: 専用イメージ
+                      href: ../vm-specialized-image-version-cli.md
                     - name: 一般化されたイメージ
                       href: ../vm-generalized-image-version-cli.md
                 - name: イメージ リソースを更新する

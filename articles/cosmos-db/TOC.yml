@@ -1237,6 +1237,8 @@
       href: whitepapers.md
     - name: パートナー
       href: partners-migration-cosmosdb.md
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-cosmos-db.html'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Azure のロードマップ

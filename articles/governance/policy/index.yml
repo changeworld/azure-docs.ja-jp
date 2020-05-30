@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 05/20/2020
-  ms.openlocfilehash: b28cae1fd59e863c04d744a5c17108f1bd942a4d
-  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.openlocfilehash: 4d7c02891330699978134dbb4d53faef0f16b1e9
+  ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84119350"
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84204822"
 landingContent:
 - title: Azure Policy について
   linkLists:
@@ -73,6 +73,8 @@ landingContent:
       url: ./how-to/author-policies-for-arrays.md
   - linkListType: concept
     links:
+    - text: 規制コンプライアンス
+      url: ./concepts/regulatory-compliance.md
     - text: Kubernetes 用のポリシー
       url: ./concepts/policy-for-kubernetes.md
     - text: VM のポリシー
@@ -92,7 +94,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Azure Policy 用の Microsoft Q&A
-      url: /answers/topics/azure-policy.html.html
+      url: /answers/topics/azure-policy.html
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
