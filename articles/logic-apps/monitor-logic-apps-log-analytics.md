@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor ログを使用してロジック アプリを監視する
-description: Azure Monitor ログを設定して Azure Logic Apps の診断データを収集することで、ロジック アプリのトラブルシューティングを行う
+title: Azure Monitor ログを使用して Logic Apps を監視する
+description: Azure Monitor ログを設定して Azure Logic Apps の診断データを収集することで、Logic Apps のトラブルシューティングを行う
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
@@ -15,11 +15,11 @@ ms.locfileid: "79232935"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する
 
-実行時にロジック アプリに関するより豊富なデバッグ情報を取得するには、[Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)を設定して使用し、トリガー イベント、実行イベント、アクション イベントなどのランタイム データやイベントに関する情報を [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md)に記録して格納します。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 Azure Monitor ログを使用することで、この情報を収集して確認するのに役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。 さらに、Azure Storage や Azure Event Hubs などの[他の Azure サービスでこの診断データを使用する](#extend-data)こともできます。
+実行時に Logic Apps に関するより豊富なデバッグ情報を取得するには、[Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)を設定して使用し、トリガー イベント、実行イベント、アクション イベントなどのランタイム データやイベントに関する情報を [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md)に記録して格納します。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 Azure Monitor ログを使用することで、この情報を収集して確認するのに役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。 さらに、Azure Storage や Azure Event Hubs などの[他の Azure サービスでこの診断データを使用する](#extend-data)こともできます。
 
-ロジック アプリのログを設定するには、[ロジック アプリを作成するときに Log Analytics を有効にする](#logging-for-new-logic-apps)か、既存のロジック アプリの Log Analytics ワークスペースに [Logic Apps 管理ソリューション をインストール](#install-management-solution)します。 このソリューションでは、ロジック アプリの実行に関する集約情報が提供され、状態、実行時間、再送信の状態、関連付け ID などの特定の詳細情報が含まれています。 次に、この情報に対してログの記録とクエリの作成を有効にするために、[Azure Monitor ログを設定します](#set-up-resource-logs)。
+Logic Apps のログを設定するには、[Logic Apps を作成するときに Log Analytics を有効にする](#logging-for-new-logic-apps)か、既存の Logic Apps の Log Analytics ワークスペースに [Logic Apps 管理ソリューション をインストール](#install-management-solution)します。 このソリューションでは、Logic Apps の実行に関する集約情報が提供され、状態、実行時間、再送信の状態、関連付け ID などの特定の詳細情報が含まれています。 次に、この情報に対してログの記録とクエリの作成を有効にするために、[Azure Monitor ログを設定します](#set-up-resource-logs)。
 
-この記事では、ロジック アプリの作成時に Log Analytics を有効にする方法、Logic Apps 管理ソリューションをインストールして設定する方法、および Azure Monitor ログのクエリを設定して作成する方法について説明します。
+この記事では、Logic Apps の作成時に Log Analytics を有効にする方法、Logic Apps 管理ソリューションをインストールして設定する方法、および Azure Monitor ログのクエリを設定して作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,29 +27,29 @@ ms.locfileid: "79232935"
 
 <a name="logging-for-new-logic-apps"></a>
 
-## <a name="enable-log-analytics-for-new-logic-apps"></a>新しいロジック アプリの Log Analytics を有効にする
+## <a name="enable-log-analytics-for-new-logic-apps"></a>新しい Logic Apps の Log Analytics を有効にする
 
-ロジック アプリを作成するときに、Log Analytics を有効にすることができます。
+Logic Apps を作成するときに、Log Analytics を有効にすることができます。
 
-1. [Azure portal](https://portal.azure.com) 内のロジック アプリを作成するための情報を指定するウィンドウで、次の手順を実行します。
+1. [Azure portal](https://portal.azure.com) 内の Logic Apps を作成するための情報を指定するウィンドウで、次の手順を実行します。
 
    1. **[Log Analytics]** で **[オン]** を選択します。
 
-   1. **Log Analytics ワークスペース**の一覧から、ロジック アプリの実行からデータを送信するワークスペースを選択します。
+   1. **Log Analytics ワークスペース**の一覧から、Logic Apps の実行からデータを送信するワークスペースを選択します。
 
-      ![ロジック アプリに関する情報の入力](./media/monitor-logic-apps-log-analytics/create-logic-app-details.png)
+      ![Logic Apps に関する情報の入力](./media/monitor-logic-apps-log-analytics/create-logic-app-details.png)
 
-      この手順を完了すると、Azure によりロジック アプリが作成されます。このアプリは、Log Analytics ワークスペースに関連付けられています。 この手順では、ワークスペースに Logic Apps 管理ソリューションが自動的にインストールされます。
+      この手順を完了すると、Azure により Logic Apps リが作成されます。このアプリは、Log Analytics ワークスペースに関連付けられています。 この手順では、ワークスペースに Logic Apps 管理ソリューションが自動的にインストールされます。
 
 1. 完了したら **[作成]** を選択します。
 
-1. ロジック アプリを実行した後、ロジック アプリの実行状態を表示するには、[次の手順を続行します](#view-logic-app-runs)。
+1. Logic Apps を実行した後、Logic Apps の実行状態を表示するには、[次の手順を続行します](#view-logic-app-runs)。
 
 <a name="install-management-solution"></a>
 
 ## <a name="install-logic-apps-management-solution"></a>Logic Apps 管理ソリューションをインストールする
 
-ロジック アプリの作成時にすでに Log Analytics をオンにしている場合は、この手順をスキップしてください。 Log Analytics ワークスペースには、Logic Apps 管理ソリューションが既にインストールされています。
+Logic Apps の作成時にすでに Log Analytics をオンにしている場合は、この手順をスキップしてください。 Log Analytics ワークスペースには、Logic Apps 管理ソリューションが既にインストールされています。
 
 1. [Azure portal](https://portal.azure.com) の検索ボックスに「`log analytics workspaces`」と入力し、 **[Log Analytics ワークスペース]** を選択します。
 
@@ -89,9 +89,9 @@ ms.locfileid: "79232935"
 
 ランタイム イベントおよびデータに関する情報を [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)に格納するとき、この情報の検索と確認に役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。
 
-1. [Azure Portal](https://portal.azure.com) で、ご利用のロジック アプリを探して選択します。
+1. [Azure Portal](https://portal.azure.com) で、ご利用の Logic Apps を探して選択します。
 
-1. ロジック アプリ メニューの **[監視]** で、 **[診断設定]**  >  **[診断設定を追加する]** を追加します。
+1. Logic Apps メニューの **[監視]** で、 **[診断設定]**  >  **[診断設定を追加する]** を追加します。
 
    ![[監視] で、[診断設定] > [診断設定を追加する] を選択する](./media/monitor-logic-apps-log-analytics/logic-app-diagnostics.png)
 
@@ -117,32 +117,32 @@ ms.locfileid: "79232935"
 
 <a name="view-logic-app-runs"></a>
 
-## <a name="view-logic-app-runs-status"></a>ロジック アプリの実行状態を表示する
+## <a name="view-logic-app-runs-status"></a>Logic Apps の実行状態を表示する
 
-ロジック アプリが実行されると、それらの実行に関するデータを Log Analytics ワークスペースに表示できます。
+Logic Apps が実行されると、それらの実行に関するデータを Log Analytics ワークスペースに表示できます。
 
 1. [Azure portal](https://portal.azure.com) で、Log Analytics ワークスペースを探して開きます。
 
 1. ワークスペースのメニューで、 **[ワークスペースの概要]**  >  **[Logic Apps 管理]** を選択します。
 
-   ![ロジック アプリの実行状態と実行件数](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary.png)
+   ![Logic Apps の実行状態と実行件数](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary.png)
 
    > [!NOTE]
    > 実行後すぐに [Logic Apps 管理] タイルに結果が表示されない場合は、 **[最新の情報に更新]** を選択するか、しばらく待ってから再試行してください。
 
-   ここでは、ロジック アプリの実行は名前または実行状態でグループ化されます。 このページには、ロジック アプリの実行のアクションまたはトリガーで発生したエラーに関する詳細も表示されます。
+   ここでは、Logic Apps の実行は名前または実行状態でグループ化されます。 このページには、Logic Apps の実行のアクションまたはトリガーで発生したエラーに関する詳細も表示されます。
 
-   ![ロジック アプリの実行状態の概要](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary-details.png)
+   ![Logic Apps の実行状態の概要](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary-details.png)
 
-1. 特定のロジック アプリまたは状態のすべての実行を表示するには、そのロジック アプリまたは状態の行を選択します。
+1. 特定の Logic Apps または状態のすべての実行を表示するには、その Logic Apps または状態の行を選択します。
 
-   特定のロジック アプリのすべての実行を表示する例は次の通りです。
+   特定の Logic Apps のすべての実行を表示する例は次の通りです。
 
-   ![ロジック アプリの実行と状態を表示する](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
+   ![Logic Apps の実行と状態を表示する](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
    [追跡対象プロパティを設定した](#extend-data)アクションでは、 **[追跡対象プロパティ]** 列で **[表示]** を選択してプロパティを表示することもできます。 追跡対象プロパティを検索するには、列フィルターを使用します。
 
-   ![ロジック アプリの追跡対象プロパティを表示する](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
+   ![Logic Apps の追跡対象プロパティを表示する](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
 
    > [!NOTE]
    > 追跡対象プロパティまたは完了したイベントが Log Analytics ワークスペースに表示されるまでに、10 から 15 分の遅延が発生する場合があります。
@@ -158,11 +158,11 @@ ms.locfileid: "79232935"
 
      ![時間枠を変更する](./media/monitor-logic-apps-log-analytics/change-interval.png)
 
-1. 特定の実行のすべてのアクションとその詳細を表示するには、ロジック アプリの実行の行を選択します。
+1. 特定の実行のすべてのアクションとその詳細を表示するには、Logic Apps の実行の行を選択します。
 
-   特定のロジック アプリの実行のすべてアクションとトリガーを表示する例は次のとおりです。
+   特定の Logic Apps の実行のすべてアクションとトリガーを表示する例は次のとおりです。
 
-   ![ロジック アプリの実行のアクションを表示する](./media/monitor-logic-apps-log-analytics/logic-app-action-details.png)
+   ![Logic Apps の実行のアクションを表示する](./media/monitor-logic-apps-log-analytics/logic-app-action-details.png)
 
 <!-------------
    * **Resubmit**: You can resubmit one or more logic apps runs that failed, succeeded, or are still running. Select the check boxes for the runs that you want to resubmit, and then select **Resubmit**.
@@ -174,7 +174,7 @@ ms.locfileid: "79232935"
 
 ## <a name="send-diagnostic-data-to-azure-storage-and-azure-event-hubs"></a>診断データを Azure Storage と Azure Event Hubs に送信する
 
-Azure Monitor ログと併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。
+Azure Monitor ログと併せて、Logic Apps の診断データを他の Azure サービスで使用する方法を次のように拡張できます。
 
 * [Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs-collect-storage.md)
 * [Azure プラットフォーム ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
@@ -192,11 +192,11 @@ Azure Monitor ログと併せて、ロジック アプリの診断データを�
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Monitor の診断イベント
 
-各診断イベントには、ご利用のロジック アプリとそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、この情報を [Azure Logic Apps 用 REST API](https://docs.microsoft.com/rest/api/logic) と [Azure Monitor 用 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) で使用できます。 また、次に示す `clientTrackingId` および `trackedProperties` プロパティを使用することもできます。 
+各診断イベントには、ご利用の Logic Apps とそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、この情報を [Azure Logic Apps 用 REST API](https://docs.microsoft.com/rest/api/logic) と [Azure Monitor 用 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) で使用できます。 また、次に示す `clientTrackingId` および `trackedProperties` プロパティを使用することもできます。 
 
-* `clientTrackingId`:指定しなかった場合、自動的にこの ID が生成され、ロジック アプリの実行でイベント (このロジック アプリから呼び出される入れ子になったワークフローなど) どうしが関連付けられます。 この ID は、カスタム ID 値を指定した `x-ms-client-tracking-id` ヘッダーをトリガー要求で渡すことで、トリガー内で手動で指定できます。 要求トリガー、HTTP トリガー、または webhook トリガーを使用できます。
+* `clientTrackingId`:指定しなかった場合、自動的にこの ID が生成され、Logic Apps の実行でイベント (この Logic Apps から呼び出される入れ子になったワークフローなど) どうしが関連付けられます。 この ID は、カスタム ID 値を指定した `x-ms-client-tracking-id` ヘッダーをトリガー要求で渡すことで、トリガー内で手動で指定できます。 要求トリガー、HTTP トリガー、または webhook トリガーを使用できます。
 
-* `trackedProperties`:診断データの入力または出力を追跡するには、ロジック アプリ デザイナーを使用するか、またはロジック アプリの JSON 定義から直接、アクションに `trackedProperties` セクションを追加します。 追跡対象プロパティで追跡できるのは、1 つのアクションの入出力のみです。ただし、イベントの `correlation` プロパティを使用すると、1 回の実行に含まれる複数のアクションにわたってそれらを相互に関連付けることができます。 1 つ以上のプロパティを追跡するには、`trackedProperties` セクションと必要なプロパティをアクションの定義に追加します。
+* `trackedProperties`:診断データの入力または出力を追跡するには、Logic Apps デザイナーを使用するか、または Logic Apps の JSON 定義から直接、アクションに `trackedProperties` セクションを追加します。 追跡対象プロパティで追跡できるのは、1 つのアクションの入出力のみです。ただし、イベントの `correlation` プロパティを使用すると、1 回の実行に含まれる複数のアクションにわたってそれらを相互に関連付けることができます。 1 つ以上のプロパティを追跡するには、`trackedProperties` セクションと必要なプロパティをアクションの定義に追加します。
 
   次に示す例では、アクションの入力からの追跡対象プロパティが **[変数を初期化する]** アクションの定義に含まれています。このプロパティには、レコードではなく配列を入力します。
 
