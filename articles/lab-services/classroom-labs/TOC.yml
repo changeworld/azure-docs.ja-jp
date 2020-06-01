@@ -24,6 +24,8 @@
       href: classroom-labs-concepts.md
     - name: クラスルーム ラボのアーキテクチャの基礎
       href: classroom-labs-fundamentals.md
+    - name: 容量制限
+      href: capacity-limits.md
     - name: シナリオ
       items:
         - name: クラスを実施するためのラボの使用
