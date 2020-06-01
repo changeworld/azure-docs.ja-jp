@@ -39,13 +39,13 @@ ms.locfileid: "81415096"
 
    ![接続する](./media/sql-data-warehouse-source-control-integration/3-connect.png "接続する")
 
-3. プロジェクトからお使いのローカル コンピューターに Azure Repo リポジトリを複製します
+3. プロジェクトからお使いのローカル コンピューターに Azure Repo リポジトリをクローンします
 
-   ![リポジトリの複製](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "リポジトリをクローンする")
+   ![リポジトリのクローン](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "リポジトリをクローンする")
 
 ## <a name="create-and-connect-your-project"></a>プロジェクトを作成して接続する
 
-1. Visual Studio で、**ローカルの複製されたリポジトリ**に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します
+1. Visual Studio で、**ローカルのクローンされたリポジトリ**に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します
 
    ![新しいプロジェクトの作成](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "新しいプロジェクトの作成")  
 
@@ -57,7 +57,7 @@ ms.locfileid: "81415096"
 
    ![コミット](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
-4. これで、複製されたリポジトリで変更がローカルにコミットされたので、Azure DevOps プロジェクトの Azure Repo リポジトリに変更を同期してプッシュします。
+4. これで、クローンされたリポジトリで変更がローカルにコミットされたので、Azure DevOps プロジェクトの Azure Repo リポジトリに変更を同期してプッシュします。
 
    ![同期とプッシュ - ステージング](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "同期とプッシュ - ステージング")
 
