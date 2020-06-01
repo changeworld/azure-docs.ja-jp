@@ -57,7 +57,7 @@ Logic Apps の体験版に関するドキュメントは、現在はまだ、[Op
 
 ### <a name="technical-configuration"></a>技術的構成
 
-次のセクションでは、 Logic Apps の体験版 を構成し、体験版インスタンスの動作を具体的に定義します。
+次のセクションでは、 Logic Apps の体験版を構成し、体験版インスタンスの動作を具体的に定義します。
 
 ![体験版の技術的構成](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
