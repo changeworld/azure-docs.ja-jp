@@ -15,7 +15,7 @@ ms.locfileid: "76904990"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 
-ロジック アプリでは、アプリの問題の診断とデバッグに役立つ情報が生成されます。 ロジック アプリを診断するには、Azure Portal でワークフローの各手順を確認します。 また、ランタイム デバッグのための手順をいくつかワークフローに追加することもできます。
+Logic Apps では、アプリの問題の診断とデバッグに役立つ情報が生成されます。 Logic Apps を診断するには、Azure Portal でワークフローの各手順を確認します。 また、ランタイム デバッグのための手順をいくつかワークフローに追加することもできます。
 
 <a name="check-trigger-history"></a>
 
@@ -84,4 +84,4 @@ ms.locfileid: "76904990"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ロジック アプリを監視する](../logic-apps/monitor-logic-apps.md)
+* [Logic Apps を監視する](../logic-apps/monitor-logic-apps.md)
