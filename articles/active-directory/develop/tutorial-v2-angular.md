@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181598"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201325"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -343,7 +343,6 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 ## <a name="next-steps"></a>次のステップ
 
-引き続き、ユーザーをサインインさせてトークンを取得する方法を Angular のチュートリアルでご覧ください。
+ID とアクセスの管理を初めて体験する方のために、「[認証と承認](authentication-vs-authorization.md)」を手始めに、最新の認証の概念を理解するのに役立つ記事がいくつか用意されています。
 
-> [!div class="nextstepaction"]
-> [Angular チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Microsoft ID プラットフォームでのシングルページ アプリケーションの開発についてさらに詳しく知りたい場合は、複数パートから構成される記事の「[シナリオ: シングルページ アプリケーション](scenario-spa-overview.md)」シリーズが、作業を開始するのに役立ちます。

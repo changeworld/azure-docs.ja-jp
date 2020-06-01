@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c7e164420b02be35069103ac06238d56449eb7ef
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78274069"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996730"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
 
@@ -189,15 +189,27 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. 対象のソリューションの *Startup.cs* ファイルを開き、`ConfigureServices` メソッドを次の内容で置き換えます。
+1. ソリューションの *Startup.cs* ファイルを開き、次の **InitializeCosmosClientInstanceAsync** メソッドを追加します。これは、構成を読み取ってクライアントを初期化するメソッドです。
 
-    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
-    この手順のコードでは、構成に基づいて、[ASP.NET Core の依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)を通じて挿入されるシングルトン インスタンスとして、クライアントを初期化します。
+1. 同じファイルの `ConfigureServices` メソッドを次のように置き換えます。
 
-1. 同じファイル内で、次のメソッド **InitializeCosmosClientInstanceAsync** を追加します。このメソッドにより、構成が読み取られ、クライアントが初期化されます。
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
-   [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+   この手順のコードでは、構成に基づいて、[ASP.NET Core の依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)を通じて挿入されるシングルトン インスタンスとして、クライアントを初期化します。
+
+   さらに、既定の MVC コントローラーを `Item` に変更します。同じファイルの `Configure` メソッドで次のようにルートを編集してください。
+
+   ```csharp
+    app.UseEndpoints(endpoints =>
+          {
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Item}/{action=Index}/{id?}");
+          });
+   ```
+
 
 1. 次のスニペットに示すように、プロジェクトの *appsettings.json* ファイルで構成を定義します。
 

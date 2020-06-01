@@ -4,12 +4,12 @@ description: Visual Studio Code プロジェクトに出力バインディング
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: bb5db5858a65759c6cf20789da9cb5bfca761b1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673452"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125847"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を Azure Storage に接続する
 
@@ -56,7 +56,7 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 プロジェクトは、[拡張機能バンドル](functions-bindings-register.md#extension-bundles)を使用するように構成されています。これにより、事前定義された一連の拡張機能パッケージが自動的にインストールされます。 
 
-拡張機能バンドルは、プロジェクトのルートにある host.json ファイルで次のように有効になっています。
+拡張機能バンドルの使用は、プロジェクトのルートにある host.json ファイルで次のように有効になっています。
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -200,7 +200,7 @@ Functions では、各種のバインドで、`direction`、`type`、および�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure の*リソース*とは、Function App、関数、ストレージ アカウントなどのことを指します。 これらは*リソース グループ*に分類されており、グループを削除することでグループ内のすべてのものを削除できます。
+Azure では、"*リソース*" とは、関数アプリ、関数、ストレージ アカウントなどのことを指します。 これらは "*リソース グループ*" に分類されており、グループを削除することでグループ内のすべてのものを削除できます。
 
 これらのクイックスタートを完了するためにリソースを作成しました。 これらのリソースには、[アカウントの状態](https://azure.microsoft.com/account/)と[サービスの価格](https://azure.microsoft.com/pricing/)に応じて課金される場合があります。 リソースの必要がなくなった場合にそれらを削除する方法を、次に示します。
 

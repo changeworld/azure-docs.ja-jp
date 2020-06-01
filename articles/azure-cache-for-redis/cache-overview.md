@@ -5,21 +5,21 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/11/2020
-ms.openlocfilehash: cd4e7c8e2693c25f3fc092fb53874a97cfd62434
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/12/2020
+ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113206"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196373"
 ---
-# <a name="azure-cache-for-redis-description"></a>Azure Cache for Redis の説明
+# <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
-Azure Cache for Redis は、オープンソース ソフトウェア [Redis](https://redis.io/) を基にしたインメモリ データ ストアを提供します。 Redis をキャッシュとして使用すると、バックエンドのデータストアに大きく依存するシステムのパフォーマンスとスケーラビリティが向上します。 アプリケーションに近い場所にある高速ストレージに、アクセス頻度が高いデータをコピーすることで、パフォーマンスが向上します。 Azure Cache for Redis を使用すると、この高速ストレージは、データベースによってディスクから読み込まれずに、メモリ内に配置されます。
+Azure Cache for Redis は、オープンソース ソフトウェア [Redis](https://redis.io/) を基にしたインメモリ データ ストアを提供します。 Redis をキャッシュとして使用すると、バックエンドのデータ ストアに大きく依存するシステムのパフォーマンスとスケーラビリティが向上します。 アプリケーションに近い場所にある高速ストレージに、アクセス頻度が高いデータをコピーすることで、パフォーマンスが向上します。 Azure Cache for Redis を使用すると、この高速ストレージは、データベースによってディスクから読み込まれずに、メモリ内に配置されます。
 
-Azure Cache for Redis は、メモリ内のデータ構造ストア、分散型の非リレーショナル データベース、およびメッセージ ブローカーとして使用できます。 Redis エンジンの短い待機時間、高スループットのパフォーマンスを活用して、アプリケーションのパフォーマンスが向上します。
+Azure Cache for Redis は、分散データ キャッシュ、セッション ストア、およびメッセージ ブローカーとして使用できます。 Redis エンジンの短い待機時間、高スループットのパフォーマンスを活用して、アプリケーションのパフォーマンスが向上します。
 
-Azure Cache for Redis を使用すると、セキュリティ保護された専用の Redis キャッシュにアクセスできます。 Azure Cache for Redis は、Microsoft で管理されており、Azure 内でホストされ、Azure 内外の任意のアプリケーションからアクセスできます。 また、Azure Redis for Cache は、ディスクレス レプリケーション方式を採用しているため、ペイメント カード業界との親和性が高くなっています。
+Azure Cache for Redis は、セキュリティで保護された専用の Redis キャッシュへのアクセスを提供します。 Azure Cache for Redis は、Microsoft で管理されており、Azure 上でホストされ、Azure 内外の任意のアプリケーションからアクセスできます。
 
 ## <a name="using-azure-cache-for-redis"></a>Azure Cache for Redis の使用
 

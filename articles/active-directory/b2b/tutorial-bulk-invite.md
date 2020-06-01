@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 04/13/2020
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81603414"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926923"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する
 
@@ -29,6 +29,27 @@ Azure Active Directory (Azure AD) B2B コラボレーションを使用して外
 
 Azure Active Directory をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
+## <a name="understand-the-csv-template"></a>CSV テンプレートについて
+
+一括アップロード CSV テンプレートをダウンロードして入力すると、Azure AD ゲスト ユーザーを正常に一括招待できます。 ダウンロードする CSV テンプレートは、次の例のようになります。
+
+![アップロード用のスプレッドシートと、各行および列の目的と値を説明する吹き出し](media/tutorial-bulk-invite/understand-template.png)
+
+### <a name="csv-template-structure"></a>CSV テンプレートの構造
+
+ダウンロードした CSV テンプレート内の行は次のとおりです。
+
+- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
+- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Email address to invite [inviteeEmail] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
+
+### <a name="additional-guidance"></a>その他のガイダンス
+
+- アップロード テンプレートの最初の 2 行を削除または変更することはできません。アップロードを処理することができなくなります。
+- 必須の列が最初に示されています。
+- テンプレートに新しい列を追加することはお勧めしません。 列を追加しても無視され、処理されません。
+- できるだけ頻繁に最新バーションの CSV テンプレートをダウンロードすることをお勧めします。
+
 ## <a name="prerequisites"></a>前提条件
 
 招待状の送信先となる、複数のテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
@@ -38,11 +59,11 @@ Azure Active Directory をお持ちでない場合は、開始する前に[無�
 1. 組織のユーザー管理者アカウントで、Azure portal にサインインします。
 2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
 3. **[管理]** の **[ユーザー]**  >  **[一括招待]** を選択します。
-4. **[ユーザー一括招待]** ページで、 **[ダウンロード]** を選択して、招待のプロパティを含んだ有効な .csv ファイルを取得します。
+4. **[ユーザー一括招待]** ページで、 **[ダウンロード]** を選択して、招待のプロパティを含んだ有効な .csv テンプレートを取得します。
 
     ![一括招待のダウンロード ボタン](media/tutorial-bulk-invite/bulk-invite-button.png)
 
-5. この .csv ファイルを開いて、ゲスト ユーザーごとに 1 行追加します。 必要な値は次のとおりです。
+5. この .csv テンプレートを開いて、ゲスト ユーザーごとに 1 行追加します。 必要な値は次のとおりです。
 
    * **招待するメール アドレス** - 招待が送信されるユーザー
 

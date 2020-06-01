@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3182b3f059bf586dce32d8a555ec0d15542c6afc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5765c2e7335183734c86f1ddd11e4fa61576740c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460360"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977551"
 ---
 # <a name="create-a-highly-available-vm"></a>高可用性 VM の作成
 
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Azure 仮想ネットワークとサブネットを作成します。 |

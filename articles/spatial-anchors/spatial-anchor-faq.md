@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844889"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004470"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -49,6 +49,10 @@ Azure Spatial Anchors はマネージド クラウド サービスの開発者�
 
 **A:** アンカーは、Azure アカウントによって分離されています。 お使いのアカウントへのアクセスを許可されているアプリだけが、アカウント内のアンカーにアクセスできます。
 
+**Q:Azure Spatial Anchors ではどのようにデータが格納されますか?**
+
+**A:** すべてのデータは、Microsoft によって管理されるデータ暗号化キーを使用して暗号化され、格納されます。
+
 **Q:Azure Spatial Anchors を使用すると、環境に関するどのような情報が送信されて、サービスに格納されますか?環境の画像は送信されて格納されますか?**
 
 **A**: アンカーが作成または特定されるときは、デバイス上で環境の画像が処理されて派生形式になります。 この派生形式が転送されて、サービスに格納されます。
@@ -59,7 +63,6 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 
 ![環境とそれから派生したまばらな点の集まり](./media/sparse-point-cloud.png)
 *図 1: 環境とそれから派生したまばらな点の集まり*
-
 
 **Q:診断情報を Microsoft に送信できる方法はありますか?**
 

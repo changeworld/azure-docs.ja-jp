@@ -8,21 +8,21 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: e2ee959fb6fc7e8454919c71cfa20e2bb9055dfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c475787eafde4ba847b292df57e4b0d18cfe5d0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81393861"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196050"
 ---
-# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
+# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする
 
 このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure Blob Storage クライアント ライブラリを使用してストレージ アカウントに画像をアップロードする Web アプリのデプロイ方法を学習します。 終了すると、Azure Storage に画像を格納して表示する Web アプリが完成します。
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 ![.NET の画像サイズ変更アプリ](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 ![Node.js V10 の画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
@@ -101,7 +101,7 @@ BLOB ストレージ アカウント名とキーをメモしておきます。 �
 
 [az appservice plan create](/cli/azure/appservice/plan) コマンドで、App Service プランを作成します。
 
-次の例では、`myAppServicePlan`Free**価格レベルの** という名前の App Service プランを作成します。
+次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
@@ -109,7 +109,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](../../app-service/overview.md) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](/cli/azure/webapp)を作成します。  
+Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](/cli/azure/webapp) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
 
 次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"*指定された名前 `<web_app>` の Web サイトは既に存在します*" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
 
@@ -121,7 +121,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>GitHub リポジトリからサンプル アプリをデプロイする
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。
 
@@ -133,7 +133,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。
 
 ```azurecli-interactive
@@ -146,7 +146,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>Web アプリの設定を構成する
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 このサンプル Web アプリでは、[.NET 用 Azure Storage API](/dotnet/api/overview/azure/storage) シリーズを使用して、画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
@@ -158,7 +158,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
 サンプル Web アプリでは、[Azure Storage Client Library](https://github.com/Azure/azure-storage-js) を使用して、画像をアップロードするために使用するアクセス トークンを要求します。 ストレージ SDK によって使用されるストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
@@ -176,13 +176,13 @@ Web アプリのデプロイと構成が済むと、アプリで画像のアッ�
 
 Web アプリをテストするには、発行したアプリの URL に移動します。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 **[写真のアップロード]** 領域を選択し、ファイルを指定してアップロードするか、ファイルを領域にドラッグします。 正常にアップロードされると、画像は表示されなくなります。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。
 
 ![.NET で写真をアップロードする](media/storage-upload-process-images/figure1.png)
 
-サンプル コードでは、`UploadFileToStorage`Storagehelper.cs*ファイル内の* タスクの *UploadAsync* メソッドを使用して、ストレージ アカウント内の [images](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) コンテナーに画像をアップロードします。 次のコード サンプルに、`UploadFileToStorage` タスクが含まれています。
+サンプル コードでは、*Storagehelper.cs* ファイル内の `UploadFileToStorage` タスクの [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) メソッドを使用して、ストレージ アカウント内の *images* コンテナーに画像をアップロードします。 次のコード サンプルに、`UploadFileToStorage` タスクが含まれています。
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,
@@ -212,13 +212,13 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 上のタスクでは、次のクラスとメソッドが使用されています。
 
-| クラス    | 方法   |
+| クラス    | Method   |
 |----------|----------|
 | [Uri](/dotnet/api/system.uri) | [Uri コンストラクター](/dotnet/api/system.uri.-ctor) |
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (String, String) コンストラクター](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
 **[Choose File]** を選択してファイルを選び、 **[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。 
 
@@ -300,7 +300,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>ストレージ アカウント内に画像が表示されることを確認する
 
-[Azure portal](https://portal.azure.com) にサインインする 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[images]\(イメージ\)** コンテナーを選択します。
+[Azure portal](https://portal.azure.com) にサインインします。 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[images]\(イメージ\)** コンテナーを選択します。
 
 コンテナー内に画像が表示されることを確認します。
 
@@ -310,16 +310,16 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 サムネイルの表示をテストするには、**thumbnails** コンテナーに画像をアップロードして、アプリが **thumbnails** コンテナーを読み取れることを確認します。
 
-[Azure portal](https://portal.azure.com) にサインインする 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[サムネイル]** コンテナーを選択します。 **[アップロード]** を選択して **[BLOB のアップロード]** ウィンドウを開きます。
+[Azure portal](https://portal.azure.com) にサインインします。 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[コンテナー]** を選択し、 **[サムネイル]** コンテナーを選択します。 **[アップロード]** を選択して **[BLOB のアップロード]** ウィンドウを開きます。
 
 ファイル ピッカーでファイルを選択し、 **[アップロード]** を選択します。
 
 アプリに戻って、**thumbnails** コンテナーにアップロードした画像が表示されていることを確認します。
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 ![新しい画像が表示された .NET 画像サイズ変更アプリ](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 ![新しい画像が表示された Node.js V10 画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---

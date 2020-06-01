@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261722"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929827"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -67,8 +67,8 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 
 |OS|必要とされるライセンス|
 |---|---|
-|Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
-|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F3、Business Premium<br>Windows E3、E5、A3、A5|
+|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F3、Business Premium<br>Windows E3、E5、A3、A5|
 |Windows Server 2012 R2、2016、2019|ソフトウェア アシュアランス付きの RDS クライアント アクセス ライセンス (CAL)|
 
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
@@ -98,9 +98,12 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 |prod.warmpath.msftcloudes.com|443|エージェント トラフィック|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows のライセンス認証|インターネット|
+|wvdportalstorageblob.blob.core.windows.net|443|Azure portal のサポート|AzureCloud|
 
 >[!IMPORTANT]
->サービスの問題を防ぐために、ほとんどの場合、URL ではなくサービス タグを使用することをお勧めします。 Windows Virtual Desktop を確実にデプロイするためには、これらの URL のブロックを解除することが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、Windows Virtual Desktop のサイトとリソースにのみ対応しており、他のサービス (Azure Active Directory など) の URL は含まれません。
+>Windows Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-windows-virtual-desktop.md)」を参照してください。
+>
+>サービスの問題を防ぐために、URL ではなく FQDN タグまたはサービス タグを使用することをお勧めします。 記載した URL とタグは、Windows Virtual Desktop のサイトとリソースにのみ対応します。 他のサービス (Azure Active Directory など) の URL は含まれません。
 
 次の表は、Azure 仮想マシンからアクセスできるオプションの URL の一覧です。
 
@@ -180,20 +183,22 @@ Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、
 
 利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。 
 
-|オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|Windows Virtual Desktop エージェントの更新|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 マルチセッション、バージョン 1903|はい|はい|はい|はい|自動|
-|Windows 10 マルチセッション、バージョン 1809|はい|はい|いいえ|いいえ|自動|
-|Windows 10 Enterprise、バージョン 1903|はい|はい|はい|はい|自動|
-|Windows 10 Enterprise、バージョン 1809|はい|はい|いいえ|いいえ|自動|
-|Windows 7 Enterprise|はい|はい|いいえ|いいえ|マニュアル|
-|Windows Server 2019|はい|はい|いいえ|いいえ|自動|
-|Windows Server 2016|はい|はい|はい|はい|自動|
-|Windows Server 2012 R2|はい|はい|いいえ|いいえ|自動|
+|オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10 マルチセッション、バージョン 1903|はい|はい|はい|はい|
+|Windows 10 マルチセッション、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 10 Enterprise、バージョン 1903|はい|はい|はい|はい|
+|Windows 10 Enterprise、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 7 Enterprise|はい|はい|いいえ|いいえ|
+|Windows Server 2019|はい|はい|いいえ|いいえ|
+|Windows Server 2016|はい|はい|はい|はい|
+|Windows Server 2012 R2|はい|はい|いいえ|いいえ|
 
 ## <a name="next-steps"></a>次のステップ
 
-まずは、テナントを作成する必要があります。 テナントの作成方法については、テナント作成に関するチュートリアルに進んでください。
+Windows Virtual Desktop Fall 2019 リリースを使用している場合は、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」のチュートリアルを開始できます。
+
+Windows Virtual Desktop Spring 2020 リリースを使用している場合は、代わりにホスト プールを作成する必要があります。 作業を開始するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Windows Virtual Desktop でテナントを作成する](tenant-setup-azure-active-directory.md)
+> [Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)

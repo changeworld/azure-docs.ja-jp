@@ -7,12 +7,12 @@ ms.date: 3/30/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 726cd76916510f38c7c14cb29e64449fb8fd539f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 218edb146ee0107803561c6ba52cc42406b69746
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421016"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982787"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>クイック スタート:Python 用 Azure Key Vault クライアント ライブラリ
 
@@ -67,12 +67,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](../general/managed-identity.md)に関するページを参照してください。 ただし、このクイックスタートではわかりやすさを重視して、.NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
+クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](../general/managed-identity.md)に関するページを参照してください。
+
+ただし簡潔にするために、このクイックスタートではデスクトップ アプリケーションを作成します。デスクトップ アプリケーションでは、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。 サービス プリンシパルは、"http://&lt;my-unique-service-principle-name&gt;" の形式で一意の名前にする必要があります。
 
 Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
 ```
 
 この操作では、一連のキーと値のペアが返されます。 

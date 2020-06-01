@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94128c69f227ceff51968354048ec6610e3d7c4c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613928"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124399"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop でテナントを作成する
 
@@ -152,6 +152,8 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
+より詳細なチュートリアルについては、[Windows Virtual Desktop のラーニング パス](https://docs.microsoft.com/learn/paths/m365-wvd/)を参照してください。
 
 テナントを作成した後、Azure Active Directory でサービス プリンシパルを作成し、Windows Virtual Desktop 内でそれにロールを割り当てる必要があります。 サービス プリンシパルを使用することで、Azure Marketplace オファリングである Windows Virtual Desktop を正常にデプロイしてホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 

@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: bdc686284711fb39e6cedb18aea4d1f5c9d1d318
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 056dc7bbe29c3c963818ee2fca626be4e2be9645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421446"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983484"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ (SDK v3)
 
@@ -38,7 +38,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [.Net Core 2.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
+* [.Net Core 3.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。
 
 このクイックスタートでは、`dotnet`、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、Windows のコマンドを Windows ターミナル ([PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6)、[Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)、[Azure Cloud Shell](https://shell.azure.com/) など) で実行していることを前提としています。
@@ -99,12 +99,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](../general/managed-identity.md)に関するページを参照してください。 ただし、このクイックスタートではわかりやすさを重視して、.NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
+クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](../general/managed-identity.md)に関するページを参照してください。 
+
+ただし簡潔にするために、このクイックスタートでは NET コンソール アプリケーションを作成します。これは、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。 サービス プリンシパルは、"http://&lt;my-unique-service-principle-name&gt;" の形式で一意の名前にする必要があります。
 
 Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
 ```
 
 この操作では、一連のキーと値のペアが返されます。 

@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbd42668a0a1821e0ab7a6edc8ad05c79bfebe7d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82165724"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123555"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -295,17 +295,24 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
     # <a name="portal"></a>[ポータル](#tab/portal)
 
-    1. Azure portal にサインインし、ページの上部にある**検索**ボックスに関数アプリの名前を入力して、目的の関数アプリを検索します。 その結果から **App Service** リソースを選択します。
+    1. Azure portal にサインインし、"**関数アプリ**" を検索して選択します。
 
-    1. 左側のナビゲーション パネルの **[関数 (読み取り専用)]** で、目的の関数の名前を選択します。
+    1. 検証する関数を選択します。
 
-    1. 詳細パネルで **[</> 関数の URL の取得]** を選択します。
+    1. 左側のナビゲーション パネルで **[関数]** を選択し、検証する関数を選択します。
+
+        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+
     
-        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
+    1. **[関数の URL の取得]** を選択します。
 
-    1. ポップアップで **[default (Function key)]\(既定 (関数キー)\)** を選択し、 **[コピー]** を選択します。 `?code=` に続く文字列がキーです
+        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
-        ![Azure portal からの関数 URL のコピー](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
+    
+    1. ポップアップ ウィンドウで、 **[default (function key)]\(既定 (関数キー)\)** を選択し、URL をクリップボードにコピーします。 `?code=` に続く文字列がキーです
+
+        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+
 
     > [!NOTE]  
     > 関数アプリはコンテナーとしてデプロイされるため、ポータルでその関数コードを変更することはできません。 ローカル イメージでプロジェクトを更新して、再度イメージをレジストリにプッシュした後、Azure に再デプロイする必要があります。 後続のセクションで継続的デプロイを設定することができます。
@@ -340,11 +347,11 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
     ---
 
-1. 関数 URL をブラウザーのアドレス バーに貼り付けます。この URL の末尾にパラメーター `&name=Azure` を追加してください。 "Hello Azure" といったテキストがブラウザーに表示されます。
+1. 関数 URL をブラウザーのアドレス バーに貼り付けます。この URL の末尾にパラメーター `&name=Azure` を追加してください。 "Hello, Azure" のようなテキストがブラウザーに表示されます。
 
     ![ブラウザーでの関数の応答。](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-1. 承認をテストするために、URL から code= パラメーターを取り除き、関数から応答がないことを確認します。
+1. 承認をテストするために、URL から `code=` パラメーターを取り除き、関数から応答がないことを確認します。
 
 
 ## <a name="enable-continuous-deployment-to-azure"></a>Azure への継続的デプロイを有効にする

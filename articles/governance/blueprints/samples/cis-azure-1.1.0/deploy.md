@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルをデプロイする
 description: ブループリントのアーティファクト パラメーターの詳細を含む CIS Microsoft Azure Foundations Benchmark ブループリント サンプルのデプロイ手順。
-ms.date: 10/14/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f132ee47784eedf8d1ced7e0b67f957877d12ef
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74544523"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864472"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルをデプロイする
 
@@ -93,8 +93,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|\[プレビュー\]:CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|Network Watcher を有効にする必要があるリージョンの一覧|セミコロンで区切られたリージョンの一覧。 リージョンの完全な一覧を確認するには、Get-AzLocation を使用します。 例: eastus; eastus2|
-|\[プレビュー\]:CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|使用が承認されている仮想マシン拡張機能の一覧|セミコロンで区切られた拡張機能の一覧。仮想マシンの拡張機能の完全な一覧を確認するには、Get-AzVMExtensionImage を使用します。 例:AzureDiskEncryption; IaaSAntimalware|
+|CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|Network Watcher を有効にする必要があるリージョンの一覧|セミコロンで区切られたリージョンの一覧。 リージョンの完全な一覧を確認するには、Get-AzLocation を使用します。 例: eastus; eastus2|
+|CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|使用が承認されている仮想マシン拡張機能の一覧|セミコロンで区切られた拡張機能の一覧。 仮想マシン拡張機能の完全な一覧を参照するには、Get-AzVMExtensionImage をご使用ください。 例:AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>次のステップ
 
