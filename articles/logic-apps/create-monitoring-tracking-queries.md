@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ログでロジック アプリのクエリを表示および作成する
+title: Azure Monitor ログで Logic Apps のクエリを表示および作成する
 description: Azure Logic Apps の Azure Monitor ログでクエリを表示および作成する
 services: logic-apps
 ms.suite: integration
@@ -21,7 +21,7 @@ ms.locfileid: "76907314"
 
 * Log Analytics ワークスペース。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
 
-* Azure Monitor ログ記録が設定され、その情報を Log Analytics ワークスペースに送信するロジック アプリ。 [ロジック アプリの Azure Monitor ログを設定する方法](../logic-apps/monitor-logic-apps.md)を確認してください。
+* Azure Monitor ログ記録が設定され、その情報を Log Analytics ワークスペースに送信する Logic Apps。 [Logic Apps の Azure Monitor ログを設定する方法](../logic-apps/monitor-logic-apps.md)を確認してください。
 
 * 統合アカウントを使用している場合は、その情報を Log Analytics ワークスペースに送信するために、アカウントで Azure Monitor ログ記録が設定されていることを確認します。 [統合アカウントの Azure Monitor ログ記録を設定する方法](../logic-apps/monitor-b2b-messages-log-analytics.md)を確認してください。
 
