@@ -74,9 +74,9 @@
           href: logic-apps-add-run-inline-code.md
         - name: Azure Functions を使用してコードを追加および実行する
           href: logic-apps-azure-functions.md
-        - name: Azure Functions でロジック アプリを呼び出す
+        - name: Azure Functions で Logic Apps を呼び出す
           href: logic-apps-scenario-function-sb-trigger.md
-        - name: ロジック アプリを呼び出し、トリガーし、入れ子にする
+        - name: Logic Apps を呼び出し、トリガーし、入れ子にする
           href: logic-apps-http-endpoint.md
         - name: 改ページによる一括データの取得
           href: logic-apps-exceed-default-page-size-with-pagination.md
@@ -96,7 +96,7 @@
           href: handle-throttling-problems-429-errors.md
         - name: セキュリティで保護
           items:
-            - name: ロジック アプリのセキュリティを強化する
+            - name: Logic Apps のセキュリティを強化する
               href: logic-apps-securing-a-logic-app.md
             - name: マネージド ID による認証
               href: create-managed-service-identity.md
@@ -104,7 +104,7 @@
           href: custom-connector-overview.md
         - name: カスタム API を開発する
           items:
-            - name: ロジック アプリ用のカスタム API を作成する
+            - name: Logic Apps 用のカスタム API を作成する
               href: logic-apps-create-api-app.md
             - name: カスタム API の呼び出しのセキュリティを強化する
               href: logic-apps-custom-api-authentication.md
@@ -318,35 +318,35 @@
           href: ../connectors/connectors-create-api-yammer.md
     - name: 管理する
       items:
-        - name: ロジック アプリを管理する - Azure portal
+        - name: Logic Apps を管理する - Azure portal
           href: manage-logic-apps-with-azure-portal.md
-        - name: ロジック アプリを管理する - Visual Studio
+        - name: Logic Apps を管理する - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: 統合アカウントを管理する
           href: logic-apps-enterprise-integration-accounts.md
         - name: 統合サービス環境を管理する
           href: ise-manage-integration-service-environment.md
-        - name: ロジック アプリのリソースを移動する
+        - name: Logic Apps のリソースを移動する
           href: move-logic-app-resources.md
         - name: 最新のスキーマに移行する
           href: ../connectors/connectors-schema-migration.md
     - name: テスト
       items:
-        - name: モック データを使用してロジック アプリをテストする
+        - name: モック データを使用して Logic Apps をテストする
           href: test-logic-apps-mock-data-static-results.md
     - name: 配置
       items:
-        - name: 概要 - ロジック アプリ デプロイの自動化
+        - name: 概要 - Logic Apps デプロイの自動化
           href: logic-apps-azure-resource-manager-templates-overview.md
-        - name: ロジック アプリ テンプレートの作成
+        - name: Logic Apps テンプレートの作成
           href: logic-apps-create-azure-resource-manager-templates.md
-        - name: ロジック アプリ テンプレートのデプロイ
+        - name: Logic Apps テンプレートのデプロイ
           href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: モニター
       items:
-        - name: ロジック アプリの監視
+        - name: Logic Apps の監視
           href: monitor-logic-apps.md
-        - name: Azure Monitor ログでロジック アプリを監視する
+        - name: Azure Monitor ログで Logic Apps を監視する
           href: monitor-logic-apps-log-analytics.md
         - name: Azure Monitor ログで B2B メッセージを監視する
           href: monitor-b2b-messages-log-analytics.md
