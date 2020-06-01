@@ -1,5 +1,5 @@
 ---
-title: ロジック アプリの体験版 | Azure Marketplace
+title: Logic Apps の体験版 | Azure Marketplace
 description: Dynamics AX/CRM インスタンスまたは Azure 以外の他のリソースと接続する体験版を作成する方法について説明します。
 author: dsindona
 ms.service: marketplace
@@ -14,15 +14,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80278384"
 ---
-<a name="logic-app-test-drive"></a>ロジック アプリの体験版
+<a name="logic-app-test-drive"></a>Logic Apps の体験版
 ====================
 
 この記事は、AppSource にオファーがあり、Dynamics AX/CRM インスタンスまたは Azure 以外の他のリソースと接続する体験版を作成しようと考えている、発行元を対象としたものです。
 
-<a name="how-to-build-a-logic-app-test-drive"></a>ロジック アプリの体験版を作成する方法
+<a name="how-to-build-a-logic-app-test-drive"></a>Logic Apps の体験版を作成する方法
 -----------------------------------
 
-ロジック アプリの体験版に関するドキュメントは、現在はまだ、[Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) と [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) に関するものが GitHub にあります。詳しくはそちらをご覧ください。
+Logic Apps の体験版に関するドキュメントは、現在はまだ、[Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) と [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) に関するものが GitHub にあります。詳しくはそちらをご覧ください。
 
 <a name="how-to-publish-a-test-drive"></a>体験版の発行方法
 ---------------------------
@@ -57,13 +57,13 @@ ms.locfileid: "80278384"
 
 ### <a name="technical-configuration"></a>技術的構成
 
-次のセクションでは、体験版ロジック アプリを構成し、体験版インスタンスの動作を具体的に定義します。
+次のセクションでは、 Logic Apps の体験版を構成し、体験版インスタンスの動作を具体的に定義します。
 
 ![体験版の技術的構成](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **[Region]\(リージョン\)**  -  *[必須フィールド]* 選択したリージョンに体験版ロジック アプリのリソースがデプロイされます。
+- **[Region]\(リージョン\)**  -  *[必須フィールド]* 選択したリージョンに Logic Apps の体験版のリソースがデプロイされます。
 
-    *注:* ロジック アプリに、リージョンに格納されるカスタム リソースがある場合は、ここで必ずそのリージョンを選択します。 これを行う最善の方法としては、**ポータルでお使いの Azure サブスクリプションにローカルにロジック アプリを完全にデプロイし、動作を確認**した後で、この値を入力します。
+    *注:* Logic Apps に、リージョンに格納されるカスタム リソースがある場合は、ここで必ずそのリージョンを選択します。 これを行う最善の方法としては、**ポータルでお使いの Azure サブスクリプションにローカルに Logic Apps を完全にデプロイし、動作を確認**した後で、この値を入力します。
 
 - **[Maximum Concurrent Test Drives]\(同時に実行する体験版の最大数\)**  -  *[必須フィールド]* 選択したリージョンごとに既にデプロイされていてアクセスを待っている体験版インスタンスの数です。 顧客は、デプロイを待つことなくすぐにこの体験版にアクセスできます。
 
@@ -71,11 +71,11 @@ ms.locfileid: "80278384"
 
 - **[体験版の期間 (時間)] -** *[必須フィールド]* 体験版をアクティブなままにしておく期間の時間数です。 この期間が終わると、体験版は自動的に終了します。
 
-- **[Azure リソース グループの名前] -** *[必須フィールド]* ロジック アプリの体験版を保存するリソース グループの名前を指定します。
+- **[Azure リソース グループの名前] -** *[必須フィールド]* Logic Apps の体験版を保存するリソース グループの名前を指定します。
 
-- **[Assign Logic App Name]\(ロジック アプリ名の割り当て\) -** *[必須フィールド]* 顧客が取得する前に体験版でユーザーを割り当てるために使用するロジック アプリを指定します。そのロジック アプリの名前を入力します。 このファイルが上記のリソース グループに保存されることを確認します。
+- **[Assign Logic App Name]\(Logic Apps 名の割り当て\) -** *[必須フィールド]* 顧客が取得する前に体験版でユーザーを割り当てるために使用する Logic Apps を指定します。その Logic Apps の名前を入力します。 このファイルが上記のリソース グループに保存されることを確認します。
 
-- **[Deprovision Logic App Name]\(ロジック アプリ名のプロビジョニング解除\) -** *[必須フィールド]* 体験版で作成されたすべてのリソースをプロビジョニング解除するためのロジック アプリの名前を指定します。 このファイルが上記のリソース グループに保存されることを確認します。
+- **[Deprovision Logic App Name]\(Logic Apps 名のプロビジョニング解除\) -** *[必須フィールド]* 体験版で作成されたすべてのリソースをプロビジョニング解除するための Logic Apps の名前を指定します。 このファイルが上記のリソース グループに保存されることを確認します。
 
 - **[Access Information]\(アクセス情報\) -** *[必須フィールド]* 顧客が体験版を取得すると、アクセス情報が顧客に対して表示されます。 これらの説明は、体験版 Resource Manager テンプレートからの役に立つ出力パラメーターを共有するためのものです。 出力パラメーターを含めるには、二重中かっこを使用し (例: **{{outputname}}** )、正しい場所に挿入します。 (フロントエンドでレンダリングするため、HTML 文字列形式にすることをお勧めします)。
 
