@@ -29,7 +29,7 @@ API ルートをセキュリティで保護する方法については、[ルー
 
 ## <a name="create-a-git-repository"></a>Git リポジトリを作成する 
 
-次の手順では、新しいリポジトリを作成し、お使いのコンピューターにファイルを複製する方法を示します。
+次の手順では、新しいリポジトリを作成し、お使いのコンピューターにファイルをクローンする方法を示します。
 
 1. https://github.com/staticwebdev/vanilla-basic/generate に移動して、新しいリポジトリを作成します。
 1. _[リポジトリ名]_ ボックスに、「**my-vanilla-api**」と入力します。
@@ -37,14 +37,14 @@ API ルートをセキュリティで保護する方法については、[ルー
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
 
-プロジェクトが作成されたら、Visual Studio Code を使用して Git リポジトリを複製できます。
+プロジェクトが作成されたら、Visual Studio Code を使用して Git リポジトリをクローンできます。
 
 1. コマンド パレットでコマンドを開くには、**F1** キーを押します。
 1. URL を _Git:Clone_ プロンプトに貼り付け、**Enter** キーを押します。
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Visual Studio Code を使用して GitHub プロジェクトを複製する":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Visual Studio Code を使用して GitHub プロジェクトをクローンする":::
 
-   :::image type="content" source="media/add-api/github-clone-url.png" alt-text="Visual Studio Code を使用して GitHub プロジェクトを複製する":::
+   :::image type="content" source="media/add-api/github-clone-url.png" alt-text="Visual Studio Code を使用して GitHub プロジェクトをクローンする":::
 
 
 ## <a name="create-your-local-project"></a>ローカル プロジェクトを作成する
