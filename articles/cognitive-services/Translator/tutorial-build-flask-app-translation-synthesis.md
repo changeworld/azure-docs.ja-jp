@@ -59,7 +59,7 @@ Flask は、Web アプリケーションを作成するためのマイクロフ�
 ## <a name="create-an-account-and-subscribe-to-resources"></a>アカウントを作成してリソースをサブスクライブする
 
 前述のように、このチュートリアルには 3 つのサブスクリプション キーが必要となります。 つまり、次の目的に使用するリソースをご自分の Azure アカウント内に作成する必要があります。
-* [変換者]
+* Translator
 * Text Analytics
 * Speech Services
 
