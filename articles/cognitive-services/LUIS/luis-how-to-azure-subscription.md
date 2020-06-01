@@ -124,9 +124,9 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
     |Type|設定|値|
     |--|--|--|
-    |ヘッダー|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
-    |ヘッダー|`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
-    |ヘッダー|`Content-type`|`application/json`|
+    |Header|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
+    |Header|`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
+    |Header|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS アプリ ID。
     |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
