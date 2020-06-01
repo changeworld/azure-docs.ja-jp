@@ -49,7 +49,9 @@
       href: spring-cloud-quotas.md
     - name: Azure Spring Cloud におけるメトリックについて
       href: spring-cloud-concept-metrics.md
-    - name: Azure Spring Cloud サービスのセキュリティ コントロール
+    - name: Azure Spring Boot アクチュエータを使用したアプリの管理と監視
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
+    - name: Azure Spring Cloud Service のセキュリティ コントロール
       href: spring-cloud-concept-security-controls.md
     - name: Azure Spring Cloud におけるアプリの状態について
       href: spring-cloud-concept-app-status.md

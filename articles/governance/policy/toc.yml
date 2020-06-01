@@ -60,20 +60,34 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: リソースのデプロイ
           href: ./samples/pattern-deploy-resources.md
+    - name: 法令順守の組み込み
+      items:
+        - name: Azure セキュリティ ベンチマーク
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
 - name: 概念
   items:
-    - name: Azure Policy の定義の構造
+    - name: 定義の構造
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: Policy の効果について
+    - name: 効果を理解する
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure Policy の割り当ての構造
+    - name: イニシアチブ構造
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: 割り当ての構造
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: 新しいポリシーの影響の評価
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 規制コンプライアンス
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: コードとしてのポリシー ワークフローの設計
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -127,6 +141,8 @@
         - name: Azure Monitor for VMs の有効化 (プレビュー)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: トラブルシューティング
+  href: ./troubleshoot/general.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -198,7 +214,7 @@
     - name: GitHub - コミュニティ ポリシー リポジトリ
       href: 'https://github.com/Azure/Community-Policy'
     - name: Azure Policy 用の Microsoft Q&A
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: ガバナンスに関する YouTube チャンネル
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: ゲスト構成のビデオ

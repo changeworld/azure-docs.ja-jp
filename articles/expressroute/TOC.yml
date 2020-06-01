@@ -24,28 +24,28 @@
           href: work-remotely-support.md
     - name: 接続モデル
       href: expressroute-connectivity-models.md
-    - name: 回線とピアリング
-      href: expressroute-circuit-peerings.md
     - name: 場所とパートナー
       items:
         - name: 場所別のプロバイダー
           href: expressroute-locations-providers.md
         - name: プロバイダー別の場所
           href: expressroute-locations.md
-    - name: 仮想ネットワーク ゲートウェイについて
-      href: expressroute-about-virtual-network-gateways.md
     - name: 前提条件
       href: expressroute-prerequisites.md
     - name: Workflows
       href: expressroute-workflows.md
     - name: ルーティングの要件
       href: expressroute-routing.md
+    - name: 回線とピアリング
+      items:
+        - name: 回線とピアリングについて
+          href: expressroute-circuit-peerings.md
+        - name: クラシックから Resource Manager への回線の移行
+          href: expressroute-move.md
     - name: ExpressRoute 経由での BFD
       href: expressroute-bfd.md
     - name: QoS の要件
       href: expressroute-qos.md
-    - name: クラシックから Resource Manager への回線の移行について
-      href: expressroute-move.md
     - name: ExpressRoute FastPath について
       href: about-fastpath.md
     - name: ExpressRoute Direct について
@@ -54,6 +54,10 @@
       href: expressroute-global-reach.md
     - name: ExpressRoute の暗号化について
       href: expressroute-about-encryption.md
+    - name: セキュリティ コントロール
+      href: expressroute-security-controls.md
+    - name: 仮想ネットワーク ゲートウェイについて
+      href: expressroute-about-virtual-network-gateways.md
     - name: Azure をパブリック クラウドに接続する
       href: expressroute-connect-azure-to-public-cloud.md
     - name: バックエンド接続の相互運用性
@@ -68,11 +72,9 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: ネットワーク間接続
       href: cross-network-connectivity.md
-    - name: 組み込みのセキュリティ制御
-      href: expressroute-security-controls.md
-    - name: 高可用性を実現する設計
+    - name: 高可用性 - 設計
       href: designing-for-high-availability-with-expressroute.md
-    - name: ディザスター リカバリーの設計
+    - name: ディザスター リカバリー - 計画
       items:
         - name: プライベート ピアリング
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
@@ -165,6 +167,8 @@
           href: expressroute-monitoring-metrics-alerts.md
         - name: ExpressRoute に使用する Network Performance Monitor の構成
           href: how-to-npm.md
+        - name: カスタム アラートを構成して、アドバタイズされるルートを監視する
+          href: how-to-custom-route-alert.md
     - name: 従来および以前の記事
       items:
         - name: 回線の変更

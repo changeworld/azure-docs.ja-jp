@@ -20,6 +20,8 @@
       href: create-private-link-service-powershell.md
     - name: プライベート リンク サービスの作成 - Azure CLI
       href: create-private-link-service-cli.md
+    - name: Private Link サービスの作成 - Resource Manager テンプレート
+      href: create-private-link-service-template.md
 - name: 概念
   items:
     - name: プライベート エンドポイント

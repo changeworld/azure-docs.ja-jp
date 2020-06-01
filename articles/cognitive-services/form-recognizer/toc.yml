@@ -60,6 +60,8 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Container Instances の使用
           href: deploy-form-recognizer-on-container-instances.md
+    - name: ディザスター リカバリーのモデルをコピーする
+      href: disaster-recovery.md
 - name: リファレンス
   items:
     - name: Form Recognizer API v2.0

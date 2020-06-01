@@ -67,15 +67,17 @@
         - name: 初めての ML 実験を作成する (R)
           href: tutorial-1st-r-experiment.md
     - name: Machine Learning CLI
-      href: tutorial-train-deploy-model-cli.md
+      items:
+        - name: CLI を使用したトレーニングとデプロイ
+          href: tutorial-train-deploy-model-cli.md
+        - name: Resource Manager テンプレートを使用したワークスペースの作成
+          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning 拡張機能の設定
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow 画像分類モデルのトレーニングとデプロイ
           href: tutorial-train-deploy-image-classification-model-vscode.md
-    - name: Resource Manager テンプレートを使用したワークスペースの作成
-      href: tutorial-resource-manager-workspace.md
 - name: サンプル
   items:
     - name: Jupyter Notebooks

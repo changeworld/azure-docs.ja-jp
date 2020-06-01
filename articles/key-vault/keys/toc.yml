@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: チュートリアル
   items:
-    - name: HSM で保護されたキーをインポートする
+    - name: HSM で保護されたキーをインポートする (概要)
       href: hsm-protected-keys.md
-    - name: HSM で保護されたキーをインポートする (プレビュー)
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: HSM で保護されたキーをインポートする (レガシ)
-      href: hsm-protected-keys-legacy.md
+    - name: HSM で保護されたキーをインポートする (BYOK)
+      href: hsm-protected-keys-byok.md
+    - name: HSM で保護されたキーをインポートする (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: サンプル
   items:
     - name: Azure Policy の組み込み
@@ -47,6 +47,8 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Bring Your Own Key の仕様
+      href: byok-specification.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

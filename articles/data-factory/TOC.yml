@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: データ ファクトリの作成 - Resource Manager テンプレート
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
+      href: quickstart-enable-customer-managed-key.md
     - name: データ フローの作成
       href: data-flow-create.md
 - name: チュートリアル
@@ -39,7 +41,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: オンプレミスの SQL Server データベースから Azure Blob Storage
+        - name: SQL Server データベースから Azure Blob Storage
           items:
             - name: データのコピー ツール
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +78,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: 複数のオンプレミス SQL Server テーブルから
+            - name: 複数の SQL Server データベース テーブルから
               items:
                 - name: ユーザー インターフェイス (UI)
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -605,6 +607,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure-SSIS IR の Azure AD 認証の有効化
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Windows 認証でのデータへの接続
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: ファイルの保存とファイル共有への接続
+          href: ssis-azure-files-file-shares.md
         - name: Azure-SSIS IR の Enterprise Edition のプロビジョニング
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Azure-SSIS IR の組み込みおよびプレインストール コンポーネント
@@ -623,6 +629,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSMS を使用した SSIS ジョブの移行
           href: how-to-migrate-ssis-job-ssms.md
+        - name: Azure-SSIS IR パッケージ ストアを使用したパッケージの管理
+          href: azure-ssis-integration-runtime-package-store.md
     - name: トリガーの作成
       items:
         - name: イベントベースのトリガーの作成

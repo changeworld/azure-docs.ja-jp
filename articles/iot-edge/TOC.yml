@@ -177,6 +177,8 @@
       items:
         - name: IoT Edge デプロイの監視
           href: how-to-monitor-iot-edge-deployments.md
+        - name: モジュール ツインの監視
+          href: how-to-monitor-module-twins.md
         - name: EdgeAgent ダイレクト メソッド
           href: how-to-edgeagent-direct-method.md
     - name: ゲートウェイとしての IoT Edge デバイスの使用

@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: 仮想ハブの有効なルートを表示する
           href: effective-routes-virtual-hub.md
+        - name: 複数の ISP リンク - Azure パスの選択
+          href: path-selection-multiple-links.md
     - name: Security
       items:
         - name: Azure Firewall をハブにデプロイする

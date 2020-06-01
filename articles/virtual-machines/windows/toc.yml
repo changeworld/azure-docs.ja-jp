@@ -449,6 +449,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: VM の作成
                   items:
+                    - name: 専用イメージ
+                      href: ../vm-specialized-image-version-cli.md
                     - name: 一般化されたイメージ
                       href: ../vm-generalized-image-version-cli.md
                 - name: イメージ リソースを更新する
@@ -664,7 +666,7 @@
                       items:
                         - name: 仮想マシン
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: VM スケール セット
+                        - name: スケール セット
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Event Hubs への送信
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
