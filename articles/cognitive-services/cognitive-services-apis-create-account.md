@@ -40,7 +40,7 @@ ms.locfileid: "83590810"
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
     | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Text Analytics   |
-    | [変換者]  | Bing Search v7 <br>(Web、画像、ニュース、ビデオ、ビジュアル) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
+    | Translator  | Bing Search v7 <br>(Web、画像、ニュース、ビデオ、ビジュアル) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
     | Bing Spell Check |                                                      |                    |                               |                  |
     
     #### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
