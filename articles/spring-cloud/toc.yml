@@ -73,6 +73,8 @@
       href: spring-cloud-howto-persistent-storage.md
     - name: Azure Spring Cloud と Azure の負荷分散ソリューションを統合する
       href: spring-cloud-howto-integrate-azure-load-balancers.md
+    - name: Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
 - name: Azure Spring Cloud への DevOps デプロイ
   items:
     - name: Azure DevOps を使用した CI/CD

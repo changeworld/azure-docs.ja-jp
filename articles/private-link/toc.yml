@@ -12,6 +12,8 @@
       href: create-private-endpoint-powershell.md
     - name: プライベート エンドポイントの作成 - Azure CLI
       href: create-private-endpoint-cli.md
+    - name: プライベート エンドポイントの作成 - ARM テンプレート
+      href: create-private-endpoint-template.md
     - name: プライベート リンク サービスの作成 - ポータル
       href: create-private-link-service-portal.md
     - name: プライベート リンク サービスの作成 - PowerShell

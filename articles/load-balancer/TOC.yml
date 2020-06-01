@@ -60,8 +60,6 @@
       href: load-balancer-multivip-overview.md
     - name: 送信接続
       href: load-balancer-outbound-connections.md
-    - name: 送信の規則
-      href: load-balancer-outbound-rules-overview.md
     - name: アイドル タイムアウトの TCP リセット
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer と可用性ゾーン
@@ -135,12 +133,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部ロード バランサー - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: トラブルシューティング
-      items:
-        - name: Azure Load Balancer のトラブルシューティング
-          href: load-balancer-troubleshoot.md
-        - name: 一般的なデプロイ エラーのトラブルシューティング
-          href: load-balancer-common-deployment-errors.md
+- name: トラブルシューティング
+  items:
+    - name: Azure Load Balancer のトラブルシューティング
+      href: load-balancer-troubleshoot.md
+    - name: 一般的なデプロイ エラーのトラブルシューティング
+      href: load-balancer-common-deployment-errors.md
+    - name: 送信接続に関する一般的な問題の解決
+      href: troubleshoot-outbound-connection.md
 - name: リファレンス
   items:
     - name: コード サンプル

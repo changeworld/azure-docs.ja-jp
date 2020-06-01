@@ -80,8 +80,10 @@
           href: virtual-network-for-azure-services.md
     - name: IP サービス
       items:
-        - name: IP アドレス指定
-          href: virtual-network-ip-addresses-overview-arm.md
+        - name: パブリック IP
+          href: public-ip-addresses.md
+        - name: プライベート IP
+          href: private-ip-addresses.md
         - name: パブリック IP プレフィックス
           href: public-ip-address-prefix.md
         - name: Azure VNet の IPv6

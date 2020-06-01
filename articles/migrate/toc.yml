@@ -128,6 +128,8 @@
       href: how-to-migrate.md
     - name: SSE と CMK を使用して暗号化された Azure VM への VMware VN の移行
       href: how-to-migrate-vmware-vms-with-cmk-disks.md
+    - name: Windows 2003 サーバーの移行を準備する
+      href: prepare-windows-server-2003-migration.md
     - name: マシンの移行の準備
       href: prepare-for-migration.md
     - name: Azure Migrate プロジェクトの削除
