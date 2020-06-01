@@ -87,7 +87,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 1. **[リソースの作成]** をクリックします。
 1. **Static Web Apps** を検索します。
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします。
-1. **[作成]**
+1. **[作成]** をクリックします。
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 
