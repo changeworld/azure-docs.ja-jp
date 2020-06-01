@@ -44,7 +44,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 | ヘッダー  | 説明 |
 | ------ | ----------- |
-| 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
+| Authentication header(s) <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
 | Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
 | Content-Length   | "**必須の要求ヘッダー**" です。<br/>要求本文の長さです。 |
 | X-ClientTraceId   | **オプション**。<br/>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。 |
