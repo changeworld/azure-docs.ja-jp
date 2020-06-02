@@ -90,7 +90,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI プラグイン
-      href: spring-cloud-cli-reference.md
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
     - name: リソース
       href: spring-cloud-resources.md
     - name: よく寄せられる質問

@@ -50,6 +50,8 @@
               href: database/advanced-data-security.md
             - name: 高度な脅威保護
               href: database/threat-detection-overview.md
+            - name: データの検出と分類
+              href: database/data-discovery-and-classification-overview.md
             - name: 動的データ マスク
               href: database/dynamic-data-masking-overview.md
             - name: SQL 脆弱性評価
@@ -73,8 +75,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Bring Your Own Key (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: データの検出と分類
-                  href: database/data-discovery-and-classification-overview.md
         - name: ビジネス継続性
           displayName: 'Backup, back up, restore, recovery'
           items:

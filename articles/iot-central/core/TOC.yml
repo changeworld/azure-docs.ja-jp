@@ -123,6 +123,8 @@
               href: howto-customize-ui.md
             - name: アプリケーションのエクスポート
               href: howto-use-app-templates.md
+            - name: アプリケーションの正常性を監視する
+              href: howto-monitor-application-health.md
         - name: 他の場所からの管理
           items:
             - name: Azure portal からの管理
