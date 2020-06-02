@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131210"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124586"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -58,7 +58,7 @@ ms.locfileid: "82131210"
 数週間のうちに、Microsoft はこれを変更し、すべてのアカウント (試用版および有料版) に [Video Indexer Web サイト](https://www.videoindexer.ai/)の URL を返すようになります。
 
     内部 URL を使用しないでください。[Video Indexer パブリック API](https://api-portal.videoindexer.ai/) を使用する必要があります。
-* Video Indexer URL をアプリケーションに埋め込んでいて、URL が [Video Indexer Web サイト](https://www.videoindexer.ai/) または [Video Indexer API エンドポイント](https://api.videoindexer.ai)をポイントしておらず、リージョン エンドポイント (`https://wus2.videoindexer.ai` など) をポイントしている場合は、URL を再生成してください。
+* Video Indexer URL をアプリケーションに埋め込んでいて、URL が [Video Indexer Web サイト](https://www.videoindexer.ai/)も Video Indexer API エンドポイント (`https://api.videoindexer.ai`) もポイントしておらず、リージョン エンドポイント (`https://wus2.videoindexer.ai` など) をポイントしている場合は、URL を再生成してください。
 
    次のいずれかでこれを行うことができます。
 
