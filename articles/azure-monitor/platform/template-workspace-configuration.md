@@ -39,10 +39,10 @@ ms.locfileid: "81768119"
 
 | リソース | リソースの種類 | API バージョン |
 |:---|:---|:---|
-| ワークスペース   | workspaces    | 2017-03-15-preview |
-| 検索      | savedSearches | 2015-03-20 |
-| データ ソース | datasources   | 2015-11-01-preview |
-| 解決策    | solutions     | 2015-11-01-preview |
+| Workspace   | workspaces    | 2017-03-15-preview |
+| Search      | savedSearches | 2015-03-20 |
+| Data source | datasources   | 2015-11-01-preview |
+| Solution    | solutions     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
