@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/24/2020
-ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80247199"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682469"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
-<a name="new-service-name"></a>
-
-## <a name="new-service-name"></a>新しいサービス名
-
-Azure Search は、コア操作での拡張された (ただし、省略可能な) 認知スキルと AI 処理の使用を反映するために、**Azure Cognitive Search** に名前が変更されました。 API のバージョン、NuGet のパッケージ、名前空間、およびエンドポイントは変更されません。 新規および既存の検索ソリューションは、サービス名の変更の影響を受けません。
-
 ## <a name="feature-announcements"></a>機能のお知らせ
+
+### <a name="may-2020-microsoft-build"></a>2020 年 5 月 (Microsoft Build)
+
++ [デバッグ セッション](cognitive-search-debug-session.md)機能は、現在プレビュー段階です。 [サインアップしてアクセス権を要求します](https://aka.ms/DebugSessions)。 デバッグ セッションには、スキルセットに関する問題を調査して解決するためのポータル ベースのインターフェイスが用意されています。 デバッグ セッションで作成された修正は、運用環境のスキルセットに保存できます。 [このチュートリアル](cognitive-search-tutorial-debug-sessions.md)で作業を開始します。
+
++ セキュリティの強化には、パブリック インターネットでアクセスできない[プライベートの検索エンドポイント (プレビュー) を設定する](service-create-private-endpoint.md)機能が含まれています。 また、[組み込みのファイアウォール サポート (プレビュー) の IP 規則を構成する](service-configure-firewall.md)こともできます。
+
++ [システム マネージド ID (プレビュー)](search-howto-managed-identities-data-sources.md) を使用して、インデックス作成用の Azure データ ソースへの接続を設定します。 Azure SQL Database、Azure Cosmos DB、Azure Storage などの Azure データ ソースからコンテンツを取り込む[インデクサー](search-indexer-overview.md)に適用されます。
+
++ [scoringStatistics=global query parameter](index-similarity-and-scoring.md#scoring-statistics) を使用して、検索スコアを計算する方法の基準を、シャードあたりからすべてのシャードに変更します。
 
 ### <a name="march-2020"></a>2020 年 3 月
 
@@ -37,7 +41,7 @@ Azure Search は、コア操作での拡張された (ただし、省略可能�
 
 + [PII 検出 (プレビュー)](cognitive-search-skill-pii-detection.md) は、入力テキストから個人を特定できる情報を抽出する認知スキルであり、インデックス作成中に使用されます。入力テキストから個人を特定できる情報をさまざまな方法でマスクするためのオプションがあります。
 
-+ [カスタム エンティティの参照 (プレビュー)](cognitive-search-skill-custom-entity-lookup.md ) では、ユーザーが定義したカスタムの単語と語句のリストからテキストが検索されます。 このリストを使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルでは、ある程度のあいまい一致もサポートされており、類似しているが完全一致ではない一致を見つけるために適用できます。 
++ [カスタム エンティティの参照 (プレビュー)](cognitive-search-skill-custom-entity-lookup.md ) では、ユーザーが定義したカスタムの単語と語句のリストからテキストが検索されます。 このリストを使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。 
 
 ### <a name="january-2020"></a>2020 年 1 月
 
@@ -45,7 +49,7 @@ Azure Search は、コア操作での拡張された (ただし、省略可能�
 
 + 検索サービスへのプライベート アクセスは、次の 2 つのメカニズムで利用できます (どちらも現在プレビュー段階です)。
 
-  + Management REST API `api-version=2019-10-01-Preview` を使用してサービスを作成することにより、特定の IP アドレスにアクセスを制限できます。 プレビュー API の **CreateOrUpdate API** には、新しい **IpRule** および [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) プロパティがあります。 このプレビュー機能は、特定のリージョンで使用できます。 詳しくは、「[Management REST API の使用方法](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)」をご覧ください。
+  + Management REST API `api-version=2019-10-01-Preview` を使用してサービスを作成することにより、特定の IP アドレスにアクセスを制限できます。 プレビュー API の [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) には、新しい **IpRule** および **NetworkRuleSet** プロパティがあります。 このプレビュー機能は、特定のリージョンで使用できます。 詳しくは、「[Management REST API の使用方法](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)」をご覧ください。
 
   + 現在はアクセスが制限されたプレビューで利用でき、同じ仮想ネットワーク上のクライアントからの接続に対して Azure プライベート エンドポイントをサポートする Azure Search Service をプロビジョニングすることができます。 詳しくは、[安全な接続のためのプライベート エンドポイントの作成](service-create-private-endpoint.md)に関する記事をご覧ください。
 
@@ -73,6 +77,12 @@ Azure Search は、コア操作での拡張された (ただし、省略可能�
 ### <a name="july-2019"></a>2019 年 7 月
 
 + [Azure Government クラウド](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)で一般提供されています。
+
+<a name="new-service-name"></a>
+
+## <a name="new-service-name"></a>新しいサービス名
+
+Azure Search は、コア操作での拡張された (ただし、省略可能な) 認知スキルと AI 処理の使用を反映するために、**Azure Cognitive Search** に名前が変更されました。 API のバージョン、NuGet のパッケージ、名前空間、およびエンドポイントは変更されません。 新規および既存の検索ソリューションは、サービス名の変更の影響を受けません。
 
 ## <a name="service-updates"></a>サービスの更新情報
 

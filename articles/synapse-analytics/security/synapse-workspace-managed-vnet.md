@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 623b6325b88f42f0076c84a221864762cd3918f9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419486"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645231"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics のマネージド仮想ネットワーク (プレビュー)
 
@@ -29,7 +29,7 @@ Azure Synapse ワークスペースを作成するときに、そのワークス
 - Spark クラスター用のサブネットをピーク負荷に基づいて自分で作成する必要がありません。
 - マネージド ワークスペース VNet は、マネージド プライベート エンドポイントと共に、データ流出への保護対策となります。 マネージド プライベート エンドポイントは、マネージド ワークスペース VNet が関連付けられているワークスペースにしか作成できません。
 
-マネージド ワークスペース VNet が関連付けられたワークスペースを作成することによって、そのワークスペースのネットワークは、他のワークスペースから確実に分離されます。 Azure Synapse のワークスペースには、データ統合、Apache Spark、SQL プール、SQL オンデマンドなど、さまざまな分析機能が用意されています。
+マネージド ワークスペース VNet が関連付けられたワークスペースを作成することによって、そのワークスペースのネットワークは、他のワークスペースから確実に分離されます。 Azure Synapse のワークスペースには、さまざまな分析機能が用意されています。データ統合、Apache Spark、SQL プール、SQL オンデマンド。
 
 マネージド ワークスペース VNet が関連付けられているワークスペースには、データ統合および Spark リソースがデプロイされます。 さらに、マネージド ワークスペース VNet では、Spark のアクティビティに関して、ユーザーレベルの分離性が確保されます。それぞれの Spark クラスターが独自のサブネットに配置されるためです。
 
@@ -39,6 +39,8 @@ SQL プールと SQL オンデマンドはマルチテナントの機能であ�
 >このワークスペースの構成は、ワークスペースの作成後に変更することはできません。 たとえば、マネージド ワークスペース VNet が関連付けられていないワークスペースを再構成して、VNet を関連付けることはできません。 同様に、マネージド ワークスペース VNet が関連付けられているワークスペースを再構成して、VNet の関連付けを解除することもできません。
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>マネージド ワークスペース VNet を使用して Azure Synapse ワークスペースを作成する
+
+まだ登録していない場合、ネットワーク リソース プロバイダーを登録します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 [登録](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)時、リソース プロバイダーの一覧から *Microsoft.Network* を選択します。
 
 マネージド ワークスペース VNet が関連付けられた Azure Synapse ワークスペースを作成するには、Azure portal の **[セキュリティとネットワーク]** タブを選択し、 **[マネージド仮想ネットワークの有効化]** チェック ボックスをオンにします。
 
@@ -50,7 +52,7 @@ SQL プールと SQL オンデマンドはマルチテナントの機能であ�
 ![マネージド ワークスペース VNet を有効にする](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->マネージド ワークスペース VNet からのアウトバウンド トラフィックは将来すべてブロックされます。 データ ソースへの接続にはすべて、マネージド プライベート エンドポイントの使用をお勧めします。
+>マネージド プライベート エンドポイント経由を除き、マネージド ワークスペース VNet からのアウトバウンド トラフィックは将来すべてブロックされます。 Azure のデータ ソースとの接続にはすべて、ワークスペースに外部となるマネージド プライベート エンドポイントを作成することをお勧めします。 
 
 Azure Synapse ワークスペースがマネージド ワークスペース VNet に関連付けられているかどうかは、Azure portal の **[概要]** を選択して確認できます。
 

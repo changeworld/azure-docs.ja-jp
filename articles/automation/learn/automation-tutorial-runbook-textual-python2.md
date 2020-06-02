@@ -1,17 +1,17 @@
 ---
 title: Azure Automation で Python Runbook を作成する
-description: 簡単な Python Runbook を作成、テスト、発行する方法を説明するチュートリアルです。
+description: この記事では、シンプルな Python Runbook を作成、テスト、発行する方法を説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2b20796fdcf71ccfb60c519d081b42fba982f0b6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608696"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714476"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>チュートリアル:Python Runbook を作成する
 
@@ -79,13 +79,11 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 ## <a name="publish-and-start-the-runbook"></a>Runbook を発行して開始する
 
-前の手順で作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。
-Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。
-この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
+前の手順で作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。 Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 
-2. **[Runbook]** ページで左へスクロールして Runbook を表示すると、 **[編集状態]** は **[発行済み]** になっているはずです。
+2. [Runbook] ページで左へスクロールして Runbook を表示すると、 **[編集状態]** は **[発行済み]** になります。
 
 3. 右にスクロールして戻り、**MyFirstRunbook-Python** のウィンドウを表示します。
 
@@ -246,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>次のステップ
 
-- PowerShell Runbook の使用を開始するには、「[PowerShell Runbook を作成する](automation-tutorial-runbook-textual-powershell.md)」を参照してください。
-- グラフィカル Runbook の使用を開始するには、「[グラフィカル Runbook を作成する](automation-tutorial-runbook-graphical.md)」を参照してください。
-- PowerShell Workflow Runbook の使用を開始するには、「[PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)」を参照してください。
-- Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](../automation-runbook-types.md)」を参照してください。
-- Python を使用した Azure の開発については、「[Python 開発者向けの Azure](/azure/python/)」をご覧ください。
-- サンプル Python 2 Runbook を表示するには、[Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) を参照してください。
+- [PowerShell Runbook を作成する](automation-tutorial-runbook-textual-powershell.md)
+- [グラフィック Runbook を作成する](automation-tutorial-runbook-graphical.md)
+- [PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)
+- [Azure Automation の Runbook の種類](../automation-runbook-types.md)
+- [Python 開発者向けの Azure](/azure/python/)
+- [Azure Automation の GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)

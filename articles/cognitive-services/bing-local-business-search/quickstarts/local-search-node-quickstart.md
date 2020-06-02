@@ -8,40 +8,38 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: d366195f9cd72e6baa88c17203ae93cbbc6cbe6a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3bb31c36e8c614a72b86f95cb7e7d1c588692f97
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475540"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873072"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>クイック スタート: Node.js を使用して Bing Local Business Search API にクエリを送信する
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Local Business Search API にクエリを送信する
 
-このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは Node.js で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
+このクイックスタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求を送信する方法について説明します。 このシンプルなアプリケーションは Node.js で記述されていますが、この API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
-このサンプル アプリケーションでは、検索クエリ `hotel in Bellevue` に対する API からのローカルな応答データを取得します。
+このサンプル アプリケーションでは、検索クエリについて、API からのローカルな応答データを取得します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * 最新バージョンの [Node.js](https://nodejs.org/en/download/)。
+* [JavaScript Request ライブラリ](https://github.com/request/request)。
+* [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API。 このクイックスタートには、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版をアクティブにするときに提供される API キーを保存しておきましょう。 詳細については、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」を参照してください。
 
-* [JavaScript Request ライブラリ](https://github.com/request/request)
-
-Bing API を使用して [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版で提供されるアクセス キーを使用します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="code-scenario"></a>シナリオのコードを書く
 
-以下のコードで要求を定義して送信します。 これは、次の手順で実装されます。
+次のコードでは、要求を定義して送信します。この要求は、次の手順で実装されます。
 
 1. エンドポイントをホストとパスで指定する変数を宣言します。
 2. クエリを指定し、クエリ パラメーターを追加します。
 3. 応答のハンドラー関数を作成します。
-4. 要求を作成し、Ocp-Apim-Subscription-Key ヘッダーを追加する Search 関数を定義します。
-5. 検索機能を実行します。
+4. 要求を作成し、`Ocp-Apim-Subscription-Key` ヘッダーを追加する search 関数を定義します。
+5. search 関数を実行します。
 
-このデモの完全なコードを次に示します。
 
 ```javascript
 'use strict';
@@ -94,6 +92,6 @@ Search();
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Local Business Search のクイック スタート](local-quickstart.md)
+* [Local Business Search (C#) のクイック スタート](local-quickstart.md)
 * [Local Business Search (Java) のクイック スタート](local-search-java-quickstart.md)
 * [Local Business Search (Python) のクイック スタート](local-search-python-quickstart.md)

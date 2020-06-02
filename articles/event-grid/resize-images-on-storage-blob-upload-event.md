@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482194"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652728"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -192,15 +192,15 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
 
 イベント サブスクリプションは、どのプロバイダー生成イベントを特定のエンドポイントに送信するかを示します。 この場合、エンドポイントは関数によって公開されます。 Azure Portal で関数に通知を送信するイベント サブスクリプションを作成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[すべてのサービス]** を選択し、 **[Function App]** を選択します。
+1. [Azure portal](https://portal.azure.com) のページの上部で `Function App` を検索して選択し、先ほど作成した関数アプリを選択します。 **[関数]** を選択し、**Thumbnail** 関数を選択します。
 
-    ![Azure portal で [Function App] に移動する](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="ポータルで Thumbnail 関数を選択する":::
 
-2. 目的の関数アプリを展開して、**Thumbnail** 関数を選択し、 **[Event Grid サブスクリプションの追加]** を選択します。
+1.  **[統合]** を選択し、 **[イベント グリッド トリガー]** を選択して、 **[Event Grid サブスクリプションの作成]** を選択します。
 
-    ![Azure portal で [Event Grid サブスクリプションの追加] に移動する](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Azure portal で [Event Grid サブスクリプションの追加] に移動する" :::
 
-3. 次の表で指定されているようにイベント サブスクリプションを設定します。
+1. 次の表で指定されているようにイベント サブスクリプションを設定します。
     
     ![Azure Portal で関数からイベント サブスクリプションを作成する](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -215,13 +215,13 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **[エンドポイントの種類]** | 自動生成 | **Azure Function** としてあらかじめ定義されています。 |
     | **エンドポイント** | 自動生成 | 関数の名前です。 この場合は、**Thumbnail** です。 |
 
-4. **[フィルター]** タブに切り替えて、次のアクションを実行します。
+1. **[フィルター]** タブに切り替えて、次のアクションを実行します。
     1. **[サブジェクト フィルタリングを有効にする]** オプションを選択します。
     2. **[次で始まるサブジェクト]** には、「 **/blobServices/default/containers/images/blobs/** 」と入力します。
 
         ![イベント サブスクリプションのフィルターを指定する](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. **[作成]** を選択して、イベント サブスクリプションを追加します。 これにより、BLOB が `images` コンテナーに追加されたときに `Thumbnail` 関数をトリガーするイベント サブスクリプションが作成されます。 この関数により、イメージはサイズが変更されて、`thumbnails` コンテナーに追加されます。
+1. **[作成]** を選択して、イベント サブスクリプションを追加します。 これにより、BLOB が `images` コンテナーに追加されたときに `Thumbnail` 関数をトリガーするイベント サブスクリプションが作成されます。 この関数により、イメージはサイズが変更されて、`thumbnails` コンテナーに追加されます。
 
 バックエンド サービスの構成が済んだので、サンプル Web アプリでイメージ サイズ変更の機能をテストします。
 

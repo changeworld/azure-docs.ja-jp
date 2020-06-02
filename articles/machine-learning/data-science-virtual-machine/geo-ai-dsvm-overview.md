@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 333b1fd94372a79e501de6be261a4cde5c6ab074
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282275"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658375"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo Artificial Intelligence Data Science Virtual Machine とは
 
-Geo Artificial Intelligence Data Science Virtual Machine (Geo AI Data Science VM、Geo-DSVM) は、Azure Data Science Virtual Machine (DSVM) の地理空間分析機能を有しています。 具体的に言うと、この VM は、市場をリードする ESRI の [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) 地理情報システムを追加することで、[DSVM](overview.md) 内の AI およびデータ サイエンス ツールキットを拡張します。
+Geo Artificial Intelligence Data Science Virtual Machine (Geo AI Data Science VM、Geo-DSVM) は、Azure Data Science Virtual Machine (DSVM) の地理空間分析機能を有しています。 具体的に言うと、この VM は、市場をリードする Esri の [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) 地理情報システムを追加することで、[DSVM](overview.md) 内の AI およびデータ サイエンス ツールキットを拡張します。
 
- Geo AI Data Science VM は、ESRI と Microsoft によって共同開発された製品です。 この強力な環境を使用することで、次のことが可能になります。
+ Geo AI Data Science VM は、Esri と Microsoft によって共同開発された製品です。 この強力な環境を使用することで、次のことが可能になります。
 
 - 最も人気のある AI およびデータ サイエンス ツールを使用してデータを探索できます
 - 地理的または空間的な側面を踏まえた統計分析をデータに適用できます
@@ -37,7 +37,7 @@ Geo AI Data Science VM は、Windows 2016 DSVM でサポートされます。 Ge
 
 Microsoft の [Data Science Virtual Machine (DSVM)](overview.md) は、Azure で広く使用されている実験およびモデリング環境であり、AI、機械学習、およびデータ サイエンス ツールのホストとして機能します。 これらのプラットフォームやツールはすべて事前構成されており、すぐに使用することができます。
 
-Geo AI Data Science VM によって、その予測機能に、Azure クラウドのスケーラビリティや [ESRI](https://www.esri.com) の地理空間分析ソフトウェアが組み合わされます。 この先駆的な統合によって、データ サイエンティストや地理的空間アナリストがデータから新たなインテリジェンスを取得し、新たな機会を特定するための、生産性に優れたプラットフォームが実現されます。
+Geo AI Data Science VM によって、その予測機能に、Azure クラウドのスケーラビリティや [Esri](https://www.esri.com) の地理空間分析ソフトウェアが組み合わされます。 この先駆的な統合によって、データ サイエンティストや地理的空間アナリストがデータから新たなインテリジェンスを取得し、新たな機会を特定するための、生産性に優れたプラットフォームが実現されます。
 
 
 ## <a name="next-steps"></a>次のステップ

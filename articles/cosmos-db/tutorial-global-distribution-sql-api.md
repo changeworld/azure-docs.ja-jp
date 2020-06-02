@@ -1,22 +1,22 @@
 ---
 title: チュートリアル:SQL API 用の Azure Cosmos DB グローバル分散チュートリアル
-description: チュートリアル:.Net、Java、Python など各種 SDK から SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
+description: チュートリアル:.NET、Java、Python など各種 SDK で SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: ee648efde22e6bbef045b9d89b8d016e2e489f20
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80295524"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872965"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>チュートリアル:SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 
-この記事では、Azure Portal を使用して Azure Cosmos DB グローバル分散をセットアップし、SQL API を使用して接続する方法を説明します。
+この記事では、Azure portal を使用して Azure Cosmos DB グローバル分散をセットアップし、SQL API を使用して接続する方法を説明します。
 
 この記事に含まれるタスクは次のとおりです。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "80295524"
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>SQL API を使用して優先リージョンに接続する
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> SQL API を使用して優先リージョンに接続する
 
 [グローバル分散](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、接続ポリシーを設定して行います。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SQL SDK によって最適なエンドポイントが選択されます。
 
@@ -110,21 +110,24 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Java V2 SDK
+## <a name="java-v4-sdk"></a>Java V4 SDK
 
 次のコードは、Java SDK を使用して優先される場所を設定する方法を示しています。
 
-```java
-ConnectionPolicy policy = new ConnectionPolicy();
-policy.setUsingMultipleWriteLocations(true);
-policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
-AsyncDocumentClient client =
-        new AsyncDocumentClient.Builder()
-                .withMasterKeyOrResourceToken(this.accountKey)
-                .withServiceEndpoint(this.accountEndpoint)
-                .withConnectionPolicy(policy)
-                .build();
-```
+### <a id="java4-preferred-locations"></a>
+#### <a name="async"></a>[[非同期]](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 非同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
+
+#### <a name="sync"></a>[[同期]](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=TutorialGlobalDistributionPreferredLocationSync)]
+
+--- 
 
 ## <a name="rest"></a>REST
 データベース アカウントが複数リージョンで利用できるようになったら、クライアントは次の URI に対して GET 要求を実行してその可用性を照会できます。

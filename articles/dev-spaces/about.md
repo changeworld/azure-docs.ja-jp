@@ -6,12 +6,12 @@ ms.topic: overview
 description: Azure Kubernetes Service クラスターにおける反復型の迅速な Kubernetes 開発エクスペリエンスをチームに提供する Azure Dev Spaces について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8b22181bcddda9e4156c0e0dbe61d7d813498d96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd757d5392a7cefcacdd1d77807beb72e34c8f89
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80529727"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873365"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces とは
 
@@ -38,7 +38,7 @@ Azure Dev Spaces のしくみについては、「[Azure Dev Spaces のしくみ
 
 ## <a name="supported-regions-and-configurations"></a>サポートされているリージョンと構成
 
-Azure Dev Spaces は、[一部のリージョン][supported-regions]の AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、macOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 Windows 8 以上にインストールされた [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされています。 Visual Studio 2019 の場合、Azure 開発ワークロードが必要です。 Visual Studio 2017 の場合、Web 開発ワークロードと [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) が必要です。
+Azure Dev Spaces は、[一部のリージョン][supported-regions]の AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、macOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 また、Azure 開発ワークロードがインストールされている Windows 上の [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされます。
 
 ## <a name="next-steps"></a>次のステップ
 

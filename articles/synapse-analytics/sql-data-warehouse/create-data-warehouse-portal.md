@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81115175"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770824"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
 
@@ -66,7 +66,11 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
 
    パフォーマンス レベルの詳細については、[Azure SQL Data Warehouse でのコンピューティングの管理](sql-data-warehouse-manage-compute-overview.md)に関するページを参照してください。
 
-5. Azure Synapse Analytics フォームの [基本] タブの入力が完了したら、 **[確認および作成]** 、 **[作成]** の順に選択して、SQL プールを作成します。 プロビジョニングには数分かかります。
+5. **[既存のデータの使用]** で **[追加設定]** を選択し、 **[サンプル]** を選択して、AdventureWorksDW が同じサンプル データベースとして作成されるようにします。
+
+    ![[既存のデータの使用] を選択します](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+
+6. Azure Synapse Analytics フォームの [基本] タブの入力が完了したら、 **[確認および作成]** 、 **[作成]** の順に選択して、SQL プールを作成します。 プロビジョニングには数分かかります。
 
    ![[確認と作成] を選択する](./media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -148,6 +152,8 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
    ![データベース オブジェクト](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>クエリを実行する
+
+[制限されたリソース クラス](resource-classes-for-workload-management.md)を使用するため、サーバー管理者としてログに記録されている間は、大規模なクエリを実行しないことをお勧めします。 代わりに、[チュートリアルで説明](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)されているように、[ワークロードの分離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)を構成します。
 
 SQL Data Warehouse はクエリ言語として T-SQL を使用しています。 クエリ ウィンドウを開いて T-SQL クエリを実行するには、次の手順を実行します。
 

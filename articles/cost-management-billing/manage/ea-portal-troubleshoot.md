@@ -3,16 +3,16 @@ title: Azure EA Portal のアクセスのトラブルシューティング
 description: この記事では、Azure Enterprise Agreement (EA) に関して Azure EA Portal で発生する可能性のある一般的な問題について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: fdcce868cb53c0fdd6a51f2b351491e1ee998d61
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 97ba4e77c96859115c974b630a455f4bea62051a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691180"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654753"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 
@@ -64,15 +64,15 @@ Azure EA Portal にサインインしようとしたときにエラー メッセ
   - プライマリ エイリアスを確認する必要がある場合は、[https://account.live.com](https://account.live.com) にアクセスしてください。 次に、 **[ユーザーの情報]** をクリックし、 **[Manage how to sign in to Microsoft] (Microsoft にサインインする方法の管理)** をクリックします。 画面の指示に従って連絡用メール アドレスを確認し、機密情報にアクセスするためのコードを取得します。 セキュリティ コードを入力します。 2 要素認証を設定しない場合は、 **[後で設定する]** を選択します。
   - **[Microsoft にサインインする方法の管理]** ページが表示され、ご自分のアカウント エイリアスを確認できます。 プライマリ エイリアスが、Azure EA Portal へのサインインに使用しているエイリアスであることを確認します。 そうでない場合は、これをプライマリ エイリアスにすることができます。 また、代わりに Azure EA Portal のプライマリ エイリアスを使用することもできます。
 
-## <a name="no-activation-email-received"></a>アクティブ化メールが届かない
+## <a name="azure-ea-activation-faq"></a>Azure EA のアクティブ化に関する FAQ
+
+記事のこのセクションでは、Azure EA のアクティブ化に関する一般的な問題の解決策について説明します。
+
+### <a name="i-didnt-receive-an-activation-email"></a>アクティブ化メールが届いていません
 
 Azure EA Portal からのアクティブ化メールは、 *waep@microsoft.com* から送信されます。 アクティブ化メールが届いていない場合は、スパムまたは迷惑メール フォルダーにこのメールが入っていないか確認してください。 このメールは、_Invitation to View/Manage the Microsoft Azure service_subject_ という件名で送信されます。 これは、新しく追加されたすべての EA 管理者宛てに送信されます。
 
 EA 管理者として設定されていることがわかっている場合は、Azure EA Portal にサインインするためにアクティブ化メールが届くまで待つ必要はありません。 代わりに、電子メールアドレス (職場、学校、または Microsoft アカウント) とパスワードを使用して、 https://ea.azure.com にアクセスしてサインインできます。
-
-## <a name="azure-ea-activation-faq"></a>Azure EA のアクティブ化に関する FAQ
-
-記事のこのセクションでは、Azure EA のアクティブ化に関する一般的な問題の解決策について説明します。
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>登録に新しい EA 管理者を追加したい
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1080001cb222f91503080914d7fb253e5ee82626
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b2fe4dea27564b96c5ef1734dc16ca4525011d17
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426281"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745641"
 ---
 # <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>SQL オンデマンド (プレビュー) を使用した Azure Open Datasets の分析と Azure Synapse Studio (プレビュー) での結果の視覚化
 
@@ -24,24 +24,14 @@ ms.locfileid: "81426281"
 
 分析の主眼は、時系列でのタクシー乗車数の変化の傾向を発見することです。 タクシー乗車の外れ値を把握するために、他の 2 つの Azure Open Datasets ([休日](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)および[気象データ](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)) を分析します。
 
-## <a name="create-credentials"></a>資格情報を作成する
+## <a name="create-data-source"></a>データ ソースの作成
+
+データ ソース オブジェクトは、データを分析する必要がある Azure ストレージ アカウントを参照するために使用されます。 パブリックに使用できるストレージには、ストレージにアクセスするための資格情報は不要です。
 
 ```sql
--- There is no secret. We are using public storage account which doesn't need a secret.
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/nyctlc]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = ''
-GO
-
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = ''
-GO
-
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/isdweatherdatacontainer]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = ''
-GO
+-- There is no credential in data surce. We are using public storage account which doesn't need a credential.
+CREATE EXTERNAL DATA SOURCE AzureOpenData
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
 ```
 
 ## <a name="automatic-schema-inference"></a>自動スキーマ推論
@@ -53,7 +43,8 @@ GO
 ```sql
 SELECT TOP 100 * FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS [nyc]
 ```
@@ -67,7 +58,8 @@ NYC のタクシー データの結果のスニペットを次に示します。
 ```sql
 SELECT TOP 100 * FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer/Processed/*.parquet',
+        BULK 'holidaydatacontainer/Processed/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS [holidays]
 ```
@@ -83,7 +75,8 @@ SELECT
     TOP 100 *
 FROM  
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
+        BULK 'isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS [weather]
 ```
@@ -104,7 +97,8 @@ SELECT
     COUNT(*) AS rides_per_year
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS [nyc]
 WHERE nyc.filepath(1) >= '2009' AND nyc.filepath(1) <= '2019'
@@ -133,7 +127,8 @@ SELECT
     COUNT(*) as rides_per_day
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS [nyc]
 WHERE nyc.filepath(1) = '2016'
@@ -161,7 +156,8 @@ WITH taxi_rides AS
         COUNT(*) as rides_per_day
     FROM  
         OPENROWSET(
-            BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+            BULK 'nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+            DATA_SOURCE = 'AzureOpenData',
             FORMAT='PARQUET'
         ) AS [nyc]
     WHERE nyc.filepath(1) = '2016'
@@ -174,7 +170,8 @@ public_holidays AS
         date
     FROM
         OPENROWSET(
-            BULK 'https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer/Processed/*.parquet',
+            BULK 'holidaydatacontainer/Processed/*.parquet',
+            DATA_SOURCE = 'AzureOpenData',
             FORMAT='PARQUET'
         ) AS [holidays]
     WHERE countryorregion = 'United States' AND YEAR(date) = 2016
@@ -213,7 +210,8 @@ SELECT
     MAX(snowdepth) AS max_snowdepth
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
+        BULK 'isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS [weather]
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'

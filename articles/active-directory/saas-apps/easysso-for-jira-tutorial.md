@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a9009121c2dab0701d08f40de7c8f26777bc3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e3226ef8d739df6902a96cff336762ce4425c5de
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189972"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740342"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-jira"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Jira の統合
 
@@ -57,7 +57,6 @@ Azure AD への EasySSO for Jira の統合を構成するには、ギャラリ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EasySSO for Jira**」と入力します。
 1. 結果のパネルから **[EasySSO for Jira]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-jira"></a>EasySSO for Jira の Azure AD シングル サインオンの構成とテスト
 
@@ -144,13 +143,50 @@ EasySSO for Jira で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-easysso-for-jira-sso"></a>EasySSO for Jira SSO の構成
 
-**EasySSO for Jira** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [EasySSO for Jira のサポート チーム](mailto:support@techtime.co.nz)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. 管理者権限で Atlassian Jira インスタンスにサインインし、 **[Manage Apps]\(アプリの管理\)** セクションに移動します。
+
+    ![[Manage Apps]\(アプリの管理\)](./media/easysso-for-jira-tutorial/jira-admin-1.png)
+
+1. **[EasySSO]** をクリックします。
+
+    ![[EasySSO]](./media/easysso-for-jira-tutorial/jira-admin-2.png)
+
+1. **[SAML]** オプションを選択します。 これにより、SAML の構成セクションが表示されます。
+
+    ![SAML](./media/easysso-for-jira-tutorial/jira-admin-3.png)
+
+1. 上部の **[Certificates]\(証明書\)** タブを選択すると、次の画面が表示されるので、前の **Azure AD SSO** の構成手順で保存した**証明書 (Base64)** または**メタデータ ファイル**を見つけます。 続行する方法として、次の選択肢があります。
+
+    ![メタデータ URL](./media/easysso-for-jira-tutorial/jira-admin-4.png)
+
+    a. 自分のコンピューター上のローカル ファイルとしてダウンロードした、アプリのフェデレーション **メタデータ ファイル**を使用します。 **[Upload]\(アップロード\)** をクリックし、ご使用のオペレーティング システムに固有のファイルのアップロード ダイアログに従います
+
+    **OR**
+
+    b. (任意のプレーンテキスト エディターで) アプリのフェデレーション **メタデータ ファイル**を開き、ファイルの内容を確認してクリップボードにコピーします。 **[Input]\(入力\)** オプションを選択し、クリップボードの内容をテキスト フィールドに貼り付けます。
+
+    **OR**
+
+    c. すべて手動で構成します。 (任意のプレーンテキスト エディターで) アプリのフェデレーション**証明書 (Base64)** を開き、ファイルの内容を確認してクリップボードにコピーします。 **[IdP Token Signing Certificates]\(IdP トークン署名証明書\)** テキスト フィールドに貼り付けます。 次に、 **[General]\(全般\)** タブに移動し、 **[POST Binding URL]\(POST バインディング URL\)** および **[Entity ID]\(エンティティ ID\)** フィールドに、前に保存した **[ログイン URL]** と **[Azure AD 識別子]** の値をそれぞれ入力します。
+
+1. ページの下部にある **[Save]\(保存\)** ボタンをクリックします。 メタデータ ファイルまたは証明書ファイルの内容が構成フィールドで解析されていることを確認できます。 これで、EasySSO for Jira の構成は完了しました。
+
+1. 最適なテスト エクスペリエンスを得るには、 **[Look & Feel]\(外観\)** タブに移動し、 **[SAML Login Button]\(SAML ログイン ボタン\)** オプションをオンにします。 これにより、Jira ログイン画面の独立したボタンが有効になり、Azure AD SAML 統合をエンド ツー エンドでテストできるようになります。 このボタンをオンのままにすることで、運用モードでの配置、色、および翻訳を構成することもできます。
+
+    ![[Look & Feel]\(外観\)](./media/easysso-for-jira-tutorial/jira-admin-5.png)
+
+    > [!NOTE]
+    > 問題が発生した場合は、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。
 
 ### <a name="create-easysso-for-jira-test-user"></a>EasySSO for Jira テスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを EasySSO for Jira に作成します。 EasySSO for Jira では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 EasySSO for Jira にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、B. Simon というユーザーを Jira に作成します。 EasySSO for Jira では Just-In-Time ユーザー プロビジョニングがサポートされており、既定では**無効**になっています。 ユーザー プロビジョニングを有効にするには、EasySSO プラグイン構成の [General]\(全般\) セクションで、 **[Create user on successful login]\(ログイン成功時にユーザーを作成する\)** オプションを明示的にオンにする必要があります。 Jira にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+ただし、ユーザーが初めてログインした時点での自動ユーザー プロビジョニングを有効にしない場合は、Jira インスタンスで使用するバックエンド ユーザー ディレクトリ (LDAP や Atlassian Crowd など) にユーザーが存在する必要があります。
+
+![ユーザー プロビジョニング](./media/easysso-for-jira-tutorial/jira-admin-6.png)
+
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -169,4 +205,3 @@ EasySSO for Jira で Azure AD SSO を構成してテストするには、次の�
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [高度な可視性と制御によって EasySSO for Jira を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

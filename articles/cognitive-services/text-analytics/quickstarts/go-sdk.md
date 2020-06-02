@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f9b5fb1837fdafe818fdb27221f8575d93ec304d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77912644"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701629"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>クイック スタート:Go 用 Text Analytics クライアント ライブラリを使用する
 
-[リファレンスのドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [パッケージ (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[リファレンスのドキュメント](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go) | [パッケージ (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
 > このクイックスタートは、Text Analytics バージョン 2.1 だけに適用されます。 現在、Go 用 v3 クライアント ライブラリは使用できません。
@@ -89,7 +89,7 @@ Text Analytics クライアントは、ご利用のキーを使用して Azure �
 
 ## <a name="code-examples"></a>コード例
 
-これらのコード スニペットでは、Python 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
+これらのコード スニペットでは、Go 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
 
 * [クライアントを認証する](#authenticate-the-client)
 * [感情分析](#sentiment-analysis)

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: a0d1ba696b39b9331c4a85c9cf37d13d545ffad5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593699"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870696"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
 
@@ -131,19 +131,17 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 次に、ビルド プロセスがアプリのビルドに使用する構成設定を追加します。 次の設定では、GitHub アクション ワークフロー ファイルが構成されます。
 
-1. **[Next: Build >]\(次へ: ビルド >\)** ボタンをクリックして、ビルド構成を編集します。
+1. **[次へ:ビルド >]** ボタンをクリックして、ビルド構成を編集します。
 
-1. _[App location]\(アプリの場所\)_ を「 **/** 」に設定します。
+1. _[App location]\(アプリの場所\)_ を **public** に設定します。
 
-1. _[App artifact location]\(アプリ成果物の場所\)_ を「**public**」に設定します。
+1. _[App artifact location]\(アプリ成果物の場所\)_ を空白のままにします。
 
-   この時点では API をデプロイしていないため、 _[API location]\(API の場所\)_ の値は必要ありません。
-
-   :::image type="content" source="./media/publish-hugo/build-details.png" alt-text="ビルド設定":::
+   この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
-1. **[確認および作成]** ボタンをクリックして、詳細がすべて正しいことを確認します。
+1. **[Review + Create]\(確認および作成\)** ボタンをクリックして、詳細がすべて正しいことを確認します。
 
 1. **[作成]** をクリックして、Azure Static Web Apps の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
 
@@ -155,12 +153,12 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. Hugo アプリをテキスト エディターで開き、 _.github/workflows/azure-pages-<ワークフロー名>.yml_ ファイルを開きます。
 
-1. `- uses: actions/checkout@v1` という行 (18 行目) を次の行に置き換えて、Hugo アプリケーションをビルドします。
+1. `- uses: actions/checkout@v2` という行 (18 行目) を次の行に置き換えて、Hugo アプリケーションをビルドします。
 
    ```yml
    - uses: actions/checkout@v2
-        with:
-          submodules: true
+     with:
+       submodules: true
 
    - name: Setup Hugo
      uses: peaceiris/actions-hugo@v2.4.8

@@ -6,23 +6,21 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b26d516080961a482a3ba67f314e98ece4c9f24
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7bd44a350b3c3eeb723b73b0ec416cdd1c0ec643
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420176"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698771"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics の共有メタデータ
 
-Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Spark プール (プレビュー)、SQL オンデマンド エンジン (プレビュー)、および SQL プール間でデータベースとテーブルを共有できます。
+Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Spark プール (プレビュー) と SQL オンデマンド エンジン (プレビュー) の間でデータベースとテーブルを共有できます。
 
 [!INCLUDE [preview](../includes/note-preview.md)]
-
-
 
 この共有では、いわゆる最新のデータ ウェアハウス パターンがサポートされており、ワークスペースの SQL エンジンは、Spark で作成されたデータベースとテーブルにアクセスすることができます。 また、SQL エンジンは、他のエンジンと共有されていない独自のオブジェクトを作成することもできます。
 
@@ -34,9 +32,7 @@ Azure Synapse Analytics では、さまざまなワークスペース計算エ�
 
 2. Spark によって作成されたデータベースとすべてのテーブルは、どの Azure Synapse ワークスペースの Spark プール インスタンスでも可視となり、どの Spark ジョブからも使用できます。 ワークスペース内のすべての Spark プールは、基になる同じカタログ メタ ストアを共有しているため、この機能は[アクセス許可](#security-model-at-a-glance)の対象になります。
 
-3. Spark によって作成されたデータベースと Parquet でサポートされるテーブルは、ワークスペースの SQL オンデマンド エンジンに表示されるようになります。 [データベース](database.md)は、SQL オンデマンド メタデータに自動的に作成されます。また、Spark ジョブによって作成された[外部テーブルとマネージド テーブル](table.md)の両方に、対応するデータベースの `dbo` スキーマの SQL オンデマンド メタデータで外部テーブルとしてアクセスできるようになります。 <!--For more details, see [ADD LINK].-->
-
-4. メタデータの同期が有効になっている SQL プール インスタンスがワークスペースにある場合、またはメタデータの同期を有効にした状態で新しい SQL プール インスタンスが作成された場合、Spark <!--[ADD LINK]--> によって作成されたデータベースと Parquet でサポートされたテーブルは、「[Azure Synapse Analytics の共有データベース](database.md)」で説明されているように、SQL プール データベースに自動的にマップされます。
+3. Spark によって作成されたデータベースと Parquet でサポートされるテーブルは、ワークスペースの SQL オンデマンド エンジンに表示されるようになります。 [データベース](database.md)は、SQL オンデマンド メタデータに自動的に作成されます。また、Spark ジョブによって作成された[外部テーブルとマネージド テーブル](table.md)の両方に、対応するデータベースの `dbo` スキーマの SQL オンデマンド メタデータで外部テーブルとしてアクセスできるようになります。 
 
 <!--[INSERT PICTURE]-->
 
@@ -56,7 +52,7 @@ Spark データベースとテーブルは、SQL エンジンの同期された�
 
 ## <a name="change-maintenance"></a>メンテナンスを変更する
 
-メタデータ オブジェクトが Spark で削除または変更されると、その変更が取得され、SQL オンデマンド エンジンと、オブジェクトが同期されている SQL プールに反映されます。 同期は非同期であり、変更は少し遅れて SQL エンジンに反映されます。
+メタデータ オブジェクトが Spark で削除または変更されると、その変更が取得され、SQL オンデマンド エンジンに反映されます。 同期は非同期であり、変更は少し遅れて SQL エンジンに反映されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Computer Vision 2.0 および 2.1 - 印刷されたテキストと手書きテキストの抽出 - REST、Python
+title: クイック スタート:Computer Vision 2.1 および 3.0 - 印刷されたテキストと手書きテキストの抽出 - REST、Python
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Python と Computer Vision API を使って、印刷されたテキストと手書きテキストを画像から抽出します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 29944311c2215ebcc46ff3752004092bdeb9a9c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae83978994eb421e21ed73514a5c8fa697875349
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404405"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684113"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用して印刷されたテキストと手書きテキストを抽出する
 

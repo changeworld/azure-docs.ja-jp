@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: aa93a816fc11158d928978bdec2dbf42119fa149
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420946"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652658"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics のチート シート
 
@@ -30,8 +30,8 @@ Azure Synapse Analytics のチート シートでは、サービスの基本的�
 ## <a name="concepts"></a>概念
 | 名詞と動詞                         | 実行内容       |
 |:---                                 |:---                 |
-| **Synapse ワークスペース (プレビュー)** | Azure でクラウドベースのエンタープライズ分析を行うための、セキュリティ保護可能なコラボレーション境界。 ワークスペースは、特定のリージョンにデプロイされ、関連付けられた ADLSg2 アカウントと (一時データを格納するための) ファイル システムを持ちます。 ワークスペースは、リソース グループに属します。 |
-| **SQL Analytics**   | プールまたはオンデマンド機能を使用して分析を実行します。  |
+| **Synapse ワークスペース (プレビュー)** | Azure でクラウドベースのエンタープライズ分析を行うための、セキュリティ保護可能なコラボレーション境界。 ワークスペースは、特定のリージョンにデプロイされ、関連付けられた ADLS Gen2 アカウントと (一時データを格納するための) ファイル システムを持ちます。 ワークスペースは、リソース グループに属します。 |
+| **Synapse SQL**   | プールまたはオンデマンド機能を使用して分析を実行します。  |
 | **SQL プール**   | 対応するデータベースをワークスペースにデプロイできる、0 対 N の SQL プロビジョニング済みのリソース。 各 SQL プールには、データベースが関連付けられています。 SQL プールは、手動または自動でスケーリング、一時停止、または再開できます。 SQL プールは、100 DWU から最大 30,000 DWU までスケーリングできます。       |
 | **SQL オンデマンド (プレビュー)**   | データ レイク内のデータに対して T-SQL クエリを実行できる、大規模データ用に構築された分散データ処理システム。 サーバーレスであるため、インフラストラクチャを管理する必要はありません。       |
 |**Apache Spark** | Spark プールで使用される Spark ランタイム。 現在サポートされているバージョンは、Python 3.6.1、Scala 2.11.12、Apache Spark 0.5 向け .NET サポート、および Delta Lake 0.3 を使用する Spark 2.4 です。  | 
@@ -55,7 +55,7 @@ Azure Synapse Analytics のチート シートでは、サービスの基本的�
 
 - [ワークスペースを作成する](quickstart-create-workspace.md)
 - [Synapse Studio を使用する](quickstart-synapse-studio.md)
-- [SQL プールを作成する](quickstart-create-sql-pool.md)
+- [SQL プールを作成する](quickstart-create-sql-pool-portal.md)
 - [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
-- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
+- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)
 

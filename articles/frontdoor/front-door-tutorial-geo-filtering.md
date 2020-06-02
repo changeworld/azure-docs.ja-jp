@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: tyao
-ms.openlocfilehash: e3119745e35140d0344d25f34f54b63939d2542d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10f8bd3682b442dd55e195c6dc1855fae07a155c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471457"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744096"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング WAF ポリシーを設定する方法
 このチュートリアルでは、Azure PowerShell を使用して、サンプル geo フィルタリング ポリシーを作成し、それを既存の Front Door フロントエンド ホストに関連付ける方法を説明します。 このサンプル geo フィルタリング ポリシーでは、他のすべての国/地域 (米国を除く) からの要求がブロックされます。
@@ -51,7 +51,7 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
 ## <a name="define-geo-filtering-match-condition"></a>geo フィルタリングの一致条件を定義する
 
-一致条件を作成するときに、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) のパラメーターを使用して、"US" から送信されていない要求を選択するサンプル一致条件を作成します。 2 文字の国番号と国名との対応については、[こちら](front-door-geo-filtering.md)を参照してください。
+一致条件を作成するときに、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) のパラメーターを使用して、"US" から送信されていない要求を選択するサンプル一致条件を作成します。 2 文字の国および地域コードと国名および地域名の対応については、[こちら](front-door-geo-filtering.md)を参照してください。
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `

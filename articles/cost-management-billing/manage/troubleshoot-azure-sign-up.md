@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133179"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745538"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
@@ -63,7 +63,7 @@ Microsoft Azure portal または Azure アカウント センターで新しい�
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>請求先住所がクレジット カード フォームでサポートされていない
 
-請求先住所は、 **[自分の情報]** セクションで選択した国である必要があります。 正しい国を選択していることを確認してください。
+請求先住所は、 **[自分の情報]** セクションで選択した国/地域にある必要があります。 正しい国/地域を選択していることを確認してください。
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>サインアップ アカウントの検証中に、テキスト メッセージの送信がなく、電話もかかってこない
 
@@ -72,7 +72,7 @@ Microsoft Azure portal または Azure アカウント センターで新しい�
 いくつかの追加のヒントを以下に示します。
 
 - 電話確認処理に VoiP (ボイス オーバー IP) の電話番号を使用することはできません。
-- ドロップダウン メニューで選択した国番号を含め、入力する電話番号を再確認してください。
+- ドロップダウン メニューで選択した国/地域番号を含め、入力する電話番号を再確認してください。
 - テキスト メッセージ (SMS) を受信しない電話の場合は、 **[電話で確認コードを受け取る]** をオプションを試してください。
 - お使いの電話で米国の電話番号からの電話または SMS メッセージを受信できることを確認してください。
 

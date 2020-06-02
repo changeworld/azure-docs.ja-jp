@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6b165df42da35077c7ef252291d8e1514bb3b1b0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995992"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747687"
 ---
 ::: zone target="docs"
 
@@ -49,7 +49,7 @@ ms.locfileid: "82995992"
     - ディスクはエアー クッションでしっかりと包んで梱包することをお勧めします。
     - 箱内の物があまり動かないように、すき間が少なくなるようにしてください。
 
-次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、欧州連合 (EU)、オーストラリア、アジア諸国で異なります。
+次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、欧州連合 (EU)、オーストラリア、またはアジア内の国/地域で異なります。
 
 ### <a name="in-us-or-canada"></a>[米国またはカナダ](#tab/in-us-or-canada)
 
@@ -142,10 +142,10 @@ ms.locfileid: "82995992"
     To: kadcustcare@singpost.com
     Subject: Microsoft Azure Pick-up - XZ00001234567 
     Body: 
-     a. Requestor name
-     b. Requestor contact number
-     c. Requestor collection address
-     d. Preferred collection date
+     a.    Requestor name
+     b.    Requestor contact number
+     c.    Requestor collection address
+     d.    Preferred collection date
     ```
 
    > [!NOTE]
@@ -167,7 +167,7 @@ ms.locfileid: "82995992"
 
     ```
     To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body: 
      a. Order name
      b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.

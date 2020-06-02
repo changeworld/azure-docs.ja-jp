@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415720"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758998"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>クイック スタート:Unity のサンプルをデスクトップにデプロイする
 
@@ -45,8 +45,8 @@ ms.locfileid: "81415720"
 
 ## <a name="build-the-sample-project"></a>サンプル プロジェクトをビルドする
 
-1. *[File]\ (ファイル\) > [Build Settings]\(ビルド設定\)* の順に開きます。
-1. *[Platform]\(プラットフォーム\)* を **[Universal Windows Platform]\(ユニバーサル Windows プラットフォーム\)** に変更します。
+1. *[File]\(ファイル\) > [Build Settings]\(ビルド設定\)* の順に開きます。
+1. *[Platform]\(プラットフォーム\)* を**ユニバーサル Windows プラットフォーム**に変更します (**PC スタンドアロン**もサポートされますが、ここでは使用しません)。
 1. *[Target Device]\(ターゲットデバイス\)* を **[PC]** に設定します。
 1. *[Architecture]\(アーキテクチャ\)* を **[x86]** に設定します。
 1. *[Build Type]\(ビルドの種類\)* を **[D3D Project]\(D3D プロジェクト\)** に設定します。

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314354"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747759"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール
 
@@ -72,7 +72,7 @@ Application Gateway によるセキュリティの強化には、TLS ポリシ�
 - 下限と上限を指定した、構成可能な要求サイズ制限。
 - 除外リストを使用すると、WAF の評価から特定の要求属性を省略できます。 一般的な例として、認証フィールドまたはパスワード フィールドにおいて使用される、Active Directory で挿入されたトークンが挙げられます。
 - 特定のアプリケーションのニーズに合わせてカスタム ルールを作成することができます。
-- トラフィックを geo フィルタリングすることで、特定の国を対象にアプリケーションへのアクセスを許可したりブロックしたりできます。 (プレビュー)
+- トラフィックを geo フィルタリングすることで、特定の国/地域を対象に、アプリケーションへのアクセスを許可したりブロックしたりできます。 (プレビュー)
 - ボット軽減策ルールセットを使用してアプリケーションをボットから保護できます。 (プレビュー)
 
 ## <a name="waf-policy"></a>WAF ポリシー

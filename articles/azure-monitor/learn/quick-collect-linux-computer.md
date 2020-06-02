@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 05dd9f6c2f1f08ec0e420bd4257d2c26e1963e5b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637893"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850064"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用してハイブリッド環境の Linux コンピューターからデータを収集する
 
@@ -115,7 +115,7 @@ Linux コンピューターと Log Analytics との通信をプロキシ サー�
 
 Azure Monitor では、Linux Syslog からイベントを収集できるほか、特定のパフォーマンス カウンターを収集することによって、より長期的な分析とレポート作成を行えます。 特定の条件を検出したときにアクションを実行することもできます。 まず、以下の手順に従って、Linux Syslog およびいくつかの一般的なパフォーマンス カウンターからのイベント収集を構成します。  
 
-1. Azure portal の左下隅にある **[その他のサービス]** を選択します。 検索ボックスに「**Log Analytics**」と入力します。 入力すると、入力内容に基づいて一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
+1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「Log Analytics」と入力します。 入力すると、入力内容に基づいて一覧がフィルター処理されます。 **Log Analytics ワークスペース**を選択し、Log Analytics ワークスペースの一覧で探しているワークスペースを選択し、その **Log Analytics** ワークスペースの **[詳細設定]** を選択します。
 
 2. **[データ]** 、 **[Syslog]** の順に選択します。  
 

@@ -12,12 +12,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1251049add8c9d3c71b6ba13aff24e086613e84b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81450957"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640575"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 
@@ -150,6 +150,12 @@ var currentAccount: MSALAccount?
 ```
 
 上記で変更する必要がある値は、`kClientID` に割り当てる[アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id) の値だけです。 この値は、このチュートリアルの最初の Azure portal でアプリケーションを登録する手順で保存した、MSAL 構成データの一部です。
+
+## <a name="configure-xcode-project-settings"></a>Xcode プロジェクト設定の構成
+
+新しいキーチェーン グループをプロジェクトの **[Signing & Capabilities]\(署名と機能\)** に追加します。 このキーチェーン グループは、iOS の場合は `com.microsoft.adalcache`、macOS の場合は `com.microsoft.identity.universalstorage` にする必要があります。
+
+![キーチェーン グループの設定方法が表示されている Xcode UI](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro-keychainShare.png)
 
 ## <a name="for-ios-only-configure-url-schemes"></a>iOS のみ: URL スキームを構成する
 

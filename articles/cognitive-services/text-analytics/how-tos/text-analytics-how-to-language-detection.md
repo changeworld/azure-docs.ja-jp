@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70387784"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745569"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>例:Text Analytics を使用して言語を検出する
 
@@ -155,9 +155,9 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 ### <a name="ambiguous-content"></a>あいまいなコンテンツ
 
-場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `countryHint` パラメーターを使用して、2 文字の国番号を指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列 `countryHint = ""` に設定して、このパラメーターをリセットします。
+場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `countryHint` パラメーターを使用して、2 文字の国/地域コードを指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列 `countryHint = ""` に設定して、このパラメーターをリセットします。
 
-たとえば、英語とフランス語の両方に共通の "Impossible" が限られたコンテキストで与えられた場合、応答は "US" の国ヒントに基づきます。 テキストがフランスに由来することがわかっている場合は、それをヒントとして指定することができます。
+たとえば、英語とフランス語の両方に共通の "Impossible" が、限られたコンテキストと共に指定されている場合、応答は "US" の国/地域ヒントに基づきます。 テキストがフランスに由来することがわかっている場合は、それをヒントとして指定することができます。
 
 **入力**
 

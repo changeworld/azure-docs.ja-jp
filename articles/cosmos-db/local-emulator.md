@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618742"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849010"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -40,6 +40,7 @@ Azure Cosmos Emulator は、ローカルの開発者ワークステーション�
 * Azure Cosmos Emulator では、[複数リージョンのレプリケーション](distribute-data-globally.md)を利用できません。
 * ご使用の Azure Cosmos Emulator には Azure Cosmos DB サービスの最近の変更が反映されていないことがあるため、[Azure Cosmos DB Capacity Planner](https://www.documentdb.com/capacityplanner) を参照し、アプリケーションの運用スループット (RU) のニーズを正確に見積もる必要があります。
 * Azure Cosmos Emulator を使用する場合、作成できるコンテナーの数の既定値は、固定サイズのコンテナーであれば 25 個 (Azure Cosmos DB SDK を使用した場合にのみサポート)、容量無制限のコンテナーであれば 5 個までです。 この値を変更する方法の詳細については、[PartitionCount 値の設定](#set-partitioncount)に関するトピックを参照してください。
+* エミュレーターでサポートされる ID プロパティの上限サイズは 254 文字です。
 
 ## <a name="system-requirements"></a>システム要件
 

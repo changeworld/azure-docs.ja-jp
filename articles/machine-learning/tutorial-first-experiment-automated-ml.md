@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366527"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656517"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -23,6 +23,8 @@ ms.locfileid: "80366527"
 このチュートリアルでは、Azure Machine Learning の自動機械学習インターフェイスを使用して、1 行のコードも記述せずに基本的な分類モデルを作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
 自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
+
+時系列予測の例については、「[チュートリアル: 需要予測と AutoML](tutorial-automated-ml-forecast.md)」を参照してください。
 
 このチュートリアルでは、次のタスクを実施する方法について説明します。
 
@@ -221,7 +223,8 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 > [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
-+ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。さらに、[特徴付け](how-to-use-automated-ml-for-ml-models.md#featurization)の詳細も参照してください。
++ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
++ [特徴付け](how-to-use-automated-ml-for-ml-models.md#featurization)についてさらに理解を深める。
 + [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。
 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
+title: Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
 description: Azure Cosmos DB 用の Azure Synapse Link で現在サポートされているアクションの一覧を把握する
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1b94d7677026f3695d07be4d83a5059373078c2e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599034"
+ms.locfileid: "83658848"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
+# <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
 
 この記事では、Azure Cosmos DB 用の Azure Synapse Link で現在サポートされている機能について説明します。 
 

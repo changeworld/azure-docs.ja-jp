@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692403"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745397"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>チュートリアル:SQL オンデマンド (プレビュー) を Power BI Desktop で使用してレポートを作成する
 
@@ -51,10 +51,7 @@ ms.locfileid: "82692403"
 
 ```sql
 -- Drop database if it exists
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Demo')
-BEGIN
-    DROP DATABASE Demo
-END;
+DROP DATABASE IF EXISTS Demo
 GO
 
 -- Create new database
@@ -62,23 +59,16 @@ CREATE DATABASE [Demo];
 GO
 ```
 
-## <a name="2---create-credential"></a>2 - 資格情報の作成
+## <a name="2---create-data-source"></a>2 - データ ソースの作成
 
-SQL オンデマンド サービスがストレージ内のファイルにアクセスには資格情報が必要です。 エンドポイントと同じリージョンにあるストレージ アカウントの資格情報を作成します。 SQL オンデマンドは異なるリージョンからストレージ アカウントにアクセスできますが、ストレージとエンドポイントを同じリージョンに配置するとパフォーマンスが向上します。
+SQL オンデマンド サービスがストレージ内のファイルにアクセスするにはデータ ソースが必要です。 エンドポイントと同じリージョンにあるストレージ アカウントのデータ ソースを作成します。 SQL オンデマンドは異なるリージョンからストレージ アカウントにアクセスできますが、ストレージとエンドポイントを同じリージョンに配置するとパフォーマンスが向上します。
 
-次の Transact-SQL (T-SQL) スクリプトを実行して、資格情報を作成します。
+次の Transact-SQL (T-SQL) スクリプトを実行して、データ ソースを作成します。
 
 ```sql
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
-GO
-
--- Create credentials for Census Data container which resides in a azure open data storage account
--- There is no secret. We are using public storage account which doesn't need a secret.
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = '';
-GO
+-- There is no credential in data surce. We are using public storage account which doesn't need a secret.
+CREATE EXTERNAL DATA SOURCE AzureOpenData
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
 ```
 
 ## <a name="3---prepare-view"></a>3 - ビューの準備
@@ -96,7 +86,8 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        BULK 'censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS uspv;
 ```
@@ -163,7 +154,7 @@ FROM
 1. ストレージ アカウントの資格情報を削除します。
 
    ```sql
-   DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
+   DROP EXTENAL DATA SOURCE AzureOpenData
    ```
 
 2. ビューを削除します。

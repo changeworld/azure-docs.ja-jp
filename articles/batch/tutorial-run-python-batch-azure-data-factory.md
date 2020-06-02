@@ -1,5 +1,5 @@
 ---
-title: Data Factory から Python スクリプトを実行する - Azure Batch Python
+title: Data Factory から Python スクリプトを実行する
 description: チュートリアル - Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する方法について説明します。
 author: mammask
 ms.devlang: python
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117065"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773187"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 
@@ -34,6 +34,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * ローカル テスト用にインストールされた [Python](https://www.python.org/downloads/) ディストリビューション。
 * [Azure](https://pypi.org/project/azure/) `pip` パッケージ。
+* [iris.csv データセット](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 Batch アカウントを作成してストレージ アカウントにリンクさせる方法の詳細については、「[Batch アカウントを作成する](quick-create-portal.md#create-a-batch-account)」を参照してください。
 * Azure Data Factory アカウント。 Azure portal からデータ ファクトリを作成する方法の詳細については、「[Data Factory の作成](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)」を参照してください。
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)。
@@ -66,7 +67,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. ご自分の Azure 資格情報を使用して、Storage Explorer にサインインします。
 1. ご自分の Batch アカウントにリンクされているストレージ アカウントを使用し、「[BLOB コンテナーを作成する](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)」の手順に従って、2 つの BLOB コンテナー (1 つは入力ファイル用、1 つは出力ファイル用) を作成します。
     * この例では、入力コンテナーを `input`、出力コンテナーを `output` と呼ぶことにします。
-1. 「[BLOB コンテナー内の BLOB を管理する](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)」の手順に従い、Storage Explorer を使用して `main.py` と `iris.csv` を入力コンテナー `input` にアップロードします。
+1. 「[BLOB コンテナー内の BLOB を管理する](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)」の手順に従い、Storage Explorer を使用して `main.py` と [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) を入力コンテナー `input` にアップロードします
 
 
 ## <a name="develop-a-script-in-python"></a>Python スクリプトを開発する

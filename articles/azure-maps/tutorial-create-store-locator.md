@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 49b57b213a452d6c594bbc1ca537e68bd7a83864
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333853"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746055"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -397,7 +397,7 @@ ms.locfileid: "80333853"
 
 1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
 
-   ユーザーが検索ボタンを選択するか、検索ボックスに場所を入力して Enter キーを押すと、ユーザーのクエリに対するあいまい検索が開始されます。 検索結果を特定の国/地域に限定するために、それらの国の ISO 2 値の配列を `countrySet` オプションに渡します。 検索の国/地域を限定することで、返される結果の精度向上につながります。 
+   ユーザーが検索ボタンを選択するか、検索ボックスに場所を入力して Enter キーを押すと、ユーザーのクエリに対するあいまい検索が開始されます。 検索結果を特定の国または地域に限定するために、それらの国または地域の ISO 2 値の配列を `countrySet` オプションに渡します。 検索の国/地域を限定することで、返される結果の精度向上につながります。 
   
    検索が完了したら、最初の結果を取得し、その地域上にマップ カメラを設定します。 ユーザーが [My Location]\(現在位置\) ボタンを選択すると、HTML5 Geolocation API を使用してユーザーの位置が取得されます。 この API はブラウザーに組み込まれています。 次に、ユーザーの現在位置をマップの中央に配置します。  
 
@@ -453,7 +453,7 @@ ms.locfileid: "80333853"
         });
     }
 
-    //Create an array of country ISO 2 values to limit searches to. 
+    //Create an array of country/region ISO 2 values to limit searches to. 
     var countrySet = ['US', 'CA', 'GB', 'FR','DE','IT','ES','NL','DK'];
 
     function performSearch() {
@@ -461,7 +461,7 @@ ms.locfileid: "80333853"
 
         //Perform a fuzzy search on the users query.
         searchURL.searchFuzzy(atlas.service.Aborter.timeout(3000), query, {
-            //Pass in the array of country ISO2 for which we want to limit the search to.
+            //Pass in the array of country/region ISO2 for which we want to limit the search to.
             countrySet: countrySet
         }).then(results => {
             //Parse the response into GeoJSON so that the map can understand.
@@ -922,7 +922,7 @@ ms.locfileid: "80333853"
 
 これで、完全に機能するストア ロケーターができあがりました。 ストア ロケーターの *index.html* ファイルを Web ブラウザーで開いてください。 地図上にクラスターが表示されたら、検索ボックスの使用、[My Location]\(現在位置\) ボタンの選択、クラスターの選択、地図の拡大表示によって場所を検索し、個々の場所を表示することができます。
 
-ユーザーが初めて [My Location]\(現在位置\) ボタンを選択するときは、ユーザーの位置情報へのアクセス許可を求めるセキュリティ警告がブラウザーに表示されます。 ユーザーが位置情報の共有に同意した場合、その場所が地図で拡大表示され、付近のコーヒー ショップが表示されます。 
+ユーザーが初めて [My Location]\(現在位置\) ボタンを選択すると、ユーザーの位置情報へのアクセス許可を求めるセキュリティ警告がブラウザーに表示されます。 ユーザーが位置情報の共有に同意した場合、その場所が地図で拡大表示され、付近のコーヒー ショップが表示されます。 
 
 <center>
 

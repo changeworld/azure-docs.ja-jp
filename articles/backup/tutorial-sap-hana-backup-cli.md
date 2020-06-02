@@ -3,12 +3,12 @@ title: チュートリアル - CLI を使用した Azure での SAP HANA DB の�
 description: このチュートリアルでは、Azure CLI を使用して、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d1c52a846b837d47aa40c8f6a68010a8e7f1137
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78206624"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747285"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースをバックアップする
 
@@ -141,6 +141,11 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2
 ```
 
 [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) コマンドレットを使うと、登録、バックアップの構成、バックアップ データの削除などの他の操作に加えて、保護されたデータベース上で実行されていた、または現在実行中のすべてのバックアップ ジョブ (スケジュールまたはオンデマンド) が一覧表示されます。
+
+>[!NOTE]
+>Azure Backup では、Azure VM で実行されている SAP HANA データベースをバックアップしている場合、夏時間変更に合わせた自動調整は行われません。
+>
+>必要に応じて手動でポリシーを変更してください。
 
 ## <a name="trigger-an-on-demand-backup"></a>オンデマンド バックアップをトリガーする
 

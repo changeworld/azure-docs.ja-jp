@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d0bd9dfa8dc115ae10831d997dccc8000a1ae25
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978800"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873911"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>クイック スタート:Bing Web Search REST API と Go を使用して Web を検索する
 
-このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Go アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Go で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Bing Web Search API を初めて呼び出してみましょう。 この Go アプリケーションは、API に検索要求を送信して、JSON 応答を表示します。 このアプリケーションは Go で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+
+ このクイックスタートのサンプル コードでは、コア ライブラリだけが必要であり、外部との依存関係はありません。  
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを実行するには、以下のものが必要です。
 
 * [Go バイナリ](https://golang.org/dl/)
 * サブスクリプション キー
-
-このクイック スタートでは、**コア** ライブラリだけが必要であり、外部との依存関係はありません。  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
@@ -111,7 +111,13 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>main 関数の宣言と変数の定義  
 
-このコードは main 関数を宣言し、必要な変数を設定します。 `endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+このコードは main 関数を宣言し、必要な変数を設定します。 
+
+1. `endpoint` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。 
+
+2. エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 
+ 
+3. 必要に応じて、`searchTerm` の値を置き換えて、検索クエリをカスタマイズすることができます。
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -170,7 +176,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>応答の処理
 
-以前に作成した構造体を覚えていますか。 それを使用して応答を書式設定し、検索結果を出力します。
+前に作成した構造体を使用して応答を書式設定し、検索結果を出力します。
 
 ```go
 // Create a new answer.  
@@ -187,7 +193,7 @@ for _, result := range ans.WebPages.Value {
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順で、コードを検証し、実行します。 作成したコードを完全なプログラムと比較したい場合は、以下を参照してください。
+最後の手順で、コードを検証して実行します。 作成したコードを完全なプログラムと比較したい場合は、以下を参照してください。
 
 ```go
 package main
@@ -305,7 +311,7 @@ func main() {
 }
 ```
 
-## <a name="sample-response"></a>応答のサンプル  
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、`BingAnswer` 構造体を使用して書式設定されており、`result.Name` と `result.URL` が表示されています。
 
@@ -324,6 +330,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API 単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

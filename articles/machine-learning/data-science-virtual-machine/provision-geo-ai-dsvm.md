@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 61d401a543032b1a206a4477f04d7e8e209c0f2a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77525891"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646595"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>クイック スタート:Azure で Geo Artificial Intelligence Virtual Machine を設定する 
 
@@ -24,7 +24,7 @@ Geo-DSVM に付属する AI ツールの例を次に示します。
 - 一般的なディープ ラーニング フレームワーク (Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chainer など) の GPU エディション
 - 画像やテキスト データを取得し、前処理するためのツール
 - 開発作業用のツール (Microsoft Machine Learning Server Developer Edition、Anaconda Python、Python および R 用の Jupyter Notebook、Python および R 用の IDE、SQL データベースなど)
-- ESRI の ArcGIS Pro デスクトップ ソフトウェアと、AI アプリケーションの地理空間データを使用するための Python および R インターフェイス
+- Esri の ArcGIS Pro デスクトップ ソフトウェアと、AI アプリケーションの地理空間データを使用するための Python および R インターフェイス
  
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>Geo AI データ サイエンス VM の作成

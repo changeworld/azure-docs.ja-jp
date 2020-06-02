@@ -16,14 +16,14 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 897762e523a2d20445c3a25e612cf138e021f633
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74014350"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739721"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート: Azure Active Directory でネームド ロケーションを構成する
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート:Azure Active Directory でネームド ロケーションを構成する
 
 ネームド ロケーションを使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
 - [リスク検出](concept-risk-events.md)で誤判定を検出する。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。   
@@ -41,7 +41,7 @@ ms.locfileid: "74014350"
 
 ## <a name="configure-named-locations"></a>ネームド ロケーションの構成
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. 左側のウィンドウで、 **[Azure Active Directory]** を選択し、 **[セキュリティ]** セクションから **[条件付きアクセス]** を選択します。
 
@@ -63,6 +63,5 @@ ms.locfileid: "74014350"
 
 詳細については、次を参照してください。
 
-- [Azure AD の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)。
-- [Azure AD の条件付きアクセスの場所の条件](../conditional-access/location-condition.md)
+- [条件付きアクセスの条件としての場所](../conditional-access/concept-conditional-access-conditions.md#locations)
 - [リスクの高いサインイン レポート](concept-risky-sign-ins.md)。  

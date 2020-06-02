@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48ce72ee501252e35388f958b5c2e166edc2678f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 21289874792987e35fa1cc5731a63e3f55fedc35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196164"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835769"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -65,6 +65,8 @@ Azure Private Link には次のような利点があります。
 |Azure Machine Learning | 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | IoT Hub | すべてのパブリック リージョン    |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://aka.ms/asrs/privatelink)   |
+| Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   |
+
 
 最新情報については、[Azure 仮想ネットワークの更新情報ページ](https://azure.microsoft.com/updates/?product=virtual-network)をご覧ください。
 

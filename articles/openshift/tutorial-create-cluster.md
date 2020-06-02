@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509722"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800161"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -23,6 +23,15 @@ ms.locfileid: "82509722"
 ## <a name="before-you-begin"></a>開始する前に
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+
+### <a name="verify-your-permissions"></a>アクセス許可を確認する
+
+Azure Red Hat OpenShift クラスターを作成するには、次のアクセス許可が Azure アカウントとユーザーにあることを確認します。
+
+|アクセス許可|VNet を含むリソース グループ|`az aro create` を実行するユーザー|`–client-id` として渡されるサービス プリンシパル|
+|----|:----:|:----:|:----:|
+|**User Access Administrator**|X|X| |
+|**Contributor**|X|X|X|
 
 ### <a name="install-the-az-aro-extension"></a>`az aro` 拡張機能をインストールする
 `az aro` 拡張機能を使用すると、Azure CLI を使用してコマンド ラインから直接 Azure Red Hat OpenShift クラスターを作成、アクセス、削除できます。
@@ -66,11 +75,17 @@ aro                                1.0.0
 
 Red Hat プル シークレットを使用すると、クラスターは追加のコンテンツと共に Red Hat コンテナー レジストリにアクセスできます。 この手順は省略可能ですが、実施することをお勧めします。
 
-https://cloud.redhat.com/openshift/install/azure/aro-provisioned に移動し、 *[Download pull secret]\(プル シークレットのダウンロード\)* をクリックして、プル シークレットを取得します。
+1. **[Red Hat OpenShift クラスター マネージャー ポータルに移動](https://cloud.redhat.com/openshift/install/azure/aro-provisioned)し、ログインします。**
 
-Red Hat アカウントにログインするか、お使いのビジネス メール アドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
+   Red Hat アカウントにログインするか、お使いのビジネス メール アドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
+
+2. **[Download pull secret]\(プル シークレットのダウンロード\) を選択します。**
 
 保存されている `pull-secret.txt` ファイルは安全な場所に保管してください。このファイルは、クラスターを作成するたびに使用します。
+
+`az aro create` コマンドを実行する場合は、`--pull-secret @pull-secret.txt` パラメーターを使用してプル シークレットを参照できます。 `pull-secret.txt` ファイルを格納したディレクトリから `az aro create` を実行します。 それ以外の場合は、`@pull-secret.txt` を `@<path-to-my-pull-secret-file>` で置き換えます。
+
+プル シークレットをコピーする場合や他のスクリプトで参照する場合は、プル シークレットを有効な JSON 文字列として書式設定する必要があります。
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>2 つの空のサブネットを含む仮想ネットワークを作成する
 
@@ -174,7 +189,10 @@ Red Hat アカウントにログインするか、お使いのビジネス メ�
 
 ## <a name="create-the-cluster"></a>クラスターを作成する
 
-次のコマンドを実行して、クラスターを作成します。 必要に応じて、プル シークレットを渡して、クラスターが追加のコンテンツと共に Red Hat コンテナー レジストリにアクセスできるようにすることができます。 [Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) に移動し、 **[Copy Pull Secret]\(プル シークレットのコピー\)** をクリックして、プル シークレットにアクセスします。
+次のコマンドを実行して、クラスターを作成します。 必要に応じて、[Red Hat プル シークレットを渡して](#get-a-red-hat-pull-secret-optional)、クラスターが追加のコンテンツと共に Red Hat コンテナー レジストリにアクセスできるよう設定できます。
+
+>[!NOTE]
+> コマンドをコピーおよび貼り付けして、オプション パラメーターのいずれかを使用する場合は、先頭のハッシュ タグと末尾のコメント テキストを削除してください。 また、先行するコマンド行の引数の末尾に、円記号を付けて閉じます。
 
 ```azurecli-interactive
 az aro create \
@@ -184,10 +202,10 @@ az aro create \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
   # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
->[!NOTE]
-> 通常、クラスターの作成には約 35 分かかります。
+
+`az aro create` コマンドを実行した後、クラスターが作成されるまでに通常約 35 分かかります。
 
 >[!IMPORTANT]
 > **foo.example.com** などのカスタム ドメインを指定すると、組み込みドメイン `https://console-openshift-console.apps.<random>.<location>.aroapp.io` の代わりに `https://console-openshift-console.apps.foo.example.com` などの URL で OpenShift コンソールを使用できるようになります。

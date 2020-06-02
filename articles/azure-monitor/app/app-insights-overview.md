@@ -1,15 +1,15 @@
 ---
-title: Azure Application Insights とは何か  | Microsoft Docs
+title: Azure Application Insights とは何か | Microsoft Docs
 description: ライブ Web アプリケーションのアプリケーション パフォーマンス管理と使用状況を追跡します。  問題の検出、トリアージ、診断を行い、ユーザーがアプリをどのように使用しているかを理解します。
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891740"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828731"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は [Azure Monitor](../overview.md) の機能であり、開発者や DevOps プロフェッショナル向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中のアプリケーションを監視することができます。 パフォーマンスの異常を自動的に検出し、組み込まれている強力な分析ツールを使用して、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java、Python などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -49,7 +49,7 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 
 |  |  |
 | --- | --- |
-| [**スマート検出と手動のアラート**](../../azure-monitor/app/proactive-diagnostics.md)<br/>アプリのテレメトリの通常パターンに合わせて自動アラートを設定し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルで[アラートを設定](../../azure-monitor/app/alerts.md)することもできます。 |![アラートのサンプル](./media/app-insights-overview/alerts-tn.png) |
+| [**スマート検出と手動のアラート**](../../azure-monitor/app/proactive-diagnostics.md)<br/>アプリのテレメトリの通常パターンに合わせて自動アラートを設定し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルで[アラートを設定](../../azure-monitor/platform/alerts-log.md)することもできます。 |![アラートのサンプル](./media/app-insights-overview/alerts-tn.png) |
 | [**アプリケーション マップ**](../../azure-monitor/app/app-map.md)<br/>アプリのコンポーネントを、主要なメトリックとアラートと共に表示します。 |![アプリケーション マップ](./media/app-insights-overview/appmap-tn.png)  |
 | [**プロファイラー**](../../azure-monitor/app/profiler.md)<br/>サンプリングされた要求の実行プロファイルを検査します。 |![プロファイラー](./media/app-insights-overview/profiler.png) |
 | [**利用状況分析**](../../azure-monitor/app/usage-overview.md)<br/>ユーザーのセグメント化とリテンションを分析します。|![リテンション期間ツール](./media/app-insights-overview/retention.png) |
@@ -127,11 +127,11 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 * 質問および問題点:
   * [トラブルシューティング][qna]
-  * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * ご提案:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
-* ブログ: 
+* ブログ:
   * [Application Insights のブログ](https://azure.microsoft.com/blog/tag/application-insights)
 
 <!--Link references-->

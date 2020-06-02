@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Workbench プレビューの概要
 description: Azure Blockchain Workbench プレビューとその機能の概要。
-ms.date: 09/05/2019
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f2eafb892be4134d4fb178235249e5640544459
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79203646"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850030"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench とは
 
@@ -55,7 +55,7 @@ Azure Blockchain の最新情報については、[Azure Blockchain のブログ
 
 Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
 
-* [Azure Blockchain MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure Blockchain Workbench に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

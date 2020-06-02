@@ -2,13 +2,13 @@
 title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592799"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675959"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -22,11 +22,17 @@ ms.locfileid: "83592799"
     * [Language Understanding コンテナー](luis-container-howto.md)
     * プレビュー ポータルが[現在のポータル](https://www.luis.ai)に昇格 ([以前の](https://previous.luis.ai)ポータルはまだ使用可能)
     * 新しい機械学習エンティティの作成とラベル付けエクスペリエンス
-    * 複合エンティティや単純エンティティから機械学習エンティティへの[アップグレード プロセス](migrate-from-composite-entity.md)
+    * 複合エンティティや簡易エンティティから機械学習エンティティへの[アップグレード プロセス](migrate-from-composite-entity.md)
     * 単語バリアントを正規化する[設定](how-to-application-settings-portal.md)のサポート
 * プレビュー オーサリング API の変更点
     * 入れ子の機械学習エンティティのためのアプリ スキーマ 7.x
     * [必須特徴量への移行](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* 開発者向けの新しいリソース
+    * [継続的インテグレーション ツール](developer-reference-resource.md#continuous-integration-tools)
+    * ワークショップ - [LUIS を使用した "_自然言語理解_" (NLU)](developer-reference-resource.md#workshops) のためのベスト プラクティスを学習
+* [カスタマー マネージド キー](luis-encryption-of-data-at-rest.md) - 独自のキーを使用して LUIS で使用するデータをすべて暗号化
+* [AI Show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (ビデオ) - LUIS の新機能を参照
+
 
 
 ### <a name="march-2020"></a>2020 年 3 月
@@ -54,7 +60,7 @@ ms.locfileid: "83592799"
 * 新しい、拡張された[制限](luis-limits.md) - フレーズ リストおよびフレーズの合計のより高い最大値、機能制限としての新しいモデル
 * 深い階層構造の形式でテキストから情報を抽出することで、メッセージ交換アプリケーションをより強力にします。
 
-    ![機械学習したエンティティの画像](./media/whats-new/deep-entity-extraction-example.png)
+    ![機械学習エンティティの画像](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>2019 年 9 月 3 日
 

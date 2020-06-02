@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421306"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702046"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) 
 
@@ -28,7 +28,7 @@ SQL オンデマンドは、大規模なデータとコンピューティング�
 
 SQL オンデマンドはサーバーレスであるため、インフラストラクチャの設定やクラスターの管理は不要です。 このサービスの既定のエンドポイントはすべての Azure Synapse ワークスペース内で提供されるため、ワークスペースが作成されるとすぐにデータのクエリ実行を開始できます。 予約されているリソースには課金されません。実行するクエリによってスキャンされるデータに対してのみ課金されるため、このモデルはまさに従量課金制モデルになっています。  
 
-データ パイプラインで Spark を使用する場合は、データの準備、クレンジング、またはエンリッチメントのために、プロセスで作成した[任意の Spark テーブルに対してクエリ](develop-storage-files-spark-tables.md)を SQL オンデマンドから直接実行できます。 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) を使用して、SQL オンデマンド エンドポイントを[マネージド ワークスペース VNet](../security/synapse-workspace-managed-vnet.md) に組み込みます。  
+データ パイプラインで Apache Spark for Azure Synapse を使用する場合は、データの準備、クレンジング、またはエンリッチメントのために、プロセスで作成した [Spark 外部テーブルに対してクエリ](develop-storage-files-spark-tables.md)を SQL オンデマンドから直接実行できます。 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) を使用して、SQL オンデマンド エンドポイントを[マネージド ワークスペース VNet](../security/synapse-workspace-managed-vnet.md) に組み込みます。  
 
 ## <a name="who-is-sql-on-demand-for"></a>SQL オンデマンドの対象ユーザー
 
@@ -42,7 +42,7 @@ SQL オンデマンドは、さまざまな職務の役に立ちます。
 
 - データ エンジニアは、このサービスを使用してレイクの探索、データの変換、準備を行えるほか、データ変換パイプラインを簡素化できます。 詳細については、こちらの[チュートリアル](tutorial-data-analyst.md)をご覧ください。
 - データ サイエンティストは、OPENROWSET や自動スキーマ推論などの機能を利用して、レイク内のデータの内容と構造を迅速に把握することができます。
-- データ アナリストは、使い慣れた T-SQL 言語や、SQL オンデマンドに接続できるお気に入りのツールを使用して、データ サイエンティストまたはデータ エンジニアによって作成された[データと Spark テーブル](develop-storage-files-spark-tables.md)を探索できます。
+- データ アナリストは、使い慣れた T-SQL 言語や、SQL オンデマンドに接続できるお気に入りのツールを使用して、データ サイエンティストまたはデータ エンジニアによって作成された[データと Spark 外部テーブル](develop-storage-files-spark-tables.md)を探索できます。
 - BI プロフェッショナルは、レイク内のデータおよび Spark テーブルに基づいて [Power BI レポートをすばやく作成](tutorial-connect-power-bi-desktop.md)できます。
 
 ## <a name="what-do-i-need-to-do-to-start-using-it"></a>使用を開始するために必要な作業
@@ -110,7 +110,7 @@ SQL オンデマンドには、データへのアクセスをセキュリティ�
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory との統合と多要素認証
 
-SQL オンデマンドでは、[Azure Active Directory との統合](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory (Azure AD) では、[多要素認証](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) をサポートしています。これにより、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。
+SQL オンデマンドでは、[Azure Active Directory との統合](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory (Azure AD) では、[多要素認証](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) をサポートしています。これにより、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。
 
 #### <a name="authentication"></a>認証
 

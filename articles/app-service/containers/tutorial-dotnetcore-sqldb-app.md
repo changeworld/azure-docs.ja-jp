@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/23/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5bd20f98b10989da0a66acbf45b99d724664cf5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c2ed68c18cc7845d45bebffc31842879353f2c2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82208127"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846938"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>チュートリアル:Azure App Service on Linux での ASP.NET Core および SQL Database アプリの作成
 
@@ -314,6 +314,10 @@ dotnet ef migrations add AddProperty
 dotnet ef database update
 ```
 
+> [!NOTE]
+> 新しいターミナル ウィンドウを開いた場合、「[運用データベースへのデータベースの移行を実行する](#run-database-migrations-to-the-production-database)」で実行したのと同様の手順に従い、ターミナルで実稼働データベースへの接続文字列を設定する必要があります。
+>
+
 ### <a name="use-the-new-property"></a>新しいプロパティを使用する
 
 `Done` プロパティを使用するために、コードにいくつかの変更を加えます。 このチュートリアルでは、わかりやすくするために `Index` ビューと `Create` ビューのみを変更して、実際のプロパティを確認します。
@@ -367,6 +371,10 @@ _Views/Todos/Index.cshtml_ を開きます。
 ```bash
 dotnet run
 ```
+
+> [!NOTE]
+> 新しいターミナル ウィンドウを開いた場合、「[運用データベースへのデータベースの移行を実行する](#run-database-migrations-to-the-production-database)」で実行したのと同様の手順に従い、ターミナルで実稼働データベースへの接続文字列を設定する必要があります。
+>
 
 ブラウザーで `http://localhost:5000/` にアクセスします。 これで、To Do 項目を追加し、 **[完了]** チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 `Edit` ビューを変更していないため、`Edit` ビューには `Done` フィールドが表示されないことに注意してください。
 

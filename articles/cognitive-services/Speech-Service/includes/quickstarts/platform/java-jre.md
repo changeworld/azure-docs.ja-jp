@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 7147f0d13c88c1d2e17e81a360a5aee55ee760ed
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 94946b4b6d0f0fc9c94cac7aca1e971b3f6262f9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925237"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673222"
 ---
 このガイドでは、64 ビット Java 8 JRE 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合、Java SDK は Maven Central Repository で使用できません。 Gradle または `pom.xml` 依存関係ファイルを使用しているかどうかに関係なく、`https://csspeechstorage.blob.core.windows.net/maven/` を指すカスタム リポジトリを追加する必要があります (パッケージ名については以下を参照してください)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "78925237"
 - 以下のオペレーティング システム用の Java Speech SDK パッケージを入手できます。
   - Windows: 64 ビットのみ
   - Mac: macOS X バージョン 10.13 以降
-  - Linux: Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8 の 64 ビットのみ
+  - Linux: Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8 の 64 ビットのみ
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +52,7 @@ ms.locfileid: "78925237"
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - RHEL または CentOS 8 では、以下のコマンドを実行して、必要なパッケージをインストールします。
+  - RHEL または CentOS では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
         ```sh
         sudo yum update
@@ -60,7 +60,8 @@ ms.locfileid: "78925237"
         ```
 
 > [!NOTE]
-> RHEL または CentOS 8 の場合、[Linux 用 OpenSSL の構成方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
+> - RHEL または CentOS 7 の場合、「[Speech SDK 用に RHEL/CentOS 7 を構成する](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)」の手順に従います。
+> - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 - Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 パッケージを初めてインストールする場合、このガイドを続行する前に Windows の再起動が必要になる場合があることに注意してください。
 

@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1da5bd7020304c67bd9f9058612f47d528611a9e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195329"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873101"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>クイック スタート:Azure Spatial Anchors を使用する iOS アプリを Swift または Objective-C で作成する
 
@@ -101,6 +101,8 @@ open ./SampleObjC.xcworkspace
 
 `spatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
+`startSession()` を見つけ、`cloudSession!.configuration.accountDomain = "MyAccountDomain";` を追加し、前のアカウント ドメインを置き換えます。
+
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 `iOS/Objective-C/SampleObjC/BaseViewController.m`を開きます。
@@ -108,6 +110,8 @@ open ./SampleObjC.xcworkspace
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
+
+`startSession()` を見つけ、`_cloudSession.configuration.accountDomain = @"MyAccountDomain";` を追加し、前のアカウント ドメインを置き換えます。
 
 ---
 

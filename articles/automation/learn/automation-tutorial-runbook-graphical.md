@@ -1,17 +1,17 @@
 ---
 title: Azure Automation でグラフィカル Runbook を作成する
-description: 簡単なグラフィカル Runbook を Azure Automation で作成、テスト、発行する方法を説明するチュートリアルです。
+description: この記事では、簡単なグラフィカル Runbook を Azure Automation で作成、テスト、発行する方法を説明します。
 keywords: Runbook, Runbook テンプレート, Runbook Automation, Azure Runbook
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: f87f389667043e26f066886eddcdb8061df0319f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3cd5db3736d5eda88e7cad7bda1966efb2b00977
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725126"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744737"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>チュートリアル:グラフィカル Runbook を作成する
 
@@ -24,9 +24,6 @@ ms.locfileid: "81725126"
 > * Runbook をテストして発行する
 > * Runbook ジョブの状態を実行、追跡する
 > * Runbook パラメーターと条件付きリンクで Azure 仮想マシンを起動するように Runbook を更新する
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -354,7 +351,7 @@ Runbook ではこの時点で、`Start-AzVM` コマンドレットに対して�
 
 ## <a name="next-steps"></a>次のステップ
 
-* グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](../automation-graphical-authoring-intro.md)」を参照してください。
+* グラフィック作成の詳細については、[Azure Automation でのグラフィカル Runbook の作成](../automation-graphical-authoring-intro.md)に関する記事を参照してください。
 * PowerShell Runbook の使用を開始するには、「[PowerShell Runbook を作成する](automation-tutorial-runbook-textual-powershell.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)」を参照してください。
 * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation

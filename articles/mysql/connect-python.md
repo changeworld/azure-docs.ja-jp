@@ -9,13 +9,13 @@ ms.custom:
 - seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/09/2020
-ms.openlocfilehash: c9ea155f3cc71dd961a3780e3b188a6d062606bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/26/2020
+ms.openlocfilehash: 827a34999cc3f4d90344915a9b57492a0f31bafe
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067909"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870025"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>クイック スタート:Python を使用して Azure Database for MySQL のデータに接続してクエリを実行する
 
@@ -27,6 +27,9 @@ ms.locfileid: "80067909"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Database for MySQL サーバー。 [Azure portal を使用して Azure Database for MySQL サーバーを作成](quickstart-create-mysql-server-database-using-azure-portal.md)するか、[Azure CLI を使用して Azure Database for MySQL サーバーを作成](quickstart-create-mysql-server-database-using-azure-cli.md)してください。
+
+> [!IMPORTANT] 
+> [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
 
 ## <a name="install-python-and-the-mysql-connector"></a>Python と MySQL コネクタのインストール
 

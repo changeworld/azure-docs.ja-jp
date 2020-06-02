@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80332547"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739101"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -63,7 +63,7 @@ Azure AD B2C では、複数の種類のユーザー アカウントが定義さ
 
 ![コンシューマーアカウントの ID](media/technical-overview/identities.png)<br/>*図:Azure AD B2C に複数の ID を持つ単一のコンシューマー アカウント*
 
-Azure AD B2C を使用すると、表示名、姓、特定の名前、都市など、コンシューマー アカウント プロファイルの一般的な属性を管理できます。 また、ユーザーに関する追加情報を格納するように、Azure AD スキーマを拡張することもできます。 たとえば、国や居住地、優先する言語、およびニュースレターを購読するか、多要素認証を有効にするか、といった設定などです。
+Azure AD B2C を使用すると、表示名、姓、特定の名前、都市など、コンシューマー アカウント プロファイルの一般的な属性を管理できます。 また、ユーザーに関する追加情報を格納するように、Azure AD スキーマを拡張することもできます。 たとえば、国/地域や居住地、優先する言語、ニュースレターを購読するか、多要素認証を有効にするか、といった設定などです。
 
 Azure AD B2C でのユーザー アカウントの種類について詳しくは、「[Azure Active Directory B2C のユーザー アカウントの概要](user-overview.md)」をご覧ください。
 
@@ -100,7 +100,7 @@ Azure AD B2C には、これらの ID エクスペリエンスを提供するた
 アプリケーションでの ID エクスペリエンスの動作を制御するため、次のようなユーザー フロー設定を構成できます。
 
 * サインインに使用するアカウントの種類 (Facebook などのソーシャル アカウント、またはメール アドレスとパスワードをサインインに使用するローカル アカウント)
-* コンシューマーから収集される属性 (名、郵便番号、居住国など)
+* コンシューマーから収集される属性 (名、郵便番号、居住地の国/地域など)
 * Azure Multi-Factor Authentication (MFA)
 * ユーザー インターフェイスのカスタマイズ
 * ユーザーがユーザー フローを完了した後でアプリケーションが受け取るトークン内の要求のセット

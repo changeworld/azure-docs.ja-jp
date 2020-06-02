@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 43b440b631122f7057de68871f0a3f870588dc67
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448615"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650211"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>クイック スタート:Python を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -31,7 +31,7 @@ ms.locfileid: "75448615"
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 好みの IDE またはエディターで新しい Python ファイルを作成し、次の import を追加します。 サブスクリプション キー、エンドポイント、市場、検索クエリのための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+1. 好みの IDE またはエディターで新しい Python ファイルを作成し、次の import を追加します。 サブスクリプション キー、エンドポイント、市場、検索クエリのための変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```python
     import http.client, urllib.parse
@@ -52,21 +52,24 @@ ms.locfileid: "75448615"
 
 ## <a name="send-a-request-and-get-a-response"></a>要求を送信して応答を取得する
 
-1. `get_suggestions()` という関数を作成します。 次に、以下の手順のようにします。
-   1. `Ocp-Apim-Subscription-Key` をキーとしてディクショナリにサブスクリプション キーを追加します。
-   2. `http.client.HTTPSConnection()` を使用して HTTPS クライアント オブジェクトを作成します。 パスとパラメーターおよびヘッダー情報を使用して、`request()` で `GET` 要求を送信します。
-   3. `getresponse()` で応答を格納し、`response.read()` を返します。
+1. `get_suggestions()` という関数を作成します。 
 
-      ```python
-      def get_suggestions ():
-       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-       conn = http.client.HTTPSConnection (host)
-       conn.request ("GET", path + params, None, headers)
-       response = conn.getresponse ()
-       return response.read()
-      ```
+2. この関数では、`Ocp-Apim-Subscription-Key` をキーとしてディクショナリにサブスクリプション キーを追加します。
 
-2. `get_suggestions()` を呼び出して、JSON 応答を出力します。
+3. `http.client.HTTPSConnection()` を使用して HTTPS クライアント オブジェクトを作成します。 パスとパラメーターおよびヘッダー情報を使用して、`request()` で `GET` 要求を送信します。
+
+4. `getresponse()` で応答を格納し、`response.read()` を返します。
+
+   ```python
+   def get_suggestions ():
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    conn = http.client.HTTPSConnection (host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read()
+   ```
+
+5. `get_suggestions()` を呼び出して、JSON 応答を出力します。
 
     ```python
     result = get_suggestions ()
@@ -144,4 +147,4 @@ ms.locfileid: "75448615"
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../search-the-web.md)
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

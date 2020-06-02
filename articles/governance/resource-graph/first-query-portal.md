@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めてのポータル クエリ
 description: このクイックスタートでは、手順に従って、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行します。
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74406793"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872084"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -36,11 +36,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. このクエリを更新して `order by` に **Name** プロパティを指定します (`Resources | project name, type | limit 5 | order by name asc`)。 その後、 **[クエリの実行]** を選択します。
 
    > [!NOTE]
-   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
+   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
 1. このクエリを更新して、最初に `order by` に **Name** プロパティを指定してから `limit` に上位 5 件の結果を指定します (`Resources | project name, type | order by name asc | limit 5`)。 その後、 **[クエリの実行]** を選択します。
 
-最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は **Name** プロパティで並べ替えられますが、上位 5 件に制限されます。
+最後のクエリを複数回実行した場合、環境内で何も変更がないと仮定すると、返される結果は変わらず、**Name** プロパティで並べ替えられますが、引き続き上位 5 件の結果に制限されます。
 
 ### <a name="schema-browser"></a>スキーマ ブラウザー
 
@@ -119,7 +119,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Resource Graph Explorer を使用して初めてのクエリを実行し、Resource Graph を使用したダッシュボードの例を見てきました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+このクイックスタートでは、Azure Resource Graph Explorer を使用して初めてのクエリを実行し、Resource Graph を使用したダッシュボードの例を見てきました。 Resource Graph 言語の詳細については、クエリ言語の詳細ページに進んでください。
 
 > [!div class="nextstepaction"]
 > [クエリ言語に関する詳細情報を入手します](./concepts/query-language.md)

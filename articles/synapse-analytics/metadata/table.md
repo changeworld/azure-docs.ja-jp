@@ -6,37 +6,33 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c1951c772dcd2f49f4f7c09021f69193af0a87e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420836"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701069"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Apache Spark プール (プレビュー)、SQL オンデマンド (プレビュー) エンジン、SQL プールの間でデータベースと Parquet ベースのテーブルを共有できます。
+Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Apache Spark プール (プレビュー) と SQL オンデマンド (プレビュー) エンジンの間でデータベースと Parquet でサポートされたテーブルを共有できます。
 
 Spark ジョブによってデータベースが作成されると、Spark を使用してその内部にテーブルを作成できます (ストレージ形式として Parquet を使用)。 これらのテーブルではすぐに、任意の Azure Synapse ワークスペース Spark プールによってクエリを実行できるようになります。 これらは、アクセス許可の対象となる任意の Spark ジョブから使用することもできます。
 
-Spark で作成、管理される外部テーブルは、SQL オンデマンドの対応する同期済みデータベースと、メタデータ同期が有効な SQL プールの対応する `$` プレフィックス付きスキーマで、名前が同じ外部テーブルとして使用することもできます。 テーブルの同期については、「[SQL での Spark テーブルの公開](#exposing-a-spark-table-in-sql)」で詳しく説明します。
+Spark で作成、管理される外部テーブルは、SQL オンデマンドの対応する同期済みデータベースと同じ名前の外部テーブルとして使用することもできます。 テーブルの同期については、「[SQL での Spark テーブルの公開](#exposing-a-spark-table-in-sql)」で詳しく説明します。
 
-テーブルは SQL オンデマンドと SQL プールに非同期的に同期されるため、表示されるまでに遅延が発生します。
-
-外部テーブル、データ ソース、ファイル形式へのテーブルのマッピング。
+テーブルは SQL オンデマンドに非同期的に同期されるため、表示されるまでに遅延が発生します。
 
 ## <a name="manage-a-spark-created-table"></a>Spark で作成されたテーブルの管理
 
 Spark を使用して、Spark で作成されたデータベースを管理します。 たとえば、Spark プール ジョブを使用してそれを削除したり、Spark からその内部にテーブルを作成したりします。
 
 SQL オンデマンドでそのようなデータベースにオブジェクトを作成したり、データベースの削除を試みたりすると、操作は成功しますが、元の Spark データベースは変更されません。
-
-SQL プール内の同期されたスキーマを削除しようとしたり、その内部にテーブルを作成しようとしたりすると、Azure からエラーが返されます。
 
 ## <a name="exposing-a-spark-table-in-sql"></a>SQL での Spark テーブルの公開
 
@@ -193,27 +189,6 @@ id | name | birthdate
 ---+-------+-----------
 1 | Alice | 2010-01-01
 ```
-
-### <a name="querying-spark-tables-in-a-sql-pool"></a>SQL プールで Spark テーブルに対するクエリを実行する
-
-前の例で作成したテーブルを使って、今度はメタデータ同期を可能にする `mysqlpool` という名前の SQL プールを自分のワークスペースに作成します (または「[SQL プールでの Spark データベースの公開](database.md#exposing-a-spark-database-in-a-sql-pool)」で作成した既存のプールを使用します)。
-
-`mysqlpool` SQL プールに対して次のステートメントを実行します。
-
-```sql
-SELECT * FROM sys.tables;
-```
-
-テーブル `myParquetTable` および `myExternalParquetTable` がスキーマ `$mytestdb` に表示されていることを確認します。
-
-これで、次のように SQL オンデマンドでデータを読み取ることができます。
-
-```sql
-SELECT * FROM [$mytestdb].myParquetTable WHERE name = 'Alice';
-SELECT * FROM [$mytestdb].myExternalParquetTable WHERE name = 'Alice';
-```
-
-上記の SQL オンデマンドの場合と同じ結果が得られます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720931"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743589"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>チュートリアル:Azure Cosmos DB でデータを分析して視覚化するノートブックを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "73720931"
 
 1. 新しいノートブックが作成された後、その名前を変更できます (**VisualizeRetailData.ipynb** など)。
 
-1. 次に、小売データの格納先として、"RetailDemo" という名前のデータベースと "WebsiteData" という名前のコンテナーを作成します。 パーティション キーとしては /CardID を使用できます。 次のコードをコピーし、ノートブック内の新しいセルに貼り付けて実行します。
+1. 次に、小売データの格納先として、"RetailDemo" という名前のデータベースと "WebsiteData" という名前のコンテナーを作成します。 パーティション キーとしては /CartID を使用できます。 次のコードをコピーし、ノートブック内の新しいセルに貼り付けて実行します。
 
    ```python
    import azure.cosmos
@@ -121,7 +121,7 @@ ms.locfileid: "73720931"
 {Query text}
 ```
 
-詳細については、[Azure Cosmos DB の組み込みのノートブック コマンドと機能](use-notebook-features-and-commands.md)に関する記事を参照してください。 クエリ `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` を実行します。 結果は、df_cosmos という名前の Pandas データフレームに保存されます。 新しいノートブック セルに次のコマンドを貼り付けて実行してください。
+詳細については、[Azure Cosmos DB の組み込みのノートブック コマンドと機能](use-python-notebook-features-and-commands.md)に関する記事を参照してください。 クエリ `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` を実行します。 結果は、df_cosmos という名前の Pandas データフレームに保存されます。 新しいノートブック セルに次のコマンドを貼り付けて実行してください。
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 このセクションでは、取得したデータに対して、いくつかのクエリを実行します。
 
-* **クエリ 1**: データフレームにグループ化クエリを実行して、国ごとの総売上収益の合計を取得し、結果から 5 項目を表示します。 新しいノートブック セルで、次のコードを実行します。
+* **クエリ 1**: データフレームにグループ化クエリを実行して、国または地域ごとの総売上収益の合計を取得し、結果から 5 項目を表示します。 新しいノートブック セルで、次のコードを実行します。
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -170,16 +170,16 @@ df_cosmos.head(10)
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. 次に、地図上にデータをプロットするための準備を行います。 Azure Cosmos DB 内のデータと Azure Blob Storage に格納されている国情報とを結合し、結果を GeoJSON 形式に変換します。 新しいノートブック セルに次のコードをコピーして実行してください。
+1. 次に、地図上にデータをプロットするための準備を行います。 Azure Cosmos DB 内のデータと Azure Blob Storage に格納されている国または地域情報とを結合し、結果を GeoJSON 形式に変換します。 新しいノートブック セルに次のコードをコピーして実行してください。
 
    ```python
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ df_cosmos.head(10)
    json_data = json.dumps(merged_json)
    ```
 
-1. 新しいノートブック セルで次のコードを実行し、世界地図上にさまざまな国の売上収益を視覚化します。
+1. 新しいノートブック セルで次のコードを実行し、世界地図上にさまざまな国または地域の売上収益を視覚化します。
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,9 +233,9 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   出力には、世界地図がさまざまな色で表示されます。 色が濃いほど収益が高い国を、色が薄いほど収益が低い国を表します。
+   出力には、世界地図がさまざまな色で表示されます。 色が濃いほど収益が高い国または地域を、色が薄いほど収益が低い国または地域を表します。
 
-   ![各国での収益を視覚化した地図](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![各国または地域での収益を視覚化した地図](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
 1. データを視覚化するケースをもう 1 つ見てみましょう。 WebsiteData コンテナーには、項目を表示し、カートに追加し、購入したユーザーのレコードが含まれています。 購入された項目のコンバージョン率をプロットしてみましょう。 新しいセルで次のコードを実行すると、各項目のコンバージョン率が視覚化されます。
 
@@ -290,4 +290,4 @@ df_cosmos.head(10)
 
 ## <a name="next-steps"></a>次のステップ
 
-* ノートブック コマンドについて詳しくは、[Azure Cosmos DB の組み込みのノートブック コマンドと機能](use-notebook-features-and-commands.md)に関する記事を参照してください。
+* Python ノートブック コマンドの詳細については、[Azure Cosmos DB の組み込みのノートブック コマンドと機能の使用方法](use-python-notebook-features-and-commands.md)に関する記事を参照してください。

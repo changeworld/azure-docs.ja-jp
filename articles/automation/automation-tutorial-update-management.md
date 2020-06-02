@@ -1,38 +1,28 @@
 ---
-title: Azure VM の更新プログラムとパッチの管理
-description: この記事では、Azure Automation Update Management を使用して、お使いの Azure および非 Azure VM の更新プログラムとパッチを管理する方法の概要について説明します。
+title: Azure Automation での Azure VM の更新プログラムとパッチの管理
+description: この記事では、Update Management を使用して Azure VM の更新プログラムとパッチを管理する方法を説明します。
 services: automation
 ms.subservice: update-management
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604674"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829156"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM の更新プログラムとパッチの管理
 
-Update Management のソリューションを使用すると、仮想マシンの更新プログラムとパッチを管理できます。 このチュートリアルでは、利用可能な更新プログラムの状態の評価、必要な更新プログラムのインストールのスケジュール設定、展開の結果の確認、更新プログラムが正常に適用されたことを確認するアラートの作成を迅速に行う方法について説明します。
+この記事では、Azure Automation の [Update Management](automation-update-management.md) 機能を使用して、Azure VM の更新プログラムとパッチを管理する方法について説明します。 
 
 価格情報については、[Update Management の Automation の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 
-このチュートリアルでは、以下の内容を学習します。
-
-> [!div class="checklist"]
-> * 更新の評価を表示する
-> * アラートを構成する
-> * 更新プログラムのデプロイをスケジュールする
-> * デプロイの結果を表示する
-
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
-
-* 1 つ以上の VM に対して有効になっている [Update Management](automation-update-management.md) ソリューション。
-* オンボードする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
+* 1 つ以上の VM に対して有効になっている [Update Management](automation-update-management.md) 機能。 
+* Update Management に対して有効になっている[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -95,7 +85,7 @@ Update Management を有効にすると、[更新プログラムの管理] ペ�
 
 ## <a name="schedule-an-update-deployment"></a>更新プログラムのデプロイをスケジュールする
 
-次に、リリース スケジュールとサービス期間に従って展開をスケジュールし、更新プログラムをインストールします。 展開に含める更新プログラムの種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
+リリース スケジュールとサービス期間に従って展開をスケジュールし、更新プログラムをインストールします。 展開に含める更新プログラムの種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
 
 >[!NOTE]
 >更新プログラムの展開をスケジュールすると、対象マシンへの更新プログラムの展開を処理する **Patch-MicrosoftOMSComputers**Runbook にリンクされた[スケジュール](shared-resources/schedules.md) リソースが作成されます。 展開の作成後に Azure portal または PowerShell を使用してこのスケジュール リソースを削除した場合、スケジュールされた更新プログラムの展開が破棄され、ポータルからスケジュール リソースを再構成しようとするとエラーが表示されます。 スケジュール リソースは、対応するデプロイ スケジュールを削除することによってのみ削除することができます。  
@@ -112,16 +102,7 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 * **[更新するマシン]** :保存した検索、インポートしたグループを選択するか、ドロップダウン メニューから **[マシン]** を選択し、個々のマシンを選択します。 **[マシン]** を選択した場合、各マシンの準備状況が **[エージェントの更新の準備]** 列に表示されます。 Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
 
-* **[更新プログラムの分類]** :製品ごとに、更新プログラムの展開に含めるものを除き、サポート対象の更新プログラムの分類すべての選択を解除します。 このチュートリアルでは、全製品に選択されているすべての種類をそのままにします。
-
-  分類の種類は次のとおりです。
-
-   |OS  |Type  |
-   |---------|---------|
-   |Windows     | 緊急更新プログラム</br>セキュリティ更新プログラム</br>更新プログラムのロールアップ</br>Feature Pack</br>Service Pack</br>定義の更新</br>ツール</br>更新プログラム<br>Driver        |
-   |Linux     | 緊急更新プログラムとセキュリティ更新プログラム</br>他の更新プログラム       |
-
-   分類の種類の説明については、「[更新プログラムの分類](automation-view-update-assessments.md#update-classifications)」を参照してください。
+* **[更新プログラムの分類]** :製品ごとに、更新プログラムの展開に含めるものを除き、サポート対象の更新プログラムの分類すべての選択を解除します。 分類の種類の説明については、「[更新プログラムの分類](automation-view-update-assessments.md#work-with-update-classifications)」を参照してください。
 
 * **[Updates to include/exclude]\(包含/除外する更新プログラム\)** : [包含/除外] ページを開きます。 包含または除外する更新プログラムは、サポート技術情報の記事の ID 番号を指定することで、別々のタブに表示されます。 1 つ以上の ID 番号を指定する場合は、更新プログラムの展開ですべての分類を削除するか、チェック ボックスをオフにする必要があります。 これにより、更新プログラムの ID を指定しても、更新プログラム パッケージに他の更新プログラムが含まれなくなります。
 
@@ -131,7 +112,6 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 > [!NOTE]
 > 更新プログラムの展開に含めるよう、古くなった更新プログラムを指定することはできません。
 >
-
 * **[スケジュール設定]** :[スケジュール設定] ペインが開きます。 既定の開始時刻は、現在の時刻の 30 分後です。 開始時刻は、10 分後以降の将来の任意の時点に設定できます。
 
    展開を 1 回行うか、定期的なスケジュールを設定するかを指定することもできます。 **[繰り返し]** で **[1 回]** を選択します。 既定値を 1 日のままにし、 **[OK]** をクリックします。 これらのエントリにより、定期的なスケジュールが設定されます。
@@ -196,16 +176,4 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * Update Management のために VM をオンボードする
-> * 更新の評価を表示する
-> * アラートを構成する
-> * 更新プログラムのデプロイをスケジュールする
-> * デプロイの結果を表示する
-
-更新の管理ソリューションの概要に進みます。
-
-> [!div class="nextstepaction"]
-> [更新の管理ソリューション](automation-update-management.md)
+* Update Management の詳細については、[Update Management の概要](automation-update-management.md)に関する記事をご覧ください。

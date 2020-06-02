@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e35f5c9288860056a910f54f9601b2178a628bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425801"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828085"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>サブスクリプション移行後のキー コンテナー テナント ID の変更
 
@@ -61,4 +61,4 @@ MSI を使用している場合は、古い ID が正しい AAD テナントに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
+Azure Key Vault に関する質問がある場合は、[Azure Key Vault に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-key-vault.html)にアクセスしてください。

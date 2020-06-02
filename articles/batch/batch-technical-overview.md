@@ -1,14 +1,14 @@
 ---
 title: クラウドでの Azure Batch による大規模な並列ジョブの実行
 description: 大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116351"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779563"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 
@@ -74,7 +74,7 @@ Batch の一般的なシナリオでは、3D シーンの画像のレンダリ�
 
 これは Batch の利用方法の 1 つにすぎません。このシナリオでは、機能のほんの一部のみを紹介しています。 たとえば、各コンピューティング ノードで、[複数のタスクを並列](batch-parallel-node-tasks.md)で実行できます。 または、[ジョブの準備と完了のタスク](batch-job-prep-release.md)を利用してジョブのノードを準備し、後で消去することができます。 
 
-プール、ノード、ジョブ、タスクの詳細や、Batch アプリケーションを構築するときに使用できる多くの API 機能の詳細については、[開発者向けの Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
+プール、ノード、ジョブ、タスクなどの機能の概要については、[Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md)に関する記事を参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

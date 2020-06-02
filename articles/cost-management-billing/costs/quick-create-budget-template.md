@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: de24895334ec4c864e6daae84a6aab47a47d7b9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103635"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830312"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して予算を作成する
 
@@ -39,21 +39,23 @@ Azure Resource Manager テンプレートでサポートされるのは、マイ
 
 Cost Management データに対するアクセス許可の割り当てについて詳しくは、「[Cost Management のデータへのアクセス許可を割り当てる](assign-access-acm-data.md)」をご覧ください。
 
-## <a name="review-the-template"></a>テンプレートを確認する
+## <a name="create-a-budget"></a>予算を作成する
+
+### <a name="review-the-template"></a>テンプレートを確認する
 
 このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/create-budget)からのものです。
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
 テンプレートには、1 つの Azure リソースが定義されています。
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets): Azure の予算を作成します。
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートによって予算が作成されます。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json"><img src="./media/quick-create-budget-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 
@@ -97,6 +99,37 @@ az consumption budget list
 
 ```azurepowershell-interactive
 Get-AzConsumptionBudget
+```
+
+---
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+予算が不要になった場合は、次のいずれかの方法を使用して削除します。
+
+### <a name="azure-portal"></a>Azure portal
+
+**[コストの管理と請求]** に移動して、請求スコープを選択し、 **[予算]** で予算を選択したら、 **[予算の削除]** を選択します。
+
+### <a name="command-line"></a>コマンド ライン
+
+Azure CLI または Azure PowerShell を使用して、予算を削除できます。
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the budget name:" &&
+read budgetName &&
+az consumption budget delete --budget-name $budgetName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$budgetName = Read-Host -Prompt "Enter the budget name"
+Remove-AzConsumptionBudget -Name $budgetName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ---

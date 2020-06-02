@@ -6,39 +6,33 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3651467de86d3b026ab348675249f93ebf3a86a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: da1bd9c812c20f60264d1a5ee1f8821128900618
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420216"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698859"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース
 
-Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンが、Spark プール (プレビュー)、SQL オンデマンド (プレビュー) エンジン、および SQL プール間でデータベースとテーブルを共有できます。
+Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンが、Spark プール (プレビュー) と SQL オンデマンド (プレビュー) エンジンの間でデータベースとテーブルを共有できます。
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
 Spark ジョブを使用して作成されたデータベースは、その同じ名前で、ワークスペース内の現在および将来のすべての Spark プール (プレビュー) と、SQL オンデマンド エンジンから参照できるようになります。
 
-メタデータ同期が有効になっている SQL プールがワークスペースに存在する場合、またはメタデータ同期が有効な新しい SQL プールを作成した場合、これらの Spark で作成されたデータベースは、SQL プール データベース内の特殊なスキーマに自動的にマップされます。 
+Spark の既定のデータベース (`default` と呼ばれる) は、`default` と呼ばれるデータベースとして SQL オンデマンド コンテキストにも表示されます。
 
-各スキーマの名前は、Spark データベース名に `$` プレフィックスを追加して指定されます。 Spark で生成されたデータベース内の外部テーブルとマネージド テーブルは、どちらも対応する特別なスキーマの外部テーブルとして公開されます。
-
-`default` と呼ばれる Spark の既定のデータベースは、SQL オンデマンド コンテキストで `default` と呼ばれるデータベースとして、およびメタデータ同期が有効になっている任意の SQL プール データベースでスキーマ `$default` として表示されます。
-
-データベースは SQL オンデマンドおよび SQL プールに非同期的に同期されるため、表示されるまでに遅延が発生します。
+データベースは SQL オンデマンドに非同期的に同期されるため、表示されるまでに遅延が発生します。
 
 ## <a name="manage-a-spark-created-database"></a>Spark で作成されたデータベースを管理する
 
 Spark を使用して、Spark で作成されたデータベースを管理します。 たとえば、Spark プール ジョブを使用してこれを削除したり、Spark からその内部にテーブルを作成したりします。
 
 SQL オンデマンドを使用して Spark で作成されたデータベースにオブジェクトを作成した場合、またはデータベースを削除しようとした場合、操作は成功します。 ただし、元の Spark データベースは変更されません。
-
-SQL プール内の同期されたスキーマを削除しようとしたり、その内部にテーブルを作成しようとしたりすると、Azure からエラーが返されます。
 
 ## <a name="handling-of-name-conflicts"></a>名前の競合の処理
 
@@ -79,22 +73,7 @@ SELECT * FROM sys.databases;
 
 結果に `mytestdb` が含まれていることを確認します。
 
-### <a name="exposing-a-spark-database-in-a-sql-pool"></a>SQL プールでの Spark データベースの公開
-
-前の例で作成したデータベースを使用して、メタデータの同期を有効にする `mysqlpool` という名前の SQL プールをワークスペースに作成します。
-
-`mysqlpool` SQL プールに対して次のステートメントを実行します。
-
-```sql
-SELECT * FROM sys.schema;
-```
-
-新しく作成したデータベースのスキーマが結果に含まれていることを確認します。
-
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse Analytics の共有メタデータについての詳細情報](overview.md)
 - [Azure Synapse Analytics の共有メタデータ テーブルについての詳細情報](table.md)
-
-<!-- - [Learn more about the Synchronization with SQL Analytics on-demand](overview.md)
-- [Learn more about the Synchronization with SQL Analytics pools](overview.md)-->

@@ -3,12 +3,12 @@ title: チュートリアル - Azure で VMware プライベート クラウド�
 description: Azure にプライベート クラウドをデプロイするために必要なネットワークを作成して構成する方法について説明します
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 41043b98a6e270d8d9f4373de7876b3fcae86747
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837619"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873865"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>チュートリアル:Azure で VMware プライベート クラウド用のネットワークを構成する
 

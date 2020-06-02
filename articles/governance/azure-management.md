@@ -1,14 +1,14 @@
 ---
 title: Azure 管理の概要 - Azure のガバナンス
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
-ms.date: 12/06/2018
+ms.date: 05/22/2020
 ms.topic: overview
-ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75980899"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828149"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
 
@@ -18,7 +18,7 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 
 次の図は、アプリケーションまたはリソースを維持するために必要な管理のさまざまな領域を示しています。 これらのさまざまな領域は、ライフ サイクルとして考えることができます。 リソースの寿命全体での継続的な継承において、各領域が必要になります。 このリソースのライフサイクルは初期のデプロイから始まり、継続的な運用を経て、最後には廃止されます。
 
-![Azure における管理の規範](../monitoring/media/management-overview/management-capabilities.png)
+:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure における管理の規範" border="false":::
 
 1 つの Azure サービスが、特定の管理領域の要件を完全に満たすことはありません。 代わりに、各領域は、複数のサービスの連携によって実現されます。 Application Insights などの一部のサービスは、ターゲットを絞った Web アプリケーション向けの監視機能を提供します。 Azure Monitor ログなどのその他のサービスは、その他のサービスの管理データを保存します。 この機能を使用すると、各種のサービスによって収集したさまざまな種類のデータを分析できます。
 
@@ -28,7 +28,7 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 
 監視とは、リソースのパフォーマンス、正常性、および可用性を監査するために、データを収集して分析することです。 効果的な監視戦略によって、コンポーネントの運用を理解すると共に、通知を利用して稼働時間を向上させることができます。 [Azure アプリケーションとリソースの監視](../monitoring/monitoring-overview.md)に使用されるさまざまなサービスを紹介した監視の概要を確認してください。
 
-## <a name="configure"></a>[構成]
+## <a name="configure"></a>構成
 
 構成とは、リソースの初期デプロイと構成、および継続的な保守のことです。
 これらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。 [Azure Automation](../automation/automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。 Runbook はプロセスの自動化を処理しますが、構成を管理する際には、構成および更新の管理が役立ちます。
@@ -36,7 +36,9 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 ## <a name="govern"></a>ガバナンス
 
 ガバナンスは、Azure のアプリケーションとリソースに対するコントロールを維持するメカニズムとプロセスを提供します。 これには、イニシアチブの計画と戦略的な優先順位の設定が含まれます。
-Azure におけるガバナンスは、主に 2 つのサービスで実装されます。 [Azure Policy](./policy/overview.md) を使用すると、ポリシーの定義を作成、割り当て、および管理して、お使いのリソースに規則を適用できます。 この機能によって、リソースを継続的に企業の標準に準拠させることができます。 [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) では、クラウドの使用状況と、Azure リソースおよび他のクラウド プロバイダーに対する支出を追跡することができます。
+Azure におけるガバナンスは、主に 2 つのサービスで実装されます。 [Azure Policy](./policy/overview.md) を使用すると、ポリシーの定義を作成、割り当て、および管理して、お使いのリソースに規則を適用できます。
+この機能によって、リソースを継続的に企業の標準に準拠させることができます。
+[Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) では、クラウドの使用状況と、Azure リソースおよび他のクラウド プロバイダーに対する支出を追跡することができます。
 
 ## <a name="secure"></a>セキュリティで保護
 

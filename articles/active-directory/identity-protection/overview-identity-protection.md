@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79497679"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647345"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
@@ -85,6 +85,8 @@ Identity Protection にユーザーがにアクセスするためには、セキ
 | セキュリティ管理者 | Identity Protection へのフル アクセス | ユーザーのパスワードをリセットする |
 | セキュリティ オペレーター | すべての Identity Protection レポートと [概要] ブレードを表示する <br><br> ユーザー リスクを無視し、安全なサインインを確認して、セキュリティ侵害を確認する | ポリシーを構成または変更する <br><br> ユーザーのパスワードをリセットする <br><br> アラートを構成する |
 | セキュリティ閲覧者 | すべての Identity Protection レポートと [概要] ブレードを表示する | ポリシーを構成または変更する <br><br> ユーザーのパスワードをリセットする <br><br> アラートを構成する <br><br> 検出に関するフィードバックを送信する |
+
+現在のところ、セキュリティ オペレーター ロールでは危険なサインイン レポートにアクセスできません。
 
 条件付きアクセス管理者は、条件としてサインイン リスクを考慮に入れるポリシーを作成することもできます。詳細については、「[条件付きアクセス: 条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)」を参照してください。
 

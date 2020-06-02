@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: a02abd931dddd410882dd67a73a5b5fab6dc8cf9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82194892"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846667"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -41,7 +41,7 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 -   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項とセキュリティ アラートが生成されます。
 
--   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスによる自動プロビジョニングと保護が提供されます。
+-   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスを自動的にプロビジョニングしたり、保護できます。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 02/01/2020
+ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a437e474a923edc15689639b7180ebed73242bb5
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77915641"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816371"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上の Azure Web アプリケーション ファイアウォール
 
@@ -26,7 +26,7 @@ WAF は仮想ネットワークに入る前の攻撃ソースの近くで悪意�
 
 ## <a name="waf-policy-and-rules"></a>WAF のポリシーと規則
 
-WAF ポリシーを構成し、保護のためにそのポリシーを 1 つ以上の Front Door フロントエンドと関連付けることができます。 WAF ポリシーは、2 種類のセキュリティ規則で構成されます。
+[WAF ポリシー](waf-front-door-create-portal.md)を構成し、保護のためにそのポリシーを 1 つ以上の Front Door フロントエンドと関連付けることができます。 WAF ポリシーは、2 種類のセキュリティ規則で構成されます。
 
 - お客様によって作成されたカスタム規則。
 

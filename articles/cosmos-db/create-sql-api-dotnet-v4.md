@@ -1,26 +1,26 @@
 ---
-title: .Net V4 SDK を使用して Azure Cosmos DB SQL API リソースを管理する
-description: Azure Cosmos DB SQL API アカウント リソースを管理するための .Net V4 SDK を使用したコンソール アプリを構築するクイック スタート。
-author: ealsur
-ms.author: maquaran
+title: .NET V4 SDK を使用して Azure Cosmos DB SQL API リソースを管理する
+description: Azure Cosmos DB SQL API アカウント リソースを管理するための .NET V4 SDK を使用したコンソール アプリを構築するクイック スタート。
+author: anfeldma-ms
+ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/10/2020
-ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/11/2020
+ms.openlocfilehash: eabcc53c03b156088179d5ab7216d8a3409a7b3e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77585936"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659134"
 ---
-# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>クイック スタート:Azure Cosmos DB SQL API アカウント リソースを管理するための .Net V4 SDK を使用したコンソール アプリを構築する。
+# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>クイック スタート:Azure Cosmos DB SQL API アカウント リソースを管理するための .NET V4 SDK を使用したコンソール アプリを構築する。
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)

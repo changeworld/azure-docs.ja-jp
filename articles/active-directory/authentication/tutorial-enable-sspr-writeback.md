@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4815187e829cff56893988874e4dcac3b8985e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d0ea181b0e6ac18a559614c5bce0707775acdcec
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143744"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640183"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
@@ -58,6 +58,10 @@ SSPR のライトバックを正しく操作するには、Azure AD Connect で�
    * SSPR の範囲内にしたいユーザー組織単位 (OU)
 
 これらのアクセス許可を割り当てないと、ライトバックが正しく構成されているように見えても、ユーザーがクラウドからオンプレミスのパスワードを管理するときにエラーが発生します。 "期限切れではないパスワード" が表示されるためには、 **[このオブジェクトとすべての子オブジェクト]** にアクセス許可が割り当てられている必要があります。  
+
+> [!TIP]
+>
+> 一部のユーザー アカウントのパスワードがオンプレミスのディレクトリに書き戻されない場合は、オンプレミスの AD DS 環境でそのアカウントの継承が無効になっていないことを確認してください。 この機能を正常に動作させるには、パスワードの書き込みアクセス許可を子孫オブジェクトに適用する必要があります。
 
 パスワード ライトバックを行うための適切なアクセス許可を設定するには、以下の手順を完了します。
 

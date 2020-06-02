@@ -1,17 +1,16 @@
 ---
 title: クイックスタート - Azure portal で VM をバックアップする
 description: このクイック スタートでは、Azure portal を使用して、Recovery Services コンテナーを作成し、Azure VM 上で保護を有効にし、VM をバックアップする方法について説明します。
-ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 02/06/2020
+ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215330"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656974"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 
@@ -21,7 +20,7 @@ Azure ポータルで Azure のバックアップを作成できます。 この
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="select-a-vm-to-back-up"></a>バックアップする VM を選択する
 
@@ -70,7 +69,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
 1. 目的の VM の **[バックアップ]** オプションを選択します。
 
-2. **[...さらに表示]** を選択して他のオプションを表示し、 **[バックアップの停止]** を選択します。
+2. **[バックアップの停止]** を選択します。
 
     ![Azure ポータルから VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
 

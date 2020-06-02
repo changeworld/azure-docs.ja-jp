@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 09/04/2019
-ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/19/2020
+ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78204737"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677557"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -147,7 +147,8 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 4. 「**例を構築してデプロイする**」の手順 3. (「[チュートリアル: Apache Kafka Producer および Consumer API の使用](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)」) に従って、`kafka-producer-consumer.jar` を **sales_user** が利用できるようにします。
 
-**注意事項: このチュートリアルでは、"DomainJoined-Producer-Consumer" プロジェクトの下にある kafka-producer-consumer.jar を使用してください (Producer-Consumer プロジェクトではありません。これはドメインに参加しないシナリオ用です)。**
+> [!NOTE]  
+> このチュートリアルでは、"DomainJoined-Producer-Consumer" プロジェクトの下にある kafka-producer-consumer.jar を使用してください (Producer-Consumer プロジェクトではありません。これはドメインに参加しないシナリオ用です)。
 
 5. **sales_user1** は、次のコマンドを実行することによってトピック `salesevents` を生成できます。
 

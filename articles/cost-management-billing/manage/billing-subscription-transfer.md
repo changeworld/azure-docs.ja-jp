@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238161"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745846"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -109,7 +109,7 @@ Azure portal でのサブスクリプションの譲渡は、下記の種類の�
 - [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
-- [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
+- [Visual Studio Enterprise:BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
@@ -144,8 +144,8 @@ Azure portal でのサブスクリプションの譲渡は、下記の種類の�
 
 VM、ディスク、Web サイトなどのすべてのリソースが、新しいアカウントに譲渡されます。 ただし、別の Azure AD テナント内のアカウントにサブスクリプションを譲渡した場合は、そのサブスクリプションへの[管理者ロール](add-change-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) による割り当ては[譲渡されません](#transfer-a-subscription-to-another-azure-ad-tenant-account)。 また、[アプリの登録](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)とテナント固有のその他のサービスも、サブスクリプションと共に譲渡されることはありません。
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>別の国のアカウントに所有権を譲渡できますか。
-申し訳ありませんが、Azure portal では国外への譲渡は実行できません。 サブスクリプションを国外に譲渡する場合は、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>別の国/地域のアカウントに所有権を譲渡できますか。
+申し訳ありませんが、Azure portal では国/地域外への譲渡はできません。 サブスクリプションを国/地域外に譲渡する場合は、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>2 つのアカウントで管理者になっています。 片方のアカウントのサブスクリプションを、もう片方のアカウントに譲渡することはできますか。
 はい。お使いのアカウント間でサブスクリプションを譲渡することは可能です。 概念上、そうしたアカウントは 2 人の異なるユーザーのアカウントと見なされるので、上記の手順を利用してアカウント間でサブスクリプションを譲渡できます。
@@ -187,7 +187,7 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 譲渡先でリソースへのアクセスを制限する必要がある場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。 ほとんどのリソースは、次の手順を使って更新できます。
 
-  1. [Azure portal](https://portal.azure.com) にサインインする
+  1. [Azure portal](https://portal.azure.com) にサインインします。
   2. ハブ メニューで、 **[すべてのリソース]** を選択します。
   3. リソースを選択します。
   4. リソースのページで **[設定]** を選択します。 ここで、既存のシークレットを表示して更新できます。

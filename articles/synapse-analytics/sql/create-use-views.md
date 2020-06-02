@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0f5323193706fdd00739be6c71a4fe12cfedf21b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ca60b7c12ec7e7a5e04202e377c345055ce1090c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420776"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736009"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) でビューを作成および使用する
 
@@ -22,17 +22,14 @@ ms.locfileid: "81420776"
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順として、以下の記事を確認し、SQL オンデマンド ビューを作成および使用するための前提条件を満たしていることを確認します。
-
-- [初回セットアップ](query-data-storage.md#first-time-setup)
-- [前提条件](query-data-storage.md#prerequisites)
+最初の手順では、ビューが作成されるデータベースを作成し、そのデータベースで[設定スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、Azure Storage での認証に必要なオブジェクトを初期化します。 この記事のクエリはすべて、サンプル データベースで実行されます。
 
 ## <a name="create-a-view"></a>ビューの作成
 
-ビューは、通常の SQL Server ビューを作成するのと同じ方法で作成できます。 次のクエリでは、*population.csv* ファイルを読み取るビューを作成します。
+ビューは、通常の SQL Server ビューを作成するのと同じ方法で作成できます。 次のクエリによって、*population.csv* ファイルを読み取るビューが作成されます。
 
 > [!NOTE]
-> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。 データベースをまだ作成していない場合は、「[初回セットアップ](query-data-storage.md#first-time-setup)」を参照してください。
+> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。
 
 ```sql
 USE [mydbname];
@@ -44,8 +41,9 @@ GO
 CREATE VIEW populationView AS
 SELECT * 
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV', 
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', 
         FIELDTERMINATOR =',', 
         ROWTERMINATOR = '\n'
     )
@@ -57,14 +55,27 @@ WITH (
 ) AS [r];
 ```
 
+この例のビューでは、基になるファイルへの絶対パスを使用する `OPENROWSET` 関数が使用されます。 ストレージのルート URL の `EXTERNAL DATA SOURCE` がある場合は、`DATA_SOURCE` と相対ファイル パスと共に `OPENROWSET` を使用できます。
+
+```
+CREATE VIEW TaxiView
+AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
+FROM
+    OPENROWSET(
+        BULK 'parquet/taxi/year=*/month=*/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT='PARQUET'
+    ) AS nyc
+```
+
 ## <a name="use-a-view"></a>ビューの使用
 
 ビューは、SQL Server クエリ内でビューを使用するのと同じ方法でクエリ内で使用できます。
 
-次のクエリは、「[ビューの作成](#create-a-view)」で作成した *population_csv* ビューの使用方法を示しています。 これを実行すると、国名が 2019 年の人口の降順に返されます。
+次のクエリは、「[ビューの作成](#create-a-view)」で作成した *population_csv* ビューの使用方法を示しています。 これにより、国/地域名が 2019 年の人口の降順に返されます。
 
 > [!NOTE]
-> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。 データベースをまだ作成していない場合は、「[初回セットアップ](query-data-storage.md#first-time-setup)」を参照してください。
+> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。
 
 ```sql
 USE [mydbname];

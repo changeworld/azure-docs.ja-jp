@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4ec6e18aa4fa741ba784e68ccf9b5f87ad654eba
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591422"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702030"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
 
@@ -45,10 +45,12 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
                     TYPE = 'PARQUET') AS file
     ```
 
+
     この方法では、データソースにストレージ アカウントの場所を構成し、ストレージへのアクセスに使用する認証方法を指定できます。 
     
     > [!IMPORTANT]
     > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 たとえば、Azure AD プリンシパルがファイルにアクセスするには [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) を使用するしかなく、一般公開されているファイルにはアクセスできません。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
+
 
 ## <a name="security"></a>Security
 
@@ -57,10 +59,10 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
 また、ストレージ管理者が、有効な SAS トークンを提供するか、 Azure AD プリンシパルでストレージ ファイルにアクセスできるようにして、ユーザーがファイルにアクセスできるようにする必要があります。 ストレージ アクセス制御の詳細については、[この記事](develop-storage-files-storage-access-control.md)を参照してください。
 
 `OPENROWSET` は、次の規則を使用してストレージへの認証方法を決定します。
-- `DATA_SOURCE` を指定した `OPENROWSET` では、認証メカニズムは呼び出し元の種類によって異なります。
-  - AAD ログインは、独自の [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) を使用しないとファイルにアクセスできません。これは、Azure Storage が基になるファイルへのアクセスを Azure AD ユーザーに許可している場合 (たとえば、呼び出し元がストレージに対するストレージ閲覧者権限を持っている場合)、および Synapse SQL サービス上での [Azure AD パススルー認証を有効に](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through)した場合です。
-  - SQL ログインは、`DATA_SOURCE` を指定しない `OPENROWSET` を使用して、一般公開されたファイル、または SAS トークンや Synapse ワークスペースのマネージド ID を使用して保護されたファイルアクセスすることもできます。 ストレージのファイルへのアクセスを許可するには、[サーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。 
-- `DATA_SOURCE` を指定した `OPENROWSET` では、参照先のデータ ソースに割り当てられるデータベーススコープ資格情報に認証メカニズムが定義されます。 この方法では、一般公開されているストレージへのアクセスや、SAS トークン、ワークスペースのマネージド ID、または[呼び出し元の Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#) (呼び出し元が Azure AD プリンシパルの場合) を使用しているストレージへのアクセスが行えます。 公開されていない Azure Storage を `DATA_SOURCE` が参照している場合は、[データベーススコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)して、それを `DATA SOURCE` で参照し、ストレージのファイルへのアクセスを許可する必要があります。
+- `DATA_SOURCE` を指定しない `OPENROWSET` では、認証メカニズムは呼び出し元の種類によって異なります。
+  - Azure AD ログインは、独自の [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) を使用しないとファイルにアクセスできません。これは、Azure Storage が基になるファイルへのアクセスを Azure AD ユーザーに許可している場合 (たとえば、呼び出し元がストレージに対するストレージ閲覧者権限を持っている場合) と Synapse SQL サービス上での [Azure AD パススルー認証を有効](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through)にした場合です。
+  - SQL ログインは、`DATA_SOURCE` を指定しない `OPENROWSET` を使用して、一般公開されたファイル、または SAS トークンや Synapse ワークスペースのマネージド ID を使用して保護されたファイルにアクセスすることもできます。 ストレージのファイルへのアクセスを許可するには、[サーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。 
+- `DATA_SOURCE` を指定した `OPENROWSET` では、参照先のデータ ソースに割り当てられるデータベース スコープ資格情報に認証メカニズムが定義されます。 この方法では、一般公開されているストレージへのアクセスや、SAS トークン、ワークスペースのマネージド ID、または[呼び出し元の Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (呼び出し元が Azure AD プリンシパルの場合) を使用しているストレージへのアクセスが行えます。 公開されていない Azure Storage を `DATA_SOURCE` が参照している場合は、[データベース スコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)して、それを `DATA SOURCE` で参照し、ストレージ ファイルへのアクセスを許可する必要があります。
 
 呼び出し元が、ストレージへの認証に資格情報を使用するには資格情報に対する `REFERENCES` 権限が必要です。
 
@@ -193,7 +195,7 @@ DATA_COMPRESSION = 'data_compression_method'
 
 PARSER_VERSION = 'parser_version'
 
-ファイルの読み取り時に使用するパーサーのバージョンを指定します。 現在サポートされている CSV パーサーのバージョンは 1.0 および 2.0 です
+ファイルの読み取り時に使用するパーサーのバージョンを指定します。 現在サポートされている CSV パーサーのバージョンは 1.0 および 2.0 です。
 
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'
@@ -204,7 +206,7 @@ CSV パーサー バージョン 2.0 の詳細:
 
 - すべてのデータ型がサポートされているわけではありません。
 - 行の最大サイズの上限は 8 MB です。
-- 次のオプションはサポートされません:DATA_COMPRESSION
+- 次のオプションはサポートされていません。DATA_COMPRESSION
 - 引用符で囲まれた空の文字列 ("") は、空の文字列として解釈されます。
 
 ## <a name="examples"></a>例
@@ -237,8 +239,8 @@ FROM
 ```
 
 ファイルが一覧表示されないというエラーが発生する場合は、オンデマンドで Synapse SQL のパブリック ストレージにアクセスできるようにする必要があります。
-- SQL ログインを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。
-- パブリック ストレージにアクセスするために Azure AD プリンシパルを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)し、[Azure AD パススルー認証](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)を無効にする必要があります。
+- SQL ログインを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバー スコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。
+- パブリック ストレージにアクセスするために Azure AD プリンシパルを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバー スコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)し、[Azure AD パススルー認証](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)を無効にする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

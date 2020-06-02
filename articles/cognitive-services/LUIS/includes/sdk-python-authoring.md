@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/26/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1e51c4e9d0c3da8b6ad76b4b45869ea8b2394008
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372240"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871267"
 ---
 Python 用 Language Understanding (LUIS) 作成クライアント ライブラリの用途は次のとおりです。
 
@@ -28,53 +28,12 @@ Python 用 Language Understanding (LUIS) 作成クライアント ライブラ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Language Understanding (LUIS) ポータル アカウント: [無料で作成できます](https://www.luis.ai)。
-* [Python 3.x](https://www.python.org/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* 最新バージョンの [Python 3.x](https://www.python.org/)。
+* Azure サブスクリプションを入手したら、Azure portal で [Language Understanding 作成リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
+    * アプリケーションを Language Understanding 作成に接続するには、[作成](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUIS) スターター キーを取得する
-
-LUIS 作成リソースを作成して、[スターター キー](../luis-how-to-azure-subscription.md#starter-key)を取得します。 次の手順のために、キーとキーのリージョンを保持しておきます。
-
-### <a name="create-an-environment-variable"></a>環境変数を作成する
-
-キーとキーのリージョンを使用して、認証用に 2 つの環境変数を作成します。
-
-* `LUIS_AUTHORING_KEY` - 要求を認証するためのリソース キー。
-* `LUIS_REGION` - キーに関連付けられているリージョン。 たとえば、「 `westus` 」のように指定します。
-
-ご利用のオペレーティング システムの手順に従ってください。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_REGION <replace-with-your-luis-region>
-```
-
-環境変数を追加したら、コンソール ウィンドウを再起動します。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-次のように `.bash_profile` を編集し、環境変数を追加します。
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
-***
 
 ### <a name="install-the-python-library-for-luis"></a>LUIS 用 Python ライブラリをインストールする
 

@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Service の概要
 description: Azure Blockchain Service の概要です
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 38d0a5564e1e7a28168ac95826cc527d47ef093b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80529153"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844592"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -75,7 +75,7 @@ Azure Blockchain の最新情報については、[Azure Blockchain のブログ
 
 Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
 
-* [Azure Blockchain MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure Blockchain Service に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 

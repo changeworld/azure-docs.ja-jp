@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76986735"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648462"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Tableau Server の統合
 
@@ -158,7 +158,7 @@ Tableau Server に対する Azure AD SSO を構成してテストするには、
     h. **[保存]**
 
     > [!NOTE]
-    > 顧客は任意の証明書を Tableau Server の SAML SSO 構成でアップロードする必要があります。SSO フローではその証明書は無視されます。 Tableau Server で SAML を構成する方法について不明な点がある場合は、[SAML の構成](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm)に関する記事を参照してください。
+    > ユーザーは、.crt 拡張子の付いた PEM でエンコードされた x509 証明書ファイルに加え、証明書キー ファイルとして .key 拡張子の付いた RSA または DSA 秘密キー ファイルをアップロードする必要があります。 証明書ファイルと証明書キー ファイルの詳細については、[こちら](https://help.tableau.com/current/server/en-us/saml_requ.htm)のドキュメントを参照してください。 Tableau Server での SAML の構成についてサポートが必要な場合は、こちらの[サーバー全体の SAML の構成](https://help.tableau.com/current/server/en-us/config_saml.htm)に関する記事を参照してください。
 
 ### <a name="create-tableau-server-test-user"></a>Tableau Server のテスト ユーザーの作成
 

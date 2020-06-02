@@ -3,12 +3,12 @@ title: クイックスタート - コンテナー イメージをビルドして
 description: Azure Container Registry を使用して、クラウド内で Docker コンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76986276"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680642"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-この例では、Azure Container Registry について学習している開発者にとって、コストが最適なオプションである *Basic* レジストリを作成します。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
+この例では、Azure Container Registry について学習している開発者にとって、コストが最適なオプションである *Basic* レジストリを作成します。 利用可能なサービス レベルの詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルド
 

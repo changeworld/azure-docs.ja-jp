@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75770715"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873626"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio と .NET Core
 
@@ -50,7 +50,7 @@ ms.locfileid: "75770715"
 1. 完了したら、 **[Review + create] (レビュー + 作成)** 、 **[作成]** の順に選択します。
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio ツールを入手する
-最新バージョンの [Visual Studio](https://www.visualstudio.com/vs/) をインストールします。 Windows 上の Visual Studio 2019 の場合は、Azure 開発ワークロードをインストールする必要があります。 Windows 上の Visual Studio 2017 の場合は、ASP.NET と Web 開発ワークロード、および [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio) をインストールする必要があります。
+Azure 開発ワークロードを使用して、[Visual Studio 2019](https://www.visualstudio.com/vs/) の最新バージョンを Windows にインストールします。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>コンテナーで実行される Web アプリを作成する
 

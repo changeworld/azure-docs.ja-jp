@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589280"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835837"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のストレージ アカウント アクセスを制御する
 
@@ -26,11 +26,7 @@ SQL オンデマンドのクエリは、Azure Storage から直接ファイル�
 
 ## <a name="supported-storage-authorization-types"></a>サポートされているストレージ承認の種類
 
-SQL オンデマンド リソースにログインしたユーザーは、Azure Storage 内のファイルにアクセスしてクエリを実行する権限を持っている必要があります (ファイルが一般公開されていない場合)。 次の 3 種類の承認がサポートされています。
-
-- [共有アクセス署名](?tabs=shared-access-signature)
-- [ユーザー ID](?tabs=user-identity)
-- [Managed Identity](?tabs=managed-identity)
+SQL オンデマンド リソースにログインしたユーザーは、Azure Storage 内のファイルにアクセスしてクエリを実行する権限を持っている必要があります (ファイルが一般公開されていない場合)。 3 種類の承認 ([ユーザー ID](?tabs=user-identity)、[Shared access signature](?tabs=shared-access-signature)、[マネージド ID](?tabs=managed-identity)) を使用して、非パブリック ストレージにアクセスできます。
 
 > [!NOTE]
 > [Azure AD パススルー](#force-azure-ad-pass-through)は、ワークスペースを作成するときの既定の動作です。 これを使用すると、Azure AD ログインを使用してアクセスする各ストレージ アカウントの資格情報を作成する必要がありません。 [この動作を無効にする](#disable-forcing-azure-ad-pass-through)ことができます。
@@ -99,7 +95,7 @@ DROP CREDENTIAL [UserIdentity];
 
 ### <a name="anonymous-access"></a>[匿名アクセス](#tab/public-access)
 
-[匿名アクセスが許可されている](/azure/storage/blobs/storage-manage-access-to-resources.md) Azure Storage アカウントに配置されている一般公開ファイルにアクセスできます。
+[匿名アクセスが許可されている](/azure/storage/blobs/storage-manage-access-to-resources) Azure Storage アカウントに配置されている一般公開ファイルにアクセスできます。
 
 ---
 

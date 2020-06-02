@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77168642"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747002"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 
@@ -25,6 +25,15 @@ ms.locfileid: "77168642"
 |**開始するには**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2110"></a>2.11.0
+
+- このリリースでは、プロビジョニング済みスループットの自動スケーリングがサポートされました。 これらの新機能には、プロビジョニング済みスループットのカスタム最大レベルを要求ユニット (RU/秒) で設定する機能、既存のデータベースとコンテナーで自動スケーリングを有効にする機能、および Azure Cosmos DB SDK を介したプログラムによるサポートが含まれます。
+- 大量のドキュメント (1 GB 以上) でクエリを実行しているときに、エミュレーターが内部エラー状態コード 500 で失敗する問題が修正されました。
+
+### <a name="292"></a>2.9.2
+
+- このリリースでは、MongoDB エンドポイント バージョン 3.2 のサポートを有効にする際のバグが修正されました。 また、LOGMAN ではなく WPR を使用して、トラブルシューティング用の ETL トレースを生成できるようになりました。
 
 ### <a name="291"></a>2.9.1
 

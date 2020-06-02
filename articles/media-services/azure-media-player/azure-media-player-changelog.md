@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727599"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698311"
 ---
 # <a name="changelog"></a>変更ログ #
 
@@ -414,7 +414,7 @@ ms.locfileid: "81727599"
 ### <a name="changes-170"></a>変更 1.7.0 ###
 
 - [変更][FlashSS] SWF スクリプト ("MSAdaptiveStreamingPlugin-osmf2.0.swf" および "StrobeMediaPlayback.2.0.swf") を "StrobeMediaPlayback.2.0.swf" という単一の SWF にマージ
-- [変更][FlashSS] より正確なエラー コードを取得するためにエラー コードの伝達を更新 (例: 404 は、一般エラー 0x30200000 ではなく 0x30200194 となるように変更)
+- [変更][FlashSS] より正確なエラー コードを取得するよう、エラー コードの反映を更新 (例: 404 は、一般的なエラー 0x30200000 ではなく、0x30200194 になるようになりました)
 
 ## <a name="163-official-hotfix-update"></a>1.6.3 (公式修正プログラム) ##
 
@@ -577,8 +577,8 @@ ms.locfileid: "81727599"
 - [バグ修正] [AzureHtml5JS] タイムスタンプに少しの狂いがあると、MPD の更新でライブ再生が凍結する
 - [バグ修正] [AzureHtml5JS] ライブ再生のいくつかの問題を軽減
 - [バグ修正] [AzureHtml5JS] ウィンドウ サイズのヒューリスティックがオンになっていて、なおかつ、より高解像度の画面に移動したときにバッファーをフラッシュ
-- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。"*AzureHtml5JS を使用しているときに Chrome から正しく â&euro;œendedâ&euro; イベントが送信されません。基になるブラウザーに問題があります。* "
-- [バグ修正] [AzureHtml5JS] このテクノロジに関して Safari を無効化。"*これによって OSX Yosemite と AzureHtml5JS テクノロジでの再生の問題に対処します。MSE の実装に問題があります。一時的な軽減策: これらのユーザー エージェントには、テクノロジ オーダーとして â&euro;œflashSSâ&euro;、â&euro;œsilverlightSSâ&euro; を強制します*"
+- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。"*AzureHtml5JS を使用しているときに Chrome から正しくイベントが送信されません。基になるブラウザーに問題があります。* "
+- [バグ修正] [AzureHtml5JS] 次の問題に対処するために、Safari でこのテクノロジを無効化。"*AzureHtml5JS テクノロジを使用した OSX Yosemite に関する再生の問題。MSE の実装に関する問題があります。一時的な軽減策: これらのユーザー エージェントのためのテクノロジとして FlashSS、SilverlightSS を適用*"
 - [バグ修正] [FlashSS] エラーの発生後に loadstart が生成される
 
 ## <a name="020-beta"></a>0.2.0 (ベータ) ##

@@ -5,16 +5,16 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: banders
-ms.openlocfilehash: b8c523acabd02dc30e9b13f7f83a4a44554cbd4d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 79d0a648645743751eed3b50edb628a20023546e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690921"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660360"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure の Azure Enterprise Agreement 管理者ロールを理解する
+# <a name="managing-azure-enterprise-roles"></a>Azure エンタープライズ ロールの管理
 
 組織による使用量/支出管理を支援するために、Enterprise Agreement (EA) をお持ちの Azure カスタマーは 5 つの異なる管理者ロールを割り当てることができます。
 
@@ -62,6 +62,19 @@ ms.locfileid: "82690921"
 - <sup>4</sup> 通知の連絡窓口には Azure Enterprise Agreement に関する電子メール通信が送信されます。
 - <sup>5</sup> タスクは部門内のアカウントに制限されます。
 
+## <a name="add-a-new-enterprise-administrator"></a>新しいエンタープライズ管理者を追加する
+
+エンタープライズ管理者は、Azure EA 登録を管理する際に、最も多くの特権を持っています。 EA 契約を設定したときに、最初の Azure EA 管理者が作成されています。 ただし、いつでも新しい管理者を追加したり、管理者を削除したりできます。 新しい管理者を追加できるのは、既存の管理者のみです。 エンタープライズ管理者を追加する方法の詳細については、「[Create another enterprise admin (別のエンタープライズ管理者を作成する)](ea-portal-get-started.md#create-another-enterprise-administrator)」を参照してください。課金プロファイルのロールとタスクの詳細については、「[課金プロファイルのロールとタスク](understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+
+## <a name="update-account-owner-state-from-pending-to-active"></a>アカウント所有者状態を保留中からアクティブに更新する
+
+新しいアカウント所有者 (AO) が初めて Azure EA 登録に追加されると、状態は "_保留中_" と表示されます。 アクティブ化のウェルカム メールを受け取った新しいアカウント所有者は、サインインしてアカウントをアクティブにすることができます。 アカウントをアクティブにすると、アカウントの状態が "_保留中_" から "_アクティブ_" に更新されます。 アカウント オーナーは "警告" メッセージを読み、 **[続行]** を選択する必要があります。 新しいユーザーは、姓と名を入力してコマース アカウントを作成するよう求められる場合があります。 その場合、続行するためには必須情報を追加する必要があります。これによって、アカウントがアクティブになります。
+
+## <a name="add-a-department-admin"></a>部署管理者を追加する
+
+Azure EA 管理者は、部署を作成した後、部署管理者を追加し、それぞれを部署に関連付けることができます。 部署管理者は、新しいアカウントを作成できます。 Azure EA サブスクリプションを作成するには、新しいアカウントが必要です。
+
+部門管理者を追加する方法の詳細については、[Azure EA 部門管理者の作成](ea-portal-get-started.md#add-a-department-administrator)に関するセクションを参照してください。
 
 ## <a name="usage-and-costs-access-by-role"></a>ロール別の使用量/コスト アクセス
 
@@ -77,8 +90,7 @@ ms.locfileid: "82690921"
 - <sup>6</sup> エンタープライズ管理者が Enterprise portal で **DA ビューの請求額**ポリシーを有効にする必要があります。 有効にすると、部門管理者は部門のコスト詳細を表示できます。
 - <sup>7</sup> エンタープライズ管理者が Enterprise portal で **AO ビューの請求額**ポリシーを有効にする必要があります。 有効にすると、アカウント所有者はアカウントのコスト詳細を表示できます。
 
-
-## <a name="pricing-in-azure-portal"></a>Azure portal の価格
+## <a name="see-pricing-for-different-user-roles"></a>さまざまなユーザー ロールの価格を確認する
 
 Azure portal に表示される価格は管理者ロールによって異なる場合があります。また、エンタープライズ管理者による請求金額の表示ポリシーの設定方法にも左右されます。 Azure portal に表示される価格を左右する Enterprise portal の 2 つのポリシー:
 
@@ -98,6 +110,8 @@ Azure portal に表示される価格は管理者ロールによって異なる�
 |なし|適用なし |所有者|小売価格|
 
 Enterprise portal でエンタープライズ管理者ロールと請求金額の表示ポリシーを設定します。 RBAC ロールは Azure portal で更新できます。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c6580d4fe7431c942ec4886b9dafc6148635b18
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f21f1f897aa6bc1ed5d1151ed23b24d82909d168
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585370"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835123"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) とは
 
@@ -66,5 +66,5 @@ Synapse SQL プールは、列指向ストレージを使用してリレーシ�
 - [ブログ](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)を検索する
 - [機能要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)を送信する
 - [サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)
-- [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)を検索する
+- [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)を検索する
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)を検索する

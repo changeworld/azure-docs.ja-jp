@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f66a5ba491a5afed4007f73b88a38719ec71fb63
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78967726"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849197"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合
 
@@ -93,8 +93,14 @@ Salesforce で Azure AD SSO を構成してテストするには、次の構成�
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
     開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
+    
+    b. **[応答 URL]** ボックスに、次のパターンを使用して値を入力します。
 
-    b. **[識別子]** ボックスに、次の形式で値を入力します。
+    エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
+
+    開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
+
+    c. **[識別子]** ボックスに、次の形式で値を入力します。
 
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 

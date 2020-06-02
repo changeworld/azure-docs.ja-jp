@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732327"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834324"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの向こう側にある Azure Key Vault へのアクセス
 
@@ -74,4 +74,4 @@ Key Vault サービスでは、PaaS インフラストラクチャなどの他�
 
 ## <a name="next-steps"></a>次のステップ
 
-Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
+Key Vault に関する質問がある場合は、[Azure Key Vault に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-key-vault.html)にアクセスしてください。

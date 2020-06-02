@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 924532318fc6638059bbe9eef0065349463523ae
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7947c468f5d35869b9185062b8dc479234297486
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400868"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673239"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、`pip install azure-cognitiveservices-speech` を実行します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "81400868"
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - RHEL または CentOS 8 では、以下のコマンドを実行して、必要なパッケージをインストールします。
+  - RHEL または CentOS では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
         ```sh
         sudo yum update
@@ -48,7 +48,8 @@ ms.locfileid: "81400868"
         ```
 
 > [!NOTE]
-> RHEL または CentOS 8 の場合、[Linux 用 OpenSSL の構成方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
+> - RHEL または CentOS 7 の場合、「[Speech SDK 用に RHEL/CentOS 7 を構成する](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)」の手順に従います。
+> - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 - Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 パッケージを初めてインストールする場合、このガイドを続行する前に Windows の再起動が必要になる場合があることに注意してください。
 - 最後に、[Python 3.5 から 3.8](https://www.python.org/downloads/) が必要になります。 インストールを確認するには、コマンド プロンプトを開き、コマンド `python --version` を入力して、結果を確認します。 適切にインストールされた場合、「Python 3.5.1」、または同様の応答が返されます。
