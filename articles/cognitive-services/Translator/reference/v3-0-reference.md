@@ -57,7 +57,7 @@ Azure Cognitive Services の Translator または [Cognitive Services マルチ�
 |ヘッダー|説明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
-|承認|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
+|Authorization|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
 |Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービスとリージョン トランスレータ― リソースと共に使用します。* "<br/>値は、マルチサービスまたはリージョン トランスレーター リソースのリージョンです。 グローバル トランスレーター リソースを使用する場合、この値は省略可能です。|
 
 ###  <a name="secret-key"></a>秘密鍵
