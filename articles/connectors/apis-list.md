@@ -15,7 +15,7 @@ ms.locfileid: "82838669"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
-コネクタは、Azure Logic Apps からその他のアプリ、サービス、システム、プロトコル、およびプラットフォームでの、イベント、データ、およびアクションへのすばやいアクセスを提供します。 ロジック アプリでコネクタを使用して、クラウドおよびオンプレミス アプリの機能を拡張すると、タスクの実行時に、作成したデータや既に所有しているデータを使用できます。
+コネクタは、Azure Logic Apps からその他のアプリ、サービス、システム、プロトコル、およびプラットフォームでの、イベント、データ、およびアクションへのすばやいアクセスを提供します。 Logic Apps でコネクタを使用して、クラウドおよびオンプレミス アプリの機能を拡張すると、タスクの実行時に、作成したデータや既に所有しているデータを使用できます。
 
 Logic Apps には[数百のコネクタ](https://docs.microsoft.com/connectors)が用意されていますが、この記事では、*人気が高く、より多く使用されている*コネクタについて説明します。これらのコネクタは、データと情報を処理するために、数千のアプリと数百万の実行で正常に使用されています。 すべてのコネクタと、トリガー、アクション、制限など各コネクタの参照情報については、[コネクタの概要](https://docs.microsoft.com/connectors)に関するページにあるコネクタ参照ページをご覧ください。 また、[トリガーとアクション](#triggers-actions)、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)、[Logic Apps の価格の詳細](https://azure.microsoft.com/pricing/details/logic-apps/)も確認してください。
 
@@ -28,23 +28,23 @@ Logic Apps には[数百のコネクタ](https://docs.microsoft.com/connectors)�
 
 <a name="built-in"></a>
 
-* [**組み込み**](#built-ins):組み込みトリガーおよびアクションは、Azure Logic Apps に "ネイティブ" であり、ロジック アプリに対して次のタスクを実行するのに役立ちます。
+* [**組み込み**](#built-ins):組み込みトリガーおよびアクションは、Azure Logic Apps に "ネイティブ" であり、Logic Apps に対して次のタスクを実行するのに役立ちます。
 
   * カスタムおよび詳細なスケジュールで実行します。
 
-  * ロジック アプリのワークフロー (ループや条件など) を整理および制御し、さらに変数とデータ操作を行います。
+  * Logic Apps のワークフロー (ループや条件など) を整理および制御し、さらに変数とデータ操作を行います。
 
   * 他のエンドポイントと通信します。
 
   * 要求を受信して応答します。
 
-  * Azure 関数、Azure API Apps (Web Apps)、Azure API Management を使用して管理および公開する独自の API、および要求を受け取ることができる入れ子にしたロジック アプリを呼び出します。
+  * Azure 関数、Azure API Apps (Web Apps)、Azure API Management を使用して管理および公開する独自の API、および要求を受け取ることができる入れ子にした Logic Apps を呼び出します。
 
 <a name="managed-connectors"></a>
 
-* [**マネージド コネクタ**](#managed-api-connectors):Microsoft によってデプロイおよび管理されるこれらのコネクタでは、Office 365、Azure Blob Storage、SQL Server、Dynamics、Salesforce、SharePoint など、クラウド サービスとオンプレミス システムの一方または両方にアクセスするためのトリガーとアクションが提供されます。 一部のコネクタでは特に企業間 (B2B) 通信シナリオがサポートされており、ロジック アプリにリンクされた[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)が必要です。 特定のコネクタを使う前にまず、Azure Logic Apps によって管理される接続を作成することが必要な場合があります。
+* [**マネージド コネクタ**](#managed-api-connectors):Microsoft によってデプロイおよび管理されるこれらのコネクタでは、Office 365、Azure Blob Storage、SQL Server、Dynamics、Salesforce、SharePoint など、クラウド サービスとオンプレミス システムの一方または両方にアクセスするためのトリガーとアクションが提供されます。 一部のコネクタでは特に企業間 (B2B) 通信シナリオがサポートされており、Logic Apps にリンクされた[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)が必要です。 特定のコネクタを使う前にまず、Azure Logic Apps によって管理される接続を作成することが必要な場合があります。
 
-  たとえば、Microsoft BizTalk Server を使っている場合、ロジック アプリでは、[BizTalk Server オンプレミス コネクタ](#on-premises-connectors)を使って BizTalk Server に接続し、通信を行うことができます。 [統合アカウント コネクタ](#integration-account-connectors)を使用すると、ロジック アプリで BizTalk のような操作を拡張または実行できます。
+  たとえば、Microsoft BizTalk Server を使っている場合、Logic Apps では、[BizTalk Server オンプレミス コネクタ](#on-premises-connectors)を使って BizTalk Server に接続し、通信を行うことができます。 [統合アカウント コネクタ](#integration-account-connectors)を使用すると、Logic Apps で BizTalk のような操作を拡張または実行できます。
 
   コネクタは、標準またはエンタープライズのいずれかとして分類されます。 [エンタープライズ コネクタ](#enterprise-connectors) では、追加コストを払うことで、SAP、IBM MQ、IBM 3270 などのエンタープライズ システムへのアクセスが提供されます。 コネクタが標準かエンタープライズかを判断するには、[コネクタの概要](https://docs.microsoft.com/connectors)に関する記事で示されている各コネクタのリファレンス ページにある技術的な詳細をご覧ください。
 
@@ -52,35 +52,35 @@ Logic Apps には[数百のコネクタ](https://docs.microsoft.com/connectors)�
 
   |   |   |
   |---|---|
-  | [**マネージド コネクタ**](#managed-api-connectors) | Azure Blob Storage、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online などのサービスを使用するロジック アプリを作成します。 |
-  | [**オンプレミス コネクタ**](#on-premises-connectors) | [オンプレミス データ ゲートウェイ][gateway-doc]をインストールして設定した後、これらのコネクタを使用すると、ロジック アプリは、SQL Server、SharePoint Server、Oracle DB、ファイル共有などのオンプレミス システムにアクセスできます。 |
+  | [**マネージド コネクタ**](#managed-api-connectors) | Azure Blob Storage、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online などのサービスを使用する Logic Apps を作成します。 |
+  | [**オンプレミス コネクタ**](#on-premises-connectors) | [オンプレミス データ ゲートウェイ][gateway-doc]をインストールして設定した後、これらのコネクタを使用すると、Logic Apps は、SQL Server、SharePoint Server、Oracle DB、ファイル共有などのオンプレミス システムにアクセスできます。 |
   | [**統合アカウント コネクタ**](#integration-account-connectors) | 統合アカウントを作成して料金を支払うと使用可能になります。これらのコネクタは、XML を変換および検証したり、フラット ファイルをエンコードおよびデコードしたり、AS2、EDIFACT、および X12 プロトコルを使用して企業間 (B2B) メッセージを処理したりします。 |
   |||
 
   > [!IMPORTANT]
-  > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
+  > Gmail コネクタを使用する場合、Logic Apps で制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
 
 <a name="integration-service-environment"></a>
 
 ### <a name="connect-from-an-integration-service-environment"></a>統合サービス環境から接続する
 
-Azure 仮想ネットワーク内のリソースに直接アクセスする必要があるロジック アプリの場合は、専用のリソースでロジック アプリをビルド、デプロイ、および実行できる、分離された[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成できます。 ロジック アプリ デザイナーで、ISE 内でロジック アプリに使用するコネクタを参照する場合、組み込みトリガーおよびアクションに **CORE** ラベルが表示されますが、一部のコネクタには **ISE** ラベルが表示されます。
+Azure 仮想ネットワーク内のリソースに直接アクセスする必要がある Logic Apps の場合は、専用のリソースで Logic Apps をビルド、デプロイ、および実行できる、分離された[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成できます。 Logic Apps デザイナーで、ISE 内で Logic Apps に使用するコネクタを参照する場合、組み込みトリガーおよびアクションに **CORE** ラベルが表示されますが、一部のコネクタには **ISE** ラベルが表示されます。
 
-* **CORE**:このラベルが付いた組み込みトリガーおよびアクションは、ロジック アプリと同じ ISE 内で動作します。次に例を示します。
+* **CORE**:このラベルが付いた組み込みトリガーおよびアクションは、Logic Apps と同じ ISE 内で動作します。次に例を示します。
 
   ![ISE コネクタの例](./media/apis-list/example-core-connector.png)
 
-* **ISE**:このラベルが付いたマネージド コネクタは、ロジック アプリと同じ ISE 内で動作します。次に例を示します。
+* **ISE**:このラベルが付いたマネージド コネクタは、Logic Apps と同じ ISE 内で動作します。次に例を示します。
 
   ![ISE コネクタの例](./media/apis-list/example-ise-connector.png)
 
-  Azure 仮想ネットワークに接続されているオンプレミス システムがある場合、ISE を使用すると、ロジック アプリで[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用せずに、そのシステムに直接アクセスすることができます。 代わりに、そのシステムの **ISE** コネクタ (使用可能な場合)、HTTP アクション、または[カスタム コネクタ](#custom)を使用できます。 **ISE** コネクタがないオンプレミス システムの場合は、オンプレミスのデータ ゲートウェイを使用します。 使用可能な ISE コネクタを確認するには、「[ISE コネクタ](#ise-connectors)」を参照してください。
+  Azure 仮想ネットワークに接続されているオンプレミス システムがある場合、ISE を使用すると、Logic Apps で[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用せずに、そのシステムに直接アクセスすることができます。 代わりに、そのシステムの **ISE** コネクタ (使用可能な場合)、HTTP アクション、または[カスタム コネクタ](#custom)を使用できます。 **ISE** コネクタがないオンプレミス システムの場合は、オンプレミスのデータ ゲートウェイを使用します。 使用可能な ISE コネクタを確認するには、「[ISE コネクタ](#ise-connectors)」を参照してください。
 
 * **CORE** または **ISE** ラベルのない他のすべてのコネクタは、引き続き使用でき、グローバルなマルチテナント Logic Apps サービスで実行できます。次に例を示します。
 
   ![マルチテナント コネクタの例](./media/apis-list/example-multi-tenant-connector.png)
 
-ISE 実行されるロジック アプリとそのコネクタは、これらのコネクタが実行されている場所には関係なく、固定価格プランまたは使用量ベースの価格プランに従います。 詳細については、次のページを参照してください。
+ISE 実行される Logic Apps とそのコネクタは、これらのコネクタが実行されている場所には関係なく、固定価格プランまたは使用量ベースの価格プランに従います。 詳細については、次のページを参照してください。
 
 * [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)
 * [Logic Apps の価格の詳細](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -90,34 +90,34 @@ ISE 実行されるロジック アプリとそのコネクタは、これらの
 
 ## <a name="built-in"></a>組み込み
 
-Logic Apps は、組み込みトリガーおよびアクションを備えているため、スケジュールベースのワークフローを作成し、ロジック アプリで他のアプリやサービスと通信することができます。また、ロジック アプリでワークフローを制御し、データの管理や操作もできます。
+Logic Apps は、組み込みトリガーおよびアクションを備えているため、スケジュールベースのワークフローを作成し、Logic Apps で他のアプリやサービスと通信することができます。また、Logic Apps でワークフローを制御し、データの管理や操作もできます。
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API アイコン][schedule-icon]<br>**スケジュール**][schedule-doc] | - [**繰り返し**トリガー][schedule-recurrence-doc]を使用して、指定した繰り返しでロジック アプリを実行します。基本的なスケジュールから詳細なスケジュールまで指定できます。 <p>- [**スライディング ウィンドウ** トリガー][schedule-sliding-window-doc]を使用して、連続したチャンクのデータを処理する必要があるロジック アプリを実行します。 <p>- [**遅延**アクション][schedule-delay-doc]を使用して、指定した期間、ロジック アプリを一時停止します。 <p>- [**延期期限**アクション][schedule-delay-until-doc]を使用して、指定した日時までロジック アプリを一時停止します。 | [![API アイコン][batch-icon]<br>**バッチ**][batch-doc] | - **[メッセージのバッチ処理]** トリガーを使用して、メッセージをバッチで処理します。 <p>- **[バッチへのメッセージの送信]** アクションを使用して、既存のバッチ トリガーを持つロジック アプリを呼び出します。 |
-| [![API アイコン][http-icon]<br>**HTTP**][http-doc] | HTTP のトリガーとアクションを使用して HTTP または HTTPS エンドポイントを呼び出します。 その他の HTTP 組み込みトリガーおよびアクションには [HTTP + Swagger][http-swagger-doc] と [HTTP + Webhook][http-webhook-doc] が含まれます。 | [![API アイコン][http-request-icon]<br>**要求**][http-request-doc] | - 他のアプリやサービスからロジック アプリを呼び出し可能にしたり、Event Grid リソース イベントでロジック アプリをトリガーしたり、 **[要求]** トリガーによる Azure Security Center アラートへの応答でロジック アプリをトリガーしたりします。 <p>- **[応答]** アクションを使用して、アプリやサービスに応答を送信します。 |
+| [![API アイコン][schedule-icon]<br>**スケジュール**][schedule-doc] | - [**繰り返し**トリガー][schedule-recurrence-doc]を使用して、指定した繰り返しで Logic Apps を実行します。基本的なスケジュールから詳細なスケジュールまで指定できます。 <p>- [**スライディング ウィンドウ** トリガー][schedule-sliding-window-doc]を使用して、連続したチャンクのデータを処理する必要がある Logic Apps を実行します。 <p>- [**遅延**アクション][schedule-delay-doc]を使用して、指定した期間、Logic Apps を一時停止します。 <p>- [**延期期限**アクション][schedule-delay-until-doc]を使用して、指定した日時まで Logic Apps を一時停止します。 | [![API アイコン][batch-icon]<br>**バッチ**][batch-doc] | - **[メッセージのバッチ処理]** トリガーを使用して、メッセージをバッチで処理します。 <p>- **[バッチへのメッセージの送信]** アクションを使用して、既存のバッチ トリガーを持つ Logic Apps を呼び出します。 |
+| [![API アイコン][http-icon]<br>**HTTP**][http-doc] | HTTP のトリガーとアクションを使用して HTTP または HTTPS エンドポイントを呼び出します。 その他の HTTP 組み込みトリガーおよびアクションには [HTTP + Swagger][http-swagger-doc] と [HTTP + Webhook][http-webhook-doc] が含まれます。 | [![API アイコン][http-request-icon]<br>**要求**][http-request-doc] | - 他のアプリやサービスから Logic Apps を呼び出し可能にしたり、Event Grid リソース イベントで Logic Apps をトリガーしたり、 **[要求]** トリガーによる Azure Security Center アラートへの応答で Logic Apps をトリガーしたりします。 <p>- **[応答]** アクションを使用して、アプリやサービスに応答を送信します。 |
 | [![API アイコン][azure-api-management-icon]<br>**Azure API<br>Management**][azure-api-management-doc] | Azure API Management で管理および発行する独自の API によって定義されたトリガーとアクションを呼び出します。 | [![API アイコン][azure-app-services-icon]<br>**Azure App <br>Services**][azure-app-services-doc] | Azure App Service でホストされている Azure API アプリまたは Web アプリを呼び出します。 Swagger が含まれている場合、これらのアプリで定義されているトリガーとアクションは、他のファースト クラスのトリガーおよびアクションのように表示されます。|
-| [![API アイコン][azure-logic-apps-icon]<br>**Azure Logic <br>Apps**][nested-logic-app-doc] | **要求**トリガーで開始するその他のロジック アプリを呼び出します。 |
+| [![API アイコン][azure-logic-apps-icon]<br>**Azure Logic <br>Apps**][nested-logic-app-doc] | **要求**トリガーで開始するその他の Logic Apps を呼び出します。 |
 |||||
 
-### <a name="run-code-from-logic-apps"></a>ロジック アプリからコードを実行する
+### <a name="run-code-from-logic-apps"></a>Logic Apps からコードを実行する
 
-Logic Apps には、ロジック アプリのワークフローで独自のコードを実行するための組み込みアクションが用意されています。
+Logic Apps には、Logic Apps のワークフローで独自のコードを実行するための組み込みアクションが用意されています。
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API アイコン][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | カスタム コード スニペット (C# または Node.js) をロジック アプリから実行する Azure 関数を呼び出します。 | [![API アイコン][inline-code-icon]<br>**インライン コード**][azure-functions-doc] | ロジック アプリから JavaScript コード スニペットを追加して実行します。 |
+| [![API アイコン][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | カスタム コード スニペット (C# または Node.js) を Logic Apps から実行する Azure 関数を呼び出します。 | [![API アイコン][inline-code-icon]<br>**インライン コード**][azure-functions-doc] | Logic Apps から JavaScript コード スニペットを追加して実行します。 |
 |||||
 
 ### <a name="control-workflow"></a>ワークフローを制御する
 
-Logic Apps では、ロジック アプリのワークフローでアクションを構成および制御するための組み込みアクションが提供されています。
+Logic Apps では、Logic Apps のワークフローでアクションを構成および制御するための組み込みアクションが提供されています。
 
 |   |   |   |   |
 |---|---|---|---|
 | [![組み込みアイコン][condition-icon]<br>**条件**][condition-doc] | 条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。 | [![組み込みアイコン][for-each-icon]<br>**For each**][for-each-doc] | 配列内のすべての項目に対して同じアクションを実行します。 |
 | [![組み込みアイコン][scope-icon]<br>**スコープ**][scope-doc] | アクションを*スコープ*にグループ化します。スコープ内のアクションが実行を完了すると、スコープ独自のステータスが取得されます。 | [![組み込みアイコン][switch-icon]<br>**スイッチ**][switch-doc] | アクションを*ケース*にグループ化します。既定のケースを除き、ケースには、一意の値が割り当てられます。 割り当てられた値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。 一致が存在しない場合は、既定のケースを実行します。 |
-| [![組み込みアイコン][terminate-icon]<br>**終了**][terminate-doc] | アクティブに実行中のロジック アプリ ワークフローを停止します。 | [![組み込みアイコン][until-icon]<br>**期限**][until-doc] | 指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。 |
+| [![組み込みアイコン][terminate-icon]<br>**終了**][terminate-doc] | アクティブに実行中の Logic Apps ワークフローを停止します。 | [![組み込みアイコン][until-icon]<br>**期限**][until-doc] | 指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。 |
 |||||
 
 ### <a name="manage-or-manipulate-data"></a>データを管理または操作する
@@ -144,7 +144,7 @@ Logic Apps には、次のサービスまたはシステムでタスク、プロ
 | [![API アイコン][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | SSH を使用してインターネットからアクセス可能な SFTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。 | [![API アイコン][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | SharePoint Online に接続して、ファイル、添付ファイル、フォルダーなどを管理できるようにします。 | 
 | [![API アイコン][dynamics-365-icon]<br>**Dynamics 365<br>** ][dynamics-365-doc] | Dynamics 365 アカウントに接続して、レコードや項目などの作成と管理ができるようにします。 | [![API アイコン][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc] | Azure Storage アカウントに接続して、キューとメッセージの作成と管理ができるようにします |
 | [![API アイコン][ftp-icon]<br>**FTP**][ftp-doc] | インターネットからアクセス可能な FTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。 | [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc] | オンプレミスのファイル共有に接続して、ファイルの作成と管理ができるようにします。 |
-| [![API アイコン][azure-event-hubs-icon]<br>**Azure Event Hubs**][azure-event-hubs-doc] | イベント ハブを通じてイベントを使用したり、発行したりします。 たとえば、ロジック アプリから Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。 | [![API アイコン][azure-event-grid-icon]<br>**Azure Event**<br>**Grid**][azure-event-grid-doc] | Azure やサードパーティのリソースが変更されたときなどに、Event Grid が発行するイベントを監視します。 |
+| [![API アイコン][azure-event-hubs-icon]<br>**Azure Event Hubs**][azure-event-hubs-doc] | イベント ハブを通じてイベントを使用したり、発行したりします。 たとえば、Logic Apps から Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。 | [![API アイコン][azure-event-grid-icon]<br>**Azure Event**<br>**Grid**][azure-event-grid-doc] | Azure やサードパーティのリソースが変更されたときなどに、Event Grid が発行するイベントを監視します。 |
 | [![API アイコン][salesforce-icon]<br>**Salesforce**][salesforce-doc] | Salesforce アカウントに接続して、レコード、ジョブ、オブジェクトなどの項目の作成と管理ができるようにします。 | [![API アイコン][twitter-icon]<br>**Twitter**][twitter-doc] | Twitter アカウントに接続して、ツイート、フォロワー、タイムラインなどを管理できるようにします。 ツイートは、SQL、Excel、または SharePoint に保存します。 |
 |||||
 
@@ -164,7 +164,7 @@ Logic Apps には、次のサービスまたはシステムでタスク、プロ
 
 ## <a name="integration-account-connectors"></a>統合アカウント コネクタ
 
-Logic Apps では、Azure の Enterprise Integration Pack (EIP) で利用可能な[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を作成して料金を支払うときに、ロジック アプリで企業間 (B2B) ソリューションを作成するための標準コネクタが提供されています。 このアカウントを使用すると、パーティー、取引先契約、マップ、スキーマ、証明書などの B2B 成果物を作成したり、保管したりできます。 これらの成果物を使用するには、ロジック アプリを統合アカウントに関連付けます。 現在、BizTalk Server を使用している場合は、これらのコネクタが既になじみがあるように見えるかもしれません。
+Logic Apps では、Azure の Enterprise Integration Pack (EIP) で利用可能な[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を作成して料金を支払うときに、Logic Apps で企業間 (B2B) ソリューションを作成するための標準コネクタが提供されています。 このアカウントを使用すると、パーティー、取引先契約、マップ、スキーマ、証明書などの B2B 成果物を作成したり、保管したりできます。 これらの成果物を使用するには、Logic Apps を統合アカウントに関連付けます。 現在、BizTalk Server を使用している場合は、これらのコネクタが既になじみがあるように見えるかもしれません。
 
 |   |   |   |   |
 |---|---|---|---|
@@ -188,7 +188,7 @@ Logic Apps では、SAP や IBM MQ などのエンタープライズ システ�
 
 ## <a name="ise-connectors"></a>ISE コネクタ
 
-分離された [統合サービス環境 (ISE)](#integration-service-environment) を作成して実行するロジック アプリの場合、ロジック アプリ デザイナーでは **CORE** ラベルを使用して ISE 内で実行する組み込みトリガーおよびアクションを識別します。 ISE 内で実行するマネージド コネクタには **ISE** ラベルが表示されますが、グローバルなマルチテナント Logic Apps サービスで実行するコネクタには、いずれのラベルも表示されません。 次の一覧は、現在 ISE バージョンがあるコネクタを示しています。
+分離された [統合サービス環境 (ISE)](#integration-service-environment) を作成して実行する Logic Apps の場合、Logic Apps デザイナーでは **CORE** ラベルを使用して ISE 内で実行する組み込みトリガーおよびアクションを識別します。 ISE 内で実行するマネージド コネクタには **ISE** ラベルが表示されますが、グローバルなマルチテナント Logic Apps サービスで実行するコネクタには、いずれのラベルも表示されません。 次の一覧は、現在 ISE バージョンがあるコネクタを示しています。
 
 |   |   |   |   |   |
 |---|---|---|---|---|
@@ -209,23 +209,23 @@ Logic Apps では、SAP や IBM MQ などのエンタープライズ システ�
 
 ## <a name="triggers-and-action-types"></a>トリガーとアクションの種類
 
-コネクタは、*トリガー*、*アクション*、またはその両方を提供できます。 *トリガー*はすべてのロジック アプリの最初の手順であり、通常トリガーを起動し、ロジック アプリの実行を開始するイベントを指定します。 たとえば、FTP コネクタには、"ファイルが追加されるか、変更されたとき" にロジック アプリを起動するトリガーがあります。 一部のトリガーは、指定されたイベントまたはデータを定期的にチェックし、指定されたイベントやデータを検出したときに起動します。 他のトリガーは、待機し、特定のイベントが発生した場合や新しいデータを使用できるようになった場合にただちに起動します。 トリガーは、ロジック アプリに必要なデータも渡します。 ロジック アプリでは、ワークフロー全体でそのデータを読み取り、使用することができます。 たとえば、Twitter コネクタには、ロジック アプリのワークフローにツイートの内容を渡す "新しいツイートが投稿されたら" トリガーがあります。
+コネクタは、*トリガー*、*アクション*、またはその両方を提供できます。 *トリガー*はすべての Logic Apps の最初の手順であり、通常トリガーを起動し、Logic Apps の実行を開始するイベントを指定します。 たとえば、FTP コネクタには、"ファイルが追加されるか、変更されたとき" に Logic Apps を起動するトリガーがあります。 一部のトリガーは、指定されたイベントまたはデータを定期的にチェックし、指定されたイベントやデータを検出したときに起動します。 他のトリガーは、待機し、特定のイベントが発生した場合や新しいデータを使用できるようになった場合にただちに起動します。 トリガーは、Logic Apps に必要なデータも渡します。 Logic Apps では、ワークフロー全体でそのデータを読み取り、使用することができます。 たとえば、Twitter コネクタには、Logic Apps のワークフローにツイートの内容を渡す "新しいツイートが投稿されたら" トリガーがあります。
 
-トリガーの起動後、Azure Logic Apps は、ロジック アプリのインスタンスを作成し、ロジック アプリのワークフローで*アクション*の実行を開始します。 アクションは、ロジック アプリのワークフローでトリガーを追跡し、タスクを実行する手順です。 たとえば、SQL データベースから顧客データを取得し、後のアクションでそのデータを処理するロジック アプリを作成できます。
+トリガーの起動後、Azure Logic Apps は、Logic Apps のインスタンスを作成し、Logic Apps のワークフローで*アクション*の実行を開始します。 アクションは、Logic Apps のワークフローでトリガーを追跡し、タスクを実行する手順です。 たとえば、SQL データベースから顧客データを取得し、後のアクションでそのデータを処理する Logic Apps を作成できます。
 
 次に、Azure Logic Apps が提供する一般的な種類のトリガーを示します。
 
 * *繰り返しトリガー*:このトリガーは、指定したスケジュールで実行され、特定のサービスまたはシステムに緊密に関連付けられません。
 
-* *ポーリング トリガー*:このトリガーは、指定したスケジュールに基づいて、特定のサービスまたはシステムを定期的にポーリングし、新しいデータまたは特定のイベントが発生したかどうかをチェックします。 新しいデータが使用可能になるか、または特定のイベントが発生した場合、トリガーはロジック アプリの新しいインスタンスを実行し、それにより、入力として渡されたデータを使用できるようになります。
+* *ポーリング トリガー*:このトリガーは、指定したスケジュールに基づいて、特定のサービスまたはシステムを定期的にポーリングし、新しいデータまたは特定のイベントが発生したかどうかをチェックします。 新しいデータが使用可能になるか、または特定のイベントが発生した場合、トリガーは Logic Apps の新しいインスタンスを実行し、それにより、入力として渡されたデータを使用できるようになります。
 
-* *プッシュ トリガー*:このトリガーは、新しいデータまたはイベントの発生を待機し、リッスンします。 新しいデータが使用可能になるか、またはイベントが発生した場合、トリガーはロジック アプリの新しいインスタンスを作成して実行し、それにより、入力として渡されたデータを使用できるようになります。
+* *プッシュ トリガー*:このトリガーは、新しいデータまたはイベントの発生を待機し、リッスンします。 新しいデータが使用可能になるか、またはイベントが発生した場合、トリガーは Logic Apps の新しいインスタンスを作成して実行し、それにより、入力として渡されたデータを使用できるようになります。
 
 <a name="connections"></a>
 
 ## <a name="connector-configuration"></a>コネクタの構成
 
-各コネクタのトリガーとアクションは、ユーザーが構成できる独自のプロパティを提供します。 多くのコネクタでは、ロジック アプリでトリガーやアクションを使用する前に、最初に対象のサービスまたはシステムへの*接続*を作成し、認証資格情報またはその他の構成の詳細を指定する必要があります。 たとえば、ユーザーに代わってデータにアクセスしたり、投稿したりするために Twitter アカウントへの接続を承認する必要があります。
+各コネクタのトリガーとアクションは、ユーザーが構成できる独自のプロパティを提供します。 多くのコネクタでは、Logic Apps でトリガーやアクションを使用する前に、最初に対象のサービスまたはシステムへの*接続*を作成し、認証資格情報またはその他の構成の詳細を指定する必要があります。 たとえば、ユーザーに代わってデータにアクセスしたり、投稿したりするために Twitter アカウントへの接続を承認する必要があります。
 
 Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、接続の作成は、Office 365、Salesforce、GitHub などのサービスへのサインインを意味し、そこでアクセス トークンが[暗号化](../security/fundamentals/encryption-overview.md)され、Azure シークレット ストアに安全に保存されます。 FTP や SQL などのその他のコネクタでは、サーバーのアドレス、ユーザー名、およびパスワードなどの構成の詳細を含む接続が必要です。 これらの接続構成の詳細も暗号化され、安全に保存されます。 [Azure での暗号化](../security/fundamentals/encryption-overview.md)の詳細を参照してください。
 
@@ -235,21 +235,21 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 
 ## <a name="custom-apis-and-connectors"></a>カスタム API とコネクタ
 
-カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すには、[カスタム API Apps を作成](../logic-apps/logic-apps-create-api-app.md)して、Logic Apps プラットフォームを拡張します。 "*任意の*" REST または SOAP ベース API 用の[カスタム コネクタを作成](../logic-apps/custom-connector-overview.md)することもできます。その場合、これらの API は、Azure サブスクリプションの任意のロジック アプリで使用できるようになります。 Azure 内でカスタム API Apps またはコネクタを公開し、誰でも使用できるようにするには、[Microsoft の認定を受けるためにコネクタを提出](../logic-apps/custom-connector-submit-certification.md)してください。
+カスタム コードを実行する API や、コネクタとして使用できない API を呼び出すには、[カスタム API Apps を作成](../logic-apps/logic-apps-create-api-app.md)して、Logic Apps プラットフォームを拡張します。 "*任意の*" REST または SOAP ベース API 用の[カスタム コネクタを作成](../logic-apps/custom-connector-overview.md)することもできます。その場合、これらの API は、Azure サブスクリプションの任意の Logic Apps で使用できるようになります。 Azure 内でカスタム API Apps またはコネクタを公開し、誰でも使用できるようにするには、[Microsoft の認定を受けるためにコネクタを提出](../logic-apps/custom-connector-submit-certification.md)してください。
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にデプロイして実行したロジック アプリは、Azure 仮想ネットワーク内のリソースに直接アクセスできます。 オンプレミス データ ゲートウェイを必要とするカスタム コネクタを ISE の外部で作成した場合は、ISE 内のロジック アプリでもそれらのコネクタを使用できます。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にデプロイして実行した Logic Apps は、Azure 仮想ネットワーク内のリソースに直接アクセスできます。 オンプレミス データ ゲートウェイを必要とするカスタム コネクタを ISE の外部で作成した場合は、ISE 内の Logic Apps でもそれらのコネクタを使用できます。
 >
-> ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE がホストされている Azure 仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。
+> ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE がホストされている Azure 仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内の Logic Apps では、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。
 >
 > ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [コネクタの完全な一覧](https://docs.microsoft.com/connectors)を表示する
-* [初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [ロジック アプリのカスタム コネクタを作成する](https://docs.microsoft.com/connectors/custom-connectors/)
-* [ロジック アプリ用のカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
+* [初めての Logic Apps の作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [Logic Apps のカスタム コネクタを作成する](https://docs.microsoft.com/connectors/custom-connectors/)
+* [Logic Apps 用のカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
 
 <!-- Built-ins icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
@@ -374,30 +374,30 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 [xml-transform-icon]: ./media/apis-list/xsl-transform.png
 
 <!--Other doc links-->
-[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータに接続する"
+[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "オンプレミス データ ゲートウェイを使用して、Logic Apps からオンプレミスのデータに接続する"
 
 <!--Built-in doc links-->
 [azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "API を管理および発行するための Azure API Management サービス インスタンスを作成します。"
-[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "App Service API Apps を使用してロジック アプリを統合します。"
-[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Azure Functions を使用してロジック アプリを統合します。"
+[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "App Service API Apps を使用して Logic Apps を統合します。"
+[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Azure Functions を使用して Logic Apps を統合します。"
 [batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "グループ、またはバッチとしてメッセージを処理します。"
 [condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。"
 [for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "配列内のすべての項目に対して同じアクションを実行します。"
-[http-doc]: ./connectors-native-http.md "ロジック アプリから HTTP または HTTPS エンドポイントを呼び出す"
-[http-request-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求を受信する"
-[http-response-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求に応答する"
-[http-swagger-doc]: ./connectors-native-http-swagger.md "ロジック アプリから REST エンドポイントを呼び出す"
+[http-doc]: ./connectors-native-http.md "Logic Apps から HTTP または HTTPS エンドポイントを呼び出す"
+[http-request-doc]: ./connectors-native-reqres.md "Logic Apps で HTTP 要求を受信する"
+[http-response-doc]: ./connectors-native-reqres.md "Logic Apps で HTTP 要求に応答する"
+[http-swagger-doc]: ./connectors-native-http-swagger.md "Logic Apps から REST エンドポイントを呼び出す"
 [http-webhook-doc]: ./connectors-native-webhook.md "HTTP または HTTPS エンドポイントからの特定のイベントを待機する"
-[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "入れ子になったワークフローを使用してロジック アプリを統合します。"
+[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "入れ子になったワークフローを使用して Logic Apps を統合します。"
 [query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "クエリ アクションで、配列の選択とフィルター処理を行います。"
-[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "スケジュールに基づいてロジック アプリを実行する"
+[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "スケジュールに基づいて Logic Apps を実行する"
 [schedule-delay-doc]: ./connectors-native-delay.md "次のアクションの実行を遅らせる"
 [schedule-delay-until-doc]: ./connectors-native-delay.md "次のアクションの実行を遅らせる"
-[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "定期的なスケジュールでロジック アプリを実行する"
-[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "連続したチャンク内のデータを処理する必要があるロジック アプリを実行する"
+[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "定期的なスケジュールで Logic Apps を実行する"
+[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "連続したチャンク内のデータを処理する必要がある Logic Apps を実行する"
 [scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "アクションをグループに編成します。グループ内のアクションの実行が完了すると、グループ独自のステータスが取得されます。"
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "アクションをケースに編成します。ケースには、一意の値が割り当てられます。値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。一致が存在しない場合は、既定のケースを実行します。"
-[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "アクティブに実行中のロジック アプリのワークフローを停止またはキャンセルします。"
+[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "アクティブに実行中の Logic Apps のワークフローを停止またはキャンセルします。"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。"
 [data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "配列のフィルター処理や CSV と HTML のテーブルの作成などのデータ操作を実行します。"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "変数に対する操作を実行します。たとえば、文字列または配列の変数に対する初期化、設定、増分、減分、追加などです。"
@@ -407,7 +407,7 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 [azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Azure Blob Storage コネクタを使用して BLOB コンテナーのファイルを管理します。"
 [azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "Azure Cosmos DB に接続して、ドキュメントとストアド プロシージャにアクセスできるようにします"
 [azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "Azure やサードパーティのリソースが変更されたときなど、Event Grid により発行されるイベントを監視します"
-[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Azure Event Hubs に接続して、ロジック アプリと Event Hubs 間でイベントを送受信できるようにします"
+[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Azure Event Hubs に接続して、Logic Apps と Event Hubs 間でイベントを送受信できるようにします"
 [azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "Azure Storage アカウントに接続して、ファイルを作成、更新、取得、削除できるようにします"
 [azure-key-vault-doc]: https://docs.microsoft.com/connectors/keyvault/ "シークレットとキーを管理できるように Azure Key Vault に接続します"
 [azure-monitor-logs-doc]: https://docs.microsoft.com/connectors/azuremonitorlogs/ "Log Analytics ワークスペースと Application Insights コンポーネントの全体にわたって、Azure Monitor ログに対するクエリを実行します"
