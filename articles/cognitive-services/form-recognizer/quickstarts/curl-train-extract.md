@@ -153,7 +153,7 @@ curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>
 次の API を使用して、分析操作の結果に対してクエリを実行します。
 
 1. `<Endpoint>` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
-1. `<result ID>` を、前のセクションで受信した ID で置き換えます。
+1. `<result ID>` を、Analyze Form API で得られた結果内にある ID で置き換えます。
 1. `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
 
 ```bash
