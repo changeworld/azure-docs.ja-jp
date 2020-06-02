@@ -93,7 +93,7 @@ MSAL は [OAuth 2 承認コード付与](v2-oauth2-auth-code-flow.md)をサポ�
 
 - ASP.NET または ASP.NET Core アプリケーションを作成する場合、承認コードを既に引き換えたことをフレームワークに通知しないと、これが発生する可能性があります。 その場合は、`AuthorizationCodeReceived` イベント ハンドラーの `context.HandleCodeRedemption()` メソッドを呼び出す必要があります。
 
-- アクセス トークンを ASP.NET と共有しないでください。増分同意の正しい処理が妨げられる可能性があります。 詳細については、[問題 #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693) を参照してください。
+- アクセス トークンを ASP.NET と共有しないでください。増分同意の正しい処理が妨げられる可能性があります。 詳細については、[Issue #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693) を参照してください。
 
 ## <a name="on-behalf-of"></a>On-Behalf-Of
 
