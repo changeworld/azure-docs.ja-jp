@@ -307,21 +307,21 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * ドキュメントに Unicode の特殊文字 (LS、PS) が含まれている場合の executeStoredProcedure のバグを修正しました。
 * パーティション キーで Unicode 文字が使用されているドキュメントを処理する際のバグを修正しました。
-* 名前メディアでコレクションを作成するためのサポートを修正しました。 GitHub 問題 #114。
-* アクセス許可承認トークンのサポートを修正しました。 GitHub 問題 #178。
+* 名前メディアでコレクションを作成するためのサポートを修正しました。 GitHub Issue #114。
+* アクセス許可承認トークンのサポートを修正しました。 GitHub Issue #178。
 
 ### <a name=""></a><a name="1.12.0"/>1.12.0</a>
 * ConsistentPrefix と呼ばれる新しい[一貫性レベル](consistency-levels.md)に対応するようになりました。
 * UriFactory のサポートを追加しました。
-* Unicode サポートのバグを修正しました。 GitHub 問題 #171。
+* Unicode サポートのバグを修正しました。 GitHub Issue #171。
 
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
 * クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
 * Azure Cosmos DB Emulator に対して実行しているときに TLS 検証を無効にするオプションを追加しました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
-* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 GitHub 問題 #107。
-* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 GitHub 問題 #155。
+* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 GitHub Issue #107。
+* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 GitHub Issue #155。
 
 ### <a name=""></a><a name="1.10.2"/>1.10.2</a>
 * SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。
