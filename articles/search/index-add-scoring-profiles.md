@@ -3,34 +3,29 @@ title: スコアリング プロファイルを使用して検索順位を上げ
 titleSuffix: Azure Cognitive Search
 description: スコアリング プロファイルを追加することにより、Azure Cognitive Search の検索結果での検索順位スコアを上げます。
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231103"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890174"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する
 
 "*スコアリング*" では、順位に従って並べられる結果セット内の各項目の検索スコアが計算されます。 検索結果セット内のすべての項目にそれぞれ検索スコアが割り当てられ、最上位から最下位まで順位が付けられます。
 
  Azure Cognitive Search では、既定のスコアリングを使用して初期スコアを計算しますが、"*スコアリング プロファイル*" を介して計算をカスタマイズすることができます。 スコアリング プロファイルでは、検索結果の項目の順位付けをより細かく制御できます。 たとえば、収益の可能性に基づいて項目をブーストしたり、より新しい項目を昇格させたり、場合によっては在庫期間が長すぎる項目をブーストしたりできます。  
+
+ 次のビデオ セグメントは、Azure Cognitive Search でのスコアリング プロファイルの動作についての部分まで早送りされます。
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>スコアリング プロファイルの定義
 
  スコアリング プロファイルは、インデックス定義の一部であり、重み付けされたフィールド、関数、およびパラメーターで構成されます。  
 

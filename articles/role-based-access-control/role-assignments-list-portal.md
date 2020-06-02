@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する
-description: Azure ロールベースのアクセス制御 (RBAC) と Azure portal を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド IDがアクセスできるリソースを決定する方法について説明します。
+title: Azure portal を使用して Azure でのロールの割り当てを一覧表示する - Azure RBAC
+description: Azure portal と Azure ロールベースのアクセス制御 (RBAC) を使用して、リソース ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセスを決定する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062241"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996638"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する
+# <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure portal を使用してロールの割り当てを一覧表示する方法を説明します。
 
@@ -32,7 +32,9 @@ ms.locfileid: "80062241"
 
 サブスクリプションのユーザーまたはグループに割り当てられているロールを最も簡単に確認する方法は、 **[Azure リソース]** ペインを使用することです。
 
-1. Azure portal で、 **[すべてのサービス]** をクリックしてから **[ユーザー]** または **[グループ]** を選択します。
+1. Azure portal で、Azure portal メニューから **[すべてのサービス]** を選択します。
+
+1. **[Azure Active Directory]** を選択し、 **[ユーザー]** または **[グループ]** を選択します。
 
 1. ロールの割り当てを一覧表示するユーザーまたはグループをクリックします。
 
@@ -128,7 +130,7 @@ ms.locfileid: "80062241"
 
 ## <a name="list-number-of-role-assignments"></a>ロールの割り当ての数の一覧
 
-各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 **[ロールの割り当て]** タブには、この制限の追跡に役立つ、現在のサブスクリプションに対するロールの割り当て数を示すグラフが表示されます。
+各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 **[ロールの割り当て]** タブには、この制限の追跡に役立つ、現在のサブスクリプションに対するロールの割り当て数を示すグラフが表示されます。
 
 ![アクセス制御 - ロールの割り当ての数のグラフ](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
@@ -138,5 +140,5 @@ ms.locfileid: "80062241"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC と Azure Portal を使用してロールの割り当てを追加または削除する](role-assignments-portal.md)
-- [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)
+- [Azure portal を使用して Azure でのロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure RBAC のトラブルシューティング](troubleshooting.md)

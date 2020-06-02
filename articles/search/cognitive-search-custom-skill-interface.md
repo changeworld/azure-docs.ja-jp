@@ -7,15 +7,17 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/06/2020
+ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500262"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891247"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search エンリッチメント パイプラインにカスタム スキルを追加する方法
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
 Azure Cognitive Search の[エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、[組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加する[カスタム スキル](cognitive-search-custom-skill-web-api.md)から組み立てることができます。 この記事では、AI エンリッチメント パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
 
@@ -39,6 +41,10 @@ URI が安全 (HTTPS) であることを確認します。
 現在のところ、カスタム スキルとやり取りするための唯一のメカニズムは、Web API インターフェイスです。 Web API は、このセクションで説明する要件を満たしている必要があります。
 
 ### <a name="1--web-api-input-format"></a>1.Web API の入力形式
+
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
+
 
 Web API は、処理されるレコードの配列を受け取る必要があります。 各レコードには、Web API に提供される入力である "プロパティ バッグ" が含まれていなければなりません。 
 
@@ -158,6 +164,7 @@ Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメ�
 
 この記事では、カスタム スキルをスキルセットに統合するために必要なインターフェイス要件について説明しました。 カスタム スキルとスキルセットの構成の詳細については、次のリンクをクリックしてください。
 
++ [カスタム スキルに関するビデオを見る](https://youtu.be/fHLCE-NZeb4)
 + [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
 + [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

@@ -3,12 +3,12 @@ title: Azure Application Insights における依存関係の追跡 | Microsoft 
 description: オンプレミスまたは Microsoft Azure Web アプリケーションからの依存関係呼び出しを Application Insights で監視します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731507"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980849"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -92,14 +92,14 @@ SQL 呼び出しの場合、サーバーとデータベースの名前が常に�
 
 ASP.NET Core アプリケーションの場合、完全な SQL クエリを取得するために必要な追加手順はありません。
 
-ASP.NET アプリケーションの場合、インストルメンテーション エンジンを必要とするバイト コード インストルメンテーションの支援により完全な SQL クエリが収集されます。 以下の説明のように、プラットフォーム固有の追加手順が必要になります。
+ASP.NET アプリケーションの場合、インストルメンテーション エンジン、または[Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージの使用を必要とするバイトコード インストルメンテーションの支援により、完全な SQL クエリが収集されます。 以下の説明のように、プラットフォーム固有の追加手順が必要になります。
 
 | プラットフォーム | 完全な SQL クエリを取得するために必要な手順 |
 | --- | --- |
 | Azure Web アプリ |Web アプリのコントロール パネルで [Application Insights ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、SQL コマンドを .NET |
-| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | Status Monitor PowerShell モジュールを使用して[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-reference.md)し、IIS を再起動します。 |
+| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用するか、Status Monitor PowerShell モジュールを使用して、[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-reference.md)して IIS を再起動します。 |
 | Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) または [ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
-| IIS Express | サポートされていません
+| IIS Express | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用します
 
 上記の例では、インストルメンテーション エンジンが正しくインストールされていることを検証する適切な方法は、収集された `DependencyTelemetry` の SDK バージョンが "rddp" であることを確認することです。 "rdddsd" または "rddf" は、DiagnosticSource または EventSource コールバックを介して依存関係が収集されること、そのため、完全な SQL クエリはキャプチャされないことを示します。
 

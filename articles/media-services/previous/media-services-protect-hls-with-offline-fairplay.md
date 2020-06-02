@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74968700"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995526"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
@@ -211,7 +211,7 @@ FPS Server SDK のバージョン 3 またはバージョン 4 サンプルで�
 - **FPS オフライン モードの次の API で、最後のパラメーターは何を表していますか。** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    この API のドキュメントについては、「[FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration Method](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)」(FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration メソッド) を参照してください。 このパラメーターはオフライン レンタルの期間を表します (単位は時間)。
+    この API のドキュメントについては、「[FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration Method](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)」(FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration メソッド) を参照してください。 このパラメーターはオフライン レンタルの期間を表します (単位は秒)。
 - **iOS デバイスでのダウンロード済み/オフライン ファイルの構造はどのようなものですか。** iOS デバイスにダウンロードされたファイルは、次のスクリーンショットのような構造になっています。 `_keys` フォルダーには、ダウンロードされた FPS ライセンスが格納されます (ライセンス サービス ホストごとに 1 つのストア ファイル)。 `.movpkg` フォルダーには、オーディオとビデオのコンテンツが格納されます。 名前の末尾にダッシュと数字が付いている最初のフォルダーには、ビデオ コンテンツが格納されます。 数字はビデオ再生の PeakBandwidth です。 名前の末尾にダッシュと 0 が付いている 2 つ目のフォルダーには、オーディオ コンテンツが格納されます。 "Data" という名前の 3 番目のフォルダーには、FPS コンテンツのマスター再生リストが含まれます。 最後に、boot.xml には、`.movpkg` フォルダーの内容が完全に説明されています。 
 
 ![オフライン FairPlay の iOS サンプル アプリ ファイルの構造](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)

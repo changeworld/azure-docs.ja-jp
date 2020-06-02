@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980298"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858741"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -30,7 +30,7 @@ ms.locfileid: "75980298"
 DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリズムを使用します。このアルゴリズムによって、帯域幅が制限されたネットワークでファイルを効率的に更新できます。 これにより、ファイル内のデータの挿入、削除、再配置が検出されます。 ファイルが更新されたときに、変更されたファイル ブロックのみを DFSR でレプリケートすることが可能になります。 ピーク時以外のタイミングで毎日バックアップが作成されるファイル サーバー環境もありますが、これは障害時のニーズに対応しています。 DFSR は実装されていません。
 
 次の図は、DFSR が実装されたファイル サーバー環境を示しています。
-                
+        
 ![DFSR アーキテクチャ](media/site-recovery-file-server/dfsr-architecture.JPG)
 
 上記の図では、メンバーと呼ばれる複数のファイル サーバーが、レプリケーション グループ全体でのファイルのレプリケートにアクティブに参加します。 メンバーの 1 つがオフラインになっても、いずれかのメンバーに要求を送信するすべてのクライアントが、レプリケートされたフォルダー内のコンテンツを使用できます。
@@ -57,19 +57,19 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 |環境  |推奨  |考慮すべき点 |
 |---------|---------|---------|
 |ファイル サーバー環境 (DFSR あり/なし)|   [Site Recovery を使用したレプリケーション](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery では、共有ディスク クラスターとネットワーク接続ストレージ (NAS) はサポートされません。 環境でこれらの構成を使用する場合は、他の方法を適宜使用してください。 <br> Site Recovery では SMB 3.0 はサポートされません。 レプリケートされた VM にファイルの変更が反映されるのは、変更がファイルの元の場所で更新された場合だけです。<br>  Site Recovery では、ほぼ同期で実行されるデータ レプリケーション プロセスが提供されます。そのため、予定外のフェールオーバーが発生した場合、データ損失と USN 不一致問題が発生する可能性があります。
-|ファイル サーバー環境 (DFSR あり)     |  [Azure IaaS 仮想マシンへの DFSR の拡張](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR は、帯域幅が極端に不足している環境でも適切に機能します。 この方法では、Azure VM を常時稼働させておく必要があります。 計画で VM のコストを考慮する必要があります。         |
+|ファイル サーバー環境 (DFSR あり)     |  [Azure IaaS 仮想マシンへの DFSR の拡張](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |    DFSR は、帯域幅が極端に不足している環境でも適切に機能します。 この方法では、Azure VM を常時稼働させておく必要があります。 計画で VM のコストを考慮する必要があります。         |
 |Azure Iaas VM     |     File Sync    |     ディザスター リカバリー シナリオで File Sync を使用する場合は、フェールオーバー時に手動アクションを実行して、クライアント マシンがファイル共有に透過的にアクセスできるようにする必要があります。 File Sync では、クライアント マシンからポート 445 を開いておく必要があります。     |
 
 
 ### <a name="site-recovery-support"></a>Site Recovery のサポート
 Site Recovery レプリケーションはアプリケーションに依存しないため、ここで紹介する推奨事項は次のシナリオに適用できます。
 
-| source    |セカンダリ サイトへ    |Azure へ
+| source  |セカンダリ サイトへ  |Azure へ
 |---------|---------|---------|
-|Azure| -|はい|
-|Hyper-V|   はい |はい
-|VMware |はい|   はい
-|物理サーバー|   はい |はい
+|Azure|  -|はい|
+|Hyper-V|  はい  |はい
+|VMware  |はい|  はい
+|物理サーバー|  はい  |はい
  
 
 > [!IMPORTANT]
@@ -97,7 +97,7 @@ Azure Files を使用して、従来のオンプレミス ファイル サーバ
 
 次の手順では、File Sync の使用方法を簡単に説明します。
 
-1. [Azure にストレージ アカウントを作成します](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージを選択した場合は、障害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、「[Disaster recovery and forced failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーと強制フェールオーバー (プレビュー))](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)」を参照してください。
+1. [Azure にストレージ アカウントを作成します](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージを選択した場合は、障害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)」を参照してください。
 2. [ファイル共有を作成します](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. Azure ファイル サーバーで [File Sync を開始](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)します。
 4. 同期グループを作成します。 同期グループ内のエンドポイントは、相互に同期を維持されます。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが少なくとも 1 つは含まれている必要があります。 また、Windows サーバー上のパスを表すサーバー エンドポイントも 1 つ含まれている必要があります。
@@ -146,7 +146,7 @@ File Sync を Site Recovery と統合する方法は次のとおりです。
 
 File Sync を使用するには、次の手順に従います。
 
-1. [Azure にストレージ アカウントを作成します](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージ (推奨) を選択した場合は、障害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、「[Disaster recovery and forced failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーと強制フェールオーバー (プレビュー))](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)」を参照してください。
+1. [Azure にストレージ アカウントを作成します](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージ (推奨) を選択した場合は、障害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)」を参照してください。
 2. [ファイル共有を作成します](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. オンプレミスのファイル サーバーに [File Sync をデプロイ](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)します。
 4. 同期グループを作成します。 同期グループ内のエンドポイントは、相互に同期を維持されます。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが少なくとも 1 つは含まれている必要があります。 また、オンプレミスの Windows サーバー上のパスを表すサーバー エンドポイントも 1 つ含まれている必要があります。

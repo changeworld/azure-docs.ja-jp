@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677408"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864404"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -44,6 +44,8 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 **原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **原因 4:[VM エージェント構成オプションが設定されていない (Linux VM の場合)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+
+**原因 5:[アプリケーション制御ソリューションが IaaSBcdrExtension.exe をブロックしている](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed は、プロビジョニングに失敗した状態
 
@@ -200,8 +202,16 @@ waagent の詳細ログが必要な場合は、次の手順に従います。
 
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM エージェント構成オプションが設定されていない (Linux VM の場合)
 
-構成ファイル (/etc/waagent.conf) を使用して waagent の動作を制御します。 構成ファイルのオプション **拡張機能。** と **のプロビジョニングを有効にします。エージェント** は **y** に設定して、Microsoft Azure Backup を機能させる必要があります。
+構成ファイル (/etc/waagent.conf) を使用して waagent の動作を制御します。 Backup が動作するためには、構成ファイルのオプション **Extensions.Enable** を **y** に設定し、**Provisioning.Agent** を **auto** に設定する必要があります。
 VM エージェント構成ファイルのオプションの完全な一覧については、<https://github.com/Azure/WALinuxAgent#configuration-file-options> を参照してください
+
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>アプリケーション制御ソリューションが IaaSBcdrExtension.exe をブロックしている
+
+[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (または別のアプリケーション制御ソリューション) を実行しており、規則が発行元またはパス ベースの場合、**IaaSBcdrExtension.exe** 実行可能ファイルの実行がブロックされる可能性があります。
+
+#### <a name="solution"></a>解決策
+
+AppLocker (またはその他のアプリケーション制御ソフトウェア) から、`/var/lib` パスまたは **IaaSBcdrExtension.exe** 実行可能ファイルを除外します。
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>スナップショットの状態を取得できないか、スナップショットを作成できない
 

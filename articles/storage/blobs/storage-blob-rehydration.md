@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1265d018997f9540e14e83ab15a44e78f4f86fb1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684089"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402658"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
 
@@ -34,6 +34,9 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 アーカイブ BLOB をリハイドレートしたくない場合は、[[BLOB のコピー]](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作の実行を選択できます。 オンラインのホット層またはクール層で、使用する新しい BLOB が作成されている間、元の BLOB はアーカイブ内で未変更のままとなります。 [BLOB のコピー] 操作では、オプションの *x-ms-rehydrate-priority* プロパティを Standard または High に設定して、BLOB コピーを作成する優先順位を指定することもできます。
 
 アーカイブからの BLOB のコピーは、選択されたリハイドレートの優先度によっては数時間かかることがあります。 **[BLOB のコピー]** 操作では、バックグラウンドでアーカイブ ソース BLOB が読み取られ、選択された移動先の層に新しいオンライン BLOB が作成されます。 BLOB を一覧表示すると新しい BLOB が表示される場合がありますが、ソース アーカイブ BLOB からの読み取りが完了し、データが新しいオンライン コピー先 BLOB に書き込まれるまでは、データを使用することができません。 新しい BLOB は独立したコピーであり、変更や削除を行ってもソース アーカイブ BLOB には影響しません。
+
+> [!IMPORTANT]
+> コピー先でコピーが正常に完了するまでは、コピー元 BLOB を削除しないでください。 コピー元 BLOB が削除された場合、コピー先 BLOB はコピーを完了できず、空になります。 *x-ms-copy-status* を確認して、コピー操作の状態を確認することができます。
 
 アーカイブ BLOB は、同じストレージ アカウント内のオンラインの移動先の層にのみコピーできます。 アーカイブ BLOB を別のアーカイブ BLOB にコピーすることはサポートされていません。 次の表は CopyBlob の機能をまとめたものです。
 

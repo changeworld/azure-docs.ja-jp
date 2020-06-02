@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692254"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124637"
 ---
 # <a name="known-issues"></a>既知の問題 #
 
@@ -41,6 +41,7 @@ ms.locfileid: "82692254"
 
 - ブラウザーに広告ブロッカーがインストールされていると、(オンデマンドまたはライブでの) 広告の挿入時に問題が発生することがあります。
 - モバイル デバイスで広告の再生時に問題が発生することがあります。
+- MP4 Midroll の広告は、現在 Azure Media Player でサポートされていません。
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 

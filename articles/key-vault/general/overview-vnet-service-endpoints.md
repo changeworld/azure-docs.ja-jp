@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 2a68a50a5d15b9f38407c19494a39a14abfa0a5a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bd67c3b7eed6b3ce3730bd48cda69d85aa276df4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427707"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930592"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -79,6 +79,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Event Hubs|[カスタマー マネージト キーのシナリオでキー コンテナーへのアクセスを許可する](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure Service Bus|[カスタマー マネージト キーのシナリオでキー コンテナーへのアクセスを許可する](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure Import/Export| [Azure Key Vault でユーザーが管理するキーを Import/Export サービスのために使用する](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
+|Azure Container Registry|[カスタマー マネージド キーを使用したレジストリの暗号化](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > 対応するサービスがキー コンテナーにアクセスできるように、関連するキー コンテナー アクセス ポリシーを設定する必要があります。

@@ -3,16 +3,16 @@ title: SQL Server または Azure SQL Database に接続する
 description: Azure Logic Apps を使用して、オン プレミスまたはクラウド内の SQL データベースに関するタスクを自動化します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam; logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789199"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402593"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL Server または Azure SQL Database のワークフローを自動化する
 
@@ -129,6 +129,20 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
   * [Logic Apps での一括データ転送に対する SQL の改ページ処理](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
   * [SELECT - ORDER BY Clause](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+
+### <a name="handle-dynamic-bulk-data"></a>動的な一括データを処理する
+
+SQL Server コネクタでストアド プロシージャを呼び出すと、返される出力は動的になることがあります。 このシナリオでは、次の手順を実行します。
+
+1. **Logic Apps デザイナー**を開きます。
+1. ロジック アプリのテストの実行を実行して、出力形式を確認します。 サンプル出力をコピーします。
+1. デザイナーで、ストアド プロシージャを呼び出す操作の下にある **[新しいステップ]** を選択します。
+1. **[アクションの選択]** で、[ **[JSON の解析]** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) アクションを検索して選択します。
+1. **[JSON の解析]** アクションで、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
+1. **[サンプルの JSON ペイロードを入力するか、貼り付けます]** ウィンドウで、サンプル出力を貼り付け、 **[完了]** を選択します。
+1. Logic Apps がスキーマを生成できないというエラーが発生した場合は、サンプル出力の構文が正しい形式であることを確認してください。 それでもスキーマを生成できない場合は、 **[スキーマ]** ボックスに手動で入力します。
+1. デザイナーのツール バーで、 **[保存]** を選択します。
+1. JSON コンテンツ プロパティにアクセスするには、[ **[JSON の解析]** アクション](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)の下の動的コンテンツ一覧に表示されるデータ トークンを使用します。
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 

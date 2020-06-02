@@ -189,6 +189,8 @@
               href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Dav4 および Dasv4 シリーズ
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ddv4 および Ddsv4 シリーズ
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: コンピューティング最適化
           items:
             - name: 概要
@@ -206,6 +208,8 @@
               href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Eav4 および Easv4 シリーズ
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Edv4 および Edsv4 シリーズ
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: M シリーズ
               href: ../m-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Mv2 シリーズ

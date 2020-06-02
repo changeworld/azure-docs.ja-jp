@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Immersive Reader のドキュメント
+title: イマーシブ リーダーのドキュメント
 summary: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
 metadata:
-  title: Immersive Reader のドキュメント
+  title: イマーシブ リーダーのドキュメント
   description: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
   services: service
   ms.service: cognitive-services
@@ -12,14 +12,14 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: 2ba262c7adf778099e47e636a9106f74314c2254
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 1cb7674dce24d696fd54f3d48074398dc484c01c
+  ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77108690"
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84267054"
 landingContent:
-- title: Immersive Reader の概要
+- title: イマーシブ リーダーの概要
   linkLists:
   - linkListType: overview
     links:
@@ -33,31 +33,31 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ASP.NET Core
-      url: quickstart.md
-    - text: Node.js
-      url: quickstart-nodejs.md
-    - text: Swift (iOS)
-      url: ios-quickstart.md
+    - text: C# (ASP.NET Core) の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: Node.js の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-nodejs
+    - text: Swift (iOS) の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
   - linkListType: tutorial
     links:
     - text: Python
       url: tutorial-python.md
-    - text: 複数の Immersive Reader リソースの使用
+    - text: 複数のイマーシブ リーダー リソースの使用
       url: tutorial-multiple-resources.md
-- title: Immersive Reader を試す
+- title: イマーシブ リーダーを試す
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Immersive Reader のリソースを作成する
+    - text: イマーシブ リーダーのリソースを作成する
       url: how-to-create-immersive-reader.md
     - text: Cookie のポリシーを設定する
       url: how-to/set-cookie-policy.md
     - text: 数式を表示する
       url: how-to/display-math.md
-    - text: Immersive Reader を起動して HTML コンテンツを表示する
+    - text: イマーシブ リーダーを起動して HTML コンテンツを表示する
       url: how-to-launch-with-html.md
-    - text: Immersive Reader のボタンをカスタマイズする
+    - text: イマーシブ リーダーのボタンをカスタマイズする
       url: how-to-customize-launch-button.md
     - text: 認証トークンをキャッシュする
       url: how-to-cache-token.md

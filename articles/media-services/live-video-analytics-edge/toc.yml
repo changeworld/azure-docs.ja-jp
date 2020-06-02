@@ -1,0 +1,82 @@
+- name: Live Video Analytics on IoT Edge (プレビュー) のドキュメント
+  href: index.yml
+- name: Azure Media Services v3 のドキュメントに切り替える
+  href: ../latest/index.yml
+- name: 概要
+  items:
+    - name: Live Video Analytics on IoT Edge について
+      href: overview.md
+    - name: 用語
+      href: terminology.md
+    - name: 新機能
+      items:
+        - name: リリース ノート
+          href: release-notes.md
+- name: クイックスタート
+  items:
+    - name: はじめに - Live Video Analytics on IoT Edge
+      href: get-started-detect-motion-emit-events-quickstart.md
+    - name: モーションの検出、Media Services へのビデオの記録
+      href: detect-motion-record-video-clips-media-services-quickstart.md
+    - name: モーションの検出とイベントの生成
+      href: detect-motion-emit-events-quickstart.md
+    - name: モーションの検出、エッジ デバイス上でのビデオの記録
+      href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: ご自分のモデルを使用して Live Video Analytics を実行する
+      href: use-your-model-quickstart.md
+- name: チュートリアル
+  items:
+    - name: 継続的なビデオ記録
+      href: continuous-video-recording-tutorial.md
+    - name: イベントベースのビデオ記録
+      href: event-based-video-recording-tutorial.md
+    - name: 数日間の記録の再生
+      href: playback-multi-day-recordings-tutorial.md
+- name: サンプル
+  items:
+    - name: 'Live Video Analytics on IoT Edge の C# サンプル'
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+- name: 概念
+  items:
+    - name: メディア グラフ
+      href: media-graph-concept.md
+    - name: ビデオ記録
+      href: video-recording-concept.md
+    - name: ビデオ再生
+      href: video-playback-concept.md
+    - name: シナリオ
+      items:
+        - name: 継続的なビデオ記録
+          href: continuous-video-recording-concept.md
+        - name: イベントベースのビデオ記録
+          href: event-based-video-recording-concept.md
+        - name: ビデオ記録を行わない Live Video Analytics
+          href: analyze-live-video-concept.md
+- name: 操作方法ガイド
+  items:
+    - name: カスタム Azure Resource Manager ロールの作成
+      href: create-custom-azure-resource-manager-role-how-to.md
+    - name: IoT Edge デバイスへのデプロイ
+      href: deploy-iot-edge-device.md
+    - name: 監視およびログ記録
+      href: monitoring-logging.md
+    - name: 記録の再生
+      href: playback-recordings-how-to.md
+    - name: 記録ポリシーの管理
+      href: manage-recording-policy-how-to.md
+    - name: 任意の AI を利用したライブ ビデオの分析
+      href: analyze-with-ai-your-choice-how-to.md
+    - name: トラブルシューティング
+      href: troubleshoot-how-to.md
+- name: リファレンス
+  items:
+    - name: ダイレクト メソッド
+      href: direct-methods.md
+    - name: モジュール ツインの構成スキーマ
+      href: module-twin-configuration-schema.md
+    - name: クォータと制限
+      href: quotas-limitations.md
+    - name: FAQ
+      href: faq.md
+    - name: 運用環境の準備状況とベスト プラクティス
+      href: production-readiness.md

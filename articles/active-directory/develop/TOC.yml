@@ -410,6 +410,8 @@
               href: id-tokens.md
             - name: アクセス トークン
               href: access-tokens.md
+            - name: UserInfo エンドポイント
+              href: userinfo.md
             - name: 証明書の資格情報
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0 プロトコル

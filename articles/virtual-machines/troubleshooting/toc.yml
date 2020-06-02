@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: VM デプロイ ガイダンス
   items:
+    - name: SLES 15 SP1 へのアップグレード
+      href: linux-upgrade-suse-15sp1.md
     - name: 新しい VM のデプロイ
       items:
         - name: Linux

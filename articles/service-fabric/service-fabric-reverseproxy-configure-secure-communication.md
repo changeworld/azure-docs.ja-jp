@@ -1,23 +1,21 @@
 ---
 title: Azure Service Fabric のリバース プロキシによる安全な通信
 description: Azure Service Fabric アプリケーションにリバース プロキシを構成して、安全なエンド ツー エンド通信を実現します。
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617106"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858531"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>リバース プロキシを使用したセキュリティで保護されたサービスへの接続
 
 この記事では、リバース プロキシとサービス間で安全な通信を確立し、セキュリティで保護されたエンド ツー エンドのチャネルを実現する方法について説明します。 リバース プロキシに関する詳細については、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」を参照してください。
 
-セキュリティで保護されたサービスへの接続は、リバース プロキシが HTTPS をリッスンするように構成されている場合にのみサポートされます。 この記事では、そのような構成を前提にしています。
-Service Fabric でリバース プロキシを構成するには、「[Setup reverse proxy in Azure Service Fabric](service-fabric-reverseproxy-setup.md)」 (Azure Service Fabric でリバース プロキシを設定する) を参照してください。
+> [!IMPORTANT]
+> セキュリティで保護されたサービスへの接続は、リバース プロキシが HTTPS をリッスンするように構成されている場合にのみサポートされます。 この記事では、そのような構成を前提にしています。 Service Fabric でリバース プロキシを構成するには、「[Setup reverse proxy in Azure Service Fabric](service-fabric-reverseproxy-setup.md)」 (Azure Service Fabric でリバース プロキシを設定する) を参照してください。
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>リバース プロキシとサービス間の安全な通信の確立 
 
@@ -180,10 +178,10 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 
 2. **ForwardClientCertificate** を **true** に設定すると、リバース プロキシのクライアントとの TLS ハンドシェイク時にクライアント証明書が要求されます。
 **X-Client-Certificate** という名前のカスタム HTTP ヘッダーに、クライアント証明書のデータが転送されます。 ヘッダーの値は、クライアント証明書のデータが Base64 でエンコードされた PEM 形式の文字列です。 サービスで証明書のデータが調査された後に、要求が成功または失敗し、該当する状態コードが表示されます。
-クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。
+クライアントが証明書を提示しない場合、リバース プロキシにより空のヘッダーが転送され、サービスによって処理されます。
 
 > [!NOTE]
-> リバース プロキシは単なるフォワーダーに過ぎず、 クライアント証明書の検証は実行しません。
+> リバース プロキシは、転送サービスとしてのみ機能します。 クライアント証明書の検証は実行しません。
 
 
 ## <a name="next-steps"></a>次のステップ

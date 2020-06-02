@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d7ab9d4e7a7c560fa05bdc06c7d1c357a2c2767
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128449"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196627"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -21,18 +21,24 @@ ms.locfileid: "82128449"
 
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 
 
-この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 このリストの最終更新日は 2020 年 3 月 27 日でした。 この日付の後に変更または追加されたメトリックは一覧にない可能性があります。 プログラムを使ってこのメトリックのクエリを実行し、アクセスするには、[2018-01-01 API バージョン](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)を使用してください。
+この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 このリストの最終更新日は 2020 年 3 月 27 日でした。 この日付の後に変更または追加されたメトリックは一覧にない可能性があります。 プログラムを使ってこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 API バージョン](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)を使用してください。 この一覧にない他のメトリックは、ポータルまたは従来の API で使用できる場合があります。
 
-他のメトリックについては、ポータルや従来の API で使用できる場合があります。 Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システムのメトリックはここのリストに記載されて**いません**。 そのようなメトリックは、そのオペレーティング システムで実行される、あるいはそのオペレーティング システムの一環として実行される 1 つまたは複数のエージェントから収集する必要があります。 現在パブリック プレビューされている[カスタム メトリック](metrics-custom-overview.md) API を使用し、プラットフォーム メトリック データベースにエージェント メトリックを送信できます。 その後、ゲスト OS のメトリックをプラットフォーム メトリックのようにグラフにしたり、アラートを出す対象にしたり、それ以外の場面で利用したりすることができます。 詳細については、[Monitor エージェントの概要](agents-overview.md)に関するページをご覧ください。    
+メトリックは、リソース プロバイダーとリソースの種類別にまとめられます。 サービスとそれらに属するリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。 
 
-メトリックは名前空間別にまとめられます。 サービスとそれらに属する名前空間の一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。 
 
-> [!NOTE]
-> 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
->
-> *例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
->
-> 診断設定を使用してエクスポート可能なプラットフォーム メトリックの一覧については、[この記事](metrics-supported-export-diagnostic-settings.md)を参照してください。
+## <a name="guest-os-metrics"></a>ゲスト OS メトリック
+
+Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システムのメトリックはここのリストに記載されて**いません**。 代わりに、ゲスト OS パフォーマンス メトリックを、ゲスト オペレーティング システムで実行される、あるいはゲスト オペレーティング システムの一環として実行される 1 つ以上のエージェントを使用して収集する必要があります。  ゲストOS メトリックには、ゲストの CPU 使用率またはメモリ使用量を追跡するパフォーマンス カウンターが含まれています。これらは、どちらも自動スケーリングまたはアラートに頻繁に使用されます。  [Azure Diagnostics の拡張機能](diagnostics-extension-overview.md)を使用すると、プラットフォーム メトリックが格納されているデータベースと同じデータベースに、ゲスト OS パフォーマンス メトリックを送信できます。 [カスタム メトリック](metrics-custom-overview.md)の API を使用してゲスト OS メトリックがルーティングされます。 その後、ゲスト OS のメトリックをプラットフォーム メトリックのようにグラフにしたり、アラートを出す対象にしたり、それ以外の場面で利用したりすることができます。 詳細については、[Monitor エージェントの概要](agents-overview.md)に関するページをご覧ください。    
+
+## <a name="routing-platform-metrics-to-other-locations"></a>他の場所へのプラットフォーム メトリックのルーティング
+
+[診断設定](diagnostic-settings.md)を使用して、プラットフォーム メトリックを Azure Storage、Azure Monitor ログ (および Log Analytics)、および Event Hubs にルーティングできます。  
+
+ルーティングできるものと、それが格納される形式には、いくつかの制限があります。 
+- すべてのメトリックが他の場所にエクスポート可能であるとは限りません。 診断設定を使用してエクスポート可能なプラットフォーム メトリックの一覧については、[この記事](metrics-supported-export-diagnostic-settings.md)を参照してください。
+
+- 診断設定を使用して、他の場所に多次元メトリックを送信することは現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
+*例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38c0d7d93d00d31a8efa508a635b471a73da0419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d8a10f81cd9a73b9b77e68f15f7bc7c98d60ac0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123269"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891029"
 ---
 パートナーが提供するサービスの詳細については、このセクションのリンクを参照してください。 お客様のブランチ デバイス パートナーが次のセクションに記載されていない場合は、ブランチ デバイス プロバイダーにお問い合わせください。 パートナーは azurevirtualwan@microsoft.com にメールを送信して Microsoft に問い合わせることができます。
 
@@ -29,6 +29,7 @@ ms.locfileid: "80123269"
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
 |[Silver-Peak]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[EdgeConnect と Microsoft Azure Virtual WAN の統合ガイド](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
+|[Velocloud-VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Azure Virtual WAN Velocloud デプロイ ガイド](https://kb.vmware.com/s/article/79000)|
 | [Versa](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [Versa SD-WAN と Microsoft Azure vWAN の構成 (登録済み顧客のみ利用可能)](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |
 
 *\* 直接のリンクはありません。サポートについては、パートナー企業にお問い合わせください。*

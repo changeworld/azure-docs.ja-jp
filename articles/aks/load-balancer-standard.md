@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3be60888d3d12d37650ad2cffc1911fb3b5e6682
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 14e80f6348772af77c5a53b1d5e9111c4ae8ba9b
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790679"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402065"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -89,12 +89,17 @@ az aks update \
 
 複数の IP アドレスまたはプレフィックスを導入することで、1 つのロード バランサー オブジェクトの背後で IP アドレスを定義するとき、複数のバックアップ サービスを定義できます。 特定のノードのエグレス エンドポイントは、そのノードが関連付けられているサービスに依存します。
 
-> [!IMPORTANT]
-> *Standard* SKU ロード バランサーと共に、エグレス用の *Standard* SKU パブリック IP を使用する必要があります。 [az network public-ip show][az-network-public-ip-show] コマンドを使用することで、パブリック IP の SKU を検証できます。
->
-> ```azurecli-interactive
-> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-> ```
+### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>独自の IP アドレスまたは IP プレフィックスを導入するための前提条件
+1. *Standard* SKU ロード バランサーと共に、エグレス用の *Standard* SKU パブリック IP を使用する必要があります。 [az network public-ip show][az-network-public-ip-show] コマンドを使用することで、パブリック IP の SKU を検証できます。
+
+   ```azurecli-interactive
+   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+   ```
+ 1. パブリック IP と IP プレフィックスは、AKS クラスターと同じリージョンにあり、同じサブスクリプションに含まれている必要があります。
+ 1. パブリック IP および IP プレフィックスは、AKS によってマネージド IP として作成された IP にすることはできません。 カスタム IP として指定された IP が、AKS サービスではなく、手動で作成されたものであることを確認してください。
+ 1. パブリック IP および IP プレフィックスを、別のリソースやサービスで使用することはできません。
+
+ ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>既存のクラスターで独自のパブリック IP またはプレフィックスを定義する
 
 [az network public-ip show][az-network-public-ip-show] コマンドを使用すると、パブリック IP の ID が一覧表示されます。
 
@@ -131,9 +136,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
-
-> [!IMPORTANT]
-> パブリック IP と IP プレフィックスは、AKS クラスターと同じリージョンにあり、同じサブスクリプションに含まれている必要があります。 
 
 ### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>クラスター作成時に独自のパブリック IP またはプレフィックスを定義する
 

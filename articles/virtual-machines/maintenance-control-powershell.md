@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136534"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996470"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
@@ -20,11 +20,17 @@ ms.locfileid: "82136534"
  
 ## <a name="enable-the-powershell-module"></a>PowerShell モジュールを有効にする
 
-`PowerShellGet` が最新の状態であることを確認します。
+`PowerShellGet` が最新の状態であることを確認します。    
 
-```azurepowershell-interactive
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
+```azurepowershell-interactive  
+Install-Module -Name PowerShellGet -Repository PSGallery -Force 
+``` 
+
+`Az.Maintenance` PowerShell モジュールをインストールします。     
+
+```azurepowershell-interactive  
+Install-Module -Name Az.Maintenance
+``` 
 
 ローカルにインストールする場合は、管理者として、PowerShell プロンプトを開いてください。
 

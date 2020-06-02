@@ -3,13 +3,13 @@ title: 概念 - Azure Kubernetes Service (AKS) におけるセキュリティ
 description: Azure Kubernetes Service (AKS) におけるセキュリティ (マスターとノードの通信、ネットワーク ポリシー、Kubernetes シークレットなど) について説明します。
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/08/2020
+ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206631"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981393"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -27,7 +27,9 @@ Azure Kubernetes Service (AKS) でアプリケーション ワークロードを
 
 AKS では、Kubernetes マスター コンポーネントは、Microsoft で提供されているマネージド サービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。このマスターの管理と保守は、Microsoft によって行われます。
 
-既定では、Kubernetes API サーバーは、パブリック IP アドレスと完全修飾ドメイン名 (FQDN) を使用します。 API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
+既定では、Kubernetes API サーバーは、パブリック IP アドレスと完全修飾ドメイン名 (FQDN) を使用します。 [許可された IP 範囲][authorized-ip-ranges]を使用して、API サーバー エンドポイントへのアクセスを制限できます。 また、フル [プライベート クラスター][private-clusters]を作成して、API サーバーから仮想ネットワークへのアクセスを制限することもできます。
+
+API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
 
 ## <a name="node-security"></a>ノードのセキュリティ
 
@@ -65,6 +67,10 @@ Windows Server ノードでは、Windows Update が自動的に実行された�
 ### <a name="azure-network-security-groups"></a>Azure ネットワーク セキュリティ グループ
 
 仮想ネットワークでのトラフィックのフローをフィルター処理するため、Azure はネットワーク セキュリティ グループ規則を使用します。 これらの規則は、リソースへのアクセスを許可または拒否する発信元と宛先の IP 範囲、ポート、およびプロトコルを定義します。 Kubernetes API サーバーへの TLS トラフィックを許可する、既定の規則が作成されます。 ロード バランサー、ポート マッピング、またはイングレス ルートでサービスを作成すると、AKS が自動的に、トラフィックが適切にフローするようにネットワーク セキュリティ グループを変更します。
+
+### <a name="kubernetes-network-policy"></a>Kubernetes ネットワーク ポリシー
+
+クラスター内のポッド間のネットワーク トラフィックを制限するために、AKS では、[Kubernetes ネットワーク ポリシー][network-policy]のサポートを提供しています。 ネットワーク ポリシーを使用すると、名前空間とラベル セレクターに基づいて、クラスター内の特定のネットワーク パスを許可するか拒否するかを選択できます。
 
 ## <a name="kubernetes-secrets"></a>Kubernetes シークレット
 
@@ -104,3 +110,6 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
+[private-clusters]: private-clusters.md
+[network-policy]: use-network-policies.md

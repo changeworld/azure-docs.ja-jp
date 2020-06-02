@@ -9,41 +9,37 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209504"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982192"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-このチュートリアルは、R プログラミング言語を使用した Azure Machine Learning Studio (クラシック) の拡張を開始するのに役立ちます。 この R プログラミング チュートリアルに従って作業することで、Studio (クラシック) 内で R コードを作成、テスト、実行することができます。 チュートリアルでは、Studio (クラシック) で R 言語を使用し、包括的な予測ソリューションを作成します。  
+このチュートリアルでは、ML Studio (classic) を使用して R コードを作成、テスト、実行する方法について説明します。 最終的には、予測ソリューションが完成します。  
 
-Azure Machine Learning Studio (クラシック) には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。 強力な R 言語は、分析の共通言語という特徴があります。 幸いにも Studio (クラシック) の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Studio (クラシック) のデプロイのスケーラビリティを容易に高めることができます。
+> [!div class="checklist"]
+> * データのクリーニングと変換のためのコードを作成します。
+> * データセット内のいくつかの変数間の相関関係を分析します。
+> * 牛乳生産用の季節性時系列予測モデルを作成します。
 
-### <a name="forecasting-and-the-dataset"></a>予測とデータ セット
 
-予測は、広く採用されている非常に役に立つ分析方法です。 その用途は、一般的に季節商品の販売予測や最適な在庫レベルの決定から、マクロ経済変数の予測にまでわたります。 予測は通常、時系列モデルで行われます。
+Azure Machine Learning Studio (クラシック) には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。 また、R プログラミング言語を組み合わせて使用することにより、R の柔軟性と深い分析を活用して、Studio (classic) のデプロイメントがスケーラブルかつ容易になります。
 
-時系列データの値には、時間インデックスがあります。 時間インデックスは、1 か月ごとや 1 分ごとなど規則的な場合と、不規則な場合があります。 時系列モデルは、時系列データに基づいています。 R プログラミング言語には、時系列データ向けの柔軟なフレームワークと広範な分析機能が備わっています。
+予測は、広く採用されている非常に役に立つ分析方法です。 その用途は、一般的に季節商品の販売予測や最適な在庫レベルの決定から、マクロ経済変数の予測にまでわたります。 予測は通常、時系列モデルで行われます。 時系列データの値には、時間インデックスがあります。 時間インデックスは、1 か月ごとや 1 分ごとなど規則的な場合と、不規則な場合があります。 時系列モデルは、時系列データに基づいています。 R プログラミング言語には、時系列データ向けの柔軟なフレームワークと広範な分析機能が備わっています。
 
-このガイドでは、カリフォルニアでの酪農生産と価格データを扱います。 このデータには、いくつかの酪農製品の生産、乳脂の価格、ベンチマーク商品に関する月単位の情報が含まれます。
+## <a name="get-the-data"></a>データを取得する
+
+このチュートリアルでは、カリフォルニアの酪農生産と価格のデータを使用します。これには、複数の乳製品の生産、乳脂肪の価格、ベンチマーク商品に関する月単位の情報が含まれます。
 
 この記事で使用するデータと R スクリプトは、[MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) からダウンロードできます。 ファイル `cadairydata.csv` のデータは、ウィスコンシン大学 ([https://dairymarkets.com](https://dairymarkets.com)) から入手可能な情報から独自に合成されました。
 
-### <a name="organization"></a>Organization
 
-Azure Machine Learning Studio (クラシック) 環境で R コードを作成、テストし、分析とデータ操作を実行する方法を学習する際は、いくつかの手順に従って進行します。  
-
-* 最初に、Azure Machine Learning Studio (クラシック) 環境で R 言語を使用する基本を学習します。
-* 次に、Azure Machine Learning Studio (クラシック) 環境におけるデータ I/O、R コード、グラフィックスのさまざまな側面の検討に進みます。
-* その後、データ クリーニングと変換用のコードを作成し、予測ソリューションの最初の部分を構築します。
-* 用意されたデータを使用し、データセットのいくつかの変数間における相関関係を分析します。
-* 最終的に、牛乳生産の季節的な時系列予測モデルを作成します。
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Machine Learning Studio (クラシック) での R 言語の操作
 
@@ -143,7 +139,7 @@ RStudio の使用に関する追加情報が、以下の「[RStudio ドキュメ
 
 このセクションの完全なコードは、[MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) にあります。
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でのデータの読み込みとチェック
+### <a name="load-and-check-data"></a>データの読み込みとチェック 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>データセットの読み込み
 
@@ -1311,7 +1307,7 @@ RStudio はドキュメントが非常に整っているため、 ここでは�
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio (クラシック) で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
 * Emmanuel Paradis による『[R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)』は入門書として適しています。  
-* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables  他による ) では、もう少し詳しく説明されています。
+* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables 他による ) では、もう少し詳しく説明されています。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 

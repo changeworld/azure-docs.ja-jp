@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/13/2020
-ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/06/2020
+ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413443"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890868"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -177,6 +177,21 @@ aggregate(groupBy(movie),
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
+また、次のスクリプトを使用すると、各列に名前を付けなくても、ストリームに存在するすべての列を使用して行ハッシュを生成できます。
+
+```
+derive(DWhash = sha1(columns()))
+```
+
+### <a name="string_agg-equivalent"></a>String_agg の同等のもの
+このコードは T-SQL ```string_agg()``` 関数のように動作し、文字列値を配列に集約します。 その後、SQL 変換先で使用するために、その配列を文字列にキャストできます。
+
+```
+source1 aggregate(groupBy(year),
+    string_agg = collect(title)) ~> Aggregate1
+Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ## <a name="next-steps"></a>次のステップ

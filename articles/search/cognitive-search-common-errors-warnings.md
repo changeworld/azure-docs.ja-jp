@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e18fcc5dc23bdbd9027de62a5bee0fb7d4ceff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086615"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125096"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -75,6 +75,11 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 | ドキュメント キーが無効です | ドキュメント キーは 1024 文字以内にする必要があります | 検証要件を満たすようにドキュメント キーを変更します。 |
 | フィールドにフィールドのマッピングを適用できませんでした | マッピング関数 `'functionName'` をフィールド `'fieldName'` に適用できませんでした。 配列を null にすることはできません。 パラメーター名: bytes | インデクサーに定義されている[フィールドのマッピング](search-indexer-field-mappings.md)を再確認し、失敗したドキュメントの指定したフィールドのデータと比較します。 フィールドのマッピングまたはドキュメント データの変更が必要になる可能性があります。 |
 | フィールド値を読み取れませんでした | インデックス `'fieldIndex'` の列 `'fieldName'` の値を読み取れませんでした。 サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました。 (プロバイダー:TCP プロバイダー、エラー:0 - 既存の接続はリモート ホストに強制的に切断されました。) | 通常、データ ソースの基となるサービスで予期しない接続の問題が発生したことが原因で、これらのエラーが発生します。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
+
+<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"/>
+
+## <a name="error-could-not-map-output-field-xyz-to-search-index-due-to-deserialization-problem-while-applying-mapping-function-abc"></a>エラー:マッピング関数 "`abc`" を適用しているときに、逆シリアル化の問題により、出力フィールド "`xyz`" を検索インデックスにマップできませんでした
+出力データの形式が、使用しているマッピング関数に対して正しくないため、出力マッピングが失敗した可能性があります。 たとえば、バイナリ データに Base64Encode マッピング関数を適用すると、このエラーが発生します。 この問題を解決するには、マッピング関数を指定せずにインデクサーを再実行するか、マッピング関数が出力フィールドのデータ型と互換性があることを確認します。 詳細については、[出力フィールド マッピング](cognitive-search-output-field-mapping.md)に関する記事を参照してください。
 
 <a name="could-not-execute-skill"/>
 
@@ -311,7 +316,12 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 <a name="could-not-map-output-field-x-to-search-index"/>
 
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>警告:出力フィールド "X" を検索インデックスにマップできませんでした
-存在しないデータや null のデータを参照する出力フィールド マッピングがあると、ドキュメントごとに警告が発生し、結果は空のインデックス フィールドになります。 この問題を回避するには、出力フィールド マッピングのソース パスに誤りがないことを再確認するか、[条件付きスキル](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)を使用して既定値を設定します。
+存在しないデータや null のデータを参照する出力フィールド マッピングがあると、ドキュメントごとに警告が発生し、結果は空のインデックス フィールドになります。 この問題を回避するには、出力フィールド マッピングのソース パスに誤りがないことを再確認するか、[条件付きスキル](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)を使用して既定値を設定します。 詳細については、[出力フィールド マッピング](cognitive-search-output-field-mapping.md)に関する記事を参照してください。
+
+| 理由 | 詳細/例 | 解像度 |
+| --- | --- | --- |
+| 非配列で反復処理できない | "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で反復処理できません。" | このエラーは、出力が配列でない場合に発生します。 出力が配列であると考えられる場合は、示されている出力ソース フィールドのパスにエラーがないかどうかを確認してください。 たとえば、ソース フィールド名で `*` が欠落または余分である可能性があります。 また、このスキルへの入力が null であるため、空の配列が生成される可能性もあります。 「[スキルの入力が無効でした](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid)」セクションで同様の詳細を確認してください。    |
+| 非配列で `0` を選択できない | "非配列 `/document/pages` で `0` を選択できません。" | これは、スキルの出力によって配列が生成されず、出力ソース フィールド名のパスに配列インデックスまたは `*` が含まれている場合に発生する可能性があります。 出力ソース フィールド名に指定されているパスと、指定されたフィールド名のフィールド値をもう一度確認してください。 「[スキルの入力が無効でした](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid)」セクションで同様の詳細を確認してください。  |
 
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
 

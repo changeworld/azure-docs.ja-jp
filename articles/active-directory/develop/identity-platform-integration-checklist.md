@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050492"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115899"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -26,6 +26,9 @@ ms.locfileid: "80050492"
 まだ使い始めたばかりの場合は、[Microsoft ID プラットフォームのドキュメント](index.yml)を確認して、Microsoft ID プラットフォームでの認証の基本、アプリケーション シナリオなどについて学習してください。
 
 次のチェックリストは、アプリケーションが [Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)と効果的に統合されていることを確認するために使用します。
+
+> [!TIP]
+> Azure portal の"*統合アシスタント*" は、これらのベスト プラクティスと推奨事項の多くを適用するのに役立ちます。 アシスタントの使用を開始するには、Azure portal で [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) を選択し、 **[Integration assistant (preview)]\(統合アシスタント (プレビュー)\)** メニュー項目を選択します。
 
 ## <a name="basics"></a>基本
 

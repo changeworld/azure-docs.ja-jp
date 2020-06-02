@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でシステム ノード プール�
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790560"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125249"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でシステム ノード プールを管理する
 
@@ -50,6 +50,7 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プ�
 * ユーザー ノード プールを削除する。
 * 別のシステム ノード プールが AKS クラスター内にあり、それが代わりをする場合に、システム ノード プールを削除できる。
 * AKS クラスターには、少なくとも 1 つのシステム ノード プールが必要であり、複数のシステム ノード プールが存在する場合がある。
+* 既存のノード プールで変更できない各種の設定を変更したい場合は、新しいノード プールを作成して既存のものと置き換えることができる。 たとえば、新しい maxPods 設定で新しいノード プールを追加し、古いノード プールを削除する。
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>システム ノード プールを含む新しい AKS クラスターを作成する
 

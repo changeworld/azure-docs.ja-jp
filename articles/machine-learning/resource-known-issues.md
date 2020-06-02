@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231970"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889394"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -39,7 +39,7 @@ ms.locfileid: "82231970"
 Azure Machine Learning の使用時に扱うことがあるリソース クォータの詳細は[こちら](how-to-manage-quotas.md)にあります。
 
 ## <a name="installation-and-import"></a>インストールとインポート
-
+                           
 * **pip のインストール:依存関係は単一行のインストールとの整合性が保証されていない**: 
 
    これは pip の既知の制限であり、単一行としてインストールするときに、機能する依存関係競合回避モジュールがないことが原因です。 pip によって参照されるのは、最初の固有の依存関係のみです。 
@@ -56,7 +56,29 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **azureml-train-automl-client をインストールする際に、説明パッケージのインストールが保証されていない:** 
+   
+   モデルの説明を有効にして、リモートの automl を実行すると、"Please install azureml-explain-model package for model explanations (モデルの説明のために azureml-explain-model パッケージをインストールしてください)" というエラー メッセージが表示されます。 これは既知の問題であり、回避策として、次のいずれかの手順を実行してください。
+  
+  1. azureml-explain-model をローカルでインストールします。
+   ```
+      pip install azureml-explain-model
+   ```
+  2. automl 構成で model_explainability=False を渡すことによって、説明機能を完全に無効にします。
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **panda のエラー:通常は AutoML 実験中に見られる**:
    
    pip を使用して手動で環境を設定すると、サポートされていないパッケージ バージョンがインストールされるため、(特に pandas の) 属性エラーが表示されます。 このようなエラーを回避するには、[automl_setup.cmd を使用して AutoML SDK をインストールしてください](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)。

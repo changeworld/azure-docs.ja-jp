@@ -1,5 +1,7 @@
 - name: Media Services のドキュメント
   href: ./index.yml
+- name: Live Video Analytics on IoT Edge のドキュメントに切り替える
+  href: ../live-video-analytics-edge/overview.md
 - name: 概要
   items:
     - name: Media Services について
@@ -369,7 +371,7 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager テンプレート

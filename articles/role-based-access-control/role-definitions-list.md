@@ -1,6 +1,6 @@
 ---
-title: Azure portal、Azure PowerShell、Azure CLI または REST API を使用して、Azure RBAC のロールの定義を一覧表示する | Microsoft Docs
-description: Azure portal、Azure PowerShell、Azure CLI または REST API を使用して、Azure RBAC のビルトイン ロールとカスタム ロールを一覧表示する方法について説明します。
+title: Azure ロールの定義を一覧表示する - Azure RBAC
+description: Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、Azure の組み込みロールとカスタム ロールを一覧表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e691e37a85604132a6b1c4b2af3501f2c8636e18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062982"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891269"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Azure AD のロールの定義の一覧表示
+# <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
-ロールの定義は、読み取り、書き込み、削除などの実行できるアクセス許可のコレクションです。 通常は単に "ロール" と呼ばれます。 [Azure のロールベースのアクセス制御 (RBAC)](overview.md) には、120 を超える[組み込みロール](built-in-roles.md)があります。また、独自のカスタム ロールを作成することもできます。 この記事では、Azure リソースへのアクセスを許可するために使用できる組み込みロールとカスタム ロールの一覧を表示する方法について説明します。
+ロールの定義は、読み取り、書き込み、削除などの実行できるアクセス許可のコレクションです。 通常は単に "ロール" と呼ばれます。 [Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) には、120 個を超える[組み込みロール](built-in-roles.md)があります。また、独自のカスタム ロールを作成することもできます。 この記事では、Azure リソースへのアクセスを許可するために使用できる組み込みロールとカスタム ロールの一覧を表示する方法について説明します。
 
 Azure Active Directory の管理者ロールを一覧表示するには、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
@@ -344,6 +344,55 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
     > | `$filter=atScopeAndBelow()` | 指定されたスコープとすべてのサブ スコープのロールの定義を一覧表示します。 |
     > | `$filter=type+eq+'{type}'` | 指定されたタイプのロール定義を一覧表示します。 ロールのタイプは、`CustomRole` または `BuiltInRole` です。 |
 
+次の要求は、サブスクリプション スコープのカスタム ロール定義を一覧表示します。
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
+```
+
+出力例を次に示します。
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleName": "Billing Reader Plus",
+                "type": "CustomRole",
+                "description": "Read billing data and download invoices",
+                "assignableScopes": [
+                    "/subscriptions/{subscriptionId1}"
+                ],
+                "permissions": [
+                    {
+                        "actions": [
+                            "Microsoft.Authorization/*/read",
+                            "Microsoft.Billing/*/read",
+                            "Microsoft.Commerce/*/read",
+                            "Microsoft.Consumption/*/read",
+                            "Microsoft.Management/managementGroups/read",
+                            "Microsoft.CostManagement/*/read",
+                            "Microsoft.Billing/invoices/download/action",
+                            "Microsoft.CostManagement/exports/*"
+                        ],
+                        "notActions": [
+                            "Microsoft.CostManagement/exports/delete"
+                        ]
+                    }
+                ],
+                "createdOn": "2020-02-21T04:49:13.7679452Z",
+                "updatedOn": "2020-02-21T04:49:13.7679452Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId1}",
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "name": "{roleDefinitionId1}"
+        }
+    ]
+}
+```
+
 ### <a name="list-a-role-definition"></a>ロール定義を一覧表示する
 
 特定のロールの詳細を一覧表示するには、[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get)または[ロールの定義 - ID で取得](/rest/api/authorization/roledefinitions/getbyid) REST API を使用します。
@@ -372,9 +421,45 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
      
 1. *{roleDefinitionId}* を、ロールの定義の識別子に置き換えます。
 
+次の要求は、[閲覧者](built-in-roles.md#reader)ロール定義を一覧表示します。
+
+```http
+GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
+```
+
+出力例を次に示します。
+
+```json
+{
+    "properties": {
+        "roleName": "Reader",
+        "type": "BuiltInRole",
+        "description": "Lets you view everything, but not make any changes.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "*/read"
+                ],
+                "notActions": []
+            }
+        ],
+        "createdOn": "2015-02-02T21:55:09.8806423Z",
+        "updatedOn": "2019-02-05T21:24:35.7424745Z",
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure リソースの組み込みロール](built-in-roles.md)
-- [Azure リソースのカスタム ロール](custom-roles.md)
-- [Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する](role-assignments-list-portal.md)
-- [Azure RBAC と Azure Portal を使用してロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure 組み込みロール](built-in-roles.md)
+- [Azure カスタム ロール](custom-roles.md)
+- [Azure portal を使用して Azure ロールの割り当てを一覧表示する](role-assignments-list-portal.md)
+- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)

@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 11/20/2019
-ms.openlocfilehash: c891cb4eca2c286b3ac636e5995714accd591772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 255c39eac2285a23403da2db893d9de8835f7d2c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417358"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891541"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -60,6 +60,10 @@ Dynamics のそれぞれのバージョン/製品でサポートされている�
 
 >[!TIP]
 >**Dynamics 365 Finance and Operations** からデータをコピーするには、[Dynamics AX コネクタ](connector-dynamics-ax.md)を使用できます。
+
+## <a name="prerequisites"></a>前提条件
+
+このコネクタを AAD サービス プリンシパル認証で使用するには、Common Data Service または Dynamics でサーバー間 (S2S) 認証を設定する必要があります。 詳細な手順については、[この記事](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)を参照してください。
 
 ## <a name="get-started"></a>はじめに
 

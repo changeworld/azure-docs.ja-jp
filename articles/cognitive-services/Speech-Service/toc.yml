@@ -390,7 +390,7 @@
           href: voice-assistants.md
     - name: カスタム コマンド (プレビュー)
       items:
-        - name: カスタム コマンド アプリとは
+        - name: カスタム コマンドとは
           href: custom-commands.md
         - name: クイックスタート
           items:
@@ -454,6 +454,18 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: カスタム キーワードの認識
           href: speech-devices-sdk-create-kws.md
+- name: Speaker Recognition
+  items:
+    - name: 概要
+      items:
+        - name: Speaker Recognition とは
+          href: speaker-recognition-overview.md
+    - name: リファレンス
+      items:
+        - name: REST API
+          items:
+            - name: Speech Recognition REST API
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: ドキュメントのホスト

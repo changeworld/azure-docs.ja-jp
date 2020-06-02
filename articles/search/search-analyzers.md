@@ -8,16 +8,21 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460720"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891222"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Cognitive Search でのテキスト処理のためのアナライザー
 
 *アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する[フル テキスト検索エンジン](search-lucene-query-architecture.md)のコンポーネントです。 シナリオに応じて、さまざまなアナライザーがさまざまな方法でテキストを操作します。 言語アナライザーは検索品質を向上させるために言語規則を使用してテキストを処理しますが、他のアナライザーは、文字を小文字に変換するなどのより基本的なタスクを実行します。 
+
+次のビデオ セグメントでは、Azure Cognitive Search でのテキスト処理の動作についての説明に早送りされます。
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
+
 
 言語アナライザーが最もよく使用され、Azure Cognitive Search のインデックスのすべての検索可能フィールドには既定の言語アナライザーが割り当てられています。 テキスト分析中は、次の言語変換が一般的です。
 

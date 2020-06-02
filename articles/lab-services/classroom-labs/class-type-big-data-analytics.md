@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538680"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118432"
 ---
 # <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Hortonworks Data Platform の Docker デプロイを使用してビッグ データ分析のためのラボを設定する
 
@@ -102,7 +102,7 @@ Docker コンテナーを使用するには、まずテンプレート VM に Do
 1. HDP Sandbox 用の Docker コンテナーがデプロイされて実行中になったら、ブラウザーを起動し、Cloudera の手順に従って [Sandbox のウェルカム ページ](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page)を開いて HDP ダッシュボードを起動することで、その環境にアクセスできます。
 
     > [!NOTE] 
-    > この手順では、サンドボックス環境のローカル IP アドレスを、テンプレート VM 上のホストファイルの sandbox-hdp.hortonworks.com にあらかじめマップしていることを前提としています。  このマッピングを**行わない**場合、[http://localhost:8080](http://localhost:8080) に移動して、Sandbox のウェルカム ページにアクセスできます。
+    > この手順では、サンドボックス環境のローカル IP アドレスを、テンプレート VM 上のホストファイルの sandbox-hdp.hortonworks.com にあらかじめマップしていることを前提としています。  このマッピングを**行わない**場合、`http://localhost:8080` に移動して、Sandbox のウェルカム ページにアクセスできます。
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>学生のログイン時に Docker コンテナーを自動的に開始する
 
@@ -116,7 +116,7 @@ Docker コンテナーを使用するには、まずテンプレート VM に Do
 
 このラボのコストを見積もるには、次の例を使用できます。
 
-20 時間の授業が予定されていて、宿題または課題のために 10 時間のクォータが用意されている、25 人の学生のクラスの場合、ラボの価格は次のようになります: 
+20 時間の授業が予定されていて、宿題または課題のために 10 時間のクォータが用意されている、25 人の学生のクラスの場合、ラボの価格は次のようになります:
   - 学生 25 人 * (20 + 10) 時間 * 55 ラボ ユニット * 0.01 USD/時間 = 412.50 USD
 
 価格について詳しくは、「[Azure Lab Services の価格](https://azure.microsoft.com/pricing/details/lab-services/)」をご覧ください。

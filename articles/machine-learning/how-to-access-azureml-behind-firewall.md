@@ -1,7 +1,7 @@
 ---
-title: ファイアウォールの内側で Azure Machine Learning を使用する
+title: ファイアウォールを使用する
 titleSuffix: Azure Machine Learning
-description: Azure Firewall の内側で Azure Machine Learning を安全に使用します。 Azure Machine Learning が正常に機能するためにファイアウォールの通過を許可する必要があるホストについて説明します。
+description: Azure Firewall を使用して Azure Machine Learning ワークスペースへのアクセスを制御します。 Azure Machine Learning が正常に機能するためにファイアウォールの通過を許可する必要があるホストについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 2c5fe9d46ef408775cc4b99d4820a652a91683c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195758"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981967"
 ---
-# <a name="use-azure-machine-learning-workspace-behind-azure-firewall"></a>Azure Firewall の内側で Azure Machine Learning ワークスペースを使用する
+# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall の内側で Azure Machine Learning のワークスペースを使用する
 
-この記事には、Azure Machine Learning で使用するための Azure Firewall の構成に関する情報が含まれています。
+この記事では、Azure Machine Learning ワークスペースで使用するために Azure Firewall を構成する方法について説明します。
 
 Azure Firewall を使用して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御できます。 正しく構成しないと、ワークスペースを使用したときにファイアウォールが原因で問題が発生する可能性があります。
 
