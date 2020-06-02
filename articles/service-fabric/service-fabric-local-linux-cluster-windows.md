@@ -110,7 +110,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
  
  Mac 用のコンテナーで実行されているローカル クラスターの既知の制限は、次のとおりです。 
  
- * DNS サービスが実行されず、サポートされていない [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS サービスが実行されず、サポートされていない [Issue #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>次のステップ
 * [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) の概要
