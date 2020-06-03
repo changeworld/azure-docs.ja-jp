@@ -4,12 +4,12 @@ description: アプリ用に事前構築済みの PHP コンテナーを構成�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758883"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234953"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
 
@@ -85,7 +85,7 @@ App Service の既定の PHP イメージでは Apache が使用されていて�
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
-
+    RewriteCond %{REQUEST_URI} ^/$
     RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
@@ -109,7 +109,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 PHP のインストールを変更する必要がある場合は、以下の手順に従って、いずれかの [php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を変更できます。
 
 > [!NOTE]
-> PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://php.net/manual/function.phpinfo.php) を呼び出すことです。
+> PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://www.php.net/manual/function.phpinfo.php) を呼び出すことです。
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a> 非 PHP_INI_SYSTEM ディレクティブをカスタマイズする

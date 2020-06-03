@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d63ec0c2d82ec316a61771b4642731c932b045cf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299459"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84224917"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -32,7 +32,7 @@ Azure PowerShell を使用すると、増分スナップショットを作成で
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-インストールが完了したら、`az login` を使用して PowerShell セッションにログインします。
+インストールが完了したら、`Connect-AzAccount` を使用して PowerShell セッションにログインします。
 
 Azure PowerShell を利用して増分スナップショットを作成するには、構成を [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) と `-Incremental` パラメーターで設定し、`-Snapshot` パラメーターを介してそれを [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) に変数として渡します。
 

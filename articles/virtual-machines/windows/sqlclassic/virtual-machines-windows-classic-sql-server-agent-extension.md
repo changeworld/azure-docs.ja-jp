@@ -15,24 +15,24 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 384b66020b3d18064ea1cd9f162911878caa598d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982281"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017541"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent 拡張機能 (クラシック) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)
-> * [クラシック](../classic/sql-server-agent-extension.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)
+> * [クラシック](virtual-machines-windows-classic-sql-server-agent-extension.md)
 > 
 >
  
 SQL Server IaaS Agent 拡張機能 (SQLIaaSAgent) は、管理タスクを自動化するために Azure 仮想マシン上で実行されます。 このトピックでは、この拡張機能によってサポートされるサービスの概要と、インストール、状態、および削除のための手順について説明します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの SQL Server VM 用 SQL Server Agent 拡張機能](../sql/virtual-machines-windows-sql-server-agent-extension.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの SQL Server VM 用 SQL Server Agent 拡張機能](../../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)に関する記事をご覧ください。
 
 ## <a name="supported-services"></a>サポートされているサービス
 SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートします。
@@ -82,7 +82,7 @@ Windows PowerShell を起動し、 **Add-AzureAccount** コマンドを使用し
 > クラシック仮想マシンの場合、ポータルを通じて SQL IaaS Agent 拡張機能のインストールや構成を行うためのオプションはありません。
 
 > [!NOTE]
-> SQL Server IaaS Agent 拡張機能は、[SQL Server VM ギャラリー イメージ](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (従量課金制またはライセンス持ち込み) でのみサポートされます。 SQL Server を OS のみの Windows Server 仮想マシンに手動でインストールする場合や、カスタマイズされた SQL Server VM VHD をデプロイする場合、この拡張機能はサポートされません。 このような場合、PowerShell を使用して手動で拡張機能をインストールして管理することは可能ですが、代わりに、SQL Server VM ギャラリーイメージをインストールしてカスタマイズすることを強くお勧めします。
+> SQL Server IaaS Agent 拡張機能は、[SQL Server VM ギャラリー イメージ](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms) (従量課金制またはライセンス持ち込み) でのみサポートされます。 SQL Server を OS のみの Windows Server 仮想マシンに手動でインストールする場合や、カスタマイズされた SQL Server VM VHD をデプロイする場合、この拡張機能はサポートされません。 このような場合、PowerShell を使用して手動で拡張機能をインストールして管理することは可能ですが、代わりに、SQL Server VM ギャラリーイメージをインストールしてカスタマイズすることを強くお勧めします。
 
 ## <a name="status"></a>Status
 拡張機能がインストールされていることを確認する 1 つの方法は、Azure Portal にエージェントの状態を表示することです。 仮想マシン ブレードの一覧で仮想マシンを選び、 **[拡張機能]** をクリックします。 **SQLIaaSAgent** 拡張機能が表示されます。
@@ -105,5 +105,5 @@ Azure Portal で拡張機能をアンインストールするには、仮想マ�
 ## <a name="next-steps"></a>次の手順
 拡張機能によってサポートされるいずれかのサービスの使用を開始します。 詳細については、この記事の「 [サポートされているサービス](#supported-services) 」で参照されているトピックをご覧ください。
 
-Azure Virtual Machines で SQL Server を実行する方法の詳細については、「 [Azure Virtual Machines における SQL Server の概要](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+Azure Virtual Machines で SQL Server を実行する方法の詳細については、「 [Azure Virtual Machines における SQL Server の概要](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)」を参照してください。
 

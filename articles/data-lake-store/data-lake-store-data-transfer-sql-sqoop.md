@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73839071"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015932"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする
 
@@ -35,7 +35,7 @@ Apache Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1
 
 ## <a name="create-sample-tables-in-the-azure-sql-database"></a>Azure SQL データベースにサンプル テーブルを作成する
 
-1. 開始するには、Azure SQL データベースに 2 つのサンプル テーブルを作成します。 [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、データベースに接続してから次のクエリを実行します。
+1. 開始するには、Azure SQL データベースに 2 つのサンプル テーブルを作成します。 [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) または Visual Studio を使用して、データベースに接続してから次のクエリを実行します。
 
     **Table1 の作成**
 
@@ -117,7 +117,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-1. SQL Database テーブルにデータがアップロードされていることを確認します。 [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
+1. SQL Database テーブルにデータがアップロードされていることを確認します。 [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
 
        SELECT * FROM TABLE2
 

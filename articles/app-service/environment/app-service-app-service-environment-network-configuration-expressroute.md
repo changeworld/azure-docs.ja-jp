@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804437"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013399"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
@@ -35,7 +35,7 @@ App Service Environment が正常に機能するには、次のネットワー�
 
 * Azure Files サービスに対するポート 445 での発信ネットワーク接続。
 
-* App Service Environment と同じリージョンにある Azure SQL Database エンドポイントに対する発信ネットワーク接続。 SQL Database エンドポイントは、database.windows.net ドメインで解決されます。これには、ポート 1433、11000 ～ 11999、および 14000 ～ 14999 へのオープン アクセスが必要です。 SQL Database V12 ポートの使用について詳しくは、「[ADO.NET 4.5 用の 1433 以外のポート](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
+* App Service Environment と同じリージョンにある Azure SQL Database エンドポイントに対する発信ネットワーク接続。 SQL Database エンドポイントは、database.windows.net ドメインで解決されます。これには、ポート 1433、11000 ～ 11999、および 14000 ～ 14999 へのオープン アクセスが必要です。 SQL Database V12 ポートの使用について詳しくは、「[ADO.NET 4.5 用の 1433 以外のポート](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md)」を参照してください。
 
 * Azure 管理プレーン エンドポイント (Azure クラシック デプロイ モデルと Azure Resource Manager の両方のエンドポイント) に対する発信ネットワーク接続。 これらのエンドポイントへの接続には、management.core.windows.net ドメインと management.azure.com ドメインが含まれます。 
 
