@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: fe2f4f2bea52650c2baa2ac3380b5b92f01c15eb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3272af5217a2130b8af3de2afe69f47080cd7d08
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587030"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996133"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>クイック スタート:2 か国語辞書で単語を検索する
 

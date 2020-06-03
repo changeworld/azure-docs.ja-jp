@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0605249ea0602b33e144fce8d0a77439c2077a2f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272476"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170751"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Azure App Service での PHP の構成方法
 
@@ -132,7 +132,7 @@ App Service では、既定の PHP ランタイムを使用する代わりに、
 10. 一番下の **[更新]** をクリックして、ハンドラー マッピングの追加を完了します。
 11. **[保存]** をクリックして変更を保存します。
 
-<a name="composer" />
+<a name="composer"></a>
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>方法:Azure で Composer 自動化を有効にする
 
