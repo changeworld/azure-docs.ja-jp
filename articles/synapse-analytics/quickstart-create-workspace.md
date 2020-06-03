@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: df7753983cea2ca2cc285f04cd32da6ed065f415
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4d3044ec04a3306efdc3b57c1e5a3149b70fab05
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656130"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112861"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>クイック スタート:Azure Synapse Analytics ワークスペースを作成する (プレビュー)
 
@@ -25,9 +25,6 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure Data Lake Storage Gen2 ストレージ アカウント](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-
-## <a name="register-azure-synapse-resource-provider"></a>Azure Synapse リソース プロバイダーを登録する
-まだ登録していない場合、Azure Synapse リソース プロバイダーを登録します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 Azure Synapse リソース プロバイダーを登録するには、[Azure リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください。 登録時にリソース プロバイダーの一覧から *Microsoft.Synapse* を選択します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

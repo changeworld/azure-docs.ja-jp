@@ -3,12 +3,12 @@ title: チュートリアル:Azure portal でのクエリの管理
 description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、新しいクエリを他のユーザーと共有します。
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637762"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148023"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
 
@@ -44,7 +44,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
    **[クエリの実行]** を選択すると、下のウィンドウにクエリの結果が表示されます。
 
-   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-virtual-machines-by-os-type) に関する記事をご覧ください。
+   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
 
 
 1. **[保存]** または **[名前を付けて保存]** を選択します。 **[クエリの保存]** ウィンドウで、名前に「**Count VMs by OS**」と入力し、種類は **[プライベート クエリ]** のままにして、下部にある **[保存]** を選択します。 タブのタイトルが、 **[クエリ 1]** から **[Count VMs by OS]** に変わります。
@@ -76,7 +76,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
     
    **[クエリの実行]** を選択すると、下のウィンドウにクエリの結果が表示されます。
 
-   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-virtual-machines-by-os-type) に関する記事をご覧ください。
+   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
 
 1. **[保存]** または **[名前を付けて保存]** を選択します。
 
