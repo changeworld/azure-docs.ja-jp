@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
-ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2b9b4d51e89975d988ed94bf85695bd8a1cc770
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75453334"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872475"
 ---
 # <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>クイック スタート:Custom Voice でカスタム コマンドを使用する (プレビュー)
 
@@ -35,7 +35,8 @@ ms.locfileid: "75453334"
 > ![例文とパラメーター](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> カスタム音声は、Custom Voice プロジェクト ページから作成できます。 **[Speech Studio]** リンクを選択し、 **[Custom Voice]** を選択して開始します。
+> - **パブリック音声**の場合、**ニューラル型**は特定のリージョンでのみ使用できます。 使用できるかどうかを確認するには、[リージョンまたはエンドポイントによる標準およびニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)に関するページを参照してください。
+> - **カスタム音声**については、Custom Voice プロジェクト ページから作成できます。 「[Custom Voice の概要](./how-to-custom-voice.md)」を参照してください。
 
 これで、アプリケーションは既定の音声ではなく、選択した音声で応答します。
 

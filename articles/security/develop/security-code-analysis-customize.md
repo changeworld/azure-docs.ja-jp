@@ -2,7 +2,7 @@
 title: Microsoft Security Code Analysis タスクのカスタマイズ
 titleSuffix: Azure
 description: この記事では、Microsoft Security Code Analysis 拡張機能のタスクのカスタマイズについて説明します
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499997"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871867"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -41,7 +41,7 @@ Windows Defender は、Windows Update クライアントを使用してシグネ
 
 Windows Update のエラーとその軽減策について詳しくは、「[コンポーネント別の Windows Update エラーコード](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference)」および TechNet の記事「[Windows Update エージェント - エラーコード](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)」をご覧ください。
 
-このタスクの YAML 構成については、[Anti-Malware YAML オプション](yaml-configuration.md#anti-malware-scanner-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Anti-Malware YAML オプション](yaml-configuration.md#anti-malware-scanner-task)に関するセクションを参照してください
 
 ## <a name="binskim-task"></a>BinSkim タスク
 
@@ -82,7 +82,7 @@ Windows Update のエラーとその軽減策について詳しくは、「[コ�
 
 BinSkim のコマンドライン引数、ID ごとのルール、終了コードについて詳しくは、[BinSkim のユーザー ガイド](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)を参照してください。
 
-このタスクの YAML 構成については、[BinSkim YAML オプション](yaml-configuration.md#binskim-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[BinSkim の YAML オプション](yaml-configuration.md#binskim-task)に関するセクションを参照してください
 
 ## <a name="credential-scanner-task"></a>Credential Scanner タスク
 
@@ -91,7 +91,8 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
 ![Credential Scanner ビルド タスクの構成](./media/security-tools/3-taskdetails.png)
 
 利用可能なオプションは、次のとおりです。
-
+  - **表示名**: Azure DevOps タスクの名前です。 既定値は、Run Credential Scanner です
+  - **[Tool Major Version]\(ツール メジャー バージョン\)** : 使用可能な値は、**CredScan V2** と **CredScan V1** です。 **CredScan V2** バージョンを使用することをお勧めします。
   - **[Output Format]\(出力形式\)** : 使用可能な値は、 **[TSV]** 、 **[CSV]** 、 **[SARIF]** 、 **[PREfast]** などです。
   - **[Tool Version]\(ツールのバージョン\)** : **[Latest]\(最新\)** を選択することをお勧めします。
   - **[Scan Folder]\(スキャン フォルダー\)** : スキャン対象のリポジトリ フォルダーです。
@@ -105,7 +106,7 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
   - **[Control Options]\(制御オプション\)**  >  **[Run this task]\(このタスクを実行する\)** : タスクをいつ実行するかを指定します。 さらに複雑な条件を指定するには、 **[Custom conditions]\(カスタム条件\)** を選択します。
   - **バージョン**:Azure DevOps 内でのビルド タスクのバージョンです。 このオプションを使用することはあまりありません。
 
-このタスクの YAML 構成については、[Credential Scanner YAML オプション](yaml-configuration.md#credential-scanner-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Credential Scanner の YAML オプション](yaml-configuration.md#credential-scanner-task)に関するセクションを参照してください
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft Security Risk Detection タスク
 
@@ -135,7 +136,7 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
        - **[Test Driver Can Be Renamed]\(テスト ドライバーは名前の変更が可能\)** : テスト ドライバー実行可能ファイルの名前を変更しても正しく動作する場合は、このチェック ボックスをオンにします。
        - **[The Fuzzing Application Runs as a Single OS Process]\(ファジー テスト アプリケーションが単一の OS プロセスとして動作する\)** : テスト ドライバーが 1 つの OS プロセスで実行される場合は、このチェック ボックスをオンにします。 テスト ドライバーによって追加のプロセスが生成される場合は、オフにします。
 
-このタスクの YAML 構成については、[Microsoft Security Risk Detection YAML オプション](yaml-configuration.md#microsoft-security-risk-detection-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Microsoft Security Risk Detection の YAML オプション](yaml-configuration.md#microsoft-security-risk-detection-task)に関するセクションを参照してください
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers タスク
 
@@ -172,7 +173,7 @@ Roslyn Analyzers タスクに関するその他のリソースについては、
 
 このビルド タスクによってインストールされて使用されるアナライザー パッケージは、NuGet の [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) ページで確認できます。
 
-このタスクの YAML 構成については、[Roslyn Analyzers YAML オプション](yaml-configuration.md#roslyn-analyzers-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Roslyn Analyzers の YAML オプション](yaml-configuration.md#roslyn-analyzers-task)に関するセクションを参照してください
 
 ## <a name="tslint-task"></a>TSLint タスク
 
@@ -181,7 +182,7 @@ TSLint の詳細については、[GitHub の TSLint リポジトリ](https://gi
 >[!NOTE] 
 >ご存知かもしれませんが、[GitHub の TSLint リポジトリ](https://github.com/palantir/tslint)のホーム ページでは、2019 年に TSLint が非推奨になることが示されています。 Microsoft では、代わりのタスクとして [ESLint](https://github.com/eslint/eslint) を調査しています。
 
-このタスクの YAML 構成については、[TSLint YAML オプション](yaml-configuration.md#tslint-task)に関するページを参照してください。
+このタスクの YAML 構成については、[TSLint の YAML オプション](yaml-configuration.md#tslint-task)に関するセクションを参照してください
 
 ## <a name="publish-security-analysis-logs-task"></a>Publish Security Analysis Logs タスク
 
@@ -193,7 +194,7 @@ TSLint の詳細については、[GitHub の TSLint リポジトリ](https://gi
 - **[Artifact Type]\(成果物の種類\)** : 選択に応じて、ご利用の Azure DevOps Server に、またはビルド エージェントからアクセスできる共有ファイルに、ログを発行できます。
 - **[ツール]** :特定のツールのログを保持することも、 **[All Tools]\(すべてのツール\)** を選択してすべてのログを保持することもできます。
 
-このタスクの YAML 構成については、[Publish Security Logs YAML オプション](yaml-configuration.md#publish-security-analysis-logs-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Publish Security Logs の YAML オプション](yaml-configuration.md#publish-security-analysis-logs-task)に関するセクションを参照してください
 
 ## <a name="security-report-task"></a>Security Report タスク
 
@@ -206,7 +207,7 @@ Security Report の構成の詳細については、次のスクリーンショ�
 - **[Advanced Options]\(詳細オプション\)** : 選択したツールのいずれかにログが存在しない場合、警告またはエラーをログに記録することを選択できます。 エラーをログに記録すると、タスクは失敗します。
 - **[Base Logs Folder]\(基本ログフォルダー\)** : ログの検索先となる基本ログ フォルダーをカスタマイズできます。 ただし、このオプションは通常は使用されません。
 
-このタスクの YAML 構成については、[Security Report YAML オプション](yaml-configuration.md#security-report-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Security Report の YAML オプション](yaml-configuration.md#security-report-task)に関するセクションを参照してください
 
 ## <a name="post-analysis-task"></a>Post-Analysis タスク
 
@@ -218,7 +219,7 @@ Security Report の構成の詳細については、次のスクリーンショ�
 - **[Report]\(レポート\)** : 必要に応じて、ビルド中断の原因になっている結果を書き込むことができます。 結果は、Azure DevOps コンソール ウィンドウとログ ファイルに書き込まれます。
 - **[Advanced Options]\(詳細オプション\)** : 選択したツールのいずれかにログが存在しない場合、警告またはエラーをログに記録することを選択できます。 エラーをログに記録すると、タスクは失敗します。
 
-このタスクの YAML 構成については、[Post Analysis YAML オプション](yaml-configuration.md#post-analysis-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Post Analysis の YAML オプション](yaml-configuration.md#post-analysis-task)に関するセクションを参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

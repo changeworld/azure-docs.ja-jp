@@ -3,14 +3,14 @@ title: Azure Monitor ログを使用した Azure Functions の監視
 description: Azure Functions で Azure Monitor ログを使用して関数の実行を監視する方法について説明します。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649876"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121641"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Azure Functions の監視
 
@@ -25,17 +25,23 @@ Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ�
 
 ## <a name="setting-up"></a>設定
 
-**[監視]** セクションで **[診断設定]** を選択し、 **[診断設定を追加する]** をクリックします。
+1. [Azure portal](https://portal.azure.com) で関数アプリの **[監視]** セクションから **[診断設定]** を選択し、 **[診断設定を追加する]** をクリックします。
 
-![診断設定を追加する](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="[診断設定] を選択します":::
 
-**[診断設定]** ページで **[Log Analytics への送信]** を選択して、Log Analytics ワークスペースを選択します。 **[log]\(ログ\)** で **[FunctionAppLogs]** を選択すると、このテーブルに目的のログが含まれています。
+1. **[診断設定]** ページの **[カテゴリの詳細]** と **[ログ]** で、**FunctionAppLogs** を選択します。
 
-![診断設定を追加する](media/functions-monitor-log-analytics/choose-table.png)
+   **[FunctionAppLogs]** テーブルには、目的のログが含まれています。
+
+1. **[宛先の詳細]** で、 **[Log Analytics への送信]** を選択して、**Log Analytics ワークスペース**を選択します。 
+
+1. **診断設定名**を入力して、 **[保存]** を選択します。
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="診断設定を追加します":::
 
 ## <a name="user-generated-logs"></a>ユーザー生成ログ
 
-カスタム ログを生成するには、言語に応じて特定のログ ステートメントを使用できます。サンプル コード スニペットを次に示します。
+カスタム ログを生成するには、お使いの言語に固有のログ記録ステートメントを使用します。 サンプル コード スニペットを次に示します。
 
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -72,11 +78,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>ログのクエリ
 
-生成されたログに対してクエリを実行するには、関数ログの送信先として構成した Log Analytics ワークスペースに移動し、 **[ログ]** をクリックします。
+生成されたログをクエリするには、次の操作を行います。
+ 
+1. 関数アプリから、 **[診断設定]** を選択します。 
 
-![LA ワークスペースのクエリ ウィンドウ](media/functions-monitor-log-analytics/querying.png)
+1. **[診断設定]** から、関数ログの送信先として構成した Log Analytics ワークスペースを選択します。 
 
-Azure Functions によって、すべてのログが **FunctionAppLogs** テーブルに書き込まれます。サンプル クエリを次に示します。
+1. **[Log Analytics ワークスペース]** ページで、 **[ログ]** を選択します。
+
+   Azure Functions によって、すべてのログは、 **[LogManagement]** の **FunctionAppLogs** テーブルに書き込まれます。 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics ワークスペース内のクエリ ウィンドウ":::
+
+いくつかのサンプル クエリを次に示します。
 
 ### <a name="all-logs"></a>すべてのログ
 
@@ -87,7 +101,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>特定の関数のログ
+### <a name="specific-function-logs"></a>特定の関数のログ
 
 ```
 
@@ -108,6 +122,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure Functions の概要](functions-overview.md)」を確認します。
+- 「[Azure Functions の概要](functions-overview.md)」を確認してください。
 - [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)の詳細について学習します。
 - [クエリ言語](../azure-monitor/log-query/get-started-queries.md)の詳細について学習します。

@@ -2,16 +2,15 @@
 title: Azure Application Insights - 依存関係の自動収集 | Microsoft Docs
 description: Application Insights では、依存関係が自動的に収集されて視覚化されます。
 ms.topic: reference
-author: nikmd23
-ms.author: nimolnar
-ms.date: 04/29/2019
-ms.reviewer: mbullwin
-ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/06/2020
+ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665818"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891612"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
@@ -28,10 +27,15 @@ ms.locfileid: "77665818"
 | <b> 通信ライブラリ</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 以降、.NET Core 1.1 以降 |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 以降、NuGet 4.3.0 |
+| [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 - 最新の安定版リリース (下記の「注」を参照)。
 | [EventHubs Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>ストレージ クライアント</b>|  |
 | ADO.NET | 4.5 以降 |
+
+> [!NOTE]
+> 以前のバージョンの Microsoft.Data.SqlClient には、[既知の問題](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347)があります。 この問題を軽減するには、1.1.0 以降を使用することをお勧めします。 Entity Framework Core には、Microsoft.Data.SqlClient の最新の安定版リリースが必ずしも付属しているとは限らないので、この問題を回避するには、1.1.0 以降を使用していることを確認することをお勧めします。   
+
 
 ## <a name="java"></a>Java
 | アプリケーション サーバー | バージョン |

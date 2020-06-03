@@ -1,31 +1,21 @@
 ---
 title: Azure Migrate で評価ツールを追加する
 description: Azure Migrate で評価ツールを追加する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185909"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901055"
 ---
 # <a name="add-assessment-tools"></a>評価ツールの追加
 
-この記事では、[Azure Migrate](migrate-overview.md) で評価ツールを追加する方法について説明します。
+この記事では、[Azure Migrate](migrate-overview.md) で評価ツールを追加する方法について説明します。 
 
-Azure Migrate には、評価と Azure への移行のためのツールのハブが用意されています。 これには、Azure Migrate ツールと、その他のツールや独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
-
-評価ツールを追加したいが、まだ Azure Migrate プロジェクトを用意していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
-
-## <a name="select-a-tool"></a>ツールの選択
-
-評価のために Azure Migrate 以外のツールを選択する場合は、ツールのポリシーに従って、ライセンスを取得するか、または無料試用版にサインアップすることから開始します。 ツールには、Azure Migrate に接続するためのオプションがあります。 指示とドキュメントに従って、ツールを Azure Migrate に接続します。 ツールの詳細については、[こちら](migrate-services-overview.md)をご覧ください。
-
+- 評価ツールを追加する必要があり、まだ Azure Migrate プロジェクトを用意していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
+- 評価のために ISV ツール (Movere) を追加した場合は、[この手順に従って](prepare-isv-movere.md)、ツールを使用するための準備を行います。
 
 ## <a name="select-an-assessment-scenario"></a>評価シナリオを選択する
 

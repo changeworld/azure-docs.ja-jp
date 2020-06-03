@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: dd5748cf8afe19a49e5ea406aea9b558432eeaf3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82802136"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202047"
 ---
 # <a name="what-is-a-keyword"></a>キーワードとは
 
@@ -31,26 +31,15 @@ ms.locfileid: "82802136"
 | キーワード検証 | ローカルで検出されたキーワードの信頼度が高い場合は、ユーザーがキーワードを発したことを確認するために、音声がクラウドに送信されます。 キーワード検証では、不適切なローカル検出による影響を軽減し、ユーザーのプライバシーを保護することで、セキュリティを強化することができます。
 | 音声アシスタントと Speech SDK の統合 | Speech Studio のカスタム キーワードで生成されたキーワードは、Speech SDK を使用してデバイスまたはアプリケーション内に簡単に統合できます。 SDK を Speech Studio で提供されているキーワード モデルにポイントするだけで、キーワード検証を使用して音声で製品を有効にできるようになります。 独自の[音声アシスタント](voice-assistants.md)を作成して、製品の音声エクスペリエンスを完成させることができます。
 
-## <a name="sample-code"></a>サンプル コード
+## <a name="get-started-with-custom-keywords"></a>カスタム キーワードの概要
 
-キーワード モデルを統合するためのサンプル コードは、GitHub で入手できます。 これらのサンプルは、いくつかの一般的なプログラミング言語でキーワードを統合するためのクライアント アプリケーションに対応しています。
-
-* [チュートリアル:Speech SDK を使用して音声で製品を有効にする、C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [音声アシスタントのサンプル (SDK)](https://aka.ms/csspeech/samples)
-
-## <a name="tutorial"></a>チュートリアル
-
-* [Speech Studio を使用してカスタム キーワードを作成する](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)方法。
-* [Speech SDK を使用して音声で製品を有効にする](tutorial-voice-enable-your-bot-speech-sdk.md)方法。
-
-## <a name="reference-docs"></a>リファレンス ドキュメント
-
-* [カスタム キーワードの名前付けのガイドライン](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-kws-guidelines)
-* [Speech SDK](speech-sdk-reference.md)
+* チュートリアル:[Speech Studio を使用してカスタム キーワードを作成する](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)方法
+* チュートリアル:[C# と Speech SDK を使用して音声で製品を有効にする](tutorial-voice-enable-your-bot-speech-sdk.md)方法
+* クイック スタート:[ユニバーサル Windows プラットフォームで C# と Speech SDK を使用してキーワードを認識する](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* クイック スタート:[Android で Java と Speech SDK を使用してキーワードを認識する](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
-* [カスタム キーワードを作成する](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
 * [Speech SDK を取得する](speech-sdk.md)
 * [音声アシスタントの詳細情報を確認する](voice-assistants.md)

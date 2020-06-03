@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76156779"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872498"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)
 
@@ -24,19 +24,20 @@ ms.locfileid: "76156779"
 この記事では、次のことを行います。
 
 - カスタム コマンド アプリケーションを発行してアプリケーション識別子 (アプリ ID) を取得する
-- Speech SDK を使用してクライアント アプリを作成し、カスタム コマンド アプリケーションと対話できるようにする
+- Speech SDK を使用してユニバーサル Windows プラットフォーム (UWP) クライアント アプリを作成し、カスタム コマンド アプリケーションと対話できるようにする
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、カスタム コマンド アプリケーションが必要です。 カスタム コマンド アプリケーションをまだ作成していない場合は、次に示す以前のクイックスタートで作成できます。
-
-- [クイック スタート: カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
-- [クイック スタート: パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [クイック スタート: カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
+> * [クイック スタート: パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
 
 次のものも必要です。
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
+> * [デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>省略可能:すぐに開始
 
@@ -44,12 +45,13 @@ ms.locfileid: "76156779"
 
 ## <a name="step-1-publish-custom-commands-application"></a>手順 1:カスタム コマンド アプリケーションを発行する
 
-1. [以前に作成したカスタム コマンド アプリケーション](./quickstart-custom-speech-commands-create-new.md)を開き、 **[Publish]\(発行\)** を選択します
+1. [以前に作成したカスタム コマンド アプリケーション (プレビュー)](./quickstart-custom-speech-commands-create-new.md) を開き、 **[発行]** を選択します
 
    > [!div class="mx-imgBorder"]
    > ![アプリケーションの発行](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. 後で使用するために、発行通知からアプリ ID をコピーします
+1. 後で使用するために Speech リソース キーをコピーします
 
 ## <a name="step-2-create-a-visual-studio-project"></a>手順 2:Visual Studio プロジェクトを作成する
 
@@ -129,7 +131,7 @@ ms.locfileid: "76156779"
 
 1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)
 
-1. ファイルの内容を次のコードに置き換えます。
+1. ファイルの内容を次のコードに置き換えます。 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ ms.locfileid: "76156779"
        }
    }
    ```
+    > [!NOTE]
+    > 次のエラーが表示された場合: "型 'Object' は、参照されていないアセンブリに定義されています"
+    > 1. ソリューションを右クリックします。
+    > 1. **[ソリューションの NuGet パッケージの管理]** を選択し、 **[更新]** を選択します。 
+    > 1. 更新リストに **Microsoft.NETCore.UniversalWindowsPlatform** が表示される場合は、**Microsoft.NETCore.UniversalWindowsPlatform** を最新バージョンに更新します。
 
 1. `InitializeDialogServiceConnector` のメソッド本体に次のコードを追加します
 
@@ -419,3 +426,6 @@ ms.locfileid: "76156779"
 > [!div class="nextstepaction"]
 > [方法: Speech SDK を使用してクライアントでコマンドを実行する (プレビュー)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [ 方法: カスタム コマンド パラメーターに検証を追加する (プレビュー)](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>サンプル ソース コード
+[GitHub-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant) で、クライアントのサンプル コードをご確認ください。

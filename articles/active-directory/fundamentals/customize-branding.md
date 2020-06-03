@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049789"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982039"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Office 365 など) にユーザーが サインインするときに表示されます。
@@ -52,9 +52,9 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
         - **言語**。 言語は、既定値として自動的に設定され、変更することはできません。
         
-        - **サインイン ページの背景画像**。 サインイン ページの背景として表示する .png または .jpg 画像ファイルを選択します。 
+        - **サインイン ページの背景画像**。 サインイン ページの背景として表示する .png または .jpg 画像ファイルを選択します。 画像はブラウザーの中央に固定され、表示可能な領域のサイズに合わせて拡大縮小されます。 1920 x 1080 ピクセルを超える画像、またはファイル サイズが 300 KB を超える画像は選択できません。
         
-            この画像のサイズは 1920 x 1080 ピクセルを超えることはできず、ファイル サイズは 300 KB 未満である必要があります。
+            被写体に焦点が強く当てられていない画像を使用することをお勧めします。たとえば画面中央に不透明な白いボックスを表示すると、表示可能な領域の大きさに応じて画像の一部を覆うことができます。
 
         - **バナー ロゴ**。 ユーザーがユーザー名を入力した後のサインイン ページと **[マイ アプリ]** ポータル ページに表示するロゴの .png または .jpg のバージョンを選択します。
             
@@ -62,7 +62,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
         - **ユーザー名のヒント**。 ユーザーがユーザー名を忘れた場合に表示されるヒント テキストを入力します。 このテキストは、リンクもコードも含まない Unicode にする必要があり、64 文字を超えることはできません。 ゲストがアプリにサインインする場合は、このヒントを追加しないことをお勧めします。
 
-        - **サインイン ページ テキスト**。 サインイン ページの下部に表示されるテキストを入力します。 このテキストを使用して、ヘルプ デスクの電話番号や法的声明などの追加情報を伝達できます。 このテキストは Unicode であり、256 文字以下にする必要があります。 さらに、リンクまたは HTML タグを含めないことをお勧めします。
+        - **サインイン ページ テキスト**。 サインイン ページの下部に表示されるテキストを入力します。 このテキストを使用して、ヘルプ デスクの電話番号や法的声明などの追加情報を伝達できます。 このテキストは Unicode であり、256 文字以下にする必要があります。
 
     - **詳細設定**
             

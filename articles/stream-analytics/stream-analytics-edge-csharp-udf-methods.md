@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426311"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994487"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics ジョブ用の .NET Standard ユーザー定義関数を開発する (プレビュー)
 
@@ -42,17 +42,29 @@ UDF は次の 3 つの方法で実装できます。
 UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用します。 ダイナミック リンク ライブラリ (DLL) とリソースは `/UserCustomCode/CLR/*` フォルダーの下にコピーされるので、システム DLL と Azure Stream Analytics DLL からユーザー DLL を分離できます。 このパッケージ パスは、関数を使用するために使用される方法に関係なく、すべての関数に使用されます。
 
 ## <a name="supported-types-and-mapping"></a>サポートされている型とマッピング
+Azure Stream Analytics の値を C# で使用するためには、環境間でマーシャリングする必要があります。 マーシャリングは、UDF のすべての入力パラメーターについて実行されます。 次の表に示したように、Azure Stream Analytics のすべての型には、対応する型が C# に存在します。
 
-|**UDF の型 (C#)**  |**Azure Stream Analytics の型**  |
+|**Azure Stream Analytics の型** |**C# の型** |
+|---------|---------|
+|bigint | long |
+|float | double |
+|nvarchar(max) | string |
+|DATETIME | DateTime |
+|Record | Dictionary\<string, object> |
+|Array | Object[] |
+
+C# から Azure Stream Analytics へのデータのマーシャリング (UDF の出力値に対して実行されます) にも同じことが言えます。 サポートされる型を次の表に示します。
+
+|**C# の型**  |**Azure Stream Analytics の型**  |
 |---------|---------|
 |long  |  bigint   |
-|double  |  double   |
+|double  |  float   |
 |string  |  nvarchar(max)   |
-|dateTime  |  dateTime   |
-|struct  |  IRecord   |
-|object  |  IRecord   |
-|Array\<object>  |  IArray   |
-|dictionary<string, object>  |  IRecord   |
+|DateTime  |  dateTime   |
+|struct  |  Record   |
+|object  |  Record   |
+|Object[]  |  Array   |
+|Dictionary\<string, object>  |  Record   |
 
 ## <a name="codebehind"></a>分離コード
 **Script.asql** 分離コードにユーザー定義関数を記述できます。 Visual Studio Tools により、分離コード ファイルがアセンブリ ファイルに自動的にコンパイルされます。 ジョブを Azure に送信すると、アセンブリが ZIP ファイルとしてパッケージ化され、ストレージ アカウントにアップロードされます。 分離コードを使用して C# UDF を記述する方法については、[Stream Analytics Edge ジョブの C# UDF](stream-analytics-edge-csharp-udf.md) に関するチュートリアルをご覧ください。 
@@ -128,6 +140,43 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
    |カスタム コード ストレージ設定のコンテナー|<お客様のストレージ コンテナー>|
    |カスタム コード アセンブリ ソース|クラウドの既存のアセンブリ パッケージ|
    |カスタム コード アセンブリ ソース|UserCustomCode.zip|
+
+## <a name="user-logging"></a>ユーザーのログ記録
+ログ記録メカニズムを使用すると、ジョブの実行中にカスタム情報をキャプチャできます。 ログ データを使用して、カスタム コードの正確性をリアルタイムでデバッグまたは評価することができます。
+
+`StreamingContext` クラスを使用すると、`StreamingDiagnostics.WriteError` 関数を使用して診断情報を公開できます。 次のコードは、Azure Stream Analytics によって公開されるインターフェイスを示しています。
+
+```csharp
+public abstract class StreamingContext
+{
+    public abstract StreamingDiagnostics Diagnostics { get; }
+}
+
+public abstract class StreamingDiagnostics
+{
+    public abstract void WriteError(string briefMessage, string detailedMessage);
+}
+```
+
+`StreamingContext` は、UDF メソッドに入力パラメーターとして渡され、UDF 内で使用してカスタム ログ情報を発行できます。 次の例では、`MyUdfMethod` は、クエリによって提供される**データ**入力と、ランタイム エンジンによって提供される、`StreamingContext` としての**コンテキスト**入力を定義します。 
+
+```csharp
+public static long MyUdfMethod(long data, StreamingContext context)
+{
+    // write log
+    context.Diagnostics.WriteError("User Log", "This is a log message");
+    
+    return data;
+}
+```
+
+`StreamingContext` 値は、SQL クエリで渡す必要はありません。 入力パラメーターが存在する場合、Azure Stream Analytics は、コンテキスト オブジェクトを自動的に提供します。 次のクエリに示すように、`MyUdfMethod` の使用は変わりません。
+
+```sql
+SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
+```
+
+ログ メッセージにアクセスするには、[診断ログ](data-errors.md)を使用します。
 
 ## <a name="limitations"></a>制限事項
 現在、UDF プレビューには次の制限があります。

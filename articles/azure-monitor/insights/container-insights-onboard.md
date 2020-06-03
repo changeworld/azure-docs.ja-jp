@@ -2,13 +2,13 @@
 title: Azure Monitor for containers を有効にする方法 | Microsoft Docs
 description: この記事では、コンテナーがどのように動作し、パフォーマンスに関してどのような問題が特定されているかを把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185933"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147904"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
@@ -66,7 +66,6 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
-| *.microsoftonline.com | 443 |
 | *.monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
@@ -76,7 +75,6 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 |--------------|------|-------------|
 | *.ods.opinsights.azure.cn | 443 | データ インジェスト |
 | *.oms.opinsights.azure.cn | 443 | OMS のオンボード |
-| microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
 | dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用したエージェント テレメトリの場合。 |
 
 次の表の情報は、Azure US Government のプロキシとファイアウォールの構成情報をまとめたものです。
@@ -85,7 +83,6 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | データ インジェスト |
 | *.oms.opinsights.azure.us | 443 | OMS のオンボード |
-| microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
 | dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用したエージェント テレメトリの場合。 |
 
 ## <a name="components"></a>Components

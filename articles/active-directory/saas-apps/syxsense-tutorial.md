@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 33574871ede636c3ff349ca960e7df8a33b77463
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086588"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267003"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Syxsense の統合
 
@@ -86,10 +86,6 @@ Syxsense に対する Azure AD SSO を構成してテストするには、次の
     a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2/Acs` のパターンを使用して URL を入力します
-
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.cloudmanagementsuite.com/samlautologin` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Syxsense クライアント サポート チーム](mailto:DevTeam@syxsense.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

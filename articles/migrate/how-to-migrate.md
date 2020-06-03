@@ -1,32 +1,21 @@
 ---
 title: Azure Migrate に移行ツールを追加する
 description: Azure Migrate に移行ツールを追加する方法を説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/26/2020
+ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185957"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901467"
 ---
 # <a name="add-migration-tools"></a>移行ツールの追加
 
 この記事では、[Azure Migrate](migrate-overview.md) 内で移行ツールを追加する方法について説明します。
 
-Azure Migrate には、評価と Azure への移行のためのツールのハブが用意されています。 これには、ネイティブなツール、他の Azure サービスによって提供されるツール、およびサードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが含まれます。
-
-移行ツールの追加を希望し、まだ Azure Migrate プロジェクトを設定していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
-
-
-
-## <a name="selecting-an-isv-tool"></a>ISV ツールの選択
-
-移行のために [ISV ツール](migrate-services-overview.md#isv-integration)を選択する場合は、ISV のポリシーに従って、ライセンスを取得するか、または無料試用版にサインアップすることから開始できます。 各ツールには、Azure Migrate に接続するためのオプションがあります。 ツールをデプロイし、ツールの手順やドキュメントに従って、ツール ワークスペースを Azure Migrate に接続します。 
+- 移行ツールの追加を希望し、まだ Azure Migrate プロジェクトを設定していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
+- 移行に ISV ツールを追加した場合は、[手順に従って](prepare-isv-movere.md)、ツールを使用するための準備を行います。
 
 ## <a name="select-a-migration-scenario"></a>移行シナリオの選択
 

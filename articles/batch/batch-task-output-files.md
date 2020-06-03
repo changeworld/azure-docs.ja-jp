@@ -1,15 +1,15 @@
 ---
-title: Batch サービス API を使用して出力のデータを Azure Storage に保持する - Azure Batch
+title: Batch サービス API を使用して出力のデータを Azure Storage に保持する
 description: Batch サービス API を使用して Batch タスクおよびジョブの出力データを Azure Storage に保持する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8020fbd184e200504d0fb0a9ab7ef5de64bd76c9
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234283"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726317"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 

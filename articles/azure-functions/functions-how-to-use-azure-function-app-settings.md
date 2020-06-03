@@ -3,14 +3,14 @@ title: Azure での関数アプリの設定の構成
 description: Azure Function App の設定を構成する方法について説明します。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234999"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122301"
 ---
 # <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
 
@@ -27,9 +27,11 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 ## <a name="get-started-in-the-azure-portal"></a>Azure portal での作業開始
 
-まず、[Azure Portal] に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで Function App の名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
+1. まず、[Azure Portal] に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 
 
-![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. 左側のウィンドウの **[設定]** で、 **[構成]** を選択します。
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure portal の関数アプリの概要":::
 
 関数アプリの管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)** )。
 
@@ -69,9 +71,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ## <a name="platform-features"></a>プラットフォーム機能
 
-![関数アプリの [プラットフォーム機能] タブ。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-関数アプリは、Azure App Service プラットフォームで実行され、管理されます。 このため、Azure の主要 Web ホスティング プラットフォームのほとんどの機能にアクセスできます。 **[プラットフォーム機能]** タブでは、関数アプリで使用できる App Service プラットフォームの多くの機能にアクセスできます。 
+関数アプリは、Azure App Service プラットフォームで実行され、管理されます。 このため、Azure の主要 Web ホスティング プラットフォームのほとんどの機能にアクセスできます。 左側のウィンドウでは、関数アプリで使用できる App Service プラットフォームの多くの機能にアクセスできます。 
 
 > [!NOTE]
 > 関数アプリが従量課金ホスティング プランで実行されている場合は、一部の App Service 機能が使用できません。
@@ -107,7 +107,7 @@ App Service Editor は、JSON 構成ファイルとコード ファイルを変�
 
 ![Kudu の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、 **など、関数アプリの SCM エンドポイントにアクセスして、** Kudu`https://<myfunctionapp>.scm.azurewebsites.net/` を起動することもできます 
+App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、関数アプリの SCM エンドポイントにアクセスして、**Kudu** を起動することもできます 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>デプロイ センター

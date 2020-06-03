@@ -1,22 +1,22 @@
 ---
-title: SaaS Fulfillment API v2 | Azure Marketplace
-description: この記事では、関連付けられている Fulfillment v2 API を使用して、AppSource と Azure Marketplace 上に SaaS オファーを作成して管理する方法について説明します。
+title: Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API v2
+description: Fulfillment API バージョン 2 を使用し、Microsoft AppSource と Azure Marketplace で SaaS オファーを作成し、管理する方法について説明します。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275766"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854194"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
 
-この記事では、パートナーが自社の SaaS アプリケーションを AppSource マーケットプレースと Azure Marketplace で販売できるようにする API について説明します。 これらの API は、AppSource と Azure Marketplace で取引可能な SaaS オファーの要件になります。
+この記事では、パートナーがその SaaS アプリケーションを Microsoft AppSource と Azure Marketplace で販売できるようにする Fulfillment API について説明します。 これらの API は取引可能な SaaS プランで必須です。
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>SaaS サブスクリプション ライフサイクルの管理
 

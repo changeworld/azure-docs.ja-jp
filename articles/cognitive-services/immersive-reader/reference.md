@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231919"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267241"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Immersive Reader SDK リファレンス ガイド
 
@@ -226,4 +226,4 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 ## <a name="next-steps"></a>次のステップ
 
 * [GitHub 上の Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) を探索する
-* [クイック スタート: イマーシブ リーダーを起動する Web アプリを作成する (C#)](./quickstart.md)
+* [クイック スタート: イマーシブ リーダーを起動する Web アプリを作成する (C#)](./quickstarts/client-libraries.md?pivots=programming-language-csharp)

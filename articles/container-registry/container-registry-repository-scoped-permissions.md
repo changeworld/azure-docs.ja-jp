@@ -3,12 +3,12 @@ title: Azure Container Registry でのリポジトリに対するアクセス許
 description: レジストリ内の特定のリポジトリをスコープとして、イメージのプルやプッシュまたは他のアクションを実行するためのアクセス許可を持つトークンを作成します
 ms.topic: article
 ms.date: 02/13/2020
-ms.openlocfilehash: 9004c45401833d3070266055dd7eb99a2bb43bde
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: eeb2155e035dd4a3a7aa09f634c229676cd87db3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618827"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683472"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "80618827"
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* この機能は、**Premium** コンテナー レジストリでのみ使用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry SKU](container-registry-skus.md)」をご覧ください。
+* この機能は **Premium** コンテナー レジストリで利用できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のサービス レベル](container-registry-skus.md)に関する記事を参照してください。
 * 現在、リポジトリ スコープのアクセス許可を、サービス プリンシパルやマネージド ID などの Azure Active Directory ID に割り当てることはできません。
 * [匿名プル アクセス](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)に対して有効になっているレジストリにスコープ マップを作成することはできません。
 

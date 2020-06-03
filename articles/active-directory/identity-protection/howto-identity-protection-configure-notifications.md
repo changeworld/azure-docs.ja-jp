@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120116"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853126"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 
@@ -50,12 +50,11 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 週間ダイジェスト電子メールには、新しいリスク検出の概要が含まれます。  
 次の情報が含まれます。
 
-- リスクのあるユーザー
-- 不審なアクティビティ
-- 検出された脆弱性
+- 新しい危険なユーザーが検出されました
+- 新しい危険なサインインが検出されました (リアルタイムで)
 - Identity Protection の関連するレポートへのリンク
 
-![週間ダイジェスト電子メール](./media/howto-identity-protection-configure-notifications/400.png)
+![週間ダイジェスト電子メール](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
 既定では、受信者にはすべてのグローバル管理者が含まれます。 グローバル管理者は、受信者として他のグローバル管理者、セキュリティ管理者、セキュリティ閲覧者を追加することもできます。
 
@@ -65,6 +64,6 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 
 週刊ダイジェストの電子メールは、**Azure portal** の **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[週刊ダイジェスト]** で構成します。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

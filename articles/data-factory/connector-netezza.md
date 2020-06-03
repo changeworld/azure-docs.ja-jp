@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 05/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 89efa8dc9989f693964415741299042c63f93780
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 69eef6d8457b183f61bae98c0bc80feb0ff2e263
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418118"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635458"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -64,7 +64,7 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| SecurityLevel | ドライバーがデータ ストアへの接続に使用するセキュリティ (SSL/TLS) のレベル。 例: `SecurityLevel=preferredSecured`. サポートされる値は次のとおりです。<br/>- **セキュリティで保護されていない接続のみ** (**onlyUnSecured**):ドライバーは TLS を使用しません。<br/>- **セキュリティで保護されていない接続を優先 (preferredUnSecured) (既定値)** :サーバーが選択肢を提供する場合、ドライバーは TLS を使用しません。 <br/>- **セキュリティで保護されている接続を優先 (preferredSecured)** :サーバーが選択肢を提供する場合、ドライバーは TLS を使用します。 <br/>- **セキュリティで保護されている接続のみ (onlySecured)** :TLS 接続を使用できない限り、ドライバーは接続しません。 | いいえ |
+| SecurityLevel | ドライバーがデータ ストアへの接続に使用するセキュリティ (SSL/TLS) のレベル。 ドライバーは、SSL バージョン 3 を使用する一方向認証での SSL 接続をサポートしています。 <br>例: `SecurityLevel=preferredSecured`. サポートされる値は次のとおりです。<br/>- **セキュリティで保護されていない接続のみ** (**onlyUnSecured**):ドライバーは TLS を使用しません。<br/>- **セキュリティで保護されていない接続を優先 (preferredUnSecured) (既定値)** :サーバーが選択肢を提供する場合、ドライバーは TLS を使用しません。 <br/>- **セキュリティで保護されている接続を優先 (preferredSecured)** :サーバーが選択肢を提供する場合、ドライバーは TLS を使用します。 <br/>- **セキュリティで保護されている接続のみ (onlySecured)** :TLS 接続を使用できない限り、ドライバーは接続しません。 | いいえ |
 | CaCertFile | サーバーによって使用されている TLS/SSL 証明書への完全なパス。 例: `CaCertFile=<cert path>;`| はい (TLS が有効になっている場合) |
 
 **例**

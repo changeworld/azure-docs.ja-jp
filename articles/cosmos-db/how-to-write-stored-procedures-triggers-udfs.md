@@ -1,17 +1,17 @@
 ---
 title: ストアドプロシージャ、トリガー、および UDF を Azure Cosmos DB に記述する
 description: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を定義する方法について説明します
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75441730"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982294"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -21,15 +21,12 @@ Azure Cosmos DB では、統合された JavaScript 言語によるトランザ�
 
 > [!NOTE]
 > パーティション分割されたコンテナーの場合、ストアド プロシージャを実行するとき、要求オプションにパーティション キー値を指定する必要があります。 ストアド プロシージャは常に 1 つのパーティション キーに範囲設定されます。 別のパーティション キー値を持つ項目は、ストアド プロシージャから認識できません。 このことはトリガーにも該当します。
-
 > [!Tip]
 > Cosmos は、ストアド プロシージャ、トリガー、およびユーザー定義関数を使用したコンテナーのデプロイをサポートしています。 詳細については、「[サーバー側機能を使用して Azure Cosmos DB コンテナーを作成する](manage-sql-with-resource-manager.md#create-sproc)」を参照してください。
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>ストアド プロシージャを記述する方法
 
 ストアド プロシージャは JavaScript を使用して記述され、Azure Cosmos コンテナー内の項目を作成、更新、読み取り、クエリの実行、および削除できます。 ストアド プロシージャは、コレクションごとに登録され、そのコレクションに存在するあらゆるドキュメントまたは添付ファイルに作用します。
-
-**例**
 
 これは "Hello World" 応答を返す単純なストアド プロシージャです。
 
@@ -51,7 +48,7 @@ var helloWorldStoredProc = {
 
 ### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>ストアド プロシージャを使用して項目を作成する
 
-ストアド プロシージャを使用して項目を作成すると、項目は Azure Cosmos コンテナーに挿入され、新しく作成された項目の ID が返されます。 項目の作成は非同期操作で、JavaScript コールバック関数に依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と戻り値用 (この例では作成されたオブジェクト用) の 2 つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、Azure Cosmos DB ランタイムはエラーをスローします。 
+ストアド プロシージャを使用して項目を作成すると、項目は Azure Cosmos コンテナーに挿入され、新しく作成された項目の ID が返されます。 項目の作成は非同期操作で、JavaScript コールバック関数に依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と戻り値用 (この例では作成されたオブジェクト用) の 2 つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、Azure Cosmos DB ランタイムはエラーをスローします。
 
 ストアド プロシージャには、説明を設定するパラメーターも含まれており、このパラメーターはブール値です。 パラメーターが true に設定されているときに説明が存在しないと、ストアド プロシージャは例外をスローします。 そうでない場合、ストアド プロシージャの残りの部分が引き続き実行されます。
 
@@ -73,7 +70,7 @@ function createToDoItem(itemToCreate) {
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>ストアド プロシージャの入力パラメーターとしての配列 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>ストアド プロシージャの入力パラメーターとしての配列
 
 Azure portal でストアド プロシージャを定義するときには、入力パラメーターは常に文字列としてストアド プロシージャに送信されます。 入力として文字列の配列を渡す場合でも、配列は文字列に変換されてストアド プロシージャに送信されます。 これを解決するため、ストアド プロシージャ内に関数を定義し、文字列を配列として解析できます。 次のコードでは、文字列入力パラメーターを配列として解析する方法を示します。
 
@@ -102,12 +99,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 
-    {     
+    var filterQuery =
+    {
         'query' : 'SELECT * FROM Players p where p.id = @playerId1',
         'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
     };
-            
+
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -115,10 +112,10 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 
-            {     
+            var filterQuery2 =
+            {
                 'query' : 'SELECT * FROM Players p where p.id = @playerId2',
-                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}]
             };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
@@ -208,6 +205,56 @@ function bulkImport(items) {
             tryCreate(items[count], callback);
         }
     }
+}
+```
+
+### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>ストアド プロシージャを使用した async await
+
+ヘルパー関数を使用して Promise で async await を使用するストアド プロシージャの例を次に示します。 ストアド プロシージャは、項目に対してクエリを行い、それを置き換えます。
+
+```javascript
+function async_sample() {
+    const ERROR_CODE = {
+        NotAccepted: 429
+    };
+
+    const asyncHelper = {
+        queryDocuments(sqlQuery, options) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.queryDocuments(__.getSelfLink(), sqlQuery, options, (err, feed, options) => {
+                    if (err) reject(err);
+                    resolve({ feed, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        },
+
+        replaceDocument(doc) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.replaceDocument(doc._self, doc, (err, result, options) => {
+                    if (err) reject(err);
+                    resolve({ result, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        }
+    };
+
+    async function main() {
+        let continuation;
+        do {
+            let { feed, options } = await asyncHelper.queryDocuments("SELECT * from c", { continuation });
+
+            for (let doc of feed) {
+                doc.newProp = 1;
+                await asyncHelper.replaceDocument(doc);
+            }
+
+            continuation = options.continuation;
+        } while (continuation);
+    }
+
+    main().catch(err => getContext().abort(err));
 }
 ```
 

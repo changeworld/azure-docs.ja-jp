@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282445"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872439"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -41,7 +41,7 @@ Import/Export サービスでは、次のコンポーネントが使用されま
 * **WAImportExport ツール**: これは次を行うコマンドライン ツールです。
   * インポートのためにディスク ドライブの配送準備をします。
   * データをドライブにコピーする作業を容易にします。
-  * AES 128-bit BitLocker を使用してドライブ上のデータを暗号化します。 外部キー保護機能を使用すれば、自分の BitLocker キーを保護することができます。
+  * AES 256 ビット BitLocker を使用してドライブ上のデータを暗号化します。 外部キー保護機能を使用すれば、自分の BitLocker キーを保護することができます。
   * インポート作成中に使用されるドライブのジャーナル ファイルを生成します。
   * エクスポート ジョブに必要なドライブの数を特定します。
 
@@ -131,7 +131,7 @@ Azure Import/Export サービスでは、すべての Azure Storage アカウン
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-ドライブ上のデータは、AES 128 ビット BitLocker ドライブ暗号化を使用して暗号化されます。 この暗号化により、移送中にデータが保護されます。
+ドライブ上のデータは、AES 256 ビット BitLocker ドライブ暗号化を使用して暗号化されます。 この暗号化により、移送中にデータが保護されます。
 
 インポート ジョブの場合、ドライブは 2 つの方法で暗号化されます。  
 

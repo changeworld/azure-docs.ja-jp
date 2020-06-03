@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655346"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926971"
 ---
 # <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 
@@ -91,6 +91,7 @@ ms.locfileid: "80655346"
 * [マネージド ドメインの DNS レコードを変更または追加できますか。](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [マネージド ドメインのパスワード有効期間ポリシーとはどのようなものですか。](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Azure AD Domain Services では、AD アカウントのロックアウトによる保護は提供されていますか。](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [Azure AD Domain Services 内で分散ファイル システム (DFS) とレプリケーションを構成できますか。](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続できますか。
 いいえ。 リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続する権限はありません。 "*AAD DC 管理者*" グループのメンバーは、Active Directory 管理センター (ADAC) や AD PowerShell などの AD 管理ツールを使用して、マネージド ドメインを管理できます。 これらのツールは、"*リモート サーバー管理ツール*" 機能を使用して、マネージド ドメインに参加している Windows サーバーにインストールされます。 詳細については、「[チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する](tutorial-create-management-vm.md)」を参照してください。
@@ -118,6 +119,9 @@ Azure AD Domain Services のマネージド ドメインの既定のパスワー
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services は、AD アカウントに、 ロックアウトから保護する機能を提供しますか?
 はい。 管理対象ドメインに、2 分以内に無効なパスワードの試行が5回行われると、ユーザーのアカウントは、30 分ロックアウトされます。 30 分後、ユーザー アカウントは、自動的にロック解除されます。 マネージド ドメインでの無効なパスワードの試行によっては、Azure AD のユーザー アカウントはロックアウトされません。 ユーザー アカウントは、Azure AD Domain Services の管理対象ドメイン内でだけ、ロックアウトされます。 詳細については、「[マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー](password-policy.md)」を参照してください。
+
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Azure AD Domain Services 内で分散ファイル システムとレプリケーションを構成できますか。
+いいえ。 Azure AD Domain Services を使用する場合、分散ファイル システム (DFS) とレプリケーションは使用できません。
 
 ## <a name="billing-and-availability"></a>課金と可用性
 

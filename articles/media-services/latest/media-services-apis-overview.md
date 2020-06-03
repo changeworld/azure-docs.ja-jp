@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472086"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648543"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API を使用して開発する
 
@@ -54,7 +54,7 @@ Azure AD アプリを作成するためのアクセス許可を自分が持っ�
    * REST Media Services のリソース URI。
    * Azure AD アプリの値: クライアント ID とクライアント シークレット。
 
-   必要な値をすべて取得するには、「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」をご覧ください。
+   必要な値をすべて取得するには、[Azure Media Services API にアクセスする](access-api-cli-how-to.md)方法に関する記事を参照してください。
 
 2. Azure AD アクセス トークンが中間層アプリに送信されます。
 4. 中間層アプリが、Azure AD トークンを使用して要求を Azure Media REST API に送信します。
@@ -148,7 +148,7 @@ AMSE はオープン ソース プロジェクトであり、サポートはコ�
 
 ## <a name="see-also"></a>関連項目
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+必要な値をすべて取得するには、[Azure Media Services API にアクセスする](access-api-cli-how-to.md)方法に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

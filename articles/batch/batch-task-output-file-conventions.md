@@ -1,21 +1,21 @@
 ---
-title: .NET ファイル規則ライブラリを使用して Azure Storage に出力データを保持する - Azure Batch
+title: .NET ファイル規則ライブラリを使用して Azure Storage に出力データを保持する
 description: .NET 用の Azure Batch ファイル規則ライブラリを使用して、Azure Storage にバッチ タスクとジョブの出力を保持し、Azure Portal でその出力を表示する方法を説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d7988ef4339280bd729cc1acaa1b7fb2c33b6b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8dea7f503536a4eb2b0c36db7b3d35b70eb8a67
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232702"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726334"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-タスクのデータを保持する方法の 1 つに [.NET 用の Azure Batch ファイル規則ライブラリ][nuget_package]があります。 ファイル規則ライブラリにより、タスク出力データを Azure Storage に保存し、取得する処理が簡素化されます。 ファイル規則ライブラリはタスク コードでも、クライアント コードでも使用できます。タスク コードではファイルを保持するために、クライアント コードではファイルを一覧で取得するために使用されます。 [タスクの依存関係](batch-task-dependencies.md)のシナリオのように、上流のタスクの出力を取得するためにタスク コードでライブラリを使用することもできます。
+タスクのデータを保持する方法の 1 つに [.NET 用の Azure Batch ファイル規則ライブラリ][nuget_package]があります。 ファイル規則ライブラリにより、タスク出力データを Azure Storage に保存し、取得する処理が簡素化されます。 ファイル規則ライブラリはタスク コードでも、クライアント コード &mdash; でも使用できます。タスク コードではファイルを保持するために、クライアント コードではファイルを一覧で取得するために使用されます。 [タスクの依存関係](batch-task-dependencies.md)のシナリオのように、上流のタスクの出力を取得するためにタスク コードでライブラリを使用することもできます。
 
 ファイル規則ライブラリを使用して出力ファイルを取得する際は、ファイル名や場所がわからなくても、ID と目的で出力を一覧表示することで、 特定のジョブまたはタスクのファイルを容易に特定できます。 たとえば、ファイル規則ライブラリを利用すれば、特定のタスクのすべての中間ファイルを一覧表示したり、特定のジョブのプレビュー ファイルを取得したりすることができます。
 
@@ -58,13 +58,13 @@ Azure Batch は、タスクの出力を保持するために複数の方法を�
 Azure Storage でのコンテナーと BLOB の操作の詳細については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。
 
 > [!WARNING]
-> ファイル規則ライブラリを使用したジョブとタスクの出力はすべて同じコンテナーに格納されるため、 大量のタスクで同時にファイルを保持しようとすると、Azure Storage のスロットルの制限が適用される場合があります。 スロットリングの制限の詳細については、「[BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)」を参照してください。
+> ファイル規則ライブラリを使用したジョブとタスクの出力はすべて同じコンテナーに格納されるため、 大量のタスクで同時にファイルを保持しようとすると、Azure Storage の調整の制限が適用される場合があります。 調整の制限の詳細については、「[BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)」を参照してください。
 
 ### <a name="create-storage-container"></a>ストレージ コンテナーの作成
 
 Azure Storage にタスク出力を保持するには、まず [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] を呼び出してコンテナーを作成します。 この拡張メソッドは [CloudStorageAccount][net_cloudstorageaccount] オブジェクトをパラメーターとして受け取り、 コンテナーを作成します。このコンテナーには、Azure portal またはこれ以降に説明する取得メソッドで内容を検出できるように、ファイル規則の標準に従って名前が付けられます。
 
-通常、クライアント アプリケーション (プール、ジョブ、タスクを作成するアプリケーション) でコンテナーを作成するために以下のコードを配置します。
+通常、クライアント アプリケーション &mdash; (プール、ジョブ、タスクを作成するアプリケーション) でコンテナーを作成するために以下のコードを配置します。
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -124,7 +124,7 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4"
 
 ### <a name="store-task-logs"></a>タスクのログの格納
 
-タスクまたはジョブの完了時に、永続的なストレージでファイルを保持するだけでなく、タスクの実行中に更新されたファイルの保持も必要になる可能性があります。たとえば、ログ ファイル、`stdout.txt`、`stderr.txt` などです。 Azure Batch ファイル規則ライブラリでは、この目的で使用する [TaskOutputStorage][net_taskoutputstorage].[SaveTrackedAsync][net_savetrackedasync] メソッドを提供しています。 [SaveTrackedAsync][net_savetrackedasync] では、ノード上のファイルの更新を (指定した間隔で) 追跡し、それを Azure Storage で保持できます。
+タスクまたはジョブの完了時に、永続的なストレージでファイルを保持するだけでなく、タスクの実行中に更新されたファイルの保持も必要になる可能性があります。たとえば、&mdash; ログ ファイル、`stdout.txt`、`stderr.txt` などです。 Azure Batch ファイル規則ライブラリでは、この目的で使用する [TaskOutputStorage][net_taskoutputstorage].[SaveTrackedAsync][net_savetrackedasync] メソッドを提供しています。 [SaveTrackedAsync][net_savetrackedasync] では、ノード上のファイルの更新を (指定した間隔で) 追跡し、それを Azure Storage で保持できます。
 
 次のコード スニペットでは、タスクの実行中、15 秒ごとに Azure Storage で `stdout.txt` を更新するために [SaveTrackedAsync][net_savetrackedasync] を使用しています。
 

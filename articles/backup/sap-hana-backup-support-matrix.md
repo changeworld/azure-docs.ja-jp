@@ -3,12 +3,12 @@ title: SAP HANA バックアップのサポート マトリックス
 description: この記事では、Azure Backup を使用して Azure VM 上の SAP HANA データベースをバックアップするときにサポートされるシナリオと制限事項について説明します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dcbfa67ce69a3dad1c263427ea3a0e34e8cef18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227459"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747350"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
@@ -36,8 +36,14 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 
 ------
 
+>[!NOTE]
+>Azure Backup では、Azure VM で実行されている SAP HANA データベースをバックアップしている場合、夏時間変更に合わせた自動調整は行われません。
+>
+>必要に応じて手動でポリシーを変更してください。
+
+
 > [!NOTE]
-> SAP HANA ネイティブ クライアント (SAP HANA Studio/Cockpit/DBA Cockpit) からのバックアップおよび復元操作は、現在サポートされていません。
+> Azure portal で、HANA ネイティブ クライアント (SAP HANA Studio /コックピット/ DBA コックピット) からトリガーされたバックアップの[監視と (同じマシンへの) ジョブの復元](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal)ができるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 

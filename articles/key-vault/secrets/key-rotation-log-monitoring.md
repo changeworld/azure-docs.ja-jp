@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427147"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995972"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>キー ローテーションと監査で Azure Key Vault を設定する
 
@@ -85,23 +85,35 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 > [!NOTE]
 > アプリケーションは、Key Vault と同じ Azure Active Directory テナントに作成する必要があります。
 
-1. **Azure Active Directory** を開きます。
-2. **[アプリの登録]** を選択します。 
-3. **[新しいアプリケーションの登録]** を選択して、アプリケーションを Azure Active Directory に追加します。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. お使いのアカウントで複数のテナントにアクセスできる場合は、右上隅で自分のアカウントをクリックします。 ポータル セッションを目的の Azure AD テナントに設定します。
+1. **Azure Active Directory** を検索して選択します。 **[管理]** の **[アプリの登録]** を選択します。
+1. **[新規登録]** を選択します。
+1. **[アプリケーションの登録]** に、ユーザーに表示するわかりやすい名前を入力します。
+1. 次のようにアプリケーションを使用できる人を指定します。
 
-    ![Azure Active Directory の [アプリケーション] を開く](../media/keyvault-keyrotation/azure-ad-application.png)
+    | サポートされているアカウントの種類 | 説明 |
+    |-------------------------|-------------|
+    | **この組織のディレクトリ内のアカウントのみ** | 基幹業務 (LOB) アプリケーションを作成している場合は、このオプションを選択します。 アプリケーションをディレクトリに登録していない場合、このオプションは選択できません。<br><br>このオプションは、Azure AD のみのシングルテナントに対応します。<br><br>このオプションは、ディレクトリの外部にアプリを登録している場合を除き、既定です。 アプリがディレクトリの外部に登録される場合、既定のオプションは Azure AD マルチテナントと個人の Microsoft アカウントです。 |
+    | **任意の組織のディレクトリ内のアカウント** | 企業および教育機関のすべてのユーザーを対象とする場合は、このオプションを選択します。<br><br>このオプションは、Azure AD のみのマルチテナントに対応します。<br><br>アプリを Azure AD のみのシングルテナントとして登録した場合は、 **[認証]** ページを使用して、Azure AD マルチテナントに更新したり、シングルテナントに戻したりすることができます。 |
+    | **任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント** | 最も広範な顧客のセットを対象とする場合は、このオプションを選択します。<br><br>このオプションは、Azure AD マルチテナントと個人用の Microsoft アカウントに対応します。<br><br>アプリを Azure AD マルチテナントと個人用の Microsoft アカウントとして登録した場合は、この設定を UI で変更することはできません。 代わりに、アプリケーション マニフェスト エディターを使用して、サポートされているアカウントの種類を変更する必要があります。 |
 
-4. **[作成]** では、[アプリケーションの種類] は **[Web アプリ/API]** のままにし、アプリケーションに名前を付けます。 アプリケーションの **[サインオン URL]** を指定します。 この URL には、このデモ用の任意の値を指定できます。
+1. **[リダイレクト URI (省略可能)]** で、ビルド中のアプリの種類を選択します。**Web** か**パブリック クライアント (モバイル & デスクトップ)** です。 次にアプリケーションのリダイレクト URI または応答 URL を入力します。
 
-    ![アプリケーションの登録を作成する](../media/keyvault-keyrotation/create-app.png)
+    * Web アプリケーションの場合は、アプリのベース URL を指定します。 ローカル マシンで実行されている Web アプリの URL であれば、たとえば `https://localhost:31544` のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
+    * パブリック クライアント アプリケーションの場合は、トークン応答を返すために Azure AD によって使用される URI を指定します。 アプリケーション固有の値 (たとえば、`myapp://auth`) を入力します。
 
-5. アプリケーションが Azure Active Directory に追加されると、アプリケーション ページが開きます。 **[設定]** を選択し、 **[プロパティ]** を選択します。 **[アプリケーション ID]** の値をコピーします。 これは後の手順で必要になります。
+1. 終了したら、 **[登録]** を選択します。
 
-次に、アプリケーション用のキーを生成して、Azure Active Directory と対話できるようにします。 キーを作成するには、 **[設定]** で **[キー]** を選択します。 Azure Active Directory アプリケーション用に新しく生成されたキーをメモします。 後の手順で必要になります。 このキーは、このセクションを離れた後で入手することはできません。 
+    ![Azure portal で新しいアプリケーションを登録する画面の画像](../media/new-app-registration.png)
 
-![Azure Active Directory アプリ キー](../media/keyvault-keyrotation/create-key.png)
+Azure AD によって一意のアプリケーションまたはクライアントがアプリに割り当てられます。 ポータルでアプリケーションの **[概要]** ページが開きます。 **[アプリケーション (クライアント) ID]** の値をメモしておきます。
 
-アプリケーションからキー コンテナーへの呼び出しを確立する前に、アプリケーションとそのアクセス許可についてキー コンテナーに通知する必要があります。 次のコマンドでは、Azure Active Directory アプリのコンテナー名とアプリケーション ID を使用して、自分のキー コンテナーへのアプリケーションの **Get** アクセスを許可しています。
+アプリケーションに機能を追加するには、ブランド、証明書とシークレット、API のアクセス許可など、その他の構成オプションを選択できます。
+
+![新たに登録されたアプリの概要ページの例](../media//new-app-overview-page-expanded.png)
+
+アプリケーションからキー コンテナーへの呼び出しを確立する前に、アプリケーションとそのアクセス許可についてキー コンテナーに通知する必要があります。 次のコマンドでは、Azure Active Directory アプリのコンテナー名と**アプリケーション (クライアント) ID** を使用して、自分のキー コンテナーへのアプリケーションの **Get** アクセスを許可しています。
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667417"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901350"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーでのレプリケーションのトラブルシューティング
 
@@ -41,7 +41,7 @@ Azure Site Recovery がイベントを作成するのは、ソース仮想マシ
 
 以下の表は、Azure Site Recovery の制限を示したものです。 これらの制限は、Microsoft のテストに基づいていますが、アプリケーションの入出力 (I/O) として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。
 
-ここで考慮していただきたい制限が 2 つあります。ディスクあたりのデータ チャーンと仮想マシンあたりのデータ チャーンです。 たとえば、次の表の Premium P20 ディスクを見てみましょう。 1 つの VM の場合、Site Recovery はディスクあたり 5 MB/秒のチャーンを処理できます。そのようなディスクが最大で 5 つあります。 Site Recovery には、VM あたりのチャーンの合計が 25 MB/秒という制限があります。
+ここで考慮していただきたい制限が 2 つあります。ディスクあたりのデータ チャーンと仮想マシンあたりのデータ チャーンです。 たとえば、次の表の Premium P20 ディスクを見てみましょう。 1 つの VM の場合、Site Recovery はディスクあたり 5 MB/秒のチャーンを処理できます。そのようなディスクが最大で 5 つあります。 Site Recovery には、VM あたりのチャーンの合計が 54 MB/秒という制限があります。
 
 **レプリケーション先のストレージ** | **ソース ディスクの平均 I/O サイズ** |**ソース ディスクの平均データ チャーン** | **ソース データ ディスクの 1 日あたりの合計データ チャーン**
 ---|---|---|---

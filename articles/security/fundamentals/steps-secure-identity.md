@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cda0d79166f355fd7346865f2d42d066a3e3690
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565538"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757893"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -107,7 +107,7 @@ Azure AD による認証と会社データへのアクセスに、独自の古�
 
 1. [AD FS を使用している場合はレガシ認証](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)をブロックする。
 2. [最新の認証を使用するよう SharePoint Online と Exchange Online](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md) を設定する。
-3. Azure AD Premium がある場合は、[条件付きアクセス ポリシー](../../active-directory/conditional-access/overview.md)を使用してレガシ認証をブロックし、それ以外の場合は、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)を使用します。
+3. Azure AD Premium がある場合は、条件付きアクセス ポリシーを使用して[レガシ認証をブロック](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md)し、それ以外の場合は、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)を使用します。
 
 ### <a name="block-invalid-authentication-entry-points"></a>無効な認証エントリ ポイントをブロックする
 
@@ -117,7 +117,7 @@ Azure AD による認証と会社データへのアクセスに、独自の古�
 
 さまざまな [Azure AD アプリケーションの同意](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)、[アクセス許可と同意の種類](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)、それらが組織のセキュリティ方針に与える意味を理解することが重要です。 既定では、Azure AD のすべてのユーザーは、Microsoft ID プラットフォームを活用するアプリケーションに組織のデータにアクセスすることを許可できます。 ユーザーが自分で同意することを許可すると、Microsoft 365、Azure、その他のサービスと統合する便利なアプリケーションを簡単に入手できますが、慎重に使用し、監視しないとリスクが発生する可能性があります。
 
-Microsoft では、[将来のユーザーの同意動作をすべて無効にし](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application)、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 エンド ユーザーの同意を無効にした場合でも、以前の同意の許可は有効ですが、それより後のすべての同意操作は管理者が実行する必要があります。 管理者の同意は、統合された[管理者の同意要求ワークフロー](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)または独自のサポート プロセスによりユーザーが要求できます。 エンドユーザーの同意を無効にする前に、[推奨事項](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) を使用して、組織におけるこの変更を計画してください。 すべてのユーザーにアクセスを許可するアプリケーションについては、[すべてのユーザーの代わりに同意を与え](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)、個人としてまだ同意していないユーザーがアプリにアクセスできるようにすることを検討してください。 シナリオによってはアプリケーションを利用できるユーザーを限定する場合、[アプリケーション割り当て](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)と[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を利用し、アプリへのユーザー アクセスを制限してください。
+Microsoft では、[将来のユーザーの同意動作をすべて無効にし](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application)、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 エンド ユーザーの同意を無効にした場合でも、以前の同意の許可は有効ですが、それより後のすべての同意操作は管理者が実行する必要があります。 管理者の同意は、統合された[管理者の同意要求ワークフロー](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)または独自のサポート プロセスによりユーザーが要求できます。 エンドユーザーの同意を無効にする前に、[推奨事項](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) を使用して、組織におけるこの変更を計画してください。 すべてのユーザーにアクセスを許可するアプリケーションについては、[すべてのユーザーの代わりに同意を与え](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)、個人としてまだ同意していないユーザーがアプリにアクセスできるようにすることを検討してください。 シナリオによってはアプリケーションを利用できるユーザーを限定する場合、[アプリケーション割り当て](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)と条件付きアクセスを利用し、[特定のアプリ](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)へのユーザー アクセスを制限してください。
 
 ユーザーの摩擦を減らすために、サポート量を最小限に抑えるために、また、ユーザーが Azure AD 以外の資格情報でアプリケーションに新規登録することを防ぐために、ユーザーが新しいアプリケーションに関する管理者承認を要求できるようにしてください。 同意操作を規制したら、管理者はアプリと同意済みのアクセス許可を定期的に監査します。
 

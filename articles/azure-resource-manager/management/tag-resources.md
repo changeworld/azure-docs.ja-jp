@@ -2,13 +2,13 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 05/06/2020
+ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255126"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864489"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -591,7 +591,9 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
 * タグ名には、これらの文字を含めることはできません: `<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
-   > また、Azure DNS ゾーンと Traffic Manger サービスでは現在、タグ内でスペースを使用することはできません。
+   > また、Azure DNS ゾーンと Traffic Manager サービスでは現在、タグ内でスペースを使用することはできません。
+   >
+   > Azure Front Door では、タグ名に `#` を使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

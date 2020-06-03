@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427243"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982702"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>SQL プールへのデータの取り込み
 
@@ -39,7 +39,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 
-パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、ADLS gen 2 から SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
+パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、ADLS Gen2 から SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
 
 1. **[調整]** タブに移動します。パイプライン ヘッダーの横にある正符号アイコンをクリックし、 **[パイプライン]** を選択します。
 1. アクティビティ ウィンドウの **[Move and Transform]\(移動と変換\)** で、 **[データ コピー]** をパイプライン キャンバス上にドラッグします。

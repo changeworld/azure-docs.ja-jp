@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631418"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982889"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning でのモデルの解釈可能性
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -74,17 +74,17 @@ SDK のクラスとメソッドを使用して、次のことを行うことが�
 
 |解釈可能性の手法|説明|Type|
 |--|--|--------------------|
-|1.SHAP Tree Explainer| [SHAP](https://github.com/slundberg/shap) の Tree Explainer は、**ツリーおよびツリーのアンサンブル**に固有の多項式時間高速 SHAP 値推定アルゴリズムに注目します。|モデル固有|
-|2.SHAP Deep Explainer| [SHAP](https://github.com/slundberg/shap) による説明に基づくと、Deep Explainer は "[SHAP NIPS の論文](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)で説明されている DeepLIFT との接続上に構築されているディープ ラーニング モデルでの SHAP 値に対する高速近似アルゴリズムです。 **TensorFlow** モデルおよび TensorFlow バックエンドを使用する **Keras** モデルがサポートされています (PyTorch の暫定サポートもあります)"。|モデル固有|
-|3.SHAP Linear Explainer| [SHAP](https://github.com/slundberg/shap) の Linear Explainer は、**線形モデル**の SHAP 値を計算し、必要に応じて機能間の相関関係を考慮します。|モデル固有|
-|4.SHAP Kernel Explainer| [SHAP](https://github.com/slundberg/shap) の Kernel Explainer は、特別に重み付けされたローカル線形回帰を使用して**任意のモデル**の SHAP 値を推定します。|モデル非依存|
-|5.Mimic Explainer (グローバル サロゲート)| Mimic Explainer は、[グローバル サロゲート モデル](https://christophm.github.io/interpretable-ml-book/global.html)をトレーニングしてブラックボックス モデルを模倣するアイデアに基づいています。 グローバル サロゲート モデルは、**任意のブラック ボックス モデル**の予測をできる限り正確に近似するためにトレーニングされた本質的に解釈可能なモデルです。 データ サイエンティストは、サロゲート モデルを解釈してブラック ボックス モデルについての結論を導き出すことができます。 サロゲート モデルとして、次のいずれかの解釈可能なモデルを使用できます。LightGBM (LGBMExplainableModel)、線形回帰 (LinearExplainableModel)、確率勾配降下説明可能モデル (SGDExplainableModel)、およびデシジョン ツリー (DecisionTreeExplainableModel)。|モデル非依存|
-|6.Permutation Feature Importance Explainer (PFI)| Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。 PFI では、**基になる任意のモデル**の全体的な動作を説明できますが、個々の予測については説明しません。 |モデル非依存|
+|SHAP Tree Explainer| [SHAP](https://github.com/slundberg/shap) の Tree Explainer は、**ツリーおよびツリーのアンサンブル**に固有の多項式時間高速 SHAP 値推定アルゴリズムに注目します。|モデル固有|
+|SHAP Deep Explainer| SHAP による説明に基づくと、Deep Explainer は [SHAP NIPS の論文](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)で説明されている DeepLIFT との接続上に構築されているディープ ラーニング モデルでの SHAP 値に対する高速近似アルゴリズムです。 **TensorFlow** モデルおよび TensorFlow バックエンドを使用する **Keras** モデルがサポートされています (PyTorch の暫定サポートもあります)"。|モデル固有|
+|SHAP Linear Explainer| SHAP の Linear Explainer では、**線形モデル**の SHAP 値を計算し、必要に応じて機能間の相関関係を考慮します。|モデル固有|
+|SHAP Kernel Explainer| SHAP の Kernel Explainer では、特別に重み付けされたローカル線形回帰を使用して、**任意のモデル**の SHAP 値を推定します。|モデル非依存|
+|Mimic Explainer (グローバル サロゲート)| Mimic Explainer は、[グローバル サロゲート モデル](https://christophm.github.io/interpretable-ml-book/global.html)をトレーニングしてブラックボックス モデルを模倣するアイデアに基づいています。 グローバル サロゲート モデルは、**任意のブラック ボックス モデル**の予測をできる限り正確に近似するためにトレーニングされた本質的に解釈可能なモデルです。 データ サイエンティストは、サロゲート モデルを解釈してブラック ボックス モデルについての結論を導き出すことができます。 サロゲート モデルとして、次のいずれかの解釈可能なモデルを使用できます。LightGBM (LGBMExplainableModel)、線形回帰 (LinearExplainableModel)、確率勾配降下説明可能モデル (SGDExplainableModel)、およびデシジョン ツリー (DecisionTreeExplainableModel)。|モデル非依存|
+|Permutation Feature Importance Explainer (PFI)| Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。 PFI では、**基になる任意のモデル**の全体的な動作を説明できますが、個々の予測については説明しません。 |モデル非依存|
 
 
 
 
-前述の解釈可能性の手法に加えて、`TabularExplainer` と呼ばれる別の [SHAP ベースの Explainer](https://github.com/slundberg/shap) がサポートされています。 モデルによっては、`TabularExplainer` はサポートされている SHAP Explainers のいずれかを使用します。
+前述の解釈可能性の手法に加えて、`TabularExplainer` と呼ばれる別の SHAP ベースの Explainer がサポートされています。 モデルによっては、`TabularExplainer` はサポートされている SHAP Explainers のいずれかを使用します。
 
 * すべてのツリー ベースのモデル向けの TreeExplainer
 * DNN モデル向けの DeepExplainer
@@ -120,4 +120,6 @@ Azure Machine Learning コンピューティング上で説明をリモートで
 
 ## <a name="next-steps"></a>次のステップ
 
-ローカルと Azure Machine Learning リモート コンピューティング リソースの両方で解釈可能性を有効にし、モデルのトレーニングを行う[方法](how-to-machine-learning-interpretability-aml.md)を参照してください。 その他のシナリオについては、[ノートブックのサンプル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)を参照してください。
+- ローカルと Azure Machine Learning リモート コンピューティング リソースの両方で解釈可能性を有効にし、モデルのトレーニングを行う[方法](how-to-machine-learning-interpretability-aml.md)を参照してください。 
+- その他のシナリオについては、[ノートブックのサンプル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)を参照してください。 
+- テキスト シナリオの解釈可能性に関心がある場合、NLP の解釈可能性の手法については、「[Interpret-text](https://github.com/interpretml/interpret-text)」 (「[Interpret-Community](https://github.com/interpretml/interpret-community/)」に関連するオープン ソース リポジトリ) を参照してください。 `azureml.interpret` パッケージでは、現在これらの手法をサポートしていませんが、[テキスト分類でのノートブックの例](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)を使用して開始できます。

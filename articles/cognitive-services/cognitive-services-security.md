@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131529"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202007"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 
-どのようなアプリケーションの開発でも、セキュリティを最優先事項として考慮する必要があります。 人工知能を利用するアプリケーションでは、セキュリティがさらに重要になります。 この記事では、トランスポート層セキュリティの使用、認証、機密データの安全な構成など、Azure Cognitive Services セキュリティのさまざまな側面について説明します。
+どのようなアプリケーションの開発でも、セキュリティを最優先事項として考慮する必要があります。 人工知能を利用するアプリケーションでは、セキュリティがさらに重要になります。 この記事では、トランスポート層セキュリティの使用、認証、機密データの安全な構成、顧客データ アクセスのためのカスタマー ロックボックスなど、Azure Cognitive Services セキュリティのさまざまな側面について説明します。
 
 ## <a name="transport-layer-security-tls"></a>トランスポート層セキュリティ (TLS)
 
@@ -193,6 +193,21 @@ NSString* value =
 ```
 
 ---
+
+## <a name="customer-lockbox"></a>カスタマー ロックボックス
+
+[Microsoft Azure 用カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)には、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。 カスタマー ロックボックス要求の開始、追跡、後のレビューと監査のための保存の方法に関する詳細については、「[カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)」を参照してください。 
+
+カスタマー ロックボックスはこのコグニティブ サービスで利用できます。
+
+* [変換者]
+
+Language Understanding については、Microsoft のエンジニアが E0 SKU の顧客データにアクセスすることはありません。 E0 SKU を使用するための機能を要求するには、 [LUIS サービス要求フォーム](https://aka.ms/cogsvc-cmk)に記入し、提出してください。 要求の状態について連絡を差し上げるまで、約 3 から 5 営業日かかります。 要求によっては、お客様は待ち行列に登録され、スペースが利用できるようになってから承認される場合があります。 LUIS での E0 SKU の使用が承認されたら、Azure portal から新しい Language Understanding リソースを作成し、価格レベルとして E0 を選択する必要があります。 ユーザーは、F0 を新しい E0 SKU にアップグレードすることはできません。
+
+Speech サービスでは、現在、カスタマー ロックボックスはサポートされていません。 ただし、BYOS を使用すれば顧客データを格納することができるため、[カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)と類似のデータ管理を実現できます。 Speech サービスのデータは保持され、Speech リソースが作成されたリージョンで処理されることに注意してください。 これは、保存データと転送中のデータに適用されます。 Custom Speech や Custom Voice などのカスタマイズ機能を使用する場合、顧客データはすべて、BYOS (使用されている場合) と Speech サービス リソースが存在しているのと同じリージョンで転送、格納、および処理されます。
+
+> [!IMPORTANT]
+> Microsoft では、Speech モデルを改善するためにお客様のデータを**使用するということはありません**。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
 
 ## <a name="next-steps"></a>次のステップ
 

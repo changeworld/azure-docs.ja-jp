@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535963"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871541"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
@@ -37,13 +37,31 @@ ms.locfileid: "81535963"
 
 現時点ではスケジュールされていません。  運用環境の変更または変更予定については、以下を参照してください。
 
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="azure-government-endpoints-are-changing"></a>Azure Government エンドポイントの変更
+
+**発効日**:5 月 5 日 (2020 年 6 月終了) 
+
+**影響を受けるエンドポイント**:All
+
+**影響を受けるプロトコル**:すべてのフロー
+
+2018 年 6 月 1 日、Azure Government に対する Azure Active Directory (AAD) の公式な機関が、`https://login-us.microsoftonline.com` から `https://login.microsoftonline.us` に変更されました。 この変更は、Azure Government AAD でもサービスが提供される Microsoft 365 GCC High および DoD にも適用されます。 米国政府テナント内でアプリケーションを所有している場合は、`.us` エンドポイントでユーザーをサインインさせるようにアプリケーションを更新する必要があります。  
+
+5 月 5 日以降、Azure AD でエンドポイントの変更の適用が開始され、政府ユーザーはパブリック エンドポイント (`microsoftonline.com`) を使用して米国政府テナントでホストされているアプリにサインインできなくなります。  影響を受けるアプリでは、`AADSTS900439` - `USGClientNotSupportedOnPublicEndpoint` エラーが表示されるようになります。 このエラーは、アプリがパブリック クラウド エンドポイントで米国政府ユーザーのサインインを試みていることを示します。 アプリがパブリック クラウド テナント内にあり、米国政府ユーザーのサポートを意図している場合は、[それらのユーザーを明示的にサポートするようにアプリを更新する](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)必要があります。 これには、米国政府機関向けクラウドで新しいアプリの登録を作成することが必要になる場合があります。 
+
+この変更の適用は、米国政府のクラウドからアプリケーションにサインインするユーザーの頻度に基づいて、段階的なロールアウトを使用して行われます。米国政府ユーザーがサインインする頻度の少ないアプリは最初に適用され、米国政府ユーザーが頻繁に使用するアプリは最後に適用されます。 2020 年 6 月には、すべてのアプリで適用が完了するものと思われます。 
+
+詳細については、[この移行に関する Azure Government ブログ記事](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)を参照してください。 
+
 ## <a name="march-2020"></a>2020 年 3 月
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>ユーザーのパスワードは、256 文字に制限されます。
 
 **発効日**:2020 年 3 月 13 日
 
-**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
+**影響を受けるエンドポイント**:All
 
 **影響を受けるプロトコル**:すべてのユーザー フローです。
 
@@ -53,7 +71,7 @@ ms.locfileid: "81535963"
 
 メッセージ: `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
 
-修復: 
+修復:
 
 パスワードが許可されている最大長を超えているため、ユーザーはログインできません。 パスワードをリセットするには、管理者に連絡する必要があります。 テナントで SSPR が有効になっている場合は、[パスワードを忘れた場合] のリンクを使用してパスワードをリセットできます。
 

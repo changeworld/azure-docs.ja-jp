@@ -1,16 +1,16 @@
 ---
-title: レンダリングの概要 - Azure Batch
+title: レンダリングの概要
 description: Azure を使用したレンダリングと Azure Batch Rendering 機能の概要
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 515fc92aa14c0a86746d0a97d2bc601fab553aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: fc779d6caba2b896b869440ad523291bc3c9a9b2
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115705"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726436"
 ---
 # <a name="rendering-using-azure"></a>Azure を使用したレンダリング
 

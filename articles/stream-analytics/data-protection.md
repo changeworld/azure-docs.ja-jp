@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299398"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857288"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
@@ -61,6 +61,9 @@ Stream Analytics で存続する必要があるプライベート データは�
 Stream Analytics ジョブによって使用される、リソースの接続詳細も保存されます。 ストレージ アカウントを暗号化して、すべてのデータを保護します。 
 
 規制されている業界や環境におけるコンプライアンス義務を果たすために、[Microsoft のコンプライアンス認証](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。 
+
+## <a name="known-issues"></a>既知の問題
+マネージド ID を使用して入力または出力を認証するときに、カスタマー マネージド キーを使用するジョブが失敗するという既知の問題があります。 現在、この問題の修正プログラムに取り組んでおり、近日中にリリースされる予定です。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: c8125001b5960a0bf770e8e015ad757a277629ea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684893"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267615"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage を監視する
 
@@ -407,4 +407,3 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 - Azure Storage によって作成されるログおよびメトリックのリファレンスについては、「[Azure Storage 監視データのリファレンス](monitor-storage-reference.md)」をご覧ください。
 - Azure リソースの監視の詳細については、「[Azure Monitor で Azure リソースを管理する](../../azure-monitor/insights/monitor-azure-resource.md)」をご覧ください。
 - メトリックの移行の詳細については、「[Azure Storage メトリックの移行](./storage-metrics-migration.md)」をご覧ください。
-

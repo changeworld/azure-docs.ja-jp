@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74872113"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871009"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos コンテナーの一意のキーを定義する
 
@@ -19,7 +19,7 @@ ms.locfileid: "74872113"
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存のアカウントを選択します。
 
@@ -39,7 +39,9 @@ ms.locfileid: "74872113"
 
 一意のキーを持つコンテナーを作成する方法については、[一意のキーと TTL を使用した Azure Cosmos コンテナーの作成](manage-with-powershell.md#create-container-unique-key-ttl)に関するページを参照してください。
 
-## <a name="use-the-net-sdk-v2"></a>.NET SDK V2 の使用
+## <a name="use-the-net-sdk"></a>.NET SDK を使用する
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) を使用して新しいコンテナーを作成するときに、`UniqueKeyPolicy` オブジェクトを使用して一意キー制約を定義できます。
 
@@ -59,7 +61,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 の使用
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) を使用して新しいコンテナーを作成するときに、SDK の fluent API を使用して、簡潔で読みやすい方法で一意のキーを宣言します。
 
@@ -75,6 +77,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>Java SDK の使用
 

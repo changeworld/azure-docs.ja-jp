@@ -3,12 +3,12 @@ title: テンプレートを使用したクイック タスクの実行
 description: Azure Resource Manager テンプレートを使用して、イメージをビルドする ACR タスクの実行をキューに登録します
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e85e4a3d10ea34d71efde959aa7d179eba69e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196992"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927770"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して ACR タスクを実行する
 
@@ -139,7 +139,7 @@ Azure portal でタスク実行ログを確認することもできます。
 
 ### <a name="create-new-dockerfile"></a>新しい Dockerfile の作成
 
-基本レジストリから基本イメージをプルする Dockerfile を作成します。 GitHub リポジトリのローカル フォーク (たとえば、 https://github.com/myGitHubID/acr-build-helloworld-node.git *) で次の手順を実行します。
+基本レジストリから基本イメージをプルする Dockerfile を作成します。 GitHub リポジトリのローカル フォーク (たとえば、`https://github.com/myGitHubID/acr-build-helloworld-node.git`) で次の手順を行います。
 
 1. GitHub UI で、 **[Create new file]\(新しいファイルの作成\)** を選択します。
 1. そのファイルに *Dockerfile-test* という名前を付け、次の内容を貼り付けます。 *mybaseregistry* は、実際のレジストリ名に置き換えます。

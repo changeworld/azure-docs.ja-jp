@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンス
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780336"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758947"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -105,7 +105,7 @@ Azure Migrate アプライアンスには、インターネットへの接続が
 *.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
 management.azure.com | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
 *.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
-*.vault.azure.net | Azure Key Vault でシークレットを管理します。
+*.vault.azure.net | Azure Key Vault でシークレットを管理します。 注:レプリケートするマシンに、ここへのアクセス権があることを確認してください。
 aka.ms/* | aka リンクへのアクセスを許可します。 Azure Migrate アプライアンスの更新に使用されます。
 download.microsoft.com/download | Microsoft ダウンロードからのダウンロードを許可します。
 *.servicebus.windows.net | アプライアンスと Azure Migrate サービスの間の通信。
@@ -222,7 +222,7 @@ NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |VM �
 リモート IP アドレス | netstat
 TCP 接続の状態 | netstat
 プロセス ID | netstat
-いいえ。 アクティブな接続の | netstat
+アクティブな接続の数 | netstat
 
 #### <a name="process-data"></a>データを処理する
 エージェントレスの依存関係分析が有効になっている各 VM から、アプライアンスが収集するプロセス データを次に示します。 このデータは Azure に送信されます。
@@ -244,7 +244,7 @@ TCP 接続の状態 | netstat
 リモート ポート | netstat 
 リモート IP アドレス | netstat 
 TCP 接続の状態 | netstat 
-いいえ。 アクティブな接続の | netstat
+アクティブな接続の数 | netstat
 プロセス ID  | netstat 
 [処理名] | ps
 プロセスの引数 | ps
@@ -340,7 +340,7 @@ NIC の MAC アドレス | Win32_NetworkAdapterConfiguration | MACAddress
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
 プロセッサ コア数 |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 割り当てられたメモリ | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
-BIOS のシリアル番号 | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}’
+BIOS のシリアル番号 | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
 BIOS の GUID | cat /sys/class/dmi/id/product_uuid
 ブートの種類 | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
 OS の名前/バージョン | OS のバージョンと名前について、以下のファイルにアクセスします。<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
@@ -440,12 +440,12 @@ Appliance Configuration Manager で確認するには以下を行います。
 いずれかのコンポーネントに対して古いバージョンを実行している場合は、サービスをアンインストールし、最新バージョンに手動で更新する必要があります。
 
 1. 最新のアプライアンス サービス バージョンを確認するには、LatestComponents.json ファイルを[ダウンロード](https://aka.ms/latestapplianceservices)します。
-2.  ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
+2.    ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
 3. ファイル内の最新のサービス バージョンとそのファイルのダウンロード リンクを探します。 次に例を示します。
 
     "Name":"ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version":"6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
+4.    ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
 5. ダウンロードした後、管理者コマンド ウィンドウで次のコマンドを実行して、ダウンロードした MSI の整合性を確認します。
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```次に例を示します。C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5

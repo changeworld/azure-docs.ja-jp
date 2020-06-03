@@ -10,17 +10,19 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 05d658c052c5bc12f49d957bb29ad085c269c57b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bb32418a9f6f556c3bcdfbdf8a70a10c4588218
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137368"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646147"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+この記事では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) の自動機械学習を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+
+コードの作成経験が少ない場合は、「[チュートリアル:自動機械学習を使用して自転車シェアリング需要を予測する](tutorial-automated-ml-forecast.md)」で [Azure Machine Learning Studio](https://ml.azure.com/) の自動機械学習を使用して、時系列の予測を行う方法について参照してください。
 
 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 
 
@@ -40,7 +42,6 @@ ms.locfileid: "82137368"
 
 ## <a name="time-series-and-deep-learning-models"></a>時系列モデルとディープ ラーニング モデル
 
-
 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
 
 ディープ ラーニング モデルには、3 つの組み込み機能があります。
@@ -51,7 +52,6 @@ ms.locfileid: "82137368"
 大きなデータを指定すると、Microsoft の ForecastTCN などのディープ ラーニング モデルは、結果として得られるモデルのスコアを向上させることができます。 [ディープ ラーニングの実験を構成する](#configure-a-dnn-enable-forecasting-experiment)方法について説明します。
 
 自動 ML では、レコメンデーション システムの一部として、ネイティブな時系列モデルとディープ ラーニング モデルの両方をユーザーに提供します。 
-
 
 モデル| 説明 | メリット
 ----|----|---
@@ -112,7 +112,7 @@ test_labels = test_data.pop(label).values
 
 ![alt text](./media/how-to-auto-train-forecast/ROCV.svg)
 
-この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。 `n_cross_validations` を使用してトレーニング データと検証データを一緒に渡し、クロス検証フォールドの数を設定することで、ROCV が予測タスクに自動的に使用されます。 
+この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。 `n_cross_validations` を使用してトレーニング データと検証データを一緒に渡し、クロス検証フォールドの数を設定することで、ROCV が予測タスクに自動的に使用されます。 自動 ML がクロス検証を適用して、[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-over-fitting)する方法の詳細について説明します。
 
 ```python
 automl_config = AutoMLConfig(task='forecasting',

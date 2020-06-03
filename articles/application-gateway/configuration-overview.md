@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632190"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856062"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -101,18 +101,18 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
    0\.0.0.0/0 トラフィックをインターネットに直接送信する UDR を作成できます。 
 
-  **シナリオ 3**:Azure Kubernetes Service kubenet の UDR
+  **シナリオ 3**:Azure Kubernetes Service と kubenet の UDR
 
-  Azure Kubernetes Service (AKS) と Application Gateway Ingress Controller (AGIC) で kubenet を使用している場合は、ポッドに送信されたトラフィックが正しいノードにルーティングされるように、ルート テーブルを設定する必要があります。 これは、Azure CNI を使用する場合は必要ありません。 
+  Azure Kubernetes Service (AKS) と Application Gateway Ingress Controller (AGIC) で kubenet を使用している場合は、アプリケーション ゲートウェイからポッドに送信されたトラフィックが正しいノードにルーティングされるように、ルート テーブルが必要になります。 これは、Azure CNI を使用する場合は必要ありません。 
 
-   kubenet が機能するようにルート テーブルを設定するには、次の手順に従います。
+  kubenet が機能するようにルート テーブルを使用するには、次の手順に従います。
 
-  1. Azure でルート テーブル リソースを作成します。 
-  2. 作成されたら、 **[ルート]** ページにアクセスします。 
-  3. 新しいルートを追加します。
+  1. AKS によって作成されたリソース グループに移動します (リソース グループの名前は "MC_" で始まるはずです)
+  2. そのリソース グループで AKS によって作成されたルート テーブルを探します。 ルート テーブルには次の情報が入ります。
      - アドレス プレフィックスは、AKS でアクセスするポッドの IP 範囲にする必要があります。 
-     - 次ホップの種類は **[仮想アプライアンス]** にする必要があります。 
-     - 次ホップ アドレスは、アドレス プレフィックス フィールドで定義されている IP 範囲内のポッドをホストしているノードの IP アドレスにする必要があります。 
+     - 次ホップの種類は [仮想アプライアンス] にする必要があります。 
+     - 次ホップ アドレスは、ポッドをホストしているノードの IP アドレスになります。
+  3. このルートテーブルを Application Gateway サブネットに関連付けます。 
     
   **v2 でサポートされないシナリオ**
 

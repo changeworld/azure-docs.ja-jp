@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684704"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983569"
 ---
 # <a name="execute-r-script"></a>R スクリプトの実行
 
@@ -42,6 +42,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> パイプラインに複数の R スクリプトの実行モジュールが含まれており、プレインストールされている一覧に含まれていない同じパッケージが必要な場合は、それぞれのモジュールにそれらのパッケージをインストールしてください。 
 
 ## <a name="installing-r-packages"></a>R パッケージのインストール
 追加の R パッケージをインストールするには、`install.packages()` メソッドを使用します。 パッケージは、**R スクリプトの実行**モジュールごとにインストールされ、他の **R スクリプトの実行**モジュール間で共有されることはありません。
@@ -140,7 +142,7 @@ azureml_main <- function(dataframe1, dataframe2){
 1. **[R script]\(R スクリプト\)** テキストボックスに、有効な R スクリプトを入力するか貼り付けます。
 
     > [!NOTE]
-    > スクリプトを記述するときは十分に注意し、宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 また、このドキュメントの最後にある、事前にインストールされているパッケージの一覧にも特別な注意を払ってください。 一覧表示されていないパッケージを使用するには、`install.packages("zoo",repos = "http://cran.us.r-project.org")` などのスクリプトでインストールしてください。
+    > スクリプトを記述するときは十分に注意し、宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことをご確認ください。 また、このドキュメントの最後にある、プレインストールされているパッケージの一覧にも特別な注意を払ってください。 一覧表示されていないパッケージを使用するには、`install.packages("zoo",repos = "http://cran.us.r-project.org")` などのスクリプトでインストールしてください。
     
     > [!NOTE]
     > X11 ライブラリが事前にインストールされていないため、"View" などの X11 ライブラリに依存する関数はサポートされていません。

@@ -3,12 +3,12 @@ title: Helm グラフの保存
 description: Azure Container Registry のリポジトリを使用して Kubernetes アプリケーションの Helm グラフを保存する方法について説明します
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399390"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857614"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル
 
@@ -31,8 +31,8 @@ Helm 3 または Helm 2 を使用して Azure Container Registry で Helm グラ
 ### <a name="additional-information"></a>関連情報
 
 * ほとんどの場合、グラフを OCI 成果物として管理するために、Helm 3 ワークフローをネイティブの `helm chart` コマンドと共に使用することをお勧めします。
-* Helm 3 クライアントおよびグラフでは、従来の [az acr helm][az-acr-helm] Azure CLI コマンドとワークフローを使用できます。 ただし、`az acr helm list` などの特定のコマンドは Helm 3 グラフと互換性がありません。
-* Helm 3 では、[az acr helm][az-acr-helm] コマンドは、主に Helm 2 クライアントおよびグラフ形式との互換性のためにサポートされています。 今後、これらのコマンドの開発は計画されていません。
+* Helm 3 では、[az acr helm][az-acr-helm] コマンドは、Helm 2 クライアントおよびグラフ形式との互換性のためにサポートされています。 今後、これらのコマンドの開発は計画されていません。 [製品ロードマップ](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)をご覧ください。
+* Azure portal を使用して、Helm 2 のグラフを表示または管理することはできません。
 
 ## <a name="use-the-helm-3-client"></a>Helm 3 クライアントを使用する
 

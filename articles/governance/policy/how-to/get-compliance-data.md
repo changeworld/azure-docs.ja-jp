@@ -1,14 +1,14 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
-ms.date: 02/01/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d4d9c530a7f9c4683f522a08a30e23437d1774cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194008"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747082"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -44,7 +44,41 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 
 ### <a name="on-demand-evaluation-scan"></a>オンデマンドの評価スキャン
 
-サブスクリプションまたはリソース グループの評価スキャンは、REST API の呼び出しで開始できます。 このスキャンは非同期プロセスです。 そのため、スキャンを開始する REST エンドポイントは、スキャンが応答を完了するまで待機しません。 代わりに、要求された評価の状態を照会する URI を提供します。
+サブスクリプションまたはリソース グループの評価スキャンは、Azure PowerShell または REST API の呼び出しで開始できます。 このスキャンは非同期プロセスです。
+
+#### <a name="on-demand-evaluation-scan---azure-powershell"></a>オンデマンド評価スキャン - Azure PowerShell
+
+対応スキャンは、[Start-AzPolicyComplianceScan](/powershell/module/az.policyinsights/start-azpolicycompliancescan) コマンドレットを使用して開始されます。
+
+既定では、`Start-AzPolicyComplianceScan` によって現在のサブスクリプションのすべてのリソースの評価が開始されます。 特定のリソース グループで評価を開始するには、**ResourceGroupName** パラメーターを使用します。 次の例では、_MyRG_ リソース グループの現在のサブスクリプションで対応スキャンを開始します。
+
+```azurepowershell-interactive
+Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+```
+
+PowerShell で非同期呼び出しが完了するのを待ってから、結果の出力を提供したり、[ジョブ](/powershell/module/microsoft.powershell.core/about/about_jobs)としてバックグラウンドで実行したりすることができます。 PowerShell ジョブを使用して、バックグラウンドで対応スキャンを実行するには、**AsJob** パラメーターを使用して、次の例の `$job` のようにオブジェクトに値を設定します。
+
+```azurepowershell-interactive
+$job = Start-AzPolicyComplianceScan -AsJob
+```
+
+`$job` オブジェクトをチェックすることによって、ジョブの状態を確認できます。 ジョブの型は `Microsoft.Azure.Commands.Common.AzureLongRunningJob` です。 使用できるプロパティとメソッドを確認するには、`$job` オブジェクトの `Get-Member` を使用します。
+
+対応スキャンが実行されている間に `$job` オブジェクトをチェックすると、次のような結果が出力されます。
+
+```azurepowershell-interactive
+$job
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+```
+
+対応スキャンが完了すると、**State** プロパティが _Completed_ に変わります。
+
+#### <a name="on-demand-evaluation-scan---rest"></a>オンデマンドの評価スキャン - REST
+
+非同期プロセスであるため、スキャンを開始する REST エンドポイントは、スキャンが応答を完了するまで待機しません。 代わりに、要求された評価の状態を照会する URI を提供します。
 
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
@@ -56,19 +90,19 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 - サブスクリプション
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 - Resource group
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 この呼び出しは「**202 受理されました**」の状態を返します。 応答ヘッダーには、次の形式の **Location** プロパティが含まれています。
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
 `{ResourceContainerGUID}` は、要求されたスコープに対して静的に生成されます。 スコープで既にオンデマンド スキャンが実行されている場合、新しいスキャンは開始されません。 代わりに、新しい要求で状態の同じ `{ResourceContainerGUID}` **場所**の URI が提供されます。 **場所**の URI に対する REST API の **GET** コマンドは、評価の進行中に「**202 受理されました**」を返します。 評価スキャンが完了すると、「**200 OK**」の状態を返します。 完了済みスキャンの本文は、状態を含む JSON 応答です。
@@ -110,8 +144,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 Azure Policy では、定義内の **type** と **name** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**または**非準拠**のどちらかの状態になります。 **型**または**名前**のどちらかが定義の唯一のプロパティである場合は、すべてのリソースが適用可能と見なされ、評価されます。
 
-コンプライアンス対応率は、**準拠している**リソースを _リソース合計_ で割って算出されます。
-_リソース合計_ は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
+コンプライアンス対応率は、**準拠している**リソースを _リソース合計_で割って算出されます。
+_リソース合計_は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="[コンプライアンス] ページからのポリシー コンプライアンスの例" border="false":::
 
@@ -157,7 +191,7 @@ REST API の例については、ARMClient または同様のツールを使用�
 REST API を使用すると、コンテナー、定義、または割り当てごとに要約を実行できます。 Azure Policy Insights の [[Summarize For Subscription]\(サブスクリプションの要約\)](/rest/api/policy-insights/policystates/summarizeforsubscription) を使用した、サブスクリプション レベルでの要約の例を次に示します。
 
 ```http
-POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
 ```
 
 出力はサブスクリプションを要約しています。 以下の出力例では、要約されたコンプライアンスは **value.results.nonCompliantResources** と **value.results.nonCompliantPolicies** の下にあります。 この要求では、より詳細な情報が提供されます。たとえば、非準拠として数えられている各割り当てや、各割り当ての定義情報などです。 階層内の各ポリシー オブジェクトは、そのレベルで追加の詳細情報を取得するために使用することができる **queryResultsUri** を提供しています。
@@ -170,7 +204,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
         "@odata.id": null,
         "@odata.context": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
         "results": {
-            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
+            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
             "nonCompliantResources": 15,
             "nonCompliantPolicies": 1
         },
@@ -178,7 +212,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
             "policyAssignmentId": "/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77",
             "policySetDefinitionId": "",
             "results": {
-                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
+                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
                 "nonCompliantResources": 15,
                 "nonCompliantPolicies": 1
             },
@@ -187,7 +221,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
                 "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "effect": "deny",
                 "results": {
-                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
                     "nonCompliantResources": 15
                 }
             }]
@@ -201,7 +235,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 上の例では、**value.policyAssignments.policyDefinitions.results.queryResultsUri** によって、特定のポリシー定義に準拠していないすべてのリソースのためのサンプル URI が提供されています。 **$filter** の値を見ると、IsCompliant は false に等しく (eq)、PolicyAssignmentId がポリシー定義に対して指定され、その後 PolicyDefinitionId 自体が指定されています。 フィルターに PolicyAssignmentId を含める理由は、PolicyDefinitionId がさまざまなスコープの複数のポリシーまたはイニシアティブ割り当てに存在する可能性があるためです。 PolicyAssignmentId と PolicyDefinitionId の両方を指定することにより、必要とする結果を明示することができます。 以前は、PolicyStates に **latest** を使用しました。この場合、直前の 24 時間の **from** および **to** 時間枠が自動的に設定されます。
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
 以下の応答例は、簡潔にするため、1 つの準拠していないリソースを示すようにトリミングされています。 詳細な応答には、リソース、ポリシーまたはイニシアティブ、および割り当てに関するいくつかのデータがあります。 ポリシー定義にどの割り当てパラメーターが渡されたかを確認することもできることに注意してください。
@@ -247,7 +281,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 リソースを作成または更新すると、ポリシーの評価結果が生成されます。 これらの結果は "_ポリシー イベント_" と呼ばれます。 サブスクリプションに関連する最近のポリシー イベントを表示するには、次の URI を使用します。
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2019-10-01
 ```
 
 次のような結果が返されます。

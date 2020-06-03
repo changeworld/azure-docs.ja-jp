@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985883"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125793"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -109,7 +109,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>既存のアプリケーションのホスティング プランを決定する
 
-自分の関数アプリが使用するホスティング プランを確認するには、[Azure Portal](https://portal.azure.com) で関数アプリの **[概要]** タブの **[App Service プラン / 価格レベル]** を表示します。 App Service プランについては価格レベルも示されます。
+自分の関数アプリで使用されるホスティング プランを確認するには、[Azure portal](https://portal.azure.com) で関数アプリの **[概要]** タブの **[App Service プラン]** を表示します。 価格レベルを表示するには、 **[App Service プラン]** の名前を選択し、左側のウィンドウから **[プロパティ]** を選択します。
 
 ![ポータルでのスケーリング プランの表示](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
-どのプランでも、関数アプリを使用するには、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 これは、Functions が、Azure Storage を利用してトリガーの管理や関数実行のログなどの操作を行っているためですが、ストレージ アカウントによってはキューと表はサポートされません。 そのようなアカウント (BLOB専用ストレージ アカウント (including premium storage) や、ゾーン冗長ストレージ レプリケーションを備えた汎用ストレージ アカウントなど) は、関数アプリを作成するときに既存の **[ストレージ アカウント]** の選択肢から除外されます。
+どのプランでも、関数アプリを使用するには、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 これは、Azure Functions が、Azure Storage を利用してトリガーの管理や関数実行のログなどの操作を行っているためですが、ストレージ アカウントによってはキューと表はサポートされません。 そのようなアカウント (BLOB専用ストレージ アカウント (including premium storage) や、ゾーン冗長ストレージ レプリケーションを備えた汎用ストレージ アカウントなど) は、関数アプリを作成するときに既存の **[ストレージ アカウント]** の選択肢から除外されます。
 
 関数アプリで使用されるものと同じストレージ アカウントを、アプリケーション データを格納するためのトリガーとバインドで使用することもできます。 ただし、ストレージを集中的に使用する操作の場合は、別のストレージ アカウントを使用する必要があります。  
 
@@ -162,7 +162,7 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 
 関数アプリには、スケールに影響を及ぼすさまざまな側面 (ホスト構成、ランタイム フットプリント、リソースの効率など) があります。  詳細については、[パフォーマンスの考慮事項に関する記事のスケーラビリティのセクション](functions-best-practices.md#scalability-best-practices)をご覧ください。 関数アプリがスケールするにつれて、接続がどのように変化するかを認識する必要もあります。 詳細については、「[How to manage connections in Azure Functions](manage-connections.md)」(Azure Functions で接続を管理する方法) を参照してください。
 
-Python と Node.js のスケールインの詳細については、[Azure Functions Python 開発者ガイド - スケーリングとコンカレンシー](functions-reference-python.md#scaling-and-concurrency)に関するページおよび [Azure Functions Node.js 開発者ガイド - スケーリングとコンカレンシー](functions-reference-node.md#scaling-and-concurrency)に関するページを参照してください。
+Python と Node.js のスケールインの詳細については、「[Azure Functions の Python 開発者向けガイド - スケーリングとコンカレンシー](functions-reference-python.md#scaling-and-concurrency)」および [Azure Functions Node.js 開発者ガイド - スケーリングとコンカレンシー](functions-reference-node.md#scaling-and-concurrency)に関するページを参照してください。
 
 ### <a name="billing-model"></a>課金モデル
 

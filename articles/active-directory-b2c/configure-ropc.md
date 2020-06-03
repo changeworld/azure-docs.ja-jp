@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189703"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636411"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "78189703"
 
    次の例のようなエンドポイントが表示されます。
 
-   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
+   `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/v2.0/.well-known/openid-configuration`
 
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
@@ -50,17 +50,17 @@ ms.locfileid: "78189703"
 ## <a name="test-the-user-flow"></a>ユーザー フローをテストする
 
 お気に入りの API 開発アプリケーションを使用して API 呼び出しを生成し、応答を確認して、ユーザー フローをデバッグします。 次の表の情報を使用して、POST 要求の本文として、このような呼び出しを作成します。
-- *\<yourtenant.onmicrosoft.com>* は実際の B2C テナント名に置き換えます。
+- *\<tenant-name>.onmicrosoft.com* は実際の B2C テナント名に置き換えます。
 - *\<B2C_1A_ROPC_Auth>* は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 - *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* は実際の登録のアプリケーション ID に置き換えます。
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
 | Key | 値 |
 | --- | ----- |
 | username | leadiocl@outlook.com |
-| パスワード | Passxword1 |
-| grant_type | パスワード |
+| password | Passxword1 |
+| grant_type | password |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
@@ -70,8 +70,8 @@ ms.locfileid: "78189703"
 実際の POST 要求は次のようになります。
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -94,7 +94,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 次の表の情報を要求の本文として使用して、ここに示すような POST 呼び出しを作成します。
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
 | Key | 値 |
 | --- | ----- |

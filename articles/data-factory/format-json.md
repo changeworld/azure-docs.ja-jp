@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 05/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e26a2ed81ed215d7ef2029123349b39e6e67d25
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686283"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890916"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -90,16 +90,15 @@ Azure Blob Storage 上の JSON データセットの例を次に示します。
 | プロパティ      | 説明                                                  | 必須                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings の type は、**JsonWriteSettings** に設定する必要があります。 | はい                                                   |
-| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
+| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** (JSON 行) と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
 
 ### <a name="json-file-patterns"></a>JSON ファイルのパターン
 
-コピー アクティビティでは、JSON ファイルの以下のパターンを自動的に検出および解析することができます。 
+JSON ファイルからデータをコピーする場合、コピー アクティビティでは、JSON ファイルの以下のパターンを自動的に検出および解析することができます。 データを JSON ファイルに書き込む場合は、コピー アクティビティのシンクでファイル パターンを構成できます。
 
 - **タイプ I: setOfObjects**
 
-    各ファイルには、単一のオブジェクト、または改行区切り/連結された複数のオブジェクトが含まれます。 
-    コピー アクティビティのシンクでこのオプションを選択すると、コピー アクティビティによって、各オブジェクトが行ごとに配置された (改行区切りの) 1 つの JSON ファイルが生成されます。
+    各ファイルには、単一のオブジェクト、JSON 行、または連結されたオブジェクトが含まれます。
 
     * **単一オブジェクトの JSON の例**
 
@@ -114,7 +113,7 @@ Azure Blob Storage 上の JSON データセットの例を次に示します。
         }
         ```
 
-    * **改行区切りの JSON の例**
+    * **JSON 行 (シンクの既定値)**
 
         ```json
         {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}

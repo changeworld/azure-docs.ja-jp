@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79300598"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857054"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid リソースのネットワーク セキュリティ
 この記事では、Azure Event Grid で次のセキュリティ機能を使用する方法について説明します。 
@@ -92,10 +92,9 @@ Event Grid リソースにプライベート エンドポイントを使用す�
 発行を成功させるには、プライベート エンドポイントの接続状態が**承認済み**である必要があります。 接続が拒否された場合は、Azure portal を使用して承認することはできません。 唯一の方法は、接続を削除し、代わりに新しい接続を作成することです。
 
 ## <a name="pricing-and-quotas"></a>価格とクォータ
-**プライベート エンドポイント**は、Premium レベルのトピックとドメインでのみ使用できます。 Event Grid では、1 つのトピックまたはドメインにつき最大 64 のプライベート エンドポイント接続を作成できます。 Basic レベルから Premium レベルにアップグレードするには、「[価格レベルの更新](update-tier.md)」の記事を参照してください。
+**プライベート エンドポイント**は、Event Grid の Basic レベルと Premium レベルの両方で使用できます。 Event Grid では、1 つのトピックまたはドメインにつき最大 64 のプライベート エンドポイント接続を作成できます。 
 
 **IP ファイアウォール**機能は、Basic レベルと Premium レベルの両方の Event Grid で使用できます。 トピックまたはドメインごとに最大 16 の IP ファイアウォール規則を作成できます。
-
 
 ## <a name="next-steps"></a>次のステップ
 Event Grid リソースに IP ファイアウォールを構成して、パブリック インターネット経由のアクセスを、IP アドレスまたは IP アドレス範囲の選択されたセットからのみに制限することができます。 詳細な手順については、[IP ファイアウォールの構成](configure-firewall.md)に関する記事を参照してください。

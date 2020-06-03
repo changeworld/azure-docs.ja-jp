@@ -3,12 +3,12 @@ title: コンテナーに対する Azure Monitor を使用してライブ デー
 description: この記事では、コンテナー用 Azure Monitor による kubectl を使用せずに、Kubernetes ログ、イベント、およびポッド メトリックをリアルタイム ビューで表示する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216565"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872111"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "79216565"
 >問題のトラブルシューティングを行うときは、短時間だけ自動スクロールを中断または一時停止することをお勧めします。 これらの要求は、クラスターの Kubernetes API の可用性とスロットリングに影響を与える可能性があります。 
 
 >[!IMPORTANT]
->この機能の操作中、データが永続的に保存されることはありません。 セッション中にキャプチャされたすべての情報は、ブラウザーを閉じるかブラウザーから移動すると削除されます。 データは、メトリック機能の 5 分間のウィンドウ内に表示するために残されています。5 分を経過したメトリックはすべて削除されます。 ライブ データ (プレビュー) では、適切なメモリ使用量の制限内でクエリをバッファー処理します (適切なとは何か、より具体的に示す必要があります)。 
+>この機能の操作中、データが永続的に保存されることはありません。 セッション中にキャプチャされたすべての情報は、ブラウザーを閉じるかブラウザーから移動すると削除されます。 データは、メトリック機能の 5 分間のウィンドウ内に表示するために残されています。5 分を経過したメトリックはすべて削除されます。 ライブ データ (プレビュー) では、適切なメモリ使用量の制限内でクエリがバッファー処理されます。
 
 ## <a name="view-logs"></a>ログを表示する
 

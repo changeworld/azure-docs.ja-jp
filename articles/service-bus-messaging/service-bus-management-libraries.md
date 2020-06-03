@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756268"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901490"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 
@@ -40,7 +40,7 @@ Service Bus 管理ライブラリの使用を開始するには、Azure Active D
 * [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対する**所有者**のアクセス許可が必要です。
+これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対しては、少なくとも [**Azure Service Bus データ所有者**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)または[**共同作成者**](/azure/role-based-access-control/built-in-roles#contributor)のアクセス許可が必要です。
 
 ## <a name="programming-pattern"></a>プログラミング パターン
 

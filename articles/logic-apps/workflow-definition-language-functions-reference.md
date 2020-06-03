@@ -3,19 +3,19 @@ title: 式関数のリァレンス ガイド
 description: Azure Logic Apps および Power Automate の式に含まれる関数のリファレンス ガイド
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/12/2020
+ms.openlocfilehash: fea444f2e864683d6350e1c08872ec574a36852c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237143"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646013"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Power Automate](https://docs.microsoft.com/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Power Automate](https://docs.microsoft.com/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。
 
 > [!NOTE]
 > このリファレンス ページは、Azure Logic Apps と Power Automate の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Power Automate での関数と式について詳しくは、[条件での式の使用](https://docs.microsoft.com/flow/use-expressions-in-conditions)に関する記事をご覧ください。
@@ -29,10 +29,6 @@ ms.locfileid: "79237143"
 ||||
 
 [一般的な目的に基づいて](#ordered-by-purpose)関数を探すには、以降の表をご覧ください。 または、各関数の詳細については、[アルファベット順の一覧](#alphabetical-list)を参照してください。
-
-> [!NOTE]
-> パラメーターの定義の構文において、パラメーターの後に疑問符 (?) が付いている場合は、そのパラメーターが省略可能であることを意味します。
-> たとえば、[getFutureTime()](#getFutureTime) をご覧ください。
 
 ## <a name="functions-in-expressions"></a>式の関数
 
@@ -52,8 +48,7 @@ ms.locfileid: "79237143"
 | 1.*functionName* から結果を取得します。 </br>2.結果がプロパティ *propertyName* を含むオブジェクトであるとして、そのプロパティの値を取得します。 | "\@<*functionName*>(<*item*>).<*propertyName*>" |
 |||
 
-たとえば、`concat()` 関数はパラメーターとして 2 つ以上の文字列値を受け取ることができます。 この関数は、これらの文字列を 1 つの文字列に結合します。
-たとえば "Sophia" と "Owen" のような文字列リテラルを渡して、結合された文字列 "SophiaOwen" を取得できます。
+たとえば、`concat()` 関数はパラメーターとして 2 つ以上の文字列値を受け取ることができます。 この関数は、これらの文字列を 1 つの文字列に結合します。 たとえば "Sophia" と "Owen" のような文字列リテラルを渡して、結合された文字列 "SophiaOwen" を取得できます。
 
 ```json
 "customerName": "@concat('Sophia', 'Owen')"
@@ -67,15 +62,20 @@ ms.locfileid: "79237143"
 
 どちらの例でも、`customerName` プロパティに結果を割り当てています。
 
-一般的な目的別の使用可能な関数の一覧を次に示します。[アルファベット順](#alphabetical-list)の関数の一覧も示します。
+式の関数に関するその他の注意事項を次に示します。
+
+* 関数パラメーターは左から右に評価されます。
+
+* パラメーターの定義の構文において、パラメーターの後に疑問符 (?) が付いている場合は、そのパラメーターが省略可能であることを意味します。 たとえば、[getFutureTime()](#getFutureTime) をご覧ください。
+
+次のセクションでは、一般的な目的に基づいて関数を整理します。または、これらの関数を[アルファベット順](#alphabetical-list)で参照することもできます。
 
 <a name="ordered-by-purpose"></a>
 <a name="string-functions"></a>
 
 ## <a name="string-functions"></a>文字列関数
 
-文字列を処理するには、以下の文字列関数および一部の[コレクション関数](#collection-functions)も使用できます。
-文字列関数は文字列でのみ機能します。
+文字列を処理するには、以下の文字列関数および一部の[コレクション関数](#collection-functions)も使用できます。 文字列関数は文字列でのみ機能します。
 
 | 文字列関数 | タスク |
 | --------------- | ---- |
@@ -119,8 +119,7 @@ ms.locfileid: "79237143"
 
 ## <a name="logical-comparison-functions"></a>論理比較関数
 
-条件の処理、値と式の結果の比較、さまざまな種類のロジックの評価などを行うには、以下の論理比較関数を使用できます。
-各関数の完全なリファレンスについては、[アルファベット順の一覧](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)を参照してください。
+条件の処理、値と式の結果の比較、さまざまな種類のロジックの評価などを行うには、以下の論理比較関数を使用できます。 各関数の完全なリファレンスについては、[アルファベット順の一覧](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)を参照してください。
 
 | 論理比較関数 | タスク |
 | --------------------------- | ---- |
@@ -139,10 +138,10 @@ ms.locfileid: "79237143"
 
 ## <a name="conversion-functions"></a>変換関数
 
-値の型または形式を変更するには、以下の変換関数を使用できます。
-たとえば、値をブール値から整数に変更できます。
-Logic Apps が変換時にコンテンツ タイプを処理する方法の詳細については、「[コンテンツ タイプを処理する](../logic-apps/logic-apps-content-type.md)」を参照してください。
-各関数の完全なリファレンスについては、[アルファベット順の一覧](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)を参照してください。
+値の型または形式を変更するには、以下の変換関数を使用できます。 たとえば、値をブール値から整数に変更できます。 Logic Apps が変換時にコンテンツ タイプを処理する方法の詳細については、「[コンテンツ タイプを処理する](../logic-apps/logic-apps-content-type.md)」を参照してください。 各関数の完全なリファレンスについては、[アルファベット順の一覧](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)を参照してください。
+
+> [!NOTE]
+> Azure Logic Apps を使用すると、一部のデータ型間で値が自動的に変換されます。つまり、このような変換を手動で実行する必要がありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
 
 | 変換関数 | タスク |
 | ------------------- | ---- |
@@ -169,6 +168,35 @@ Logic Apps が変換時にコンテンツ タイプを処理する方法の詳�
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | URI エンコード文字列の文字列バージョンを返します。 |
 | [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | 文字列の XML バージョンを返します。 |
 |||
+
+<a name="implicit-data-conversions"></a>
+
+## <a name="implicit-data-type-conversions"></a>暗黙的なデータ型の変換
+
+Azure Logic Apps を使用すると、一部のデータ型間の変換が自動的または暗黙的に行われるため、これらの型を手動で変換する必要はありません。 たとえば、入力として文字列が想定されている場所で文字列以外の値を使用すると、Logic Apps によって文字列以外の値が文字列に自動的に変換されます。
+
+たとえば、トリガーから出力として数値が返されるとします。
+
+`triggerBody()?['123']`
+
+URL などの文字列入力が想定されている場所でこの数値出力を使用する場合、Logic Apps によって中かっこ (`{}`) 表記を使用して値が文字列に自動的に変換されます。
+
+`@{triggerBody()?['123']}`
+
+### <a name="base64-encoding-and-decoding"></a>Base64 のエンコードとデコード
+
+Logic Apps を使用すると、base64 エンコードまたはデコードが自動的または暗黙的に実行されるため、対応する式を使用してこれらの操作を手動で実行する必要はありません。
+
+* `base64(<value>)`
+* `base64ToBinary(<value>)`
+* `base64ToString(<value>)`
+* `base64(decodeDataUri(<value>))`
+* `concat('data:;base64,',<value>)`
+* `concat('data:,',encodeUriComponent(<value>))`
+* `decodeDataUri(<value>)`
+
+> [!NOTE]
+> たとえば、式エディターを使用してこれらの式をロジック アプリに手動で追加し、Logic App Designer から離れてデザイナーに戻ると、デザイナーにはパラメーター値のみが表示されます。 式は、パラメーター値を編集しない場合にのみコード ビューに保持されます。 それ以外の場合は、Logic Apps によってコード ビューから式が削除され、パラメーター値のみが残ります。 この動作は、式が表示されるかどうかにのみ影響し、エンコードやデコードには影響しません。
 
 <a name="math-functions"></a>
 
@@ -908,6 +936,9 @@ array('hello')
 
 文字列の base64 エンコード バージョンを返します。
 
+> [!NOTE]
+> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
+
 ```
 base64('<value>')
 ```
@@ -937,6 +968,9 @@ base64('hello')
 ### <a name="base64tobinary"></a>base64ToBinary
 
 base64 エンコード文字列のバイナリ バージョンを返します。
+
+> [!NOTE]
+> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
 
 ```
 base64ToBinary('<value>')
@@ -968,9 +1002,10 @@ base64ToBinary('aGVsbG8=')
 
 ### <a name="base64tostring"></a>base64ToString
 
-base64 エンコード文字列の文字列バージョンを返し、実質的に base64 の文字列をデコードします。
-[decodeBase64()](#decodeBase64) ではなく、この関数を使用してください。
-どちらの関数も機能は同じですが、`base64ToString()` をお勧めします。
+base64 エンコード文字列の文字列バージョンを返し、実質的に base64 の文字列をデコードします。 非推奨の [decodeBase64()](#decodeBase64) ではなく、この関数を使用してください。
+
+> [!NOTE]
+> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
 
 ```
 base64ToString('<value>')
@@ -1535,7 +1570,7 @@ dayOfWeek('<timestamp>')
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-返される結果: `3`
+返される結果: `4`
 
 <a name="dayOfYear"></a>
 
@@ -1569,43 +1604,18 @@ dayOfYear('2018-03-15T13:27:36Z')
 
 <a name="decodeBase64"></a>
 
-### <a name="decodebase64"></a>decodeBase64
+### <a name="decodebase64-deprecated"></a>decodeBase64 (非推奨)
 
-base64 エンコード文字列の文字列バージョンを返し、実質的に base64 の文字列をデコードします。
-`decodeBase64()` ではなく、[base64ToString()](#base64ToString) を使うようにしてください。
-どちらの関数も機能は同じですが、`base64ToString()` をお勧めします。
-
-```
-decodeBase64('<value>')
-```
-
-| パラメーター | 必須 | Type | 説明 |
-| --------- | -------- | ---- | ----------- |
-| <*value*> | はい | String | デコードする base64 エンコード文字列 |
-|||||
-
-| 戻り値 | Type | 説明 |
-| ------------ | ---- | ----------- |
-| <*decoded-base64-string*> | String | base64 エンコード文字列の文字列バージョン。 |
-||||
-
-*例*
-
-この例は、base64 エンコード文字列の文字列を作成します。
-
-```
-decodeBase64('aGVsbG8=')
-```
-
-返される結果: `"hello"`
+この関数は非推奨です。代わりに [base64ToString()](#base64ToString) を使用してください。
 
 <a name="decodeDataUri"></a>
 
 ### <a name="decodedatauri"></a>decodeDataUri
 
-データ URI (Uniform Resource Identifier) のバイナリ バージョンを返します。
-`decodeDataUri()` ではなく、[dataUriToBinary()](#dataUriToBinary) を使うようにしてください。
-どちらの関数も機能は同じですが、`dataUriToBinary()` をお勧めします。
+データ URI (Uniform Resource Identifier) のバイナリ バージョンを返します。 `decodeDataUri()` ではなく、[dataUriToBinary()](#dataUriToBinary) を使うようにしてください。 どちらの関数も機能は同じですが、`dataUriToBinary()` をお勧めします。
+
+> [!NOTE]
+> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
 
 ```
 decodeDataUri('<value>')
@@ -1703,9 +1713,10 @@ div(11, 5)
 
 ### <a name="encodeuricomponent"></a>encodeUriComponent
 
-URL の安全でない文字がエスケープ文字に置き換えられた、文字列の URI (Uniform Resource Identifier) エンコード バージョンを返します。
-`encodeUriComponent()` ではなく、[uriComponent()](#uriComponent) を使うようにしてください。
-どちらの関数も機能は同じですが、`uriComponent()` をお勧めします。
+URL の安全でない文字がエスケープ文字に置き換えられた、文字列の URI (Uniform Resource Identifier) エンコード バージョンを返します。 `encodeUriComponent()` ではなく、[uriComponent()](#uriComponent) を使うようにしてください。 どちらの関数も機能は同じですが、`uriComponent()` をお勧めします。
+
+> [!NOTE]
+> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
 
 ```
 encodeUriComponent('<value>')
@@ -2261,8 +2272,7 @@ guid('P')
 
 ### <a name="if"></a>if
 
-式が true か false かを調べます。
-結果に基づき、指定された値を返します。
+式が true か false かを調べます。 結果に基づき、指定された値を返します。 パラメーターは左から右へ評価されます。
 
 ```
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
@@ -2426,9 +2436,11 @@ iterationIndexes('<loopName>')
 
 *例* 
 
-この例では、カウンター変数を作成し、カウンター値が 5 に達するまで、Until ループ内の各繰り返しの間に 1 つずつその変数を増分します。 また、この例では各繰り返しの現在のインデックスを追跡する変数も作成します。 Until ループで、各繰り返しの間にカウンターを増分し、カウンターの値を現在のインデックス値に割り当ててから、カウンターを増分します。 いつでも、現在のインデックス値を取得することによって、現在の繰り返しの回数を判別できます。
+この例では、カウンター変数を作成し、カウンター値が 5 に達するまで、Until ループ内の各繰り返しの間に 1 つずつその変数を増分します。 また、この例では各繰り返しの現在のインデックスを追跡する変数も作成します。 Until ループで、各繰り返しの間にカウンターを増分し、カウンターの値を現在のインデックス値に割り当ててから、カウンターを増分します。 ループ内で、この例は、`iterationIndexes` 関数を使用して現在の反復インデックスを参照します。
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2459,7 +2471,7 @@ iterationIndexes('<loopName>')
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2472,6 +2484,15 @@ iterationIndexes('<loopName>')
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {
@@ -2481,7 +2502,7 @@ iterationIndexes('<loopName>')
                "runAfter": {}
             }
          },
-         "expression": "@equals(variables('myCounter'), 5),
+         "expression": "@equals(variables('myCounter'), 5)",
          "limit": {
             "count": 60,
             "timeout": "PT1H"
@@ -3724,7 +3745,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | <*updated-timestamp*> | String | 指定したタイムスタンプの月の開始日の午前 0 時を表す文字列 |
 ||||
 
-*例*
+*例 1*
 
 この例は、次のタイムスタンプの月の開始を返します。
 
@@ -3733,6 +3754,16 @@ startOfMonth('2018-03-15T13:30:30Z')
 ```
 
 返される結果: `"2018-03-01T00:00:00.0000000Z"`
+
+*例 2*
+
+この例では、次のタイムスタンプの月の開始を指定した形式で返します。
+
+```
+startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
+```
+
+返される結果: `"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3965,8 +3996,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 ### <a name="ticks"></a>ticks
 
-指定したタイムスタンプの `ticks` プロパティの値を返します。
-"*ティック*" は 100 ナノ秒の間隔です。
+1 月 1 日 0001 12:00:00 午前 0 時から指定したタイムスタンプまでの 100 ナノ秒間隔のティック数 (または C# の DateTime.Ticks) を返します。 詳細については、[DateTime.Ticks プロパティ (システム)](https://docs.microsoft.com/dotnet/api/system.datetime.ticks?view=netframework-4.7.2#remarks) のトピックを参照してください。
 
 ```
 ticks('<timestamp>')

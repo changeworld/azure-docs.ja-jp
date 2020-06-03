@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312050"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198796"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -59,9 +59,9 @@ Azure Az モジュールがインストールされているかどうかを確�
 
 このオプションを使用するには、コンピューターに Azure Az モジュールがインストールされていないことが必要です。 インストールされている場合、次のコマンドにはエラーが表示されます。 Azure Az モジュールをアンインストールするか、もう 1 つのオプションであるスクリプトを手動でダウンロードして実行する方法を使用します。
   
-次のコマンドを使用してこのスクリプトを実行します。
+次のコマンドを使用してスクリプトを実行し、最新バージョンを取得します。
 
-`Install-Script -Name AzureAppGWMigration`
+`Install-Script -Name AzureAppGWMigration -Force`
 
 このコマンドでは、必要な Az モジュールもインストールされます。  
 
@@ -196,7 +196,7 @@ Azure PowerShell スクリプトにより、既存の v1 ゲートウェイの�
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>このスクリプトの使用中に問題が発生しました。 どこに問い合わせればよいですか?
   
-appgwmigrationsup@microsoft.com 宛に電子メールを送信する方法と、Azure サポートでサポート ケースを開く方法があります (両方利用できます)。
+Azure サポートについては、"構成と設定、V2 SKU への移行" に関するトピックを参照してください。 Azure サポートの詳細については、[こちら](https://azure.microsoft.com/support/options/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

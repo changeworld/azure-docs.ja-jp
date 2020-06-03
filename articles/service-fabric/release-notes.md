@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729593"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891725"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -36,8 +36,8 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 いよいよ Service Fabric の次期リリースが発表となりました。 このリリースでは、重要な機能の追加と改良が行われています。 以下、主な機能をいくつか紹介します。
 ## <a name="key-announcements"></a>重要な発表
 - [**Service Fabric アプリケーション用 Service Fabric マネージド ID**](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) を**一般提供**
-- [**Ubuntu 1804 をサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**プレビュー: VMSS エフェメラル OS ディスクをサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**:エフェメラル OS ディスクは、ローカル仮想マシン上に作成されるストレージであり、リモート Azure Storage には保存されません。 エフェメラル OS ディスクは、従来の永続 OS ディスクと比べて、次のような特徴を持っているため、すべての Service Fabric ノードの種類 (プライマリとセカンダリ) で推奨されます。
+- [**Ubuntu 18.04 のサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**プレビュー: 仮想マシン スケール セットのエフェメラル OS ディスクのサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**:エフェメラル OS ディスクは、ローカル仮想マシン上に作成されるストレージであり、リモート Azure Storage には保存されません。 エフェメラル OS ディスクは、従来の永続 OS ディスクと比べて、次のような特徴を持っているため、すべての Service Fabric ノードの種類 (プライマリとセカンダリ) で推奨されます。
       -  OS ディスクへの読み取り/書き込み待機時間が短縮される
       -  ノード管理操作をすばやくリセットまたは再イメージ化できる
       -  全体的なコストが削減される (ディスクは無料であり、追加のストレージ コストは発生しません)
@@ -61,7 +61,7 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
        
  ### <a name="reliable-collections-improvements"></a>リライアブル コレクションの改良
 
-- [**ステートフル サービス向けに、リライアブル コレクションを使用したインメモリのみのストアをサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): 揮発性のリライアブル コレクションを使用すると、大規模な停電に備えてデータをディスクに保存して永続化することができます。揮発性のリライアブル コレクションは、レプリケートされたキャッシュなど、低頻度であればデータの損失が許容されるようなワークロードに使用できます。[揮発性のリライアブル コレクションの制限事項と制約事項](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)に基づき、まれに発生するクォーラム損失を処理するサービスで、永続化を必要としないワークロードにお勧めします。
+- [**ステートフル サービス向けに、リライアブル コレクションを使用したインメモリのみのストアをサポート**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): 揮発性のリライアブル コレクションを使用すると、大規模な停電に備えてデータをディスクに保存して永続化することができます。揮発性のリライアブル コレクションは、レプリケートされたキャッシュなど、低頻度であればデータの損失が許容されるようなワークロードに使用できます。 [揮発性のリライアブル コレクションの制限事項と制約事項](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)に基づき、まれに発生するクォーラム損失を処理するサービスで、永続化を必要としないワークロードにお勧めします。
 - [**プレビュー: Service Fabric バックアップ エクスプローラー**](https://github.com/microsoft/service-fabric-backup-explorer): Service Fabric のステートフル アプリケーションで使用するリライアブル コレクションのバックアップを管理しやすくするために、Service Fabric バックアップ エクスプローラーには次の機能が備わっています。
     - リライアブル コレクションの内容を監査、確認する
     - 現在の状態を一貫したビューに反映する
@@ -89,7 +89,7 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
   
 - [**ユーザー サービスのリソース制限**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services)ユーザーは、ノード上のユーザー サービスのリソース制限を設定して、Service Fabric システム サービスのリソース不足などのシナリオを防ぐことができます。 
   
-- 特定の種類のレプリカの[**非常に高いサービス移動コスト**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)。 移動コストが非常に高いレプリカは、他の方法では解決できないクラスター内での制約違反があった場合にのみ移動されます。 ”非常に高い” 移動コストの使用が妥当である状況、およびその他の考慮事項については、ドキュメントを参照してください。
+- 特定の種類のレプリカの[**非常に高いサービス移動コスト**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)。 移動コストが非常に高いレプリカは、他の方法では解決できないクラスター内での制約違反があった場合にのみ移動されます。 "非常に高い" 移動コストの使用が妥当である状況、およびその他の考慮事項については、リンク先のドキュメントを参照してください。
   
 -  **追加のクラスターの安全性チェック**:このリリースでは、構成可能なシード ノード クォーラム安全性チェックが導入されました。 これにより、クラスターのライフサイクルと管理のシナリオで使用できるようにする必要があるシード ノードの数をカスタマイズできます。 構成された値を下回るクラスターを取得する操作はブロックされます。 現在、既定値は常にシード ノードのクォーラムです。たとえば、7 つのシード ノードがある場合、5 つのシード ノードを下回る操作は既定でブロックされます。 この変更により、最小セーフ値 6 を作成できるようになりました。これにより、一度にダウンするシード ノードを 1 つだけにすることができます。
    

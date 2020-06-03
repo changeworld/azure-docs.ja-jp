@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 27619a69a1f7fbded8ce6430afc2b8e9a8b4a00c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79296729"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115032"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>クラスの種類の概要 - Azure Lab Services
 
@@ -61,6 +61,10 @@ Linux でのシェル スクリプトの作成を教えるためのラボを設�
 
 この種類のラボを設定する方法の詳細については、[Android Studio でのモバイル アプリケーション開発を教えるためのラボの設定](class-type-mobile-dev-android-studio.md)に関するページを参照してください。
 
+## <a name="big-data-analytics"></a>ビッグ データ分析
+ビッグ データ分析クラスを教えるためのラボを設定できます。 この種類のクラスでは、学生は大量のデータを処理し、機械と統計の学習のアルゴリズムを適用してデータの分析情報を導き出す方法について学習します。 学生の主な目的は、ビッグ データを格納、管理、および処理するためのツールを提供する Apache Hadoop のオープンソース ソフトウェア パッケージなどのデータ分析ツールを使用する方法について学習することです。 
+
+この種類のラボを設定する方法の詳細については、「[Hortonworks Data Platform の Docker デプロイを使用してビッグ データ分析のためのラボを設定する](class-type-big-data-analytics.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

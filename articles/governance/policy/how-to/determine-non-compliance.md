@@ -1,14 +1,14 @@
 ---
 title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
-ms.date: 04/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182584"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684228"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -115,7 +115,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 ポリシー準拠の詳細を表示するには、前のセクションと同じ手順に従ってください。
 
-**[ポリシー準拠状況の詳細]** ウィンドウで、 **[前回の評価済みリソース]** をクリックします。
+[ポリシー準拠状況の詳細] ウィンドウで、 **[前回の評価済みリソース]** をクリックします。
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="auditIfNotExists 定義の詳細の表示" border="false":::
 

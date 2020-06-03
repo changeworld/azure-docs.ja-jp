@@ -4,14 +4,14 @@ description: この記事では、Azure Automation を使用して Azure Analysi
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572348"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926563"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
 
@@ -60,7 +60,7 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
 
     ![資格情報の作成](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. 資格情報の詳細を入力します。  **[ユーザー名]** には **[SPN ClientId]** を入力し、 **[パスワード]** には **[SPN シークレット]\(SPN シークレット\)** を入力します。
+2. 資格情報の詳細を入力します。 **[ユーザー名]** にサービス プリンシパルのアプリケーション ID (appid) を入力し、 **[パスワード]** にサービス プリンシパル シークレットを入力します。
 
     ![資格情報の作成](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -173,7 +173,7 @@ JSON 本文の例:
 > [!IMPORTANT]
 > 仮想マシンのパブリック IP アドレスが静的に構成されていることを確認します。
 >
->Azure Automation Hybrid Workers の構成に関する詳細については、「[Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker)」を参照してください。
+>Azure Automation Hybrid Worker の構成の詳細については、「[Hybrid Runbook Worker をインストールする](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)」を参照してください。
 
 Hybrid Worker が構成されたら、「[Data Factory で使用する](#consume-with-data-factory)」セクションで説明されているように Webhook を作成します。  ここでの唯一の違いは、Webhook を構成するときに **[Run on]\(実行先\)**  >  **[Hybrid Worker]** オプションを選択することです。
 

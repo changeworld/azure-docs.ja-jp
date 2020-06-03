@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426731"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983229"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>データ ソースへのマネージド プライベート エンドポイントを作成する (プレビュー)
 
@@ -30,17 +30,17 @@ Azure Synapse Studio で、左側のナビゲーションから **[管理]** タ
 
 ## <a name="step-3-select-the-data-source-type"></a>手順 3:データ ソースの種類を選択する
 
-データ ソースの種類を選択します。 この場合、ターゲット データ ソースは ADLS gen2 アカウントです。 **[続行]** をクリックします。
+データ ソースの種類を選択します。 この場合、ターゲット データ ソースは ADLS Gen2 アカウントです。 **[続行]** をクリックします。
 ![ターゲット データ ソースの種類を選択する](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>手順 4:データ ソースに関する情報を入力する
 
-次のウィンドウで、データ ソースに関する情報を入力します。 この例では、ADLS gen2 アカウントへのマネージド プライベート エンドポイントを作成しています。 マネージド プライベート エンドポイントの **[名前]** を入力します。 **[Azure サブスクリプション]** および **[ストレージ アカウント名]** を指定します。 **［作成］** を選択します
+次のウィンドウで、データ ソースに関する情報を入力します。 この例では、ADLS Gen2 アカウントへのマネージド プライベート エンドポイントを作成しています。 マネージド プライベート エンドポイントの **[名前]** を入力します。 **[Azure サブスクリプション]** および **[ストレージ アカウント名]** を指定します。 **［作成］** を選択します
 ![ターゲット データ ソースの詳細を入力する](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>手順 5:マネージド プライベート エンドポイントが正常に作成されたことを確認する
 
-要求を送信すると、その状態が表示されます。 マネージド プライベート エンドポイントが正常に作成されたことを検証するには、その *[Provisioning State]\(プロビジョニングの状態\)* を確認します。 プロビジョニングの状態を更新するために、1 分待ってから **[更新]** を選択することが必要な場合があります。 ADLS gen2 アカウントへのマネージド プライベート エンドポイントが正常に作成されたことがわかります。
+要求を送信すると、その状態が表示されます。 マネージド プライベート エンドポイントが正常に作成されたことを検証するには、その *[Provisioning State]\(プロビジョニングの状態\)* を確認します。 プロビジョニングの状態を更新するために、1 分待ってから **[更新]** を選択することが必要な場合があります。 ADLS Gen2 アカウントへのマネージド プライベート エンドポイントが正常に作成されたことがわかります。
 
 また、 *[承認状態]* が *[Pending]\(保留中\)* であることも確認できます。 ターゲット リソースの所有者は、プライベート エンドポイント接続要求を承認または拒否できます。 所有者がプライベート エンドポイント接続要求を承認すると、プライベート リンクが確立されます。 拒否した場合、プライベート リンクは確立されません。
 ![マネージド プライベート エンドポイント作成要求の状態](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

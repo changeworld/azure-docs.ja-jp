@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でクラスターを構成する方
 services: container-service
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 94f84beee2d7a76e48ac1470a0ce0b387929cc08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe5ce13d9db8f2bc2231f87de7e602e63d239bfa
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474176"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725148"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -49,6 +49,8 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/U
 az provider register --namespace Microsoft.ContainerService
 ```
 
+### <a name="new-clusters"></a>新しいクラスター
+
 クラスターが作成されるときに Ubuntu 18.04 を使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、Ubuntu 18.04 を既定の OS として設定します。
 
 ```azure-cli
@@ -56,6 +58,17 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-
 ```
 
 通常の Ubuntu 16.04 クラスターを作成するには、カスタムの `--aks-custom-headers` タグを省略します。
+
+### <a name="existing-clusters"></a>既存のクラスター
+
+Ubuntu 18.04 を使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、Ubuntu 18.04 をそのノード プールの既定の OS として設定します。
+
+```azure-cli
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
+```
+
+通常の Ubuntu 16.04 ノード プールを作成するには、カスタムの `--aks-custom-headers` タグを省略します。
+
 
 ## <a name="custom-resource-group-name"></a>カスタム リソース グループ名
 
@@ -67,7 +80,7 @@ Azure Kubernetes Service クラスターを Azure にデプロイすると、ワ
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-resource-group myNodeResourceGroup
 ```
 
-セカンダリ リソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。 クラスターが作成されるときにのみ、カスタムのリソース グループ名を指定できることに注意してください。 
+セカンダリ リソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。 クラスターが作成されるときにのみ、カスタムのリソース グループ名を指定できます。 
 
 ノード リソース グループを使うときは、次のことができないので注意してください。
 

@@ -4,12 +4,12 @@ description: メトリック アラートの用途と、Azure Monitor での機�
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397972"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855045"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -26,7 +26,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 静的
-- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされている集計時間には Min、Max、Avg、Total、Count があります):Average
+- 累計時間 (生のメトリックの値に対して実行される統計。 [サポートされている集計時間](metrics-charts.md#changing-aggregation)には Min、Max、Avg、Total、Count があります):Average
 - 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子:より大きい
@@ -43,7 +43,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 動的
-- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされている集計時間には Min、Max、Avg、Total、Count があります):Average
+- 累計時間 (生のメトリックの値に対して実行される統計。 [サポートされている集計時間](metrics-charts.md#changing-aggregation)には Min、Max、Avg、Total、Count があります):Average
 - 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子:より大きい

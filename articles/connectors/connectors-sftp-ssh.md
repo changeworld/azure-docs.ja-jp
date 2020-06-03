@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393632"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927447"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -34,7 +34,7 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 * [チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートする SFTP-SSH アクションでは 1 GB までのファイルを処理できますが、チャンクをサポートしない SFTP-SSH アクションでは 50 MB までのファイルを処理できます。 既定のチャンク サイズは 15 MB ですが、このサイズは、ネットワーク待機時間、サーバーの応答時間などの要因に応じて、5 MB から段階的に増やして最大 50 MB まで動的に変更できます。
 
   > [!NOTE]
-  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用するためにチャンクが必要です。
 
   代わりに使用する[一定のチャンク サイズを指定する](#change-chunk-size)と、このアダプティブ動作をオーバーライドできます。 このサイズの範囲は 5 MB から 50 MB です。 たとえば、45 MB のファイルと、そのファイル サイズを待機時間なしでサポートするネットワークがあるとします。 アダプティブ チャンクは、1 回の呼び出しではなく複数回の呼び出しになります。 呼び出しの回数を減らすために、50 MB のチャンク サイズを設定してみることができます。 別のシナリオで、たとえば 15 MB のチャンクを使用しているときに、ロジック アプリがタイムアウトする場合は、サイズを 5 MB に減らしてみることができます。
 
@@ -248,7 +248,7 @@ SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファ�
 コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/sftpwithssh/)を参照してください。
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用するためにチャンクが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

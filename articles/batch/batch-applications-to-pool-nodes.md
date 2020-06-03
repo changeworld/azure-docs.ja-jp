@@ -1,16 +1,16 @@
 ---
 title: プール ノードへのアプリケーションとデータのコピー
 description: プール ノードへのアプリケーションとデータのコピーについて説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115586"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726827"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>プール ノードへのアプリケーションとデータのコピー
+# <a name="copy-applications-and-data-to-pool-nodes"></a>プール ノードへのアプリケーションとデータのコピー
 
 Azure Batch は、データとアプリケーションをタスクで使用できるように、データとアプリケーションをコンピューティング ノードに取り込むいくつかの方法をサポートしています。 ジョブ全体を実行するためにデータとアプリケーションが必要になる場合があるため、すべてのノードにインストールする必要があります。 特定のタスクに対してのみ必要なものもあれば、ジョブにインストールする必要があるものの、すべてのノードに存在する必要がないものもあります。 Batch には、これらのシナリオごとにツールが用意されています。
 

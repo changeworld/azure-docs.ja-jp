@@ -3,12 +3,12 @@ title: Application Insights の .NET トレース ログを調べる
 description: Trace、NLog、または Log4Net で生成されたログを検索します。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcd21286a547e0b0a6b5b93e8b05921e8e8cc1e2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234791"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647906"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
@@ -182,11 +182,13 @@ logger.warning('Hello, World!')
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="how-do-i-do-this-for-java"></a>Java の場合はどうすればよいですか。
-[Java ログ アダプター](../../azure-monitor/app/java-trace-logs.md)を使用します。
+Java コード不要のインストルメンテーション (推奨) では、ログがすぐに収集され、[Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)を使用します。
+
+Java SDK を使用している場合は、[Java ログ アダプター](../../azure-monitor/app/java-trace-logs.md)を使用します。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>プロジェクトのコンテキスト メニューに Application Insights のオプションがありません
 * 開発用マシンに Developer Analytics Tools がインストールしてあることを確認します。 Visual Studio の **[ツール]**  >  **[拡張機能と更新プログラム]** で、**Developer Analytics Tools** を探します。 **[インストール済み]** タブにない場合は、 **[オンライン]** タブを開いてインストールします。
-* これは、Developer Analytics Tools でサポートされていない種類のプロジェクトの可能性があります。 [手動でインストール](#manual-installation)してください。
+* これは、Developer Analytics Tools でサポートされていない種類のプロジェクトである可能性があります。 [手動でインストール](#manual-installation)してください。
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>構成ツールにログ アダプターのオプションがありません
 * まず、ログ記録フレームワークをインストールします。

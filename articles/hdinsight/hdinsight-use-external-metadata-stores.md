@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/30/2020
+ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313964"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929334"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -41,6 +41,8 @@ HDInsight クラスター用の metastore をセットアップできる方法�
 * 既定の metastore では、5 DTU (データベース トランザクション ユニット) の制限がある基本的な Azure SQL DB が使用されます。
 この既定のメタストアは、通常、比較的単純なワークロードに使用されます。 複数のクラスターを必要とせず、クラスターのライフサイクルを超えてメタデータを保持する必要がないワークロード。
 
+* 運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。 詳細については、以下のセクションを参照してください。
+
 ## <a name="custom-metastore"></a>カスタム metastore
 
 HDInsight では、カスタム metastore もサポートします。運用クラスターではこれを推奨します。
@@ -64,6 +66,8 @@ HDInsight では、カスタム metastore もサポートします。運用ク�
 HDInsight クラスター用のカスタム Hive メタストアを設定する前に、Azure SQL Database を作成するか、既存のものを用意します。  詳細については、「[クイック スタート: Azure SQL DB での単一データベースの作成](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)に関する記事を参照してください。
 
 クラスターの作成時には、HDInsight サービスによって外部メタストアに接続され、資格情報が確認される必要があります。 Azure SQL Database のファイアウォール規則を構成して、Azure サービスとリソースがサーバーにアクセスできるようにします。 Azure portal で **[サーバー ファイアウォールの設定]** を選択して、このオプションを有効にします。 次に、Azure SQL Database サーバーまたはデータベースに対して、 **[Deny public network access]\(パブリック ネットワーク アクセスを拒否する\)** 下の **[いいえ]** と、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 下の **[はい]** を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
+
+SQL ストアのプライベート エンドポイントはサポートされていません。
 
 ![[サーバー ファイアウォールの設定] ボタン](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -94,6 +98,8 @@ HDInsight クラスター用のカスタム Hive メタストアを設定する�
 * 複数のクラスター間で metastore を共有する場合は、すべてのクラスターの HDInsight を確実に同じバージョンにします。 異なるバージョンの Hive は、異なる metastore データベース スキーマを使用します。 たとえば、バージョン 2.1 の Hive クラスターと 3.1 の Hive クラスターで metastore を共有することはできません。
 
 * HDInsight 4.0 では、Spark と Hive は、SparkSQL または Hive テーブルへのアクセスに、独立したカタログを使用します。 Spark によって作成されたテーブルは、Spark カタログ内に存在します。 Hive によって作成されたテーブルは、Hive カタログ内に存在します。 この動作は、Hive と Spark が共通のカタログを共有する HDInsight 3.6 とは異なります。 HDInsight 4.0 での Hive と Spark の統合は、Hive Warehouse Connector (HWC) に依存します。 HWC は、Spark と Hive 間の橋として動作します。 [Hive Warehouse Connector について学習](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)します。
+
+* HDInsight 4.0 では、Hive と Spark の間でメタストアを共有する場合は、プロパティ metastore.catalog.default を Spark クラスターのハイブに変更することで、これを行うことができます。 このプロパティは、Ambari Advanced spark2-hive-site-override で見つかります。 メタストアの共有は外部のハイブ テーブルに対してのみ機能することを理解しておくことが重要です。内部またはマネージド ハイブ テーブルまたは ACID テーブルがある場合、これは機能しません。  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 

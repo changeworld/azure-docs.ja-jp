@@ -3,14 +3,14 @@ title: レジストリの geo レプリケーション
 description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。
 author: stevelas
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bea71695c66c77a8e9fff3cb708113a04f24ed96
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456448"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711569"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -63,9 +63,9 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
 
-geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)限定の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
+geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
 
-![Azure Portal での SKU の切り替え](media/container-registry-skus/update-registry-sku.png)
+![Azure portal でのサービス レベルの切り替え](media/container-registry-skus/update-registry-sku.png)
 
 Premium レジストリの geo レプリケーションを構成するには、Azure Portal (https://portal.azure.com ) にログインします。
 
@@ -92,9 +92,11 @@ ACR は、構成済みのレプリカ間でイメージの同期を開始しま�
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>geo レプリケーションされたレジストリの使用に関する注意点
 
 * geo レプリケーションされたレジストリの各リージョンは、設定後は独立しています。 Azure Container Registry の SLA は、geo レプリケーションされた各リージョンに適用されます。
-* geo レプリケーションされたレジストリからイメージをプッシュまたはプルすると、バックグラウンドの Azure Traffic Manager は最も近いリージョンにあるレジストリに要求を送信します。
+* geo レプリケーションされたレジストリからイメージをプッシュまたはプルすると、バックグラウンドの Azure Traffic Manager は、ネットワーク待機時間の観点から最も近いリージョンにあるレジストリに要求を送信します。
 * イメージまたはタグの更新を最も近いリージョンにプッシュした後、Azure Container Registry がマニフェストとレイヤーを、選択された残りのリージョンにレプリケートするまでに、少し時間がかかります。 大きいイメージは、小さいイメージよりもレプリケートに時間がかかります。 イメージとタグは、最終的な整合性モデルを使用して、レプリケーションのリージョン間で同期されます。
 * geo レプリケーションされたレジストリへのプッシュ更新に依存するワークフローを管理するには、プッシュ イベントに応答するように [Webhook](container-registry-webhook.md) を構成することをお勧めします。 geo レプリケーションされたレジストリ内にリージョンの Webhook を設定して、geo レプリケーションされたすべてのリージョンにわたってプッシュ イベントが完了したときにそれを追跡できます。
+* コンテンツ レイヤーを表す BLOB にサービスを提供するために、Azure Container レジストリではデータ エンドポイントを使用します。 各レジストリの geo レプリケートされたリージョンで、レジストリの[専用データ エンドポイント](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)を有効にすることができます。 これらのエンドポイントを使用すると、スコープが厳密に設定されたファイアウォール アクセス規則を構成できます。
+* 仮想ネットワークのプライベート エンドポイントを使用して、レジストリの [Private Link](container-registry-private-link.md) を構成した場合、geo レプリケートされた各リージョンの専用データ エンドポイントが既定で有効になります。 
 
 ## <a name="delete-a-replica"></a>レプリカの削除
 
@@ -105,12 +107,15 @@ Azure portal でレプリカを削除するには、次の手順に従います�
 1. Azure Container Registry に移動し、 **[レプリケーション]** を選択します。
 1. レプリカの名前を選択し、 **[削除]** を選択します。 レプリカを削除することを確認します。
 
-> [!NOTE]
-> レジストリの "*ホーム リージョン*" (レジストリを作成した場所) でレジストリのレプリカを削除することはできません。 ホーム レプリカは、レジストリ自体の削除によってのみ削除できます。
+Azure CLI を使用して、米国東部リージョンで *myregistry* のレプリカを削除するには:
+
+```azurecli
+az acr replication delete --name eastus --registry myregistry
+```
 
 ## <a name="geo-replication-pricing"></a>geo レプリケーションの価格
 
-geo レプリケーションは、Azure Container Registry の [Premium SKU](container-registry-skus.md) の機能です。 レジストリを目的のリージョンにレプリケートすると、リージョンごとに Premium レジストリ料金が発生します。
+geo レプリケーションは、Azure Container Registry の [Premium サービス レベル](container-registry-skus.md)の機能です。 レジストリを目的のリージョンにレプリケートすると、リージョンごとに Premium レジストリ料金が発生します。
 
 前の例では、Contoso は、米国東部、カナダ中部、西ヨーロッパにレプリカを追加して、2 つのレジストリを 1 つに統合しました。 Contoso には、1 か月あたり 4 倍の Premium 料金が課金されます。追加の構成や管理は不要です。 各リージョンではイメージをローカルでプルできるようになったため、米国西部からカナダおよび米国東部へのネットワーク エグレス料金が発生することなく、パフォーマンスと信頼性が向上します。
 

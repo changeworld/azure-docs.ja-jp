@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684729"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983603"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -150,6 +150,8 @@ Azure Machine Learning で使用されている Python の Anaconda ディスト
 import os
 os.system(f"pip install scikit-misc")
 ```
+> [!NOTE]
+> パイプラインに複数の Python スクリプトの実行モジュールが含まれており、プレインストールされている一覧に含まれていない同じパッケージが必要な場合は、それぞれのモジュールにそれらのパッケージをインストールしてください。 
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 **Execute Python Script** では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
@@ -218,7 +220,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 5. **[Python スクリプト]** ボックスに、有効な Python スクリプトを入力するか貼り付けます。
 
     > [!NOTE]
-    > スクリプトを記述するときは十分に注意し、宣言されていないオブジェクトやインポートされていないモジュールの使用など、構文エラーがないことを確認してください。 また、事前にインストールされているモジュールの一覧には特別な注意を払ってください。 一覧表示されていないモジュールをインポートするには、対応するパッケージを次のようなスクリプトでインストールします。
+    > スクリプトを記述するときは十分に注意し、宣言されていないオブジェクトやインポートされていないモジュールの使用など、構文エラーがないことをご確認ください。 また、事前にインストールされているモジュールの一覧にも特別な注意を払ってください。 一覧表示されていないモジュールをインポートするには、対応するパッケージを次のようなスクリプトでインストールします。
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e09741e841897032b8146dee67b79e0c26ea5cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275154"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005796"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
 
@@ -28,10 +28,7 @@ Azure Cognitive Search インデクサーを使用すると、入力データが
 * Base64 エンコードまたはデータのデコードが必要な場合。 フィールド マッピングは、Base64 エンコードおよびデコードの関数など、**マッピング関数**をいくつかサポートしています。
 
 > [!NOTE]
-> Azure Cognitive Search インデクサーのフィールド マッピング機能には、データ変換のためのいくつかのオプションを使用して、データ フィールドをインデックス フィールドにマップする簡単な方法が用意されています。 より複雑なデータでは、インデックス付けが簡単な形式に変形する前処理が必要な場合があります。
->
-> Microsoft Azure Data Factory は、データをインポートおよび変換するための強力なクラウドベースのソリューションです。 インデックスを付ける前にソース データを変換するコードを書くこともできます。 コード例については、「[リレーショナル データをモデル化する](search-example-adventureworks-modeling.md)」と「[多層構造ファセットをモデル化する](search-example-adventureworks-multilevel-faceting.md)」を参照してください。
->
+> インデクサーのフィールド マッピングは、データ フィールドをインデックス フィールドにマップする簡単な方法であり、軽量のデータ変換の機能も備えています。 より複雑なデータでは、インデックス作成に適した形式に変換するための前処理が必要になる場合があります。 1 つのオプションとして [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) を検討することができます。
 
 ## <a name="set-up-field-mappings"></a>フィールド マッピングの設定
 
@@ -39,7 +36,7 @@ Azure Cognitive Search インデクサーを使用すると、入力データが
 
 1. `sourceFieldName`。データ ソース内のフィールドを表します。 このプロパティは必須です。
 2. `targetFieldName` (省略可能)。Search インデックス内のフィールドを表します。 省略すると、データ ソースと同じ名前が使用されます。
-3. `mappingFunction` (省略可能)。定義済みのいずれかの関数を使用してデータを変換できます。 関数の完全な一覧については、[以下](#mappingFunctions)をご覧ください。
+3. `mappingFunction` (省略可能)。定義済みのいずれかの関数を使用してデータを変換できます。 これは入力と出力の両方のフィールド マッピングに適用できます。 関数の完全な一覧については、[以下](#mappingFunctions)をご覧ください。
 
 フィールド マッピングは、インデクサー定義の `fieldMappings` 配列に追加されます。
 
@@ -182,7 +179,7 @@ Azure Cognitive Search では、URL セーフな base64 エンコードと通常
 > [!WARNING]
 > キー値を生成するために `base64Encode` を使用する場合は、`useHttpServerUtilityUrlTokenEncode` を true に設定する必要があります。 キー値に使用できるのは、URL セーフな base64 エンコードのみです。 キー値の文字に関するすべての制限事項については、「[名前付け規則 &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules)」を参照してください。
 
-Azure Cognitive Search の .NET ライブラリでは、組み込みのエンコードを提供する完全な .NET Framework が前提になっています。 `useHttpServerUtilityUrlTokenEncode` オプションと `useHttpServerUtilityUrlTokenDecode` オプションでは、この組み込みの機能が活用されます。 .NET Core または別のフレームワークを使用している場合は、これらのオプションを `false` に設定し、フレームワークのエンコードおよびデコード関数を直接呼び出すことをお勧めします。
+Azure Cognitive Search の .NET ライブラリでは、組み込みのエンコードを提供する完全な .NET Framework が前提になっています。 `useHttpServerUtilityUrlTokenEncode` と `useHttpServerUtilityUrlTokenDecode` オプションは、この組み込み機能を利用します。 .NET Core または別のフレームワークを使用している場合は、これらのオプションを `false` に設定し、フレームワークのエンコードおよびデコード関数を直接呼び出すことをお勧めします。
 
 次の表では、文字列 `00>00?00` の異なる base64 エンコードを比較しています。 base64 関数に必要な追加処理 (ある場合) を判断するには、ライブラリ エンコード関数を文字列 `00>00?00` に適用し、出力を想定出力 `MDA-MDA_MDA` と比較します。
 
@@ -245,8 +242,6 @@ Azure SQL Database には、Azure Cognitive Search の `Collection(Edm.String)` 
     "mappingFunction" : { "name" : "jsonArrayToStringCollection" }
   }]
 ```
-
-リレーショナル データをインデックス コレクション フィールドに変換する詳細な例については、「[リレーショナル データをモデル化する](search-example-adventureworks-modeling.md)」を参照してください。
 
 <a name="urlEncodeFunction"></a>
 

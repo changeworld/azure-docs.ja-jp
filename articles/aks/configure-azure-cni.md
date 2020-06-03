@@ -4,12 +4,12 @@ description: Azure Kubernetes サービス (AKS) で Azure CNI (高度な) ネ�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 17778c367eb731a7e41f5017c3ae630dc152454e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207498"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120931"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -67,7 +67,9 @@ AKS クラスターのノードごとの最大ポッド数は 250 です。 ノ�
 
 ### <a name="configure-maximum---new-clusters"></a>最大値の構成 - 新しいクラスター
 
-ノードごとの最大ポッド数を構成できるのは*クラスターのデプロイ時のみ*です。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、ノードごとの最大ポッド数の値を最大 250 に設定できます。
+ノードごとの最大ポッド数を構成できるのは、クラスターのデプロイ時、または新しいノード プールを追加するときです。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、ノードごとの最大ポッド数の値を最大 250 に設定できます。
+
+新しいノード プールを作成するときに maxPods を指定しない場合は、Azure CNI の既定値 30 を受け取ります。
 
 ノードあたりの最大ポッドの最小値は、クラスターの正常性にとって重要なシステム ポッド用の領域を保証するために適用されます。 ノードごとの最大ポッドに対して設定できる最小値は、各ノード プールの構成に最低 30 個のポッド用の領域がある場合に限り、10 です。 たとえば、ノードあたりの最大ポッドを 10 以上に設定するには、個々のノード プールに少なくとも 3 つのノードが必要です。 この要件は、新しく作成された各ノード プールにも適用されます。したがって、ノードあたりの最大ポッドとして 10 が定義されている場合は、追加された以降の各ノード プールには少なくとも 3 つのノードが必要です。
 
@@ -85,7 +87,7 @@ AKS クラスターのノードごとの最大ポッド数は 250 です。 ノ�
 
 ### <a name="configure-maximum---existing-clusters"></a>最大値の構成 - 既存のクラスター
 
-既存の AKS クラスターのノードごとの最大ポッド数を変更することはできません。 数の調整は、クラスターを初めてデプロイする場合にのみ実行できます。
+新しいノード プールを作成するときに、ノードごとの maxPod 設定を定義することができます。 既存のクラスターでノードごとの maxPod の設定値を増やす必要がある場合は、新しく必要な maxPod カウントで新しいノード プールを追加します。 ポッドを新しいプールに移行した後、古いプールを削除します。 クラスター内の古いプールを削除するには、システム ノード プールのドキュメント [system-node-pools] の定義に従って、ノード プール モードを設定していることを確認してください。
 
 ## <a name="deployment-parameters"></a>展開のパラメーター
 
@@ -212,3 +214,4 @@ AKS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet]
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
+[system-node-pools]: use-system-pools.md

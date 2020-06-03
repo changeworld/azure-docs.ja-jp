@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでのアプリケー
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509246"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683558"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -99,7 +99,7 @@ az aks update \
 上の例では、*myAKSCluster* の単一のノード プールにあるクラスター オートスケーラーを更新して、最小値を *1* ノード、最大値を *5* ノードにします。
 
 > [!NOTE]
-> 現在ノード プールに設定されている数より多い最小ノード数を設定することはできません。 例えば、現在、最小数が *1* に設定されている場合、最小数を *3* に更新することはできません。
+クラスター オートスケーラーは、各ノード プールに設定されている最小値と最大値に基づいてスケーリングを決定しますが、スケーリングは強制されません。 たとえば、現在のノード数が 3 のときに最小値を 5 に設定しても、プールはすぐに 5 にはスケールアップされません。 ノード プールの最小値を現在のノード数よりも大きい値に変更した場合、2 つの新しいノードを必要とするほど十分な数の、オートスケーラー イベントをトリガーするスケジュールできないポッドが存在するときに、この新しい制限が適用されます。 この処理が完了すると、クラスター オートスケーラーに対して新しい最小値の制限が適用されます。
 
 アプリケーションとサービスのパフォーマンスをモニターして、必要なパフォーマンスに一致するようにクラスター オートスケーラーのノード数を調整してください。
 

@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) 内の kubeconfig へのアクセスを制
 description: クラスターの管理者とクラスターのユーザーを対象に Kubernetes 構成ファイル (kubeconfig) に対するアクセスを制御する方法を紹介します。
 services: container-service
 ms.topic: article
-ms.date: 01/28/2020
-ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/06/2020
+ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229647"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890892"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
 
@@ -40,7 +40,8 @@ ms.locfileid: "79229647"
 
 これらの RBAC ロールは、Azure Active Directory (AD) のユーザーまたはグループに適用できます。
 
-> [注意] Azure AD を使用するクラスターでは、*clusterUser* ロールのユーザーには空の *kubeconfig* ファイルがあり、これによってログインを求められます。 ログインすると、ユーザーは、Azure AD のユーザーまたはグループの設定に基づいてアクセスできます。 *clusterAdmin* ロールのユーザーは管理者アクセス権を持ちます。
+> [!NOTE]
+> Azure AD を使用するクラスターでは、*clusterUser* ロールのユーザーには空の *kubeconfig* ファイルがあり、これによってログインを求められます。 ログインすると、ユーザーは、Azure AD のユーザーまたはグループの設定に基づいてアクセスできます。 *clusterAdmin* ロールのユーザーは管理者アクセス権を持ちます。
 >
 > Azure AD を使用していないクラスターは、*clusterAdmin* ロールのみを使用します。
 

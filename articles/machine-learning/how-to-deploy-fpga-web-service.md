@@ -11,17 +11,17 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 8569f4751c54d7b37aa15737a9b3f7f394c7e26e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257183"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983586"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、フィールド プログラマブル ゲート アレイ (FPGA) についてその概要を説明し、Azure Machine Learning を使用してモデルを Azure FPGA にデプロイする方法を示します。
+この記事では、Field Programmable Gate Array (FPGA) についてその概要を説明し、[Azure Machine Learning](overview-what-is-azure-ml.md) を使用してモデルを Azure FPGA にデプロイする方法を示します。
 
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。
 
@@ -81,9 +81,9 @@ Azure FPGA は Azure Machine Learning と統合されています。 Microsoft �
 
 + [土地被覆マッピング](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
-## <a name="example-deploy-models-on-fpgas"></a>例:モデルの FPGA でのデプロイ
+## <a name="deploy-models-on-fpgas"></a>モデルの FPGA でのデプロイ
 
-Azure Machine Learning Hardware Accelerated Models を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
+[Azure Machine Learning Hardware Accelerated Models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -118,7 +118,7 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
     pip install --upgrade azureml-accel-models[cpu]
     ```
 
-## <a name="1-create-and-containerize-models"></a>1.モデルを作成してコンテナー化する
+### <a name="1-create-and-containerize-models"></a>1.モデルを作成してコンテナー化する
 
 このドキュメントでは、TensorFlow グラフを作成して入力画像を前処理し、それを FPGA 上で ResNet 50 を使用する特徴抽出器にした後、ImageNet データ セットでトレーニング済みの分類子を使って機能を実行する方法について説明します。
 
@@ -132,189 +132,170 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
 
 [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに自動的に圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
 
-### <a name="load-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースを読み込む
+1. Azure Machine Learning ワークスペースを読み込む
 
-Azure Machine Learning ワークスペースを読み込みます。
+   ```python
+   import os
+   import tensorflow as tf
+   
+   from azureml.core import Workspace
+  
+   ws = Workspace.from_config()
+   print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
+   ```
 
-```python
-import os
-import tensorflow as tf
+2. イメージの前処理を行います。 Web サービスへの入力は JPEG 画像です。  最初の手順では、JPEG 画像をデコードして前処理します。  JPEG 画像は文字列として扱われ、その結果は ResNet 50 モデルへの入力となるテンソルです。
 
-from azureml.core import Workspace
+   ```python
+   # Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
+   import azureml.accel.models.utils as utils
+   tf.reset_default_graph()
+   
+   in_images = tf.placeholder(tf.string)
+   image_tensors = utils.preprocess_array(in_images)
+   print(image_tensors.shape)
+   ```
 
-ws = Workspace.from_config()
-print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
-```
+1. 特徴抽出器を読み込みます。 モデルを初期化して、特徴抽出器として使用される ResNet50 の量子化されたバージョンの TensorFlow チェックポイントをダウンロードします。  以下のコード スニペットの "QuantizedResnet50" は、以下に示す他のディープ ニューラル ネットワークをインポートすることで置き換えることができます。
 
-### <a name="preprocess-image"></a>イメージの前処理
+   - QuantizedResnet152
+   - QuantizedVgg16
+   - Densenet121
 
-Web サービスへの入力は JPEG 画像です。  最初の手順では、JPEG 画像をデコードして前処理します。  JPEG 画像は文字列として扱われ、その結果は ResNet 50 モデルへの入力となるテンソルです。
+   ```python
+   from azureml.accel.models import QuantizedResnet50
+   save_path = os.path.expanduser('~/models')
+   model_graph = QuantizedResnet50(save_path, is_frozen=True)
+   feature_tensor = model_graph.import_graph_def(image_tensors)
+   print(model_graph.version)
+   print(feature_tensor.name)
+   print(feature_tensor.shape)
+   ```
 
-```python
-# Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
-import azureml.accel.models.utils as utils
-tf.reset_default_graph()
+1. 分類子を追加します。 この分類子は ImageNet データ セットでトレーニングされています。  転移学習およびカスタマイズされた重みのトレーニングの例は、[サンプル ノートブック](https://aka.ms/aml-notebooks)のセットに含まれています。
 
-in_images = tf.placeholder(tf.string)
-image_tensors = utils.preprocess_array(in_images)
-print(image_tensors.shape)
-```
+   ```python
+   classifier_output = model_graph.get_default_classifier(feature_tensor)
+   print(classifier_output)
+   ```
 
-### <a name="load-featurizer"></a>特徴抽出器を読み込む
+1. モデルを保存します。 プリプロセッサ、ResNet 50 特徴抽出器、および分類子を読み込んだ後は、グラフと関連する変数をモデルとして保存します。
 
-モデルを初期化して、特徴抽出器として使用される ResNet50 の量子化されたバージョンの TensorFlow チェックポイントをダウンロードします。  以下のコード スニペットの "QuantizedResnet50" は、以下に示す他のディープ ニューラル ネットワークをインポートすることで置き換えることができます。
+   ```python
+   model_name = "resnet50"
+   model_save_path = os.path.join(save_path, model_name)
+   print("Saving model in {}".format(model_save_path))
+   
+   with tf.Session() as sess:
+       model_graph.restore_weights(sess)
+       tf.saved_model.simple_save(sess, model_save_path,
+                                  inputs={'images': in_images},
+                                  outputs={'output_alias': classifier_output})
+   ```
 
-- QuantizedResnet152
-- QuantizedVgg16
-- Densenet121
+1. 入出力のテンソルを保存します。 モデルの変換と推論には、前処理中に作成された入出力のテンソルと、分類器のステップが必要になります。
 
-```python
-from azureml.accel.models import QuantizedResnet50
-save_path = os.path.expanduser('~/models')
-model_graph = QuantizedResnet50(save_path, is_frozen=True)
-feature_tensor = model_graph.import_graph_def(image_tensors)
-print(model_graph.version)
-print(feature_tensor.name)
-print(feature_tensor.shape)
-```
+   ```python
+   input_tensors = in_images.name
+   output_tensors = classifier_output.name
 
-### <a name="add-classifier"></a>分類子を追加する
+   print(input_tensors)
+   print(output_tensors)
+   ```
 
-この分類子は ImageNet データ セットでトレーニングされています。  転移学習およびカスタマイズされた重みのトレーニングの例は、[サンプル ノートブック](https://aka.ms/aml-notebooks)のセットに含まれています。
+   > [!IMPORTANT]
+   > 入出力のテンソルは、モデルの変換と要求の推論で必要になるため、保存します。
 
-```python
-classifier_output = model_graph.get_default_classifier(feature_tensor)
-print(classifier_output)
-```
+   使用可能なモデルとそれに対応する既定の分類器の出力テンソルは以下のとおりです。これは、既定の分類器を使用した場合に推論で使用します。
 
-### <a name="save-the-model"></a>モデルを保存する
+   + Resnet50、QuantizedResnet50
+     ```python
+     output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"
+     ```
+   + Resnet152、QuantizedResnet152
+     ```python
+     output_tensors = "classifier/resnet_v1_152/predictions/Softmax:0"
+     ```
+   + Densenet121、QuantizedDensenet121
+     ```python
+     output_tensors = "classifier/densenet121/predictions/Softmax:0"
+     ```
+   + Vgg16、QuantizedVgg16
+     ```python
+     output_tensors = "classifier/vgg_16/fc8/squeezed:0"
+     ```
+   + SsdVgg、QuantizedSsdVgg
+     ```python
+     output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
+     ```
 
-プリプロセッサ、ResNet 50 特徴抽出器、および分類子を読み込んだ後は、グラフと関連する変数をモデルとして保存します。
+1. SDK と Azure Blob Storage 内の ZIP ファイルを使用して、モデルを[登録](concept-model-management-and-deployment.md)します。 モデルに関するタグやその他のメタデータを追加すると、トレーニング済みのモデルを追跡するのに役立ちます。
 
-```python
-model_name = "resnet50"
-model_save_path = os.path.join(save_path, model_name)
-print("Saving model in {}".format(model_save_path))
+   ```python
+   from azureml.core.model import Model
 
-with tf.Session() as sess:
-    model_graph.restore_weights(sess)
-    tf.saved_model.simple_save(sess, model_save_path,
-                               inputs={'images': in_images},
-                               outputs={'output_alias': classifier_output})
-```
+   registered_model = Model.register(workspace=ws,
+                                     model_path=model_save_path,
+                                     model_name=model_name)
 
-### <a name="save-input-and-output-tensors"></a>入出力のテンソルを保存する
-モデルの変換と推論には、前処理中に作成された入出力のテンソルと、分類器のステップが必要になります。
+   print("Successfully registered: ", registered_model.name,
+         registered_model.description, registered_model.version, sep='\t')
+   ```
 
-```python
-input_tensors = in_images.name
-output_tensors = classifier_output.name
+   既に登録済みのモデルがありそれを読み込む場合は、そのモデルを取得することができます。
 
-print(input_tensors)
-print(output_tensors)
-```
+   ```python
+   from azureml.core.model import Model
+   model_name = "resnet50"
+   # By default, the latest version is retrieved. You can specify the version, i.e. version=1
+   registered_model = Model(ws, name="resnet50")
+   print(registered_model.name, registered_model.description,
+         registered_model.version, sep='\t')
+   ```
 
-> [!IMPORTANT]
-> 入出力のテンソルは、モデルの変換と要求の推論で必要になるため、保存します。
+1. TensorFlow グラフは、Open Neural Network Exchange 形式 ([ONNX](https://onnx.ai/)) に変換します。  入力テンソルと出力テンソルの名前を入力する必要があります。これらの名前は、Web サービスの使用時にクライアントによって使用されます。
 
-使用可能なモデルとそれに対応する既定の分類器の出力テンソルは以下のとおりです。これは、既定の分類器を使用した場合に推論で使用します。
+   ```python
+   from azureml.accel import AccelOnnxConverter
 
-+ Resnet50、QuantizedResnet50
-  ```python
-  output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"
-  ```
-+ Resnet152、QuantizedResnet152
-  ```python
-  output_tensors = "classifier/resnet_v1_152/predictions/Softmax:0"
-  ```
-+ Densenet121、QuantizedDensenet121
-  ```python
-  output_tensors = "classifier/densenet121/predictions/Softmax:0"
-  ```
-+ Vgg16、QuantizedVgg16
-  ```python
-  output_tensors = "classifier/vgg_16/fc8/squeezed:0"
-  ```
-+ SsdVgg、QuantizedSsdVgg
-  ```python
-  output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
-  ```
+   convert_request = AccelOnnxConverter.convert_tf_model(
+       ws, registered_model, input_tensors, output_tensors)
 
-### <a name="register-model"></a>モデルの登録
+   # If it fails, you can run wait_for_completion again with show_output=True.
+   convert_request.wait_for_completion(show_output=False)
 
-SDK と Azure Blob Storage 内の ZIP ファイルを使用して、モデルを[登録](concept-model-management-and-deployment.md)します。 モデルに関するタグやその他のメタデータを追加すると、トレーニング済みのモデルを追跡するのに役立ちます。
+   # If the above call succeeded, get the converted model
+   converted_model = convert_request.result
+   print("\nSuccessfully converted: ", converted_model.name, converted_model.url, converted_model.version,
+         converted_model.id, converted_model.created_time, '\n')
+   ```
 
-```python
-from azureml.core.model import Model
+1. 変換されたモデルとすべての依存関係から Docker イメージを作成します。  この Docker イメージをデプロイし、インスタンス化できるようになります。  サポートされているデプロイ先には、クラウド内の AKS や [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) のようなエッジ デバイスなどがあります。  登録した Docker イメージにタグと説明を追加することもできます。
 
-registered_model = Model.register(workspace=ws,
-                                  model_path=model_save_path,
-                                  model_name=model_name)
+   ```python
+   from azureml.core.image import Image
+   from azureml.accel import AccelContainerImage
 
-print("Successfully registered: ", registered_model.name,
-      registered_model.description, registered_model.version, sep='\t')
-```
+   image_config = AccelContainerImage.image_configuration()
+   # Image name must be lowercase
+   image_name = "{}-image".format(model_name)
 
-既に登録済みのモデルがありそれを読み込む場合は、そのモデルを取得することができます。
+   image = Image.create(name=image_name,
+                        models=[converted_model],
+                        image_config=image_config,
+                        workspace=ws)
+   image.wait_for_creation(show_output=False)
+   ```
 
-```python
-from azureml.core.model import Model
-model_name = "resnet50"
-# By default, the latest version is retrieved. You can specify the version, i.e. version=1
-registered_model = Model(ws, name="resnet50")
-print(registered_model.name, registered_model.description,
-      registered_model.version, sep='\t')
-```
+   タグ別にイメージを一覧表示し、デバッグ用に詳細ログを取得します。
 
-### <a name="convert-model"></a>モデルを変換する
+   ```python
+   for i in Image.list(workspace=ws):
+       print('{}(v.{} [{}]) stored at {} with build log {}'.format(
+           i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
+   ```
 
-TensorFlow グラフは、Open Neural Network Exchange 形式 ([ONNX](https://onnx.ai/)) に変換します。  入力テンソルと出力テンソルの名前を入力する必要があります。これらの名前は、Web サービスの使用時にクライアントによって使用されます。
-
-```python
-from azureml.accel import AccelOnnxConverter
-
-convert_request = AccelOnnxConverter.convert_tf_model(
-    ws, registered_model, input_tensors, output_tensors)
-
-# If it fails, you can run wait_for_completion again with show_output=True.
-convert_request.wait_for_completion(show_output=False)
-
-# If the above call succeeded, get the converted model
-converted_model = convert_request.result
-print("\nSuccessfully converted: ", converted_model.name, converted_model.url, converted_model.version,
-      converted_model.id, converted_model.created_time, '\n')
-```
-
-### <a name="create-docker-image"></a>Docker イメージを作成する
-
-変換されたモデルとすべての依存関係を Docker イメージに追加します。  この Docker イメージをデプロイし、インスタンス化できるようになります。  サポートされているデプロイ先には、クラウド内の AKS や [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) のようなエッジ デバイスなどがあります。  登録した Docker イメージにタグと説明を追加することもできます。
-
-```python
-from azureml.core.image import Image
-from azureml.accel import AccelContainerImage
-
-image_config = AccelContainerImage.image_configuration()
-# Image name must be lowercase
-image_name = "{}-image".format(model_name)
-
-image = Image.create(name=image_name,
-                     models=[converted_model],
-                     image_config=image_config,
-                     workspace=ws)
-image.wait_for_creation(show_output=False)
-```
-
-タグ別にイメージを一覧表示し、デバッグ用に詳細ログを取得します。
-
-```python
-for i in Image.list(workspace=ws):
-    print('{}(v.{} [{}]) stored at {} with build log {}'.format(
-        i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
-```
-
-## <a name="2-deploy-to-cloud-or-edge"></a>2.クラウドまたはエッジにデプロイする
-
-### <a name="deploy-to-the-cloud"></a>クラウドにデプロイする
+### <a name="2-deploy-to-cloud-or-edge"></a>2.クラウドまたはエッジにデプロイする
 
 お客様のモデルを高スケールの運用 Web サービスとしてデプロイするには、Azure Kubernetes Service (AKS) を使用します。 Azure Machine Learning SDK、CLI、または [Azure Machine Learning Studio](https://ml.azure.com) を使用して、新規に作成できます。
 
