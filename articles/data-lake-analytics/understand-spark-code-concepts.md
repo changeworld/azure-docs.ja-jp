@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74424004"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016952"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark コードについて
 
@@ -183,7 +183,7 @@ U-SQL は、SQL Server データベースに対するフェデレーションク
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>SQL Server データベース/外部テーブルに対するフェデレーション クエリ
 
-U-SQL では、データ ソースと外部テーブルだけでなく Azure SQL Database に対する直接クエリも可能です。 Spark は同じオブジェクトの抽象化を提供しませんが、SQL データベースのクエリに使用できる [SQL Server 用の Spark コネクタ](../sql-database/sql-database-spark-connector.md)を提供します。
+U-SQL では、データ ソースと外部テーブルだけでなく Azure SQL Database に対する直接クエリも可能です。 Spark は同じオブジェクトの抽象化を提供しませんが、SQL データベースのクエリに使用できる [SQL Server 用の Spark コネクタ](../azure-sql/database/spark-connector.md)を提供します。
 
 ### <a name="u-sql-parameters-and-variables"></a>U-SQL パラメーターと変数
 

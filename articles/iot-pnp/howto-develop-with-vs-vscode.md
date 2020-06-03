@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 91e7b1c0be9a38c3d79440f07d944d182980dc10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159236"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298229"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Visual Studio と Visual Studio Code を使用して IoT プラグ アンド プレイ デバイスを構築する
 
@@ -193,7 +193,7 @@ Ubuntu や Debian などの Linux 環境で CMake を使用して、デバイス
 
 1. ターミナル アプリケーションを開きます。
 
-1. [Homebrew](https://homebrew.sh) を使用して、すべての依存関係をインストールします。
+1. [Homebrew](https://brew.sh) を使用して、すべての依存関係をインストールします。
 
     ```bash
     brew update

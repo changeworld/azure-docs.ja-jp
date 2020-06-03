@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 0577b61cd30ef0f8fd5fc8ef1593d210c00bb25c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879362"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300086"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -59,9 +59,9 @@ VNet 内のすべてのリソースにおいて、既定でインターネット
 
 オンプレミスのコンピューターおよびネットワークを仮想ネットワークに接続するには、次のオプションを組み合わせて使用します。
 
-- **ポイント対サイト仮想プライベート ネットワーク (VPN)** :仮想ネットワークとネットワーク内の 1 台のコンピューターの間で確立されます。 仮想ネットワークとの接続を確立する各コンピューターで、接続を構成する必要があります。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 コンピューターと仮想ネットワーク間の通信は、インターネット上の暗号化されたトンネルを通じて送信されます。 詳細については、[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#P2S) に関するページを参照してください。
-- **サイト間 VPN**:オンプレミス VPN デバイスと仮想ネットワークにデプロイされた Azure VPN ゲートウェイの間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが仮想ネットワークにアクセスできます。 オンプレミス VPN デバイスと Azure VPN ゲートウェイ間の通信は、インターネット上の暗号化されたトンネルを通じて送信されます。 詳細については、[サイト間 VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) に関するページを参照してください。
-- **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 詳細については、[ExpressRoute](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ExpressRoute) に関するページを参照してください。
+- **ポイント対サイト仮想プライベート ネットワーク (VPN)** :仮想ネットワークとネットワーク内の 1 台のコンピューターの間で確立されます。 仮想ネットワークとの接続を確立する各コンピューターで、接続を構成する必要があります。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 コンピューターと仮想ネットワーク間の通信は、インターネット上の暗号化されたトンネルを通じて送信されます。 詳細については、[ポイント対サイト VPN](../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-network%2ftoc.json#) に関するページを参照してください。
+- **サイト間 VPN**:オンプレミス VPN デバイスと仮想ネットワークにデプロイされた Azure VPN ゲートウェイの間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが仮想ネットワークにアクセスできます。 オンプレミス VPN デバイスと Azure VPN ゲートウェイ間の通信は、インターネット上の暗号化されたトンネルを通じて送信されます。 詳細については、[サイト間 VPN](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) に関するページを参照してください。
+- **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 詳細については、[ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
 
 ## <a name="filter-network-traffic"></a>ネットワーク トラフィックのフィルター処理
 

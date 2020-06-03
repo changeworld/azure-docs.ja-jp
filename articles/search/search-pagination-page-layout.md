@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801775"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167861"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
@@ -126,8 +126,6 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   用語 *bowl of chips*はフル フレーズと一致しないため、強調表示されていないことに注意してください。
-  
-* 強調表示用に返されるフラグメント サイズも指定できるようになります。 フラグメント サイズは文字数として指定します (最大 1000 文字)。
 
 ヒットの強調表示を実装するクライアント コードを記述する場合は、この変更点に注意してください。 まったく新しい検索サービスを作成しない限り、この変更の影響を受けることはありません。
 

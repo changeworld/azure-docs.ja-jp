@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658882"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190410"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -19,7 +19,7 @@ Azure Monitor の Log Analytics ワークスペースは、マネージド サ�
 
 特に多くの異なる部署の IT 管理を担当する一元的な IT チームがある大企業では、サービス プロバイダーと多くの類似点を共有します。 このドキュメントでは簡単にするために*サービス プロバイダー* という言葉を使用していますが、企業およびその他のお客様にも同じ機能をご利用いただけます。
 
-[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) プログラムに参加しているパートナーやサービス プロバイダーにとって、Azure Monitor の Log Analytics は Azure CSP サブスクリプションで使用できる Azure サービスの 1 つです。
+[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) プログラムに参加しているパートナーやサービス プロバイダーにとって、Azure Monitor の Log Analytics は Azure CSP サブスクリプションで使用できる Azure サービスの 1 つです。
 
 Azure Monitor の Log Analytics は、[Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) の Azure の委任されたリソース管理機能を使用して顧客のリソースを管理しているサービス プロバイダーが使用することもできます。
 
