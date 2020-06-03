@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: e5fbb14477275ca329243797b75550cfe92077b6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701554"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248857"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Azure Spring Cloud でサーキット ブレーカー ダッシュボードを使用する
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) とは、Hystrix ダッシュボードを使用して単一のビューでストリームを監視できるように複数の [Hystrix](https://github.com/Netflix/Hystrix) メトリック ストリームを集約するためのものであり、広く使用されています。 このチュートリアルでは、Azure Spring Cloud 上でそれらを使用する方法について説明します。
@@ -59,7 +59,7 @@ az spring-cloud app deploy -n hystrix-turbine --jar-path hystrix-turbine/target/
 パブリック エンドポイントまたはプライベート テスト エンドポイントを使用して確認します。
 
 ### <a name="using-public-endpoints"></a>パブリック エンドポイントの使用
-ご利用のブラウザーからパス `https://<SERVICE-NAME>-hystrix-turbine azuremicroservices.io/hystrix` を使用して hystrix-turbine にアクセスします。  次の図に、このアプリで実行されている Hystrix ダッシュボードを示します。
+ご利用のブラウザーからパス `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/hystrix` を使用して hystrix-turbine にアクセスします。  次の図に、このアプリで実行されている Hystrix ダッシュボードを示します。
 
 ![Hystrix ダッシュボード](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 

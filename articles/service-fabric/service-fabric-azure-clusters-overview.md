@@ -7,12 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614674"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234691"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの概要
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
@@ -48,9 +48,9 @@ Azure 上の Service Fabric クラスターは、次の他の Azure リソース
 詳細については、[Service Fabric のノード タイプと仮想マシン スケール セット](service-fabric-cluster-nodetypes.md)に関するページを参照してください。
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM インスタンスは、[パブリック IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)と DNS ラベルが関連付けられている [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) の背後で結合されます。  *&lt;clustername&gt;* でクラスターをプロビジョニングする場合、DNS 名 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* が、スケール セットの前のロード バランサーに関連付けられた DNS ラベルになります。
+VM インスタンスは、[パブリック IP アドレス](../virtual-network/public-ip-addresses.md)と DNS ラベルが関連付けられている [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) の背後で結合されます。  *&lt;clustername&gt;* でクラスターをプロビジョニングする場合、DNS 名 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* が、スケール セットの前のロード バランサーに関連付けられた DNS ラベルになります。
 
-クラスター内の VM には[プライベート IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)しかありません。  管理トラフィックとサービス トラフィックは、パブリック ロード バランサーを介してルーティングされます。  ネットワーク トラフィックは、NAT 規則 (クライアントは特定のノード/インスタンスに接続します)、または負荷分散規則 (トラフィックは VM ラウンド ロビンに送られます) を介してこれらのコンピューターにルーティングされます。  ロード バランサーには、 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* という形式の DNS 名を持つパブリック IP が関連付けられています。  パブリック IP は、リソース グループ内の別の Azure リソースです。  クラスターで複数のノード タイプを定義する場合、ノード タイプ/スケール セットごとにロード バランサーが作成されます。 または、複数のノード タイプに対して 1 つのロード バランサーをセットアップできます。  プライマリ ノード タイプには、DNS ラベル *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* があり、他のノード タイプには、DNS ラベル *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.azure.com* があります。
+クラスター内の VM には[プライベート IP アドレス](../virtual-network/private-ip-addresses.md)しかありません。  管理トラフィックとサービス トラフィックは、パブリック ロード バランサーを介してルーティングされます。  ネットワーク トラフィックは、NAT 規則 (クライアントは特定のノード/インスタンスに接続します)、または負荷分散規則 (トラフィックは VM ラウンド ロビンに送られます) を介してこれらのコンピューターにルーティングされます。  ロード バランサーには、 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* という形式の DNS 名を持つパブリック IP が関連付けられています。  パブリック IP は、リソース グループ内の別の Azure リソースです。  クラスターで複数のノード タイプを定義する場合、ノード タイプ/スケール セットごとにロード バランサーが作成されます。 または、複数のノード タイプに対して 1 つのロード バランサーをセットアップできます。  プライマリ ノード タイプには、DNS ラベル *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* があり、他のノード タイプには、DNS ラベル *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.azure.com* があります。
 
 ### <a name="storage-accounts"></a>ストレージ アカウント
 各クラスター ノード タイプが、[Azure Storage アカウント](/azure/storage/common/storage-introduction)およびマネージド ディスクによってサポートされています。
