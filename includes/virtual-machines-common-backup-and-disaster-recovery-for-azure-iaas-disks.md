@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77179112"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124549"
 ---
 この記事では、Azure の IaaS 仮想マシン (VM) とディスクのバックアップおよびディザスター リカバリー (DR) を計画する方法について説明します。 このドキュメントでは、マネージド ディスクと非管理対象ディスクの両方について説明しています。
 
@@ -231,7 +231,7 @@ DR 用の増分スナップショットを効率的にコピーするには、�
 
 ### <a name="sql-server"></a>SQL Server
 
-VM で実行されている SQL Server には、SQL Server データベースを Azure Blob Storage やファイル共有にバックアップする独自の組み込み機能があります。 ストレージ アカウントが geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージである場合は、障害発生時にストレージ アカウントのセカンダリ データセンターにあるバックアップにアクセスできます。前述したものと同じ制約があります。 詳細については、「[Azure Virtual Machines における SQL Server のバックアップと復元](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。 バックアップと復元に加えて、[SQL Server AlwaysOn 可用性グループ](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)ではデータベースのセカンダリ レプリカを管理できます。 この機能により、ディザスター リカバリーの時間が大幅に短縮されます。
+VM で実行されている SQL Server には、SQL Server データベースを Azure Blob Storage やファイル共有にバックアップする独自の組み込み機能があります。 ストレージ アカウントが geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージである場合は、障害発生時にストレージ アカウントのセカンダリ データセンターにあるバックアップにアクセスできます。前述したものと同じ制約があります。 詳細については、「[Azure Virtual Machines における SQL Server のバックアップと復元](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md)」をご覧ください。 バックアップと復元に加えて、[SQL Server AlwaysOn 可用性グループ](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md)ではデータベースのセカンダリ レプリカを管理できます。 この機能により、ディザスター リカバリーの時間が大幅に短縮されます。
 
 ## <a name="other-considerations"></a>その他の考慮事項
 
