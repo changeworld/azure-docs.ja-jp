@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: pasta
-ms.openlocfilehash: 6de651f1eb51ea1bc941c2af675c8a8d5b0f9cd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 876379a211038933cf665bd1a4a4daae9c9b2787
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75946030"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267071"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>イマーシブ リーダーの Cookie ポリシーを設定する方法
 
@@ -45,7 +45,7 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Node.js クイックスタート](../quickstart-nodejs.md)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
+* [Node.js クイックスタート](../quickstarts/client-libraries.md?pivots=programming-language-nodejs)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
 * [Python チュートリアル](../tutorial-python.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
 * [Swift チュートリアル](../tutorial-ios-picture-immersive-reader.md)で、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](../reference.md)を探索する

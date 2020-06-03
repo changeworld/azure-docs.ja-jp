@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: c04280bf1cffea08204e1ea5ab54dbb87c23cf9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0bc1890fd5ca9c045caa6325f474e85f1b85622
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193209"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022250"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL Database のデータを読み書きする
 
@@ -23,13 +23,13 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
 * Azure HDInsight Spark クラスター。  手順については、「[Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)」をご覧ください。
 
-* Azure SQL Database。 手順については、「[Azure SQL Database の作成](../../sql-database/sql-database-get-started-portal.md)」をご覧ください。 **AdventureWorksLT** サンプルのスキーマとデータを使って、データベースを作成します。 また、サーバー レベルのファイアウォール規則を作成し、サーバー上の SQL Database にクライアントの IP アドレスでアクセスすることを許可します。 ファイアウォール規則を追加する方法についても、同じ記事をご覧ください。 Azure SQL Database を作成した後は、次の値がすぐにわかることを確認します。 Spark クラスターからデータベースに接続するときに必要です。
+* Azure SQL Database。 手順については、「[Azure SQL Database の作成](../../azure-sql/database/single-database-create-quickstart.md)」をご覧ください。 **AdventureWorksLT** サンプルのスキーマとデータを使って、データベースを作成します。 また、サーバー レベルのファイアウォール規則を作成し、サーバー上の SQL Database にクライアントの IP アドレスでアクセスすることを許可します。 ファイアウォール規則を追加する方法についても、同じ記事をご覧ください。 Azure SQL Database を作成した後は、次の値がすぐにわかることを確認します。 Spark クラスターからデータベースに接続するときに必要です。
 
     * Azure SQL Database をホストしているサーバー名。
     * Azure SQL Database の名前。
     * Azure SQL Database の管理者のユーザー名 / パスワード。
 
-* SQL Server Management Studio (SSMS)。 「[SQL Server Management Studio を使って接続とデータの照会を行う](../../sql-database/sql-database-connect-query-ssms.md)」の手順に従います。
+* SQL Server Management Studio (SSMS)。 「[SQL Server Management Studio を使って接続とデータの照会を行う](../../azure-sql/database/connect-query-ssms.md)」の手順に従います。
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成
 

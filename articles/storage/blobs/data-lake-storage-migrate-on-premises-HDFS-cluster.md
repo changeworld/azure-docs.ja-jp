@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 375dac3fffc1a49cc3d10999c4969a7365dfb49c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232378"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193434"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 
@@ -239,7 +239,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 データを Data Box デバイスに移動する前に、ヘルパー スクリプトをダウンロードし、データが Data Box に収まるように編成されていることを確認し、不要なファイルを除外する必要があります。
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>ヘルパー スクリプトをダウンロードし、それらを実行するようにエッジ ノードを設定する
 

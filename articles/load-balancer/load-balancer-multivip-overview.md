@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f911b36d4f38d9b769cf34e4e2326ed1cb52da80
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771259"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022813"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
@@ -146,7 +146,7 @@ VM NIC (Azure マネージド) には、次のコマンドを入力します。
 
 この例では、宛先ポートが変わらないことに注意してください。 これは Floating IP のシナリオですが、Azure Load Balancer はバックエンドの宛先ポートを書き換える規則の定義もサポートし、フロントエンドの宛先ポートとは異なる規則にします。
 
-Floating IP 規則タイプは、いくつかのロード バランサーの構成パターンの基盤になります。 現在利用できる例の 1 つは、 [複数リスナーによる SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) の構成です。 他のシナリオについては、徐々に文書化します。
+Floating IP 規則タイプは、いくつかのロード バランサーの構成パターンの基盤になります。 現在利用できる例の 1 つは、 [複数リスナーによる SQL AlwaysOn](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) の構成です。 他のシナリオについては、徐々に文書化します。
 
 ## <a name="limitations"></a>制限事項
 

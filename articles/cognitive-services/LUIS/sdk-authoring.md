@@ -2,14 +2,14 @@
 title: クイック スタート:Language Understanding (LUIS) 作成クライアント ライブラリ
 description: このクイックスタートでは、LUIS クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 05/28/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: dab36a7688e510b4a23f285deedf7d670cd78d10
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 4a3ffb9ce6907658767af9e39569e7d9016e3145
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871250"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171349"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>クイック スタート:Language Understanding (LUIS) 作成クライアント ライブラリ
 
