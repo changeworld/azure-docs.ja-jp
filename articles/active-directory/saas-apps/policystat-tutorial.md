@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848772"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
 
@@ -175,11 +175,11 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
    
     a. **[Username Attribute]** ボックスに、「**uid**」と入力します。
 
-    b. **[First Name Attribute]\(名前 (名) 属性\)** テキスト ボックスに、Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** の名前 (名) 属性の要求名を入力します。
+    b. **[First Name Attribute]\(名前 (名) 属性\)** テキスト ボックスに、Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** の名前 (名) 属性の要求名を入力します。
 
-    c. **[Last Name Attribute]\(名前 (姓) 属性\)** テキスト ボックスに、Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** の名前 (姓) 属性の要求名を入力します。
+    c. **[Last Name Attribute]\(名前 (姓) 属性\)** テキスト ボックスに、Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** の名前 (姓) 属性の要求名を入力します。
 
-    d. **[Email Attribute]\(電子メール属性\)** テキスト ボックスに、Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** の電子メール属性の要求名を入力します。
+    d. **[Email Attribute]\(電子メール属性\)** テキスト ボックスに、Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** の電子メール属性の要求名を入力します。
 
     e. **[変更を保存]** をクリックします。
 

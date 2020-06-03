@@ -2,19 +2,19 @@
 title: CREATE EXTERNAL STREAM (Transact-SQL) - Azure SQL Edge (プレビュー)
 description: Azure SQL Edge での CREATE EXTERNAL STREAM ステートメントについて学習します (プレビュー)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: d4ad446d43c90eee1c48ee2ba94585242805fa7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9e1f672a62ee7687fec9cea96ca03240c893ba95
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595401"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233327"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 

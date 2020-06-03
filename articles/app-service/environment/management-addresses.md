@@ -6,13 +6,13 @@ ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
 ms.topic: article
 ms.date: 05/10/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 8fc77c05878af9278906e061f67479ddafa6a47c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: 34daf74ddf5e9c93a05d27bad5f9ac55d767d5e6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118024"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195119"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
 

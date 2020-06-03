@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Azure の仮想ネットワーク ピアリングについて説明します。
 services: virtual-network
 documentationcenter: na
-author: anavinahar
+author: altambaw
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
-ms.author: anavin
-ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kumud
+ms.openlocfilehash: e1a2babef17e23457e1f41d8ec0a20a442452c23
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235799"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232949"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 

@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: aa4881aef9f3a9ba5d19fb0b768f13a1eb372296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2db8c41d29b3fd8cb40744708ff87d7f4ec5b12
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131435"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193484"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
@@ -87,7 +87,7 @@ Gen2 に移行するには、次の方法が推奨されます。
 
 Gen2 でアプリケーションとワークロードが安定していることを確認したら、Gen2 を使用してビジネス シナリオを満たすことができます。 Gen1 で実行されている残りのパイプラインをオフにし、Gen1 アカウントの使用を停止します。 
 
-<a id="gen1-gen2-feature-comparison" />
+<a id="gen1-gen2-feature-comparison"></a>
 
 ## <a name="gen1-vs-gen2-capabilities"></a>Gen1 と Gen2 の機能の比較
 
@@ -103,9 +103,9 @@ Gen2 でアプリケーションとワークロードが安定していること
 |VNET のサポート|[VNET 統合](../../data-lake-store/data-lake-store-network-security.md)|[サービス エンドポイント](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[プライベート エンドポイント](../common/storage-private-endpoints.md)|
 |開発者エクスペリエンス|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、[.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、[Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、[Python](../../data-lake-store/data-lake-store-data-operations-python.md)、[PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、[Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|一般公開 - [REST](/rest/api/storageservices/data-lake-storage-gen2)、[.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)<br>パブリック プレビュー - [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、[PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |リソース ログ|クラシック ログ<br>[Azure Monitor 統合](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[クラシック ログ](../common/storage-analytics-logging.md) - 一般公開<br>Azure Monitor 統合 – タイムライン未定|
-|エコシステム|[HDInsight (3.6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、[Azure Databricks (3.1 以降)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)、[SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、[ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、[Azure Databricks (5.1 以降)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)、[SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)、[ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|エコシステム|[HDInsight (3.6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、[Azure Databricks (3.1 以降)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)、[SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、[ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、[Azure Databricks (5.1 以降)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)、[SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、[ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
-<a id="migration-patterns" />
+<a id="migration-patterns"></a>
 
 ## <a name="gen1-to-gen2-patterns"></a>Gen1 から Gen2 へのパターン
 

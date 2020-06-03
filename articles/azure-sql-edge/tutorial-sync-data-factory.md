@@ -2,19 +2,19 @@
 title: Azure Data Factory を使用して Azure SQL Edge (プレビュー) とデータを同期する
 description: Azure SQL Edge (プレビュー) と Azure Blob Storage の間でデータを同期する方法について説明します。
 keywords: SQL Edge,SQL Edge のデータの同期, SQL Edge データ ファクトリ
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1238505a10214c315bd5f2ceb428cf097b3ef5c6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc81784d4ad3613cf46176912625cf980c44f064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593457"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235047"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して SQL Edge と Azure Blob Storage のデータを同期する
 

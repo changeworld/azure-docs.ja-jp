@@ -3,12 +3,12 @@ title: クイック スタート:初めてのポータル クエリ
 description: このクイックスタートでは、手順に従って、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行します。
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872084"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148040"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Resource Graph クエリからグラフを作成する
 
-上で示した最後のクエリを実行した後、 **[グラフ]** タブを選択すると、"結果セットが円グラフの視覚化と互換性がありません" というメッセージが表示されます。 結果を一覧表示するクエリはグラフにすることができませんが、リソース数を返すクエリであれば、グラフにすることができます。 [「仮想マシンの数 (OS の種類別)」のサンプル クエリ](./samples/starter.md#count-virtual-machines-by-os-type)を使用して、Resource Graph クエリから視覚化を行ってみましょう。
+上で示した最後のクエリを実行した後、 **[グラフ]** タブを選択すると、"結果セットが円グラフの視覚化と互換性がありません" というメッセージが表示されます。 結果を一覧表示するクエリはグラフにすることができませんが、リソース数を返すクエリであれば、グラフにすることができます。 [「仮想マシンの数 (OS の種類別)」のサンプル クエリ](./samples/starter.md#count-os)を使用して、Resource Graph クエリから視覚化を行ってみましょう。
 
 1. ウィンドウの **[クエリ 1]** 部分に次のクエリを入力し、 **[クエリの実行]** を選択します。
 
