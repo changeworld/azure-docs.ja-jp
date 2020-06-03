@@ -3,12 +3,12 @@ title: Azure への SQL Server データベースのバックアップ
 description: この記事では、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a555125e50a974ae51a08d7870cdc3ec12fd39
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408762"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021094"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -39,7 +39,7 @@ ms.locfileid: "79408762"
 
 開始する前に、以下を確認します。
 
-1. Azure で SQL Server インスタンスを稼働させていることを確認する。 マーケットプレースで [SQL Server インスタンスをすばやく作成](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md)できます。
+1. Azure で SQL Server インスタンスを稼働させていることを確認する。 マーケットプレースで [SQL Server インスタンスをすばやく作成](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)できます。
 2. [機能の考慮事項](sql-support-matrix.md#feature-consideration-and-limitations)と[シナリオのサポート](sql-support-matrix.md#scenario-support)を確認する。
 3. このシナリオに関する[一般的な質問を確認](faq-backup-sql-server.md)する。
 

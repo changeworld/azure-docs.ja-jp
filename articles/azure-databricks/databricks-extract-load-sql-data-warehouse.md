@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: d97fae777b06625488234eb6d48a74a60a83f4d6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382737"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018720"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -370,7 +370,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    > [!NOTE]
    > このサンプルでは `forward_spark_azure_storage_credentials` フラグを使用します。これにより、Azure Synapse は、アクセス キーを使用して BLOB ストレージからのデータにアクセスします。 これは、サポートされている唯一の認証方法です。
    >
-   > Azure Blob Storage が仮想ネットワークを選択するように制限されている場合、Azure Synapse には[アクセス キーではなく、マネージド サービス ID](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) が必要です。 これにより、"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)" というエラーが発生します。
+   > Azure Blob Storage が仮想ネットワークを選択するように制限されている場合、Azure Synapse には[アクセス キーではなく、マネージド サービス ID](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) が必要です。 これにより、"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)" というエラーが発生します。
 
 6. SQL データベースに接続し、**SampleTable** という名前のデータベースが表示されることを確認します。
 

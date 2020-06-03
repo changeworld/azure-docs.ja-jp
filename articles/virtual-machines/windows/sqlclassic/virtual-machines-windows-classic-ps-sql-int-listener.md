@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978168"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014819"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM の可用性グループの ILB リスナーの構成
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "75978168"
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。
 
-Resource Manager モデルで AlwaysOn 可用性グループのリスナーを構成する方法については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)」をご覧ください。
+Resource Manager モデルで AlwaysOn 可用性グループのリスナーを構成する方法については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md)」をご覧ください。
 
 可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。 Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワークを使用して複数のリージョンに配置することもできます。 この記事の手順では、既に[可用性グループは構成している](../classic/portal-sql-alwayson-availability-groups.md)ものの、リスナーは構成していないと仮定しています。
 

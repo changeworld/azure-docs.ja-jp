@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68950247"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021604"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>チュートリアル:Azure Data Catalog でのデータ資産の登録
 
@@ -39,7 +39,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
 ### <a name="register-a-data-source"></a>データ ソースの登録
 
-[Azure SQL データベース サンプル](../sql-database/sql-database-single-database-get-started.md)のデータ資産 (テーブル) を登録しますが、自分の役割に関連する使い慣れたデータを操作したい場合、サポートされている任意のデータ ソースを使用できます。 サポート対象のデータ ソースの一覧については、 [サポートされるデータ ソース](data-catalog-dsr.md)に関する記事を参照してください。
+[Azure SQL データベース サンプル](../azure-sql/database/single-database-create-quickstart.md)のデータ資産 (テーブル) を登録しますが、自分の役割に関連する使い慣れたデータを操作したい場合、サポートされている任意のデータ ソースを使用できます。 サポート対象のデータ ソースの一覧については、 [サポートされるデータ ソース](data-catalog-dsr.md)に関する記事を参照してください。
 
 このチュートリアルで使用する Azure SQL データベースの名前は *RLSTest* です。
 

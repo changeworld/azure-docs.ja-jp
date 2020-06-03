@@ -15,12 +15,12 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6de80278aa6919fecf67c28356c0917bd6b159d3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77914791"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014878"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (クラシック)
 
@@ -31,7 +31,7 @@ ms.locfileid: "77914791"
 > [!NOTE] 
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
-同じ作業を Resource Manager デプロイメント モデルで行う方法については、[Resource Manager バージョンの Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-ps-sql-create.md)に関する記事をご覧ください。
+同じ作業を Resource Manager デプロイメント モデルで行う方法については、[Resource Manager バージョンの Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング](../../../azure-sql/virtual-machines/windows/create-sql-vm-powershell.md)に関する記事をご覧ください。
 
 ### <a name="install-and-configure-powershell"></a>PowerShell のインストールと構成:
 1. Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
@@ -203,8 +203,8 @@ New-AzureVM –ServiceName $svcname -VMs $vm1
 
 PowerShell を使用した仮想マシンのプロビジョニングの詳細については、 [仮想マシンのドキュメント](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を参照してください。
 
-多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。 データベース移行方法については、「 [Azure VM の SQL Server へのデータベースの移行](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」を参照してください。
+多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。 データベース移行方法については、「 [Azure VM の SQL Server へのデータベースの移行](../../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」を参照してください。
 
-Azure Portal を使用して SQL Virtual Machines を作成する方法についても興味がある場合は、 [Azure での SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-portal-sql-server-provision.md)に関するページをご覧ください。 チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
+Azure Portal を使用して SQL Virtual Machines を作成する方法についても興味がある場合は、 [Azure での SQL Server 仮想マシンのプロビジョニング](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)に関するページをご覧ください。 チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
 
-これらのリソースのほかにも、 [Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](../sql/virtual-machines-windows-sql-server-iaas-overview.md)もご覧になることをお勧めします。
+これらのリソースのほかにも、 [Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)もご覧になることをお勧めします。

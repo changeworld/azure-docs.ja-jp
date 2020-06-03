@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454647"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012978"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "81454647"
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 
-保存データには、物理メディア上の永続的ストレージに存在する、あらゆるデジタル形式の情報が含まれます。 これには、磁気メディアまたは光学メディア上のファイル、アーカイブされたデータ、データのバックアップなどが含まれます。 Microsoft Azure では、さまざまなニーズに応えるために、ファイル、ディスク、BLOB、テーブル ストレージなど、多様なデータ ストレージ ソリューションをご用意しています。 Microsoft は、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md)、Azure Data Lake を保護する暗号化の機能も提供しています。
+保存データには、物理メディア上の永続的ストレージに存在する、あらゆるデジタル形式の情報が含まれます。 これには、磁気メディアまたは光学メディア上のファイル、アーカイブされたデータ、データのバックアップなどが含まれます。 Microsoft Azure では、さまざまなニーズに応えるために、ファイル、ディスク、BLOB、テーブル ストレージなど、多様なデータ ストレージ ソリューションをご用意しています。 Microsoft は、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md)、Azure Data Lake を保護する暗号化の機能も提供しています。
 
 保存されているデータの暗号化は、サービスとしてのソフトウェア (SaaS)、サービスとしてのプラットフォーム (PaaS)、サービスとしてのインフラストラクチャ (IaaS) の各クラウド モデルのサービスで使用できます。 この記事では、Azure の暗号化オプションを使用する際に役立つリソースを提供し、その概要について説明します。
 
@@ -85,11 +85,11 @@ Key Vault のクライアント側暗号化の詳細について確認し、手�
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Azure SQL Database を使用した保存データの暗号化
 
-[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Azure における汎用リレーショナル データベース サービスです。 SQL Database では、Transparent Data Encryption (TDE) の機能を使用したサーバー側暗号化と、Always Encrypted 機能を使用したクライアント側暗号化の両方がサポートされています。
+[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Azure における汎用リレーショナル データベース サービスです。 SQL Database では、Transparent Data Encryption (TDE) の機能を使用したサーバー側暗号化と、Always Encrypted 機能を使用したクライアント側暗号化の両方がサポートされています。
 
 #### <a name="transparent-data-encryption"></a>透過的なデータ暗号化
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md)、[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
 
 TDE は、AES と Triple Data Encryption Standard (3DES) の暗号化アルゴリズムを使用して、データとログ ファイルを保護します。 データベース ファイルの暗号化は、ページ レベルで実行されます。 暗号化されたデータベース内のページは、ディスクに書き込まれる前に暗号化され、メモリに読み込まれるときに暗号化が解除されます。 現在、新しく作成された Azure SQL データベースでは、TDE は既定で有効になっています。
 
