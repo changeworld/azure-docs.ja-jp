@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692242"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266731"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -245,7 +245,7 @@ sepago は、ケルン在住の 4 人の仲間によって 2002 年に設立さ�
 sepago のイノベーションおよび開発ラボでは、ビッグ データと AI テクノロジを使用してスマート ソリューションを構築しています。 これらのソリューションは、Windows Virtual Desktop などのパートナー製品のビジネス、ユーザー エクスペリエンス、および管理の向上に焦点を当てています。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)
-- [パートナーの Web サイトにアクセスする。](https://www.sepago.de/wvd-value-add-tools/)
+- [パートナーの Web サイトにアクセスする。](https://www.sepago.de/en/)
 
 ## <a name="thinprint"></a>ThinPrint
 

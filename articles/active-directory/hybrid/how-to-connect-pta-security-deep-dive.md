@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77185550"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014368"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -75,6 +75,9 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 (Azure AD Connect またはスタンドアロンを使用して) オンプレミス サーバーに認証エージェントをインストールできるのは、全体管理者のみです。 インストールでは、次の 2 つの新しい項目が、 **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** の一覧に追加されます。
 - 認証エージェント アプリケーション自体。 このアプリケーションは [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 権限で実行されます。
 - 認証エージェントの自動更新で使用されるアップデーター アプリケーション。 このアプリケーションは [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 権限で実行されます。
+
+>[!IMPORTANT]
+>セキュリティの観点から、管理者は PTA エージェントを実行しているサーバーをドメイン コントローラーとして扱う必要があります。  PTA エージェント サーバーは、「[攻撃に対してドメイン コントローラーをセキュリティで保護する](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)」で説明されている内容に沿って強化する必要があります。
 
 ### <a name="authentication-agent-registration"></a>認証エージェントの登録
 

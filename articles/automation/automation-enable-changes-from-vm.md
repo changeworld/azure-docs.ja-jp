@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 5379f2c46bbeaba4ee8509603b7b739b75d08f04
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 332ff4f6e63a831c1523c3f959708f9dc48a72a9
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836789"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171057"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Azure VM で変更履歴とインベントリを有効にする
 
@@ -41,15 +41,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 5. Log Analytics ワークスペースおよび Automation アカウントを選択し、 **[有効にする]** をクリックして、VM で変更履歴とインベントリを有効にします。 セットアップが完了するまでに最高 15 分かかります。 
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>スコープ構成を確認する
-
-変更履歴とインベントリでは、ワークスペース内でスコープ構成を使用して、機能を有効にするコンピューターを対象にします。 スコープ構成は、機能のスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 詳細については、[変更履歴とインベントリのスコープ構成の操作](automation-scope-configurations-change-tracking.md)に関するページをご覧ください。
-
 ## <a name="next-steps"></a>次のステップ
 
 * この機能の操作の詳細については、[変更履歴とインベントリの管理](change-tracking-file-contents.md)に関するページをご覧ください。
-* スコープ構成の詳細については、[変更履歴とインベントリのスコープ構成の操作](automation-scope-configurations-change-tracking.md)に関するページをご覧ください。
-* この機能を使用して環境にインストールされているソフトウェアを特定する方法については、「[VM にインストールされているソフトウェアを検出する](automation-tutorial-installed-software.md)」をご覧ください。
-* 機能を有効にするときに Automation アカウントを Log Analytics ワークスペースに統合しない場合は、「[Automation アカウントからワークスペースのリンクを解除する](automation-unlink-workspace-change-tracking.md)」をご覧ください。
-* VM への変更のデプロイが完了したら、「[変更履歴とインベントリから VM を削除する](automation-remove-vms-from-change-tracking.md)」の説明に従って削除できます。
 * この機能に関する一般的な問題をトラブルシューティングするには、[変更履歴とインベントリでの問題のトラブルシューティング](troubleshoot/change-tracking.md)に関するページをご覧ください。

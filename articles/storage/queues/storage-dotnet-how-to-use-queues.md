@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: afdd9b1b063d0a82c8cdb27ef01b412daaa9f1df
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6dc94cca66370daa307a21daa6c96a778baed08c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198900"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017632"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET を使用して Azure Queue Storage を使用する
 
@@ -500,7 +500,7 @@ queue.Delete();
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   - [.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md) 」を参照してください。
   - [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
-  - リレーショナル データを格納する方法については、「[.NET (C#) を使用して SQL Database に接続する](../../sql-database/sql-database-connect-query-dotnet-core.md)」を参照してください。
+  - リレーショナル データを格納する方法については、「[.NET (C#) を使用して SQL Database に接続する](../../azure-sql/database/connect-query-dotnet-core.md)」を参照してください。
 
 [Download and install the Azure SDK for .NET]: /develop/net/
 [.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409

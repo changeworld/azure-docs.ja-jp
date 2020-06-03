@@ -3,12 +3,13 @@ title: コンテナーに対する Azure Monitor を使用してライブ デー
 description: この記事では、コンテナー用 Azure Monitor による kubectl を使用せずに、Kubernetes ログ、イベント、およびポッド メトリックをリアルタイム ビューで表示する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: references_regions
+ms.openlocfilehash: 80bf3e50ac63ae9b48d6f3b314bc52bcb209072f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872111"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196048"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法
 

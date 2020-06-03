@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873626"
+ms.locfileid: "83995906"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio と .NET Core
 
@@ -26,28 +26,59 @@ ms.locfileid: "83873626"
 > [!Note]
 > いつでも**問題が発生した場合**は「[トラブルシューティング](troubleshooting.md)」セクションを参照してください。
 
+## <a name="install-the-azure-cli"></a>Azure CLI のインストール
+Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発空間の構成の大半はクラウドに保存され、他のユーザーと共有できます。 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。
+
+### <a name="sign-in-to-azure-cli"></a>Azure CLI へのサインイン
+Azure にサインインします。 ターミナル ウィンドウで次のコマンドを入力します。
+
+```azurecli
+az login
+```
+
+> [!Note]
+> Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
+
+#### <a name="if-you-have-multiple-azure-subscriptions"></a>複数の Azure サブスクリプションがある場合:
+以下を実行して、サブスクリプションを表示できます。 
+
+```azurecli
+az account list --output table
+```
+
+*IsDefault* が *True* のサブスクリプションを探します。
+それが使用したいサブスクリプションでない場合は、既定のサブスクリプションを変更できます。
+
+```azurecli
+az account set --subscription <subscription ID>
+```
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces 対応の Kubernetes クラスターを作成する
 
-1. Azure Portal ( https://portal.azure.com ) にサインインします。
-1. **[Create a resource]\(リソースの作成\)** を選択し、 **[Kubernetes]** を検索して、 **[Azure Kubernetes Service]**  >  **[作成]** を選択します。
+[Azure Dev Spaces をサポートするリージョン][supported-regions]に、コマンド プロンプトでリソース グループを作成します。
 
-   *[Kubernetes クラスターを作成]* フォームの各見出しで次の手順を完了し、選択した[リージョンで Azure Dev Spaces がサポートされている][supported-regions]ことを確認します。
+```azurecli
+az group create --name MyResourceGroup --location <region>
+```
 
-   - **[プロジェクトの詳細]** : Azure サブスクリプションと、新規または既存の Azure リソース グループを選択します。
-   - **CLUSTER DETAILS (クラスターの詳細)** : AKS クラスターの名前、リージョン、バージョン、および DNS 名プレフィックスを入力します。
-   - **[SCALE]\(スケール\)** : AKS エージェント ノードの VM サイズとノード数を選択します。 Azure Dev Spaces を初めてお使いになる場合、ノード数は 1 つあれば十分にさまざまな機能を試すことができます。 ノード数は、クラスターのデプロイ後、いつでも簡単に調整できます。 AKS クラスターの作成後に VM サイズを変更することはできないので注意してください。 ただし、AKS クラスターのデプロイ後にスケールアップする必要が生じた場合は、より大きな VM を使って新しい AKS クラスターを簡単に作成できます。Dev Spaces を使用して、その大きい方のクラスターに再デプロイすることができます。
+以下のコマンドを使用して Kubernetes クラスターを作成します。
 
-   ![Kubernetes の構成設定](media/common/Kubernetes-Create-Cluster-2.PNG)
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
+```
 
+クラスターの作成には数分かかります。
 
-   **認証** を選択します。
+### <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>Azure Dev Spaces を使用するように AKS クラスターを構成する
 
-1. ロールベースのアクセス制御 (RBAC) に必要な設定を選択します。 Azure Dev Spaces では、RBAC が有効なクラスターと無効なクラスターのどちらでもサポートされます。
+次の Azure CLI コマンドを入力します。このとき、AKS クラスターを含む含むリソース グループと、AKS クラスター名を使用します。 このコマンドでは、Azure Dev Spaces のサポートを使用してクラスターが構成されます。
 
-    ![RBAC の設定](media/common/k8s-RBAC.PNG)
-
-1. 完了したら、 **[Review + create] (レビュー + 作成)** 、 **[作成]** の順に選択します。
+   ```azurecli
+   az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+   ```
+   
+> [!IMPORTANT]
+> Azure Dev Spaces 構成プロセスでは、クラスター内に `azds` 名前空間が存在する場合はこれを削除します。
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio ツールを入手する
 Azure 開発ワークロードを使用して、[Visual Studio 2019](https://www.visualstudio.com/vs/) の最新バージョンを Windows にインストールします。

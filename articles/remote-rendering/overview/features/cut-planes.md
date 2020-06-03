@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7adf9a9701eb2492f0b13a26af1dbaf8de631373
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759083"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021366"
 ---
 # <a name="cut-planes"></a>切断面
 
@@ -60,11 +60,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 次のプロパティは、切断面コンポーネントで公開されます。
 
-* **有効:** コンポーネントを無効にすることで、切断面を一時的にオフにすることができます。 無効化された切断面は、レンダリング オーバーヘッドを発生させず、グローバルな切断面の制限にもカウントされません。
+* `Enabled`:コンポーネントを無効にすることで、切断面を一時的にオフにすることができます。 無効化された切断面は、レンダリング オーバーヘッドを発生させず、グローバルな切断面の制限にもカウントされません。
 
-* **Normal:** 面法線として使用される方向 (+X、-X、+Y、-Y、+Z、-Z) を指定します。 この方向は、所有者のエンティティの向きに対して相対的です。 正確に配置するため、所有者エンティティを移動および回転します。
+* `Normal`:面法線として使用される方向 (+X、-X、+Y、-Y、+Z、-Z) を指定します。 この方向は、所有者のエンティティの向きに対して相対的です。 正確に配置するため、所有者エンティティを移動および回転します。
 
-* **FadeColor** と **FadeLength:**
+* `FadeColor` および `FadeLength`:
 
   *FadeColor* のアルファ値が 0 以外の場合、切断面に近いピクセルは、FadeColor の RGB 部分の色へフェードします。 アルファ チャネルの強度によって、フェードの色に完全にフェードするか、部分的にフェードするかが決まります。 このフェードが行われる距離は、*FadeLength* によって定義されます。
 

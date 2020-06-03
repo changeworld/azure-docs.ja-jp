@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: d8e7b2f8f6483d462f781d95011ef7b972e83b87
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 52c5b20a4411d865f88a5010ed1b0b3b309345ac
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801792"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190625"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -215,7 +215,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー GPT パーティション | \- 5 個のパーティションが[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) (モビリティ サービスのバージョン 9.25) 以降でサポートされています。 以前は 4 個までサポートしていました。
 ReFS | Resilient File System は、モビリティ サービスのバージョン 9.23 以降でサポートされています。
-ゲスト/サーバー EFI/UEFI ブート | - Windows Server 2012 以降、SLES 12 SP4、モビリティ エージェント バージョン 9.30 以降を使用する RHEL 8.0 でサポートされています<br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。
+ゲスト/サーバー EFI/UEFI ブート | - Windows Server 2012 以降、SLES 12 SP4、モビリティ エージェント バージョン 9.30 以降を使用する RHEL 8.0 でサポートされています<br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 [詳細情報。](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>レプリケーション チャネル
 

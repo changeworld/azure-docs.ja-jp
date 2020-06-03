@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 4af2d060c11b804c5fa09bfdabbcb9753f7d5885
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204681"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142369"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
@@ -36,7 +36,7 @@ ms.locfileid: "82204681"
 
 1 回の要求で送信できるドキュメントの最大数は、使用している API のバージョンと機能によって異なります。
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-3"></a>[Version 3](#tab/version-3)
 
 > [!NOTE]
 > v3 API 要求がこれらの制限を超えている一方で v2 の制限内にある場合、API 応答で警告が返されます。 2020 年 7 月 15 日以降は、代わりに 400 エラー コードが返されます。 

@@ -3,16 +3,16 @@ title: Azure EA 契約と修正
 description: この記事では、Azure EA 契約と修正が Azure EA Portal の使用にどのように影響するかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648181"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298144"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 
@@ -43,7 +43,7 @@ ms.locfileid: "83648181"
 
 **期限切れ** - EA 登録はエンタープライズ契約の終了日に達すると期限切れになります。 EA のお客様は、延長期間からオプトアウトされ、すべてのサービスが無効になります。
 
-2019 年 8 月 1 日の時点で、Azure の法人のお客様については、新しいオプトアウト フォームは受理されません。 代わりに、すべての登録が無期限の延長期間に入ります。 Azure サービスの使用を停止する場合は、[Azure EA Portal](https://portal.azure.com) でサブスクリプションを終了してください。 または、パートナーが https://www.explore.ms で終了要求を送信することもできます。 政府機関の契約タイプをお持ちのお客様には変更はありません。
+2019 年 8 月 1 日の時点で、Azure の法人のお客様については、新しいオプトアウト フォームは受理されません。 代わりに、すべての登録が無期限の延長期間に入ります。 Azure サービスの使用を停止する場合は、[Azure portal](https://portal.azure.com) でサブスクリプションを閉じてください。 または、パートナーが https://www.explore.ms で終了要求を送信することもできます。 政府機関の契約タイプをお持ちのお客様には変更はありません。
 
 **転送済み** - 転送済みの状態は、関連付けられているアカウントとサービスが新しい登録に転送されている登録に適用されます。 更新中に新しい登録番号が生成された場合、登録は自動的には転送されません。 自動的に転送されるようにするには、事前に生成された登録番号を、お客様の更新要求に含める必要があります。
 

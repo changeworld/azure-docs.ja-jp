@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869809"
+ms.locfileid: "83995975"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
 
@@ -59,9 +59,9 @@ ms.locfileid: "83869809"
 
 1. API 要求を作成して送信する `check()` という関数を作成します。 この関数内で、次の手順で指定したコードを追加します。 要求パラメーターの文字列を作成します。
 
-   a. `=` 演算子を使用して、`mkt` パラメーターに市場コードを割り当てます。 
+   1. `=` 演算子を使用して、`mkt` パラメーターに市場コードを割り当てます。 
 
-   b. `&` 演算子を使用して `mode` パラメーターを追加し、スペルチェック モードを割り当てます。 
+   1. `&` 演算子を使用して `mode` パラメーターを追加し、スペルチェック モードを割り当てます。 
 
    ```java
    public static void check () throws Exception {
