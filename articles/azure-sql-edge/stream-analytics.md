@@ -2,19 +2,19 @@
 title: Azure SQL Edge (プレビュー) での Azure Stream Analytics Edge ジョブの使用
 description: Azure SQL Edge (プレビュー) で Stream Analytics ジョブを使用する方法について説明します
 keywords: SQL Edge、ストリーム分析、
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 3b57cb8cae80381a6c2cd88358dd9284ba56c919
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594521"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233137"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>SQL Edge での Azure Stream Analytics ジョブの使用
 

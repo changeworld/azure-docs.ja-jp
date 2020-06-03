@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978157"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014861"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75978157"
 > * [クラシック: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-開始する前に、Azure Resource Manager モデルでこのタスクを完了できるかを検討してください。 新たにデプロイする場合、Azure Resource Manager モデルを使用することをお勧めします。 [Azure Virtual Machines での SQL Server AlwaysOn 可用性グループ](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)に関するページをご覧ください。
+開始する前に、Azure Resource Manager モデルでこのタスクを完了できるかを検討してください。 新たにデプロイする場合、Azure Resource Manager モデルを使用することをお勧めします。 [Azure Virtual Machines での SQL Server AlwaysOn 可用性グループ](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
 > ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
@@ -481,7 +481,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. [Azure VM での AlwaysOn 可用性グループのフェールオーバー クラスターの作成](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)に関するページから、**CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、機能的なフェールオーバー クラスターを作成できます。 Windows フェールオーバー クラスタリングと Azure ネットワークのやり取りに関する重要な情報については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。
+7. [Azure VM での AlwaysOn 可用性グループのフェールオーバー クラスターの作成](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)に関するページから、**CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、機能的なフェールオーバー クラスターを作成できます。 Windows フェールオーバー クラスタリングと Azure ネットワークのやり取りに関する重要な情報については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。
 8. 作業ディレクトリに移動し、ダウンロードしたスクリプトを使用してフェールオーバー クラスターを作成します。
 
         Set-ExecutionPolicy Unrestricted -Force
@@ -567,4 +567,4 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 ## <a name="next-steps"></a>次のステップ
 これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。 この可用性グループのリスナーを構成するには、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../classic/ps-sql-int-listener.md)」を参照してください。
 
-Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)」を参照してください。

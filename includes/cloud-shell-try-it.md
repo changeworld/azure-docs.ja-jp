@@ -19,8 +19,8 @@ Azure Cloud Shell を開始するには:
 
 | オプション | 例とリンク |
 |-----------------------------------------------|---|
-| コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[使ってみる]** を選択しても、コードは Cloud Shell に自動的にコピーされません。 | ![Azure Cloud Shell の [テスト] の例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| [https://shell.azure.com](https://shell.azure.com) に移動するか、 **[Cloud Shell の起動]** ボタンを選択して、ブラウザーで Cloud Shell を開きます。 | [![新しいウィンドウで Cloud Shell を起動する](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[使ってみる]** を選択しても、コードは Cloud Shell に自動的にコピーされません。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| [https://shell.azure.com](https://shell.azure.com) に移動するか、 **[Cloud Shell を起動する]** ボタンを選択して、ブラウザーで Cloud Shell を開きます。 | [![新しいウィンドウで Cloud Shell を起動する](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
 | [Azure portal](https://portal.azure.com) の右上にあるメニュー バーの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 Azure Cloud Shell でこの記事のコードを実行するには:
