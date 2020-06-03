@@ -119,7 +119,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
  
  Mac 用のコンテナーで実行されているローカル クラスターの既知の制限は、次のとおりです。 
  
- * DNS サービスが実行されず、サポートされていない [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS サービスが実行されず、サポートされていない [Issue #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac に Service Fabric CLI (sfctl) をセットアップする
 
