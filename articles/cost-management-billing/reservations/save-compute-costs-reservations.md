@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: b41435cb0b337edc2d73820c75da847913326315
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626959"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015983"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -127,6 +127,6 @@ Windows 仮想マシンと SQL Database については、ソフトウェアの�
 - サービス プランの予約の詳細については、次の記事を参照してください。
     - [Azure Reserved VM Instances による仮想マシン](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
     - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソース](../../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../sql-database/sql-database-reserved-capacity.md) ソフトウェア プランの予約の詳細については、次の記事を参照してください。
+    - [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md) ソフトウェア プランの予約の詳細については、次の記事を参照してください。
     - [Azure の予約からの Red Hat ソフトウェア プラン](../../virtual-machines/linux/prepay-rhel-software-charges.md)
     - [Azure の予約からの SUSE ソフトウェア プラン](../../virtual-machines/linux/prepay-suse-software-charges.md)
