@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418730"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022114"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * Azure ストレージ アカウント。 BLOB ストレージをソース データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
 * Azure Storage Explorer. このツールをインストールするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。
-* Azure SQL Database。 データベースをシンク データ ストアとして使用します。 Azure SQL Database がない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関するページを参照してください。
+* Azure SQL Database。 データベースをシンク データ ストアとして使用します。 Azure SQL Database がない場合は、[Azure SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * 見ることができます。 この記事では、Visual Studio 2019 を使用します。
 * Azure .NET SDK。 [Azure .NET SDK](https://azure.microsoft.com/downloads/) をダウンロードしてインストールします。
 

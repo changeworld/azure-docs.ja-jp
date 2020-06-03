@@ -3,12 +3,12 @@ title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683218"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205043"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -75,7 +75,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 ## <a name="policy-definition-id"></a>ポリシー定義 ID
 
 このフィールドでは、ポリシー定義またはイニシアティブ定義の完全なパス名を指定する必要があります。
-`policyDefinitionId` は文字列であり、配列ではありません。 複数のポリシーを一緒に割り当てることが多い場合は、代わりに[イニシアティブ](./definition-structure.md#initiatives)を使用することをお勧めします。
+`policyDefinitionId` は文字列であり、配列ではありません。 複数のポリシーを一緒に割り当てることが多い場合は、代わりに[イニシアティブ](./initiative-definition-structure.md)を使用することをお勧めします。
 
 ## <a name="parameters"></a>パラメーター
 

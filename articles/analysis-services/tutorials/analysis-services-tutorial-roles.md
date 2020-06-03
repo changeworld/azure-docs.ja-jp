@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454256"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016391"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
 
@@ -59,7 +59,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
     ![SSMS で接続する](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > [Active Directory - MFA サポートで汎用] を選択することをお勧めします。 この種類の認証は、[対話型ではない多要素認証](../../sql-database/sql-database-ssms-mfa-authentication.md)をサポートします。 
+    > [Active Directory - MFA サポートで汎用] を選択することをお勧めします。 この種類の認証は、[対話型ではない多要素認証](../../azure-sql/database/authentication-mfa-ssms-overview.md)をサポートします。 
 
 3. **オブジェクト エクスプローラー**で、サーバー オブジェクトを展開して表示します。 右クリックして、サーバーのプロパティを表示します。
    

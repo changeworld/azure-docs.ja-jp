@@ -2,19 +2,19 @@
 title: Azure SQL Edge の接続とクエリ (プレビュー)
 description: Azure SQL Edge の接続とクエリ (プレビュー) について説明します。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 17bb5afebe0335bcdcf40298490f94999c04a621
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e7034c3f664eeba802341510b109ba9cc57845a8
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593951"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235130"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Azure SQL Edge の接続とクエリ (プレビュー)
 

@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688325"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170802"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service での HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でホストされているアプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
@@ -38,7 +38,7 @@ ms.locfileid: "74688325"
 
 [App Service](overview.md) ではステップごとにさまざまなオプションを使用できます。
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.アプリケーションの動作を観察、監視する
 #### <a name="track-service-health"></a>サービス正常性を追跡する
@@ -62,7 +62,7 @@ Web アプリに問題が発生しているかどうかは、アプリを監視�
 * [Azure App Service のアプリの監視](web-sites-monitor.md)
 * [アラート通知を受け取る](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2.データを収集する
 #### <a name="use-the-diagnostics-tool"></a>診断ツールの使用
@@ -86,7 +86,7 @@ Kudu にはもう 1 つ便利な機能があり、アプリケーションから
 
 Kudu で利用できる機能の詳細については、 [知っておくべき Azure Websites のオンライン ツール](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3.問題を緩和する
 #### <a name="scale-the-app"></a>アプリをスケーリングする
