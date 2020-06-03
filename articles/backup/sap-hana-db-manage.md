@@ -3,12 +3,12 @@ title: Azure VM 上のバックアップされた SAP HANA データベースを
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースを管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480064"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701110"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>バックアップされた SAP HANA データベースを管理および監視する
 
@@ -68,13 +68,21 @@ Azure Backup では、サポートされる管理操作が豊富なため、バ�
 
 ### <a name="hana-native-client-integration"></a>HANA ネイティブ クライアントの統合
 
-すべての HANA ネイティブ クライアントからトリガーされたオンデマンドの完全バックアップが、 **[バックアップ項目]** ページに完全バックアップとして表示されるようになりました。
+#### <a name="backup"></a>バックアップ
+
+HANA ネイティブ クライアントから (**Backint** に) トリガーされたオンデマンドのバックアップは、 **[バックアップ項目]** ページのバックアップ リストに表示されます。
 
 ![最後に実行されたバックアップ](./media/sap-hana-db-manage/last-backups.png)
 
-これらのアドホックの完全バックアップは、復元のための復元ポイント一覧にも表示されます。
+**[バックアップ ジョブ]** ページから[これらのバックアップを監視する](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal)こともできます。
+
+これらのオンデマンドのバックアップは、復元のための復元ポイント一覧にも表示されます。
 
 ![復元ポイントの一覧](./media/sap-hana-db-manage/list-restore-points.png)
+
+#### <a name="restore"></a>復元
+
+同じマシンに復元するために (**Backint** を使用して) HANA ネイティブ クライアントからトリガーされた復元は、 **[バックアップ ジョブ]** ページから[監視](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal)することができます。
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup が有効になっているデータベースで SAP HANA ネイティブ クライアント バックアップを実行する
 
@@ -200,13 +208,13 @@ SAP HANA データベースの保護を再開するには:
 
 * **[バックアップ ポリシー]** メニューで、ポリシーを選択して、 **[保存]** を選択します。
 
-### <a name="upgrading-from-sap-hana-10-to-20"></a>SAP HANA 1.0 から 2.0 へのアップグレード
+### <a name="upgrading-from-sdc-to-mdc"></a>SDC から MDC にアップグレードする
 
-[SAP HANA 1.0 から 2.0 へのアップグレードの後に](backup-azure-sap-hana-database-troubleshoot.md#upgrading-from-sap-hana-10-to-20) SAP HANA データベースのバックアップを続行する方法について学習してください。
+[SDC から MDC へのアップグレードの後に](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) SAP HANA データベースのバックアップを続行する方法について学習してください。
 
-### <a name="upgrading-without-a-sid-change"></a>SID の変更なしでのアップグレード
+### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>SID を変更せずに SDC から MDC にアップグレードする
 
-[アップグレードの後に SID がまだ変更されていない](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change) SAP HANA データベースのバックアップを続行する方法について学習してください。
+[SDC から MDC へのアップグレードの後に SID がまだ変更されていない](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid) SAP HANA データベースのバックアップを続行する方法について学習してください。
 
 ### <a name="unregister-an-sap-hana-instance"></a>SAP HANA インスタンスを登録解除する
 

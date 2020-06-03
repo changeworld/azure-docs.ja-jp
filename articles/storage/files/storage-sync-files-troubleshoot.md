@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801318"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836517"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 この記事は、Azure File Sync のデプロイで発生する可能性がある問題のトラブルシューティングと解決を支援することを目的としています。 問題をさらに調査する必要がある場合に、システムから重要なログを収集する方法についても説明します。 ご質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
-1. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
+1. [Azure Storage に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure?product=storage)。
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。
 3. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
@@ -161,7 +161,7 @@ Reset-StorageSyncServer
 このエラーは、指定したサーバー エンドポイント パスが別のサーバー エンドポイントによって既に同期されている場合に発生します。 Azure File Sync では、同じディレクトリまたはボリュームを複数のサーバー エンドポイントで同期することはサポートされていません。
 
 <a id="-2160590967"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2160590967 または 0x80c80077) というエラーで失敗する**  
-このエラーは、サーバー エンドポイントのパスに孤立した階層化ファイルが含まれている場合に発生します。 サーバー エンドポイントが最近削除された場合は、孤立した階層化ファイルのクリーンアップが完了するまで待ちます。 孤立した階層化ファイルのクリーンアップが開始されると、イベント ID 6662 がテレメトリ イベント ログに記録されます。 孤立した階層化ファイルのクリーンアップが完了し、パスを使用してサーバー エンドポイントを再度作成できるようになったら、イベント ID 6661 が記録されます。 イベント ID 6661 が記録された後にサーバー エンドポイントの作成が失敗する場合は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」セクションの手順を実行して、孤立した階層化ファイルを削除します。
+このエラーは、サーバー エンドポイントのパスに孤立した階層化ファイルが含まれている場合に発生します。 サーバー エンドポイントが最近削除された場合は、孤立した階層化ファイルのクリーンアップが完了するまで待ちます。 孤立した階層化ファイルのクリーンアップが開始されると、イベント ID 6662 がテレメトリ イベント ログに記録されます。 孤立した階層化ファイルのクリーンアップが完了し、パスを使用してサーバー エンドポイントを再度作成できるようになったら、イベント ID 6661 が記録されます。 階層化されたファイルのクリーンアップが完了した後にサーバー エンドポイントの作成が失敗する場合、またはイベント ログがロールオーバーしたためにテレメトリ イベント ログにイベント ID 6661 が見つからない場合は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」セクションの手順を実行して、孤立した階層化ファイルを削除します。
 
 <a id="-2134347757"></a>**サーバー エンドポイントの削除が "MgmtServerJobExpired" (エラー コード: -2134347757 または 0x80c87013)** というエラーで失敗する  
 このエラーは、サーバーがオフラインの場合、またはネットワークに接続されていない場合に発生します。 サーバーを使用できなくなったら、ポータルでサーバーの登録を解除します。これで、サーバー エンドポイントが削除されます。 サーバー エンドポイントを削除するには、[Azure File Sync 使用したサーバーの登録解除](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)に関するセクションで説明されている手順を実行します。

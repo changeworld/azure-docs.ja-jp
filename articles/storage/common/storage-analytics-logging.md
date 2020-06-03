@@ -5,15 +5,16 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: monitoring
+ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204068"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675914"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -24,7 +25,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
  ログ エントリが作成されるのは、サービス エンドポイントに対して行われた要求がある場合に限られます。 たとえば、ストレージ アカウントの BLOB エンドポイントにはアクティビティが存在するが、Table エンドポイントや Queue エンドポイントには存在しない場合、Blob service に関連したログだけが作成されます。
 
 > [!NOTE]
->  現在、Storage Analytics のログは、BLOB、Queue、Table の各サービスでのみ使用できます。 ただし、Premium ストレージ アカウントは、サポートされません。
+>  現在、Storage Analytics のログは、BLOB、Queue、Table の各サービスでのみ使用できます。 Storage Analytics のログは、Premium パフォーマンス [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) アカウントでも使用できます。 ただし、Premium パフォーマンスを持つ汎用 v2 アカウントでは使用できません。
 
 ## <a name="requests-logged-in-logging"></a>ログで記録される要求
 ### <a name="logging-authenticated-requests"></a>認証済み要求のログ記録

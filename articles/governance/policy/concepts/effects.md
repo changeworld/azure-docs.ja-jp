@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 03/23/2020
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6c2dc8303b630eb01de5c3ad9e3504dfec5256bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422454"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746898"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -39,13 +39,6 @@ Azure Resource Manager を通したリソースの作成または更新の要求
 
 現在のところ、**EnforceOPAConstraint** または **EnforceRegoPolicy** 効果の評価順序はありません。
 
-## <a name="disabled"></a>無効
-
-この効果は、状況をテストする場合や、効果がポリシー定義によってパラメーター化されている場合に役立ちます。 この柔軟性により、ポリシーのすべての割り当てを無効にするのではなく、単一の割り当てを無効にすることができます。
-
-無効にした効果の代替は、ポリシー割り当てに設定されている **enforcementMode** です。
-**enforcementMode** が _[無効]_ の場合、リソースは引き続き評価されます。 アクティビティ ログなどのログ記録や、ポリシーの効果はありません。 詳細については、[ポリシー割り当て - 強制モード](./assignment-structure.md#enforcement-mode)に関するページを参照してください。
-
 ## <a name="append"></a>Append
 
 Append は、作成中または更新中に要求されたリソースにフィールドを追加するために使用します。 一般的な例としては、ストレージ リソースに対して許可される IP の指定が挙げられます。
@@ -55,7 +48,7 @@ Append は、作成中または更新中に要求されたリソースにフィ�
 
 ### <a name="append-evaluation"></a>Append の評価
 
-リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。 新しい値を既存の配列に追加するには、 **[\*]** バージョンの別名を使用します。
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。 新しい値を既存の配列に追加するには、 **\[\*\]** バージョンの別名を使用します。
 
 Append 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -65,7 +58,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="append-examples"></a>Append の例
 
-例 1:非 **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **[\*]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
+例 1:非 **\[\*\]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **\[\*\]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
 
 ```json
 "then": {
@@ -80,7 +73,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-例 2: **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **[\*]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列まだ存在しない場合は、配列が作成されます。
+例 2: **\[\*\]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **\[\*\]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列がまだ存在しない場合は、配列が作成されます。
 
 ```json
 "then": {
@@ -95,144 +88,8 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-## <a name="modify"></a>変更
 
-Modify は、作成時または更新時にリソースのタグを追加、更新、または削除するために使用されます。 一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 ターゲット リソースがリソース グループでない限り、変更ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
 
-> [!IMPORTANT]
-> Modify は現在、タグでのみ使用されます。 タグを管理している場合は、Append ではなく Modify を使用することをお勧めします。Modify では、追加の操作タイプが使用でき、既存のリソースを修復する機能が提供されます。 ただし、マネージド ID を作成できない場合は、Append を追加することをお勧めします。
-
-### <a name="modify-evaluation"></a>Modify の評価
-
-リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Modify による評価が行われます。 Modify では、ポリシー規則の **if** 条件が満たされた場合、リソースのフィールドが追加または更新されます。
-
-Modify 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
-
-### <a name="modify-properties"></a>Modify のプロパティ
-
-Modify 効果の **details** プロパティには、修復に必要なアクセス許可を定義するすべてのサブプロパティと、タグ値の追加、更新、または削除に使用する **operations** が含まれます。
-
-- **roleDefinitionIds** [必須]
-  - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
-  - 定義されたロールには、[Contributor](../../../role-based-access-control/built-in-roles.md#contributor) ロールに与えられているすべての操作が含まれている必要があります。
-- **operations** [必須]
-  - 一致するリソースで完了されるすべてのタグ操作の配列です。
-  - プロパティ:
-    - **operation** [必須]
-      - 一致するリソースに対して実行するアクションを定義します。 オプションは、_addOrReplace_、_Add_、_Remove_ です。 _Add_ は、[Append](#append) 効果に似た動作をします。
-    - **field** [必須]
-      - 追加、置換、または削除するタグです。 タグ名は、他の [fields](./definition-structure.md#fields) と同じ名前付け規則に従う必要があります。
-    - **value** (オプション)
-      - タグに設定する値です。
-      - このプロパティは、**operation** が _addOrReplace_ または _Add_ の場合に必要です。
-
-### <a name="modify-operations"></a>Modify の操作
-
-**operations** プロパティ配列を使用すると、1 つのポリシー定義から複数のタグを異なる方法で変更できます。 各操作は **operation**、**field**、および **value** の各プロパティで構成されます。 operation では、修復タスクがタグに対して行う処理を決定し、field では、どのタグを変更するかを決定し、value では、そのタグの新しい設定を定義します。 下記の例では、以下のタグ変更が実行されます。
-
-- `environment` タグを "Test" に設定する (異なる値で既に存在している場合でも)。
-- タグ `TempResource` を削除する。
-- `Dept` タグを、ポリシーの割り当てで構成されたポリシー パラメーター _DeptName_ に設定する。
-
-```json
-"details": {
-    ...
-    "operations": [
-        {
-            "operation": "addOrReplace",
-            "field": "tags['environment']",
-            "value": "Test"
-        },
-        {
-            "operation": "Remove",
-            "field": "tags['TempResource']",
-        },
-        {
-            "operation": "addOrReplace",
-            "field": "tags['Dept']",
-            "value": "[parameters('DeptName')]"
-        }
-    ]
-}
-```
-
-**operation** プロパティには、次のオプションが用意されています。
-
-|Operation |説明 |
-|-|-|
-|addOrReplace |定義済みのタグと値をリソースに追加します (タグに別の値が既に存在する場合でも)。 |
-|追加 |定義済みのタグと値をリソースに追加します。 |
-|[削除] |定義済みのタグをリソースから削除します。 |
-
-### <a name="modify-examples"></a>Modify の例
-
-例 1:`environment` タグを追加し、既存の `environment` タグを "Test" に置き換えます。
-
-```json
-"then": {
-    "effect": "modify",
-    "details": {
-        "roleDefinitionIds": [
-            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
-        ],
-        "operations": [
-            {
-                "operation": "addOrReplace",
-                "field": "tags['environment']",
-                "value": "Test"
-            }
-        ]
-    }
-}
-```
-
-例 2:`env` タグを削除し、`environment` タグを追加するか、既存の `environment` タグをパラメーター化された値に置き換えます。
-
-```json
-"then": {
-    "effect": "modify",
-    "details": {
-        "roleDefinitionIds": [
-            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
-        ],
-        "operations": [
-            {
-                "operation": "Remove",
-                "field": "tags['env']"
-            },
-            {
-                "operation": "addOrReplace",
-                "field": "tags['environment']",
-                "value": "[parameters('tagValue')]"
-            }
-        ]
-    }
-}
-```
-
-## <a name="deny"></a>拒否
-
-Deny は、ポリシーを通して定義された基準に一致していないために失敗するリソース要求を防ぐために使用されます。
-
-### <a name="deny-evaluation"></a>Deny の評価
-
-照合されたリソースを作成または更新する場合、Deny は、リソース プロバイダーに要求が送信されないようにします。 要求は `403 (Forbidden)` として返されます。 ポータルでは、ポリシーの割り当てによって阻止されたデプロイの状態として、この Forbidden を表示できます。
-
-既存のリソースの評価では、Deny ポリシー定義と一致するリソースは、非準拠としてマークされます。
-
-### <a name="deny-properties"></a>Deny のプロパティ
-
-Deny 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
-
-### <a name="deny-example"></a>Deny の例
-
-例:Deny 効果を使用します。
-
-```json
-"then": {
-    "effect": "deny"
-}
-```
 
 ## <a name="audit"></a>Audit
 
@@ -321,6 +178,31 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
     }
 }
 ```
+
+## <a name="deny"></a>拒否
+
+Deny は、ポリシーを通して定義された基準に一致していないために失敗するリソース要求を防ぐために使用されます。
+
+### <a name="deny-evaluation"></a>Deny の評価
+
+照合されたリソースを作成または更新する場合、Deny は、リソース プロバイダーに要求が送信されないようにします。 要求は `403 (Forbidden)` として返されます。 ポータルでは、ポリシーの割り当てによって阻止されたデプロイの状態として、この Forbidden を表示できます。
+
+既存のリソースの評価では、Deny ポリシー定義と一致するリソースは、非準拠としてマークされます。
+
+### <a name="deny-properties"></a>Deny のプロパティ
+
+Deny 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
+
+### <a name="deny-example"></a>Deny の例
+
+例:Deny 効果を使用します。
+
+```json
+"then": {
+    "effect": "deny"
+}
+```
+
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
@@ -430,17 +312,25 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 }
 ```
 
+## <a name="disabled"></a>無効
+
+この効果は、状況をテストする場合や、効果がポリシー定義によってパラメーター化されている場合に役立ちます。 この柔軟性により、ポリシーのすべての割り当てを無効にするのではなく、単一の割り当てを無効にすることができます。
+
+無効にした効果の代替は、ポリシー割り当てに設定されている **enforcementMode です。
+**enforcementMode** が _[無効]_ の場合、リソースは引き続き評価されます。 アクティビティ ログなどのログ記録や、ポリシーの効果はありません。 詳細については、[ポリシー割り当て - 強制モード](./assignment-structure.md#enforcement-mode)に関するページを参照してください。
+
+
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-この効果は、`Microsoft.Kubernetes.Data` のポリシー定義*モード*で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に定義された Gatekeeper v3 受付制御ルールを、Azure 上のセルフマネージド Kubernetes クラスターに渡すために使用されます。
+この効果は、`Microsoft.Kubernetes.Data` のポリシー定義_モード_で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に対して定義された Gatekeeper v3 受付制御ルールを、Azure 上の Kubernetes クラスターに渡すために使用されます。
 
 > [!NOTE]
-> [AKS Engine 用の Azure Policy](aks-engine.md) はパブリック プレビューであり、組み込みのポリシー定義のみをサポートします。
+> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint の評価
 
 Open Policy Agent アドミッション コントローラーは、クラスター上の新しい要求をリアルタイムで評価します。
-5 分ごとにクラスターのフル スキャンが完了し、結果が Azure Policy に報告されます。
+15 分ごとにクラスターのフル スキャンが完了し、結果が Azure Policy に報告されます。
 
 ### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint のプロパティ
 
@@ -449,13 +339,13 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 - **constraintTemplate** [必須]
   - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
 - **constraint** [必須]
-  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例では、`{{ .Values.cpuLimit }}` および `{{ .Values.memoryLimit }}` となっています。
+  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例では、これらの値は `{{ .Values.cpuLimit }}` および `{{ .Values.memoryLimit }}` です。
 - **values** [オプション]
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint の例
 
-例:AKS エンジンでコンテナーの CPU とメモリのリソース上限を設定する、Gatekeeper v3 の受付制御ルールです。
+例:Kubernetes でコンテナーの CPU とメモリのリソース制限を設定する、Gatekeeper v3 の受付制御ルールです。
 
 ```json
 "if": {
@@ -488,15 +378,15 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-この効果は、`Microsoft.ContainerService.Data` のポリシー定義*モード*で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
+この効果は、`Microsoft.ContainerService.Data` のポリシー定義_モード_で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
 
 > [!NOTE]
-> [AKS 用の Azure Policy](rego-for-aks.md) は限定プレビューで、組み込みのポリシー定義のみをサポートします
+> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、更新された [EnforceOPAConstraint](#enforceopaconstraint) 効果を使用してください。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy の評価
 
 Open Policy Agent アドミッション コントローラーは、クラスター上の新しい要求をリアルタイムで評価します。
-5 分ごとにクラスターのフル スキャンが完了し、結果が Azure Policy に報告されます。
+15 分ごとにクラスターのフル スキャンが完了し、結果が Azure Policy に報告されます。
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy のプロパティ
 
@@ -538,7 +428,124 @@ EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 �
 }
 ```
 
-## <a name="layering-policies"></a>階層化ポリシー
+## <a name="modify"></a>変更
+
+Modify は、作成時または更新時にリソースのタグを追加、更新、または削除するために使用されます。 一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 ターゲット リソースがリソース グループでない限り、変更ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
+
+> [!IMPORTANT]
+> Modify は現在、タグでのみ使用されます。 タグを管理している場合は、Append ではなく Modify を使用することをお勧めします。Modify では、追加の操作タイプが使用でき、既存のリソースを修復する機能が提供されます。 ただし、マネージド ID を作成できない場合は、Append を追加することをお勧めします。
+
+### <a name="modify-evaluation"></a>Modify の評価
+
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Modify による評価が行われます。 Modify では、ポリシー規則の **if** 条件が満たされた場合、リソースのフィールドが追加または更新されます。
+
+Modify 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
+
+### <a name="modify-properties"></a>Modify のプロパティ
+
+Modify 効果の **details** プロパティには、修復に必要なアクセス許可を定義するすべてのサブプロパティと、タグ値の追加、更新、または削除に使用する **operations** が含まれます。
+
+- **roleDefinitionIds** [必須]
+  - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
+  - 定義されたロールには、[Contributor](../../../role-based-access-control/built-in-roles.md#contributor) ロールに与えられているすべての操作が含まれている必要があります。
+- **operations** [必須]
+  - 一致するリソースで完了されるすべてのタグ操作の配列です。
+  - プロパティ:
+    - **operation** [必須]
+      - 一致するリソースに対して実行するアクションを定義します。 オプションは、_addOrReplace_、_Add_、_Remove_ です。 _Add_ は、[Append](#append) 効果に似た動作をします。
+    - **field** [必須]
+      - 追加、置換、または削除するタグです。 タグ名は、他の [fields](./definition-structure.md#fields) と同じ名前付け規則に従う必要があります。
+    - **value** (オプション)
+      - タグに設定する値です。
+      - このプロパティは、**operation** が _addOrReplace_ または _Add_ の場合に必要です。
+
+### <a name="modify-operations"></a>Modify の操作
+
+**operations** プロパティ配列を使用すると、1 つのポリシー定義から複数のタグを異なる方法で変更できます。 各操作は **operation**、**field**、および **value** の各プロパティで構成されます。 operation では、修復タスクがタグに対して行う処理を決定し、field では、どのタグを変更するかを決定し、value では、そのタグの新しい設定を定義します。 下記の例では、以下のタグ変更が実行されます。
+
+- `environment` タグを "Test" に設定する (異なる値で既に存在している場合でも)。
+- タグ `TempResource` を削除する。
+- `Dept` タグを、ポリシーの割り当てで構成されたポリシー パラメーター _DeptName_ に設定する。
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "value": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+**operation** プロパティには、次のオプションが用意されています。
+
+|操作 |説明 |
+|-|-|
+|addOrReplace |定義済みのタグと値をリソースに追加します (タグに別の値が既に存在する場合でも)。 |
+|追加 |定義済みのタグと値をリソースに追加します。 |
+|[削除] |定義済みのタグをリソースから削除します。 |
+
+### <a name="modify-examples"></a>Modify の例
+
+例 1:`environment` タグを追加し、既存の `environment` タグを "Test" に置き換えます。
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+例 2:`env` タグを削除し、`environment` タグを追加するか、既存の `environment` タグをパラメーター化された値に置き換えます。
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+
+
+## <a name="layering-policy-definitions"></a>ポリシー定義を階層化する
 
 リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当てのスコープは、同じ場合も異なっている場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 各ポリシーの条件と効果は個別に評価されます。 次に例を示します。
 
@@ -565,7 +572,7 @@ EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 �
 - サブスクリプション A の新しいリソースで、場所が 'westus' でないリソースは、ポリシー 1 によって拒否される
 - サブスクリプション A のリソース グループ B の新しいリソースは、すべて拒否される
 
-各割り当ては個別に評価されます。 そのため、スコープの違いによって発生する隙間をリソースがすり抜けるチャンスはありません。 ポリシーの階層化またはポリシーの重複による最終的な結果は、**累積的に最も制限が厳しい**と考えられます。 たとえば、ポリシー 1 とポリシー 2 の両方に拒否効果が設定されている場合、重複するポリシーと競合するポリシーによって、リソースがブロックされます。 リソースを対象のスコープ内に必ず作成する必要がある場合は、それぞれの割り当ての除外を見直して、適切なポリシーが適切なスコープに影響を与えていることを確認してください。
+各割り当ては個別に評価されます。 そのため、スコープの違いによって発生する隙間をリソースがすり抜けるチャンスはありません。 ポリシー定義の階層化による最終的な結果は、**累積的に最も制限が厳しい**と考えられます。 たとえば、ポリシー 1 とポリシー 2 の両方に拒否効果が設定されている場合、重複するポリシー定義と競合するポリシー定義によって、リソースがブロックされます。 リソースを対象のスコープ内に必ず作成する必要がある場合は、それぞれの割り当ての除外を見直して、適切なポリシー割り当てが適切なスコープに影響を与えていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

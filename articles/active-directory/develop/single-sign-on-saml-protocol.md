@@ -1,6 +1,7 @@
 ---
 title: Azure シングル サインオンの SAML プロトコル
-description: この記事では、Azure Active Directory でのシングル サインオン SAML プロトコルについて説明します。
+titleSuffix: Microsoft identity platform
+description: この記事では、Azure Active Directory でのシングル サインオン (SSO) SAML プロトコルについて説明します。
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -9,24 +10,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2017
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 333f23ddfe834307b5cbfebb9540e0b5efc79a53
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853787"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771674"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
-この記事では、Azure Active Directory (Azure AD) がシングル サインオンに対してサポートする SAML 2.0 の認証要求と応答について説明します。
+この記事では、Azure Active Directory (Azure AD) がシングル サインオン (SSO) に対してサポートする SAML 2.0 の認証要求と応答について説明します。
 
 次の図は、このプロトコルでのシングル サインオンのシーケンスを示したものです。 クラウド サービス (サービス プロバイダー) は、HTTP リダイレクト バインディングを使用して、 `AuthnRequest` (認証要求) 要素を Azure AD (ID プロバイダー) に渡します。 Azure AD は、HTTP POST バインディングを使用して、 `Response` 要素をクラウド サービスに送信します。
 
-![シングル サインオンのワークフロー](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![シングル サインオン (SSO) のワークフロー](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+
+> [!NOTE]
+> この記事では、シングル サインオンでの SAML の使用について説明します。 シングル サインオンを処理するその他の方法 (OpenID Connect や統合 Windows 認証など) の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="authnrequest"></a>AuthnRequest
 
@@ -93,10 +97,10 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 指定する場合は、`ProxyCount` 属性、`IDPListOption` 要素、または `RequesterID` 要素を使用しないでください。これらはサポートされていません。
 
 ### <a name="signature"></a>署名
-`AuthnRequest` 要素には `Signature` 要素を含めないでください。Azure AD は署名付き認証要求をサポートしていません。
+`AuthnRequest` 要素に `Signature` 要素を含めないでください。 Azure AD は、署名された認証要求を検証しません。 要求元の検証は、登録されている Assertion Consumer Service の URL に応答することによってのみ提供されます。
 
 ### <a name="subject"></a>サブジェクト
-Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
+`Subject` 要素を含めないでください。 Azure AD は、要求のサブジェクトの指定をサポートしていません。指定した場合は、エラーが返されます。
 
 ## <a name="response"></a>Response
 要求されたサインオンが正常に完了すると、Azure AD はクラウド サービスに応答を送信します。 サインオンに成功した場合、次のサンプルのような応答が返されます。

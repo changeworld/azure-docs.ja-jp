@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837194"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759032"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -82,7 +82,7 @@ Azure AD Privileged Identity Management を有効にしたら、次のように�
 
 4. **[すべてのサービス]** の一覧から Privileged Identity Management を開き、ダッシュ ボードにピン留めします。
 
-組織で PIM を使用する最初のユーザーには、**セキュリティ管理者**と**特権ロール管理者**のロールが割り当てられます。 ユーザーの Azure AD ディレクトリ ロールの割り当てを管理できるのは特権ロール管理者だけです。 PIM セキュリティ ウィザードの指示に従って初回の検出と割り当てを実行できます。 この時点でさらに変更を加えずに、ウィザードを終了することができます。
+組織で PIM を使用する最初のユーザーに**セキュリティ管理者**と**特権ロール管理者**のロールが割り当てられていることを確認します。 ユーザーの Azure AD ディレクトリ ロールの割り当てを管理できるのは特権ロール管理者だけです。 PIM セキュリティ ウィザードの指示に従って初回の検出と割り当てを実行できます。 この時点でさらに変更を加えずに、ウィザードを終了することができます。
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>高度な特権ロールに属するアカウントを識別および分類する
 

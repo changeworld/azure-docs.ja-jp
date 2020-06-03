@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672648"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771198"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -76,7 +76,7 @@ Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカ�
 Windows で、PRT は 2 つの主要コンポーネントによって使用されます。
 
 * **Azure AD CloudAP プラグイン**: Windows サインイン中に、Azure AD CloudAP プラグインが、ユーザーから提供された資格情報を使用して Azure AD から PRT を要求します。 また、PRT をキャッシュして、ユーザーがインターネット接続にアクセスできないときのキャッシュ サインインを有効にします。
-* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 でのブラウザー SSO は、Microsoft Edge (ネイティブ) および Chrome (Windows 10 アカウントまたは Office Online 拡張機能を経由) でサポートされています。
+* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 でのブラウザー SSO は、Microsoft Edge (ネイティブ) および Chrome ([Windows 10 アカウント](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能を経由) でサポートされています。
 
 ## <a name="how-is-a-prt-renewed"></a>PRT はどのように更新されますか?
 

@@ -4,12 +4,12 @@ description: Azure Backup のパフォーマンスに関する問題の原因を
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 5e669a68794a8622bb4a2fa55b206153717fd772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c229bd836029226a1e042de9bfe706654f97dc26
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187904"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658930"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 
@@ -95,6 +95,8 @@ Backup エージェントを VM で実行している場合、パフォーマン
 
 * **データ転送の進行状況が UI に表示されている**。 データは依然として転送中です。 ネットワーク帯域幅またはデータ サイズが原因で、遅延が生じている可能性があります。
 * **データ転送の進行状況が UI に表示されていない**。 C:\Program Files\Microsoft Azure Recovery Services Agent\Temp にあるログを開き、ログ内に FileProvider::EndData エントリがあるかどうかを確認します。 このエントリは、データ転送が完了し、カタログ化の処理が進行中であることを表します。 バックアップ ジョブを取り消さないようにしてください。 そのまま、カタログ化の処理が完了するまでしばらく待ちます。 問題が解決しない場合は、 [Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
+
+大容量ディスクをバックアップする場合は、最初のバックアップ (初期レプリケーション) に [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) を使用することをお勧めします。  Data Box を使用できない場合、ネットワーク経由での長いデータ転送の間に環境内で一時的なネットワークの問題が発生すると、バックアップが失敗する可能性があります。  このような障害から保護するために、最初のバックアップにいくつかのフォルダーを追加し、すべてのフォルダーが Azure に正常にバックアップされるまで、フォルダーを段階的に追加することができます。  それ以降の増分バックアップは比較的高速になります。
 
 ## <a name="next-steps"></a>次のステップ
 

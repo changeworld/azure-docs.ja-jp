@@ -8,16 +8,16 @@ ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 8d2e34bcfd180dfeb814dace2a496f3ac593c5bf
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271694"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738610"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの一般的な問題
 
@@ -101,7 +101,7 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 
 職場または学校のアカウント (alain@contoso.com など) で 2 要素認証を使用している場合、追加したこのセキュリティ機能を使用しなければならないと組織が決定している可能性があります。 この機能を使用しなければならないことは組織の決定であるため、個人でこれを無効にすることはできません。 ただし、alain@outlook.com のような個人アカウントで 2 要素認証を使用している場合は、この機能の有効/無効を切り替えることができます。 個人のアカウントに対する 2 要素認証を制御する方法については、[Microsoft アカウントの 2 段階認証を有効または無効にする](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページをご覧ください。
 
-2 要素認証を無効にできない場合は、組織レベルで適用されているセキュリティの既定値群が原因である可能性もあります。 セキュリティの既定値群の詳細については、「[セキュリティ デフォルトとは](../fundamentals/concept-fundamentals-security-defaults.md)」を参照してください。
+2 要素認証を無効にできない場合は、組織レベルで適用されているセキュリティの既定値群が原因である可能性もあります。 セキュリティの既定値の詳細については、[セキュリティの既定値](../fundamentals/concept-fundamentals-security-defaults.md)に関する記事を参照してください。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>問題に対する回答が見つからなかった場合
 

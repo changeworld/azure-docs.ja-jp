@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/16/2020
+ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 8e62d00deed2310437b231bf68ccd9f0cca2fe57
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82800976"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758930"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,17 +25,15 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
-| V10 リリース - [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | 処理中 |
+| 2020 年 5 月の更新プログラム ロールアップ - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | サポートされています |
+| V10 リリース - [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | サポートされています |
 | 2019 年 12 月の更新プログラム ロールアップ - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12日 | サポートされています |
 | V9 リリース - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019 年 12 月 2 日 | サポートされています |
 | V8 リリース - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | サポートされています |
-| 2019 年 7 月の更新プログラム ロールアップ - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | サポートされています |
-| 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポートされています |
-| V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | サポートされています |
-| 2019 年 6 月の更新プログラム ロールアップ - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
-| 2019 年 6 月の更新プログラム ロールアップ - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
-| 2019 年 5 月の更新プログラム ロールアップ - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
-| V6 リリース - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
+| 2019 年 7 月の更新プログラム ロールアップ - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | サポートされています - エージェント バージョンは 2020 年 9 月 1 日に有効期限が切れます |
+| 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポートされています - エージェント バージョンは 2020 年 9 月 1 日に有効期限が切れます |
+| V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | サポートされています - エージェント バージョンは 2020 年 9 月 1 日に有効期限が切れます |
+| V6 リリース | 6.0.0.0 ～ 6.3.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れました |
 | V5 リリース | 5.0.2.0 - 5.2.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2020 年 3 月 18 日に有効期限が切れました |
 | V4 リリース | 4.0.1.0 ～ 4.3.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2019 年 11 月 6 日に有効期限が切れました |
 | V3 リリース | 3.1.0.0 - 3.4.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2019 年 8 月 19 日に有効期限が切れました |
@@ -43,6 +41,15 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10020"></a>エージェント バージョン 10.0.2.0
+次のリリース ノートは、2020 年 5 月 19 日にリリースされた Azure File Sync エージェントのバージョン 10.0.2.0 を対象としています。 これらは、バージョン 10.0.0.0 に関して記載されているリリース ノートへの追記です。
+
+このリリースで修正された問題:  
+- ストレージ同期エージェント (FileSyncSvc) は、Azure File Sync v10 エージェントをインストールした後に頻繁にクラッシュします。
+
+> [!Note]  
+>このリリースは、新しいバージョンが利用可能になったときに自動的に更新されるように構成されたサーバーにフライト化されていませんでした。 この更新プログラムをインストールするには、Microsoft Update または Microsoft Update カタログを使用します (インストール手順については、[KB4522412](https://support.microsoft.com/help/4522412) を参照してください)。
 
 ## <a name="agent-version-10000"></a>エージェント バージョン 10.0.0.0
 次のリリース ノートは、(2020 年 4 月 9 日にリリースされた) Azure File Sync エージェントのバージョン 10.0.0.0 を対象としています。

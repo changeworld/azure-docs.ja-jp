@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233911"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735873"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -41,11 +41,14 @@ Azure Backup Server には、Data Protection Manager (DPM) のワークロード
 
 Azure Backup Server を準備して実行するための最初の手順は、Windows Server のセットアップです。 サーバーの設置場所は Azure でもオンプレミスでもかまいません。
 
+* オンプレミスのワークロードを保護するには、MABS サーバーをオンプレミスに配置する必要があります。
+* Azure VM で実行されているワークロードを保護するには、MABS サーバーを Azure に配置し、Azure VM として実行する必要があります。
+
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
 
 Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は4 つのコアと 8 GB の RAM を持つ Standard_A4_v2 です。
 
-Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、[MABS の保護マトリックス](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)に関するページで説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 ### <a name="using-an-on-premises-server"></a>オンプレミスに設置されたサーバーを使用する場合
 
@@ -196,7 +199,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))」を参照してください。
+    スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)」を参照してください。
 5. 制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)

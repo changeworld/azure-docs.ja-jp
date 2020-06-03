@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792617"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844568"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
 このページでは、Azure Remote Rendering に影響を及ぼす一般的な問題とその解決方法の一覧を示します。
+
+## <a name="cant-link-storage-account-to-arr-account"></a>ストレージアカウントを ARR アカウントにリンクできない
+
+[ストレージ アカウントのリンク](../how-tos/create-an-account.md#link-storage-accounts)中に、Remote Rendering アカウントが一覧に表示されない場合があります。 この問題を解決するには、Azure portal の ARR アカウントに移動し、左側の **[設定]** グループの下にある **[ID]** を選択します。 **[状態]** が **[オン]** に設定されていることを確認してください。
+![Unity のフレーム デバッガー](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>クライアントがサーバーに接続できない
 
@@ -150,7 +155,7 @@ Unity ソリューションの*ビルドの種類*を **[デバッグ]** に切�
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>HoloLens 2 用の Unity サンプルをコンパイルするときにコンパイル エラーが発生する
 
 HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパイルしようとすると、偽のエラーが発生することがあります。 Visual Studio には、ファイルが存在するにもかかわらず、ファイルがコピーできないという警告が表示されます。 この問題が発生した場合は、次を行います。
-* すべての一時 Unity ファイルをプロジェクトから削除してから、やり直してください。
+* すべての一時 Unity ファイルをプロジェクトから削除してから、やり直してください。 つまり、Unity を閉じて、プロジェクト ディレクトリ内の一時*ライブラリ*と *obj* フォルダーを削除してから、プロジェクトを再度読み込むかビルドしてください。
 * このコピー手順の問題はファイル名が長い場合に発生することがあるため、比較的パスが短いディスク上のディレクトリにプロジェクトが格納されていることを確認してください。
 * それでも問題が解決しない場合は、MS Sense によりコピー手順が妨げられている可能性があります。 例外を設定するには、コマンド ラインから次のレジストリ コマンドを実行します (管理者権限が必要です)。
     ```cmd

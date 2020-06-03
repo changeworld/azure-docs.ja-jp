@@ -3,12 +3,12 @@ title: Azure Stack への Azure Backup Server のインストール
 description: この記事では、Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77583437"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747449"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -91,7 +91,7 @@ Azure Backup Server の仮想マシンは、ドメインに参加させる必要
 
 Azure Backup Server のサーバーを選ぶときは、Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージから開始します。 推奨される仮想マシンの作成方法については、[Azure Portal で初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 サーバー仮想マシン (VM) に推奨される最小要件はA2 Standard (2 コア、3.5 GB RAM) です。
 
-Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、[MABS の保護マトリックス](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)に関するページで説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 > [!NOTE]
 > Azure Backup Server は、単一目的の専用の仮想マシンで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
@@ -243,7 +243,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))」を参照してください。
+    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「[データ ストレージの準備](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)」を参照してください。
 
 6. **[セキュリティの設定]** で、制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** をクリックします。
 

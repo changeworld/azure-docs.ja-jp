@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: bf674170ff49f55fc7997a87d07f9069306fc0cd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757088"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774150"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -115,6 +115,8 @@ Red Hat 配布ファミリでは、次のコマンドのみが必要です。
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
+
+Azure で調整されたカーネルを使用した Ubuntu 18.04 では、マルチキュー I/O スケジューラが使用されます。 このシナリオでは、`noop` ではなく `none` が適切な選択です。 詳細については、[Ubuntu の I/O スケジューラ](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers)に関するページを参照してください。
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>ソフトウェア RAID の使用による IOPS の向上
 単一のディスクで実現できる以上の IOPS を必要とするワークロードの場合、複数のディスクから成るソフトウェア RAID 構成を使用する必要があります。 Azure は既にローカルのファブリック層でディスクの回復性を実現しているため、RAID 0 のストライピング構成を使用することで最高レベルのパフォーマンスが実現されます。  ドライブのパーティション分割、フォーマット、マウントを実行する前に、Azure 環境でディスクをプロビジョニングして作成し、それらを Linux VM に接続します。  Azure の Linux VM でのソフトウェア RAID セットアップの構成の詳細については、「 **[Linux でのソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 」を参照してください。

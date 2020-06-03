@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767201"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652186"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
@@ -99,6 +99,10 @@ Video Indexer を利用できる Azure リージョンについては、[リー�
 はい。 ライブラリの表示で **[ビデオの編集]** ボタンを押すか、プレーヤーの表示で **[エディターで開く]** ボタンをクリックして **[プロジェクト]** タブに移動します。新しいプロジェクトを作成し、ライブラリからさらにビデオを追加して、それらをまとめて編集できます。完了したら、ビデオをレンダリングしてダウンロードすることができます。 
 
 新しいビデオについての分析情報を得るには、Video Indexer でインデックスを付けます。ビデオとその分析情報がライブラリに表示されるようになります。
+
+### <a name="can-i-index-multiple-audio-streams-or-channels"></a>複数のオーディオ ストリームまたはチャネルにインデックスを付けることができますか。
+
+複数のオーディオ ストリームがある場合、Video Indexer では最初に検出されたストリームだけが処理されます。 Video Indexer で処理されるオーディオ ストリームでは、さまざまなチャネル (存在する場合) が取得され、モノとしてまとめて処理されます。 ストリーム/チャネルの操作では、インデックスを付ける前に、ファイルに ffmpeg コマンドを使用できます。
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Video Indexer の SLA はどうなっていますか?
 

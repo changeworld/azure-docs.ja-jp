@@ -2,13 +2,13 @@
 title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: adcc135c713c6db49c5a1e53f41b6d6c13f6bac2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/14/2020
+ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787891"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677794"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -117,7 +117,7 @@ namespaceSelector:
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS には Azure Key Vault が統合されているのですか?
 
-AKS は現在、Azure Key Vault とネイティブに統合されていません。 ただし、[Kubernetes プロジェクト用の Azure Key Vault FlexVolume][keyvault-flexvolume] を使用して、Kubernetes ポッドから Key Vault のシークレットに直接統合することはできます。
+AKS は現在、Azure Key Vault とネイティブに統合されていません。 ただし、[CSI シークレット ストア用の Azure Key Vault プロバイダー][csi-driver] を使用して、Kubernetes ポッドから Key Vault のシークレットに直接統合することはできます。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
@@ -127,9 +127,7 @@ Windows Server によるノード プールのサポートには、Kubernetes �
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか?
 
-サービス レベル アグリーメント (SLA) では、プロバイダーは、公開されたサービス レベルが満たされない場合に、サービスの費用を顧客に払い戻すことに同意します。 AKS は無料であり、払い戻す費用がないため、AKS には正式な SLA はありません。 ただし、AKS では、Kubernetes API サーバーの 99.5 パーセント以上の可用性を維持できるようにしています。
-
-Kubernetes コントロール プレーンのアップタイムを意味する AKS サービスの可用性と、Azure Virtual Machines 上で実行されている特定のワークロードの可用性の違いを把握することが重要です。 コントロール プレーンの準備ができていない場合はコントロール プレーンを使用できない場合がありますが、Azure VM 上で実行されているクラスターのワークロードは引き続き機能します。 すべての Azure VM は、財務 SLA でサポートされる有料リソースです。 Azure VM の SLA と、[可用性ゾーン][availability-zones]などの機能を使用して可用性を向上させる方法の[詳細についてはこちら](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)を参照してください。
+AKS では、[アップタイム SLA][uptime-sla] のオプションのアドオン機能として SLA 保証が用意されています。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>自分の AKS エージェント ノードに Azure の予約割引を適用できますか?
 
@@ -209,12 +207,13 @@ AKS には、このような構成に耐え、そこから復旧するための�
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
+[uptime-sla]: ./uptime-sla.md
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
-[hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-[keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948
+[csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure
+[vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/

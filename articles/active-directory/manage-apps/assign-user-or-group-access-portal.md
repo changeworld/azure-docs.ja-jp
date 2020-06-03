@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b52bc45287e0e3a8f4908630cb6e57130c1725df
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409194"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772422"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 
@@ -38,7 +38,7 @@ ms.locfileid: "79409194"
 - Azure Active Directory 事前認証を使用するアプリケーション プロキシのアプリケーション
 - ユーザーまたは管理者がそのアプリケーションに同意した後に OAuth 2.0/OpenID Connect 認証を使用する Azure AD アプリケーション プラットフォームに構築されたアプリケーション。
 
-ユーザー割り当てが必要な場合は、アプリケーションに明示的に割り当てたユーザーのみがサインインできます。 アプリには、各自の [マイ アプリ] ページで、または直接リンクを使用してアクセスできます。 
+ユーザー割り当てが必要な場合は、アプリケーションに (直接ユーザー割り当てを使用して、またはグループ メンバーシップに基づいて) 明示的に割り当てたユーザーのみがサインインできます。 アプリには、各自の [マイ アプリ] ページで、または直接リンクを使用してアクセスできます。 
 
 このオプションを **[いいえ]** に設定したため、またはアプリケーションで別の SSO モードが使用されているため割り当てが "*不要*" な場合、ユーザーは、アプリケーションへの直接リンクがあるか、アプリケーションの **[プロパティ]** ページに **[ユーザーのアクセス URL]** がある場合にアプリケーションにアクセスできます。 
 
@@ -112,7 +112,9 @@ ms.locfileid: "79409194"
 
 アプリケーション ロールにユーザーを割り当てる方法の詳細については、「[AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
 
-グループをエンタープライズ アプリに割り当てるには、`Get-AzureADUser` を `Get-AzureADGroup` に置き換える必要があります。
+グループをエンタープライズ アプリに割り当てるには、`Get-AzureADUser` を `Get-AzureADGroup` に置き換え、`New-AzureADUserAppRoleAssignment` を `New-AzureADGroupAppRoleAssignment` に置き換える必要があります。
+
+アプリケーション ロールにグループを割り当てる方法の詳細については、「[AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
 
 ### <a name="example"></a>例
 

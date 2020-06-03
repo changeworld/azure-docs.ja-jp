@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188767"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798108"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -41,7 +41,7 @@ Mapping Data Flow を設計する際に、[構成] パネルの [データ プ�
 
 Integration Runtime でコア数を増やすと、Spark コンピューティング環境内のノード数が増加し、データの読み取り、書き込み、変換のための処理能力が向上します。 ADF データ フローでは、コンピューティング エンジンに Spark を利用します。 Spark 環境は、メモリ最適化リソースによく適しています。
 * 処理速度を入力速度より高くしたい場合は、**コンピューティング最適化**クラスターを試してください。
-* メモリにより多くのデータをキャッシュしたい場合は、**メモリ最適化**クラスターを試してください。 メモリ最適化では、コンピューティング最適化よりもコアあたりの価格が高くなりますが、おそらく変換速度がより高速になります。
+* メモリにより多くのデータをキャッシュしたい場合は、**メモリ最適化**クラスターを試してください。 メモリ最適化では、コンピューティング最適化よりもコアあたりの価格が高くなりますが、おそらく変換速度がより高速になります。 データ フローの実行時にメモリ不足エラーが発生する場合は、メモリ最適化 Azure IR 構成に切り替えます。
 
 ![新しい IR](media/data-flow/ir-new.png "新しい IR")
 
@@ -140,6 +140,10 @@ DW への行単位の挿入を回避するには、シンク設定で **[Enable 
 ```DateFiles/*_201907*.txt```
 
 ワイルドカードを使用すると、パイプラインには 1 つの Data Flow アクティビティだけが含まれます。 BLOB ストアを検索し、ForEach を使用して、その内側で Data Flow の実行アクティビティを使用しながら、一致するすべてのファイルを反復処理させるよりも、この方が効率がよくなります。
+
+並列モードの For Each パイプラインは、実行されたすべてのデータ フロー アクティビティのジョブ クラスターをスピンアップすることで、複数のクラスターを生成します。 これにより、多数の同時実行を伴う Azure サービスの調整が発生する可能性があります。 ただし、パイプラインでシーケンシャルに設定された For Each の内部でデータ フローの実行を使用すると、調整とリソースの枯渇を回避できます。 これにより、Data Factory は各ファイルがデータ フローに対して順番に実行されるように強制されます。
+
+For Each でデータ フローを順番に使用する場合は、Azure Integration Runtime で TTL 設定を使用することをお勧めします。 これは、各ファイルの反復子内で、完全な 5 分間のクラスター起動時間が発生するためです。
 
 ### <a name="optimizing-for-cosmosdb"></a>CosmosDB のための最適化
 

@@ -2,14 +2,14 @@
 title: タスクとノードの状態をカウントする
 description: Azure Batch タスクと計算ノードの状態をカウントし、Batch ソリューションを容易に管理および監視できるようにします。
 ms.date: 09/07/2018
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d75ff1806f61b54bd058926f95c7c53b66aaf243
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116096"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780155"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>タスクとノードを状態別にカウントして、Batch ソリューションを監視する
 
@@ -111,12 +111,12 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
+
 REST やその他のサポートされている言語で同様のパターンを使用して、プールのノード数を取得できます。
  
 ## <a name="next-steps"></a>次のステップ
 
-* Batch サービスの概念と機能の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 記事では、プール、コンピューティング ノード、ジョブ、タスクなどの主要な Batch リソースと、サービスの機能の概要について説明しています。
-
+* [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 * Batch リソースを一覧表示するクエリにフィルターを適用する方法については、「[効率的に Batch リソースを一覧表示するクエリを作成する](batch-efficient-list-queries.md)」を参照してください。
 
 

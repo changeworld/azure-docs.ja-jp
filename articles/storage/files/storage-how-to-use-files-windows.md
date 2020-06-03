@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231766"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773102"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -80,7 +80,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 ## <a name="using-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 Windows で Azure ファイル共有を使用するには、Azure ファイル共有にドライブ文字 (マウント ポイントのパス) を割り当ててマウントするか、または対応する [UNC パス](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx)経由でアクセスする必要があります。 
 
-Windows Server や Linux Samba サーバー、NAS デバイスをホストとするような従来からある SMB 共有とは異なり、Azure ファイル共有は現在、Active Directory (AD) または Azure Active Directory (AAD) の ID を使った Kerberos 認証をサポートしていません。この認証機能については現在、対応に向けて[作業中](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)です。 Azure ファイル共有には、それが格納されているストレージ アカウントのストレージ アカウント キーを使ってアクセスする必要があります。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、Kerberos 認証と ACL サポートの不足を [Azure File Sync](storage-sync-files-planning.md) で解決できる可能性があります。AAD ベースの Kerberos 認証および ACL サポートが一般提供されるまでの一時的な措置としてご利用ください。
+この記事では、ストレージ アカウント キーを使用してファイル共有にアクセスします。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、[Azure File Sync](storage-sync-files-planning.md) または [SMB 経由の ID ベースの認証](storage-files-active-directory-overview.md)を使用できます。
 
 SMB ファイル共有が想定されている基幹業務 (LOB) アプリケーションを Azure にリフトアンドシフトする一般的なパターンは、専用の Windows ファイル サーバーを Azure VM で実行する代わりとして Azure ファイル共有を使うことです。 基幹業務アプリケーションで Azure ファイル共有を使うための移行に関して、その作業を成功させるうえで重要な考慮事項があります。多くの基幹業務アプリケーションは、VM の管理者アカウントではなく、制限されたシステム アクセス許可を与えられた専用のサービス アカウントのコンテキストで実行されるということです。 そのため、Azure ファイル共有の資格情報をマウント/保存する際は、自分の管理者アカウントからではなく、必ずサービス アカウントのコンテキストから行う必要があります。
 
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![[ネットワーク ドライブの割り当て] ドロップダウン メニューのスクリーンショット](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. ドライブ文字を選択し、UNC パスを入力します。UNC パスの形式は `<storageAccountName>.file.core.windows.net/<fileShareName>` です  (例: `anexampleaccountname.file.core.windows.net/example-share-name`)。
+1. ドライブ文字を選択し、UNC パスを入力します。UNC パスの形式は `\\<storageAccountName>.file.core.windows.net\<fileShareName>` です (例: `\\anexampleaccountname.file.core.windows.net\example-share-name`)。
     
     ![[ネットワーク ドライブの割り当て] ダイアログのスクリーンショット](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

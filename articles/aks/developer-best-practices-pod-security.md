@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 9fd7d6c6d472400afea05ac0cd87321a46dddb37
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779071"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677930"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのポッドのセキュリティに関するベスト プラクティス
 
@@ -71,14 +71,17 @@ spec:
 
 アプリケーション コードで資格情報が公開されるリスクを制限するには、固定または共有の資格情報を使用しないようにします。 資格情報またはキーをコードに直接含めないでください。 これらの資格情報が公開されている場合は、アプリケーションを更新して再デプロイする必要があります。 より適切なアプローチとしては、ポッドに対して独自の ID と自己認証の方法を指定するか、またはデジタル資格情報コンテナーから資格情報を自動的に取得します。
 
-次の[関連付けられた AKS オープン ソース プロジェクト][aks-associated-projects]を使用すると、ポッドを自動的に認証するか、デジタル資格情報コンテナーから資格情報とキーを要求することができます。
+### <a name="use-azure-container-compute-upstream-projects"></a>Azure コンテナー コンピューティング上流プロジェクトを使用する
 
-* Azure リソースのマネージド ID
-* [シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+> [!IMPORTANT]
+> 関連付けられた AKS オープン ソース プロジェクトは Azure テクニカル サポートではサポートされません。 ユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
 
-関連付けられた AKS オープン ソース プロジェクトは Azure テクニカル サポートではサポートされません。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらのプロジェクトを運用環境で使用することはお勧めできません。
+次の[関連付けられた AKS オープン ソース プロジェクト][aks-associated-projects]を使用すると、ポッドを自動的に認証するか、デジタル資格情報コンテナーから資格情報とキーを要求することができます。 これらのプロジェクトは、Azure コンテナー コンピューティング上流チームによって管理されており、[使用できるプロジェクトのより広範な一覧](https://github.com/Azure/container-compute-upstream/blob/master/README.md#support)に含まれています。
 
-### <a name="use-pod-managed-identities"></a>ポッドのマネージド ID を使用する
+ * [Azure Active Directory のポッド ID][aad-pod-identity]
+ * [シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+
+#### <a name="use-pod-managed-identities"></a>ポッドのマネージド ID を使用する
 
 Azure リソースのマネージド ID を使用すると、ポッドは、Storage や SQL など、この機能をサポートする Azure サービスに対して自己認証を行うことができます。 ポッドには、Azure Active Directory に対して自己認証を行い、デジタル トークンを受信するために、Azure ID が割り当てられます。 このデジタル トークンを他の Azure サービスに提示すると、これらのサービスは、ポッドにそのサービスへのアクセス権が付与されているかどうかを確認し、必要なアクションを実行します。 つまり、このアプローチでは、(たとえばデータベース接続文字列用に) シークレットは何も必要ありません。 次の図に、ポッドのマネージド ID の簡略化されたワークフローを示します。
 
@@ -88,7 +91,7 @@ Azure リソースのマネージド ID を使用すると、ポッドは、Stor
 
 ポッドの ID の詳細については、[お使いのアプリケーションでポッドのマネージド ID を使用するよう AKS クラスターを構成する方法][aad-pod-identity]に関するページを参照してください
 
-### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>シークレット ストア CSI ドライバーで Azure Key Vault を使用する
+#### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>シークレット ストア CSI ドライバーで Azure Key Vault を使用する
 
 ポッド ID プロジェクトを使用すると、サポートされる Azure サービスに対する認証が有効になります。 Azure リソースのマネージド ID を使用しない独自のサービスまたはアプリケーションでは、引き続き資格情報またはキーを使用して使用して認証を行うことができます。 これらの機密コンテンツを格納するには、デジタル資格情報コンテナーを使用できます。
 

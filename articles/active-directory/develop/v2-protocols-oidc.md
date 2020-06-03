@@ -1,5 +1,6 @@
 ---
-title: OpenID Connect プロトコル - Microsoft ID プラットフォーム | Azure
+title: Microsoft ID プラットフォームと OpenID Connect プロトコル | Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームで導入された OpenID Connect 認証プロトコルを利用して、Web アプリケーションを構築します。
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0e1284b94500ae6b6f1aa5eb632e94e03f3d3df3
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688232"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771589"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
-OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用できます。 Microsoft ID プラットフォーム エンドポイントによる OpenID Connect の実装を使用すると、サインインおよび API アクセスを Web ベースのアプリに追加できます。 この記事では、この作業を言語非依存で行う方法を示し、Microsoft オープンソース ライブラリを利用せずに HTTP メッセージを送受信する方法について説明します。
+OpenID Connect (OIDC) は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用できます。 Microsoft ID プラットフォーム エンドポイントによる OpenID Connect の実装を使用すると、サインインおよび API アクセスを Web ベースのアプリに追加できます。 この記事では、この作業を言語非依存で行う方法を示し、Microsoft オープンソース ライブラリを利用せずに HTTP メッセージを送受信する方法について説明します。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認*プロトコルを*認証*プロトコルとして使用できるように拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン*の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 OpenID Connect は OAuth 2.0 を拡張したものであるため、アプリは[承認サーバー](active-directory-v2-protocols.md#the-basics)で保護されるリソースにアクセスするための*アクセス トークン*を安全に取得できます。 Microsoft ID プラットフォーム エンドポイントでは、Azure AD に登録されているサード パーティ アプリが、Web API などのセキュリティで保護されたリソースのアクセス トークンを発行することもできます。 アクセス トークンを発行するようにアプリケーションを設定する方法の詳細については、[Microsoft ID プラットフォーム エンドポイントを使用してアプリケーションを登録する方法](quickstart-register-app.md)に関する記事を参照してください。 サーバーでホストされ、ブラウザーでアクセスされる [Web アプリケーション](v2-app-types.md#web-apps)を構築している場合に、OpenID Connect を使用することをお勧めします。
 
@@ -178,7 +179,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 * ユーザー/組織がアプリにサインアップ済みであることを確認する。
 * 適切な承認/特権がユーザーにあることを確認する。
-* 多要素認証など特定の強度の認証が行われたことを確認する。
+* [多要素認証](../authentication/concept-mfa-howitworks.md)など特定の強度の認証が行われたことを確認する。
 
 id_token を検証したら、ユーザーとのセッションを開始し、id_token 内の要求を使用してアプリでそのユーザーに関する情報を取得することができます。 この情報は、表示、記録、パーソナル化などに利用することができます。
 

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767965"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642191"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -65,17 +65,15 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell、Azure CLI でのファイル システムのサポート
 
 - get および set ACL 操作は現在、再帰的ではありません。
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md) のサポートはパブリック プレビュー段階です。
 
 
 ## <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
 
-* BLOB スナップショットの削除は、まだサポートされていません。  
+BLOB スナップショットの削除は、まだサポートされていません。 
 
 ## <a name="archive-tier"></a>アーカイブ層
 
 現在、アーカイブ アクセス層に影響するバグがあります。
-
 
 ## <a name="blobfuse"></a>blobfuse
 
@@ -108,6 +106,39 @@ REST API を使用して動作するサード パーティ製アプリケーシ�
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>アクセス制御リスト (ACL) と匿名読み取りアクセス
 
 コンテナーへの[匿名読み取りアクセス](storage-manage-access-to-resources.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
+
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Premium パフォーマンス BlockBlobStorage ストレージ アカウント
+
+### <a name="diagnostic-logs"></a>診断ログ
+
+Azure portal を使用して診断ログを有効にすることはできません。 PowerShell を使用して有効にすることができます。 次に例を示します。
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
+
+- ライフサイクル管理ポリシーは、Premium BlockBlobStorage ストレージ アカウントではまだサポートされていません。 
+
+- Premium レベルから下位レベルにデータを移動することはできません。 
+
+- **[BLOB の削除]** アクションは現在サポートされていません。 
+
+### <a name="hdinsight-support"></a>HDInsight のサポート
+
+HDInsight クラスターを作成しても、階層型名前空間機能が有効になっている BlockBlobStorage アカウントはまだ選択できません。 ただし、アカウントを作成した後で、そのアカウントをクラスターにアタッチすることはできます。
+
+### <a name="dremio-support"></a>Dremio のサポート
+
+Dremio は、階層型名前空間機能が有効になっている BlockBlobStorage アカウントにまだ接続していません。 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) ドライバー (Data Lake Storage Gen2 ではサポートされていません)
 

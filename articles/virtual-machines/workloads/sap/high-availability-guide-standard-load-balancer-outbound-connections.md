@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/07/2020
+ms.date: 05/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 4fd01764c183098a8bd78d502eea7ab173fa22cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80293913"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660161"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -176,7 +176,7 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 ### <a name="important-considerations"></a>重要な考慮事項
 
   - 企業プロキシが既に存在する場合は、それを通してパブリック エンドポイントに送信呼び出しをルーティングできます。 パブリック エンドポイントへの送信呼び出しは、企業の制御ポイントを経由します。  
-  - プロキシ構成で、Azure 管理 API への送信接続が許可されていることを確認します: `https://management.azure.com`  
+  - プロキシ構成で、Azure 管理 API への送信接続が許可されていることを確認します: `https://management.azure.com` と `https://login.microsoftonline.com`  
   - VM からプロキシへのルートがあることを確認します  
   - プロキシでは、HTTP/HTTPS 呼び出しのみが処理されます。 別のプロトコル (RFC など) でパブリック エンドポイントへの送信呼び出しを行う必要がある場合は、代わりのソリューションが必要になります  
   - Pacemaker クラスターが不安定になるのを防ぐため、プロキシ ソリューションは高可用性である必要があります  
@@ -219,6 +219,10 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
      # Take the cluster out of maintenance mode
      sudo pcs property set maintenance-mode=false
      ```
+
+## <a name="other-solutions"></a>その他のソリューション
+
+送信トラフィックがサード パーティのファイアウォール経由でルーティングされる場合は、ファイアウォール構成で Azure 管理 API への送信接続が許可されていることを確認します: `https://management.azure.com` と `https://login.microsoftonline.com`。  
 
 ## <a name="next-steps"></a>次のステップ
 

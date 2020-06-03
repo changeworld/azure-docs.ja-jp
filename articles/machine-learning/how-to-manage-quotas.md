@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 03/05/2020
-ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/08/2020
+ms.custom: contperfq4
+ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756609"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680391"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
+# <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用してリソースのクォータを管理し増やす
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、サブスクリプションの Azure リソースに対する事前構成済みの制限について詳しく説明します。 また、リソースの種類ごとにクォータの拡張を要求する方法に関する手順も含まれています。 これらの制限は、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために設けられています。
+この記事では、[Azure Machine Learning](overview-what-is-azure-ml.md) ユーザーに、サブスクリプションの Azure リソースに対する事前構成済みの制限について詳しく説明します。 また、リソースの種類ごとにクォータの拡張を要求する方法に関する手順も含まれています。 これらの制限は、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために設けられています。
 
-他の Azure サービスと同様に、Azure Machine Learning に関連付けられている特定のリソースにも制限があります。 これらの制限は、ワークスペースの数の上限から、モデルのトレーニングや推論/スコアリングに使用される実際の基盤となるコンピューティングに対する制限まで、多岐にわたります。 
+他の Azure サービスと同様に、Azure Machine Learning に関連付けられている特定のリソースにも制限があります。 これらの制限は、[ワークスペース](concept-workspace.md)の数の上限から、モデルのトレーニングや推論/スコアリングに使用される実際の基盤となるコンピューティングに対する制限まで、多岐にわたります。 
 
 実稼働環境のワークロードに対して Azure Machine Learning リソースの設計やスケールアップを行う際は、これらの制限を考慮してください。 たとえば、クラスターのノード数がターゲットの数に満たない場合は、ご使用のサブスクリプションの Azure Machine Learning コンピューティング コアの制限に達している可能性があります。 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、オンライン カスタマー サポートに申請 (無料) してください。 Azure の容量の制約があるため、次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
@@ -48,10 +49,10 @@ Azure サブスクリプションごとに、サービス全体で、または�
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-クォータ制限の詳細および最新のリストについては、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)の Azure 全体のクォータの記事を確認してください。
+クォータ制限の詳細および最新のリストについては、[Azure 全体のクォータの記事](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)を確認してください。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
-Azure Machine Learning コンピューティングでは、サブスクリプションのリージョンごとに許可されるコアの数と一意のコンピューティング リソースの数の両方に対して、既定のクォータ制限があります。 AmlCompute は、hosted-on-behalf-of モデルでリソースをデプロイするマネージド サービスであるため、このクォータは上記の VM コア クォータとは別で、コアの制限は 2 つのリソースの種類間で共有されません。
+[Azure Machine Learning コンピューティング](concept-compute-target.md#azure-machine-learning-compute-managed)では、サブスクリプションのリージョンごとに許可されるコアの数と一意のコンピューティング リソースの数の両方に対して、既定のクォータ制限があります。 AmlCompute は、hosted-on-behalf-of モデルでリソースをデプロイするマネージド サービスであるため、このクォータは上記の VM コア クォータとは別で、コアの制限は 2 つのリソースの種類間で共有されません。
 
 使用可能なリソース:
 + リージョンあたりの専用コアには、サブスクリプション オファーの種類に応じて、24 から 300 の既定の制限があり、EA および CSP オファーの種類の既定値は大きくなります。  サブスクリプションあたりの専用コアの数は増やすことができ、VM ファミリごとに異なります。 NCv2、NCv3、ND シリーズなど、特定の特殊な VM ファミリは、ゼロ コアの既定から開始されます。 増加オプションを検討するには、クォータ要求を発行して、Azure サポートに問い合わせてください。
@@ -76,7 +77,7 @@ Azure Machine Learning コンピューティングでは、サブスクリプシ
 <sup>2</sup> 優先順位の低いノード上のジョブは、容量の制約があるときはいつでも横取りできます。 ジョブにチェックポイントを実装することをお勧めします。
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
-Azure Machine Learning パイプラインには、パイプラインのステップ数にクォータ制限と、サブスクリプション内のリージョンごとの発行済みのパイプラインのスケジュールに基づく実行数に制限があります。
+[Azure Machine Learning パイプライン](concept-ml-pipelines.md)には、パイプラインのステップ数にクォータ制限と、サブスクリプション内のリージョンごとの発行済みのパイプラインのスケジュールに基づく実行数に制限があります。
 - パイプラインで許可されるステップの最大数は 30,000 です
 - 1 か月のサブスクリプションごとに発行されるパイプラインのブログでトリガされるスケジュールで、スケジュールに基づく実行と BLOB プルの合計の最大数は 100,000 です
 
@@ -97,7 +98,7 @@ Azure Machine Learning パイプラインには、パイプラインのステッ
 
 ## <a name="workspace-level-quota"></a>ワークスペース レベル クォータ
 
-さまざまなワークスペース間で Amlcompute のリソース割り当ての管理を強化するため、(VM ファミリによって) サブスクリプション レベルのクォータを分散し、ワークスペース レベルでそれらを構成できる機能を導入しました。 既定の動作は、すべてのワークスペースが VM ファミリのサブスクリプション レベル クォータと同じクォータを持つことです。 ただし、ワークスペースの数が増え、優先順位の異なるワークロードが同じリソースを共有し始めると、ユーザーは容量をより適切に共有し、リソースの競合の問題を回避する方法が必要になります。 Azure Machine Learning では、ユーザーが各ワークスペースで特定の VM ファミリの最大クォータを設定できるようにすることで、マネージド コンピューティング オファリングを含むソリューションを提供します。 これは、ワークスペース間で容量を分散することに似ています。また、ユーザーは、最大使用率に達するまで過度に割り当てることもできます。 
+さまざまな[ワークスペース](concept-workspace.md)間で Azure Machine Learning コンピューティング ターゲット (Amlcompute) のリソース割り当ての管理を強化するため、(VM ファミリによって) サブスクリプション レベルのクォータを分散し、ワークスペース レベルでそれらを構成できる機能を導入しました。 既定の動作は、すべてのワークスペースが VM ファミリのサブスクリプション レベル クォータと同じクォータを持つことです。 ただし、ワークスペースの数が増え、優先順位の異なるワークロードが同じリソースを共有し始めると、ユーザーは容量をより適切に共有し、リソースの競合の問題を回避する方法が必要になります。 Azure Machine Learning では、ユーザーが各ワークスペースで特定の VM ファミリの最大クォータを設定できるようにすることで、マネージド コンピューティング オファリングを含むソリューションを提供します。 これは、ワークスペース間で容量を分散することに似ています。また、ユーザーは、最大使用率に達するまで過度に割り当てることもできます。 
 
 ワークスペース レベルでクォータを設定するには、サブスクリプションの任意のワークスペースに移動し、左側のウィンドウの **[Usages + quotas]\(使用量 + クォータ\)** をクリックします。 次に **[クォータの構成]** タブを選択してクォータを表示し、任意の VM ファミリを展開して、その VM ファミリの下に一覧表示されている任意のワークスペースにクォータ制限を設定します。 負の値またはサブスクリプション レベルのクォータよりも大きい値は設定できないことに注意してください。 さらに、お気づきのとおりに、既定ですべてのワークスペースにサブスクリプション クォータ全体が割り当てられ、割り当てられたクォータを完全利用できます。
 
@@ -105,7 +106,7 @@ Azure Machine Learning パイプラインには、パイプラインのステッ
 
 
 > [!NOTE]
-> これは Enterprise Edition のみの機能です。 サブスクリプションに Basic Edition と Enterprise Edition の両方のワークスペースがある場合、これを使用して、Enterprise ワークスペースに対してのみクォータを設定できます。 Basic ワークスペースでは、既定の動作であるサブスクリプション レベルのクォータが引き続き指定されます。
+> これは Enterprise Edition のみの機能です。 サブスクリプションに [Basic Edition と Enterprise Edition](overview-what-is-azure-ml.md#sku) の両方のワークスペースがある場合、これを使用して、Enterprise ワークスペースに対してのみクォータを設定できます。 Basic ワークスペースでは、既定の動作であるサブスクリプション レベルのクォータが引き続き指定されます。
 >
 > ワークスペース レベルでクォータを設定するには、サブスクリプション レベルのアクセス許可が必要です。 これは、個々のワークスペース所有者がクォータを編集または増加して、別のワークスペース用に確保されたリソースに侵害し始めることがないように、適用されています。 そのため、サブスクリプション管理者が、ワークスペース間でこれらのクォータを割り当てて、分散するのに最も適しています。
 
@@ -113,15 +114,9 @@ Azure Machine Learning パイプラインには、パイプラインのステッ
 
 ## <a name="view-your-usage-and-quotas"></a>使用量とクォータの表示
 
-Azure portal を使用すると、仮想マシン、ストレージ、ネットワークなどのさまざまなリソースのクォータを簡単に表示できます。
+Azure Machine Learning コンピューティングは、サブスクリプション内の他の Azure リソース クォータとは別に管理されます。 このクォータを表示するには、Machine Learning Services にドリルダウンする必要があります。  
 
-1. 左側のウィンドウで、 **[すべてのサービス]** を選択し、一般カテゴリの下で **[サブスクリプション]** を選択します。
-
-1. サブスクリプションの一覧から、検索するクォータのサブスクリプションを選択します。
-
-   特に Azure Machine Learning コンピューティングのクォータの表示については、**1 つの注意点があります**。 前述のように、サブスクリプションではクォータはコンピューティング クォータとは切り離されています。
-
-1. 左側のウィンドウで、 **[Machine Learning サービス]** を選択して、表示された一覧からいずれかのワークスペースを選択します。
+1. 左側のウィンドウで、 **[Machine Learning service]** を選択して、表示された一覧からいずれかのワークスペースを選択します。
 
 1. 次のブレードの **[Support + troubleshooting]\(サポート + トラブルシューティング\) セクション**で、 **[Usage + quotas]\(使用量 + クォータ\)** を選択して、現在のクォータ制限と使用状況を表示します。
 
@@ -132,13 +127,27 @@ Azure portal を使用すると、仮想マシン、ストレージ、ネット�
 
     + **ワークスペース ビュー:** これを使用して、ワークスペース別にコア クォータの使用状況を表示し、VM ファミリ別にそれを展開し、さらに実際のクラスター名別にそれを展開することができます。 このビューは、特定のワークスペースのコア使用状況の詳細をすばやく確認して、VM ファミリ別、さらにそれらのファミリの基になるクラスター別に分散を確認するのに最適です。
 
+Azure portal を使用すると、仮想マシン、ストレージ、ネットワークなどのさまざまな他の Azure リソースのクォータを簡単に表示できます。
+
+1. 左側のウィンドウで、 **[すべてのサービス]** を選択し、一般カテゴリの下で **[サブスクリプション]** を選択します。
+
+1. サブスクリプションの一覧から、検索するクォータのサブスクリプションを選択します。
+
 ## <a name="request-quota-increases"></a>クォータの増加を要求
 
 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) (無料) してください。
 
-表に示されている上限値を超える制限の引き上げはできません。 上限が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。 クォータの増加プロセスについては、[こちらの](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)記事で詳しく説明されています。
+表に示されている上限値を超える制限の引き上げはできません。 上限が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。 [クォータを増やす方法については、ステップ バイ ステップの手順をご覧ください](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。
 
 クォータの増加を要求する場合は、クォータの増加を要求するサービスを選択する必要があります。これには、Machine Learning サービスのクォータ、コンテナー インスタンス、またはストレージ クォータなどのサービスを選択できます。 Azure Machine Learning コンピューティングに加えて、上記の手順に従ってクォータを表示している間に、 **[クォータの要求]** ボタンをクリックすることも可能です。
 
 > [!NOTE]
 > [無料試用版サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0044p)は、制限およびクォータ引き上げの適用対象外です。 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)をお持ちの場合は、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードしてください。 詳細については、「[Azure 無料試用版を従量課金制にアップグレード](../billing/billing-upgrade-azure-subscription.md)」と「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+詳細については、次の記事を参照してください。
+
++ [Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)
+
++ [クォータを増やす方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。

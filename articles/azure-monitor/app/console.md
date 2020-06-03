@@ -2,14 +2,14 @@
 title: コンソール アプリケーション用の Azure Application Insights | Microsoft Docs
 description: Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe34b2b48de8ef4f6c2cdd61623b885878bad2b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655431"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774037"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 
@@ -36,7 +36,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソールアプリでは、この記事で後述する[完全な例](#full-example)に示すように、アプリが終了する前に `Flush()` と `Sleep` が完了しない限り、テレメトリが送信されない場合があります。
+> テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソール アプリでは、この記事で後述する[完全な例](#full-example)に示すように、アプリが終了する前に `Flush()` と `Sleep`/`Delay` が完了しない限り、テレメトリが送信されない場合があります。 `InMemoryChannel` を使用する場合、`Sleep` は必要ありません。 `Sleep` の必要性に関してはアクティブな問題があります。参照先:[ApplicationInsights-dotnet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) パッケージの最新バージョンをインストールします。このパッケージにより、HTTP、SQL、またはその他の外部の依存関係呼び出しが自動的に追跡されます。
@@ -172,7 +172,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }

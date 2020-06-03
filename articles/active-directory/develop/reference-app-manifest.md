@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81450885"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737335"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -432,7 +432,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 | :--- | :--- |
 | parentalControlSettings | String |
 
-- `countriesBlockedForMinors` は、未成年者に関してアプリがブロックされる国を指定します。
+- `countriesBlockedForMinors` は、未成年者に関してアプリがブロックされる国/地域を指定します。
 - `legalAgeGroupRule` は、アプリのユーザーに適用される法的年齢グループ ルールを指定します。 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids`、`BlockMinors` のいずれかに設定できます。  
 
 例:

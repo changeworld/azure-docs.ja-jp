@@ -3,12 +3,12 @@ title: コンテナー イメージの保存
 description: Azure Container Registry に Docker コンテナー イメージが保存される方法について、セキュリティ、冗長性、および容量も含めて説明します。
 ms.topic: article
 ms.date: 03/21/2018
-ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456212"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683404"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
 
@@ -46,7 +46,7 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Container Registry の SKU (Basic、Standard、Premium) の詳細については、「[Azure Container Registry SKU](container-registry-skus.md)」を参照してください。
+Basic、Standard、Premium コンテナー レジストリの詳細については、[Azure Container Registry のサービス レベル](container-registry-skus.md)に関するページを参照してください。
 
 <!-- IMAGES -->
 

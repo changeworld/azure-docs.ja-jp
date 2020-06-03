@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 01/23/2020
+ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80419131"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821498"
 ---
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する単純な構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
  
@@ -30,7 +30,7 @@ Azure VM Image Builder (Azure Image Builder) を使用すると、Windows また
 - Azure 共有イメージ ギャラリーとの統合。イメージをグローバルに配布、バージョン管理、およびスケールすることができます。また、イメージ管理システムを利用できます。
 - 既存のイメージ ビルド パイプラインとの統合。パイプラインから Image Builder を呼び出すか、単純な Preview Image Builder Azure DevOps Task を使用するだけです。
 - 既存のイメージ カスタマイズ パイプラインを Azure に移行します。 既存のスクリプト、コマンド、およびプロセスを使用してイメージをカスタマイズします。
-- VHD 形式でのイメージの作成。
+- Azure Stack をサポートするための VHD 形式のイメージの作成。
  
 
 ## <a name="regions"></a>リージョン
@@ -55,8 +55,7 @@ AIB は Azure Marketplace のベース OS イメージをサポートします�
 - Windows 2016
 - Windows 2019
 
-RHEL ISO のサポートは非推奨となっています。詳細については、テンプレートのドキュメントを参照してください。
-
+RHEL ISO は現在サポートされていません。
 ## <a name="how-it-works"></a>しくみ
 
 
@@ -77,29 +76,18 @@ Azure Image Builder は、Azure リソース プロバイダーからアクセ�
 
 
 ## <a name="permissions"></a>アクセス許可
+(AIB) に登録すると、ステージング リソース グループ (IT_*) を作成、管理、削除するためのアクセス許可が AIB サービスに付与され、イメージのビルドに必要なリソースを追加する権限が与えられます。 これは、登録が成功したときに、AIB サービス プリンシパル名 (SPN) がサブスクリプションで使用可能になることによって行われます。
 
-Azure VM Image Builder がマネージド イメージまたは共有イメージ ギャラリーのいずれかにイメージを配布できるようにするには、サービス "Azure Virtual Machine Image Builder" (アプリ ID: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) に、リソース グループに対する 'Contributor' アクセス許可を付与する必要があります。 
+Azure VM Image Builder で、マネージド イメージまたは Shared Image Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベート コンテナーを読み取るためのアクセス許可が必要です。
 
-既存のカスタム マネージド イメージまたはイメージ バージョンを使用している場合、Azure Image Builder には、それらのリソース グループに対する '閲覧者' アクセス権以上が必要です。
+ID の作成方法については、最初に [Azure ユーザー割り当て済みマネージド ID の作成](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)のドキュメントに従う必要があります。
 
-Azure CLI を使用してアクセス権を割り当てることができます。
+ID を取得したら、アクセス許可を付与する必要があります。そのためには、Azure カスタム ロールの定義を使用し、ユーザー割り当て済みマネージド ID を割り当ててカスタム ロールの定義を使用します。
 
-```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
-```
+アクセス許可の詳細については、[こちら](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)を参照してください。例では、この実装方法を示しています。
 
-PowerShell を使用してアクセス権を割り当てることができます。
-
-```azurePowerShell-interactive
-New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
-```
-
-
-サービス アカウントが見つからない場合は、ロールの割り当てを追加しているサブスクリプションがリソース プロバイダーにまだ登録されていない可能性があります。
-
+> [!Note]
+> 以前の AIB では、AIB SPN を使用して、イメージ リソース グループに SPN アクセス許可を付与しました。 将来の機能を考慮して、このモデルから移行しています。 2020 年 5 月 26 日から、Image Builder はユーザー割り当て ID を持たないテンプレートを受け付けなくなります。既存のテンプレートは、[ユーザー ID](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity) と共にサービスに再送信する必要があります。 ここでは、ユーザー割り当て ID を作成し、テンプレートに追加する方法について説明しました。 詳細については、この変更に関する[ドキュメント](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information)とリリース更新を参照してください。
 
 ## <a name="costs"></a>コスト
 Azure Image Builder を使用してイメージの作成、構築、保存を行うと、コンピューティング、ネットワーク、ストレージのコストがかかります。 これらのコストは、手動でカスタム イメージを作成する際に発生するコストと同様です。 リソースについては、Azure の料金で課金されます。 
@@ -113,5 +101,4 @@ Azure Image Builder によって、選択したリージョンにイメージが
 ## <a name="next-steps"></a>次のステップ 
  
 Azure Image Builder を試すには、[Linux](../articles/virtual-machines/linux/image-builder.md) または [Windows](../articles/virtual-machines/windows/image-builder.md) イメージの構築に関する記事を参照してください。
- 
  

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4a94b0b84290bbf796e951dfee8b3f35b80036ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d760e28025f64b8cd8940fc08f06d23c969e12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183162"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655741"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーの Azure セキュリティ ベースライン
 
@@ -294,7 +294,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: Azure Database for PostgreSQL インスタンスのコントロール プレーン (Azure portal など) への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 さらに、Azure Database for PostgreSQL インスタンスの (データベース自体内の) データ プレーンへのアクセス権を持つ管理アカウントのインベントリを保持します  (PostgreSQL サーバーを作成する場合は、管理者ユーザーの資格情報を指定します。 この管理者を使用して、追加の PostgreSQL ユーザーを作成することができます)。
+**ガイダンス**: Azure Database for PostgreSQL インスタンスのコントロール プレーン (Azure portal など) への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 さらに、Azure Database for PostgreSQL インスタンスの (データベース自体内の) データ プレーンへのアクセス権を持つ管理アカウントのインベントリを保持します (PostgreSQL サーバーを作成する場合は、管理者ユーザーの資格情報を指定します。 この管理者を使用して、追加の PostgreSQL ユーザーを作成することができます)。
 
 Azure Database for PostgreSQL では、組み込みのロールベースのアクセス制御はサポートされませんが、特定のリソース プロバイダーの操作に基づいてカスタム ロールを作成することはできます。
 
@@ -906,7 +906,7 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: Azure Database for PostgreSQL サーバーでは、データベースにアクセスするための Azure Active Directory 認証 (プレビュー段階) がサポートされています。  Azure Database for PostgreSQL サーバーを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加のデータベース ユーザーを作成するために使用できます。  
+**ガイダンス**: Azure Database for PostgreSQL サーバーでは、データベースにアクセスするための Azure Active Directory 認証がサポートされています。  Azure Database for PostgreSQL サーバーを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加のデータベース ユーザーを作成するために使用できます。  
 
 Azure Database for PostgreSQL サーバーへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、Azure Key Vault と組み合わせてマネージド サービス ID を使用して、Azure Database for PostgreSQL サーバーの資格情報を格納および取得します。 Key Vault の論理的な削除が有効になっていることを確認します。
 

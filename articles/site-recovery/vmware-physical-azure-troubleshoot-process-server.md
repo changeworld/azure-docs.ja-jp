@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228819"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835803"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -246,7 +246,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 ## <a name="next-steps"></a>次のステップ
 
-さらにサポートが必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。 
+さらにサポートが必要な場合は、[Azure Site Recovery に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)に質問を投稿してください。 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

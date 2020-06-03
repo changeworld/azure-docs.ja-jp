@@ -2,13 +2,13 @@
 title: 変更されないようにリソースをロックする
 description: 重要な Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/19/2020
+ms.openlocfilehash: 2060a7ed2de4956eb15bc85fb1a905705e21f813
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234095"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847669"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -25,13 +25,19 @@ ms.locfileid: "79234095"
 
 Resource Manager のロックは、管理ウィンドウで実行され、`https://management.azure.com` に送信される操作で構成される操作のみに適用されます。 ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に ReadOnly ロックを設定すると、データベースの削除または変更を実行できなくなりますが、 データベース内のデータの作成、更新、または削除は実行できます。 データのトランザクションは `https://management.azure.com` に送信されないため、これらの操作は許可されます。
 
-**ReadOnly** を適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 **ReadOnly** ロックは、リソースまたはリソースを含むリソース グループに適用できます。 **ReadOnly** ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
+## <a name="considerations-before-applying-locks"></a>ロック適用前の考慮事項
 
-* **ReadOnly** ロックをストレージ アカウントに設定すると、どのユーザーもキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
+ロックを適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
 
-* **ReadOnly** ロックを App Service リソースに設定すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
+* ロックを**ストレージ アカウント**に設定すると、どのユーザーもキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
 
-* **ReadOnly** ロックを、仮想マシンを含むリソース グループに設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
+* 読み取り専用ロックを **App Service** リソースに設定すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
+
+* 読み取り専用ロックを、**仮想マシン**を含む**リソース グループ**に設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
+
+* **サブスクリプション**に読み取り専用ロックを設定すると、**Azure Advisor** が正常に機能しなくなります。 Advisor は、クエリの結果を格納できません。
+
+* **Azure Backup サービス**によって作成された**リソース グループ**に削除不可のロックを設定した場合、バックアップは失敗するようになります。 このサービスでは、最大 18 個の復元ポイントがサポートされています。 ロックされている場合、バックアップ サービスは復元ポイントをクリーンアップできません。 詳細については、「[よく寄せられる質問 - Azure VM のバックアップ](../../backup/backup-azure-vm-backup-faq.md)」を参照してください。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰がロックを作成または削除できるか
 
@@ -56,10 +62,6 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 ロックされているインフラストラクチャ リソース グループを含め、サービスのすべてのものを削除するには、サービスの **[削除]** を選択します。
 
 ![サービスの削除](./media/lock-resources/delete-service.png)
-
-## <a name="azure-backups-and-locks"></a>Azure のバックアップとロック
-
-Azure Backup サービスによって作成されたリソース グループをロックした場合、バックアップは失敗するようになります。 このサービスでは、最大 18 個の復元ポイントがサポートされています。 **CanNotDelete** ロックを使用すると、バックアップ サービスは復元ポイントをクリーンアップできません。 詳細については、「[よく寄せられる質問 - Azure VM のバックアップ](../../backup/backup-azure-vm-backup-faq.md)」を参照してください。
 
 ## <a name="portal"></a>ポータル
 
@@ -238,7 +240,7 @@ az lock delete --ids $lockid
     } 
 
 ## <a name="next-steps"></a>次のステップ
-* リソースを理論的に整理する方法については、「 [タグを使用したリソースの整理](tag-resources.md)
+* リソースを理論的に整理する方法については、[タグを使用したリソースの整理](tag-resources.md)に関するページをご覧ください。
 * カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 詳細については、「[Azure Policy とは](../../governance/policy/overview.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。
 

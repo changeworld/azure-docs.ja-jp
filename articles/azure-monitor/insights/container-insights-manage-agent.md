@@ -2,13 +2,13 @@
 title: コンテナーに対する Azure Monitor エージェントを管理する方法 | Microsoft Docs
 description: この記事では、コンテナーに対する Azure Monitor によって使用されるコンテナー化された Log Analytics エージェントで、最も一般的なメンテナンス タスクを管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/12/2020
+ms.openlocfilehash: ce014d27c6acc473c4a435dfed4757fb0884f4fe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234499"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652194"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントを管理する方法
 
@@ -16,13 +16,13 @@ ms.locfileid: "79234499"
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントをアップグレードする方法
 
-コンテナーに対する Azure Monitor では、コンテナー化されたバージョンの Linux 用 Log Analytics エージェント が使用されます。 エージェントの新しいバージョンがリリースされると、Azure Kubernetes Service (AKS) および Azure Red Hat OpenShift でホストされているマネージド Kubernetes クラスター上のエージェントが自動的にアップグレードされます。 [hybrid Kubernetes クラスター](container-insights-hybrid-setup.md)のエージェントは管理されていないため、エージェントを手動でアップグレードする必要があります。
+コンテナーに対する Azure Monitor では、コンテナー化されたバージョンの Linux 用 Log Analytics エージェント が使用されます。 エージェントの新しいバージョンがリリースされると、Azure Kubernetes Service (AKS) および Azure Red Hat OpenShift バージョン 3.x でホストされているマネージド Kubernetes クラスター上のエージェントが自動的にアップグレードされます。 [hybrid Kubernetes クラスター](container-insights-hybrid-setup.md)と Azure Red Hat OpenShift バージョン 4.x のエージェントは管理されていないため、エージェントを手動でアップグレードする必要があります。
 
-AKS でホストされているクラスターのエージェントのアップグレードに失敗している場合、この記事では、エージェントを手動でアップグレードするプロセスについても説明します。 リリースされたバージョンを確認するには、[エージェントのリリースのお知らせ](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。
+AKS または Azure Red Hat OpenShift バージョン 3.x でホストされているクラスターのエージェントのアップグレードに失敗している場合、この記事では、エージェントを手動でアップグレードするプロセスについても説明します。 リリースされたバージョンを確認するには、[エージェントのリリースのお知らせ](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。
 
-### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>監視対象の Kubernetes クラスター上でエージェントをアップグレードする
+### <a name="upgrade-agent-on-aks-cluster"></a>AKS クラスター上のエージェントのアップグレード
 
-Azure Red Hat OpenShift 以外のクラスター上のエージェントをアップグレードするプロセスは、2 つの簡単な手順で構成されています。 最初の手順は、コンテナーに対する Azure Monitor の監視を Azure CLI を使用して無効にすることです。 [監視の無効化](container-insights-optout.md?#azure-cli)に関する記事の手順に従ってください。 Azure CLI を使用して、ソリューションとワークスペースに格納されている対応するデータに影響を与えることなく、クラスター内のノードからエージェントを削除できます。 
+AKS クラスター上のエージェントをアップグレードするプロセスは、2 つの単純な手順で構成されます。 最初の手順は、コンテナーに対する Azure Monitor の監視を Azure CLI を使用して無効にすることです。 [監視の無効化](container-insights-optout.md?#azure-cli)に関する記事の手順に従ってください。 Azure CLI を使用して、ソリューションとワークスペースに格納されている対応するデータに影響を与えることなく、クラスター内のノードからエージェントを削除できます。 
 
 >[!NOTE]
 >このメンテナンス アクティビティを実行している間、クラスター内のノードによる収集されたデータの転送は行われず、エージェントを削除して新しいバージョンをインストールするまでの間、パフォーマンス ビューにデータは表示されません。 
@@ -53,9 +53,15 @@ Azure Red Hat OpenShift 以外のクラスター上のエージェントをア�
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
 
-## <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>ハイブリッド Kubernetes クラスター上でエージェントをアップグレードする
+### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>ハイブリッド Kubernetes クラスター上でエージェントをアップグレードする
 
-オンプレミス、Azure 上の AKS Engine、および Azure Stack でホストされている Kubernetes クラスターでエージェントをアップグレードするプロセスは、次のコマンドを実行して完了できます。
+次の手順を実行して、以下の場所で実行されている Kubernetes クラスター上のエージェントをアップグレードします。
+
+* AKS エンジンを使用して、Azure でホストされた自己管理の Kubernetes クラスター。
+* AKS エンジンを使用して、Azure Stack またはオンプレミスでホストされた自己管理の Kubernetes クラスター。
+* Red Hat OpenShift バージョン 4.x。
+
+Log Analytics ワークスペースが商用 Azure にある場合には、次のコマンドを実行します。
 
 ```
 $ helm upgrade --name myrelease-1 \
@@ -74,6 +80,19 @@ Log Analytics ワークスペースが Azure US Government にある場合には
 ```
 $ helm upgrade --name myrelease-1 \
 --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
+
+### <a name="upgrade-agent-on-azure-red-hat-openshift-v4"></a>Azure Red Hat OpenShift v4 上のエージェントのアップグレード
+
+次の手順を実行して、Azure Red Hat OpenShift バージョン 4.x で実行されている Kubernetes クラスター上でエージェントをアップグレードします。 
+
+>[!NOTE]
+>Azure Red Hat OpenShift バージョン 4.x は、Azure 商用クラウドでの実行のみをサポートしています。
+>
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
 ```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>コンテナーの環境変数コレクションを無効にする方法

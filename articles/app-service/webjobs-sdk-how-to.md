@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: e4a7ae00edd8ff86e27037df1a26828c400f6ccf
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734996"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774233"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -748,6 +748,9 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 * **FileTrigger**。 `FileProcessor.MaxDegreeOfParallelism` を `1` に設定します。
 
 これらの設定を使用すると、単一のインスタンスで、関数がシングルトンとして実行されるようになります。 Web アプリが複数のインスタンスにスケールアウトするとき、関数の単一のインスタンスのみが実行されるようにするには、関数にリスナー レベルのシングルトン ロック (`[Singleton(Mode = SingletonMode.Listener)]`) を適用します。 リスナー ロックは、JobHost の起動時に取得されます。 3 つのスケール アウト インスタンスのすべてが同時に開始すると、1 つのインスタンスのみがロックを取得して、1 つのみがリスナーを開始します。
+
+> [!NOTE]
+> SingletonMode.Function の機能の詳細については、この [Github リポジトリ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs)を参照してください。
 
 ### <a name="scope-values"></a>スコープ値
 

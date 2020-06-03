@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
-ms.openlocfilehash: 33b2ca8db75acff1ce423aa50087961cce6092b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 122725bff616a49d27981b88f465e04418db9526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418407"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826114"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -34,9 +34,9 @@ Azure Data Factory を初めて使用する場合は、[Azure Data Factory の�
 ## <a name="overview"></a>概要
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 **パイプライン**は、1 つのタスクを連携して実行する**アクティビティ**の論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 ここで、**データセット**とは、**アクティビティ**で入力と出力として使用するデータを単に指定または参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。
 
-データセットを作成する前に、[**リンクされたサービス**](concepts-linked-services.md)を作成して、データ ストアとデータ ファクトリをリンクする必要があります。 リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 データセットはリンクされたデータ ストア内のデータの構造を表すもので、リンクされたサービスはデータ ソースへの接続を定義するもの、と捉えることができます。 たとえば、Azure Storage のリンクされたサービスは、ストレージ アカウントをデータ ファクトリにリンクします。 Azure Blob データセットは、処理対象の入力 BLOB を含む Azure ストレージ アカウント内の BLOB コンテナーとフォルダーを表します。
+データセットを作成する前に、[**リンクされたサービス**](concepts-linked-services.md)を作成して、データ ストアとデータ ファクトリをリンクする必要があります。 リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 データセットはリンクされたデータ ストア内のデータの構造を表すもので、リンクされたサービスはデータ ソースへの接続を定義するもの、と捉えることができます。 たとえば、Azure Storage のリンクされたサービスは、ストレージ アカウントをデータ ファクトリにリンクします。 Azure Blob データセットは、処理対象の入力 BLOB を含む Azure Storage アカウント内の BLOB コンテナーとフォルダーを表します。
 
-シナリオの例を次に示します。 Blob Storage のデータを Azure SQL Database にコピーするために、Azure Storage と Azure SQL Database という 2 つのリンクされたサービスを作成します。 次に、2 つのデータセットを作成します。Azure Blob データセット (Azure Storage リンクされたサービスを参照するデータセット) と、Azure SQL Table データセット (Azure SQL Database リンクされたサービスを参照するデータセット) です。 Azure Storage と Azure SQL Database の各リンクされたサービスに含まれる接続文字列を、Data Factory が実行時に使用して、Azure Storage と Azure SQL Database それぞれに接続します。 Azure Blob データセットは、Blob Storage 内の入力 BLOB が含まれた BLOB コンテナーと BLOB フォルダーを示しています。 Azure SQL Table データセットは、データのコピー先である SQL Database 内の SQL テーブルを示しています。
+シナリオの例を次に示します。 Blob Storage のデータを Azure SQL Database にコピーするために、2 つのリンクされたサービスを作成します。Azure Storage、Azure SQL Database)。 次に、2 つのデータセットを作成します。Azure Blob データセット (Azure Storage リンクされたサービスを参照するデータセット) と、Azure SQL Table データセット (Azure SQL Database リンクされたサービスを参照するデータセット) です。 Azure Storage と Azure SQL Database の各リンクされたサービスに含まれる接続文字列を、Data Factory が実行時に使用して、Azure Storage と Azure SQL Database それぞれに接続します。 Azure Blob データセットは、Blob Storage 内の入力 BLOB が含まれた BLOB コンテナーと BLOB フォルダーを示しています。 Azure SQL Table データセットは、データのコピー先である SQL Database 内の SQL テーブルを示しています。
 
 次の図は、Data Factory でのパイプライン、アクティビティ、データセット、リンクされたサービスの関係を示しています。
 
@@ -73,15 +73,15 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
 name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
-type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
+type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
 structure | データセットのスキーマ。 詳細については、「[データセット スキーマ](#dataset-structure-or-schema)」を参照してください。 | いいえ |
-typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
+typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
 
 ### <a name="data-flow-compatible-dataset"></a>Data Flow の互換性のあるデータセット
 
 
 
-[データ フロー](#dataset-type)が互換性のあるデータセット型のリストについて、「[サポートされているデータセットの型](concepts-data-flow-overview.md)」を参照してください。 データ フローの互換性があるデータセットでは、変換にあたり詳細なデータセットの定義が必要です。 そのため、JSON 定義は若干異なります。 _構造体_プロパティの代わりに、データ フローと互換性のあるデータセットには_スキーマ_プロパティがあります。
+[データ フロー](concepts-data-flow-overview.md)が互換性のあるデータセット型のリストについて、「[サポートされているデータセットの型](#dataset-type)」を参照してください。 データ フローの互換性があるデータセットでは、変換にあたり詳細なデータセットの定義が必要です。 そのため、JSON 定義は若干異なります。 _構造体_ プロパティの代わりに、データ フローと互換性のあるデータセットには _スキーマ_ プロパティがあります。
 
 データ フロー内のデータセットは、ソースとシンクの変換で使用されます。 データセットは、基本的なデータ スキーマを定義します。 データがスキーマを持たない場合は、ソースとシンクのスキーマ ドリフトを使用できます。 データセット内のスキーマは、実際のデータ型と形状を表します。
 
@@ -118,9 +118,9 @@ typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルな�
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
 name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
-type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
+type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
 schema | データセットのスキーマ。 詳細は、「[Data Flow の互換性のあるデータセット](#dataset-type)」を参照してください。 | いいえ |
-typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
+typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
 
 
 ## <a name="dataset-example"></a>データセットの例
@@ -184,7 +184,7 @@ structure の各列には次のプロパティが含まれます。
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 name | 列の名前です。 | はい
-type | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ
+type | 列のデータ型です。 Data Factory は次の中間データ型を許容値としてサポートしています。**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** | いいえ
 culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ
 format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ
 

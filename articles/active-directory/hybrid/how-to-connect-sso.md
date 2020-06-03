@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: シームレス シングル サインオン | Microsoft Docs'
+title: Azure AD Connect:シームレス シングル サインオン | Microsoft Docs
 description: このトピックでは、Azure Active Directory (Azure AD) シームレス シングル サインオンについて説明します。この機能により、企業ネットワーク内の企業のデスクトップ ユーザーに真のシングル サインオンを提供できます。
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 401f8239cded04b6342b706242e970e39118d73d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77483756"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827167"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -36,7 +36,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ![シームレス シングル サインオン](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO では、ユーザーのデバイスが**ドメインに参加している**ことのみが必要ですが、[Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは[ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済みおよびハイブリッド Azure AD 参加済みでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
+>シームレス SSO では、ユーザーのデバイスが**ドメインに参加している**ことのみが必要ですが、[Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは[ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済み、ハイブリッド Azure AD 参加済み、および Azure AD 登録済みデバイスでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
 
 ## <a name="key-benefits"></a>主な利点
 

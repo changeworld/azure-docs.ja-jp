@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113155"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845748"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -245,9 +245,9 @@ NPS ロールがメンバー サーバーにインストールされている場
     b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
 
     c. **[タイムアウト (秒)]** ボックスで、値として「**30**」を入力します。  
-    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。
+    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。 VPN やリージョンによっては、ユーザーが複数の通話を受けられないように、タイムアウト設定が 30 秒を超える必要があります。 この問題が発生した場合は、問題が再発しなくなるまで **[タイムアウト (秒)]** 値を 30 秒単位で増やします。
 
-    ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
 8. **[OK]** を選択します。
 

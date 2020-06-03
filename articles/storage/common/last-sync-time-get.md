@@ -1,27 +1,27 @@
 ---
 title: ストレージ アカウントの最終同期時刻プロパティを確認する
 titleSuffix: Azure Storage
-description: geo レプリケートされたストレージ アカウントの **[最終同期時刻]** プロパティを確認する方法について説明します。 **[最終同期時刻]** プロパティは、プライマリ リージョンからのすべての書き込みがセカンダリ リージョンに正常に書き込まれた最終時刻を示します。
+description: geo レプリケートされたストレージ アカウントの [最終同期時刻] プロパティを確認する方法について説明します。 [最終同期時刻] プロパティは、プライマリ リージョンからのすべての書き込みがセカンダリ リージョンに正常に書き込まれた最終時刻を示します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/16/2019
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3a406ce6db060b9ff5be7bcadecb6c7ff7e65a1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02f7d7e2735717a7a6e7a56273551197c16b77aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77163812"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659256"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>ストレージ アカウントの最終同期時刻プロパティを確認する
 
 ストレージ アカウントを構成するときに、プライマリ リージョンから何百キロメートルも離れたセカンダリ リージョンにデータをコピーするように指定できます。 geo レプリケーションによって、自然災害など、プライマリ リージョンで重大な停電が発生した場合にデータの持続性を実現できます。 セカンダリ リージョンへの読み取りアクセスを追加で有効にすると、プライマリ リージョンが使用できなくなった場合に、データの読み取り操作が引き続き使用できます。 プライマリ リージョンが応答しない場合、セカンダリ リージョンからの読み取りにシームレスに切り替えるようにアプリケーションを設計できます。
 
-geo 冗長ストレージ (GRS) と geo ゾーン冗長ストレージ (GZRS) (プレビュー) のどちらを使用しても、データをセカンダリ リージョンに非同期的にレプリケートできます。 セカンダリ リージョンへの読み取りアクセスについては、読み取りアクセス geo 冗長ストレージ (RA-GRS) または読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を有効にします。 Azure Storage に用意されている冗長性のさまざまなオプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
+geo 冗長ストレージ (GRS) と geo ゾーン冗長ストレージ (GZRS) のどちらを使用しても、データをセカンダリ リージョンに非同期的にレプリケートできます。 セカンダリ リージョンへの読み取りアクセスについては、読み取りアクセス geo 冗長ストレージ (RA-GRS) または読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を有効にします。 Azure Storage に用意されている冗長性のさまざまなオプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
 この記事では、ストレージ アカウントの **[最終同期時刻]** プロパティを確認して、プライマリ リージョンとセカンダリ リージョンの不一致を評価できるようにする方法について説明します。
 
@@ -37,10 +37,10 @@ PowerShell または Azure CLI を使用して、 **[最終同期時刻]** プ�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell を使用してストレージ アカウントの最終同期時刻を取得するには、geo レプリケーションの統計情報の取得をサポートする Azure Storage プレビュー モジュールをインストールします。次に例を示します。
+PowerShell を使用してストレージ アカウントの最終同期時刻を取得するには、geo レプリケーションの統計情報の取得をサポートするバージョンの Az.Storage モジュールをインストールします。次に例を示します。
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.14.0 –AllowClobber –Force
 ```
 
 次に、ストレージ アカウントの **GeoReplicationStats.LastSyncTime** プロパティを確認します。 プレースホルダー値をお客様独自の値に置き換えてください。
@@ -70,4 +70,4 @@ $lastSyncTime=$(az storage account show \
 
 - [Azure Storage の冗長性](storage-redundancy.md)
 - [ストレージ アカウントの冗長オプションを変更する](redundancy-migration.md)
-- [読み取りアクセス geo 冗長ストレージを使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)
+- [geo 冗長性を使用する高可用性アプリケーションの設計](geo-redundant-design.md)

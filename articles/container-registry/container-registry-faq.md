@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 39b543c5f886b22d488198873b75cf76555692fa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731646"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682816"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -51,7 +51,7 @@ Azure CLI を使用して資格情報を取得するには:
 az acr credential show -n myRegistry
 ```
 
-Azure Powershell の使用:
+Azure PowerShell の使用:
 
 ```powershell
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
@@ -119,7 +119,7 @@ Bash を使用している場合:
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
-Powershell の場合:
+PowerShell の場合:
 
 ```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
@@ -435,7 +435,7 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?
 
 操作が許可されない可能性のあるいくつかのシナリオを次に示します。
-* クラシック レジストリはサポートされなくなりました。 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) か Azure portal を使用して、サポートされている [SKU](https://aka.ms/acr/skus) にアップグレードしてください。
+* クラシック レジストリはサポートされなくなりました。 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) か Azure portal を使用して、サポートされている[サービス レベル](https://aka.ms/acr/skus)にアップグレードしてください。
 * イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) コマンドを使用して、現在の属性を表示できます。
 * イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、[こちら](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)をご覧ください。
 

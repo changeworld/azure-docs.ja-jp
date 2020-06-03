@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 68310f504e94e50be9fbd4ce49055a4b318ab5d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677349"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659509"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -97,6 +97,14 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 
 * ```net stop serviceName```
 * ```net start serviceName```
+
+また、管理者特権でのコマンド プロンプトから (管理者として) 次のコマンドを実行する方法も役立ちます。
+
+```CMD
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
+```
+
+このレジストリ キーを追加すると、BLOB スナップショット用にスレッドが作成されず、タイムアウトが発生しなくなります。
 
 ## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - バックアップ拡張機能の構成の解析に失敗しました
 
@@ -189,7 +197,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | **エラー コード**:VmNotInDesirableState <br/> **エラー メッセージ**:VM はバックアップできる状態ではありません。 |<ul><li>VM が**実行**と**シャットダウン**の間の一時的な状態である場合は、状態が変わるのを待ちます。 その後、バックアップ ジョブをトリガーします。 <li> VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。  |
 | VM エージェントが仮想マシンに存在しません: <br>前提条件と VM エージェントをインストールします。 その後、操作を再開します。 |VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
 | **エラー コード**:ExtensionSnapshotFailedNoSecureNetwork <br/> **エラー メッセージ**:セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
-| **エラー コード**:ExtensionVCRedistInstallationFailure <br/> **エラー メッセージ**:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
+| **エラー コード**:ExtensionVCRedistInstallationFailure <br/> **エラー メッセージ**:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | <li> `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。 <br><br><li> イベント ログを確認して、アクセス関連の問題が発生しているかどうかを確認します。 次に例を示します。*製品:Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- エラー 1401。キー Software\Classes を作成できませんでした。システム エラー 5。このキーへの十分なアクセス権があることを確認するか、またはサポート担当者に問い合わせてください。* <br><br> 管理者またはユーザーのアカウントに、レジストリ キー **HKEY_LOCAL_MACHINE\SOFTWARE\Classes** を更新するための十分なアクセス許可があることを確認します。 十分なアクセス許可を付与し、Windows Azure ゲスト エージェントを再起動します。<br><br> <li> ウイルス対策製品を使用している場合は、インストールを許可する適切な除外ルールがあることを確認します。    |
 | **エラー コード**:UserErrorRequestDisallowedByPolicy <BR> **エラー メッセージ**:VM に無効なポリシーが構成されており、スナップショット操作が妨げられています。 | [環境内のタグを管理する](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags) Azure Policy がある場合は、ポリシーを [Deny 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)から [Modify 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)に変更することを検討するか、[Azure Backup で要求される名前付けスキーマ](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)に従って手動でリソース グループを作成してください。
 
 ## <a name="jobs"></a>ジョブ

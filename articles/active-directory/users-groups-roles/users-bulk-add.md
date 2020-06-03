@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ed8c3563f9a17a30e0d5df5f00c35f34510d6029
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203406"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848925"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory でのユーザーの一括作成
 
@@ -38,15 +38,15 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
-- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
+- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
 - アップロード テンプレートの最初の 2 行を削除または変更することはできません。アップロードを処理することができなくなります。
-- 必須の列は最初に表示されます。
-- テンプレートに新しい列を追加することはお勧めしません。 追加した列は無視され、処理されません。
+- 必須の列が最初に示されています。
+- テンプレートに新しい列を追加することはお勧めしません。 列を追加しても無視され、処理されません。
 - できる限り、常に最新バージョンの CSV テンプレートをダウンロードすることをお勧めします。
 
 ## <a name="to-create-users-in-bulk"></a>ユーザーを一括で作成する手順
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 1. ファイルが検証に合格したら、 **[送信]** を選択して、新しいユーザーをインポートする Azure の一括操作を開始します。
 1. インポート操作が完了すると、一括操作ジョブの状況に関する通知が表示されます。
 
-エラーがある場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
+エラーがある場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。 ファイルの送信は、指定されたテンプレートと一致し、正確な列名が含まれている必要があります。
 
 ## <a name="check-status"></a>状態の確認
 

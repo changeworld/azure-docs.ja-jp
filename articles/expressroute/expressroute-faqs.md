@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231299"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745754"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -221,7 +221,7 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
-### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>異なる Azure Active Directory テナントまたは Enterprise Agreement 登録に関連付けられた Azure サブスクリプションが複数あります。 別のテナントおよび登録にある仮想ネットワークを、同じテナントまたは登録内にない 1 つの ExpressRoute 回線に接続することはできますか。
+### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>異なる Azure Active Directory Windows Update または Enterprise Agreement 登録に関連付けられた Azure サブスクリプションが複数あります。 別のテナントおよび登録にある仮想ネットワークを、同じテナントまたは登録内にない 1 つの ExpressRoute 回線に接続することはできますか。
 
 はい。 ExpressRoute の承認は、サブスクリプション、テナント、および登録の複数の境界にまたがることができます。追加の構成は必要ありません。 
 
@@ -342,7 +342,7 @@ Standard ExpressRoute 回線の機能セットとほぼ同じですが、次の�
 ExpressRoute Local では、リソースの制限 (回線あたりの VNet 数など) も Standard と同じです。 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute Local はどこで使用できますか。また、ピアリングの場所はそれぞれどの Azure リージョンにマッピングされていますか。
-ExpressRoute Local は、1 つまたは 2 つの Azure リージョンが近くにあるピアリングの場所で使用できます。 ピアリングの場所の州、都道府県、国に Azure リージョンがない場合、そこで使用することはできません。 正確なマッピングについては、[場所のページ](expressroute-locations-providers.md)をご覧ください。  
+ExpressRoute Local は、1 つまたは 2 つの Azure リージョンが近くにあるピアリングの場所で使用できます。 ピアリングの場所の州、都道府県、国/地域に Azure リージョンがない場合、そこで使用することはできません。 正確なマッピングについては、[場所のページ](expressroute-locations-providers.md)をご覧ください。  
 
 ## <a name="expressroute-for-office-365"></a>Office 365 向け ExpressRoute
 

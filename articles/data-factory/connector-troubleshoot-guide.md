@@ -9,12 +9,12 @@ ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7e818a80f9df97ce4e5f5b8f1ef9385d2e6b0ecc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199008"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827762"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -53,7 +53,7 @@ ms.locfileid: "83199008"
 
 ### <a name="error-message-request-size-is-too-large"></a>エラー メッセージ: 要求のサイズが大きすぎます。
 
-- **現象**: 既定の書き込みバッチ サイズを使用して Azure Cosmos DB にデータをコピーすると、*"**要求のサイズが大きすぎます**"* というエラーが表示されます。
+- **現象**: 既定の書き込みバッチ サイズを使用して Azure Cosmos DB にデータをコピーすると、 *"**要求のサイズが大きすぎます**"* というエラーが表示されます。
 
 - **原因**: Cosmos DB では、単一の要求のサイズが 2 MB に制限されます。 式は、"要求サイズ = 1 つのドキュメント サイズ * 書き込みバッチ サイズ" となります。 ドキュメントのサイズが大きい場合、既定の動作の結果として要求サイズが過度に大きくなります。 書き込みバッチ サイズを調整することができます。
 
@@ -678,7 +678,7 @@ ms.locfileid: "83199008"
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
             

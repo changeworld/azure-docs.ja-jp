@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257234"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653837"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -159,7 +159,7 @@ Variance| この列のデータが平均値からどのくらい離れている�
 
 ## <a name="advanced-featurization-options"></a>詳細な特徴付けオプション
 
-自動機械学習では、データの潜在的な問題を特定して管理するために、前処理とデータ ガードレールが自動的に提供されます。 
+自動機械学習では、[オーバーフィットや偏ったデータ](concept-manage-ml-pitfalls.md#prevent-over-fitting)など、データの潜在的な問題を特定して管理するために、前処理とデータ ガードレールが自動的に提供されます。 
 
 ### <a name="preprocessing"></a>前処理
 
