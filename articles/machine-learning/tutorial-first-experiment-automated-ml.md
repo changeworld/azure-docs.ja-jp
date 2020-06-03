@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656517"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118958"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -224,7 +224,7 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
 + 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
-+ [特徴付け](how-to-use-automated-ml-for-ml-models.md#featurization)についてさらに理解を深める。
++ [特徴付け](how-to-configure-auto-features.md#featurization)についてさらに理解を深める。
 + [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。
 
 

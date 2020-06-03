@@ -2,19 +2,19 @@
 title: Azure SQL Edge (プレビュー) の構成
 description: Azure SQL Edge (プレビュー) を構成する方法について説明します
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5dcdd1604674ca56fb7a646d4c571d63bd2c0e3e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a28724e00f59fe049d1d9d6dfbcbc5a3f9556124
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594011"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235142"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) の構成
 
@@ -72,7 +72,7 @@ Azure SQL Edge には、SQL Server on Linux のように [mssql-conf 構成ユ�
 ```
 
 次の mssql.conf のオプションは、SQL Edge には適用されません。
-</br></br>
+
 |オプション|説明|
 |:---|:---|
 |**カスタマー フィードバック** | SQL Server が Microsoft にフィードバックを送信するかどうかを選択します。 |

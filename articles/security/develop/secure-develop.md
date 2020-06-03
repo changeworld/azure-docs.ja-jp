@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800286"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266765"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -128,7 +128,7 @@ Azure App Service Web Apps では、[Tinfoil Security](https://www.tinfoilsecuri
 
 DAST は、静的アプリケーション セキュリティ テスト (SAST) とは異なるものです。 SAST ツールでは、セキュリティ上の欠陥を見つけるため、コードが実行されていないときに、ソース コードまたはコンパイル済みバージョンのコードが分析されます。
 
-できればセキュリティ専門家 ([侵入テスト担当者](../fundamentals/pen-testing.md)または脆弱性の審査機関) の支援を得て、DAST を実行してください。 セキュリティの専門家を手配できない場合は、Web プロキシ スキャナーを使用し、トレーニングした後、自分で DAST を実行してもかまいません。 早い段階で DAST スキャナーに接続し、コードに明らかなセキュリティの問題が発生しないことを確認します。 Web アプリケーション脆弱性スキャナーの一覧については、[OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) のサイトをご覧ください。
+できればセキュリティ専門家 ([侵入テスト担当者](../fundamentals/pen-testing.md)または脆弱性の審査機関) の支援を得て、DAST を実行してください。 セキュリティの専門家を手配できない場合は、Web プロキシ スキャナーを使用し、トレーニングした後、自分で DAST を実行してもかまいません。 早い段階で DAST スキャナーに接続し、コードに明らかなセキュリティの問題が発生しないことを確認します。 Web アプリケーション脆弱性スキャナーの一覧については、[OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools) のサイトをご覧ください。
 
 ### <a name="perform-fuzz-testing"></a>ファジー テストを実行する
 

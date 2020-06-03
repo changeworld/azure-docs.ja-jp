@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 2277aa3de5955efe5a3e4cb938fa557352f89006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 554e3fa07ef733c443371aca6f1621770686895a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217971"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119009"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (クラシック) Web サービス ポータルを使用して Web サービスを管理する
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
 

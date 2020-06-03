@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685509"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265252"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>資格情報の管理に ID ブローカー (プレビュー) を使用する
 
@@ -100,7 +100,7 @@ SSH 認証を使用するには、Azure AD DS でハッシュを使用できる�
 
 ID ブローカーのセットアップでは、ゲートウェイに接続するカスタム アプリやクライアントを、必要な OAuth トークンを最初に取得するように更新できます。 この[ドキュメント](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)の手順に従って、次の情報を含むトークンを取得できます。
 
-*   OAuth リソース URI: https://hib.azurehdinsight.net 
+*   OAuth リソース URI: `https://hib.azurehdinsight.net` 
 * アプリID: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   アクセス許可: (名前: Cluster.ReadWrite、ID:8f89faa0-ffef-4007-974d-4989b39ad77d)
 

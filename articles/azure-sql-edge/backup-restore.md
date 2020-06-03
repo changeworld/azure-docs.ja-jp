@@ -2,19 +2,19 @@
 title: データベースのバックアップと復元 - Azure SQL Edge (プレビュー)
 description: Azure SQL Edge (プレビュー) のバックアップと復元の機能について説明します
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5c7bdbc49d8f1c6af7f38911919c660b03e1a37a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 902576f82faa18fbb0e7c7eaed5c06993bd379cc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594001"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235180"
 ---
 # <a name="backup-and-restore-databases-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) でのデータベースのバックアップと復元 
 

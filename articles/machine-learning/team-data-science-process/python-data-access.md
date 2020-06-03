@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c5269488b1c449580d56a0c1506c59b89c76ca6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720981"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267987"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -40,7 +40,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 * python-dateutil
 * pandas
 
-[Anaconda](http://continuum.io/downloads#all)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
+[Anaconda](https://www.anaconda.com/)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
 このトピックで説明されているタスクを完了するには、Azure Machine Learning Python クライアント ライブラリをインストールします。 このライブラリは、[Python Package Index](https://pypi.python.org/pypi/azureml) から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。

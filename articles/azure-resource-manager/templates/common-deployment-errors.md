@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用した Azure へのリソースの�
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1b7a318f73a513d699de97f0973ece9b6481b93
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460383"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84230628"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -62,8 +62,8 @@ ms.locfileid: "79460383"
 | OperationNotAllowed | デプロイで、サブスクリプション、リソース グループ、またはリージョンのクォータを超過する操作が試みられています。 可能であれば、クォータ内に収まるようにデプロイを修正してください。 修正できない場合は、クォータの変更を要求することを検討してください。 | [クォータを解決する](error-resource-quota.md) |
 | ParentResourceNotFound | 子リソースを作成する前に親リソースが存在することを確認してください。 | [親リソースを解決する](error-parent-resource.md) |
 | PasswordTooLong | 文字数の多すぎるパスワードを選択したか、パスワードの値をパラメーターとして渡す前にセキュリティで保護された文字列に変換した可能性があります。 テンプレートに **secure string** パラメーターが含まれている場合、値をセキュリティで保護された文字列に変換する必要はありません。 パスワードの値はテキストとして指定してください。 |  |
-| PrivateIPAddressInReservedRange | 指定した IP アドレスは、Azure で必要なアドレス範囲に含まれます。 予約済みの範囲を避けるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | 指定した IP アドレスがサブネットの範囲外です。 サブネットの範囲に収まるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressInReservedRange | 指定した IP アドレスは、Azure で必要なアドレス範囲に含まれます。 予約済みの範囲を避けるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | 指定した IP アドレスがサブネットの範囲外です。 サブネットの範囲に収まるように IP アドレスを変更してください。 | [IP アドレス](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | デプロイ済みのリソースで、一部のプロパティを変更できません。 リソースを更新する際は、許可されているプロパティに変更を制限してください。 | [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | デプロイ時に実行しようとしているアクションを禁止するリソース ポリシーがサブスクリプションに含まれます。 アクションをブロックしているポリシーを見つけてください。 可能であれば、ポリシーの制限を満たすようにデプロイを変更してください。 | [ポリシーを解決する](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 予約された名前が含まれていないリソース名を指定します。 | [予約されたリソース名](error-reserved-resource-name.md) |

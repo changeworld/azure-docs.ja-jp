@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217782"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115502"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) におけるサンプル データセットの使用
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [top]: #machine-learning-sample-datasets
 

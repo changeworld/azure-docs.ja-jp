@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 46dd7949dde1890035053a7a985f2f1d921e141e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737897"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266663"
 ---
 # <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Azure でリソース ログとメトリックを収集するための診断設定を作成する
 
@@ -149,11 +149,11 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-### <a name="configure-diagnostic-settings-using-rest-api"></a>REST API を使用して診断設定を構成する
+## <a name="configure-diagnostic-settings-using-rest-api"></a>REST API を使用して診断設定を構成する
 
 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して診断設定を作成または更新するには、「[診断設定](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)」を参照してください。
 
-### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Resource Manager テンプレートを使用して診断設定を構成する
+## <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Resource Manager テンプレートを使用して診断設定を構成する
 
 Resource Manager テンプレートを使用して診断設定を作成または更新するには、[Azure Monitor での Resource Manager テンプレートを使用した診断設定の作成](diagnostic-settings-template.md)に関するページを参照してください。
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: ff9e5ff099bba7af9cac9862103ef63aa0169545
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0694d6f093864231206ec2282b6d358c57ed1dc4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418750"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022131"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -44,7 +44,7 @@ ms.locfileid: "81418750"
 
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 * **Azure Storage アカウント**。 BLOB ストレージを**ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
-* **Azure SQL データベース**。 データベースを**シンク** データ ストアとして使用します。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に書かれている手順を参照して作成してください。
+* **Azure SQL データベース**。 データベースを**シンク** データ ストアとして使用します。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に書かれている手順を参照して作成してください。
 
 ### <a name="create-blob-table"></a>BLOB テーブルを作成する
 

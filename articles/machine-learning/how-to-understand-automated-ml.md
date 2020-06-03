@@ -3,19 +3,19 @@ title: 自動 ML 結果の概要
 titleSuffix: Azure Machine Learning
 description: 自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。
 services: machine-learning
-author: RachelKellam
-ms.author: rakellam
-ms.reviewer: sgilley
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7827349166ce55b1604f949f1d78a1ddce7c5e0
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237003"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116022"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
