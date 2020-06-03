@@ -30,7 +30,7 @@ ms.locfileid: "82127999"
 MSAL.NET では、既定でメモリ内のトークン キャッシュが提供されています。 プラットフォームの一部としてセキュリティで保護されたストレージをユーザーが使用できるプラットフォーム用に、既定でシリアル化が提供されています。 これは、ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、Xamarin.Android の場合です。
 
 > [!Note]
-> Xamarin.Android プロジェクトを MSAL.NET 1.x から MSAL.NET 3.x に移行する場合は、Visual Studio デプロイによってローカル ストレージの復元がトリガーされるときに、キャッシュされた古いトークンが返されることを回避するために、プロジェクトに `android:allowBackup="false"` を追加することをお勧めします。 [問題 #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938) を参照してください。
+> Xamarin.Android プロジェクトを MSAL.NET 1.x から MSAL.NET 3.x に移行する場合は、Visual Studio デプロイによってローカル ストレージの復元がトリガーされるときに、キャッシュされた古いトークンが返されることを回避するために、プロジェクトに `android:allowBackup="false"` を追加することをお勧めします。 [Issue #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938) を参照してください。
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Windows デスクトップ アプリと Web アプリ/Web API 用のカスタムのシリアル化
 
