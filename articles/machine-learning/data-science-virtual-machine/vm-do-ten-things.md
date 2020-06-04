@@ -5,16 +5,16 @@ description: Windows Data Science Virtual Machine 上でデータ探索および
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.date: 05/08/2020
+ms.openlocfilehash: a2eba958ca2d4a90cb3706839d726fdd0a48ed4f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204221"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994081"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -30,7 +30,7 @@ DSVM は Azure サービスと密接に連携します。 Azure 上の Azure SQL
 - Azure portal または PowerShell を使用して Azure リソースを管理します。
 - ご利用の DSVM にマウント可能なドライブとして Azure Files 共有を作成することによってストレージ スペースを拡張し、大規模なデータセット/コードをチーム全体で共有します。
 - GitHub を使用してチームとコードを共有します。 インストール済みの次の Git クライアントを使用してリポジトリにアクセスします: Git Bash と Git GUI。
-- Azure Blob Storage、Azure Data Lake、Azure HDInsight (Hadoop)、Azure Cosmos DB、Azure SQL Data Warehouse、Azure SQL Database など、Azure のデータ サービスと分析サービスにアクセスします。
+- Azure Blob Storage、Azure Data Lake、Azure Cosmos DB、Azure SQL Data Warehouse、Azure SQL Database など、Azure のデータ サービスと分析サービスにアクセスします。
 - DSVM にプレインストールされた Power BI Desktop インスタンスを使用してレポートとダッシュボードを作成し、それらをクラウドにデプロイします。
 - プロジェクトのニーズを満たすように、ご利用の DSVM を動的にスケーリングします。
 - ご利用の仮想マシン上に追加のツールをインストールします。   
@@ -68,7 +68,7 @@ Jupyter Notebook には、データ探索とモデリング用のブラウザー
 
 Jupyter Notebook を開始するには、 **[スタート]** メニューまたはデスクトップで **[Jupyter Notebook]** アイコンを選択します。 また、DSVM コマンド プロンプトで既存の Notebook が配置されているディレクトリ、または新しいノートブックを作成するディレクトリから、コマンド ```jupyter notebook``` を実行することもできます。  
 
-Jupyter を開始すると、DSVM にあらかじめパッケージ化されているいくつかのノートブックの例を含んだディレクトリが表示されます。 ここでは、次の操作を実行できます。
+Jupyter を開始すると、DSVM にあらかじめパッケージ化されているサンプル ノートブックの `/notebooks` ディレクトリに移動します。 ここでは、次の操作を実行できます。
 
 * ノートブックを選択してコードを表示します。
 * Shift + Enter キーを選択して、各セルを実行します。
@@ -127,11 +127,6 @@ pass
 
 IrisPredictor(3,2,3,4)
 ```
-
-> [!NOTE]
-> 現在、Azure Machine Learning ライブラリは Python 2.7 のみでサポートされています。   
-> 
-> 
 
 ### <a name="build-and-operationalize-r-models"></a>R モデルを構築して運用可能な状態にする
 Data Science Virtual Machine やその他の環境で構築された R のモデルは、Python の場合と同様の方法で Azure Machine Learning にデプロイすることができます。 次に手順を示します。
@@ -269,7 +264,7 @@ Azure Blob Storage は、大規模データにも小規模データにも対応�
 
 * [Azure portal](https://portal.azure.com) から Azure Blob Storage アカウントを作成します。
 
-   ![Azure portal でのストレージ アカウント作成プロセスのスクリーンショット](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+   ![Azure portal でのストレージ アカウント作成プロセスのスクリーンショット](./media/vm-do-ten-things/create-azure-blob.png)
 
 * コマンドライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` にプレインストールされていることを確認します。 azcopy.exe を含むディレクトリが既に PATH 環境変数上にあるので、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、[AzCopy のドキュメント](../../storage/common/storage-use-azcopy.md)を参照してください。
 * Azure ストレージ エクスプローラー ツールを起動します。 これは [Storage Explorer の Web ページ](https://storageexplorer.com/)からダウンロードできます。 
@@ -371,7 +366,7 @@ Azure Data Lake Storage は、ビッグ データ分析ワークロード用の�
 
 * [Azure portal](https://portal.azure.com) で Azure Data Lake Analytics インスタンスを作成します。
 
-   ![Azure portal から Data Lake Analytics インスタンスを作成しているスクリーンショット](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+   ![Azure portal から Data Lake Analytics インスタンスを作成しているスクリーンショット](./media/vm-do-ten-things/azure-data-lake-create-v3.png)
 
 * [Azure Data Lake and Stream Analytics Tools for Visual Studio プラグイン](https://www.microsoft.com/download/details.aspx?id=49504)は、仮想マシン上の Visual Studio Community Edition に既にインストールされています。 Visual Studio を起動して Azure サブスクリプションにサインインすると、Visual Studio の左パネルに Azure Data Analytics のアカウントとストレージが表示されます。
 
@@ -448,361 +443,6 @@ Azure Data Lake にデータセットを取り込んだ後、[U-SQL 言語](../.
 ファイルの情報が表示されます。
 
 ![ファイル概要情報のスクリーンショット](./media/vm-do-ten-things/USQL_tripdata_summary.png)
-
-### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスター
-Azure HDInsight は、クラウド内の Apache Hadoop、Spark、HBase、および Storm マネージド サービスです。 Azure HDInsight クラスターは、Data Science Virtual Machine から簡単に操作できます。
-
-#### <a name="prerequisites"></a>前提条件
-
-* [Azure portal](https://portal.azure.com) から Azure Blob Storage アカウントを作成します。 HDInsight クラスターのデータは、このストレージ アカウントを使用して格納されます。
-
-   ![Azure portal からストレージ アカウントを作成しているスクリーンショット](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
-
-* [Azure portal](../team-data-science-process/customize-hadoop-cluster.md) から Azure HDInsight Hadoop クラスターをカスタマイズします。
-  
-   作成したストレージ アカウントは、この HDInsight クラスターに対して作成時にリンクします。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
-
-   ![作成したストレージ アカウントを HDInsight クラスターにリンクするための選択](./media/vm-do-ten-things/Create_HDI_v4.PNG)
-
-* 作成したら、クラスターのヘッド ノードへのリモート デスクトップ アクセスを有効にします。 ここで指定するリモート アクセスの資格情報は、以降の手順で必要になるため、記憶しておいてください。
-
-   ![HDInsight クラスターへのリモート アクセスを有効にするための [リモートデスクトップ] ボタン](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
-
-* Azure Machine Learning ワークスペースを作成します。 実施した Machine Learning の実験は、この Machine Learning ワークスペースに保存されます。 下のスクリーンショットに示したように、ポータル内で強調表示されているオプションを選択します。
-
-   ![Azure Machine Learning ワークスペースの作成](./media/vm-do-ten-things/Create_ML_Space.PNG)
-
-* ご利用のワークスペースのパラメーターを入力します。
-
-   ![Machine Learning ワークスペース パラメーターの入力](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
-
-* IPython Notebook を使用してデータをアップロードします。 必要なパッケージをインポートし、資格情報をプラグインし、ご利用のストレージ アカウントでデータベースを作成してから、データを HDI クラスターに読み込みます。
-
-```python
-# Import required packages
-import pyodbc
-import time as time
-import json
-import os
-import urllib
-import urllib2
-import warnings
-import re
-import pandas as pd
-import matplotlib.pyplot as plt
-from azure.storage.blob import BlobService
-warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
-
-
-# Create the connection to Hive by using ODBC
-SERVER_NAME = 'xxx.azurehdinsight.net'
-DATABASE_NAME = 'nyctaxidb'
-USERID = 'xxx'
-PASSWORD = 'xxxx'
-DB_DRIVER = 'Microsoft Hive ODBC Driver'
-driver = 'DRIVER={' + DB_DRIVER + '}'
-server = 'Host=' + SERVER_NAME + ';Port=443'
-database = 'Schema=' + DATABASE_NAME
-hiveserv = 'HiveServerType=2'
-auth = 'AuthMech=6'
-uid = 'UID=' + USERID
-pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join(
-    [driver, server, database, hiveserv, auth, uid, pwd])
-connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor = connection.cursor()
-
-
-# Create the Hive database and tables
-queryString = "create database if not exists nyctaxidb;"
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.trip
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    rate_code string,
-                    store_and_fwd_flag string,
-                    pickup_datetime string,
-                    dropoff_datetime string,
-                    passenger_count int,
-                    trip_time_in_secs double,
-                    trip_distance double,
-                    pickup_longitude double,
-                    pickup_latitude double,
-                    dropoff_longitude double,
-                    dropoff_latitude double)  
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.fare
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    pickup_datetime string,
-                    payment_type string,
-                    fare_amount double,
-                    surcharge double,
-                    mta_tax double,
-                    tip_amount double,
-                    tolls_amount double,
-                    total_amount double)
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-
-# Upload data from Blob storage to an HDI cluster
-for i in range(1, 13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-```
-
-あるいは、こちらの[チュートリアル](../team-data-science-process/hive-walkthrough.md)に従って NYC Taxi データを HDI クラスターにアップロードすることもできます。 主な手順は次のとおりです。
-  
-* AzCopy を使用して、zip 形式の CSV をパブリック BLOB からご利用のローカル フォルダーにダウンロードします。
-* AzCopy を使用して、解凍された CSV をローカル フォルダーから HDI クラスターにアップロードします。
-* Hadoop クラスターのヘッド ノードにログインして探索的データ分析の準備をします。
-
-HDI クラスターにデータが読み込まれたら、Azure Storage Explorer でご自分のデータを確認することができます。 さらに、nyctaxidb データベースが HDI クラスターに作成されています。
-
-#### <a name="data-exploration-hive-queries-in-python"></a>データの探索: Python での Hive クエリ
-
-データは Hadoop クラスターに存在しているため、探索や機能設計を実行するには、pyodbc パッケージを使用して Hadoop クラスターに接続してから、Hive を使用してデータベースに対してクエリを実行します。 前提条件の手順で作成した既存のテーブルを表示できます。
-
-```python
-queryString = """
-    show tables in nyctaxidb2;
-    """
-pd.read_sql(queryString, connection)
-```
-
-![既存のテーブルを表示する](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
-
-毎月のレコード件数とチップの頻度を trip テーブルで調べてみましょう。
-
-```python
-queryString = """
-    select month, count(*) from nyctaxidb.trip group by month;
-    """
-results = pd.read_sql(queryString,connection)
-
-%matplotlib inline
-
-results.columns = ['month', 'trip_count']
-df = results.copy()
-df.index = df['month']
-df['trip_count'].plot(kind='bar')
-```
-
-![毎月のレコード数をプロットする](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
-
-```python
-queryString = """
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
-    """
-results = pd.read_sql(queryString, connection)
-
-results.columns = ['tipped', 'trip_count']
-df = results.copy()
-df.index = df['tipped']
-df['trip_count'].plot(kind='bar')
-```
-
-![チップの頻度をプロットする](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
-
-乗車位置と降車位置との距離を計算して、トリップ距離と比較することもできます。
-
-```python
-queryString = """
-                select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-                    3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-                    *radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-                    *cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-                    /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-                    +cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*
-                    pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance
-                    from nyctaxidb.trip
-                    where month=1
-                        and pickup_longitude between -90 and -30
-                        and pickup_latitude between 30 and 90
-                        and dropoff_longitude between -90 and -30
-                        and dropoff_latitude between 30 and 90;
-            """
-results = pd.read_sql(queryString, connection)
-results.head(5)
-```
-
-![乗車と降車テーブルの上位の行](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
-
-```python
-results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance'] <= 100]  # remove outliers
-df = df.loc[df['direct_distance'] <= 100]  # remove outliers
-plt.scatter(df['direct_distance'], df['trip_distance'])
-```
-
-![乗車と降車の距離からトリップ距離をプロットする](./media/vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
-
-次に、モデリング用にダウンサンプル (1%) したデータ セットを用意します。 このデータは Machine Learning リーダー モジュールで使用できます。
-
-```python
-queryString = """
-create  table if not exists nyctaxi_downsampled_dataset_testNEW (
-medallion string,
-hack_license string,
-vendor_id string,
-rate_code string,
-store_and_fwd_flag string,
-pickup_datetime string,
-dropoff_datetime string,
-pickup_hour string,
-pickup_week string,
-weekday string,
-passenger_count int,
-trip_time_in_secs double,
-trip_distance double,
-pickup_longitude double,
-pickup_latitude double,
-dropoff_longitude double,
-dropoff_latitude double,
-direct_distance double,
-payment_type string,
-fare_amount double,
-surcharge double,
-mta_tax double,
-tip_amount double,
-tolls_amount double,
-total_amount double,
-tipped string,
-tip_class string
-)
-row format delimited fields terminated by ','
-lines terminated by '\\n'
-stored as textfile;
-"""
-cursor.execute(queryString)
-```
-
-次に、join の内容を前述の内部テーブルに挿入します。
-
-```python
-queryString = """
-insert overwrite table nyctaxi_downsampled_dataset_testNEW
-select
-t.medallion,
-t.hack_license,
-t.vendor_id,
-t.rate_code,
-t.store_and_fwd_flag,
-t.pickup_datetime,
-t.dropoff_datetime,
-hour(t.pickup_datetime) as pickup_hour,
-weekofyear(t.pickup_datetime) as pickup_week,
-from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-t.passenger_count,
-t.trip_time_in_secs,
-t.trip_distance,
-t.pickup_longitude,
-t.pickup_latitude,
-t.dropoff_longitude,
-t.dropoff_latitude,
-t.direct_distance,
-f.payment_type,
-f.fare_amount,
-f.surcharge,
-f.mta_tax,
-f.tip_amount,
-f.tolls_amount,
-f.total_amount,
-if(tip_amount>0,1,0) as tipped,
-if(tip_amount=0,0,
-if(tip_amount>0 and tip_amount<=5,1,
-if(tip_amount>5 and tip_amount<=10,2,
-if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
-from
-(
-select
-medallion,
-hack_license,
-vendor_id,
-rate_code,
-store_and_fwd_flag,
-pickup_datetime,
-dropoff_datetime,
-passenger_count,
-trip_time_in_secs,
-trip_distance,
-pickup_longitude,
-pickup_latitude,
-dropoff_longitude,
-dropoff_latitude,
-3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-+cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance,
-rand() as sample_key
-
-from trip
-where pickup_latitude between 30 and 90
-    and pickup_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-)t
-join
-(
-select
-medallion,
-hack_license,
-vendor_id,
-pickup_datetime,
-payment_type,
-fare_amount,
-surcharge,
-mta_tax,
-tip_amount,
-tolls_amount,
-total_amount
-from fare
-)f
-on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-where t.sample_key<=0.01
-"""
-cursor.execute(queryString)
-```
-
-しばらくすると、Hadoop クラスターにデータが読み込まれてあることを確認できます。
-
-```python
-queryString = """
-    select * from nyctaxi_downsampled_dataset limit 10;
-    """
-cursor.execute(queryString)
-pd.read_sql(queryString, connection)
-```
-
-![テーブルのデータの上位の行](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse とデータベース
 Azure SQL Data Warehouse は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
