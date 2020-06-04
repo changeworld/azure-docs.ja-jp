@@ -1081,20 +1081,6 @@
               href: platform/view-designer-parts.md
             - name: フィルター
               href: platform/view-designer-filters.md
-        - name: カスタム ソリューション
-          items:
-            - name: 設計とビルド
-              href: insights/solutions-creating.md
-            - name: ソリューション ファイル
-              href: insights/solutions-solution-file.md
-            - name: Automation リソース
-              href: insights/solutions-resources-automation.md
-            - name: ログ検索とアラート
-              href: insights/solutions-resources-searches-alerts.md
-            - name: ビュー
-              href: insights/solutions-resources-views.md
-            - name: ベスト プラクティス
-              href: insights/solutions-best-practices.md
     - name: Workbooks
       items:
         - name: 概要
