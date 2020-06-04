@@ -48,7 +48,7 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
 
 1.  [Azure PowerShell](/powershell/azure/install-az-ps)をダウンロードしてインストールします。
 
-2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、`Set-AzDataFactoryV2IntegrationRuntime`Edition**パラメーターの値として**Enterprise**を指定して** を実行します。 スクリプトのサンプルを次に示します。
+2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、**Edition** パラメーターの値として **Enterprise** を指定して `Set-AzDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"

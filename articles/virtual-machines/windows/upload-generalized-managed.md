@@ -23,7 +23,7 @@ ms.locfileid: "82096411"
 ## <a name="before-you-begin"></a>開始する前に
 
 - VHD を Azure にアップロードする前に、「[Prepare a Windows VHD or VHDX to upload to Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Azure にアップロードする Windows VHD または VHDX を準備する) に従う必要があります。
-- [Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) への移行を開始する前に、「[Plan for the migration to Managed Disks (Managed Disks への移行の計画)](managed-disks-overview.md)」をご確認ください。
+- [Managed Disks](managed-disks-overview.md) への移行を開始する前に、「[Plan for the migration to Managed Disks (Managed Disks への移行の計画)](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)」をご確認ください。
 
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Sysprep を使用してソース VM を一般化する

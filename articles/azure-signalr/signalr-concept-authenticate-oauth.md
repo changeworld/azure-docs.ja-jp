@@ -54,7 +54,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 1. Web ブラウザーを開き、`https://github.com` に移動してアカウントにサインインします。
 
-2. アカウントで **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)** に移動し、 **[OAuth Apps]\(OAuth アプリ\)** の下の **[Register a new application]\(新しいアプリケーションの登録\)** または *[New OAuth App]\(新しい OAuth アプリ\)* をクリックします。
+2. アカウントで **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)** に移動し、 *[OAuth Apps]\(OAuth アプリ\)* の下の **[Register a new application]\(新しいアプリケーションの登録\)** または **[New OAuth App]\(新しい OAuth アプリ\)** をクリックします。
 
 3. 新しい OAuth アプリには次の設定を使用し、 **[アプリケーションの登録]** をクリックします。
 

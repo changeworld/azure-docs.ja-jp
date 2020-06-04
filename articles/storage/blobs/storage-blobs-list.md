@@ -39,7 +39,7 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="manage-how-many-results-are-returned"></a>返される結果の数を管理する
 
-既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットを減らすには、いずれかの `maxresults`ListBlobs **メソッドを呼び出すときに、** パラメーターに 0 以外の値を指定します。
+既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットを減らすには、いずれかの **ListBlobs** メソッドを呼び出すときに、`maxresults` パラメーターに 0 以外の値を指定します。
 
 一覧表示操作が 5000 を超える BLOB を返す場合、または一覧表示操作によってストレージ アカウント内のコンテナーのサブセットが返されるように `maxresults` の値を指定した場合、Azure Storage は BLOB の一覧と共に*継続トークン*を返します。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
 
@@ -51,7 +51,7 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="return-metadata"></a>メタデータを返す
 
-結果と共に BLOB のメタデータを返すには、**BlobListingDetails** 列挙型の [Metadata](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
+結果と共に BLOB のメタデータを返すには、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>フラットな一覧表示と階層的な一覧表示
 

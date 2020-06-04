@@ -184,7 +184,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 IoT Edge は、At-Least-Once 保証を提供します。 IoT Edge ハブは、ルートでそのシンクにメッセージを配信できなかった場合のために、ローカルにメッセージを保存します。 たとえば、IoT Edge ハブが IoT Hub に接続できない場合や、ターゲット モジュールが接続されていない場合です。
 
-IoT Edge ハブでは、`storeAndForwardConfiguration.timeToLiveSecs`IoT Edge ハブの必要なプロパティ[の ](module-edgeagent-edgehub.md) プロパティで指定した時間まで、メッセージが格納されます。
+IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edgeagent-edgehub.md)の `storeAndForwardConfiguration.timeToLiveSecs` プロパティで指定した時間まで、メッセージが格納されます。
 
 ## <a name="define-or-update-desired-properties"></a>必要なプロパティの定義または更新
 

@@ -56,7 +56,7 @@ ms.locfileid: "83653250"
 ### <a name="set-the-task-type"></a>タスクの種類を設定する
 SDK または Azure Machine Learning Studio を使用して、自動 ML 実験のタスクの種類を設定できます。
 
-`task` コンストラクターで `AutoMLConfig` パラメーターを使用して、実験の種類を指定します。
+`AutoMLConfig` コンストラクターで `task` パラメーターを使用して、実験の種類を指定します。
 
 ```python
 from azureml.train.automl import AutoMLConfig

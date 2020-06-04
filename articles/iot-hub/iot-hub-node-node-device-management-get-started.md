@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732339"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>デバイス管理の開始 (Node.js)

@@ -58,7 +58,7 @@ ms.locfileid: "81536881"
 1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
-2. エクスポートされたデータを検査します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+2. エクスポートされたデータを検査します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
    
     ![](./media/export-stream-analytics/04-data.png)
    
@@ -97,8 +97,8 @@ ms.locfileid: "81536881"
 
 次の点に注意してください。
 
-* `webapplication27`は Application Insights リソースの名前です。**すべて小文字で指定します**。
-* `1234...`は Application Insights リソースのインストルメンテーション キーです。**ダッシュは省略します**。 
+* **は Application Insights リソースの名前です。`webapplication27`すべて小文字で指定します**。
+* **は Application Insights リソースのインストルメンテーション キーです。`1234...`ダッシュは省略します**。 
 * `PageViews` は分析するデータの種類です。 使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。 エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](export-data-model.md)」をご覧ください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 

@@ -48,11 +48,11 @@ MVC プロジェクトの場合、接続済みサービスは、以前にサー�
 
 最後に、接続済みサービスは、Visual Studio の以前のバージョンで構成された認証コードのバージョンを検出しようと試みます。 このエラーが発生した場合、プロジェクトで互換性のない認証の種類が検出されたことを表します。 接続済みサービスは、Visual Studio の以前のバージョンに対して次の種類の認証を検出します。
 
-* [Windows 認証]
+* Windows 認証
 * 個々のユーザー アカウント
 * 組織アカウント
 
-MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `authentication` ファイルで `web.config` 要素を探します。
+MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `web.config` ファイルで `authentication` 要素を探します。
 
 ```xml
 <configuration>
@@ -62,7 +62,7 @@ MVC プロジェクトで Windows 認証を検出するために、接続済み�
 </configuration>
 ```
 
-Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `IISExpressWindowsAuthentication` ファイルで `.csproj` 要素を探します。
+Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `.csproj` ファイルで `IISExpressWindowsAuthentication` 要素を探します。
 
 ```xml
 <Project>

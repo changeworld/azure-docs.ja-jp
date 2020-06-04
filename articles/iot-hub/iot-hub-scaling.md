@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759625"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
@@ -54,9 +54,9 @@ IoT Hub の Standard レベルではすべての機能が有効になり、双�
 
 IoT Hub では、テストおよび評価のための Free レベルも提供されています。 Free レベルは、機能的には Standard レベルと同じですが、メッセージングの許容量が限られます。 Free レベルから Basic レベルまたは Standard レベルにアップグレードすることはできません。
 
-## <a name="partitions"></a>[メジャー グループ]
+## <a name="partitions"></a>メジャー グループ
 
-Azure IoT Hub には、[パーティション](../event-hubs/event-hubs-features.md)を含む [Azure Event Hubs](../event-hubs/event-hubs-features.md#partitions) の多数のコア コンポーネントが含まれています。 IoT Hubs のイベント ストリームには、通常はさまざまな IoT デバイスによって報告される受信テレメトリ データが入力されます。 イベント ストリームに対する読み取りと書き込みが同時に行われるときに発生する競合を削減するために、イベント ストリームのパーティション分割が使用されます。
+Azure IoT Hub には、[パーティション](../event-hubs/event-hubs-features.md#partitions)を含む [Azure Event Hubs](../event-hubs/event-hubs-features.md) の多数のコア コンポーネントが含まれています。 IoT Hubs のイベント ストリームには、通常はさまざまな IoT デバイスによって報告される受信テレメトリ データが入力されます。 イベント ストリームに対する読み取りと書き込みが同時に行われるときに発生する競合を削減するために、イベント ストリームのパーティション分割が使用されます。
 
 パーティション数の制限は IoT Hub の作成時に選択され、変更することはできません。 Basic レベルの IoT Hub と Standard レベルの IoT Hub のパーティションの上限は 32 です。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 パーティション数を決定する方法の詳細については、Event Hubs の FAQ ([パーティションはいくつ必要ですか](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)) を参照してください。
 

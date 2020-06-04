@@ -25,7 +25,7 @@ Batch Management .NET ライブラリと AccountManagement サンプルの使用
 
 Azure [Active Directory Authentication Library][aad_adal] (ADAL) は、アプリケーション内で使用するためのプログラム インターフェイスを Azure AD に提供します。 アプリケーションから ADAL を呼び出すには、Azure AD テナントにアプリケーションを登録する必要があります。 アプリケーションを登録する場合は、アプリケーションに関する情報 (Azure AD テナント内でのアプリケーション名など) を Azure AD で指定します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-AccountManagement サンプル アプリケーションを登録するには、[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-register-app.md)に関するページの[アプリケーションの追加][aad_integrate]の手順に従います。 アプリケーションの種類として、 **[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、`http://myaccountmanagementsample`リダイレクト URI **には、任意の有効な URI (** など) を指定することができます。実際のエンドポイントである必要はありません。
+AccountManagement サンプル アプリケーションを登録するには、[Azure Active Directory とアプリケーションの統合][aad_integrate]に関するページの[アプリケーションの追加](../active-directory/develop/quickstart-register-app.md)の手順に従います。 アプリケーションの種類として、 **[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、**リダイレクト URI** には、任意の有効な URI (`http://myaccountmanagementsample`など) を指定することができます。実際のエンドポイントである必要はありません。
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 

@@ -28,7 +28,7 @@ DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作�
 
 1. 左のウィンドウで **[リソースの作成]** を選択し、**DevOps Projects** を検索します。  
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="create-a-new-application-pipeline"></a>新しいアプリケーション パイプラインを作成する
 
@@ -80,7 +80,7 @@ DevOps Projects によって、Azure Repos にプロジェクトの Git リポ�
 
    ![Azure Repos 内の module.json ファイルを開く](./media/how-to-devops-project/open-module-json.png)
 
-4. このファイルの [version](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) パラメーターでは、**Azure DevOps ビルド変数**が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。
+4. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。
 
 ## <a name="examine-the-cicd-pipeline"></a>CI/CD パイプラインを確認する
 

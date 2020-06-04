@@ -34,7 +34,7 @@ ms.locfileid: "84234618"
   * Sysprep を使用した仮想マシンの一般化
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Sysprep を使用した Windows 仮想マシンの一般化
-このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -106,7 +106,7 @@ Get-AzStorageAccount
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. **New-AzStorageAccount** コマンドレットを使用して、このリソース グループに [mystorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) というストレージ アカウントを作成します。
+2. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、このリソース グループに **mystorageaccount** というストレージ アカウントを作成します。
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `

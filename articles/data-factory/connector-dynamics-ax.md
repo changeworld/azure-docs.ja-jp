@@ -142,7 +142,7 @@ Dynamics AX からデータをコピーするは、コピー アクティビテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティは **DynamicsAXSource** に設定する必要があります | はい |
-| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注**: コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
+| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注**:コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
 
 **例**
 

@@ -233,7 +233,7 @@ VM の作成後、「`az network nic show --name MyNic1 --resource-group myResou
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        出力の **IpConfig-3** の *PublicIpAddressId* 列が空白であるため、現在、この構成にはパブリック IP アドレス リソースは関連付けられていません。 IpConfig-3 に既存のパブリック IP アドレス リソースを追加することも、次のコマンドを入力して新しいリソースを作成することもできます。
+        出力の *IpConfig-3* の **PublicIpAddressId** 列が空白であるため、現在、この構成にはパブリック IP アドレス リソースは関連付けられていません。 IpConfig-3 に既存のパブリック IP アドレス リソースを追加することも、次のコマンドを入力して新しいリソースを作成することもできます。
 
         ```azurecli
         az network public-ip create \

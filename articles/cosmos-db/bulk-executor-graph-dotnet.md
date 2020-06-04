@@ -34,7 +34,7 @@ Gremlin API コンテナーに対してデータ移行を使用する大まか�
 
 ### <a name="creating-vertices-and-edges"></a>頂点とエッジの作成
 
-`GraphBulkExecutor` には、`BulkImportAsync` オブジェクトまたは `IEnumerable` オブジェクトの `GremlinVertex` リストを受け取る `GremlinEdge` メソッドがあります。どちらのオブジェクトも `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 名前空間に定義されています。 このサンプルでは、エッジと頂点を 2 つの BulkExecutor インポート タスクに分けています。 次の例を見てください。
+`GraphBulkExecutor` には、`GremlinVertex` オブジェクトまたは `GremlinEdge` オブジェクトの `IEnumerable` リストを受け取る `BulkImportAsync` メソッドがあります。どちらのオブジェクトも `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 名前空間に定義されています。 このサンプルでは、エッジと頂点を 2 つの BulkExecutor インポート タスクに分けています。 次の例を見てください。
 
 ```csharp
 

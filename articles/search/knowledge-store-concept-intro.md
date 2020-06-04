@@ -55,7 +55,7 @@ AI エンリッチメント パイプラインで何を生成できるかを確�
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
 
 
-ナレッジストアの物理的表現は、スキルセットの `projections` 定義の `knowledgeStore` 要素を通じて表されます。 プロジェクションは、意図された用途に一致するように出力の構造を定義します。
+ナレッジストアの物理的表現は、スキルセットの `knowledgeStore` 定義の `projections` 要素を通じて表されます。 プロジェクションは、意図された用途に一致するように出力の構造を定義します。
 
 プロジェクションは、テーブル、オブジェクト、またはファイルとして表すことができます。
 
@@ -119,7 +119,7 @@ AI エンリッチメント パイプラインで何を生成できるかを確�
 
 ### <a name="use-create-skillset-and-the-preview-rest-api"></a>スキルセットの作成とプレビュー REST API を使用する
 
-`knowledgeStore`スキルセット[内で ](cognitive-search-working-with-skillsets.md) が定義されます。次に、スキルセットが[インデクサー](search-indexer-overview.md)によって呼び出されます。 エンリッチメント中に、Azure Cognitive Search によって Azure Storage アカウント内にスペースが作成され、ご利用の構成に応じて BLOB として、またはテーブルに、エンリッチメントされたドキュメントがプロジェクションされます。
+[スキルセット](cognitive-search-working-with-skillsets.md)内で `knowledgeStore` が定義されます。次に、スキルセットが[インデクサー](search-indexer-overview.md)によって呼び出されます。 エンリッチメント中に、Azure Cognitive Search によって Azure Storage アカウント内にスペースが作成され、ご利用の構成に応じて BLOB として、またはテーブルに、エンリッチメントされたドキュメントがプロジェクションされます。
 
 現時点では、プレビュー REST API は、プログラムによってナレッジ ストアを作成できる唯一のメカニズムです。 探索する簡単な方法は、[Postman と REST API を使用して最初のナレッジ ストアを作成する](knowledge-store-create-rest.md)ことです。
 

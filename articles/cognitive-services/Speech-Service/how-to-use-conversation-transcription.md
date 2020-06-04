@@ -108,7 +108,7 @@ class Program
 
 サンプル コードの特徴を次に示します。
 
-- `Conversation` を使用して作成された会議の識別子を使用して `SpeechConfig` オブジェクトから `Guid.NewGuid()` オブジェクトを作成する
+- `Guid.NewGuid()` を使用して作成された会議の識別子を使用して `SpeechConfig` オブジェクトから `Conversation` オブジェクトを作成する
 - `ConversationTranscriber` オブジェクトを作成し、`JoinConversationAsync()` を使用して会話に参加して文字起こしを開始する
 - 関心のあるイベントを登録する
 - Conversation オブジェクトを使用して、参加者を会話に追加または削除する

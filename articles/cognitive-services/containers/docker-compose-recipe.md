@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>テスト コンテナー
 
-ホスト コンピューター上でブラウザーを開き、 **のように、** docker-compose.yaml*ファイルで指定されたポートを使用して*localhost http://localhost:5021/swagger/index.html にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
+ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、*docker-compose.yaml* ファイルで指定されたポートを使用して **localhost** にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
 
 ![Form Recognizer コンテナー](media/form-recognizer-swagger-page.png)
 

@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759759"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
@@ -68,7 +68,7 @@ ms.locfileid: "81759759"
 
 2. テキスト エディターを使用して、**dmpatterns_getstarted_device.py** というファイルを作業ディレクトリに作成します。
 
-3. `import`dmpatterns_getstarted_device.py**ファイルの先頭に、次の** ステートメントを追加します。
+3. **dmpatterns_getstarted_device.py** ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```python
     import threading
@@ -161,7 +161,7 @@ ms.locfileid: "81759759"
 
 2. テキスト エディターを使用して、**dmpatterns_getstarted_service.py** というファイルを作業ディレクトリに作成します。
 
-3. `import`dmpatterns_getstarted_service.py**ファイルの先頭に、次の** ステートメントを追加します。
+3. **dmpatterns_getstarted_service.py** ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```python
     import sys, time

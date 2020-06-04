@@ -41,7 +41,7 @@ ms.locfileid: "83120812"
 
 ## <a name="create-face-clients"></a>顔クライアントを作成する
 
-**Program.cs** の *Main* メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 
+*Program.cs* の **Main** メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

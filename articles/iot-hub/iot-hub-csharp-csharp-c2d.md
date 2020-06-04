@@ -13,10 +13,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 41c29e55f04f9edf06ba375ad4539e5fb3f82c18
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733417"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
@@ -118,7 +118,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
    この手順により [Azure IoT サービス SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Devices/)がダウンロードされ、インストールされ、パッケージへの参照が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
    ``` csharp
    using Microsoft.Azure.Devices;

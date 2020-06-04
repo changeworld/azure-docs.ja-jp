@@ -28,13 +28,13 @@ ms.locfileid: "80529199"
 
 2 つのブール値 inputClaims の AND 演算を実行し、演算の結果で outputClaim を設定します。
 
-| アイテム  | TransformationClaimType  | データ型  | メモ |
+| Item  | TransformationClaimType  | データ型  | Notes |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 評価する最初の ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 評価する 2 つ目の ClaimType。 |
 |OutputClaim | outputClaim | boolean | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
 
-次の要求変換は、2 つのブール値 ClaimTypes (`isEmailNotExist` および `isSocialAccount`) を AND 演算する方法が示されています。 両方の入力要求の値が `presentEmailSelfAsserted` である場合、出力要求 `true` は `true` に設定されます。 ソーシャル アカウントの電子メールが空の場合、オーケストレーションのステップで、事前条件を使用してセルフアサート ページをプリセットできます。
+次の要求変換は、2 つのブール値 ClaimTypes (`isEmailNotExist` および `isSocialAccount`) を AND 演算する方法が示されています。 両方の入力要求の値が `true` である場合、出力要求 `presentEmailSelfAsserted` は `true` に設定されます。 ソーシャル アカウントの電子メールが空の場合、オーケストレーションのステップで、事前条件を使用してセルフアサート ページをプリセットできます。
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -61,12 +61,12 @@ ms.locfileid: "80529199"
 
 2 つの要求のブール値が等しいことをチェックし、等しくない場合は例外をスローします。
 
-| アイテム | TransformationClaimType  | データ型  | メモ |
+| Item | TransformationClaimType  | データ型  | Notes |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | アサートされる ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
 
-**AssertBooleanClaimIsEqualToValue** 要求変換は、[セルフアサート技術プロファイル](validation-technical-profile.md)によって呼び出される[検証技術プロファイル](self-asserted-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** セルフアサート技術プロファイル メタデータにより、技術プロファイルによってユーザーに表示されるエラー メッセージが制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
+**AssertBooleanClaimIsEqualToValue** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** セルフアサート技術プロファイル メタデータにより、技術プロファイルによってユーザーに表示されるエラー メッセージが制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 ![AssertStringClaimsAreEqual の実行](./media/boolean-transformations/assert-execution.png)
 
@@ -112,13 +112,13 @@ ms.locfileid: "80529199"
 - 入力要求:
     - **inputClaim**: false
     - **valueToCompareTo**: true
-- 結果: エラーがスローされます
+- 結果:エラーがスローされます
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
 要求のブール値が `true` または `false` と等しいことを確認して、圧縮の結果を返します。
 
-| アイテム | TransformationClaimType  | データ型  | メモ |
+| Item | TransformationClaimType  | データ型  | Notes |
 | ---- | ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim | boolean | アサートされる ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
@@ -156,7 +156,7 @@ ms.locfileid: "80529199"
 
 ブール値 inputClaim の NOT 演算を実行し、演算の結果で outputClaim を設定します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 演算処理される要求。 |
 | OutputClaim | outputClaim | boolean | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
@@ -185,7 +185,7 @@ ms.locfileid: "80529199"
 
 2 つのブール値 inputClaims の OR を計算し、演算の結果で outputClaim を設定します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 評価する最初の ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 評価する 2 つ目の ClaimType。 |

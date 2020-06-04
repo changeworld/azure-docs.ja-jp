@@ -20,7 +20,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884258"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
 
 ロールベースのアクセス制御 (RBAC) は、アプリケーションにおいて承認を実施する一般的なメカニズムです。 RBAC を使用するとき、管理者は、個々のユーザーまたはグループではなく、ロールにアクセス許可を付与します。 その後、管理者はロールをさまざまなユーザーやグループに割り当てて、コンテンツや機能にだれがアクセスできるかを制御できます。
 
@@ -34,7 +34,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal を使用してアプリ ロールを宣言する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ポータルツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択します。
 1. **[お気に入り]** または **[すべてのディレクトリ]** リストで、アプリケーションを登録する Active Directory テナントを選択します。
 1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
@@ -51,7 +51,7 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 
 ### <a name="examples"></a>例
 
-次の例では、`appRoles` に割り当てることができる `users` を示します。
+次の例では、`users` に割り当てることができる `appRoles` を示します。
 
 > [!NOTE]
 >`id` は一意の GUID であることが必要です。

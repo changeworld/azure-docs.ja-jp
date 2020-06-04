@@ -24,7 +24,7 @@ ms.locfileid: "83726538"
 * **Batch アカウントを作成および削除します** 。 たとえば、独立系ソフトウェア ベンダー (ISV) が課金のためにクライアントごとに異なる Batch アカウントを割り当てる場合、顧客ポータルにアカウントの作成および削除機能を追加できます。
 * **アカウント キーを取得および再生成します** 。 これは、アカウント キーの定期的なロールオーバーまたは失効を実施するセキュリティ ポリシーに準拠するうえで役に立ちます。 さまざまな Azure リージョンに複数の Batch アカウントがある場合、このロールオーバー プロセスを自動化するとソリューションの効率が向上します。
 * **アカウントのクォータを確認し** 、Batch アカウントに対する制限の決定から試行錯誤の当て推量を排除します。 ジョブ開始前にアカウントのクォータをチェックしたり、プールを作成したり、コンピューティング ノードを追加したりすることで、いつどこでコンピューティング リソースが作成されるのかを事前に調整できます。 アカウントに追加リソースを割り当てる前に、クォータの増量が必要なアカウントを特定できます。
-* Batch Management .NET、**Azure Active Directory**、[Azure Resource Manager][aad_about] を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために[他の Azure サービスの機能を組み合わせます][resman_overview]。 これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
+* Batch Management .NET、[Azure Active Directory][aad_about]、[Azure Resource Manager][resman_overview] を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせます**。 これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
 
 > [!NOTE]
 > この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure portal][azure_portal] を使用して実行できます。 詳細については、「[Azure Portal を使用して Azure Batch アカウントを作成する](batch-account-create-portal.md)」と「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
@@ -79,7 +79,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> 管理アプリケーションのための効率化された接続ワークフローを作成できます。 まず、管理対象の Batch アカウントのアカウント キーを [ListKeysAsync][net_list_keys] で取得します。 次に、このキーを使用して、[BatchClient][net_sharedkeycred] を初期化するときに使用される Batch .NET ライブラリの [BatchSharedKeyCredentials][net_batch_client] クラスを初期化します。
+> 管理アプリケーションのための効率化された接続ワークフローを作成できます。 まず、管理対象の Batch アカウントのアカウント キーを [ListKeysAsync][net_list_keys] で取得します。 次に、このキーを使用して、[BatchClient][net_batch_client] を初期化するときに使用される Batch .NET ライブラリの [BatchSharedKeyCredentials][net_sharedkeycred] クラスを初期化します。
 > 
 > 
 

@@ -11,10 +11,10 @@ ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733411"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (.NET)

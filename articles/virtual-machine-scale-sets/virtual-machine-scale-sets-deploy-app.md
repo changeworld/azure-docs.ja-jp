@@ -92,7 +92,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 詳細については、*cloud-init.txt* ファイルの例を含む「[Use cloud-init to customize Azure VMs](../virtual-machines/linux/using-cloud-init.md)」(cloud-init を使用して Azure VM をカスタマイズする) を参照してください。
 
-スケール セットを作成して cloud-init ファイルを使用するには、`--custom-data`az vmss create[ コマンドに ](/cli/azure/vmss) パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
+スケール セットを作成して cloud-init ファイルを使用するには、[az vmss create](/cli/azure/vmss) コマンドに `--custom-data` パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss create \

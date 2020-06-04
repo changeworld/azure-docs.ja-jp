@@ -140,13 +140,13 @@ SAP ECC からデータをコピーするには、データセットの `type` �
 
 ### <a name="sap-ecc-as-a-source"></a>ソースとしての SAP ECC
 
-SAP ECC からデータをコピーするには、コピー アクティビティの `type` セクション内の `source` プロパティを `SapEccSource` に設定します。
+SAP ECC からデータをコピーするには、コピー アクティビティの `source` セクション内の `type` プロパティを `SapEccSource` に設定します。
 
 コピー アクティビティの `source` セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| `type` | コピー アクティビティの `type` セクションの `source` プロパティは `SapEccSource` を設定する必要があります。 | はい |
+| `type` | コピー アクティビティの `source` セクションの `type` プロパティは `SapEccSource` を設定する必要があります。 | はい |
 | `query` | データをフィルター処理するための OData クエリ オプション。 次に例を示します。<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC コネクタは、次の結合された URL からデータをコピーします。<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
 
 ### <a name="example"></a>例

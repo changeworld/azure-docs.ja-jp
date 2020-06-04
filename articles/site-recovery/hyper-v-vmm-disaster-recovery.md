@@ -18,7 +18,7 @@ ms.locfileid: "80437504"
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
-この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されるオンプレミスの Hyper-V VM で、セカンダリ サイトに対するディザスター リカバリーを設定する方法について説明します。 この記事では、次のことについて説明します。
+この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されるオンプレミスの Hyper-V VM で、セカンダリ サイトに対するディザスター リカバリーを設定する方法について説明します。 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * オンプレミスの VMM サーバーと Hyper-V ホストを準備する

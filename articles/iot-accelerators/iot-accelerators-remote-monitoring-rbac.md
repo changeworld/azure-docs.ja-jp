@@ -22,7 +22,7 @@ ms.locfileid: "82612947"
 
 ## <a name="default-settings"></a>既定の設定
 
-リモート監視ソリューションの初めてのデプロイでは、**管理**と**読み取り専用**という 2 つのロールが含まれます。
+リモート監視ソリューションの初めてのデプロイでは、2 つのロールが含まれます (**管理**と**読み取り専用**)。
 
 **管理**ロールのすべてのユーザーには、以下のアクセス許可を含む、ソリューションへのフル アクセス権があります。 **読み取り専用**ロールのユーザーには、ソリューションを表示するアクセス権のみがあります。
 
@@ -52,7 +52,7 @@ ms.locfileid: "82612947"
 
 Azure Active Directory アプリケーション所有者は、Azure Portal を使用して、リモート監視ソリューションからロールに対してユーザーを追加または削除することができます。 次の手順では、リモート監視ソリューションのデプロイ時に作成された [Azure Active Directory エンタープライズ アプリケーション](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)を使用しています。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 使用する[ディレクトリにユーザーが存在している](../active-directory/fundamentals/add-users-azure-active-directory.md)ことを確認します。 使用するディレクトリは、[Microsoft Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators) サイトにサインインしたときに選択したディレクトリです。 [ページ](https://www.azureiotsolutions.com/Accelerators)の右上隅にディレクトリ名が表示されています。
 
@@ -213,7 +213,7 @@ Authorization: Bearer <JWT Token from ADAL>
 }
 ```
 
-[Web UI](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) の [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/) から抜粋した次のスニペットは、アクセス許可が宣言によって適用される方法を示しています。
+[Web UI](https://github.com/Azure/pcs-remote-monitoring-webui/) の [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) から抜粋した次のスニペットは、アクセス許可が宣言によって適用される方法を示しています。
 
 ```json
 <FlyoutContent>
@@ -231,7 +231,7 @@ Authorization: Bearer <JWT Token from ADAL>
 
 マイクロサービスは、承認されていない API 要求を防止するために、アクセス許可もチェックします。 マイクロサービスは、API 要求を受信したときに、JWT トークンのデコードと検証を行って、ユーザーのロールに関連付けられているユーザー ID とアクセス許可を取得します。
 
-[IoTHub Manager マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs)内の [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) ファイルから抜粋した次のスニペットは、アクセス許可の適用方法を示しています。
+[IoTHub Manager マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager)内の [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) ファイルから抜粋した次のスニペットは、アクセス許可の適用方法を示しています。
 
 ```csharp
 [HttpDelete("{id}")]

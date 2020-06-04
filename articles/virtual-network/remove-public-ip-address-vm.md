@@ -28,7 +28,7 @@ ms.locfileid: "82144467"
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. パブリック IP アドレスの関連付けを解除したい仮想マシンを参照または検索して、選択します。
 3. [VM] ページで、 **[概要]** を選択し、次の図に示すようにパブリック IP アドレスを選択します：
 

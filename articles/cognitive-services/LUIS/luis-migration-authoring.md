@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b480dca46e544caabdf3be62b57b38652ee973ae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096624"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337990"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、[サインア�
 
 移行プロセスが完了すると、すべての LUIS アプリが 1 つの LUIS オーサリング リソースに割り当てられます。
 
-**LUIS ポータル**の _[Manage]\(管理\) -> [Azure resources]\(Azure リソース\)_ ページで、さらに多くのオーサリング リソースを作成して割り当てることができます。
+_LUIS ポータル_ の **[Manage]\(管理\) -> [Azure resources]\(Azure リソース\)** ページで、さらに多くのオーサリング リソースを作成して割り当てることができます。
 
 _Azure portal_ のオーサリング リソースの **[Access Control (IAM)]** ページから、そのリソースの共同作成者を追加できます。 詳細については、[共同作成者アクセスの追加](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)に関するページを参照してください。
 

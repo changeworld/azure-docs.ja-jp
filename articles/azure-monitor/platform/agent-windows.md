@@ -50,7 +50,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 >Windows Server 2008 SP2 x64 を実行している VM を、TLS 1.2 を使用するように構成する場合は、以下の手順を行う前に、次の [SHA-2 コード署名サポート更新プログラム](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)をインストールする必要があります。 
 >
 
-1. **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols** のレジストリのサブキーを見つけます。
+1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. TLS 1.2 用に **Protocols** の下に **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2** のサブキーを作成します。
 3. 前に作成した TLS 1.2 プロトコル バージョンのサブキーの下に **Client** サブキーを作成します。 たとえば、**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** です。
 4. **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** の下に次の DWORD 値を作成します。
@@ -60,9 +60,9 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 既定では無効になっている暗号化がセキュリティで保護されるように、.NET Framework 4.6 以降を構成します。 [強力な暗号化](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto)では、TLS 1.2 などのようなよりセキュリティの高いプロトコルを使用し、安全ではないプロトコルをブロックします。 
 
-1. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319** のレジストリのサブキーを見つけます。  
+1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**。  
 2. このサブキーの下に、DWORD 値 **SchUseStrongCrypto** を値 **1** で作成します。  
-3. **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319** のレジストリのサブキーを見つけます。  
+3. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**。  
 4. このサブキーの下に、DWORD 値 **SchUseStrongCrypto** を値 **1** で作成します。 
 5. 設定を有効にするためにシステムを再起動します。 
 
@@ -92,7 +92,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 次の表は、エージェントのセットアップ (Automation DSC を使用してデプロイする場合を含む) でサポートされる、特定パラメーターを示したものです。
 
-|MMA 固有のオプション                   |メモ         |
+|MMA 固有のオプション                   |Notes         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 省略可能なパラメーター。 .NET アプリケーション パフォーマンス監視なしでエージェントをインストールします。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = ワークスペースに報告するようにエージェントを構成します                |
@@ -131,7 +131,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 >[!NOTE]
 >この手順とサンプル スクリプトでは、Windows コンピューターに既にデプロイされているエージェントのアップグレードはサポートされていません。
 
-32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  `ProductId`MMAgent.ps1**スクリプトの** 値は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
+32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  **MMAgent.ps1** スクリプトの `ProductId` 値は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
 
 製品コードをエージェント インストール パッケージから直接取得するには、Windows ソフトウェア開発キットのコンポーネントである [Windows SDK Components for Windows Installer Developers (Windows インストーラー開発者向け Windows SDK コンポーネント)](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) に含まれている、Orca.exe を使用するか、Microsoft Valuable Professional (MVP) によって記述された[サンプル スクリプト](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)に従った、PowerShell を使用できます。  どちらの方法でも、まず、MMASetup インストール パッケージから **MOMagent.msi** ファイルを抽出する必要があります。  これについては、前のセクション「[コマンド ラインを使用してエージェントをインストールする](#install-the-agent-using-the-command-line)」の最初の手順で説明しています。  
 
@@ -183,7 +183,7 @@ Configuration MMAgent
 
 エージェントのインストールが完了した後、エージェントが正常に接続され、レポートが送信されていることを確認するには、次の 2 つの方法があります。  
 
-**[コントロール パネル]** 内のコンピューターから、 **[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、 **[Azure Log Analytics]** タブに、**Microsoft Monitoring Agent が Microsoft Operations Management Suite サービスに正常に接続している**ことを示すメッセージが表示されます。<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+**[コントロール パネル]** 内のコンピューターから、 **[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、 **[Azure Log Analytics]** タブに、次のことを示すメッセージがエージェントによって表示されます。"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました。** "<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 また、Azure portal で簡単なログ クエリを実行することもできます。  
 

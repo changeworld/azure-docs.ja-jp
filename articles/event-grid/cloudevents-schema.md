@@ -19,7 +19,7 @@ Azure Event Grid は、[既定のイベント スキーマ](event-schema.md)に�
 
 CloudEvents を使用すると、クラウド ベースのイベントを発行したり使用したりするための共通のイベント スキーマを提供し、相互運用性を簡略化することができます。 このスキーマを使用すれば、ツールを統一化したり、イベントのルーティングや処理方法を標準化したり、外部のイベント スキーマを共通の方法で逆シリアル化することができます。 共通のスキーマを使用することで、プラットフォーム間での作業をより簡単に統合できます。
 
-CloudEvents は、[Cloud Native Computing Foundation](https://github.com/cloudevents/spec/blob/master/community/contributors.md) を通じ、複数の[コラボレーター](https://www.cncf.io/) (マイクロソフトを含む) によって構築されています。 現在、バージョン 1.0 が提供されています。
+CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 1.0 が提供されています。
 
 この記事では、Event Grid で CloudEvents スキーマを使用する方法について説明します。
 

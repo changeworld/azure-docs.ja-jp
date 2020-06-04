@@ -77,16 +77,16 @@ ms.locfileid: "81258458"
 3. DevKit をコンピューターに接続します。 VS Code により DevKit が自動的に検出され、次のページが開きます。
 
    * DevKit 概要ページ
-   * Arduino の例: DevKit の使用を開始するためのハンズオン サンプル
+   * [Arduino Examples]\(Arduino の例\): DevKit の使用を開始するためのハンズオン サンプル。
 
 4. 左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、 **[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、 **[RemoteMonitoring]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
    > [!NOTE]
-   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
+   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-required-azure-services"></a>必要な Azure サービスのプロビジョニング
 
-ソリューション ウィンドウで表示されたテキスト ボックスに「`Ctrl+P`」と入力し、`Cmd+P` キー (macOS: `task cloud-provision` キー) を使用してタスクを実行します。
+ソリューション ウィンドウで表示されたテキスト ボックスに「`task cloud-provision`」と入力し、`Ctrl+P` キー (macOS: `Cmd+P` キー) を使用してタスクを実行します。
 
 VS Code ターミナルでは、対話型コマンド ラインを使用して、必要な Azure サービスをプロビジョニングできます。
 

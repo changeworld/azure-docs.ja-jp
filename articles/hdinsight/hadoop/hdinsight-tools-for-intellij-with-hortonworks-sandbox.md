@@ -28,7 +28,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
 
 - ローカル コンピューターで実行されている Hortonworks Data Platform (HDP) 2.4 on Hortonworks Sandbox。 HDP をセットアップするには、[仮想マシンの Hadoop サンドボックスを使用した Apache Hadoop エコシステムの概要](apache-hadoop-emulator-get-started.md)に関する記事を参照してください。 
     > [!NOTE]
-    > IntelliJ 用 HDInsight ツールがテストされているのは HDP 2.4 のみです。 HDP 2.4 を入手するには、**Hortonworks Sandbox ダウンロード サイト**で、[[Hortonworks Sandbox アーカイブ]](https://hortonworks.com/downloads/#sandbox) を展開します。
+    > IntelliJ 用 HDInsight ツールがテストされているのは HDP 2.4 のみです。 HDP 2.4 を入手するには、[Hortonworks Sandbox ダウンロード サイト](https://hortonworks.com/downloads/#sandbox)で、 **[Hortonworks Sandbox アーカイブ]** を展開します。
 
 - [Java Developer Kit (JDK) バージョン 1.8 以降](https://aka.ms/azure-jdks)。 Azure Toolkit for IntelliJ には JDK が必要です。
 
@@ -52,8 +52,8 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
    1. **[HDInsight]**  >  **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
    2. **[Build tool]\(ビルド ツール\)** ボックスの一覧で、実際のシナリオに基づいて次のいずれかを選択します。
 
-      * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合
-      * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合
+      * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合。
+      * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合。
 
    ![Intellij で新しい Scala プロジェクトを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 

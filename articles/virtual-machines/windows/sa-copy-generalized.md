@@ -25,7 +25,7 @@ ms.locfileid: "84232904"
  
 
 ## <a name="generalize-the-vm"></a>VM の汎用化 
-このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 VM の一般化とは、特に重要なこととして、すべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 VM の一般化とは、特に重要なこととして、すべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
