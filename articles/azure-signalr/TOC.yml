@@ -73,6 +73,12 @@
       items:
         - name: アクセス キーのローテーション
           href: signalr-howto-key-rotation.md
+        - name: Azure サービス タグの使用
+          href: howto-service-tags.md
+        - name: Azure プライベート エンドポイントの使用
+          href: howto-private-endpoints.md
+        - name: ネットワーク アクセス制御の管理
+          href: howto-network-access-control.md
     - name: 統合
       items:
         - name: Azure Functions のバインド

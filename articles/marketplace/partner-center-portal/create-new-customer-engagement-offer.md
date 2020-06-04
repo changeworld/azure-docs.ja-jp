@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: cfec905d61daf961d9ca71026e9b7ec82f852bd5
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: e49ed542af140b28e8ebe58e5c8920d0959c9387
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734775"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848902"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーの作成
 
@@ -67,7 +67,7 @@ ms.locfileid: "82734775"
 
 #### <a name="contact-me"></a>[Contact me (お問い合わせ)]
 
-顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[リード管理の接続](#connect-lead-management)」を参照してください。 
+顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[潜在顧客](#customer-leads)」を参照してください。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -77,13 +77,13 @@ ms.locfileid: "82734775"
 
 一定期間、体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。 このトピックの後の方の「[体験版の技術的な構成](#test-drive-technical-configuration)」セクションで、体験版環境を構成します。
 
-詳細については、[コマーシャル マーケットプレースでのオファーの体験版](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)に関するページを参照してください。
+詳細については、[商業マーケットプレースでのオファーの体験版](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)に関するページを参照してください。
 
 #### <a name="type-of-test-drive"></a>体験版の種類
 
 次のオプションから選択します。
 
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** – お客様のソリューションを構成するすべての Azure リソースが含まれたデプロイ テンプレート。 このシナリオに適合するのは、Azure リソースしか使用されていない製品です。
+- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** – ご自身のソリューションを構成するすべての Azure リソースが含まれたデプロイ テンプレート。 このシナリオに適合するのは、Azure リソースしか使用されていない製品です。
 - **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** – Microsoft が Business Central エンタープライズ リソース プランニング システム (財務、運用、サプライ チェーン、CRM など) 用の体験版サービスをホストおよび維持します。これには、プロビジョニングとデプロイも含まれます。  
 - **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** – Microsoft が Customer Engagement システム (販売、サービス、プロジェクト サービス、フィールド サービスなど) 用の体験版サービスをホストおよび維持します。これには、プロビジョニングとデプロイも含まれます。  
 - **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** – Microsoft が Finance and Operations エンタープライズ リソース プランニング システム (財務、運用、製造、サプライ チェーンなど) 用の体験版サービスをホストおよび維持します。これには、プロビジョニングとデプロイも含まれます。 
@@ -96,7 +96,7 @@ ms.locfileid: "82734775"
 - [マーケティングのベスト プラクティス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [体験版の概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (ポップアップ ブロックがオフになっていることを確認してください)
 
-## <a name="connect-lead-management"></a>リード管理の接続
+### <a name="customer-leads"></a>潜在顧客
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
@@ -149,26 +149,11 @@ ms.locfileid: "82734775"
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 この説明は、マーケットプレースの登録情報の概要で顧客に表示されます。 オファーの価値提案、主なメリット、カテゴリまたは業界との関連性、アプリ内の購入機会、必要な情報開示を含めます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明を記述するためのヒントを次に示します。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- 説明の先頭の数文で、オファーの価値提案を明確に説明します。 価値提案には次の情報を含めます。
-  - 製品の説明
-  - 製品から利益を得られるユーザーの種類
-  - 製品が対応する顧客のニーズや問題
-- 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。  
-- 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。  
-- できるだけ業界固有の語彙や利益に基づく表現を使用します。
-
-オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
-
-![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
-
-| <center>テキストの形式を変更する | <center>箇条書きの黒丸または段落番号を追加する | <center>テキスト インデントを追加または削除する |
-| --- | --- | --- |
-| <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用してリストを追加する](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用してインデントを設定する](./media/text-editor5.png) |
-
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 ### <a name="search-keywords"></a>キーワード検索
 
@@ -273,9 +258,14 @@ ms.locfileid: "82734775"
 
 ### <a name="crm-package"></a>CRM パッケージ
 
-**[URL of your package location]\(パッケージの場所の URL\)** フィールドに、アップロードした CRM パッケージの .zip ファイルを含む Azure Storage アカウントの URL を入力します。 Microsoft が検証用にパッケージを取得できるよう、この URL には読み取り専用の SAS キーが含まれている必要があります。
+**[URL of your package location]\(パッケージの場所の URL\)** フィールドに、アップロードした CRM パッケージの .zip ファイルを含む Azure Blob Storage アカウントの URL を入力します。 Microsoft が検証用にパッケージを取得できるよう、この URL に読み取り専用の SAS キーを含めます。
 
-**[パッケージ ファイルに複数の CRM パッケージがあります]** というラベルがついたチェックボックスをオンにします (該当する場合)。 その場合は、.zip ファイルにすべてのパッケージが含まれていることを確認してください。
+> [!IMPORTANT]
+> 発行がブロックされないよう、Blob ストレージの URL に指定されている有効期限が切れていないことをご確認ください。 日付は、ポリシーにアクセスすることにより変更できます。 **有効期限**は、少なくとも 1 か月後にすることをお勧めします。
+
+**[パッケージ ファイルに複数の CRM パッケージがあります]** というラベルがついたチェックボックスを選択します (該当する場合)。 その場合は、.zip ファイルにすべてのパッケージが含まれていることを確認してください。
+
+パッケージをビルドし、その構造を更新する方法の詳細については、「[手順 3:アプリの AppSource パッケージを作成する](https://docs.microsoft.com/powerapps/developer/common-data-service/create-package-app-appsource)」を参照してください。
 
 ### <a name="crm-package-availability"></a>CRM パッケージの利用可能性
 
@@ -304,14 +294,14 @@ ms.locfileid: "82734775"
 
 お客様のソリューションを構成しているすべての Azure リソースが含まれたデプロイ テンプレート。 このシナリオに適合するのは、Azure リソースしか使用されていない製品です。 [Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)の設定について詳しくご確認ください。
 
-- **[リージョン]** (必須) – 現在、体験版を利用可能にできるサポート対象の Azure リージョンは 26 か所です。 通常、顧客が最も近いリージョンを選択して最高のパフォーマンスを実現できるように、顧客の数が最も多いと予測されるリージョンで体験版を利用可能にする必要があります。 選択中の各リージョンで必要なすべてのリソースのデプロイが自分のサブスクリプションで許可されていることを確認する必要があります。
-- **[インスタンス]** – 使用可能なインスタンスの種類 (ホットまたはコールド) と数を選択します。これには、お客様のオファーが利用可能なリージョンの数が掛けられます。
+- **リージョン** (必須) – 現在、体験版を利用可能にできるサポート対象の Azure リージョンは 26 か所です。 通常、顧客が最も近いリージョンを選択して最高のパフォーマンスを実現できるように、顧客の数が最も多いと予測されるリージョンで体験版を利用可能にする必要があります。 選択中の各リージョンで必要なすべてのリソースのデプロイが自分のサブスクリプションで許可されていることを確認する必要があります。
+- **インスタンス** – 使用可能なインスタンスの種類 (ホットまたはコールド) と数を選択します。この数に、ご自身のオファーが利用可能なリージョンの数が乗算されます。
 
     **[ホット]** – この種類のインスタンスは選択したリージョンごとにデプロイされ、アクセスを待ちます。 顧客は、デプロイを待つことなく体験版の "*ホット*" インスタンスにすぐにアクセスできます。 トレードオフとして、これらのインスタンスは Azure サブスクリプションで常に実行しているので、大きな稼働時間コストが発生します。 使用できる "*ホット*" インスタンスがない場合、ほとんどの顧客がフル デプロイを待つのを望まず、その結果顧客の利用が減るので、少なくとも 1 つの "*ホット*" インスタンスを用意することを強くお勧めします。
 
-    **[コールド]** – この種類のインスタンスは、リージョンごとにデプロイできる可能性があるインスタンスの総数を表します。 コールド インスタンスでは、顧客が体験版を要求したときのデプロイ用に体験版の完全な Resource Manager テンプレートが必要です。そのため、"*コールド*" インスタンスでは、読み込みが "*ホット*" インスタンスよりもはるかに遅くなります。 トレードオフとして、体験版の期間のみの支払いで済みます。"*ホット*" インスタンスのように Azure サブスクリプションで常に実行されていることは "*ありません*"。
+    **コールド** – この種類のインスタンスは、リージョンごとにデプロイできる可能性があるインスタンスの総数を表します。 コールド インスタンスでは、顧客が体験版を要求したときのデプロイ用に体験版の完全な Resource Manager テンプレートが必要です。そのため、"*コールド*" インスタンスでは、読み込みが "*ホット*" インスタンスよりもはるかに遅くなります。 トレードオフとして、体験版の期間のみの支払いで済みます。"*ホット*" インスタンスのように Azure サブスクリプションで常に実行されていることは "*ありません*"。
 
-- **[体験版の Azure Resource Manager テンプレート]** – 目的の Azure Resource Manager テンプレートが含まれている .zip をアップロードします。 Azure Resource Manager テンプレートの作成については、記事「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
+- **体験版の Azure Resource Manager テンプレート** – 目的の Azure Resource Manager テンプレートが含まれている .zip をアップロードします。 Azure Resource Manager テンプレートの作成については、記事「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
 
 - **[体験版の期間]** (必須) – 体験版が有効である時間数を入力します。 この期間が終わると、体験版は自動的に終了します。 この期間は、整数の時間でのみ設定できます (たとえば、"2" 時間は有効ですが、"1.5" は有効ではありません)。
 
@@ -323,7 +313,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **[体験版の期間]** (必須) – 体験版が有効である時間数を入力します。 この時間が経過すると、セッションが終了し、ライセンスが消費されなくなります。 オファーの複雑さに応じて、2 時間から 24 時間までの値にすることをお勧めします。 この期間は、整数の時間でのみ設定できます (たとえば、"2" 時間は有効ですが、"1.5" は有効ではありません)。 ユーザーは、時間を使い切った後に体験版にもう一度アクセスしたい場合、新しいセッションを要求できます。
 
-- **[インスタンス URL]** (必須) – 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: `https://testdrive.crm.dynamics.com`)。
+- **インスタンス URL** (必須) – 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: `https://testdrive.crm.dynamics.com`)。
 
 - **[インスタンスの Web API URL]** (必須) – お使いの Microsoft 365 アカウントにログインし、 **[設定]** \&gt; **[カスタマイズ]** \&gt; **[開発者リソース]** \&gt; **[インスタンスの Web API] ([サービスのルート URL])** の順に移動することでお使いの Dynamics 365 インスタンスの Web API URL を取得し、その URL (例: `https://testdrive.crm.dynamics.com/api/data/v9.0`) をここにコピーします。
 
@@ -333,17 +323,17 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 すべてのカスタム製品には、この種類の体験版デプロイ テンプレートを使用する必要があります。これは、さまざまで複雑なソリューション アーキテクチャに対応します。 ロジック アプリの体験版の設定については、GitHub 上の [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) と [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) に関するページをご覧ください。
 
-- **[リージョン]** (必須、単一選択のドロップダウン リスト) – 現在、体験版を利用可能にできるサポート対象の Azure リージョンは 26 か所です。 お客様のロジック アプリのリソースは、自分が選択するリージョンにデプロイされます。 お客様のロジック アプリに、特定のリージョンに格納されるカスタム リソースがある場合は、ここで必ずそのリージョンを選択します。 それを行う最善の方法は、ポータルで自分の Azure サブスクリプションにローカルにロジック アプリを完全にデプロイし、それが正常に動作するのを確認したうえでこの選択を行うことです。
+- **リージョン** (必須、単一選択のドロップダウン リスト) – 現在、体験版を利用可能にできるサポート対象の Azure リージョンは 26 か所です。 お客様のロジック アプリのリソースは、自分が選択するリージョンにデプロイされます。 お客様のロジック アプリに、特定のリージョンに格納されるカスタム リソースがある場合は、ここで必ずそのリージョンを選択します。 それを行う最善の方法は、ポータルで自分の Azure サブスクリプションにローカルにロジック アプリを完全にデプロイし、それが正常に動作するのを確認したうえでこの選択を行うことです。
 
 - **[同時実行体験版の最大数]** (必須) – 体験版を同時に使用できる顧客の最大数を設定します。 これらの体験版は既にデプロイされており、顧客はデプロイを待つことなくそれらにすぐにアクセスできます。
 
-- **[体験版の期間]** (必須) – 体験版がアクティブな状態であり続ける期間の長さを時間数で入力します。 この期間が終わると、体験版は自動的に終了します。
+- **体験版の期間** (必須) – 体験版がアクティブな状態であり続ける期間の長さを時間数で入力します。 この期間が終わると、体験版は自動的に終了します。
 
 - **[Azure リソース グループの名前]** (必須) - ロジック アプリの体験版が保存される [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名を入力します。
 
 - **[Azure logic app name]\(Azure ロジック アプリ名\)** (必須) – 体験版をユーザーに割り当てるロジック アプリの名前を入力します。 このロジック アプリは、上記の Azure リソース グループに保存される必要があります。
 
-- **[ロジック アプリ名のプロビジョニング解除]** (必須) – 顧客の完了後に体験版をプロビジョニング解除するロジック アプリの名前を入力します。 このロジック アプリは、上記の Azure リソース グループに保存される必要があります。
+- **ロジック アプリ名のプロビジョニング解除** (必須) – 顧客の完了後に体験版をプロビジョニング解除するロジック アプリの名前を入力します。 このロジック アプリは、上記の Azure リソース グループに保存される必要があります。
 
 ### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI の体験版では技術的な構成は不要
 
@@ -359,9 +349,9 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 - **[Azure AD テナント名]** (Dynamic 365 では必須) – Azure Active Directory (AD) 名を入力します。 この名前を見つけるには、[Azure portal](https://portal.azure.com/) にサインインします。右上隅にある自分のアカウント名の下に、テナント名が表示されます。
 
-- **[Azure AD アプリ ID]** (必須) – 自分の Azure Active Directory (AD) [アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択します。 **[アプリの登録]** を選択した後、表示される**アプリケーション ID** 番号を確認します (例: 50c464d3-4930-494c-963c-1e951d15360e)。
+- **Azure AD アプリ ID** (必須) – お使いの Azure Active Directory (AD) [アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択します。 **[アプリの登録]** を選択した後、表示される**アプリケーション ID** 番号を確認します (例: 50c464d3-4930-494c-963c-1e951d15360e)。
 
-- **[Azure AD app client secret]\(Azure AD アプリのクライアント シークレット\)** (必須) – Azure AD アプリケーションの[クライアント シークレット](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 (値をコピーする前にページから移動しないでください。移動すると値にアクセスできなくなります。)
+- **Azure AD アプリ クライアントのシークレット** (必須) – Azure AD アプリケーションの[クライアント シークレット](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 (値をコピーする前にページから移動しないでください。移動すると値にアクセスできなくなります。)
 
 ### <a name="test-drive-marketplace-listings"></a>体験版のマーケットプレースの登録情報
 
@@ -369,9 +359,9 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 - **[説明]** (必須) – ユーザーがお客様のオファーを購入するかどうかを決定する助けとなるように、体験版、デモの内容、試用するユーザーの目的、試せる機能、関連情報について説明します。 このフィールドには、最大で 3,000 文字のテキストを入力できます。 
 
-- **[アクセス情報]** (Azure Resource Manager およびロジックの体験版では必須) – 顧客がこの体験版にアクセスして使用するうえで知っておく必要がある情報を説明します。 お客様のオファーの使用シナリオのほか、顧客が体験版を通じて機能にアクセスするために知っておくべき正確な情報を説明します。 このフィールドには、最大で 10,000 文字のテキストを入力できます。
+- **アクセス情報** (Azure Resource Manager およびロジックの体験版では必須) – 顧客がこの体験版にアクセスして使用するうえで知っておく必要がある情報を説明します。 お客様のオファーの使用シナリオのほか、顧客が体験版を通じて機能にアクセスするために知っておくべき正確な情報を説明します。 このフィールドには、最大で 10,000 文字のテキストを入力できます。
 
-- **[ユーザー マニュアル]** (必須) - 体験版エクスペリエンスの詳細なチュートリアル。 ユーザー マニュアルは、体験版のエクスペリエンスで顧客が使用できる内容を正確にカバーし、疑問がある場合に参照するものとして機能する必要があります。 ファイルは PDF 形式にして、アップロード後に名前 (最大 255 文字) を付ける必要があります。
+- **ユーザー マニュアル** (必須) – 体験版エクスペリエンスの詳細なチュートリアル。 ユーザー マニュアルは、体験版のエクスペリエンスで顧客が使用できる内容を正確にカバーし、疑問がある場合に参照するものとして機能する必要があります。 ファイルは PDF 形式にして、アップロード後に名前 (最大 255 文字) を付ける必要があります。
 
 - **[ビデオ]** (省略可能) – ここで外部ホスティング サイトにビデオをアップロードし、リンクとサムネイル画像 (533 x 324 ピクセル) を参照します。 これにより顧客は、オファーの機能を正しく使用する方法やそれらのメリットが際立つシナリオを把握する方法など、体験版への理解を深めるのに役立つ一連の情報を確認できます。
   - **名前** (必須)

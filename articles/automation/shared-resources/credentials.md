@@ -1,6 +1,6 @@
 ---
 title: Azure Automation で資格情報を管理する
-description: Azure Automation の資格情報資産には、Runbook または DSC 構成によってアクセスされるリソースの認証に使用できるセキュリティ資格情報が含まれます。 この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。
+description: この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,22 +9,19 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 16b92108bcb4e5185a1990b0ed8f1278bfe44921
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652832"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744997"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
 Automation 資格情報資産は、ユーザー名とパスワードなどのセキュリティ資格情報を含むオブジェクトを保持しています。 Runbook と DSC 構成では、認証のための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) オブジェクトを受け入れるコマンドレットを使用します。 または、`PSCredential` オブジェクトのユーザー名とパスワードを抽出して、認証を必要とする一部のアプリケーションまたはサービスに提供することもできます。 
 
 >[!NOTE]
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation では Key Vault からキーを読み込み、それを使用して資産を暗号化します。 
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。 
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -141,7 +138,7 @@ Connect-AzAccount -Credential $myPsCred
 
 ![キャンバスに資格情報を追加する](../media/credentials/credential-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。 この例では、「[Azure Automation で Azure AD を使用して Azure に対して認証する](../automation-use-azure-ad.md)」で説明されているように、資格情報によって、Azure リソースに対する認証が Runbook に提供されています。 最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。 その後、アカウント接続アクティビティは、この資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。 ここでは、`Get-AutomationPSCredential` が単一オブジェクトを想定しているため、[パイプライン リンク](../automation-graphical-authoring-intro.md#links-and-workflow)が使用されています。  
+次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。 この例では、「[Azure Automation で Azure AD を使用して Azure に対して認証する](../automation-use-azure-ad.md)」で説明されているように、資格情報によって、Azure リソースに対する認証が Runbook に提供されています。 最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。 その後、アカウント接続アクティビティは、この資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。 ここでは、`Get-AutomationPSCredential` が単一オブジェクトを想定しているため、[パイプライン リンク](../automation-graphical-authoring-intro.md#use-links-for-workflow)が使用されています。  
 
 ![キャンバスに資格情報を追加する](../media/credentials/get-credential.png)
 
@@ -166,6 +163,6 @@ print cred["password"]
 
 ## <a name="next-steps"></a>次のステップ
 
-* 資格情報にアクセスするためのコマンドレットの詳細については、「[Azure Automation でモジュールを管理する](modules.md)」を参照してください。
+* 証明書へのアクセスに使用するコマンドレットの詳細については、「[Azure Automation でモジュールを管理する](modules.md)」を参照してください。
 * Runbook の一般的な情報については、「[Azure Automation での Runbook の実行](../automation-runbook-execution.md)」を参照してください。
-* DSC 構成の詳細については、「[State Configuration の概要](../automation-dsc-overview.md)」を参照してください。
+* DSC 構成の詳細については、「[Azure Automation State Configuration の概要](../automation-dsc-overview.md)」を参照してください。 

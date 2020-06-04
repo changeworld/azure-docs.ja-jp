@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8e263d29bc71ac76c374eeda78e5250a0af2095
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191025"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744787"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのスキルセットの概念と構成
 
@@ -26,9 +26,9 @@ ms.locfileid: "77191025"
 
 スキルセットには、次の 3 つのプロパティがあります。
 
-+   ```skills``` は、各スキルに必要な入力に基づいてプラットフォームによって実行順序が決定される、順序付けされていないスキルのコレクションです
-+   ```cognitiveServices``` は、呼び出されたコグニティブ スキルの請求に必要な cognitive services key です
-+   ```knowledgeStore``` は、強化されたドキュメントが射影されるストレージ アカウントです
++    ```skills``` は、各スキルに必要な入力に基づいてプラットフォームによって実行順序が決定される、順序付けされていないスキルのコレクションです
++    ```cognitiveServices``` は、呼び出されたコグニティブ スキルの請求に必要な cognitive services key です
++    ```knowledgeStore``` は、強化されたドキュメントが射影されるストレージ アカウントです
 
 
 
@@ -36,7 +36,7 @@ ms.locfileid: "77191025"
 
 ### <a name="enrichment-tree"></a>強化ツリー
 
-スキルセットによってドキュメントが徐々に強化される様子を見るため、強化前のドキュメントの内容から始めましょう。 ドキュメント解析の出力は、データ ソースと選択した特定の解析モードに依存します。 これは、検索インデックスにデータを追加するときに、[フィールド マッピング](search-indexer-field-mappings.md)によってコンテンツを取得できるドキュメントの状態でもあります。
+スキルセットによってドキュメントが徐々にエンリッチメント処理される様子を見るため、エンリッチメント前のドキュメントの内容から始めましょう。 ドキュメント解析の出力は、データ ソースと選択した特定の解析モードに依存します。 これは、検索インデックスにデータを追加するときに、[フィールド マッピング](search-indexer-field-mappings.md)によってコンテンツを取得できるドキュメントの状態でもあります。
 ![パイプラインにおけるナレッジ ストアの図](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "パイプラインにおけるナレッジ ストアの図")
 
 強化パイプラインに入ったドキュメントは、コンテンツおよび関連付けられている強化のツリーとして表されます。 このツリーは、ドキュメント解析の出力としてインスタンス化されます。 強化ツリー形式により、強化パイプラインではメタデータをプリミティブ データ型にもアタッチできます。これは有効な JSON オブジェクトではありませんが、有効な JSON 形式に射影できます。 次の表では、強化パイプラインに入ったドキュメントの状態を示します。
@@ -54,14 +54,14 @@ ms.locfileid: "77191025"
 
 ### <a name="context"></a>Context
 各スキルにはコンテキストが必要です。 コンテキストによって次のことが決まります。
-+   選択されたノードに基づいて、スキルが実行される回数。 型コレクションのコンテキスト値の場合、末尾に ```/*``` を追加すると、コレクション内のインスタンスごとにスキルが 1 回呼び出されます。 
-+   スキルの出力が追加される強化ツリー内の場所。 出力は、常にコンテキスト ノードの子としてツリーに追加されます。 
-+   入力の形状。 複数レベルのコレクションの場合、コンテキストを親コレクションに設定すると、スキル入力の形状に影響します。 たとえば、国のリストが含まれる強化ツリーがあり、それぞれが郵便番号のリストを含む州のリストで強化されている場合、次のようになります。
++    選択されたノードに基づいて、スキルが実行される回数。 型コレクションのコンテキスト値の場合、末尾に ```/*``` を追加すると、コレクション内のインスタンスごとにスキルが 1 回呼び出されます。 
++    スキルの出力が追加される強化ツリー内の場所。 出力は、常にコンテキスト ノードの子としてツリーに追加されます。 
++    入力の形状。 複数レベルのコレクションの場合、コンテキストを親コレクションに設定すると、スキル入力の形状に影響します。 たとえば、国または地域のリストが含まれるエンリッチメント ツリーがあり、それぞれが郵便番号のリストを含む州のリストでエンリッチメント処理されている場合、次のようになります。
 
 |Context|入力|入力の形状|スキルの呼び出し|
 |---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |国内のすべての郵便番号のリスト |国ごとに 1 回 |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |州内の郵便番号のリスト | 国と州の組み合わせごとに 1 回|
+|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |国または地域のすべての郵便番号のリスト |国または地域ごとに 1 回 |
+|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |州内の郵便番号のリスト | 国または地域と州の組み合わせごとに 1 回|
 
 ### <a name="sourcecontext"></a>SourceContext
 
@@ -77,7 +77,7 @@ ms.locfileid: "77191025"
 
 ## <a name="generate-enriched-data"></a>強化データを生成する 
 
-それでは、ホテル レビューのスキルセットの手順を見てみましょう。[チュートリアル](knowledge-store-connect-powerbi.md)に従うことで、スキルセットを作成したり、スキルセットを[表示](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json)したりすることができます。 以下のことを見ていきます。
+それでは、ホテル レビューのスキルセットの手順を見てみましょう。[チュートリアル](knowledge-store-connect-powerbi.md)に従うことで、スキルセットを作成したり、スキルセットを[表示](https://github.com/Azure-Samples/azure-search-postman-samples/)したりすることができます。 以下のことを見ていきます。
 
 * 各スキルの実行によって強化ツリーがどのように発展するか 
 * スキルの実行回数の決定に対してコンテキストと入力がどのように働くか 

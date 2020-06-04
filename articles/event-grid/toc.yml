@@ -194,6 +194,8 @@
           href: metrics.md
 - name: 操作方法ガイド
   items:
+    - name: システム トピックの作成、表示、管理
+      href: create-view-manage-system-topics.md
     - name: カスタム トピックへの投稿
       href: post-to-custom-topic.md
     - name: Auth0 イベントをサブスクライブする

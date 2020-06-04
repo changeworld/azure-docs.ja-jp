@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792719"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845793"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure BLOB ストレージを使用し、コマーシャル マーケットプレースの潜在顧客を管理する
 
@@ -74,9 +74,9 @@ ms.locfileid: "82792719"
 発行ポータル内でオファーのリード管理情報を構成する準備ができたら、次の手順に従います。
 
 1. オファーの **[オファーのセットアップ]** ページに移動します。
-2. [リード管理] セクションで **[接続]** を選択します。
+2. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    ![オファーの接続](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="[潜在顧客]":::
 
 3. [接続の詳細] ポップアップ ウィンドウで、[リードのターゲット] として **[Azure Blob]** を選択します。
 

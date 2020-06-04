@@ -50,6 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Azure Files と Azure AD DS を使用する
           href: create-profile-container-adds.md
+    - name: プロファイル コンテナーのファイル共有を作成する
+      href: create-file-share.md
     - name: ホスト プール設定を構成する
       items:
         - name: RDP のプロパティ
@@ -134,6 +136,8 @@
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: リソース
   items:
+    - name: PowerShell
+      href: '/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization'
     - name: エクスペリエンス見積もりツール
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 料金計算ツール

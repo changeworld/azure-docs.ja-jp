@@ -1,25 +1,22 @@
 ---
 title: Azure Container オファーを作成する - Azure Marketplace
-description: この記事では、Container オファーを作成して Azure Marketplace に公開する方法について説明します。
+description: Container オファーを作成して Azure Marketplace に公開する方法について説明します。
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/07/2020
-ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791937"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848806"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container オファーを作成する
 
-> [!IMPORTANT]
-> 現在、Azure Container オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、Cloud パートナー ポータル向けの「[Containers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)」の手順に従って、オファーを管理してください。
-
-この記事では、Azure Marketplace 向けの Container オファーを作成して公開する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+この記事では、Azure Marketplace 向けの Container オファーを作成して公開する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
@@ -62,18 +59,18 @@ ms.locfileid: "82791937"
 
 オファーを設定するには、次の手順に従います。
 
-### <a name="connect-lead-management--optional"></a>リード管理の接続 - 省略可能
+### <a name="customer-leads--optional"></a>潜在顧客 – 省略可能
 
 パートナー センターを使用してオファーをコマーシャル マーケットプレースに発行する場合、それを顧客関係管理 (CRM) システムに接続できます。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。
 
 1. **潜在顧客の送信先となるリードのターゲットを選択します**。 パートナー センターでは、次の CRM システムがサポートされています。
 
-- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-- [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
+   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
-> [!NOTE]
-> ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
+   > [!NOTE]
+   > ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
 
 2. パートナー センターで公開する際は、オファーをリードの宛先に接続します。
 3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft により接続が検証され、テスト リードが送信されます。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
@@ -149,40 +146,11 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明には、次の 1 つまたは複数を含めます。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- オファーによってもたらされる価値と主なメリット
-- カテゴリまたは業界のアソシエーション、あるいはその両方
-- アプリ内購入の機会
-- 必要な開示
-
-説明を記述するためのいくつかのヒントを次に示します。
-
-- 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
-  - プランの説明。
-  - オファーから利益を得るユーザーの種類
-  - オファーが対応する顧客のニーズや問題。
-- 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-- 業界固有の語彙または利益に基づく表現を使用するようにしてください。
-
-オファーの**説明**をより魅力的なものにするには、リッチ テキスト エディターを使用して説明を書式設定してください。 番号付け、箇条書き、太字、斜体、およびインデントを使用して、説明を読みやすくします。
-
-:::image type="content" source="media/text-editor2.png" alt-text="リッチ テキスト エディターの画像。" border="false" :::
-
-- このドロップダウンを使用して、テキストに段落スタイルを適用します。
-
-    :::image type="content" source="media/text-editor3.png" alt-text="リッチ テキスト エディターのテキスト スタイル コントロールの画像。" border="false":::
-
-- これらのアイコンを使用して、テキストに番号付けまたは箇条書きを適用します。
-
-     :::image type="content" source="media/text-editor4.png" alt-text="リッチ テキスト エディターの箇条書きと番号付きリストのコントロールの画像。" border="false":::
-
-- これらのアイコンを使用して、テキストのインデントを追加または削除します。
-
-    :::image type="content" source="media/text-editor5.png" alt-text="リッチ テキスト エディターのインデント コントロールの画像。" border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>プライバシー ポリシーのリンク
 

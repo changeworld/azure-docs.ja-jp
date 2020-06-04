@@ -69,6 +69,8 @@
       items:
         - name: ブート診断
           href: boot-diagnostics.md
+        - name: ブート エラー - ディスク読み取りエラーが発生しました
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker のエラー
           href: troubleshoot-bitlocker-boot-error.md
         - name: ブルー スクリーン エラー

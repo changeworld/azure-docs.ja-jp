@@ -2,14 +2,14 @@
 title: V3 API での予測エンドポイントの変更
 description: クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81530387"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849333"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
@@ -73,16 +73,9 @@ V2 予測 API は、V3 プレビューの後、少なくとも 9 か月間は非
 
 ### <a name="changes-by-slot-name-and-version-name"></a>スロット名とバージョン名による変更
 
-V3 エンドポイントの HTTP 呼び出しの形式が変更されました。
+[V3 エンドポイントの HTTP 呼び出しの形式](developer-reference-resource.md#rest-endpoints)が変更されました。
 
 バージョンによってクエリを実行する場合は、まず `"directVersionPublish":true` を使用して [API 経由で発行](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
-
-|予測 API のバージョン|メソッド|URL|
-|--|--|--|
-|V3|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
-|V3|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
-|V2|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
-|V2|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
 
 |`SLOT-NAME` の有効な値|
 |--|
@@ -290,4 +283,4 @@ V2 API は、V3 プレビューの後、少なくとも 9 か月間は非推奨�
 
 ## <a name="next-steps"></a>次のステップ
 
-V3 API のドキュメントを使用して、LUIS [エンドポイント](https://aka.ms/luis-api-v3) API に対する既存の REST 呼び出しを更新します。
+V3 API のドキュメントを使用して、LUIS [エンドポイント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API に対する既存の REST 呼び出しを更新します。

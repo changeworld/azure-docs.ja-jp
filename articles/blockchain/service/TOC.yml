@@ -11,7 +11,8 @@
       href: create-member.md
     - name: CLI を使用してメンバーを作成する
       href: create-member-cli.md
-    - name: テンプレートを使用してメンバーを作成する
+    - name: ARM テンプレートを使用してメンバーを作成する
+      displayName: Resource Manager
       href: create-member-template.md
     - name: トランザクション ノードに接続する
       items:

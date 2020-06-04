@@ -3,12 +3,12 @@ title: 制限 - LUIS
 description: この記事では、Azure Cognitive Services Language Understanding (LUIS) の既知の制限を示します。 LUIS にはいくつかの制限領域があります。 モデルの制限によって、LUIS の意図、エンティティ、および機能が制御されます。 キーの種類に基づくクォータ制限。 キーボードの組み合わせは LUIS Web サイトを制御します。
 ms.topic: reference
 ms.date: 05/06/2020
-ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593241"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684608"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS モデルとキーの制限
 LUIS にはいくつかの制限領域があります。 1 つは[モデルの制限](#model-limits)であり、これによって LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の制限領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。

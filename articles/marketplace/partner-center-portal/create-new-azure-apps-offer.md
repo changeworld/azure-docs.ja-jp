@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 22d6c37b59488633394d7f3ed5ca5b0c78371e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790689"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848789"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
-この記事では、商業マーケットプレースで新しい Azure アプリケーション オファーを作成するための手順と考慮事項について説明します。 新しい Azure アプリケーション オファーを作成する前に、これらの概念についてよく理解しておく必要があります。 
+この記事では、商業マーケットプレースで新しい Azure アプリケーション オファーを作成するための手順と考慮事項について説明します。 新しい Azure アプリケーション オファーを作成する前に、これらの概念についてよく理解しておく必要があります。
 
 新しい Azure アプリケーション オファーを公開する前に、[パートナー センターで商業マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)し、アカウントが商業マーケットプレース プログラムに登録されていることを確認します。
 
@@ -128,20 +128,20 @@ Azure アプリケーション プランには、ソリューション テンプ
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
-**[オファーのセットアップ]** ページでは、オファーの体験版とリード管理を構成することができます。 
+**[オファーのセットアップ]** ページでは、オファーの体験版とリード管理を構成することができます。
 
 ### <a name="test-drive"></a>体験版
 
-体験版は、"購入前に試用する" オプションを提供することで潜在顧客へのオファーを紹介し、その結果、コンバージョンが増加し、見込みの高いリードが生成される優れた方法です。 [体験版の詳細についてはこちらを参照してください](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
+体験版は、購入前に試用するオプションを提供することで潜在顧客へのオファーを披露し、その結果、コンバージョンが増加し、見込みの高いリードが生成される優れた方法です。 [体験版の詳細を確認してください](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
 
-一定期間、体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。 このトピックの後述の「[体験版の技術的な構成](#test-drive-technical-configuration)」セクションで、体験版環境を構成します。
+一定期間、体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。 このトピックの後の方の「[体験版の技術的な構成](#test-drive-technical-configuration)」セクションで、体験版環境を構成します。
 
 詳細については、[商業マーケットプレースでのオファーの体験](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)に関するページを参照してください。 また、[体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)を参照し、[体験版の概要に関する PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) をダウンロードすることもできます (ポップアップ ブロックがオフになっていることを確認してください)
 
 >[!Note]
 >すべての Azure アプリケーションは Azure Resource Manager テンプレートを使用して実装されるため、Azure アプリケーションで使用可能な体験版の種類は [Azure Resource Manager ベースの体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)のみです。
 
-## <a name="lead-management"></a>リードの管理
+### <a name="customer-leads"></a>潜在顧客
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
@@ -174,7 +174,7 @@ Azure アプリケーション プランには、ソリューション テンプ
 
 #### <a name="search-results-summary"></a>検索結果の概要
 
-オファーの簡単な説明 (最大 100 文字) を入力します。これは、検索結果で使用される場合があります。
+オファーの簡単な説明を最大 100 文字で入力します。 この説明は検索結果で使用される場合があります。
 
 #### <a name="long-summary"></a>詳細な概要
 
@@ -182,18 +182,11 @@ Azure アプリケーション プランには、ソリューション テンプ
 
 #### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 この説明は、一覧表示の概要で顧客に表示されます。 オファーの価値提案、主なメリット、カテゴリまたは業界との関連性、アプリ内の購入機会、必要な情報開示を含めます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明を記述するためのいくつかのヒントを次に示します。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-* 説明の先頭の数文で、プランの価値提案を明確に説明します。 次の項目を含めます。
-  * オファーの説明。
-  * オファーから利益を得るユーザーの種類。
-  * オファーが対応する顧客のニーズや問題。
-* 先頭のいくつかの文が検索エンジンの結果に表示される場合があることに注意してください。
-* 特徴や機能に頼ってオファーを販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-* 業界固有または特典ベースの表現を使用します。
-* HTML タグを使用して、説明の書式を設定し、より魅力的なものにすることを検討してください。
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="search-keywords"></a>キーワード検索
 
@@ -380,7 +373,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 #### <a name="markets"></a>市場
 
-すべてのプランは、少なくとも 1 つの市場で利用できる必要があります。 このプランを利用可能にしたい市場の場所について、このチェック ボックスを選択します。 (Microsoft が公開元に代わって消費税と使用税を送金する) "税送金" 国を選択するための検索ボックスおよびボタンが、補助として含まれています。
+すべてのプランは、少なくとも 1 つの市場で利用できる必要があります。 このプランを利用可能にしたい市場の場所について、このチェック ボックスを選択します。 Microsoft が公開元に代わって消費税と使用税を送金する "税送金" 国または地域を選択するための検索ボックスおよびボタンが、補助として含まれています。
 
 米国ドル (USD) でプランの価格を既に設定していて、別の市場の場所を追加する場合、新しい市場の価格は現時点の為替レートに従って計算されます。 常に、各市場の価格を発行前に確認します。 価格は、変更の保存後に "価格のエクスポート (xlsx)" リンクを使用して確認できます。
 

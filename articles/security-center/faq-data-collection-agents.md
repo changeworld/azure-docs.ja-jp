@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436193"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849044"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -49,6 +49,22 @@ Windows または Linux IaaS VM は、次の条件で適格とします。
 - VM が実行状態である。
 - Windows または Linux [Azure 仮想マシン エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)がインストールされている。
 - VM は、Web アプリケーション ファイアウォールや次世代ファイアウォールなどのアプライアンスとしては使用されません。
+
+
+## <a name="where-is-the-default-log-analytics-workspace-created"></a>既定の Log Analytics ワークスペースはどこに作成されますか?
+
+既定のワークスペースの場所は、Azure リージョンによって異なります。
+
+- 米国とブラジルの VM の場合、ワークスペースの場所は米国です
+- カナダの VM の場合、ワークスペースの場所はカナダです
+- ヨーロッパの VM の場合、ワークスペースの場所はヨーロッパです
+- 英国の VM の場合、ワークスペースの場所は英国です
+- 東アジアと東南アジアの VM の場合、ワークスペースの場所はアジアです
+- 韓国の VM の場合、ワークスペースの場所は韓国です
+- インドの VM の場合、ワークスペースの場所はインドです
+- 日本の VM の場合、ワークスペースの場所は日本です
+- 中国の VM の場合、ワークスペースの場所は中国です
+- オーストラリアの VM の場合、ワークスペースの場所はオーストラリアです
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Security Center で作成された既定のワークスペースは削除できますか?

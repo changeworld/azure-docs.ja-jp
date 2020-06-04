@@ -1,6 +1,6 @@
 ---
 title: Azure Automation で変数を管理する
-description: 変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。  この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。
+description: この記事では、Runbook および DSC 構成内の変数を操作する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bf7840daad02f679cad4c3b798d2add02c863a15
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651964"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744979"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
@@ -33,10 +33,7 @@ Azure Automation では、変数が保存されるので、Runbook または DSC
 Azure Automation では、暗号化された各変数を安全に保存します。 変数の作成時に、Azure Automation を使用して、セキュリティで保護された資産となるようにその変数の暗号化とストレージを指定できます。 
 
 >[!NOTE]
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理されるキー コンテナーに格納されます。 セキュリティで保護された資産を保存する前に、Automation ではキー コンテナーからキーを読み込み、それを使用して資産を暗号化します。 
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。 
 
 ## <a name="variable-types"></a>変数の型
 
@@ -191,7 +188,7 @@ except AutomationAssetNotFound:
 
 ![キャンバスへの変数の追加](../media/variables/runbook-variable-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で変数を単純な値で更新するサンプル アクティビティを示しています。 この例では、`Get-AzVM` のアクティビティによって 1 つの Azure 仮想マシンが取得され、そのコンピューター名が既存の Automation の文字列型の変数に保存されます。 このコードでは出力に 1 つのオブジェクトのみが含まれると予期されるため、[リンクがパイプラインとシーケンス](../automation-graphical-authoring-intro.md#links-and-workflow)のいずれであっても関係ありません。
+次の図は、グラフィカルな Runbook で変数を単純な値で更新するサンプル アクティビティを示しています。 この例では、`Get-AzVM` のアクティビティによって 1 つの Azure 仮想マシンが取得され、そのコンピューター名が既存の Automation の文字列型の変数に保存されます。 このコードでは出力に 1 つのオブジェクトのみが含まれると予期されるため、[リンクがパイプラインとシーケンス](../automation-graphical-authoring-intro.md#use-links-for-workflow)のいずれであっても関係ありません。
 
 ![単純変数の設定](../media/variables/runbook-set-simple-variable.png)
 
@@ -199,4 +196,4 @@ except AutomationAssetNotFound:
 
 * 変数にアクセスするためのコマンドレットの詳細については、「[Azure Automation でモジュールを管理する](modules.md)」を参照してください。
 * Runbook の一般的な情報については、「[Azure Automation での Runbook の実行](../automation-runbook-execution.md)」を参照してください。
-* DSC 構成の詳細については、「[State Configuration の概要](../automation-dsc-overview.md)」を参照してください。
+* DSC 構成の詳細については、「[Azure Automation State Configuration の概要](../automation-dsc-overview.md)」を参照してください。

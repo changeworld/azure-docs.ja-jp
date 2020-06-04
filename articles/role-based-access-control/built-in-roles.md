@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC の Azure 組み込みロール
-description: この記事では、Azure ロールベースのアクセス制御 (RBAC) の Azure 組み込みロールについて説明します。 Actions、NotActions、DataActions、NotDataActions を一覧表示します。
+title: Azure 組み込みロール - Azure RBAC
+description: この記事では、Azure ロールベースのアクセス制御 (Azure RBAC) の Azure 組み込みロールについて説明します。 Actions、NotActions、DataActions、NotDataActions を一覧表示します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0a574ba281a037a06ddda1981ae6fa35b905bca1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545652"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683649"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
-[Azure ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることのできる Azure 組み込みロールがいくつかあります。 ロールの割り当ては、Azure リソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の [Azure カスタム ロール](custom-roles.md)を作成することができます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることのできる Azure 組み込みロールがいくつかあります。 ロールの割り当ては、Azure リソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の [Azure カスタム ロール](custom-roles.md)を作成することができます。
 
-この記事では、常に進化している Azure リソースの組み込みロールについて説明します。 最新のロールを取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。 Azure Active Directory (Azure AD) の管理者ロールについては、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+この記事では、常に進化している Azure 組み込みロールが一覧表示されています。 最新のロールを取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。 Azure Active Directory (Azure AD) の管理者ロールについては、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 ## <a name="all"></a>All
 
-次の表に、各組み込みロールの簡単な説明と一意の ID を示します。 ロール名を選択すると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。 これらのアクションの意味と、管理プレーンとデータ プレーンへの適用方法については、[Azure リソースのロール定義の概要](role-definitions.md)に関するページを参照してください。
+次の表に、各組み込みロールの簡単な説明と一意の ID を示します。 ロール名を選択すると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。 これらのアクションの意味と、管理とデータ プレーンへの適用方法については、「[Azure ロールの定義について](role-definitions.md)」を参照してください。
 
 
 > [!div class="mx-tableFixed"]
@@ -81,7 +81,7 @@ ms.locfileid: "80545652"
 > | [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
-> | [Azure Maps データ閲覧者 (プレビュー)](#azure-maps-data-reader-preview) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure Maps データ閲覧者](#azure-maps-data-reader) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -147,16 +147,16 @@ ms.locfileid: "80545652"
 > | [Azure Sentinel 閲覧者](#azure-sentinel-reader) | Azure Sentinel 閲覧者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel レスポンダー](#azure-sentinel-responder) | Azure Sentinel レスポンダー | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Security Admin](#security-admin) | セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Security Admin](#security-admin) | Security Center の表示および更新のアクセス許可。 セキュリティ閲覧者と同じアクセス許可があり、セキュリティ ポリシーの更新、アラートと推奨事項の無視も可能になります。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Security Assessment Contributor](#security-assessment-contributor) | 評価を Security Center にプッシュできます | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [セキュリティ マネージャー (レガシ)](#security-manager-legacy) | これは、レガシ ロールです。 代わりに Security Admin を使用してください。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Security Reader](#security-reader) | 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Security Reader](#security-reader) | Security Center の表示アクセス許可。 推奨事項、警告、セキュリティ ポリシー、セキュリティの状態を閲覧できますが、変更することはできません。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [Lab Creator](#lab-creator) | Azure Lab アカウントで管理対象のラボを作成、管理、削除できます。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **監視** |  |  |
 > | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます | ae349356-3a1b-4a5e-921d-050484c6347e |
-> | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 ユーザーに Application Insights スナップショット デバッガー ロールを与える場合は、そのロールをユーザーに直接付与する必要があります。 このロールは、カスタム ロールに追加されるときに認識されません。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [監視メトリック パブリッシャー](#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)も参照してください。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
@@ -173,6 +173,7 @@ ms.locfileid: "80545652"
 > | [ブループリント オペレーター](#blueprint-operator) | 既存の発行済みのブループリントを割り当てることはできますが、ブループリントの新規作成はできません。 これは、ユーザーが割り当てたマネージド ID を使用して割り当てが行われた場合にのみ機能することに注意してください。 | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
 > | [Cost Management 共同作成者](#cost-management-contributor) | コストを表示し、コストの構成 (予算、エクスポートなど) を管理することができます。 | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Cost Management 閲覧者](#cost-management-reader) | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
+> | [Hierarchy Settings Administrator](#hierarchy-settings-administrator) | ユーザーに、階層設定の編集と削除を許可します | 350f8d15-c687-4448-8ae1-157740a3936d |
 > | [Managed Application Contributor Role](#managed-application-contributor-role) | マネージド アプリケーション リソースの作成を許可します。 | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Managed Application Operator Role](#managed-application-operator-role) | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Managed Applications 閲覧者](#managed-applications-reader) | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -335,7 +336,7 @@ Azure リソースに対するユーザー アクセスを管理します。
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.Authorization/* | 承認の管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -392,11 +393,11 @@ Azure リソースに対するユーザー アクセスを管理します。
 > | Microsoft.ClassicStorage/storageAccounts/images/read | ストレージ アカウント イメージを返します。 (非推奨になりました。 'Microsoft.ClassicStorage/storageAccounts/vmImages' を使用してください。) |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | Microsoft.ClassicStorage/storageAccounts/read | 特定のアカウントのストレージ アカウントを返します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -513,7 +514,7 @@ Azure リソースに対するユーザー アクセスを管理します。
 > | Microsoft.Compute/disks/read | ディスクのプロパティを取得します。 |
 > | Microsoft.Compute/disks/delete | ディスクを削除します。 |
 > | Microsoft.DevTestLab/schedules/* |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | アプリケーション ゲートウェイのバックエンド アドレス プールを接続します。 警告不可能です。 |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサーのバックエンド アドレス プールを接続します。 警告不可能です。 |
 > | Microsoft.Network/loadBalancers/inboundNatPools/join/action | ロード バランサーの受信 NAT プールを接続します。 警告不可能です。 |
@@ -539,12 +540,12 @@ Azure リソースに対するユーザー アクセスを管理します。
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/write | "コンテナーの作成" 操作では、"コンテナー" 型の Azure リソースを作成します。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.SqlVirtualMachine/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -681,10 +682,10 @@ CDN エンドポイントを管理できますが、アクセス権を他のユ�
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/endpoints/* |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -735,10 +736,10 @@ CDN エンドポイントを表示できますが、変更はできません。
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/endpoints/*/read |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -789,10 +790,10 @@ CDN プロファイルとそのエンドポイントを管理できますが、�
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/* |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -843,10 +844,10 @@ CDN プロファイルとそのエンドポイントを表示できますが、�
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/*/read |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -895,11 +896,11 @@ CDN プロファイルとそのエンドポイントを表示できますが、�
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.ClassicNetwork/* | 従来のネットワークの作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -946,12 +947,12 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Network/dnsZones/* | DNS ゾーンとレコードの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -998,12 +999,12 @@ Azure DNS の DNS ゾーンとレコード セットを管理できますが、�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Network/* | ネットワークの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1050,12 +1051,12 @@ Traffic Manager プロファイルを管理できますが、それにアクセ�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Network/trafficManagerProfiles/* |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1116,12 +1117,12 @@ Avere vFXT クラスターを作成および管理できます。
 > | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに参加します。 警告不可能です。 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | Microsoft.Network/networkSecurityGroups/join/action | ネットワーク セキュリティ グループに参加します。 警告不可能です。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/*/read |  |
 > | Microsoft.Storage/storageAccounts/* | ストレージ アカウントの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Resources/subscriptions/resourceGroups/resources/read | リソース グループのリソースを取得します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -1274,7 +1275,7 @@ Avere vFXT クラスターを作成および管理できます。
 > | Microsoft.RecoveryServices/Vaults/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 登録済み ID の管理 |
 > | Microsoft.RecoveryServices/Vaults/usages/* | Recovery Services コンテナーの使用状況の作成および管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
@@ -1292,7 +1293,7 @@ Avere vFXT クラスターを作成および管理できます。
 > | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1406,7 +1407,7 @@ Avere vFXT クラスターを作成および管理できます。
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | " コンテナーを取得" 操作を使用すると、リソースの登録済みコンテナーを取得できます。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | "サービス コンテナーを登録" 操作を使用すると、コンテナーを Recovery Services に登録できます。 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
@@ -1427,7 +1428,7 @@ Avere vFXT クラスターを作成および管理できます。
 > | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1638,11 +1639,11 @@ Avere vFXT クラスターを作成および管理できます。
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.ClassicStorage/storageAccounts/* | ストレージ アカウントの作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1732,9 +1733,9 @@ Data Box サービスですべてを管理できます (他のユーザーに対
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Databox/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -1789,7 +1790,7 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | Microsoft.Databox/locations/regionConfiguration/action | このメソッドでは、リージョンの構成が返されます。 |
 > | Microsoft.Databox/locations/validateAddress/action | 配送先住所を検証し、存在する場合には別の住所を指定します。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1841,11 +1842,11 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.BigAnalytics/accounts/* |  |
 > | Microsoft.DataLakeAnalytics/accounts/* |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | Microsoft.BigAnalytics/accounts/Delete |  |
 > | Microsoft.BigAnalytics/accounts/TakeOwnership/action |  |
@@ -1965,14 +1966,14 @@ Data Box サービスを管理できます (注文の作成または注文の詳
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/* | ストレージ アカウントの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2071,6 +2072,7 @@ Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除する |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action | パス間で BLOB を移動します |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB に書き込みます。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
@@ -2095,6 +2097,7 @@ Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
       ],
       "notDataActions": []
@@ -2541,7 +2544,7 @@ Azure Storage キューおよびキュー メッセージの読み取りと一�
 ## <a name="web"></a>Web
 
 
-### <a name="azure-maps-data-reader-preview"></a>Azure Maps データ閲覧者 (プレビュー)
+### <a name="azure-maps-data-reader"></a>Azure Maps データ閲覧者
 
 Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。
 
@@ -2553,7 +2556,7 @@ Azure Maps アカウントからマップ関連データを読み取るための
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | Microsoft.Maps/accounts/data/read | Maps アカウントにデータ読み取りアクセスを許可します。 |
+> | Microsoft.Maps/accounts/*/read |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -2570,12 +2573,12 @@ Azure Maps アカウントからマップ関連データを読み取るための
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Maps/accounts/data/read"
+        "Microsoft.Maps/accounts/*/read"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Maps Data Reader (Preview)",
+  "roleName": "Azure Maps Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -2590,12 +2593,12 @@ Search サービスを管理できます。ただし、それらへのアクセ�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Search/searchServices/* | 検索サービスの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2642,11 +2645,11 @@ Web サイトの Web プランを管理できます。ただし、それらへ�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Web/serverFarms/* | サーバー ファームの作成と管理 |
 > | Microsoft.Web/hostingEnvironments/Join/Action | App Service Environment に参加します |
 > | **NotActions** |  |
@@ -2696,12 +2699,12 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/components/* | Insights コンポーネントの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Web/certificates/* | Web サイト証明書の作成と管理 |
 > | Microsoft.Web/listSitesAssignedToHostName/read | ホスト名に割り当てられたサイトの名前を取得します。 |
 > | Microsoft.Web/serverFarms/join/action |  |
@@ -3095,7 +3098,7 @@ Cosmos DB アカウントのデータを読み取ることができます。 Azu
 > | Microsoft.Insights/MetricDefinitions/read | メトリック定義を読み取ります。 |
 > | Microsoft.Insights/Metrics/read | メトリックを読み取ります。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -3142,12 +3145,12 @@ Azure Cosmos DB アカウントを管理することができます。ただし�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.DocumentDb/databaseAccounts/* |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | **NotActions** |  |
 > | Microsoft.DocumentDB/databaseAccounts/readonlyKeys/* |  |
@@ -3247,11 +3250,11 @@ Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以�
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.DocumentDb/databaseAccounts/* | Azure Cosmos DB アカウントの作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -3301,11 +3304,11 @@ Redis Caches を管理できます。ただし、それらへのアクセスは�
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Cache/redis/* | Redis キャッシュの作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -3352,14 +3355,14 @@ SQL データベースを管理できます。ただし、それらへのアク�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Sql/locations/*/read |  |
 > | Microsoft.Sql/servers/databases/* | SQL データベースの作成と管理 |
 > | Microsoft.Sql/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
 > | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
@@ -3460,17 +3463,17 @@ SQL マネージド インスタンスと必要なネットワーク構成を管
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Network/networkSecurityGroups/* |  |
 > | Microsoft.Network/routeTables/* |  |
 > | Microsoft.Sql/locations/*/read |  |
 > | Microsoft.Sql/managedInstances/* |  |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Network/virtualNetworks/subnets/* |  |
 > | Microsoft.Network/virtualNetworks/* |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
 > | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
@@ -3526,10 +3529,10 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/* |  |
@@ -3567,7 +3570,7 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 > | Microsoft.Sql/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバー セキュリティの警告のポリシーの作成と管理 |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -3650,13 +3653,13 @@ SQL サーバーとデータベースを管理できます。ただし、それ�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Sql/locations/*/read |  |
 > | Microsoft.Sql/servers/* | SQL サーバーの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
 > | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
@@ -3895,11 +3898,11 @@ Azure Event Hubs リソースへの送信アクセスを許可します。
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.DataFactory/dataFactories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
 > | Microsoft.DataFactory/factories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.EventGrid/eventSubscriptions/write | eventSubscription を作成または更新します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -4000,9 +4003,9 @@ HDInsight クラスター構成の読み取りと変更を実行できます。
 > | Microsoft.HDInsight/clusters/configurations/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -4099,14 +4102,15 @@ Log Analytics 共同作成者は、すべての監視データを読み取り、
 > | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.HybridCompute/machines/extensions/write | Azure Arc 拡張機能をインストールまたは更新されます |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | Microsoft.OperationalInsights/* |  |
 > | Microsoft.OperationsManagement/* |  |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -4130,6 +4134,7 @@ Log Analytics 共同作成者は、すべての監視データを読み取り、
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
+        "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.OperationalInsights/*",
@@ -4161,7 +4166,7 @@ Log Analytics Reader は、すべての監視データの表示と検索、お�
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 検索クエリを実行します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
 > | **DataActions** |  |
@@ -4258,19 +4263,19 @@ Cognitive Services のキーの作成、読み取り、更新、削除、管理�
 > | Microsoft.CognitiveServices/* |  |
 > | Microsoft.Features/features/read | サブスクリプションの機能を取得します。 |
 > | Microsoft.Features/providers/features/read | 指定されたリソース プロバイダーのサブスクリプションの機能を取得します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | Microsoft.Insights/logDefinitions/read | ログ定義を読み取ります。 |
 > | Microsoft.Insights/metricdefinitions/read | メトリック定義を読み取ります。 |
 > | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
 > | Microsoft.Resources/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -4378,7 +4383,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | Microsoft.Resources/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -4588,11 +4593,11 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | **アクション** |  |
 > | Microsoft.ApiManagement/service/* | API Management サービスの作成と管理 |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -4648,11 +4653,11 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | Microsoft.ApiManagement/service/updatehostname/action | API Management サービスのカスタム ドメイン名を設定、更新、または削除します。 |
 > | Microsoft.ApiManagement/service/write | API Management サービス インスタンスの作成または更新 |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | ユーザーに関連付けられたキーを取得します |
 > | **DataActions** |  |
@@ -4711,11 +4716,11 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | Microsoft.ApiManagement/service/*/read | API Management サービス インスタンスの読み取り |
 > | Microsoft.ApiManagement/service/read | API Management サービス インスタンスのメタデータの読み取り |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | ユーザーに関連付けられたキーを取得します |
 > | **DataActions** |  |
@@ -5031,10 +5036,10 @@ EventGrid のイベント サブスクリプション操作を管理できます
 > | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | グローバル イベント サブスクリプションをトピックの種類ごとに一覧表示します |
 > | Microsoft.EventGrid/locations/eventSubscriptions/read | リージョンのイベント サブスクリプションを一覧表示します |
 > | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | リージョンのイベント サブスクリプションを topictype ごとに一覧表示します |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5133,12 +5138,12 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.IntelligentSystems/accounts/* | Intelligent Systems アカウントの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5187,18 +5192,18 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | Microsoft.ClassicStorage/storageAccounts/read | 特定のアカウントのストレージ アカウントを返します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/metricAlerts/* |  |
 > | Microsoft.Insights/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | Microsoft.Insights/logdefinitions/* | このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 アクティビティ ログのログのカテゴリを一覧表示します。 |
 > | Microsoft.Insights/metricDefinitions/* | メトリック定義 (リソースの使用可能なメトリックの種類の一覧) を読み取ります。 |
 > | Microsoft.Logic/* | Logic Apps リソースを管理します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/listkeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Web/connectionGateways/* | 接続ゲートウェイを作成および管理します。 |
 > | Microsoft.Web/connections/* | 接続を作成および管理します。 |
 > | Microsoft.Web/customApis/* | カスタム API を作成および管理します。 |
@@ -5276,7 +5281,7 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
 > | Microsoft.Resources/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Web/connectionGateways/*/read | 接続ゲートウェイを読み取ります。 |
 > | Microsoft.Web/connections/*/read | 接続を読み取ります。 |
 > | Microsoft.Web/customApis/*/read | カスタム API を読み取ります。 |
@@ -5343,10 +5348,10 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | Microsoft.ManagedIdentity/userAssignedIdentities/write | 新しいユーザー割り当て ID を作成するか、既存のユーザー割り当て ID に関連付けられているタグを更新します。 |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/delete | 既存のユーザー割り当て ID を削除します。 |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5396,10 +5401,10 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5458,10 +5463,10 @@ Azure Sentinel 共同作成者
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | Microsoft.Insights/workbooks/* |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5515,6 +5520,7 @@ Azure Sentinel 閲覧者
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
 > | Microsoft.OperationalInsights/workspaces/*/read | Log Analytics のデータの表示 |
 > | Microsoft.OperationalInsights/workspaces/LinkedServices/read | 指定されたワークスペースのリンクされたサービスを取得します。 |
@@ -5525,10 +5531,10 @@ Azure Sentinel 閲覧者
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | Microsoft.Insights/workbooks/read | ブックを読み取ります |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5548,6 +5554,7 @@ Azure Sentinel 閲覧者
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -5583,6 +5590,7 @@ Azure Sentinel レスポンダー
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
 > | Microsoft.SecurityInsights/cases/* |  |
 > | Microsoft.SecurityInsights/incidents/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
@@ -5595,10 +5603,10 @@ Azure Sentinel レスポンダー
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | Microsoft.Insights/workbooks/read | ブックを読み取ります |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5618,6 +5626,7 @@ Azure Sentinel レスポンダー
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
@@ -5655,11 +5664,11 @@ Azure Sentinel レスポンダー
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.KeyVault/* |  |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | 論理的に削除された Key Vault を消去します。 |
 > | Microsoft.KeyVault/hsmPools/* |  |
@@ -5702,7 +5711,7 @@ Azure Sentinel レスポンダー
 
 ### <a name="security-admin"></a>セキュリティ管理者
 
-セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます。
+Security Center の表示および更新のアクセス許可。 セキュリティ閲覧者と同じアクセス許可があり、セキュリティ ポリシーの更新、アラートと推奨事項の無視も可能になります。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5712,13 +5721,13 @@ Azure Sentinel レスポンダー
 > | Microsoft.Authorization/policyAssignments/* | ポリシーの割り当ての作成と管理 |
 > | Microsoft.Authorization/policyDefinitions/* | ポリシー定義の作成と管理 |
 > | Microsoft.Authorization/policySetDefinitions/* | ポリシー セットの作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | Microsoft.operationalInsights/workspaces/*/read | Log Analytics のデータの表示 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Security/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5812,12 +5821,12 @@ Azure Sentinel レスポンダー
 > | Microsoft.ClassicCompute/*/read | 従来の仮想マシンの構成情報の読み取り |
 > | Microsoft.ClassicCompute/virtualMachines/*/write | 従来の仮想マシンの構成の書き込み |
 > | Microsoft.ClassicNetwork/*/read | 従来のネットワークに関する構成情報の読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Security/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -5860,19 +5869,19 @@ Azure Sentinel レスポンダー
 
 ### <a name="security-reader"></a>セキュリティ閲覧者
 
-推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません。
+Security Center の表示アクセス許可。 推奨事項、警告、セキュリティ ポリシー、セキュリティの状態を閲覧できますが、変更することはできません。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.operationalInsights/workspaces/*/read | Log Analytics のデータの表示 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Security/*/read | セキュリティ コンポーネントとポリシーの読み取り |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -6035,7 +6044,7 @@ Azure Lab アカウントで管理対象のラボを作成、管理、削除で�
 > | Microsoft.LabServices/labAccounts/getPricingAndAvailability/action | ラボ アカウントのサイズ、地域、およびオペレーティング システムの組み合わせの価格と可用性を取得します。 |
 > | Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action | このサブスクリプションのコアに関する制限と使用状況を取得します |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6092,9 +6101,9 @@ Application Insights コンポーネントを管理できます
 > | Microsoft.Insights/components/* | Insights コンポーネントの作成と管理 |
 > | Microsoft.Insights/webtests/* | Insights Web テストの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6136,18 +6145,18 @@ Application Insights コンポーネントを管理できます
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 
-Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。
+Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 ユーザーに Application Insights スナップショット デバッガー ロールを与える場合は、そのロールをユーザーに直接付与する必要があります。 このロールは、カスタム ロールに追加されるときに認識されません。 
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6197,7 +6206,7 @@ Application Insights スナップショット デバッガーで収集された�
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
 > | Microsoft.Insights/actiongroups/* |  |
 > | Microsoft.Insights/activityLogAlerts/* |  |
-> | Microsoft.Insights/AlertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/AlertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Insights/components/* | Insights コンポーネントの作成と管理 |
 > | Microsoft.Insights/DiagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | Microsoft.Insights/eventtypes/* | サブスクリプションのアクティビティ ログのイベント (管理イベント) を一覧表示します。 このアクセス許可は、アクティビティ ログへのプログラムによるアクセスとポータル アクセスの両方に適用されます。 |
@@ -6209,12 +6218,15 @@ Application Insights スナップショット デバッガーで収集された�
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Insights Web テストの作成と管理 |
 > | Microsoft.Insights/workbooks/* |  |
+> | Microsoft.Insights/privateLinkScopes/* |  |
+> | Microsoft.Insights/privateLinkScopeOperationStatuses/* |  |
+> | Microsoft.OperationalInsights/workspaces/write | 新しいワークスペースを作成するか、既存のワークスペースの顧客 ID を指定して既存のワークスペースにリンクします。 |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Log Analytics ソリューション パックの読み取り/書き込み/削除を行います。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | Log Analytics によって保存された検索の読み取り/書き込み/削除を行います。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 検索クエリを実行します。 |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Log Analytics ストレージ インサイト構成の読み取り/書き込み/削除を行います。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft.AlertsManagement/smartDetectorAlertRules/* |  |
@@ -6255,6 +6267,9 @@ Application Insights スナップショット デバッガーで収集された�
         "Microsoft.Insights/scheduledqueryrules/*",
         "Microsoft.Insights/webtests/*",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/privateLinkScopes/*",
+        "Microsoft.Insights/privateLinkScopeOperationStatuses/*",
+        "Microsoft.OperationalInsights/workspaces/write",
         "Microsoft.OperationalInsights/workspaces/intelligencepacks/*",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationalInsights/workspaces/search/action",
@@ -6287,7 +6302,7 @@ Azure リソースに対するメトリックの公開を有効にします
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Insights/Register/Action | Microsoft Insights プロバイダーを登録します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -6334,7 +6349,7 @@ Azure リソースに対するメトリックの公開を有効にします
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.OperationalInsights/workspaces/search/action | 検索クエリを実行します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6472,10 +6487,10 @@ Automation Runbook を使用してジョブを作成および管理します。
 > | Microsoft.Automation/automationAccounts/jobs/suspend/action | Azure Automation ジョブを中断します。 |
 > | Microsoft.Automation/automationAccounts/jobs/write | Azure Automation ジョブを作成します。 |
 > | Microsoft.Automation/automationAccounts/jobs/output/read | ジョブの出力を取得します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6542,12 +6557,12 @@ Automation オペレーターはジョブを開始、停止、中断、再開す
 > | Microsoft.Automation/automationAccounts/runbooks/read | Azure Automation Runbook を取得します。 |
 > | Microsoft.Automation/automationAccounts/schedules/read | Azure Automation スケジュール資産を取得します。 |
 > | Microsoft.Automation/automationAccounts/schedules/write | Azure Automation スケジュール資産を作成または更新します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Automation/automationAccounts/jobs/output/read | ジョブの出力を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6609,10 +6624,10 @@ Runbook のジョブを作成する方法については、Runbook のプロパ�
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Automation/automationAccounts/runbooks/read | Azure Automation Runbook を取得します。 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6757,7 +6772,7 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | Microsoft.CostManagement/*/read |  |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6806,8 +6821,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Blueprint/blueprints/* | ブループリントの定義またはブループリント アーティファクトを作成および管理します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6854,8 +6869,8 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Blueprint/blueprintAssignments/* | ブループリント割り当てを作成および管理します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -6904,7 +6919,7 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | Microsoft.Billing/billingPeriods/read |  |
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Advisor/configurations/read | 構成の取得 |
 > | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
@@ -6960,7 +6975,7 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | Microsoft.Billing/billingPeriods/read |  |
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Advisor/configurations/read | 構成の取得 |
 > | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
@@ -7003,6 +7018,48 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 }
 ```
 
+### <a name="hierarchy-settings-administrator"></a>Hierarchy Settings Administrator
+
+ユーザーに、階層設定の編集と削除を許可します
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **アクション** |  |
+> | Microsoft.Management/managementGroups/settings/write | 管理グループ階層の設定が作成または更新されます。 |
+> | Microsoft.Management/managementGroups/settings/delete | 管理グループ階層の設定が削除されます。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows users to edit and delete Hierarchy Settings",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/350f8d15-c687-4448-8ae1-157740a3936d",
+  "name": "350f8d15-c687-4448-8ae1-157740a3936d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Management/managementGroups/settings/write",
+        "Microsoft.Management/managementGroups/settings/delete"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Hierarchy Settings Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="managed-application-contributor-role"></a>Managed Application Contributor Role
 
 マネージド アプリケーション リソースの作成を許可します。
@@ -7015,7 +7072,7 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | Microsoft.Solutions/applications/* |  |
 > | Microsoft.Solutions/register/action | ソリューションに登録します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/* |  |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7104,7 +7161,7 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | --- | --- |
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Solutions/jitRequests/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -7280,11 +7337,11 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | NewRelic.APM/accounts/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -7384,7 +7441,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | Microsoft.Authorization/policydefinitions/* | ポリシー定義の作成と管理 |
 > | Microsoft.Authorization/policysetdefinitions/* | ポリシー セットの作成と管理 |
 > | Microsoft.PolicyInsights/* |  |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7430,7 +7487,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Network/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp は、サービスによって使用される内部操作です。 |
@@ -7452,11 +7509,11 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Recovery Services コンテナーのアラートの読み取り |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | Microsoft.RecoveryServices/vaults/replicationOperationStatus/read | コンテナー レプリケーション操作の状態を読み取ります |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7524,7 +7581,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.Network/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp は、サービスによって使用される内部操作です。 |
@@ -7577,10 +7634,10 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7707,7 +7764,7 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 > | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7779,7 +7836,7 @@ Support request を作成して管理できます
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7825,9 +7882,9 @@ Support request を作成して管理できます
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/resources/read | リソース グループのリソースを取得します。 |
 > | Microsoft.Resources/subscriptions/resources/read | サブスクリプションのリソースを取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | Microsoft.Resources/tags/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -7880,11 +7937,11 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.BizTalkServices/BizTalk/* | BizTalk Services の作成と管理 |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -7931,12 +7988,12 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 > | --- | --- |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/* | デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Scheduler/jobcollections/* | ジョブ コレクションの作成と管理 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |

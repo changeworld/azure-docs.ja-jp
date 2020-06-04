@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB .NET 変更フィード Processor API、SDK リソース ノート
 description: リリース日、提供終了日、.NET Change Feed Processor SDK の各バージョン間の変更など、Change Feed Processor API と SDK に関するあらゆる詳細を提供します。
-author: ealsur
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/30/2019
-ms.author: maquaran
-ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: e39cef33d8d402b6e04c6b9952cae21848e02424
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619444"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660429"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 
@@ -23,8 +23,9 @@ ms.locfileid: "80619444"
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -62,7 +63,7 @@ ms.locfileid: "80619444"
 ### <a name="227"></a><a name="2.2.7"/>2.2.7
 * ネットワークの問題などにより、すべてのリースの取得にリースの有効期限の間隔よりも長くかかるシナリオの負荷分散戦略を向上しました。
   * このシナリオでは、負荷分散アルゴリズムによって、リースが誤って期限切れと見なされ、アクティブな所有者からリースが奪われていました。 その結果、不必要に多くのリースの再調整がトリガーされる可能性があります。
-  * 競合の再試行を回避すると同時に、所有者が変わっていない期限切れのリースを取得し、期限切れのリースの取得を次回の負荷分散のイテレーションを延期することで、この問題は修正されました。
+  * この問題は、このリリースにおいて、所有者が変わっていない期限切れのリースを取得するときに競合を再試行することを避け、期限切れのリースの取得を次回の負荷分散のイテレーションまで延期することで修正されました。
 
 ### <a name="226"></a><a name="2.2.6"/>2.2.6
 * オブザーバーの例外の処理が改善されました。

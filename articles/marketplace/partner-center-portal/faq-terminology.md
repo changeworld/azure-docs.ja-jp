@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eb91e498fa757c5cec7bd466c60aaf7e8758304c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791478"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744578"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>コマーシャル マーケットプレース分析の用語とよく寄せられる質問
 
@@ -51,7 +51,7 @@ ms.locfileid: "82791478"
 | 顧客の市区町村| Customer| 顧客が指定した市区町村名。 市区町村は、顧客の Azure サブスクリプションの市区町村とは異なる場合があります。||
 | 顧客のコミュニケーション言語  | Customer| 通信で顧客が優先的に使用する言語。||
 | 顧客の会社名 | 顧客、注文 | 顧客が指定した会社名。 名前は、顧客の Azure サブスクリプションの名前とは異なる場合があります。|  |
-| 顧客の国 | 顧客、注文 | 顧客が指定した国名。 国は、顧客の Azure サブスクリプションの国とは異なる場合があります。|  |
+| 顧客の国または地域 | 顧客、注文 | 顧客が指定した国や地域の名前。 国または地域は、顧客の Azure サブスクリプションの国またはリージョン地域とは異なる場合があります。|  |
 | 顧客のメール| Customer| 顧客が指定したメール アドレス。 メールは、顧客の Azure サブスクリプションのメール アドレスとは異なる場合があります。||
 | 顧客の名| Customer| 顧客が指定した名前。 名前は、顧客の Azure サブスクリプションで指定されている名前とは異なる場合があります。| |
 | Customer ID | 顧客、注文 | 顧客に割り当てられている一意の識別子。 顧客は 0 個以上の Azure Marketplace サブスクリプションを持っている可能性があります。|  |

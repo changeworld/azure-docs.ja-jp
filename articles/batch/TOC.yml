@@ -129,6 +129,8 @@
           href: batch-custom-images.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md
+        - name: パブリック IP アドレスのプールを作成する
+          href: create-pool-public-ip.md
         - name: 仮想ファイル システムをマウントする
           href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする

@@ -41,6 +41,8 @@
       href: ../../backup/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
+    - name: Container Instances のセキュリティ ベースライン
+      href: ../../container-instances/security-baseline.md
     - name: Container Registry のセキュリティ ベースライン
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB のセキュリティ ベースライン

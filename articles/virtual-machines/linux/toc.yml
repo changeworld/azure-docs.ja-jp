@@ -952,8 +952,10 @@
               href: configure-raid.md
             - name: LVM を構成する
               href: configure-lvm.md
-        - name: アタッチされていないディスクの検出
+        - name: アタッチされていないディスクの検出 - CLI
           href: find-unattached-disks.md
+        - name: アタッチされていないディスクの検出 - ポータル
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: File Storage を使用する
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: ディスクに関する FAQ
