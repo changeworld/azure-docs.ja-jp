@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/19/2020
+ms.openlocfilehash: 5798e3c9c2a345c5cf9d8fd254130b4252a696d8
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857655"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847975"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する
 
@@ -59,7 +59,7 @@ ms.locfileid: "82857655"
 
 オファーを設定するには、次の手順に従います。
 
-### <a name="connect-lead-management"></a>リード管理の接続
+### <a name="customer-leads"></a>潜在顧客
 
 パートナー センターを使用してオファーをマーケットプレースに公開する場合、それを顧客関係管理 (CRM) システムに任意で接続できます。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。
 
@@ -146,44 +146,15 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明には、次の 1 つまたは複数を含めます。
+IoT Edge モジュールのオファーには、説明の一番下に、次のような最小ハードウェア要件の段落が含まれている必要があります。
 
-- オファーによってもたらされる価値と主なメリット
-- カテゴリまたは業界のアソシエーション、あるいはその両方
-- アプリ内購入の機会
-- 必要な開示
+- 最小ハードウェア要件: Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ
 
-IoT Edge モジュールのオファーには、説明の一番下に最小ハードウェア要件の段落が含まれている必要があります。 次に例を示します。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-"*最小ハードウェア要件: Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ*"
-
-説明を記述するためのいくつかのヒントを次に示します。
-
-- 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
-    - プランの説明。
-    - オファーから利益を得るユーザーの種類。
-    - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
-- 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-- 業界固有の語彙または利益に基づく表現を使用してください。
-
-プランの**説明**をより魅力的なものにするには、リッチ テキスト エディターを使用して説明を書式設定してください。 リッチ テキスト エディターを使用すると、数字、箇条書き、太字、斜体、およびインデントを追加して、説明を読みやすくすることができます。
-
-:::image type="content" source="media/text-editor2.png" alt-text="リッチ テキスト エディターの画像。" border="false":::
-
-- コンテンツ形式を変更するには、このスクリーンショットのように、書式設定するテキストを強調表示して、テキスト スタイルを選択します。
-
-     :::image type="content" source="media/text-editor3.png" alt-text="リッチ テキスト エディターのテキスト スタイル コントロールの画像。" border="false":::
-
-- 箇条書きまたは番号付きリストをテキストに追加するには、このスクリーンショットにあるオプションを使用します。
-  
-    :::image type="content" source="media/text-editor4.png" alt-text="リッチ テキスト エディターの箇条書きまたは番号付きリストのコントロールの画像。" border="false":::
-
-- テキストのインデントを追加または削除するには、このスクリーンショットにあるオプションを使用します。
-
-    :::image type="content" source="media/text-editor5.png" alt-text="リッチ テキスト エディターのインデント コントロールの画像。" border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-url"></a>[プライバシー ポリシーの URL]
 
@@ -397,11 +368,11 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
 
-**[Azure Container Registry のパスワード]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 **[コンテナー レジストリ]** 、 **[アクセス キー]** の順に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
+**[Azure Container Registry のパスワード]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 **[コンテナー レジストリ]** 、 >  **[アクセス キー]** の順に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Azure portal のアクセス キー画面の画像。":::
 
-**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) の**リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)」を参照してください。 名前は設定後に変更できません。 アカウント内のオファー別に一意の名前を使用します。
+**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) の > **リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)」を参照してください。 名前は設定後に変更できません。 アカウント内のオファー別に一意の名前を使用します。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>新しいバージョンのオファーのイメージ タグ
 
