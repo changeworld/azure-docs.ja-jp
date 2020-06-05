@@ -53,7 +53,7 @@ SMTP、または SendGrid の Web API を使用して電子メールを送信で
 
 ### <a name="smtp-api"></a>SMTP API
 
-SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。 [Swift Mailer ライブラリ](https://swiftmailer.symfony.com/) v5.3.0 をダウンロードできます (Swift Mailer をインストールするには、[[[Composer]]] を使用します)。 このライブラリを使用して電子メールを送信するには `Swift\_SmtpTransport`、`Swift\_Mailer`、および `Swift\_Message` クラスのインスタンスを作成し、適切なプロパティを設定して `Swift\_Mailer::send` メソッドを呼び出す必要があります。
+SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。 [Swift Mailer ライブラリ](https://swiftmailer.symfony.com/) v5.3.0 をダウンロードできます (Swift Mailer をインストールするには、[Composer] を使用します)。 このライブラリを使用して電子メールを送信するには `Swift\_SmtpTransport`、`Swift\_Mailer`、および `Swift\_Message` クラスのインスタンスを作成し、適切なプロパティを設定して `Swift\_Mailer::send` メソッドを呼び出す必要があります。
 
 ```php
 <?php
@@ -303,7 +303,7 @@ SendGrid では、 *フィルター*を使用することでその他の電子�
 
 フィルターは、フィルターのプロパティを使用してメッセージに適用できます。 各フィルターは、フィルター固有の設定を格納したハッシュで指定します。 次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。 この例では、 [sendgrid-php]ライブラリを使用します。
 
-ライブラリをインストールするには、 [[[Composer]]] を使用します。
+ライブラリをインストールするには、 [Composer] を使用します。
 
 ```bash
 php composer.phar require sendgrid/sendgrid 2.1.1
@@ -425,4 +425,4 @@ php composer.phar require sendgrid/sendgrid 2.1.1
 [トランザクション メール配信]: https://sendgrid.com/email-solutions
 [クラウドベースの電子メール サービス]: https://sendgrid.com/transactional-email
 [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-[[[Composer]]]: https://getcomposer.org/download/
+[Composer]: https://getcomposer.org/download/
