@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606893"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744155"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Security Center での脅威の防止
 
@@ -29,7 +29,10 @@ Azure Security Center の脅威の防止によって、お使いの環境が包�
 
 * **Azure サービス レイヤーの脅威の防止**: Azure ネットワーク レイヤー、Azure 管理レイヤー (Azure Resource Manager) (プレビュー)、および Azure Key Vault (プレビュー)
 
-アラートは、Security Center によって生成されたか、別のセキュリティ製品の Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel (またはサードパーティの SIEM) あるいはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。 
+アラートは、Security Center によって生成されたか、別のセキュリティ製品の Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。 
+
+> [!NOTE]
+> アラートの出力元によって、表示されるまでの時間が変わる場合があります。 たとえば、ネットワーク トラフィックの分析を必要とするアラートは、仮想マシンで実行されている疑わしいプロセスに関連するアラートよりも、表示されるまでより長い時間がかかる可能性があります。
 
 > [!TIP]
 > Security Center の脅威保護機能を有効にするには、Standard 価格レベルを、適用可能なワークロードを含むサブスクリプションに適用する必要があります。
@@ -44,20 +47,12 @@ Azure Security Center の脅威の防止によって、お使いの環境が包�
 
 Azure Security Center は Azure サービスと統合し、Windows ベースのマシンの監視と保護が行われます。 Security Center は、これらすべてのサービスからのアラートと修復の提案を使いやすい形式で示します。
 
-* **Microsoft Defender ATP** <a name="windows-atp"></a> - Security Center では、Microsoft Defender Advanced Threat Protection (ATP) と統合することで、そのクラウド ワークロード保護プラットフォームを拡張します。 同時に、包括的なエンドポイントの検出と対応 (EDR) 機能が提供されます。
+* **Microsoft Defender Advanced Threat Protection (ATP)** <a name="windows-atp"></a> - Security Center では、Microsoft Defender Advanced Threat Protection (ATP) と統合することで、そのクラウド ワークロード保護プラットフォームを拡張します。 同時に、包括的なエンドポイントの検出と対応 (EDR) 機能が提供されます。
 
     > [!IMPORTANT]
     > Microsoft Defender ATP センサーは、Security Center を使用する Windows サーバーで自動的に有効になります。
 
     Microsoft Defender ATP で脅威が検出されると、アラートがトリガーされます。 アラートは、[Security Center] ダッシュボードに表示されます。 ダッシュボードからは、Microsoft Defender ATP コンソールにピボットし、詳細な調査を実行して攻撃の範囲を明らかにすることができます。 Microsoft Defender ATP の詳細については、「[Microsoft Defender ATP サービスに対するサーバーのオンボード](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)」をご覧ください。
-
-* **クラッシュ ダンプ分析** <a name="windows-dump"></a> - ソフトウェアがクラッシュすると、クラッシュ時のメモリが部分的にクラッシュ ダンプにキャプチャされます。
-
-    クラッシュは、マルウェアが原因か、マルウェアが含まれている可能性があります。 セキュリティ製品によって検出されないようにするために、さまざまな形式のマルウェアがファイルレス攻撃を使用して、ディスクへの書き込みやディスクに書き込まれたソフトウェア コンポーネントの暗号化を回避します。 この種の攻撃は、従来のディスク ベースのアプローチを使用して検出することは困難です。
-
-    しかし、メモリ分析を使用すると、この種の攻撃を検出できます。 クラッシュ ダンプでメモリを分析すると、Security Center では、攻撃で使用されている手法を検出できます。 たとえば、攻撃では、ソフトウェアの脆弱性の悪用、機密データへのアクセス、侵害されたコンピューターでの不正な保持が試みられている可能性があります。 Security Center では、ホストへのパフォーマンスへの影響を最小限に抑えながら、これが行われます。
-
-    クラッシュ ダンプ分析アラートの詳細については、[アラートのリファレンス表](alerts-reference.md#alerts-windows)に関するページを参照してください。
 
 * **ファイルレス攻撃の検出** <a name="windows-fileless"></a> - エンドポイントを対象とするファイルレス攻撃は一般的です。 ファイルレス攻撃は、検出を回避するために悪意のあるペイロードをメモリに挿入します。 侵害されたプロセスのメモリ内に存続する攻撃者のペイロードにより、さまざまな悪意のあるアクティビティが実行されます。
 
@@ -81,7 +76,7 @@ Security Center では、**auditd** (最も一般的な Linux 監査フレーム
 
 * **Linux auditd アラートと Log Analytics エージェントの統合** <a name="linux-auditd"></a> - auditd システムは、システム コールの監視を担当するカーネル レベルのサブシステムで構成されます。 指定されたルール セットによってそれらのフィルター処理が行われ、それらに対するメッセージがソケットに書き込まれます。 Security Center は、Log Analytics エージェント内で auditd パッケージの機能を統合します。 この統合により、前提条件なしで、すべてのサポートされている Linux ディストリビューションで auditd イベントの収集が可能になります。
 
-    Linux 用 Log Analytics エージェントを使用して、auditd レコードの収集、拡充、およびイベントへの集約が行われます。 Security Center では、Linux のシグナルを使用してクラウドおよびオンプレミスの Linux マシン上で悪意のある動作を検出する新しい分析が、継続的に追加されています。 Windows の機能と同様に、これらの分析は、疑わしいプロセス、不審なサインイン試行、カーネル モジュールの読み込み、およびその他のアクティビティにまたがります。 これらのアクティビティは、マシンが攻撃を受けているか、侵害されたことを示している可能性があります。  
+    Linux 用 Log Analytics エージェントを使用して、auditd レコードの収集、拡充、およびイベントへの集約が行われます。 Security Center では、Linux のシグナルを使用してクラウドおよびオンプレミスの Linux マシン上で悪意のある動作を検出する新しい分析が、継続的に追加されています。 Windows の機能と同様に、これらの分析には、不審なプロセス、不審なサインインの試行、カーネル モジュールの読み込み、その他のアクティビティが含まれます。 これらのアクティビティは、マシンが攻撃を受けているか、侵害されたことを示している可能性があります。  
 
     Linux アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-linux)に関するページを参照してください。
 
@@ -171,7 +166,7 @@ Advanced Threat Protection for Storage では、ストレージ アカウント�
 
 Advanced Threat Protection for Azure Storage は、現時点では [BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)でのみ使用できます。 
 
-このサービスはすべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウドと Azure Government クラウドのリージョンでは使用できません。
+このサービスはすべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウド (Azure Government クラウド) のリージョンでは使用できません。
 
 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 

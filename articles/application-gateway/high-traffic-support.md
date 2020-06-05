@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 56622ee2c014bd8dbca7c61ec00b927c56f63a40
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617196"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740401"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Application Gateway の高トラフィックのサポート
 
@@ -51,7 +51,7 @@ Application Gateway v2 SKU のご利用を想定した場合、自動スケー�
 > 潜在的なトラフィック スパイクへの警戒度に応じて、より低い (または高い) CU 使用率でアラートが発生するように設定できます。
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>geo フィルタリングとボット保護を WAF に設定して攻撃を阻止する
-アプリケーションの手前に追加のセキュリティ層が必要な場合、WAF 機能のために Application Gateway WAF_v2 SKU を使用します。 特定の国からのみアプリケーションへのアクセスを許可するように v2 SKU を構成できます。 WAF カスタム ルールを設定し、位置情報に基づいてトラフィックを明示的に許可またはブロックします。 詳細については、[geo フィルタリングのカスタム ルール](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules)および [PowerShell を使用して Application Gateway WAF_v2 SKU でカスタム ルールを構成する方法](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)に関するページを参照してください。
+アプリケーションの手前に追加のセキュリティ層が必要な場合、WAF 機能のために Application Gateway WAF_v2 SKU を使用します。 特定の国/地域からのみアプリケーションへのアクセスを許可するように v2 SKU を構成できます。 WAF カスタム ルールを設定し、位置情報に基づいてトラフィックを明示的に許可またはブロックします。 詳細については、[geo フィルタリングのカスタム ルール](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules)および [PowerShell を使用して Application Gateway WAF_v2 SKU でカスタム ルールを構成する方法](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)に関するページを参照してください。
 
 ボット保護を有効にして既知の悪意あるボットをブロックします。 これによって、アプリケーションに到達するトラフィック量を減少させます。 詳細については、[ボット保護と設定手順](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)に関するページを参照してください。
 

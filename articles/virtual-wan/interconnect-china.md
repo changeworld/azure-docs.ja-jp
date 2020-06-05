@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985628"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747606"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure Virtual WAN とセキュリティ保護付きハブを使用した中国との相互接続
 
@@ -137,7 +137,7 @@ Azure Virtual WAN をインターネット接続と共に使用すると、す�
 
 ![ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
 
-現在、ExpressRoute Global Reach はすべての国で利用できるわけではありませんが、Azure Virtual WAN を使用してソリューションを構成することができます。
+現在、ExpressRoute Global Reach はすべての国/地域で利用できるわけではありませんが、Azure Virtual WAN を使用してソリューションを構成することができます。
 
 たとえば、Microsoft ピアリングを使用して ExpressRoute を構成し、そのピアリングを介して VPN トンネルを Azure Virtual WAN に 接続することができます。 これで、Global Reach とサードパーティ プロバイダーおよびサービス (Megaport Cloud など) を使用せずに、VPN と ExpressRoute 間の転送を再び有効にしました。
 

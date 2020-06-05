@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abbf5d79da033a696890566d85bd24bb54577d2c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450353"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715700"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィードの設計パターン
 
@@ -29,7 +29,7 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 ## <a name="event-computing-and-notifications"></a>イベントのコンピューティングと通知
 
-Azure Cosmos DB の変更フィードでは、特定のイベントに基づいて通知または API の呼び出しをトリガーする必要のあるシナリオを簡略化することができます。 [変更フィード プロセッサ ライブラリ](change-feed-processor.md)を使用すると、コンテナーの変更を自動的にポーリングし、書き込みや更新が行われるたびに外部 API を呼び出すことができます。
+Azure Cosmos DB の変更フィードでは、特定のイベントに基づいて API に通知をトリガーするか呼び出しを送信する必要のあるシナリオを簡略化することができます。 [変更フィード プロセッサ ライブラリ](change-feed-processor.md)を使用すると、コンテナーの変更を自動的にポーリングし、書き込みや更新が行われるたびに外部 API を呼び出すことができます。
 
 また、特定の条件に基づいて、選択的に通知をトリガーしたり、API の呼び出しを送信したりすることもできます。 たとえば、[Azure Functions](change-feed-functions.md) を使用して変更フィードから読み取る場合、特定の条件が満たされた場合にのみ通知が送信されるように、関数にロジックを組み込むことができます。 Azure Functions コードは書き込みと更新のたびに実行されますが、通知は、特定の条件が満たされた場合にのみ送信されます。
 

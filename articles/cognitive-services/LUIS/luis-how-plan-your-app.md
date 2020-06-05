@@ -2,13 +2,13 @@
 title: アプリの計画 - LUIS
 description: 関連するアプリの意図とエンティティについて概説し、Language Understanding Intelligent Service (LUIS) でアプリケーション プランを作成します。
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/14/2020
+ms.openlocfilehash: 3463078309978ae34918f27a9d75c1dabd59ae66
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382306"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654111"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>サブジェクト ドメインとデータ抽出を使用して LUIS アプリ スキーマを計画する
 
@@ -48,6 +48,30 @@ LUIS アプリはサブジェクト ドメインが中心です。 たとえば�
 
 > [!TIP]
 > LUIS には、一般的な会話ユーザーのシナリオに合わせて[構築済みのエンティティ](luis-prebuilt-entities.md)が用意されています。 アプリケーション開発の出発点として、構築済みのエンティティを使用することを検討してください。
+
+## <a name="resolution-with-intent-or-entity"></a>意図またはエンティティを使用する解決策
+
+多くの場合、特に自然な会話を操作するときには、ユーザーは複数の機能 (つまり、意図) を含む可能性がある発話を提供します。 これに対応するためには、一般的な経験則として、出力の表現は意図とエンティティの両方で行われる可能性があると理解することです。 この表現は、クライアント アプリケーションのアクションにマッピングできる必要があり、その意図に限定される必要はありません。
+
+**Int-ent-ties** は、アクション (通常は意図として理解される) がエンティティとしてもキャプチャされる概念であり、特定のアクションにマップできる出力 JSON の中で、この形式で利用されています。 _Negation_ は、完全抽出において、意図およびエンティティの両方でこの利用の効果を上げるための一般的な使用方法です。
+
+次の 2 つの発話について考えてみます。非常によく似た単語の選択を考慮していますが、結果は異なります。
+
+|発話|
+|--|
+|`Please schedule my flight from Cairo to Seattle`|
+|`Cancel my flight from Cairo to Seattle`|
+
+2 つの独立した意図を用意する代わりに、`FlightAction` 機械学習エンティティによって 1 つの意図を作成します。 機械学習エンティティでは、スケジュールおよびキャンセルの要求の両方に対するアクションの詳細と、出発地または到着地のどちらかを抽出する必要があります。
+
+`FlightAction` エンティティは、機械学習エンティティとサブエンティティの次の suedo スキーマで構成されます。
+
+* FlightAction
+    * アクション
+    * Origin (配信元)
+    * 宛先
+
+抽出しやすくするために、サブエンティティに特徴を追加します。 ユーザーの発話の中で表示したいボキャブラリと、予測応答で返されてほしい値に基づいて、特徴を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

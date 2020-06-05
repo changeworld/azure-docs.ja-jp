@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e529144198d0c635e74955e98d47dd46ac4fb733
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614184"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657252"
 ---
 # <a name="identify-and-diagnose-issues"></a>問題の特定と診断
 
@@ -139,6 +139,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 |数値コード|エラー コード|推奨されている解決方法|
 |---|---|---|
+|1322|ConnectionFailedNoMappingOfSIDinAD|ユーザーは Azure Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
 |3|UnauthorizedAccess|管理用の PowerShell コマンドレットを実行しようとしたユーザーにそれを行うためのアクセス許可がないか、ユーザー名に入力ミスがありました。|
 |1000|TenantNotFound|入力したテナント名が既存のどのテナントとも一致しません。 テナント名に入力ミスがないことを確認し、もう一度やり直してください。|
 |1006|TenantCannotBeRemovedHasSessionHostPools|オブジェクトが含まれているテナントは削除できません。 最初にセッション ホスト プールを削除してから、もう一度やり直してください。|
@@ -160,6 +161,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 |数値コード|エラー コード|推奨されている解決方法|
 |---|---|---|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|ユーザーは Azure Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|セッション ホストは、Active Directory に正しく参加していません。|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|セッション ホストが使用できないため、接続が失敗しました。 セッション ホストの正常性を確認してください。|
 |-2146233088|ConnectionFailedClientDisconnect|このエラーが頻繁に発生する場合は、ユーザーのコンピューターがネットワークに接続されていることを確認してください。|

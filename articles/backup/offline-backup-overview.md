@@ -3,12 +3,12 @@ title: オフライン バックアップの概要
 description: オフライン バックアップのコンポーネントについて説明します。 これには、Azure Data Box に基づくオフライン バックアップと Azure Import/Export サービスに基づくオフライン バックアップが含まれます。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160923"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744635"
 ---
 # <a name="overview-of-offline-backup"></a>オフライン バックアップの概要
 
@@ -73,11 +73,11 @@ MABS または DPM-A と共に同じものを使用するには、「[DPM と Az
 | セキュリティ (データ、デバイス、およびサービス)                           | [データ](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) - AES-256 ビットで暗号化 <br> [デバイス](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) - 堅牢なケースで、データをコピーするための独自の資格情報ベースのインターフェイス <br> [サービス](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) - Azure セキュリティ機能によって保護 | データ - BitLocker で暗号化                                 |
 | 一時的なステージング場所のプロビジョニング                     | 必要なし                                                | バックアップ データの推定サイズ以上        |
 | サポートされているリージョン                                           | [Azure Data Box Disk のリージョン](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box のリージョン](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure Import/Export サービスのリージョン](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| 国外への発送                                     | サポートされていません  <br>    Azure データセンターの発送元の住所と宛先は同一国内でなければなりません* | サポートされています                                                    |
+| 国外への発送                                     | サポートされていません  <br>    Azure データセンターの発送元の住所と宛先は同一国/地域内でなければなりません* | サポートされています                                                    |
 | 転送ロジスティック (配送、輸送、集荷)           | Microsoft が完全に管理                                     | お客様による管理                                            |
 | 価格                                                      | [Azure Data Box の価格](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box Disk の価格](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure Import/Export サービスの価格](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-*お住まいの国に Azure データセンターがない場合は、別の国の Azure データセンターにディスクを発送する必要があります。
+*お住まいの国/地域に Azure データセンターがない場合は、別の国/地域の Azure データセンターにディスクを発送する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

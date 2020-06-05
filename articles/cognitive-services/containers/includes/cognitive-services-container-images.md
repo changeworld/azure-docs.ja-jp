@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590667"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721090"
 ---
 ### <a name="container-repositories-and-images"></a>コンテナーのリポジトリとイメージ
 
@@ -62,7 +62,7 @@ Microsoft コンテナー レジストリ (MCR) からは、Cognitive Services �
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>パブリックの "ゲート付き" プレビュー (コンテナー レジストリ: `containerpreview.azurecr.io`)
 
-次のゲート付きプレビュー コンテナーはコンテナー プレビュー レジストリでホストされており、アクセスするにはアプリケーションが必要です。 詳細については、[Cognitive Services のゲート プロセス](../../cognitive-services-gating-process.md)に関するページを参照してください。
+次のゲート付きプレビュー コンテナーはコンテナー プレビュー レジストリでホストされており、アクセスするにはアプリケーションが必要です。 詳細については、次のコンテナーに関する記事を参照してください。
 
 | サービス | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |--|--|--|

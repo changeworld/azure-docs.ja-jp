@@ -1,22 +1,22 @@
 ---
-title: コマーシャル マーケットプレース公開ガイド
-description: アプリとサービスの発行元向けのコマーシャル マーケットプレースの概要です。
+title: Microsoft コマーシャル マーケットプレース公開ガイド
+description: Microsoft AppSource と Azure Marketplace にプランを公開する Microsoft パートナー向けのコマーシャル マーケットプレースの概要です。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261994"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657858"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>コマーシャル マーケットプレース公開ガイド
 
-この Marketplace 公開ガイドでは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップを使い、アプリケーションとサービスを登録することによって、Microsoft と連携してそのビジネスを成長させる方法を、新しいパブリッシャーと既存のパブリッシャー向けにわかりやすく説明しています。
+この公開ガイドでは、新しいパブリッシャーと既存のパブリッシャー向けに、コマーシャル マーケットプレースのネットショップ [Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) にアプリケーションとサービスを登録し、Microsoft と連携してビジネスを成長させる方法を、わかりやすく説明しています。
 
 >[!Note]
 >Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。

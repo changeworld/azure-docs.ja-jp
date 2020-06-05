@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: c78a7d26100d3c3454cd96e2ac79e1767e5efcdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594381"
+ms.locfileid: "83656630"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB の分析ストア (プレビュー) とは
 
@@ -164,7 +164,7 @@ Azure Cosmos DB コンテナーで分析ストアを有効にするためのだ�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳しく学習するために、次のドキュメントを参照してください。
+詳細については、次のドキュメントを参照してください。
 
 * [Azure Synapse Link for Azure Cosmos DB](synapse-link.md)
 

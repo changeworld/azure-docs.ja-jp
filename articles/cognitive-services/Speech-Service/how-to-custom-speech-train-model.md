@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77137768"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722628"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Custom Speech 用のモデルをトレーニングする
 
@@ -42,7 +42,7 @@ ms.locfileid: "77137768"
 2. **[音声変換]、[Custom Speech]、[トレーニング]** の順に移動します。
 3. **[Train model]\(モデルのトレーニング\)** をクリックします。
 4. 次に、トレーニングの **[名前]** と **[説明]** を指定します。
-5. **[Scenario and Baseline model]\(シナリオとベースライン モデル\)** ドロップダウン メニューから、ドメインに最適なシナリオを選択します。 どのシナリオを選択すればよいかわからない場合は、 **[一般]** を選択します。 このベースライン モデルがトレーニングの開始点です。 好みがない場合は、最新のものを使用できます。
+5. **[Scenario and Baseline model]\(シナリオとベースライン モデル\)** ドロップダウン メニューから、ドメインに最適なシナリオを選択します。 どのシナリオを選択すればよいかわからない場合は、 **[一般]** を選択します。 このベースライン モデルがトレーニングの開始点です。 通常は、最新のモデルが最適な選択肢です。
 6. **[Select training data]\(トレーニング データの選択\)** ページから、トレーニングに使用する 1 つまたは複数の "オーディオ + 人間" とラベルが付いた文字起こしデータセットを選択します。
 7. トレーニングが完了したら、新しくトレーニングしたモデルに対して正確性テストを実行することを選択できます。 この手順は省略可能です。
 8. **[作成]** を選択してカスタム モデルを作成します。

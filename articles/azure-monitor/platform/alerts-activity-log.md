@@ -4,12 +4,12 @@ description: Azure portal、Azure Resource Manager テンプレート、およ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: bfbe2bc3ae3edf9285d3ec006ab0451f070cabd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132406"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744263"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -67,6 +67,11 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
      **[条件の追加] 画面**
 
      ![条件の追加](media/alerts-activity-log/add-criteria.png)
+     
+     > [!NOTE]
+     > 
+     >  高品質で効果的なルールを作成するために、Microsoft ではルールに "すべて管理" というシグナルを指定した条件を 1 つ以上追加することをお願いしています。 
+     > アラートの定義の一環として、[イベントのレベル]、[状態]、[開始者] のいずれか 1 つのドロップ ダウンを入力してください。これにより、ルールがより具体的になります。
 
      - **履歴の時間:** 選択した操作で利用できるイベントをプロットできるのは、過去 6 時間/12 時間/24 時間または過去 1 週間です。
 

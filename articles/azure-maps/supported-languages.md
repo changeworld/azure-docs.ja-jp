@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334064"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746014"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps でのローカライズのサポート
 
@@ -46,7 +46,7 @@ Azure Maps は、そのサービス全体にわたってさまざまな言語に
 | en-AU      | 英語 (オーストラリア)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-NZ      | 英語 (ニュージーランド)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | 英語 (英国) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-US      | 英語 (米国)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| ja-JP      | 英語 (米国)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | エストニア語               |       |    ✓   |         |      ✓    |         ✓         |                |
 | fil-PH     | フィリピン語               |       |       |         |     ✓    |                   |                |
 | fi-FI      | フィンランド語                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -142,7 +142,7 @@ Azure Maps は、そのサービス全体にわたってさまざまな言語に
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-要求で定義していない場合でも、既定で View パラメーターは **Unified** に設定されています。 ユーザーの場所を確認します。 次に、その場所の **View** パラメーターを正しく設定します。 または、要求の IP アドレスに基づいてマップ データを返す 'View = Auto' を設定することができます。  Azure Maps の **View** パラメーターは、Azure Maps へのアクセスを承認されたマップ、イメージ、およびその他のデータとサード パーティ コンテンツを表示できる国のマッピングに関する法律など、該当する法律に準拠していなければなりません。
+要求で定義していない場合でも、既定で View パラメーターは **Unified** に設定されています。 ユーザーの場所を確認します。 次に、その場所の **View** パラメーターを正しく設定します。 または、要求の IP アドレスに基づいてマップ データを返す 'View = Auto' を設定することができます。  Azure Maps の **View** パラメーターは、Azure Maps へのアクセスを承認されたマップ、イメージ、およびその他のデータとサード パーティ コンテンツを表示できる国/地域のマッピングに関する法律など、該当する法律に準拠していなければなりません。
 
 
 次の表に、サポートされるビューを示します。

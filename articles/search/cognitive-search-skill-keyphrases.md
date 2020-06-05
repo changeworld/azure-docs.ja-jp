@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72791974"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744010"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>キー フレーズ抽出コグニティブ スキル
 
@@ -44,10 +44,17 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力     | 説明 |
+| 入力  | 説明 |
 |--------------------|-------------|
 | text | 分析されるテキスト。|
 | languageCode  |  レコードの言語を示す文字列。 このパラメーターが指定されていない場合、既定の言語コードがレコードを分析するために使用されます。 <br/>[サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)を参照|
+
+## <a name="skill-outputs"></a>スキルの出力
+
+| 出力  | 説明 |
+|--------------------|-------------|
+| keyPhrases | 入力テキストから抽出されたキー フレーズの一覧。 キー フレーズは、重要度順に返されます。 |
+
 
 ##  <a name="sample-definition"></a>定義例
 

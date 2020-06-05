@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284978"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746653"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法
 
@@ -29,11 +29,11 @@ SaaS のオファーを購入するには、以下のものが必要です。
 - オファーを購入する国や地域で有効なクレジット カード。
 
     > [!Note]
-    > クレジット カードの請求先の国は、Azure Active Directory インスタンスの場所にロックされている場合があります。
+    > クレジット カードの請求先の国/地域は、Azure Active Directory インスタンスの場所にロックされている場合があります。
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>AppSource での購入の手順
 
-1. [AppSource](https://appsource.microsoft.com/) で請求先の国または地域を選択します。
+1. [AppSource](https://appsource.microsoft.com/) で請求先の国/地域を選択します。
 1. 購入するアプリケーションを探します。
 1. **[今すぐ入手する]** を選択します。
 1. 以下のように、プランを選択します。

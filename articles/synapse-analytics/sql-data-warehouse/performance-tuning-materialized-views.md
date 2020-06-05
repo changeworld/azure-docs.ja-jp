@@ -10,18 +10,16 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417022"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747544"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>具体化されたビューを使用したパフォーマンス チューニング
 
 Synapse SQL プールの具体化されたビューは、複雑な分析クエリを少ないメンテナンスで維持し、クエリには一切変更を加えることなく高速なパフォーマンスが得られる手法です。 この記事では、具体化されたビューを使用するうえでの一般的なガイダンスを説明します。
-
-SQL プールの具体化されたビューでは、クエリを何も変更しなくても高速なパフォーマンスが得られる、複雑な分析クエリのためのメンテナンスの少ない方法が提供されます。 この記事では、具体化されたビューを使用するうえでの一般的なガイダンスを説明します。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化されたビューと標準ビュー
 
@@ -161,7 +159,7 @@ SQL プール オプティマイザーでは、クエリ パフォーマンス�
 
 ## <a name="example"></a>例
 
-この例では、TPCDS に似たクエリを使用しています。店舗よりもカタログで多くのお金を費やす顧客を検索し、優良顧客とその出身国を特定します。   このクエリには、SUM() と GROUP BY を含んだ 3 つのサブ SELECT ステートメントの UNION から上位 100 レコードを選択する操作が含まれています。
+この例では、TPCDS に似たクエリを使用しています。店舗よりもカタログで多くのお金を費やす顧客を検索し、優良顧客とその出身国/地域を特定します。   このクエリには、SUM() と GROUP BY を含んだ 3 つのサブ SELECT ステートメントの UNION から上位 100 レコードを選択する操作が含まれています。
 
 ```sql
 WITH year_total AS (
