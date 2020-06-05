@@ -100,6 +100,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
     - name: HoloLens C++/WinRT 用 SDK
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+    - name: Azure CLI
+      href: /cli/azure/ext/mixed-reality/spatial-anchors-account
 - name: リソース
   items:
     - name: リリース ノート
@@ -110,7 +112,7 @@
       href: spatial-anchor-faq.md
     - name: 製品フィードバックの提供
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
     - name: サポート
       href: spatial-anchor-support.md

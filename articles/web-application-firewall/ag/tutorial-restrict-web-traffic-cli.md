@@ -18,7 +18,7 @@ ms.locfileid: "83770246"
 
 [Web アプリケーション ファイアウォール](ag-overview.md) (WAF) でアプリケーション ゲートウェイ上のトラフィックを制限できます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ

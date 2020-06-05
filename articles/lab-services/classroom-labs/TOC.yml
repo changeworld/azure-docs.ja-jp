@@ -82,6 +82,8 @@
           href: specify-marketplace-images.md
         - name: サポート情報を指定する (ラボ アカウント オーナー)
           href: lab-account-owner-support-information.md
+        - name: ラボのコスト管理
+          href: cost-management-guide.md
     - name: クラスルーム ラボを作成して構成する (教師)
       items:
         - name: クラスルーム ラボを作成して管理する

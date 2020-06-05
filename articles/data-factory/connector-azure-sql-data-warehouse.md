@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/25/2020
-ms.openlocfilehash: e469a38f4730eb0f9d8debe71bde9a56dd152028
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: bfae651dabab9c3ecebc10bbdb553b1d52e3a79a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146395"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872954"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータをコピーして変換する 
 
@@ -624,9 +624,9 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
       5. `skipLineCount` が既定値のままか、0 に設定されている。
       6. `compression` が**圧縮なし**または **GZip** である。
 
-3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定する必要があります。
+3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定し、`wildcardFilename` が `*` である必要があります。 COPY ステートメントでは、フォルダーとそのすべてのサブフォルダーからすべてのファイルが取得され、パスで明示的に指定されていない限り、下線 (_) またはピリオド (.) で始まる非表示のフォルダーとファイルは無視されます。 
 
-4. `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、および `additionalColumns` が指定されていない。
+4. `wildcardFolderPath`、`wildcardFilename` (`*` 以外)、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、`additionalColumns` は指定されません。
 
 コピー アクティビティの `allowCopyCommand` では、次の COPY ステートメント設定がサポートされています。
 

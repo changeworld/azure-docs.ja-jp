@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb47119fdddad70f8b7d5de94f9a2d35efd80d76
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649807"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259305"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
@@ -247,7 +247,7 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 
 ## <a name="next-steps"></a>次のステップ
 - [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-- [Event Hubs API 概要](event-hubs-api-overview.md)
+- [Event Hubs サンプル](sdks.md)
 - Event Hubs の使用
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

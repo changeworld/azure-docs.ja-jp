@@ -70,7 +70,8 @@
       items:
         - name: CLI を使用したトレーニングとデプロイ
           href: tutorial-train-deploy-model-cli.md
-        - name: Resource Manager テンプレートを使用したワークスペースの作成
+        - name: Resource Manager テンプレートを使用してワークスペースを作成する
+          displayName: Resource Manager
           href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:

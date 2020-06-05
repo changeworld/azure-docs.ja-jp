@@ -148,9 +148,9 @@
               href: storage-files-identity-auth-active-directory-enable.md
             - name: AD DS 認証の有効化
               href: storage-files-identity-ad-ds-enable.md
-            - name: アクセス許可の割り当て
+            - name: 共有レベルのアクセス許可を割り当てる
               href: storage-files-identity-ad-ds-assign-permissions.md
-            - name: 権限の構成
+            - name: ディレクトリ/ファイル レベルのアクセス許可を割り当てる
               href: storage-files-identity-ad-ds-configure-permissions.md
             - name: ファイル共有をマウントする
               href: storage-files-identity-ad-ds-mount-file-share.md
@@ -234,48 +234,8 @@
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: リファレンス
   items:
-    - name: Azure PowerShell (Storage)
-      href: /powershell/module/az.storage
-    - name: Azure PowerShell (StorageSync)
-      href: /powershell/module/az.storagesync
-    - name: Azure CLI
-      href: /cli/azure/storage
-    - name: .NET
-      items:
-        - name: Files (バージョン 11.x)
-          href: /dotnet/api/microsoft.azure.storage.file
-        - name: データ移動
-          href: /dotnet/api/microsoft.azure.storage.datamovement
-        - name: ストレージ リソース プロバイダー
-          href: /dotnet/api/overview/azure/storage/management
-    - name: Java
-      items:
-        - name: Files (バージョン 8.x)
-          href: /java/api/com.microsoft.azure.storage.file
-        - name: ストレージ リソース プロバイダー
-          href: /java/api/overview/azure/storage/management
-    - name: JavaScript (バージョン 10.x)
-      href: /javascript/api/@azure/storage-file
-    - name: Python (バージョン 2.x)
-      href: /python/api/azure-storage-file/?view=azure-python
-    - name: REST
-      items:
-        - name: BLOB、キュー、テーブル、ファイル
-          href: /rest/api/storageservices
-        - name: ストレージ リソース プロバイダー
-          href: /rest/api/storagerp
-        - name: インポート/エクスポート
-          href: /rest/api/storageimportexport
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
+    - name: Azure ファイル共有ストレージのリファレンス
+      href: ../files/reference.md
     - name: Resource Manager テンプレート
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions

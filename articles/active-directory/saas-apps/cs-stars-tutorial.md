@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と CS Stars の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と CS Stars の統合 | Microsoft Docs
 description: Azure Active Directory と CS Stars の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -23,7 +23,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81869432"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>チュートリアル: Azure Active Directory と CS Stars の統合
+# <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>チュートリアル:Azure Active Directory と CS Stars の統合
 
 このチュートリアルでは、CS Stars と Azure Active Directory (Azure AD) を統合する方法について説明します。
 CS Stars と Azure AD の統合には、次の利点があります。

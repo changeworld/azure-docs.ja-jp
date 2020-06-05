@@ -114,6 +114,8 @@
   items:
     - name: 管理する
       items:
+        - name: ジョブの自動スケーリング
+          href: stream-analytics-autoscale.md
         - name: 資格情報の更新
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: イベント順序ポリシーを構成する
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: リソース
   items:
     - name: Stream Analytics プレビュー

@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: A から B までのルートを表示する
               href: map-route.md
+        - name: Indoor Maps モジュール
+          items:
+            - name: Indoor Maps モジュール
+              href: how-to-use-indoor-module.md
+            - name: 屋内マップの動的スタイル
+              href: indoor-map-dynamic-styling.md
+            - name: 描画エラー ビジュアライザー
+              href: drawing-error-visualizer.md
         - name: 空間 IO モジュール
           items:
             - name: 空間 IO モジュールの使用
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: トラフィック データを表示する
           href: how-to-show-traffic-android.md
-    - name: Creator の屋内マップを使用した開発
-      items:
-        - name: 屋内マップ モジュール
-          href: how-to-use-indoor-module.md
-        - name: 屋内マップの動的スタイル
-          href: indoor-map-dynamic-styling.md
-        - name: 描画エラー ビジュアライザー
-          href: drawing-error-visualizer.md
     - name: データのフィードバックを提供する
       href: how-to-use-feedback-tool.md
 - name: リファレンス

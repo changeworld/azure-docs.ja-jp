@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 8b67574f435681d8071eda1ad954dcafb5124cbf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655106"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015966"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>SQL FQDN を使用して Azure Firewall アプリケーション規則を構成する
 
@@ -63,4 +63,4 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL のプロキシ モードとリダイレクト モードの詳細については、[Azure SQL データベースの接続アーキテクチャ](../sql-database/sql-database-connectivity-architecture.md)を参照してください。
+SQL のプロキシ モードとリダイレクト モードの詳細については、[Azure SQL データベースの接続アーキテクチャ](../azure-sql/database/connectivity-architecture.md)を参照してください。

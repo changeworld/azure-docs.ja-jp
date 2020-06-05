@@ -235,6 +235,10 @@
               href: howto-migrate-using-export-and-import.md
             - name: 最小限のダウンタイムでの移行
               href: howto-migrate-online.md
+        - name: アプリケーションの接続
+          items:
+            - name: TLS の構成
+              href: howto-tls-configurations.md
         - name: サーバー パラメーターの構成
           items:
             - name: Azure portal

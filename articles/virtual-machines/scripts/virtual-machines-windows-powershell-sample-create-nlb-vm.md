@@ -47,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 このスクリプトでは、以下のコマンドを実行してデプロイを作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | サブネット構成を作成します。 この構成は、仮想ネットワークの作成プロセスで使用されます。 |
@@ -67,7 +67,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 仮想マシンを作成します。 |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-独自のカスタム マネージド イメージを使用して VM を作成することもできます。 VM 構成で、`Set-AzVMSourceImage` には `-Id`、`-VM`、`-PublisherName`、および `-Offer` ではなく `-Skus` および `-Version` パラメーターを使用します。
+独自のカスタム マネージド イメージを使用して VM を作成することもできます。 VM 構成で、`Set-AzVMSourceImage` には `-PublisherName`、`-Offer`、`-Skus`、および `-Version` ではなく `-Id` および `-VM` パラメーターを使用します。
 
 たとえば、VM 構成の作成は次のようになります。
 

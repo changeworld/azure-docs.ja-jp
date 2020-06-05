@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef54eddd52d67f595fe78cd8bba9f308a4f19a94
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832829"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235233"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -175,9 +175,6 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
     作成した Active Directory の接続が表示されます。
 
     ![Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
-
-> [!NOTE] 
-> Active Directory 接続を保存したら、[ユーザー名] フィールドと [パスワード] フィールドを編集できます。 他の値については、接続を保存しても編集することはできません。 他の値を変更する必要がある場合は、まず、デプロイされている SMB ボリュームを削除し、次に Active Directory 接続を削除して再作成する必要があります。
 
 ## <a name="add-an-smb-volume"></a>SMB ボリュームを追加する
 

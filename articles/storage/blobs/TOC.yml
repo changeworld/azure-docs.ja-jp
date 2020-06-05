@@ -190,6 +190,18 @@
               href: storage-blob-reserved-capacity.md
             - name: コストの計画と管理
               href: ../common/storage-plan-manage-costs.md
+            - name: スケーラビリティとパフォーマンスのターゲット
+              items:
+                - name: BLOB ストレージ
+                  href: scalability-targets.md
+                - name: Standard Storage アカウント
+                  href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Premium ブロック BLOB ストレージ アカウント
+                  href: scalability-targets-premium-block-blobs.md
+                - name: Premium ページ BLOB ストレージ アカウント
+                  href: scalability-targets-premium-page-blobs.md
+                - name: ストレージ リソース プロバイダー
+                  href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: コンカレンシー
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: BLOB データを検索して理解する
@@ -473,60 +485,8 @@
               href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: リファレンス
       items:
-        - name: スケーラビリティとパフォーマンスのターゲット
-          items:
-            - name: BLOB ストレージ
-              href: scalability-targets.md
-            - name: Standard Storage アカウント
-              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Premium ブロック BLOB ストレージ アカウント
-              href: scalability-targets-premium-block-blobs.md
-            - name: Premium ページ BLOB ストレージ アカウント
-              href: scalability-targets-premium-page-blobs.md
-            - name: ストレージ リソース プロバイダー
-              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure PowerShell
-          href: /powershell/module/az.storage
-        - name: Azure CLI
-          href: /cli/azure/storage
-        - name: .NET
-          items:
-            - name: BLOB (バージョン 12.x)
-              href: /dotnet/api/azure.storage.blobs
-            - name: データ移動
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: ストレージ リソース プロバイダー
-              href: /dotnet/api/overview/azure/storage/management
-        - name: Java
-          items:
-            - name: BLOB (バージョン 12.x)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: BLOB (バージョン 8.x)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: ストレージ リソース プロバイダー
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (バージョン 12.x)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (バージョン 12.x)
-          href: /python/api/azure-storage-blob/
-        - name: REST
-          items:
-            - name: BLOB、キュー、テーブル、ファイル
-              href: /rest/api/storageservices
-            - name: ストレージ リソース プロバイダー
-              href: /rest/api/storagerp
-            - name: インポート/エクスポート
-              href: /rest/api/storageimportexport
-        - name: C++
-          href: 'https://azure.github.io/azure-storage-cpp'
-        - name: Ruby
-          href: 'https://azure.github.io/azure-storage-ruby'
-        - name: PHP
-          href: 'https://azure.github.io/azure-storage-php/'
-        - name: iOS
-          href: 'https://azure.github.io/azure-storage-ios/'
-        - name: Android
-          href: 'https://azure.github.io/azure-storage-android'
+        - name: Azure Blob Storage リファレンス
+          href: ../blobs/reference.md
         - name: AzCopy v10
           items:
             - name: azcopy

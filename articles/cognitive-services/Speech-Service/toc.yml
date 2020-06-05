@@ -24,7 +24,7 @@
           href: batch-transcription.md
         - name: 音声認識の基礎
           href: speech-to-text-basics.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: マイク入力を使用して音声を認識する
           href: quickstarts/speech-to-text-from-microphone.md
@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blob Storage に格納された音声を認識する
           href: quickstarts/from-blob.md
+        - name: Speech Studio でのオーディオ ファイルを使用したモデルのテスト
+          href: quickstarts/speech-studio-test-model.md
     - name: 操作方法ガイド
       items:
         - name: 音声認識モードを選択する

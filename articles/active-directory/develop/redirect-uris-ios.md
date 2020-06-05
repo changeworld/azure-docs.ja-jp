@@ -57,7 +57,7 @@ Azure AD Authentication ライブラリ (ADAL) を使用していたコードを
 
     ADAL から移行する場合、リダイレクト URI の形式は `<scheme>://[Your_Bundle_Id]` になる可能性があります。ここで `scheme` は一意の文字列です。 この形式は、MSAL を使用する場合、引き続き機能します。
 
-* アプリの Info.plist の `<scheme>` の下に `CFBundleURLTypes > CFBundleURLSchemes` を登録する必要があります。  この例では、Info.plist がソース コードとして開かれています。
+* アプリの Info.plist の `CFBundleURLTypes > CFBundleURLSchemes` の下に `<scheme>` を登録する必要があります。  この例では、Info.plist がソース コードとして開かれています。
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -74,7 +74,7 @@ Azure AD Authentication ライブラリ (ADAL) を使用していたコードを
 
 MSAL によって、リダイレクト URI が正しく登録されているかどうかが検証され、そうでない場合はエラーが返されます。
     
-* ユニバーサル リンクをリダイレクト URI として使用する場合、`<scheme>` を `https` にする必要があり、`CFBundleURLSchemes` 内に宣言する必要はありません。 代わりに、Apple の手順 ([開発者のためのユニバーサル リンク](https://developer.apple.com/ios/universal-links/)) に従ってアプリとドメインを構成し、ユニバーサル リンクを通してアプリケーションが開かれるときに、`handleMSALResponse:sourceApplication:` の `MSALPublicClientApplication` を呼び出します。
+* ユニバーサル リンクをリダイレクト URI として使用する場合、`<scheme>` を `https` にする必要があり、`CFBundleURLSchemes` 内に宣言する必要はありません。 代わりに、Apple の手順 ([開発者のためのユニバーサル リンク](https://developer.apple.com/ios/universal-links/)) に従ってアプリとドメインを構成し、ユニバーサル リンクを通してアプリケーションが開かれるときに、`MSALPublicClientApplication` の `handleMSALResponse:sourceApplication:` を呼び出します。
 
 ## <a name="use-a-custom-redirect-uri"></a>カスタム リダイレクト URI を使用する
 
@@ -110,7 +110,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>URL で開かれたイベントを処理する
 
-アプリケーションでは、URL スキームまたはユニバーサル リンクを通して応答を受信したときに、MSAL を呼び出す必要があります。 アプリケーションを開くときに、`handleMSALResponse:sourceApplication:` の `MSALPublicClientApplication` メソッドを呼び出します。 カスタム スキーマの例を次に示します。
+アプリケーションでは、URL スキームまたはユニバーサル リンクを通して応答を受信したときに、MSAL を呼び出す必要があります。 アプリケーションを開くときに、`MSALPublicClientApplication` の `handleMSALResponse:sourceApplication:` メソッドを呼び出します。 カスタム スキーマの例を次に示します。
 
 Objective-C:
 

@@ -13,6 +13,9 @@
       href: quick-create-powershell.md
     - name: VM の作成 - Azure CLI
       href: quick-create-cli.md
+    - name: VM の作成 - Resource Manager テンプレート
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: チュートリアル
   items:
     - name: 1 - VM の作成/管理

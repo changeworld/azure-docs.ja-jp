@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 0491f10f22e35c81e5bc35d537546001f136be50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f84a609ea2821546c4001b98ad11495305ac101a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826827"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171074"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Azure portal で変更履歴とインベントリを有効にする
 
@@ -60,9 +60,5 @@ https://portal.azure.com で Azure にサインインします。
 
 ## <a name="next-steps"></a>次のステップ
 
-* この機能の操作の詳細については、「[Change Tracking と Inventory の管理](change-tracking-file-contents.md)」を参照してください。
-* スコープ構成の詳細については、[変更履歴とインベントリのスコープ構成の操作](automation-scope-configurations-change-tracking.md)に関するページを参照してください。
-* この機能を使用して環境にインストールされているソフトウェアを特定する方法については、「[VM にインストールされているソフトウェアを検出する](automation-tutorial-installed-software.md)」を参照してください。
-* 機能を有効にするときに Automation アカウントを Log Analytics ワークスペースに統合しない場合は、「[Automation アカウントからワークスペースのリンクを解除する](automation-unlink-workspace-change-tracking.md)」を参照してください。
-* VM への変更のデプロイが完了したら、「[変更履歴とインベントリから VM を削除する](automation-remove-vms-from-change-tracking.md)」の説明に従って削除できます。
+* この機能の操作の詳細については、[変更履歴とインベントリの管理](change-tracking-file-contents.md)に関するページをご覧ください。
 * この機能に関する一般的な問題のトラブルシューティングについては、「[Change Tracking と Inventory に関する問題のトラブルシューティング](troubleshoot/change-tracking.md)」を参照してください。

@@ -77,6 +77,8 @@
       href: spring-cloud-howto-integrate-azure-load-balancers.md
     - name: Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする
       href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+    - name: Azure Spring Cloud での問題の自己診断と解決
+      href: spring-cloud-howto-self-diagnose-solve.md
 - name: Azure Spring Cloud への DevOps デプロイ
   items:
     - name: Azure DevOps を使用した CI/CD

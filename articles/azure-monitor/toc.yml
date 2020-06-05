@@ -230,7 +230,7 @@
                     - name: バージョン履歴
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON Lines リソース ログの形式
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: トラブルシューティング
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: プラットフォーム ログ
       items:
+        - name: サポートされているリソース ログの種類とカテゴリ
+          href: platform/resource-logs-categories.md
         - name: リソース ログ スキーマ
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: アクティビティ ログのスキーマ
           href: platform/activity-log-schema.md
     - name: 診断の拡張機能のスキーマ
