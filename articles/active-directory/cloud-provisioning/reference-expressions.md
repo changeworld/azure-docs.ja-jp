@@ -73,7 +73,7 @@ ms.locfileid: "78298617"
 |[Split](#split)|指定された区切り記号文字を使用して、文字列を複数値の配列に分割します。|
 |[StringFromSID](#stringfromsid)|StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。| 
 |[StripSpaces](#stripspaces) |source 文字列からすべての空白文字 (" ") を削除します。| 
-|[スイッチ](#switch)|**source** 値が **key** と一致するときに、その **key** の **value** を返します。 | 
+|[Switch](#switch)|**source** 値が **key** と一致するときに、その **key** の **value** を返します。 | 
 |[ToLower](#tolower)|*source* 文字列値を受け取り、指定されたカルチャ ルールを使用して小文字に変換します。| 
 |[ToUpper](#toupper)|*source* 文字列値を受け取り、指定されたカルチャ ルールを使用して大文字に変換します。|
 |[Trim](#trim)|Trim 関数は、文字列の先頭と末尾の空白文字を削除します。|
