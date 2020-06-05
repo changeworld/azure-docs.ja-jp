@@ -36,7 +36,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 さらに:
 * [PHP](https://php.net/) 5.6 以降
-* [[[Composer]]](https://getcomposer.org/download/)
+* [Composer](https://getcomposer.org/download/)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
