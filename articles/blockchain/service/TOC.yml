@@ -4,6 +4,8 @@
   items:
     - name: Azure Blockchain Service について
       href: overview.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
