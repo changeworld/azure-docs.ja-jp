@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6e5e54f7bf61d933240403ff952c1aa6e162958f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594581"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712810"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) とは
 
@@ -33,7 +33,7 @@ Azure SQL Edge は Azure Marketplace で提供されており、[Azure IoT Edge]
 
 ## <a name="editions-of-sql-edge"></a>SQL Edge のエディション
 
-SQL Edge は、3 つの異なるエディション (ソフトウェア プラン) で提供されています。 これらのエディションの機能セットはまったく同じで、使用権限と、サポートされる CPU とメモリの量についてのみ違いがあります。
+SQL Edge は、2 つの異なるエディション (ソフトウェア プラン) で提供されています。 これらのエディションの機能セットはまったく同じで、使用権限と、サポートされる CPU とメモリの量についてのみ違いがあります。
 
    |**プラン**  |**説明**  |
    |---------|---------|
@@ -42,7 +42,7 @@ SQL Edge は、3 つの異なるエディション (ソフトウェア プラン
 
 ## <a name="pricing-and-availability"></a>価格と可用性
 
-Azure SQL Edge は現在プレビュー段階です。 価格と可用性の詳細については、[Azure SQL Edge](https://azure.microsoft.com/services/sql-database-edge/) に関するページを参照してください。
+Azure SQL Edge は現在プレビュー段階です。 価格と可用性の詳細については、[Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) に関するページを参照してください。
 
 > [!IMPORTANT]
 > Azure SQL Edge と SQL Server の機能面の違いや、Azure SQL Edge のさまざまなオプション間の違いについては、[Azure SQL Edge でサポートされる機能](features.md)に関するページを参照してください。
