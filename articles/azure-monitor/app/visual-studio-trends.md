@@ -7,12 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670867"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744129"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。
@@ -48,7 +48,7 @@ Application Insights Trends は、Visual Studio 2015 Update 3 以降で利用で
 事前構築済みのこれらの分析は、Trends ウィンドウの左上隅にある **[一般的な種類のテレメトリの解析を表示する]** ボタンから後で利用できます。
 
 ## <a name="visualize-trends-in-your-application"></a>アプリケーションでの傾向の視覚化
-Application Insights Trends では、アプリのテレメトリが時系列で視覚化されます。 時系列の視覚化それぞれで、1 種類のテレメトリを、そのいずれかのプロパティに基づいてグループ化したうえで、一定期間を対象に表示できます。 たとえば、送信元の国別にグループ分けして、過去 24 時間のサーバー要求を確認する必要があるとします。 この例では、視覚化上の各バブルは、ある国/地域から 1 時間の間に行われたサーバー要求の数を表します。
+Application Insights Trends では、アプリのテレメトリが時系列で視覚化されます。 時系列の視覚化それぞれで、1 種類のテレメトリを、そのいずれかのプロパティに基づいてグループ化したうえで、一定期間を対象に表示できます。 たとえば、送信元の国および地域別にグループ分けして、過去 24 時間のサーバー要求を確認する必要があるとします。 この例では、視覚化上の各バブルは、ある国/地域から 1 時間の間に行われたサーバー要求の数を表します。
 
 ウィンドウの上部にあるコントロールを使用して、表示するテレメトリの種類を調整します。 まず、関心のあるテレメトリの種類を選択します。
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7d64b8914fa0b109dfc662a97a7f84d94e3491ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7fbe27845164eb7711d3531173fb440c5a3570f4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789710"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849139"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce 用にリード管理を構成する
 
@@ -64,15 +64,15 @@ ms.locfileid: "82789710"
 
 ## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>リードを Salesforce に送信するようにオファーを構成する
 
-発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、これらの手順に従います。
+発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 
-1. **[リード管理]** セクションで **[接続]** を選択します。 
+1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    ![[リード管理] セクションの [接続] ボタン](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-salesforce/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** に対して **[Salesforce]** を選択し、Web-to-Lead フォームの `oid` 値を **[組織 ID]** フィールドに貼り付けます。
 

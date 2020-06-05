@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.date: 05/19/2020
+ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270402"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724821"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース ポータルの概要
 
@@ -26,31 +26,15 @@ ms.locfileid: "81270402"
 
 パートナー センターは、Microsoft パートナー エクスペリエンスのハブです。 Microsoft を利用して市場に参入し、コマーシャル マーケットプレースを活用する組織は、パートナー センターのポータルを使用することで、パブリッシャーがオファーを作成および管理し、体験版のデモを提供し、オファーのパフォーマンスの分析を見ることができます。
 
-## <a name="migration-from-cloud-partner-portal"></a>Cloud パートナー ポータルからの移行
+## <a name="migration-from-the-cloud-partner-portal"></a>Cloud パートナー ポータルからの移行
 
-パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一環として、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)をパートナー センターに移行しています。
+パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一環として、すべてのコマーシャル マーケットプレース プランを、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)からパートナー センターに移行しました。
 
-既存のマーケットプレース パブリッシャーは、直観的なインターフェイスを使って、すでに馴染みのある、しかしそこからさらに改善されたユーザー エクスペリエンスを得ることができるでしょう。 移行については、ポータルの通知とメール通知でパブリッシャーに通知されます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナー エクスペリエンスのアップグレードによって、カスタマーが影響を受けることはありません。
-
->[!NOTE]
->現在、パートナー センターでは、次の表に示すように、一部のオファーの種類の作成と管理がサポートされています。 すべてのオファーの管理をパートナー センターに移行すると、さらに多くのオファーの種類がサポートされるようになります。
-
-|プランの種類  |Cloud パートナー ポータルからパートナー センターへのオファー管理の移行  |
-|---------|---------|
-|サービスとしてのソフトウェア (SaaS)     | 現在利用可能       |
-|Dynamics 365 for Customer Engagement および PowerApps     | 現在利用可能         |
-|Dynamics 365 for Operations     | 現在利用可能        |
-|Dynamics 365 for Business Central     | 現在利用可能        |
-|Azure Application     | 現在利用可能        |
-|Azure Virtual Machine     | 一般提供 2020 年 4 月から 5 月        |
-|Azure Container     | 一般提供 2020 年 4 月から 5 月        |
-|コンサルティング サービス     | 一般提供 2020 年 4 月から 5 月        |
-|IoT Edge モジュール     | 一般提供 2020 年 4 月から 5 月        |
-|Power BI アプリ    | 一般提供 2020 年 4 月から 5 月        |
+これまで Cloud パートナー ポータルを使用していた既存のパブリッシャーは、パートナー センターで、なじみはあるが強化された直感的ユーザー エクスペリエンスを実感することができます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナー エクスペリエンスのアップグレードによって、カスタマーが影響を受けることはありません。
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>発行とオファー管理のユーザー エクスペリエンスの改善
 
-パートナー センターへの移行に伴い、パブリッシャーは、ユーザー エクスペリエンスの改善のほか、新しい機能を利用できます。  詳細については、「[Cloud パートナー ポータルからパートナー センターへの移行に関してよく寄せられる質問](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq)」を参照してください。
+パートナー センターへの移行に伴い、パブリッシャーは、ユーザー エクスペリエンスの改善のほか、新しい機能を利用できます。  詳細については、「[Cloud パートナー ポータルからパートナー センターへの移行に関してよく寄せられる質問](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq)」を参照してください。
 
 ### <a name="account-and-user-management-updates"></a>アカウントとユーザー管理の更新
 

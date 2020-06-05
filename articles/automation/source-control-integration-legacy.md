@@ -1,18 +1,18 @@
 ---
-title: Azure Automation でのソース管理の統合 - 従来
-description: この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。
+title: Azure Automation でソース管理の統合を使用する - 従来
+description: この記事では、ソース管理の統合を使用する方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855351"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828935"
 ---
-# <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Automation でのソース管理の統合 - 従来
+# <a name="use-source-control-integration-in-azure-automation---legacy"></a>Azure Automation でソース管理の統合を使用する - 従来
 
 > [!NOTE]
 > ソース管理の新しいエクスペリエンスがあります。 新しいエクスペリエンスの詳細については、[ソース管理 (プレビュー)](source-control-integration.md) に関するページを参照してください。
@@ -24,7 +24,7 @@ ms.locfileid: "82855351"
 > [!NOTE]
 > ソース管理では、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) および [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) のプル操作とプッシュ操作がサポートされていますが、 [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) はサポートされません。
 
-## <a name="configuring-source-control"></a>ソース管理の構成
+## <a name="configure-source-control"></a>ソース管理を構成する
 
 Automation アカウントのソース管理を構成するには、2 つの簡単な手順が必要です。ただし、既に GitHub アカウントを持っている場合、必要な手順は 1 つだけです。 
 
@@ -80,7 +80,7 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
 
      ![GitHub のアプリケーション設定](media/source-control-integration-legacy/automation-GitApplication.png)
 
-## <a name="using-source-control-in-automation"></a>Automation でのソース管理の使用
+## <a name="use-source-control-in-automation"></a>Automation でソース管理を使用する
 
 Runbook をチェックインすると、Azure Automation で Runbook に対して行った変更をソース管理リポジトリにプッシュできます。 Runbook のチェックイン手順は次のとおりです。
 
@@ -124,7 +124,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
 
 ![中断されたソース管理同期ジョブのすべてのログを表示するウィンドウ](media/source-control-integration-legacy/automation-AllLogs.png)
 
-## <a name="disconnecting-source-control"></a>ソース管理の切断
+## <a name="disconnect-source-control"></a>ソース管理を切断する
 
 GitHub アカウントから切断するには、[リポジトリの同期] ページを開き、 **[切断]** をクリックします。 ソース管理を切断すると、それまでに同期された Runbook はそのまま Automation アカウントに保持されますが、[リポジトリの同期] ページは有効になりません。  
 
@@ -132,7 +132,5 @@ GitHub アカウントから切断するには、[リポジトリの同期] ペ�
 
 ## <a name="next-steps"></a>次のステップ
 
-ソース管理の統合の詳細については、次のリソースをご覧ください。  
-
-* [Azure Automation:Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Azure Automation:Azure DevOps を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* Azure Automation におけるソース管理の統合については、「[Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/)」を参照してください。  
+* Runbook のソース管理を Visual Studio Online と統合する方法については、「[Azure Automation: Visual Studio Online を使用して Runbook のソース管理を統合する](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)」を参照してください。  

@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/19/2020
+ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839149"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849095"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource 用の Power BI アプリを作成する
 
 この記事では、Power BI アプリ オファーを作成し、Microsoft [AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
 
-開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) (まだ作成していない場合)。 アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) (まだ作成していない場合)。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
@@ -62,7 +62,7 @@ ms.locfileid: "82839149"
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
-### <a name="connect-lead-management"></a>リード管理の接続
+### <a name="customer-leads"></a>潜在顧客
 
 パートナー センターを使用してオファーをマーケットプレースに公開する場合、それを顧客関係管理 (CRM) システムに接続する必要があります。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。
 
@@ -161,32 +161,11 @@ ms.locfileid: "82839149"
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明には、次の 1 つまたは複数を含めます。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- オファーによってもたらされる価値と主な利益。
-- カテゴリまたは業界のアソシエーション、あるいはその両方。
-- アプリ内購入の営業案件。
-- 必要な開示。
-
-説明を記述するためのいくつかのヒントを次に示します。
-
-- 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
-  - プランの説明。
-  - オファーから利益を得るユーザーの種類。
-  - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
-- 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-- 業界固有の語彙または利益に基づく表現を使用するようにしてください。
-
-オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
-
-![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
-
-| <center>テキスト形式を変更する | <center>箇条書きの黒丸または段落番号を追加する | <center>テキスト インデントを追加または削除する |
-| --- | --- | --- |
-| <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用してリストを追加する](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用してインデントを設定する](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="search-keywords"></a>キーワード検索
 

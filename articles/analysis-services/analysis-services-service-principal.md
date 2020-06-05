@@ -4,15 +4,15 @@ description: Azure Analysis Services 管理タスクを自動化するための�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231675"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871176"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -110,4 +110,7 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>次のステップ
 [Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)   
+[Logic Apps を使用した更新](analysis-services-refresh-logic-app.md)  
+[Azure Automation を使用した更新](analysis-services-refresh-azure-automation.md)  
+[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)  
+[サービス プリンシパルを使用した Power BI Premium ワークスペースとデータセットのタスクの自動化](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

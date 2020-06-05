@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195127"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743369"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用 PowerShell モジュールを設定する
 
@@ -63,7 +63,12 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 サインイン後に既定のサブスクリプションを変更する場合は、次のコマンドレットを実行します。
 
 ```powershell
-Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -Subscription <preferredsubscriptionname>
+```
+
+次のように、Out-GridView コマンドレットを使用して、一覧から 1 つを選択することもできます。
+```powershell
+Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```
 
 使用する新しいサブスクリプションを選択する場合は、後で実行するコマンドレットで、そのサブスクリプションの ID を指定する必要はありません。 たとえば、次のコマンドレットは、サブスクリプション ID を必要とせずに、特定のセッション ホストを取得します。

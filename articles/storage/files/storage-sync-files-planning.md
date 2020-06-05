@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176092"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869721"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -275,7 +275,7 @@ Azure File Sync は、ファイル システムより上に位置し、ファイ
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
 > [!NOTE]
-> Azure File Sync サービスは、2020 年 8 月に TLS 1.0 と 1.1 のサポートを削除します。 サポートされているすべての Azure File Sync エージェントのバージョンは、既に TLS 1.2 を既定で使用しています。 TLS 1.2 がサーバーで無効になっているか、プロキシが使用されている場合は、以前のバージョンの TLS が使用される可能性があります。 プロキシを使用している場合は、プロキシの構成を確認することをお勧めします。 2020 年 5 月 1 日より後に追加された Azure File Sync サービスのリージョンでは TLS 1.2 のみがサポートされます。TLS 1.0 と 1.1 のサポートは、2020 年 8 月に既存のリージョンから削除されます。  詳細については、[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)を参照してください。
+> 2020 年 8 月 1 日より、Azure File Sync サービスでは TLS 1.0 と 1.1 のサポートが削除されます。 サポートされているすべての Azure File Sync エージェントのバージョンは、既に TLS 1.2 を既定で使用しています。 TLS 1.2 がサーバーで無効になっているか、プロキシが使用されている場合は、以前のバージョンの TLS が使用される可能性があります。 プロキシを使用している場合は、プロキシの構成を確認することをお勧めします。 2020 年 5 月 1 日より後に追加された Azure File Sync サービスのリージョンでは TLS 1.2 のみがサポートされます。TLS 1.0 と 1.1 のサポートは、2020 年 8 月 1 日に既存のリージョンから削除されます。  詳細については、[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)を参照してください。
 
 Azure File Sync エージェントは、Azure File Sync REST プロトコルと FileREST プロトコルを使用して、ストレージ同期サービスと Azure ファイル共有と通信します。どちらも、常にポート443 経由で HTTPS を使用します。 Azure File Sync では、暗号化されていない要求が HTTP 経由で送信されることはありません。 
 

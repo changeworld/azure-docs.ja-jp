@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229071"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744117"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -102,9 +102,14 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery はレプリケーションを暗号化しますか。
 オンプレミスのサイト間で仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化がサポートされます。 Azure に仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化と [(Azure での) 保管データの暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされます。
 
-### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>すべてのオンプレミス Azure Site Recovery コンポーネントに TLS 1.2 を適用するにはどうすればよいですか。
+### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Azure から Azure へのサイトの回復では、Azure のマイクロサービス間のすべての通信に TLS 1.2 が使用されますか。
+はい。Azure から Azure へのサイトの回復のシナリオでは、TLS 1.2 プロトコルが既定で適用されます。 
+
+### <a name="how-can-i-enforce-tls-12-on-vmware-to-azure-and-physical-server-to-azure-site-recovery-scenarios"></a>VMware から Azure へ、および物理サーバーから Azure へのサイトの回復のシナリオで TLS 1.2 を適用するにはどうすればよいですか。
 レプリケートされたアイテムにインストールされているモビリティ エージェントは、TLS 1.2 でのみプロセス サーバーと通信します。 ただし、構成サーバーから Azure への通信と、プロセス サーバーから Azure への通信は、TLS 1.1 または 1.0 で行うことができます。 設定したすべての構成サーバーとプロセス サーバーに TLS 1.2 を適用するには、[ガイダンス](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)に従ってください。
 
+### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>HyperV から Azure へのサイトの回復のシナリオに TLS 1.2 を適用するにはどうすればよいですか。
+Azure Site Recovery のマイクロサービス間のすべての通信は、TLS 1.2 プロトコルで発生します。 Site Recovery は、システム (OS) で構成されたセキュリティ プロバイダーを使用し、使用可能な最新の TLS プロトコルを使用します。 ユーザーは、レジストリで TLS 1.2 を明示的に有効にする必要があります。その後、Site Recovery は、サービスとの通信に TLS 1.2 を使用するようになります。 
 
 ## <a name="disaster-recovery"></a>障害復旧
 
@@ -219,7 +224,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 * [VMware 仮想マシン用](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V 仮想マシン用](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>オートメーション
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>SDK を使用して Site Recovery のシナリオを自動化できますか。
 はい。 Rest API、PowerShell、Azure SDK のいずれかを使用して、Site Recovery ワークフローを自動化することができます。 PowerShell を使用した Site Recovery のデプロイについて、現在サポートされているシナリオは次のとおりです。

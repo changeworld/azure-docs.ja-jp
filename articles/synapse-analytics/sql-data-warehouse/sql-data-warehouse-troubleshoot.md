@@ -1,6 +1,6 @@
 ---
-title: トラブルシューティング
-description: Azure Synapse Analytics のトラブルシューティングを行います。
+title: Synapse SQL のトラブルシューティング
+description: Azure Synapse Analytics の Synapse SQL をトラブルシューティングします。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743675"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829989"
 ---
-# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Azure Synapse での SQL Analytics のトラブルシューティング
+# <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL をトラブルシューティングする
 
-この記事では、一般的なトラブルシューティングの質問を示します。
+この記事では、Synapse SQL における一般的な問題とトラブルシューティングを一覧で示します。
 
 ## <a name="connecting"></a>接続
 
@@ -80,6 +80,6 @@ ms.locfileid: "80743675"
 * [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [サポート チケットを作成する](sql-data-warehouse-get-started-create-support-ticket.md)
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 * [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

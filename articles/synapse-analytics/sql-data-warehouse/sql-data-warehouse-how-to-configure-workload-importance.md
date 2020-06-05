@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 05/15/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0ab7b8be8780f7edb2734d99587bc7709ced9436
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 9440d5a13973a245320bc465e3997e3cdf414b3f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633361"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660327"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのワークロードの重要度の構成
 
@@ -24,7 +24,7 @@ Azure Synapse の Synapse SQL で重要度を設定すると、クエリのス�
 
 ## <a name="create-a-workload-classifier-with-importance"></a>重要度を使用したワークロード分類子を作成する
 
-データ ウェアハウスのシナリオでは多くの場合、ユーザーはクエリをすばやく実行することを必要とします。  このユーザーは、レポートを実行する必要がある会社の経営陣や、アドホック クエリを実行するアナリストである場合があります。 重要度をクエリに割り当てるには、ワークロード分類子を作成します。  次の例では新しい [create workload classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を使用して、2 つの分類子を作成しています。 `Membername` には単一のユーザーまたはグループを指定できます。 個々のユーザー分類はロール分類よりも優先されます。 既存のデータ ウェアハウス ユーザーを検索するには、次のコマンドを実行します。
+データ ウェアハウスのシナリオでは、多くの場合、ビジー状態のシステムでクエリをすばやく実行する必要があるユーザーがいます。  このユーザーは、レポートを実行する必要がある会社の経営陣や、アドホック クエリを実行するアナリストである場合があります。 重要度を割り当てるには、ワークロード分類子を作成することで重要度をクエリに割り当てます。  次の例では [create workload classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を使用して、2 つの分類子を作成しています。 `Membername` には単一のユーザーまたはグループを指定できます。  既存のデータ ウェアハウス ユーザーを検索するには、次のコマンドを実行します。
 
 ```sql
 Select name from sys.sysusers
@@ -33,20 +33,19 @@ Select name from sys.sysusers
 重要度の高いユーザー向けのワークロード分類子を作成するには、次のコマンドを実行します。
 
 ```sql
-CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
-    WITH (WORKLOAD_GROUP = 'xlargerc'
-         ,MEMBERNAME     = 'name'  
-         ,IMPORTANCE     =  above_normal);  
-
+CREATE WORKLOAD CLASSIFIER ExecReportsClassifier
+    WITH (WORKLOAD_GROUP = 'xlargerc'
+         ,MEMBERNAME     = 'name' 
+         ,IMPORTANCE     = above_normal);
 ```
 
 重要度の低いアドホック クエリを実行するユーザー向けのワークロード分類子を作成するには、次のコマンドを実行します。  
 
 ```sql
-CREATE WORKLOAD CLASSIFIER AdhocClassifier  
-    WITH (WORKLOAD_GROUP = 'xlargerc'
-         ,MEMBERNAME     = 'name'  
-         ,IMPORTANCE     =  below_normal);  
+CREATE WORKLOAD CLASSIFIER AdhocClassifier
+    WITH (WORKLOAD_GROUP = 'xlargerc'
+         ,MEMBERNAME     = 'name' 
+         ,IMPORTANCE     = below_normal);
 ```
 
 ## <a name="next-steps"></a>次の手順

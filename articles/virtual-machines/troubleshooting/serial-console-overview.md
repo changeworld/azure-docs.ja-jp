@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231943"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656476"
 ---
 # <a name="azure-serial-console"></a>Azure シリアル コンソール
 
@@ -35,7 +35,7 @@ VM または仮想マシン スケール セット インスタンスのシリ�
 
 - VM に対してブート診断を有効にする必要があります
 - パスワード認証を使用するユーザー アカウントが VM 内に存在する必要があります。 パスワード ベースのユーザーは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成できます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
-- シリアル コンソールにアクセスする Azure アカウントには、VM および[ブート診断](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ストレージ アカウントの両方に、[仮想マシン共同作成者ロール](boot-diagnostics.md)が必要です
+- シリアル コンソールにアクセスする Azure アカウントには、VM および[ブート診断](boot-diagnostics.md)ストレージ アカウントの両方に、[仮想マシン共同作成者ロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)が必要です
 
 > [!NOTE]
 > クラシック デプロイはサポートされていません。 VM または仮想マシン スケール セット インスタンスは、Azure Resource Manager デプロイ モデルを使用する必要があります。
@@ -66,6 +66,10 @@ VM 用のシリアル コンソールには、Azure portal で **[サポート +
   1. **[サポート + トラブルシューティング]** セクションから、 **[シリアル コンソール]** を選択します。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
 
      ![Linux 仮想マシン スケール セットのシリアル コンソール](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+
+### <a name="tls-12-in-serial-console"></a>シリアル コンソールでの TLS 1.2
+シリアル コンソールでは、TLS 1.2 をエンドツーエンドで使用して、サービス内のすべての通信をセキュリティで保護します。 シリアル コンソールはユーザーによって管理される起動診断ストレージ アカウントに依存しており、TLS 1.2 をストレージ アカウント用に別個に構成する必要があります。 そのための手順については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-security-tls)を参照してください。
 
 ## <a name="advanced-uses-for-serial-console"></a>シリアル コンソールの高度な使用方法
 VM へのコンソール アクセス以外に、Azure シリアル コンソールを使用して次のことを行うこともできます。

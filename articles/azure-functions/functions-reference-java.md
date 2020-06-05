@@ -3,12 +3,12 @@ title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145326"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648237"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -16,7 +16,7 @@ Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win
 
 他の言語と同様、関数アプリにも、1 つまたは複数の関数を使用することができます。 Java 関数は、注釈 `@FunctionName` で装飾された `public` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 Java で作成された 1 つの関数アプリに、`@FunctionName` で注釈付けされたパブリック メソッドを複数持つクラスが複数存在することもあります。
 
-この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 さらに、[Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) または [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java) を使用して、最初の関数を作成する Functions のクイック スタートも終えている必要があります。
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、次の Functions のクイックスタートのいずれかを完了する必要があります: [Visual Studio Code を使用した初めての Java 関数の作成](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)または [Maven を使用したコマンド ラインからの初めての Java 関数の作成](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。
 
 ## <a name="programming-model"></a>プログラミング モデル 
 
@@ -467,6 +467,6 @@ Java による Azure Functions 開発の詳細については、次のリソー�
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使ったローカルでの開発とデバッグ
-* [Visual Studio Code を使用した Java Azure Functions のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Visual Studio Code を使用した Java 関数のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [Maven plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) (Azure Functions 用の Maven プラグイン) 
 * `azure-functions:add` 目標を使って関数の作成を効率化し、[ZIP ファイル デプロイ](deployment-zip-push.md)に向けてステージング ディレクトリを準備します。

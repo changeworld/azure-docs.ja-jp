@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176143"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873589"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
@@ -80,7 +80,7 @@ Azure でインフラストラクチャを実行するときには、可能な�
 
 共有スナップショット スケジューラをデプロイする前に、共有スナップショットの頻度とリテンション期間の設定を慎重に検討して、不要な課金を避けてください。
 
-共有スナップショットは、ファイル レベルの保護のみを提供します。 共有スナップショットでは、タイプミスによるファイル共有またはストレージ アカウントの削除を防ぐことはできません。 ストレージ アカウントを誤って削除しないようにするために、ストレージ アカウントまたはリソース グループをロックできます。
+共有スナップショットは、ファイル レベルの保護のみを提供します。 共有スナップショットでは、タイプミスによるファイル共有またはストレージ アカウントの削除を防ぐことはできません。 ストレージ アカウントを誤って削除しないようにするために、[論理的な削除を有効にする](storage-files-prevent-file-share-deletion.md)か、ストレージ アカウントとリソース グループをロックできます。
 
 ## <a name="next-steps"></a>次のステップ
 - 次のツールで共有スナップショットを操作する方法:

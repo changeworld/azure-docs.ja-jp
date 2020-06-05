@@ -12,16 +12,16 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ed8dd902ac490b4e6a0f172029bf3ffa1d44acee
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 86cd3d2f7675ca5111c29be278c9433ec7f66945
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251845"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653053"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Azure Synapse Analytics に対する認証
 
-Azure Active Directory (AAD) または SQL Server 認証を使用して Azure Synapse の SQL Analytics に対して認証する方法について説明します。
+Azure Active Directory (AAD) または SQL Server 認証を使用して Azure Synapse の Synapse SQL に対して認証する方法について説明します。
 
 SQL プールに接続するには、認証のためにセキュリティ資格情報を渡す必要があります。 接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されます。  
 
@@ -80,7 +80,7 @@ Azure Active Directory 認証を構成するには、次の手順に従います
 
 ### <a name="find-the-details"></a>詳細の確認
 
-* Azure Active Directory 認証を構成および使用する手順は、Azure SQL Database と Azure Synapse の SQL Analytics とではほぼ同じです。 詳細な手順については、[Azure Active Directory 認証を使用して SQL Database または SQL プールに接続する](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)方法に関する記事を参照してください。
+* Azure Active Directory 認証を構成および使用する手順は、Azure SQL Database と Azure Synapse の Synapse SQL とではほぼ同じです。 詳細な手順については、[Azure Active Directory 認証を使用して SQL Database または SQL プールに接続する](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)方法に関する記事を参照してください。
 * カスタム データベース ロールを作成し、ロールにユーザーを追加します。 その後、ロールに詳細なアクセス許可を付与します。 詳細については、「 [データベース エンジンの権限の概要](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2541e9e10103d66c6c2fb6978c3029d61b813eab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614128"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827473"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
 
@@ -75,6 +75,18 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
+
+## <a name="remove-a-user-assignment"></a>ユーザー割り当てを削除する
+
+ユーザーが個人用デスクトップを必要としなくなった場合や、ユーザーが退職した場合、または他のユーザーのためにデスクトップを再利用したい場合、ユーザー割り当てを削除することができます。
+
+現在、セッション ホストを完全に削除するのが、個人用デスクトップのユーザー割り当てを削除する唯一の方法となります。 セッション ホストを削除するには、次のコマンドレットを実行します。
+
+```powershell
+Remove-RdsSessionHost
+```
+
+そのセッション ホストを再び個人用デスクトップのホスト プールに追加する必要が生じた場合は、そのマシンから Windows Virtual Desktop をアンインストールしてから、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」の手順に従ってセッション ホストを再登録します。
 
 ## <a name="next-steps"></a>次のステップ
 

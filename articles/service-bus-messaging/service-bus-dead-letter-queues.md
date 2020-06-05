@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 9c1a0cb92fbaf98d25799ffb5a85e666e7c05f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6630d96c90a221a6b0374f2e4758748a77ad0610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158905"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647830"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -50,14 +50,13 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 アプリケーションは `DeadLetterReason` プロパティに対して独自のコードを定義できますが、システムでは以下の値が設定されます。
 
-| 条件 | DeadLetterReason | DeadLetterErrorDescription |
-| --- | --- | --- |
-| Always (常に) |HeaderSizeExceeded |このストリームのサイズ クォータを超えています。 |
-| !TopicDescription.<br />EnableFilteringMessagesBeforePublishing and SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |メッセージの有効期限が切れているため、配信不能です。 |
-| SubscriptionDescription.RequiresSession |Session ID is null. (セッション ID は Null です。) |セッションが有効なエンティティではセッション ID が Null のメッセージは許可されません。 |
-| !dead letter queue | MaxTransferHopCountExceeded | キュー間で転送するときに許容される最大ホップ数。 値は 4 に設定されています。 |
-| Application での明示的な配信不能処理 |アプリケーションで指定 |アプリケーションで指定 |
+| DeadLetterReason | DeadLetterErrorDescription |
+| --- | --- |
+|HeaderSizeExceeded |このストリームのサイズ クォータを超えています。 |
+|TTLExpiredException |メッセージの有効期限が切れているため、配信不能です。 詳細については、「[TimeToLive の超過](#exceeding-timetolive)」セクションを参照してください。 |
+|Session ID is null. (セッション ID は Null です。) |セッションが有効なエンティティではセッション ID が Null のメッセージは許可されません。 |
+|MaxTransferHopCountExceeded | キュー間で転送するときに許容される最大ホップ数。 値は 4 に設定されています。 |
+| MaxDeliveryCountExceededExceptionMessage | 最大数の配信試行後、メッセージを使用できませんでした。 詳細については、「[MaxDeliveryCount の超過](#exceeding-maxdeliverycount)」セクションを参照してください。 |
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount の超過
 

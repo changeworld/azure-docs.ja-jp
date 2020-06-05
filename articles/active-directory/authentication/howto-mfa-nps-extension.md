@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199546"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871217"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -207,7 +207,10 @@ NPS 拡張機能を展開して使用する前に、2 段階認証を実行す�
 
 Azure Government クラウドを使用しているお客様については、各 NPS サーバーで次の追加の構成手順を実行する必要があります。
 
-1. NPS サーバーで**レジストリ エディター**を開きます。
+> [!IMPORTANT]
+> これらのレジストリ設定の構成は、Azure Government を利用している場合のみ行ってください。
+
+1. Azure Government を利用している場合、NPS サーバーで**レジストリ エディター**を開きます。
 1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` に移動します。 次のキーの値を設定します。
 
     | レジストリ キー       | 値 |

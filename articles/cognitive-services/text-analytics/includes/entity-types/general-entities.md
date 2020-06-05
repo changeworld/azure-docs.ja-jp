@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77211448"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778162"
 ---
 ## <a name="general-entity-types"></a>一般エンティティの種類:
 
@@ -38,7 +38,7 @@ ms.locfileid: "77211448"
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
 | 該当なし          | 職種 (例: `civil engineer`、`salesperson`、`chef`、`librarian`、`nursing aide`) | `2020-02-01`                           |
 
-### <a name="location"></a>Location
+### <a name="location"></a>場所
 
 自然および人口のランドマーク、構造、地物、地政学的実体。
 
@@ -49,7 +49,7 @@ ms.locfileid: "77211448"
 | サブタイプ名              | 説明                                                                              | 次のモデル バージョン以降で使用できます |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | 該当なし                       | 場所 (例、`Atlantic Ocean`、`library`、`Eiffel Tower`、`Statue of Liberty`)  | `2019-10-01`                           |
-| 地政学的実体 (GPE) - 英語のみ| 市区町村、国、都道府県 (例: `Seattle`、`Pennsylvania`、`South Africa`、`Tokyo`) | `2020-02-01`                           |
+| 地政学的実体 (GPE) - 英語のみ| 市区町村、国および地域、都道府県 (例: `Seattle`、`Pennsylvania`、`South Africa`、`Tokyo`) | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organization  
 
@@ -181,9 +181,9 @@ ms.locfileid: "77211448"
 | サブタイプ名    | 例                     |
 |-------------|------------------------------|
 | Number         | `6`, `six`                   |
-| [パーセント]  | `50%`, `fifty percent`       |
+| パーセント  | `50%`, `fifty percent`       |
 | Ordinal     | `2nd`, `second`              |
 | Age         | `90 day old`, `30 years old` |
-| Currency    | `$10.99`, `€30.00`           |
+| Currency    | `$10.99`, `&euro;30.00`           |
 | Dimension   | `10 miles`, `40 cm`          |
 | 気温 | `32 degrees`, `10°C`         |

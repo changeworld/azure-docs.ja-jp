@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2f6e091b6e0285bea5fef9e4d0be40faec936c6b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 469fdf19f8c5fa511070f2d809d06829578c2131
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633136"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653729"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>他のサービスを SQL Analytics データ ウェアハウスと統合する
+# <a name="integrate-other-services-with-a-synapse-sql-pool-data-warehouse"></a>他のサービスを Synapse SQL プール (データ ウェアハウス) と統合する
 
-Azure Synapse Analytics 内の SQL Analytics 機能を使用すると、ユーザーは Azure の他の多くのサービスと統合することができます。 SQL Analytics を使用すると、SQL プール リソースを使ってデータ ウェアハウスを作成できます。これにより、次のようないくつかの追加サービスを利用できます。
+Azure Synapse Analytics 内の SQL プール機能を使用すると、ユーザーは Azure の他の多くのサービスと統合することができます。 Synapse SQL を使用すると、SQL プール リソースを使ってデータ ウェアハウスを作成できます。これにより、次のようないくつかの追加サービスを利用できます。
 
 * Power BI
 * Azure Data Factory

@@ -1,18 +1,18 @@
 ---
 title: 支払いの概要の概説 - Azure Marketplace
-description: '[支払いの概要] には、プランで獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払い額を確認することもできます。'
+description: '[支払いの概要] には、プランで獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払われる金額を確認することもできます。'
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 48644f2f8148a7aa1974be0d7f761e9b3a55612d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782548"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746200"
 ---
 # <a name="payout-summary-overview"></a>支払いの概要の概説
 
@@ -70,7 +70,7 @@ Cloud パートナー ポータル (旧) とパートナー センター (新) �
 | participantId | プログラムによるパートナー収益のプライマリ ID |
 | participantIdType | インセンティブ プログラムの場合はプログラム ID、プログラムがストア プログラムおよび Azure Marketplace 用である場合は販売者 |
 | participantName | 収益パートナーの名前 |
-| partnerCountryCode | 収益パートナーの場所/国 |
+| partnerCountryCode | 収益パートナーの場所、国、地域 |
 | programName | インセンティブ/ストア プログラム名 |
 | transactionId | 取引の一意識別子 |
 | transactionCurrency | 元の顧客取引が発生した通貨 (パートナーの場所の通貨ではありません) |
@@ -113,15 +113,15 @@ Cloud パートナー ポータル (旧) とパートナー センター (新) �
 | storeFee | コマーシャル マーケットプレースでアプリまたはアドオンを利用できるようにするための料金として、Microsoft によって保持される金額。 |
 | transactionPaymentMethod | 取引に使用される顧客の支払い方法 (カード、携帯電話会社の請求、PayPal など) |
 | tpan | サード パーティの広告ネットワーク |
-| customerCountry | 顧客の国 |
+| customerCountry | 顧客の国および地域 |
 | customerCity | 顧客の市区町村 |
 | customerState | 顧客の都道府県 |
 | customerZip | 顧客の郵便番号 |
 | TenantId | テナントの ID |
 | externalReferenceId | プログラムの一意識別子 |
 | externalReferenceIdLabel | 一意識別子のラベル |
-| transactionCountryCode | 取引が発生した国番号 |
-| taxCountry | 顧客の国 |
+| transactionCountryCode | 取引が発生した国および地域番号 |
+| taxCountry | 顧客の国および地域 |
 | taxState | 顧客の都道府県 |
 | taxCity | 顧客の市区町村 |
 | taxZipCode | 顧客の郵便番号 |
@@ -132,7 +132,7 @@ Cloud パートナー ポータル (旧) とパートナー センター (新) �
 | AssetId | Marketplace サービスの顧客注文の一意識別子。 これは購入品目を表します。 複数の資産が存在することもあります。 |
 | OrderId | 顧客の請求書に関連しています |
 | LineItemId | 顧客の請求書の個別行 |
-| 顧客の国 | 顧客が指定した国名。 これは、顧客の Azure サブスクリプションの国とは異なる場合があります。 |
+| 顧客の国および地域 | 顧客が指定した国や地域の名前。 これは、顧客の Azure サブスクリプションの国や地域とは異なる場合があります。 |
 | Customer EmailAddress | 顧客が指定したメール アドレス。 これは、顧客の Azure サブスクリプションのメール アドレスとは異なる場合があります。 |
 | SkuId | 発行中に定義される SKU ID。 1 つのプランに多数の SKU を関連付けることは可能ですが、1 つの SKU に関連付けることのできるプランは 1 つのみです。 |
 

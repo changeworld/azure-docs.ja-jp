@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3b4159d81ce1d202dd1a302e863e5392f51a9868
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261263"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747809"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [注文] ダッシュボード
 
@@ -58,7 +58,7 @@ ms.locfileid: "81261263"
 
 ### <a name="orders-by-geography"></a>地域別注文数
 
-**[地域ごとの注文]** ヒートマップでは、注文数が世界地図上に表示され、顧客の国に基づいてマップされたシート数が示されます。 このヒートマップは、 **[[地域別の顧客] ヒートマップ](./customer-dashboard.md#customer-by-geography)** と同じ機能です。
+**[地域ごとの注文]** ヒートマップでは、注文数が世界地図上に表示され、顧客の国および地域に基づいてマップされたシート数が示されます。 このヒートマップは、 **[[地域別の顧客] ヒートマップ](./customer-dashboard.md#customer-by-geography)** と同じ機能です。
 
 ![パートナー センター分析の地域ごとの注文](./media/orders-by-geography.png)
 
@@ -103,7 +103,8 @@ ms.locfileid: "81261263"
 - グリッドの各列で並べ替えることができます。
 - レコード数が 1000 未満の場合、TSV ファイルにデータを抽出できます。
 - レコード数が 1000 を超える場合、エクスポートされたデータは今後 30 日間、ダウンロード ページに非同期で配置されます。
-- **注文詳細テーブル**にフィルターを適用して、関心のあるデータのみを表示できます。 データに適用できるフィルターは、国、Azure ライセンスの種類、Marketplace ライセンスの種類、オファーの種類、注文の状態、無料評価版、マーケットプレース サブスクリプション ID、顧客 ID、および会社名です。
+- **注文詳細テーブル**にフィルターを適用して、関心のあるデータのみを表示できます。 データに適用できるフィルターは、国および地域、Azure ライセンスの種類、Marketplace ライセンスの種類、プランの種類、注文の状態、無料評価版、マーケットプレース サブスクリプション ID、顧客 ID、および会社名です。
+- Azure Marketplace または AppSource から購入した SaaS プランは Azure サブスクリプションを必要としないため、Marketplace サブスクリプション ID は **[詳細な注文データ]** セクションに 00000000-0000-0000-0000-000000000000 と表示されます。
 
 #### <a name="orders-page-filters"></a>注文ページ フィルター
 

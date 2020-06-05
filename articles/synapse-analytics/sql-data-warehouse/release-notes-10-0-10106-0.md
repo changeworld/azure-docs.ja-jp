@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a60591fb33c8f14a65b406073cf3194fca882d12
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: cdd3c12f0312697e2190d7a94285de19c2d375fc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837381"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653085"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
 
@@ -41,7 +41,20 @@ ms.locfileid: "82837381"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+## <a name="may-2020"></a>2020 年 5 月
 
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**ワークロードの分離 (GA)**|[ワークロードの分離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)の一般提供が開始されました。  [ワークロード グループ](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)を使用して、リソースを予約して含めることができます。  クエリ タイムアウトを構成して、ランナウェイ クエリを取り消すこともできます。|
+|**ワークロード管理ポータル エクスペリエンス (プレビュー)**| ユーザーは、Azure portal を使用して、ワークロード管理の設定を構成および管理できます。  重要度が設定された[ワークロード グループ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)と[ワークロード分類子](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)を構成することができます。|
+|**ワークロード グループの変更**|[ALTER WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) コマンドを使用できるようになりました。  alter を使用して、既存の[ワークロード グループ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)の構成を変更します。|
+|**COPY コマンドでの Parquet ファイルの自動スキーマ検出**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)による Parquet ファイルの読み込み時に自動スキーマ検出がサポートされるようになりました。 このコマンドでは、読み込みの前に Parquet ファイルのスキーマを自動的に検出し、テーブルを作成します。|
+|**COPY コマンドでの複雑な Parquet データ型の読み込み**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で複雑な Parquet 型の読み込みがサポートされるようになりました。 Maps や Lists などの複雑な型を文字列型の列に読み込むことができます。|
+|**COPY コマンドでの Parquet ファイルの自動圧縮検出**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で Parquet ファイルの圧縮方法の自動検出がサポートされるようになりました。|
+|**その他の読み込みに関する推奨事項**|Synapse SQL 向けの[読み込みに関する推奨事項](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)が提供されるようになりました。 最大スループットのためにファイルを分割する必要がある場合にプロアクティブな通知を受け取ります。ストレージ アカウントを SQL プールと併置します。または、SQLBulkCopy API や BCP などの読み込みユーティリティを使用するときにバッチ サイズを増やします|
+|**T-SQL の更新可能なディストリビューション列 (GA)**|ユーザーは、ディストリビューション列に格納されているデータを更新できるようになりました。 詳細については、「[Synapse SQL プールでの分散テーブルの設計に関するガイダンス](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)」を参照してください。|
+|**T-SQL Update/Delete from...Join (GA)**|別のテーブルとの Join の結果に基づく Update と Delete が利用可能になりました。 詳細については、[Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) および [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) のドキュメントを参照してください。|
+|**T-SQL PREDICT (プレビュー)**|データ ウェアハウス内の機械学習モデルを予測することで、大規模で複雑なデータ移動を回避できるようになりました。 T-SQL PREDICT 関数は、オープン モデル フレームワークに基づき、データと機械学習モデルを入力として受け取り、予測を生成します。 詳細については、[こちらのドキュメント](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)を参照してください。|
 
 ## <a name="april-2020"></a>2020 年 4 月
 

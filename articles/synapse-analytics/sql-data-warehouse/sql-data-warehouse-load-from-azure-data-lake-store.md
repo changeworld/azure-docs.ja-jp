@@ -11,14 +11,14 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626719"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654511"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>SQL 分析用に Azure Data Lake Storage からデータを読み込む
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Synapse SQL 用に Azure Data Lake Storage からデータを読み込む
 
 このガイドでは、PolyBase 外部テーブルを使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、パフォーマンスを最適化するにはデータをインポートすることをお勧めします。
 

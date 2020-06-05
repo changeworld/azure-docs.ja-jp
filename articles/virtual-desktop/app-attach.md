@@ -5,21 +5,21 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128323"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742930"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
 > [!IMPORTANT]
-> 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 現在、MSIX アプリのアタッチはプライベート プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このトピックでは、Windows Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "79128323"
 開始する前に、MSIX アプリのアタッチを構成するために必要な項目を示します。
 
 - Windows Insider ポータルにアクセスして、MSIX アプリのアタッチ API をサポートする Windows 10 のバージョンを取得する。
-- 機能する Windows Virtual Desktop のデプロイ。 詳細については、「[Windows Virtual Desktop でテナントを作成する](tenant-setup-azure-active-directory.md)」を参照してください。
+- 機能する Windows Virtual Desktop のデプロイ。 詳細については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。
 - MSIX パッケージ作成ツール
 - MSIX パッケージが保存される Windows Virtual Desktop のデプロイのネットワーク共有
 
@@ -41,7 +41,7 @@ ms.locfileid: "79128323"
      >[!NOTE]
      >Windows Insider ポータルにアクセスするには、Windows Insider Program のメンバーである必要があります。 Windows Insider Program の詳細については、[Windows Insider のドキュメント](/windows-insider/at-home/)を参照してください。
 
-2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19035]** 以降のビルドを選択します。
+2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19041]** 以降のビルドを選択します。
 
 3. **[確認]** を選択し、使用する言語を選択してから、 **[確認]** をもう一度選択します。
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+自動更新を無効にしたら、Hyper-V を有効にする必要があります。これは、今後 Mount-VHD コマンドを使用してステージングを行い、Dismount-VHD コマンドを使用してステージング解除を行うからです。 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>この変更には、仮想マシンの再起動が必要です。
 
 次に、Azure 用の VM VHD を準備し、結果の VHD ディスクを Azure にアップロードします。 詳細については、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」を参照してください。
 
@@ -257,7 +265,7 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
@@ -452,4 +460,4 @@ catch [Exception]
 
 この機能は現在サポートされていませんが、[Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) でコミュニティに質問することができます。
 
-[Windows Virtual Desktop フィードバック ハブ](https://aka.ms/MRSFeedbackHub)で Windows Virtual Desktop に関するフィードバックを残すことも、[MSIX アプリのアタッチのフィードバック ハブ](https://aka.ms/msixappattachfeedback)および [MSIX パッケージ作成ツールのフィードバック ハブ](https://aka.ms/msixtoolfeedback)で MSIX アプリとパッケージ作成ツールに関するフィードバックを残すこともできます。
+また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。

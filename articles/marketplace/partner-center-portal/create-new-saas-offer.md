@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: b85846419ce5f6cd4093e198d83240817c95754a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 3c922675619fc877d9d97a43b69a15f5ca4f393e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983059"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849112"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで新しい SaaS オファーを作成する
 
@@ -120,7 +120,7 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 #### <a name="contact-me"></a>[Contact me (お問い合わせ)]
 
-顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[リード管理の接続](#connect-lead-management)」を参照してください。
+顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[潜在顧客](#customer-leads)」を参照してください。
 
 #### <a name="example-marketplace-offer-listing"></a>マーケットプレース オファーの一覧表示の例
 
@@ -140,7 +140,7 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 - [技術的なベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
 
-### <a name="connect-lead-management"></a>リード管理の接続
+### <a name="customer-leads"></a>潜在顧客
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
@@ -227,28 +227,13 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 - **[検索キーワード]** – マーケットプレースで顧客がお客様のオファーを見つけるために使用できる検索キーワードを最大 3 つ入力します。
 - **[作業を開始するための手順]** (必須) – お客様のアプリを構成して使用を開始する方法を潜在顧客に対して説明します。  このクイック スタートには、より詳細なオンライン ドキュメントへのリンクを含めることができます。 このフィールドには、最大で 3,000 文字のテキストを入力できます。
 
-#### <a name="description"></a>**説明**
+#### <a name="description"></a>説明
 
-このフィールドは必須です。 **[説明]** に含める項目は次のとおりです。
+このフィールドは必須です。
 
-* 説明の先頭の数文で、オファーの価値提案を明確に説明します。  
-* 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。  
-* 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。  
-* できるだけ業界固有の語彙や利益に基づく表現を使用します。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-価値提案の中心の要素には、以下を含めるようにします。
-
-* 製品の説明
-* 製品から利益を得られるユーザーの種類
-* 製品が対応する顧客のニーズや問題
-
-オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
-
-![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
-
-| <center>テキストの形式を変更する | <center>箇条書きまたは段落番号を追加します | <center>テキスト インデントを追加または削除する |
-| --- | --- | --- |
-| <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用したリストの追加](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用してインデントを設定する](./media/text-editor5.png) |
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="links"></a>リンク
 
@@ -355,7 +340,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 #### <a name="markets-optional"></a>市場 (省略可能)
 
-すべてのプランは、少なくとも 1 つの市場で利用できる必要があります。 **[市場の編集]** を選択し、このプランを利用可能にしたい市場の場所のチェック ボックスをオンにします。 このページには、Microsoft が代理で消費税と使用税を送金する "税送金" 国を選択するための検索ボックスおよびオプションが含まれています。
+すべてのプランは、少なくとも 1 つの市場で利用できる必要があります。 **[市場の編集]** を選択し、このプランを利用可能にしたい市場の場所のチェック ボックスをオンにします。 このページには、Microsoft が代理で消費税と使用税を送金する "税送金" 国および地域を選択するための検索ボックスおよびオプションが含まれています。
 
 米国ドル (USD) でプランの価格を既に設定していて、別の市場の場所を追加する場合、新しい市場の価格は現時点の為替レートに従って計算されます。 各市場の価格を発行前に確認します。 変更を保存した後、[Export prices (xlsx)]\(価格のエクスポート (xlsx)\) リンクを使用して、価格を確認します。
 

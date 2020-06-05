@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791019"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848018"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
 
@@ -182,8 +182,9 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. オファーの **[オファーのセットアップ]** ページに移動します。
 
-1. **[リード管理]** セクションで **[接続]** を選択します。
-     ![リード管理](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** として **[Azure テーブル]** を選択します。 
      ![リード管理、接続の詳細](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

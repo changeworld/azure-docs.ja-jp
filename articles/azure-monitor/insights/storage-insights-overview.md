@@ -1,25 +1,25 @@
 ---
-title: Azure Monitor for Storage (プレビュー) で Azure Storage サービスを監視する | Microsoft Docs
+title: Azure Monitor for Storage で Azure Storage サービスを監視する | Microsoft Docs
 description: この記事では、ストレージ管理者が Azure Storage アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Storage の機能について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691111"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800067"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) でストレージ サービスを監視する
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Azure Monitor for Storage でストレージ サービスを監視する
 
-Azure Monitor for Storage (プレビュー) では、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供され、Azure Storage アカウントを包括的に監視できます。 ストレージの容量とパフォーマンスは、ストレージ アカウントから直接表示する方法と、Azure Monitor からストレージ アカウントのグループ全体を表示する方法の 2 つの方法で観察できます。 
+Azure Monitor for Storage では、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供され、Azure Storage アカウントを包括的に監視できます。 ストレージの容量とパフォーマンスは、ストレージ アカウントから直接表示する方法と、Azure Monitor からストレージ アカウントのグループ全体を表示する方法の 2 つの方法で観察できます。 
 
-この記事は、Azure Monitor for Storage (プレビュー) のエクスペリエンスを理解するのに役立ちます。規模に合わせたストレージ アカウントの正常性とパフォーマンスについての実用的な知識を引き出すことができ、ホットスポットに注目し、待機時間、スロットリング、可用性の問題を診断できる機能もあります。
+この記事は、Azure Monitor for Storage のエクスペリエンスを理解するのに役立ちます。規模に合わせたストレージ アカウントの正常性とパフォーマンスについての実用的な知識を引き出すことができ、ホットスポットに注目し、待ち時間、スロットリング、可用性の問題を診断できる機能もあります。
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) の概要
+## <a name="introduction-to-azure-monitor-for-storage"></a>Azure Monitor for Storage の概要
 
 エクスペリエンスについて詳しく調べる前に、情報が提供および視覚化される方法を理解する必要があります。 ストレージ機能をストレージ アカウントから直接選択するか、Azure Monitor から選択するかにかかわらず、Azure Monitor for Storage では一貫したエクスペリエンスが得られます。 
 
@@ -48,7 +48,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure portal の左側のウィンドウで **[モニター]** を選択し、 **[分析情報]** セクションの **[ストレージ アカウント (プレビュー)]** を選択します。
+2. Azure portal の左側のペインで **[モニター]** を選択し、 **[分析情報]** セクションの **[ストレージ アカウント]** を選択します。
 
     ![複数のストレージ アカウントのビュー](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. Azure portal で [ストレージ アカウント] を選択します。
 
-2. 一覧からストレージ アカウントを選択します。 [監視] セクションで [インサイト (プレビュー)] を選択します。
+2. 一覧からストレージ アカウントを選択します。 [監視] セクションで、[分析情報] を選択します。
 
     ![選択されたストレージ アカウントの [概要] ページ](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ![ブックのグリッド結果のエクスポートの例](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) をカスタマイズする
+## <a name="customize-azure-monitor-for-storage"></a>Azure Monitor for Storage をカスタマイズする
 
 このセクションでは、データ分析のニーズに合わせてブックを編集してカスタマイズする一般的なシナリオについて説明します。
 
@@ -155,7 +155,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 複数サブスクリプションおよびストレージ アカウントの **[概要]** または **[容量]** ブックを、実行のたびに特定のサブスクリプションまたはストレージ アカウントを対象とするように構成できます。次の手順を行います。
 
-1. ポータルで **[モニター]** を選択し、左側のウィンドウで **[ストレージ アカウント (プレビュー)]** を選択します。
+1. ポータルで **[モニター]** を選択し、左側のペインで **[ストレージ アカウント]** を選択します。
 
 2. **[概要]** ブックで、コマンド バーから **[編集]** を選択します。
 
@@ -176,7 +176,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 作成済みの **[Failures]\(エラー数\)** 、 **[パフォーマンス]** 、 **[可用性]** 、 **[容量]** のどのブックでも、同じ変更を実行できます。
 
-1. ポータルで **[モニター]** を選択し、左側のウィンドウで **[ストレージ アカウント (プレビュー)]** を選択します。
+1. ポータルで **[モニター]** を選択し、左側のペインで **[ストレージ アカウント]** を選択します。
 
 2. **[容量]** を選択して容量ブックに切り替え、コマンド バーから **[編集]** を選択します。
 
@@ -210,7 +210,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. ポータルから **[ストレージ アカウント]** を選択し、一覧からストレージ アカウントを選択します。
 
-2. 左側のウィンドウで **[インサイト (プレビュー)]** を選択します。
+2. 左側のペインで **[分析情報]** を選択します。
 
 3. ブックで、 **[可用性]** を選択して可用性ブックに切り替えてから、コマンド バーの **[編集]** を選択します。 
 
@@ -228,11 +228,11 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-このセクションは、Azure Monitor for Storage (プレビュー) を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
+このセクションは、Azure Monitor for Storage を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>パフォーマンス、容量、または可用性の問題の解決
 
-Azure Monitor for Storage (プレビュー) で発生するストレージ関連の問題のトラブルシューティングについては、Azure Storage の[トラブルシューティング ガイダンス](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)に関する記事をご覧ください。  
+Azure Monitor for Storage で発生するストレージ関連の問題のトラブルシューティングについては、Azure Storage の[トラブルシューティング ガイダンス](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)に関するページを参照してください。  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>200 個のストレージ アカウントしか表示できないのはなぜですか。
 
@@ -318,6 +318,6 @@ n 種類のエラーを表示する場合は、splitByLimit を n+1 として指
 
 * [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
-* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../app/usage-workbooks.md)」で学習してください。
+* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
 
 * Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。

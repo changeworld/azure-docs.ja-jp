@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a92e64311d8a4f5e87c5be3d00c1c23898db551d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891273"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648319"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -27,7 +27,7 @@ HTTP トリガーの例については、「[HTTP エンドポイントへのイ
 
 ### <a name="c-2x-and-higher"></a>C# (2.x 以降)
 
-次の例は、[ にバインドする](functions-dotnet-class-library.md) C# 関数`EventGridEvent`を示したものです。
+次の例は、`EventGridEvent` にバインドする[ C# 関数](functions-dotnet-class-library.md)を示したものです。
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -53,7 +53,7 @@ namespace Company.Function
 
 ### <a name="version-1x"></a>バージョン 1.x
 
-次の例は、[ にバインドする Functions 1.x の ](functions-dotnet-class-library.md)C# 関数`JObject`を示したものです。
+次の例は、`JObject` にバインドする Functions 1.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -401,13 +401,13 @@ Event Grid の HTTP 要求の受信を始めるには、関数を呼び出すエ
 
 ### <a name="azure-portal"></a>Azure portal
 
-Event Grid トリガーを使って Azure Portal で開発した関数の場合は、 **[vent Grid サブスクリプションの追加]** を選びます。
+イベント グリッド トリガーを使用して Azure portal で開発する関数の場合は、 **[統合]** を選択します。次に、 **[イベント グリッド トリガー]** を選択し、 **[Event Grid サブスクリプションの作成]** を選択します。
 
-![ポータルでサブスクリプションを作成する](media/functions-bindings-event-grid/portal-sub-create.png)
+:::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="ポータルで新しいイベント サブスクリプションをトリガーに接続する。":::
 
-このリンクを選ぶと、ポータルに **[イベント サブスクリプションの作成]** ページが表示され、エンドポイント URL があらかじめ設定されています。
+このリンクを選ぶと、現在のトリガー エンドポイントが既に定義された **[イベント サブスクリプションの作成]** ページがポータルに表示されます。
 
-![事前設定されたエンドポイント URL](media/functions-bindings-event-grid/endpoint-url.png)
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="関数のエンドポイントが既に定義された [イベント サブスクリプションの作成]" :::
 
 Azure Portal を使ってサブスクリプションを作成する方法について詳しくは、Event Grid のドキュメントの「[カスタム イベントの作成 - Azure Portal](../event-grid/custom-event-quickstart-portal.md)」をご覧ください。
 

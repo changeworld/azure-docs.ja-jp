@@ -62,15 +62,15 @@ Office 365/Azure AD へのログイン フローを有効にするには、 (htt
 Azure AD からのプロビジョニングのためにユーザーの構成ポータルを有効にするには、[こちら](
 https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)の記事を参照してください。
 
-#### <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
+#### <a name="configure-user-provisioning"></a>ユーザー プロビジョニングの構成
 
 1.  テナント ID を指定して [MediusFlow の管理コンソール](https://office365.cloudapp.mediusflow.com/)にログインします。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    ![認証](./media/mediusflow-provisioning-tutorial/1-auth.png)
 
 2. MediusFlow との接続を確認します。
 
-    ![Verify (英語の可能性あり)](./media/mediusflow-provisioning-tutorial/2-verify-connection.png)
+    ![確認](./media/mediusflow-provisioning-tutorial/2-verify-connection.png)
 
 3. Azure AD テナント ID を指定します。
 
@@ -80,19 +80,19 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. 構成を保存します。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    ![認証](./media/mediusflow-provisioning-tutorial/4-save-config.png)
 
 5. [User Provisioning]\(ユーザー プロビジョニング\) を選択して **[OK]** をクリックします。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    ![認証](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
 
 6. **[Generate Secret Key]\(秘密鍵の生成\)** をクリックします。 この値をコピーして保存します。この値は、Azure portal の MediusFLow アプリケーションの **[プロビジョニング]** タブにある **[シークレット トークン]** フィールドに入力します。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    ![認証](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
 
 7. **[OK]** をクリックします。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    ![認証](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
 
 8. MediusFlow で事前定義した一連のロール、会社、およびその他の一般的な構成を使用してユーザーをインポートするには、最初に構成する必要があります。 まず、 **[Add new configuration]\(新しい構成の追加\)** をクリックして構成を追加します。
 

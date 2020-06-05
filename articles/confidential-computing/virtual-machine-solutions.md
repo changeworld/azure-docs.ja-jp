@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187887"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773136"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション
 
@@ -21,7 +21,7 @@ ms.locfileid: "82187887"
 
 ## <a name="azure-confidential-computing-vm-sizes"></a>Azure Confidential Computing の VM サイズ
 
-Azure Confidential Computing 仮想マシンは、クラウドで処理されるとき、データとコードの資格情報と整合性を保護するように設計されています。 
+Azure Confidential Computing 仮想マシンは、データとコードをクラウドで処理するとき、機密性と整合性を保護するように設計されています 
 
 [DCsv2-Series](../virtual-machines/dcv2-series.md) VM は Confidential Computing の最新のサイズ ファミリです。 これらの VM では、広範囲のデプロイ機能がサポートされ、Enclave Page Cache (EPC) が 2 つ与えられ、サイズの取り揃えが DC-Series VM より多くなっています。 [DC-Series](../virtual-machines/sizes-previous-gen.md#preview-dc-series) VM は現在のところプレビュー段階です。これは非推奨となる予定で、一般提供には含まれません。
 
@@ -39,7 +39,7 @@ az vm list-skus
     --output table
 ```
 
-2020 年 4 月の時点で、これらの SKU は次のリージョンと可用性ゾーンで利用できます。
+2020 年 5 月の時点で、これらの SKU は次のリージョンと可用性ゾーンで利用できます。
 
 ```output
 Name              Locations      AZ_a
@@ -86,7 +86,7 @@ az vm list-skus
   
 - **サイズ変更** - 特殊なハードウェアが使用されるため、Confidential Computing インスタンスのサイズ変更は同じサイズ ファミリ内でのみ可能です。 たとえば、DCsv2-Series の VM は DCsv2-Series のあるサイズから別のサイズにのみ変更できます。 Confidential Computing ではないサイズを Confidential Computing サイズに変更することはできません。  
 
-- **イメージ** - Confidential Computing インスタンスで Intel Software Guard Extension (Intel SGX) をサポートするために、すべてのデプロイを Generation 2 イメージで実行する必要があります。 Azure Confidential Computing は、Ubuntu 18.04 Gen 2、Ubuntu 16.04 Gen 2、Windows Server 2016 Gen 2 で実行されるワークロードをサポートします。 サポートされているシナリオとサポートされていないシナリオの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/linux/generation-2.md)」をお読みください。 
+- **イメージ** - Confidential Computing インスタンスで Intel Software Guard Extension (Intel SGX) をサポートするために、すべてのデプロイを Generation 2 イメージで実行する必要があります。 Azure Confidential Computing では、Ubuntu 18.04 Gen 2、Ubuntu 16.04 Gen 2、Windows Server 2019 Gen2、および Windows Server 2016 Gen 2 で実行されるワークロードがサポートされます。 サポートされているシナリオとサポートされていないシナリオの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/linux/generation-2.md)」をお読みください。 
 
 - **ストレージ** - Azure Confidential Computing 仮想マシンのデータ ディスクとエフェメラル OS ディスクは NVMe ディスク上にあります。 インスタンスでは、Premium SSD ディスクと Standard SSD ディスクのみがサポートされ、Ultra SSD と Standard HDD はサポートされません。 仮想マシン サイズ **DC8_v2** では Premium ストレージがサポートされていません。 
 
@@ -100,15 +100,15 @@ Azure Confidential Computing では現時点で、可用性ゾーンによるゾ
 
 ## <a name="deploying-via-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートによるデプロイ 
 
-Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure サブスクリプション内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理します。
+Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure サブスクリプション内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理できます。
 
 Azure Resource Manager テンプレートについては、[テンプレートのデプロイの概要](../azure-resource-manager/templates/overview.md)に関するページを参照してください。
 
-ARM テンプレートで DCsv2-Series VM をデプロイするには、[仮想マシン リソース](../virtual-machines/windows/template-description.md)を活用します。 **vmSize** と **imageReference** に確実に正しいプロパティを指定する必要があります。
+Azure Resource Manager テンプレートで DCsv2-Series VM をデプロイするには、[仮想マシン リソース](../virtual-machines/windows/template-description.md)を活用します。 **vmSize** と **imageReference** に確実に正しいプロパティを指定します。
 
 ### <a name="vm-size"></a>[VM サイズ]
 
-仮想マシン リソースの ARM テンプレートで次のサイズのいずれかを指定します。 この文字列は **[プロパティ]** に **vmSize** として入力されます。
+仮想マシン リソースの Azure Resource Manager テンプレートで、次のいずれかのサイズを指定します。 この文字列は **[プロパティ]** に **vmSize** として入力されます。
 
 ```json
   [
@@ -124,6 +124,12 @@ ARM テンプレートで DCsv2-Series VM をデプロイするには、[仮想�
 **[プロパティ]** の下では、 **[storageProfile]** 下のイメージも参照する必要があります。 **imageReference** には、次のイメージのうち "*1 つだけ*" を使用します。
 
 ```json
+      "2019-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2019-datacenter-gensecond",
+        "version": "latest"
+      },
       "2016-datacenter-gensecond": {
         "offer": "WindowsServer",
         "publisher": "MicrosoftWindowsServer",
@@ -146,7 +152,7 @@ ARM テンプレートで DCsv2-Series VM をデプロイするには、[仮想�
 
 ## <a name="next-steps"></a>次の手順 
 
-この記事では、Confidential Computing 仮想マシンの作成時に必要な資格と構成について学習しました。 これで Azure Marketplace に進み、DCsv2-Series VM をデプロイできます。
+この記事では、Confidential Computing 仮想マシンの作成時に必要な資格と構成について学習しました。 これで Microsoft Azure Marketplace に進み、DCsv2-Series VM をデプロイできます。
 
 > [!div class="nextstepaction"]
 > [Azure Marketplace で DCsv2-Series 仮想マシンをデプロイする](quick-create-marketplace.md)

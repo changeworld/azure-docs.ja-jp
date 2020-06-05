@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5f10b987fa8783084b14774b9bce5e857f3c59c4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408043"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650481"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL プール内の一時テーブル
 この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 
@@ -29,9 +29,9 @@ ms.locfileid: "81408043"
 
 一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。
 
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL Analytics では、一時テーブルはセッション レベルで存在します。  それが作成されたセッションにのみ表示されます。 そのため、そのセッションがログオフされたときに自動的に削除されます。 
+特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL プールでは、一時テーブルはセッション レベルで存在します。  それが作成されたセッションにのみ表示されます。 そのため、そのセッションがログオフされたときに自動的に削除されます。 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL プール内の一時テーブル
+## <a name="temporary-tables-in-sql-pool"></a>SQL プールの一時テーブル
 
 SQL プール リソースでは、一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。
 
@@ -233,5 +233,5 @@ SQL プールでは、一時テーブルを実装するときに制限事項が�
 
 ## <a name="next-steps"></a>次のステップ
 
-テーブルの開発について詳しくは、[SQL Analytics リソースを使用したテーブルの設計](sql-data-warehouse-tables-overview.md)に関する記事をご覧ください。
+テーブルの開発について詳しくは、[Synapse SQL リソースを使用したテーブルの設計](sql-data-warehouse-tables-overview.md)に関する記事をご覧ください。
 

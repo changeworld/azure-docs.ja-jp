@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c28e6c1edf4188cf3ea80c14565785dcf1dcbba
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78194642"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653821"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure オーサリング リソースに移行するための手順
 
@@ -97,8 +97,8 @@ Azure サブスクリプションをお持ちでない場合は、[サインア�
 
 1. アプリにアクセスする前に、サブスクリプションと LUIS オーサリング リソースを選択して、自分が作成できるアプリを確認します。
 
-    ![サブスクリプションと LUIS オーサリング リソースを選択して、自分が作成できるアプリを確認します。](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
-
+    > [!div class="mx-imgBorder"]
+    > ![サブスクリプションと LUIS 作成リソースを選択して、自分が作成できるアプリを確認します。](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
 ## <a name="app-contributor-begins-the-migration-process"></a>アプリ共同作成者が移行プロセスを開始する
 

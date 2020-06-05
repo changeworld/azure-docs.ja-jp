@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335857"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648410"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -69,7 +69,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 > [!NOTE]
 > ポートはバックエンドの HTTP 設定と同じポートです。
 
-既定のプローブは、正常性状態を判断する際に http:\//127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、カスタム プローブを使用する必要があります。
+既定のプローブは、正常性状態を判断する際に http:\//127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、カスタム プローブを使用する必要があります。 HTTP プローブの詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md#for-probe-traffic)」を参照してください。
 
 ### <a name="probe-intervals"></a>プローブの期間
 

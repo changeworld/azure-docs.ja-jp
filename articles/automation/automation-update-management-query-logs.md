@@ -1,28 +1,28 @@
 ---
-title: Azure Update Management ログにクエリを実行する
+title: Azure Automation の Update Management ログを照会する
 description: この記事では、Log Analytics ワークスペースで Update Management のログに対してクエリを実行する方法について説明します。
 services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617430"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830771"
 ---
-# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitor Logs で Update Management の更新レコードに対してクエリを実行する
+# <a name="query-update-management-logs"></a>Update Management ログにクエリを実行する
 
-Update Management ソリューションで提供される詳細に加えて、Log Analytics ワークスペースに格納されているログを検索することができます。 ソリューション ページの左側のペインで、 **[ログ]** を選択します。 [ログ検索] ページが開きます。
+Update Management のデプロイ中に提供される詳細に加えて、Log Analytics ワークスペースに格納されているログを検索することができます。 Automation アカウントからログを検索するには、 **[Update Management]** を選択し、該当するデプロイに関連付けられている Log Analytics ワークスペースを開きます。
 
-また、クエリをカスタマイズする方法や、さまざまなクライアントから使用する方法も学べます。 [Log Analytics の検索 API のドキュメント](https://dev.loganalytics.io/)を参照してください。
+ログのクエリをカスタマイズしたり、それらのクエリをさまざまなクライアントから使用することもできます。 [Log Analytics の検索 API のドキュメント](https://dev.loganalytics.io/)を参照してください。
 
-## <a name="update-records"></a>Update レコード
+## <a name="query-update-records"></a>Update レコードを照会する
 
 Update Management では、Windows および Linux VM のレコードと、ログ検索結果に表示されるデータ型が収集されます。 以下のセクションで、これらのレコードについて説明します。
 
-### <a name="required-updates"></a>必要な更新プログラム
+### <a name="query-required-updates"></a>必須の更新を照会する
 
 コンピューターで必要な更新プログラムを表す `RequiredUpdate` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
@@ -43,7 +43,7 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 | UpdateSeverity | 脆弱性の重大度の評価。 値は次のとおりです。<br> *重大*<br> *重要*<br> *中*<br> *低* |
 | UpdateTitle | 更新プログラムのタイトル。|
 
-### <a name="update"></a>更新
+### <a name="query-update-record"></a>Update レコードを照会する
 
 `Update` という種類のレコードが作成されます。これは、使用可能な更新プログラムと、コンピューターでのそのインストール状態を表します。 これらのレコードは、次の表に示したプロパティを持ちます。
 
@@ -80,7 +80,7 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 | リソース | リソースの名前。 | 
 | ResourceType | リソースの種類。 | 
 
-### <a name="update-agent"></a>更新エージェント
+### <a name="query-update-agent-record"></a>Update Agent レコードを照会する
 
 コンピューター上の更新エージェントの詳細を提供する `UpdateAgent` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
@@ -101,7 +101,7 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 | WindowsUpdateAgentVersion | Windows Update エージェントのバージョン。 |
 | WSUSServer | Windows Update エージェントで問題が発生した場合のエラー。トラブルシューティングに役立ちます。 |
 
-### <a name="update-deployment-status"></a>更新プログラムのデプロイの状態 
+### <a name="query-update-deployment-status-record"></a>Update Deployment Status レコードを照会する
 
 コンピューターごとにスケジュールされたデプロイの更新プログラムのデプロイの状態を提供する、`UpdateRunProgress` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
@@ -133,7 +133,7 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 | VMUUID | 仮想マシンの一意識別子。 |
 | ResourceId | レコードに関連付けられているリソースの一意識別子。 |
 
-### <a name="update-summary"></a>概要の更新 
+### <a name="query-update-summary-record"></a>Update Summary レコードを照会する
 
 コンピューターごとの更新の概要を提供する `UpdateSummary` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
@@ -171,7 +171,7 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 
 以下のセクションは、Update Management に関して収集された更新レコードのログ クエリの例です。
 
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure 以外のマシンが配布準備済みであることを確認する
+### <a name="confirm-that-non-azure-machines-are-enabled-for-update-management"></a>Update Management の対象として Azure 以外のマシンが有効になっていることを確認する
 
 直接接続されたマシンが Azure Monitor ログと通信していることを確認するには、次のいずれかのログ検索を実行します。
 
@@ -197,7 +197,7 @@ Windows コンピューターでは、次の情報を調べて、Azure Monitor �
 エージェントが Azure Monitor ログと通信できず、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されている場合は、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。 ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認する方法については、[Windows エージェントのネットワーク構成](../azure-monitor/platform/agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Linux システムがプロキシまたは Log Analytics ゲートウェイと通信するよう構成されており、このソリューションの配布準備を行っている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新します。
+> Linux システムがプロキシまたは Log Analytics ゲートウェイと通信するよう構成されている場合で、かつ Update Management を有効にしようとしている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、`proxy.conf` のアクセス許可を更新します。
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor ログ](../log-analytics/log-analytics-log-searches.md)のログ検索を使用して、詳細な更新データを確認します。
-* 更新プログラムのデプロイの状態に関する[アラートを作成](automation-tutorial-update-management.md#configure-alerts)します。
+* Azure Monitor ログの詳細については、[Azure Monitor ログ](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
+* アラートの設定については、「[アラートを構成する](automation-tutorial-update-management.md#configure-alerts)」を参照してください。

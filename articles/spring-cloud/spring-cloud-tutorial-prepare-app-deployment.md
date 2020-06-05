@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731175"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657150"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
@@ -129,11 +129,24 @@ Spring Boot バージョン 2.2 の場合は、アプリケーションの POM �
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>その他の必要な依存関係
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Azure Spring Cloud の機能を有効にするためのその他の推奨される依存関係
 
-Azure Spring Cloud の組み込み機能を有効にするには、アプリケーションに次の依存関係が含まれている必要があります。 これにより、アプリケーションが各コンポーネントと共に正しく構成されます。
+サービス レジストリから分散トレースまでの Azure Spring Cloud の組み込み機能を有効にするには、アプリケーションに次の依存関係も含める必要があります。 特定のアプリに対応する機能が不要な場合は、これらの依存関係の一部を削除できます。
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 注釈
+### <a name="service-registry"></a>サービス レジストリ
+
+マネージド Azure Service Registry サービスを使用するには、次に示すように、pom.xml ファイルに `spring-cloud-starter-netflix-eureka-client` 依存関係を含めます。
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+サービス レジストリ サーバーのエンドポイントは、アプリで環境変数として自動的に挿入されます。 その後、アプリケーションによって、アプリケーション自体がサービス レジストリ サーバーに登録され、他の依存マイクロサービスが検出されます。
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 注釈
 
 アプリケーションのソース コードに次の注釈を追加します。
 ```java
@@ -159,20 +172,7 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>サービス レジストリの依存関係
-
-マネージド Azure Service Registry サービスを使用するには、次に示すように、pom.xml ファイルに `spring-cloud-starter-netflix-eureka-client` 依存関係を含めます。
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-サービス レジストリ サーバーのエンドポイントは、アプリで環境変数として自動的に挿入されます。 その後、アプリケーションによって、アプリケーション自体がサービス レジストリ サーバーに登録され、他の依存マイクロサービスが検出されます。
-
-### <a name="distributed-configuration-dependency"></a>分散構成の依存関係
+### <a name="distributed-configuration"></a>分散構成
 
 分散構成を有効にするには、pom.xml ファイルの依存関係セクションに次の `spring-cloud-config-client` の依存関係を含めます。
 
@@ -186,7 +186,7 @@ public class GatewayApplication {
 > [!WARNING]
 > ブートストラップ構成で `spring.cloud.config.enabled=false` を指定しないでください。 そうしないと、アプリケーションと Config Server の連携が停止します。
 
-### <a name="metrics-dependency"></a>メトリックの依存関係
+### <a name="metrics"></a>メトリック
 
 次に示すように、pom.xml ファイルの依存関係セクションに `spring-boot-starter-actuator` の依存関係を含めます。
 
@@ -199,7 +199,7 @@ public class GatewayApplication {
 
  メトリックは JMX エンドポイントから定期的に取得されます。 メトリックを視覚化するには、Azure portal を使用します。
 
-### <a name="distributed-tracing-dependency"></a>分散トレースの依存関係
+### <a name="distributed-tracing"></a>分散トレース
 
 pom.xml ファイルの依存関係セクションに次の `spring-cloud-starter-sleuth` および `spring-cloud-starter-zipkin` の依存関係を含めます。
 

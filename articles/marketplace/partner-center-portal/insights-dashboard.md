@@ -1,22 +1,22 @@
 ---
-title: パートナー センターでのコマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
-description: マーケットプレース Web 分析の概要にアクセスすることにより、公開元は AppSource と Azure Marketplace のネットショップでの顧客エンゲージメントを測定できます。
+title: Marketplace の分析情報 - Microsoft コマーシャル マーケットプレース
+description: マーケットプレース Web 分析の概要にアクセスすることにより、Microsoft AppSource と Azure Marketplace での顧客エンゲージメントを測定できます。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251709"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745651"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>パートナー センターの [Marketplace の分析情報] ダッシュボード
 
-この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のマーケットプレースのネットショップに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: AppSource と Azure Marketplace。
+この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のマーケットプレースのネットショップに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: Microsoft AppSource と Azure Marketplace。
 
 ## <a name="marketplace-insights-dashboard"></a>[Marketplace の分析情報] ダッシュボード
 
@@ -89,7 +89,7 @@ Marketplace の分析情報の概要セクションには、選択した日付�
 ヒートマップには以下の機能が含まれています。
 
 - ヒートマップには、特定の場所における**ページ アクセス**、**Call to Action**、**ユニーク ビジター**の詳細を表示するための補助グリッドがあり、必要に応じて特定の場所をズームできます。  
-- **[Countries spread]\(展開している国\)** は、選択した日付範囲内に顧客のページ アクセスが報告されたすべての国の数です。
+- **[Countries/regions spread]\(展開している国および地域\)** は、選択した日付範囲内に顧客のページ アクセスがレポートされたすべての国および地域の数です。
 - グリッドで国を検索して選択すると、マップ内の場所にズームできます。 マップの **[ホーム]** を選択すると、元のビューに戻ります。
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>ページ アクセスとユニーク ビジターの傾向

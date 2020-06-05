@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 0fb5da965a9b13667b8a128e83a5a4cd2c2b28d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691854"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649807"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
@@ -148,6 +148,16 @@ Example:
 | ResourceId | Azure Resource Manager リソース ID。 |
 | Message | 情報メッセージ。自動インフレ アクションに関する詳細情報を提供します。 このメッセージには、特定の名前空間のスループット ユニットの以前の値と現在の値、および TU のインフレをもたらした要因が含まれます。 |
 
+自動スケーリング イベントの例を次に示します。 
+
+```json
+{
+    "TrackingId": "fb1b3676-bb2d-4b17-85b7-be1c7aa1967e",
+    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2020 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name"
+}
+```
+
 ## <a name="kafka-coordinator-logs-schema"></a>Kafka コーディネーター ログのスキーマ
 Kafka コーディネーター ログの JSON には、次の表に示す要素が含まれます。
 
@@ -155,7 +165,7 @@ Kafka コーディネーター ログの JSON には、次の表に示す要素�
 | ---- | ----------- | 
 | RequestId | 要求 ID。トレース目的で使用されます |
 | ResourceId | Azure Resource Manager リソース ID |
-| Operation | グループの調整中に実行された操作の名前 |
+| 操作 | グループの調整中に実行された操作の名前 |
 | ClientId | クライアント ID |
 | NamespaceName | 名前空間名 | 
 | SubscriptionId | Azure サブスクリプション ID |
@@ -229,7 +239,7 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 | KeyVault | Key Vault リソースの名前 |
 | Key | Key Vault キーの名前。 |
 | Version | Key Vault キーのバージョン |
-| Operation | 要求を処理するために実行された操作の名前 |
+| 操作 | 要求を処理するために実行された操作の名前 |
 | コード | status code |
 | Message | メッセージ。エラーまたは情報メッセージに関する詳細情報を提供します |
 

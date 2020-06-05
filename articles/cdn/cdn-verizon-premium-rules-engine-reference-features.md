@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2d4090934a940809fe75ad70e0650eb1c9353f1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253494"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872711"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN from Verizon Premium ルール エンジンの機能
 
@@ -20,150 +20,9 @@ ms.locfileid: "81253494"
 
 ルールの 3 番目の部分は、機能です。 機能では、一連の一致条件によって特定される要求の種類に適用されるアクションの種類を定義します。
 
-## <a name="access-features"></a>アクセス機能
 
-以下の機能でコンテンツのアクセスが制御されます。
+最新の機能については、[Verizon のルール エンジン](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions)に関するドキュメントを参照してください。
 
-名前 | 目的
------|--------
-[Deny Access (403) (アクセス拒否 (403))](#deny-access-403) | すべての要求を拒否し、「403 Forbidden」応答を返すかどうかを決定します。
-[Token Auth (トークン認証)](#token-auth) | トークン ベースの認証を要求に適用するかどうかを決定します。
-[Token Auth Denial Code (トークン認証拒否コード)](#token-auth-denial-code) | トークン ベース認証によって要求が拒否されるときに、ユーザーに返される応答の種類を決定します。
-[Token Auth Ignore URL Case (トークン認証の URL 大文字/小文字の無視)](#token-auth-ignore-url-case) | トークン ベースの認証で URL を比較するとき、大文字と小文字を区別するかどうかを決定します。
-[Token Auth Parameter (トークン認証パラメーター)](#token-auth-parameter) | トークン基準の認証のクエリ文字列パラメーターの名前を変更するかどうかを決定します。
-
-## <a name="caching-features"></a>キャッシュ機能
-
-以下の機能でコンテンツをキャッシュするタイミングと方法をカスタマイズできます。
-
-名前 | 目的
------|--------
-[Bandwidth Parameters (帯域幅パラメーター)](#bandwidth-parameters) | 帯域幅調整パラメーター (たとえば ec_rate や ec_prebuf) を有効にするかどうかを決定します。
-[Bandwidth Throttling (帯域幅調整)](#bandwidth-throttling) | ポイント オブ プレゼンス (POP) からの応答の帯域幅を調整します。
-[Bypass Cache (キャッシュ バイパス)](#bypass-cache) | 要求がキャッシュをバイパスするかどうかを決定します。
-[Cache Control Header Treatment (Cache-Control ヘッダーの処理)](#cache-control-header-treatment) | External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、POP で `Cache-Control` ヘッダーの生成を制御します。
-[Cache-Key Query String (キャッシュキー クエリ文字列)](#cache-key-query-string) | 要求に関連付けられているクエリ文字列パラメーターをキャッシュキーに含めるかどうかを決定します。
-[Cache-Key Rewrite (キャッシュキー書き換え)](#cache-key-rewrite) | 要求に関連付けられているキャッシュ キーを書き換えます。
-[Complete Cache Fill (完全キャッシュ入力)](#complete-cache-fill) | 要求の結果、POP で一部のキャッシュが不足したときの動作を決定します。
-[Compress File Types (圧縮ファイルの種類)](#compress-file-types) | サーバーで圧縮されるファイルのファイル形式を定義します。
-[Default Internal Max-Age (既定の内部最長有効期間)](#default-internal-max-age) | POP と配信元サーバーの間のキャッシュ再有効化の既定の最長有効期間を決定します。
-[Expires Header Treatment (Expires ヘッダーの処理)](#expires-header-treatment) | External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、POP で `Expires` ヘッダーの生成を制御します。
-[External Max-Age (外部最長有効期間)](#external-max-age) | ブラウザーと POP の間のキャッシュ再有効化の最長有効期間を決定します。
-[Force Internal Max-Age (内部最長有効期間の強制)](#force-internal-max-age) | POP と配信元サーバーの間のキャッシュ再有効化の最長有効期間を決定します。
-[H.264 Support (HTTP Progressive Download) (H.264 サポート (HTTP プログレッシブ ダウンロード))](#h264-support-http-progressive-download) | コンテンツのストリーム配信に使用される H.264 ファイル形式の種類を決定します。
-[Honor no-cache request (キャッシュなし要求の許可)](#honor-no-cache-request) | HTTP クライアントのキャッシュなし要求を配信元サーバーに転送するかどうかを決定します。
-[Ignore Origin no-cache (配信元のキャッシュなしを無視する)](#ignore-origin-no-cache) | 配信元サーバーから提供された特定のディレクティブを CDN が無視するかどうかを決定します。
-[Ignore Unsatisfiable Ranges (満たされない範囲を無視する)](#ignore-unsatisfiable-ranges) | 要求で「416 Requested Range Not Satisfiable」状態コードが生成されるとき、クライアントに返される応答を決定します。
-[Internal Max-Stale (内部 Max-Stale)](#internal-max-stale) | POP が配信元サーバーでキャッシュされたアセットを再有効化できないとき、通常の有効期間を過ぎてから、キャッシュされたアセットを POP から提供できる期間を制御します。
-[Partial Cache Sharing (部分キャッシュ共有)](#partial-cache-sharing) | 部分的にキャッシュされたコンテンツを要求で生成できるかどうかを決定します。
-[Prevalidate Cached Content (キャッシュされたコンテンツの事前有効化)](#prevalidate-cached-content) | TTL が期限切れになる前に、キャッシュされたコンテンツが早期再検証の対象となるかどうかを決定します。
-[Refresh Zero Byte Cache Files (ゼロバイト キャッシュ ファイルの更新)](#refresh-zero-byte-cache-files) | 0 バイトのキャッシュ資産に対する HTTP クライアントの要求を POP が処理する方法を決定します。
-[Set Cacheable Status Codes (キャッシュ可能状態コードの設定)](#set-cacheable-status-codes) | 結果としてコンテンツがキャッシュされるステータス コードのセットを定義します。
-[Stale Content Delivery on Error (エラー時の古いコンテンツ配信)](#stale-content-delivery-on-error) | キャッシュの再検証中にエラーが発生したとき、または顧客の配信元サーバーから要求されたコンテンツを取得するときに、期限切れのキャッシュされたコンテンツを配信するかどうかを決定します。
-[Stale While Revalidate (古いキャッシュを返し、同時に再有効化)](#stale-while-revalidate) | 古いクライアントを要求元に提供することを POP に許可し、同時に再有効化することにより、パフォーマンスを改善します。
-
-## <a name="comment-feature"></a>コメント機能
-
-この機能は、ルール内で追加情報を指定するために設計されています。
-
-名前 | 目的
------|--------
-[解説](#comment) | ルール内にメモを追加できるようにします。
-
-## <a name="header-features"></a>ヘッダー機能
-
-以下の機能では、要求または応答のヘッダーを追加、修正、削除できます。
-
-名前 | 目的
------|--------
-[Age Response Header (Age 応答ヘッダー)](#age-response-header) | 要求元に送信する応答に Age 応答ヘッダーを追加するどうかを決定します。
-[Debug Cache Response Headers (キャッシュ応答ヘッダーのデバッグ)](#debug-cache-response-headers) | 要求された資産のキャッシュ ポリシーに関する情報を提供する X-EC-Debug 応答ヘッダーを応答に追加できるかどうかを決定します。
-[Modify Client Request Header (クライアント要求ヘッダーの修正)](#modify-client-request-header) | 要求のヘッダーを上書き、追加、削除します。
-[Modify Client Response Header (クライアント応答ヘッダーの修正)](#modify-client-response-header) | 応答のヘッダーを上書き、追加、削除します。
-[Set Client IP Custom Header (クライアント IP カスタム ヘッダーの設定)](#set-client-ip-custom-header) | 要求側クライアントの IP アドレスをカスタム要求ヘッダーとして要求に追加することを許可します。
-
-## <a name="logging-features"></a>ログ記録機能
-
-以下の機能では、生ログ ファイルに保存されているデータをカスタマイズできます。
-
-名前 | 目的
------|--------
-[Custom Log Field 1 (カスタム ログ フィールド 1)](#custom-log-field-1) | 生ログ ファイルのカスタム ログ フィールドに割り当てる形式とコンテンツを決定します。
-[Log Query String (ログ クエリ文字列)](#log-query-string) | アクセス ログに URL と共にクエリ文字列を保存するかどうかを決定します。
-
-
-<!---
-## Optimize
-
-These features determine whether a request will undergo the optimizations provided by Edge Optimizer.
-
-Name | Purpose
------|--------
-Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
-Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-### Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
-
-If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
-
-- The requested content must use an edge CNAME URL.
-- The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Value|Result
--|-
-Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
-
-**Default Behavior:** Disabled
-
-
-### Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Key information:
-
-- Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
-- This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
-
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
-
-**Default Behavior:** Site configurations are inactive by default.
---->
-
-## <a name="origin-features"></a>配信元の機能
-
-以下の機能では、CDN が配信元サーバーと通信する方法を制御できます。
-
-名前 | 目的
------|--------
-[Maximum Keep-Alive Requests (最大キープアライブ要求)](#maximum-keep-alive-requests) | キープアライブ接続の最大要求数を定義します。この数に達すると終了となります。
-[Proxy Special Headers (プロキシの特殊ヘッダー)](#proxy-special-headers) | POP から配信元サーバーに転送される、CDN 固有の要求ヘッダーのセットを定義します。
-
-## <a name="specialty-features"></a>特殊な機能
-
-これらの機能は、上級ユーザー向けの高度な機能です。
-
-名前 | 目的
------|--------
-[Cacheable HTTP Methods (キャッシュ可能 HTTP メソッド)](#cacheable-http-methods) | ネットワークでキャッシュ可能な追加 HTTP メソッドのセットを決定します。
-[Cacheable Request Body Size (キャッシュ可能要求の本文サイズ)](#cacheable-request-body-size) | POST 応答でキャッシュ可能かどうかを決定するしきい値を定義します。
-[User Variable (ユーザー変数)](#user-variable) | 内部使用専用です。
-
-## <a name="url-features"></a>URL 機能
-
-以下の機能では、要求を別の URL にリダイレクトするか、書き換えることができます。
-
-名前 | 目的
------|--------
-[Follow Redirects (リダイレクトのフォロー)](#follow-redirects) | 顧客の配信元サーバーから返される Location (場所) ヘッダーに定義されているホスト名に要求をリダイレクトできるかどうかを決定します。
-[URL Redirect (URL リダイレクト)](#url-redirect) | Location (場所) ヘッダー経由で要求をリダイレクトします。
-[URL Rewrite (URL 書き換え)](#url-rewrite)  | 要求 URL を書き換えます。
 
 ## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Azure CDN from Verizon Premium ルール エンジンの機能のリファレンス
 
@@ -338,7 +197,7 @@ Type|説明
 
 この機能の次の使用例は、サンプルの要求と既定の cache-key を示しています。
 
-- **サンプル要求:** http://wpc.0001.&lt ;Domain&gt; /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **サンプル要求:** http://wpc.0001.&lt;Domain&gt; /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 - **既定のキャッシュキー:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Include (含める)
@@ -487,8 +346,8 @@ Enabled|既定の動作を復元します。 既定の動作では、POP で配�
 text/plain|プレーン テキスト ファイル (.txt)
 text/html| HTML ファイル
 text/css|カスケード スタイル シート (CSS)
-application/x-javascript|Javascript
-application/javascript|Javascript
+application/x-javascript|JavaScript
+application/javascript|JavaScript
 
 重要な情報:
 
@@ -1416,9 +1275,6 @@ Source & Pattern (ソースとパターン)| これらの設定により、リ�
 **目的:** 内部使用専用です。
 
 [先頭に戻る](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
 ## <a name="next-steps"></a>次のステップ
 
 - [ルール エンジンのリファレンス](cdn-verizon-premium-rules-engine-reference.md)

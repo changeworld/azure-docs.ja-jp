@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75965667"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833933"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 
@@ -64,7 +64,7 @@ Premium Storage で DS* VM を使用できるのは、新しいクラウド サ�
 
 ### <a name="regional-vnets"></a>地域 VNET
 
-DS* VM の場合、VM をホストする Virtual Network (VNET) を地域 VNET として構成する必要があります。 このような VNET を「拡大」するのは、より大きな VM を他のクラスターにプロビジョニングできるようにして、それらの間の通信を可能にするためです。 次のスクリーンショットでは、強調表示されている場所は地域 VNET を示しますが、最初の結果は「狭い」 VNET を示しています。
+DS* VM の場合、VM をホストする Virtual Network (VNET) を地域 VNET として構成する必要があります。 このような VNET を "拡大" するのは、より大きな VM を他のクラスターにプロビジョニングできるようにして、それらの間の通信を可能にするためです。 次のスクリーンショットでは、強調表示されている場所は地域 VNET を示しますが、最初の結果は "狭い" VNET を示しています。
 
 ![RegionalVNET][1]
 
@@ -271,7 +271,7 @@ $pass = "mycomplexpwd4*"
 $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
 #Add Data and Log Disks to VM Config
-#Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
+#Note the size specified '-DiskSizeInGB 1023', this attaches 2 x P30 Premium Storage Disk Type
 #Utilising the Premium Storage enabled Storage account
 
 $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -405,7 +405,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 
 Always On 可用性グループを使用しない SQL Server のデプロイと使用するデプロイでは考慮事項が異なります。 Always On を使用せず、既存のスタンドアロン SQL Server がある場合、新しいクラウド サービスとストレージ アカウントを使用して Premium Storage にアップグレードできます。 次のオプションを検討してください。
 
-* **新しい SQL Server VM を作成します**。 新しいデプロイに記載されているように、Premium Storage アカウントを使用する新しい SQL Server VM を作成できます。 その後、SQL Server の構成とユーザー データベースをバックアップして復元します。 新しい SQL Server が内部的または外部的にアクセスされる場合、新しい SQL Server を参照するようにアプリケーションを更新する必要があります。 サイド バイ サイド (SxS) SQL Server 移行を行う場合のように、すべての ‘out of db’ オブジェクトをコピーする必要があります。 これには、ログイン、証明書、およびリンク サーバーなどのオブジェクトが含まれます。
+* **新しい SQL Server VM を作成します**。 新しいデプロイに記載されているように、Premium Storage アカウントを使用する新しい SQL Server VM を作成できます。 その後、SQL Server の構成とユーザー データベースをバックアップして復元します。 新しい SQL Server が内部的または外部的にアクセスされる場合、新しい SQL Server を参照するようにアプリケーションを更新する必要があります。 サイド バイ サイド (SxS) SQL Server 移行を行う場合のように、すべての "out of db" オブジェクトをコピーする必要があります。 これには、ログイン、証明書、およびリンク サーバーなどのオブジェクトが含まれます。
 * **既存の SQL Server VM を移行します**。 SQL Server VM をオフラインにしてから、新しいクラウド サービスに転送する必要があります。これには、アタッチされているすべての VHD の Premium Storage アカウントへのコピーが含まれます。 VM がオンラインになると、アプリケーションは前と同じサーバー ホスト名を参照します。 既存のディスクのサイズがパフォーマンス特性に影響することに注意してください。 たとえば、400 GB のディスクは P20 に切り上げられます。 そのディスク パフォーマンスが必要ないことがわかっている場合は、VM を DS シリーズ VM として再作成し、必要なサイズ/パフォーマンス仕様の Premium Storage VHD をアタッチできます。 その後、SQL DB ファイルをデタッチして再アタッチすることができます。
 
 > [!NOTE]
@@ -461,7 +461,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 
 1. Premium Storage をアタッチして、2 つの新しい SQL Server を新しいクラウド サービスに作成します。
 2. 完全バックアップをコピーし、 **NORECOVERY**で復元します。
-3. ログインなど、‘out of user DB’ 依存オブジェクトをコピーします。
+3. ログインなど、"out of user DB" 依存オブジェクトをコピーします。
 4. 内部ロード バランサー (ILB) を新しく作成するか、または外部ロード バランサー (ELB) を使用して、両方の新しいノードにロード バランサー エンドポイントを設定します。
 
    > [!NOTE]
@@ -776,7 +776,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConf
 
 #### <a name="step-7-change-failover-partners-and-replication-modes"></a>手順 7:フェールオーバー パートナーとレプリケーション モードを変更する
 
-3 つ以上の SQL Server がある場合、別の DC またはオンプレミスの別のセカンダリのフェールオーバーを「同期」に変更し、それを自動フェールオーバー パートナー (AFP) にする必要があります。これは、変更を行っている間に HA を維持するためです。 これは、SSMS を変更して TSQL によって行うことができます。
+3 つ以上の SQL Server がある場合、別の DC またはオンプレミスの別のセカンダリのフェールオーバーを "同期" に変更し、それを自動フェールオーバー パートナー (AFP) にする必要があります。これは、変更を行っている間に HA を維持するためです。 これは、SSMS を変更して TSQL によって行うことができます。
 
 ![Appendix6][16]
 

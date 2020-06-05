@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594941"
+ms.locfileid: "83655243"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview にカスタム ドメインを設定する
 
@@ -80,7 +80,7 @@ CNAME レコードでは、あるドメインが別のドメインにマップ�
 
 1. **[検証]** ボタンをクリックします。
 
-これで、カスタム ドメインが構成されました。DNS プロバイダーによって世界規模で変更が反映されるには、数時間かかる場合があります。 [dnspropagation.net](https://dnspropagation.net) に移動して、反映の状態を確認できます。 `www` を含めてお使いのドメインのカスタム ドメインを入力し、ドロップダウンから [CNAME] を選択して、 **[開始]** を選択します。
+これで、カスタム ドメインが構成されました。DNS プロバイダーによって世界規模で変更が反映されるには、数時間かかる場合があります。 [dnspropagation.net](https://dnspropagation.net) に移動して、反映の状態を確認できます。 `www` を含めてお使いのカスタム ドメインを入力し、ドロップダウンから [CNAME] を選択して、 **[開始]** を選択します。
 
 DNS の変更が設定されると、Web サイトでは Static Web App の自動生成された URL (_random-name-123456789c.azurestaticapps.net_ など) が返されます。
 
@@ -92,7 +92,7 @@ DNS の変更が設定されると、Web サイトでは Static Web App の自�
 
 ## <a name="map-a-wildcard-domain"></a>ワイルドカード ドメインのマップ
 
-状況によっては、サブドメインに送信されたすべてのトラフィックを、別のドメインにルーティングしたい場合があります。 一般的な例としては、すべてのサブドメイン トラフィックを `www.example.com` にマッピングする場合があります。 これにより、`www.example.com` ではなく `ww.example.com` と入力した場合でも、要求が `www.example.com` に送信されます。
+状況によっては、サブドメインに送信されたすべてのトラフィックを、別のドメインにルーティングしたい場合があります。 一般的な例としては、すべてのサブドメイン トラフィックを `www.example.com` にマッピングする場合があります。 これにより、`www.example.com` ではなく `w.example.com` と入力した場合でも、要求が `www.example.com` に送信されます。
 
 ### <a name="configure-dns-provider"></a>DNS プロバイダーを構成する
 

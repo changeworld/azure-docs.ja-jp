@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520719"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773357"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](/azure/security-center/)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。
@@ -88,8 +88,12 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
 * Windows Server 2019
-* Windows Server 2008 SP2 (x64)、2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
-* Windows 7 SP1、Windows 8 Enterprise および Pro、Windows 10 Enterprise および Pro
+* Windows Server 2016、バージョン 1709 および 1803
+* Windows Server 2012、2012 R2
+* Windows Server 2008 SP2 (x64)、2008 R2
+* Windows 10 Enterprise (マルチセッションを含む) および Pro
+* Windows 8 Enterprise および Pro 
+* Windows 7 SP1
 
 >[!NOTE]
 >Windows 用 Log Analytics エージェントはサーバー監視シナリオをサポートするように設計されていましたが、Windows クライアントを実行して、サーバーのオペレーティング システム用に構成および最適化されたワークロードをサポートできることがわかっています。 エージェントは Windows クライアントをサポートしますが、Microsoft の監視ソリューションは、明示的に示されていない限り、クライアント監視シナリオを重視しません。
@@ -111,11 +115,11 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 >現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
 
 * Amazon Linux 2017.09 (x64)
-* CentOS Linux 6 (x86/x64) および 7 (x64)  
-* Oracle Linux 6 および 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) および 7 (x64)
-* Debian GNU/Linux 8 および 9 (x86/x64)
-* Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64)
+* CentOS Linux 6 (x64) および 7 (x64)  
+* Oracle Linux 6 および 7 (x64) 
+* Red Hat Enterprise Linux Server 6 (x64)、7 (x64)、および 8 (x64)
+* Debian GNU と Linux 8 および 9 (x64)
+* Ubuntu 14.04 LTS (x86 および x64)、16.04 LTS (x64)、および 18.04 LTS (x64)
 * SUSE Linux Enterprise Server 12 (x64) および 15 (x64)
 
 >[!NOTE]
@@ -143,7 +147,7 @@ Azure Monitor ログに転送中のデータのセキュリティを確保する
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows の SHA-2 コード署名サポートの要件
-Windows エージェントでは、2020 年 5 月 18 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 5 月 18 日より前に次の操作をマシンで行う必要があります。そうしないと、エージェントからの Log Analytics ワークスペースへのデータの送信が停止します。
+Windows エージェントでは、2020 年 8 月 17 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 8 月 17 日より前に次の操作をマシンで行う必要があります。そうしないと、エージェントからの Log Analytics ワークスペースへのデータの送信が停止します。
 
 1. お使いの OS の最新の Service Pack をインストールします。 必要な Service Pack バージョンは次のとおりです。
     - Windows 7 SP1
@@ -166,11 +170,10 @@ Linux および Windows 用エージェントは、Azure Monitor サービスに
 
 |エージェントのリソース|Port |Direction |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.blob.core.windows.net |ポート 443 |受信および送信|はい |
-|*.azure-automation.net |ポート 443 |受信および送信|はい |
-|*.azure.com |ポート 443|受信および送信|はい |
+|*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.blob.core.windows.net |ポート 443 |送信|はい |
+|*.azure-automation.net |ポート 443 |送信|はい |
 
 Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)に関するトピックを参照してください。 
 

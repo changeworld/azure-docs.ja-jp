@@ -4,14 +4,14 @@ description: 仮想ネットワークのプライベート IP アドレスを使
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270691"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697888"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos アカウントの Azure Private Link を構成する
 
@@ -22,9 +22,6 @@ Private Link を使用すると、ユーザーは、仮想ネットワーク内�
 自動または手動の承認方法により、Private Link を使用して構成された Azure Cosmos アカウントに接続できます。 詳細については、Private Link のドキュメントの[承認ワークフロー](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)に関するセクションを参照してください。 
 
 この記事では、プライベート エンドポイントを作成する手順について説明します。 自動承認方法を使用していることを前提としています。
-
-> [!NOTE]
-> 現在、プライベート エンドポイント サポートは、ゲートウェイ接続モードでのみ、一般に提供されています。 ダイレクト モードでは、プレビュー機能として使用できます。
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを作成する
 
@@ -643,21 +640,15 @@ Azure Cosmos アカウントに新しいリージョン ("米国東部" など) 
 
 Azure Cosmos アカウントで Private Link を使用する場合は、次の制限事項が適用されます。
 
-* ダイレクト モード接続を使用し、Azure Cosmos アカウントで Private Link を使用している場合は、TCP プロトコルのみを使用できます。 HTTP プロトコルはまだサポートされていません
-
-* 現在、プライベート エンドポイント サポートは、ゲートウェイ接続モードでのみ、一般に提供されています。 ダイレクト モードでは、プレビュー機能として使用できます。
+* ダイレクト モード接続を使用し、Azure Cosmos アカウントで Private Link を使用している場合は、TCP プロトコルのみを使用できます。 HTTP プロトコルは現在サポートされていません。
 
 * MongoDB アカウント用の Azure Cosmos DB の API を使用する場合、プライベート エンドポイントは、サーバーのバージョンが 3.6 のアカウントでのみサポートされます (つまり、`*.mongo.cosmos.azure.com` 形式でエンドポイントを使用するアカウント)。 サーバーのバージョンが 3.2 のアカウント (`*.documents.azure.com` の形式でエンドポイントを使用するアカウント) では、Private Link はサポートされていません。 Private Link を使用するには、古いアカウントを新しいバージョンに移行する必要があります。
 
-* Private Link を採用している MongoDB アカウントで Azure Cosmos DB の API を使用する場合、Robo 3T、Studio 3T、Mongoose などのツールは使用できません。 このエンドポイントは、`appName=<account name>` パラメーターが指定されている場合にのみ、Private Link をサポートできます。 たとえば `replicaSet=globaldb&appName=mydbaccountname` です。 これらのツールは接続文字列のアプリ名をサービスに渡さないため、Private Link は使用できません。 ただし、3.6 バージョンの SDK ドライバーを使用してこれらのアカウントにアクセスすることもできます。
+* Azure Cosmos DB の MongoDB 用 API アカウントを使用している場合で、プライベート リンクがある場合、一部のツールやライブラリでは、接続文字列から `appName` パラメーターが自動的に除去されるため、正常に機能しないことがあります。 このパラメーターは、プライベート エンドポイント経由でアカウントに接続するために必要です。 一部のツール (Visual Studio Code など) では、このパラメーターが接続文字列から削除されないので、互換性が維持されます。
 
-* Private Link が含まれている場合、仮想ネットワークを移動または削除することはできません。
+* 自動承認されるプライベート エンドポイントを作成するには、Azure Cosmos アカウント スコープで少なくとも `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` アクセス許可がネットワーク管理者に付与されている必要があります。
 
-* Azure Cosmos アカウントがプライベート エンドポイントにアタッチされている場合、そのアカウントを削除することはできません。
-
-* Azure Cosmos アカウントは、アカウントに接続されているすべてのプライベート エンドポイントにマップされていないリージョンにフェールオーバーすることはできません。
-
-* 自動承認されるプライベート エンドポイントを作成するには、Azure Cosmos アカウント スコープで少なくとも"*/PrivateEndpointConnectionsApproval" アクセス許可がネットワーク管理者に付与されている必要があります。
+* 直接モードは、中国ベースの Azure リージョンでは現在サポートされていません。
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>プライベート DNS ゾーンの統合に関する制限事項
 

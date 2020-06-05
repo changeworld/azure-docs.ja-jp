@@ -1,18 +1,18 @@
 ---
 title: Azure Automation の実行アカウントを管理する
-description: この記事では、PowerShell またはポータルを使用して、実行アカウントを管理する方法について説明します。
+description: この記事では、PowerShell または Azure portal を使用して、実行アカウントを管理する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d85eac7af71f03be384b8fa9d9603525c0807dac
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608679"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770790"
 ---
-# <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
+# <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを管理する
 
 Azure Automation の実行アカウントでは、Azure コマンドレットを使用して Azure のリソースを管理するための認証が提供されます。 実行アカウントを作成すると、新しいサービス プリンシパル ユーザーが Azure Active Directory (AD) に作成され、サブスクリプション レベルでこのユーザーに共同作成者ロールが割り当てられます。
 
@@ -53,11 +53,11 @@ Azure クラシック実行アカウントでは、次のタスクが行われ�
 >[!NOTE]
 >Automation アカウントを作成するとき、Azure クラシック実行アカウントは既定では同時に作成されません。 このアカウントは、この記事の後半で説明する手順に従って個別に作成します。
 
-## <a name="run-as-account-permissions"></a><a name="permissions"></a>実行アカウントのアクセス許可
+## <a name="obtain-run-as-account-permissions"></a><a name="permissions"></a>実行アカウントのアクセス許可を取得する
 
 このセクションでは、通常の実行アカウントとクラシック実行アカウントの両方に対するアクセス許可を定義します。
 
-### <a name="permissions-to-configure-run-as-accounts"></a>実行アカウントを構成するためのアクセス許可
+### <a name="get-permissions-to-configure-run-as-accounts"></a>実行アカウントを構成するためのアクセス許可を取得する
 
 実行アカウントを作成または更新するには、特定の特権およびアクセス許可が必要です。 Azure Active Directory のアプリケーション管理者とサブスクリプションの所有者は、すべてのタスクを完了できます。 職務が分離されている状況について、次の表にタスク、同等のコマンドレット、必要なアクセス許可の一覧を示します。
 
@@ -83,11 +83,11 @@ Azure クラシック実行アカウントでは、次のタスクが行われ�
 3. ご自分の名前を選んでから、 **[プロファイル]** を選択します。 
 4. ユーザーのプロファイルの下にある **[ユーザーの種類]** 属性の値が、確実に **[ゲスト]** には設定されていないようにします。
 
-### <a name="permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>実行アカウントを構成するためのアクセス許可
+### <a name="get-permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>クラシック実行アカウントを構成するためのアクセス許可を取得する
 
 クラシック実行アカウントを構成または更新するには、サブスクリプション レベルの共同管理者ロールが必要です。 クラシック サブスクリプション アクセス許可の詳細については、「[Azure の従来のサブスクリプション管理者](../role-based-access-control/classic-administrators.md#add-a-co-administrator)」を参照してください。
 
-## <a name="creating-a-run-as-account-in-azure-portal"></a>Azure portal での実行アカウントの作成
+## <a name="create-a-run-as-account-in-azure-portal"></a>Azure portal で実行アカウントを作成する
 
 以下の手順を行って、Azure portal で Azure Automation アカウントを更新します。 実行およびクラシック実行アカウントを個別に作成します。 クラシック リソースを管理する必要がない場合は、Azure 実行アカウントのみを作成できます。
 
@@ -99,7 +99,7 @@ Azure クラシック実行アカウントでは、次のタスクが行われ�
 6. 関心のあるアカウントに応じて、 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** ペインを使用します。 概要情報を確認した後、 **[作成]** クリックします。
 6. Azure によって実行アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。 アカウントが作成されていることを示すバナーも表示されます。 プロセスが完了するまでに数分かかることがあります。
 
-## <a name="creating-a-run-as-account-using-powershell"></a>PowerShell を使用する実行アカウントの作成
+## <a name="create-a-run-as-account-using-powershell"></a>PowerShell を使用して実行アカウントを作成する
 
 次の一覧に、PowerShell で実行アカウントを作成するための要件を示します。 これらの要件は、両方の種類の実行アカウントに適用されます。
 
@@ -126,7 +126,7 @@ PowerShell スクリプトの必須パラメーターである `SubscriptionId`�
 * エンタープライズ証明機関 (CA) によって発行された証明書を使用して実行アカウントとクラシック実行アカウントを作成する。
 * Azure Government クラウドで自己署名証明書を使用して実行アカウントとクラシック実行アカウントを作成する。
 
-スクリプトでは、複数の Azure Resource Manager コマンドレットを使用してリソースを作成します。 コマンドレットおよび必要なアクセス許可については、「[実行アカウントを構成するためのアクセス許可](#permissions-to-configure-run-as-accounts)」を参照してください。
+スクリプトでは、複数の Azure Resource Manager コマンドレットを使用してリソースを作成します。 コマンドレットおよび必要なアクセス許可については、「[実行アカウントを構成するためのアクセス許可を取得する](#get-permissions-to-configure-run-as-accounts)」を参照してください。
 
 ファイル名の **New-RunAsAccount.ps1** を使用して、スクリプトをご自分のコンピューターに保存します。
 
@@ -237,7 +237,7 @@ if (!(($AzureRmProfileVersion.Major -ge 3 -and $AzureRmProfileVersion.Minor -ge 
 
 
 Connect-AzAccount -Environment $EnvironmentName
-$Subscription = Get-AzSubscription -SubscriptionId $SubscriptionId
+$Subscription = Get-AzSubscription -SubscriptionId $SubscriptionId | Set-AzContext
 
 # Create a Run As account by using a service principal
 $CertifcateAssetName = "AzureRunAsCertificate"
@@ -299,7 +299,7 @@ if ($CreateClassicRunAsAccount) {
     CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
     # Populate the ConnectionFieldValues
-    $SubscriptionName = $subscription.Subscription.Name
+    $SubscriptionName = $subscription.Name
     $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
     # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
@@ -349,7 +349,7 @@ if ($CreateClassicRunAsAccount) {
 
 自己署名公開証明書 ( **.cer** ファイル) を使用してクラシック実行アカウントを作成した場合、スクリプトによってそれが作成され、コンピューター上の一時ファイル フォルダーに保存されます。 これは、PowerShell セッションの実行に使用した、ユーザープロファイル `%USERPROFILE%\AppData\Local\Temp` にあります。
 
-## <a name="deleting-a-run-as-or-classic-run-as-account"></a>実行またはクラシック実行アカウントの削除
+## <a name="delete-a-run-as-or-classic-run-as-account"></a>実行アカウントまたはクラシック実行アカウントの削除
 
 このセクションでは、実行またはクラシック実行アカウントを削除する方法について説明します。 この操作を実行するとき、Automation アカウントが保持されます。 アカウントを削除した後、Azure portal でそれを再作成することができます。
 
@@ -369,7 +369,7 @@ if ($CreateClassicRunAsAccount) {
 
    ![Automation 実行アカウントの再作成](media/manage-runas-account/automation-account-create-runas.png)
 
-## <a name="renewing-a-self-signed-certificate"></a><a name="cert-renewal"></a>自己署名証明書の更新
+## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>自己署名証明書を更新する
 
 実行アカウント用に作成した自己署名証明書は、作成日から 1 年後に有効期限が切れます。 実行アカウントの有効期限が切れる前のある時点で、証明書を更新する必要があります。 有効期限が切れる前にいつでも更新することができます。 
 
@@ -397,7 +397,7 @@ if ($CreateClassicRunAsAccount) {
 
 1. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。
 
-## <a name="setting-up-automatic-certificate-renewal-with-an-automation-runbook"></a><a name="auto-cert-renewal"></a>Automation Runbook を使用した証明書の自動更新の設定
+## <a name="set-up-automatic-certificate-renewal-with-an-automation-runbook"></a><a name="auto-cert-renewal"></a>Automation Runbook を使用して証明書の自動更新をセットアップする
 
 証明書を自動的に更新するには、Automation Runbook を使用します。 [GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) のこのスクリプトを使用すると、Automation アカウントでこの機能が有効になります。
 
@@ -432,7 +432,7 @@ if ($CreateClassicRunAsAccount) {
 5. テストの後、Runbook を編集し、手順 1. で追加したコメント文字を削除します。
 6. Runbook を発行します。
 
-## <a name="limiting-run-as-account-permissions"></a><a name="limiting-run-as-account-permissions"></a>実行アカウントのアクセス許可の制限
+## <a name="limit-run-as-account-permissions"></a>実行アカウントのアクセス許可を制限する
 
 Azure のリソースに対する Automation のターゲット設定を制御するために、[Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) スクリプトを実行できます。 このスクリプトでは、カスタム ロールの定義を作成して使用するために、既存の実行アカウント サービス プリンシパルを変更します。 このロールには、[Key Vault](https://docs.microsoft.com/azure/key-vault/) を除くすべてのリソースへのアクセス許可があります。
 
@@ -466,7 +466,7 @@ Key Vault と実行アカウントのサービス プリンシパルでカスタ
 
 PowerShell ギャラリーの [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) スクリプトを使用して、実行アカウントに Key Vault へのアクセス許可を付与することができます。 Key Vault へのアクセス許可の設定について詳しくは、[アプリケーションに対する Key Vault へのアクセス許可の付与](../key-vault/general/group-permissions-for-apps.md)に関するページを参照してください。
 
-## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>実行アカウントの間違った構成に関する問題の解決
+## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>実行アカウントの間違った構成に関する問題を解決する
 
 実行またはクラシック実行アカウントに必要な構成項目の一部が削除されたか、初期セットアップ中に正しく作成されなかった可能性があります。 構成が間違っている可能性のあるインスタンスは、次のとおりです。
 
@@ -489,5 +489,5 @@ The Run As account is incomplete. Either one of these was deleted or not created
 
 ## <a name="next-steps"></a>次のステップ
 
-* サービス プリンシパルの詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)に関するページを参照してください。
-* 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。
+* [アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)。
+* [Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)。

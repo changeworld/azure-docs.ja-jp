@@ -1,18 +1,18 @@
 ---
 title: Azure Automation の変更履歴とインベントリの概要
-description: 変更履歴とインベントリを使用すると、環境で発生するソフトウェアや Microsoft サービスの変更を特定できます。
+description: この記事では、変更履歴とインベントリの機能について説明します。この機能を使用すると、環境内のソフトウェアや Microsoft サービスに生じた変更を特定できます。
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787177"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835106"
 ---
-# <a name="overview-of-change-tracking-and-inventory"></a>変更履歴とインベントリの概要
+# <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
 この記事では、Azure Automation の変更履歴とインベントリを紹介します。 この機能は、仮想マシンとサーバー インフラストラクチャの変更を追跡することで、配布パッケージ マネージャーによって管理されているソフトウェアの運用上の問題と環境上の問題を特定するのに役立ちます。 変更履歴とインベントリによって追跡される項目には次のものがあります。 
 
@@ -195,6 +195,10 @@ Microsoft サービスに対する既定の収集の頻度は 30 分です。 **
 
 ## <a name="next-steps"></a>次のステップ
 
-* Runbook で変更履歴とインベントリを操作するには、「[変更履歴とインベントリを管理する](change-tracking-file-contents.md)」を参照してください。
-* 変更履歴とインベントリでのエラーを解決するには、[変更履歴とインベントリのトラブルシューティング](automation-tutorial-troubleshoot-changes.md)に関する記事を参照してください。
-* [Azure Monitor ログのログ検索](../log-analytics/log-analytics-log-searches.md)を使用して、詳細な変更追跡データを確認します。
+* 変更履歴とインベントリの操作について詳しくは、[変更履歴とインベントリの管理](change-tracking-file-contents.md)に関するページを参照してください。
+* Runbook で機能を有効にするには、「[Runbook で変更履歴とインベントリを有効にする](automation-enable-changes-from-runbook.md)」を参照してください。
+* Automation アカウントで機能を有効にするには、「[Automation アカウントで変更履歴とインベントリを有効にする](automation-enable-changes-from-auto-acct.md)」を参照してください。
+* Azure portal にブラウザーでアクセスすることによって機能を有効にするには、「[Azure portal で変更履歴とインベントリを有効にする](automation-onboard-solutions-from-browse.md)」を参照してください。
+* Azure VM で機能を有効にするには、「[Azure VM で変更履歴とインベントリを有効にする](automation-enable-changes-from-vm.md)」を参照してください。
+* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+* 機能のエラーのトラブルシューティングを行うには、「[Change Tracking と Inventory に関する問題のトラブルシューティング](troubleshoot/change-tracking.md)」を参照してください。

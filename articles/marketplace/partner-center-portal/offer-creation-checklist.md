@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281342"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850013"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS オファー作成のチェックリスト
 
@@ -58,7 +58,7 @@ SaaS オファー作成プロセスでは、複数のページを使用します
 | チャンネル  | 省略可能。 既定値は[Not opted into the CSP (reseller) channel.]\(CSP (リセラー) チャネルに選ばれていません。\)  |
 | 体験版 | 省略可能。 既定値は[No test drive enabled.]\(有効になっている体験版がありません。\)  |
 | Type of Test Drive (体験版の種類) | 体験版が有効になっている場合は必須。 既定値は選択されていません。 オプション:Azure Resource Manager、Dynamics 365 for Business Central、Dynamics 365 for Customer Engagement、Dnamics 365 for Operations、ロジック アプリ、Power BI。  |
-| [Lead Management – connect to a CRM system]\(リード管理 - CRM システムに接続する\) | Microsoft を介して販売する場合、または登録オファーが [Contact me]\(問い合わせ\) で提供される場合は必須。 既定値: [CRM システムが接続されていません]。 CRM オプション: Azure テーブル、Azure Blob、Dynamics CRM Online、HTTPs のエンドポイント、Marketo、Salesforce  |
+| 潜在顧客 - CRM システムへの接続 | Microsoft を介して販売する場合、または登録オファーが [Contact me]\(問い合わせ\) で提供される場合は必須。 既定値: [CRM システムが接続されていません]。 CRM オプション: Azure テーブル、Azure Blob、Dynamics CRM Online、HTTPs のエンドポイント、Marketo、Salesforce  |
 
 ## <a name="properties-page"></a>[プロパティ] ページ
 

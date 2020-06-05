@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612063"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873034"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-**Google.Protobuf.Tools** NuGet から `protoc.exe` を実行すると、定義を含む .cs ファイルが生成されます。 生成されたファイルは、ここには記載されていません。
+**Google.Protobuf.Tools** NuGet から `protoc.exe` を実行すると、定義を含む .cs ファイルが生成されます。 生成されたファイルは、ここには記載されていません。 Stream Analytics プロジェクトで使用する Protobuf Nuget のバージョンが、入力の生成に使用された Protobuf のバージョンと一致していることを確認する必要があります。 
 
 次のコード スニペットは、生成されたファイルがプロジェクトに含まれていることを想定した逆シリアライザーの実装です。 この実装は、生成されたファイルに対するシン ラッパーにすぎません。
 

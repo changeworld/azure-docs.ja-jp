@@ -6,12 +6,12 @@ author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: 0276a859fb82f7775aca498d73d1cbf780aaf5fc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c58f66ac06cca7146a28813406e74932046f6ee4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793025"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746677"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>コマーシャル マーケットプレース発行元向けの税の詳細
 
@@ -252,7 +252,7 @@ ms.locfileid: "82793025"
 | バヌアツ                          | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | バチカン                     | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | ベネズエラ                        | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
-| ベトナム                          | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。 [この国の税金に関する考慮事項の詳細については、こちらをご覧ください。](#mixed-remittance-countriesregions-for-publishers) | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
+| ベトナム                          | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。 [この国および地域の税金に関する考慮事項の詳細については、こちらをご覧ください。](#mixed-remittance-countriesregions-for-publishers) | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | ウォリス・フツナ                | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | イエメン                            | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
 | ザンビア                           | 選択される価格は、最終的な販売価格であり、適用される税金を含みます。                                                                   | 価格から Microsoft Store の手数料を差し引いた金額                 | Publisher          |
@@ -269,7 +269,7 @@ ms.locfileid: "82793025"
 
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>発行元向け混合送金の国/地域
 
-特定の Microsoft 請求パートナーは、以下に示す国/地域の Microsoft Store での顧客によるアプリまたはアプリ内製品の取得に対して適用される、売上税、使用税、商品サービス税、付加価値税、または類似の税金を徴収して納税する場合があります。 Microsoft が提供する[レポート](payout-summary-overview.md#transaction-history-download-export)には、Microsoft Store での顧客によるアプリまたはアプリ内製品の取得に対して適用される、売上税、使用税、商品サービス税、付加価値税、または類似の税金を請求パートナーが徴収した取引が特定されています。 こうしたレポートに記載されている取引を除き、Microsoft とその請求サービス プロバイダーは、これらの国での顧客によるアプリまたはアプリ内製品の取得に関連付けられた、売上税、使用税、商品サービス税、付加価値税、またはその他の類似の税金を納税することはありません。 発行元は、提供されたレポートを確認し、自身のアプリまたはアプリ内製品に関連する取引について、税金を登録、徴収、納税する義務 (存在する場合) を判別して遵守する責任を負います。
+特定の Microsoft 請求パートナーは、以下に示す国/地域の Microsoft Store での顧客によるアプリまたはアプリ内製品の取得に対して適用される、売上税、使用税、商品サービス税、付加価値税、または類似の税金を徴収して納税する場合があります。 Microsoft が提供する[レポート](payout-summary-overview.md#transaction-history-download-export)には、Microsoft Store での顧客によるアプリまたはアプリ内製品の取得に対して適用される、売上税、使用税、商品サービス税、付加価値税、または類似の税金を請求パートナーが徴収した取引が特定されています。 こうしたレポートに記載されている取引を除き、Microsoft とその請求サービス プロバイダーは、これらの国および地域での顧客によるアプリまたはアプリ内製品の取得に関連付けられた、売上税、使用税、商品サービス税、付加価値税、またはその他の類似の税金を納税することはありません。 発行元は、提供されたレポートを確認し、自身のアプリまたはアプリ内製品に関連する取引について、税金を登録、徴収、納税する義務 (存在する場合) を判別して遵守する責任を負います。
 
 | 混合送金の国/地域 |
 |------------------------------------|

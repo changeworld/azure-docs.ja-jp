@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235199"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648910"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -747,32 +747,12 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ---
 
-## <a name="authorization-keys"></a>承認キー
-
-関数を使用すると、開発中に HTTP 関数のエンドポイントにアクセスするのをより困難にするようにキーを使用できます。  HTTP によってトリガーされる関数で HTTP 承認レベルが `anonymous` に設定されている場合を除いて、要求には API キーが含まれている必要があります。 
+## <a name="function-access-keys"></a><a name="authorization-keys"></a>関数のアクセス キー
 
 > [!IMPORTANT]
 > キーは開発中に HTTP エンドポイントを難読化するのに役立つかもしれませんが、運用環境で HTTP トリガーを確保する方法としては意図されていません。 詳細については、[運用環境で HTTP エンドポイントを保護する](#secure-an-http-endpoint-in-production)を参照してください。
 
-> [!NOTE]
-> Functions 1.x ランタイムでは、Webhook プロバイダーは、プロバイダーがサポートするものに応じて、さまざまな方法で要求を認可するためにキーを使用することがあります。 これについては、[Webhook とキー](#webhooks-and-keys)を参照してください。 バージョン 2.x 以降の Functions ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。
-
-#### <a name="authorization-scopes-function-level"></a>承認スコープ (関数レベル)
-
-関数レベルのキーには、2 つの承認スコープがあります。
-
-* **関数**:これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
-
-* **[Host]\(ホスト\)** : ホスト スコープのキーは、関数アプリ内のすべての関数にアクセスするために使用できます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。 
-
-各キーには、参照用に名前が付けられており、関数レベルおよびホスト レベルで "default" という名前の既定のキーがあります。 関数キーが、ホスト キーよりも優先されます。 2 つのキーが同じ名前で定義されている場合は、関数キーが使用されます。
-
-#### <a name="master-key-admin-level"></a>マスターキー (管理レベル) 
-
-各関数アプリには、`_master`という管理レベルのホスト キーもあります。 マスター キーは、アプリ内のすべての関数へのホスト レベルのアクセスを提供するだけでなく、ランタイム REST API への管理アクセスも提供します。 このキーを取り消すことはできません。 認可レベルを`admin`に設定すると、要求でマスター キーを使用する必要があります。 その他のキーを使用すると認可エラーになります。
-
-> [!CAUTION]  
-> マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、ネイティブ クライアント アプリケーションに配布したりしないでください。 管理者承認レベルを選択する場合は注意が必要です。
+[!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>キーを入手する
 
@@ -798,15 +778,13 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="secure-an-http-endpoint-in-production"></a>運用環境で HTTP エンドポイントを保護します。
 
-運用環境で、関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
+運用環境で、関数エンドポイントを完全に保護するには、次の関数アプリレベルのセキュリティ オプションのいずれかの実装を検討してください。 これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数の承認レベルを `anonymous` に設定する必要があります。
 
-* 機能アプリの App サービス認証/認可をオンにします。 App Service プラットフォームでは、Azure Active Directory (AAD) といくつかのサード パーティの ID プロバイダーを使用してクライアントを認証することができます。 この方法を使用して、関数のカスタム認可ルールを実装し、関数コードのユーザー情報を操作できます。 詳細については、「[Azure App Service での認証および認可](../app-service/overview-authentication-authorization.md)」および「[クライアント ID の操作](#working-with-client-identities)」を参照してください。
+[!INCLUDE [functions-enable-auth](../../includes/functions-enable-auth.md)]
 
-* 要求の認証に Azure API Management (APIM) を使用します。 APIM では、受信要求用のさまざまな API のセキュリティ オプションを提供します。 詳細については、 [API Management の認証ポリシー](../api-management/api-management-authentication-policies.md)を参照してください。 APIM を適切に配置すると、APIM インスタンスの IP アドレスからの要求のみを受け入れるように関数アプリを設定できます。 詳細については、[IP アドレス制限](ip-addresses.md#ip-address-restrictions)を参照してください。
+#### <a name="deploy-your-function-app-in-isolation"></a>関数アプリを分離してデプロイする
 
-* Azure App Service 環境 (ASE) で関数アプリをデプロイします。 ASE では、関数を実行するための専用のホスティング環境を提供します。 ASE では、すべての着信要求の認証に使用できる 1 つのフロント エンド ゲートウェイを構成できます。 詳細情報については、[App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)を参照してください。
-
-これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数の承認レベルを `anonymous` に設定する必要があります。
+[!INCLUDE [functions-deploy-isolation](../../includes/functions-deploy-isolation.md)]
 
 ## <a name="webhooks"></a>Webhooks
 

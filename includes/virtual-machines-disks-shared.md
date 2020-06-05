@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008548"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868053"
 ---
 Azure 共有ディスク (プレビュー) は、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
 
@@ -51,6 +51,10 @@ WSFC で実行される一般的なアプリケーションには、次のよう
 
 Linux クラスターでは、[Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker) などのクラスター マネージャーを利用できます。 Pacemaker は [Corosync](http://corosync.github.io/corosync/) 上に構築され、高可用性環境にデプロイされたアプリケーションのクラスター通信を可能にします。 一般的なクラスター化されたファイルシステムには、[ocfs2](https://oss.oracle.com/projects/ocfs2/) と [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2) があります。 [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) や [sg_persist](https://linux.die.net/man/8/sg_persist) などのユーティリティを使用して、予約と登録を操作できます。
 
+#### <a name="ubuntu"></a>Ubuntu
+
+Azure 共有ディスクで Corosync と Pacemaker を使用して Ubuntu の高可用性を設定する方法の詳細については、「[Ubuntu Community Discourse](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)」を参照してください。
+
 ## <a name="persistent-reservation-flow"></a>永続的な予約フロー
 
 次の図は、SCSI PR を利用してノード間のフェールオーバーを有効にする、2 ノードのクラスター化されたデータベース アプリケーションのサンプルを示しています。
@@ -81,7 +85,7 @@ Linux クラスターでは、[Pacemaker](https://wiki.clusterlabs.org/wiki/Pace
 
 Ultra ディスクから追加のスロットルが与えられ、スロットルが合計で 2 つになります。 このため、Ultra ディスク予約フローは前セクションの説明のとおりに動作できます。あるいは、パフォーマンスをさらに細かく調整したり、分配したりできます。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="予約所有者、登録済み、その他に対する読み取り専用または読み取り/書き込みのアクセス権を示すテーブルの画像。":::
 
 ## <a name="ultra-disk-performance-throttles"></a>Ultra ディスク パフォーマンス スロットル
 
@@ -115,22 +119,16 @@ Ultra ディスクには、変更可能な属性を公開して変更を許可�
 
 次は、クラスター化された共有ボリュームを使用する 2 ノード WSFC の例です。 この構成では、両方の VM でディスクに同時に書き込みアクセスできます。その結果、2 つの VM 間で ReadWrite スロットルが分割され、ReadOnly スロットルは使用されません。
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 2 ノード Ultra の例":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 2 ノード Ultra の例":::
 
 #### <a name="two-node-cluster-without-cluster-share-volumes"></a>クラスター共有ボリュームのない 2 つのノード クラスター
 
 次は、クラスター化された共有ボリュームを使用しない 2 ノード WSFC の例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に ReadWrite スロットルが使用され、ReadOnly スロットルはセカンダリでのみ使用されます。
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 2 ノードで CSV Ultra ディスクなしの例":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 2 ノードで CSV Ultra ディスクなしの例":::
 
 #### <a name="four-node-linux-cluster"></a>4 ノード Linux クラスター
 
 次は、シングル ライターが 1 つ、スケールアウト リーダーが 3 つ与えられた 4 ノード Linux クラスターの例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に ReadWrite スロットルが使用され、ReadOnly スロットルはセカンダリ VM によって分割されます。
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="4 ノード Ultra の調整例":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="4 ノード Ultra の調整例":::

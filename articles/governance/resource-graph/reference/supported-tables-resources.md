@@ -1,14 +1,14 @@
 ---
 title: サポートされている Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 04/29/2020
+ms.date: 05/21/2020
 ms.topic: reference
-ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 7ccf8cc58ce19746958f89ff9d9207906aad16bd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594255"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770586"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -23,6 +23,10 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
 - microsoft.alertsmanagement/alerts
+
+## <a name="healthresources"></a>healthresources
+
+- microsoft.resourcehealth/events
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
@@ -67,6 +71,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.automation/automationaccounts/configurations
 - microsoft.automation/automationaccounts/runbooks
 - microsoft.autonomoussystems/workspaces
+- microsoft.avs/privateclouds
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
 - microsoft.azuredata/datacontrollers
@@ -74,6 +79,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.azuredata/postgresinstances
 - microsoft.azuredata/sqlbigdataclusters
 - microsoft.azuredata/sqlinstances
+- microsoft.azuredata/sqlmanagedinstances
+- microsoft.azuredata/sqlserverinstances
 - microsoft.azuredata/sqlserverregistrations
 - microsoft.azurestack/registrations
 - microsoft.azurestackhci/clusters
@@ -92,6 +99,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.blockchain/watchers
 - microsoft.botservice/botservices
 - microsoft.cache/redis
+- microsoft.cache/redisenterprise
 - microsoft.cdn/cdnwebapplicationfirewallpolicies
 - microsoft.cdn/profiles
 - microsoft.cdn/profiles/endpoints
@@ -126,8 +134,10 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.compute/sharedvmimages/versions
 - microsoft.compute/snapshots
 - microsoft.compute/sshpublickeys
+- microsoft.compute/swiftlets
 - microsoft.compute/virtualmachines
 - microsoft.compute/virtualmachines/extensions
+- microsoft.compute/virtualmachines/runcommands
 - microsoft.compute/virtualmachinescalesets
 - microsoft.containerinstance/containergroups
 - microsoft.containerregistry/registries
@@ -207,12 +217,12 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.hardwaresecuritymodules/dedicatedhsms
 - microsoft.hdinsight/clusters
 - microsoft.healthcareapis/services
+- microsoft.healthcareapis/services/privateendpointconnections
 - microsoft.hybridcompute/machines
 - microsoft.hybridcompute/machines/extensions
 - microsoft.hybriddata/datamanagers
-- microsoft.hydra/components
-- microsoft.hydra/networkscopes
 - microsoft.importexport/jobs
+- microsoft.industrydatalifecycle/derivedmodels
 - microsoft.insights/actiongroups
 - microsoft.insights/activitylogalerts
 - microsoft.insights/alertrules
@@ -350,9 +360,6 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.portalsdk/rootresources
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/capacities
-- microsoft.projectarcadia/workspaces
-- microsoft.projectarcadia/workspaces/sparkcomputes
-- microsoft.projectarcadia/workspaces/sqlcomputes
 - microsoft.projectbabylon/accounts
 - microsoft.quantum/workspaces
 - microsoft.recoveryservices/vaults
@@ -362,6 +369,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.resourcegraph/queries
 - microsoft.resources/deploymentscripts
 - microsoft.resources/templatespecs
+- microsoft.resources/templatespecs/versions
 - microsoft.saas/applications
 - microsoft.scheduler/jobcollections
 - microsoft.search/searchservices
@@ -377,6 +385,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.servicefabricmesh/networks
 - microsoft.servicefabricmesh/secrets
 - microsoft.servicefabricmesh/volumes
+- microsoft.serviceshub/connectors
 - microsoft.signalrservice/signalr
 - microsoft.solutions/appliancedefinitions
 - microsoft.solutions/appliances
@@ -427,8 +436,6 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.vmwarecloudsimple/virtualmachines
 - microsoft.vmwareonazure/privateclouds
 - microsoft.vmwarevirtustream/privateclouds
-- microsoft.vnfmanager/devices
-- microsoft.vnfmanager/vnfs
 - microsoft.vsonline/accounts
 - microsoft.vsonline/plans
 - microsoft.web/apimanagementaccounts/apis
