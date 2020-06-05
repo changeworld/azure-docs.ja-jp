@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 37a458aea659cb6215cf29e6abcbc3341c7e0b7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393101"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643265"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の Outbound connections
 
@@ -119,7 +119,7 @@ SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり�
 
 ### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>ポート マスカレード SNAT (PAT)
 
-パブリック ロード バランサー リソースが VM インスタンスに関連付けられている場合、各送信接続のソースは書き換えられます。 ソースは、仮想ネットワークのプライベート IP アドレス空間からロード バランサー フロントエンドのパブリック IP アドレスに書き換えられます。 パブリック IP アドレス空間では、フローの 5 タプル (ソース IP アドレス、ソース ポート、IP 転送プロトコル、宛先 IP アドレス、宛先ポート) は一意である必要があります。  ポート マスカレード SNAT は、TCP または UDP IP プロトコルで使用できます。
+パブリック ロード バランサー リソースが VM インスタンスに関連付けられている (専用のパブリック ID アドレスがない) 場合、各送信接続のソースは書き換えられます。 ソースは、仮想ネットワークのプライベート IP アドレス空間からロード バランサー フロントエンドのパブリック IP アドレスに書き換えられます。 パブリック IP アドレス空間では、フローの 5 タプル (ソース IP アドレス、ソース ポート、IP 転送プロトコル、宛先 IP アドレス、宛先ポート) は一意である必要があります。 ポート マスカレード SNAT は、TCP または UDP IP プロトコルで使用できます。
 
 これを実現するために、プライベート ソース IP アドレスの書き換え後にエフェメラル ポート (SNAT ポート) が使用されます。これは複数のフローが単一のパブリック IP アドレスから送信されるためです。 SNAT アルゴリズムをマスカレードしているポートは、UDP 対 TCP とは異なる方法で SNAT ポートを割り当てます。
 
@@ -147,7 +147,7 @@ SNAT ポート不足を引き起こしやすい状態を軽減するパターン
 
 ### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>ポート マスカレード SNAT (PAT) 用のエフェメラル ポートの事前割り当て
 
-Azure では、アルゴリズムを使用して、割り当てられる利用可能な SNAT ポートの数が決定されます。これは、ポート マスカレード SNAT ([PAT](#pat)) を使用する際のバックエンド プールのサイズに基づきます。 SNAT ポートは、特定のパブリック IP ソース アドレスについて使用可能なエフェメラル ポートです。
+Azure では、アルゴリズムを使用して、割り当てられる利用可能な SNAT ポートの数が決定されます。これは、ポート マスカレード SNAT ([PAT](#pat)) を使用する際のバックエンド プールのサイズに基づきます。 SNAT ポートは、特定のパブリック IP ソース アドレスについて使用可能なエフェメラル ポートです。 ロード バランサーに関連付けられている各パブリック IP アドレスでは、各 IP トランスポート プロトコルに対して 64,000 のポートを SNAT ポートとして使用できます。
 
 同じ数の SNAT ポートが UDP と TCP にそれぞれ事前に割り当てられ、IP トランスポート プロトコルに従って個別に使用されます。  ただし、SNAT ポートの使用方法は、フローが UDP または TCP のどちらかに応じて異なります。
 
@@ -198,6 +198,9 @@ SNAT ポートの割り当ては、IP トランスポート プロトコル固�
 同じ宛先 IP アドレスとポートに対して多数の TCP 送信接続または UDP 送信接続が開始されることがわかっている場合、送信接続エラーが出る場合、または SNAT ポート ([PAT](#pat) によって使用される事前割り当て済みの[エフェメラル ポート](#preallocatedports)) が不足しているとサポートから指摘された場合、いくつかの一般的な軽減策の選択肢があります。 これらのオプションを確認し、使用可能であり、実際のシナリオに最適な選択肢を判断してください。 それらを 1 つまたは複数組み合わせることが状況改善に役立つ場合もあります。
 
 送信接続の動作の理解が難しい場合は、IP スタック統計 (netstat) を使用できます。 また、パケット キャプチャを使用した接続動作を観察することも効果的です。 これらのパケット キャプチャはインスタンスのゲスト OS で実行できます。また、[パケット キャプチャには Network Watcher](../network-watcher/network-watcher-packet-capture-manage-portal.md) も使用できます。 
+
+#### <a name="manually-allocate-snat-ports-to-maximize-snat-ports-per-vm"></a><a name ="manualsnat"></a>VM あたりの SNAT ポートを最大化するために SNAT ポートを手動で割り当てる
+[事前に割り当てられたポート](#preallocatedports)で定義されているように、ロード バランサーでは、バックエンドの VM の数に基づいてポートが自動的に割り当てられます。 既定では、これは、スケーラビリティを確保するために控えめに実行されます。 バックエンドに存在する VM の最大数がわかっている場合は、各アウトバウンド規則にこれを構成することで、SNAT ポートを手動で割り当てることができます。 たとえば、最大で 10 台の VM があることがわかっている場合は、VM ごとに、既定の 1,024ではなく、6,400の SNAT ポートを割り当てることができます。 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>接続を再利用するようにアプリケーションを変更する 
 SNAT に使用される一時ポートの需要は、アプリケーションで接続を再利用することで減らすことができます。 これには、既定で接続が再利用される HTTP/1.1 などのプロトコルが特に有効です。 また、HTTP が転送に使用されるその他のプロトコル (REST など) も活用できます。 
@@ -254,6 +257,10 @@ nslookup コマンドを使用することで、名前 myip.opendns.com に関�
 負荷分散された VM に NSG を適用するときは、[サービス タグ](../virtual-network/security-overview.md#service-tags)と[既定のセキュリティ規則](../virtual-network/security-overview.md#default-security-rules)に注意してください。 VM が Azure Load Balancer からのヘルス プローブ要求を受け取ることができるようにしておいてください。 
 
 NSG が AZURE_LOADBALANCER 既定タグからのヘルス プローブ要求をブロックすると、VM のヘルス プローブが失敗して VM が停止しているとマークされます。 ロード バランサーはその VM への新しいフローの送信を停止します。
+
+## <a name="connections-to-azure-storage-in-the-same-region"></a>同じリージョン内の Azure Storage への接続
+
+上記のシナリオでの送信接続の使用では、VM と同じリージョン内の Storage に接続する必要はありません。 これを望まない場合は、前述のようにネットワーク セキュリティ グループ (NSG) を使用します。 他のリージョン内の Storage への接続では、送信接続が必要です。 同じリージョン内の VM から Storage に接続する場合、Storage 診断ログ内のソース IP アドレスは、VM のパブリック IP アドレスではなく、内部プロバイダー アドレスになることに注意してください。 お使いの Storage アカウントへのアクセスを、同じリージョン内の 1 つ以上の仮想ネットワーク サブネット内の VM に制限する場合は、ストレージ アカウントのファイアウォールを構成するときに、パブリック IP アドレスではなく、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用します。 サービス エンドポイントを構成すると、診断ログには、内部プロバイダー アドレスではなく、お使いの仮想ネットワークのプライベート IP アドレスが表示されます。
 
 ## <a name="limitations"></a>制限事項
 - VNet およびその他の Microsoft プラットフォーム サービスなしの Web Worker ロールにアクセスできるのは、事前 VNet サービスおよびその他のプラットフォーム サービスの動作の副作用により、内部の Standard Load Balancer が使用される場合のみです。 それぞれのサービス自体、または基になるプラットフォームは予告なく変更されることがあるため、この副作用に依存しないでください。 内部の Standard Load Balancer のみを使用する場合は、必要に応じて、明示的に送信接続を作成する必要があることを常に想定する必要があります。 この記事で説明されている[既定の SNAT](#defaultsnat) のシナリオ 3 を使用することはできません。

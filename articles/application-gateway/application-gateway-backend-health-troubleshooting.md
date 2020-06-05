@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983842"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648447"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -203,6 +203,10 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 [Application Gateway の probe の一致](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)の詳細を確認します。
 
+>[!NOTE]
+> すべての TLS 関連のエラー メッセージについて、SNI の動作と、v1 と v2 の SKU 間の違いを確認するには、「[TLS の概要](ssl-overview.md)」ページを参照してください。
+
+
 #### <a name="backend-server-certificate-invalid-ca"></a>バックエンド サーバーの証明書: 無効な CA
 
 **メッセージ:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (バックエンドによって使用されるサーバー証明書が既知の証明機関 (CA) によって署名されていません。) Whitelist the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (バックエンドによって使用されるサーバー証明書のルート証明書をアップロードして、アプリケーション ゲートウェイでバックエンドをホワイトリストに登録してください。)
@@ -280,7 +284,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 **メッセージ:** The Common Name (CN) of the backend certificate does not match the host header of the probe. (バックエンド証明書の共通名 (CN) が probe のホスト ヘッダーと一致しません。)
 
-**原因:** Application Gateway は、バックエンドの HTTP 設定に指定されているホスト名が、バックエンド サーバーの TLS または SSL 証明書によって提示される CN のものと一致するかどうかを確認します。 これは、Standard_v2 SKU と WAF_v2 SKU における動作です。 Standard SKU と WAF SKU の Server Name Indication (SNI) は、バックエンド プール アドレスの FQDN として設定されます。
+**原因:** Application Gateway は、バックエンドの HTTP 設定に指定されているホスト名が、バックエンド サーバーの TLS または SSL 証明書によって提示される CN のものと一致するかどうかを確認します。 これは、Standard_v2 SKU と WAF_v2 (V2) SKU における動作です。 Standard SKU と WAF SKU (v1) の Server Name Indication (SNI) は、バックエンド プール アドレスの FQDN として設定されます。 SNI の動作と、v1 と v2 の SKU 間の違いの詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。
 
 v2 SKU では、既定の probe がある (カスタムの probe が構成および関連付けられていない) 場合、SNI は HTTP 設定に指定されているホスト名から設定されます。 または、HTTP 設定で [バックエンド アドレスからホスト名を選択します] が指定されている場合 (バックエンド アドレス プールに有効な FQDN が含まれる)、この設定が適用されます。
 

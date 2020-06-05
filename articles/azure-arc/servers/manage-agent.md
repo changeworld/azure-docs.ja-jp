@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/29/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581715"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648091"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -28,11 +28,19 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 | Windows | 手動<br> Windows Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
 | SUSE Linux Enterprise Server | [zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| RedHat Enterprise、Amazon、CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) | 
+| RedHat Enterprise、Amazon、CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) |
 
 ### <a name="windows-agent"></a>Windows エージェント
 
-Windows マシン上のエージェントを最新バージョンに更新するには、エージェントを Microsoft Update から使用でき、既存のソフトウェア更新管理プロセスを使用してデプロイできます。 また、コマンド プロンプトからでも、スクリプトまたはその他のオートメーション ソリューションからでも、あるいは `AzureConnectedMachine.msi`を実行することによって UI ウィザードからでも手動で実行できます。 
+Windows 用 Connected Machine エージェントの更新プログラム パッケージは、以下から取得できます。
+
+* Microsoft Update
+
+* [Microsoft Update カタログ](https://www.catalog.update.microsoft.com/Home.aspx)
+
+* Microsoft ダウンロード センターから [Windows エージェント Windows インストーラー パッケージ](https://aka.ms/AzureConnectedMachineAgent)。
+
+ソフトウェア更新管理プロセスをサポートするさまざまな方法に従って、エージェントをアップグレードできます。 Microsoft Update から取得する他に、コマンド プロンプト、スクリプトまたはその他のオートメーション ソリューション、または `AzureConnectedMachine.msi` の実行による UI ウィザードから手動でダウンロードして実行できます。
 
 > [!NOTE]
 > * エージェントをアップグレードするには、"*管理者*" アクセス許可が必要です。
@@ -60,7 +68,9 @@ Windows インストーラー パッケージのコマンドライン オプシ�
 
 ### <a name="linux-agent"></a>Linux エージェント
 
-Linux マシン上のエージェントを最新バージョンに更新するために、2 つのコマンドが含まれています。 1 つのコマンドは、リポジトリからの使用可能な最新のパッケージのリストでローカル パッケージのインデックスを更新するもので、もう 1 つのコマンドは、ローカル パッケージをアップグレードするものです。 
+Linux マシン上のエージェントを最新バージョンに更新するために、2 つのコマンドが含まれています。 1 つのコマンドは、リポジトリからの使用可能な最新のパッケージのリストでローカル パッケージのインデックスを更新するもので、もう 1 つのコマンドは、ローカル パッケージをアップグレードするものです。
+
+Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)から、最新のエージェント パッケージをダウンロードできます。
 
 > [!NOTE]
 > エージェントをアップグレードするには、*root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
@@ -171,7 +181,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 このパラメーターでは、既に登録されているマシンまたは接続されているマシンを Azure Arc for servers (プレビュー) に再接続します。 証明書の有効期限が切れるまで、45 日以上マシンがオフになっている場合に、この操作が必要になることがあります。 このパラメーターでは、提供されている認証オプションを使用して、このマシンを表す Azure Resource Manager リソースに対応する新しい資格情報を取得します。
 
-このコマンドには、[Azure に接続されたマシンのオンボード](overview.md#required-permissions) ロールよりも高い特権が必要です。
+このコマンドには、[Azure に接続されたマシンのオンボード](agent-overview.md#required-permissions) ロールよりも高い特権が必要です。
 
 サービス プリンシパルを使用して再接続するには、次のコマンドを実行します。
 
@@ -207,7 +217,7 @@ Windows または Linux の Connected Machine エージェントをマシンか�
 #### <a name="uninstall-from-the-command-line"></a>コマンドラインからアンインストールする
 
 コマンド プロンプトからエージェントを手動でアンインストールするか、スクリプトなどの自動化された方法を使用するには、次の例を使用できます。 まず、製品コード (アプリケーション パッケージの一意識別子である GUID) を、オペレーティング システムから取得する必要があります。 アンインストールを実行するには、Msiexec.exe コマンドライン (`msiexec /x {Product Code}`) を使用します。
-    
+
 1. レジストリ エディターを開きます。
 
 2. レジストリ キー `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` で、製品コード GUID を探してコピーします。

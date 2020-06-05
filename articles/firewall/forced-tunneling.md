@@ -5,23 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf0af93d95c5af56be6168bc8e4f79d3005e2ec2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597280"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649597"
 ---
-# <a name="azure-firewall-forced-tunneling-preview"></a>Azure Firewall の強制トンネリング (プレビュー)
+# <a name="azure-firewall-forced-tunneling"></a>Azure Firewall の強制トンネリング
 
-インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングするように、Azure Firewall を構成することができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。
-
-> [!IMPORTANT]
-> 現在、Azure Firewall の強制トンネリングはパブリック プレビュー段階にあります。
->
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+新しい Azure ファイアウォールを構成するときに、インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングすることができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。 ただし、既存のファイアウォールを強制トンネリング用に構成することはできません。
 
 既定では、すべての送信 Azure 依存関係が満たされるようにするため、Azure Firewall では強制トンネリングは許可されていません。 既定でインターネットに直接ルーティングされないユーザー定義ルート (UDR) を *AzureFirewallSubnet* で構成することはできません。
 
