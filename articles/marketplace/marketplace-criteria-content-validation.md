@@ -1,28 +1,28 @@
 ---
-title: Marketplace のオファーとサービスの公開条件 | Azure Marketplace
-description: この記事では、Marketplace で公開元になる方法について説明します。
+title: Azure Marketplace のオファーとサービスの掲載要件
+description: この記事では、Azure Marketplace に新しいオファーとサービスを掲載する際の要件とガイドラインについて説明します。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: ca40e8e00cb72d6ecc3246ad7aef3b3bac4fbedd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 0c7352ce95edf7c6ec5fad9fe658e01a66d88573
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160479"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657917"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
-このドキュメントには、Azure Marketplace に掲載される新しいオファーとサービスの要件とガイドラインが記載されています。
+この記事では、Azure Marketplace に新しいオファーとサービスを掲載する際の要件とガイドラインについて説明します。
 
-すべてのオファーは、「すべてのオファーの掲載要件」セクションに記載されている要件を満たしている必要があります。
+すべてのオファーは、「[すべてのオファーの掲載要件](#listing-requirements-for-all-offers)」に記載されている要件を満たす必要があります。
 
 次のような特定の掲載の種類については、追加の要件とチェックリストが用意されています。 
 * [試用版オファーの要件](#trial-offer-requirements)
-* [SaaS アプリの要件](#saas-app-requirements)
+* [SaaS アプリケーションの要件](#saas-application-requirements)
 * [コンテナー オファーの要件](#container-offer-requirements)
 * [コンサルティング オファーの要件](#consulting-offer-requirements)
 
@@ -53,7 +53,7 @@ ms.locfileid: "82160479"
 
 ---
 
-## <a name="saas-app-requirements"></a>SaaS アプリの要件
+## <a name="saas-application-requirements"></a>SaaS アプリケーションの要件
 
 |  | 掲載する要素 | 基本要件 | 最適な要件 | 
 |:--- |:--- |:--- |:--- |

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426391"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834987"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での SQL プールのベスト プラクティス
 
@@ -193,7 +193,7 @@ SQL プールには、クエリの実行を監視するために使用できる 
 
 一般的な問題と解決方法については、[トラブルシューティング](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事もご覧ください。
 
-この記事に記載されていない情報が必要な場合は、このページの左側にある "Search for docs" を使用して、SQL プールのすべてのドキュメントを検索してください。  [SQL プール フォーラム](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse)は、他のユーザーや SQL プールの製品グループに質問を投稿できる場所です。  
+この記事に記載されていない情報が必要な場合は、[Azure Synapse に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)を検索して、他のユーザーや SQL プール製品グループに質問することができます。  
 
 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure SQL プール Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
 

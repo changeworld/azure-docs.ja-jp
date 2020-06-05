@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 307ca08e733417efc9496415a09a0898fe10393e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce9f8ee592c1fb2f7ac98339bbd14ce57440bc1a
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183468"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815708"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 ラボ アカウントが設定されると、管理者または教師は、ラボ アカウント内に含まれるクラスルーム ラボを作成します。 この記事では、関連する Azure リソースの概要と、それらを作成するためのガイダンスを示します。
@@ -179,11 +179,12 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 | ---- | ----- | ------ | ------------- |
 | Small| <ul><li>2 コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最適です。 |
 | Medium | <ul><li>4 コア</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 |
-| 中 (入れ子になった仮想化) | <ul><li>4 コア</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
-| Large | <ul><li>8 コア</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
+| 中 (入れ子になった仮想化) | <ul><li>4 コア</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。
+| Large | <ul><li>8 コア</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
+| 大規模 (入れ子になった仮想化) | <ul><li>8 コア</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
 | Small GPU (視覚化) | <ul><li>6 コア</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
 | Small GPU (Compute) | <ul><li>6 コア</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |このサイズは、人工知能やディープ ラーニングなどのコンピューティング集中型のアプリケーションに最適です。 |
-| Medium GPU (視覚化) | <ul><li>12 コア</li><li>112 GB RAM</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
+| Medium GPU (視覚化) | <ul><li>12 コア</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
 
 ## <a name="manage-identity"></a>ID の管理
 

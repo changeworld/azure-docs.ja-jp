@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625541"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832829"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -58,7 +58,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
     |    SAM/LSA            |    445       |    UDP           |
     |    w32time            |    123       |    UDP           |
 
-* ターゲットの Active Directory Domain Services のサイト トポロジについて、特に Azure NetApp Files がデプロイされる Azure VNet ではベスト プラクティスに従う必要があります。  
+* ターゲットの Active Directory Domain Services のサイト トポロジは、特に Azure NetApp Files がデプロイされる Azure VNet ではガイドラインに従う必要があります。  
 
     (Azure NetApp Files によって到達可能なドメイン コントローラーが存在する) 新規または既存の Active Directory サイト に、Azure NetApp Files がデプロイされる仮想ネットワークのアドレス空間を追加する必要があります。 
 
@@ -79,7 +79,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 
     For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
+    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
 
     ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 -->
@@ -98,7 +98,7 @@ Azure NetApp Files では、 [[Active Directory サイトとサービス]](https
 
 ADDS の使用時にサイト名を確認するには、Active Directory Domain Services を担当する組織内の管理グループに問い合わせてください。 次の例は、サイト名が表示されている [Active Directory サイトとサービス] プラグインを示しています。 
 
-![Active Directory サイトとサービス](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+![Active Directory サイトとサービス](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-services.png)
 
 Azure NetApp Files の AD 接続を構成するときに、 **[AD サイト名]** フィールドのスコープにサイト名を指定します。
 
@@ -152,11 +152,20 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
         サービスによって、必要に応じて、Active Directory で追加のコンピューター アカウントが作成されます。
 
+        > [!IMPORTANT] 
+        > Active Directory 接続を作成した後に SMB サーバー プレフィックスの名前を変更すると混乱が生じます。 SMB サーバー プレフィックスの名前を変更したら、既存の SMB 共有を再マウントする必要があります。
+
     * **組織単位名**  
         これは、SMB サーバー コンピューター アカウントが作成される組織単位 (OU) の LDAP パスです。 つまり、OU=second level, OU=first level です。 
 
         Azure Active Directory Domain Services と組み合わせて Azure NetApp Files を使用している場合、NetApp アカウント用に Active Directory を構成する際の組織単位のパスは `OU=AADDC Computers` になります。
-        
+
+     * **バックアップ ポリシー ユーザー**  
+        Azure NetApp Files で使用するために作成されたコンピューター アカウントに対して昇格された特権を必要とする追加のアカウントを含めることができます。 指定したアカウントは、ファイルまたはフォルダー レベルで NTFS アクセス許可を変更できます。 たとえば、Azure NetApp Files の SMB ファイル共有にデータを移行するために使用される非特権サービス アカウントを指定できます。  
+
+        > [!IMPORTANT] 
+        > バックアップ ポリシー ユーザー機能を使用するには、ホワイトリストに登録する必要があります。 この機能を要求するには、お使いのサブスクリプション ID を記載したメールを anffeedback@microsoft.com までお送りください。 
+
     * **ユーザー名**や**パスワード**などの資格情報
 
     ![Active Directory に参加する](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 2055558ef80a641084a7cf9d299281497d282936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6520d508a025aeeecf0c1890224a0691eae09f74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060672"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774422"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Windows VM を修復する
 
@@ -72,16 +72,17 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
    az extension update -n vm-repair
    ```
 
-3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、修復 VM が作成されて、ディスクに接続されます。
+3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、新しいリソース グループに修復 VM が作成されて、OS ディスクのコピーに接続されます。  修復 VM のサイズとリージョンは、指定された機能していない VM と同じになります。
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. `az vm repair run` を実行します。 このコマンドでは、修復 VM を介して接続されているディスクで指定した修復スクリプトが実行されます。
+4. `az vm repair run` を実行します。 このコマンドでは、修復 VM を介して接続されているディスクで指定した修復スクリプトが実行されます。  使用しているトラブルシューティング ガイドで run-id を指定した場合は、ここでそれを使用します。それ以外の場合は、`az vm repair list-scripts` を使用して使用可能な修復スクリプトを確認できます。
 
    ```azurecli-interactive
-   az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id 2 --verbose
+
+   az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id win-hello-world --verbose
    ```
 
 5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。

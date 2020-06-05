@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402136"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725552"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -80,6 +80,8 @@ ms.locfileid: "81402136"
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>テスト/トレーニング用のオーディオ + 人間というラベルが付いた文字起こしデータ
 
 オーディオ ファイルを処理するときに、Microsoft の音声テキスト変換の精度を測定するには、比較のため、人間というラベルが付いた文字起こし (単語単位) を提供する必要があります。 多くの場合、人間というラベルが付いた文字起こしには時間がかかりますが、ユース ケースのモデルの精度を評価およびトレーニングするために必要です。 認識の向上は、提供されたデータによって決まることに注意してください。 そのため、高品質なトランスクリプトのみをアップロードすることが重要です。
+
+オーディオ ファイルには、録音の最初と最後に無音部分が含まれている場合があります。 可能であれば、各サンプル ファイルの音声の前後に少なくとも 0.5 秒の無音部分を含めます。 音量が小さかったり、邪魔な背景ノイズが入っていたりするオーディオは役に立ちませんが、カスタム モデルが損なわれることはありません。 オーディオ サンプルを収集する前に、マイクと信号処理ハードウェアのアップグレードを常に検討してください。
 
 | プロパティ                 | 値                               |
 |--------------------------|-------------------------------------|
@@ -167,8 +169,8 @@ ms.locfileid: "81402136"
 
 | Language | Locale | 文字 |
 |----------|--------|------------|
-| English | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-| German | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
+| 英語 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
+| ドイツ語 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
 次の表を使用して、発音用の関連データ ファイルが正しく書式設定されているか確認します。 発音ファイルは小さいため、数キロバイトしかサイズは必要ありません。
 

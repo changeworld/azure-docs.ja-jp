@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5e5437db480646275a8bbe34e1a64c005a32a16
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233103"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827728"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -47,7 +47,7 @@ Twitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)
 ご自分の質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
 - この FAQ の末尾で質問を投稿してください。
-- さらに多くの人々と交流するには、[Azure DevTest Labs MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)に質問を投稿してください。 Azure DevTest Labs チームや他のコミュニティ メンバーと情報交換できます。
+- さらに多くの人と情報交換するには、[Azure DevTest Labs に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html)に質問を投稿してください。 Azure DevTest Labs チームや他のコミュニティ メンバーと情報交換できます。
 - 機能を要求する場合は、要求とアイデアを [Azure DevTest Labs のユーザーの声](https://feedback.azure.com/forums/320373-azure-devtest-labs)に送信してください。
 
 ### <a name="what-is-a-microsoft-account"></a>Microsoft アカウントとは何ですか。
@@ -209,6 +209,9 @@ DevTest Labs で VM を作成すると、その VM にアクセスするため�
 ### <a name="can-i-attach-multiple-disks-to-my-vms"></a>複数のディスクを VM に接続できますか。
 
 はい。複数のディスクを VM に接続できます。
+
+### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Gen 2 イメージは DevTest Labs によってサポートされていますか。
+いいえ。 DevTest Labs サービスでは、[Gen 2 イメージ](../virtual-machines/windows/generation-2.md)はサポートされていません。 1 つのイメージに対して Gen 1 と Gen 2 の両方のバージョンを使用できる場合、DevTest Labs では、VM を作成するときに Gen 1 バージョンのイメージのみが表示されます。 使用可能な Gen 2 バージョンのみがある場合、イメージは表示されません。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>テストに Windows OS イメージを使用する場合、MSDN サブスクリプションを購入する必要はありますか。
 Azure でのご自分の開発またはテストに Windows クライアント OS イメージ (Windows 7 以降) を使用するには、次のいずれかの手順を実行します。

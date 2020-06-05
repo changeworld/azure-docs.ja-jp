@@ -1,6 +1,6 @@
 ---
-title: トラブルシューティング - Azure Automation Hybrid Runbook Worker
-description: この記事では、Azure Automation Hybrid Runbook Worker をトラブルシューティングするための情報について説明します。
+title: Azure Automation Hybrid Runbook Worker の問題のトラブルシューティング
+description: この記事では、Azure Automation Hybrid Runbook Worker で発生する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d734c910cc966cfd83f1e1c7f9cbd728643fbc4
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836514"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681009"
 ---
-# <a name="troubleshoot-hybrid-runbook-workers"></a>Hybrid Runbook Worker のトラブルシューティング
+# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
 
-この記事では、Azure Automation Hybrid Runbook Worker での問題のトラブルシューティングについて説明します。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Azure Automation アカウントについては、[Azure Automation で Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)に関するページを参照して、モジュールを最新バージョンに更新できます。
+この記事では、Azure Automation Hybrid Runbook Worker に関する問題のトラブルシューティングと解決方法について説明します。 一般情報については、「[Hybrid Runbook Worker overview (Hybrid Runbook Worker の概要)](../automation-hybrid-runbook-worker.md)」をご覧ください。
 
 ## <a name="general"></a>全般
 
@@ -73,13 +70,13 @@ Hybrid Runbook Worker で、クエリ結果が有効でないことを示すイ�
 
 #### <a name="cause"></a>原因
 
-Hybrid Runbook Worker が自動デプロイ ソリューション用に正しく構成されていません。 このソリューションには、VM を Log Analytics ワークスペースに接続するパーツが含まれています。 PowerShell スクリプトにより、指定された名前のサブスクリプション内でワークスペースが検索されます。 このケースでは、Log Analytics ワークスペースは別のサブスクリプションにあります。 スクリプトでワークスペースが見つからず、作成が試みられますが、その名前は既に使用されています。 結果として、デプロイが失敗します。
+Hybrid Runbook Worker が、Update Management など、機能の自動デプロイ用に正しく構成されていません。 このデプロイには、VM を Log Analytics ワークスペースに接続する部分が含まれています。 PowerShell スクリプトにより、指定された名前のサブスクリプション内でワークスペースが検索されます。 このケースでは、Log Analytics ワークスペースは別のサブスクリプションにあります。 スクリプトでワークスペースが見つからず、作成が試みられますが、その名前は既に使用されています。 結果として、デプロイが失敗します。
 
 #### <a name="resolution"></a>解像度
 
 この問題を解決するには、2 つの方法があります。
 
-* 別のサブスクリプション内で Log Analytics ワークスペースを検索するよう、PowerShell スクリプトを変更します。 これは、今後多くの Hybrid Runbook Worker マシンをデプロイする予定の場合に適したソリューションです。
+* 別のサブスクリプション内で Log Analytics ワークスペースを検索するよう、PowerShell スクリプトを変更します。 今後、多くの Hybrid Runbook Worker マシンをデプロイする予定である場合は、これが適切な解決策です。
 
 * Orchestrator サンドボックスで実行するようにワーカー マシンを手動で構成します。 次に、Azure Automation アカウントで作成された Runbook をワーカーで実行して、機能をテストします。
 
@@ -134,7 +131,7 @@ At line:3 char:1
 以下の問題が原因となっている可能性があります。
 
 * エージェントの設定で、ワークスペース ID かワークスペース キー (プライマリ) に入力ミスがあります。 
-* Hybrid Runbook Worker で構成をダウンロードできず、それがアカウント リンク エラーの原因となっています。 Azure では、ソリューションを有効にした場合、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。 コンピューターで、誤った日付または時刻が設定されている可能性もあります。 時刻が現在の時刻から前後 15 分の範囲を超えている場合、オンボードは失敗します。
+* Hybrid Runbook Worker で構成をダウンロードできず、それがアカウント リンク エラーの原因となっています。 Azure では、マシンで機能を有効にしたときに、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。 コンピューターで、誤った日付または時刻が設定されている可能性もあります。 時刻が現在の時刻の 15 分後または前である場合、機能のデプロイは失敗します。
 
 #### <a name="resolution"></a>解像度
 
@@ -167,7 +164,7 @@ Linux 用 Log Analytics エージェントの **nxautomationuser** アカウン�
 
 * **sudoers** ファイルで **nxautomationuser** アカウントの構成を確認します。 「[Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」を参照してください
 
-### <a name="scenario-the-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>シナリオ:Linux 用 Log Analytics エージェントが実行されていない
+### <a name="scenario-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>シナリオ:Linux 用 Log Analytics エージェントが実行されていない
 
 #### <a name="issue"></a>問題
 
@@ -179,7 +176,7 @@ Linux 用 Log Analytics エージェントが実行されていません。
 
 #### <a name="resolution"></a>解像度
 
- `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、**nxautomation** ユーザー アカウントを使用して処理が行われます。 Update Management または Azure Automation ソリューションが有効でない場合、次のどのプロセスも実行されていません。
+ `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、**nxautomation** ユーザー アカウントを使用して処理が行われます。 Azure Automation 機能が有効になっていない場合、次のどのプロセスも実行されていません。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -190,8 +187,8 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 次の一覧は、Linux Hybrid Runbook Worker のために開始されるプロセスを示します。 これらはすべて /var/opt/microsoft/omsagent/state/automationworker/ ディレクトリに配置されています。
 
 * **oms.conf**:worker マネージャー プロセスです。 これは、DSC から直接開始されます。
-* **worker.conf**:自動登録ハイブリッド worker プロセスです。 worker マネージャーによって開始されます。 このプロセスは Update Management によって使用され、ユーザーに透過的です。 Update Management ソリューションがコンピューター上で有効でない場合、このプロセスは存在しません。
-* **diy/worker.conf**:DIY ハイブリッド worker プロセスです。 DIY ハイブリッド ワーカー プロセスは、Hybrid Runbook Worker でユーザーの Runbook を実行するために使用されます。 キーの詳細での自動登録ハイブリッド worker プロセスとの違いは、異なる構成を使用していることだけです。 Azure Automation ソリューションが無効であり、DIY Linux ハイブリッド worker が登録されていない場合、このプロセスは存在しません。
+* **worker.conf**:自動登録ハイブリッド worker プロセスです。 worker マネージャーによって開始されます。 このプロセスは Update Management によって使用され、ユーザーに透過的です。 マシンで Update Management が有効になっていない場合、このプロセスは存在しません。
+* **diy/worker.conf**:DIY ハイブリッド worker プロセスです。 DIY ハイブリッド ワーカー プロセスは、Hybrid Runbook Worker でユーザーの Runbook を実行するために使用されます。 キーの詳細での自動登録ハイブリッド ワーカー プロセスとの唯一の違いは、異なる構成を使用していることです。 Azure Automation が無効であり、DIY Linux ハイブリッド worker が登録されていない場合、このプロセスは存在しません。
 
 エージェントが実行されていない場合、次のコマンドを実行してサービスを開始します。`sudo /opt/microsoft/omsagent/bin/service_control restart`
 
@@ -233,7 +230,7 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 #### <a name="resolution"></a>解像度
 
-ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、**アプリケーションとサービス ログ\Microsoft-SMA\Operations** と**アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation へのロールのオンボードに影響する接続や他の種類の問題、または通常の操作中に発生した問題を示すものです。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/platform/agent-windows-troubleshoot.md)に関するページを参照してください。
+ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、**アプリケーションとサービス ログ\Microsoft-SMA\Operations** と**アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation に対するロールの有効化に影響する接続や他の種類の問題、または通常の操作中に発生した問題を示しています。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/platform/agent-windows-troubleshoot.md)に関するページを参照してください。
 
 ハイブリッド worker により、クラウドで実行されている Runbook ジョブが出力とメッセージを送信するのと同じ方法で、[Runbook の出力とメッセージ](../automation-runbook-output-and-messages.md)が Azure Automation に送信されます。 詳細ストリームと進行状況ストリームは、Runbook の場合と同じように有効にすることができます。
 
@@ -264,7 +261,7 @@ Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential
 このコード変更によって、指定された資格情報のコンテキストで、まったく新しい PowerShell セッションが開始されます。 これで、アクティブ ユーザーを認証しているプロキシ サーバー経由でトラフィックを送信できるはずです。
 
 >[!NOTE]
->このソリューションを使用すると、サンドボックス構成ファイルを操作する必要がなくなります。 スクリプトを使用して構成ファイルを正常に動作させることができた場合でも、Hybrid Runbook Worker エージェントが更新されるたびにそのファイルは消去されます。
+>この解決策を使用すると、サンドボックス構成ファイルを操作する必要がなくなります。 スクリプトを使用して構成ファイルを正常に動作させることができた場合でも、Hybrid Runbook Worker エージェントが更新されるたびにそのファイルは消去されます。
 
 ### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>シナリオ:Hybrid Runbook Worker の報告がない
 

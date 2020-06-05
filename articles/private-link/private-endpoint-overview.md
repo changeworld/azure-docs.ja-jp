@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744405"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849656"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -35,7 +35,9 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 プライベート エンドポイントに関する重要な詳細情報を次に示します。 
 - プライベート エンドポイントは、[VPN](https://azure.microsoft.com/services/vpn-gateway/) と [Express Route](https://azure.microsoft.com/services/expressroute/) のどちらかのほか、Private Link を使用したサービスを使って、同じ VNet、各リージョンでピアリングされた VNet、グローバルにピアリングされた VNet、およびオンプレミスのコンシューマー間の接続を可能にします。
  
-- プライベート エンドポイントを作成すると、リソースのライフサイクルにわたって読み取り専用のネットワーク インターフェイスも作成されます。 このインターフェイスには、プライベート リンク リソースにマップされる、サブネットからのプライベート IP アドレスが割り当てられます。
+- ネットワーク通信は、クライアントがプライベート エンドポイントに接続することでしか開始できません。サービス プロバイダーに、サービス コンシューマーへの接続を開始するルーティング構成はありません。 接続は一方向にのみ確立できます。
+
+- プライベート エンドポイントを作成すると、リソースのライフサイクルにわたって読み取り専用のネットワーク インターフェイスも作成されます。 このインターフェイスには、プライベート リンク リソースにマップされる、サブネットからのプライベート IP アドレスが動的に割り当てられます。 プライベート IP アドレスの値は、プライベート エンドポイントのライフサイクル全体にわたって変更されません。
  
 - プライベート エンドポイントは、仮想ネットワークと同じリージョンにデプロイする必要があります。 
  
@@ -61,6 +63,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure Database for PostgreSQL- シングルサーバー** | Microsoft.DBforPostgreSQL/servers    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Azure IoT Hub** | Microsoft.Devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | コンテナー |
 |**Azure Kubernetes Service - Kubernetes API** | Microsoft.ContainerService/managedClusters    | managedCluster |
 |**Azure Search** | Microsoft.Search/searchService| searchService|  

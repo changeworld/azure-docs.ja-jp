@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 18fa1b60b15b7eef96efa8dcc4fbf9cd7c4dc7f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ec30aafe63259237a89de6597970b908fb969cf
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77473199"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773442"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Azure Active Directory を使用して Azure App Configuration へのアクセスを承認する
 Azure App Configuration では、App Configuration インスタンスに対する要求を承認するための Azure Active Directory (Azure AD) の使用がサポートされています。  Azure AD を使用することにより、ロールベースのアクセス制御 (RBAC) を使用してセキュリティ プリンシパルにアクセス許可を付与することができます。  セキュリティ プリンシパルは、ユーザー プリンシパル、または[アプリケーション サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)のいずれかになります。  ロールおよびロールの割り当ての詳細については、[各種ロールについて](../role-based-access-control/overview.md)のページを参照してください。
@@ -33,9 +33,10 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 ## <a name="built-in-rbac-roles-for-azure-app-configuration"></a>Azure App Configuration の組み込み RBAC ロール
 Azure には、Azure AD と OAuth を使用した、App Configuration データへのアクセスを承認するために、次の組み込み RBAC ロールが用意されています。
 
-- Azure App Configuration データ所有者: このロールを使用して、App Configuration リソースへの読み取り/書き込みアクセスを付与します。
-- App Configuration データ閲覧者: このロールを使用して、App Configuration リソースへの読み取りアクセスを付与します。
-- 共同作成者: このロールを使用して、サービスへの管理者アクセスを付与します。App Configuration インスタンスに格納されているデータへのアクセスは付与されません。
+- **App Configuration データ所有者**: このロールを使用して、App Configuration データへの読み取り/書き込み/削除アクセス権を付与します。 App Configuration リソースへのアクセスは許可されません。
+- **App Configuration データ閲覧者**: このロールを使用して、App Configuration データへの読み取りアクセス権を付与します。 App Configuration リソースへのアクセスは許可されません。
+- **共同作成者**:このロールを使用して、App Configuration リソースを管理します。 App Configuration データにはアクセス キーを使用してアクセスできますが、このロールでは Azure AD を使用したデータへのアクセスは許可されません。
+- **閲覧者**:このロールを使用して、App Configuration リソースへの読み取りアクセス権を付与します。 リソースのアクセス キーへのアクセスと、App Configuration に格納されているデータへのアクセスは許可されません。
 
 ## <a name="next-steps"></a>次のステップ
 App Configuration サービスを管理するための [マネージド ID](howto-integrate-azure-managed-service-identity.md) の使用について詳しく説明します。

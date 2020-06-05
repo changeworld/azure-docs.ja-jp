@@ -1,50 +1,48 @@
 ---
-title: 複数の Azure 仮想マシンの更新を管理する
-description: この記事では、Azure 仮想マシンと Azure 以外の仮想マシンの更新プログラムを管理する方法について説明します。
+title: Azure Automation での複数の VM の更新プログラム管理
+description: この記事では、複数の VM の更新プログラムを管理する方法について説明します。
 services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731987"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834630"
 ---
-# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>複数の Azure 仮想マシンの更新を管理する
+# <a name="manage-updates-for-multiple-vms"></a>複数の VM の更新プログラム管理
 
-Azure Automation Update Management を使用すると、Windows および Linux の仮想マシンの更新プログラムとパッチを管理できます。 [Azure Automation](automation-offering-get-started.md) アカウントから、以下の操作を行うことができます。
+Azure Automation Update Management を使用すると、Windows および Linux VM の更新プログラムとパッチを管理できます。 [Azure Automation](automation-offering-get-started.md) アカウントから、以下の操作を行うことができます。
 
-- 仮想マシンをオンボードします。
+- VM の更新管理を有効にします。
 - 利用可能な更新プログラムの状態を評価します。
 - 必要な更新プログラムのインストールをスケジュールします。
-- 展開結果を見直して、Update Management が有効になっているすべての仮想マシンに更新プログラムが正常に適用されたことを確認します。
+- 展開結果を見直して、Update Management が有効になっているすべての VM に更新プログラムが正常に適用されたことを確認します。
 
 Update Management のシステム必要条件の詳細については、[Update Management のクライアント要件](automation-update-management.md#client-requirements)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* サポートされているオペレーティング システムのいずれかがインストールされている仮想マシンまたはコンピューター。
-* Update Management にオンボードされている Linux VM の更新リポジトリへのアクセス。
+* サポートされているオペレーティング システムのいずれかがインストールされている VM またはコンピューター。
+* Update Management に対して有効になっている Linux VM の更新リポジトリへのアクセス。
 
-## <a name="enable-update-management-for-azure-virtual-machines"></a>Update Management を Azure 仮想マシンに対して有効にする
+## <a name="enable-update-management-for-azure-vms"></a>Update Management を Azure VM に対して有効にする
 
-Azure Portal で、Automation アカウントを開き、 **[Update Management]** を選択します。
+1. Azure Portal で、Automation アカウントを開き、 **[Update Management]** を選択します。
 
-**[Azure VM の追加]** を選択します。
+2. **[Azure VM の追加]** を選択します。
 
-![[Azure VM の追加] タブ](./media/manage-update-multi/update-onboard-vm.png)
+    ![[Azure VM の追加] タブ](./media/manage-update-multi/update-onboard-vm.png)
 
-利用を開始する仮想マシンを選択します。
+3. 有効にする VM を選択し、 **[更新管理の有効化]** の下の **[有効化]** を選択します。
 
-**［Update Management を有効にする］** で、 **［有効化］** を選択して、仮想マシンをオンボードします。
+    ![[更新管理の有効化] ダイアログ ボックス](./media/manage-update-multi/update-enable.png)
 
-![[更新管理の有効化] ダイアログ ボックス](./media/manage-update-multi/update-enable.png)
+    操作が完了すると、VM 上で Update Management が有効になります。
 
-オンボードが終了すると、仮想マシンに対して Update Management が有効になります。
-
-## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure 以外の仮想マシンとコンピューターに対して Update Management を有効にする
+## <a name="enable-update-management-for-non-azure-vms-and-computers"></a>Azure 以外の VM とコンピューターに対して Update Management を有効にする
 
 Windows および Linux で Update Management を有効にするには、企業ネットワークまたはその他のクラウド環境で実行されている VM にそれらの OS 用の Log Analytics エージェントをインストールする必要があります。 Azure の外部でホストされているコンピューターにエージェントをデプロイするためのシステム要件とサポートされている方法については、[Log Analytics エージェントの概要](../azure-monitor/platform/log-analytics-agent.md)に関するページを参照してください。
 
@@ -70,11 +68,11 @@ Update Management が有効になると、[更新の管理] ウィンドウが�
 
 ## <a name="collect-data"></a>データを収集する
 
-仮想マシンとコンピューターにインストールされたエージェントは、更新プログラムに関するデータを収集します。 エージェントは、そのデータを Azure Update Management に送信します。
+VM とコンピューターにインストールされたエージェントによって、更新プログラムに関するデータが収集されます。 エージェントは、そのデータを Azure Update Management に送信します。
 
 ### <a name="supported-agents"></a>サポートされているエージェント
 
-次の表では、このソリューションでサポートされている接続先ソースについて説明します。
+次の表では、Update Management でサポートされている接続先ソースについて説明します。
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
@@ -101,7 +99,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 >更新プログラムのデプロイをスケジュールすると、対象マシンへの更新プログラムのデプロイを処理する **Patch-MicrosoftOMSComputers** Runbook にリンクされた[スケジュール](shared-resources/schedules.md) リソースが作成されます。 デプロイの作成後に Azure portal または PowerShell を使用してこのスケジュール リソースを削除した場合、スケジュールされた更新プログラムのデプロイが壊れ、ポータルから再構成しようとするとエラーが発生します。 スケジュール リソースは、対応するデプロイ スケジュールを削除することによってのみ削除することができます。
 >
 
-1 台以上の仮想マシンの新しい更新プログラムのデプロイをスケジュールするには、 **［更新管理］** で、 **［更新プログラムの展開のスケジュール］** を選択します。
+1 台以上の VM について新しい更新プログラムの展開をスケジュールするには、 **[更新管理]** で、 **[更新プログラムの展開のスケジュール]** を選択します。
 
 **[新しい更新プログラムの展開]** ウィンドウで、次の情報を指定します。
 
@@ -117,7 +115,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
   ![[新しい更新プログラムの展開] ウィンドウ](./media/manage-update-multi/update-select-computers.png)
 
-- **[更新プログラムの分類]** :更新プログラムの展開に含めるソフトウェアの種類を選択します。 分類の種類の詳細については、「[更新プログラムの分類](automation-view-update-assessments.md#update-classifications)」をご覧ください。 分類の種類は次のとおりです。
+- **[更新プログラムの分類]** :更新プログラムの展開に含めるソフトウェアの種類を選択します。 分類の種類の詳細については、「[更新プログラムの分類](automation-view-update-assessments.md#work-with-update-classifications)」をご覧ください。 分類の種類は次のとおりです。
   - 緊急更新プログラム
   - セキュリティ更新プログラム
   - 更新プログラムのロールアップ
@@ -130,11 +128,10 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 - **[Updates to include/exclude]\(含める/除外する更新プログラム\)** : [Include/Exclude]\(含める/除外する\) ページが開きます。 含めるまたは除外する更新プログラムは別のタブに表示されます。 含める処理の方法については、「[更新プログラムのデプロイをスケジュールする](automation-tutorial-update-management.md#schedule-an-update-deployment)」を参照してください。
 
 > [!NOTE]
-> 包含より除外の方が優先されることを知っておく必要があります。 たとえば、除外ルール `*` を定義した場合、修正プログラムまたはパッケージはすべて除外されるためインストールされません。 除外されたパッチは、マシンに不足しているものとして表示されます。 Linux マシンでは、包含されているパッケージに除外された依存パッケージがある場合、パッケージはインストールされません。
+> 包含より除外が優先されることを知っておくことが重要です。 たとえば、除外ルール `*` を定義した場合、修正プログラムまたはパッケージはすべて除外されるためインストールされません。 除外されたパッチは、マシンに不足しているものとして表示されます。 Linux マシンでは、包含されているパッケージに除外された依存パッケージがある場合、パッケージはインストールされません。
 
 > [!NOTE]
-> 更新プログラムのデプロイ内容に、古い更新プログラムを指定することはできません。
->
+> 更新プログラムの展開に含めるよう、古くなった更新プログラムを指定することはできません。
 
 - **[スケジュール設定]** :既定の日時 (現在の時刻から 30 分後) をそのまま使用できます。 別の時刻を指定することもできます。
 
@@ -171,7 +168,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 更新プログラムの展開に関するダッシュボードを表示するには、完了した展開を選択します。
 
-[更新プログラムを実行した結果] ウィンドウには、仮想マシンに対する更新プログラムの合計数と展開結果が表示されます。 右側の表には、各更新プログラムとインストールの結果の詳細が示されます。 インストールの結果は、次のいずれかの値になります。
+[更新プログラムを実行した結果] ペインには、VM に対する更新プログラムの合計数と展開結果が表示されます。 右側の表には、各更新プログラムとインストールの結果の詳細が示されます。 インストールの結果は、次のいずれかの値になります。
 
 - `Not attempted`:定義されたメンテナンス期間に基づき、時間が十分ではなかったため、更新プログラムがインストールされませんでした。
 - `Succeeded`:更新できました。
@@ -179,10 +176,10 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 展開によって作成されたログ エントリをすべて表示するには、 **[すべてのログ]** を選択します。
 
-対象となる仮想マシンでの更新プログラムの展開を管理する Runbook のジョブ ストリームを確認するには、[出力] タイルを選択します。
+対象となる VM 上での更新プログラムの展開を管理する Runbook のジョブ ストリームを確認するには、[出力] タイルを選択します。
 
 展開で発生したエラーの詳細情報を確認するには、 **[エラー]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-Update Management ログ、出力、エラーの詳細については、[Update Management の更新レコードに対するクエリの実行](automation-update-management-query-logs.md)に関するページを参照してください。
+* 更新ログを検索する必要がある場合は、「[Update Management ログにクエリを実行する](automation-update-management-query-logs.md)」を参照してください。

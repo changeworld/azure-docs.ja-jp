@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3e63063b3ea4e7fba3997ddd645aa59fe857488
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252513"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758573"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 ログからデータを接続する
 
@@ -36,6 +36,9 @@ ms.locfileid: "78252513"
 - テナントで統合監査が有効になっている必要があります。 Office 365 E3 または E5 ライセンスを使用するテナントでは、統合監査が既定で有効になっています。 <br>テナントにこれらのライセンスのどちらもない場合は、次のいずれかの方法を使用して、テナントで統合監査を有効にする必要があります。
     - [Set-AdminAuditLogConfig コマンドレットを使用](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps)して、パラメーター "UnifiedAuditLogIngestionEnabled" を有効にします。
     - [セキュリティ/コンプライアンス センターの UI を使用します](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin)。
+   
+   > [!NOTE]
+   > コネクタ ページの「データ型」セクションで説明されているように、現在、O365 データ コネクタでは、Exchange と SharePoint のアクティビティのみが自動的にキャプチャされます。 [Teams の監査データが必要になり、Sentinel を使用して Teams を保護する場合に備えて、この記事](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761)を確認することをお勧めします。 
 
 ## <a name="connect-to-office-365"></a>Office 365 への接続
 

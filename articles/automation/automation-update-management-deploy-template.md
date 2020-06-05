@@ -1,35 +1,38 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Update Management をオンボードする | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用して、Azure Automation Update Management ソリューションをオンボードすることができます。
+title: Azure Resource Manager テンプレートを使用して Update Management を有効にする | Microsoft Docs
+description: この記事では、Azure Resource Manager テンプレートを使用して、Update Management を有効にする方法について説明します。
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/30/2020
-ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/24/2020
+ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411472"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830993"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management ソリューションをオンボードする
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management を有効にする
 
-[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)を使用して、リソース グループ内の Azure Automation Update Management ソリューションを有効にすることができます。 この記事では、以下のことを自動化するサンプル テンプレートについて説明します。
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)を使用して、リソース グループ内の Azure Automation Update Management 機能を有効にすることができます。 この記事では、以下のことを自動化するサンプル テンプレートについて説明します。
 
 * Azure Monitor Log Analytics ワークスペースの作成。
 * Azure Automation アカウントの作成。
-* まだリンクされていない場合は、Automation アカウントを Log Analytics ワークスペースにリンクする。
-* Azure Automation Update Management ソリューションをオンボードする
+* Automation アカウントから Log Analytics ワークスペースへのリンク (まだリンクされていない場合)。
+* Update Management の有効化。
 
-このテンプレートでは、1 台または複数台の Azure や Azure 以外の VM のオンボードは自動化されません。
+このテンプレートでは、1 つ以上の Azure VM または Azure 以外の VM の有効化は自動化されません。
 
-サブスクリプション内のサポートされているリージョンに Log Analytics ワークスペースと Automation アカウントを既にデプロイしており、それらがリンクされておらず、ワークスペースにまだ Update Management ソリューションがデプロイされていない場合、このテンプレートを使用することで、リンクが正常に作成され、Update Management ソリューションがデプロイされます。 
+サブスクリプションでサポートされているリージョンに Log Analytics ワークスペースと Automation アカウントが既にデプロイされている場合、これらはリンクされていません。 ワークスペースでは、Update Management がまだ有効になっていません。 このテンプレートを使用すると、リンクが正常に作成され、VM の Update Management がデプロイされます。 
+
+>[!NOTE]
+>Linux で Update Management の一環として有効化された **nxautomation** ユーザーによって実行されるのは、署名済みの Runbook だけです。
 
 ## <a name="api-versions"></a>API のバージョン
 
-次の表は、この例で使用されているリソースの API バージョンの一覧です。
+次の表は、このテンプレートで使用されているリソースの API バージョンの一覧です。
 
 | リソース | リソースの種類 | API バージョン |
 |:---|:---|:---|
@@ -39,7 +42,7 @@ ms.locfileid: "80411472"
 
 ## <a name="before-using-the-template"></a>テンプレートを使用する前に
 
-PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell Az モジュールが必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。 Azure PowerShell では、デプロイに [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) が使用されます。
+PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell Az モジュールが必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) を実行して Azure との接続を作成する必要もあります。 Azure PowerShell では、デプロイに [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) が使用されます。
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.1.0 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI では、このデプロイに [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) が使用されます。 
 
@@ -50,7 +53,7 @@ JSON テンプレートは、次のことを求めるように構成されてい
 * Automation アカウントの名前
 * アカウントを作成するリージョン
 
-JSON テンプレートでは、環境で標準構成として使用される可能性のある他のパラメーターの既定値を指定します。 このテンプレートは、組織内の共有アクセス用に Azure ストレージ アカウントに格納できます。 テンプレートの操作について詳しくは、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
+JSON テンプレートでは、環境で標準構成用に使用される可能性のある他のパラメーターの既定値を指定します。 このテンプレートは、組織内の共有アクセス用に Azure ストレージ アカウントに格納できます。 テンプレートの操作について詳しくは、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
 
 テンプレートの次のパラメーターには、Log Analytics ワークスペースの既定値が設定されます。
 
@@ -62,8 +65,15 @@ JSON テンプレートでは、環境で標準構成として使用される可
 >新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。
 >
 
->[!NOTE]
->このテンプレートを使用する前に、[追加の詳細](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて完全に理解してください。 Azure Monitor ログを初めてご利用になり、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計](../azure-monitor/platform/design-logs-deployment.md)に関するガイダンスを確認してアクセス制御について学習し、組織に推奨される設計の実装戦略について理解しておく必要があります。
+JSON テンプレートでは、環境で標準構成として使用される可能性のある他のパラメーターの既定値を指定します。 このテンプレートは、組織内の共有アクセス用に Azure ストレージ アカウントに格納できます。 テンプレートの操作について詳しくは、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
+
+Azure Automation と Azure Monitor を初めて使用する場合、新しい Automation アカウントにリンクされている Log Analytics ワークスペースを作成、構成、使用するときにエラーを避けるために、次の構成詳細を理解することが重要です。
+
+* [追加の詳細](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
+
+* お使いのサブスクリプションでは Log Analytics ワークスペースと Automation アカウントをリンクできるリージョンが限られているため、[ワークスペース マッピング](how-to/region-mappings.md)を確認し、サポートされているリージョンをインラインで、またはパラメーター ファイル内で指定してください。
+
+* Azure Monitor ログを初めてご利用になり、ワークスペースをまだデプロイしていない場合は、[ワークスペースの設計](../azure-monitor/platform/design-logs-deployment.md)に関するガイダンスを確認してアクセス制御について学習し、組織に推奨される設計の実装戦略について理解しておく必要があります。
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
@@ -113,32 +123,6 @@ JSON テンプレートでは、環境で標準構成として使用される可
         },
         "location": {
             "type": "string",
-            "allowedValues": [
-                "australiacentral",
-                "australiaeast",
-                "australiasoutheast",
-                "brazilsouth",
-                "canadacentral",
-                "centralindia",
-                "centralus",
-                "eastasia",
-                "eastus",
-                "eastus2",
-                "francecentral",
-                "japaneast",
-                "koreacentral",
-                "northcentralus",
-                "northeurope",
-                "southafricanorth",
-                "southcentralus",
-                "southeastasia",
-                "uksouth",
-                "ukwest",
-                "westcentralus",
-                "westeurope",
-                "westus",
-                "westus2"
-            ],
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
@@ -235,7 +219,7 @@ JSON テンプレートでは、環境で標準構成として使用される可
 
 2. 要件に合わせてテンプレートを編集します。 パラメーターをインライン値として渡す代わりに、[Resource Manager パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を作成することを検討してください。
 
-3. このファイルを deployUMSolutiontemplate.json としてローカル フォルダーに保存します。
+3. このファイルを **deployUMSolutiontemplate.json** としてローカル フォルダーに保存します。
 
 4. これでこのテンプレートをデプロイする準備が整いました。 PowerShell または Azure CLI を使用できます。 ワークスペースと Automation アカウント名の入力を求められたら、すべての Azure サブスクリプションでグローバルに一意の名前を指定します。
 
@@ -257,10 +241,9 @@ JSON テンプレートでは、環境で標準構成として使用される可
 
 ## <a name="next-steps"></a>次のステップ
 
-Update Management ソリューションをデプロイしたので、VM を管理できるようにし、更新プログラムの評価を確認し、更新プログラムをデプロイしてコンプライアンスを実現することができます。
-
-- 1 台または複数台の Azure マシンに対してはお使いの [Azure Automation アカウント](automation-onboard-solutions-from-automation-account.md)から、Azure 以外のマシンに対しては手動で。
-
-- 単一の Azure VM に対しては、Azure portal の [仮想マシン] ページから。 このシナリオは、[Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) VM 用と [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 用があります。
-
-- [複数の Azure VM](manage-update-multi.md) に対しては、Azure portal の **[仮想マシン]** ページから選択。 
+* VM の Update Management を使用するには、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」をご覧ください。
+* Log Analytics ワークスペースが不要になった場合は、「[Unlink workspace from Automation account for Update Management (Update Management の Automation アカウントからワークスペースのリンクを解除する)](automation-unlink-workspace-update-management.md)」の手順を参照してください。
+* Update Management から VM を削除するには、「[Remove VMs from Update Management (Update Management から VM を削除する)](automation-remove-vms-from-update-management.md)」をご覧ください。
+* Update Management の一般的なエラーのトラブルシューティングについては、「[Troubleshoot Update Management issues (Update Management に関する問題のトラブルシューティング)](troubleshoot/update-management.md)」をご覧ください。
+* Windows Update エージェントに関する問題のトラブルシューティングについては、「[Windows Update エージェントの問題をトラブルシューティングする](troubleshoot/update-agent-issues.md)」をご覧ください。
+* Linux Update エージェントに関する問題のトラブルシューティングについては、「[Linux Update エージェントに関する問題のトラブルシューティング](troubleshoot/update-agent-issues-linux.md)」をご覧ください。

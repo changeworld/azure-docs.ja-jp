@@ -1,28 +1,25 @@
 ---
-title: webhook を使用した Azure Automation の Runbook の開始
-description: HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。
+title: Webhook から Azure Automation の Runbook を開始する
+description: この記事では、Webhook を使用して、HTTP 呼び出しから Azure Automation の Runbook を開始する方法を説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582439"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830499"
 ---
-# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
+# <a name="start-a-runbook-from-a-webhook"></a>webhook から Runbook を開始する
 
-Webhook を使用すると、外部サービスは、1 つの HTTP 要求により、Azure Automation で特定の Runbook を開始することができます。 外部サービスには、Azure DevOps Services、GitHub、Azure Monitor ログ、およびカスタム アプリケーションが含まれます。 このようなサービスは、Webhook を使用することで、Azure Automation API を使用して完全なソリューションを実装せずに、Runbook を開始できます。 Webhook と、Runbook の他の 開始方法を比較するには、「[Azure Automation で Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
+Webhook を使用すると、外部サービスは、1 つの HTTP 要求により、Azure Automation で特定の Runbook を開始することができます。 外部サービスには、Azure DevOps Services、GitHub、Azure Monitor ログ、およびカスタム アプリケーションが含まれます。 このようなサービスでは、Webhook を使用することで、完全な Azure Automation API を実装せずに、Runbook を開始できます。 Webhook と、Runbook の他の 開始方法を比較するには、「[Azure Automation で Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
 
 > [!NOTE]
 > Webhook を使用して Python Runbook を開始することはできません。
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="webhook-properties"></a>Webhook のプロパティ
 
@@ -240,4 +237,4 @@ $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Automation を使用して Azure アラートに対処する方法については、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」をご覧ください。
+* アラートから Runbook をトリガーするには、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」を参照してください。

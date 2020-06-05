@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481961"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759168"
 ---
 # <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
 
@@ -58,7 +58,7 @@ Security Center は、クラウド ソリューション プロバイダー (CSP
 
 MFA を有効にするには、[Azure Active Directory (AD) テナントのアクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)が必要です。 
 
-- AD の Premium Edition を使用している場合は、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を使用して MFA を有効にします。
+- AD の Premium Edition を使用している場合は、[条件付きアクセス](../active-directory/conditional-access/concept-conditional-access-policy-common.md)を使用して MFA を有効にします。
 
 - AD Free Edition のユーザーは、[AD のドキュメント](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)に記載されているように、Azure Active Directory 内で**セキュリティの既定値群**を有効にできますが、MFA を有効にするための Security Center 推奨事項は引き続き表示されます。
 

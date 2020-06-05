@@ -1,41 +1,41 @@
 ---
 title: Azure Automation で Change Tracking と Inventory を管理する
-description: この記事では、Change Tracking と Inventory を使用して、ご使用環境で発生するソフトウェアと Microsoft サービスの変更を追跡する方法について説明します。
+description: この記事では、Change Tracking と Inventory を使用して、お使いの環境内でソフトウェアと Microsoft サービスの変更を追跡する方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779299"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830482"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Change Tracking と Inventory の管理
 
-新しいファイルまたはレジストリ キーを追跡対象として追加すると、Azure Automation は、[Change Tracking と Inventory](change-tracking.md) 機能に対してそれを有効にします。 この記事には、この機能を使用するための手順が含まれています。
+Azure Automation を使用すると、環境内のマシンに対する [Change Tracking と Inventory](change-tracking.md) 機能が有効になります。 この機能では、レジストリ キー、ファイル、コンテンツなどの変更を追跡し、使用できるようにします。 この記事には、この機能を使用するための手順が含まれています。
 
 ## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>完全な Change Tracking と Inventory 機能を有効にする
 
-[Azure Security Center File Integrity Monitoring (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) を有効にした場合は、次に示すように完全な Change Tracking と Inventory 機能を使用できます。 お使いの設定は、このプロセスによって削除されません。
+[Azure Security Center File Integrity Monitoring (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) を有効にした場合は、お使いのマシンに対して次に示すように完全な Change Tracking と Inventory 機能を使用できます。 お使いの設定は、このプロセスによって削除されません。
 
 > [!NOTE]
 > 完全な Change Tracking と Inventory 機能を有効にすると、追加料金が発生する可能性があります。 「[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
 1. ワークスペースに移動し、[インストールされている監視ソリューションの一覧](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)から監視ソリューションを見つけて削除します。
 2. 「[監視ソリューションを削除する](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)」で説明されているように、ソリューション名をクリックして [概要] ページを開き、 **[削除]** をクリックします。
-3. Change Tracking と Inventory を再度有効にするには、Automation アカウントに移動し、 **[構成管理]** で **[Change tracking]\(変更の追跡\)** を選択します。
+3. Change Tracking と Inventory を再度有効にするには、Automation アカウントに移動し、 **[構成管理]** で **[変更履歴]** および **[インベントリ]** を選択します。
 4. Log Analytics ワークスペースと Automation アカウントを選択し、ワークスペースの設定を確認し、 **[有効にする]** をクリックします。
 
-## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Change Tracking と Inventory にマシンをオンボードする
+## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>マシンで Change Tracking と Inventory を有効にする
 
-変更の追跡を開始するには、Azure Automation で Change Tracking と Inventory を有効にする必要があります。 お使いのマシンをこの機能にオンボードするために推奨およびサポートされている方法を次に示します。 
+変更の追跡を開始するには、Azure Automation で Change Tracking と Inventory を有効にする必要があります。 お使いのマシンに対してこの機能に有効にするために推奨およびサポートされている方法を次に示します。 
 
-* [仮想マシンからオンボードする](automation-onboard-solutions-from-vm.md)
-* [複数のマシンの参照からオンボードする](automation-onboard-solutions-from-browse.md)
-* [Automation アカウントからオンボードする](automation-onboard-solutions-from-automation-account.md)
-* [Azure Automation Runbook でオンボードする](automation-onboard-solutions.md)
+* [仮想マシンから有効にする](automation-onboard-solutions-from-vm.md)
+* [複数のマシンの参照から有効にする](automation-onboard-solutions-from-browse.md)
+* [Automation アカウントから有効にする](automation-onboard-solutions-from-automation-account.md)
+* [Azure Automation Runbook 内で有効にする](automation-onboard-solutions.md)
 
 ## <a name="track-files"></a>ファイルを追跡する
 
@@ -178,6 +178,5 @@ Azure Monitor ログに対して、変更レコードのさまざまな検索を
 
 ## <a name="next-steps"></a>次のステップ
 
-* Change Tracking と Inventory の基本については、[Change Tracking と Inventory の概要](change-tracking.md)に関する記事をご覧ください。
-* Azure VM の変更をトラブルシューティングするには、[Change Tracking と Inventory での問題のトラブルシューティング](troubleshoot/change-tracking.md)に関する記事をご覧ください。
-* [Azure Monitor ログのログ検索](../log-analytics/log-analytics-log-searches.md)を使用して、詳細な変更追跡データを確認します。
+* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+* 機能のエラーのトラブルシューティングを行うには、「[Change Tracking と Inventory に関する問題のトラブルシューティング](troubleshoot/change-tracking.md)」を参照してください。

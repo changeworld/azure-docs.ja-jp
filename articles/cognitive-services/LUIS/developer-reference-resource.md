@@ -2,13 +2,13 @@
 title: 開発者向けリソース - Language Understanding
 description: SDK、REST API、CLI は、ご使用のプログラミング言語で Language Understanding (LUIS) アプリを開発する際に役立ちます。 Azure リソースと LUIS 予測を管理します。
 ms.topic: reference
-ms.date: 05/05/2020
-ms.openlocfilehash: 820811c53f143c9747cd11f45cafb075398b080b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589008"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758063"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
@@ -53,15 +53,16 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 現在、LUIS には次の 2 種類のエンドポイントがあります。
 
-* トレーニング エンドポイントでの作成
-* ランタイム エンドポイントでのクエリ予測。
+* トレーニング エンドポイントでの**作成**
+* ランタイム エンドポイントでのクエリ**予測**。
 
 |目的|URL|
 |--|--|
-|トレーニング エンドポイントでの作成|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
-|V2 ランタイム - ランタイム エンドポイントでのすべての予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
-|V3 ランタイム - ランタイム エンドポイントでのバージョン予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
-|V3 ランタイム - ランタイム エンドポイントでのスロット予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|トレーニング エンドポイントでの V2 作成|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|トレーニング エンドポイントでの V3 作成|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/authoring/v3.0-preview/apps/{appID}/`|
+|V2 予測 - ランタイム エンドポイントでのすべての予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 予測 - ランタイム エンドポイントでのバージョン予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 予測 - ランタイム エンドポイントでのスロット予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 
 次の表は、前の表で中かっこ `{}` で囲まれているパラメーターの説明です。
 
@@ -97,7 +98,16 @@ Language Understanding には、アプリケーションとそのモデルを JS
 
 これらの形式のインポートとエクスポートは、API と LUIS ポータルから利用できます。 ポータルでは、アプリの一覧とバージョンの一覧の一部としてインポートとエクスポートが提供されています。
 
-## <a name="other-tools-and-sdks"></a>その他のツールと SDK
+## <a name="workshops"></a>ワークショップ
+
+* GitHub:(ワークショップ) [Conversational-AI :NLU using LUIS (会話 AI: LUIS を使用した NLU)](https://github.com/GlobalAICommunity/Workshop-Conversational-AI)
+
+## <a name="continuous-integration-tools"></a>継続的インテグレーション ツール
+
+* GitHub:(プレビュー) [Developing a LUIS app using DevOps practices (DevOps プラクティスを使用した LUIS アプリの開発)](https://github.com/Azure-Samples/LUIS-DevOps-Template)
+* GitHub:[NLU.DevOps](https://github.com/microsoft/NLU.DevOps) - NLU サービスの継続的インテグレーションとデプロイをサポートするツールです。
+
+## <a name="bot-framework-tools"></a>Bot Framework ツール
 
 Bot Framework は、さまざまな言語の [SDK](https://github.com/Microsoft/botframework) として、[Azure Bot Service](https://dev.botframework.com/) を使用するサービスとして使用できます。
 
@@ -109,8 +119,7 @@ Bot Framework には、次のような Language Understanding に役立つ[い�
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - LUIS の意図とエンティティのバッキング C#/Typescript クラスを自動生成します。
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) - ボット開発者が Bot Framework SDK を使用して構築されたボットをテストおよびデバッグできるデスクトップ アプリケーションです
 * [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) - 開発者およびさまざまな分野から成るチームが Microsoft Bot Framework を使用してボットや会話エクスペリエンスを作成できるようにするのための統合開発ツールです
-* [microsoft/NLU.DevOps](https://github.com/microsoft/NLU.DevOps) - NLU サービスの継続的インテグレーションとデプロイをサポートするツールです。
-
+* [Bot Framework サンプル](https://github.com/microsoft/botbuilder-samples) - #C、JavaScript、TypeScript、Python
 ## <a name="next-steps"></a>次のステップ
 
 * 一般的な [HTTP エラー コード](luis-reference-response-codes.md)について学習します。

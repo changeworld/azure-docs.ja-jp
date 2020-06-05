@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010224"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828272"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -20,7 +20,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
 * この FAQ の最後に掲載されているコメントに質問を投稿し、Azure Cache チームや他のコミュニティ メンバーとこの記事についてやり取りすることができます。
-* さらに多くの人と情報交換する場合は、 [Azure Cache MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
+* さらに多くの人と情報交換する場合は、[Azure Cache に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cache-redis.html)に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
 * 機能要求を作成する場合は、要求とアイデアを [Azure Redis Cache のユーザーの声](https://feedback.azure.com/forums/169382-cache)に送信することができます。
 * また、 [Azure Cache 外部フィードバック](mailto:azurecache@microsoft.com)にメールをお送りいただくこともできます。
 

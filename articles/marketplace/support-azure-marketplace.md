@@ -1,40 +1,38 @@
 ---
-title: コマーシャル マーケットプレースのサポート | Azure Marketplace
-description: Azure Marketplace と AppSource のサポート情報とリンク
+title: Microsoft コマーシャル マーケットプレースのサポート - Azure Marketplace
+description: パートナー センター内の Azure Marketplace と AppSource のサポート情報とリンク
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159917"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828102"
 ---
-# <a name="support-for-the-marketplace"></a>サポート (Marketplace)
+# <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
 
-Marketplace のサポート オプションの一覧です。  
-
-さらに、[C+AI コミュニティ フォーラムの Marketplace チャネル](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)で、多くの質問の答えを得ることができます。  
+Microsoft コマーシャル マーケットプレースの発行元としての作業の開始について質問がありますか。 コマーシャル マーケットプレースのサポート オプションの一覧を次に示します。 以下のリソースに加えて、[C+AI コミュニティ フォーラムの Marketplace チャネル](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)で、多くの質問の答えを得ることもできます。  
 
 ## <a name="onboarding"></a>オンボード
 
-オンボードおよび作業の開始に関する問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://partner.microsoft.com/support/v2/?stage=1)のチケットを開きます。
+オンボードおよび作業の開始に関する問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://aka.ms/marketplacepublishersupport)のチケットを開きます。
 
-## <a name="partner-center"></a>パートナー センター   
+## <a name="partner-center"></a>パートナー センター
 
 | サポート窓口 | 説明 | 可用性 |  
 |:--- |:--- |:--- |  
-| 詳細については、[Marketplace のサポート](https://partner.microsoft.com/support/v2/?stage=1) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターのサポート。 | 24x5 がサポートされています。 |  
+| 詳細については、[Marketplace のサポート](https://aka.ms/marketplacepublishersupport) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターのサポート。 | 24x5 がサポートされています。 |  
 
 ## <a name="technical"></a>技術  
 
 | サポート窓口 | 説明 |  
 |:--- |:--- |  
-| MSDN フォーラム:[social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) にある Marketplace | Microsoft Developer Network のフォーラム。 |  
+| MSDN フォーラム:[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure)にある Marketplace | Microsoft Developer Network のフォーラム。 |  
 | Stack Overflow:[stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) にある Azure | ソリューションを取得し、Azure Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境。<ul> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) にある Azure Marketplace</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) にある Azure Resource Manager</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) にある Virtual Machines on Azure</li> <li>Stack Overflow:[stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container) にある Containers on Azure</li> </ul> |
 
 ## <a name="marketing-resources"></a>マーケティング リソース  

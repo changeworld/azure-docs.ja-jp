@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473321"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648580"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 
@@ -28,6 +28,7 @@ Azure Maps Web SDK には、次のような多くのユーザー補助機能が�
 - マップが移動されたとき、およびユーザーがコントロールやポップアップにフォーカスしたときの、スクリーン リーダーによる説明。
 - マウス、タッチ、およびキーボードのサポート。
 - 道路地図のスタイルでのアクセス可能な色のコントラストのサポート。
+- ハイ コントラストのサポート。
 
 すべての Microsoft 製品のアクセシビリティへの準拠の詳細は、[こちら](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)に記載されています。 "Azure Maps Web" を検索して、Azure Maps Web SDK 専用のドキュメントを見つけてください。 
 

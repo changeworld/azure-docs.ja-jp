@@ -1,23 +1,20 @@
 ---
-title: Azure Automation のデータの管理
-description: この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation でのディザスター リカバリー が含まれています。
+title: Azure Automation データの管理
+description: この記事では、データ保持やバックアップなど、Azure Automation でのデータ管理の概念について説明します。
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984659"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835208"
 ---
-# <a name="managing-azure-automation-data"></a>Azure Automation のデータの管理
+# <a name="management-of-azure-automation-data"></a>Azure Automation データの管理
 
 この記事には、Azure Automation 環境でのデータの管理に関する複数のトピックが含まれています。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="data-retention"></a>データの保持
 
@@ -80,5 +77,4 @@ Automation の geo レプリケーション サービスによって作成され
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Automation でのセキュリティ保護されたアセットの詳細については、「[Azure Automation でセキュリティで保護された資産を暗号化する](automation-secure-asset-encryption.md)」を参照してください。
-
 * geo レプリケーションの詳細については、「[アクティブ geo レプリケーションの作成と使用](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)」を参照してください。

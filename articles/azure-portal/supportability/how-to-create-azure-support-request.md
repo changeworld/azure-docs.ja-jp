@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0bd1191c0b92203b100b1713971119ec828352ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478990"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835548"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure サポート要求を作成する方法
 
@@ -128,5 +128,5 @@ Azure のセルフヘルプ サポート オプションの詳細については
 
 * [お客様からのフィードバックとご提案の送信](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) でのご協力
-* [MSDN フォーラムで同僚からのヘルプを得る](https://social.msdn.microsoft.com/Forums/azure)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure)で同僚からのヘルプを得る
 * [Azure サポートに関する FAQ で詳細を確認する](https://azure.microsoft.com/support/faq)

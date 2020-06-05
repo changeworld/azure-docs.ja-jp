@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254064"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679662"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Cognitive Search での類似性とスコアリング
 
@@ -36,7 +36,9 @@ ms.locfileid: "82254064"
 
 スコアリング プロファイルは、インデックス定義の一部であり、重み付けされたフィールド、関数、およびパラメーターで構成されます。 定義方法の詳細については、「[スコアリング プロファイル](index-add-scoring-profiles.md)」を参照してください。
 
-## <a name="scoring-statistics"></a>スコア付けの統計
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>スコア付けの統計とスティッキー セッション (プレビュー)
 
 スケーラビリティのために、Azure Cognitive Search ではシャーディング プロセスを介して各インデックスが水平方向に分散されます。つまり、インデックスの各部が物理的に分離されます。
 
@@ -45,13 +47,21 @@ ms.locfileid: "82254064"
 すべてのシャードの統計プロパティに基づいてスコアを計算する場合、これを行うには、*scoringStatistics=global* を[クエリ パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents)として追加します (または[クエリ要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)の本文パラメーターとして *"scoringStatistics": "global"* を追加します)。
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+scoringStatistics を使用すると、同じレプリカのすべてのシャードで同じ結果が得られるようになります。 ただし、レプリカはインデックスの最新の変更で常に更新されるため、それぞれ若干異なる場合があります。 一部のシナリオでは、ユーザーが "クエリ セッション" 中により一貫した結果を得られるようにすることが必要な場合があります。 このようなシナリオでは、クエリの一部として `sessionId` を指定できます。 `sessionId` は、一意のユーザー セッションを参照するために作成する一意の文字列です。
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+同じ `sessionId` が使用されていれば、同じレプリカをターゲットにするためにベストエフォートの試行が行われるので、ユーザーに表示される結果の一貫性が向上します。 
 
 > [!NOTE]
-> `scoringStatistics` パラメーターには、管理者 API キーが必須です。
+> 同じ `sessionId` 値を繰り返し再利用すると、レプリカ間での要求の負荷分散が妨げられ、検索サービスのパフォーマンスに悪影響を与える可能性があります。 sessionId として使用される値は、'_' 文字で始めることはできません。
 
 ## <a name="similarity-ranking-algorithms"></a>類似性ランク付けアルゴリズム
 
@@ -59,16 +69,9 @@ Azure Cognitive Search では、次の 2 種類の類似性ランク付けアル
 
 今のところ、使用したい類似性ランク付けアルゴリズムを指定できます。 詳細については、[ランク付けアルゴリズム](index-ranking-similarity.md)に関するページを参照してください。
 
-## <a name="watch-this-video"></a>次の動画をご覧ください
+次のビデオ セグメントは、Azure Cognitive Search で使用されるランク付けアルゴリズムの説明に早送りされます。 詳しい背景情報については、ビデオ全編をご覧ください。
 
-この 16 分間のビデオでは、ソフトウェア エンジニアの Raouf Merouche が、インデックスの作成のプロセス、クエリの実行、スコアリング プロファイルの作成方法について説明しています。 ドキュメントへのインデックス付け、およびドキュメントの取得の際に、内部で何が行われているのかをわかりやすく説明します。
-
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
-
-+ 2 - 3 分ではインデックス付けについて説明: テキスト処理と字句解析。
-+ 3 - 4 分ではインデックス付けについて説明: 逆インデックス。
-+ 4 - 6 分ではクエリの実行について説明: 取得と順位付け。
-+ 7 - 16 分ではスコアリング プロファイルについて説明。
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
 ## <a name="see-also"></a>関連項目
 

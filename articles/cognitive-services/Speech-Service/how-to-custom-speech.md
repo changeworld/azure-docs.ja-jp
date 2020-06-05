@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402064"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725535"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
@@ -37,9 +37,11 @@ Custom Speech で何らかの操作を行うには、Azure アカウントと音
 
 4. [正確性を評価する](how-to-custom-speech-evaluate-data.md) - 音声テキスト変換モデルの正確性を評価します。 さらにトレーニングが必要であるかどうかは、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)で得られる "*ワード エラー率*" を使用して判断できます。 正確性に問題がなければ、音声サービスの API を直接使用できます。 相対平均で 5% から 20% 正確性を高めたい場合、ポータルの **[トレーニング]** タブを使用して、追加のトレーニング データ (人間がラベル付けしたトランスクリプトと関連テキストなど) をアップロードします。
 
-5. [モデルをトレーニングする](how-to-custom-speech-train-model.md) - ご自分の音声テスト データと一緒に、文書化されたトランスクリプト (10 から 1,000 時間) と関連テキスト (200 MB 未満) を入力することにより、音声テキスト変換モデルの正確性を高めます。 このデータが音声テキスト変換モデルのトレーニングに役立てられます。 トレーニング後、再テストを行い、その結果に問題がなければ、モデルをデプロイすることができます。
+5. [精度を向上させる](how-to-custom-speech-improve-accuracy.md) - 追加のトレーニング データを戦略的に選択して、実際のシナリオに基づいて音声テキスト変換モデルの品質を高めます。
 
-6. [モデルをデプロイする](how-to-custom-speech-deploy-model.md) - 音声テキスト変換モデルのカスタム エンドポイントを作成し、それを自分のアプリケーション、ツール、製品で使用します。
+6. [モデルをトレーニングする](how-to-custom-speech-train-model.md) - ご自分の音声テスト データと一緒に、文書化されたトランスクリプト (10 から 1,000 時間) と関連テキスト (200 MB 未満) を入力することにより、音声テキスト変換モデルの正確性を高めます。 このデータが音声テキスト変換モデルのトレーニングに役立てられます。 トレーニング後、再テストを行い、その結果に問題がなければ、モデルをデプロイすることができます。
+
+7. [モデルをデプロイする](how-to-custom-speech-deploy-model.md) - 音声テキスト変換モデルのカスタム エンドポイントを作成し、それを自分のアプリケーション、ツール、製品で使用します。
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 

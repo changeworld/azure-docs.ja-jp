@@ -1,6 +1,6 @@
 ---
-title: 大規模な構成データ - Azure Automation
-description: Azure Automation で状態構成のために大規模なデータ構成を行う方法について説明します。
+title: Azure Automation State Configuration で大規模なデータ構成を行う
+description: この記事では、Azure Automation State Configuration で大規模なデータ構成を行う方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fbd721bc54ce2de6b7923b0f582c53ffc7da1a73
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585574"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837027"
 ---
-# <a name="configuration-data-at-scale"></a>スケーリング対応の構成データ
+# <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Azure Automation State Configuration で大規模なデータ構成を行う
 
 > 適用先:Windows PowerShell 5.1
 
@@ -51,6 +51,6 @@ Datum を試すには、[PowerShell ギャラリー](https://www.powershellgalle
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
-- [DSC リソース](/powershell/scripting/dsc/resources/resources)
-- [ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- PowerShell DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
+- PowerShell DSC リソースについては、「[DSC リソース](/powershell/scripting/dsc/resources/resources)」をご覧ください。
+- Local Configuration Manager の構成の詳細については、「[ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)」をご覧ください。

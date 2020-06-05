@@ -1,6 +1,6 @@
 ---
-title: 既存のサーバーから構成を作成する - Azure Automation
-description: Azure Automation のために既存のサーバーから構成を作成する方法について説明します。
+title: Azure Automation State Configuration のために既存のサーバーから構成を作成する
+description: この記事では、Azure Automation State Configuration のために既存のサーバーから構成を作成する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
 ms.service: automation
@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dff9b8f52207a38cf7eaddefa178aff262ddc546
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 775fae09c4d618551327669362cd28a0ae2cc801
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585548"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837010"
 ---
 # <a name="create-configurations-from-existing-servers"></a>既存のサーバーから構成を作成する
 
@@ -45,6 +45,6 @@ ReverseDSC を試すには、[PowerShell ギャラリー](https://www.powershell
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
-- [DSC リソース](/powershell/scripting/dsc/resources/resources)
-- [ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- PowerShell DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
+- PowerShell DSC リソースについては、「[DSC リソース](/powershell/scripting/dsc/resources/resources)」をご覧ください。
+- Local Configuration Manager の構成の詳細については、「[ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)」をご覧ください。

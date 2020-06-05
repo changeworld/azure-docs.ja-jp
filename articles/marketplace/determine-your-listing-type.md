@@ -1,18 +1,18 @@
 ---
-title: Microsoft の商業マーケットプレースのネットショップで公開オプションを決定する
-description: この記事では､パートナーが Microsoft AppSource や Azure Marketplace にアプリを公開しようとするときに理解しておく必要がある適格性条件と公開要件を説明します｡
+title: 公開オプションを選定する - Microsoft 商業マーケットプレース
+description: この記事では､Microsoft AppSource や Azure Marketplace にオファーを公開する際の適格性条件と要件について説明します｡
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415738"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658062"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 

@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614829"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845986"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Advanced Threat Protection (プレビュー)
 
@@ -36,9 +36,13 @@ Azure Cosmos DB の Advanced Threat Protection では、データベースへの
 
 - **通常と異なるデータの抽出**: このアラートは、クライアントが Azure Cosmos DB アカウントから通常とは異なる量のデータを抽出しているときにトリガーされます。 これは、データ流出が発生し、アカウントに格納されているすべてのデータが外部データ ストアに転送されている可能性があることを示します。
 
-## <a name="set-up-advanced-threat-protection"></a>Advanced Threat Protection の設定
 
-### <a name="set-up-atp-using-the-portal"></a>ポータルを使用した ATP の設定
+
+## <a name="configure-advanced-threat-protection"></a>Advanced Threat Protection の構成
+
+Advanced Threat Protection は、次のセクションで説明するいくつかの方法で構成することができます。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure portal ([https://portal.azure.com](https://portal.azure.com/)) を起動します。
 
@@ -51,14 +55,14 @@ Azure Cosmos DB の Advanced Threat Protection では、データベースへの
     * **[Advanced Threat Protection]** オプションをクリックして **[オン]** に設定します。
     * **[保存]** をクリックして、新しいまたは更新された Azure Storage ポリシーを保存します。   
 
-### <a name="set-up-atp-using-rest-api"></a>REST API を使用した ATP の設定
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Rest API のコマンドを使用して、特定の Azure Cosmos DB アカウントの Advanced Threat Protection 設定を作成、更新、または取得します。
 
 * [Advanced Threat Protection - 作成](https://go.microsoft.com/fwlink/?linkid=2099745)
 * [Advanced Threat Protection - 取得](https://go.microsoft.com/fwlink/?linkid=2099643)
 
-### <a name="set-up-atp-using-azure-powershell"></a>Azure PowerShell を使用した ATP の設定
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の PowerShell コマンドレットを使用します。
 
@@ -66,12 +70,12 @@ Rest API のコマンドを使用して、特定の Azure Cosmos DB アカウン
 * [Advanced Threat Protection を取得する](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Advanced Threat Protection を無効にする](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
 
-### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
+### <a name="arm-template"></a>[ARM テンプレート](#tab/arm-template)
 
-Azure Resource Manager テンプレートを使用して、Advanced Threat Protection が有効な Cosmos DB を設定します。
+Azure Resource Manager (ARM) テンプレートを使用して、Advanced Threat Protection が有効な Cosmos DB を設定します。
 詳細については、「[Advanced Threat Protection を使用して CosmosDB アカウントを作成する](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)」を参照してください。
 
-### <a name="using-azure-policy"></a>Azure Policy の使用
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Azure Policy を使用して、Cosmos DB の Advanced Threat Protection を有効にします。
 
@@ -90,6 +94,9 @@ Azure Policy を使用して、Cosmos DB の Advanced Threat Protection を有�
 
 
 1. その他のパラメーターを入力し、 **[割り当て]** をクリックします。
+
+
+
 
 ## <a name="manage-atp-security-alerts"></a>ATP セキュリティ アラートの管理
 

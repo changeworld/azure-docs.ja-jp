@@ -1,6 +1,6 @@
 ---
-title: 状態構成で使用するための STIG に基づく構成 - Azure Automation
-description: Azure Automation での状態構成用の STIG に基づく構成について説明します。
+title: Azure Automation State Configuration の STIG に基づくデータの構成
+description: この記事では、Azure Automation State Configuration の STIG に基づいてデータを構成する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1b05f9e77d3530f3e883aa3f9d98de09c8f54c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585529"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836993"
 ---
-# <a name="configuration-based-on-stig"></a>STIG に基づく構成
+# <a name="configure-data-based-on-stig"></a>STIG に基づくデータの構成
 
 > 適用先:Windows PowerShell 5.1
 
@@ -43,6 +43,6 @@ PowerSTIG を試すには、[PowerShell ギャラリー](https://www.powershellg
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
-- [DSC リソース](/powershell/scripting/dsc/resources/resources)
-- [ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- PowerShell DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
+- PowerShell DSC リソースについては、「[DSC リソース](/powershell/scripting/dsc/resources/resources)」をご覧ください。
+- Local Configuration Manager の構成の詳細については、「[ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)」をご覧ください。

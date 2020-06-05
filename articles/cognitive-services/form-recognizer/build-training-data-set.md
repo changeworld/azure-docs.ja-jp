@@ -9,18 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75380628"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873292"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
 
-Form Recognizer のカスタム モデルを使用する場合は、モデルを業界固有のフォームに合わせてトレーニングできるように、独自のトレーニング データを提供します。 モデルは、5 つの入力フォームか、空のフォーム (ファイル名に "empty" という単語を含める必要があります) と 2 つの入力フォームを使用して、トレーニングできます。 トレーニングに使用する十分な数の入力フォームがある場合でも、トレーニング データ セットに空のフォームを追加することで、モデルの精度を高めることができます。
+Form Recognizer のカスタム モデルを使用する場合は、モデルを業界固有のフォームに合わせてトレーニングできるように、独自のトレーニング データを提供します。 
 
-手動でラベル付けされたトレーニングデータを使用する場合は、同じタイプの少なくとも5つのフォームから開始する必要があります。 同じデータセット内で、ラベル付けされていないフォームと空のフォームを引き続き使用することもできます。
+手動ラベルなしでトレーニングする場合は、5 つの入力済みフォームを使用するか、空のフォーム (ファイル名に "empty" という単語を含める必要があります) と 2 つの入力済みフォームを使用できます。 十分な数の入力済みフォームがある場合でも、トレーニング データ セットに空のフォームを追加することで、モデルの精度を高めることができます。
+
+手動でラベル付けされたトレーニング データを使用する場合は、同じ種類の少なくとも 5 つの入力済みフォームから開始する必要があります。 必要なデータ セットに加え、ラベル付けされていないフォームと空のフォームを引き続き使用することもできます。
 
 ## <a name="training-data-tips"></a>トレーニング データのヒント
 
@@ -42,9 +44,11 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 トレーニングに使用するフォーム ドキュメントのセットをまとめたら、それを Azure Blob Storage コンテナーにアップロードする必要があります。 コンテナーを含む Azure Storage アカウントを作成する方法がわからない場合は、[Azure portal の Azure Storage に関するクイックスタート](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に従ってください。
 
+手動でラベル付けされたデータを使用する場合は、トレーニング ドキュメントに対応する *.labels.json* ファイルと *.ocr.json* ファイルもアップロードする必要があります。 [サンプル ラベル付けツール](./quickstarts/label-tool.md) (または独自の UI) を使用して、これらのファイルを生成できます。
+
 ### <a name="organize-your-data-in-subfolders-optional"></a>データをサブフォルダーに整理する (オプション)
 
-既定では、[カスタムモデルのトレーニング](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API は、ストレージ コンテナーのルートにあるフォーム ドキュメントのみが使用されます。 ただし、API 呼び出しで指定した場合は、サブフォルダー内のデータを使用してトレーニングすることができます。 [カスタムモデルのトレーニング](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) の呼び出しの本文は、通常、次の形式で、`<SAS URL>` はコンテナーの共有アクセス署名 URL です：
+既定では、[カスタムモデルのトレーニング](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API は、ストレージ コンテナーのルートにあるフォーム ドキュメントのみが使用されます。 ただし、API 呼び出しで指定した場合は、サブフォルダー内のデータを使用してトレーニングすることができます。 通常、[カスタム モデルのトレーニング](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)呼び出しの本文は次の形式になります。`<SAS URL>` は、コンテナーの Shared Access Signature URL です。
 
 ```json
 {
@@ -69,6 +73,7 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 トレーニング データ セットの作成方法を習得したので、クイックスタートに従って、カスタム Form Recognizer モデルをトレーニングし、お使いのフォームでの使用を開始してください。
 
-* [クイック スタート: cURL を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/curl-train-extract.md)
-* [クイック スタート: Python で REST API を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/python-train-extract.md)
+* [cURL を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/curl-train-extract.md)
+* [REST API と Python を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/python-train-extract.md)
+* [サンプル ラベル付けツールを使用したラベルによるトレーニング](./quickstarts/label-tool.md)
 * [REST API と Python を使用したラベルのトレーニング](./quickstarts/python-labeled-data.md)

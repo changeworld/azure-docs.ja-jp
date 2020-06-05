@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27d192a50a13437b755e7cc0db8a7dbcc4fee2f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939027"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833400"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS トラブルシューティング ガイド
 
 この記事では、Azure DNS についてよく寄せられる質問のトラブルシューティング情報を提供します。
 
-次の手順で問題が解決しない場合は、[MSDN のコミュニティ サポート フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)で検索したり、こうしたフォーラムに問題を投稿したりすることもできます。 または、Azure のサポート リクエストを開くことができます。
+次の手順で問題が解決しない場合は、[コミュニティ サポートの Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)で検索したり、問題を投稿したりすることもできます。 または、Azure のサポート リクエストを開くことができます。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>DNS ゾーンを作成できない

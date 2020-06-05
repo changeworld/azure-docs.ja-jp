@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 0caa028c8352f8dd1b3be4a843b9b49128b2c382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101571"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773786"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
 Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../../cost-management-billing/understand/review-individual-bill.md)に関するページをご覧ください。
@@ -134,6 +134,13 @@ Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイし
 クラシック モデルでは、リソースに対する請求は、クラウド サービス レベルで集計されます。 同じ請求測定が使用されているクラウド サービスに、複数の VM がある場合、使用量は一緒に集計されます。 Resource Manager でデプロイされた VM は、VM レベルで請求されるため、この集計は適用されません。
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>DS/FS/GS/LS サイズに対する価格が、価格ページにないのはなぜですか。
 Premium Storage 対応の VM の料金は、Premium Storage 非対応の VM と同じです。 異なるのはストレージ コストのみです。 詳細については、[ストレージの価格ページ](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/)をご覧ください。
+### <a name="how-to-know-the-operating-system-version-running-on-the-vm"></a>VM で実行されているオペレーティング システムのバージョンを確認するにはどうすればよいですか。
+
+API には、VM で実行されているオペレーティング システムが返される可能性のある場所が 3 つあります。
+
+1) ゲスト エージェントを含む VM (すべての Linux VM とほとんどの Windows VM) を実行すると、VM インスタンス ビューに OS 名と OS バージョンが表示されます。 これは常に正確ですが、この情報はゲスト エージェントから取得されるため、すべての VM で利用できるわけではありません。 [こちら](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)の API ドキュメントをご覧ください。
+2) プラットフォーム イメージからデプロイされた VM にはイメージの詳細が含まれ、オファーまたは SKU の発行元が選択した名前に OS バージョンが示されている場合があります。 ただし、これらは発行元が選択したものであるため、この名前で OS が検出可能であるという保証はありません。 [こちら](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes)の API ドキュメントをご覧ください。
+3) 各 OS ディスクには、Windows または Linux の指定された値があります。 OS ディスクがイメージから作成された場合、この値はそのイメージから継承されます。 OS ディスクがプラットフォームに直接アップロードされる場合、OS 値は OS ディスクの作成時に設定されます。 この値は常に存在しますが、Azure プラットフォームはそれが正しいことを保証するわけではありません。 [こちら](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)の API ドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。

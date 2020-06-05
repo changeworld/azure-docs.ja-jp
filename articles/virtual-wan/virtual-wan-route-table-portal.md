@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402937"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773170"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 用の Virtual WAN ハブ ルート テーブルを作成する:Azure portal
 
@@ -76,6 +76,9 @@ ms.locfileid: "78402937"
 3. **[...]** 、 **[仮想ハブを編集する]** の順にクリックします。
 4. **[仮想ハブを編集する]** ページを下にスクロールして、 **[ルーティングにテーブルを使用]** のチェックボックスをオンにします。
 5. **[次の宛先プレフィックスの場合]** 列にアドレス空間を追加します。 **[次ホップ アドレスに送信する]** 列で DMZ NVA ネットワーク インターフェイスのプライベート IP アドレスを追加します。
+>[!NOTE]
+>DMZ NVA ネットワークはローカル ハブに適用できます。
+>
 6. **[確認]** をクリックして、ルート テーブルの設定を使用してハブ リソースを更新します。
 
 ## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5.VNet 接続を作成する

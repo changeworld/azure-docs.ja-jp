@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: 7ab3b48d22f116a707f68cbf6284928c7d2557e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409499"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848247"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT Hub の TLS サポート
 
@@ -54,11 +54,11 @@ TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定�
 > [!NOTE]
 > `minTlsVersion` プロパティは読み取り専用であり、IoT Hub リソースの作成後は変更できません。 したがって、*すべての* IoT デバイスとサービスが TLS 1.2 および[推奨される暗号](#recommended-ciphers)と互換性があることを、事前に適切にテストし、検証する必要があります。
 
-### <a name="supported-regions"></a>サポートされているリージョン
+## <a name="supported-regions"></a>サポートされているリージョン
 
 TLS 1.2 を使用する必要がある IoT Hub は、次のリージョンで作成できます。
 
-* East US
+* 米国東部
 * 米国中南部
 * 米国西部 2
 * US Gov アリゾナ
@@ -67,7 +67,7 @@ TLS 1.2 を使用する必要がある IoT Hub は、次のリージョンで作
 > [!NOTE]
 > フェールオーバー時、IoT Hub の `minTlsVersion` プロパティは、フェールオーバー後に geo ペア リージョンで有効なままになります。
 
-### <a name="recommended-ciphers"></a>推奨される暗号
+## <a name="recommended-ciphers"></a>推奨される暗号
 
 TLS 1.2 のみを受け入れるように構成されている IoT Hub では、次の推奨される暗号の使用も強制されます。
 
@@ -76,11 +76,26 @@ TLS 1.2 のみを受け入れるように構成されている IoT Hub では、
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-### <a name="use-tls-12-in-your-iot-hub-sdks"></a>IoT Hub SDK で TLS 1.2 を使用する
+TLS 1.2 の強制が構成されていない IoT Hub では、TLS 1.2 は次の暗号で引き続き動作します。
+
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_DHE_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_CBC_SHA256`
+* `TLS_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+## <a name="use-tls-12-in-your-iot-hub-sdks"></a>IoT Hub SDK で TLS 1.2 を使用する
 
 次のリンクを使用して、IoT Hub クライアント SDK で TLS 1.2 および許可されている暗号を構成します。
 
-| 言語 | TLS 1.2 をサポートするバージョン | ドキュメント |
+| Language | TLS 1.2 をサポートするバージョン | ドキュメント |
 |----------|------------------------------------|---------------|
 | C        | タグ 2019-12-11 以降            | [リンク](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | バージョン 2.0.0 以降             | [リンク](https://aka.ms/Tls_Python_SDK_IoT) |
@@ -89,6 +104,6 @@ TLS 1.2 のみを受け入れるように構成されている IoT Hub では、
 | NodeJS   | バージョン 1.12.2 以降            | [リンク](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
-### <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge のセットアップで TLS 1.2 を使用する
+## <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge のセットアップで TLS 1.2 を使用する
 
 IoT Edge デバイスは、IoT Hub との通信時に TLS 1.2 を使用するように構成できます。 このためには、[IoT Edge ドキュメント ページ](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)を使用してください。

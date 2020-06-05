@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: a97fee619858aa024ff208b72d3b2594c30d2fd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299126"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849733"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
 
@@ -45,7 +45,7 @@ Azure Database for MySQL のデータ暗号化には、次の利点がありま�
 
 KEK で暗号化された DEK は、個別に格納されます。 KEK へのアクセス権を持つエンティティでのみ、これらの DEK の暗号化を解除できます。 詳細については、[保存時の暗号化のセキュリティ](../security/fundamentals/encryption-atrest.md)に関するページを参照してください。
 
-## <a name="how-data-encryption-with-a-customer-managed-key-works"></a>カスタマーマネージド キーによるデータ暗号化のしくみ
+## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>カスタマーマネージド キーによるデータ暗号化のしくみ
 
 ![Bring Your Own Key の概要を示す図](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
 
@@ -64,14 +64,12 @@ Key Vault に格納されているカスタマーマネージド キーを使用
 Key Vault を構成するための要件を以下に示します。
 
 * Key Vault と Azure Database for MySQL は、同じ Azure Active Directory (Azure AD) テナントに属している必要があります。 テナント間の Key Vault とサーバーの対話はサポートされていません。 後でリソースを移動する場合は、データ暗号化を再構成する必要があります。
-* キー (または Key Vault) を誤って削除した場合のデータ損失から保護するには、Key Vault で論理的な削除機能を有効にする必要があります。 論理的に削除されたリソースは 90 日間保持されます (その間にユーザーが復旧または消去した場合を除く)。 復旧と消去のアクションには、Key Vault のアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は既定ではオフになっていますが、PowerShell または Azure CLI を介して有効にすることができます (Azure portal を介して有効にできないことに注意してください)。
+* キー (または Key Vault) を誤って削除した場合のデータ損失から保護するには、Key Vault で論理的な削除機能を有効にします。 論理的に削除されたリソースは 90 日間保持されます (その間にユーザーが復旧または消去した場合を除く)。 復旧と消去のアクションには、Key Vault のアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は既定ではオフになっていますが、PowerShell または Azure CLI を介して有効にすることができます (Azure portal を介して有効にできないことに注意してください)。
 * Azure Database for MySQL に対し、その一意のマネージド ID を使用して、get、wrapKey、および unwrapKey アクセス許可による Key Vault へのアクセスを付与します。 Azure portal では、MySQL でのデータ暗号化を有効にすると、一意の ID が自動的に作成されます。 Azure portal を使用する場合の詳細な手順については、[MySQL のデータ暗号化の構成](howto-data-encryption-portal.md)に関するページを参照してください。
-
-* Key Vault でファイアウォールを使用する場合は、 **[Allow trusted Microsoft services to bypass the firewall]\(信頼された Microsoft サービスがファイアウォールをバイパスすることを許可する\)** オプションを有効にする必要があります。
 
 カスタマーマネージド キーを構成するための要件を以下に示します。
 
-* DEK の暗号化に使用されるカスタマーマネージド キーは、非対称の RSA 2028 のみです。
+* DEK の暗号化に使用されるカスタマーマネージド キーは、非対称の RSA 2048 のみです。
 * キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限 (設定する場合) は、将来の日付と時刻にする必要があります。
 * キーは、"*有効*" 状態になっている必要があります。
 * Key Vault に既存のキーをインポートする場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で指定するようにしてください。
@@ -82,8 +80,10 @@ Key Vault を構成するための要件を以下に示します。
 
 * Key Vault でリソース ロックを設定して、この重要なリソースを削除できるユーザーを制御し、誤削除や許可されていない削除を防ぎます。
 * すべての暗号化キーの監査およびレポートを有効にします。 Key Vault で提供されるログは、他のセキュリティ情報およびイベント管理ツールに簡単に挿入できます。 Azure Monitor Log Analytics は、既に統合されているサービスの一例です。
-
 * DEK のラップおよびラップ解除操作のアクセスを高速化するために、Key Vault と Azure Database for MySQL が同じリージョンにあることを確認します。
+* Azure KeyVault を**プライベート エンドポイントと選択されたネットワーク**のみにロックダウンし、*信頼された Microsoft* サービスのみがリソースを保護できるようにします。
+
+    ![trusted-service-with-AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
 
 カスタマーマネージド キーを構成する場合の推奨事項は次のとおりです。
 
@@ -93,7 +93,13 @@ Key Vault を構成するための要件を以下に示します。
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>カスタマーマネージド キーのアクセス不可状態
 
-Key Vault でカスタマー マネージド キーを使用してデータ暗号化を構成する場合に、サーバーをオンラインに保つには、このキーへの継続的なアクセスが必要です。 サーバーで Key Vault のカスタマーマネージド キーにアクセスできなくなった場合、サーバーでは 10 分以内にすべての接続を拒否し始めます。 サーバーで対応するエラー メッセージが発行され、サーバーの状態が "*アクセス不可*" に変更されます。 この状態でデータベースに対して許可される唯一のアクションは、削除のみです。
+Key Vault でカスタマー マネージド キーを使用してデータ暗号化を構成する場合に、サーバーをオンラインに保つには、このキーへの継続的なアクセスが必要です。 サーバーで Key Vault のカスタマーマネージド キーにアクセスできなくなった場合、サーバーでは 10 分以内にすべての接続を拒否し始めます。 サーバーで対応するエラー メッセージが発行され、サーバーの状態が "*アクセス不可*" に変更されます。 サーバーがこの状態になる理由としては、次のようなものがあります。
+
+* データ暗号化が有効になっている Azure Database for MySQL 単一サーバーに対してポイントインタイム リストア サーバーを作成すると、新しく作成されたサーバーは "*アクセス不可*" 状態になります。 これは [Azure portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) または [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) から修正できます。
+* データ暗号化が有効になっている Azure Database for MySQL 単一サーバーに対して読み取りレプリカを作成すると、レプリカ サーバーは "*アクセス不可*" 状態になります。 これは [Azure portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) または [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) から修正できます。
+* KeyVault を削除すると、Azure Database for MySQL 単一サーバーはキーにアクセスできなくなり、"*アクセス不可*" 状態に移行します。 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) を復旧し、データ暗号化を再検証して、サーバーを "*使用可能*" にします。
+* KeyVault のキーを削除すると、Azure Database for MySQL 単一サーバーはキーにアクセスできなくなり、"*アクセス不可*" 状態に移行します。 [キー](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)を復旧し、データ暗号化を再検証して、サーバーを "*使用可能*" にしてください。
+* Azure KeyVault に格納されているキーの有効期限が切れると、キーは無効になり、Azure Database for MySQL 単一サーバーは "*アクセス不可*" 状態に移行します。 [CLI](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) を使用してキーの有効期限を延長した後、データの暗号化を再検証して、サーバーを "*使用可能*" にします。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Key Vault からの誤ったキー アクセスの失効
 
@@ -103,7 +109,6 @@ Key Vault に対する十分なアクセス権を持つユーザーが、次の�
 * キーを削除する。
 * Key Vault を削除する。
 * Key Vault のファイアウォール規則を変更する。
-
 * Azure AD でサーバーのマネージド ID を削除する。
 
 ## <a name="monitor-the-customer-managed-key-in-key-vault"></a>Key Vault でカスタマーマネージド キーを監視する
@@ -113,7 +118,7 @@ Key Vault に対する十分なアクセス権を持つユーザーが、次の�
 * [Azure Resource Health](../service-health/resource-health-overview.md):カスタマー キーにアクセスできなくなったアクセス不可のデータベースでは、データベースへの最初の接続が拒否された後、"アクセス不可" と表示されます。
 * [アクティビティ ログ](../service-health/alerts-activity-log-service-notifications.md):カスタマーマネージド Key Vault 内のカスタマー キーへのアクセスに失敗すると、アクティビティ ログにエントリが追加されます。 これらのイベントに対してアラートを作成した場合は、できるだけ早くアクセスを再開できます。
 
-* [アクション グループ](../azure-monitor/platform/action-groups.md):必要に応じて通知とアラートを送信するように、これらを定義します。
+* [アクション グループ](../azure-monitor/platform/action-groups.md):必要に応じて通知とアラートを送信するように、これらのグループを定義します。
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Key Vault 内の顧客のマネージド キーを使用して復元およびレプリケートする
 
@@ -123,7 +128,7 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 
 * マスター Azure Database for MySQL から、復元または読み取りレプリカの作成プロセスを開始します。
 * 新しく作成されたサーバー (復元またはレプリカ) は、アクセス不可状態のままにしておきます。これは、その一意の ID に Key Vault へのアクセス許可がまだ付与されていないためです。
-* 復元またはレプリカ サーバーで、カスタマーマネージド キーをデータ暗号化設定で再確認します。 これにより、新しく作成されたサーバーに、Key Vault に格納されているキーに対するラップとそのラップ解除のアクセス許可が確実に与えられます。
+* 復元またはレプリカ サーバーで、データ暗号化設定のカスタマーマネージド キーを再検証して、Key Vault に格納されているキーへのラップおよびラップ解除アクセス許可が新しく作成されたサーバーに付与されるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

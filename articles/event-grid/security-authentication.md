@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588260"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774303"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid リソースへのアクセスの認証
 この記事では、次のシナリオについて説明します。  
 
 - Shared Access Signature (SAS) またはキーを使用して Azure Event Grid トピックにイベントを発行するクライアントを認証します。 
-- Azure Active Directory (Azure AD) を使用して Webhook エンドポイントを保護し、イベントをエンドポイントに**配信**する Event Grid を認証します。
+- Azure Active Directory (Azure AD) または共有シークレットを使用して、Event Grid からイベントを受信するために使用される Webhook エンドポイントをセキュリティで保護します。
 
 ## <a name="authenticate-publishing-clients-using-sas-or-key"></a>SAS またはキーを使用した発行クライアントの認証
 カスタム トピックは、Shared Access Signature (SAS) またはキー認証を使用します。 SAS が推奨されますが、キー認証はプログラミングが簡単で、既存の多くの webhook 発行元と互換性があります。
@@ -89,12 +89,12 @@ Event Grid サービスによってディスクに書き込まれるすべての
 以下のセクションでは、Webhook エンドポイントへのイベント配信を認証する方法について説明します。 使用する方法に関係なく、検証ハンドシェイク メカニズムを使用する必要があります。 詳細については、「[Webhook のイベント配信](webhook-event-delivery.md)」を参照してください。 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を使用する
-Event Grid の認証に Azure Active Directory (Azure AD) を使用することで Webhook エンドポイントを保護し、エンドポイントにイベントを配信できます。 Azure AD アプリケーションを作成すること、アプリケーションで Event Grid を認証するためのロールとサービス プリンシパルを作成すること、Azure AD アプリケーションを使用するようにイベント サブスクリプションを構成することが必要になります。 [Event Grid を使用した Azure Active Directory の構成方法について説明します](secure-webhook-delivery.md)。
+Azure AD を使用して、Event Grid からイベントを受信するために使用される Webhook エンドポイントをセキュリティで保護できます。 Azure AD アプリケーションを作成し、アプリケーションで Event Grid を承認するためのロールとサービス プリンシパルを作成する必要があります。さらに、Azure AD アプリケーションを使用するようにイベント サブスクリプションを構成する必要があります。 Event Grid で Azure Active Directory を構成する方法については、[こちら](secure-webhook-delivery.md)をご覧ください。
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>クエリ パラメーターとしてクライアント シークレットを使用する
-イベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 これらのクエリ パラメーターのいずれかを、[アクセス トークン](https://en.wikipedia.org/wiki/Access_token)などのクライアント シークレットまたは共有シークレットに設定します。 Webhook はシークレットを使用して、イベントが有効なアクセス許可を持つ Event Grid からのものであることを認識できます。 Event Grid には、webhook へのすべてのイベント配信にこれらのクエリ パラメーターが含められます。 クライアント シークレットが更新された場合は、イベント サブスクリプションも更新する必要があります。 このシークレットのローテーション中の配信エラーを回避するには、期限を限定して、古いシークレットと新しいシークレットの両方を Webhook に受け入れてください。 
+イベント サブスクリプションの作成の一環として指定したWebhook の送信先 URL にクエリ パラメーターを追加することで、Webhook エンドポイントをセキュリティで保護することもできます。 クエリ パラメーターのいずれかを、[アクセス トークン](https://en.wikipedia.org/wiki/Access_token)などのクライアント シークレットまたは共有シークレットとして設定します。 Event Grid サービスでは、Webhook へのすべてのイベント配信要求にすべてのクエリ パラメーターを含めます。 Webhook サービスはシークレットを取得して検証できます。 クライアント シークレットが更新された場合は、イベント サブスクリプションも更新する必要があります。 このシークレットのローテーション中の配信エラーを回避するために、イベント サブスクリプションを新しいシークレットで更新する前に、一定期間、Webhook で古いシークレットと新しいシークレットの両方を受け入れるようにします。 
 
-クエリ パラメーターにはクライアント シークレットを含めることができるため、特別な注意を払って処理されます。 これらは暗号化されて格納され、サービス オペレーターがアクセスすることはできません。 これらは、サービス ログ/トレースの一部として記録されません。 イベント サブスクリプションを編集すると、Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) で [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) パラメーターを使用した場合を除き、クエリ パラメーターが表示されなくなるか、返されなくなります。
+クエリ パラメーターにはクライアント シークレットを含めることができるため、特別な注意を払って処理されます。 これらは暗号化されて格納され、サービス オペレーターがアクセスすることはできません。 これらは、サービス ログ/トレースの一部として記録されません。 イベント サブスクリプションのプロパティを取得するときに、送信先クエリ パラメーターは既定では返されません。 たとえば、[--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) パラメーターは、Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 内で使用されます。
 
 Webhook へのイベント配信の詳細については、「[Webhook のイベント配信](webhook-event-delivery.md)」を参照してください。
 

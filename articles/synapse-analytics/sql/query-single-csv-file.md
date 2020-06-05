@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 41c4a8940cc49a3859a2511f0de65d0019817078
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427559"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836551"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
@@ -29,10 +29,7 @@ ms.locfileid: "81427559"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の残りの部分を読む前に、次の記事を確認してください。
-
-- [初回セットアップ](query-data-storage.md#first-time-setup)
-- [前提条件](query-data-storage.md#prerequisites)
+最初の手順として、テーブルが作成される**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルで使用される外部ファイル形式が作成されます。
 
 ## <a name="windows-style-new-line"></a>Windows スタイルの改行
 
@@ -45,8 +42,9 @@ ms.locfileid: "81427559"
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
@@ -72,7 +70,8 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a'
@@ -99,7 +98,8 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr/population.csv',
+        BULK 'csv/population-unix-hdr/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         FIRSTROW = 2
@@ -126,7 +126,8 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-quoted/population.csv',
+        BULK 'csv/population-unix-hdr-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -158,7 +159,8 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-escape/population.csv',
+        BULK 'csv/population-unix-hdr-escape/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -176,7 +178,7 @@ WHERE
 ```
 
 > [!NOTE]
-> ESCAPECHAR が指定されていない場合、このクエリは失敗します。"Slov,enia" 内のコンマが、国名の一部ではなく、フィールド区切り記号として扱われることがその理由です。 "Slov,enia" は 2 つの列として扱われます。 そのため、特定の行には、他の行よりも列が 1 つ多く存在し、WITH 句で定義した列数より 1 つ多くなります。
+> ESCAPECHAR が指定されていない場合、このクエリは失敗します。"Slov,enia" 内のコンマが、国/地域名の一部ではなく、フィールド区切り記号として扱われることがその理由です。 "Slov,enia" は 2 つの列として扱われます。 そのため、特定の行には、他の行よりも列が 1 つ多く存在し、WITH 句で定義した列数より 1 つ多くなります。
 
 ## <a name="tab-delimited-files"></a>タブ区切りファイル
 
@@ -189,7 +191,8 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-tsv/population.csv',
+        BULK 'csv/population-unix-hdr-tsv/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR ='\t',
         ROWTERMINATOR = '0x0a',
@@ -210,7 +213,7 @@ WHERE
 
 ここまで、WITH を使用し、すべての列をリストして CSV ファイル スキーマを指定してきました。 クエリにおいて実際に必要な列だけを指定するには、必要な各列に対して序数を使用します。 また、関心のない列も省略します。
 
-次のクエリでは、ファイル内の異なる国名の数が返されます。これにより必要な列のみを指定できます。
+次のクエリでは、ファイル内の異なる国/地域名の数が返されます。これにより必要な列のみを指定できます。
 
 > [!NOTE]
 > 次のクエリ内の WITH 句を見てください。 *[country_name]* 列を定義した行の末尾に "2" (引用符はなし) があることがわかります。 これは、 *[country_name]* 列がファイル内の 2 番目の列であることを意味します。 このクエリでは、2 番目の列を除く、ファイル内のすべての列が無視されます。
@@ -219,14 +222,15 @@ WHERE
 SELECT
     COUNT(DISTINCT country_name) AS countries
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
 WITH (
-    --[country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
-    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2 2
+    --[country_code] VARCHAR (5),
+    [country_name] VARCHAR (100) 2
     --[year] smallint,
     --[population] bigint
 ) AS [r]

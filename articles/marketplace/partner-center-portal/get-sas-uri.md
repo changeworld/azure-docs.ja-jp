@@ -1,23 +1,20 @@
 ---
-title: VM イメージの共有アクセス署名 URI を取得する | Azure Marketplace
-description: この記事では、各仮想ハード ディスク (VHD) の共有アクセス署名 (SAS) URI を取得する方法について説明します。
+title: VM イメージの Shared Access Signature URI - Azure Marketplace
+description: Azure Marketplace で仮想ハード ディスク (VHD) の Shared Access Signature (SAS) URI を生成します。
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732637"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725875"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
-
-> [!IMPORTANT]
-> Azure 仮想マシン オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、オファーを管理する Cloud パートナー ポータルの [VM イメージの共有アクセス署名 URI の取得](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)に関するページの手順に従ってください。
 
 この記事では、各仮想ハード ディスク (VHD) の共有アクセス署名 (SAS) Uniform Resource Identifier (URI) を生成する方法について説明します。
 

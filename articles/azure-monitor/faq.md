@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.date: 05/15/2020
+ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637768"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835344"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -96,6 +96,11 @@ Azure Monitor によって収集されたすべてのログ データは、Log A
 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>VM から Log Analytics を開くときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 VM ログを表示するには、VM ログを格納するワークスペースに対する読み取りアクセス許可が付与される必要があります。 このような場合、管理者が Azure でのアクセス許可を付与する必要があります。
+
+## <a name="metrics"></a>メトリック
+
+### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Azure 仮想マシンのゲスト OS のメトリックがメトリックス エクスプローラーに表示されないのはなぜですか?
+[プラットフォーム メトリック](insights/monitor-azure-resource.md#monitoring-data)は、Azure リソースについて自動的に収集されます。 ただし、仮想マシンのゲスト OS からメトリックを収集するには、いくつかの構成を実行する必要があります。 Windows VM の場合は、「[Install and configure Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](platform/diagnostics-extension-windows-install.md)」の説明に従って、診断拡張機能をインストールし、Azure Monitor シンクを構成します。 Linux の場合は、「[Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](platform/collect-custom-metrics-linux-telegraf.md)」の説明に従って、Telegraf エージェントをインストールします。
 
 ## <a name="alerts"></a>警告
 
@@ -202,6 +207,10 @@ WireData
 * [ASP.NET サーバーのセットアップ](app/monitor-performance-live-website-now.md)
 * [Java サーバーのセットアップ](app/java-agent.md)
 
+*Application Insights をいくつデプロイすればよいでしょうか?*
+
+* [Application Insights のデプロイを設計する方法:1 つまたは多数の Application Insights リソース](app/separate-resources.md)
+
 ### <a name="can-i-use-application-insights-with-"></a>Application Insights と共に使用できるもの
 
 * [Azure VM または Azure 仮想マシン スケール セットの IIS サーバー上の Web アプリ](app/azure-vm-vmss-apps.md)
@@ -254,6 +263,10 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、 **[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
+
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Azure Resource Manager のデプロイで `providers('Microsoft.Insights', 'components').apiVersions[0]` を使用できますか?
+
+API バージョンの設定に、この方法を使用することは推奨されません。 最新バージョンは、破壊的変更を含んでいる可能性があるプレビュー リリースを表す場合があります。 新しいプレビュー以外のリリースでも、API バージョンが必ずしも既存のテンプレートと下位互換性を持っているとは限りません。場合によっては、API バージョンがすべてのサブスクリプションで使用できない可能性もあります。
 
 ### <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
 
@@ -412,7 +425,7 @@ Azure アラートはメトリックにのみ設定できます。 イベント�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>テレメトリを Application Insights ポータルに送信できますか?
 
-Microsoft の SDK と [SDK API](app/api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](app/platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
+Microsoft の SDK と [SDK API](app/api-custom-events-metrics.md) を使用することをお勧めします。 各種[プラットフォーム](app/platforms.md)向けに異なる SDK が用意されています。 これらの SDK では、バッファリング、圧縮、調整、再試行などを処理します。 ただし、[取り込みスキーマ](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)と[エンドポイント プロトコル](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)はパブリックです。
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>イントラネット Web サーバーを監視できますか?
 
@@ -500,6 +513,10 @@ Application Insights のほとんどのデータは、待ち時間が 5 分未�
 ## <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
 
 この Microsoft FAQ では、コンテナーの Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+
+### <a name="health-feature-is-in-private-preview"></a>正常性機能 (プライベート プレビュー)
+
+機能を追加するための一連の変更を行い、お客様からのフィードバックに対処する予定です。 正常性機能は、2020 年 6 月末にプライベート プレビューに移行します。詳細については、[Azure 更新プログラムに関するお知らせ](https://azure.microsoft.com/updates/ci-health-limited-preview/)を参照してください。
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>ノード ビューで *[その他のプロセス]* は何を表していますか?
 
@@ -718,7 +735,7 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 ## <a name="next-steps"></a>次のステップ
 質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。
 
-- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
-- [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
 
 Azure Monitor に関する一般的なフィードバックについては、[フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスしてください。

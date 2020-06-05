@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace SaaS アプリケーションの発行ガイド
-description: Azure Marketplace に SaaS アプリケーションを発行するためのステップ バイ ステップ ガイドと発行チェックリスト
+title: SaaS アプリケーション公開ガイド - Microsoft 商業マーケットプレース
+description: Microsoft AppSource および Azure Marketplace に SaaS アプリケーション オファーを公開するための要件とリソース。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117235"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657818"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
-SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
+SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" を使用して、マーケットプレースに公開できます。 この記事では、この 3 つのオプションとそれぞれの要件について説明します。 
 
 ## <a name="offer-overview"></a>オファーの概要  
 
@@ -29,7 +29,7 @@ SaaS アプリケーションは Microsoft AppSource と Azure Marketplace で�
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
 | **お問い合わせ** | はい | いいえ |  
-| **PowerBI/Dynamics** | はい | あり (Azure AD の統合) |  
+| **Power BI/Dynamics** | はい | あり (Azure AD の統合) |  
 | **SaaS アプリ**| はい | あり (Azure AD の統合) |     
 
 ## <a name="saas-list"></a>SaaS のリスト

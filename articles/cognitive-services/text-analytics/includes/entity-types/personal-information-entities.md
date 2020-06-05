@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57be24142a8504347f420e5780e9621cd2eac91d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77086910"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778232"
 ---
 ## <a name="personal-information-entity-types"></a>個人情報のエンティティ型:
 
@@ -164,9 +164,9 @@ ms.locfileid: "77086910"
 | クレジット カード                | クレジット カード番号。                                                       |
 | IBAN コード                  | 支払指示情報の IBAN コード。                            |
 
-#### <a name="government-and-country-specific-identification"></a>政府および国に固有の ID
+#### <a name="government-and-countryregion-specific-identification"></a>政府機関と国または地域固有の識別情報
 
-以下のエンティティがグループ化され、国別に表示されます。
+以下のエンティティがグループ化され、国または地域別に表示されます。
 
 アルゼンチン
 * 国民識別 (DNI) 番号
