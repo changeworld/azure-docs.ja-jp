@@ -142,6 +142,8 @@
           href: howto-connection-string.md
         - name: SSL の構成
           href: howto-configure-ssl.md
+        - name: TLS の構成
+          href: howto-tls-configurations.md
     - name: サーバー パラメーターの構成
       items:
         - name: Azure portal

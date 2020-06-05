@@ -1,15 +1,15 @@
 ---
 title: よく寄せられる質問 (FAQ) - LUIS
 description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592850"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343542"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -333,4 +333,4 @@ Build 2019 Conference では、次の機能が公開されました。
 
 LUIS の詳細については、次のリソースを参照してください。
 * [LUIS のタグが付いた Stack Overflow での質問](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN Language Understanding Intelligent Services (LUIS) フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [MSDN Language Understanding Intelligent Services (LUIS) の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

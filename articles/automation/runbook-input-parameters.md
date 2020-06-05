@@ -1,25 +1,20 @@
 ---
-title: Runbook の入力パラメーター
-description: Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。
+title: Azure Automation における Runbook の入力パラメーターを構成する
+description: Runbook には、その開始時に、入力パラメーターを通じてデータを渡すことができます。この記事では、Runbook の入力パラメーターを構成する方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3741adbab6bcbc68f266c331e3056013afc0105e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656027"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830040"
 ---
-# <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
+# <a name="configure-runbook-input-parameters"></a>Runbook の入力パラメーターを構成する
 
 Runbook の入力パラメーターを使用すると、開始時にデータを渡すことができるため、Runbook の柔軟性が向上します。 これらのパラメーターにより、Runbook アクションの対象を特定のシナリオや環境に設定できます。 この記事では、Runbook での入力パラメーターの構成と使用について説明します。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
-
-## <a name="configuring-input-parameters"></a>入力パラメーターの構成
 
 PowerShell、PowerShell Workflow、グラフィカル、および Python の Runbook の入力パラメーターを構成できます。 Runbook にはデータ型の異なる複数のパラメーターを指定することも、パラメーターをまったく指定しないこともできます。 入力パラメーターには必須と任意があります。任意のパラメーターには既定値を使用できます。
 
@@ -119,7 +114,7 @@ PowerShell、PowerShell Workflow、およびグラフィカル Runbook とは異
 
 Python Runbook で入力パラメーターを使用する方法の例は、「[My first Python runbook in Azure Automation (初めての Azure Automation の Python Runbook)](automation-first-runbook-textual-python2.md)」をご覧ください。
 
-## <a name="assigning-values-to-input-parameters-in-runbooks"></a>Runbook の入力パラメーターへの値の割り当て
+## <a name="assign-values-to-input-parameters-in-runbooks"></a>Runbook の入力パラメーターに値を割り当てる
 
 このセクションでは、Runbook の入力パラメーターに値を渡すいくつかの方法について説明します。 次の場合にパラメーター値を割り当てることができます。
 
@@ -274,7 +269,7 @@ Webhook を使用して Runbook を実行すると、定義済みの入力パラ
 
 ![WebhookData parameter](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 
-## <a name="passing-a-json-object-to-a-runbook"></a>Runbook に JSON オブジェクトを渡す
+## <a name="pass-a-json-object-to-a-runbook"></a>Runbook に JSON オブジェクトを渡す
 
 Runbook に渡すデータを JSON ファイルに格納すると便利な場合があります。 たとえば、Runbook に渡すすべてのパラメーターを含む JSON ファイルを作成できます。 これを行うには、JSON コードを文字列に変換し、その文字列を PowerShell オブジェクトに変換してから、それを Runbook に渡す必要があります。
 
@@ -362,6 +357,5 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
 
 ## <a name="next-steps"></a>次のステップ
 
-* Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
-* テキスト Runbook を編集する方法については、「 [テキスト Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
-* グラフィカル Runbook を編集する方法については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
+* テキスト形式の Runbook の準備については、「[Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
+* グラフィカル Runbook の準備については、[Azure Automation でのグラフィカル Runbook の作成](automation-graphical-authoring-intro.md)に関する記事を参照してください。

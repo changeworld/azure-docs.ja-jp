@@ -190,6 +190,8 @@
           href: howto-connection-string.md
         - name: SSL の構成
           href: howto-configure-ssl.md
+        - name: TLS の構成
+          href: howto-tls-configurations.md
         - name: Web Apps
           href: howto-connect-webapp.md
         - name: リダイレクトによる接続

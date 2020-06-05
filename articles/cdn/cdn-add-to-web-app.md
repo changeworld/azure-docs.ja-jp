@@ -22,9 +22,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254616"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル: Azure App Service Web アプリへの Azure CDN の追加
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
 
-このチュートリアルでは、[Azure App Service 内の Web アプリ](cdn-overview.md)に [Azure Content Delivery Network (CDN)](../app-service/overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
+このチュートリアルでは、[Azure App Service 内の Web アプリ](../app-service/overview.md)に [Azure Content Delivery Network (CDN)](cdn-overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
 
 以下に示したのは、これから扱うサンプルの静的 HTML サイトのホーム ページです。
 
@@ -75,7 +75,7 @@ ms.locfileid: "81254616"
 | 設定 | 推奨値 | 説明 |
 | ------- | --------------- | ----------- |
 | **[CDN プロファイル]** | myCDNProfile | CDN プロファイルは、同じ価格レベルの CDN エンドポイントをまとめたものです。 |
-| **[価格レベル]** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](cdn-features.md)によって規定されます。 このチュートリアルでは *Standard Akamai* を使用します。 |
+| **価格レベル** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](cdn-features.md)によって規定されます。 このチュートリアルでは *Standard Akamai* を使用します。 |
 | **[CDN エンドポイント名]** | azureedge.net ドメイン内で一意となる任意の名前 | キャッシュされたリソースには、 *&lt;エンドポイント名&gt;* .azureedge.net ドメインでアクセスします。
 
 CDN プロファイルを作成するには、 **[作成]** を選択します。
@@ -268,6 +268,6 @@ http://<endpointname>.azureedge.net/index.html?q=1
 次の各記事に、CDN のパフォーマンスを最適化する方法が紹介されています。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
+> [チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
 
 

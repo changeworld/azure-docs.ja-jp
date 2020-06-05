@@ -42,9 +42,9 @@ ms.locfileid: "82609784"
 - [Git](https://git-scm.com/) のインストール。
 - [Python 3](https://www.python.org/downloads/) をインストールします。
 
-## <a name="clone-the-sample-app"></a>サンプル アプリのクローン
+## <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
-ターミナル ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリをクローンし、リポジトリのルートに変更します。
+ターミナル ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリを複製し、リポジトリのルートに変更します。
 
 ```
 git clone https://github.com/Azure-Samples/djangoapp

@@ -73,7 +73,7 @@
           displayName: 'name, naming, file name, upload, output, download'
     - name: ファイルの処理
       items:
-        - name: Transform と Job
+        - name: 変換およびジョブ
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
     - name: コンテンツのエンコード
@@ -93,13 +93,13 @@
         - name: 概要
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Transform と Job
+        - name: 変換およびジョブ
           href: transforms-jobs-concept.md
     - name: ライブ ストリーミング
       items:
         - name: 概要
           href: live-streaming-overview.md
-        - name: ライブ イベントとライブ出力
+        - name: ライブ イベントとライブ ストリーミング
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: テスト済みのオンプレミス ライブ エンコーダー
@@ -376,6 +376,10 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.media/allversions
+    - name: Standard Encoder のスキーマ
+      items:
+        - name: 出力メタデータ
+          href: output-metadata-schema.md
 - name: リソース
   items:
     - name: Azure Media Services コミュニティ

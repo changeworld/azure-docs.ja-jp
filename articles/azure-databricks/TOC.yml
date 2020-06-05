@@ -1188,6 +1188,8 @@
             - name: ユーザー定義ルートの設定
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL IP アドレス
+              href: mysql-ip-address.md
     - name: トラブルシューティング
       items:
         - name: 一般的な質問

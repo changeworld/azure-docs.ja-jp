@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833933"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020882"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 
@@ -41,7 +41,7 @@ ms.locfileid: "83833933"
 * 考えられる移行方法。
 * 既存の Always On 実装の移行の Azure、Windows、および SQL Server の詳細な手順を示す例。
 
-Azure Virtual Machines での SQL Server についての背景情報については、[Azure Virtual Machines での SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)に関する記事をご覧ください。
+Azure Virtual Machines での SQL Server についての背景情報については、[Azure Virtual Machines での SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)に関する記事をご覧ください。
 
 **執筆者:** Daniel Sol **技術校閲者:** Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz.
 
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>手順 2:リソースに対して許可するエラーを増やす \<省略可能>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>手順 2:リソースに対して許可するエラーを増やす \<Optional>
 
 Always On 可用性グループに属する特定のリソースでは、クラスター サービスがリソース グループの再起動を試みる前に一定期間中に発生できるエラー数に制限があります。 手動によるフェールオーバーおよびマシンのシャットダウンによるフェールオーバーのトリガーを行わない場合はこの制限に近づくことがあるので、この手順を実行する間は制限を大きくすることをお勧めします。
 
@@ -691,7 +691,7 @@ Always On 可用性グループに属する特定のリソースでは、クラ�
 
 最大エラー数 6 に変更します。
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>手順 3:クラスター グループに IP アドレス リソースを追加する \<省略可能>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>手順 3:クラスター グループに IP アドレス リソースを追加する \<Optional>
 
 クラスター グループの IP アドレスが 1 つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。 そのような場合には、他のクラスター リソースに対する更新ができなくなります。
 
@@ -1250,7 +1250,7 @@ IP アドレスの追加については、「付録」の手順 14 を参照し�
 
 * [Azure Premium Storage](../disks-types.md)
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
-* [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [Azure Virtual Machines における SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

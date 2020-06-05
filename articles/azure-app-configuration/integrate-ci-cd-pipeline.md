@@ -48,7 +48,7 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. *Program.cs* を開き、`CreateWebHostBuilder` メソッドを呼び出して、エクスポートされた JSON ファイルを使用するように `config.AddJsonFile()` メソッドを更新します。  `System.Reflection` 名前空間も追加してください。
+1. *Program.cs* を開き、`config.AddJsonFile()` メソッドを呼び出して、エクスポートされた JSON ファイルを使用するように `CreateWebHostBuilder` メソッドを更新します。  `System.Reflection` 名前空間も追加してください。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

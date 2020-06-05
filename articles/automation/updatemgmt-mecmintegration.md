@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836313"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013199"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Windows Endpoint Configuration Manager と Update Management を統合する
 
@@ -38,7 +38,7 @@ Windows Endpoint Configuration Manager から更新プログラムの展開を�
 1. Azure Automation で **[Update Management]** を選択します。 「[更新プログラムの展開の作成](automation-tutorial-update-management.md#schedule-an-update-deployment)」で説明されている手順に従って新しい展開を作成し、 **[種類]** ドロップダウンから **[Imported groups]\(インポートされたグループ\)** を選択して適切な Windows Endpoint Configuration Manager コレクションを選択します。 以下の重要な点に注意してください。a. 選択した Windows Endpoint Configuration Manager デバイス コレクションにメンテナンス期間が定義されている場合、コレクションのメンバーは、スケジュールされた展開で定義されている **[期間]** 設定ではなくこの設定を使用します。
     b. ターゲット コレクションのメンバーは、(直接、プロキシ サーバー経由、または Log Analytics ゲートウェイ経由で) インターネットに接続できる必要があります。
 
-Azure Automation を介した更新プログラムのデプロイが完了した後、選択したコンピューター グループのメンバーであるターゲット コンピューターによって、スケジュールされた時刻にローカル クライアント キャッシュから更新プログラムがインストールされます。 [更新プログラムのデプロイ ステータスを表示](automation-tutorial-update-management.md#view-results-of-an-update-deployment)して、デプロイの結果を監視できます。
+Azure Automation を介した更新プログラムのデプロイが完了した後、選択したコンピューター グループのメンバーであるターゲット コンピューターによって、スケジュールされた時刻にローカル クライアント キャッシュから更新プログラムがインストールされます。 [更新プログラムのデプロイ ステータスを表示](automation-tutorial-update-management.md#check-deployment-status)して、デプロイの結果を監視できます。
 
 ## <a name="manage-software-updates-from-azure-automation"></a>Azure Automation からのソフトウェア更新プログラムの管理
 

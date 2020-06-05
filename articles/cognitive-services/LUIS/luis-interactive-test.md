@@ -1,14 +1,14 @@
 ---
 title: LUIS ポータルでアプリをテストする
 description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
-ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.topic: how-to
+ms.date: 05/20/2020
+ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591864"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344154"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 
@@ -42,33 +42,36 @@ ms.locfileid: "83591864"
 
 1. 発話とその最上位の意図、およびスコアが、テキスト ボックスの下の発話の一覧に追加されています。
 
-    ![対話型テストによる間違った意図の特定](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![対話型テストによる間違った意図の特定](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>スコアの検査
+## <a name="inspect-the-prediction"></a>予測の検査
 
 テスト結果の詳細は、 **[検査]** パネルで調べることができます。
 
 1. スライド式の **[Test]\(テスト\)** パネルを開いた状態で、比較する発話の **[検査]** を選択します。
 
-    ![テスト結果の詳細を確認するには、[検査] ボタンを選択します。](./media/luis-how-to-interactive-test/inspect.png)
+    > [!div class="mx-imgBorder"]
+    > ![テスト結果の詳細を確認するには、[検査] ボタンを選択します](./media/luis-how-to-interactive-test/inspect.png)
 
-1. **[検査]** パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
+1. **[検査]** パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の予測が表示されます。
 
-    ![このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。](./media/luis-how-to-interactive-test/inspect-panel.png)
+    > [!div class="mx-imgBorder"]
+    > ![[テスト] パネルと [検査] パネルの一部のスクリーンショット](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-## <a name="correct-top-scoring-intent"></a>上位スコアの意図の修正
+## <a name="add-to-example-utterances"></a>発話の例に追加する
 
-1. 上部スコアの意図が間違っている場合は、 **[編集]** をクリックします。
+[検査] パネルで、 **[Add to example utterances]\(発話の例に追加する\)** を選択して、テスト発話を意図に追加できます。
 
-1.  ドロップダウン リストで、発話の正しい意図を選択します。
+## <a name="disable-required-features"></a>必須の機能を無効にする
 
-    ![正しい意図の選択](./media/luis-how-to-interactive-test/intent-select.png)
+この切り替えをオンにすると、エンティティの機能が必須でなかった場合の予測の内容が表示されます。
+
+この切り替えは、トレーニング済みアプリが必須の機能に基づいてエンティティを正しく予測しているかどうかを判断するのに役立ちます。 トレーニング済みアプリは、発話例のラベル付けが正しくないこと、または必須の機能がテキストと一致しないことのいずれかに基づいて、機械学習エンティティの予測に失敗することがあります。
 
 ## <a name="view-sentiment-results"></a>センチメント結果の表示
 
 **[[Publish]\(公開\)](luis-how-to-publish-app.md#enable-sentiment-analysis)** ページで**感情分析**が構成されている場合、テスト結果には、発話で見つかったセンチメントが含まれます。
-
-![感情分析を含む [Test]\(テスト\) ウィンドウの画像](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>一致したパターンの意図の修正
 
@@ -78,12 +81,14 @@ ms.locfileid: "83591864"
 
 公開された[エンドポイント](luis-glossary.md#endpoint) バージョンでアプリのアクティブなバージョンをテストできます。 **[検査]** パネルで、 **[Compare with published]\(公開済みのものと比較\)** を選択します。 公開されたモデルに対するテストは、お使いの Azure サブスクリプションのクォータ残量から差し引かれます。
 
-![公開済みとの比較](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![公開済みとの比較](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>テスト パネルでのエンドポイント JSON の表示
 比較のために返されたエンドポイント JSON を表示するには、 **[Show JSON view]\(JSON ビューの表示\)** を選択します。
 
-![公開された JSON 応答](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![公開された JSON 応答](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 ## <a name="additional-settings-in-test-panel"></a>テスト パネルでの追加設定
 

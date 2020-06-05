@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4063751a71cd9cecc424dfe3daddaecfd9ea4071
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422011"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317418"
 ---
 スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
@@ -35,7 +35,7 @@ VM は、容量または設定した最大価格に基づいて削除できま�
 | VM の価格が上がり、現在価格が > 最大価格になりました。 | VM が削除されます。 実際に削除する前に、30 秒前通知を受け取ります。 | 
 | 削除した後、VM の料金が < 最大価格に戻ります。 | VM は自動的に再起動されません。 自分で VM を再起動することができ、現在の価格で課金されます。 |
 | 最大価格が `-1` に設定されている場合 | VM は価格の理由で削除されません。 最大価格は、Standard VM の価格を上限にした現在の価格になります。 標準価格を超えて課金されることはありません。| 
-| 最大価格を変更する | 最大価格を変更するには、VM の割り当てを解除する必要があります。 VM の割り当てを解除し、新しい最大価格を設定してから、VM を更新します。 |
+| 最大価格を変更する | 最大価格を変更するには、VM の割り当てを解除する必要があります。 VM の割り当てを解除し、新しい最大価格を設定して、VM を更新します。 |
 
 ## <a name="limitations"></a>制限事項
 
@@ -90,7 +90,7 @@ VM は、容量または設定した最大価格に基づいて削除できま�
 | クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Microsoft 顧客契約 | はい                               |
 | メリット                     | 使用不可                     |
-| スポンサー                    | 使用不可                     |
+| スポンサー                    | はい                               |
 | 無料試用版                   | 使用不可                     |
 
 

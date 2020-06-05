@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660084"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015830"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Synapse ワークスペース (プレビュー) のセキュリティ保護
 
@@ -130,7 +130,7 @@ Synapse ワークスペースでは、パイプラインを実行してシステ
 
 ## <a name="step-8-network-security"></a>手順 8:ネットワークのセキュリティ
 
-ワークスペース ファイアウォール、仮想ネットワーク、および [Private Link](../../sql-database/sql-database-private-endpoint-overview.md) を構成します。
+ワークスペース ファイアウォール、仮想ネットワーク、および [Private Link](../../azure-sql/database/private-endpoint-overview.md) を構成します。
 
 ## <a name="step-9-completion"></a>手順 9:Completion
 

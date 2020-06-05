@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: 復元
           items:
+            - name: Azure VM の復元について
+              href: about-azure-vm-restore.md
             - name: ポータルで Azure VM を復元する
               href: backup-azure-arm-restore-vms.md
             - name: Azure VM のバックアップからのファイルの回復
