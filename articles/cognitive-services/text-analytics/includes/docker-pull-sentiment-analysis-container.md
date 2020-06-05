@@ -36,7 +36,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en
 | 簡体中国語 | `zh` |
 | 繁体中国語 | `zht` |
 | 日本語 | `ja` |
-| Portuguese | `pt` |
+| ポルトガル語 | `pt` |
 | オランダ語 | `nl` |
 
 Text Analytics コンテナーで使用可能なタグの詳しい説明については、[Docker Hub](https://go.microsoft.com/fwlink/?linkid=2018654) に関する記事を参照してください。
