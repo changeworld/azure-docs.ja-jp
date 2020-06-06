@@ -38,6 +38,10 @@
       href: hpc-cache-manage.md
     - name: オプション設定を構成する
       href: configuration.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: リソース
   items:
     - name: サポート チケットを開く
