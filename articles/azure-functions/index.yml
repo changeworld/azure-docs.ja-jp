@@ -40,15 +40,15 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 最初の関数の作成 (C#)
+    - text: はじめての Functions の作成 (C#)
       url: functions-create-your-first-function-visual-studio.md
-    - text: 最初の関数の作成 (Java)
+    - text: はじめての Functions の作成 (Java)
       url: functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java
-    - text: 最初の関数の作成 (JavaScript)
+    - text: はじめての Functions の作成 (JavaScript)
       url: functions-create-first-function-vs-code.md?pivots=programming-language-javascript
-    - text: 最初の関数の作成 (PowerShell)
+    - text: はじめての Functions の作成 (PowerShell)
       url: functions-create-first-function-vs-code.md?pivots=programming-language-powershell
-    - text: 最初の関数の作成 (Python)
+    - text: はじめての Functions の作成 (Python)
       url: functions-create-first-function-vs-code.md?pivots=programming-language-python
   - linkListType: learn
     links:
@@ -58,7 +58,7 @@ landingContent:
     links:
     - text: 開始方法の確認
       url: https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/
-- title: 関数を開発する
+- title: Functions を開発する
   linkLists:
   - linkListType: concept
     links:
@@ -70,15 +70,15 @@ landingContent:
     links:
     - text: ローカル開発
       url: functions-develop-local.md
-    - text: テスト関数
+    - text: テスト Functions
       url: functions-test-a-function.md
     - text: エラー処理
       url: functions-bindings-error-pages.md
   - linkListType: learn
     links:
-    - text: Visual Studio を使用して関数を開発する
+    - text: Visual Studio を使用して Functions を開発する
       url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
-    - text: コマンド ラインから関数を開発する
+    - text: コマンド ラインから Functions を開発する
       url: /learn/modules/develop-test-deploy-azure-functions-with-core-tools/index
   - linkListType: video
     links:
@@ -100,11 +100,11 @@ landingContent:
       url: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - linkListType: learn
     links:
-    - text: バインドによる関数の連鎖
+    - text: バインドによる Functions の連鎖
       url: /learn/modules/chain-azure-functions-data-using-bindings/index
     - text: GitHub Webhook への接続
       url: /learn/modules/monitor-github-events-with-a-function-triggered-by-a-webhook/index
-- title: 関数のデプロイ
+- title: Functions のデプロイ
   linkLists:
   - linkListType: deploy
     links:
@@ -126,7 +126,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 関数の監視
+    - text: Functions の監視
       url: functions-monitoring.md
     - text: パフォーマンスを最適化する
       url: functions-best-practices.md
@@ -136,7 +136,7 @@ landingContent:
     links:
     - text: トラブルシューティング
       url: functions-recover-storage-account.md
-- title: 実行時間の長い関数
+- title: 実行時間の長い Functions
   linkLists:
   - linkListType: overview
     links:
