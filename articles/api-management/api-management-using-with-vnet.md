@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: apimpm
-ms.openlocfilehash: 92473dc7553286867a33100d7328dd0320d55823
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: references_regions
+ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799927"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300076"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -265,7 +266,7 @@ IP アドレスは **Azure 環境**ごとに分かれています。 受信要�
 | Azure Government| USDoD 東部| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>関連コンテンツ
-* [VPN Gateway を使用して Virtual Network をバックエンドに接続する](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [VPN Gateway を使用して Virtual Network をバックエンドに接続する](../vpn-gateway/design.md#s2smulti)
 * [異なるデプロイ モデルの Virtual Network を PowerShell を使用して接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Azure API Management で API Inspector を使用して呼び出しをトレースする方法](api-management-howto-api-inspector.md)
 * [Virtual Network についてよく寄せられる質問](../virtual-network/virtual-networks-faq.md)

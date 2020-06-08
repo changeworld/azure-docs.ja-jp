@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79efe3cef82a166ca6b56dea5cb07f15a5325083
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60640380"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650329"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>動的 DNS を使用して独自の DNS サーバーでホスト名を登録する
 
@@ -61,7 +61,7 @@ then
 fi
 ```
 
-`nsupdate` コマンドを利用し、セキュリティ保護された DDNS 更新を実行することもできます。 たとえば、Bind DNS サーバーを利用するとき、公開鍵/秘密鍵のペアが [生成されます](http://linux.yyz.us/nsupdate/)。 要求の署名を検証できるように、DNS サーバーは鍵の公開部分で[構成されます](http://linux.yyz.us/dns/ddns-server.html)。 キー ペアを `nsupdate` に提供するには、署名対象の DDNS 更新要求に対して `-k` オプションを使います。
+`nsupdate` コマンドを利用し、セキュリティ保護された DDNS 更新を実行することもできます。 たとえば、Bind DNS サーバーを利用するとき、公開鍵/秘密鍵のペアが生成されます (`http://linux.yyz.us/nsupdate/`)。 要求の署名を検証できるように、DNS サーバーは鍵の公開部分で構成されます (`http://linux.yyz.us/dns/ddns-server.html`)。 キー ペアを `nsupdate` に提供するには、署名対象の DDNS 更新要求に対して `-k` オプションを使います。
 
 Windows DNS サーバーを利用しているときは、`nsupdate` の `-g` パラメーターで Kerberos 認証を使用できますが、Windows 版の `nsupdate` では利用できません。 Kerberos を使用するには、`kinit` を使って資格情報を読み込んでください。 たとえば、[keytab ファイル](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)から資格情報を読み込むことができ、その後 `nsupdate -g` はキャッシュから資格情報を取得します。
 

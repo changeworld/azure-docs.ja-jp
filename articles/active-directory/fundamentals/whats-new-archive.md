@@ -2,23 +2,23 @@
 title: Azure Active Directory の新着情報のアーカイブ | Microsoft Docs
 description: このコンテンツ セットの概要セクションにある新着情報リリース ノートには、6 か月間のアクティビティが含まれています。 6 か月後、項目はメイン記事から削除され、このアーカイブ記事に配置されます。
 services: active-directory
-author: msmimart
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: mimart
+ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56acddfd534ab640d4ea7ac54db6c11d98e680da
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b8fa352d81a6df70634c00978a3db155d5fb0d7e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680249"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216996"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -31,6 +31,194 @@ Azure Active Directory の新着情報のリリース ノートでは、次の�
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+---
+
+## <a name="november-2019"></a>2019 年 11 月
+
+### <a name="support-for-the-samesite-attribute-and-chrome-80"></a>SameSite 属性と Chrome 80 のサポート
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+Cookie の "既定でセキュリティ保護" モデルの一環として、Chrome 80 ブラウザーでは、`SameSite` 属性を使用せずに Cookie を扱う方法の変更が進められています。 `SameSite` 属性を指定しない Cookie は、この属性が `SameSite=Lax` に設定されたものとして扱われるようになります。これにより、アプリが依存している可能性がある一部のクロスドメイン Cookie 共有シナリオが Chrome でブロックされるようになります。 従来の Chrome の動作を維持するために、HTTPS 接続でしかクロスサイト Cookie にアクセスできないよう、`SameSite=None` 属性を使用し、さらに `Secure` 属性を追加することができます。 Chrome は 2020 年 2 月 4 日までにこの変更を完了する予定です。
+
+すべての開発者が、次のガイダンスを参考にしてアプリをテストすることを推奨します。
+
+- **[セキュリティで保護された Cookie を使用します]** 設定の既定値を **[はい]** に設定します。
+
+- **SameSite** 属性の既定値を **None** に設定します。
+
+- **Secure** の `SameSite` 属性を追加します。
+
+詳細については、[ASP.NET と ASP.NET Core で予定されている SameSite Cookie の変更](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)および [Chrome バージョン 79 以降で顧客 Web サイトおよび Microsoft の製品とサービスが中断される可能性](https://support.microsoft.com/help/4522904/potential-disruption-to-microsoft-services-in-chrome-beta-version-79)に関する記事を参照してください。
+
+---
+
+### <a name="new-hotfix-for-microsoft-identity-manager-mim-2016-service-pack-2-sp2"></a>Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) の新しい修正プログラム
+
+**種類:** 固定  
+**サービス カテゴリ:** Microsoft Identity Manager  
+**製品の機能:** ID ライフサイクル管理
+
+Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) の修正プログラム ロールアップ パッケージ (ビルド 4.6.34.0) の提供が開始されました。 このロールアップ パッケージは、「この更新プログラムで修正された問題と追加された機能強化」で説明されているように、問題を解決し、機能強化を追加します。
+
+修正プログラム パッケージの詳細およびダウンロード方法については、[Microsoft Identity Manager 2016 Service Pack 2 (ビルド 4.6.34.0) 更新プログラムのロールアップの提供開始](https://support.microsoft.com/help/4512924/microsoft-identity-manager-2016-service-pack-2-build-4-6-34-0-update-r)に関する記事を参照してください。
+
+---
+
+### <a name="new-ad-fs-app-activity-report-to-help-migrate-apps-to-azure-ad-public-preview"></a>Azure AD へのアプリの移行に役立つ新しい AD FS アプリ アクティビティ レポート (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** SSO
+
+Azure portal で、新しい Active Directory フェデレーション サービス (AD FS) アプリ アクティビティ レポートを使用して、どのアプリが Azure AD に移行できるかを特定します。 このレポートは、Azure AD との互換性に関してすべての AD FS アプリを評価し、問題がないかどうか確認し、個々のアプリの移行の準備に関してガイダンスを提供します。
+
+詳細については、「[AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity)」を参照してください。
+
+---
+
+### <a name="new-workflow-for-users-to-request-administrator-consent-public-preview"></a>ユーザーが管理者の同意を要求するための新しいワークフロー (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** アクセス制御
+
+新しい管理者の同意ワークフローによって、管理者は、管理者の承認を必要とするアプリへのアクセス権を付与することができます。 ユーザーがアプリにアクセスしようとしているものの同意ができない場合に、ユーザーは管理者の承認の要求を送信できるようになりました。 要求は、レビュー担当者として指定されているすべての管理者宛てに電子メールで送信され、Azure portal からアクセスできるキューに配置されます。 保留中の要求に対してレビュー担当者がアクションを実行すると、要求元のユーザーにアクションが通知されます。
+
+詳細については、「[管理者の同意ワークフローの構成 (プレビュー)](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)」を参照してください。
+
+---
+
+### <a name="new-azure-ad-app-registrations-token-configuration-experience-for-managing-optional-claims-public-preview"></a>オプションの要求を管理するための新しい Azure AD アプリ登録トークンの構成エクスペリエンス (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** 開発者エクスペリエンス
+
+Azure portal の新しい **[Azure AD App Registrations Token configuration]\(Azure AD アプリ登録トークンの構成\)** ブレードには、アプリのオプション要求の動的な一覧がアプリ開発者に表示されます。 この新しいエクスペリエンスにより、Azure AD アプリの移行を効率化し、オプションの要求の構成ミスを最小限に抑えることができます。
+
+詳細については、「[Azure AD アプリに省略可能な要求を提供する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)」を参照してください。
+
+---
+
+### <a name="new-two-stage-approval-workflow-in-azure-ad-entitlement-management-public-preview"></a>Azure AD エンタイトルメント管理の新しい 2 段階承認ワークフロー (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** エンタイトルメント管理
+
+新しく導入された 2 段階の承認ワークフローでは、アクセス パッケージへのユーザーの要求を 2 人の承認者が承認することを義務付けることができます。 たとえば、要求元ユーザーの上司が最初の承認を与える必要があるように設定し、その後、リソース所有者にも承認を求めることができます。 いずれかの承認者が承認しない場合、アクセス権は付与されません。
+
+詳細については、「[Azure AD エンタイトルメント管理でアクセス パッケージの要求と承認の設定を変更する](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-request-policy)」を参照してください。
+
+---
+
+### <a name="updates-to-the-my-apps-page-along-with-new-workspaces-public-preview"></a>[マイ アプリ] ページと新しいワークスペースに対する更新 (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** マイ アプリ  
+**製品の機能:** サード パーティ統合
+
+組織のユーザーによる、更新された [マイ アプリ] エクスペリエンスの表示とアクセスの方法をカスタマイズできるようになりました。 この新しいエクスペリエンスには、ユーザーがアプリを簡単に見つけて整理できるようにする新しいワークスペース機能も含まれています。
+
+新しい [マイ アプリ] エクスペリエンスとワークスペースの作成の詳細については、「[マイ アプリ (プレビュー) ポータルでワークスペースを作成する](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)」を参照してください。
+
+---
+
+### <a name="google-social-id-support-for-azure-ad-b2b-collaboration-general-availability"></a>Azure AD B2B コラボレーションの Google ソーシャル ID サポート (一般提供)
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** ユーザー認証
+
+Azure AD で Google ソーシャル ID (Gmail アカウント) を使用するための新しいサポートにより、ユーザーとパートナーのコラボレーションがより簡単になります。 パートナーが新しい Microsoft 固有のアカウントを作成および管理する必要がなくなりました。 Microsoft Teams は、すべてのクライアントで、また、一般的な認証エンドポイントとテナント関連の認証エンドポイントにまたがって Google ユーザーを完全にサポートするようになりました。
+
+詳細については、「[Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)」を参照してください。
+
+---
+
+### <a name="microsoft-edge-mobile-support-for-conditional-access-and-single-sign-on-general-availability"></a>Microsoft Edge Mobile での条件付きアクセスとシングル サインオンのサポート (一般提供)
+
+**種類:** 新機能  
+**サービス カテゴリ:** 条件付きアクセス  
+**製品の機能:** ID のセキュリティ & 保護
+
+iOS および Android 版 Microsoft Edge 向けの Azure AD で、Azure AD シングル サインオンと条件付きアクセスがサポートされるようになりました。
+
+- **Microsoft Edge シングル サインオン (SSO):** Azure AD で接続されるすべてのアプリのネイティブ クライアント (Microsoft Outlook や Microsoft Edge など) を横断して、シングル サインオンが利用できるようになりました。
+
+- **Microsoft Edge 条件付きアクセス:** アプリケーション ベースの条件付きアクセス ポリシーでは、ユーザーは Microsoft Edge などの Microsoft Intune で保護されたブラウザーを使用する必要があります。
+
+Microsoft Edge での条件付きアクセスと SSO の詳細については、[Microsoft Edge Mobile での条件付きアクセスとシングル サインオンのサポートの一般提供開始](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Microsoft-Edge-Mobile-Support-for-Conditional-Access-and-Single/ba-p/988179)に関するブログ記事を参照してください。 [アプリ ベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)または[デバイス ベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)を使用してクライアント アプリを設定する方法については、「[Microsoft Intune のポリシーで保護されたブラウザーを使用して Web アクセスを管理する](https://docs.microsoft.com/intune/apps/app-configuration-managed-browser)」を参照してください。
+
+---
+
+### <a name="azure-ad-entitlement-management-general-availability"></a>Azure AD エンタイトルメント管理 (一般提供)
+
+**種類:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** エンタイトルメント管理
+
+Azure AD のエンタイトルメント管理は、組織で ID とアクセスのライフサイクルを大規模に管理するために役立つ新しい ID ガバナンス機能です。 この新しい機能は、グループ、アプリ、および SharePoint Online サイトにまたがって、アクセス要求ワークフロー、アクセスの割り当て、レビュー、および有効期限を自動化するために役立ちます。
+
+Azure AD エンタイトルメント管理を使用すると、従業員だけでなく、組織外のユーザーがこれらのリソースにアクセスする必要がある場合も、より効率的にアクセスを管理できます。
+
+詳細については、「[Azure AD エンタイトルメント管理とは](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview#license-requirements)」を参照してください。
+
+---
+
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>新しくサポートされた SaaS アプリに対するユーザー アカウントのプロビジョニングを自動化する
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合  
+
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+[SAP Cloud Platform Identity Authentication Service](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial)、[RingCentral](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-provisioning-tutorial)、[SpaceIQ](https://docs.microsoft.com/azure/active-directory/saas-apps/spaceiq-provisioning-tutorial)、[Miro](https://docs.microsoft.com/azure/active-directory/saas-apps/miro-provisioning-tutorial)、[Cloudgate](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-provisioning-tutorial)、[Infor CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloudsuite-provisioning-tutorial)、[OfficeSpace Software](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-software-provisioning-tutorial)、[Priority Matrix](https://docs.microsoft.com/azure/active-directory/saas-apps/priority-matrix-provisioning-tutorial)
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関するページをご覧ください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2019"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2019 年 11 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2019 年 11 月に、フェデレーションを使用した以下の 21 の新規アプリのサポートが、アプリ ギャラリーに追加されました:
+
+[Airtable](https://docs.microsoft.com/azure/active-directory/saas-apps/airtable-tutorial)、[Hootsuite](https://docs.microsoft.com/azure/active-directory/saas-apps/hootsuite-tutorial)、[Blue Access for Members (BAM)](https://docs.microsoft.com/azure/active-directory/saas-apps/blue-access-for-members-tutorial)、[Bitly](https://docs.microsoft.com/azure/active-directory/saas-apps/bitly-tutorial)、[Riva](https://docs.microsoft.com/azure/active-directory/saas-apps/riva-tutorial)、[ResLife Portal](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=)、[NegometrixPortal Single Sign On (SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/negometrixportal-tutorial)、[TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279)、[Motus](https://docs.microsoft.com/azure/active-directory/saas-apps/motus-tutorial)、[MyAryaka](https://docs.microsoft.com/azure/active-directory/saas-apps/myaryaka-tutorial)、[BlueMail](https://loginself1.bluemail.me/)、[Beedle](https://teams-web.beedle.co/#/)、[Visma](https://docs.microsoft.com/azure/active-directory/saas-apps/visma-tutorial)、[OneDesk](https://docs.microsoft.com/azure/active-directory/saas-apps/onedesk-tutorial)、[Foko Retail](https://docs.microsoft.com/azure/active-directory/saas-apps/foko-retail-tutorial)、[Qmarkets Idea & Innovation Management](https://docs.microsoft.com/azure/active-directory/saas-apps/qmarkets-idea-innovation-management-tutorial)、[Netskope User Authentication](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-user-authentication-tutorial)、[uniFLOW Online](https://docs.microsoft.com/azure/active-directory/saas-apps/uniflow-online-tutorial)、[Claromentis](https://docs.microsoft.com/azure/active-directory/saas-apps/claromentis-tutorial)、[Jisc Student Voter Registration](https://docs.microsoft.com/azure/active-directory/saas-apps/jisc-student-voter-registration-tutorial)、[e4enable](https://portal.e4enable.com/)
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+
+### <a name="new-and-improved-azure-ad-application-gallery"></a>改良された新しい Azure AD アプリケーション ギャラリー
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** SSO
+
+Azure AD アプリケーション ギャラリーが更新され、プロビジョニング、OpenID Connect、および SAML を Azure Active Directory テナントでサポートする事前統合アプリを簡単に見つけられるようになりました。
+
+詳細については、「[Azure Active Directory テナントにアプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)」を参照してください。
+
+---
+
+### <a name="increased-app-role-definition-length-limit-from-120-to-240-characters"></a>アプリ ロール定義の長さの上限が 120 文字から 240 文字に増加
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** SSO
+
+一部のアプリやサービスで、アプリ ロール定義値の長さ制限が 120 文字では短すぎるとの意見がお客様から寄せられました。 ご要望に応え、ロール値定義の長さの上限を 240 文字に引き上げました。
+
+アプリケーション固有のロール定義の使用方法については、「[アプリケーションにアプリ ロールを追加してトークンで受け取る](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)」を参照してください。
 
 ---
 

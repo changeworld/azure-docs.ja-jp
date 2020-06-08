@@ -2,19 +2,19 @@
 title: Date_Bucket (Transact-SQL) - Azure SQL Edge (プレビュー)
 description: Azure SQL Edge での Date_Bucket の使用について説明します (プレビュー)
 keywords: Date_Bucket, SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 7cedc19c1b2a19fb26677a9426300d19c5396bd4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682738"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233288"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 

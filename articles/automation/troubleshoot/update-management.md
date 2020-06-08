@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735890"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170258"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -50,7 +50,7 @@ Error details: Failed to enable the Update solution
 
 * [ネットワーク構成](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)に関する記事にアクセスし、Log Analytics エージェントを動作させるために許可する必要があるアドレスとポートを確認してください。
 
-* スコープ構成に問題がないかどうかを確認します。 [スコープの構成](../automation-onboard-solutions-from-automation-account.md#scope-configuration)では、Update Management 用に構成されるマシンが決定されます。 自分のワークスペースで表示されているマシンが Update Management ポータルに表示されていない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 スコープ構成の詳細については、「[ワークスペースでのマシンの有効化](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
+* スコープ構成に問題がないかどうかを確認します。 [スコープの構成](../automation-scope-configurations-update-management.md)では、Update Management 用に構成されるマシンが決定されます。 自分のワークスペースで表示されているマシンが Update Management ポータルに表示されていない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 スコープ構成の詳細については、「[ワークスペースでのマシンの有効化](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
 
 * 「[オンプレミスの Windows コンピューターから Hybrid Runbook Worker を削除する](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)」または「[オンプレミスの Linux コンピューターから Hybrid Runbook Worker を削除する](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)」の手順に従い、worker 構成を削除します。 
 

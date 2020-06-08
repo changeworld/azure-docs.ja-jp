@@ -12,12 +12,12 @@ ms.date: 04/22/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 59f42f7c1fcdfef29becfb4a046753650ae9d14f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 92b3e12cc078326e98df5f42e36fcaddd56bf0c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737556"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993697"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
 
@@ -85,7 +85,6 @@ ms.locfileid: "83737556"
 | `pwd_exp`     | パスワードの有効期限        | パスワードの有効期限が切れる日時。 |       |
 | `pwd_url`     | パスワードの変更 URL             | ユーザーがパスワードを変更するためにアクセスできる URL。   |   |
 | `in_corp`     | 企業ネットワーク内        | クライアントが企業ネットワークからログインしている場合に通知します。 そうでない場合、この要求は含まれません。   |  MFA の[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) の設定に基づきます。    |
-| `nickname`    | ニックネーム                        | ユーザーの追加の名前。 ニックネームは、姓や名とは異なります。 `profile` スコープが必要です。|
 | `family_name` | 姓                       | ユーザー オブジェクトで定義されたユーザーの姓を示します。 <br>"family_name":"Miller" | MSA と Azure AD でサポートされています。 `profile` スコープが必要です。   |
 | `given_name`  | 名                      | ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   | MSA と Azure AD でサポートされています。  `profile` スコープが必要です。 |
 | `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、重要なデータには使用しないでください。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 `profile` スコープが必要です。|

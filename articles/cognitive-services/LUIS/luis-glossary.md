@@ -3,12 +3,12 @@ title: 用語集 - LUIS
 description: 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589671"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681621"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -141,7 +141,7 @@ LUIS 予測エンドポイント URL は、[LUIS アプリ](#application-app)が
 
 サブエンティティは、機械学習エンティティの子エンティティです。
 
-### <a name="non-machine-learned-entity"></a>機械学習されていないエンティティ
+### <a name="non-machine-learning-entity"></a>非機械学習エンティティ
 
 テキストのマッチングを使用してデータを抽出するエンティティ:
 * リスト エンティティ
@@ -199,6 +199,10 @@ LUIS では、エンティティを含む意図の例の発話に含まれる単
 ## <a name="normalized-value"></a>正規化された値
 
 [リスト](#list-entity) エンティティに値を追加します。 これらの各値には、1 つ以上のシノニムのリストを含めることができます。 応答では、正規化された値のみが返されます。
+
+## <a name="overfitting"></a>オーバーフィット
+
+オーバーフィットは、モデルが特定の例に固定されていて、適切に一般化できない場合に発生します。
 
 ## <a name="owner"></a>所有者
 
@@ -260,7 +264,7 @@ LUIS クォータとは、Azure サブスクリプション レベルの制限�
 
 ## <a name="schema"></a>スキーマ
 
-スキーマには、意図とエンティティがサブエンティティと共に含まれています。 スキーマは最初に計画され、その後、長期にわたって反復処理されます。 スキーマには、アプリの設定、特徴、発話の例は含まれていません。 
+スキーマには、意図とエンティティがサブエンティティと共に含まれています。 スキーマは最初に計画され、その後、長期にわたって反復処理されます。 スキーマには、アプリの設定、特徴、発話の例は含まれていません。
 
 ## <a name="sentiment-analysis"></a>感情分析
 感情分析では、[Text Analytics](../text-analytics/overview.md) によって得られる発話の正または負の値が提供されます。

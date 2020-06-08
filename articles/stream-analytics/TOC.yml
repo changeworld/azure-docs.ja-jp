@@ -49,6 +49,10 @@
       href: feature-comparison.md
     - name: ローカルでの開発
       href: develop-locally.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: ジョブの入力の種類
       items:
         - name: 入力の概要

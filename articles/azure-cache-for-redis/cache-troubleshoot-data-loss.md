@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75530903"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699229"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Azure Cache for Redis でのデータ損失のトラブルシューティング
 
@@ -50,11 +50,11 @@ expired_keys:46583
 db0:keys=3450,expires=2,avg_ttl=91861015336
 ```
 
-さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、有効期限が切れたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) を使用してこれらの種類の問題をデバッグする方法については、**Redis キースペースの消失のデバッグ**に関する記事の付録を参照してください。
+さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、有効期限が切れたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や **MONITOR** を使用してこれらの種類の問題をデバッグする方法については、[Redis キースペースの消失のデバッグ](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)に関する記事の付録を参照してください。
 
 ### <a name="key-eviction"></a>キーの強制削除
 
-Azure Cache for Redis には、データを格納するためのメモリ領域が必要です。 必要に応じて、使用可能なメモリを解放するためにキーが消去されます。 **INFO** コマンドの **used_memory** または [used_memory_rss](https://redis.io/commands/info) の値が、構成されている **maxmemory** 設定に近づくと、Azure Cache for Redis は [キャッシュ ポリシー](https://redis.io/topics/lru-cache)に基づいて、メモリからのキーの強制削除を開始します。
+Azure Cache for Redis には、データを格納するためのメモリ領域が必要です。 必要に応じて、使用可能なメモリを解放するためにキーが消去されます。 [INFO](https://redis.io/commands/info) コマンドの **used_memory** または **used_memory_rss** の値が、構成されている **maxmemory** 設定に近づくと、Azure Cache for Redis は [キャッシュ ポリシー](https://redis.io/topics/lru-cache)に基づいて、メモリからのキーの強制削除を開始します。
 
 [INFO](https://redis.io/commands/info) コマンドを使用して、強制削除されたキーの数を監視できます。
 
@@ -64,7 +64,7 @@ Azure Cache for Redis には、データを格納するためのメモリ領域�
 evicted_keys:13224
 ```
 
-さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、強制削除されたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) を使用してこれらの種類の問題をデバッグする方法については、**Redis キースペースの消失のデバッグ**に関する記事の付録を参照してください。
+さらに、キャッシュの診断メトリックを参照して、キーが消失したタイミングと、強制削除されたキーの急増との間に相関関係があるかどうかを確認することもできます。 キースペース通知や **MONITOR** を使用してこれらの種類の問題をデバッグする方法については、[Redis キースペースの消失のデバッグ](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)に関する記事の付録を参照してください。
 
 ### <a name="key-deletion"></a>キーの削除
 
@@ -80,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>非同期レプリケーション
 
-Standard レベルまたは Premium レベルの Azure Cache for Redis インスタンスは、マスター ノードと少なくとも 1 つのレプリカを使用して構成されます。 バックグラウンド プロセスを使用して、データがマスターからレプリカに非同期的にコピーされます。 [redis.io](https://redis.io/topics/replication) Web サイトでは、Redis データ レプリケーションの一般的な動作について説明しています。 クライアントが Redis に頻繁に書き込みを行うシナリオでは、このレプリケーションが瞬時に行われることが保証されているために、部分的なデータ損失が発生する可能性があります。 たとえば、クライアントがキーをマスターに書き込んだ*後*、バックグラウンド プロセスがそのキーをレプリカに送信する*前*にマスターがダウンした場合、キーは、レプリカが新しいマスターとして引き継いだときに消失します。
+Standard レベルまたは Premium レベルの Azure Cache for Redis インスタンスは、マスター ノードと少なくとも 1 つのレプリカを使用して構成されます。 バックグラウンド プロセスを使用して、データがマスターからレプリカに非同期的にコピーされます。 [redis.io](https://redis.io/topics/replication) Web サイトでは、Redis データ レプリケーションの一般的な動作について説明しています。 クライアントが Redis に頻繁に書き込みを行うシナリオでは、このレプリケーションが瞬時に行われることが保証されないため、部分的なデータ損失が発生する可能性があります。 たとえば、クライアントがキーをマスターに書き込んだ*後*、バックグラウンド プロセスがそのキーをレプリカに送信する*前*にマスターがダウンした場合、キーは、レプリカが新しいマスターとして引き継いだときに消失します。
 
 ## <a name="major-or-complete-loss-of-keys"></a>大部分または完全なキーの損失
 

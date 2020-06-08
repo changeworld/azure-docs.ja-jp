@@ -3,12 +3,12 @@ title: ナレッジ ベースの編集 - QnA Maker
 description: QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコンテンツを管理することができます。
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650799"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993577"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>ナレッジベースで QnA ペアを編集する
 
@@ -85,7 +85,7 @@ QnA ペアは、ファイルや URL などのデータソースから追加さ�
 
 ## <a name="delete-a-qna-pair"></a>QnA ペアの削除
 
-QnA を削除するには、QnA 行の右端にある**削除**アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 セットを削除する前に、 **[公開]** ページから KB をエクスポートすることを検討してください。
+QnA を削除するには、QnA 行の右端にある**削除**アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 ペアを削除する前に、 **[パブリッシュ]** ページから KB をエクスポートすることを検討してください。
 
 ![QnA ペアの削除](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -110,7 +110,7 @@ QnA ペアのリンクは、[フォローアップ プロンプト](multiturn-co
 
 ## <a name="add-metadata"></a>メタデータの追加
 
-メタデータのセットを追加するには、最初に **[表示のオプション]** を選択してから、 **[Show metadata]\(メタデータの表示\)** を選択します。 これにより、メタデータの列が表示されます。 次に、 **[+]** 記号を選択して、メタデータのセットを追加します。 このセットは、1 つのキーと 1 つの値で構成されます。
+最初に **[表示オプション]** を選択してから、 **[メタデータの表示]** を選択して、メタデータのペアを追加します。 これにより、メタデータの列が表示されます。 次に、 **+** 記号を選択して、メタデータのペアを追加します。 このペアは、1 つのキーと 1 つの値で構成されます。
 
 ## <a name="save-changes-to-the-qna-pairs"></a>変更を QnA ペアに保存する
 
