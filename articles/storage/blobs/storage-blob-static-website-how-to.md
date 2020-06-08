@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 020c25dfb17f733359e596100cfd24cfa3f68036
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839166"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648552"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -195,21 +195,19 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 ---
 
-## <a name="find-the-website-url-by-using-the-azure-portal"></a>Azure portal を使用して Web サイトの URL を見つける
+<a id="portal-find-url" />
+
+## <a name="find-the-website-url"></a>Web サイトの URL を検索する
 
 Web サイトのパブリック URL を使用して、ブラウザーからお使いのサイトのページを表示できます。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-<a id="portal-find-url" />
 
 ストレージ アカウントの概要ページの横に表示されるウィンドウで、 **[静的な Web サイト]** を選択します。 サイトの URL が、 **[プライマリ エンドポイント]** フィールドに表示されます。
 
 ![Azure Storage 静的 Web サイトのメトリック: メトリック](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-<a id="cli-find-url" />
 
 次のコマンドを使用して、静的な Web サイトのパブリック URL を検索します。
 
@@ -222,8 +220,6 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 * `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-<a id="powershell-find-url" />
 
 次のコマンドを使用して、静的な Web サイトのパブリック URL を検索します。
 

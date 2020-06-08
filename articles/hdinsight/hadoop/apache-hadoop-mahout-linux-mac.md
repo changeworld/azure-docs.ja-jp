@@ -1,35 +1,31 @@
 ---
 title: Azure HDInsight で Apache Mahout を使用してレコメンデーションを生成する
-description: Apache Mahout 機械学習ライブラリを使用して HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。
+description: Apache Mahout 機械学習ライブラリを使用して HDInsight で映画レコメンデーションを生成する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75767638"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656331"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>HDInsight で Apache Mahout と Apache Hadoop を使用して映画のレコメンデーションを生成する (SSH)
-
-[!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
+# <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Azure HDInsight で Apache Mahout を使用してレコメンデーションを生成する
 
 [Apache Mahout](https://mahout.apache.org) 機械学習ライブラリを使用して Azure HDInsight で映画のリコメンデーションを生成する方法について説明します。
 
 Mahout は、Apache Hadoop の[機械学習](https://en.wikipedia.org/wiki/Machine_learning)ライブラリの 1 つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
 
+HDInsight に含まれる Mahout のバージョンについて詳しくは、[HDInsight のバージョンと Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)に関する記事を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
-
-## <a name="apache-mahout-versioning"></a>Apache Mahout のバージョン
-
-HDInsight に含まれる Mahout のバージョンについて詳しくは、[HDInsight のバージョンと Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)に関する記事を参照してください。
 
 ## <a name="understanding-recommendations"></a>レコメンデーションについて
 

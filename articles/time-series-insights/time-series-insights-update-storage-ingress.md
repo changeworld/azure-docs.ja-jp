@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189183"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779176"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -79,6 +79,17 @@ JSON イベントの調整方法、複合型の送信方法、入れ子になっ
 
 * [イングレスとクエリに対して JSON を整形する方法](./time-series-insights-update-how-to-shape-events.md)に関する記事を読み、Json データを最適化して整形する方法と、プレビューでの現在の制限事項について理解します。
 
+* ストリーミング インジェストは、準リアルタイム データおよび最近のデータにのみ使用します。履歴データのストリーミングはサポートされていません。
+
+#### <a name="historical-data-ingestion"></a>履歴データのインジェスト
+
+Azure Time Series Insights プレビューでは、ストリーミング パイプラインを使用した履歴データのインポートは現在サポートされていません。 過去のデータをご使用の環境にインポートする必要がある場合は、次のガイドラインに従ってください。
+
+* ライブ データと履歴データを並行してストリーミングしないでください。 順不同のデータを取り込むと、クエリのパフォーマンスが低下します。
+* 最適なパフォーマンスを得るために、履歴データは時系列で取り込みます。
+* インジェストのスループット率制限以下を維持します。
+* データがウォーム ストアの保持期間よりも古い場合、ウォーム ストアを無効にします。
+
 ### <a name="ingress-scale-and-preview-limitations"></a>イングレス スケールとプレビューの制限事項
 
 Azure Time Series Insights プレビューのイングレスの制限事項について以下で説明します。
@@ -101,7 +112,7 @@ Azure Time Series Insights プレビューのイングレスの制限事項に�
  
 * **例 1:**
 
-    Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらは、4 つのパーティションを持つ Iot Hub を Time Series Insights イベント ソースとして使用しています。
+    Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらは、4 つのパーティションを持つ IoT Hub を Time Series Insights イベント ソースとして使用しています。
 
     * それらの Time Series Insights 環境のインジェスト率は次のようになります。**100,000 デバイス * 200 バイト/イベント * (3/60 イベント/秒) = 1 MBps**。
     * パーティションあたりのインジェスト率は 0.25 MBps です。

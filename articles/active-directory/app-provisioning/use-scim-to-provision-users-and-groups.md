@@ -2,28 +2,23 @@
 title: Azure AD からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを開発する
 description: クロスドメイン ID 管理システム (SCIM) では、自動ユーザー プロビジョニングが標準化されます。 SCIM エンドポイントを開発し、SCIM API を Azure Active Directory と統合して、クラウド アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fbdf947eb36e1591cc9da52a85e389be63c8535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297674"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826657"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を利用し、SCIM エンドポイントを構築し、ユーザー プロビジョニングを構成する
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
 アプリケーション開発者は System for Cross-Domain Identity Management (SCIM) ユーザー管理 API を使用し、アプリケーションと Azure AD の間のユーザーとグループの自動プロビジョニングを有効にできます。 この記事では、SCIM エンドポイントを構築し、Azure AD プロビジョニング サービスと統合する方法について説明します。 SCIM 仕様では、プロビジョニングのための共通のユーザー スキーマが提供されます。 SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用した場合、SCIM では エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
 
@@ -810,7 +805,7 @@ Azure Active Directory からの要求には、OAuth 2.0 のベアラー トー�
 
 トークンでは、発行者は、`"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` のような iss 要求によって識別されます。 この例では、要求値のベース アドレスである `https://sts.windows.net` では発行者である Azure Active Directory を識別し、相対アドレス セグメントである _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ は、トークンの発行対象となった Azure Active Directory テナントの一意識別子になっています。
 
-トークンの対象は、ギャラリー内のアプリケーションのアプリケーション テンプレート ID になります。単一のテナントに登録されている各アプリケーションは、同じ `iss` 要求を SCIM 要求と共に受信する場合があります。 ギャラリー内の各アプリケーションのアプリケーション テンプレート ID はさまざまです。ギャラリー アプリケーションのアプリケーション テンプレート ID に関する質問は、[ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) にお問い合わせください。 すべてのカスタム アプリのアプリケーション テンプレート ID は _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ です。
+トークンの対象は、ギャラリー内のアプリケーションのアプリケーション テンプレート ID になります。単一のテナントに登録されている各アプリケーションは、同じ `iss` 要求を SCIM 要求と共に受信する場合があります。 すべてのカスタム アプリのアプリケーション テンプレート ID は _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ です。 Azure AD プロビジョニング サービスによって生成されたトークンは、テストにのみ使用する必要があります。 運用環境では使用しないでください。
 
 このサンプル コードでは、要求は Microsoft.AspNetCore.Authentication.JwtBearer パッケージを使用して認証されます。 次のコードでは、あらゆるサービスのエンドポイントに対する要求が、指定のテナントに対して Azure Active Directory から発行されたベアラー トークンを使用して認証されるようになります。
 
@@ -1200,8 +1195,8 @@ SCIM 仕様では、SCIM 固有の認証と承認のスキームは定義され�
 [!NOTE] Azure AD プロビジョニング構成のカスタム アプリ UI では、トークン フィールドを空白のままにすることはお勧めしません。 生成されたトークンは、主にテスト目的で使用できます。
 
 **OAuth 承認コード付与フロー:** プロビジョニング サービスでは、[承認コードの付与](https://tools.ietf.org/html/rfc6749#page-24)がサポートされています。 ギャラリーにアプリを発行するための要求を送信した後、私たちのチームは次の情報を収集するためにお客様と協力します。
-*  承認 URL:ユーザー エージェント リダイレクトによってリソース所有者から承認を取得するためのクライアントによる URL。 ユーザーは、アクセスを承認するためにこの URL にリダイレクトされます。 
-*  トークン交換 URL:アクセス トークンの承認付与を交換するためのクライアントによる URL。通常は、クライアント認証を使用します。
+*  承認 URL:ユーザー エージェント リダイレクトによってリソース所有者から承認を取得するためのクライアントによる URL。 ユーザーは、アクセスを承認するためにこの URL にリダイレクトされます。 現在、この URL はテナントごとに構成できないことに注意してください。
+*  トークン交換 URL:アクセス トークンの承認付与を交換するためのクライアントによる URL。通常は、クライアント認証を使用します。 現在、この URL はテナントごとに構成できないことに注意してください。
 *  クライアント ID: 承認サーバーは、登録されたクライアントにクライアント識別子 (クライアントによって提供される登録情報を表す一意の文字列) を発行します。  クライアント識別子はシークレットではありません。これはリソースの所有者に公開されており、クライアント認証に単独で使用**できません**。  
 *  クライアント シークレット:クライアント シークレットは、承認サーバーによって生成されるシークレットです。 これは承認サーバーにのみ認識される一意の値である必要があります。 
 
@@ -1225,10 +1220,6 @@ OAuth v1 は、クライアント シークレットの露出が原因で、サ�
 * **テクニカル ドキュメント。** 顧客がどのように開始できるかに関するヘルプ センターの記事またはテクニカル ドキュメントを作成します。 [例:Envoy と Microsoft Azure Active Directory の統合。](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **顧客とのコミュニケーション。** 顧客とのコミュニケーション (月次のニュースレター、メールによるキャンペーン、製品のリリース ノート) を通じて、新しい統合を顧客に通知します。 
-
-### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Azure AD プロビジョニング サービスで使用される IP アドレスが SCIM 要求を行うことを許可する
-
-特定のアプリでは、アプリへの受信トラフィックが許可されます。 Azure AD プロビジョニング サービスが期待通りに機能するためには、使用する IP アドレスが許可されている必要があります。 各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 これらの IP は、必要に応じて、お使いのファイアウォールにダウンロードしてプログラムすることができます。 Azure AD プロビジョニングの予約済み IP 範囲は、"AzureActiveDirectoryDomainServices" にあります。
 
 ## <a name="related-articles"></a>関連記事
 

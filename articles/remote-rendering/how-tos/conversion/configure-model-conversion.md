@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: eb287b812c477b2e472c48d7bd8f44574a398bac
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679317"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652236"
 ---
 # <a name="configure-the-model-conversion"></a>モデルの変換を構成する
 
@@ -39,6 +39,7 @@ ms.locfileid: "80679317"
         "generateCollisionMesh" : { "type" : "boolean", "default" : true },
         "unlitMaterials" : { "type" : "boolean", "default" : false },
         "fbxAssumeMetallic" : { "type" : "boolean", "default" : true },
+        "deduplicateMaterials" : { "type" : "boolean", "default" : true },
         "axis" : {
             "type" : "array",
             "items" : {
@@ -78,6 +79,10 @@ ms.locfileid: "80679317"
 ### <a name="material-overrides"></a>素材のオーバーライド
 
 * `material-override` - このパラメーターを使用すると、素材の処理を[変換中にカスタマイズする](override-materials.md)ことができます。
+
+### <a name="material-de-duplication"></a>素材の重複除去
+
+* `deduplicateMaterials` - このパラメーターは、同じプロパティとテクスチャを共有する素材の自動重複除去を有効または無効にします。 重複除去は、素材のオーバーライドが処理された後に実行されます。 既定で有効です。
 
 ### <a name="color-space-parameters"></a>色空間のパラメーター
 

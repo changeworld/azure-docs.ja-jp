@@ -1,15 +1,15 @@
 ---
-title: コンピューティング ノードへのアプリケーション パッケージのインストール
+title: コンピューティング ノードへのアプリケーション パッケージのデプロイ
 description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115620"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780308"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -68,7 +68,7 @@ Batch 内のアプリケーションは、1 つ以上のアプリケーション
 [Azure portal][portal] または Batch Management API を使用して、Batch アカウントのアプリケーション パッケージを管理できます。 次のいくつかのセクションでは、まずストレージ アカウントのリンク方法を示してから、アプリケーションとパッケージの追加とポータルを使った管理について説明します。
 
 ### <a name="link-a-storage-account"></a>ストレージ アカウントのリンク
-アプリケーション パッケージを使用するには、最初に [Azure Storage アカウント](batch-api-basics.md#azure-storage-account)を Batch アカウントにリンクする必要があります。 ストレージ アカウントをまだ構成していない場合は、Batch アカウントで初めて **[アプリケーション]** をクリックしたときに、Azure Portal に警告が表示されます。
+アプリケーション パッケージを使用するには、最初に [Azure Storage アカウント](accounts.md#azure-storage-accounts)を Batch アカウントにリンクする必要があります。 ストレージ アカウントをまだ構成していない場合は、Batch アカウントで初めて **[アプリケーション]** をクリックしたときに、Azure Portal に警告が表示されます。
 
 
 
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> コンピューティング ノードの環境設定の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページの「[タスクの環境設定](batch-api-basics.md#environment-settings-for-tasks)」を参照してください。
-> 
-> 
+> コンピューティング ノードの環境設定の詳細については、[タスクの環境設定](jobs-and-tasks.md#environment-settings-for-tasks)に関する記事を参照してください。 
 
 ## <a name="update-a-pools-application-packages"></a>プールに含まれるアプリケーション パッケージの更新
 アプリケーション パッケージで構成済みの既存プールに対して、新しいパッケージを指定することができます。 プールに対して新しいパッケージ参照を指定すると、次のようになります。

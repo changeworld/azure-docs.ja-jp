@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81404262"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684065"
 ---
 # <a name="learn-image-moderation-concepts"></a>画像モデレーションの概念を確認する
 
-Content Moderator のコンピューター支援型画像モデレーションと [ human-in-the-loop (人間参加) レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
+Content Moderator のコンピューター支援型画像モデレーションと[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの評価
 
@@ -147,4 +147,4 @@ Content Moderator は、カスタム画像のリストを管理するための�
 
 ## <a name="next-steps"></a>次のステップ
 
-[画像モデレーション API コンソール](try-image-api.md)を試験運用して、REST API コード サンプルを使用します。 また、Visual Studio と C# に精通している場合は、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)の画像モデレーションのセクションも確認してください。
+[画像モデレーション API コンソール](try-image-api.md)を試験運用して、REST API コード サンプルを使用します。 また、人によるレビューを設定する方法の詳細については、[レビュー、ワークフロー、およびジョブ](./review-api.md)に関する記事を参照してください。

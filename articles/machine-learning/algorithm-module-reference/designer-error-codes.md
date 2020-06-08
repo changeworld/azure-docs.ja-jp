@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684697"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833815"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
 
@@ -712,7 +712,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **解決策:** このエラーは多くの状況によって発生し、特定の解決策はありません。  
  次の表はこのエラーに対する一般的なメッセージであり、後で状況について具体的に説明します。 
 
- 使用可能な詳細情報がない場合は、[フィードバックを送信](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
+ 使用可能な詳細情報がない場合は、[Microsoft Q&A 質問ページでフィードバックを送信](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
 
 |例外メッセージ|
 |------------------------|
@@ -1163,7 +1163,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
 このイベントでのエラー処理は、ビン分割方法のカスタマイズがより広い範囲で可能だった以前のバージョンの Azure Machine Learning で導入されました。 現在は、ビン分割方法はすべてドロップダウン リストでの選択に基づくため、技術的には、このエラーが発生する可能性はありません。
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Azure Machine Learning forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |例外メッセージ|
 |------------------------|

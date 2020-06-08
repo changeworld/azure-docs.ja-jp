@@ -1,21 +1,21 @@
 ---
-title: Azure Monitor for Cosmos DB (プレビュー) で Azure Cosmos DB を監視する | Microsoft Docs
+title: Azure Monitor for Cosmos DB で Azure Cosmos DB を監視する | Microsoft Docs
 description: この記事では、Cosmos DB の所有者が CosmosDB アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Cosmos DB の機能について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/11/2020
+ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250677"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797589"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor for Azure Cosmos DB (プレビュー) の詳細
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB の探索
 
-Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB リソースの全体的なパフォーマンス、エラー、容量、操作上の正常性を、一元的な対話型エクスペリエンスで把握できます。 この記事では、この新しい監視エクスペリエンスの利点のほか、組織固有のニーズを満たすようそのエクスペリエンスに変更を加え、調整する方法をわかりやすく説明しています。   
+Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos DB リソースの全体的なパフォーマンス、障害、容量、操作の正常性を、統合された対話型エクスペリエンスで表示できます。 この記事では、この新しい監視エクスペリエンスの利点のほか、組織固有のニーズを満たすようそのエクスペリエンスに変更を加え、調整する方法をわかりやすく説明しています。   
 
 ## <a name="introduction"></a>はじめに
 
@@ -44,7 +44,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
     ![[サービス] の [監視] ドロップダウンとスピードメーターのスタイル画像が表示される検索ボックスに「監視」と入力したところ](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. **[Cosmos DB (プレビュー)]** を選択します。
+3. **[Cosmos DB]** を選択します。
 
     ![Cosmos DB の概要ブックのスクリーンショット](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -110,7 +110,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
 ![ブックの展開アイコン](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor for Azure Cosmos DB (プレビュー) のカスタマイズ
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB のカスタマイズ
 
 このエクスペリエンスは、Azure Monitor ブック テンプレートをベースに作成されているため、 **[カスタマイズ]**  >  **[編集]** して、編集したバージョンのコピーをカスタム ブックに **[保存]** することができます。 
 
@@ -124,4 +124,4 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
 * [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
-* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../app/usage-workbooks.md)」で学習してください。
+* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。

@@ -7,14 +7,14 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148197"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649903"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure Event Hubs を Azure Private Link と統合する (プレビュー)
+# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure Event Hubs を Azure Private Link と統合する
 Azure Private Link サービスを使用すると、仮想ネットワーク内の**プライベート エンドポイント**経由で、Azure サービス (Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
 
 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
@@ -23,8 +23,6 @@ Azure Private Link サービスを使用すると、仮想ネットワーク内�
 
 > [!IMPORTANT]
 > この機能は、**Dedicated** レベルでのみサポートされています。 Dedicated レベルの詳細については、「[Event Hubs Dedicated の概要](event-hubs-dedicated-overview.md)」を参照してください。 
->
-> 現在、この機能は**プレビュー段階**にあります。 
 
 >[!WARNING]
 > プライベート エンドポイントを有効にすると、他の Azure サービスが Event Hubs と対話できないようにすることができます。
@@ -39,7 +37,7 @@ Azure Private Link サービスを使用すると、仮想ネットワーク内�
 > - Azure IoT Device Explorer
 >
 > 仮想ネットワーク上には、次の Microsoft サービスが必要です
-> - Azure Web Apps 
+> - Azure Web Apps
 > - Azure Functions
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを追加する
@@ -64,7 +62,7 @@ Event Hubs の名前空間が既にある場合は、次の手順に従ってプ
 2. 検索バーで、「**イベント ハブ**」と入力します。
 3. プライベート エンドポイントを追加する**名前空間**を一覧から選択します。
 4. **[設定]** で **[ネットワーク]** タブを選択します。
-5. ページの上部にある **[プライベート エンドポイント接続 (プレビュー)]** タブを選択します。 Event Hubs の Dedicated レベルを使用していない場合は、次のメッセージが表示されます: **Private endpoint connections on Event Hubs are only supported by namespaces created under a dedicated cluster** (Event Hubs でのプライベート エンドポイント接続は、専用クラスターに作成された名前空間でのみサポートされます)。
+5. ページの上部にある **[プライベート エンドポイント接続]** タブを選択します。 Event Hubs の Dedicated レベルを使用していない場合は、次のメッセージが表示されます: **Private endpoint connections on Event Hubs are only supported by namespaces created under a dedicated cluster** (Event Hubs でのプライベート エンドポイント接続は、専用クラスターに作成された名前空間でのみサポートされます)。
 6. ページの上部にある **[+ プライベート エンドポイント]** ボタンを選択します。
 
     ![Image](./media/private-link-service/private-link-service-3.png)
@@ -244,46 +242,33 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 最初に、[Azure portal での Windows 仮想マシンの作成](../virtual-machines/windows/quick-create-portal.md)に関するページの手順に従って、仮想マシンを作成します。
 
-**[ネットワーク]** タブで、次の操作を行います。
+**[ネットワーク]** タブで、次の操作を行います。 
 
-1. **[仮想ネットワーク]** と **[サブネット]** を指定します。 新しい仮想ネットワークを作成することも、既存のものを選択することもできます。 既存のものを選択する場合は、リージョンが一致することを確認します。
-1. **[パブリック IP]** リソースを指定します。
-1. **[NIC ネットワーク セキュリティ グループ]** で **[なし]** を選択します。
-1. **[負荷分散]** で **[いいえ]** を選択します。
+1. **[仮想ネットワーク]** と **[サブネット]** を指定します。 プライベート エンドポイントをデプロイした Virtual Network を選択する必要があります。
+2. **[パブリック IP]** リソースを指定します。
+3. **[NIC ネットワーク セキュリティ グループ]** で **[なし]** を選択します。
+4. **[負荷分散]** で **[いいえ]** を選択します。
 
-コマンド ラインを開き、次のコマンドを実行します。
+VM に接続してコマンド ラインを開き、次のコマンドを実行します。
 
 ```console
-nslookup <your-event-hubs-namespace-name>.servicebus.windows.net
+nslookup <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-nslookup コマンドを実行して、パブリック エンドポイントを介して Event Hubs 名前空間の IP アドレスを解決すると、次のような結果が表示されます。
+結果は次のようになります。 
 
 ```console
-c:\ >nslookup <your-event-hubs-namespae-name>.servicebus.windows.net
-
 Non-authoritative answer:
-Name:    
-Address:  (public IP address)
-Aliases:  <your-event-hubs-namespace-name>.servicebus.windows.net
-```
-
-nslookup コマンドを実行して、プライベート エンドポイントを介して Event Hubs 名前空間の IP アドレスを解決すると、次のような結果が表示されます。
-
-```console
-c:\ >nslookup your_event-hubs-namespace-name.servicebus.windows.net
-
-Non-authoritative answer:
-Name:    
-Address:  10.1.0.5 (private IP address)
-Aliases:  <your-event-hub-name>.servicebus.windows.net
+Name:    <event-hubs-namespace-name>.privatelink.servicebus.windows.net
+Address:  10.0.0.4 (private IP address associated with the private endpoint)
+Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
 ## <a name="limitations-and-design-considerations"></a>制限事項と設計に関する考慮事項
 
 **価格**: 価格情報については、[Azure Private Link の価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。
 
-**制限事項**: Azure Event Hubs のプライベート エンドポイントはパブリック プレビュー中です。 この機能は、Azure のすべてのパブリック リージョンで使用できます。
+**制限事項**: この機能は、Azure のすべてのパブリック リージョンで使用できます。
 
 **Event Hubs 名前空間あたりのプライベート エンドポイントの最大数**: 120。
 

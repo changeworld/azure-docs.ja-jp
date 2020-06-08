@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: aa2931440b538346d9f1aa9d0ec967f1a812d56b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6eec99594ca748fa0610c60c83fd58e388f7923
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241009"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742907"
 ---
 # <a name="geospatial-apis-to-add-maps-spatial-analytics-and-mobility-solutions-with-azure-maps"></a>Azure Maps でマップ、空間分析、モビリティ ソリューションを追加するための地理空間 API
 
@@ -25,7 +25,7 @@ ms.locfileid: "80241009"
 - **ルーティング**:ある時点で複数の目的地に到着するために利用できる最短または最速のルートを示します。 また、歩行者、自転車運転者、商用車両に特化したルートやファクトも提供します。
 - **タイム ゾーン**:世界中のあらゆる場所の時間を簡単に表示できるようにします。
 - **空間演算**:位置インテリジェンスが強化されます。
-- **位置情報**:IP アドレスから国を検索できます。
+- **位置情報**:IP アドレスから国またはリージョンを検索できます。
 - **Data Service**:空間演算や画像合成で使用する地理空間データをアップロードしたり、格納したりします。
 - **モビリティ**:周辺の公共交通サービスに関するリアルタイムの位置インテリジェンスを提供します。 停留所、ルート情報、推定される移動時間などが含まれます。
 

@@ -11,7 +11,10 @@
       items:
         - name: ポータル
           href: quickstart-create-databricks-workspace-portal.md
+        - name: PowerShell
+          href: quickstart-create-databricks-workspace-powershell.md
         - name: ARM テンプレート
+          displayName: Resource Manager
           href: quickstart-create-databricks-workspace-resource-manager-template.md
         - name: 仮想ネットワーク
           href: quickstart-create-databricks-workspace-vnet-injection.md

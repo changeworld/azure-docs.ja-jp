@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592901"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745372"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) コンテナーの制限
 
@@ -35,7 +35,7 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 
 サポートされていないアプリ構成|詳細|
 |--|--|
-|サポートされていないコンテナー カルチャ| Dutch (`nl-NL`)<br>日本語 (`ja-JP`)<br>ドイツ語は、[1.0.2 トークナイザー](luis-language-support.md#custom-tokenizer-versions)でのみサポートされています。|
+|サポートされていないコンテナー カルチャ| オランダ語 (`nl-NL`)、日本語 (`ja-JP`)、ドイツ語 (`de-DE`) は [1.0.2 トークナイザー](luis-language-support.md#custom-tokenizer-versions)でのみサポートされています。|
 |サポートされていないエンティティ (全カルチャ)|[KeyPhrase](luis-reference-prebuilt-keyphrase.md) 事前構築済みエンティティ (全カルチャ)|
 |サポートされていないエンティティ (英語 (`en-US`) カルチャ)|[GeographyV2](luis-reference-prebuilt-geographyV2.md) 事前構築済みエンティティ|
 |音声認識の準備|コンテナーでは、外部依存関係がサポートされません。|

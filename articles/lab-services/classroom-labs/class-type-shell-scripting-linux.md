@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbe0a0b7f22df20c8ce3d734738132b5056a36e4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589501"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697081"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux でのシェル スクリプト作成を教えるためのラボを設定する
 この記事では、Linux でのシェル スクリプトの作成を教えるためのラボを設定する方法について説明します。 スクリプトの作成は、管理者がタスクを繰り返さなくて済むようにできる、システム管理の役に立つ部分です。 このサンプル シナリオのクラスでは、従来の bash スクリプトと拡張スクリプトについて説明します。 拡張スクリプトは、bash コマンドと Ruby を組み合わせたスクリプトです。 このアプローチにより、Ruby でデータを渡すことができ、bash コマンドでシェルと対話することができます。 
@@ -39,12 +39,11 @@ ms.locfileid: "83589501"
 | ラボの設定 | 値/説明 | 
 | ------------ | ------------------ |
 | 仮想マシン (VM) サイズ | Small  |
-| VM イメージ | Ubuntu Server 18.04 LTS |
-| リモート デスクトップ接続を有効にする | [Enable]\(有効にする\)。 <p>この設定を有効にすると、教師と学生はリモート デスクトップ (RDP) を使用して VM に接続できます。 詳細については、「[Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)」を参照してください。 </p>|
+| VM イメージ | Ubuntu Server 18.04 LTS|
+| リモート デスクトップ接続を有効にする | [Enable]\(有効にする\)。 <p>この設定を有効にすると、教師と学生はリモート デスクトップ (RDP) を使用して VM に接続できます。 詳細については、「[Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする](how-to-enable-remote-desktop-linux.md)」を参照してください。 </p>|
 
-
-## <a name="install-desktop-and-xrdp"></a>デスクトップと xrdp をインストールする
-Ubuntu Server 18.04 LTS イメージでは、リモート デスクトップ サーバーは既定ではインストールされません。 「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」記事の手順に従って、リモート デスクトップ プロトコルを使用して接続するためにテンプレート マシンで必要なパッケージをインストールします。
+## <a name="install-desktop-and-rdp"></a>デスクトップと RDP をインストールする
+Ubuntu Server 18.04 LTS イメージでは、RDP リモート デスクトップ サーバーは既定ではインストールされません。 「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」記事の手順に従って、リモート デスクトップ プロトコル(RDP) を使用して接続するためにテンプレート マシンで必要なパッケージをインストールします。
 
 ## <a name="install-ruby"></a>Ruby のインストール
 Ruby は、bash スクリプトと組み合わせることができるオープンソースの動的言語です。 このセクションでは、`apt-get` を使用して最新バージョンの [Ruby](https://www.ruby-lang.org/) をインストールする方法について説明します。

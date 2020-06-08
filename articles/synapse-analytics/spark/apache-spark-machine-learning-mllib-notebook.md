@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096301"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774436"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
@@ -54,7 +54,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
     import matplotlib.pyplot as plt
     from datetime import datetime
     from dateutil import parser
-    from pyspark.sql.functions import unix_timestamp
+    from pyspark.sql.functions import unix_timestamp, date_format, col, when
     from pyspark.ml import Pipeline
     from pyspark.ml import PipelineModel
     from pyspark.ml.feature import RFormula
@@ -239,6 +239,9 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 
 2 つの DataFrame が得られたところで、次のタスクは、モデル式を作成して、トレーニング DataFrame に対してそれを実行し、さらにテスト用 DataFrame に対して検証することです。 さまざまなバージョンのモデル式で試して、さまざまな組み合わせの影響を確認する必要があります。
 
+> [!Note]
+> モデルを保存するためには、Azure Storage Blob データ共同作成者 RBAC ロールが必要です。 お使いのストレージ アカウントで、[アクセス制御 (IAM)] に移動し、[ロール割り当ての追加] を選択します。 [ストレージ BLOB データ共同作成者] RBAC ロールを SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)をご覧ください。
+
 ```python
 ## Create a new LR object for the model
 logReg = LogisticRegression(maxIter=10, regParam=0.3, labelCol = 'tipped')
@@ -301,4 +304,4 @@ plt.show()
 - [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/latest/)
 
 >[!NOTE]
-> 公式の Apache Spark ドキュメントの一部では、Spark コンソールの使用を前提としていますが、このコンソールは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) エクスペリエンスを使用してください。
+> Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) エクスペリエンスを使用してください。

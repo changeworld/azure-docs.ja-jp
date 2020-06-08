@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 714d587cc047887685f7f7c7f4f5a2bbc2310aa2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596391"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674331"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse Link for Azure Cosmos DB (プレビュー) とは
 
@@ -35,11 +35,11 @@ Azure Synapse Link では、完全に分離された列ストアである [Azure
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>管理する ETL ジョブがないことによる複雑さの軽減
 
-Azure Synapse Link では、Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアに直接アクセスすることができ、複雑なデータ移動がありません。 ETL や変更フィードがないので、オペレーショナル データに対して行われたすべての更新は、ほぼリアルタイムで分析ストアに表示されます。 追加のデータ変換を行うことなく、Synapse Analytics から分析ストアに対して大規模な分析を実行できます。
+Azure Synapse Link では、Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアに直接アクセスすることができ、複雑なデータ移動がありません。 ETL や変更フィード ジョブがないので、オペレーショナル データに対して行われたすべての更新は、ほぼリアルタイムで分析ストアに表示されます。 追加のデータ変換を行うことなく、Synapse Analytics から分析ストアに対して大規模な分析を実行できます。
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>オペレーショナル データに関するほぼリアルタイムの分析情報
 
-Azure Synapse Link を使用すると、オペレーショナル データに関する豊富な分析情報を、ほぼリアルタイムで取得できます。 ETL ベースのシステムでは、多くのレイヤーでオペレーショナル データの抽出、変換、読み込みを行うため、オペレーショナル データを分析するための待機時間が長くなる傾向があります。 Azure Cosmos DB 分析ストアと Azure Synapse Analytics のネイティブな統合により、オペレーショナル データをほぼリアルタイムで分析でき、新しいビジネス シナリオが可能になります。 
+Azure Synapse Link を使用すると、オペレーショナル データに関する豊富な分析情報を、ほぼリアルタイムで取得できます。 ETL ベースのシステムでは、多くのレイヤーでオペレーショナル データを抽出、変換、読み込む必要があるため、オペレーショナル データを分析するための待機時間が長くなる傾向があります。 Azure Cosmos DB 分析ストアと Azure Synapse Analytics のネイティブな統合により、オペレーショナル データをほぼリアルタイムで分析でき、新しいビジネス シナリオが可能になります。 
 
 
 ### <a name="no-impact-on-operational-workloads"></a>運用ワークロードへの影響がない
@@ -99,7 +99,7 @@ Azure Synapse Analytics でサポートされているさまざまな分析ラ�
 
 * 手動の ETL プロセスを使用せずに、Azure Cosmos DB コンテナーに対する SQL テーブルまたは Spark テーブルを作成することで、コンシューマーがデータにアクセスできるようにしたいと考えているデータ エンジニア。
 
-Azure Cosmos DB の Azure Synapse Analytics ランタイムによるサポートの詳細については、[Cosmos DB に対する Azure Synapse Analytics のサポート]()に関するページを参照してください。
+Azure Cosmos DB の Azure Synapse Analytics ランタイムによるサポートの詳細については、[Cosmos DB に対する Azure Synapse Analytics のサポート](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)に関するページを参照してください。
 
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>どのようなときに Azure Synapse Link for Azure Cosmos DB を使用するか
 
@@ -124,11 +124,11 @@ Synapse Link は、次の場合にお勧めします。
 
 * Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアへのアクセスは、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
 
-* プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。 
+* プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
 
 ## <a name="pricing"></a>価格
 
-Azure Synapse Link の課金モデルは、Azure Cosmos DB 分析ストアと Synapse ランタイムを使用して発生するコストに変換されます。 詳細については、[Azure Cosmos DB 分析ストアの価格](analytical-store-introduction.md#analytical-store-pricing)に関するページおよび「[Azure Synapse Analytics の価格]()」をご覧ください。
+Azure Synapse Link の課金モデルには、Azure Cosmos DB 分析ストアと Synapse ランタイムを使用して発生するコストが含まれます。 詳細については、[Azure Cosmos DB 分析ストアの価格](analytical-store-introduction.md#analytical-store-pricing)に関するページおよび「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/synapse-analytics/)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -136,9 +136,9 @@ Azure Synapse Link の課金モデルは、Azure Cosmos DB 分析ストアと Sy
 
 * [Azure Cosmos DB 分析ストアの概要](analytical-store-introduction.md)
 
-* [Azure Synapse Link for Azure Cosmos DB の概要](configure-synapse-link.md) 
+* [Azure Synapse Link for Azure Cosmos DB の概要](configure-synapse-link.md)
  
-* [Azure Synapse Analytics ランタイムでサポートされている機能]()
+* [Azure Synapse Analytics ランタイムでサポートされている機能](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
 * [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.md)
 

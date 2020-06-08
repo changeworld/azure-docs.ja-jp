@@ -6,24 +6,21 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 875d2bbebdfa95c6d180979399d876eb2afc01b4
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392522"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779965"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
+このトピックでは、App Service と Azure Functions アプリケーションでマネージド ID を作成し、それを使用して他のリソースにアクセスする方法を説明します。 
+
 > [!Important] 
-> アプリがサブスクリプションやテナント間で移行された場合、App Service と Azure Functions でのマネージド ID は想定されたとおりに動作しません。 アプリでは、機能を無効にしてから再度有効にすることで、新しい ID を取得する必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでは、新しい ID を使用するようにアクセス ポリシーを更新する必要があります。
+> ご自分のアプリがサブスクリプションやテナント間で移行されている場合、App Service と Azure Functions のマネージド ID は、予期どおりには動作しません。 アプリ用には、新規で ID を取得する必要があります。これには、この機能を無効にしてから再度有効にする必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでも新しい ID が使用されるように、アクセス ポリシーを更新する必要があります。
 
-このトピックでは、App Service と Azure Functions アプリケーションでマネージド ID を作成し、それを使用して他のリソースにアクセスする方法を説明します。 ご自分のアプリで Azure Active Directory (AAD) のマネージド ID を使用すると、Azure Key Vault など、Azure AD で保護されたその他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。
-
-アプリケーションには 2 種類の ID を付与できます。
-
-- **システム割り当て ID** はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。
-- **ユーザー割り当て ID** は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。
+[!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
 ## <a name="add-a-system-assigned-identity"></a>システム割り当て ID を追加する
 
@@ -42,6 +39,11 @@ ms.locfileid: "81392522"
 4. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** をクリックします。
 
     ![App Service のマネージド ID](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+
+
+> [!NOTE] 
+> Azure portal で、お使いの Web またはスロット アプリのマネージド ID を探すには、エンタープライズ アプリケーションの [ユーザー設定] セクションに移動します。
+
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 

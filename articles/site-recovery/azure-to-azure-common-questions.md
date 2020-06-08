@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738050"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834579"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -100,6 +100,10 @@ Site Recovery を使用することで、同じ地理クラスター内の 2 つ
 はい、アプリケーションをレプリケートし、同時に、リソース グループ別にディザスター リカバリー構成を保持することは可能です。
 
 ご利用のアプリケーションでたとえば、各層のアプリケーション、データベース、Web が別々のリソース グループに入っている場合、すべての層を保護するには[レプリケーション ウィザード](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)を 3 回選択する必要があります。 Site Recovery によって、これら 3 つの層が 3 つの異なるリソース グループにレプリケートされます。
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>リソース グループとの間でストレージ アカウントを移動できますか?
+
+いいえ、これはサポートされていないシナリオです。 ただし、ストレージ アカウントを別のリソース グループに誤って移動し、元のリソース グループを削除した場合は、古いリソース グループと同じ名前で新しいリソース グループを作成し、そのストレージ アカウントをこのリソース グループに移動できます。
 
 ## <a name="replication-policy"></a>Replication policy
 
@@ -311,4 +315,4 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA 認定です。 このサ
 
 - [Azure 間サポートの要件を確認します](azure-to-azure-support-matrix.md)。
 - [Azure 間レプリケーションを設定します](azure-to-azure-tutorial-enable-replication.md)。
-- この記事の内容について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+- この記事の内容について質問がある場合は、[Azure Recovery Services に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)に投稿してください。

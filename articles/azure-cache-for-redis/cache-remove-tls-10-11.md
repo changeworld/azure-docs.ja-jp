@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261244"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848823"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
@@ -19,7 +19,7 @@ ms.locfileid: "81261244"
 
 この作業の一環として、Azure Cache for Redis に対して次の変更が行われます。
 
-* **フェーズ 1:** 新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます。 (これは以前は TLS 1.0 でした。)この時点で既定のキャッシュ インスタンスが更新されることはありません。 必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。 この変更は、Azure portal またはその他の管理 API を使用して実行できます。
+* **フェーズ 1:** 新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます (以前は TLS 1.0)。  この時点で既定のキャッシュ インスタンスが更新されることはありません。 必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。 この変更は、Azure portal またはその他の管理 API を使用して実行できます。
 * **フェーズ 2:** TLS のバージョン 1.0 と 1.1 のサポートは停止されます。 この変更以降、お使いのアプリケーションでは、TLS 1.2 以降を使用してキャッシュと通信する必要があります。
 
 さらに、この変更の一環として、セキュリティで保護されていない古い暗号スイートのサポートが廃止されます。  キャッシュが最小 TLS バージョンである 1.2 に構成されている場合、サポートされる暗号スイートは以下に制限されます。
@@ -31,12 +31,12 @@ ms.locfileid: "81261244"
 
 これらの変更が有効になる日付は次のとおりです。
 
-| クラウド               | フェーズ 1 の開始日 | フェーズ 2 の開始日      |
-|---------------------|--------------------|-------------------------|
-| Azure (グローバル)      |  2020 年 1 月 13 日  | 2020 年 5 月 11 日 (延長) |
-| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
-| Azure Germany       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
-| Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| クラウド                | フェーズ 1 の開始日 | フェーズ 2 の開始日      |
+|----------------------|--------------------|-------------------------|
+| Azure (グローバル)       |  2020 年 1 月 13 日  | 2020 年 5 月 11 日            |
+| Azure Government     |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Azure Germany        |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Azure China 21Vianet |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>アプリケーションが既に準拠しているかどうかを確認する
 
@@ -55,7 +55,12 @@ Redis .NET クライアントは、.NET Framework 4.5.2 以前では既定で以
 
 ### <a name="net-core"></a>.NET Core
 
-Redis .NET Core クライアントは、既定で最新の TLS バージョンを使用します。
+Redis .NET Core クライアントは既定で OS 既定の TLS バージョンになります。これは言うまでもなく OS 自体に依存します。 
+
+OS がリソースされたタイミングと、その他のパッチで既定の TLS バージョンが変更されたかどうかにより OS TLS のバージョンが大きく変わることがあります。 これに関する完全な情報はありませんが、Windows OS の場合、[こちら](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)で詳細を確認できます。 
+
+ただし、古い OS を使用している場合、あるいは確かめるだけであれば、手動で、クライアント経由で優先 TLS バージョンを構成することをお勧めします。
+
 
 ### <a name="java"></a>Java
 

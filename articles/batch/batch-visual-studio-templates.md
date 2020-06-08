@@ -1,24 +1,22 @@
 ---
-title: Visual Studio テンプレートを使用してソリューションを構築する - Azure Batch | Microsoft Docs
+title: Visual Studio テンプレートを使用してソリューションをビルドする
 description: Visual Studio プロジェクト テンプレートを使用して、多くのコンピューティング処理を要するワークロードを Azure Batch 上に実装して実行する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117524"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779507"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
 
 Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**と**タスク プロセッサ**) に用意されているコードを使用すると、多くのコンピューティング処理を要するワークロードを最小限の手間で Batch 上に実装し、実行することができます。 このドキュメントでは、これらのテンプレートについて説明すると共に、その使用方法についての指針を示しています。
 
 > [!IMPORTANT]
-> この記事の内容は、あくまで上記 2 つのテンプレートについて記述したものであり、Batch サービスとその主要概念 (プール、コンピューティング ノード、ジョブ/タスク、ジョブ マネージャー タスク、環境変数などの関連する情報) に精通した読者を想定しています。 詳細については、「[Azure Batch とは](batch-technical-overview.md)」と[開発者向けの Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。
-> 
-> 
+> この記事の内容は、あくまで上記 2 つのテンプレートについて記述したものであり、Batch サービスとその主要概念 (プール、コンピューティング ノード、ジョブ/タスク、ジョブ マネージャー タスク、環境変数などの関連する情報) に精通した読者を想定しています。 詳細については、[Azure Batch の基本事項](batch-technical-overview.md)に関するページおよび[Batch サービスのワークフローとリソース](batch-service-workflow-features.md)」を参照してください。 
 
 ## <a name="high-level-overview"></a>概要
 ジョブ マネージャー テンプレートとタスク プロセッサ テンプレートを使用すると、次に示した 2 つの実用的なコンポーネントを作成することができます。
@@ -69,7 +67,7 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
 * 分割されたタスクを送信して Batch 上で実行する。
 
 > [!NOTE]
-> ジョブ マネージャー タスクについて詳しくは、「 [開発者向け Batch 機能の概要](batch-api-basics.md#job-manager-task)」をご覧ください。
+> ジョブ マネージャーのタスクの詳細については、「[ジョブとタスク](jobs-and-tasks.md#job-manager-task)」を参照してください。
 > 
 > 
 
@@ -188,7 +186,7 @@ Split() の実装コードからは次のデータにアクセスできます。
 
 ジョブ マネージャー タスクが失敗しても、一部のタスクはエラーの発生前に既に追加されている可能性があります。 これらのタスクは、通常どおり実行されます。 このコード パスについて詳しくは、「ジョブ スプリッターのエラー」をご覧ください。
 
-例外によって返されたすべての情報は、stdout.txt ファイルと stderr.txt ファイルに書き込まれます。 詳細については、「[エラー処理](batch-api-basics.md#error-handling)」を参照してください。
+例外によって返されたすべての情報は、stdout.txt ファイルと stderr.txt ファイルに書き込まれます。 詳細については、「[エラー処理](error-handling.md)」を参照してください。
 
 ### <a name="client-considerations"></a>クライアントの考慮事項
 ここでは、クライアントの実装に関して、このテンプレートに基づいてジョブ マネージャーを呼び出す際のいくつかの要件について説明します。 パラメーターと環境設定の受け渡しについて詳しくは、 [クライアント コードからパラメーターと環境変数を渡す方法](#pass-environment-settings) をご覧ください。

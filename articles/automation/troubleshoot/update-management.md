@@ -1,6 +1,6 @@
 ---
-title: Azure Automation の Update Management のトラブルシューティング
-description: Azure Automation の Update Management ソリューションに関する問題のトラブルシューティングと解決方法について説明します。
+title: Azure Automation Update Management に関する問題のトラブルシューティング
+description: この記事では、Azure Automation Update Management に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,19 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678867"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735890"
 ---
-# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Update Management ソリューションに関する問題のトラブルシューティング
+# <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
-この記事では、Update Management ソリューションの使用時に発生する可能性がある問題について説明します。 根本的な問題を特定するためのハイブリッド Runbook Worker エージェント用のエージェント トラブルシューティング ツールがあります。 トラブルシューティング ツールの詳細については、「[Windows Update エージェントの問題をトラブルシューティングする](update-agent-issues.md)」と「[Linux Update エージェントに関する問題のトラブルシューティング](update-agent-issues-linux.md)」を参照してください。 他のオンボードの問題については、[ソリューションをオンボードする際のトラブルシューティング](onboarding.md)に関する記事を参照してください。
-
->[!NOTE]
->仮想マシン (VM) にソリューションをオンボードしているときに問題が発生した場合は、ローカル コンピューターの **[アプリケーションとサービス ログ]** にある **Operations Manager** のログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
+この記事では、Update Management 機能をマシンにデプロイするときに発生する可能性がある問題について説明します。 根本的な問題を特定するためのハイブリッド Runbook Worker エージェント用のエージェント トラブルシューティング ツールがあります。 トラブルシューティング ツールの詳細については、「[Windows Update エージェントの問題をトラブルシューティングする](update-agent-issues.md)」と「[Linux Update エージェントに関する問題のトラブルシューティング](update-agent-issues-linux.md)」を参照してください。 その他の機能のデプロイについては、[「機能のデプロイに関する問題のトラブルシューティング」](onboarding.md)を参照してください。
 
 >[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+>VM に Update Management をデプロイしているときに問題が発生した場合は、ローカル コンピューターの **[アプリケーションとサービス ログ]** にある **Operations Manager** のログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>シナリオ:"Failed to enable the Update solution" (Update ソリューションを有効にできませんでした) というエラーが表示される
 
@@ -41,7 +38,7 @@ Error details: Failed to enable the Update solution
 
 * Log Analytics エージェントのネットワーク ファイアウォールの要件が、正しく構成されていない可能性があります。 このような状況では、DNS URL を解決するときにエージェントが失敗する可能性があります。
 
-* ソリューションのターゲット設定が正しく構成されておらず、マシンが想定どおりに更新プログラムを受信していません。
+* Update Management のターゲット設定が正しく構成されておらず、マシンが想定どおりに更新プログラムを受信していません。
 
 * **[コンプライアンス]** に、マシンの状態が `Non-compliant` と表示されている場合もあります。 同時に、**エージェントの Desktop Analytics** でエージェントが `Disconnected` として報告されます。
 
@@ -49,13 +46,13 @@ Error details: Failed to enable the Update solution
 
 * OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
-* [ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事にアクセスし、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。  
+* [ネットワーク構成](../automation-hybrid-runbook-worker.md#network-planning)に関する記事にアクセスし、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。  
 
-* [ネットワークの計画](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)に関する記事にアクセスし、Log Analytics エージェントを動作させるために許可する必要があるアドレスとポートを確認してください。
+* [ネットワーク構成](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)に関する記事にアクセスし、Log Analytics エージェントを動作させるために許可する必要があるアドレスとポートを確認してください。
 
-* スコープ構成に問題がないかどうかを確認します。 [スコープ構成](../automation-onboard-solutions-from-automation-account.md#scope-configuration)では、どのマシンがソリューション用に構成されるかを決定します。 自分のワークスペースで表示されているマシンが **Update Management** ポータルに表示されていない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 スコープ構成の詳細については、「[ワークスペースでのマシンの配布準備](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)」を参照してください。
+* スコープ構成に問題がないかどうかを確認します。 [スコープの構成](../automation-onboard-solutions-from-automation-account.md#scope-configuration)では、Update Management 用に構成されるマシンが決定されます。 自分のワークスペースで表示されているマシンが Update Management ポータルに表示されていない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 スコープ構成の詳細については、「[ワークスペースでのマシンの有効化](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
 
-* [Hybrid Runbook Worker の削除](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)の手順に従って、worker 構成を削除します。 
+* 「[オンプレミスの Windows コンピューターから Hybrid Runbook Worker を削除する](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)」または「[オンプレミスの Linux コンピューターから Hybrid Runbook Worker を削除する](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)」の手順に従い、worker 構成を削除します。 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>シナリオ:置き換え済みの更新プログラムが Update Management で不足として示される
 
@@ -122,9 +119,9 @@ Error details: Failed to enable the Update solution
 
 4. クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、[エージェントを再インストールする](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)必要があります。 
 
-5. マシンがクエリ結果に表示される場合は、スコープの構成の問題を調べます。 [スコープの構成](../automation-onboard-solutions-from-automation-account.md#scope-configuration)では、ソリューション用に構成されるマシンが決定されます。 
+5. マシンがクエリ結果に表示される場合は、スコープの構成の問題を調べます。 [スコープの構成](../automation-scope-configurations-update-management.md)では、Update Management 用に構成されるマシンが決定されます。 
 
-6. ワークスペースに表示されているマシンが Update Management に表示されない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 これを行う方法については、「[ワークスペースでのマシンの配布準備](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)」を参照してください。
+6. ワークスペースに表示されているマシンが Update Management に表示されない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 これを行う方法については、「[ワークスペースでのマシンの有効化](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
 
 7. ワークスペースで、次のクエリを実行します。
 
@@ -142,7 +139,7 @@ Error details: Failed to enable the Update solution
 
 ### <a name="issue"></a>問題
 
-Automation アカウントでソリューションを使用するときに、次のエラーが発生します。
+Automation アカウントで機能のデプロイを行うときに、次のエラーが発生します。
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions
@@ -220,7 +217,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 ### <a name="issue"></a>問題
 
-動的グループの選択したスコープの仮想マシンが、Azure portal のプレビュー一覧に表示されません。 この一覧は、選択したスコープに対して ARG クエリによって取得されたすべてのマシンで構成されます。 スコープは、Hybrid Runbook Worker がインストールされていて、ユーザーがアクセス許可を持っているマシンでフィルター処理されます。 
+動的グループの選択したスコープの VM が、Azure portal のプレビュー一覧に表示されません。 この一覧は、選択したスコープに対して ARG クエリによって取得されたすべてのマシンで構成されます。 スコープは、Hybrid Runbook Worker がインストールされていて、ユーザーがアクセス許可を持っているマシンでフィルター処理されます。 
 
 ### <a name="cause"></a>原因
  
@@ -281,11 +278,11 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 7. プレビューに表示されないすべてのマシンに対して上記の手順を繰り返します。
 
-## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>シナリオ:Update Management ソリューションのコンポーネントが有効になっているが、VM は構成中と表示されたままである
+## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>シナリオ:Update Management のコンポーネントが有効になっているが、VM は構成中と表示されたままである
 
 ### <a name="issue"></a>問題
 
-オンボードから 15 分経過しても、仮想マシンに関する次のメッセージが引き続き表示される。
+デプロイの開始から 15 分経過しても、VM に関する次のメッセージが引き続き表示されます。
 
 ```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
@@ -299,7 +296,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * ソース コンピューター ID が異なるが、コンピューター名が重複するものがあります。 このシナリオは、異なる複数のリソース グループ内に、ある特定のコンピューター名を持つ VM が作成され、サブスクリプションの同じロジスティック エージェント ワークスペースにレポートしている場合に発生します。
 
-* オンボードしている VM イメージの複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
+* デプロイしている VM イメージの複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
 ### <a name="resolution"></a>解像度
 
@@ -319,7 +316,7 @@ Update
 
 VM の名前を変更して、環境内で一意の名前となるようにします。
 
-#### <a name="onboarded-image-from-cloned-machine"></a>複製マシンからのオンボードされたイメージ
+#### <a name="deployed-image-from-cloned-machine"></a>複製マシンからのデプロイされたイメージ
 
 複製されたイメージを使用している場合は、異なるコンピューター名で同じソース コンピューター ID を保持します。 この場合、次のようになります。
 
@@ -333,7 +330,7 @@ VM の名前を変更して、環境内で一意の名前となるようにし�
 
 3. `Restart-Service HealthService` を実行して、ヘルス サービスを再起動します。 この操作により、キーが再作成され、新しい UUID が生成されます。
 
-4. この方法がうまくいかない場合は、まずイメージで Sysprep を実行してから、MMA をインストールします。
+4. この方法がうまくいかない場合は、まずイメージで sysprep を実行してから、MMA をインストールします。
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>シナリオ:別の Azure テナントのマシンを対象とした更新プログラムの展開を作成するときに、リンクされているサブスクリプションのエラーが発生する
 
@@ -443,12 +440,12 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="cause"></a>原因
 
-マシンが既に Update Management 用の別のワークスペースにオンボードされています。
+マシンが既に Update Management 用の別のワークスペースにデプロイされています。
 
 ### <a name="resolution"></a>解像度
 
 1. 「[Update Management のポータルにマシンが表示されない](#nologs)」の手順に従って、マシンのレポート先が正しいワークスペースであることを確認します。
-2. [Hybrid Runbook グループを削除する](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)ことにより、マシン上のアーティファクトをクリーンアップしてから、再試行します。
+2. [Hybrid Runbook グループを削除する](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)ことにより、マシン上のアーティファクトをクリーンアップしてから、再試行します。
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>シナリオ:マシンがサービスと通信できない
 

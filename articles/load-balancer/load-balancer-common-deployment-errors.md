@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 26b4232832589827a09774eb0106c25e5c446eb1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791087"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658645"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer での一般的な Azure デプロイ エラーのトラブルシューティング
 
@@ -34,6 +34,7 @@ ms.locfileid: "82791087"
 |CannotUseInactiveHealthProbe| 仮想マシン スケール セットの正常性に関して構成されたルールで使用されていないプローブは、使用できません。 設定されているプローブがアクティブに使用されていることを確認します。 |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| 同じ種類 (内部、パブリック) のロード バランサーを複数使用することはできません。 最大で 1 つの内部ロード バランサーと 1 つのパブリック ロード バランサーを使用できます。 |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Basic Load Balancer は、複数配置グループの仮想マシン スケール セットまたは複数の可用性ゾーンにまたがる仮想マシン スケール セットではサポートされていません。 代わりに Standard Load Balancer を使用します。 |
+|MarketplacePurchaseEligibilityFailed | サブスクリプションが EA サブスクリプションであるため、購入を有効にするには、適切な管理者アカウントに切り替えます。 詳細については、[こちら](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)を参照してください。 |
 |ResourceDeploymentFailure| ロード バランサーがエラー状態になっている場合は、次の手順に従ってエラー状態から復帰します。<ol><li>https://resources.azure.com に移動し、Azure portal の資格情報でサインインします。</li><li>**[Read/Write]\(読み取り/書き込み\)** を選択します。</li><li>左側で、 **[Subscriptions]\(サブスクリプション\)** を展開し、更新する Load Balancer を含むサブスクリプションを展開します。</li><li>**[ResourceGroups]** を展開し、更新する Load Balancer を含むリソース グループを展開します。</li><li>**[Microsoft. Network]**  >  **[LoadBalancers]** を選択し、更新する Load Balancer である **[LoadBalancer_1]** を選択します。</li><li>**[LoadBalancer_1]** の表示ページで、 **[GET]\(取得\)**  >  **[Edit]\(編集\)** を選択 します。</li><li>**ProvisioningState** の値を **Failed** から **Succeeded** に更新します。</li><li>**[PUT]** を選択します。</li></ol>|
 |  |  |
 

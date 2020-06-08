@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 9c953c43ff119d42cdadcd2aba6e15f69765afc2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201637"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745434"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -309,7 +309,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 6. 以下の残りのセキュリティ ポリシーごとに、上記の手順 3 ～ 5 を繰り返します。
 
-   | Operation | ドメイン セキュリティ ポリシー |
+   | 操作 | ドメイン セキュリティ ポリシー |
    | ---------- | ---------- |
    | Get と Put | Worker Data:Public Worker Reports |
    | Get と Put | Person Data:Work Contact Information |
@@ -919,7 +919,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
 * 登録スクリプトを含むディレクトリに移動し、\[tenant ID\] パラメーターをお客様のテナント ID の値に置き換えて、次のコマンドを実行します。
 
   ```powershell
-  cd “C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder”
+  cd "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder"
   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\RegistrationPowershell\Modules\PSModulesFolder\AppProxyPSModule.psd1"
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
@@ -1008,9 +1008,9 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
   
    上記の API 式がお客様の Workday テナント構成で有効であることをお客様の Workday チームに確認してください。 必要に応じて、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」セクションの説明に従って編集できます。
 
-* 同様に、Workday 内に存在する国情報を取得するには、*wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference* という XPATH を使用します
+* 同様に、Workday 内に存在する国/地域情報を取得するには、*wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference* という XPATH を使用します
 
-     Workday 属性リスト セクションで使用できる国関連の属性が 5 つあります。
+     Workday 属性リスト セクションで使用できる国/地域関連の属性が 5 つあります。
 
      | Workday 属性 | API XPATH 式 |
      | ----------------- | -------------------- |
@@ -1272,7 +1272,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 7. **[Operation]\(操作\)** を **[Get_Workers]** に設定します。
 
-8.  [Request/Response]\(要求/応答\) ウィンドウの下に小さく表示された **[configure]\(構成\)** リンクをクリックして、Workday の資格情報を設定します。 **[Authentication]\(認証\)** チェック ボックスをオンにし、Workday 統合システム アカウントのユーザー名とパスワードを入力します。 ユーザー名は必ず name\@tenant の形式で指定し、 **[WS-Security UsernameToken]** オプションはオンのままにしてください。
+8.    [Request/Response]\(要求/応答\) ウィンドウの下に小さく表示された **[configure]\(構成\)** リンクをクリックして、Workday の資格情報を設定します。 **[Authentication]\(認証\)** チェック ボックスをオンにし、Workday 統合システム アカウントのユーザー名とパスワードを入力します。 ユーザー名は必ず name\@tenant の形式で指定し、 **[WS-Security UsernameToken]** オプションはオンのままにしてください。
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/18/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878104"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650524"
 ---
 # <a name="classroom-lab-setup-guide"></a>クラスルーム ラボ設定ガイド
 
@@ -127,7 +127,12 @@ Linux VM の場合、学生は SSH または RDP を使用できます。 学生
    - [切断時の自動シャットダウンを有効にする](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > スケジュール、クォータ、および自動シャットダウンは、テンプレート VM には適用されません。 そのため、使用していないテンプレート VM は必ずシャットダウンしておいてください。 そうしないと、コストが発生し続けます。 また既定では、ラボを作成すると、テンプレート VM が自動的に起動します。 すぐにラボの設定を済ませて、テンプレート VM をシャットダウンするようにしてください。
+        > テンプレート VM には、スケジュールとクォータは適用されませんが、自動シャットダウン設定は適用されます。 
+        > 
+        > ラボを作成すると、テンプレート VM が作成されますが、起動はしません。 起動と接続を行い、そのラボの前提条件となるソフトウェアをインストールしてから、発行することができます。 テンプレート VM を発行すると、テンプレート VM がシャットダウン済みでない場合は、自動シャットダウンが実行されます。 
+        > 
+        > テンプレート VM は、実行時に**コスト**が発生するため、実行しておく必要がない場合はテンプレート VM が確実にシャットダウンされるようにしてください。 
+
 
 1. **ダッシュボードを使用します。** 手順については、[ラボのダッシュボードの使用](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)に関するページを参照してください。
 

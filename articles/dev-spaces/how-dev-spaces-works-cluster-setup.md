@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces に使用する Azure Kubernetes Service クラスターのセットアップの実際について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241345"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873558"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces に使用するクラスターのセットアップの実際
 
@@ -86,7 +86,7 @@ AKS クラスターの準備が完了したら、クライアント側ツール�
 コマンド ラインから `azds` コマンドの一部としてクライアント側ツールを使用することができます。 クライアント側ツールを以下のものと共に使用することもできます。
 
 * [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)を使用する Visual Studio Code。
-* Visual Studio および [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
+* Visual Studio と Azure 開発ワークロード。
 
 ## <a name="next-steps"></a>次のステップ
 

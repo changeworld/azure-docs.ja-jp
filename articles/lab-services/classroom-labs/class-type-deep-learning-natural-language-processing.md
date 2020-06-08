@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 1167846c399430bd2db2eaa3114628ebb63ce639
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f03d1cfeccf03614fe0a5828a05768a5ae3f56e2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592323"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699653"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services を使用した自然言語処理でのディープ ラーニングに重点を置いたラボを設定する
 この記事では、Azure Lab Services を使用した自然言語処理 (NLP) でのディープ ラーニングに重点を置いたラボを設定する方法について説明します。 自然言語処理 (NLP) は、コンピューターで翻訳、音声認識、その他の言語認識機能を実行できるようにする、人工知能 (AI) の一種です。  
@@ -40,7 +40,9 @@ NLP の授業を受けている学生は、Linux 仮想マシン (VM) を使用�
 | ------------ | ------------------ |
 | 仮想マシン (VM) サイズ | Small GPU (Compute)。 このサイズは、人工知能やディープ ラーニングのような、コンピューティング集中型およびネットワーク集中型のアプリケーションに最適です。 |
 | VM イメージ | [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 このイメージでは、機械学習とデータ サイエンス向けのディープ ラーニング フレームワークとツールが提供されます。 このイメージでインストールされるツールの完全な一覧を見るには、次の記事を参照してください: 「[DSVM に含まれているもの](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)」。 |
-| リモート デスクトップ接続を有効にする | <p>この設定を有効にすると、教師と学生はリモート デスクトップ (RDP) を使用して各自の仮想マシン (VM) に接続できます。</p><p>**重要**:この設定を有効にすると、Linux マシンの **RDP** ポートのみが開かれます。 仮想マシン イメージに RDP が既にインストールされて構成されている場合、追加の手順に従わなくても RDP 経由で VM に接続できます。 <p>VM イメージに RDP がインストールおよび構成されていない場合、最初に SSH を使用して Linux マシンに接続し、RDP と GUI のパッケージをインストールします。これで、後で RDP を使用して Linux マシンに接続できるようになります。 詳しくは、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 次に、学生が学生の Linux VM にリモート デスクトップ接続できるように、イメージを発行します。  |
+| リモート デスクトップ接続を有効にする | <p>データ サイエンス イメージは、教師と学生が GUI リモート デスクトップを使用して接続できるよう、X2Go を使用するように既に構成されています。  X2Go を使用するため、 **[リモート デスクトップ接続を有効にする]** の設定を有効にする必要は "*ありません*"。  この設定は、代わりに RDP を使用する場合にのみ、有効にする必要があります。
+
+>**重要**:データ サイエンス イメージでは X2Go を使用することをお勧めしますが、代わりに RDP を使用する場合は、最初に SSH を使用して Linux VM に接続し、RDP パッケージと GUI パッケージをインストールする必要があります。  その後、教師や学生は RDP を使用して Linux VM に接続できます。  詳細については、[Linux VM 用にグラフィカル リモート デスクトップを有効にする方法](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
 
 Data Science Virtual Machine for Linux イメージには、この種類のクラスに必要なディープ ラーニング フレームワークとツールが用意されています。 そのため、テンプレート マシンを作成した後で、さらにカスタマイズする必要はありません。 学生が使用できるように発行できます。 テンプレート ページの **[発行]** ボタンを選択して、テンプレートをラボに発行します。  
 

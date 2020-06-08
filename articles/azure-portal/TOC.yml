@@ -70,6 +70,8 @@
       href: azure-portal-safelist-urls.md
     - name: Azure ダッシュボードの構造
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: リソース
   items:
     - name: Azure のロードマップ
@@ -80,7 +82,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Azure のビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

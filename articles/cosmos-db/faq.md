@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 976ff4d3be194bf33d2c01f06c66782caf8dad50
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608049"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834909"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -70,7 +70,7 @@ Azure を初めてお使いの場合は、[Azure の無料アカウント](https
 
 技術的な質問をするには、次の 2 つの質問および回答フォーラムのいずれかに投稿することができます。
 
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。
 
 新機能を要求するには、[User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db) で新しい要求を作成します。
@@ -93,7 +93,7 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 * グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です
 * コンテナー レベルでプロビジョニングされている場合、最大 5 K RU/s のスループット。
 * データベース レベルでプロビジョニングされている場合、最大 20 K RU/s のスループット。
-* サブスクリプションの有効期限は 30 日後に切れます。これは合計で最大 31 日まで延長できます。
+* サブスクリプションの有効期限は 30 日後に切れます。これは合計で最大 31 日まで延長できます。 有効期限が切れると、含まれる情報は削除されます。
 * Try Azure Cosmos DB アカウントでは Azure サポート チケットを作成できません。ただし、既存のサポート プランをご利用のサブスクライバーにはサポートが提供されます。
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB の設定

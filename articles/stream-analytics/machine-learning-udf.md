@@ -7,19 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481979"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874084"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
 機械学習モデルをユーザー定義関数 (UDF) として Azure Stream Analytics ジョブに実装し、ストリーミング入力データに対してリアルタイムのスコアリングと予測を行うことができます。 [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) では、Tensorflow、scikit-learn、PyTorch などの一般的なオープンソース ツールを使用して、モデルの準備、トレーニング、およびデプロイを行うことができます。
-
-> [!NOTE]
-> この機能はパブリック プレビュー段階です。 [Stream Analytics ポータル プレビュー リンク](https://aka.ms/asaportalpreview)を使用する方法でのみ、Azure portal でこの機能にアクセスできます。 この機能は、[Visual Studio 用の Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)の最新バージョンでも使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +28,7 @@ ms.locfileid: "81481979"
 
 3. Web サービスが JSON シリアル化データを受け入れて返すことを確認します。
 
-4. 高スケールの運用デプロイ向けの [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) にモデルをデプロイします。 Web サービスがジョブからの要求数を処理できない場合、Stream Analytics ジョブのパフォーマンスが低下し、待機時間に影響します。 Azure Container Instances にデプロイされたモデルは現在サポートされていませんが、今後数か月のうちに使用できるようになります。
+4. 高スケールの運用デプロイ向けの [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) にモデルをデプロイします。 Web サービスがジョブからの要求数を処理できない場合、Stream Analytics ジョブのパフォーマンスが低下し、待機時間に影響します。 Azure Container Instances にデプロイされたモデルは、Azure portal を使用する場合にのみサポートされます。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>機械学習モデルをジョブに追加する
 

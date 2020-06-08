@@ -1,18 +1,18 @@
 ---
-title: Azure Application Insights でのテレメトリの分離
+title: Application Insights のデプロイを設計する方法 - 1 つまたは複数のリソース
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562153"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773691"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>デプロイする必要がある Application Insights リソースの数
 
-Web アプリケーションの次のバージョンを開発する際に、新しいバージョンの [Application Insights](../../azure-monitor/app/app-insights-overview.md) テレメトリとリリース済みのバージョンのテレメトリが混在することがないように設定できます。 混乱を避けるには、分離インストルメンテーション キー (ikeys) を使用して、異なる開発段階のテレメトリを別の Application Insights リソースに送信します。 バージョンが別の段階に進むときにインストルメンテーション キーを簡単に変更できるように、構成ファイルではなくコード内に ikey を設定できます。 
+Web アプリケーションの次のバージョンを開発する際に、新しいバージョンの [Application Insights](../../azure-monitor/app/app-insights-overview.md) テレメトリとリリース済みのバージョンのテレメトリが混在することがないように設定できます。 混乱を避けるには、分離インストルメンテーション キー (ikeys) を使用して、異なる開発段階のテレメトリを別の Application Insights リソースに送信します。 バージョンが別の段階に進むときにインストルメンテーション キーを簡単に変更できるように、構成ファイルではなくコード内に ikey を設定できます。
 
 (システムが Azure クラウド サービスである場合は、[個別の iKey を設定する別の方法](../../azure-monitor/app/cloudservices.md)もあります。)
 
@@ -22,7 +22,7 @@ Web アプリに対する Application Insights の監視を設定するときは
 
 各 Application Insights リソースには、すぐに使用できるメトリックが付属しています。 完全に分離されたコンポーネントが同じ Application Insights リソースに報告している場合は、これらのメトリックがダッシュボードまたはアラートにとって意味がない場合があります。
 
-### <a name="use-a-single-application-insights-resource"></a>単一の Application Insights リソースを使用する
+### <a name="when-to-use-a-single-application-insights-resource"></a>単一の Application Insights リソースを使用するケース
 
 -   一緒にデプロイされるアプリケーション コンポーネントの場合。 通常は、1 つのチームによって開発され、同じ DevOps/ITOps ユーザーのセットによって管理されます。
 -   それらすべてにわたって既定で応答時間、ダッシュボードの失敗率などの主要業績評価指標 (KPI) を集計することが理にかなっている場合 (メトリックス エクスプローラー エクスペリエンスでロール名でセグメント化することを選択できます)。
@@ -138,7 +138,7 @@ Application Insights リソースを作成するには、[リソース作成ガ�
 ただし、Visual Studio の開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 
 ### <a name="release-annotations"></a>リリース注釈
-Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](../../azure-monitor/app/annotations.md)できます。 このマーカーは、次の図のように表示されます。
+Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](../../azure-monitor/app/annotations.md)できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

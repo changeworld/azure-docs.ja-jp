@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274012"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685068"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
-Content Moderator のコンピューター支援型のテキスト モデレーションと[目視レビュー](Review-Tool-User-Guide/human-in-the-loop.md)機能を使用して、テキスト コンテンツをモデレートします。
+Content Moderator のテキスト モデレーション モデルを使用して、テキスト コンテンツを分析します。
 
-ポリシーとしきい値に基づいて、コンテンツをブロックするか、承認またはレビューします。 それを使用して、パートナー、従業員、およびコンシューマーがテキスト コンテンツを生成する環境のヒューマン モデレーションを拡張します。 これらには、チャット ルーム、ディスカッション掲示板、チャットボット、e コマース カタログ、およびドキュメントが含まれます。 
+ポリシーとしきい値に基づいて、コンテンツのブロック、承認、またはレビューを行うことができます (人によるレビューを設定する方法の詳細については、[レビュー、ワークフロー、およびジョブ](./review-api.md)に関する記事を参照してください)。 テキスト モデレーション モデルを使用して、パートナー、従業員、およびコンシューマーがテキスト コンテンツを生成する環境の人によるモデレーションを拡張します。 これらには、チャット ルーム、ディスカッション掲示板、チャットボット、e コマース カタログ、およびドキュメントが含まれます。 
 
 サービスの応答には次の情報が含まれています。
 
@@ -155,4 +155,4 @@ Content Moderator は、[用語一覧の API](https://westus.dev.cognitive.micro
 
 ## <a name="next-steps"></a>次のステップ
 
-[用語一覧の API コンソール](try-text-api.md)を試験運用して、REST API コード サンプルを使用してください。 また、Visual Studio と C# に精通している場合は、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)のテキスト モデレーションのセクションも確認してください。
+[テキスト モデレーション API コンソール](try-text-api.md)を使用して、テストを行います。 また、人によるレビューを設定する方法の詳細については、[レビュー、ワークフロー、およびジョブ](./review-api.md)に関する記事を参照してください。

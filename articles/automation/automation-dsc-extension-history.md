@@ -1,22 +1,22 @@
 ---
-description: Azure の Desired State Configuration (DSC) 拡張機能のバージョン履歴について説明します。
+title: Azure Desired State Configuration 拡張機能のバージョン履歴を使用する
+description: この記事では、Azure の Desired State Configuration (DSC) 拡張機能のバージョン履歴の使用方法について説明します。
 ms.date: 06/21/2018
 keywords: dsc, powershell, azure, 拡張機能
-title: Azure DSC 拡張機能のバージョン履歴
 author: mgoedtel
 ms.author: magoedte
 services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82120590"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836925"
 ---
-# <a name="azure-desired-state-configuration-extension-version-history"></a>Azure Desired State Configuration 拡張機能のバージョン履歴
+# <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Azure Desired State Configuration 拡張機能のバージョン履歴を使用する
 
 Azure、Windows Server、および Windows Management Framework (WMF) (Windows PowerShell など) から提供される拡張機能と新機能をサポートするために、Azure Desired State Configuration (DSC) VM 拡張機能は必要に応じて更新されています。
 
@@ -27,7 +27,7 @@ Azure、Windows Server、および Windows Management Framework (WMF) (Windows P
 ### <a name="version-276"></a>バージョン 2.76
 
 - **リリース日:**
-  - 2018 年 5 月 9 日 (Azure) | 2018 年 6 月 21 日 (Azure 中国、Azure Government)
+  - 2018 年 5 月 9 日 (Azure) | 2018 年 6 月 21 日 (Azure China Vianet 21、Azure Government)
 - **OS のサポート:**
   - Windows Server 2016
   - Windows Server 2012 R2
@@ -40,9 +40,9 @@ Azure、Windows Server、および Windows Management Framework (WMF) (Windows P
   - WMF 5.0 RTM
   - WMF 4.0 Update
   - WMF 4.0
-- **環境:** 
+- **環境:**
   - Azure
-  - Azure 中国
+  - Azure China Vianet 21
   - Azure Government
 - **備考:** このバージョンでは、Windows Server 2016 に含まれる DSC を使用しています。他の Windows OS の場合は、[Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) がインストールされます (WMF をインストールするには再起動が必要です)。 Nano Server の場合は、DSC ロールが VM にインストールされます。
 - **新機能:**
@@ -181,10 +181,10 @@ Azure、Windows Server、および Windows Management Framework (WMF) (Windows P
 - **リリース日:** 2016 年 6 月 3 日
 - **OS のサポート:** Windows Server 2016 Technical Preview、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1
 - **WMF のサポート:** WMF 5.0 RTM、WMF 4.0 Update、WMF 4.0
-- **環境:** Azure、Azure 中国、Azure Government
+- **環境:** Azure、Azure China Vianet 21、Azure Government
 - **備考:** このバージョンでは、Windows Server 2016 Technical Preview に含まれる DSC を使用しています。他の Windows OS の場合は、[Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/) がインストールされます (WMF をインストールするには再起動が必要です)。
 - **新機能:**
-  - DSC 拡張機能が Azure 中国に搭載されました。 このバージョンには、主に Azure 中国上でこの拡張機能を実行するための修正が含まれています。
+  - DSC 拡張機能が Azure China Vianet 21 に搭載されました。 このバージョンには、主に Azure China Vianet 21 上でこの拡張機能を実行するための修正が含まれています。
 
 ### <a name="version-218"></a>バージョン 2.18
 
@@ -251,5 +251,5 @@ Azure、Windows Server、および Windows Management Framework (WMF) (Windows P
 
 - PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。
 - [DSC 拡張機能用の Resource Manager テンプレート](/azure/virtual-machines/extensions/dsc-template)を確認します。
-- PowerShell DSC を使用して管理できる機能とその他の DSC のリソースについては、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)を参照してください。
+- PowerShell DSC で管理できる機能とリソースの詳細については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)を閲覧してください。
 - 機密パラメーターを構成に渡す方法の詳細については、[DSC 拡張機能ハンドラーで資格情報を安全に管理する方法](/azure/virtual-machines/extensions/dsc-credentials)に関するページを参照してください。

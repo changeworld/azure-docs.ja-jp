@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory を使用して Microsoft AppSource と Azure Marketplace のリストを有効にする | Azure
-description: アプリとサービスの公開元のために、Azure Marketplace と AppSource で Azure Active Directory を使用して登録リストの種類を有効にします。
+title: Microsoft のコマーシャル マーケットプレースのオファーを Azure Active Directory に統合する
+description: Azure Active Directory を使用して、Microsoft AppSource と Azure Marketplace オファーを認証します。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160615"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658049"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>コマーシャル マーケットプレースの一覧を Azure Active Directory に統合する
 
- Azure Active Directory (Azure AD) はクラウド ID サービスであり、Microsoft アカウントでの認証を有効にします。 Azure AD では、業界標準のフレームワークを使用します。 [Azure Active Directory の詳細を確認します](https://azure.microsoft.com/services/active-directory)。
+ この記事では、Azure Active Directory (Azure AD) を使用してコマーシャル マーケットプレースの一覧またはオファーを統合する場合の要件について説明します。 Azure AD はクラウド ID サービスであり、業界標準のフレームワークを使用して、Microsoft アカウントでの認証を有効にします。 [Azure Active Directory の詳細を確認します](https://azure.microsoft.com/services/active-directory)。
 
 ## <a name="azure-ad-benefits"></a>Azure AD の利点
 
-Microsoft AppSource と Azure Marketplace のお客様は、製品内エクスペリエンスを利用して一覧表カタログを検索します。 これらのアクションでは、お客様が製品にサインインする必要があります。 Azure AD 統合には次のような利点があります。
+Microsoft AppSource と Azure Marketplace のお客様は、製品内エクスペリエンスを利用して、ネットショップの一覧カタログを検索します。 これらのアクションでは、お客様が製品にサインインする必要があります。 Azure AD 統合には次のような利点があります。
 
 - より迅速なエンゲージメントと最適化されたカスタマー エクスペリエンス
 - 数百万単位のエンタープライズ ユーザーのシングル サインオン (SSO)
@@ -29,7 +29,7 @@ Microsoft AppSource と Azure Marketplace のお客様は、製品内エクス�
 
 ## <a name="offers-that-require-azure-ad"></a>Azure AD を必要とするオファー
 
-AppSource と Azure Marketplace 用のさまざまな[オプションとオファーの種類の一覧](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)には、Azure AD の実装に対してそれぞれ異なる要件があります。 詳しくは、以下の表をご覧ください。
+コマーシャル マーケットプレースのさまざまな[オプションとオファーの種類の一覧](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)には、Azure AD の実装に対してそれぞれ異なる要件があります。 詳細については、次の表を参照してください。
 
 | **オファリング タイプ**    | **Azure AD の SSO が必要か?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|

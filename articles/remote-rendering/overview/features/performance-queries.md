@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679457"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757468"
 ---
 # <a name="server-side-performance-queries"></a>サーバー側のパフォーマンス クエリ
 
@@ -37,7 +37,7 @@ ms.locfileid: "80679457"
 
 フレームの統計データは、待機時間などの最後のフレームに関する何らかの概要レベルの情報を提供します。 `FrameStatistics` 構造体で提供されるデータはクライアント側で測定されるため、API は同期呼び出しになります。
 
-````c#
+```cs
 void QueryFrameData(AzureSession session)
 {
     FrameStatistics frameStatistics;
@@ -46,7 +46,18 @@ void QueryFrameData(AzureSession session)
         // do something with the result
     }
 }
-````
+```
+
+```cpp
+void QueryFrameData(ApiHandle<AzureSession> session)
+{
+    FrameStatistics frameStatistics;
+    if (*session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    {
+        // do something with the result
+    }
+}
+```
 
 取得した `FrameStatistics` オブジェクトには、次のメンバーが格納されています。
 
@@ -75,7 +86,7 @@ void QueryFrameData(AzureSession session)
 
 *パフォーマンス評価クエリ*では、サーバー上の CPU および GPU ワークロードに関する詳細な情報を提供します。 データはサーバーから要求されるため、パフォーマンスのスナップショットのクエリは通常の非同期パターンに従います。
 
-``` cs
+```cs
 PerformanceAssessmentAsync _assessmentQuery = null;
 
 void QueryPerformanceAssessment(AzureSession session)
@@ -89,6 +100,20 @@ void QueryPerformanceAssessment(AzureSession session)
 
         _assessmentQuery = null;
     };
+}
+```
+
+```cpp
+void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
+{
+    ApiHandle<PerformanceAssessmentAsync> assessmentQuery = *session->Actions()->QueryServerPerformanceAssessmentAsync();
+    assessmentQuery->Completed([] (ApiHandle<PerformanceAssessmentAsync> res)
+    {
+        // do something with the result:
+        PerformanceAssessment result = *res->Result();
+        // ...
+
+    });
 }
 ```
 
@@ -110,9 +135,9 @@ void QueryPerformanceAssessment(AzureSession session)
 
 ## <a name="statistics-debug-output"></a>統計情報のデバッグ出力
 
-クラス `ARRServiceStats` は、フレーム統計とパフォーマンス評価の両方のクエリをラップし、統計情報を集計された値として、または事前に構築された文字列として返すための便利な機能を提供します。 次のコードは、クライアント アプリケーションでサーバー側の統計情報を表示する最も簡単な方法です。
+クラス `ARRServiceStats` は、フレーム統計とパフォーマンス評価の両方のクエリをラップし、統計情報を集計された値として、または事前に構築された文字列として返すための便利な機能を提供する C# クラスです。 次のコードは、クライアント アプリケーションでサーバー側の統計情報を表示する最も簡単な方法です。
 
-``` cs
+```cs
 ARRServiceStats _stats = null;
 
 void OnConnect()

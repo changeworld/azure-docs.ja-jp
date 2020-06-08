@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: 問題の特定と診断
       href: diagnostics-role-service.md
-    - name: テナントとホスト プールの作成
+    - name: ホスト プールの作成
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md

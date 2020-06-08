@@ -59,8 +59,6 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: クラスターの容量計画
           href: ./hdinsight-capacity-planning.md
-        - name: CPU コア クォータの引き上げを要求する
-          href: ./quota-increase-request.md
         - name: クラスター管理のベスト プラクティス
           href: ./cluster-management-best-practices.md
         - name: 高可用性と信頼性
@@ -239,6 +237,8 @@
               href: ./cluster-availability-monitor-logs.md
         - name: トラブルシューティング
           items:
+            - name: CPU コア クォータの引き上げを要求する
+              href: ./quota-increase-request.md
             - name: スクリプト操作のトラブルシューティング
               href: ./troubleshoot-script-action.md
             - name: リソースの作成エラー

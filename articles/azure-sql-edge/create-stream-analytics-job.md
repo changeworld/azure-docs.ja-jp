@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595391"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685162"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) で Stream Analytics ジョブを作成する 
 
@@ -22,6 +22,9 @@ ms.locfileid: "83595391"
 
 1. 外部ストリームの入力オブジェクトと出力オブジェクトを作成する
 2. ストリーミング ジョブの作成の一部として、ストリーミング ジョブ クエリを定義する。
+
+> [!NOTE]
+> Azure SQL Edge で T-SQL ストリーミング機能を有効にするには、TF 11515 を起動オプションとして有効にするか、[DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) コマンドを使用します。 mssql.conf ファイルを使用してトレース フラグを有効にする方法の詳細については、「[mssql.conf ファイルを使用した構成](configure.md#configure-using-mssqlconf-file)」を参照してください。 この要件は、Azure SQL Edge (プレビュー) の今後の更新プログラムでは削除される予定です。
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>外部ストリームの入力オブジェクトと出力オブジェクトを構成する
 

@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74275464"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846734"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
@@ -71,7 +71,7 @@ ms.locfileid: "74275464"
 アプリケーションが動作するコネクタ グループに割り当てられていることを確認するには、次の手順に従います。
 
 1. **Azure Active Directory** に移動し、 **[エンタープライズ アプリケーション]** 、次に **[すべてのアプリケーション]** をクリックして、ポータルでアプリケーションを開きます。 アプリケーションを開き、左側のメニューから **[アプリケーション プロキシ]** を選択します。
-1. [コネクタ グループ] フィールドを調べます。 グループ内にアクティブなコネクタがない場合は、警告が表示されます。 警告が表示されない場合は、必要なすべてのポートが許可されていることの確認に進みます。
+1. [コネクタ グループ] フィールドを調べます。 グループ内にアクティブなコネクタがない場合は、警告が表示されます。 警告が表示されない場合は、[必要なポート](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)がすべて許可されていることの確認に進みます。
 1. 間違ったコネクタ グループが表示されている場合は、ドロップダウンを使用して正しいグループを選択し、警告が表示されなくなったことを確認します。 目的のコネクタ グループが表示されている場合は、警告メッセージをクリックして、コネクタ管理のページを開きます。
 1. ここから、さらに詳細に調べるための方法がいくつかあります。
 
@@ -83,7 +83,7 @@ ms.locfileid: "74275464"
 
 ## <a name="check-all-required-ports-are-open"></a>必要なすべてのポートが開いていることを確認する
 
-必要なすべてのポートが開いていることを確認するには、ポートの開放に関するドキュメントを参照してください。 必要なすべてのポートが開いている場合は、次のセクションに移動します。
+必要なすべてのポートが開いていることを確認するには、[ポートの開放に関するドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)を参照してください。 必要なすべてのポートが開いている場合は、次のセクションに移動します。
 
 ## <a name="check-for-other-connector-errors"></a>その他のコネクタ エラーを確認する
 

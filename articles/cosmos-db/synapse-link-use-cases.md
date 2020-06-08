@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f9fafc4b03d5ce18fcfedcffaf2d81f847537865
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596411"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744670"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
 
@@ -106,7 +106,7 @@ Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクショ
 
 次の図は、Azure Cosmos DB を使用したワークロード パターンを示しています。![Azure Synapse Link for Azure Cosmos DB のワークロード パターン](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
 
-ここでは、20 の国にわったてグローバルな運用を行っている eコマース企業 CompanyXYZ の例を示し、在庫管理プラットフォームのトランザクションと分析の両方の要件に対応する単一のリアルタイム データベースとして Azure Cosmos DB を選択することの利点を示します。
+ここでは、20 の国/地域にわたってグローバルな運用を行っている eコマース企業 CompanyXYZ の例を示し、在庫管理プラットフォームのトランザクションと分析の両方の要件に対応する単一のリアルタイム データベースとして Azure Cosmos DB を選択することの利点を示します。
 
 * CompanyXYZ の中核ビジネスは在庫管理システムに依存しています。このため、可用性と信頼性が中核となる要件です。 Azure Cosmos DB を使用することの利点:
 

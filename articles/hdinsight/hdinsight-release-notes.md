@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 05/12/2020
+ms.openlocfilehash: b7489c49b7469feacfd5b982615419741d286998
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084891"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849707"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -48,6 +48,24 @@ HDInsight のマネージド ディスクはすべて、Azure Storage Service En
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。 
 
+### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark クラスターの Spark 2.1 および 2.2 の廃止
+2020 年 7 月 1 日以降、HDInsight 3.6 で Spark 2.1 と 2.2 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 3.6 で Spark 2.3 に移行することを検討してください。
+
+### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark クラスターの Spark 2.3 の廃止
+2020 年 7 月 1 日以降、HDInsight 4.0 で Spark 2.3 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 4.0 で Spark 2.4 に移行することを検討してください。
+
+### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka クラスターの Kafka 1.1 の廃止
+2020 年 7 月 1 日以降、HDInsight 4.0 で Kafka 1.1 を使用して新しい Kafka クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 4.0 で Kafka 2.1 に移行することを検討してください。
+
+### <a name="hbase-20-to-216"></a>HBase 2.0 から 2.1.6
+今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1.6 にアップグレードされます
+
+### <a name="spark-240-to-244"></a>Spark 2.4.0 から 2.4.4
+今後の HDInsight 4.0 リリースでは、Spark のバージョンがバージョン 2.4.0 から 2.4.4 にアップグレードされます
+
+### <a name="kafka-210-to-211"></a>Kafka 2.1.0 から 2.1.1
+今後の HDInsight 4.0 リリースでは、Kafka のバージョンがバージョン 2.1.0 から 2.1.1 にアップグレードされます
+
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>ヘッド ノードには最低 4 コアの VM が必要 
 HDInsight クラスターの高可用性および信頼性を確保するには、ヘッド ノードに最低 4 コアの VM が必要です。 2020 年 4 月 6 日以降、お客様は新しい HDInsight クラスターのヘッド ノードに、4 コア以上の VM のみを選択することができます。 既存のクラスターは正常に実行されます。 
 
@@ -56,9 +74,6 @@ HDInsight クラスターの高可用性および信頼性を確保するには�
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
 HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 今後のリリースでは、HDInsight では代わりに Azure 仮想マシン スケール セットを使用します。 Azure 仮想マシン スケール セットの詳細をご確認ください。
-
-### <a name="hbase-20-to-21"></a>HBase 2.0 から 2.1
-今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1 にアップグレードされます。
 
 ## <a name="bug-fixes"></a>バグの修正
 HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23105a78e2ba34cf6a45f749ebfdd6b034ebf0dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227779"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680146"
 ---
 # <a name="how-to-investigate-risk"></a>方法:リスクの調査
 
@@ -74,6 +74,9 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 
 - サインインを侵害ありと確認
 - サインインを安全と確認
+
+> [!NOTE] 
+> Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 ただし、サインイン レポートには、対話型のサインインだけが表示されます。非対話型サインインで発生した危険なサインインが表示されることがありますが、Azure AD サインイン レポートにはそのサインインは表示されません。
 
 ## <a name="risk-detections"></a>リスク検出
 

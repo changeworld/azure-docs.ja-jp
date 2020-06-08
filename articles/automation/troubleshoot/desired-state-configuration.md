@@ -1,6 +1,6 @@
 ---
-title: Azure Automation State Configuration のトラブルシューティング
-description: この記事では、Azure Automation State Configuration のトラブルシューティングについて説明します。
+title: Azure Automation State Configuration の問題のトラブルシューティング
+description: この記事では、Azure Automation State Configuration に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652802"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681377"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>Azure Automation State Configuration に関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Automation State Configuration の問題のトラブルシューティング
 
-この記事では、Azure Automation State Configuration で構成のコンパイルまたはデプロイを行っているときに発生する問題のトラブルシューティングについて説明します。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って、モジュールを最新バージョンに更新できます。
+この記事では、Azure Automation State Configuration で構成のコンパイルまたはデプロイを行っているときに発生する問題のトラブルシューティングと解決方法について説明します。 State Configuration の機能の一般的な情報については、[Azure Automation State Configuration の概要](../automation-dsc-overview.md)に関するページをご覧ください。
 
 ## <a name="diagnose-an-issue"></a>問題の診断
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-この問題は、証明書が正しくないまたは期限切れになっていることが原因で発生します。 [証明書の有効期限と再登録](../automation-dsc-onboarding.md#re-registering-a-node)に関するページを参照してください。
+この問題は、証明書が正しくないまたは期限切れになっていることが原因で発生します。 「[ノードを再登録する](../automation-dsc-onboarding.md#re-register-a-node)」を参照してください。
 
 この問題は、* **.azure-automation.net** へのアクセスを許可しないプロキシ構成が原因である場合もあります。 詳細については、「[プライベート ネットワークの構成](../automation-dsc-overview.md#network-planning)」を参照してください。 
 
@@ -239,11 +236,11 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 構成に示されている各ノード構成の `PSDscAllowPlainTextPassword` を true に設定するために、適切な `ConfigurationData` を渡してください。 [Azure Automation State Configuration での DSC 構成のコンパイル](../automation-dsc-compile.md)に関するページを参照してください。
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>シナリオ:DSC 拡張機能からのオンボード時に "拡張機能の処理エラー" というエラーが発生する
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>シナリオ:DSC 拡張機能からマシンを有効にする時に "拡張機能の処理エラー" というエラーが発生する
 
 ### <a name="issue"></a>問題
 
-DSC 拡張機能を使用してオンボードするときに、次のエラーを含む障害が発生します。
+DSC 拡張機能を使用してマシンを有効にするときに、次のエラーを含む障害が発生します。
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 ### <a name="resolution"></a>解像度
 
 * ノードに割り当てる名前が、サービスに存在する名前と正確に一致していることを確認します。
-* ノード構成名を含めないようにすることもできます。この場合、ノードはオンボードされますが、ノード構成は割り当てられません。
+* ノード構成名を含めないようにすることもできます。この場合、ノードは有効化されますが、ノード構成は割り当てられません。
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>シナリオ:PowerShell を使用してノードを登録すると "1 つ以上のエラーが発生しました" というエラーが発生する
 
@@ -274,10 +271,10 @@ One or more errors occurred.
 
 ### <a name="resolution"></a>解像度
 
-別のクラウドまたはオンプレミスに対して定義されているかのように、クロスサブスクリプション ノードを扱います。 次のいずれかのオンボード オプションを使用してノードを登録します。
+別のクラウドまたはオンプレミスに対して定義されているかのように、クロスサブスクリプション ノードを扱います。 マシンを有効化するための次のいずれかのオプションを使用してノードを登録します。
 
-* Windows: [オンプレミスの、あるいは Azure と AWS 以外のクラウド上の物理または仮想 Windows マシン](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines)。
-* Linux: [オンプレミスの、あるいは Azure 以外のクラウド上の物理または仮想 Linux マシン](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)。
+* Windows: [オンプレミスの、あるいは Azure と AWS 以外のクラウド上の物理または仮想 Windows マシン](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines)。
+* Linux: [オンプレミスの、あるいは Azure 以外のクラウド上の物理または仮想 Linux マシン](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)。
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>シナリオ:"プロビジョニングに失敗しました" というエラー メッセージ
 
@@ -295,7 +292,7 @@ Provisioning has failed
 
 ### <a name="resolution"></a>解像度
 
-ご利用のノードが仮想プライベート ネットワーク (VPN) 内にあるのか、または Azure への接続に関する他の問題を抱えているかを判断します。 [ソリューションをオンボードする際のエラーに対するトラブルシューティング](onboarding.md)に関するページを参照してください。
+ご利用のノードが仮想プライベート ネットワーク (VPN) 内にあるのか、または Azure への接続に関する他の問題を抱えているかを判断します。 [「機能のデプロイに関する問題のトラブルシューティング」](onboarding.md)を参照してください。
 
 ## <a name="scenario-failure-with-a-general-error-when-applying-a-configuration-in-linux"></a><a name="failure-linux-temp-noexec"></a>シナリオ:Linux で構成を適用するときに、一般的なエラーで障害が発生する
 

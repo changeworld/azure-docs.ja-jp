@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236911"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836092"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
 
@@ -317,7 +317,7 @@ if (businessTitleFacet != "")
 
 **ファセットの数が正確に取得されたかどうかの確認**
 
-特定の状況では、ファセットの数が結果セットと一致しないことがあります ([Azure Cognitive Search でのファセット ナビゲーションに関するフォーラムの投稿](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)に関する記事を参照)。
+特定の状況では、ファセットの数が結果セットと一致しないことがあります ([Azure Cognitive Search でのファセット ナビゲーション (Microsoft Q&A 質問ページ)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html) に関する記事を参照)。
 
 シャーディング アーキテクチャのために、ファセットの数が正しくなくなる可能性があります。 すべての検索インデックスに複数のシャードがあり、それぞれのシャードがドキュメント数によって上位 N ファセットを報告すると、単一の結果に結合されます。 一部のシャードの一致値が多く、他のシャードは少ない場合、一部のファセットの値が結果に含まれないか、または数が少なくなる可能性があります。
 

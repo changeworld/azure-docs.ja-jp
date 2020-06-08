@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877390"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827049"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -147,7 +147,7 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 1. 既定のプロキシを使用できるようにするには、次のレジストリ値 (DWORD) `UseDefaultProxyForBackendRequests = 1` を "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector" にあるコネクタ構成レジストリ キーに追加します。
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>手順 2:netsh コマンドを使用してプロキシ サーバーを手動で構成する
-1.  グループ ポリシーの [マシン別にプロキシを設定する] を有効にします。 これは、Computer Configuration\Policies\Administrative Templates\Windows Components\Internet Explorer にあります。 このポリシーを、ユーザーごとに設定する代わりに設定する必要があります。
+1.  グループ ポリシーの [マシン別にプロキシを設定する] を有効にします。 この場所は次のとおりです: コンピューターの構成\ポリシー\管理用テンプレート\Windows コンポーネント\Internet Explorer。 このポリシーを、ユーザーごとに設定する代わりに設定する必要があります。
 2.  サーバーで `gpupdate /force` を実行するか、サーバーを再起動して、更新されたグループ ポリシー設定を使用していることを確認します。
 3.  管理者権限で管理者特権でのコマンド プロンプトを起動し、`control inetcpl.cpl` を入力します。
 4.  必要なプロキシ設定を構成します。 
@@ -162,7 +162,7 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 
 コネクタの接続の問題を特定してトラブルシューティングを行う最善の方法は、コネクタ サービスの開始時にネットワーク キャプチャを実行することです。 ネットワーク トレースをキャプチャおよびフィルター処理する際に役立つヒントを簡単に紹介します。
 
-任意の監視ツールを使用することができます。 ここでは、Microsoft Message Analyzer を使用しています。 [これは Microsoft Web サイトからダウンロード](https://www.microsoft.com/download/details.aspx?id=44226)できます。
+任意の監視ツールを使用することができます。 ここでは、Microsoft Message Analyzer を使用しています。
 
 以下に示すのは Message Analyzer の例ですが、原則はどの分析ツールでも同じです。
 
@@ -204,4 +204,4 @@ SYN パケットは、TCP 接続を確立するために最初に送信される
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
-* コネクタの接続に問題がある場合は、[Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD)に質問を投稿するか、サポート チケットを作成してください。
+* コネクタの接続に問題がある場合は、[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)に質問を投稿するか、サポート チームに対するチケットを作成してください。

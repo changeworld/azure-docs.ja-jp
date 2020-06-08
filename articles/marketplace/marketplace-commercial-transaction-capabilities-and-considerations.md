@@ -1,5 +1,5 @@
 ---
-title: コマーシャル マーケットプレースの販売機能
+title: Microsoft コマーシャル マーケットプレースの取引機能
 description: この記事では、コマーシャル マーケットプレース販売オプションの価格、課金、請求、支払いに関する考慮事項について説明します。
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4aeae69dd50e8c233a1903f6f2c7bd7795b8d7b9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857225"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800045"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -165,7 +165,7 @@ Microsoft Commercial Marketplace で公開する特定の SaaS 製品の場合�
 
 詳細と法的なポリシーについては、パートナー センターから入手できる「[発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)」を確認してください。
 
-課金に関する質問のサポートを受けるには、[コマーシャル マーケットプレースの公開元のサポート](https://partner.microsoft.com/support/v2/?stage=1)に問い合わせてください。
+課金に関する質問のサポートを受けるには、[コマーシャル マーケットプレースの公開元のサポート](https://aka.ms/marketplacepublishersupport)に問い合わせてください。
 
 ## <a name="transact-requirements"></a>販売の要件
 

@@ -1,5 +1,6 @@
 ---
-title: Microsoft ID プラットフォーム アクセス トークン リファレンス | Azure
+title: Microsoft ID プラットフォーム アクセス トークン | Azure
+titleSuffix: Microsoft identity platform
 description: Azure AD v1.0 および Microsoft ID プラットフォーム (v2.0) エンドポイントによって出力されるアクセス トークンについて説明します。
 services: active-directory
 author: hpsin
@@ -8,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/27/2020
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ad0f82d4266c42e404200bf6c341623794a6c36e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690345"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772235"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
-アクセス トークンにより、クライアントは Azure によって保護された API を安全に呼び出すことができます。 Microsoft ID プラットフォーム アクセス トークンは [JWT](https://tools.ietf.org/html/rfc7519)、つまり Azure によって署名された Base64 でエンコードされた JSON オブジェクトです。 アクセス トークンの内容は特定のリソースのみを対象としているため、クライアントはトークンを不透明型の文字列として扱う必要があります。 検証とデバッグを目的として、開発者は [jwt.ms](https://jwt.ms) などのサイトを使用して、JWT をデコードすることができます。 クライアントは、さまざまなプロトコルを使用して、v1.0 エンドポイントまたは v2.0 エンドポイントのどちらからでもアクセス トークンを取得できます。
+アクセス トークンにより、クライアントは保護された API を安全に呼び出すことができます。 Microsoft ID プラットフォーム アクセス トークンは [JWT](https://tools.ietf.org/html/rfc7519)、つまり Microsoft ID プラットフォームによって署名された Base64 でエンコードされた JSON オブジェクトです。 アクセス トークンの内容は特定のリソースのみを対象としているため、クライアントはトークンを不透明型の文字列として扱う必要があります。 検証とデバッグを目的として、開発者は [jwt.ms](https://jwt.ms) などのサイトを使用して、JWT (JSON Web トークン) をデコードすることができます。 クライアントは、さまざまなプロトコルを使用して、v1.0 エンドポイントまたは v2.0 エンドポイントのどちらからでもアクセス トークンを取得できます。
 
-クライアントがアクセス トークンを要求すると、Azure AD も、アプリで消費されるそのアクセス トークンに関する何らかのメタデータを返します。 この情報には、アクセス トークンの有効期限や、それが有効なスコープが含まれます。 このデータを使用すると、アプリはアクセス トークン自体を解析しなくても、そのアクセス トークンのインテリジェントなキャッシュを実行できます。
+クライアントがアクセス トークンを要求すると、Microsoft ID プラットフォームからは、アプリで消費されるそのアクセス トークンに関する何らかのメタデータも返されます。 この情報には、アクセス トークンの有効期限や、それが有効なスコープが含まれます。 このデータを使用すると、アプリはアクセス トークン自体を解析しなくても、そのアクセス トークンのインテリジェントなキャッシュを実行できます。
 
 ご自分のアプリケーションが、クライアントからアクセス要求が可能なリソース (Web API) である場合、アクセス トークンを使って、認証と承認に使用する有用な情報 (ユーザー、クライアント、発行元、アクセス許可など) を提供できます。
 
@@ -55,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEps
 
 ## <a name="claims-in-access-tokens"></a>アクセス トークン内のクレーム
 
-JWT は次の 3 つの部分に分かれています。
+JWT (JSON Web トークン) は 3 つの部分に分かれています。
 
 * **ヘッダー** - トークンの種類や署名方法に関する情報など、[トークンの検証](#validating-tokens)方法に関する情報が提供されます。
 * **ペイロード** - サービスを呼び出そうとしているユーザーまたはアプリに関する重要なデータがすべて含まれています。
@@ -161,7 +162,7 @@ Microsoft ID は、アプリケーションに関連している可能性のあ�
 | `otp` | 電子メールまたはテキスト メッセージを使用したワンタイム パスコード。 |
 | `fed` | フェデレーション認証アサーション (JWT や SAML など) が使用されたことを示します。 |
 | `wia` | Windows 統合認証 |
-| `mfa` | 多要素認証が使用されたことを示します。 この値が存在する場合は、他の認証方法も含まれます。 |
+| `mfa` | [多要素認証](../authentication/concept-mfa-howitworks.md)が使用されました。 この値が存在する場合は、他の認証方法も含まれます。 |
 | `ngcmfa` | `mfa` と同等です。特定の高度な資格情報の種類のプロビジョニングに使用されます。 |
 | `wiaormfa`| ユーザーが Windows 資格情報または MFA 資格情報を使用して認証されたことを示します。 |
 | `none` | 認証は実行されませんでした。 |

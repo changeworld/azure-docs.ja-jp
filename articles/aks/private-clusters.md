@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4f0d702a213c4c34024c043edc50d25e6696cbc1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610940"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849690"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -103,12 +103,13 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 * Availability Zones は現在、特定のリージョンでサポートされています。このドキュメントの冒頭をご覧ください 
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベート クラスターに適用されます。
 * プライベート Azure 仮想ネットワーク内のプライベート Azure Container Instances (ACI) をスピンすることは、プライベート クラスター内の仮想ノードではサポートされていません
-* プライベート クラスターですぐに使用できる Azure DevOps 統合はサポートされていません
+* Azure DevOps Microsoft でホストするエージェントとプライベート クラスターの組み合わせはサポートされていません。 [セルフホステッド エージェント][devops-agents]を使用することを検討してください。 
 * Azure Container Registry をプライベート AKS で使用できるようにする必要があるカスタマーは、Container Registry 仮想ネットワークをエージェントクラスターの仮想ネットワークとピアリングしてください。
 * Azure Dev Spaces は現在サポートされていません
 * 既存の AKS クラスターからプライベートクラスターへの変換はサポートされていません
 * カスタマーのサブネット内でプライベート エンドポイントを削除または変更すると、クラスターが機能しなくなります。 
 * コンテナー用 Azure Monitor の Live Data は現在サポートされていません。
+* アップタイム SLA は現在サポートされていません。
 
 
 <!-- LINKS - internal -->
@@ -120,4 +121,4 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-
+[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops

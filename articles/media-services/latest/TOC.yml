@@ -195,6 +195,19 @@
         - name: ストリーミング
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: トラブルシューティング
+      items:
+        - name: よく寄せられる質問
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: エラー コード
+          items:
+            - name: ストリーミング エンドポイントのエラー コード
+              href: streaming-endpoint-error-codes.md
+            - name: ライブ イベントのエラー コード
+              href: live-event-error-codes.md
+            - name: ジョブ エラー コード
+              href: job-error-codes.md
     - name: v2 から v3 への移行
       items:
         - name: v2 と v3 の比較
@@ -340,19 +353,6 @@
           href: download-results-howto.md
         - name: 説明的なオーディオの通知
           href: signal-descriptive-audio-howto.md
-    - name: トラブルシューティング
-      items:
-        - name: よく寄せられる質問
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: エラー コード
-          items:
-            - name: ストリーミング エンドポイントのエラー コード
-              href: streaming-endpoint-error-codes.md
-            - name: ライブ イベントのエラー コード
-              href: live-event-error-codes.md
-            - name: ジョブ エラー コード
-              href: job-error-codes.md
 - name: リファレンス
   items:
     - name: OpenAPI の仕様 (Swagger)

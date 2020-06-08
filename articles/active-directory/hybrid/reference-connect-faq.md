@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77149815"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827150"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -265,9 +265,9 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 
 * Azure AD Connect のサポートに関する一般的な破損時補償の技術的な解決策について、KB を検索してください。
 
-[Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
 
-* [Azure AD コミュニティ](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)にアクセスして、技術的な質問と回答を探し、質問をすることができます。
+* [Azure AD コミュニティ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)にアクセスして、技術的な質問と回答を探し、質問をすることができます。
 
 [Azure AD のサポートを受ける](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 

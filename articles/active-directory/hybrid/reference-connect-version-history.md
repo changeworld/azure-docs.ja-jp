@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112203"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725297"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -48,6 +48,18 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >
 >Azure AD Connect を最新バージョンにアップグレードする方法の詳細については、[この記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)を参照してください。
 
+## <a name="15300"></a>1.5.30.0
+
+### <a name="release-status"></a>リリースの状態
+2020 年 5 月 7 日:ダウンロード対象としてリリース済み
+
+### <a name="fixed-issues"></a>修正された問題
+この修正プログラムのビルドでは、孫コンテナーのみが選択されている場合に、選択されていないドメインがウィザードの UI から誤って選択されるという問題が修正されます。
+
+
+>[!NOTE]
+>このバージョンには、新しい Azure AD Connect 同期 V2 エンドポイント API が含まれています。  現在、この新しい V2 エンドポイントはパブリック プレビュー段階にあります。  新しい V2 エンドポイント API を使用するには、このバージョン以降が必要です。  ただし、このバージョンをインストールするだけでは、V2 エンドポイントは有効になりません。 V2 エンドポイントを有効にしない限り、V1 エンドポイントが引き続き使用されます。  有効にしてパブリック プレビューにオプトインするには、[「Azure AD Connect 同期 V2 エンドポイント API (パブリック プレビュー)」](how-to-connect-sync-endpoint-api-v2.md)の手順に従う必要があります。  
+
 ## <a name="15290"></a>1.5.29.0
 
 ### <a name="release-status"></a>リリースの状態
@@ -70,7 +82,10 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 2020 年 4 月 9 日ダウンロード対象としてリリース済み
 
 ### <a name="fixed-issues"></a>修正された問題
-この修正プログラム ビルドでは、グループ フィルタリング機能を有効にし、ソース アンカーとして mS-DS-ConsistencyGuid を使用している場合、ビルド 1.5.18.0 の問題が修正されます。
+- この修正プログラム ビルドでは、グループ フィルタリング機能を有効にし、ソース アンカーとして mS-DS-ConsistencyGuid を使用している場合、ビルド 1.5.18.0 の問題が修正されます。
+- すべての Set-ADSync* Permissions コマンドレットで使用される DSACLS コマンドを呼び出すと、次のいずれかのエラーが発生するという ADSyncConfig PowerShell モジュールの問題を修正しました。
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 > [!IMPORTANT]
 > **[In from AD - Group Join]\(AD からの受信 - グループ結合\)** 同期ルールを複製し、 **[In from AD - Group Common]\(AD からの受信 - グループ共通\)** 同期ルールを複製しておらず、アップグレードを計画している場合は、アップグレードの一環として次の手順を実行します。
@@ -1324,7 +1339,6 @@ AD FS の管理
 **新しいプレビュー機能:**
 
 * [ユーザーの書き戻し](how-to-connect-preview.md#user-writeback)
-* [グループの書き戻し](how-to-connect-preview.md#group-writeback)
 * [デバイスの書き戻し](how-to-connect-device-writeback.md)
 * [ディレクトリ拡張機能](how-to-connect-preview.md)
 

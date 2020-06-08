@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: f396f46fa77f75452ac8ac3cd98bccd58fe0dfe4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613304"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746977"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -80,15 +80,14 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
-タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**と**サブスクリプション**です。 リソース グループまたはサブスクリプションに対して場所またはタグを適用するポリシーでは、**mode**を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型または `Microsoft.Resources/subscriptions` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/management/tag-support.md)」を参照してください。
+タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**と**サブスクリプション**です。 リソース グループまたはサブスクリプションに対して場所またはタグを適用するポリシー定義では、**mode**を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型または `Microsoft.Resources/subscriptions` 型をターゲットにする必要があります。 例については、「[パターン: タグ - サンプル 1](../samples/pattern-tags.md)」を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/management/tag-support.md)」を参照してください。
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />リソース プロバイダーのモード (プレビュー)
 
 現在、プレビューの間は、次のリソース プロバイダー モードがサポートされています。
 
-- [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用するポリシーでは、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。
-- Azure で自己管理型 AKS エンジン Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。
-  このリソース プロバイダー モードを使用するポリシーでは、[EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果を使用する**必要があります**。
+- [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用するポリシーでは、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。 このモデルは "_非推奨_" となっています。
+- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用するポリシーでは、[EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果を使用する**必要があります**。
 - [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。
 
 > [!NOTE]
@@ -677,7 +676,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 - REST API / ARMClient
 
   ```http
-  GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
+  GET https://management.azure.com/providers/?api-version=2019-10-01&$expand=resourceTypes/aliases
   ```
 
 ### <a name="understanding-the--alias"></a>[*] エイリアスについて

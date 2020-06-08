@@ -1,15 +1,15 @@
 ---
 title: Batch 用の Azure CLI の概要
 description: Azure Batch サービスのリソースを管理するために使用できる Azure CLI の Batch コマンドの概要を簡単に説明します。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117371"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780220"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -162,9 +162,9 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)を参照してください。
-* Batch リソースの詳細については、[開発者向けの Azure Batch の概要](batch-api-basics.md)に関するページを参照してください。
-* Batch テンプレートを使用してコードの記述なしでプール、ジョブ、およびタスクを作成する方法については、「[Azure Batch CLI のテンプレートとファイル転送の使用](batch-cli-templates.md)」を参照してください。
+* [Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)に関するページを参照してください。
+* [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
+* 「[Azure Batch CLI テンプレートとファイル転送を使用する](batch-cli-templates.md)」で、コードを記述せずに、Batch テンプレートを使用して、プール、ジョブ、およびタスクを作成する方法について学習します。
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
