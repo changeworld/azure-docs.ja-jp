@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: cc994875e39410ecf01417c4d08248d5bc7d034a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589824"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683120"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS の反復的アプリ設計
 
@@ -115,7 +115,7 @@ HTTPS 予測エンドポイントから公開した LUIS アプリをテスト�
 
 エクスポートされたファイルには次が含まれて**いません**。
 
-* 機械学習された情報 (アプリはインポート後に再度トレーニングされるため)
+* 機械学習の情報 (アプリはインポート後に再度トレーニングされるため)
 * 共同作成者情報
 
 LUIS アプリのスキーマをバックアップするには、[LUIS ポータル](https://www.luis.ai/applications)からバージョンをエクスポートします。
