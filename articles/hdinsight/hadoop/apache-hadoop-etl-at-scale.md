@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 5d6d4a41deb1ef96789a48eefba306be4dfb20eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cf16c2cd119eb3eec64104b2573ff7de2cc76c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745129"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020083"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -106,9 +106,9 @@ HBase の適応性は、HDInsight クラスター内のノードの数に依存�
 
 Azure には、3 つの PaaS リレーショナル データベースが用意されています。
 
-- [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) は、Microsoft SQL Server の実装です。 パフォーマンスの詳細については、[Azure SQL Database のパフォーマンスのチューニング](../../sql-database/sql-database-performance-guidance.md)に関する記事を参照してください。
-- [Azure Database for MySQL](../../mysql/overview.md) は、Oracle MySQL の実装です。
-- [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) は、PostgreSQL の実装です。
+* [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) は、Microsoft SQL Server の実装です。 パフォーマンスの詳細については、「[Azure SQL Database のパフォーマンスのチューニング](../../azure-sql/database/performance-guidance.md)」を参照してください。
+* [Azure Database for MySQL](../../mysql/overview.md)  は、Oracle MySQL の実装です。
+* [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) は、PostgreSQL の実装です。
 
 これらの製品をスケールアップするには、CPU とメモリを追加します。  I/O パフォーマンスを向上させるため、製品と共にプレミアム ディスクを使用することも選択できます。
 
