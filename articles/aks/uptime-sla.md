@@ -4,12 +4,13 @@ description: Azure Kubernetes Service (AKS) API サーバーのオプション�
 services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: e0e1399f69640dddfd618ac99637023390f28a92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: references_regions
+ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683208"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299555"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
@@ -25,18 +26,6 @@ ms.locfileid: "83683208"
 ## <a name="sla-terms-and-conditions"></a>SLA の使用条件
 
 アップタイム SLA は有料の機能であり、クラスターごとに有効化されます。 アップタイム SLA の価格は、個々のクラスターのサイズではなく、個別のクラスターの数によって決まります。 詳細については、[アップタイム SLA の価格の詳細](https://azure.microsoft.com/pricing/details/kubernetes-service/)に関するページを参照してください。
-
-## <a name="region-availability"></a>利用可能なリージョン
-
-アップタイム SLA は、次のリージョンで使用できます。
-
-* オーストラリア東部
-* カナダ中部
-* 米国東部
-* 米国東部 2
-* 米国中南部
-* 東南アジア
-* 米国西部 2
 
 ## <a name="before-you-begin"></a>開始する前に
 

@@ -194,6 +194,30 @@
               href: wrangling-data-flow-overview.md
             - name: サポートされる関数
               href: wrangling-data-flow-functions.md
+    - name: データ レイクおよび EDW のデータ移行
+      items:
+        - name: Azure Data Factory を選ぶ理由
+          href: data-migration-guidance-overview.md
+        - name: データを AWS S3 から Azure に移行する
+          href: data-migration-guidance-s3-azure-storage.md
+        - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
+          href: data-migration-guidance-hdfs-azure-storage.md
+        - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
+          href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: マッピング データ フローを使用した変換
+      items:
+        - name: 固定幅のテキスト ファイルを処理する
+          href: how-to-fixed-width.md
+        - name: エラー行の処理
+          href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB から CosmosDB へ
+          href: how-to-sqldb-to-cosmosdb.md
+    - name: オンプレミスからの SSIS の移行
+      items:
+        - name: SSIS の移行の概要
+          href: scenario-ssis-migration-overview.md
+        - name: Azure SQL Managed Instance への SSISDB の移行
+          href: scenario-ssis-migration-ssisdb-mi.md
     - name: ロールとアクセス許可
       href: concepts-roles-permissions.md
     - name: 名前付け規則
@@ -697,32 +721,6 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: シナリオ
-  items:
-    - name: データ レイクおよび EDW のデータ移行
-      items:
-        - name: Azure Data Factory を選ぶ理由
-          href: data-migration-guidance-overview.md
-        - name: データを AWS S3 から Azure に移行する
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: マッピング データ フローを使用した変換
-      items:
-        - name: 固定幅のテキスト ファイルを処理する
-          href: how-to-fixed-width.md
-        - name: エラー行の処理
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB から CosmosDB へ
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: オンプレミスからの SSIS の移行
-      items:
-        - name: SSIS の移行の概要
-          href: scenario-ssis-migration-overview.md
-        - name: Azure SQL Managed Instance への SSISDB の移行
-          href: scenario-ssis-migration-ssisdb-mi.md
 - name: リファレンス
   items:
     - name: データ フローのスクリプト

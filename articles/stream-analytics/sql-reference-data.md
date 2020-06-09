@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651933"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021689"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
 
@@ -40,7 +40,7 @@ Azure portal を使用して参照入力ソースとして Azure SQL Database �
 
    ![SQL Database の参照の構成](./media/sql-reference-data/sql-input-config.png)
 
-3. SQL クエリ エディターでスナップショット クエリをテストします。 詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](../sql-database/sql-database-connect-query-portal.md)」をご覧ください
+3. SQL クエリ エディターでスナップショット クエリをテストします。 詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](../azure-sql/database/connect-query-portal.md)」をご覧ください
 
 ### <a name="specify-storage-account-in-job-config"></a>ジョブの構成でストレージ アカウントを指定する
 
@@ -69,7 +69,7 @@ Visual Studio を使用して参照入力ソースとして Azure SQL Database �
 
 ### <a name="create-a-sql-database-table"></a>SQL Database テーブルの作成
 
-SQL Server Management Studio を使用して、参照データを格納するためのテーブルを作成します。 詳しくは、「[SSMS を使用して最初の Azure SQL データベースを設計する](../sql-database/sql-database-design-first-database.md)」をご覧ください。
+SQL Server Management Studio を使用して、参照データを格納するためのテーブルを作成します。 詳しくは、「[SSMS を使用して最初の Azure SQL データベースを設計する](../azure-sql/database/design-first-database-tutorial.md)」をご覧ください。
 
 後の例で使用するテーブルの例は、次のステートメントで作成しました。
 
@@ -129,7 +129,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ## <a name="delta-query"></a>デルタ クエリ
 
-デルタ クエリを使用するときは、[Azure SQL Database のテンポラル テーブル](../sql-database/sql-database-temporal-tables.md)をお勧めします。
+デルタ クエリを使用するときは、[Azure SQL Database のテンポラル テーブル](../azure-sql/temporal-tables.md)をお勧めします。
 
 1. Azure SQL Database にテンポラル テーブルを作成します。
    

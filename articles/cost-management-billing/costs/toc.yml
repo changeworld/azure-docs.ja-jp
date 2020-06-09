@@ -35,6 +35,8 @@
           href: manage-automation.md
         - name: EA から MCA API に移行する
           href: migrate-cost-management-api.md
+        - name: グループとフィルターのオプション
+          href: group-filter.md
     - name: 操作方法ガイド
       items:
         - name: 予期しない料金の防止と分析

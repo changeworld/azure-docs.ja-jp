@@ -15,6 +15,11 @@
       href: provision-vm.md
     - name: Ubuntu Data Science Virtual Machine を作成する
       href: dsvm-ubuntu-intro.md
+- name: チュートリアル
+  items:
+    - name: ARM テンプレートを使用して DSVM を作成する
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: 概念
   items:
     - name: ディープ ラーニングと AI のフレームワーク

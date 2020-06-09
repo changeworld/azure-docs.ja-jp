@@ -447,7 +447,7 @@
             - name: 接続の問題に対する Resource Health の使用
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: DTU を仮想コアに移行する
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: データベース リソースをスケーリングする
               href: database/single-database-scale.md
             - name: プール リソースをスケーリングする

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654426"
+ms.locfileid: "83596341"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -41,7 +41,7 @@ ms.locfileid: "83654426"
 
  - Azure Machine Learning コンピューティング インスタンス
 
-     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
+     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
          - **tutorials** ではなく **how-to-use-azureml** フォルダーを複製します
      - `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` にある仮想ネットワーク セットアップ ノートブックを実行して、分散強化学習に使用されるネットワーク ポートを開きます。
      - サンプル ノートブック `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb` を実行します
@@ -49,7 +49,7 @@ ms.locfileid: "83654426"
  - 独自の Jupyter Notebook サーバー
 
     - [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) をインストールします。
-    - [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py) をインストールします: `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - [Azure Machine Learning RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug) をインストールします: `pip install --upgrade azureml-contrib-reinforcementlearning`
     - [ワークスペース構成ファイル](how-to-configure-environment.md#workspace)を作成します。
     - 仮想ネットワーク [セットアップ ノートブック](https://aka.ms/azure-rl-env-setup)を実行して、分散強化学習に使用されるネットワーク ポートを開きます。
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>強化学習の推定器を作成する
 
-このセクションでは、[ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) を使用して、Azure Machine Learning にトレーニング ジョブを送信する方法について説明します。
+このセクションでは、[ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) を使用して、Azure Machine Learning にトレーニング ジョブを送信する方法について説明します。
 
 Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を簡単に指定できます。 Azure Machine Learning の推定器のパターンの詳細については、[推定器を使用してモデルをトレーニングする方法](how-to-train-ml-models.md)に関するページを参照してください。
 
@@ -418,7 +418,7 @@ run.wait_for_completion()
 1. ウィジェットが読み込まれるまで待ちます。
 1. 実行の一覧でヘッドの実行を選択します。
 
-スタジオで実行の追加情報を表示するには、 **[Click here to see the run in Azure Machine Learning studio]\(Azure Machine Learning スタジオで実行を表示するには、ここをクリックしてください\)** を選択します。 この情報には、実行の進行中、または完了後にアクセスできます。
+スタジオで実行の追加情報を表示するには、**[Click here to see the run in Azure Machine Learning studio]\(Azure Machine Learning スタジオで実行を表示するには、ここをクリックしてください\)** を選択します。 この情報には、実行の進行中、または完了後にアクセスできます。
 
 ![実行の詳細を示す折れ線グラフのウィジェット](./media/how-to-use-reinforcement-learning/pong-run-details-widget.png)
 

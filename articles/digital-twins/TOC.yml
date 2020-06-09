@@ -1,78 +1,19 @@
 - name: Azure Digital Twins
   href: index.yml
 - name: 概要
-  items:
-    - name: Azure Digital Twins について
-      href: about-digital-twins.md
 - name: クイックスタート
   expanded: true
-  items:
-    - name: 使用可能な部屋を確認する
-      href: quickstart-view-occupancy-dotnet.md
 - name: チュートリアル
   items:
     - name: Digital Twins によるビルディングの監視
-      items:
-        - name: デプロイと構成
-          href: tutorial-facilities-setup.md
-        - name: 状態のプロビジョニングと監視
-          href: tutorial-facilities-udf.md
-        - name: Logic Apps を使用した通知
-          href: tutorial-facilities-events.md
-        - name: Time Series Insights を使用したイベントの視覚化
-          href: tutorial-facilities-analyze.md
 - name: 概念
   items:
-    - name: Digital Twins オブジェクト モデルと空間インテリジェンス グラフ
-      href: concepts-objectmodel-spatialgraph.md
-    - name: デバイスの接続性とテレメトリの受信
-      href: concepts-device-ingress.md
-    - name: データ処理とユーザー定義関数
-      href: concepts-user-defined-functions.md
-    - name: ルーティング イベントおよびメッセージ
-      href: concepts-events-routing.md
-    - name: パブリック プレビューのサービスの制限
-      href: concepts-service-limits.md
     - name: Security
-      items:
-        - name: セキュリティの運用方法
-          href: security-best-practices.md
-        - name: ロールベースのアクセス制御
-          href: security-role-based-access-control.md
-        - name: ロールの割り当てを作成および管理する
-          href: security-create-manage-role-assignments.md
-        - name: 管理 API の認証
-          href: security-authenticating-apis.md
 - name: 操作方法ガイド
   items:
-    - name: マルチテナント アプリケーションの有効化
-      href: how-to-multitenant-applications.md
-    - name: ユーザー定義関数の作成
-      href: how-to-user-defined-functions.md
-    - name: エンドポイント経由でのイベントとメッセージのルーティング
-      href: how-to-egress-endpoints.md
-    - name: オブジェクトへの BLOB の追加
-      href: how-to-add-blobs.md
-    - name: Digital Twins Swagger の使用
-      href: how-to-use-swagger.md
-    - name: ユーザー定義関数のデバッグ
-      href: how-to-diagnose-user-defined-functions.md
-    - name: 監視の構成
-      href: how-to-configure-monitoring.md
     - name: Digital Twins API のクエリ
-      items:
-        - name: Postman の設定
-          href: how-to-configure-postman.md
-        - name: Digital Twins API の使用
-          href: how-to-navigate-apis.md
-        - name: 一般的なクエリのパターン
-          href: how-to-query-common-apis.md
 - name: リファレンス
-  items:
-    - name: ユーザー定義関数クライアント ライブラリ
-      href: reference-user-defined-functions-client-library.md
 - name: リソース
-  expanded: true
   items:
     - name: 開発者向けリソース
       items:
@@ -116,3 +57,4 @@
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure IoT の更新
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
+  expanded: true

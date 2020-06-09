@@ -133,6 +133,8 @@
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
           href: uptime-sla.md
+        - name: ノード イメージのアップグレード (プレビュー)
+          href: node-image-upgrade.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
         - name: AKS クラスターの構成
