@@ -1,15 +1,14 @@
 ---
 title: タスク ランタイム環境変数
 description: タスク実行の環境変数に関するガイダンスと Azure Batch 解析のリファレンスです。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/12/2019
-ms.author: labrenne
-ms.openlocfilehash: dd30444585cb1adaaf2b42cebdfa04683b12ecfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117337"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745342"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
@@ -49,7 +48,7 @@ Batch での環境変数の使用に関する詳細については、「[タス�
 | AZ_BATCH_JOB_ID                 | タスクが属するジョブの ID。 | 開始タスクを除くすべてのタスク。 | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | ノード上のジョブ準備[タスク ディレクトリ][files_dirs]の完全パス。 | 開始タスクおよびジョブ準備タスクを除くすべてのタスク。 ジョブがジョブ準備タスクで構成されている場合にのみ使用できます。 | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | ノード上のジョブ準備[タスク作業ディレクトリ][files_dirs]の完全パス。 | 開始タスクおよびジョブ準備タスクを除くすべてのタスク。 ジョブがジョブ準備タスクで構成されている場合にのみ使用できます。 | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | [マルチ インスタンス タスク][multi_instance]のプライマリ タスクを実行するコンピューティング ノードの IP アドレスとポート。 | マルチ インスタンスのプライマリおよびサブタスク。 | `10.0.0.4:6000` |
+| AZ_BATCH_MASTER_NODE            | [マルチ インスタンス タスク][multi_instance]のプライマリ タスクを実行するコンピューティング ノードの IP アドレスとポート。 ここで指定したポートは MPI や NCCL 通信に使用しないでください。このポートは Azure Batch サービス用に予約されています。 代わりに、変数 MASTER_PORT を使用してください。この変数には、コマンド ライン引数で渡された値を設定するか (ポート 6105 は適切な既定の選択肢です)、AML が設定した値を使用します (該当する場合)。 | マルチ インスタンスのプライマリおよびサブタスク。 | `10.0.0.4:6000` |
 | AZ_BATCH_NODE_ID                | タスクが割り当てられているノードの ID。 | すべてのタスク。 | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | `true` の場合、現在のノードが専用ノードです。 `false` の場合、これは[優先順位の低いノード](batch-low-pri-vms.md)です。 | すべてのタスク。 | `true` |
 | AZ_BATCH_NODE_LIST              | [マルチ インスタンス タスク][multi_instance]に割り当てられているノードのリストを形式 `nodeIP;nodeIP` で示します。 | マルチ インスタンスのプライマリおよびサブタスク。 | `10.0.0.4;10.0.0.5` |

@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/29/2019
+ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779979"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648509"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -50,13 +50,14 @@ ms.locfileid: "82779979"
 
 ## <a name="viewing-content"></a>コンテンツの表示
 
-ユーザーは、Web サイトのパブリック URL を使用して、ブラウザーからサイトのコンテンツを表示できます。 URL を見つけるには、Azure portal、Azure CLI、または PowerShell を使用します。 次の表を参考にしてください。
+ユーザーは、Web サイトのパブリック URL を使用して、ブラウザーからサイトのコンテンツを表示できます。 URL を見つけるには、Azure portal、Azure CLI、または PowerShell を使用します。 「[Web サイトの URL を検索する](storage-blob-static-website-how-to.md#portal-find-url)」を参照してください。
 
-|ツール| ガイダンス |
-|----|----|
-|**Azure Portal** | [Azure portal を使用して Web サイトの URL を見つける](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [Azure CLI を使用して Web サイトの URL を見つける](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Azure PowerShell モジュール** | [PowerShell を使用して Web サイトの URL を見つける](storage-blob-static-website-how-to.md#powershell-find-url) |
+サーバーが 404 エラーを返し、Web サイトを有効にしたときに、エラー ドキュメントを指定していない場合、既定の 404 ページがユーザーに返されます。
+
+> [!NOTE]
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) は、静的な Web サイトではサポートされません。
+
+### <a name="regional-codes"></a>リージョン コード
 
 サイトの URL には、リージョン コードが含まれます。 たとえば、URL `https://contosoblobaccount.z22.web.core.windows.net/` にはリージョン コード `z22` が含まれています。
 
@@ -64,10 +65,9 @@ ms.locfileid: "82779979"
 
 ユーザーがサイトを開き、特定のファイル (例: `https://contosoblobaccount.z22.web.core.windows.net`) を指定しない場合、静的 Web サイトのホスティングを有効にしたときに指定したインデックス ドキュメントが表示されます。  
 
-サーバーが 404 エラーを返し、Web サイトを有効にしたときに、エラー ドキュメントを指定していない場合、既定の 404 ページがユーザーに返されます。
+### <a name="secondary-endpoints"></a>セカンダリ エンドポイント
 
-> [!NOTE]
-> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) は、静的な Web サイトではサポートされません。
+[セカンダリ リージョンでの冗長性](../common/storage-redundancy.md#redundancy-in-a-secondary-region)を設定した場合は、セカンダリ エンドポイントを使用して Web サイトのコンテンツにアクセスすることもできます。 データはセカンダリ リージョンに非同期にレプリケートされるため、セカンダリ エンドポイントで使用できるファイルが、プライマリ エンドポイントで使用できるファイルと常に同期されているとは限りません。 
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web コンテナーのパブリック アクセス レベルの設定の影響
 
@@ -117,4 +117,4 @@ ms.locfileid: "82779979"
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [最初のサーバーレス Web アプリを作成する](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [チュートリアル: Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)
+* [チュートリアル:Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)

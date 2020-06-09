@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 970046f000a844ce6ee7207ad1bb33f4a327a63d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673804"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848109"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -145,16 +145,17 @@ Debian 8 | 9.28 | 3.16.0-4-amd64 から 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 �
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.32 | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.31 | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.30 | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.29 | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.32 | すべての SUSE 12 SP1、SP2、SP3、SP4 ストック カーネルがサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.34-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.31 | すべての SUSE 12 SP1、SP2、SP3、SP4 ストック カーネルがサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.29-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.30 | すべての SUSE 12 SP1、SP2、SP3、SP4 ストック カーネルがサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.29-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.29 | すべての SUSE 12 SP1、SP2、SP3、SP4 ストック カーネルがサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.23-azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる SUSE Linux Enterprise Server 15 カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 および 15 SP1 | 9.32 | すべての [SUSE 15 および 15 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 および 15 SP1 | 9.32 | 既定では、すべての [SUSE 15 および 15 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-8.22-azure |
+
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>レプリケートされるマシン - Linux ファイル システム/ゲスト ストレージ
 
@@ -178,6 +179,8 @@ Azure ギャラリー イメージ - サード パーティが公開 | サポー
 Site Recovery を使用して移行された VM | サポートされています | Site Recovery を使用して Azure に移行された VMware VM または物理マシンの場合は、マシンで実行されている古いバージョンのモビリティ サービスをアンインストールし、マシンを再起動してから、それを他の Azure リージョンにレプリケートする必要があります。
 RBAC ポリシー | サポートされていません | VM でのロールベースのアクセス制御 (RBAC) ポリシーは、ターゲット リージョンのフェールオーバー VM にレプリケートされません。
 拡張機能 | サポートされていません | 拡張機能は、ターゲット リージョン内のフェールオーバー VM にはレプリケートされません。 これはフェールオーバー後に手動でインストールする必要があります。
+近接配置グループ | サポートされていません | 近接配置グループ内にある仮想マシンは、Site Recovery を使用して保護できません。
+
 
 ## <a name="replicated-machines---disk-actions"></a>レプリケートされるマシン - ディスクのアクション
 
@@ -212,9 +215,9 @@ Standard SSD | サポートされています |
 記憶域スペース | サポートされています |
 保存時の暗号化 (SSE) | サポートされています | SSE はストレージ アカウントでの既定の設定です。
 保存時の暗号化 (CMK) | サポートされています | マネージド ディスクでは、ソフトウェア キーと HSM キーの両方がサポートされています
-Windows OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 |
-Linux OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 |
-ホット アド    | サポートされています | マネージド ディスクを使用する VM では、レプリケートされた Azure VM に追加するデータ ディスクのレプリケーションの有効化がサポートされています。
+Windows OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 <br/><br/> 1 つのディスク上の個々のボリュームの暗号化はサポートされていません。 |
+Linux OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 <br/><br/> 1 つのディスク上の個々のボリュームの暗号化はサポートされていません。 |
+ホット アド    | サポートされています | マネージド ディスクを使用する VM では、レプリケートされた Azure VM に追加するデータ ディスクのレプリケーションの有効化がサポートされています。 <br/><br/> 一度に 1 つのディスクのみ Azure VM にホット アドできます。 複数のディスクの並列追加はサポートされていません。 |
 ディスクのホット リムーブ    | サポートされていません | VM 上でデータ ディスクを削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
 ディスクの除外 | サポート。 [PowerShell](azure-to-azure-exclude-disks.md) を使用して構成する必要があります。 |    一時ディスクは既定で除外されます。
 記憶域スペース ダイレクト  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
@@ -228,6 +231,7 @@ ZRS | サポートされていません |
 仮想ネットワークの Azure Storage ファイアウォール  | サポートされています | ストレージ アカウントへの仮想ネットワーク アクセスを制限する場合は、[信頼できる Microsoft サービスを許可](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)を有効にします。
 汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | サポートされています | 汎用目的 V1 のストレージ アカウントに比べて、トランザクション コストが非常に大きくなります
 第 2 世代 (UEFI ブート) | サポートされています
+NVMe ディスク | サポートされていません
 
 >[!IMPORTANT]
 > パフォーマンスの問題を回避するには、[Linux](../virtual-machines/linux/disk-scalability-targets.md) または [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM に対する VM ディスクのスケーラビリティとパフォーマンスのターゲットに従っていることを確認します。 既定の設定を使用する場合は、ソースの構成に基づいて、必要なディスクとストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズして独自の設定を選択する場合は、ソース VM のディスクのスケーラビリティおよびパフォーマンスのターゲットに従います。
@@ -270,6 +274,8 @@ Azure DNS | サポートされています |
 VNet 間接続    | サポートされています | [詳細情報](site-recovery-azure-to-azure-networking-guidance.md)
 仮想ネットワーク サービス エンドポイント | サポートされています | ストレージ アカウントへの仮想ネットワーク アクセスを制限している場合は、信頼された Microsoft サービスがストレージ アカウントへのアクセスを許可されることを確認します。
 Accelerated Networking | サポートされています | 高速ネットワークは、ソース VM で有効になっている必要があります。 [詳細については、こちらを参照してください](azure-vm-disaster-recovery-with-accelerated-networking.md)。
+Palo Alto Network アプライアンス | サポートされていません | サード パーティ製のアプライアンスでは、多くの場合、仮想マシン内のプロバイダーによって課せられる制限があります。 Azure Site Recovery では、エージェント、拡張機能、送信接続を利用できるようにする必要があります。 ただし、アプライアンスでは、仮想マシン内で送信アクティビティを構成することはできません。
+IPv6  | サポートされていません | IPv4 と IPv6 の両方を含む混合構成もサポートされていません。 Site Recovery 操作の前に、IPv6 の範囲のサブネットを解放してください。
 
 
 

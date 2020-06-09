@@ -3,19 +3,19 @@ title: 署名済みのイメージの管理
 description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72d45301e1d8a5f29eda941bd39217082f5dc6ba
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249936"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680493"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
 Azure Container Registry では、Docker の[コンテンツの信頼][docker-content-trust]モデルを実装し、署名済みのイメージのプッシュとプルを有効にします。 この記事では、コンテナー レジストリ内でコンテンツの信頼を有効にする方法について説明します。
 
 > [!NOTE]
-> コンテンツの信頼は、Azure Container Registry の [Premium SKU](container-registry-skus.md) の機能です。
+> コンテンツの信頼は、Azure Container Registry の [Premium サービス レベル](container-registry-skus.md)の機能です。
 
 ## <a name="how-content-trust-works"></a>コンテンツの信頼の動作概念
 

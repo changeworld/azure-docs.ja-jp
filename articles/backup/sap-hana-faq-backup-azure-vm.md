@@ -3,12 +3,12 @@ title: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
 description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155394"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701011"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 
@@ -49,9 +49,9 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 事前登録スクリプトを実行すると、Azure で SAP HANA データベースをバックアップできるようにするために必要なアクセス許可が設定されます。 事前登録スクリプトで実行される処理の詳細については、[こちら](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)をご覧ください。
 
-### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>SAP HANA を 1.0 から 2.0 に移行した後、バックアップは機能しますか?
+### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>SAP HANA を SDC から MDC に移行した後、バックアップは機能しますか?
 
-トラブルシューティング ガイドの[こちらのセクション](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20)をご覧ください。
+トラブルシューティング ガイドの[こちらのセクション](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid)をご覧ください。
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>仮想マシンではなく、仮想 IP (ロード バランサー) に対して Azure HANA バックアップを設定できますか?
 
@@ -60,6 +60,18 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 ### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>SAP HANA システム レプリケーション (HSR) を使用しています。この設定のバックアップはどのように構成すればよいですか?
 
 HSR のプライマリおよびセカンダリのノードは、関連のない 2 つの個別の VM として扱われます。 バックアップはプライマリ ノードで構成する必要があります。また、フェールオーバーが発生したときに、セカンダリ ノード (これがプライマリ ノードになります) でバックアップを構成する必要があります。 他のノードに対するバックアップの自動 "フェールオーバー" はありません。
+
+### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>オンデマンド バックアップを Azure コンテナーではなくローカル ファイル システムに移動する方法はありますか?
+
+1. 目的のデータベースで現在実行中のバックアップが完了するまで待ちます (完了は Studio で確認します)
+1. 次の手順を使用して、目的の DB のログ バックアップを無効にし、カタログ バックアップを **[Filesystem]\(ファイルシステム\)** に設定します。
+1. **[SYSTEMDB]**  ->  **[構成]**  ->  **[データベースの選択]**  ->  **[Filter (log)]\(フィルター (ログ)\)** の順にダブルクリックします
+    1. [enable_auto_log_backup] を **[no]** に設定します
+    1. [log_backup_using_backint] を **[false]** に設定します
+1. 目的のデータベースでオンデマンド バックアップを実行し、バックアップとカタログ バックアップが完了するまで待ちます。
+1. 以前の設定に戻して、バックアップが Azure コンテナーにフローできるようにします。
+    1. [enable_auto_log_backup] を **[yes]** に設定します
+    1. [log_backup_using_backint] を **[true]** に設定します
 
 ## <a name="restore"></a>復元
 

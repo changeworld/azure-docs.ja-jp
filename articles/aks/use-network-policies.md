@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク �
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: ca0b6d4acd48dde0ea381ab37080fb6af1fb936c
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7e494c6ac89289a9b271d16b871b8a22e1ca9e6a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854231"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683190"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -81,7 +81,7 @@ Azure ネットワーク ポリシーを使用するには、[Azure CNI プラ�
 * AKS クラスターで使用するための Azure Active Directory (Azure AD) サービス プリンシパルを作成します。
 * 仮想ネットワーク上の AKS クラスター サービス プリンシパルに*共同作成者*のアクセス許可を割り当てます。
 * 定義された仮想ネットワーク内に AKS クラスターを作成し、ネットワーク ポリシーを有効にします。
-    * *azure* ネットワーク ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。 注:Calico は `--network-plugin azure` または `--network-plugin kubenet` で使用できます。
+    * "_Azure ネットワーク_" ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。 注:Calico は `--network-plugin azure` または `--network-plugin kubenet` で使用できます。
 
 なお、サービス プリンシパルを使用する代わりに、マネージド ID をアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
@@ -146,7 +146,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>ポッドへのすべての受信トラフィックを拒否する
 
-特定のネットワーク トラフィックを許可するルールを定義する前に、まずすべてのトラフィックを拒否するネットワーク ポリシーを作成します。 このポリシーにより、目的のトラフィックのみをホワイトリストに登録し始めるための出発点が提供されます。 また、ネットワーク ポリシーの適用時にトラフィックがドロップされることを明確に確認できます。
+特定のネットワーク トラフィックを許可するルールを定義する前に、まずすべてのトラフィックを拒否するネットワーク ポリシーを作成します。 このポリシーは、目的のトラフィックのみの許可リストを作成開始するための出発点になります。 また、ネットワーク ポリシーの適用時にトラフィックがドロップされることを明確に確認できます。
 
 サンプルのアプリケーション環境とトラフィック ルールのために、まずポッドの例を実行するための *development* という名前の名前空間を作成しましょう。
 
@@ -474,9 +474,9 @@ kubectl delete namespace development
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/reference/calicoctl/
 [calico-support]: https://www.tigera.io/tigera-products/calico/
-[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/maintenance/troubleshoot/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

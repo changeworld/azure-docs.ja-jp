@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 600f19a6fc0b44fa8cb4b3ba6d37fcc601605dc5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206733"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758131"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する
 
@@ -92,7 +92,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **高度なシナリオ**。 組織は、Azure AD Premium P2 で Azure AD Identity Protection のレポートを使用して ID からの分析情報を使用することを選択できます。 その 1 つの例が漏洩した資格情報レポートです。 Windows Hello for Business には、[パスワード ハッシュ同期を使用するときの特定の要件](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)があります。 [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) では、ユーザーが会社の資格情報を使用してマネージド ドメインでプロビジョニングできるよう、パスワードのハッシュ同期が必要です。
 
-    パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure AD の多要素認証または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
+    パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure Multi-Factor Authentication または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
 
 > [!NOTE]
 > Azure AD の条件付きアクセスでは [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。

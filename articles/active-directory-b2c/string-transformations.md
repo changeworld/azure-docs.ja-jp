@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2291d4d2eca2abd11ef9c0f18f3fda52424ab93
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756781"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739109"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -516,7 +516,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: false
 - 出力要求:
-    - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**:    c7026f88-4299-4cdb-965d-3f166464b8a9
 
 `errorOnFailedLookup` 入力パラメーターが `true` に設定されると、**LookupValue** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `LookupNotFound` メタデータによって制御されます。
 
@@ -825,7 +825,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | InputParameter | length | INT | substring の文字数。 |
 | OutputClaim | outputClaim | boolean | このインスタンスの startIndex から始まる長さの substring と等価な文字列。startIndex がこのインスタンスの長さと等しく、length がゼロの場合は空になります。 |
 
-たとえば、電話番号の国のプレフィックスを取得します。
+たとえば、電話番号の国または地域のプレフィックスを取得します。
 
 
 ```XML

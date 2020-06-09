@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594731"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712351"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83594731"
 | セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
-ユーザー フローをアプリケーションに関連付けることで、そのアプリでのサインアップを有効にすることができます。 ユーザー フローを関連付けるアプリケーションは複数選択することができます。 ユーザー フローを 1 つ以上のアプリケーションに関連付けると、そのアプリにアクセスするユーザーが、ユーザー フローで構成されているオプションを使用してサインアップできるようになります。
+組織によって作成されたアプリのユーザー フローを作成できます。 ユーザー フローをアプリケーションに関連付けることで、そのアプリでのサインアップを有効にすることができます。 ユーザー フローを関連付けるアプリケーションは複数選択することができます。 ユーザー フローを 1 つ以上のアプリケーションに関連付けると、そのアプリにアクセスするユーザーが、ユーザー フローで構成されているオプションを使用してサインアップしてゲスト アカウントを取得できるようになります。
+
+> [!NOTE]
+> 組織によって構築されたアプリにユーザー フローを関連付けることができます。 ユーザー フローは、SharePoint や Teams などの Microsoft アプリには使用できません。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -33,9 +36,12 @@ ms.locfileid: "83594731"
 
 Azure AD は、セルフサービス サインアップ用の既定の ID プロバイダーです。 これは、ユーザーが既定で Azure AD アカウントを使用してサインアップできることを意味します。 また、ソーシャル ID プロバイダーをこれらのサインアップ フローに含めて、Google および Facebook アカウントをサポートすることもできます。
 
-- [ソーシャル ID プロバイダーの一覧に Google を追加する](google-federation.md)
 - [ソーシャル ID プロバイダーの一覧に Facebook を追加する](facebook-federation.md)
- 
+- [ソーシャル ID プロバイダーの一覧に Google を追加する](google-federation.md)
+
+> [!NOTE]
+> 現在のプレビューでは、セルフサービス サインアップ ユーザー フローがアプリに関連付けられていて、そのアプリへの招待をユーザーに送信した場合、そのユーザーは Gmail アカウントを使用してその招待を利用することができません。 回避策として、ユーザーはセルフサービスのサインアップ プロセスを実行できます。 または、別のアプリにアクセスするか、 https://myapps.microsoft.com でマイ アプリ ポータルを使用して、招待を利用することができます。
+
 ### <a name="define-custom-attributes-optional"></a>カスタム属性を定義する (省略可能)
 
 ユーザー属性は、セルフサービス サインアップ時にユーザーから収集される値です。 Azure AD には組み込みで一連の属性が付属していますが、ユーザー フローで使用するカスタム属性を作成することもできます。 また、Microsoft Graph API を使用してこれらの属性を読み書きすることもできます。 [ユーザー フローのカスタム属性の定義](user-flow-add-custom-attributes.md)に関する記事をご覧ください。

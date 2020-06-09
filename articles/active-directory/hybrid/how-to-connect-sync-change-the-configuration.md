@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230143"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827297"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成に変更を加える
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -200,7 +200,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 
 - Azure AD で指定できる UserType 属性の値は、**Member** と **Guest** の 2 つのみです。
 - Azure AD Connect で同期に対して UserType 属性が有効になっていない場合、ディレクトリの同期によって作成された Azure AD ユーザーの UserType 属性は **Member** に設定されます。
-- Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 これは、Azure AD ユーザーの作成中にのみ設定でき、[PowerShell を介して変更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)できます。
+- バージョン 1.5.30.0 より前、Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されませんでした。 古いバージョンでは、これは、Azure AD ユーザーの作成中にのみ設定でき、[PowerShell を介して変更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)できます。
 
 UserType 属性の同期を有効にする前に、まず UserType 属性をオンプレミス Active Directory からどのように派生させるかを決める必要があります。 その一般的な方法を次に示します。
 
@@ -210,7 +210,7 @@ UserType 属性の同期を有効にする前に、まず UserType 属性をオ�
 
 - 別の方法として、UserType 属性の値を他のプロパティから派生させることができます。 たとえば、オンプレミス AD UserPrincipalName 属性の末尾のドメイン部分が <em>@partners.fabrikam123.org</em> である場合、すべてのユーザーを**ゲスト**として同期する必要があるとします。 
 
-    前に説明したように、Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 したがって、決定したロジックは、テナントの既存の Azure AD ユーザーすべてに対して UserType 属性が既に構成されている方法と一致している必要があります。
+    前に説明したように、古いバージョンの Azure AD Connect では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されません。 したがって、決定したロジックは、テナントの既存の Azure AD ユーザーすべてに対して UserType 属性が既に構成されている方法と一致している必要があります。
 
 UserType 属性の同期を有効にする大まかな手順は次のとおりです。
 

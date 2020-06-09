@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272493"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779225"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell を使用して、削除された App Service アプリを復元する
 
@@ -48,6 +48,8 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 - **削除時刻**:アプリが削除された日時  
 
 ## <a name="restore-deleted-app"></a>削除したアプリを復元する
+>[!NOTE]
+> `Restore-AzDeletedWebApp` は、関数アプリではサポートされていません。
 
 復元するアプリが特定されたら、`Restore-AzDeletedWebApp` を使用して復元できます。
 

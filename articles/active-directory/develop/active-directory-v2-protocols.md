@@ -1,5 +1,6 @@
 ---
-title: OAuth 2.0 プロトコルと OpenID Connect プロトコル - Microsoft ID プラットフォーム | Azure
+title: Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル | Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームのエンドポイントでサポートされている OAuth 2.0 および OpenID Connect プロトコルのガイドです。
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 80b93efb58d225c53a64fa044f51145b392460d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690265"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737488"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル
+# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル
 
-業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用した Identity-as-a-Service (サービスとしての ID) としての Microsoft ID プラットフォームのエンドポイント。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 ここでは、Microsoft のオープンソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティの[オープンソース ライブラリ](reference-v2-libraries.md)を使用する場合に役立つ情報を紹介します。
+Identity-as-a-service (サービスとしての ID) の Microsoft ID プラットフォームのエンドポイントは、業界標準のプロトコルである OpenID Connect (OIDC) と OAuth 2.0 をそれぞれ使用した認証と承認を実装します。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 ここでは、Microsoft の[オープンソース ライブラリ](reference-v2-libraries.md)を使うのではなく、直接 HTTP 要求を送信して処理することでコードを作成するか、サード パーティのオープンソース ライブラリを使用する場合に役立つ情報を紹介します。
 
 ## <a name="the-basics"></a>基本
 
@@ -69,7 +70,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 ## <a name="tokens"></a>トークン
 
-OAuth 2.0 および OpenID Connect の Microsoft ID プラットフォーム実装では、ベアラー トークンが広範囲に使われています (JWT として表現されたベアラー トークンなど)。 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。 この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。 利用者がベアラー トークンを受信するには、まず Microsoft ID プラットフォームによる認証が必要となりますが、転送中や保存時にトークンを保護するために必要な対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。 一部のセキュリティ トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがありますが、ベアラー トークンにはこのメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。 ベアラー トークンが暗号化されずに転送された場合、悪意のある利用者が中間者攻撃によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。 ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](https://tools.ietf.org/html/rfc6750)をご覧ください。
+OAuth 2.0 および OpenID Connect の Microsoft ID プラットフォーム実装では、JWT として表現されたベアラー トークンなど、ベアラー トークンが広範囲に使われています (JSON Web トークン)。 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。 この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。 利用者がベアラー トークンを受信するには、まず Microsoft ID プラットフォームによる認証が必要となりますが、転送中や保存時にトークンを保護するために必要な対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。 一部のセキュリティ トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがありますが、ベアラー トークンにはこのメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。 ベアラー トークンが暗号化されずに転送された場合、悪意のある利用者が中間者攻撃によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。 ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](https://tools.ietf.org/html/rfc6750)をご覧ください。
 
 Microsoft ID プラットフォーム エンドポイントで使用されている各種トークンの詳細については、[Microsoft ID プラットフォーム エンドポイントのトークンのリファレンス](v2-id-and-access-tokens.md)をご覧ください。
 

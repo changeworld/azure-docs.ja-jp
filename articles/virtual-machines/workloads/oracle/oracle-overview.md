@@ -10,18 +10,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 05/12/2020
 ms.author: borisb
-ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870503"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660543"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
-この記事では、Azure インフラストラクチャを使用して Oracle ソリューションを実行するための機能を紹介します。 Azure Marketplace で入手可能な [Oracle VM イメージ](oracle-vm-solutions.md)や、[Azure と Oracle Cloud Infrastructure (OCI) を相互接続する](oracle-oci-overview.md)機能の詳しい紹介も参照してください。
+この記事では、Azure インフラストラクチャを使用して Oracle ソリューションを実行するための機能を紹介します。 Azure Marketplace で入手可能な [WebLogic Server Azure アプリケーション](oracle-weblogic.md)、[Oracle VM イメージ](oracle-vm-solutions.md)や、[Azure と Oracle Cloud Infrastructure (OCI) を相互接続する](oracle-oci-overview.md)機能の詳しい紹介も参照してください。
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure インフラストラクチャ上の Oracle データベース
 
@@ -35,9 +35,13 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 
 必要に応じて、複数の接続ディスクを構成し、Oracle Automated Storage Management (ASM) をインストールすることでデータベースのパフォーマンスを向上させます。
 
+## <a name="weblogic-server-with-azure-service-integrations"></a>WebLogic Server と Azure サービス統合
+
+クラウドへの移行を促進するために、さまざまな WebLogic Server Azure アプリケーションから選択します。  データベース、Azure App Gateway、Azure Active Directory など、いくつかの事前構成済みの Azure サービス統合を利用できます。
+
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux および WebLogic Server 上のアプリケーション
 
-サポートされている Oracle オペレーティング システム上で、Azure 内のエンタープライズ アプリケーションを実行します。 次のイメージは Azure Marketplace で入手できます。
+サポートされている Oracle オペレーティング システム上で、Azure 内のエンタープライズ アプリケーションを実行します。 次の仮想マシン イメージは Azure Marketplace で入手できます。
 
 * Oracle WebLogic Server 12.1.2
 
@@ -89,6 +93,8 @@ Oracle Database Cloud Services (Autonomous Database、RAC、Exadata、DBaaS、Si
 Azure での Oracle アプリケーションのデプロイは、「ライセンス持ち込み」モデルに基づいています。 つまり、Oracle ソフトウェアを使用するライセンスが適切に供与されていて、Oracle と現在サポート契約を結んでいることを前提としています。 Oracle では、オンプレミスから Azure へのライセンス モビリティを保証しています。 Oracle-Azure [FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
+* [WebLogic Server Azure アプリケーション](oracle-weblogic.md)と、それらがサポートする Azure サービス統合について詳しく学びます。
 
 * Azure インフラストラクチャへの [Oracle VM イメージ](oracle-vm-solutions.md)のデプロイについて詳しく学びます。
 

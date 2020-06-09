@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4d41ece86240a20afea06bff3469b5c02c6e46ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121199"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778557"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -63,9 +63,9 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
-個々の Web アプリのインスタンスで Profiler を停止または再起動するには、 **[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、 **[拡張機能]** に移動します。
+個々のアプリのインスタンスに対して Profiler を停止または再起動するには、 **[Web ジョブ]** で、ApplicationInsightsProfiler3 という名前の Web ジョブを停止します。 前述したように、Application Insights ページのスイッチを使用して Profiler を無効にしても、Profiler プロセスは引き続き実行されます。 Profiler は、Profiler 自体が有効になっているかどうかをチェックします。 無効になっている場合は、しばらくしてから再びチェックを行います。 無効になっている場合、プロファイリングは実行しません。 この Web ジョブを無効にすると、Profiler プロセスは完全に実行されなくなり、有効になっているかどうかのチェックも行われなくなります。
 
-![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
+  ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
 
 パフォーマンスの問題をできるだけ早く検出するために、すべてのアプリで Profiler を有効にすることをお勧めします。
 

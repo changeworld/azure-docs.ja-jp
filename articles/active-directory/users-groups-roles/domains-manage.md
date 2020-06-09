@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2619af2959aa7d475c3e6bab9c8db55212ed0af4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582973"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845952"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -48,6 +48,10 @@ ms.locfileid: "82582973"
 ## <a name="add-subdomains-of-a-custom-domain"></a>カスタム ドメインのサブドメインの追加
 
 ディレクトリに europe.contoso.com などの第 3 レベル ドメイン名を追加する場合は、最初に、contoso.com などの第 2 レベル ドメインを追加して、確認する必要があります。 サブドメインは、Azure AD によって自動的に検証されます。 追加したサブドメインが検証されたことを確認するには、ブラウザーでドメインの一覧を更新します。
+
+Note
+
+Azure AD テナントに contoso.com ドメインを既に追加している場合は、2 番目の Azure AD テナントにサブドメイン europe.contoso.com を追加することもできます。 サブドメインを追加すると、DNS ホスティング プロバイダーに TXT レコードを追加するように求められます。
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>カスタム ドメイン名の DNS レジストラーを変更する場合にすべきこと
 

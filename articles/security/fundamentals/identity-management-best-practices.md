@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548452"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758624"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -126,10 +126,10 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 セキュリティと生産性のバランスを取るためには、アクセスの制御に関する決定を行う前に、リソースへのアクセス方法を考慮する必要があります。 Azure AD の条件付きアクセスで、この要件に対処することができます。 条件付きアクセスを使用すると、クラウド アプリへのアクセスに関する条件に基づいて、アクセス制御の決定を自動的に行うことができます。
 
 **ベスト プラクティス**: 会社のリソースへのアクセスを管理および制御します。  
-**詳細**: グループ、場所、アプリケーションの機密性に基づいて SaaS アプリや Azure AD 接続アプリの Azure AD [条件付きアクセス](/azure/active-directory/active-directory-conditional-access-azure-portal)を構成します。
+**詳細**: グループ、場所、アプリケーションの機密性に基づいて SaaS アプリや Azure AD 接続アプリの共通の Azure AD [条件付きアクセス ポリシー](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)を構成します。
 
 **ベスト プラクティス**: レガシ認証プロトコルをブロックします。
-**詳細**: 攻撃者は、毎日古いプロトコルの弱点を悪用しています (特にパスワード スプレー攻撃)。 条件付きアクセスを構成して、レガシ プロトコルをブロックします。 ビデオ「[Azure AD: Do’s and Don’ts (べしとべからず)](https://www.youtube.com/watch?v=wGk0J4z90GI)」で詳細をご覧ください。
+**詳細**: 攻撃者は、毎日古いプロトコルの弱点を悪用しています (特にパスワード スプレー攻撃)。 条件付きアクセスを構成して、[レガシ プロトコルをブロックします](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md)。
 
 ## <a name="plan-for-routine-security-improvements"></a>日常的なセキュリティ強化を計画する
 
@@ -175,11 +175,11 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 Multi-factor Authentication を有効にする必要がある場合を判断するには、「[所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう](/azure/active-directory/authentication/concept-mfa-whichversion)」をご覧ください。
 
 **オプション 3**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](/azure/active-directory/authentication/howto-mfa-getstarted)。
-**利点**:このオプションでは、[条件付きアクセス](/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
+**利点**:このオプションでは、[条件付きアクセス](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
 
 これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](/azure/active-directory/authentication/howto-mfa-getstarted)」を参照してください。
 
-**オプション 4**: [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
+**オプション 4**: [リスクベースの条件付きアクセス ポリシー](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)を評価することによって、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
 **利点**:このオプションの利点は次のとおりです。
 
 * 組織の ID に影響する潜在的な脆弱性を検出します。

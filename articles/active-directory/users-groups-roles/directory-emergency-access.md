@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74028127"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816184"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -44,7 +44,7 @@ ms.locfileid: "74028127"
 これらのアカウントを構成するときに、次の要件が満たされている必要があります。
 
 - 緊急アクセス用アカウントを組織内の個別ユーザーと関連付けることはできません。 アカウントが、従業員が所有する携帯電話、従業員が出張で持ち歩くハードウェア トークン、またはその他の従業員固有の資格情報と結び付けられていないことを確認します。 この予防策には、資格情報が必要なときに従業員がそれを入手できないような状況が該当します。 Azure AD との複数の通信手段がある既知の安全な場所に、登録済みのデバイスを保管しておくことが重要です。
-- 緊急アクセス用アカウントを使用する認証メカニズムは、他の緊急アクセス用アカウントを含むその他の管理アカウントで使用する認証メカニズムと別のものにする必要があります。  たとえば、通常の管理者のサインインがオンプレミスの MFA を使用する場合、Azure MFA が別のメカニズムになります。  ただし、Azure MFA が管理者アカウントの認証の主要な部分である場合は、これらには、サードパーティの MFA プロバイダーによる条件付きアクセスの使用などの別のアプローチを検討してください。
+- 緊急アクセス用アカウントを使用する認証メカニズムは、他の緊急アクセス用アカウントを含むその他の管理アカウントで使用する認証メカニズムと別のものにする必要があります。  たとえば、通常の管理者のサインインがオンプレミスの MFA を使用する場合、Azure MFA が別のメカニズムになります。  ただし、Azure MFA が管理者アカウントの認証の主要な部分である場合は、これらには、[カスタム コントロール](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)を介したサードパーティの MFA プロバイダーによる条件付きアクセスの使用などの別のアプローチを検討してください。
 - デバイスまたは資格情報は、有効期限が切れておらず、使用不足による自動クリーンアップの対象になっていないことが必要です。  
 - グローバル管理者ロールの割り当てを、緊急アクセス用アカウントに対して永続的にする必要があります。 
 

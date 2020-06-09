@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099548"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779777"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -134,10 +134,10 @@ DocumentIncarnation は ETag であり、前回のクエリ以降にイベント
 
 ### <a name="event-scope"></a>イベントの範囲     
 スケジュールされたイベントの配信先は次のとおりです。
- - スタンドアロンの Virtual Machines
- - クラウド サービス内のすべての Virtual Machines      
- - 可用性セット内のすべての Virtual Machines      
- - スケール セットの配置グループ内のすべての Virtual Machines         
+ - スタンドアロンの仮想マシン。
+ - クラウド サービス内のすべての Virtual Machines。     
+ - 可用性セット内のすべての Virtual Machines。     
+ - スケール セットの配置グループ内のすべての Virtual Machines (Batch を含む)。       
 
 そのため、イベント内の `Resources` フィールドをチェックして、影響を受ける VM を特定する必要があります。 
 

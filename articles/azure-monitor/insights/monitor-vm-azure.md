@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: 2cb53d0c88d8c29da2bd8bf52d6536555d56c76e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283941"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654388"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
@@ -24,7 +24,7 @@ ms.locfileid: "80283941"
 ## <a name="differences-from-other-azure-resources"></a>他の Azure リソースとの違い
 「[Azure Monitor を使用した Azure リソースの監視](monitor-azure-resource.md)」では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータを分析してアラートを作成する方法について説明されています。 Azure 仮想マシンから同じ監視データを収集して操作することができますが、次の相違点があります。
 
-- [プラットフォームのメトリック](../platform/data-platform-metrics.md)は、仮想マシンに対して自動的に収集されますが、[仮想マシンのホスト](#monitoring-data)に対してのみ収集されます。 ゲスト オペレーティング システムからパフォーマンス データを収集するには、エージェントが必要です。 
+-  [プラットフォームのメトリック](../platform/data-platform-metrics.md)は、仮想マシンに対して自動的に収集されますが、[仮想マシンのホスト](#monitoring-data)に対してのみ収集されます。 ゲスト オペレーティング システムからパフォーマンス データを収集するには、エージェントが必要です。 
 - 仮想マシンでは、Azure リソース内で実行された操作に関する分析情報を提供する [リソース ログ](../platform/platform-logs-overview.md)は生成されません。 エージェントを使用して、ゲスト オペレーティング システムからログ データを収集します。
 - 仮想マシンに[診断設定](../platform/diagnostic-settings.md)を作成して、ストレージやイベント ハブなどの他のターゲットにプラットフォームのメトリックを送信することはできますが、Azure portal でこれらの診断設定を構成することはできません。 
 
@@ -121,7 +121,6 @@ az monitor diagnostic-settings create \
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm \
 --metrics '[{"category": "AllMetrics","enabled": true}]' \
 --workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace
-
 ```
 
 ## <a name="monitoring-in-the-azure-portal"></a>Azure Portal の監視機能 
@@ -149,12 +148,13 @@ az monitor diagnostic-settings create \
 ## <a name="analyzing-metric-data"></a>メトリック データの分析
 メトリックス エクスプローラーを使用して仮想マシンのメトリックを分析するには、仮想マシンのメニューから **[メトリック]** を開きます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../platform/metrics-getting-started.md)」を参照してください。 
 
-仮想マシンでメトリックに使われる 2 つの名前空間があります。
+仮想マシンでメトリックに使われる 3 つの名前空間があります。
 
-| 名前空間 | 説明 |
-|:---|:---|
-| 仮想マシンのホスト | すべての Azure 仮想マシンについて、ホストのメトリックが自動的に収集されます。 メトリックの詳細なリストは、[Microsoft.Compute/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines) にあります。 |
-| 仮想マシンのゲスト | 診断拡張機能がインストールされ、Azure Monitor シンクに送信するように構成された仮想マシンから収集されたゲスト オペレーティング システムのメトリック。 |
+| 名前空間 | 説明 | 要件 |
+|:---|:---|:---|
+| 仮想マシンのホスト | すべての Azure 仮想マシンについて、ホストのメトリックが自動的に収集されます。 メトリックの詳細なリストは、[Microsoft.Compute/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines) にあります。 | 自動的に収集され、構成は必要ありません。 |
+| ゲスト (クラシック) | ゲスト オペレーティング システムとアプリケーションのパフォーマンス データの限られたセット。 メトリックス エクスプローラーで使用できますが、メトリック アラートなどの他の Azure Monitor 機能では使用できません。  | [診断の拡張機能](../platform/diagnostics-extension-overview.md)がインストールされていること。 データは Azure Storage から読み取られます。  |
+| 仮想マシンのゲスト | メトリックを使用するすべての Azure Monitor 機能で使用可能な、ゲスト オペレーティング システムとアプリケーションのパフォーマンス データ。 | Windows の場合、[診断拡張機能がインストール](../platform/diagnostics-extension-overview.md)されて、Azure Monitor シンクが有効になっていること。 Linux の場合、[Telegraf エージェントがインストール](../platform/collect-custom-metrics-linux-telegraf.md)されていること。 |
 
 ![メトリック](media/monitor-vm-azure/metrics.png)
 

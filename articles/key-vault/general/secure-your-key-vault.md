@@ -2,20 +2,20 @@
 title: キー コンテナーへのアクセスをセキュリティで保護する - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault、キー、シークレットのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法について説明します。
 services: key-vault
-author: amitbapat
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: ambapat
-ms.openlocfilehash: 0ae1b26bb2e01d388f3f91d94134bb9723a5a305
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427691"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827516"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -135,7 +135,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 証明書、アクセス キー、およびシークレットをプログラムでデプロイする方法の詳細については:
 - [顧客マネージド キー コンテナーから VM への証明書のデプロイ](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)に関するブログ記事を参照してください。
-- [Azure Key Vault クライアント サンプル](https://www.microsoft.com/download/details.aspx?id=45343)をダウンロードしてください。 このコンテンツでは、ブートストラップ証明書を使用して、キー コンテナーにアクセスするための認証を Azure AD に対して行う方法が示されています。
+- [Azure Key Vault クライアント サンプル](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)を参照してください。 このコンテンツでは、ブートストラップ証明書を使用して、キー コンテナーにアクセスするための認証を Azure AD に対して行う方法が示されています。
 
 アクセス許可の多くは Azure portal を使用して付与することができます。 きめ細かいアクセス許可を付与するには、Azure PowerShell または Azure CLI を使用します。
 
@@ -233,4 +233,4 @@ Key Vault のログ記録の使用について詳しくは、[Azure Key Vault �
 
 Azure Key Vault でキーとシークレットを使用する方法の詳細については、[キーとシークレット](https://msdn.microsoft.com/library/azure/dn903623.aspx)に関する記事をご覧ください。
 
-Key Vault に関する質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
+Key Vault に関する質問がある場合は、[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-key-vault.html)にアクセスしてください。

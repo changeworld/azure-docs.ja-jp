@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/13/2020
-ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 05/19/2020
+ms.openlocfilehash: 53cfb983579c8a02ed6c1d80ff4821efa5950298
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458201"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848213"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "81458201"
 * [Azure Machine Learning アルゴリズム チート シート](../algorithm-cheat-sheet.md)
 
 > [!TIP]
-> デザイナー内のパイプラインでは、特定のモジュールに関する情報を取得できます。 モジュールを選択し、 **[Quick Help]\(クイック ヘルプ\)** ウィンドウの **[more help]\(さらにヘルプを見る\)** リンクを選択します。
+> デザイナー内のパイプラインでは、特定のモジュールに関する情報を取得できます。 モジュールの一覧、またはモジュールの右側のウィンドウで、モジュールにカーソルを合わせ、モジュール カードの **[詳細情報]** リンクを選択します。
 
 ## <a name="data-preparation-modules"></a>データ準備モジュール
 
@@ -35,7 +35,7 @@ ms.locfileid: "81458201"
 | 機能 | 説明 | Module |
 | --- |--- | --- |
 | データの入力と出力 | クラウド ソースのデータをパイプラインに移動します。 パイプラインの実行中に、結果や中間データを Azure Storage、SQL データベース、または Hive に書き込みます。また、クラウド ストレージを使用して、パイプライン間でデータを交換します。  | [データの手動入力](enter-data-manually.md) <br/> [データのエクスポート](export-data.md) <br/> [データのインポート](import-data.md) |
-| データの変換 | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、次元削減、さまざまなファイル形式の間でのデータの変換など)。| [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [算術演算の適用](apply-math-operation.md) <br/> [SQL 変換の適用](apply-sql-transformation.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/> [クリップの値](clip-values.md) <br/> [CSV への変換](convert-to-csv.md) <br/> [データセットへの変換](convert-to-dataset.md) <br/> [インジケーター値への変換](convert-to-indicator-values.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [データの結合](join-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md)  <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [列変換の選択](select-columns-transform.md) <br/> [データセット内の列の選択](select-columns-in-dataset.md) <br/> [データの分割](split-data.md) |
+| [データの変換] | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、次元削減、さまざまなファイル形式の間でのデータの変換など)。| [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [算術演算の適用](apply-math-operation.md) <br/> [SQL 変換の適用](apply-sql-transformation.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/> [クリップの値](clip-values.md) <br/> [CSV への変換](convert-to-csv.md) <br/> [データセットへの変換](convert-to-dataset.md) <br/> [インジケーター値への変換](convert-to-indicator-values.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [データをビンにグループ化する](group-data-into-bins.md) <br/> [データの結合](join-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md)  <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [列変換の選択](select-columns-transform.md) <br/> [データセット内の列の選択](select-columns-in-dataset.md) <br/> [データの分割](split-data.md) |
 | 特徴選択 | 分析モデルの構築で使用する、関連する有用な特徴のサブセットを選択します。 | [フィルターに基づく特徴選択](filter-based-feature-selection.md) <br/> [順列の特徴量の重要度](permutation-feature-importance.md) |
 | 統計関数 | データ サイエンスに関連するさまざまな統計的方法を提供します。 | [データの集計](summarize-data.md)|
 
@@ -55,7 +55,7 @@ ms.locfileid: "81458201"
 | モデルのスコアリングと評価 | トレーニング済みモデルの正確性を測定します。 | [変換の適用](apply-transformation.md) <br/> [クラスターへのデータの割り当て](assign-data-to-clusters.md) <br/> [モデルのクロス検証](cross-validate-model.md) <br/> [モデルの評価](evaluate-model.md) <br/> [モデルのスコア付け](score-model.md) |
 | Python 言語 | コードを記述し、それをモジュール内に埋め込んで、Python をパイプラインと統合します。 | [Python モデルの作成](create-python-model.md) <br/> [Python スクリプトの実行](execute-python-script.md) |
 | R 言語 | コードを記述し、それをモジュール内に埋め込んで、R をパイプラインと統合します。 | [R スクリプトの実行](execute-r-script.md) |
-| Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 | [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) <br/> [Latent Dirichlet Allocation](latent-dirichlet-allocation.md) |
+| Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 |  [単語からベクトルへの変換](convert-word-to-vector.md) <br/> [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) <br/> [Latent Dirichlet Allocation](latent-dirichlet-allocation.md) |
 | 推奨 | 推奨モデルを構築します。 | [レコメンダーの評価](evaluate-recommender.md) <br/> [SVD レコメンダーのスコア付け](score-svd-recommender.md) <br/> [SVD レコメンダーのトレーニング](train-SVD-recommender.md) |
 | 異常検出 | 異常検出モデルを構築します。 | [PCA ベースの異常検出](pca-based-anomaly-detection.md) <br/> [異常検出モデルのトレーニング](train-anomaly-detection-model.md) |
 

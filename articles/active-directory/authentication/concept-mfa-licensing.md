@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 165b84ee6b124d3f6a04c8db177ef17e32784ff9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648004"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757417"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の機能とライセンス
 
@@ -32,9 +32,9 @@ Azure Multi-Factor Authentication は、組織のニーズに応じて、いく�
 | 次のユーザーの場合 | 機能とユース ケース |
 | --- | --- |
 | EMS または Microsoft 365 E3 および E5 | EMS E3 または Microsoft 365 E3 (EMS および Office 365 を含む) には、Azure AD Premium P1 が含まれています。 EMS E5 または Microsoft 365 E5 には、Azure AD Premium P2 が含まれています。 次のセクションに記載されている同じ条件付きアクセス機能を使用して、ユーザーに多要素認証を提供できます。 |
-| Azure AD Premium P1 | [Azure AD 条件付きアクセス](../conditional-access/overview.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。 |
+| Azure AD Premium P1 | [Azure AD 条件付きアクセス](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。 |
 | Azure AD Premium P2 | 最も強力なセキュリティのポジションと、向上したユーザー エクスペリエンスを提供します。 [リスク ベースの条件付きアクセス](../conditional-access/howto-conditional-access-policy-risk.md)を Azure AD Premium P1 の機能に追加することで、ユーザーのパターンに適応し、多要素認証の回数を最小限に抑えます。 |
-| Office 365 Business Premium、E3、または E5 | Azure Multi-Factor Authentication は、すべてのユーザーの、すべてのサインイン イベントに対して有効にするか無効にするかのどちらかとなります。 ユーザーのサブセットに対してのみ、もしくは特定のシナリオでのみ多要素認証を有効にすることはできません。 管理は Office 365 ポータルを介して行われます。 ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、[多要素認証を使用した Office 365 リソースのセキュリティ保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)に関するページを参照してください。 |
+| Office 365 Business Premium、E3、または E5 | Azure Multi-Factor Authentication は、セキュリティの既定値を使用して、[ユーザーごとに有効にすること](howto-mfa-userstates.md)、あるいはすべてのユーザー、すべてのサインイン イベントに対して有効または無効にすることができます。 Azure Multi-Factor Authentication の管理は、Office 365 ポータルを通じて行います。 ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、[多要素認証を使用した Office 365 リソースのセキュリティ保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)に関するページを参照してください。 |
 | Azure AD Free | [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、認証要求が送信されるたびに、すべてのユーザーに対して多要素認証を有効にすることができます。 有効となるユーザーまたはシナリオをきめ細かく制御することはできませんが、追加のセキュリティ措置を提供することはできます。<br /> すべてのユーザーの多要素認証を有効にするセキュリティの既定値群が使用されていない場合でも、*Azure AD 全体管理者*ロールに割り当てられたユーザーは、多要素認証を使用するように構成できます。 Free レベルのこの機能により、重要な管理者アカウントが多要素認証によって保護されます。 |
 
 ## <a name="feature-comparison-of-versions"></a>バージョンごとの機能の比較
@@ -86,4 +86,6 @@ Azure AD Free テナントのすべてのユーザーは、セキュリティの
 
 ## <a name="next-steps"></a>次のステップ
 
-コストの詳細については、[Azure Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)に関するページを参照してください。
+* コストの詳細については、[Azure Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)に関するページを参照してください。
+* [条件付きアクセスとは](../conditional-access/overview.md)
+

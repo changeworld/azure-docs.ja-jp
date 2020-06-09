@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/17/2020
-ms.openlocfilehash: 3847ba008747bd37d55977ec47014bf76a52ad24
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/23/2020
+ms.openlocfilehash: 29c5cdf418c4b7acfc7c3c510c3e76d956268fdf
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789914"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780362"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -37,7 +37,6 @@ ms.locfileid: "82789914"
 | `description` の長さ | 256 文字 | |
 | 最大 `parameters` | 50 | |
 | 最大 `outputs` | 10 | |
-||||
 
 <a name="run-duration-retention-limits"></a>
 
@@ -144,7 +143,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 | 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
 |------|--------------------|---------------------------------------|-------|
-| 送信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーによる呼び出しが含まれます。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 |
+| 送信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーによる呼び出しが含まれます。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 [呼び出し可能なエンドポイント](logic-apps-http-endpoint.md)を持つ別のロジック アプリを呼び出したときにタイムアウト制限を回避するには、組み込みの Azure Logic Apps アクションを代わりに使用できます。これは、 **[Built-in]\(組み込み\)** の下のコネクタ ピッカーにあります。 |
 | 受信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガーと Webhook トリガーによって受信された呼び出しが含まれます。 <p><p>**注**:元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
 |||||
 
@@ -154,8 +153,8 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 | 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
 |------|--------------------|---------------------------------------|-------|
-| メッセージ サイズ | 100 MB | 200 MB | ISE のラベルが付いたコネクタは、ISE 以外のコネクタの制限ではなく、ISE の制限を使用します。 <p><p>この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
-| チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p><p>統合サービス環境の場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](https://docs.microsoft.com/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
+| メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 <p><p>- AS2、X12、EDIFACT などのコネクタには、独自の [B2B メッセージ制限](#b2b-protocol-limits)があります。 <br>- ISE コネクタは、ISE 以外のコネクタの制限ではなく、ISE の制限を使用します。 |
+| チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p><p>ISE を使用している場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](https://docs.microsoft.com/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
 |||||
 
 #### <a name="character-limits"></a>文字制限
@@ -177,6 +176,18 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 | 再試行の最小間隔 | 5 秒 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
 ||||
 
+<a name="authentication-limits"></a>
+
+### <a name="authentication-limits"></a>認証制限
+
+以下に、Request トリガーで開始され、[Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認するロジック アプリの制限を示します。
+
+| 名前 | 制限 | Notes |
+| ---- | ----- | ----- |
+| Azure AD 承認ポリシー | 5 | |
+| 承認ポリシーごとの要求数 | 10 | |
+||||
+
 <a name="custom-connector-limits"></a>
 
 ## <a name="custom-connector-limits"></a>カスタム コネクタの制限
@@ -196,7 +207,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 | 名前 | 制限 |
 |------|-------|
 | ロジック アプリあたりのマネージド ID | システム割り当て ID または 1 個のユーザー割り当て ID |
-| Azure サブスクリプションにマネージド ID を持つ、リージョンごとのロジック アプリの数 | 250 |
+| Azure サブスクリプションにマネージド ID を持つ、リージョンごとのロジック アプリの数 | 500 |
 |||
 
 <a name="integration-account-limits"></a>

@@ -8,19 +8,19 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062661"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828408"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>セキュリティ情報を使用し、職場または学校のパスワードをリセットする
 
-職場または学校のパスワードを忘れた場合、組織からパスワードを取得したことがない場合、またはアカウントからロックアウトされている場合は、自分のセキュリティ情報とモバイル デバイスを使用して職場または学校のパスワードをリセットすることができます。 ご自分の情報を設定したり、ご自分のパスワードをリセットしたりするためには、管理者がこの機能を有効にする必要があります。
+職場または学校のパスワードを忘れた場合、組織からパスワードを取得したことがない場合、またはアカウントからロックアウトされている場合は、自分のセキュリティ情報とモバイル デバイスを使用して職場または学校のパスワードをリセットすることができます。 ご自分の情報を設定するには、および[ご自分のパスワードをリセットするには](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register)、管理者がこの機能を有効にする必要があります。
 
 パスワードは忘れていないが、ただ変更を希望する場合、この記事の[パスワードを変更する](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password)方法に関するセクションを参照してください。
 

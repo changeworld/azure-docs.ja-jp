@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901279"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848840"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
 
@@ -48,8 +48,6 @@ Azure Disk Encryption を使用して VM ディスクを暗号化するための
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
 
 ブート ボリュームとデータ ボリュームの両方を暗号化できます。ただし、先に OS ボリュームを暗号化しなければ、データは暗号化できません。
-
-OS ボリュームを暗号化した後で OS ボリュームの暗号化を無効にすることはできません。
 
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Azure Disk Encryption を使用して、マウント解除されたボリュームを暗号化することはできますか。
 
@@ -136,7 +134,7 @@ Azure Backup には、同じサブスクリプションおよびリージョン�
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>質問したり、フィードバックを提供したりするにはどこに移動すればよいですか。
 
-[Azure Disk Encryption フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption)で質問したり、フィードバックを提供したりできます。
+ご質問やフィードバックは、[Azure Disk Encryption についての Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)に投稿してください。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。

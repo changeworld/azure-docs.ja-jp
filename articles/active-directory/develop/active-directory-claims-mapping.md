@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871209"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737505"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -319,7 +319,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | extensionattribute14 | 拡張属性 14 |
 | User | extensionattribute15 | 拡張属性 15 |
 | User | othermail | その他のメール |
-| User | country | Country |
+| User | country | 国/リージョン |
 | User | city | City |
 | User | state | State |
 | User | jobtitle | 役職 |
@@ -328,7 +328,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | アプリケーション、リソース、対象ユーザー | displayName | 表示名 |
 | アプリケーション、リソース、対象ユーザー | objected | ObjectID |
 | アプリケーション、リソース、対象ユーザー | tags | サービス プリンシパル タグ |
-| [会社] | tenantcountry | テナントの国 |
+| [会社] | tenantcountry | テナントの国/リージョン |
 
 **TransformationID:** TransformationID 要素は、ソース要素が "transformation" に設定されている場合にのみ指定する必要があります。
 
@@ -478,7 +478,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>例:サービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を要求として含めるために、ポリシーを作成して割り当てる
 
-この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
+この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国/リージョン要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
 
 1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
    1. ポリシーを作成するには、次のコマンドを実行します。  

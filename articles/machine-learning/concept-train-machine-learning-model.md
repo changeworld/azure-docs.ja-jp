@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592391"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683016"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -111,6 +111,18 @@ R SDK を使用すると、Azure Machine Learning で R 言語を使用できま
 + [分類:顧客離れ、強い欲求、アップセルを予測する](how-to-designer-sample-classification-churn.md)
 + [カスタム R スクリプトを使用した分類: フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)
 + [テキスト分類: Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>多数モデル ソリューション アクセラレータ
+
+[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
+
+たとえば次のシナリオで、__それぞれの事例または個々の対象の__モデルを構築すると、結果が改善される可能性があります。
+
+* 個々の店舗の売上予測
+* 数百基の油井の予測メンテナンス
+* 個々のユーザーのエクスペリエンスの調整。
+
+詳細については、GitHub の[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)に関するページを参照してください。
 
 ## <a name="cli"></a>CLI
 

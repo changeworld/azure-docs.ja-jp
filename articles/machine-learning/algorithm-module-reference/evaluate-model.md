@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129840"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847414"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
@@ -34,9 +34,13 @@ ms.locfileid: "82129840"
 
 
 ## <a name="how-to-use-evaluate-model"></a>モデルの評価の使用方法
-1. [Score Model (モデルのスコア付け)](./score-model.md) の **Scored dataset\(スコア付けされたデータセット\)** 出力を **Evaluate Model (モデルの評価)** の左の入力ポートに接続します。 
+1. [Score Model (モデルのスコア付け)](./score-model.md) の**スコア付けされたデータセット**の出力、または [Assign Data to Clusters (クラスターへのデータの割り当て)](./assign-data-to-clusters.md) の結果データセットの出力を **Evaluate Model (モデルの評価)** の左の入力ポートに接続します。 
+  > [!NOTE] 
+  > "Select Columns in Dataset (データセット内の列の選択)" などのモジュールを使用して入力データセットの一部を選択する場合、AUC、二項分類/異常検出の精度などのメトリックを計算するために、(トレーニングで使用される) 実際のラベル列である "Scored Probabilities (スコア付け確率)" 列と "Scored Labels (スコア付けラベル)" 列が存在することを確認してください。
+  > 実際のラベル列である "Scored Labels (スコア付けラベル)" 列は、多クラス分類/回帰のメトリックを計算するために存在します。
+  > "Assignments (割り当て)" 列、"DistancesToClusterCenter no.X" 列 (X は、0 から重心数 - 1 までの範囲の重心インデックス) は、クラスターのメトリックを計算するために存在します。
 
-2. [オプション] 2 つ目のモデルの[Score Model (モデルのスコア付け)](./score-model.md)モジュールの**Scored dataset\(スコア付けされたデータセット\)** 出力を **Evaluate Model (モデルの評価)** の**右側**の入力に接続します。 同じデータで 2 つの異なるモデルの結果を簡単に比較できます。 2 つの入力アルゴリズムは、同じアルゴリズムの種類である必要があります。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
+2. [省略可能] [Score Model (モデルのスコア付け)](./score-model.md) の**スコア付けされたデータセット**の出力、または 2 番目のモデルの Assign Data to Clusters (クラスターへのデータの割り当て) の結果データセットの出力を **Evaluate Model (モデルの評価)** の**右**の入力ポートに接続します。 同じデータで 2 つの異なるモデルの結果を簡単に比較できます。 2 つの入力アルゴリズムは、同じアルゴリズムの種類である必要があります。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
 
     > [!NOTE]
     > アルゴリズムの種類は、"2 クラス分類"、"多クラス分類"、"回帰"、"機械学習アルゴリズム" の "クラスタリング" を指します。 
@@ -45,7 +49,7 @@ ms.locfileid: "82129840"
 
 ## <a name="results"></a>結果
 
-**Evaluate Model (モデルの評価)** の実行後、モジュールを右クリックして **[Visualize Evaluation results]\(評価結果の視覚化\)** を選択し、結果を表示します。
+**Evaluate Model (モデルの評価)** を実行した後、モジュールを選択して、右側にある **[Evaluate Model]\(モデルの評価\)** ナビゲーション パネルを開きます。  次に、 **[出力 + ログ]** タブを選択します。このタブの **[データ出力]** セクションには複数のアイコンがあります。   **[可視化]** アイコンには棒グラフのアイコンがあります。これは、結果を確認する第一の方法です。
 
 データセットを **Evaluate Model (モデルの評価)** の両方の入力に接続すると、結果には両方のデータのセットまたは両方のモデルのメトリックが含まれます。
 左側のポートに接続されているモデルまたはデータがレポートの先頭に表示され、その後にデータセットのメトリック、または右側のポートに接続されているモデルが表示されます。  

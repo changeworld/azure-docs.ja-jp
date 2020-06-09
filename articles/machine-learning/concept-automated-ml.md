@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983467"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683082"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -46,7 +46,7 @@ ms.locfileid: "82983467"
 
 予測される出力値がカテゴリである分類とは異なり、回帰モデルでは、独立した予測子に基づいて数値の出力値が予測されます。 回帰の目的は、1 つの変数が他の変数にどのように影響するかを推定することによって、独立した予測変数間の関係を確立することです。 たとえば、自動車の価格は、燃費効率や安全性の評価などの特徴に基づいています。 [自動機械学習を使用した回帰](tutorial-auto-train-models.md)に関する記事で、詳細と例を確認してください。
 
-予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [CPU パフォーマンスの予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)。 
+予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [CPU パフォーマンスの予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb)。 
 
 ### <a name="time-series-forecasting"></a>時系列予測
 
@@ -110,7 +110,7 @@ ms.locfileid: "82983467"
 
 ### <a name="automatic-preprocessing-standard"></a>自動の前処理 (標準)
 
-自動化されたすべての機械学習実験において、アルゴリズムが十分に実行されるよう、自動的にデータの規模が調整され、正規化されます。  モデル トレーニングの間、次のいずれかのスケーリング手法または正規化手法が各モデルに適用されます。
+自動化されたすべての機械学習実験において、アルゴリズムが十分に実行されるよう、自動的にデータの規模が調整され、正規化されます。  モデル トレーニングの間、次のいずれかのスケーリング手法または正規化手法が各モデルに適用されます。 AutoML がモデル内の[オーバーフィットや不均衡データを防止する](concept-manage-ml-pitfalls.md)方法について説明します。
 
 |スケーリング&nbsp;&&nbsp;正規化| 説明 |
 | ------------- | ------------- |
@@ -186,8 +186,19 @@ ms.locfileid: "82983467"
 | UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |                               |
 | データ ガードレール                                            | ✓      | ✓     |                               |
 
+## <a name="many-models"></a>多数モデル 
 
-## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning の自動 ML
+[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、自動 ML を使用して、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
+
+たとえば次のシナリオで、__それぞれの事例または個々の対象の__モデルを構築すると、結果が改善される可能性があります。
+
+* 個々の店舗の売上予測
+* 数百基の油井の予測メンテナンス
+* 個々のユーザーのエクスペリエンスの調整。
+
+詳細については、GitHub の[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)に関するページを参照してください。
+
+## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning での自動 ML
 
 Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
 

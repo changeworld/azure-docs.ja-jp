@@ -5,21 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 05/20/2020
 ms.author: jgao
-ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 24a0891b57f67bfb78cf3699bddbcf8d345ee679
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984795"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83708008"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
 Azure Resource テンプレートでデプロイ スクリプトを使用する方法を説明します。 `Microsoft.Resources/deploymentScripts` という名前の新しいリソースの種類を使用すると、ユーザーはテンプレートのデプロイでデプロイ スクリプトを実行し、実行結果を確認できます。 これらのスクリプトは、次のようなカスタム手順を実行するために使用できます。
 
 - ユーザーをディレクトリに追加する
-- アプリ登録を作成する
 - データ プレーン操作 (BLOB のコピー、シード データベースなど) の実行
 - ライセンス キーを検索して検証する
 - 自己署名証明書を作成する
@@ -37,14 +36,14 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 デプロイ スクリプト リソースは、Azure Container Instance が使用可能なリージョンでのみ使用できます。  「[Azure リージョンの Azure Container Instances のリソースの可用性](../../container-instances/container-instances-region-availability.md)」を参照してください。
 
 > [!IMPORTANT]
-> スクリプトの実行とトラブルシューティングのため、同じリソース グループ内に 2 つのデプロイ スクリプト リソース (ストレージ アカウントとコンテナー インスタンス) が作成されます。 これらのリソースは、通常、デプロイ スクリプトの実行が終了状態になったときにスクリプト サービスによって削除されます。 リソースが削除されるまで、リソースに対する課金が発生します。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
+> スクリプト実行とトラブルシューティングには、ストレージ アカウントとコンテナー インスタンスが必要です。 既存のストレージ アカウントを指定するオプションがあります。指定しない場合は、コンテナー インスタンスと共にストレージ アカウントがスクリプト サービスによって自動的に作成されます。 自動的に作成された 2 つのリソースは、通常、デプロイ スクリプトの実行が終了状態になったときにスクリプト サービスによって削除されます。 リソースが削除されるまでは、リソースに対して請求が行われます。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - **ターゲットの resource-group への共同作成者のロールが付与されたユーザー割り当てマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 リソース グループの外部で操作を実行するには、追加のアクセス許可を付与する必要があります。 たとえば、新しいリソース グループを作成する場合は、サブスクリプション レベルに ID を割り当てます。
 
   > [!NOTE]
-  > デプロイ スクリプト エンジンにより、バックグラウンドでストレージ アカウントとコンテナー インスタンスが作成されます。  サブスクリプションで Azure ストレージ アカウント (Microsoft.Storage) と Azure コンテナー インスタンス (Microsoft.ContainerInstance) リソース プロバイダーを登録していない場合は、サブスクリプション レベルで共同作成者のロールを持つユーザー割り当てマネージド ID が必要です。
+  > スクリプト サービスは、ストレージ アカウント(既存のストレージ アカウントが指定されていない場合) とコンテナー インスタンスをバックグラウンドで作成します。  サブスクリプションで Azure ストレージ アカウント (Microsoft.Storage) と Azure コンテナー インスタンス (Microsoft.ContainerInstance) リソース プロバイダーを登録していない場合は、サブスクリプション レベルで共同作成者のロールを持つユーザー割り当てマネージド ID が必要です。
 
   ID を作成するには、[Azure portal を使用してユーザー割り当てマネージド ID を作成する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure CLI を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)、または [Azure PowerShell を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)に関する各記事を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
 
@@ -101,6 +100,13 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
   },
   "properties": {
     "forceUpdateTag": 1,
+    "containerSettings": {
+      "containerGroupName": "mycustomaci"
+    },
+    "storageAccountSettings": {
+      "storageAccountName": "myStorageAccount",
+      "storageAccountKey": "myKey"
+    },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "environmentVariables": [
@@ -132,6 +138,8 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 - **identity**: デプロイ スクリプト サービスは、ユーザー割り当てのマネージド ID を使用してスクリプトを実行します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
 - **kind**: スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
 - **forceUpdateTag**:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 パラメーターの defaultValue として設定する必要がある newGuid() 関数または utcNow() 関数を使用します。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
+- **containerSettings**:Azure Container Instance をカスタマイズするための設定を指定します。  **containerGroupName** は、コンテナー グループ名を指定するためのものです。  指定しない場合、グループ名は自動的に生成されます。
+- **storageAccountSettings**:既存のストレージ アカウントを使用するための設定を指定します。 指定しない場合、ストレージ アカウントは自動的に作成されます。 「[既存のストレージ アカウントの使用](#use-an-existing-storage-account)」を参照してください。
 - **azPowerShellVersion**/**azCliVersion**:使用するモジュールのバージョンを指定します。 サポートされている PowerShell と CLI のバージョンの一覧については、「[前提条件](#prerequisites)」を参照してください。
 - **arguments**: パラメーター値を指定します。 値はスペースで区切ります。
 - **environmentVariables**:スクリプトに渡す環境変数を指定します。 詳細については、「[デプロイ スクリプトを開発する](#develop-deployment-scripts)」を参照してください。
@@ -190,7 +198,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 例を確認するには、[[こちら]](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json) を選択します。
 
-外部スクリプト ファイルにアクセスできる必要があります。  Azure ストレージ アカウントに格納されているスクリプト ファイルをセキュリティで保護する方法については、「[チュートリアル:Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する](./template-tutorial-secure-artifacts.md)」 を参照してください。
+外部スクリプト ファイルにアクセスできる必要があります。  Azure ストレージ アカウントに格納されているスクリプト ファイルをセキュリティで保護するには、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](./secure-template-with-sas-token.md)」を参照してください。
 
 デプロイ スクリプトによって参照されるスクリプトの整合性を確保する必要があります (**PrimaryScriptUri** または **SupportingScriptUris** のいずれか)。  信頼できるスクリプトのみを参照します。
 
@@ -241,15 +249,17 @@ PowerShell デプロイ スクリプトとは異なり、CLI/bash のサポー�
 ### <a name="handle-non-terminating-errors"></a>終了しないエラーを処理する
 
 デプロイ スクリプトで [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) 変数を使用することで、終了しないエラーに PowerShell が応答する方法を制御できます。 デプロイ スクリプト エンジンでは、値の設定も変更も行いません。  $ErrorActionPreference に設定した値に関係なく、デプロイ スクリプトでエラーが発生すると、そのスクリプトによってリソースのプロビジョニングの状態が *[失敗]* に設定されます。
+) 変数を使用することで、終了しないエラーに PowerShell が応答する方法を制御できます。 スクリプト サービスは値を設定または変更しません。  $ErrorActionPreference に設定した値に関係なく、デプロイ スクリプトでエラーが発生すると、そのスクリプトによってリソースのプロビジョニングの状態が *[失敗]* に設定されます。
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>セキュリティで保護された文字列をデプロイ スクリプトに渡す
 
 コンテナー インスタンスで環境変数 (EnvironmentVariable) を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 デプロイ スクリプトでは、Azure Container Instance と同じ方法で、セキュリティで、セキュリティで保護されていない環境変数と保護されている環境変数が処理されます。 詳細については、「[コンテナー インスタンスで環境変数を設定する](../../container-instances/container-instances-environment-variables.md#secure-values)」を参照してください。
 
+環境変数の最大許容サイズは 64 KB です。
+
 ## <a name="debug-deployment-scripts"></a>デプロイ スクリプトのデバッグ
 
-スクリプ トサービスによって、[ストレージ アカウント](../../storage/common/storage-account-overview.md)と、スクリプト実行用の[コンテナー インスタンス](../../container-instances/container-instances-overview.md)が作成されます。 両方のリソースのリソース名のサフィックスは、**azscripts** です。
+スクリプト サービスは、[ストレージ アカウント](../../storage/common/storage-account-overview.md) (既存のストレージ アカウントが指定されていない場合) と、スクリプト実行用の[コンテナー インスタンス](../../container-instances/container-instances-overview.md)を作成します。 これらのリソースがスクリプト サービスによって自動的に作成される場合、両方のリソースには、リソース名に **azscripts** サフィックスが付けられます。
 
 ![Resource Manager テンプレート デプロイ スクリプトのリソース名](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
@@ -292,22 +302,53 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ![Resource Manager テンプレートのデプロイ スクリプト、非表示の型の表示、ポータル](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
+## <a name="use-an-existing-storage-account"></a>既存のストレージ アカウントの使用
+
+スクリプト実行とトラブルシューティングには、ストレージ アカウントとコンテナー インスタンスが必要です。 既存のストレージ アカウントを指定するオプションがあります。指定しない場合は、コンテナー インスタンスと共にストレージ アカウントがスクリプト サービスによって自動的に作成されます。 既存のストレージ アカウントを使用するための要件は次のとおりです。
+
+- サポートされているストレージ アカウントの種類は、汎用 v2、汎用 v1、および FileStorage アカウントです。 Premium SKU をサポートしているのは FileStorage だけです。 詳細については、「[ストレージ アカウントの種類](../../storage/common/storage-account-overview.md)」を参照してください。
+- ストレージ アカウントのファイアウォール規則はまだサポートされていません。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../../storage/common/storage-network-security.md)に関する記事を参照してください。
+- デプロイ スクリプトのユーザー割り当て済みマネージド ID には、ストレージ アカウントを管理するためのアクセス許可が必要です。これには、ファイル共有の読み取り、作成、削除が含まれます。
+
+既存のストレージ アカウントを指定するには、次の json を `Microsoft.Resources/deploymentScripts` のプロパティ要素に追加します。
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+- **storageAccountName**: ストレージ アカウントの名前を指定します。
+- **storageAccountKey"** : ストレージ アカウント キーのいずれかを指定します。 [`listKeys()`](./template-functions-resource.md#listkeys) 関数を使用して、キーを取得することができます。 次に例を示します。
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
+
+完全な `Microsoft.Resources/deploymentScripts` 定義のサンプルについては、「[サンプル テンプレート](#sample-templates)」を参照してください。
+
+既存のストレージ アカウントを使用すると、スクリプト サービスによって一意の名前を持つファイル共有が作成されます。 スクリプト サービスがファイル共有をクリーンアップする方法については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
+
 ## <a name="clean-up-deployment-script-resources"></a>デプロイ スクリプト リソースのクリーンアップ
 
-デプロイ スクリプトは、デプロイ スクリプトの実行とデバッグ情報の格納に使用されるストレージ アカウントとコンテナー インスタンスを作成します。 これら 2 つのリソースは、プロビジョニングされたリソースと同じリソース グループ内に作成され、スクリプトの有効期限が切れるとスクリプト サービスによって削除されます。 これらのリソースのライフ サイクルを制御できます。  削除されるまで、両方のリソースに対して課金されます。 価格情報については、「[Container Instances の価格](https://azure.microsoft.com/pricing/details/container-instances/)」と「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+スクリプト実行とトラブルシューティングには、ストレージ アカウントとコンテナー インスタンスが必要です。 既存のストレージ アカウントを指定するオプションがあります。指定しない場合は、コンテナー インスタンスと共にストレージ アカウントがスクリプト サービスによって自動的に作成されます。 自動的に作成された 2 つのリソースは、デプロイ スクリプトの実行が終了状態になったときにスクリプト サービスによって削除されます。 リソースが削除されるまでは、リソースに対して請求が行われます。 価格情報については、「[Container Instances の価格](https://azure.microsoft.com/pricing/details/container-instances/)」と「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 これらのリソースのライフ サイクルは、テンプレートの次のプロパティによって制御されます。
 
-- **cleanupPreference**:スクリプトの実行がターミナル状態になった再のクリーンアップ設定  サポートされる値は
+- **cleanupPreference**:スクリプトの実行がターミナル状態になった再のクリーンアップ設定 サポートされる値は
 
-  - **Always**:スクリプトの実行がターミナル状態になった場合に、リソースを削除します。 リソースがクリーンアップされた後も deploymentScripts リソースが存在する可能性があるため、システム スクリプトでは、リソースが削除される前に、スクリプトの実行結果 (stdout、出力、戻り値など) が DB にコピーされます。
-  - **OnSuccess**:スクリプトの実行が成功した場合にのみ、リソースを削除します。 引き続きリソースにアクセスして、デバッグ情報を見つけることができます。
-  - **OnExpiration**:**retentionInterval** 設定の有効期限が切れている場合にのみ、リソースを削除します。 このプロパティは現在無効になっています。
+  - **Always**:スクリプトの実行が終了状態になったときに、自動的に作成されたリソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプト サービスによって、ストレージ アカウントに作成されたファイル共有が削除されます。 リソースがクリーンアップされた後も deploymentScripts リソースが存在する可能性があるため、リソースが削除される前に、スクリプト サービスがスクリプトの実行結果 (stdout、出力、戻り値など) を保持します。
+  - **OnSuccess**:スクリプトの実行が成功した場合にのみ、自動的に作成されたリソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプトの実行が成功した場合にのみ、スクリプト サービスによってファイル共有が削除されます。 引き続きリソースにアクセスして、デバッグ情報を見つけることができます。
+  - **OnExpiration**:**retentionInterval** 設定の有効期限が切れている場合にのみ、自動リソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプト サービスによってファイル共有が削除されますが、ストレージ アカウントは保持されます。
 
 - **retentionInterval**:スクリプト リソースを保持する期間を指定します。この時間が経過すると、期限切れになり削除されます。
 
 > [!NOTE]
-> デプロイ スクリプト リソースは、他の目的では使用しないことをお勧めします。
+> スクリプト サービスによって生成されたストレージ アカウントとコンテナー インスタンスを、他の目的で使用しないことをお勧めします。 この 2 つのリソースは、スクリプト ライフ サイクルに応じて削除される場合があります。
 
 ## <a name="run-script-more-than-once"></a>スクリプトを複数回実行する
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582891"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744685"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -118,7 +118,7 @@ user.department -eq "Sales"
 | streetAddress |任意の文字列値または *null* |(user.streetAddress -eq "value") |
 | surname |任意の文字列値または *null* |(user.surname -eq "value") |
 | telephoneNumber |任意の文字列値または *null* |(user.telephoneNumber -eq "value") |
-| usageLocation |2 文字の国コード |(user.usageLocation -eq "US") |
+| usageLocation |2 文字の国または地域コード |(user.usageLocation -eq "US") |
 | userPrincipalName |任意の文字列値 |(user.userPrincipalName -eq "alias@domain") |
 | userType |member guest *null* |(user.userType -eq "Member") |
 

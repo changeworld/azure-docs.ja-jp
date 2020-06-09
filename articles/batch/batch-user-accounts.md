@@ -1,15 +1,15 @@
 ---
-title: ユーザー アカウントでタスクを実行する - Azure Batch
-description: タスクを実行するユーザー アカウントを構成できることは便利です。 ユーザー アカウントの種類とその構成方法について説明します。
-ms.topic: article
+title: ユーザー アカウントでタスクを実行する
+description: ユーザー アカウントの種類とその構成方法について説明します。
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980288"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779493"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
@@ -40,7 +40,7 @@ Azure Batch には、タスクを実行するためのユーザー アカウン�
 
 開始タスクの実行に使用されたものと同じアカウントでタスクが実行される場合、このタスクには開始タスク ディレクトリへの読み取り/書き込みアクセスがあります。 同様に、ジョブの準備タスクの実行に使用されたものと同じアカウントでタスクが実行される場合、このタスクにはジョブの準備タスク ディレクトリへの読み取り/書き込みアクセスがあります。 タスクが開始タスクやジョブ準備タスクとは異なるアカウントで実行されている場合、このタスクには、それぞれのディレクトリに対してのみの読み取りアクセスがあります。
 
-タスクからのファイルとディレクトリへのアクセスに関する詳細については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md#files-and-directories)」をご覧ください。
+タスクからのファイルとディレクトリへのアクセスの詳細については、「[ファイルとディレクトリ](files-and-directories.md)」を参照してください。
 
 ## <a name="elevated-access-for-tasks"></a>タスクの特権アクセス権 
 
@@ -322,4 +322,5 @@ Batch サービス バージョン 2017-01-01.4.0 では、以前のバージョ
 
 ## <a name="next-steps"></a>次のステップ
 
-* Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
+* [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
+* Azure Batch 内の[ファイルとディレクトリ](files-and-directories.md)について学習します。

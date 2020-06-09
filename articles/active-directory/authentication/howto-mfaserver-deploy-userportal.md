@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653206"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680920"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -105,7 +105,7 @@ Azure Multi-Factor Authentication Server 以外のサーバーにユーザー �
     * **"USE_WEB_SERVICE_SDK"** というキーを探して **value="false"** を **value="true"** に変更します。
     * **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** というキーを探して **value=""** を **value="DOMAIN\User"** に変更します。DOMAIN\User には、"PhoneFactor Admins" グループに属しているサービス アカウントを指定してください。
     * **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** というキーを探して **value=""** を **value="Password"** に変更します。Password には、前の行で入力したサービス アカウントのパスワードを指定してください。
-    * **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** という値を探して、このプレースホルダー URL を手順 2. でインストールした Web サービス SDK の URL に変更します。
+    * `https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx` という値を探して、このプレースホルダー URL を手順 2. でインストールした Web サービス SDK の URL に変更します。
     * Web.Config ファイルを保存してメモ帳を閉じます。
 
 6. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (`https://mfa.contoso.com/MultiFactorAuth` など)。 証明書の警告およびエラーが表示されないことを確認してください。

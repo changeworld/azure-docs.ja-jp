@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426497"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651933"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
 
@@ -156,16 +156,16 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. デルタ クエリを作成します。 
    
-   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の **_操作_** を返す必要があります。 この列では、 **\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 
+   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の**_操作_** を返す必要があります。 この列では、 **\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 また、差分期間内のすべての更新が適切にキャプチャされるようにするために、SQL Server 側から**透かし**を追加する必要があります。 **透かし**なしでデルタ クエリを使用すると、参照データセットに誤りが生じる可能性があります。  
 
    更新されたレコードの場合、テンポラル テーブルでは挿入と削除の操作をキャプチャすることによってブックキーピングが行われます。 その場合、Stream Analytics ランタイムでは、前のスナップショットにデルタ クエリの結果を適用することによって、参照データが最新の状態に維持されます。 デルタ クエリの例を次に示します。
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as _watermark_, 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as _watermark_, 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

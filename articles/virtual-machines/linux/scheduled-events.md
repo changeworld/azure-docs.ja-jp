@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: ee600d7524af27a0e9e2ce0176e7bd4d1f60bc3b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 7c33f29ab00605f68d41358b79284bf49188fece
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758563"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715870"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -52,7 +52,7 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 
 - スタンドアロンの仮想マシン。
 - クラウド サービス内のすべての VM。
-- 可用性セット内のすべての VM。
+- 可用性セット/可用性ゾーン内のすべての VM。 
 - スケール セットの配置グループすべての VM。 
 
 そのため、イベント内の `Resources` フィールドをチェックして、影響を受ける VM を特定する必要があります。

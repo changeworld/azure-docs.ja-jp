@@ -8,12 +8,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: c9ac8d7ea465a26d29bf8f8fbc15dcefaf9d7575
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187281"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829122"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory でのデータ フローのトラブルシューティング
 
@@ -82,7 +82,7 @@ ms.locfileid: "82187281"
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 *  [ADF マッピング データ フローのパフォーマンス ガイド](concepts-data-flow-performance.md)

@@ -1,20 +1,20 @@
 ---
 title: スタンドアロン Azure Automation アカウントを作成する
-description: この記事では、Azure Automation のセキュリティ プリンシパル認証のサンプルを作成、テスト、使用する手順をわかりやすく説明します。
+description: この記事では、スタンドアロンの Azure Automation アカウントとクラシック実行アカウントを作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392284"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837095"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
-この記事では、Azure Automation アカウントを Azure Portal で作成する方法について説明します。 ポータルの Automation アカウントを使用すると、追加の管理ソリューションを使用したり、Azure Monitor ログと統合したりすることなく、Automation について評価し、学ぶことができます。 このような管理ソリューションの追加や Azure Monitor ログとの統合は、Runbook ジョブを詳細に監視するために、後からいつでも行うことができます。
+この記事では、Azure Automation アカウントを Azure Portal で作成する方法について説明します。 ポータルの Automation アカウントを使用すると、追加の管理機能を使用したり、Azure Monitor ログを統合したりすることなく、Automation について評価し、学ぶことができます。 管理機能の追加や Azure Monitor ログの統合は、Runbook ジョブを詳細に監視するために、後からいつでも行うことができます。
 
 Automation アカウントを使うと、Azure Resource Manager またはクラシック デプロイ モデルでリソースを管理することで、Runbook を認証できます。 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。
 
@@ -35,9 +35,7 @@ Automation アカウントを作成または更新したり、この記事で説
 
 サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションのグローバル管理者または共同管理者ロールに追加された場合、Active Directory にはゲストとして追加されます。 このシナリオでは、[Automation アカウントの追加] ページに次のメッセージが表示されます: `You do not have permissions to create.`
 
-ユーザーが先にグローバル管理者または共同管理者ロールに追加された場合は、そのユーザーをサブスクリプションの Active Directory インスタンスから削除できます。 Active Directory のユーザー ロールにユーザーを追加し直すことができます。
-
-ユーザー ロールを確認するには
+ユーザーが先にグローバル管理者または共同管理者ロールに追加された場合は、そのユーザーをサブスクリプションの Active Directory インスタンスから削除できます。 Active Directory のユーザー ロールにユーザーを追加し直すことができます。 ユーザー ロールを確認するには
 
 1. Azure portal で、[Azure Active Directory] ウィンドウに移動します。
 1. **[ユーザーとグループ]** を選択します。
@@ -83,8 +81,6 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
 
 1. Automation アカウントの作成の進行状況を追跡するには、メニューで **[通知]** を選択します。
 
-### <a name="resources-included"></a>含まれるリソース
-
 Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。 これらの作成後、Runbook を保持しない場合は安全に削除できます。 実行アカウントを使用して、Runbook でアカウントに対する認証を行うことができます。別の実行アカウントを作成する場合や実行アカウントを必要としない場合を除き、実行アカウントは残しておく必要があります。 実行アカウントのリソースを次の表に示します。
 
 | リソース | 説明 |
@@ -105,9 +101,9 @@ Azure Automation アカウントを作成するとき、クラシック実行ア
 
 ## <a name="next-steps"></a>次のステップ
 
-* グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
-* PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
-* PowerShell Workflow Runbook の使用を開始するには、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
-* Python 2 Runbook の使用を開始する場合は、[初めての Python2 Runbook](automation-first-runbook-textual-python2.md) に関するページを参照してください。
+* グラフィック作成の詳細については、[Azure Automation でのグラフィカル Runbook の作成](automation-graphical-authoring-intro.md)に関する記事を参照してください。
+* PowerShell Runbook の使用を開始するには、「[チュートリアル: PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* PowerShell Workflow Runbook の使用を開始するには、「[チュートリアル: PowerShell Workflow Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。
+* Python 2 runbook の使用を開始するには、[Python 2 Runbook の作成](learn/automation-tutorial-runbook-textual-python2.md)に関するチュートリアルを参照してください。
 * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )」をご覧ください。

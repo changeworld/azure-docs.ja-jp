@@ -3,12 +3,12 @@ title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: f4846b6eb1ea03c6706a610cab16ec376d19b060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195232"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849962"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -180,6 +180,10 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 ```
 
 その他の修復コマンドレットや例については、[Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) モジュールを参照してください。
+
+### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Azure portal でポリシー割り当て時に修復タスクを作成する
+
+修復タスクを簡単に作成する方法は、ポリシーの割り当て時に Azure portal から行うことです。 割り当てるポリシー定義が **deployIfNotExists** または **Modify** 効果である場合、 **[修復]** タブのウィザードによって _[Create a remedation task]\(修復タスクの作成\)_ オプションが提供されます。 このオプションを選択すると、ポリシーの割り当てと同時に修復タスクが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

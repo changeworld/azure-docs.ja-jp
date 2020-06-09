@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 05/15/2020
+ms.openlocfilehash: 59c7a34e975a53226b032827feae436202c8fa30
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594323"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683326"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
@@ -41,6 +41,12 @@ ms.locfileid: "82594323"
 
 両方のストリームのすべての列が、出力データに含まれます。 重複する列または不要な列を削除するには、参照変換の後に[選択変換](data-flow-select.md)を追加します。 シンク変換で列を削除したり、名前を変更したりすることもできます。
 
+### <a name="non-equi-joins"></a>非等結合
+
+参照条件で等しくない (!=) またはより大きい (>) などの条件演算子を使用するには、2 つの列の間の演算子ドロップダウンを変更します。 非等結合では、 **[最適化]** タブで **[固定]** ブロードキャストを使用して、2 つのストリームのうち少なくとも 1 つをブロードキャストする必要があります。
+
+![非等参照](media/data-flow/non-equi-lookup.png "非等参照")
+
 ## <a name="analyzing-matched-rows"></a>一致した行の分析
 
 参照変換の後で、`isMatch()` 関数を使用して、参照が個々の行と一致したかどうかを確認できます。
@@ -57,9 +63,9 @@ ms.locfileid: "82594323"
 
 ![ブロードキャスト結合](media/data-flow/broadcast.png "ブロードキャスト結合")
 
-結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには、 **[固定]** を選択します。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
 
-**[オフ]** オプションを使用してブロードキャストを無効にすることは、結合でタイムアウト エラーが発生する場合を除いて推奨されません。
+**Off** オプションを使用してブロードキャストを無効にすることは、タイムアウト エラーが発生していない限り推薦されません。
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 

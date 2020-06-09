@@ -1,17 +1,17 @@
 ---
 title: Azure Automation の接続を管理する
-description: Azure Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。
+description: この記事では、外部サービスまたはアプリケーションへの Azure Automation 接続を管理する方法と、Runbook でこれらの接続を使用する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1a50c5d3d6e068054cfc8381b220d38471a7eb6c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996571"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837129"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する
 
@@ -141,7 +141,7 @@ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.
 
 ![キャンバスに追加](media/automation-connections/connection-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で接続オブジェクトを使用する例を示したものです。 この例では、`Get RunAs Connection` アクティビティ用の `Constant value` データ セットを使用し、認証に接続オブジェクトを使用します。 `ServicePrincipalCertificate` パラメーターは、オブジェクトを 1 つ受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用します。
+次の図は、グラフィカルな Runbook で接続オブジェクトを使用する例を示したものです。 この例では、`Get RunAs Connection` アクティビティ用の `Constant value` データ セットを使用し、認証に接続オブジェクトを使用します。 `ServicePrincipalCertificate` パラメーターは、オブジェクトを 1 つ受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#use-links-for-workflow)を使用します。
 
 ![接続の取得](media/automation-connections/automation-get-connection-object.png)
 

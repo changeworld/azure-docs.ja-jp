@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feea0266b3a724f3d85944073a47e260277cc362
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72025678"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860020"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -37,7 +37,7 @@ ms.locfileid: "72025678"
 
 **Q:シームレス SSO は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。**
 
-いいえ。 シームレス SSO は、Azure AD のワールドワイド インスタンスでのみご利用いただけます。
+シームレス SSO は Azure Government クラウドで使用できます。 詳細については、「[Azure Government のハイブリッド ID に関する考慮事項](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)」を参照してください。
 
 **Q:どのアプリケーションがシームレス SSO の `domain_hint` または `login_hint` パラメーター機能を利用していますか。**
 
@@ -74,9 +74,9 @@ Azure AD にこれらのパラメーターを送信でき、その結果、シ�
 
 はい、このシナリオでは[ワークプレース ジョイン クライアント](https://www.microsoft.com/download/details.aspx?id=53554)のバージョン 2.1 以降が必要です。
 
-**Q:`AZUREADSSOACC` コンピューター アカウントの Kerberos の復号化キーをロール オーバーするにはどうすればよいですか。**
+**Q:`AZUREADSSO` コンピューター アカウントの Kerberos の復号化キーをロール オーバーするにはどうすればよいですか。**
 
-オンプレミスの AD フォレストで作成した `AZUREADSSOACC` コンピューター アカウント (Azure AD を表します) の Kerberos の復号化キーを頻繁にロール オーバーすることが重要です。
+オンプレミスの AD フォレストで作成した `AZUREADSSO` コンピューター アカウント (Azure AD を表します) の Kerberos の復号化キーを頻繁にロール オーバーすることが重要です。
 
 >[!IMPORTANT]
 >少なくとも 30 日ごとに Kerberos の復号化キーをロールオーバーすることを強くお勧めします。
@@ -101,7 +101,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    >[!NOTE]
    >使用するドメイン管理者アカウントは、保護されているユーザー グループのメンバーであってはなりません。 そうである場合、操作は失敗します。
 
-   2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSOACC` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
+   2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSO` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
    3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。
 
    >[!IMPORTANT]
@@ -145,7 +145,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
    5. `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
 
-   **手順 3.表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。**
+   **手順 3.表示されている各 AD フォレストから `AZUREADSSO` コンピューター アカウントを手動で削除します。**
 
 ## <a name="next-steps"></a>次のステップ
 

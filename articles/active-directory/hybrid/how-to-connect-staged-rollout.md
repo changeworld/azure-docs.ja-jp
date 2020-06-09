@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/12/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b7536704d68e96429d715705a0518410db399a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112322"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644167"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
@@ -51,6 +51,7 @@ ms.locfileid: "82112322"
 
 -   特定の AD フォレストで *シームレス SSO* を有効にするには、ドメイン管理者である必要があります。
 
+
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
 次のシナリオは、段階的なロールアウトがサポートされています。 この機能は、次の場合にのみ機能します：
@@ -58,6 +59,7 @@ ms.locfileid: "82112322"
 - Azure AD Connect を使用して、Azure AD にプロビジョニングされているユーザー。 「クラウドのみ」のユーザーには適用されません。
 
 - ブラウザーおよび *最新の認証* クライアント上でのユーザー サインイン トラフィック。 レガシ認証を使用するアプリケーションまたはクラウド サービスは、フェデレーション認証のフローにフォールバックします。 例としては、最新の認証が無効になっている Exchange オンラインや、最新の認証をサポートしていない Outlook 2010 があります。
+- グループ サイズは現在 50,000 ユーザーに制限されています。  50,000 ユーザーよりも大きいグループがある場合は、このグループを複数のグループに分割して、段階的なロールアウトを行うことをお勧めします。
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
@@ -77,6 +79,9 @@ ms.locfileid: "82112322"
 - それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的なロールアウトでは、ドメインをフェデレーションから管理対象に切り替えません。
 
 - 段階的なロールアウトで、セキュリティ グループを初めて追加する時点では、UX タイムアウトを回避するために、200 ユーザーに制限されます。グループを追加した後、必要に応じて、そのグループにさらにユーザーを直接追加できます。
+
+>[!NOTE]
+> テナント化されたエンドポイントはログイン ヒントを送信しないため、段階的なロールアウトではサポートされていません。  SAML アプリケーションは、テナント化されたエンドポイントを使用するため、これも段階的なロールアウトではサポートされていません。
 
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる
 

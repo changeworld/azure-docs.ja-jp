@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801010"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738820"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -201,9 +201,9 @@ Write-Host $myApp.AppRoles
 アクション グループには、限られた数の SMS アクションを保持できます。
 
 > [!NOTE]
-> Azure portal アクション グループのユーザー インターフェイスで国番号を選択できない場合、SMS はお住まいの国ではサポートされていません。  国番号が利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国を追加するように投票できます。 当面の回避策としては、お住まいの国でサポートされているサードパーティの SMS プロバイダーに対して、アクション グループで Webhook を呼び出します。  
+> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、SMS はお住まいの国/地域ではサポートされていません。  国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国/地域を追加するように投票できます。 当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの SMS プロバイダーに対して、アクション グループで Webhook を呼び出します。  
 
-サポートされている国における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
+サポートされている国/地域における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
   
 
 ### <a name="voice"></a>音声
@@ -212,9 +212,9 @@ Write-Host $myApp.AppRoles
 アクション グループには、限られた数の音声アクションを保持できます。
 
 > [!NOTE]
-> Azure portal アクション グループのユーザー インターフェイスで国番号を選択できない場合、音声通話はお住まいの国ではサポートされていません。 国番号が利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国を追加するように投票できます。  当面の回避策としては、お住まいの国でサポートされているサードパーティの音声通話プロバイダーに対して、アクション グループで Webhook を呼び出します。  
+> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、音声通話はお住まいの国/地域ではサポートされていません。 国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国/地域を追加するように投票できます。  当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの音声通話プロバイダーに対して、アクション グループで Webhook を呼び出します。  
 
-サポートされている国における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
+サポートされている国/地域における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
 ### <a name="webhook"></a>Webhook
 Webhook は、次のルールを使用して再試行されます。 Webhook の呼び出しが最大 2 回再試行されるのは、HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合です。 1 回目の再試行は 10 秒後に実行されます。 2 回目の再試行は 100 秒後に実行されます。 2 回失敗した後の 30 分間、エンドポイントはアクション グループから呼び出されません。 

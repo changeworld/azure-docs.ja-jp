@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237147"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816354"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -51,7 +51,6 @@ Azure Machine Learning コンピューティング インスタンスを使用�
 |Intel MPI ライブラリ||
 |Azure CLI ||
 |Azure Machine Learning サンプル ||
-|Azure Machine Learning EDAT エンジン ||
 |Docker||
 |Nginx||
 |NCCL 2.0 ||
@@ -68,9 +67,8 @@ Azure Machine Learning コンピューティング インスタンスを使用�
 |Anaconda Python||
 |Jupyter と拡張機能||
 |Jupyterlab と拡張機能||
-|Visual Studio Code ||
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>PyPI から|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
-|その他の PyPI パッケージ|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
+[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>PyPI から|ほとんどの azureml 追加パッケージが含まれています。  完全な一覧を表示するには [コンピューティング インスタンスでターミナル ウィンドウを開き](how-to-run-jupyter-notebooks.md#terminal)、以下を実行します <br/> `conda list -n azureml_py36 azureml*` |
+|その他の PyPI パッケージ|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda パッケージ|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |ディープ ラーニング パッケージ|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX パッケージ|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
@@ -116,7 +114,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 * コンピューティング インスタンスを作成する。 名前、GPU を含む Azure VM の種類を指定し (VM の種類は作成後に変更できないことに注意してください)、SSH アクセスを有効または無効にし、必要に応じて仮想ネットワークの設定を構成します。 また、統合ノートブック、Azure portal、Resource Manager テンプレート、または Azure Machine Learning SDK からインスタンスを直接作成することもできます。 コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。
 * コンピューティング インスタンス タブを更新する
-* コンピューティング インスタンスを開始、停止、再起動する
+* コンピューティング インスタンスを開始、停止、再起動する。 VM を使用していないときは、コストを削減するために、VM を停止します。 その後、必要なときにもう一度開始します。
 * コンピューティング インスタンスを削除する
 
 ご利用のワークスペース内のコンピューティング インスタンスごとに、次のことができます。

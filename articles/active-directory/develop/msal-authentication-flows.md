@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/30/2020
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050511"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772133"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -151,7 +151,7 @@ MSAL では、ユーザーがスマート TV、IoT デバイス、プリンタ�
 
 前の図で:
 
-1. ユーザー認証が必要になるたびに、アプリがコードを提供し、ユーザーに別のデバイス (インターネットに接続されたスマートフォンなど) を使用して特定の URL (たとえば、`https://microsoft.com/devicelogin`) に移動するよう求めます。 その後、ユーザーはコードの入力を求められ、必要に応じて、同意のプロンプトや多要素認証を含む通常の認証エクスペリエンスが実行されます。
+1. ユーザー認証が必要になるたびに、アプリがコードを提供し、ユーザーに別のデバイス (インターネットに接続されたスマートフォンなど) を使用して特定の URL (たとえば、`https://microsoft.com/devicelogin`) に移動するよう求めます。 その後、ユーザーはコードの入力を求められ、必要に応じて、同意のプロンプトや[多要素認証](../authentication/concept-mfa-howitworks.md)を含む通常の認証エクスペリエンスが実行されます。
 
 2. 認証が成功すると、コマンドライン アプリはバック チャネル経由で必要なトークンを受信し、それらを使用して必要な Web API の呼び出しを実行します。
 
@@ -182,7 +182,7 @@ IWA は、.NET Framework、.NET Core、およびユニバーサル Windows プ�
 
 IWA では多要素認証はバイパスされません。 多要素認証が構成されていると、多要素認証チャレンジが必要な場合に IWA が失敗する可能性があります。 多要素認証はユーザーの対話を要求します。
 
-2 要素認証の実行を ID プロバイダーが要求するタイミングは制御できません。 テナント管理者が行います。 通常、2 要素認証が必要なのは、他の国からサインインする場合、VPN 経由で企業ネットワークに接続していない場合、および、VPN 経由で接続している特定の状況下です。 Azure AD では、AI を使用して、2 要素認証が必要かどうかを継続的に学習します。 IWA が失敗した場合、[対話ユーザー プロンプト] (#interactive) にフォール バックする必要があります。
+2 要素認証の実行を ID プロバイダーが要求するタイミングは制御できません。 テナント管理者が行います。 通常、2 要素認証が必要なのは、他の国またはリージョンからサインインする場合、VPN 経由で企業ネットワークに接続していない場合、および、VPN 経由で接続している特定の状況下です。 Azure AD では、AI を使用して、2 要素認証が必要かどうかを継続的に学習します。 IWA が失敗した場合、[対話ユーザー プロンプト] (#interactive) にフォール バックする必要があります。
 
 パブリック クライアント アプリケーションを構築するときに渡される機関は、次のいずれかである必要があります。
 - テナント化 (`https://login.microsoftonline.com/{tenant}/` の形式。`tenant` は、テナント ID を表す GUID またはテナントに関連付けられているドメイン)。
@@ -232,4 +232,4 @@ Windows ドメイン参加済みマシン上でトークンを自動的に取得
 
 ### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C での詳細
 
-MSAL.NET と Azure AD B2C の使用について詳しくは、[Azure AD B2C での ROPC の使用 (MSAL.NET)](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c) に関する記事を参照してください。
+MSAL.NET と Azure AD B2C での ROPC の使用について詳しくは、[Azure AD B2C での ROPC の使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc)に関する記事を参照してください。

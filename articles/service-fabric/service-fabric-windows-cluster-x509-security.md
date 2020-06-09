@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562000"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653649"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -248,9 +248,21 @@ ms.locfileid: "82562000"
 ## <a name="acquire-the-x509-certificates"></a>X.509 証明書を取得します。
 クラスター内の通信をセキュリティで保護するには、最初にクラスター ノード用の X.509 証明書を取得する必要があります。 さらに、承認されたコンピューターまたはユーザーだけがそのクラスターに接続できるように制限するには、クライアント コンピューター用に証明書を取得し、インストールする必要があります。
 
-運用ワークロードを実行するクラスターの場合、 [証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された X.509 証明書を使用してクラスターをセキュリティで保護します。 これらの証明書を取得する方法について詳しくは、[証明書の取得方法](https://msdn.microsoft.com/library/aa702761.aspx)に関する記事をご覧ください。
+運用ワークロードを実行するクラスターの場合、 [証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された X.509 証明書を使用してクラスターをセキュリティで保護します。 これらの証明書を取得する方法について詳しくは、[証明書の取得方法](https://msdn.microsoft.com/library/aa702761.aspx)に関する記事をご覧ください。 
+
+証明書が正常に機能するには、次のようないくつかの特性を備えている必要があります。
+
+* 証明書のプロバイダーが **Microsoft Enhanced RSA and AES Cryptographic Provider** でなければならない。
+
+* RSA キーを作成するときは、キーが **2048 ビット**である必要がある。
+
+* キー使用法拡張機能に、**Digital Signature, Key Encipherment (a0)** の値が含まれている。
+
+* 拡張キー使用法拡張機能に、**サーバー認証** (OID: 1.3.6.1.5.5.7.3.1) および**クライアント認証** (OID: 1.3.6.1.5.5.7.3.2) の値が含まれている。
 
 テスト目的で使用するクラスターの場合は、自己署名証明書を選択することができます。
+
+その他の質問については、[証明書に関するよく寄せられる質問](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)を参照してください。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>省略可能:自己署名証明書の作成
 正しく保護できる自己署名証明書を作成する方法の 1 つが、C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure ディレクトリの Service Fabric SDK フォルダーにある CertSetup.ps1 スクリプトを使用する方法です。 このファイルを編集して証明書の既定の名前を変更します。 (値 CN=ServiceFabricDevClusterCert を探します。)このスクリプトを `.\CertSetup.ps1 -Install` として実行します。

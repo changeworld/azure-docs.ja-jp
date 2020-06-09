@@ -2,118 +2,34 @@
 title: サブスクリプションおよびリソース グループにまたがってリソースをデプロイする
 description: デプロイ時に複数の Azure サブスクリプションとリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/18/2020
+ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460349"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650625"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
+# <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
-テンプレートに含まれているリソースはすべて 1 つの[リソース グループ](../management/overview.md)にデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 たとえば Azure Site Recovery に使うバックアップ仮想マシンは、別のリソース グループと場所にデプロイした方がよい場合があります。 Resource Manager を使用すると、入れ子になったテンプレートを使用して複数のサブスクリプションやリソース グループを対象にすることができます。
+Resource Manager を使用すると、単一のデプロイで複数のリソース グループにデプロイできます。 入れ子になったテンプレートを使用して、デプロイ操作のリソース グループとは異なるリソース グループを指定します。 リソース グループは、異なるサブスクリプションに存在していても構いません。
 
 > [!NOTE]
-> 単一のデプロイにデプロイできるリソース グループは 5 つまでです。 通常、この制限は、親テンプレートに対しては 1 つのリソース グループを、入れ子になったデプロイまたはリンクされたデプロイでは最大 4 つのリソース グループを指定してデプロイできることを意味します。 ただし、親テンプレートが入れ子になったテンプレートまたはリンクされたテンプレートのみを含んでいて、親テンプレート自体はリソースをデプロイしない場合は、入れ子になったデプロイまたはリンクされたデプロイで最大 5 つのリソース グループを含めることができます。
+> 単一のデプロイで **800 のリソース グループ**にデプロイできます。 通常、この制限は、親テンプレートに対しては 1 つのリソース グループを、入れ子になったデプロイまたはリンクされたデプロイでは最大 799 のリソース グループを指定してデプロイできることを意味します。 ただし、親テンプレートが入れ子になったテンプレートまたはリンクされたテンプレートのみを含んでいて、親テンプレート自体はリソースをデプロイしない場合は、入れ子になったデプロイまたはリンクされたデプロイで最大 800 のリソース グループを含めることができます。
 
 ## <a name="specify-subscription-and-resource-group"></a>サブスクリプションとリソース グループを指定する
 
-異なるリソース グループまたはサブスクリプションを対象にするには、[入れ子になったテンプレートまたはリンク済みテンプレート](linked-templates.md)を使用します。 `Microsoft.Resources/deployments` のリソースの種類には、入れ子になったデプロイのサブスクリプションやリソース グループを指定できる `subscriptionId` や `resourceGroup` のパラメーターが用意されています。 サブスクリプション ID またはリソース グループを指定しない場合は、親テンプレートのサブスクリプションとリソース グループが使用されます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。
+親テンプレートとは異なるリソース グループをターゲットにするには、[入れ子になったテンプレートまたはリンクされたテンプレート](linked-templates.md)を使用します。 デプロイ リソースの種類に、入れ子になったテンプレートのデプロイ対象のサブスクリプション ID およびリソース グループの値を指定します。
 
-テンプレートをデプロイするために使用するアカウントには、指定されたサブスクリプション ID にデプロイする権限が必要です。 指定したサブスクリプションが別の Azure Active Directory テナントに存在する場合は、[別のディレクトリからゲスト ユーザーを追加する](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)必要があります。
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json" range="38-43" highlight="5-6":::
 
-別のリソース グループとサブスクリプションを指定するには、以下を使用します。
+サブスクリプション ID またはリソース グループを指定しない場合は、親テンプレートのサブスクリプションとリソース グループが使用されます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。
 
-```json
-"resources": [
-  {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "resourceGroup": "[parameters('secondResourceGroup')]",
-    "subscriptionId": "[parameters('secondSubscriptionID')]",
-    ...
-  }
-]
-```
+テンプレートをデプロイするアカウントには、指定されたサブスクリプション ID にデプロイする権限が必要です。 指定したサブスクリプションが別の Azure Active Directory テナントに存在する場合は、[別のディレクトリからゲスト ユーザーを追加する](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)必要があります。
 
-リソース グループが同じサブスクリプションにある場合は、**subscriptionId** 値を削除できます。
+次の例では、2 つのストレージ アカウントをデプロイします。 最初のストレージ アカウントは、デプロイ操作で指定されたリソース グループにデプロイされます。 2 番目のストレージ アカウントは、`secondResourceGroup` および `secondSubscriptionID` パラメーターで指定されたリソース グループにデプロイされます。
 
-次の例では、2 つのストレージ アカウントをデプロイします。 最初のストレージ アカウントは、デプロイ中に指定されたリソース グループにデプロイされます。 2 番目のストレージ アカウントは、`secondResourceGroup` および `secondSubscriptionID` パラメーターで指定されたリソース グループにデプロイされます。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storagePrefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "secondResourceGroup": {
-      "type": "string"
-    },
-    "secondSubscriptionID": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "secondStorageLocation": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
-    }
-  },
-  "variables": {
-    "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2017-06-01",
-      "name": "[variables('firstStorageName')]",
-      "location": "[resourceGroup().location]",
-      "sku":{
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "nestedTemplate",
-      "resourceGroup": "[parameters('secondResourceGroup')]",
-      "subscriptionId": "[parameters('secondSubscriptionID')]",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2017-06-01",
-            "name": "[variables('secondStorageName')]",
-            "location": "[parameters('secondStorageLocation')]",
-            "sku":{
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-          }
-          ]
-      },
-      "parameters": {}
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json":::
 
 `resourceGroup` を存在しないリソース グループの名前に設定すると、デプロイは失敗します。
 
@@ -209,111 +125,19 @@ az deployment group create \
 
 次の表は、これらの関数が親と埋め込みのどちらのリソース グループおよびサブスクリプションに解決されるかを示しています。
 
-| テンプレートの種類 | スコープ | 解決策 |
+| テンプレートの種類 | Scope | 解像度 |
 | ------------- | ----- | ---------- |
-| 入れ子        | 外側 (既定) | 親リソース グループ |
-| 入れ子        | 内部 (inner) | サブ リソース グループ |
+| 入れ子        | outer (既定) | 親リソース グループ |
+| 入れ子        | inner | サブ リソース グループ |
 | リンク済み        | 該当なし   | サブ リソース グループ |
 
 次の[テンプレートの例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)は、次のものを示しています。
 
-* 既定の (外側の) スコープを持つ入れ子になったテンプレート
-* 内側のスコープを持つ入れ子になったテンプレート
+* 既定の (outer) スコープを持つ入れ子になったテンプレート
+* inner スコープを持つ入れ子になったテンプレート
 * リンク済みテンプレート
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "defaultScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "innerScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "expressionEvaluationOptions": {
-          "scope": "inner"
-      },
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "resourceGroup": "linkedGroup",
-      "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "contentVersion": "1.0.0.0",
-          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
-      },
-      "parameters": {}
-      }
-    }
-  ],
-  "outputs": {
-    "parentRG": {
-      "type": "string",
-      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
-    },
-    "defaultScopeRG": {
-      "type": "string",
-      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "innerScopeRG": {
-      "type": "string",
-      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "linkedRG": {
-      "type": "string",
-      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crossresourcegroupproperties.json":::
 
 前のテンプレートをテストし、その結果を確認するには、PowerShell または Azure CLI を使用します。
 

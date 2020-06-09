@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228411"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698654"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする
 
@@ -23,11 +23,11 @@ DistCp にはさまざまなコマンド ライン パラメーターが用意�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Data Lake Storage Gen2 の機能 (階層型名前空間) が有効になっていない既存の Azure Storage アカウント**。
-* **Data Lake Storage Gen2 機能が使用可能な Azure Storage アカウント**。 作成手順については、「[Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください
-* 階層型名前空間が有効になっているストレージ アカウントで作成された**ファイルシステム**。
-* Data Lake Storage Gen2 が使用可能なストレージ アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* Data Lake Storage Gen2 の機能 (階層型名前空間) が有効になっていない既存の Azure Storage アカウント。
+* Data Lake Storage Gen2 の機能 (階層型名前空間) が有効になっている Azure Storage アカウント。 Azure Storage アカウントの作成方法については、「[Azure Storage アカウントの作成](../common/storage-account-create.md)」を参照してください
+* 階層型名前空間が有効になっているストレージ アカウントで作成されたコンテナー。
+* 階層型名前空間機能が有効になっているストレージ アカウントにアクセスできる Azure HDInsight クラスター。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターから DistCp を使用する
 
@@ -37,25 +37,25 @@ HDInsight クラスターには DistCp ユーティリティが付属してい�
 
 2. (階層型名前空間が有効になっていない) 既存の汎用 V2 アカウントにアクセスできるかどうかを確認します。
 
-        hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
+        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
 
-    出力には、コンテナーの内容の一覧が表示されます。
+   出力には、コンテナーの内容の一覧が表示されます。
 
 3. 同様に、クラスターから階層型名前空間が有効になったストレージ アカウントにアクセスできるかどうかを確認します。 次のコマンドを実行します。
 
-        hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
+        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
     出力には、Data Lake Storage アカウントのファイル/フォルダーの一覧が表示されます。
 
 4. DistCp を使用し、WASB から Data Lake Storage アカウントにデータをコピーします。
 
-        hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
     このコマンドを実行すると、Blob Storage の **/example/data/gutenberg/** フォルダーの内容が Data Lake Storage アカウントの **/myfolder** にコピーされます。
 
 5. 同様に、DistCp を使用し、Data Lake Storage アカウントから Blob Storage (WASB) にデータをコピーします。
 
-        hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
 
     このコマンドを実行すると、Data Lake Store アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダーにコピーされます。
 
@@ -65,7 +65,7 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 **例**
 
-    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>使用するマッパーの数を特定するにはどうすればよいですか。
 

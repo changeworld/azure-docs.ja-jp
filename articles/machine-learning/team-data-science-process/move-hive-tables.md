@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227219"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860615"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -149,7 +149,7 @@ Hive テーブルにデータを読み込む Hive クエリを次に示します
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<BLOB データのパス\>** : Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、 *\<BLOB データのパス\>* は *'wasb://\<このコンテナー内のディレクトリ>/\<BLOB ファイル名>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、 *\<BLOB データのパス\>* は *'wasb://\<コンテナー名>\<ストレージ アカウント名>.blob.core.windows.net/\<BLOB ファイル名>'* の形式にする必要があります。
+* **\<BLOB データのパス\>** : Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、 *\<BLOB データのパス\>* は *'wasb://\<このコンテナー内のディレクトリ>/\<BLOB ファイル名>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、 *\<BLOB データのパス\>* は *'wasb://\<コンテナー名>@\<ストレージ アカウント名>.blob.core.windows.net/\<BLOB ファイル名>'* の形式にする必要があります。
 
   > [!NOTE]
   > Hive テーブルにアップロードする BLOB データは、Hadoop クラスターのストレージ アカウントの既定のコンテナーまたは追加のコンテナーに配置されている必要があります。 それ以外の場合、 *LOAD DATA* クエリはデータにアクセスできないために失敗します。

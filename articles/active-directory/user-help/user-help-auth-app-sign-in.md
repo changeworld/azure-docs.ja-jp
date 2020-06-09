@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abf5d0d4aeeb18a11f50220e982448d41a9ac1b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79138945"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773204"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウントにサインインする
 
@@ -62,6 +62,9 @@ iOS デバイスの場合:
 - **アカウント タイルをタップする**と、アカウントが開き、アカウントの全画面ビューになります。 "**電話によるサインインが有効になりました**" と表示されている場合は、パスワードを使用せずにサインインするように完全に設定されていることを意味します。 **[電話によるサインインを有効にする]** が表示されている場合は、それをタップして電話によるサインインをオンにします。
 - **既に 2 要素認証用にアプリを使用している場合**は、アカウント タイルをタップすると、アカウントが展開されて、アカウントの全画面ビューになります。 次に、 **[電話によるサインインを有効にする]** をタップして、電話によるサインインをオンにします。
 - アプリの **[アカウント]** 画面に**お使いの職場または学校アカウントが表示されない**場合は、まだアプリに追加していないことを意味します。 職場または学校アカウントの追加に関する記事の手順に従って、職場または学校アカウントを追加します。
+
+> [!NOTE]
+> iOS では、Authenticator でのデバイスの登録と証明書ベースの認証の組み合わせはサポートされません。 ユーザーは、サインインする前に、Authenticator 設定を使用してデバイスを手動で登録することで対処する必要があります。
 
 電話によるサインインを有効にした後は、Microsoft Authenticator アプリのみを使用してサインインできます。
 
