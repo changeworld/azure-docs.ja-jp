@@ -31,6 +31,8 @@
           href: understand-cost-mgt-data.md
         - name: スコープを理解して使用する
           href: understand-work-scopes.md
+        - name: 自動化を使用したコストの管理
+          href: manage-automation.md
         - name: EA から MCA API に移行する
           href: migrate-cost-management-api.md
     - name: 操作方法ガイド

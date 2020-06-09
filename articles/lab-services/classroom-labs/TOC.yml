@@ -50,6 +50,8 @@
               href: class-type-big-data-analytics.md
             - name: MATLAB
               href: class-type-matlab.md
+            - name: SolidWorks のコンピューター支援設計 (CAD)
+              href: class-type-solidworks.md
 - name: 操作方法ガイド
   items:
     - name: 管理者ガイド
@@ -112,6 +114,8 @@
               href: how-to-enable-nested-virtualization-template-vm-ui.md
             - name: テンプレート VM で入れ子になった仮想化をスクリプトを使用して有効にする
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
+        - name: GPU を使用してラボを設定する
+          href: how-to-setup-lab-gpu.md
         - name: Windows テンプレート VM の準備
           href: how-to-prepare-windows-template.md
         - name: Windows のシャットダウン動作を制御する

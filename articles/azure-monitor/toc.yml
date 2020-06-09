@@ -622,6 +622,10 @@
                   href: app/javascript.md
                 - name: JavaScript のソース マップ
                   href: app/source-map-support.md
+                - name: トラブルシューティング
+                  items:
+                    - name: SDK 読み込みエラー
+                      href: app/javascript-sdk-load-failure.md
             - name: Application Insights API の概要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -743,6 +747,8 @@
               href: app/profiler-settings.md
             - name: プロファイリング要求を追跡する
               href: app/profiler-trackrequests.md
+            - name: BYOS (Bring Your Own Storage) を構成する
+              href: app/profiler-bring-your-own-storage.md
             - name: Profiler に関するトラブルシューティング
               href: app/profiler-troubleshooting.md
         - name: スナップショット デバッガー
@@ -756,6 +762,8 @@
               href: app/snapshot-debugger-vm.md
             - name: スナップショット デバッガーのアップグレード
               href: app/snapshot-debugger-upgrade.md
+            - name: BYOS (Bring Your Own Storage) を構成する
+              href: app/profiler-bring-your-own-storage.md
             - name: スナップショット デバッガーのトラブルシューティング
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md

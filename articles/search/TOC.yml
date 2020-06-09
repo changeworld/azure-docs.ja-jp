@@ -324,24 +324,28 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API をアップグレードする
           href: search-api-migration.md
-    - name: セキュリティで保護
+    - name: Security
       items:
-        - name: セキュリティの概要
+        - name: 概要
           href: search-security-overview.md
-        - name: プライベート エンドポイントの作成
-          href: service-create-private-endpoint.md
-        - name: IP ファイアウォールの構成
-          href: service-configure-firewall.md
-        - name: サービス キーの管理
-          href: search-security-api-keys.md
-        - name: ロール ベースの管理者アクセス
-          href: search-security-rbac.md
-        - name: セキュリティ フィルター
-          href: search-security-trimming-for-azure-search.md
-        - name: AAD の ID のフィルター処理
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: 暗号化キーの管理
-          href: search-security-manage-encryption-keys.md
+        - name: データの暗号化
+          items:
+            - name: カスタマー マネージド キー
+              href: search-security-manage-encryption-keys.md
+        - name: 受信セキュリティ
+          items:
+            - name: API アクセス キー
+              href: search-security-api-keys.md
+            - name: IP ファイアウォールの構成
+              href: service-configure-firewall.md
+            - name: プライベート エンドポイントの作成
+              href: service-create-private-endpoint.md
+        - name: ID ベースのアクセス
+          items:
+            - name: セキュリティ フィルター
+              href: search-security-trimming-for-azure-search.md
+            - name: AAD の ID のフィルター処理
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理する
       items:
         - name: ポータル
@@ -350,6 +354,8 @@
           href: search-manage-powershell.md
         - name: リージョン間でのサービスの移動
           href: search-howto-move-across-regions.md
+        - name: ロール ベースの管理者アクセス
+          href: search-security-rbac.md
     - name: モニター
       items:
         - name: 基礎
@@ -473,6 +479,8 @@
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: フィードバック フォーラム (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
+    - name: コンプライアンスと認定資格
+      href: 'https://aka.ms/azurecompliance'
     - name: デモ サイト
       items:
         - name: 財務ファイルのデモ

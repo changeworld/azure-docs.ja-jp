@@ -80,6 +80,8 @@
           href: howto-mfa-userstates.md
         - name: 認証プロバイダーの構成
           href: concept-mfa-authprovider.md
+        - name: アプリ パスワードの使用
+          href: howto-mfa-app-passwords.md
         - name: ディレクトリ フェデレーション
           items:
             - name: Windows Server 2016 AD FS アダプター
@@ -169,6 +171,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: モバイル アプリ Web サービス
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: 設定の構成
+          href: howto-mfa-server-settings.md
         - name: 高可用性の構成
           href: howto-mfaserver-deploy-ha.md
         - name: MFA サーバーをアップグレードする

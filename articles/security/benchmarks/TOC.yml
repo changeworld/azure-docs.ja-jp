@@ -35,6 +35,8 @@
       href: security-baselines-overview.md
     - name: API Management のセキュリティ ベースライン
       href: ../../api-management/security-baseline.md
+    - name: Application Gateway のセキュリティ ベースライン
+      href: ../../application-gateway/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Backup のセキュリティ ベースライン
@@ -47,8 +49,12 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB のセキュリティ ベースライン
       href: ../../cosmos-db/security-baseline.md
+    - name: カスタマー ロックボックスのセキュリティ ベースライン
+      href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: データ エクスプローラーのセキュリティ ベースライン
       href: /azure/data-explorer/security-baseline
+    - name: Data Factory のセキュリティ ベースライン
+      href: /azure/data-factory/security-baseline
     - name: Databricks のセキュリティ ベースライン
       href: ../../azure-databricks/security-baseline.md
     - name: Event Hubs のセキュリティ ベースライン
@@ -67,5 +73,7 @@
       href: ../../postgresql/security-baseline.md
     - name: SQL Database のセキュリティ ベースライン
       href: ../../sql-database/security-baseline.md
+    - name: Stream Analytics のベースライン
+      href: ../../stream-analytics/security-baseline.md
     - name: Storage のセキュリティ ベースライン
       href: ../../storage/common/security-baseline.md

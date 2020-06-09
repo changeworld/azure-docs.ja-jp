@@ -1,0 +1,159 @@
+### YamlMime:Hub
+title: モバイル開発者向けの Azure のドキュメント
+summary: Azure 上でモバイル アプリを開発するために必要な情報を確認してください
+brand: azure
+metadata:
+  title: モバイル開発者向けの Azure
+  description: Azure 上でモバイル アプリを開発するために必要な情報を確認してください
+  services: mobile-services
+  ms.service: mobile-services
+  ms.topic: hub-page
+  author: codemillmatt
+  ms.author: masoucou
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 470928c43d0e80887ed0f3f8af1a92cadc29c05c
+  ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/05/2020
+  ms.locfileid: "84449901"
+highlightedContent:
+  items:
+  - title: モバイル開発フレームワークの選択
+    itemType: architecture
+    url: concepts/front-end-development-platform.md
+  - title: Azure モバイル アプリケーション開発の段階
+    itemType: architecture
+    url: concepts/stages-overview.md
+  - title: Azure を使用してモバイル アプリ全体を構築する
+    itemType: video
+    url: https://channel9.msdn.com/Shows/Partly-Cloudy
+  - title: Xamarin.Forms を使用してモバイル アプリを構築する
+    itemType: learn
+    url: https://docs.microsoft.com/learn/paths/build-mobile-apps-with-xamarin-forms/
+conceptualContent:
+  title: はじめに
+  summary: Azure を使用して、クラウドに接続されたモバイル アプリを作成しましょう
+  items:
+  - title: Web サービスの呼び出し
+    links:
+    - url: concepts/serverless-compute.md
+      itemType: concept
+      text: Azure Functions とその他のサービスでサーバーレス モバイル アプリケーション バックエンドを構築する
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+      itemType: quickstart
+      text: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+    - url: /learn/modules/consume-rest-services.md
+      itemType: learn
+      text: Xamarin と RESTful Web サービスを使用する
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-signalr.md
+      itemType: concept
+      text: Azure SignalR Service と Xamarin.Forms
+    - url: ../api-management/api-management-key-concepts.md
+      itemType: overview
+      text: Azure API Management の概要
+    - url: concepts/real-time.md
+      itemType: overview
+      text: Azure SignalR Service でリアルタイム アプリケーションを構築する
+  - title: データの保存
+    links:
+    - url: concepts/data-storage.md
+      itemType: concept
+      text: クラウドからモバイル アプリケーション データを格納、同期、照会する
+    - url: ../cosmos-db/create-sql-api-xamarin-dotnet.md
+      itemType: quickstart
+      text: Azure Cosmos DB を使用してデータを保存する
+    - url: ../cosmos-db/create-mongodb-xamarin.md
+      itemType: quickstart
+      text: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
+    - url: concepts/azure-storage.md
+      itemType: overview
+      text: 高度なセキュリティで保護され、耐久性に優れたスケーラブルなアプリを Azure Storage で実現するためのクラウド ストレージ
+    - url: ../storage/blobs/storage-quickstart-blobs-xamarin.md
+      itemType: quickstart
+      text: Blob Storage を操作する
+    - url: concepts/azure-cdn.md
+      itemType: overview
+      text: Azure Content Delivery Network を使用したコンテンツの配信
+  - title: プッシュ通知の送信
+    links:
+    - url: concepts/push-notifications.md
+      itemType: overview
+      text: プッシュ通知の送信でアプリケーション ユーザーとつながる
+    - url: ../notification-hubs/create-notification-hub-portal.md
+      itemType: quickstart
+      text: Azure portal 内で Azure 通知ハブを作成する
+    - url: ../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md
+      itemType: tutorial
+      text: Android デバイスにプッシュ通知を送信する
+    - url: ../notification-hubs/push-notifications-android-specific-devices-firebase-cloud-messaging.md
+      itemType: tutorial
+      text: Notification Hubs と Google Firebase Cloud Messaging を使用して特定のデバイスに通知を送信する
+    - url: ../notification-hubs/notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
+      itemType: how-to-guide
+      text: リッチ コンテンツをデバイスにプッシュする
+  - title: ユーザーを認証する
+    links:
+    - url: concepts/authentication.md
+      itemType: overview
+      text: ご利用のモバイル アプリに認証を追加し、ユーザー ID を管理する
+    - url: ../active-directory/develop/tutorial-v2-android.md
+      itemType: tutorial
+      text: Android アプリケーションからユーザーをサインインさせて、Microsoft Graph を呼び出す
+    - url: ../active-directory-b2c/add-native-application.md
+      itemType: how-to-guide
+      text: Azure Active Directory B2C テナントへのネイティブ クライアント アプリケーションの追加
+    - url: ../active-directory/develop/msal-authentication-flows.md
+      itemType: concept
+      text: Microsoft Authentication Library (MSAL) でサポートされている認証フロー
+    - url: https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal
+      itemType: sample
+      text: Swift iOS アプリを使用したユーザーのサインイン
+  - title: DevOps
+    links:
+    - url: concepts/continuous-delivery.md
+      itemType: concept
+      text: 継続的デリバリー サービスを使用してモバイル アプリケーションのデプロイとリリースを自動化する
+    - url: concepts/continuous-integration.md
+      itemType: concept
+      text: 継続的なビルドとインテグレーションによってアプリのライフサイクルを自動化する
+    - url: /azure/devops/pipelines/get-started/key-pipelines-concepts.md
+      itemType: concept
+      text: 新しい Azure Pipelines ユーザー向けの主要な概念
+    - url: /appcenter/distribution/uploading.md
+      itemType: how-to-guide
+      text: App Center でビルドをリリースする
+    - url: /appcenter/distribution/codepush.md
+      itemType: overview
+      text: App Center CodePush
+  - title: 分析とクラッシュ レポート
+    links:
+    - url: concepts/analytics.md
+      itemType: concept
+      text: モバイル アプリケーションの使用を分析して把握する
+    - url: /appcenter/analytics/overview.md
+      itemType: overview
+      text: App Center Analytics
+    - url: /appcenter/diagnostics/enabling-diagnostics.md
+      itemType: how-to-guide
+      text: アプリでの診断の有効化
+    - url: concepts/diagnostics.md
+      itemType: concept
+      text: モバイル アプリケーションの障害とエラーをリアルタイムで監視する
+    - url: /appcenter/analytics/log-flow.md
+      itemType: tutorial
+      text: リアルタイム分析を受信する
+additionalContent:
+  sections:
+  - title: Azure モバイル SDK
+    summary: Azure モバイル クライアント SDK の一部を以下に示します。
+    items:
+    - title: iOS
+      summary: Microsoft Azure の iOS クライアント SDK
+      url: https://github.com/Azure/azure-sdk-for-ios
+    - title: Android
+      summary: Microsoft Azure の Android クライアント SDK
+      url: https://github.com/Azure/azure-sdk-for-android
+    - title: .NET または Xamarin
+      summary: Azure SDK for .NET と Azure SDK for Xamarin
+      url: https://azure.github.io/azure-sdk/releases/latest/dotnet.html
