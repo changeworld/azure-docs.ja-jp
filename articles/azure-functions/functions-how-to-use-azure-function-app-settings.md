@@ -107,7 +107,7 @@ App Service Editor は、JSON 構成ファイルとコード ファイルを変�
 
 ![Kudu の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、Functions アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、 **など、Functions アプリの SCM エンドポイントにアクセスして、** Kudu`https://<myfunctionapp>.scm.azurewebsites.net/` を起動することもできます 
+App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、Functions アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、Functions アプリの SCM エンドポイントにアクセスして、 ** Kudu** を起動することもできます。  
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>デプロイ センター
