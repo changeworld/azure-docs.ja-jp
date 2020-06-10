@@ -12,17 +12,14 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201325"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322772"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
-
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 このチュートリアルでは、Angular シングルページ アプリケーション (SPA) で次のことを行う方法を説明します。
 - 個人用アカウント、職場アカウント、学校アカウントをサインインさせます。

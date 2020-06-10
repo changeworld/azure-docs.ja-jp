@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:ナレッジ ベースの作成、トレーニング、発行 - QnA Maker
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871439"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340591"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -35,7 +35,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 1. **[Step 3]\(手順 3\)** で、Active Directory、サブスクリプション、サービス (リソース)、およびサービスで作成されたすべてのナレッジ ベースの言語を選択します。
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="QnA Maker サービス ナレッジ ベースの選択のスクリーンショット":::
-    
+
 1. **[Step 3]\(手順 3\)** で、自分のナレッジ ベースに **My Sample QnA KB** という名前を付けます。
 
 1. **[Step 4]\(手順 4\)** で、次の表を使用して設定を構成します。

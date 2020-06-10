@@ -3,12 +3,13 @@ title: チュートリアル - Jupyter ノートブックを作成して実行�
 description: データ サイエンスの線形回帰のプロセスを示す Jupyter ノートブックを Azure Notebooks で作成して実行する方法を説明します。
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75660819"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561747"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
 

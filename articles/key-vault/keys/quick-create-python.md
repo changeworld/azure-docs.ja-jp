@@ -7,12 +7,13 @@ ms.date: 3/30/2020
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 663d219e73d8b3de001e02d465016f45974855bb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: 830866880c1fc86bbc7510290a50df7fc86b9d1e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982260"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555964"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>クイック スタート:Python 用 Azure Key Vault クライアント ライブラリ
 

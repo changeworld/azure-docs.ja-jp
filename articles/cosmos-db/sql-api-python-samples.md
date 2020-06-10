@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 05/20/2020
 ms.author: sngun
-ms.openlocfilehash: 3b92ae206aa623e948a612f31b48213421bf9da3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: tracking-python
+ms.openlocfilehash: c52651e15f648bede419501f516392acbc266e8a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798509"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558007"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB の Python サンプル
 

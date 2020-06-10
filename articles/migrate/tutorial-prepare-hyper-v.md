@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて Hyper-V VM
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 22fd5bc87494eb2fc162828363e7ca70afe1bbf0
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641629"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322167"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
@@ -126,11 +126,10 @@ Hyper-V の VM 評価を、手動で、または構成スクリプトを使用�
     ```
     使用例:
     ```
-    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
-    SHA256
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
 
-4.    スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
+4. スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```

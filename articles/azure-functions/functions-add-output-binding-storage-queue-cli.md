@@ -3,13 +3,14 @@ title: コマンド ライン ツールを使用して Azure Functions を Azure
 description: コマンド ライン プロジェクトに出力バインディングを追加して Azure Functions を Azure Storage キューに接続する方法を説明します。
 ms.date: 02/07/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8a5f9cd42d13b7cfb4bc6e95809112a3b7045fe4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673372"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560097"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>コマンド ライン ツールを使用して Azure Functions を Azure Storage に接続する
 

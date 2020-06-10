@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.custom: tracking-python
+ms.openlocfilehash: 12f5f8b1e1a20675fd08f753e515faef2f7a97ce
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312911"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560030"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark
 

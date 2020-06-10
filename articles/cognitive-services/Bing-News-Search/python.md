@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 77795e654a2f3824a877b28c8d006090c0de7d15
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: 37571113be715c7eb6b120aa592b5a2422a08ad8
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873211"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610000"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>クイック スタート:Python と Bing News Search REST API を使用してニュース検索を実行する
 
