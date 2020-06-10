@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501827"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219121"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする
 
@@ -94,7 +94,9 @@ Data Box の共有に接続したら、次にデータをコピーします。 �
   * ファイルの大文字と小文字は区別されません。
 
     たとえば、`SampleFile.txt` と `Samplefile.Txt` をコピーする場合、Data Box にコピーされるときに名前の大文字と小文字の区別は保持されますが、2 番目のファイルによって最初のファイルは上書きされます。これは、同じファイルと見なされるためです。
-* Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
+
+> [!IMPORTANT]
+> Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
 
 Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
 
@@ -102,31 +104,31 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
 
 マルチスレッドのコピーに rsync オプションを使用する場合は、以下のガイドラインに従ってください。
 
- - Linux クライアントで使用されているファイル システムに応じて、**CIFS Utils** または **NFS Utils** パッケージをインストールします。
+* Linux クライアントで使用されているファイル システムに応じて、**CIFS Utils** または **NFS Utils** パッケージをインストールします。
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
- -  **Rsync** および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
+* **Rsync** および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
 
     `sudo apt-get install rsync`
    
     `sudo apt-get install parallel` 
 
- - マウント ポイントを作成します。
+* マウント ポイントを作成します。
 
     `sudo mkdir /mnt/databox`
 
- - ボリュームをマウントします。
+* ボリュームをマウントします。
 
     `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
 
- - フォルダーのディレクトリ構造をミラー化します。  
+* フォルダーのディレクトリ構造をミラー化します。  
 
     `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
 
- - ファイルをコピーします。 
+* ファイルをコピーします。
 
     `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
 
@@ -140,22 +142,20 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
 コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにエラー ファイルをダウンロードします。 詳細については、「[View error logs during data copy to Data Box (Data Box へのデータのコピー中のエラー ログを表示する)](data-box-logs.md#view-error-log-during-data-copy)」を参照してください。 データのコピー中のエラーの詳細な一覧については、[Data Box の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
 
 データの整合性を保証するため、データがコピーされるときにインラインでチェックサムが計算されます。 コピーが完了したら、デバイスで使用済み領域と空き領域を確認します。
-    
-   ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+   ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+>
 > * 前提条件
 > * Data Box に接続する
 > * Data Box にデータをコピーする
-
 
 次のチュートリアルに進み、お客様の Data Box を Microsoft に返送する方法を学習してください。
 
 > [!div class="nextstepaction"]
 > [Azure Data Box を Microsoft に発送する](./data-box-deploy-picked-up.md)
-

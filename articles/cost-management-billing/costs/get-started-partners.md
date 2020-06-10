@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204887"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997130"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -246,7 +246,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 **PartnerEarnedCreditApplied** プロパティが _False_ の場合、関連付けられたコストはクレジットの必要資格を満たしていません。 または、購入したサービスはパートナー獲得クレジットの対象ではありません。
 
-通常、サービス使用状況データが Cost Management に表示されるまでに 8 ～ 24 時間かかります。 詳細については、「[使用状況データの更新頻度は一定ではない](understand-cost-mgt-data.md#usage-data-update-frequency-varies)」を参照してください。 PEC クレジットは、Azure Cost Management にアクセスしてから 48 時間以内に表示されます。
+通常、サービス使用状況データが Cost Management に表示されるまでに 8 ～ 24 時間かかります。 詳細については、[コストと使用状況データの更新と保持](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)に関する記事を参照してください。 PEC クレジットは、Azure Cost Management にアクセスしてから 48 時間以内に表示されます。
 
 
 **[Group by]\(グループ化\)** オプションを使用して、**PartnerEarnedCreditApplied** プロパティによるグループ化およびフィルター処理を行うこともできます。 オプションを使用して、PEC があるコストとないコストを調べます。

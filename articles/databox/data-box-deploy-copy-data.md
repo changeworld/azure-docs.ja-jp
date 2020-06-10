@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1730317296c672eb9347986ec41fdba25427408e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200483"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219108"
 ---
-::: zone target="docs" 
+::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>チュートリアル:Azure Data Box に SMB 経由でデータをコピーする
 
@@ -35,10 +35,10 @@ ms.locfileid: "83200483"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 前提条件
 > * Data Box に接続する
 > * Data Box にデータをコピーする
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,15 +47,16 @@ ms.locfileid: "83200483"
 1. [Azure Data Box の設定に関するチュートリアル](data-box-deploy-set-up.md)を完了していること。
 2. Data Box の受け取りが済んでいて、ポータル内での注文の状態が **[配信済み]** であること。
 3. Data Box にコピーするデータが格納されているホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
-    - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
-    - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用します。ただし、コピー速度は低下します。
+   * [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
+   * 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用します。ただし、コピー速度は低下します。
 
 ## <a name="connect-to-data-box"></a>Data Box に接続する
 
 選択したストレージ アカウントに基づいて、Data Box では最大で次のものが作成されます。
-- GPv1 および GPv2 に対して関連付けられているストレージ アカウントごとに 3 つの共有。
-- Premium ストレージに対して 1 つの共有。
-- BLOB ストレージ アカウントに対して 1 つの共有。
+
+* GPv1 および GPv2 に対して関連付けられているストレージ アカウントごとに 3 つの共有。
+* Premium ストレージに対して 1 つの共有。
+* BLOB ストレージ アカウントに対して 1 つの共有。
 
 ブロック BLOB とページ BLOB の共有では、第 1 レベルのエンティティはコンテナーであり、第 2 レベルのエンティティは BLOB です。 Azure Files の共有では、第 1 レベルのエンティティは共有であり、第 2 レベルのエンティティはファイルです。
 
@@ -85,7 +86,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     - Azure ブロック BLOB - `\\10.126.76.172\devicemanagertest1_BlockBlob`
     - Azure ページ BLOB - `\\10.126.76.172\devicemanagertest1_PageBlob`
     - Azure Files - `\\10.126.76.172\devicemanagertest1_AzFile`
-    
+
 4. メッセージに従って共有のパスワードを入力します。 上記のコマンドを使用して共有に接続する例を次に示します。
 
     ```
@@ -100,7 +101,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
     共有がフォルダーとして表示されます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
+    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
     
@@ -113,7 +114,7 @@ Linux クライアントを使用している場合は、次のコマンドを�
 Data Box 共有に接続したら、次にデータをコピーします。 データのコピーを開始する前に、次の考慮事項を確認してください。
 
 * 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 VHD をページ BLOB にコピーします。 データ形式が適切な共有の種類と一致しない場合は、後続の手順で、Azure へのデータのアップロードに失敗します。
-*  データをコピーするときは、データのサイズが、「[Azure Storage および Data Box の制限に関する記事](data-box-limits.md)」に記載されているサイズ制限に従っていること確認してください。
+* データをコピーするときは、データのサイズが、「[Azure Storage および Data Box の制限に関する記事](data-box-limits.md)」に記載されているサイズ制限に従っていること確認してください。
 * Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 * 推奨事項は次のとおりです。
   * SMB と NFS の両方を同時に使用しません。
@@ -121,7 +122,9 @@ Data Box 共有に接続したら、次にデータをコピーします。 デ�
 
   このようにした場合は、最終的な結果が不確定になります。
 * 必ず、コピーするファイル用のフォルダーを共有の下に作成してから、ファイルをそのフォルダーにコピーしてください。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
-* Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持してください。
+
+> [!IMPORTANT]
+> Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
 
 SMB 共有に接続した後、データのコピーを開始します。 Robocopy などの SMB 互換ファイル コピー ツールを使用して、データをコピーできます。 Robocopy を使用して、複数のコピー ジョブを開始できます。 次のコマンドを使用します。
     
@@ -203,7 +206,6 @@ SMB 共有に接続した後、データのコピーを開始します。 Roboco
         Files :        17        17         0         0         0         0
         Bytes :     3.9 k     3.9 k         0         0         0         0          
     C:\Users>
-       
 
 パフォーマンスを最適化するには、データをコピーするときに、次の robocopy パラメーターを使用します。
 
@@ -211,13 +213,12 @@ SMB 共有に接続した後、データのコピーを開始します。 Roboco
 |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
 |    Data Box         |    2 Robocopy セッション <br> セッションあたり 16 スレッド    |    3 Robocopy セッション <br> セッションあたり 16 スレッド    |    2 Robocopy セッション <br> セッションあたり 24 スレッド    |
 
-
 Robocopy コマンドについて詳しくは、「[Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)」(Robocopy といくつかの例) をご覧ください。
 
 コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにエラー ファイルをダウンロードします。 詳細については、「[View error logs during data copy to Data Box (Data Box へのデータのコピー中のエラー ログを表示する)](data-box-logs.md#view-error-log-during-data-copy)」を参照してください。 データのコピー中のエラーの詳細な一覧については、[Data Box の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
 
 データの整合性を保証するため、データがコピーされるときにインラインでチェックサムが計算されます。 コピーが完了したら、デバイスで使用済み領域と空き領域を確認します。
-    
+
    ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
@@ -230,6 +231,8 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 ## <a name="copy-data-via-smb"></a>SMB 経由でデータをコピーする
 
+SMB 経由でデータをコピーするには、次のようにします。
+
 1. Windows ホストを使用している場合は、次のコマンドを使用して、SMB 共有に接続します。
 
     `\\<IP address of your device>\ShareName`
@@ -240,6 +243,8 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 具体的な手順については、「[チュートリアル: Azure Data Box に SMB 経由でデータをコピーする](data-box-deploy-copy-data.md)」を参照してください。
 
 ## <a name="copy-data-via-nfs"></a>NFS 経由でデータをコピーする
+
+NFS 経由でデータをコピーするには、次のようにします。
 
 1. NFS ホストを使用している場合は、次のコマンドを使用して、Data Box に NFS 共有をマウントします。
 
@@ -252,6 +257,8 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 ## <a name="copy-data-via-rest"></a>REST 経由でデータをコピーする
 
+REST 経由でデータをコピーするには、次のようにします。
+
 1. REST API シリーズ経由で Data Box BLOB ストレージを使用してデータをコピーするには、*http* または *https* 経由で接続できます。
 2. データを Data Box BLOB ストレージにコピーするには、AzCopy を使用できます。
 
@@ -259,12 +266,16 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 ## <a name="copy-data-via-data-copy-service"></a>データ コピー サービス経由でデータをコピーする
 
-1. データ コピー サービスを使用してデータをコピーするには、ジョブを作成する必要があります。 お客様の Data Box のローカル Web UI で、 **[管理]、[データのコピー] > [作成]** の順に移動します。 
+データ コピー サービス経由でデータをコピーするには、次のようにします。
+
+1. データ コピー サービスを使用してデータをコピーするには、ジョブを作成する必要があります。 お客様の Data Box のローカル Web UI で、 **[管理]、[データのコピー] > [作成]** の順に移動します。
 2. パラメーターを入力し、ジョブを作成します。
 
 具体的な手順については、「[チュートリアル: データ コピー サービスを使用してデータを Azure Data Box にコピーする](data-box-deploy-copy-data-via-copy-service.md)」を参照してください。
 
 ## <a name="copy-data-to-managed-disks"></a>マネージド ディスクにデータをコピーする
+
+マネージド ディスクにデータをコピーするには、次のようにします。
 
 1. Data Box デバイスを注文する場合、保存先としてマネージド ディスクを選択しておく必要があります。
 2. SMB または NFS 共有経由で Data Box に接続できます。
@@ -274,7 +285,6 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 ::: zone-end
 
-
 ::: zone target="docs"
 
 ## <a name="next-steps"></a>次のステップ
@@ -282,10 +292,10 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+>
 > * 前提条件
 > * Data Box に接続する
 > * Data Box にデータをコピーする
-
 
 次のチュートリアルに進み、お客様の Data Box を Microsoft に返送する方法を学習してください。
 
@@ -293,4 +303,3 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 > [Azure Data Box を Microsoft に発送する](./data-box-deploy-picked-up.md)
 
 ::: zone-end
-

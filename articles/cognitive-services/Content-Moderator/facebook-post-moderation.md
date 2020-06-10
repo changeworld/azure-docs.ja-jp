@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774279"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118634"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -70,14 +70,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     | アプリ設定の名前 | value   | 
     | -------------------- |-------------|
-    | cm:TeamId   | Content Moderator のチーム ID  | 
-    | cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
-    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 これは、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
-    | cm:ImageWorkflow | 画像に対して実行するワークフローの名前 |
-    | cm:TextWorkflow | テキストに対して実行するワークフローの名前 |
-    | cm:CallbackEndpoint | このガイドで後で作成する CMListener 関数アプリの URL |
-    | fb:VerificationToken | お客様が作成するシークレット トークン。Facebook のフィード イベントにサブスクライブするために使用されます |
-    | fb:PageAccessToken | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 このトークンは、後の手順で取得します。 |
+    | `cm:TeamId`   | Content Moderator のチーム ID  | 
+    | `cm:SubscriptionKey` | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
+    | `cm:Region` | Content Moderator のリージョン名 (スペースなし)。 この名前は、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
+    | `cm:ImageWorkflow` | 画像に対して実行するワークフローの名前 |
+    | `cm:TextWorkflow` | テキストに対して実行するワークフローの名前 |
+    | `cm:CallbackEndpoint` | このガイドで後で作成する CMListener 関数アプリの URL |
+    | `fb:VerificationToken` | お客様が作成するシークレット トークン。Facebook のフィード イベントにサブスクライブするために使用されます |
+    | `fb:PageAccessToken` | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 このトークンは、後の手順で取得します。 |
 
     ページ上部にある **[保存]** ボタンをクリックします。
 

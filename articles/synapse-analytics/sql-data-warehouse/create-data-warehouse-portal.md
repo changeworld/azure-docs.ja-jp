@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 282222aad68df94ea9eff4151d31eb5e488bca81
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770824"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116973"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
 
@@ -37,7 +37,7 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
 
 ## <a name="create-a-sql-pool"></a>SQL プールを作成する
 
-データ ウェアハウスは、Azure Synapse Analytics の SQL プールを使用して作成されます。 SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と [Azure SQL 論理サーバー](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内に作成されます。
+データ ウェアハウスは、Azure Synapse Analytics の SQL プールを使用して作成されます。 SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と [論理 SQL サーバー](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に作成されます。
 
 以下の手順で **AdventureWorksDW** サンプル データを含む SQL プールを作成します。
 
@@ -64,7 +64,7 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
 
    ![データ ウェアハウスのパフォーマンス レベルを変更する](./media/create-data-warehouse-portal/create-sql-pool-performance-level.png)  
 
-   パフォーマンス レベルの詳細については、[Azure SQL Data Warehouse でのコンピューティングの管理](sql-data-warehouse-manage-compute-overview.md)に関するページを参照してください。
+   パフォーマンス レベルの詳細については、[Azure Synapse Analytics でのコンピューティングの管理](sql-data-warehouse-manage-compute-overview.md)に関するページを参照してください。
 
 5. **[既存のデータの使用]** で **[追加設定]** を選択し、 **[サンプル]** を選択して、AdventureWorksDW が同じサンプル データベースとして作成されるようにします。
 
@@ -76,16 +76,16 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
 
    ![[作成] の選択](./media/create-data-warehouse-portal/create-sql-pool-create.png)
 
-6. デプロイ プロセスを監視するために、ツール バーの **[通知]** を選択します。
+7. デプロイ プロセスを監視するために、ツール バーの **[通知]** を選択します。
 
    ![通知 (notification)](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
-Azure Synapse サービスでは、サーバーレベルでファイアウォールが作成されます。 このファイアウォールにより、外部のアプリケーションとツールはサーバーやサーバー上のすべてのデータベースに接続できなくなります。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。 次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。
+Azure Synapse サービスでは、サーバーレベルでファイアウォールが作成されます。 このファイアウォールにより、外部のアプリケーションとツールはサーバーやサーバー上のすべてのデータベースに接続できなくなります。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。 次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。
 
 > [!NOTE]
-> Azure Synapse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
+> Azure Synapse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、サーバーに接続することはできません。
 
 1. デプロイが完了したら、左側のメニューから **[すべてのサービス]** を選択します。 **[データベース]** を選択し、 **[Azure Synapse Analytics]** の横にある星印を選択して、Azure Synapse Analytics をお気に入りに追加します。
 
@@ -99,24 +99,24 @@ Azure Synapse サービスでは、サーバーレベルでファイアウォー
 
    ![サーバー設定](./media/create-data-warehouse-portal/server-settings.png)
 
-5. SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
+5. サーバーの **[ファイアウォール設定]** ページが開きます。
 
    ![サーバーのファイアウォール規則](./media/create-data-warehouse-portal/server-firewall-rule.png)
 
 6. 現在の IP アドレスを新しいファイアウォール規則に追加するために、ツール バーの **[クライアント IP の追加]** を選択します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-7. **[保存]** を選択します。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+7. **[保存]** を選択します。 サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 8. **[OK]** を選択し、 **[ファイアウォール設定]** ページを閉じます。
 
-この IP アドレスを使って、SQL Server とその SQL プールに接続できるようになります。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した ServerAdmin アカウントを使います。
+これで、この IP アドレスを使って、サーバーとその SQL プールに接続できるようになりました。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した ServerAdmin アカウントを使います。
 
 > [!IMPORTANT]
 > 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 このページの **[オフ]** を選択し、 **[保存]** を選択して、すべての Azure サービスに対してファイアウォールを無効にします。
 
 ## <a name="get-the-fully-qualified-server-name"></a>完全修飾サーバー名を取得する
 
-Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
+Azure portal で、サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -128,7 +128,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
+このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、サーバーへの接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
@@ -196,7 +196,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 3. コンピューティングやストレージに課金されないように SQL プールを削除するには、 **[削除]** を選択します。
 
-4. 作成した SQL Server を削除するには、前の画像の **sqlpoolservername.database.windows.net** を選択して、 **[削除]** を選択します。 サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
+4. 作成したサーバーを削除するには、前の画像の **sqlpoolservername.database.windows.net** を選択して、 **[削除]** を選択します。 サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
 
 5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
 
