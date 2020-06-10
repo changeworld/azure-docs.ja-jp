@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739279"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020865"
 ---
 # <a name="introduction"></a>はじめに
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 import ステートメントは必要はありません。ノートブック エクスペリエンスのために事前にインポートされています。
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>ワークスペースに接続されている論理サーバー (DW インスタンス) 内の SQL プールとの間でのデータ転送
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>ワークスペースに接続されている SQL プールとの間でのデータ転送
 
 > [!NOTE]
 > **import はノートブック エクスペリエンスには必要ありません**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 ストレージと SQL Server に対する認証が行われます。
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>ワークスペース外の論理サーバー内の SQL プールまたはデータベースとの間でデータを転送する場合
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>ワークスペース外の SQL プールまたはデータベースとの間でデータを転送する場合
 
 > [!NOTE]
 > import はノートブック エクスペリエンスには必要ありません

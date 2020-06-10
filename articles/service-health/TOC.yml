@@ -30,8 +30,6 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: アラートを OpsGenie に送信する
       href: service-health-alert-webhook-opsgenie.md
-    - name: REST を使用した正常性イベントの取得
-      href: service-health-rest.md
     - name: リソース正常性イベントのアラートの構成
       href: resource-health-alert-arm-template-guide.md
 - name: リファレンス

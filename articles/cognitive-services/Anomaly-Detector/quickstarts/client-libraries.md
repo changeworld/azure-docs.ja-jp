@@ -11,12 +11,13 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: aahi
-ms.openlocfilehash: 7a48992ab5978824f1ffb4b2c3ac0670f40c1424
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: tracking-python
+ms.openlocfilehash: 523bfea7dd09f4d7ba2eeb3ef93578ddf6b3f1ea
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759805"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84611122"
 ---
 # <a name="quickstart-use-the-anomaly-detector-client-library"></a>クイック スタート:Anomaly Detector クライアント ライブラリを使用する
 

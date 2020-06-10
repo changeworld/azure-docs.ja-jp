@@ -155,6 +155,8 @@
           displayname: VM
     - name: 管理と構成
       items:
+        - name: 大規模にデプロイする
+          href: platform/deploy-scale.md
         - name: ロールのアクセス許可とセキュリティ
           href: platform/roles-permissions-security.md
         - name: IP アドレス

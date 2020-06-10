@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 95a01db7d4d889df4695390bfd0d01510d83a817
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648048"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449483"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Azure Arc for servers (プレビュー) とは
 
@@ -37,9 +37,10 @@ Azure Arc for servers (プレビュー) は、接続済みのマシンに関し�
 
 Azure Arc for servers (プレビュー) では、特定のリージョンのみがサポートされています。
 
+- EastUS
 - WestUS2
 - 西ヨーロッパ
-- WestAsia
+- SoutheastAsia
 
 ほとんどの場合、インストール スクリプトを作成するときに選択する場所は、マシンの場所に最も近い Azure リージョンにする必要があります。 保存データは、指定したリージョンを含む Azure geography 内に格納されます。データ所在地に関する要件がある場合は、これがリージョンの選択に影響する可能性もあります。 マシンが接続されている Azure リージョンが障害の影響を受ける場合、接続されたマシンは影響を受けませんが、Azure を使用した管理操作を完了できない可能性があります。 リージョンの障害が発生した場合の回復力のために、地理的に冗長なサービスを提供する複数の場所がある場合は、各場所のマシンを別の Azure リージョンに接続することをお勧めします。
 

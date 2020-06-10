@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ff8d82966d479491bc9600a0331f69ffd09253d1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701069"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112703"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
@@ -193,6 +193,6 @@ id | name | birthdate
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse Analytics の共有メタデータについての詳細情報](overview.md)
-- [Azure Synapse Analytics の共有メタデータ テーブルについての詳細情報](table.md)
+- [Azure Synapse Analytics の共有メタデータ データベースの詳細情報](database.md)
 
 

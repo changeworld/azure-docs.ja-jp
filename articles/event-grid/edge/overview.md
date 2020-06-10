@@ -2,17 +2,17 @@
 title: エッジのイベント ドリブン アーキテクチャ — IoT Edge の Azure Event Grid
 description: モジュール、エッジ デバイス、およびクラウド間でイベントを転送するには、IoT Edge のモジュールとして Azure Event Grid を使用します。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
-ms.author: babanisa
-ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: femila
+ms.openlocfilehash: d569a4be6c9747dea4280d17ed2f888c3bed9936
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844660"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561684"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Azure IoT Edge の Azure Event Grid とは
 IoT Edge の Event Grid は、エッジに Azure Event Grid の力と柔軟性をもたらします。 トピックを作成し、イベントを発行して、複数の送信先をサブスクライブします。送信先が同じデバイス上のモジュールか、他のエッジ デバイスか、クラウド内のサービスかは問いません。

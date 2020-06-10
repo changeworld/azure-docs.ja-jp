@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746076"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266527"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -105,7 +105,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
 7. **[配送先住所]** タブで、氏名、会社の名前と郵送先住所、有効な電話番号を入力します。 **[住所の確認]** をクリックします。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。
 
-   注文が処理されると、電子メール通知が届きます。 自己管理の出荷の詳細については、[自己管理の出荷の使用](data-box-disk-portal-customer-managed-shipping.md)に関するページをご覧ください。
+   注文が処理されると、電子メール通知が届きます。 自己管理の出荷を選択した場合、[自己管理の出荷の使用](data-box-disk-portal-customer-managed-shipping.md)に関するページをご覧ください。
 
     ![配送先住所を指定する](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 8. **[通知の詳細]** で、電子メール アドレスを指定します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。

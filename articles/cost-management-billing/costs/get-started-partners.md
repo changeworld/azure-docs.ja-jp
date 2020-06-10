@@ -3,17 +3,17 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997130"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554554"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -152,7 +152,7 @@ RBAC スコープの予約インスタンスの償却ビューおよび実際の
 
 ## <a name="analyze-costs-in-cost-analysis"></a>コスト分析でコストを分析する
 
-パートナー テナント内の課金スコープにアクセスできるパートナーは、特定の顧客または請求書に関する顧客全体にまたがるコスト分析で、請求されたコストを調査および分析できます。 [コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)したり、[CSV および PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis) のファイルにデータをエクスポートしたりすることもできます。
+パートナー テナント内の課金スコープにアクセスできるパートナーは、特定の顧客または請求書に関する顧客全体にまたがるコスト分析で、請求されたコストを調査および分析できます。 [コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)したり、[CSV および PNG](quick-acm-cost-analysis.md#download-usage-data) のファイルにデータをエクスポートしたりすることもできます。
 
 顧客テナント内のサブスクリプションにアクセスできる RBAC ユーザーは、その顧客テナント内のサブスクリプションの小売コストを分析し、ビューを保存して、データを CSV および PNG ファイルにエクスポートすることもできます。
 

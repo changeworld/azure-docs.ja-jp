@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 67674092bd27b85e3e915fe82a7cb7189ff22b02
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118096"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141910"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>クイック スタート:Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
 
@@ -27,6 +27,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このクイック スタートを完了するには、以下が必要です。
 - インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
 - 同じ種類の少なくとも 5 つのフォームのセット。 このデータをモデルのトレーニングに使用します。 使用するフォームはファイルの種類が異なってもかまいませんが、ドキュメントの種類は同じである必要があります。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
+
+> [!NOTE]
+> このクイックスタートでは、URL によってアクセスされるリモート ドキュメントを使用します。 代わりにローカル ファイルを使用するには、[リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)を参照してください。
+
 
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
@@ -66,7 +70,7 @@ Azure BLOB コンテナー内のドキュメントを使用して Form Recognize
         'Ocp-Apim-Subscription-Key': '<subsription key>',
     }
     
-    body =  {
+    body =     {
         "source": source,
         "sourceFilter": {
             "prefix": prefix,

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: 9e41ed6bdc31ce70b2744fa9a87e10c51aaac15a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1b8d557d36b0265e9c32d4af6ca7435697531a50
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673205"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637524"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "83673205"
 次の行を追加して、go.mod ファイルを最新の SDK バージョンで更新します。
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.0
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.1
 )
 ```
 

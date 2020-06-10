@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d9059c9386af6fab6bb1068d6a9e64b763206f94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 69f63615d3c5f10bdcef071e18a7379ecf52338e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74929201"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119300"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル:コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Azure SQL のリンクされたサービスは、Azure SQL データベースを
 ### <a name="create-the-azure-sql-linked-service"></a>Azure SQL のリンクされたサービスを作成します。
 1. **ソリューション エクスプローラー**で **[リンクされたサービス]** ノードをもう一度右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。 
 2. このとき、 **[Azure SQL Linked Service (Azure SQL のリンクされたサービス)]** を選択し、 **[追加]** をクリックします。 
-3. **AzureSqlLinkedService1.json** ファイルで、`<servername>`、`<databasename>`、`<username@servername>`、`<password>` を Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。    
+3. **AzureSqlLinkedService1.json** ファイルで、`<servername>`、`<databasename>`、`<username@servername>`、`<password>` をサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。    
 4. **AzureSqlLinkedService1.json** ファイルを保存します。 
     
     これらの JSON プロパティの詳細については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md#linked-service-properties)に関する記事を参照してください。
@@ -436,7 +436,7 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
         "AzureSqlLinkedService1": [
             {
                 "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<Azure SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         ]
     }

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a490550bf6652186c80268d4a99bff931897fcd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251891"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344188"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -52,7 +52,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[ロード バランサー]** の順にクリックします。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLBAZ*」と入力します。|
@@ -73,7 +73,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-| パラメーター                   | Value                |
+| パラメーター                   | 値                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLBAZ (既存のリソース グループを選択) |
 | **\<virtual-network-name>** | myVNet          |
@@ -140,9 +140,6 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *myNetworkSecurityGroup* - ネットワーク セキュリティ グループ (ファイアウォール) の名前。
 5. **[無効]** をクリックして、ブート診断を無効にします。
 6. **[OK]** をクリックし、概要ページの設定を確認して、 **[作成]** をクリックします。
-  
-   ![仮想マシンの作成](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. 手順 1 ～ 6 を使用して、ゾーン 2 に *VM2* という 2 つ目の VM、ゾーン 3 に 3 つ目の VM、仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、ネットワーク セキュリティ グループとして **myNetworkSecurityGroup* を作成します。
 
 ### <a name="install-iis-on-vms"></a>VM に IIS をインストールする

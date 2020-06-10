@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルのコントロール
 description: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルと Azure Policy の推奨事項のマッピング。
-ms.date: 05/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b6029e147af49cfb91078c6228615c32ad2db5fe
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863962"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167232"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの推奨事項のマッピング
 
@@ -192,14 +192,14 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4.4 SQL Server の "Advanced Data Security" が [オン] に設定されていることを確認する
 
-このブループリントでは、SQL サーバーと SQL マネージド インスタンスで Advanced Data Security が有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+このブループリントでは、SQL Database および SQL Managed Instance サーバーで Advanced Data Security が有効になっていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5 [脅威検出の種類] が [すべて] に設定されていることを確認する
 
-このブループリントでは、SQL サーバーと SQL マネージド インスタンスで Advanced Threat Protection が適切に構成されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+このブループリントでは、SQL Database および SQL Managed Instance サーバーで Advanced Threat Protection が適切に構成されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 - SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
@@ -232,7 +232,7 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4.10 SQL Server の TDE 保護機能が BYOK (自分のキーの使用) で暗号化されていることを確認する
 
-このブループリントでは、SQL サーバーと SQL マネージド インスタンス用の透過的なデータ暗号化保護機能が自分のキーを使用して暗号化されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+このブループリントでは、SQL Database および SQL Managed Instance サーバー用の透過的なデータ暗号化保護機能が自分のキーを使用して暗号化されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - SQL Server の TDE 保護機能を自分のキーを使用して暗号化する必要がある
 - SQL マネージド インスタンスの TDE 保護機能を自分のキーを使用して暗号化する必要がある

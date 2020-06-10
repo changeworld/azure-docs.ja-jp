@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 437dc18dc16e879e95ff4ec7c1a9ab7ec3f17bef
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 43476f3e3f125bc338ba25e8cce0e96baa76262b
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266000"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636106"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -44,7 +44,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-BH` | アラビア語 (バーレーン)、現代標準 | はい       | 言語モデル                                    |
 | `ar-EG` | アラビア語 (エジプト)                    | はい       | 言語モデル                                    |
 | `ar-IL` | アラビア語 (イスラエル)                   | はい       | いいえ                                                |
+| `ar-JO` | アラビア語 (ヨルダン)                   | はい       | いいえ                                                |
 | `ar-KW` | アラビア語 (クウェート)                   | はい       | いいえ                                                |
+| `ar-LB` | アラビア語 (レバノン)                  | はい       | いいえ                                                |
 | `ar-PS` | アラビア語 (パレスチナ)                | はい       | いいえ                                                |
 | `ar-QA` | アラビア語 (カタール)                    | はい       | いいえ                                                |
 | `ar-SA` | アラビア語 (サウジアラビア)             | はい       | いいえ                                                |
@@ -77,7 +79,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ru-RU` | ロシア語 (ロシア)                  | はい       | 音響モデル<br>言語モデル                  |
 | `sv-SE` | スウェーデン語 (スウェーデン)                  | はい       | 言語モデル                                    |
 | `ta-IN` | タミール語 (インド)                     | はい       | 言語モデル                                    |
-| `te-IN` | テルグ語 (インド)                    | はい       | いいえ                                                |
+| `te-IN` | テルグ語 (インド)                    | はい       | 言語モデル                                    |
 | `th-TH` | タイ語 (タイ)                   | はい       | いいえ                                                |
 | `tr-TR` | トルコ語 (トルコ)                  | はい       | 言語モデル                                    |
 | `zh-CN` | 中国語 (標準、簡体字)    | はい       | 音響モデル<br>言語モデル                  |
@@ -101,27 +103,27 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 |Locale  | Language            | 性別 | 音声名 | スタイルのサポート |
 |--|--|--|--|--|
-| `de-DE` | ドイツ語 (ドイツ)                | `Female` | "de-DE-KatjaNeural"      | 全般 |
-| `en-AU` | 英語 (オーストラリア)             | `Female` | "en-AU-NatashaNeural"    | 全般 |
-| `en-CA` | 英語 (カナダ)                | `Female` | "en-CA-ClaraNeural"      | 全般 |
-| `en-GB` | 英語 (英国)                    | `Female` | "en-GB-LibbyNeural"      | 全般 |
-|         |                                 | `Female` | "en-GB-MiaNeural"        | 全般 |
-| `en-US` | 英語 (米国)                    | `Female` | "en-US-AriaNeural"       | 全般、複数の音声スタイルを使用可能 |
-|         |                                 | `Male`   | "en-US-GuyNeural"        | 全般 |
-| `es-ES` | スペイン語 (スペイン)                 | `Female` | "es-ES-ElviraNeural"     | 全般 |
-| `es-MX` | スペイン語 (メキシコ)                | `Female` | "es-MX-DaliaNeural"      | 全般 |
-| `fr-CA` | フランス語 (カナダ)                 | `Female` | "fr-CA-SylvieNeural"     | 全般 |
-| `fr-FR` | フランス語 (フランス)                 | `Female` | "fr-FR-DeniseNeural"     | 全般 |
-| `it-IT` | イタリア語 (イタリア)                 | `Female` | "it-IT-ElsaNeural"       | 全般 |
-| `ja-JP` | 日本語                        | `Female` | "ja-JP-NanamiNeural"     | 全般 |
-| `ko-KR` | 韓国語                          | `Female` | "ko-KR-SunHiNeural"      | 全般 |
-| `nb-NO` | ノルウェー語                       | `Female` | "nb-NO-IselinNeural"     | 全般 |
-| `pt-BR` | ポルトガル語 (ブラジル)             | `Female` | "pt-BR-FranciscaNeural"  | 全般 |
-| `tr-TR` | トルコ語                         | `Female` | "tr-TR-EmelNeural"       | 全般 |
-| `zh-CN` | 中国語 (標準、簡体字)  | `Female` | "zh-CN-XiaoxiaoNeural"   | 全般、複数の音声スタイルを使用可能 |
-|         |                                 | `Female` | "zh-CN-XiaoyouNeural"    | 子供の音声、ストーリーのナレーション向けに最適化 |
-|         |                                 | `Male`   | "zh-CN-YunyangNeural"    | ニュースの読み上げ用に最適化、複数の音声スタイルを使用可能 |
-|         |                                 | `Male`   | "zh-CN-YunyeNeural"      | ストーリーのナレーション向けに最適化 |
+| `de-DE` | ドイツ語 (ドイツ)                | Female | "de-DE-KatjaNeural"      | 全般 |
+| `en-AU` | 英語 (オーストラリア)             | Female | "en-AU-NatashaNeural"    | 全般 |
+| `en-CA` | 英語 (カナダ)                | Female | "en-CA-ClaraNeural"      | 全般 |
+| `en-GB` | 英語 (英国)                    | Female | "en-GB-LibbyNeural"      | 全般 |
+|         |                                 | Female | "en-GB-MiaNeural"        | 全般 |
+| `en-US` | 英語 (米国)                    | Female | "en-US-AriaNeural"       | 全般、複数の音声スタイルを使用可能 |
+|         |                                 | Male   | "en-US-GuyNeural"        | 全般 |
+| `es-ES` | スペイン語 (スペイン)                 | Female | "es-ES-ElviraNeural"     | 全般 |
+| `es-MX` | スペイン語 (メキシコ)                | Female | "es-MX-DaliaNeural"      | 全般 |
+| `fr-CA` | フランス語 (カナダ)                 | Female | "fr-CA-SylvieNeural"     | 全般 |
+| `fr-FR` | フランス語 (フランス)                 | Female | "fr-FR-DeniseNeural"     | 全般 |
+| `it-IT` | イタリア語 (イタリア)                 | Female | "it-IT-ElsaNeural"       | 全般 |
+| `ja-JP` | 日本語                        | Female | "ja-JP-NanamiNeural"     | 全般 |
+| `ko-KR` | 韓国語                          | Female | "ko-KR-SunHiNeural"      | 全般 |
+| `nb-NO` | ノルウェー語                       | Female | "nb-NO-IselinNeural"     | 全般 |
+| `pt-BR` | ポルトガル語 (ブラジル)             | Female | "pt-BR-FranciscaNeural"  | 全般 |
+| `tr-TR` | トルコ語                         | Female | "tr-TR-EmelNeural"       | 全般 |
+| `zh-CN` | 中国語 (標準、簡体字)  | Female | "zh-CN-XiaoxiaoNeural"   | 全般、複数の音声スタイルを使用可能 |
+|         |                                 | Female | "zh-CN-XiaoyouNeural"    | 子供の音声、ストーリーのナレーション向けに最適化 |
+|         |                                 | Male   | "zh-CN-YunyangNeural"    | ニュースの読み上げ用に最適化、複数の音声スタイルを使用可能 |
+|         |                                 | Male   | "zh-CN-YunyeNeural"      | ストーリーのナレーション向けに最適化 |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural` 音声が `en-US-AriaNeural` に変更されました。 前に "Jessa" を使用していた場合は、"Aria" に変換します。
@@ -137,86 +139,86 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 | Locale | Language | 性別 | 音声名 |
 |--|--|--|--|
-| <sup>1</sup>`ar-EG` | アラビア語 (エジプト) | `Female` | "ar-EG-Hoda" |
-| `ar-SA` | アラビア語 (サウジアラビア) | `Male` | "ar-SA-Naayf" |
-| `bg-BG` | ブルガリア語 | `Male` |  "bg-BG-Ivan" |
-| `ca-ES` | カタロニア語 | `Female` |  "ca-ES-HerenaRUS" |
-| `cs-CZ` | チェコ語 | `Male` | "cs-CZ-Jakub" |
-| `da-DK` | デンマーク語 | `Female` |  "da-DK-HelleRUS" |
-| `de-AT` | ドイツ語 (オーストリア) | `Male` | "de-AT-Michael" |
-| `de-CH` | ドイツ語 (スイス) | `Male` |  "de-CH-Karsten" |
-| `de-DE` | ドイツ語 (ドイツ) | `Female` |  "de-DE-Hedda" |
-|  |  | `Female` | "de-DE-HeddaRUS" |
-|  |  | `Male` |  "de-DE-Stefan-Apollo" |
-| `el-GR` | ギリシャ語 | `Male` | "el-GR-Stefanos" |
-| `en-AU` | 英語 (オーストラリア) | `Female` |  "en-AU-Catherine" |
-|  |  | `Female` |  "en-AU-HayleyRUS" |
-| `en-CA` | 英語 (カナダ) | `Female` |  "en-CA-Linda" |
-|  |  | `Female` |  "en-CA-HeatherRUS" |
-| `en-GB` | 英語 (英国) | `Female` |  "en-GB-Susan-Apollo" |
-|  |  | `Female` |  "en-GB-HazelRUS" |
-|  |  | `Male` |  "en-GB-George-Apollo" |
-| `en-IE` | 英語 (アイルランド) | `Male` | "en-IE-Sean" |
-| `en-IN` | 英語 (インド) | `Female` | "en-IN-Heera-Apollo" |
-|  |  | `Female` |  "en-IN-PriyaRUS" |
-|  |  | `Male` |  "en-IN-Ravi-Apollo" |
-| `en-US` | 英語 (米国) | `Female` |  "en-US-ZiraRUS" |
-|  |  | `Female` | "en-US-AriaRUS" |
-|  |  | `Male` | "en-US-BenjaminRUS" |
-|  |  | `Male` |  "en-US-Guy24kRUS" |
-| `es-ES` | スペイン語 (スペイン) | `Female` |  "es-ES-Laura-Apollo" |
-|  |  | `Female` | "es-ES-HelenaRUS" |
-|  |  | `Male` | "es-ES-Pablo-Apollo" |
-| `es-MX` | スペイン語 (メキシコ) | `Female` |  "es-MX-HildaRUS" |
-|  |  | `Male` | "es-MX-Raul-Apollo" |
-| `fi-FI` | フィンランド語 | `Female` | "fi-FI-HeidiRUS" |
-| `fr-CA` | フランス語 (カナダ) | `Female` | "fr-CA-Caroline" |
-|  |  | `Female` | "fr-CA-HarmonieRUS" |
-| `fr-CH` | フランス語 (スイス) | `Male` | "fr-CH-Guillaume" |
-| `fr-FR` | フランス語 (フランス) | `Female` |  "fr-FR-Julie-Apollo" |
-|  |  | `Female` |"fr-FR-HortenseRUS" |
-|  |  | `Male` |  "fr-FR-Paul-Apollo" |
-| `he-IL` | ヘブライ語 (イスラエル) | `Male` |  "he-IL-Asaf" |
-| `hi-IN` | ヒンディー語 (インド) | `Female` | "hi-IN-Kalpana-Apollo" |
-|  |  | `Female` |  "hi-IN-Kalpana" |
-|  |  | `Male` |  "hi-IN-Hemant" |
-| `hr-HR` | クロアチア語 | `Male` | "hr-HR-Matej" |
-| `hu-HU` | ハンガリー語 | `Male` |  "hu-HU-Szabolcs" |
-| `id-ID` | インドネシア語 | `Male` | "id-ID-Andika" |
-| `it-IT` | イタリア語 | `Male` |  "it-IT-Cosimo-Apollo" |
-|  |  | `Female` |  "it-IT-LuciaRUS" |
-| `ja-JP` | 日本語 | `Female` |  "ja-JP-Ayumi-Apollo" |
-|  |  | `Male` | "ja-JP-Ichiro-Apollo" |
-|  |  | `Female` |  "ja-JP-HarukaRUS" |
-| `ko-KR` | 韓国語 | `Female` | "ko-KR-HeamiRUS" |
-| `ms-MY` | マレー語 | `Male` |  "ms-MY-Rizwan" |
-| `nb-NO` | ノルウェー語 | `Female` |  "nb-NO-HuldaRUS" |
-| `nl-NL` | オランダ語 | `Female` |  "nl-NL-HannaRUS" |
-| `pl-PL` | ポーランド語 | `Female` |  "pl-PL-PaulinaRUS" |
-| `pt-BR` | ポルトガル語 (ブラジル) | `Female` | "pt-BR-HeloisaRUS" |
-|  |  | `Male` |  "pt-BR-Daniel-Apollo" |
-| `pt-PT` | ポルトガル語 (ポルトガル) | `Female` | "pt-PT-HeliaRUS" |
-| `ro-RO` | ルーマニア語 | `Male` | "ro-RO-Andrei" |
-| `ru-RU` | ロシア語 | `Female` |  "ru-RU-Irina-Apollo" |
-|  |  | `Male` | "ru-RU-Pavel-Apollo" |
-|  |  | `Female` |  ru-RU-EkaterinaRUS |
-| `sk-SK` | スロバキア語 | `Male` | "sk-SK-Filip" |
-| `sl-SI` | スロベニア語 | `Male` |  "sl-SI-Lado" |
-| `sv-SE` | スウェーデン語 | `Female` | "sv-SE-HedvigRUS" |
-| `ta-IN` | タミール語 (インド) | `Male` |  "ta-IN-Valluvar" |
-| `te-IN` | テルグ語 (インド) | `Female` |  "te-IN-Chitra" |
-| `th-TH` | タイ語 | `Male` |  "th-TH-Pattara" |
-| `tr-TR` | トルコ語 (トルコ) | `Female` | "tr-TR-SedaRUS" |
-| `vi-VN` | ベトナム語 | `Male` |  "vi-VN-An" |
-| `zh-CN` | 中国語 (標準、簡体字) | `Female` |  "zh-CN-HuihuiRUS" |
-|  |  | `Female` | "zh-CN-Yaoyao-Apollo" |
-|  |  | `Male` | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | 中国語 (繁体字) | `Female` |  "zh-HK-Tracy-Apollo" |
-|  |  | `Female` | "zh-HK-TracyRUS" |
-|  |  | `Male` |  "zh-HK-Danny-Apollo" |
-| `zh-TW` | 中国語 (台湾標準中国語) | `Female` |  "zh-TW-Yating-Apollo" |
-|  |  | `Female` | "zh-TW-HanHanRUS" |
-|  |  | `Male` |  "zh-TW-Zhiwei-Apollo" |
+| <sup>1</sup>`ar-EG` | アラビア語 (エジプト) | Female | "ar-EG-Hoda" |
+| `ar-SA` | アラビア語 (サウジアラビア) | Male | "ar-SA-Naayf" |
+| `bg-BG` | ブルガリア語 | Male |  "bg-BG-Ivan" |
+| `ca-ES` | カタロニア語 | Female |  "ca-ES-HerenaRUS" |
+| `cs-CZ` | チェコ語 | Male | "cs-CZ-Jakub" |
+| `da-DK` | デンマーク語 | Female |  "da-DK-HelleRUS" |
+| `de-AT` | ドイツ語 (オーストリア) | Male | "de-AT-Michael" |
+| `de-CH` | ドイツ語 (スイス) | Male |  "de-CH-Karsten" |
+| `de-DE` | ドイツ語 (ドイツ) | Female |  "de-DE-Hedda" |
+|  |  | Female | "de-DE-HeddaRUS" |
+|  |  | Male |  "de-DE-Stefan-Apollo" |
+| `el-GR` | ギリシャ語 | Male | "el-GR-Stefanos" |
+| `en-AU` | 英語 (オーストラリア) | Female |  "en-AU-Catherine" |
+|  |  | Female |  "en-AU-HayleyRUS" |
+| `en-CA` | 英語 (カナダ) | Female |  "en-CA-Linda" |
+|  |  | Female |  "en-CA-HeatherRUS" |
+| `en-GB` | 英語 (英国) | Female |  "en-GB-Susan-Apollo" |
+|  |  | Female |  "en-GB-HazelRUS" |
+|  |  | Male |  "en-GB-George-Apollo" |
+| `en-IE` | 英語 (アイルランド) | Male | "en-IE-Sean" |
+| `en-IN` | 英語 (インド) | Female | "en-IN-Heera-Apollo" |
+|  |  | Female |  "en-IN-PriyaRUS" |
+|  |  | Male |  "en-IN-Ravi-Apollo" |
+| `en-US` | 英語 (米国) | Female |  "en-US-ZiraRUS" |
+|  |  | Female | "en-US-AriaRUS" |
+|  |  | Male | "en-US-BenjaminRUS" |
+|  |  | Male |  "en-US-Guy24kRUS" |
+| `es-ES` | スペイン語 (スペイン) | Female |  "es-ES-Laura-Apollo" |
+|  |  | Female | "es-ES-HelenaRUS" |
+|  |  | Male | "es-ES-Pablo-Apollo" |
+| `es-MX` | スペイン語 (メキシコ) | Female |  "es-MX-HildaRUS" |
+|  |  | Male | "es-MX-Raul-Apollo" |
+| `fi-FI` | フィンランド語 | Female | "fi-FI-HeidiRUS" |
+| `fr-CA` | フランス語 (カナダ) | Female | "fr-CA-Caroline" |
+|  |  | Female | "fr-CA-HarmonieRUS" |
+| `fr-CH` | フランス語 (スイス) | Male | "fr-CH-Guillaume" |
+| `fr-FR` | フランス語 (フランス) | Female |  "fr-FR-Julie-Apollo" |
+|  |  | Female |"fr-FR-HortenseRUS" |
+|  |  | Male |  "fr-FR-Paul-Apollo" |
+| `he-IL` | ヘブライ語 (イスラエル) | Male |  "he-IL-Asaf" |
+| `hi-IN` | ヒンディー語 (インド) | Female | "hi-IN-Kalpana-Apollo" |
+|  |  | Female |  "hi-IN-Kalpana" |
+|  |  | Male |  "hi-IN-Hemant" |
+| `hr-HR` | クロアチア語 | Male | "hr-HR-Matej" |
+| `hu-HU` | ハンガリー語 | Male |  "hu-HU-Szabolcs" |
+| `id-ID` | インドネシア語 | Male | "id-ID-Andika" |
+| `it-IT` | イタリア語 | Male |  "it-IT-Cosimo-Apollo" |
+|  |  | Female |  "it-IT-LuciaRUS" |
+| `ja-JP` | 日本語 | Female |  "ja-JP-Ayumi-Apollo" |
+|  |  | Male | "ja-JP-Ichiro-Apollo" |
+|  |  | Female |  "ja-JP-HarukaRUS" |
+| `ko-KR` | 韓国語 | Female | "ko-KR-HeamiRUS" |
+| `ms-MY` | マレー語 | Male |  "ms-MY-Rizwan" |
+| `nb-NO` | ノルウェー語 | Female |  "nb-NO-HuldaRUS" |
+| `nl-NL` | オランダ語 | Female |  "nl-NL-HannaRUS" |
+| `pl-PL` | ポーランド語 | Female |  "pl-PL-PaulinaRUS" |
+| `pt-BR` | ポルトガル語 (ブラジル) | Female | "pt-BR-HeloisaRUS" |
+|  |  | Male |  "pt-BR-Daniel-Apollo" |
+| `pt-PT` | ポルトガル語 (ポルトガル) | Female | "pt-PT-HeliaRUS" |
+| `ro-RO` | ルーマニア語 | Male | "ro-RO-Andrei" |
+| `ru-RU` | ロシア語 | Female |  "ru-RU-Irina-Apollo" |
+|  |  | Male | "ru-RU-Pavel-Apollo" |
+|  |  | Female |  ru-RU-EkaterinaRUS |
+| `sk-SK` | スロバキア語 | Male | "sk-SK-Filip" |
+| `sl-SI` | スロベニア語 | Male |  "sl-SI-Lado" |
+| `sv-SE` | スウェーデン語 | Female | "sv-SE-HedvigRUS" |
+| `ta-IN` | タミール語 (インド) | Male |  "ta-IN-Valluvar" |
+| `te-IN` | テルグ語 (インド) | Female |  "te-IN-Chitra" |
+| `th-TH` | タイ語 | Male |  "th-TH-Pattara" |
+| `tr-TR` | トルコ語 (トルコ) | Female | "tr-TR-SedaRUS" |
+| `vi-VN` | ベトナム語 | Male |  "vi-VN-An" |
+| `zh-CN` | 中国語 (標準、簡体字) | Female |  "zh-CN-HuihuiRUS" |
+|  |  | Female | "zh-CN-Yaoyao-Apollo" |
+|  |  | Male | "zh-CN-Kangkang-Apollo" |
+| `zh-HK` | 中国語 (繁体字) | Female |  "zh-HK-Tracy-Apollo" |
+|  |  | Female | "zh-HK-TracyRUS" |
+|  |  | Male |  "zh-HK-Danny-Apollo" |
+| `zh-TW` | 中国語 (台湾標準中国語) | Female |  "zh-TW-Yating-Apollo" |
+|  |  | Female | "zh-TW-HanHanRUS" |
+|  |  | Male |  "zh-TW-Zhiwei-Apollo" |
 
 **1** *ar-EG では現代標準アラビア語 (MSA) をサポートしています。*
 

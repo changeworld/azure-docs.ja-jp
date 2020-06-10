@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6339b86166aff008bf17b5096d42629daf6e3401
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996076"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434289"
 ---
 # <a name="language-and-region-support-for-translator"></a>Translator の言語とリージョンのサポート
 
@@ -74,10 +74,11 @@ Translator では、テキスト対テキストの翻訳について、以下の
 |アイルランド語 | `ga`| ニューラル
 |イタリア語|    `it`    |    ニューラル|
 |日本語|    `ja`    |    ニューラル|
-|カンナダ語|`kn`| ニューラル
+|カンナダ語|`kn`| ニューラル|
+|カザフ語 |`kk`| ニューラル|
 |スワヒリ語|    `sw`    |    統計|
-|クリンゴン語|    `tlh`    |    統計|
-|クリンゴン語 (plqaD)|    `tlh-Qaak`    |    統計|
+|クリンゴン語|    `tlh-Latn`    |    統計|
+|クリンゴン語 (plqaD)|    `tlh-Piqd`    |    統計|
 |韓国語    |`ko`    |    ニューラル|
 |ラトビア語|    `lv`    |    ニューラル|
 |リトアニア語|    `lt`    |    ニューラル|
@@ -130,20 +131,20 @@ Translator では、テキスト対テキストの翻訳について、以下の
 | 簡体中国語 | `zh-Hans` | 中国語簡体字 `Hans`| <--> | 中国語繁体字 `Hant`|
 | 繁体中国語 | `zh-Hant` | 中国語繁体字 `Hant`| <--> | ラテン語 `Latn` |
 | 繁体中国語 | `zh-Hant` | 中国語繁体字 `Hant`| <--> | 中国語簡体字 `Hans` |
-| グジャラート語 | `gu`  | グジャラート語 `Gujr` | --> | ラテン語 `Latn` |
+| グジャラート語 | `gu`  | グジャラート語 `Gujr` | <--> | ラテン語 `Latn` |
 | ヘブライ語 | `he` | ヘブライ語 `Hebr` | <--> | ラテン語 `Latn` |
 | ヒンディー語 | `hi` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
 | 日本語 | `ja` | 日本語 `Jpan` | <--> | ラテン語 `Latn` |
-| カンナダ語 | `kn` | カンナダ語 `Knda` | --> | ラテン語 `Latn` |
-| マラヤーラム語 | `ml` | マラヤーラム語 `Mlym` | --> | ラテン語 `Latn` |
-| マラーティー語 | `mr` | デーヴァナーガリー `Deva` | --> | ラテン語 `Latn` |
+| カンナダ語 | `kn` | カンナダ語 `Knda` | <--> | ラテン語 `Latn` |
+| マラヤーラム語 | `ml` | マラヤーラム語 `Mlym` | <--> | ラテン語 `Latn` |
+| マラーティー語 | `mr` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
 | オリヤー語 | `or` | オリヤー語 `Orya` | <--> | ラテン語 `Latn` |
 | パンジャーブ語 | `pa` | グルムキー文字 `Guru`  | <--> | ラテン語 `Latn`  |
 | セルビア語 (キリル) | `sr-Cyrl` | キリル語 `Cyrl`  | --> | ラテン語 `Latn` |
 | セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
-| タミル語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
-| テルグ語 | `te` | テルグ語 `Telu` | --> | ラテン語 `Latn` |
-| タイ語 | `th` | タイ語 `Thai` | --> | ラテン語 `Latn` |
+| タミル語 | `ta` | タミール語 `Taml` | <--> | ラテン語 `Latn` |
+| テルグ語 | `te` | テルグ語 `Telu` | <--> | ラテン語 `Latn` |
+| タイ語 | `th` | タイ語 `Thai` | <--> | ラテン語 `Latn` |
 
 ## <a name="dictionary"></a>Dictionary
 
@@ -177,7 +178,7 @@ Translator では、テキスト対テキストの翻訳について、以下の
 | イタリア語      | `it`          |
 | 日本語      | `ja`          |
 | スワヒリ語      | `sw`          |
-| クリンゴン語      | `tlh`          |
+| クリンゴン語      | `tlh-Latn`          |
 | 韓国語      | `ko`          |
 | ラトビア語      | `lv`          |
 | リトアニア語      | `lt`          |

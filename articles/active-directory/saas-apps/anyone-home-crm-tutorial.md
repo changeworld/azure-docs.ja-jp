@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2320f8a005531039a386af9192157c3091f3ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4146e6de2ef23f7e12ee6b59c40045f8a678dc13
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221268"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509187"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Anyone Home CRM の統合
 
@@ -88,7 +88,7 @@ Anyone Home CRM に対する Azure AD SSO を構成してテストするには�
     b. **[応答 URL]** ボックスに、`https://app.anyonehome.com/webroot/files/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/<Anyone_Home_Provided_Unique_Value>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Anyone Home CRM クライアント サポート チーム](mailto:lightson@anyonehome.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Anyone Home CRM クライアント サポート チーム](mailto:support@anyonehome.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -126,11 +126,11 @@ Anyone Home CRM に対する Azure AD SSO を構成してテストするには�
 
 ## <a name="configure-anyone-home-crm-sso"></a>Anyone Home CRM SSO を構成する
 
-**Anyone Home CRM** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Anyone Home CRM サポート チーム](mailto:lightson@anyonehome.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Anyone Home CRM** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Anyone Home CRM サポート チーム](mailto:support@anyonehome.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-anyone-home-crm-test-user"></a>Anyone Home CRM テスト ユーザーを作成する
 
-このセクションでは、Anyone Home CRM で Britta Simon というユーザーを作成します。  [Anyone Home CRM サポート チーム](mailto:lightson@anyonehome.com)の協力の下、Anyone Home CRM プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Anyone Home CRM で Britta Simon というユーザーを作成します。  [Anyone Home CRM サポート チーム](mailto:support@anyonehome.com)の協力の下、Anyone Home CRM プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

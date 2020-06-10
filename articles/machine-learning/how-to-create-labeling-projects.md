@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007549"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171560"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -55,8 +55,7 @@ Azure Machine Learning によって、進行状況が追跡され、未完了の
 
 プロジェクトを作成するには、 **[プロジェクトの追加]** を選択します。 プロジェクトに適切な名前を付け、 **[ラベル付けタスクの種類]** を選択します。
 
-![ラベル付けプロジェクト作成ウィザード](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
-
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="ラベル付けプロジェクト作成ウィザード":::
 
 * クラスのセットから "*1 つのクラス*" だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
 * クラスのセットから "*1 つ以上*" のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(イメージ分類複数ラベル\)** を選択します。 たとえば、犬の写真には "*犬*" と "*日中*" の両方のラベルが付けられる可能性があります。

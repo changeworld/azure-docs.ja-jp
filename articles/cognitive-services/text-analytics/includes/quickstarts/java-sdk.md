@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 31afb7bc00250887841adccc8c3cc4dc69462d55
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: bd070300427716634d786e685cfe1cf8e45a246c
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81642887"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140733"
 ---
 <a name="HOLTop"></a>
 
@@ -39,7 +39,7 @@ ms.locfileid: "81642887"
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.4</version>
+        <version>1.0.0-beta.5</version>
     </dependency>
 </dependencies>
 ```
@@ -102,7 +102,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
     return new TextAnalyticsClientBuilder()
-        .apiKey(new AzureKeyCredential(key))
+        .credential(new AzureKeyCredential(key))
         .endpoint(endpoint)
         .buildClient();
 }
@@ -135,8 +135,8 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
             sentenceSentiment.getConfidenceScores().getPositive(),
             sentenceSentiment.getConfidenceScores().getNeutral(),
             sentenceSentiment.getConfidenceScores().getNegative());
+        }
     }
-}
 ```
 
 ### <a name="output"></a>出力
@@ -164,7 +164,7 @@ static void detectLanguageExample(TextAnalyticsClient client)
     System.out.printf("Detected primary language: %s, ISO 6391 name: %s, score: %.2f.%n",
         detectedLanguage.getName(),
         detectedLanguage.getIso6391Name(),
-        detectedLanguage.getScore());
+        detectedLanguage.getConfidenceScore());
 }
 ```
 
@@ -176,7 +176,7 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ## <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 
 > [!NOTE]
-> バージョン `3.0-preview`:
+> バージョン `3.0`:
 > * NER には、個人情報を検出するための専用のメソッドが含まれます。 
 > * エンティティ リンク設定は、NER から切り離された要求です。
 
@@ -193,7 +193,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
             "Recognized entity: %s, entity category: %s, entity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory(),
+            entity.getSubcategory(),
             entity.getConfidenceScore());
     }
 }
@@ -202,7 +202,8 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>出力
 
 ```console
-Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.92.
+Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61.
+Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.82.
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
@@ -215,23 +216,23 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 {
     // The text that need be analyzed.
     String text = "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
-            "to develop and sell BASIC interpreters for the Altair 8800. " +
-            "During his career at Microsoft, Gates held the positions of chairman, " +
-            "chief executive officer, president and chief software architect, " +
-            "while also being the largest individual shareholder until May 2014.";
+        "to develop and sell BASIC interpreters for the Altair 8800. " +
+        "During his career at Microsoft, Gates held the positions of chairman, " +
+        "chief executive officer, president and chief software architect, " +
+        "while also being the largest individual shareholder until May 2014.";
 
     System.out.printf("Linked Entities:%n");
     for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
         System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
-                linkedEntity.getName(),
-                linkedEntity.getDataSourceEntityId(),
-                linkedEntity.getUrl(),
-                linkedEntity.getDataSource());
+            linkedEntity.getName(),
+            linkedEntity.getDataSourceEntityId(),
+            linkedEntity.getUrl(),
+            linkedEntity.getDataSource());
         System.out.printf("Matches:%n");
-        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getLinkedEntityMatches()) {
+        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getMatches()) {
             System.out.printf("Text: %s, Score: %.2f%n",
-                    linkedEntityMatch.getText(),
-                    linkedEntityMatch.getConfidenceScore());
+            linkedEntityMatch.getText(),
+            linkedEntityMatch.getConfidenceScore());
         }
     }
 }
@@ -243,24 +244,24 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 Linked Entities:
 Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
 Matches:
-Text: Altair 8800, Score: 0.78
+Text: Altair 8800, Score: 0.88
 Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
 Matches:
-Text: Bill Gates, Score: 0.55
-Text: Gates, Score: 0.55
+Text: Bill Gates, Score: 0.63
+Text: Gates, Score: 0.63
 Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
 Matches:
-Text: Paul Allen, Score: 0.53
+Text: Paul Allen, Score: 0.60
 Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
 Matches:
-Text: Microsoft, Score: 0.47
-Text: Microsoft, Score: 0.47
+Text: Microsoft, Score: 0.55
+Text: Microsoft, Score: 0.55
 Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
 Matches:
-Text: April 4, Score: 0.25
+Text: April 4, Score: 0.32
 Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
 Matches:
-Text: BASIC, Score: 0.28
+Text: BASIC, Score: 0.33
 ```
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 

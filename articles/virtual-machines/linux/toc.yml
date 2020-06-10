@@ -657,7 +657,7 @@
               href: update-agent.md
         - name: 予測実行の軽減
           href: mitigate-se.md
-        - name: メタデータの監視
+        - name: Azure Instance Metadata Service
           href: instance-metadata-service.md
         - name: REST による使用状況メトリックの取得
           href: metrics-vm-usage-rest.md

@@ -2,19 +2,19 @@
 title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
 ms.date: 02/20/2020
-ms.author: babanisa
+ms.author: femila
 ms.custom: seodec18
-ms.openlocfilehash: 75ee828c659aba895f65d0cf14070966428a1d19
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682521"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560306"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 

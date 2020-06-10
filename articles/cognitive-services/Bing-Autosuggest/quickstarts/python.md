@@ -10,12 +10,13 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 94ee870771cd0f0c372602648e5a81e99cbd5537
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: tracking-python
+ms.openlocfilehash: ea2605258b37c8dd706c5ff82d060d1a14770f63
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929531"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608997"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>クイック スタート:Bing Autosuggest REST API と Python によって検索クエリの候補を表示する
 

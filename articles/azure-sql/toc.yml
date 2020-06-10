@@ -967,8 +967,6 @@
                   items:
                     - name: Azure SQL VM CLI
                       href: virtual-machines/windows/availability-group-az-cli-configure.md
-                    - name: Azure portal テンプレート
-                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
                     - name: Azure クイック スタート テンプレート
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: 複数のリージョン

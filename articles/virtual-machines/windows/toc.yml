@@ -624,7 +624,7 @@
           href: ../extensions/agent-windows.md
         - name: 予測実行の軽減
           href: mitigate-se.md
-        - name: メタデータの監視
+        - name: Azure Instance Metadata Service
           href: instance-metadata-service.md
         - name: 入れ子になった仮想化の有効化
           href: nested-virtualization.md
