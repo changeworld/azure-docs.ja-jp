@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 208a7a677bdf0b76ffed83e679c6f1ff3041d50d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239684"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298960"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -131,18 +131,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. **[アドレス範囲 (CIDR ブロック)]** に「**192.168.2.0/24**」と入力します。
 5. **[OK]** を選択します。
 
-### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-
-これは、オンプレミスのゲートウェイに使用されるパブリック IP アドレスです。
-
-1. Azure portal のホーム ページから **[リソースの作成]** を選択します。
-2. 検索テキスト ボックスに「**パブリック IP アドレス**」と入力し、**Enter** キーを押します。
-3. **[パブリック IP アドレス]** を選択し、 **[作成]** を選択します。
-4. 名前として「**VNet-Onprem-GW-pip**」と入力します。
-5. リソース グループとして「**FW-Hybrid-Test**」と入力します。
-6. **[場所]** で、以前使用したのと同じ場所を選択します。
-7. 他の既定値をそのまま使用し、 **[作成]** を選択します。
-
 ## <a name="configure-and-deploy-the-firewall"></a>ファイアウォールを構成してデプロイする
 
 次に、ファイアウォール ハブ仮想ネットワークにファイアウォールをデプロイします。
@@ -151,9 +139,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. 左側の列で **[ネットワーク]** を選択してから、 **[ファイアウォール]** を選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
-   |サブスクリプション     |\<該当するサブスクリプション\>|
+   |サブスクリプション     |\<your subscription\>|
    |Resource group     |**FW-Hybrid-Test** |
    |名前     |**AzFW01**|
    |場所     |以前使用したのと同じ場所を選択します|
