@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c6e6d4a38c5ed2afc118b267f253ffc7533f9d82
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6344f2c69e7b6407152e752c61c1928ab651a88c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438870"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119233"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル:REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -121,7 +121,7 @@ JSON プロパティの詳細については、「[Azure Storage のリンクさ
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.json
 > [!IMPORTANT]
-> **servername**、**databasename**、**username**、**password** を、Azure SQL サーバーの名前、SQL データベースの名前、ユーザー アカウント、アカウントのパスワードに置き換えます。  
+> **servername**、**databasename**、**username**、**password** を、サーバーの名前、SQL データベースの名前、ユーザー アカウント、アカウントのパスワードに置き換えます。  
 > 
 >
 
@@ -403,7 +403,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>Azure SQL のリンクされたサービスの作成
-この手順では、Azure SQL データベースをデータ ファクトリにリンクします。 このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#linked-service-properties)に関するセクションをご覧ください。
+この手順では、Azure SQL データベースをデータ ファクトリにリンクします。 このセクションで、論理 SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#linked-service-properties)に関するセクションをご覧ください。
 
 1. コマンドを **cmd**という名前の変数に割り当てます。 
    

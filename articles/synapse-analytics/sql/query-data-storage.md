@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8501f9d07ffa2d04915d4d1a351317cc145f9844
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116249"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118262"
 ---
 # <a name="overview-query-data-in-storage"></a>概要:ストレージ内のデータを照会する
 
 このセクションには、Azure Synapse Analytics 内の SQL オンデマンド (プレビュー) リソースを試すために使用できるサンプル クエリが含まれています。
-現在サポートされているファイルは次のとおりです。 
+現在サポートされるファイル形式は、次のとおりです。  
 - CSV
 - Parquet
 - JSON
@@ -44,67 +44,13 @@ ms.locfileid: "82116249"
 
 ## <a name="first-time-setup"></a>初回セットアップ
 
-この記事の後半に記載されているサンプルを使用する前に、次の 2 つの手順を実行します。
-
-- ビューのデータベースを作成する (ビューを使用する場合)
-- SQL オンデマンドがストレージ内のファイルにアクセスするために使用する資格情報を作成する
-
-### <a name="create-database"></a>データベースの作成
-
-ビューを作成するには、データベースが必要です。 このデータベースは、このドキュメントの一部のサンプル クエリで使用します。
+最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルでデータの読み取りに使用される外部ファイル形式が作成されます。
 
 > [!NOTE]
 > このデータベースは、実際のデータではなくメタデータを表示するためにのみ使用されます。  使用するデータベース名を書き留めておきます。後で必要になります。
 
 ```sql
 CREATE DATABASE mydbname;
-```
-
-### <a name="create-credentials"></a>資格情報を作成する
-
-クエリを実行する前に、資格情報を作成する必要があります。 この資格情報は、SQL オンデマンド サービスがストレージ内のファイルにアクセスするために使用されます。
-
-> [!NOTE]
-> このセクションの方法を正常に実行するには、SAS トークンを使用する必要があります。
->
-> SAS トークンの使用を開始するには、この[記事](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)に説明されている UserIdentity を削除する必要があります。
->
-> SQL オンデマンドでは、既定で常に AAD パススルーが使用されます。
-
-ストレージのアクセス制御の管理方法の詳細については、この[リンク](develop-storage-files-storage-access-control.md)を参照してください。
-
-CSV、JSON、および Parquet コンテナーの資格情報を作成するには、次のコードを実行します。
-
-```sql
--- create credentials for CSV container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/csv')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for JSON container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/json')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for PARQUET container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/parquet')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
 ```
 
 ## <a name="provided-demo-data"></a>提供されるデモ データ
@@ -132,24 +78,6 @@ GO
 | /json/                                                       | JSON 形式のデータの親フォルダー                        |
 | /json/books/                                                 | 書籍データを含む JSON ファイル                                   |
 
-## <a name="validation"></a>検証
-
-次の 3 つのクエリを実行して、資格情報が正しく作成されているかどうかを確認します。
-
-> [!NOTE]
-> サンプル クエリ内のすべての URI は、北ヨーロッパ Azure リージョンにあるストレージ アカウントを使用します。 適切な資格情報が作成されていることを確認してください。 以下のクエリを実行して、ストレージ アカウントが表示されることを確認します。
-
-```sql
-SELECT name
-FROM sys.credentials
-WHERE
-     name IN ( 'https://sqlondemandstorage.blob.core.windows.net/csv',
-     'https://sqlondemandstorage.blob.core.windows.net/parquet',
-     'https://sqlondemandstorage.blob.core.windows.net/json');
-```
-
-適切な資格情報が見つからない場合は、「[初回セットアップ](#first-time-setup)」を確認してください。
-
 ### <a name="sample-query"></a>サンプル クエリ
 
 検証の最後の手順は、次のクエリを実行することです。
@@ -159,7 +87,8 @@ SELECT
     COUNT_BIG(*)
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
         FORMAT='PARQUET'
     ) AS nyc;
 ```

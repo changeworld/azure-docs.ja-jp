@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/27/2020
-ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: f8b72037046d05b39587c2fd57794b4109a85ae3
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418781"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249180"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 
@@ -33,7 +33,7 @@ ms.locfileid: "81418781"
 > * データ ファクトリを作成します。
 > * Azure SQL Database、Azure Synapse Analytics (旧称 SQL DW)、Azure Storage のリンクされたサービスを作成します。
 > * Azure SQL Database と Azure Synapse Analytics (旧称 SQL DW) のデータセットを作成します。
-> * コピーするテーブルを検索するためのパイプラインと実際のコピー操作を実行するためのパイプラインを作成します。 
+> * コピーするテーブルを検索するためのパイプラインと、実際のコピー操作を実行するためのもう 1 つのパイプラインを作成します。 
 > * パイプラインの実行を開始します。
 > * パイプラインとアクティビティの実行を監視します。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **ソース Azure SQL Database の準備**:
 
-[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に従い、Adventure Works LT サンプル データを使って Azure SQL データベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを Azure Synapse Analytics (旧称 SQL DW) にコピーします。
+[Azure SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に従い、Adventure Works LT サンプル データを使って Azure SQL データベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを Azure Synapse Analytics (旧称 SQL DW) にコピーします。
 
 **シンク Azure Synapse Analytics (旧称 SQL DW) の準備**:
 
@@ -68,11 +68,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL サーバーにアクセスするための Azure サービス
 
-SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご自分の Azure SQL Server で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定を**オン**にしてください。 この設定により、Data Factory サービスが Azure SQL Database からデータを読み取ったり、Azure Synapse Analytics (旧称 SQL DW) にデータを書き込んだりすることができます。 
+SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 サーバーで **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定を**オン**にしてください。 この設定により、Data Factory サービスが Azure SQL Database からデータを読み取ったり、Azure Synapse Analytics (旧称 SQL DW) にデータを書き込んだりすることができます。 
 
-この設定を確認して有効にするには、ご自分の Azure SQL サーバーで [セキュリティ] > [ファイアウォールと仮想ネットワーク] の順に移動して、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に設定します。
+この設定を確認して有効にするには、サーバーで [セキュリティ] > [ファイアウォールと仮想ネットワーク] の順に移動して、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に設定します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
+
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
 1. Azure portal のメニューの左側で、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
@@ -114,7 +115,7 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 
     a. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
     
-    b. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    b. **[サーバー名]** で、サーバーを選択します
     
     c. **[データベース名]** で、使用する Azure SQL データベースを選択します。 
     
@@ -135,7 +136,7 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
    
     a. **[名前]** に「**AzureSqlDWLinkedService**」と入力します。
      
-    b. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    b. **[サーバー名]** で、サーバーを選択します
      
     c. **[データベース名]** で、使用する Azure SQL データベースを選択します。 
      
@@ -212,7 +213,8 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
     ![新しいパイプライン メニュー](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-1. **[全般]** タブで、名前に「**IterateAndCopySQLTables**」と指定します。 
+ 
+1. [全般] パネルの **[プロパティ]** の下で、 **[名前]** に「**IterateAndCopySQLTables**」と指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 1. **[パラメーター]** タブに切り替えて、次の手順を実行します。 
 

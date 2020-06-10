@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: 78cb58bca9b06b6dcf8549eefa5ebf0eb2b4b01c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/29/2020
+ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409329"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249095"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL データベースから Azure Blob Storage にデータを増分読み込みする
 
@@ -65,7 +65,7 @@ ms.locfileid: "81409329"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。
+* **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」を参照してください。
 * **Azure Storage**。 シンク データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合の作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 adftutorial という名前のコンテナーを作成します。 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
@@ -182,7 +182,7 @@ END
 1. Data Factory UI の**開始**ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。
 
    ![Data Factory UI の開始ページ](./media/doc-common-process/get-started-page.png)    
-3. パイプラインの **[プロパティ]** ウィンドウの **[全般]** ページで、名前として「**IncrementalCopyPipeline**」と入力します。
+3. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 4. 古い基準値を取得するための最初の検索アクティビティを追加します。 **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を **LookupOldWaterMarkActivity** に変更します。
 
@@ -196,7 +196,7 @@ END
 8. **[リンクされたサービス]** で **[新規]** を選択して、次の手順を実行します。
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
-    2. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    2. **[サーバー名]** で、サーバーを選択します。
     3. ドロップダウン リストから **[データベース名]** を選択します。
     4. **[ユーザー名]**  &  **[パスワード]** の順に入力します。
     5. Azure SQL データベースへの接続をテストするために、 **[テスト接続]** をクリックします。
@@ -272,7 +272,7 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。
 
-        | 名前 | Type | Value |
+        | 名前 | Type | 値 |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -398,7 +398,7 @@ PersonID | Name | LastModifytime
 > * 2 回目のパイプラインの実行を監視します
 > * 2 回目の実行の結果を確認します
 
-このチュートリアルでは、パイプラインで SQL データベース内の単一のテーブルから BLOB ストレージにデータをコピーしました。 次のチュートリアルに進んで、オンプレミスの SQL Server データベースにある複数のテーブルから SQL データベースにデータをコピーする方法について学習しましょう。
+このチュートリアルでは、パイプラインで SQL データベース内の単一のテーブルから BLOB ストレージにデータをコピーしました。 次のチュートリアルに進んで、SQL Server データベースにある複数のテーブルから SQL Database にデータをコピーする方法について学習しましょう。
 
 > [!div class="nextstepaction"]
 >[SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする](tutorial-incremental-copy-multiple-tables-portal.md)

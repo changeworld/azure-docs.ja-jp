@@ -1,6 +1,6 @@
 ---
 title: Change Tracking を使用してデータを増分コピーする
-description: このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 842531b7f4bdd3690258262b32a42a19366c1830
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415435"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196287"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -42,7 +42,7 @@ ms.locfileid: "81415435"
 ここでは、Change Tracking テクノロジを使用してデータを増分読み込みする一般的なエンド ツー エンドのワークフロー ステップを取り上げます。
 
 > [!NOTE]
-> Azure SQL Database と SQL Server は、どちらも Change Tracking テクノロジをサポートしています。 このチュートリアルでは、Azure SQL Database をソース データ ストアとして使用します。 オンプレミスの SQL Server を使用してもかまいません。
+> Azure SQL Database と SQL Server は、どちらも Change Tracking テクノロジをサポートしています。 このチュートリアルでは、Azure SQL Database をソース データ ストアとして使用します。 SQL Server インスタンスを使用してもかまいません。
 
 1. **履歴データの初回読み込みを実行する** (1 回実行)。
     1. ソース Azure SQL データベースの Change Tracking テクノロジを有効にします。
@@ -70,11 +70,11 @@ ms.locfileid: "81415435"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure SQL データベース**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に書かれている手順を参照して作成してください。
+* **Azure SQL データベース**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に書かれている手順を参照して作成してください。
 * **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 **adftutorial** という名前のコンテナーを作成します。 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL データベースにデータ ソース テーブルを作成する
-1. **SQL Server Management Studio** を起動し、Azure SQL Server に接続します。
+1. **SQL Server Management Studio** を起動し、SQL Database に接続します。
 2. **サーバー エクスプローラー**で目的の**データベース**を右クリックして **[新しいクエリ]** を選択します。
 3. Azure SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをソース データ ストアとして作成します。  
 
@@ -216,8 +216,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
     1. **[名前]** フィールドに「**AzureSqlDatabaseLinkedService**」と入力します。
-    2. **[サーバー名]** フィールドで Azure SQL サーバーを選択します。
-    4. **[データベース名]** フィールドで Azure SQL データベースを選択します。
+    2. **[サーバー名]** フィールドでサーバーを選択します。
+    4. **[データベース名]** フィールドでデータベースを選択します。
     5. **[ユーザー名]** フィールドにユーザーの名前を入力します。
     6. **[パスワード]** フィールドに、ユーザーのパスワードを入力します。
     7. **[テスト接続]** をクリックして接続をテストします。
@@ -416,7 +416,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。
 
-        | 名前 | Type | Value |
+        | 名前 | Type | 値 |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

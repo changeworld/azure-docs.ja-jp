@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418662"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022063"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 
@@ -42,7 +42,7 @@ ms.locfileid: "81418662"
 
 * **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * **Microsoft Azure Storage アカウント**:Blob Storage を "_ソース_" データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、[ストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページの手順を参照してください。
-* **Azure SQL Database**:"_シンク_" データ ストアとして SQL データベースを使用します。 SQL データベースがない場合は、[SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関するページの手順を参照してください。
+* **Azure SQL Database**:"_シンク_" データ ストアとして SQL データベースを使用します。 SQL データベースがない場合は、[SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページの手順を参照してください。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>BLOB と SQL テーブルを作成する
 
@@ -76,7 +76,7 @@ ms.locfileid: "81418662"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Azure サービスに SQL Server へのアクセスを許可します。 SQL データベースが実行されているサーバーの **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定が有効になっていることを確認します。 この設定により、Data Factory はお使いのデータベース インスタンスにデータを書き込むことができます。 この設定を確認および有効にするには、Azure SQL サーバーで [セキュリティ] > [ファイアウォールと仮想ネットワーク] の順に移動して、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** オプションを **[オン]** に設定します。
+2. Azure サービスに SQL Server へのアクセスを許可します。 SQL データベースが実行されているサーバーの **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定が有効になっていることを確認します。 この設定により、Data Factory はお使いのデータベース インスタンスにデータを書き込むことができます。 この設定を確認および有効にするには、論理 SQL サーバーで [セキュリティ]、[ファイアウォールと仮想ネットワーク] の順に移動して、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** オプションを **[オン]** に設定します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
@@ -89,7 +89,7 @@ ms.locfileid: "81418662"
 
     ![[新しいデータ ファクトリ] のエラー メッセージ](./media/doc-common-process/name-not-available-error.png)
 
-    データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
 1. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
 

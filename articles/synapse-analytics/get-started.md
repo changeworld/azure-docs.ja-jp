@@ -9,57 +9,49 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836483"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248330"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics の使用を開始する
 
-このチュートリアルでは、Azure Synapse Analytics を設定して使用するために必要な、すべての基本的な手順について説明します。
+このドキュメントでは、Azure Synapse Analytics を設定して使用するために必要な、すべての基本的な手順について説明します。
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Synapse ワークスペースで使用するストレージ アカウントを準備する
 
-1. [Azure portal](https://portal.azure.com) を開きます。
-1. 次の手順で新しいストレージ アカウントを作成します。
-    * **[基本]** タブ
+* [Azure portal](https://portal.azure.com) を開きます。
+* 次の手順で新しいストレージ アカウントを作成します。
 
-    |設定 | 推奨値 | 説明 |
-    |---|---|---|
-    |**Storage account name \(ストレージ アカウント名\)**| 任意の名前を付けることができます。|このドキュメントでは、`contosolake` として説明します。
-    |**アカウントの種類**|`StorageV2` に設定されている必要があります。||
-    |**場所**|任意の場所を選択できます。| Synapse ワークスペースと Azure Data Lake Storage (ADLS) Gen2 アカウントが同じリージョン内にあるようにすることをお勧めします。|
-    ||||
-    
-    * **[詳細設定]** タブ
-    
-    |設定 | 推奨値 | 説明 |
-    |---|---|---|
-    |**Data Lake Storage Gen2**|`Enabled`| Azure Synapse は、この設定が有効になっているストレージ アカウントでのみ機能します。|
-    ||||
+    |タブ|設定 | 推奨値 | 説明 |
+    |---|---|---|---|
+    |基本|**Storage account name \(ストレージ アカウント名\)**| 任意の名前を付けることができます。|このドキュメントでは、`contosolake` として説明します。|
+    |基本|**アカウントの種類**|`StorageV2` に設定されている必要があります。||
+    |基本|**場所**|任意の場所を選択できます。| Synapse ワークスペースと Azure Data Lake Storage (ADLS) Gen2 アカウントが同じリージョン内にあるようにすることをお勧めします。|
+    |詳細設定|**Data Lake Storage Gen2**|`Enabled`| Azure Synapse は、この設定が有効になっているストレージ アカウントでのみ機能します。|
 
 1. ストレージ アカウントが作成されたら、左側のナビゲーションから **[アクセス制御 (IAM)]** を選択します。 次に、以下のロールを割り当てるか、それらが既に割り当てられていることを確認します。 
+
     a. * ストレージ アカウントの**所有者**ロールに自分自身を割り当てます。b. * ストレージ アカウントの**ストレージ BLOB データ所有者**ロールに自分自身を割り当てます。
+
 1. 左側のナビゲーションで **[コンテナー]** を選択し、コンテナーを作成します。 任意の名前を付けることができます。 既定の**パブリック アクセス レベル**をそのまま使用します。 このドキュメントでは、コンテナーを `users` と呼びます。 **［作成］** を選択します 
+
+次の手順では、このストレージ アカウントを "プライマリ" ストレージ アカウントとして使用するように Synapse ワークスペースを構成し、ワークスペース データを格納するコンテナーを構成します。 ワークスペースは、このアカウントの Apache Spark テーブルおよび Spark アプリケーション ログの `/synapse/workspacename` という名前のフォルダーにデータを格納します。
 
 ## <a name="create-a-synapse-workspace"></a>Synapse ワークスペースを作成する
 
-1. [Azure portal](https://portal.azure.com) を開き、上部で `Synapse` を検索します。
-1. **[サービス]** の検索結果で、 **[Azure Synapse Analytics (ワークスペース プレビュー)]** を選択します。
-1. **[+ 追加]** を選択します。
-1. **[基本]** タブ:
+* [Azure portal](https://portal.azure.com) を開き、上部で `Synapse` を検索します。
+* **[サービス]** の検索結果で、 **[Azure Synapse Analytics (ワークスペース プレビュー)]** を選択します。
+* これらの設定を使用してワークスペースを作成するには、 **[+ 追加]** を選択します
 
-    |設定 | 推奨値 | 説明 |
-    |---|---|---|
-    |**ワークスペース名**|任意の名前にすることができます。| このドキュメントでは、`myworkspace` を使用します。
-    |**リージョン**|ストレージ アカウントのリージョンに一致させます。||
-    |||
+    |タブ|設定 | 推奨値 | 説明 |
+    |---|---|---|---|
+    |基本|**ワークスペース名**|任意の名前にすることができます。| このドキュメントでは、`myworkspace` を使用します。|
+    |基本|**リージョン**|ストレージ アカウントのリージョンに一致させます。|
 
 1. **[Data Lake Storage Gen 2]** で、先ほど作成したアカウントとコンテナーを選択します。
-    > [!NOTE]
-    > ここで選択したストレージ アカウントを Synapse ワークスペースの "プライマリ" ストレージ アカウントと呼びます。 このアカウントは、Apache Spark テーブルにデータを格納するために、また、Spark プールの作成時または Spark アプリケーションの実行時に作成されるログのために使用されます。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **［作成］** を選択します ワークスペースの準備は数分で完了します。
 
@@ -81,27 +73,17 @@ Synapse ワークスペースが作成された後、Synapse Studio を開くに
 ## <a name="create-a-sql-pool"></a>SQL プールを作成する
 
 1. Synapse Studio の左側のナビゲーションで、 **[管理] > [SQL プール]** を選択します。
-
-    > [!NOTE] 
-    > すべての Synapse ワークスペースには、**SQL オンデマンド**と呼ばれる事前に作成されたプールが付属しています。
-
 1. **[+ 新規]** を選択し、次の設定を入力します。
 
     |設定 | 推奨値 | 
-    |---|---|---|
+    |---|---|
     |**SQL プール名**| `SQLDB1`|
     |**パフォーマンス レベル**|`DW100C`|
-    |||
 
 1. **[確認および作成]** を選択し、次に **[作成]** を選択します。
-1. SQL プールの準備は数分で完了します。
+1. SQL プールの準備は数分で完了します。 SQL プールを作成すると、その SQL プールは、**SQLDB1** とも呼ばれる SQL プール データベースに関連付けられます。
 
-    > [!NOTE]
-    > Synapse SQL プールは、"Azure SQL Data Warehouse" と呼ばれていたものに相当します。
-
-SQL プールが実行されている限り、課金対象のリソースが消費されます。 そのため、必要に応じてプールを一時停止してコストを削減できます。
-
-SQL プールを作成すると、その SQL プールは、**SQLDB1** とも呼ばれる SQL プール データベースに関連付けられます。
+SQL プールがアクティブである限り、課金対象のリソースが消費されます。 コストを削減するために、後でプールを一時停止できます。
 
 ## <a name="create-an-apache-spark-pool"></a>Apache Spark プールを作成する
 
@@ -109,11 +91,10 @@ SQL プールを作成すると、その SQL プールは、**SQLDB1** とも呼
 1. **[+ 新規]** を選択し、次の設定を入力します。
 
     |設定 | 推奨値 | 
-    |---|---|---|
+    |---|---|
     |**[Apache Spark pool name]\(Apache Spark プール名\)**|`Spark1`
     |**ノード サイズ**| `Small`|
     |**[Number of nodes]\(ノードの数\)**| 最小数を 3 に、最大数を 3 に設定します|
-    |||
 
 1. **[確認および作成]** を選択し、次に **[作成]** を選択します。
 1. Apache Spark プールの準備は数秒で完了します。
@@ -126,7 +107,7 @@ SQL プールを作成すると、その SQL プールは、**SQLDB1** とも呼
 Synapse で Spark アクティビティを実行するときは、使用する Spark プールを指定します。 そのプールから Synapse に、使用する Spark リソースの数が通知されます。 使用したリソースに対してのみ支払います。 プールの使用を積極的に停止すると、リソースは自動的にタイムアウトし、リサイクルされます。
 
 > [!NOTE]
-> Spark データベースは Spark プールから独立して作成されます。 ワークスペースには、**既定**と呼ばれる Spark DB が必ず存在し、追加の Spark データベースを作成することができます。
+> Spark データベースは Spark プールから独立して作成されます。 ワークスペースには、**既定**と呼ばれる Spark データベースが必ず存在し、追加の Spark データベースを作成することができます。
 
 ## <a name="the-sql-on-demand-pool"></a>SQL オンデマンド プール
 
@@ -149,7 +130,7 @@ Synapse で Spark アクティビティを実行するときは、使用する S
 1. **[SQLDB1] > [テーブル]** に移動します。 複数のテーブルが読み込まれていることがわかります。
 1. **dbo.Trip** テーブルを右クリックし、 **[New SQL Script]\(新しい SQL スクリプト\) > [Select TOP 100 Rows]\(上位 100 行の選択\)** を選択します。
 1. 新しい SQL スクリプトが作成され、自動的に実行されます。
-1. SQL スクリプトの上部にある **[接続先]** が、自動的に SQLDB1 という SQL プールに設定されていることに注意してください。
+1. SQL スクリプトの上部にある **Connect to** が、自動的に `SQLDB1` という SQL プールに設定されていることに注意してください。
 1. SQL スクリプトのテキストをこのコードで置き換えて実行します。
 
     ```sql
@@ -167,7 +148,7 @@ Synapse で Spark アクティビティを実行するときは、使用する S
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>NYC タクシーのサンプル データを Spark nyctaxi データベースに読み込む
 
-`SQLDB1` のテーブルで使用できるデータがあります。 次に、それを "nyctaxi" という名前の Spark データベースに読み込みます。
+`SQLDB1` のテーブルで使用できるデータがあります。 次に、それを `nyctaxi` という名前の Spark データベースに読み込みます。
 
 1. Synapse Studio で **[開発]** ハブに移動します。
 1. **[+]** を選択し、 **[ノートブック]** を選択します。
@@ -189,7 +170,7 @@ Synapse で Spark アクティビティを実行するときは、使用する S
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark とノートブックを使用して NYC タクシーのデータを分析する
 
 1. ノートブックに戻ります。
-1. 新しいコード セルを作成し、次のテキストを入力して、`nyctaxi` Spark DB に読み込んだ NYC タクシーのデータの例に対してセルを実行します。
+1. 新しいコード セルを作成し、次のテキストを入力して、`nyctaxi` Spark データベースに読み込んだ NYC タクシーのデータの例に対してセルを実行します。
 
    ```py
    %%pyspark
@@ -299,8 +280,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. **[リンク済み]** を選択します。
 1. **[ストレージ アカウント] > [myworkspace (プライマリ - contosolake)]** に移動します。
 1. **[users (プライマリ)]** を選択します。
-1. "NYCTaxi" というフォルダーが表示されます。 その中に、"PassengerCountStats.csv" と "PassengerCountStats.parquet" という 2 つのフォルダーが表示されます。
-1. "PassengerCountStats.parquet" フォルダーに移動します。
+1. `NYCTaxi` というフォルダーが表示されます。 内部には、`PassengerCountStats.csv` と `PassengerCountStats.parquet` という 2 つのフォルダーがあるはずです。
+1. `PassengerCountStats.parquet` フォルダーに移動します。
 1. その中にある parquet ファイルを右クリックし、 **[新しいノートブック]** を選択すると、次のようなセルを含むノートブックが作成されます。
 
     ```py
@@ -342,11 +323,10 @@ Power BI ワークスペースを Synapse ワークスペースにリンクす�
 1. **[+ 新規]** を選択し、 **[Power BI アカウントに接続する]** を選択して、次のフィールドを設定します。
 
     |設定 | 推奨値 | 
-    |---|---|---|
+    |---|---|
     |**名前**|`NYCTaxiWorkspace1`|
     |**ワークスペース名**|`NYCTaxiWorkspace1`|
-    |||
-    
+        
 1. **［作成］** を選択します
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>Synapse ワークスペース内のデータを使用する Power BI データセットを作成する

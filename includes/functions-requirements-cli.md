@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 3929ffa81a8b558d8cb0dbd74135acc9cf1ea47b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 49610c178b577c4d81376a535355d140e8a144cb
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82876069"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84144980"
 ---
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
@@ -21,7 +21,13 @@ ms.locfileid: "82876069"
 + [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) バージョン 2.7.1846 以降の 2.x バージョン。
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-+ Python 3.6 および 3.7 では、[Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) バージョン 2.7.1846 以降の 2.x バージョンが必要です。 Python 3.8 では、Core Tools の[バージョン 3.x](../articles/azure-functions/functions-run-local.md#v2) が必要です。
++ インストール済みの Python バージョンに対応する Azure Functions Core Tools バージョン。
+
+   | Python バージョン | Core Tools バージョン |
+   | -------------- | ------------------ |
+   | Python 3.8     | [バージョン 3.x](../articles/azure-functions/functions-run-local.md#v2) |
+   | Python 3.6<br/>Python 3.7 | [バージョン 2.7.1846 以降](../articles/azure-functions/functions-run-local.md#v2) |
+  
 ::: zone-end
 
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。 

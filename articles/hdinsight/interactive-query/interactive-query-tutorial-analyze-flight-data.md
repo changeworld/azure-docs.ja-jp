@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313735"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021740"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 
@@ -205,7 +205,7 @@ SQL Database に接続してテーブルを作成するには、多くの方法�
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. インストールが完了したら、次のコマンドを使用して SQL Database サーバーに接続します。
+2. インストールが完了したら、次のコマンドを使用して SQL Database に接続します。
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD

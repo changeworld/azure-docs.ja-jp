@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/20/2018
-ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/29/2020
+ms.openlocfilehash: ba934d8eeadcd3d3e89d5d9f6115c258206c2d13
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419274"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247259"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
+このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -68,12 +68,12 @@ ms.locfileid: "81419274"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースをソース データ ストアとして使用します。 
-* **Azure SQL データベース**。 シンク データ ストアとして SQL データベースを使用します。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。 
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
+* **Azure SQL データベース**。 シンク データ ストアとして SQL データベースを使用します。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」を参照してください。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
-1. SQL Server Management Studio を開き、オンプレミスの SQL Server データベースに接続します。
+1. SQL Server Management Studio を開き、SQL Server データベースに接続します。
 
 1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -281,10 +281,10 @@ END
 1. 統合ランタイムの一覧に **MySelfHostedIR** が含まれていることを確認します。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、オンプレミスの SQL Server データベースと Azure SQL データベースに対するリンクされたサービスを作成します。 
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、SQL Server データベースと Azure SQL データベースに対するリンクされたサービスを作成します。 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server のリンクされたサービスを作成する
-この手順では、オンプレミス SQL Server データベースをデータ ファクトリにリンクします。
+この手順では、SQL Server データベースをデータ ファクトリにリンクします。
 
 1. **[接続]** ウィンドウで、 **[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、 **[+ 新規]** をクリックします。
 
@@ -310,7 +310,7 @@ END
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。 
-    1. **[サーバー名]** で、ドロップダウン リストから Azure SQL サーバーの名前を選択します。 
+    1. **[サーバー名]** で、ドロップダウン リストからサーバーの名前を選択します。 
     1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成した Azure SQL データベースを選択します。 
     1. **[ユーザー名]** に、Azure SQL データベースにアクセスできるユーザーの名前を入力します。 
     1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
@@ -388,7 +388,7 @@ END
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
-1. **[全般]** タブの **[名前]** に「**IncrementalCopyPipeline**」と入力します。 
+1. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。  
 
 1. **[パラメーター]** タブで、次の手順を実行します。 
 
@@ -398,7 +398,7 @@ END
 
 1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
 
-1. **[設定]** タブに切り替えて、`@pipeline().parameters.tableList`[項目] **に「** 」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
+1. **[設定]** タブに切り替えて、 **[項目]** に「`@pipeline().parameters.tableList`」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
 
     ![ForEach アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
@@ -469,7 +469,7 @@ END
     1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     1. 各パラメーターの値を次のように指定します。 
 
-        | Name | 種類 | 値 | 
+        | 名前 | Type | 値 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

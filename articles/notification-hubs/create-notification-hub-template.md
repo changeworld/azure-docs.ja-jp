@@ -10,20 +10,20 @@ ms.author: sethm
 ms.date: 05/15/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: aefccb831fe35898962893a173c5bd1125877def
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743529"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996671"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用して通知ハブを作成する
 
 Azure Notification Hubs は、すべてのバックエンド (クラウドまたはオンプレミス) からすべてのプラットフォーム (iOS、Android、Windows、Kindle など) に通知を送信できる、使いやすいスケールアウトされたプッシュ エンジンです。 このサービスの詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Notification Hubs 名前空間と、その名前空間内に "MyHub" という名前の通知ハブを作成します。
-
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Notification Hubs 名前空間と、その名前空間内に **MyHub** という名前の通知ハブを作成します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -32,8 +32,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [なし] :
 
 ## <a name="create-a-notification-hubs-namespace-and-hub"></a>Notification Hubs 名前空間とハブを作成する
-
-<!-- The second H2 must start with "Create a". For example,  'Create a Key Vault', 'Create a virtual machine', etc. -->
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
@@ -48,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、Notification Hubs 名前空間名をパラメーターとして受け取ります。 次いで、このテンプレートではその名前の名前空間と、その名前空間内に **MyHub** という名前の通知ハブを作成します。
 
-[![Azure へのデプロイ](./media/create-notification-hub-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 

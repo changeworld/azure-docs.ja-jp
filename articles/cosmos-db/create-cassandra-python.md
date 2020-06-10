@@ -1,25 +1,27 @@
 ---
 title: クイック スタート:Cassandra API (Python) - Azure Cosmos DB
 description: このクイック スタートでは、Azure Cosmos DB の Apache Cassandra API を使って、Python でプロファイル アプリケーションを作成する方法を示します
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 0b432653c452b6763e746f61b86e881c9cee62cc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/18/2020
+ms.openlocfilehash: f2f09e67c16993696f4f352abf68991ca20f9369
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77134655"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310021"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>クイック スタート:Python SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  

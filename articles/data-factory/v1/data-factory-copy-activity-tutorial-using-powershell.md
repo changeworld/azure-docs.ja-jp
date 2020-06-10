@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f34103bb42999f6d2e9bfe35dbc257db7cecd909
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73682852"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119262"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル:データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
@@ -189,7 +189,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
 1. 以下の内容を記述した AzureSqlLinkedService.json という名前の JSON ファイルを C:\ADFGetStartedPSH フォルダー内に作成します。
 
     > [!IMPORTANT]
-    > &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt;、&lt;password&gt; を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+    > &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt;、&lt;password&gt; を、サーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
     
     ```json
     {
@@ -218,7 +218,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
     ProvisioningState : Succeeded
     ```
 
-   SQL データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定がオンになっていることを確認します。 この設定を確認してオンにするには、次の手順を実行します。
+   ご利用のサーバーで **[Azure サービスへのアクセスを許可]** 設定がオンになっていることを確認してください。 この設定を確認してオンにするには、次の手順を実行します。
 
     1. [Azure ポータル](https://portal.azure.com)
     1. 左側にある **[その他のサービス]** をクリックし、 **[データベース]** カテゴリの **[SQL servers]\(SQL サーバー\)** をクリックします。

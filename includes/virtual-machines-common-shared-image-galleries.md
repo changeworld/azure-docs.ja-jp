@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789040"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317690"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -71,7 +71,7 @@ ms.locfileid: "82789040"
 
 ## <a name="generalized-and-specialized-images"></a>一般化されたイメージと特殊化されたイメージ
 
-共有イメージ ギャラリーでは、2 つのオペレーティング システムの状態がサポートされています。 通常は、イメージを作成するために使用される VM は、イメージの取得前に一般化されている必要があります。 一般化は、マシンとユーザーに固有の情報を VM から削除するプロセスです。 Windows の場合、Sysprep も使用されます。 Linux の場合は、[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` パラメーターを使用できます。
+共有イメージ ギャラリーでは、2 つのオペレーティング システムの状態がサポートされています。 通常は、イメージを作成するために使用される VM は、イメージの取得前に一般化されている必要があります。 一般化は、マシンとユーザーに固有の情報を VM から削除するプロセスです。 Windows の場合、Sysprep ツールが使用されます。 Linux の場合は、[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` パラメーターを使用できます。
 
 特殊化された VM は、マシン固有の情報やアカウントを削除するプロセスを済ませていません。 さらに、特殊化されたイメージから作成された VM には、`osProfile` が関連付けられていません。 これは、特殊化されたイメージには、いくつかの利点に加えていくつかの制限があることを意味します。
 
@@ -82,7 +82,7 @@ ms.locfileid: "82789040"
 
 ## <a name="regional-support"></a>リージョン サポート
 
-ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
+ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、 https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
 
 
 | ソース リージョン        |                   |                    |                    |

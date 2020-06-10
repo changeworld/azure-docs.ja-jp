@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3fc4a7fa905e7538199d3b26a0cd8b9791aaac4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410007"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194528"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
+このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -69,12 +69,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースをソース データ ストアとして使用します。 
-* **Azure SQL データベース**。 シンク データ ストアとして SQL データベースを使用します。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。 
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
+* **Azure SQL データベース**。 シンク データ ストアとして SQL データベースを使用します。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」を参照してください。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、オンプレミスの SQL Server データベースに接続します。
+1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
 
 2. **サーバー エクスプローラー (SSMS)** または **[接続] ペイン (Azure Data Studio)** でデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL Database にターゲット テーブルを作成する
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、オンプレミスの SQL Server データベースに接続します。
+1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
 
 2. **サーバー エクスプローラー (SSMS)** または **[接続] ペイン (Azure Data Studio)** でデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -289,11 +289,11 @@ END
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、オンプレミスの SQL Server データベースと Azure SQL Database に対するリンクされたサービスを作成します。 
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、SQL Server データベースと Azure SQL Database に対するリンクされたサービスを作成します。 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server のリンクされたサービスを作成する
 
-この手順では、オンプレミス SQL Server データベースをデータ ファクトリにリンクします。
+この手順では、SQL Server データベースをデータ ファクトリにリンクします。
 
 1. 次の内容を記述した **SqlServerLinkedService.json** という名前の JSON ファイルを C:\ADFTutorials\IncCopyMultiTableTutorial フォルダー (まだ存在しない場合はローカル フォルダーを作成してください) に作成します。 SQL Server への接続に使用する認証に基づいて、右側のセクションを選択します。  
 

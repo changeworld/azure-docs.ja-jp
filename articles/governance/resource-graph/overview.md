@@ -3,12 +3,12 @@ title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381528"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167266"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -22,7 +22,7 @@ Azure Resource Graph は Azure 内のサービスであり、Azure Resource Mana
 このドキュメントでは、それぞれの機能について詳しく見ていきます。
 
 > [!NOTE]
-> Azure Resource Graph は、Azure portal の検索バー、新しい "すべてのリソース" 参照エクスペリエンス、Azure Policy の[変更履歴](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> Azure Resource Graph は、Azure portal の検索バー、新しい "すべてのリソース" 参照エクスペリエンス、Azure Policy の[変更履歴](../policy/how-to/determine-non-compliance.md#change-history)
 > の "_差分表示_" を強化します。 大規模な環境を管理するお客様をサポートするために設計されています。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
@@ -79,16 +79,17 @@ Resource Graph では、ユーザー レベルでクエリのスロットルが�
 
 ## <a name="running-your-first-query"></a>最初のクエリを送信する
 
-Azure Resource Graph エクスプローラーは Azure portal に組み込まれており、Resource Graph クエリを Azure portal 内から直接実行できます。 その結果を動的なグラフとしてピン留めすれば、ポータルのワークフローから動的な情報をリアルタイムで得ることができます。 詳細については、[Azure Resource Graph エクスプローラーを使った初めてのクエリ](first-query-portal.md)に関するページを参照してください。
+Azure Resource Graph エクスプローラーは Azure portal に組み込まれており、Resource Graph クエリを Azure portal 内から直接実行できます。 その結果を動的なグラフとしてピン留めすれば、ポータルのワークフローから動的な情報をリアルタイムで得ることができます。 詳細については、[Azure Resource Graph エクスプローラーを使った初めてのクエリ](./first-query-portal.md)に関するページを参照してください。
 
-Resource Graph は、Azure CLI、Azure PowerShell、Azure SDK for .NET などをサポートします。 どの言語も、クエリの構造は同じです。 以下、Resource Graph を有効にする方法を手段ごとに示します。
+Resource Graph は、Azure CLI、Azure PowerShell、Azure SDK for Python などをサポートします。 どの言語も、クエリの構造は同じです。 以下、Resource Graph を有効にする方法を手段ごとに示します。
 
-- [Azure portal および Resource Graph エクスプローラー](first-query-portal.md) 
-- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
-- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
+- [Azure portal および Resource Graph エクスプローラー](./first-query-portal.md) 
+- [Azure CLI](./first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
+- [Python](./first-query-python.md#add-the-resource-graph-library)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal](first-query-portal.md) を使用して最初のクエリを実行します。
-- [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。
-- [Azure PowerShell](first-query-powershell.md) を使用して最初のクエリを実行します。
+- [クエリ言語](./concepts/query-language.md)の詳細について学習します。
+- [初歩的なクエリ](./samples/starter.md)で使用されている言語を確認します。
+- [高度なクエリ](./samples/advanced.md)で高度な使用方法を確認します。

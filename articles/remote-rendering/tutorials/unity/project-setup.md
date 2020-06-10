@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678653"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300591"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>チュートリアル:Unity プロジェクトをゼロから設定する
 
@@ -31,7 +31,10 @@ ms.locfileid: "80678653"
 
 * アカウント情報 (アカウント ID、アカウント キー、サブスクリプション ID)。 アカウントをお持ちでない場合は、[アカウントを作成](../../how-tos/create-an-account.md)してください。
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)。 
+* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
+  * **C++ によるデスクトップ開発**
+  * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Git ([ダウンロード](https://git-scm.com/downloads))
 * Unity 2019.3.1 [(ダウンロード)](https://unity3d.com/get-unity/download)
   * 次のモジュールを Unity にインストールします。
@@ -77,7 +80,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>最新バージョンのパッケージがあることを確認する
 
 プロジェクトで最新バージョンの remote-rendering パッケージが使用されていることを次の手順で確認します。
-1. [Project]\(プロジェクト\) ウィンドウでパッケージを選択し、パッケージ アイコンをクリックします。![パッケージ アイコンを選択する](media/package-icons.png)
+1. [Project]\(プロジェクト\) ウィンドウでパッケージを選択し、:::no-loc text="package"::: アイコンをクリックします。![パッケージ アイコンを選択する](media/package-icons.png)
 1. [Inspector]\(インスペクター\) で [View in Package Manager]\(パッケージ マネージャーで表示\) をクリックします。![パッケージ インスペクター](media/package-properties.png)
 1. Remote Rendering パッケージの [Package Manager]\(パッケージ マネージャー\) ページで、更新ボタンが利用できるかどうかを確認します。 利用可能である場合は、それをクリックして、提供されている最新のバージョンにパッケージを更新します。![パッケージ マネージャーにおける ARR パッケージ](media/package-manager.png)
 1. パッケージを更新しようとすると、コンソールにエラーが表示されることがあります。 その場合は、プロジェクトを閉じてから再度開いてみてください。
@@ -90,11 +93,11 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
     ![カメラの変換をリセットする](media/camera-reset-transform.png)
 
-1. **[Clear flags]\(フラグをクリア\)** を *[Solid Color]\(単色\)* に設定します。
+1. **:::no-loc text="Clear flags":::** を *:::no-loc text="Solid Color":::* に設定します
 
-1. **[Background]\(背景\)** を *[Black]\(黒\)* に設定します。
+1. **:::no-loc text="Background":::** を *:::no-loc text="Black":::* に設定します
 
-1. **[Clipping Planes]\(クリップ面\)** を *[Near]\(近\) = 0.3* および *[Far]\(遠\) = 20* に設定します。 つまり、30 cm より近いか 20 メートルより遠いジオメトリが、レンダリングによってクリップされます。
+1. **:::no-loc text="Clipping Planes":::** の " *[Near]\(近\) を 0.3*" に、" *[Far]\(遠\) を 20*" に設定します。 つまり、30 cm より近いか 20 メートルより遠いジオメトリが、レンダリングによってクリップされます。
 
     ![Unity カメラのプロパティ](media/camera-properties.png)
 
@@ -415,7 +418,7 @@ public class RemoteRendering : MonoBehaviour
 > [!CAUTION]
 > このコードを実行する前に、RemoteRendering コンポーネントの **Auto-Stop Session** オプションを非アクティブ化してください。 そうしないと、シミュレーションを停止するたびに、作成したセッションがすべて自動的に停止され、セッションを再利用しようとするとエラーが発生します。
 
-*[Play]\(再生\)* を押すと、 **[Create Session]\(セッションの作成\)** 、 **[Query Active Sessions]\(アクティブ セッションの照会\)** 、 **[Use Existing Session]\(既存のセッションの使用\)** の 3 つのボタンがビューポートに表示されます。 1 つ目のボタンは、常に新しいセッションを作成します。 2 つ目のボタンは、存在する "*アクティブ*" なセッションを照会します。 使用するセッション ID を手動で指定しなかった場合、このアクションによって、今後使用するためのセッション ID が自動的に選択されます。 3 つ目のボタンは、既存のセッションへの接続を試みます。 接続先は、*Session Id* コンポーネント プロパティを使用して手動で指定したセッションか、または *[Query Active Sessions]\(アクティブ セッションの照会\)* で検出されたセッションになります。
+*[Play]\(再生\)* を押すと、ビューポートに次の 3 つのボタンが表示されます。 **[Create Session]\(セッションの作成\)** 、 **[Query Active Sessions]\(アクティブ セッションの照会\)** 、および **[Use Existing Session]\(既存のセッションの使用\)** 。 1 つ目のボタンは、常に新しいセッションを作成します。 2 つ目のボタンは、存在する "*アクティブ*" なセッションを照会します。 使用するセッション ID を手動で指定しなかった場合、このアクションによって、今後使用するためのセッション ID が自動的に選択されます。 3 つ目のボタンは、既存のセッションへの接続を試みます。 接続先は、*Session Id* コンポーネント プロパティを使用して手動で指定したセッションか、または *[Query Active Sessions]\(アクティブ セッションの照会\)* で検出されたセッションになります。
 
 **AutoStartSessionAsync** 関数は、エディターの外部でボタンの押下をシミュレートする目的で使用されます。
 

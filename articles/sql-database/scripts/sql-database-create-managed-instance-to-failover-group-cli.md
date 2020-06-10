@@ -1,6 +1,6 @@
 ---
-title: CLI の例 - フェールオーバー グループ - Azure SQL Database マネージド インスタンス
-description: Azure SQL Database のマネージド インスタンスを作成し、それをフェールオーバー グループに追加して、フェールオーバーをテストする Azure CLI スクリプトの例。
+title: Azure CLI:マネージド インスタンスをフェールオーバー グループに追加する
+description: Azure SQL Managed Instance を作成してフェールオーバー グループに追加し、フェールオーバーをテストする Azure CLI スクリプトの例。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 792746ec3bfcf429afb7919458b9ac7ec8446b60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061855"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115393"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>CLI を使用して Azure SQL Database のマネージド インスタンスをフェールオーバー グループに追加する
+# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI を使用して Azure SQL Managed Instance をフェールオーバー グループに追加する
 
 この Azure CLI サンプルでは、2 つのマネージド インスタンスを作成し、それらをフェールオーバー グループに追加して、プライマリ マネージド インスタンスからセカンダリ マネージド インスタンスへのフェールオーバーをテストします。
 
@@ -53,13 +53,13 @@ az group delete --name $resource
 | [az network nsg](/cli/azure/network/nsg) | ネットワーク セキュリティ グループのコマンド。 |
 | [az network nsg rule](/cli/azure/network/nsg/rule)| ネットワーク セキュリティ規則のコマンド。 |
 | [az network route-table](/cli/azure/network/route-table) | ルート テーブルのコマンド。 |
-| [az sql mi](/cli/azure/sql/mi) | マネージド インスタンスのコマンド。 |
+| [az sql mi](/cli/azure/sql/mi) | SQL Managed Instance のコマンド。 |
 | [az network public-ip](/cli/azure/network/public-ip) | ネットワーク パブリック IP アドレスのコマンド。 |
 | [az network vnet-gateway](/cli/azure/network/vnet-gateway) | Virtual Network ゲートウェイのコマンド。 |
-| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | マネージド インスタンスのフェールオーバー グループ コマンド。 |
+| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | SQL Managed Instance のフェールオーバー グループ コマンド。 |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../sql-database-cli-samples.md)のページにあります。
+その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../../azure-sql/database/az-cli-script-samples-content-guide.md)のページにあります。

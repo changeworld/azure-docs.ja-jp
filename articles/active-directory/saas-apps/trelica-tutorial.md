@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c68a95530f345d1ec0ed077681ec4cd6eb3775
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 733e7529af5de453462efb1a13c21203681e442c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402437"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Trelica の統合
 
@@ -90,9 +90,11 @@ Trelica で Azure AD SSO を構成してテストするには、次の構成要�
     1. **[応答 URL]** ボックスに、`https://app.trelica.com/Id/Saml2/<CUSTOM_IDENTIFIER>/Acs` というパターンの URL を入力します。
 
     > [!NOTE]
-    > **応答 URL** は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Trelica クライアント サポート チーム](mailto:support@trelica.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 応答 URL 値は、実際の値ではありません。 この値は、実際の応答 URL (ACS とも呼ばれます) で更新してください。
+    > これを見つけるには、Trelica にログインし、[[SAML identity providers configuration]\(SAML ID プロバイダーの構成\) ページ](https://app.trelica.com/Admin/Profile/SAML) ([Admin]\(管理者\) > [Account]\(アカウント\) > [SAML]) に移動します。 **[Assertion Consumer Service (ACS) URL]** の横にあるコピー ボタンをクリックしてクリップボードにコピーすると、Azure AD の **[応答 URL]** テキスト ボックスに貼り付けることができます。
+    > ご不明な点については、[Trelica のヘルプ ドキュメント](https://docs.trelica.com/admin/saml/azure-ad)を参照するか、[Trelica クライアント サポート チーム](mailto:support@trelica.com)までお問い合わせください。
 
-1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[SAML 署名証明書]** セクションに移動します。 **[アプリのフェデレーション メタデータ URL]** の右側にあるコピー ボタンを選択して、URL をコピーします。 この URL をお使いのコンピューターに保存します。
+1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
     ![[アプリのフェデレーション メタデータ URL] の横にあるコピー ボタンが強調表示された [SAML 署名証明書] セクション](common/copy-metadataurl.png)
 
@@ -128,11 +130,11 @@ Trelica で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-trelica-sso"></a>Trelica の SSO の構成
 
-**Trelica** 側でシングル サインオンを構成するには、コピーした **[アプリのフェデレーション メタデータ URL]** の値を [Trelica サポート チーム](mailto:support@trelica.com)に送信します。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
+**Trelica** 側でシングル サインオンを構成するには、[[SAML identity providers configuration]\(SAML ID プロバイダーの構成\) ページ](https://app.trelica.com/Admin/Profile/SAML) ([Admin]\(管理者\) > [Account]\(アカウント\) > [SAML]) に移動します。 **[New]\(新規\)** をクリックします。 名前として「**Azure AD**」と入力し、メタデータの種類として **[Metadata from url]\(URL からのメタデータ\)** を選択します。 Azure AD から取得した**アプリのフェデレーション メタデータ URL** を、Trelica の **[Metadata url]\(メタデータ URL\)** フィールドに貼り付けます。
+
+ご不明な点については、[Trelica のヘルプ ドキュメント](https://docs.trelica.com/admin/saml/azure-ad)を参照するか、[Trelica クライアント サポート チーム](mailto:support@trelica.com)までお問い合わせください。
 
 ### <a name="create-a-trelica-test-user"></a>Trelica のテスト ユーザーの作成
-
-このセクションでは、Trelica で B.Simon というユーザーを作成します。
 
 Trelica では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションには、ユーザー側で行うアクションはありません。 Trelica にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 

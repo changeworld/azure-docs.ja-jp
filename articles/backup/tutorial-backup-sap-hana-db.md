@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747228"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248245"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -22,6 +22,9 @@ ms.locfileid: "83747228"
 
 現在サポートされているすべてのシナリオについては、[こちら](sap-hana-backup-support-matrix.md#scenario-support)を参照してください。
 
+>[!NOTE]
+>RHEL (7.4、7.6、7.7、または 8.1) の SAP HANA バックアップ プレビューの[使用を開始](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)します。 その他のクエリについては、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
+
 ## <a name="prerequisites"></a>前提条件
 
 バックアップを構成する前に、必ず、次の操作を行ってください。
@@ -34,9 +37,7 @@ ms.locfileid: "83747228"
 * HANA がインストールされている仮想マシンで、SAP HANA バックアップ構成スクリプト (事前登録スクリプト) をルート ユーザーとして実行します。 [このスクリプト](https://aka.ms/scriptforpermsonhana)で、バックアップに備えた HANA システムの準備を行うことができます。 事前登録スクリプトの詳細については、「[事前登録スクリプトで実行される処理](#what-the-pre-registration-script-does)」セクションを参照してください。
 
 >[!NOTE]
->Azure Backup では、Azure VM で実行されている SAP HANA データベースをバックアップしている場合、夏時間変更に合わせた自動調整は行われません。
->
->必要に応じて手動でポリシーを変更してください。
+>事前登録スクリプトは、RHEL (7.4、7.6、および 7.7) 上で実行されている SAP HANA ワークロードには **compat-unixODBC234** をインストールし、RHEL 8.1 には **unixODBC** をインストールします。 [このパッケージは、RHEL for SAP HANA (RHEL 7 Server の場合) の SAP ソリューション用更新サービス (RPM) リポジトリ](https://access.redhat.com/solutions/5094721)にあります。  Azure Marketplace RHEL イメージの場合、リポジトリは **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms** になります。
 
 ## <a name="set-up-network-connectivity"></a>ネットワーク接続を設定する
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74327575"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014912"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. このページで、次の値を選択します。
 
-   | 名前 | Value |
+   | 名前 | 値 |
    | --- | --- |
    | Filter Year |2013 |
    | Filter Period |January |
@@ -244,12 +244,12 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. インストールが完了したら、次のコマンドを使用して SQL Database サーバーに接続します。
+6. インストールが完了したら、次のコマンドを使用して SQL Database に接続します。
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * `<server-name>` プレースホルダーを SQL Database のサーバー名に置き換えます。
+   * `<server-name>` プレースホルダーを論理 SQL サーバーの名前に置き換えます。
 
    * `<admin-login>` プレースホルダーを SQL Database の管理者ログインに置き換えます。
 

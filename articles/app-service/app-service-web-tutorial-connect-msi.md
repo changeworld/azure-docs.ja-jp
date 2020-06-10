@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: 142cd2611e0dcf3227474efadded7bac88a4390a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207634"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021230"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
@@ -45,13 +45,13 @@ ms.locfileid: "82207634"
 
 この記事は、「[チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」または「[チュートリアル: Azure App Service での ASP.NET Core および SQL Database アプリの作成](app-service-web-tutorial-dotnetcore-sqldb.md)」の続きです。 まだどちらも完了していない場合は、先に 2 つのチュートリアルのうちのいずれかに従って作業してください。 または、SQL Database を使用して独自の .NET アプリに合わせた手順を実行することもできます。
 
-SQL Database をバックエンドとして使用してご自分のアプリをデバッグするには、ご使用のコンピューターからのクライアント接続を許可していることを確認してください。 そうなっていない場合は、「[Azure portal を使用してサーバーレベルの IP ファイアウォール規則を管理する](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」の手順に従ってください。
+SQL Database をバックエンドとして使用してご自分のアプリをデバッグするには、ご使用のコンピューターからのクライアント接続を許可していることを確認してください。 そうなっていない場合は、「[Azure portal を使用してサーバーレベルの IP ファイアウォール規則を管理する](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」の手順に従ってください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>データベースへのアクセスを Azure AD ユーザーに許可する
 
-まず、Azure AD ユーザーを SQL Database サーバーの Active Directory 管理者として割り当てることで SQL Database への Azure AD 認証を有効にします。 このユーザーは、ご使用の Azure サブスクリプションのサインアップに使用した Microsoft アカウントと異なります。 Azure AD に作成、インポート、同期、または招待したユーザーである必要があります。 許可されている Azure AD ユーザーの詳細については、[Azure AD の機能と SQL Database の制限事項](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)に関するセクションを参照してください。
+まず、Azure AD ユーザーをサーバーの Active Directory 管理者として割り当てることで SQL Database への Azure AD 認証を有効にします。 このユーザーは、ご使用の Azure サブスクリプションのサインアップに使用した Microsoft アカウントと異なります。 Azure AD に作成、インポート、同期、または招待したユーザーである必要があります。 許可されている Azure AD ユーザーの詳細については、[Azure AD の機能と SQL Database の制限事項](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)に関するセクションを参照してください。
 
 Azure AD テナントにまだユーザーが作成されていない場合は、「[Azure Active Directory を使用してユーザーを追加または削除する](../active-directory/fundamentals/add-users-azure-active-directory.md)」の手順に従ってユーザーを作成します。
 
@@ -64,13 +64,13 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Azure AD 内のすべてのユーザー プリンシパル名の一覧を表示するには、`az ad user list --query [].userPrincipalName` を実行します。
 >
 
-Cloud Shell で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) コマンドを使用して、この Azure AD ユーザーを Active Directory 管理者として追加します。 次のコマンドで、 *\<server-name>* を、SQL Database サーバー名 (`.database.windows.net` サフィックスなし) に置き換えます。
+Cloud Shell で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) コマンドを使用して、この Azure AD ユーザーを Active Directory 管理者として追加します。 次のコマンドの *\<server-name>* は、サーバー名 (`.database.windows.net` サフィックスなし) に置き換えてください。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
 ```
 
-Active Directory 管理者の追加の詳細については、「[Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)」を参照してください
+Active Directory 管理者の追加の詳細については、[サーバーの Azure Active Directory 管理者のプロビジョニング](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)に関するセクションを参照してください。
 
 ## <a name="set-up-visual-studio"></a>Visual Studio を設定する
 
@@ -130,7 +130,7 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 > [!NOTE]
 > 登録した SqlAuthenticationProvider は、先ほどインストールした AppAuthentication ライブラリに基づいています。 既定では、システム割り当ての ID が使用されます。 ユーザー割り当ての ID を活用するには、追加の構成を行う必要があります。 AppAuthentication ライブラリについては、「[接続文字列のサポート](../key-vault/general/service-to-service-authentication.md#connection-string-support)」を参照してください。
 
-これが、SQL Database に接続するために必要な作業のすべてです。 Visual Studio でデバッグする場合は、「[Visual Studio を設定する](#set-up-visual-studio)」で構成した Azure AD ユーザーが、コードによって使用されます。 後で、App Service アプリのマネージド ID からの接続を許可するように SQL Database サーバーを設定します。
+これが、SQL Database に接続するために必要な作業のすべてです。 Visual Studio でデバッグする場合は、「[Visual Studio を設定する](#set-up-visual-studio)」で構成した Azure AD ユーザーが、コードによって使用されます。 後で、App Service アプリのマネージド ID からの接続を許可するように SQL Database を設定します。
 
 `Ctrl+F5` キーを押してアプリをもう一度実行します。 これで、お使いのブラウザー内で同じ CRUD アプリが Azure AD 認証を使用して Azure SQL Database に直接接続します。 この設定により、Visual Studio からのデータベースの移行を実行できます。
 
@@ -158,7 +158,7 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 > [!NOTE]
 > このデモ コードは、わかりやすく単純にするために同期型になっています。
 
-これが、SQL Database に接続するために必要な作業のすべてです。 Visual Studio でデバッグする場合は、「[Visual Studio を設定する](#set-up-visual-studio)」で構成した Azure AD ユーザーが、コードによって使用されます。 後で、App Service アプリのマネージド ID からの接続を許可するように SQL Database サーバーを設定します。 `AzureServiceTokenProvider` クラスは、トークンをメモリ内にキャッシュし、有効期限の直前に Azure AD から取得します。 トークンを更新するためのカスタム コードは必要ありません。
+これが、SQL Database に接続するために必要な作業のすべてです。 Visual Studio でデバッグする場合は、「[Visual Studio を設定する](#set-up-visual-studio)」で構成した Azure AD ユーザーが、コードによって使用されます。 後で、App Service アプリのマネージド ID からの接続を許可するように SQL Database を設定します。 `AzureServiceTokenProvider` クラスは、トークンをメモリ内にキャッシュし、有効期限の直前に Azure AD から取得します。 トークンを更新するためのカスタム コードは必要ありません。
 
 > [!TIP]
 > 構成した Azure AD ユーザーが複数のテナントにアクセスできる場合は、目的のテナント ID で `GetAccessTokenAsync("https://database.windows.net/", tenantid)` を呼び出して、適切なアクセス トークンを取得します。
@@ -174,7 +174,7 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 
 ### <a name="enable-managed-identity-on-app"></a>アプリのマネージド ID を有効にする
 
-Azure アプリのマネージド ID を有効にするには、Cloud Shell で [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを使用します。 次のコマンドの *\<app name>* を置き換えます。
+Azure アプリのマネージド ID を有効にするには、Cloud Shell で [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを使用します。 次のコマンドの *\<app-name>* を置き換えます。
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
@@ -204,7 +204,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 > ```
 >
 
-Cloud Shell 内で、SQLCMD コマンドを使用して SQL Database にサインインします。 _\<server-name>_ を実際の SQL Database サーバー名に置き換え、 _\<db-name>_ をご自分のアプリが使用するデータベースの名前に置き換え、 _\<aad-user-name>_ と _\<aad-password>_ を実際の Azure AD ユーザーの資格情報に置き換えます。
+Cloud Shell 内で、SQLCMD コマンドを使用して SQL Database にサインインします。 _\<server-name>_ は実際のサーバー名に、 _\<db-name>_ はアプリが使用するデータベース名に、 _\<aad-user-name>_ と _\<aad-password>_ は Azure AD ユーザーの資格情報に置き換えます。
 
 ```azurecli-interactive
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
@@ -229,7 +229,7 @@ GO
 
 ### <a name="modify-connection-string"></a>接続文字列を変更する
 
-*Web.config* または *appsettings.json* 内で行ったのと同じ変更をマネージド ID に対して使用できるため、必要な作業は App Service 内の既存の接続文字列 (ご自分のアプリを初めてデプロイすると Visual Studio によって作成されます) を削除することだけである点に注意してください。 次のコマンドを使用しますが、 *\<app-name>* をご自分のアプリの名前に置き換えます。
+*Web.config* または *appsettings.json* 内で行ったのと同じ変更をマネージド ID に対して使用できるため、必要な作業は App Service 内の既存の接続文字列 (ご自分のアプリを初めてデプロイすると Visual Studio によって作成されます) を削除することだけである点に注意してください。 次のコマンドを使用しますが、 *\<app-name>* はご自分のアプリの名前に置き換えます。
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection

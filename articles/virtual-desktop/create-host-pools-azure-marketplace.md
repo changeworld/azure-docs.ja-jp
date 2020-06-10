@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d9effbe29917c774279b6e9d203f44d5ad5c72e2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a6ac2fd0ef3414f5b9d7f6551628264b4724b037
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121050"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234328"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
 >[!IMPORTANT]
->このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Windows Vritual Desktop Fall 2019 を使用して作成したアーティクルは、Azure portal では管理できません。
+>このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Windows Virtual Desktop Fall 2019 を使用して作成したオブジェクトは、Azure portal では管理できません。
 >
 > Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682574"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300574"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>クイック スタート:Unity によるモデルのレンダリング
 
@@ -33,6 +33,9 @@ Azure Remote Rendering サービスにアクセスするには、まず[アカ�
 
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
+  * **C++ によるデスクトップ開発**
+  * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Git ([ダウンロード](https://git-scm.com/downloads))
 * Unity 2019.3.1 [(ダウンロード)](https://unity3d.com/get-unity/download)
   * 次のモジュールを Unity にインストールします。

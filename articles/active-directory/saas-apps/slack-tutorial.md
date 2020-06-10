@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834409"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259288"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Slack の統合
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Slack でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 > [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+> 1 つのテナント内の複数の Slack インスタンスと統合する必要がある場合は、各アプリケーションの識別子を変数にすることができます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -93,20 +93,24 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 値を取得するには、[Slack クライアント サポート チーム](https://slack.com/help/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    
+    > [!NOTE]
+    > テナントと統合する必要がある Slack インスタンスが複数ある場合は、 **[識別子 (エンティティ ID)]** の値を変数にすることができます。 `https://<DOMAIN NAME>.slack.com` というパターンを使用します。 このシナリオでは、同じ値を使用して、Slack の別の設定と組み合わせる必要もあります。
 
 1. Slack アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/edit-attribute.png)
 
-1. その他に、Slack アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。 ユーザーがメール アドレスを持っていない場合は、**emailaddress** を **user.userprincipalname** にマップします。
+1. その他に、Slack アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。 また、`email` 属性も追加する必要があります。 ユーザーがメール アドレスを持っていない場合は、**emailaddress** を **user.userprincipalname** にマップし、**email** を **user.userprincipalname** にマップします。
 
     | 名前 | ソース属性 |
     | -----|---------|
     | emailaddress | user.userprincipalname |
+    | email | user.userprincipalname |
     | | |
 
-> [!NOTE]
-    > サービス プロバイダー (SP) の構成を設定するには、SAML 構成ページの **[詳細オプション]** の横にある **[展開]** をクリックする必要があります。 **[Service Provider Issuer]\(サービス プロバイダーの発行者\)** ボックスに、ワークスペースの URL を入力します。 既定値は slack.com です。 
+   > [!NOTE]
+   > サービス プロバイダー (SP) の構成を設定するには、SAML 構成ページの **[詳細オプション]** の横にある **[展開]** をクリックする必要があります。 **[Service Provider Issuer]\(サービス プロバイダーの発行者\)** ボックスに、ワークスペースの URL を入力します。 既定値は slack.com です。 
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -166,15 +170,18 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
     b.  **[Identity Provider Issuer]\(ID プロバイダー発行者\)** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    c.  ダウンロードした証明書をメモ帳で開き、その内容をクリップボードにコピーし、 **[Public Certificate]** ボックスに貼り付けます。
+    c.  ダウンロードした証明書ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[公開証明書]** ボックスに貼り付けます。
 
     d. 必要に応じて、Slack チームに上記の 3 つの設定を構成します。 設定の詳細については、**Slack の SSO 構成ガイド**をこちらから参照してください。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
     ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-004.png)
 
-    e. **[展開]** をクリックし、 **[ID プロバイダーの発行者]** テキスト ボックスに「`https://slack.com`」と入力します。
+    e. **[expand]\(展開\)** をクリックし、 **[Service provider issuer]\(サービス プロバイダー発行者\)** ボックスに「`https://slack.com`」と入力します。
 
     f.  **[Save Configuration]** をクリックします。
+    
+    > [!NOTE]
+    > Azure AD と統合する必要がある複数の Slack インスタンスがある場合は、Azure アプリケーション**識別子**の設定と組み合わせることができるように、 **[Service provider issuer]\(サービス プロバイダー発行者\)** に `https://<DOMAIN NAME>.slack.com` を設定します。
 
 ### <a name="create-slack-test-user"></a>Slack のテスト ユーザーの作成
 

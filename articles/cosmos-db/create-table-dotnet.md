@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: df26021a3718c17d72f0fdb25588487043918732
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 45c1f9b5425b7e826776dc0f52681c67846bfdc5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084109"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218169"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB で Table API アプリをビルドする 
 
@@ -66,7 +66,8 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
 
-> ![ヒント] 類似のコードの詳細なチュートリアルについては、[Cosmos DB Table API サンプル](table-storage-how-to-use-dotnet.md)に関する記事を参照してください。
+> [!TIP]
+> 類似のコードの詳細なチュートリアルについては、[Cosmos DB Table API サンプル](table-storage-how-to-use-dotnet.md)に関する記事を参照してください。
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Visual Studio でサンプル アプリケーションを開く
 
@@ -75,6 +76,26 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
    ![ソリューションを開く](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
 2. サンプル アプリケーションを複製したフォルダーに移動し、TableStorage.sln ファイルを開きます。
+
+## <a name="review-the-code"></a>コードの確認
+
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、このドキュメントの「[接続文字列を更新する](#update-your-connection-string)」セクションに進んでください。
+
+* 次のコードは、Azure Storage 内にテーブルを作成する方法を示しています。
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
+
+* 次のコードは、テーブルにデータを挿入する方法を示しています。
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
+
+* 次のコードは、テーブルにデータを照会する方法を示しています。
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
+
+* 次のコードは、テーブルのデータを削除する方法を示しています。
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: a835e67b1091a55c832955d8dac8615289a6d99e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418696"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118165"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 * *Azure Storage アカウント*。 BLOB ストレージを*ソース* データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、[汎用ストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
-* *Azure SQL データベース*。 データベースを*シンク* データ ストアとして使用します。 Azure SQL Database がない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-single-database-get-started.md)に関するページを参照してください。
+* *Azure SQL データベース*。 データベースを*シンク* データ ストアとして使用します。 Azure SQL Database がない場合は、[Azure SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * *Visual Studio*. この記事のチュートリアルでは、Visual Studio 2019 を使用します。
 * *[Azure SDK for .NET](/dotnet/azure/dotnet-tools)* .
 * *Azure Active Directory アプリケーション*。 Azure Active Directory アプリケーションをお持ちでない場合は、「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」セクションを、[ポータルを使用して Azure AD アプリケーションを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページから参照してください。 以降の手順で使用するために、次の値をコピーします。**アプリケーション (クライアント) ID**、**認証キー**、および**ディレクトリ (テナント) ID** です。 同じ記事の手順に従って、アプリケーションを **[共同作成者]** ロールに割り当てます。
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Azure サービスに SQL サーバーへのアクセスを許可します。 Data Factory サービスから Azure SQL サーバーにデータを書き込むことができるように、Azure SQL サーバー上で Azure サービスへのアクセスを許可していることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
+2. Azure サービスに SQL Database へのアクセスを許可します。 Data Factory サービスから SQL Database にデータを書き込むことができるように、サーバー上で Azure サービスへのアクセスを許可していることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
 
     1. [Azure portal](https://portal.azure.com) に移動して、SQL サーバーを管理します。 **[SQL サーバー]** を探して選択します。
 

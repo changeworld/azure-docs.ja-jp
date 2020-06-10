@@ -14,22 +14,25 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6ffc1aa6e28bf17d0de3783e5e03b6a2df541e4a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418645"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194642"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell を使用して Azure Data Factory で Azure-SSIS IR を設定する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure Data Factory で Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) を設定する方法について説明します。 Azure-SSIS IR は、次の場所にデプロイされているパッケージの実行をサポートします。
-* Azure SQL Database サーバー インスタンスまたはマネージド インスタンスによってホストされる SSIS カタログ (SSISDB) (プロジェクト デプロイ モデル)。
+このチュートリアルでは、PowerShell を使用して Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) を Azure Data Factory にプロビジョニングする手順について説明します。 Azure-SSIS IR は、次の場所にデプロイされているパッケージの実行をサポートします。
+
+* SQL Database または SQL Managed Instance にホストされる SSIS カタログ (SSISDB) (プロジェクト デプロイ モデル)。
 * ファイル システム、ファイル共有、または Azure Files 共有 (パッケージ配置モデル)。 
 
-Azure-SSIS IR を設定したら、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) などの使い慣れたツールを使用して、Azure にパッケージをデプロイして実行できます。 `dtinstall`、`dtutil`、`dtexec` などのコマンドライン ユーティリティも使用できます。  
+Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使用して、Azure にパッケージをデプロイして実行することができます。 これらのツールには、SQL Server Data Tools (SSDT)、SQL Server Management Studio (SSMS)、および `dtinstall`、`dtutil`、`dtexec` などのコマンド ライン ツールが含まれます。
+
+Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事を参照してください。
 
 > [!NOTE]
 > この記事では、Azure PowerShell を使用して Azure-SSIS IR を設定する方法について説明します。 Azure portal または Azure Data Factory アプリを使用して Azure-SSIS IR を設定する場合は、[Azure-SSIS IR の設定に関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)を参照してください。 
@@ -46,16 +49,16 @@ Azure-SSIS IR を設定したら、SQL Server Data Tools (SSDT) や SQL Server M
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 Azure-SSIS IR の概念については、[Azure-SSIS Integration Runtime の概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事をご覧ください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウントを作成](https://azure.microsoft.com/free/)してください。 Azure-SSIS IR の概念については、[Azure-SSIS Integration Runtime の概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事をご覧ください。
 
-- (省略可能) Azure SQL Database サーバー。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 その後、Azure Data Factory によって、このデータベース サーバーに SSISDB が作成されます。 このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB に実行ログを書き込むことができます。 
-    - SSISDB は、選択したデータベース サーバーに基づいて、1 つのデータベースとしてまたはエラスティック プールの一部として、あるいはマネージド インスタンス上に自動的に作成することができ､パブリック ネットワークからアクセスしたり､仮想ネットワークに参加したりすることによってアクセスできます。 SSISDB をホストするデータベース サーバーの種類を選択するときのガイダンスについては、[Azure SQL Database の単一データベース、エラスティック プール、マネージド インスタンスの比較](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)に関するセクションを参照してください。 
+- **SQL Database または SQL Managed Instance**: まだお持ちでない場合は、あらかじめ Azure portal で作成しておいてください。 その後、Azure Data Factory によって、この SQL Database または SQL Managed Instance に SSISDB が作成されます。 SQL Database または SQL Managed Instance は、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB に実行ログを書き込むことができます。 
+    - SSISDB は、選択したデータベース サーバーに基づいて、SQL Database の単一データベースとしてまたはエラスティック プールの一部として、あるいは SQL Managed Instance 上に自動的に作成することができ、パブリック ネットワークからアクセスしたり、仮想ネットワークに参加したりすることによってアクセスできます。 SSISDB のホストとなるデータベース サーバーの種類を選択する際のガイダンスについては、[SQL Database と SQL Managed Instance の比較](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。
     
-      IP ファイアウォールや仮想ネットワーク サービス エンドポイントを利用する Azure SQL Database サーバーまたはプライベート エンドポイントを利用するマネージド インスタンスを使用して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミス データにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させます。 詳細については、[仮想ネットワークへの Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
-    - データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 この設定は、IP ファイアウォール規則または仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーや、プライベート エンドポイントを備えたマネージド インスタンスを使用して SSISDB をホストする場合は当てはまりません。 詳細については、「[Azure SQL データベースのセキュリティ保護](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)」を参照してください。
-    - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、データベース サーバーのファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)」を参照してください。
-    - SQL 認証とサーバー管理者の資格情報、または Azure Active Directory (Azure AD) 認証とデータ ファクトリのマネージド ID を使用して、データベース サーバーに接続できます。 Azure AD 認証の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加するには、[Azure AD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
-    - データベース サーバーに SSISDB がまだないことを確認します。 Azure-SSIS IR の設定では、既存の SSISDB の使用はサポートされていません。
+      IP ファイアウォールや仮想ネットワーク サービス エンドポイントを利用する SQL Database またはプライベート エンドポイントを利用する SQL Managed Instance を使用して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミス データにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させます。 詳細については、[仮想ネットワークへの Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
+    - SQL Database で **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 この設定は、IP ファイアウォール規則または仮想ネットワーク サービス エンドポイントを備えた SQL Database や、プライベート エンドポイントを備えた SQL Managed Instance を使用して SSISDB をホストする場合は当てはまりません。 詳細については、「[Azure SQL データベースのセキュリティ保護](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)」を参照してください。
+    - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、SQL Database のファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、[サーバーレベルとデータベースレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)に関するページを参照してください。
+    - SQL 認証とサーバー管理者の資格情報、または Azure Active Directory (Azure AD) 認証とデータ ファクトリのマネージド ID を使用して、SQL Database または SQL Managed Instance に接続できます。 Azure AD 認証の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加するには、[Azure AD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
+    - SQL Database または SQL Managed Instance に SSISDB がまだ存在しないことを確認します。 Azure-SSIS IR の設定では、既存の SSISDB の使用はサポートされていません。
 
 - Azure PowerShell。 PowerShell スクリプトを実行して Azure-SSIS IR を設定するには、[Azure PowerShell のインストールおよび構成](/powershell/azure/install-Az-ps)に関する記事の手順に従ってください。
 
@@ -92,7 +95,7 @@ $AzureSSISNodeNumber = 2
 # Azure-SSIS IR edition/license info: Standard or Enterprise 
 $AzureSSISEdition = "Standard" # Standard by default, although Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
-$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
+$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your existing SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to (2 x number of cores) are currently supported
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
@@ -100,11 +103,11 @@ $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob contain
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
+$SSISDBServerEndpoint = "[your server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for SQL Database or leave it empty for SQL Managed Instance]"
 
 ### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
 $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
@@ -123,7 +126,7 @@ Select-AzSubscription -SubscriptionName $SubscriptionName
 
 ## <a name="validate-the-connection-to-your-database-server"></a>データベース サーバーへの接続を検証する
 
-Azure SQL Database サーバーを検証するには、次のスクリプトを追加します。 
+接続を検証するには、次のスクリプトを追加します。 
 
 ```powershell
 # Validate only if you're using SSISDB
@@ -137,7 +140,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
     }
     Catch [System.Data.SqlClient.SqlException]
     {
-        Write-Warning "Cannot connect to your Azure SQL Database server, exception: $_";
+        Write-Warning "Cannot connect, exception: $_";
         Write-Warning "Please make sure the server you specified has already been created. Do you want to proceed? [Y/N]"
         $yn = Read-Host
         if(!($yn -ieq "Y"))
@@ -357,7 +360,7 @@ $AzureSSISNodeNumber = 2
 # Azure-SSIS IR edition/license info: Standard or Enterprise 
 $AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
-$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
+$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your existing SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to (2 x the number of cores) are currently supported
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
@@ -365,11 +368,11 @@ $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob contain
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you want to use SSISDB, ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
+$SSISDBServerEndpoint = "[your server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you want to use SSISDB, ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for SQL Database or leave it empty for SQL Managed Instance]"
 
 ### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
 $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
@@ -392,7 +395,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
     }
     Catch [System.Data.SqlClient.SqlException]
     {
-        Write-Warning "Cannot connect to your Azure SQL Database server, exception: $_";
+        Write-Warning "Cannot connect, exception: $_";
         Write-Warning "Please make sure the server you specified has already been created. Do you want to proceed? [Y/N]"
         $yn = Read-Host
         if(!($yn -ieq "Y"))
@@ -537,7 +540,7 @@ Azure-SSIS IR を監視および管理する方法の詳細については、以
 
 ## <a name="deploy-ssis-packages"></a>SSIS パッケージのデプロイ
 
-SSISDB を使用している場合は、そこにパッケージをデプロイし、サーバー エンドポイントを介してデータベース サーバーに接続する SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) ツールを使用してそれらのパッケージを Azure-SSIS IR 上で実行できます。 Azure SQL Database サーバー インスタンス、またはパブリック エンドポイントを利用するマネージド インスタンスの場合、サーバー エンドポイントの形式は、それぞれ *<server name>.database.windows.net* と *<server name>.public.<dns prefix>.database.windows.net,3342* となります。 
+SSISDB を使用している場合は、そこにパッケージをデプロイし、サーバー エンドポイントを介してデータベース サーバーに接続する SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) ツールを使用してそれらのパッケージを Azure-SSIS IR 上で実行できます。 パブリック エンドポイントを利用する SQL Managed Instance または SQL Database の場合、サーバー エンドポイントの形式は、それぞれ *<server name>.database.windows.net* と *<server name>.public.<dns prefix>.database.windows.net,3342* となります。 
 
 SSISDB を使用していない場合は、ファイル システム、ファイル共有、または Azure Files 共有にパッケージをデプロイし、`dtinstall`/`dtutil`/`dtexec` コマンドライン ユーティリティを使用してそれらのパッケージを Azure-SSIS IR 上で実行できます。 詳しくは、[SSIS パッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)に関する記事を参照してください。 
 

@@ -3,17 +3,17 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 05/27/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f0a1515816fe7a9e1d79f69655e6bf21725a0b5d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877951"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142319"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -49,17 +49,15 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
 ## <a name="create-a-daily-export"></a>毎日のエクスポートを作成する
 
-データ エクスポートを作成または表示する場合、またはエクスポートをスケジュールする場合は、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 [コスト分析] ページの上部にある **[エクスポート]** を選択してから、エクスポート オプションを選択します。 たとえば、 **[エクスポートのスケジュール]** を選択します。  
+データ エクスポートを作成または表示する場合、またはエクスポートをスケジュールする場合は、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 [コスト分析] ページの上部にある **[設定]** 、 **[エクスポート]** を順に選択してから、エクスポート オプションを選択します。
 
 > [!NOTE]
 > - サブスクリプション以外にも、リソース グループ、アカウント、部門、および登録に対してエクスポートを作成できます。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 >- 課金アカウント スコープまたは顧客のテナントでパートナーとしてサインインしている場合は、パートナーのストレージ アカウントにリンクされている Azure Storage アカウントにデータをエクスポートすることができます。 ただし、CSP テナントにアクティブなサブスクリプションが必要です。
->
-
 
 **[追加]** を選択し、エクスポートの名前を入力して、 **[月度累計コストの日単位のエクスポート]** オプションを選択します。 **[次へ]** を選択します。
 
-![エクスポートの種類を示す新しいエクスポートの例](./media/tutorial-export-acm-data/basics_exports.png)
+[![エクスポートの種類を示す新しいエクスポートの例](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
 
 Azure Storage アカウントのサブスクリプションを指定して、お使いのストレージ アカウントを選択します。  エクスポート ファイルの保存先となるストレージ コンテナーとディレクトリ パスを指定します。 **[次へ]** を選択します。
 
@@ -83,10 +81,19 @@ Azure Storage アカウントのサブスクリプションを指定して、お
 **[カスタム]** - 毎週および毎月のエクスポートを、週累計および月度累計オプションを使用してスケジュールできます。 "*最初のエクスポートはすぐに実行されます。* "
 
 従量課金制、MSDN、または Visual Studio サブスクリプションがある場合、請求書の請求期間がカレンダー月と合わない場合があります。 それらのサブスクリプションとリソース グループの種類の場合、請求期間またはカレンダー月に合わせたエクスポートを作成できます。 請求月に合わせたエクスポートを作成するには、 **[カスタム]** を選択し、 **[請求期間の累計]** を選択します。  カレンダー月に合わせたエクスポートを作成するには、 **[月度累計]** を選択します。
->
->
 
 ![新しいエクスポート - [カスタム] と [週累計] が選択された [基本] タブ](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
+#### <a name="create-an-export-for-multiple-subscriptions"></a>複数のサブスクリプションのエクスポートを作成する
+
+マイクロソフト エンタープライズ契約をご利用の場合は、管理グループを使用して、サブスクリプションのコスト情報を 1 つのコンテナーに集約できます。 そのうえで、管理グループのコスト管理データをエクスポートできます。
+
+他の種類のサブスクリプションでは、管理グループのエクスポートはサポートされません。
+
+1. 管理グループを作成して、そこにサブスクリプションを割り当てます。
+1. [エクスポート] の **[スコープ]** を選択します。
+1. **[Select this management group]\(この管理グループを選択する\)** を選択します。
+1. そのスコープでエクスポートを作成し、管理グループに含まれるサブスクリプションのコスト管理データを取得します。
 
 ## <a name="verify-that-data-is-collected"></a>データが収集されたことを確認する
 
@@ -104,6 +111,18 @@ Azure Storage アカウントのサブスクリプションを指定して、お
 
 ![Excel に表示されるエクスポートした CSV データの例](./media/tutorial-export-acm-data/example-export-data.png)
 
+### <a name="download-an-exported-csv-data-file"></a>エクスポートされた CSV データ ファイルをダウンロードする
+
+エクスポートされた CSV ファイルを Azure portal からダウンロードすることもできます。 次の手順では、それを [コスト分析] から探す方法を説明しています。
+
+1. [コスト分析] で **[設定]** を選択し、 **[エクスポート]** を選択します。
+1. エクスポートの一覧から、エクスポートに使用するストレージ アカウントを選択します。
+1. ストレージ アカウントの **[コンテナー]** をクリックします。
+1. コンテナーの一覧で、コンテナーを選択します。
+1. ディレクトリとストレージ BLOB を辿って目的の日付まで移動します。
+1. CSV ファイルを選択して **[ダウンロード]** を選択します。
+
+[![エクスポートのダウンロード例](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
 ## <a name="access-exported-data-from-other-systems"></a>エクスポートしたデータに他のシステムからアクセスする
 

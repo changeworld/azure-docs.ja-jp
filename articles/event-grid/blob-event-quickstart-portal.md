@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605721"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310499"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする
 
@@ -86,12 +86,18 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 どのイベントを追跡し、どこにイベントを送信するかは、トピックを購読することによって Event Grid に伝えます。
 
 1. ポータルで、先ほど作成した Azure Storage アカウントに移動します。 左側のメニューにある **[すべてのリソース]** を選択し、自分のストレージ アカウントを選択します。 
-2. **[ストレージ アカウント]** ページの左側のメニューにある **[イベント]** を選択します。
+2. **[ストレージ アカウント]** ページの左側のメニューにある **[イベント]** を選択します。 
 1. **[その他のオプション]** を選択し、 **[webhook]** を選択します。 エンドポイントの Web hook を使用して、ビューアー アプリにイベントを送信します。 
 
    ![[webhook] を選択する](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. **[イベント サブスクリプションの作成]** ページで、次の手順を実行します。 
     1. イベント サブスクリプションの**名前**を入力します。
+    2. **システム トピック**の**名前**を入力します。 
+
+       ![イベント サブスクリプションとシステム トピックの名前を入力します](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
+
+       > [!NOTE]
+       > 以前は、Azure のソースによって生成されるイベントのサブスクリプションを作成すると、Event Grid サービスによって、ランダムに生成された名前を持つシステム トピックが自動的に作成されていました。 今は、このテキスト ボックスを使用してシステム トピックの名前を指定できるようになっています。 このシステム トピック リソースを使用して、メトリックと診断ログを検出できます。
     2. **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
 
        ![エンドポイントのタイプに Webhook を選択する](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

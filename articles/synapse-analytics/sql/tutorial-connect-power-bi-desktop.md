@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1b71e8108ecab0f6d420e404bd602a900ebfcfb2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745397"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258285"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>チュートリアル:SQL オンデマンド (プレビュー) を Power BI Desktop で使用してレポートを作成する
 
@@ -29,10 +29,14 @@ ms.locfileid: "83745397"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下のソフトウェアが必要です。
+このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
+
+- [Power BI Desktop](https://powerbi.microsoft.com/downloads/) - データを視覚化してレポートを作成するために必要です。
+- [Azure Synapse ワークスペース](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) - データベース、外部データ ソース、およびビューを作成するために必要です。
+
+省略可能:
 
 - [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) や [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) などの SQL クエリ ツール。
-- [Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
 
 次のパラメーターの値を指定します。
 

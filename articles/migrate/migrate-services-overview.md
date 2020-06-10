@@ -4,12 +4,12 @@ description: Azure Migrate サービスについて説明します。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: fe6386346282cf182397f6420c541d629ba0aab3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768390"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193591"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -23,7 +23,7 @@ Azure Migrate には次の機能が用意されています。
 - **ツールの範囲**:評価と移行のためのさまざまなツール。 ツールには、Azure Migrate:Server Assessment、Azure Migrate: Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。 Azure Migrate は、他の Azure サービスや、他のツールおよび独立系ソフトウェア ベンダー (ISV) オファリングと統合されています。
 - **評価と移行**: Azure Migrate ハブでは、以下の評価と移行を行うことができます。
     - **サーバー**:オンプレミスのサーバーを評価し、Azure の仮想マシンに移行します。
-    - **データベース**: オンプレミスのデータベースを評価し、Azure SQL Database または Azure SQL Database マネージド インスタンスに移行します。
+    - **データベース**: オンプレミスのデータベースを評価し、Azure SQL Database または SQL Managed Instance に移行します。
     - **Web アプリケーション**: Azure App Service Migration Assistant を使用して、オンプレミスの Web アプリケーションを評価し、Azure App Service に移行します。
     - **仮想デスクトップ**: オンプレミスの仮想デスクトップ インフラストラクチャ (VDI) を評価し、Azure の Windows Virtual Desktop に移行します。
     - **Data**:Azure Data Box 製品を使用して、大量のデータを迅速かつコスト効果よく Azure に移行します。
@@ -36,8 +36,8 @@ Azure Migrate ハブには、次のツールが含まれています。
 --- | --- | ---
 **Azure Migrate: Server Assessment** | サーバーを評価します。 | Azure への移行の準備として、オンプレミスの VMware VM、Hyper-V VM、および物理サーバーを検出して評価します。
 **Azure Migrate: Server Migration** | サーバーを移行します。 | VMware VM、Hyper-V VM、物理サーバー、その他の仮想マシン、およびパブリック クラウド VM を Azure に移行します。
-**Data Migration Assistant** | Azure SQL Database、Azure SQL Database マネージド インスタンス、または SQL Server を実行する Azure VM への移行について、オンプレミスの SQL Server データベースを評価します。 | Data Migration Assistant は、移行を妨げる可能性のある問題の特定に役立ちます。 サポートされていない機能、移行後に役に立つ新機能、データベースの移行の適切なパスが明らかになります。 [詳細については、こちらを参照してください](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
-**Azure Database Migration Service** | オンプレミスのデータベースを、SQL Server を実行している Azure VM、Azure SQL Database、または Azure SQL Database マネージド インスタンスに移行します。 | Database Migration Service の[詳細を参照](https://docs.microsoft.com/azure/dms/dms-overview)してください。
+**Data Migration Assistant** | Azure SQL Database、Azure SQL Managed Instance、または SQL Server を実行する Azure VM に移行する SQL Server データベースを評価します。 | Data Migration Assistant は、移行を妨げる可能性のある問題の特定に役立ちます。 サポートされていない機能、移行後に役に立つ新機能、データベースの移行の適切なパスが明らかになります。 [詳細については、こちらを参照してください](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
+**Azure Database Migration Service** | オンプレミスのデータベースを、SQL Server を実行している Azure VM、Azure SQL Database、または SQL Managed Instance に移行します。 | Database Migration Service の[詳細を参照](https://docs.microsoft.com/azure/dms/dms-overview)してください。
 **Movere** | サーバーを評価します。 | Movere の[詳細を参照](#movere)してください。
 **Web App Migration Assistant** | オンプレミスの Web アプリを評価し、Azure に移行します。 |  Azure App Service に移行するためにオンプレミスの Web サイトを評価するには、Azure App Service Migration Assistant を使用します。<br/><br/> .NET と PHP の Web アプリを Azure に移行するには、Migration Assistant を使用します。 Azure App Service Migration Assistant の[詳細を参照](https://appmigration.microsoft.com/)してください。
 **Azure Data Box** | オフライン データを移行します。 | Azure Data Box 製品を使用して、大量のオフライン データを Azure に移動します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/databox/)。

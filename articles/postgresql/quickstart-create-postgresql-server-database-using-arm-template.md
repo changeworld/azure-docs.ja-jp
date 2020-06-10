@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 6273043fc50938961caaf9f5a84273ec93c7521c
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 70def2584cf8855e8fdf4a74081dc5a9a8c46f68
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801720"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205111"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
+# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Resource Manager テンプレートを使用して Azure Database for PostgreSQL - Single Server を作成する
 
 Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージド サービスです。 このクイックスタートでは、ARM テンプレートを使用して、Azure portal、PowerShell、または Azure CLI に Azure Database for PostgreSQL - Single Server を作成します。
 
@@ -44,7 +44,7 @@ Azure Database for PostgreSQL サーバーは、構成済みの一連のコン�
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-postgresql-with-vnet/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-managed-postgresql-with-vnet/azuredeploy.json" range="001-233" highlight="151,164,178,201,215":::
 
@@ -56,9 +56,9 @@ Azure Database for PostgreSQL サーバーは、構成済みの一連のコン�
 * [**Microsoft.DBforPostgreSQL/servers/virtualNetworkRules**](/azure/templates/microsoft.dbforpostgresql/servers/virtualnetworkrules)
 * [**Microsoft.DBforPostgreSQL/servers/firewallRules**](/azure/templates/microsoft.dbforpostgresql/servers/firewallrules)
 
-More Azure Database for PostgreSQL template samples can be found in [Azure quickstart templates](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql&pageNumber=1&sort=Popular).
+その他の Azure Database for PostgreSQL テンプレートのサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql&pageNumber=1&sort=Popular)から入手できます。
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 660e77e130d5546d29730680c5863e25c052e5d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652658"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234843"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics のチート シート
 
@@ -27,14 +27,14 @@ Azure Synapse Analytics のチート シートでは、サービスの基本的�
 > [!div class="mx-imgBorder"]
 >![Synapse アーキテクチャ](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>概念
-| 名詞と動詞                         | 実行内容       |
+## <a name="terminology"></a>用語
+| 期間                         | 定義      |
 |:---                                 |:---                 |
 | **Synapse ワークスペース (プレビュー)** | Azure でクラウドベースのエンタープライズ分析を行うための、セキュリティ保護可能なコラボレーション境界。 ワークスペースは、特定のリージョンにデプロイされ、関連付けられた ADLS Gen2 アカウントと (一時データを格納するための) ファイル システムを持ちます。 ワークスペースは、リソース グループに属します。 |
 | **Synapse SQL**   | プールまたはオンデマンド機能を使用して分析を実行します。  |
 | **SQL プール**   | 対応するデータベースをワークスペースにデプロイできる、0 対 N の SQL プロビジョニング済みのリソース。 各 SQL プールには、データベースが関連付けられています。 SQL プールは、手動または自動でスケーリング、一時停止、または再開できます。 SQL プールは、100 DWU から最大 30,000 DWU までスケーリングできます。       |
 | **SQL オンデマンド (プレビュー)**   | データ レイク内のデータに対して T-SQL クエリを実行できる、大規模データ用に構築された分散データ処理システム。 サーバーレスであるため、インフラストラクチャを管理する必要はありません。       |
-|**Apache Spark** | Spark プールで使用される Spark ランタイム。 現在サポートされているバージョンは、Python 3.6.1、Scala 2.11.12、Apache Spark 0.5 向け .NET サポート、および Delta Lake 0.3 を使用する Spark 2.4 です。  | 
+|**Synapse 用の Apache Spark** | Spark プールで使用される Spark ランタイム。 現在サポートされているバージョンは、Python 3.6.1、Scala 2.11.12、Apache Spark 0.5 向け .NET サポート、および Delta Lake 0.3 を使用する Spark 2.4 です。  | 
 | **Apache Spark プール (プレビュー)**  | 対応するデータベースをワークスペースにデプロイできる、0 対 N の Spark プロビジョニング済みのリソース。 Spark プールは、自動で一時停止、再開、およびスケーリングできます。  |
 | **Spark アプリケーション**  |   ドライバー プロセスと Executor プロセスのセットで構成されます。 Spark アプリケーションは Spark プールで実行されます。            |
 | **Spark セッション**  |   Spark アプリケーションの統合エントリ ポイント。 これにより、Spark のさまざまな機能との対話、および少数のコンストラクトとの対話が可能になります。 ノートブックを実行するには、セッションを作成する必要があります。 セッションは、特定のサイズの特定の数の Executor で実行するように構成できます。 ノートブック セッションの既定の構成では、2 つの中規模の Executor で実行されます。 |

@@ -9,22 +9,25 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658848"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235279"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
 
-この記事では、Azure Cosmos DB 用の Azure Synapse Link で現在サポートされている機能について説明します。 
+この記事では、Azure Cosmos DB 用の Azure Synapse Link で現在サポートされている機能について説明します。
 
 ## <a name="azure-synapse-support"></a>Azure Synapse サポート
 
 Azure Cosmos DB には、次の 2 種類のコンテナーがあります。
 * HTAP コンテナー - Synapse Link が有効になっているコンテナー。 このコンテナーには、トランザクション ストアと分析ストアの両方があります。 
 * OLTP コンテナー - トランザクション ストアのみを含むコンテナー。Synapse Link は有効になっていません。 
+
+> [!IMPORTANT]
+> Azure Synapse Link for Azure Cosmos DB は、マネージド仮想ネットワークが有効になっていないワークスペースで現在サポートされています。 
 
 Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接続できます。この場合、トランザクション ストアに対する読み取り/書き込みのみが可能です。 Azure Cosmos DB 用の Synapse Link 内で現在サポートされている機能の一覧を次に示します。 
 

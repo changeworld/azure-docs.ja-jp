@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780081"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996314"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -43,7 +43,7 @@ HDInsight の [Enterprise セキュリティ パッケージ](apache-domain-join
 
 ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにフル アクセスできるわけではないというベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 この操作は、ESP クラスターでのみ使用できます。
 
-Hadoop 管理者は、ロールベースのアクセス制御 (RBAC) を構成できます。 この構成では、Apache Range プラグインを使用して、Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md)、および [Kafka](apache-domain-joined-run-kafka.md) をセキュリティで保護します。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
+Hadoop 管理者は、ロールベースのアクセス制御 (RBAC) を構成できます。 この構成では、Apache Ranger プラグインを使用して、Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md)、および [Kafka](apache-domain-joined-run-kafka.md) をセキュリティで保護します。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
 
 たとえば、管理者は [Apache Ranger](https://ranger.apache.org/) を構成して Hive のアクセス制御ポリシーを設定できます。 この機能により、行レベルおよび列レベルのフィルター処理 (データ マスキング) が実現されます。 また、未承認のユーザーがアクセスできないように、機密データがフィルター処理されます。
 
