@@ -30,7 +30,7 @@ Azure の関数を作成せずにコード スニペットを実行するには�
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* Azure Functions のコンテナーである Azure Functions アプリと Azure Functions。 関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-create-first-azure-function.md)。 次に、Azure portal でロジック アプリの外部で関数を作成するか、ロジック アプリ デザイナーで[ロジック アプリの内部から](#create-function-designer)関数を作成することができます。
+* Azure Functions のコンテナーである Azure Functions アプリと Azure Functions。関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-create-first-azure-function.md)。 次に、Azure portal でLogic Apps の外部で関数を作成するか、Logic Apps デザイナーで[Logic Apps の内部から](#create-function-designer)関数を作成することができます。
 
 * ロジック アプリを操作するときは、既存であるか新規であるかに関係なく、同じ要件が関数アプリと関数に適用されます。
 
