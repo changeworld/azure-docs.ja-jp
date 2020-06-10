@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685068"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561042"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
 Content Moderator のテキスト モデレーション モデルを使用して、テキスト コンテンツを分析します。
 
-ポリシーとしきい値に基づいて、コンテンツのブロック、承認、またはレビューを行うことができます (人によるレビューを設定する方法の詳細については、[レビュー、ワークフロー、およびジョブ](./review-api.md)に関する記事を参照してください)。 テキスト モデレーション モデルを使用して、パートナー、従業員、およびコンシューマーがテキスト コンテンツを生成する環境の人によるモデレーションを拡張します。 これらには、チャット ルーム、ディスカッション掲示板、チャットボット、e コマース カタログ、およびドキュメントが含まれます。 
+ポリシーとしきい値に基づいて、コンテンツのブロック、承認、またはレビューを行うことができます (人によるレビューを設定する方法の詳細については、[レビュー、ワークフロー、およびジョブ](./review-api.md)に関する記事を参照してください)。 テキスト モデレーション モデルを使用して、パートナー、従業員、およびコンシューマーがテキスト コンテンツを生成する環境の人によるモデレーションを拡張します。 これらには、チャット ルーム、ディスカッション掲示板、チャットボット、e コマース カタログ、およびドキュメントが含まれます。
 
 サービスの応答には次の情報が含まれています。
 

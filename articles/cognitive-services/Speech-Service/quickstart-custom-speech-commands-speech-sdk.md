@@ -3,19 +3,19 @@ title: クイック スタート:Speech SDK を使用したカスタム コマ�
 titleSuffix: Azure Cognitive Services
 description: この記事では、カスタム コマンドを使用して Speech SDK クライアント アプリケーションを作成します。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: donkim
-ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.author: nitinme
+ms.openlocfilehash: f2e8292ccace38e1a167c3ecdfb924589e4ebf0e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872498"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508932"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)
 
