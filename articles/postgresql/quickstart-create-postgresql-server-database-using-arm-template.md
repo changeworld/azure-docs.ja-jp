@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 70def2584cf8855e8fdf4a74081dc5a9a8c46f68
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28671484460407efac8798505f630c13ec0b4918
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205111"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325084"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Resource Manager テンプレートを使用して Azure Database for PostgreSQL - Single Server を作成する
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
 
 Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージド サービスです。 このクイックスタートでは、ARM テンプレートを使用して、Azure portal、PowerShell、または Azure CLI に Azure Database for PostgreSQL - Single Server を作成します。
 

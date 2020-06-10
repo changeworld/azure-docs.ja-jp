@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、クラウドへのイベントベースのビデオ記録を実行し、クラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 92367634a2f5785ecbb102db1e03f3d5f12d744e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7ff8502688e2b507b8a576c177948f29c2248be4
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300826"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456622"
 ---
 # <a name="tutorial-event-based-video-recording-to-cloud-and-playback-from-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -181,7 +181,7 @@ Visual Studio Code を使用して、[これら](https://docs.microsoft.com/azur
 
 1. GraphTopologySet ノードで、次を編集します。
 
-    `"topologyUrl" : "https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
 1. 次に、GraphInstanceSet と GraphTopologyDelete ノードで編集します。
 
@@ -410,4 +410,4 @@ applicationProperties の "subject" が、このメッセージの生成元と�
 ## <a name="next-steps"></a>次のステップ
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラを検索するには、[ONVIF 準拠製品のページ](https://www.onvif.org/conformant-products/)でプロファイル G、S、または T に準拠しているデバイスを検索します。
-* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)に関するページの手順に従い、次に「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録することができます。
+* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Azure IoT Edge ランタイムの Linux へのインストール](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)手順に従い、次に「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録することができます。

@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: d6502985c0267fe6636c606e493533daf17f6b56
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f39d5ca5e153da3d1644aabeb7e48b41d07fe253
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300014"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485145"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure 通知ハブを作成する
 
@@ -112,7 +112,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 2. 名前空間の一覧を取得します。
 
-   新しい名前空間の詳細を表示するには、[az notification-hub namespace list](/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) コマンドを使用します。  サブスクリプションのすべての名前空間を表示する場合は、`--resource-group` パラメーターを省略できます。
+   新しい名前空間の詳細を表示するには、[az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) コマンドを使用します。  サブスクリプションのすべての名前空間を表示する場合は、`--resource-group` パラメーターを省略できます。
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -138,7 +138,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 3. 通知ハブの一覧を取得します。
 
-   Azure CLI で実行されたコマンドごとに成功またはエラー メッセージが返されますが、通知ハブの一覧を照会できると安心です。  [az notification-hub list](/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) コマンドは、この目的のために設計されています。
+   Azure CLI で実行されたコマンドごとに成功またはエラー メッセージが返されますが、通知ハブの一覧を照会できると安心です。  [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) コマンドは、この目的のために設計されています。
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
