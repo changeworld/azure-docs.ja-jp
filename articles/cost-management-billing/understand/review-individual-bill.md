@@ -6,20 +6,22 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199128"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194138"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>チュートリアル:個々の Azure 請求書を確認する
 
 この記事は、Azure 請求書の理解と確認に役立ちます。 請求期間ごとに、通常は電子メールで請求書を受け取ります。 請求書は、Azure の請求を記載したものです。 請求書と同じコスト情報を、Azure portal でも利用できます。 このチュートリアルでは、請求書を、詳細な毎日の使用状況ファイルおよび Azure portal でのコスト分析と比較します。
 
 このチュートリアルは、個々のサブスクリプションを持つ Azure カスタマーだけに適用されます。 一般的な個々のサブスクリプションは、従量課金制の料金であり、Azure Web サイトから直接購入します。
+
+想定外の料金について不明な点がある場合は、「[想定外の料金を分析する](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges)」を参照してください。 または、Azure サブスクリプションを取り消す必要がある場合は、「[Azure サブスクリプションの取り消し](../manage/cancel-azure-subscription.md)」を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -47,7 +49,7 @@ Azure のサブスクリプションを開始してから 30 日以上経過し�
 
 Azure portal で、検索ボックスに「*サブスクリプション*」と入力し、[[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) をクリックします。
 
-![サブスクリプションへの移動](./media/review-individual-bill/navigate-subscriptions.png)
+[![[サブスクリプション] に移動する](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 サブスクリプションの一覧で、サブスクリプションをクリックします。
 
@@ -92,7 +94,7 @@ Azure portal で、検索ボックスに「*サブスクリプション*」と�
 |Included |含まれる量 |
 |Billable |超過量 |
 |料金 | EffectivePrice|
-| Value | コスト |
+| 値 | コスト |
 
 請求書の **[利用料金]** セクションには、請求期間中に使用された各メーターの合計値 (コスト) が示されます。 たとえば、次の画像では、"*P10 ディスク*" リソースの Azure Storage サービスの利用料金が示されています。
 
@@ -147,7 +149,7 @@ Azure では、リソース コストに基づいて直接請求されること�
 
 VM が作成されると、各メーターが使用状況レコードの出力を開始します。 この使用状況とメーター料金が Azure の測定システムで追跡されます。
 
-請求の計算に使用されたメーターは、使用状況 CSV ファイルで確認できます。
+請求の計算に使用されたメーターは、前の例と同様、使用状況 CSV ファイルで確認できます。
 
 ## <a name="pay-your-bill"></a><a name="payment"></a>請求金額を支払う
 

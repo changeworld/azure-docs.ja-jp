@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 85376e1861108089cd7918b3b261f05433b59217
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870696"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298034"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
 
@@ -101,7 +101,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 1. **[リソースの作成]** をクリックします
 1. **Static Web Apps** を検索します
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-1. **[作成]**
+1. **[作成]** をクリックします。
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する":::
 
@@ -109,7 +109,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[リソース グループ]_ で、 **[新規]** を選択します。 "_新しいリソース グループ名_" として「**hugo-static-app**」と入力し、 **[OK]** を選択します。
 
-1. 次に、アプリのグローバルに一意の名前を **[名前]** ボックスに入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。 この値は、静的アプリの URL プレフィックスとして `https://<APP_NAME>....` の形式で使用されます。
+1. 次に、 **[名前]** ボックスに対象のアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
 
 1. _[リージョン]_ で、近くの使用可能なリージョンを選択します。
 
@@ -153,7 +153,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. Hugo アプリをテキスト エディターで開き、 _.github/workflows/azure-pages-<ワークフロー名>.yml_ ファイルを開きます。
 
-1. `- uses: actions/checkout@v2` という行 (18 行目) を次の行に置き換えて、Hugo アプリケーションをビルドします。
+1. `- uses: actions/checkout@v2` という行 (18 行目) を次の行に置き換えて、Hugo アプリケーションをビルドします。 Hugo Extended が必要な場合は、`extended: true` のコメントを解除します。
 
    ```yml
    - uses: actions/checkout@v2
@@ -164,6 +164,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
      uses: peaceiris/actions-hugo@v2.4.8
      with:
        hugo-version: "latest"
+       # extended: true
 
    - name: Build
      run: hugo

@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 3b2a6566322f29870d2376007060acedac62692a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873537"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187539"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 
-このクイック スタートでは、Azure portal を使用して Azure Database Migration Service のインスタンスを作成します。  インスタンスを作成したら、それを使用してオンプレミスの SQL Server から Azure SQL データベースにデータを移行できます。
+このクイック スタートでは、Azure portal を使用して Azure Database Migration Service のインスタンスを作成します。  インスタンスを作成したら、それを使用して SQL Server から Azure SQL Database にデータを移行できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -78,4 +78,4 @@ Database Migration Service の最初のインスタンスを作成する前に�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [オンプレミスの SQL Server を Azure SQL Database に移行する](tutorial-sql-server-to-azure-sql.md)
+> [SQL Server の Azure SQL Database への移行](tutorial-sql-server-to-azure-sql.md)

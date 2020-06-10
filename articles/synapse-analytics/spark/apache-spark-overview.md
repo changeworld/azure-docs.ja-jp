@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8ca2a3d55a98f96f704999d888761ea40fc4665f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644667"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140975"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Apache Spark とは
 
@@ -39,9 +39,9 @@ Azure Synapse の Spark プールでは、フル マネージドの Spark サー
 | 使いやすさ |Synapse Analytics には、[Nteract](https://nteract.io/) から派生したカスタム ノートブックが含まれています。 対話型のデータ処理と視覚化にこれらの Notebook を使用できます。|
 | REST API |Synapse Analytics の Spark には、ジョブの送信と監視をリモートで実行する REST API ベースの Spark ジョブ サーバーである [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) が含まれています。 |
 | Azure Data Lake Storage Generation 2 のサポート| Azure Synapse の Spark プールは、Blob Storage に加え、Azure Data Lake Storage Generation 2 も使用できます。 Data Lake Store の詳細については、「[Azure Data Lake Store の概要](../../data-lake-store/data-lake-store-overview.md)」を参照してください。 |
-| サード パーティ製 IDE との統合 | Azure Synapse には、アプリケーションを作成して Spark プールに送信するうえで役立つ [Jetbrains の IntelliJ IDEA](https://www.jetbrains.com/idea/) 用 IDE プラグインが用意されています。 |
+| サード パーティ製 IDE との統合 | Azure Synapse には、アプリケーションを作成して Spark プールに送信するうえで役立つ [JetBrains の IntelliJ IDEA](https://www.jetbrains.com/idea/) 用 IDE プラグインが用意されています。 |
 | 読み込み済みの Anaconda ライブラリ |Azure Synapse の Spark プールには、プレインストールされた Anaconda ライブラリが付属します。 [Anaconda](https://docs.continuum.io/anaconda/) は、機械学習、データ分析、視覚化などのための 200 個近いライブラリを提供します。 |
-| スケーラビリティ | Azure Synapse プールの Apache Spark は自動スケールを有効にすることで、必要に応じてプールをスケールアップしたりスケールダウンしたりすることができます。 また、すべてのデータは Azure Storage または Data Lake Storage に格納されるため、Spark プールはデータの損失なしでシャットダウンできます。 |
+| スケーラビリティ | Azure Synapse プールの Apache Spark で自動スケールを有効にすると、必要に応じてノードを追加したり削除したりすることによって、プールをスケーリングすることができます。 また、すべてのデータは Azure Storage または Data Lake Storage に格納されるため、Spark プールはデータの損失なしでシャットダウンできます。 |
 
 Azure Synapse の Spark プールには、そのプールで利用できる次のコンポーネントが既定で含まれています。
 

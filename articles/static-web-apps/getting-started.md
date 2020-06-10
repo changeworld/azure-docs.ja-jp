@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714238"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259254"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>クイック スタート:静的 Web アプリを初めてビルドする
 
@@ -31,25 +31,25 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/angular-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="react"></a>[React](#tab/react)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/react-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/vue-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
 # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-- 次の場所に移動して、新しいリポジトリを作成します
+- GitHub にログインしていることを確認し、次の場所に移動して新しいリポジトリを作成します
   - https://github.com/staticwebdev/vanilla-basic/generate
 - リポジトリの名前を **my-first-static-web-app** に設定します
 
@@ -70,7 +70,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 - **[リソースの作成]** をクリックします
 - **Static Web Apps** を検索します
 - **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-- **[作成]**
+- **[作成]** をクリックします。
 
 ### <a name="basics"></a>基本
 

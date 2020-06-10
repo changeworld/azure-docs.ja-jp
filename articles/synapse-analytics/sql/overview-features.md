@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 556cce9e18c812759ccb6c4b8ee2c91c4cef2b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b4c44f0097b2896a063f3f3922760860e1d4a22
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658886"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118307"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -42,7 +42,7 @@ Synapse SQL の消費モデルでは、さまざまなデータベース オブ�
 | **[テーブルのインデックス](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | はい | いいえ |
 | **[テーブルのパーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | はい | いいえ |
 | **[統計](develop-tables-statistics.md)**            | はい | はい |
-| **[リソース クラスとコンカレンシー](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい    | いいえ |
+| **[ワークロード管理、リソース クラス、コンカレンシー制御](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい    | いいえ |
 
 ## <a name="query-language"></a>クエリ言語
 
@@ -50,7 +50,7 @@ Synapse SQL で使用されるクエリ言語では、従量課金モデルに�
 
 |   | プロビジョニング済み | サーバーレス |
 | --- | --- | --- |
-| **SELECT ステートメント** | はい。 Transact-SQL クエリ句 [FOR XML、FOR JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) はサポートされていません。 | はい。 Transact-SQL クエリ句 [FOR XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、クエリ ヒントはサポートされていません。 [OFFSET、FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned)、[PIVOT、UNPIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) は、一時テーブルのデータに対するクエリの実行にのみ使用できます (外部データには使用できません)。 |
+| **SELECT ステートメント** | はい。 Transact-SQL クエリ句 [FOR XML、FOR JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) はサポートされていません。 | はい。 Transact-SQL クエリ句 [FOR XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、[PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)、クエリ ヒントはサポートされていません。 [OFFSET、FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned)、[PIVOT、UNPIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) は、システム オブジェクトのクエリにのみ使用できます (外部データには使用できません)。 |
 | **INSERT ステートメント** | はい | いいえ |
 | **UPDATE ステートメント** | はい | いいえ |
 | **DELETE ステートメント** | はい | いいえ |
@@ -77,20 +77,31 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | --- | --- | --- |
 | **ログイン** | なし (データベースでサポートされるのは包含ユーザーのみ) | はい |
 | **ユーザー** |  なし (データベースでサポートされるのは包含ユーザーのみ) | はい |
-| **[包含ユーザー](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | はい。 **注:** 制限のない管理者になれる AAD ユーザーは 1 人だけです | はい |
-| **Azure Active Directory (AAD) 認証**| はい。AAD ユーザー | はい。AAD ログインとユーザー |
-| **Storage の AAD パススルー認証** | はい | はい |
+| **[包含ユーザー](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | はい。 **注:** 制限のない管理者になれる Azure AD ユーザーは 1 人だけです | はい |
+| **SQL ユーザー名とパスワードによる認証**| はい | はい |
+| **Azure Active Directory (AAD) 認証**| はい。Azure AD ユーザー | はい。Azure AD ログインとユーザー |
+| **Storage の Azure Active Directory (AAD) パススルー認証** | はい | はい |
 | **Storage の SAS トークン認証** | いいえ | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) またはインスタンスレベルの [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用。 |
 | **Storage のアクセス キー認証** | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用 | いいえ |
-| **Storage のマネージド ID 認証** | はい。[マネージド サービス ID 資格情報](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)を使用 | はい。`Managed Identity` 資格情報を使用。 |
+| **Storage の[マネージド ID](../security/synapse-workspace-managed-identity.md) 認証** | はい。[マネージド サービス ID 資格情報](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)を使用 | はい。`Managed Identity` 資格情報を使用。 |
 | **Storage のアプリケーション ID 認証** | [はい](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | いいえ |
 | **アクセス許可 - オブジェクトレベル** | はい。ユーザーへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。サポートされているシステム オブジェクトでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
 | **アクセス許可 - スキーマレベル** | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
 | **アクセス許可 - [データベースレベル](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | はい | はい |
 | **アクセス許可 - [サーバーレベル](/sql/relational-databases/security/authentication-access/server-level-roles)** | いいえ | はい。sysadmin とその他のサーバーロールがサポートされています |
+| **アクセス許可 - [列レベルのセキュリティ](/azure/synapse-analytics/sql-data-warehouse/column-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい | はい |
 | **ロールまたはグループ** | はい (データベース スコープ) | はい (サーバーとデータベースの両方のスコープ) |
 | **セキュリティと ID の関数** | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`REVERT`。 セキュリティ関数は、外部データのクエリを実行するために使用できません (クエリで使用できる変数に結果を格納します)。  |
 | **DATABASE SCOPED CREDENTIAL** | はい | はい |
+| **サーバー スコープの資格情報** | いいえ | はい |
+| **行レベルのセキュリティ** | [はい](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | いいえ |
+| **透過的なデータ暗号化 (TDE)** | [はい](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | いいえ | 
+| **データの検出と分類** | [はい](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
+| **脆弱性評価** | [はい](/azure/sql-database/sql-vulnerability-assessment?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
+| **Advanced Threat Protection** | [はい](/azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+| **監査** | [はい](/azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
+| **[ファイアウォール規則](../security/synapse-workspace-ip-firewall.md)**| はい | はい |
+| **[プライベート エンドポイント](../security/synapse-workspace-managed-private-endpoints.md)**| はい | はい |
 
 SQL プールと SQL オンデマンドでは、標準の Transact-SQL 言語を使用してデータのクエリを実行します。 詳細な相違点については、[Transact-SQL 言語のリファレンス](/sql/t-sql/language-reference)を参照してください。
 
@@ -120,6 +131,7 @@ SQL プールと SQL オンデマンドでは、標準の Transact-SQL 言語を
 | **内部ストレージ** | はい | いいえ |
 | **Azure Data Lake v2** | はい | はい |
 | **Azure Blob Storage** | はい | はい |
+| **Azure CosmosDB 分析ストレージ** | いいえ | はい。[Synapse Link](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用 ([限定的なプレビュー](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)) |
 
 ## <a name="data-formats"></a>データ形式
 
@@ -133,6 +145,7 @@ SQL プールと SQL オンデマンドでは、標準の Transact-SQL 言語を
 | **Hive ORC** | [はい](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | いいえ |
 | **Hive RC** | [はい](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | いいえ |
 | **JSON** | はい | [はい](query-json-files.md) |
+| **Avro** | いいえ | いいえ |
 | **[Delta-lake](https://delta.io/)** | いいえ | いいえ |
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | いいえ | いいえ |
 

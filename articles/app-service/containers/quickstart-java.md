@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732900"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300073"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Java アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "81732900"
 Cloud Shell プロンプトで次の Maven コマンドを実行して、`helloworld` という名前の新しいアプリを作成します。
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" -Dversion=1.0-SNAPSHOT
 ```
 次に、作業ディレクトリをプロジェクト フォルダーに変更します。
 
@@ -44,13 +44,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Maven プラグインを構成する
 
-Azure App Service へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure 資格情報を自動的に取得できます。 Azure CLI がインストールされていない場合、Maven プラグインは Oauth またはデバイス ログインでサインインします。 必要に応じて、[Maven プラグインによる認証](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio)の詳細を確認してください。
 
-```azurecli
-az login
-```
-
-次に、デプロイを構成し、コマンド プロンプトで maven コマンドを実行し、 **[Confirm (Y/N)]\(確認 (Y/N)\)** プロンプトが表示されるまで **Enter** キーを押して既定の構成を使用し、**y** キーを押して構成を完了します。 
+デプロイを構成するには、コマンド プロンプトで maven コマンドを実行し、 **[Confirm (Y/N)]\(確認 (Y/N)\)** プロンプトが表示されるまで **Enter** キーを押して既定の構成を使用し、**y** キーを押して構成を完了します。 
 ```cmd
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
@@ -93,7 +89,13 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは、JAR Web アプリケーションもサポートしています。[Java SE JAR ファイルを App Service on Linux にデプロイする方法](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページにアクセスしてお試しください。
 
-もう一度 `pom.xml` に移動してプラグイン構成が更新されていることを確認します。必要に応じて、pom ファイルで App Service の他の構成を直接変更できます。その一般的なものを次に示します。
+`pom.xml` を開いて、更新された構成を確認します。
+
+```bash
+code pom.xml
+```
+
+必要に応じて、pom ファイルで App Service の構成を直接変更できます。その一般的なものを次に示します。
 
  プロパティ | 必須 | 説明 | Version
 ---|---|---|---
@@ -147,7 +149,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 > [Java を使用して Azure DB for PostgreSQL に接続する](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Java アプリを構成する](configure-custom-container.md)
+> [Java アプリを構成する](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [Jenkins での CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)

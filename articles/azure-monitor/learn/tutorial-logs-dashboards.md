@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
+ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77661534"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148261"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -27,7 +27,7 @@ Log Analytics ダッシュボードは、保存されているすべてのログ
 このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](quick-collect-azurevm.md)既存の仮想マシンが必要です。  
  
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
 
 ## <a name="create-a-shared-dashboard"></a>共有ダッシュボードを作成する
 **[ダッシュボード]** を選択して、既定の[ダッシュボード](../../azure-portal/azure-portal-dashboards.md)を開きます。 ダッシュ ボードの外観は次の例とは異なります。
@@ -35,6 +35,14 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 ![Azure Portal ダッシュボード](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 すべての Azure リソースの IT にとって最も重要な運用データをここにまとめて表示でき、Log Analytics のテレメトリも表示できます。  ログ クエリの可視化を始める前に、ダッシュボードを作成して共有しましょう。  その後、折れ線グラフとして表示される、パフォーマンス ログ クエリの例に焦点を当てます。これはダッシュボードに追加できます。  
+
+> [!NOTE]
+> Azure のダッシュボードでは、ログ クエリを使用して、次のグラフ タイプがサポートされます。
+> - 面グラフ
+> - 縦棒グラフ
+> - 円グラフ (ダッシュボードではドーナツ グラフとしてレンダリングされます)
+> - 散布図
+> - 時間グラフ
 
 ダッシュボードを作成するには、現在のダッシュボードの名前の隣にある **[新しいダッシュボード]** ボタンを選択します。
 
