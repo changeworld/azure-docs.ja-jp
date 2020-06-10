@@ -1,6 +1,6 @@
 ---
 title: Azure Functions のトリガーとバインド
-description: トリガーとバインドを使用して、Azure 関数をオンライン イベントおよびクラウドベース サービスに接続する方法を学習します。
+description: トリガーとバインドを使用して、Azure Functions をオンライン イベントおよびクラウドベース サービスに接続する方法を学習します。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -81,7 +81,7 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 
 ## <a name="resources"></a>リソース
 - [バインド式とパターン](./functions-bindings-expressions-patterns.md)
-- [Azure 関数の戻り値の使用](./functions-bindings-return-value.md)
+- [Azure Functions の戻り値の使用](./functions-bindings-return-value.md)
 - [バインド式を登録する方法](./functions-bindings-register.md)
 - テスト:
   - [Azure Functions のコードをテストするための戦略](functions-test-a-function.md)
