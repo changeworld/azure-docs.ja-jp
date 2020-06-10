@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.custom: aaddev, identityplatformtop40, tracking-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 90954ea2754fd77f1612bd616acb7d3c88e50816
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536048"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558664"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 

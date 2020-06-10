@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 85b61e03f1545b8a0e8263b799ac7a5b347be181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: b3216277c2d6d341f9123957e3fc1a3210376213
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419138"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559540"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 

@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:新しい HoloLens Unity アプリを作成する
 description: このチュートリアルでは、Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する方法について説明します。
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a3a81cdfa9e3c6659c870b184cda4ebe6f7f805a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75457728"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429666"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
 
