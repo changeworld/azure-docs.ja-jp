@@ -10,12 +10,13 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: e1248a4e90653f0e862841ec6f58a12364943590
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: b5a39951301256894553a036786ddd2fff251109
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196557"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606005"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>クイック スタート:Python を使用して Bing Custom Search エンドポイントを呼び出す
 

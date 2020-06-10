@@ -9,12 +9,12 @@ ms.date: 05/26/2020
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.openlocfilehash: b6eac711ed6c420330b036cb6094c841508cee9f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 76f37beb22e28c0232efd0d62e82c8d3b60c78dc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790717"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345089"
 ---
 # <a name="tutorial-deploy-an-azure-machine-learning-workspace-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,9 +33,9 @@ ms.locfileid: "83790717"
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-machine-learning-create/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-machine-learning-create/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json" range="1-258" highlight="224-254":::
 
 このテンプレートでは、次のリソースが定義されています。
 

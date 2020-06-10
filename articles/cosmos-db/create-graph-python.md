@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: fd266dd4e75915c0710acce1a2a49f24049c4e9d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062237"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559866"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>クイック スタート:Python と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 

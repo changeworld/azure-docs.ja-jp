@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0cd86aa647655f92f4ae1b5de50f506e9aad0f4e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74187296"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558154"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>チュートリアル:Azure Functions アプリで動的な構成を使用する
 
@@ -67,7 +67,7 @@ App Configuration .NET Standard 構成プロバイダーは、アプリケーシ
     }
     ```
 
-3. `Run` メソッドを更新し、Functions 呼び出しの最初に `Refresh` メソッドを使用して構成を更新するよう伝えます。 キャッシュの有効期間に達していなければ、何も実行されません。 ブロック化せずに構成を更新したい場合は、`await` オペレーターを削除してください。
+3. `Run` メソッドを更新し、Functions 呼び出しの最初に `TryRefreshAsync` メソッドを使用して構成を更新するよう伝えます。 キャッシュの有効期間に達していなければ、何も実行されません。 ブロック化せずに構成を更新したい場合は、`await` オペレーターを削除してください。
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ App Configuration .NET Standard 構成プロバイダーは、アプリケーシ
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];

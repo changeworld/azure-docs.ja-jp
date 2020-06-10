@@ -2,17 +2,17 @@
 title: Azure Event Grid のカスタム トピック用のディザスター リカバリー
 description: このチュートリアルでは、Event Grid サービスがリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: femila
+ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76511520"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557789"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。

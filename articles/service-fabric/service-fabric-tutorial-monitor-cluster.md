@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75376632"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560436"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure 内で Service Fabric クラスターを監視する
 
@@ -124,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 HealthState == 3 (エラー) の正常性レポートを返し、EventMessage フィールドから追加のプロパティを抽出します。
 
 ```kusto

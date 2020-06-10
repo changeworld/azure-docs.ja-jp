@@ -10,12 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.custom: tracking-python
+ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546063"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558363"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 

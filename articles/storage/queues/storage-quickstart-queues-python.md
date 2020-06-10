@@ -7,12 +7,13 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 0ab8cb56b29460911f2cfe8b711a07329ee739d6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78199769"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553177"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Queue storage クライアント ライブラリ v12
 

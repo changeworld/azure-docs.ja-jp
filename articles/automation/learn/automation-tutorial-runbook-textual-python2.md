@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714476"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559555"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>チュートリアル:Python Runbook を作成する
 
@@ -244,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>次のステップ
 
-- [PowerShell Runbook を作成する](automation-tutorial-runbook-textual-powershell.md)
-- [グラフィック Runbook を作成する](automation-tutorial-runbook-graphical.md)
-- [PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)
-- [Azure Automation の Runbook の種類](../automation-runbook-types.md)
-- [Python 開発者向けの Azure](/azure/python/)
-- [Azure Automation の GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- PowerShell Runbook の使用を開始するには、「[PowerShell Runbook を作成する](automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+- グラフィカル Runbook の使用を開始するには、「[グラフィカル Runbook を作成する](automation-tutorial-runbook-graphical.md)」を参照してください。
+- PowerShell Workflow Runbook の使用を開始するには、「[PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)」を参照してください。
+- Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](../automation-runbook-types.md)」を参照してください。
+- Python を使用した Azure の開発については、「[Python 開発者向けの Azure](/azure/python/)」をご覧ください。
+- サンプル Python 2 Runbook を表示するには、[Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) を参照してください。

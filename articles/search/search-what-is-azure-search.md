@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 87295278f39f7e7097b1f4d1ce1c729a71599c9f
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891549"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466223"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
@@ -68,7 +68,7 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 |-------------------|----------|
 | プロトタイピングと検査のためのツール | ポータルでは、[**データのインポート ウィザード**](search-import-data-portal.md)を使用してインデクサーを構成したり、インデックス デザイナーを使用してインデックスを設定したりできます。また、[**Search エクスプローラー**](search-explorer.md)を使用してクエリをテストしたり、スコアリング プロファイルを調整したりできます。 また、任意のインデックスを開いてスキーマを表示することもできます。 |
 | 監視と診断 | [**監視機能を有効にして**](search-monitor-usage.md)、ポータルに常に表示される、ひとめで確認できるメトリックの先に進みます。 1 秒あたりのクエリ数、待ち時間、スロットルに関するメトリックが取得され、ポータル ページで報告されます。追加の構成は必要ありません。|
-| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmission-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、既定の暗号化を[**顧客が管理する暗号化キー**](search-security-manage-encryption-keys.md)で補足できます。 Azure Key Vault 内で作成して管理するキーは、Azure Cognitive Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
+| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmissions-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、既定の暗号化を[**顧客が管理する暗号化キー**](search-security-manage-encryption-keys.md)で補足できます。 Azure Key Vault 内で作成して管理するキーは、Azure Cognitive Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
 | インフラストラクチャ | **可用性の高いプラットフォーム**により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、[Azure Cognitive Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。<br/><br/> エンド ツー エンドのソリューションとして**完全に管理され、スケーラブルな** Azure Cognitive Search では、インフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせてカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Azure Cognitive Search の使用方法

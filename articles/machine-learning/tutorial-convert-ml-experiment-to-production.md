@@ -7,12 +7,13 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/30/2020
-ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.custom: tracking-python
+ms.openlocfilehash: 25ff9bdb2c4ec1b3367c522c497fad9cfb0ba588
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559665"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558323"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
 

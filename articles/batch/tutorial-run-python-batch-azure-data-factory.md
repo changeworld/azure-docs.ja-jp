@@ -6,13 +6,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
-ms.custom: mvc
-ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773187"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555051"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 

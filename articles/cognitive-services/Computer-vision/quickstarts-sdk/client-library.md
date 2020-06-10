@@ -10,13 +10,14 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 03/12/2020
 ms.author: pafarley
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 4ac9f4bcaed5400846bf94f7db6ea6c143c101d6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: b76c986007a5df017bbadab62de239b319230ab5
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80133694"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609966"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>クイック スタート:Computer Vision クライアント ライブラリを使用する
 

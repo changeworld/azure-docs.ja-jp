@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 12/01/2019
-ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/09/2020
+ms.openlocfilehash: 1281f5c3355a09659f2f45c4cf944271936f50d8
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75551643"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636356"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="before-you-begin"></a>開始する前に 
 
 > [!IMPORTANT] 
-> Azure NetApp Files サービスへのアクセスを許可されている必要があります。  サービスへのアクセスを要求するには、[Azure NetApp Files 順番待ちリスト送信ページ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)を参照してください。  次の手順に進む前に、Azure NetApp Files チームから正式な確認メールが届くのを待つ必要があります。 
+> Azure NetApp Files サービスへのアクセスを許可されている必要があります。  サービスへのアクセスを要求するには、[Azure NetApp Files 順番待ちリスト送信ページ](https://aka.ms/azurenetappfiles)を参照してください。  次の手順に進む前に、Azure NetApp Files チームから正式な確認メールが届くのを待つ必要があります。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -10,13 +10,13 @@ ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
 ms.date: 04/15/2020
-ms.custom: Build2020
-ms.openlocfilehash: 058cdaa77a38dcb45164e01a54e73218b469940b
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.custom: Build2020, tracking-python
+ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860955"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552317"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

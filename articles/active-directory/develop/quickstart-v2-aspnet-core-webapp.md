@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112713"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456812"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 このクイックスタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
@@ -156,7 +156,7 @@ public void ConfigureServices(IServiceCollection services)
 > `ValidateIssuer = false` の設定は、このクイック スタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証する必要があります。
 > その方法については、サンプルを参照してください。
 >
-> また、`app.UserCookiePolicy()` と `app.UseAuthentication()` という 2 つの重要なメソッドを含んだ `Configure` メソッドにも注目してください。
+> また、`app.UseCookiePolicy()` と `app.UseAuthentication()` という 2 つの重要なメソッドを含んだ `Configure` メソッドにも注目してください。
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

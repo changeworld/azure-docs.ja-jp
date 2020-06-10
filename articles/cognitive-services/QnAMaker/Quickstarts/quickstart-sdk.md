@@ -3,13 +3,14 @@ title: クイック スタート:SDK を使用してナレッジ ベースを作
 description: このクイックスタートでは、クライアント SDK を使用してナレッジ ベースを作成および管理する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 350020069edc2ae01f1716b1e6166da43054b24b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 97d0ddd571f089cea2c656f6277e45d0d5eddb3d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204029"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608623"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>クイック スタート:ナレッジ ベースの作成および管理
 

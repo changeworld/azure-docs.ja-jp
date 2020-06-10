@@ -13,12 +13,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ed2bf757762beafda3d4b2958438672c03d8d234
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478075"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560058"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>クイック スタート:Python で Service Bus のトピックとサブスクリプションを使用する
 

@@ -3,19 +3,18 @@ title: クイック スタート:REST API で意図を取得する - LUIS
 description: この REST API のクイックスタートでは、利用可能なパブリック LUIS アプリを使用して、会話形式のテキストからユーザーの意図を判断します。
 ms.topic: quickstart
 ms.date: 05/18/2020
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 90d98e56e53e28991fb5aada9eab5a7e9c2e69c3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5d43a1aee9e3f355a3cfcab927d87571798677e7
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654268"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608555"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>クイック スタート:REST API で意図を取得する
 
 このクイック スタートでは、LUIS アプリを使用し、会話形式のテキストからユーザーの意図を判断します。 Pizza アプリの HTTP 予測エンドポイントにユーザーの意図をテキストとして送信します。 エンドポイントでは、LUIS によって Pizza アプリのモデルが適用されます。これにより自然言語テキストの意味が分析され、全体的な意図が特定されて、アプリのサブジェクト ドメインに関連したデータが抽出されます。
-
-このクイック スタートでは、エンドポイント REST API を使用します。 詳細については、[エンドポイント API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)をご覧ください。
 
 この記事には、無料の [LUIS](https://www.luis.ai) アカウントが必要です。
 

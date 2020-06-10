@@ -13,13 +13,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.custom: seo-python-october2019
-ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 38e4d4a8677ca88cfe4cf8d9fab19cec6a8874d4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478641"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560066"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>クイック スタート:Python で Azure Service Bus キューを使用する
 
