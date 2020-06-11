@@ -14,7 +14,7 @@ ms.locfileid: "79235287"
 ---
 # <a name="durable-functions-types-and-features"></a>Durable Functions の型と機能
 
-Durable Functions は [Azure Functions](../functions-overview.md) の拡張機能です。 Durable Functions は、関数実行のステートフル オーケストレーションに使用できます。 持続的関数アプリとはさまざまな Azure 関数で構成されるソリューションです。 Functions は永続関数のオーケストレーションでさまざまな役割を果たすことができます。 
+Durable Functions は [Azure Functions](../functions-overview.md) の拡張機能です。 Durable Functions は、関数実行のステートフル オーケストレーションに使用できます。 持続的関数アプリとはさまざまな Azure Functions で構成されるソリューションです。 Functions は永続関数のオーケストレーションでさまざまな役割を果たすことができます。 
 
 現在、Azure Functions には、アクティビティ、オーケストレーター、エンティティ、クライアントという 4 種類の持続的関数があります。 このセクションの残りの部分では、オーケストレーションに関係する関数の種類について詳しく説明します。
 
