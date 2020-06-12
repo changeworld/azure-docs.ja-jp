@@ -67,9 +67,9 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
 
 Windows で実行される App Service の場合、指定可能な値については、[既定のタイム ゾーン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。 Linux で実行される App Service の場合、タイム ゾーン値として [TZ データベース名](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を設定します。 TZ データベース名の例を挙げると、America/Adak のようになります。
 
-## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
+## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な WebJobs がときどき失敗する理由はなんですか?
 
-既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、 **[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な Web ジョブを実行する場合は、 **[常時接続]** をオンにする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](webjobs-create.md#CreateContinuous)」(継続的に実行する Web ジョブの作成) を参照してください。
+既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、 **[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な WebJobs を実行する場合は、 **[常時接続]** をオンにする必要があります。そうしないと、WebJobs の実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](webjobs-create.md#CreateContinuous)」(継続的に実行する WebJobs の作成) を参照してください。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Web アプリの送信 IP アドレスはどのように取得しますか?
 
@@ -121,12 +121,12 @@ Standard および Premium App Service プランでは、Web アプリを App Se
 
 デプロイ スロットの使用の詳細については、「[Set up a staging environment in App Service](deploy-staging-slots.md)」(App Service でのステージング環境のセットアップ) を参照してください。
 
-## <a name="how-do-i-access-and-review-webjob-logs"></a>Web ジョブのログにアクセスして確認するにはどうすればよいですか?
+## <a name="how-do-i-access-and-review-webjob-logs"></a>WebJobs のログにアクセスして確認するにはどうすればよいですか?
 
-Web ジョブのログを確認するには、次の手順を実行します。
+WebJobs のログを確認するには、次の手順を実行します。
 
 1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
-2. [Web ジョブ] を選択します。
+2. [WebJobs] を選択します。
 3. **[出力の切り替え]** ボタンを選択します。
 4. 出力ファイルをダウンロードするには、**ダウンロード** リンクを選択します。
 5. 個別実行では、 **[個別呼び出し]** を選択します。
@@ -228,9 +228,9 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 App Service アプリがApp Service プランに関連付けられている場合、App Service プランを削除することはできません。 App Service プランを削除する前に、関連付けられているすべての App Service アプリを App Service プランから削除します。
 
-## <a name="how-do-i-schedule-a-webjob"></a>Web ジョブをスケジュールする方法は?
+## <a name="how-do-i-schedule-a-webjob"></a>WebJobs をスケジュールする方法は?
 
-Cron 式を使用して Web ジョブのスケジュールを作成できます。
+Cron 式を使用して WebJobs のスケジュールを作成できます。
 
 1. settings.job ファイルを作成します。
 2. Cron 式を使用して、この JSON ファイルにスケジュールのプロパティを含めます。 
@@ -240,7 +240,7 @@ Cron 式を使用して Web ジョブのスケジュールを作成できます�
     {month} {day of the week}" }
     ```
 
-Web ジョブのスケジュールの詳細については、「[Create a scheduled WebJob by using a Cron expression](webjobs-create.md#CreateScheduledCRON)」(Cron 式を使用して、Web ジョブのスケジュールを作成する) を参照してください。
+WebJobs のスケジュールの詳細については、「[Create a scheduled WebJob by using a Cron expression](webjobs-create.md#CreateScheduledCRON)」(Cron 式を使用して、WebJobs のスケジュールを作成する) を参照してください。
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>App Service アプリの侵入テストを実行する方法は?
 
