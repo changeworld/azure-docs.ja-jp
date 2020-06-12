@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5814113906aadad01821f78863f5053b8082892
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80473457"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114839"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>概要
 このガイドでは、API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する方法について簡単に説明します。
@@ -38,7 +36,7 @@ Azure API Management は、ユーザー アクセス、使用帯域幅の調整�
 
 Azure Machine Learning Web サービスは、API Management インスタンスを使って管理できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[+ リソースの作成]** を選択します。
 3. 検索ボックスに「API management」と入力して "API Management" リソースを選択します。
 4. **Create** をクリックしてください。
@@ -153,7 +151,7 @@ API を作成するには、次の手順に従います。
 
 4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、 **[apiversion]** に「2.0」を、 **[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<実際のサービス API キー\>* 」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<your service API-KEY\>* 」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
    **[要求本文]** に「`{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`」と入力します。
 
@@ -217,7 +215,7 @@ Web サービスを作成します。 **[Web サービス]** を展開し、 **[
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Web サービスをテストする
-AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「 [Python をインストールする方法](/azure/developer/python/azure-sdk-install)」をご覧ください)。
+AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python のインストール方法](/azure/developer/python/azure-sdk-install)」を参照)。
 
 次のサンプルのソースには、実験の**workspace**、**service**、**api_key** が必要です。 Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチ実行]** をクリックするとワークスペースとサービスが表示されます。
 

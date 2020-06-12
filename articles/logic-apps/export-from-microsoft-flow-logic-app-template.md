@@ -3,24 +3,26 @@ title: Power Automate からフローを Azure Logic Apps にエクスポート�
 description: Azure Resource Manager テンプレートとしてエクスポートすることによって Power Automate から Azure Logic Apps にフローを移行する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75428876"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298722"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
 
 フローの機能を拡張するために、そのフローを [Power Automate](https://flow.microsoft.com) から [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行することができます。 フローをロジック アプリの Azure Resource Manager テンプレートとしてエクスポートし、そのロジック アプリ テンプレートを Azure リソース グループにデプロイした後、Logic App Designer でそのロジック アプリを開くことができます。
 
 > [!NOTE]
-> すべての Power Automate コネクタが Azure Logic Apps で使用できるわけではありません。 Azure Logic Apps に[同等のコネクタ](../connectors/apis-list.md)があるフローをインポートできます。 たとえば、Button トリガー、Approval コネクタ、および Notification コネクタは Power Automate に固有です。
+> すべての Power Automate コネクタが Azure Logic Apps で使用できるわけではありません。 Azure Logic Apps に同等のコネクタを持つ Power Automate フローのみを移行できます。 たとえば、Button トリガー、Approval コネクタ、および Notification コネクタは Power Automate に固有です。 現時点では、Power Automate の OpenAPI ベースのフローは、ロジック アプリ テンプレートとしてエクスポートおよびデプロイではサポートされていません。
 >
-> Power Automate からエクスポートされた OpenAPI ベースのフローは、現在、ロジック アプリ テンプレートとしてのデプロイではサポートされていません。 
+> * Logic Apps に同等のコネクタを持たない Power Automate コネクタを見つけるには、[Power Automate コネクタ](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
+>
+> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

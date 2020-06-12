@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617706"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119218"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -41,7 +41,7 @@ Azure Cognitive Search サービスを作成すると、サービスの有効期
 
 選択したレベルによって課金対象のレートが決まります。 次の Azure portal のスクリーンショットは、使用可能なレベルを示しています。価格は除外されていますが、ポータルと[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)で確認できます。 最も一般的なレベルは、**Free**、**Basic**、**Standard** です。
 
-**Free** は、クイックスタートやチュートリアルなど、小規模なプロジェクト用の限定された検索サービスを作成します。 内部的には、複数のサブスクライバー間で共有されるレプリカとパーティション。 無料のサービスをスケーリングしたり、重要なワークロードを実行したりすることはできません。
+**Free** は、クイックスタートやチュートリアルなど、小規模なプロジェクト用の限定された検索サービスを作成します。 内部的には、複数のサブスクライバー間でレプリカとパーティションが共有されます。 無料のサービスをスケーリングしたり、重要なワークロードを実行したりすることはできません。
 
 **Basic** と **Standard** は最も一般的に使用される課金対象のレベルで、**Standard** が既定値になっています。 自分の制御下の専用リソースを使用して、より大規模なプロジェクトのデプロイ、パフォーマンスの最適化、および容量の設定を行うことができます。
 
@@ -68,7 +68,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 最低料金は、課金対象のレートでの最初の検索単位 (1 つのレプリカ x 1 つのパーティション) です。 これより小さい構成ではサービスは実行できないため、この最低料金はサービスの有効期間を通して一定です。 最小構成を超える場合は、レプリカとパーティションを互いに独立して追加できます。 レプリカおよびパーティションによって容量が徐々に増加すると、[(レプリカ数 x パーティション数 x レート)](#search-units) という式に基づいて料金が増加します。この場合、課金されるレートは、選択した価格レベルによって異なります。
 
-検索ソリューションのコストを見積もる際には、価格と容量は直線的に比例するものではないことに注意してください  (容量を 2 倍にすると、コストは 2 倍より多くなります)。数式による計算の例については、「[レプリカとパーティションを割り当てる方法](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)」を参照してください。
+検索ソリューションのコストを見積もる際には、価格と容量は直線的に比例するものではないことに注意してください (容量を 2 倍にすると、コストは 2 倍より多くなります)。数式による計算の例については、「[レプリカとパーティションを割り当てる方法](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)」を参照してください。
 
 ### <a name="bandwidth-charges"></a>帯域幅の料金
 
@@ -83,7 +83,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 [AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、Azure Cognitive Search と同じリージョンの S0 価格レベルで、[有料の Azure Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)ように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
 
-| Operation | 課金への影響 |
+| 操作 | 課金への影響 |
 |-----------|----------------|
 | ドキュメント解析、テキスト抽出 | Free |
 | ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成**で、[imageAction](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|

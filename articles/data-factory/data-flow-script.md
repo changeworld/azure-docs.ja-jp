@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890868"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298603"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -192,6 +192,16 @@ derive(DWhash = sha1(columns()))
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新、upsert、挿入、削除の数をカウントする
+行の変更変換を使用する場合は、行の変更ポリシーによって発生した更新、upsert、挿入、削除の数をカウントしたい場合があります。 変更行の後に集計変換を追加し、そのデータ フロー スクリプトをこれらのカウントの集計の定義に貼り付けます。
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>次のステップ

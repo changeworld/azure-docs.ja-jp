@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772864"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268037"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -570,27 +570,7 @@ Data Factory のスクリプトは、必ず CI/CD パイプラインのデプロ
 
 Git が構成されていない場合は、 **[ARM テンプレート]** 一覧の **[ARM テンプレートのエクスポート]** を使用して、リンクされたテンプレートにアクセスできます。
 
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>CI/CD から Azure-SSIS 統合ランタイムを除外する
-
-開発ファクトリに Azure-SSIS 統合ランタイムがある場合は、次のシナリオで CI/CD プロセスからすべての Azure-SSIS 統合ランタイムを除外できます。
-
-- Azure-SSIS IR インフラストラクチャは複雑であり、環境によって異なります。  
-- Azure-SSIS IR は、同じ名前の環境ごとに手動でセットアップします。 そうしないと、Azure-SSIS IR に依存するアクティビティがある場合、公開に失敗します。
-
-Azure-SSIS 統合ランタイムを除外するには:
-
-1. コラボレーション ブランチのルート フォルダーに publish_config.json ファイルが存在しない場合は追加します。
-1. 以下の設定を publish_config.json に追加します。 
-
-```json
-{
-    " excludeIRs": "true"
-}
-```
-
-コラボレーション ブランチから公開する場合、Azure-SSIS 統合ランタイムは、生成された Resource Manager テンプレートから除外されます。
-
-## <a name="hotfix-production-branch"></a>運用ブランチへの修正プログラムの適用
+## <a name="hotfix-production-environment"></a>運用環境への修正プログラムの適用
 
 ファクトリを運用環境にデプロイし、すぐに修正が必要なバグがあることが判明したが現在のコラボレーション ブランチをデプロイできない場合、修正プログラムのデプロイが必要なことがあります。 この方法は、クイック修正エンジニアリングまたは QFE と呼ばれています。
 
@@ -631,7 +611,7 @@ Azure-SSIS 統合ランタイムを除外するには:
 - 設計上、Data Factory では、コミットのチェリーピックやリソースの選択的発行は許可されません。 発行には、データ ファクトリで加えられたすべての変更が含まれます
 
     - データ ファクトリのエンティティは相互に依存しています。 たとえば、トリガーはパイプラインに依存し、パイプラインはデータセットや他のパイプラインに依存しています。 リソースのサブセットを選択的に発行すると、予期しない動作やエラーにつながる可能性があります。
-    - まれに、選択的な発行が必要になった場合は、修正プログラムの使用を検討してください。 詳細については、「[運用ブランチへの修正プログラムの適用](#hotfix-production-branch)」を参照してください。
+    - まれに、選択的な発行が必要になった場合は、修正プログラムの使用を検討してください。 詳細については、「[運用環境への修正プログラムの適用](#hotfix-production-environment)」を参照してください。
 
 -   非公開のブランチから発行することはできません。
 

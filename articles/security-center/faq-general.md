@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106578"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248551"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
@@ -29,7 +29,7 @@ Security Center では、データの収集と格納に Log Analytics エージ�
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Azure Security Center はどうしたら取得できますか。
-Azure Security Center は、Microsoft Azure サブスクリプションで有効化し、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) からアクセスします  アクセスするには、[ポータルにサインイン](https://portal.azure.com)し、 **[参照]** を選択し、 **[Security Center]** までスクロールします。
+Azure Security Center は、Microsoft Azure サブスクリプションで有効化し、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) からアクセスします アクセスするには、[ポータルにサインイン](https://portal.azure.com)し、 **[参照]** を選択し、 **[Security Center]** までスクロールします。
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Azure Security Center の監視対象になる Azure リソースは何ですか。
@@ -59,7 +59,7 @@ Azure Security Center で有効になっているセキュリティ ポリシー
 
 
 ## <a name="who-can-modify-a-security-policy"></a>セキュリティ ポリシーを変更できるのは誰ですか。
-セキュリティ ポリシーを変更するには、セキュリティ管理者であるか、そのサブスクリプションの所有者または共同作成者である必要があります。
+セキュリティ ポリシーを変更するには、**セキュリティ管理者**であるか、そのサブスクリプションの**所有者**である必要があります。
 
 セキュリティ ポリシーを構成する方法については、 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) を参照してください。
 

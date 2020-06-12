@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: サーバー管理者ロールにサービス プリンシパルを追加する
           href: analysis-services-addservprinc-admins.md
+        - name: リージョン間の移動
+          href: move-between-regions.md
     - name: モデル
       items:
         - name: テーブル モデリング

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635286"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142080"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
@@ -74,6 +74,7 @@ Active Directory に対して認証された後、トークンを取得します
 
 ## <a name="additional-considerations"></a>その他の注意点
 
+- Azure Active Directory 認証は、MySQL 5.7 以降でのみ使用できます。
 - Azure Database for MySQL サーバーには、常に 1 人の Azure AD 管理者のみを構成できます。
 - Azure Active Directory アカウントを使用して Azure Database for MySQL に最初に接続できるのは、MySQL の Azure AD 管理者だけです。 Active Directory 管理者は、それ以降の Azure AD のデータベース ユーザーを構成できます。
 - Azure AD からユーザーが削除されると、そのユーザーは Azure AD で認証されることができなくなります。したがって、そのユーザーのアクセス トークンを取得できなくなります。 この場合、一致するユーザーがデータベースに残るものの、そのユーザーを使用してサーバーに接続することはできなくなります。

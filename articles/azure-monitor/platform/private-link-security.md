@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: ddd34295bfe64fdd336d8b237482b45f02e30201
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816497"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299685"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -74,11 +74,17 @@ AMPLS リソースを設定する前に、ネットワークの分離要件を�
 
 まず、Azure Monitor Private Link Scope リソースを作成します。
 
-1. Azure portal で **[リソースの作成]** に移動して、「**Azure Monitor Private Link Scope**」を検索します。 
-2. **[Create]\(作成\)** をクリックします。 
-3. サブスクリプションとリソース グループを選択します。 
-4. AMPLS に名前を付けます。 スコープの使用目的とセキュリティ境界を明確に示す名前を使用することをお勧めします。これは、だれかが誤ってネットワーク セキュリティ境界を破ることがないようにするためです。 たとえば、"AppServerProdTelem" などです。 
+1. Azure portal で **[リソースの作成]** に移動して、「**Azure Monitor Private Link Scope**」を検索します。
+
+   ![Azure Monitor Private Link スコープを検索する](./media/private-link-security/ampls-find-1c.png)
+
+2. **[Create]\(作成\)** をクリックします。
+3. サブスクリプションとリソース グループを選択します。
+4. AMPLS に名前を付けます。 スコープの使用目的とセキュリティ境界を明確に示す名前を使用することをお勧めします。これは、だれかが誤ってネットワーク セキュリティ境界を破ることがないようにするためです。 たとえば、"AppServerProdTelem" などです。
 5. **[Review + Create]\(レビュー + 作成\)** をクリックします。 
+
+   ![Azure Monitor Private Link スコープを作成する](./media/private-link-security/ampls-create-1d.png)
+
 6. 検証をパスしたら、 **[作成]** をクリックします。
 
 ## <a name="connect-azure-monitor-resources"></a>Azure Monitor リソースの接続
@@ -188,7 +194,7 @@ Log Analytics ワークスペースへのセキュリティで保護されたテ
 
 **Log Analytics Windows エージェント**
 
-Log Analytics エージェント バージョン 18.20.18038.0 以降を使用します。
+Log Analytics エージェント バージョン 10.20.18038.0 以降を使用します。
 
 **Log Analytics Linux エージェント**
 
@@ -201,7 +207,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure portal
 
-Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory**、**AzureResourceManager**、**AzureFrontDoor.FirstParty、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をファイアウォールに追加します。
+Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory**、**AzureResourceManager**、**AzureFrontDoor.FirstParty**、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をファイアウォールに追加します。
 
 ### <a name="programmatic-access"></a>プログラムによるアクセス
 
@@ -224,3 +230,6 @@ Log Analytics エージェントでソリューション パックをダウン�
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  送信
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 送信
 
+## <a name="next-steps"></a>次のステップ
+
+- [プライベート ストレージ](private-storage.md)について確認します

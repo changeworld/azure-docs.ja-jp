@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d1080abb35e556e97c34e77fdce4d553c169ee9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128377"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266867"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
@@ -36,8 +36,8 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 ## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>手順 1:テンプレート ファイルをダウンロードする
 このチュートリアルに必要なサンプル ファイルをダウンロードすることから始めましょう。
 
-1. [Azure Cosmos DB アカウント と Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Azure Cosmos DB アカウントに接続するように Web アプリケーションを自動的に構成します。
-2. [Azure Cosmos DB アカウントと Web Apps の作成のサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウントと App Service Web アプリをデプロイし、サイトのアプリケーション設定を変更して Azure Cosmos DB の接続情報を簡単に表示できるようにします。ただし、Web アプリケーションは含まれていません。  
+1. **Azure Cosmos DB アカウントと Web Apps の作成およびデモ アプリケーションのデプロイのサンプル** (`https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json`) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Azure Cosmos DB アカウントに接続するように Web アプリケーションを自動的に構成します。
+2. **Azure Cosmos DB アカウントと Web Apps の作成のサンプル** (`https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json`) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウントと App Service Web アプリをデプロイし、サイトのアプリケーション設定を変更して Azure Cosmos DB の接続情報を簡単に表示できるようにします。ただし、Web アプリケーションは含まれていません。  
 
 <a id="Build"></a>
 

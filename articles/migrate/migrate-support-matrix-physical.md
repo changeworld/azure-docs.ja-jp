@@ -3,12 +3,12 @@ title: Azure Migrate での物理サーバーの評価のサポート
 description: Azure Migrate Server Assessment での物理サーバーの評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 31fd676a339a6c82cec84e0f355ac875f68a653c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983671"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267927"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
@@ -35,7 +35,7 @@ ms.locfileid: "82983671"
 | :-------------------       | :------------------- |
 | **物理サーバーの展開**       | 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
 | **アクセス許可**           | **Windows:** 検出するすべての Windows サーバーで、ドメイン管理者またはローカル管理者である必要があります。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。 <br/><br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 |
-| **オペレーティング システム** | Windows Server 2003 および SUSE Linux を除く、Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) と [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) サーバー オペレーティング システム。<br/><br/> Windows 10 および Windows 8 クライアント オペレーティング システム。 |
+| **オペレーティング システム** | すべてのオペレーティング システムを、移行のために評価することができます。 |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate アプライアンスの要件

@@ -2,13 +2,13 @@
 title: リソースが見つからないエラー
 description: Azure Resource Manager テンプレートでデプロイ時にリソースが見つからないエラーを解決する方法について説明します。
 ms.topic: troubleshooting
-ms.date: 01/21/2020
-ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/01/2020
+ms.openlocfilehash: 5d827f68ec97cfa77fb69a34284bd572286641a4
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773262"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259356"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
 
@@ -95,8 +95,25 @@ Resource Manager はリソースのプロパティを取得する必要があり
 
 Reference 関数では、`Full` を使用して、マネージド ID を含むすべてのプロパティを取得します。
 
-たとえば、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+パターンは次のとおりです。
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+> [!IMPORTANT]
+> 次のパターンは使用しません。
+>
+> `"[reference(concat(resourceId(<resource-provider-namespace>, <resource-name>),'/providers/Microsoft.ManagedIdentity/Identities/default'),<API-version>).principalId]"`
+>
+> テンプレートが失敗します。
+
+たとえば、仮想マシンに適用されるマネージド ID のプリンシパル ID を取得するには、次を使用します。
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+または、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
