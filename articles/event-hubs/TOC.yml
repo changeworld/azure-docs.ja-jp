@@ -213,8 +213,12 @@
           href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:
-        - name: トラブルシューティング ガイド
+        - name: 接続の問題のトラブルシューティング
           href: troubleshooting-guide.md
+        - name: 認証と承認の問題のトラブルシューティング
+          href: troubleshoot-authentication-authorization.md
+        - name: Event Hubs 用 Kafka トラブルシューティング ガイド
+          href: apache-kafka-troubleshooting-guide.md
         - name: .NET の例外
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager の例外
