@@ -7,16 +7,16 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: f63553ced8484b3ce328fb9537d5831ae1e27fe8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402593"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191489"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL Server または Azure SQL Database のワークフローを自動化する
 
-この記事では、SQL Server コネクタを使用してロジック アプリの中から SQL データベースのデータにアクセスする方法を示します。 ロジック アプリを作成することによって、SQL データとリソースを管理するタスク、プロセス、ワークフローを自動化できます。 SQL Server コネクタは、[オンプレミスの SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) と[クラウドベースの Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) の両方で動作します。
+この記事では、SQL Server コネクタを使用してロジック アプリの中から SQL データベースのデータにアクセスする方法を示します。 ロジック アプリを作成することによって、SQL データとリソースを管理するタスク、プロセス、ワークフローを自動化できます。 SQL Server コネクタは、[SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) だけでなく、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) と [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) でも機能します。
 
 SQL データベースや Dynamics CRM Online などの他のシステム内のイベントによってトリガーされたときに実行されるロジック アプリを作成できます。 ロジック アプリは、データの取得、挿入、削除のほか、SQL クエリやストアド プロシージャを実行することもできます。 たとえば、Dynamics CRM Online の新しいレコードを自動的に確認し、新しいレコード用の項目を SQL データベースに追加した後、追加した項目に関する電子メール アラートを送信するロジック アプリをビルドできます。
 
@@ -26,7 +26,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
 * Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* [SQL Server データベース](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database)または [Azure SQL データベース](../sql-database/sql-database-get-started-portal.md)
+* [SQL Server データベース](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database)または [Azure SQL データベース](../azure-sql/database/single-database-create-quickstart.md)
 
   テーブルには、ロジック アプリが操作を呼び出したときに結果を返すことができるように、データが含まれている必要があります。 Azure SQL Database を作成する場合は、用意されているサンプル データベースを使用できます。
 

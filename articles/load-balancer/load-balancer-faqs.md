@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005151"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014929"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -32,6 +32,9 @@ Load Balancer の SKU をアップグレードするための自動スクリプ�
 
 ## <a name="how-are-inbound-nat-rules-different-from-load-balancing-rules"></a>インバウンド NAT 規則と負荷分散規則には、どのような違いがありますか?
 NAT 規則は、トラフィックをルーティングするバックエンド リソースを指定するために使用されます。 たとえば、特定の VM に RDP トラフィックを送信するように特定のロード バランサー ポートを構成することができます。 負荷分散規則は、トラフィックをルーティングするバックエンド リソースのプールを指定して、各インスタンス間で負荷を分散します。 たとえば、負荷分散規則では、ロード バランサーのポート 80 上の TCP パケットを Web サーバーのプール全体にルーティングできます。
+
+## <a name="what-is-ip-1686312916"></a>IP 168.63.129.16 とは何か?
+Azure の正常性プローブが開始される Azure インフラストラクチャのロード バランサーとしてタグ付けされたホストの仮想 IP アドレスです。 バックエンド インスタンスを構成するとき、正常性プローブに正常に応答するために、この IP アドレスからのトラフィックを許可する必要があります。 この規則は、Load Balancer フロントエンドへのアクセスには影響しません。 Azure ロード バランサーを使用していない場合は、この規則を無視できます。 サービス タグの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 ご不明な点が上記の一覧にない場合は、このページに関するフィードバックにご質問を添えてお送りください。 お送りいただくと、製品チームでは、お客様からの貴重なご質問すべてにお答えできるよう、GitHub 問題を作成しています。

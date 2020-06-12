@@ -4,15 +4,15 @@ description: Azure Active Directory Domain Services を使用して Azure Files 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ccaa1945101c252f7dd32be6f9340b51541ed48d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666847"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296636"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
@@ -22,6 +22,7 @@ SMB を使用した Azure ファイル共有への Azure AD 認証の概要に�
 
 > [!NOTE]
 > Azure Files では、Azure AD DS と RC4-HMAC 暗号化を使用した Kerberos 認証がサポートされています。 AES Kerberos 暗号化はまだサポートされていません。
+> Azure Files は、Azure AD と完全に同期する Azure AD DS の認証をサポートしています。 Azure AD DS で範囲指定された同期を有効にし、Azure AD から限定された ID のセットのみを同期する場合、認証と承認はサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 

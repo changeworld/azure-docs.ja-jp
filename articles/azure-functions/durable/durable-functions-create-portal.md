@@ -4,12 +4,12 @@ description: ポータル開発用に Azure Functions の Durable Functions 拡�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a1d0e428da18d44705f4deaf6da3299957076d87
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848762"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171397"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
@@ -58,7 +58,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 
    ![Kudu の実行 (npm install)](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. 最後に、(互換モードを有効にするには) [https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 ] アプリ設定 `FUNCTIONS_V2_COMPATIBILITY_MODE` に `true` の値を追加します。
+5. 最後に、アプリ設定 `FUNCTIONS_V2_COMPATIBILITY_MODE` に値 `true` を追加することで、[互換モードを有効にします](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1)。
 
 ## <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
 

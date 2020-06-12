@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 70f90026e4a67fe1f8b1d5f790aed87652975045
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f45bbd010bca8bbf42be13eeaac327a98f564864
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798618"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298246"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -84,7 +84,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、フランクフルト、ロンドン、シリコンバレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **[アット東京](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | サポートされています | サポートされています | 東京 2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | サポートされています | サポートされています | 東京 |
-| **[BCX](https://www.bcx.co.za/solutions)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ|
+| **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |サポートされています |サポートされています |モントリオール、トロント、ケベック シティ |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |サポートされています |サポートされています |アムステルダム、香港特別行政区、ヨハネスブルグ、ロンドン、ニューポート (ウェールズ)、サンパウロ、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |サポートされています |サポートされています |マイアミ |
@@ -95,9 +95,8 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **China Telecom Global** |サポートされています |サポートされています |香港、香港 2 |
 | **China Unicom Global** |サポートされています |サポートされています | シンガポール 2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |サポートされています |サポートされています |台北 |
-| **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** | サポートされています | サポートされています | マイアミ |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |サポートされています |サポートされています |シカゴ、ダラス、モントリオール、トロント、バンクーバー、ワシントン DC |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、シカゴ、ダブリン、フランクフルト、ロンドン、ロンドン 2、ニューポート、ニューヨーク、大阪、パリ、シリコン バレー、シリコン バレー 2、シンガポール 2、東京、ワシントン DC |
+| **[Colt](https://www.colt.net/direct-connect/azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、シカゴ、ダブリン、フランクフルト、ロンドン、ロンドン 2、ニューポート、ニューヨーク、大阪、パリ、シリコン バレー、シリコン バレー 2、シンガポール 2、東京、ワシントン DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |シカゴ、デンバー、ロサンゼルス、ニューヨーク、シリコン バレー、シリコン バレー 2、ワシントン DC、ワシントン DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | サポートされています |サポートされています |アムステルダム 2、フランクフルト、マルセイユ|
@@ -127,13 +126,13 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、ニューポート (ウェールズ)、サンパウロ、シアトル、シリコン バレー、シンガポール、ワシントン DC |
 | **LG CNS** |サポートされています |サポートされています |釜山、ソウル |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、アトランタ、オークランド、シカゴ、ダラス、デンバー、ドバイ 2、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、ラスベガス、ロンドン、ロンドン 2、ロサンゼルス、メルボルン、マイアミ、モントリオール、ニューヨーク、オスロ、パース、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、シドニー、シドニー 2、東京、トロント、ワシントン DC、チューリッヒ |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、アトランタ、オークランド、シカゴ、ダラス、デンバー、ドバイ 2、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、ラスベガス、ロンドン、ロンドン 2、ロサンゼルス、メルボルン、マイアミ、モントリオール、ニューヨーク、オスロ、パース、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、スタバンゲル、ストックホルム、シドニー、シドニー 2、東京、東京 2、トロント、ワシントン DC、ワシントン DC2、チューリッヒ |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |サポートされています |サポートされています |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |サポートされています |サポートされています |ダラス、ロサンゼルス、マイアミ、サンパウロ、ワシントン DC |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |サポートされています |サポートされています |ニューポート (ウェールズ) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |サポートされています |サポートされています |メルボルン、パース、シドニー、シドニー 2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |サポートされています |サポートされています |アムステルダム、香港特別行政区、ロンドン、ロサンゼルス、大阪、シンガポール、シドニー、東京、ワシントン DC |
-| **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |サポートされています |サポートされています |東京 |
+| **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |サポートされています |サポートされています |東京 |
 | **[NTT Global DataCenters EMEA](https://www.ntt.com/en/services/data-center.html)** |サポートされています |サポートされています |ベルリン |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |サポートされています |サポートされています |大阪 |
 | **[Ooredoo Cloud Connect](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |サポートされています |サポートされています |マルセイユ |
@@ -200,7 +199,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 
 | **サービス プロバイダー** | **Microsoft Azure** | **Office 365** | **場所** |
 | --- | --- | --- | --- |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされていません |フランクフルト |
+| **[Colt](https://www.colt.net/direct-connect/azure/)** |サポートされています |サポートされていません |フランクフルト |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされていません |フランクフルト |
 | **[e-shelter](https://www.e-shelter.de/en/microsoft-expressroutetm)** |サポートされています |サポートされていません |ベルリン |
 | **Interxion** |サポートされています |サポートされていません |フランクフルト |
@@ -255,7 +254,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | アムステルダム | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | シンガポール | 
 | **[Aptum Technologies](https://aptum.com/services/cloud/managed-azure/)**| Equinix | モントリオール、トロント |
-| **[CoreAzure](http://www.coreazure.com/expressroute/)**| Equinix | London |
+| **[CoreAzure](http://www.coreazure.com/)**| Equinix | London |
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)**| Equinix | ダラス、シリコン バレー、ワシントン DC |
 | **[Crown Castle](https://fiber.crowncastle.com/solutions/added/cloud-connect)**| Equinix | アトランタ、シカゴ、ダラス、ロサンゼルス、ニューヨーク、ワシントン DC |
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | ダラス |

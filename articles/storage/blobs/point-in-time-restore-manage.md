@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbfc5667fb35b8f807a3a806dda4647af10e9392
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118212"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170105"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>ブロック BLOB でポイントインタイム リストアを有効にして管理する (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "83118212"
 このプレビューの詳細情報および登録方法については、「[ブロック BLOB のポイントインタイム リストア (プレビュー)](point-in-time-restore-overview.md)」を参照してください。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 ポイントインタイム リストアのプレビュー中に [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使用して復元できません。 プレビュー中は、コンテナーを削除するのではなく、復元する可能性がある場合は個々の BLOB を削除してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 ポイントインタイム リストアのプレビュー中に [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 プレビュー中は、コンテナーを削除するのではなく、復元する可能性がある場合は個々の BLOB を削除してください。
 
 > [!IMPORTANT]
 > ポイントインタイム リストアのプレビューは、非運用環境での使用のみを意図しています。 運用環境のサービス レベル契約(SLA) は現在使用できません。
@@ -99,14 +99,19 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>復元操作を実行する
 
-復元操作を開始するには、UTC **DateTime** 値として復元ポイントを指定して、Restore-AzStorageBlobRange コマンドを呼び出します。 復元する BLOB の 1 つ以上の辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントにあるすべてのコンテナー内のすべての BLOB を復元することもできます。 復元操作が完了するまでに数分かかる場合があります。
+復元操作を開始するには、UTC **DateTime** 値として復元ポイントを指定して、Restore-AzStorageBlobRange コマンドを呼び出します。 復元する辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントにあるすべてのコンテナー内のすべての BLOB を復元することもできます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。 復元操作が完了するまでに数分かかる場合があります。
 
 復元する BLOB の範囲を指定するときは、次の規則に注意してください。
 
 - 開始範囲と終了範囲に指定するコンテナー パターンには、3 文字以上を含める必要があります。 コンテナー名と BLOB 名を区切るために使用されるスラッシュ (/) は、この最小数にはカウントされません。
-- 1 回の復元操作につき指定できる範囲は 1 つだけです。
+- 1 回の復元操作につき最大 10 個の範囲を指定できます。
 - ワイルドカード文字はサポートされていません。 それらは、標準文字として扱われます。
 - 復元操作に渡される範囲に明示的に指定することで、`$root` および `$web` コンテナー内の BLOB を復元できます。 `$root` および `$web` コンテナーは、明示的に指定されている場合にのみ復元されます。 他のシステム コンテナーは復元できません。
+
+> [!IMPORTANT]
+> 復元操作を実行すると、Azure Storage では操作中、復元される範囲内の BLOB に対するデータ操作がブロックされます。 読み取り、書き込み、および削除の各操作がプライマリ ロケーションでブロックされます。 このため、Azure portal でのコンテナーの一覧表示などの操作は、復元操作の実行中に予期したとおりに実行されない場合があります。
+>
+> ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
 
 ### <a name="restore-all-containers-in-the-account"></a>アカウント内のすべてのコンテナーを復元する
 
@@ -147,7 +152,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-multiple-ranges-of-block-blobs"></a>複数の範囲のブロック BLOB を復元する
 
-複数の範囲のブロック BLOB を復元するには、`-BlobRestoreRange` パラメーターに範囲の配列を指定します。 次の例は、*container1* と *container4* の完全な内容を復元します。
+複数の範囲のブロック BLOB を復元するには、`-BlobRestoreRange` パラメーターに範囲の配列を指定します。 復元操作ごとに最大 10 個の範囲がサポートされます。 次の例では、*container1* と *container4* の完全な内容を復元する 2 つの範囲を指定しています。
 
 ```powershell
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2

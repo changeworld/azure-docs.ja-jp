@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420837"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249146"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -32,7 +32,7 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 
 **[サーバー]** | **必要条件** | **詳細**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager なしで実行) |  Windows Server 2019、Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。 
+Hyper-V (Virtual Machine Manager なしで実行) |  Windows Server 2019、Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。 <br/><br/> 注:Windows Server 2019 サーバー コア バージョンでは、フェールバックはサポートされていません。
 Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。<br/><br/> 注:別の場所へのフェールバックは、Windows Server 2019 ホストではサポートされていません。
 
 

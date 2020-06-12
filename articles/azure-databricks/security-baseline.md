@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 66043ae4f569e4151be829ca361232accb2f0ebd
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681698"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219381"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure Databricks 用の Azure セキュリティ ベースライン
 
@@ -200,7 +200,7 @@ Azure Databricks 用の Azure セキュリティ ベースラインには、ご�
 
 注:Azure Databricks の診断ログには Azure Databricks Premium プランが必要です
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy))
+* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 * [Azure Databricks の診断設定を有効にする方法](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs)
 
@@ -262,7 +262,7 @@ Azure Databricks 用の Azure セキュリティ ベースラインには、ご�
 
 注:Azure Databricks の診断ログには Azure Databricks Premium プランが必要です
 
-* [Azure Databricks ログを Log Analytics ワークスペースに送信する方法](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery))
+* [Azure Databricks ログを Log Analytics ワークスペースに送信する方法](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery)
 
 * [Log Analytics ワークスペースでアラートを構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
 
@@ -404,7 +404,7 @@ Azure Databricks 用の Azure セキュリティ ベースラインには、ご�
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure AD には、古いアカウントの検出に役立つログが用意されています。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 SCIM API と Azure Databricks 診断ログを実装して、ユーザー アクセスを確認することもできます。 SCIM API と Azure Databricks 診断ログを使用して、ユーザー アクセスを確認することもできます。
+**ガイダンス**: Azure AD には、古いアカウントの検出に役立つログが用意されています。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 SCIM API と Azure Databricks 診断ログを実装して、ユーザー アクセスを確認することもできます。
 
 さらに、Azure Databricks 管理コンソール内でユーザー アクセスを定期的に確認および管理します。
 
@@ -968,7 +968,7 @@ Azure Databricks クラスター ノードまたは関連リソースにアッ�
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**ガイダンス**: Azure Key Vault 内の Azure Databricks 実装に関連するユーザー マネージド キーをバックアップします。 REST API と CLI を使用して、Databricks 構成の毎日のバックアップを作成することもできます。 REST API と CLI を使用して、Databricks 構成の毎日のバックアップを作成することもできます。
+**ガイダンス**: Azure Key Vault 内の Azure Databricks 実装に関連するユーザー マネージド キーをバックアップします。 REST API や CLI を使用して、Databricks 構成の毎日のバックアップを作成することもできます。
 
 * [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

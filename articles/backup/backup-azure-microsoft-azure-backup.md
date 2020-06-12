@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735873"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247276"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -186,9 +186,9 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     SSRS 構成では次の値を使用します。
     * サービス アカウント:‘組み込みアカウントの使用’ はネットワーク サービスにする必要があります
-    * Web サービスの URL:[仮想ディレクトリ] は ReportServer_\<SQLInstanceName> にする必要があります
+    * Web サービスの URL:‘仮想ディレクトリ’ は ReportServer_\<SQLInstanceName> にする必要があります
     * データベース: DatabaseName は ReportServer$\<SQLInstanceName> にする必要があります
-    * Web ポータルの URL:[仮想ディレクトリ] は Reports_\<SQLInstanceName> にする必要があります
+    * Web ポータルの URL:‘仮想ディレクトリ’ は ReportServer_\<SQLInstanceName> にする必要があります
 
     SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
 

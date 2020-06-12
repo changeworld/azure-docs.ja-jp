@@ -4,15 +4,15 @@ description: Azure Analysis Services に接続するクライアント アプリ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 06/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ee3de593e7795f155e8ca38ffac02cfaa80d171
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8c02be378febacc4db0b077a3be69339ff9710a0
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232957"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300911"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>Analysis Services に接続するためのクライアント ライブラリ
 
@@ -22,10 +22,10 @@ ms.locfileid: "82232957"
 
 |ダウンロード  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.37.40    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.37.40       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.7.0.1    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.7.0.1     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.42.26    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.42.26       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   19.2.0.2    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    19.2.0.2     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 
@@ -33,8 +33,8 @@ Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント �
 
 |Package  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.7.0.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.7.0.1      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    19.2.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   19.2.0.2      |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングであるMAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 
@@ -54,7 +54,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
  Analysis Services OLE DB Provider は、Analysis Services データベースへのアクセスに使用されるほとんどのツールおよびクライアント アプリケーションによって、自動的にインストールされます。 Analysis Services データへのアクセスに使用されるコンピューターにインストールする必要があります。  
   
- OLE DB プロバイダーは、多くの場合、接続文字列で指定されます。 Analysis Services 接続文字列では、OLE DB Provider を参照するために、MSOLAP.\<version>.dll という別の用語体系が使用されます。
+ OLE DB プロバイダーは、多くの場合、接続文字列で指定されます。 Analysis Services 接続文字列では、OLE DB Provider を参照するために、異なる用語体系である MSOLAP.\<version>.dll が使用されます。
 
 ### <a name="amo"></a>AMO  
 

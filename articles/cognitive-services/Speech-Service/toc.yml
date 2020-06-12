@@ -462,6 +462,8 @@
       items:
         - name: Speaker Recognition とは
           href: speaker-recognition-overview.md
+        - name: Speaker Recognition の基礎
+          href: speaker-recognition-basics.md
     - name: リファレンス
       items:
         - name: REST API

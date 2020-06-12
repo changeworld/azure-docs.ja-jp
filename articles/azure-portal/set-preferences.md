@@ -9,12 +9,12 @@ ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f51c356f4476782bb830b2702a8fe87c79235c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310681"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308066"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Azure portal の基本設定を設定する
 
@@ -29,7 +29,7 @@ ms.locfileid: "76310681"
 
 ## <a name="change-general-portal-settings"></a>ポータルの全般設定を変更する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. グローバル ページ ヘッダーから **[設定]** を選択します。
 
     ![設定が強調表示されたグローバル ページ ヘッダー アイコンを示すスクリーンショット](./media/set-preferences/header-settings.png)
@@ -79,7 +79,7 @@ Azure portal にサインインすると既定で開かれるページを変更�
 
    ![テーマが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/theme.png)
 
-ハイコントラスト テーマのいずれかを代わりに選択できます。 ハイコントラストの設定にすると、視覚障碍のあるユーザーにとって Azure portal が読みやすくなり、その他すべてのテーマの選択が上書きされます。 詳細については、[ハイコントラストの有効化やテーマの変更](azure-portal-change-theme-high-contrast.md)に関するページを参照してください。
+ハイコントラスト テーマのいずれかを代わりに選択できます。 ハイコントラストの設定にすると、視覚障碍をお持ちのユーザーにとって Azure portal が読みやすくなり、その他すべてのテーマの選択がオーバーライドされます。 詳細については、[ハイコントラストの有効化やテーマの変更](azure-portal-change-theme-high-contrast.md)に関するページを参照してください。
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>ポップアップ通知を有効または無効にする
 

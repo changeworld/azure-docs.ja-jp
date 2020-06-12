@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 15623d622a40fa80889a8704e0b7f19d358a052c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678268"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295407"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C:カスタム プロファイル ポリシーでカスタム属性を有効にする
 
@@ -49,7 +49,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** を選択してから、 **[すべてのアプリケーション]** を選択します。
+1. **[アプリの登録]** を選択してから、 **[すべてのアプリケーション]** を選択します。
 1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` アプリケーションを選択します。
 1. 次の識別子をクリップボードにコピーして保存します。
     * **アプリケーション ID**。 例: `11111111-1111-1111-1111-111111111111`.

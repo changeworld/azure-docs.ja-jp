@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414692"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118833"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -30,27 +30,27 @@ SSIS IR のプロビジョニングまたはプロビジョニング解除中に
 
 エラーコードが InternalServerError の場合、サービスに一時的な問題があるため、後で操作を再試行する必要があります。 再試行しても解決されない場合は、Azure Data Factory サポート チームにお問い合わせください。
 
-それ以外の場合、エラーの原因として、Azure SQL Database サーバーまたは Managed Instance、カスタム セットアップ スクリプト、および Virtual Network 構成の 3 つの主な外部依存関係が考えられます。
+それ以外の場合、次の 3 つの主な外部依存関係によってエラーが発生する可能性があります。つまり、Azure SQL Database または Azure SQL Managed Instance、カスタム セットアップ スクリプト、および仮想ネットワーク構成です。
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL Database サーバーまたは Managed Instance の問題
+## <a name="sql-database-or-sql-managed-instance-issues"></a>SQL Database または SQL Managed Instance の問題
 
-SSIS カタログ データベースを使用して SSIS IR をプロビジョニングする場合、Azure SQL Database サーバーまたは Managed Instance が必要です。 SSIS IR は Azure SQL Database サーバーまたは Managed Instance にアクセスできる必要があります。 また、Azure SQL Database サーバーまたは Managed Instance のアカウントには、SSIS カタログ データベース (SSISDB) を作成するためのアクセス許可が必要です。 エラーが発生した場合は、エラー コードと詳細な SQL 例外メッセージが Data Factory ポータルに表示されます。 エラー コードのトラブルシューティングを行うには、次の一覧の情報を使用します。
+SSIS カタログ データベースを使用して SSIS IR をプロビジョニングする場合、SQL Database または SQL Managed Instance が必要です。 SSIS IR は SQL Database または SQL Managed Instance にアクセスできる必要があります。 また、SQL Database または SQL Managed Instance のログイン アカウントには、SSIS カタログ データベース (SSISDB) を作成するためのアクセス許可が必要です。 エラーが発生した場合は、エラー コードと詳細な SQL 例外メッセージが Data Factory ポータルに表示されます。 エラー コードのトラブルシューティングを行うには、次の一覧の情報を使用します。
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 この問題は、新しい SSIS IR をプロビジョニングしているか、IR の実行中に発生することがあります。 IR プロビジョニング中にこのエラーが発生した場合は、次のいずれかの問題を示すエラー メッセージに詳細な SqlException メッセージが表示されることがあります。
 
-* ネットワーク接続の問題。 SQL Server または Managed Instance のホスト名にアクセスできるかどうかを確認します。 また、ファイアウォールまたはネットワーク セキュリティ グループ (NSG) によって、サーバーへの SSIS IR アクセスがブロックされていないことを確認します。
+* ネットワーク接続の問題。 SQL Database または SQL Managed Instance のホスト名にアクセスできるかどうかを確認します。 また、ファイアウォールまたはネットワーク セキュリティ グループ (NSG) によって、サーバーへの SSIS IR アクセスがブロックされていないことを確認します。
 * SQL 認証中にログインに失敗しました。 指定されたアカウントは SQL Server にサインインできません。 正しいユーザー アカウントが指定されていることを確認します。
 * Microsoft Azure Active Directory (Azure AD) 認証 (マネージド ID) の実行中にログインに失敗しました。 ファクトリのマネージド ID を AAD グループに追加し、マネージド ID にカタログ データベース サーバーへのアクセス許可を付与してください。
 * 接続のタイムアウト。 このエラーは、常にセキュリティ関連の構成が原因で発生します。 推奨事項は次のとおりです。
   1. 新しい VM を作成します。
   1. IR が仮想ネットワーク内にある場合は、同じ Microsoft Azure Virtual Network の IR に VM を参加させます。
-  1. SSMS をインストールし、Azure SQL Database サーバーまたは Managed Instance の状態を確認します。
+  1. SSMS をインストールし、SQL Database または SQL Managed Instance の状態を確認します。
 
-その他の問題については、詳細な SQL 例外エラー メッセージに示されている問題を修正してください。 まだ問題が発生している場合は、Azure SQL Database サーバーまたは Managed Instance のサポート チームにお問い合わせください。
+その他の問題については、詳細な SQL 例外エラー メッセージに示されている問題を修正してください。 まだ問題が発生している場合は、SQL Database または SQL Managed Instance のサポート チームにお問い合わせください。
 
-IR の実行中にこのエラーが発生する場合は、おそらくネットワーク セキュリティ グループまたはファイアウォールの変更が原因で、SSIS IR ワーカー ノードが Azure SQL Database サーバーまたは Managed Instance にアクセスできなくなっています。 SSIS IR ワーカー ノードをブロック解除して、Azure SQL Database サーバーまたは Managed Instance にアクセスできるようにしてください。
+IR の実行中にこのエラーが発生する場合は、おそらくネットワーク セキュリティ グループまたはファイアウォールの変更が原因で、SSIS IR ワーカー ノードが SQL Database または SQL Managed Instance にアクセスできなくなっています。 SSIS IR ワーカー ノードをブロック解除して、SQL Database または SQL Managed Instance にアクセスできるようにしてください。
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +65,20 @@ IR の実行中にこのエラーが発生する場合は、おそらくネッ�
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-このエラーは、Azure SQL Database サーバーまたは Managed Instance が既に SSISDB を持ち、それが別の IR によって使用されていることを意味します。 別の Azure SQL Database サーバーまたは Managed Instance を指定するか、既存の SSISDB を削除して新しい IR を再起動する必要があります。
+このエラーは、SQL Database または SQL Managed Instance が既に SSISDB を持ち、それが別の IR によって使用されていることを意味します。 別の SQL Database または SQL Managed Instance を指定するか、既存の SSISDB を削除して新しい IR を再起動する必要があります。
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 このエラーは、次のいずれかの理由で発生することがあります。
 
 * SSIS IR 用に構成されているユーザー アカウントに、データベースを作成するためのアクセス許可がない。 データベースを作成する権限をユーザーに付与できます。
-* データベースの作成中にタイムアウトが発生する。たとえば、実行タイムアウトや DB 操作のタイムアウトなどです。 後で操作を再試行してください。 再試行しても解決できない場合は、Azure SQL Database サーバーまたは Managed Instance のサポート チームにお問い合わせください。
+* データベースの作成中にタイムアウトが発生する。たとえば、実行タイムアウトや DB 操作のタイムアウトなどです。 後で操作を再試行してください。 再試行しても解決できない場合は、SQL Database または SQL Managed Instance のサポート チームにお問い合わせください。
 
-その他の問題については、SQL 例外のエラー メッセージを確認し、エラーの詳細に記載されている問題を修正してください。 まだ問題が発生している場合は、Azure SQL Database サーバーまたは Managed Instance のサポート チームにお問い合わせください。
+その他の問題については、SQL 例外のエラー メッセージを確認し、エラーの詳細に記載されている問題を修正してください。 まだ問題が発生している場合は、SQL Database または SQL Managed Instance のサポート チームにお問い合わせください。
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-この種のエラー メッセージは次のようになります。"オブジェクト名 'catalog.catalog_properties' が無効です。"このような状況では、SSISDB という名前のデータベースが既にあるが、SSIS IR によって作成されていないか、前回の SSIS IR プロビジョニングでのエラーが原因でデータベースが無効な状態になっています。 SSISDB という名前の既存のデータベースを削除したり、IR 用の新しい Azure SQL Database サーバーまたは Managed Instance を構成したりすることができます。
+この種のエラー メッセージは次のようになります。"オブジェクト名 'catalog.catalog_properties' が無効です。"このような状況では、SSISDB という名前のデータベースが既にあるが、SSIS IR によって作成されていないか、前回の SSIS IR プロビジョニングでのエラーが原因でデータベースが無効な状態になっています。 SSISDB という名前の既存のデータベースを削除したり、IR 用の新しい SQL Database または SQL Managed Instance を構成したりすることができます。
 
 ## <a name="custom-setup-issues"></a>カスタム セットアップの問題
 

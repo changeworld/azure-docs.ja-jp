@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: bd67c3b7eed6b3ce3730bd48cda69d85aa276df4
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 9a6fab9b98029eeefdd4649b0949a1a61da8b0c1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930592"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168830"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -65,12 +65,13 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 | --- | --- |
 |Azure Virtual Machines 展開サービス|[ユーザー管理のキー コンテナーから VM に証明書を展開する](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
 |Azure Resource Manager テンプレート展開サービス|[デプロイ時にセキュリティで保護された値を渡す](../../azure-resource-manager/templates/key-vault-parameter.md)。|
+|Azure Application Gateway v2 SKU|[Key Vault 証明書を使用した TLS 終端](/azure/application-gateway/key-vault-certs)|
 |Azure Disk Encryption ボリューム暗号化サービス|仮想マシンのデプロイ中に、BitLocker キー (Windows VM) または DM パスフレーズ (Linux VM) とキー暗号化キーへのアクセスを許可する。 これにより、[Azure Disk Encryption](../../security/fundamentals/encryption-overview.md) が有効になります。|
 |Azure Backup|[Azure Backup](../../backup/backup-introduction-to-azure-backup.md) を使用して、Azure 仮想マシンのバックアップ中に関連するキーとシークレットのバックアップと復元を許可する。|
 |Exchange Online と SharePoint Online|[カスタマー キー](/microsoft-365/compliance/customer-key-overview)を使用する Azure Storage サービス暗号化のためにカスタマー キーへのアクセスを許可する。|
 |Azure Information Protection|[Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) のテナント キーへのアクセスを許可する。|
 |Azure App Service|[Key Vault を介して Azure Web アプリ証明書をデプロイする](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL データベース|[Azure SQL Database と Data Warehouse のに対する Transparent Data Encryption での Bring Your Own Key のサポート](../../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
+|Azure SQL データベース|[Azure SQL Database と Data Warehouse のに対する Transparent Data Encryption での Bring Your Own Key のサポート](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](../../azure-databricks/what-is-azure-databricks.md)|

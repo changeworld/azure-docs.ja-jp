@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d9e4e54d2b1186278afc72c72cdd6bcf33dd41b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677323"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235454"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -92,13 +92,13 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>エラー 60028: 検出を開始できなかった
 
-エラー 60028: "Discovery couldn't be initiated because of an error.  The operation failed for the specified list of hosts or clusters" (エラーが発生したため、検出を開始できませんでした。指定されたホストまたはクラスターのリストに対する操作に失敗しました) は、VM 情報のアクセスまたは取得で問題が発生したため、エラーで示されているホストで検出を開始できなかったことを示します。 残りのホストは正常に追加されました。
+エラー 60028: "Discovery couldn't be initiated because of an error. The operation failed for the specified list of hosts or clusters" (エラーが発生したため、検出を開始できませんでした。指定されたホストまたはクラスターのリストに対する操作に失敗しました) は、VM 情報のアクセスまたは取得で問題が発生したため、エラーで示されているホストで検出を開始できなかったことを示します。 残りのホストは正常に追加されました。
 
 - **[ホストの追加]** オプションを使用して、エラーで示されているホストをもう一度追加します。
 - 検証エラーが発生している場合は、修復のガイダンスを確認してエラーを修正し、 **[保存して検出を開始]** オプションをもう一度試します。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>エラー 60025: Azure AD operation failed (Azure AD の操作が失敗しました) 
-エラー 60025: "An Azure AD operation failed.  The error occurred while creating or updating the Azure AD application" (Azure AD の操作が失敗しました。Azure AD アプリケーションを作成または更新しているときにエラーが発生しました) は、検出を開始するために使用された Azure ユーザー アカウントが、アプライアンスの登録に使用されたアカウントと異なる場合に発生します。 次のいずれかの操作を行います。
+エラー 60025: "An Azure AD operation failed. The error occurred while creating or updating the Azure AD application" (Azure AD の操作が失敗しました。Azure AD アプリケーションを作成または更新しているときにエラーが発生しました) は、検出を開始するために使用された Azure ユーザー アカウントが、アプライアンスの登録に使用されたアカウントと異なる場合に発生します。 次のいずれかの操作を行います。
 
 - 検出を開始するユーザー アカウントが、アプライアンスの登録に使用するものと同じであることを確認します。
 - 検出操作が失敗しているユーザー アカウントに、Azure Active Directory アプリケーションのアクセス許可を提供します。
@@ -144,6 +144,23 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
 
 VM を削除してもまだポータルに表示されている場合は、30 分待ってください。 まだ表示されている場合は、前述の説明に従って最新の情報に更新してください。
 
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>エラー:アップロードされたファイルの形式が正しくありません
+一部のツールの地域設定によって、セミコロンが区切り記号として使用される CSV ファイルが作成されます。 設定を変更して、区切り記号をコンマにしてください。
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>CSV をインポートしましたが、"検出が進行中です" と表示されます
+この状態は、検証の失敗が原因で CSV のアップロードに失敗した場合に表示される可能性があります。 CSV をもう一度インポートしてみてください。 以前のアップロードのエラー レポートをダウンロードし、ファイルの修復ガイダンスに従って、エラーを修正できます。 エラー レポートは、[マシンの検出] ページの [インポートの詳細] セクションからダウンロードできます。
+
+## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>ゲストの資格情報を更新した後でもアプリケーションの詳細が表示されない
+アプリケーションの検出は 24 時間ごとに実行されます。 詳細をすぐに確認するには、次のように更新します。 検出された VM 数によっては、 この実行に数分かかることがあります。
+
+1. **[サーバー]**  >  **[Azure Migrate Server Assessment]\(Azure Migrate Server Assessment\)** で、 **[概要]** を選択します。
+2. **[管理]** の下で、 **[Agent Health]\(エージェントの正常性\)** を選択します。
+3. **[エージェントを更新する]** を選択します。
+4. 更新操作が完了するまで待ちます。 これで、最新の情報が表示されるはずです。
+
+## <a name="unable-to-export-application-inventory"></a>アプリケーション インベントリのエクスポートができない
+ポータルからインベントリをダウンロードするユーザーに、サブスクリプションに対する共同作成者権限があることを確認します。
+
 ## <a name="common-app-discovery-errors"></a>一般的なアプリ検出エラー
 
 Azure Migrate は、Azure Migrate を使用してアプリケーション、ロール、および機能の検出をサポートします。Server Assessment を使用して作成する方法について説明します。 現在、アプリ検出は VMware でのみサポートされています。 アプリ検出を設定するための要件と手順についての[詳細をご覧ください](how-to-discover-applications.md)。
@@ -152,36 +169,37 @@ Azure Migrate は、Azure Migrate を使用してアプリケーション、ロ�
 
 **Error** | **原因** | **操作**
 --- | --- | --- | ---
-10000: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
-10001: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラー - アプライアンスでいくつかのファイルが不足しています。 | Microsoft サポートにお問い合わせください。
-10002: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-10003: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-10004: "Unable to discover installed applications for <Windows/Linux> machines." (<Windows/Linux> マシンにインストールされているアプリケーションを検出できません。) |  <Windows/Linux> マシンにアクセスするための資格情報がアプライアンスで提供されていません。| <Windows/Linux> マシンにアクセスできる資格情報をアプライアンスに追加してください。
-10005: "Unable to access the on-premises server". (オンプレミスのサーバーにアクセスできません。) | アクセス資格情報が間違っている可能性があります。 | アプライアンスの資格情報を更新し、それを使用して関連するマシンにアクセスできることを確認してください。 
-10006: "Unable to access the on-premises server". (オンプレミスのサーバーにアクセスできません。) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。|  アプリ検出は、Windows/Linux にのみ使用してください。
+10000: "Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
+10001: "Unable to retrieve the applications installed the server" (サーバーにインストールされているアプリケーションを取得できません) | 内部エラー - アプライアンスでいくつかのファイルが不足しています。 | Microsoft サポートにお問い合わせください。
+10002: "Unable to retrieve the applications installed the server" (サーバーにインストールされているアプリケーションを取得できません) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
+10003: "Unable to retrieve the applications installed the server" (サーバーにインストールされているアプリケーションを取得できません) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
+10004: "Unable to discover installed applications for <Windows/Linux> machines" (<Windows/Linux> マシンにインストールされているアプリケーションを検出できません) |  <Windows/Linux> マシンにアクセスするための資格情報がアプライアンスで提供されていません。| <Windows/Linux> マシンにアクセスできる資格情報をアプライアンスに追加してください。
+10005: "Unable to access the on-premises server" (オンプレミスのサーバーにアクセスできません) | アクセス資格情報が間違っている可能性があります。 | アプライアンスの資格情報を更新し、それを使用して関連するマシンにアクセスできることを確認してください。 
+10006: "Unable to access the on-premises server" (オンプレミスのサーバーにアクセスできません) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。|  アプリ検出は、Windows/Linux にのみ使用してください。
 10007:"Unable to process the metadata retrieved" (取得されたメタデータを処理できません) | この内部エラーは、JSON を逆シリアル化しようとしている間に発生しました | Microsoft サポートに解決方法をお問い合わせください
-9000/9001/9002: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | VMware ツールがインストールされていないか、破損している可能性があります。 | 関連するマシンに VMware ツールをインストール/再インストールし、実行されていることを確認します。
-9003: "Unable to discover the applications installed on the server".サーバーにインストールされているアプリケーションを検出できません。 | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
-9004: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | これは、VM の電源がオフになっている場合に発生する可能性があります。 | 検出を行うには、VM がオンになっていることを確認します。
-9005: "Unable to discover the applications installed on the VM." (VM にインストールされているアプリケーションを検出できません。) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
-9006/9007: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
+9000/9001/9002: "Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | VMware ツールがインストールされていないか、破損している可能性があります。 | 関連するマシンに VMware ツールをインストール/再インストールし、実行されていることを確認します。
+9003: "Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
+9004: "Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | これは、VM の電源がオフになっている場合に発生する可能性があります。 | 検出を行うには、VM がオンになっていることを確認します。
+9005: "Unable to discover the applications installed on the VM" (VM にインストールされているアプリケーションを検出できません) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
+9006/9007: "Unable to retrieve the applications installed the server" (サーバーにインストールされているアプリケーションを取得できません) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください
 9008: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラーの可能性があります。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-9009: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | サーバーの Windows ユーザー アカウント制御 (UAC) の設定の制限により、インストールされているアプリケーションの検出が妨げられている場合に発生します。 | サーバーで [ユーザーアカウント制御] の設定を探し、サーバーの UAC のレベル設定が下位の 2 つのいずれかになるように構成します。
-9010: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラーの可能性があります。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
+9009: "Unable to retrieve the applications installed the server" (サーバーにインストールされているアプリケーションを取得できません) | サーバーの Windows ユーザー アカウント制御 (UAC) の設定の制限により、インストールされているアプリケーションの検出が妨げられている場合に発生します。 | サーバーで [ユーザーアカウント制御] の設定を探し、サーバーの UAC のレベル設定が下位の 2 つのいずれかになるように構成します。
+9010: "VM の電源がオフになっています" | VM の電源がオフになっています。  | VM の電源がオンか確認します。
 9011:"File to download from guest is not found on the guest VM" (ゲストからダウンロードするファイルがゲスト VM に見つかりません) | この問題は、内部エラーのために発生します。 | この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
-9012:"Result file contents are empty." (結果ファイルの内容が空です。) | この問題は、内部エラーのために発生します。 | この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+9012:"Result file contents are empty" (結果ファイルの内容が空です) | この問題は、内部エラーのために発生します。 | この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
 9013:"A new temporary profile is created for every login to the VMware VM" (VMware VM へのログインごとに新しい一時プロファイルが作成されます) | VM へのログインごとに新しい一時プロファイルが作成されます | ゲスト VM の資格情報で指定されたユーザー名が UPN 形式であることを確認してください。
+9014:"Unable to retrieve metadata from guest VM file system" (ゲスト VM ファイル システムからメタデータを取得できません) | ESXi ホストへの接続で問題が発生しました | VM を実行している ESXi ホスト上のポート 443 にアプライアンスが接続できることを確認します
 9015:"Unable to connect to VMware VMs due to insufficient privileges on vCenter" (vCenter の特権が不足しているため VMware VM に接続できません) | vCenter ユーザー アカウントでゲスト操作ロールが有効になっていません | vCenter ユーザー アカウントでゲスト操作ロールが有効になっていることを確認してください。
 9016:"Unable to connect to VMware VMs as the guest operations agent is out of data" (ゲスト操作エージェントのデータが不足しているため VMware VM に接続できません) | VMware ツールが正しくインストールされていないか、最新の状態ではありません。 | VMware ツールが正しくインストールされ、最新の状態になっていることを確認してください。
-9017:"File with discovered metadata is not found on the VM." (検出されたメタデータを含むファイルが VM 上に見つかりません。) | この問題は、内部エラーのために発生します。 | Microsoft サポートに解決方法をお問い合わせください。
-9018:"PowerShell is not installed in the Guest VMs." (PowerShell がゲスト VM にインストールされていません。) | PowerShell がゲスト VM で利用できません。 | ゲスト VM に PowerShell をインストールしてください。
+9017:"File with discovered metadata is not found on the VM" (検出されたメタデータを含むファイルが VM 上に見つかりません) | この問題は、内部エラーのために発生します。 | Microsoft サポートに解決方法をお問い合わせください。
+9018:"PowerShell is not installed in the Guest VMs" (PowerShell がゲスト VM にインストールされていません) | PowerShell がゲスト VM で利用できません。 | ゲスト VM に PowerShell をインストールしてください。
 9019:"Unable to discover due to guest VM operation failures" (ゲスト VM 操作エラーのため、検出できませんでした) | VM で VMware ゲスト操作が失敗しました。 | VM の資格情報が有効であること、およびゲスト VM の資格情報で指定されたユーザー名が UPN 形式であることを確認してください。
-9020:"File creation permission is denied." (ファイル作成のアクセス許可が拒否されました。) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーがフォルダー内にファイルを作成することが制限されています | 指定されたゲスト ユーザーが、フォルダー内のファイルの作成アクセス許可を持っているかどうかを確認してください。 フォルダーの名前については、Server Assessment の **[Notifications]\(通知\)** を参照してください。
-9021:"File create permission is denied in folder System Temp Path." (System Temp Path フォルダーのファイル作成アクセス許可が拒否されました。) | VM 上の VMware ツール バージョンがサポートされていません | VMware ツール バージョンを 10.2.0 より上にアップグレードしてください。
-9022:"Get WMI object access is denied." (WMI オブジェクトの取得アクセスが拒否されました。) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーが WMI オブジェクトにアクセスすることが制限されています。 | Microsoft サポートにお問い合わせください。
-9023:"SystemRoot environment variable value is empty." (SystemRoot 環境変数の値が空です。) | 不明 | Microsoft サポートにお問い合わせください。
-9024:"TEMP environment variable value is empty." (TEMP 環境変数の値が空です。) | 不明 | Microsoft サポートにお問い合わせください。
-9025:"PowerShell is corrupt in the Guest VMs." (PowerShell がゲスト VM で破損しています。) | 不明 | PowerShell をゲスト VM に再インストールし、ゲスト VM で PowerShell を実行できるかどうかを確認してください。
+9020:"File creation permission is denied" (ファイル作成のアクセス許可が拒否されました) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーがフォルダー内にファイルを作成することが制限されています | 指定されたゲスト ユーザーが、フォルダー内のファイルの作成アクセス許可を持っているかどうかを確認してください。 フォルダーの名前については、Server Assessment の **[Notifications]\(通知\)** を参照してください。
+9021:"File create permission is denied in folder System Temp Path" (System Temp Path フォルダーのファイル作成アクセス許可が拒否されました) | VM 上の VMware ツール バージョンがサポートされていません | VMware ツール バージョンを 10.2.0 より上にアップグレードしてください。
+9022:"Get WMI object access is denied" (WMI オブジェクトの取得アクセスが拒否されました) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーが WMI オブジェクトにアクセスすることが制限されています。 | Microsoft サポートにお問い合わせください。
+9023:"SystemRoot environment variable value is empty" (SystemRoot 環境変数の値が空です) | 不明 | Microsoft サポートにお問い合わせください。
+9024:"TEMP environment variable value is empty" (TEMP 環境変数の値が空です) | 不明 | Microsoft サポートにお問い合わせください。
+9025:"PowerShell is corrupt in the Guest VMs" (PowerShell がゲスト VM で破損しています) | 不明 | PowerShell をゲスト VM に再インストールし、ゲスト VM で PowerShell を実行できるかどうかを確認してください。
 8084: "Unable to discover applications due to VMware error: <Exception from VMware>" (次の VMware エラーのため、アプリケーションを検出できません:) | Azure Migrate アプライアンスは、アプリケーションの検出に VMware API を使用しています。 この問題は、アプリケーションを検出しようとしている時に vCenter Server から例外がスローされた場合に発生することがあります。 VMware からのエラー メッセージは、ポータルに表示されるエラー メッセージに表示されます。 | [VMware ドキュメント](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)でメッセージを検索し、修正手順に従ってください。 修正できない場合は、Microsoft サポートにお問い合わせください。
 
 

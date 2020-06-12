@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611332"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266595"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | エラー コード         | 説明        | クライアント側の処理    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | 必要なパラメーターが不足しているなどのプロトコル エラーです。 | 要求を修正し再送信します。|
-| `invalid_grant`    | 一部の認証情報 (承認コード、更新トークン、アクセス トークン、PKCE チャレンジ) が無効か、解析不能か、見つからないか、またはそれ以外の状態で確認できません。 | 新しい承認コードを取得するには、`/authorize` エンドポイントへの新しい要求を試してください。  そのアプリのプロトコルの使用を確認および検証することを検討してください。 |
+| `invalid_grant`    | 一部の認証情報 (承認コード、更新トークン、アクセス トークン、PKCE チャレンジ) が無効か、解析不能か、見つからないか、またはそれ以外の状態で確認できません | 新しい承認コードを取得するには、`/authorize` エンドポイントへの新しい要求を試してください。  そのアプリのプロトコルの使用を確認および検証することを検討してください。 |
 | `unauthorized_client` | 認証されたクライアントは、この承認付与の種類を使用する権限がありません。 | これは、通常、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
 | `invalid_client` | クライアント認証に失敗しました。  | クライアント資格情報が有効ではありません。 修正するには、アプリケーション管理者が資格情報を更新します。   |
 | `unsupported_grant_type` | 承認サーバーが承認付与の種類をサポートしていません。 | 要求の付与の種類を変更します。 この種のエラーは、開発時にのみ発生し、初期テスト中に検出する必要があります。 |
@@ -173,7 +173,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50187 | DeviceInformationNotProvided - サービスはデバイス認証を実行できませんでした。 |
 | AADSTS50196 | LoopDetected - クライアント ループが検出されました。 アプリのロジックを調べて、確実にトークンのキャッシュが実装されていて、エラー状態が正しく処理されるようにします。  アプリが非常に短期間にあまりにも多くの同じ要求を行いました。これは、障害がある状態にあるか、またはトークンを不正に要求していることを示しています。 |
 | AADSTS50197 | ConflictingIdentities - ユーザーが見つかりませんでした。 もう一度サインインしてみてください。 |
-| AADSTS50199 | CmsiInterrupt - セキュリティ上の理由から、この要求にはユーザー確認が必要です。  これは "interaction_required" エラーであるため、クライアントでは対話型認証を行う必要があります。これが発生した理由は、システム Web ビューを使用してネイティブ アプリケーションのトークンが要求されたことにあります。これが実際にサインインしようとしたアプリであったかどうかをたずねるプロンプトをユーザーに表示する必要があります。|
+| AADSTS50199 | CmsiInterrupt - セキュリティ上の理由から、この要求にはユーザー確認が必要です。  これは "interaction_required" エラーであるため、クライアントでは対話型認証を行う必要があります。これが発生した理由は、システム Web ビューを使用してネイティブ アプリケーションのトークンが要求されたことにあります。これが実際にサインインしようとしたアプリであったかどうかをたずねるプロンプトをユーザーに表示する必要があります。 このメッセージを表示しないようにするには、リダイレクト URI が次のセーフ リストに含まれている必要があります。 <br />http://<br />https://<br />msauth://(iOS のみ)<br />msauthv2://(iOS のみ)<br />chrome-extension://(デスクトップ Chrome ブラウザーのみ) |
 | AADSTS51000 | RequiredFeatureNotEnabled - 機能が無効になっています。 |
 | AADSTS51001 | DomainHintMustbePresent - ドメイン ヒントは、オンプレミスのセキュリティ識別子またはオンプレミスの UPN とともに存在している必要があります。 |
 | AADSTS51004 | UserAccountNotInDirectory - ディレクトリにユーザー アカウントが存在しません。 |
@@ -314,7 +314,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS700022 | InvalidMultipleResourcesScope - 入力パラメーターのスコープに指定された値に複数のリソースが含まれているため無効です。 |
 | AADSTS700023 | InvalidResourcelessScope - アクセス トークンを要求するときに、入力パラメーターのスコープに指定された値が無効です。 |
 | AADSTS7000215 | 無効なクライアント シークレットが指定されています。 開発者エラー - アプリは、必要な認証パラメーターまたは正しい認証パラメーターを使用せずにサインインしようとしています。|
-| AADSTS7000222| InvalidClientSecretExpiredKeysProvided - 指定されたクライアント秘密鍵の有効期限が切れています。 Azure portal にアクセスしてアプリの新しいキーを作成するか、またはセキュリティを強化するために証明書資格情報を使用することを検討してください (https://aka.ms/certCreds )。 |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 指定されたクライアント秘密鍵の有効期限が切れています。 Azure portal にアクセスしてアプリの新しいキーを作成するか、またはセキュリティを強化するために証明書資格情報を使用することを検討してください ([https://aka.ms/certCreds](https://aka.ms/certCreds))。 |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 指定された承認コードは、他のテナントに対して使用することを目的にしているため、拒否されました。 OAuth2 承認コードは、それが取得されたときの同じテナント (必要に応じて /common または /{tenant-ID}) に対して引き換える必要があります。 |
 | AADSTS1000000 | UserNotBoundError - Bind API では Azure AD ユーザーも外部 IDP による認証が必要ですが、まだ行われていません。 |
 | AADSTS1000002 | BindCompleteInterruptError - バインドは正常に完了しましたが、ユーザーに通知する必要があります。 |

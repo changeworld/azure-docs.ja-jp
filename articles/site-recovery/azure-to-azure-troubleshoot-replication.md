@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901350"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196086"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーでのレプリケーションのトラブルシューティング
 
@@ -105,6 +105,10 @@ Site Recovery レプリケーションを動作させるには、VM で特定の
 ### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>Azure 記憶域スペース ダイレクト構成を使用しています
 
 **修正方法**: Azure Site Recovery では、記憶域スペース ダイレクト構成のアプリケーション整合性復旧ポイントを作成できません。 [レプリケーション ポリシーを構成します](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
+
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux サーバーでアプリの整合性が有効になっていない
+
+**修正方法**: Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性のために Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、[こちら](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)をご覧ください。
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>VSS 関連のイシューに起因するその他の原因:
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5dcbd3748215575edb37525e7350bedfb980650c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195212"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193368"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>ブロック BLOB のポイントインタイム リストア (プレビュー)
 
@@ -26,15 +26,13 @@ ms.locfileid: "83195212"
 
 ポイントインタイム リストアを有効にするには、ストレージ アカウントの管理ポリシーを作成し、保有期間を指定します。 保有期間中は、ブロック BLOB を現在の状態から前の時点の状態に復元できます。
 
-ポイントインタイム リストアを開始するには、[Restore Blob Ranges](/rest/api/storagerp/storageaccounts/restoreblobranges) 操作を呼び出し、復元ポイントを UTC 時刻で指定します。 復元するコンテナーおよび BLOB の名前の辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントのすべてのコンテナーを復元することもできます。 **Restore Blob Ranges** 操作では、操作を一意に識別する復元 ID が返されます。
+ポイントインタイム リストアを開始するには、[Restore Blob Ranges](/rest/api/storagerp/storageaccounts/restoreblobranges) 操作を呼び出し、復元ポイントを UTC 時刻で指定します。 復元するコンテナーおよび BLOB の名前の辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントのすべてのコンテナーを復元することもできます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。
 
 Azure Storage では、要求された復元ポイント (UTC 時刻で指定) から現在の時点までの間で、指定された BLOB に対して行われたすべての変更が分析されます。 復元操作はアトミックであるため、すべての変更を完全に復元できるか、または失敗します。 復元できない BLOB がある場合、操作は失敗し、影響を受けるコンテナーに対する読み取りと書き込み操作が再開されます。
 
-復元操作を要求すると、Azure Storage では操作中、復元される範囲内の BLOB に対するデータ操作がブロックされます。 読み取り、書き込み、および削除の各操作がプライマリ ロケーションでブロックされます。 ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
-
 ストレージ アカウントで一度に実行できる復元操作は 1 つだけです。 実行中に復元操作を取り消すことはできませんが、最初の操作を元に戻すために 2 番目の復元操作を実行できます。
 
-ポイントインタイム リストアの状態を確認するには、**Restore Blob Ranges** 操作から返された復元 ID を使用して **Get Restore Status** 操作を呼び出します。
+**Restore Blob Ranges** 操作では、操作を一意に識別する復元 ID が返されます。 ポイントインタイム リストアの状態を確認するには、**Restore Blob Ranges** 操作から返された復元 ID を使用して **Get Restore Status** 操作を呼び出します。
 
 復元操作には次の制限があることに注意してください。
 
@@ -43,8 +41,13 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 - スナップショットは、復元操作の一環として作成または削除されません。 ベース BLOB のみが以前の状態に復元されます。
 - 現在の時点から復元ポイントまでの間にホット層とクール層の間で BLOB が移動した場合、BLOB は以前の層に復元されます。 ただし、アーカイブ層に移動した BLOB は復元されません。
 
+> [!IMPORTANT]
+> 復元操作を実行すると、Azure Storage では操作中、復元される範囲内の BLOB に対するデータ操作がブロックされます。 読み取り、書き込み、および削除の各操作がプライマリ ロケーションでブロックされます。 このため、Azure portal でのコンテナーの一覧表示などの操作は、復元操作の実行中に予期したとおりに実行されない場合があります。
+>
+> ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
+
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 ポイントインタイム リストアのプレビュー中に [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 プレビュー中は、コンテナーを削除するのではなく、それらを復元する可能性がある場合は個々の BLOB を削除してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 ポイントインタイム リストアのプレビュー中に [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 プレビュー中は、コンテナーを削除するのではなく、それらを復元する可能性がある場合は個々の BLOB を削除してください。
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>ポイントインタイム リストアの前提条件
 
@@ -90,8 +93,9 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 
 ### <a name="register-for-the-preview"></a>プレビューに登録する
 
-プレビューに登録するには、Azure PowerShell から次のコマンドを実行します。
+プレビューに登録するには、次のコマンドを実行します。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
 # Register for the point-in-time restore preview
 Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
@@ -100,24 +104,47 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
 # Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
+Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+```azurecli
+az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
+az feature register --namespace Microsoft.Storage --name Changefeed
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
 
 ### <a name="check-registration-status"></a>登録状態を確認する
 
 登録の状態を確認するには、次のコマンドを実行します。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName RestoreBlobRanges
 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Changefeed
+    
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName Versioning
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
+```
+
+---
+
 
 ## <a name="pricing-and-billing"></a>価格と課金
 

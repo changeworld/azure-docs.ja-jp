@@ -3,12 +3,12 @@ title: Azure Migrate に移行ツールを追加する
 description: Azure Migrate に移行ツールを追加する方法を説明します。
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901467"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195818"
 ---
 # <a name="add-migration-tools"></a>移行ツールの追加
 
@@ -23,7 +23,7 @@ ms.locfileid: "82901467"
 2. 使用する移行シナリオを選択します。
 
     - Azure にマシンやワークロードを移行するには、 **[サーバーの評価と移行]** を選択します。
-    - オンプレミスの SQL マシンを移行するには、 **[データベースの評価と移行]** を選択します。
+    - オンプレミスの SQL Server データベースを移行するには、 **[Assess and migrate databases] (データベースの評価と移行)** を選択します。
     - オンプレミスの Web アプリを移行するには、 **[Web アプリの評価と移行]** を選択します。
     - オンプレミスの大量のデータを Azure にオフライン モードで移行するには、 **[Data Box の注文]** を選択します。
 

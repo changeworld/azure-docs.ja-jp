@@ -9,21 +9,24 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f4b5713aed6bae574c30f555ef7f63307138a96
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588656"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014980"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
 
 AWS コネクタを使用してすべての AWS CloudTrail イベントを Azure Sentinel にストリーミングします。 この接続プロセスにより、Azure Sentinel へのアクセスが AWS リソース ログに委任され、AWS CloudTrail とAzure Sentinel の間の信頼関係が確立されます。 これを行うには、Azure Sentinel にアクセス許可を付与するロールを AWS で作成し、AWS ログにアクセスできるようにします。
+
+> [!NOTE]
+> AWS CloudTrail には、LookupEvents API に[組み込まれている制限](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)があります。 アカウントごとに 2 つ以上のトランザクション (TPS) が許可され、各クエリでは最大 50 のレコードを返すことができます。 したがって、単一のテナントで、1 つのリージョン内で秒あたり 100 を超えるレコードが継続的に生成される場合、データ インジェストでバックログと遅延が発生します。
 
 ## <a name="prerequisites"></a>前提条件
 

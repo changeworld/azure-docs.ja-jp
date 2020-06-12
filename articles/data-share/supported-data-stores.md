@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7b4de3b1d2998a1b6083283c3f397fc77fe9670
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501810"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167589"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 

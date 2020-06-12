@@ -4,16 +4,19 @@
   items:
     - name: Azure Blueprint とは
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: クイックスタート
   expanded: true
   items:
     - name: ブループリントの作成 - ポータル
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: ブループリントの作成 - PowerShell
+      href: ./create-blueprint-portal.md
+    - name: ブループリントの作成 - Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: ブループリントの作成 - Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: ブループリントの作成 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -268,6 +271,8 @@
   href: ./troubleshoot/general.md
 - name: リファレンス
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: Azure SDK for .NET
@@ -285,7 +290,7 @@
     - name: GitHub - Azure Blueprints サンプル
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Azure Blueprints 用の Microsoft Q&A
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: ガバナンスに関する YouTube チャンネル
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday - Azure Blueprints の概要

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721372"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194365"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
 
@@ -174,18 +174,18 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 それぞれのオプションについて以下で説明します。
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード
-**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)」を参照してください。
+**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)」を参照してください。
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>フラット ファイルへのエクスポート
 「 [データの一括インポートと一括エクスポート (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) 」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。 このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。 データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
 
-1. 次のように bcp ユーティリティを使用して、オンプレミスの SQL Server からファイルにデータをエクスポートします。
+1. 次のように bcp ユーティリティを使用して、オンプレミスの SQL Server からファイルにデータをエクスポートします
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. 手順 1 でエクスポートされたテーブル スキーマに対して `create database` と `create table` を使用して、データベースとテーブルを Azure の SQL Server VM に作成します。
 3. エクスポート/インポートされているデータのテーブルのスキーマを記述するためのフォーマット ファイルを作成します。 フォーマット ファイルの詳細については、「 [フォーマット ファイルの作成 (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx)」を参照してください。
 
-    SQL Server マシンから BCP を実行する場合のフォーマット ファイルの生成
+    SQL Server コンピューターから BCP を実行する場合のフォーマット ファイルの生成
 
         bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
 
@@ -203,16 +203,16 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 SQL Server は以下のものをサポートします。
 
 1. [データベースのバックアップと復元機能](https://msdn.microsoft.com/library/ms187048.aspx) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC エクスポート) と[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx) (BACPAC を使用)。
-2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または既存の SQL Azure データベースにコピーする機能。 詳細については、「 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。
+2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または SQL Database 内の既存のデータベースにコピーする機能。 詳細については、「 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。
 
 SQL Server Management Studio のデータベースのバックアップ/復元オプションのスクリーンショットを次に示します。
 
 ![SQL Server インポート ツール][1]
 
 ## <a name="resources"></a>リソース
-[Azure VM の SQL Server へのデータベースの移行](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[Azure VM の SQL Server へのデータベースの移行](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Azure Virtual Machines における SQL Server の概要](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Azure Virtual Machines における SQL Server の概要](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

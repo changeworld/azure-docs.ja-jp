@@ -3,45 +3,27 @@ title: Azure Kubernetes Service (AKS) でユーザー定義ルート (UDR) を�
 description: Azure Kubernetes Service (AKS) でカスタム エグレス ルートを定義する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/05/2020
+ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677891"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310871"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする (プレビュー)
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする
 
 AKS クラスターからのエグレスは、特定のシナリオに合わせてカスタマイズできます。 AKS の既定では、Standard SKU ロード バランサーがプロビジョニングされ、エグレス用に設定および使用されます。 ただし、パブリック IP が許可されていない場合、またはエグレスに追加のホップが必要な場合、既定の設定ではすべてのシナリオの要件を満たせない可能性があります。
 
 この記事では、クラスターのエグレス ルートをカスタマイズして、パブリック IP を禁止し、クラスターをネットワーク仮想アプライアンス (NVA) の背後に配置することを必須にするなどのカスタム ネットワーク シナリオをサポートする方法について説明します。
 
-> [!IMPORTANT]
-> AKS のプレビュー機能はセルフサービスであり、オプトイン ベースでオファーされます。 プレビューは、「*現状のまま*」、 「*利用可能な限度で*」提供されており、サービス レベル契約 (SLA) および限定保証からは除外されています。 AKS プレビューは、*ベストエフォート* ベースでカスタマー サポートによって部分的にカバーされます。 したがって、これらのフィーチャーはプロダクション環境での使用を目的としたものではありません。 詳細については、次のサポート記事を参照してください。
->
-> * [AKS のサポート ポリシー](support-policies.md)
-> * [Azure サポートに関する FAQ](faq.md)
-
 ## <a name="prerequisites"></a>前提条件
 * Azure CLI バージョン 2.0.81 以降
-* Azure CLI プレビュー拡張機能バージョン 0.4.28 以降
 * `2020-01-01` 以降の API バージョン
 
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>最新の Azure CLI AKS Preview 拡張機能をインストールする
-クラスターの送信の種類を設定するには、Azure CLI AKS プレビュー拡張機能バージョン 0.4.18 以降が必要です。 az extension add コマンドを使用して Azure CLI AKS プレビュー拡張機能をインストールした上で、次の az extension update コマンドを使用して、利用可能な更新プログラムがあるかどうかを確認します。
-
-```azure-cli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="limitations"></a>制限事項
-* プレビュー期間中は、クラスターの作成時にのみ `outboundType` を定義できます。後で更新することはできません。
-* プレビュー期間中、`outboundType` AKS クラスターには Azure CNI を使用するようにします。 Kubernet は構成可能です。使用するには、ルート テーブルを AKS サブネットに手動で関連付ける必要があります。
+* クラスターの作成時にのみ OutboundType を定義できます。後で更新することはできません。
 * `outboundType` を設定するには、`vm-set-type` を `VirtualMachineScaleSets`、`load-balancer-sku` を `Standard` に設定した AKS クラスターが必要です。
 * `outboundType` の値を `UDR` に設定するには、クラスターの送信接続が有効なユーザー定義ルートが必要です。
 * `outboundType` の値を `UDR` に設定すると、ロード バランサーにルーティングされるイングレス ソース IP がクラスターのエグレス方向の送信先アドレスと**一致しない**可能性があります。
@@ -53,11 +35,14 @@ AKS クラスターは、種類がロード バランサーまたはユーザー
 > [!IMPORTANT]
 > 送信の種類は、クラスターのエグレス トラフィックにのみ影響します。 詳細については、[イングレス コントローラーの設定](ingress-basic.md)に関する記事を参照してください。
 
+> [!NOTE]
+> UDR と Kubernet ネットワークでは、独自の[ルート テーブル][byo-route-table]を使用できます。
+
 ### <a name="outbound-type-of-loadbalancer"></a>loadBalancer の送信の種類
 
 `loadBalancer` が設定されている場合、AKS によって次の設定が自動的に完了します。 ロード バランサーは、AKS に割り当てられたパブリック IP を経由したエグレスに使用されます。 `loadBalancer` の送信の種類は、種類 `loadBalancer` の Kubernetes サービスをサポートします。このサービスでは、AKS リソース プロバイダーによって作成されたロード バランサーからのエグレスが想定されます。
 
-次の設定は AKS によって行われます。
+次の構成は、AKS によって行われます。
    * パブリック IP アドレスは、クラスターのエグレス用にプロビジョニングされます。
    * パブリック IP アドレスは、ロード バランサーのリソースに割り当てられます。
    * ロード バランサーのバックエンド プールは、クラスター内のエージェント ノードに設定されます。
@@ -173,7 +158,7 @@ az network vnet subnet create \
     --address-prefix 100.64.3.0/24
 ```
 
-## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>UDR を使用する Azure ファイアウォールの作成と設定
+## <a name="create-and-set-up-an-azure-firewall-with-a-udr"></a>UDR を使用する Azure ファイアウォールの作成と設定
 
 Azure Firewall の受信および送信規則を構成する必要があります。 ファイアウォールの主な目的は、組織が AKS クラスターに対してきめ細かなイングレスおよびエグレス トラフィック規則を設定できるようにすることです。
 
@@ -198,7 +183,7 @@ az network firewall create -g $RG -n $FWNAME -l $LOC
 
 これで、以前に作成した IP アドレスをファイアウォール フロントエンドに割り当てることができるようになります。
 > [!NOTE]
-> Azure ファイアウォールへのパブリック IP アドレスの設定には数分かかる場合があります。
+> Azure Firewall へのパブリック IP アドレスの設定には数分かかる場合があります。
 > 
 > 次のコマンドでエラーが繰り返し発生する場合は、既存のファイアウォールとパブリック IP を削除し、ポータルを使用してパブリック IP と Azure ファイアウォールを同時にプロビジョニングします。
 
@@ -217,7 +202,13 @@ FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAd
 FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurations[0].privateIpAddress" -o tsv)
 ```
 
+> [!Note]
+> [承認済み IP アドレス範囲](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)で AKS API サーバーへのセキュリティで保護されたアクセスを使用する場合は、承認された IP 範囲にファイアウォール パブリック IP を追加する必要があります。
+
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Azure Firewall へのホップがある UDR を作成する
+
+> [!IMPORTANT]
+> UDR の送信の種類には、ルート テーブルに 0.0.0.0/0 へのルートと NVA の次のホップの宛先 (ネットワーク仮想アプライアンス) が存在している必要があります。
 
 Azure では、Azure のサブネット、仮想ネットワーク、およびオンプレミスのネットワーク間のトラフィックが自動的にルーティングされます。 Azure の既定のルーティングを変更する場合は、ルート テーブルを作成して変更します。
 
@@ -284,7 +275,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>UDR の送信の種類を使用して AKS を既存のネットワークにデプロイする
 
-これで、AKS クラスターを既存の仮想ネットワーク セットアップにデプロイできるようになりました。 クラスターの送信の種類をユーザー定義ルーティングに設定するには、AKS に既存のサブネットを提供する必要があります。
+これで、AKS クラスターを既存の仮想ネットワークにデプロイできるようになりました。 クラスターの送信の種類をユーザー定義ルーティングに設定するには、AKS に既存のサブネットを提供する必要があります。
 
 ![aks-deploy](media/egress-outboundtype/outboundtype-udr.png)
 
@@ -345,7 +336,7 @@ az aks create -g $RG -n $AKS_NAME -l $LOC \
 
 ### <a name="enable-developer-access-to-the-api-server"></a>開発者の API サーバーへのアクセスを有効にする
 
-許可された IP 範囲がクラスターに設定されているため、API サーバーにアクセスするには、許可された IP 範囲の AKS クラスター一覧に開発者ツールの IP アドレスを追加する必要があります。 もう 1 つの方法は、ファイアウォールの仮想ネットワーク内の別のサブネット内に必要なツールを使用してジャンプボックスを構成することです。
+クラスターの許可された IP 範囲のため、API サーバーにアクセスするには、許可された IP 範囲の AKS クラスター一覧に開発者ツールの IP アドレスを追加する必要があります。 もう 1 つの方法は、ファイアウォールの仮想ネットワーク内の別のサブネット内に必要なツールを使用してジャンプボックスを構成することです。
 
 次のコマンドを使用して、許可された範囲にもう 1 つの IP アドレスを追加します
 
@@ -364,7 +355,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
  az aks get-credentials -g $RG -n $AKS_NAME
  ```
 
-### <a name="setup-the-internal-load-balancer"></a>内部ロード バランサーを設定する
+### <a name="set-up-the-internal-load-balancer"></a>内部ロード バランサーを設定する
 
 AKS によって、[内部ロード バランサー](internal-lb.md)として設定できるクラスターと共にロード バランサーがデプロイされました。
 
@@ -542,3 +533,4 @@ Azure 投票アプリの画像が表示されます。
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

@@ -4,16 +4,16 @@ description: Azure プライベート エンドポイントを使用して非公
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34ea9961c257f398ebed3baaf4ed2ee5b6f3547e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287817"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298705"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure プライベート エンドポイントを使用して非公開で Web アプリに接続する (プレビュー)
 
@@ -23,7 +23,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 詳細については、[Azure Web アプリでのプライベート エンドポイントの使用][privatenedpointwebapp]に関するページを参照してください。
 
 > [!Note]
->このプレビューは、PremiumV2 の Windows および Linux の Web アプリすべてに対して、米国東部と米国西部 2 のリージョンでご利用いただけます。 
+>このプレビューは、PremiumV2 の Windows および Linux の Web アプリとエラスティック Premium 関数すべてに対して、パブリック リージョンでご利用いただけます。 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

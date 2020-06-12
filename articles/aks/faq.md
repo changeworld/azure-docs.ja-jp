@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677794"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300928"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -75,11 +75,13 @@ AKS は、仮想マシン スケール セット、仮想ネットワーク、�
 * ノード リソース グループに対して異なるサブスクリプションを指定すること。
 * クラスターが作成された後で、ノード リソース グループ名を変更すること。
 * ノード リソース グループ内の管理対象リソースに名前を指定すること。
-* ノード リソース グループ内の管理対象リソースのタグを変更または削除すること。 (詳しくは、次のセクションで追加の情報を参照してください。)
+* ノード リソース グループ内の管理対象リソースの Azure で作成されたタグを変更または削除すること。 (詳しくは、次のセクションで追加の情報を参照してください。)
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>ノード リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
-ノード リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS では、カスタム タグを作成および変更できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 AKS クラスター内のノード リソース グループの下にあるリソースを変更すると、サービス レベル目標 (SLO) が中断されます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
+ノード リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS では、エンドユーザーによって作成されるカスタム タグを作成および変更できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 これは、マネージド リソース グループ上にスコープがある Azure ポリシーを作成することで、実現できます。
+
+ただし、AKS クラスター内のノード リソース グループにあるリソース上で **Azure によって作成されたタグ**を変更することは、サポートされていないアクションであり、サービス レベル目標 (SLO) が損なわれます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 

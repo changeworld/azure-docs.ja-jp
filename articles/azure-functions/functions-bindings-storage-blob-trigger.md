@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c594f269d32bc87b2389c430343f6480e97bc5f6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084959"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142250"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
 Blob ストレージ トリガーは、新しいまたは更新された BLOB が検出されたときに関数を開始します。 BLOB の内容は、[関数への入力](./functions-bindings-storage-blob-input.md)として提供されます。
 
-Azure Blob Storage トリガーには、汎用ストレージ アカウントが必要です。 BLOB 専用アカウントを使用する場合、またはアプリケーションに特別な必要性がある場合は、このトリガーの使用に代わる方法を検討してください。
+Azure Blob Storage トリガーには、汎用ストレージ アカウントが必要です。 [階層的名前空間](../storage/blobs/data-lake-storage-namespace.md)を持つストレージ V2 アカウントも サポートされています。 BLOB 専用アカウントを使用する場合、またはアプリケーションに特別な必要性がある場合は、このトリガーの使用に代わる方法を検討してください。
 
 セットアップと構成の詳細については、[概要](./functions-bindings-storage-blob.md)に関するページをご覧ください。
 

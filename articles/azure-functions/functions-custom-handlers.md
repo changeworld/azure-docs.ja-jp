@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475137"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995872"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions のカスタム ハンドラー (プレビュー)
 
@@ -20,9 +20,9 @@ ms.locfileid: "79475137"
 
 カスタム ハンドラーは、次のような場合に最適です。
 
-- 公式にサポートされている言語以外の言語で Functions アプリを実装する
-- 既定でサポートされていない言語バージョンまたはランタイムで Functions アプリを実装する
-- アプリの実行環境をきめ細かく制御する
+- 正式にサポートされていない言語で関数アプリを実装する。
+- 既定でサポートされていない言語バージョンまたはランタイムで関数アプリを実装する。
+- 関数アプリの実行環境のきめ細かい制御を提供する。
 
 カスタム ハンドラーを使用すると、すべての [トリガーと入出力バインド](./functions-triggers-bindings.md)は[拡張バンドル](./functions-bindings-register.md)によりサポートされます。
 

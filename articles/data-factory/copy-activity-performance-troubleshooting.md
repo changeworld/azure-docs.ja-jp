@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414140"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299793"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -40,6 +40,7 @@ ms.locfileid: "81414140"
 | データ ストア固有   | **Azure Synpase Analytics (旧称 SQL DW)** へのデータ読み込み: 使用しない場合は、PolyBase または COPY ステートメントを使用することをお勧めします。 |
 | &nbsp;                | **Azure SQL Database** との間でのデータのコピー: DTU の使用率が高い場合は、上位レベルへのアップグレードをお勧めします。 |
 | &nbsp;                | **Azure Cosmos DB** との間でのデータのコピー: RU の使用率が高い場合は、より大きな RU にアップグレードすることをお勧めします。 |
+|                       | **SAP テーブル**からのデータのコピー: 大量のデータをコピーする場合は、SAP コネクタのパーティション オプションを利用して並列読み込みを有効にし、最大パーティション数を増やすことをお勧めします。 |
 | &nbsp;                | **Amazon Redshift**からデータを取り込み: 使用されていない場合は、UNLOAD を使用することをお勧めします。 |
 | データ ストアの調整 | コピー中にデータ ストアによって多数の読み取り/書き込み操作が調整されている場合は、データ ストアに対して許可されている要求レートを確認して増やすか、同時実行ワークロードを減らすことをお勧めします。 |
 | 統合ランタイム  | **セルフホステッド統合ランタイム (IR)** を使用し、IR が実行可能なリソースを使用できるようになるまで、コピー アクティビティがキュー内で長時間待機している場合は、IR のスケールアウト/アップをお勧めします。 |
@@ -181,7 +182,7 @@ ms.locfileid: "81414140"
 * Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。
-* オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
+* SQL Server:[パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)。
 
 ## <a name="next-steps"></a>次のステップ

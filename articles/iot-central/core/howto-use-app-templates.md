@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e05256d26da2c061559bcc8e50e9ecce6d8425a0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157627"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248211"
 ---
 # <a name="export-your-application"></a>アプリケーションのエクスポート
-
-
 
 この記事では、ソリューション マネージャーとして IoT Central アプリケーションをエクスポートして再利用できるようにする方法について説明します。
 
@@ -93,4 +91,4 @@ Azure IoT Central アプリケーションを作成する場合、組み込み�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、アプリケーション テンプレートの使用方法を学習しました。推奨される次の手順は、[Azure portal で IoT Central を管理する](howto-manage-iot-central-from-portal.md)方法を学習することです。
+ここでは、アプリケーション テンプレートの使用方法を学習しました。推奨される次の手順は、[IoT Central アプリケーションに接続されているデバイスの全体的な性情性を監視する](howto-monitor-application-health.md)方法を学習することです

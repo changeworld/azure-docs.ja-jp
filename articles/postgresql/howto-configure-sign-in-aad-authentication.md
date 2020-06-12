@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652552"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236315"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
@@ -54,21 +54,19 @@ Azure AD 統合は、psql などの一般的な PostgreSQL ツールと連携す
 
 ユーザー/アプリケーションで Azure AD を使用して認証を行う必要がある手順を次に示します。
 
+### <a name="prerequisites"></a>前提条件
+
+Azure Cloud Shell、Azure VM、またはお使いのローカル コンピューター上で、次の手順を実行できます。 [Azure CLI がインストールされている](/cli/azure/install-azure-cli)ことを確認します。
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>手順 1:Azure AD による認証
 
-[Azure CLI がインストールされている](/cli/azure/install-azure-cli)ことを確認します。
+最初に、Azure CLI ツールを使用して Azure AD による認証を行います。 この手順は、Azure Cloud Shell では必要ありません。
 
-Azure CLI ツールを呼び出して、Azure AD で認証します。 ご自分の Azure AD ユーザー ID とパスワードを指定する必要があります。
-
-```azurecli-interactive
+```
 az login
 ```
 
-このコマンドを実行すると、ブラウザー ウィンドウが起動して Azure AD 認証ページが表示されます。
-
-> [!NOTE]
-> Azure Cloud Shell を使用してこれらの手順を実行することもできます。
-> Azure Cloud Shell で Azure AD アクセス トークンを取得する場合は、明示的に `az login` を呼び出して、(別のウィンドウでコードを使用して) もう一度サインインする必要があることに注意してください。 サインイン後、`get-access-token` コマンドは正常に動作します。
+コマンドを実行すると、ブラウザー ウィンドウが起動されて、Azure AD 認証ページが表示されます。 ご自分の Azure AD ユーザー ID とパスワードを指定する必要があります。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>手順 2:Azure AD アクセス トークンを取得する
 

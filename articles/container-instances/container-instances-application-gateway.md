@@ -3,12 +3,12 @@ title: コンテナー グループの静的 IP アドレス
 description: 仮想ネットワーク内にコンテナー グループを作成し、Azure アプリケーション ゲートウェイを使用して、コンテナー化された Web アプリに静的フロントエンド IP アドレスを公開します
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481791"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299164"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>コンテナー グループの静的 IP アドレスの公開
 
@@ -17,7 +17,7 @@ ms.locfileid: "79481791"
 この記事では、Azure CLI を使用して、このシナリオ用のリソースを作成します。
 
 * Azure 仮想ネットワーク
-* 小規模な Web アプリをホストする[仮想ネットワーク (プレビュー)](container-instances-vnet.md) にデプロイされたコンテナー グループ
+* 小規模な Web アプリをホストする[仮想ネットワーク](container-instances-vnet.md)にデプロイされたコンテナー グループ
 * パブリック フロントエンド IP アドレスを持つアプリケーション ゲートウェイ、ゲートウェイで Web サイトをホストするリスナー、バックエンド コンテナー グループへのルート
 
 アプリケーション ゲートウェイが実行され、コンテナー グループがネットワークの委任されたサブネットに安定したプライベート IP アドレスを公開している限り、このパブリック IP アドレスでコンテナー グループにアクセスできます。

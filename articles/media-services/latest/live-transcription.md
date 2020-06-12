@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure Media Services のライブ文字起こしについて学習します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: juliako
-ms.openlocfilehash: b364b6e70e3b5723c483bc3435f0c3a152c03aa9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: inhenkel
+ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499861"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193600"
 ---
 # <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
 
@@ -41,54 +41,113 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 この操作には次の本文があります (取り込みプロトコルとしての RTMP によってパススルー ライブ イベントが作成されます)。 transcriptions プロパティが追加されていることに注目してください。 language に対して指定できる値は en-us のみです。
 
 ```
-{ 
-  "properties": { 
-    "description": "Demonstrate how to enable live transcriptions", 
-    "input": { 
-      "streamingProtocol": "RTMP", 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "preview": { 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "encoding": { 
-      "encodingType": "None" 
-    }, 
-    "transcriptions": [ 
-      { 
-        "language": "en-US" 
-      } 
-    ], 
-    "vanityUrl": false, 
-    "streamOptions": [ 
-      "Default" 
-    ] 
-  }, 
-  "location": "West US 2" 
-} 
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions",
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
 ```
 
 ライブ イベントの状態が "Running" 状態になるまで、状態をポーリングしてください。この状態は、RTMP のコントリビューション フィードを送信できるようになったことを示します。 これで、プレビュー フィードの確認やライブ出力の作成など、このチュートリアルと同じ手順に従えるようになりました。
+
+## <a name="start-transcription-after-live-event-has-started"></a>ライブ イベントが開始された後の文字起こしの開始
+
+ライブ文字起こしは、ライブ イベントが開始された後に開始できます。 ライブ文字起こしを有効にするには、ライブ イベントに "文字起こし" プロパティが含まれるように修正プログラムを適用します。 ライブ文字起こしをオフにすると、ライブ イベント オブジェクトから "文字起こし" プロパティが削除されます。
+
+> [!NOTE]
+> ライブ イベント中に複数回文字起こしのオンとオフを切り替えることは、サポートされているシナリオではありません。
+
+これは、ライブ 文字起こしを有効にするための呼び出しの例です。
+
+PATCH: ```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+
+```
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions", 
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
+```
 
 ## <a name="transcription-delivery-and-playback"></a>文字起こしの配信と再生
 

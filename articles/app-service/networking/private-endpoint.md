@@ -4,23 +4,24 @@ description: Azure プライベート エンドポイントを使用して非公
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 05/25/2020
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4c48a2fad927812cc45543243b48a2df81acf73b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: 15b3f2e48b78036c02ef86446f2ab920f22f7c76
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846955"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295441"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web アプリでのプライベート エンドポイントの使用 (プレビュー)
 
 > [!Note]
 > プレビューの更新により、データ窃盗からの保護機能がリリースされました。
-> このプレビューは、PremiumV2 の Windows および Linux の Web アプリとエラスティック Premium 関数すべてに対して、米国東部と米国西部 2 のリージョンでご利用いただけます。 
+>
+> このプレビューは、PremiumV2 の Windows および Linux の Web アプリとエラスティック Premium 関数すべてに対して、すべてのパブリック リージョンでご利用いただけます。 
 
 Azure Web アプリにプライベート エンドポイントを使用すると、プライベート ネットワーク内のクライアントが Private Link 経由で安全にアプリにアクセスできるようになります。 プライベート エンドポイントは、Azure VNet アドレス空間からの IP アドレスを使用します。 プライベート ネットワーク上のクライアントと Web アプリ間のネットワーク トラフィックは、VNet および Microsoft バックボーン ネットワーク上の Private Link を経由することで、パブリック インターネットにさらされないようにします。
 

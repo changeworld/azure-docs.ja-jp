@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f68bbb4e73758e44e775e1c0c23ad007ca60aa2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161938"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016935"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
 
@@ -150,7 +150,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
    clusters_list = []
    ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
 
-   for cluster_info in clusters_info_list: 
+   for cluster_info in clusters_info_list:
       if cluster_info != '':
          clusters_list.append(cluster_info.split(None, 1)[0])
 
@@ -176,7 +176,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
       cluster_json_keys = cluster_req_json.keys()
 
       #Don't migrate Job clusters
-      if cluster_req_json['cluster_source'] == u'JOB' : 
+      if cluster_req_json['cluster_source'] == u'JOB' :
          print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
          print ("---------------------------------------------------------")
          continue
@@ -188,10 +188,10 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
       # Create the cluster, and store the mapping from old to new cluster ids
 
       #Create a temp file to store the current cluster info as JSON
-      strCurrentClusterFile = "tmp_cluster_info.json" 
+      strCurrentClusterFile = "tmp_cluster_info.json"
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
       fClusterJSONtmp = open(strCurrentClusterFile,"w+")
@@ -207,7 +207,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
       print ("---------------------------------------------------------")
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
    print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
@@ -308,7 +308,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Azure エコシステムのディザスター リカバリー
 
-他の Azure サービスを使用している場合は、それらのサービスにもディザスター リカバリーのベスト プラクティスを必ず実装してください。 たとえば、外部の Hive metastore インスタンスを使用する場合は、[Azure SQL Server](../sql-database/sql-database-disaster-recovery.md)、[Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)、[Azure Database for MySQL](../mysql/concepts-business-continuity.md) のいずれかまたはすべてのディザスター リカバリーを検討する必要があります。 ディザスター リカバリーの全般的な情報については、「[Azure アプリケーションのディザスター リカバリー](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)」を参照してください。
+他の Azure サービスを使用している場合は、それらのサービスにもディザスター リカバリーのベスト プラクティスを必ず実装してください。 たとえば、外部の Hive metastore インスタンスを使用する場合は、[Azure SQL Database](../azure-sql/database/disaster-recovery-guidance.md)、[Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)、[Azure Database for MySQL](../mysql/concepts-business-continuity.md) のいずれかまたはすべてのディザスター リカバリーを検討する必要があります。 ディザスター リカバリーの全般的な情報については、「[Azure アプリケーションのディザスター リカバリー](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,19 +8,19 @@ ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 196c4f692b425d2fc6592888ba89f2fa6dafd3de
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5be26509eccdaebf1b504c1b0b8c7edb35e101c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612505"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203861"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>トラブルシューティングの概要、フィードバック、サポート
 
 >[!IMPORTANT]
->このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)を参照してください。
+>このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)を参照してください。
 >
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Windows Virtual Desktop テナント環境の設定中に発生することがある問題の概要とその問題の解決方法について説明しています。
@@ -53,6 +53,7 @@ Spring 2020 リリースのパブリック プレビュー中に問題を報告�
 | ライセンスに関するメッセージまたはエラー                                                          | 問題が特定のアプリケーションまたは製品に関連する場合、その製品の担当チームにお問い合わせください。 |
 | サードパーティの認証方法に関する問題 | サードパーティのプロバイダーが Windows Virtual Desktop のシナリオをサポートしていることを確認し、既知の問題があれば、それらに対処します。 |
 | Windows Virtual Desktop で Log Analytics を使用する場合の問題 | 診断スキーマに関する問題については、[Azure サポート リクエストをオープン](https://azure.microsoft.com/support/create-ticket/)してください。<br><br>Log Analytics のクエリ、視覚化、またはその他の問題については、Log Analytics の下で適切な問題の種類を選択してください。 |
+| M365 アプリを使用する場合の問題 | [M365 管理センターのヘルプ オプション](/microsoft-365/admin/contact-support-for-business-products/)のいずれかを使用して、M365 管理センターに連絡してください。 |
 
 ## <a name="next-steps"></a>次のステップ
 

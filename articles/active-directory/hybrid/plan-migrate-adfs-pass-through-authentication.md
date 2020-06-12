@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41761f8724f1913972298a50d2c35489ddd715b9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528644"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219047"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
@@ -25,6 +25,9 @@ ms.locfileid: "79528644"
 
 > [!NOTE]
 > 認証方法を変更するには、計画、テスト、予測されるダウンタイムが必要です。 [段階的なロールアウト](how-to-connect-staged-rollout.md)では、フェデレーションからパススルー認証を使用するクラウド認証への段階的な移行をテストして実行するための、別の方法が提供されます。
+> 
+> 段階的なロールアウトを使用する予定がある場合は、カットオーバーが完了したら、段階的ロールアウト機能を無効にすることを忘れないでください。  詳細については、「[段階的なロールアウトを使用してクラウド認証に移行する](how-to-connect-staged-rollout.md)」を参照してください
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>パススルー認証への移行に関する前提条件
 

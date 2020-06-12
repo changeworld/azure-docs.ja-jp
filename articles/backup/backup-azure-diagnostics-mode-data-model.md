@@ -3,12 +3,12 @@ title: Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor Log Analytics データ モデルの詳細について説明します。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707991"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248925"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 

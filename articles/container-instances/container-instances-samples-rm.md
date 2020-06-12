@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレート サンプル
 description: さまざまな構成で Azure Container Instances をデプロイする Azure Resource Manager テンプレートのサンプルを見つける
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981647"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299759"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 
@@ -30,7 +30,7 @@ ms.locfileid: "75981647"
 | **ネットワーク** ||
 | [UDP 公開されたコンテナー][net-udp] | UDP ポートを公開する、Windows または Linux のコンテナーを展開します。 |
 | [パブリック IP を使用する Linux コンテナー][net-publicip] | パブリック IP を使用してアクセスできる 1 つの Linux コンテナーを展開します。 |
-| [仮想ネットワークを使用したコンテナー グループのデプロイ (プレビュー)][net-vnet] | 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループをデプロイします。 |
+| [仮想ネットワークでのコンテナー グループの展開][net-vnet] | 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループをデプロイします。 |
 | **Azure リソース** ||
 | [Azure Storage アカウントおよび Azure Files 共有を作成する][az-files] | コンテナー インスタンスで Azure CLI を使用して、ストレージ アカウントと Azure Files 共有します。
 

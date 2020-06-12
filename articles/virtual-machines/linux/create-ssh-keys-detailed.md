@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969533"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142471"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する 
 Secure Shell (SSH) のキー ペアを使用すると、既定で認証に SSH キーを使う Linux 仮想マシンを Azure 上に作成でき、サインインするためのパスワードが不要になります。 Azure Portal、Azure CLI、Resource Manager テンプレート、他のツールで作成された VM は、展開の一部として SSH 公開キーを含むことができ、SSH 接続用に SSH キー認証が設定されます。 
@@ -35,7 +35,7 @@ SSH キーを使用したくない場合は、パスワード認証を使うよ�
 
 ## <a name="generate-keys-with-ssh-keygen"></a>ssh-keygen でキーを生成する
 
-キーを作成するための推奨されるコマンドは `ssh-keygen` です。このコマンドは、Azure Cloud Shell、macOS、Linux ホスト上の OpenSSH ユーティリティや、[Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about)、および他のツールで利用できます。 `ssh-keygen` では、一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 
+キーを作成するための推奨されるコマンドは `ssh-keygen` です。このコマンドは、Azure Cloud Shell、macOS、Linux ホスト上の OpenSSH ユーティリティや、Windows 10 で利用できます。 `ssh-keygen` では、一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 
 
 SSH キーは既定で `~/.ssh` ディレクトリに保持されます。  `~/.ssh` ディレクトリがない場合、`ssh-keygen` コマンドによって、適切なアクセス許可で作成されます。
 

@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップのトラブルシューテ�
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562085"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116729"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
 
@@ -276,6 +276,45 @@ Error Code:BMSUserErrorObjectLocked
 エラー メッセージ:選択された項目で別の操作が実行中です。
 
 進行中の他の操作が完了するのを待って、しばらくしてから再試行してください。
+
+troubleshoot-azure-files.md ファイルから
+
+## <a name="common-soft-delete-related-errors"></a>論理的な削除に関連する一般的なエラー
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState - この復元ポイントに関連付けられているスナップショットが論理的に削除された状態のファイル共有に含まれるため、このポイントを使用できません
+
+Error Code:UserErrorRestoreAFSInSoftDeleteState
+
+エラー メッセージ:この復元ポイントに関連付けられているスナップショットが論理的に削除された状態のファイル共有に含まれるため、このポイントを使用できません。
+
+データが論理的な削除状態である場合は復元操作を実行できません。 Files ポータルから、または[削除を取り消すためのスクリプト](scripts/backup-powershell-script-undelete-file-share.md)を使用して、ファイル共有の削除を取り消してから、復元を試行します。
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState - 復元ポイントのスナップショットが含まれている関連付けられたファイル共有が完全に削除されているため、一覧の復元ポイントは利用できません
+
+Error Code:UserErrorRestoreAFSInDeleteState
+
+エラー メッセージ:復元ポイントのスナップショットが含まれている関連付けられたファイル共有が完全に削除されているため、一覧の復元ポイントは利用できません。
+
+バックアップされたファイル共有が削除されているかどうかを確認します。 論理的に削除された状態の場合、論理的な削除の保持期間が経過しているために復旧されなかったのか確認します。 どちらの場合も、すべてのスナップショットが完全に失われ、データを復旧することはできません。
+
+>[!NOTE]
+> すべての復元ポイントが失われるのを防ぐために、バックアップされたファイル共有を削除しないようにすること、または論理的に削除された状態の場合は、論理的な削除の保持期間が終了する前に削除を取り消すことをお勧めします。
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState - Azure ファイル共有が論理的に削除された状態であるため、バックアップに失敗しました
+
+Error Code:UserErrorBackupAFSInSoftDeleteState
+
+エラー メッセージ:Azure ファイル共有が論理的に削除された状態であるため、バックアップに失敗しました
+
+**Files ポータル**から、または[削除を取り消すためのスクリプト](scripts/backup-powershell-script-undelete-file-share.md)を使用して、ファイル共有の削除を取り消します。その後、バックアップを継続し、データが完全に削除されるのを回避します。
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState- 関連付けられている Azure ファイル共有が完全に削除されているため、バックアップに失敗しました
+
+Error Code:UserErrorBackupAFSInDeleteState
+
+エラー メッセージ:関連付けられている Azure ファイル共有が完全に削除されているため、バックアップに失敗しました
+
+バックアップされたファイル共有が完全に削除されているかどうかを確認します。 されている場合は、バックアップ エラーの繰り返しを回避するために、このファイル共有のバックアップを停止してください。 保護を停止する方法については、[Azure ファイル共有の保護の停止](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)に関する記事を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

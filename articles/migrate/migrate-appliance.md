@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンス
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758947"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235333"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -206,11 +206,77 @@ CPU 使用率 | cpu.usage.average | 推奨される VM サイズ/コスト
 NIC 読み取りのスループット (MB/秒) | net.received.average | VM サイズの計算
 NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |VM サイズの計算
 
+
+### <a name="installed-apps-metadata"></a>インストール済みアプリのメタデータ
+
+アプリケーションの検出は、インストール済みのアプリケーションとオペレーティング システム データを収集します。
+
+#### <a name="windows-vm-apps-data"></a>Windows VM のアプリケーション データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するインストール済みのアプリケーション データを次に示します。 このデータは Azure に送信されます。
+
+**データ** | **レジストリの場所** | **キー**
+--- | --- | ---
+アプリケーション名  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Version  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+プロバイダー  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+
+#### <a name="windows-vm-features-data"></a>Windows VM の特徴量データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集する特徴量データを次に示します。 このデータは Azure に送信されます。
+
+**データ**  | **PowerShell コマンドレット** | **プロパティ**
+--- | --- | ---
+名前  | Get-WindowsFeature  | 名前
+特徴の種類 | Get-WindowsFeature  | FeatureType
+Parent  | Get-WindowsFeature  | Parent
+
+#### <a name="windows-vm-sql-server-metadata"></a>Windows VM の SQL Server メタデータ
+
+アプリケーションの検出が有効になっている Microsoft SQL Server が実行中の VM から、アプライアンスが収集する SQL Server メタデータを次に示します。 このデータは Azure に送信されます。
+
+**データ**  | **レジストリの場所**  | **キー**
+--- | --- | ---
+名前  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Edition 
+Service Pack  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | SP
+Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version 
+
+#### <a name="windows-vm-operating-system-data"></a>Windows VM オペレーティング システム データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するオペレーティング システム データを次に示します。 このデータは Azure に送信されます。
+
+Data  | WMI クラス  | WMI クラスのプロパティ
+--- | --- | ---
+名前  | Win32_operatingsystem  | Caption
+Version  | Win32_operatingsystem  | Version
+Architecture  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Linux VM のアプリケーション データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するインストール済みのアプリケーション データを次に示します。 VM のオペレーティング システムに基づいて、1 つまたは複数のコマンドが実行されます。 このデータは Azure に送信されます。
+
+Data  | コマンド
+--- | --- 
+名前 | rpm、dpkg-query、snap
+Version | rpm、dpkg-query、snap
+プロバイダー | rpm、dpkg-query、snap
+
+#### <a name="linux-vm-operating-system-data"></a>Linux VM オペレーティング システム データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するオペレーティング システム データを次に示します。 このデータは Azure に送信されます。
+
+**データ**  | **コマンド** 
+--- | --- | ---
+名前 <br/> version | 次の 1 つ以上のファイルから収集されます。<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Architecture | uname
+
+
 ### <a name="app-dependencies-metadata"></a>アプリの依存関係メタデータ
 
 エージェントレスの依存関係分析では、接続データとプロセス データを収集します。
 
-#### <a name="connection-data"></a>接続データ
+#### <a name="windows-vm-app-dependencies-data"></a>Windows VM のアプリの依存関係データ
 
 エージェントレスの依存関係分析が有効になっている各 VM から、アプライアンスが収集する接続データを次に示します。 このデータは Azure に送信されます。
 
@@ -224,7 +290,7 @@ TCP 接続の状態 | netstat
 プロセス ID | netstat
 アクティブな接続の数 | netstat
 
-#### <a name="process-data"></a>データを処理する
+
 エージェントレスの依存関係分析が有効になっている各 VM から、アプライアンスが収集するプロセス データを次に示します。 このデータは Azure に送信されます。
 
 **データ** | **WMI クラス** | **WMI クラスのプロパティ**
@@ -233,7 +299,7 @@ TCP 接続の状態 | netstat
 プロセスの引数 | Win32_Process | CommandLine
 アプリケーション名 | Win32_Process | ExecutablePath プロパティの VersionInfo.ProductName パラメーター
 
-#### <a name="linux-vm-data"></a>Linux VM データ
+#### <a name="linux-vm-app-dependencies-data"></a>Linux VM のアプリの依存関係データ
 
 エージェントレスの依存関係分析が有効になっている各 Linux VM から、アプライアンスが収集する接続データとプロセス データを次に示します。 このデータは Azure に送信されます。
 

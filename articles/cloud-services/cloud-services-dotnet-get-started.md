@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386733"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310650"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -152,7 +152,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 8. **[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスをオンにします。
 9. 新しいサーバーについて **[選択]** をクリックします。
 
-    ![新しい SQL Database サーバー](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![新しいサーバー](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. **Create** をクリックしてください。
 
 ### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
@@ -530,7 +530,7 @@ imagesQueue.CreateIfNotExists();
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 *AdController.cs* ファイル内では、コンストラクターによって `InitializeStorage` メソッドが呼び出され、BLOB とキューを操作するための API を提供する Azure Storage クライアント ライブラリ オブジェクトが作成されます。
 
-次に、*Global.asax.cs* と同様に、*images* BLOB コンテナーへの参照が取得されます。 この処理中に、Web アプリに適した既定の [再試行ポリシー](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) が設定されます。 既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが 1 分以上停止する可能性があります。 ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
+次に、*Global.asax.cs* と同様に、*images* BLOB コンテナーへの参照が取得されます。 この処理中に、Web アプリに適した既定の [再試行ポリシー](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) が設定されます。 既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが 1 分以上応答を停止する可能性があります。 ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -776,6 +776,3 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
 * [Azure ストレージ](https://docs.microsoft.com/azure/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-

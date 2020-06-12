@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 7a935fa4c4e91cf8adcd6df467ac56eeecaf46c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9309f431a820b800e652d7fa8afcea8f03a46062
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605937"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114524"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "81605937"
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="azure-sql-database"></a>Azure SQL データベース 
-この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Database Managed Instance を使うこともできます。
+この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Managed Instance を使うこともできます。
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
 Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。
@@ -134,7 +134,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
     ![アクティビティの実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. 次の**クエリ**を Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+4. 次の**クエリ**を SQL データベースの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
 
     ```sql
     select * from catalog.executions
@@ -353,7 +353,7 @@ while ($True) {
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-06" -TriggerRunStartedBefore "2017-12-09"
     ```
 
-    次のクエリを Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+    次のクエリを SQL データベースの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
 
     ```sql
     select * from catalog.executions

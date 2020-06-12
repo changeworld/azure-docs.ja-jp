@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732723"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996647"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java と Gradle を使用して関数を作成し、Azure に発行する
 
@@ -60,7 +60,7 @@ azurefunctions {
 テキスト エディターで *src/main/java* パスの新しい Function.java ファイルを開き、生成されたコードを確認します。 このコードは、要求の本文をエコーする、[HTTP によってトリガーされる](functions-bindings-http-webhook.md)関数です。 
 
 > [!div class="nextstepaction"]
-> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
@@ -93,14 +93,16 @@ curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 予想される出力は次のとおりです。
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
-ローカルで実行する場合、[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)は必要ありません。  
+> [!NOTE]
+> authLevel を `FUNCTION` または `ADMIN` に設定すると、ローカルで実行する場合に[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)は必要ありません。  
+
 関数のコードを停止するには、ターミナルで `Ctrl+C` を使います。
 
 > [!div class="nextstepaction"]
-> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
@@ -128,10 +130,10 @@ gradle azureFunctionsDeploy
 
 また、デプロイにより、プロジェクト ファイルがパッケージ化され、[zip デプロイ](functions-deployment-technologies.md#zip-deploy)を使用して Run-From-Package モードが有効な状態で新しい関数アプリにデプロイされます。
 
-公開した HTTP トリガーは `authLevel = AuthorizationLevel.FUNCTION` を使用するため、HTTP 経由で関数エンドポイントを呼び出すために関数キーを取得する必要があります。 関数キーを取得する最も簡単な方法は、[Azure portal] を利用することです。
+サンプル プロジェクトの HTTP トリガーの authLevel は `ANONYMOUS`であり、認証はスキップされます。 ただし、`FUNCTION` または `ADMIN` などの authLevel を使用した場合、HTTP 経由で関数エンドポイントを呼び出すために関数キーを取得する必要があります。 関数キーを取得する最も簡単な方法は、[Azure portal] を利用することです。
 
 > [!div class="nextstepaction"]
-> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>HTTP トリガー URL を取得する
 
@@ -139,9 +141,9 @@ gradle azureFunctionsDeploy
 
 1. [Azure portal] を参照してサインインし、対象の関数アプリの _appName_ をページ上部の **[検索]** に入力して、Enter キーを押します。
  
-1. 対象の関数アプリで、 **[関数 (読み取り専用)]** を展開し、対象の関数を選択します。次に、右上にある **[</> 関数の URL の取得]** を選択します。 
+1. 対象の関数アプリで、 **[関数]** を選び、対象の関数を選択します。次に、右上にある **[</> 関数の URL の取得]** をクリックします。 
 
-    ![Azure Portal からの関数 URL のコピー](./media/functions-create-java-maven/get-function-url-portal.png)
+    :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Azure portal からの関数 URL のコピー":::
 
 1. **[default (Function key)]\(既定 (関数キー)\)** を選択し、 **[コピー]** を選択します。 
 
@@ -152,17 +154,17 @@ gradle azureFunctionsDeploy
 `cURL` を使用して Azure で実行されている関数アプリを検証するには、次のサンプルの URL を、ポータルからコピーした URL に置き換えます。
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" http://azure-functions-sample-demo.azurewebsites.net/api/HttpExample --data AzureFunctions
 ```
 
 これにより、要求の本文に `AzureFunctions` が含まれる POST 要求が関数エンドポイントに送信されます。 次の応答が表示されます。
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
 > [!div class="nextstepaction"]
-> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
 
 ## <a name="next-steps"></a>次のステップ
 

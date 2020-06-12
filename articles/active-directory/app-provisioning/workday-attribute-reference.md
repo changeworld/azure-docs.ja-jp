@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 05/25/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 1ac45d88c0af33114106f36798fd56473d18ea28
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d1e432ef99a3c83fe06c00b15acbb00c630e1be1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798037"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014400"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性のリファレンス
 
@@ -30,7 +30,7 @@ ms.locfileid: "83798037"
 :::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-no-version-info.png" alt-text="Workday バージョン情報なし":::
 
 
-| \# | 名前                                  | Workday API 式                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Workday 属性名                                  | Workday XPATH API 式                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | アクティブ                                | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Status\_Data/wd:Active/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Position\_Data/wd:Business\_Site\_Summary\_Data/wd:Address\_Data/wd:Address\_Line\_Data\[@wd:Type='ADDRESS\_LINE\_2'\]/text\(\)                                                                                                                                                                                                                             |
@@ -125,7 +125,7 @@ ms.locfileid: "83798037"
 追加の XPATH を構成するには、チュートリアルの[「構成の確認](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)」を参照してください。 
 
 
-| \# | 名前                                  | Workday XPATH API 式                                                                                                                                                                                                                                                                                                                                                |
+| \# | Workday 属性名                                  | Workday XPATH API 式                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | アクティブ                                | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Status\_Data/wd:Active/text\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Business\_Site\_Summary\_Data/wd:Address\_Data/wd:Address\_Line\_Data\[@wd:Type='ADDRESS\_LINE\_2'\]/text\(\)                                                                                                                                                            |
@@ -208,4 +208,44 @@ ms.locfileid: "83798037"
 | 79 | WorkerType                            | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Worker\_Type\_Reference/wd:ID\[@wd:type="Employee\_Type\_ID"\]/text\(\)                                                                                                                                                                                                 |
 | 80 | WorkSpaceReference                    | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Work\_Space\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
+## <a name="custom-xpath-values"></a>カスタム XPATH 値
+次の表に、Workday から Active Directory または Azure AD にワーカーをプロビジョニングするときに、一般的に使用されるその他のカスタム XPATH API 式の一覧を示します。 ここに記載されている XPATH API 式を、使用している Workday のバージョンでテストして、[チュートリアル:「構成の確認](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)」を参照してください。
+
+この統合を実装する顧客の利益のために XPATH テーブルに属性を追加するには、以下にコメントを残すか、[直接記事に投稿](https://docs.microsoft.com/contribute)してください。 
+
+> [!div class="mx-tdBreakAll"]
+> | \# | Workday 属性名  | Workday API バージョン | Workday XPATH API 式   |
+> |----|-------------------------|---------------------|--------------------------------|
+> | 1  | Universal ID  | v30.0+   | wd:Worker/wd:Worker_Data/wd:Universal_ID/text()      |
+> | 2  | [ユーザー名]     | v30.0+   | wd:Worker/wd:Worker_Data/wd:User_Account_Data/wd:User_Name/text() |
+> | 3  | Management Level ID  | v30.0+  | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=1]/wd:Position_Data/wd:Job_Profile_Summary_Data/wd:Management_Level_Reference/wd:ID[@wd:type="Management_Level_ID"]/text()  |
+> | 4 | Hire Rescinded | v30.0+ | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Status_Data/wd:Hire_Rescinded/text() |
+> | 5 | Assigned Provisioning Group | v21.1+ | wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text() | 
+
+
+## <a name="supported-xpath-functions"></a>サポートされている XPATH 関数
+XPATH API 式の作成時に使用できる [Microsoft .NET XPATH ライブラリ](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100))でサポートされている XPATH 関数の一覧を次に示します。 
+
+* name
+* last
+* position
+* string
+* substring
+* concat
+* substring-after
+* starts-with
+* string-length
+* contains
+* translate
+* normalize-space
+* substring-before
+* boolean
+* true
+* not
+* false
+* number
+* ceiling
+* Sum
+* round
+* floor
 

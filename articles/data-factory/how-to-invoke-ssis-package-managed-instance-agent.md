@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance エージェントを使用して SSIS パッケージの実行をスケジュールする
-description: Azure SQL Database Managed Instance エージェントを使用して SSIS パッケージの実行をスケジュールする方法について説明します。
+title: Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する
+description: Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する方法について説明します。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,30 +9,28 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: f230e4d33686b006b20e856d5e8033847e3f3d67
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628488"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191084"
 ---
-# <a name="schedule-ssis-package-executions-by-using-azure-sql-database-managed-instance-agent"></a>Azure SQL Database Managed Instance エージェントを使用して SSIS パッケージの実行をスケジュールする
+# <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+この記事では、Azure SQL Managed Instance エージェントを使用して SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。 この機能では、オンプレミス環境内で SQL Server エージェントを使用して SSIS パッケージをスケジュールする場合と同様の動作が提供されます。
 
-この記事では、Azure SQL Database Managed Instance エージェントを使用して、SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。 この機能では、オンプレミス環境内で SQL Server エージェントを使用して SSIS パッケージをスケジュールする場合と同様の動作が提供されます。
-
-この機能を使用すると、Azure SQL Database のマネージド インスタンスまたは Azure Files のようなファイル システム内の SSISDB に格納されている SSIS パッケージを実行できます。
+この機能を使用すると、SQL Managed Instance または Azure Files のようなファイル システム内の SSISDB に格納されている SSIS パッケージを実行できます。
 
 ## <a name="prerequisites"></a>前提条件
 この機能を使用するには、最新バージョンである SQL Server Management Studio (SSMS) バージョン 18.5 を[ダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)してインストールします。
 
-また、Azure Data Factory で [Azure SSIS 統合ランタイムをプロビジョニングする](tutorial-create-azure-ssis-runtime-portal.md)必要があります。 Azure SQL Database のマネージド インスタンスをエンドポイント サーバーとして使用します。 
+また、Azure Data Factory で [Azure SSIS 統合ランタイムをプロビジョニングする](tutorial-create-azure-ssis-runtime-portal.md)必要があります。 SQL Managed Instance をエンドポイント サーバーとして使用します。 
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>SSISDB で SSIS パッケージを実行する
-この手順では、Azure SQL Database Managed Instance エージェントを使用して、SSISDB に格納されている SSIS パッケージを呼び出します。
+この手順では、SQL Managed Instance エージェントを使用して、SSISDB に格納されている SSIS パッケージを呼び出します。
 
-1. 最新バージョンの SSMS で、Azure SQL Database のマネージド インスタンスに接続します。
+1. 最新バージョンの SSMS で、SQL Managed Instance に接続します。
 1. 新しいエージェント ジョブと新しいジョブ ステップを作成します。 **[SQL Server エージェント]** 下で、 **[ジョブ]** フォルダーを右クリックして **[新しいジョブ]** を選択します。
 
    ![新しいエージェント ジョブを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -42,7 +40,7 @@ ms.locfileid: "82628488"
    ![新しい SSIS ジョブ ステップを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
 1. **[パッケージ]** タブで、パッケージ ソースの種類として **[SSIS カタログ]** を選択します。
-1. SSISDB は同じ Azure SQL Database のマネージド インスタンス内にあるため、認証を指定する必要はありません。
+1. SSISDB は同じ SQL Managed Instance 内にあるため、認証を指定する必要はありません。
 1. SSISDB から SSIS パッケージを指定します。
 
    ![パッケージ ソースの種類を選択した状態の [パッケージ] タブ](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
@@ -60,9 +58,9 @@ ms.locfileid: "82628488"
 
 
 ## <a name="run-an-ssis-package-in-the-file-system"></a>ファイル システム内の SSIS パッケージを実行する
-この手順では、Azure SQL Database Managed Instance エージェントを使用して、ファイル システムに格納されている SSIS パッケージを実行します。
+この手順では、SQL Managed Instance エージェントを使用して、ファイル システムに格納されている SSIS パッケージを実行します。
 
-1. 最新バージョンの SSMS で、Azure SQL Database のマネージド インスタンスに接続します。
+1. 最新バージョンの SSMS で、SQL Managed Instance に接続します。
 1. 新しいエージェント ジョブと新しいジョブ ステップを作成します。 **[SQL Server エージェント]** 下で、 **[ジョブ]** フォルダーを右クリックして **[新しいジョブ]** を選択します。
 
    ![新しいエージェント ジョブを作成するための選択](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -105,13 +103,14 @@ ms.locfileid: "82628488"
 
 
 ## <a name="cancel-ssis-package-execution"></a>SSIS パッケージ実行の取り消し
-Azure SQL Database Managed Instance エージェント ジョブからパッケージの実行を取り消すには、エージェント ジョブを直接停止するのではなく、以下の手順を実行します。
+SQL Managed Instance エージェント ジョブからパッケージの実行を取り消すには、エージェント ジョブを直接停止するのではなく、以下の手順を実行します。
 
 1. **msdb.dbo.sysjobs** から SQL エージェント **jobId** を探します。
 1. 次のクエリを使用して、ジョブ ID に基づいて対応する SSIS **executionId** を探します。
    ```sql
-   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
+   SSIS パッケージが SSISDB に含まれている場合は、ジョブ実行のテーブルとして **ssisdb.internal.execution_parameter_values** を使用します。 SSIS パッケージがファイル システムに含まれている場合は、**ssisdb.internal.execution_parameter_values_noncatalog** を使用します。
 1. SSISDB カタログを右クリックして、 **[アクティブな操作]** を選択します。
 
    ![SSISDB カタログのショートカット メニューにある [アクティブな操作]](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

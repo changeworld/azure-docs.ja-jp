@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75498090"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309953"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure からオンプレミスへのフェールバックのトラブルシューティング
 
@@ -69,7 +69,7 @@ ms.locfileid: "75498090"
 
 ### <a name="error-code-78093"></a>エラー コード 78093
 
-**VM が実行中でないか、応答を停止しているか、アクセスできない状態です。**
+**VM が実行中でないか、応答していないか、アクセスできないかのいずれかです。**
 
 この問題を解決するには、次の手順を実行します。
 

@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 07/17/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 46a12006274ca8516c936e37189c9233dde9b410
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 39539f29df48d19b956b8bab6f63da50473453d4
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125198"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221291"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -51,9 +51,11 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
   * 各仮想マシン スケール セットにインバウンド NAT 規則が必要です。
   * スケール セットが作成された後、ロード バランサーの正常性プローブに使用される負荷分散ルールのバックエンド ポートを変更することはできません。 ポートを変更するには、Azure 仮想マシン スケール セットを更新し、ポートを更新してから正常性プローブを再度構成することで、正常性プローブを削除できます。
   * ロード バランサーのバックエンド プールで仮想マシン スケール セットを使用している場合は、既定のインバウンド NAT 規則が自動的に作成されます。
+* **インバウンド NAT プール**:
+  * インバウンド NAT プールはインバウンド NAT 規則のコレクションです。 1 つのインバウンド NAT プールは複数の VM Scale Sets をサポートできません。
 * **負荷分散規則**:
   * ロード バランサーのバックエンド プールで仮想マシン スケール セットを使用している場合は、既定の負荷分散規則が自動的に作成されます。
-* **アウトバウンド規則**: 
+* **アウトバウンド規則**:
   *  既に負荷分散規則によって参照されているバックエンド プールのアウトバウンド規則を作成するには、まずインバウンド負荷分散規則が作成されたポータルで **[暗黙的なアウトバウンド規則の作成]** を **[いいえ]** としてマークする必要があります。
 
   :::image type="content" source="./media/vmsslb.png" alt-text="負荷分散規則の作成" border="true":::

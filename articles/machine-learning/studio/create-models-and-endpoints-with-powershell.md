@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 70fafa79c87d19d62ef936b286c82813d8e7fe17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208518"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195342"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (クラシック) と PowerShell を使用して 1 つの実験から複数の Web サービス エンドポイントを作成する
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムが同じ複数のモデルを作成できないものだろうか、ということです。 ただし、入力としては異なるトレーニング データセットを使用します。 この記事では、Azure Machine Learning Studio (クラシック) で 1 つの実験だけを使い、規模の制約なくこの課題に対応する方法を紹介しています。
 
@@ -52,7 +50,7 @@ ms.locfileid: "82208518"
 この実験を Web サービスとしてデプロイすると、その出力に関連付けられているエンドポイントから、トレーニング済みのモデルが .ilearner ファイル形式で返されます。
 
 また、**データのインポート** モジュールで使用する URL を定義する Web サービス パラメーターを設定しています。 このパラメーターを使用して、拠点ごとのモデルをトレーニングするためのトレーニング データセットを個別に指定することができます。
-これを行う方法は他にもあります。 Web サービス パラメーターで SQL クエリを使用して、SQL Azure データベースからデータを取得します。 または、**Web サービスの入力**モジュールを使用してデータセットを Web サービスに渡すことができます。
+これを行う方法は他にもあります。 Web サービス パラメーターで SQL クエリを使用して、Azure SQL Database のデータベースからデータを取得します。 または、**Web サービスの入力**モジュールを使用してデータセットを Web サービスに渡すことができます。
 
 ![トレーニング済みのモデル モジュールが Web サービス出力モジュールに出力する](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 

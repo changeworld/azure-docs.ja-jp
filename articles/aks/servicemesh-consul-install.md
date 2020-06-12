@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273734"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197228"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Consul をインストールして使用する
 
@@ -24,7 +24,7 @@ ms.locfileid: "78273734"
 >
 > Consul `1.6.x` リリースは、Kubernetes バージョン `1.13+` に対して実行できます。 Consul のその他のバージョンは[GitHub の Consul リリース][consul-github-releases]に関するページにあります。また、各リリースに関する情報は[Consul のリリース ノート][consul-release-notes]を参照してください。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * Consul コンポーネントを AKS にインストールする
@@ -166,6 +166,8 @@ Consul のインストール オプションと構成オプションを他にも
 以下を使用した追加のシナリオに沿って進めることもできます。
 
 - [Consul のサンプル アプリケーション][consul-app-example]
+- [Consul Kubernetes 参照アーキテクチャ][consul-reference]
+- [Consul メッシュ ゲートウェイ][consul-mesh-gateways]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com
@@ -177,9 +179,11 @@ Consul のインストール オプションと構成オプションを他にも
 [consul-github-releases]: https://github.com/hashicorp/consul/releases
 [consul-release-notes]: https://github.com/hashicorp/consul/blob/master/CHANGELOG.md
 [consul-install-download]: https://www.consul.io/downloads.html
-[consul-install-k8]: https://www.consul.io/docs/platform/k8s/run.html
+[consul-install-k8]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-deployment-guide
 [consul-install-helm-options]: https://www.consul.io/docs/platform/k8s/helm.html#configuration-values-
-[consul-app-example]: https://github.com/hashicorp/demo-consul-101/tree/master/k8s
+[consul-mesh-gateways]: https://learn.hashicorp.com/consul/kubernetes/mesh-gateways
+[consul-reference]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-reference
+[consul-app-example]: https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

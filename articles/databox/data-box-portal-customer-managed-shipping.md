@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 2933eb216b7faed7b28fb53d79fec2f50bc4458d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c26f50d858d316cab0d4533187494e023cea5071
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748931"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266170"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal で Azure Data Box の自己管理型の発送を使用する
 
@@ -41,7 +41,7 @@ Data Box を注文するときに、自己管理型の発送オプションを�
 3. 発送先住所を入力したら、確認して注文を完了する必要があります。
    ![自己管理型の発送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. デバイスの準備が完了したら、受け取りをスケジュールします。
+4. デバイスの準備が完了し、その電子メール通知を受け取ったら、受け取りをスケジュールします。
 
    Azure Data Box の注文の **[概要]** に移動し、 **[Schedule pickup]\(受け取りのスケジュールを設定\)** を選択します。
 
@@ -57,7 +57,7 @@ Data Box を注文するときに、自己管理型の発送オプションを�
 
    ![認証コードの表示](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   この**認証コード**をメモしておきます。 セキュリティ要件に従って、受け取りと返却をスケジュールするときに、受け取りおよび返却を行う人物の名前を指定する必要があります。
+   この**認証コード**をメモしておきます。 セキュリティ要件に従って、受け取りをスケジュールするときに、受け取りを行う人物の名前を指定する必要があります。
 
    また、データセンターに受け取りに行くユーザーの詳細を指定する必要もあります。 お客様または連絡担当者は、データセンターで検証される政府発行の写真付きの ID を携帯する必要があります。
 

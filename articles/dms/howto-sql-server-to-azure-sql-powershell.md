@@ -1,7 +1,7 @@
 ---
-title: Powershell:SQL Server を SQL Database に移行する
+title: PowerShell:SQL Server を SQL Database に移行する
 titleSuffix: Azure Database Migration Service
-description: Azure PowerShell と Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database に移行する方法について説明します。
+description: Azure PowerShell と Azure Database Migration Service を使用して、SQL Server から Azure SQL Database にデータベースを移行する方法について説明します。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650692"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192654"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL Database に移行する
+# <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell を使用して SQL Server データベースを Azure SQL Database に移行する
 
-この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。 データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database に移行するには、Microsoft Azure PowerShell で `Az.DataMigration` モジュールを使用します。
+この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。 Microsoft Azure PowerShell の `Az.DataMigration` モジュールを使用して、データベースを SQL Server インスタンスから Azure SQL Database に移行できます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 >
 > * リソース グループを作成します。
@@ -42,7 +42,7 @@ ms.locfileid: "77650692"
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降。
 * Azure Resource Manager デプロイ モデルを使用した Microsoft Azure 仮想ネットワークの作成。これにより、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミス ソース サーバーへのサイト間接続が Microsoft Azure Database Migration Service に提供されます。
 * [SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事に従って、Data Migration Assistant を使用して、オンプレミスのデータベースおよびスキーマの移行の評価を完了させる
-* Az.DataMigration モジュールを PowerShell ギャラリーからダウンロードし、[Install-Module PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用してインストールする場合: 管理者として実行できる PowerShell コマンド ウィンドウが開いていること確認する。
+* [Install-Module PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用して、PowerShell ギャラリーから Az.DataMigration モジュールをダウンロードしてインストールする: [管理者として実行] を使用して PowerShell コマンド ウィンドウを開いていること確認してください。
 * ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含める。
 * ターゲットの Azure SQL DB インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL Database に対する CONTROL DATABASE アクセス許可が含まれていることを確認する。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
@@ -109,7 +109,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-次の例は、SQL 認証を使用する SQLAzureTarget という名前の Azure SQL データベース サーバーの接続情報を作成する方法を示しています。
+次の例で、SQL 認証を使用する SQLAzureTarget という名前のサーバーの接続情報を作成する方法を示します。
 
 ```powershell
 $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `

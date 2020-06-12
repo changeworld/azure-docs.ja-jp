@@ -325,10 +325,6 @@
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-maps'
-    - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-maps.html'
     - name: Azure Maps のビデオ
       href: 'https://aka.ms/AzureMapsVideos'
     - name: オープン ソース プロジェクト

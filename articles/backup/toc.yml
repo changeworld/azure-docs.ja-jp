@@ -219,8 +219,12 @@
           href: sap-hana-db-manage.md
     - name: Azure Backup Server (MABS)
       items:
-        - name: Azure Backup Server の保護マトリックス
-          href: backup-mabs-protection-matrix.md
+        - name: 保護マトリックス
+          items:
+            - name: MABS V3 UR1 の保護マトリックス
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM の保護マトリックス
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: インストールまたはアップグレード
           items:
             - name: Azure Backup Server のインストール
@@ -229,7 +233,7 @@
               href: backup-mabs-add-storage.md
             - name: MABS の新機能
               href: backup-mabs-whats-new-mabs.md
-            - name: リリース ノート MABS V3
+            - name: MABS のリリース ノート
               href: backup-mabs-release-notes-v3.md
             - name: 自動実行インストール
               href: backup-mabs-unattended-install.md
@@ -284,7 +288,9 @@
         - name: Import/Export を使用したオフライン バックアップ (MARS)
           href: backup-azure-backup-import-export.md
         - name: Import/Export を使用したオフライン バックアップ (DPM/MABS)
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: DPM と MABS のオフライン バックアップ (以前のバージョン)
+          href: offline-backup-server-previous-versions.md
     - name: 監視とアラート
       items:
         - name: バックアップ エクスプローラーの使用

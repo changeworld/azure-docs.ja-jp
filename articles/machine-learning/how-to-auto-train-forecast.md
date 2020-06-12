@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 4bb32418a9f6f556c3bcdfbdf8a70a10c4588218
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bfb53893031300926944ca97a760aec199f699c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83646147"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266442"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ ms.locfileid: "83646147"
 
 モデル| 説明 | メリット
 ----|----|---
-Prophet (プレビュー)|Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 | 正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。
+Prophet (プレビュー)|Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 このモデルを利用するには、`pip install fbprophet` を使用してローカルにインストールします。 | 正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。
 自動 ARIMA (プレビュー)|自己回帰和分移動平均 (ARIMA) は、データが静的な場合に最適です。 これは、平均や分散などの統計的特性がセット全体で一定であることを意味します。 たとえば、コインを投げた場合、今日、明日、来年のいつ投げても、表が出る確率は 50% です。| 過去の値は将来の値を予測するために使用されるため、単変量系列に最適です。
 ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測タスクに対応するように設計されたニューラル ネットワーク モデルであり、データ内の非線形のローカル傾向とグローバル傾向と、時系列間の関係がキャプチャされます。|データの複雑な傾向を活用し、最大のデータセットに合わせて簡単にスケーリングできます。
 

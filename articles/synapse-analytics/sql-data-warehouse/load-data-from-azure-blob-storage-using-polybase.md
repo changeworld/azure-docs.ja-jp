@@ -1,26 +1,26 @@
 ---
 title: チュートリアル:ニューヨークのタクシー データを読み込む
-description: このチュートリアルでは、Azure portal と SQL Server Management Studio を使用して、Synapse SQL 用のグローバル Azure BLOB からニューヨークのタクシー データを読み込みます。
+description: このチュートリアルでは、Azure portal と SQL Server Management Studio を使用して、Synapse SQL 用の Azure BLOB からニューヨークのタクシー データを読み込みます。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 741779e8328c38e544b1ad297e59155dab4e8c0d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5f2d1d517db9ab0e4ccfbfff1cef3a5a0de738c9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633903"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267777"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>チュートリアル:ニューヨークのタクシー データセットを読み込む
 
-このチュートリアルでは、PolyBase を使用して、グローバル Azure BLOB ストレージ アカウントからニューヨークのタクシー データを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、次のことを行います。
+このチュートリアルでは、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、Azure BLOB ストレージ アカウントからニューヨークのタクシー データセットを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、次のことを行います。
 
 > [!div class="checklist"]
 >
@@ -28,10 +28,9 @@ ms.locfileid: "80633903"
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
 > * SSMS でデータ ウェアハウスに接続する
 > * データを読み込むように指定されたユーザーを作成する
-> * Azure Blob Storage のデータ用の外部テーブルを作成する
-> * CTAS T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込む
+> * サンプル データセット用のテーブルを作成する 
+> * COPY T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込む
 > * データ読み込みの進行状況を表示する
-> * 新しく読み込まれたデータの統計を作成する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -45,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-database"></a>空のデータベースの作成
 
-SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と [Azure SQL 論理サーバー](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内に作成されます。
+SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と[論理 SQL サーバー](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に作成されます。
 
 次の手順に従って、空のデータベースを作成します。
 
@@ -75,7 +74,7 @@ SQL プールは、定義された一連の[コンピューティング リソ�
     | **パスワード**           | 有効なパスワード       | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
     | **場所**           | 有効な場所       | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
-    ![データベース サーバーを作成する](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
+    ![サーバーを作成する](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
 5. **[選択]** を選択します。
 
@@ -96,14 +95,14 @@ SQL プールは、定義された一連の[コンピューティング リソ�
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
-サーバーレベルのファイアウォールにより、外部のアプリケーションとツールは、サーバーやサーバー上のすべてのデータベースに接続できなくなります。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。  次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。
+サーバーレベルのファイアウォールにより、外部のアプリケーションとツールは、サーバーやサーバー上のすべてのデータベースに接続できなくなります。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。  次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成します。
 
 > [!NOTE]
-> SQL Data Warehouse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
+> SQL Data Warehouse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、サーバーに接続することはできません。
 
 1. デプロイが完了したら、左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで、 **[mySampleDatabase]** を選択します。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。
 
-2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 その後、サーバー名を選択して、サーバーの設定を開きます。
+2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 次に、サーバー名を選択して、サーバー設定を開きます。
 
     ![サーバー名を検索する](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
@@ -111,24 +110,24 @@ SQL プールは、定義された一連の[コンピューティング リソ�
 
     ![サーバー設定](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. **[ファイアウォール設定の表示]** を選択します。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
+4. **[ファイアウォール設定の表示]** を選択します。 サーバーの **[ファイアウォール設定]** ページが開きます。
 
     ![サーバーのファイアウォール規則](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
 5. ツール バーの **[クライアント IP の追加]** を選択し、現在の IP アドレスを新しいファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-6. **[保存]** を選択します。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+6. **[保存]** を選択します。 サーバー上でポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 7. **[OK]** を選択し、 **[ファイアウォール設定]** ページを閉じます。
 
-この IP アドレスを使って、SQL Server とそのデータ ウェアハウスに接続できるようになります。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した ServerAdmin アカウントを使います。  
+これで、この IP アドレスを使って、サーバーとそのデータ ウェアハウスに接続できるようになりました。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した ServerAdmin アカウントを使います。  
 
 > [!IMPORTANT]
 > 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 このページの **[オフ]** を選択した後、 **[保存]** を選択して、すべての Azure サービスに対してファイアウォールを無効にします。
 
 ## <a name="get-the-fully-qualified-server-name"></a>完全修飾サーバー名を取得する
 
-Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
+Azure portal 上で、サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[Azure Synapse Analytics]** を選択し、 **[Azure Synapse Analytics]** ページで目的のデータベースを選択します。
@@ -138,7 +137,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
+このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、サーバーへの接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
@@ -211,9 +210,9 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
     ![接続成功](./media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
 
-## <a name="create-external-tables-for-the-sample-data"></a>サンプル データ用の外部テーブルを作成する
+## <a name="create-tables-for-the-sample-data"></a>サンプル データ用のテーブルを作成する
 
-新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 このチュートリアルでは、外部テーブルを使って Azure Storage Blob からニューヨーク市のタクシーのデータを読み込む方法を示しています。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接読み込む方法については、[読み込みの概要](design-elt-data-loading.md)に関するページを参照してください。
+新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 チュートリアルのこのパートでは、COPY ステートメントを使用して、Azure Storage Blob からニューヨーク市のタクシーのデータセットを読み込む方法を示します。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接読み込む方法については、[読み込みの概要](design-elt-data-loading.md)に関するページを参照してください。
 
 次の SQL スクリプトを実行して、読み込むデータに関する情報を指定します。 この情報には、データが置かれている場所、データの内容の形式、およびデータのテーブル定義が含まれます。
 
@@ -223,58 +222,10 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. 実際のクエリ ウィンドウと上の画像を比べてください。  新しいクエリ ウィンドウが LoaderRC20 として実行されていること、および MySampleDataWarehouse データベースに対するクエリを実行していることを確認します。 このクエリ ウィンドウを使って、すべての読み込み手順を実行します。
 
-3. MySampleDataWarehouse データベースのマスター キーを作成します。 マスター キーは、データベースごとに 1 回作成するだけで済みます。
+7. 次の T-SQL ステートメントを実行して、テーブルを作成します。
 
     ```sql
-    CREATE MASTER KEY;
-    ```
-
-4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示し、 **[実行]** を選択します。
-
-    ```sql
-    CREATE EXTERNAL DATA SOURCE NYTPublic
-    WITH
-    (
-        TYPE = Hadoop,
-        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
-    );
-    ```
-
-5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。 外部ファイルは Gzip で圧縮されています。
-
-    ```sql
-    CREATE EXTERNAL FILE FORMAT uncompressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS (
-            FIELD_TERMINATOR = ',',
-            STRING_DELIMITER = '',
-            DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        )
-    );
-    CREATE EXTERNAL FILE FORMAT compressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
-            STRING_DELIMITER = '',
-        DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        ),
-        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-    );
-    ```
-
-6. 次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) コマンドを実行して、外部ファイルの形式のスキーマを作成します。 スキーマを使って、作成しようとしている外部テーブルを編成できます。
-
-    ```sql
-    CREATE SCHEMA ext;
-    ```
-
-7. 外部テーブルを作成する テーブルの定義はデータ ウェアハウスに格納されますが、テーブルでは Azure Blob Storage に格納されているデータが参照されます。 次の T-SQL コマンドを実行して、複数の外部テーブルを作成します。これらのテーブルは、そのすべてが以前に外部データ ソースで定義した Azure BLOB を指します。
-
-    ```sql
-    CREATE EXTERNAL TABLE [ext].[Date]
+    CREATE TABLE [dbo].[Date]
     (
         [DateID] int NOT NULL,
         [Date] datetime NULL,
@@ -311,13 +262,11 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     )
     WITH
     (
-        LOCATION = 'Date',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Geography]
+    
+    CREATE TABLE [dbo].[Geography]
     (
         [GeographyID] int NOT NULL,
         [ZipCodeBKey] varchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -329,13 +278,11 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     )
     WITH
     (
-        LOCATION = 'Geography',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[HackneyLicense]
+    
+    CREATE TABLE [dbo].[HackneyLicense]
     (
         [HackneyLicenseID] int NOT NULL,
         [HackneyLicenseBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -343,13 +290,11 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     )
     WITH
     (
-        LOCATION = 'HackneyLicense',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Medallion]
+    
+    CREATE TABLE [dbo].[Medallion]
     (
         [MedallionID] int NOT NULL,
         [MedallionBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -357,14 +302,11 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     )
     WITH
     (
-        LOCATION = 'Medallion',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;  
-    CREATE EXTERNAL TABLE [ext].[Time]
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
+    
+    CREATE TABLE [dbo].[Time]
     (
         [TimeID] int NOT NULL,
         [TimeBKey] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -378,13 +320,11 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     )
     WITH
     (
-        LOCATION = 'Time',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Trip]
+    
+    CREATE TABLE [dbo].[Trip]
     (
         [DateID] int NOT NULL,
         [MedallionID] int NOT NULL,
@@ -412,13 +352,11 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     )
     WITH
     (
-        LOCATION = 'Trip2013',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = compressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Weather]
+    
+    CREATE TABLE [dbo].[Weather]
     (
         [DateID] int NOT NULL,
         [GeographyID] int NOT NULL,
@@ -427,127 +365,123 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     )
     WITH
     (
-        LOCATION = 'Weather',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
     ```
-
-8. オブジェクト エクスプローラーで、mySampleDataWarehouse を展開して、先ほど作成した外部テーブルの一覧を表示します。
-
-    ![外部テーブルを表示する](./media/load-data-from-azure-blob-storage-using-polybase/view-external-tables.png)
+    
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>データ ウェアハウスにデータを読み込む
 
-このセクションでは、先ほど定義した外部テーブルを使って、Azure Storage Blob からサンプル データを読み込みます。  
+このセクションでは、Azure Storage Blob からサンプル データを[読み込むための COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用します。  
 
 > [!NOTE]
-> このチュートリアルでは、最終テーブルにデータを直接読み込みます。 運用環境では、通常、CREATE TABLE AS SELECT を使用して、ステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 ステージング テーブルのデータを運用テーブルに追加するには、INSERT...SELECT ステートメントを使用します。 詳細については、「[運用テーブルにデータを挿入する](guidance-for-loading-data.md#inserting-data-into-a-production-table)」を参照してください。
+> このチュートリアルでは、最終テーブルにデータを直接読み込みます。 通常は、運用ワークロード用のステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 
 
-このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントによって外部テーブルから選択されると、データ ウェアハウスのリレーショナル テーブルにデータがインポートされます。
-
-1. データ ウェアハウス内の新しいテーブルにデータを読み込むには、次のスクリプトを実行します。
+1. 次のステートメントを実行して、データを読み込みます。
 
     ```sql
-    CREATE TABLE [dbo].[Date]
+    COPY INTO [dbo].[Date]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Date'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Date]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
-    ;
-    CREATE TABLE [dbo].[Geography]
+    OPTION (LABEL = 'COPY : Load [dbo].[Date] - Taxi dataset');
+    
+    
+    COPY INTO [dbo].[Geography]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Geography'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS
-    SELECT * FROM [ext].[Geography]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
-    ;
-    CREATE TABLE [dbo].[HackneyLicense]
+    OPTION (LABEL = 'COPY : Load [dbo].[Geography] - Taxi dataset');
+    
+    COPY INTO [dbo].[HackneyLicense]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/HackneyLicense'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[HackneyLicense]
-    OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
-    ;
-    CREATE TABLE [dbo].[Medallion]
+    OPTION (LABEL = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset');
+    
+    COPY INTO [dbo].[Medallion]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Medallion'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Medallion]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
-    ;
-    CREATE TABLE [dbo].[Time]
+    OPTION (LABEL = 'COPY : Load [dbo].[Medallion] - Taxi dataset');
+    
+    COPY INTO [dbo].[Time]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Time'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Time]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
-    ;
-    CREATE TABLE [dbo].[Weather]
+    OPTION (LABEL = 'COPY : Load [dbo].[Time] - Taxi dataset');
+    
+    COPY INTO [dbo].[Weather]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Weather'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A'
     )
-    AS SELECT * FROM [ext].[Weather]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
-    ;
-    CREATE TABLE [dbo].[Trip]
+    OPTION (LABEL = 'COPY : Load [dbo].[Weather] - Taxi dataset');
+    
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
     )
-    AS SELECT * FROM [ext].[Trip]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Trip]')
-    ;
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 
 2. 読み込んだデータを表示します。 数 GB のデータを読み込み、高パフォーマンスのクラスター化列ストア インデックスに圧縮しています。 動的管理ビュー (DMV) を使用する次のクエリを実行して、読み込みの状態を表示します。
 
     ```sql
-    SELECT
-        r.command,
-        s.request_id,
-        r.status,
-        count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
-    FROM
-        sys.dm_pdw_exec_requests r
-        INNER JOIN sys.dm_pdw_dms_external_work s
-        ON r.request_id = s.request_id
-    WHERE
-        r.[label] = 'CTAS : Load [dbo].[Date]' OR
-        r.[label] = 'CTAS : Load [dbo].[Geography]' OR
-        r.[label] = 'CTAS : Load [dbo].[HackneyLicense]' OR
-        r.[label] = 'CTAS : Load [dbo].[Medallion]' OR
-        r.[label] = 'CTAS : Load [dbo].[Time]' OR
-        r.[label] = 'CTAS : Load [dbo].[Weather]' OR
-        r.[label] = 'CTAS : Load [dbo].[Trip]'
-    GROUP BY
-        r.command,
-        s.request_id,
-        r.status
-    ORDER BY
-        nbr_files desc,
-        gb_processed desc;
+    SELECT  r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command
+    ,       sum(bytes_processed) AS bytes_processed
+    ,       sum(rows_processed) AS rows_processed
+    FROM    sys.dm_pdw_exec_requests r
+                  JOIN sys.dm_pdw_dms_workers w
+                         ON r.[request_id] = w.request_id
+    WHERE [label] = 'COPY : Load [dbo].[Date] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Geography] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Medallion] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Time] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Weather] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Trip] - Taxi dataset' 
+    and session_id <> session_id() and type = 'WRITER'
+    GROUP BY r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command;
     ```
-
+    
 3. すべてのシステム クエリを表示します。
 
     ```sql
@@ -557,55 +491,6 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 4. データ ウェアハウスにデータが適切に読み込まれました。
 
     ![読み込まれたテーブルを表示する](./media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
-
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>マネージド ID により認証して読み込む (省略可能)
-
-PolyBase を使用して読み込み、マネージド ID を使用して認証するのが最も安全なメカニズムであり、Azure Storage で仮想ネットワーク サービス エンドポイントを活用できる方法です。
-
-### <a name="prerequisites"></a>前提条件
-
-1. この[ガイド](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、Azure PowerShell をインストールします。
-2. 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、最初に汎用 v2 にアップグレードする必要があります。
-3. Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)をご覧ください。
-
-#### <a name="steps"></a>手順
-
-1. PowerShell で、Azure Active Directory (AAD) に**お使いの SQL サーバーを登録します**。
-
-   ```powershell
-   Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-   ```
-
-2. この[ガイド](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
-
-   > [!NOTE]
-   > 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**最初に v2 にアップグレードする**必要があります。
-
-3. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **[ストレージ BLOB データ共同作成者]** RBAC ロールを SQL Database サーバーに割り当てます。
-
-   > [!NOTE]
-   > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)をご覧ください。
-  
-**Azure ストレージ アカウントへの Polybase 接続:**
-
-1. **IDENTITY = 'Managed Service Identity'** を使用して、データベース スコープ資格情報を作成します。
-
-   ```SQL
-   CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-   ```
-
-   > [!NOTE]
-   >
-   > * このメカニズムは内部的に[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) を使用するため、Azure Storage アクセス キーにシークレットを指定する必要はありません。
-   > * Azure Storage アカウントで PolyBase 接続を使用するためには、IDENTITY の名前を **'Managed Service Identity'** にする必要があります。
-
-2. マネージド サービス ID でデータベース スコープ資格情報をして、外部データ ソースを作成します。
-
-3. [外部テーブル](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を使用して、通常どおりクエリを実行します。
-
-Azure Synapse Analytics 用の仮想ネットワーク サービス エンドポイントを設定する場合は、次の[ドキュメント](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -624,13 +509,13 @@ Azure Synapse Analytics 用の仮想ネットワーク サービス エンドポ
 
 3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、 **[削除]** を選択します。
 
-4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** を選択して、 **[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
+4. 作成したサーバーを削除するには、前の図の **mynewserver-20180430.database.windows.net** を選び、 **[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
 
 5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、データ ウェアハウスを作成し、データを読み込むためのユーザーを作成する方法について学習しました。 外部テーブルを作成して Azure Storage Blob に格納されているデータの構造を定義した後、PolyBase の CREATE TABLE AS SELECT ステートメントを使って、データ ウェアハウスにデータを読み込みました。
+このチュートリアルでは、データ ウェアハウスを作成し、データを読み込むためのユーザーを作成する方法について学習しました。 シンプルな [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples)を使って、データをデータ ウェアハウスに読み込みました。
 
 以下のことを行いました。
 > [!div class="checklist"]
@@ -639,12 +524,17 @@ Azure Synapse Analytics 用の仮想ネットワーク サービス エンドポ
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
 > * SSMS でデータ ウェアハウスに接続しました
 > * データを読み込むように指定されたユーザーを作成しました
-> * Azure Storage Blob のデータ用の外部テーブルを作成しました
-> * CTAS T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込みました
+> * サンプル データ用のテーブルを作成しました
+> * COPY T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込みました
 > * データ読み込みの進行状況を表示しました
-> * 新しく読み込まれたデータの統計を作成しました
 
 開発の概要に進んで、既存のデータベースを Azure Synapse Analytics に移行する方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [既存のデータベースを Azure Synapse Analytics に移行するための設計上の決定](sql-data-warehouse-overview-develop.md)
+
+読み込みの例とリファレンスに関する詳細については、次のドキュメントを確認してください。
+
+- [COPY ステートメントのリファレンス ドキュメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [各認証方法での COPY の例](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
+- [単一テーブルでの COPY に関するクイック スタート](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)

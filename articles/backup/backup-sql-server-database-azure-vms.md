@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure 仮想マ�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 3fd94dc6332d96f875c164dfeadff3a8ab2cad4e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: faf5ffd65f9b3133c504413201d58aee988af71a
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715598"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248109"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 

@@ -2,13 +2,13 @@
 title: Azure Migrate Server Assessment での評価
 description: Azure Migrate Server Assessment での評価について説明します
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f76ea5f195be2914cdcdb4de9e93af38504d66e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/27/2020
+ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769919"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171006"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Azure Migrate:Server Assessment
 
@@ -110,7 +110,7 @@ Server Assessment での評価に含まれる内容は次のとおりです。
 **ターゲットの場所** | 移行先となる場所。 Server Assessment でターゲットの場所として現在サポートされている Azure リージョンは次のとおりです。<br/><br/> オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、米国東部 2、ドイツ中部、ドイツ北東部、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2。
 **ターゲットのストレージ ディスク (現状のサイズ設定)** | Azure のストレージに使用するディスクの種類。 <br/><br/> ターゲットのストレージ ディスクを Premium マネージド、Standard SSD マネージド、または Standard HDD マネージドとして指定します。
 **ターゲットのストレージ ディスク (パフォーマンスベースのサイズ設定)** | ターゲットのストレージ ディスクの種類を自動、Premium マネージド、Standard HDD マネージド、または Standard SSD マネージドとして指定します。<br/><br/> **自動**: ディスクに関する推奨事項は、ディスクのパフォーマンス データ (IOPS とスループット) に基づきます。<br/><br/>**Premium または Standard**: この評価では、選択したストレージの種類内のディスク SKU が推奨されます。<br/><br/> 単一インスタンス VM のサービス レベル アグリーメント (SLA) を 99.9% にする場合は、Premium マネージド ディスクの使用を検討してください。 これを使用することにより、評価に含まれるすべてのディスクが Premium マネージド ディスクとして推奨されるようになります。<br/><br/> Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
-**Azure Reserved Virtual Machine Instances** | [予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を指定します。これにより、評価でのコスト見積もりで考慮されます。<br/><br/> 現在、Azure Migrate では、従量課金制プランについてのみ Azure Reserved VM Instances がサポートされています。
+**Azure Reserved VM Instances** | [予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を指定します。これにより、評価でのコスト見積もりで考慮されます。<br/><br/> 予約インスタンスが選択されている場合、割引率 (%) および VM のアップタイムの各プロパティは既定の設定のままにします。<br/><br/> 現在、Azure Migrate では、従量課金制プランについてのみ Azure Reserved VM Instances がサポートされています。
 **サイズ変更の設定基準** | Azure VM のサイズ設定に使用されます。<br/><br/> 現状のサイズ設定またはパフォーマンスベースのサイズ設定を使用します。
 **パフォーマンス履歴** | パフォーマンスベースのサイズ設定で使用されます。 パフォーマンス履歴では、パフォーマンス データを評価するときに使用する期間を指定します。
 **百分位数の使用率** | パフォーマンスベースのサイズ設定で使用されます。 百分位の使用率では、サイズ設定に使用されるパフォーマンス サンプルのパーセンタイル値を指定します。
@@ -121,6 +121,8 @@ Server Assessment での評価に含まれる内容は次のとおりです。
 **割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引。 既定の設定は 0% です。
 **VM のアップタイム** | Azure VM が継続して実行されない期間 (1 か月あたりの日数と 1 日あたりの時間数)。 コストの見積もりは、その期間に基づきます。<br/><br/> 既定値は、1 か月あたり 31 日、1 日あたり 24 時間です。
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、かつ [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 既定値の [はい] に設定した場合、Windows VM には、Windows 以外のオペレーティング システムの Azure 価格が考慮されます。
+**EA サブスクリプション** | Enterprise Agreement (EA) サブスクリプションをコスト見積もりに使用することを指定します。 このサブスクリプションに適用される割引が考慮されます。 <br/><br/> 予約インスタンスの設定 (割引率 (%) および VM のアップタイムの各プロパティ) は、既定の設定のままにします。
+
 
 Server Assessment で評価を作成するための[ベスト プラクティスを確認](best-practices-assessment.md)してください。
 

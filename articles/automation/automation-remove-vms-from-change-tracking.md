@@ -5,16 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 22cb49c414e21e5c47330f2c67fc2cf30e3364b2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8e9b80c60c098e4daf247db07fa48baa322aa7f0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836670"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169456"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>変更履歴とインベントリから VM を削除する
 
 環境内の VM への変更のデプロイが完了したら、これらの変更を[変更履歴とインベントリ](change-tracking.md)機能から削除できます。
+
+## <a name="to-remove-your-vms"></a>VM を削除するには
 
 1. Automation アカウントから、 **[構成管理]** の **[Change tracking]\(変更履歴\)** または **[インベントリ]** を選択します。
 
@@ -24,7 +26,7 @@ ms.locfileid: "83836670"
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Log Analytics ワークスペースの **[全般]** の下で、保存された検索にアクセスします。
+3. Log Analytics ワークスペースの **[全般]** で、保存したスコープの構成 `MicrosoftDefaultScopeConfig-ChangeTracking` の検索にアクセスします。
 
 4. 保存された検索 `MicrosoftDefaultComputerGroup` で、右側の省略記号をクリックし、 **[編集]** を選択します。 
 

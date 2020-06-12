@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 20a2066dc0228fe9c2fee09387d96bf6aafeb32f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0573456e6f7c5adc2b1efbce8dd12611fae788cd
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531976"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266272"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MariaDB には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -77,7 +77,7 @@ ms.locfileid: "79531976"
 **サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
 
 > [!IMPORTANT]
-> 計画メンテナンスの通知は現在、プレビュー段階です
+> 計画メンテナンスの通知は、現在、米国中西部**を除く**すべてのリージョンで プレビューとして利用できます
 
 ## <a name="next-steps"></a>次のステップ
 

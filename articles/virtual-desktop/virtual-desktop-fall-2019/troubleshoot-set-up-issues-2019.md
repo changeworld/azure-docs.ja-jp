@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614260"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235904"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -35,6 +35,22 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Windows Virtual Desktop テナントの作成
 
 このセクションでは、Windows Virtual Desktop テナントを作成するときの潜在的な問題について説明します。
+
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>エラー:AADSTS650052 アプリにはサービスへのアクセスが必要です。
+
+未処理エラーの例:
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**原因:** Azure Active Directory インスタンスで、Windows Virtual Desktop への同意が付与されていません。
+
+**解決策:** [こちらのガイドに従って](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop)、同意を付与してください。
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>エラー:管理サービスに問い合わせる許可がユーザーに与えられていません
 
@@ -122,7 +138,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../../azure-resource-manager/resource-manager-common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<ホスト名>/joindomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<hostname>/joindomain
 
 ![デプロイ失敗のスクリーンショット。](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 

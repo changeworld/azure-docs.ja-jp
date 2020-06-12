@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2020
+ms.date: 05/28/2020
 ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628863"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147870"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る
 イベント処理アプリケーションをスケーリングするには、アプリケーションのインスタンスを複数実行し、それらのインスタンス間で負荷のバランスを取ります。 以前のバージョンでは、[EventProcessorHost](event-hubs-event-processor-host.md) を使用することで、プログラムの複数のインスタンス間での負荷と、受信時のチェックポイントイ ベントのバランスを取ることができました。 新しいバージョン (5.0 以降) では **EventProcessorClient** (.NET および Java) または **EventHubConsumerClient** (Python および JavaScript) を使用して、同じ処理を実行できます。 開発モデルは、イベントを使用することでより簡単に作成できます。 イベント ハンドラーを登録することによって、目的のイベントをサブスクライブします。
@@ -44,7 +44,7 @@ ms.locfileid: "82628863"
 
 ## <a name="event-processor-or-consumer-client"></a>イベント プロセッサまたはコンシューマー クライアント
 
-これらの要件を満たすために独自のソリューションを構築する必要はありません。 この機能は、Azure Event Hubs SDK によって提供されます。 .NET または Java SDK ではイベント プロセッサ クライアント (EventProcessorClient) を使用し、Python および Java Script SDK では EventHubConsumerClient を使用します。 以前のバージョンの SDK では、イベント プロセッサ ホスト (EventProcessorHost) がこれらの機能をサポートしていました。
+これらの要件を満たすために独自のソリューションを構築する必要はありません。 この機能は、Azure Event Hubs SDK によって提供されます。 .NET SDK または Java SDK ではイベント プロセッサ クライアント (EventProcessorClient) を使用し、Python SDK と JavaScript SDK では EventHubConsumerClient を使用します。 以前のバージョンの SDK では、イベント プロセッサ ホスト (EventProcessorHost) がこれらの機能をサポートしていました。
 
 大部分の運用環境では、イベントの読み取りと処理にイベント プロセッサ クライアントを使用することをお勧めします。 プロセッサ クライアントは、イベント ハブのすべてのパーティションにわたって、パフォーマンスが高く、フォールト トレラントな方法でイベントを処理しながら、その進行状況にチェックポイントを設定する手段を提供するための堅牢なエクスペリエンスを提供することを目的としています。 また、イベント プロセッサ クライアントは、特定のイベント ハブ用にコンシューマー グループのコンテキスト内で協調的に動作できます。 クライアントは、インスタンスがそのグループに対して使用可能または使用不可能になると、自動的に作業の配布と分散を管理します。
 
@@ -92,7 +92,7 @@ ms.locfileid: "82628863"
 
 ## <a name="thread-safety-and-processor-instances"></a>スレッドの安全性とプロセッサのインスタンス
 
-既定では、イベント プロセッサまたはコンシューマーはスレッド セーフであり、同期的に動作します。 パーティションのイベントが到着すると、そのイベントを処理する関数が呼び出されます。 後続のメッセージとこの関数の呼び出しは、メッセージ ポンプが他のスレッドのバックグラウンドで引き続き実行されるため、バックグラウンドで待機します。 このスレッド セーフにより、スレッド セーフなコレクションが不要になり、パフォーマンスが大幅に向上します。
+既定では、イベントを処理する関数は、特定のパーティションに対して順番に呼び出されます。 後続のイベントと同じパーティションからのこの関数に対する呼び出しは、メッセージ ポンプが他のスレッドのバックグラウンドで引き続き実行されるため、バックグラウンドでキューに配置されます。 異なるパーティションからのイベントを同時に処理でき、パーティション間でアクセスされるすべての共有状態を同期する必要があることに注意してください。
 
 ## <a name="next-steps"></a>次のステップ
 次のクイック スタートを参照してください。

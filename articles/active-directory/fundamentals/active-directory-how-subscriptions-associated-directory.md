@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 06/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2737da028d8fea1c31b728c8e9864ad421d08ec
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457928"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309608"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 サブスクリプションの関連付けまたは追加を行う前に、次のタスクを実行してください。
 
-- 次の変更と影響の一覧を確認してください。
+- サブスクリプションを関連付けたり追加したりした後に行われる変更の一覧と、その影響を確認してください。
 
   - RBAC を使用してロールが割り当てられているユーザーはアクセスできなくなる
   - サービス管理者と共同管理者はアクセスできなくなる
@@ -71,13 +71,13 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
     ![ディレクトリの変更先が表示された [ディレクトリの変更] ページ](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    サブスクリプションのディレクトリが変更され、成功メッセージが表示されます。
+    サブスクリプションのディレクトリが変更された後、成功メッセージが表示されます。
 
-    ![ディレクトリ変更の成功メッセージ](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+  1. [サブスクリプション] ページで **[ディレクトリの切り替え]** を選択し、新しいディレクトリに移動します。 
 
-**[ディレクトリの切り替え]** を使用して、新しいディレクトリに移動します。 すべてが適切に表示されるまでに数時間かかる場合があります。 時間がかかりすぎていると思われる場合は、 **[グローバルなサブスクリプション フィルター]** を確認します。 移動したサブスクリプションが非表示になっていないことを確認します。 一度 Azure portal からサインアウトしてから再びサインインしないと、新しいディレクトリが表示されない場合があります。
+      ![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+      すべてが適切に表示されるまでに数時間かかる場合があります。 時間がかかりすぎていると思われる場合は、 **[グローバルなサブスクリプション フィルター]** を確認します。 移動したサブスクリプションが非表示になっていないことを確認します。 一度 Azure portal からサインアウトしてから再びサインインしないと、新しいディレクトリが表示されない場合があります。
 
 サブスクリプションのディレクトリの変更はサービス レベルの操作であるため、サブスクリプションの課金所有権には影響しません。 アカウント管理者は、引き続き[アカウント センター](https://account.azure.com/subscriptions)からサービス管理者を変更することができます。 元のディレクトリを削除するには、新しいアカウント管理者にサブスクリプションの課金所有権を譲渡する必要があります。課金所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../cost-management-billing/manage/billing-subscription-transfer.md)」を参照してください。
 

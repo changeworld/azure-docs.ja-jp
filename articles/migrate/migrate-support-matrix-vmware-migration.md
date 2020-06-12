@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 666fcc3771dfd4adadeab30fa5d1ec51da5bc038
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ed51361ca4d605487a5d273505df21780003bdbb
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743663"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140482"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -27,7 +27,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 ## <a name="migration-limitations"></a>移行の上限
 
 - レプリケーションでは、一度に最大 10 個の VM を選択できます。 より多くのマシンを移行する場合は、10 個単位のグループでレプリケートします。
-- VMware のエージェントレス移行では、最大 100 個のレプリケーションを同時に実行できます。
+- VMware のエージェントレス移行では、最大 300 個のレプリケーションを同時に実行できます。
 
 ## <a name="agentless-vmware-servers"></a>Agentless-VMware サーバー
 
@@ -60,7 +60,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 **チーミングされた NIC** | サポートされていません。
 **IPv6** | サポートされていません。
 **ターゲット ディスク** | VM は、Azure 内のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
-**同時レプリケーション** | vCenter Server あたり 100 台の VM。 それ以上ある場合は、100 台単位のバッチで移行します。
+**同時レプリケーション** | vCenter Server あたり 300 台の VM。 それ以上ある場合は、300 台単位のバッチで移行します。
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Agentless-Azure Migrate のアプライアンス 

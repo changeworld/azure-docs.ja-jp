@@ -111,6 +111,8 @@
           href: howto-create-custom-rules.md
         - name: Databricks を使用してカスタム分析を作成する
           href: howto-create-custom-analytics.md
+        - name: Power BI でのデータの視覚化
+          href: howto-connect-powerbi.md
     - name: 管理
       items:
         - name: アプリケーションの管理

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779962"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299470"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -153,7 +153,7 @@ Microsoft Graph へのアプリケーションのアクセス許可に同意す�
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 ライセンスの割り当て | ユーザー管理者 | 
-グループを作成する | ユーザー管理者 | 
+グループを作成する | グループ管理者 | ユーザー管理者
 グループまたはアプリのアクセス レビューを作成、更新、削除する | ユーザー管理者 | 
 グループの有効期限を管理する | ユーザー管理者 | 
 グループ設定の管理 | グループ管理者 | ユーザー管理者 | 
@@ -164,6 +164,7 @@ Microsoft Graph へのアプリケーションのアクセス許可に同意す�
 グループ メンバーシップを更新する | グループ所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | ユーザー管理者
 グループ所有者を更新する | グループ所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | ユーザー管理者
 グループのプロパティを更新する | グループ所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | ユーザー管理者
+グループの削除 | グループ管理者 | ユーザー管理者
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -273,6 +274,8 @@ Azure AD ロールのアクセス レビューを読み取る  | セキュリテ
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 認証方法を構成する | グローバル管理者 | 
+パスワード保護を構成する | セキュリティ管理者
+スマート ロックアウトを構成する | セキュリティ管理者
 すべての構成を読み取る | グローバル閲覧者 | 
 
 ## <a name="security---conditional-access"></a>セキュリティ - 条件付きアクセス

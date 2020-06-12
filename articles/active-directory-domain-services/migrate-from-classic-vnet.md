@@ -9,23 +9,23 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb9e12f29c148ea6854dde57456d8cf796cc8c34
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655007"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994070"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行
 
 Azure Active Directory Domain Services (AD DS) では、現在クラシック仮想ネットワーク モデルを使用しているお客様に対して、Resource Manager 仮想ネットワーク モデルへの 1 回限りの移動がサポートされています。 Resource Manager デプロイ モデルを使用する Azure AD DS マネージド ドメインでは、詳細なパスワード ポリシー、監査ログ、アカウント ロックアウト保護などの追加機能が提供されます。
 
-この記事では、移行の利点および考慮事項と、既存の Azure AD DS インスタンスの移行を成功させるために必要な手順について説明します。
+この記事では、移行の考慮事項と、既存の Azure AD DS インスタンスの移行を成功させるために必要な手順について説明します。 いくつかの利点については、[Azure AD DS のクラシックから Resource Manager デプロイ モデルへの移行による利点][migration-benefits]に関するページを参照してください。
 
 > [!NOTE]
 > 2017 年に、Azure AD Domain Services は、Azure Resource Manager ネットワークでホストするために使用できるようになりました。 それ以後、Azure Resource Manager の最新機能を使用して、より安全なサービスを構築できるようになっています。 Azure Resource Manager デプロイによってクラシック デプロイは完全に置き換えられるため、Azure AD DS のクラシック仮想ネットワークのデプロイは 2023 年 3 月 1 日に廃止されます。
 >
-> 詳細については、[公式の非推奨に関する通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)を参照してください
+> 詳細については、[公式の非推奨に関する通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)を参照してください。
 
 ## <a name="overview-of-the-migration-process"></a>移行プロセスの概要
 
@@ -40,21 +40,6 @@ Azure Active Directory Domain Services (AD DS) では、現在クラシック仮
 "*移行*" 段階では、クラシック Azure AD DS マネージド ドメインのドメイン コントローラーの基礎となる仮想ディスクが、Resource Manager デプロイ モデルを使用して VM を作成するためにコピーされます。 次に、Azure AD DS マネージド ドメインが再作成されます。これには、LDAPS と DNS の構成が含まれます。 Azure AD との同期が再開され、LDAP 証明書が復元されます。 Azure AD DS マネージド ドメインにコンピューターを再参加させる必要はありません。コンピューターは引き続きマネージド ドメインに参加しており、変更することなく実行できます。
 
 ![Azure AD DS の移行](media/migrate-from-classic-vnet/migration-process.png)
-
-## <a name="migration-benefits"></a>移行の利点
-
-この移行プロセスを使用して Azure AD DS マネージド ドメインを移動すると、コンピューターをマネージド ドメインに再参加させたり、Azure AD DS インスタンスを削除して最初から作成したりする必要がありません。 移行プロセスの終わりの時点で、VM は引き続き Azure AD DS マネージド ドメインに参加しています。
-
-移行後、Azure AD DS によって、Resource Manager 仮想ネットワークを使用しているドメインでのみ使用できる多くの機能が提供されます。次に例を示します。
-
-* 細かい設定が可能なパスワード ポリシーのサポート。
-* AD アカウントのロックアウトによる保護。
-* Azure AD DS マネージド ドメインでの電子メールによるアラートの通知。
-* Azure Monitor を使用したログの監視。
-* Azure Files の統合
-* HD Insights の統合
-
-Resource Manager 仮想ネットワークを使用する Azure AD DS マネージド ドメインは、最新の新機能を使用して最新の状態を維持するのに役立ちます。 クラシック仮想ネットワークを使用した Azure AD DS のサポートは、今後非推奨となる予定です。
 
 ## <a name="example-scenarios-for-migration"></a>移行に関するシナリオ例
 
@@ -195,7 +180,7 @@ Azure PowerShell を使用して、Azure AD DS マネージド ドメインを�
 
 Azure AD DS マネージド ドメインを移行用に準備するには、次の手順を行います。
 
-1. `Migrate-Aaads`PowerShell ギャラリー[から ][powershell-script] スクリプトをインストールします。 この PowerShell 移行スクリプトは、Azure AD エンジニアリング チームによってデジタル署名されています。
+1. [PowerShell ギャラリー][powershell-script]から `Migrate-Aaads` スクリプトをインストールします。 この PowerShell 移行スクリプトは、Azure AD エンジニアリング チームによってデジタル署名されています。
 
     ```powershell
     Install-Script -Name Migrate-Aadds
@@ -211,7 +196,7 @@ Azure AD DS マネージド ドメインを移行用に準備するには、次�
     $creds = Get-Credential
     ```
 
-1. 次に、`Migrate-Aadds`-Prepare*パラメーターを使用して* コマンドレットを実行します。 *aaddscontoso.com* など、ご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* を指定します。
+1. 次に、 *-Prepare* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *aaddscontoso.com* など、ご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* を指定します。
 
     ```powershell
     Migrate-Aadds `
@@ -224,7 +209,7 @@ Azure AD DS マネージド ドメインを移行用に準備するには、次�
 
 Azure AD DS マネージド ドメインを準備してバックアップしたら、ドメインを移行できます。 この手順では、Resource Manager デプロイ モデルを使用して Azure AD Domain Services ドメイン コントローラー VM を再作成します。 この手順を完了するには、1 時間から 3 時間かかることがあります。
 
-`Migrate-Aadds`-Commit*パラメーターを使用して* コマンドレットを実行します。 *aaddscontoso.com* など、前のセクションで準備したご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* を指定します。
+*-Commit* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *aaddscontoso.com* など、前のセクションで準備したご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* を指定します。
 
 Azure AD DS の移行先である仮想ネットワークを含むターゲット リソース グループを指定します (*myResourceGroup*など)。 *myVnet* などのターゲット仮想ネットワークと、*DomainServices* などのサブネットを指定します。
 
@@ -314,7 +299,7 @@ Azure AD DS には、マネージド ドメインに必要なポートをセキ�
 
 手順 2 で移行用に準備するため、または手順 3 で移行自体を行うために PowerShell コマンドレットを実行したときにエラーが発生した場合、Azure AD DS マネージド ドメインを元の構成にロールバックできます。 このロールバックを行うには、元のクラシック仮想ネットワークが必要です。 ロールバック後も IP アドレスが変更される可能性があることに注意してください。
 
-`Migrate-Aadds`-Abort*パラメーターを使用して* コマンドレットを実行します。 *aaddscontoso.com* など、前述のセクションで準備したご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* と、*myClassicVnet* など、クラシック仮想ネットワークの名前を指定します。
+*-Abort* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *aaddscontoso.com* など、前述のセクションで準備したご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* と、*myClassicVnet* など、クラシック仮想ネットワークの名前を指定します。
 
 ```powershell
 Migrate-Aadds `
@@ -324,7 +309,7 @@ Migrate-Aadds `
     -Credentials $creds
 ```
 
-### <a name="restore"></a>[復元]
+### <a name="restore"></a>復元
 
 最後の手段として、最新の利用可能なバックアップから Azure AD Domain Services を復元できます。 移行の手順 1 で、最新のバックアップを確実に使用可能にするため、バックアップが実行されます。 このバックアップは 30 日間保存されます。
 
@@ -367,6 +352,7 @@ Azure AD DS マネージド ドメインを Resource Manager デプロイ モデ
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [tshoot-ldaps]: tshoot-ldaps.md
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
+[migration-benefits]: concepts-migration-benefits.md
 
 <!-- EXTERNAL LINKS -->
 [powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

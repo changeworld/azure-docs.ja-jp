@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610141"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169510"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -254,7 +254,7 @@ SSO の実行が可能なのは、Azure AD が、リソースへのアクセス�
 
 ###  <a name="working-with-other-types-of-applications"></a>他の種類のアプリケーションを操作する
 
-Azure AD アプリケーション プロキシは、Azure AD 認証ライブラリ ([ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)) または Microsoft 認証ライブラリ ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) を使用するように開発されたアプリケーションもサポートできます。 これは、クライアント要求のヘッダー情報で受け取った Azure AD 発行のトークンを使用して、ユーザーのために事前認証を実行することにより、ネイティブ クライアント アプリをサポートします。
+Azure AD アプリケーション プロキシは、Microsoft 認証ライブラリ ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) を使用するように開発されたアプリケーションもサポートできます。 これは、クライアント要求のヘッダー情報で受け取った Azure AD 発行のトークンを使用して、ユーザーのために事前認証を実行することにより、ネイティブ クライアント アプリをサポートします。
 
 アプリケーション プロキシの使用可能な構成については、[ネイティブおよびモバイル クライアント アプリの発行](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client)に関するページや[要求ベースのアプリケーション](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps)に関するページをご覧ください。
 

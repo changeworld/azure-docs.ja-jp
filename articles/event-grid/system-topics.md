@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67746ebd8a16eb02b8f02d238b0e3c0125989189
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393163"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308270"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
 Azure イベント ソース用のイベント サブスクリプションを初めて作成すると、Azure Event Grid サービスによってシステム トピックが作成されます。 現在、Event Grid では、2020 年 3 月 15 日より前に作成されたトピック ソースに対するシステム トピックは作成されません。 この日付以降に作成したすべてのトピック ソースについては、Event Grid によりシステム トピックが自動的に作成されます。 この記事では、Azure Event Grid での**システム トピック**について説明します。
@@ -25,6 +25,9 @@ Azure ストレージ アカウントなどの Azure イベント ソースに�
 
 システム トピックは、カスタム トピックのシナリオ、つまり Event Grid トピックと Event Grid ドメインには適用されません。 
 
+## <a name="name"></a>名前 
+以前は、Azure のソースによって生成されるイベントのサブスクリプションを作成すると、Event Grid サービスによって、**ランダムに生成された名前**を持つシステム トピックが自動的に作成されていました。 今では、Azure portal でトピックの作成中にシステム トピックの名前を指定できるようになっています。 このシステム トピック リソースを使用して、メトリックと診断ログを検出できます。
+
 ## <a name="location"></a>場所
 特定のリージョンまたは場所にある Azure イベント ソースの場合、システム トピックは Azure イベント ソースと同じ場所に作成されます。 たとえば、米国東部の Azure Blob Storage に対してイベント サブスクリプションを作成すると、米国東部にシステム トピックが作成されます。 Azure サブスクリプション、リソース グループ、Azure Maps などのグローバルな Azure イベント ソースの場合は、Event Grid によって**グローバル**な場所にシステム トピックが作成されます。 
 
@@ -35,8 +38,6 @@ Azure ストレージ アカウントなどの Azure イベント ソースに�
 
 ![リソース グループの削除](./media/system-topics/delete-resource-group.png)
 
-## <a name="next-steps"></a>次のステップ
-次の記事をご覧ください。 
 
-- [カスタム トピック](custom-topics.md)
-- [ドメイン](event-domains.md)
+## <a name="next-steps"></a>次のステップ
+次の記事を参照してください: [システム トピックの作成、表示、管理](create-view-manage-system-topics.md)。

@@ -3,12 +3,12 @@ title: Azure Migrate で評価ツールを追加する
 description: Azure Migrate で評価ツールを追加する方法について説明します。
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901055"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195632"
 ---
 # <a name="add-assessment-tools"></a>評価ツールの追加
 
@@ -23,7 +23,7 @@ ms.locfileid: "82901055"
 2. 使用する評価シナリオを選択します。
 
     - Azure に移行するコンピューターやワークロードを検出して評価するには、 **[サーバーの評価と移行]** を選択します。
-    - オンプレミスの SQL コンピューターを評価するには、 **[Assess and migrate databases] (データベースの評価と移行)** を選択します。
+    - オンプレミスの SQL Server データベースを評価するには、 **[Assess and migrate databases] (データベースの評価と移行)** を選択します。
     - オンプレミスの Web アプリを評価するには、 **[Assess and migrate web apps] (Web アプリの評価と移行)** を選択します。
 
     ![評価シナリオ](./media/how-to-assess/assess-scenario.png)

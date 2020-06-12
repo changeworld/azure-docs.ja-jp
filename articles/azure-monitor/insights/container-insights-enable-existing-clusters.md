@@ -3,12 +3,12 @@ title: デプロイされている Azure Kubernetes Service (AKS) クラスタ�
 description: Azure Monitor for containers を使用して、自分のサブスクリプションに既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b7450f5eb132dab9961de712d8cddb33bd2c521
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234539"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264207"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -108,9 +108,9 @@ Azure portal で Azure Monitor からの AKS クラスターの監視を有効�
 
 2. 一覧から **[コンテナー]** を選択します。
 
-3. **[モニター - コンテナー]** ページで、 **[Non-monitored clusters] (監視対象外のクラスター)** を選択します。
+3. **[モニター - コンテナー]** ページで、 **[Unmonitored clusters]\(監視対象外のクラスター\)** を選択します。
 
-4. 監視対象外のクラスターの一覧でコンテナーを検索し、 **[有効にする]** をクリックします。   
+4. 監視対象外のクラスターの一覧でコンテナーを検索し、 **[有効にする]** をクリックします。
 
 5. **[コンテナーの Azure Monitor へのオンボード]** ページにクラスターと同じサブスクリプションの既存の Log Analytics ワークスペースが存在する場合は、ドロップダウン リストから選択します。  
     このリストでは、サブスクリプションで AKS コンテナーがデプロイされている既定のワークスペースと場所が事前に選択されています。

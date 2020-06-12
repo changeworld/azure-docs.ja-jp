@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886927"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014538"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
 
@@ -97,9 +97,20 @@ WAF の状態を確認するには、ポータルでそれを参照します。 
 
 カスタム ルールのみの WAF ポリシーの編集は無効になっています。 ルールの無効化、除外の追加など、WAF の設定を編集するには、新しいトップ レベルのファイアウォール ポリシー リソースに移行する必要があります。
 
-これを行うには、*Web アプリケーション ファイアウォール ポリシー*を作成し、選択したアプリケーション ゲートウェイおよびリスナーにそれを関連付けます。 この新しいポリシーは、現在の WAF 構成とまったく同じにする**必要**があります。つまり、すべてのカスタム ルール、除外、無効になっているルールなどを、作成する新しいポリシーにコピーする必要があります。 ポリシーをアプリケーション ゲートウェイに関連付けたら、WAF のルールと設定の変更に進むことができます。 Azure PowerShell でこの操作を行うこともできます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
+これを行うには、*Web アプリケーション ファイアウォール ポリシー*を作成し、選択したアプリケーション ゲートウェイおよびリスナーにそれを関連付けます。 この新しいポリシーは、現在の WAF 構成とまったく同じにする必要があります。つまり、すべてのカスタム ルール、除外、無効になっているルールなどを、作成する新しいポリシーにコピーする必要があります。 ポリシーをアプリケーション ゲートウェイに関連付けたら、WAF のルールと設定の変更に進むことができます。 Azure PowerShell でこの操作を行うこともできます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
 
 必要な場合は、移行スクリプトを使用して WAF ポリシーに移行できます。 詳しくは、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](migrate-policy.md)」をご覧ください。
+
+## <a name="force-mode"></a>強制モード
+
+現在の構成とまったく同じポリシーにすべてをコピーしない場合は、WAF を "強制" モードに設定できます。 次の Azure PowerShell コードを実行すると、WAF は force モードになります。 その後、設定が構成とまったく同じではない場合でも、WAF ポリシーを WAF に関連付けることができます。 
+
+```azurepowershell-interactive
+$appgw = Get-AzApplicationGateway -Name <your Application Gateway name> -ResourceGroupName <your Resource Group name>
+$appgw.ForceFirewallPolicyAssociation = $true
+```
+
+次に、WAF ポリシーをアプリケーション ゲートウェイに関連付ける手順に進みます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

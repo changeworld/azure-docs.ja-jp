@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 570d842409fc019d24446e091f83402f4c288d7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640050"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299572"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -36,7 +36,7 @@ API サーバーやその他のクラスター コンポーネントの詳細に
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>API サーバーの許可された IP 範囲を有効にした AKS クラスターを作成する
 
-API サーバーの許可された IP 範囲は、新しい AKS クラスターに対してのみ機能します。 [az aks create][az-aks-create] を使用してクラスターを作成し、 *--api-server-authorized-ip-ranges* パラメーターを使用して、許可された IP アドレス範囲のリストを指定します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークまたはパブリック IP によって使用されるアドレス範囲です。 CIDR 範囲を指定する場合は、その範囲内の最初の IP アドレスから始めます。 たとえば、*137.117.106.90/29* は有効な範囲ですが、範囲内の最初の IP アドレス (*137.117.106.88/29* など) を指定するようにしてください。
+API サーバーの許可された IP の範囲は、新しい AKS クラスターに対してのみ機能し、プライベート AKS クラスターではサポートされていません。 [az aks create][az-aks-create] を使用してクラスターを作成し、 *--api-server-authorized-ip-ranges* パラメーターを使用して、許可された IP アドレス範囲のリストを指定します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークまたはパブリック IP によって使用されるアドレス範囲です。 CIDR 範囲を指定する場合は、その範囲内の最初の IP アドレスから始めます。 たとえば、*137.117.106.90/29* は有効な範囲ですが、範囲内の最初の IP アドレス (*137.117.106.88/29* など) を指定するようにしてください。
 
 > [!IMPORTANT]
 > 既定では、クラスターは [Standard SKU ロード バランサー][standard-sku-lb]を使用します。これを使用して、アウトバウンド ゲートウェイを構成できます。 クラスターの作成時に API サーバーの許可された IP 範囲を有効にすると、指定した範囲の他に、クラスターのパブリック IP も既定で許可されます。 *--api-server-authorized-ip-ranges* に *""* を指定するか、値を指定しなかった場合、API サーバーの許可された IP 範囲は無効になります。 PowerShell を使用している場合は、解析の問題を回避するために、 *--api-server-authorized-ip-ranges=""* (等号付き) を使用することに注意してください。
@@ -133,7 +133,7 @@ az aks update \
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[dev-spaces-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-ranges]: ../dev-spaces/configure-networking.md#aks-cluster-network-requirements
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

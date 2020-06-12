@@ -3,12 +3,12 @@ title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747082"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204839"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -148,6 +148,9 @@ Azure Policy では、定義内の **type** と **name** フィールドを使�
 _リソース合計_は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="[コンプライアンス] ページからのポリシー コンプライアンスの例" border="false":::
+
+> [!NOTE]
+> Azure Policy の規制コンプライアンスはプレビュー機能です。 SDK とポータルのページからのコンプライアンス プロパティは、有効化されているイニシアチブごとに異なります。 詳細については、[規制コンプライアンス](../concepts/regulatory-compliance.md)に関する記事をご覧ください
 
 ## <a name="portal"></a>ポータル
 

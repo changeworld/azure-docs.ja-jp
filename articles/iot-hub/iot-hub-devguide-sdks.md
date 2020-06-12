@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.custom: mqtt
-ms.openlocfilehash: 68186e777051e77deca7b6e5891eb392cac23260
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 20bbd3fbc7623f01e60acbd08eed0c09b7e1a26d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729034"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117565"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -116,6 +116,11 @@ Python 用 Azure IoT Hub サービス SDK:
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 C 用 Azure IoT Hub サービス SDK: 
+
+C 用 Azure IoT サービス SDK は、アクティブな開発ではなくなりました。
+クラッシュ、データの破損、セキュリティの脆弱性などの重大なバグは、引き続き修正します。 ただし、新しい機能を追加したり、重要ではないバグを修正したりすることはありません。
+
+Azure IoT サービス SDK のサポートは、上位レベルの言語 ([C#](https://github.com/Azure/azure-iot-sdk-csharp)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[Node](https://github.com/Azure/azure-iot-sdk-node)、[Python](https://github.com/Azure/azure-iot-sdk-python)) で利用できます。
 
 * [apt-get、MBED、Arduino IDE、または NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md) からダウンロードする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-c)

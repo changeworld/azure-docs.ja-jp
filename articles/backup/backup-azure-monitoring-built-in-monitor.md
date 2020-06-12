@@ -4,16 +4,16 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294934"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247055"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
-Azure Backup では、バックアップ要件とインフラストラクチャ トポロジ (オンプレミスと Azure) に基づく複数のバックアップ ソリューションを提供します。 すべてのバックアップ ユーザーまたは管理者は、すべてのソリューション全体で何が起こっているかを確認し、重要なシナリオで通知を受け取る必要があります。 この記事では、Azure Backup サービスによって提供される監視と通知の機能について説明します。
+Azure Backup では、バックアップ要件とインフラストラクチャ トポロジ (オンプレミスと Azure) に基づく複数のバックアップ ソリューションを提供します。 すべてのバックアップ ユーザーまたは管理者は、すべてのソリューション全体で何が起こっているかを確認し、重要なシナリオで通知を受け取ることができます。 この記事では、Azure Backup サービスによって提供される監視と通知の機能について説明します。
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Recovery Services コンテナーでのバックアップ ジョブ
 
@@ -74,9 +74,9 @@ SQL や SAP HANA などの Azure ワークロード バックアップ ソリュ
 
 ### <a name="alert-types"></a>アラートの種類
 
-アラートは、その重要度に基づいて次の 3 つの種類に定義できます。
+アラートは、その重大度に基づいて次の 3 つの種類に定義できます。
 
-- **重要** : 原則として、バックアップまたは回復が失敗すると (スケジュールされたかユーザーがトリガーしたかを問わず)、アラートが生成されて重要アラートとして表示され、バックアップの削除といった破壊的な操作の原因となります。
+- **[高]** :原則として、バックアップまたは回復が失敗すると (スケジュールされたかユーザーがトリガーしたかを問わず)、アラートが生成されて重大アラートとして表示され、バックアップの削除といった破壊的な操作の原因となります。
 - **警告**:バックアップ操作が成功したもののいくつかの警告を伴う場合、これらは警告アラートとして表示されます。
 - **情報**:現時点では、Azure Backup サービスで情報アラートは生成されません。
 

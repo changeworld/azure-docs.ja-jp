@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: fea444f2e864683d6350e1c08872ec574a36852c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/29/2020
+ms.openlocfilehash: d879429eef68d1bc2448150e2d8eece9cfa35da2
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83646013"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204856"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -120,6 +120,9 @@ ms.locfileid: "83646013"
 ## <a name="logical-comparison-functions"></a>論理比較関数
 
 条件の処理、値と式の結果の比較、さまざまな種類のロジックの評価などを行うには、以下の論理比較関数を使用できます。 各関数の完全なリファレンスについては、[アルファベット順の一覧](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)を参照してください。
+
+> [!NOTE]
+> 論理関数または条件を使用して値を比較する場合、null 値は空の文字列 (`""`) 値に変換されます。 条件の動作は、null 値ではなく空の文字列と比較すると異なります。 詳細については、[string() 関数](#string)に関するページを参照してください。 
 
 | 論理比較関数 | タスク |
 | --------------------------- | ---- |
@@ -3820,13 +3823,17 @@ string(<value>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | はい | Any | 変換する値 |
+| <*value*> | はい | Any | 変換する値。 この値が null の場合、または null に評価される場合、値は空の文字列 (`""`) 値に変換されます。 <p><p>たとえば、`?` 演算子を使用してアクセスできる、存在しないプロパティに文字列変数を割り当てると、null 値は空の文字列に変換されます。 ただし、null 値の比較は、空の文字列の比較と同じではありません。 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*string-value*> | String | 指定した値の文字列バージョン |
+| <*string-value*> | String | 指定した値の文字列バージョン。 *value* パラメーターが null の場合、または null に評価される場合、この値は空の文字列 (`""`) 値として返されます。 |
 ||||
+
+
+
+
 
 *例 1*
 

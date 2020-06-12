@@ -15,6 +15,10 @@
           href: tutorial-net-windows-virtual-machine.md
         - name: Python で Windows 仮想マシンを使用して Azure Key Vault を使用する
           href: tutorial-python-windows-virtual-machine.md
+    - name: Azure Kubernetes Service
+      items:
+        - name: Azure Key Vault と Kubernetes の統合
+          href: key-vault-integrate-kubernetes.md
     - name: マネージ ID と .NET を使用した Web アプリへの Key Vault の接続
       href: tutorial-net-create-vault-azure-web-app.md
 - name: サンプル
@@ -60,7 +64,7 @@
       href: overview-vnet-service-endpoints.md
 - name: 操作方法ガイド
   items:
-    - name: Authenticate
+    - name: 認証
       items:
         - name: App Service のマネージド ID を使用する
           href: managed-identity.md

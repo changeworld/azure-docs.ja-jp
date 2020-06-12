@@ -138,6 +138,8 @@
 - name: リソース
   expanded: true
   items:
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 顧客データ要求
       href: time-series-insights-customer-data-requests.md
     - name: 開発者向けリソース
@@ -158,22 +160,6 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 利用可能なリージョン
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: サポート オプションとヘルプ オプション
-      items:
-        - name: Azure のサポート オプション
-          href: 'https://azure.microsoft.com/support/options/'
-        - name: Azure IoT のサポートとヘルプのオプション
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: Microsoft Q&A 質問ページ
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-    - name: フィードバックとフォーラム
-      items:
-        - name: Microsoft Q&A 質問ページ
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-        - name: 製品の要求と提案
-          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure のビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9 の動画

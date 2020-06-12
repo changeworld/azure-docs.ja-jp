@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8b0362f9bb80af9f98dad032790a9e88651284a1
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638496"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298875"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -35,23 +35,23 @@ Azure Active Directory B2C (Azure AD B2C) で認証されたクライアント�
 
 Azure API Management において Azure AD B2C を使用して API のセキュリティを保護する場合、APIM で作成する[受信ポリシー](../api-management/api-management-howto-policies.md)には複数の値が必要です。 ご利用の Azure AD B2C テナントで以前に作成したアプリケーションのアプリ ID を記録します。 前提条件で作成したアプリケーションを使用する場合は、"*webbapp1*" のアプリケーション ID を使用します。
 
-現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーション ID を取得できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[管理]** で、 **[アプリケーション]** を選択します。
-1. *webapp1* または以前に作成した別のアプリケーションの **[アプリケーション ID]** 列の値を記録します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** を選択してから、 **[Owned applications]\(所有しているアプリケーション\)** タブを選択します。
+1. **[アプリの登録]** を選択してから、 **[Owned applications]\(所有しているアプリケーション\)** タブを選択します。
 1. *webapp1* または以前に作成した別のアプリケーションの **[Application (client) ID]\(アプリケーション (クライアント) ID\)** 列の値を記録します。
+
+#### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[管理]** で、 **[アプリケーション (レガシ)]** を選択します。
+1. *webapp1* または以前に作成した別のアプリケーションの **[アプリケーション ID]** 列の値を記録します。
 
 * * *
 

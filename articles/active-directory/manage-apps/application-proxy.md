@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5ba82b34da8e4c3156d6854934ad873428bf121a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609954"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168728"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス
 
@@ -41,7 +41,7 @@ Azure AD アプリケーション プロキシの特徴:
 * フォーム ベースまたは[ヘッダー ベース](application-proxy-configure-single-sign-on-with-ping-access.md)のアクセスを使用する Web アプリ
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API
 * [リモート デスクトップ ゲートウェイ](application-proxy-integrate-with-remote-desktop-services.md)の背後でホストされているアプリケーション
-* Active Directory Authentication Library (ADAL) と統合されるリッチ クライアント アプリ
+* Microsoft Authentication Library (MSAL) と統合されるリッチ クライアント アプリ
 
 アプリケーション プロキシは、シングル サインオンをサポートします。 サポートされている方法の詳細については、「[シングル サインオンの方法の選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)」を参照してください。
 
