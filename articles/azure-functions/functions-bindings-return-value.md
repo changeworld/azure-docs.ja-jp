@@ -1,5 +1,5 @@
 ---
-title: Azure 関数からの戻り値の使用
+title: Azure Functions からの戻り値の使用
 description: Azure Functions の戻り値を管理する方法について学習します
 author: craigshoemaker
 ms.topic: reference
@@ -12,7 +12,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74480578"
 ---
-# <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
+# <a name="using-the-azure-function-return-value"></a>Azure Functions の戻り値の使用
 
 この記事では、戻り値が関数内でどのように機能するかについて説明します。
 
