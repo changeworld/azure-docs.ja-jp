@@ -33,6 +33,8 @@
       href: add-api.md
     - name: アプリケーションの設定の構成
       href: application-settings.md
+    - name: フロントエンド フレームワークとライブラリの構成
+      href: front-end-frameworks.md
 - name: チュートリアル
   items:
     - name: 静的サイト ジェネレーターからの発行

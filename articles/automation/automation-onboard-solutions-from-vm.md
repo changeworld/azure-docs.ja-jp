@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cab114e50852f293a3d1caf5bdc9a341f75f2557
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 481d59bd2a06103629dee88868d9e33de810fdab
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743958"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204907"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Azure VM から Update Management を有効にする
 
@@ -29,7 +29,7 @@ ms.locfileid: "83743958"
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
 
-## <a name="enable-update-management"></a>Update Management の有効化
+## <a name="enable-the-feature-for-deployment"></a>デプロイために機能を有効にする
 
 1. [[Azure portal]](https://portal.azure.com) で **[仮想マシン]** を選択するか、[ホーム] ページから **[仮想マシン]** を検索して選択します。
 
@@ -43,16 +43,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![Update Management の有効化](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>スコープ構成を確認する
-
-Update Management では、ワークスペース内のスコープ構成を使用して、機能を有効にするコンピューターを対象として指定します。 スコープ構成は、機能のスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 詳細については、「[Update Management のスコープ構成を操作する](automation-scope-configurations-update-management.md)」を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 
 * VM の Update Management を使用するには、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」を参照してください。
-* スコープ構成については、「[Update Management のスコープ構成を操作する](automation-scope-configurations-update-management.md)」を参照してください。
-* Log Analytics ワークスペースが不要になった場合は、「[Update Management の Automation アカウントからワークスペースのリンクを解除する](automation-unlink-workspace-update-management.md)」の手順を参考にしてください。
-* Update Management から VM を削除するには、「[Update Management から VM を削除する](automation-remove-vms-from-update-management.md)」を参照してください。
 * Update Management の一般的なエラーのトラブルシューティングについては、[Update Management の問題のトラブルシューティング](troubleshoot/update-management.md)に関する記事を参照してください。
 * Windows Update エージェントに関する問題のトラブルシューティングについては、「[Windows Update エージェントの問題をトラブルシューティングする](troubleshoot/update-agent-issues.md)」を参照してください。
 * Linux Update エージェントに関する問題のトラブルシューティングについては、「[Linux Update エージェントに関する問題のトラブルシューティング](troubleshoot/update-agent-issues-linux.md)」を参照してください。

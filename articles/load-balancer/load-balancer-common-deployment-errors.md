@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658645"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221009"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer での一般的な Azure デプロイ エラーのトラブルシューティング
 
@@ -28,6 +28,7 @@ ms.locfileid: "83658645"
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| パブリック IP の SKU と Load Balancer の両方の SKU は一致している必要があります。 Azure Load Balancer とパブリック IP の SKU を確実に一致させてください。 運用環境のワークロードには Standard SKU をお勧めします。 [SKU における差異](./skus.md)の詳細を確認してください。  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | SKU が指定されていない場合、または Standard パブリック IP を使用せずにデプロイされている場合、仮想マシン スケール セットは既定で Basic Load Balancer になります。 Standard パブリック IP を使用して個々のインスタンスに仮想マシン スケール セットを再デプロイし、Standard Load Balancer が確実に選択されるようにするか、Azure portal から仮想マシン スケール セットをデプロイするときに Standard LB を選択します。 |
 |MaxAvailabilitySetsInLoadBalancerReached | ロード バランサーのバックエンド プールには、最大 150 個の可用性セットを含めることができます。 バックエンド プール内の VM に対して明示的に定義された可用性セットがない場合は、各 VM が専用の可用性セットに配置されます。 したがって、150 台のスタンドアロン VM をデプロイすると、150 個の可用性セットを持つことになり、制限に達します。 回避策として、可用性セットをデプロイし、それに VM を追加することができます。 |
+|NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets | Basic SKU ロード バランサーでは、ネットワーク インターフェイスとロード バランサーが同じ可用性セットに含まれている必要があります。 |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndIPConfig| 同じ仮想マシン スケール セットによって参照されている同じバックエンド ポートとプロトコルを使用して、特定のロード バランサーの種類 (内部、パブリック) に対して複数のルールを設定することはできません。 ルールを更新して、この重複するルールの作成を変更します。 |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndVmssIPConfig| 同じ仮想マシン スケール セットによって参照されている同じバックエンド ポートとプロトコルを使用して、特定のロード バランサーの種類 (内部、パブリック) に対して複数のルールを設定することはできません。 ルールのパラメーターを更新して、この重複するルールの作成を変更します。 |
 |AnotherInternalLoadBalancerExists| 種類が内部のロード バランサーのバックエンドにある同じ VM またはネットワーク インターフェイスのセットを参照できるのは、その種類の 1 つのロード バランサーだけです。 同じ種類のロード バランサーを 1 つだけ作成するように、デプロイを更新します。 |

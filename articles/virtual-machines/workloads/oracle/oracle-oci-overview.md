@@ -11,15 +11,15 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660563"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299878"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション
 
@@ -35,10 +35,7 @@ Oracle ソリューションを完全に Azure インフラストラクチャに
 
 クロスクラウド接続によって、OCI のホステッド データベース サービスの利点を活用しながら、Azure 仮想マシン上で Oracle の業界最先端のアプリケーションとお客様独自のカスタム アプリケーションを実行できるソリューションが実現します。 
 
-> [!IMPORTANT]
-> Azure と Oracle Cloud の相互接続ソリューションを 2020 年 5 月までに使用する場合、Oracle はこれらのアプリケーションを Azure で実行することを認定します。
-
-クロスクラウド構成では、次のようなアプリケーションを実行できます。
+2020 年 5 月の時点で、次のアプリケーションがクロスクラウド構成で認定されています。
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

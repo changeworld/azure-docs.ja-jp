@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: 24a0891b57f67bfb78cf3699bddbcf8d345ee679
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83708008"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168575"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
@@ -60,7 +60,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
   read resourceGroupName &&
   echo "Enter the managed identity name:" &&
   read idName &&
-  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  az identity show -g $resourceGroupName -n $idName --query id
   ```
 
   # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -166,7 +166,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
-> インライン デプロイ スクリプトは二重引用符で囲まれているため、デプロイ スクリプト内の文字列は、代わりに単一引用符で囲む必要があります。 PowerShell のエスケープ文字は **&#92;** です。 前の JSON サンプルに示されているように、文字列の置換を使用することを検討することもできます。 名前パラメーターの既定値を表示します。
+> インライン デプロイ スクリプトは二重引用符で囲まれているため、デプロイ スクリプト内の文字列は、 **&#92;** を使用してエスケープするか、単一引用符で囲む必要があります。 前の JSON サンプルに示されているように、文字列の置換を使用することを検討することもできます。
 
 このスクリプトは、1 つのパラメーターを受け取り、パラメーター値を出力します。 **DeploymentScriptOutputs** は、出力を格納するために使用されます。  出力セクションの**値**の線は、格納されている値にアクセスする方法を示しています。 `Write-Output` はデバッグ目的で使用されます。 出力ファイルにアクセスする方法については、「[デプロイ スクリプトのデバッグ](#debug-deployment-scripts)」を参照してください。  プロパティの説明については、「[サンプル テンプレート](#sample-templates)」を参照してください。
 
@@ -306,7 +306,20 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 スクリプト実行とトラブルシューティングには、ストレージ アカウントとコンテナー インスタンスが必要です。 既存のストレージ アカウントを指定するオプションがあります。指定しない場合は、コンテナー インスタンスと共にストレージ アカウントがスクリプト サービスによって自動的に作成されます。 既存のストレージ アカウントを使用するための要件は次のとおりです。
 
-- サポートされているストレージ アカウントの種類は、汎用 v2、汎用 v1、および FileStorage アカウントです。 Premium SKU をサポートしているのは FileStorage だけです。 詳細については、「[ストレージ アカウントの種類](../../storage/common/storage-account-overview.md)」を参照してください。
+- サポートされるストレージ アカウントの種類:
+
+    | SKU             | サポートされている種類     |
+    |-----------------|--------------------|
+    | Premium_LRS     | FileStorage        |
+    | Premium_ZRS     | FileStorage        |
+    | Standard_GRS    | Storage、StorageV2 |
+    | Standard_GZRS   | StorageV2          |
+    | Standard_LRS    | Storage、StorageV2 |
+    | Standard_RAGRS  | Storage、StorageV2 |
+    | Standard_RAGZRS | StorageV2          |
+    | Standard_ZRS    | StorageV2          |
+
+    これらの組み合わせはファイル共有をサポートしています。  詳細については、「[Azure ファイル共有を作成する](../../storage/files/storage-how-to-create-file-share.md)」および「[ストレージ アカウントの種類](../../storage/common/storage-account-overview.md)」を参照してください。
 - ストレージ アカウントのファイアウォール規則はまだサポートされていません。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../../storage/common/storage-network-security.md)に関する記事を参照してください。
 - デプロイ スクリプトのユーザー割り当て済みマネージド ID には、ストレージ アカウントを管理するためのアクセス許可が必要です。これには、ファイル共有の読み取り、作成、削除が含まれます。
 

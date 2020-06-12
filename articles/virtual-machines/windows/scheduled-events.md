@@ -5,14 +5,14 @@ author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 0d1aa15c572f8ddec38cef913b170ed795ba1505
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779777"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297923"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -49,7 +49,7 @@ Azure Metadata Service では、VM 内部からアクセスできる REST エン
 ### <a name="endpoint-discovery"></a>エンドポイントの検出
 VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` からメタデータ サービスを利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 Virtual Machine が Virtual Network 内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法については、こちらのサンプルをご覧ください。
 
@@ -58,6 +58,8 @@ Virtual Machine が Virtual Network 内で作成されていない場合 (クラ
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - |
+| 2019-08-01 | 一般公開 | All | <li> EventSource のサポートを追加しました |
+| 2019-04-01 | 一般公開 | All | <li> イベントの説明のサポートを追加しました |
 | 2019-01-01 | 一般公開 | All | <li> 仮想マシン スケール セットの EventType "Terminate" のサポートが追加されました |
 | 2017-11-01 | 一般公開 | All | <li> スポット VM 削除の EventType 「Preempt」のサポートを追加する<br> | 
 | 2017-08-01 | 一般公開 | All | <li> IaaS VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
@@ -86,7 +88,7 @@ Virtual Machine が Virtual Network 内で作成されていない場合 (クラ
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01 -H @{"Metadata"="true"}
 ```
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
@@ -102,6 +104,8 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
             "NotBefore": {timeInUTC},
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -117,6 +121,8 @@ DocumentIncarnation は ETag であり、前回のクエリ以降にイベント
 | リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や同様の状態にならないイベントは、イベントの完了時に返されません。
 | NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
+| 説明 | このイベントの説明。 <br><br> 例: <br><ul><li> ホスト サーバーのメンテナンス中です。 |
+| EventSource | イベントのイニシエーター。 <br><br> 例: <br><ul><li> `Platform`:このイベントは、プラットフォームによって開始されています。 <li>`User`:このイベントは、ユーザーによって開始されています。 |
 
 ### <a name="event-scheduling"></a>イベントのスケジューリング
 各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの `NotBefore` プロパティに反映されます。 

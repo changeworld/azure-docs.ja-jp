@@ -3,26 +3,27 @@ title: Azure ファイル共有のバックアップのサポート マトリッ
 description: Azure ファイル共有をバックアップする際のサポート設定と制限の概要について説明します。
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: references_regions
+ms.openlocfilehash: 8198c06c1151dd86d99bc64f825764d0a4988287
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684628"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193862"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 
 [Azure Backup サービス](https://docs.microsoft.com/azure/backup/backup-overview)を使用して、Azure ファイル共有をバックアップできます。 この記事では、Azure Backup を使用して Azure ファイル共有をバックアップするときのサポート設定について説明します。
 
-## <a name="supported-geos"></a>サポートされている地域
+## <a name="supported-regions"></a>サポートされているリージョン
 
-Azure ファイル共有のバックアップは、次の地域で利用できます。
+### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure ファイル共有のバックアップの GA リージョン
 
-**GA リージョン**:<br>
-オーストラリア南東部 (ASE)、カナダ中部 (CNC)、米国中西部 (WCUS)、米国中南部 (SCUS)、米国西部 2 (WUS 2)、南部インド (INS)、米国中北部 (NCUS)、東日本 (JPE)、ブラジル南部 (BRS)、東南アジア (SEA)、スイス西部 (SZW)、アラブ首長国連邦中部 (UAC)、ノルウェー東部 (NWE)、インド西部 (INW)、オーストラリア中部 (ACL)、韓国中部 (KRC)、西日本 (JPW)、南アフリカ北部 (SAN)、英国南部 (UKS)、英国西部 (UKW)、韓国南部 (KRS)、北ヨーロッパ (NE)、ドイツ北部 (GN)、ノルウェー西部 (NWW)、南アフリカ西部 (SAW)、スイス北部 (SZN)、ドイツ中西部 (GWC)、アラブ首長国連邦北部 (UAN)、フランス中部 (FRC)、インド中部 (INC)、カナダ東部 (CNE)、東アジア (EA)、オーストラリア東部 (AE)、米国中部 (CUS)、米国西部 (WUS)、US Gov アリゾナ (UGA)、US Gov テキサス (UGT)、US Gov バージニア (UGV)、US DoD 中部 (UDC)、US DoD 東部 (UDE)
+Azure ファイル共有のバックアップは、以下を**除く**すべてのリージョンで利用できます。ドイツ中部 (ソブリン)、ドイツ北東部 (ソブリン)、中国東部、中国東部 2、中国北部、中国北部 2、US Gov アイオワ
 
-**サポートされているリージョン (プレビューの一環として) ですが、まだ GA ではありません**:<br>
-米国東部 (EUS)、米国東部 2 (EUS2)、西ヨーロッパ (WE)
+### <a name="supported-regions-for-accidental-delete-protection"></a>誤削除からの保護のサポート対象リージョン
+
+米国中西部
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 

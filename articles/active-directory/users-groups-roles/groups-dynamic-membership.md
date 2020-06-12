@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bbdf4c57e1bf6e7f3f581b9a6186567e10743d52
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744685"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221169"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -384,7 +384,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
- enrollmentProfileName | Apple Device Enrollment Profile、デバイス登録 - 企業デバイス ID (Android - キオスク)、または Windows Autopilot プロファイル名 | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Apple Device Enrollment プロファイル名、Android Enterprise 企業所有専用 Enrollment プロファイル名、または Windows Autopilot プロファイル名 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

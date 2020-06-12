@@ -7,26 +7,26 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 4546874b8a6cd8a7e45c3e6957a5181d66c7433f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f47d63ce79846e94e992df93af1768aad3c17e67
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690038"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170955"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Azure Event Grid でのパートナー トピック (プレビュー)
-パートナー トピックを使用すると、サードパーティのイベント ソースを Event Grid に直接接続できます。 この統合により、Azure サービスからのイベントをサブスクライブするのと同じ方法で、パートナーからのイベントをサブスクライブすることができます。 
+パートナー トピックを使用することで、サードパーティのイベント ソースを Azure Event Grid に直接接続できます。 この統合により、Azure サービスからのイベントをサブスクライブするのと同じ方法で、パートナーからのイベントをサブスクライブすることができます。 
 
 ## <a name="available-partners"></a>使用可能なパートナー
-Event Grid パートナー トピックを介して使用できる最初のパートナーは、Auth0 です。 [Auth0 パートナー トピック](auth0-overview.md)を使用すると、Auth0 アカウントと Azure アカウントを接続することができます。 リアルタイムで Auth0 イベントに反応し、ログを記録し、監視するための統合です。
+Event Grid パートナー トピックを介して使用できる最初のパートナーは、Auth0 です。 [Auth0 パートナー トピック](auth0-overview.md)を使用して、Auth0 アカウントと Azure アカウントを接続できます。 この統合によって、リアルタイムで Auth0 イベントに反応し、ログを記録し、監視することができます。
 
-Auth0 アカウントにログインして Event Grid 統合を作成して、今すぐ[試してみてください](auth0-how-to.md)。 Auth0 で [作成] をクリックすると、Azure アカウントに保留中の Auth0 トピックが表示されます。 [アクティブ化] をクリックすると、他のイベント ソースの場合と同様に、イベント サブスクリプションの作成、ルーティング、フィルター処理、およびイベントの配信を行うことができます。
+[試してみる](auth0-how-to.md)には、Auth0 アカウントにサインインし、Event Grid 統合を作成します。 Auth0 で **[作成]** をクリックすると、Azure アカウントに保留中の Auth0 トピックが表示されます。 **[アクティブ化]** を選択すると、他のイベント ソースの場合と同様に、ルーティング、フィルター処理、およびイベントの配信を行うための Event Grid イベント サブスクリプションを作成できます。
 
 ## <a name="pricing"></a>価格
 パートナー トピックは、システム トピックと同じ稼働率で課金されます。
 
 ## <a name="limits"></a>制限
-パートナー トピックは、パブリック プレビュー段階にあります。 パートナー トピックはパブリック プレビューの段階では、システム トピックおよびカスタム トピックと[同じ制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#event-grid-limits)が適用されます。
+パートナー トピックは、パブリック プレビュー段階にあります。 パブリック プレビューの段階では、システム トピックおよびカスタム トピックと[同じ制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#event-grid-limits)がパートナー トピックにも適用されます。
 
 ## <a name="how-do-i-become-an-event-grid-partner"></a>Event Grid パートナーになるには
 開始のサポートのために作成されたインフラストラクチャを使用すると、新しいパートナーはそのイベント機能を Event Grid と短時間で簡単に統合できます。 詳細については、[パートナーのオンボードに関するドキュメント](partner-onboarding-overview.md)を参照してください。

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: b7489c49b7469feacfd5b982615419741d286998
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d0f12274f3cbc0cd2726097e0507079cb858d59f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849707"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116566"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -49,13 +49,13 @@ HDInsight のマネージド ディスクはすべて、Azure Storage Service En
 今後のリリースでは、次の変更が行われます。 
 
 ### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark クラスターの Spark 2.1 および 2.2 の廃止
-2020 年 7 月 1 日以降、HDInsight 3.6 で Spark 2.1 と 2.2 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 3.6 で Spark 2.3 に移行することを検討してください。
+2020 年 7 月 1 日以降、HDInsight 3.6 で Spark 2.1 と 2.2 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま動作しますが、Microsoft からのサポートはありません。 システムやサポートが中断される可能性を回避するため、2020 年 6 月 30 日までに HDInsight 3.6 で Spark 2.3 に移行することを検討してください。 詳細については、「[Apache Spark 2.1 と 2.2 のワークロードを 2.3 または 2.4 に移行する](./spark/migrate-versions.md)」を参照してください。
 
 ### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark クラスターの Spark 2.3 の廃止
-2020 年 7 月 1 日以降、HDInsight 4.0 で Spark 2.3 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 4.0 で Spark 2.4 に移行することを検討してください。
+2020 年 7 月 1 日以降、HDInsight 4.0 で Spark 2.3 を使用して新しい Spark クラスターを作成することはできません。 既存のクラスターはそのまま動作しますが、Microsoft からのサポートはありません。 システムやサポートが中断される可能性を回避するため、2020 年 6 月 30 日までに HDInsight 4.0 で Spark 2.4 に移行することを検討してください。 詳細については、「[Apache Spark 2.1 と 2.2 のワークロードを 2.3 または 2.4 に移行する](./spark/migrate-versions.md)」を参照してください。
 
 ### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka クラスターの Kafka 1.1 の廃止
-2020 年 7 月 1 日以降、HDInsight 4.0 で Kafka 1.1 を使用して新しい Kafka クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 4.0 で Kafka 2.1 に移行することを検討してください。
+2020 年 7 月 1 日以降、HDInsight 4.0 で Kafka 1.1 を使用して新しい Kafka クラスターを作成することはできません。 既存のクラスターはそのまま動作しますが、Microsoft からのサポートはありません。 システムやサポートが中断する可能性を回避するため、2020 年 6月 30 日までに HDInight 4.0 で Kafka 2.1 に移行することを検討してください。 詳細については、「[Apache Kafka のワークロードを Azure HDInsight 4.0 に移行する](./kafka/migrate-versions.md)」を参照してください。
 
 ### <a name="hbase-20-to-216"></a>HBase 2.0 から 2.1.6
 今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1.6 にアップグレードされます

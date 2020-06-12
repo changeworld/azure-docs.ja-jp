@@ -4,14 +4,14 @@ description: 仮想ネットワークのプライベート IP アドレスを使
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 05/27/2020
 ms.author: thweiss
-ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697888"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116675"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos アカウントの Azure Private Link を構成する
 
@@ -618,9 +618,11 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 
 * ファイアウォール規則を構成していない場合、既定では、すべてのトラフィックが Azure Cosmos アカウントにアクセスできます。
 
-* パブリック トラフィックまたはサービス エンドポイントを構成し、プライベート エンドポイントを作成する場合、さまざまな種類の受信トラフィックが、対応する種類のファイアウォール規則によって承認されます。
+* パブリック トラフィックまたはサービス エンドポイントを構成し、プライベート エンドポイントを作成する場合、さまざまな種類の受信トラフィックが、対応する種類のファイアウォール規則によって承認されます。 プライベート エンドポイントが、サービス エンドポイントも構成されているサブネットで構成されている場合は、次のようになります。
+  * プライベート エンドポイントによってマップされたデータベース アカウントへのトラフィックは、プライベート エンドポイントを介してルーティングされます。
+  * サブネットからの他のデータベース アカウントへのトラフィックは、サービス エンドポイントを介してルーティングされます。
 
-* パブリック トラフィックまたはサービス エンドポイントを構成せずにプライベート エンドポイントを作成する場合、Azure Cosmos アカウントにはプライベート エンドポイントからのみアクセスできます。 パブリック トラフィックまたはサービス エンドポイントを構成しない場合、すべての承認済みプライベート エンドポイントが拒否または削除されると、アカウントはネットワーク全体に対して開かれます。
+* パブリック トラフィックまたはサービス エンドポイントを構成せずにプライベート エンドポイントを作成する場合、Azure Cosmos アカウントにはプライベート エンドポイントからのみアクセスできます。 パブリック トラフィックまたはサービス エンドポイントを構成しない場合、すべての承認済みプライベート エンドポイントが拒否または削除されると、PublicNetworkAccess が Disabled に設定されていない限り、アカウントはネットワーク全体に対して開かれます (以下のセクションを参照してください)。
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>アカウントの作成中のパブリック ネットワーク アクセスのブロック
 

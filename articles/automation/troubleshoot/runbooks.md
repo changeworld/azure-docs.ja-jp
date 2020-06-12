@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6ebca3df6971d545234f45551ebd008a4ad90c1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744308"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266068"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -50,7 +50,7 @@ Azure Automation で Runbook を実行しているときにエラーが発生し
 
 1. Runbook ジョブまたは Hybrid Runbook Worker 上の環境が応答しない場合に、この手順を実行します。
 
-    Azure Automation ではなく、Hybrid Runbook Worker で Runbook を実行している場合は、[Hybrid Worker 自体のトラブルシューティング](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)が必要になることがあります。
+    Azure Automation ではなく、Hybrid Runbook Worker で Runbook を実行している場合は、[Hybrid Worker 自体のトラブルシューティング](hybrid-runbook-worker.md)が必要になることがあります。
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>シナリオ:Runbook が "No permission (アクセス許可なし)" または "Forbidden 403 (禁止 403)" エラーで失敗する
 
@@ -64,7 +64,7 @@ Runbook が、"No permission (アクセス許可なし)" または "Forbidden 40
 
 ### <a name="resolution"></a>解像度
 
-ご自身の実行アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認してください。
+ご自身の実行アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](../../role-based-access-control/role-assignments-portal.md)ことを確認してください。
 
 ## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>シナリオ:Azure アカウントにサインインできない
 
@@ -99,7 +99,7 @@ No certificate was found in the certificate store with thumbprint
    Connect-AzAccount –Credential $Cred
    ```
 
-1. ローカルで認証に失敗した場合、Azure Active Directory (Azure AD) 資格情報が適切に設定されていません。 Azure AD アカウントを正しく設定するには、「[Azure Active Directory を使用した Azure の認証](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)」というブログ投稿を参照してください。
+1. ローカルで認証に失敗した場合、Azure Active Directory (Azure AD) 資格情報が適切に設定されていません。 Azure AD アカウントを正しく設定するには、[Azure Active Directory を使用した Azure の認証](../automation-use-azure-ad.md)に関する記事を参照してください。
 
 1. エラーが一時的なものであると思われる場合は、認証をより堅牢にするために認証ルーチンに再試行ロジックを追加してみてください。
 
@@ -137,7 +137,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>原因
 
-このエラーは、実行アカウントを使用していないとき、または実行アカウントの有効期限が切れたときに発生することがあります。 詳細については、「[Azure Automation の実行アカウントを管理する](https://docs.microsoft.com/azure/automation/manage-runas-account)」を参照してください。
+このエラーは、実行アカウントを使用していないとき、または実行アカウントの有効期限が切れたときに発生することがあります。 詳細については、「[Azure Automation の実行アカウントを管理する](../manage-runas-account.md)」を参照してください。
 
 このエラーには、次の 2 つの主要な原因があります。
 
@@ -274,7 +274,7 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 
 ### <a name="resolution"></a>解像度
 
-Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する場合は、[Azure サービスを管理するための証明書の作成および追加](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する場合は、[Azure portal を使用するサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)および [Azure Resource Manager でのサービス プリンシパルの認証](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページを参照してください。
+クラシック実行アカウントを Azure クラシック デプロイ モデルのコマンドレットと共に使用するには、[クラシック実行アカウントを作成して Azure サービスを管理する](../automation-create-standalone-account.md#create-a-classic-run-as-account)方法に関する記事を参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する場合は、[Azure portal を使用するサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)および [Azure Resource Manager でのサービス プリンシパルの認証](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページを参照してください。
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>シナリオ:Runbook が "A task was canceled" (タスクが取り消されました) というエラー メッセージで失敗する
 
@@ -383,7 +383,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>原因
 
-このエラーは、`Add-AzAccount` を呼び出して Automation アカウントを追加する前に Runbook で適切な手順が実行されなかった場合に発生する可能性があります。 必要な手順の一例として、実行アカウントでのサインインが挙げられます。 Runbook で使用する正しい操作については、「[Azure Automation での Runbook の実行](https://docs.microsoft.com/azure/automation/automation-runbook-execution)」をご覧ください。
+このエラーは、`Add-AzAccount` を呼び出して Automation アカウントを追加する前に Runbook で適切な手順が実行されなかった場合に発生する可能性があります。 必要な手順の一例として、実行アカウントでのサインインが挙げられます。 Runbook で使用する正しい操作については、「[Azure Automation での Runbook の実行](../automation-runbook-execution.md)」をご覧ください。
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>シナリオ:オブジェクト参照がオブジェクト インスタンスに設定されていない
 
@@ -652,16 +652,16 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-a-run-as-account"></a>実行アカウントを使用していない
 
-「[手順 5 - Azure リソースを管理するための認証を追加する](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources)」に従って、Key Vault へのアクセスに実行アカウントを使用するようにします。
+「[手順 5 - Azure リソースを管理するための認証を追加する](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources)」に従って、Key Vault へのアクセスに実行アカウントを使用するようにします。
 
 #### <a name="insufficient-permissions"></a>アクセス許可が不十分である
 
-[Key Vault へのアクセス許可を追加](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault)して、Key Vault にアクセスするための十分なアクセス許可が実行アカウントに付与されるようにします。
+[Key Vault へのアクセス許可を追加](../manage-runas-account.md#add-permissions-to-key-vault)して、Key Vault にアクセスするための十分なアクセス許可が実行アカウントに付与されるようにします。
 
 ## <a name="recommended-documents"></a>推奨されるドキュメント
 
 * [Azure Automation での Runbook の実行](../automation-runbook-execution.md)
-* [Azure Automation での Runbook を開始する](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Azure Automation での Runbook を開始する](../automation-starting-a-runbook.md)
 
 ## <a name="next-steps"></a>次のステップ
 

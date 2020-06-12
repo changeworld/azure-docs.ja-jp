@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3739f8691a144f183e72af19233f776a24066cbc
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837095"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118790"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -31,7 +31,7 @@ Azure portal で Automation アカウントを作成すると、**実行**アカ
 Automation アカウントを作成または更新したり、この記事で説明されているタスクを完了したりするには、次の特権とアクセス許可が必要です。
 
 * Automation アカウントを作成するには、Azure AD ユーザー アカウントが、`Microsoft.Automation` リソースの所有者ロールに相当するアクセス許可を持つロールに追加されている必要があります。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
-* Azure portal の **[Azure Active Directory]**  >  **[管理]**  >  **[ユーザー設定]** で、( **[アプリの登録]** が **[はい]** に設定されている場合)、Azure AD テナント内の管理者以外のユーザーは [Active Directory アプリケーションを登録](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)できます。 **[アプリの登録]** が **[いいえ]** に設定されている場合、このアクションを実行するユーザーは Azure AD 内のグローバル管理者である必要があります。
+* Azure portal の **[Azure Active Directory]**  >  **[管理]**  >  **[ユーザー設定]** で、( **[アプリの登録]** が **[はい]** に設定されている場合)、Azure AD テナント内の管理者以外のユーザーは [Active Directory アプリケーションを登録](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)できます。 **[アプリの登録]** が **[いいえ]** に設定されている場合、このアクションを実行するユーザーに Azure AD 内のアプリケーション開発者ロールがある必要があります。
 
 サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションのグローバル管理者または共同管理者ロールに追加された場合、Active Directory にはゲストとして追加されます。 このシナリオでは、[Automation アカウントの追加] ページに次のメッセージが表示されます: `You do not have permissions to create.`
 
@@ -102,8 +102,8 @@ Azure Automation アカウントを作成するとき、クラシック実行ア
 ## <a name="next-steps"></a>次のステップ
 
 * グラフィック作成の詳細については、[Azure Automation でのグラフィカル Runbook の作成](automation-graphical-authoring-intro.md)に関する記事を参照してください。
-* PowerShell Runbook の使用を開始するには、「[チュートリアル: PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
-* PowerShell Workflow Runbook の使用を開始するには、「[チュートリアル: PowerShell Workflow Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。
-* Python 2 runbook の使用を開始するには、[Python 2 Runbook の作成](learn/automation-tutorial-runbook-textual-python2.md)に関するチュートリアルを参照してください。
+* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* PowerShell Workflow Runbook の使用を開始するには、「[チュートリアル:PowerShell Workflow Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。
+* Python 2 runbook の使用を開始するには、「[チュートリアル:Python 2 Runbook を作成する](learn/automation-tutorial-runbook-textual-python2.md)」を作成します。
 * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )」をご覧ください。

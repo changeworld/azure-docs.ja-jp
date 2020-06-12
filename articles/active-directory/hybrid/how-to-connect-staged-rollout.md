@@ -6,20 +6,20 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644167"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221275"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
-段階的なロールアウト アプローチを使用することで、フェデレーション認証からクラウド認証に移行できます。 この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
+段階的なロールアウト アプローチを使用することで、ドメイン全体のカットオーバーを回避できます。  これにより、Azure Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
     
 -  現在、オンプレミスの Multi-Factor 認証サーバーを使用しています。 
 -  認証にスマート カードを使用しています。 
@@ -38,8 +38,8 @@ ms.locfileid: "83644167"
 -   フェデレーション ドメインを持つ Azure Active Director (Azure AD) テナントがあること。
 
 -   次の 2 つのオプションのいずれかに移行することを決定しました：
-    - **オプション A** - *パスワード ハッシュの同期 (sync)*  + *シームレス シングル サインオン (SSO)*
-    - **オプション B** - *パス スルー認証* + *シームレス SSO*
+    - **オプション A** - *パスワード ハッシュの同期 (sync)*  + *シームレス シングル サインオン (SSO)* 。  詳細については、[パスワード ハッシュ同期](whatis-phs.md)および[シームレス SSO](how-to-connect-sso.md) に関する記事を参照してください
+    - **オプション B** - *パス スルー認証* + *シームレス SSO*。  詳細については、「[パススルー認証とは](how-to-connect-pta.md)」を参照してください  
     
     *シームレス SSO* は、オプションですが、企業ネットワーク内からドメインに参加しているマシンを実行しているユーザーに対して、サイレント サインイン エクスペリエンスを実現できるようにするようお勧めします。
 
@@ -76,12 +76,14 @@ ms.locfileid: "83644167"
     - 動的グループは、段階的なロールアウトでは*サポートされていません*。
     - グループ内の連絡先オブジェクトがグループ フォームの追加をブロックします。
 
-- それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的なロールアウトでは、ドメインをフェデレーションから管理対象に切り替えません。
+- それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的なロールアウトでは、ドメインをフェデレーションから管理対象に切り替えません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](plan-migrate-adfs-password-hash-sync.md)方法および[フェデレーションからパススルー認証に移行する](plan-migrate-adfs-pass-through-authentication.md)方法に関する記事を参照してください
+
+
 
 - 段階的なロールアウトで、セキュリティ グループを初めて追加する時点では、UX タイムアウトを回避するために、200 ユーザーに制限されます。グループを追加した後、必要に応じて、そのグループにさらにユーザーを直接追加できます。
 
 >[!NOTE]
-> テナント化されたエンドポイントはログイン ヒントを送信しないため、段階的なロールアウトではサポートされていません。  SAML アプリケーションは、テナント化されたエンドポイントを使用するため、これも段階的なロールアウトではサポートされていません。
+> テナント化されたエンドポイントはログイン ヒントを送信しないため、段階的なロールアウトではサポートされていません。 
 
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる
 

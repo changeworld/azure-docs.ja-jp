@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849656"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022199"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -86,7 +86,7 @@ Azure サービスでプライベート エンドポイントを使用する場�
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>承認ワークフローを使用したプライベート リンク リソースへのアクセス 
 次の接続の承認方法を使用して、プライベート リンク リソースに接続できます。
-- **自動的**な承認: 特定のプライベート リンク リソースに対するアクセス許可を自ら所有しているか、付与されている場合。 必要なアクセス許可は、次の形式のプライベート リンク リソースの種類に基づきます: Microsoft.\<プロバイダー>/<リソースの種類>/privateEndpointConnectionApproval/action
+- **自動的**な承認: 特定のプライベート リンク リソースに対するアクセス許可を自ら所有しているか、付与されている場合。 必要なアクセス許可は、次の形式のプライベート リンク リソースの種類に基づきます: Microsoft.\<Provider>/<リソースの種類>/privateEndpointConnectionApproval/action
 - **手動**による要求: 必要な許可がなく、アクセスを要求したい場合。 承認ワークフローが開始されます。 プライベート エンドポイントとそれ以降のプライベート エンドポイント接続は、"Pending (保留中)" 状態で作成されます。 プライベート リンク リソースの所有者は、接続を承認する役割を担います。 次の承認ワークフロー ダイアグラムに示すように、プライベート エンドポイントは、承認されると、トラフィックを正常に送信できるようになります。  
 
 ![ワークフローの承認](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -124,9 +124,9 @@ Azure サービスでプライベート エンドポイントを使用する場�
 
 
 ## <a name="next-steps"></a>次のステップ
-- [ポータルを使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
-- [PowerShell を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
-- [CLI を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
+- [ポータルを使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
+- [PowerShell を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
+- [CLI を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
 - [ポータルを使用してストレージ アカウント用のプライベート エンドポイントを作成する](create-private-endpoint-storage-portal.md)
 - [ポータルを使用して Azure Cosmos アカウントのプライベート エンドポイントを作成する](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell を使用して独自の Private Link サービスを作成する](create-private-link-service-powershell.md)

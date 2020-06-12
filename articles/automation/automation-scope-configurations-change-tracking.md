@@ -1,52 +1,44 @@
 ---
-title: Azure Automation の変更履歴とインベントリのスコープ構成を操作する
-description: この記事では、変更履歴とインベントリを使用する際のスコープ構成を操作する方法について説明します。
+title: Azure Automation の Change Tracking とインベントリのデプロイのスコープを制限する
+description: この記事では、スコープ構成を使用して、Change Tracking とインベントリのデプロイのスコープを制限する方法について説明します。
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832165"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117439"
 ---
-# <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>変更履歴とインベントリのスコープ構成を操作する
+# <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Change Tracking とインベントリのデプロイのスコープを制限する
 
-この記事では、VM に対して [Update Management](automation-update-management.md) 機能を有効にする際のスコープ構成を操作する方法について説明します。 
+この記事では、[Change Tracking とインベントリ](change-tracking.md)機能を使用して VM に変更をデプロイする際のスコープ構成の操作方法について説明します。 詳細については、「[Azure Monitor での監視ソリューションのターゲット設定 (プレビュー)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)」を参照してください。 
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="about-scope-configurations"></a>スコープ構成について
 
-Azure Portal ( https://portal.azure.com ) にサインインします。
+スコープ構成は、Change Tracking とインベントリのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件 (クエリ) のグループです。 スコープ構成は、有効にするコンピューターを対象として設定するために、Log Analytics ワークスペース内で使用されます。 この機能から変更にコンピューターを追加すると、ワークスペース内の保存した検索条件にも、そのコンピューターが追加されます。
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>スコープ構成の確認
+## <a name="set-the-scope-limit"></a>スコープの制限を設定する
 
-Update Management は、Log Analytics ワークスペース内のスコープ構成を使用して、Update Management を有効にする対象のコンピューターを決定します。 スコープ構成は、機能のスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには:
+Change Tracking とインベントリのデプロイのスコープを制限するには、次のようにします。
 
-1. Automation アカウントで、 **[関連リソース]** の **[ワークスペース]** を選択します。 
+1. お使いの Automation アカウントで、 **[関連リソース]** の下にある **[リンクされたワークスペース]** を選択します。
 
-2. **[ワークスペースのデータ ソース]** でワークスペースを選択し、 **[スコープ構成]** を選択します。
+2. **[ワークスペースに移動]** をクリックします。
 
-3. 選択したワークスペースの Update Management 機能がまだ有効になっていない場合、`MicrosoftDefaultScopeConfig-ChangeTracking` スコープ構成が作成されます。 
+3. **[Workspace Data Sources]\(ワークスペース データ ソース\)** の下の **[Scope Configurations (Preview)]\(スコープ構成 (プレビュー)\)** を選択します。
 
-4. 選択したワークスペースで、その機能が既に有効になっている場合、機能の再デプロイは行われず、スコープ構成の追加も行われません。 
+4. `MicrosoftDefaultScopeConfig-ChangeTracking` スコープ構成の右側にある省略記号を選択し、 **[編集]** をクリックします。 
 
-5. いずれかのスコープ構成の省略記号を選択し、 **[編集]** をクリックします。 
-
-6. 編集ペインで **[コンピューター グループの選択]** を選択します。 [コンピューター グループ] ペインに、スコープ構成を作成するために使用された、保存された検索条件が表示されます。
-
-## <a name="view-a-saved-search"></a>保存した検索条件を表示する
-
-変更履歴とインベントリにコンピューターを追加すると、ワークスペース内の保存した検索条件にも、そのコンピューターが追加されます。 保存した検索条件は、対象のコンピューターを含んだクエリです。
-
-1. Log Analytics ワークスペースに移動し、 **[全般]** の **[保存された検索条件]** を選択します。 Update Management によって使用される保存した検索条件は次のとおりです。
+5. 編集ペインで **[コンピューター グループの選択]** を選択します。 [コンピューター グループ] ペインに、スコープ構成を作成するために使用された、保存された検索条件が表示されます。 Change Tracking とインベントリで使用される保存済みの検索条件は次のとおりです。
 
     |名前     |カテゴリ  |エイリアス  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 
-2. 保存した検索条件を選択して、グループの設定に使用されるクエリを表示します。 次の図は、クエリとその結果を示しています。
+6. 保存した検索条件を選択して、グループの設定に使用されるクエリを表示および編集します。 次の図は、クエリとその結果を示しています。
 
     ![保存した検索条件](media/automation-scope-configurations-change-tracking/logsearch.png)
 

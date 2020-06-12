@@ -8,23 +8,24 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応の Kubernetes クラスターを Azure Arc と接続する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: 962b6a17743ea2beed1e16503739c55c83babbce
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.custom: references_regions
+ms.openlocfilehash: 868964361e6089eb3417b0f2e2681d82d4aa0b75
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860547"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299645"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc 対応の Kubernetes クラスターを接続する (プレビュー)
 
-Kubernetes クラスターを Azure Arc に接続します。 
+Kubernetes クラスターを Azure Arc に接続します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 次の要件の準備ができていることを確認します。
 
 * 稼働している Kubernetes クラスター
-* kubeconfig のアクセス権と、クラスター管理者のアクセス権が必要です。 
+* kubeconfig のアクセス権と、クラスター管理者のアクセス権が必要です。
 * `az login` および `az connectedk8s connect` コマンドで使用されるユーザーまたはサービス プリンシパルには、"Microsoft.Kubernetes/connectedclusters" リソースの種類に対する "読み取り" と "書き込み" のアクセス許可が必要です。 オンボード用に Azure CLI で使用されるユーザーまたはサービス プリンシパルに対するロールの割り当てには、これらのアクセス許可を持つ "Azure Arc for Kubernetes のオンボード" ロールを使用できます。
 * *connectedk8s* および *k8sconfiguration* 拡張機能の最新バージョン
 
@@ -69,7 +70,8 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="install-azure-cli-extensions"></a>Azure CLI 拡張機能をインストールする
+## <a name="install-azure-cli-and-arc-enabled-kubernetes-extensions"></a>Azure CLI および Arc 対応 Kubernetes 拡張機能をインストールする
+Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン2.3 以降が必要です。 [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)するか、最新バージョンに更新して、Azure CLI バージョン 2.3 以降があるようにしてください。
 
 Kubernetes クラスターを Azure に接続するために必要な `connectedk8s` 拡張機能をインストールします。
 
@@ -89,6 +91,9 @@ az extension add --name k8sconfiguration
 az extension update --name connectedk8s
 az extension update --name k8sconfiguration
 ```
+
+## <a name="install-helm"></a>Helm のインストール
+connectedk8s 拡張機能を使用してクラスターをオンボードするには、Helm 3 が必要です。 この要件を満たすには、[最新リリースの Helm 3 をインストール](https://helm.sh/docs/intro/install)してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成します
 
@@ -166,6 +171,8 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
+このリソースは、[Azure プレビュー ポータル](https://preview.portal.azure.com/)で表示することもできます。 ブラウザーでポータルを開いたら、先ほど `az connectedk8s connect` コマンドで使用したリソース名とリソース グループ名の入力に基づいて、リソース グループと Azure Arc 対応の Kubernetes リソースに移動します
+
 Azure Arc 対応の Kubernetes では、`azure-arc` 名前空間にいくつかのオペレーターがデプロイされます。 これらのデプロイとポッドを次のようにして表示できます。
 
 ```console
@@ -210,11 +217,18 @@ Azure Arc 対応の Kubernetes は、`azure-arc` 名前空間にデプロイさ�
 
 Azure CLI または Azure portal を使用して `Microsoft.Kubernetes/connectedcluster` リソースを削除できます。
 
-Azure CLI コマンド `az connectedk8s delete` を使うと、Azure 内の `Microsoft.Kubernetes/connectedCluster` リソースが削除されます。 Azure CLI によって、Azure 内の関連付けられている `sourcecontrolconfiguration` リソースがすべて削除されます。 Azure CLI では、Helm のアンインストールを使用して、クラスター内のエージェントが削除されます。
 
-Azure portal では、Azure 内の `Microsoft.Kubernetes/connectedcluster` リソースが削除され、Azure 内の関連付けられているすべての `sourcecontrolconfiguration` リソースが削除されます。
+* **Azure CLI を使用した削除**:次の Azure CLI コマンドを使用して、Azure Arc 対応の Kubernetes リソースの削除を開始できます。
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
+  これにより、Azure 内の `Microsoft.Kubernetes/connectedCluster` リソースおよび関連するすべての `sourcecontrolconfiguration` リソースが削除されます。 Azure CLI では、Helm のアンインストールを使用して、クラスターで実行されているエージェントが削除されます。
 
-クラスター内のエージェントを削除するには、`az connectedk8s delete` または `helm uninstall azurearcfork8s` を実行する必要があります。
+* **Azure portal での削除**:Azure portal で Azure Arc 対応の Kubernetes リソースを削除すると、Azure 内の `Microsoft.Kubernetes/connectedcluster` リソースおよび関連するすべての `sourcecontrolconfiguration` リソースが削除されますが、クラスターで実行されているエージェントは削除されません。 クラスターで実行されているエージェントを削除するには、次のコマンドを実行します。
+
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
 
 ## <a name="next-steps"></a>次のステップ
 

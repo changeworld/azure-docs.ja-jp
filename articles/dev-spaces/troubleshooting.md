@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872027"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309647"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -27,6 +27,14 @@ Visual Studio の場合、`MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 環境変
 CLI では、`--verbose` スイッチを使用してコマンド実行中に詳細な情報を出力できます。 `%TEMP%\Azure Dev Spaces`でより詳しいログを参照することもできます。 Mac では、ターミナル ウィンドウから `echo $TMPDIR` を実行することで、*TEMP* ディレクトリを見つけることができます。 Linux コンピューターでは、通常、*TEMP* ディレクトリは `/tmp` です。 また、[Azure CLI 構成ファイル](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)でログ記録が有効になっていることを確認します。
 
 Azure Dev Spaces は、単一のインスタンス (ポッド) のデバッグでもきわめて効果的に機能します。 `azds.yaml` ファイルには、Kubernetes がサービスに対して実行するポッドの数を示す設定である *replicaCount* が含まれています。 *replicaCount* を変更して特定のサービスに対して複数のポッドを実行するようにアプリを設定すると、デバッガは (アルファベット順にリストされている場合) 最初のポッドに接続されます。 元のポッドがリサイクルされた場合、デバッガは別のポッドに接続されます。これにより、予期しない動作が発生する可能性があります。
+
+## <a name="common-issues-when-using-local-process-with-kubernetes"></a>Local Process with Kubernetes を使用する際の一般的な問題
+
+### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>展開の元の構成をクラスターに復元できない
+
+Local Process with Kubernetes を使用する場合、Local Process with Kubernetes クライアントがクラッシュするか、突然終了した場合、Local Process with Kubernetes がリダイレクトしているサービスは、Local Process with Kubernetes が接続されている前の状態に復元されない可能性があります。
+
+この問題を解決するには、クラスターにサービスを再デプロイします。
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Azure Dev Spaces を有効にするときに発生する一般的な問題
 
@@ -97,7 +105,7 @@ azure-cli                         2.0.60 *
 
 Azure Dev Spaces が AKS クラスターの API サーバーに接続できない場合に、このエラーが表示されることがあります。
 
-AKS クラスターの API サーバーへのアクセスがロック ダウンされている場合、または AKS クラスターに対して [API サーバーの許可された IP アドレス範囲](../aks/api-server-authorized-ip-ranges.md)が有効になっている場合は、[ご利用のリージョンに基づいて追加の範囲を許可する](https://github.com/Azure/dev-spaces/tree/master/public-ips)ために、クラスターを[作成](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)または[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)する必要もあります。
+AKS クラスターの API サーバーへのアクセスがロック ダウンされている場合、または AKS クラスターに対して [API サーバーの許可された IP アドレス範囲](../aks/api-server-authorized-ip-ranges.md)が有効になっている場合は、[ご利用のリージョンに基づいて追加の範囲を許可する](configure-networking.md#aks-cluster-network-requirements)ために、クラスターを[作成](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)または[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)する必要もあります。
 
 kubectl コマンドを実行して、API サーバーが使用可能であることを確認してください。 API サーバーが使用できない場合は、AKS サポートに連絡し、API サーバーが動作しているときにもう一度試してください。
 
@@ -259,7 +267,7 @@ Service cannot be started.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>開発マシンに接続するときに、ネットワーク トラフィックが AKS クラスターに転送されない
 
-[Azure Dev Spaces を使用して AKS クラスターを開発マシンに接続する](how-to/connect.md)と、開発マシンと AKS クラスターの間でネットワーク トラフィックが転送されないという問題が発生する可能性があります。
+[Azure Dev Spaces を使用して AKS クラスターを開発マシンに接続する](how-to/local-process-kubernetes-vs-code.md)と、開発マシンと AKS クラスターの間でネットワーク トラフィックが転送されないという問題が発生する可能性があります。
 
 開発マシンを AKS クラスターに接続すると、Azure Dev Spaces は開発マシンの `hosts` ファイルを変更することによって、お使いの AKS クラスターと開発マシンの間でネットワーク トラフィックを転送します。 Azure Dev Spaces は、ホスト名として置き換える Kubernetes サービスのアドレスを使用して、`hosts` にエントリを作成します。 このエントリは、開発マシンと AKS クラスターの間でネットワーク トラフィックを転送するために、ポート フォワーディングと共に使用されます。 開発マシン上のサービスが、置き換える Kubernetes サービスのポートと競合する場合、Azure Dev Spaces は Kubernetes サービスのネットワーク トラフィックを転送できません。 たとえば、*Windows BranchCache* サービスは通常 *0.0.0.0:80* にバインドされます。これにより、すべてのローカル IP でポート 80 の競合が発生します。
 
@@ -272,9 +280,9 @@ Service cannot be started.
 * 必要に応じて、 *[スタートアップの種類]* を *[無効]* に設定して無効にすることができます。
 * [*OK*] をクリックします。
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>エラー "割り当てられた状態で pod:azds/azds-webhook-deployment-\<id\> の AzureAssignedIdentity が見つかりませんでした"
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>エラー "割り当てられた状態で pod:azds/azds-webhook-deployment-\<id\>の AzureAssignedIdentity が見つかりませんでした"
 
-[マネージド ID](../aks/use-managed-identity.md) および [ポッド マネージ ID](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) がインストールされている AKS クラスターで、Azure Dev Spaces を使用してサービスを実行すると、*グラフのインストール* ステップ後にプロセスがハングすることがあります。 *azds* 名前空間で *azds-injector-webhook* を調べると、このエラーが表示されることがあります。
+[マネージド ID](../aks/use-managed-identity.md) および [ポッド マネージ ID](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) がインストールされている AKS クラスターで、Azure Dev Spaces を使用してサービスを実行すると、"*グラフのインストール*" ステップ後にプロセスが応答しなくなることがあります。 *azds* 名前空間で *azds-injector-webhook* を調べると、このエラーが表示されることがあります。
 
 Azure Dev Spaces がクラスターで実行するサービスは、クラスターのマネージド ID を利用して、クラスター外の Azure Dev Spaces バックエンド サービスと通信します。 ポッド マネージド ID がインストールされている場合、ネットワーク ルールはクラスターのノードで構成され、マネージド ID 資格情報の呼び出しはすべて、[クラスターにインストールされた Node Managed Identity (NMI) デーモンセット](https://github.com/Azure/aad-pod-identity#node-managed-identity)にリダイレクトされます。 この NMI デーモンセットは呼び出し元のポッドを識別し、要求されたマネージド ID にアクセスできるようポッドに適切なラベルが付けられていることを確認します。 Azure Dev Spaces は、クラスターにポッド マネージド ID がインストールされているかどうか検出できず、Azure Dev Spaces サービスがクラスターのマネージド ID にアクセスするために必要な構成を実行できません。 Azure Dev Spaces サービスはクラスターのマネージド ID にアクセスするように構成されていないため、NMI デーモンセットではマネージド ID の AAD トークンを取得できず、Azure Dev Spaces バックエンド サービスと通信できません。
 
@@ -589,7 +597,8 @@ kubectl -n my-namespace delete pod --all
 | cloudflare.docker.com | HTTPS: 443 | Linux Alpine とその他の Azure Dev Spaces イメージをプルします |
 | gcr.io | HTTP:443 | helm/tiller イメージをプルします|
 | storage.googleapis.com | HTTP:443 | helm/tiller イメージをプルします|
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーのための Azure Dev Spaces のバックエンド サービスと通信します。 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" にあります|
+
+上のすべての FQDN と [Azure Dev Spaces インフラストラクチャ サービス](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)との間のネットワーク トラフィックを許可するようにファイアウォールまたはセキュリティ構成を更新してください。
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>エラー "Could not find the cluster \<cluster\> in subscription \<subscriptionId\>" (サブスクリプション subscriptionId にクラスター cluster が見つかりませんでした)
 

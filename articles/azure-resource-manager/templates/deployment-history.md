@@ -3,17 +3,19 @@ title: デプロイ履歴
 description: Azure Resource Manager のデプロイ操作を、ポータル、PowerShell、Azure CLI、および REST API を使用して表示する方法について説明します。
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816286"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117847"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ履歴の表示
 
-Azure Resource Manager では、デプロイ履歴を表示し、過去のデプロイにおける特定の操作を確認することができます。 デプロイされたリソースを参照して、エラーに関する情報を取得できます。
+Azure Resource Manager では、デプロイ履歴を表示することができます。 過去のデプロイにおける特定の操作を調べ、どのリソースがデプロイされたかを確認できます。 この履歴には、エラーに関する情報が含まれます。
+
+リソース グループのデプロイ履歴は、800 件のデプロイに制限されます。 この制限に近づくと、デプロイは履歴から自動的に削除されます。 詳細については、「[デプロイ履歴からの自動削除](deployment-history-deletions.md)」を参照してください。
 
 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](common-deployment-errors.md)に関するページを参照してください。
 
@@ -117,7 +119,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 1. デプロイの概要で、 **[操作の詳細]** を選択します。
 
-    ![デプロイ操作の選択](./media/deployment-history/get-operation-details.png)
+    ![操作の詳細の選択](./media/deployment-history/get-operation-details.png)
 
 1. 該当するデプロイ手順の詳細が表示されます。 エラーが発生した場合は、この詳細にエラー メッセージが表示されます。
 
@@ -210,6 +212,6 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 ## <a name="next-steps"></a>次のステップ
 
 * 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](common-deployment-errors.md)に関するページを参照してください。
-* アクティビティ ログを使用して、その他の種類のアクションを監視する方法については、「[アクティビティ ログを表示して Azure リソースを管理する](../management/view-activity-logs.md)」を参照してください。
+* 履歴でのデプロイの管理方法の詳細については、「[デプロイ履歴からの自動削除](deployment-history-deletions.md)」を参照してください。
 * デプロイを実行する前に検証するには、 [Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](deploy-powershell.md)に関するページを参照してください。
 

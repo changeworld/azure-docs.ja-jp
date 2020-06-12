@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834579"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299784"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -52,6 +52,14 @@ Azure Site Recovery で保護されるすべてのインスタンスは、保護
 - Site Recovery では、Azure Disk Encryption バージョン 0.1 がサポートされています。これには Azure Active Directory (Azure AD) を必要とするスキーマがあります。 Site Recovery では、Azure AD を必要としないバージョン 1.1 もサポートされています。 [Azure ディスク暗号化の拡張機能スキーマの詳細を確認してください](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema)。
   - Azure Disk Encryption バージョン 1.1 については、Windows VM と共にマネージド ディスクを使用する必要があります。
   - 暗号化された VM のレプリケーションの有効化について、[詳細を確認します](azure-to-azure-how-to-enable-replication-ade-vms.md)。
+
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>別のリソース グループから Automation アカウントを選択できますか?
+
+これは現時点ではポータルではサポートされていませんが、Powershell を使用して別のリソース グループから Automation アカウントを選択できます。
+
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>コンテナーとは異なるリソース グループに含まれる Automation アカウントを指定した後、他に指定するコンテナーがない場合に Runbook を削除することはできますか?
+
+作成されたカスタム Runbook はツールであり、同じものが不要になった場合は削除しても問題はありません。
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>別のサブスクリプションに VM をレプリケートできますか?
 
@@ -172,6 +180,10 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>復旧ポイントの保持期間を長くすると、ストレージ コストは増えますか?
 
 はい、保持期間を 24 時間から 72 時間に増やすと、Site Recovery により追加の 48 時間分の復旧ポイントが保存されます。 追加の時間により、ストレージ料金が発生します。 たとえば、1 つの復旧ポイントで 10 GB の差分変更があったとき、GB あたりのコストが 1 か月 $0.16 であるとします。 追加料金は 1 か月あたり $1.60 × 48 になります。
+
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux サーバーでアプリの整合性を使用してレプリケーションを有効にすることはできますか?
+
+はい。 Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性を保つためのアプリケーション カスタム スクリプトがサポートされています。 アプリの整合性を保つときに、Azure Site Recovery モビリティ エージェントによって、プリオプションとポストオプションを含むカスタム スクリプトが使用されます。 [詳細情報](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>マルチ VM 整合性
 

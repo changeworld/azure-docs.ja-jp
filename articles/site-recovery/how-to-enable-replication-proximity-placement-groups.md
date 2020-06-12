@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1a9e38d2718643212848105e09c60d93f497a34a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847635"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193544"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>近接配置グループで実行されている Azure 仮想マシンを別のリージョンにレプリケートする
 
@@ -27,6 +27,9 @@ ms.locfileid: "83847635"
 - ベスト エフォートは、仮想マシンを近接配置グループにフェールオーバー/フェールバックすることです。 ただし、フェールオーバー/フェールバックの際に近接配置グループ内で VM を稼働できない場合でも、フェールオーバー/フェールバックは行われ、近接配置グループの外部に仮想マシンが作成されます。
 -  近接配置グループに可用性セットが固定されていて、かつフェールオーバー/フェールバックの際に可用性セット内の VM の間に割り当て制約が適用される場合は、可用性セットと近接配置グループの外部に仮想マシンが作成されます。
 -  アンマネージド ディスクでは、近接配置グループでの Site Recovery がサポートされません。
+
+> [!Note]
+> Azure Site Recovery は、Hyper-V から Azure へのシナリオでマネージド ディスクからのフェールバックをサポートしていません。 そのため、Azure の近接配置グループから Hyper-V へのフェールバックはサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 

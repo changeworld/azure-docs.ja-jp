@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742766"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264368"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps Search Service のベスト プラクティス
 
-Azure Maps[Search Service](https://docs.microsoft.com/rest/api/maps/search)には、さまざまな機能を提供する API が含まれています。 たとえば、Search Address API は、特定の場所の近くにある目的地 (POI) やデータを検索できます。 
+Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) には、開発者が住所、場所、名前またはカテゴリ別の事業の一覧、およびその他の地理情報を検索するために役立つさまざまな機能を提供する API が含まれています。 たとえば、[あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用して、住所または目的地 (POI) を検索できます。
 
 この記事では、Azure Maps Search Service からデータを呼び出す際に、サウンド プラクティスを適用する方法を説明します。 学習内容は次のとおりです。
 
-* 関連する一致を返すクエリを作成します。
-* 検索結果を制限します。
-* 結果の型の違いについて説明します。
-* アドレス検索の応答構造を読みます。
+* 関連する一致を返すクエリを作成する
+* 検索の結果を制限する
+* 結果の種類の違いを確認する
+* 住所検索の応答構造を確認する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ Azure Mapsサービス API を呼び出すには、Azure Maps アカウントと
 Azure Maps での認証の詳細については、[Azure Maps での認証の管理](./how-to-manage-authentication.md)を参照してください。
 
 > [!TIP]
-> Search Service にクエリを実行するには、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを作成します。 または、選択した任意の API 開発環境を使用できます。
+> Search Service をクエリするために、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST API 呼び出しを作成できます。 または、選択した任意の API 開発環境を使用できます。
 
 ## <a name="best-practices-to-geocode-addresses"></a>ジオコード アドレスに関するベスト プラクティス
 
@@ -61,7 +61,7 @@ Azure Maps Search Service を使って住所の全部または一部を検索す
 
 #### <a name="fuzzy-search-parameters"></a>あいまい検索パラメーター
 
-検索クエリに対するユーザー入力がわからない場合は、Azure Maps[Search Fuzzy API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)を使用することをお勧めします。 この API は、POI 検索およびジオコーディングを正規の*一行検索*で組み合わせます。 
+検索クエリに対するユーザー入力がわからない場合は、Azure Maps[Search Fuzzy API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)を使用することをお勧めします。 たとえば、ユーザーからの入力が、住所だったり、目的地 (POI) (*ショッピングモール*など) だったりすることがあります。 この API は、POI 検索およびジオコーディングを正規の*一行検索*で組み合わせます。 
 
 * `minFuzzyLevel` パラメーターと `maxFuzzyLevel` パラメーターを使用すると、クエリパラメーターがユーザーが必要とする情報と完全に一致しない場合でも、関連する一致を返すことができます。 パフォーマンスを最大化し、異常な結果を減らすには、検索クエリをデフォルトの`minFuzzyLevel=1`および`maxFuzzyLevel=2`に設定します。 
 
@@ -85,7 +85,7 @@ Azure Maps Search Service を使って住所の全部または一部を検索す
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>geography エンティティ型の逆ジオコードとフィルター
 
-[Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)で逆ジオコード検索を実行すると、サービスは行政区分のポリゴンを返すことができます。 特定の geography エンティティ型に検索を絞り込むには、要求に`entityType`パラメーターを含めます。 
+[Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)で逆ジオコード検索を実行すると、サービスは行政区分のポリゴンを返すことができます。 たとえば、都市の区分のポリゴンをフェッチできます。 特定の geography エンティティ型に検索を絞り込むには、要求に`entityType`パラメーターを含めます。 
 
 結果の応答には、一致した geography IDとエンティティ型が含まれます。 複数のエンティティを指定すると、エンドポイントは*使用可能な最小のエンティティ*が返されます。 返された geometry ID を使用して、[Search Polygon サービス](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)を介して geography のジオメトリを取得できます。
 

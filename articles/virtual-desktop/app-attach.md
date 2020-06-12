@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742930"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310616"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
 > [!IMPORTANT]
-> 現在、MSIX アプリのアタッチはプライベート プレビュー段階にあります。
+> 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このトピックでは、Windows Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
@@ -28,13 +28,14 @@ ms.locfileid: "83742930"
 開始する前に、MSIX アプリのアタッチを構成するために必要な項目を示します。
 
 - Windows Insider ポータルにアクセスして、MSIX アプリのアタッチ API をサポートする Windows 10 のバージョンを取得する。
-- 機能する Windows Virtual Desktop のデプロイ。 詳細については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。
+- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop Fall 2019 リリースのデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Windows Virtual Desktop Spring 2020 のデプロイ方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+
 - MSIX パッケージ作成ツール
 - MSIX パッケージが保存される Windows Virtual Desktop のデプロイのネットワーク共有
 
-## <a name="get-the-os-image"></a>OS ディスク名を取得する
+## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Technology Adoption Program (TAP) ポータルから OS イメージを取得する
 
-まず、MSIX アプリに使用する OS イメージを取得する必要があります。 OS ディスク名を取得するには、次の手順に従います。
+Windows Insider ポータルから OS イメージを取得するには、次のようにします。
 
 1. [Windows Insider ポータル](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)を開き、サインインします。
 
@@ -49,6 +50,21 @@ ms.locfileid: "83742930"
      >現時点では、この機能でテストされた言語は英語のみです。 他の言語は、選択はできますが、意図したとおりに表示されない場合があります。
     
 4. ダウンロード リンクが生成されたら、 **[64 ビットのダウンロード]** を選択し、ローカル ハード ディスクに保存します。
+
+## <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal から OS イメージを取得する
+
+Azure portal から OS イメージを取得するには、次のようにします。
+
+1. [Azure portal](https://portal.azure.com) を開き、サインインします。
+
+2. **[仮想マシンの作成]** に移動します。
+
+3. **[基本]** タブで、 **[Windows 10 enterprise multi-session, version 2004]** を選択します。
+      
+4. 残りの手順に従って、仮想マシンの作成を完了します。
+
+     >[!NOTE]
+     >この VM を使用して、MSIX アプリのアタッチを直接テストできます。 詳細については、「[MSIX 用の VHD または VHDX パッケージを生成する](#generate-a-vhd-or-vhdx-package-for-msix)」に進んでください。 それ以外の場合は、このセクションを読み続けてください。
 
 ## <a name="prepare-the-vhd-image-for-azure"></a>Azure の VHD イメージを準備する 
 
@@ -77,7 +93,7 @@ sc config wuauserv start=disabled
 自動更新を無効にしたら、Hyper-V を有効にする必要があります。これは、今後 Mount-VHD コマンドを使用してステージングを行い、Dismount-VHD コマンドを使用してステージング解除を行うからです。 
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 >[!NOTE]
 >この変更には、仮想マシンの再起動が必要です。

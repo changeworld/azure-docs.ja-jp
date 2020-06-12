@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 855f0782f1979f91fcd83bcc469d8d2feaf8c643
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650488"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015703"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Synapse SQL プールの接続に関する問題のトラブルシューティング
 
@@ -50,11 +50,11 @@ SQL プール インスタンスが一時停止しているのか、スケーリ
 
 ## <a name="check-your-firewall-settings"></a>ファイアウォール設定を確認する
 
-SQL プール データベースの通信は、ポート 1433 上で行われます。  企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。 ファイアウォール構成の詳細は[こちら](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)にあります。
+SQL プール データベースの通信は、ポート 1433 上で行われます。  企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門がポート 1433 を開かない限り、[論理サーバー](../../azure-sql/database/logical-servers.md)に接続することはできません。 ファイアウォール構成の詳細は[こちら](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)にあります。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/サービス エンドポイント設定を確認する
 
-エラー 40914 や 40615 が表示された場合、エラーの詳細や解決策は[こちら](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)で確認できます。
+エラー 40914 や 40615 が表示された場合、エラーの詳細や解決策は[こちら](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)で確認できます。
 
 ## <a name="check-for-the-latest-drivers"></a>最新のドライバーを確認する
 
@@ -109,7 +109,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="common-error-messages"></a>一般的なエラー メッセージ
 
-エラー 40914 と 40615 のエラーの詳細や解決策は[こちら](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)で確認できます。
+エラー 40914 と 40615 のエラーの詳細や解決策は[こちら](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)で確認できます。
 
 ## <a name="still-having-connectivity-issues"></a>接続の問題がまだ解決されませんか。
 

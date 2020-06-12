@@ -3,15 +3,15 @@ title: マネージド ID
 description: マネージド ID が Azure App Service と Azure Functions でどのように機能するのか、およびマネージド ID を構成してバックエンド リソースのトークンを生成するにはどのようにするのかについて説明します。
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d206ff114cd08f2ab3f2068076bf7cadb047a689
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779965"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258460"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -79,7 +79,9 @@ Azure CLI を使用してマネージド ID を設定するには、既存のア
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-次の手順では、Azure PowerShell を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
+次の手順では、Azure PowerShell を使用して、アプリを作成し、ID を割り当てる方法について説明します。 Web アプリを作成する手順と、関数アプリを作成する手順は異なります。
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>Web アプリに Azure PowerShell を使用する
 
 1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
 
@@ -87,20 +89,39 @@ Azure CLI を使用してマネージド ID を設定するには、既存のア
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. `Set-AzWebApp -AssignIdentity` コマンドを実行してこのアプリケーションの ID を作成します。
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>関数アプリに Azure PowerShell を使用する
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
+
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+代わりに `Update-AzFunctionApp` を使用して、既存の関数アプリを更新することもできます。
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
@@ -176,6 +197,35 @@ tenantId プロパティは、その ID が属する Azure AD テナントを示
 6. 先ほど作成した ID を検索して選択します。 **[追加]** をクリックします。
 
     ![App Service のマネージド ID](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>Azure PowerShell の使用
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+次の手順では、Azure PowerShell を使用して、アプリを作成し、ID を割り当てる方法について説明します。
+
+> [!NOTE]
+> 現在のバージョンの Azure App Service 用の Azure PowerShell コマンドレットでは、ユーザー割り当て ID はサポートされていません。 以下の手順は Azure Functions を対象としています。
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
+
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。 次のスクリプトでは、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」に従って個別にインストールする必要がある `New-AzUserAssignedIdentity` を活用しています。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+代わりに `Update-AzFunctionApp` を使用して、既存の関数アプリを更新することもできます。
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
@@ -428,7 +478,11 @@ Java のアプリケーションと関数の場合、マネージド ID を利�
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>ID を削除する
 
-システム割り当て ID は、ポータル、PowerShell、または CLI を使用して、作成時と同じ方法で機能を無効にすることで、削除できます。 ユーザー割り当て ID は個別に削除することはできません。 すべての ID を削除するには、[ARM テンプレート](#using-an-azure-resource-manager-template)で、type を "None" に設定します。
+システム割り当て ID は、ポータル、PowerShell、または CLI を使用して、作成時と同じ方法で機能を無効にすることで、削除できます。 ユーザー割り当て ID は個別に削除することはできません。 すべての ID を削除するには、ID の種類を "None" に設定します。
+
+この方法でシステム割り当て ID を削除すると、それは Azure AD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、Azure AD からも自動的に削除されます。
+
+[ARM テンプレート](#using-an-azure-resource-manager-template)のすべての ID を削除するには、次のようにします。
 
 ```json
 "identity": {
@@ -436,7 +490,12 @@ Java のアプリケーションと関数の場合、マネージド ID を利�
 }
 ```
 
-この方法でシステム割り当て ID を削除すると、それは Azure AD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、Azure AD からも自動的に削除されます。
+Azure PowerShell のすべての ID を削除するには (Azure Functions のみ) 次のようにします。
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続きマネージド ID が "オン" または "有効" と表示されます。 そのため、この設定の使用はお勧めしません。

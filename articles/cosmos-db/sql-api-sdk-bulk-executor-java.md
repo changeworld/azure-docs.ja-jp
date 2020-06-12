@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6fe075d2679ec13217200bc8b0da132e8f4d9b57
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c826b9f813c30a50d8b88b2cca1b188c328465b0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660446"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171652"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報
 
@@ -43,23 +43,23 @@ ms.locfileid: "83660446"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="2100"></a><a name="2.10.0"/>2.10.0
+### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 
 * JSON から入れ子になったパーティション キー値を正しく抽出するように DocumentAnalyzer.java を修正します。
 
-### <a name="294"></a><a name="2.9.4"/>2.9.4
+### <a name="294"></a><a name="2.9.4"></a>2.9.4
 
 * 特定のエラーに対して再試行する機能を BulkDelete 操作に追加し、再試行可能なエラーの一覧をユーザーに返します。
 
-### <a name="293"></a><a name="2.9.3"/>2.9.3
+### <a name="293"></a><a name="2.9.3"></a>2.9.3
 
 * Cosmos SDK バージョン 2.4.7 の更新プログラム。
 
-### <a name="292"></a><a name="2.9.2"/>2.9.2
+### <a name="292"></a><a name="2.9.2"></a>2.9.2
 
 * 'id' とパーティション キーの値の後に配置されているすべての修正済みドキュメント プロパティが更新された項目の一覧に追加されるように、'mergeAll' が 'id' とパーティション キーの値で続行するように修正します。
 
-### <a name="291"></a><a name="2.9.1"/>2.9.1
+### <a name="291"></a><a name="2.9.1"></a>2.9.1
 
 * コンカレンシーの開始次数を 1 に更新し、minibatch のデバッグ ログを追加します。
 

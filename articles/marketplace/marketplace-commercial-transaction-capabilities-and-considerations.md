@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800045"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298212"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -53,7 +53,7 @@ ms.locfileid: "83800045"
 - **無料** - ソフトウェア ライセンスに対する課金は発生しません。
 - **ライセンス持ち込み** (BYOL) - ソフトウェア ライセンスに適用される料金は、公開元と顧客の間で直接管理されます。 Microsoft は、Azure インフラストラクチャの使用料金のみを管理します。 これは仮想マシンと Azure アプリケーションのみに適用されます。
 - **従量課金制** - ソフトウェア ライセンス料金は、使用されている Azure インフラストラクチャに基づいて、時間あたりのコア (vCPU) ごとの価格レートとして提示されます。 これは仮想マシンと Azure アプリケーションのみに適用されます。
-- **サブスクリプション価格** - ソフトウェア ライセンス料金は、定額またはシートごとに課金された毎月または毎年の基本料金として提示されます。 これは、SaaS アプリと Azure アプリケーション - マネージド アプリにのみ適用されます。
+- **サブスクリプション価格** - ソフトウェア ライセンス料金は、定額またはシートごとに課金された毎月または毎年の基本料金として提示されます。 これは、SaaS アプリ (毎月または毎年) と、Azure アプリケーション - マネージド アプリ (毎月) にのみ適用されます。
 - **無料試用版ソフトウェア** - 30 日間または 90 日間のソフトウェア ライセンスに課金は発生しません。
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>無料とライセンス持ち込み (BYOL) の価格

@@ -6,13 +6,13 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fdc90ffaf3cef3c594e7d84e32af9ef78fe08b0d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: e9438e2e82a6d903b74973fe489b0a67d66c9a72
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849452"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296954"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -93,9 +93,17 @@ Enterprise セキュリティ パッケージ (ESP) を使用すると、Active 
 
     | 構成 | 値 |
     |----|----|
-    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<headnode-FQDN>@<AAD-Domain>` |
+    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    `<headnode-FQDN>` を、Interactive Query クラスターのヘッド ノードの完全修飾ドメイン名に置き換えます。 `<AAD-DOMAIN>` をクラスターが参加している Azure Active Directory (AAD) の名前に置き換えます。 `<AAD-DOMAIN>` 値には大文字の文字列を使用します。そうしないと、資格情報が見つかりません。 必要に応じて /etc/krb5.conf で領域名を確認します。
+    * Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` に移動します。ここで、CLUSTERNAME は Interactive Query クラスターの名前です。 **[HiveServer2 Interactive]** クリックします。 スクリーンショットに示されているように、LLAP が実行されているヘッド ノードの完全修飾ドメイン名 (FQDN) が表示されます。 `<llap-headnode>` をこの値と置き換えます。
+
+        ![Hive Warehouse Connector のヘッド ノード](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+
+    * [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して Interactive Query クラスターに接続します。 `/etc/krb5.conf` ファイルで `default_realm` パラメーターを探します。 `<AAD-DOMAIN>` を、この値を大文字の文字列にして置き換えます。そうしないと、資格情報が見つかりません。
+
+        ![Hive Warehouse Connector の AAD ドメイン](./media/apache-hive-warehouse-connector/aad-domain.png)
+
+    * たとえば、`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` です。
     
 1. 変更を保存し、必要に応じてコンポーネントを再起動します。
 

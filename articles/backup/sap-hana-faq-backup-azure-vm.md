@@ -3,12 +3,12 @@ title: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
 description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701011"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248806"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 
@@ -86,6 +86,10 @@ HSR のプライマリおよびセカンダリのノードは、関連のない 
 ### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>"復元のソース システムとターゲット システムには互換性がありません" というエラーが表示されるのはなぜですか?
 
 SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照し、現在サポートされている復元の種類を確認してください。
+
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>SLES で実行されているデータベースのバックアップを使用して RHEL HANA システムを復元できますか? また、その逆は可能ですか?
+
+はい。SLES で実行されている HANA データベースでトリガーされたストリーミング バックアップを使用して、RHEL HANA システムに復元できます。また、その逆も可能です。 つまり、ストリーミング バックアップを使用すると、OS を跨いだ復元が可能になります。 ただし、復元先の HANA システムと復元に使用する HANA システムの両方が、SAP による復元に互換性があることを確認する必要があります。 互換性のある復元の種類については、SAP HANA メモ [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

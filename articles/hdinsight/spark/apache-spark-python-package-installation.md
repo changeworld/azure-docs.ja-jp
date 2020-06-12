@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 317b3cd508ee1ab821838cae56cc5b5c9943ace0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835973"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309885"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -146,7 +146,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
 ## <a name="known-issue"></a>既知の問題
 
-Anaconda のバージョン `4.7.11`、`4.7.12`、`4.8.0` には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` でハングし、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
+Anaconda のバージョン `4.7.11`、`4.7.12`、`4.8.0` には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` で応答を停止し、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
 
 Anaconda のバージョンを確認するには、クラスターのヘッダー ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda --v` を実行します。
 

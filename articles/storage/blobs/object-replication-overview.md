@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800763"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193417"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>ブロック BLOB のオブジェクト レプリケーション (プレビュー)
 
@@ -54,7 +54,7 @@ ms.locfileid: "83800763"
 
 また、レプリケーション ルールの一部として 1 つ以上のフィルターを指定して、ブロック BLOB をプレフィックスでフィルター処理することもできます。 プレフィックスを指定すると、ソース コンテナー内のそのプレフィックスと一致する BLOB のみが宛先コンテナーにコピーされます。
 
-ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成すると、宛先コンテナーは読み取り専用になります。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 ただし、宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それを別のアクセス層に移動することはできます。 たとえば、コストを節約するために、宛先コンテナーの BLOB をアーカイブ層に移動できます。
+ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成すると、宛先コンテナーは読み取り専用になります。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 ただし、宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動することはできます。 アーカイブ層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
 
 ## <a name="about-the-preview"></a>プレビューについて
 
@@ -73,7 +73,9 @@ ms.locfileid: "83800763"
 
 ### <a name="prerequisites-for-object-replication"></a>オブジェクト レプリケーションの前提条件
 
-オブジェクト レプリケーションを使用するには、次の Azure Storage 機能が有効になっている必要があります。
+オブジェクト レプリケーションを使用するには、次の Azure Storage 機能が有効になっている必要があります。 
+- [変更フィード](storage-blob-change-feed.md)
+- [バージョン管理](versioning-overview.md)
 
 オブジェクト レプリケーションを構成する前に、その前提条件を有効にしてください。 変更フィードはソース アカウントで有効にする必要があり、BLOB バージョン管理はソースと宛先の両方のアカウントで有効にする必要があります。 これらの機能を有効にする方法の詳細については、次の記事を参照してください。
 
@@ -157,3 +159,5 @@ az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning
 ## <a name="next-steps"></a>次のステップ
 
 - [オブジェクト レプリケーションを構成する (プレビュー)](object-replication-configure.md)
+- [Azure Blob Storage の変更フィードのサポート (プレビュー)](storage-blob-change-feed.md)
+- [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)

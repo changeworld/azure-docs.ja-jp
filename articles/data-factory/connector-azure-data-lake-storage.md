@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/25/2020
-ms.openlocfilehash: efa4ec42396a51cbbc93a53e5892177bad0d87fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0689a7705e91b8fcaf9ca31887e6cefbf90f1e59
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649658"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021009"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -176,7 +176,7 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 >Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行**アクセス許可のあるパスを指定して続行してください。
 
 >[!IMPORTANT]
->PolyBase を使用して Data Lake Storage Gen2 から SQL Data Warehouse にデータを読み込む場合、Data Lake Storage Gen2 にマネージド ID 認証を使用しているときは、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1. と 2. に従って、1) SQL Database サーバーを Azure Active Directory (Azure AD) に登録し、2) SQL Database サーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りの部分は Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
+>PolyBase を使用して Data Lake Storage Gen2 から SQL Data Warehouse にデータを読み込むときに、Data Lake Storage Gen2 にマネージド ID 認証を使用する場合は、[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 に従って、1) Azure Active Directory (Azure AD) に登録し、2) お使いのサーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りは Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -265,12 +265,12 @@ Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeS
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` の type プロパティは **AzureBlobFSReadSettings** に設定する必要があります。 | はい                                           |
-| "***コピーするファイルを特定する:***" |  |  |
+| ***コピーするファイルを特定する:*** |  |  |
 | オプション 1: 静的パス<br> | データセットに指定されている特定のファイル システムまたはフォルダーかファイル パスからコピーします。 ファイル システムまたはフォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
 | オプション 2: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のファイル システムの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
 | オプション 2: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定のファイル システム + folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
-| オプション 3: ファイルのリスト<br>- fileListPath | 特定のファイル セットをコピーすることを示します。 コピーするファイルのリストを含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。<br/>このオプションを使用する場合は、データセットにファイル名を指定しないでください。 「[ファイル リストの例](#file-list-examples)」の他の例をご覧ください。 |いいえ |
-| "***追加の設定:***" |  | |
+| オプション 3: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用する場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
+| ***追加の設定:*** |  | |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
 | modifiedDatetimeStart    | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
@@ -378,11 +378,11 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
 
 ### <a name="file-list-examples"></a>ファイル リストの例
 
-このセクションでは、コピー アクティビティのソースでファイル リストのパスを使用した結果の動作について説明します。
+このセクションでは、コピー アクティビティのソースでファイル リスト パスを使用した結果の動作について説明します。
 
 次のソース フォルダー構造があり、太字のファイルをコピーするとします。
 
-| サンプルのソース構造                                      | Content in FileListToCopy.txt                             | ADF 構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | ADF 構成                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | filesystem<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- ファイル システム: `filesystem`<br>- フォルダー パス: `FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `filesystem/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルのリストを含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
 

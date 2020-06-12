@@ -2,13 +2,13 @@
 title: Application Insights からのテレメトリの連続エクスポート | Microsoft Docs
 description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/26/2020
+ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744857"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147972"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -34,8 +34,6 @@ ms.locfileid: "83744857"
 
 * [VNET/Azure Storage ファイアウォール](https://docs.microsoft.com/azure/storage/common/storage-network-security)と Azure BLOB ストレージの併用。
 
-* Azure Blob Storage 向けの[不変ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)。
-
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>連続エクスポートを作成する
@@ -53,7 +51,8 @@ ms.locfileid: "83744857"
 
 4. ストレージにコンテナーを作成するか、選択します。
 
-エクスポートが作成されると、処理が開始されます エクスポートを作成した後に到着したデータのみが取得されます。
+> [!NOTE]
+> エクスポートを作成すると、新しく取り込まれたデータが Azure Blob storage へフローするようになります。 連続エクスポートでは、連続エクスポートが有効になった後に作成または取り込まれた新しいテレメトリのみが送信されます。 連続エクスポートを有効にする前に存在していたデータはエクスポートされず、連続エクスポートを使用して以前に作成されたデータをさかのぼってエクスポートすることはできません。
 
 ストレージにデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
 

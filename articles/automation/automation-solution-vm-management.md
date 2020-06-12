@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743703"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205128"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
@@ -104,7 +104,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |Runbook | パラメーター | 説明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 親 Runbook から呼び出されます。 この Runbook は、Auto-Stop シナリオでリソースごとにアラートを作成します。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True または False  | 対象となるサブスクリプションまたはリソース グループ内の VM 上で、Azure アラート ルールを作成または更新します。 <br> `VMList` は VM のコンマ区切りリストです。 たとえば、「 `vm1, vm2, vm3` 」のように入力します。<br> `WhatIf` を使用すると、Runbook ロジックを実行せずに検証できます。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True または False  | 対象となるサブスクリプションまたはリソース グループ内の VM 上で、Azure アラート ルールを作成または更新します。 <br> `VMList` は、コンマ区切りの (空白なしの) VM の一覧です (例: `vm1,vm2,vm3`)。<br> `WhatIf` を使用すると、Runbook ロジックを実行せずに検証できます。|
 |AutoStop_Disable | なし | Auto-Stop アラートと既定のスケジュールを無効にします。|
 |AutoStop_VM_Child | WebHookData | 親 Runbook から呼び出されます。 アラート ルールによってこの Runbook が呼び出され、クラシック VM が停止されます。|
 |AutoStop_VM_Child_ARM | WebHookData |親 Runbook から呼び出されます。 アラート ルールによってこの Runbook が呼び出され、VM が停止されます。  |
@@ -112,7 +112,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |ScheduledStartStop_Child | VMName <br> アクション:開始または停止 <br> ResourceGroupName | 親 Runbook から呼び出されます。 停止スケジュールの起動または停止アクションを実行します。|
 |ScheduledStartStop_Child_Classic | VMName<br> アクション:開始または停止<br> ResourceGroupName | 親 Runbook から呼び出されます。 クラシック VM に対して、スケジュールに従って開始または停止アクションを実行します。 |
 |ScheduledStartStop_Parent | アクション:開始または停止 <br>VMList <br> WhatIf: True または False | サブスクリプション内のすべての VM を開始または停止します。 これらの対象のリソース グループに対してのみ実行するように変数 `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` を編集します。 `External_ExcludeVMNames` 変数を更新することで、特定の VM を除外することもできます。|
-|SequencedStartStop_Parent | アクション:開始または停止 <br> WhatIf: True または False<br>VMList| 開始または停止アクティビティのシーケンスを指定する各 VM に、**sequencestart** および **sequencestop** という名前のタグを作成します。 これらのタグ名では、大文字と小文字が区別されます。 タグの値は、起動または停止する順序に対応する正の整数 (1、2、3) にする必要があります。 <br>**注**:VM は、`External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` 変数で定義されたリソース グループ内にある必要があります。 アクションを有効にするための適切なタグが必要です。|
+|SequencedStartStop_Parent | アクション:開始または停止 <br> WhatIf: True または False<br>VMList| 開始または停止アクティビティのシーケンスを指定する各 VM に、**sequencestart** および **sequencestop** という名前のタグを作成します。 これらのタグ名では、大文字と小文字が区別されます。 タグの値は、起動または停止する順序に対応する正の整数の一覧にする必要があります (例: `1,2,3`)。 <br>**注**:VM は、`External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、および `External_ExcludeVMNames` 変数で定義されたリソース グループ内にある必要があります。 アクションを有効にするための適切なタグが必要です。|
 
 ### <a name="variables"></a>変数
 
@@ -170,7 +170,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 クラウド サービスあたり 20 個を超える VM がある場合は、次のような推奨事項があります。
 
 * 親 Runbook の **ScheduledStartStop_Parent** で複数のスケジュールを作成し、スケジュールごとに 20 個の VM を指定します。 
-* スケジュール プロパティで `VMList` パラメーターを使用して、コンマ区切りリストとして VM 名を指定します。 
+* スケジュール プロパティで `VMList` パラメーターを使用して、コンマ区切りリスト (空白なし) として VM 名を指定します。 
 
 そうしないと、この機能の Automation ジョブが 3 時間を超えて実行された場合、そのジョブは[フェア シェア](automation-runbook-execution.md#fair-share)制限に従って一時的にアンロードまたは停止されます。
 

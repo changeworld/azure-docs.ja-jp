@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 3b740fca47b233fe38915280a1f53458c139293d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 0d0e3220d38f9824b9504a0077d6742a62aeb9e8
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778843"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204992"
 ---
 # <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Azure Security Center の強化されたセキュリティ スコア (プレビュー)
 
@@ -114,7 +114,7 @@ Security Center には、スコアが目立つように表示されます。ス�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">脆弱性の修復 (最大スコア 6)</p></strong>脆弱性は、脅威アクターが、リソースの機密性、可用性、または整合性を侵害するために利用する可能性のある弱点です。 <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt">脆弱性の管理</a>により、組織の露出の削減、エンドポイントの攻撃対象領域の強化、組織の回復力の向上、リソースの攻撃対象領域の縮小を実現できます。 脅威と脆弱性の管理機能は、ソフトウェアとセキュリティの構成の誤りを可視化し、軽減のための推奨事項を提示します。</td>
-    <td class="tg-lboi"; width=55%>- SQL Server で Advanced Data Security を有効にする必要があります<br>- Azure Container Registry イメージの脆弱性を修復する必要があります<br>- SQL データベースの脆弱性を修復する必要があります<br>- 脆弱性評価ソリューションによって脆弱性を修復する必要があります<br>- SQL Managed Instance で脆弱性評価を有効にする必要があります<br>- SQL サーバーで脆弱性評価を有効にする必要があります<br>- お使いの仮想マシンに脆弱性評価ソリューションをインストールする必要があります</td>
+    <td class="tg-lboi"; width=55%>- SQL Database で Advanced Data Security を有効にする必要があります<br>- Azure Container Registry イメージの脆弱性を修復する必要があります<br>- SQL データベースの脆弱性を修復する必要があります<br>- 脆弱性評価ソリューションによって脆弱性を修復する必要があります<br>- SQL Managed Instance で脆弱性評価を有効にする必要があります<br>- SQL サーバーで脆弱性評価を有効にする必要があります<br>- お使いの仮想マシンに脆弱性評価ソリューションをインストールする必要があります</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">保存時の暗号化を有効化する (最大スコア 4)</p></strong><a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">保存時の暗号化</a>は、格納されているデータのデータ保護を提供します。 保存データに対する攻撃として、データが格納されているハードウェアへの物理的なアクセスを取得しようとする試みがあります。 Azure では、対称暗号化を使用して、大量の保存データの暗号化と暗号化解除を行います。 データがストレージに書き込まれるときに、対称暗号化キーを使用してデータが暗号化されます。 その暗号化キーは、メモリで、データを使用する準備として暗号化の解除を行うためにも使用されます。 キーは、ID ベースのアクセス制御と監査ポリシーが適用される、セキュリティで保護された場所に保存する必要があります。 このようなセキュリティで保護された場所の 1 つが、Azure Key Vault です。 攻撃者は、暗号化されたデータを取得しても、暗号化キーを取得しなければ、暗号を解読できず、データにアクセスすることはできません。</td>
@@ -158,7 +158,7 @@ Security Center には、スコアが目立つように表示されます。ス�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティのベストプラクティスを実装する (最大スコア 0)</p></strong>最新のセキュリティ対策では、ネットワーク境界の "侵害を想定" しています。 そのため、このコントロールの多くのベスト プラクティスでは、ID の管理が重視されています。<br>キーや資格情報の紛失は、よくある問題です。 <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> では、キー、.pfx ファイル、パスワードを暗号化することにより、キーとシークレットを保護します。<br>仮想プライベート ネットワーク (VPN) は、仮想マシンへのアクセスをセキュリティで保護します。 VPN を利用できない場合は、複雑なパスフレーズと <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a> などの 2 要素認証を使用します。 2 要素認証は、ユーザー名とパスワードのみに依存することに伴う弱点を回避します。<br>強力な認証および承認プラットフォームの使用は、もう 1 つのベスト プラクティスです。 フェデレーション ID を使用すると、組織は、承認された ID の管理を委任できます。 これは、従業員が退職し、そのアクセス権を取り消す必要がある場合にも重要です。</td>
-    <td class="tg-lboi"; width=55%>- サブスクリプションには最大 3 人の所有者を指定する必要があります<br>- - 読み取りアクセス許可を持つ外部アカウントをお使いのサブスクリプションから除外する必要があります<br>- お使いのサブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要があります<br>- ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要があります<br>- RootManageSharedAccessKey を除くすべての承認規則をイベント ハブの名前空間から削除する必要があります<br>- SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要があります<br>- イベント ハブ インスタンスの承認規則を定義する必要があります<br>- ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要があります<br>- 仮想マシンを新しい Azure Resource Manager リソースに移行する必要があります<br>- SQL Server の Advanced Data Security 設定にはセキュリティ アラートを受け取る電子メール アドレスを含める必要があります<br>- マネージド インスタンスで Advanced Data Security を有効にする必要があります<br>- SQL Managed Instance の Advanced Data Security 設定で、Advanced Threat Protection のすべての種類を有効にする必要があります<br>- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要があります<br>- SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要があります<br>- サブネットはネットワーク セキュリティ グループに関連付けられている必要があります<br>- SQL Server の Advanced Data Security 設定では、Advanced Threat Protection のすべての種類を有効にする必要があります<br>- [プレビュー] Windows Exploit Guard を有効にする必要があります <br>- [プレビュー] ゲスト構成エージェントをインストールする必要があります</td>
+    <td class="tg-lboi"; width=55%>- サブスクリプションには最大 3 人の所有者を指定する必要があります<br>- - 読み取りアクセス許可を持つ外部アカウントをお使いのサブスクリプションから除外する必要があります<br>- お使いのサブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要があります<br>- ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要があります<br>- RootManageSharedAccessKey を除くすべての承認規則をイベント ハブの名前空間から削除する必要があります<br>- SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要があります<br>- イベント ハブ インスタンスの承認規則を定義する必要があります<br>- ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要があります<br>- 仮想マシンを新しい Azure Resource Manager リソースに移行する必要があります<br>- SQL Database の Advanced Data Security 設定にはセキュリティ アラートを受け取る電子メール アドレスを含める必要があります<br>- マネージド インスタンスで Advanced Data Security を有効にする必要があります<br>- SQL Managed Instance の Advanced Data Security 設定で、Advanced Threat Protection のすべての種類を有効にする必要があります<br>- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要があります<br>- SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要があります<br>- サブネットはネットワーク セキュリティ グループに関連付けられている必要があります<br>- SQL Database の Advanced Data Security 設定では、サーバーですべての種類の Advanced Threat Protection を有効にする必要があります<br>- [プレビュー] Windows Exploit Guard を有効にする必要があります <br>- [プレビュー] ゲスト構成エージェントをインストールする必要があります</td>
   </tr>
 </tbody>
 </table>

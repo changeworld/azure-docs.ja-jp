@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 970046f000a844ce6ee7207ad1bb33f4a327a63d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 484a0e6e7c4beaffc86aaf26964ea1ec1736dd52
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848109"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171431"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -256,7 +256,7 @@ Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 |
 ## <a name="replicated-machines---networking"></a>レプリケートされるマシン - ネットワーク
 **設定** | **サポート** | **詳細**
 --- | --- | ---
-NIC | 特定の Azure VM サイズでサポートされる最大数 | フェールオーバー中に VM が作成されるときには NIC が作成されます。<br/><br/> フェールオーバー VM 上の NIC 数は、レプリケーションが有効にされたときのソース VM 上の NIC 数によって決まります。 レプリケーションを有効にした後に NIC を追加または削除しても、フェールオーバー後、レプリケートされた VM 上にある NIC の数は影響を受けません。 また、フェールオーバー後の NIC の順序は元の順序と同じであることが保証されないことにも注意してください。
+NIC | 特定の Azure VM サイズでサポートされる最大数 | フェールオーバー中に VM が作成されるときには NIC が作成されます。<br/><br/> フェールオーバー VM 上の NIC 数は、レプリケーションが有効にされたときのソース VM 上の NIC 数によって決まります。 レプリケーションを有効にした後に NIC を追加または削除しても、フェールオーバー後、レプリケートされた VM 上にある NIC の数は影響を受けません。 <br/><br/> フェールオーバー後の NIC の順序は元の順序と同じであることが保証されないことにも注意してください。 <br/><br/> 組織の名前付け規則に基づいて、ターゲット リージョンの NIC の名前を変更できます。
 インターネット Load Balancer | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、構成済みロード バランサーを関連付けます。
 内部ロード バランサー | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、構成済みロード バランサーを関連付けます。
 パブリック IP アドレス | サポートされています | 既存のパブリック IP アドレスを NIC に関連付けます。 または、パブリック IP アドレスを作成し、復旧計画の Azure Automation スクリプトを使用して、それを NIC に関連付けます。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 6909bcbc67680f9205af8a79782907d4671d668b
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 3fa9de1057160340fdf10d72809a104cae985162
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860717"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248160"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -122,6 +122,7 @@ Windows Defender Exploit Guard の詳細については、「[Exploit Guard ポ�
 セキュリティ コントロールの詳細については、「[Azure Security Center の強化されたセキュア スコア (プレビュー)](secure-score-security-controls.md)」を参照してください。
 
 
+
 ### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>カスタム メタデータを使用したカスタム ポリシーの一般提供の開始
 
 カスタム ポリシーは、Security Center の推奨事項エクスペリエンス、セキュア スコア、規制コンプライアンス標準ダッシュボードに含まれました。 この機能の一般提供が開始され、お客様は Security Center で組織のセキュリティ評価の範囲を拡大できるようになりました。 
@@ -133,13 +134,14 @@ Azure Policy でカスタム イニシアチブを作成し、それにポリシ
 詳しくは、「[詳細情報でのカスタム推奨事項の拡張](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information)」を参照してください。
 
 
+
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>ファイルレス攻撃検出へのクラッシュ ダンプ分析機能の移行 
 
 Microsoft は Windows クラッシュ ダンプ (CDA) 検出機能を[ファイルレス攻撃検出](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)に移行しています。 ファイルレス攻撃検出分析では、Windows マシンで次のセキュリティ アラートの高度なバージョンを利用できます。コード インジェクションの検出、Windows モジュールの偽装の検出、シェルコードの検出、疑わしいコード セグメントの検出。
 
 この移行のメリットをいくつか紹介します。
 
-- **プロアクティブかつタイムリーなマルウェア検出** - CDA のアプローチでは、クラッシュが発生して初めて分析を実行し、アクティブなマルウェアを検出する必要がありました。 ファイルレス攻撃検出を使用すると、メモリ内の脅威が活動しているのをプロアクティブに特定できます。 
+- **プロアクティブかつタイムリーなマルウェア検出** - CDA のアプローチでは、クラッシュが発生して初めて分析を実行し、悪意のあるアーティファクトを検出する必要がありました。 ファイルレス攻撃検出を使用すると、メモリ内の脅威が活動しているのをプロアクティブに特定できます。 
 
 - **強化されたアラート** - ファイルレス攻撃検出のセキュリティ アラートには、CDA では利用できない強化が加わっています (例: アクティブなネットワーク接続情報)。 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9797b4c8f8059f9cfefbb70672aa202c7a3f4825
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871176"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168337"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -48,7 +48,7 @@ Analysis Services サーバー管理操作のためにサービス プリンシ�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Az.AnalysisServices モジュールの使用
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>Az.AnalysisServices モジュールの使用
 
 [Az.AnalysisServices](/powershell/module/az.analysisservices) モジュールによるリソース管理操作でサービス プリンシパルを使用するときは、`Connect-AzAccount` コマンドレットを使用します。 
 

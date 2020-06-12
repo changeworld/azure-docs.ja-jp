@@ -52,6 +52,8 @@
           href: identity-providers.md
         - name: セルフサービス サインアップのユーザー フロー (プレビュー)
           href: self-service-sign-up-overview.md
+        - name: セルフサービス サインアップの API コネクタ (プレビュー)
+          href: api-connectors-overview.md
         - name: Azure AD エンタイトルメント管理
           href: self-service-portal.md
         - name: 現在の制限
@@ -95,6 +97,10 @@
               href: user-flow-add-custom-attributes.md
             - name: ユーザー フローの言語をカスタマイズする
               href: user-flow-customize-language.md
+            - name: API コネクタを追加する
+              href: self-service-sign-up-add-api-connector.md
+            - name: カスタム承認システムを追加する
+              href: self-service-sign-up-add-approvals.md
         - name: ゲスト アカウントの管理
           items:
             - name: B2B ユーザーをロールに追加する

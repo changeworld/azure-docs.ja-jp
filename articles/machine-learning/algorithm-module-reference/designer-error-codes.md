@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833815"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167249"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
 
@@ -1106,7 +1106,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  モジュールの例外により報告された、SQL によって生成されたメッセージがある場合、報告されたエラーに基づいて対処を実行します。 たとえば、エラー メッセージには、発生する可能性の高いエラーに関する具体的なガイダンスが含まれる場合があります。
 + "*No such column or missing database*" (そのような列はないか、またはデータベースが存在しません) は、列名を誤って入力した可能性があることを示します。 列名が正しいことが確実な場合は、角かっこまたは引用符を使って列の識別子を囲んでみてください。
-+ "*SQL logic error near \<SQL keyword\>* " ("<SQL キーワード> の近くに SQL ロジック エラーがあります") は、指定されたキーワードの前に構文エラーが存在する可能性があることを示します
++ "*SQL logic error near \<SQL keyword\>* " ("\<SQL keyword\> の近くに SQL ロジック エラーがあります") は、指定されたキーワードの前に構文エラーが存在する可能性があることを示します
 
   
 |例外メッセージ|
@@ -1500,7 +1500,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 
 ## <a name="error-0159"></a>エラー 0159
- モジュール モデル ディレクトリに渡されたものが無効な場合に、例外が発生します。 
+ モジュール モデル ディレクトリが無効な場合に、例外が発生します。 
 
 |例外メッセージ|
 |------------------------------------------------------------|

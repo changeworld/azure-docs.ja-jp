@@ -3,12 +3,12 @@ title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758896"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170581"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -81,9 +81,9 @@ ms.locfileid: "83758896"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | locks | 割り当てのスコープ | 1-90 | 英数字、ピリオド、アンダースコア、ハイフン、およびかっこ。<br><br>末尾をピリオドにすることはできません。 |
-> | policyassignments | 割り当てのスコープ | 1-128 (表示名)<br><br>1-260 (リソース名) | 表示名には任意の文字を含めることができます。<br><br>リソース名に `%` を含めることはできません。また、末尾をピリオドまたはスペースにすることはできません。 |
-> | policydefinitions | 定義のスコープ | 1-128 (表示名)<br><br>1-260 (リソース名) | 表示名には任意の文字を含めることができます。<br><br>リソース名に `%` を含めることはできません。また、末尾をピリオドまたはスペースにすることはできません。 |
-> | policySetDefinitions | 定義のスコープ | 1-128 (表示名)<br><br>1-260 (リソース名) | 表示名には任意の文字を含めることができます。<br><br>リソース名に `%` を含めることはできません。また、末尾をピリオドまたはスペースにすることはできません。  |
+> | policyAssignments | 割り当てのスコープ | 1-128 (表示名)<br><br>1-64 リソース名 | 表示名には任意の文字を含めることができます。<br><br>リソース名に `%` を含めることはできません。また、末尾をピリオドまたはスペースにすることはできません。 |
+> | policyDefinitions | 定義のスコープ | 1-128 (表示名)<br><br>1-64 リソース名 | 表示名には任意の文字を含めることができます。<br><br>リソース名に `%` を含めることはできません。また、末尾をピリオドまたはスペースにすることはできません。 |
+> | policySetDefinitions | 定義のスコープ | 1-128 (表示名)<br><br>1-64 リソース名<br><br>1-24 管理グループのスコープのリソース名 | 表示名には任意の文字を含めることができます。<br><br>リソース名に `%` を含めることはできません。また、末尾をピリオドまたはスペースにすることはできません。  |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 

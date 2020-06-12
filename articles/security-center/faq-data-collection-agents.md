@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849044"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996246"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -65,6 +65,14 @@ Windows または Linux IaaS VM は、次の条件で適格とします。
 - 日本の VM の場合、ワークスペースの場所は日本です
 - 中国の VM の場合、ワークスペースの場所は中国です
 - オーストラリアの VM の場合、ワークスペースの場所はオーストラリアです
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics エージェントによって収集されるのはどのようなデータですか?
+
+エージェントによって監視されるアプリケーションとサービスの完全な一覧については、「[Azure Monitor によって監視される内容](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)」を参照してください。
+
+> [!IMPORTANT]
+> Azure Firewall などの一部のサービスでは、ログ記録を有効にし、頻度の高いリソースをログ記録するよう選択した場合 (たとえば、ログを *verbose* に設定した場合)、Log Analytics ワークスペースのストレージ ニーズに大きな影響を与える可能性があります。 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Security Center で作成された既定のワークスペースは削除できますか?
@@ -201,9 +209,17 @@ Log Analytics エージェントは手動で削除できます。 ただし、Se
 
 ## <a name="how-do-i-disable-data-collection"></a>データ収集を無効にするにはどうしたらよいですか。
 
-自動プロビジョニングは、既定ではオフです。 リソースの自動プロビジョニングは、セキュリティ ポリシーでこの設定をオフにすることで、いつでも無効にすることができます。 セキュリティ アラートや、システムの更新プログラム、OS の脆弱性、Endpoint Protection に関する推奨事項を取得するために、自動プロビジョニングを使用することを強くお勧めします。
+セキュリティ アラートや、システムの更新プログラム、OS の脆弱性、Endpoint Protection に関する推奨事項を取得するために、自動プロビジョニングを使用することを強くお勧めします。 既定では、自動プロビジョニングは無効になっています。
 
-データ収集を無効にするには、[Azure portal にサインイン](https://portal.azure.com)して、 **[参照]** 、 **[セキュリティ センター]** 、 **[ポリシーの選択]** の順に選びます。 自動プロビジョニングを無効にするサブスクリプションを選択します。 サブスクリプションを選ぶと、 **[セキュリティ ポリシー] - [データ収集]** が開きます。 **[自動プロビジョニング]** で **[オフ]** を選びます。
+有効にした後で無効にする必要がある場合は、次のようにします。
+
+1. [Azure portal](https://portal.azure.com) で **Security Center** を開いて、 **[セキュリティ ポリシー]** を選択します。
+
+1. 自動プロビジョニングを無効にするサブスクリプションを選択します。
+
+    **[Security policy - Data collection]\(セキュリティ ポリシー - データ収集\)** が開きます。
+
+1. **[自動プロビジョニング]** で **[オフ]** を選びます。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>データ収集を有効にするにはどうしたらよいですか。
@@ -233,9 +249,6 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 エージェントは、システム リソースのわずかな量しか消費しないため、パフォーマンスにほとんど影響しません。 パフォーマンスの影響と、エージェントおよび拡張機能の詳細については、[計画および運用ガイド](security-center-planning-and-operations-guide.md#data-collection-and-storage)を参照してください。
 
 
-## <a name="where-is-my-data-stored"></a>データはどこに格納されますか。
-
-このエージェントから収集されたデータは、サブスクリプションに関連付けられている既存の Log Analytics ワークスペースまたは新規のワークスペースのいずれかに格納されます。 詳細については、[データ セキュリティ](security-center-data-security.md)に関するページを参照してください。
 
 
 <!--Image references-->

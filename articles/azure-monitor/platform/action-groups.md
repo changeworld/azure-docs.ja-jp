@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738820"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170462"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -245,7 +245,7 @@ Webhook は、次のルールを使用して再試行されます。 Webhook の
 ## <a name="next-steps"></a>次のステップ
 * 詳細については、「[SMS アラート動作](../../azure-monitor/platform/alerts-sms-behavior.md)」を参照してください。  
 * [アクティビティ ログ アラートに対する webhook スキーマについて理解](../../azure-monitor/platform/activity-log-alerts-webhook.md)します。  
-* [ITSM コネクタ](../../azure-monitor/platform/itsmc-overview.md)について学習します。
+* [ITSM Connector](../../azure-monitor/platform/itsmc-overview.md) について学習します。
 * アラートの[レート制限](../../azure-monitor/platform/alerts-rate-limiting.md)について学習します。
 * [アクティビティ ログ アラートの概要](../../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
 * [サービスの正常性通知が投稿されるたびにアラートを設定](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)する方法について学習します。

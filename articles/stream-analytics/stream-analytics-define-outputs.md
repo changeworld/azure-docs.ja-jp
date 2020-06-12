@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ead7361ba48a9a1b646310d3a47850545fff3ade
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647506"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195619"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -51,7 +51,7 @@ Stream Analytics からの Azure Data Lake Storage 出力は現在、Azure China
 
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、SQL Database の既存のテーブルに書き込みます。 テーブル スキーマは、ご自分のジョブの出力内のフィールドとその型に正確に一致する必要があります。 また、SQL Database 出力オプションを使用して、[Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます。 書き込みのスループットを向上させる方法については、[Azure SQL Database を出力として使用する Stream Analytics](stream-analytics-sql-output-perf.md) に関する記事を参照してください。
 
-[Azure SQL Database マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)を出力として使用することもできます。 [Azure SQL Database Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
+[Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) を出力として使用することもできます。 [SQL Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
 
 次の表に、SQL Database の出力を作成するためのプロパティの名前とその説明を示します。
 
@@ -59,7 +59,7 @@ Stream Analytics からの Azure Data Lake Storage 出力は現在、Azure China
 | --- | --- |
 | 出力エイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
 | データベース | ご自分の出力を送信するデータベースの名前です。 |
-| サーバー名 | SQL Database サーバー名です。 Azure SQL Database Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります |
+| サーバー名 | 論理 SQL サーバーの名前またはマネージド インスタンスの名前。 SQL Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります |
 | ユーザー名 | データベースに書き込むためのアクセス権が割り当てられているユーザー名です。 Stream Analytics では、SQL 認証のみがサポートされます。 |
 | Password | データベースに接続するためのパスワード。 |
 | テーブル | 出力の書き込み先のテーブル名です。 テーブル名は、大文字と小文字が区別されます。 このテーブルのスキーマは、ご自分のジョブの出力によって生成されるフィールドの数とその型に正確に一致する必要があります。 |
@@ -107,7 +107,7 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 | ストレージ アカウント     | ご自分の出力を送信するストレージ アカウントの名前です。               |
 | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。                              |
 | ストレージ コンテナー   | Azure Blob service に格納される BLOB の論理グループです。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
-| パスのパターン | 省略可能。 指定したコンテナー内のご自分の BLOB を書き込むために使用されるファイル パス パターンです。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />カスタム BLOB パーティション分割を使用して、イベント データの 1 つのカスタム {field} 名を指定することで、BLOB をパーティション分割できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>フィールド名は大文字小文字が区別されません。 たとえば、このサービスでは列 "ID" と列 "id" を区別できません。</li><li>入れ子になったフィールドは使用できません。 代わりに、ジョブ クエリ内で別名を使用して、フィールドを "フラット化" します。</li><li>式はフィールド名として使用できません。</li></ul> <br />この機能により、パスでカスタム日付/時刻書式指定子の構成を使用できるようになります。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 \<specifier> の使用可能な入力は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタムの日付/時刻の構成を形成するために、パス内で複数回使用できます。 <br /><br />例 : <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3: cluster1/{client_id}/{date}/{time}</li><li>例 4: cluster1/{datetime:ss}/{myField}。この場合、クエリは次のようになります。SELECT data.myField AS myField FROM Input;</li><li>例 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />作成されたフォルダー構造のタイム スタンプは、ローカル時間ではなく、UTC に従います。<br /><br />ファイルの名前付けでは、次の規則を使用します。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />この機能の詳細については、「[Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
+| パスのパターン | 省略可能。 指定したコンテナー内のご自分の BLOB を書き込むために使用されるファイル パス パターンです。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />カスタム BLOB パーティション分割を使用して、イベント データの 1 つのカスタム {field} 名を指定することで、BLOB をパーティション分割できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>フィールド名は大文字小文字が区別されません。 たとえば、このサービスでは列 "ID" と列 "id" を区別できません。</li><li>入れ子になったフィールドは使用できません。 代わりに、ジョブ クエリ内で別名を使用して、フィールドを "フラット化" します。</li><li>式はフィールド名として使用できません。</li></ul> <br />この機能により、パスでカスタム日付/時刻書式指定子の構成を使用できるようになります。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 \<specifier> の使用可能な入力は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 カスタムの日付/時刻の構成を形成するために、パス内で {datetime:\<specifier>} キーワードを複数回使用できます。 <br /><br />例 : <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3: cluster1/{client_id}/{date}/{time}</li><li>例 4: cluster1/{datetime:ss}/{myField}。この場合、クエリは次のようになります。SELECT data.myField AS myField FROM Input;</li><li>例 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />作成されたフォルダー構造のタイム スタンプは、ローカル時間ではなく、UTC に従います。<br /><br />ファイルの名前付けでは、次の規則を使用します。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />この機能の詳細については、「[Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
 | 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例:YYYY/MM/DD |
 | 時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。 JSON、CSV、Avro、Parquet がサポートされています。 |

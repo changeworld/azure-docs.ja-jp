@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abf7b4acfae5e90d0b3f6781b8fbbf0f6f1427d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860598"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310752"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -238,6 +238,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 > [!NOTE]
 > グローバル閲覧者ロールには現在、制限事項がいくつか与えられています。
 >
+>- [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールはサポートされていません。
 >- [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
 >- [Office セキュリティ/コンプライアンス センター](https://sip.protection.office.com/homepage) - グローバル閲覧者は、SCC 監査ログを読み取ることも、コンテンツ検索を実行することも、セキュリティ スコアを確認することもできません。
 >- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
@@ -457,6 +458,9 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "SharePoint サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"SharePoint 管理者" になります。
+
+> [!NOTE]
+> このロールでは、Microsoft Intune 用の Microsoft Graph API に対するスコープ付きのアクセス許可も付与されます。これにより、Sharepoint リソースと Onedrive リソースに関連するポリシーの管理と構成を行うことができます。
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype for Business/Lync 管理者](#lync-service-administrator-permissions)
 
@@ -1939,4 +1943,4 @@ User | 使用できないため、表示されません | NA
 
 * Azure サブスクリプションの管理者としてユーザーを割り当てる方法の詳細については、[Azure のロール (Azure RBAC) を使用したアクセスの管理](../../role-based-access-control/role-assignments-portal.md)に関するページを参照してください
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、[さまざまなロールの概要](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください
-* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* サブスクリプションと Azure AD テナントの関係の詳細、またはサブスクリプションの関連付けまたは追加を行う手順の詳細については、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。

@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: references_regions
+ms.openlocfilehash: e61ce629e723f56524ee22d8b127243f9568a835
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873499"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196503"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -211,7 +212,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>カスタム プローブの [ホスト] フィールドは何を表しているのでしょうか?
 
-Application Gateway 上でマルチサイトを構成した場合には、[ホスト] フィールドにプローブの送信先の名前を指定します。 それ以外の場合には、"127.0.0.1" を使用します。 この値は、仮想マシンのホスト名とは異なります。 形式は、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> です。
+Application Gateway 上でマルチサイトを構成した場合には、[ホスト] フィールドにプローブの送信先の名前を指定します。 それ以外の場合には、"127.0.0.1" を使用します。 この値は、仮想マシンのホスト名とは異なります。 形式は \<protocol\>://\<host\>:\<port\>\<path\>です。
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Application Gateway に対するアクセスを少数のソース IP アドレスだけに限定することはできますか?
 
@@ -411,8 +412,6 @@ Application Gateway V2 は現在、プライベート IP モードのみをサ�
 
 プライベート IP のみのアクセスの NSG 構成の例:![プライベート IP アクセスのみの Application Gateway V2 NSG 構成](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
-はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

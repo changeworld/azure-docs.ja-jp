@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: ad24f8db2f8f212ebcccf661241016b438ec730c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 43474100844f3828107f67f1e80dca57692fec59
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655388"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021026"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -276,7 +276,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
     - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
 
 >[!IMPORTANT]
->PolyBase を使用して BLOB (ソースまたはステージングとして) から SQL Data Warehouse にデータを読み込む場合、BLOB にマネージド ID 認証を使用しているときは、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 にも従って、1) SQL Database サーバーを Azure Active Directory (Azure AD) に登録し、2) SQL Database サーバーにストレージ BLOB データ共同作成者のロールを割り当ててください。残りの部分は Data Factory によって処理されます。 お使いの BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
+>PolyBase を使用して BLOB (ソースまたはステージングとして) から SQL Data Warehouse にデータを読み込む場合、BLOB にマネージド ID 認証を使用しているときは、[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 にも従って、1) サーバーを Azure Active Directory (Azure AD) に登録し、2) サーバーにストレージ BLOB データ共同作成者のロールを割り当ててください。残りの部分は Data Factory によって処理されます。 お使いの BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
 
 Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 

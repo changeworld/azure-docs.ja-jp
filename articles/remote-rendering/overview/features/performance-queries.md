@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757468"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022796"
 ---
 # <a name="server-side-performance-queries"></a>サーバー側のパフォーマンス クエリ
 
@@ -18,7 +18,7 @@ ms.locfileid: "83757468"
 
 レンダリングのパフォーマンスに最も強く影響するのは、モデルの入力データです。 「[モデルの変換を構成する](../../how-tos/conversion/configure-model-conversion.md)」で説明されているように、入力データを調整できます。
 
-クライアント側のアプリケーションのパフォーマンスもボトルネックになる可能性があります。 クライアント側のパフォーマンスを詳細に分析するには、[パフォーマンス トレース](../../how-tos/performance-tracing.md)を実行することをお勧めします。
+クライアント側のアプリケーションのパフォーマンスもボトルネックになる可能性があります。 クライアント側のパフォーマンスを詳細に分析するために、[:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md)を実行することをお勧めします。
 
 ## <a name="clientserver-timeline"></a>クライアント/サーバーのタイムライン
 

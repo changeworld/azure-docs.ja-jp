@@ -5,14 +5,14 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: cb3bbf1a7c2e55d152d26c475369f9ccb6fb7d1e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6eab9b543bfec90c0c338bdc758d690499f083e3
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743980"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204924"
 ---
-# <a name="enable-update-management-from-azure-portal"></a>Azure portal から Update Management を有効にする
+# <a name="enable-update-management-from-the-azure-portal"></a>Azure portal から Update Management を有効にする
 
 この記事では、ブラウザーで Azure portal にアクセスして、VM の [Update Management](automation-update-management.md) 機能を有効にする方法を説明します。 Azure VM を大規模に有効にするには、Update Management を使用して既存の VM を有効にする必要があります。 
 
@@ -63,9 +63,6 @@ https://portal.azure.com で Azure にサインインします。
 ## <a name="next-steps"></a>次のステップ
 
 * VM の Update Management を使用するには、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」を参照してください。
-* スコープ構成については、「[Update Management のスコープ構成を操作する](automation-scope-configurations-update-management.md)」を参照してください。
-* Log Analytics ワークスペースが不要になった場合は、「[Update Management の Automation アカウントからワークスペースのリンクを解除する](automation-unlink-workspace-update-management.md)」の手順を参考にしてください。
-* Update Management から VM を削除するには、「[Update Management から VM を削除する](automation-remove-vms-from-update-management.md)」を参照してください。
 * Update Management の一般的なエラーのトラブルシューティングについては、[Update Management の問題のトラブルシューティング](troubleshoot/update-management.md)に関する記事を参照してください。
 * Windows Update エージェントに関する問題のトラブルシューティングについては、「[Windows Update エージェントの問題をトラブルシューティングする](troubleshoot/update-agent-issues.md)」を参照してください。
 * Linux Update エージェントに関する問題のトラブルシューティングについては、「[Linux Update エージェントに関する問題のトラブルシューティング](troubleshoot/update-agent-issues-linux.md)」を参照してください。

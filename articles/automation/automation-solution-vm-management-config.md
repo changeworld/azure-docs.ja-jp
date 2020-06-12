@@ -3,14 +3,14 @@ title: Azure Automation の Start/Stop VMs during off-hours を構成する
 description: この記事では、さまざまなユース ケースまたはシナリオをサポートするように Start/Stop VMs during off-hours 機能を構成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827677"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266717"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を構成する
 
@@ -44,11 +44,15 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 ### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM リストによる起動および停止アクションを対象にする
 
-1. **ACTION** を **start** に設定して **ScheduledStartStop_Parent** Runbook を実行し、**VMList** パラメーター フィールドに VM のコンマ区切りリストを追加して、**WHATIF** パラメーター フィールドを True に設定します。 変更をプレビューします。
+1. **ACTION** を **start** に設定し、**ScheduledStartStop_Parent** Runbook を実行します。
 
-2. VM のコンマ区切りリスト (VM1, VM2, VM3) を使用して、`External_ExcludeVMNames` 変数を構成します。
+2. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-3. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、[Azure Automation の Runbook をスケジュールする](shared-resources/schedules.md)方法に関するページを参照してください。
+3. **WHATIF** パラメーター フィールドを True に設定します。
+
+4. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリスト (VM1,VM2,VM3) で `External_ExcludeVMNames` 変数を構成します。
+
+5. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、[Azure Automation の Runbook をスケジュールする](shared-resources/schedules.md)方法に関するページを参照してください。
 
     > [!NOTE]
     > **[ターゲット ResourceGroup 名]** の値は、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupNames` の両方の値として格納されます。 粒度を高めるためには、これらの変数をそれぞれ変更して、異なるリソース グループを対象にします。 開始アクションでは `External_Start_ResourceGroupNames` を使用し、停止アクションでは `External_Stop_ResourceGroupNames` を使用します。 VM が起動スケジュールと停止スケジュールに自動的に追加されます。
@@ -71,13 +75,17 @@ VM の停止のみを行うようにこの機能を構成できます。 カス�
 
 1. `VMList` パラメーターに追加する予定の VM に、正の整数値を持つ `sequencestart` および `sequencestop` タグを追加します。
 
-2. **ACTION** を **start** に設定して **SequencedStartStop_Parent** Runbook を実行し、**VMList** パラメーター フィールドに VM のコンマ区切りリストを追加して、**WHATIF** を True に設定します。 変更をプレビューします。
+2. **ACTION** を **start** に設定し、**SequencedStartStop_Parent** Runbook を実行します。
 
-3. VM のコンマ区切りリスト (VM1, VM2, VM3) を使用して、`External_ExcludeVMNames` 変数を構成します。
+3. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-4. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、[Azure Automation の Runbook をスケジュールする](shared-resources/schedules.md)方法に関するページを参照してください。
+4. **WHATIF** を True に設定します。 
 
-5. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** に設定して、**monitoring-and-diagnostics/monitoring-action-groupsrunbook** を手動で実行します。 または、指定したスケジュールに従って、Automation のスケジュール **Sequenced-StartVM** と **Sequenced-StopVM** が自動的に実行されるようにします。
+5. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリストで `External_ExcludeVMNames` 変数を構成します。
+
+6. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、[Azure Automation の Runbook をスケジュールする](shared-resources/schedules.md)方法に関するページを参照してください。
+
+7. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** に設定して、**monitoring-and-diagnostics/monitoring-action-groupsrunbook** を手動で実行します。 または、指定したスケジュールに従って、Automation のスケジュール **Sequenced-StartVM** と **Sequenced-StopVM** が自動的に実行されるようにします。
 
 ## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>シナリオ 3:CPU 使用率に基づいて自動的に開始または停止する
 
@@ -120,7 +128,7 @@ Start/Stop VMs during off-hours は、営業時間外などの非ピーク期間
 
 1. 新しい[スケジュール](shared-resources/schedules.md#create-a-schedule)を作成し、**AutoStop_CreateAlert_Parent** Runbook にリンクして、VM 名のコンマ区切りリストを `VMList` パラメーターに追加します。
 
-2. (省略可) VM の一部を自動停止アクションから除外する場合は、VM 名のコンマ区切りリストを `External_ExcludeVMNames` 変数に追加できます。
+2. (省略可) VM の一部を自動停止アクションから除外する場合、VM 名のコンマ区切りリスト (スペースなし) を `External_ExcludeVMNames` 変数に追加できます。
 
 ## <a name="configure-email-notifications"></a>電子メール通知の構成
 
@@ -151,13 +159,13 @@ Start/Stop VMs during off-hours のデプロイ後に電子メール通知を変
 
 この機能の実行対象に VM を含めるには、次の 2 とおりの方法があります。
 
-* この機能の親 [Runbook](automation-solution-vm-management.md#runbooks) のそれぞれに `VMList` パラメーターがあります。 状況に合わせて適切な親 Runbook をスケジュールするときに、このパラメーターに VM 名のコンマ区切りリストを渡すことができ、これらの VM は機能が実行されるときに含まれます。
+* この機能の親 [Runbook](automation-solution-vm-management.md#runbooks) のそれぞれに `VMList` パラメーターがあります。 状況に合わせて適切な親 Runbook をスケジュールするときに、このパラメーターに VM 名のコンマ区切りリスト (スペースなし) を渡すことができ、これらの VM は機能が実行されるときに含まれます。
 
 * 複数の VM を選択するには、開始または停止する VM が含まれているリソース グループ名で `External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupNames` を設定します。 サブスクリプションのすべてのリソース グループに対して機能を実行するように、変数を `*` の値に設定することもできます。
 
 ### <a name="exclude-a-vm"></a>VM を除外する
 
-Stop/start VMs during off-hours から VM を除外するには、その名前を `External_ExcludeVMNames` 変数に追加します。 この変数は、機能から除外する特定の VM のコンマ区切りリストです。 このリストは 140 個の VM までに制限されています。 このリストに 140 個を超える VM を追加すると、除外するように設定した VM が誤って開始または停止される可能性があります。
+Stop/start VMs during off-hours から VM を除外するには、その名前を `External_ExcludeVMNames` 変数に追加します。 この変数は、機能から除外する特定の VM のコンマ区切りリスト (スペースなし) です。 このリストは 140 個の VM までに制限されています。 このリストに 140 個を超える VM を追加すると、除外するように設定した VM が誤って開始または停止される可能性があります。
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>起動および停止スケジュールを変更する
 

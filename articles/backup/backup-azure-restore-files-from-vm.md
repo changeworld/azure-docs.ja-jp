@@ -3,12 +3,13 @@ title: Azure VM バックアップからファイルとフォルダーを回復�
 description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: references_regions
+ms.openlocfilehash: 91918bb053c1f26e33d08dde3b68debfcffe350e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757978"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195751"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -228,7 +229,7 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 - `download.microsoft.com`
 - リカバリ サービスの URL (geo 名はリカバリ サービス コンテナーが存在するリージョンを表します)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure の パブリック地域用)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (すべての Azure パブリック リージョン)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure China 21Vianet 用)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure US Government 用)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Germany 用)

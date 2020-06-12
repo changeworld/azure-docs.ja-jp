@@ -2,13 +2,13 @@
 title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: aea3f654551f66390afa207ac5ce682d23e5bfe9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/01/2020
+ms.openlocfilehash: a31aadb02ed3fff83ee6dc62a71aa32d0b716629
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780558"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259441"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
@@ -351,7 +351,7 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 }
 ```
 
-ListKeyValue の例については、「[クイックスタート: App Configuration と Resource Manager テンプレートを使用した VM の自動デプロイ](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)」を参照してください。
+listKeyValue の例については、「[クイックスタート:App Configuration と Resource Manager テンプレートを使用した VM の自動デプロイ](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)」を参照してください。
 
 ## <a name="providers"></a>providers
 
@@ -495,7 +495,7 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 
 reference 関数を使用してコピー ループの `count` プロパティの値を設定することはできません。 ループ内のその他のプロパティの設定には使用できます。 count プロパティの参照はブロックされます。このプロパティは reference 関数が解決される前に決定される必要があるためです。
 
-[入れ子になったテンプレート](linked-templates.md#nested-template)の出力に reference 関数を使用して、入れ子になったテンプレートにデプロイされたリソースを返すことはできません。 その場合は、[リンク済みテンプレート](linked-templates.md#linked-template)を使用してください。
+入れ子になったテンプレートの outputs セクションで reference 関数または list* 関数を使用するには、[内部スコープ](linked-templates.md#expression-evaluation-scope-in-nested-templates)評価を使用するか、入れ子になったテンプレートの代わりにリンクを使用するように ```expressionEvaluationOptions``` を設定する必要があります。
 
 **reference** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。  **reference** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースのデプロイ中にのみこの関数が評価されるようにするには、**if** 関数を使用します。 条件付きでデプロイされるリソースで if と reference を使用するサンプル テンプレートについては、[if 関数](template-functions-logical.md#if)に関する説明を参照してください。
 
@@ -537,10 +537,20 @@ reference 関数を使用してコピー ループの `count` プロパティの
 
 [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) は、一部のリソースに対して暗黙的に作成される[拡張リソースの種類](../management/extension-resource-types.md)です。 テンプレートにはマネージ ID が明示的に定義されていないため、ID が適用されるリソースを参照する必要があります。 暗黙的に作成された ID を含め、すべてのプロパティを取得するには、`Full` を使用します。
 
-たとえば、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+パターンは次のとおりです。
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+たとえば、仮想マシンに適用されるマネージド ID のプリンシパル ID を取得するには、次を使用します。
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+または、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>参照の例

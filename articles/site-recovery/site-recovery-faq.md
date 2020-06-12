@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744117"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193557"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -195,7 +195,37 @@ Hyper-V 仮想マシンをレプリケートする場合、および Azure に V
 * [VMware VM と物理サーバーをレプリケートするためのキャパシティ プランニング](site-recovery-plan-capacity-vmware.md)
 * [Azure に Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux サーバーでアプリの整合性を使用してレプリケーションを有効にすることはできますか。 
+はい。 Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性時に Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、次のとおりです。
 
+1. マシンに root としてサインインします。
+2. Azure Site Recovery Mobility Agent のインストール場所にディレクトリを変更します。 既定値は "/usr/local/ASR" です。<br>
+    `# cd /usr/local/ASR`
+3. インストール場所の下にある "VX/scripts" にディレクトリを変更します。<br>
+    `# cd VX/scripts`
+4. root ユーザーの実行アクセス許可を設定した "customscript.sh" という名前の bash シェル スクリプトを作成します。<br>
+    a. このスクリプトでは、"--pre" と "--post" (二重ダッシュに注意してください) のコマンドライン オプションをサポートする必要があります。<br>
+    b. プリオプションを使用してスクリプトを呼び出すときに、アプリケーションの入出力を凍結し、ポストオプションを使用して呼び出すときに、アプリケーションの入出力を凍結解除する必要があります。<br>
+    c. サンプル テンプレート -<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. アプリの整合性を必要とするアプリケーションの pre と post の手順で、凍結と凍結解除の入力/出力コマンドを追加します。 これらを指定する別のスクリプトを追加し、pre と post オプションを使用して "customscript.sh" から呼び出すこともできます。
 
 ## <a name="failover"></a>[フェールオーバー]
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure にフェールオーバーする場合、フェールオーバー後に Azure VM にどうしたらアクセスできますか?

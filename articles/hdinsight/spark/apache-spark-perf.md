@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: f92a351087670ce0b37921a496eabfa883a3b1fc
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 0b152f7882c7d7a3bab762253da0febc0257ceae
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780109"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117960"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 
@@ -24,14 +24,14 @@ Apache Spark ジョブのパフォーマンスは、複数の要因によって�
 
 直面する可能性のある一般的な課題は、不適切なサイズの実行プログラムが原因のメモリ制約、実行時間の長い操作、デカルト演算が発生するタスクなどです。
 
-また、キャッシュ、データ スキューの許可など、これらの課題を克服するのに役立つさまざまな戦略もあります。
+また、キャッシュ、データ スキューの許可など、これらの課題を克服するのに役立つ多くの最適化もあります。
 
-次の各記事では、Spark の最適化のさまざまな側面について一般的な課題と解決策を確認できます。
+次の各記事では、Spark の最適化のさまざまな側面に関する情報を確認できます。
 
-* [データ ストレージを最適化する](optimize-data-storage.md)
-* [データ処理を最適化する](optimize-data-processing.md)
-* [メモリ使用量を最適化する](optimize-memory-usage.md)
-* [クラスターの構成を最適化する](optimize-cluster-configuration.md)
+* [Apache Spark 用にデータ ストレージを最適化する](optimize-data-storage.md)
+* [Apache Spark のデータ処理を最適化する](optimize-data-processing.md)
+* [Apache Spark 用にメモリ使用量を最適化する](optimize-memory-usage.md)
+* [Apache Spark の HDInsight クラスター構成を最適化する](optimize-cluster-configuration.md)
 
 ## <a name="next-steps"></a>次のステップ
 

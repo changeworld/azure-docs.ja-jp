@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 評価サポート
 description: Azure Migrate Server Assessment を使用した VMware VM の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8e0b6f3babcc862e1a78effcdb1a61f430c01646
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849367"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267887"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -49,7 +49,7 @@ VMware VM を評価するには、Azure Migrate プロジェクトを作成し�
 
 **VMware** | **詳細**
 --- | ---
-**VMware VM** | 評価は、すべての Windows および Linux オペレーティング システムでサポートされています。
+**VMware VM** | すべてのオペレーティング システムを、移行のために評価することができます。 
 **vCenter Server** | 検出・評価するマシンは、 vCenter Server バージョン 5.5、6.0、6.5、または 6.7 でマネージドされている必要があります。
 **アクセス許可 (評価)** | vCenter Server の読み取り専用アカウント。
 **アクセス許可 (アプリ検出)** | 読み取り専用アクセス権を持つ vCenter Server アカウントと、**仮想マシン > ゲスト操作**の権限が有効。

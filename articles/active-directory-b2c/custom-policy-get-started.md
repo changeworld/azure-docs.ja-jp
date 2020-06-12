@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bcc1affb953a737c12ca5bdb70ba7eadee20cd97
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738253"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295526"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -74,22 +74,9 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
 
-アプリケーションを Azure AD B2C テナントに登録するには、**アプリの登録 (レガシ)** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+Azure AD B2C テナントにアプリケーションを登録するには、**アプリの登録**エクスペリエンスを使用できます。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
-1. **[Azure Active Directory]** の概要メニューで、 **[管理]** から **[アプリの登録 (レガシ)]** を選択します。
-1. **[新しいアプリケーションの登録]** を選択します。
-1. **名前**には、`IdentityExperienceFramework`を入力します。
-1. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
-1. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
-1. **［作成］** を選択します 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
-
-1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. **名前**には、`IdentityExperienceFramework`を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`」と入力します。`your-tenant-name` は、Azure AD B2C テナント ドメイン名です。
@@ -111,21 +98,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを登録する
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. **[アプリの登録 (レガシ)]** で、 **[新しいアプリケーションの登録]** を選択します。
-1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
-1. **アプリケーションの種類**については、**ネイティブ**を選択します。
-1. **[リダイレクト URI]** に「`myapp://auth`」と入力します。
-1. **［作成］** を選択します 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
-1. **[設定]** を選択し、 **[必要なアクセス許可]** を選択したら、 **[追加]** を選択します。
-1. **[API を選択します]** を選択し、**IdentityExperienceFramework** を検索して選択してから、 **[選択]** をクリックします。
-1. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
-1. **[アクセス許可を付与する]** を選択したら、 **[はい]** を選択して確定します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
-
-1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で、ドロップダウンを使用して **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
@@ -137,7 +110,6 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
 
 1. **[管理]** で、 **[認証]** を選択します。
-1. **[新しいエクスペリエンスを試す]** (表示されている場合) を選択します。
 1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
 1. **[保存]** を選択します。
 
@@ -151,7 +123,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **[<テナント名> に管理者の同意を与えます]** を選択します。
 1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
-1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
+1. **[最新の情報に更新]** を選択した後、スコープの **[状態]** に、"... に付与されました" が表示されることを確認します (offline_access、openid、および user_impersonation)。 アクセス許可が反映されるまでに数分かかる場合があります。
 
 * * *
 

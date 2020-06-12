@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f2167552e21973d304f98693be022683fdf661
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 609ad2539753a838f02c4a79be56444ca0fb07f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870926"
+ms.locfileid: "84014391"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -26,7 +26,7 @@ ms.locfileid: "83870926"
 ## <a name="cloud-provisioning-agent-requirements"></a>クラウド プロビジョニング エージェントの要件
 Azure AD Connect クラウド プロビジョニングを使用するには、次のものが必要です。
     
-- ゲスト ユーザーではない、Azure AD テナントの全体管理者アカウント。
+- ゲスト ユーザーではない、Azure AD テナントのハイブリッド ID 管理者アカウント。
 - Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー
 - オンプレミスのファイアウォールの構成
 
@@ -37,7 +37,7 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センター
 
-1. Azure AD テナントで、クラウド専用のグローバル管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなった場合にテナントの構成を管理できます。 クラウド専用のグローバル管理者アカウントを追加する方法については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 テナントからロックアウトされないようにするには、この手順を実行する必要があります。
+1. Azure AD テナントで、クラウド専用のハイブリッド ID 管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなった場合にテナントの構成を管理できます。 [クラウド専用のハイブリッド ID 管理者アカウントを追加する](../active-directory-users-create-azure-portal.md)方法について確認してください。 テナントからロックアウトされないようにするには、この手順を実行する必要があります。
 1. 1 つ以上の[カスタム ドメイン名](../active-directory-domains-add-azure-portal.md)を Azure AD テナントに追加します。 ユーザーは、このドメイン名のいずれかを使用してサインインできます。
 
 ### <a name="in-your-directory-in-active-directory"></a>Active Directory のディレクトリ内

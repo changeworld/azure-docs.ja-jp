@@ -1,31 +1,31 @@
 ---
 title: Azure Event Grid パートナーとしてオンボードする
-description: Azure Event Grid のパートナー トピック タイプとしてオンボードします。 パートナー トピックのリソース モデルと発行フローについて説明します。
+description: Azure Event Grid のパートナー トピックの種類としてオンボードします。 パートナー トピックのリソース モデルと発行フローについて説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 2a7e2b9f731dbf05dfeb2ac01f1ae258c5250827
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758828"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170003"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid パートナーとしてオンボードする
 
-この記事では、Event Grid パートナー リソースを非公開で使用する方法と、公開されたパートナー トピックの種類になる方法について説明します。
+この記事では、Azure Event Grid パートナー リソースを非公開で使用する方法と、公開されたパートナー トピックの種類になる方法について説明します。
 
-イベントの発行に関連付けられている Event Grid リソースの種類を Event Grid パートナーとして使用するために特別なアクセス許可は必要ありません。 実際、今日から使用して、ご自分の Azure サブスクリプションに非公開でイベントを発行できます。また、パートナーになることを検討している場合はリソース モデルをテストすることができます。
+イベントの発行に関連付けられている Event Grid リソースの種類を Event Grid パートナーとして使用するために特別なアクセス許可は必要ありません。 パートナーになることを検討している場合は、実際、今日からそれらを使用して、ご自分の Azure サブスクリプションに非公開でイベントを発行したり、リソース モデルをテストしたりすることができます。
 
-## <a name="becoming-an-event-grid-partner"></a>Event Grid パートナーになる
+## <a name="become-an-event-grid-partner"></a>Event Grid パートナーになる
 
-公開の Event Grid パートナーになることに関心をお持ちの場合は、[このフォーム](https://aka.ms/gridpartnerform)に入力してから、[GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) の Event Grid チームにお問い合わせください。
+公開の Event Grid パートナーになることに関心をお持ちの場合は、最初に[このフォーム](https://aka.ms/gridpartnerform)に入力してください。 その後、Event Grid チーム ([GridPartner@microsoft.com](mailto:gridpartner@microsoft.com)) にお問い合わせください。
 
 ## <a name="how-partner-topics-work"></a>パートナー トピックのしくみ
-パートナー トピックには既存のアーキテクチャが採用されています。これは Event Grid でストレージや IoT Hub などの Azure リソースのイベントを発行するために既に使用されているものであり、それらのツールは誰でも利用できるように公開されています。 これらのツールの使用は、既定で Azure サブスクリプションのみに限定されています。 イベントを公開するには、前述のフォームに入力して、[Event Grid チームにお問い合わせください](mailto:gridpartner@microsoft.com)。
+パートナー トピックには既存のアーキテクチャが採用されています。これは Event Grid で Azure Storage や Azure IoT Hub などの Azure リソースからイベントを発行するために既に使用されているものであり、それらのツールは誰でも利用できるように公開されています。 これらのツールの使用は、既定で Azure サブスクリプションのみに限定されています。 イベントを公開するには、フォームに入力して、[Event Grid チームにお問い合わせください](mailto:gridpartner@microsoft.com)。
 
 パートナー トピックを使用すると、Azure Event Grid にイベントを発行してマルチテナントで使用できます。
 
@@ -34,21 +34,21 @@ ms.locfileid: "83758828"
 #### <a name="partner-flow"></a>パートナー フロー
 
 1. Azure テナントをまだお持ちでない場合は作成します。
-1. CLI を使用して、新しい Event Grid `partnerRegistration` を作成します。 このリソースには、表示名、説明、セットアップ URI などの情報が含まれます。
+1. Azure CLI を使用して、新しい Event Grid `partnerRegistration` を作成します。 このリソースには、表示名、説明、セットアップ URI などの情報が含まれます。
 
     ![パートナー トピックを作成する](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. イベントを発行する各リージョンに 1 つ以上の `partnerNamespaces` を作成します。 この一環として、Event Grid サービスによって発行エンドポイント (`https://contoso.westus-1.eventgrid.azure.net/api/events` など) とアクセス キーがプロビジョニングされます。
+1. イベントを発行する各リージョンに、1 つ以上のパートナー名前空間を作成します。 Event Grid サービスによって、発行エンドポイント (`https://contoso.westus-1.eventgrid.azure.net/api/events` など) とアクセス キーがプロビジョニングされます。
 
     ![パートナー名前空間を作成する](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
-1. パートナー トピックを気に入った顧客を御社のシステムに登録する方法を用意します。
+1. パートナー トピックを必要とする顧客を御社のシステムに登録する方法を用意します。
 1. Event Grid チームに連絡して、パートナー トピックの種類を公開にするように伝えてください。
 
 #### <a name="customer-flow"></a>顧客フロー
 
-1. 顧客は Azure portal にアクセスし、気に入ったパートナー トピックが作成された Azure サブスクリプション ID とリソース グループをメモします。
-1. 顧客はシステムを使用してパートナー トピックを依頼します。 御社はそれに応じてパートナー名前空間にイベント トンネルを作成します。
+1. 顧客は Azure portal にアクセスし、パートナー トピックの作成を希望する Azure サブスクリプション ID とリソース グループをメモします。
+1. 顧客は御社のシステムを使用してパートナー トピックを依頼します。 御社はそれに応じてパートナー名前空間へのイベント トンネルを作成します。
 1. Event Grid によって、顧客の Azure サブスクリプションとリソース グループ内に**保留中**のパートナー トピックが作成されます。
 
     ![イベント チャネルを作成する](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
@@ -59,17 +59,18 @@ ms.locfileid: "83758828"
 
 ## <a name="resource-model"></a>リソース モデル
 
-次に、パートナー トピックのリソース モデルを示します。
+
+次のリソース モデルは、パートナー トピックを対象としています。
 
 ### <a name="partner-registrations"></a>パートナー登録
 * リソース: `partnerRegistrations`
 * 使用元:パートナー
-* 説明:SaaS パートナーのグローバル メタデータ (名前、表示名、説明、セットアップ URI など) をキャプチャします。
+* 説明:サービスとしてのソフトウェア (SaaS) パートナーのグローバル メタデータ (名前、表示名、説明、セットアップ URI など) を取り込みます。
     
-    パートナー登録の作成および更新は、パートナーのセルフサービス操作です。 このセルフサービス機能により、パートナーはエンドツーエンドの完全なフローを構築およびテストできます。
+    パートナー登録の作成または更新は、パートナーのセルフサービス操作です。 このセルフサービス機能により、パートナーはエンドツーエンドの完全なフローを構築およびテストできます。
     
-    顧客は、Microsoft が承認した partnerRegistrations のみを見つけることができます。
-* スコープ:パートナーの Azure サブスクリプションで作成されます。 公開されると、メタデータが顧客に表示されます。
+    顧客は、Microsoft が承認したパートナー登録のみを見つけることができます。
+* スコープ:パートナーの Azure サブスクリプションで作成されます。 メタデータは、公開されると、顧客に表示されます。
 
 ### <a name="partner-namespaces"></a>パートナー名前空間
 * リソース: partnerNamespaces
@@ -80,13 +81,13 @@ ms.locfileid: "83758828"
 ### <a name="event-channel"></a>イベント チャネル
 * リソース: `partnerNamespaces/eventChannels`
 * 使用元:パートナー
-* 説明:イベント トンネルは、顧客のパートナー トピックのミラーです。 イベント トンネルを作成し、メタデータで顧客の Azure サブスクリプションとリソース グループを指定することで、顧客用のパートナー トピックを作成するように Event Grid に知らせます。 Event Grid から ARM 呼び出しを発行され、顧客のサブスクリプションに対応する partnerTopic が作成されます。 パートナー トピックは、"保留中" の状態で作成されます。 各 eventTunnel と partnerTopic の間には 1 対 1 のリンクがあります。
+* 説明:イベント トンネルは、顧客のパートナー トピックのミラーです。 イベント トンネルを作成し、メタデータで顧客の Azure サブスクリプションとリソース グループを指定することで、顧客用のパートナー トピックを作成するように Event Grid に知らせます。 Event Grid から ARM 呼び出しが発行され、対応する partnerTopic が顧客のサブスクリプションに作成されます。 パートナー トピックは、保留中の状態で作成されます。 各イベント トンネルとパートナー トピックの間には 1 対 1 のリンクがあります。
 * スコープ:パートナーのサブスクリプションに存在します。
 
 ### <a name="partner-topics"></a>パートナー トピック
 * リソース: `partnerTopics`
 * 使用元:顧客
-* 説明:パートナー トピックは、Event Grid のカスタム トピックとシステム トピックに似ています。 各パートナー トピックは、特定の "ソース" (たとえば、`Contoso:myaccount`) と特定のパートナー トピックの種類 (たとえば、"Contoso") に関連付けられています。 顧客は、パートナー トピックに対してイベント サブスクリプションを作成し、イベントをさまざまなイベント ハンドラーにルーティングします。
+* 説明:パートナー トピックは、Event Grid のカスタム トピックやシステム トピックに似ています。 各パートナー トピックは、特定のソース (たとえば、`Contoso:myaccount`) と特定のパートナー トピックの種類 (たとえば、Contoso) に関連付けられています。 顧客は、パートナー トピックに対してイベント サブスクリプションを作成し、イベントをさまざまなイベント ハンドラーにルーティングします。
 
     顧客がこのリソースを直接作成することはできません。 パートナー トピックを作成する唯一の方法は、イベント トンネルを作成するパートナー操作を使用することです。
 * スコープ:顧客のサブスクリプションに存在します。
@@ -94,11 +95,11 @@ ms.locfileid: "83758828"
 ### <a name="partner-topic-types"></a>パートナー トピックの種類
 * リソース: `partnerTopicTypes`
 * 使用元:顧客
-* 説明:パートナー トピックの種類は、テナント全体のリソースの種類であり、これによって、顧客は承認されたパートナー トピックの種類の一覧を見つけることができます。 URL は https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes) のようになります。
+* 説明:パートナー トピックの種類は、テナント全体のリソースの種類であり、これによって、顧客は承認されたパートナー トピックの種類の一覧を見つけることができます。 URL は、 https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes) のようになります。
 * スコープ:グローバル
 
-## <a name="publishing-events-to-event-grid"></a>Event Grid へのイベントの発行
-Azure リージョンに partnerNamespace を作成すると、リージョン エンドポイントと対応する認証キーが得られます。 その名前空間内のすべての顧客イベント トンネル向けに、イベントのバッチをこのエンドポイントに発行します。 イベントの "ソース" フィールドに基づいて、Azure Event Grid によって各イベントが対応するパートナー トピックにマップされます。
+## <a name="publish-events-to-event-grid"></a>Event Grid にイベントを発行する
+Azure リージョンにパートナー名前空間を作成すると、リージョン エンドポイントと対応する認証キーが得られます。 その名前空間内のすべての顧客イベント トンネル向けに、イベントのバッチをこのエンドポイントに発行します。 イベントのソース フィールドに基づいて、Azure Event Grid によって各イベントが対応するパートナー トピックにマップされます。
 
 ### <a name="event-schema-cloudevents-v10"></a>イベント スキーマ:CloudEvents v1.0
 CloudEvents 1.0 スキーマを使用して Azure Event Grid にイベントを発行します。 Event Grid は、構造化モードとバッチ モードの両方をサポートしています。 CloudEvents 1.0 は、パートナー名前空間でサポートされている唯一のイベント スキーマです。
@@ -106,9 +107,9 @@ CloudEvents 1.0 スキーマを使用して Azure Event Grid にイベントを�
 ### <a name="example-flow"></a>フローの例
 
 1.  発行サービスによって、`https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` への HTTP POST が行われます。
-2.  この要求には、認証用のキーを含む aeg-sas-key という名前のヘッダー値を設定します。 このキーは、partnerNamespace の作成時にプロビジョニングされます。 たとえば、有効なヘッダー値は aeg-sas-key:VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg== です。
-3.  Content-Type ヘッダーを "application/cloudevents-batch+json; charset=UTF-8" に設定します。
-4.  上記の発行 URL に対して、そのリージョンに対応するイベントのバッチを使用して HTTP POST を実行します。 次に例を示します。
+1.  この要求には、認証用のキーを含む aeg-sas-key という名前のヘッダー値を設定します。 このキーは、パートナー名前空間の作成時にプロビジョニングされます。 たとえば、有効なヘッダー値は aeg-sas-key:VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg== です。
+1.  Content-Type ヘッダーを "application/cloudevents-batch+json; charset=UTF-8a" に設定します。
+1.  発行 URL に対して、そのリージョンに対応するイベントのバッチを使用して HTTP POST を実行します。 次に例を示します。
 
 ``` json
 [
@@ -153,7 +154,7 @@ partnerNamespace エンドポイントに投稿すると、応答を受け取り
 | エンドポイントが正しくない                 | 404 見つかりません         |
 | 配列またはイベントが、サイズ制限を超えています | 413 ペイロードが大きすぎます |
 
-## <a name="reference"></a>リファレンス
+## <a name="references"></a>References
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM テンプレート](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
@@ -170,7 +171,7 @@ partnerNamespace エンドポイントに投稿すると、応答を受け取り
   * [Go](https://github.com/Azure/azure-sdk-for-go)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [パートナー トピックの概要](partner-topics-overview.md)
 - [パートナー トピックのオンボード フォーム](https://aka.ms/gridpartnerform)
 - [Auth0 パートナー トピック](auth0-overview.md)

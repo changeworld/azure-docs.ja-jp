@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655243"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142063"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview にカスタム ドメインを設定する
 

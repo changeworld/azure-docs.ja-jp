@@ -4,12 +4,12 @@ description: Azure VMware Solution (AVS) についてよく寄せられる質問
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873311"
+ms.locfileid: "84112694"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware Solution (AVS) プレビューについてよく寄せられる質問
 
@@ -67,34 +67,7 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 はい。Azure VMware Solution では、HCX などの使い慣れた VMware ツールを使用した移行がサポートされています。 新しいソリューションへの移行に関心があるお客様は、Microsoft のアカウント チームと協力して、オプションと利用可能なサポートを確認してください。
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**既存の Azure VMware Solution に対するホスト クォータの増量はどのように要求すればよいですか?**
 
-クォータの増量は、[サポート リクエストを送信する](..\azure-portal\supportability\how-to-create-azure-support-request.md)ことで要求できます。 クォータ管理チームにより、3 営業日以内に要求が評価されて承認されます。  
-
-> [!IMPORTANT]
-> クォータの増量を要求する前に、Azure portal で [**Microsoft.AVS** リソース プロバイダーに登録](tutorial-create-private-cloud.md)してください。  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> リソース プロバイダーを登録するその他の方法については、「[Azure リソース プロバイダーと種類](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)」を参照してください。
-
-1. Azure portal の **[ヘルプとサポート]** で**新しいサポート リクエスト**を作成し、次の情報をチケットに提供します。
-   - **問題の種類:** 技術
-   - **サブスクリプション:** サブスクリプション ID
-   - **サービス:** Azure VMware Solution 
-   - **概要:** クォータの増加
-   - **問題の種類:** 容量管理に関する問題
-   - **問題のサブタイプ:** 追加のホストクォータおよび容量に関する顧客の要求
-
-1. サポート チケットの [詳細] タブの [説明] で、次のことを指定します。
-   - 追加するノードの数   
-   - ノードの SKU
-   - リージョン
-
-   > [!NOTE] 
-   > 既定では、最低 4 ノードが許可されます。
-
-1. **[確認および作成]** をクリックして要求を送信します。
 
 ## <a name="compute-network-and-storage"></a>コンピューティング、ネットワーク、およびストレージ
 
@@ -164,7 +137,7 @@ ESXi ホストは、最大 25 Gbps の接続帯域幅をサポートします。
 
 **プライベート クラウドでの VMware ソフトウェアのアップグレードと更新のスケジュールはどのようになりますか?**
 
-プライベート クラウド ソフトウェア バンドルのアップグレードは、ソフトウェア バンドル形式 VMware の最新リリースの単一バージョン内でソフトウェアを保持するために行われます。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、VSAN) の最新バージョンとは異なる場合があります。
+プライベート クラウド ソフトウェア バンドルのアップグレードは、VMware のソフトウェア バンドルの最新リリースの単一バージョン内でソフトウェアを保持するために行われます。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、VSAN) の最新バージョンとは異なる場合があります。
 
 **プライベート クラウド ソフトウェア スタックはどのくらいの頻度で更新されますか?**
 
@@ -233,6 +206,35 @@ AVS のサポートは、Microsoft が提供します。 プレビューのガ�
 **AVS プライベート クラウドを作成するにはどのアカウントが必要ですか?**
 
 Azure サブスクリプションの Azure アカウントが必要です。
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**Azure VMware Solution に対するホスト クォータの増量はどのようにリクエストすればよいですか?**
+
+クォータの増量は、[サポート リクエストを送信する](..\azure-portal\supportability\how-to-create-azure-support-request.md)ことで要求できます。 クォータ管理チームにより、3 営業日以内に要求が評価されて承認されます。  
+
+> [!IMPORTANT]
+> クォータの増量をリクエストする前に、Azure portal で **Microsoft.AVS** リソース プロバイダーを登録してください。  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> リソース プロバイダーを登録するその他の方法については、「[Azure リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)」を参照してください。
+
+1. Azure portal の **[ヘルプとサポート]** で**新しいサポート リクエスト**を作成し、次の情報をチケットに提供します。
+   - **問題の種類:** 技術
+   - **サブスクリプション:** サブスクリプション ID
+   - **サービス:** Azure VMware Solution 
+   - **概要:** クォータの増加
+   - **問題の種類:** 容量管理に関する問題
+   - **問題のサブタイプ:** 追加のホストクォータおよび容量に関する顧客の要求
+
+1. サポート チケットの [詳細] タブの [説明] で、次のことを指定します。
+   - 追加するノードの数   
+   - ノードの SKU
+   - リージョン
+
+   > [!NOTE] 
+   > 既定では、最低 4 ノードが許可されます。
+
+1. **[確認および作成]** をクリックして要求を送信します。
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952

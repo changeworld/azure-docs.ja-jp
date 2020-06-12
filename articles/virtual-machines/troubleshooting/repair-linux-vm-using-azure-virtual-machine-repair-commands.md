@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: da40deb4df55a63f5fecc380500a507b374ca63d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9029082a275905bbdb9efe0cefa05337c9969a2f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711144"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219908"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
 
@@ -66,7 +66,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
    az extension update -n vm-repair
    ```
 
-3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、新しいリソース グループに修復 VM が作成されて、OS ディスクのコピーに接続されます。  修復 VM のサイズとリージョンは、指定された機能していない VM と同じになります。
+3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、新しいリソース グループに修復 VM が作成されて、OS ディスクのコピーに接続されます。  修復 VM のサイズとリージョンは、指定された機能していない VM と同じになります。 すべての手順で使用されるリソース グループと VM の名前は、機能していない VM 用になります。
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -74,7 +74,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
 4. 必要に応じて作成した修復 VM で軽減ステップを実行し、ステップ 5 に進みます。
 
-5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。
+5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

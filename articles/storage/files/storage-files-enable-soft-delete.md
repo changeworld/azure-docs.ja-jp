@@ -1,23 +1,23 @@
 ---
 title: 論理的な削除を有効にする - Azure ファイル共有
-description: データを復旧したり誤削除を回避したりできるように、Azure ファイル共有に対して論理的な削除を有効にする方法について説明します。
+description: データを復旧したり誤削除を回避したりできるように、Azure ファイル共有に対して論理的な削除 (プレビュー) を有効にする方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 755ccd266b8a88471bf7dbc0d2deb790f35f3457
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 582a3603ad80ec1312429ed7cbd140d4310fadcb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883015"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196193"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure ファイル共有で論理的な削除を有効にする
 
-Azure Storage では、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って削除されたときに、データをより簡単に復旧できるように、ファイル共有での論理的な削除が提供されています。 論理的な削除の詳細については、[Azure ファイル共有の誤削除を回避する方法](storage-files-prevent-file-share-deletion.md)に関するページをご覧ください。
+Azure Storage では、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って削除されたときに、データをより簡単に復旧できるように、ファイル共有での論理的な削除 (プレビュー) が提供されています。 論理的な削除の詳細については、[Azure ファイル共有の誤削除を回避する方法](storage-files-prevent-file-share-deletion.md)に関するページをご覧ください。
 
 以下のセクションでは、既存のストレージ アカウントで Azure ファイル共有の論理的な削除を有効にして使用する方法について説明します。
 
@@ -97,3 +97,7 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false
 ```
 ---
+
+## <a name="next-steps"></a>次のステップ
+
+別の形式のデータ保護と復旧の詳細については、「[Azure Files の共有スナップショットの概要](storage-snapshots-files.md)」記事を参照してください。

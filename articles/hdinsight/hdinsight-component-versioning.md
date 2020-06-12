@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/20/2020
-ms.openlocfilehash: 036548d61dbe6a6465ca28c72eacb48e61386577
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: 0ce7077300b1c59fcc858197e70a921d1454fd13
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846224"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219704"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight で使用可能な Apache コンポーネントおよびバージョン
 
@@ -43,7 +43,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0+                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.4           | 2.3.0、2.2.0、2.1.0         |
+| Apache Spark           | 2.4           | 2.3.2、2.2.0、2.1.0         |
 | Apache Livy            | 0.5           | 0.4、0.4、0.3               |
 | Apache Kafka           | 2.1           | 1.1                        |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
@@ -51,7 +51,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> HDInsight 4.0:Spark 2.4 と Kafka 2.1 は完全にサポートされています。 ただし、Spark 2.3 と Kafka 1.1 にはサービスが提供されていません。 HDInsight 3.6:Spark 2.3 と Kafka 1.1 は完全にサポートされています。  
+> HDInsight 4.0:Spark 2.4 と Kafka 2.1 は完全にサポートされています。 ただし、Spark 2.3 と Kafka 1.1 クラスターの種類には対応していません。 HDInsight 3.6:Spark 2.3 と Kafka 1.1 は完全にサポートされています。  
 
 ## <a name="check-for-current-apache-component-version-information"></a>現在の Apache コンポーネントのバージョン情報の確認
 
@@ -80,10 +80,10 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
 | HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 12 月 31 日 |2020 年 12 月 31 日 |はい |はい |
 
-Spark 2.1、2.2、Kafka 1.0 は 2020 年 6 月 30 日に期限切れとなります。
+Spark 2.1、2.2、Kafka 1.0 クラスターは 2020 年 6 月 30 日に期限切れとなります。
 
 > [!NOTE]
-> バージョンのサポートが期限切れになると、Azure Portal で使用できなくなります。 クラスター バージョンは、Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドの **Version** パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できます。
+> クラスター バージョンのサポートが期限切れになると、Azure Portal で使用できなくなります。 一部のケースにおいて、クラスター バージョンは、Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドの **Version** パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できる場合があります。
 
 ### <a name="retired-versions"></a>廃止されたバージョン
 

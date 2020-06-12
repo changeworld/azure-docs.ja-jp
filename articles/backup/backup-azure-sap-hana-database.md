@@ -3,12 +3,12 @@ title: Azure Backup を使用して Azure に SAP HANA データベースをバ�
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20086516dc37538474a31c7735e9b2d3b1a3d5b2
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745425"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248568"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -25,8 +25,11 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 > * オンデマンド バックアップ ジョブを実行する
 
 >[!NOTE]
+>RHEL (7.4、7.6、7.7、または 8.1) の SAP HANA バックアップ プレビューの[使用を開始](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)します。 その他のクエリについては、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
+
+>[!NOTE]
 >**Azure VM での SQL Server の論理的な削除と Azure VM ワークロードでの SAP HANA の論理的な削除**が、プレビューで利用できるようになりました。<br>
->プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
+>プレビューにサインアップするには、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 宛てにご連絡ください。
 
 ## <a name="prerequisites"></a>前提条件
 

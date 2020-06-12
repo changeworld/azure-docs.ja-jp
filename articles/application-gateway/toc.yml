@@ -30,6 +30,10 @@
       href: tutorial-url-redirect-cli.md
     - name: 自動スケーリングとゾーン冗長
       href: tutorial-autoscale-ps.md
+    - name: AKS 用のイングレス コントローラー アドオン (グリーンフィールド)
+      href: tutorial-ingress-controller-add-on-new.md
+    - name: AKS 用のイングレス コントローラー アドオン (ブラウンフィールド)
+      href: tutorial-ingress-controller-add-on-existing.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -136,10 +140,12 @@
               href: application-gateway-configure-ssl-policy-powershell.md
     - name: AKS のイングレス
       items:
-        - name: 既存の Application Gateway を使用して設定する
+        - name: Helm 経由の AKS のイングレス (ブラウンフィールド)
           href: ingress-controller-install-existing.md
-        - name: 新しい Application Gateway を使用して設定する
+        - name: Helm 経由の AKS のイングレス (グリーンフィールド)
           href: ingress-controller-install-new.md
+        - name: AKS イングレス コントローラー アドオンの無効化と再有効化
+          href: ingress-controller-disable-addon.md
         - name: Cookie のアフィニティを有効にする
           href: ingress-controller-cookie-affinity.md
         - name: 複数の名前空間のサポートを有効にする
@@ -274,5 +280,5 @@
       href: 'https://azure.microsoft.com/pricing/details/application-gateway/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-application-gateway'

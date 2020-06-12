@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 97e8a34f3b8639990f8de736a8f1f7429ebfd448
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26816a545cb83e0a3d996a8056b96154830e58b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739143"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195508"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -251,7 +251,7 @@ public class HttpTrigger
 オプションの使用に関する詳細については、「[ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)」を参照してください。
 
 > [!WARNING]
-> 従量課金プランで *local.settings.json* や *appsettings.{environment}.json* のようなファイルから値を読み取らないようにします。 トリガー接続に関連するこれらのファイルから読み取られた値は、ホスティング インフラストラクチャに構成情報へのアクセス権がないため、アプリのスケールとして利用することはできません。
+> 従量課金プランで *local.settings.json* や *appsettings.{environment}.json* のようなファイルから値を読み取らないようにします。 トリガー接続に関連するこれらのファイルから読み取られた値は、アプリのスケールとして利用することはできません。これは、スケール コントローラーがアプリの新しいインスタンスを作成する際に、ホスティング インフラストラクチャが構成情報にアクセスできないためです。
 
 ## <a name="next-steps"></a>次のステップ
 

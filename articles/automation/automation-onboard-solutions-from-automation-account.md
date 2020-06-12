@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: a521ff690f59b6beafd1113b177b43193dc7447e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f739134cd066f4dcc7fdf3da16c6db99a54d6265
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743985"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204941"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Automation アカウントから Update Management を有効にする
 
@@ -36,10 +36,6 @@ https://portal.azure.com で Azure にサインインします。
 2. Log Analytics ワークスペースおよび Automation アカウントを選択し、 **[有効にする]** をクリックして、Update Management を有効にします。 セットアップが完了するまでに最高 15 分かかります。
 
     ![Update Management の有効化](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
-
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>スコープ構成を確認する
-
-Update Management では、ワークスペース内のスコープ構成を使用して、機能を有効にするコンピューターを対象にします。 スコープ構成は、機能のスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 詳細については、[Update Management のスコープ構成の使用](automation-scope-configurations-update-management.md)に関するページを参照してください。
 
 ## <a name="enable-azure-vms"></a>Azure VM の有効化
 
@@ -73,16 +69,13 @@ Azure に存在しないマシンは手動で追加する必要があります�
 
 5. 使用可能なすべてのマシンと今後のマシンに対してこの機能を有効にするには、 **[使用可能なマシンと今後のマシンすべてで有効にします]** を選択します。 このオプションを選択すると、保存した検索条件とスコープ構成がワークスペースから削除され、ワークスペースへのレポートを行うすべての Azure マシンと Azure 以外のマシンに対して機能が開放されます。 選択された場合は、残されたスコープ構成がないため、 **[マシンの管理]** ボタンが永続的に無効になります。
 
-6. 必要であれば、最初に保存した検索条件を再度追加することで、スコープ構成を追加し直すことができます。 詳細については、[Update Management のスコープ構成の使用](automation-scope-configurations-update-management.md)に関するページを参照してください。
+6. 必要であれば、最初に保存した検索条件を再度追加することで、スコープ構成を追加し直すことができます。 詳細については、[Update Management の展開スコープの制限](automation-scope-configurations-update-management.md)に関するページを参照してください。
 
 7. 1 つ以上のマシンに対して機能を有効にするには、 **[選択したマシンで有効にします]** を選択し、機能を有効にする各マシンの横にある **[追加]** をクリックします。 このタスクにより、選択したマシン名が、機能の "保存した検索クエリ" コンピューター グループに追加されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * VM の Update Management を使用するには、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」を参照してください。
-* スコープ構成については、[Update Management のスコープ構成の使用](automation-scope-configurations-update-management.md)に関するページを参照してください。
-* Log Analytics ワークスペースが不要になった場合は、「[Update Management の Automation アカウントからワークスペースのリンクを解除する](automation-unlink-workspace-update-management.md)」の手順を参考にしてください。
-* Update Management から VM を削除するには、「[Update Management から VM を削除する](automation-remove-vms-from-update-management.md)」を参照してください。
 * Update Management の一般的なエラーのトラブルシューティングについては、「[Update Management に関する問題のトラブルシューティング](troubleshoot/update-management.md)」を参照してください。
 * Windows Update エージェントに関する問題のトラブルシューティングについては、「[Windows Update エージェントの問題をトラブルシューティングする](troubleshoot/update-agent-issues.md)」を参照してください。
 * Linux Update エージェントに関する問題のトラブルシューティングについては、「[Linux Update エージェントに関する問題のトラブルシューティング](troubleshoot/update-agent-issues-linux.md)」を参照してください。

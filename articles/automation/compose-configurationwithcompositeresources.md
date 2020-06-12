@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835072"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020355"
 ---
 # <a name="compose-dsc-configurations"></a>DSC 構成を作成する
 

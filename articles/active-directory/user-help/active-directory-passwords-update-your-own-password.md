@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828408"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266119"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>セキュリティ情報を使用し、職場または学校のパスワードをリセットする
 
 職場または学校のパスワードを忘れた場合、組織からパスワードを取得したことがない場合、またはアカウントからロックアウトされている場合は、自分のセキュリティ情報とモバイル デバイスを使用して職場または学校のパスワードをリセットすることができます。 ご自分の情報を設定するには、および[ご自分のパスワードをリセットするには](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register)、管理者がこの機能を有効にする必要があります。
 
-パスワードは忘れていないが、ただ変更を希望する場合、この記事の[パスワードを変更する](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password)方法に関するセクションを参照してください。
+パスワードは忘れていないが、変更を希望する場合、この記事の[パスワードを変更する](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password)方法に関するセクションを参照してください。
 
 >[!Important]
 >この記事は、職場または学校のアカウントのパスワードを忘れた、あるいはパスワードを知らないときにパスワードのリセットを望むユーザーのために作成されています。 管理者が従業員またはその他のユーザーのためにセルフサービス パスワード リセットをオンにする方法を探している場合、「[Azure AD のパスワード リセットのセルフサービスをデプロイする](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)」やその他の記事を参照してください。
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) アカウントにアクセスできない場�
 
      まだアカウントにアクセスできない場合は、組織の管理者に連絡してサポートを依頼してください。
 
-パスワードをリセットした後に、"Microsoft (\<*組織*> の代理)" などのアカウントから送信された確認メールを受け取ることがあります。 似たようなメールを受け取ったものの、最近パスワードをリセットした覚えがない場合は、すぐに組織の管理者に連絡してください。
+パスワードをリセットした後に、"Microsoft (\<*your_organization*> の代理)" などのアカウントから送信された確認メールを受け取ることがあります。 似たようなメールを受け取ったものの、最近パスワードをリセットした覚えがない場合は、すぐに組織の管理者に連絡してください。
 
 ## <a name="how-to-change-your-password"></a>パスワードの変更方法
 

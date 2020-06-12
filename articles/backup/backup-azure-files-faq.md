@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1be509f3b82cece3afb1e728a19da4c4d9526195
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836109"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118006"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -157,8 +157,4 @@ Azure Backup によって作成されたスナップショットはすべて、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Backup のその他の領域の詳細については、これらの Backup に関する他の FAQ を参照してください。
-
-- [Recovery Services コンテナーの FAQ](backup-azure-backup-faq.md)
-- [Azure VM バックアップの FAQ](backup-azure-vm-backup-faq.md)
-- [Azure Backup エージェントの FAQ](backup-azure-file-folder-backup-faq.md)
+- [Azure ファイル共有のバックアップ中の問題のトラブルシューティング](troubleshoot-azure-files.md)

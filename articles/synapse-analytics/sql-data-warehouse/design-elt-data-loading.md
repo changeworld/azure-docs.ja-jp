@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fc5316e2d6509f3e4db9a6cba150efc42c8bc548
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660011"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266374"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL プールのデータの読み込み戦略
 
@@ -46,15 +46,13 @@ ELT を実装するための基本的な手順は次のとおりです。
 5. データを変換します。
 6. 運用環境テーブルにデータを挿入します。
 
-PolyBase の読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」を参照してください。
-
-詳細については、[読み込みパターンに関するブログ](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。
+読み込みのチュートリアルについては、[ Azure Blob Storage からのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事をご覧ください。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.ソース データをテキスト ファイルに抽出する
 
-ソース システムからのデータの取得方法は、保存場所によって異なります。  最終的な目標は、PolyBase および COPY でサポートされている区切りテキストまたは CSV ファイルにデータを移動することです。
+ソース システムからのデータの取得方法は、保存場所によって異なります。 目標は、サポートされている区切りテキストまたは CSV ファイルにデータを移動することです。
 
-### <a name="polybase-and-copy-external-file-formats"></a>PolyBase および COPY の外部ファイル形式
+### <a name="supported-file-formats"></a>サポートされるファイル形式
 
 PolyBase および COPY ステートメントを使用すると、UTF-8 および UTF-16 でエンコードされた区切りテキストまたは CSV ファイルから、データを読み込むことができます。 区切りテキストまたは CSV ファイルに加え、ORC や Parquet などの Hadoop ファイル形式からも読み込みます。 また、PolyBase および COPY ステートメントは、Gzip および Snappy 圧縮ファイルからもデータを読み込むことができます。
 
@@ -74,11 +72,11 @@ Azure Storage へのデータの移動で使用できるツールやサービス
 
 読み込む前に、ストレージ アカウントのデータを準備してクリーンアップすることが必要になる場合があります。 データの準備は、データがソース内にあるとき、データをテキスト ファイルにエクスポートするとき、またはデータが Azure Storage に配置された後に実施できます。  データの操作は、プロセスの早い段階の方が、最も簡単に行えます。  
 
-### <a name="define-external-tables"></a>外部テーブルを定義する
+### <a name="define-the-tables"></a>テーブルを定義する
 
-PolyBase を使用している場合は、読み込み前に、SQL プールに外部テーブルを定義する必要があります。 COPY ステートメントでは、外部テーブルは必要ありません。 PolyBase は、外部テーブルを使用して Azure Storage のデータを定義し、それにアクセスします。
+COPY ステートメントを使用する場合は、最初に SQL プールで読み込み先のテーブルを定義する必要があります。
 
-外部テーブルは、データベースのビューに似ています。 外部テーブルにはテーブル スキーマが含まれており、SQL プールの外部に格納されているデータを指します。
+PolyBase を使用している場合は、読み込み前に、SQL プールに外部テーブルを定義する必要があります。 PolyBase は、外部テーブルを使用して Azure Storage のデータを定義し、それにアクセスします。 外部テーブルは、データベースのビューに似ています。 外部テーブルにはテーブル スキーマが含まれており、SQL プールの外部に格納されているデータを指します。
 
 外部テーブルを定義するには、データ ソース、テキスト ファイルの形式、テーブル定義を指定する必要があります。 必要な T-SQL 構文の参照記事は次のとおりです。
 
@@ -86,7 +84,7 @@ PolyBase を使用している場合は、読み込み前に、SQL プールに�
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Parquet を読み込むと、SQL のデータ型マッピングは次のようになります。
+Parquet ファイルを読み込む場合、次の SQL データ型マッピングを使用します。
 
 |                         Parquet 型                         |   Parquet 論理型 (注釈)   |  SQL データ型   |
 | :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
@@ -126,7 +124,7 @@ Parquet を読み込むと、SQL のデータ型マッピングは次のよう�
 
 
 
-外部オブジェクトの作成の例については、読み込みのチュートリアルの[外部テーブルの作成](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data)に関する手順をご覧ください。
+外部オブジェクトの作成の例については、[外部テーブルの作成](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)に関する記事を参照してください。
 
 ### <a name="format-text-files"></a>テキスト ファイルの書式設定
 
@@ -139,17 +137,16 @@ PolyBase を使用する場合、定義する外部オブジェクトは、外�
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.PolyBase または COPY ステートメントを使用してデータを読み込む
 
-これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用環境のテーブルへの挿入前に、SQL プールの MPP を使用してデータを変換することができます。
+これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用環境のテーブルにデータを挿入する前に、SQL プールの並列処理アーキテクチャを使用してデータを変換することができます。
 
-COPY を使用してステージング テーブルに読み込む場合、テーブルを事前作成する必要があります。
+### <a name="options-for-loading"></a>読み込みのオプション
 
-### <a name="options-for-loading-with-polybase-and-copy-statement"></a>PolyBase および COPY ステートメントを使用してデータを読み込むためのオプション
+データを読み込むには、次のいずれかの読み込みオプションを使用できます。
 
-PolyBase を使用してデータを読み込むには、次のいずれかの読み込みオプションを使用します。
-
-- [T-SQL を使用した PolyBase](load-data-from-azure-blob-storage-using-polybase.md) - データが Azure Blob Storage または Azure Data Lake Store 内にある場合に最適です。 読み込みプロセスを細かく制御できますが、外部データ オブジェクトの定義も必要となります。 その他の方法では、外部データ オブジェクトは、ソース テーブルを移行先テーブルにマップするときにバック グラウンドで定義されます。  T-SQL の読み込みを調整するには、Azure Data Factory、SSIS、または Azure Functions を使用します。
-- [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) - ソース データが SQL Server にある場合に有効です。SQL Server の場所は、オンプレミス、クラウドを問いません。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
+- [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 
+- [T-SQL を使用したPolyBase](load-data-from-azure-blob-storage-using-polybase.md) では、外部データ オブジェクトを定義する必要があります。
 - [Azure Data Factory (ADF) を使用した PolyBase および COPY ステートメント](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
+- [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
 - [Azure Databricks を使用した PolyBase](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - PolyBase を使用して、テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームからテーブルにデータを書き込むことができます。
 
 ### <a name="other-loading-options"></a>その他の読み込みオプション

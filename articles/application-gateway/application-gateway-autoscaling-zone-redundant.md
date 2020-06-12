@@ -7,13 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: ab2165cb6b48e58a7adca7093f7ff82d10495066
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739483"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196473"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -45,7 +45,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 - **固定価格** - これは、Standard_v2 または WAF_v2 ゲートウェイをプロビジョニングするための 1 時間 (または 1 時間未満) 単位の価格です。 0 個以上の追加インスタンスにより、固定価格に常に含まれるサービスの高可用性が保証されることに注意してください。
 - **容量ユニット価格** - これは固定コストに追加して課金される使用量ベースの料金です。 容量ユニットの料金も、1 時間または 1 時間未満の単位で計算されます。 容量ユニットには、コンピューティング ユニット、永続的接続、スループットの 3 つのディメンションがあります。 コンピューティング ユニットは、使用されたプロセッサの容量のメジャーです。 コンピューティング ユニットに影響する要因は、1 秒あたりの TLS 接続数、URL 書き換え計算、WAF ルールの処理です。 永続的接続は、特定の請求期間にアプリケーション ゲートウェイに対して確立された TCP 接続のメジャーです。 スループットは、特定の請求期間にシステムによって処理された平均メガビット数/秒です。  予約インスタンス数を超えた場合、容量ユニット レベルで課金されます。
 
-各容量ユニットは最大で次のものにより構成されます: 1 コンピューティング ユニット、または 2500 永続的接続、または 2.22 Mbps のスループット。
+各容量ユニットは最大で次のものにより構成されます: 1 つのコンピューティング ユニット、2,500 の永続的接続、および 2.22 Mbps のスループット。
 
 コンピューティング ユニットのガイダンス:
 
