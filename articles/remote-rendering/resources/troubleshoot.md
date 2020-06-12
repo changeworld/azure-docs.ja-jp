@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844568"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018822"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "83844568"
 * **8266 (TCP+UDP)** - データ転送に必要です
 * **5000 (TCP)** 、**5433 (TCP)** 、**8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) に必要です
 
-## <a name="error-disconnected-videoformatnotavailable"></a>エラー '切断されました:VideoFormatNotAvailable'
+## <a name="error-disconnected-videoformatnotavailable"></a>エラー '`Disconnected: VideoFormatNotAvailable`'
 
 GPU でハードウェアによる動画のデコードがサポートされていることを確認します。 「[開発用 PC](../overview/system-requirements.md#development-pc)」をご覧ください。
 
@@ -37,7 +37,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 ## <a name="h265-codec-not-available"></a>H265 コーデックが使用できない
 
-**コーデックが使用できない**というエラーでサーバーが接続を拒否する可能性のある理由は 2 つあります。
+`codec not available` というエラーでサーバーが接続を拒否する可能性のある理由は 2 つあります。
 
 **H265 コーデックがインストールされていない:**
 
@@ -107,7 +107,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 特定の [VM サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
 
-**モデルがビューの視錐台の内側にない:**
+**モデルがカメラの視錐台の外側にある:**
 
 多くの場合、そのモデルは正しく表示されますが、カメラの視錐台の外側にあります。 一般的な理由の 1 つは、そのモデルが中心から外れた遠くのピボットを使用してエクスポートされたために、カメラの遠クリップ面で切り取られてしまうことです。 これは、モデルの境界ボックスに対してプログラムでクエリを実行し、Unity でそのボックスを線のボックスとして視覚化したり、その値をデバッグ ログに出力したりするのに役立ちます。
 
@@ -142,7 +142,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 **Unity のレンダリング パイプラインにレンダリング フックが含まれていない:**
 
-Azure Remote Rendering では、動画を使用してフレーム合成を行ったり、再投影を行ったりするために、Unity のレンダリング パイプラインにフックします。 これらのフックが存在することを確認するには、メニューの *[Window] (ウィンドウ) > [Analysis] (分析) > [Frame debugger] (フレーム デバッガー)* を開きます。 これを有効にしてから、パイプライン内に `HolographicRemotingCallbackPass` のエントリが 2 つあることを確認します。
+Azure Remote Rendering では、動画を使用してフレーム合成を行ったり、再投影を行ったりするために、Unity のレンダリング パイプラインにフックします。 これらのフックが存在することを確認するには、メニュー *:::no-loc text="Window > Analysis > Frame debugger":::* を開きます。 これを有効にしてから、パイプライン内に `HolographicRemotingCallbackPass` のエントリが 2 つあることを確認します。
 
 ![Unity のフレーム デバッガー](./media/troubleshoot-unity-pipeline.png)
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289177"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118550"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -49,13 +49,28 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 ダウンロード可能な構成は単なる例です。自分のニーズに合わせて変更してください。
 
+### <a name="supported-linux-distributions"></a>サポートされている Linux ディストリビューション
+
+Linux Diagnostic Extension では、次のディストリビューションとバージョンがサポートされています。 ディストリビューションとバージョンの一覧は、Azure で動作保証済みの Linux ベンダーのイメージにのみ適用されます。 通常、Linux Diagnostic Extension では、サード パーティの BYOL および BYOS イメージ (アプライアンスなど) はサポートされていません。
+
+Debian 7 などのメジャー バージョンのみを示しているディストリビューションは、すべてのマイナー バージョンでもサポートされています。 特定のマイナー バージョンが指定されている場合、その特定のバージョンのみがサポートされ、"+" が追加されている場合は、指定したバージョン以降のマイナー バージョンがサポートされます。
+
+サポートされているディストリビューションとバージョン:
+
+- Ubuntu 18.04、16.04、14.04
+- CentOS 7、6.5+
+- Oracle Linux 7、6.4+
+- OpenSUSE 13.1+
+- SUSE Linux Enterprise Server 12
+- Debian 9、8、7
+- RHEL 7、6.7+
+
 ### <a name="prerequisites"></a>前提条件
 
 * **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)に従って更新します。
 * **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
 * 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。
-* サポートされている Linux ディストリビューションのリストは、 https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions にあります。
 
 ### <a name="sample-installation"></a>サンプル インストール
 

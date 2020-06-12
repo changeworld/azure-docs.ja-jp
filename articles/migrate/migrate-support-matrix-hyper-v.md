@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate Server Assessment を使用した Hyper-V の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 5ba7e74624f719feb6efbb3fb58dd3375250d649
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744602"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266782"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -44,7 +44,7 @@ Hyper-V VM の評価を設定するには、Azure Migrate プロジェクトを�
 
 | **サポート**                  | **詳細**               
 | :----------------------------- | :------------------- |
-| **オペレーティング システム** | すべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) と [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
+| **オペレーティング システム** | すべてのオペレーティング システムを、移行のために評価することができます。  |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
 
 

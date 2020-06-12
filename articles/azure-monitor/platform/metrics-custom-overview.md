@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837313"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299827"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
@@ -30,7 +30,7 @@ Azure Monitor のカスタム メトリックは現在、パブリック プレ�
 - [InfluxData Telegraf エージェント](collect-custom-metrics-linux-telegraf.md)を Azure Linux VM にインストールし、Azure Monitor 出力プラグインを使用してメトリックを送信する。
 - [Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。
 
-## <a name="pricing-model-and-rentention"></a>価格モデルと保持期間
+## <a name="pricing-model-and-retention"></a>価格モデルと保持期間
 
 カスタム メトリックとメトリック クエリに対する課金を有効にする場合の詳細については、[「Azure Monitor の価格」ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 カスタム メトリックやメトリック クエリを含むすべてのメトリックの具体的な価格の詳細は、このページに記載されています。 要約すると、標準メトリック (プラットフォーム メトリック) を Azure Monitor メトリック ストアに取り込むコストは発生しませんが、カスタム メトリックは一般提供されると、コストが発生します。 メトリック API クエリには、コストが発生します。
 
@@ -196,6 +196,7 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |米国中部      | https:\//centralus.monitoring.azure.com |
 |カナダ中部 | https:\//canadacentral.monitoring.azure.comc
 |米国東部| https:\//eastus.monitoring.azure.com/ |
+|米国東部 2 | https:\//eastus2.monitoring.azure.com/
 | **ヨーロッパ** | |
 |北ヨーロッパ    | https:\//northeurope.monitoring.azure.com/ |
 |西ヨーロッパ     | https:\//westeurope.monitoring.azure.com/ |

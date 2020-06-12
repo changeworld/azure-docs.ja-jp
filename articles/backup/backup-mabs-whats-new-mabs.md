@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。 Azure Backup Server V3 をインストールまたはアップグレードする方法を説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 358de6f2986036621accde90550e2afcc47f9135
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77582808"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247548"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server の新機能
 
@@ -26,7 +26,7 @@ MABS V2 の Modern Backup Storage (MBS) では、ワークロード対応スト�
 
 ## <a name="custom-size-allocation"></a>カスタム サイズの割り当て
 
-Modern Backup Storage (MBS) は、必要に応じてストレージの使用量を低下させます。 この処理を行うために、MABS では、保護用に構成されているときにバックアップされるデータのサイズが計算されます。 ただし、ファイル サーバーの場合のように、多数のファイルとフォルダーがまとめてバックアップされる場合は、サイズの計算に時間がかかることがあります。 MABS V3 を使用すると、各ファイルのサイズを計算するのではなく、既定としてボリューム サイズを受け入れるように MABS を構成することができるので、時間を節約できます。
+Modern Backup Storage (MBS) は、必要に応じてストレージの使用量を低下させます。 この処理を行うために、MABS では、保護用に構成されているときにバックアップされるデータのサイズが計算されます。 ただし、ファイル サーバーの場合のように、多数のファイルとフォルダーがまとめてバックアップされる場合は、サイズの計算に時間がかかることがあります。 MABS V3 を使用すると、各ファイルのサイズを計算するのではなく、既定としてボリューム サイズを受け入れるように MABS を構成することができ、時間の節約になります。
 
 ## <a name="optimized-cc-for-rct-vms"></a>RCT VM のための最適化された CC
 

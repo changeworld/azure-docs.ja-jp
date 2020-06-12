@@ -10,12 +10,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 705b2464285b747ea7999b112733b7e99f761f22
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 709ceb465594c566349cf9ea5bfed7db73c9a0cf
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419087"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194747"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory の Azure PowerShell サンプル
 
@@ -27,7 +27,7 @@ ms.locfileid: "81419087"
 |---|---|
 |**データをコピーする**||
 |[Azure Blob Storage で BLOB をフォルダーから別のフォルダーにコピーする](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Azure Blob Storage 内のフォルダーから同じ Blob Storage 内の別のフォルダーにデータをコピーします。 |
-|[Copy data from on-premises SQL Server to Azure Blob Storage (オンプレミスの SQL Server から Azure Blob Storage にデータをコピーする)](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーします。 |
+|[SQL Server から Azure Blob Storage へのデータのコピー](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、SQL Server データベースから Azure Blob Storage にデータをコピーします。 |
 |[一括コピー](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| このサンプルの PowerShell スクリプトは、Azure SQL データベースの複数のテーブルから Azure SQL Data Warehouse にデータをコピーします。 |
 |[増分コピー](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| このサンプルの PowerShell スクリプトは、最初にソース データ ストアからシンク データ ストアにデータをすべてコピーした後で、新しいレコードまたは更新されたレコードだけをソースからシンクに読み込みます。 |
 |**データの変換**||

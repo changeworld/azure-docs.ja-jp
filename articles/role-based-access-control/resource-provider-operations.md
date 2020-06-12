@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 679b5e60f65daac2006598c6bf12c9cdeec5541d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199559"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015915"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -31,7 +31,7 @@ ms.locfileid: "83199559"
 Azure サービス:[Azure Active Directory Domain Services](../active-directory-domain-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.AAD/unregister/action | ドメイン サービスを登録解除します |
 > | アクション | Microsoft.AAD/register/action | ドメイン サービスを登録する |
@@ -53,7 +53,7 @@ Azure サービス:[Azure Active Directory Domain Services](../active-directory-
 Azure Active Directory
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | アクション | microsoft.aadiam/diagnosticsettings/write | 診断設定を書き込みます。 |
@@ -88,7 +88,7 @@ Azure Active Directory
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Addons/register/action | 指定したサブスクリプションを Microsoft.Addons に登録します。 |
 > |  | **operations** |  |
@@ -105,7 +105,7 @@ Azure サービス: コア
 Azure サービス:[Azure Active Directory](../active-directory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ADHybridHealthService/configuration/action | テナント構成を更新します。 |
 > | アクション | Microsoft.ADHybridHealthService/services/action | テナントのサービス インスタンスを更新します。 |
@@ -239,7 +239,7 @@ Azure サービス:[Azure Active Directory](../active-directory/index.yml)
 Azure サービス:[Azure Advisor](../advisor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Advisor/generateRecommendations/action | 推奨事項の生成の状態を取得します。 |
 > | アクション | Microsoft.Advisor/register/action | Microsoft Advisor にサブスクリプションを登録します。 |
@@ -270,7 +270,7 @@ Azure サービス:[Azure Advisor](../advisor/index.yml)
 Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.AlertsManagement/register/action | Microsoft Alerts Management にサブスクリプションを登録します。 |
 > |  | **actionRules** |  |
@@ -309,7 +309,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 Azure サービス:[Azure Analysis Services](../analysis-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.AnalysisServices/register/action | Analysis Services リソース プロバイダーを登録します。 |
 > |  | **locations** |  |
@@ -337,7 +337,7 @@ Azure サービス:[Azure Analysis Services](../analysis-services/index.yml)
 Azure サービス:[API Management](../api-management/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ApiManagement/register/action | Microsoft.ApiManagement リソース プロバイダーにサブスクリプションを登録します。 |
 > | アクション | Microsoft.ApiManagement/unregister/action | Microsoft.ApiManagement リソース プロバイダーへのサブスクリプションの登録を解除します。 |
@@ -635,7 +635,7 @@ Azure サービス:[API Management](../api-management/index.yml)
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.AppConfiguration/register/action | Microsoft App Configuration を使用するためにサブスクリプションを登録します。 |
 > |  | **checkNameAvailability** |  |
@@ -682,7 +682,7 @@ Azure サービス: コア
 Azure サービス:[Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Authorization/elevateAccess/action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
 > |  | **classicAdministrators** |  |
@@ -736,7 +736,7 @@ Azure サービス:[Azure Resource Manager](../azure-resource-manager/index.yml)
 Azure サービス:[Automation](../automation/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Automation/register/action | Azure Automation にサブスクリプションを登録します。 |
 > |  | **automationAccounts** |  |
@@ -917,7 +917,7 @@ Azure サービス:[Automation](../automation/index.yml)
 Azure サービス:[Azure Active Directory B2C](../active-directory-b2c/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.AzureActiveDirectory/register/action | Microsoft.AzureActiveDirectory リソース プロバイダーにサブスクリプションを登録します。 |
 > |  | **b2cDirectories** |  |
@@ -934,7 +934,7 @@ Azure サービス:[Azure Active Directory B2C](../active-directory-b2c/index.ym
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.AzureStack/register/action | Microsoft.AzureStack リソース プロバイダーにサブスクリプションを登録します。 |
 > |  | **cloudManifestFiles** |  |
@@ -962,7 +962,7 @@ Azure サービス: コア
 Azure サービス:[Batch](../batch/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Batch/register/action | Batch リソース プロバイダーにサブスクリプションを登録し、Batch アカウントを作成できるようにします。 |
 > | アクション | Microsoft.Batch/unregister/action | Batch リソース プロバイダーのサブスクリプションを登録解除し、Batch アカウントを作成できないようにします。 |
@@ -1028,7 +1028,7 @@ Azure サービス:[Batch](../batch/index.yml)
 Azure サービス:[コストの管理と請求](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Billing/validateAddress/action |  |
 > | アクション | Microsoft.Billing/register/action |  |
@@ -1097,7 +1097,7 @@ Azure サービス:[コストの管理と請求](../cost-management-billing/inde
 Azure サービス:[Bing Maps](https://docs.microsoft.com/BingMaps/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.BingMaps/updateCommunicationPreference/action | Microsoft.BingMaps の所有者の通信設定が更新されます |
 > | アクション | Microsoft.BingMaps/listCommunicationPreference/action | Microsoft.BingMaps の所有者の通信設定が取得されます |
@@ -1116,7 +1116,7 @@ Azure サービス:[Bing Maps](https://docs.microsoft.com/BingMaps/)
 Azure サービス:[Azure Blockchain Service](../blockchain/workbench/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Blockchain/register/action | ブロックチェーン リソース プロバイダーのサブスクリプションを登録します。 |
 > |  | **blockchainMembers** |  |
@@ -1147,7 +1147,7 @@ Azure サービス:[Azure Blockchain Service](../blockchain/workbench/index.yml)
 Azure サービス:[Azure Blueprint](../governance/blueprints/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Blueprint/register/action | Azure ブループリント リソース プロバイダーを登録します |
 > |  | **blueprintAssignments** |  |
@@ -1177,7 +1177,7 @@ Azure サービス:[Azure Blueprint](../governance/blueprints/index.yml)
 Azure サービス:[Azure Bot Service](https://docs.microsoft.com/azure/bot-service/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.BotService/checknameavailability/action | ボットの名前を使用できるかどうかが確認されます |
 > | アクション | Microsoft.BotService/listauthserviceproviders/action | 認証サービス プロバイダーが一覧表示されます |
@@ -1206,7 +1206,7 @@ Azure サービス:[Azure Bot Service](https://docs.microsoft.com/azure/bot-serv
 Azure サービス:[Azure Cache for Redis](../azure-cache-for-redis/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Cache/checknameavailability/action | 新しい Redis Cache で名前を使用できるかどうかを確認します。 |
 > | アクション | Microsoft.Cache/register/action | "Microsoft.Cache" リソース プロバイダーをサブスクリプションに登録します。 |
@@ -1246,7 +1246,7 @@ Azure サービス:[Azure Cache for Redis](../azure-cache-for-redis/index.yml)
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Capacity/calculateprice/action | 予約価格を計算します。 |
 > | アクション | Microsoft.Capacity/checkoffers/action | サブスクリプション オファーを確認します。 |
@@ -1295,7 +1295,7 @@ Azure サービス: コア
 Azure サービス:[Content Delivery Network](../cdn/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Cdn/register/action | CDN リソース プロバイダーにサブスクリプションを登録し、CDN プロファイルを作成できるようにします。 |
 > | アクション | Microsoft.Cdn/CheckNameAvailability/action |  |
@@ -1379,7 +1379,7 @@ Azure サービス:[Content Delivery Network](../cdn/index.yml)
 Azure サービス:[App Service 証明書](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.CertificateRegistration/provisionGlobalAppServicePrincipalInUserTenant/Action | サービス アプリ プリンシパルのサービス プリンシパルをプロビジョニングします。 |
 > | アクション | Microsoft.CertificateRegistration/validateCertificateRegistrationInformation/Action | 証明書購入オブジェクトを送信せずに検証します。 |
@@ -1408,7 +1408,7 @@ Azure サービス:[App Service 証明書](../app-service/configure-ssl-certific
 Azure サービス:クラシック デプロイ モデルの仮想マシン
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ClassicCompute/register/action | 従来のコンピューティングに登録します。 |
 > | アクション | Microsoft.ClassicCompute/checkDomainNameAvailability/action | 指定されたドメイン名を使用できるかどうかを確認します。 |
@@ -1582,7 +1582,7 @@ Azure サービス:クラシック デプロイ モデルの仮想マシン
 Azure サービス:クラシック デプロイ モデルの仮想ネットワーク
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ClassicNetwork/register/action | 従来のネットワークに登録します。 |
 > |  | **expressroutecrossconnections** |  |
@@ -1689,7 +1689,7 @@ Azure サービス:クラシック デプロイ モデルの仮想ネットワ�
 Azure サービス:クラシック デプロイ モデルのストレージ
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ClassicStorage/register/action | 従来のストレージに登録します。 |
 > | アクション | Microsoft.ClassicStorage/checkStorageAccountAvailability/action | ストレージ アカウントを使用できるかどうかを確認します。 |
@@ -1788,7 +1788,7 @@ Azure サービス:クラシック デプロイ モデルのストレージ
 Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.CognitiveServices/register/action | サブスクリプション登録アクション |
 > | アクション | Microsoft.CognitiveServices/register/action | Cognitive Services にサブスクリプションを登録します。 |
@@ -2152,7 +2152,7 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Commerce/register/action | Microsoft.Commerce UsageAggregate のサブスクリプションを登録します。 |
 > | アクション | Microsoft.Commerce/unregister/action | Microsoft.Commerce UsageAggregate のサブスクリプションを登録解除します。 |
@@ -2166,7 +2166,7 @@ Azure サービス: コア
 Azure サービス:[仮想マシン](../virtual-machines/index.yml)、 [仮想マシン スケール セット](../virtual-machine-scale-sets/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Compute/register/action | Microsoft.Compute リソース プロバイダーにサブスクリプションを登録します。 |
 > | アクション | Microsoft.Compute/unregister/action | Microsoft.Compute リソース プロバイダーとのサブスクリプションの登録を解除します |
@@ -2406,7 +2406,7 @@ Azure サービス:[仮想マシン](../virtual-machines/index.yml)、 [仮想�
 Azure サービス:[Cost Management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Consumption/register/action | 従量課金プラン RP に登録します |
 > |  | **aggregatedcost** |  |
@@ -2464,7 +2464,7 @@ Azure サービス:[Cost Management](../cost-management-billing/index.yml)
 Azure サービス:[Container Instances](../container-instances/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ContainerInstance/register/action | コンテナー インスタンス リソース プロバイダーのサブスクリプションを登録し、コンテナー グループの作成を有効にします。 |
 > |  | **containerGroups** |  |
@@ -2507,7 +2507,7 @@ Azure サービス:[Container Instances](../container-instances/index.yml)
 Azure サービス:[Container Registry](../container-registry/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ContainerRegistry/register/action | コンテナー レジストリ リソース プロバイダーにサブスクリプションを登録し、コンテナー レジストリを作成できるようにします。 |
 > |  | **checkNameAvailability** |  |
@@ -2625,7 +2625,7 @@ Azure サービス:[Container Registry](../container-registry/index.yml)
 Azure サービス:[Azure Kubernetes Service (AKS)](../aks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ContainerService/register/action | Microsoft.ContainerService リソース プロバイダーにサブスクリプションを登録します。 |
 > | アクション | Microsoft.ContainerService/unregister/action | Microsoft.ContainerService リソース プロバイダーからサブスクリプションを登録解除します。 |
@@ -2683,7 +2683,7 @@ Azure サービス:[Azure Kubernetes Service (AKS)](../aks/index.yml)
 Azure サービス:[Cost Management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.CostManagement/query/action | スコープ別に使用状況データをクエリをします。 |
 > | アクション | Microsoft.CostManagement/reports/action | スコープ別の使用状況データのレポートをスケジュールします。 |
@@ -2747,7 +2747,7 @@ Azure サービス:[Cost Management](../cost-management-billing/index.yml)
 Azure サービス:[Azure Data Box](../databox-family/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DataBox/register/action | プロバイダー Microsoft.Databox を登録します |
 > | アクション | Microsoft.DataBox/unregister/action | プロバイダー Microsoft.Databox を登録解除します |
@@ -2778,7 +2778,7 @@ Azure サービス:[Azure Data Box](../databox-family/index.md)
 Azure サービス:[Azure Stack Edge](../databox-online/azure-stack-edge-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **dataBoxEdgeDevices** |  |
 > | アクション | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | デバイス登録の証明書をアップロードします |
@@ -2884,7 +2884,7 @@ Azure サービス:[Azure Stack Edge](../databox-online/azure-stack-edge-overvie
 Azure サービス:[Azure Databricks](../azure-databricks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Databricks/register/action | Databricks に登録します。 |
 > |  | **locations** |  |
@@ -2920,7 +2920,7 @@ Azure サービス:[Azure Databricks](../azure-databricks/index.yml)
 Azure サービス:[Data Catalog](../data-catalog/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DataCatalog/register/action | Data Catalog リソース プロバイダーのサブスクリプションを登録します |
 > | アクション | Microsoft.DataCatalog/unregister/action | Data Catalog リソース プロバイダーへのサブスクリプションの登録を解除します |
@@ -2942,7 +2942,7 @@ Azure サービス:[Data Catalog](../data-catalog/index.yml)
 Azure サービス:[Data Factory](../data-factory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DataFactory/register/action | データ ファクトリ リソース プロバイダーのサブスクリプションを登録します。 |
 > | アクション | Microsoft.DataFactory/unregister/action | データ ファクトリ リソース プロバイダーへのサブスクリプションの登録を解除します。 |
@@ -3114,7 +3114,7 @@ Azure サービス:[Data Factory](../data-factory/index.yml)
 Azure サービス:[Data Lake Analytics](../data-lake-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DataLakeAnalytics/register/action | DataLakeAnalytics にサブスクリプションを登録します。 |
 > |  | **accounts** |  |
@@ -3164,7 +3164,7 @@ Azure サービス:[Data Lake Analytics](../data-lake-analytics/index.yml)
 Azure サービス:[Azure Data Lake Store](../storage/blobs/data-lake-storage-introduction.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DataLakeStore/register/action | DataLakeStore にサブスクリプションを登録します。 |
 > |  | **accounts** |  |
@@ -3211,7 +3211,7 @@ Azure サービス:[Azure Data Lake Store](../storage/blobs/data-lake-storage-in
 Azure サービス:[Azure Database Migration Service](../dms/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DataMigration/register/action | サブスクリプションを Azure Database Migration Service プロバイダーに登録します。 |
 > |  | **locations/operationResults** |  |
@@ -3257,7 +3257,7 @@ Azure サービス:[Azure Database Migration Service](../dms/index.yml)
 Azure サービス:[Azure Database for MariaDB](../mariadb/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DBforMariaDB/register/action | MariaDB リソース プロバイダーを登録します |
 > | アクション | Microsoft.DBforMariaDB/checkNameAvailability/action | 指定されたサブスクリプションの世界的なプロビジョニングに対して特定のサーバー名が使用可能かどうかを確認します。 |
@@ -3366,7 +3366,7 @@ Azure サービス:[Azure Database for MariaDB](../mariadb/index.yml)
 Azure サービス:[Azure Database for MySQL](../mysql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DBforMySQL/register/action | MySQL リソース プロバイダーを登録します |
 > | アクション | Microsoft.DBforMySQL/checkNameAvailability/action | 指定されたサブスクリプションの世界的なプロビジョニングに対して特定のサーバー名が使用可能かどうかを確認します。 |
@@ -3475,7 +3475,7 @@ Azure サービス:[Azure Database for MySQL](../mysql/index.yml)
 Azure サービス:[Azure Database for PostgreSQL](../postgresql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DBforPostgreSQL/register/action | PostgreSQL リソース プロバイダーを登録します |
 > | アクション | Microsoft.DBforPostgreSQL/checkNameAvailability/action | 指定されたサブスクリプションの世界的なプロビジョニングに対して特定のサーバー名が使用可能かどうかを確認します。 |
@@ -3610,7 +3610,7 @@ Azure サービス:[Azure Database for PostgreSQL](../postgresql/index.yml)
 Azure サービス:[IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Service](../iot-dps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Devices/register/action | IotHub リソース プロバイダーにサブスクリプションを登録し、IotHub リソースを作成できるようにします。 |
 > | アクション | Microsoft.Devices/checkNameAvailability/Action | IotHub 名を使用できるかどうかを確認します。 |
@@ -3802,7 +3802,7 @@ Azure サービス:[IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning
 Azure サービス:[Azure Dev Spaces](../dev-spaces/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DevSpaces/register/action | サブスクリプションに Microsoft Dev Spaces リソース プロバイダーを登録します |
 > |  | **controllers** |  |
@@ -3822,7 +3822,7 @@ Azure サービス:[Azure Dev Spaces](../dev-spaces/index.yml)
 Azure サービス:[Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DevTestLab/register/action | サブスクリプションを登録します。 |
 > |  | **labCenters** |  |
@@ -3971,7 +3971,7 @@ Azure サービス:[Azure Lab Services](../lab-services/index.yml)
 Azure サービス:[Azure Cosmos DB](../cosmos-db/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DocumentDB/register/action |  Microsoft DocumentDB リソース プロバイダーにサブスクリプションを登録します。 |
 > |  | **databaseAccountNames** |  |
@@ -4272,7 +4272,7 @@ Azure サービス:[Azure Cosmos DB](../cosmos-db/index.yml)
 Azure サービス:[App Service](../app-service/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.DomainRegistration/generateSsoRequest/Action | ドメイン コントロール センターへのサインイン要求を生成します。 |
 > | アクション | Microsoft.DomainRegistration/validateDomainRegistrationInformation/Action | ドメイン購入オブジェクトを送信せずに検証します。 |
@@ -4304,7 +4304,7 @@ Azure サービス:[App Service](../app-service/index.yml)
 Azure サービス:[Event Grid](../event-grid/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.EventGrid/register/action | EventGrid リソース プロバイダーのサブスクリプションを登録します。 |
 > | アクション | Microsoft.EventGrid/unregister/action | EventGrid リソース プロバイダーのサブスクリプションを登録解除します。 |
@@ -4433,7 +4433,7 @@ Azure サービス:[Event Grid](../event-grid/index.yml)
 Azure サービス:[Event Hubs](../event-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.EventHub/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailability を使用してください。 |
 > | アクション | Microsoft.EventHub/checkNameAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 |
@@ -4538,7 +4538,7 @@ Azure サービス:[Event Hubs](../event-hubs/index.yml)
 Azure サービス:[Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Features/register/action | サブスクリプションの機能を登録します。 |
 > |  | **features** |  |
@@ -4555,7 +4555,7 @@ Azure サービス:[Azure Resource Manager](../azure-resource-manager/index.yml)
 Azure サービス:[Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.GuestConfiguration/register/action | Microsoft.GuestConfiguration リソース プロバイダーのサブスクリプションを登録します。 |
 > |  | **guestConfigurationAssignments** |  |
@@ -4572,7 +4572,7 @@ Azure サービス:[Azure Policy](../governance/policy/index.yml)
 Azure サービス:[HDInsight](../hdinsight/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.HDInsight/register/action | HDInsight リソース プロバイダーをサブスクリプションに登録します |
 > | アクション | Microsoft.HDInsight/unregister/action | サブスクリプションの HDInsight リソース プロバイダーを登録解除します |
@@ -4611,7 +4611,7 @@ Azure サービス:[HDInsight](../hdinsight/index.yml)
 Azure サービス:[Azure Arc](../azure-arc/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.HybridCompute/register/action | Microsoft.HybridCompute リソース プロバイダーに対するサブスクリプションが登録されます |
 > | アクション | Microsoft.HybridCompute/unregister/action | Microsoft.HybridCompute リソース プロバイダーに対するサブスクリプションが登録解除されます |
@@ -4634,7 +4634,7 @@ Azure サービス:[Azure Arc](../azure-arc/index.yml)
 Azure サービス:[Azure Import/Export](../storage/common/storage-import-export-service.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ImportExport/register/action | Import/Export リソース プロバイダーにサブスクリプションを登録し、インポート/エクスポート ジョブを作成できるようにします。 |
 > |  | **jobs** |  |
@@ -4652,7 +4652,7 @@ Azure サービス:[Azure Import/Export](../storage/common/storage-import-export
 Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Insights/Metrics/Action | メトリックのアクション |
 > | アクション | Microsoft.Insights/Register/Action | Microsoft Insights プロバイダーを登録します。 |
@@ -5189,7 +5189,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 Microsoft Monitoring Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | アクション | Microsoft.Intune/diagnosticsettings/write | 診断設定を書き込みます。 |
@@ -5203,7 +5203,7 @@ Microsoft Monitoring Insights
 Azure サービス:[IoT Central](../iot-central/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.IoTCentral/checkNameAvailability/action | IoT Central アプリケーションの名前が使用可能かどうかを確認します |
 > | アクション | Microsoft.IoTCentral/checkSubdomainAvailability/action | IoT Central アプリケーションのサブドメインが使用可能かどうかを確認します |
@@ -5221,7 +5221,7 @@ Azure サービス:[IoT Central](../iot-central/index.yml)
 Azure サービス:[Azure Digital Twins](../digital-twins/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.IoTSpaces/register/action | Microsoft.IoTSpaces Graph リソース プロバイダーのサブスクリプションを登録して、リソースの作成を有効にします |
 > |  | **Graph** |  |
@@ -5234,7 +5234,7 @@ Azure サービス:[Azure Digital Twins](../digital-twins/index.yml)
 Azure サービス:[Key Vault](../key-vault/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.KeyVault/register/action | サブスクリプションを登録します。 |
 > | アクション | Microsoft.KeyVault/unregister/action | サブスクリプションの登録を解除します。 |
@@ -5318,7 +5318,7 @@ Azure サービス:[Key Vault](../key-vault/index.yml)
 Azure サービス:[Azure Data Explorer](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Kusto/register/action | サブスクリプション登録アクション |
 > | アクション | Microsoft.Kusto/Register/action | Kusto リソース プロバイダーのサブスクリプションを登録します。 |
@@ -5389,7 +5389,7 @@ Azure サービス:[Azure Data Explorer](/azure/data-explorer/)
 Azure サービス:[Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.LabServices/register/action | サブスクリプションを登録します。 |
 > |  | **labAccounts** |  |
@@ -5457,7 +5457,7 @@ Azure サービス:[Azure Lab Services](../lab-services/index.yml)
 Azure サービス:[Logic Apps](../logic-apps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Logic/register/action | 指定されたサブスクリプションを Microsoft.Logic リソース プロバイダーに登録します。 |
 > |  | **integrationAccounts** |  |
@@ -5609,7 +5609,7 @@ Azure サービス:[Logic Apps](../logic-apps/index.yml)
 Azure サービス:[Machine Learning Studio](../machine-learning/studio/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.MachineLearning/register/action | Machine Learning Web サービス リソース プロバイダーにサブスクリプションを登録し、Web サービスを作成できるようにします。 |
 > | アクション | Microsoft.MachineLearning/webServices/action | サポートされているリージョンのリージョン固有の Web サービス プロパティを作成します。 |
@@ -5647,7 +5647,7 @@ Azure サービス:[Machine Learning Studio](../machine-learning/studio/index.ym
 Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.MachineLearningServices/register/action | Machine Learning Services リソース プロバイダーのサブスクリプションを登録します。 |
 > |  | **locations** |  |
@@ -5799,7 +5799,7 @@ Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 Azure サービス:[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ManagedIdentity/register/action | マネージド ID リソース プロバイダーのサブスクリプションを登録します。 |
 > |  | **identities** |  |
@@ -5817,7 +5817,7 @@ Azure サービス:[Azure リソースのマネージド ID](../active-directory
 Azure サービス:[Azure Lighthouse](../lighthouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ManagedServices/register/action | マネージド サービスに登録します。 |
 > | アクション | Microsoft.ManagedServices/unregister/action | マネージドサービスから登録解除します。 |
@@ -5841,7 +5841,7 @@ Azure サービス:[Azure Lighthouse](../lighthouse/index.yml)
 Azure サービス:[管理グループ](../governance/management-groups/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Management/checkNameAvailability/action | 指定された管理グループ名が有効で一意かどうかを確認します。 |
 > | アクション | Microsoft.Management/getEntities/action | 認証済みユーザーのすべてのエンティティ (管理グループ、サブスクリプションなど) を一覧表示します。 |
@@ -5865,7 +5865,7 @@ Azure サービス:[管理グループ](../governance/management-groups/index.ym
 Azure サービス:[Azure Maps](../azure-maps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Maps/register/action | プロバイダーに登録します。 |
 > |  | **accounts** |  |
@@ -5892,7 +5892,7 @@ Azure サービス:[Azure Maps](../azure-maps/index.yml)
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Marketplace/register/action | Microsoft.Marketplace リソース プロバイダーをサブスクリプションに登録します。 |
 > | アクション | Microsoft.Marketplace/privateStores/action | PrivateStore を更新します。 |
@@ -5917,7 +5917,7 @@ Azure サービス: コア
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **ClassicDevServices** |  |
 > | アクション | Microsoft.MarketplaceApps/ClassicDevServices/read | クラシック開発サービスに対して GET 操作を行います。 |
@@ -5933,7 +5933,7 @@ Azure サービス: コア
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **agreements** |  |
 > | アクション | Microsoft.MarketplaceOrdering/agreements/read | 指定されたサブスクリプションのすべての契約を返します。 |
@@ -5952,7 +5952,7 @@ Azure サービス: コア
 Azure サービス:[Media Services](../media-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Media/register/action | Media Services リソース プロバイダーにサブスクリプションを登録し、Media Services アカウントを作成できるようにします。 |
 > | アクション | Microsoft.Media/unregister/action | Media Services リソース プロバイダーへのサブスクリプションの登録を解除します。 |
@@ -6085,7 +6085,7 @@ Azure サービス:[Media Services](../media-services/index.yml)
 Azure サービス:[Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Migrate/register/action | Microsoft.Migrate リソース プロバイダーにサブスクリプションを登録します |
 > |  | **assessmentprojects** |  |
@@ -6178,7 +6178,7 @@ Azure サービス:[Azure Migrate](../migrate/migrate-services-overview.md)
 Azure サービス:[Azure Spatial Anchors](../spatial-anchors/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.MixedReality/register/action | Mixed Reality リソース プロバイダーのサブスクリプションを登録します。 |
 > |  | **remoteRenderingAccounts/providers/Microsoft.Insights/metricDefinitions** |  |
@@ -6223,7 +6223,7 @@ Azure サービス:[Azure Spatial Anchors](../spatial-anchors/index.yml)
 Azure サービス:[Azure NetApp Files](../azure-netapp-files/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.NetApp/register/action | サブスクリプション登録アクション |
 > | アクション | Microsoft.NetApp/unregister/action | Microsoft.NetApp リソース プロバイダーのサブスクリプションを登録解除します |
@@ -6287,7 +6287,7 @@ Azure サービス:[Azure NetApp Files](../azure-netapp-files/index.yml)
 Azure サービス:[仮想ネットワーク](../virtual-network/index.yml)、[ロード バランサー](../load-balancer/index.yml)、[App Gateway](../application-gateway/index.yml)、[Azure DNS](../dns/index.yml)、[ExpressRoute](../expressroute/index.yml)、[VPN Gateway](../vpn-gateway/index.yml)、[Traffic Manager](../traffic-manager/index.yml)、[Network Watcher](../network-watcher/index.yml)、[Azure Firewall](../firewall/index.yml) [Azure Front Door Service](../frontdoor/index.yml)、[Azure Bastion](../bastion/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Network/register/action | サブスクリプションを登録します。 |
 > | アクション | Microsoft.Network/unregister/action | サブスクリプションの登録を解除します。 |
@@ -6987,7 +6987,7 @@ Azure サービス:[仮想ネットワーク](../virtual-network/index.yml)、[�
 Azure サービス:[Notification Hubs](../notification-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.NotificationHubs/register/action | NotificationHubs リソース プロバイダーにサブスクリプションを登録し、名前空間と NotificationHubs を作成できるようにします。 |
 > | アクション | Microsoft.NotificationHubs/unregister/action | NotificationHubs リソース プロバイダーのサブスクリプションを登録解除し、名前空間と NotificationHubs を作成できるようにします。 |
@@ -7029,7 +7029,7 @@ Azure サービス:[Notification Hubs](../notification-hubs/index.yml)
 Azure サービス:[Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.OffAzure/register/action | Microsoft.OffAzure リソース プロバイダーにサブスクリプションを登録します |
 > | アクション | Microsoft.OffAzure/register/action | Microsoft.OffAzure リソース プロバイダーにサブスクリプションを登録します |
@@ -7301,7 +7301,7 @@ Azure サービス:[Azure Migrate](../migrate/migrate-services-overview.md)
 Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.OperationalInsights/register/action | リソース プロバイダーにサブスクリプションを登録します。 |
 > | アクション | microsoft.operationalinsights/register/action | サブスクリプションを登録します。 |
@@ -7969,7 +7969,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.OperationsManagement/register/action | リソース プロバイダーにサブスクリプションを登録します。 |
 > |  | **managementAssociations** |  |
@@ -7990,7 +7990,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 Azure サービス:[Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.PolicyInsights/register/action | Microsoft Policy Insights リソース プロバイダーを登録して、それに対するアクションを有効にします。 |
 > | アクション | Microsoft.PolicyInsights/unregister/action | Microsoft Policy Insights リソース プロバイダーの登録を解除します。 |
@@ -8030,7 +8030,7 @@ Azure サービス:[Azure Policy](../governance/policy/index.yml)
 Azure サービス:[Azure Portal](../azure-portal/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Portal/register/action | ポータルに登録します |
 > |  | **consoles** |  |
@@ -8051,7 +8051,7 @@ Azure サービス:[Azure Portal](../azure-portal/index.yml)
 Azure サービス:[Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.PowerBIDedicated/register/action | Power BI 専用リソース プロバイダーを登録します。 |
 > |  | **capacities** |  |
@@ -8078,7 +8078,7 @@ Azure サービス:[Power BI Embedded](https://docs.microsoft.com/azure/power-bi
 Azure サービス:[Site Recovery](../site-recovery/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.RecoveryServices/register/action | 指定されたリソース プロバイダーにサブスクリプションを登録します。 |
 > |  | **場所** |  |
@@ -8381,7 +8381,7 @@ Azure サービス:[Site Recovery](../site-recovery/index.yml)
 Azure サービス:[Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Relay/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailability を使用してください。 |
 > | アクション | Microsoft.Relay/checkNameAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 |
@@ -8460,7 +8460,7 @@ Azure サービス:[Azure Relay](../service-bus-relay/relay-what-is-it.md)
 Azure サービス:[Azure Service Health](../service-health/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ResourceHealth/register/action | Microsoft ResourceHealth にサブスクリプションを登録します。 |
 > | アクション | Microsoft.ResourceHealth/unregister/action | Microsoft ResourceHealth のサブスクリプションを登録解除します |
@@ -8493,7 +8493,7 @@ Azure サービス:[Azure Service Health](../service-health/index.yml)
 Azure サービス:[Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Resources/checkResourceName/action | リソース名の妥当性を確認します。 |
 > | アクション | Microsoft.Resources/calculateTemplateHash/action | 指定されたテンプレートのハッシュを計算します。 |
@@ -8572,7 +8572,7 @@ Azure サービス:[Azure Resource Manager](../azure-resource-manager/index.yml)
 Azure サービス:[Scheduler](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **jobcollections** |  |
 > | アクション | Microsoft.Scheduler/jobcollections/read | ジョブ コレクションを取得します。 |
@@ -8594,7 +8594,7 @@ Azure サービス:[Scheduler](../scheduler/index.yml)
 Azure サービス:[Azure Search](../search/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Search/register/action | 検索リソース プロバイダーにサブスクリプションを登録し、検索サービスを作成できるようにします。 |
 > | アクション | Microsoft.Search/checkNameAvailability/action | サービス名を使用できるかどうかを確認します。 |
@@ -8623,7 +8623,7 @@ Azure サービス:[Azure Search](../search/index.yml)
 Azure サービス:[セキュリティ センター](../security-center/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Security/register/action | Azure Security Center にサブスクリプションを登録します。 |
 > | アクション | Microsoft.Security/unregister/action | Azure Security Center からサブスクリプションを登録解除します |
@@ -8730,7 +8730,7 @@ Azure サービス:[セキュリティ センター](../security-center/index.ym
 Microsoft Monitoring Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | アクション | Microsoft.SecurityGraph/diagnosticsettings/write | 診断設定を書き込みます。 |
@@ -8744,7 +8744,7 @@ Microsoft Monitoring Insights
 Azure サービス:[Azure Sentinel](../sentinel/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.SecurityInsights/register/action | Azure Sentinel にサブスクリプションを登録します |
 > | アクション | Microsoft.SecurityInsights/unregister/action | Azure Sentinel からサブスクリプションを登録解除します |
@@ -8806,7 +8806,7 @@ Azure サービス:[Azure Sentinel](../sentinel/index.yml)
 Azure サービス:[Service Bus](../service-bus/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ServiceBus/checkNamespaceAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 この API は非推奨です。代わりに CheckNameAvailability を使用してください。 |
 > | アクション | Microsoft.ServiceBus/checkNameAvailability/action | 特定のサブスクリプションで名前空間を使用できるかどうかを確認します。 |
@@ -8927,7 +8927,7 @@ Azure サービス:[Service Bus](../service-bus/index.md)
 Azure サービス:[Service Fabric](../service-fabric/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.ServiceFabric/register/action | アクションを登録します。 |
 > |  | **clusters** |  |
@@ -8976,7 +8976,7 @@ Azure サービス:[Service Fabric](../service-fabric/index.yml)
 Azure サービス:[Azure SignalR Service](../azure-signalr/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.SignalRService/register/action | "Microsoft.SignalRService" リソース プロバイダーをサブスクリプションに登録します。 |
 > | アクション | Microsoft.SignalRService/unregister/action | "Microsoft.SignalRService" リソース プロバイダーのサブスクリプションの登録を解除します。 |
@@ -9026,7 +9026,7 @@ Azure サービス:[Azure SignalR Service](../azure-signalr/index.yml)
 Azure サービス:[Azure Managed Applications](../azure-resource-manager/managed-applications/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Solutions/register/action | ソリューションに登録します。 |
 > | アクション | Microsoft.Solutions/unregister/action | ソリューションから登録を解除します。 |
@@ -9055,10 +9055,10 @@ Azure サービス:[Azure Managed Applications](../azure-resource-manager/manage
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure サービス:[Azure SQL Database](../sql-database/index.yml)、[SQL データ ウェアハウス](../sql-data-warehouse/index.yml)
+Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azure SQL Managed Instance](../azure-sql/managed-instance/index.yml) [SQL Data Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Sql/checkNameAvailability/action | 指定されたサブスクリプションの世界的なプロビジョニングに対して特定のサーバー名が使用可能かどうかを確認します。 |
 > | アクション | Microsoft.Sql/register/action | Microsoft SQL Database リソース プロバイダーにサブスクリプションを登録し、Microsoft SQL Database を作成できるようにします。 |
@@ -9333,7 +9333,7 @@ Azure サービス:[Azure SQL Database](../sql-database/index.yml)、[SQL デー
 > | アクション | Microsoft.Sql/operations/read | 使用可能な REST 操作を取得します。 |
 > |  | **servers** |  |
 > | アクション | Microsoft.Sql/servers/tdeCertificates/action | TDE 証明書を作成/更新します |
-> | アクション | Microsoft.Sql/servers/disableAzureADOnlyAuthentication/action | 論理サーバーでの Azure Active Directory のみの認証を無効にします |
+> | アクション | Microsoft.Sql/servers/disableAzureADOnlyAuthentication/action | Azure SQL Database のサーバーでの Azure Active Directory のみの認証を無効にします|
 > | アクション | Microsoft.Sql/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
 > | アクション | Microsoft.Sql/servers/write | 指定されたパラメーターでサーバーを作成するか、指定されたサーバーのプロパティまたはタグを更新します。 |
 > | アクション | Microsoft.Sql/servers/delete | 既存のサーバーを削除します。 |
@@ -9628,7 +9628,7 @@ Azure サービス:[Azure SQL Database](../sql-database/index.yml)、[SQL デー
 > |  | **servers/importExportOperationResults** |  |
 > | アクション | Microsoft.Sql/servers/importExportOperationResults/read | 進行中のインポート/エクスポート操作を取得します。 |
 > |  | **servers/inaccessibleDatabases** |  |
-> | アクション | Microsoft.Sql/servers/inaccessibleDatabases/read | 論理サーバー内のアクセスできないデータベースの一覧を返します。 |
+> | アクション | Microsoft.Sql/servers/inaccessibleDatabases/read | Azure SQL Database のサーバー内のアクセスできないデータベースの一覧を返します。 |
 > |  | **servers/interfaceEndpointProfiles** |  |
 > | アクション | Microsoft.Sql/servers/interfaceEndpointProfiles/write | 指定されたパラメーターでインターフェイス エンドポイント プロファイルを作成するか、または指定されたインターフェイス エンドポイントのプロパティまたはタグを更新します |
 > | アクション | Microsoft.Sql/servers/interfaceEndpointProfiles/read | 指定されたインターフェイス エンドポイント プロファイルのプロパティを返します |
@@ -9699,10 +9699,10 @@ Azure サービス:[Azure SQL Database](../sql-database/index.yml)、[SQL デー
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
-Azure サービス:[Azure Virtual Machines における SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+Azure サービス:[Azure Virtual Machines における SQL Server](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.SqlVirtualMachine/register/action | Microsoft.SqlVirtualMachine リソース プロバイダーにサブスクリプションを登録します |
 > | アクション | Microsoft.SqlVirtualMachine/unregister/action | Microsoft.SqlVirtualMachine リソース プロバイダーにサブスクリプションを登録解除します |
@@ -9736,7 +9736,7 @@ Azure サービス:[Azure Virtual Machines における SQL Server](../virtual-m
 Azure サービス:[Storage](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Storage/register/action | ストレージ リソース プロバイダーにサブスクリプションを登録し、ストレージ アカウントを作成できるようにします。 |
 > |  | **checknameavailability** |  |
@@ -9875,7 +9875,7 @@ Azure サービス:[Storage](../storage/index.yml)
 Azure サービス:[Storage](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | microsoft.storagesync/register/action | ストレージ同期プロバイダーのサブスクリプションを登録します。 |
 > | アクション | microsoft.storagesync/unregister/action | ストレージ同期プロバイダーのサブスクリプションを登録解除します。 |
@@ -9934,7 +9934,7 @@ Azure サービス:[Storage](../storage/index.yml)
 Azure サービス:[StorSimple](../storsimple/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.StorSimple/register/action | プロバイダー Microsoft.StorSimple を登録します。 |
 > |  | **managers** |  |
@@ -10199,7 +10199,7 @@ Azure サービス:[StorSimple](../storsimple/index.yml)
 Azure サービス:[Stream Analytics](../stream-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.StreamAnalytics/Register/action | Stream Analytics リソース プロバイダーにサブスクリプションを登録します。 |
 > |  | **locations/quotas** |  |
@@ -10258,7 +10258,7 @@ Azure サービス:[Stream Analytics](../stream-analytics/index.yml)
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Subscription/CreateSubscription/action | Azure サブスクリプションを作成します。 |
 > | アクション | Microsoft.Subscription/register/action | Microsoft.Subscription リソース プロバイダーにサブスクリプションを登録します。 |
@@ -10273,7 +10273,7 @@ Azure サービス: コア
 Azure サービス: コア
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.Support/register/action | サポート リソース プロバイダーを登録します |
 > | アクション | Microsoft.Support/checkNameAvailability/action | 名前が有効であり、リソースの種類で使用されていないことを確認します |
@@ -10299,7 +10299,7 @@ Azure サービス: コア
 Azure サービス:[Time Series Insights](../time-series-insights/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.TimeSeriesInsights/register/action | Time Series Insights リソース プロバイダーにサブスクリプションを登録し、Time Series Insights 環境を作成できるようにします。 |
 > |  | **environments** |  |
@@ -10326,7 +10326,7 @@ Azure サービス:[Time Series Insights](../time-series-insights/index.yml)
 Azure サービス:[Azure DevOps](https://docs.microsoft.com/azure/devops/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | Microsoft.VisualStudio/Register/Action | Microsoft.VisualStudio プロバイダーに Azure サブスクリプションを登録します。 |
 > |  | **アカウント** |  |
@@ -10352,7 +10352,7 @@ Azure サービス:[Azure DevOps](https://docs.microsoft.com/azure/devops/)
 Azure サービス:[App Service](../app-service/index.yml), [Functions](../azure-functions/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > | アクション | microsoft.web/unregister/action | サブスクリプションへの Microsoft.Web リソース プロバイダーの登録を解除します。 |
 > | アクション | microsoft.web/validate/action | 検証します。 |
@@ -11011,7 +11011,7 @@ Azure サービス:[App Service](../app-service/index.yml), [Functions](../azure
 Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | アクションの種類 | Operation | 説明 |
+> | アクションの種類 | 操作 | 説明 |
 > | --- | --- | --- |
 > |  | **components** |  |
 > | アクション | Microsoft.WorkloadMonitor/components/read | リソースのコンポーネントを取得します |

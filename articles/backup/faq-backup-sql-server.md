@@ -4,12 +4,12 @@ description: Azure Backup を使用した Azure VM 上での SQL Server デー�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226003"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248262"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 

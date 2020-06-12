@@ -4,15 +4,15 @@ description: Windows での Azure Files に関する問題のトラブルシュ�
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383901"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267819"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -348,6 +348,18 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることが確認されます
 
 よりよいトラブルシューティングのガイダンスが提供されるよう、この診断コマンドレットの拡張作業が行われています。
+
+## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない
+
+### <a name="symptom"></a>症状
+
+マウントされたファイル共有でエクスプローラーを使用して Windows ACL を構成しようとすると、次に示すどちらかの現象が発生する可能性があります。
+- [セキュリティ] タブの [アクセス許可の編集] をクリックした後、アクセス許可ウィザードが読み込まれない。 
+- 新しいユーザーまたはグループを選択しようとすると、ドメインの場所に正しい AD DS ドメインが表示されない。 
+
+### <a name="solution"></a>解決策
+
+回避策として、[icacls tool](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) を使用してディレクトリまたはファイル レベルのアクセス許可を構成することをお勧めします。 
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

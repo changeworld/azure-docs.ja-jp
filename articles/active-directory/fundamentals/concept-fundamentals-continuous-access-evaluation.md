@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112577"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148125"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -50,13 +50,13 @@ Microsoft では、継続的アクセス評価の最初の実装について、E
 継続的アクセス評価を行う前に、クライアントは、期限切れになっていない限り、常にキャッシュからアクセス トークンを再生しようとします。 CAE では、リソース プロバイダーが期限切れになっていない場合も、トークンを拒否できる新しいケースが導入されています。 キャッシュされたトークンの有効期限が切れていない場合でも、クライアントにキャッシュをバイパスするように通知するために、**要求チャレンジ**と呼ばれるメカニズムが導入されました。 CAE で要求チャレンジを認識するには、クライアントの更新が必要です。 次のアプリケーションの最新バージョンで、要求チャレンジがサポートされています。
 
 - Windows 用 Outlook 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- Outlook for iOS 
+- Outlook for Android 
+- Outlook for Mac 
 - Windows 用 Teams
-- Teams iOS 
-- Teams Android 
-- Teams Mac 
+- Teams for iOS 
+- Teams for Android 
+- Teams for Mac 
 
 ## <a name="token-lifetime"></a>トークンの有効期間
 

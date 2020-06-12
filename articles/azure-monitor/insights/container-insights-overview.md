@@ -3,12 +3,12 @@ title: コンテナー用 Azure Monitor の概要 | Microsoft Docs
 description: この記事では、AKS Container Insights ソリューションを監視するコンテナーに対する Azure Monitor と、Azure の AKS クラスターと Container Instances の正常性を監視することによって提供される価値について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234471"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118072"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
@@ -48,7 +48,7 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 
 Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点は以下のとおりです。
 
-- Windows ノードとコンテナーではメモリ RSS メトリックを使用できません。
+- Windows にはメモリ RSS メトリックがないため、Windows ノードとコンテナーでは使用できません。 ワーキング セットは使用できます。 詳細については、[Windows でのメモリ管理](https://docs.microsoft.com/windows/win32/memory/working-set)に関するページを参照してください。
 - Windows ノードではディスク ストレージ容量の情報を使用できません。
 - コンテナーログは、Windows ノードで実行されているコンテナーでは使用できません。
 - ライブデータ (プレビュー) 機能のサポートは、Windows コンテナーログを除き、利用できます。

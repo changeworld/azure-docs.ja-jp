@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 225414760507bb023d0a514290420fc7cb59b950
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438783"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118319"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
@@ -29,7 +29,7 @@ ms.locfileid: "75438783"
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="azure-sql-database"></a>Azure SQL データベース 
-この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Database Managed Instance を使うこともできます。
+この記事のチュートリアルでは、Azure SQL Database を使用します。 Azure SQL Managed Instance を使うこともできます。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
 Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](../tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。 Data Factory バージョン 1 を使用して Azure-SSIS 統合ランタイムを作成することはできません。 
@@ -190,7 +190,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
     スライスが**準備完了**状態または**失敗**状態になるまで、このコマンドレットを実行し続けることができます。 
 
-    次のクエリを Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+    次のクエリをサーバーの SSISDB データベースに対して実行することで、パッケージが実行されたことを確認できます。 
 
     ```sql
     select * from catalog.executions

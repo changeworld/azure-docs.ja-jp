@@ -2,17 +2,20 @@
 title: デプロイ クォータの超過
 description: リソース グループ履歴でデプロイが 800 を超えたときのエラーを解決する方法について説明します。
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/26/2020
+ms.openlocfilehash: 0fec8fa91ec79822115d83b15e8c8a839dc7fd69
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80245091"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117799"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>デプロイ数が 800 を超えたときのエラーを解決する
 
 各リソース グループには、そのデプロイ履歴が 800 までという上限があります。 この記事では、許可されている 800 を超え、デプロイに失敗したときに表示されるエラーについて説明します。 このエラーを解決するには、リソース グループ履歴でデプロイ履歴からデプロイを削除します。 履歴からデプロイを削除しても、デプロイされたリソースには影響が出ません。
+
+> [!NOTE]
+> 2020 年 6 月以降、Azure Resource Manager では、上限に近づいたときに履歴からデプロイが自動的に削除されます。 自動削除を選択していない場合には、依然としてこのエラーが表示される可能性があります。 詳細については、「[デプロイ履歴からの自動削除](deployment-history-deletions.md)」を参照してください。
 
 ## <a name="symptom"></a>症状
 
