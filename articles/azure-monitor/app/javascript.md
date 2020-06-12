@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854967"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266990"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -139,7 +139,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableAutoRouteTracking | false | シングル ページ アプリケーション (SPA) でのルート変更を自動的に追跡します。 true の場合、ルートの変更ごとに Application Insights に新しいページビューが送信されます。 ハッシュ ルート変更 (`example.com/foo#bar`) も新しいページ ビューとして記録されます。
 | enableRequestHeaderTracking | false | true の場合、AJAX と Fetch の要求ヘッダーが追跡されます。既定値は false です。
 | enableResponseHeaderTracking | false | true の場合、AJAX と Fetch の要求の応答ヘッダーが追跡されます。既定値は false です。
-| distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。
+| distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。 [こちら](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)の例を参照してください。
 
 ## <a name="single-page-applications"></a>シングル ページ アプリケーション
 
