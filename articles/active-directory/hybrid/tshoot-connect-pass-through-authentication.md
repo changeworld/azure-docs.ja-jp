@@ -44,7 +44,7 @@ ms.locfileid: "60456181"
 
 ユーザーがパススルー認証を使用してサインインできない場合、Azure AD のサインイン画面に、次のようなユーザー向けエラーの 1 つが表示されることがあります。 
 
-|エラー|説明|解像度
+|エラー|説明|解決策
 | --- | --- | ---
 |AADSTS80001|Unable to connect to Active Directory (Active Directory に接続できません)|エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。  
 |AADSTS8002|A timeout occurred connecting to Active Directory (Active Directory への接続中にタイムアウトが発生しました)|Active Directory が使用可能で、エージェントからの要求に応答していることを確認します。
@@ -60,7 +60,7 @@ ms.locfileid: "60456181"
 
 [Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
-|サインイン エラー コード|サインインが失敗した理由|解像度
+|サインイン エラー コード|サインインが失敗した理由|解決策
 | --- | --- | ---
 | 50144 | ユーザーの Active Directory パスワードの有効期限が切れています。 | オンプレミスの Active Directory でユーザーのパスワードをリセットします。
 | 80001 | 利用できる認証エージェントがありません。 | 認証エージェントをインストールして登録します。

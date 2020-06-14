@@ -373,13 +373,13 @@ WamDefaultAuthority: organizations
 
 ##### <a name="federated-join-server-errors"></a>サーバーのフェデレーション参加エラー
 
-| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
+| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解決策 |
 | --- | --- | --- | --- |
 | DirectoryError | Your request is throttled temporarily.\(要求は一時的に調整されました。\) Please try after 300 seconds.\(300 秒後にもう一度お試しください。\) | 予期されるエラーです。 複数の登録要求が立て続けに行われたことが原因と考えられます。 | クールダウン時間が終わったら参加を再試行してください。 |
 
 ##### <a name="sync-join-server-errors"></a>サーバーの同期参加エラー
 
-| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
+| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解決策 |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002:Tenant <UUID> not found.\(テナントが見つかりません\)。 This error may happen if there are no active subscriptions for the tenant.\(このエラーは、テナントにアクティブなサブスクリプションがない場合に発生することがあります。\) Check with your subscription administrator.\(サブスクリプション管理者にご確認ください。\) | SCP オブジェクト内のテナント ID が正しくありません。 | SCP オブジェクトが正しい Azure AD テナント ID で構成されていることと、アクティブなサブスクリプションがテナントに存在することを確認します。 |
 | DirectoryError | The device object by the given ID is not found.\(指定された ID のデバイス オブジェクトが見つかりませんでした。\) | 同期参加で予期されるエラーです。 デバイス オブジェクトが AD から Azure AD に同期されていません。 | Azure AD Connect の同期が完了するのを待ち、同期完了後に次の参加を試みると問題が解決します。 |

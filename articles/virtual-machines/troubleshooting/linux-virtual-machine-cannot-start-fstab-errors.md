@@ -98,7 +98,7 @@ Give root password for maintenance
 
 この問題は、ファイル システム テーブル (fstab) 構文が正しくない場合、または "/etc/fstab" ファイル内のエントリにマップされた必須のデータ ディスクが VM に接続されていない場合に発生することがあります。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 この問題を解決するには、Azure Virtual Machines のシリアル コンソールを使用して、緊急モードで VM を起動します。 次に、ツールを使用して、ファイル システムを修復します。 ご利用の VM 上でシリアル コンソールが有効になっていない場合は、「[VM をオフライン修復する](#repair-the-vm-offline)」セクションに進んでください。
 

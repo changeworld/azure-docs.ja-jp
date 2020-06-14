@@ -73,7 +73,7 @@ Checking all file systems.
 
 Linux には、いくつかのファイル システム チェッカーが用意されています。 Azure でのディストリビューションで最も一般的なものは次のとおりです。[FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific)、[E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)、および [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair)。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 この問題を解決するには、[シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)を使用して、VM を緊急モードで起動し、該当するツールを使用してファイル システムを修復します。 ご利用の VM 上でシリアル コンソールが有効になっていない場合または機能していない場合は、この記事のセクション「[VM をオフライン修復する](#repair-the-vm-offline)」を参照してください。
 

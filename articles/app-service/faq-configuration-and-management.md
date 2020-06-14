@@ -141,7 +141,7 @@ WebJobs のログを確認するには、次の手順を実行します。
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 修正されたハイブリッド接続マネージャーの問題によって、例外が発生しました。 この問題を解決するために [ハイブリッド接続マネージャーを更新](https://go.microsoft.com/fwlink/?LinkID=841308)してください。
 

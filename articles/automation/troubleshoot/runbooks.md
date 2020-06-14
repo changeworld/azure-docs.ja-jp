@@ -60,7 +60,7 @@ Run Login-AzureRMAccount to login.
 * さまざまなバージョンの AzureRM または Az モジュールがあります。
 * 別のサブスクリプションのリソースにアクセスしようとしています。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1 つの AzureRM または Az モジュールを更新した後でこのエラーが発生する場合は、すべてのモジュールを同じバージョンに更新する必要があります。
 
@@ -107,7 +107,7 @@ The subscription named <subscription name> cannot be found.
 * サブスクリプション名が有効ではない。
 * サブスクリプションの詳細を取得しようとしている Azure Active Directory ユーザーが、サブスクリプションの管理者として構成されていない。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 以下の手順に従って、Azure に対して認証済みで、選択しようとしているサブスクリプションにアクセスできるかどうかを確認します。
 
@@ -141,7 +141,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。 代わりに、証明書またはサービス プリンシパルを使用して認証する必要があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する場合は、[Azure サービスを管理するための証明書の作成および追加](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する場合は、[Azure portal を使用するサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)および [Azure Resource Manager でのサービス プリンシパルの認証](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページを参照してください。
 
@@ -167,7 +167,7 @@ At line:16 char:1
 
 このエラーは、Runbook で AzureRM と Az モジュールの両方のコマンドレットを使用することで発生します。 AzureRM モジュールをインポートする前に、Az モジュールをインポートすると発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Az および AzureRM コマンドレットは、同じ Runbook にインポートして使用することはできません。 Azure Automation での Az コマンドレットの詳細については、「[Azure Automation での Az モジュールのサポート](../az-modules.md)」を参照してください。
 
@@ -185,7 +185,7 @@ Exception: A task was canceled.
 
 以前のバージョンの Azure モジュールを使用すると、このエラーが発生する可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 このエラーは、Azure モジュールを最新バージョンに更新することで解決できます。 
 
@@ -204,7 +204,7 @@ Runbook を実行したときに、Runbook が Azure リソースを管理でき
 
 Runbook が、実行中に正しいコンテキストを使用していません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1 つの Runbook で複数の Runbook を呼び出すと、サブスクリプション コンテキストが失われる可能性があります。 サブスクリプション コンテキストが確実に Runbook に渡されるようにするには、クライアント Runbook で `AzureRmContext` パラメーターの `Start-AzureRmAutomationRunbook` コマンドレットにコンテキストを渡すようにします。 `Scope` パラメーターを `Process` に設定した `Disable-AzureRmContextAutosave` コマンドレットを使用して、指定された資格情報が確実に現在の Runbook にのみ使用されるようにします。 詳細については、「[複数のサブスクリプションの操作](../automation-runbook-execution.md#working-with-multiple-subscriptions)」を参照してください。
 
@@ -250,7 +250,7 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 * コマンドレットを含むモジュールが、Automation アカウントにインポートされていない。
 * コマンドレットを含むモジュールはインポートされているが、最新ではない。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 このエラーを解決するには、次のいずれかのタスクを実行します。 
 
@@ -282,7 +282,7 @@ The job was tried three times but it failed
 
 * 例外データが多すぎる。 Runbook により、例外データの出力ストリームへの書き込みが過剰に試行されました。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 * メモリの制限、ネットワーク ソケット。 メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータの処理量を減らす、Runbook からの不要な出力を書き込まない、PowerShell Workflow Runbook に書き込むチェックポイントの数を検討する、などがあります。 `$myVar.clear` などの clear メソッドを使用して変数をクリアし、`[GC]::Collect` を使用してガベージ コレクションをすぐに実行します。 これにより、実行時の Runbook のメモリ専有領域が小さくなります。
 
@@ -312,7 +312,7 @@ No certificate was found in the certificate store with thumbprint
 
 これらのエラーは、資格情報資産名が有効でない場合に発生します。 Automation 資格情報資産の設定に使用したユーザー名とパスワードが有効でない場合にも発生する可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次の手順で原因を突き止めます。
 
@@ -367,7 +367,7 @@ Object reference not set to an instance of an object
 
 ストリームにオブジェクトが含まれている場合、`Start-AzureRmAutomationRunbook` では出力ストリームが正しく処理されません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 ポーリング ロジックを実装し、[Get-AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) コマンドレットを使用して出力を取得することをお勧めします。 このロジックのサンプルは以下のように定義されています。
 
@@ -409,7 +409,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 Runbook が PowerShell ワークフローの場合、ワークフローが中断された場合に Runbook の状態を維持できるように、複雑なオブジェクトが逆シリアル化形式で保存されます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 この問題を解決するには、次のいずれかの解決策を使用します。
 
@@ -431,7 +431,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 ジョブの実行がアカウントの 500 分の無料クォータを超えるとこのエラーが発生します。 このクォータは、すべての種類のジョブ実行タスクに適用されます。 これらのタスクには、ジョブのテスト、ポータルからのジョブの開始、Webhook を使用したジョブの実行、Azure portal またはデータセンターを使用して実行するジョブのスケジュール設定などがあります。 Automation の料金については、「[Automation の料金](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 毎月 500 分を超える処理を使用する場合は、サブスクリプションを Free レベルから Basic レベルに変更します。
 
@@ -454,7 +454,7 @@ Runbook ジョブがエラーで失敗します。
 
 このエラーは、Runbook で使用しているコマンドレットを PowerShell エンジンが見つけられないときに発生します。 コマンドレットを含むモジュールがアカウントにないか、Runbook 名に名前の競合があるか、あるいはコマンドレットが別のモジュールにも存在していて Automation で名前を解決できない可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 問題を解決するには、次のいずれかの解決策を使用します。
 
@@ -479,7 +479,7 @@ The job was evicted and subsequently reached a Stopped state. The job cannot con
 
 Runbook が、Azure サンドボックスのフェア シェアによって許可されている 3 時間の制限を超えて実行されました。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 推奨される解決策の 1 つは、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker には、Azure サンドボックスに存在するフェア シェアによる 3 時間の Runbook 制限は適用されません。 予期しないローカル インフラストラクチャの問題が発生した場合の再起動動作をサポートするには、Hybrid Runbook Worker 上で実行される Runbook を開発する必要があります。
 
@@ -505,7 +505,7 @@ Azure Automation Runbook の Webhook を呼び出そうとすると、次のエ�
 
 呼び出そうとしている Webhook が、無効または期限切れです。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Webhook が無効な場合は、Azure portal から Webhook を再度有効にすることができます。 Webhook の有効期限が切れている場合は、削除してから再作成する必要があります。 Webhook がまだ期限切れでない場合にのみ、[Webhook を更新](../automation-webhooks.md#renew-webhook)できます。
 
@@ -523,7 +523,7 @@ Webhook が無効な場合は、Azure portal から Webhook を再度有効に�
 
 このエラーは、多数の[冗長ストリーム](../automation-runbook-output-and-messages.md#verbose-stream)がある Runbook からジョブ出力を取得するときに発生する可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 このエラーを解決するには、次のいずれかの操作を行います。
 
@@ -545,7 +545,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 このエラーは、Azure サンドボックスで実行されている Runbook を、[完全言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)で実行できないことを示している可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 このエラーを解決するには、2 つの方法があります。
 
@@ -564,7 +564,7 @@ Linux Hybrid Runbook Worker で `sudo` コマンドを実行すると、パス�
 
 Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが、**sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 * マシン上で、Hybrid Runbook Worker に GnuPG (GPG) の実行可能ファイルがあることを確認します。
 
@@ -580,7 +580,7 @@ PnP PowerShell で生成されたオブジェクトが Runbook から Azure Auto
 
 この問題は、戻りオブジェクトをキャッチせずに、`add-pnplistitem` などの PnP PowerShell コマンドレットを呼び出す Runbook を Azure Automation で処理する場合に最もよく発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 スクリプトを編集して戻り値を変数に割り当て、コマンドレットからオブジェクト全体が標準出力に書き出されないようにします。 次に示すように、スクリプトを使って出力ストリームをコマンドレットにリダイレクトできます。
 

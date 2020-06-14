@@ -45,7 +45,7 @@ Error details: Failed to enable the Update solution
 
 * **[コンプライアンス]** に、マシンの状態が `Non-compliant` と表示されている場合もあります。 同時に、**エージェントの Desktop Analytics** でエージェントが `Disconnected` として報告されます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 * OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -67,7 +67,7 @@ Error details: Failed to enable the Update solution
 
 置き換え済みの更新プログラムが、適用されないと見なされるように、拒否済みとして正しく示されていません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 置き換え済みの更新プログラムが 100% 適用されなくなっている場合は、その更新プログラムの承認状態を `Declined` に変更する必要があります。 すべての更新プログラムの承認状態を変更するには:
 
@@ -107,7 +107,7 @@ Error details: Failed to enable the Update solution
 
 * 自分のワークスペースで定義したクォータに達していて、それ以上のデータの格納が妨げられている可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1. OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -152,7 +152,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順に従います。
 
@@ -180,7 +180,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 * スケジュールが実行されたときに、マシンが使用できなかったか、マシンに適切なタグがありませんでした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 #### <a name="subscriptions-not-configured-for-registered-automation-resource-provider"></a>登録済みの Automation リソース プロバイダー用に構成されていないサブスクリプション
 
@@ -230,7 +230,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 * ARG クエリで、予期されるマシンが取得されません。
 * Hybrid Runbook Worker がマシンにインストールされていません。
 
-### <a name="resolution"></a>解像度 
+### <a name="resolution"></a>解決策 
 
 #### <a name="incorrect-access-on-selected-scopes"></a>選択したスコープに対する正しくないアクセス権
 
@@ -301,7 +301,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * オンボードしている VM イメージの複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 VM の問題を正確に特定するには、Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。
 
@@ -349,7 +349,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 このエラーは、更新プログラムの展開に含まれる別のテナントの Azure VM を持つ更新プログラムの展開を作成するときに発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) コマンドレットを使用します。 次に、[New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
 
@@ -373,7 +373,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 Windows Update はいくつかのレジストリ キーによって変更でき、そのいずれかによって再起動の動作が変更されることがあります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 「[レジストリを編集して自動更新を構成する](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)」と、[「再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーを確認して、マシンが正しく構成されていることを確認します。
 
@@ -397,7 +397,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * MMA に対する更新があり、ソース コンピューター ID が変更されました。
 * Automation アカウントで 2,000 個の同時ジョブの制限に達した場合は、更新の実行が制限されました。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 該当する場合は、更新プログラムの展開に[動的グループ](../automation-update-management-groups.md)を使用します。 さらに、次の手順を実行できます。
 
@@ -423,7 +423,7 @@ Update Management に Windows マシンを登録すると、展開なしで更�
 
 Windows では、更新プログラムは、使用可能になるとすぐに自動的にインストールされます。 この動作が原因で、更新プログラムをマシンに展開するスケジュールを設定しなかった場合、混乱が生じる可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` の既定値は、4: `auto download and install` に設定されています。
 
@@ -445,7 +445,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 マシンが既に Update Management 用の別のワークスペースにオンボードされています。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1. 「[Update Management のポータルにマシンが表示されない](#nologs)」の手順に従って、マシンのレポート先が正しいワークスペースであることを確認します。
 2. [Hybrid Runbook グループを削除する](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)ことにより、マシン上のアーティファクトをクリーンアップしてから、再試行します。
@@ -476,7 +476,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 プロキシ、ゲートウェイ、またはファイアウォールがネットワーク通信をブロックしている可能性があります。 
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 ネットワークを見直し、適切なポートとアドレスが許可されていることを確認します。 Update Management および Hybrid Runbook Worker で必要なポートとアドレスの一覧については、[ネットワーク要件](../automation-hybrid-runbook-worker.md#network-planning)を参照してください。
 
@@ -494,7 +494,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Hybrid Runbook Worker が自己署名証明書を生成できませんでした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 **C:\ProgramData\Microsoft\Crypto\RSA** フォルダーへの読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
@@ -504,7 +504,7 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
 
@@ -521,7 +521,7 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 更新エージェント (Windows 上の Windows Update エージェント、Linux ディストリビューション用のパッケージ マネージャー) が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、展開されたパッチの結果を提供するために、マシンの更新エージェントを利用しています。 この情報がないと、Update Management は必要なパッチやインストール済みのパッチを適切にレポートすることができません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 マシンで更新プログラムをローカルで実行してみてください。 この操作が失敗する場合は、通常、更新エージェントの構成にエラーがあることを意味します。
 
@@ -571,7 +571,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 * マシンにアクセスできません。
 * 更新プログラムに、解決されていない依存関係がありました。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けたマシンからの[ジョブ出力を確認](../manage-update-multi.md#view-results-of-an-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
 
