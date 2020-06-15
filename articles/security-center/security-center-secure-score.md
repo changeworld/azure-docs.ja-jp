@@ -81,4 +81,4 @@ Security Center では、**総合セキュリティ スコア**も提供され�
 この記事では、Azure Security Center 上で**セキュリティ スコア**を使用して、セキュリティ体制を向上させる方法を示しました。 Security Center の詳細については、次の記事をご覧ください。
 
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+* 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
