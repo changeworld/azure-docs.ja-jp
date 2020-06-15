@@ -46,7 +46,7 @@ ms.locfileid: "77603775"
 
 
 ## <a name="see-also"></a>参照
-この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
+この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure Security Center の詳細については、次を参照してください。
 
 * 「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」: Azure Security Center でセキュリティ設定を構成する方法について説明します。
 * 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」: セキュリティの警告の管理と対応の方法について説明しています。
