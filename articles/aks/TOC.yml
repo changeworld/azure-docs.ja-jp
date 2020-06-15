@@ -256,12 +256,10 @@
           href: limit-egress-traffic.md
         - name: Azure Active Directory の統合の有効化
           items:
-            - name: Azure AD の統合 (プレビュー)
+            - name: AKS マネージド AAD (プレビュー)
               href: managed-aad.md
             - name: Azure CLI の使用
               href: azure-ad-integration-cli.md
-            - name: Azure ポータルの使用
-              href: azure-ad-integration.md
         - name: Azure AD の統合での Kubernetes RBAC の使用
           href: azure-ad-rbac.md
           maintainContext: true

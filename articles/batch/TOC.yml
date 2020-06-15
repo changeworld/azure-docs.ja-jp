@@ -95,6 +95,8 @@
           href: batch-management-dotnet.md
         - name: コスト分析と予算
           href: budget.md
+        - name: Batch アカウントでプライベート エンドポイントを使用する
+          href: private-connectivity.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD

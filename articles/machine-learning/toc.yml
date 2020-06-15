@@ -93,6 +93,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: 概念
   items:
+    - name: Enterprise およびBasic エディション
+      href: concept-editions.md
     - name: コストの計画と管理
       href: concept-plan-manage-cost.md
     - name: デザイナー (ドラッグアンドドロップ ML)
@@ -365,6 +367,8 @@
             - name: Azure Functions
               displayName: functions app
               href: how-to-deploy-functions.md
+            - name: Azure Cognitive Search
+              href: how-to-deploy-model-cognitive-search.md
             - name: Azure IoT Edge デバイス
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
             - name: FPGA 推論

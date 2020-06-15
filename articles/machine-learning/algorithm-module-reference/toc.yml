@@ -166,8 +166,12 @@
       href: evaluate-recommender.md
     - name: Score SVD Recommender
       href: score-svd-recommender.md
+    - name: ワイドかつディープなレコメンダーのスコア付け
+      href: score-wide-and-deep-recommender.md
     - name: SVD レコメンダーのトレーニング
       href: train-svd-recommender.md
+    - name: ワイドかつディープなレコメンダーのトレーニング
+      href: train-wide-and-deep-recommender.md
 - name: 異常検出
   items:
     - name: PCA ベースの異常検出

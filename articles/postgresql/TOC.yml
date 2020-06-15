@@ -15,6 +15,8 @@
           href: quickstart-create-server-database-azure-cli.md
         - name: DB の作成 - Azure CLI アップコマンド
           href: quickstart-create-server-up-azure-cli.md
+        - name: DB の作成 - Azure PowerShell
+          href: quickstart-create-postgresql-server-database-using-azure-powershell.md
         - name: DB の作成 - Resource Manager テンプレート
           href: quickstart-create-postgresql-server-database-using-arm-template.md
           displayName: deploy azure resource manager template
@@ -48,6 +50,8 @@
               href: tutorial-design-database-using-azure-portal.md
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
         - name: 2 - Web アプリの設計 - Python
           href: ../app-service/containers/tutorial-python-postgresql-app.md
           maintainContext: true
@@ -227,6 +231,8 @@
               href: howto-restore-server-portal.md
             - name: Azure CLI
               href: howto-restore-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restore-server-powershell.md
         - name: データベースの移行
           items:
             - name: ダンプと復元
@@ -245,12 +251,16 @@
               href: howto-configure-server-parameters-using-portal.md
             - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
         - name: ストレージの自動拡張
           items:
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
         - name: アクセス ログ
           items:
             - name: Azure portal
@@ -297,6 +307,8 @@
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
         - name: パブリック ネットワーク アクセスの拒否
           items:
             - name: Azure portal
@@ -307,6 +319,8 @@
               href: howto-read-replicas-portal.md
             - name: 読み取りレプリカ Azure CLI の管理、REST API
               href: howto-read-replicas-cli.md
+            - name: 読み取りレプリカの管理 (Azure PowerShell)
+              href: howto-read-replicas-powershell.md
     - name: Hyperscale (Citus)
       items:
         - name: ユーザーの作成

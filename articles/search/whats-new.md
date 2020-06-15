@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682469"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344205"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -29,7 +29,7 @@ ms.locfileid: "83682469"
 
 + [システム マネージド ID (プレビュー)](search-howto-managed-identities-data-sources.md) を使用して、インデックス作成用の Azure データ ソースへの接続を設定します。 Azure SQL Database、Azure Cosmos DB、Azure Storage などの Azure データ ソースからコンテンツを取り込む[インデクサー](search-indexer-overview.md)に適用されます。
 
-+ [scoringStatistics=global query parameter](index-similarity-and-scoring.md#scoring-statistics) を使用して、検索スコアを計算する方法の基準を、シャードあたりからすべてのシャードに変更します。
++ [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) と sessionId クエリ パラメーターを使用して、検索スコアを計算する方法の基準を、シャードあたりからすべてのシャードに変更します。
 
 ### <a name="march-2020"></a>2020 年 3 月
 

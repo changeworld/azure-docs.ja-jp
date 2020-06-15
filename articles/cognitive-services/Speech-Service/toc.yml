@@ -12,6 +12,8 @@
       href: language-support.md
     - name: リージョンのサポート
       href: regions.md
+    - name: ドキュメントの最新情報
+      href: whats-new.md
 - name: 音声テキスト変換
   items:
     - name: 音声テキスト変換のドキュメント
