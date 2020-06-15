@@ -97,6 +97,8 @@
           href: budget.md
         - name: Batch アカウントでプライベート エンドポイントを使用する
           href: private-connectivity.md
+        - name: 顧客管理キーの構成
+          href: batch-customer-managed-key.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD

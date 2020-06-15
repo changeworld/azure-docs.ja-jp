@@ -122,11 +122,9 @@
     - name: サンプル
       href: analysis-services-samples.md
     - name: Analysis Services チーム ブログ
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: Azure Analysis Services に関する Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-analysis-services.html'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Azure の状態
       href: 'https://azure.microsoft.com/status/'
     - name: フィードバック
