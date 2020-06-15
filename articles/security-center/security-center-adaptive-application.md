@@ -174,7 +174,7 @@ Azure Security Center では、推奨されない VM のグループに対して
 > **[コンピューターの移動]** をクリックしたら、必ず **[保存]** をクリックしてください。 **[保存]** をクリックしないと、コンピューターは移動されません。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure と Azure 以外の VM で実行されるアプリケーションをホワイトリストに登録するために、Azure Security Center で適応型アプリケーション制御を使用する方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
+このドキュメントでは、Azure と Azure 以外の VM で実行されるアプリケーションをホワイトリストに登録するために、Azure Security Center で適応型アプリケーション制御を使用する方法について説明しました。 Azure Security Center の詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 Security Center でアラートを管理し、セキュリティ インシデントに対応する方法を説明します。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。
