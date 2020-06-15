@@ -50,23 +50,23 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
 この種の情報は、インシデント対応プロセスにおいて継続的に調査を実施し、攻撃元、攻撃者の動機、この問題の影響を今後軽減するための方策を把握するために利用できます。
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>脅威インテリジェンス レポートにアクセスする方法
-現在の警告は、 **[セキュリティ アラート]** タイルで確認できます。 各警告の詳細を確認するには、Azure portal を開いて以下の手順に従ってください。
+現在の警告は、 **[Security alerts]\(セキュリティ アラート\)** タイルで確認できます。 各警告の詳細を確認するには、Azure portal を開いて以下の手順に従ってください。
 
-1. [セキュリティ センター] ダッシュボードには **[セキュリティの警告]** タイルが表示されます。
-2. タイルをクリックして、 **[セキュリティ アラート]** ブレードを開くと、アラートに関する詳細が表示されます。そこで、さらに詳しい情報を確認したいセキュリティ アラートをクリックします。
+1. [Security Center]\(セキュリティ センター\) ダッシュボードには **[Security alerts]\(セキュリティ アラート\)** タイルが表示されます。
+2. タイルをクリックして、 **[Security alerts]\(セキュリティ アラート\)** ブレードを開くと、アラートに関する詳細が表示されます。そこで、さらに詳しい情報を確認したいセキュリティ アラートをクリックします。
 
     ![セキュリティのアラート](./media/security-center-threat-report/security-center-threat-report-fig1.png)
 3. この場合、 **[Suspicious process executed (不審なプロセスの実行)]** ブレードが表示され、アラートに関して以下の図に示すような詳細が表示されます。
 
     ![Security alert details](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. 各セキュリティ アラートに関して表示される情報の量は、アラートの種類に応じて変わります。 **[レポート]** フィールドには、脅威インテリジェンス レポートへのリンクがあります。 リンクをクリックしてください。PDF ファイルが別のブラウザー ウィンドウで表示されます。
+4. 各セキュリティ アラートに関して表示される情報の量は、アラートの種類に応じて変わります。 **[REPORTS]\(レポート\)** フィールドには、脅威インテリジェンス レポートへのリンクがあります。 リンクをクリックしてください。PDF ファイルが別のブラウザー ウィンドウで表示されます。
 
    ![Storage の選択](./media/security-center-threat-report/security-center-threat-report-fig3.png)
 
 ここでは、このレポートの PDF のダウンロードのほか、検出されたセキュリティ面の問題の詳細を確認したり、入手した情報を基に各種の措置を講じたりできます。
 
 ## <a name="see-also"></a>参照
-このドキュメントでは、セキュリティ アラートに関する調査にあたり Azure Security Center の脅威のインテリジェント レポートがどのような点で有用であるかを学習しました。 Azure セキュリティ センターの詳細については、次を参照してください。
+このドキュメントでは、セキュリティ アラートに関する調査にあたり Azure Security Center の脅威のインテリジェント レポートがどのような点で有用であるかを学習しました。 Azure Security Center の詳細については、次を参照してください。
 
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)。 Azure Security Center を導入するための設計上の考慮事項を計画し、理解する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)。 セキュリティの警告の管理と対応の方法について説明しています。
