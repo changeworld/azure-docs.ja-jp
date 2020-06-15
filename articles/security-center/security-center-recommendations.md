@@ -1,6 +1,6 @@
 ---
 title: Security recommendations in Azure Security Center
-description: このドキュメントでは、Azure セキュリティ センターでの推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
+description: このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "79225263"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
-このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
+このトピックでは、Azure Security Center で推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  このドキュメントはステップ バイ ステップ ガイドではありません。
@@ -71,6 +71,6 @@ Security Center はリソースのセキュリティの状態を分析して、�
  
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 推奨事項を修正する方法については、次を参照してください。
+このドキュメントでは、Security Center のセキュリティに関する推奨事項について説明しました。 推奨事項を修正する方法については、次を参照してください。
 
 * [推奨事項の修正](security-center-remediate-recommendations.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
