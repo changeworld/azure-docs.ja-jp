@@ -3,19 +3,19 @@ title: クイック スタート:カスタム コマンド プレビュー ア�
 titleSuffix: Azure Cognitive Services
 description: この記事では、ホスト型カスタム コマンド プレビュー アプリケーションを作成してテストします。 このアプリケーションでは発話を処理します。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 5b54923bb667053ffc886b335ab9d1b0cf4cb754
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142352"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509357"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-app"></a>クイック スタート:カスタム コマンド プレビュー アプリを作成する
 

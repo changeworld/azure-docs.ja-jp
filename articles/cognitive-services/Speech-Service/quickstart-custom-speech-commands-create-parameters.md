@@ -3,19 +3,19 @@ title: クイック スタート:パラメーターを使用してカスタム �
 titleSuffix: Azure Cognitive Services
 description: この記事では、複数のデバイスのオンとオフを切り替えることができるようにカスタム コマンド アプリケーションにパラメーターを追加します。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 5461ef9680ab89c8cc9cc2e1166366abb04a6eab
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 940b3604487fbef7736c0d8f4f9299563b0b86d5
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142284"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509306"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-application-with-parameters"></a>クイック スタート:パラメーターを使用してカスタム コマンド プレビュー アプリケーションを作成する
 
