@@ -101,8 +101,8 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートでリ�
 }
 ```
 
-<a id="listkeys" />
-<a id="list" />
+<a id="listkeys"></a>
+<a id="list"></a>
 
 ## <a name="list"></a>list*
 
