@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: 対象範囲
       items:
+        - name: 対象範囲
+          href: geographic-coverage.md
         - name: ジオコーディングの対象範囲
           href: geocoding-coverage.md
         - name: トラフィックの対象範囲

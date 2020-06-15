@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267901"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323928"
 ---
-# <a name="tutorial-secure-an-azure-sql-database"></a>チュートリアル:Azure SQL Database をセキュリティで保護する
+# <a name="tutorial-secure-a-database-in-azure-sql-database"></a>チュートリアル:Azure SQL Database 内のデータベースをセキュリティで保護する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -25,7 +25,7 @@ ms.locfileid: "84267901"
 > [!div class="checklist"]
 >
 > - サーバーレベルとデータベースレベルのファイアウォール規則を作成する
-> - Azure Active Directory (AD) 管理者を構成する
+> - Azure Active Directory (Azure AD) 管理者を構成する
 > - SQL 認証、Azure AD 認証、セキュリティで保護された接続文字列を使用して、ユーザー アクセスを管理する
 > - Advanced Data Security、監査、データ マスク、暗号化などのセキュリティ機能を有効にする
 
@@ -42,7 +42,7 @@ Azure SQL Database は、次のようにしてデータをセキュリティで�
 詳細については、[Azure SQL Database のセキュリティの概要](/azure/sql-database/sql-database-security-index)と[機能](security-overview.md)に関する記事を参照してください。
 
 > [!TIP]
-> 次の Microsoft Learn モジュールは、[Azure SQL Database をセキュリティで保護する](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)方法を無料で学習するのに役立ちます。
+> 次の Microsoft Learn モジュールは、[Azure SQL Database でデータベースをセキュリティ保護する](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)方法を無料で学習するのに役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -94,7 +94,7 @@ SQL Database とデータベースは、Azure 内のファイアウォールに�
 
 データベースレベルのファイアウォール規則は、個々のデータベースのみに適用されます。 サーバーのフェールオーバーの間、これらの規則はデータベースに保持されます。 データベースレベルのファイアウォール規則は、サーバーレベルのファイアウォール規則を構成した後にのみ、Transact-SQL (T-SQL) ステートメントを使用して構成することができます。
 
-データベースレベルのファイアウォール規則を設定する手順は次のとおりです。
+データベースレベルのファイアウォール規則を設定するには:
 
 1. [SQL Server Management Studio](connect-query-ssms.md) などを使用して、データベースに接続します。
 

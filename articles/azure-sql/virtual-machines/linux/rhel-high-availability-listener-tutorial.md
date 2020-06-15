@@ -1,5 +1,5 @@
 ---
-title: Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する - Linux Virtual Machines | Microsoft Docs
+title: Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する - Linux 仮想マシン | Microsoft Docs
 description: Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを設定する方法について学習します
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,22 +8,22 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025067"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343765"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
 > 提供されているチュートリアルは**パブリック プレビュー**版です。 
 >
-> このチュートリアルでは SQL Server 2017 と RHEL 7.6 を使用しますが、RHEL 7 または RHEL 8 で SQL Server 2019 を使用して HA を構成することもできます。 可用性グループ リソースを構成するためのコマンドは RHEL 8 で変更されています。適切なコマンドの詳細については、記事「[可用性グループのリソースを作成する](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)」および RHEL 8 のリソースを参照してください。
+> このチュートリアルでは SQL Server 2017 と RHEL 7.6 を使用しますが、RHEL 7 または RHEL 8 で SQL Server 2019 を使用して高可用性を構成することもできます。 可用性グループ リソースを構成するためのコマンドは RHEL 8 で変更されています。適切なコマンドの詳細については、記事「[可用性グループのリソースを作成する](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)」および RHEL 8 のリソースを参照してください。
 
-このチュートリアルでは、Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを作成する手順について説明します。 学習内容:
+このチュートリアルでは、Azure の RHEL 仮想マシン (VM) で SQL Server の可用性グループ リスナーを作成する手順について説明します。 学習内容:
 
 > [!div class="checklist"]
 > - Azure portal でロード バランサーを作成する
@@ -37,7 +37,7 @@ ms.locfileid: "84025067"
 
 ## <a name="prerequisite"></a>前提条件
 
-「[**チュートリアル: Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する**](rhel-high-availability-stonith-tutorial.md)」を完了していること
+「[チュートリアル: Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する](rhel-high-availability-stonith-tutorial.md)」を完了していること
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Azure Portal でロード バランサーを作成する
 
@@ -59,7 +59,7 @@ ms.locfileid: "84025067"
    | --- | --- |
    | **名前** |ロード バランサーを表すテキスト名 (例: **sqlLB**)。 |
    | **Type** |**内部** |
-   | **Virtual Network** |作成された既定の VNet の名前は **VM1VNET** である必要があります。 |
+   | **Virtual Network** |作成された既定の仮想ネットワークには、**VM1VNET** という名前が設定されているはずです。 |
    | **サブネット** |SQL Server インスタンスが存在するサブネットを選択します。 既定値は **VM1Subnet** である必要があります。|
    | **IP アドレスの割り当て** |**静的** |
    | **プライベート IP アドレス** |クラスター内に作成された `virtualip` IP アドレスを使用します。 |
@@ -117,7 +117,7 @@ Azure はこのプローブを作成、使用して、どの SQL Server イン�
 
 ### <a name="set-the-load-balancing-rules"></a>負荷分散規則を設定する
 
-SQL Server インスタンスへのトラフィックをロード バランサーでどのようにルーティングするかは、負荷分散規則で設定します。 3 つの SQL Server インスタンスのうち可用性グループ リスナー リソースを所有できるのは一度に 1 つだけであるため、このロード バランサーでは Direct Server Return を有効にします。
+負荷分散規則を使って、ロード バランサーでトラフィックを SQL Server インスタンスにルーティングする方法を構成します。 3 つの SQL Server インスタンスのうち可用性グループ リスナー リソースを所有できるのは一度に 1 つだけであるため、このロード バランサーでは Direct Server Return を有効にします。
 
 1. ロード バランサーの **[設定]** ブレードで **[負荷分散規則]** をクリックします。 
 
@@ -127,7 +127,7 @@ SQL Server インスタンスへのトラフィックをロード バランサ�
 
    | 設定 | 値 |
    | --- | --- |
-   | **名前** |負荷分散規則を表すテキスト名 (例: **SQLAlwaysOnEndPointListener**)。 |
+   | **名前** |負荷分散規則を表すテキスト名。 (例: **SQLAlwaysOnEndPointListener**)。 |
    | **プロトコル** |**TCP** |
    | **[ポート]** |*1433* |
    | **バックエンド ポート** |*1433*この規則には **[フローティング IP (Direct Server Return)]** が使用されるため、この値は無視されます。 |
@@ -220,9 +220,9 @@ SQL Server インスタンスへのトラフィックをロード バランサ�
 
 ## <a name="test-the-listener-and-a-failover"></a>リスナーとフェールオーバーをテストする
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>可用性グループ リスナーを使用して SQL Server へのログインをテストする
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>可用性グループ リスナーを使用して SQL Server へのログインをテストする
 
-1. SQLCMD を使用して、可用性グループ リスナー名を使用して SQL Server のプライマリ ノードにログインします。
+1. SQLCMD を使用し、可用性グループ リスナー名を使用して SQL Server のプライマリ ノードにログインします。
 
     - 以前に作成したログインを使用し、`<YourPassword>` を適切なパスワードに置き換えます。 次の例では、SQL Server で作成された `sa` ログインを使用します。
 
@@ -238,7 +238,7 @@ SQL Server インスタンスへのトラフィックをロード バランサ�
 
     出力には、現在のプライマリ ノードが表示されます。 フェールオーバーを一度もテストしたことがない場合、これは `VM1` になります。
 
-    `exit` コマンドを入力して、SQL セッションを終了します。
+    `exit` コマンドを入力して、SQL Server セッションを終了します。
 
 ### <a name="test-a-failover"></a>フェールオーバーをテストする
 
@@ -274,13 +274,13 @@ SQL Server インスタンスへのトラフィックをロード バランサ�
         virtualip  (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-1. SQLCMD を使用して、リスナー名を使用してプライマリ レプリカにログインします。
+1. SQLCMD を使用し、リスナー名を使用してプライマリ レプリカにログインします。
 
     - 以前に作成したログインを使用し、`<YourPassword>` を適切なパスワードに置き換えます。 次の例では、SQL Server で作成された `sa` ログインを使用します。
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. 接続先のサーバーを確認します。 SQLCMD で次のコマンドを実行します。
 
@@ -295,4 +295,4 @@ SQL Server インスタンスへのトラフィックをロード バランサ�
 Azure のロード バランサーの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure SQL Server VM の可用性グループに使用するロード バランサーの構成](../windows/availability-group-load-balancer-portal-configure.md)
+> [Azure VM の SQL Server VM で可用性グループ用のロード バランサーを構成する](../windows/availability-group-load-balancer-portal-configure.md)

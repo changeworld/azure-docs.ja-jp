@@ -11,15 +11,14 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: 03d598e0c0756cd304248ab19ab28a25836c57ab
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 02e0947de3e7e5c6ce5110740127571ea393b168
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052410"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343865"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure SQL Database に単一データベースを作成する
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [単一データベース](single-database-overview.md)の作成は、Azure SQL Database でデータベースを作成する場合の最も迅速かつ簡単なオプションです。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して単一データベースを作成する方法について説明します。
 
@@ -29,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="prerequisites"></a>前提条件
 
-なし
+[なし] :
 
 ## <a name="create-a-single-database"></a>単一データベースを作成する
 
@@ -73,7 +72,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -112,7 +111,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -131,3 +130,4 @@ az group delete --name $resourceGroupName
 - Azure CLI を使用して単一データベースを作成するには、「[Azure CLI のサンプル](az-cli-script-samples-content-guide.md)」をご覧ください。
 - Azure PowerShell を使用して単一データベースを作成するには、「[Azure PowerShell サンプル](powershell-script-content-guide.md)」をご覧ください。
 - Resource Manager テンプレートを作成する方法については、[初めてのテンプレートの作成](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)に関するページを参照してください。
+ 

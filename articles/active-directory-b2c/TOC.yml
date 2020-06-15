@@ -36,6 +36,9 @@
           href: tutorial-desktop-app.md
         - name: シングル ページ
           href: tutorial-single-page-app.md
+        - name: Python
+          href: tutorial-web-app-python.md
+          displayName: flask
     - name: API アクセスの許可
       items:
         - name: ASP.NET

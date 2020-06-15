@@ -1,6 +1,6 @@
 ---
-title: Private Link
-description: プライベート エンドポイント機能の概要
+title: Azure Private Link
+description: プライベート エンドポイント機能の概要。
 author: rohitnayakmsft
 ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
@@ -9,36 +9,36 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: e1093e57757d780bf5393b6cb1bb45a706b18b11
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219876"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344001"
 ---
-# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対するプライベート リンク
+# <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対する Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Private Link を使用すると、**プライベート エンドポイント**を経由して Azure 内のさまざまな PaaS サービスに接続できます。 Private Link 機能をサポートしている PaaS サービスの一覧については、「[Private Link のドキュメント](../../private-link/index.yml)」ページを参照してください。 プライベート エンドポイントは、特定の [VNet](../../virtual-network/virtual-networks-overview.md) およびサブネット内のプライベート IP アドレスです。
 
 > [!IMPORTANT]
-> この記事は、Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。 この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。
+> この記事は、Azure SQL Database と Azure Synapse Analytics (以前の Azure SQL Data Warehouse) の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。 この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。
 
 ## <a name="data-exfiltration-prevention"></a>データの流出防止
 
 Azure SQL Database におけるデータの流出とは、データベース管理者などの承認されたユーザーが、あるシステムからデータを抽出して、組織外の別の場所またはシステムに移動できる場合です。 たとえば、ユーザーがサードパーティによって所有されているストレージ アカウントにデータを移動します。
 
-SQL Database に接続している Azure VM 内で SQL Server Management Studio (SSMS) を実行しているユーザーのシナリオについて考えてみましょう。 この SQL Database は、米国西部のデータ センターにあります。 次の例では、ネットワーク アクセス制御を使用して SQL Database のパブリック エンドポイントでアクセスを制限する方法を示します。
+SQL Database 内のデータベースに接続している Azure 仮想マシン内で SQL Server Management Studio (SSMS) を実行しているユーザーのシナリオについて考えます。 このデータベースは、米国西部のデータ センターにあります。 次の例では、ネットワーク アクセス制御を使用して SQL Database のパブリック エンドポイントでアクセスを制限する方法を示します。
 
 1. [Allow Azure Services]\(Azure サービスを許可する\) を **[オフ]** に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 サーバーおよびデータベース レベルのファイアウォール規則で IP アドレスが許可されていないことを確認してください。 詳細については、[Azure SQL Database および Azure Synapse Analytics のネットワーク アクセスの制御](network-access-controls-overview.md)に関するページを参照してください。
-1. VM のプライベート IP アドレスを使用して SQL Database へのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](vnet-service-endpoint-rule-overview.md)と [VNet ファイアウォール規則](firewall-configure.md)に関する記事を参照してください。
+1. VM のプライベート IP アドレスを使用して、SQL Database 内のデータベースへのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](vnet-service-endpoint-rule-overview.md)と[仮想ネットワークのファイアウォール規則](firewall-configure.md)に関する記事を参照してください。
 1. Azure VM で、次のように[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/manage-network-security-group.md) とサービス タグを使用して、送信接続の範囲を絞り込みます。
     - 米国西部にある SQL Database への接続のみを許可するように、サービス タグへのトラフィックを許可する NSG ルールを指定します (Service Tag = SQL.WestUs)
     - すべてのリージョンで SQL Database への接続を拒否するように、サービス タグへのトラフィックを拒否する NSG ルールを (**高い優先度**で) 指定します (Service Tag = SQL)
 
-この設定が終了すると、Azure VM は米国西部リージョンにある SQL Database にのみ接続できます。 ただし、接続は 1 つの SQL Database に限定されません。 この VM は、サブスクリプションに含まれていないデータベースも含め、米国西部リージョン内の任意の SQL データベースに引き続き接続できます。 上記のシナリオでは、データの流出が特定のリージョンに限定されていますが、完全には除外されていません。
+この設定が終了すると、Azure VM は米国西部リージョンにある SQL Database 内のデータベースにのみ接続できます。 ただし、接続は SQL Database 内の 1 つのデータベースに限定されません。 この VM は、サブスクリプションに含まれていないデータベースも含め、米国西部リージョンの任意のデータベースに引き続き接続できます。 上記のシナリオでは、データの流出が特定のリージョンに限定されていますが、完全には除外されていません。
 
-Private Link を使用することで、お客様が NSG のようなネットワーク アクセス制御を設定してプライベート エンドポイントへのアクセスを制限できるようになりました。 その後、個々の Azure PaaS リソースが特定のプライベート エンドポイントにマップされます。 悪意のある内部関係者は、マップされた PaaS リソース (SQL Database など) にしかアクセスできず、その他のリソースにはアクセスできません。 
+Private Link を使用することで、お客様が NSG のようなネットワーク アクセス制御を設定してプライベート エンドポイントへのアクセスを制限できるようになりました。 その後、個々の Azure PaaS リソースが特定のプライベート エンドポイントにマップされます。 悪意のある内部関係者は、マップされた PaaS リソース (SQL Database 内のデータベースなど) にしかアクセスできず、その他のリソースにはアクセスできません。 
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>プライベート ピアリングを介したオンプレミス接続
 
@@ -49,7 +49,7 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL Database に Private Link を設定する方法 
 
 ### <a name="creation-process"></a>作成プロセス
-プライベート エンドポイントは、ポータル、PowerShell、または Azure CLI を使用して作成できます。
+プライベート エンドポイントは、Azure portal、PowerShell、または Azure CLI を使用して作成できます。
 - [ポータル](../../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../../private-link/create-private-endpoint-powershell.md)
 - [CLI](../../private-link/create-private-endpoint-cli.md)
@@ -57,7 +57,7 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 ### <a name="approval-process"></a>承認プロセス
 ネットワーク管理者がプライベート エンドポイント (PE) を作成すると、SQL 管理者は SQL Database へのプライベート エンドポイント接続 (PEC) を管理できます。
 
-1. 次のスクリーンショットに示されている手順に従って、Azure portal で SQL サーバー リソースに移動します
+1. 次のスクリーンショットに示されている手順に従って、Azure portal でサーバー リソースに移動します
 
     - (1) 左側のウィンドウで、プライベート エンドポイント接続を選択
     - (2) すべてのプライベート エンドポイント接続 (PEC) の一覧を表示
@@ -74,11 +74,11 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Azure SQL Database での Private Link のユース ケース 
 
-クライアントは、同じ VNet または同じリージョン内でピアリングされた VNet から、またはリージョン間の VNet 間接続を介して、プライベート エンドポイントに接続できます。 さらに、クライアントは、ExpressRoute、プライベート ピアリング、または VPN トンネリングを使用して、オンプレミスから接続できます。 一般的なユース ケースを示す簡略化された図を以下に示します。
+クライアントは、同じ仮想ネットワークから、同じリージョン内のピアリングされた仮想ネットワークから、またはリージョン間の仮想ネットワーク間接続を介して、プライベート エンドポイントに接続できます。 さらに、クライアントは、ExpressRoute、プライベート ピアリング、または VPN トンネリングを使用して、オンプレミスから接続できます。 一般的なユース ケースを示す簡略化された図を以下に示します。
 
  ![接続オプションの図][1]
 
-## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>同じ Virtual Network (VNet) 内の Azure VM から SQL Database への接続をテストする
+## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>同じ仮想ネットワーク内の Azure VM から SQL Database への接続をテストする
 
 このシナリオでは、Windows Server 2016 を実行する Azure Virtual Machine (VM) を作成しているものとします。 
 
@@ -93,7 +93,7 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 
 [Telnet クライアント](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)は、接続をテストするために使用できる Windows の機能です。 Windows OS のバージョンによっては、この機能を明示的に有効にする必要がある場合があります。 
 
-Telnet をインストールした後で、コマンド プロンプト ウィンドウを開きます。 Telnet コマンドを実行し、SQL Database の IP アドレスとプライベート エンドポイントを指定します。
+Telnet をインストールした後で、コマンド プロンプト ウィンドウを開きます。 Telnet コマンドを実行し、SQL Database 内のデータベースの IP アドレスとプライベート エンドポイントを指定します。
 
 ```
 >telnet 10.1.1.5 1433
@@ -159,17 +159,17 @@ where session_id=@@SPID
 プライベート エンドポイントへの接続では、**プロキシ**のみが[接続ポリシー](connectivity-architecture.md#connection-policy)としてサポートされます。
 
 
-## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>ピアリングされた Virtual Network (VNet) での Azure VM からの接続 
+## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>ピアリングされた仮想ネットワーク内の Azure VM からの接続 
 
-[VNet ピアリング](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)を構成して、ピアリングされた VNet 内の Azure VM から SQL Database への接続を確立します。
+[仮想ネットワーク ピアリング](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)を構成し、ピアリングされた仮想ネットワーク内の Azure VM から SQL Database への接続を確立します。
 
-## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>VNet 間環境での Azure VM からの接続
+## <a name="connecting-from-an-azure-vm-in-virtual-network-to-virtual-network-environment"></a>仮想ネットワーク内の Azure VM から仮想ネットワーク環境への接続
 
-[VNet 間 VPN ゲートウェイ接続](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を構成して、別のリージョンまたはサブスクリプションの Azure VM から SQL Database への接続を確立します。
+[仮想ネットワーク間 VPN ゲートウェイ接続](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を構成し、別のリージョンまたはサブスクリプションの Azure VM から SQL Database 内のデータベースへの接続を確立します。
 
 ## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>オンプレミス環境から VPN 経由の接続
 
-オンプレミス環境から SQL Database への接続を確立するには、次のいずれかのオプションを選択して実装します。
+オンプレミス環境から SQL Database 内のデータベースへの接続を確立するには、次のいずれかのオプションを選択して実装します。
 - [ポイント対サイト接続](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 - [サイト間 VPN 接続](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 - [ExpressRoute 回線](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
@@ -177,7 +177,7 @@ where session_id=@@SPID
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Polybase を使用した Azure Synapse Analytics から Azure Storage への接続
 
-PolyBase は、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むときによく使用されます。 データの読み込み元の Azure Storage アカウントで、プライベート エンドポイント、サービス エンドポイント、または IP ベースのファイアウォールを介した一連の VNet サブネットだけにアクセスを制限している場合、PolyBase からそのアカウントへの接続が切断されます。 VNet に結び付けられた Azure Storage に接続する Azure Synapse Analytics で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、[ここ](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)に示された手順に従います。 
+PolyBase は、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントで、アクセスがプライベート エンドポイント、サービス エンドポイント、または IP ベースのファイアウォールを介した一連の仮想ネットワーク サブネットだけに制限されている場合、PolyBase からそのアカウントへの接続は切断されます。 仮想ネットワークに結び付けられた Azure Storage に接続する Azure Synapse Analytics で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、[こちら](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)で示されている手順のようにします。 
 
 ## <a name="next-steps"></a>次のステップ
 

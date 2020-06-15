@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: IPsec ポリシー
-      href: virtual-wan-ipsec.md
+    - name: サイト間
+      items:
+        - name: IPsec ポリシーについて
+          href: virtual-wan-ipsec.md
+        - name: 複数の ISP リンク - Azure パスの選択
+          href: path-selection-multiple-links.md
 - name: 操作方法ガイド
   items:
     - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
@@ -58,8 +62,6 @@
       items:
         - name: サイト間接続を作成する
           href: virtual-wan-site-to-site-portal.md
-        - name: 複数の ISP リンク - Azure パスの選択
-          href: path-selection-multiple-links.md
     - name: ユーザー VPN (ポイント対サイト)
       items:
         - name: ユーザー VPN 接続を作成する

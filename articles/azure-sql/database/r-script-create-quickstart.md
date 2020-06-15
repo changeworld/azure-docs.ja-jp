@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053070"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324608"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>クイック スタート:Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84053070"
 
 R スクリプトを実行するには、それをシステム ストアド プロシージャ [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) に引数として渡します。
 
-以降の手順では、次のサンプル R スクリプトを SQL データベースで実行します。
+以降の手順では、次に例示する R スクリプトをデータベースで実行します。
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. **SQL Server Management Studio** を開き、SQL データベースに接続します。
+1. **SQL Server Management Studio** を開き、データベースに接続します。
 
-   接続についてご不明な点がある場合は、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL データベースに接続しクエリを実行する](connect-query-ssms.md)」をご覧ください。
+   接続についてご不明な点がある場合は、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL Database 内のデータベースに接続しクエリを実行する](connect-query-ssms.md)」を参照してください。
 
 1. R スクリプト全体を [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) ストアド プロシージャに渡します。
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   なんらかのエラーが発生した場合は、お使いの SQL データベースで Machine Learning Services のパブリック プレビューと R が有効になっていない可能性があります。 前述の「[前提条件](#prerequisites)」を参照してください。
+   エラーが発生する場合は、Machine Learning Services (R を使用) のパブリック プレビューがデータベースで有効になっていない可能性があります。 前述の「[前提条件](#prerequisites)」を参照してください。
 
    > [!NOTE]
    > 管理者の場合は、外部コードを自動的に実行できます。 次のコマンドを使用して他のユーザーにアクセス許可を付与することができます。
@@ -196,7 +196,7 @@ GO
 
 ## <a name="check-r-version"></a>R バージョンの確認
 
-お使いの SQL データベースにインストールされている R のバージョンを確認する場合は、次のスクリプトを実行します。
+データベースにインストールされている R のバージョンを確認する場合は、次のスクリプトを実行します。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>R パッケージの一覧表示
 
-Microsoft では、SQL データベースに Machine Learning Services と共にプレインストールされる R パッケージを多数提供しています。
+Microsoft からは、Machine Learning Services と共にデータベースにプレインストールされる R パッケージが多数提供されています。
 
 バージョン、依存関係、ライセンス、ライブラリパスの情報など、インストールされている R パッケージの一覧を表示するには、次のスクリプトを実行します。
 

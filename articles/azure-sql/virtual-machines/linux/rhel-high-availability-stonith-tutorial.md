@@ -1,5 +1,5 @@
 ---
-title: Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する - Linux Virtual Machines | Microsoft Docs
+title: Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する - Linux 仮想マシン | Microsoft Docs
 description: RHEL クラスター環境における高可用性の設定について学習し、STONITH を設定します
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024638"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343797"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,12 +21,12 @@ ms.locfileid: "84024638"
 > [!NOTE]
 > 提供されているチュートリアルは**パブリック プレビュー**版です。 
 >
-> このチュートリアルでは SQL Server 2017 と RHEL 7.6 を使用しますが、RHEL 7 または RHEL 8 で SQL Server 2019 を使用して HA を構成することもできます。 可用性グループ リソースを構成するためのコマンドは RHEL 8 で変更されています。適切なコマンドの詳細については、記事「[可用性グループのリソースを作成する](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)」および RHEL 8 のリソースを参照してください。
+> このチュートリアルでは SQL Server 2017 と RHEL 7.6 を使用しますが、RHEL 7 または RHEL 8 で SQL Server 2019 を使用して高可用性を構成することもできます。 可用性グループ リソースを構成するためのコマンドは RHEL 8 で変更されています。適切なコマンドの詳細については、記事「[可用性グループのリソースを作成する](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)」および RHEL 8 のリソースを参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> - 新しいリソース グループ、可用性セット、Azure Linux 仮想マシン (VM) を作成する
+> - 新しいリソース グループ、可用性セット、Linux 仮想マシン (VM) を作成する
 > - 高可用性 (HA) を有効にする
 > - Pacemaker クラスターの作成
 > - STONITH デバイスを作成してフェンス エージェントを構成する
@@ -35,7 +35,7 @@ ms.locfileid: "84024638"
 > - Pacemaker クラスター内に可用性グループ (AG) のリソースを構成する
 > - フェールオーバーとフェンス エージェントをテストする
 
-このチュートリアルでは、Azure コマンド ライン インターフェイス (CLI) を使用して、Azure にリソースをデプロイします。
+このチュートリアルでは、Azure CLI を使用して、Azure にリソースをデプロイします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループを作成します
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 複数のサブスクリプションがある場合は、これらのリソースをデプロイする[サブスクリプションを設定](/cli/azure/manage-azure-subscriptions-azure-cli)します。
 
@@ -53,7 +53,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 az group create --name <resourceGroupName> --location eastus2
 ```
 
-## <a name="create-an-availability-set"></a>可用性セットを作成します
+## <a name="create-an-availability-set"></a>可用性セットの作成
 
 次の手順は可用性セットの作成です。 Azure Cloud Shell で次のコマンドを実行します。`<resourceGroupName>` は、実際のリソース グループ名に置き換えてください。 `<availabilitySetName>` の名前を選択します。
 
@@ -95,7 +95,7 @@ az vm availability-set create \
 >
 > "二重請求" されないようにするには、Azure VM を作成するときに RHEL HA イメージを使用します。 RHEL-HA イメージとして提供されるイメージも、HA リポジトリが事前に有効にされている PAYG イメージです。
 
-1. HA を備えた RHEL を提供する仮想マシン (VM) イメージの一覧を取得します。
+1. HA を備えた RHEL を提供する仮想マシン イメージの一覧を取得します。
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -197,7 +197,7 @@ ssh <username>@publicipaddress
 
 「`exit`」と入力して SSH セッションを終了します。
 
-## <a name="enable-high-availability"></a>高可用性を有効化する
+## <a name="enable-high-availability"></a>高可用性の有効化
 
 > [!IMPORTANT]
 > チュートリアルのこの部分を完了するには、RHEL と高可用性アドオンのサブスクリプションが必要です。 前のセクションで推奨されているイメージを使用している場合は、別のサブスクリプションを登録する必要はありません。
@@ -531,13 +531,13 @@ systemctl status mssql-server --no-pager
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>SQL Server Always On 可用性グループを構成する
+## <a name="configure-an-availability-group"></a>可用性グループを構成する
 
 次の手順を使用して、対象の VM の SQL Server Always On 可用性グループを構成します。 詳細については、「[Linux で高可用性を実現するために SQL Server の Always On 可用性グループを構成する](/sql/linux/sql-server-linux-availability-group-configure-ha)」を参照してください
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlwaysOn 可用性グループを有効にして mssql-server を再起動する
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>Always On 可用性グループを有効にして mssql-server を再起動する
 
-SQL Server インスタンスをホストする各ノードで AlwaysOn 可用性グループを有効にします。 次に、mssql-server を再起動します。 次のスクリプトを実行します。
+SQL Server インスタンスをホストする各ノードで Always On 可用性グループを有効にします。 次に、mssql-server を再起動します。 次のスクリプトを実行します。
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -566,19 +566,19 @@ sudo systemctl restart mssql-server
 1. SSMS または SQL CMD を使用してプライマリ レプリカに接続します。 次のコマンドでは、プライマリ SQL Server レプリカの `/var/opt/mssql/data/dbm_certificate.cer` に証明書が作成され、`var/opt/mssql/data/dbm_certificate.pvk` に秘密キーが作成されます。
 
     - `<Private_Key_Password>` は、実際のパスワードに置き換えます。
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 `exit` コマンドを実行して SQL CMD セッションを終了し、SSH セッションに戻ります。
  
@@ -631,7 +631,7 @@ GO
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>すべてのレプリカにデータベース ミラーリング エンドポイントを作成する
 
-SQL CMD または SSMS を使用して、すべての SQL インスタンスで次のスクリプトを実行します。
+SQL CMD または SSMS を使用して、すべての SQL Server インスタンスで次のスクリプトを実行します。
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -647,7 +647,7 @@ ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
 GO
 ```
 
-### <a name="create-the-availability-group"></a>可用性グループの作成
+### <a name="create-the-availability-group"></a>可用性グループを作成する
 
 SQL CMD または SSMS を使用して、プライマリ レプリカをホストする SQL Server インスタンスに接続します。 次のコマンドを実行して、可用性グループを作成します。
 
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Pacemaker 用の SQL Server ログインを作成する
 
-すべての SQL Server で、Pacemaker 用の SQL ログインを作成します。 次の Transact-SQL により、ログインが作成されます。
+すべての SQL Server インスタンスで、Pacemaker 用 SQL Server ログインを作成します。 次の Transact-SQL により、ログインが作成されます。
 
 - `<password>` は、独自の複雑なパスワードに置き換えます。
 
@@ -702,7 +702,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-すべての SQL Server で、SQL Server ログインに使用される資格情報を保存します。 
+すべての SQL Server インスタンスで、SQL Server ログインに使用される資格情報を保存します。 
 
 1. ファイルを作成します。
 
@@ -790,7 +790,7 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-`synchronization_state_desc` に対して `db1` が SYNCHRONIZED と示される場合は、レプリカが同期されていることを意味します。 セカンダリでは、プライマリ レプリカの `db1` が表示されます。
+`db1` に対して `synchronization_state_desc` が SYNCHRONIZED と示される場合は、レプリカが同期されていることを意味します。 セカンダリでは、プライマリ レプリカの `db1` が表示されます。
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Pacemaker クラスター内に可用性グループのリソースを作成する
 
@@ -985,7 +985,7 @@ Node: <VM3> fenced
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL サーバーで可用性グループ リスナーを利用するには、ロード バランサーを作成し、構成する必要があります。
+SQL Server インスタンスで可用性グループ リスナーを利用するには、ロード バランサーを作成し、構成する必要があります。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する](rhel-high-availability-listener-tutorial.md)

@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6dee5d6e1bb2802114d7bba14a57b91dbab09e19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37cc50a31f2f31c0cb7fc49102328f2072c6570a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053246"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324591"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>クイック スタート:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルを作成およびトレーニングする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,9 +53,9 @@ ms.locfileid: "84053246"
 
 以降の手順では、トレーニング データの設定、回帰モデルの作成、トレーニング データを使用したモデルのトレーニングを実行した後、SQL テーブルにそのモデルを保存します。
 
-1. **SQL Server Management Studio** を開き、SQL データベースに接続します。
+1. **SQL Server Management Studio** を開き、データベースに接続します。
 
-   接続についてご不明な点がある場合は、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL データベースに接続しクエリを実行する](connect-query-ssms.md)」をご覧ください。
+   接続についてご不明な点がある場合は、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL Database 内のデータベースに接続しクエリを実行する](connect-query-ssms.md)」を参照してください。
 
 1. トレーニング データを保存するための **CarSpeed** テーブルを作成します。
 
